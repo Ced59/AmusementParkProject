@@ -41,6 +41,8 @@ param(
 
     [switch]$AllowWarnings,
 
+    [switch]$ProjectForPublication,
+
     [string]$SourceUrl,
 
     [ValidateSet('LOGO', 'PARK', 'PARK_ITEM', 'STANDALONE_ATTRACTION')]
@@ -983,8 +985,9 @@ switch ($Action) {
         if ([string]::IsNullOrWhiteSpace($ParkId)) {
             throw 'ParkId is required for Completeness.'
         }
+        $projectionQuery = if ($ProjectForPublication) { '?projectForPublication=true' } else { '' }
         Invoke-ParkDataEditorJsonApi -Method GET `
-            -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId))/data-completeness" `
+            -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId))/data-completeness$projectionQuery" `
             -Body $null
     }
     'ImportPhoto' {

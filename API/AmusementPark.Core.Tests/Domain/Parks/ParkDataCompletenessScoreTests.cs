@@ -140,6 +140,50 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.True(notRelevantScore.CompletenessScore < validatedScore.CompletenessScore);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenPublicationIsProjected_UsesValidatedPublicationState()
+    {
+        Park park = CreatePublishablePark();
+        park.AdminReviewStatus = AdminReviewStatus.ToReview;
+        ParkDataCompletenessContext currentContext = CreateRichParkContext() with
+        {
+            HasDocumentedRemainingDebt = true,
+            HasPublicSeoSignals = false,
+        };
+        ParkDataCompletenessContext projectedContext = currentContext with
+        {
+            ProjectForPublication = true,
+            HasDocumentedRemainingDebt = false,
+            HasPublicSeoSignals = true,
+        };
+
+        DataCompletenessScore currentScore = park.CalculateDataCompletenessScore(currentContext);
+        DataCompletenessScore projectedScore = park.CalculateDataCompletenessScore(projectedContext);
+
+        Assert.True(projectedScore.EarnedPoints > currentScore.EarnedPoints);
+        Assert.True(projectedScore.CompletenessScore > currentScore.CompletenessScore);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenNotRelevant_DoesNotProjectValidation()
+    {
+        Park park = CreatePublishablePark();
+        park.AdminReviewStatus = AdminReviewStatus.NotRelevant;
+        ParkDataCompletenessContext currentContext = CreateRichParkContext() with
+        {
+            HasPublicSeoSignals = false,
+        };
+        ParkDataCompletenessContext projectedContext = currentContext with
+        {
+            ProjectForPublication = true,
+        };
+
+        DataCompletenessScore currentScore = park.CalculateDataCompletenessScore(currentContext);
+        DataCompletenessScore projectedScore = park.CalculateDataCompletenessScore(projectedContext);
+
+        Assert.Equal(currentScore, projectedScore);
+    }
+
     private static Park CreatePublishablePark()
     {
         Park park = new Park

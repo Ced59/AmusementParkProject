@@ -4,4 +4,7 @@ using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Queries;
 
-public sealed record GetParkDataCompletenessScoreQuery(string ParkId, bool IncludeHidden = true) : IQuery<ApplicationResult<DataCompletenessScore>>;
+public sealed record GetParkDataCompletenessScoreQuery(
+    string ParkId,
+    bool IncludeHidden = true,
+    bool ProjectForPublication = false) : IQuery<ApplicationResult<DataCompletenessScore>>;

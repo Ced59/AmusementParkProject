@@ -43,26 +43,27 @@ La condition de réussite avant publication est cumulative :
 - export complet frais immédiatement avant l’étape 9 ;
 - audit final sans bloqueur ;
 - contrôle du corpus public sans duplication ou texte mécanique non justifié ;
-- score individuel recalculé strictement supérieur à 95, donc au minimum 96.
+- score individuel projeté avec `Completeness -ProjectForPublication` strictement supérieur à 95, donc au minimum 96.
 
-Si une de ces conditions manque, le parc reste dans le backlog avec son score actualisé et une note de blocage factuelle.
+La projection simule uniquement l’état final déjà audité : validation du parc, publication des médias intégrés et publication des articles intégrés. Elle ne modifie aucune donnée, ne change aucune visibilité et ne contourne ni un bloqueur d’audit ni le statut `NotRelevant`. Si une de ces conditions manque, le parc reste dans le backlog avec son score courant actualisé et une note de blocage factuelle ; le score projeté peut être mentionné séparément mais ne remplace jamais la valeur courante du tableau.
 
 ## Publication des données et de Facebook
 
 La commande de reprise d’un parc visible du backlog autorise explicitement la phase de publication suivante une fois toutes les conditions précédentes remplies :
 
 1. publier de façon ciblée les nouveaux contenus et médias validés, sans basculer globalement des éléments non audités ;
-2. conserver le parc visible et contrôler de nouveau ses pages publiques, son logo, ses contenus, son score et l’idempotence des lots ;
-3. résoudre le brouillon Facebook de la page canonique du parc avec `ResolveFacebookPublication` ;
-4. si `hasPublishedParkAnnouncement` vaut `true`, conserver la publication existante et ne rien republier ;
-5. si aucun historique d’annonce n’existe, appeler `PublishFacebook` sans `Message` et sans `ImageId` afin d’utiliser le texte bilingue par défaut et les règles Open Graph courantes ; pour ce cas exact, le serveur utilise la clé idempotente du parc et ne publie pas deux fois ;
-6. si un historique existe avec un statut autre que `Published`, ne pas créer un doublon manuel : conserver la ligne du backlog et rapporter le statut à corriger.
+2. conserver le parc visible et contrôler de nouveau ses pages publiques, son logo, ses contenus et l’idempotence des lots ;
+3. recalculer le score courant, sans projection, et exiger qu’il reste strictement supérieur à 95 ; sinon conserver la ligne et ne pas lancer Facebook ;
+4. résoudre le brouillon Facebook de la page canonique du parc avec `ResolveFacebookPublication` ;
+5. si `hasPublishedParkAnnouncement` vaut `true`, conserver la publication existante et ne rien republier ;
+6. si aucun historique d’annonce n’existe, appeler `PublishFacebook` sans `Message` et sans `ImageId` afin d’utiliser le texte bilingue par défaut et les règles Open Graph courantes ; pour ce cas exact, le serveur utilise la clé idempotente du parc et ne publie pas deux fois ;
+7. si un historique existe avec un statut autre que `Published`, ne pas créer un doublon manuel : conserver la ligne du backlog et rapporter le statut à corriger.
 
 Cette autorisation Facebook est limitée au parc visible traité depuis ce backlog. Elle ne s’étend ni à ses parkItems, ni aux articles, ni aux commandes de complétude ordinaires.
 
 ## Retrait et livraison cumulative
 
-La ligne peut être supprimée du fichier versionné seulement lorsque les données ont été publiées avec succès et que l’annonce Facebook est soit déjà publiée, soit publiée avec succès pendant le traitement.
+La ligne peut être supprimée du fichier versionné seulement lorsque les données ont été publiées avec succès, que le score courant post-publication est strictement supérieur à 95 et que l’annonce Facebook est soit déjà publiée, soit publiée avec succès pendant le traitement.
 
 Après validation :
 

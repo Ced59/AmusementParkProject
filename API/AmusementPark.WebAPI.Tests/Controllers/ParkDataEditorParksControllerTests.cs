@@ -21,6 +21,34 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 public sealed class ParkDataEditorParksControllerTests
 {
     [Fact]
+    public async Task GetDataCompletenessAsync_ShouldForwardPublicationProjection()
+    {
+        Mock<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>> handler =
+            new Mock<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict);
+        handler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<GetParkDataCompletenessScoreQuery>(query =>
+                    query.ParkId == "park-1"
+                    && query.IncludeHidden
+                    && query.ProjectForPublication),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<DataCompletenessScore>.Success(DataCompletenessScore.FromPoints(96, 100)));
+
+        ParkDataEditorParksController controller = new ParkDataEditorParksController(
+            Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            handler.Object,
+            Mock.Of<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict));
+
+        IActionResult result = await controller.GetDataCompletenessAsync("park-1", true, CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        Assert.NotNull(ok.Value);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public async Task RefreshSocialPreviewAsync_ShouldForwardParkAndAuthenticatedEditor()
     {
         Mock<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>> handler =

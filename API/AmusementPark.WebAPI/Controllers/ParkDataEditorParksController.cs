@@ -87,10 +87,14 @@ public sealed class ParkDataEditorParksController : ControllerBase
     [ProducesResponseType(typeof(DataCompletenessScoreDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetDataCompletenessAsync(
         [FromRoute] string parkId,
+        [FromQuery] bool projectForPublication = false,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<DataCompletenessScore> result = await this.completenessHandler.HandleAsync(
-            new GetParkDataCompletenessScoreQuery(parkId, IncludeHidden: true),
+            new GetParkDataCompletenessScoreQuery(
+                parkId,
+                IncludeHidden: true,
+                ProjectForPublication: projectForPublication),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {

@@ -1,6 +1,20 @@
 {
-  "version": "4.1.36",
+  "version": "4.1.37",
   "history": [
+    {
+      "version": "4.1.37",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Le suivi de qualité des parcs gagne en précision.",
+        "en": "Park quality tracking is more precise.",
+        "de": "Die Qualitätsbewertung der Parks ist jetzt präziser.",
+        "nl": "De kwaliteitsopvolging van parken is nauwkeuriger.",
+        "it": "Il monitoraggio della qualità dei parchi è più preciso.",
+        "es": "El seguimiento de la calidad de los parques es más preciso.",
+        "pl": "Monitorowanie jakości parków jest teraz dokładniejsze.",
+        "pt": "O acompanhamento da qualidade dos parques é mais preciso."
+      }
+    },
     {
       "version": "4.1.36",
       "releasedAt": "2026-08-13",

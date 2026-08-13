@@ -21,7 +21,8 @@ internal static class DataCompletenessContextFactory
         IParkZoneRepository? parkZoneRepository,
         IImageRepository? imageRepository,
         IHistoryEventRepository? historyEventRepository,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool projectForPublication = false)
     {
         List<string> parkIds = parks
             .Select(static park => park.Id)
@@ -67,6 +68,8 @@ internal static class DataCompletenessContextFactory
             }
 
             string parkId = park.Id.Trim();
+            bool projectCurrentParkForPublication = projectForPublication
+                && park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
             List<ParkItem> currentParkItems = parkItemsByParkId.GetValueOrDefault(parkId) ?? new List<ParkItem>();
             List<ParkZone> currentZones = zonesByParkId.GetValueOrDefault(parkId) ?? new List<ParkZone>();
             List<Image> currentParkImages = parkImagesByParkId.GetValueOrDefault(parkId) ?? new List<Image>();
@@ -85,9 +88,16 @@ internal static class DataCompletenessContextFactory
                     ? Enumerable.Empty<Image>()
                     : parkItemImagesByItemId.GetValueOrDefault(item.Id.Trim()) ?? new List<Image>())
                 .ToList();
+            IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
+                ? currentParkImages
+                : currentParkImages.Where(static image => image.IsPublished).ToList();
+            IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
+                ? currentParkItemImages
+                : currentParkItemImages.Where(static image => image.IsPublished).ToList();
 
             ParkDataCompletenessContext context = new ParkDataCompletenessContext
             {
+                ProjectForPublication = projectCurrentParkForPublication,
                 ParkItemsTotalCount = visibilityCounts?.TotalCount ?? currentParkItems.Count,
                 ParkItemsVisibleCount = visibilityCounts?.VisibleCount ?? currentParkItems.Count(static item => item.IsVisible),
                 DistinctParkItemCategoryCount = currentCategoryCounts.Count(static count => count.Value > 0),
@@ -101,11 +111,11 @@ internal static class DataCompletenessContextFactory
                 ParkItemsAttachedToZonesCount = currentParkItems.Count(static item => !string.IsNullOrWhiteSpace(item.ZoneId)),
                 ParkItemsWithDescriptionsCount = currentParkItems.Count(static item => HasLocalizedText(item.Descriptions)),
                 CommercialOrServiceItemsWithDescriptionsCount = currentParkItems.Count(static item => IsCommercialOrService(item) && HasLocalizedText(item.Descriptions)),
-                ParkPublishedImageCount = currentParkImages.Count(static image => image.IsPublished),
-                ParkImagesWithResolvedOwnerCount = currentParkImages.Count(image => image.IsPublished && string.Equals(image.OwnerId, parkId, StringComparison.Ordinal)),
-                ParkImagesWithLocalizedAltTextCount = currentParkImages.Count(static image => image.IsPublished && HasLocalizedText(image.AltTexts)),
-                ParkItemPublishedImageCount = currentParkItemImages.Count(static image => image.IsPublished),
-                HasOriginalMedia = currentParkImages.Any(static image => image.IsPublished && !string.IsNullOrWhiteSpace(image.OriginalFileName)),
+                ParkPublishedImageCount = scoreParkImages.Count,
+                ParkImagesWithResolvedOwnerCount = scoreParkImages.Count(image => string.Equals(image.OwnerId, parkId, StringComparison.Ordinal)),
+                ParkImagesWithLocalizedAltTextCount = scoreParkImages.Count(static image => HasLocalizedText(image.AltTexts)),
+                ParkItemPublishedImageCount = scoreParkItemImages.Count,
+                HasOriginalMedia = scoreParkImages.Any(static image => !string.IsNullOrWhiteSpace(image.OriginalFileName)),
                 HasOpeningHours = openingHoursSummary?.HasScheduleData == true,
                 OpeningHoursStatus = openingHoursSummary is null
                     ? ParkOpeningHoursAdminStatus.NotConfigured
@@ -117,16 +127,18 @@ internal static class DataCompletenessContextFactory
                 ParkHistoryEventCount = currentParkHistory.Count,
                 MajorHistoryEventCount = currentParkHistory.Count(static historyEvent => historyEvent.IsMajor),
                 ParkItemHistoryEventCount = currentParkItemHistory.Count,
-                PublishedArticleCount = currentParkHistory.Count(HasPublishedArticle),
-                StructuredArticleCount = currentParkHistory.Count(HasStructuredArticle),
+                PublishedArticleCount = currentParkHistory.Count(historyEvent => HasPublishedArticle(historyEvent, projectCurrentParkForPublication)),
+                StructuredArticleCount = currentParkHistory.Count(historyEvent => HasStructuredArticle(historyEvent, projectCurrentParkForPublication)),
                 LocalizedHistoryContentCount = currentParkHistory.Count(HasLocalizedHistoryContent),
                 HistoryEventsWithSourcesCount = currentParkHistory.Count(HasSources),
                 HistoryEventsWithMediaCount = currentParkHistory.Count(HasMedia),
                 ImportantReferencesWithDescriptionsCount = CountReferenceDescriptions(park, currentParkItems),
                 ReferencesWithUsefulDetailsCount = CountReferenceDetails(park, currentParkItems),
                 HasCriticalSources = HasCriticalSource(park, currentParkHistory),
-                HasDocumentedRemainingDebt = park.AdminReviewStatus != AdminReviewStatus.Validated,
-                HasPublicSeoSignals = HasParkSeoSignals(park),
+                HasDocumentedRemainingDebt = projectCurrentParkForPublication
+                    ? false
+                    : park.AdminReviewStatus != AdminReviewStatus.Validated,
+                HasPublicSeoSignals = HasParkSeoSignals(park, projectCurrentParkForPublication),
             };
             contextsByParkId[parkId] = context;
         }
@@ -193,7 +205,7 @@ internal static class DataCompletenessContextFactory
                 HasHistoricalImageContext = IsClosedParkItem(parkItem) && publishedImages.Count > 0,
                 HistoryEventCount = historyEvents.Count,
                 ClosureOrChangeHistoryEventCount = historyEvents.Count(IsClosureOrChangeEvent),
-                PublishedArticleCount = historyEvents.Count(HasPublishedArticle),
+                PublishedArticleCount = historyEvents.Count(static historyEvent => HasPublishedArticle(historyEvent)),
                 HistoryEventsWithSourcesCount = historyEvents.Count(HasSources),
                 HasReferenceDetailsOrDocumentedDebt = !string.IsNullOrWhiteSpace(parkItem.AttractionDetails?.ManufacturerId)
                     || parkItem.AdminReviewStatus != AdminReviewStatus.Validated,
@@ -317,14 +329,16 @@ internal static class DataCompletenessContextFactory
             or ParkItemCategory.Hotel;
     }
 
-    private static bool HasPublishedArticle(HistoryEvent historyEvent)
+    private static bool HasPublishedArticle(HistoryEvent historyEvent, bool projectForPublication = false)
     {
-        return historyEvent.Article?.IsPublished == true;
+        return historyEvent.Article is not null
+            && (projectForPublication || historyEvent.Article.IsPublished);
     }
 
-    private static bool HasStructuredArticle(HistoryEvent historyEvent)
+    private static bool HasStructuredArticle(HistoryEvent historyEvent, bool projectForPublication = false)
     {
-        return historyEvent.Article?.IsPublished == true
+        return historyEvent.Article is not null
+            && (projectForPublication || historyEvent.Article.IsPublished)
             && historyEvent.Article.Blocks.Count > 0;
     }
 
@@ -382,10 +396,11 @@ internal static class DataCompletenessContextFactory
             || historyEvents.Any(HasSources);
     }
 
-    private static bool HasParkSeoSignals(Park park)
+    private static bool HasParkSeoSignals(Park park, bool projectForPublication = false)
     {
         return park.IsVisible
-            && park.AdminReviewStatus == AdminReviewStatus.Validated
+            && (park.AdminReviewStatus == AdminReviewStatus.Validated
+                || (projectForPublication && park.AdminReviewStatus != AdminReviewStatus.NotRelevant))
             && !string.IsNullOrWhiteSpace(park.Name)
             && HasLocalizedText(park.Descriptions);
     }

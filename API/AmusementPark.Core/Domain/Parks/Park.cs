@@ -116,6 +116,9 @@ public sealed class Park : GeolocatedEntityBase
     {
         ParkDataCompletenessContext scoreContext = context ?? new ParkDataCompletenessContext();
         DataCompletenessScoreBuilder score = new DataCompletenessScoreBuilder();
+        bool isValidatedForPublication = this.AdminReviewStatus == AdminReviewStatus.Validated
+            || (scoreContext.ProjectForPublication && this.AdminReviewStatus != AdminReviewStatus.NotRelevant);
+        bool isPotentiallyPublishable = this.IsPotentiallyPublishable(scoreContext.ProjectForPublication);
 
         score.Add(DataCompletenessScoringRules.HasText(this.Name), 2);
         score.Add(this.IsProjectRelevantForScoring(), 2);
@@ -152,7 +155,7 @@ public sealed class Park : GeolocatedEntityBase
         score.AddIfApplicable(scoreContext.HasOfficialZones, scoreContext.ZonesWithDescriptionsCount > 0, 1);
 
         score.Add(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), 4);
-        score.AddIfApplicable(this.IsPotentiallyPublishable(), DataCompletenessScoringRules.CountPublicLanguagesWithText(this.Descriptions) == DataCompletenessScoringRules.PublicLanguageCount, 2);
+        score.AddIfApplicable(isPotentiallyPublishable, DataCompletenessScoringRules.CountPublicLanguagesWithText(this.Descriptions) == DataCompletenessScoringRules.PublicLanguageCount, 2);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.ParkItemsWithDescriptionsCount > 0, 3);
         score.AddIfApplicable(scoreContext.HasOfficialZones, scoreContext.ZonesWithDescriptionsCount > 0, 1);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.CommercialOrServiceItemsWithDescriptionsCount > 0, 1);
@@ -198,7 +201,7 @@ public sealed class Park : GeolocatedEntityBase
         score.AddIfApplicable(this.IsVisible, scoreContext.HasPublicSeoSignals, 1);
         score.AddIfApplicable(this.IsVisible, scoreContext.HasPublicSeoSignals, 1);
         score.AddIfApplicable(this.IsVisible, scoreContext.HasPublicSeoSignals, 1);
-        score.AddIfApplicable(this.IsVisible, this.IsPotentiallyPublishable(), 1);
+        score.AddIfApplicable(this.IsVisible, isPotentiallyPublishable, 1);
         score.AddIfApplicable(this.IsVisible, DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), 1);
 
         score.Add(scoreContext.HasResolvedAttachmentKeys, 2);
@@ -208,7 +211,7 @@ public sealed class Park : GeolocatedEntityBase
         score.Add(scoreContext.HasNoKnownBlockingWarnings, 1);
         score.Add(scoreContext.HasStructuredTechnicalDataOnly, 1);
         score.AddIfApplicable(score.HasMissingPoints, scoreContext.HasDocumentedRemainingDebt, 1);
-        score.AddIfApplicable(this.AdminReviewStatus == AdminReviewStatus.Validated, this.AdminReviewStatus == AdminReviewStatus.Validated, 1);
+        score.AddIfApplicable(isValidatedForPublication, isValidatedForPublication, 1);
 
         return score.Build();
     }
@@ -283,9 +286,11 @@ public sealed class Park : GeolocatedEntityBase
         };
     }
 
-    private bool IsPotentiallyPublishable()
+    private bool IsPotentiallyPublishable(bool projectForPublication = false)
     {
-        return this.AdminReviewStatus == AdminReviewStatus.Validated
+        bool isValidatedForPublication = this.AdminReviewStatus == AdminReviewStatus.Validated
+            || (projectForPublication && this.AdminReviewStatus != AdminReviewStatus.NotRelevant);
+        return isValidatedForPublication
             && !DataCompletenessScoringRules.IsPlaceholderName(this.Name);
     }
 

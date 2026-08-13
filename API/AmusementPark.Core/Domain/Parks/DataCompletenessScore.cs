@@ -75,6 +75,8 @@ public sealed record DataCompletenessScore
 
 public sealed record ParkDataCompletenessContext
 {
+    public bool ProjectForPublication { get; init; }
+
     public int ParkItemsTotalCount { get; init; }
 
     public int ParkItemsVisibleCount { get; init; }
