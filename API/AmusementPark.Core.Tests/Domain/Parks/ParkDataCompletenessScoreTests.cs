@@ -6,6 +6,29 @@ namespace AmusementPark.Core.Tests.Domain.Parks;
 
 public sealed class ParkDataCompletenessScoreTests
 {
+    [Theory]
+    [InlineData("The operator's public page confirms the current inventory after an independent visit.")]
+    [InlineData("La page publique de l'exploitant confirme l'inventaire actuel après une visite indépendante.")]
+    [InlineData("La página pública del operador confirma el inventario actual tras una visita independiente.")]
+    [InlineData("Die öffentliche Betreiberseite bestätigt die heutige Sammlung nach einem unabhängigen Besuch.")]
+    [InlineData("La pagina pubblica del gestore conferma le proposte attuali dopo una visita indipendente.")]
+    [InlineData("Publiczna strona operatora potwierdza obecną kolekcję po niezależnej wizycie.")]
+    [InlineData("De openbare pagina bevestigt de huidige verzameling na een onafhankelijk bezoek.")]
+    [InlineData("A página pública confirma o inventário atual após uma visita independente.")]
+    public void HasForbiddenPublicText_WhenCopyExplainsVerification_ShouldRejectEveryPublicLanguage(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("Le petit train traverse un jardin de palmiers dans une ambiance joyeuse.")]
+    [InlineData("The family coaster winds through palms and colourful scenery.")]
+    [InlineData("Todo el recinto comparte una atmósfera alegre y colorida.")]
+    public void HasForbiddenPublicText_WhenPhysicalTermIsNaturalAndIsolated_ShouldAccept(string value)
+    {
+        Assert.False(DataCompletenessScoringRules.HasForbiddenPublicText(value));
+    }
+
     [Fact]
     public void CalculateDataCompletenessScore_WhenParkHasNoOfficialZones_DoesNotApplyZonePoints()
     {
@@ -182,6 +205,35 @@ public sealed class ParkDataCompletenessScoreTests
         DataCompletenessScore projectedScore = park.CalculateDataCompletenessScore(projectedContext);
 
         Assert.Equal(currentScore, projectedScore);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenDescriptionExplainsTheAudit_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.Descriptions[0] = new LocalizedText(
+            "fr",
+            "<p>La page publique de l'exploitant montre les groupes, tandis qu'une visite indépendante a confirmé l'inventaire actuel. Ces sources décrivent un parc actif.</p>");
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenRelatedPublicCorpusIsBlocked_ShouldCapOtherwiseRichPark()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext context = CreateRichParkContext() with
+        {
+            HasNoForbiddenPublicText = false,
+        };
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
     }
 
     private static Park CreatePublishablePark()

@@ -587,6 +587,9 @@ internal static class ParksHttpMappers
             DataQualityLevel = value.DataQualityLevel.ToString(),
             ApplicableMaxPoints = value.ApplicableMaxPoints,
             EarnedPoints = value.EarnedPoints,
+            PublicationBlockers = value.PublicationBlocker is null
+                ? new List<string>()
+                : new List<string> { value.PublicationBlocker },
         };
     }
 

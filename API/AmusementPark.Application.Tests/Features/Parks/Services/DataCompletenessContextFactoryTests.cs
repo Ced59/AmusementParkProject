@@ -30,6 +30,11 @@ public sealed class DataCompletenessContextFactoryTests
             Id = "item-1",
             ParkId = "park-1",
             Name = "Projection Ride",
+            IsVisible = true,
+            Descriptions = new List<LocalizedText>
+            {
+                new("fr", "La page publique confirme l'inventaire actuel de cette attraction."),
+            },
         };
         Image parkImage = new Image
         {
@@ -153,6 +158,8 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.Equal(0, current.PublishedArticleCount);
         Assert.False(current.HasPublicSeoSignals);
         Assert.True(current.HasDocumentedRemainingDebt);
+        Assert.False(current.HasNoForbiddenPublicText);
+        Assert.False(current.HasStructuredTechnicalDataOnly);
         Assert.True(projected.ProjectForPublication);
         Assert.Equal(1, projected.ParkPublishedImageCount);
         Assert.Equal(1, projected.ParkImagesWithResolvedOwnerCount);
@@ -163,6 +170,8 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.Equal(1, projected.StructuredArticleCount);
         Assert.True(projected.HasPublicSeoSignals);
         Assert.False(projected.HasDocumentedRemainingDebt);
+        Assert.False(projected.HasNoForbiddenPublicText);
+        Assert.False(projected.HasStructuredTechnicalDataOnly);
 
         park.AdminReviewStatus = AdminReviewStatus.NotRelevant;
         IReadOnlyDictionary<string, ParkDataCompletenessContext> notRelevantContexts =

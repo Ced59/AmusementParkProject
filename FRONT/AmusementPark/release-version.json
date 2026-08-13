@@ -1,6 +1,20 @@
 {
-  "version": "4.1.39",
+  "version": "4.1.40",
   "history": [
+    {
+      "version": "4.1.40",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Le suivi de qualité des données gagne en fiabilité.",
+        "en": "Data quality tracking is more reliable.",
+        "de": "Die Überwachung der Datenqualität ist jetzt zuverlässiger.",
+        "nl": "De opvolging van gegevenskwaliteit is betrouwbaarder.",
+        "it": "Il monitoraggio della qualità dei dati è più affidabile.",
+        "es": "El seguimiento de la calidad de los datos es más fiable.",
+        "pl": "Monitorowanie jakości danych jest teraz bardziej niezawodne.",
+        "pt": "O acompanhamento da qualidade dos dados está mais fiável."
+      }
+    },
     {
       "version": "4.1.39",
       "releasedAt": "2026-08-13",

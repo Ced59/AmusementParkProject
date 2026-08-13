@@ -44,6 +44,7 @@ La condition de réussite avant publication est cumulative :
 - audit final sans bloqueur ;
 - contrôle du corpus public sans duplication ou texte mécanique non justifié ;
 - score individuel projeté avec `Completeness -ProjectForPublication` strictement supérieur à 95, donc au minimum 96.
+- liste `publicationBlockers` vide ; un score brut élevé ne neutralise jamais un bloqueur éditorial, et `public-text.forbidden-editorial-language` impose une réécriture avant publication.
 
 La projection simule uniquement l’état final déjà audité : validation du parc, publication des médias intégrés et publication des articles intégrés. Elle ne modifie aucune donnée, ne change aucune visibilité et ne contourne ni un bloqueur d’audit ni le statut `NotRelevant`. Si une de ces conditions manque, le parc reste dans le backlog avec son score courant actualisé et une note de blocage factuelle ; le score projeté peut être mentionné séparément mais ne remplace jamais la valeur courante du tableau.
 

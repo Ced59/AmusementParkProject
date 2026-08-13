@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.SocialPublishing.Commands;
 using AmusementPark.Application.Features.SocialPublishing.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.SocialPublishing;
 using AmusementPark.WebAPI.Controllers;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,10 @@ public sealed class ParkDataEditorParksControllerTests
                     && query.IncludeHidden
                     && query.ProjectForPublication),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(ApplicationResult<DataCompletenessScore>.Success(DataCompletenessScore.FromPoints(96, 100)));
+            .ReturnsAsync(ApplicationResult<DataCompletenessScore>.Success(DataCompletenessScore.FromPoints(
+                100,
+                100,
+                "public-text.forbidden-editorial-language")));
 
         ParkDataEditorParksController controller = new ParkDataEditorParksController(
             Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
@@ -45,7 +49,9 @@ public sealed class ParkDataEditorParksControllerTests
         IActionResult result = await controller.GetDataCompletenessAsync("park-1", true, CancellationToken.None);
 
         OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
-        Assert.NotNull(ok.Value);
+        DataCompletenessScoreDto score = Assert.IsType<DataCompletenessScoreDto>(ok.Value);
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal(new[] { "public-text.forbidden-editorial-language" }, score.PublicationBlockers);
         handler.VerifyAll();
     }
 

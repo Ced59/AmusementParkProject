@@ -117,6 +117,7 @@ Vérifier :
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 - les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
 - les descriptions, timelines et articles ne déroulent ni tracé, ni rotations, ni accélérations, ni principe de fonctionnement et ne réinjectent pas vitesse, durée, capacité ou nombre de sièges et de véhicules depuis les données structurées.
+- l’appel final de complétude ne renvoie aucun `publicationBlockers`. La clé `public-text.forbidden-editorial-language` est bloquante et plafonne le score à 95 ; elle interdit Preview de publication tant que le corpus concerné n’a pas été réécrit puis contrôlé à nouveau.
 
 ### Audit transversal anti-gabarit
 

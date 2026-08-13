@@ -170,6 +170,8 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 - parc majeur ou parkItem publiable réduit à une description plate et nettement sous les bandes de profondeur de l’étape 4, sans exception sourcée documentée ;
 - article durable d’un parc majeur réduit à un résumé et deux paragraphes minces, sans développement proportionné au sujet.
 
+Le contrôle automatisé des formulations interdites couvre les descriptions du parc et des parkItems, les zones visibles, les textes des médias publiés et les timelines ou articles publics. Lorsqu’il détecte du jargon interne, une justification de recherche ou de source, un conseil d’itinéraire interdit, une mesure technique brute ou une accumulation de vocabulaire mécanique, il ajoute le bloqueur stable `public-text.forbidden-editorial-language`. Tant que ce bloqueur existe, `completenessScore` est plafonné à **95**, même si le total brut aurait donné 96 à 100 : la fiche ne peut donc pas franchir une condition de publication strictement supérieure à 95.
+
 ## Scoring des parcs
 
 Le score parc recommandé vaut 100 points normalisés. Les catégories non applicables sont retirées du dénominateur.
@@ -261,6 +263,8 @@ Inspiré de l'étape 4.
 | Descriptions non clonées et non génériques | 1 | Toujours si texte public |
 
 Les langues publiques attendues sont `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`, sauf dette legacy documentée.
+
+Ce critère est aussi un bloqueur de publication. La perte du point ne suffit pas à elle seule : le plafond à 95 et la clé retournée dans `publicationBlockers` rendent l’échec explicite pour les automatisations.
 
 Le calcul numérique ne sait pas prouver à lui seul que les textes sont distincts. L’étape 9 doit comparer les corps de paragraphes après retrait des titres et noms ; un groupe répété reste un bloqueur éditorial même si le score calculé atteint 100.
 
