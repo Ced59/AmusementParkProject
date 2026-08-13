@@ -1,6 +1,20 @@
 {
-  "version": "4.1.42",
+  "version": "4.1.43",
   "history": [
+    {
+      "version": "4.1.43",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Le suivi de qualité des parcs publiés a progressé.",
+        "en": "Published park quality tracking has progressed.",
+        "de": "Die Qualitätsübersicht veröffentlichter Parks wurde weitergeführt.",
+        "nl": "De kwaliteitsopvolging van gepubliceerde parken is verder bijgewerkt.",
+        "it": "Il monitoraggio della qualità dei parchi pubblicati è proseguito.",
+        "es": "Ha avanzado el seguimiento de calidad de los parques publicados.",
+        "pl": "Kontynuowano monitorowanie jakości opublikowanych parków.",
+        "pt": "O acompanhamento da qualidade dos parques publicados avançou."
+      }
+    },
     {
       "version": "4.1.42",
       "releasedAt": "2026-08-13",
