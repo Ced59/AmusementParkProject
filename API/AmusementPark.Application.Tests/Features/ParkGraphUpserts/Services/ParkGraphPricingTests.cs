@@ -351,7 +351,8 @@ public sealed class ParkGraphPricingTests
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
-            pricingRepository.Object);
+            pricingRepository.Object,
+            Mock.Of<IImageBinaryStorage>(MockBehavior.Strict));
 
         return new ProcessorContext(
             processor,

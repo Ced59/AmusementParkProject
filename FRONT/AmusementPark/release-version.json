@@ -1,6 +1,20 @@
 {
-  "version": "4.1.38",
+  "version": "4.1.39",
   "history": [
+    {
+      "version": "4.1.39",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "La gestion des données gagne en fiabilité.",
+        "en": "Data management is more reliable.",
+        "de": "Die Datenverwaltung ist jetzt zuverlässiger.",
+        "nl": "Gegevensbeheer is betrouwbaarder.",
+        "it": "La gestione dei dati è più affidabile.",
+        "es": "La gestión de datos es más fiable.",
+        "pl": "Zarządzanie danymi jest teraz bardziej niezawodne.",
+        "pt": "A gestão de dados está mais fiável."
+      }
+    },
     {
       "version": "4.1.38",
       "releasedAt": "2026-08-13",

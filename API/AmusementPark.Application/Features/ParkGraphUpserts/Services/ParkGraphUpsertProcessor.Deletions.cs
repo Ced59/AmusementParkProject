@@ -19,6 +19,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         List<ParkGraphResolvedDeletion> resolvedDeletions = new List<ParkGraphResolvedDeletion>();
+        HashSet<string> resolvedTargetKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (ParkGraphDeletionRequest request in requests)
         {
             ParkGraphDeletionTarget? target = await this.ResolveDeletionTargetAsync(request, result, cancellationToken);
@@ -37,7 +38,23 @@ public sealed partial class ParkGraphUpsertProcessor
                 continue;
             }
 
+            string targetKey = $"{target.EntityType}:{target.Id}";
+            if (!resolvedTargetKeys.Add(targetKey))
+            {
+                this.AddSkippedDeletionChange(
+                    result,
+                    target.EntityType,
+                    target.Id,
+                    $"Suppression {target.EntityType} '{target.Id}' refusée : la cible apparaît plusieurs fois dans le lot.");
+                continue;
+            }
+
             resolvedDeletions.Add(new ParkGraphResolvedDeletion(request, target));
+        }
+
+        if (result.Errors.Count > 0 || resolvedDeletions.Count != requests.Count)
+        {
+            return seoChanges;
         }
 
         foreach (ParkGraphResolvedDeletion deletion in resolvedDeletions)
@@ -58,6 +75,7 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 change.ChangeType = "Skipped";
                 result.Errors.Add($"Suppression {target.EntityType} '{target.Id}' impossible : l'élément n'a pas été supprimé.");
+                break;
             }
         }
 
@@ -183,6 +201,20 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         if (target.Image is not null)
         {
+            if (!string.IsNullOrWhiteSpace(target.Image.Path))
+            {
+                if (this.imageBinaryStorage is null)
+                {
+                    return false;
+                }
+
+                bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(target.Image.Path, cancellationToken);
+                if (!binaryDeleted)
+                {
+                    return false;
+                }
+            }
+
             bool deleted = await this.imageRepository.DeleteAsync(target.Image.Id, cancellationToken);
             if (deleted)
             {

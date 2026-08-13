@@ -53,6 +53,7 @@ public sealed partial class ParkGraphUpsertProcessor
         IPublicSeoUpdateNotifier publicSeoUpdateNotifier,
         IMeasurementConversionService measurementConversionService,
         IParkPricingRepository parkPricingRepository,
+        IImageBinaryStorage imageBinaryStorage,
         IParkOpeningHoursRepository? parkOpeningHoursRepository = null,
         ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
         ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
@@ -77,7 +78,8 @@ public sealed partial class ParkGraphUpsertProcessor
             parkOpeningHoursCoverageSegmentBuilder,
             historyEventRepository,
             standaloneAttractionRepository,
-            socialPublicationService)
+            socialPublicationService,
+            imageBinaryStorage)
     {
         this.parkPricingRepository = parkPricingRepository;
     }
