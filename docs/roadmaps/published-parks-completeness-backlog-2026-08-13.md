@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **112 parcs** : 47 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **111 parcs** : 46 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,12 +17,11 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (47)
+## Priorité 1 — niveau `Publishable` (46)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 75 | `Publishable` | Baby Luna Park | IT | `Operating` | `Local` | 68/91 | `2652601b-d99d-4dd4-82fa-ac26f1a15cb7` |
-| 78 | `Publishable` | Atapark | TR | `Operating` | `Regional` | 69/88 | `41685c56-910d-4577-984c-8a3399e11457` |
 | 78 | `Publishable` | Bad Kleinkirchheimer Bergbahnen | AT | `Operating` | `International` | 76/97 | `fbc42394-2f76-4526-826b-f877d1182155` |
 | 78 | `Publishable` | BLVD World | SA | `Operating` | `International` | 77/99 | `5bdbd8f7-bc0f-445e-bb33-01d35e2571b1` |
 | 78 | `Publishable` | Boudewijn Seapark | BE | `Operating` | `National` | 78/100 | `ab37a8a5-e579-4908-a733-d7266eee53f7` |
