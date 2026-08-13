@@ -399,8 +399,8 @@ function Assert-ParkDataDeletionRequest {
     }
 
     $entries = @($supprProperty.Value)
-    if ($entries.Count -lt 1 -or $entries.Count -gt 100) {
-        throw 'A controlled deletion must contain between 1 and 100 explicit suppr entries.'
+    if ($entries.Count -ne 1) {
+        throw 'A controlled deletion must contain exactly one explicit suppr entry so a failure cannot partially apply a multi-target lot.'
     }
 
     $allowedEntityTypes = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
