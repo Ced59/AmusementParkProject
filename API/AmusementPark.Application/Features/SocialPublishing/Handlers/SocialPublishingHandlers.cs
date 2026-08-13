@@ -62,6 +62,42 @@ public sealed class RetrySocialPublicationCommandHandler
     }
 }
 
+public sealed class RetryParkAnnouncementPublicationCommandHandler
+    : ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>
+{
+    private readonly ISocialPublicationService service;
+
+    public RetryParkAnnouncementPublicationCommandHandler(ISocialPublicationService service)
+    {
+        this.service = service;
+    }
+
+    public async Task<ApplicationResult<SocialPublication>> HandleAsync(
+        RetryParkAnnouncementPublicationCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        SocialPublication? publication = await this.service.GetParkAnnouncementAsync(
+            command.ParkId,
+            cancellationToken);
+        bool isRequestedParkAnnouncement = publication is not null
+            && string.Equals(publication.Id, command.PublicationId, StringComparison.OrdinalIgnoreCase)
+            && publication.Network == SocialNetwork.Facebook
+            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
+            && string.Equals(publication.SourceEntityId, command.ParkId, StringComparison.OrdinalIgnoreCase);
+        if (!isRequestedParkAnnouncement)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationNotFound(command.PublicationId));
+        }
+
+        return await this.service.RetryAsync(
+            publication!.Id,
+            command.RequestedByUserId,
+            cancellationToken);
+    }
+}
+
 public sealed class UpdateSocialPublicationCommandHandler
     : ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>>
 {

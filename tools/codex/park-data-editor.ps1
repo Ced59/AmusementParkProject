@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -54,6 +54,8 @@ param(
     [string]$OwnerId,
 
     [string]$ImageId,
+
+    [string]$PublicationId,
 
     [string]$Url,
 
@@ -1039,6 +1041,17 @@ switch ($Action) {
                 message = $publicationMessage
                 previewImageId = $previewImageId
             }
+    }
+    'RetryFacebookPublication' {
+        if ([string]::IsNullOrWhiteSpace($ParkId) -or [string]::IsNullOrWhiteSpace($PublicationId)) {
+            throw 'ParkId and PublicationId are required for RetryFacebookPublication.'
+        }
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        Invoke-ParkDataEditorJsonApi `
+            -Method POST `
+            -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId.Trim()))/social-preview/publications/$([Uri]::EscapeDataString($PublicationId.Trim()))/retry" `
+            -Body @{}
     }
     'RevokeCurrent' {
         Invoke-ParkDataEditorJsonApi -Method DELETE -RelativePath 'park-data-editor/tokens/current' -Body $null | Out-Null

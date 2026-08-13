@@ -57,7 +57,8 @@ La commande de reprise d’un parc visible du backlog autorise explicitement la 
 4. résoudre le brouillon Facebook de la page canonique du parc avec `ResolveFacebookPublication` ;
 5. si `hasPublishedParkAnnouncement` vaut `true`, conserver la publication existante et ne rien republier ;
 6. si aucun historique d’annonce n’existe, appeler `PublishFacebook` sans `Message` et sans `ImageId` afin d’utiliser le texte bilingue par défaut et les règles Open Graph courantes ; pour ce cas exact, le serveur utilise la clé idempotente du parc et ne publie pas deux fois ;
-7. si un historique existe avec un statut autre que `Published`, ne pas créer un doublon manuel : conserver la ligne du backlog et rapporter le statut à corriger.
+7. si l’annonce automatique existe avec le statut `Failed`, relever son identifiant depuis la réponse de publication ou de résolution, puis appeler `RetryFacebookPublication` avec l’identifiant exact du parc et de cette publication ; cette commande relance le même enregistrement et refuse une publication qui n’est pas l’annonce automatique de ce parc ;
+8. après la relance, résoudre de nouveau le brouillon et exiger `hasPublishedParkAnnouncement: true` et `parkAnnouncementStatus: Published` ; si la relance échoue ou si un autre statut est présent, ne pas rappeler `PublishFacebook`, ne pas créer de doublon manuel, conserver la ligne du backlog et rapporter le blocage.
 
 Cette autorisation Facebook est limitée au parc visible traité depuis ce backlog. Elle ne s’étend ni à ses parkItems, ni aux articles, ni aux commandes de complétude ordinaires.
 
