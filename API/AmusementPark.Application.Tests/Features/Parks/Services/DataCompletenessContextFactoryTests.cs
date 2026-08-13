@@ -164,6 +164,28 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.True(projected.HasPublicSeoSignals);
         Assert.False(projected.HasDocumentedRemainingDebt);
 
+        park.AdminReviewStatus = AdminReviewStatus.NotRelevant;
+        IReadOnlyDictionary<string, ParkDataCompletenessContext> notRelevantContexts =
+            await DataCompletenessContextFactory.BuildParkContextsAsync(
+                new[] { park },
+                visibilityCounts,
+                openingHours,
+                new ParkOpeningHoursAdminStatusResolverAccessor(static _ => ParkOpeningHoursAdminStatus.NotConfigured),
+                parkItemRepository.Object,
+                null,
+                imageRepository.Object,
+                historyEventRepository.Object,
+                CancellationToken.None,
+                projectForPublication: true);
+
+        ParkDataCompletenessContext notRelevant = notRelevantContexts["park-1"];
+        Assert.False(notRelevant.ProjectForPublication);
+        Assert.Equal(0, notRelevant.ParkPublishedImageCount);
+        Assert.Equal(0, notRelevant.ParkItemPublishedImageCount);
+        Assert.Equal(0, notRelevant.PublishedArticleCount);
+        Assert.False(notRelevant.HasPublicSeoSignals);
+        Assert.True(notRelevant.HasDocumentedRemainingDebt);
+
         parkItemRepository.VerifyAll();
         imageRepository.VerifyAll();
         historyEventRepository.VerifyAll();

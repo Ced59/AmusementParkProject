@@ -68,6 +68,8 @@ internal static class DataCompletenessContextFactory
             }
 
             string parkId = park.Id.Trim();
+            bool projectCurrentParkForPublication = projectForPublication
+                && park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
             List<ParkItem> currentParkItems = parkItemsByParkId.GetValueOrDefault(parkId) ?? new List<ParkItem>();
             List<ParkZone> currentZones = zonesByParkId.GetValueOrDefault(parkId) ?? new List<ParkZone>();
             List<Image> currentParkImages = parkImagesByParkId.GetValueOrDefault(parkId) ?? new List<Image>();
@@ -86,16 +88,16 @@ internal static class DataCompletenessContextFactory
                     ? Enumerable.Empty<Image>()
                     : parkItemImagesByItemId.GetValueOrDefault(item.Id.Trim()) ?? new List<Image>())
                 .ToList();
-            IReadOnlyCollection<Image> scoreParkImages = projectForPublication
+            IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
                 ? currentParkImages
                 : currentParkImages.Where(static image => image.IsPublished).ToList();
-            IReadOnlyCollection<Image> scoreParkItemImages = projectForPublication
+            IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
                 ? currentParkItemImages
                 : currentParkItemImages.Where(static image => image.IsPublished).ToList();
 
             ParkDataCompletenessContext context = new ParkDataCompletenessContext
             {
-                ProjectForPublication = projectForPublication,
+                ProjectForPublication = projectCurrentParkForPublication,
                 ParkItemsTotalCount = visibilityCounts?.TotalCount ?? currentParkItems.Count,
                 ParkItemsVisibleCount = visibilityCounts?.VisibleCount ?? currentParkItems.Count(static item => item.IsVisible),
                 DistinctParkItemCategoryCount = currentCategoryCounts.Count(static count => count.Value > 0),
@@ -125,18 +127,18 @@ internal static class DataCompletenessContextFactory
                 ParkHistoryEventCount = currentParkHistory.Count,
                 MajorHistoryEventCount = currentParkHistory.Count(static historyEvent => historyEvent.IsMajor),
                 ParkItemHistoryEventCount = currentParkItemHistory.Count,
-                PublishedArticleCount = currentParkHistory.Count(historyEvent => HasPublishedArticle(historyEvent, projectForPublication)),
-                StructuredArticleCount = currentParkHistory.Count(historyEvent => HasStructuredArticle(historyEvent, projectForPublication)),
+                PublishedArticleCount = currentParkHistory.Count(historyEvent => HasPublishedArticle(historyEvent, projectCurrentParkForPublication)),
+                StructuredArticleCount = currentParkHistory.Count(historyEvent => HasStructuredArticle(historyEvent, projectCurrentParkForPublication)),
                 LocalizedHistoryContentCount = currentParkHistory.Count(HasLocalizedHistoryContent),
                 HistoryEventsWithSourcesCount = currentParkHistory.Count(HasSources),
                 HistoryEventsWithMediaCount = currentParkHistory.Count(HasMedia),
                 ImportantReferencesWithDescriptionsCount = CountReferenceDescriptions(park, currentParkItems),
                 ReferencesWithUsefulDetailsCount = CountReferenceDetails(park, currentParkItems),
                 HasCriticalSources = HasCriticalSource(park, currentParkHistory),
-                HasDocumentedRemainingDebt = projectForPublication
+                HasDocumentedRemainingDebt = projectCurrentParkForPublication
                     ? false
                     : park.AdminReviewStatus != AdminReviewStatus.Validated,
-                HasPublicSeoSignals = HasParkSeoSignals(park, projectForPublication),
+                HasPublicSeoSignals = HasParkSeoSignals(park, projectCurrentParkForPublication),
             };
             contextsByParkId[parkId] = context;
         }
