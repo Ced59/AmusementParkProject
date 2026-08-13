@@ -1,6 +1,20 @@
 {
-  "version": "4.1.40",
+  "version": "4.1.41",
   "history": [
+    {
+      "version": "4.1.41",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Le suivi des données des parcs publiés a été actualisé.",
+        "en": "Published park data tracking has been updated.",
+        "de": "Die Datenübersicht veröffentlichter Parks wurde aktualisiert.",
+        "nl": "Het gegevensoverzicht van gepubliceerde parken is bijgewerkt.",
+        "it": "Il monitoraggio dei dati dei parchi pubblicati è stato aggiornato.",
+        "es": "Se ha actualizado el seguimiento de datos de los parques publicados.",
+        "pl": "Zaktualizowano monitorowanie danych opublikowanych parków.",
+        "pt": "O acompanhamento dos dados dos parques publicados foi atualizado."
+      }
+    },
     {
       "version": "4.1.40",
       "releasedAt": "2026-08-13",
