@@ -33,5 +33,10 @@ m('''replace(path,
 replace(path,
 "  parkingOffers: ParkParkingPriceOffer[];\\n}",
 "  parkingOffers: ParkParkingPriceOffer[];\\n  creditOffers?: ParkCreditOffer[];\\n}")''')
+m('''replace(path,
+"      parkingOffers: [],\\n    };",
+"      parkingOffers: [],\\n      creditOffers: [],\\n    };")''','''replace(path,
+"      parkingOffers: []\\n    };",
+"      parkingOffers: [],\\n      creditOffers: []\\n    };")''')
 p.write_text(t,encoding='utf-8')
 print('bootstrap adjusted')
