@@ -39,6 +39,10 @@ m('''replace(path,
 "      parkingOffers: []\\n    };",
 "      parkingOffers: [],\\n      creditOffers: []\\n    };")''')
 m('''write("API/AmusementPark.Core.Tests/Domain/Parks/ParkPricingCreditOffersAvailabilityTests.cs", """using AmusementPark.Core.Domain.Parks;''','''write("API/AmusementPark.Core.Tests/Domain/Parks/ParkPricingCreditOffersAvailabilityTests.cs", """using Xunit;\n\nusing AmusementPark.Core.Domain.Parks;''')
-m('''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using AmusementPark.Application.Features.ParkPricing.Services;''','''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using Xunit;\n\nusing AmusementPark.Application.Features.ParkPricing.Services;''')
+m('''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using AmusementPark.Application.Features.ParkPricing.Services;''','''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using Xunit;\n\nusing ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;\n\nusing AmusementPark.Application.Features.ParkPricing.Services;''')
+m('''        ParkPricing pricing = CreatePricing();''','''        ParkPricingEntity pricing = CreatePricing();''')
+m('''        ParkPricing pricing = CreatePricing();''','''        ParkPricingEntity pricing = CreatePricing();''')
+m('''    private static ParkPricing CreatePricing() => new()''','''    private static ParkPricingEntity CreatePricing() => new()''')
+m('''[channel]: Number.isFinite(parsed) ? parsed : null''','''[channel]: parsed !== null && Number.isFinite(parsed) ? parsed : null''')
 p.write_text(t,encoding='utf-8')
 print('bootstrap adjusted')
