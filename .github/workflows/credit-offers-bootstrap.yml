@@ -53,6 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           git rm .github/workflows/credit-offers-bootstrap.yml tools/credit-offers-bootstrap.py tools/credit-offers-bootstrap-fix.py
+          find FRONT/AmusementPark/src/assets/i18n/source -name 'zz-park-pricing-credit-offers.json' -type f -print0 | xargs -0 sed -i 's/[[:space:]]\+$//'
           git add -A
           git diff --cached --check
           git config user.name "Ced"
