@@ -38,5 +38,7 @@ m('''replace(path,
 "      parkingOffers: [],\\n      creditOffers: [],\\n    };")''','''replace(path,
 "      parkingOffers: []\\n    };",
 "      parkingOffers: [],\\n      creditOffers: []\\n    };")''')
+m('''write("API/AmusementPark.Core.Tests/Domain/Parks/ParkPricingCreditOffersAvailabilityTests.cs", """using AmusementPark.Core.Domain.Parks;''','''write("API/AmusementPark.Core.Tests/Domain/Parks/ParkPricingCreditOffersAvailabilityTests.cs", """using Xunit;\n\nusing AmusementPark.Core.Domain.Parks;''')
+m('''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using AmusementPark.Application.Features.ParkPricing.Services;''','''write("API/AmusementPark.Application.Tests/Features/ParkPricing/Services/ParkPricingCreditOffersNormalizerTests.cs", """using Xunit;\n\nusing AmusementPark.Application.Features.ParkPricing.Services;''')
 p.write_text(t,encoding='utf-8')
 print('bootstrap adjusted')
