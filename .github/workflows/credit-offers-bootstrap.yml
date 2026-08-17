@@ -18,51 +18,41 @@ jobs:
         with:
           ref: feat/park-pricing-credit-offers
           fetch-depth: 0
-
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
           cache-dependency-path: FRONT/AmusementPark/package-lock.json
-
       - name: Implement credit offers
-        run: python3 tools/credit-offers-bootstrap.py
-
+        run: |
+          python3 tools/credit-offers-bootstrap-fix.py
+          python3 tools/credit-offers-bootstrap.py
       - name: Check diff whitespace
         run: git diff --check
-
       - name: Test .NET projects
         shell: bash
         run: |
           set -euo pipefail
-          for project in API/AmusementPark.Core.Tests/AmusementPark.Core.Tests.csproj \
-                         API/AmusementPark.Application.Tests/AmusementPark.Application.Tests.csproj \
-                         API/AmusementPark.Infrastructure.Tests/AmusementPark.Infrastructure.Tests.csproj \
-                         API/AmusementPark.WebAPI.Tests/AmusementPark.WebAPI.Tests.csproj; do
+          for project in API/AmusementPark.Core.Tests/AmusementPark.Core.Tests.csproj API/AmusementPark.Application.Tests/AmusementPark.Application.Tests.csproj API/AmusementPark.Infrastructure.Tests/AmusementPark.Infrastructure.Tests.csproj API/AmusementPark.WebAPI.Tests/AmusementPark.WebAPI.Tests.csproj; do
             dotnet test "$project" --configuration Release --nologo
           done
-
       - name: Install front dependencies
         working-directory: FRONT/AmusementPark
         run: npm ci
-
       - name: Test front
         working-directory: FRONT/AmusementPark
         run: npm run test:ci
-
       - name: Build front
         working-directory: FRONT/AmusementPark
         run: npm run build
-
       - name: Commit implementation
         shell: bash
         run: |
           set -euo pipefail
-          git rm .github/workflows/credit-offers-bootstrap.yml tools/credit-offers-bootstrap.py
+          git rm .github/workflows/credit-offers-bootstrap.yml tools/credit-offers-bootstrap.py tools/credit-offers-bootstrap-fix.py
           git add -A
           git diff --cached --check
           git config user.name "Ced"
