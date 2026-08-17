@@ -142,6 +142,62 @@
             </section>
           }
 
+
+          @if ((pricing.creditOffers?.length ?? 0) > 0) {
+            <section class="park-pricing-section">
+              <header class="park-pricing-section__header">
+                <span class="park-pricing-section__icon"><i class="pi pi-wallet" aria-hidden="true"></i></span>
+                <div>
+                  <h2>{{ 'parkPricingCredits.title' | translate }}</h2>
+                  <p>{{ 'parkPricingCredits.subtitle' | translate }}</p>
+                </div>
+              </header>
+
+              <div class="park-pricing-grid">
+                @for (offer of pricing.creditOffers ?? []; track offer.id || (offer.unitCode + ':' + offer.quantity)) {
+                  <article class="park-price-card">
+                    <header class="park-price-card__header">
+                      <div>
+                        <h3>{{ localizedText(offer.labels, offer.quantity + ' ' + offer.unitCode) }}</h3>
+                        <span class="park-price-card__audience">{{ 'parkPricingCredits.quantity' | translate:{ quantity: offer.quantity, unit: offer.unitCode } }}</span>
+                      </div>
+                    </header>
+
+                    <div class="park-price-card__prices">
+                      @if (formatCreditPrice(offer.prices.onlinePrice, pricing.currencyCode); as price) {
+                        <div class="park-price-channel"><span>{{ 'parkPricing.channels.online' | translate }}</span><strong>{{ price }}</strong></div>
+                      }
+                      @if (formatCreditPrice(offer.prices.gatePrice, pricing.currencyCode); as price) {
+                        <div class="park-price-channel"><span>{{ 'parkPricing.channels.gate' | translate }}</span><strong>{{ price }}</strong></div>
+                      }
+                    </div>
+
+                    @if (offer.validFrom || offer.validTo) {
+                      <p class="park-price-card__validity">
+                        <i class="pi pi-calendar" aria-hidden="true"></i>
+                        @if (offer.validFrom && offer.validTo) {
+                          {{ 'parkPricing.validity.range' | translate:{ from: formatDate(offer.validFrom), to: formatDate(offer.validTo) } }}
+                        } @else if (offer.validFrom) {
+                          {{ 'parkPricing.validity.from' | translate:{ date: formatDate(offer.validFrom) } }}
+                        } @else if (offer.validTo) {
+                          {{ 'parkPricing.validity.until' | translate:{ date: formatDate(offer.validTo) } }}
+                        }
+                      </p>
+                    }
+
+                    @if (localizedText(offer.conditions); as conditions) {
+                      <div class="park-price-card__conditions"><strong>{{ 'parkPricing.fields.conditions' | translate }}</strong><p>{{ conditions }}</p></div>
+                    }
+
+                    @if (offer.purchaseUrl) {
+                      <a class="park-price-card__buy" [href]="offer.purchaseUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener"><span>{{ 'parkPricing.actions.buyOffer' | translate }}</span><i class="pi pi-external-link" aria-hidden="true"></i></a>
+                    }
+                  </article>
+                }
+              </div>
+            </section>
+          }
+
           @if (pricing.annualPasses.length > 0) {
             <section class="park-pricing-section">
               <header class="park-pricing-section__header">

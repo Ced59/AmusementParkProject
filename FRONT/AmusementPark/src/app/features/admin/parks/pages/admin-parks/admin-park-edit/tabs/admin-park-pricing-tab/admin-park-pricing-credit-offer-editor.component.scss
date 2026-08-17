@@ -1,0 +1,39 @@
+.credit-offer-editor {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--surface-border, #dfe3e8);
+  border-radius: .75rem;
+}
+
+.credit-offer-editor > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.credit-offer-editor > header div {
+  display: grid;
+  gap: .2rem;
+}
+
+.credit-offer-editor__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .75rem;
+}
+
+.credit-offer-editor__fields label,
+.credit-offer-editor__wide {
+  display: grid;
+  gap: .35rem;
+}
+
+.credit-offer-editor__wide {
+  grid-column: 1 / -1;
+}
+
+input {
+  width: 100%;
+}

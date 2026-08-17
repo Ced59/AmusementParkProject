@@ -5,6 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   ParkAdmissionPriceOffer,
   ParkAnnualPassOffer,
+  ParkCreditOffer,
   ParkParkingPriceOffer,
   ParkPricing,
   ParkPricingSnapshot,
@@ -20,6 +21,7 @@ import {
   AdminParkPricingOfferEditorComponent,
 } from './admin-park-pricing-offer-editor.component';
 import { AdminParkPricingSnapshotEditorComponent } from './admin-park-pricing-snapshot-editor.component';
+import { AdminParkPricingCreditOfferEditorComponent } from './admin-park-pricing-credit-offer-editor.component';
 
 type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
 
@@ -30,6 +32,7 @@ type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AdminParkPricingOfferEditorComponent,
+    AdminParkPricingCreditOfferEditorComponent,
     AdminParkPricingSnapshotEditorComponent,
     ButtonDirective,
     FormsModule,
@@ -52,6 +55,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
     annualPasses: [],
     parkingOffers: [],
   };
+  private readonly creditOfferClientKeys: string[] = [];
   private offerClientKeySequence: number = 0;
 
   protected get loading(): boolean {
@@ -140,6 +144,65 @@ export class AdminParkPricingTabComponent implements OnChanges {
     };
     this.offerClientKeys.admissionOffers.push(this.nextOfferClientKey('admissionOffers'));
     this.pricing.set({ ...current, admissionOffers: [...current.admissionOffers, offer] });
+  }
+
+  protected addCreditOffer(): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const offers: ParkCreditOffer[] = current.creditOffers ?? [];
+    const offer: ParkCreditOffer = {
+      unitCode: 'token',
+      quantity: 1,
+      labels: [],
+      prices: { onlinePrice: null, gatePrice: null },
+      validFrom: null,
+      validTo: null,
+      purchaseUrl: null,
+      conditions: [],
+      sortOrder: this.nextSortOrder(offers)
+    };
+    this.creditOfferClientKeys.push(this.nextOfferClientKey('creditOffers'));
+    this.pricing.set({ ...current, creditOffers: [...offers, offer] });
+  }
+
+  protected creditOfferTrackKey(index: number): string {
+    let key: string | undefined = this.creditOfferClientKeys[index];
+    if (!key) {
+      key = this.nextOfferClientKey('creditOffers');
+      this.creditOfferClientKeys[index] = key;
+    }
+
+    return key;
+  }
+
+  protected updateCreditOffer(index: number, offer: ParkCreditOffer): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    this.pricing.set({
+      ...current,
+      creditOffers: (current.creditOffers ?? []).map(
+        (item: ParkCreditOffer, itemIndex: number): ParkCreditOffer => itemIndex === index ? offer : item)
+    });
+  }
+
+  protected removeCreditOffer(index: number): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    this.creditOfferClientKeys.splice(index, 1);
+    this.pricing.set({
+      ...current,
+      creditOffers: (current.creditOffers ?? []).filter(
+        (_item: ParkCreditOffer, itemIndex: number): boolean => itemIndex !== index)
+    });
   }
 
   protected addAnnualPass(): void {
@@ -277,7 +340,8 @@ export class AdminParkPricingTabComponent implements OnChanges {
       lastVerifiedAtUtc: null,
       admissionOffers: [],
       annualPasses: [],
-      parkingOffers: []
+      parkingOffers: [],
+      creditOffers: []
     };
 
     this.pricing.set({ ...current, historicalSnapshots: [snapshot, ...snapshots] });
@@ -363,6 +427,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       const loadedPricing: ParkPricing = await this.editStateFacade.loadPricing(parkId);
       const pricing: ParkPricing = {
         ...loadedPricing,
+        creditOffers: loadedPricing.creditOffers ?? [],
         historicalSnapshots: loadedPricing.historicalSnapshots ?? []
       };
       this.resetOfferClientKeys(pricing);
@@ -395,6 +460,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       admissionOffers: [],
       annualPasses: [],
       parkingOffers: [],
+      creditOffers: [],
       historicalSnapshots: [],
     };
   }
@@ -424,9 +490,11 @@ export class AdminParkPricingTabComponent implements OnChanges {
       .map((): string => this.nextOfferClientKey('annualPasses'));
     this.offerClientKeys.parkingOffers = (pricing?.parkingOffers ?? [])
       .map((): string => this.nextOfferClientKey('parkingOffers'));
+    this.creditOfferClientKeys.splice(0, this.creditOfferClientKeys.length,
+      ...(pricing?.creditOffers ?? []).map((): string => this.nextOfferClientKey('creditOffers')));
   }
 
-  private nextOfferClientKey(collection: PricingCollection): string {
+  private nextOfferClientKey(collection: PricingCollection | 'creditOffers'): string {
     this.offerClientKeySequence += 1;
     return `${collection}-${this.offerClientKeySequence}`;
   }

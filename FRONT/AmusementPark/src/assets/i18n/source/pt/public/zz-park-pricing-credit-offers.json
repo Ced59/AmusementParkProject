@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Fichas e créditos",
+    "subtitle": "Lotes pré-pagos utilizados para aceder às atrações",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Fichas / créditos"
+  }
+}

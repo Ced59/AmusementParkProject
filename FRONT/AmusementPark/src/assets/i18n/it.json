@@ -2355,6 +2355,19 @@
       "savedDetail": "Il listino prezzi del parco è stato aggiornato."
     }
   },
+  "adminParkPricingCredits": {
+    "title": "Gettoni e crediti",
+    "hint": "Configura i pacchetti di gettoni, crediti o unità prepagate venduti dal parco.",
+    "add": "Aggiungi pacchetto",
+    "empty": "Nessun pacchetto di gettoni o crediti.",
+    "offerKind": "Pacchetto gettoni / crediti",
+    "fields": {
+      "unitCode": "Codice unità",
+      "quantity": "Quantità",
+      "onlinePrice": "Prezzo online",
+      "gatePrice": "Prezzo in cassa"
+    }
+  },
   "auth": {
     "login": {
       "title": "Autenticazione classica",
@@ -4669,5 +4682,11 @@
       "minor": "Tappa",
       "patch": "Aggiornamento"
     }
+  },
+  "parkPricingCredits": {
+    "title": "Gettoni e crediti",
+    "subtitle": "Pacchetti prepagati utilizzati per accedere alle attrazioni",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Gettoni / crediti"
   }
 }

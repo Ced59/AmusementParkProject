@@ -1,6 +1,7 @@
 import {
   ParkAdmissionPriceOffer,
   ParkAnnualPassOffer,
+  ParkCreditOffer,
   ParkParkingPriceOffer,
   ParkPriceValue,
   ParkPricing,
@@ -15,7 +16,7 @@ export interface ParkPriceFormattingLabels {
   dynamic: string;
 }
 
-export type ParkPricingHistoryOfferKind = 'admission' | 'annualPass' | 'parking';
+export type ParkPricingHistoryOfferKind = 'admission' | 'credit' | 'annualPass' | 'parking';
 export type ParkPricingHistoryChannel = 'onlinePrice' | 'gatePrice';
 
 export interface ParkPricingHistoryPoint {
@@ -125,6 +126,7 @@ export function buildParkPricingHistorySeries(
       admissionOffers: pricing.admissionOffers,
       annualPasses: pricing.annualPasses,
       parkingOffers: pricing.parkingOffers,
+      creditOffers: pricing.creditOffers ?? [],
       isCurrent: true
     }
   ].sort((left, right): number => right.year - left.year);
@@ -132,6 +134,7 @@ export function buildParkPricingHistorySeries(
 
   for (const snapshot of snapshots) {
     appendAdmissionHistory(snapshot, language, pointsBySeries);
+    appendCreditHistory(snapshot, language, pointsBySeries);
     appendAnnualPassHistory(snapshot, language, pointsBySeries);
     appendParkingHistory(snapshot, language, pointsBySeries);
   }
@@ -177,6 +180,51 @@ function appendAdmissionHistory(
       offer,
       seriesByKey);
   }
+}
+
+function appendCreditHistory(
+  snapshot: ParkPricingSnapshot,
+  language: string,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  for (const offer of snapshot.creditOffers ?? []) {
+    const code: string = `${offer.unitCode}:${offer.quantity}`;
+    appendCreditHistoryPoint(
+      snapshot,
+      code,
+      resolvePricingLocalizedText(offer.labels, language, `${offer.quantity} ${offer.unitCode}`),
+      offer,
+      seriesByKey);
+  }
+}
+
+function appendCreditHistoryPoint(
+  snapshot: ParkPricingSnapshot,
+  code: string,
+  label: string,
+  offer: ParkCreditOffer,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  const key: string = `credit:${code.trim().toLowerCase()}`;
+  const point: ParkPricingHistoryPoint = {
+    year: snapshot.year,
+    currencyCode: snapshot.currencyCode,
+    onlinePrice: fixedCreditPrice(offer.prices.onlinePrice),
+    gatePrice: fixedCreditPrice(offer.prices.gatePrice)
+  };
+  const existing: ParkPricingHistorySeries | undefined = seriesByKey.get(key);
+  if (existing) {
+    if (!existing.points.some((item: ParkPricingHistoryPoint): boolean => item.year === point.year)) {
+      existing.points.push(point);
+    }
+    return;
+  }
+
+  seriesByKey.set(key, { key, code, kind: 'credit', label, points: [point] });
+}
+
+function fixedCreditPrice(amount: number | null | undefined): ParkPriceValue | null {
+  return amount === null || amount === undefined ? null : { mode: 'Fixed', amount };
 }
 
 function appendAnnualPassHistory(

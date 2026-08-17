@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Token und Guthaben",
+    "hint": "Konfiguriert Token-, Guthaben- oder Prepaid-Pakete des Parks.",
+    "add": "Paket hinzufügen",
+    "empty": "Keine Token- oder Guthabenpakete.",
+    "offerKind": "Token-/Guthabenpaket",
+    "fields": {
+      "unitCode": "Einheitencode",
+      "quantity": "Menge",
+      "onlinePrice": "Onlinepreis",
+      "gatePrice": "Kassenpreis"
+    }
+  }
+}

@@ -2355,6 +2355,19 @@
       "savedDetail": "Die Preisliste des Parks wurde aktualisiert."
     }
   },
+  "adminParkPricingCredits": {
+    "title": "Token und Guthaben",
+    "hint": "Konfiguriert Token-, Guthaben- oder Prepaid-Pakete des Parks.",
+    "add": "Paket hinzufügen",
+    "empty": "Keine Token- oder Guthabenpakete.",
+    "offerKind": "Token-/Guthabenpaket",
+    "fields": {
+      "unitCode": "Einheitencode",
+      "quantity": "Menge",
+      "onlinePrice": "Onlinepreis",
+      "gatePrice": "Kassenpreis"
+    }
+  },
   "auth": {
     "login": {
       "title": "Standard-Authentifizierung",
@@ -4669,5 +4682,11 @@
       "minor": "Etappe",
       "patch": "Update"
     }
+  },
+  "parkPricingCredits": {
+    "title": "Token und Guthaben",
+    "subtitle": "Prepaid-Pakete für die Nutzung von Attraktionen",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Token / Guthaben"
   }
 }

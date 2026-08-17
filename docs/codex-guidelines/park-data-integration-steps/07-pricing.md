@@ -52,6 +52,9 @@ Rechercher séparément :
 - `admissionOffers` : billets d’entrée par catégorie réellement proposée, par exemple adulte, enfant, jeune ou senior ;
 - `annualPasses` : pass annuels ou abonnements comparables ;
 - `parkingOffers` : voiture, moto, camping-car ou autre offre de stationnement officiellement tarifée.
+- `creditOffers` : lots de jetons, crédits, points ou unités prépayées vendus par le parc pour accéder aux attractions.
+
+Pour `creditOffers`, conserver explicitement `unitCode` (code stable en minuscules), `quantity` (entier strictement positif), des `labels` localisés, et `prices.onlinePrice` et/ou `prices.gatePrice` sous forme de montants décimaux. Ne jamais confondre la quantité de jetons/crédits avec leur prix. Un même `unitCode` peut exister dans plusieurs quantités, mais le couple `unitCode` + `quantity` doit être unique dans une grille.
 
 Chaque offre comporte :
 
@@ -90,7 +93,7 @@ Lorsque des tarifs antérieurs fiables sont disponibles, les conserver dans `his
 - un `year` unique compris entre 1900 et 9999 ;
 - son propre `currencyCode`, même si la devise a changé depuis ;
 - sa `sourceUrl`, sa date `lastVerifiedAtUtc` et ses éventuelles `notes` localisées ;
-- ses propres `admissionOffers`, `annualPasses` et `parkingOffers`, avec le même contrat que la grille actuelle.
+- ses propres `admissionOffers`, `annualPasses`, `parkingOffers` et `creditOffers`, avec le même contrat que la grille actuelle.
 
 Pour qu’un produit alimente une courbe cohérente, conserver exactement le même `code` d’une année à l’autre lorsque l’offre reste fonctionnellement comparable. Un changement de nom commercial ne justifie pas à lui seul un nouveau code. En revanche, ne fusionner sous un même code ni des catégories différentes, ni un pass dont les droits ont matériellement changé, ni deux produits seulement ressemblants.
 
@@ -162,6 +165,25 @@ Section principale : `pricing`.
     ],
     "annualPasses": [],
     "parkingOffers": [],
+    "creditOffers": [
+      {
+        "unitCode": "token",
+        "quantity": 10,
+        "labels": [
+          { "languageCode": "fr", "value": "10 jetons" },
+          { "languageCode": "en", "value": "10 tokens" },
+          { "languageCode": "es", "value": "10 fichas" },
+          { "languageCode": "de", "value": "10 Token" },
+          { "languageCode": "it", "value": "10 gettoni" },
+          { "languageCode": "nl", "value": "10 tokens" },
+          { "languageCode": "pt", "value": "10 fichas" },
+          { "languageCode": "pl", "value": "10 żetonów" }
+        ],
+        "prices": { "gatePrice": 2500 },
+        "conditions": [],
+        "sortOrder": 1
+      }
+    ],
     "historicalSnapshots": [
       {
         "year": 2025,
@@ -215,6 +237,7 @@ Sont bloquants :
 - un `Range` sans ses deux bornes ou avec une plage inversée ;
 - un `Dynamic` dont les deux bornes sont inversées ;
 - une période de validité inversée ;
+- un `creditOffers.quantity` nul ou négatif, un `unitCode` vide, un couple `unitCode` + `quantity` dupliqué, un lot sans prix ou avec un montant négatif ;
 - une structure de tableau, de date ou de prix refusée par le Preview.
 - plus de 25 instantanés historiques, une année invalide ou dupliquée, une devise historique invalide ou un instantané sans offre tarifée ;
 

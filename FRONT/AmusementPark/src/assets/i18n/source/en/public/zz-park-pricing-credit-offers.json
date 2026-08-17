@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Tokens and credits",
+    "subtitle": "Prepaid bundles used to access attractions",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Tokens / credits"
+  }
+}

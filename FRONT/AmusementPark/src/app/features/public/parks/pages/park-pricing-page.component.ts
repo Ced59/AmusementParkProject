@@ -128,7 +128,7 @@ export class ParkPricingPageComponent implements OnInit {
         parkName: data.park.name
       };
       const offerCount: number = data.pricing
-        ? data.pricing.admissionOffers.length + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
+        ? data.pricing.admissionOffers.length + (data.pricing.creditOffers?.length ?? 0) + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
         : 0;
 
       this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
@@ -164,7 +164,7 @@ export class ParkPricingPageComponent implements OnInit {
       )
       .subscribe((data: ParkPricingPageData): void => {
         const offerCount: number = data.pricing
-          ? data.pricing.admissionOffers.length + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
+          ? data.pricing.admissionOffers.length + (data.pricing.creditOffers?.length ?? 0) + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
           : 0;
 
         if (offerCount === 0) {
@@ -192,6 +192,18 @@ export class ParkPricingPageComponent implements OnInit {
     };
 
     return formatParkPrice(value, currencyCode, this.currentLanguage(), labels);
+  }
+
+  protected formatCreditPrice(value: number | null | undefined, currencyCode: string): string | null {
+    if (value === null || value === undefined) {
+      return null;
+    }
+
+    return new Intl.NumberFormat(this.currentLanguage(), {
+      style: 'currency',
+      currency: currencyCode || 'EUR',
+      maximumFractionDigits: 2
+    }).format(value);
   }
 
   protected modeLabelKey(value: ParkPriceValue): string {
@@ -222,7 +234,9 @@ export class ParkPricingPageComponent implements OnInit {
   }
 
   protected historyKindLabelKey(series: ParkPricingHistorySeries): string {
-    return `parkPricing.history.kinds.${series.kind}`;
+    return series.kind === 'credit'
+      ? 'parkPricingCredits.historyKind'
+      : `parkPricing.history.kinds.${series.kind}`;
   }
 
   protected historyHasSingleCurrency(series: ParkPricingHistorySeries): boolean {

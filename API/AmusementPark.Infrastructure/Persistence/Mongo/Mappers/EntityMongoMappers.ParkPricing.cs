@@ -23,6 +23,7 @@ internal static partial class EntityMongoMappers
             AdmissionOffers = pricing.AdmissionOffers.Select(static offer => offer.ToDocument()).ToList(),
             AnnualPasses = pricing.AnnualPasses.Select(static offer => offer.ToDocument()).ToList(),
             ParkingOffers = pricing.ParkingOffers.Select(static offer => offer.ToDocument()).ToList(),
+            CreditOffers = pricing.CreditOffers.Select(static offer => offer.ToDocument()).ToList(),
             HistoricalSnapshots = pricing.HistoricalSnapshots.Select(static snapshot => snapshot.ToDocument()).ToList(),
         };
     }
@@ -43,6 +44,7 @@ internal static partial class EntityMongoMappers
             AdmissionOffers = document.AdmissionOffers.Select(static offer => offer.ToDomain()).ToList(),
             AnnualPasses = document.AnnualPasses.Select(static offer => offer.ToDomain()).ToList(),
             ParkingOffers = document.ParkingOffers.Select(static offer => offer.ToDomain()).ToList(),
+            CreditOffers = document.CreditOffers.Select(static offer => offer.ToDomain()).ToList(),
             HistoricalSnapshots = document.HistoricalSnapshots.Select(static snapshot => snapshot.ToDomain()).ToList(),
         };
     }
@@ -60,6 +62,7 @@ internal static partial class EntityMongoMappers
             AdmissionOffers = snapshot.AdmissionOffers.Select(static offer => offer.ToDocument()).ToList(),
             AnnualPasses = snapshot.AnnualPasses.Select(static offer => offer.ToDocument()).ToList(),
             ParkingOffers = snapshot.ParkingOffers.Select(static offer => offer.ToDocument()).ToList(),
+            CreditOffers = snapshot.CreditOffers.Select(static offer => offer.ToDocument()).ToList(),
         };
     }
 
@@ -76,6 +79,7 @@ internal static partial class EntityMongoMappers
             AdmissionOffers = document.AdmissionOffers.Select(static offer => offer.ToDomain()).ToList(),
             AnnualPasses = document.AnnualPasses.Select(static offer => offer.ToDomain()).ToList(),
             ParkingOffers = document.ParkingOffers.Select(static offer => offer.ToDomain()).ToList(),
+            CreditOffers = document.CreditOffers.Select(static offer => offer.ToDomain()).ToList(),
         };
     }
 
@@ -175,6 +179,48 @@ internal static partial class EntityMongoMappers
             Labels = CommonMongoMappers.ToDomain(document.Labels),
             OnlinePrice = document.OnlinePrice?.ToDomain(),
             GatePrice = document.GatePrice?.ToDomain(),
+            ValidFrom = ParsePricingDate(document.ValidFrom),
+            ValidTo = ParsePricingDate(document.ValidTo),
+            PurchaseUrl = document.PurchaseUrl,
+            Conditions = CommonMongoMappers.ToDomain(document.Conditions),
+            SortOrder = document.SortOrder,
+        };
+    }
+
+    private static ParkCreditOfferDocument ToDocument(this ParkCreditOffer offer)
+    {
+        return new ParkCreditOfferDocument
+        {
+            Id = string.IsNullOrWhiteSpace(offer.Id) ? Guid.NewGuid().ToString("N") : offer.Id,
+            UnitCode = offer.UnitCode,
+            Quantity = offer.Quantity,
+            Labels = CommonMongoMappers.ToDocuments(offer.Labels),
+            Prices = new ParkCreditOfferPricesDocument
+            {
+                OnlinePrice = offer.Prices.OnlinePrice,
+                GatePrice = offer.Prices.GatePrice,
+            },
+            ValidFrom = FormatPricingDate(offer.ValidFrom),
+            ValidTo = FormatPricingDate(offer.ValidTo),
+            PurchaseUrl = offer.PurchaseUrl,
+            Conditions = CommonMongoMappers.ToDocuments(offer.Conditions),
+            SortOrder = offer.SortOrder,
+        };
+    }
+
+    private static ParkCreditOffer ToDomain(this ParkCreditOfferDocument document)
+    {
+        return new ParkCreditOffer
+        {
+            Id = document.Id,
+            UnitCode = document.UnitCode,
+            Quantity = document.Quantity,
+            Labels = CommonMongoMappers.ToDomain(document.Labels),
+            Prices = new ParkCreditOfferPrices
+            {
+                OnlinePrice = document.Prices?.OnlinePrice,
+                GatePrice = document.Prices?.GatePrice,
+            },
             ValidFrom = ParsePricingDate(document.ValidFrom),
             ValidTo = ParsePricingDate(document.ValidTo),
             PurchaseUrl = document.PurchaseUrl,

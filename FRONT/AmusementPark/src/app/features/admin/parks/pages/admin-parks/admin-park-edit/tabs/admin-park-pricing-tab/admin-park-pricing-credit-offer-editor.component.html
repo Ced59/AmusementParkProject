@@ -1,0 +1,22 @@
+<article class="credit-offer-editor">
+  <header>
+    <div>
+      <span>{{ 'adminParkPricingCredits.offerKind' | translate }}</span>
+      <strong>{{ (offer.labels[0]?.value || (offer.quantity + ' ' + offer.unitCode)) }}</strong>
+    </div>
+    <button appUiButton type="button" class="p-button-sm p-button-danger p-button-text" icon="pi pi-trash" [disabled]="disabled" [label]="'adminParkPricing.actions.removeOffer' | translate" (click)="remove.emit()"></button>
+  </header>
+
+  <div class="credit-offer-editor__fields">
+    <label><span>{{ 'adminParkPricingCredits.fields.unitCode' | translate }}</span><input type="text" [disabled]="disabled" [ngModel]="offer.unitCode" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateUnitCode($event)" /></label>
+    <label><span>{{ 'adminParkPricingCredits.fields.quantity' | translate }}</span><input type="number" min="1" step="1" [disabled]="disabled" [ngModel]="offer.quantity" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateQuantity($event)" /></label>
+    <label><span>{{ 'adminParkPricingCredits.fields.onlinePrice' | translate }}</span><input type="number" min="0" step="0.01" [disabled]="disabled" [ngModel]="offer.prices.onlinePrice" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePrice('onlinePrice', $event)" /></label>
+    <label><span>{{ 'adminParkPricingCredits.fields.gatePrice' | translate }}</span><input type="number" min="0" step="0.01" [disabled]="disabled" [ngModel]="offer.prices.gatePrice" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePrice('gatePrice', $event)" /></label>
+    <label><span>{{ 'adminParkPricing.fields.validFrom' | translate }}</span><input type="date" [disabled]="disabled" [ngModel]="offer.validFrom" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateDate('validFrom', $event)" /></label>
+    <label><span>{{ 'adminParkPricing.fields.validTo' | translate }}</span><input type="date" [disabled]="disabled" [ngModel]="offer.validTo" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateDate('validTo', $event)" /></label>
+    <label><span>{{ 'adminParkPricing.fields.sortOrder' | translate }}</span><input type="number" min="1" [disabled]="disabled" [ngModel]="offer.sortOrder" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateSortOrder($event)" /></label>
+    <label class="credit-offer-editor__wide"><span>{{ 'adminParkPricing.fields.offerPurchaseUrl' | translate }}</span><input type="url" [disabled]="disabled" [ngModel]="offer.purchaseUrl" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePurchaseUrl($event)" /></label>
+    <div class="credit-offer-editor__wide"><span>{{ 'adminParkPricing.fields.labels' | translate }}</span><app-localized-text-input [disabled]="disabled" [ngModel]="offer.labels" [ngModelOptions]="{ standalone: true }" [placeholderKey]="'adminParkPricing.placeholders.localizedValue'" [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate" (ngModelChange)="updateLabels($event)"></app-localized-text-input></div>
+    <div class="credit-offer-editor__wide"><span>{{ 'adminParkPricing.fields.conditions' | translate }}</span><app-localized-text-input [disabled]="disabled" [ngModel]="offer.conditions" [ngModelOptions]="{ standalone: true }" [placeholderKey]="'adminParkPricing.placeholders.conditions'" [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate" (ngModelChange)="updateConditions($event)"></app-localized-text-input></div>
+  </div>
+</article>

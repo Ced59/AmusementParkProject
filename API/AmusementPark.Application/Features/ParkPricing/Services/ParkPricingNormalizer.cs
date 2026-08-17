@@ -11,6 +11,7 @@ public static class ParkPricingNormalizer
     private const int MaximumAdmissionOfferCount = 250;
     private const int MaximumAnnualPassCount = 100;
     private const int MaximumParkingOfferCount = 50;
+    private const int MaximumCreditOfferCount = 100;
     private const int MaximumHistoricalSnapshotCount = 25;
     private const int MinimumHistoricalYear = 1900;
     private static readonly IReadOnlySet<string> Iso4217CurrencyCodes = CultureInfo
@@ -70,6 +71,7 @@ public static class ParkPricingNormalizer
         IReadOnlyCollection<ParkAdmissionPriceOffer> admissionOffers = pricing.AdmissionOffers ?? new List<ParkAdmissionPriceOffer>();
         IReadOnlyCollection<ParkAnnualPassOffer> annualPasses = pricing.AnnualPasses ?? new List<ParkAnnualPassOffer>();
         IReadOnlyCollection<ParkParkingPriceOffer> parkingOffers = pricing.ParkingOffers ?? new List<ParkParkingPriceOffer>();
+        IReadOnlyCollection<ParkCreditOffer> creditOffers = pricing.CreditOffers ?? new List<ParkCreditOffer>();
 
         if (admissionOffers.Count > MaximumAdmissionOfferCount)
         {
@@ -86,9 +88,15 @@ public static class ParkPricingNormalizer
             errors[nameof(pricing.ParkingOffers)] = new[] { "too-many-offers" };
         }
 
+        if (creditOffers.Count > MaximumCreditOfferCount)
+        {
+            errors[nameof(pricing.CreditOffers)] = new[] { "too-many-offers" };
+        }
+
         normalized.AdmissionOffers = NormalizeAdmissionOffers(admissionOffers, nameof(pricing.AdmissionOffers), errors);
         normalized.AnnualPasses = NormalizeAnnualPasses(annualPasses, nameof(pricing.AnnualPasses), errors);
         normalized.ParkingOffers = NormalizeParkingOffers(parkingOffers, nameof(pricing.ParkingOffers), errors);
+        normalized.CreditOffers = NormalizeCreditOffers(creditOffers, nameof(pricing.CreditOffers), errors);
         normalized.HistoricalSnapshots = NormalizeHistoricalSnapshots(
             pricing.HistoricalSnapshots ?? new List<ParkPricingSnapshot>(),
             errors);
@@ -106,7 +114,8 @@ public static class ParkPricingNormalizer
         ArgumentNullException.ThrowIfNull(pricing);
         return pricing.AdmissionOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
             || pricing.AnnualPasses.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
-            || pricing.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null);
+            || pricing.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || pricing.CreditOffers.Any(static offer => offer.Prices.OnlinePrice.HasValue || offer.Prices.GatePrice.HasValue);
     }
 
     private static List<ParkPricingSnapshot> NormalizeHistoricalSnapshots(
@@ -127,6 +136,7 @@ public static class ParkPricingNormalizer
             IReadOnlyCollection<ParkAdmissionPriceOffer> admissionOffers = snapshot.AdmissionOffers ?? new List<ParkAdmissionPriceOffer>();
             IReadOnlyCollection<ParkAnnualPassOffer> annualPasses = snapshot.AnnualPasses ?? new List<ParkAnnualPassOffer>();
             IReadOnlyCollection<ParkParkingPriceOffer> parkingOffers = snapshot.ParkingOffers ?? new List<ParkParkingPriceOffer>();
+            IReadOnlyCollection<ParkCreditOffer> creditOffers = snapshot.CreditOffers ?? new List<ParkCreditOffer>();
             ParkPricingSnapshot normalized = new()
             {
                 Id = NormalizeOptionalString(snapshot.Id) ?? Guid.NewGuid().ToString("N"),
@@ -138,6 +148,7 @@ public static class ParkPricingNormalizer
                 AdmissionOffers = NormalizeAdmissionOffers(admissionOffers, $"{fieldPrefix}.AdmissionOffers", errors),
                 AnnualPasses = NormalizeAnnualPasses(annualPasses, $"{fieldPrefix}.AnnualPasses", errors),
                 ParkingOffers = NormalizeParkingOffers(parkingOffers, $"{fieldPrefix}.ParkingOffers", errors),
+                CreditOffers = NormalizeCreditOffers(creditOffers, $"{fieldPrefix}.CreditOffers", errors),
             };
 
             if (normalized.Year < MinimumHistoricalYear || normalized.Year > DateTime.MaxValue.Year)
@@ -189,6 +200,11 @@ public static class ParkPricingNormalizer
         if (snapshot.ParkingOffers.Count > MaximumParkingOfferCount)
         {
             errors[$"{fieldPrefix}.ParkingOffers"] = new[] { "too-many-offers" };
+        }
+
+        if (snapshot.CreditOffers.Count > MaximumCreditOfferCount)
+        {
+            errors[$"{fieldPrefix}.CreditOffers"] = new[] { "too-many-offers" };
         }
     }
 
@@ -314,6 +330,83 @@ public static class ParkPricingNormalizer
         }
 
         return normalizedOffers.OrderBy(static item => item.SortOrder).ThenBy(static item => item.Code, StringComparer.Ordinal).ToList();
+    }
+
+    private static List<ParkCreditOffer> NormalizeCreditOffers(
+        IReadOnlyCollection<ParkCreditOffer> offers,
+        string collectionFieldPath,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        HashSet<string> usedProducts = new(StringComparer.OrdinalIgnoreCase);
+        List<ParkCreditOffer> normalizedOffers = new();
+        int index = 0;
+
+        foreach (ParkCreditOffer offer in offers)
+        {
+            string fieldPrefix = $"{collectionFieldPath}[{index}]";
+            ParkCreditOfferPrices prices = offer.Prices ?? new ParkCreditOfferPrices();
+            ParkCreditOffer normalized = new()
+            {
+                Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
+                UnitCode = NormalizeCode(offer.UnitCode),
+                Quantity = offer.Quantity,
+                Labels = NormalizeLocalizedTexts(offer.Labels),
+                Prices = new ParkCreditOfferPrices
+                {
+                    OnlinePrice = prices.OnlinePrice,
+                    GatePrice = prices.GatePrice,
+                },
+                ValidFrom = offer.ValidFrom,
+                ValidTo = offer.ValidTo,
+                PurchaseUrl = NormalizeOptionalString(offer.PurchaseUrl),
+                Conditions = NormalizeLocalizedTexts(offer.Conditions),
+                SortOrder = offer.SortOrder > 0 ? offer.SortOrder : index + 1,
+            };
+
+            if (string.IsNullOrWhiteSpace(normalized.UnitCode))
+            {
+                errors[$"{fieldPrefix}.unitCode"] = new[] { "required" };
+            }
+
+            if (normalized.Quantity <= 0)
+            {
+                errors[$"{fieldPrefix}.quantity"] = new[] { "positive-required" };
+            }
+
+            string productKey = $"{normalized.UnitCode}:{normalized.Quantity}";
+            if (!string.IsNullOrWhiteSpace(normalized.UnitCode) && normalized.Quantity > 0 && !usedProducts.Add(productKey))
+            {
+                errors[$"{fieldPrefix}.quantity"] = new[] { "duplicate" };
+            }
+
+            ValidateRequiredLocalizedTexts(normalized.Labels, $"{fieldPrefix}.labels", errors);
+            if (!normalized.Prices.OnlinePrice.HasValue && !normalized.Prices.GatePrice.HasValue)
+            {
+                errors[$"{fieldPrefix}.prices"] = new[] { "price-required" };
+            }
+
+            if (normalized.Prices.OnlinePrice < 0)
+            {
+                errors[$"{fieldPrefix}.prices.onlinePrice"] = new[] { "negative-price" };
+            }
+
+            if (normalized.Prices.GatePrice < 0)
+            {
+                errors[$"{fieldPrefix}.prices.gatePrice"] = new[] { "negative-price" };
+            }
+
+            ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalAbsoluteHttpUrl(normalized.PurchaseUrl, $"{fieldPrefix}.purchaseUrl", errors);
+            ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
+            normalizedOffers.Add(normalized);
+            index += 1;
+        }
+
+        return normalizedOffers
+            .OrderBy(static item => item.SortOrder)
+            .ThenBy(static item => item.UnitCode, StringComparer.Ordinal)
+            .ThenBy(static item => item.Quantity)
+            .ToList();
     }
 
     private static ParkPriceValue? NormalizePrice(

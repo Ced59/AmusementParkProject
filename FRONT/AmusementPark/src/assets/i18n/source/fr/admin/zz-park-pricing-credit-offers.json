@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Jetons et crédits",
+    "hint": "Configure les lots de jetons, crédits ou unités prépayées vendus par le parc.",
+    "add": "Ajouter un lot",
+    "empty": "Aucun lot de jetons ou crédits.",
+    "offerKind": "Lot de jetons / crédits",
+    "fields": {
+      "unitCode": "Code de l’unité",
+      "quantity": "Quantité",
+      "onlinePrice": "Prix en ligne",
+      "gatePrice": "Prix au guichet"
+    }
+  }
+}

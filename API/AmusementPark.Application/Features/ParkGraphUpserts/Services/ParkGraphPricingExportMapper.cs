@@ -70,6 +70,12 @@ internal static class ParkGraphPricingExportMapper
                     SortOrder = offer.SortOrder,
                 })
                 .ToList(),
+            CreditOffers = pricing.CreditOffers
+                .OrderBy(static offer => offer.SortOrder)
+                .ThenBy(static offer => offer.UnitCode, StringComparer.Ordinal)
+                .ThenBy(static offer => offer.Quantity)
+                .Select(static offer => MapCreditOffer(offer))
+                .ToList(),
             HistoricalSnapshots = pricing.HistoricalSnapshots
                 .OrderByDescending(static snapshot => snapshot.Year)
                 .Select(static snapshot => MapSnapshot(snapshot))
@@ -139,6 +145,33 @@ internal static class ParkGraphPricingExportMapper
                     SortOrder = offer.SortOrder,
                 })
                 .ToList(),
+            CreditOffers = snapshot.CreditOffers
+                .OrderBy(static offer => offer.SortOrder)
+                .ThenBy(static offer => offer.UnitCode, StringComparer.Ordinal)
+                .ThenBy(static offer => offer.Quantity)
+                .Select(static offer => MapCreditOffer(offer))
+                .ToList(),
+        };
+    }
+
+    private static ParkGraphExportCreditOffer MapCreditOffer(ParkCreditOffer offer)
+    {
+        return new ParkGraphExportCreditOffer
+        {
+            Id = offer.Id,
+            UnitCode = offer.UnitCode,
+            Quantity = offer.Quantity,
+            Labels = CopyLocalizedTexts(offer.Labels),
+            Prices = new ParkGraphExportCreditOfferPrices
+            {
+                OnlinePrice = offer.Prices.OnlinePrice,
+                GatePrice = offer.Prices.GatePrice,
+            },
+            ValidFrom = FormatPricingDate(offer.ValidFrom),
+            ValidTo = FormatPricingDate(offer.ValidTo),
+            PurchaseUrl = offer.PurchaseUrl,
+            Conditions = CopyLocalizedTexts(offer.Conditions),
+            SortOrder = offer.SortOrder,
         };
     }
 

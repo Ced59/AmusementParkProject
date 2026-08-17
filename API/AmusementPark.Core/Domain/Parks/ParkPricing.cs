@@ -35,6 +35,8 @@ public sealed class ParkPricing
 
     public List<ParkParkingPriceOffer> ParkingOffers { get; set; } = new();
 
+    public List<ParkCreditOffer> CreditOffers { get; set; } = new();
+
     public List<ParkPricingSnapshot> HistoricalSnapshots { get; set; } = new();
 
     public ParkPricing FilterOffersValidOn(DateOnly date)
@@ -59,6 +61,9 @@ public sealed class ParkPricing
             ParkingOffers = this.ParkingOffers
                 .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
                 .ToList(),
+            CreditOffers = this.CreditOffers
+                .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+                .ToList(),
             HistoricalSnapshots = this.HistoricalSnapshots
                 .OrderByDescending(static snapshot => snapshot.Year)
                 .ToList(),
@@ -72,6 +77,8 @@ public sealed class ParkPricing
             || this.AnnualPasses.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)
                 && IsValidOn(offer.ValidFrom, offer.ValidTo, date))
             || this.ParkingOffers.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)
+                && IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+            || this.CreditOffers.Any(offer => (offer.Prices.OnlinePrice.HasValue || offer.Prices.GatePrice.HasValue)
                 && IsValidOn(offer.ValidFrom, offer.ValidTo, date));
     }
 
@@ -107,11 +114,14 @@ public sealed class ParkPricingSnapshot
 
     public List<ParkParkingPriceOffer> ParkingOffers { get; set; } = new();
 
+    public List<ParkCreditOffer> CreditOffers { get; set; } = new();
+
     public bool HasPricedOffers()
     {
         return this.AdmissionOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
             || this.AnnualPasses.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
-            || this.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null);
+            || this.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || this.CreditOffers.Any(static offer => offer.Prices.OnlinePrice.HasValue || offer.Prices.GatePrice.HasValue);
     }
 }
 
@@ -184,6 +194,36 @@ public sealed class ParkParkingPriceOffer
     public List<LocalizedText> Conditions { get; set; } = new();
 
     public int SortOrder { get; set; }
+}
+
+public sealed class ParkCreditOffer
+{
+    public string? Id { get; set; }
+
+    public string UnitCode { get; set; } = string.Empty;
+
+    public int Quantity { get; set; }
+
+    public List<LocalizedText> Labels { get; set; } = new();
+
+    public ParkCreditOfferPrices Prices { get; set; } = new();
+
+    public DateOnly? ValidFrom { get; set; }
+
+    public DateOnly? ValidTo { get; set; }
+
+    public string? PurchaseUrl { get; set; }
+
+    public List<LocalizedText> Conditions { get; set; } = new();
+
+    public int SortOrder { get; set; }
+}
+
+public sealed class ParkCreditOfferPrices
+{
+    public decimal? OnlinePrice { get; set; }
+
+    public decimal? GatePrice { get; set; }
 }
 
 public sealed class ParkPriceValue

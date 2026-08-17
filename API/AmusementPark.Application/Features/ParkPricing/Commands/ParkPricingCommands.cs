@@ -6,4 +6,5 @@ namespace AmusementPark.Application.Features.ParkPricing.Commands;
 
 public sealed record UpsertParkPricingCommand(
     ParkPricingEntity Pricing,
-    bool PreserveHistoricalSnapshots = false) : ICommand<ApplicationResult<ParkPricingEntity>>;
+    bool PreserveHistoricalSnapshots = false,
+    bool PreserveCreditOffers = false) : ICommand<ApplicationResult<ParkPricingEntity>>;

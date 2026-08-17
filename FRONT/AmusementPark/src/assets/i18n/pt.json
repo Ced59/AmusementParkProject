@@ -2355,6 +2355,19 @@
       "savedDetail": "A tabela de preços do parque foi atualizada."
     }
   },
+  "adminParkPricingCredits": {
+    "title": "Fichas e créditos",
+    "hint": "Configura os lotes de fichas, créditos ou unidades pré-pagas vendidos pelo parque.",
+    "add": "Adicionar lote",
+    "empty": "Nenhum lote de fichas ou créditos.",
+    "offerKind": "Lote de fichas / créditos",
+    "fields": {
+      "unitCode": "Código da unidade",
+      "quantity": "Quantidade",
+      "onlinePrice": "Preço online",
+      "gatePrice": "Preço na bilheteira"
+    }
+  },
   "auth": {
     "login": {
       "title": "Autenticação clássica",
@@ -4669,5 +4682,11 @@
       "minor": "Marco",
       "patch": "Atualizacao"
     }
+  },
+  "parkPricingCredits": {
+    "title": "Fichas e créditos",
+    "subtitle": "Lotes pré-pagos utilizados para aceder às atrações",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Fichas / créditos"
   }
 }
