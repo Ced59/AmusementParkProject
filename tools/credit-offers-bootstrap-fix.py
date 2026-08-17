@@ -44,5 +44,10 @@ m('''        ParkPricing pricing = CreatePricing();''','''        ParkPricingEnt
 m('''        ParkPricing pricing = CreatePricing();''','''        ParkPricingEntity pricing = CreatePricing();''')
 m('''    private static ParkPricing CreatePricing() => new()''','''    private static ParkPricingEntity CreatePricing() => new()''')
 m('''[channel]: Number.isFinite(parsed) ? parsed : null''','''[channel]: parsed !== null && Number.isFinite(parsed) ? parsed : null''')
+m('''replace(path,
+"        AddChange(change, \\"pricing.parkingOffers\\", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));\\n        AddChange(change, \\"pricing.historicalSnapshots\\"",
+"        AddChange(change, \\"pricing.parkingOffers\\", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));\\n        AddChange(change, \\"pricing.creditOffers\\", DescribePricing(existingPricing?.CreditOffers), DescribePricing(normalizedPricing.CreditOffers));\\n        AddChange(change, \\"pricing.historicalSnapshots\\"")''','''replace(path,
+"        AddChange(change, \\"pricing.parkingOffers\\", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));",
+"        AddChange(change, \\"pricing.parkingOffers\\", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));\\n        AddChange(change, \\"pricing.creditOffers\\", DescribePricing(existingPricing?.CreditOffers), DescribePricing(normalizedPricing.CreditOffers));")''')
 p.write_text(t,encoding='utf-8')
 print('bootstrap adjusted')
