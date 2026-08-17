@@ -24,5 +24,14 @@ m('''replace(path,
 "            || this.ParkingOffers.Any(offer => (offer.OnlinePrice is not null || offer.GatePrice is not null) && IsValidOn(offer.ValidFrom, offer.ValidTo, date))\\n            || this.CreditOffers.Any(offer => (offer.Prices.OnlinePrice.HasValue || offer.Prices.GatePrice.HasValue) && IsValidOn(offer.ValidFrom, offer.ValidTo, date));")''','''replace(path,
 "            || this.ParkingOffers.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)\\n                && IsValidOn(offer.ValidFrom, offer.ValidTo, date));",
 "            || this.ParkingOffers.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)\\n                && IsValidOn(offer.ValidFrom, offer.ValidTo, date))\\n            || this.CreditOffers.Any(offer => (offer.Prices.OnlinePrice.HasValue || offer.Prices.GatePrice.HasValue)\\n                && IsValidOn(offer.ValidFrom, offer.ValidTo, date));")''')
+m('''replace(path,
+"  parkingOffers: ParkParkingPriceOffer[];\\n  historicalSnapshots?: ParkPricingSnapshot[];",
+"  parkingOffers: ParkParkingPriceOffer[];\\n  creditOffers?: ParkCreditOffer[];\\n  historicalSnapshots?: ParkPricingSnapshot[];",
+2)''','''replace(path,
+"  parkingOffers: ParkParkingPriceOffer[];\\n  historicalSnapshots?: ParkPricingSnapshot[];",
+"  parkingOffers: ParkParkingPriceOffer[];\\n  creditOffers?: ParkCreditOffer[];\\n  historicalSnapshots?: ParkPricingSnapshot[];")
+replace(path,
+"  parkingOffers: ParkParkingPriceOffer[];\\n}",
+"  parkingOffers: ParkParkingPriceOffer[];\\n  creditOffers?: ParkCreditOffer[];\\n}")''')
 p.write_text(t,encoding='utf-8')
 print('bootstrap adjusted')
