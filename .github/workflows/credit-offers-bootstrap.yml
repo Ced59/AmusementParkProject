@@ -53,6 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           git rm .github/workflows/credit-offers-bootstrap.yml tools/credit-offers-bootstrap.py tools/credit-offers-bootstrap-fix.py
+          python3 -c "from pathlib import Path; paths=list(Path('FRONT/AmusementPark/src/assets/i18n/source').glob('*/admin/zz-park-pricing-credit-offers.json')); [(p.write_text(p.read_text(encoding='utf-8').replace('\"    }\\n', '\"\\n    }\\n'), encoding='utf-8')) for p in paths]"
           find FRONT/AmusementPark/src/assets/i18n/source -name 'zz-park-pricing-credit-offers.json' -type f -print0 | xargs -0 sed -i 's/[[:space:]]\+$//'
           for file in FRONT/AmusementPark/src/assets/i18n/{de,en,es,fr,it,nl,pl,pt}.json; do
             sed -i 's/[[:space:]]\+$//' "$file"
