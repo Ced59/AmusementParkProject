@@ -49,6 +49,24 @@ export interface ParkParkingPriceOffer {
   sortOrder: number;
 }
 
+export interface ParkCreditOfferPrices {
+  onlinePrice?: number | null;
+  gatePrice?: number | null;
+}
+
+export interface ParkCreditOffer {
+  id?: string | null;
+  unitCode: string;
+  quantity: number;
+  labels: LocalizedItem<string>[];
+  prices: ParkCreditOfferPrices;
+  validFrom?: string | null;
+  validTo?: string | null;
+  purchaseUrl?: string | null;
+  conditions: LocalizedItem<string>[];
+  sortOrder: number;
+}
+
 export interface ParkPricing {
   parkId: string;
   currencyCode: string;
@@ -61,6 +79,7 @@ export interface ParkPricing {
   admissionOffers: ParkAdmissionPriceOffer[];
   annualPasses: ParkAnnualPassOffer[];
   parkingOffers: ParkParkingPriceOffer[];
+  creditOffers?: ParkCreditOffer[];
   historicalSnapshots?: ParkPricingSnapshot[];
 }
 
@@ -74,4 +93,5 @@ export interface ParkPricingSnapshot {
   admissionOffers: ParkAdmissionPriceOffer[];
   annualPasses: ParkAnnualPassOffer[];
   parkingOffers: ParkParkingPriceOffer[];
+  creditOffers?: ParkCreditOffer[];
 }

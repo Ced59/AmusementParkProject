@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Żetony i kredyty",
+    "hint": "Konfiguruj pakiety żetonów, kredytów lub jednostek przedpłaconych sprzedawanych przez park.",
+    "add": "Dodaj pakiet",
+    "empty": "Brak pakietów żetonów lub kredytów.",
+    "offerKind": "Pakiet żetonów / kredytów",
+    "fields": {
+      "unitCode": "Kod jednostki",
+      "quantity": "Ilość",
+      "onlinePrice": "Cena online",
+      "gatePrice": "Cena w kasie"
+    }
+  }
+}

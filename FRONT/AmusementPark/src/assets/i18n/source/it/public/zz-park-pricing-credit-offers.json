@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Gettoni e crediti",
+    "subtitle": "Pacchetti prepagati utilizzati per accedere alle attrazioni",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Gettoni / crediti"
+  }
+}

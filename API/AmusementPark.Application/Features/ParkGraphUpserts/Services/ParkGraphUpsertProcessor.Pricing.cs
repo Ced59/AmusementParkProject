@@ -152,9 +152,17 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
-        if (!HasProperty(patch, "historicalSnapshots") && existingPricing is not null)
+        if (existingPricing is not null)
         {
-            pricing.HistoricalSnapshots = existingPricing.HistoricalSnapshots;
+            if (!HasProperty(patch, "historicalSnapshots"))
+            {
+                pricing.HistoricalSnapshots = existingPricing.HistoricalSnapshots;
+            }
+
+            if (!HasProperty(patch, "creditOffers"))
+            {
+                pricing.CreditOffers = existingPricing.CreditOffers;
+            }
         }
 
         ApplicationResult<ParkPricingEntity> normalizedResult = ParkPricingNormalizer.Normalize(pricing);
@@ -198,6 +206,7 @@ public sealed partial class ParkGraphUpsertProcessor
         return HasNonEmptyPricingArray(patch, "admissionOffers")
             || HasNonEmptyPricingArray(patch, "annualPasses")
             || HasNonEmptyPricingArray(patch, "parkingOffers")
+            || HasNonEmptyPricingArray(patch, "creditOffers")
             || HasNonEmptyPricingArray(patch, "historicalSnapshots");
     }
 
@@ -224,6 +233,7 @@ public sealed partial class ParkGraphUpsertProcessor
             AdmissionOffers = ReadAdmissionOffers(patch, "pricing", errors),
             AnnualPasses = ReadAnnualPasses(patch, "pricing", errors),
             ParkingOffers = ReadParkingOffers(patch, "pricing", errors),
+            CreditOffers = ReadCreditOffers(patch, "pricing", errors),
             HistoricalSnapshots = ReadHistoricalSnapshots(patch, errors),
         };
     }
@@ -264,6 +274,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 AdmissionOffers = ReadAdmissionOffers(element, prefix, errors),
                 AnnualPasses = ReadAnnualPasses(element, prefix, errors),
                 ParkingOffers = ReadParkingOffers(element, prefix, errors),
+                CreditOffers = ReadCreditOffers(element, prefix, errors),
             });
             index += 1;
         }
@@ -404,6 +415,80 @@ public sealed partial class ParkGraphUpsertProcessor
         return offers;
     }
 
+    private static List<ParkCreditOffer> ReadCreditOffers(JsonElement patch, string rootPrefix, List<string> errors)
+    {
+        JsonElement? array = GetArray(patch, "creditOffers");
+        if (array is null)
+        {
+            if (HasProperty(patch, "creditOffers"))
+            {
+                errors.Add($"{rootPrefix}.creditOffers doit être un tableau.");
+            }
+
+            return new List<ParkCreditOffer>();
+        }
+
+        List<ParkCreditOffer> offers = new();
+        int index = 0;
+        foreach (JsonElement element in array.Value.EnumerateArray())
+        {
+            string prefix = $"{rootPrefix}.creditOffers[{index}]";
+            if (element.ValueKind != JsonValueKind.Object)
+            {
+                errors.Add($"{prefix} doit être un objet.");
+                index += 1;
+                continue;
+            }
+
+            JsonElement? prices = GetObject(element, "prices");
+            if (prices is null && HasProperty(element, "prices"))
+            {
+                errors.Add($"{prefix}.prices doit être un objet.");
+            }
+
+            offers.Add(new ParkCreditOffer
+            {
+                Id = ReadString(element, "id"),
+                UnitCode = ReadString(element, "unitCode") ?? string.Empty,
+                Quantity = ReadInt(element, "quantity") ?? 0,
+                Labels = ReadPricingLocalizedTexts(element, "labels", prefix, errors),
+                Prices = new ParkCreditOfferPrices
+                {
+                    OnlinePrice = ReadOptionalPricingDecimal(prices, "onlinePrice", $"{prefix}.prices", errors),
+                    GatePrice = ReadOptionalPricingDecimal(prices, "gatePrice", $"{prefix}.prices", errors),
+                },
+                ValidFrom = ReadOptionalPricingDate(element, "validFrom", prefix, errors),
+                ValidTo = ReadOptionalPricingDate(element, "validTo", prefix, errors),
+                PurchaseUrl = ReadString(element, "purchaseUrl"),
+                Conditions = ReadPricingLocalizedTexts(element, "conditions", prefix, errors),
+                SortOrder = ReadInt(element, "sortOrder") ?? index + 1,
+            });
+            index += 1;
+        }
+
+        return offers;
+    }
+
+    private static decimal? ReadOptionalPricingDecimal(
+        JsonElement? element,
+        string propertyName,
+        string prefix,
+        List<string> errors)
+    {
+        if (element is null || !element.Value.TryGetProperty(propertyName, out JsonElement value) || value.ValueKind == JsonValueKind.Null)
+        {
+            return null;
+        }
+
+        if (value.ValueKind == JsonValueKind.Number && value.TryGetDecimal(out decimal result))
+        {
+            return result;
+        }
+
+        errors.Add($"{prefix}.{propertyName} doit être un nombre décimal.");
+        return null;
+    }
+
     private static List<AmusementPark.Core.Localization.LocalizedText> ReadPricingLocalizedTexts(
         JsonElement element,
         string propertyName,
@@ -542,6 +627,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "pricing.admissionOffers", DescribePricing(existingPricing?.AdmissionOffers), DescribePricing(normalizedPricing.AdmissionOffers));
         AddChange(change, "pricing.annualPasses", DescribePricing(existingPricing?.AnnualPasses), DescribePricing(normalizedPricing.AnnualPasses));
         AddChange(change, "pricing.parkingOffers", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));
+        AddChange(change, "pricing.creditOffers", DescribePricing(existingPricing?.CreditOffers), DescribePricing(normalizedPricing.CreditOffers));
         AddChange(change, "pricing.historicalSnapshots", DescribePricing(existingPricing?.HistoricalSnapshots), DescribePricing(normalizedPricing.HistoricalSnapshots));
     }
 

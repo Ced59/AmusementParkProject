@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   ParkAdmissionPriceOffer,
   ParkAnnualPassOffer,
+  ParkCreditOffer,
   ParkParkingPriceOffer,
   ParkPricingSnapshot
 } from '@app/models/parks/park-pricing';
@@ -15,6 +16,7 @@ import {
   AdminParkPricingOffer,
   AdminParkPricingOfferEditorComponent
 } from './admin-park-pricing-offer-editor.component';
+import { AdminParkPricingCreditOfferEditorComponent } from './admin-park-pricing-credit-offer-editor.component';
 
 type SnapshotPricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
 
@@ -25,6 +27,7 @@ type SnapshotPricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOf
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AdminParkPricingOfferEditorComponent,
+    AdminParkPricingCreditOfferEditorComponent,
     ButtonDirective,
     FormsModule,
     LocalizedTextInputComponent,
@@ -61,6 +64,36 @@ export class AdminParkPricingSnapshotEditorComponent {
   protected updateLastVerified(value: string): void {
     this.emit({
       lastVerifiedAtUtc: value ? new Date(`${value}:00Z`).toISOString() : null
+    });
+  }
+
+  protected addCreditOffer(): void {
+    const offers: ParkCreditOffer[] = this.snapshot.creditOffers ?? [];
+    const offer: ParkCreditOffer = {
+      unitCode: 'token',
+      quantity: 1,
+      labels: [],
+      prices: { onlinePrice: null, gatePrice: null },
+      validFrom: null,
+      validTo: null,
+      purchaseUrl: null,
+      conditions: [],
+      sortOrder: this.nextSortOrder(offers)
+    };
+    this.emit({ creditOffers: [...offers, offer] });
+  }
+
+  protected updateCreditOffer(index: number, offer: ParkCreditOffer): void {
+    this.emit({
+      creditOffers: (this.snapshot.creditOffers ?? []).map(
+        (item: ParkCreditOffer, itemIndex: number): ParkCreditOffer => itemIndex === index ? offer : item)
+    });
+  }
+
+  protected removeCreditOffer(index: number): void {
+    this.emit({
+      creditOffers: (this.snapshot.creditOffers ?? []).filter(
+        (_item: ParkCreditOffer, itemIndex: number): boolean => itemIndex !== index)
     });
   }
 

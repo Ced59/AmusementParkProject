@@ -2355,6 +2355,19 @@
       "savedDetail": "The park price list has been updated."
     }
   },
+  "adminParkPricingCredits": {
+    "title": "Tokens and credits",
+    "hint": "Configure token, credit or prepaid-unit bundles sold by the park.",
+    "add": "Add bundle",
+    "empty": "No token or credit bundle.",
+    "offerKind": "Token / credit bundle",
+    "fields": {
+      "unitCode": "Unit code",
+      "quantity": "Quantity",
+      "onlinePrice": "Online price",
+      "gatePrice": "Gate price"
+    }
+  },
   "auth": {
     "login": {
       "title": "Standard authentication",
@@ -4669,5 +4682,11 @@
       "minor": "Milestone",
       "patch": "Update"
     }
+  },
+  "parkPricingCredits": {
+    "title": "Tokens and credits",
+    "subtitle": "Prepaid bundles used to access attractions",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Tokens / credits"
   }
 }

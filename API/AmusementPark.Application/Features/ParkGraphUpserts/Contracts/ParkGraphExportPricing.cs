@@ -23,6 +23,8 @@ public sealed class ParkGraphExportPricing
 
     public List<ParkGraphExportParkingPriceOffer> ParkingOffers { get; init; } = new();
 
+    public List<ParkGraphExportCreditOffer> CreditOffers { get; init; } = new();
+
     public List<ParkGraphExportPricingSnapshot> HistoricalSnapshots { get; init; } = new();
 }
 
@@ -45,6 +47,8 @@ public sealed class ParkGraphExportPricingSnapshot
     public List<ParkGraphExportAnnualPassOffer> AnnualPasses { get; init; } = new();
 
     public List<ParkGraphExportParkingPriceOffer> ParkingOffers { get; init; } = new();
+
+    public List<ParkGraphExportCreditOffer> CreditOffers { get; init; } = new();
 }
 
 public sealed class ParkGraphExportAdmissionPriceOffer
@@ -116,6 +120,36 @@ public sealed class ParkGraphExportParkingPriceOffer
     public List<LocalizedText> Conditions { get; init; } = new();
 
     public int SortOrder { get; init; }
+}
+
+public sealed class ParkGraphExportCreditOffer
+{
+    public string? Id { get; init; }
+
+    public string UnitCode { get; init; } = string.Empty;
+
+    public int Quantity { get; init; }
+
+    public List<LocalizedText> Labels { get; init; } = new();
+
+    public ParkGraphExportCreditOfferPrices Prices { get; init; } = new();
+
+    public string? ValidFrom { get; init; }
+
+    public string? ValidTo { get; init; }
+
+    public string? PurchaseUrl { get; init; }
+
+    public List<LocalizedText> Conditions { get; init; } = new();
+
+    public int SortOrder { get; init; }
+}
+
+public sealed class ParkGraphExportCreditOfferPrices
+{
+    public decimal? OnlinePrice { get; init; }
+
+    public decimal? GatePrice { get; init; }
 }
 
 public sealed class ParkGraphExportPriceValue

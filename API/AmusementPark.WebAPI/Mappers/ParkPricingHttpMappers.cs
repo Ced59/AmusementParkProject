@@ -30,6 +30,8 @@ internal static class ParkPricingHttpMappers
                 .Select((offer, index) => offer.ToDomain(errors, $"annualPasses[{index}]")).ToList(),
             ParkingOffers = (dto.ParkingOffers ?? Array.Empty<ParkParkingPriceOfferDto>())
                 .Select((offer, index) => offer.ToDomain(errors, $"parkingOffers[{index}]")).ToList(),
+            CreditOffers = (dto.CreditOffers ?? Array.Empty<ParkCreditOfferDto>())
+                .Select((offer, index) => offer.ToDomain(errors, $"creditOffers[{index}]")).ToList(),
             HistoricalSnapshots = (dto.HistoricalSnapshots ?? Array.Empty<ParkPricingSnapshotDto>())
                 .Select((snapshot, index) => snapshot.ToDomain(errors, $"historicalSnapshots[{index}]")).ToList(),
         };
@@ -63,6 +65,7 @@ internal static class ParkPricingHttpMappers
             AdmissionOffers = pricing.AdmissionOffers.Select(static offer => offer.ToHttp()).ToList(),
             AnnualPasses = pricing.AnnualPasses.Select(static offer => offer.ToHttp()).ToList(),
             ParkingOffers = pricing.ParkingOffers.Select(static offer => offer.ToHttp()).ToList(),
+            CreditOffers = pricing.CreditOffers.Select(static offer => offer.ToHttp()).ToList(),
             HistoricalSnapshots = pricing.HistoricalSnapshots
                 .OrderByDescending(static snapshot => snapshot.Year)
                 .Select(static snapshot => snapshot.ToHttp())
@@ -99,6 +102,8 @@ internal static class ParkPricingHttpMappers
                 .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.annualPasses[{index}]")).ToList(),
             ParkingOffers = (dto.ParkingOffers ?? Array.Empty<ParkParkingPriceOfferDto>())
                 .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.parkingOffers[{index}]")).ToList(),
+            CreditOffers = (dto.CreditOffers ?? Array.Empty<ParkCreditOfferDto>())
+                .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.creditOffers[{index}]")).ToList(),
         };
     }
 
@@ -115,6 +120,7 @@ internal static class ParkPricingHttpMappers
             AdmissionOffers = snapshot.AdmissionOffers.Select(static offer => offer.ToHttp()).ToList(),
             AnnualPasses = snapshot.AnnualPasses.Select(static offer => offer.ToHttp()).ToList(),
             ParkingOffers = snapshot.ParkingOffers.Select(static offer => offer.ToHttp()).ToList(),
+            CreditOffers = snapshot.CreditOffers.Select(static offer => offer.ToHttp()).ToList(),
         };
     }
 
@@ -162,6 +168,27 @@ internal static class ParkPricingHttpMappers
             Labels = dto.Labels.ToDomain(),
             OnlinePrice = dto.OnlinePrice?.ToDomain(errors, $"{fieldPrefix}.onlinePrice"),
             GatePrice = dto.GatePrice?.ToDomain(errors, $"{fieldPrefix}.gatePrice"),
+            ValidFrom = ParseOptionalDate(dto.ValidFrom, errors, $"{fieldPrefix}.validFrom"),
+            ValidTo = ParseOptionalDate(dto.ValidTo, errors, $"{fieldPrefix}.validTo"),
+            PurchaseUrl = NormalizeOptionalString(dto.PurchaseUrl),
+            Conditions = dto.Conditions.ToDomain(),
+            SortOrder = dto.SortOrder,
+        };
+    }
+
+    private static ParkCreditOffer ToDomain(this ParkCreditOfferDto dto, Dictionary<string, List<string>> errors, string fieldPrefix)
+    {
+        return new ParkCreditOffer
+        {
+            Id = NormalizeOptionalString(dto.Id),
+            UnitCode = dto.UnitCode,
+            Quantity = dto.Quantity,
+            Labels = dto.Labels.ToDomain(),
+            Prices = new ParkCreditOfferPrices
+            {
+                OnlinePrice = dto.Prices?.OnlinePrice,
+                GatePrice = dto.Prices?.GatePrice,
+            },
             ValidFrom = ParseOptionalDate(dto.ValidFrom, errors, $"{fieldPrefix}.validFrom"),
             ValidTo = ParseOptionalDate(dto.ValidTo, errors, $"{fieldPrefix}.validTo"),
             PurchaseUrl = NormalizeOptionalString(dto.PurchaseUrl),
@@ -232,6 +259,27 @@ internal static class ParkPricingHttpMappers
             Labels = offer.Labels.ToHttp(),
             OnlinePrice = offer.OnlinePrice?.ToHttp(),
             GatePrice = offer.GatePrice?.ToHttp(),
+            ValidFrom = FormatDate(offer.ValidFrom),
+            ValidTo = FormatDate(offer.ValidTo),
+            PurchaseUrl = offer.PurchaseUrl,
+            Conditions = offer.Conditions.ToHttp(),
+            SortOrder = offer.SortOrder,
+        };
+    }
+
+    private static ParkCreditOfferDto ToHttp(this ParkCreditOffer offer)
+    {
+        return new ParkCreditOfferDto
+        {
+            Id = offer.Id,
+            UnitCode = offer.UnitCode,
+            Quantity = offer.Quantity,
+            Labels = offer.Labels.ToHttp(),
+            Prices = new ParkCreditOfferPricesDto
+            {
+                OnlinePrice = offer.Prices.OnlinePrice,
+                GatePrice = offer.Prices.GatePrice,
+            },
             ValidFrom = FormatDate(offer.ValidFrom),
             ValidTo = FormatDate(offer.ValidTo),
             PurchaseUrl = offer.PurchaseUrl,

@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Jetons et crédits",
+    "subtitle": "Lots prépayés utilisés pour accéder aux attractions",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Jetons / crédits"
+  }
+}

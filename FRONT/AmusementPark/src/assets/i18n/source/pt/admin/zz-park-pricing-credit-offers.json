@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Fichas e créditos",
+    "hint": "Configura os lotes de fichas, créditos ou unidades pré-pagas vendidos pelo parque.",
+    "add": "Adicionar lote",
+    "empty": "Nenhum lote de fichas ou créditos.",
+    "offerKind": "Lote de fichas / créditos",
+    "fields": {
+      "unitCode": "Código da unidade",
+      "quantity": "Quantidade",
+      "onlinePrice": "Preço online",
+      "gatePrice": "Preço na bilheteira"
+    }
+  }
+}

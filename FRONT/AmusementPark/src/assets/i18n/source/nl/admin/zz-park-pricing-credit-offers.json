@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Tokens en tegoeden",
+    "hint": "Configureer bundels met tokens, tegoeden of prepaid-eenheden die het park verkoopt.",
+    "add": "Bundel toevoegen",
+    "empty": "Geen token- of tegoedbundels.",
+    "offerKind": "Token-/tegoedbundel",
+    "fields": {
+      "unitCode": "Eenheidscode",
+      "quantity": "Aantal",
+      "onlinePrice": "Onlineprijs",
+      "gatePrice": "Kassaprijs"
+    }
+  }
+}

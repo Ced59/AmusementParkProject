@@ -1,0 +1,15 @@
+{
+  "adminParkPricingCredits": {
+    "title": "Gettoni e crediti",
+    "hint": "Configura i pacchetti di gettoni, crediti o unità prepagate venduti dal parco.",
+    "add": "Aggiungi pacchetto",
+    "empty": "Nessun pacchetto di gettoni o crediti.",
+    "offerKind": "Pacchetto gettoni / crediti",
+    "fields": {
+      "unitCode": "Codice unità",
+      "quantity": "Quantità",
+      "onlinePrice": "Prezzo online",
+      "gatePrice": "Prezzo in cassa"
+    }
+  }
+}

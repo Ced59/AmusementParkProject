@@ -36,6 +36,9 @@ public sealed class ParkPricingDocument : MongoDocumentBase
     [BsonElement("parkingOffers")]
     public List<ParkParkingPriceOfferDocument> ParkingOffers { get; set; } = new();
 
+    [BsonElement("creditOffers")]
+    public List<ParkCreditOfferDocument> CreditOffers { get; set; } = new();
+
     [BsonElement("historicalSnapshots")]
     public List<ParkPricingSnapshotDocument> HistoricalSnapshots { get; set; } = new();
 }
@@ -71,6 +74,9 @@ public sealed class ParkPricingSnapshotDocument
 
     [BsonElement("parkingOffers")]
     public List<ParkParkingPriceOfferDocument> ParkingOffers { get; set; } = new();
+
+    [BsonElement("creditOffers")]
+    public List<ParkCreditOfferDocument> CreditOffers { get; set; } = new();
 }
 
 [BsonIgnoreExtraElements]
@@ -191,6 +197,55 @@ public sealed class ParkParkingPriceOfferDocument
 
     [BsonElement("sortOrder")]
     public int SortOrder { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class ParkCreditOfferDocument
+{
+    [BsonElement("id")]
+    public string Id { get; set; } = string.Empty;
+
+    [BsonElement("unitCode")]
+    public string UnitCode { get; set; } = string.Empty;
+
+    [BsonElement("quantity")]
+    public int Quantity { get; set; }
+
+    [BsonElement("labels")]
+    public List<LocalizedTextDocument> Labels { get; set; } = new();
+
+    [BsonElement("prices")]
+    public ParkCreditOfferPricesDocument Prices { get; set; } = new();
+
+    [BsonElement("validFrom")]
+    [BsonIgnoreIfNull]
+    public string? ValidFrom { get; set; }
+
+    [BsonElement("validTo")]
+    [BsonIgnoreIfNull]
+    public string? ValidTo { get; set; }
+
+    [BsonElement("purchaseUrl")]
+    [BsonIgnoreIfNull]
+    public string? PurchaseUrl { get; set; }
+
+    [BsonElement("conditions")]
+    public List<LocalizedTextDocument> Conditions { get; set; } = new();
+
+    [BsonElement("sortOrder")]
+    public int SortOrder { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class ParkCreditOfferPricesDocument
+{
+    [BsonElement("onlinePrice")]
+    [BsonIgnoreIfNull]
+    public decimal? OnlinePrice { get; set; }
+
+    [BsonElement("gatePrice")]
+    [BsonIgnoreIfNull]
+    public decimal? GatePrice { get; set; }
 }
 
 [BsonIgnoreExtraElements]

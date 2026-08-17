@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Żetony i kredyty",
+    "subtitle": "Pakiety przedpłacone używane do korzystania z atrakcji",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Żetony / kredyty"
+  }
+}

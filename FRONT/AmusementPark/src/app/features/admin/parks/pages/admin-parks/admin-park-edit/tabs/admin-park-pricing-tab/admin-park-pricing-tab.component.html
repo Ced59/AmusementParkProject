@@ -90,6 +90,22 @@
       }
     </section>
 
+
+    <section class="admin-pricing-editor__collection">
+      <header>
+        <div>
+          <h4>{{ 'adminParkPricingCredits.title' | translate }}</h4>
+          <p>{{ 'adminParkPricingCredits.hint' | translate }}</p>
+        </div>
+        <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricingCredits.add' | translate" (click)="addCreditOffer()"></button>
+      </header>
+      @for (offer of currentPricing.creditOffers ?? []; track creditOfferTrackKey($index); let index = $index) {
+        <app-admin-park-pricing-credit-offer-editor [offer]="offer" [disabled]="saving" (offerChange)="updateCreditOffer(index, $event)" (remove)="removeCreditOffer(index)"></app-admin-park-pricing-credit-offer-editor>
+      } @empty {
+        <p class="admin-pricing-editor__empty">{{ 'adminParkPricingCredits.empty' | translate }}</p>
+      }
+    </section>
+
     <section class="admin-pricing-editor__collection">
       <header>
         <div>

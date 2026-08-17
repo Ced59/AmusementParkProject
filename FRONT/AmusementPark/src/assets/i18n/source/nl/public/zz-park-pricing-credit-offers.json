@@ -1,0 +1,8 @@
+{
+  "parkPricingCredits": {
+    "title": "Tokens en tegoeden",
+    "subtitle": "Prepaidbundels voor toegang tot attracties",
+    "quantity": "{{ quantity }} × {{ unit }}",
+    "historyKind": "Tokens / tegoeden"
+  }
+}
