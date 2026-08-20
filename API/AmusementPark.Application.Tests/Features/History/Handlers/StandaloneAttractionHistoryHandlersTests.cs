@@ -99,7 +99,7 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             Name = "Pendolino",
             Type = ParkItemType.RollerCoaster,
             IsVisible = true,
-            AdminReviewStatus = AdminReviewStatus.Reviewed,
+            AdminReviewStatus = AdminReviewStatus.Validated,
             AttractionDetails = new AttractionDetails
             {
                 OpeningDateText = "2007",
