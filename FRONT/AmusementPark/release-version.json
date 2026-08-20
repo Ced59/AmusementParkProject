@@ -1,6 +1,20 @@
 {
-  "version": "4.1.47",
+  "version": "4.1.48",
   "history": [
+    {
+      "version": "4.1.48",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "La politique de confidentialité a été actualisée.",
+        "en": "The privacy policy has been updated.",
+        "de": "Die Datenschutzerklärung wurde aktualisiert.",
+        "nl": "Het privacybeleid is bijgewerkt.",
+        "it": "L’informativa sulla privacy è stata aggiornata.",
+        "es": "La política de privacidad se ha actualizado.",
+        "pl": "Polityka prywatności została zaktualizowana.",
+        "pt": "A política de privacidade foi atualizada."
+      }
+    },
     {
       "version": "4.1.47",
       "releasedAt": "2026-08-20",
