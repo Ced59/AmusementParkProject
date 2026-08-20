@@ -1,6 +1,20 @@
 {
-  "version": "4.2.11",
+  "version": "4.2.12",
   "history": [
+    {
+      "version": "4.2.12",
+      "releasedAt": "2026-08-21",
+      "labels": {
+        "fr": "La disponibilité du site est renforcée lors des mises à jour.",
+        "en": "Site availability is more resilient during updates.",
+        "de": "Die Verfügbarkeit der Website ist bei Aktualisierungen robuster.",
+        "nl": "De website blijft betrouwbaarder beschikbaar tijdens updates.",
+        "it": "La disponibilità del sito è più affidabile durante gli aggiornamenti.",
+        "es": "La disponibilidad del sitio es más fiable durante las actualizaciones.",
+        "pl": "Dostępność witryny podczas aktualizacji jest bardziej niezawodna.",
+        "pt": "A disponibilidade do site é mais resiliente durante as atualizações."
+      }
+    },
     {
       "version": "4.2.11",
       "releasedAt": "2026-08-21",

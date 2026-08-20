@@ -432,6 +432,10 @@ if [ "${rolling_deploy}" = "true" ]; then
   compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
 fi
 
+# A surviving candidate can still carry production aliases after an interrupted
+# rollout, so only remove stale candidates once the canonical stack is healthy.
+./scripts/cleanup-stale-deploy-candidates.sh "${compose_project_name}"
+
 ./scripts/verify-public-response-integrity.sh \
   "${PUBLIC_BASE_URL%/}/fr/home"
 
