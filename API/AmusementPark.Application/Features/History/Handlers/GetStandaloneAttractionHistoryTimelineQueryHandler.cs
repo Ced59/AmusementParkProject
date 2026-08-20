@@ -69,35 +69,42 @@ public sealed class GetStandaloneAttractionHistoryTimelineQueryHandler
             return ApplicationResult<StandaloneAttractionHistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
-        List<HistoryTimelineEventResult> timelineEvents = new List<HistoryTimelineEventResult>();
-        foreach (HistoryEvent historyEvent in events
+        List<HistoryTimelineEventResult> orderedEvents = events
             .OrderBy(static item => item.Year)
             .ThenBy(static item => item.Month ?? 0)
             .ThenBy(static item => item.Day ?? 0)
-            .ThenBy(static item => item.Key, StringComparer.Ordinal))
-        {
-            string? imageId = historyEvent.Article?.MainImageId ?? historyEvent.MainImageId;
-            Image? mainImage = string.IsNullOrWhiteSpace(imageId)
-                ? null
-                : await this.imageRepository.GetByIdAsync(imageId, cancellationToken);
-
-            timelineEvents.Add(new HistoryTimelineEventResult
+            .ThenBy(static item => item.Key, StringComparer.Ordinal)
+            .Select(static historyEvent => new HistoryTimelineEventResult
             {
                 Event = historyEvent,
-                MainImage = mainImage,
-            });
-        }
+            })
+            .ToList();
 
-        HistoryTimelinePageSlice? page = HistoryTimelinePageSlice.Create(timelineEvents, query.Page, query.PageSize);
+        HistoryTimelinePageSlice? page = HistoryTimelinePageSlice.Create(orderedEvents, query.Page, query.PageSize);
         if (page is null)
         {
             return ApplicationResult<StandaloneAttractionHistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
+        List<HistoryTimelineEventResult> hydratedPageEvents = new List<HistoryTimelineEventResult>();
+        foreach (HistoryTimelineEventResult timelineEvent in page.Events)
+        {
+            string? imageId = timelineEvent.Event.Article?.MainImageId ?? timelineEvent.Event.MainImageId;
+            Image? mainImage = string.IsNullOrWhiteSpace(imageId)
+                ? null
+                : await this.imageRepository.GetByIdAsync(imageId, cancellationToken);
+
+            hydratedPageEvents.Add(new HistoryTimelineEventResult
+            {
+                Event = timelineEvent.Event,
+                MainImage = mainImage,
+            });
+        }
+
         return ApplicationResult<StandaloneAttractionHistoryTimelineResult>.Success(new StandaloneAttractionHistoryTimelineResult
         {
             StandaloneAttraction = attraction,
-            Events = page.Events,
+            Events = hydratedPageEvents,
             Pagination = page.Pagination,
             PageRanges = page.PageRanges,
         });
