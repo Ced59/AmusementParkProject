@@ -159,6 +159,17 @@ public sealed partial class ParkGraphUpsertProcessor
                 await this.ProcessImagesAsync(root, null, standaloneAttractionKeys, founderKeys, operatorKeys, manufacturerKeys, standaloneMergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
             }
 
+            if (result.Errors.Count == 0)
+            {
+                await this.ProcessStandaloneHistoryEventsAsync(
+                    root,
+                    result.TargetStandaloneAttractionId,
+                    imageKeys,
+                    result,
+                    apply,
+                    cancellationToken);
+            }
+
             FinalizeCounts(result);
             if (apply && result.Errors.Count == 0)
             {
