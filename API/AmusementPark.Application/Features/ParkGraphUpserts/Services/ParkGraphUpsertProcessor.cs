@@ -140,6 +140,17 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (RequiresStandaloneAttractionContext(root))
         {
+            await this.PreflightStandaloneHistoryAsync(root, request.CreateIfMissing, result, cancellationToken);
+            if (result.Errors.Count > 0)
+            {
+                result.CanApply = false;
+                FinalizeCounts(result);
+                await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+                return apply
+                    ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas etre applique car l'historique de l'attraction autonome est invalide."))
+                    : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+            }
+
             await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
             ParkGraphUpsertMergeSummary standaloneMergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
             Dictionary<string, string> standaloneAttractionKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -159,10 +170,26 @@ public sealed partial class ParkGraphUpsertProcessor
                 await this.ProcessImagesAsync(root, null, standaloneAttractionKeys, founderKeys, operatorKeys, manufacturerKeys, standaloneMergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
             }
 
+            bool standaloneHistoryChanged = false;
+            if (result.Errors.Count == 0)
+            {
+                standaloneHistoryChanged = await this.ProcessStandaloneHistoryEventsAsync(
+                    root,
+                    result.TargetStandaloneAttractionId,
+                    imageKeys,
+                    result,
+                    apply,
+                    cancellationToken);
+            }
+
             FinalizeCounts(result);
             if (apply && result.Errors.Count == 0)
             {
                 await this.NotifyMergeSeoAsync(standaloneMergeSummary, cancellationToken);
+                if (standaloneHistoryChanged)
+                {
+                    await this.publicSeoUpdateNotifier.NotifyAsync(new PublicSeoUpdate(), cancellationToken);
+                }
             }
 
             await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);

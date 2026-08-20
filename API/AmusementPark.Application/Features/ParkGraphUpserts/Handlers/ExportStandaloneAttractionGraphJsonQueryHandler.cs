@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 
@@ -30,9 +31,21 @@ public sealed partial class ExportParkGraphJsonQueryHandler
             return ApplicationResult<ParkGraphJsonExportResult>.Failure(ApplicationErrors.EntityNotFound(nameof(StandaloneAttraction), query.StandaloneAttractionId));
         }
 
-        IReadOnlyCollection<Image> images = string.IsNullOrWhiteSpace(attraction.Id)
-            ? Array.Empty<Image>()
-            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.StandaloneAttraction, new[] { attraction.Id }, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> imagesTask = string.IsNullOrWhiteSpace(attraction.Id)
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : this.imageRepository.GetByOwnersAsync(ImageOwnerType.StandaloneAttraction, new[] { attraction.Id }, null, cancellationToken);
+        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = this.historyEventRepository is null || string.IsNullOrWhiteSpace(attraction.Id)
+            ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
+            : this.historyEventRepository.GetOwnerTimelineSummaryAsync(
+                HistoryEntityType.StandaloneAttraction,
+                attraction.Id,
+                true,
+                cancellationToken);
+
+        await Task.WhenAll(imagesTask, historyEventsTask);
+        IReadOnlyCollection<Image> images = await imagesTask;
+        IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
+
         DateTime exportedAtUtc = DateTime.UtcNow;
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
@@ -54,6 +67,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler
                 .ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase)
                 .Select(MapStandaloneAttractionImage)
                 .ToList(),
+            ["history"] = MapHistory(historyEvents),
             ["metadata"] = new
             {
                 exportedAtUtc,
