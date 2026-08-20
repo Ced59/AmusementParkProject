@@ -1,6 +1,20 @@
 {
-  "version": "4.1.43",
+  "version": "4.1.44",
   "history": [
+    {
+      "version": "4.1.44",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "La présentation d’AmusementPark devient plus courte et plus amusante.",
+        "en": "AmusementPark now introduces itself in a shorter, more playful way.",
+        "de": "AmusementPark stellt sich jetzt kürzer und spielerischer vor.",
+        "nl": "AmusementPark stelt zich nu korter en speelser voor.",
+        "it": "AmusementPark si presenta in modo più breve e divertente.",
+        "es": "AmusementPark se presenta ahora de forma más breve y divertida.",
+        "pl": "AmusementPark przedstawia się teraz krócej i ciekawiej.",
+        "pt": "O AmusementPark apresenta-se agora de forma mais breve e divertida."
+      }
+    },
     {
       "version": "4.1.43",
       "releasedAt": "2026-08-13",

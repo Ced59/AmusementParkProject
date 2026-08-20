@@ -20,4 +20,22 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should present the discovery journey in three concise steps', () => {
+    fixture.detectChanges();
+
+    const stepCards: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('.about-step-card');
+
+    expect(stepCards).toHaveLength(3);
+  });
+
+  it('should link both main actions to the localized parks route', () => {
+    fixture.detectChanges();
+
+    const parksLinks: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('a[appUiButton="primary"]');
+
+    expect(parksLinks).toHaveLength(2);
+    expect(Array.from(parksLinks).map((link: HTMLAnchorElement): string | null => link.getAttribute('href')))
+      .toEqual(['/parks', '/parks']);
+  });
 });

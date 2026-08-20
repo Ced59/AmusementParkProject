@@ -292,7 +292,8 @@
       "subtitle": "Gere eventos datados, vidas de items entre vários parques, marcos documentados e artigos.",
       "entityTypes": {
         "Park": "Parque",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Atração isolada"
       },
       "precision": {
         "Year": "Ano",
@@ -2705,147 +2706,68 @@
   },
   "aboutPage": {
     "seo": {
-      "title": "Sobre o AmusementPark — Explora parques de outra forma",
-      "description": "Descobre o AmusementPark, um guia visual para explorar parques de diversão, atrações, imagens, mapas e ideias de visita."
+      "title": "Sobre o AmusementPark — O teu guia de parques de diversão",
+      "description": "Explora mais de 2 900 parques com atrações, fotografias, avaliações e mapas, disponíveis em oito idiomas no AmusementPark."
     },
-    "kicker": "Sobre o AmusementPark",
-    "title": "Explora parques de diversão de outra forma",
-    "lead": "AmusementPark é um guia de descoberta pensado para te ajudar a explorar parques de diversão, os respetivos universos, atrações e experiências. Quer estejas a preparar uma saída em família, uma futura viagem ou gostes simplesmente de descobrir novos parques, o site reúne as informações essenciais numa interface clara, visual e agradável.",
-    "primaryCta": "Explorar parques",
-    "secondaryCta": "Ver como funciona",
-    "heroVisual": {
-      "parks": "Parques",
-      "parksHint": "Um ponto de partida para novos destinos.",
-      "attractions": "Atrações",
-      "images": "Imagens",
-      "map": "Mapa"
+    "kicker": "O parque antes do parque",
+    "title": "O mundo dos parques, sem andar às voltas",
+    "lead": "AmusementPark reúne parques, atrações, fotografias, avaliações e mapas para descobrires destinos famosos — e os que ainda não estavam no teu radar.",
+    "primaryCta": "Encontrar um parque",
+    "secondaryCta": "Dar uma volta",
+    "ticket": {
+      "kicker": "Passe de descoberta",
+      "title": "Próxima paragem: emoções",
+      "parks": "2 900+ parques",
+      "languages": "8 idiomas"
     },
-    "stats": {
-      "ariaLabel": "Destaques do AmusementPark",
-      "parksLabel": "Milhares de parques para explorar",
-      "parksHint": "Uma base internacional que cresce progressivamente.",
-      "contentValue": "Parques, atrações, imagens",
-      "contentLabel": "Conteúdos organizados",
-      "contentHint": "Páginas pensadas para perceber rapidamente o que cada parque oferece.",
-      "languagesLabel": "Idiomas disponíveis",
-      "languagesHint": "Para tornar a descoberta mais acessível a visitantes de todo o mundo."
+    "highlights": {
+      "ariaLabel": "AmusementPark em resumo",
+      "parks": "2 900+ parques, dos ícones às pérolas escondidas",
+      "content": "Atrações, fotografias, avaliações e mapas",
+      "languages": "8 idiomas para ires mais longe"
     },
-    "promise": {
-      "kicker": "A nossa promessa",
-      "title": "Ajudar-te a escolher, comparar e sonhar mais facilmente",
-      "subtitle": "Um parque de diversão é mais do que uma morada ou uma lista de atrações: é ambiente, zonas temáticas, experiências, imagens e por vezes um verdadeiro destino de viagem."
-    },
-    "cards": {
-      "discover": {
-        "badge": "Descobrir",
-        "title": "Encontra parques que dão vontade de visitar",
-        "text": "Explora parques em diferentes países, descobre a localização, o ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
-      },
-      "understand": {
-        "badge": "Compreender",
-        "title": "Vê o que há para fazer no local",
-        "text": "Cada página pode reunir atrações, restaurantes, lojas, espetáculos, zonas e imagens."
-      },
-      "prepare": {
-        "badge": "Preparar",
-        "title": "Prepara uma visita ou inspira a tua próxima viagem",
-        "text": "AmusementPark é um ponto de partida para saídas, parques próximos, imagens e mapas."
-      }
-    },
-    "explore": {
-      "kicker": "Explorar",
-      "title": "Uma página por parque, várias formas de o descobrir",
-      "subtitle": "Primeiro compreender o parque, depois explorar atrações, zonas, imagens ou mapa.",
-      "cards": {
-        "parkPages": {
-          "title": "Ler uma apresentação clara",
-          "text": "Cada ficha mostra nome, localização, descrição, estado, experiências e links úteis."
+    "journey": {
+      "kicker": "Uma volta, três paragens",
+      "title": "Encontra. Explora. Escolhe o teu parque.",
+      "subtitle": "Tudo o que precisas para passar de «onde vamos?» a «é este!».",
+      "steps": {
+        "find": {
+          "title": "Descobre o teu próximo parque",
+          "text": "Pesquisa por país, percorre o mapa ou vê o que existe nas proximidades."
         },
-        "items": {
-          "title": "Explorar atrações e locais",
-          "text": "Quando há dados, pode consultar atrações, restaurantes, lojas, espetáculos e pontos de interesse."
+        "feel": {
+          "title": "Entra no seu universo",
+          "text": "Descobre atrações, zonas, fotografias e história sem te perderes em páginas intermináveis."
         },
-        "ratings": {
-          "title": "Consultar avaliações e rankings",
-          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicia sessão para adicionar a tua avaliação, encontrar as tuas escolhas na conta e explorar rankings."
-        },
-        "images": {
-          "title": "Descobrir o parque em imagens",
-          "text": "As imagens ajudam a sentir o ambiente de um parque, zona ou atração."
-        },
-        "map": {
-          "title": "Localizar parques e locais",
-          "text": "O mapa ajuda a perceber onde fica o parque e o que o rodeia."
-        },
-        "nearby": {
-          "title": "Encontrar outros parques próximos",
-          "text": "Parques próximos ajudam a alargar a pesquisa e a imaginar itinerários."
-        },
-        "languages": {
-          "title": "Explorar no teu idioma",
-          "text": "O site foi pensado para vários idiomas."
+        "choose": {
+          "title": "Escolhe a tua diversão",
+          "text": "Consulta avaliações, compara experiências e abre apenas os detalhes que realmente te interessam."
         }
-      }
-    },
-    "audiences": {
-      "kicker": "Para todos os exploradores",
-      "title": "Para preparar visitas ou simplesmente gostar de parques",
-      "families": {
-        "title": "Para famílias",
-        "text": "Encontre mais facilmente parques para crianças, dias tranquilos ou descoberta gradual."
-      },
-      "fans": {
-        "title": "Para fãs de parques",
-        "text": "Explora atrações, zonas, fabricantes, imagens e detalhes."
-      },
-      "travelers": {
-        "title": "Para viajantes",
-        "text": "Prepare etapas, compare destinos e encontre lugares numa cidade ou região."
-      },
-      "curious": {
-        "title": "Para curiosos",
-        "text": "Descobre parques desconhecidos e a diversidade de destinos."
       }
     },
     "approach": {
-      "kicker": "A nossa abordagem",
-      "title": "Informações úteis, legíveis e enriquecidas com cuidado",
-      "text": "AmusementPark apresenta parques de forma clara e agradável, sem afogar visitantes em dados brutos.",
+      "kicker": "A nossa bússola",
+      "title": "Curioso, claro e sempre em movimento",
+      "text": "AmusementPark é um guia de descoberta para visitantes ocasionais e verdadeiros fãs de parques. Cada página mostra o que torna um parque único através de dados estruturados e conteúdos cada vez mais completos.",
       "points": {
-        "structured": {
-          "title": "Dados estruturados",
-          "text": "Parques, atrações, imagens, zonas e referências são organizados de forma coerente."
+        "global": {
+          "title": "Rumo ao mundo",
+          "text": "Dos destinos famosos às pérolas mais discretas."
         },
-        "progressive": {
-          "title": "Uma base que melhora",
-          "text": "As informações podem ser completadas e corrigidas progressivamente."
+        "clear": {
+          "title": "Sem uma montanha-russa de dados",
+          "text": "Primeiro o essencial; os detalhes, quando os quiseres."
         },
-        "visitor": {
-          "title": "Pensado para o visitante",
-          "text": "A página orienta para o nível certo de detalhe."
-        },
-        "clarity": {
-          "title": "Atenção à clareza",
-          "text": "Quando falta informação, a página continua compreensível."
+        "evolving": {
+          "title": "Nunca parado",
+          "text": "As páginas são completadas, corrigidas e enriquecidas regularmente."
         }
       }
     },
-    "future": {
-      "kicker": "E amanhã",
-      "title": "Um companheiro de descoberta para amantes de parques",
-      "text": "AmusementPark pretende tornar-se uma ferramenta prática para explorar, comparar e preparar visitas.",
-      "items": {
-        "compare": "Comparar vários parques mais facilmente.",
-        "filters": "Filtrar melhor atrações e experiências.",
-        "images": "Explorar imagens por data, lugar ou tipo.",
-        "map": "Visualizar mais informações no mapa.",
-        "trips": "Ajudar a preparar ideias de saídas ou viagens."
-      }
-    },
     "finalCta": {
-      "kicker": "Começar",
-      "title": "Pronto para começar a explorar?",
-      "text": "Escolhe um parque, abre a ficha, descobre atrações, imagens ou mapa e deixa-te guiar até ao próximo destino.",
+      "kicker": "Tudo pronto?",
+      "title": "O teu próximo parque pode estar a um clique.",
+      "text": "Abre o mapa ou salta diretamente para a lista completa.",
       "primary": "Explorar parques",
       "secondary": "Voltar ao início"
     }

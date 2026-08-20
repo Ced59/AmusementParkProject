@@ -4,7 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-about',
@@ -15,9 +15,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderC
     RouterLink,
     TranslateModule,
     UiButtonDirective,
-    UiChipComponent,
     UiKickerComponent,
-    UiSectionHeaderComponent,
     UiSurfaceDirective
   ]
 })
