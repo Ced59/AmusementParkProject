@@ -2707,7 +2707,7 @@
   "aboutPage": {
     "seo": {
       "title": "Sobre o AmusementPark — O teu guia de parques de diversão",
-      "description": "Explora mais de 2 900 parques com atrações, fotografias, avaliações e mapas, disponíveis em oito idiomas no AmusementPark."
+      "description": "Explora os parques visíveis com atrações, fotografias, avaliações e mapas, disponíveis em oito idiomas no AmusementPark."
     },
     "kicker": "O parque antes do parque",
     "title": "O mundo dos parques, sem andar às voltas",
@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Passe de descoberta",
       "title": "Próxima paragem: emoções",
-      "parks": "2 900+ parques",
+      "parks": {
+        "one": "{{count}} parque visível",
+        "few": "{{count}} parques visíveis",
+        "many": "{{count}} parques visíveis",
+        "other": "{{count}} parques visíveis"
+      },
+      "parksUnavailable": "Parques visíveis",
       "languages": "8 idiomas"
     },
     "highlights": {
       "ariaLabel": "AmusementPark em resumo",
-      "parks": "2 900+ parques, dos ícones às pérolas escondidas",
+      "parks": {
+        "one": "{{count}} parque para explorar, dos ícones às pérolas escondidas",
+        "few": "{{count}} parques para explorar, dos ícones às pérolas escondidas",
+        "many": "{{count}} parques para explorar, dos ícones às pérolas escondidas",
+        "other": "{{count}} parques para explorar, dos ícones às pérolas escondidas"
+      },
+      "parksUnavailable": "Parques para explorar, dos ícones às pérolas escondidas",
       "content": "Atrações, fotografias, avaliações e mapas",
       "languages": "8 idiomas para ires mais longe"
     },

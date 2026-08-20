@@ -9,7 +9,7 @@
       <p class="about-hero__lead">{{ 'aboutPage.lead' | translate }}</p>
 
       <div class="about-hero__actions">
-        <a appUiButton="primary" [routerLink]="['../parks']">
+        <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'parks']">
           <span>{{ 'aboutPage.primaryCta' | translate }}</span>
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
         </a>
@@ -30,14 +30,28 @@
         <span class="about-ticket__eyebrow">{{ 'aboutPage.ticket.kicker' | translate }}</span>
         <strong>{{ 'aboutPage.ticket.title' | translate }}</strong>
         <div class="about-ticket__meta">
-          <span><i class="pi pi-compass"></i>{{ 'aboutPage.ticket.parks' | translate }}</span>
+          <span>
+            <i class="pi pi-compass"></i>
+            @if (visibleParkCount() !== null) {
+              {{ 'aboutPage.ticket.parks' | localizedPlural:(visibleParkCount() ?? 0):{ count: formattedVisibleParkCount() } }}
+            } @else {
+              {{ 'aboutPage.ticket.parksUnavailable' | translate }}
+            }
+          </span>
           <span><i class="pi pi-globe"></i>{{ 'aboutPage.ticket.languages' | translate }}</span>
         </div>
       </div>
     </aside>
 
     <div class="about-highlights" [attr.aria-label]="'aboutPage.highlights.ariaLabel' | translate">
-      <span><i class="pi pi-map" aria-hidden="true"></i>{{ 'aboutPage.highlights.parks' | translate }}</span>
+      <span>
+        <i class="pi pi-map" aria-hidden="true"></i>
+        @if (visibleParkCount() !== null) {
+          {{ 'aboutPage.highlights.parks' | localizedPlural:(visibleParkCount() ?? 0):{ count: formattedVisibleParkCount() } }}
+        } @else {
+          {{ 'aboutPage.highlights.parksUnavailable' | translate }}
+        }
+      </span>
       <span><i class="pi pi-bolt" aria-hidden="true"></i>{{ 'aboutPage.highlights.content' | translate }}</span>
       <span><i class="pi pi-language" aria-hidden="true"></i>{{ 'aboutPage.highlights.languages' | translate }}</span>
     </div>
@@ -120,11 +134,11 @@
     </div>
 
     <div class="about-final-cta__actions">
-      <a appUiButton="primary" [routerLink]="['../parks']">
+      <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'parks']">
         <span>{{ 'aboutPage.finalCta.primary' | translate }}</span>
         <i class="pi pi-arrow-right" aria-hidden="true"></i>
       </a>
-      <a appUiButton="ghost" [routerLink]="['../home']">
+      <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'home']">
         <span>{{ 'aboutPage.finalCta.secondary' | translate }}</span>
       </a>
     </div>

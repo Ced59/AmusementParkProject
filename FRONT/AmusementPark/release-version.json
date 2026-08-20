@@ -1,6 +1,20 @@
 {
-  "version": "4.1.46",
+  "version": "4.1.47",
   "history": [
+    {
+      "version": "4.1.47",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les liens et le nombre de parcs de la page À propos sont plus fiables.",
+        "en": "Links and the park count on the About page are more reliable.",
+        "de": "Links und Parkanzahl auf der Infoseite sind jetzt zuverlässiger.",
+        "nl": "Links en het aantal parken op de Over-pagina zijn nu betrouwbaarder.",
+        "it": "I link e il numero di parchi nella pagina informativa sono più affidabili.",
+        "es": "Los enlaces y el número de parques de la página informativa son más fiables.",
+        "pl": "Linki i liczba parków na stronie informacyjnej są teraz bardziej wiarygodne.",
+        "pt": "As ligações e o número de parques na página informativa são agora mais fiáveis."
+      }
+    },
     {
       "version": "4.1.46",
       "releasedAt": "2026-08-20",

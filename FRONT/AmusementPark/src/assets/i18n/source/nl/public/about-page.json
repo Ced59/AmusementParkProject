@@ -2,7 +2,7 @@
   "aboutPage": {
     "seo": {
       "title": "Over AmusementPark — Jouw gids voor pretparken",
-      "description": "Ontdek meer dan 2.900 pretparken met attracties, foto’s, beoordelingen en kaarten in acht talen op AmusementPark."
+      "description": "Ontdek zichtbare pretparken met attracties, foto’s, beoordelingen en kaarten in acht talen op AmusementPark."
     },
     "kicker": "Het park vóór het park",
     "title": "De wereld van pretparken, zonder omwegen",
@@ -12,12 +12,24 @@
     "ticket": {
       "kicker": "Ontdekkingspas",
       "title": "Volgende halte: kriebels",
-      "parks": "2.900+ parken",
+      "parks": {
+        "one": "{{count}} zichtbaar park",
+        "few": "{{count}} zichtbare parken",
+        "many": "{{count}} zichtbare parken",
+        "other": "{{count}} zichtbare parken"
+      },
+      "parksUnavailable": "Zichtbare parken",
       "languages": "8 talen"
     },
     "highlights": {
       "ariaLabel": "AmusementPark in het kort",
-      "parks": "2.900+ parken, van icoon tot verborgen parel",
+      "parks": {
+        "one": "{{count}} park om te ontdekken, van icoon tot verborgen parel",
+        "few": "{{count}} parken om te ontdekken, van icoon tot verborgen parel",
+        "many": "{{count}} parken om te ontdekken, van icoon tot verborgen parel",
+        "other": "{{count}} parken om te ontdekken, van icoon tot verborgen parel"
+      },
+      "parksUnavailable": "Parken om te ontdekken, van icoon tot verborgen parel",
       "content": "Attracties, foto’s, beoordelingen en kaarten",
       "languages": "8 talen om verder te reizen"
     },

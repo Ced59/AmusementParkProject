@@ -2707,7 +2707,7 @@
   "aboutPage": {
     "seo": {
       "title": "À propos d’AmusementPark — Le guide des parcs d’attractions",
-      "description": "Explore plus de 2 900 parcs avec leurs attractions, photos, notes et cartes, disponibles en huit langues sur AmusementPark."
+      "description": "Explore les parcs visibles avec leurs attractions, photos, notes et cartes, disponibles en huit langues sur AmusementPark."
     },
     "kicker": "Le parc avant le parc",
     "title": "Le monde des parcs, sans tourner en rond",
@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Passeport découverte",
       "title": "Prochaine escale : sensations",
-      "parks": "2 900+ parcs",
+      "parks": {
+        "one": "{{count}} parc visible",
+        "few": "{{count}} parcs visibles",
+        "many": "{{count}} parcs visibles",
+        "other": "{{count}} parcs visibles"
+      },
+      "parksUnavailable": "Parcs visibles",
       "languages": "8 langues"
     },
     "highlights": {
       "ariaLabel": "AmusementPark en bref",
-      "parks": "2 900+ parcs, du géant à la pépite",
+      "parks": {
+        "one": "{{count}} parc à explorer, du géant à la pépite",
+        "few": "{{count}} parcs à explorer, du géant à la pépite",
+        "many": "{{count}} parcs à explorer, du géant à la pépite",
+        "other": "{{count}} parcs à explorer, du géant à la pépite"
+      },
+      "parksUnavailable": "Des parcs à explorer, du géant à la pépite",
       "content": "Attractions, photos, notes et cartes",
       "languages": "8 langues pour partir plus loin"
     },
