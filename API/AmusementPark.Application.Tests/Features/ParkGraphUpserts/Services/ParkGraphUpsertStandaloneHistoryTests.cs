@@ -16,6 +16,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.History;
@@ -30,15 +31,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
     [Fact]
     public async Task PreviewAndApplyAsync_WhenStandaloneGraphContainsHistory_ShouldCreateStandaloneEvent()
     {
-        StandaloneAttraction attraction = new StandaloneAttraction
-        {
-            Id = "standalone-1",
-            Name = "Pendolino",
-            CountryCode = "AT",
-            Type = ParkItemType.RollerCoaster,
-            IsVisible = false,
-            AdminReviewStatus = AdminReviewStatus.ToReview,
-        };
+        StandaloneAttraction attraction = CreateAttraction();
         Mock<IStandaloneAttractionRepository> standaloneRepository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
         standaloneRepository
             .Setup(repository => repository.GetByIdAsync("standalone-1", true, It.IsAny<CancellationToken>()))
@@ -70,26 +63,18 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
-        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
-        upsertHistoryRepository
-            .Setup(repository => repository.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = CreateUpsertHistoryRepository();
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(notifier => notifier.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
-        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
-            Mock.Of<IParkRepository>(MockBehavior.Strict),
-            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
-            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
-            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
-            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
-            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
-            Mock.Of<IImageRepository>(MockBehavior.Strict),
-            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
-            searchProjectionWriter.Object,
-            upsertHistoryRepository.Object,
-            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
-            MeasurementConversionService.Instance,
-            historyEventRepository: historyEventRepository.Object,
-            standaloneAttractionRepository: standaloneRepository.Object);
+        ParkGraphUpsertProcessor processor = CreateProcessor(
+            standaloneRepository,
+            historyEventRepository,
+            searchProjectionWriter,
+            upsertHistoryRepository,
+            publicSeoUpdateNotifier);
 
         const string rawJson = """
         {
@@ -128,13 +113,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         """;
 
         using JsonDocument previewDocument = JsonDocument.Parse(rawJson);
-        ParkGraphUpsertRequest previewRequest = new ParkGraphUpsertRequest
-        {
-            CreateIfMissing = false,
-            ReplaceCollections = false,
-            Document = previewDocument.RootElement.Clone(),
-            RawJson = rawJson,
-        };
+        ParkGraphUpsertRequest previewRequest = CreateRequest(previewDocument, rawJson);
 
         ApplicationResult<ParkGraphUpsertResult> preview = await processor.PreviewAsync(previewRequest, "user-1", CancellationToken.None);
 
@@ -149,13 +128,7 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             Times.Never);
 
         using JsonDocument applyDocument = JsonDocument.Parse(rawJson);
-        ParkGraphUpsertRequest applyRequest = new ParkGraphUpsertRequest
-        {
-            CreateIfMissing = false,
-            ReplaceCollections = false,
-            Document = applyDocument.RootElement.Clone(),
-            RawJson = rawJson,
-        };
+        ParkGraphUpsertRequest applyRequest = CreateRequest(applyDocument, rawJson);
 
         ApplicationResult<ParkGraphUpsertResult> apply = await processor.ApplyAsync(applyRequest, "user-1", CancellationToken.None);
 
@@ -174,8 +147,137 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             repository => repository.CreateAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
             Times.Once);
         searchProjectionWriter.VerifyAll();
+        publicSeoUpdateNotifier.Verify(
+            notifier => notifier.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()),
+            Times.Once);
         upsertHistoryRepository.Verify(
             repository => repository.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()),
             Times.Exactly(2));
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenLaterStandaloneHistoryEventIsInvalid_ShouldNotPersistEarlierChanges()
+    {
+        StandaloneAttraction attraction = CreateAttraction();
+        Mock<IStandaloneAttractionRepository> standaloneRepository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneRepository
+            .Setup(repository => repository.GetByIdAsync("standalone-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(attraction);
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = CreateUpsertHistoryRepository();
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+
+        ParkGraphUpsertProcessor processor = CreateProcessor(
+            standaloneRepository,
+            historyEventRepository,
+            searchProjectionWriter,
+            upsertHistoryRepository,
+            publicSeoUpdateNotifier);
+
+        const string rawJson = """
+        {
+          "documentType": "standaloneAttractionGraph",
+          "identity": { "standaloneAttractionId": "standalone-1" },
+          "standaloneAttraction": {
+            "id": "standalone-1",
+            "name": "Pendolino"
+          },
+          "history": {
+            "events": [
+              {
+                "key": "pendolino-opening-2007",
+                "entityType": "StandaloneAttraction",
+                "ownerId": "standalone-1",
+                "date": "2007",
+                "eventType": "Opening"
+              },
+              {
+                "key": "invalid-event",
+                "entityType": "StandaloneAttraction",
+                "ownerId": "standalone-1",
+                "date": "2008",
+                "eventType": "DefinitelyNotAHistoryType"
+              }
+            ]
+          }
+        }
+        """;
+
+        using JsonDocument document = JsonDocument.Parse(rawJson);
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            CreateRequest(document, rawJson),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        standaloneRepository.Verify(
+            repository => repository.UpdateAsync(It.IsAny<string>(), It.IsAny<StandaloneAttraction>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        historyEventRepository.Verify(
+            repository => repository.CreateAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        searchProjectionWriter.VerifyNoOtherCalls();
+        publicSeoUpdateNotifier.VerifyNoOtherCalls();
+        upsertHistoryRepository.Verify(
+            repository => repository.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()),
+            Times.Once);
+    }
+
+    private static StandaloneAttraction CreateAttraction()
+    {
+        return new StandaloneAttraction
+        {
+            Id = "standalone-1",
+            Name = "Pendolino",
+            CountryCode = "AT",
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+    }
+
+    private static ParkGraphUpsertRequest CreateRequest(JsonDocument document, string rawJson)
+    {
+        return new ParkGraphUpsertRequest
+        {
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = rawJson,
+        };
+    }
+
+    private static Mock<IParkGraphUpsertHistoryRepository> CreateUpsertHistoryRepository()
+    {
+        Mock<IParkGraphUpsertHistoryRepository> repository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        repository
+            .Setup(item => item.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        return repository;
+    }
+
+    private static ParkGraphUpsertProcessor CreateProcessor(
+        Mock<IStandaloneAttractionRepository> standaloneRepository,
+        Mock<IHistoryEventRepository> historyEventRepository,
+        Mock<ISearchProjectionWriter> searchProjectionWriter,
+        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository,
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier)
+    {
+        return new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            upsertHistoryRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            historyEventRepository: historyEventRepository.Object,
+            standaloneAttractionRepository: standaloneRepository.Object);
     }
 }
