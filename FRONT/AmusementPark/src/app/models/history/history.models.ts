@@ -84,7 +84,7 @@ export interface HistoryTimeline {
   parkItem?: ParkItem | null;
   standaloneAttraction?: StandaloneAttraction | null;
   hasParkItemTimelineEvents?: boolean;
-  includedParkItems: ParkItem[];
+  includedParkItems?: ParkItem[];
   events: HistoryTimelineEvent[];
   pagination?: PaginationContract | null;
   pageRanges?: HistoryTimelinePageRange[];
