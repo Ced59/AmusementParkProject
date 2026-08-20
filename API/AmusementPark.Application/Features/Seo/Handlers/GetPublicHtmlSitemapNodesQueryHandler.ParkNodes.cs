@@ -1,4 +1,3 @@
-using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Core.Domain.History;

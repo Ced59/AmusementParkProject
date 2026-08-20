@@ -160,10 +160,59 @@
             <span class="admin-kicker">Record</span>
             <h3>{{ draft().name || t('newAttraction') }}</h3>
           </div>
-          <button type="button" class="btn btn--ghost btn--sm" (click)="exportDraft()" [disabled]="!canExport() || loading()">
-            <i class="pi pi-download" aria-hidden="true"></i>
-            {{ t('exportJson') }}
-          </button>
+          <div class="admin-standalone-editor__tools">
+            <label class="btn btn--ghost btn--sm admin-standalone-file-button" [class.admin-standalone-file-button--disabled]="loading() || isImportPreviewing() || isImportApplying()">
+              <i class="pi pi-upload" aria-hidden="true"></i>
+              {{ t('importJson') }}
+              <input
+                type="file"
+                accept=".json,application/json"
+                (change)="loadImportJsonFile($event)"
+                [disabled]="loading() || isImportPreviewing() || isImportApplying()">
+            </label>
+            <button type="button" class="btn btn--ghost btn--sm" (click)="exportDraft()" [disabled]="!canExport() || loading()">
+              <i class="pi pi-download" aria-hidden="true"></i>
+              {{ t('exportJson') }}
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-standalone-import" *ngIf="importFileName() || isImportPreviewing() || isImportApplying()" aria-live="polite">
+          <div class="admin-standalone-import__head">
+            <div>
+              <strong>{{ importFileName() }}</strong>
+              <span>{{ t('importHint') }}</span>
+            </div>
+            <span *ngIf="isImportPreviewing()">{{ t('importPreviewing') }}</span>
+            <span *ngIf="isImportApplying()">{{ t('importApplying') }}</span>
+          </div>
+
+          <label class="admin-standalone-switch">
+            <input
+              type="checkbox"
+              [ngModel]="importCreateIfMissing"
+              (ngModelChange)="setImportCreateIfMissing($event)"
+              [disabled]="isImportPreviewing() || isImportApplying()">
+            <span>{{ t('importCreateIfMissing') }}</span>
+          </label>
+
+          <ng-container *ngIf="importPreviewResult() as result">
+            <div class="admin-standalone-import__summary">
+              <span>{{ result.changes.length }} {{ t('importChanges') }}</span>
+              <span>{{ result.warnings.length }} {{ t('importWarnings') }}</span>
+              <span [class.admin-standalone-import__error-count]="result.errors.length > 0">{{ result.errors.length }} {{ t('importErrors') }}</span>
+            </div>
+
+            <ul class="admin-standalone-import__messages" *ngIf="result.warnings.length > 0 || result.errors.length > 0">
+              <li *ngFor="let warning of result.warnings">{{ warning }}</li>
+              <li class="admin-standalone-import__error" *ngFor="let importError of result.errors">{{ importError }}</li>
+            </ul>
+
+            <button type="button" class="btn btn--primary btn--sm" (click)="applyImport()" [disabled]="!canApplyImport()">
+              <i class="pi pi-check" aria-hidden="true"></i>
+              {{ t('importApply') }}
+            </button>
+          </ng-container>
         </div>
 
         <label class="admin-field">

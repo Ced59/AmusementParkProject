@@ -6,18 +6,21 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 import { AdminReviewStatus, ADMIN_REVIEW_STATUSES } from '@app/models/admin/admin-review-status';
+import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ParkItemType } from '@app/models/parks/park-item-type';
-import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { StandaloneAttraction, StandaloneAttractionMigrationRequest } from '@app/models/standalone-attractions/standalone-attraction';
-import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { StandaloneAttractionListFilters, StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
 import { PaginationContract } from '@shared/models/contracts';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security/error-display.helpers';
+import { AdminStandaloneAttractionsFacade } from '../../state/admin-standalone-attractions.facade';
+import {
+  AdminStandaloneAttractionListFilters,
+  AdminStandaloneLegacyParkFilters
+} from '../../state/admin-standalone-attractions.ports';
 
 type StandaloneAttractionSortField = 'created' | 'updated' | 'name' | 'type' | 'countryCode' | 'isVisible' | 'adminReviewStatus';
 type StandaloneAttractionSortDirection = 'asc' | 'desc';
+type JsonObject = Record<string, unknown>;
 
 interface StandaloneAttractionsAdminCopy {
   title: string;
@@ -37,6 +40,20 @@ interface StandaloneAttractionsAdminCopy {
   newAttraction: string;
   save: string;
   exportJson: string;
+  importJson: string;
+  importHint: string;
+  importCreateIfMissing: string;
+  importApply: string;
+  importPreviewing: string;
+  importApplying: string;
+  importReady: string;
+  importApplied: string;
+  importInvalidJson: string;
+  importWrongDocument: string;
+  importFileReadFailed: string;
+  importChanges: string;
+  importWarnings: string;
+  importErrors: string;
   migrate: string;
   migrationTitle: string;
   legacyParkSearch: string;
@@ -107,6 +124,20 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     newAttraction: 'Nouvelle attraction',
     save: 'Enregistrer',
     exportJson: 'Exporter JSON',
+    importJson: 'Importer JSON',
+    importHint: 'Le fichier est d’abord contrôlé sans modifier les données.',
+    importCreateIfMissing: 'Créer la fiche si elle n’existe pas',
+    importApply: 'Appliquer l’import',
+    importPreviewing: 'Contrôle du JSON...',
+    importApplying: 'Application du JSON...',
+    importReady: 'Import prêt à être appliqué.',
+    importApplied: 'Import JSON appliqué.',
+    importInvalidJson: 'Le fichier ne contient pas un JSON valide.',
+    importWrongDocument: 'Ce fichier ne décrit pas une attraction isolée.',
+    importFileReadFailed: 'Impossible de lire le fichier JSON.',
+    importChanges: 'changements',
+    importWarnings: 'avertissements',
+    importErrors: 'erreurs',
     migrate: 'Migrer',
     migrationTitle: 'Migration depuis un parc legacy',
     legacyParkSearch: 'Parc legacy à migrer',
@@ -175,6 +206,20 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     newAttraction: 'New attraction',
     save: 'Save',
     exportJson: 'Export JSON',
+    importJson: 'Import JSON',
+    importHint: 'The file is checked before any data is changed.',
+    importCreateIfMissing: 'Create the record if it does not exist',
+    importApply: 'Apply import',
+    importPreviewing: 'Checking JSON...',
+    importApplying: 'Applying JSON...',
+    importReady: 'Import is ready to apply.',
+    importApplied: 'JSON import applied.',
+    importInvalidJson: 'The file does not contain valid JSON.',
+    importWrongDocument: 'This file does not describe a standalone attraction.',
+    importFileReadFailed: 'Unable to read the JSON file.',
+    importChanges: 'changes',
+    importWarnings: 'warnings',
+    importErrors: 'errors',
     migrate: 'Migrate',
     migrationTitle: 'Migration from a legacy park',
     legacyParkSearch: 'Legacy park to migrate',
@@ -253,6 +298,12 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   protected readonly selected = signal<StandaloneAttraction | null>(null);
   protected readonly draft = signal<StandaloneAttraction>(this.createEmptyAttraction());
   protected readonly isExporting = signal<boolean>(false);
+  protected readonly isImportPreviewing = signal<boolean>(false);
+  protected readonly isImportApplying = signal<boolean>(false);
+  protected readonly importFileName = signal<string | null>(null);
+  protected readonly importJsonText = signal<string | null>(null);
+  protected readonly importPreviewResult = signal<ParkGraphUpsertResult | null>(null);
+  protected readonly importRequest = signal<ParkGraphUpsertRequest | null>(null);
   protected readonly pagination = signal<PaginationContract>({
     currentPage: 1,
     itemsPerPage: 20,
@@ -261,6 +312,11 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   });
   protected readonly selectedCount = computed<number>(() => this.selectedIds().size);
   protected readonly canExport = computed<boolean>(() => !!this.draft().id && !this.isExporting());
+  protected readonly canApplyImport = computed<boolean>(() =>
+    !!this.importRequest() &&
+    !!this.importPreviewResult()?.canApply &&
+    !this.isImportPreviewing() &&
+    !this.isImportApplying());
 
   protected search: string = '';
   protected countryCode: string = '';
@@ -277,10 +333,10 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   protected migrationRetireLegacyPark: boolean = true;
   protected migrationRetireLegacyParkItem: boolean = true;
   protected legacyParkSearch: string = '';
+  protected importCreateIfMissing: boolean = false;
 
   constructor(
-    private readonly apiService: StandaloneAttractionsApiService,
-    private readonly parksApiService: ParksApiService,
+    private readonly operations: AdminStandaloneAttractionsFacade,
     private readonly router: Router
   ) {
   }
@@ -303,7 +359,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.error.set(null);
 
     try {
-      const result = await firstValueFrom(this.apiService.getAdminPage(page, this.pageSize, this.buildFilters()));
+      const result = await firstValueFrom(this.operations.loadPage(page, this.pageSize, this.buildFilters()));
       this.rows.set(result.items);
       this.pagination.set(result.pagination);
       this.syncSelectedAfterReload(result.items);
@@ -403,8 +459,8 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
 
     try {
       const saved: StandaloneAttraction = current.id
-        ? await firstValueFrom(this.apiService.update(current.id, current))
-        : await firstValueFrom(this.apiService.create(current));
+        ? await firstValueFrom(this.operations.update(current.id, current))
+        : await firstValueFrom(this.operations.create(current));
 
       this.selected.set(saved);
       this.draft.set(this.cloneAttraction(saved));
@@ -504,7 +560,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.error.set(null);
 
     try {
-      const migrated: StandaloneAttraction = await firstValueFrom(this.apiService.migrateFromPark(request));
+      const migrated: StandaloneAttraction = await firstValueFrom(this.operations.migrateFromPark(request));
       this.selected.set(migrated);
       this.draft.set(this.cloneAttraction(migrated));
       this.message.set(this.t('migrated'));
@@ -583,7 +639,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.error.set(null);
 
     try {
-      const response: HttpResponse<Blob> = await firstValueFrom(this.apiService.downloadExport(id));
+      const response: HttpResponse<Blob> = await firstValueFrom(this.operations.downloadExport(id));
       if (!response.body) {
         this.error.set(this.t('actionFailed'));
         return;
@@ -594,6 +650,105 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.setErrorFromUnknown(error);
     } finally {
       this.isExporting.set(false);
+    }
+  }
+
+  protected loadImportJsonFile(event: Event): void {
+    const input: HTMLInputElement = event.target as HTMLInputElement;
+    const file: File | null = input.files?.[0] ?? null;
+    input.value = '';
+    if (!file) {
+      return;
+    }
+
+    const reader: FileReader = new FileReader();
+    reader.onload = (): void => {
+      const jsonText: string = typeof reader.result === 'string' ? reader.result : '';
+      void this.previewImportJson(jsonText, file.name);
+    };
+    reader.onerror = (): void => {
+      this.resetImportPreview();
+      this.error.set(this.t('importFileReadFailed'));
+    };
+    reader.readAsText(file);
+  }
+
+  protected setImportCreateIfMissing(value: boolean): void {
+    if (this.importCreateIfMissing === value) {
+      return;
+    }
+
+    const jsonText: string | null = this.importJsonText();
+    const fileName: string | null = this.importFileName();
+    this.importCreateIfMissing = value;
+    this.importPreviewResult.set(null);
+    this.importRequest.set(null);
+
+    if (jsonText && fileName) {
+      void this.previewImportJson(jsonText, fileName);
+    }
+  }
+
+  protected async previewImportJson(jsonText: string, fileName: string): Promise<void> {
+    this.resetImportPreview();
+    this.importFileName.set(fileName);
+    this.importJsonText.set(jsonText);
+    this.error.set(null);
+    this.message.set(null);
+
+    let document: unknown;
+    try {
+      document = JSON.parse(jsonText);
+    } catch {
+      this.error.set(this.t('importInvalidJson'));
+      return;
+    }
+
+    if (!this.isStandaloneAttractionGraph(document)) {
+      this.error.set(this.t('importWrongDocument'));
+      return;
+    }
+
+    const request: ParkGraphUpsertRequest = {
+      targetParkId: null,
+      createIfMissing: this.importCreateIfMissing,
+      replaceCollections: false,
+      document
+    };
+
+    this.isImportPreviewing.set(true);
+    try {
+      const result: ParkGraphUpsertResult = await firstValueFrom(this.operations.previewImport(request));
+      this.importRequest.set(request);
+      this.importPreviewResult.set(result);
+      this.message.set(result.canApply ? this.t('importReady') : null);
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
+    } finally {
+      this.isImportPreviewing.set(false);
+    }
+  }
+
+  protected async applyImport(): Promise<void> {
+    const request: ParkGraphUpsertRequest | null = this.importRequest();
+    if (!request || !this.importPreviewResult()?.canApply) {
+      return;
+    }
+
+    this.isImportApplying.set(true);
+    this.error.set(null);
+    this.message.set(null);
+
+    try {
+      const result: ParkGraphUpsertResult = await firstValueFrom(this.operations.applyImport(request));
+      this.importPreviewResult.set(result);
+      this.importRequest.set(null);
+      this.message.set(this.t('importApplied'));
+      await this.selectImportedAttraction(result);
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
+    } finally {
+      this.isImportApplying.set(false);
     }
   }
 
@@ -647,7 +802,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.error.set(null);
 
     try {
-      await firstValueFrom(this.apiService.updateBulkAdministration({
+      await firstValueFrom(this.operations.updateBulkAdministration({
         ids,
         isVisible: patch.isVisible ?? null,
         adminReviewStatus: patch.adminReviewStatus ?? null
@@ -693,7 +848,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     return 'standalone-attraction-upsert.json';
   }
 
-  private buildFilters(): StandaloneAttractionListFilters {
+  private buildFilters(): AdminStandaloneAttractionListFilters {
     return {
       search: this.search,
       isVisible: this.isVisibleFilter === '' ? null : this.isVisibleFilter === 'true',
@@ -706,28 +861,10 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   }
 
   private async loadLegacyParks(query: string): Promise<Park[]> {
-    if (this.isLikelyIdentifier(query)) {
-      const park: Park = await firstValueFrom(this.parksApiService.getParkById(query));
-      return [park];
-    }
-
-    const response: ParksApiResponse = await firstValueFrom(this.parksApiService.searchParks(
-      query,
-      1,
-      10,
-      false,
-      null,
-      this.buildLegacyParkFilters(),
-      {
-        closedFilter: 'all',
-        sort: { sortBy: 'name', sortDirection: 'asc' }
-      }
-    ));
-
-    return response.data ?? [];
+    return firstValueFrom(this.operations.loadLegacyParks(query, this.buildLegacyParkFilters()));
   }
 
-  private buildLegacyParkFilters(): ParkAdminListFilters | null {
+  private buildLegacyParkFilters(): AdminStandaloneLegacyParkFilters | null {
     const countryCode: string = this.countryCode.trim().toUpperCase();
 
     return countryCode
@@ -743,12 +880,55 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       : null;
   }
 
-  private isLikelyIdentifier(value: string): boolean {
-    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value.trim());
-  }
-
   private setErrorFromUnknown(error: unknown): void {
     this.error.set(extractSafeDisplayErrorMessage(error, this.t('actionFailed')));
+  }
+
+  private isStandaloneAttractionGraph(document: unknown): document is JsonObject {
+    if (!document || typeof document !== 'object' || Array.isArray(document)) {
+      return false;
+    }
+
+    const jsonObject: JsonObject = document as JsonObject;
+    const documentType: unknown = jsonObject['documentType'] ?? jsonObject['entityType'];
+    const normalizedDocumentType: string = typeof documentType === 'string'
+      ? documentType.trim().toLowerCase().replace(/[^a-z0-9]/g, '')
+      : '';
+
+    if (normalizedDocumentType.length > 0) {
+      return normalizedDocumentType === 'standaloneattraction' ||
+        normalizedDocumentType === 'standaloneattractiongraph';
+    }
+
+    const standaloneAttraction: unknown = jsonObject['standaloneAttraction'] ?? jsonObject['standalone-attraction'];
+    const migration: unknown = jsonObject['migration'] ?? jsonObject['standaloneAttractionMigration'];
+    return this.isJsonObject(standaloneAttraction) || this.isJsonObject(migration);
+  }
+
+  private isJsonObject(value: unknown): value is JsonObject {
+    return !!value && typeof value === 'object' && !Array.isArray(value);
+  }
+
+  private resetImportPreview(): void {
+    this.importFileName.set(null);
+    this.importJsonText.set(null);
+    this.importPreviewResult.set(null);
+    this.importRequest.set(null);
+  }
+
+  private async selectImportedAttraction(result: ParkGraphUpsertResult): Promise<void> {
+    const targetId: string = result.targetStandaloneAttractionId?.trim() ?? '';
+    if (!targetId) {
+      await this.load(1);
+      return;
+    }
+
+    const imported: StandaloneAttraction = await firstValueFrom(this.operations.loadById(targetId));
+    this.selected.set(imported);
+    this.draft.set(this.cloneAttraction(imported));
+    this.syncMigrationTargetFromDraft(imported);
+    this.alignFiltersWithSavedAttraction(imported);
+    await this.load(1);
   }
 
   private syncSelectedAfterReload(rows: StandaloneAttraction[]): void {

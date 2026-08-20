@@ -33,8 +33,15 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             Name = "Pendolino",
             CountryCode = "AT",
             Type = ParkItemType.RollerCoaster,
+            OperatorId = "operator-1",
             IsVisible = false,
             AdminReviewStatus = AdminReviewStatus.ToReview,
+            LegacyParkId = "legacy-park-1",
+            LegacyParkItemId = "legacy-item-1",
+            AttractionDetails = new AttractionDetails
+            {
+                ManufacturerId = "manufacturer-1",
+            },
         };
         HistoryEvent historyEvent = new HistoryEvent
         {
@@ -50,6 +57,32 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             Titles = new List<LocalizedText>
             {
                 new LocalizedText("fr", "Ouverture de Pendolino"),
+            },
+            Article = new HistoryArticle
+            {
+                Slug = "ouverture-pendolino",
+                IsPublished = true,
+                Blocks = new List<HistoryArticleBlock>
+                {
+                    new HistoryArticleBlock
+                    {
+                        Id = "block-1",
+                        Type = HistoryArticleBlockType.Paragraph,
+                        SortOrder = 1,
+                        Texts = new List<LocalizedText>
+                        {
+                            new LocalizedText("fr", "Le récit complet de l'ouverture."),
+                        },
+                    },
+                },
+                Sources = new List<HistorySourceReference>
+                {
+                    new HistorySourceReference
+                    {
+                        Label = "Source officielle",
+                        Url = "https://example.com/history",
+                    },
+                },
             },
         };
 
@@ -67,7 +100,7 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             .ReturnsAsync(Array.Empty<Image>());
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         historyRepository
-            .Setup(repository => repository.GetOwnerTimelineSummaryAsync(
+            .Setup(repository => repository.GetOwnerTimelineAsync(
                 HistoryEntityType.StandaloneAttraction,
                 "standalone-1",
                 true,
@@ -97,6 +130,15 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
         Assert.Equal("standalone-1", exportedEvent.GetProperty("ownerId").GetString());
         Assert.Equal(2007, exportedEvent.GetProperty("year").GetInt32());
         Assert.Equal("Opening", exportedEvent.GetProperty("eventType").GetString());
+        JsonElement article = exportedEvent.GetProperty("article");
+        Assert.Equal("block-1", Assert.Single(article.GetProperty("blocks").EnumerateArray().ToArray()).GetProperty("id").GetString());
+        Assert.Equal("https://example.com/history", Assert.Single(article.GetProperty("sources").EnumerateArray().ToArray()).GetProperty("url").GetString());
+        Assert.False(document.RootElement.GetProperty("migration").GetProperty("retireLegacyPark").GetBoolean());
+        Assert.False(document.RootElement.GetProperty("migration").GetProperty("retireLegacyParkItem").GetBoolean());
+        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("standaloneAttraction").GetProperty("operatorKey").ValueKind);
+        Assert.Equal(
+            JsonValueKind.Null,
+            document.RootElement.GetProperty("standaloneAttraction").GetProperty("attractionDetails").GetProperty("manufacturerKey").ValueKind);
 
         standaloneRepository.VerifyAll();
         imageRepository.VerifyAll();

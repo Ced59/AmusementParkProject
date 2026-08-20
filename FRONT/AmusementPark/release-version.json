@@ -1,6 +1,20 @@
 {
-  "version": "4.1.44",
+  "version": "4.1.45",
   "history": [
+    {
+      "version": "4.1.45",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les attractions isolées gagnent en fiabilité.",
+        "en": "Standalone attractions are more reliable.",
+        "de": "Eigenständige Attraktionen sind jetzt zuverlässiger.",
+        "nl": "Zelfstandige attracties zijn betrouwbaarder.",
+        "it": "Le attrazioni indipendenti sono più affidabili.",
+        "es": "Las atracciones independientes son más fiables.",
+        "pl": "Samodzielne atrakcje są teraz bardziej niezawodne.",
+        "pt": "As atrações independentes estão mais fiáveis."
+      }
+    },
     {
       "version": "4.1.44",
       "releasedAt": "2026-08-20",

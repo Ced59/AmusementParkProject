@@ -77,7 +77,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 existing is null ? "Created" : "Unchanged",
                 existing is null ? "key" : "ownerKey");
 
-            PatchHistoryEvent(historyEvent, patch, targetPark, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
+            PatchHistoryEvent(historyEvent, patch, targetPark.Id, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
 
             if (change.Fields.Count > 0 || existing is null)
             {
@@ -152,7 +152,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private static void PatchHistoryEvent(
         HistoryEvent historyEvent,
         JsonElement patch,
-        Park targetPark,
+        string? defaultContextParkId,
         HistoryEntityType entityType,
         string ownerId,
         string key,
@@ -175,7 +175,7 @@ public sealed partial class ParkGraphUpsertProcessor
         string? contextParkId = ReadHistoryContextParkId(patch);
         if (entityType == HistoryEntityType.ParkItem && !HasExplicitHistoryContextParkProperty(patch))
         {
-            contextParkId ??= parkId ?? targetPark.Id;
+            contextParkId ??= parkId ?? defaultContextParkId;
         }
 
         AddChange(change, "parkId", historyEvent.ParkId, parkId);

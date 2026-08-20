@@ -1,6 +1,6 @@
 # AmusementPark - StandaloneAttraction Data Integration
 
-Version : **2026-07-16**
+Version : **2026-08-20**
 
 Ce guide remplace le parcours parc 1 à 8 quand l’entité pertinente est une attraction fixe isolée : alpine coaster hors parc, luge sur rail durable, grande roue permanente, attraction mécanique exploitée seule, ou installation similaire.
 
@@ -83,6 +83,56 @@ Migration contrôlée :
   }
 }
 ```
+
+Depuis la page admin `Attractions isolées`, l’export et l’import JSON sont disponibles sur la même fiche. La sélection d’un fichier lance toujours un `Preview` ; l’action `Appliquer l’import` reste bloquée tant que ce contrôle ne renvoie pas `canApply: true`. L’option de création déclenche un nouveau Preview avant toute application.
+
+Un JSON exporté est conçu pour être réimporté sans effet de migration destructif : lorsque des IDs legacy sont présents, `retireLegacyPark` et `retireLegacyParkItem` valent `false`. Ne les passer à `true` que pour une migration initiale explicitement contrôlée.
+
+Historique :
+
+```json
+{
+  "history": {
+    "events": [
+      {
+        "key": "bardonecchia-opening-2006",
+        "entityType": "StandaloneAttraction",
+        "ownerId": "standalone-attraction-id",
+        "date": "2006",
+        "eventType": "Opening",
+        "isMajor": true,
+        "isVisible": true,
+        "titles": {
+          "fr": "Ouverture de Bardonecchia Alpine Coaster",
+          "en": "Bardonecchia Alpine Coaster opens"
+        },
+        "article": {
+          "slug": "ouverture-bardonecchia-alpine-coaster",
+          "isPublished": true,
+          "blocks": [
+            {
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Récit éditorial sourcé de l’ouverture.",
+                "en": "A sourced editorial account of the opening."
+              }
+            }
+          ],
+          "sources": [
+            {
+              "label": "Source officielle",
+              "url": "https://example.org/history"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+L’export doit conserver l’article complet, notamment ses `blocks` et ses `sources`. Une réapplication en mode merge ne doit ni vider ces contenus ni rattacher l’événement à un parc artificiel.
 
 Images :
 

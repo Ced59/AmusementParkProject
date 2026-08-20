@@ -1,13 +1,12 @@
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 
-namespace AmusementPark.Application.Features.History.Handlers;
+namespace AmusementPark.Core.Domain.History;
 
-internal static class AutomaticHistoryEventFactory
+public static class AutomaticHistoryEventFactory
 {
     private static readonly string[] SupportedLanguages = new[]
     {
@@ -137,6 +136,16 @@ internal static class AutomaticHistoryEventFactory
                TryResolveTextDateParts(details?.ClosingDateText, out _);
     }
 
+    public static bool HasLifecycleDate(StandaloneAttraction attraction)
+    {
+        ArgumentNullException.ThrowIfNull(attraction);
+        AttractionDetails? details = attraction.AttractionDetails;
+        return details?.OpeningDate is not null ||
+               details?.ClosingDate is not null ||
+               TryResolveTextDateParts(details?.OpeningDateText, out _) ||
+               TryResolveTextDateParts(details?.ClosingDateText, out _);
+    }
+
     public static bool HasLifecycleDate(Park park)
     {
         return park.OpeningDate is not null ||
@@ -233,6 +242,38 @@ internal static class AutomaticHistoryEventFactory
         return events;
     }
 
+    public static IReadOnlyCollection<HistoryEvent> CreateStandaloneAttractionLifecycleEvents(StandaloneAttraction attraction)
+    {
+        ArgumentNullException.ThrowIfNull(attraction);
+        if (string.IsNullOrWhiteSpace(attraction.Id) || !HasLifecycleDate(attraction))
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        List<HistoryEvent> events = new List<HistoryEvent>();
+        AttractionDetails details = attraction.AttractionDetails!;
+
+        if (TryResolveDateParts(details.OpeningDate, details.OpeningDateText, out HistoryDateParts openingDateParts))
+        {
+            events.Add(CreateLifecycleEvent(
+                attraction,
+                openingDateParts,
+                ParkItemHistoryEventType.Opening.ToString(),
+                "opening"));
+        }
+
+        if (TryResolveDateParts(details.ClosingDate, details.ClosingDateText, out HistoryDateParts closingDateParts))
+        {
+            events.Add(CreateLifecycleEvent(
+                attraction,
+                closingDateParts,
+                ParkItemHistoryEventType.DefinitiveClosure.ToString(),
+                "closure"));
+        }
+
+        return events;
+    }
+
     public static List<HistoryEvent> MergeWithExplicitEvents(
         IReadOnlyCollection<HistoryEvent> explicitEvents,
         IReadOnlyCollection<HistoryEvent> automaticEvents)
@@ -318,6 +359,39 @@ internal static class AutomaticHistoryEventFactory
         };
     }
 
+    private static HistoryEvent CreateLifecycleEvent(
+        StandaloneAttraction attraction,
+        HistoryDateParts dateParts,
+        string eventType,
+        string keySuffix)
+    {
+        string key = BuildStandaloneAttractionKey(attraction.Id, keySuffix, dateParts);
+        DateTime timestamp = attraction.UpdatedAtUtc == default ? DateTime.UtcNow : attraction.UpdatedAtUtc;
+        string attractionName = string.IsNullOrWhiteSpace(attraction.Name) ? attraction.Id : attraction.Name.Trim();
+
+        return new HistoryEvent
+        {
+            Id = key,
+            Key = key,
+            EntityType = HistoryEntityType.StandaloneAttraction,
+            OwnerId = attraction.Id,
+            ParkId = null,
+            ParkItemId = null,
+            ContextParkId = null,
+            Year = dateParts.Year,
+            Month = dateParts.Precision == HistoryDatePrecision.Year ? null : dateParts.Month,
+            Day = dateParts.Precision == HistoryDatePrecision.Day ? dateParts.Day : null,
+            DatePrecision = dateParts.Precision,
+            EventType = eventType,
+            IsMajor = false,
+            IsVisible = attraction.IsVisible,
+            Slug = key,
+            Titles = BuildTitles(attractionName, eventType),
+            CreatedAtUtc = timestamp,
+            UpdatedAtUtc = timestamp,
+        };
+    }
+
     private static string BuildParkKey(string parkId, string suffix, HistoryDateParts dateParts)
     {
         string dateKey = BuildDateKey(dateParts);
@@ -329,6 +403,11 @@ internal static class AutomaticHistoryEventFactory
         string dateKey = BuildDateKey(dateParts);
         string contextPart = string.IsNullOrWhiteSpace(parkId) ? "unknown-park" : parkId.Trim();
         return $"auto-parkitem-{parkItemId.Trim()}-{contextPart}-{suffix}-{dateKey}";
+    }
+
+    private static string BuildStandaloneAttractionKey(string attractionId, string suffix, HistoryDateParts dateParts)
+    {
+        return $"auto-standalone-{attractionId.Trim()}-{suffix}-{BuildDateKey(dateParts)}";
     }
 
     private static string BuildDateKey(HistoryDateParts dateParts)

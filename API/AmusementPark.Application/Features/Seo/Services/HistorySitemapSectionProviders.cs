@@ -1,6 +1,5 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
-using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -52,12 +51,12 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
             : (await this.standaloneAttractionRepository.GetPublicSitemapCandidatesAsync(PublicHistoryEventLimit, cancellationToken))
                 .Where(static attraction =>
                     HistorySitemapCandidateResolver.IsPublicHistoryStandaloneAttraction(attraction) &&
-                    StandaloneAttractionAutomaticHistoryEventFactory.HasLifecycleDate(attraction))
+                    AutomaticHistoryEventFactory.HasLifecycleDate(attraction))
                 .ToList();
         IReadOnlyCollection<HistoryEvent> automaticEvents = AutomaticHistoryEventFactory
             .CreateParkLifecycleEvents(automaticParkCandidates)
             .Concat(AutomaticHistoryEventFactory.CreateParkItemLifecycleEvents(automaticItemCandidates))
-            .Concat(automaticStandaloneCandidates.SelectMany(StandaloneAttractionAutomaticHistoryEventFactory.CreateLifecycleEvents))
+            .Concat(automaticStandaloneCandidates.SelectMany(AutomaticHistoryEventFactory.CreateStandaloneAttractionLifecycleEvents))
             .ToList();
 
         if (automaticEvents.Count > 0)
@@ -542,10 +541,7 @@ internal static class HistorySitemapCandidateResolver
 
     public static bool IsPublicHistoryStandaloneAttraction(StandaloneAttraction attraction)
     {
-        return !string.IsNullOrWhiteSpace(attraction.Id) &&
-               !string.IsNullOrWhiteSpace(attraction.Name) &&
-               attraction.IsVisible &&
-               attraction.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+        return attraction.IsPubliclyPublishable();
     }
 
     private static string? ResolveFirstText(IReadOnlyCollection<LocalizedText>? texts)

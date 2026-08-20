@@ -36,7 +36,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler
             : this.imageRepository.GetByOwnersAsync(ImageOwnerType.StandaloneAttraction, new[] { attraction.Id }, null, cancellationToken);
         Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = this.historyEventRepository is null || string.IsNullOrWhiteSpace(attraction.Id)
             ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
-            : this.historyEventRepository.GetOwnerTimelineSummaryAsync(
+            : this.historyEventRepository.GetOwnerTimelineAsync(
                 HistoryEntityType.StandaloneAttraction,
                 attraction.Id,
                 true,
@@ -81,8 +81,8 @@ public sealed partial class ExportParkGraphJsonQueryHandler
                 legacyParkId = attraction.LegacyParkId,
                 legacyParkItemId = attraction.LegacyParkItemId,
                 targetStandaloneAttractionId = attraction.Id,
-                retireLegacyPark = true,
-                retireLegacyParkItem = true,
+                retireLegacyPark = false,
+                retireLegacyParkItem = false,
             };
         }
 
@@ -105,13 +105,13 @@ public sealed partial class ExportParkGraphJsonQueryHandler
             type = attraction.Type,
             subtype = attraction.Subtype,
             operatorId = attraction.OperatorId,
-            operatorKey = attraction.OperatorId,
+            operatorKey = (string?)null,
             websiteUrl = attraction.WebsiteUrl,
             street = attraction.Street,
             city = attraction.City,
             postalCode = attraction.PostalCode,
             descriptions = CopyLocalizedTexts(attraction.Descriptions),
-            attractionDetails = attraction.AttractionDetails is null ? null : MapAttractionDetails(attraction.AttractionDetails),
+            attractionDetails = attraction.AttractionDetails is null ? null : MapAttractionDetails(attraction.AttractionDetails, false),
             attractionLocations = attraction.AttractionLocations,
             isVisible = attraction.IsVisible,
             adminReviewStatus = attraction.AdminReviewStatus,

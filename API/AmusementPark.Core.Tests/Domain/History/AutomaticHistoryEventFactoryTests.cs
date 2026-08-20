@@ -1,9 +1,8 @@
-using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using Xunit;
 
-namespace AmusementPark.Application.Tests.Features.History.Handlers;
+namespace AmusementPark.Core.Tests.Domain.History;
 
 public sealed class AutomaticHistoryEventFactoryTests
 {
@@ -95,5 +94,33 @@ public sealed class AutomaticHistoryEventFactoryTests
         Assert.Null(historyEvent.Day);
         Assert.Equal(HistoryDatePrecision.Year, historyEvent.DatePrecision);
         Assert.Equal(ParkItemHistoryEventType.DefinitiveClosure.ToString(), historyEvent.EventType);
+    }
+
+    [Fact]
+    public void CreateStandaloneAttractionLifecycleEvents_ShouldKeepStandaloneOwnershipAndSourceTimestamp()
+    {
+        DateTime updatedAtUtc = new DateTime(2026, 8, 19, 12, 30, 0, DateTimeKind.Utc);
+        StandaloneAttraction attraction = new StandaloneAttraction
+        {
+            Id = "standalone-1",
+            Name = "Alpine Coaster",
+            IsVisible = true,
+            UpdatedAtUtc = updatedAtUtc,
+            AttractionDetails = new AttractionDetails
+            {
+                OpeningDateText = "2007",
+            },
+        };
+
+        IReadOnlyCollection<HistoryEvent> events = AutomaticHistoryEventFactory.CreateStandaloneAttractionLifecycleEvents(attraction);
+
+        HistoryEvent historyEvent = Assert.Single(events);
+        Assert.Equal("auto-standalone-standalone-1-opening-2007", historyEvent.Key);
+        Assert.Equal(HistoryEntityType.StandaloneAttraction, historyEvent.EntityType);
+        Assert.Equal("standalone-1", historyEvent.OwnerId);
+        Assert.Null(historyEvent.ParkId);
+        Assert.Null(historyEvent.ParkItemId);
+        Assert.Null(historyEvent.ContextParkId);
+        Assert.Equal(updatedAtUtc, historyEvent.UpdatedAtUtc);
     }
 }

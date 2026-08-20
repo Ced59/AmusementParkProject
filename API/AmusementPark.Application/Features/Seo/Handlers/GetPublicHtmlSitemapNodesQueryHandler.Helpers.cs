@@ -1,6 +1,5 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
-using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
