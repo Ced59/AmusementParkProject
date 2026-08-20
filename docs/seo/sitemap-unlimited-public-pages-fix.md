@@ -11,8 +11,8 @@ La génération des sitemaps réutilisait encore une ancienne limite de volume d
 - suppression du réglage `Seo:MaxDynamicUrlsPerType` dans la configuration applicative ;
 - génération des sections sitemap à partir de l'ensemble des candidats publics visibles ;
 - suppression des `.Take(...)` sur les références sitemap ;
-- conservation du découpage protocolaire par sitemap à 50 000 URLs maximum par fichier ;
-- découpage par langue et par chunks si une section dépasse la limite protocolaire.
+- conservation des limites protocolaires de 50 000 URLs et 50 Mio non compressés par sitemap ;
+- découpage opérationnel par langue et par blocs de 1 000 URLs, afin de garder des réponses bornées sans gonfler excessivement l'index racine.
 
 ## Règle cible
 

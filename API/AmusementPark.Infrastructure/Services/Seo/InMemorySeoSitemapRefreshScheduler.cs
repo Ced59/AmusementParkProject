@@ -2,6 +2,7 @@ using System.Threading.Channels;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Ports;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -69,6 +70,7 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
         IPublicSeoContextProvider contextProvider = scope.ServiceProvider.GetRequiredService<IPublicSeoContextProvider>();
         SeoSitemapGenerationOrchestrator orchestrator = scope.ServiceProvider.GetRequiredService<SeoSitemapGenerationOrchestrator>();
         PublicSeoContext context = await contextProvider.GetAsync(cancellationToken);
+        ISsrPageCacheInvalidator? ssrPageCacheInvalidator = scope.ServiceProvider.GetService<ISsrPageCacheInvalidator>();
 
         SitemapGenerationResult result = await orchestrator.GenerateAsync(
             context.PublicBaseUrl,
@@ -81,16 +83,37 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
             triggeredByUserEmail: null,
             cancellationToken);
 
-        await this.InvalidatePublicResponsesAfterSuccessfulGenerationAsync(result, cancellationToken);
+        await this.InvalidatePublicResponsesAfterSuccessfulGenerationAsync(
+            result,
+            ssrPageCacheInvalidator,
+            cancellationToken);
     }
 
     internal async Task InvalidatePublicResponsesAfterSuccessfulGenerationAsync(
         SitemapGenerationResult result,
+        ISsrPageCacheInvalidator? ssrPageCacheInvalidator,
         CancellationToken cancellationToken)
     {
-        if (result.Status == SitemapGenerationStatus.Succeeded && this.responseCacheInvalidator is not null)
+        if (result.Status != SitemapGenerationStatus.Succeeded)
+        {
+            return;
+        }
+
+        if (this.responseCacheInvalidator is not null)
         {
             await this.responseCacheInvalidator.InvalidateAsync(cancellationToken);
+        }
+
+        if (ssrPageCacheInvalidator is not null)
+        {
+            await ssrPageCacheInvalidator.InvalidateAsync(
+                new SsrPageCacheInvalidationRequest
+                {
+                    IncludeSeoDocuments = true,
+                    AllowStale = false,
+                    Refresh = false,
+                },
+                cancellationToken);
         }
     }
 

@@ -5,7 +5,9 @@ namespace AmusementPark.Application.Features.Seo.Services;
 
 public static class SitemapSectionChunker
 {
-    public const int MaxUrlsPerPublicSitemapFile = 200;
+    // Keep public files comfortably below the protocol limits while avoiding
+    // hundreds of tiny files in the root sitemap index.
+    public const int MaxUrlsPerPublicSitemapFile = 1000;
 
     private static readonly XNamespace SitemapNamespace = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
