@@ -8,7 +8,7 @@ Updated: 2026-08-20
 
 - Duplicate public metadata was real. The code confirmed generic SEO fallback on park operator, founder and manufacturer detail routes, English-only zone metadata, and self-canonical URLs when an entity was reached through an old slug.
 - Public critical routes are configured for SSR in `app.routes.server.ts`. Admin, auth, account and private areas remain client-rendered or noindex through route/default SEO handling. Public technical pages are editorial content and remain indexable.
-- Static, media and zone sitemap providers skip empty language sections and now also exclude thin collection pages: fewer than three images, or fewer than two videos, items, zones or map markers.
+- Static, media, zone and history sitemap providers skip empty language sections and now also exclude thin collection pages: fewer than three images, or fewer than two videos, items, zones, map markers or history events.
 - Park item, zone, media and reference sitemap URLs are generated from current entity names and route slugs. The frontend now uses the same loaded entity data for canonical URLs.
 - IndexNow already had a selective path through `PublicSeoUpdateNotifier`; the risky path was full sitemap generation submitting every generated public URL.
 
@@ -18,6 +18,7 @@ Updated: 2026-08-20
 - Added dedicated localized SEO metadata for public reference pages and park zone pages.
 - Enriched attraction fallback descriptions with existing displayed specs only.
 - Kept noindex behavior for filtered URLs, thin galleries and collections, empty weather pages, private/admin/account/auth/technical error routes.
+- Added the missing SSR declarations for standalone attraction history timelines and aligned their route status with the public router.
 - Added the public manufacturers index page to static sitemap generation because the route is SSR, visible in public navigation and indexable.
 - Removed IndexNow from sitemap generation at the orchestration boundary, so manual, automatic and fallback generations cannot submit URLs. Public content mutations remain the only selective IndexNow path, including image changes.
 

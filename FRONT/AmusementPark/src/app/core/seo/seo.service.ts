@@ -2523,19 +2523,21 @@ export class SeoService {
     const title: string = `${copy.timelineTitle(paginatedTitleSubject)} — ${SITE_NAME}`;
     const description: string = `${copy.timelineDescription(contextLabel)}${this.resolveHistoryTimelinePaginationDescriptionSuffix(timeline, normalizedLanguage)}`;
     const imageId: string | null = this.resolveHistoryTimelineSocialImageId(timeline);
+    const totalEvents: number = timeline.pagination?.totalItems ?? timeline.events.length;
+    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(totalEvents);
 
     this.apply({
       title,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: timeline.events.length > 0 ? 'index,follow' : 'noindex,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(imageId) ?? undefined,
       imageAlt: contextLabel,
-      jsonLd: [
+      jsonLd: isIndexable ? [
         this.buildHistoryTimelineBreadcrumbJsonLd(timeline, seoUrl),
         this.buildHistoryTimelineJsonLd(timeline, seoUrl, description)
-      ]
+      ] : []
     });
   }
 

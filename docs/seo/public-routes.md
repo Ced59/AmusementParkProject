@@ -27,6 +27,7 @@ Une route est indexable uniquement si elle expose du contenu public utile a un m
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/images` | `index,follow` | Galerie publique d'un element visible quand des images publiees existent. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos` | `index,follow` | Galerie video publique d'un element visible quand des videos publiees existent. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug` | `index,follow` | Detail public d'une video publiee d'element visible. |
+| Routes publiques `history` | `index,follow` | Chronologie publique d'un parc, d'un element ou d'une attraction autonome quand au moins deux evenements sont visibles. |
 | `/:lang/park-operator/:id/:slug` | `index,follow` | Reference publique d'exploitant. |
 | `/:lang/park-founder/:id/:slug` | `index,follow` | Reference publique de fondateur. |
 | `/:lang/park-manufacturer/:id/:slug` | `index,follow` | Reference publique de constructeur. |
@@ -44,6 +45,7 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | Zones | La page `zones` et les details de zones sont inclus seulement pour les zones visibles contenant au moins un park item public. |
 | Images | Les galeries sont incluses seulement si des images publiees existent pour le parc ou le park item public. |
 | Videos | Les galeries et details video sont inclus seulement si des videos publiees existent, avec filtrage par langue quand une video declare des langues. |
+| Historiques | Une chronologie est incluse seulement si sa vue canonique expose au moins deux evenements publics. |
 | References | Les exploitants et constructeurs `NotRelevant` sont exclus ; les fondateurs publics avec `id` et nom sont inclus. |
 
 ## Routes publiques non indexables
@@ -58,6 +60,7 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | `/:lang/park/:id/:slug/weather?*` | `noindex,follow` | Variante filtree ou parametree de la meteo publique. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/images?*` | `noindex,follow` | Combinaisons de filtres images non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos?*` | `noindex,follow` | Combinaisons de filtres videos non validees comme pages SEO autonomes. |
+| Routes publiques `history` avec moins de deux evenements ou une query string | `noindex,follow` | Chronologie trop legere ou variante parametree sans valeur SEO autonome. |
 | `/:lang/park/:id/:slug/map` | `noindex,follow` | Carte interactive dediee, utile aux visiteurs mais faible valeur SEO brute. |
 | `/:lang/not-found` | `noindex,follow` | Page 404 publique. |
 | route wildcard publique | `noindex,follow` | Affiche la vraie page 404 publique. |

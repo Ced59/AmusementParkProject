@@ -927,10 +927,10 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(4, urls.Count);
+        Assert.Equal(2, urls.Count);
         Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == newerUpdate);
         Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("/item/item-1/", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-major", StringComparison.OrdinalIgnoreCase));
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
@@ -951,6 +951,8 @@ public sealed class SitemapSectionProvidersTests
                 AdminReviewStatus = AdminReviewStatus.Validated,
                 OpeningDate = new DateTime(1987, 5, 20),
                 OpeningDateText = "1987-05-20",
+                ClosingDate = new DateTime(1991, 10, 20),
+                ClosingDateText = "1991-10-20",
                 UpdatedAtUtc = updatedAtUtc,
             },
         };
@@ -1006,6 +1008,8 @@ public sealed class SitemapSectionProvidersTests
                 {
                     OpeningDate = new DateTime(1988, 1, 1),
                     OpeningDateText = "1988",
+                    ClosingDate = new DateTime(1991, 1, 1),
+                    ClosingDateText = "1991",
                 },
             },
         };

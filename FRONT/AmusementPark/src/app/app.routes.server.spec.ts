@@ -28,4 +28,19 @@ describe('Server routes', () => {
 
     expect(pricingRoute?.renderMode).toBe(RenderMode.Server);
   });
+
+  it('server-renders standalone attraction history timelines', () => {
+    const expectedPaths: string[] = [
+      ':lang/attraction/:standaloneAttractionId/:slug/history',
+      ':lang/attraction/:standaloneAttractionId/:slug/history/page/:page',
+    ];
+
+    for (const path of expectedPaths) {
+      const route: ServerRoute | undefined = serverRoutes.find(
+        (candidate: ServerRoute): boolean => candidate.path === path,
+      );
+
+      expect(route?.renderMode, path).toBe(RenderMode.Server);
+    }
+  });
 });

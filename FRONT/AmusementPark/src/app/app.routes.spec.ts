@@ -80,6 +80,8 @@ describe('App routes', () => {
   it('exposes canonical public history routes without redirects', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedPaths: string[] = [
+      'attraction/:standaloneAttractionId/:slug/history',
+      'attraction/:standaloneAttractionId/:slug/history/page/:page',
       'park/:id/:slug/history',
       'park/:id/:slug/history/page/:page',
       'park/:id/:slug/history/:eventId/:eventSlug',

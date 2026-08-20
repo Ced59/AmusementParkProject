@@ -28,6 +28,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park-operator/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-founder/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-manufacturer/:id/:slug', renderMode: RenderMode.Server },
+  { path: ':lang/attraction/:standaloneAttractionId/:slug/history/page/:page', renderMode: RenderMode.Server },
+  { path: ':lang/attraction/:standaloneAttractionId/:slug/history', renderMode: RenderMode.Server },
   { path: ':lang/attraction/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/images', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/history/page/:page', renderMode: RenderMode.Server },

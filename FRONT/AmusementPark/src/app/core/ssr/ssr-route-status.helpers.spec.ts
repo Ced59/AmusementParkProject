@@ -44,6 +44,8 @@ describe('SSR route status helpers', () => {
       '/fr/versions',
       '/fr/privacy',
       '/fr/attraction/standalone-123/attraction-test',
+      '/fr/attraction/standalone-123/attraction-test/history',
+      '/fr/attraction/standalone-123/attraction-test/history/page/2',
       '/fr/park/123/parc-test',
       '/fr/park/123/parc-test/map',
       '/fr/park/123/parc-test/opening-hours',
@@ -113,6 +115,11 @@ describe('SSR route status helpers', () => {
       ),
     ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks?search=test')).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader(
+        '/fr/attraction/standalone-123/attraction-test/history?page=2',
+      ),
+    ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBe(false);

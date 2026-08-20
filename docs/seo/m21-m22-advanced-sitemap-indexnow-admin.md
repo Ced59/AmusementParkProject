@@ -73,7 +73,7 @@ La brique front ajoute aussi les éléments M21 suivants :
 
 Les données structurées ne sont générées que depuis les données déjà présentes dans les view models publics. Aucune propriété métier sensible ou incertaine n'est inventée.
 
-Les pages de collection doivent aussi atteindre un seuil de valeur minimal : trois images pour une galerie, deux entrées pour une liste de vidéos, d'éléments, de zones ou une carte. Sous ce seuil, le frontend émet `noindex,follow` sans `hreflang` ni JSON-LD et le provider correspondant exclut l'URL du sitemap. Le plan HTML du site reste accessible aux visiteurs mais utilise lui aussi `noindex,follow` et n'est pas inclus dans le sitemap XML.
+Les pages de collection doivent aussi atteindre un seuil de valeur minimal : trois images pour une galerie, deux entrées pour une liste de vidéos, d'éléments, de zones, une carte ou une chronologie historique. Sous ce seuil, le frontend émet `noindex,follow` sans `hreflang` ni JSON-LD et le provider correspondant exclut l'URL du sitemap. Le plan HTML du site reste accessible aux visiteurs mais utilise lui aussi `noindex,follow` et n'est pas inclus dans le sitemap XML.
 
 ## Page admin
 
