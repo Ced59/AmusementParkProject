@@ -20,6 +20,7 @@ class FakeHistoryDataPort implements HistoryDataPort {
     parkItemIds?: readonly string[];
     page?: number;
   }[] = [];
+  public readonly standaloneTimelineCalls: { standaloneAttractionId: string; page?: number }[] = [];
 
   getParkTimeline(
     parkId: string,
@@ -44,6 +45,15 @@ class FakeHistoryDataPort implements HistoryDataPort {
     return of(createTimeline('ParkItem'));
   }
 
+  getStandaloneAttractionTimeline(
+    standaloneAttractionId: string,
+    _options?: AnonymousHttpOptions,
+    page?: number,
+  ): Observable<HistoryTimeline> {
+    this.standaloneTimelineCalls.push({ standaloneAttractionId, page });
+    return of(createTimeline('StandaloneAttraction'));
+  }
+
   getArticle(
     _eventId: string,
     _options?: AnonymousHttpOptions,
@@ -66,7 +76,7 @@ class FakeSsrHttpStatusService {
 }
 
 function createTimeline(
-  entityType: 'Park' | 'ParkItem' = 'Park',
+  entityType: 'Park' | 'ParkItem' | 'StandaloneAttraction' = 'Park',
 ): HistoryTimeline {
   return {
     entityType,
@@ -82,6 +92,17 @@ function createTimeline(
           }
         : null,
     parkItem: null,
+    standaloneAttraction:
+      entityType === 'StandaloneAttraction'
+        ? {
+            id: 'standalone-1',
+            name: 'Pendolino',
+            type: 'RollerCoaster',
+            latitude: 46.561236,
+            longitude: 13.253481,
+            isVisible: true,
+          }
+        : null,
     includedParkItems: [],
     events: [
       {
@@ -89,10 +110,10 @@ function createTimeline(
           id: 'auto-event-1',
           key: 'auto-event-1',
           entityType,
-          ownerId: entityType === 'Park' ? 'park-1' : 'item-1',
-          parkId: 'park-1',
+          ownerId: entityType === 'Park' ? 'park-1' : entityType === 'ParkItem' ? 'item-1' : 'standalone-1',
+          parkId: entityType === 'Park' || entityType === 'ParkItem' ? 'park-1' : null,
           parkItemId: entityType === 'ParkItem' ? 'item-1' : null,
-          contextParkId: 'park-1',
+          contextParkId: entityType === 'ParkItem' ? 'park-1' : null,
           year: 1988,
           month: null,
           day: null,
@@ -153,6 +174,18 @@ function configureFacade(): {
 describe('HistoryTimelineStateFacade', () => {
   beforeEach(() => {
     TestBed.resetTestingModule();
+  });
+
+  it('loads a standalone attraction timeline', () => {
+    const context = configureFacade();
+
+    context.facade.loadStandaloneAttractionTimeline('standalone-1', 2);
+
+    expect(context.historyDataPort.standaloneTimelineCalls).toEqual([
+      { standaloneAttractionId: 'standalone-1', page: 2 },
+    ]);
+    expect(context.facade.state().kind).toBe('ready');
+    expect(context.facade.timeline()?.standaloneAttraction?.name).toBe('Pendolino');
   });
 
   it('falls back to park item events when the park-only timeline is missing', () => {
