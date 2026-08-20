@@ -17,6 +17,12 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isAccountRoute('/en/park/reset-password-land')).toBe(false);
   });
 
+  it('recognizes only the neutral root as the language entry route', (): void => {
+    expect(service.isLanguageEntryRoute('/')).toBe(true);
+    expect(service.isLanguageEntryRoute('/?source=bookmark')).toBe(true);
+    expect(service.isLanguageEntryRoute('/fr/home')).toBe(false);
+  });
+
   it('marks only query-filtered park collection and subpage routes', (): void => {
     expect(
       service.isFilteredPublicParkRoute('/fr/park/id/slug/items?page=2'),

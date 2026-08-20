@@ -11,6 +11,7 @@ export interface SeoRouteData {
   canonicalUrl: string;
   robots: SeoRobotsDirective;
   alternates: SeoAlternateLink[];
+  openGraphLocale?: string | null;
   openGraphType?: 'website' | 'article';
   imageUrl?: string;
   imageAlt?: string;

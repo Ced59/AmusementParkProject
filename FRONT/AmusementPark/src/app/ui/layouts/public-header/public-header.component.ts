@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { EMPTY, switchMap } from 'rxjs';
@@ -11,7 +11,6 @@ import { UserDto } from '@app/models/users/user_dto';
 import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.component';
 import { ThemeSwitcherComponent } from '@shared/components/theme-switcher/theme-switcher.component';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent } from '@ui/primitives';
-import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ModalName, ModalService } from '@app/services/modal/modal.service';
@@ -25,6 +24,7 @@ import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/m
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { LanguageChoiceService } from '@app/services/localization/language-choice.service';
+import { CurrentUserService } from '@app/services/users/current-user.service';
 
 @Component({
   selector: 'app-public-header',
@@ -53,15 +53,15 @@ export class PublicHeaderComponent implements OnInit {
   protected readonly parkNavigationTree: Signal<PublicParkNavigationTreeViewModel> = this.publicParkNavigationTreeFacade.tree;
   protected readonly isLoggedIn = signal<boolean>(false);
   protected readonly isAdmin = signal<boolean>(false);
-  protected readonly userProfile = signal<UserDto | null>(null);
+  protected readonly userProfile: Signal<UserDto | null> = this.currentUserService.currentUser.asReadonly();
   protected readonly userAvatarUrl: Signal<string | null> = computed(() => {
     return this.imagesApiService.resolveImageUrl(this.userProfile()?.avatarUrl);
   });
 
   constructor(
     private readonly imagesApiService: ImagesApiService,
-    private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
+    private readonly currentUserService: CurrentUserService,
     private readonly translationService: TranslationService,
     private readonly languageChoiceService: LanguageChoiceService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
@@ -71,6 +71,9 @@ export class PublicHeaderComponent implements OnInit {
     private readonly sharedService: SharedService,
     private readonly destroyRef: DestroyRef
   ) {
+    effect((): void => {
+      this.measurementPreferenceService.syncFromUser(this.userProfile());
+    });
   }
 
   ngOnInit(): void {
@@ -252,27 +255,20 @@ export class PublicHeaderComponent implements OnInit {
     this.isAdmin.set(isLoggedIn && this.authService.hasRole('ADMIN'));
 
     if (!isLoggedIn) {
-      this.userProfile.set(null);
+      this.currentUserService.clearCurrentUser();
       return;
     }
 
     const userId: string | null = this.authService.getUserIdFromToken();
     if (!userId) {
-      this.userProfile.set(null);
+      this.currentUserService.clearCurrentUser();
       return;
     }
 
-    this.authApiService.getCurrentUserById(userId)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (user: UserDto): void => {
-          this.userProfile.set(user);
-          this.measurementPreferenceService.syncFromUser(user);
-        },
-        error: (): void => {
-          this.userProfile.set(null);
-        }
-      });
+    const currentUser: UserDto | null = this.currentUserService.currentUser();
+    if (currentUser?.id !== userId) {
+      this.currentUserService.refreshCurrentUser();
+    }
   }
 
   private getLanguageFromUrl(): string {

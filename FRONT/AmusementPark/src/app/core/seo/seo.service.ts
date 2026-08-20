@@ -191,6 +191,8 @@ interface IntlWithDisplayNames {
 
 const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
+const LANGUAGE_ENTRY_TITLE: string = 'Choose your language · Choisis ta langue — Amusement Parks';
+const LANGUAGE_ENTRY_DESCRIPTION: string = 'Choose your preferred language to explore Amusement Parks in English, français, español, Deutsch, italiano, polski, Nederlands or português.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
@@ -1792,6 +1794,18 @@ export class SeoService {
   applyRouteDefaults(url: string): void {
     const language: string = this.resolveLanguageFromUrl(url);
 
+    if (this.routePolicy.isLanguageEntryRoute(url)) {
+      this.apply({
+        title: LANGUAGE_ENTRY_TITLE,
+        description: LANGUAGE_ENTRY_DESCRIPTION,
+        canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl('/'),
+        robots: 'index,follow',
+        alternates: this.hreflangService.buildAlternates('/'),
+        openGraphLocale: null
+      });
+      return;
+    }
+
     if (this.isAdminRoute(url)) {
       this.apply(this.buildStaticRouteData('admin', language, url, 'noindex,nofollow'));
       return;
@@ -2517,14 +2531,20 @@ export class SeoService {
     this.meta.updateTag({ name: 'googlebot', content: data.robots });
     const socialImage: SocialImageMetadata = this.buildSocialImage(data.imageUrl);
     const socialImageAlt: string = this.resolveSocialImageAlt(data);
-    const locale: string = this.resolveOpenGraphLocale(data.canonicalUrl);
+    const locale: string | null = data.openGraphLocale === undefined
+      ? this.resolveOpenGraphLocale(data.canonicalUrl)
+      : data.openGraphLocale;
 
     this.meta.updateTag({ property: 'og:site_name', content: SITE_NAME });
     this.meta.updateTag({ property: 'og:title', content: data.title });
     this.meta.updateTag({ property: 'og:description', content: data.description });
     this.meta.updateTag({ property: 'og:url', content: data.canonicalUrl });
     this.meta.updateTag({ property: 'og:type', content: data.openGraphType ?? 'website' });
-    this.meta.updateTag({ property: 'og:locale', content: locale });
+    if (locale === null) {
+      this.meta.removeTag('property="og:locale"');
+    } else {
+      this.meta.updateTag({ property: 'og:locale', content: locale });
+    }
     this.setOpenGraphLocaleAlternates(data.alternates, locale);
     this.meta.updateTag({ property: 'og:image', content: socialImage.url });
     this.meta.updateTag({ property: 'og:image:secure_url', content: socialImage.url });
@@ -3937,9 +3957,13 @@ export class SeoService {
     }
   }
 
-  private setOpenGraphLocaleAlternates(alternates: SeoAlternateLink[], currentLocale: string): void {
+  private setOpenGraphLocaleAlternates(alternates: SeoAlternateLink[], currentLocale: string | null): void {
     this.document.head.querySelectorAll<HTMLMetaElement>(this.managedOpenGraphLocaleAlternateSelector)
       .forEach((element: HTMLMetaElement): void => element.remove());
+
+    if (currentLocale === null) {
+      return;
+    }
 
     const alternateLocales: string[] = Array.from(new Set<string>(
       alternates

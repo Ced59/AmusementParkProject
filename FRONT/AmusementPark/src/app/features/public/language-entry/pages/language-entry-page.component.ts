@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { LanguageChoiceService } from '@app/services/localization/language-choice.service';
-import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
 import { resolveFlagAssetPath } from '@shared/utils/assets/flag-assets';
 
@@ -26,7 +24,8 @@ const invitations: Readonly<Record<string, string>> = {
   selector: 'app-language-entry-page',
   templateUrl: './language-entry-page.component.html',
   styleUrl: './language-entry-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink]
 })
 export class LanguageEntryPageComponent {
   protected readonly languages: readonly LanguageEntryOption[] = LANGUAGES.map(
@@ -36,12 +35,7 @@ export class LanguageEntryPageComponent {
     })
   );
 
-  constructor(
-    private readonly languageChoiceService: LanguageChoiceService,
-    private readonly translationService: TranslationService,
-    private readonly router: Router,
-    private readonly destroyRef: DestroyRef
-  ) {
+  constructor(private readonly languageChoiceService: LanguageChoiceService) {
   }
 
   protected flagAssetPath(language: string): string {
@@ -49,19 +43,6 @@ export class LanguageEntryPageComponent {
   }
 
   protected selectLanguage(language: string): void {
-    const selectedLanguage: string | null = this.languageChoiceService.chooseLanguage(language);
-    if (selectedLanguage === null) {
-      return;
-    }
-
-    this.translationService.useLang(selectedLanguage)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (): void => {
-          this.router.navigateByUrl(`/${selectedLanguage}/home`)
-            .catch((error: unknown): void => console.error('Failed to open the localized home page.', error));
-        },
-        error: (error: unknown): void => console.error('Error changing language:', error)
-      });
+    this.languageChoiceService.chooseLanguage(language);
   }
 }

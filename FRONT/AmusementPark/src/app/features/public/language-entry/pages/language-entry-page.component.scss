@@ -71,6 +71,7 @@ h1 {
   gap: 0.9rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
   padding: 1rem;
+  text-decoration: none;
   text-align: left;
   transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }

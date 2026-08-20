@@ -15,10 +15,10 @@
 
     <div class="language-entry__grid" role="list">
       @for (language of languages; track language.value) {
-        <button
+        <a
           class="language-entry__choice"
-          type="button"
           role="listitem"
+          [routerLink]="['/', language.value, 'home']"
           [attr.lang]="language.code"
           [attr.aria-label]="language.invitation"
           (click)="selectLanguage(language.value)">
@@ -34,7 +34,7 @@
             <span>{{ language.invitation }}</span>
           </span>
           <span class="language-entry__arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       }
     </div>
   </section>
