@@ -186,13 +186,38 @@ public sealed class RatingRepository : IRatingRepository
     {
         FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(document => document.UserId, userId);
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter).ToListAsync(cancellationToken);
+        return await this.BuildUserRatingStatsAsync(documents, false, cancellationToken);
+    }
+
+    public async Task<UserRatingStatsResult> GetVisibleUserRatingStatsAsync(
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
+            document => document.UserId,
+            userId.Trim());
+        List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter).ToListAsync(cancellationToken);
+        IReadOnlyCollection<UserRatingDocument> visibleDocuments = await this.FilterVisibleUserRatingsAsync(
+            documents,
+            cancellationToken);
+        return await this.BuildUserRatingStatsAsync(visibleDocuments, true, cancellationToken);
+    }
+
+    private async Task<UserRatingStatsResult> BuildUserRatingStatsAsync(
+        IReadOnlyCollection<UserRatingDocument> documents,
+        bool visibleParkNamesOnly,
+        CancellationToken cancellationToken)
+    {
 
         if (documents.Count == 0)
         {
             return new UserRatingStatsResult(0, 0d, 0d, 0d, Array.Empty<UserRatingStatBucketResult>(), Array.Empty<UserRatingStatBucketResult>(), Array.Empty<UserRatingStatBucketResult>());
         }
 
-        IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(documents.Select(static document => document.ParkId), false, cancellationToken);
+        IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(
+            documents.Select(static document => document.ParkId),
+            visibleParkNamesOnly,
+            cancellationToken);
         List<UserRatingStatBucketResult> byPark = documents
             .Where(static document => !string.IsNullOrWhiteSpace(document.ParkId))
             .GroupBy(static document => document.ParkId, StringComparer.Ordinal)
@@ -288,6 +313,88 @@ public sealed class RatingRepository : IRatingRepository
             .ToListAsync(cancellationToken);
 
         return await this.EnrichUserRatingsAsync(documents, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<UserRatingListItemResult>> GetVisibleUserRankingSourcesAsync(
+        string userId,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
+            document => document.UserId,
+            userId.Trim());
+        List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
+            .SortByDescending(document => document.Value)
+            .ThenBy(document => document.TargetId)
+            .Limit(effectiveMaxItems)
+            .ToListAsync(cancellationToken);
+        IReadOnlyCollection<UserRatingDocument> visibleDocuments = await this.FilterVisibleUserRatingsAsync(
+            documents,
+            cancellationToken);
+
+        return await this.EnrichUserRatingsAsync(visibleDocuments, cancellationToken);
+    }
+
+    private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(
+        IReadOnlyCollection<UserRatingDocument> documents,
+        CancellationToken cancellationToken)
+    {
+        List<string> parkTargetIds = documents
+            .Where(static document => document.TargetType == RatingTargetType.Park)
+            .Select(static document => document.TargetId)
+            .ToList();
+        List<string> parkIds = documents
+            .Select(static document => document.ParkId)
+            .Concat(parkTargetIds)
+            .ToList();
+        Dictionary<string, ParkDocument> visibleParks = await this.LoadParkDocumentsAsync(
+            parkIds,
+            true,
+            cancellationToken);
+        Dictionary<string, ParkItemDocument> visibleItems = await this.LoadParkItemDocumentsAsync(
+            documents
+                .Where(static document => document.TargetType == RatingTargetType.ParkItem)
+                .Select(static document => document.TargetId),
+            true,
+            cancellationToken);
+        List<UserRatingDocument> visibleRatings = new List<UserRatingDocument>();
+
+        foreach (UserRatingDocument document in documents)
+        {
+            if (IsPublicUserRatingSource(document, visibleParks, visibleItems))
+            {
+                visibleRatings.Add(document);
+            }
+        }
+
+        return visibleRatings;
+    }
+
+    internal static bool IsPublicUserRatingSource(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkDocument> visibleParks,
+        IReadOnlyDictionary<string, ParkItemDocument> visibleItems)
+    {
+        if (document.TargetType == RatingTargetType.Park)
+        {
+            return visibleParks.TryGetValue(document.TargetId, out ParkDocument? park)
+                && park.IsVisible
+                && park.Status.CanAppearInCurrentRatingRankings();
+        }
+
+        if (!visibleItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            || !parkItem.IsVisible
+            || !visibleParks.TryGetValue(parkItem.ParkId, out ParkDocument? parentPark)
+            || !parentPark.IsVisible)
+        {
+            return false;
+        }
+
+        return parentPark.Status.CanAppearInCurrentRatingRankings()
+            && ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+                parkItem.Category,
+                parkItem.AttractionDetails?.Status);
     }
 
     private async Task<IReadOnlyCollection<RatingRankingItemResult>> EnrichVisibleRankingSourcesAsync(IReadOnlyCollection<RatingAggregateDocument> documents, CancellationToken cancellationToken)

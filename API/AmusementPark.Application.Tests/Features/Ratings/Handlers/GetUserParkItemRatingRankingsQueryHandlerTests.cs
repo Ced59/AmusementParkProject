@@ -16,6 +16,38 @@ namespace AmusementPark.Application.Tests.Features.Ratings.Handlers;
 public sealed class GetUserParkItemRatingRankingsQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_ForPublicShare_ShouldRequestOnlyVisibleRankingSources()
+    {
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetVisibleUserRankingSourcesAsync(
+                "user-1",
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<UserRatingListItemResult>());
+        GetUserParkItemRatingRankingsQueryHandler handler = new GetUserParkItemRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<UserParkItemRatingRankingResult>> result = await handler.HandleAsync(
+            new GetUserParkItemRatingRankingsQuery(
+                "user-1",
+                ParkItemCategory.Attraction,
+                new PagedQuery(1, 10),
+                PublicTargetsOnly: true));
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Items);
+        ratingRepository.VerifyAll();
+        ratingRepository.Verify(
+            repository => repository.GetUserRankingSourcesAsync(
+                It.IsAny<string>(),
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenFlatRideIsSelected_ShouldRankOnlyPersonalFlatRideRatings()
     {
         IReadOnlyCollection<UserRatingListItemResult> sources = new[]

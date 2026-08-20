@@ -141,6 +141,30 @@ internal static class RatingsHttpMappers
         };
     }
 
+    public static UserRankingShareSettingsDto ToHttp(this UserRankingShareSettingsResult value)
+    {
+        return new UserRankingShareSettingsDto
+        {
+            IsPublic = value.IsPublic,
+            ShareId = value.ShareId,
+            PublishedAtUtc = value.PublishedAtUtc,
+        };
+    }
+
+    public static SharedUserRankingProfileDto ToHttp(
+        this SharedUserRankingProfileResult value,
+        string? currentUserId)
+    {
+        return new SharedUserRankingProfileDto
+        {
+            DisplayName = value.DisplayName,
+            PublishedAtUtc = value.PublishedAtUtc,
+            IsOwner = !string.IsNullOrWhiteSpace(currentUserId)
+                && string.Equals(value.OwnerUserId, currentUserId, StringComparison.Ordinal),
+            Stats = value.Stats.ToHttp(),
+        };
+    }
+
     private static UserRatingStatBucketDto ToHttp(this UserRatingStatBucketResult value)
     {
         return new UserRatingStatBucketDto

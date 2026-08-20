@@ -150,10 +150,15 @@ public sealed class GetUserParkRatingRankingsQueryHandler
             return ApplicationResult<PagedResult<UserParkRatingRankingResult>>.Failure(errors);
         }
 
-        IReadOnlyCollection<UserRatingListItemResult> sources = await this.ratingRepository.GetUserRankingSourcesAsync(
-            query.UserId.Trim(),
-            RankingSourceLimit,
-            cancellationToken);
+        IReadOnlyCollection<UserRatingListItemResult> sources = query.PublicTargetsOnly
+            ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+                query.UserId.Trim(),
+                RankingSourceLimit,
+                cancellationToken)
+            : await this.ratingRepository.GetUserRankingSourcesAsync(
+                query.UserId.Trim(),
+                RankingSourceLimit,
+                cancellationToken);
         IReadOnlyCollection<UserParkRatingRankingResult> rankings = RatingRankingFactory.BuildUserParkRankings(sources);
         PagedResult<UserParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
             ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
@@ -233,10 +238,15 @@ public sealed class GetUserParkItemRatingRankingsQueryHandler
                 RatingApplicationErrors.InvalidParkItemCategory());
         }
 
-        IReadOnlyCollection<UserRatingListItemResult> sources = await this.ratingRepository.GetUserRankingSourcesAsync(
-            query.UserId.Trim(),
-            RankingSourceLimit,
-            cancellationToken);
+        IReadOnlyCollection<UserRatingListItemResult> sources = query.PublicTargetsOnly
+            ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+                query.UserId.Trim(),
+                RankingSourceLimit,
+                cancellationToken)
+            : await this.ratingRepository.GetUserRankingSourcesAsync(
+                query.UserId.Trim(),
+                RankingSourceLimit,
+                cancellationToken);
         IReadOnlyCollection<UserParkItemRatingRankingResult> rankings = RatingRankingFactory.BuildUserParkItemRankings(
             sources,
             query.ParkItemCategory,

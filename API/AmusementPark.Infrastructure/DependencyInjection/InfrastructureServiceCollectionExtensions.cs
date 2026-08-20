@@ -40,8 +40,8 @@ using AmusementPark.Infrastructure.Configuration.Videos;
 using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
-using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Services.Authentication;
+using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Services.DataSources;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
@@ -197,6 +197,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISocialPublisher, FacebookPageSocialPublisher>();
         services.AddScoped<ISocialWebhookHandler, FacebookPageWebhookHandler>();
         services.AddScoped<IRatingRepository, RatingRepository>();
+        services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
@@ -239,6 +240,8 @@ public static class InfrastructureServiceCollectionExtensions
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
+        services.AddSingleton<IUserRankingShareIdFactory, UserRankingShareIdFactory>();
+        services.AddSingleton<IUserRankingSharePreviewRenderer, UserRankingSharePreviewRenderer>();
         services.AddSingleton<IParkDataEditorTokenProtector, ParkDataEditorTokenProtector>();
         services.AddScoped<ITokenService, JwtTokenService>();
         services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();

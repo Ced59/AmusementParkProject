@@ -29,6 +29,14 @@ describe('Server routes', () => {
     expect(pricingRoute?.renderMode).toBe(RenderMode.Server);
   });
 
+  it('server-renders shared user rankings for social previews', () => {
+    const sharedRankingRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/rankings/shared/:shareId',
+    );
+
+    expect(sharedRankingRoute?.renderMode).toBe(RenderMode.Server);
+  });
+
   it('server-renders standalone attraction history timelines', () => {
     const expectedPaths: string[] = [
       ':lang/attraction/:standaloneAttractionId/:slug/history',

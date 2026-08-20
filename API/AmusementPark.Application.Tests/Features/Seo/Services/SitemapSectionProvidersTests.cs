@@ -43,6 +43,7 @@ public sealed class SitemapSectionProvidersTests
         Assert.Contains(urls, static url => url.RelativePath == "/en/privacy" && url.ChangeFrequency == "yearly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/contact" && url.ChangeFrequency == "monthly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/versions" && url.ChangeFrequency == "monthly");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("/rankings/shared/", StringComparison.OrdinalIgnoreCase));
     }
 
     [Fact]

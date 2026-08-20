@@ -38,4 +38,11 @@ public static class RatingApplicationErrors
             "rating.target.unavailable",
             "Cette cible ne peut pas recevoir de note avec son statut actuel.");
     }
+
+    public static ApplicationError SharedRankingNotFound()
+    {
+        return ApplicationError.NotFound(
+            "rating.shared-ranking.not-found",
+            "Le classement partagé est introuvable ou n'est plus public.");
+    }
 }

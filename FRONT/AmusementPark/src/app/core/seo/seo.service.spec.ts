@@ -1931,6 +1931,30 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
+  it('keeps shared user rankings out of search while exposing their social preview', () => {
+    service.applySharedUserRankingSeo(
+      'Le classement de Camille',
+      'Découvre les favoris de Camille.',
+      '/fr/rankings/shared/opaque-token?category=Attraction',
+      'https://localhost:44391/api/ratings/shared/opaque-token/preview.png?category=Attraction',
+      'Aperçu du classement de Camille',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readMetaContent('meta[name="googlebot"]')).toBe('noindex,nofollow,noarchive');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/fr/rankings/shared/opaque-token',
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+    expect(readMetaContent('meta[property="og:image"]')).toBe(
+      'https://localhost:44391/api/ratings/shared/opaque-token/preview.png?category=Attraction',
+    );
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBe('630');
+    expect(readMetaContent('meta[property="og:image:type"]')).toBe('image/png');
+  });
+
   function readMetaContent(selector: string): string | null {
     return (
       documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null

@@ -18,13 +18,17 @@ import {
   UserParkItemRatingRanking,
   UserParkItemRatingRankingsPage,
   UserParkRatingRanking,
-  UserParkRatingRankingsPage
+  UserParkRatingRankingsPage,
+  UserRankingShareSettings,
+  UserRankingShareVisibilityRequest,
+  SharedUserRankingProfile
 } from '@app/models/ratings/rating.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { RATINGS_API_ENDPOINTS } from './ratings-api-endpoints';
 
 interface RatingsHttpOptions {
   context?: HttpContext;
+  transferCache?: boolean;
 }
 
 @Injectable({
@@ -72,6 +76,17 @@ export class RatingsApiService {
     return this.http.get<UserRatingStats>(url);
   }
 
+  getMyShareSettings(): Observable<UserRankingShareSettings> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyShareSettings}`;
+    return this.http.get<UserRankingShareSettings>(url);
+  }
+
+  setMyShareVisibility(isPublic: boolean): Observable<UserRankingShareSettings> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.setMyShareVisibility}`;
+    const request: UserRankingShareVisibilityRequest = { isPublic };
+    return this.http.put<UserRankingShareSettings>(url, request, this.jsonHttpOptions);
+  }
+
   getMyParkRankings(page: number = 1, size: number = 10, search: string | null = null): Observable<UserParkRatingRankingsPage> {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkRankings(page, size, search)}`;
     return this.http.get<PagedCollectionResponse<UserParkRatingRanking>>(url).pipe(
@@ -110,6 +125,42 @@ export class RatingsApiService {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getParkItemRankings(page, size, category, type, search)}`;
     return this.http.get<PagedCollectionResponse<ParkItemRatingRanking>>(url, options).pipe(
       map((response: PagedCollectionResponse<ParkItemRatingRanking>) => unwrapPagedCollection<ParkItemRatingRanking>(response))
+    );
+  }
+
+  getSharedProfile(shareId: string, options: RatingsHttpOptions = {}): Observable<SharedUserRankingProfile> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getSharedProfile(shareId)}`;
+    return this.http.get<SharedUserRankingProfile>(url, {
+      ...options,
+      transferCache: false
+    });
+  }
+
+  getSharedParkRankings(
+    shareId: string,
+    page: number = 1,
+    size: number = 10,
+    search: string | null = null,
+    options: RatingsHttpOptions = {}
+  ): Observable<UserParkRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getSharedParkRankings(shareId, page, size, search)}`;
+    return this.http.get<PagedCollectionResponse<UserParkRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<UserParkRatingRanking>) => unwrapPagedCollection<UserParkRatingRanking>(response))
+    );
+  }
+
+  getSharedParkItemRankings(
+    shareId: string,
+    page: number,
+    size: number,
+    category: string,
+    type: string | null = null,
+    search: string | null = null,
+    options: RatingsHttpOptions = {}
+  ): Observable<UserParkItemRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getSharedParkItemRankings(shareId, page, size, category, type, search)}`;
+    return this.http.get<PagedCollectionResponse<UserParkItemRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<UserParkItemRatingRanking>) => unwrapPagedCollection<UserParkItemRatingRanking>(response))
     );
   }
 }

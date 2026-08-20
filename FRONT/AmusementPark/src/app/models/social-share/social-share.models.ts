@@ -6,6 +6,7 @@ export type SocialShareTargetType =
   | 'ParkItem'
   | 'Videos'
   | 'Video'
+  | 'UserRanking'
   | 'Page';
 
 export type SocialShareChannel =

@@ -4457,6 +4457,59 @@
       "Service": "Usługi",
       "Transport": "Transport",
       "Other": "Inne miejsca"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Udostępnianie",
+        "title": "Udostępnij swój ranking",
+        "publicDescription": "Twój ranking jest publiczny: każda osoba z linkiem może go zobaczyć.",
+        "privateDescription": "Twój ranking pozostanie prywatny, dopóki nie zdecydujesz się go udostępnić.",
+        "loading": "Sprawdzanie ustawień...",
+        "error": "Nie udało się zmienić ustawień udostępniania. Spróbuj ponownie za chwilę.",
+        "publishedToast": "Twój ranking jest gotowy do udostępnienia.",
+        "privateToast": "Twój ranking znów jest prywatny.",
+        "open": "Zobacz udostępnioną stronę",
+        "makePrivate": "Ustaw jako prywatny",
+        "privacyNote": "Zachowujesz kontrolę: ustawienie rankingu jako prywatnego natychmiast wyłącza publiczny link.",
+        "publishing": "Publikowanie...",
+        "publish": "Ustaw jako publiczny"
+      },
+      "public": {
+        "seoTitle": "Ranking użytkownika {{name}}",
+        "seoDescription": "Odkryj ulubione parki, kolejki górskie i inne atrakcje użytkownika {{name}}.",
+        "imageAlt": "Podgląd rankingu użytkownika {{name}}",
+        "notFoundTitle": "Ten ranking nie jest już dostępny",
+        "notFoundMessage": "Właściciel mógł ustawić go jako prywatny albo link stracił ważność.",
+        "backToRankings": "Odkryj rankingi",
+        "errorTitle": "Nie udało się wczytać rankingu",
+        "errorMessage": "Wystąpił chwilowy błąd. Spróbuj ponownie za moment.",
+        "kicker": "Ranking osobisty",
+        "title": "Ulubione miejsca użytkownika {{name}}",
+        "subtitle": "Parki, kolejki górskie, flat ride’y i nie tylko: poznaj osobiste wybory użytkownika {{name}}.",
+        "summaryLabel": "Podsumowanie rankingu",
+        "ratingsCount": "Opublikowane oceny",
+        "currentRanking": "Wyświetlany ranking",
+        "emptyTitle": "Brak ocen w tej kategorii",
+        "emptyMessage": "Wybierz inną kategorię, aby odkrywać dalej.",
+        "ratingLabel": "Ocena",
+        "loading": "Wczytywanie rankingu..."
+      },
+      "social": {
+        "title": "Ranking użytkownika {{name}}",
+        "description": "Odkryj jego ulubione parki i atrakcje.",
+        "text": "Odkryj osobisty ranking użytkownika {{name}} w Amusement Parks!"
+      },
+      "cta": {
+        "ownerTitle": "To jest twój ranking",
+        "ownerDescription": "Możesz go dalej uzupełniać lub zmienić ustawienia udostępniania w swoim profilu.",
+        "manageMine": "Zarządzaj moim rankingiem",
+        "memberTitle": "A jakie są twoje ulubione miejsca?",
+        "memberDescription": "Znajdź swoje oceny i utwórz osobisty ranking w swoim profilu.",
+        "openMine": "Zobacz mój ranking",
+        "anonymousTitle": "Chcesz utworzyć własny ranking?",
+        "anonymousDescription": "Załóż bezpłatne konto, kiedy zechcesz, aby oceniać wizyty i dzielić się ulubionymi miejscami.",
+        "createAccount": "Utwórz konto"
+      }
     }
   },
   "shareSocial": {

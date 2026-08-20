@@ -1,0 +1,197 @@
+<main class="shared-user-rankings public-page">
+  @if (notFound()) {
+    <section class="shared-user-rankings__state" role="status">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      <h1>{{ 'ratings.share.public.notFoundTitle' | translate }}</h1>
+      <p>{{ 'ratings.share.public.notFoundMessage' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'rankings']">
+        {{ 'ratings.share.public.backToRankings' | translate }}
+      </a>
+    </section>
+  } @else if (error()) {
+    <section class="shared-user-rankings__state" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h1>{{ 'ratings.share.public.errorTitle' | translate }}</h1>
+      <p>{{ 'ratings.share.public.errorMessage' | translate }}</p>
+    </section>
+  } @else if (profile(); as currentProfile) {
+    <header class="shared-user-rankings__hero">
+      <div>
+        <span class="shared-user-rankings__kicker">
+          <i class="pi pi-trophy" aria-hidden="true"></i>
+          {{ 'ratings.share.public.kicker' | translate }}
+        </span>
+        <h1>{{ 'ratings.share.public.title' | translate:{ name: currentProfile.displayName } }}</h1>
+        <p>{{ 'ratings.share.public.subtitle' | translate:{ name: currentProfile.displayName } }}</p>
+      </div>
+
+      <div class="shared-user-rankings__summary" [attr.aria-label]="'ratings.share.public.summaryLabel' | translate">
+        <article>
+          <strong>{{ currentProfile.stats.totalRatings }}</strong>
+          <span>{{ 'ratings.share.public.ratingsCount' | translate }}</span>
+        </article>
+        <article>
+          <strong>{{ formatRating(currentProfile.stats.averageRating) }}</strong>
+          <span>{{ 'ratings.profile.stats.average' | translate }}</span>
+        </article>
+      </div>
+    </header>
+
+    <section class="shared-user-rankings__workspace">
+      <aside class="shared-user-rankings__filters-panel">
+        <h2>{{ 'ratings.profile.filtersLabel' | translate }}</h2>
+        <nav class="shared-user-rankings__filters" [attr.aria-label]="'ratings.profile.filtersLabel' | translate">
+          @for (filter of filters; track filter.key) {
+            <button
+              appUiButton="ghost"
+              type="button"
+              [class.shared-user-rankings__filter--active]="currentFilter().key === filter.key"
+              [attr.aria-current]="currentFilter().key === filter.key ? 'page' : null"
+              (click)="selectFilter(filter)">
+              <i [class]="filter.iconClass" aria-hidden="true"></i>
+              <span>{{ filter.labelKey | translate }}</span>
+            </button>
+          }
+        </nav>
+      </aside>
+
+      <section class="shared-user-rankings__results">
+        <header class="shared-user-rankings__results-header">
+          <div>
+            <span>{{ 'ratings.share.public.currentRanking' | translate }}</span>
+            <h2>{{ currentRankingLabelKey() | translate }}</h2>
+          </div>
+          @if (!loading() && pagination(); as currentPagination) {
+            <strong>{{ currentPagination.totalItems }}</strong>
+          }
+        </header>
+
+        @if (currentFilter().category === 'Attraction') {
+          <div class="shared-user-rankings__attraction-filters">
+            <nav [attr.aria-label]="'ratings.profile.attractionQuickFiltersLabel' | translate">
+              @for (filter of attractionQuickFilters; track filter.type) {
+                <button
+                  appUiButton="ghost"
+                  type="button"
+                  [class.shared-user-rankings__quick-filter--active]="selectedAttractionType() === filter.type"
+                  [attr.aria-pressed]="selectedAttractionType() === filter.type"
+                  (click)="selectAttractionQuickFilter(filter)">
+                  {{ filter.labelKey | translate }}
+                </button>
+              }
+            </nav>
+
+            <label>
+              <span>{{ 'ratings.rankings.attractionTypeLabel' | translate }}</span>
+              <select [value]="selectedAttractionType() || ''" (change)="selectAttractionType($any($event.target).value)">
+                <option value="">{{ 'ratings.rankings.allAttractionTypes' | translate }}</option>
+                @for (option of attractionTypeOptions; track option.value) {
+                  <option [value]="option.value">{{ option.labelKey | translate }}</option>
+                }
+              </select>
+            </label>
+          </div>
+        }
+
+        <section class="shared-user-rankings__search" [attr.aria-label]="'ratings.profile.searchLabel' | translate">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input
+            type="search"
+            [value]="searchTerm()"
+            [attr.aria-label]="'ratings.profile.searchLabel' | translate"
+            [placeholder]="(isParkItemRanking() ? 'ratings.profile.parkItemSearchPlaceholder' : 'ratings.profile.searchPlaceholder') | translate"
+            (input)="updateSearchTerm($any($event.target).value)"
+            (keyup.enter)="applySearch()">
+          @if (searchTerm()) {
+            <button appUiButton="ghost" type="button" (click)="clearSearch()">
+              <i class="pi pi-times" aria-hidden="true"></i>
+              <span>{{ 'ratings.profile.clearSearch' | translate }}</span>
+            </button>
+          }
+          <button appUiButton="primary" type="button" (click)="applySearch()">
+            {{ 'ratings.profile.searchAction' | translate }}
+          </button>
+        </section>
+
+        <div class="shared-user-rankings__list">
+          @if (loading()) {
+            <div class="shared-user-rankings__empty">
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              <span>{{ 'ratings.profile.loading' | translate }}</span>
+            </div>
+          } @else if (isEmpty()) {
+            <div class="shared-user-rankings__empty">
+              <i class="pi pi-star" aria-hidden="true"></i>
+              <strong>{{ 'ratings.share.public.emptyTitle' | translate }}</strong>
+              <span>{{ 'ratings.share.public.emptyMessage' | translate }}</span>
+            </div>
+          } @else if (isParkItemRanking()) {
+            <app-rating-ranking-list
+              [items]="rankedParkItems()"
+              scoreLabelKey="ratings.share.public.ratingLabel">
+            </app-rating-ranking-list>
+          } @else {
+            <app-rating-tree
+              [parks]="ratingParks()"
+              ratingCountLabelKey="ratings.profile.ratingCount">
+            </app-rating-tree>
+          }
+
+          @if (hasMore()) {
+            <div class="shared-user-rankings__more">
+              <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
+                {{ (loadingMore() ? 'ratings.profile.loadingMore' : 'ratings.profile.loadMore') | translate }}
+              </button>
+            </div>
+          }
+        </div>
+      </section>
+    </section>
+
+    <section class="shared-user-rankings__footer-grid">
+      <app-public-share-panel
+        targetType="UserRanking"
+        [targetId]="shareId()"
+        [targetTitle]="('ratings.share.social.title' | translate:{ name: currentProfile.displayName })"
+        titleKey="ratings.share.social.title"
+        descriptionKey="ratings.share.social.description"
+        textKey="ratings.share.social.text"
+        [textParams]="{ name: currentProfile.displayName }">
+      </app-public-share-panel>
+
+      <aside class="shared-user-rankings__cta">
+        <span class="shared-user-rankings__cta-icon" aria-hidden="true"><i class="pi pi-star"></i></span>
+        @if (currentProfile.isOwner) {
+          <div>
+            <h2>{{ 'ratings.share.cta.ownerTitle' | translate }}</h2>
+            <p>{{ 'ratings.share.cta.ownerDescription' | translate }}</p>
+            <a appUiButton="primary" [routerLink]="['/', currentLang(), 'profile']" [queryParams]="{ tab: 'ratings' }">
+              {{ 'ratings.share.cta.manageMine' | translate }}
+            </a>
+          </div>
+        } @else if (isLoggedIn()) {
+          <div>
+            <h2>{{ 'ratings.share.cta.memberTitle' | translate }}</h2>
+            <p>{{ 'ratings.share.cta.memberDescription' | translate }}</p>
+            <a appUiButton="primary" [routerLink]="['/', currentLang(), 'profile']" [queryParams]="{ tab: 'ratings' }">
+              {{ 'ratings.share.cta.openMine' | translate }}
+            </a>
+          </div>
+        } @else {
+          <div>
+            <h2>{{ 'ratings.share.cta.anonymousTitle' | translate }}</h2>
+            <p>{{ 'ratings.share.cta.anonymousDescription' | translate }}</p>
+            <button appUiButton="primary" type="button" (click)="openAccountCreation()">
+              {{ 'ratings.share.cta.createAccount' | translate }}
+            </button>
+          </div>
+        }
+      </aside>
+    </section>
+  } @else {
+    <section class="shared-user-rankings__state" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ 'ratings.share.public.loading' | translate }}</p>
+    </section>
+  }
+</main>

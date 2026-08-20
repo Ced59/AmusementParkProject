@@ -9,12 +9,14 @@ import {
   UserRating,
   UserRatingListItem,
   UserRatingStats,
-  UserRatingUpsertRequest
+  UserRatingUpsertRequest,
+  UserRankingShareSettings
 } from '@app/models/ratings/rating.models';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
 import { PROFILE_RATINGS_PORT, ProfileRatingsPort } from './profile-ratings-state-data.ports';
 import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component';
+import { USER_RANKING_SHARE_PORT, UserRankingSharePort } from './user-ranking-share-state-data.ports';
 
 class FakeProfileRatingsPort implements ProfileRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
@@ -123,18 +125,50 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
   }
 }
 
+class FakeUserRankingSharePort implements UserRankingSharePort {
+  readonly visibilityCalls: boolean[] = [];
+  settings: UserRankingShareSettings = {
+    isPublic: false,
+    shareId: null,
+    publishedAtUtc: null,
+  };
+
+  getMyShareSettings(): Observable<UserRankingShareSettings> {
+    return of(this.settings);
+  }
+
+  setMyShareVisibility(isPublic: boolean): Observable<UserRankingShareSettings> {
+    this.visibilityCalls.push(isPublic);
+    this.settings = isPublic
+      ? {
+        isPublic: true,
+        shareId: 'opaque-share-id',
+        publishedAtUtc: '2026-08-20T18:00:00Z',
+      }
+      : {
+        isPublic: false,
+        shareId: null,
+        publishedAtUtc: null,
+      };
+    return of(this.settings);
+  }
+}
+
 describe('ProfileRatingsPanelComponent', () => {
   let fixture: ComponentFixture<ProfileRatingsPanelComponent>;
   let port: FakeProfileRatingsPort;
+  let sharePort: FakeUserRankingSharePort;
 
   beforeEach(async () => {
     port = new FakeProfileRatingsPort();
+    sharePort = new FakeUserRankingSharePort();
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, ProfileRatingsPanelComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: PROFILE_RATINGS_PORT, useValue: port }
+        { provide: PROFILE_RATINGS_PORT, useValue: port },
+        { provide: USER_RANKING_SHARE_PORT, useValue: sharePort },
       ],
     }).compileComponents();
 
@@ -252,6 +286,32 @@ describe('ProfileRatingsPanelComponent', () => {
       type: null,
       search: 'ride'
     });
+  });
+
+  it('publishes and revokes only the current user ranking from the profile', () => {
+    fixture.detectChanges();
+
+    const publishButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.profile-ranking-share__actions button',
+    );
+    publishButton.click();
+    fixture.detectChanges();
+
+    expect(sharePort.visibilityCalls).toEqual([true]);
+    const sharedLink: HTMLAnchorElement | null = fixture.nativeElement.querySelector(
+      '.profile-ranking-share__actions a',
+    );
+    expect(sharedLink?.getAttribute('href')).toBe('/en/rankings/shared/opaque-share-id');
+    expect(fixture.nativeElement.querySelector('app-public-share-panel')).not.toBeNull();
+
+    const revokeButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.profile-ranking-share__actions button',
+    );
+    revokeButton.click();
+    fixture.detectChanges();
+
+    expect(sharePort.visibilityCalls).toEqual([true, false]);
+    expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
   });
 });
 

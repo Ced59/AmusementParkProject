@@ -39,11 +39,36 @@ public sealed record GetParkItemRatingRankingsQuery(
 public sealed record GetUserParkRatingRankingsQuery(
     string UserId,
     PagedQuery Paging,
-    string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
+    string? ParkSearch = null,
+    bool PublicTargetsOnly = false) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
 
 public sealed record GetUserParkItemRatingRankingsQuery(
     string UserId,
     ParkItemCategory ParkItemCategory,
     PagedQuery Paging,
     string? Search = null,
+    ParkItemType? ParkItemType = null,
+    bool PublicTargetsOnly = false) : IQuery<ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>;
+
+public sealed record GetUserRankingShareSettingsQuery(
+    string UserId) : IQuery<ApplicationResult<UserRankingShareSettingsResult>>;
+
+public sealed record GetSharedUserRankingProfileQuery(
+    string ShareId) : IQuery<ApplicationResult<SharedUserRankingProfileResult>>;
+
+public sealed record GetSharedUserParkRatingRankingsQuery(
+    string ShareId,
+    PagedQuery Paging,
+    string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
+
+public sealed record GetSharedUserParkItemRatingRankingsQuery(
+    string ShareId,
+    ParkItemCategory ParkItemCategory,
+    PagedQuery Paging,
+    string? Search = null,
     ParkItemType? ParkItemType = null) : IQuery<ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>;
+
+public sealed record GetSharedUserRankingPreviewQuery(
+    string ShareId,
+    ParkItemCategory? ParkItemCategory = null,
+    ParkItemType? ParkItemType = null) : IQuery<ApplicationResult<UserRankingSharePreviewFileResult>>;

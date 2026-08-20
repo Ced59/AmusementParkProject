@@ -14,7 +14,7 @@ import {
   isApiHeaderHiddenFromPublicProxy,
   isHopByHopHttpHeader,
 } from './src/app/core/ssr/public-api-header-policy';
-import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
+import { resolveSsrRouteStatusCode, resolveXRobotsTagHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
   enforceNoindexFollowHtml,
   inspectSeoReadyHtml,
@@ -31,6 +31,7 @@ import {
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
+import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-shared-user-rankings-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
   isPublicPricingSsrRoute,
@@ -1757,12 +1758,24 @@ function runNextQueuedSsrRender(): void {
 }
 
 function applySearchRobotsHeaders(req: Request, res: Response): void {
-  if (shouldApplyNoindexFollowHeader(req.originalUrl)) {
-    res.setHeader('X-Robots-Tag', 'noindex, follow');
+  const directive: string | null = resolveXRobotsTagHeader(req.originalUrl);
+  if (directive !== null) {
+    res.setHeader('X-Robots-Tag', directive);
   }
 }
 
 function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): CacheMissRenderDecision {
+  if (
+    (req.method === 'GET' || req.method === 'HEAD')
+    && acceptsHtml(req)
+    && isPublicSharedUserRankingSsrRoute(getPathOnly(req.originalUrl))
+  ) {
+    return {
+      shouldRender: true,
+      fallbackStatus: warmupRequest ? 'CSR-WARMUP-SKIPPED' : 'CSR-CACHE-MISS-FALLBACK'
+    };
+  }
+
   if (!isCacheablePageRequest(req)) {
     return {
       shouldRender: false,

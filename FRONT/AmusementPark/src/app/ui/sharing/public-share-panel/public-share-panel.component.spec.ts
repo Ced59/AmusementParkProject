@@ -126,6 +126,37 @@ describe('PublicSharePanelComponent', () => {
     expect(trackingService.track).not.toHaveBeenCalled();
   });
 
+  it('uses the explicit public ranking URL for every share channel', () => {
+    fixture.componentRef.setInput('targetType', 'UserRanking');
+    fixture.componentRef.setInput('targetId', 'opaque-share-id');
+    fixture.componentRef.setInput(
+      'shareUrlOverride',
+      '/fr/rankings/shared/opaque-share-id#private-tab',
+    );
+    fixture.detectChanges();
+
+    const links: HTMLAnchorElement[] = Array.from(
+      (fixture.nativeElement as HTMLElement).querySelectorAll('a'),
+    );
+    const facebook: HTMLAnchorElement | undefined = links.find(
+      (link: HTMLAnchorElement): boolean => (link.textContent ?? '').includes('Facebook'),
+    );
+
+    expect(facebook?.href).toContain(
+      encodeURIComponent('http://localhost:3000/fr/rankings/shared/opaque-share-id'),
+    );
+    expect(facebook?.href).not.toContain('private-tab');
+    facebook?.click();
+    expect(trackingService.track).toHaveBeenCalledWith(
+      expect.objectContaining({
+        targetType: 'UserRanking',
+        targetId: 'opaque-share-id',
+        url: 'http://localhost:3000/fr/rankings/shared/opaque-share-id',
+        channel: 'Facebook',
+      }),
+    );
+  });
+
   function clickButton(text: string): void {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const buttons: HTMLButtonElement[] = Array.from(

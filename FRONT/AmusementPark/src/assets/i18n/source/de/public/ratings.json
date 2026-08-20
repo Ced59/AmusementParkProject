@@ -112,6 +112,59 @@
       "Service": "Services",
       "Transport": "Transport",
       "Other": "Weitere Orte"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Teilen",
+        "title": "Teile deine Rangliste",
+        "publicDescription": "Deine Rangliste ist öffentlich: Alle mit dem Link können sie ansehen.",
+        "privateDescription": "Deine Rangliste bleibt privat, bis du sie selbst teilst.",
+        "loading": "Freigabe wird geprüft...",
+        "error": "Die Freigabe konnte nicht geändert werden. Versuche es gleich noch einmal.",
+        "publishedToast": "Deine Rangliste kann jetzt geteilt werden.",
+        "privateToast": "Deine Rangliste ist wieder privat.",
+        "open": "Geteilte Seite ansehen",
+        "makePrivate": "Privat machen",
+        "privacyNote": "Du behältst die Kontrolle: Wenn du die Rangliste privat machst, wird der öffentliche Link sofort deaktiviert.",
+        "publishing": "Wird veröffentlicht...",
+        "publish": "Öffentlich machen"
+      },
+      "public": {
+        "seoTitle": "Die Rangliste von {{name}}",
+        "seoDescription": "Entdecke die Lieblingsparks, Achterbahnen und weiteren Erlebnisse von {{name}}.",
+        "imageAlt": "Vorschau der Rangliste von {{name}}",
+        "notFoundTitle": "Diese Rangliste ist nicht mehr verfügbar",
+        "notFoundMessage": "Sie wurde vielleicht privat gemacht oder der Link ist nicht mehr gültig.",
+        "backToRankings": "Ranglisten entdecken",
+        "errorTitle": "Die Rangliste konnte nicht geladen werden",
+        "errorMessage": "Ein vorübergehender Fehler ist aufgetreten. Versuche es gleich noch einmal.",
+        "kicker": "Persönliche Rangliste",
+        "title": "Die Favoriten von {{name}}",
+        "subtitle": "Parks, Achterbahnen, Flat Rides und mehr: Entdecke die persönlichen Favoriten von {{name}}.",
+        "summaryLabel": "Zusammenfassung der Rangliste",
+        "ratingsCount": "Veröffentlichte Bewertungen",
+        "currentRanking": "Angezeigte Rangliste",
+        "emptyTitle": "Keine Bewertung in dieser Kategorie",
+        "emptyMessage": "Probiere eine andere Kategorie aus.",
+        "ratingLabel": "Bewertung",
+        "loading": "Rangliste wird geladen..."
+      },
+      "social": {
+        "title": "Die Rangliste von {{name}}",
+        "description": "Entdecke die Lieblingsparks und -attraktionen.",
+        "text": "Entdecke die persönliche Rangliste von {{name}} auf Amusement Parks!"
+      },
+      "cta": {
+        "ownerTitle": "Das ist deine Rangliste",
+        "ownerDescription": "Du kannst sie weiter ergänzen oder die Freigabe in deinem Profil anpassen.",
+        "manageMine": "Meine Rangliste verwalten",
+        "memberTitle": "Und deine eigenen Favoriten?",
+        "memberDescription": "Finde deine Bewertungen und erstelle deine persönliche Rangliste in deinem Profil.",
+        "openMine": "Meine Rangliste ansehen",
+        "anonymousTitle": "Möchtest du deine eigene Rangliste erstellen?",
+        "anonymousDescription": "Erstelle kostenlos ein Konto, wenn du möchtest, um deine Besuche zu bewerten und deine Favoriten zu teilen.",
+        "createAccount": "Konto erstellen"
+      }
     }
   }
 }

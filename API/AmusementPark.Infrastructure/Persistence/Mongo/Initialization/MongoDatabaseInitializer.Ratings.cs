@@ -1,4 +1,5 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
@@ -64,5 +65,26 @@ public sealed partial class MongoDatabaseInitializer
         };
 
         await ratingAggregatesCollection.Indexes.CreateManyAsync(ratingAggregateIndexes, cancellationToken: cancellationToken);
+
+        IMongoCollection<UserRankingShareDocument> sharesCollection = this.database.GetCollection<UserRankingShareDocument>(
+            this.settings.UserRankingSharesCollectionName);
+        List<CreateIndexModel<UserRankingShareDocument>> shareIndexes = new List<CreateIndexModel<UserRankingShareDocument>>
+        {
+            new CreateIndexModel<UserRankingShareDocument>(
+                Builders<UserRankingShareDocument>.IndexKeys.Ascending(static document => document.UserId),
+                new CreateIndexOptions { Name = "idx_user_ranking_shares_user_unique", Unique = true }),
+            new CreateIndexModel<UserRankingShareDocument>(
+                Builders<UserRankingShareDocument>.IndexKeys.Ascending(static document => document.ShareId),
+                new CreateIndexOptions<UserRankingShareDocument>
+                {
+                    Name = "idx_user_ranking_shares_share_id_unique",
+                    Unique = true,
+                    PartialFilterExpression = Builders<UserRankingShareDocument>.Filter.And(
+                        Builders<UserRankingShareDocument>.Filter.Eq(static document => document.IsPublic, true),
+                        Builders<UserRankingShareDocument>.Filter.Type(static document => document.ShareId, BsonType.String)),
+                }),
+        };
+
+        await sharesCollection.Indexes.CreateManyAsync(shareIndexes, cancellationToken: cancellationToken);
     }
 }

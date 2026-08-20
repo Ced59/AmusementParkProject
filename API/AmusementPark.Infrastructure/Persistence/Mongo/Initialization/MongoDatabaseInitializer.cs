@@ -86,6 +86,7 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.UserRatingsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.RatingAggregatesCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.UserRankingSharesCollectionName, cancellationToken);
         await this.InitializeRatingsIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.CommentsCollectionName, cancellationToken);

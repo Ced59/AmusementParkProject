@@ -112,6 +112,59 @@
       "Service": "Services",
       "Transport": "Transports",
       "Other": "Autres lieux"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Partage",
+        "title": "Partage ton classement",
+        "publicDescription": "Ton classement est public : toute personne qui possède le lien peut le consulter.",
+        "privateDescription": "Ton classement reste privé tant que tu ne choisis pas de le partager.",
+        "loading": "Vérification du partage...",
+        "error": "Le réglage de partage n’a pas pu être mis à jour. Réessaie dans un instant.",
+        "publishedToast": "Ton classement est maintenant prêt à être partagé.",
+        "privateToast": "Ton classement est de nouveau privé.",
+        "open": "Voir la page partagée",
+        "makePrivate": "Rendre privé",
+        "privacyNote": "Tu gardes le contrôle : rendre le classement privé désactive immédiatement son lien public.",
+        "publishing": "Publication...",
+        "publish": "Rendre public"
+      },
+      "public": {
+        "seoTitle": "Le classement de {{name}}",
+        "seoDescription": "Découvre les parcs, coasters et autres expériences préférés de {{name}}.",
+        "imageAlt": "Aperçu du classement de {{name}}",
+        "notFoundTitle": "Ce classement n’est plus disponible",
+        "notFoundMessage": "Son propriétaire l’a peut-être rendu privé ou le lien n’est plus valide.",
+        "backToRankings": "Découvrir les classements",
+        "errorTitle": "Le classement ne peut pas être chargé",
+        "errorMessage": "Une erreur temporaire est survenue. Tu pourras réessayer dans un instant.",
+        "kicker": "Classement personnel",
+        "title": "Les favoris de {{name}}",
+        "subtitle": "Parcs, coasters, flat rides et autres expériences : explore les choix personnels de {{name}}.",
+        "summaryLabel": "Résumé du classement",
+        "ratingsCount": "Notes publiées",
+        "currentRanking": "Classement affiché",
+        "emptyTitle": "Aucune note dans cette catégorie",
+        "emptyMessage": "Essaie une autre catégorie pour poursuivre la découverte.",
+        "ratingLabel": "Sa note",
+        "loading": "Chargement du classement..."
+      },
+      "social": {
+        "title": "Le classement de {{name}}",
+        "description": "Découvre ses parcs et attractions préférés.",
+        "text": "Découvre le classement personnel de {{name}} sur Amusement Parks !"
+      },
+      "cta": {
+        "ownerTitle": "C’est ton classement",
+        "ownerDescription": "Tu peux continuer à l’enrichir ou ajuster son partage depuis ton profil.",
+        "manageMine": "Gérer mon classement",
+        "memberTitle": "Et tes propres favoris ?",
+        "memberDescription": "Retrouve tes notes et compose ton classement personnel depuis ton profil.",
+        "openMine": "Voir mon classement",
+        "anonymousTitle": "Envie de créer ton propre classement ?",
+        "anonymousDescription": "Crée gratuitement ton compte quand tu le souhaites pour noter tes visites et partager tes favoris.",
+        "createAccount": "Créer mon compte"
+      }
     }
   }
 }

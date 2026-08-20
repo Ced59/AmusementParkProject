@@ -9,9 +9,19 @@ export function resolveSsrRouteStatusCode(url: string): number {
 }
 
 export function shouldApplyNoindexFollowHeader(url: string): boolean {
+  return resolveXRobotsTagHeader(url) !== null;
+}
+
+export function resolveXRobotsTagHeader(url: string): string | null {
   const path: string = normalizeSsrPath(url);
 
-  return isSsrNotFoundRoute(url) || isKnownPrivateClientRoute(path) || isNoindexPublicPageRoute(url);
+  if (isSharedUserRankingRoute(path)) {
+    return 'noindex, nofollow, noarchive';
+  }
+
+  return isSsrNotFoundRoute(url) || isKnownPrivateClientRoute(path) || isNoindexPublicPageRoute(url)
+    ? 'noindex, follow'
+    : null;
 }
 
 export function isSsrNotFoundRoute(url: string): boolean {
@@ -44,6 +54,7 @@ function isKnownPublicPageRoute(path: string): boolean {
   return /^\/[a-z]{2}\/?$/i.test(path)
     || /^\/[a-z]{2}\/(?:home|parks|sitemap|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
+    || isSharedUserRankingRoute(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
@@ -56,6 +67,10 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/history(?:\/[^/]+\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/video\/(?:s\/)?[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isSharedUserRankingRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/rankings\/shared\/[^/]+\/?$/i.test(path);
 }
 
 function isKnownPrivateClientRoute(path: string): boolean {

@@ -9,6 +9,78 @@
   gap: clamp(1rem, 2vw, 1.4rem);
 }
 
+.profile-ranking-share {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--app-primary) 36%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-gold) 14%, transparent), transparent 42%),
+    color-mix(in srgb, var(--app-surface-2) 84%, transparent);
+}
+
+.profile-ranking-share__copy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.profile-ranking-share__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: var(--app-radius-sm);
+  background: color-mix(in srgb, var(--app-primary) 16%, var(--app-surface));
+  color: var(--app-primary);
+}
+
+.profile-ranking-share__kicker {
+  color: var(--c-gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.profile-ranking-share h3,
+.profile-ranking-share p {
+  margin: 0;
+}
+
+.profile-ranking-share h3 {
+  margin-top: 0.18rem;
+  color: var(--app-heading);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.profile-ranking-share__copy p,
+.profile-ranking-share__privacy,
+.profile-ranking-share__status {
+  margin-top: 0.3rem;
+  color: var(--app-text-muted);
+}
+
+.profile-ranking-share__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.profile-ranking-share__privacy,
+.profile-ranking-share__status {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  font-size: 0.86rem;
+}
+
+.profile-ranking-share__status--error {
+  color: var(--c-rose);
+}
+
 .profile-ratings__stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

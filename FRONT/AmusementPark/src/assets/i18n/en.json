@@ -4457,6 +4457,59 @@
       "Service": "Services",
       "Transport": "Transport",
       "Other": "Other places"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Sharing",
+        "title": "Share your ranking",
+        "publicDescription": "Your ranking is public: anyone with the link can view it.",
+        "privateDescription": "Your ranking stays private until you choose to share it.",
+        "loading": "Checking sharing settings...",
+        "error": "The sharing setting could not be updated. Please try again shortly.",
+        "publishedToast": "Your ranking is now ready to share.",
+        "privateToast": "Your ranking is private again.",
+        "open": "View shared page",
+        "makePrivate": "Make private",
+        "privacyNote": "You stay in control: making the ranking private immediately disables its public link.",
+        "publishing": "Publishing...",
+        "publish": "Make public"
+      },
+      "public": {
+        "seoTitle": "{{name}}’s ranking",
+        "seoDescription": "Discover {{name}}’s favourite parks, coasters and other experiences.",
+        "imageAlt": "Preview of {{name}}’s ranking",
+        "notFoundTitle": "This ranking is no longer available",
+        "notFoundMessage": "Its owner may have made it private, or the link is no longer valid.",
+        "backToRankings": "Explore rankings",
+        "errorTitle": "The ranking could not be loaded",
+        "errorMessage": "A temporary error occurred. Please try again shortly.",
+        "kicker": "Personal ranking",
+        "title": "{{name}}’s favourites",
+        "subtitle": "Parks, coasters, flat rides and more: explore {{name}}’s personal picks.",
+        "summaryLabel": "Ranking summary",
+        "ratingsCount": "Published ratings",
+        "currentRanking": "Current ranking",
+        "emptyTitle": "No ratings in this category",
+        "emptyMessage": "Try another category to keep exploring.",
+        "ratingLabel": "Their rating",
+        "loading": "Loading the ranking..."
+      },
+      "social": {
+        "title": "{{name}}’s ranking",
+        "description": "Discover their favourite parks and attractions.",
+        "text": "Discover {{name}}’s personal ranking on Amusement Parks!"
+      },
+      "cta": {
+        "ownerTitle": "This is your ranking",
+        "ownerDescription": "You can keep adding to it or adjust its sharing settings from your profile.",
+        "manageMine": "Manage my ranking",
+        "memberTitle": "What about your favourites?",
+        "memberDescription": "Find your ratings and build your personal ranking from your profile.",
+        "openMine": "View my ranking",
+        "anonymousTitle": "Fancy creating your own ranking?",
+        "anonymousDescription": "Create a free account whenever you like to rate your visits and share your favourites.",
+        "createAccount": "Create my account"
+      }
     }
   },
   "shareSocial": {

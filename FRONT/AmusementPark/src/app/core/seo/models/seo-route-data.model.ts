@@ -1,4 +1,4 @@
-export type SeoRobotsDirective = 'index,follow' | 'noindex,follow' | 'noindex,nofollow';
+export type SeoRobotsDirective = 'index,follow' | 'noindex,follow' | 'noindex,nofollow' | 'noindex,nofollow,noarchive';
 
 export interface SeoAlternateLink {
   hreflang: string;
