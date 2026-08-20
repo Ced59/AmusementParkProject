@@ -1,5 +1,8 @@
+using System.Security.Cryptography;
+using System.Text;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using Microsoft.Extensions.Caching.Memory;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing;
@@ -9,11 +12,18 @@ using SixLabors.ImageSharp.Processing;
 
 namespace AmusementPark.Infrastructure.Services.Ratings;
 
-public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRenderer
+public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRenderer, IDisposable
 {
     private const int ImageWidth = 1200;
     private const int ImageHeight = 630;
+    private const int PreviewCacheSizeLimit = 128;
+    private static readonly TimeSpan PreviewCacheDuration = TimeSpan.FromMinutes(15);
     private readonly FontFamily fontFamily;
+    private readonly MemoryCache previewCache = new MemoryCache(new MemoryCacheOptions
+    {
+        SizeLimit = PreviewCacheSizeLimit,
+    });
+    private readonly object previewCacheLock = new object();
 
     public UserRankingSharePreviewRenderer()
     {
@@ -28,6 +38,49 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
     {
         ArgumentNullException.ThrowIfNull(preview);
 
+        string cacheKey = BuildCacheKey(preview);
+        Lazy<Task<byte[]>> rendering;
+        lock (this.previewCacheLock)
+        {
+            if (!this.previewCache.TryGetValue(cacheKey, out rendering!))
+            {
+                rendering = new Lazy<Task<byte[]>>(
+                    () => this.RenderPngCoreAsync(preview),
+                    LazyThreadSafetyMode.ExecutionAndPublication);
+                this.previewCache.Set(
+                    cacheKey,
+                    rendering,
+                    new MemoryCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = PreviewCacheDuration,
+                        Size = 1,
+                    });
+            }
+        }
+
+        Task<byte[]> renderingTask = rendering.Value;
+        try
+        {
+            return await renderingTask.WaitAsync(cancellationToken);
+        }
+        catch
+        {
+            if (renderingTask.IsFaulted)
+            {
+                this.previewCache.Remove(cacheKey);
+            }
+
+            throw;
+        }
+    }
+
+    public void Dispose()
+    {
+        this.previewCache.Dispose();
+    }
+
+    private async Task<byte[]> RenderPngCoreAsync(UserRankingSharePreviewResult preview)
+    {
         using Image<Rgba32> image = new Image<Rgba32>(ImageWidth, ImageHeight, Color.ParseHex("070A12"));
         Font brandFont = this.fontFamily.CreateFont(38, FontStyle.Regular);
         Font nameFont = this.fontFamily.CreateFont(64, FontStyle.Regular);
@@ -54,7 +107,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
             context.Fill(Color.FromRgba(255, 111, 0, 36), new EllipsePolygon(1080, 70, 260));
             context.Fill(Color.FromRgba(30, 200, 255, 28), new EllipsePolygon(120, 610, 300));
             context.Fill(Color.ParseHex("FF7A00"), new RectangleF(58, 50, 10, 78));
-            context.DrawText("AMUSEMENTPARK.FUN", brandFont, Color.ParseHex("F8FAFC"), new PointF(88, 48));
+            context.DrawText("AMUSEMENT-PARKS.FUN", brandFont, Color.ParseHex("F8FAFC"), new PointF(88, 48));
             context.DrawText(
                 FitText(preview.DisplayName, nameFont, 760),
                 nameFont,
@@ -102,8 +155,31 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
         });
 
         await using MemoryStream stream = new MemoryStream();
-        await image.SaveAsPngAsync(stream, cancellationToken);
+        await image.SaveAsPngAsync(stream, CancellationToken.None);
         return stream.ToArray();
+    }
+
+    private static string BuildCacheKey(UserRankingSharePreviewResult preview)
+    {
+        StringBuilder content = new StringBuilder();
+        AppendCacheValue(content, preview.DisplayName.Trim());
+        foreach (UserRankingSharePreviewItemResult item in preview.Items.Take(5))
+        {
+            AppendCacheValue(content, item.Rank.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            AppendCacheValue(content, item.Name);
+            AppendCacheValue(content, item.ParkName ?? string.Empty);
+            AppendCacheValue(content, item.Rating.ToString("R", System.Globalization.CultureInfo.InvariantCulture));
+        }
+
+        byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(content.ToString()));
+        return Convert.ToHexString(digest);
+    }
+
+    private static void AppendCacheValue(StringBuilder content, string value)
+    {
+        content.Append(value.Length)
+            .Append(':')
+            .Append(value);
     }
 
     private static string FitText(string value, Font font, float maximumWidth)

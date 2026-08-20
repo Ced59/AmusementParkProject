@@ -19,11 +19,13 @@ public sealed class UserRankingSharePreviewRendererTests
                     "Demo Park",
                     5d - index * 0.5d))
                 .ToList());
-        UserRankingSharePreviewRenderer renderer = new UserRankingSharePreviewRenderer();
+        using UserRankingSharePreviewRenderer renderer = new UserRankingSharePreviewRenderer();
 
         byte[] content = await renderer.RenderPngAsync(preview, CancellationToken.None);
+        byte[] cachedContent = await renderer.RenderPngAsync(preview, CancellationToken.None);
 
         Assert.True(content.Length > 1_000);
+        Assert.Same(content, cachedContent);
         Assert.Equal(new byte[] { 137, 80, 78, 71, 13, 10, 26, 10 }, content.Take(8));
         using Image image = Image.Load(content);
         Assert.Equal(1200, image.Width);
