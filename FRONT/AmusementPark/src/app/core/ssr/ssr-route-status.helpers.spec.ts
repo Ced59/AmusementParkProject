@@ -114,6 +114,17 @@ describe('SSR route status helpers', () => {
         '/fr/park/123/parc-test/pricing?campaign=spring',
       ),
     ).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/map?closed=all'),
+    ).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/comments?page=2'),
+    ).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader(
+        '/fr/park/123/parc-test/item/item-1/item-test/comments?page=2',
+      ),
+    ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks?search=test')).toBe(true);
     expect(
       shouldApplyNoindexFollowHeader(

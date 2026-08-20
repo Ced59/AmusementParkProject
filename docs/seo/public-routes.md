@@ -16,17 +16,22 @@ Une route est indexable uniquement si elle expose du contenu public utile a un m
 | `/:lang/versions` | `index,follow` | Historique public des versions. |
 | `/:lang/privacy` | `index,follow` | Page legale publique utile et accessible. |
 | `/:lang/park/:id/:slug` | `index,follow` | Detail d'un parc public visible. |
-| `/:lang/park/:id/:slug/images` | `index,follow` | Galerie publique du parc quand des images publiees existent. |
-| `/:lang/park/:id/:slug/videos` | `index,follow` | Galerie video publique du parc quand des videos publiees existent. |
+| `/:lang/park/:id/:slug/images` | `index,follow` | Galerie publique du parc à partir de trois images publiées. |
+| `/:lang/park/:id/:slug/videos` | `index,follow` | Galerie vidéo publique du parc à partir de deux vidéos publiées. |
 | `/:lang/park/:id/:slug/videos/:videoId/:videoSlug` | `index,follow` | Detail public d'une video publiee de parc. |
-| `/:lang/park/:id/:slug/zones` | `index,follow` | Vue publique des zones visibles qui contiennent des elements publics. |
+| `/:lang/park/:id/:slug/map` | `index,follow` | Carte publique quand au moins deux repères d'éléments publics sont disponibles. |
+| `/:lang/park/:id/:slug/zones` | `index,follow` | Vue publique à partir de deux zones visibles contenant des éléments publics. |
 | `/:lang/park/:id/:slug/zone/:zoneId/:zoneSlug` | `index,follow` | Detail public d'une zone visible qui contient des elements publics. |
 | `/:lang/park/:id/:slug/weather` | `index,follow` | Meteo publique du parc quand des previsions sont disponibles. |
-| `/:lang/park/:id/:slug/items` | `index,follow` | Exploration publique des elements visibles du parc, sans filtres de query string. |
+| `/:lang/park/:id/:slug/opening-hours` | `index,follow` | Horaires publics quand des jours d'ouverture sont disponibles. |
+| `/:lang/park/:id/:slug/pricing` | `index,follow` | Tarifs publics quand au moins une offre est disponible. |
+| `/:lang/park/:id/:slug/comments` | `index,follow` | Discussion publique quand au moins un commentaire est visible. |
+| `/:lang/park/:id/:slug/items` | `index,follow` | Exploration publique à partir de deux éléments visibles, sans filtres de query string. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug` | `index,follow` | Detail public d'un element visible. |
-| `/:lang/park/:id/:slug/item/:itemId/:itemSlug/images` | `index,follow` | Galerie publique d'un element visible quand des images publiees existent. |
-| `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos` | `index,follow` | Galerie video publique d'un element visible quand des videos publiees existent. |
+| `/:lang/park/:id/:slug/item/:itemId/:itemSlug/images` | `index,follow` | Galerie publique d'un élément visible à partir de trois images publiées. |
+| `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos` | `index,follow` | Galerie vidéo publique d'un élément visible à partir de deux vidéos publiées. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug` | `index,follow` | Detail public d'une video publiee d'element visible. |
+| `/:lang/park/:id/:slug/item/:itemId/:itemSlug/comments` | `index,follow` | Discussion publique quand au moins un commentaire est visible. |
 | Routes publiques `history` | `index,follow` | Chronologie publique d'un parc, d'un element ou d'une attraction autonome quand au moins deux evenements sont visibles. |
 | `/:lang/park-operator/:id/:slug` | `index,follow` | Reference publique d'exploitant. |
 | `/:lang/park-founder/:id/:slug` | `index,follow` | Reference publique de fondateur. |
@@ -41,10 +46,11 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | Pages statiques | Une URL par langue supportee pour `home`, `parks`, `rankings`, `about`, `contact`, `versions` et `privacy`. |
 | Parcs | Le parc doit avoir un `id`, un nom, `IsVisible = true` et un statut admin different de `NotRelevant`. |
 | Park items | L'element doit avoir un `id`, un `parkId`, un nom, `IsVisible = true`, un statut admin different de `NotRelevant`, et son parc parent doit respecter les regles publiques des parcs. |
-| Listes d'elements | La page `items` d'un parc est incluse seulement si le parc public contient au moins un park item public. |
-| Zones | La page `zones` et les details de zones sont inclus seulement pour les zones visibles contenant au moins un park item public. |
-| Images | Les galeries sont incluses seulement si des images publiees existent pour le parc ou le park item public. |
-| Videos | Les galeries et details video sont inclus seulement si des videos publiees existent, avec filtrage par langue quand une video declare des langues. |
+| Listes d'éléments | La page `items` d'un parc est incluse seulement si le parc public contient au moins deux park items publics. |
+| Cartes | La page `map` est incluse seulement si au moins deux park items publics possèdent un repère exploitable. |
+| Zones | La page `zones` exige au moins deux zones publiques ; chaque détail de zone exige au moins un park item public. |
+| Images | Les galeries sont incluses à partir de trois images publiées pour le parc ou le park item public. |
+| Vidéos | Les galeries sont incluses à partir de deux vidéos publiées ; les détails restent filtrés par langue quand une vidéo déclare des langues. |
 | Historiques | Une chronologie est incluse seulement si sa vue canonique expose au moins deux evenements publics. |
 | References | Les exploitants et constructeurs `NotRelevant` sont exclus ; les fondateurs publics avec `id` et nom sont inclus. |
 
@@ -55,13 +61,18 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | `/:lang/park/:id/:slug/items?*` | `noindex,follow` | Combinaisons de filtres items non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/zones?*` | `noindex,follow` | Combinaisons de filtres zones non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/zone/:zoneId/:zoneSlug?*` | `noindex,follow` | Variante filtree d'une zone publique. |
+| `/:lang/park/:id/:slug/map?*` | `noindex,follow` | Variante filtrée ou paramétrée de la carte publique. |
 | `/:lang/park/:id/:slug/images?*` | `noindex,follow` | Combinaisons de filtres images non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/videos?*` | `noindex,follow` | Combinaisons de filtres videos non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/weather?*` | `noindex,follow` | Variante filtree ou parametree de la meteo publique. |
+| `/:lang/park/:id/:slug/opening-hours?*` | `noindex,follow` | Variante paramétrée des horaires publics. |
+| `/:lang/park/:id/:slug/pricing?*` | `noindex,follow` | Variante paramétrée des tarifs publics. |
+| Routes publiques `comments` vides ou avec une query string | `noindex,follow` | Discussion sans contenu ou variante paramétrée sans valeur SEO autonome. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/images?*` | `noindex,follow` | Combinaisons de filtres images non validees comme pages SEO autonomes. |
 | `/:lang/park/:id/:slug/item/:itemId/:itemSlug/videos?*` | `noindex,follow` | Combinaisons de filtres videos non validees comme pages SEO autonomes. |
 | Routes publiques `history` avec moins de deux evenements ou une query string | `noindex,follow` | Chronologie trop legere ou variante parametree sans valeur SEO autonome. |
-| `/:lang/park/:id/:slug/map` | `noindex,follow` | Carte interactive dediee, utile aux visiteurs mais faible valeur SEO brute. |
+| Collections sous leur seuil de valeur | `noindex,follow` | Moins de trois images, ou moins de deux vidéos, éléments, zones ou repères de carte. |
+| Météo, horaires ou tarifs sans donnée publique | `noindex,follow` | Sous-page utile à la navigation mais sans contenu autonome exploitable. |
 | `/:lang/not-found` | `noindex,follow` | Page 404 publique. |
 | route wildcard publique | `noindex,follow` | Affiche la vraie page 404 publique. |
 

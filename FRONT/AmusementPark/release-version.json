@@ -1,6 +1,20 @@
 {
-  "version": "4.2.4",
+  "version": "4.2.5",
   "history": [
+    {
+      "version": "4.2.5",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les variantes filtrées des pages publiques sont mieux gérées.",
+        "en": "Filtered variants of public pages are handled more effectively.",
+        "de": "Gefilterte Varianten öffentlicher Seiten werden besser verarbeitet.",
+        "nl": "Gefilterde varianten van openbare pagina’s worden beter verwerkt.",
+        "it": "Le varianti filtrate delle pagine pubbliche sono gestite meglio.",
+        "es": "Las variantes filtradas de las páginas públicas se gestionan mejor.",
+        "pl": "Filtrowane warianty stron publicznych są lepiej obsługiwane.",
+        "pt": "As variantes filtradas das páginas públicas são melhor geridas."
+      }
+    },
     {
       "version": "4.2.4",
       "releasedAt": "2026-08-20",
