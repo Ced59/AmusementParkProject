@@ -124,6 +124,7 @@ describe('RankingsPageComponent', () => {
     translateService.setTranslation('fr', {
       ratings: {
         rankings: {
+          title: 'Classements des visiteurs',
           ratingCount: {
             one: '{{count}} note',
             other: '{{count}} notes',
@@ -145,6 +146,16 @@ describe('RankingsPageComponent', () => {
 
     fixture = TestBed.createComponent(RankingsPageComponent);
     port = TestBed.inject(RANKINGS_RATINGS_PORT) as FakeRankingsRatingsPort;
+  });
+
+  it('renders one localized page heading', () => {
+    fixture.detectChanges();
+
+    const headings: NodeListOf<HTMLHeadingElement> =
+      fixture.nativeElement.querySelectorAll('h1');
+
+    expect(headings).toHaveLength(1);
+    expect(headings[0]?.textContent?.trim()).toBe('Classements des visiteurs');
   });
 
   it('maps raw rating counts to every ranking level', () => {
