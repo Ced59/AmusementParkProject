@@ -59,6 +59,13 @@ class FakeHistoryDataPort implements HistoryDataPort {
     return of({} as HistoryTimeline);
   }
 
+  getStandaloneAttractionTimeline(
+    _standaloneAttractionId: string,
+    _options?: AnonymousHttpOptions,
+  ): Observable<HistoryTimeline> {
+    return of({} as HistoryTimeline);
+  }
+
   getArticle(
     _eventId: string,
     _options?: AnonymousHttpOptions,
