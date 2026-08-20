@@ -34,6 +34,17 @@ describe('SeoService', () => {
     clearManagedSeoTags();
   });
 
+  it('applies dedicated locale-neutral metadata to the language entry page', () => {
+    service.applyRouteDefaults('/');
+
+    expect(documentRef.title).toBe('Choose your language · Choisis ta langue — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toContain('français');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/');
+    expect(readMetaContent('meta[property="og:locale"]')).toBeNull();
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
+  });
+
   it('uses the park primary photo as the Open Graph image', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       primaryPhoto: {

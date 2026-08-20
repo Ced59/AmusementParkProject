@@ -174,6 +174,30 @@ public sealed class UserRepository : IUserRepository
         return document.ToDomain();
     }
 
+    public async Task<User?> UpdatePreferredLanguageAsync(
+        string userId,
+        string preferredLanguage,
+        CancellationToken cancellationToken)
+    {
+        DateTime now = DateTime.UtcNow;
+        FilterDefinition<UserDocument> filter = Builders<UserDocument>.Filter.Eq(document => document.Id, userId);
+        UpdateDefinition<UserDocument> update = Builders<UserDocument>.Update
+            .Set(document => document.PreferredLanguage, preferredLanguage)
+            .Set(document => document.LastActivityUtc, now)
+            .Set(document => document.UpdatedAt, now);
+        FindOneAndUpdateOptions<UserDocument> options = new FindOneAndUpdateOptions<UserDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+
+        UserDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken)
     {
         DateTime now = DateTime.UtcNow;

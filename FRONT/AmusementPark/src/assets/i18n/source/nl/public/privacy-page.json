@@ -46,7 +46,8 @@
         "title": "Cookies en lokale opslag",
         "body1": "Strikt noodzakelijke cookies of opslag kunnen worden gebruikt voor sessie, beveiliging, taal, thema, interfacevoorkeuren en correcte authenticatie.",
         "body2": "Deze noodzakelijke trackers kunnen sessie-/API-cookies, HTTP-only authenticatiecookies, anti-misbruikmechanismen en lokaal opgeslagen voorkeuren omvatten. Ze kunnen niet via de banner worden uitgeschakeld omdat ze de gevraagde dienst mogelijk maken.",
-        "body3": "De keuze voor optionele cookies wordt opgeslagen in de lokale browseropslag en in een voorkeurcookie, zodat dezelfde keuze niet op elke pagina opnieuw wordt gevraagd."
+        "body3": "De keuze voor optionele cookies wordt opgeslagen in de lokale browseropslag en in een voorkeurcookie, zodat dezelfde keuze niet op elke pagina opnieuw wordt gevraagd.",
+        "body4": "De cookie ‘amusementpark.language’ bewaart alleen de gekozen taal, zodat de neutrale ingang de juiste taalversie opent. Deze cookie is strikt noodzakelijk, valt niet onder de optionele toestemming en verloopt na één jaar."
       },
       "hosting": {
         "title": "Hosting en verwerkers",

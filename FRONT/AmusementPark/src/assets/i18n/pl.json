@@ -4278,7 +4278,8 @@
         "title": "Pliki cookie i pamięć lokalna",
         "body1": "Ściśle niezbędne pliki cookie lub pamięć mogą być używane do sesji, bezpieczeństwa, języka, motywu, preferencji interfejsu i prawidłowego działania uwierzytelniania.",
         "body2": "Te niezbędne mechanizmy mogą obejmować cookie sesji/API, cookie uwierzytelniania HTTP-only, mechanizmy antynadużyciowe i lokalnie zapisane preferencje. Nie można ich wyłączyć z banera, ponieważ warunkują żądaną usługę.",
-        "body3": "Wybór dotyczący opcjonalnych cookie jest przechowywany w lokalnej pamięci przeglądarki oraz w cookie preferencji, aby nie pytać o niego na każdej stronie."
+        "body3": "Wybór dotyczący opcjonalnych cookie jest przechowywany w lokalnej pamięci przeglądarki oraz w cookie preferencji, aby nie pytać o niego na każdej stronie.",
+        "body4": "Plik cookie „amusementpark.language” przechowuje wyłącznie wybrany język, aby neutralny punkt wejścia otwierał właściwą wersję strony. Jest ściśle niezbędny, nie podlega opcjonalnej zgodzie i wygasa po roku."
       },
       "hosting": {
         "title": "Hosting i podmioty przetwarzające",

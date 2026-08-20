@@ -16,6 +16,7 @@ import { routes } from './app.routes';
 import { initializeApp, HttpLoaderFactory } from './app.module';
 import { TranslationService } from './services/translation.service';
 import { AuthService } from './services/auth/auth.service';
+import { AuthenticatedUserLanguageService } from './services/users/authenticated-user-language.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import { TransientApiReadRetryInterceptor } from '@core/http/interceptors/transient-api-read-retry.interceptor';
@@ -51,7 +52,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
     provideAppInitializer(() => {
-      const initializerFn = initializeApp(inject(TranslationService), inject(AuthService));
+      const initializerFn = initializeApp(
+        inject(TranslationService),
+        inject(AuthService),
+        inject(AuthenticatedUserLanguageService)
+      );
       return initializerFn();
     }),
 

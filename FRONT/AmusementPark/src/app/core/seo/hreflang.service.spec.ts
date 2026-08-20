@@ -27,4 +27,11 @@ describe('HreflangService', () => {
     expect(french?.href).toBe('http://localhost:4200/fr/parks/1');
     expect(xDefault?.href).toBe('http://localhost:4200/en/parks/1');
   });
+
+  it('uses the neutral selector as x-default for localized home pages', () => {
+    const alternates = service.buildAlternates('/fr/home');
+    const xDefault = alternates.find((alternate) => alternate.hreflang === 'x-default');
+
+    expect(xDefault?.href).toBe('http://localhost:4200/');
+  });
 });

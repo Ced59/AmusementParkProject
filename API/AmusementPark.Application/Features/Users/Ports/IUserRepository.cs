@@ -21,6 +21,7 @@ public interface IUserRepository
     Task<long> AllocatePublicAccountNumberAsync(CancellationToken cancellationToken);
     Task<User> CreateAsync(User user, CancellationToken cancellationToken);
     Task<User?> UpdateAsync(string userId, User user, CancellationToken cancellationToken);
+    Task<User?> UpdatePreferredLanguageAsync(string userId, string preferredLanguage, CancellationToken cancellationToken);
     Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken);
     Task UpdateLastActivityAsync(string userId, CancellationToken cancellationToken);
     Task<User?> AssignRoleAsync(string userId, Role role, CancellationToken cancellationToken);

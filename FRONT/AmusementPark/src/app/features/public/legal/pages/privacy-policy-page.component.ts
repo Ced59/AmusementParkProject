@@ -70,7 +70,8 @@ export class PrivacyPolicyPageComponent {
       bodyKeys: [
         'privacyPage.sections.cookies.body1',
         'privacyPage.sections.cookies.body2',
-        'privacyPage.sections.cookies.body3'
+        'privacyPage.sections.cookies.body3',
+        'privacyPage.sections.cookies.body4'
       ]
     },
     {

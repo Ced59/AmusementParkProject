@@ -34,6 +34,10 @@ export class SeoRoutePolicyService {
     return routeSegment === '' ? 'home' : routeKeys.get(routeSegment) ?? null;
   }
 
+  isLanguageEntryRoute(url: string): boolean {
+    return this.getPathSegments(url).length === 0;
+  }
+
   isAdminRoute(url: string): boolean {
     return /^\/[a-z]{2}\/admin(?:\/|$)/i.test(this.normalizePath(url));
   }

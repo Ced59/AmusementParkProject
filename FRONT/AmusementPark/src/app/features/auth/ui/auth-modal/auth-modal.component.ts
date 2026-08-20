@@ -14,6 +14,7 @@ import { RegisterFormComponent } from '../register-form/register-form.component'
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
+import { TranslationService } from '@app/services/translation.service';
 
 @Component({
   selector: 'app-auth-modal',
@@ -35,6 +36,7 @@ export class AuthModalComponent implements AfterViewInit {
     private readonly sharedService: SharedService,
     private readonly authenticatedUserLanguageService: AuthenticatedUserLanguageService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
+    private readonly translationService: TranslationService,
     private readonly translateService: TranslateService) {
   }
 
@@ -69,6 +71,7 @@ export class AuthModalComponent implements AfterViewInit {
         'google',
         idToken,
         undefined,
+        this.translationService.getCurrentLang().toUpperCase(),
         this.measurementPreferenceService.getPreferredSystem()
       ));
       this.authService.setAuthenticatedSession(result);

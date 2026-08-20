@@ -93,14 +93,19 @@ describe('AuthApiService', () => {
   });
 
   it('posts external login tokens with credentials enabled', () => {
-    service.externalLogin('google', 'id-token', 'nonce').subscribe();
+    service.externalLogin('google', 'id-token', 'nonce', 'FR', 'Metric').subscribe();
 
     const request = httpTestingController.expectOne(
       `${environment.apiBaseUrl}auth/external/google`,
     );
     expect(request.request.method).toBe('POST');
     expect(request.request.withCredentials).toBe(true);
-    expect(request.request.body).toEqual({ token: 'id-token', nonce: 'nonce' });
+    expect(request.request.body).toEqual({
+      token: 'id-token',
+      nonce: 'nonce',
+      preferredLanguage: 'FR',
+      preferredMeasurementSystem: 'Metric',
+    });
     request.flush({ token: 'access' });
   });
 

@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EventEmitter, NO_ERRORS_SCHEMA, Signal, signal } from '@angular/core';
+import { EventEmitter, NO_ERRORS_SCHEMA, Signal, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
@@ -8,7 +8,6 @@ import {
   COMMON_TEST_IMPORTS,
   provideCommonTestDependencies,
 } from '@app/testing/common-test-providers';
-import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ModalService } from '@app/services/modal/modal.service';
@@ -21,6 +20,7 @@ import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.comp
 import { PublicHeaderComponent } from './public-header.component';
 import { Dialog } from '@shared/ui/primitives/dialog';
 import { UserDto } from '@app/models/users/user_dto';
+import { CurrentUserService } from '@app/services/users/current-user.service';
 
 class PublicParkNavigationTreeFacadeStub {
   private readonly treeSignal = signal<PublicParkNavigationTreeViewModel>({
@@ -35,8 +35,10 @@ class PublicParkNavigationTreeFacadeStub {
 
 describe('PublicHeaderComponent', () => {
   let fixture: ComponentFixture<PublicHeaderComponent>;
-  let authApiService: MockedObject<AuthApiService>;
   let authService: MockedObject<AuthService>;
+  let currentUserService: MockedObject<CurrentUserService> & {
+    currentUser: WritableSignal<UserDto | null>;
+  };
   let modalService: MockedObject<ModalService>;
 
   beforeEach(async () => {
@@ -45,9 +47,6 @@ describe('PublicHeaderComponent', () => {
     } as unknown as MockedObject<ImagesApiService>;
     imagesApiService.resolveImageUrl.mockReturnValue(null);
 
-    authApiService = {
-      getCurrentUserById: vi.fn().mockName('AuthApiService.getCurrentUserById'),
-    } as unknown as MockedObject<AuthApiService>;
     authService = {
       ensureValidAccessToken: vi
         .fn()
@@ -60,6 +59,14 @@ describe('PublicHeaderComponent', () => {
     authService.getUserIdFromToken.mockReturnValue(null);
     authService.hasRole.mockReturnValue(false);
     authService.isLoggedIn.mockReturnValue(false);
+
+    currentUserService = {
+      currentUser: signal<UserDto | null>(null),
+      clearCurrentUser: vi.fn().mockName('CurrentUserService.clearCurrentUser'),
+      refreshCurrentUser: vi.fn().mockName('CurrentUserService.refreshCurrentUser'),
+    } as unknown as MockedObject<CurrentUserService> & {
+      currentUser: WritableSignal<UserDto | null>;
+    };
 
     modalService = {
       closeModal: vi.fn().mockName('ModalService.closeModal'),
@@ -103,8 +110,8 @@ describe('PublicHeaderComponent', () => {
       providers: [
         ...provideCommonTestDependencies(),
         { provide: ImagesApiService, useValue: imagesApiService },
-        { provide: AuthApiService, useValue: authApiService },
         { provide: AuthService, useValue: authService },
+        { provide: CurrentUserService, useValue: currentUserService },
         { provide: ModalService, useValue: modalService },
         { provide: SharedService, useValue: sharedService },
         { provide: ThemeService, useValue: themeService },
@@ -252,7 +259,7 @@ describe('PublicHeaderComponent', () => {
 
     authService.isLoggedIn.mockReturnValue(true);
     authService.getUserIdFromToken.mockReturnValue('user-1');
-    authApiService.getCurrentUserById.mockReturnValue(of(user));
+    currentUserService.currentUser.set(user);
 
     fixture = TestBed.createComponent(PublicHeaderComponent);
     fixture.detectChanges();
@@ -284,7 +291,7 @@ describe('PublicHeaderComponent', () => {
 
     authService.isLoggedIn.mockReturnValue(true);
     authService.getUserIdFromToken.mockReturnValue('user-1');
-    authApiService.getCurrentUserById.mockReturnValue(of(user));
+    currentUserService.currentUser.set(user);
     const imagesApiService: MockedObject<ImagesApiService> = TestBed.inject(
       ImagesApiService,
     ) as MockedObject<ImagesApiService>;
@@ -301,5 +308,30 @@ describe('PublicHeaderComponent', () => {
     expect(avatarImage).not.toBeNull();
     expect(avatarImage?.getAttribute('src')).toBe('/api/images/avatar-user-1');
     expect(avatarImage?.getAttribute('alt')).toBe('Ced Caudron avatar');
+  });
+
+  it('reuses the user hydrated during application initialization', () => {
+    fixture.destroy();
+    const user: UserDto = {
+      id: 'user-1',
+      email: 'user@example.com',
+      firstName: 'Ced',
+      lastName: 'Caudron',
+      isActivated: true,
+      isBlocked: false,
+      roles: [],
+      preferredLanguage: 'FR',
+      avatarUrl: '',
+      createdAt: '2026-06-18T00:00:00Z',
+      updatedAt: '2026-06-18T00:00:00Z',
+    };
+    authService.isLoggedIn.mockReturnValue(true);
+    authService.getUserIdFromToken.mockReturnValue('user-1');
+    currentUserService.currentUser.set(user);
+
+    fixture = TestBed.createComponent(PublicHeaderComponent);
+    fixture.detectChanges();
+
+    expect(currentUserService.refreshCurrentUser).not.toHaveBeenCalled();
   });
 });

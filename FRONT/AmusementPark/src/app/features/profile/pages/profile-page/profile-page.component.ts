@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject } from '@angular/core';
-import { distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -21,6 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
+import { LanguagePreferenceService } from '@app/services/localization/language-preference.service';
 
 @Component({
     selector: 'app-profile-page',
@@ -59,12 +59,26 @@ export class ProfilePageComponent implements OnInit {
     private readonly sharedService: SharedService,
     private readonly modalService: ModalService,
     private readonly translationService: TranslationService,
+    private readonly languagePreferenceService: LanguagePreferenceService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly translateService: TranslateService,
     private readonly messageService: ToastMessageService
   ) {
     effect((): void => {
       this.measurementPreferenceService.syncFromUser(this.user());
+    });
+
+    effect((): void => {
+      const currentUser: UserDto | null = this.user();
+      const preferredLanguage: string | null = this.languagePreferenceService.preferredLanguage();
+      if (!currentUser || preferredLanguage === null || currentUser.preferredLanguage.toLowerCase() === preferredLanguage) {
+        return;
+      }
+
+      this.stateFacade.setUser({
+        ...currentUser,
+        preferredLanguage: preferredLanguage.toUpperCase()
+      });
     });
   }
 
@@ -77,12 +91,6 @@ export class ProfilePageComponent implements OnInit {
       this.stateFacade.setError();
     }
 
-    this.translationService.languageChanged.pipe(
-      distinctUntilChanged(),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe((lang: string) => {
-      this.updatePreferredLanguage(lang);
-    });
   }
 
   editField(field: string): void {
@@ -214,30 +222,6 @@ export class ProfilePageComponent implements OnInit {
     this.sharedService.emitLoginStatusChange();
     const currentLang: string = this.router.url.split('/')[1] || 'en';
     this.router.navigate(['/', currentLang, 'home']);
-  }
-
-  private updatePreferredLanguage(lang: string): void {
-    const currentUser: UserDto | null = this.user();
-
-    if (!this.currentUserId || !currentUser) {
-      return;
-    }
-
-    const payload: UserPut = {
-      firstName: currentUser.firstName ?? '',
-      lastName: currentUser.lastName ?? '',
-      publicDisplayName: currentUser.publicDisplayName ?? '',
-      email: currentUser.email ?? '',
-      newEmail: currentUser.email ?? '',
-      preferredLanguage: lang.toUpperCase(),
-      preferredMeasurementSystem: currentUser.preferredMeasurementSystem ?? this.measurementPreferenceService.getPreferredSystem()
-    };
-
-    this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (user: UserDto) => {
-        this.stateFacade.setUser(user);
-      }
-    });
   }
 
   updatePreferredMeasurementSystem(system: MeasurementSystem): void {

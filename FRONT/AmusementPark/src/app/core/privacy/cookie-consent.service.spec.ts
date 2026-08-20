@@ -51,6 +51,18 @@ describe('CookieConsentService', () => {
     ).toBe('refused');
   });
 
+  it('keeps the strictly necessary language preference when optional cookies are refused or reset', () => {
+    const languageCookieName: string = 'amusementpark.language';
+    document.cookie = `${languageCookieName}=fr; Path=/; SameSite=Lax`;
+    const service = new CookieConsentService('browser' as unknown as object);
+
+    service.continueWithNecessaryCookiesOnly();
+    expect(document.cookie).toContain(`${languageCookieName}=fr`);
+
+    service.resetCookieChoice();
+    expect(document.cookie).toContain(`${languageCookieName}=fr`);
+  });
+
   it('migrates a legacy analytics consent value and removes the old key', () => {
     window.localStorage.setItem(
       legacyStorageKey,

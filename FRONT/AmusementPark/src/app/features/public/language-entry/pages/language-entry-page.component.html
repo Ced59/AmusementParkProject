@@ -1,0 +1,41 @@
+<main class="language-entry">
+  <section class="language-entry__panel" aria-labelledby="language-entry-title">
+    <img
+      class="language-entry__logo"
+      src="assets/general-icon/logo-amusementpark-ui.png"
+      width="184"
+      height="184"
+      alt="Amusement Parks">
+
+    <p class="language-entry__eyebrow">Amusement Parks</p>
+    <h1 id="language-entry-title">Choose your language</h1>
+    <p class="language-entry__lead">
+      Choisis ta langue · Elige tu idioma · Wähle deine Sprache
+    </p>
+
+    <div class="language-entry__grid" role="list">
+      @for (language of languages; track language.value) {
+        <a
+          class="language-entry__choice"
+          role="listitem"
+          [routerLink]="['/', language.value, 'home']"
+          [attr.lang]="language.code"
+          [attr.aria-label]="language.invitation"
+          (click)="selectLanguage(language.value)">
+          <img
+            class="language-entry__flag"
+            [src]="flagAssetPath(language.value)"
+            width="44"
+            height="32"
+            alt=""
+            aria-hidden="true">
+          <span class="language-entry__choice-copy">
+            <strong>{{ language.label }}</strong>
+            <span>{{ language.invitation }}</span>
+          </span>
+          <span class="language-entry__arrow" aria-hidden="true">→</span>
+        </a>
+      }
+    </div>
+  </section>
+</main>
