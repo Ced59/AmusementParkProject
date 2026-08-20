@@ -125,7 +125,6 @@ public sealed class AdminSeoSitemapsController : ControllerBase
                 publicBaseUrl,
                 this.settings.SupportedLanguages,
                 SitemapGenerationTrigger.Manual,
-                request?.SubmitToIndexNow ?? true,
                 this.GetCurrentUserId(),
                 this.GetCurrentUserEmail()),
             cancellationToken);

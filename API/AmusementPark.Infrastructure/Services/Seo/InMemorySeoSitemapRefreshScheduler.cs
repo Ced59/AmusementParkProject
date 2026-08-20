@@ -77,7 +77,6 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
                 SupportedLanguages = context.SupportedLanguages,
             },
             SitemapGenerationTrigger.Automatic,
-            submitToIndexNow: false,
             triggeredByUserId: null,
             triggeredByUserEmail: null,
             cancellationToken);

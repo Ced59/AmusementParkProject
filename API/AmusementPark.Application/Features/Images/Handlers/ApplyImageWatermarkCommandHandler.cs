@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Images.Handlers;
@@ -10,13 +11,16 @@ public sealed class ApplyImageWatermarkCommandHandler : ICommandHandler<ApplyIma
 {
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public ApplyImageWatermarkCommandHandler(
         IImageRepository imageRepository,
-        IImageBinaryStorage imageBinaryStorage)
+        IImageBinaryStorage imageBinaryStorage,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Image>> HandleAsync(ApplyImageWatermarkCommand command, CancellationToken cancellationToken = default)
@@ -68,6 +72,11 @@ public sealed class ApplyImageWatermarkCommandHandler : ICommandHandler<ApplyIma
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                new[] { image },
+                new[] { updated },
+                cancellationToken);
             return ApplicationResult<Image>.Success(updated);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

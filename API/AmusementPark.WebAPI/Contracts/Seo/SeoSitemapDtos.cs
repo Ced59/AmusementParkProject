@@ -2,7 +2,7 @@ namespace AmusementPark.WebAPI.Contracts.Seo;
 
 public sealed class GenerateSeoSitemapRequestDto
 {
-    public bool SubmitToIndexNow { get; init; } = true;
+    public bool SubmitToIndexNow { get; init; }
 }
 
 public sealed class UpdateSeoSitemapSettingsRequestDto

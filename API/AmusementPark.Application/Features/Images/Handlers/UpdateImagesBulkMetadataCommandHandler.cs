@@ -5,6 +5,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Localization;
 
@@ -17,13 +18,16 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
 {
     private readonly IImageRepository imageRepository;
     private readonly ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public UpdateImagesBulkMetadataCommandHandler(
         IImageRepository imageRepository,
-        ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler)
+        ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
         this.updateImageMetadataCommandHandler = updateImageMetadataCommandHandler;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<BulkAdministrationUpdateResult>> HandleAsync(UpdateImagesBulkMetadataCommand command, CancellationToken cancellationToken = default)
@@ -71,6 +75,16 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
                 cancellationToken)
             : await this.imageRepository.UpdateBulkMetadataAsync(imageIds, command.Metadata, cancellationToken);
 
+        if (this.publicSeoUpdateNotifier is not null && updatedCount > 0)
+        {
+            IReadOnlyCollection<Image> currentImages = await this.imageRepository.GetByIdsAsync(imageIds, cancellationToken);
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                existingImages,
+                currentImages,
+                cancellationToken);
+        }
+
         return ApplicationResult<BulkAdministrationUpdateResult>.Success(new BulkAdministrationUpdateResult
         {
             RequestedCount = imageIds.Count,
@@ -97,7 +111,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
 
             ImageMetadataUpdate update = BuildMetadataUpdate(existing, metadata);
             ApplicationResult<Image> result = await this.updateImageMetadataCommandHandler.HandleAsync(
-                new UpdateImageMetadataCommand(existing.Id, update),
+                new UpdateImageMetadataCommand(existing.Id, update, SuppressSeoNotification: true),
                 cancellationToken);
 
             if (!result.IsSuccess)

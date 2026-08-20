@@ -25,7 +25,6 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
     {
         new StaticSitemapPage("home", "daily", 1.0m),
         new StaticSitemapPage("parks", "daily", 0.9m),
-        new StaticSitemapPage("sitemap", "weekly", 0.84m),
         new StaticSitemapPage("rankings", "daily", 0.82m),
         new StaticSitemapPage("manufacturers", "weekly", 0.66m),
         new StaticSitemapPage("about", "monthly", 0.4m),
@@ -103,11 +102,11 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         IReadOnlyCollection<ParkItem> publicItems = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
             this.parkItemRepository,
             cancellationToken);
-        HashSet<string> parkIdsWithMapMarkers = publicItems
+        Dictionary<string, List<ParkItem>> mapItemsByParkId = publicItems
             .Where(HasPublicMapMarker)
-            .Select(static item => item.ParkId)
-            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
-            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+            .GroupBy(static item => item.ParkId, StringComparer.OrdinalIgnoreCase)
+            .Where(static group => SeoPageValuePolicy.IsCollectionIndexable(group.Count()))
+            .ToDictionary(static group => group.Key, static group => group.ToList(), StringComparer.OrdinalIgnoreCase);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks)
@@ -116,9 +115,12 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
-                if (parkIdsWithMapMarkers.Contains(park.Id!))
+                if (mapItemsByParkId.TryGetValue(park.Id!, out List<ParkItem>? mapItems))
                 {
-                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/map", park.UpdatedAtUtc, "weekly", 0.78m));
+                    DateTime? mapLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
+                        park.UpdatedAtUtc,
+                        ParkItemListsSitemapSectionProvider.ResolveLatestParkItemUpdate(mapItems));
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/map", mapLastModifiedUtc, "weekly", 0.78m));
                 }
 
                 if (HasWeatherCoordinates(park))
@@ -161,13 +163,13 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         return normalizedLanguages.Count > 0 ? normalizedLanguages : new[] { "en" };
     }
 
-    internal static async Task<HashSet<string>> LoadPublishedImageOwnerIdsAsync(
+    internal static async Task<IReadOnlyDictionary<string, PublishedImageOwnerSummary>> LoadPublishedImageOwnerSummariesAsync(
         IImageRepository imageRepository,
         ImageOwnerType ownerType,
         ImageCategory category,
         CancellationToken cancellationToken)
     {
-        HashSet<string> ownerIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, PublishedImageOwnerSummary> summaries = new Dictionary<string, PublishedImageOwnerSummary>(StringComparer.OrdinalIgnoreCase);
         int pageNumber = 1;
 
         while (true)
@@ -189,7 +191,10 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
                 string? ownerId = NormalizeOwnerId(image.OwnerId);
                 if (ownerId is not null)
                 {
-                    ownerIds.Add(ownerId);
+                    PublishedImageOwnerSummary current = summaries.GetValueOrDefault(ownerId) ?? new PublishedImageOwnerSummary(0, null);
+                    summaries[ownerId] = new PublishedImageOwnerSummary(
+                        current.Count + 1,
+                        ParkItemListsSitemapSectionProvider.ResolveLatest(current.LastModifiedUtc, image.UpdatedAtUtc));
                 }
             }
 
@@ -201,13 +206,30 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             pageNumber++;
         }
 
-        return ownerIds;
+        return summaries;
+    }
+
+    internal static async Task<HashSet<string>> LoadPublishedImageOwnerIdsAsync(
+        IImageRepository imageRepository,
+        ImageOwnerType ownerType,
+        ImageCategory category,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> summaries = await LoadPublishedImageOwnerSummariesAsync(
+            imageRepository,
+            ownerType,
+            category,
+            cancellationToken);
+
+        return summaries.Keys.ToHashSet(StringComparer.OrdinalIgnoreCase);
     }
 
     private static string? NormalizeOwnerId(string? ownerId)
     {
         return string.IsNullOrWhiteSpace(ownerId) ? null : ownerId.Trim();
     }
+
+    internal sealed record PublishedImageOwnerSummary(int Count, DateTime? LastModifiedUtc);
 }
 
 public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvider
@@ -234,7 +256,10 @@ public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvide
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         IReadOnlyCollection<ParkItem> publicItems = await LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
         IReadOnlyDictionary<string, List<ParkItem>> publicItemsByParkId = GroupItemsByParkId(publicItems);
-        IReadOnlyCollection<string> parentParkIds = publicItemsByParkId.Keys.ToList();
+        IReadOnlyCollection<string> parentParkIds = publicItemsByParkId
+            .Where(static pair => SeoPageValuePolicy.IsCollectionIndexable(pair.Value.Count))
+            .Select(static pair => pair.Key)
+            .ToList();
 
         IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
         Dictionary<string, Park> visibleParkById = parentParks
@@ -244,7 +269,7 @@ public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvide
         Dictionary<string, DateTime?> lastModifiedByParkId = new Dictionary<string, DateTime?>(StringComparer.OrdinalIgnoreCase);
         foreach (KeyValuePair<string, List<ParkItem>> parkItems in publicItemsByParkId)
         {
-            if (!visibleParkById.ContainsKey(parkItems.Key))
+            if (!visibleParkById.ContainsKey(parkItems.Key) || !SeoPageValuePolicy.IsCollectionIndexable(parkItems.Value.Count))
             {
                 continue;
             }
@@ -393,9 +418,12 @@ public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
                     ParkItemListsSitemapSectionProvider.ResolveLatest(zone.UpdatedAtUtc, lastModifiedByZoneId.GetValueOrDefault(zone.Id!)));
             }
 
-            foreach (string language in languages)
+            if (SeoPageValuePolicy.IsCollectionIndexable(publicZones.Count))
             {
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/zones", zonesLastModifiedUtc, "weekly", 0.73m));
+                foreach (string language in languages)
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/zones", zonesLastModifiedUtc, "weekly", 0.73m));
+                }
             }
 
             foreach (ParkZone zone in publicZones)

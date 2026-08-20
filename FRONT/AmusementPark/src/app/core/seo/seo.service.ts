@@ -22,6 +22,11 @@ import { JsonLdService } from './json-ld.service';
 import { buildCanonicalVideoRouteRedirectPath } from './legacy-video-route.helpers';
 import { SeoAlternateLink, SeoRouteData } from './models/seo-route-data.model';
 import { SEO_DEFAULT_LANGUAGE } from './seo-languages';
+import {
+  MINIMUM_INDEXABLE_COLLECTION_ENTRIES,
+  isCollectionIndexable,
+  isImageGalleryIndexable
+} from './seo-page-value-policy';
 import { SeoRoutePolicyService } from './seo-route-policy.service';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
 
@@ -1822,7 +1827,7 @@ export class SeoService {
         description: DEFAULT_DESCRIPTION,
         canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
         robots: 'noindex,follow',
-        alternates: this.hreflangService.buildAlternates(url),
+        alternates: [],
       });
       return;
     }
@@ -1834,7 +1839,14 @@ export class SeoService {
     }
 
     if (staticRouteKey) {
-      this.apply(this.buildStaticRouteData(staticRouteKey, language, url, 'index,follow'));
+      const isIndexableStaticPage: boolean = staticRouteKey !== 'sitemap';
+      const routeData: SeoRouteData = this.buildStaticRouteData(
+        staticRouteKey,
+        language,
+        url,
+        isIndexableStaticPage ? 'index,follow' : 'noindex,follow'
+      );
+      this.apply(isIndexableStaticPage ? routeData : { ...routeData, alternates: [], jsonLd: [] });
       return;
     }
 
@@ -1928,16 +1940,19 @@ export class SeoService {
     const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
     const description: string = copy.description(parkName, locationLabel, totalImages);
+    const isIndexable: boolean = !this.hasQueryString(url) && isImageGalleryIndexable(totalImages);
 
     this.apply({
       title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId) ?? undefined,
       imageAlt: parkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkImagesBreadcrumbLabel(normalizedLanguage, parkName))]
+      jsonLd: isIndexable
+        ? [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkImagesBreadcrumbLabel(normalizedLanguage, parkName))]
+        : []
     });
   }
 
@@ -1959,16 +1974,19 @@ export class SeoService {
     const titleContext: string = [parkName, locationLabel].filter((value: string) => value.length > 0).join(' — ');
     const titleSuffix: string = titleContext ? ` — ${titleContext}` : '';
     const description: string = copy.description(itemName, parkName, locationLabel, totalImages);
+    const isIndexable: boolean = !this.hasQueryString(url) && isImageGalleryIndexable(totalImages);
 
     this.apply({
       title: `${copy.titlePrefix} ${itemName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId) ?? undefined,
       imageAlt: itemName,
-      jsonLd: [this.buildParkItemImagesBreadcrumbJsonLd(item, park, seoUrl, this.resolveParkItemImagesBreadcrumbLabel(normalizedLanguage, itemName))]
+      jsonLd: isIndexable
+        ? [this.buildParkItemImagesBreadcrumbJsonLd(item, park, seoUrl, this.resolveParkItemImagesBreadcrumbLabel(normalizedLanguage, itemName))]
+        : []
     });
   }
 
@@ -1988,18 +2006,21 @@ export class SeoService {
     const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
     const description: string = copy.description(parkName, locationLabel, totalVideos);
+    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(totalVideos);
 
     this.apply({
       title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveInternalImageIdAbsoluteUrl(primaryVideoThumbnailPathOrUrl)
         ?? this.resolveImageIdAbsoluteUrl(parkImageId)
         ?? undefined,
       imageAlt: parkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkVideosBreadcrumbLabel(normalizedLanguage, parkName))]
+      jsonLd: isIndexable
+        ? [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkVideosBreadcrumbLabel(normalizedLanguage, parkName))]
+        : []
     });
   }
 
@@ -2023,19 +2044,22 @@ export class SeoService {
     const titleContext: string = [parkName, locationLabel].filter((value: string) => value.length > 0).join(' — ');
     const titleSuffix: string = titleContext ? ` — ${titleContext}` : '';
     const description: string = copy.description(itemName, parkName, locationLabel, totalVideos);
+    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(totalVideos);
 
     this.apply({
       title: `${copy.titlePrefix} ${itemName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveInternalImageIdAbsoluteUrl(primaryVideoThumbnailPathOrUrl)
         ?? this.resolveImageIdAbsoluteUrl(itemImageId)
         ?? this.resolveImageIdAbsoluteUrl(parkImageId)
         ?? undefined,
       imageAlt: itemName,
-      jsonLd: [this.buildParkItemSubpageBreadcrumbJsonLd(item, park, seoUrl, this.resolveParkItemVideosBreadcrumbLabel(normalizedLanguage, itemName))]
+      jsonLd: isIndexable
+        ? [this.buildParkItemSubpageBreadcrumbJsonLd(item, park, seoUrl, this.resolveParkItemVideosBreadcrumbLabel(normalizedLanguage, itemName))]
+        : []
     });
   }
 
@@ -2151,7 +2175,7 @@ export class SeoService {
     url: string,
     parkImageId: string | null = null,
     canonicalPath: string | null = null,
-    isIndexable: boolean = true
+    markerCount: number = MINIMUM_INDEXABLE_COLLECTION_ENTRIES
   ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkMapSeoCopy = PARK_MAP_SEO_COPY[normalizedLanguage] ?? PARK_MAP_SEO_COPY[SEO_DEFAULT_LANGUAGE];
@@ -2160,36 +2184,49 @@ export class SeoService {
     const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
     const description: string = copy.description(parkName, locationLabel);
+    const isIndexable: boolean = isCollectionIndexable(markerCount);
 
     this.apply({
       title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: isIndexable ? 'index,follow' : 'noindex,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: parkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkMapBreadcrumbLabel(normalizedLanguage, parkName))]
+      jsonLd: isIndexable
+        ? [this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, this.resolveParkMapBreadcrumbLabel(normalizedLanguage, parkName))]
+        : []
     });
   }
 
-  applyParkItemsSeo(parkName: string, language: string, url: string, parkImageId: string | null = null, canonicalPath: string | null = null): void {
+  applyParkItemsSeo(
+    parkName: string,
+    language: string,
+    url: string,
+    parkImageId: string | null = null,
+    canonicalPath: string | null = null,
+    totalItems: number = MINIMUM_INDEXABLE_COLLECTION_ENTRIES
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkItemsSeoCopy = PARK_ITEMS_SEO_COPY[normalizedLanguage] ?? PARK_ITEMS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
     const title: string = `${copy.title(normalizedParkName)} — ${SITE_NAME}`;
     const description: string = copy.description(normalizedParkName);
+    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(totalItems);
 
     this.apply({
       title,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkItemsBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+      jsonLd: isIndexable
+        ? [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkItemsBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+        : []
     });
   }
 
@@ -2335,16 +2372,19 @@ export class SeoService {
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
     const title: string = `${copy.title(normalizedParkName)} — ${SITE_NAME}`;
     const description: string = copy.description(normalizedParkName, zoneCount, totalItems);
+    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(zoneCount);
 
     this.apply({
       title,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexable ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkZonesBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+      jsonLd: isIndexable
+        ? [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkZonesBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+        : []
     });
   }
 

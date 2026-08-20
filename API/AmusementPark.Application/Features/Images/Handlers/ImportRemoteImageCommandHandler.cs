@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -22,6 +23,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public ImportRemoteImageCommandHandler(
         IRemoteImageImporter remoteImageImporter,
@@ -29,7 +31,8 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.remoteImageImporter = remoteImageImporter;
         this.imageRepository = imageRepository;
@@ -37,6 +40,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Image>> HandleAsync(ImportRemoteImageCommand command, CancellationToken cancellationToken = default)
@@ -102,6 +106,11 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 await SynchronizeOwnerAsync(image, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             }
 
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                Array.Empty<Image>(),
+                new[] { image },
+                cancellationToken);
             return ApplicationResult<Image>.Success(image);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

@@ -10,4 +10,8 @@ namespace AmusementPark.Application.Features.Images.Commands;
 /// </summary>
 /// <param name="ImageId">Identifiant de l'image.</param>
 /// <param name="Metadata">Métadonnées cibles.</param>
-public sealed record UpdateImageMetadataCommand(string ImageId, ImageMetadataUpdate Metadata) : ICommand<ApplicationResult<Image>>;
+/// <param name="SuppressSeoNotification">Indique que l'appelant regroupe lui-même la notification SEO.</param>
+public sealed record UpdateImageMetadataCommand(
+    string ImageId,
+    ImageMetadataUpdate Metadata,
+    bool SuppressSeoNotification = false) : ICommand<ApplicationResult<Image>>;

@@ -67,7 +67,8 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
 
             foreach (string language in languages)
             {
-                if (parkVideos.Any(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language)))
+                int visibleVideoCount = parkVideos.Count(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language));
+                if (SeoPageValuePolicy.IsCollectionIndexable(visibleVideoCount))
                 {
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{parkSlug}/videos", listLastModifiedUtc, "weekly", 0.72m));
                 }
@@ -164,7 +165,8 @@ public sealed class ParkItemVideosSitemapSectionProvider : ISitemapSectionProvid
 
             foreach (string language in languages)
             {
-                if (itemVideos.Any(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language)))
+                int visibleVideoCount = itemVideos.Count(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language));
+                if (SeoPageValuePolicy.IsCollectionIndexable(visibleVideoCount))
                 {
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos", listLastModifiedUtc, "weekly", 0.62m));
                 }

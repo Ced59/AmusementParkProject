@@ -9,7 +9,7 @@
 
       <div class="admin-seo-sitemaps-header__actions">
         <button appUiButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
-        <button appUiButton type="button" class="p-button-secondary" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating()" (click)="generate(canSubmitIndexNow())"></button>
+        <button appUiButton type="button" class="p-button-secondary" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating()" (click)="generate()"></button>
       </div>
     </div>
   </ng-template>
@@ -107,14 +107,6 @@
             <app-ui-checkbox formControlName="isIndexNowEnabled" [binary]="true"></app-ui-checkbox>
             <span>{{ 'admin.seoSitemaps.settings.indexNowEnabled' | translate }}</span>
           </label>
-          <label class="admin-seo-checkbox">
-            <app-ui-checkbox formControlName="submitToIndexNowAfterManualGeneration" [binary]="true"></app-ui-checkbox>
-            <span>{{ 'admin.seoSitemaps.settings.submitManual' | translate }}</span>
-          </label>
-          <label class="admin-seo-checkbox">
-            <app-ui-checkbox formControlName="submitToIndexNowAfterAutomaticGeneration" [binary]="true"></app-ui-checkbox>
-            <span>{{ 'admin.seoSitemaps.settings.submitAutomatic' | translate }}</span>
-          </label>
         </div>
 
         <div class="admin-seo-settings__fields">
@@ -134,7 +126,6 @@
 
         <div class="admin-seo-settings__actions">
           <button appUiButton type="submit" icon="pi pi-save" [label]="'actions.save' | translate" [loading]="savingSettings()"></button>
-          <button appUiButton type="button" class="p-button-secondary" icon="pi pi-send" [label]="'admin.seoSitemaps.actions.generateWithoutIndexNow' | translate" [loading]="generating()" (click)="generate(false)"></button>
         </div>
       </form>
 

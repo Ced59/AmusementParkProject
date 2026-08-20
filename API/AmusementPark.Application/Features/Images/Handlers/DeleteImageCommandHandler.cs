@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
@@ -26,6 +27,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
     private readonly ICommentRepository commentRepository;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public DeleteImageCommandHandler(
         IImageRepository imageRepository,
@@ -34,7 +36,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
-        ICommentRepository commentRepository)
+        ICommentRepository commentRepository,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
@@ -43,6 +46,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteImageCommand command, CancellationToken cancellationToken = default)
@@ -89,6 +93,11 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             }
 
             await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                new[] { image },
+                Array.Empty<Image>(),
+                cancellationToken);
             return ApplicationResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

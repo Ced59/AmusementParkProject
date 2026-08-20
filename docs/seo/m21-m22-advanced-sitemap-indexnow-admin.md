@@ -49,8 +49,9 @@ La génération est orchestrée par `SeoSitemapGenerationOrchestrator` :
 4. écriture XML des sections type + langue ;
 5. écriture du sitemap index ;
 6. persistance du snapshot courant ;
-7. écriture d'une entrée d'historique ;
-8. soumission IndexNow optionnelle.
+7. écriture d'une entrée d'historique.
+
+Une génération de sitemap, qu'elle soit manuelle, automatique ou déclenchée en secours, ne soumet jamais d'URL à IndexNow.
 
 Le dernier snapshot est stocké dans MongoDB dans la collection `seoSitemapSnapshots`.
 L'historique est stocké dans `seoSitemapGenerationHistory`.
@@ -71,6 +72,8 @@ La brique front ajoute aussi les éléments M21 suivants :
 - JSON-LD métier prudent `AmusementPark` pour les pages parc et `TouristAttraction` pour les pages park item.
 
 Les données structurées ne sont générées que depuis les données déjà présentes dans les view models publics. Aucune propriété métier sensible ou incertaine n'est inventée.
+
+Les pages de collection doivent aussi atteindre un seuil de valeur minimal : trois images pour une galerie, deux entrées pour une liste de vidéos, d'éléments, de zones ou une carte. Sous ce seuil, le frontend émet `noindex,follow` sans `hreflang` ni JSON-LD et le provider correspondant exclut l'URL du sitemap. Le plan HTML du site reste accessible aux visiteurs mais utilise lui aussi `noindex,follow` et n'est pas inclus dans le sitemap XML.
 
 ## Page admin
 
@@ -99,7 +102,7 @@ La page affiche :
 - liens publics vers les sitemaps ;
 - réglages IndexNow ;
 - historique des générations ;
-- bouton de génération avec ou sans IndexNow.
+- bouton de génération du sitemap, toujours sans IndexNow.
 
 ## IndexNow / Bing
 
@@ -108,8 +111,6 @@ IndexNow est désactivé par défaut.
 Réglages pilotables depuis l'admin :
 
 - activation globale ;
-- soumission après génération manuelle ;
-- soumission après génération automatique ;
 - clé IndexNow ;
 - emplacement du fichier de clé ;
 - endpoints utilisés.
@@ -122,6 +123,8 @@ https://www.bing.com/indexnow
 ```
 
 Quand la clé est configurée et IndexNow activé, l'API expose automatiquement le fichier texte `/{key}.txt` à la racine publique. Le contenu du fichier est la clé elle-même.
+
+Les seules soumissions IndexNow proviennent du notifier sélectif exécuté après une création, une modification ou une suppression de contenu public. Les écritures de parcs, d'éléments, de vidéos et d'images concernées transmettent uniquement leurs URL impactées ; les régénérations, lectures, préchauffages et autres opérations techniques ne soumettent rien.
 
 ## Extension future
 

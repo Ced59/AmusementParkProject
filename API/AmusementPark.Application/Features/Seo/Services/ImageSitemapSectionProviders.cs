@@ -41,12 +41,17 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
             this.parkRepository,
             cancellationToken);
 
-        HashSet<string> parkIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> parkImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.Park,
             ImageCategory.Park,
             cancellationToken);
-        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> parkLogoSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
+            this.imageRepository,
+            ImageOwnerType.Park,
+            ImageCategory.Logo,
+            cancellationToken);
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.ParkItem,
             ImageCategory.ParkItem,
@@ -54,22 +59,24 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
         IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(
             this.parkItemRepository,
             cancellationToken);
-        Dictionary<string, DateTime?> itemImageLastModifiedByParkId = BuildItemImageLastModifiedByParkId(publicItems, itemIdsWithPublishedImages);
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummariesByParkId = BuildItemImageSummariesByParkId(publicItems, itemImageSummaries);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks)
         {
-            bool hasDirectImages = parkIdsWithPublishedImages.Contains(park.Id!);
-            bool hasItemImages = itemImageLastModifiedByParkId.ContainsKey(park.Id!);
-            if (!hasDirectImages && !hasItemImages)
+            ParksSitemapSectionProvider.PublishedImageOwnerSummary? parkImages = parkImageSummaries.GetValueOrDefault(park.Id!);
+            ParksSitemapSectionProvider.PublishedImageOwnerSummary? parkLogos = parkLogoSummaries.GetValueOrDefault(park.Id!);
+            ParksSitemapSectionProvider.PublishedImageOwnerSummary? itemImages = itemImageSummariesByParkId.GetValueOrDefault(park.Id!);
+            int totalImageCount = (parkImages?.Count ?? 0) + (parkLogos?.Count ?? 0) + (itemImages?.Count ?? 0);
+            if (!SeoPageValuePolicy.IsImageGalleryIndexable(totalImageCount))
             {
                 continue;
             }
 
             string slug = SeoSlugService.ToSlug(park.Name, "park");
-            DateTime? lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
-                park.UpdatedAtUtc,
-                itemImageLastModifiedByParkId.GetValueOrDefault(park.Id!));
+            DateTime? lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(park.UpdatedAtUtc, parkImages?.LastModifiedUtc);
+            lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(lastModifiedUtc, parkLogos?.LastModifiedUtc);
+            lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(lastModifiedUtc, itemImages?.LastModifiedUtc);
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", lastModifiedUtc, "weekly", 0.72m));
@@ -79,26 +86,29 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
         return urls;
     }
 
-    private static Dictionary<string, DateTime?> BuildItemImageLastModifiedByParkId(
+    private static IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> BuildItemImageSummariesByParkId(
         IReadOnlyCollection<ParkItem> publicItems,
-        HashSet<string> itemIdsWithPublishedImages)
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries)
     {
-        Dictionary<string, DateTime?> lastModifiedByParkId = new Dictionary<string, DateTime?>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> summariesByParkId = new Dictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary>(StringComparer.OrdinalIgnoreCase);
         foreach (ParkItem item in publicItems)
         {
-            if (string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.ParkId) || !itemIdsWithPublishedImages.Contains(item.Id))
+            if (string.IsNullOrWhiteSpace(item.Id) ||
+                string.IsNullOrWhiteSpace(item.ParkId) ||
+                !itemImageSummaries.TryGetValue(item.Id, out ParksSitemapSectionProvider.PublishedImageOwnerSummary? itemSummary))
             {
                 continue;
             }
 
-            DateTime? current = lastModifiedByParkId.GetValueOrDefault(item.ParkId);
-            if (!current.HasValue || item.UpdatedAtUtc > current.Value)
-            {
-                lastModifiedByParkId[item.ParkId] = item.UpdatedAtUtc;
-            }
+            ParksSitemapSectionProvider.PublishedImageOwnerSummary current = summariesByParkId.GetValueOrDefault(item.ParkId)
+                ?? new ParksSitemapSectionProvider.PublishedImageOwnerSummary(0, null);
+            DateTime? itemLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(item.UpdatedAtUtc, itemSummary.LastModifiedUtc);
+            summariesByParkId[item.ParkId] = new ParksSitemapSectionProvider.PublishedImageOwnerSummary(
+                current.Count + itemSummary.Count,
+                ParkItemListsSitemapSectionProvider.ResolveLatest(current.LastModifiedUtc, itemLastModifiedUtc));
         }
 
-        return lastModifiedByParkId;
+        return summariesByParkId;
     }
 }
 
@@ -141,7 +151,7 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
             static pair => pair.Key,
             static pair => SeoSlugService.ToSlug(pair.Value.Name, "park"),
             StringComparer.OrdinalIgnoreCase);
-        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.ParkItem,
             ImageCategory.ParkItem,
@@ -150,7 +160,9 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (ParkItem item in publicItems)
         {
-            if (!visibleParkById.TryGetValue(item.ParkId, out Park? parentPark) || !itemIdsWithPublishedImages.Contains(item.Id!))
+            if (!visibleParkById.TryGetValue(item.ParkId, out Park? parentPark) ||
+                !itemImageSummaries.TryGetValue(item.Id!, out ParksSitemapSectionProvider.PublishedImageOwnerSummary? imageSummary) ||
+                !SeoPageValuePolicy.IsImageGalleryIndexable(imageSummary.Count))
             {
                 continue;
             }
@@ -159,7 +171,8 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
             string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
             foreach (string language in languages)
             {
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images", item.UpdatedAtUtc, "weekly", 0.62m));
+                DateTime? lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(item.UpdatedAtUtc, imageSummary.LastModifiedUtc);
+                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images", lastModifiedUtc, "weekly", 0.62m));
             }
         }
 
