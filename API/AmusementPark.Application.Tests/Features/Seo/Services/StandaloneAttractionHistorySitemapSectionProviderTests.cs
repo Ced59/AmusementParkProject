@@ -20,7 +20,6 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
     [Fact]
     public async Task GetUrlsAsync_WhenPublicStandaloneAttractionHasOpeningYear_ShouldReturnTimelineUrl()
     {
-        DateTime updatedAtUtc = new DateTime(2026, 8, 20, 0, 0, 0, DateTimeKind.Utc);
         StandaloneAttraction attraction = new StandaloneAttraction
         {
             Id = "standalone-1",
@@ -28,7 +27,7 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
             Type = ParkItemType.RollerCoaster,
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.Validated,
-            UpdatedAtUtc = updatedAtUtc,
+            UpdatedAtUtc = new DateTime(2026, 8, 20, 0, 0, 0, DateTimeKind.Utc),
             AttractionDetails = new AttractionDetails
             {
                 OpeningDateText = "2007",
@@ -75,9 +74,10 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
             CancellationToken.None);
 
         Assert.Equal(2, urls.Count);
-        Assert.Contains(urls, url =>
+        Assert.Contains(urls, static url =>
             url.RelativePath == "/fr/attraction/standalone-1/pendolino/history" &&
-            url.LastModifiedUtc == updatedAtUtc);
+            url.ChangeFrequency == "monthly" &&
+            url.Priority == 0.70m);
         Assert.Contains(urls, static url => url.RelativePath == "/en/attraction/standalone-1/pendolino/history");
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
