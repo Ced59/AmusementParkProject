@@ -1,6 +1,20 @@
 {
-  "version": "4.2.8",
+  "version": "4.2.9",
   "history": [
+    {
+      "version": "4.2.9",
+      "releasedAt": "2026-08-21",
+      "labels": {
+        "fr": "Ton classement personnel peut maintenant être partagé en toute simplicité.",
+        "en": "Your personal ranking can now be shared with ease.",
+        "de": "Deine persönliche Rangliste lässt sich jetzt ganz einfach teilen.",
+        "nl": "Je persoonlijke ranglijst is nu eenvoudig te delen.",
+        "it": "Ora puoi condividere facilmente la tua classifica personale.",
+        "es": "Ahora puedes compartir fácilmente tu clasificación personal.",
+        "pl": "Możesz teraz łatwo udostępnić swój osobisty ranking.",
+        "pt": "Agora podes partilhar facilmente a tua classificação pessoal."
+      }
+    },
     {
       "version": "4.2.8",
       "releasedAt": "2026-08-20",

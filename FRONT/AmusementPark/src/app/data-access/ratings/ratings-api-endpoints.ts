@@ -17,6 +17,8 @@ export const RATINGS_API_ENDPOINTS = {
     return `ratings/me?${params.join('&')}`;
   },
   getMyStats: 'ratings/me/stats',
+  getMyShareSettings: 'ratings/me/share',
+  setMyShareVisibility: 'ratings/me/share',
   getMyParkRankings: (page: number, size: number, search: string | null = null) => {
     const params: string[] = [`page=${page}`, `size=${size}`];
     if (search) {
@@ -77,5 +79,49 @@ export const RATINGS_API_ENDPOINTS = {
     }
 
     return `ratings/rankings/park-items?${params.join('&')}`;
+  },
+  getSharedProfile: (shareId: string) =>
+    `ratings/shared/${encodeURIComponent(shareId)}`,
+  getSharedParkRankings: (shareId: string, page: number, size: number, search: string | null = null) => {
+    const params: string[] = [`page=${page}`, `size=${size}`];
+    if (search) {
+      params.push(`search=${encodeURIComponent(search)}`);
+    }
+
+    return `ratings/shared/${encodeURIComponent(shareId)}/parks?${params.join('&')}`;
+  },
+  getSharedParkItemRankings: (
+    shareId: string,
+    page: number,
+    size: number,
+    category: string,
+    type: string | null = null,
+    search: string | null = null
+  ) => {
+    const params: string[] = [
+      `page=${page}`,
+      `size=${size}`,
+      `category=${encodeURIComponent(category)}`
+    ];
+    if (type) {
+      params.push(`type=${encodeURIComponent(type)}`);
+    }
+    if (search) {
+      params.push(`search=${encodeURIComponent(search)}`);
+    }
+
+    return `ratings/shared/${encodeURIComponent(shareId)}/park-items?${params.join('&')}`;
+  },
+  getSharedPreview: (shareId: string, category: string | null = null, type: string | null = null) => {
+    const params: string[] = [];
+    if (category) {
+      params.push(`category=${encodeURIComponent(category)}`);
+    }
+    if (type) {
+      params.push(`type=${encodeURIComponent(type)}`);
+    }
+
+    const query: string = params.length > 0 ? `?${params.join('&')}` : '';
+    return `ratings/shared/${encodeURIComponent(shareId)}/preview.png${query}`;
   }
 };

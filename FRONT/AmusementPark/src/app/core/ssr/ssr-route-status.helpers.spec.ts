@@ -2,6 +2,7 @@ import {
   isSsrNotFoundRoute,
   resolveSsrRouteStatusCode,
   shouldApplyNoindexFollowHeader,
+  resolveXRobotsTagHeader,
 } from './ssr-route-status.helpers';
 
 describe('SSR route status helpers', () => {
@@ -36,6 +37,7 @@ describe('SSR route status helpers', () => {
       '/fr/parks',
       '/fr/sitemap',
       '/fr/rankings',
+      '/fr/rankings/shared/opaque-token',
       '/fr/manufacturers',
       '/fr/technical',
       '/fr/technical/chain-lift',
@@ -68,6 +70,17 @@ describe('SSR route status helpers', () => {
     for (const route of knownPublicRoutes) {
       expect(resolveSsrRouteStatusCode(route), route).toBe(200);
     }
+  });
+
+  it('fully excludes shared user rankings from search indexing and archiving', () => {
+    expect(resolveXRobotsTagHeader('/fr/rankings/shared/opaque-token')).toBe(
+      'noindex, nofollow, noarchive',
+    );
+    expect(
+      resolveXRobotsTagHeader(
+        '/fr/rankings/shared/opaque-token?category=Attraction&type=FlatRide',
+      ),
+    ).toBe('noindex, nofollow, noarchive');
   });
 
   it('keeps known private client routes successful for the CSR shell', () => {

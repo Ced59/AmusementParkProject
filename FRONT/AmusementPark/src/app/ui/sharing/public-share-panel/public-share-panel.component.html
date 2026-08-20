@@ -1,8 +1,8 @@
 <section class="public-share-panel" appUiSurface="panel" appUiSurfacePadding="regular" aria-labelledby="public-share-panel-title">
   <div class="public-share-panel__header">
     <div>
-      <h2 id="public-share-panel-title">{{ titleKey | translate:{ title: resolvedTargetTitle } }}</h2>
-      <p>{{ descriptionKey | translate:{ title: resolvedTargetTitle } }}</p>
+      <h2 id="public-share-panel-title">{{ titleKey | translate:resolvedTranslationParams }}</h2>
+      <p>{{ descriptionKey | translate:resolvedTranslationParams }}</p>
     </div>
   </div>
 

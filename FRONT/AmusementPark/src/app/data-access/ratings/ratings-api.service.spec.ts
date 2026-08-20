@@ -151,6 +151,66 @@ describe('RatingsApiService', () => {
     });
   });
 
+  it('changes only the authenticated user ranking visibility', () => {
+    service.setMyShareVisibility(true).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/me/share`,
+    );
+    expect(request.request.method).toBe('PUT');
+    expect(request.request.body).toEqual({ isPublic: true });
+    expect(request.request.body).not.toHaveProperty('userId');
+    request.flush({
+      isPublic: true,
+      shareId: 'opaque-share-id',
+      publishedAtUtc: '2026-08-20T18:00:00Z',
+    });
+  });
+
+  it('reloads the shared profile in the browser so ownership is evaluated with the current session', () => {
+    service.getSharedProfile('opaque-share-id').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/shared/opaque-share-id`,
+    );
+    expect(request.request.method).toBe('GET');
+    expect(request.request.transferCache).toBe(false);
+    request.flush({
+      displayName: 'Camille',
+      publishedAtUtc: '2026-08-20T18:00:00Z',
+      isOwner: true,
+      stats: {
+        totalRatings: 0,
+        averageRating: 0,
+        highestRating: 0,
+        lowestRating: 0,
+        byPark: [],
+        byTargetType: [],
+        byParkItemCategory: [],
+      },
+    });
+  });
+
+  it('loads a shared item ranking through its opaque public identifier', () => {
+    service.getSharedParkItemRankings(
+      'share/id',
+      2,
+      10,
+      'Attraction',
+      'FlatRide',
+      'Talocan',
+    ).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/shared/share%2Fid/park-items?page=2&size=10&category=Attraction&type=FlatRide&search=Talocan`,
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      data: [],
+      pagination: { page: 2, pageSize: 10, totalItems: 0, totalPages: 0 },
+    });
+  });
+
   function createUserRating(): UserRating {
     return {
       id: 'rating-1',

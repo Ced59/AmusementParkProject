@@ -17,6 +17,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/technical', renderMode: RenderMode.Server },
   { path: ':lang/technical/:slug', renderMode: RenderMode.Server },
   { path: ':lang/manufacturers', renderMode: RenderMode.Server },
+  { path: ':lang/rankings/shared/:shareId', renderMode: RenderMode.Server },
   { path: ':lang/rankings', renderMode: RenderMode.Server },
   { path: ':lang/about', renderMode: RenderMode.Server },
   { path: ':lang/contact', renderMode: RenderMode.Server },

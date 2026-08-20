@@ -10,4 +10,5 @@ public enum SocialShareTargetType
     Videos = 5,
     Video = 6,
     Page = 7,
+    UserRanking = 8,
 }

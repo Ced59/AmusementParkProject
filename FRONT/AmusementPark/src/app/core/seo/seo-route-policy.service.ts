@@ -46,6 +46,10 @@ export class SeoRoutePolicyService {
     return /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
   }
 
+  isSharedUserRankingRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/rankings\/shared\/[^/]+\/?$/i.test(this.normalizePath(url));
+  }
+
   isFilteredPublicParkRoute(url: string): boolean {
     if (!this.hasQueryString(url)) {
       return false;

@@ -37,6 +37,7 @@ export class PublicSharePanelComponent {
   @Input() descriptionKey: string = 'shareSocial.defaultDescription';
   @Input() textKey: string = 'shareSocial.defaultText';
   @Input() textParams: Record<string, string | number | null | undefined> = {};
+  @Input() shareUrlOverride: string | null = null;
 
   protected readonly showMore = signal(false);
   protected readonly showQr = signal(false);
@@ -80,7 +81,10 @@ export class PublicSharePanelComponent {
       return '';
     }
 
-    const url: URL = new URL(this.document.location.href);
+    const override: string = this.shareUrlOverride?.trim() ?? '';
+    const url: URL = override.length > 0
+      ? new URL(override, this.document.location.origin)
+      : new URL(this.document.location.href);
     url.hash = '';
     return url.toString();
   }
@@ -97,6 +101,13 @@ export class PublicSharePanelComponent {
     }
 
     return 'AmusementPark';
+  }
+
+  protected get resolvedTranslationParams(): Record<string, string | number | null | undefined> {
+    return {
+      title: this.resolvedTargetTitle,
+      ...this.textParams,
+    };
   }
 
   protected toggleMore(): void {
@@ -219,11 +230,10 @@ export class PublicSharePanelComponent {
   }
 
   private resolveShareText(): string {
-    const params: Record<string, string | number | null | undefined> = {
-      title: this.resolvedTargetTitle,
-      ...this.textParams
-    };
-    const translatedText: string = this.translateService.instant(this.textKey, params) as string;
+    const translatedText: string = this.translateService.instant(
+      this.textKey,
+      this.resolvedTranslationParams,
+    ) as string;
 
     if (translatedText && translatedText !== this.textKey) {
       return translatedText;

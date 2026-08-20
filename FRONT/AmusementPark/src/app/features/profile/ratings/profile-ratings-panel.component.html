@@ -7,6 +7,67 @@
     subtitleKey="ratings.profile.subtitle">
   </app-ui-section-header>
 
+  <section class="profile-ranking-share" aria-labelledby="profile-ranking-share-title">
+    <div class="profile-ranking-share__copy">
+      <span class="profile-ranking-share__icon" aria-hidden="true">
+        <i class="pi pi-share-alt"></i>
+      </span>
+      <div>
+        <span class="profile-ranking-share__kicker">{{ 'ratings.share.manage.kicker' | translate }}</span>
+        <h3 id="profile-ranking-share-title">{{ 'ratings.share.manage.title' | translate }}</h3>
+        <p>
+          {{ ((shareSettings()?.isPublic ? 'ratings.share.manage.publicDescription' : 'ratings.share.manage.privateDescription') | translate) }}
+        </p>
+      </div>
+    </div>
+
+    @if (shareLoading()) {
+      <div class="profile-ranking-share__status">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.manage.loading' | translate }}</span>
+      </div>
+    } @else if (shareError()) {
+      <div class="profile-ranking-share__status profile-ranking-share__status--error">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.manage.error' | translate }}</span>
+      </div>
+    } @else if (shareSettings()?.isPublic && sharedRankingPath(); as publicPath) {
+      <div class="profile-ranking-share__actions">
+        <a appUiButton="primary" [routerLink]="publicPath">
+          <i class="pi pi-external-link" aria-hidden="true"></i>
+          <span>{{ 'ratings.share.manage.open' | translate }}</span>
+        </a>
+        <button appUiButton="ghost" type="button" [disabled]="shareSaving()" (click)="setRankingPublic(false)">
+          <i class="pi pi-lock" aria-hidden="true"></i>
+          <span>{{ 'ratings.share.manage.makePrivate' | translate }}</span>
+        </button>
+      </div>
+
+      <p class="profile-ranking-share__privacy">
+        <i class="pi pi-link" aria-hidden="true"></i>
+        {{ 'ratings.share.manage.privacyNote' | translate }}
+      </p>
+
+      <app-public-share-panel
+        targetType="UserRanking"
+        [targetId]="shareSettings()?.shareId || null"
+        [targetTitle]="('ratings.share.social.title' | translate:{ name: displayName || 'Amusement Parks' })"
+        [shareUrlOverride]="publicPath"
+        titleKey="ratings.share.social.title"
+        descriptionKey="ratings.share.social.description"
+        textKey="ratings.share.social.text"
+        [textParams]="{ name: displayName || 'Amusement Parks' }">
+      </app-public-share-panel>
+    } @else {
+      <div class="profile-ranking-share__actions">
+        <button appUiButton="primary" type="button" [disabled]="shareSaving()" (click)="setRankingPublic(true)">
+          <i class="pi pi-globe" aria-hidden="true"></i>
+          <span>{{ (shareSaving() ? 'ratings.share.manage.publishing' : 'ratings.share.manage.publish') | translate }}</span>
+        </button>
+      </div>
+    }
+  </section>
+
   @if (stats(); as currentStats) {
     <div class="profile-ratings__stats">
       <article class="profile-rating-stat">

@@ -1822,6 +1822,17 @@ export class SeoService {
       return;
     }
 
+    if (this.routePolicy.isSharedUserRankingRoute(url)) {
+      this.apply({
+        title: SITE_NAME,
+        description: DEFAULT_DESCRIPTION,
+        canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+        robots: 'noindex,nofollow,noarchive',
+        alternates: []
+      });
+      return;
+    }
+
     if (this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url) || this.isFilteredPublicParkOpeningHoursRoute(url)) {
       this.apply({
         title: SITE_NAME,
@@ -1856,6 +1867,27 @@ export class SeoService {
 
   applyHomeSeo(language: string, url: string): void {
     this.apply(this.buildStaticRouteData('home', language, url, 'index,follow'));
+  }
+
+  applySharedUserRankingSeo(
+    title: string,
+    description: string,
+    url: string,
+    imageUrl: string,
+    imageAlt: string
+  ): void {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const absoluteImageUrl: string = new URL(imageUrl, canonicalUrl).href;
+    this.apply({
+      title: truncateSeoText(normalizeSeoText(title, SITE_NAME), 70),
+      description: truncateSeoText(normalizeSeoText(description, title), 170),
+      canonicalUrl,
+      robots: 'noindex,nofollow,noarchive',
+      alternates: [],
+      imageUrl: absoluteImageUrl,
+      imageAlt: normalizeSeoText(imageAlt, title),
+      jsonLd: []
+    });
   }
 
   applyParkListSeo(language: string, url: string): void {
@@ -2658,6 +2690,15 @@ export class SeoService {
         return {
           ...fallbackImage,
           url: parsedUrl.href
+        };
+      }
+
+      if (/^\/api\/ratings\/shared\/[^/]+\/preview\.png$/i.test(normalizedPath)) {
+        return {
+          url: parsedUrl.href,
+          width: 1200,
+          height: 630,
+          contentType: 'image/png'
         };
       }
 

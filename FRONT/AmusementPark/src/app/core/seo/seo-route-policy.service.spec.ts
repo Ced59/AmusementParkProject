@@ -69,4 +69,11 @@ describe('SeoRoutePolicyService', (): void => {
       'slug',
     ]);
   });
+
+  it('recognizes only shared user ranking detail routes', (): void => {
+    expect(service.isSharedUserRankingRoute('/fr/rankings/shared/opaque-token')).toBe(true);
+    expect(service.isSharedUserRankingRoute('/fr/rankings/shared/opaque-token?category=Attraction')).toBe(true);
+    expect(service.isSharedUserRankingRoute('/fr/rankings/shared')).toBe(false);
+    expect(service.isSharedUserRankingRoute('/fr/rankings')).toBe(false);
+  });
 });

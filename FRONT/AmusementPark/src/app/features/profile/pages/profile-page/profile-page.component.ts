@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { UserDto } from '@app/models/users/user_dto';
@@ -47,11 +47,13 @@ export class ProfilePageComponent implements OnInit {
   protected readonly avatarCategory = ImageCategory.AVATAR;
   protected readonly userOwnerType = ImageOwnerType.USER;
   protected currentUserId: string | null = null;
+  protected initialTab: 'profile' | 'ratings' = 'profile';
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
   constructor(
     private readonly stateFacade: ProfilePageStateFacade,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly usersApiService: UsersApiService,
     private readonly imagesApiService: ImagesApiService,
     private readonly authService: AuthService,
@@ -83,6 +85,9 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initialTab = this.activatedRoute.snapshot.queryParamMap.get('tab') === 'ratings'
+      ? 'ratings'
+      : 'profile';
     this.currentUserId = this.authService.getUserIdFromToken();
 
     if (this.currentUserId) {

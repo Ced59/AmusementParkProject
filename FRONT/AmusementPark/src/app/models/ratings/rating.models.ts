@@ -61,6 +61,23 @@ export interface UserRatingStats {
   byParkItemCategory: UserRatingStatBucket[];
 }
 
+export interface UserRankingShareSettings {
+  isPublic: boolean;
+  shareId?: string | null;
+  publishedAtUtc?: string | null;
+}
+
+export interface UserRankingShareVisibilityRequest {
+  isPublic: boolean;
+}
+
+export interface SharedUserRankingProfile {
+  displayName: string;
+  publishedAtUtc: string;
+  isOwner: boolean;
+  stats: UserRatingStats;
+}
+
 export interface ParkRatingRankingItem {
   targetId: string;
   targetName: string;

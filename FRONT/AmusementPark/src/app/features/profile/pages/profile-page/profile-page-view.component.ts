@@ -55,6 +55,9 @@ export class ProfilePageViewComponent {
   @Input() userOwnerType!: ImageOwnerType;
   @Input() currentUserId: string | null = null;
   @Input() avatarUrl: string = '';
+  @Input() set initialTab(value: 'profile' | 'ratings') {
+    this.activeTab.set(value);
+  }
 
   @Output() editFieldClicked: EventEmitter<string> = new EventEmitter<string>();
   @Output() preferredLanguageEditClicked: EventEmitter<void> = new EventEmitter<void>();

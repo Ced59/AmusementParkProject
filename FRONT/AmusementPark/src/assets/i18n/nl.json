@@ -4457,6 +4457,59 @@
       "Service": "Services",
       "Transport": "Vervoer",
       "Other": "Andere plekken"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Delen",
+        "title": "Deel je ranglijst",
+        "publicDescription": "Je ranglijst is openbaar: iedereen met de link kan hem bekijken.",
+        "privateDescription": "Je ranglijst blijft privé totdat je besluit hem te delen.",
+        "loading": "Deelinstellingen controleren...",
+        "error": "De deelinstelling kon niet worden bijgewerkt. Probeer het zo nog eens.",
+        "publishedToast": "Je ranglijst kan nu worden gedeeld.",
+        "privateToast": "Je ranglijst is weer privé.",
+        "open": "Gedeelde pagina bekijken",
+        "makePrivate": "Privé maken",
+        "privacyNote": "Jij houdt de controle: als je de ranglijst privé maakt, wordt de openbare link meteen uitgeschakeld.",
+        "publishing": "Publiceren...",
+        "publish": "Openbaar maken"
+      },
+      "public": {
+        "seoTitle": "De ranglijst van {{name}}",
+        "seoDescription": "Ontdek de favoriete parken, achtbanen en andere belevenissen van {{name}}.",
+        "imageAlt": "Voorbeeld van de ranglijst van {{name}}",
+        "notFoundTitle": "Deze ranglijst is niet meer beschikbaar",
+        "notFoundMessage": "De eigenaar heeft hem mogelijk privé gemaakt of de link is niet meer geldig.",
+        "backToRankings": "Ranglijsten ontdekken",
+        "errorTitle": "De ranglijst kon niet worden geladen",
+        "errorMessage": "Er is een tijdelijke fout opgetreden. Probeer het zo nog eens.",
+        "kicker": "Persoonlijke ranglijst",
+        "title": "De favorieten van {{name}}",
+        "subtitle": "Parken, achtbanen, flat rides en meer: ontdek de persoonlijke keuzes van {{name}}.",
+        "summaryLabel": "Samenvatting van de ranglijst",
+        "ratingsCount": "Gepubliceerde beoordelingen",
+        "currentRanking": "Getoonde ranglijst",
+        "emptyTitle": "Geen beoordelingen in deze categorie",
+        "emptyMessage": "Probeer een andere categorie om verder te kijken.",
+        "ratingLabel": "Beoordeling",
+        "loading": "Ranglijst laden..."
+      },
+      "social": {
+        "title": "De ranglijst van {{name}}",
+        "description": "Ontdek de favoriete parken en attracties.",
+        "text": "Ontdek de persoonlijke ranglijst van {{name}} op Amusement Parks!"
+      },
+      "cta": {
+        "ownerTitle": "Dit is jouw ranglijst",
+        "ownerDescription": "Je kunt hem blijven aanvullen of de deelinstellingen aanpassen vanuit je profiel.",
+        "manageMine": "Mijn ranglijst beheren",
+        "memberTitle": "En jouw eigen favorieten?",
+        "memberDescription": "Bekijk je beoordelingen en stel je persoonlijke ranglijst samen vanuit je profiel.",
+        "openMine": "Mijn ranglijst bekijken",
+        "anonymousTitle": "Wil je je eigen ranglijst maken?",
+        "anonymousDescription": "Maak gratis een account wanneer je wilt om je bezoeken te beoordelen en je favorieten te delen.",
+        "createAccount": "Account aanmaken"
+      }
     }
   },
   "shareSocial": {

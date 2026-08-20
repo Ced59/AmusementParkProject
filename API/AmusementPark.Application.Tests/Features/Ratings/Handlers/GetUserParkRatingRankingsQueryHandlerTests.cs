@@ -16,6 +16,37 @@ namespace AmusementPark.Application.Tests.Features.Ratings.Handlers;
 public sealed class GetUserParkRatingRankingsQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_ForPublicShare_ShouldRequestOnlyVisibleRankingSources()
+    {
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetVisibleUserRankingSourcesAsync(
+                "user-1",
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<UserRatingListItemResult>());
+        GetUserParkRatingRankingsQueryHandler handler = new GetUserParkRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<UserParkRatingRankingResult>> result = await handler.HandleAsync(
+            new GetUserParkRatingRankingsQuery(
+                "user-1",
+                new PagedQuery(1, 10),
+                PublicTargetsOnly: true));
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Items);
+        ratingRepository.VerifyAll();
+        ratingRepository.Verify(
+            repository => repository.GetUserRankingSourcesAsync(
+                It.IsAny<string>(),
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task HandleAsync_ShouldRankParksAndKeepTheirRatedItemsGroupedByCategory()
     {
         IReadOnlyCollection<UserRatingListItemResult> sources = new[]

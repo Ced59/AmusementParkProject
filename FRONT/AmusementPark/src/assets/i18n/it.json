@@ -4457,6 +4457,59 @@
       "Service": "Servizi",
       "Transport": "Trasporti",
       "Other": "Altri luoghi"
+    },
+    "share": {
+      "manage": {
+        "kicker": "Condivisione",
+        "title": "Condividi la tua classifica",
+        "publicDescription": "La tua classifica è pubblica: chiunque abbia il link può consultarla.",
+        "privateDescription": "La tua classifica resta privata finché non scegli di condividerla.",
+        "loading": "Verifica della condivisione...",
+        "error": "Non è stato possibile aggiornare la condivisione. Riprova tra poco.",
+        "publishedToast": "La tua classifica è pronta per essere condivisa.",
+        "privateToast": "La tua classifica è di nuovo privata.",
+        "open": "Vedi la pagina condivisa",
+        "makePrivate": "Rendi privata",
+        "privacyNote": "Mantieni sempre il controllo: rendendola privata, il link pubblico viene disattivato subito.",
+        "publishing": "Pubblicazione...",
+        "publish": "Rendi pubblica"
+      },
+      "public": {
+        "seoTitle": "La classifica di {{name}}",
+        "seoDescription": "Scopri i parchi, i coaster e le altre esperienze preferite di {{name}}.",
+        "imageAlt": "Anteprima della classifica di {{name}}",
+        "notFoundTitle": "Questa classifica non è più disponibile",
+        "notFoundMessage": "Il proprietario potrebbe averla resa privata oppure il link non è più valido.",
+        "backToRankings": "Scopri le classifiche",
+        "errorTitle": "Impossibile caricare la classifica",
+        "errorMessage": "Si è verificato un errore temporaneo. Riprova tra poco.",
+        "kicker": "Classifica personale",
+        "title": "I preferiti di {{name}}",
+        "subtitle": "Parchi, coaster, flat ride e molto altro: scopri le scelte personali di {{name}}.",
+        "summaryLabel": "Riepilogo della classifica",
+        "ratingsCount": "Valutazioni pubblicate",
+        "currentRanking": "Classifica visualizzata",
+        "emptyTitle": "Nessuna valutazione in questa categoria",
+        "emptyMessage": "Prova un’altra categoria per continuare a esplorare.",
+        "ratingLabel": "La sua valutazione",
+        "loading": "Caricamento della classifica..."
+      },
+      "social": {
+        "title": "La classifica di {{name}}",
+        "description": "Scopri i suoi parchi e le sue attrazioni preferite.",
+        "text": "Scopri la classifica personale di {{name}} su Amusement Parks!"
+      },
+      "cta": {
+        "ownerTitle": "Questa è la tua classifica",
+        "ownerDescription": "Puoi continuare ad arricchirla o modificare la condivisione dal tuo profilo.",
+        "manageMine": "Gestisci la mia classifica",
+        "memberTitle": "E i tuoi preferiti?",
+        "memberDescription": "Ritrova le tue valutazioni e crea la tua classifica personale dal profilo.",
+        "openMine": "Vedi la mia classifica",
+        "anonymousTitle": "Ti va di creare la tua classifica?",
+        "anonymousDescription": "Crea gratuitamente un account quando vuoi per valutare le tue visite e condividere i tuoi preferiti.",
+        "createAccount": "Crea il mio account"
+      }
     }
   },
   "shareSocial": {

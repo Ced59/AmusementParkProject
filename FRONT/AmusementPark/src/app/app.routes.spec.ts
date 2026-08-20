@@ -136,6 +136,20 @@ describe('App routes', () => {
     expect(route?.loadComponent).toBeDefined();
   });
 
+  it('exposes shared user rankings as a dedicated public route before the rankings collection', () => {
+    const publicRoutes: Route[] = getPublicRoutes();
+    const sharedRouteIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'rankings/shared/:shareId',
+    );
+    const rankingsIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'rankings',
+    );
+
+    expect(sharedRouteIndex).toBeGreaterThanOrEqual(0);
+    expect(sharedRouteIndex).toBeLessThan(rankingsIndex);
+    expect(publicRoutes[sharedRouteIndex]?.loadComponent).toBeDefined();
+  });
+
   it('exposes the admin history management route behind the admin layout', () => {
     const adminRoutes: Route[] = getAdminRoutes();
     const route: Route | undefined = adminRoutes.find(
