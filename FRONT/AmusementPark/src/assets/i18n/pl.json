@@ -4370,6 +4370,15 @@
       "unknownPark": "Powiązany park",
       "communityAverage": "Średnia ocena",
       "filtersLabel": "Filtruj swój ranking",
+      "attractionQuickFiltersLabel": "Szybki dostęp do rankingów atrakcji",
+      "resultsCount": {
+        "one": "{{count}} wynik",
+        "few": "{{count}} wyniki",
+        "many": "{{count}} wyników",
+        "other": "{{count}} wyniku"
+      },
+      "insightsTitle": "Odkryj swoje zwyczaje oceniania",
+      "insightsSubtitle": "Porównaj swoje średnie według parku i kategorii.",
       "searchLabel": "Szukaj w swoim rankingu",
       "searchPlaceholder": "Znajdź park w swoim rankingu",
       "parkItemSearchPlaceholder": "Znajdź miejsce lub jego park",

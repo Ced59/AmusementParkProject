@@ -7,78 +7,186 @@
     subtitleKey="ratings.profile.subtitle">
   </app-ui-section-header>
 
-  <nav class="profile-ratings__filters" [attr.aria-label]="'ratings.profile.filtersLabel' | translate">
-    @for (filter of filters; track filter.key) {
-      <button
-        appUiButton="ghost"
-        type="button"
-        [class.profile-ratings__filter--active]="currentFilter().key === filter.key"
-        (click)="selectFilter(filter)">
-        {{ filter.labelKey | translate }}
-      </button>
-    }
-  </nav>
-
-  @if (currentFilter().category === 'Attraction') {
-    <label class="profile-ratings__type-filter">
-      <span>{{ 'ratings.rankings.attractionTypeLabel' | translate }}</span>
-      <select
-        [value]="selectedAttractionType() || ''"
-        (change)="selectAttractionType($any($event.target).value)">
-        <option value="">{{ 'ratings.rankings.allAttractionTypes' | translate }}</option>
-        @for (option of attractionTypeOptions; track option.value) {
-          <option [value]="option.value">{{ option.labelKey | translate }}</option>
-        }
-      </select>
-    </label>
+  @if (stats(); as currentStats) {
+    <div class="profile-ratings__stats">
+      <article class="profile-rating-stat">
+        <span class="profile-rating-stat__icon profile-rating-stat__icon--primary">
+          <i class="pi pi-star" aria-hidden="true"></i>
+        </span>
+        <span>{{ 'ratings.profile.stats.total' | translate }}</span>
+        <strong>{{ currentStats.totalRatings }}</strong>
+      </article>
+      <article class="profile-rating-stat">
+        <span class="profile-rating-stat__icon profile-rating-stat__icon--sky">
+          <i class="pi pi-chart-line" aria-hidden="true"></i>
+        </span>
+        <span>{{ 'ratings.profile.stats.average' | translate }}</span>
+        <strong>{{ formatRating(currentStats.averageRating) }}</strong>
+      </article>
+      <article class="profile-rating-stat">
+        <span class="profile-rating-stat__icon profile-rating-stat__icon--gold">
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+        </span>
+        <span>{{ 'ratings.profile.stats.best' | translate }}</span>
+        <strong>{{ formatRating(currentStats.highestRating) }}</strong>
+      </article>
+      <article class="profile-rating-stat">
+        <span class="profile-rating-stat__icon profile-rating-stat__icon--lime">
+          <i class="pi pi-sliders-h" aria-hidden="true"></i>
+        </span>
+        <span>{{ 'ratings.profile.stats.range' | translate }}</span>
+        <strong>{{ formatRating(currentStats.lowestRating) }} – {{ formatRating(currentStats.highestRating) }}</strong>
+      </article>
+    </div>
   }
 
-  <section class="profile-ratings__search" [attr.aria-label]="'ratings.profile.searchLabel' | translate">
-    <i class="pi pi-search" aria-hidden="true"></i>
-    <input
-      type="search"
-      [value]="searchTerm()"
-      [placeholder]="(isParkItemRanking() ? 'ratings.profile.parkItemSearchPlaceholder' : 'ratings.profile.searchPlaceholder') | translate"
-      (input)="updateSearchTerm($any($event.target).value)"
-      (keyup.enter)="applySearch()">
-    <button appUiButton="primary" type="button" (click)="applySearch()">
-      {{ 'ratings.profile.searchAction' | translate }}
-    </button>
-    @if (searchTerm()) {
-      <button appUiButton="ghost" type="button" class="profile-ratings__search-clear" (click)="clearSearch()">
-        {{ 'ratings.profile.clearSearch' | translate }}
-      </button>
-    }
-  </section>
+  <div class="profile-ratings__workspace">
+    <aside class="profile-ratings__navigation">
+      <h3>{{ 'ratings.profile.filtersLabel' | translate }}</h3>
+      <nav class="profile-ratings__filters" [attr.aria-label]="'ratings.profile.filtersLabel' | translate">
+        @for (filter of filters; track filter.key) {
+          <button
+            appUiButton="ghost"
+            type="button"
+            [class.profile-ratings__filter--active]="currentFilter().key === filter.key"
+            [attr.aria-current]="currentFilter().key === filter.key ? 'page' : null"
+            (click)="selectFilter(filter)">
+            <i [class]="filter.iconClass" aria-hidden="true"></i>
+            <span>{{ filter.labelKey | translate }}</span>
+            <i class="pi pi-chevron-right profile-ratings__filter-chevron" aria-hidden="true"></i>
+          </button>
+        }
+      </nav>
+    </aside>
 
-  @if (loading()) {
-    <div class="profile-ratings__empty">{{ 'ratings.profile.loading' | translate }}</div>
-  } @else if (isEmpty()) {
-    <div class="profile-ratings__empty">
-      <i class="pi pi-star" aria-hidden="true"></i>
-      <strong>{{ 'ratings.profile.emptyTitle' | translate }}</strong>
-      <span>{{ 'ratings.profile.emptyText' | translate }}</span>
-    </div>
-  } @else {
-    @if (stats(); as currentStats) {
-      <div class="profile-ratings__stats">
-        <article class="profile-rating-stat">
-          <span>{{ 'ratings.profile.stats.total' | translate }}</span>
-          <strong>{{ currentStats.totalRatings }}</strong>
-        </article>
-        <article class="profile-rating-stat">
-          <span>{{ 'ratings.profile.stats.average' | translate }}</span>
-          <strong>{{ formatRating(currentStats.averageRating) }}</strong>
-        </article>
-        <article class="profile-rating-stat">
-          <span>{{ 'ratings.profile.stats.best' | translate }}</span>
-          <strong>{{ formatRating(currentStats.highestRating) }}</strong>
-        </article>
-        <article class="profile-rating-stat">
-          <span>{{ 'ratings.profile.stats.range' | translate }}</span>
-          <strong>{{ formatRating(currentStats.lowestRating) }} - {{ formatRating(currentStats.highestRating) }}</strong>
-        </article>
+    <section class="profile-ratings__results">
+      <header class="profile-ratings__results-header">
+        <div>
+          <span>{{ 'ratings.profile.kicker' | translate }}</span>
+          <h3>{{ currentRankingLabelKey() | translate }}</h3>
+        </div>
+        @if (!loading()) {
+          @if (pagination(); as currentPagination) {
+            <span class="profile-ratings__result-count">
+              {{ 'ratings.profile.resultsCount' | localizedPlural:currentPagination.totalItems }}
+            </span>
+          }
+        }
+      </header>
+
+      @if (currentFilter().category === 'Attraction') {
+        <div class="profile-ratings__attraction-filters">
+          <nav
+            class="profile-ratings__quick-filters"
+            [attr.aria-label]="'ratings.profile.attractionQuickFiltersLabel' | translate">
+            @for (filter of attractionQuickFilters; track filter.type) {
+              <button
+                appUiButton="ghost"
+                type="button"
+                [class.profile-ratings__quick-filter--active]="selectedAttractionType() === filter.type"
+                [attr.aria-pressed]="selectedAttractionType() === filter.type"
+                (click)="selectAttractionQuickFilter(filter)">
+                {{ filter.labelKey | translate }}
+              </button>
+            }
+          </nav>
+
+          <label class="profile-ratings__type-filter">
+            <span>{{ 'ratings.rankings.attractionTypeLabel' | translate }}</span>
+            <select
+              [value]="selectedAttractionType() || ''"
+              (change)="selectAttractionType($any($event.target).value)">
+              <option value="">{{ 'ratings.rankings.allAttractionTypes' | translate }}</option>
+              @for (option of attractionTypeOptions; track option.value) {
+                <option [value]="option.value">{{ option.labelKey | translate }}</option>
+              }
+            </select>
+          </label>
+        </div>
+      }
+
+      <section class="profile-ratings__search" [attr.aria-label]="'ratings.profile.searchLabel' | translate">
+        <i class="pi pi-search" aria-hidden="true"></i>
+        <input
+          type="search"
+          [value]="searchTerm()"
+          [attr.aria-label]="'ratings.profile.searchLabel' | translate"
+          [placeholder]="(isParkItemRanking() ? 'ratings.profile.parkItemSearchPlaceholder' : 'ratings.profile.searchPlaceholder') | translate"
+          (input)="updateSearchTerm($any($event.target).value)"
+          (keyup.enter)="applySearch()">
+        @if (searchTerm()) {
+          <button
+            appUiButton="ghost"
+            type="button"
+            class="profile-ratings__search-clear"
+            (click)="clearSearch()">
+            <i class="pi pi-times" aria-hidden="true"></i>
+            <span>{{ 'ratings.profile.clearSearch' | translate }}</span>
+          </button>
+        }
+        <button appUiButton="primary" type="button" class="profile-ratings__search-submit" (click)="applySearch()">
+          {{ 'ratings.profile.searchAction' | translate }}
+        </button>
+      </section>
+
+      <div class="profile-ratings__list">
+        @if (loading()) {
+          <div class="profile-ratings__empty">
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            <span>{{ 'ratings.profile.loading' | translate }}</span>
+          </div>
+        } @else if (isEmpty()) {
+          <div class="profile-ratings__empty">
+            <i class="pi pi-star" aria-hidden="true"></i>
+            <strong>{{ 'ratings.profile.emptyTitle' | translate }}</strong>
+            <span>{{ 'ratings.profile.emptyText' | translate }}</span>
+            @if (currentFilter().category !== null || searchTerm()) {
+              <button appUiButton="primary" type="button" (click)="showParkRanking()">
+                {{ 'ratings.rankings.filters.parks' | translate }}
+              </button>
+            }
+          </div>
+        } @else {
+          @if (isParkItemRanking()) {
+            <app-rating-ranking-list
+              [items]="rankedParkItems()"
+              scoreLabelKey="ratings.profile.yourRatingLabel"
+              (ratingChange)="updateRating($event)">
+            </app-rating-ranking-list>
+          } @else {
+            <app-rating-tree
+              [parks]="ratingParks()"
+              ratingCountLabelKey="ratings.profile.ratingCount"
+              (ratingChange)="updateRating($event)">
+            </app-rating-tree>
+          }
+
+          @if (hasMore()) {
+            <div class="profile-ratings__more">
+              <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
+                {{ (loadingMore()
+                  ? (isParkItemRanking() ? 'ratings.profile.loadingMoreItems' : 'ratings.profile.loadingMore')
+                  : (isParkItemRanking() ? 'ratings.profile.loadMoreItems' : 'ratings.profile.loadMore')) | translate }}
+              </button>
+            </div>
+          }
+        }
       </div>
+    </section>
+  </div>
+
+  @if (stats(); as currentStats) {
+    <details class="profile-ratings__insights">
+      <summary>
+        <span class="profile-ratings__insights-icon">
+          <i class="pi pi-chart-bar" aria-hidden="true"></i>
+        </span>
+        <span>
+          <strong>{{ 'ratings.profile.insightsTitle' | translate }}</strong>
+          <small>{{ 'ratings.profile.insightsSubtitle' | translate }}</small>
+        </span>
+        <i class="pi pi-chevron-down profile-ratings__insights-chevron" aria-hidden="true"></i>
+      </summary>
 
       <div class="profile-ratings__visuals">
         <section class="profile-rating-chart">
@@ -116,30 +224,6 @@
           }
         </section>
       </div>
-    }
-
-    @if (isParkItemRanking()) {
-      <app-rating-ranking-list
-        [items]="rankedParkItems()"
-        scoreLabelKey="ratings.profile.yourRatingLabel"
-        (ratingChange)="updateRating($event)">
-      </app-rating-ranking-list>
-    } @else {
-      <app-rating-tree
-        [parks]="ratingParks()"
-        ratingCountLabelKey="ratings.profile.ratingCount"
-        (ratingChange)="updateRating($event)">
-      </app-rating-tree>
-    }
-
-    @if (hasMore()) {
-      <div class="profile-ratings__more">
-        <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
-          {{ (loadingMore()
-            ? (isParkItemRanking() ? 'ratings.profile.loadingMoreItems' : 'ratings.profile.loadingMore')
-            : (isParkItemRanking() ? 'ratings.profile.loadMoreItems' : 'ratings.profile.loadMore')) | translate }}
-        </button>
-      </div>
-    }
+    </details>
   }
 </section>

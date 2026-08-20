@@ -1,6 +1,20 @@
 {
-  "version": "4.2.1",
+  "version": "4.2.2",
   "history": [
+    {
+      "version": "4.2.2",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Le profil et les classements personnels sont plus clairs et plus pratiques.",
+        "en": "Profiles and personal rankings are clearer and easier to use.",
+        "de": "Profile und persönliche Ranglisten sind übersichtlicher und leichter nutzbar.",
+        "nl": "Profielen en persoonlijke ranglijsten zijn overzichtelijker en gebruiksvriendelijker.",
+        "it": "Profili e classifiche personali sono più chiari e facili da usare.",
+        "es": "Los perfiles y las clasificaciones personales son más claros y fáciles de usar.",
+        "pl": "Profile i osobiste rankingi są bardziej przejrzyste i wygodniejsze.",
+        "pt": "Os perfis e os rankings pessoais estão mais claros e fáceis de utilizar."
+      }
+    },
     {
       "version": "4.2.1",
       "releasedAt": "2026-08-20",

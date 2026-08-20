@@ -10,6 +10,7 @@ import {
   UserRatingStatBucket,
   UserRatingStats
 } from '@app/models/ratings/rating.models';
+import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { TranslationService } from '@app/services/translation.service';
 import {
@@ -27,13 +28,21 @@ import {
 } from '@shared/components/rating-tree/rating-tree.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
+import { PaginationContract } from '@shared/models/contracts';
+import { LocalizedPluralPipe } from '@shared/pipes';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
 
 interface ProfileRankingFilter {
   key: string;
   labelKey: string;
-  category: string | null;
+  iconClass: string;
+  category: ParkItemCategory | null;
+}
+
+interface ProfileAttractionQuickFilter {
+  labelKey: string;
+  type: ParkItemType | null;
 }
 
 @Component({
@@ -46,6 +55,7 @@ interface ProfileRankingFilter {
     RatingTreeComponent,
     RatingRankingListComponent,
     TranslateModule,
+    LocalizedPluralPipe,
     UiButtonDirective,
     UiSectionHeaderComponent
   ]
@@ -54,11 +64,23 @@ export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly searchTerm = signal<string>('');
   protected readonly currentLang = signal<string>('en');
   protected readonly filters: readonly ProfileRankingFilter[] = [
-    { key: 'all', labelKey: 'ratings.rankings.filters.all', category: null },
-    { key: 'attractions', labelKey: 'ratings.rankings.filters.attractions', category: 'Attraction' },
-    { key: 'restaurants', labelKey: 'ratings.rankings.filters.restaurants', category: 'Restaurant' },
-    { key: 'hotels', labelKey: 'ratings.rankings.filters.hotels', category: 'Hotel' },
-    { key: 'services', labelKey: 'ratings.rankings.filters.services', category: 'Service' }
+    { key: 'parks', labelKey: 'ratings.rankings.filters.parks', iconClass: 'pi pi-map', category: null },
+    { key: 'attractions', labelKey: 'ratings.categories.Attraction', iconClass: 'pi pi-bolt', category: 'Attraction' },
+    { key: 'restaurants', labelKey: 'ratings.categories.Restaurant', iconClass: 'pi pi-shop', category: 'Restaurant' },
+    { key: 'hotels', labelKey: 'ratings.categories.Hotel', iconClass: 'pi pi-building', category: 'Hotel' },
+    { key: 'animals', labelKey: 'ratings.categories.Animal', iconClass: 'pi pi-heart', category: 'Animal' },
+    { key: 'shows', labelKey: 'ratings.categories.Show', iconClass: 'pi pi-ticket', category: 'Show' },
+    { key: 'shops', labelKey: 'ratings.categories.Shop', iconClass: 'pi pi-shopping-bag', category: 'Shop' },
+    { key: 'services', labelKey: 'ratings.categories.Service', iconClass: 'pi pi-info-circle', category: 'Service' },
+    { key: 'transports', labelKey: 'ratings.categories.Transport', iconClass: 'pi pi-send', category: 'Transport' },
+    { key: 'other', labelKey: 'ratings.categories.Other', iconClass: 'pi pi-ellipsis-h', category: 'Other' }
+  ];
+  protected readonly attractionQuickFilters: readonly ProfileAttractionQuickFilter[] = [
+    { labelKey: 'ratings.rankings.allAttractionTypes', type: null },
+    { labelKey: 'parkExplorer.types.rollerCoaster', type: 'RollerCoaster' },
+    { labelKey: 'parkExplorer.types.flatRide', type: 'FlatRide' },
+    { labelKey: 'parkExplorer.types.waterRide', type: 'WaterRide' },
+    { labelKey: 'parkExplorer.types.darkRide', type: 'DarkRide' }
   ];
   protected readonly currentFilter = signal<ProfileRankingFilter>(this.filters[0]);
   protected readonly selectedAttractionType = signal<ParkItemType | null>(null);
@@ -69,9 +91,20 @@ export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly parkRankings: Signal<UserParkRatingRanking[]> = this.stateFacade.parkRankings;
   protected readonly parkItemRankings: Signal<UserParkItemRatingRanking[]> = this.stateFacade.parkItemRankings;
   protected readonly stats: Signal<UserRatingStats | null> = this.stateFacade.stats;
+  protected readonly pagination: Signal<PaginationContract | null> = this.stateFacade.pagination;
   protected readonly isEmpty: Signal<boolean> = this.stateFacade.isEmpty;
   protected readonly savingRatingIds: Signal<ReadonlySet<string>> = this.stateFacade.savingRatingIds;
   protected readonly isParkItemRanking: Signal<boolean> = computed(() => this.currentFilter().category !== null);
+  protected readonly currentRankingLabelKey: Signal<string> = computed(() => {
+    const attractionType: ParkItemType | null = this.selectedAttractionType();
+    if (this.currentFilter().category !== 'Attraction' || attractionType === null) {
+      return this.currentFilter().labelKey;
+    }
+
+    return this.attractionTypeOptions.find(
+      (option: TranslationOption<ParkItemType>): boolean => option.value === attractionType
+    )?.labelKey ?? this.currentFilter().labelKey;
+  });
   protected readonly ratingParks: Signal<RatingTreePark[]> = computed(() => {
     const language: string = this.currentLang();
     const savingRatingIds: ReadonlySet<string> = this.savingRatingIds();
@@ -127,6 +160,11 @@ export class ProfileRatingsPanelComponent implements OnInit {
     this.stateFacade.load(1, this.currentFilter().category, this.searchTerm(), selectedType);
   }
 
+  protected selectAttractionQuickFilter(filter: ProfileAttractionQuickFilter): void {
+    this.selectedAttractionType.set(filter.type);
+    this.stateFacade.load(1, 'Attraction', this.searchTerm(), filter.type);
+  }
+
   protected updateSearchTerm(value: string): void {
     this.searchTerm.set(value);
   }
@@ -150,6 +188,11 @@ export class ProfileRatingsPanelComponent implements OnInit {
     );
   }
 
+  protected showParkRanking(): void {
+    this.searchTerm.set('');
+    this.selectFilter(this.filters[0]);
+  }
+
   protected loadMore(): void {
     this.stateFacade.loadMore();
   }
@@ -160,7 +203,14 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   protected formatRating(value: number | null | undefined): string {
     const rating: number = Number(value ?? 0);
-    return rating > 0 ? rating.toFixed(1).replace('.', ',') : '-';
+    if (rating <= 0) {
+      return '-';
+    }
+
+    return new Intl.NumberFormat(this.currentLang(), {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    }).format(rating);
   }
 
   protected ratingPercent(value: number | null | undefined): string {

@@ -154,7 +154,11 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('@ui/layouts/account-layout/account-layout.component').then((m) => m.AccountLayoutComponent),
         children: [
-          { path: 'profile', loadChildren: () => import('@features/profile/profile.module').then((m) => m.ProfileModule) },
+          {
+            path: 'profile',
+            loadChildren: () => import('@features/profile/profile.module').then((m) => m.ProfileModule),
+            data: { accountLayout: 'wide' }
+          },
           { path: 'confirm-account', loadComponent: () => import('@features/auth/pages/confirm-account-page/confirm-account-page.component').then((m) => m.ConfirmAccountPageComponent) },
           { path: 'forgot-password', loadComponent: () => import('@features/auth/pages/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
           { path: 'reset-password', loadComponent: () => import('@features/auth/pages/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) }
