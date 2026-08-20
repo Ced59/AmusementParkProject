@@ -5,7 +5,7 @@ import { AccountLayoutComponent } from './account-layout.component';
 
 interface ActivatedRouteStub {
   firstChild: {
-    snapshot: {
+    snapshot?: {
       data: Record<string, unknown>;
     };
   } | null;
@@ -56,6 +56,17 @@ describe('AccountLayoutComponent', () => {
     fixture = TestBed.createComponent(AccountLayoutComponent);
     fixture.detectChanges();
 
+    expect(fixture.nativeElement.querySelector('main').classList).not.toContain('app-account-layout__main--wide');
+  });
+
+  it('keeps the default shell while the child route snapshot is not ready', () => {
+    activatedRoute.firstChild = {};
+    fixture.destroy();
+    fixture = TestBed.createComponent(AccountLayoutComponent);
+
+    expect(() => {
+      fixture.detectChanges();
+    }).not.toThrow();
     expect(fixture.nativeElement.querySelector('main').classList).not.toContain('app-account-layout__main--wide');
   });
 });

@@ -25,7 +25,7 @@ import { PublicParkNavigationTreeState } from '@features/public/navigation/state
   ]
 })
 export class AccountLayoutComponent {
-  protected wideLayout: boolean;
+  protected wideLayout: boolean = false;
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
     this.wideLayout = this.hasWideLayoutRoute();
@@ -36,6 +36,6 @@ export class AccountLayoutComponent {
   }
 
   private hasWideLayoutRoute(): boolean {
-    return this.activatedRoute.firstChild?.snapshot.data['accountLayout'] === 'wide';
+    return this.activatedRoute.firstChild?.snapshot?.data?.['accountLayout'] === 'wide';
   }
 }

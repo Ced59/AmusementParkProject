@@ -1,6 +1,20 @@
 {
-  "version": "4.2.3",
+  "version": "4.2.4",
   "history": [
+    {
+      "version": "4.2.4",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "L’accès au profil est à nouveau fiable.",
+        "en": "Profile access is reliable again.",
+        "de": "Der Zugriff auf dein Profil funktioniert wieder zuverlässig.",
+        "nl": "Je profiel is weer betrouwbaar bereikbaar.",
+        "it": "L’accesso al profilo è di nuovo affidabile.",
+        "es": "El acceso al perfil vuelve a ser fiable.",
+        "pl": "Dostęp do profilu znów działa niezawodnie.",
+        "pt": "O acesso ao perfil voltou a ser fiável."
+      }
+    },
     {
       "version": "4.2.3",
       "releasedAt": "2026-08-20",
