@@ -12,6 +12,7 @@ import { buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
+import { HistoryStandaloneBreadcrumbSeoService } from '../state/history-standalone-breadcrumb-seo.service';
 import { HistoryTimelineStateFacade } from '../state/history-timeline-state.facade';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, ResolvedHistoryTimelineRouteData } from '../state/history-timeline.resolver';
 
@@ -19,6 +20,9 @@ interface HistoryTimelinePageCopy {
   article: string;
   articleAriaPrefix: string;
   back: string;
+  breadcrumbAria: string;
+  breadcrumbHome: string;
+  breadcrumbHistory: (ownerName: string) => string;
   events: string;
   includeParkItems: string;
   kicker: string;
@@ -37,6 +41,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Article',
     articleAriaPrefix: 'Lire l’article',
     back: 'Retour',
+    breadcrumbAria: 'Fil d’Ariane',
+    breadcrumbHome: 'Accueil',
+    breadcrumbHistory: (ownerName: string): string => `Histoire de ${ownerName}`,
     events: 'Événements',
     includeParkItems: 'Inclure les éléments du parc',
     kicker: 'Histoire',
@@ -52,6 +59,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Article',
     articleAriaPrefix: 'Read article',
     back: 'Back',
+    breadcrumbAria: 'Breadcrumb',
+    breadcrumbHome: 'Home',
+    breadcrumbHistory: (ownerName: string): string => `${ownerName} history`,
     events: 'Events',
     includeParkItems: 'Include park items',
     kicker: 'History',
@@ -67,6 +77,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Artikel',
     articleAriaPrefix: 'Artikel lesen',
     back: 'Zurück',
+    breadcrumbAria: 'Breadcrumb-Navigation',
+    breadcrumbHome: 'Startseite',
+    breadcrumbHistory: (ownerName: string): string => `Geschichte von ${ownerName}`,
     events: 'Ereignisse',
     includeParkItems: 'Elemente des Parks einblenden',
     kicker: 'Geschichte',
@@ -82,6 +95,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Artikel',
     articleAriaPrefix: 'Artikel lezen',
     back: 'Terug',
+    breadcrumbAria: 'Kruimelpad',
+    breadcrumbHome: 'Home',
+    breadcrumbHistory: (ownerName: string): string => `Geschiedenis van ${ownerName}`,
     events: 'Gebeurtenissen',
     includeParkItems: 'Parkitems tonen',
     kicker: 'Geschiedenis',
@@ -97,6 +113,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Articolo',
     articleAriaPrefix: 'Leggi l’articolo',
     back: 'Indietro',
+    breadcrumbAria: 'Percorso di navigazione',
+    breadcrumbHome: 'Home',
+    breadcrumbHistory: (ownerName: string): string => `Storia di ${ownerName}`,
     events: 'Eventi',
     includeParkItems: 'Mostra gli elementi del parco',
     kicker: 'Storia',
@@ -112,6 +131,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Artículo',
     articleAriaPrefix: 'Leer el artículo',
     back: 'Volver',
+    breadcrumbAria: 'Ruta de navegación',
+    breadcrumbHome: 'Inicio',
+    breadcrumbHistory: (ownerName: string): string => `Historia de ${ownerName}`,
     events: 'Eventos',
     includeParkItems: 'Mostrar elementos del parque',
     kicker: 'Historia',
@@ -127,6 +149,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Artykuł',
     articleAriaPrefix: 'Przeczytaj artykuł',
     back: 'Wróć',
+    breadcrumbAria: 'Nawigacja okruszkowa',
+    breadcrumbHome: 'Strona główna',
+    breadcrumbHistory: (ownerName: string): string => `Historia ${ownerName}`,
     events: 'Wydarzenia',
     includeParkItems: 'Pokaż elementy parku',
     kicker: 'Historia',
@@ -142,6 +167,9 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     article: 'Artigo',
     articleAriaPrefix: 'Ler o artigo',
     back: 'Voltar',
+    breadcrumbAria: 'Caminho de navegação',
+    breadcrumbHome: 'Início',
+    breadcrumbHistory: (ownerName: string): string => `História de ${ownerName}`,
     events: 'Eventos',
     includeParkItems: 'Mostrar itens do parque',
     kicker: 'História',
@@ -158,7 +186,7 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
 @Component({
   selector: 'app-history-timeline-page',
   templateUrl: './history-timeline-page.component.html',
-  styleUrls: ['./history-timeline-page.component.scss'],
+  styleUrls: ['./history-timeline-page.component.scss', './history-timeline-breadcrumb.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HistoryTimelineStateFacade],
   imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink]
@@ -177,7 +205,8 @@ export class HistoryTimelinePageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly stateFacade: HistoryTimelineStateFacade,
-    private readonly seoService: SeoService
+    private readonly seoService: SeoService,
+    private readonly standaloneBreadcrumbSeoService: HistoryStandaloneBreadcrumbSeoService
   ) {
     effect((): void => {
       const currentTimeline: HistoryTimelinePageViewModel | null = this.timeline();
@@ -186,7 +215,12 @@ export class HistoryTimelinePageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyHistoryTimelineSeo(currentTimeline, this.currentLanguage(), this.router.url, this.timelineCanonicalPath(currentTimeline));
+      const canonicalPath: string | null = this.timelineCanonicalPath(currentTimeline);
+      this.seoService.applyHistoryTimelineSeo(currentTimeline, this.currentLanguage(), this.router.url, canonicalPath);
+
+      if (currentTimeline.standaloneAttraction) {
+        this.standaloneBreadcrumbSeoService.apply(currentTimeline, this.currentLanguage(), canonicalPath);
+      }
     });
   }
 
@@ -251,6 +285,10 @@ export class HistoryTimelinePageComponent implements OnInit {
     this.stateFacade.setIncludeParkItems(nextIncludeParkItems);
   }
 
+  protected homeLink(): string[] {
+    return ['/', this.currentLanguage(), 'home'];
+  }
+
   protected backLink(timeline: HistoryTimelinePageViewModel): string[] {
     if (timeline.standaloneAttraction) {
       return ['/', this.currentLanguage(), 'attraction', timeline.standaloneAttraction.id ?? '', this.slugOrFallback(timeline.standaloneAttraction.name, 'attraction')];
@@ -265,6 +303,18 @@ export class HistoryTimelinePageComponent implements OnInit {
     }
 
     return ['/', this.currentLanguage(), 'parks'];
+  }
+
+  protected breadcrumbAriaLabel(): string {
+    return this.resolveCopy().breadcrumbAria;
+  }
+
+  protected breadcrumbHomeLabel(): string {
+    return this.resolveCopy().breadcrumbHome;
+  }
+
+  protected breadcrumbHistoryLabel(timeline: HistoryTimelinePageViewModel): string {
+    return this.resolveCopy().breadcrumbHistory(timeline.ownerName);
   }
 
   protected yearTicks(timeline: HistoryTimelinePageViewModel): number[] {
