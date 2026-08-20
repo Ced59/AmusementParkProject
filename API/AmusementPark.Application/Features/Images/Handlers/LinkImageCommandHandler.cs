@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -25,19 +26,22 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public LinkImageCommandHandler(
         IImageRepository imageRepository,
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
         this.parkRepository = parkRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Image>> HandleAsync(LinkImageCommand command, CancellationToken cancellationToken = default)
@@ -102,6 +106,11 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             }
 
             await SynchronizeOwnerAsync(updated, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                new[] { image },
+                new[] { updated },
+                cancellationToken);
             return ApplicationResult<Image>.Success(updated);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

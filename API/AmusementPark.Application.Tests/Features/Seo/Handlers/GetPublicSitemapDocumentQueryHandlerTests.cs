@@ -44,8 +44,6 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
@@ -86,17 +84,11 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
             .Callback<SitemapGenerationHistoryEntry, CancellationToken>((entry, _) => historyEntry = entry)
             .Returns(Task.CompletedTask);
-        settingsRepository
-            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new SeoSitemapSettings());
-
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
             new[] { new FakeSitemapSectionProvider() },
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
@@ -116,7 +108,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         Assert.Equal(SitemapGenerationTrigger.PublicFallback, historyEntry!.Trigger);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyAll();
-        settingsRepository.VerifyAll();
+        settingsRepository.VerifyNoOtherCalls();
         indexNowSubmitter.VerifyNoOtherCalls();
     }
 
@@ -155,8 +147,6 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
@@ -205,8 +195,6 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
@@ -268,8 +256,6 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,

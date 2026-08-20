@@ -14,22 +14,15 @@ namespace AmusementPark.Application.Features.Seo.Handlers;
 public sealed class GenerateSitemapCommandHandler : ICommandHandler<GenerateSitemapCommand, ApplicationResult<SitemapGenerationResult>>
 {
     private readonly SeoSitemapGenerationOrchestrator orchestrator;
-    private readonly ISeoSitemapSettingsRepository settingsRepository;
 
-    public GenerateSitemapCommandHandler(SeoSitemapGenerationOrchestrator orchestrator, ISeoSitemapSettingsRepository settingsRepository)
+    public GenerateSitemapCommandHandler(SeoSitemapGenerationOrchestrator orchestrator)
     {
         this.orchestrator = orchestrator;
-        this.settingsRepository = settingsRepository;
     }
 
     public async Task<ApplicationResult<SitemapGenerationResult>> HandleAsync(GenerateSitemapCommand command, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(command);
-
-        SeoSitemapSettings settings = await this.settingsRepository.GetAsync(cancellationToken);
-        bool shouldSubmitIndexNow = command.SubmitToIndexNow &&
-                                    settings.IsIndexNowEnabled &&
-                                    ShouldSubmitForTrigger(command.Trigger, settings);
 
         SitemapGenerationResult result = await this.orchestrator.GenerateAsync(
             command.PublicBaseUrl,
@@ -38,7 +31,6 @@ public sealed class GenerateSitemapCommandHandler : ICommandHandler<GenerateSite
                 SupportedLanguages = command.SupportedLanguages,
             },
             command.Trigger,
-            shouldSubmitIndexNow,
             command.TriggeredByUserId,
             command.TriggeredByUserEmail,
             cancellationToken);
@@ -46,15 +38,6 @@ public sealed class GenerateSitemapCommandHandler : ICommandHandler<GenerateSite
         return ApplicationResult<SitemapGenerationResult>.Success(result);
     }
 
-    private static bool ShouldSubmitForTrigger(SitemapGenerationTrigger trigger, SeoSitemapSettings settings)
-    {
-        return trigger switch
-        {
-            SitemapGenerationTrigger.Manual => settings.SubmitToIndexNowAfterManualGeneration,
-            SitemapGenerationTrigger.Automatic => settings.SubmitToIndexNowAfterAutomaticGeneration,
-            _ => false,
-        };
-    }
 }
 
 public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<UpdateSeoSitemapSettingsCommand, ApplicationResult<SeoSitemapSettings>>
@@ -80,8 +63,8 @@ public sealed class UpdateSeoSitemapSettingsCommandHandler : ICommandHandler<Upd
         SeoSitemapSettings settings = new SeoSitemapSettings
         {
             IsIndexNowEnabled = command.IsIndexNowEnabled,
-            SubmitToIndexNowAfterManualGeneration = command.SubmitToIndexNowAfterManualGeneration,
-            SubmitToIndexNowAfterAutomaticGeneration = command.SubmitToIndexNowAfterAutomaticGeneration,
+            SubmitToIndexNowAfterManualGeneration = false,
+            SubmitToIndexNowAfterAutomaticGeneration = false,
             IndexNowKey = normalizedKey,
             IndexNowKeyLocation = normalizedKeyLocation,
             IndexNowEndpoints = NormalizeEndpoints(command.IndexNowEndpoints),
@@ -240,7 +223,6 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
                     SupportedLanguages = query.SupportedLanguages,
                 },
                 SitemapGenerationTrigger.PublicFallback,
-                submitToIndexNow: false,
                 triggeredByUserId: null,
                 triggeredByUserEmail: null,
                 cancellationToken);

@@ -1689,14 +1689,15 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
-  it('applies indexable localized metadata to the public sitemap page', () => {
+  it('keeps the public HTML sitemap out of the search index', () => {
     service.applyRouteDefaults('/fr/sitemap');
 
     expect(documentRef.title).toBe('Plan du site - Amusement Parks');
     expect(readMetaContent('meta[name="description"]')).toBe(
       'Explore le plan public d’Amusement Parks avec les parcs, cartes interactives, dossiers techniques et pages de référence.',
     );
-    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
     expect(readCanonicalHref()).toBe('http://localhost:4200/fr/sitemap');
   });
 
@@ -1726,10 +1727,50 @@ describe('SeoService', () => {
       '/fr/park/park-1/parc-demo/map',
       null,
       null,
-      false,
+      0,
     );
 
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+  });
+
+  it('indexes collection pages only when their minimum value threshold is reached', () => {
+    service.applyParkImagesSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/images',
+      2,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+
+    service.applyParkImagesSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/images',
+      3,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
+
+    service.applyParkVideosSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/videos',
+      1,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+
+    service.applyParkVideosSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/videos',
+      2,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
   function readMetaContent(selector: string): string | null {

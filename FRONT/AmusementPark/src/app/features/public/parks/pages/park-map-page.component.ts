@@ -69,7 +69,7 @@ export class ParkMapPageComponent implements OnInit {
         this.router.url,
         this.parkImageId(),
         buildPublicRoutePath(buildPublicParkMapRouteCommands(routeTarget)),
-        currentMap.hasItemMarkers
+        currentMap.markers.length
       );
     });
   }

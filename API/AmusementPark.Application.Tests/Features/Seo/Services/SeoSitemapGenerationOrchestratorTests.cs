@@ -37,8 +37,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         SitemapSnapshot? savedSnapshot = null;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
-        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
 
         snapshotRepository
             .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
@@ -47,24 +45,17 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         historyRepository
             .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        settingsRepository
-            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new SeoSitemapSettings());
-
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
             providers,
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
 
         SitemapGenerationResult result = await orchestrator.GenerateAsync(
             "https://example.com/",
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
             SitemapGenerationTrigger.Manual,
-            submitToIndexNow: false,
             triggeredByUserId: "admin-1",
             triggeredByUserEmail: "admin@example.com",
             CancellationToken.None);
@@ -86,12 +77,11 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-item-videos-fr"));
         snapshotRepository.VerifyAll();
         historyRepository.VerifyAll();
-        settingsRepository.VerifyAll();
-        indexNowSubmitter.VerifyNoOtherCalls();
+        Assert.False(result.IndexNow.WasRequested);
     }
 
     [Fact]
-    public async Task GenerateAsync_WhenIndexNowWouldSubmitTooManySitemapUrls_ShouldSkipBulkSubmission()
+    public async Task GenerateAsync_WhenSitemapContainsManyUrls_ShouldNeverRequestIndexNow()
     {
         ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
         {
@@ -106,8 +96,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         SitemapSnapshot? savedSnapshot = null;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
-        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
 
         snapshotRepository
             .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
@@ -116,44 +104,30 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         historyRepository
             .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        settingsRepository
-            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new SeoSitemapSettings
-            {
-                IsIndexNowEnabled = true,
-                IndexNowKey = "key",
-                IndexNowEndpoints = new[] { "https://api.indexnow.org/indexnow" },
-            });
-
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
             providers,
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
 
         SitemapGenerationResult result = await orchestrator.GenerateAsync(
             "https://example.com/",
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
             SitemapGenerationTrigger.Manual,
-            submitToIndexNow: true,
             triggeredByUserId: "admin-1",
             triggeredByUserEmail: "admin@example.com",
             CancellationToken.None);
 
         Assert.Equal(SitemapGenerationStatus.Succeeded, result.Status);
         Assert.NotNull(savedSnapshot);
-        Assert.True(result.IndexNow.WasRequested);
-        Assert.True(result.IndexNow.IsEnabled);
-        Assert.False(result.IndexNow.IsSuccess);
+        Assert.False(result.IndexNow.WasRequested);
+        Assert.False(result.IndexNow.IsEnabled);
+        Assert.True(result.IndexNow.IsSuccess);
         Assert.Equal(0, result.IndexNow.SubmittedUrlCount);
-        Assert.Contains(result.IndexNow.Errors, static error => error.Contains("101 URLs", StringComparison.Ordinal));
+        Assert.Empty(result.IndexNow.Errors);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyAll();
-        settingsRepository.VerifyAll();
-        indexNowSubmitter.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -172,8 +146,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         SitemapSnapshot? savedSnapshot = null;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
-        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
 
         snapshotRepository
             .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
@@ -182,24 +154,17 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         historyRepository
             .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        settingsRepository
-            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new SeoSitemapSettings());
-
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
             providers,
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             new InMemorySeoSitemapRuntimeStateStore());
 
         SitemapGenerationResult result = await orchestrator.GenerateAsync(
             "https://example.com/",
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
             SitemapGenerationTrigger.Manual,
-            submitToIndexNow: false,
             triggeredByUserId: "admin-1",
             triggeredByUserEmail: "admin@example.com",
             CancellationToken.None);
@@ -215,8 +180,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-items-fr-2"));
         snapshotRepository.VerifyAll();
         historyRepository.VerifyAll();
-        settingsRepository.VerifyAll();
-        indexNowSubmitter.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -228,8 +191,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         };
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
-        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
         InMemorySeoSitemapRuntimeStateStore runtimeStateStore = new InMemorySeoSitemapRuntimeStateStore();
 
         SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
@@ -237,15 +198,12 @@ public sealed class SeoSitemapGenerationOrchestratorTests
             new SitemapXmlWriter(),
             snapshotRepository.Object,
             historyRepository.Object,
-            settingsRepository.Object,
-            indexNowSubmitter.Object,
             runtimeStateStore);
 
         await Assert.ThrowsAsync<OperationCanceledException>(() => orchestrator.GenerateAsync(
             "https://example.com/",
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
             SitemapGenerationTrigger.Manual,
-            submitToIndexNow: false,
             triggeredByUserId: "admin-1",
             triggeredByUserEmail: "admin@example.com",
             CancellationToken.None));
@@ -256,8 +214,6 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         Assert.True(runtimeStateStore.TryStart("retry"));
         snapshotRepository.VerifyNoOtherCalls();
         historyRepository.VerifyNoOtherCalls();
-        settingsRepository.VerifyNoOtherCalls();
-        indexNowSubmitter.VerifyNoOtherCalls();
     }
 
     private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider

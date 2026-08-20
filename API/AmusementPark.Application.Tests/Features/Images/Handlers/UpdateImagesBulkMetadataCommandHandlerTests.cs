@@ -5,6 +5,8 @@ using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 using Moq;
 using Xunit;
@@ -56,6 +58,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler = new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
 
         Image existing = new Image
         {
@@ -69,12 +72,17 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
             IsPublished = true,
             SourceUrl = "https://cdn.example.test/logo.png",
         };
-
-        imageRepository
-            .Setup(repository => repository.GetByIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1" })),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { existing });
+        Image updated = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Description = "Logo",
+            TagIds = new List<string> { "add", "keep" },
+            IsPublished = false,
+            SourceUrl = "https://cdn.example.test/logo.png",
+        };
 
         updateImageMetadataCommandHandler
             .Setup(handler => handler.HandleAsync(
@@ -85,14 +93,33 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
                     command.Metadata.OwnerId == "park-1" &&
                     command.Metadata.IsCurrent == null &&
                     command.Metadata.IsPublished == false &&
+                    command.SuppressSeoNotification &&
                     command.Metadata.SourceUrl == "https://cdn.example.test/logo.png" &&
                     command.Metadata.TagIds.OrderBy(static tagId => tagId).SequenceEqual(new[] { "add", "keep" })),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(ApplicationResult<Image>.Success(existing));
+            .ReturnsAsync(ApplicationResult<Image>.Success(updated));
+
+        imageRepository
+            .SetupSequence(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { existing })
+            .ReturnsAsync(new[] { updated });
+
+        publicSeoUpdateNotifier
+            .Setup(notifier => notifier.NotifyAsync(
+                It.Is<PublicSeoUpdate>(update =>
+                    update.PreviousImages.Count == 1 &&
+                    update.CurrentImages.Count == 1 &&
+                    update.PreviousImages.Single().Category == ImageCategory.Logo &&
+                    update.CurrentImages.Single().Category == ImageCategory.Park),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
 
         UpdateImagesBulkMetadataCommandHandler handler = new UpdateImagesBulkMetadataCommandHandler(
             imageRepository.Object,
-            updateImageMetadataCommandHandler.Object);
+            updateImageMetadataCommandHandler.Object,
+            publicSeoUpdateNotifier.Object);
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(new UpdateImagesBulkMetadataCommand(
             new[] { "image-1" },
@@ -107,6 +134,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
         Assert.Equal(1, result.Value.UpdatedCount);
         imageRepository.VerifyAll();
         updateImageMetadataCommandHandler.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
     }
 
     [Fact]

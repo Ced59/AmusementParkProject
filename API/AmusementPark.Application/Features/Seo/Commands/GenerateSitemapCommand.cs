@@ -8,7 +8,6 @@ public sealed record GenerateSitemapCommand(
     string PublicBaseUrl,
     IReadOnlyCollection<string> SupportedLanguages,
     SitemapGenerationTrigger Trigger,
-    bool SubmitToIndexNow,
     string? TriggeredByUserId,
     string? TriggeredByUserEmail)
     : ICommand<ApplicationResult<SitemapGenerationResult>>;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, computed, effect } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, effect } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from '@shared/ui/primitives/button';
@@ -22,8 +22,6 @@ import {
 
 interface SeoSitemapSettingsForm {
   isIndexNowEnabled: FormControl<boolean>;
-  submitToIndexNowAfterManualGeneration: FormControl<boolean>;
-  submitToIndexNowAfterAutomaticGeneration: FormControl<boolean>;
   indexNowKey: FormControl<string>;
   indexNowKeyLocation: FormControl<string>;
   indexNowEndpoints: FormControl<string>;
@@ -60,12 +58,8 @@ export class AdminSeoSitemapsComponent implements OnInit {
   protected readonly savingSettings = this.stateFacade.savingSettings;
   protected readonly generating = this.stateFacade.generating;
   protected readonly lastGeneration = this.stateFacade.lastGeneration;
-  protected readonly canSubmitIndexNow = computed(() => !!this.overview()?.settings.isIndexNowEnabled);
-
   protected readonly settingsForm = new FormGroup<SeoSitemapSettingsForm>({
     isIndexNowEnabled: new FormControl<boolean>(false, { nonNullable: true }),
-    submitToIndexNowAfterManualGeneration: new FormControl<boolean>(false, { nonNullable: true }),
-    submitToIndexNowAfterAutomaticGeneration: new FormControl<boolean>(false, { nonNullable: true }),
     indexNowKey: new FormControl<string>('', { nonNullable: true }),
     indexNowKeyLocation: new FormControl<string>('', { nonNullable: true }),
     indexNowEndpoints: new FormControl<string>('https://api.indexnow.org/indexnow\nhttps://www.bing.com/indexnow', { nonNullable: true })
@@ -83,8 +77,6 @@ export class AdminSeoSitemapsComponent implements OnInit {
 
       this.settingsForm.setValue({
         isIndexNowEnabled: settings.isIndexNowEnabled,
-        submitToIndexNowAfterManualGeneration: settings.submitToIndexNowAfterManualGeneration,
-        submitToIndexNowAfterAutomaticGeneration: settings.submitToIndexNowAfterAutomaticGeneration,
         indexNowKey: settings.indexNowKey ?? '',
         indexNowKeyLocation: settings.indexNowKeyLocation ?? '',
         indexNowEndpoints: (settings.indexNowEndpoints ?? []).join('\n')
@@ -100,8 +92,8 @@ export class AdminSeoSitemapsComponent implements OnInit {
     const value = this.settingsForm.getRawValue();
     const request: UpdateSeoSitemapSettingsRequest = {
       isIndexNowEnabled: value.isIndexNowEnabled,
-      submitToIndexNowAfterManualGeneration: value.submitToIndexNowAfterManualGeneration,
-      submitToIndexNowAfterAutomaticGeneration: value.submitToIndexNowAfterAutomaticGeneration,
+      submitToIndexNowAfterManualGeneration: false,
+      submitToIndexNowAfterAutomaticGeneration: false,
       indexNowKey: this.normalizeOptionalText(value.indexNowKey),
       indexNowKeyLocation: this.normalizeOptionalText(value.indexNowKeyLocation),
       indexNowEndpoints: value.indexNowEndpoints
@@ -113,8 +105,8 @@ export class AdminSeoSitemapsComponent implements OnInit {
     this.stateFacade.saveSettings(request);
   }
 
-  protected generate(submitToIndexNow: boolean): void {
-    this.stateFacade.generate(submitToIndexNow);
+  protected generate(): void {
+    this.stateFacade.generate();
   }
 
   protected refresh(): void {

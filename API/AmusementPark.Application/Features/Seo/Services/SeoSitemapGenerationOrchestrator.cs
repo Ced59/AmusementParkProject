@@ -9,14 +9,10 @@ namespace AmusementPark.Application.Features.Seo.Services;
 /// </summary>
 public sealed class SeoSitemapGenerationOrchestrator
 {
-    private const int MaxIndexNowUrlsPerSitemapGeneration = 100;
-
     private readonly IReadOnlyCollection<ISitemapSectionProvider> sectionProviders;
     private readonly ISitemapXmlWriter sitemapXmlWriter;
     private readonly ISeoSitemapSnapshotRepository snapshotRepository;
     private readonly ISeoSitemapGenerationHistoryRepository historyRepository;
-    private readonly ISeoSitemapSettingsRepository settingsRepository;
-    private readonly IIndexNowSubmitter indexNowSubmitter;
     private readonly ISeoSitemapRuntimeStateStore runtimeStateStore;
 
     public SeoSitemapGenerationOrchestrator(
@@ -24,16 +20,12 @@ public sealed class SeoSitemapGenerationOrchestrator
         ISitemapXmlWriter sitemapXmlWriter,
         ISeoSitemapSnapshotRepository snapshotRepository,
         ISeoSitemapGenerationHistoryRepository historyRepository,
-        ISeoSitemapSettingsRepository settingsRepository,
-        IIndexNowSubmitter indexNowSubmitter,
         ISeoSitemapRuntimeStateStore runtimeStateStore)
     {
         this.sectionProviders = sectionProviders.OrderBy(GetSectionOrder).ThenBy(static provider => provider.Key, StringComparer.OrdinalIgnoreCase).ToList();
         this.sitemapXmlWriter = sitemapXmlWriter;
         this.snapshotRepository = snapshotRepository;
         this.historyRepository = historyRepository;
-        this.settingsRepository = settingsRepository;
-        this.indexNowSubmitter = indexNowSubmitter;
         this.runtimeStateStore = runtimeStateStore;
     }
 
@@ -41,7 +33,6 @@ public sealed class SeoSitemapGenerationOrchestrator
         string publicBaseUrl,
         SitemapGenerationContext context,
         SitemapGenerationTrigger trigger,
-        bool submitToIndexNow,
         string? triggeredByUserId,
         string? triggeredByUserEmail,
         CancellationToken cancellationToken)
@@ -108,12 +99,6 @@ public sealed class SeoSitemapGenerationOrchestrator
             this.runtimeStateStore.Update("saving", 70, "Persistance du snapshot sitemap.");
             await this.snapshotRepository.SaveAsync(snapshot, cancellationToken);
 
-            IndexNowSubmissionResult indexNowResult = await this.SubmitIndexNowIfRequiredAsync(
-                publicBaseUrl,
-                submitToIndexNow,
-                builtSections,
-                cancellationToken);
-
             stopwatch.Stop();
             SitemapGenerationResult result = new SitemapGenerationResult
             {
@@ -125,7 +110,12 @@ public sealed class SeoSitemapGenerationOrchestrator
                 Trigger = trigger,
                 TotalUrlCount = snapshot.TotalUrlCount,
                 Sections = sectionStats,
-                IndexNow = indexNowResult,
+                IndexNow = new IndexNowSubmissionResult
+                {
+                    WasRequested = false,
+                    IsEnabled = false,
+                    IsSuccess = true,
+                },
             };
 
             await this.historyRepository.WriteAsync(ToHistoryEntry(result, triggeredByUserId, triggeredByUserEmail), cancellationToken);
@@ -417,49 +407,6 @@ public sealed class SeoSitemapGenerationOrchestrator
         }
 
         return 100;
-    }
-
-    private async Task<IndexNowSubmissionResult> SubmitIndexNowIfRequiredAsync(
-        string publicBaseUrl,
-        bool submitToIndexNow,
-        IReadOnlyCollection<SitemapSectionBuildResult> builtSections,
-        CancellationToken cancellationToken)
-    {
-        SeoSitemapSettings settings = await this.settingsRepository.GetAsync(cancellationToken);
-        if (!submitToIndexNow || !settings.IsIndexNowEnabled)
-        {
-            return new IndexNowSubmissionResult
-            {
-                WasRequested = submitToIndexNow,
-                IsEnabled = settings.IsIndexNowEnabled,
-                IsSuccess = !submitToIndexNow,
-            };
-        }
-
-        this.runtimeStateStore.Update("indexnow", 86, "Soumission IndexNow des URLs générées.");
-        string normalizedPublicBaseUrl = SitemapXmlWriter.NormalizePublicBaseUrl(publicBaseUrl);
-        List<string> absoluteUrls = builtSections
-            .SelectMany(static section => section.Urls)
-            .Select(url => $"{normalizedPublicBaseUrl}{NormalizeRelativePath(url.RelativePath)}")
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .ToList();
-
-        if (absoluteUrls.Count > MaxIndexNowUrlsPerSitemapGeneration)
-        {
-            return new IndexNowSubmissionResult
-            {
-                WasRequested = true,
-                IsEnabled = true,
-                IsSuccess = false,
-                SubmittedUrlCount = 0,
-                Errors = new[]
-                {
-                    $"Soumission IndexNow ignoree pour {absoluteUrls.Count} URLs de sitemap : les mises a jour publiques sont soumises selectivement.",
-                },
-            };
-        }
-
-        return await this.indexNowSubmitter.SubmitAsync(settings, normalizedPublicBaseUrl, absoluteUrls, cancellationToken);
     }
 
     private static SitemapGenerationHistoryEntry ToHistoryEntry(SitemapGenerationResult result, string? triggeredByUserId, string? triggeredByUserEmail)

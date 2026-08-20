@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Images.Results;
 using AmusementPark.Application.Features.Comments;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Images.Handlers;
@@ -30,15 +31,18 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private readonly IImageRepository imageRepository;
     private readonly IImageProcessingPipeline imageProcessingPipeline;
     private readonly IImageBinaryStorage imageBinaryStorage;
+    private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public UploadImageCommandHandler(
         IImageRepository imageRepository,
         IImageProcessingPipeline imageProcessingPipeline,
-        IImageBinaryStorage imageBinaryStorage)
+        IImageBinaryStorage imageBinaryStorage,
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
         this.imageProcessingPipeline = imageProcessingPipeline;
         this.imageBinaryStorage = imageBinaryStorage;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<UploadedImageResult>> HandleAsync(UploadImageCommand command, CancellationToken cancellationToken = default)
@@ -217,6 +221,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                     withWatermark,
                     cancellationToken);
             Image image = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
+            await PublicImageSeoUpdateNotification.NotifyAsync(
+                this.publicSeoUpdateNotifier,
+                Array.Empty<Image>(),
+                new[] { image },
+                cancellationToken);
 
             return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
             {

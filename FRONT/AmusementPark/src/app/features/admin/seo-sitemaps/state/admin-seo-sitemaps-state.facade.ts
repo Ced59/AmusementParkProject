@@ -112,9 +112,9 @@ export class AdminSeoSitemapsStateFacade {
     });
   }
 
-  generate(submitToIndexNow: boolean): void {
+  generate(): void {
     const previousData: AdminSeoSitemapsViewModel | undefined = this.screenStateStore.data();
-    const request: GenerateSeoSitemapRequest = { submitToIndexNow };
+    const request: GenerateSeoSitemapRequest = { submitToIndexNow: false };
     this.generatingSignal.set(true);
     this.startRuntimePolling();
 

@@ -1,5 +1,3 @@
-using AmusementPark.Application.Common.Results;
-using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -40,7 +38,7 @@ public sealed partial class PublicSeoUrlResolver
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(supportedLanguages);
         HashSet<string> relativePaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        Dictionary<string, bool> imagePresenceByKey = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, int> imageCountByKey = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         IReadOnlyCollection<PublicSeoParkSnapshot> parkSnapshots = MergeParkSnapshots(update.PreviousParks, update.CurrentParks);
         IReadOnlyCollection<string> changedParkIds = parkSnapshots
@@ -87,7 +85,7 @@ public sealed partial class PublicSeoUrlResolver
                     zonesByParkId.GetValueOrDefault(park.Id) ?? Array.Empty<PublicSeoParkZoneSnapshot>(),
                     update.PreviousParkZones.Where(zone => string.Equals(zone.ParkId, park.Id, StringComparison.OrdinalIgnoreCase)),
                     update.CurrentParkZones.Where(zone => string.Equals(zone.ParkId, park.Id, StringComparison.OrdinalIgnoreCase))),
-                imagePresenceByKey,
+                imageCountByKey,
                 cancellationToken);
         }
 
@@ -145,7 +143,8 @@ public sealed partial class PublicSeoUrlResolver
             AddZoneImpactUrls(relativePaths, languages, parentPark, new[] { item }, parentZones);
 
             AddParkItemDetailUrls(relativePaths, languages, parentPark, item);
-            bool itemHasImages = await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken);
+            bool itemHasImages = SeoPageValuePolicy.IsImageGalleryIndexable(
+                await this.GetPublishedImageCountAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imageCountByKey, cancellationToken));
             if (itemHasImages)
             {
                 AddParkImageUrls(relativePaths, languages, parentPark);
@@ -155,6 +154,9 @@ public sealed partial class PublicSeoUrlResolver
 
         IReadOnlyCollection<PublicSeoVideoSnapshot> videoSnapshots = MergeVideoSnapshots(update.PreviousVideos, update.CurrentVideos);
         await this.AddVideoImpactUrlsAsync(relativePaths, languages, videoSnapshots, update, cancellationToken);
+
+        IReadOnlyCollection<PublicSeoImageSnapshot> imageSnapshots = MergeImageSnapshots(update.PreviousImages, update.CurrentImages);
+        await this.AddImageImpactUrlsAsync(relativePaths, languages, imageSnapshots, update, cancellationToken);
 
         return relativePaths.OrderBy(static path => path, StringComparer.OrdinalIgnoreCase).ToList();
     }
@@ -166,12 +168,12 @@ public sealed partial class PublicSeoUrlResolver
         IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems,
         IReadOnlyCollection<PublicSeoParkItemSnapshot> currentHistoryItems,
         IReadOnlyCollection<PublicSeoParkZoneSnapshot> zones,
-        Dictionary<string, bool> imagePresenceByKey,
+        Dictionary<string, int> imageCountByKey,
         CancellationToken cancellationToken)
     {
         AddParkDetailUrls(relativePaths, languages, park);
 
-        if (currentPublicItems.Any(HasPublicMapMarker))
+        if (SeoPageValuePolicy.IsCollectionIndexable(currentPublicItems.Count(HasPublicMapMarker)))
         {
             AddParkMapUrls(relativePaths, languages, park);
         }
@@ -181,12 +183,12 @@ public sealed partial class PublicSeoUrlResolver
             AddParkHistoryUrls(relativePaths, languages, park);
         }
 
-        if (await this.HasPublishedParkOrItemImagesAsync(park.Id, currentPublicItems, imagePresenceByKey, cancellationToken))
+        if (await this.HasMinimumPublishedParkOrItemImagesAsync(park.Id, currentPublicItems, imageCountByKey, cancellationToken))
         {
             AddParkImageUrls(relativePaths, languages, park);
         }
 
-        if (currentPublicItems.Count > 0)
+        if (SeoPageValuePolicy.IsCollectionIndexable(currentPublicItems.Count))
         {
             AddParkItemListUrls(relativePaths, languages, park);
         }
@@ -196,7 +198,13 @@ public sealed partial class PublicSeoUrlResolver
         foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
         {
             AddParkItemDetailUrls(relativePaths, languages, park, item);
-            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
+            int itemImageCount = await this.GetPublishedImageCountAsync(
+                ImageOwnerType.ParkItem,
+                ImageCategory.ParkItem,
+                item.Id,
+                imageCountByKey,
+                cancellationToken);
+            if (SeoPageValuePolicy.IsImageGalleryIndexable(itemImageCount))
             {
                 AddParkItemImageUrls(relativePaths, languages, park, item);
             }
@@ -418,53 +426,6 @@ public sealed partial class PublicSeoUrlResolver
         }
 
         return zonesByParkId;
-    }
-
-    private async Task<bool> HasPublishedImagesAsync(
-        ImageOwnerType ownerType,
-        ImageCategory category,
-        string ownerId,
-        Dictionary<string, bool> imagePresenceByKey,
-        CancellationToken cancellationToken)
-    {
-        string key = $"{ownerType}:{category}:{ownerId}";
-        if (imagePresenceByKey.TryGetValue(key, out bool cachedValue))
-        {
-            return cachedValue;
-        }
-
-        ImageSearchCriteria criteria = new ImageSearchCriteria(
-            Category: category,
-            OwnerType: ownerType,
-            OwnerId: ownerId,
-            IsPublished: true,
-            HasOwner: true);
-        PagedResult<Image> page = await this.imageRepository.GetPageAsync(1, 1, criteria, cancellationToken);
-        bool hasImages = page.Items.Count > 0;
-        imagePresenceByKey[key] = hasImages;
-        return hasImages;
-    }
-
-    private async Task<bool> HasPublishedParkOrItemImagesAsync(
-        string parkId,
-        IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems,
-        Dictionary<string, bool> imagePresenceByKey,
-        CancellationToken cancellationToken)
-    {
-        if (await this.HasPublishedImagesAsync(ImageOwnerType.Park, ImageCategory.Park, parkId, imagePresenceByKey, cancellationToken))
-        {
-            return true;
-        }
-
-        foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
-        {
-            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private static IReadOnlyCollection<PublicSeoParkSnapshot> MergeParkSnapshots(

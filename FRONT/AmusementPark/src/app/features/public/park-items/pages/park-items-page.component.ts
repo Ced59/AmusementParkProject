@@ -70,7 +70,8 @@ export class ParkItemsPageComponent implements OnInit {
           language: this.currentLanguage(),
           parkId: this.currentParkId,
           parkName: currentView.parkName
-        }))
+        })),
+        this.totalResults()
       );
     });
   }

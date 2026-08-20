@@ -1,6 +1,20 @@
 {
-  "version": "4.1.48",
+  "version": "4.2.0",
   "history": [
+    {
+      "version": "4.2.0",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Des pages publiques plus utiles pour les moteurs de recherche.",
+        "en": "More useful public pages for search engines.",
+        "de": "Wertvollere öffentliche Seiten für Suchmaschinen.",
+        "nl": "Nuttigere openbare pagina’s voor zoekmachines.",
+        "it": "Pagine pubbliche più utili per i motori di ricerca.",
+        "es": "Páginas públicas más útiles para los buscadores.",
+        "pl": "Bardziej wartościowe strony publiczne dla wyszukiwarek.",
+        "pt": "Páginas públicas mais úteis para os motores de pesquisa."
+      }
+    },
     {
       "version": "4.1.48",
       "releasedAt": "2026-08-20",
