@@ -101,6 +101,7 @@ function createTimeline(
             latitude: 46.561236,
             longitude: 13.253481,
             isVisible: true,
+            adminReviewStatus: 'Validated',
           }
         : null,
     includedParkItems: [],
