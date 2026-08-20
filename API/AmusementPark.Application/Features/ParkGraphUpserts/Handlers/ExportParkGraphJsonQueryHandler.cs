@@ -436,12 +436,12 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportAttractionDetails MapAttractionDetails(AttractionDetails details)
+    private static ParkGraphExportAttractionDetails MapAttractionDetails(AttractionDetails details, bool includeReferenceKey = true)
     {
         return new ParkGraphExportAttractionDetails
         {
             ManufacturerId = details.ManufacturerId,
-            ManufacturerKey = details.ManufacturerId,
+            ManufacturerKey = includeReferenceKey ? details.ManufacturerId : null,
             Model = details.Model,
             ExternalSource = details.ExternalSource,
             ExternalId = details.ExternalId,

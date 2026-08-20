@@ -17,6 +17,28 @@ namespace AmusementPark.Application.Tests.Features.Seo.Services;
 
 public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
 {
+    [Theory]
+    [InlineData("ClosedDefinitively")]
+    [InlineData("permanently-closed")]
+    public void IsPublicHistoryStandaloneAttraction_WhenAttractionIsPermanentlyClosed_ShouldReturnFalse(string status)
+    {
+        StandaloneAttraction attraction = new StandaloneAttraction
+        {
+            Id = "standalone-1",
+            Name = "Pendolino",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            AttractionDetails = new AttractionDetails
+            {
+                Status = status,
+            },
+        };
+
+        bool isPublic = HistorySitemapCandidateResolver.IsPublicHistoryStandaloneAttraction(attraction);
+
+        Assert.False(isPublic);
+    }
+
     [Fact]
     public async Task GetUrlsAsync_WhenPublicStandaloneAttractionHasOpeningYear_ShouldReturnTimelineUrl()
     {

@@ -10,7 +10,7 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
 public sealed partial class ParkGraphUpsertProcessor
 {
-    private async Task ProcessStandaloneAttractionAsync(
+    private async Task<bool> ProcessStandaloneAttractionAsync(
         JsonElement root,
         bool createIfMissing,
         Dictionary<string, string> operatorKeys,
@@ -24,7 +24,7 @@ public sealed partial class ParkGraphUpsertProcessor
         if (this.standaloneAttractionRepository is null)
         {
             result.Errors.Add("Le repository des attractions autonomes n'est pas configure.");
-            return;
+            return false;
         }
 
         JsonElement? patch = GetObject(root, "standaloneAttraction");
@@ -34,7 +34,7 @@ public sealed partial class ParkGraphUpsertProcessor
         if (patch is null && migration is null)
         {
             result.Errors.Add("Le document standalone doit contenir un objet 'standaloneAttraction' ou 'migration'.");
-            return;
+            return false;
         }
 
         StandaloneAttraction? attraction = await this.ResolveStandaloneAttractionAsync(
@@ -48,7 +48,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (attraction is null)
         {
-            return;
+            return false;
         }
 
         bool isNew = string.IsNullOrWhiteSpace(attraction.Id)
@@ -67,12 +67,13 @@ public sealed partial class ParkGraphUpsertProcessor
             this.PatchStandaloneAttraction(attraction, patch.Value, operatorKeys, manufacturerKeys, manufacturerIdRemaps, change, result, isNew);
         }
 
-        if (change.Fields.Count > 0 || isNew)
+        bool changed = change.Fields.Count > 0 || isNew;
+        if (changed)
         {
             change.ChangeType = isNew ? "Created" : "Updated";
         }
 
-        if (apply && (change.Fields.Count > 0 || isNew))
+        if (apply && changed)
         {
             attraction = isNew
                 ? await this.standaloneAttractionRepository.CreateAsync(attraction, cancellationToken)
@@ -90,10 +91,12 @@ public sealed partial class ParkGraphUpsertProcessor
             await this.RetireMigratedParkEntitiesAsync(migration.Value, result, apply, cancellationToken);
         }
 
-        if (apply && !string.IsNullOrWhiteSpace(attraction.Id))
+        if (apply && changed && !string.IsNullOrWhiteSpace(attraction.Id))
         {
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, attraction.Id, cancellationToken);
         }
+
+        return changed;
     }
 
     private async Task<StandaloneAttraction?> ResolveStandaloneAttractionAsync(

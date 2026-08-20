@@ -55,6 +55,7 @@
 .admin-standalone-list__head,
 .admin-standalone-pagination,
 .admin-standalone-editor__head,
+.admin-standalone-editor__tools,
 .admin-standalone-actions,
 .admin-standalone-bulk,
 .admin-standalone-check,
@@ -171,6 +172,88 @@
   font-size: 1.05rem;
   line-height: 1.25;
   overflow-wrap: anywhere;
+}
+
+.admin-standalone-editor__tools {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.admin-standalone-file-button {
+  cursor: pointer;
+}
+
+.admin-standalone-file-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.admin-standalone-file-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.admin-standalone-import {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(56, 197, 245, 0.28);
+  border-radius: var(--radius-lg);
+  background: rgba(56, 197, 245, 0.07);
+}
+
+.admin-standalone-import__head,
+.admin-standalone-import__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.admin-standalone-import__head div {
+  min-width: 0;
+}
+
+.admin-standalone-import__head strong,
+.admin-standalone-import__head span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.admin-standalone-import__head strong {
+  color: var(--heading);
+  font-size: 0.82rem;
+}
+
+.admin-standalone-import__head span,
+.admin-standalone-import__summary,
+.admin-standalone-import__messages {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.admin-standalone-import__summary {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  font-weight: 800;
+}
+
+.admin-standalone-import__error-count,
+.admin-standalone-import__error {
+  color: var(--c-orange);
+}
+
+.admin-standalone-import__messages {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.4;
 }
 
 .admin-standalone-two,
@@ -366,5 +449,18 @@
   .admin-standalone-legacy-search,
   .admin-standalone-legacy-result {
     grid-template-columns: 1fr;
+  }
+
+  .admin-standalone-editor__head,
+  .admin-standalone-editor__tools,
+  .admin-standalone-import__head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-standalone-editor__tools .btn,
+  .admin-standalone-import .btn {
+    justify-content: center;
+    width: 100%;
   }
 }

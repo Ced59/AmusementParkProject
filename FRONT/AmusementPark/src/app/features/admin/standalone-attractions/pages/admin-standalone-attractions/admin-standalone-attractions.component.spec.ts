@@ -7,6 +7,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
+import {
+  ParkGraphUpsertRequest,
+  ParkGraphUpsertResult,
+} from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import {
@@ -17,9 +21,12 @@ import {
   ParkAdminListFilters,
   ParkAdminListSort,
 } from '@data-access/parks/parks-api-endpoints';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
+import { ADMIN_PARK_GRAPH_UPSERT_GRAPH_PORT } from '../../../park-graph-upserts/state/admin-park-graph-upsert-operations.ports';
+import {
+  ADMIN_STANDALONE_ATTRACTIONS_DATA_PORT,
+  ADMIN_STANDALONE_ATTRACTIONS_PARKS_PORT,
+} from '../../state/admin-standalone-attractions.ports';
 
 import { AdminStandaloneAttractionsComponent } from './admin-standalone-attractions.component';
 
@@ -43,6 +50,7 @@ class FakeStandaloneAttractionsApiService {
   }> = [];
   public readonly migrationCalls: StandaloneAttractionMigrationRequest[] = [];
   public readonly exportCalls: string[] = [];
+  public readonly getByIdCalls: string[] = [];
 
   getAdminPage(
     page: number,
@@ -51,6 +59,11 @@ class FakeStandaloneAttractionsApiService {
   ): Observable<PagedResult<StandaloneAttraction>> {
     this.pageCalls.push({ page, size, filters });
     return this.pageResponse$;
+  }
+
+  getAdminById(id: string): Observable<StandaloneAttraction> {
+    this.getByIdCalls.push(id);
+    return of(createAttraction(id));
   }
 
   create(attraction: StandaloneAttraction): Observable<StandaloneAttraction> {
@@ -81,6 +94,27 @@ class FakeStandaloneAttractionsApiService {
   downloadExport(id: string): Observable<HttpResponse<Blob>> {
     this.exportCalls.push(id);
     return this.exportResponse$;
+  }
+}
+
+class FakeParkGraphUpsertsApiService {
+  public previewResponse$: Observable<ParkGraphUpsertResult> = of(
+    createUpsertResult(false, true),
+  );
+  public applyResponse$: Observable<ParkGraphUpsertResult> = of(
+    createUpsertResult(true, false),
+  );
+  public readonly previewCalls: ParkGraphUpsertRequest[] = [];
+  public readonly applyCalls: ParkGraphUpsertRequest[] = [];
+
+  preview(request: ParkGraphUpsertRequest): Observable<ParkGraphUpsertResult> {
+    this.previewCalls.push(request);
+    return this.previewResponse$;
+  }
+
+  apply(request: ParkGraphUpsertRequest): Observable<ParkGraphUpsertResult> {
+    this.applyCalls.push(request);
+    return this.applyResponse$;
   }
 }
 
@@ -176,24 +210,60 @@ function createPark(id: string): Park {
   };
 }
 
+function createUpsertResult(
+  isApplied: boolean,
+  canApply: boolean,
+): ParkGraphUpsertResult {
+  return {
+    operationId: 'operation-1',
+    mode: isApplied ? 'Apply' : 'Preview',
+    isApplied,
+    canApply,
+    previewedAtUtc: '2026-08-20T10:00:00Z',
+    appliedAtUtc: isApplied ? '2026-08-20T10:01:00Z' : null,
+    targetStandaloneAttractionId: 'standalone-1',
+    targetStandaloneAttractionName: 'Bardonecchia Alpine Coaster',
+    counts: {
+      created: 0,
+      updated: 1,
+      deleted: 0,
+      unchanged: 0,
+      warnings: 0,
+      errors: 0,
+    },
+    changes: [],
+    warnings: [],
+    errors: [],
+  };
+}
+
 describe('AdminStandaloneAttractionsComponent', () => {
   let fixture: ComponentFixture<AdminStandaloneAttractionsComponent>;
   let component: AdminStandaloneAttractionsComponent;
   let standaloneApiService: FakeStandaloneAttractionsApiService;
   let parksApiService: FakeParksApiService;
+  let parkGraphUpsertsApiService: FakeParkGraphUpsertsApiService;
 
   beforeEach(async () => {
     standaloneApiService = new FakeStandaloneAttractionsApiService();
     parksApiService = new FakeParksApiService();
+    parkGraphUpsertsApiService = new FakeParkGraphUpsertsApiService();
 
     await TestBed.configureTestingModule({
       imports: [AdminStandaloneAttractionsComponent],
       providers: [
         {
-          provide: StandaloneAttractionsApiService,
+          provide: ADMIN_STANDALONE_ATTRACTIONS_DATA_PORT,
           useValue: standaloneApiService,
         },
-        { provide: ParksApiService, useValue: parksApiService },
+        {
+          provide: ADMIN_STANDALONE_ATTRACTIONS_PARKS_PORT,
+          useValue: parksApiService,
+        },
+        {
+          provide: ADMIN_PARK_GRAPH_UPSERT_GRAPH_PORT,
+          useValue: parkGraphUpsertsApiService,
+        },
         {
           provide: Router,
           useValue: { url: '/fr/admin/standalone-attractions' },
@@ -393,5 +463,83 @@ describe('AdminStandaloneAttractionsComponent', () => {
     expect(revokeObjectUrlSpy).toHaveBeenCalledTimes(1);
     expect(revokeObjectUrlSpy).toHaveBeenCalledWith('blob:standalone-export');
     expect(componentAccessor.error()).toBeNull();
+  });
+
+  it('previews a standalone JSON import through the graph upsert facade', async () => {
+    const componentAccessor = component as unknown as {
+      previewImportJson: (jsonText: string, fileName: string) => Promise<void>;
+      importPreviewResult: () => ParkGraphUpsertResult | null;
+      error: () => string | null;
+    };
+    const document = {
+      documentType: 'standaloneAttractionGraph',
+      standaloneAttraction: {
+        id: 'standalone-1',
+        name: 'Bardonecchia Alpine Coaster',
+      },
+    };
+
+    await componentAccessor.previewImportJson(
+      JSON.stringify(document),
+      'standalone-export.json',
+    );
+
+    expect(parkGraphUpsertsApiService.previewCalls).toEqual([
+      {
+        targetParkId: null,
+        createIfMissing: false,
+        replaceCollections: false,
+        document,
+      },
+    ]);
+    expect(componentAccessor.importPreviewResult()?.canApply).toBe(true);
+    expect(componentAccessor.error()).toBeNull();
+  });
+
+  it('rejects a park graph on the standalone import control', async () => {
+    const componentAccessor = component as unknown as {
+      previewImportJson: (jsonText: string, fileName: string) => Promise<void>;
+      error: () => string | null;
+    };
+
+    await componentAccessor.previewImportJson(
+      JSON.stringify({
+        documentType: 'AmusementParkParkGraphUpsert',
+        park: { id: 'park-1' },
+        standaloneAttraction: { id: 'standalone-1' },
+      }),
+      'park-export.json',
+    );
+
+    expect(parkGraphUpsertsApiService.previewCalls).toEqual([]);
+    expect(componentAccessor.error()).toBe(
+      'Ce fichier ne décrit pas une attraction isolée.',
+    );
+  });
+
+  it('applies only a successful preview and reloads the imported attraction', async () => {
+    const componentAccessor = component as unknown as {
+      previewImportJson: (jsonText: string, fileName: string) => Promise<void>;
+      applyImport: () => Promise<void>;
+      selected: () => StandaloneAttraction | null;
+      message: () => string | null;
+    };
+    const document = {
+      documentType: 'standaloneAttractionGraph',
+      standaloneAttraction: { id: 'standalone-1' },
+    };
+
+    await componentAccessor.previewImportJson(
+      JSON.stringify(document),
+      'standalone-export.json',
+    );
+    await componentAccessor.applyImport();
+
+    expect(parkGraphUpsertsApiService.applyCalls).toEqual(
+      parkGraphUpsertsApiService.previewCalls,
+    );
+    expect(standaloneApiService.getByIdCalls).toEqual(['standalone-1']);
+    expect(componentAccessor.selected()?.id).toBe('standalone-1');
+    expect(componentAccessor.message()).toBe('Import JSON appliqué.');
   });
 });

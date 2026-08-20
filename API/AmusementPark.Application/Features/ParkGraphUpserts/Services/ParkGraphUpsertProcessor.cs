@@ -154,7 +154,7 @@ public sealed partial class ParkGraphUpsertProcessor
             await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
             ParkGraphUpsertMergeSummary standaloneMergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
             Dictionary<string, string> standaloneAttractionKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            await this.ProcessStandaloneAttractionAsync(
+            bool standaloneAttractionChanged = await this.ProcessStandaloneAttractionAsync(
                 root,
                 request.CreateIfMissing,
                 operatorKeys,
@@ -186,7 +186,7 @@ public sealed partial class ParkGraphUpsertProcessor
             if (apply && result.Errors.Count == 0)
             {
                 await this.NotifyMergeSeoAsync(standaloneMergeSummary, cancellationToken);
-                if (standaloneHistoryChanged)
+                if (standaloneAttractionChanged || standaloneHistoryChanged)
                 {
                     await this.publicSeoUpdateNotifier.NotifyAsync(new PublicSeoUpdate(), cancellationToken);
                 }

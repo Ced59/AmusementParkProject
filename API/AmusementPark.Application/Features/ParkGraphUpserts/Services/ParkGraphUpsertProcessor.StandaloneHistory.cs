@@ -192,12 +192,10 @@ public sealed partial class ParkGraphUpsertProcessor
                 existing is null ? "Created" : "Unchanged",
                 existing is null ? "key" : "ownerKey");
 
-            // PatchHistoryEvent only reads the park context for ParkItem events.
-            // A standalone event deliberately has no park parent, so the placeholder is never dereferenced.
             PatchHistoryEvent(
                 historyEvent,
                 patch,
-                new Park(),
+                null,
                 entityType,
                 ownerId,
                 key,

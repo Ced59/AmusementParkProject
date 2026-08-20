@@ -42,7 +42,7 @@ public sealed class GetStandaloneAttractionHistoryTimelineQueryHandler
             attractionId,
             query.IncludeHidden,
             cancellationToken);
-        if (attraction is null || (!query.IncludeHidden && !IsPublicAttraction(attraction)))
+        if (attraction is null || (!query.IncludeHidden && !attraction.IsPubliclyPublishable()))
         {
             return ApplicationResult<StandaloneAttractionHistoryTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(StandaloneAttraction), attractionId));
@@ -53,7 +53,7 @@ public sealed class GetStandaloneAttractionHistoryTimelineQueryHandler
             attraction.Id,
             query.IncludeHidden,
             cancellationToken);
-        IReadOnlyCollection<HistoryEvent> automaticEvents = StandaloneAttractionAutomaticHistoryEventFactory.CreateLifecycleEvents(attraction);
+        IReadOnlyCollection<HistoryEvent> automaticEvents = AutomaticHistoryEventFactory.CreateStandaloneAttractionLifecycleEvents(attraction);
         if (automaticEvents.Count > 0)
         {
             events = AutomaticHistoryEventFactory.MergeWithExplicitEvents(events, automaticEvents);
@@ -110,8 +110,4 @@ public sealed class GetStandaloneAttractionHistoryTimelineQueryHandler
         });
     }
 
-    private static bool IsPublicAttraction(StandaloneAttraction attraction)
-    {
-        return attraction.IsVisible && attraction.AdminReviewStatus != AdminReviewStatus.NotRelevant;
-    }
 }
