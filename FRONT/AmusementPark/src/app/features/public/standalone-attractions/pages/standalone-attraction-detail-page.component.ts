@@ -26,6 +26,7 @@ interface StandaloneAttractionPublicCopy {
   standalone: string;
   technicalSheet: string;
   officialWebsite: string;
+  history: string;
   backToParks: string;
   location: string;
   details: string;
@@ -51,6 +52,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Attraction isolée',
     technicalSheet: 'Fiche attraction',
     officialWebsite: 'Site officiel',
+    history: 'Histoire',
     backToParks: 'Retour aux parcs',
     location: 'Localisation',
     details: 'Détails',
@@ -74,6 +76,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Standalone attraction',
     technicalSheet: 'Attraction sheet',
     officialWebsite: 'Official website',
+    history: 'History',
     backToParks: 'Back to parks',
     location: 'Location',
     details: 'Details',
@@ -97,6 +100,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Atracción aislada',
     technicalSheet: 'Ficha de atracción',
     officialWebsite: 'Sitio oficial',
+    history: 'Historia',
     backToParks: 'Volver a parques',
     location: 'Ubicación',
     details: 'Detalles',
@@ -120,6 +124,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Eigenständige Attraktion',
     technicalSheet: 'Attraktionsprofil',
     officialWebsite: 'Offizielle Website',
+    history: 'Geschichte',
     backToParks: 'Zurück zu Parks',
     location: 'Standort',
     details: 'Details',
@@ -143,6 +148,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Attrazione isolata',
     technicalSheet: 'Scheda attrazione',
     officialWebsite: 'Sito ufficiale',
+    history: 'Storia',
     backToParks: 'Torna ai parchi',
     location: 'Posizione',
     details: 'Dettagli',
@@ -166,6 +172,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Losstaande attractie',
     technicalSheet: 'Attractiefiche',
     officialWebsite: 'Officiële website',
+    history: 'Geschiedenis',
     backToParks: 'Terug naar parken',
     location: 'Locatie',
     details: 'Details',
@@ -189,6 +196,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Samodzielna atrakcja',
     technicalSheet: 'Karta atrakcji',
     officialWebsite: 'Oficjalna strona',
+    history: 'Historia',
     backToParks: 'Powrót do parków',
     location: 'Lokalizacja',
     details: 'Szczegóły',
@@ -212,6 +220,7 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     standalone: 'Atração isolada',
     technicalSheet: 'Ficha da atração',
     officialWebsite: 'Site oficial',
+    history: 'História',
     backToParks: 'Voltar aos parques',
     location: 'Localização',
     details: 'Detalhes',
@@ -331,6 +340,17 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     }
 
     return value;
+  }
+
+  protected historyLink(current: StandaloneAttraction): string[] {
+    return [
+      ...buildPublicStandaloneAttractionRouteCommands({
+        language: this.currentLanguage(),
+        attractionId: current.id,
+        attractionName: current.name
+      }),
+      'history'
+    ];
   }
 
   private load(id: string): void {
