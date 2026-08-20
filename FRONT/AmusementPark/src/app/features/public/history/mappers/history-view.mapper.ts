@@ -22,6 +22,7 @@ import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
 interface HistoryTimelineMapperCopy {
   itemName: string;
   parkName: string;
+  standaloneAttractionName: string;
   title: (ownerName: string) => string;
   subtitle: (eventCount: number, targetName: string, ownerName: string) => string;
 }
@@ -30,55 +31,66 @@ const HISTORY_TIMELINE_MAPPER_COPY: Record<string, HistoryTimelineMapperCopy> = 
   fr: {
     itemName: 'cet élément',
     parkName: 'ce parc',
+    standaloneAttractionName: 'cette attraction',
     title: (ownerName: string): string => `Histoire de ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} jalon${eventCount > 1 ? 's' : ''} pour suivre l’évolution de ${targetName}.`
   },
   en: {
     itemName: 'this item',
     parkName: 'this park',
+    standaloneAttractionName: 'this attraction',
     title: (ownerName: string): string => `${ownerName} history`,
     subtitle: (eventCount: number, _targetName: string, ownerName: string): string => `${eventCount} milestone${eventCount === 1 ? '' : 's'} tracing the story of ${ownerName}.`
   },
   de: {
     itemName: 'dieses Element',
     parkName: 'dieser Park',
+    standaloneAttractionName: 'diese Attraktion',
     title: (ownerName: string): string => `Geschichte von ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} Meilenstein${eventCount === 1 ? '' : 'e'}, um die Entwicklung von ${targetName} nachzuverfolgen.`
   },
   nl: {
     itemName: 'dit item',
     parkName: 'dit park',
+    standaloneAttractionName: 'deze attractie',
     title: (ownerName: string): string => `Geschiedenis van ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} mijlpaal${eventCount === 1 ? '' : 'en'} om de evolutie van ${targetName} te volgen.`
   },
   it: {
     itemName: 'questo elemento',
     parkName: 'questo parco',
+    standaloneAttractionName: 'questa attrazione',
     title: (ownerName: string): string => `Storia di ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} tappa${eventCount === 1 ? '' : 'e'} per seguire l’evoluzione di ${targetName}.`
   },
   es: {
     itemName: 'este elemento',
     parkName: 'este parque',
+    standaloneAttractionName: 'esta atracción',
     title: (ownerName: string): string => `Historia de ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} hito${eventCount === 1 ? '' : 's'} para seguir la evolución de ${targetName}.`
   },
   pl: {
     itemName: 'ten element',
     parkName: 'ten park',
+    standaloneAttractionName: 'ta atrakcja',
     title: (ownerName: string): string => `Historia ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} punktów na osi czasu, żeby śledzić rozwój: ${targetName}.`
   },
   pt: {
     itemName: 'este item',
     parkName: 'este parque',
+    standaloneAttractionName: 'esta atração',
     title: (ownerName: string): string => `História de ${ownerName}`,
     subtitle: (eventCount: number, targetName: string): string => `${eventCount} marco${eventCount === 1 ? '' : 's'} para acompanhar a evolução de ${targetName}.`
   }
 };
 
 export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, language: string): HistoryTimelinePageViewModel {
-  const ownerName: string = timeline.parkItem?.name ?? timeline.park?.name ?? resolveFallbackOwnerName(timeline.entityType, language);
+  const ownerName: string = timeline.standaloneAttraction?.name
+    ?? timeline.parkItem?.name
+    ?? timeline.park?.name
+    ?? resolveFallbackOwnerName(timeline.entityType, language);
   const events: HistoryTimelineEventViewModel[] = timeline.events
     .map((entry: HistoryTimelineEvent): HistoryTimelineEventViewModel => mapTimelineEventToViewModel(entry, timeline, language))
     .sort((left: HistoryTimelineEventViewModel, right: HistoryTimelineEventViewModel): number => {
@@ -115,6 +127,7 @@ export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, languag
     ownerName,
     park: timeline.park ?? null,
     parkItem: timeline.parkItem ?? null,
+    standaloneAttraction: timeline.standaloneAttraction ?? null,
     includedParkItems: timeline.includedParkItems ?? [],
     showParkItemControls: timeline.entityType === 'Park' && hasParkItemTimelineEvents,
     events,
@@ -146,7 +159,10 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
     return null;
   }
 
-  const ownerName: string = article.parkItem?.name ?? article.park?.name ?? resolveFallbackOwnerName(article.event.entityType, language);
+  const ownerName: string = article.standaloneAttraction?.name
+    ?? article.parkItem?.name
+    ?? article.park?.name
+    ?? resolveFallbackOwnerName(article.event.entityType, language);
   const eventTypeLabel: string = resolveHistoryEventTypeLabel(article.event.eventType, language);
   const fallbackTitle: string = resolveHistoryEventTitle(article.event, language, eventTypeLabel, ownerName);
   const title: string = resolveLocalizedText(content.titles, language, fallbackTitle);
@@ -193,9 +209,11 @@ function mapTimelineEventToViewModel(entry: HistoryTimelineEvent, timeline: Hist
   const event = entry.event;
   const park: Park | null = timeline.park ?? entry.contextPark ?? null;
   const parkItem: ParkItem | null = entry.parkItem ?? timeline.parkItem ?? null;
-  const ownerName: string = event.entityType === 'ParkItem'
-    ? parkItem?.name ?? resolveFallbackOwnerName('ParkItem', language)
-    : park?.name ?? resolveFallbackOwnerName('Park', language);
+  const ownerName: string = event.entityType === 'StandaloneAttraction'
+    ? timeline.standaloneAttraction?.name ?? resolveFallbackOwnerName('StandaloneAttraction', language)
+    : event.entityType === 'ParkItem'
+      ? parkItem?.name ?? resolveFallbackOwnerName('ParkItem', language)
+      : park?.name ?? resolveFallbackOwnerName('Park', language);
   const eventTypeLabel: string = resolveHistoryEventTypeLabel(event.eventType, language);
   const eventTitle: string = resolveHistoryEventTitle(event, language, eventTypeLabel, ownerName);
 
@@ -246,7 +264,7 @@ function buildTimelineArticleLink(
   entry: HistoryTimelineEvent,
   language: string
 ): string[] | null {
-  if (!eventId || !entry.event.isMajor || !entry.event.article) {
+  if (!eventId || !entry.event.isMajor || !entry.event.article || entry.event.entityType === 'StandaloneAttraction') {
     return null;
   }
 
@@ -276,6 +294,10 @@ function buildTimelineArticleLink(
 }
 
 function buildArticleTimelineLink(article: HistoryArticle, language: string): string[] | null {
+  if (article.event.entityType === 'StandaloneAttraction') {
+    return null;
+  }
+
   if (article.event.entityType === 'ParkItem') {
     return buildPublicParkItemHistoryRouteCommands({
       language,
@@ -298,6 +320,10 @@ function buildArticleCanonicalPath(article: HistoryArticle, eventTitle: string, 
 }
 
 function buildArticleCanonicalLink(article: HistoryArticle, eventTitle: string, language: string): string[] | null {
+  if (article.event.entityType === 'StandaloneAttraction') {
+    return null;
+  }
+
   const resolvedEventTitle: string = article.event.article?.slug ?? article.event.slug ?? eventTitle;
   const eventId: string | null = article.event.id ?? null;
 
@@ -340,13 +366,21 @@ function resolveTimelineTitle(ownerName: string, entityType: string, language: s
 
 function resolveTimelineSubtitle(ownerName: string, entityType: string, eventCount: number, language: string): string {
   const copy: HistoryTimelineMapperCopy = resolveMapperCopy(language);
-  const target: string = entityType === 'ParkItem' ? copy.itemName : copy.parkName;
+  const target: string = entityType === 'ParkItem'
+    ? copy.itemName
+    : entityType === 'StandaloneAttraction'
+      ? copy.standaloneAttractionName
+      : copy.parkName;
   return copy.subtitle(eventCount, target, ownerName);
 }
 
 function resolveFallbackOwnerName(entityType: string, language: string): string {
   const copy: HistoryTimelineMapperCopy = resolveMapperCopy(language);
-  return entityType === 'ParkItem' ? copy.itemName : copy.parkName;
+  return entityType === 'ParkItem'
+    ? copy.itemName
+    : entityType === 'StandaloneAttraction'
+      ? copy.standaloneAttractionName
+      : copy.parkName;
 }
 
 function resolveMapperCopy(language: string): HistoryTimelineMapperCopy {
