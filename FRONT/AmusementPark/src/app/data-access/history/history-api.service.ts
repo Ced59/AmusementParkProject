@@ -41,6 +41,11 @@ export class HistoryApiService {
     return this.getTimeline(url, options);
   }
 
+  getStandaloneAttractionTimeline(standaloneAttractionId: string, options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getStandaloneAttractionTimeline(standaloneAttractionId, page)}`;
+    return this.getTimeline(url, options);
+  }
+
   getArticle(eventId: string, options: HistoryHttpOptions = {}): Observable<HistoryArticle> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getArticle(eventId)}`;
     return this.http.get<HistoryArticle>(url, options);
