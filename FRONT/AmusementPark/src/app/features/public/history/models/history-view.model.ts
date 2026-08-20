@@ -18,7 +18,7 @@ export interface HistoryTimelinePageViewModel {
   ownerName: string;
   park: Park | null;
   parkItem: ParkItem | null;
-  standaloneAttraction: StandaloneAttraction | null;
+  standaloneAttraction?: StandaloneAttraction | null;
   includedParkItems: ParkItem[];
   showParkItemControls: boolean;
   events: HistoryTimelineEventViewModel[];
