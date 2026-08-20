@@ -32,6 +32,15 @@ describe('SeoRoutePolicyService', (): void => {
         '/fr/park/id/slug/item/item-id/item-slug/images?sort=date',
       ),
     ).toBe(true);
+    expect(
+      service.isFilteredPublicParkRoute('/fr/park/id/slug/map?closed=all'),
+    ).toBe(true);
+    expect(
+      service.isFilteredPublicParkRoute('/fr/park/id/slug/pricing?campaign=spring'),
+    ).toBe(true);
+    expect(
+      service.isFilteredPublicParkRoute('/fr/park/id/slug/comments?page=2'),
+    ).toBe(true);
     expect(service.isFilteredPublicParkRoute('/fr/park/id/slug/items')).toBe(
       false,
     );

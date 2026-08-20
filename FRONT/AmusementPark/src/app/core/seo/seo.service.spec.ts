@@ -17,6 +17,7 @@ import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { VideoType } from '@app/models/videos/video-type';
+import { CommentThread } from '@app/models/comments/comment.models';
 
 describe('SeoService', () => {
   let service: SeoService;
@@ -688,6 +689,8 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe(
       'http://localhost:4200/en/park/park-1/demo-park/opening-hours',
     );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
   it('applies indexable localized metadata and contextual breadcrumbs to park pricing pages', () => {
@@ -731,6 +734,8 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe(
       'http://localhost:4200/en/park/park-1/demo-park/pricing',
     );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
   it('keeps an empty park pricing page noindex', () => {
@@ -1763,6 +1768,118 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+
+  });
+
+  it('keeps parameterized park maps noindex even when they contain enough markers', () => {
+    service.applyParkMapSeo(
+      buildPark({ name: 'Demo Park' }),
+      'en',
+      '/en/park/park-1/demo-park/map?closed=all',
+      null,
+      '/en/park/park-1/demo-park/map',
+      12,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/en/park/park-1/demo-park/map',
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
+  it('removes alternate and structured signals from low-value weather pages', () => {
+    service.applyParkWeatherSeo(
+      'Demo Park',
+      'en',
+      '/en/park/park-1/demo-park/weather?unit=fahrenheit',
+      7,
+      null,
+      '/en/park/park-1/demo-park/weather',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+
+    service.applyParkWeatherSeo(
+      'Demo Park',
+      'en',
+      '/en/park/park-1/demo-park/weather',
+      0,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+
+  });
+
+  it('removes alternate and structured signals from parameterized zone pages', () => {
+    service.applyParkZoneSeo(
+      'Demo Park',
+      'Old West',
+      'en',
+      '/en/park/park-1/demo-park/zone/zone-1/old-west?category=ride',
+      null,
+      12,
+      '/en/park/park-1/demo-park/zone/zone-1/old-west',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
+  it('keeps empty and parameterized comment threads free of indexable signals', () => {
+    const thread: CommentThread = {
+      targetType: 'Park',
+      targetId: 'park-1',
+      targetName: 'Demo Park',
+      parkId: 'park-1',
+      parkName: 'Demo Park',
+      comments: [],
+    };
+
+    service.applyCommentsSeo(
+      thread,
+      'en',
+      '/en/park/park-1/demo-park/comments',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+
+    thread.comments = [{
+      id: 'comment-1',
+      targetType: 'Park',
+      targetId: 'park-1',
+      authorDisplayName: 'Visitor',
+      authorAvatarUrl: null,
+      authorRole: 'User',
+      bodies: [{ languageCode: 'en', value: '<p>Useful comment</p>' }],
+      isOfficial: false,
+      canUpdate: false,
+      canDelete: false,
+      revision: 1,
+      createdAtUtc: '2026-08-20T12:00:00Z',
+      updatedAtUtc: '2026-08-20T12:00:00Z',
+    }];
+
+    service.applyCommentsSeo(
+      thread,
+      'en',
+      '/en/park/park-1/demo-park/comments?page=2',
+      '/en/park/park-1/demo-park/comments',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
   it('indexes collection pages only when their minimum value threshold is reached', () => {
