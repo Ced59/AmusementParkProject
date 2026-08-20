@@ -1,6 +1,7 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { PaginationContract } from '@shared/models/contracts';
 import {
   HistoryArticleBlock,
@@ -17,6 +18,7 @@ export interface HistoryTimelinePageViewModel {
   ownerName: string;
   park: Park | null;
   parkItem: ParkItem | null;
+  standaloneAttraction: StandaloneAttraction | null;
   includedParkItems: ParkItem[];
   showParkItemControls: boolean;
   events: HistoryTimelineEventViewModel[];
