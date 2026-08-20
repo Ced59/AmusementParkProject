@@ -4370,6 +4370,15 @@
       "unknownPark": "Parque asociado",
       "communityAverage": "Valoración media",
       "filtersLabel": "Filtrar tu ranking",
+      "attractionQuickFiltersLabel": "Acceso rápido a las clasificaciones de atracciones",
+      "resultsCount": {
+        "one": "{{count}} resultado",
+        "few": "{{count}} resultados",
+        "many": "{{count}} resultados",
+        "other": "{{count}} resultados"
+      },
+      "insightsTitle": "Explora tus hábitos de valoración",
+      "insightsSubtitle": "Compara tus medias por parque y categoría.",
       "searchLabel": "Buscar en tu ranking",
       "searchPlaceholder": "Encontrar un parque en tu ranking",
       "parkItemSearchPlaceholder": "Encontrar un lugar o su parque",

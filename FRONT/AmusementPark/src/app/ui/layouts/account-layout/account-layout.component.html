@@ -1,8 +1,12 @@
 <div class="app-route-layout app-account-layout">
   <app-public-header></app-public-header>
 
-  <main class="app-layout-main app-account-layout__main">
-    <div class="app-account-layout__shell">
+  <main
+    class="app-layout-main app-account-layout__main"
+    [class.app-account-layout__main--wide]="wideLayout">
+    <div
+      class="app-account-layout__shell"
+      [class.app-account-layout__shell--wide]="wideLayout">
       <aside class="app-account-layout__aside" aria-label="Account experience introduction">
         <app-ui-kicker tone="lime" iconClass="pi pi-sparkles">
           {{ 'accountLayout.kicker' | translate }}
@@ -19,7 +23,10 @@
       </aside>
 
       <section class="app-account-layout__content">
-        <router-outlet></router-outlet>
+        <router-outlet
+          (activate)="syncLayoutMode()"
+          (deactivate)="syncLayoutMode()">
+        </router-outlet>
       </section>
     </div>
   </main>

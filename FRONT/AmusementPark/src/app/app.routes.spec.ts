@@ -33,6 +33,23 @@ describe('App routes', () => {
     expect(accountLayoutIndex).toBeGreaterThan(localizedRootRedirectIndex);
   });
 
+  it('marks the profile route for the wide account layout', () => {
+    const localizedRoute: Route | undefined = routes.find(
+      (route: Route): boolean => route.path === ':lang',
+    );
+    const accountLayoutRoute: Route | undefined = localizedRoute?.children?.find(
+      (route: Route): boolean =>
+        (route.children ?? []).some(
+          (child: Route): boolean => child.path === 'profile',
+        ),
+    );
+    const profileRoute: Route | undefined = accountLayoutRoute?.children?.find(
+      (route: Route): boolean => route.path === 'profile',
+    );
+
+    expect(profileRoute?.data?.['accountLayout']).toBe('wide');
+  });
+
   it('redirects legacy video share routes to canonical video routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedRedirects: Record<string, string> = {

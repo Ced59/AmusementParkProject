@@ -47,155 +47,167 @@
         </div>
       </article>
 
-      <nav class="profile-tabs" [attr.aria-label]="'user-profile.tabs.label' | translate">
-        <button
-          type="button"
-          class="profile-tabs__button"
-          [class.profile-tabs__button--active]="activeTab() === 'profile'"
-          [attr.aria-pressed]="activeTab() === 'profile'"
-          (click)="selectTab('profile')">
-          <i class="pi pi-id-card" aria-hidden="true"></i>
-          <span>{{ 'user-profile.tabs.profile' | translate }}</span>
-        </button>
-        <button
-          type="button"
-          class="profile-tabs__button"
-          [class.profile-tabs__button--active]="activeTab() === 'ratings'"
-          [attr.aria-pressed]="activeTab() === 'ratings'"
-          (click)="selectTab('ratings')">
-          <i class="pi pi-star" aria-hidden="true"></i>
-          <span>{{ 'user-profile.tabs.ratings' | translate }}</span>
-        </button>
-      </nav>
-
-      @if (activeTab() === 'profile') {
-      <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
-        <app-ui-section-header
-          kickerTone="sky"
-          kickerIconClass="pi pi-id-card"
-          kickerLabelKey="user-profile.detailsKicker"
-          titleKey="user-profile.title"
-          subtitleKey="user-profile.detailsSubtitle">
-        </app-ui-section-header>
-
-        <div class="profile-details">
-          <div class="profile-row">
-            <span class="profile-label">{{ 'user-profile.email' | translate }}</span>
-            <span class="profile-value">{{ currentUser.email }}</span>
-          </div>
-
-          <div class="profile-row profile-row--identity">
-            <span class="profile-label">{{ 'user-profile.identity' | translate }}</span>
-
-            @if (!isEditingIdentity) {
-              <span class="profile-value profile-value--identity">
-                <strong>
-                  {{ currentUser.publicDisplayName || ('user-profile.publicDisplayNameFallback' | translate) }}
-                </strong>
-                @if (currentUser.publicIdentifier) {
-                  <small>
-                    {{ 'user-profile.publicIdentifier' | translate:{ identifier: currentUser.publicIdentifier } }}
-                  </small>
-                }
-                <span>{{ currentUser.firstName }} {{ currentUser.lastName }}</span>
-                <small>{{ 'user-profile.publicDisplayNameHelp' | translate }}</small>
+      <div class="profile-workspace">
+        <aside class="profile-navigation" appUiSurface="panel" appUiSurfacePadding="spacious">
+          <nav class="profile-tabs" [attr.aria-label]="'user-profile.tabs.label' | translate">
+            <button
+              type="button"
+              class="profile-tabs__button"
+              [class.profile-tabs__button--active]="activeTab() === 'profile'"
+              [attr.aria-current]="activeTab() === 'profile' ? 'page' : null"
+              (click)="selectTab('profile')">
+              <i class="pi pi-id-card" aria-hidden="true"></i>
+              <span class="profile-tabs__copy">
+                <strong>{{ 'user-profile.tabs.profile' | translate }}</strong>
+                <small>{{ 'user-profile.detailsSubtitle' | translate }}</small>
               </span>
-              <button appUiButton="ghost" type="button" (click)="editField('identity')">
-                {{ 'user-profile.modify' | translate }}
-              </button>
-            } @else {
-              <div class="profile-identity-editor">
-                <div class="profile-identity-fields">
-                  <app-ui-field-input
-                    inputId="profile-public-display-name"
-                    labelKey="user-profile.publicDisplayName"
-                    [value]="identityDraft.publicDisplayName"
-                    [disabled]="savingIdentity"
-                    (valueChange)="identityDraft.publicDisplayName = $event">
-                  </app-ui-field-input>
-
-                  <app-ui-field-input
-                    inputId="profile-firstname"
-                    labelKey="user-profile.firstname"
-                    [value]="identityDraft.firstName"
-                    [disabled]="savingIdentity"
-                    (valueChange)="identityDraft.firstName = $event">
-                  </app-ui-field-input>
-
-                  <app-ui-field-input
-                    inputId="profile-lastname"
-                    labelKey="user-profile.name"
-                    [value]="identityDraft.lastName"
-                    [disabled]="savingIdentity"
-                    (valueChange)="identityDraft.lastName = $event">
-                  </app-ui-field-input>
-                </div>
-
-                <div class="profile-actions profile-actions--editing">
-                  <button
-                    appUiButton="primary"
-                    type="button"
-                    [disabled]="savingIdentity"
-                    (click)="saveIdentity()">
-                    <i class="pi pi-check" aria-hidden="true"></i>
-                    <span>{{ savingIdentity ? ('user-profile.saving' | translate) : ('user-profile.save' | translate) }}</span>
-                  </button>
-
-                  <button
-                    appUiButton="ghost"
-                    type="button"
-                    [disabled]="savingIdentity"
-                    (click)="cancelIdentityEdition()">
-                    <i class="pi pi-times" aria-hidden="true"></i>
-                    <span>{{ 'user-profile.cancel' | translate }}</span>
-                  </button>
-                </div>
-              </div>
-            }
-          </div>
-
-          <div class="profile-row">
-            <span class="profile-label">{{ 'user-profile.preferred_language' | translate }}</span>
-            <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
-            <button appUiButton="ghost" type="button" (click)="editPreferredLanguage()">
-              {{ 'user-profile.modify' | translate }}
+              <i class="pi pi-chevron-right profile-tabs__chevron" aria-hidden="true"></i>
             </button>
-          </div>
+            <button
+              type="button"
+              class="profile-tabs__button"
+              [class.profile-tabs__button--active]="activeTab() === 'ratings'"
+              [attr.aria-current]="activeTab() === 'ratings' ? 'page' : null"
+              (click)="selectTab('ratings')">
+              <i class="pi pi-star" aria-hidden="true"></i>
+              <span class="profile-tabs__copy">
+                <strong>{{ 'user-profile.tabs.ratings' | translate }}</strong>
+                <small>{{ 'ratings.profile.subtitle' | translate }}</small>
+              </span>
+              <i class="pi pi-chevron-right profile-tabs__chevron" aria-hidden="true"></i>
+            </button>
+          </nav>
 
-          <div class="profile-row">
-            <span class="profile-label">{{ 'user-profile.preferred_measurement_system' | translate }}</span>
-            <span class="profile-value">{{ measurementSystemLabelKey(currentUser.preferredMeasurementSystem) | translate }}</span>
-            <div class="profile-measurement-actions" role="group" [attr.aria-label]="'measurementSystem.label' | translate">
-              <button
-                appUiButton="ghost"
-                type="button"
-                [class.profile-measurement-actions__active]="(currentUser.preferredMeasurementSystem || 'Metric') === 'Metric'"
-                (click)="selectPreferredMeasurementSystem('Metric')">
-                m
-              </button>
-              <button
-                appUiButton="ghost"
-                type="button"
-                [class.profile-measurement-actions__active]="currentUser.preferredMeasurementSystem === 'Imperial'"
-                (click)="selectPreferredMeasurementSystem('Imperial')">
-                ft
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="logout-container">
-          <button appUiButton="rose" type="button" (click)="logout()">
+          <button appUiButton="rose" type="button" class="profile-navigation__logout" (click)="logout()">
             <i class="pi pi-sign-out" aria-hidden="true"></i>
             <span>{{ 'user-profile.logout' | translate }}</span>
           </button>
+        </aside>
+
+        <div class="profile-workspace__content">
+          @if (activeTab() === 'profile') {
+            <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+              <app-ui-section-header
+                kickerTone="sky"
+                kickerIconClass="pi pi-id-card"
+                kickerLabelKey="user-profile.detailsKicker"
+                titleKey="user-profile.title"
+                subtitleKey="user-profile.detailsSubtitle">
+              </app-ui-section-header>
+
+              <div class="profile-details">
+                <div class="profile-row profile-row--identity profile-row--wide">
+                  <span class="profile-label">{{ 'user-profile.identity' | translate }}</span>
+
+                  @if (!isEditingIdentity) {
+                    <span class="profile-value profile-value--identity">
+                      <strong>
+                        {{ currentUser.publicDisplayName || ('user-profile.publicDisplayNameFallback' | translate) }}
+                      </strong>
+                      @if (currentUser.publicIdentifier) {
+                        <small>
+                          {{ 'user-profile.publicIdentifier' | translate:{ identifier: currentUser.publicIdentifier } }}
+                        </small>
+                      }
+                      <span>{{ currentUser.firstName }} {{ currentUser.lastName }}</span>
+                      <small>{{ 'user-profile.publicDisplayNameHelp' | translate }}</small>
+                    </span>
+                    <button appUiButton="ghost" type="button" (click)="editField('identity')">
+                      {{ 'user-profile.modify' | translate }}
+                    </button>
+                  } @else {
+                    <div class="profile-identity-editor">
+                      <div class="profile-identity-fields">
+                        <app-ui-field-input
+                          inputId="profile-public-display-name"
+                          labelKey="user-profile.publicDisplayName"
+                          [value]="identityDraft.publicDisplayName"
+                          [disabled]="savingIdentity"
+                          (valueChange)="identityDraft.publicDisplayName = $event">
+                        </app-ui-field-input>
+
+                        <app-ui-field-input
+                          inputId="profile-firstname"
+                          labelKey="user-profile.firstname"
+                          [value]="identityDraft.firstName"
+                          [disabled]="savingIdentity"
+                          (valueChange)="identityDraft.firstName = $event">
+                        </app-ui-field-input>
+
+                        <app-ui-field-input
+                          inputId="profile-lastname"
+                          labelKey="user-profile.name"
+                          [value]="identityDraft.lastName"
+                          [disabled]="savingIdentity"
+                          (valueChange)="identityDraft.lastName = $event">
+                        </app-ui-field-input>
+                      </div>
+
+                      <div class="profile-actions profile-actions--editing">
+                        <button
+                          appUiButton="primary"
+                          type="button"
+                          [disabled]="savingIdentity"
+                          (click)="saveIdentity()">
+                          <i class="pi pi-check" aria-hidden="true"></i>
+                          <span>{{ savingIdentity ? ('user-profile.saving' | translate) : ('user-profile.save' | translate) }}</span>
+                        </button>
+
+                        <button
+                          appUiButton="ghost"
+                          type="button"
+                          [disabled]="savingIdentity"
+                          (click)="cancelIdentityEdition()">
+                          <i class="pi pi-times" aria-hidden="true"></i>
+                          <span>{{ 'user-profile.cancel' | translate }}</span>
+                        </button>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <div class="profile-row profile-row--read-only">
+                  <span class="profile-label">{{ 'user-profile.email' | translate }}</span>
+                  <span class="profile-value">{{ currentUser.email }}</span>
+                </div>
+
+                <div class="profile-row">
+                  <span class="profile-label">{{ 'user-profile.preferred_language' | translate }}</span>
+                  <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
+                  <button appUiButton="ghost" type="button" (click)="editPreferredLanguage()">
+                    {{ 'user-profile.modify' | translate }}
+                  </button>
+                </div>
+
+                <div class="profile-row profile-row--wide">
+                  <span class="profile-label">{{ 'user-profile.preferred_measurement_system' | translate }}</span>
+                  <span class="profile-value">{{ measurementSystemLabelKey(currentUser.preferredMeasurementSystem) | translate }}</span>
+                  <div class="profile-measurement-actions" role="group" [attr.aria-label]="'measurementSystem.label' | translate">
+                    <button
+                      appUiButton="ghost"
+                      type="button"
+                      [class.profile-measurement-actions__active]="(currentUser.preferredMeasurementSystem || 'Metric') === 'Metric'"
+                      (click)="selectPreferredMeasurementSystem('Metric')">
+                      m
+                    </button>
+                    <button
+                      appUiButton="ghost"
+                      type="button"
+                      [class.profile-measurement-actions__active]="currentUser.preferredMeasurementSystem === 'Imperial'"
+                      (click)="selectPreferredMeasurementSystem('Imperial')">
+                      ft
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          } @else {
+            <article class="profile-panel profile-panel--ratings" appUiSurface="panel" appUiSurfacePadding="spacious">
+              <app-profile-ratings-panel></app-profile-ratings-panel>
+            </article>
+          }
         </div>
-      </article>
-      } @else {
-        <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
-          <app-profile-ratings-panel></app-profile-ratings-panel>
-        </article>
-      }
+      </div>
     </section>
   }
 </app-page-state>

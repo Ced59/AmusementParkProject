@@ -36,6 +36,16 @@ describe('ProfilePageComponent', () => {
     expect(styles).toContain('object-fit: cover');
   });
 
+  it('uses the wide responsive profile workspace', () => {
+    const styles: string = (
+      ProfilePageViewComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('max-width: none');
+    expect(styles).toContain('grid-template-columns: minmax(13.5rem, 15.5rem) minmax(0, 1fr)');
+    expect(styles).toContain('@media (max-width: 1080px)');
+  });
+
   it('routes avatar changes through the current-user upload endpoint', () => {
     fixture.detectChanges();
 

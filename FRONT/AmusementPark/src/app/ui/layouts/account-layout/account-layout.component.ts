@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { PublicFooterComponent } from '@ui/layouts/public-footer/public-footer.component';
@@ -25,4 +25,17 @@ import { PublicParkNavigationTreeState } from '@features/public/navigation/state
   ]
 })
 export class AccountLayoutComponent {
+  protected wideLayout: boolean;
+
+  constructor(private readonly activatedRoute: ActivatedRoute) {
+    this.wideLayout = this.hasWideLayoutRoute();
+  }
+
+  protected syncLayoutMode(): void {
+    this.wideLayout = this.hasWideLayoutRoute();
+  }
+
+  private hasWideLayoutRoute(): boolean {
+    return this.activatedRoute.firstChild?.snapshot.data['accountLayout'] === 'wide';
+  }
 }

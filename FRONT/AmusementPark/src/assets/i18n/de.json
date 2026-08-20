@@ -4370,6 +4370,15 @@
       "unknownPark": "Zugehöriger Park",
       "communityAverage": "Durchschnitt",
       "filtersLabel": "Deine Rangliste filtern",
+      "attractionQuickFiltersLabel": "Schnellzugriff auf Attraktionsranglisten",
+      "resultsCount": {
+        "one": "{{count}} Ergebnis",
+        "few": "{{count}} Ergebnisse",
+        "many": "{{count}} Ergebnisse",
+        "other": "{{count}} Ergebnisse"
+      },
+      "insightsTitle": "Entdecke deine Bewertungsgewohnheiten",
+      "insightsSubtitle": "Vergleiche deine Durchschnittswerte nach Park und Kategorie.",
       "searchLabel": "Deine Rangliste durchsuchen",
       "searchPlaceholder": "Park in deiner Rangliste finden",
       "parkItemSearchPlaceholder": "Ort oder zugehörigen Park finden",

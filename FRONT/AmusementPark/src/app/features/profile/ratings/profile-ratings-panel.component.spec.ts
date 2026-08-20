@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 import {
   UserParkItemRatingRanking,
@@ -18,6 +18,7 @@ import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component'
 
 class FakeProfileRatingsPort implements ProfileRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
+  parkItemResponse: Subject<UserParkItemRatingRankingsPage> | null = null;
   readonly parkItemCalls: Array<{
     page: number;
     category: string;
@@ -71,6 +72,10 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     search: string | null
   ): Observable<UserParkItemRatingRankingsPage> {
     this.parkItemCalls.push({ page, category, type, search });
+    if (this.parkItemResponse) {
+      return this.parkItemResponse;
+    }
+
     return of({
       items: this.parkItemRankings,
       pagination: {
@@ -171,6 +176,51 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(list?.textContent).toContain('Taron');
     expect(list?.textContent).toContain('Phantasialand');
     expect(fixture.nativeElement.querySelector('app-rating-tree')).toBeNull();
+  });
+
+  it('opens coaster and flat ride rankings from the quick filters', () => {
+    fixture.detectChanges();
+
+    const categoryButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.profile-ratings__filters button');
+    categoryButtons[1]?.click();
+    fixture.detectChanges();
+
+    const quickFilterButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.profile-ratings__quick-filters button');
+    quickFilterButtons[1]?.click();
+    quickFilterButtons[2]?.click();
+
+    expect(port.parkItemCalls.slice(-2)).toEqual([
+      { page: 1, category: 'Attraction', type: 'RollerCoaster', search: null },
+      { page: 1, category: 'Attraction', type: 'FlatRide', search: null }
+    ]);
+  });
+
+  it('exposes every park item category as a direct ranking filter', () => {
+    fixture.detectChanges();
+
+    const categoryButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.profile-ratings__filters button');
+
+    expect(categoryButtons).toHaveLength(10);
+    expect(fixture.nativeElement.textContent).toContain('ratings.categories.Animal');
+    expect(fixture.nativeElement.textContent).toContain('ratings.categories.Show');
+    expect(fixture.nativeElement.textContent).toContain('ratings.categories.Transport');
+  });
+
+  it('hides the previous result count while a new ranking is loading', () => {
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.profile-ratings__result-count')).not.toBeNull();
+    port.parkItemResponse = new Subject<UserParkItemRatingRankingsPage>();
+
+    const categoryButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.profile-ratings__filters button');
+    categoryButtons[1]?.click();
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.profile-ratings__result-count')).toBeNull();
   });
 
   it('loads the next personal park item search page with the active search term', () => {
