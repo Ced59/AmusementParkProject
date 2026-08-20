@@ -3,6 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cleanup_script="$(cd "${script_dir}/.." && pwd)/cleanup-stale-deploy-candidates.sh"
+deploy_script="$(cd "${script_dir}/.." && pwd)/deploy.sh"
 temp_dir="$(mktemp -d)"
 trap 'rm -rf "${temp_dir}"' EXIT
 
@@ -56,6 +57,13 @@ fi
 
 if "${cleanup_script}" 'amusementpark;unsafe' >/dev/null 2>&1; then
   echo 'An unsafe Docker Compose project name was unexpectedly accepted.' >&2
+  exit 1
+fi
+
+health_check_line="$(grep -n 'Checking robots.txt through SSR public proxy' "${deploy_script}" | cut -d: -f1)"
+cleanup_call_line="$(grep -n '^./scripts/cleanup-stale-deploy-candidates.sh ' "${deploy_script}" | cut -d: -f1)"
+if [ -z "${health_check_line}" ] || [ -z "${cleanup_call_line}" ] || [ "${cleanup_call_line}" -le "${health_check_line}" ]; then
+  echo 'Stale candidates must only be removed after the canonical public health checks.' >&2
   exit 1
 fi
 

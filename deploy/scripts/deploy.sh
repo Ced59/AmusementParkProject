@@ -353,8 +353,6 @@ if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
   exit 1
 fi
 
-./scripts/cleanup-stale-deploy-candidates.sh "${compose_project_name}"
-
 if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
   echo "Running MongoDB backup before deployment..."
   ./scripts/backup-mongo.sh || {
@@ -433,6 +431,10 @@ if [ "${rolling_deploy}" = "true" ]; then
   api_candidate_name=""
   compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
 fi
+
+# A surviving candidate can still carry production aliases after an interrupted
+# rollout, so only remove stale candidates once the canonical stack is healthy.
+./scripts/cleanup-stale-deploy-candidates.sh "${compose_project_name}"
 
 ./scripts/verify-public-response-integrity.sh \
   "${PUBLIC_BASE_URL%/}/fr/home"
