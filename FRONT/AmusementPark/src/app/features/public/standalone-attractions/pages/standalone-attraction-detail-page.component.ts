@@ -343,14 +343,13 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
   }
 
   protected historyLink(current: StandaloneAttraction): string[] {
-    return [
-      ...buildPublicStandaloneAttractionRouteCommands({
-        language: this.currentLanguage(),
-        attractionId: current.id,
-        attractionName: current.name
-      }),
-      'history'
-    ];
+    const commands: string[] | null = buildPublicStandaloneAttractionRouteCommands({
+      language: this.currentLanguage(),
+      attractionId: current.id,
+      attractionName: current.name
+    });
+
+    return commands ? [...commands, 'history'] : ['/', this.currentLanguage(), 'attraction', current.id ?? '', 'attraction', 'history'];
   }
 
   private load(id: string): void {
