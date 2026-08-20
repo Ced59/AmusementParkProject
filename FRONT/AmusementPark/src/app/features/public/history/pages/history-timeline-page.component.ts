@@ -196,9 +196,20 @@ export class HistoryTimelinePageComponent implements OnInit {
     this.stateFacade.setCurrentLanguage(initialLanguage);
 
     combineLatest([this.route.paramMap, this.route.data]).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(([params, routeData]: [ParamMap, Data]): void => {
+      const standaloneAttractionId: string | null = params.get('standaloneAttractionId');
       const parkItemId: string | null = params.get('itemId');
       const parkId: string | null = params.get('id');
       const resolvedTimeline: ResolvedHistoryTimelineRouteData | undefined = this.resolveRouteDataTimeline(routeData);
+
+      if (standaloneAttractionId) {
+        if (resolvedTimeline !== undefined) {
+          this.stateFacade.setResolvedStandaloneAttractionTimeline(standaloneAttractionId, resolvedTimeline.timeline, resolvedTimeline.page);
+          return;
+        }
+
+        this.stateFacade.loadStandaloneAttractionTimeline(standaloneAttractionId, this.resolvePageParam(params));
+        return;
+      }
 
       if (parkItemId) {
         if (resolvedTimeline !== undefined) {
@@ -241,6 +252,10 @@ export class HistoryTimelinePageComponent implements OnInit {
   }
 
   protected backLink(timeline: HistoryTimelinePageViewModel): string[] {
+    if (timeline.standaloneAttraction) {
+      return ['/', this.currentLanguage(), 'attraction', timeline.standaloneAttraction.id ?? '', this.slugOrFallback(timeline.standaloneAttraction.name, 'attraction')];
+    }
+
     if (timeline.parkItem && timeline.park) {
       return ['/', this.currentLanguage(), 'park', timeline.park.id ?? '', this.slugOrFallback(timeline.park.name, 'park'), 'item', timeline.parkItem.id ?? '', this.slugOrFallback(timeline.parkItem.name, 'item')];
     }
@@ -338,6 +353,10 @@ export class HistoryTimelinePageComponent implements OnInit {
   }
 
   protected shareTitle(timeline: HistoryTimelinePageViewModel): string {
+    if (timeline.standaloneAttraction) {
+      return timeline.title;
+    }
+
     const parkName: string | null = this.normalizeOptionalText(timeline.park?.name);
 
     if (!timeline.parkItem || !parkName || timeline.title.toLocaleLowerCase().includes(parkName.toLocaleLowerCase())) {
@@ -383,6 +402,10 @@ export class HistoryTimelinePageComponent implements OnInit {
   }
 
   private timelineBaseLink(timeline: HistoryTimelinePageViewModel): string[] {
+    if (timeline.standaloneAttraction) {
+      return ['/', this.currentLanguage(), 'attraction', timeline.standaloneAttraction.id ?? '', this.slugOrFallback(timeline.standaloneAttraction.name, 'attraction'), 'history'];
+    }
+
     if (timeline.parkItem && timeline.park) {
       return ['/', this.currentLanguage(), 'park', timeline.park.id ?? '', this.slugOrFallback(timeline.park.name, 'park'), 'item', timeline.parkItem.id ?? '', this.slugOrFallback(timeline.parkItem.name, 'item'), 'history'];
     }
