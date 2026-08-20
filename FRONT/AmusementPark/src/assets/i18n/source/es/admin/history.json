@@ -7,7 +7,8 @@
       "subtitle": "Gestiona eventos fechados, vidas de items entre varios parques, hitos documentados y artículos.",
       "entityTypes": {
         "Park": "Parque",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Atracción aislada"
       },
       "precision": {
         "Year": "Año",
