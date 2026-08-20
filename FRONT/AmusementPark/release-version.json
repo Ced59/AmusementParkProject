@@ -1,6 +1,20 @@
 {
-  "version": "4.2.0",
+  "version": "4.2.1",
   "history": [
+    {
+      "version": "4.2.1",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les variantes filtrées des parcs sont mieux gérées par les moteurs de recherche.",
+        "en": "Filtered park variants are handled better by search engines.",
+        "de": "Gefilterte Parkvarianten werden von Suchmaschinen besser verarbeitet.",
+        "nl": "Gefilterde parkvarianten worden beter verwerkt door zoekmachines.",
+        "it": "Le varianti filtrate dei parchi sono gestite meglio dai motori di ricerca.",
+        "es": "Los buscadores gestionan mejor las variantes filtradas de parques.",
+        "pl": "Filtrowane warianty parków są lepiej obsługiwane przez wyszukiwarki.",
+        "pt": "As variantes filtradas dos parques são melhor tratadas pelos motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.0",
       "releasedAt": "2026-08-20",
