@@ -20,6 +20,27 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 public sealed class SeoControllerTests
 {
     [Fact]
+    public void GetRobotsTxt_WhenUsingDefaultRules_ShouldLetCrawlersReadNoindexPages()
+    {
+        SeoController controller = CreateController(new SeoSettings
+        {
+            PublicBaseUrl = "https://amusement-parks.fun",
+            SupportedLanguages = new List<string> { "en", "fr" },
+        });
+
+        ContentResult result = Assert.IsType<ContentResult>(controller.GetRobotsTxt());
+        string content = Assert.IsType<string>(result.Content);
+        string[] lines = content.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+        Assert.Contains("Disallow: /api/", lines);
+        Assert.DoesNotContain(lines, static line => line.StartsWith("Disallow: /en/admin", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, static line => line.StartsWith("Disallow: /fr/profile", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, static line => line.Contains("confirm-account", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, static line => line.Contains("forgot-password", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, static line => line.Contains("reset-password", StringComparison.Ordinal));
+    }
+
+    [Fact]
     public void GetRobotsTxt_WhenPublicImageAllowPathIsConfigured_ShouldAllowBinaryImagesAndKeepApiDisallowed()
     {
         SeoController controller = CreateController(new SeoSettings
