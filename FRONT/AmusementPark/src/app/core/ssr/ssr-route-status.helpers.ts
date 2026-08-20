@@ -66,30 +66,7 @@ function isKnownPrivateClientRoute(path: string): boolean {
 function isNoindexPublicPageRoute(url: string): boolean {
   const path: string = normalizeSsrPath(url);
 
-  return (isPublicParksRoute(path) && hasQueryString(url))
-    || (isPublicHistoryTimelineRoute(path) && hasQueryString(url))
-    || (isPublicParkItemsRoute(path) && hasQueryString(url))
-    || (isPublicParkZonesRoute(path) && hasQueryString(url))
-    || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
-    || (isPublicParkMapRoute(path) && hasQueryString(url))
-    || (isPublicParkImagesRoute(path) && hasQueryString(url))
-    || (isPublicParkItemImagesRoute(path) && hasQueryString(url))
-    || (isPublicParkVideosRoute(path) && hasQueryString(url))
-    || (isPublicParkItemVideosRoute(path) && hasQueryString(url))
-    || (isPublicParkWeatherRoute(path) && hasQueryString(url))
-    || (isPublicParkOpeningHoursRoute(path) && hasQueryString(url))
-    || (isPublicParkPricingRoute(path) && hasQueryString(url))
-    || (isPublicCommentsRoute(path) && hasQueryString(url));
-}
-
-function isPublicParksRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/parks\/?$/i.test(path);
-}
-
-function isPublicHistoryTimelineRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path);
+  return hasQueryString(url) && (path === '/' || isKnownPublicPageRoute(path));
 }
 
 function isExplicitNotFoundPath(path: string): boolean {
@@ -120,55 +97,6 @@ function getFirstPathSegment(path: string): string | null {
 
 function hasQueryString(url: string): boolean {
   return url.includes('?');
-}
-
-function isPublicParkItemsRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(path);
-}
-
-function isPublicParkZonesRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zones\/?$/i.test(path);
-}
-
-function isPublicParkZoneDetailRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(path);
-}
-
-function isPublicParkMapRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(path);
-}
-
-function isPublicParkImagesRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(path);
-}
-
-function isPublicParkItemImagesRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(path);
-}
-
-function isPublicParkVideosRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/?$/i.test(path);
-}
-
-function isPublicParkItemVideosRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/?$/i.test(path);
-}
-
-function isPublicParkWeatherRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(path);
-}
-
-function isPublicParkOpeningHoursRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/opening-hours\/?$/i.test(path);
-}
-
-function isPublicParkPricingRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/pricing\/?$/i.test(path);
-}
-
-function isPublicCommentsRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/comments\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/comments\/?$/i.test(path);
 }
 
 function normalizeSsrPath(url: string): string {

@@ -16,6 +16,7 @@ import {
 } from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
+  enforceNoindexFollowHtml,
   inspectSeoReadyHtml,
   RobotHtmlPreparationResult,
   shouldRetrySeoReadyHtmlRender,
@@ -1800,7 +1801,7 @@ function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): C
 function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: SsrPageResponseStatus): void {
   const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
   const robotFamily: RobotFamily | null = detectRobotFamily(req);
-  if (shouldReturnBotSsrUnavailable(robotFamily !== null, statusCode)) {
+  if (shouldReturnBotSsrUnavailable(robotFamily !== null, statusCode, shouldApplyNoindexFollowHeader(req.originalUrl))) {
     const unavailableStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' ? mode : 'SSR-BOT-UNAVAILABLE';
     serveBotSsrUnavailable(req, res, robotFamily, unavailableStatus);
     return;
@@ -1884,7 +1885,9 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
     res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', preparationResult.removedScriptLikeLinkCount.toString());
   }
 
-  return preparationResult.html;
+  return shouldApplyNoindexFollowHeader(req.originalUrl)
+    ? enforceNoindexFollowHtml(preparationResult.html)
+    : preparationResult.html;
 }
 
 function sendPreparedHtmlResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): void {

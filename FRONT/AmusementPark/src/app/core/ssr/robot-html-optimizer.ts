@@ -52,6 +52,55 @@ export function optimizeHtmlForRobotNoJs(html: string): RobotHtmlOptimizationRes
   };
 }
 
+export function enforceNoindexFollowHtml(html: string): string {
+  let hasRobotsMeta: boolean = false;
+  let hasGooglebotMeta: boolean = false;
+  let normalizedHtml: string = html.replace(/<meta\b[^>]*>/gi, (metaTag: string): string => {
+    const name: string = getHtmlAttributeValue(metaTag, 'name').toLowerCase();
+    if (name === 'robots') {
+      hasRobotsMeta = true;
+      return setHtmlAttributeValue(metaTag, 'content', 'noindex,follow');
+    }
+
+    if (name === 'googlebot') {
+      hasGooglebotMeta = true;
+      return setHtmlAttributeValue(metaTag, 'content', 'noindex,follow');
+    }
+
+    return metaTag;
+  });
+
+  normalizedHtml = normalizedHtml.replace(/<link\b[^>]*>/gi, (linkTag: string): string => {
+    const relValues: ReadonlySet<string> = new Set<string>(
+      getHtmlAttributeValue(linkTag, 'rel')
+        .toLowerCase()
+        .split(/\s+/)
+        .filter((value: string): boolean => value.length > 0)
+    );
+
+    return relValues.has('alternate') && getHtmlAttributeValue(linkTag, 'hreflang').length > 0
+      ? ''
+      : linkTag;
+  });
+
+  normalizedHtml = normalizedHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, (scriptTag: string): string => {
+    return isJsonLdScriptTag(scriptTag) ? '' : scriptTag;
+  });
+
+  const missingMetaTags: string = [
+    hasRobotsMeta ? '' : '<meta name="robots" content="noindex,follow">',
+    hasGooglebotMeta ? '' : '<meta name="googlebot" content="noindex,follow">',
+  ].join('');
+
+  if (!missingMetaTags) {
+    return normalizedHtml;
+  }
+
+  return /<\/head>/i.test(normalizedHtml)
+    ? normalizedHtml.replace(/<\/head>/i, `${missingMetaTags}</head>`)
+    : `${missingMetaTags}${normalizedHtml}`;
+}
+
 export function prepareRobotHtmlForResponse(html: string, options: RobotHtmlPreparationOptions): RobotHtmlPreparationResult {
   const seoReady: SeoReadyHtmlCheckResult = inspectSeoReadyHtml(html);
 
@@ -82,8 +131,8 @@ export function prepareRobotHtmlForResponse(html: string, options: RobotHtmlPrep
   );
 }
 
-export function shouldReturnBotSsrUnavailable(isRobotRequest: boolean, statusCode: number): boolean {
-  return isRobotRequest && statusCode === 200;
+export function shouldReturnBotSsrUnavailable(isRobotRequest: boolean, statusCode: number, isNoindexRoute: boolean): boolean {
+  return isRobotRequest && statusCode === 200 && !isNoindexRoute;
 }
 
 export function isSeoReadyHtml(html: string): boolean {
@@ -292,6 +341,21 @@ function getHtmlAttributeValue(tag: string, attributeName: string): string {
   const match: RegExpExecArray | null = pattern.exec(tag);
 
   return match?.[2] ?? '';
+}
+
+function setHtmlAttributeValue(tag: string, attributeName: string, value: string): string {
+  const escapedAttributeName: string = escapeRegex(attributeName);
+  const attributePattern: RegExp = new RegExp(`(\\s${escapedAttributeName}\\s*=\\s*)(["'])(.*?)\\2`, 'i');
+
+  if (attributePattern.test(tag)) {
+    return tag.replace(attributePattern, (_match: string, prefix: string): string => `${prefix}"${value}"`);
+  }
+
+  return tag.replace(/\s*\/>$|>$/, (ending: string): string => {
+    return ending.trimStart().startsWith('/')
+      ? ` ${attributeName}="${value}" />`
+      : ` ${attributeName}="${value}">`;
+  });
 }
 
 function escapeRegex(value: string): string {

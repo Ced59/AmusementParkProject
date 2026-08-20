@@ -1,6 +1,20 @@
 {
-  "version": "4.2.7",
+  "version": "4.2.8",
   "history": [
+    {
+      "version": "4.2.8",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les variantes filtrées restent hors des résultats de recherche.",
+        "en": "Filtered variants stay out of search results.",
+        "de": "Gefilterte Varianten bleiben aus den Suchergebnissen ausgeschlossen.",
+        "nl": "Gefilterde varianten blijven buiten de zoekresultaten.",
+        "it": "Le varianti filtrate restano escluse dai risultati di ricerca.",
+        "es": "Las variantes filtradas quedan fuera de los resultados de búsqueda.",
+        "pl": "Filtrowane warianty pozostają poza wynikami wyszukiwania.",
+        "pt": "As variantes filtradas ficam fora dos resultados de pesquisa."
+      }
+    },
     {
       "version": "4.2.7",
       "releasedAt": "2026-08-20",
