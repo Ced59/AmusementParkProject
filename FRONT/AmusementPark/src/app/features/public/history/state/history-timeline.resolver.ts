@@ -18,6 +18,7 @@ export interface ResolvedHistoryTimelineRouteData {
 }
 
 export const historyTimelineResolver: ResolveFn<ResolvedHistoryTimelineRouteData> = (route: ActivatedRouteSnapshot): Observable<ResolvedHistoryTimelineRouteData> => {
+  const standaloneAttractionId: string = route.paramMap.get('standaloneAttractionId')?.trim() ?? '';
   const parkItemId: string = route.paramMap.get('itemId')?.trim() ?? '';
   const parkId: string = route.paramMap.get('id')?.trim() ?? '';
   const page: number | null = resolveTimelinePage(route);
@@ -28,6 +29,16 @@ export const historyTimelineResolver: ResolveFn<ResolvedHistoryTimelineRouteData
   if (page === null) {
     ssrHttpStatusService.setNotFound();
     return of({ timeline: null, includeParkItems: false, page: 1 });
+  }
+
+  if (standaloneAttractionId.length > 0) {
+    return historyDataPort.getStandaloneAttractionTimeline(standaloneAttractionId, anonymousHttpOptions(), page).pipe(
+      map((timeline: HistoryTimeline): ResolvedHistoryTimelineRouteData => ({ timeline, includeParkItems: false, page })),
+      catchError((error: unknown): Observable<ResolvedHistoryTimelineRouteData> => {
+        applySsrPublicDataErrorStatus(error, ssrHttpStatusService);
+        return of({ timeline: null, includeParkItems: false, page });
+      })
+    );
   }
 
   if (parkItemId.length > 0) {
