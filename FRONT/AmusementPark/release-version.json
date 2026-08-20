@@ -1,6 +1,20 @@
 {
-  "version": "4.2.6",
+  "version": "4.2.7",
   "history": [
+    {
+      "version": "4.2.7",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les classements sont mieux structurés pour les moteurs de recherche.",
+        "en": "Rankings are better structured for search engines.",
+        "de": "Ranglisten sind für Suchmaschinen besser strukturiert.",
+        "nl": "Ranglijsten zijn beter gestructureerd voor zoekmachines.",
+        "it": "Le classifiche sono strutturate meglio per i motori di ricerca.",
+        "es": "Las clasificaciones están mejor estructuradas para los buscadores.",
+        "pl": "Rankingi mają lepszą strukturę dla wyszukiwarek.",
+        "pt": "As classificações estão mais bem estruturadas para os motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.6",
       "releasedAt": "2026-08-20",
