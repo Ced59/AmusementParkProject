@@ -7,7 +7,8 @@
       "subtitle": "Verwalte datierte Ereignisse, parkübergreifende Item-Lebensläufe, belegte Meilensteine und Artikel.",
       "entityTypes": {
         "Park": "Park",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Eigenständige Attraktion"
       },
       "precision": {
         "Year": "Jahr",
