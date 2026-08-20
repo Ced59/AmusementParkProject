@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Passe de descoberta",
       "title": "Próxima paragem: emoções",
-      "parks": "{{count}} parques visíveis",
+      "parks": {
+        "one": "{{count}} parque visível",
+        "few": "{{count}} parques visíveis",
+        "many": "{{count}} parques visíveis",
+        "other": "{{count}} parques visíveis"
+      },
+      "parksUnavailable": "Parques visíveis",
       "languages": "8 idiomas"
     },
     "highlights": {
       "ariaLabel": "AmusementPark em resumo",
-      "parks": "{{count}} parques para explorar, dos ícones às pérolas escondidas",
+      "parks": {
+        "one": "{{count}} parque para explorar, dos ícones às pérolas escondidas",
+        "few": "{{count}} parques para explorar, dos ícones às pérolas escondidas",
+        "many": "{{count}} parques para explorar, dos ícones às pérolas escondidas",
+        "other": "{{count}} parques para explorar, dos ícones às pérolas escondidas"
+      },
+      "parksUnavailable": "Parques para explorar, dos ícones às pérolas escondidas",
       "content": "Atrações, fotografias, avaliações e mapas",
       "languages": "8 idiomas para ires mais longe"
     },

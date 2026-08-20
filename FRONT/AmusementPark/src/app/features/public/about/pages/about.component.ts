@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { AboutStateFacade } from '@features/public/about/state/about-state.facade';
+import { LocalizedPluralPipe } from '@shared/pipes';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 
@@ -17,6 +18,7 @@ import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/pr
   imports: [
     RouterLink,
     TranslateModule,
+    LocalizedPluralPipe,
     UiButtonDirective,
     UiKickerComponent,
     UiSurfaceDirective

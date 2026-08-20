@@ -12,12 +12,24 @@
     "ticket": {
       "kicker": "Passeport découverte",
       "title": "Prochaine escale : sensations",
-      "parks": "{{count}} parcs visibles",
+      "parks": {
+        "one": "{{count}} parc visible",
+        "few": "{{count}} parcs visibles",
+        "many": "{{count}} parcs visibles",
+        "other": "{{count}} parcs visibles"
+      },
+      "parksUnavailable": "Parcs visibles",
       "languages": "8 langues"
     },
     "highlights": {
       "ariaLabel": "AmusementPark en bref",
-      "parks": "{{count}} parcs à explorer, du géant à la pépite",
+      "parks": {
+        "one": "{{count}} parc à explorer, du géant à la pépite",
+        "few": "{{count}} parcs à explorer, du géant à la pépite",
+        "many": "{{count}} parcs à explorer, du géant à la pépite",
+        "other": "{{count}} parcs à explorer, du géant à la pépite"
+      },
+      "parksUnavailable": "Des parcs à explorer, du géant à la pépite",
       "content": "Attractions, photos, notes et cartes",
       "languages": "8 langues pour partir plus loin"
     },

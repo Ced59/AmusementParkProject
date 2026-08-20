@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Karnet odkrywcy",
       "title": "Następny przystanek: emocje",
-      "parks": "{{count}} widocznych parków",
+      "parks": {
+        "one": "{{count}} widoczny park",
+        "few": "{{count}} widoczne parki",
+        "many": "{{count}} widocznych parków",
+        "other": "{{count}} widocznego parku"
+      },
+      "parksUnavailable": "Widoczne parki",
       "languages": "8 języków"
     },
     "highlights": {
       "ariaLabel": "AmusementPark w skrócie",
-      "parks": "{{count}} parków do odkrycia, od ikon po ukryte perełki",
+      "parks": {
+        "one": "{{count}} park do odkrycia, od ikony po ukrytą perełkę",
+        "few": "{{count}} parki do odkrycia, od ikon po ukryte perełki",
+        "many": "{{count}} parków do odkrycia, od ikon po ukryte perełki",
+        "other": "{{count}} parku do odkrycia, od ikon po ukryte perełki"
+      },
+      "parksUnavailable": "Parki do odkrycia, od ikon po ukryte perełki",
       "content": "Atrakcje, zdjęcia, oceny i mapy",
       "languages": "8 języków, by odkrywać dalej"
     },

@@ -12,12 +12,24 @@
     "ticket": {
       "kicker": "Discovery pass",
       "title": "Next stop: thrills",
-      "parks": "{{count}} visible parks",
+      "parks": {
+        "one": "{{count}} visible park",
+        "few": "{{count}} visible parks",
+        "many": "{{count}} visible parks",
+        "other": "{{count}} visible parks"
+      },
+      "parksUnavailable": "Visible parks",
       "languages": "8 languages"
     },
     "highlights": {
       "ariaLabel": "AmusementPark at a glance",
-      "parks": "{{count}} parks to explore, from icons to hidden gems",
+      "parks": {
+        "one": "{{count}} park to explore, from icons to hidden gems",
+        "few": "{{count}} parks to explore, from icons to hidden gems",
+        "many": "{{count}} parks to explore, from icons to hidden gems",
+        "other": "{{count}} parks to explore, from icons to hidden gems"
+      },
+      "parksUnavailable": "Parks to explore, from icons to hidden gems",
       "content": "Rides, photos, ratings and maps",
       "languages": "8 languages to roam further"
     },

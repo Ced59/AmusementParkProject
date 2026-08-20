@@ -12,12 +12,24 @@
     "ticket": {
       "kicker": "Passaporto di scoperta",
       "title": "Prossima fermata: emozioni",
-      "parks": "{{count}} parchi visibili",
+      "parks": {
+        "one": "{{count}} parco visibile",
+        "few": "{{count}} parchi visibili",
+        "many": "{{count}} parchi visibili",
+        "other": "{{count}} parchi visibili"
+      },
+      "parksUnavailable": "Parchi visibili",
       "languages": "8 lingue"
     },
     "highlights": {
       "ariaLabel": "AmusementPark in breve",
-      "parks": "{{count}} parchi da esplorare, dalle icone alle gemme nascoste",
+      "parks": {
+        "one": "{{count}} parco da esplorare, dalle icone alle gemme nascoste",
+        "few": "{{count}} parchi da esplorare, dalle icone alle gemme nascoste",
+        "many": "{{count}} parchi da esplorare, dalle icone alle gemme nascoste",
+        "other": "{{count}} parchi da esplorare, dalle icone alle gemme nascoste"
+      },
+      "parksUnavailable": "Parchi da esplorare, dalle icone alle gemme nascoste",
       "content": "Attrazioni, foto, valutazioni e mappe",
       "languages": "8 lingue per spingerti più lontano"
     },

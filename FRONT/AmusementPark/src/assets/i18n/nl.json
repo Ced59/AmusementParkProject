@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Ontdekkingspas",
       "title": "Volgende halte: kriebels",
-      "parks": "{{count}} zichtbare parken",
+      "parks": {
+        "one": "{{count}} zichtbaar park",
+        "few": "{{count}} zichtbare parken",
+        "many": "{{count}} zichtbare parken",
+        "other": "{{count}} zichtbare parken"
+      },
+      "parksUnavailable": "Zichtbare parken",
       "languages": "8 talen"
     },
     "highlights": {
       "ariaLabel": "AmusementPark in het kort",
-      "parks": "{{count}} parken om te ontdekken, van icoon tot verborgen parel",
+      "parks": {
+        "one": "{{count}} park om te ontdekken, van icoon tot verborgen parel",
+        "few": "{{count}} parken om te ontdekken, van icoon tot verborgen parel",
+        "many": "{{count}} parken om te ontdekken, van icoon tot verborgen parel",
+        "other": "{{count}} parken om te ontdekken, van icoon tot verborgen parel"
+      },
+      "parksUnavailable": "Parken om te ontdekken, van icoon tot verborgen parel",
       "content": "Attracties, foto’s, beoordelingen en kaarten",
       "languages": "8 talen om verder te reizen"
     },

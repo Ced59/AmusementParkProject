@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Entdeckerpass",
       "title": "Nächster Halt: Nervenkitzel",
-      "parks": "{{count}} sichtbare Parks",
+      "parks": {
+        "one": "{{count}} sichtbarer Park",
+        "few": "{{count}} sichtbare Parks",
+        "many": "{{count}} sichtbare Parks",
+        "other": "{{count}} sichtbare Parks"
+      },
+      "parksUnavailable": "Sichtbare Parks",
       "languages": "8 Sprachen"
     },
     "highlights": {
       "ariaLabel": "AmusementPark auf einen Blick",
-      "parks": "{{count}} Parks zum Entdecken, vom Giganten bis zum Geheimtipp",
+      "parks": {
+        "one": "{{count}} Park zum Entdecken, vom Giganten bis zum Geheimtipp",
+        "few": "{{count}} Parks zum Entdecken, vom Giganten bis zum Geheimtipp",
+        "many": "{{count}} Parks zum Entdecken, vom Giganten bis zum Geheimtipp",
+        "other": "{{count}} Parks zum Entdecken, vom Giganten bis zum Geheimtipp"
+      },
+      "parksUnavailable": "Parks zum Entdecken, vom Giganten bis zum Geheimtipp",
       "content": "Attraktionen, Fotos, Bewertungen und Karten",
       "languages": "8 Sprachen für noch mehr Entdeckungen"
     },

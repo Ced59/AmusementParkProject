@@ -2717,12 +2717,24 @@
     "ticket": {
       "kicker": "Pase de exploración",
       "title": "Próxima parada: emociones",
-      "parks": "{{count}} parques visibles",
+      "parks": {
+        "one": "{{count}} parque visible",
+        "few": "{{count}} parques visibles",
+        "many": "{{count}} parques visibles",
+        "other": "{{count}} parques visibles"
+      },
+      "parksUnavailable": "Parques visibles",
       "languages": "8 idiomas"
     },
     "highlights": {
       "ariaLabel": "AmusementPark de un vistazo",
-      "parks": "{{count}} parques por explorar, desde iconos hasta joyas ocultas",
+      "parks": {
+        "one": "{{count}} parque por explorar, desde iconos hasta joyas ocultas",
+        "few": "{{count}} parques por explorar, desde iconos hasta joyas ocultas",
+        "many": "{{count}} parques por explorar, desde iconos hasta joyas ocultas",
+        "other": "{{count}} parques por explorar, desde iconos hasta joyas ocultas"
+      },
+      "parksUnavailable": "Parques por explorar, desde iconos hasta joyas ocultas",
       "content": "Atracciones, fotos, valoraciones y mapas",
       "languages": "8 idiomas para llegar más lejos"
     },

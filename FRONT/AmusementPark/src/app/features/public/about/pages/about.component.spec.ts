@@ -1,6 +1,6 @@
-import { signal, Signal } from '@angular/core';
+import { signal, Signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -17,19 +17,22 @@ describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
   let stateFacade: AboutStateFacadeStub;
+  let visibleParkCountSignal: WritableSignal<number | null>;
+  let languageRouteSnapshot: { paramMap: ParamMap };
 
   beforeEach(async () => {
-    const visibleParkCount = signal<number | null>(47);
+    visibleParkCountSignal = signal<number | null>(47);
+    languageRouteSnapshot = { paramMap: convertToParamMap({ lang: 'fr' }) };
     const activatedRouteStub = {
       snapshot: { paramMap: convertToParamMap({}) },
       parent: {
-        snapshot: { paramMap: convertToParamMap({ lang: 'fr' }) },
+        snapshot: languageRouteSnapshot,
         parent: null
       }
     } as unknown as ActivatedRoute;
 
     stateFacade = {
-      visibleParkCount: visibleParkCount.asReadonly(),
+      visibleParkCount: visibleParkCountSignal.asReadonly(),
       loadVisibleParkCount: vi.fn().mockName('AboutStateFacade.loadVisibleParkCount')
     };
 
@@ -53,10 +56,22 @@ describe('AboutComponent', () => {
           description: 'Description'
         },
         ticket: {
-          parks: '{{count}} parcs visibles'
+          parks: {
+            one: '{{count}} parc visible',
+            few: '{{count}} parcs visibles',
+            many: '{{count}} parcs visibles',
+            other: '{{count}} parcs visibles'
+          },
+          parksUnavailable: 'Parcs visibles'
         },
         highlights: {
-          parks: '{{count}} parcs à explorer'
+          parks: {
+            one: '{{count}} parc à explorer',
+            few: '{{count}} parcs à explorer',
+            many: '{{count}} parcs à explorer',
+            other: '{{count}} parcs à explorer'
+          },
+          parksUnavailable: 'Des parcs à explorer'
         }
       }
     });
@@ -99,5 +114,41 @@ describe('AboutComponent', () => {
     const formattedCount: string = new Intl.NumberFormat('fr').format(47);
 
     expect(parksStat?.textContent).toContain(`${formattedCount} parcs visibles`);
+  });
+
+  it('should apply Polish plural rules to the dynamic park count', async () => {
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    languageRouteSnapshot.paramMap = convertToParamMap({ lang: 'pl' });
+    visibleParkCountSignal.set(162);
+    translateService.setTranslation('pl', {
+      aboutPage: {
+        seo: {
+          title: 'O AmusementPark',
+          description: 'Opis'
+        },
+        ticket: {
+          parks: {
+            one: '{{count}} widoczny park',
+            few: '{{count}} widoczne parki',
+            many: '{{count}} widocznych parków',
+            other: '{{count}} widocznego parku'
+          }
+        },
+        highlights: {
+          parks: {
+            one: '{{count}} park do odkrycia',
+            few: '{{count}} parki do odkrycia',
+            many: '{{count}} parków do odkrycia',
+            other: '{{count}} parku do odkrycia'
+          }
+        }
+      }
+    });
+    await firstValueFrom(translateService.use('pl'));
+
+    fixture.detectChanges();
+
+    const parksStat: HTMLElement | null = fixture.nativeElement.querySelector('.about-ticket__meta span:first-child');
+    expect(parksStat?.textContent).toContain('162 widoczne parki');
   });
 });
