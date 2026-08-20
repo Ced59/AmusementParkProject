@@ -46,7 +46,8 @@
         "title": "Cookies et stockage local",
         "body1": "Des cookies ou stockages strictement nécessaires peuvent servir à la session, à la sécurité, à la langue, au thème, aux préférences d’interface et au bon fonctionnement de l’authentification.",
         "body2": "Ces traceurs nécessaires peuvent inclure des cookies de session/API, des cookies d’authentification HTTP-only, des mécanismes anti-abus et des préférences conservées localement. Ils ne sont pas désactivables depuis le bandeau car ils conditionnent le service demandé.",
-        "body3": "Le choix relatif aux cookies optionnels est conservé dans le stockage local du navigateur et dans un cookie de préférence afin de ne pas redemander le même choix à chaque page."
+        "body3": "Le choix relatif aux cookies optionnels est conservé dans le stockage local du navigateur et dans un cookie de préférence afin de ne pas redemander le même choix à chaque page.",
+        "body4": "Le cookie « amusementpark.language » mémorise uniquement la langue choisie afin d’orienter l’entrée neutre vers la bonne version du site. Il est strictement nécessaire, n’est pas soumis au consentement optionnel et expire après un an."
       },
       "hosting": {
         "title": "Hébergement et sous-traitants",

@@ -1,6 +1,20 @@
 {
-  "version": "4.1.45",
+  "version": "4.1.46",
   "history": [
+    {
+      "version": "4.1.46",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Le choix de la langue est désormais mémorisé.",
+        "en": "Your language choice is now remembered.",
+        "de": "Deine Sprachauswahl wird jetzt gespeichert.",
+        "nl": "Je taalkeuze wordt nu onthouden.",
+        "it": "La tua scelta della lingua viene ora ricordata.",
+        "es": "Ahora se recuerda tu elección de idioma.",
+        "pl": "Wybrany język jest teraz zapamiętywany.",
+        "pt": "A tua escolha de idioma passa a ser memorizada."
+      }
+    },
     {
       "version": "4.1.45",
       "releasedAt": "2026-08-20",

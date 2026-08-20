@@ -19,9 +19,28 @@ export class HreflangService {
 
     alternates.push({
       hreflang: 'x-default',
-      href: this.canonicalUrlService.buildAbsoluteUrl(this.canonicalUrlService.replaceLanguage(currentUrl, SEO_DEFAULT_LANGUAGE))
+      href: this.canonicalUrlService.buildAbsoluteUrl(
+        this.isHomeClusterUrl(currentUrl)
+          ? '/'
+          : this.canonicalUrlService.replaceLanguage(currentUrl, SEO_DEFAULT_LANGUAGE)
+      )
     });
 
     return alternates;
+  }
+
+  private isHomeClusterUrl(url: string): boolean {
+    const segments: string[] = url
+      .split(/[?#]/, 1)[0]
+      .split('/')
+      .filter((segment: string): boolean => segment.length > 0);
+
+    if (segments.length === 0) {
+      return true;
+    }
+
+    return segments.length === 2
+      && segments[1] === 'home'
+      && SEO_LANGUAGES.some((language: SeoLanguageDefinition): boolean => language.language === segments[0]);
   }
 }

@@ -49,6 +49,10 @@ import {
   resolveFacebookOpenGraphAppId,
 } from './src/server/ssr/facebook-open-graph-meta';
 import { prepareFacebookHtmlResponse } from './src/server/ssr/facebook-html-response';
+import {
+  buildPreferredLanguageHomeUrl,
+  resolveLanguagePreferenceCookie,
+} from './src/server/localization/language-preference-cookie';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
@@ -441,6 +445,8 @@ export function app(): express.Express {
 
   server.use(redirectHttpToHttps);
   server.use(applySecurityHeaders);
+
+  server.get('/', redirectRootToPreferredLanguage);
 
   server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
@@ -3056,6 +3062,17 @@ function containsAuthenticationCookie(req: Request): boolean {
 
   const headerValue: string = Array.isArray(cookieHeader) ? cookieHeader.join(';') : cookieHeader;
   return /(?:^|;\s*)(amusementpark\.refresh|amusementpark\.auth|\.AspNetCore\.|access_token|refresh_token)=/i.test(headerValue);
+}
+
+function redirectRootToPreferredLanguage(req: Request, res: Response, next: NextFunction): void {
+  const language: string | null = resolveLanguagePreferenceCookie(req.headers.cookie);
+  if (language === null) {
+    next();
+    return;
+  }
+
+  res.setHeader('Cache-Control', 'private, no-store');
+  res.redirect(302, buildPreferredLanguageHomeUrl(language, req.originalUrl));
 }
 
 function isSsrWarmupRequest(req: Request): boolean {

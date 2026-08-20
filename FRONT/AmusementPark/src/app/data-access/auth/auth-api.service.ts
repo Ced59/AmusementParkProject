@@ -70,14 +70,24 @@ export class AuthApiService {
     return this.http.post<AuthMessageResponse>(url, { token, newPassword, newPasswordConfirm }, this.jsonHttpOptions);
   }
 
-  externalLogin(provider: string, token: string, nonce?: string, preferredMeasurementSystem?: MeasurementSystem): Observable<UserToken> {
+  externalLogin(
+    provider: string,
+    token: string,
+    nonce?: string,
+    preferredLanguage?: string,
+    preferredMeasurementSystem?: MeasurementSystem
+  ): Observable<UserToken> {
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.externalLogin(provider)}`;
-    const body: { token: string; nonce?: string; preferredMeasurementSystem?: MeasurementSystem } = {
+    const body: { token: string; nonce?: string; preferredLanguage?: string; preferredMeasurementSystem?: MeasurementSystem } = {
       token
     };
 
     if (nonce) {
       body.nonce = nonce;
+    }
+
+    if (preferredLanguage) {
+      body.preferredLanguage = preferredLanguage;
     }
 
     if (preferredMeasurementSystem) {

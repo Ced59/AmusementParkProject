@@ -4278,7 +4278,8 @@
         "title": "Cookies e armazenamento local",
         "body1": "Cookies ou armazenamento estritamente necessários podem ser usados para sessão, segurança, idioma, tema, preferências de interface e correto funcionamento da autenticação.",
         "body2": "Estes rastreadores necessários podem incluir cookies de sessão/API, cookies de autenticação HTTP-only, mecanismos antiabuso e preferências guardadas localmente. Não podem ser desativados no banner porque condicionam o serviço solicitado.",
-        "body3": "A escolha relativa aos cookies opcionais é guardada no armazenamento local do navegador e num cookie de preferência para não voltar a pedir a mesma escolha em cada página."
+        "body3": "A escolha relativa aos cookies opcionais é guardada no armazenamento local do navegador e num cookie de preferência para não voltar a pedir a mesma escolha em cada página.",
+        "body4": "O cookie «amusementpark.language» guarda apenas o idioma escolhido, para que a entrada neutra abra a versão correta do site. É estritamente necessário, não depende do consentimento opcional e expira ao fim de um ano."
       },
       "hosting": {
         "title": "Alojamento e subcontratantes",

@@ -24,6 +24,7 @@ import { PublicParkNavigationTreeFacade } from '@features/public/navigation/stat
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
+import { LanguageChoiceService } from '@app/services/localization/language-choice.service';
 
 @Component({
   selector: 'app-public-header',
@@ -62,6 +63,7 @@ export class PublicHeaderComponent implements OnInit {
     private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly translationService: TranslationService,
+    private readonly languageChoiceService: LanguageChoiceService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly publicParkNavigationTreeFacade: PublicParkNavigationTreeFacade,
     private readonly router: Router,
@@ -199,12 +201,17 @@ export class PublicHeaderComponent implements OnInit {
   }
 
   protected selectLanguage(lang: string): void {
-    this.translationService.useLang(lang)
+    const selectedLanguage: string | null = this.languageChoiceService.chooseLanguage(lang);
+    if (selectedLanguage === null) {
+      return;
+    }
+
+    this.translationService.useLang(selectedLanguage)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (): void => {
-          this.selectedLanguage.set(lang);
-          this.updateUrlWithNewLang(lang);
+          this.selectedLanguage.set(selectedLanguage);
+          this.updateUrlWithNewLang(selectedLanguage);
           this.closeModal('languageModal');
         },
         error: (error: unknown): void => console.error('Error changing language:', error)

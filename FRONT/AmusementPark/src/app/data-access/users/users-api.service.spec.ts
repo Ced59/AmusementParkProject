@@ -55,6 +55,16 @@ describe('UsersApiService', () => {
     nullRequest.flush({ id: 'null' });
   });
 
+  it('patches only the current user preferred language', () => {
+    service.updateCurrentUserPreferredLanguage('FR').subscribe();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}users/me/preferences/language`);
+    expect(request.request.method).toBe('PATCH');
+    expect(request.request.headers.get('Content-Type')).toBe('application/json');
+    expect(request.request.body).toEqual({ preferredLanguage: 'FR' });
+    request.flush({ id: 'user-1', preferredLanguage: 'FR' });
+  });
+
   it('uploads the current user avatar without sending an owner or category', () => {
     const file: File = new File(['avatar'], 'avatar.png', { type: 'image/png' });
 

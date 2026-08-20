@@ -8,6 +8,7 @@ import { AuthService } from '@app/services/auth/auth.service';
 import { TranslationService } from '@app/services/translation.service';
 import { CurrentUserService } from '@app/services/users/current-user.service';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
+import { LanguagePreferenceService } from '@app/services/localization/language-preference.service';
 import { isSupportedLanguage, resolveSupportedLanguage } from '@shared/utils/routing/localized-route.helpers';
 
 export interface AuthenticatedUserLanguageSyncResult {
@@ -25,32 +26,33 @@ export class AuthenticatedUserLanguageService {
     private readonly authService: AuthService,
     private readonly currentUserService: CurrentUserService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
+    private readonly languagePreferenceService: LanguagePreferenceService,
     private readonly router: Router,
     private readonly translationService: TranslationService
   ) {
   }
 
   syncPreferredLanguageFromCurrentUser(targetUrl: string | null = null): Observable<AuthenticatedUserLanguageSyncResult> {
-    const userId: string | null = this.authService.getUserIdFromToken();
-    if (!userId) {
-      return of({ user: null, language: null, navigated: false });
-    }
+    return this.loadCurrentUser().pipe(
+      switchMap((user: UserDto | null): Observable<AuthenticatedUserLanguageSyncResult> => {
+        if (user === null) {
+          return of({ user: null, language: null, navigated: false });
+        }
 
-    return this.authApiService.getCurrentUserById(userId).pipe(
-      tap((user: UserDto): void => {
-        this.currentUserService.setCurrentUser(user);
-        this.measurementPreferenceService.syncFromUser(user);
-      }),
-      switchMap((user: UserDto): Observable<AuthenticatedUserLanguageSyncResult> => {
         const preferredLanguage: string = this.resolvePreferredLanguage(user.preferredLanguage);
-        const localizedTargetUrl: string = this.buildLocalizedUrl(targetUrl ?? this.router.url, preferredLanguage);
+        const requestedUrl: string = targetUrl ?? this.router.url;
+        const explicitLanguage: string | null = this.resolveExplicitLanguage(requestedUrl);
+        const activeLanguage: string = explicitLanguage ?? preferredLanguage;
+        const localizedTargetUrl: string = explicitLanguage === null
+          ? this.buildLocalizedUrl(requestedUrl, preferredLanguage)
+          : requestedUrl;
         const shouldNavigate: boolean = localizedTargetUrl !== this.router.url;
 
-        return this.translationService.useLang(preferredLanguage).pipe(
+        return this.translationService.useLang(activeLanguage).pipe(
           switchMap((): Observable<boolean> => shouldNavigate ? from(this.router.navigateByUrl(localizedTargetUrl)) : of(false)),
           map((navigated: boolean): AuthenticatedUserLanguageSyncResult => ({
             user,
-            language: preferredLanguage,
+            language: activeLanguage,
             navigated
           }))
         );
@@ -62,6 +64,15 @@ export class AuthenticatedUserLanguageService {
     );
   }
 
+  hydratePreferencesFromCurrentUser(): Observable<UserDto | null> {
+    return this.loadCurrentUser().pipe(
+      catchError((error: unknown): Observable<null> => {
+        console.error('Unable to restore authenticated user preferences.', error);
+        return of(null);
+      })
+    );
+  }
+
   toPreferredLanguageUrl(url: string | null | undefined, language: string | null | undefined): string {
     return this.buildLocalizedUrl(url ?? this.router.url, this.resolvePreferredLanguage(language));
   }
@@ -69,6 +80,30 @@ export class AuthenticatedUserLanguageService {
   private resolvePreferredLanguage(preferredLanguage: string | null | undefined): string {
     const normalizedLanguage: string = this.normalizeLanguage(preferredLanguage);
     return resolveSupportedLanguage(normalizedLanguage, this.translationService.getCurrentLang() || 'en');
+  }
+
+  private loadCurrentUser(): Observable<UserDto | null> {
+    const userId: string | null = this.authService.getUserIdFromToken();
+    if (!userId) {
+      return of(null);
+    }
+
+    return this.authApiService.getCurrentUserById(userId).pipe(
+      tap((user: UserDto): void => {
+        this.currentUserService.setCurrentUser(user);
+        this.measurementPreferenceService.syncFromUser(user);
+        this.languagePreferenceService.setPreferredLanguage(user.preferredLanguage);
+      })
+    );
+  }
+
+  private resolveExplicitLanguage(url: string): string | null {
+    const firstSegment: string | undefined = url
+      .split(/[?#]/, 1)[0]
+      .split('/')
+      .filter((segment: string): boolean => segment.length > 0)[0];
+
+    return isSupportedLanguage(firstSegment) ? firstSegment ?? null : null;
   }
 
   private normalizeLanguage(language: string | null | undefined): string {

@@ -37,6 +37,11 @@ export class UsersApiService {
     return this.http.put<UserDto>(url, JSON.stringify(user), this.jsonHttpOptions);
   }
 
+  updateCurrentUserPreferredLanguage(preferredLanguage: string): Observable<UserDto> {
+    const url: string = `${environment.apiBaseUrl}${USERS_API_ENDPOINTS.updateCurrentUserPreferredLanguage}`;
+    return this.http.patch<UserDto>(url, { preferredLanguage }, this.jsonHttpOptions);
+  }
+
   uploadCurrentUserAvatar(file: File): Observable<ImageDto> {
     const url: string = `${environment.apiBaseUrl}${USERS_API_ENDPOINTS.uploadCurrentUserAvatar}`;
     const formData: FormData = new FormData();

@@ -3,6 +3,16 @@ import { Route } from '@angular/router';
 import { routes } from './app.routes';
 
 describe('App routes', () => {
+  it('renders a neutral language selector at the domain root', () => {
+    const rootRoute: Route | undefined = routes.find(
+      (route: Route): boolean => route.path === '',
+    );
+
+    expect(rootRoute?.redirectTo).toBeUndefined();
+    expect(rootRoute?.loadComponent).toBeDefined();
+    expect(rootRoute?.canActivate).toHaveLength(1);
+  });
+
   it('redirects a localized root to the public home before matching the account layout', () => {
     const localizedRoute: Route | undefined = routes.find(
       (route: Route): boolean => route.path === ':lang',

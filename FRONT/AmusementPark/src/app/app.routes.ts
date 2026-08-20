@@ -5,12 +5,14 @@ import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
 import { HISTORY_ARTICLE_ROUTE_DATA_KEY, historyArticleResolver } from '@features/public/history/state/history-article.resolver';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, historyTimelineResolver } from '@features/public/history/state/history-timeline.resolver';
+import { languageEntryGuard } from '@core/guards/language-entry.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'en/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [languageEntryGuard],
+    loadComponent: () => import('@features/public/language-entry/pages/language-entry-page.component').then((m) => m.LanguageEntryPageComponent)
   },
   {
     path: ':lang',
