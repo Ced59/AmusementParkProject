@@ -2,7 +2,7 @@
   "aboutPage": {
     "seo": {
       "title": "Über AmusementPark — Dein Guide für Freizeitparks",
-      "description": "Entdecke mehr als 2.900 Freizeitparks mit Attraktionen, Fotos, Bewertungen und Karten in acht Sprachen auf AmusementPark."
+      "description": "Entdecke sichtbare Freizeitparks mit Attraktionen, Fotos, Bewertungen und Karten in acht Sprachen auf AmusementPark."
     },
     "kicker": "Der Park vor dem Park",
     "title": "Die Welt der Freizeitparks, ohne Umwege",
@@ -12,12 +12,12 @@
     "ticket": {
       "kicker": "Entdeckerpass",
       "title": "Nächster Halt: Nervenkitzel",
-      "parks": "2.900+ Parks",
+      "parks": "{{count}} sichtbare Parks",
       "languages": "8 Sprachen"
     },
     "highlights": {
       "ariaLabel": "AmusementPark auf einen Blick",
-      "parks": "2.900+ Parks, vom Giganten bis zum Geheimtipp",
+      "parks": "{{count}} Parks zum Entdecken, vom Giganten bis zum Geheimtipp",
       "content": "Attraktionen, Fotos, Bewertungen und Karten",
       "languages": "8 Sprachen für noch mehr Entdeckungen"
     },

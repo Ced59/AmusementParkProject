@@ -2,7 +2,7 @@
   "aboutPage": {
     "seo": {
       "title": "O AmusementPark — Twój przewodnik po parkach rozrywki",
-      "description": "Odkrywaj ponad 2900 parków z atrakcjami, zdjęciami, ocenami i mapami w ośmiu językach na AmusementPark."
+      "description": "Odkrywaj widoczne parki z atrakcjami, zdjęciami, ocenami i mapami w ośmiu językach na AmusementPark."
     },
     "kicker": "Park przed parkiem",
     "title": "Świat parków rozrywki bez krążenia w kółko",
@@ -12,12 +12,12 @@
     "ticket": {
       "kicker": "Karnet odkrywcy",
       "title": "Następny przystanek: emocje",
-      "parks": "2900+ parków",
+      "parks": "{{count}} widocznych parków",
       "languages": "8 języków"
     },
     "highlights": {
       "ariaLabel": "AmusementPark w skrócie",
-      "parks": "2900+ parków, od ikon po ukryte perełki",
+      "parks": "{{count}} parków do odkrycia, od ikon po ukryte perełki",
       "content": "Atrakcje, zdjęcia, oceny i mapy",
       "languages": "8 języków, by odkrywać dalej"
     },

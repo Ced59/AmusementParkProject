@@ -2707,7 +2707,7 @@
   "aboutPage": {
     "seo": {
       "title": "About AmusementPark — Your amusement park guide",
-      "description": "Explore more than 2,900 parks with rides, photos, ratings and maps, available in eight languages on AmusementPark."
+      "description": "Explore visible parks with rides, photos, ratings and maps, available in eight languages on AmusementPark."
     },
     "kicker": "The park before the park",
     "title": "The world of parks, minus the runaround",
@@ -2717,12 +2717,12 @@
     "ticket": {
       "kicker": "Discovery pass",
       "title": "Next stop: thrills",
-      "parks": "2,900+ parks",
+      "parks": "{{count}} visible parks",
       "languages": "8 languages"
     },
     "highlights": {
       "ariaLabel": "AmusementPark at a glance",
-      "parks": "2,900+ parks, from icons to hidden gems",
+      "parks": "{{count}} parks to explore, from icons to hidden gems",
       "content": "Rides, photos, ratings and maps",
       "languages": "8 languages to roam further"
     },
