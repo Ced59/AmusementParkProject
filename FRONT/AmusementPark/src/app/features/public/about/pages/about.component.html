@@ -1,7 +1,7 @@
 <section class="about-page public-page">
   <section class="about-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
     <div class="about-hero__content">
-      <app-ui-kicker tone="lime" iconClass="pi pi-compass">
+      <app-ui-kicker tone="lime" iconClass="pi pi-ticket">
         {{ 'aboutPage.kicker' | translate }}
       </app-ui-kicker>
 
@@ -13,210 +13,108 @@
           <span>{{ 'aboutPage.primaryCta' | translate }}</span>
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
         </a>
-        <a appUiButton="ghost" href="#about-how">
+        <a appUiButton="ghost" href="#about-journey">
           <span>{{ 'aboutPage.secondaryCta' | translate }}</span>
           <i class="pi pi-sparkles" aria-hidden="true"></i>
         </a>
       </div>
     </div>
 
-    <aside class="about-hero__visual" aria-hidden="true">
-      <div class="about-orbit-card about-orbit-card--main">
-        <i class="pi pi-map" aria-hidden="true"></i>
-        <strong>{{ 'aboutPage.heroVisual.parks' | translate }}</strong>
-        <span>{{ 'aboutPage.heroVisual.parksHint' | translate }}</span>
-      </div>
-      <div class="about-orbit-card about-orbit-card--lime">
-        <i class="pi pi-bolt" aria-hidden="true"></i>
-        <strong>{{ 'aboutPage.heroVisual.attractions' | translate }}</strong>
-      </div>
-      <div class="about-orbit-card about-orbit-card--sky">
-        <i class="pi pi-images" aria-hidden="true"></i>
-        <strong>{{ 'aboutPage.heroVisual.images' | translate }}</strong>
-      </div>
-      <div class="about-orbit-card about-orbit-card--rose">
-        <i class="pi pi-map-marker" aria-hidden="true"></i>
-        <strong>{{ 'aboutPage.heroVisual.map' | translate }}</strong>
+    <aside class="about-ride" aria-hidden="true">
+      <div class="about-ride__track"></div>
+      <i class="about-ride__pin about-ride__pin--map pi pi-map-marker"></i>
+      <i class="about-ride__pin about-ride__pin--star pi pi-star-fill"></i>
+      <i class="about-ride__pin about-ride__pin--camera pi pi-camera"></i>
+
+      <div class="about-ticket">
+        <span class="about-ticket__eyebrow">{{ 'aboutPage.ticket.kicker' | translate }}</span>
+        <strong>{{ 'aboutPage.ticket.title' | translate }}</strong>
+        <div class="about-ticket__meta">
+          <span><i class="pi pi-compass"></i>{{ 'aboutPage.ticket.parks' | translate }}</span>
+          <span><i class="pi pi-globe"></i>{{ 'aboutPage.ticket.languages' | translate }}</span>
+        </div>
       </div>
     </aside>
 
-    <div class="about-hero__stats" [attr.aria-label]="'aboutPage.stats.ariaLabel' | translate">
-      <article class="about-stat about-stat--gold">
-        <strong>2900+</strong>
-        <span>{{ 'aboutPage.stats.parksLabel' | translate }}</span>
-        <small>{{ 'aboutPage.stats.parksHint' | translate }}</small>
-      </article>
-      <article class="about-stat about-stat--sky">
-        <strong>{{ 'aboutPage.stats.contentValue' | translate }}</strong>
-        <span>{{ 'aboutPage.stats.contentLabel' | translate }}</span>
-        <small>{{ 'aboutPage.stats.contentHint' | translate }}</small>
-      </article>
-      <article class="about-stat about-stat--lime">
-        <strong>8</strong>
-        <span>{{ 'aboutPage.stats.languagesLabel' | translate }}</span>
-        <small>{{ 'aboutPage.stats.languagesHint' | translate }}</small>
-      </article>
+    <div class="about-highlights" [attr.aria-label]="'aboutPage.highlights.ariaLabel' | translate">
+      <span><i class="pi pi-map" aria-hidden="true"></i>{{ 'aboutPage.highlights.parks' | translate }}</span>
+      <span><i class="pi pi-bolt" aria-hidden="true"></i>{{ 'aboutPage.highlights.content' | translate }}</span>
+      <span><i class="pi pi-language" aria-hidden="true"></i>{{ 'aboutPage.highlights.languages' | translate }}</span>
     </div>
   </section>
 
-  <section id="about-how" class="about-section">
-    <app-ui-section-header
-      kickerTone="sky"
-      kickerIconClass="pi pi-heart"
-      kickerLabelKey="aboutPage.promise.kicker"
-      titleKey="aboutPage.promise.title"
-      subtitleKey="aboutPage.promise.subtitle">
-    </app-ui-section-header>
-
-    <div class="about-card-grid about-card-grid--three">
-      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
-        <app-ui-chip tone="primary" iconClass="pi pi-search">{{ 'aboutPage.cards.discover.badge' | translate }}</app-ui-chip>
-        <h2>{{ 'aboutPage.cards.discover.title' | translate }}</h2>
-        <p>{{ 'aboutPage.cards.discover.text' | translate }}</p>
-      </article>
-
-      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
-        <app-ui-chip tone="lime" iconClass="pi pi-list">{{ 'aboutPage.cards.understand.badge' | translate }}</app-ui-chip>
-        <h2>{{ 'aboutPage.cards.understand.title' | translate }}</h2>
-        <p>{{ 'aboutPage.cards.understand.text' | translate }}</p>
-      </article>
-
-      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
-        <app-ui-chip tone="rose" iconClass="pi pi-send">{{ 'aboutPage.cards.prepare.badge' | translate }}</app-ui-chip>
-        <h2>{{ 'aboutPage.cards.prepare.title' | translate }}</h2>
-        <p>{{ 'aboutPage.cards.prepare.text' | translate }}</p>
-      </article>
+  <section id="about-journey" class="about-journey">
+    <div class="about-section-heading">
+      <app-ui-kicker tone="sky" iconClass="pi pi-directions">
+        {{ 'aboutPage.journey.kicker' | translate }}
+      </app-ui-kicker>
+      <h2>{{ 'aboutPage.journey.title' | translate }}</h2>
+      <p>{{ 'aboutPage.journey.subtitle' | translate }}</p>
     </div>
-  </section>
 
-  <section class="about-section" appUiSurface="panel" appUiSurfacePadding="spacious">
-    <app-ui-section-header
-      kickerTone="lime"
-      kickerIconClass="pi pi-compass"
-      kickerLabelKey="aboutPage.explore.kicker"
-      titleKey="aboutPage.explore.title"
-      subtitleKey="aboutPage.explore.subtitle">
-    </app-ui-section-header>
+    <div class="about-step-grid">
+      <article class="about-step-card about-step-card--orange" appUiSurface="shell" appUiSurfacePadding="regular">
+        <span class="about-step-card__number">01</span>
+        <i class="pi pi-search" aria-hidden="true"></i>
+        <h3>{{ 'aboutPage.journey.steps.find.title' | translate }}</h3>
+        <p>{{ 'aboutPage.journey.steps.find.text' | translate }}</p>
+      </article>
 
-    <div class="about-card-grid about-card-grid--six">
-      <article class="about-info-card">
-        <i class="pi pi-file-edit" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.parkPages.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.parkPages.text' | translate }}</p>
-      </article>
-      <article class="about-info-card">
-        <i class="pi pi-bolt" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.items.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.items.text' | translate }}</p>
-      </article>
-      <article class="about-info-card">
-        <i class="pi pi-star" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.ratings.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.ratings.text' | translate }}</p>
-      </article>
-      <article class="about-info-card">
+      <article class="about-step-card about-step-card--sky" appUiSurface="shell" appUiSurfacePadding="regular">
+        <span class="about-step-card__number">02</span>
         <i class="pi pi-images" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.images.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.images.text' | translate }}</p>
+        <h3>{{ 'aboutPage.journey.steps.feel.title' | translate }}</h3>
+        <p>{{ 'aboutPage.journey.steps.feel.text' | translate }}</p>
       </article>
-      <article class="about-info-card">
-        <i class="pi pi-map" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.map.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.map.text' | translate }}</p>
-      </article>
-      <article class="about-info-card">
-        <i class="pi pi-map-marker" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.nearby.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.nearby.text' | translate }}</p>
-      </article>
-      <article class="about-info-card">
-        <i class="pi pi-globe" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.explore.cards.languages.title' | translate }}</h3>
-        <p>{{ 'aboutPage.explore.cards.languages.text' | translate }}</p>
-      </article>
-    </div>
-  </section>
 
-  <section class="about-section">
-    <app-ui-section-header
-      kickerTone="gold"
-      kickerIconClass="pi pi-users"
-      kickerLabelKey="aboutPage.audiences.kicker"
-      titleKey="aboutPage.audiences.title">
-    </app-ui-section-header>
-
-    <div class="about-card-grid about-card-grid--four">
-      <article class="about-audience-card" appUiSurface="shell" appUiSurfacePadding="regular">
-        <i class="pi pi-home" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.audiences.families.title' | translate }}</h3>
-        <p>{{ 'aboutPage.audiences.families.text' | translate }}</p>
-      </article>
-      <article class="about-audience-card" appUiSurface="shell" appUiSurfacePadding="regular">
+      <article class="about-step-card about-step-card--lime" appUiSurface="shell" appUiSurfacePadding="regular">
+        <span class="about-step-card__number">03</span>
         <i class="pi pi-star" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.audiences.fans.title' | translate }}</h3>
-        <p>{{ 'aboutPage.audiences.fans.text' | translate }}</p>
+        <h3>{{ 'aboutPage.journey.steps.choose.title' | translate }}</h3>
+        <p>{{ 'aboutPage.journey.steps.choose.text' | translate }}</p>
       </article>
-      <article class="about-audience-card" appUiSurface="shell" appUiSurfacePadding="regular">
+    </div>
+  </section>
+
+  <section class="about-compass" appUiSurface="panel" appUiSurfacePadding="spacious">
+    <div class="about-compass__intro">
+      <app-ui-kicker tone="gold" iconClass="pi pi-compass">
+        {{ 'aboutPage.approach.kicker' | translate }}
+      </app-ui-kicker>
+      <h2>{{ 'aboutPage.approach.title' | translate }}</h2>
+      <p>{{ 'aboutPage.approach.text' | translate }}</p>
+    </div>
+
+    <div class="about-compass__points">
+      <article>
         <i class="pi pi-globe" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.audiences.travelers.title' | translate }}</h3>
-        <p>{{ 'aboutPage.audiences.travelers.text' | translate }}</p>
-      </article>
-      <article class="about-audience-card" appUiSurface="shell" appUiSurfacePadding="regular">
-        <i class="pi pi-sparkles" aria-hidden="true"></i>
-        <h3>{{ 'aboutPage.audiences.curious.title' | translate }}</h3>
-        <p>{{ 'aboutPage.audiences.curious.text' | translate }}</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="about-section about-section--split" appUiSurface="panel" appUiSurfacePadding="spacious">
-    <div class="about-section__content">
-      <app-ui-kicker tone="sky" iconClass="pi pi-shield">{{ 'aboutPage.approach.kicker' | translate }}</app-ui-kicker>
-      <h2 class="about-section__title">{{ 'aboutPage.approach.title' | translate }}</h2>
-      <p class="about-section__text">{{ 'aboutPage.approach.text' | translate }}</p>
-    </div>
-
-    <div class="about-trust-list">
-      <article>
-        <strong>{{ 'aboutPage.approach.points.structured.title' | translate }}</strong>
-        <span>{{ 'aboutPage.approach.points.structured.text' | translate }}</span>
+        <div>
+          <strong>{{ 'aboutPage.approach.points.global.title' | translate }}</strong>
+          <span>{{ 'aboutPage.approach.points.global.text' | translate }}</span>
+        </div>
       </article>
       <article>
-        <strong>{{ 'aboutPage.approach.points.progressive.title' | translate }}</strong>
-        <span>{{ 'aboutPage.approach.points.progressive.text' | translate }}</span>
+        <i class="pi pi-filter" aria-hidden="true"></i>
+        <div>
+          <strong>{{ 'aboutPage.approach.points.clear.title' | translate }}</strong>
+          <span>{{ 'aboutPage.approach.points.clear.text' | translate }}</span>
+        </div>
       </article>
       <article>
-        <strong>{{ 'aboutPage.approach.points.visitor.title' | translate }}</strong>
-        <span>{{ 'aboutPage.approach.points.visitor.text' | translate }}</span>
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <div>
+          <strong>{{ 'aboutPage.approach.points.evolving.title' | translate }}</strong>
+          <span>{{ 'aboutPage.approach.points.evolving.text' | translate }}</span>
+        </div>
       </article>
-      <article>
-        <strong>{{ 'aboutPage.approach.points.clarity.title' | translate }}</strong>
-        <span>{{ 'aboutPage.approach.points.clarity.text' | translate }}</span>
-      </article>
-    </div>
-  </section>
-
-  <section class="about-section about-section--future">
-    <div class="about-future" appUiSurface="shell" appUiSurfacePadding="spacious">
-      <div>
-        <app-ui-kicker tone="rose" iconClass="pi pi-forward">{{ 'aboutPage.future.kicker' | translate }}</app-ui-kicker>
-        <h2 class="about-section__title">{{ 'aboutPage.future.title' | translate }}</h2>
-        <p class="about-section__text">{{ 'aboutPage.future.text' | translate }}</p>
-      </div>
-
-      <ul class="about-future__list">
-        <li>{{ 'aboutPage.future.items.compare' | translate }}</li>
-        <li>{{ 'aboutPage.future.items.filters' | translate }}</li>
-        <li>{{ 'aboutPage.future.items.images' | translate }}</li>
-        <li>{{ 'aboutPage.future.items.map' | translate }}</li>
-        <li>{{ 'aboutPage.future.items.trips' | translate }}</li>
-      </ul>
     </div>
   </section>
 
   <section class="about-final-cta" appUiSurface="hero" appUiSurfacePadding="spacious">
     <div>
-      <app-ui-kicker tone="lime" iconClass="pi pi-ticket">{{ 'aboutPage.finalCta.kicker' | translate }}</app-ui-kicker>
+      <app-ui-kicker tone="lime" iconClass="pi pi-flag">
+        {{ 'aboutPage.finalCta.kicker' | translate }}
+      </app-ui-kicker>
       <h2>{{ 'aboutPage.finalCta.title' | translate }}</h2>
       <p>{{ 'aboutPage.finalCta.text' | translate }}</p>
     </div>
