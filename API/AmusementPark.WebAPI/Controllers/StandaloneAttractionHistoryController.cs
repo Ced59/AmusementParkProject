@@ -39,7 +39,7 @@ public sealed class StandaloneAttractionHistoryController : ControllerBase
         ApplicationResult<StandaloneAttractionHistoryTimelineResult> result = await this.getTimelineHandler.HandleAsync(
             new GetStandaloneAttractionHistoryTimelineQuery(
                 standaloneAttractionId,
-                this.UserCanSeeNonVisible(),
+                this.HttpContext.UserCanSeeNonVisibleInPublicView(),
                 page,
                 HistoryTimelinePaging.DefaultPageSize),
             cancellationToken);
