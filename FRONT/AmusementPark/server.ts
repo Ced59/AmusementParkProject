@@ -14,7 +14,11 @@ import {
   isApiHeaderHiddenFromPublicProxy,
   isHopByHopHttpHeader,
 } from './src/app/core/ssr/public-api-header-policy';
-import { resolveSsrRouteStatusCode, resolveXRobotsTagHeader } from './src/app/core/ssr/ssr-route-status.helpers';
+import {
+  resolveSsrRouteStatusCode,
+  resolveXRobotsTagHeader,
+  shouldApplyNoindexFollowHeader,
+} from './src/app/core/ssr/ssr-route-status.helpers';
 import {
   enforceNoindexFollowHtml,
   inspectSeoReadyHtml,
