@@ -19,12 +19,18 @@ public sealed partial class ExportParkGraphJsonQueryHandler
     {
         bool isParkItemEvent = historyEvent.EntityType == HistoryEntityType.ParkItem;
         string? parkItemKey = isParkItemEvent ? historyEvent.OwnerId : null;
+        string owner = historyEvent.EntityType switch
+        {
+            HistoryEntityType.ParkItem => "parkItem",
+            HistoryEntityType.StandaloneAttraction => "standaloneAttraction",
+            _ => "park",
+        };
 
         return new ParkGraphExportHistoryEvent
         {
             Key = historyEvent.Key,
             EntityType = historyEvent.EntityType,
-            Owner = isParkItemEvent ? "parkItem" : "park",
+            Owner = owner,
             OwnerId = historyEvent.OwnerId,
             ParkId = historyEvent.ParkId,
             ParkItemId = historyEvent.ParkItemId,
