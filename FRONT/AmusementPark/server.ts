@@ -20,7 +20,7 @@ import {
   shouldApplyNoindexFollowHeader,
 } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
-  enforceNoindexFollowHtml,
+  enforceNoindexHtml,
   inspectSeoReadyHtml,
   RobotHtmlPreparationResult,
   shouldRetrySeoReadyHtmlRender,
@@ -1902,8 +1902,9 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
     res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', preparationResult.removedScriptLikeLinkCount.toString());
   }
 
-  return shouldApplyNoindexFollowHeader(req.originalUrl)
-    ? enforceNoindexFollowHtml(preparationResult.html)
+  const robotsDirective: string | null = resolveXRobotsTagHeader(req.originalUrl);
+  return robotsDirective !== null
+    ? enforceNoindexHtml(preparationResult.html, robotsDirective)
     : preparationResult.html;
 }
 

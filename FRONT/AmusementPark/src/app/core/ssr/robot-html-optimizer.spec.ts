@@ -1,5 +1,5 @@
 import {
-  enforceNoindexFollowHtml,
+  enforceNoindexHtml,
   inspectSeoReadyHtml,
   isBareAngularShell,
   isSeoReadyHtml,
@@ -65,7 +65,7 @@ describe('robot HTML optimizer', () => {
       '</head><body><main>Filtered rankings</main></body></html>',
     ].join('');
 
-    const result: string = enforceNoindexFollowHtml(html);
+    const result: string = enforceNoindexHtml(html, 'noindex, follow');
 
     expect(result).toContain('<meta name="robots" content="noindex,follow">');
     expect(result).toContain('<meta name="googlebot" content="noindex,follow">');
@@ -73,6 +73,15 @@ describe('robot HTML optimizer', () => {
     expect(result).toContain('main.js');
     expect(result).not.toContain('hreflang=');
     expect(result).not.toContain('application/ld+json');
+  });
+
+  it('keeps restrictive directives aligned between HTTP policy and HTML', () => {
+    const html: string = '<html><head><meta name="robots" content="index,follow"></head><body></body></html>';
+
+    const result: string = enforceNoindexHtml(html, 'noindex, nofollow, noarchive');
+
+    expect(result).toContain('<meta name="robots" content="noindex,nofollow,noarchive">');
+    expect(result).toContain('<meta name="googlebot" content="noindex,nofollow,noarchive">');
   });
 
   it('compacts presentational Angular SSR markup while preserving SEO content and links', () => {

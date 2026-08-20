@@ -1,6 +1,20 @@
 {
-  "version": "4.2.10",
+  "version": "4.2.11",
   "history": [
+    {
+      "version": "4.2.11",
+      "releasedAt": "2026-08-21",
+      "labels": {
+        "fr": "Les liens de classement partagés protègent mieux ta confidentialité.",
+        "en": "Shared ranking links better protect your privacy.",
+        "de": "Geteilte Ranglisten-Links schützen deine Privatsphäre besser.",
+        "nl": "Gedeelde ranglijstlinks beschermen je privacy beter.",
+        "it": "I link alle classifiche condivise proteggono meglio la tua privacy.",
+        "es": "Los enlaces de clasificaciones compartidas protegen mejor tu privacidad.",
+        "pl": "Udostępnione linki do rankingów lepiej chronią Twoją prywatność.",
+        "pt": "As ligações de classificações partilhadas protegem melhor a tua privacidade."
+      }
+    },
     {
       "version": "4.2.10",
       "releasedAt": "2026-08-21",

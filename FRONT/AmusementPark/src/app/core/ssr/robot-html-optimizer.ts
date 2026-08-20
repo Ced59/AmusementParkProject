@@ -52,19 +52,20 @@ export function optimizeHtmlForRobotNoJs(html: string): RobotHtmlOptimizationRes
   };
 }
 
-export function enforceNoindexFollowHtml(html: string): string {
+export function enforceNoindexHtml(html: string, robotsDirective: string): string {
+  const normalizedRobotsDirective: string = robotsDirective.replace(/\s+/g, '');
   let hasRobotsMeta: boolean = false;
   let hasGooglebotMeta: boolean = false;
   let normalizedHtml: string = html.replace(/<meta\b[^>]*>/gi, (metaTag: string): string => {
     const name: string = getHtmlAttributeValue(metaTag, 'name').toLowerCase();
     if (name === 'robots') {
       hasRobotsMeta = true;
-      return setHtmlAttributeValue(metaTag, 'content', 'noindex,follow');
+      return setHtmlAttributeValue(metaTag, 'content', normalizedRobotsDirective);
     }
 
     if (name === 'googlebot') {
       hasGooglebotMeta = true;
-      return setHtmlAttributeValue(metaTag, 'content', 'noindex,follow');
+      return setHtmlAttributeValue(metaTag, 'content', normalizedRobotsDirective);
     }
 
     return metaTag;
@@ -88,8 +89,8 @@ export function enforceNoindexFollowHtml(html: string): string {
   });
 
   const missingMetaTags: string = [
-    hasRobotsMeta ? '' : '<meta name="robots" content="noindex,follow">',
-    hasGooglebotMeta ? '' : '<meta name="googlebot" content="noindex,follow">',
+    hasRobotsMeta ? '' : `<meta name="robots" content="${normalizedRobotsDirective}">`,
+    hasGooglebotMeta ? '' : `<meta name="googlebot" content="${normalizedRobotsDirective}">`,
   ].join('');
 
   if (!missingMetaTags) {
