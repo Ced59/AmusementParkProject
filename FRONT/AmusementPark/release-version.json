@@ -1,6 +1,20 @@
 {
-  "version": "4.2.5",
+  "version": "4.2.6",
   "history": [
+    {
+      "version": "4.2.6",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les sitemaps sont plus compacts et plus fiables pour les moteurs de recherche.",
+        "en": "Sitemaps are more compact and reliable for search engines.",
+        "de": "Sitemaps sind kompakter und für Suchmaschinen zuverlässiger.",
+        "nl": "Sitemaps zijn compacter en betrouwbaarder voor zoekmachines.",
+        "it": "Le sitemap sono più compatte e affidabili per i motori di ricerca.",
+        "es": "Los sitemaps son más compactos y fiables para los buscadores.",
+        "pl": "Mapy witryny są bardziej zwarte i niezawodne dla wyszukiwarek.",
+        "pt": "Os sitemaps estão mais compactos e fiáveis para os motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.5",
       "releasedAt": "2026-08-20",

@@ -5,7 +5,7 @@
 Cette brique remplace le sitemap seed par une génération backend maîtrisée, pilotable depuis l'administration, avec :
 
 - un sitemap index public à `/sitemap.xml` ;
-- des sitemaps sectionnés par type **et par langue** sous `/sitemaps/*.xml` ;
+- des sitemaps sectionnés par type **et par langue** à la racine (`/{section}.xml`) ;
 - une page admin `Administration > SEO & sitemaps` ;
 - un historique de génération ;
 - des statistiques par section ;
@@ -18,12 +18,12 @@ La génération reste volontairement côté backend : le sitemap doit refléter 
 | URL | Contenu |
 | --- | --- |
 | `/sitemap.xml` | Sitemap index listant les sitemaps sectionnés. |
-| `/sitemaps/static-fr.xml`, `/sitemaps/static-en.xml`, etc. | Pages publiques statiques de la langue concernée : home, parks, rankings, about, contact, versions, privacy. |
-| `/sitemaps/parks-fr.xml`, `/sitemaps/parks-en.xml`, etc. | Pages publiques de parcs visibles dans la langue concernée : détail parc et météo. |
-| `/sitemaps/park-item-lists-fr.xml`, `/sitemaps/park-item-lists-en.xml`, etc. | Listes publiques des éléments des parcs visibles quand elles contiennent au moins un élément public. |
-| `/sitemaps/park-zones-fr.xml`, `/sitemaps/park-zones-en.xml`, etc. | Pages publiques des zones visibles contenant des éléments publics. |
-| `/sitemaps/park-items-fr.xml`, `/sitemaps/park-items-en.xml`, etc. | Pages publiques des éléments visibles rattachés à un parc visible dans la langue concernée. |
-| `/sitemaps/references-fr.xml`, `/sitemaps/references-en.xml`, etc. | Références publiques dans la langue concernée : exploitants, fondateurs, constructeurs. |
+| `/static-fr.xml`, `/static-en.xml`, etc. | Pages publiques statiques de la langue concernée : home, parks, rankings, about, contact, versions, privacy. |
+| `/parks-fr.xml`, `/parks-en.xml`, etc. | Pages publiques de parcs visibles dans la langue concernée : détail parc et météo. |
+| `/park-item-lists-fr.xml`, `/park-item-lists-en.xml`, etc. | Listes publiques des éléments des parcs visibles quand elles contiennent au moins un élément public. |
+| `/park-zones-fr.xml`, `/park-zones-en.xml`, etc. | Pages publiques des zones visibles contenant des éléments publics. |
+| `/park-items-fr.xml`, `/park-items-en.xml`, etc. | Pages publiques des éléments visibles rattachés à un parc visible dans la langue concernée. |
+| `/references-fr.xml`, `/references-en.xml`, etc. | Références publiques dans la langue concernée : exploitants, fondateurs, constructeurs. |
 | `/robots.txt` | Référence `/sitemap.xml` et bloque les chemins admin/auth/account. |
 | `/{indexNowKey}.txt` | Fichier de preuve IndexNow si IndexNow est activé et configuré. |
 
@@ -37,6 +37,7 @@ Une URL n'est incluse que si elle est publique et éditorialement exploitable.
 - Les pages admin, profil, auth, reset password et chemins techniques ne sont jamais inclus.
 - Les URL sont générées pour les langues configurées dans `Seo:SupportedLanguages`.
 - Chaque fichier sitemap ne contient qu'une seule langue, afin de garder un découpage lisible et de faciliter les diagnostics Search Console/Bing Webmaster Tools par langue.
+- Une section est découpée à 1 000 URLs par fichier. Ce plafond opérationnel reste très inférieur aux limites protocolaires et évite qu'un index racine proche de 64 Kio référence plusieurs centaines de fichiers minuscules.
 - Les fichiers vides ne sont pas ajoutés au sitemap index.
 
 ## Génération et persistance
@@ -50,6 +51,8 @@ La génération est orchestrée par `SeoSitemapGenerationOrchestrator` :
 5. écriture du sitemap index ;
 6. persistance du snapshot courant ;
 7. écriture d'une entrée d'historique.
+
+Après une génération automatique réussie, les caches XML de l'API puis du frontend SSR sont invalidés dans cet ordre. Le nouveau snapshot devient ainsi le document public servi, même lorsque le cache frontend est configuré sans expiration.
 
 Une génération de sitemap, qu'elle soit manuelle, automatique ou déclenchée en secours, ne soumet jamais d'URL à IndexNow.
 

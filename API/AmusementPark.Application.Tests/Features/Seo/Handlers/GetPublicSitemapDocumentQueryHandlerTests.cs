@@ -170,6 +170,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
     [Fact]
     public async Task HandleAsync_WhenIndexContainsLargeSection_ShouldExposeChunkLocations()
     {
+        int urlCount = (SitemapSectionChunker.MaxUrlsPerPublicSitemapFile * 2) + 1;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
@@ -181,9 +182,9 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             IndexXml = "<sitemapindex />",
             Sections = new[]
             {
-                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", 401, new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc)),
+                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", urlCount, new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc)),
             },
-            TotalUrlCount = 401,
+            TotalUrlCount = urlCount,
         };
 
         snapshotRepository
@@ -220,6 +221,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
     [Fact]
     public async Task HandleAsync_WhenVirtualChunkIsRequested_ShouldReturnOnlyThatChunk()
     {
+        int urlCount = SitemapSectionChunker.MaxUrlsPerPublicSitemapFile + 1;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
@@ -231,14 +233,14 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             IndexXml = "<sitemapindex />",
             Sections = new[]
             {
-                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", 201, null),
+                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", urlCount, null),
             },
-            TotalUrlCount = 201,
+            TotalUrlCount = urlCount,
         };
         string baseXml = new SitemapXmlWriter().WriteUrlSet(
             "https://example.com",
-            Enumerable.Range(1, 201)
-                .Select(index => new SitemapUrlEntry($"/fr/park/item-{index:000}"))
+            Enumerable.Range(1, urlCount)
+                .Select(index => new SitemapUrlEntry($"/fr/park/item-{index:D8}"))
                 .ToList());
 
         snapshotRepository
@@ -268,8 +270,8 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
-        Assert.Contains("https://example.com/fr/park/item-201", result.Value.Content, StringComparison.Ordinal);
-        Assert.DoesNotContain("https://example.com/fr/park/item-200", result.Value.Content, StringComparison.Ordinal);
+        Assert.Contains($"https://example.com/fr/park/item-{urlCount:D8}", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain($"https://example.com/fr/park/item-{SitemapSectionChunker.MaxUrlsPerPublicSitemapFile:D8}", result.Value.Content, StringComparison.Ordinal);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyNoOtherCalls();
         settingsRepository.VerifyNoOtherCalls();

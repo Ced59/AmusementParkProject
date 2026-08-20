@@ -3364,8 +3364,14 @@ function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentC
 
 function proxyRootSitemapSectionToApi(req: Request, res: Response, next: NextFunction): void {
   const fileName = req.params['fileName'];
-  if (!fileName || fileName.toLowerCase() === 'sitemap.xml') {
+  const normalizedFileName = fileName?.toLowerCase();
+  if (!normalizedFileName || normalizedFileName === 'sitemap.xml') {
     next();
+    return;
+  }
+
+  if (normalizedFileName === 'sitemaps.xml') {
+    res.redirect(308, '/sitemap.xml');
     return;
   }
 

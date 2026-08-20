@@ -232,6 +232,7 @@ si l’historique du projet évolue :
 
 ```powershell
 $legacySitemapCandidates = @(
+    '/sitemaps.xml',
     '/sitemaps/sitemap.xml',
     '/sitemaps/static-en.xml',
     '/sitemaps/parks-fr.xml',
