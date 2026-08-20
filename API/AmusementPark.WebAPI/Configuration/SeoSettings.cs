@@ -35,11 +35,6 @@ public sealed class SeoSettings
     public List<string> RobotsDisallowPaths { get; set; } = new()
     {
         "/api/",
-        "/{lang}/admin/",
-        "/{lang}/profile",
-        "/{lang}/confirm-account",
-        "/{lang}/forgot-password",
-        "/{lang}/reset-password",
     };
 
     public int AhrefsCrawlDelaySeconds { get; set; } = 2;
