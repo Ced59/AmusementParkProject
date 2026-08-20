@@ -126,6 +126,20 @@ describe('SSR route status helpers', () => {
       ),
     ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks?search=test')).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/fr/rankings?category=Attraction')).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test?tab=details')).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader(
+        '/fr/park/123/parc-test/item/item-1/item-test?source=search',
+      ),
+    ).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader(
+        '/fr/park-manufacturer/42/mack-rides?source=directory',
+      ),
+    ).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/fr/technical/chain-lift?view=compact')).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/?source=bookmark')).toBe(true);
     expect(
       shouldApplyNoindexFollowHeader(
         '/fr/attraction/standalone-123/attraction-test/history?page=2',

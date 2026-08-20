@@ -1666,6 +1666,15 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
+  it('keeps parameterized rankings out of the index', () => {
+    service.applyRouteDefaults('/fr/rankings?category=Attraction&page=2');
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/rankings');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
   it('applies indexable localized metadata to the public technical pages list', () => {
     service.applyRouteDefaults('/fr/technical');
 

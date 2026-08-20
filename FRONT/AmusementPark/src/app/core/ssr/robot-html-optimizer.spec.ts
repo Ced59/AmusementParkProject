@@ -1,4 +1,5 @@
 import {
+  enforceNoindexFollowHtml,
   inspectSeoReadyHtml,
   isBareAngularShell,
   isSeoReadyHtml,
@@ -50,6 +51,28 @@ describe('robot HTML optimizer', () => {
     expect(result.html).toContain('as="style"');
     expect(result.html).toContain('rel="stylesheet"');
     expect(result.html).toContain('as="image"');
+  });
+
+  it('normalizes noindex HTML and removes index-only discovery signals', () => {
+    const html: string = [
+      '<html><head>',
+      '<meta name="robots" content="index,follow">',
+      '<link rel="canonical" href="https://amusement-parks.fun/fr/rankings">',
+      '<link rel="alternate" hreflang="fr" href="https://amusement-parks.fun/fr/rankings">',
+      '<link rel="alternate" hreflang="x-default" href="https://amusement-parks.fun/en/rankings">',
+      '<script type="application/ld+json">{"@context":"https://schema.org"}</script>',
+      '<script type="module" src="main.js"></script>',
+      '</head><body><main>Filtered rankings</main></body></html>',
+    ].join('');
+
+    const result: string = enforceNoindexFollowHtml(html);
+
+    expect(result).toContain('<meta name="robots" content="noindex,follow">');
+    expect(result).toContain('<meta name="googlebot" content="noindex,follow">');
+    expect(result).toContain('rel="canonical"');
+    expect(result).toContain('main.js');
+    expect(result).not.toContain('hreflang=');
+    expect(result).not.toContain('application/ld+json');
   });
 
   it('compacts presentational Angular SSR markup while preserving SEO content and links', () => {
@@ -234,9 +257,10 @@ describe('robot HTML optimizer', () => {
   });
 
   it('returns bot SSR unavailable only for robot requests that would otherwise be 200', () => {
-    expect(shouldReturnBotSsrUnavailable(true, 200)).toBe(true);
-    expect(shouldReturnBotSsrUnavailable(true, 404)).toBe(false);
-    expect(shouldReturnBotSsrUnavailable(false, 200)).toBe(false);
+    expect(shouldReturnBotSsrUnavailable(true, 200, false)).toBe(true);
+    expect(shouldReturnBotSsrUnavailable(true, 200, true)).toBe(false);
+    expect(shouldReturnBotSsrUnavailable(true, 404, false)).toBe(false);
+    expect(shouldReturnBotSsrUnavailable(false, 200, false)).toBe(false);
   });
 });
 

@@ -1840,7 +1840,7 @@ export class SeoService {
     }
 
     if (staticRouteKey) {
-      const isIndexableStaticPage: boolean = staticRouteKey !== 'sitemap';
+      const isIndexableStaticPage: boolean = staticRouteKey !== 'sitemap' && !this.hasQueryString(url);
       const routeData: SeoRouteData = this.buildStaticRouteData(
         staticRouteKey,
         language,
