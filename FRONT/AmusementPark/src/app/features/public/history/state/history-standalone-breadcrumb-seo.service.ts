@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { JsonLdService } from '@core/seo/json-ld.service';
+import { isHistoryTimelineIndexable } from '@core/seo/seo-page-value-policy';
 import { buildPublicRoutePath, buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { HistoryTimelinePageViewModel } from '../models/history-view.model';
 
@@ -29,9 +30,10 @@ export class HistoryStandaloneBreadcrumbSeoService {
   ) {
   }
 
-  apply(timeline: HistoryTimelinePageViewModel, language: string, canonicalPath: string | null): void {
+  apply(timeline: HistoryTimelinePageViewModel, language: string, url: string, canonicalPath: string | null): void {
     const attraction = timeline.standaloneAttraction;
-    if (!attraction?.id || !attraction.name || !canonicalPath) {
+    const totalEvents: number = timeline.pagination?.totalItems ?? timeline.events.length;
+    if (!isHistoryTimelineIndexable(totalEvents, url) || !attraction?.id || !attraction.name || !canonicalPath) {
       return;
     }
 

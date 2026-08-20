@@ -219,7 +219,7 @@ export class HistoryTimelinePageComponent implements OnInit {
       this.seoService.applyHistoryTimelineSeo(currentTimeline, this.currentLanguage(), this.router.url, canonicalPath);
 
       if (currentTimeline.standaloneAttraction) {
-        this.standaloneBreadcrumbSeoService.apply(currentTimeline, this.currentLanguage(), canonicalPath);
+        this.standaloneBreadcrumbSeoService.apply(currentTimeline, this.currentLanguage(), this.router.url, canonicalPath);
       }
     });
   }

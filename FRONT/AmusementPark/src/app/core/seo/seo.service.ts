@@ -25,6 +25,7 @@ import { SEO_DEFAULT_LANGUAGE } from './seo-languages';
 import {
   MINIMUM_INDEXABLE_COLLECTION_ENTRIES,
   isCollectionIndexable,
+  isHistoryTimelineIndexable,
   isImageGalleryIndexable
 } from './seo-page-value-policy';
 import { SeoRoutePolicyService } from './seo-route-policy.service';
@@ -2524,7 +2525,7 @@ export class SeoService {
     const description: string = `${copy.timelineDescription(contextLabel)}${this.resolveHistoryTimelinePaginationDescriptionSuffix(timeline, normalizedLanguage)}`;
     const imageId: string | null = this.resolveHistoryTimelineSocialImageId(timeline);
     const totalEvents: number = timeline.pagination?.totalItems ?? timeline.events.length;
-    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(totalEvents);
+    const isIndexable: boolean = isHistoryTimelineIndexable(totalEvents, url);
 
     this.apply({
       title,

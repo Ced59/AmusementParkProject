@@ -33,13 +33,23 @@ describe('HistoryStandaloneBreadcrumbSeoService', () => {
       includedParkItems: [],
       showParkItemControls: false,
       events: [],
-      pagination: null,
+      pagination: {
+        totalItems: 2,
+        totalPages: 1,
+        currentPage: 1,
+        itemsPerPage: 24
+      },
       pageRanges: [],
       yearStart: 2007,
       yearEnd: 2007
     };
 
-    service.apply(timeline, 'fr', '/fr/attraction/standalone-1/pendolino/history');
+    service.apply(
+      timeline,
+      'fr',
+      '/fr/attraction/standalone-1/pendolino/history',
+      '/fr/attraction/standalone-1/pendolino/history'
+    );
 
     expect(jsonLdService.replaceJsonLdByType).toHaveBeenCalledTimes(1);
     expect(jsonLdService.replaceJsonLdByType).toHaveBeenCalledWith(
@@ -53,5 +63,27 @@ describe('HistoryStandaloneBreadcrumbSeoService', () => {
         ]
       })
     );
+  });
+
+  it('does not recreate a breadcrumb for a noindex standalone timeline', () => {
+    const canonicalUrlService = {} as CanonicalUrlService;
+    const jsonLdService = {
+      replaceJsonLdByType: vi.fn()
+    } as unknown as JsonLdService;
+    const service = new HistoryStandaloneBreadcrumbSeoService(canonicalUrlService, jsonLdService);
+    const timeline = {
+      standaloneAttraction: { id: 'standalone-1', name: 'Pendolino' },
+      events: [{}],
+      pagination: null
+    } as unknown as HistoryTimelinePageViewModel;
+
+    service.apply(
+      timeline,
+      'fr',
+      '/fr/attraction/standalone-1/pendolino/history',
+      '/fr/attraction/standalone-1/pendolino/history'
+    );
+
+    expect(jsonLdService.replaceJsonLdByType).not.toHaveBeenCalled();
   });
 });
