@@ -42,6 +42,7 @@ export const HISTORY_API_ENDPOINTS = {
     return `history/parks/${encodeURIComponent(parkId)}${params.length > 0 ? `?${params.join('&')}` : ''}`;
   },
   getParkItemTimeline: (parkItemId: string, page: number = 1) => `history/park-items/${encodeURIComponent(parkItemId)}${page > 1 ? `?page=${encodeURIComponent(String(page))}` : ''}`,
+  getStandaloneAttractionTimeline: (standaloneAttractionId: string, page: number = 1) => `history/standalone-attractions/${encodeURIComponent(standaloneAttractionId)}${page > 1 ? `?page=${encodeURIComponent(String(page))}` : ''}`,
   getArticle: (eventId: string) => `history/articles/${encodeURIComponent(eventId)}`,
   getAdminEvents: (query: AdminHistoryEventListQuery) => `admin/history/events${buildQuery({
     page: query.page ?? 1,
