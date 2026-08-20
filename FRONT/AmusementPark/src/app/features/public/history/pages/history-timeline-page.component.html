@@ -11,6 +11,16 @@
   }">
   @if (currentTimeline) {
     <section class="history-page">
+      @if (currentTimeline.standaloneAttraction) {
+        <nav class="history-breadcrumb" [attr.aria-label]="breadcrumbAriaLabel()">
+          <a [routerLink]="homeLink()">{{ breadcrumbHomeLabel() }}</a>
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="backLink(currentTimeline)">{{ currentTimeline.ownerName }}</a>
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">{{ breadcrumbHistoryLabel(currentTimeline) }}</span>
+        </nav>
+      }
+
       <header class="history-hero">
         <div class="history-hero__copy">
           <p class="history-hero__kicker">
@@ -135,7 +145,7 @@
 
       <app-public-share-panel
         targetType="Page"
-        [targetId]="currentTimeline.parkItem?.id ?? currentTimeline.park?.id ?? null"
+        [targetId]="currentTimeline.standaloneAttraction?.id ?? currentTimeline.parkItem?.id ?? currentTimeline.park?.id ?? null"
         [targetTitle]="shareTitle(currentTimeline)"
         titleKey="shareSocial.historyTimeline.title"
         descriptionKey="shareSocial.historyTimeline.description"

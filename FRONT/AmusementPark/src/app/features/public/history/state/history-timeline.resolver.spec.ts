@@ -26,9 +26,8 @@ describe('historyTimelineResolver', () => {
   beforeEach(() => {
     historyDataPort = {
       getParkTimeline: vi.fn().mockName('HistoryDataPort.getParkTimeline'),
-      getParkItemTimeline: vi
-        .fn()
-        .mockName('HistoryDataPort.getParkItemTimeline'),
+      getParkItemTimeline: vi.fn().mockName('HistoryDataPort.getParkItemTimeline'),
+      getStandaloneAttractionTimeline: vi.fn().mockName('HistoryDataPort.getStandaloneAttractionTimeline'),
       getArticle: vi.fn().mockName('HistoryDataPort.getArticle'),
     } as unknown as MockedObject<HistoryDataPort>;
     ssrHttpStatusService = {
@@ -44,6 +43,22 @@ describe('historyTimelineResolver', () => {
         { provide: SsrHttpStatusService, useValue: ssrHttpStatusService },
       ],
     });
+  });
+
+  it('loads a standalone attraction timeline before route activation', async () => {
+    const timeline: HistoryTimeline = createTimeline('StandaloneAttraction');
+    historyDataPort.getStandaloneAttractionTimeline.mockReturnValue(of(timeline));
+
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ standaloneAttractionId: 'standalone-1' });
+
+    expect(resolvedData).toEqual({ timeline, includeParkItems: false, page: 1 });
+    expect(historyDataPort.getStandaloneAttractionTimeline).toHaveBeenCalledWith(
+      'standalone-1',
+      expect.objectContaining({ context: expect.any(HttpContext) }),
+      1,
+    );
+    expect(historyDataPort.getParkTimeline).not.toHaveBeenCalled();
+    expect(historyDataPort.getParkItemTimeline).not.toHaveBeenCalled();
   });
 
   it('loads a park item timeline before route activation', async () => {
@@ -218,7 +233,7 @@ function createRoute(
   } as ActivatedRouteSnapshot;
 }
 
-function createTimeline(entityType: 'Park' | 'ParkItem'): HistoryTimeline {
+function createTimeline(entityType: 'Park' | 'ParkItem' | 'StandaloneAttraction'): HistoryTimeline {
   return {
     entityType,
     park:
@@ -243,6 +258,18 @@ function createTimeline(entityType: 'Park' | 'ParkItem'): HistoryTimeline {
             latitude: 50.8,
             longitude: 6.8,
             isVisible: true,
+          }
+        : null,
+    standaloneAttraction:
+      entityType === 'StandaloneAttraction'
+        ? {
+            id: 'standalone-1',
+            name: 'Pendolino',
+            type: 'RollerCoaster',
+            latitude: 46.561236,
+            longitude: 13.253481,
+            isVisible: true,
+            adminReviewStatus: 'Validated',
           }
         : null,
     includedParkItems: [],

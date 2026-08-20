@@ -34,6 +34,10 @@
             <i class="pi pi-arrow-left" aria-hidden="true"></i>
             <span>{{ t('backToParks') }}</span>
           </a>
+          <a class="btn btn--ghost" [routerLink]="historyLink(current)">
+            <i class="pi pi-history" aria-hidden="true"></i>
+            <span>{{ t('history') }}</span>
+          </a>
           <a class="btn btn--primary" *ngIf="getWebsiteUrl(current) as websiteUrl" [href]="websiteUrl" target="_blank" rel="noopener">
             <i class="pi pi-external-link" aria-hidden="true"></i>
             <span>{{ t('officialWebsite') }}</span>

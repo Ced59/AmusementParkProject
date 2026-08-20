@@ -7,7 +7,8 @@
       "subtitle": "Gere eventos datados, vidas de items entre vários parques, marcos documentados e artigos.",
       "entityTypes": {
         "Park": "Parque",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Atração isolada"
       },
       "precision": {
         "Year": "Ano",

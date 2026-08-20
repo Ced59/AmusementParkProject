@@ -41,4 +41,26 @@ describe('JsonLdService', () => {
     expect(testDocument.head.querySelectorAll('script[type="application/ld+json"]').length).toBe(1);
     expect(testDocument.head.textContent).toContain('External');
   });
+
+  it('replaces one managed json-ld document by type without dropping the others', () => {
+    service.setJsonLd([
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', marker: 'old' },
+      { '@context': 'https://schema.org', '@type': 'ItemList', marker: 'timeline' }
+    ]);
+
+    service.replaceJsonLdByType('BreadcrumbList', {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      marker: 'standalone'
+    });
+
+    const documents: Array<Record<string, unknown>> = Array.from(
+      testDocument.head.querySelectorAll<HTMLScriptElement>('script[data-managed-by="amusementpark-seo"]')
+    ).map((element: HTMLScriptElement): Record<string, unknown> => JSON.parse(element.text) as Record<string, unknown>);
+
+    expect(documents).toHaveLength(2);
+    expect(documents).toContainEqual(expect.objectContaining({ '@type': 'BreadcrumbList', marker: 'standalone' }));
+    expect(documents).toContainEqual(expect.objectContaining({ '@type': 'ItemList', marker: 'timeline' }));
+    expect(documents).not.toContainEqual(expect.objectContaining({ marker: 'old' }));
+  });
 });

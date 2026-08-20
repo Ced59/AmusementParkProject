@@ -7,7 +7,8 @@
       "subtitle": "Beheer gedateerde gebeurtenissen, itemlevens over meerdere parken, onderbouwde mijlpalen en artikelen.",
       "entityTypes": {
         "Park": "Park",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Losstaande attractie"
       },
       "precision": {
         "Year": "Jaar",

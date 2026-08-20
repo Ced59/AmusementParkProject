@@ -2,9 +2,10 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { LocalizedItem } from '@app/models/shared/localized-item';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { PaginationContract } from '@shared/models/contracts';
 
-export type HistoryEntityType = 'Park' | 'ParkItem';
+export type HistoryEntityType = 'Park' | 'ParkItem' | 'StandaloneAttraction';
 export type HistoryDatePrecision = 'Year' | 'Month' | 'Day';
 export type HistoryArticleBlockType = 'Paragraph' | 'Heading' | 'Image' | 'Gallery' | 'Quote' | 'FactBox' | 'SourceNote';
 
@@ -81,8 +82,9 @@ export interface HistoryTimeline {
   entityType: HistoryEntityType | string;
   park?: Park | null;
   parkItem?: ParkItem | null;
+  standaloneAttraction?: StandaloneAttraction | null;
   hasParkItemTimelineEvents?: boolean;
-  includedParkItems: ParkItem[];
+  includedParkItems?: ParkItem[];
   events: HistoryTimelineEvent[];
   pagination?: PaginationContract | null;
   pageRanges?: HistoryTimelinePageRange[];
@@ -99,6 +101,7 @@ export interface HistoryArticle {
   event: HistoryEvent;
   park?: Park | null;
   parkItem?: ParkItem | null;
+  standaloneAttraction?: StandaloneAttraction | null;
   contextPark?: Park | null;
   mainImage?: ImageDto | null;
 }

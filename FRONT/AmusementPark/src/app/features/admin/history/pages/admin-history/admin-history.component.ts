@@ -90,7 +90,7 @@ export class AdminHistoryComponent implements OnInit {
   protected readonly messageKey = signal<string | null>(null);
   protected readonly formErrorKey = signal<string | null>(null);
   protected readonly currentLang = signal<string>('en');
-  protected readonly eventTypeOptions = computed(() => this.eventForm.controls.entityType.value === 'ParkItem' ? PARK_ITEM_HISTORY_EVENT_TYPES : PARK_HISTORY_EVENT_TYPES);
+  protected readonly eventTypeOptions = computed(() => this.isParkItemLikeEntityType(this.eventForm.controls.entityType.value) ? PARK_ITEM_HISTORY_EVENT_TYPES : PARK_HISTORY_EVENT_TYPES);
 
   protected readonly filterForm = new FormGroup<AdminHistoryFiltersForm>({
     entityType: new FormControl<HistoryEntityType | ''>('', { nonNullable: true }),
@@ -180,7 +180,7 @@ export class AdminHistoryComponent implements OnInit {
       month: null,
       day: null,
       datePrecision: 'Year',
-      eventType: entityType === 'ParkItem' ? 'Opening' : 'Opening',
+      eventType: 'Opening',
       isMajor: false,
       isVisible: true,
       slug: '',
@@ -207,7 +207,7 @@ export class AdminHistoryComponent implements OnInit {
     this.formErrorKey.set(null);
     this.eventForm.reset({
       key: event.key ?? '',
-      entityType: event.entityType === 'ParkItem' ? 'ParkItem' : 'Park',
+      entityType: this.normalizeEntityType(event.entityType),
       ownerId: event.ownerId ?? '',
       parkId: event.parkId ?? '',
       parkItemId: event.parkItemId ?? '',
@@ -239,9 +239,15 @@ export class AdminHistoryComponent implements OnInit {
 
   protected onEntityTypeChanged(): void {
     const entityType: HistoryEntityType = this.eventForm.controls.entityType.value;
-    const eventTypes: readonly string[] = entityType === 'ParkItem' ? PARK_ITEM_HISTORY_EVENT_TYPES : PARK_HISTORY_EVENT_TYPES;
+    const eventTypes: readonly string[] = this.isParkItemLikeEntityType(entityType) ? PARK_ITEM_HISTORY_EVENT_TYPES : PARK_HISTORY_EVENT_TYPES;
     if (!eventTypes.includes(this.eventForm.controls.eventType.value)) {
       this.eventForm.controls.eventType.setValue(eventTypes[0] ?? 'Other');
+    }
+
+    if (entityType === 'StandaloneAttraction') {
+      this.eventForm.controls.parkId.setValue('');
+      this.eventForm.controls.parkItemId.setValue('');
+      this.eventForm.controls.contextParkId.setValue('');
     }
   }
 
@@ -312,7 +318,7 @@ export class AdminHistoryComponent implements OnInit {
         next: (): void => {
           this.messageKey.set('admin.history.messages.deleted');
           if (this.editingEvent()?.id === event.id) {
-            this.startCreate(event.entityType === 'ParkItem' ? 'ParkItem' : 'Park');
+            this.startCreate(this.normalizeEntityType(event.entityType));
           }
         },
         error: (): void => {
@@ -421,5 +427,17 @@ export class AdminHistoryComponent implements OnInit {
 
   private normalizePrecision(value: string | null | undefined): HistoryDatePrecision {
     return value === 'Day' || value === 'Month' ? value : 'Year';
+  }
+
+  private normalizeEntityType(value: string | null | undefined): HistoryEntityType {
+    if (value === 'ParkItem' || value === 'StandaloneAttraction') {
+      return value;
+    }
+
+    return 'Park';
+  }
+
+  private isParkItemLikeEntityType(entityType: HistoryEntityType): boolean {
+    return entityType === 'ParkItem' || entityType === 'StandaloneAttraction';
   }
 }

@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -19,15 +20,18 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
 
     public HistoryTimelinesSitemapSectionProvider(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkItemRepository parkItemRepository,
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.standaloneAttractionRepository = standaloneAttractionRepository;
     }
 
     public string Key => SitemapSectionKeys.History;
@@ -43,9 +47,17 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
         IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetPublicVisibleEventsAsync(PublicHistoryEventLimit, cancellationToken);
         IReadOnlyCollection<Park> automaticParkCandidates = await LoadPublicHistoryParksAsync(this.parkRepository, cancellationToken);
         IReadOnlyCollection<ParkItem> automaticItemCandidates = await LoadPublicHistoryItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyCollection<StandaloneAttraction> automaticStandaloneCandidates = this.standaloneAttractionRepository is null
+            ? Array.Empty<StandaloneAttraction>()
+            : (await this.standaloneAttractionRepository.GetPublicSitemapCandidatesAsync(PublicHistoryEventLimit, cancellationToken))
+                .Where(static attraction =>
+                    HistorySitemapCandidateResolver.IsPublicHistoryStandaloneAttraction(attraction) &&
+                    StandaloneAttractionAutomaticHistoryEventFactory.HasLifecycleDate(attraction))
+                .ToList();
         IReadOnlyCollection<HistoryEvent> automaticEvents = AutomaticHistoryEventFactory
             .CreateParkLifecycleEvents(automaticParkCandidates)
             .Concat(AutomaticHistoryEventFactory.CreateParkItemLifecycleEvents(automaticItemCandidates))
+            .Concat(automaticStandaloneCandidates.SelectMany(StandaloneAttractionAutomaticHistoryEventFactory.CreateLifecycleEvents))
             .ToList();
 
         if (automaticEvents.Count > 0)
@@ -58,7 +70,8 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
             context.SupportedLanguages,
             this.parkRepository,
             this.parkItemRepository,
-            cancellationToken);
+            cancellationToken,
+            this.standaloneAttractionRepository);
 
         Dictionary<string, SitemapUrlEntry> urlsByPath = new Dictionary<string, SitemapUrlEntry>(StringComparer.OrdinalIgnoreCase);
         foreach (HistoryEvent historyEvent in resolvedData.Events)
@@ -66,6 +79,12 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
             if (historyEvent.EntityType == HistoryEntityType.Park)
             {
                 AddParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
+                continue;
+            }
+
+            if (historyEvent.EntityType == HistoryEntityType.StandaloneAttraction)
+            {
+                AddStandaloneAttractionTimelineUrls(urlsByPath, resolvedData, historyEvent);
                 continue;
             }
 
@@ -172,6 +191,29 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 historyEvent.UpdatedAtUtc,
                 "monthly",
                 0.72m);
+        }
+    }
+
+    private static void AddStandaloneAttractionTimelineUrls(
+        Dictionary<string, SitemapUrlEntry> urlsByPath,
+        HistorySitemapResolvedData resolvedData,
+        HistoryEvent historyEvent)
+    {
+        if (!resolvedData.PublicStandaloneAttractionById.TryGetValue(historyEvent.OwnerId, out StandaloneAttraction? attraction))
+        {
+            return;
+        }
+
+        string attractionSlug = SeoSlugService.ToSlug(attraction.Name, "attraction");
+        string pathWithoutLanguage = $"attraction/{attraction.Id}/{attractionSlug}/history";
+        foreach (string language in resolvedData.Languages)
+        {
+            HistorySitemapCandidateResolver.AddOrRefreshUrl(
+                urlsByPath,
+                $"/{language}/{pathWithoutLanguage}",
+                historyEvent.UpdatedAtUtc,
+                "monthly",
+                0.70m);
         }
     }
 
@@ -354,7 +396,8 @@ internal sealed record HistorySitemapResolvedData(
     IReadOnlyCollection<string> Languages,
     IReadOnlyCollection<HistoryEvent> Events,
     IReadOnlyDictionary<string, Park> PublicParkById,
-    IReadOnlyDictionary<string, ParkItem> PublicItemById);
+    IReadOnlyDictionary<string, ParkItem> PublicItemById,
+    IReadOnlyDictionary<string, StandaloneAttraction> PublicStandaloneAttractionById);
 
 internal static class HistorySitemapCandidateResolver
 {
@@ -363,7 +406,8 @@ internal static class HistorySitemapCandidateResolver
         IReadOnlyCollection<string> supportedLanguages,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
     {
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(supportedLanguages);
         if (events.Count == 0)
@@ -372,7 +416,8 @@ internal static class HistorySitemapCandidateResolver
                 languages,
                 Array.Empty<HistoryEvent>(),
                 new Dictionary<string, Park>(StringComparer.OrdinalIgnoreCase),
-                new Dictionary<string, ParkItem>(StringComparer.OrdinalIgnoreCase));
+                new Dictionary<string, ParkItem>(StringComparer.OrdinalIgnoreCase),
+                new Dictionary<string, StandaloneAttraction>(StringComparer.OrdinalIgnoreCase));
         }
 
         IReadOnlyCollection<string> itemIds = events
@@ -386,13 +431,25 @@ internal static class HistorySitemapCandidateResolver
             .Where(IsPublicHistoryItem)
             .ToDictionary(static item => item.Id!, static item => item, StringComparer.OrdinalIgnoreCase);
 
+        IReadOnlyCollection<string> standaloneAttractionIds = events
+            .Where(static historyEvent => historyEvent.EntityType == HistoryEntityType.StandaloneAttraction && !string.IsNullOrWhiteSpace(historyEvent.OwnerId))
+            .Select(static historyEvent => historyEvent.OwnerId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        IReadOnlyCollection<StandaloneAttraction> standaloneAttractions = standaloneAttractionRepository is null || standaloneAttractionIds.Count == 0
+            ? Array.Empty<StandaloneAttraction>()
+            : await standaloneAttractionRepository.GetByIdsAsync(standaloneAttractionIds, cancellationToken);
+        Dictionary<string, StandaloneAttraction> publicStandaloneAttractionById = standaloneAttractions
+            .Where(IsPublicHistoryStandaloneAttraction)
+            .ToDictionary(static attraction => attraction.Id!, static attraction => attraction, StringComparer.OrdinalIgnoreCase);
+
         HashSet<string> parkIds = ResolveParkIds(events, publicItemById);
         IReadOnlyCollection<Park> parks = await parkRepository.GetByIdsAsync(parkIds, cancellationToken);
         Dictionary<string, Park> publicParkById = parks
             .Where(IsPublicHistoryPark)
             .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
 
-        return new HistorySitemapResolvedData(languages, events, publicParkById, publicItemById);
+        return new HistorySitemapResolvedData(languages, events, publicParkById, publicItemById, publicStandaloneAttractionById);
     }
 
     public static bool IsPublicArticleEvent(HistoryEvent historyEvent)
@@ -449,6 +506,11 @@ internal static class HistorySitemapCandidateResolver
                 continue;
             }
 
+            if (historyEvent.EntityType == HistoryEntityType.StandaloneAttraction)
+            {
+                continue;
+            }
+
             AddIfNotBlank(parkIds, historyEvent.ContextParkId);
             AddIfNotBlank(parkIds, historyEvent.ParkId);
 
@@ -476,6 +538,14 @@ internal static class HistorySitemapCandidateResolver
                !string.IsNullOrWhiteSpace(item.Name) &&
                item.IsVisible &&
                item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
+    public static bool IsPublicHistoryStandaloneAttraction(StandaloneAttraction attraction)
+    {
+        return !string.IsNullOrWhiteSpace(attraction.Id) &&
+               !string.IsNullOrWhiteSpace(attraction.Name) &&
+               attraction.IsVisible &&
+               attraction.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
     private static string? ResolveFirstText(IReadOnlyCollection<LocalizedText>? texts)

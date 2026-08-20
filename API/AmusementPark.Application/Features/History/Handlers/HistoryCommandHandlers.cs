@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 
@@ -17,6 +18,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public UpsertHistoryEventCommandHandler(
@@ -24,10 +26,26 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
+        : this(
+            historyEventRepository,
+            parkRepository,
+            parkItemRepository,
+            null,
+            sitemapRefreshScheduler)
+    {
+    }
+
+    public UpsertHistoryEventCommandHandler(
+        IHistoryEventRepository historyEventRepository,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        IStandaloneAttractionRepository? standaloneAttractionRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.standaloneAttractionRepository = standaloneAttractionRepository;
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
@@ -96,6 +114,17 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         if (!Enum.TryParse(model.EventType, true, out ParkItemHistoryEventType _))
         {
             return HistoryApplicationErrors.InvalidEventType();
+        }
+
+        if (model.EntityType == HistoryEntityType.StandaloneAttraction)
+        {
+            if (this.standaloneAttractionRepository is null)
+            {
+                return HistoryApplicationErrors.InvalidOwner();
+            }
+
+            StandaloneAttraction? attraction = await this.standaloneAttractionRepository.GetByIdAsync(ownerId, true, cancellationToken);
+            return attraction is null ? HistoryApplicationErrors.InvalidOwner() : null;
         }
 
         ParkItem? item = await this.parkItemRepository.GetByIdAsync(ownerId, true, cancellationToken);

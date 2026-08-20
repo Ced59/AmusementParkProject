@@ -178,6 +178,18 @@ export const routes: Routes = [
           { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
           { path: 'park-manufacturer/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'manufacturer' } },
+          {
+            path: 'attraction/:standaloneAttractionId/:slug/history/page/:page',
+            resolve: { [HISTORY_TIMELINE_ROUTE_DATA_KEY]: historyTimelineResolver },
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+            loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent)
+          },
+          {
+            path: 'attraction/:standaloneAttractionId/:slug/history',
+            resolve: { [HISTORY_TIMELINE_ROUTE_DATA_KEY]: historyTimelineResolver },
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+            loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent)
+          },
           { path: 'attraction/:id/:slug', loadComponent: () => import('./features/public/standalone-attractions/pages/standalone-attraction-detail-page.component').then((m) => m.StandaloneAttractionDetailPageComponent) },
           { path: 'park/:id/:slug/images', loadComponent: () => import('./features/public/parks/pages/park-images-page.component').then((m) => m.ParkImagesPageComponent) },
           {
