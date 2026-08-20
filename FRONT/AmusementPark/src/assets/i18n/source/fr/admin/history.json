@@ -7,7 +7,8 @@
       "subtitle": "Gère les événements datés, les vies d’items entre plusieurs parcs, les jalons sourcés et les articles.",
       "entityTypes": {
         "Park": "Parc",
-        "ParkItem": "ParkItem"
+        "ParkItem": "ParkItem",
+        "StandaloneAttraction": "Attraction isolée"
       },
       "precision": {
         "Year": "Année",
