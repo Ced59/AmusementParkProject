@@ -1858,7 +1858,15 @@ export class SeoService {
   }
 
   applyParkListSeo(language: string, url: string): void {
-    this.apply(this.buildStaticRouteData('parks', language, url, 'index,follow'));
+    const isIndexable: boolean = !this.hasQueryString(url);
+    const routeData: SeoRouteData = this.buildStaticRouteData(
+      'parks',
+      language,
+      url,
+      isIndexable ? 'index,follow' : 'noindex,follow'
+    );
+
+    this.apply(isIndexable ? routeData : { ...routeData, alternates: [], jsonLd: [] });
   }
 
   applyTechnicalPageSeo(page: TechnicalPage, language: string, url: string): void {

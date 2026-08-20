@@ -112,6 +112,7 @@ describe('SSR route status helpers', () => {
         '/fr/park/123/parc-test/pricing?campaign=spring',
       ),
     ).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/fr/parks?search=test')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBe(false);

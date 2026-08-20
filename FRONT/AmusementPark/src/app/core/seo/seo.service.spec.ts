@@ -1701,6 +1701,22 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe('http://localhost:4200/fr/sitemap');
   });
 
+  it('keeps filtered park list variants out of the search index', () => {
+    service.applyParkListSeo('fr', '/fr/parks?search=test');
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
+  it('keeps the unfiltered park list indexable', () => {
+    service.applyParkListSeo('fr', '/fr/parks');
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
+  });
+
   it('applies indexable interactive map metadata to public park map pages', () => {
     service.applyParkMapSeo(
       buildPark({ name: 'Parc Demo' }),
