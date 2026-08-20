@@ -16,11 +16,16 @@ namespace AmusementPark.Application.Features.Seo.Services;
 public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
 {
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
     private readonly IVideoRepository videoRepository;
 
-    public ParkVideosSitemapSectionProvider(IParkRepository parkRepository, IVideoRepository videoRepository)
+    public ParkVideosSitemapSectionProvider(
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        IVideoRepository videoRepository)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
         this.videoRepository = videoRepository;
     }
 
@@ -40,7 +45,19 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
             VideoOwnerType.Park,
             cancellationToken);
         IReadOnlyDictionary<string, List<Video>> videosByParkId = VideoSitemapSectionProviderHelpers.GroupVideosByOwnerId(publishedVideos);
-        IReadOnlyCollection<string> parentParkIds = videosByParkId.Keys.ToList();
+        IReadOnlyCollection<Video> publishedItemVideos = await VideoSitemapSectionProviderHelpers.LoadPublishedVideosAsync(
+            this.videoRepository,
+            VideoOwnerType.ParkItem,
+            cancellationToken);
+        IReadOnlyDictionary<string, List<Video>> videosByItemId = VideoSitemapSectionProviderHelpers.GroupVideosByOwnerId(publishedItemVideos);
+        IReadOnlyCollection<ParkItem> candidateItems = videosByItemId.Count == 0
+            ? Array.Empty<ParkItem>()
+            : await this.parkItemRepository.GetByIdsAsync(videosByItemId.Keys.ToList(), cancellationToken);
+        IReadOnlyDictionary<string, List<Video>> itemVideosByParkId = GroupPublicItemVideosByParkId(candidateItems, videosByItemId);
+        IReadOnlyCollection<string> parentParkIds = videosByParkId.Keys
+            .Concat(itemVideosByParkId.Keys)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
 
         if (parentParkIds.Count == 0)
         {
@@ -55,7 +72,9 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in visibleParkById.Values.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
         {
-            if (!videosByParkId.TryGetValue(park.Id!, out List<Video>? parkVideos) || parkVideos.Count == 0)
+            List<Video> parkVideos = videosByParkId.GetValueOrDefault(park.Id!) ?? new List<Video>();
+            List<Video> itemVideos = itemVideosByParkId.GetValueOrDefault(park.Id!) ?? new List<Video>();
+            if (parkVideos.Count == 0 && itemVideos.Count == 0)
             {
                 continue;
             }
@@ -64,10 +83,14 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
             DateTime? listLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
                 park.UpdatedAtUtc,
                 VideoSitemapSectionProviderHelpers.ResolveLatestVideoUpdate(parkVideos));
+            listLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
+                listLastModifiedUtc,
+                VideoSitemapSectionProviderHelpers.ResolveLatestVideoUpdate(itemVideos));
 
             foreach (string language in languages)
             {
-                int visibleVideoCount = parkVideos.Count(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language));
+                int visibleVideoCount = parkVideos.Count(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language)) +
+                                        itemVideos.Count(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language));
                 if (SeoPageValuePolicy.IsCollectionIndexable(visibleVideoCount))
                 {
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{parkSlug}/videos", listLastModifiedUtc, "weekly", 0.72m));
@@ -85,6 +108,32 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
         }
 
         return urls;
+    }
+
+    private static IReadOnlyDictionary<string, List<Video>> GroupPublicItemVideosByParkId(
+        IReadOnlyCollection<ParkItem> candidateItems,
+        IReadOnlyDictionary<string, List<Video>> videosByItemId)
+    {
+        Dictionary<string, List<Video>> videosByParkId = new Dictionary<string, List<Video>>(StringComparer.OrdinalIgnoreCase);
+        foreach (ParkItem item in candidateItems.Where(static item => ParkItemsSitemapSectionProvider.IsPublicItem(item)))
+        {
+            if (string.IsNullOrWhiteSpace(item.Id) ||
+                string.IsNullOrWhiteSpace(item.ParkId) ||
+                !videosByItemId.TryGetValue(item.Id, out List<Video>? itemVideos))
+            {
+                continue;
+            }
+
+            if (!videosByParkId.TryGetValue(item.ParkId, out List<Video>? parkVideos))
+            {
+                parkVideos = new List<Video>();
+                videosByParkId[item.ParkId] = parkVideos;
+            }
+
+            parkVideos.AddRange(itemVideos);
+        }
+
+        return videosByParkId;
     }
 }
 
