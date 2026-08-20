@@ -71,24 +71,41 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
             this.parkItemRepository,
             cancellationToken,
             this.standaloneAttractionRepository);
+        HistoryTimelineIndexability indexability = HistoryTimelineIndexabilityResolver.Resolve(resolvedData);
 
         Dictionary<string, SitemapUrlEntry> urlsByPath = new Dictionary<string, SitemapUrlEntry>(StringComparer.OrdinalIgnoreCase);
         foreach (HistoryEvent historyEvent in resolvedData.Events)
         {
             if (historyEvent.EntityType == HistoryEntityType.Park)
             {
-                AddParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
+                if (indexability.ParkIds.Contains(historyEvent.OwnerId))
+                {
+                    AddParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
+                }
+
                 continue;
             }
 
             if (historyEvent.EntityType == HistoryEntityType.StandaloneAttraction)
             {
-                AddStandaloneAttractionTimelineUrls(urlsByPath, resolvedData, historyEvent);
+                if (indexability.StandaloneAttractionIds.Contains(historyEvent.OwnerId))
+                {
+                    AddStandaloneAttractionTimelineUrls(urlsByPath, resolvedData, historyEvent);
+                }
+
                 continue;
             }
 
-            AddParentParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
-            AddParkItemTimelineUrls(urlsByPath, resolvedData, historyEvent);
+            string? parentParkId = HistoryTimelineIndexabilityResolver.ResolveParentParkId(resolvedData, historyEvent);
+            if (parentParkId is not null && indexability.ParkIds.Contains(parentParkId))
+            {
+                AddParentParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
+            }
+
+            if (indexability.ParkItemIds.Contains(historyEvent.OwnerId))
+            {
+                AddParkItemTimelineUrls(urlsByPath, resolvedData, historyEvent);
+            }
         }
 
         return urlsByPath.Values.OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase).ToList();
@@ -276,6 +293,7 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 0.71m);
         }
     }
+
 }
 
 public sealed class HistoryArticlesSitemapSectionProvider : ISitemapSectionProvider

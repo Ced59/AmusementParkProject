@@ -39,8 +39,12 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
         Assert.False(isPublic);
     }
 
-    [Fact]
-    public async Task GetUrlsAsync_WhenPublicStandaloneAttractionHasOpeningYear_ShouldReturnTimelineUrl()
+    [Theory]
+    [InlineData(null, 0)]
+    [InlineData("2015", 2)]
+    public async Task GetUrlsAsync_ShouldRequireTwoStandaloneAttractionHistoryEvents(
+        string? closingDateText,
+        int expectedUrlCount)
     {
         StandaloneAttraction attraction = new StandaloneAttraction
         {
@@ -53,6 +57,7 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
             AttractionDetails = new AttractionDetails
             {
                 OpeningDateText = "2007",
+                ClosingDateText = closingDateText,
             },
         };
 
@@ -95,12 +100,15 @@ public sealed class StandaloneAttractionHistorySitemapSectionProviderTests
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } },
             CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
-        Assert.Contains(urls, static url =>
-            url.RelativePath == "/fr/attraction/standalone-1/pendolino/history" &&
-            url.ChangeFrequency == "monthly" &&
-            url.Priority == 0.70m);
-        Assert.Contains(urls, static url => url.RelativePath == "/en/attraction/standalone-1/pendolino/history");
+        Assert.Equal(expectedUrlCount, urls.Count);
+        if (expectedUrlCount > 0)
+        {
+            Assert.Contains(urls, static url =>
+                url.RelativePath == "/fr/attraction/standalone-1/pendolino/history" &&
+                url.ChangeFrequency == "monthly" &&
+                url.Priority == 0.70m);
+            Assert.Contains(urls, static url => url.RelativePath == "/en/attraction/standalone-1/pendolino/history");
+        }
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();

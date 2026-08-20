@@ -8,3 +8,7 @@ export function isImageGalleryIndexable(entryCount: number): boolean {
 export function isCollectionIndexable(entryCount: number): boolean {
   return entryCount >= MINIMUM_INDEXABLE_COLLECTION_ENTRIES;
 }
+
+export function isHistoryTimelineIndexable(entryCount: number, url: string): boolean {
+  return !url.includes('?') && isCollectionIndexable(entryCount);
+}

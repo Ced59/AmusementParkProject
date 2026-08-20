@@ -46,6 +46,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
+    || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/opening-hours|\/pricing|\/items|\/comments)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history(?:\/[^/]+\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
@@ -66,6 +67,7 @@ function isNoindexPublicPageRoute(url: string): boolean {
   const path: string = normalizeSsrPath(url);
 
   return (isPublicParksRoute(path) && hasQueryString(url))
+    || (isPublicHistoryTimelineRoute(path) && hasQueryString(url))
     || (isPublicParkItemsRoute(path) && hasQueryString(url))
     || (isPublicParkZonesRoute(path) && hasQueryString(url))
     || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
@@ -80,6 +82,12 @@ function isNoindexPublicPageRoute(url: string): boolean {
 
 function isPublicParksRoute(path: string): boolean {
   return /^\/[a-z]{2}\/parks\/?$/i.test(path);
+}
+
+function isPublicHistoryTimelineRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path);
 }
 
 function isExplicitNotFoundPath(path: string): boolean {

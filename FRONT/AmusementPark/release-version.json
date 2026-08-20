@@ -1,6 +1,20 @@
 {
-  "version": "4.2.2",
+  "version": "4.2.3",
   "history": [
+    {
+      "version": "4.2.3",
+      "releasedAt": "2026-08-20",
+      "labels": {
+        "fr": "Les pages historiques sont plus fiables et mieux filtrées.",
+        "en": "History pages are more reliable and filtered more effectively.",
+        "de": "Geschichtsseiten sind zuverlässiger und werden besser gefiltert.",
+        "nl": "Geschiedenispagina’s zijn betrouwbaarder en worden beter gefilterd.",
+        "it": "Le pagine storiche sono più affidabili e filtrate meglio.",
+        "es": "Las páginas históricas son más fiables y se filtran mejor.",
+        "pl": "Strony historyczne są bardziej niezawodne i lepiej filtrowane.",
+        "pt": "As páginas históricas são mais fiáveis e melhor filtradas."
+      }
+    },
     {
       "version": "4.2.2",
       "releasedAt": "2026-08-20",

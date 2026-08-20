@@ -818,6 +818,20 @@ describe('SeoService', () => {
     expect(descriptions.size).toBe(cases.length);
   });
 
+  it('keeps history timelines with fewer than two events out of the search index', () => {
+    const timeline: HistoryTimelinePageViewModel = buildHistoryTimeline();
+
+    service.applyHistoryTimelineSeo(
+      buildHistoryTimeline({ events: timeline.events.slice(0, 1) }),
+      'fr',
+      '/fr/park/park-1/mirapolis/history',
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
   it('adds park item context and image fallbacks to history timeline social metadata', () => {
     service.applyHistoryTimelineSeo(
       buildHistoryTimeline({
@@ -922,6 +936,8 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe(
       'http://localhost:4200/fr/park/park-1/mirapolis/history/page/2',
     );
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
   });
 
   it('applies article Open Graph metadata to history articles and resets the type on regular pages', () => {
@@ -1908,7 +1924,7 @@ function buildHistoryTimeline(
   return {
     entityType: 'Park',
     title: 'Mirapolis history',
-    subtitle: '1 milestone tracing the story of Mirapolis.',
+    subtitle: '2 milestones tracing the story of Mirapolis.',
     ownerName: 'Mirapolis',
     park: buildPark({ name: 'Mirapolis' }),
     parkItem: null,
@@ -1917,7 +1933,7 @@ function buildHistoryTimeline(
     pagination: null,
     pageRanges: [],
     yearStart: 1987,
-    yearEnd: 1987,
+    yearEnd: 1988,
     events: [
       {
         id: 'event-1',
@@ -1940,6 +1956,29 @@ function buildHistoryTimeline(
         articleLink: null,
         sourceCount: 0,
         positionPercent: 0,
+        isFirstInYear: true,
+      },
+      {
+        id: 'event-2',
+        key: 'new-area',
+        title: 'A new area opens',
+        summary: 'Mirapolis opens a new themed area.',
+        dateLabel: '1988',
+        year: 1988,
+        month: 6,
+        day: 15,
+        eventType: 'Expansion',
+        eventTypeLabel: 'Expansion',
+        entityType: 'Park',
+        isMajor: false,
+        ownerName: 'Mirapolis',
+        contextParkName: null,
+        parkItemName: null,
+        mainImageId: null,
+        mainImage: null,
+        articleLink: null,
+        sourceCount: 0,
+        positionPercent: 100,
         isFirstInYear: true,
       },
     ],

@@ -2162,6 +2162,7 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkItemVideosRoute(path)
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicCommentSsrRoute(path)
+    || isPublicStandaloneAttractionHistoryRoute(path)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
@@ -2191,6 +2192,7 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || (isPublicParkItemVideosRoute(path) && !hasBlockingQuery)
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicCommentSsrRoute(path)
+    || (isPublicStandaloneAttractionHistoryRoute(path) && !hasBlockingQuery)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
@@ -2216,6 +2218,10 @@ function isPublicParkDetailRoute(path: string): boolean {
 
 function isPublicStandaloneAttractionRoute(path: string): boolean {
   return /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isPublicStandaloneAttractionHistoryRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path);
 }
 
 function isPublicParkImagesRoute(path: string): boolean {
