@@ -65,7 +65,8 @@ function isKnownPrivateClientRoute(path: string): boolean {
 function isNoindexPublicPageRoute(url: string): boolean {
   const path: string = normalizeSsrPath(url);
 
-  return (isPublicParkItemsRoute(path) && hasQueryString(url))
+  return (isPublicParksRoute(path) && hasQueryString(url))
+    || (isPublicParkItemsRoute(path) && hasQueryString(url))
     || (isPublicParkZonesRoute(path) && hasQueryString(url))
     || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
     || (isPublicParkImagesRoute(path) && hasQueryString(url))
@@ -75,6 +76,10 @@ function isNoindexPublicPageRoute(url: string): boolean {
     || (isPublicParkWeatherRoute(path) && hasQueryString(url))
     || (isPublicParkOpeningHoursRoute(path) && hasQueryString(url))
     || (isPublicParkPricingRoute(path) && hasQueryString(url));
+}
+
+function isPublicParksRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/parks\/?$/i.test(path);
 }
 
 function isExplicitNotFoundPath(path: string): boolean {
