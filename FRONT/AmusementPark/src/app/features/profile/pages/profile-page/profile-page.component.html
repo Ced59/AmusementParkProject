@@ -8,7 +8,7 @@
   [avatarCategory]="avatarCategory"
   [userOwnerType]="userOwnerType"
   [currentUserId]="currentUserId"
-  [avatarUrl]="getAvatarUrl()"
+  [avatarUrl]="user()?.avatarUrl || ''"
   [initialTab]="initialTab"
   (editFieldClicked)="editField($event)"
   (preferredLanguageEditClicked)="editPreferredLanguage()"

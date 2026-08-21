@@ -4,7 +4,9 @@
 
 .shared-user-rankings {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: min(100% - 2rem, 96rem);
+  max-width: calc(100vw - 2rem);
   margin-inline: auto;
   padding-block: clamp(1rem, 3vw, 2.5rem);
   gap: clamp(1rem, 2vw, 1.5rem);
@@ -15,6 +17,7 @@
 .shared-user-rankings__results,
 .shared-user-rankings__state,
 .shared-user-rankings__cta {
+  min-width: 0;
   border: 1px solid var(--app-border);
   border-radius: var(--app-radius-lg);
   background: color-mix(in srgb, var(--app-surface-2) 86%, transparent);
@@ -29,6 +32,10 @@
   background:
     radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 38%),
     color-mix(in srgb, var(--app-surface-2) 88%, transparent);
+}
+
+.shared-user-rankings__hero > div {
+  min-width: 0;
 }
 
 .shared-user-rankings__kicker,
@@ -54,6 +61,7 @@
   color: var(--app-heading);
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 0.96;
+  overflow-wrap: anywhere;
 }
 
 .shared-user-rankings__hero p {
@@ -89,6 +97,7 @@
 .shared-user-rankings__workspace {
   display: grid;
   grid-template-columns: minmax(11rem, 13rem) minmax(0, 1fr);
+  min-width: 0;
   gap: 1rem;
   align-items: start;
 }
@@ -96,6 +105,7 @@
 .shared-user-rankings__filters-panel {
   position: sticky;
   top: calc(var(--topbar-height) + 1rem);
+  min-width: 0;
   padding: 0.75rem;
 }
 
@@ -109,6 +119,7 @@
 
 .shared-user-rankings__filters {
   display: grid;
+  max-width: 100%;
   gap: 0.25rem;
   margin-top: 0.4rem;
 }
@@ -239,6 +250,7 @@
 .shared-user-rankings__footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  min-width: 0;
   gap: 1rem;
   align-items: start;
 }
@@ -274,7 +286,7 @@
 @media (max-width: 920px) {
   .shared-user-rankings__workspace,
   .shared-user-rankings__footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .shared-user-rankings__filters-panel {
@@ -284,6 +296,7 @@
   .shared-user-rankings__filters {
     display: flex;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     padding-bottom: 0.2rem;
   }
 
@@ -297,6 +310,7 @@
 @media (max-width: 680px) {
   .shared-user-rankings {
     width: min(100% - 1rem, 96rem);
+    max-width: calc(100vw - 1rem);
   }
 
   .shared-user-rankings__hero {
@@ -305,11 +319,25 @@
   }
 
   .shared-user-rankings__search {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
   }
 
-  .shared-user-rankings__search > button:last-child {
+  .shared-user-rankings__search > button {
     grid-column: 1 / -1;
+    width: 100%;
+    white-space: normal;
+  }
+
+  .shared-user-rankings__filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+
+  .shared-user-rankings__filters button {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
   }
 
   .shared-user-rankings__attraction-filters label {

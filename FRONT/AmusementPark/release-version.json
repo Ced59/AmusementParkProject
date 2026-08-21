@@ -1,6 +1,20 @@
 {
-  "version": "4.2.12",
+  "version": "4.2.13",
   "history": [
+    {
+      "version": "4.2.13",
+      "releasedAt": "2026-08-21",
+      "labels": {
+        "fr": "Le profil et les classements partagés sont plus clairs sur mobile.",
+        "en": "Profiles and shared rankings are clearer on mobile.",
+        "de": "Profile und geteilte Ranglisten sind auf Mobilgeräten übersichtlicher.",
+        "nl": "Profielen en gedeelde ranglijsten zijn duidelijker op mobiel.",
+        "it": "I profili e le classifiche condivise sono più chiari sui dispositivi mobili.",
+        "es": "Los perfiles y las clasificaciones compartidas se ven mejor en el móvil.",
+        "pl": "Profile i udostępnione rankingi są czytelniejsze na urządzeniach mobilnych.",
+        "pt": "Os perfis e as classificações partilhadas estão mais claros em dispositivos móveis."
+      }
+    },
     {
       "version": "4.2.12",
       "releasedAt": "2026-08-21",

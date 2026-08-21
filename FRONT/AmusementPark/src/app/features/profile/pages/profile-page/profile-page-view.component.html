@@ -204,7 +204,7 @@
           } @else {
             <article class="profile-panel profile-panel--ratings" appUiSurface="panel" appUiSurfacePadding="spacious">
               <app-profile-ratings-panel
-                [displayName]="currentUser.publicDisplayName || currentUser.firstName || ''">
+                [displayName]="currentUser.publicDisplayName || currentUser.publicIdentifier || ''">
               </app-profile-ratings-panel>
             </article>
           }
