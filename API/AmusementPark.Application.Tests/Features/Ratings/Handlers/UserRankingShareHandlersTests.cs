@@ -162,6 +162,40 @@ public sealed class UserRankingShareHandlersTests
             Times.Never);
     }
 
+    [Fact]
+    public async Task ResolveAsync_WhenPublicNicknameIsMissing_ShouldFallbackToTheTechnicalIdentifier()
+    {
+        UserRankingShare share = UserRankingShare.Create("owner-1", Now.UtcDateTime.AddDays(-1));
+        share.Publish(ShareId, Now.UtcDateTime.AddDays(-1));
+        User owner = new User
+        {
+            Id = "owner-1",
+            IsActivated = true,
+            Roles = new List<Role> { Role.User, Role.Admin },
+        };
+        owner.AssignPublicAccountNumber(1);
+        Mock<IUserRankingShareRepository> shareRepository = new Mock<IUserRankingShareRepository>(MockBehavior.Strict);
+        shareRepository
+            .Setup(candidate => candidate.GetPublicByShareIdAsync(ShareId, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(share);
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
+        userRepository
+            .Setup(candidate => candidate.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(owner);
+        UserRankingShareAccessResolver resolver = new UserRankingShareAccessResolver(
+            shareRepository.Object,
+            userRepository.Object);
+
+        ApplicationResult<UserRankingShareOwner> result = await resolver.ResolveAsync(
+            ShareId,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("Admin01", result.Value!.DisplayName);
+        shareRepository.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
     [Theory]
     [InlineData("")]
     [InlineData("short")]

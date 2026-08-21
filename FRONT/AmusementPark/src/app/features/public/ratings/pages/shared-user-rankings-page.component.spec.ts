@@ -187,6 +187,17 @@ describe('SharedUserRankingsPageComponent', () => {
       'parkExplorer.types.flatRide',
     );
   });
+
+  it('keeps the shared ranking within the mobile viewport', () => {
+    const styles: string = (
+      SharedUserRankingsPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
+    expect(styles).toContain('max-width: calc(100vw - 1rem)');
+    expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
+    expect(styles).toContain('overflow-wrap: anywhere');
+  });
 });
 
 function createRating() {

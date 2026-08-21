@@ -7,7 +7,6 @@ import { UserPut } from '@app/models/users/user_put';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
-import { ImagesApiService } from '@data-access/images/images-api.service';
 import { UsersApiService } from '@data-access/users/users-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
@@ -55,7 +54,6 @@ export class ProfilePageComponent implements OnInit {
     private readonly stateFacade: ProfilePageStateFacade,
     private readonly activatedRoute: ActivatedRoute,
     private readonly usersApiService: UsersApiService,
-    private readonly imagesApiService: ImagesApiService,
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly sharedService: SharedService,
@@ -216,10 +214,6 @@ export class ProfilePageComponent implements OnInit {
     this.stateFacade.loadUserProfile(this.currentUserId);
     this.sharedService.emitLoginStatusChange();
     this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('user-profile.avatar.updateSuccess', 'Avatar updated successfully.'));
-  }
-
-  getAvatarUrl(): string {
-    return this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl) ?? '';
   }
 
   logout(): void {
