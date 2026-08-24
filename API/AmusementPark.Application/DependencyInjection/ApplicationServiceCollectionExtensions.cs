@@ -59,6 +59,10 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<BulkParkGraphUpsertProcessor>();
         services.AddScoped<ISocialPublicationService, SocialPublicationService>();
         services.AddScoped<SocialPublicationReconciler>();
+        services.AddScoped<ParkSocialPublicationTargetResolver>();
+        services.AddScoped<StandaloneAttractionSocialPublicationTargetResolver>();
+        services.AddScoped<ReferenceSocialPublicationTargetResolver>();
+        services.AddScoped<ContentSocialPublicationTargetResolver>();
         services.AddScoped<SocialPublicationTargetResolver>();
         services.AddScoped<ISocialPublicationComposerService, SocialPublicationComposerService>();
         services.AddScoped<ParkOpeningHoursScheduleNormalizer>();

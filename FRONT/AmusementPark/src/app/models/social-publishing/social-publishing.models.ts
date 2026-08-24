@@ -45,7 +45,7 @@ export interface PublishSocialLinkRequest {
   readonly previewImageId?: string | null;
 }
 
-export type SocialPublicationTargetKind = 'Park' | 'ParkItem' | 'Video' | 'Page';
+export type SocialPublicationTargetKind = 'Park' | 'ParkItem' | 'StandaloneAttraction' | 'Video' | 'Page';
 
 export interface SocialPublicationImageOption {
   readonly id: string;

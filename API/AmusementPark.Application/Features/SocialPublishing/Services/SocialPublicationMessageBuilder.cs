@@ -21,6 +21,11 @@ internal static class SocialPublicationMessageBuilder
                 + "Découvre-la dès maintenant.\n\n"
                 + $"🇬🇧 A new page is now available on Amusement Parks: {target.EnglishName}!\n"
                 + "Discover it now.",
+            SocialPublicationTargetKind.StandaloneAttraction =>
+                $"🎢 Une nouvelle attraction est disponible sur Amusement Parks : {target.FrenchName} !\n"
+                + "Découvre-la dès maintenant.\n\n"
+                + $"🇬🇧 A new attraction is now available on Amusement Parks: {target.EnglishName}!\n"
+                + "Discover it now.",
             SocialPublicationTargetKind.Video =>
                 $"🎬 Une vidéo est à découvrir sur Amusement Parks : {target.FrenchName} !\n"
                 + "Regarde-la dès maintenant.\n\n"
