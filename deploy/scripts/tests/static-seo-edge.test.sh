@@ -5,9 +5,13 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 deploy_directory="$(cd "${script_dir}/../.." && pwd)"
 temp_dir="$(mktemp -d)"
 container_name="amusementpark-static-seo-edge-test-${RANDOM}-$$"
+front_container_name="${container_name}-front"
+network_name="${container_name}-network"
 
 cleanup() {
   docker rm -f "${container_name}" >/dev/null 2>&1 || true
+  docker rm -f "${front_container_name}" >/dev/null 2>&1 || true
+  docker network rm "${network_name}" >/dev/null 2>&1 || true
   rm -rf "${temp_dir}"
 }
 trap cleanup EXIT
@@ -18,24 +22,70 @@ printf '%s\n' \
   '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></sitemapindex>' \
   > "${temp_dir}/seo/current/sitemap.xml"
 
+cat > "${temp_dir}/front.conf" <<'EOF'
+worker_processes 1;
+pid /var/run/nginx.pid;
+events { worker_connections 128; }
+http {
+  server {
+    listen 4000;
+    location / {
+      default_type text/plain;
+      add_header X-AmusementPark-Test-Source "front" always;
+      return 200 "front-fallback";
+    }
+  }
+}
+EOF
+
+docker network create "${network_name}" >/dev/null
 docker run -d \
-  --name "${container_name}" \
+  --name "${front_container_name}" \
+  --network "${network_name}" \
+  --network-alias front \
   --read-only \
   --tmpfs /var/cache/nginx \
   --tmpfs /var/run \
   --tmpfs /tmp \
-  -v "${deploy_directory}/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
-  -v "${temp_dir}/seo:/srv/seo:ro" \
+  -v "${temp_dir}/front.conf:/etc/nginx/nginx.conf:ro" \
   nginx:1.29-alpine >/dev/null
 
-headers=""
-for _attempt in $(seq 1 20); do
-  headers="$(docker exec "${container_name}" wget -S --spider http://127.0.0.1:4000/sitemap.xml 2>&1 || true)"
-  if grep -qi 'HTTP/1.1 200 OK' <<< "${headers}"; then
-    break
-  fi
-  sleep 1
-done
+start_edge() {
+  local snapshot_policy="$1"
+
+  docker rm -f "${container_name}" >/dev/null 2>&1 || true
+  docker run -d \
+    --name "${container_name}" \
+    --network "${network_name}" \
+    --read-only \
+    --tmpfs /var/cache/nginx \
+    --tmpfs /var/run \
+    --tmpfs /tmp \
+    -v "${deploy_directory}/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
+    -v "${deploy_directory}/nginx/seo-static-${snapshot_policy}.conf:/etc/nginx/seo-static-routing.conf:ro" \
+    -v "${temp_dir}/seo:/srv/seo:ro" \
+    nginx:1.29-alpine >/dev/null
+}
+
+read_response_headers() {
+  local response_headers=""
+
+  for _attempt in $(seq 1 20); do
+    response_headers="$(docker exec "${container_name}" wget -S --spider http://127.0.0.1:4000/sitemap.xml 2>&1 || true)"
+    if grep -qi 'HTTP/1.1 200 OK' <<< "${response_headers}"; then
+      printf '%s' "${response_headers}"
+      return 0
+    fi
+    sleep 1
+  done
+
+  printf '%s\n' "${response_headers}" >&2
+  return 1
+}
+
+start_edge true
+
+headers="$(read_response_headers)"
 
 assert_header() {
   local expected_pattern="$1"
@@ -56,4 +106,20 @@ assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'ref
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
 
-echo 'Static SEO edge security header tests passed.'
+start_edge false
+headers="$(read_response_headers)"
+body="$(docker exec "${container_name}" wget -qO- http://127.0.0.1:4000/sitemap.xml)"
+
+assert_header 'X-AmusementPark-Test-Source:[[:space:]]*front' 'SSR/API fallback source'
+if grep -qi 'X-AmusementPark-SEO-Source:[[:space:]]*static' <<< "${headers}"; then
+  echo 'A retained static sitemap must be bypassed when snapshot publishing is disabled.' >&2
+  printf '%s\n' "${headers}" >&2
+  exit 1
+fi
+if [ "${body}" != 'front-fallback' ]; then
+  echo 'Snapshot-disabled routing did not return the frontend fallback response.' >&2
+  printf 'Response body: %s\n' "${body}" >&2
+  exit 1
+fi
+
+echo 'Static SEO edge security and disabled fallback tests passed.'

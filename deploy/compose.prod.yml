@@ -125,6 +125,7 @@ services:
     read_only: true
     volumes:
       - ./nginx/edge.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/seo-static-${SSR_SEO_STATIC_SNAPSHOT_ENABLED:-true}.conf:/etc/nginx/seo-static-routing.conf:ro
       - seo_static_documents:/srv/seo:ro
     tmpfs:
       - /var/cache/nginx
