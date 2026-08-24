@@ -59,6 +59,34 @@ public sealed class PublicHttpCacheHeadersApplicatorTests
     }
 
     [Fact]
+    public void Apply_WhenStandaloneAttractionMapIsPublic_ShouldApplyMapRule()
+    {
+        DefaultHttpContext context = new DefaultHttpContext();
+        context.Request.Method = HttpMethods.Get;
+        context.Request.Path = "/standalone-attractions/map-visible";
+        context.Response.StatusCode = StatusCodes.Status200OK;
+
+        PublicHttpCacheHeadersApplicator.Apply(context);
+
+        Assert.Equal("public, max-age=120, s-maxage=600", context.Response.Headers.CacheControl.ToString());
+        Assert.Equal(HeaderNames.AcceptLanguage, context.Response.Headers.Vary.ToString());
+    }
+
+    [Fact]
+    public void Apply_WhenStandaloneAttractionMutationUsesControllerRoot_ShouldNotApplyPublicRule()
+    {
+        DefaultHttpContext context = new DefaultHttpContext();
+        context.Request.Method = HttpMethods.Post;
+        context.Request.Path = "/standalone-attractions";
+        context.Response.StatusCode = StatusCodes.Status200OK;
+
+        PublicHttpCacheHeadersApplicator.Apply(context);
+
+        Assert.Equal(string.Empty, context.Response.Headers.CacheControl.ToString());
+        Assert.Equal(string.Empty, context.Response.Headers.Vary.ToString());
+    }
+
+    [Fact]
     public void Apply_WhenAuthorizationHeaderIsPresent_ShouldNotApplyPublicCacheHeaders()
     {
         DefaultHttpContext context = new DefaultHttpContext();

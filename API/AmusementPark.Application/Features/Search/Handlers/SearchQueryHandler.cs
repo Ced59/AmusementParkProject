@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Search.Queries;
 using AmusementPark.Application.Features.Search.Results;
+using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Validation;
 
 namespace AmusementPark.Application.Features.Search.Handlers;
@@ -15,11 +16,16 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
 {
     private readonly ISearchReadRepository searchReadRepository;
     private readonly PagedQueryValidator pagedQueryValidator;
+    private readonly ICountryReferenceService countryReferenceService;
 
-    public SearchQueryHandler(ISearchReadRepository searchReadRepository, PagedQueryValidator pagedQueryValidator)
+    public SearchQueryHandler(
+        ISearchReadRepository searchReadRepository,
+        PagedQueryValidator pagedQueryValidator,
+        ICountryReferenceService countryReferenceService)
     {
         this.searchReadRepository = searchReadRepository;
         this.pagedQueryValidator = pagedQueryValidator;
+        this.countryReferenceService = countryReferenceService;
     }
 
     public async Task<ApplicationResult<SearchResultPage<SearchHitResult>>> HandleAsync(SearchQuery query, CancellationToken cancellationToken = default)
@@ -38,9 +44,15 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
             return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(errors);
         }
 
+        IReadOnlyCollection<string> matchingCountryCodes = await this.countryReferenceService.FindCountryCodesByLocalizedSearchAsync(
+            query.Text,
+            cancellationToken);
+        IReadOnlyCollection<string> regionCountryCodes = this.countryReferenceService.GetCountryCodesForRegion(query.Region);
         SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(
             query.Text ?? string.Empty,
             query.Categories,
+            matchingCountryCodes,
+            regionCountryCodes,
             query.Paging.Page,
             query.Paging.PageSize,
             query.LanguageCode,

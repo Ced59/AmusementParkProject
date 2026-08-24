@@ -42,6 +42,7 @@ describe('mapParkMapPointToViewModel', () => {
     );
 
     expect(result?.id).toBe('park-1');
+    expect(result?.kind).toBe('park');
     expect(result?.name).toBe('Test Park');
     expect(result?.countryCode).toBe('BE');
     expect(result?.countryName).toBe('Belgium');

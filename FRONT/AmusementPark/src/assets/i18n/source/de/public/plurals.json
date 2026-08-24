@@ -8,6 +8,8 @@
     "darkRide": { "one": "Themenfahrt", "few": "Themenfahrten", "many": "Themenfahrten", "other": "Themenfahrten" },
     "manufacturerFound": { "one": "{{count}} Hersteller gefunden", "few": "{{count}} Hersteller gefunden", "many": "{{count}} Hersteller gefunden", "other": "{{count}} Hersteller gefunden" },
     "parkOnMap": { "one": "{{count}} Park auf der Karte", "few": "{{count}} Parks auf der Karte", "many": "{{count}} Parks auf der Karte", "other": "{{count}} Parks auf der Karte" },
+    "placeOnMap": { "one": "{{count}} Ort auf der Karte", "few": "{{count}} Orte auf der Karte", "many": "{{count}} Orte auf der Karte", "other": "{{count}} Orte auf der Karte" },
+    "standaloneAttractionOnMap": { "one": "{{count}} eigenständige Attraktion auf der Karte", "few": "{{count}} eigenständige Attraktionen auf der Karte", "many": "{{count}} eigenständige Attraktionen auf der Karte", "other": "{{count}} eigenständige Attraktionen auf der Karte" },
     "result": { "one": "{{count}} Ergebnis", "few": "{{count}} Ergebnisse", "many": "{{count}} Ergebnisse", "other": "{{count}} Ergebnisse" },
     "unlocatedPlace": { "one": "{{count}} Ort außerhalb der Karte", "few": "{{count}} Orte außerhalb der Karte", "many": "{{count}} Orte außerhalb der Karte", "other": "{{count}} Orte außerhalb der Karte" },
     "resultRange": { "one": "Anzeige {{start}} bis {{end}} von {{total}} Ort", "few": "Anzeige {{start}} bis {{end}} von {{total}} Orten", "many": "Anzeige {{start}} bis {{end}} von {{total}} Orten", "other": "Anzeige {{start}} bis {{end}} von {{total}} Orten" },

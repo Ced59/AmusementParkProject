@@ -16,6 +16,10 @@ import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { PaginationContract } from '@shared/models/contracts';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
+import { ParkStatus } from '@app/models/parks/park-status';
+import { PublicPlaceDiscoveryScope } from '@shared/models/search/public-search-category-option.model';
+import { SearchResultItem } from '@app/models/search/search-result-item';
 
 class FakeDestroyRef implements DestroyRef {
   readonly destroyed = false;
@@ -41,6 +45,7 @@ class FakeParkListStateFacade {
   readonly displayedParks: Signal<ParkCardModel[]> = signal<ParkCardModel[]>(
     [],
   ).asReadonly();
+  readonly searchResults: Signal<SearchResultItem[]> = signal<SearchResultItem[]>([]).asReadonly();
   readonly pagination: Signal<PaginationContract | null> =
     signal<PaginationContract | null>(null).asReadonly();
   readonly visibleMapPoints: Signal<ParkMapPointViewModel[]> = signal<
@@ -54,10 +59,16 @@ class FakeParkListStateFacade {
     signal<ParkCardModel | null>(null).asReadonly();
   readonly selectedRegion: Signal<ParkRegionFilter | null> =
     signal<ParkRegionFilter | null>(null).asReadonly();
+  readonly selectedStatus: Signal<ParkStatus | null> = signal<ParkStatus | null>('Operating').asReadonly();
+  readonly selectedAudienceClassificationFilter: Signal<ParkAudienceClassificationFilter | null> = signal<ParkAudienceClassificationFilter | null>(null).asReadonly();
+  readonly discoveryScopeSignal = signal<PublicPlaceDiscoveryScope>('parks');
+  readonly discoveryScope: Signal<PublicPlaceDiscoveryScope> = this.discoveryScopeSignal.asReadonly();
+  readonly currentPage: Signal<number> = signal(1).asReadonly();
   readonly pageSize: Signal<number> = signal(9).asReadonly();
   readonly mapLoads: Array<{
     term: string;
     region: ParkRegionFilter | null;
+    scope: PublicPlaceDiscoveryScope;
   }> = [];
   readonly parkLoads: Array<{
     page: number;
@@ -66,6 +77,8 @@ class FakeParkListStateFacade {
     region: ParkRegionFilter | null;
   }> = [];
   readonly languages: string[] = [];
+  readonly parkMapSelections: Array<string | null> = [];
+  readonly discoveryMapSelections: Array<string | null> = [];
 
   setCurrentLanguage(language: string): void {
     this.languages.push(language);
@@ -74,8 +87,9 @@ class FakeParkListStateFacade {
   loadVisibleMapPoints(
     term: string = '',
     region: ParkRegionFilter | null = null,
+    scope: PublicPlaceDiscoveryScope = 'parks',
   ): void {
-    this.mapLoads.push({ term, region });
+    this.mapLoads.push({ term, region, scope });
   }
 
   loadParks(
@@ -91,7 +105,21 @@ class FakeParkListStateFacade {
 
   setSelectedRegion(): void {}
 
-  selectParkFromMap(): void {}
+  setStatus(): void {}
+
+  setAudienceClassificationFilter(): void {}
+
+  setDiscoveryScope(): void {}
+
+  loadDiscoveryResults(): void {}
+
+  selectParkFromMap(parkId: string | null): void {
+    this.parkMapSelections.push(parkId);
+  }
+
+  selectDiscoveryPointFromMap(pointId: string | null): void {
+    this.discoveryMapSelections.push(pointId);
+  }
 
   selectParkFromCard(): void {}
 }
@@ -116,7 +144,7 @@ describe('ParkListPageComponent', () => {
 
     component.ngOnInit();
 
-    expect(stateFacade.mapLoads).toEqual([{ term: '', region: null }]);
+    expect(stateFacade.mapLoads).toEqual([{ term: '', region: null, scope: 'parks' }]);
     expect(stateFacade.parkLoads).toEqual([
       { page: 1, size: 9, term: '', region: null },
     ]);
@@ -136,8 +164,8 @@ describe('ParkListPageComponent', () => {
 
     expect(stateFacade.languages).toEqual(['fr', 'en']);
     expect(stateFacade.mapLoads).toEqual([
-      { term: '', region: null },
-      { term: '', region: null },
+      { term: '', region: null, scope: 'parks' },
+      { term: '', region: null, scope: 'parks' },
     ]);
   });
 
@@ -161,7 +189,7 @@ describe('ParkListPageComponent', () => {
       component.onSearchSubmit();
 
       expect(stateFacade.mapLoads).toEqual([
-        { term: 'Europa-Park', region: null },
+        { term: 'Europa-Park', region: null, scope: 'parks' },
       ]);
       expect(stateFacade.parkLoads).toEqual([
         { page: 1, size: 9, term: 'Europa-Park', region: null },
@@ -174,6 +202,22 @@ describe('ParkListPageComponent', () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it('keeps mixed discovery results when a park marker is selected', () => {
+    const routeParams$: BehaviorSubject<ParamMap> =
+      new BehaviorSubject<ParamMap>(convertToParamMap({ lang: 'fr' }));
+    const stateFacade: FakeParkListStateFacade = new FakeParkListStateFacade();
+    const component: ParkListPageComponent = createComponent(
+      stateFacade,
+      routeParams$,
+    );
+    stateFacade.discoveryScopeSignal.set('parksAndStandaloneAttractions');
+
+    component.onMapParkSelected('park-1');
+
+    expect(stateFacade.discoveryMapSelections).toEqual(['park-1']);
+    expect(stateFacade.parkMapSelections).toEqual([]);
   });
 });
 

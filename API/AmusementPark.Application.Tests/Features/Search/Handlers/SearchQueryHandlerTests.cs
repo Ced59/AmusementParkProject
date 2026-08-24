@@ -4,8 +4,11 @@ using AmusementPark.Application.Features.Search.Handlers;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Search.Queries;
 using AmusementPark.Application.Features.Search.Results;
+using AmusementPark.Application.Features.Countries;
+using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Validation;
 using Xunit;
+using Moq;
 
 namespace AmusementPark.Application.Tests.Features.Search.Handlers;
 
@@ -15,15 +18,22 @@ public sealed class SearchQueryHandlerTests
     public async Task HandleAsync_ShouldPassLanguageCodeToRepository()
     {
         FakeSearchReadRepository repository = new FakeSearchReadRepository();
-        SearchQueryHandler handler = new SearchQueryHandler(repository, new PagedQueryValidator());
+        Mock<ICountryReferenceService> countryReferenceService = new Mock<ICountryReferenceService>(MockBehavior.Strict);
+        countryReferenceService.Setup(service => service.FindCountryCodesByLocalizedSearchAsync("bellewaerde", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "AT" });
+        countryReferenceService.Setup(service => service.GetCountryCodesForRegion(WorldRegionFilter.Europe))
+            .Returns(new[] { "FR", "BE" });
+        SearchQueryHandler handler = new SearchQueryHandler(repository, new PagedQueryValidator(), countryReferenceService.Object);
 
-        await handler.HandleAsync(new SearchQuery("bellewaerde", new[] { "parks" }, new PagedQuery(2, 12), "fr"), CancellationToken.None);
+        await handler.HandleAsync(new SearchQuery("bellewaerde", new[] { "parks" }, new PagedQuery(2, 12), "fr", WorldRegionFilter.Europe), CancellationToken.None);
 
         Assert.Equal("bellewaerde", repository.LastText);
         Assert.Equal(new[] { "parks" }, repository.LastCategories);
         Assert.Equal(2, repository.LastPage);
         Assert.Equal(12, repository.LastPageSize);
         Assert.Equal("fr", repository.LastLanguageCode);
+        Assert.Equal(new[] { "AT" }, repository.LastMatchingCountryCodes);
+        Assert.Equal(new[] { "FR", "BE" }, repository.LastRegionCountryCodes);
     }
 
     private sealed class FakeSearchReadRepository : ISearchReadRepository
@@ -34,6 +44,10 @@ public sealed class SearchQueryHandlerTests
 
         public int LastPage { get; private set; }
 
+        public IReadOnlyCollection<string> LastMatchingCountryCodes { get; private set; } = Array.Empty<string>();
+
+        public IReadOnlyCollection<string> LastRegionCountryCodes { get; private set; } = Array.Empty<string>();
+
         public int LastPageSize { get; private set; }
 
         public string? LastLanguageCode { get; private set; }
@@ -41,6 +55,8 @@ public sealed class SearchQueryHandlerTests
         public Task<SearchResultPage<SearchHitResult>> SearchAsync(
             string text,
             IReadOnlyCollection<string> categories,
+            IReadOnlyCollection<string> matchingCountryCodes,
+            IReadOnlyCollection<string> regionCountryCodes,
             int page,
             int pageSize,
             string languageCode,
@@ -48,6 +64,8 @@ public sealed class SearchQueryHandlerTests
         {
             this.LastText = text;
             this.LastCategories = categories;
+            this.LastMatchingCountryCodes = matchingCountryCodes;
+            this.LastRegionCountryCodes = regionCountryCodes;
             this.LastPage = page;
             this.LastPageSize = pageSize;
             this.LastLanguageCode = languageCode;

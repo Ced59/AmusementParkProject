@@ -4,6 +4,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.StandaloneAttractions.Commands;
 using AmusementPark.Application.Features.StandaloneAttractions.Queries;
+using AmusementPark.Application.Features.Countries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.Authorization;
@@ -30,6 +31,7 @@ public sealed class StandaloneAttractionsController : ControllerBase
 {
     private readonly IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>> getPageQueryHandler;
     private readonly IQueryHandler<GetStandaloneAttractionByIdQuery, ApplicationResult<StandaloneAttraction>> getByIdQueryHandler;
+    private readonly IQueryHandler<GetVisibleStandaloneAttractionMapPointsQuery, ApplicationResult<IReadOnlyCollection<StandaloneAttraction>>> getVisibleMapPointsQueryHandler;
     private readonly ICommandHandler<CreateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>> createCommandHandler;
     private readonly ICommandHandler<UpdateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>> updateCommandHandler;
     private readonly ICommandHandler<UpdateStandaloneAttractionsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> bulkAdministrationCommandHandler;
@@ -38,6 +40,7 @@ public sealed class StandaloneAttractionsController : ControllerBase
     public StandaloneAttractionsController(
         IQueryHandler<GetStandaloneAttractionsPageQuery, ApplicationResult<PagedResult<StandaloneAttraction>>> getPageQueryHandler,
         IQueryHandler<GetStandaloneAttractionByIdQuery, ApplicationResult<StandaloneAttraction>> getByIdQueryHandler,
+        IQueryHandler<GetVisibleStandaloneAttractionMapPointsQuery, ApplicationResult<IReadOnlyCollection<StandaloneAttraction>>> getVisibleMapPointsQueryHandler,
         ICommandHandler<CreateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>> createCommandHandler,
         ICommandHandler<UpdateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>> updateCommandHandler,
         ICommandHandler<UpdateStandaloneAttractionsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> bulkAdministrationCommandHandler,
@@ -45,10 +48,32 @@ public sealed class StandaloneAttractionsController : ControllerBase
     {
         this.getPageQueryHandler = getPageQueryHandler;
         this.getByIdQueryHandler = getByIdQueryHandler;
+        this.getVisibleMapPointsQueryHandler = getVisibleMapPointsQueryHandler;
         this.createCommandHandler = createCommandHandler;
         this.updateCommandHandler = updateCommandHandler;
         this.bulkAdministrationCommandHandler = bulkAdministrationCommandHandler;
         this.migrateCommandHandler = migrateCommandHandler;
+    }
+
+    [HttpGet("map-visible")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(IReadOnlyCollection<StandaloneAttractionMapPointDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetVisibleMapPointsAsync(
+        [FromQuery] string? query = null,
+        [FromQuery] string? region = null,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<StandaloneAttraction>> result = await this.getVisibleMapPointsQueryHandler.HandleAsync(
+            new GetVisibleStandaloneAttractionMapPointsQuery(query, WorldRegionFilterParser.Parse(region)),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.Select(static attraction => attraction.ToMapPointHttp()).ToList());
     }
 
     [HttpGet]

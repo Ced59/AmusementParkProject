@@ -19,11 +19,14 @@ export function mapParkMapPointToViewModel(point: ParkMapPoint, currentLanguage:
   const postalCode: string | null = normalizeOptionalText(point.postalCode);
 
   return {
+    kind: 'park',
     id: point.id.trim(),
     name: point.name.trim(),
     countryCode,
     countryName,
     status: resolveParkStatus(point.status),
+    type: null,
+    subtype: null,
     city,
     street,
     postalCode,
@@ -35,6 +38,8 @@ export function mapParkMapPointToViewModel(point: ParkMapPoint, currentLanguage:
     logoImageId: normalizeOptionalText(point.currentLogoImageId),
   };
 }
+
+export { buildAddressLine, buildLocationLine, normalizeOptionalText };
 
 function normalizeOptionalText(value: string | null | undefined): string | null {
   const normalizedValue: string = value?.trim() ?? '';

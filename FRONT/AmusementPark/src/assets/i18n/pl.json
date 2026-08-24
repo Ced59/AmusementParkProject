@@ -3874,6 +3874,16 @@
     },
     "titlePrefix": "Wszystkie",
     "titleAccent": "parki",
+    "discoveryScopes": {
+      "label": "Typ miejsca",
+      "parksAndStandaloneAttractions": "Parki + samodzielne atrakcje",
+      "visiblePlaces": "Widoczne miejsca",
+      "visibleStandaloneAttractions": "Samodzielne atrakcje",
+      "mapTitle": "Mapa parków i samodzielnych atrakcji",
+      "mapSubtitle": "Odkrywaj geolokalizowane parki i samodzielne atrakcje oraz filtruj mapę według regionu.",
+      "resultsTitle": "Parki i samodzielne atrakcje",
+      "standaloneResultsTitle": "Lista samodzielnych atrakcji"
+    },
     "stats": {
       "visibleParks": "Widoczne parki",
       "countries": "Kraje"
@@ -4193,6 +4203,18 @@
       "few": "{{count}} parki na mapie",
       "many": "{{count}} parków na mapie",
       "other": "{{count}} parku na mapie"
+    },
+    "placeOnMap": {
+      "one": "{{count}} miejsce na mapie",
+      "few": "{{count}} miejsca na mapie",
+      "many": "{{count}} miejsc na mapie",
+      "other": "{{count}} miejsca na mapie"
+    },
+    "standaloneAttractionOnMap": {
+      "one": "{{count}} samodzielna atrakcja na mapie",
+      "few": "{{count}} samodzielne atrakcje na mapie",
+      "many": "{{count}} samodzielnych atrakcji na mapie",
+      "other": "{{count}} samodzielnej atrakcji na mapie"
     },
     "result": {
       "one": "{{count}} wynik",

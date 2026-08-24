@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.StandaloneAttractions.Contracts;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -24,6 +25,10 @@ public interface IStandaloneAttractionRepository
         CancellationToken cancellationToken,
         StandaloneAttractionAdminSortField sortField = StandaloneAttractionAdminSortField.Default,
         bool sortDescending = false);
+
+    Task<IReadOnlyCollection<StandaloneAttraction>> GetVisibleMapPointsAsync(
+        StandaloneAttractionSearchCriteria criteria,
+        CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<StandaloneAttraction>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken);
 

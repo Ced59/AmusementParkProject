@@ -8,6 +8,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Search.Queries;
 using AmusementPark.Application.Features.Search.Results;
+using AmusementPark.Application.Features.Countries;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Searching;
 using AmusementPark.WebAPI.Mappers;
@@ -43,6 +44,7 @@ public sealed class SearchController : ControllerBase
         [FromQuery] string? query,
         [FromQuery] string[]? categories,
         [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? region = null,
         [FromQuery(Name = "pageSize")] int? legacyPageSize = null,
         CancellationToken cancellationToken = default)
     {
@@ -59,7 +61,12 @@ public sealed class SearchController : ControllerBase
         PaginationRequestDto effectivePagination = pagination.Override(size: legacyPageSize);
 
         ApplicationResult<SearchResultPage<SearchHitResult>> result = await this.searchQueryHandler.HandleAsync(
-            new SearchQuery(query ?? string.Empty, normalizedCategories, effectivePagination.ToApplication(), ResolveRequestLanguageCode(this.Request)),
+            new SearchQuery(
+                query ?? string.Empty,
+                normalizedCategories,
+                effectivePagination.ToApplication(),
+                ResolveRequestLanguageCode(this.Request),
+                WorldRegionFilterParser.Parse(region)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

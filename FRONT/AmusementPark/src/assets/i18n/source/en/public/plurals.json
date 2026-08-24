@@ -8,6 +8,8 @@
     "darkRide": { "one": "Dark ride", "few": "Dark rides", "many": "Dark rides", "other": "Dark rides" },
     "manufacturerFound": { "one": "{{count}} manufacturer found", "few": "{{count}} manufacturers found", "many": "{{count}} manufacturers found", "other": "{{count}} manufacturers found" },
     "parkOnMap": { "one": "{{count}} park on the map", "few": "{{count}} parks on the map", "many": "{{count}} parks on the map", "other": "{{count}} parks on the map" },
+    "placeOnMap": { "one": "{{count}} place on the map", "few": "{{count}} places on the map", "many": "{{count}} places on the map", "other": "{{count}} places on the map" },
+    "standaloneAttractionOnMap": { "one": "{{count}} standalone attraction on the map", "few": "{{count}} standalone attractions on the map", "many": "{{count}} standalone attractions on the map", "other": "{{count}} standalone attractions on the map" },
     "result": { "one": "{{count}} result", "few": "{{count}} results", "many": "{{count}} results", "other": "{{count}} results" },
     "unlocatedPlace": { "one": "{{count}} place off map", "few": "{{count}} places off map", "many": "{{count}} places off map", "other": "{{count}} places off map" },
     "resultRange": { "one": "Showing {{start}} to {{end}} of {{total}} place", "few": "Showing {{start}} to {{end}} of {{total}} places", "many": "Showing {{start}} to {{end}} of {{total}} places", "other": "Showing {{start}} to {{end}} of {{total}} places" },

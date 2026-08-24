@@ -3874,6 +3874,16 @@
     },
     "titlePrefix": "All",
     "titleAccent": "parks",
+    "discoveryScopes": {
+      "label": "Place type",
+      "parksAndStandaloneAttractions": "Parks + standalone attractions",
+      "visiblePlaces": "Visible places",
+      "visibleStandaloneAttractions": "Standalone attractions",
+      "mapTitle": "Parks and standalone attractions map",
+      "mapSubtitle": "Explore geolocated parks and standalone attractions, then filter the map by region.",
+      "resultsTitle": "Parks and standalone attractions",
+      "standaloneResultsTitle": "Standalone attractions list"
+    },
     "stats": {
       "visibleParks": "Visible parks",
       "countries": "Countries"
@@ -4193,6 +4203,18 @@
       "few": "{{count}} parks on the map",
       "many": "{{count}} parks on the map",
       "other": "{{count}} parks on the map"
+    },
+    "placeOnMap": {
+      "one": "{{count}} place on the map",
+      "few": "{{count}} places on the map",
+      "many": "{{count}} places on the map",
+      "other": "{{count}} places on the map"
+    },
+    "standaloneAttractionOnMap": {
+      "one": "{{count}} standalone attraction on the map",
+      "few": "{{count}} standalone attractions on the map",
+      "many": "{{count}} standalone attractions on the map",
+      "other": "{{count}} standalone attractions on the map"
     },
     "result": {
       "one": "{{count}} result",

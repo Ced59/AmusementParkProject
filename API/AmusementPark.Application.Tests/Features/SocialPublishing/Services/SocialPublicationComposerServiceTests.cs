@@ -2,6 +2,9 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Queries;
+using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
@@ -677,6 +680,127 @@ public sealed class SocialPublicationComposerServiceTests
         images.VerifyAll();
     }
 
+    [Fact]
+    public async Task ResolveDraftAsync_ForClosedParkItemHistory_ShouldRemainShareable()
+    {
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Ancienne attraction",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                AttractionDetails = new AttractionDetails { Status = "ClosedDefinitively" },
+            });
+        Mock<IImageRepository> images = CreateEmptyImagePageRepository(
+            ImageOwnerType.ParkItem,
+            "item-1",
+            ImageCategory.ParkItem);
+        Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>> historyTimeline =
+            new Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>>(MockBehavior.Strict);
+        historyTimeline.Setup(handler => handler.HandleAsync(
+                It.Is<GetParkItemHistoryTimelineQuery>(query => query.ParkItemId == "item-1" && query.Page == 1 && !query.IncludeHidden),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult()));
+        SocialPublicationComposerService service = CreateService(
+            CreateParkRepository(),
+            images,
+            items: items,
+            parkItemHistoryTimeline: historyTimeline);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test/item/item-1/ancienne-attraction/history",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("L’histoire de Ancienne attraction", result.Value?.TargetName);
+        items.VerifyAll();
+        historyTimeline.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData("https://amusement-parks.fun/fr/park/park-1/park-test/item/item-1/ancienne-attraction/history", 1)]
+    [InlineData("https://amusement-parks.fun/fr/park/park-1/park-test/item/item-1/ancienne-attraction/history/page/7", 7)]
+    public async Task ResolveDraftAsync_ForClosedParkItemMissingRequestedHistoryPage_ShouldReject(string url, int requestedPage)
+    {
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Ancienne attraction",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                AttractionDetails = new AttractionDetails { Status = "ClosedDefinitively" },
+            });
+        Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>> historyTimeline =
+            new Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>>(MockBehavior.Strict);
+        historyTimeline.Setup(handler => handler.HandleAsync(
+                It.Is<GetParkItemHistoryTimelineQuery>(query => query.ParkItemId == "item-1" && query.Page == requestedPage && !query.IncludeHidden),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<HistoryTimelineResult>.Failure(
+                ApplicationErrors.EntityNotFound("History", "item-1")));
+        SocialPublicationComposerService service = CreateService(
+            CreateParkRepository(),
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            items: items,
+            parkItemHistoryTimeline: historyTimeline);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            url,
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "social-publishing.url.invalid");
+        items.VerifyAll();
+        historyTimeline.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForStandaloneHistoryWithoutPublicTimeline_ShouldReject()
+    {
+        Mock<IStandaloneAttractionRepository> standaloneAttractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneAttractions.Setup(repository => repository.GetByIdAsync("standalone-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new StandaloneAttraction
+            {
+                Id = "standalone-1",
+                Name = "Attraction Test",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+            });
+        Mock<IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>>> historyTimeline =
+            new Mock<IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>>>(MockBehavior.Strict);
+        historyTimeline.Setup(handler => handler.HandleAsync(
+                It.Is<GetStandaloneAttractionHistoryTimelineQuery>(query => query.StandaloneAttractionId == "standalone-1" && query.Page == 1 && !query.IncludeHidden),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<StandaloneAttractionHistoryTimelineResult>.Failure(
+                ApplicationErrors.EntityNotFound("History", "standalone-1")));
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            standaloneAttractions: standaloneAttractions,
+            standaloneHistoryTimeline: historyTimeline);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/attraction/standalone-1/attraction-test/history",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "social-publishing.url.invalid");
+        standaloneAttractions.VerifyAll();
+        historyTimeline.VerifyAll();
+    }
+
     [Theory]
     [InlineData("https://amusement-parks.fun/fr/parkz")]
     [InlineData("https://amusement-parks.fun/fr/park-operator/missing/operator")]
@@ -735,7 +859,9 @@ public sealed class SocialPublicationComposerServiceTests
         Mock<IParkFounderRepository>? founders = null,
         Mock<IAttractionManufacturerRepository>? manufacturers = null,
         Mock<ITechnicalPageRepository>? technicalPages = null,
-        Mock<IUserRankingShareRepository>? rankingShares = null)
+        Mock<IUserRankingShareRepository>? rankingShares = null,
+        Mock<IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>>>? standaloneHistoryTimeline = null,
+        Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>>? parkItemHistoryTimeline = null)
     {
         Mock<IPublicSeoContextProvider> seoContext = new Mock<IPublicSeoContextProvider>(MockBehavior.Strict);
         seoContext.Setup(provider => provider.GetAsync(It.IsAny<CancellationToken>()))
@@ -745,10 +871,12 @@ public sealed class SocialPublicationComposerServiceTests
             items?.Object ?? Mock.Of<IParkItemRepository>(MockBehavior.Strict),
             videos?.Object ?? Mock.Of<IVideoRepository>(MockBehavior.Strict),
             zones?.Object ?? Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
-            historyEvents?.Object ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict));
+            historyEvents?.Object ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict),
+            parkItemHistoryTimeline?.Object ?? Mock.Of<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>>(MockBehavior.Strict));
         StandaloneAttractionSocialPublicationTargetResolver standaloneAttractionTargetResolver =
             new StandaloneAttractionSocialPublicationTargetResolver(
-                standaloneAttractions?.Object ?? Mock.Of<IStandaloneAttractionRepository>(MockBehavior.Strict));
+                standaloneAttractions?.Object ?? Mock.Of<IStandaloneAttractionRepository>(MockBehavior.Strict),
+                standaloneHistoryTimeline?.Object ?? Mock.Of<IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>>>(MockBehavior.Strict));
         ReferenceSocialPublicationTargetResolver referenceTargetResolver = new ReferenceSocialPublicationTargetResolver(
             operators?.Object ?? Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             founders?.Object ?? Mock.Of<IParkFounderRepository>(MockBehavior.Strict),

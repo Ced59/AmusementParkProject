@@ -1,4 +1,8 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Queries;
+using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -18,19 +22,22 @@ public sealed class ParkSocialPublicationTargetResolver
     private readonly IVideoRepository videoRepository;
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IHistoryEventRepository historyEventRepository;
+    private readonly IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> parkItemHistoryTimelineQueryHandler;
 
     public ParkSocialPublicationTargetResolver(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IVideoRepository videoRepository,
         IParkZoneRepository parkZoneRepository,
-        IHistoryEventRepository historyEventRepository)
+        IHistoryEventRepository historyEventRepository,
+        IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> parkItemHistoryTimelineQueryHandler)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.videoRepository = videoRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.historyEventRepository = historyEventRepository;
+        this.parkItemHistoryTimelineQueryHandler = parkItemHistoryTimelineQueryHandler;
     }
 
     internal async Task<ResolvedSocialPublicationTarget?> ResolveAsync(
@@ -54,7 +61,11 @@ public sealed class ParkSocialPublicationTargetResolver
             && string.Equals(segments[4], "item", StringComparison.OrdinalIgnoreCase)
                 ? 4
                 : -1;
-        ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, cancellationToken);
+        int prospectiveEntityBaseLength = itemSegmentIndex < 0 ? 4 : itemSegmentIndex + 3;
+        bool allowClosedItem = itemSegmentIndex >= 0
+            && segments.Count > prospectiveEntityBaseLength
+            && string.Equals(segments[prospectiveEntityBaseLength], "history", StringComparison.OrdinalIgnoreCase);
+        ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, allowClosedItem, cancellationToken);
         if (itemSegmentIndex >= 0 && item is null)
         {
             return null;
@@ -115,6 +126,7 @@ public sealed class ParkSocialPublicationTargetResolver
         IReadOnlyList<string> segments,
         int itemSegmentIndex,
         string parkId,
+        bool allowClosedItem,
         CancellationToken cancellationToken)
     {
         if (itemSegmentIndex < 0)
@@ -135,7 +147,7 @@ public sealed class ParkSocialPublicationTargetResolver
             && !string.IsNullOrWhiteSpace(item.Id)
             && item.IsVisible
             && item.AdminReviewStatus != AdminReviewStatus.NotRelevant
-            && !ParkItemStatusNormalizer.IsClosedDefinitively(item.AttractionDetails?.Status)
+            && (allowClosedItem || !ParkItemStatusNormalizer.IsClosedDefinitively(item.AttractionDetails?.Status))
             && string.Equals(item.ParkId, parkId, StringComparison.Ordinal)
             && !string.IsNullOrWhiteSpace(item.Name)
                 ? item
@@ -204,6 +216,11 @@ public sealed class ParkSocialPublicationTargetResolver
             && int.TryParse(segments[entityBaseLength + 2], out int page)
             && page > 0)
         {
+            if (item is not null && !await this.HasPublicParkItemHistoryPageAsync(item.Id!, page, cancellationToken))
+            {
+                return null;
+            }
+
             string historyEntityName = item?.Name ?? park.Name ?? string.Empty;
             return new SocialPublicationPageNames($"L’histoire de {historyEntityName}", $"The history of {historyEntityName}");
         }
@@ -232,6 +249,13 @@ public sealed class ParkSocialPublicationTargetResolver
 
         string entityName = item?.Name ?? park.Name ?? string.Empty;
         string section = segments[entityBaseLength].ToLowerInvariant();
+        if (item is not null
+            && string.Equals(section, "history", StringComparison.Ordinal)
+            && !await this.HasPublicParkItemHistoryPageAsync(item.Id!, 1, cancellationToken))
+        {
+            return null;
+        }
+
         return section switch
         {
             "images" => new SocialPublicationPageNames($"Les photos de {entityName}", $"{entityName} photos"),
@@ -246,6 +270,17 @@ public sealed class ParkSocialPublicationTargetResolver
             "items" when item is null => new SocialPublicationPageNames($"Les attractions et lieux de {entityName}", $"Attractions and places at {entityName}"),
             _ => null,
         };
+    }
+
+    private async Task<bool> HasPublicParkItemHistoryPageAsync(
+        string parkItemId,
+        int page,
+        CancellationToken cancellationToken)
+    {
+        ApplicationResult<HistoryTimelineResult> result = await this.parkItemHistoryTimelineQueryHandler.HandleAsync(
+            new GetParkItemHistoryTimelineQuery(parkItemId, IncludeHidden: false, Page: page),
+            cancellationToken);
+        return result.IsSuccess && result.Value is not null;
     }
 
     private async Task<SocialPublicationPageNames?> ResolveZoneNamesAsync(

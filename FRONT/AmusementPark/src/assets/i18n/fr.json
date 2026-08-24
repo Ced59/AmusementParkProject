@@ -3874,6 +3874,16 @@
     },
     "titlePrefix": "Tous les",
     "titleAccent": "parcs",
+    "discoveryScopes": {
+      "label": "Type de lieu",
+      "parksAndStandaloneAttractions": "Parcs + attractions isolées",
+      "visiblePlaces": "Lieux visibles",
+      "visibleStandaloneAttractions": "Attractions isolées",
+      "mapTitle": "Carte des parcs et attractions isolées",
+      "mapSubtitle": "Explore les parcs et les attractions isolées géolocalisées, puis filtre la carte par région.",
+      "resultsTitle": "Parcs et attractions isolées",
+      "standaloneResultsTitle": "Liste des attractions isolées"
+    },
     "stats": {
       "visibleParks": "Parcs visibles",
       "countries": "Pays"
@@ -4193,6 +4203,18 @@
       "few": "{{count}} parcs sur la carte",
       "many": "{{count}} parcs sur la carte",
       "other": "{{count}} parcs sur la carte"
+    },
+    "placeOnMap": {
+      "one": "{{count}} lieu sur la carte",
+      "few": "{{count}} lieux sur la carte",
+      "many": "{{count}} lieux sur la carte",
+      "other": "{{count}} lieux sur la carte"
+    },
+    "standaloneAttractionOnMap": {
+      "one": "{{count}} attraction isolée sur la carte",
+      "few": "{{count}} attractions isolées sur la carte",
+      "many": "{{count}} attractions isolées sur la carte",
+      "other": "{{count}} attractions isolées sur la carte"
     },
     "result": {
       "one": "{{count}} résultat",

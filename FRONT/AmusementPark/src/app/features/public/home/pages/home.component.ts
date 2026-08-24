@@ -10,6 +10,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { HomeViewComponent } from './home-view.component';
 import { SeoService } from '@core/seo/seo.service';
+import { PUBLIC_SEARCH_CATEGORY_OPTIONS, PublicSearchCategoryOption } from '@shared/models/search/public-search-category-option.model';
 
 @Component({
   selector: 'app-home',
@@ -24,22 +25,14 @@ export class HomeComponent implements OnInit {
   protected readonly searchTerm = signal<string>('');
   protected readonly selectedCategory = signal<string>('');
 
-  protected readonly categoryOptions: { labelKey: string; value: string }[] = [
-    { labelKey: 'home.categories.everywhere', value: '' },
-    { labelKey: 'home.categories.park', value: 'park' },
-    { labelKey: 'home.categories.parkItems', value: 'parkItems' },
-    { labelKey: 'home.categories.attractionsWithStandalone', value: 'attractionsWithStandalone' },
-    { labelKey: 'home.categories.standaloneAttractions', value: 'standaloneAttractions' },
-    { labelKey: 'home.categories.operators', value: 'operators' },
-    { labelKey: 'home.categories.manufacturers', value: 'manufacturers' }
-  ];
+  protected readonly categoryOptions: readonly PublicSearchCategoryOption[] = PUBLIC_SEARCH_CATEGORY_OPTIONS;
 
   protected readonly searchFilters = computed<UiSearchPanelSelectFilterModel[]>(() => [
     {
       id: 'category',
       labelKey: 'home.placeholder_category',
       selectedValue: this.selectedCategory() || null,
-      options: this.categoryOptions.map((option: { labelKey: string; value: string }) => ({
+      options: this.categoryOptions.map((option: PublicSearchCategoryOption) => ({
         labelKey: option.labelKey,
         value: option.value || null
       }))

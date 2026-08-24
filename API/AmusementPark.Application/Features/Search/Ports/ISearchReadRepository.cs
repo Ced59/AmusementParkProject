@@ -11,5 +11,13 @@ public interface ISearchReadRepository
     /// <summary>
     /// Exécute une recherche paginée.
     /// </summary>
-    Task<SearchResultPage<SearchHitResult>> SearchAsync(string text, IReadOnlyCollection<string> categories, int page, int pageSize, string languageCode, CancellationToken cancellationToken);
+    Task<SearchResultPage<SearchHitResult>> SearchAsync(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
+        IReadOnlyCollection<string> regionCountryCodes,
+        int page,
+        int pageSize,
+        string languageCode,
+        CancellationToken cancellationToken);
 }

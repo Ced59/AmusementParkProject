@@ -1,3 +1,7 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.History.Queries;
+using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Images;
@@ -8,11 +12,14 @@ namespace AmusementPark.Application.Features.SocialPublishing.Services;
 public sealed class StandaloneAttractionSocialPublicationTargetResolver
 {
     private readonly IStandaloneAttractionRepository standaloneAttractionRepository;
+    private readonly IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>> historyTimelineQueryHandler;
 
     public StandaloneAttractionSocialPublicationTargetResolver(
-        IStandaloneAttractionRepository standaloneAttractionRepository)
+        IStandaloneAttractionRepository standaloneAttractionRepository,
+        IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>> historyTimelineQueryHandler)
     {
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.historyTimelineQueryHandler = historyTimelineQueryHandler;
     }
 
     internal async Task<ResolvedSocialPublicationTarget?> ResolveAsync(
@@ -50,12 +57,21 @@ public sealed class StandaloneAttractionSocialPublicationTargetResolver
 
         bool isHistoryRoute = segments.Count == 5
             && string.Equals(segments[4], "history", StringComparison.OrdinalIgnoreCase);
+        int requestedPage = 1;
         bool isHistoryPageRoute = segments.Count == 7
             && string.Equals(segments[4], "history", StringComparison.OrdinalIgnoreCase)
             && string.Equals(segments[5], "page", StringComparison.OrdinalIgnoreCase)
-            && int.TryParse(segments[6], out int page)
-            && page > 0;
+            && int.TryParse(segments[6], out requestedPage)
+            && requestedPage > 0;
         if (!isHistoryRoute && !isHistoryPageRoute)
+        {
+            return null;
+        }
+
+        ApplicationResult<StandaloneAttractionHistoryTimelineResult> historyResult = await this.historyTimelineQueryHandler.HandleAsync(
+            new GetStandaloneAttractionHistoryTimelineQuery(attraction.Id!, IncludeHidden: false, Page: requestedPage),
+            cancellationToken);
+        if (!historyResult.IsSuccess || historyResult.Value is null)
         {
             return null;
         }

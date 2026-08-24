@@ -1,10 +1,12 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Search.Results;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -35,9 +37,17 @@ public sealed class SearchReadRepository : ISearchReadRepository
         this.collection = database.GetCollection<SearchItemDocument>(settings.SearchItemCollectionName);
     }
 
-    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(string text, IReadOnlyCollection<string> categories, int page, int pageSize, string languageCode, CancellationToken cancellationToken)
+    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
+        IReadOnlyCollection<string> regionCountryCodes,
+        int page,
+        int pageSize,
+        string languageCode,
+        CancellationToken cancellationToken)
     {
-        BsonDocument filter = BuildSearchFilter(text, categories);
+        BsonDocument filter = BuildSearchFilter(text, categories, matchingCountryCodes, regionCountryCodes);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -66,8 +76,13 @@ public sealed class SearchReadRepository : ISearchReadRepository
             totalItems);
     }
 
-    private static BsonDocument BuildSearchFilter(string text, IReadOnlyCollection<string> categories)
+    private static BsonDocument BuildSearchFilter(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
+        IReadOnlyCollection<string> regionCountryCodes)
     {
+        (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
         List<BsonDocument> filters = new List<BsonDocument>
         {
             new BsonDocument("isVisible", true),
@@ -75,20 +90,41 @@ public sealed class SearchReadRepository : ISearchReadRepository
 
         if (!string.IsNullOrWhiteSpace(text))
         {
-            string escapedQuery = Regex.Escape(text.Trim());
-            BsonRegularExpression regex = new BsonRegularExpression($".*{escapedQuery}.*", "i");
+            string normalizedText = text.Trim();
+            BsonArray textFilters = BuildTextFieldFilters(normalizedText);
 
-            filters.Add(new BsonDocument("$or", new BsonArray
+            if (normalizedCategories.Contains("standaloneAttraction", StringComparer.Ordinal))
             {
-                new BsonDocument("title", regex),
-                new BsonDocument("subtitle", regex),
-                new BsonDocument("description", regex),
-                new BsonDocument("localizedDescriptions.value", regex),
-                new BsonDocument("keywords", regex),
-            }));
+                string canonicalStandaloneTerm = PublicSearchAliases.NormalizeStandaloneAttractionTermForProjection(normalizedText);
+                if (!string.Equals(canonicalStandaloneTerm, normalizedText, StringComparison.OrdinalIgnoreCase))
+                {
+                    BsonArray standaloneIdentityFilters = new BsonArray
+                    {
+                        new BsonDocument("category", "standaloneAttraction"),
+                        new BsonDocument("resourceType", SearchProjectionResourceTypes.StandaloneAttractions),
+                    };
+                    BsonArray canonicalTextFilters = BuildTextFieldFilters(canonicalStandaloneTerm);
+                    textFilters.Add(new BsonDocument("$and", new BsonArray
+                    {
+                        new BsonDocument("$or", standaloneIdentityFilters),
+                        new BsonDocument("$or", canonicalTextFilters),
+                    }));
+                }
+            }
+
+            if (matchingCountryCodes.Count > 0)
+            {
+                textFilters.Add(new BsonDocument("countryCode", new BsonDocument("$in", ToBsonArray(matchingCountryCodes))));
+            }
+
+            filters.Add(new BsonDocument("$or", textFilters));
         }
 
-        (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
+        if (regionCountryCodes.Count > 0)
+        {
+            filters.Add(new BsonDocument("countryCode", new BsonDocument("$in", ToBsonArray(regionCountryCodes))));
+        }
+
         if (normalizedCategories.Length > 0 || normalizedResourceTypes.Length > 0)
         {
             BsonArray categoryFilters = new BsonArray();
@@ -112,6 +148,21 @@ public sealed class SearchReadRepository : ISearchReadRepository
         }
 
         return new BsonDocument("$and", new BsonArray(filters));
+    }
+
+    private static BsonArray BuildTextFieldFilters(string text)
+    {
+        string escapedQuery = Regex.Escape(text);
+        BsonRegularExpression regex = new BsonRegularExpression($".*{escapedQuery}.*", "i");
+
+        return new BsonArray
+        {
+            new BsonDocument("title", regex),
+            new BsonDocument("subtitle", regex),
+            new BsonDocument("description", regex),
+            new BsonDocument("localizedDescriptions.value", regex),
+            new BsonDocument("keywords", regex),
+        };
     }
 
     private static BsonArray ToBsonArray(IEnumerable<string> values)

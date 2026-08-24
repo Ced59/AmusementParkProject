@@ -23,6 +23,7 @@ internal static class PublicHttpCacheHeadersApplicator
         new PublicHttpCacheRule("/parks/random-visible", 60, 300, 0, true),
         new PublicHttpCacheRule("/parks/home-featured", 60, 300, 0, true),
         new PublicHttpCacheRule("/parks/map-visible", 120, 600, 0, true),
+        new PublicHttpCacheRule("/standalone-attractions/map-visible", 120, 600, 0, true),
         new PublicHttpCacheRule("/parks", 60, 300, 0, true),
         new PublicHttpCacheRule("/park-zones", 120, 600, 0, true),
         new PublicHttpCacheRule("/park-items", 120, 600, 0, true),

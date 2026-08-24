@@ -73,6 +73,26 @@ internal static class StandaloneAttractionsHttpMappers
         };
     }
 
+    public static StandaloneAttractionMapPointDto ToMapPointHttp(this StandaloneAttraction value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new StandaloneAttractionMapPointDto
+        {
+            Id = value.Id ?? string.Empty,
+            Name = value.Name,
+            CountryCode = value.CountryCode,
+            Type = value.Type.ToHttp(),
+            Subtype = value.Subtype,
+            Status = value.AttractionDetails?.Status,
+            City = value.City,
+            Street = value.Street,
+            PostalCode = value.PostalCode,
+            Latitude = value.Position?.Latitude ?? 0.0,
+            Longitude = value.Position?.Longitude ?? 0.0,
+        };
+    }
+
     public static StandaloneAttractionMigrationRequest ToApplication(this StandaloneAttractionMigrationDto dto)
     {
         ArgumentNullException.ThrowIfNull(dto);

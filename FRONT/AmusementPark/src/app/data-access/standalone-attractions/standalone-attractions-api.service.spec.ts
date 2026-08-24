@@ -64,6 +64,18 @@ describe('StandaloneAttractionsApiService', () => {
     adminRequest.flush({ id: 'admin id' });
   });
 
+  it('loads visible map points with normalized discovery filters', () => {
+    service.getVisibleMapPoints('  Pendolino  ', 'europe').subscribe((points) => {
+      expect(points[0]?.id).toBe('standalone-1');
+    });
+
+    const request = httpTestingController.expectOne((candidate) =>
+      candidate.url === `${environment.apiBaseUrl}standalone-attractions/map-visible`);
+    expect(request.request.params.get('query')).toBe('Pendolino');
+    expect(request.request.params.get('region')).toBe('europe');
+    request.flush([{ id: 'standalone-1' }]);
+  });
+
   it('downloads standalone export through HttpClient as a blob', () => {
     const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
 
