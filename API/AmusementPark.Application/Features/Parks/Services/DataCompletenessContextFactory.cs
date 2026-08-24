@@ -100,9 +100,12 @@ internal static class DataCompletenessContextFactory
             IReadOnlyCollection<HistoryEvent> currentPublicParkItemHistory = currentParkItemHistory
                 .Where(historyEvent => !string.IsNullOrWhiteSpace(historyEvent.OwnerId) && publicParkItemIds.Contains(historyEvent.OwnerId.Trim()))
                 .ToList();
-            IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
+            IReadOnlyCollection<Image> scoreParkOwnedImages = projectCurrentParkForPublication
                 ? currentParkImages
                 : currentParkImages.Where(static image => image.IsPublished).ToList();
+            IReadOnlyCollection<Image> scoreParkImages = scoreParkOwnedImages
+                .Where(static image => image.Category == ImageCategory.Park)
+                .ToList();
             IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
                 ? currentPublicParkItemImages
                 : currentPublicParkItemImages.Where(static image => image.IsPublished).ToList();
@@ -115,7 +118,7 @@ internal static class DataCompletenessContextFactory
             bool hasNoForbiddenPublicText = HasNoForbiddenParkRelatedPublicText(
                 currentParkItems,
                 currentZones,
-                scoreParkImages,
+                scoreParkOwnedImages,
                 scoreParkItemImages,
                 scoreParkHistory,
                 scoreParkItemHistory,
@@ -125,7 +128,7 @@ internal static class DataCompletenessContextFactory
                     park,
                     currentParkItems,
                     currentZones,
-                    scoreParkImages,
+                    scoreParkOwnedImages,
                     scoreParkItemImages,
                     scoreParkHistory,
                     scoreParkItemHistory,
@@ -153,7 +156,7 @@ internal static class DataCompletenessContextFactory
                 ParkImagesWithLocalizedAltTextCount = scoreParkImages.Count(static image => HasLocalizedText(image.AltTexts)),
                 ParkItemPublishedImageCount = scoreParkItemImages.Count,
                 HasPublishedCurrentLogo = !string.IsNullOrWhiteSpace(park.CurrentLogoImageId)
-                    && scoreParkImages.Any(image =>
+                    && scoreParkOwnedImages.Any(image =>
                         string.Equals(image.Id, park.CurrentLogoImageId, StringComparison.Ordinal)
                         && image.Category == ImageCategory.Logo),
                 HasOriginalMedia = scoreParkImages.Any(static image => !string.IsNullOrWhiteSpace(image.OriginalFileName)),

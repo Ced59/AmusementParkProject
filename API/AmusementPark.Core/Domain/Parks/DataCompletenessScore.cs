@@ -411,6 +411,13 @@ public static class DataCompletenessScoringRules
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromMilliseconds(100));
 
+    private static readonly Regex[] SingleOccurrenceFormulaRegexes =
+    [
+        new Regex(@"\b(?:appartient\s+à\s+l['’]+univers\s+de|belongs\s+to\s+the\s+world\s+of|gehört\s+zur\s+welt\s+von|behoort\s+tot\s+de\s+wereld\s+van|appartiene\s+al\s+mondo\s+di|forma\s+parte\s+del\s+universo\s+de|należy\s+do\s+świata|pertence\s+ao\s+universo\s+de)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:prolonge\s+l['’]+atmosphère\s+de|extends\s+the\s+atmosphere\s+of|führt\s+die\s+atmosphäre\s+von|zet\s+de\s+sfeer\s+van|prolunga\s+l['’]+atmosfera\s+di|prolonga\s+la\s+atmósfera\s+de|rozwija\s+atmosferę|prolonga\s+o\s+ambiente\s+de)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"^(?:(?:une\s+)?scène\s+de\s+.+\s+à|a\s+scene\s+from\s+.+\s+at|eine\s+szene\s+aus\s+.+\s+im|een\s+scène\s+van\s+.+\s+in|una\s+scena\s+di\s+.+\s+a|una\s+escena\s+de\s+.+\s+en|scena\s+z\s+.+\s+w|uma\s+cena\s+de\s+.+\s+na)\s+disneyland\s+park[.!]?$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+    ];
+
     private static readonly Regex WordRegex = new Regex(
         @"[\p{L}\p{N}]+",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
@@ -516,6 +523,15 @@ public static class DataCompletenessScoringRules
         ArgumentNullException.ThrowIfNull(publicTexts);
         ArgumentNullException.ThrowIfNull(entityNames);
 
+        List<LocalizedText> populatedPublicTexts = publicTexts
+            .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
+            .ToList();
+        if (populatedPublicTexts.Any(text =>
+            SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(text.Value!)))))
+        {
+            return true;
+        }
+
         List<string> normalizedEntityNames = entityNames
             .Where(static name => !string.IsNullOrWhiteSpace(name))
             .Select(static name => NormalizePublicText(name!).ToLowerInvariant())
@@ -527,8 +543,7 @@ public static class DataCompletenessScoringRules
         Dictionary<string, int> firstDocumentByLongSequence = new Dictionary<string, int>(StringComparer.Ordinal);
         int documentIndex = 0;
 
-        foreach (IGrouping<string, LocalizedText> languageGroup in publicTexts
-            .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
+        foreach (IGrouping<string, LocalizedText> languageGroup in populatedPublicTexts
             .GroupBy(
                 static text => string.IsNullOrWhiteSpace(text.LanguageCode) ? "und" : text.LanguageCode.Trim(),
                 StringComparer.OrdinalIgnoreCase))

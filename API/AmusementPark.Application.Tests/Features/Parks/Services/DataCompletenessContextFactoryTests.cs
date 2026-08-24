@@ -167,12 +167,12 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.False(current.HasStructuredTechnicalDataOnly);
         Assert.False(current.HasNoFormulaicPublicText);
         Assert.True(projected.ProjectForPublication);
-        Assert.Equal(1, projected.ParkPublishedImageCount);
+        Assert.Equal(0, projected.ParkPublishedImageCount);
         Assert.True(projected.HasPublishedCurrentLogo);
-        Assert.Equal(1, projected.ParkImagesWithResolvedOwnerCount);
-        Assert.Equal(1, projected.ParkImagesWithLocalizedAltTextCount);
+        Assert.Equal(0, projected.ParkImagesWithResolvedOwnerCount);
+        Assert.Equal(0, projected.ParkImagesWithLocalizedAltTextCount);
         Assert.Equal(1, projected.ParkItemPublishedImageCount);
-        Assert.True(projected.HasOriginalMedia);
+        Assert.False(projected.HasOriginalMedia);
         Assert.Equal(1, projected.PublishedArticleCount);
         Assert.Equal(1, projected.StructuredArticleCount);
         Assert.True(projected.HasPublicSeoSignals);
