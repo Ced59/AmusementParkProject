@@ -143,6 +143,8 @@ Le serveur rend ces règles contraignantes : au plus deux requêtes techniques o
 
 Une complétude ou une publication de données ne déclenche jamais cette opération par elle-même. Codex utilise cette surface uniquement lorsque l’utilisateur demande explicitement une publication Facebook, qu’elle concerne une fiche parc, un parkItem, une vidéo ou une autre page publique reconnue.
 
+Le résolveur reconnaît les routes publiques qui peuvent porter un partage utile : pages statiques éditoriales, parc et ses sous-pages, parkItem et ses sous-pages, vidéo publiée, attraction isolée et son historique, zone publique, article historique publié, exploitant, fondateur, constructeur, guide technique visible et classement personnel rendu public par son propriétaire. Les redirections historiques, les variantes de route inconnues, les entités masquées et toutes les routes privées restent refusées.
+
 1. Résoudre obligatoirement le brouillon depuis l’URL publique. La réponse fournit l’URL normalisée, la cible reconnue, le texte bilingue automatique actuel et une page d’images publiques éligibles :
 
    ```powershell
@@ -153,7 +155,7 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
 
    Pour une page parc, la réponse fournit aussi `hasPublishedParkAnnouncement`, `parkAnnouncementId`, `parkAnnouncementStatus` et `parkAnnouncementExternalUrl`. Ces champs permettent au workflow du backlog de vérifier l’annonce idempotente et de relancer exactement son enregistrement échoué sans lire l’administration ni la base de données.
 
-2. Parcourir les pages suivantes si nécessaire. Une image est sélectionnable seulement si son identifiant apparaît dans la réponse de cette même cible. Pour une fiche parc ou ses sous-pages, seules ses images publiques de catégorie `PARK` sont proposées ; pour un parkItem, seules ses images publiques de catégorie `PARK_ITEM` le sont. Une page sans propriétaire d’image conserve simplement son Open Graph automatique.
+2. Parcourir les pages suivantes si nécessaire. Une image est sélectionnable seulement si son identifiant apparaît dans la réponse de cette même cible. Pour une fiche parc ou ses sous-pages, seules ses images publiques de catégorie `PARK` sont proposées ; pour un parkItem, une attraction isolée ou une référence publique, seules les images publiques appartenant à cette cible et de sa catégorie exacte le sont. Une page sans propriétaire d’image conserve simplement son Open Graph automatique.
 3. Publier après le contrôle d’activité global effectué par le client :
 
    ```powershell

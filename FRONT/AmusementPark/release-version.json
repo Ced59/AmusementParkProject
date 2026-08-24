@@ -1,6 +1,20 @@
 {
-  "version": "4.2.13",
+  "version": "4.2.14",
   "history": [
+    {
+      "version": "4.2.14",
+      "releasedAt": "2026-08-24",
+      "labels": {
+        "fr": "Les pages publiques peuvent être partagées plus facilement sur les réseaux sociaux.",
+        "en": "Public pages can be shared more easily on social networks.",
+        "de": "Öffentliche Seiten lassen sich jetzt leichter in sozialen Netzwerken teilen.",
+        "nl": "Openbare pagina’s zijn nu eenvoudiger te delen op sociale media.",
+        "it": "Ora le pagine pubbliche si condividono più facilmente sui social network.",
+        "es": "Ahora las páginas públicas se comparten más fácilmente en las redes sociales.",
+        "pl": "Strony publiczne można teraz łatwiej udostępniać w mediach społecznościowych.",
+        "pt": "As páginas públicas podem agora ser partilhadas mais facilmente nas redes sociais."
+      }
+    },
     {
       "version": "4.2.13",
       "releasedAt": "2026-08-21",

@@ -1,12 +1,8 @@
-using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
-using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
-using AmusementPark.Core.Domain.Videos;
 using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.SocialPublishing.Services;
@@ -14,20 +10,23 @@ namespace AmusementPark.Application.Features.SocialPublishing.Services;
 public sealed class SocialPublicationTargetResolver
 {
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
-    private readonly IParkRepository parkRepository;
-    private readonly IParkItemRepository parkItemRepository;
-    private readonly IVideoRepository videoRepository;
+    private readonly ParkSocialPublicationTargetResolver parkTargetResolver;
+    private readonly StandaloneAttractionSocialPublicationTargetResolver standaloneAttractionTargetResolver;
+    private readonly ReferenceSocialPublicationTargetResolver referenceTargetResolver;
+    private readonly ContentSocialPublicationTargetResolver contentTargetResolver;
 
     public SocialPublicationTargetResolver(
         IPublicSeoContextProvider publicSeoContextProvider,
-        IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository,
-        IVideoRepository videoRepository)
+        ParkSocialPublicationTargetResolver parkTargetResolver,
+        StandaloneAttractionSocialPublicationTargetResolver standaloneAttractionTargetResolver,
+        ReferenceSocialPublicationTargetResolver referenceTargetResolver,
+        ContentSocialPublicationTargetResolver contentTargetResolver)
     {
         this.publicSeoContextProvider = publicSeoContextProvider;
-        this.parkRepository = parkRepository;
-        this.parkItemRepository = parkItemRepository;
-        this.videoRepository = videoRepository;
+        this.parkTargetResolver = parkTargetResolver;
+        this.standaloneAttractionTargetResolver = standaloneAttractionTargetResolver;
+        this.referenceTargetResolver = referenceTargetResolver;
+        this.contentTargetResolver = contentTargetResolver;
     }
 
     internal async Task<ResolvedSocialPublicationTarget?> ResolveAsync(
@@ -61,15 +60,45 @@ public sealed class SocialPublicationTargetResolver
             return null;
         }
 
-        if (!string.Equals(segments[1], "park", StringComparison.OrdinalIgnoreCase))
+        string route = segments[1].ToLowerInvariant();
+        return route switch
         {
-            PageNames? pageNames = ResolveStaticPageNames(segments);
-            if (pageNames is null)
-            {
-                return null;
-            }
+            "park" => await this.parkTargetResolver.ResolveAsync(normalizedUrl, segments, cancellationToken),
+            "attraction" => await this.standaloneAttractionTargetResolver.ResolveAsync(normalizedUrl, segments, cancellationToken),
+            "park-operator" or "park-founder" or "park-manufacturer" =>
+                await this.referenceTargetResolver.ResolveAsync(normalizedUrl, segments, cancellationToken),
+            "technical" or "rankings" =>
+                await this.ResolveContentOrStaticPageAsync(normalizedUrl, segments, cancellationToken),
+            _ => ResolveStaticPage(normalizedUrl, segments),
+        };
+    }
 
-            return new ResolvedSocialPublicationTarget(
+    private async Task<ResolvedSocialPublicationTarget?> ResolveContentOrStaticPageAsync(
+        Uri normalizedUrl,
+        IReadOnlyList<string> segments,
+        CancellationToken cancellationToken)
+    {
+        if (segments.Count == 2)
+        {
+            return ResolveStaticPage(normalizedUrl, segments);
+        }
+
+        return await this.contentTargetResolver.ResolveAsync(normalizedUrl, segments, cancellationToken);
+    }
+
+    private static ResolvedSocialPublicationTarget? ResolveStaticPage(
+        Uri normalizedUrl,
+        IReadOnlyList<string> segments)
+    {
+        if (segments.Count != 2)
+        {
+            return null;
+        }
+
+        SocialPublicationPageNames? pageNames = ResolveStaticPageNames(segments[1]);
+        return pageNames is null
+            ? null
+            : new ResolvedSocialPublicationTarget(
                 normalizedUrl,
                 SocialPublicationTargetKind.Page,
                 pageNames.French,
@@ -78,145 +107,6 @@ public sealed class SocialPublicationTargetResolver
                 null,
                 null,
                 null);
-        }
-
-        if (segments.Length < 4 || string.IsNullOrWhiteSpace(segments[2]))
-        {
-            return null;
-        }
-
-        string parkId = segments[2];
-        Park? park = await this.parkRepository.GetByIdAsync(parkId, false, cancellationToken);
-        if (park is null || !park.IsPubliclyDiscoverable() || string.IsNullOrWhiteSpace(park.Name))
-        {
-            return null;
-        }
-
-        int itemSegmentIndex = segments.Length > 4
-            && string.Equals(segments[4], "item", StringComparison.OrdinalIgnoreCase)
-                ? 4
-                : -1;
-        ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, cancellationToken);
-        if (itemSegmentIndex >= 0 && item is null)
-        {
-            return null;
-        }
-
-        int entityBaseLength = item is null ? 4 : itemSegmentIndex + 3;
-        bool isVideoDetailRoute = segments.Length == entityBaseLength + 3
-            && string.Equals(segments[entityBaseLength], "videos", StringComparison.OrdinalIgnoreCase)
-            && !string.IsNullOrWhiteSpace(segments[entityBaseLength + 1])
-            && !string.IsNullOrWhiteSpace(segments[entityBaseLength + 2]);
-        if (isVideoDetailRoute)
-        {
-            return await this.ResolveVideoTargetAsync(
-                normalizedUrl,
-                segments,
-                entityBaseLength,
-                parkId,
-                item,
-                cancellationToken);
-        }
-
-        ImageOwnerType ownerType = item is null ? ImageOwnerType.Park : ImageOwnerType.ParkItem;
-        string ownerId = item?.Id ?? parkId;
-        ImageCategory category = item is null ? ImageCategory.Park : ImageCategory.ParkItem;
-        if (segments.Length == entityBaseLength)
-        {
-            return new ResolvedSocialPublicationTarget(
-                normalizedUrl,
-                item is null ? SocialPublicationTargetKind.Park : SocialPublicationTargetKind.ParkItem,
-                item?.Name ?? park.Name,
-                item?.Name ?? park.Name,
-                ownerType,
-                ownerId,
-                category,
-                park);
-        }
-
-        PageNames? names = ResolveParkPageNames(segments, entityBaseLength, item?.Name ?? park.Name, item is not null);
-        if (names is null)
-        {
-            return null;
-        }
-
-        return new ResolvedSocialPublicationTarget(
-            normalizedUrl,
-            SocialPublicationTargetKind.Page,
-            names.French,
-            names.English,
-            ownerType,
-            ownerId,
-            category,
-            park);
-    }
-
-    private async Task<ParkItem?> ResolveParkItemAsync(
-        IReadOnlyList<string> segments,
-        int itemSegmentIndex,
-        string parkId,
-        CancellationToken cancellationToken)
-    {
-        if (itemSegmentIndex < 0)
-        {
-            return null;
-        }
-
-        if (itemSegmentIndex + 2 >= segments.Count)
-        {
-            return null;
-        }
-
-        ParkItem? item = await this.parkItemRepository.GetByIdAsync(
-            segments[itemSegmentIndex + 1],
-            false,
-            cancellationToken);
-        return item is not null
-            && !string.IsNullOrWhiteSpace(item.Id)
-            && item.IsVisible
-            && string.Equals(item.ParkId, parkId, StringComparison.Ordinal)
-            && !string.IsNullOrWhiteSpace(item.Name)
-                ? item
-                : null;
-    }
-
-    private async Task<ResolvedSocialPublicationTarget?> ResolveVideoTargetAsync(
-        Uri normalizedUrl,
-        IReadOnlyList<string> segments,
-        int videosSegmentIndex,
-        string parkId,
-        ParkItem? item,
-        CancellationToken cancellationToken)
-    {
-        Video? video = await this.videoRepository.GetByIdAsync(segments[videosSegmentIndex + 1], cancellationToken);
-        if (video is null || !video.IsPublished || string.IsNullOrWhiteSpace(video.Title))
-        {
-            return null;
-        }
-
-        if (item is not null
-            && (video.OwnerType != VideoOwnerType.ParkItem
-                || !string.Equals(video.OwnerId, item.Id, StringComparison.Ordinal)))
-        {
-            return null;
-        }
-
-        if (item is null
-            && (video.OwnerType != VideoOwnerType.Park
-                || !string.Equals(video.OwnerId, parkId, StringComparison.Ordinal)))
-        {
-            return null;
-        }
-
-        return new ResolvedSocialPublicationTarget(
-            normalizedUrl,
-            SocialPublicationTargetKind.Video,
-            ResolveLocalizedText(video.Titles, "fr", video.Title),
-            ResolveLocalizedText(video.Titles, "en", video.Title),
-            item is null ? ImageOwnerType.Park : ImageOwnerType.ParkItem,
-            item?.Id ?? parkId,
-            item is null ? ImageCategory.Park : ImageCategory.ParkItem,
-            null);
     }
 
     private static Uri? NormalizePublicUrl(string? value, PublicSeoContext context)
@@ -263,76 +153,22 @@ public sealed class SocialPublicationTargetResolver
                     StringComparison.OrdinalIgnoreCase)));
     }
 
-    private static PageNames? ResolveParkPageNames(
-        IReadOnlyList<string> segments,
-        int entityBaseLength,
-        string entityName,
-        bool isParkItem)
+    private static SocialPublicationPageNames? ResolveStaticPageNames(string route)
     {
-        int suffixLength = segments.Count - entityBaseLength;
-        if (suffixLength == 3
-            && string.Equals(segments[entityBaseLength], "history", StringComparison.OrdinalIgnoreCase)
-            && string.Equals(segments[entityBaseLength + 1], "page", StringComparison.OrdinalIgnoreCase)
-            && int.TryParse(segments[entityBaseLength + 2], out int page)
-            && page > 0)
+        return route.ToLowerInvariant() switch
         {
-            return new PageNames($"L’histoire de {entityName}", $"The history of {entityName}");
-        }
-
-        if (suffixLength != 1)
-        {
-            return null;
-        }
-
-        string section = segments[entityBaseLength].ToLowerInvariant();
-        return section switch
-        {
-            "images" => new PageNames($"Les photos de {entityName}", $"{entityName} photos"),
-            "history" => new PageNames($"L’histoire de {entityName}", $"The history of {entityName}"),
-            "videos" => new PageNames($"Les vidéos de {entityName}", $"{entityName} videos"),
-            "comments" => new PageNames($"Les avis sur {entityName}", $"Reviews of {entityName}"),
-            "map" when !isParkItem => new PageNames($"La carte de {entityName}", $"The map of {entityName}"),
-            "zones" when !isParkItem => new PageNames($"Les zones de {entityName}", $"Areas at {entityName}"),
-            "weather" when !isParkItem => new PageNames($"La météo de {entityName}", $"The weather at {entityName}"),
-            "opening-hours" when !isParkItem => new PageNames($"Les horaires de {entityName}", $"Opening hours for {entityName}"),
-            "items" when !isParkItem => new PageNames($"Les attractions et lieux de {entityName}", $"Attractions and places at {entityName}"),
+            "home" => new SocialPublicationPageNames("L’accueil d’Amusement Parks", "The Amusement Parks home page"),
+            "parks" => new SocialPublicationPageNames("Les parcs d’attractions", "Amusement parks"),
+            "sitemap" => new SocialPublicationPageNames("Le plan du site", "The site map"),
+            "technical" => new SocialPublicationPageNames("Les guides techniques", "Technical guides"),
+            "manufacturers" => new SocialPublicationPageNames("Les constructeurs d’attractions", "Attraction manufacturers"),
+            "rankings" => new SocialPublicationPageNames("Les classements", "The rankings"),
+            "about" => new SocialPublicationPageNames("À propos d’Amusement Parks", "About Amusement Parks"),
+            "contact" => new SocialPublicationPageNames("Contacter Amusement Parks", "Contact Amusement Parks"),
+            "versions" => new SocialPublicationPageNames("Les nouveautés d’Amusement Parks", "What’s new on Amusement Parks"),
+            "privacy" => new SocialPublicationPageNames("La politique de confidentialité", "The privacy policy"),
             _ => null,
         };
-    }
-
-    private static PageNames? ResolveStaticPageNames(IReadOnlyList<string> segments)
-    {
-        if (segments.Count != 2)
-        {
-            return null;
-        }
-
-        string route = segments.Count > 1 ? segments[1].ToLowerInvariant() : string.Empty;
-        return route switch
-        {
-            "home" => new PageNames("L’accueil d’Amusement Parks", "The Amusement Parks home page"),
-            "parks" => new PageNames("Les parcs d’attractions", "Amusement parks"),
-            "sitemap" => new PageNames("Le plan du site", "The site map"),
-            "technical" => new PageNames("Les guides techniques", "Technical guides"),
-            "manufacturers" => new PageNames("Les constructeurs d’attractions", "Attraction manufacturers"),
-            "rankings" => new PageNames("Les classements", "The rankings"),
-            "about" => new PageNames("À propos d’Amusement Parks", "About Amusement Parks"),
-            "contact" => new PageNames("Contacter Amusement Parks", "Contact Amusement Parks"),
-            "versions" => new PageNames("Les nouveautés d’Amusement Parks", "What’s new on Amusement Parks"),
-            "privacy" => new PageNames("La politique de confidentialité", "The privacy policy"),
-            _ => null,
-        };
-    }
-
-    private static string ResolveLocalizedText(
-        IEnumerable<LocalizedText> values,
-        string languageCode,
-        string fallback)
-    {
-        string? value = values
-            .FirstOrDefault(candidate => string.Equals(candidate.LanguageCode, languageCode, StringComparison.OrdinalIgnoreCase))
-            ?.Value;
-        return string.IsNullOrWhiteSpace(value) ? fallback.Trim() : value.Trim();
     }
 
     private static bool IsPrivateRoute(string route)
@@ -344,9 +180,23 @@ public sealed class SocialPublicationTargetResolver
             || route.Equals("reset-password", StringComparison.OrdinalIgnoreCase)
             || route.Equals("not-found", StringComparison.OrdinalIgnoreCase);
     }
-
-    private sealed record PageNames(string French, string English);
 }
+
+internal static class SocialPublicationLocalizedTextResolver
+{
+    public static string Resolve(
+        IEnumerable<LocalizedText>? values,
+        string languageCode,
+        string fallback)
+    {
+        string? value = values?
+            .FirstOrDefault(candidate => string.Equals(candidate.LanguageCode, languageCode, StringComparison.OrdinalIgnoreCase))
+            ?.Value;
+        return string.IsNullOrWhiteSpace(value) ? fallback.Trim() : value.Trim();
+    }
+}
+
+internal sealed record SocialPublicationPageNames(string French, string English);
 
 internal sealed record ResolvedSocialPublicationTarget(
     Uri Url,

@@ -1,18 +1,29 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
+using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Core.Domain.SocialPublishing;
+using AmusementPark.Core.Domain.TechnicalPages;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.Core.Localization;
 using Moq;
@@ -150,6 +161,112 @@ public sealed class SocialPublicationComposerServiceTests
         Assert.Equal("item-image", Assert.Single(draft.Images.Items).Id);
         items.VerifyAll();
         images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForStandaloneAttraction_ShouldUseAttractionNameAndOnlyItsImages()
+    {
+        Mock<IStandaloneAttractionRepository> standaloneAttractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneAttractions.Setup(repository => repository.GetByIdAsync(
+                "standalone-1",
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new StandaloneAttraction
+            {
+                Id = "standalone-1",
+                Name = "Pendolino",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+            });
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(repository => repository.GetPageAsync(
+                1,
+                6,
+                It.Is<ImageSearchCriteria>(criteria =>
+                    criteria.OwnerType == ImageOwnerType.StandaloneAttraction
+                    && criteria.OwnerId == "standalone-1"
+                    && criteria.Category == ImageCategory.StandaloneAttraction
+                    && criteria.IsPublished == true),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(
+                new[]
+                {
+                    CreateImage(
+                        "standalone-image",
+                        "standalone-1",
+                        true,
+                        true,
+                        ImageOwnerType.StandaloneAttraction,
+                        ImageCategory.StandaloneAttraction),
+                },
+                1,
+                6,
+                1));
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            images,
+            standaloneAttractions: standaloneAttractions);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/attraction/standalone-1/pendolino",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal(SocialPublicationTargetKind.StandaloneAttraction, draft.TargetKind);
+        Assert.Equal("Pendolino", draft.TargetName);
+        Assert.Contains("Une nouvelle attraction", draft.DefaultMessage, StringComparison.Ordinal);
+        Assert.Equal("standalone-image", Assert.Single(draft.Images.Items).Id);
+        standaloneAttractions.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishAsync_ForStandaloneAttractionWithoutOverrides_ShouldPublishDefaultMessage()
+    {
+        Mock<IStandaloneAttractionRepository> standaloneAttractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneAttractions.Setup(repository => repository.GetByIdAsync(
+                "standalone-1",
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new StandaloneAttraction
+            {
+                Id = "standalone-1",
+                Name = "Pendolino",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+            });
+        Mock<ISocialPublicationService> publisher = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        SocialPublication published = new SocialPublication { Id = "publication-standalone" };
+        publisher.Setup(service => service.PublishManualAsync(
+                It.Is<SocialLinkPublicationRequest>(request =>
+                    request.Message != null
+                    && request.Message.Contains("Une nouvelle attraction", StringComparison.Ordinal)
+                    && request.Url == "https://amusement-parks.fun/fr/attraction/standalone-1/pendolino"
+                    && request.PreviewImageId == null),
+                "codex-user",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Success(published));
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            publisher: publisher,
+            standaloneAttractions: standaloneAttractions);
+
+        ApplicationResult<SocialPublication> result = await service.PublishAsync(
+            new SocialLinkPublicationRequest(
+                SocialNetwork.Facebook,
+                null,
+                "https://amusement-parks.fun/fr/attraction/standalone-1/pendolino"),
+            "codex-user",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(published, result.Value);
+        standaloneAttractions.VerifyAll();
+        publisher.VerifyAll();
     }
 
     [Fact]
@@ -309,14 +426,274 @@ public sealed class SocialPublicationComposerServiceTests
     }
 
     [Theory]
+    [InlineData("park-operator", ImageOwnerType.ParkOperator, ImageCategory.Operator, "Exploitant Test")]
+    [InlineData("park-founder", ImageOwnerType.ParkFounder, ImageCategory.Founder, "Fondatrice Test")]
+    [InlineData("park-manufacturer", ImageOwnerType.AttractionManufacturer, ImageCategory.Manufacturer, "Constructeur Test")]
+    public async Task ResolveDraftAsync_ForPublicReference_ShouldUseReferenceNameAndImages(
+        string routeSegment,
+        ImageOwnerType ownerType,
+        ImageCategory category,
+        string name)
+    {
+        Mock<IParkOperatorRepository> operators = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
+        Mock<IParkFounderRepository> founders = new Mock<IParkFounderRepository>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> manufacturers = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        if (routeSegment == "park-operator")
+        {
+            operators.Setup(repository => repository.GetByIdAsync("reference-1", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new ParkOperator
+                {
+                    Id = "reference-1",
+                    Name = name,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                });
+        }
+        else if (routeSegment == "park-founder")
+        {
+            founders.Setup(repository => repository.GetByIdAsync("reference-1", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new ParkFounder
+                {
+                    Id = "reference-1",
+                    Name = name,
+                });
+        }
+        else
+        {
+            manufacturers.Setup(repository => repository.GetByIdAsync("reference-1", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new AttractionManufacturer
+                {
+                    Id = "reference-1",
+                    Name = name,
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                });
+        }
+
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(repository => repository.GetPageAsync(
+                1,
+                6,
+                It.Is<ImageSearchCriteria>(criteria =>
+                    criteria.OwnerType == ownerType
+                    && criteria.OwnerId == "reference-1"
+                    && criteria.Category == category
+                    && criteria.IsPublished == true),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(
+                new[] { CreateImage("reference-image", "reference-1", true, true, ownerType, category) },
+                1,
+                6,
+                1));
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            images,
+            operators: operators,
+            founders: founders,
+            manufacturers: manufacturers);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            $"https://amusement-parks.fun/fr/{routeSegment}/reference-1/reference-test",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal(SocialPublicationTargetKind.Page, draft.TargetKind);
+        Assert.Equal(name, draft.TargetName);
+        Assert.Equal("reference-image", Assert.Single(draft.Images.Items).Id);
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForTechnicalDetail_ShouldUseLocalizedTitle()
+    {
+        Mock<ITechnicalPageRepository> technicalPages = new Mock<ITechnicalPageRepository>(MockBehavior.Strict);
+        technicalPages.Setup(repository => repository.GetBySlugAsync("chain-lift", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new TechnicalPage
+            {
+                Id = "technical-1",
+                Slug = "chain-lift",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                Titles = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "La chaîne de lift"),
+                    new LocalizedText("en", "The chain lift"),
+                },
+            });
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            technicalPages: technicalPages);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/technical/chain-lift",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal("La chaîne de lift", draft.TargetName);
+        Assert.Contains("The chain lift", draft.DefaultMessage, StringComparison.Ordinal);
+        Assert.Empty(draft.Images.Items);
+        technicalPages.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForSharedRankings_ShouldRequirePublicShare()
+    {
+        DateTime nowUtc = new DateTime(2026, 8, 24, 8, 0, 0, DateTimeKind.Utc);
+        Mock<IUserRankingShareRepository> rankingShares = new Mock<IUserRankingShareRepository>(MockBehavior.Strict);
+        rankingShares.Setup(repository => repository.GetPublicByShareIdAsync("share-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(UserRankingShare.Restore(
+                "ranking-share-1",
+                "user-1",
+                true,
+                "share-1",
+                nowUtc,
+                nowUtc,
+                nowUtc));
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            rankingShares: rankingShares);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/rankings/shared/share-1",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal("Les classements partagés d’un membre", draft.TargetName);
+        Assert.Empty(draft.Images.Items);
+        rankingShares.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForParkPricing_ShouldUseParkImages()
+    {
+        Mock<IImageRepository> images = CreateEmptyImagePageRepository(
+            ImageOwnerType.Park,
+            "park-1",
+            ImageCategory.Park);
+        SocialPublicationComposerService service = CreateService(CreateParkRepository(), images);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test/pricing",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal("Les tarifs de Parc Test", draft.TargetName);
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForParkZone_ShouldValidateParentAndUseLocalizedName()
+    {
+        Mock<IParkZoneRepository> zones = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        zones.Setup(repository => repository.GetByIdAsync("zone-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkZone
+            {
+                Id = "zone-1",
+                ParkId = "park-1",
+                Name = "Zone Test",
+                IsVisible = true,
+                Names = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "Le Village Test"),
+                    new LocalizedText("en", "Test Village"),
+                },
+            });
+        Mock<IImageRepository> images = CreateEmptyImagePageRepository(
+            ImageOwnerType.Park,
+            "park-1",
+            ImageCategory.Park);
+        SocialPublicationComposerService service = CreateService(CreateParkRepository(), images, zones: zones);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test/zone/zone-1/test-village",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal("Le Village Test", draft.TargetName);
+        Assert.Contains("Test Village", draft.DefaultMessage, StringComparison.Ordinal);
+        zones.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForHistoryArticle_ShouldRequirePublishedArticleOwnedByTarget()
+    {
+        Mock<IHistoryEventRepository> historyEvents = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEvents.Setup(repository => repository.GetByIdAsync("event-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoryEvent
+            {
+                Id = "event-1",
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                IsVisible = true,
+                IsMajor = true,
+                Titles = new List<LocalizedText> { new LocalizedText("fr", "Titre de secours") },
+                Article = new HistoryArticle
+                {
+                    IsPublished = true,
+                    Titles = new List<LocalizedText>
+                    {
+                        new LocalizedText("fr", "Une année décisive"),
+                        new LocalizedText("en", "A decisive year"),
+                    },
+                },
+            });
+        Mock<IImageRepository> images = CreateEmptyImagePageRepository(
+            ImageOwnerType.Park,
+            "park-1",
+            ImageCategory.Park);
+        SocialPublicationComposerService service = CreateService(
+            CreateParkRepository(),
+            images,
+            historyEvents: historyEvents);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test/history/event-1/une-annee-decisive",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.Equal("Une année décisive", draft.TargetName);
+        Assert.Contains("A decisive year", draft.DefaultMessage, StringComparison.Ordinal);
+        historyEvents.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Theory]
     [InlineData("https://amusement-parks.fun/fr/parkz")]
     [InlineData("https://amusement-parks.fun/fr/park-operator/missing/operator")]
     [InlineData("https://amusement-parks.fun/fr/technical/missing-guide")]
     public async Task ResolveDraftAsync_ForUnknownOrUnvalidatedPublicRoute_ShouldReject(string url)
     {
+        Mock<IParkOperatorRepository> operators = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
+        operators.Setup(repository => repository.GetByIdAsync("missing", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOperator?)null);
+        Mock<ITechnicalPageRepository> technicalPages = new Mock<ITechnicalPageRepository>(MockBehavior.Strict);
+        technicalPages.Setup(repository => repository.GetBySlugAsync("missing-guide", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync((TechnicalPage?)null);
         SocialPublicationComposerService service = CreateService(
             new Mock<IParkRepository>(MockBehavior.Strict),
-            new Mock<IImageRepository>(MockBehavior.Strict));
+            new Mock<IImageRepository>(MockBehavior.Strict),
+            operators: operators,
+            technicalPages: technicalPages);
 
         ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
             url,
@@ -350,16 +727,41 @@ public sealed class SocialPublicationComposerServiceTests
         Mock<IImageRepository> images,
         Mock<IParkItemRepository>? items = null,
         Mock<ISocialPublicationService>? publisher = null,
-        Mock<IVideoRepository>? videos = null)
+        Mock<IVideoRepository>? videos = null,
+        Mock<IStandaloneAttractionRepository>? standaloneAttractions = null,
+        Mock<IParkZoneRepository>? zones = null,
+        Mock<IHistoryEventRepository>? historyEvents = null,
+        Mock<IParkOperatorRepository>? operators = null,
+        Mock<IParkFounderRepository>? founders = null,
+        Mock<IAttractionManufacturerRepository>? manufacturers = null,
+        Mock<ITechnicalPageRepository>? technicalPages = null,
+        Mock<IUserRankingShareRepository>? rankingShares = null)
     {
         Mock<IPublicSeoContextProvider> seoContext = new Mock<IPublicSeoContextProvider>(MockBehavior.Strict);
         seoContext.Setup(provider => provider.GetAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(new PublicSeoContext("https://amusement-parks.fun", new[] { "de", "en", "es", "fr", "it", "nl", "pl", "pt" }));
-        SocialPublicationTargetResolver targetResolver = new SocialPublicationTargetResolver(
-            seoContext.Object,
+        ParkSocialPublicationTargetResolver parkTargetResolver = new ParkSocialPublicationTargetResolver(
             parks.Object,
             items?.Object ?? Mock.Of<IParkItemRepository>(MockBehavior.Strict),
-            videos?.Object ?? Mock.Of<IVideoRepository>(MockBehavior.Strict));
+            videos?.Object ?? Mock.Of<IVideoRepository>(MockBehavior.Strict),
+            zones?.Object ?? Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            historyEvents?.Object ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict));
+        StandaloneAttractionSocialPublicationTargetResolver standaloneAttractionTargetResolver =
+            new StandaloneAttractionSocialPublicationTargetResolver(
+                standaloneAttractions?.Object ?? Mock.Of<IStandaloneAttractionRepository>(MockBehavior.Strict));
+        ReferenceSocialPublicationTargetResolver referenceTargetResolver = new ReferenceSocialPublicationTargetResolver(
+            operators?.Object ?? Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            founders?.Object ?? Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            manufacturers?.Object ?? Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict));
+        ContentSocialPublicationTargetResolver contentTargetResolver = new ContentSocialPublicationTargetResolver(
+            technicalPages?.Object ?? Mock.Of<ITechnicalPageRepository>(MockBehavior.Strict),
+            rankingShares?.Object ?? Mock.Of<IUserRankingShareRepository>(MockBehavior.Strict));
+        SocialPublicationTargetResolver targetResolver = new SocialPublicationTargetResolver(
+            seoContext.Object,
+            parkTargetResolver,
+            standaloneAttractionTargetResolver,
+            referenceTargetResolver,
+            contentTargetResolver);
         Mock<ISocialPublicationService> effectivePublisher = publisher
             ?? new Mock<ISocialPublicationService>(MockBehavior.Strict);
         if (publisher is null)
@@ -387,6 +789,25 @@ public sealed class SocialPublicationComposerServiceTests
                 IsVisible = true,
             });
         return parks;
+    }
+
+    private static Mock<IImageRepository> CreateEmptyImagePageRepository(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category)
+    {
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(repository => repository.GetPageAsync(
+                1,
+                6,
+                It.Is<ImageSearchCriteria>(criteria =>
+                    criteria.OwnerType == ownerType
+                    && criteria.OwnerId == ownerId
+                    && criteria.Category == category
+                    && criteria.IsPublished == true),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(Array.Empty<Image>(), 1, 6, 0));
+        return images;
     }
 
     private static Image CreateImage(

@@ -16,6 +16,7 @@ public enum SocialPublicationTargetKind
     ParkItem = 1,
     Video = 2,
     Page = 3,
+    StandaloneAttraction = 4,
 }
 
 public sealed record SocialPublicationImageOption(
