@@ -147,6 +147,7 @@ jobs:
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
           bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
+          docker run --rm -v "${PWD}/deploy/nginx/edge.conf:/etc/nginx/nginx.conf:ro" nginx:1.29-alpine nginx -t
           deploy/scripts/tests/stale-deploy-candidates.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
@@ -483,6 +484,12 @@ jobs:
       SSR_SEO_DOCUMENT_CACHE_SECONDS: ${{ vars.SSR_SEO_DOCUMENT_CACHE_SECONDS || '0' }}
       SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES: ${{ vars.SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES || '128' }}
       SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL: ${{ vars.SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL || 'no-cache, max-age=0, must-revalidate' }}
+      SSR_SEO_STATIC_SNAPSHOT_ENABLED: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_ENABLED || 'true' }}
+      SSR_SEO_STATIC_SNAPSHOT_REFRESH_INTERVAL_SECONDS: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_REFRESH_INTERVAL_SECONDS || '21600' }}
+      SSR_SEO_STATIC_SNAPSHOT_REFRESH_DEBOUNCE_MILLISECONDS: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_REFRESH_DEBOUNCE_MILLISECONDS || '30000' }}
+      SSR_SEO_STATIC_SNAPSHOT_FETCH_CONCURRENCY: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_FETCH_CONCURRENCY || '2' }}
+      SSR_SEO_STATIC_SNAPSHOT_FETCH_TIMEOUT_SECONDS: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_FETCH_TIMEOUT_SECONDS || '60' }}
+      SSR_SEO_STATIC_SNAPSHOT_MAX_DOCUMENT_BYTES: ${{ vars.SSR_SEO_STATIC_SNAPSHOT_MAX_DOCUMENT_BYTES || '33554432' }}
       SSR_CACHE_INVALIDATION_TOKEN: ${{ secrets.SSR_CACHE_INVALIDATION_TOKEN || secrets.PROD_SSR_CACHE_INVALIDATION_TOKEN }}
       SSR_RENDER_ENABLED: ${{ vars.SSR_RENDER_ENABLED || 'true' }}
       SSR_RENDER_ON_CACHE_MISS: ${{ vars.SSR_RENDER_ON_CACHE_MISS || 'false' }}
@@ -589,6 +596,7 @@ jobs:
             -C deploy \
             compose.prod.yml \
             mongo-init.js \
+            nginx \
             .env \
             scripts
 

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.14",
+  "version": "4.2.15",
   "history": [
+    {
+      "version": "4.2.15",
+      "releasedAt": "2026-08-24",
+      "labels": {
+        "fr": "Les sitemaps restent disponibles plus fiablement pour les moteurs de recherche.",
+        "en": "Sitemaps remain more reliably available to search engines.",
+        "de": "Sitemaps bleiben für Suchmaschinen zuverlässiger verfügbar.",
+        "nl": "Sitemaps blijven betrouwbaarder beschikbaar voor zoekmachines.",
+        "it": "Le sitemap restano disponibili in modo più affidabile per i motori di ricerca.",
+        "es": "Los sitemaps permanecen disponibles de forma más fiable para los motores de búsqueda.",
+        "pl": "Mapy witryny są bardziej niezawodnie dostępne dla wyszukiwarek.",
+        "pt": "Os sitemaps ficam disponíveis de forma mais fiável para os motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.14",
       "releasedAt": "2026-08-24",

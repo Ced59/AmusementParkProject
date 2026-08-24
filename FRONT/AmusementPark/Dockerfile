@@ -29,7 +29,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
 COPY --from=build --chown=node:node /app/dist ./dist
-RUN mkdir -p /var/cache/amusementpark-ssr && chown -R node:node /var/cache/amusementpark-ssr
+RUN mkdir -p /var/cache/amusementpark-ssr /var/cache/amusementpark-seo-static && \
+    chown -R node:node /var/cache/amusementpark-ssr /var/cache/amusementpark-seo-static
 
 USER node
 EXPOSE 4000
