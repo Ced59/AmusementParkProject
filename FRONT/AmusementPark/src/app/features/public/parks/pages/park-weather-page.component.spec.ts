@@ -188,6 +188,11 @@ describe('ParkWeatherPageComponent', () => {
     const textContent: string =
       (fixture.nativeElement as HTMLElement).textContent ?? '';
 
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.park-weather-page.public-page',
+      ),
+    ).not.toBeNull();
     expect(textContent).toContain(
       'Vérifie la météo de Bellewaerde pour ta visite.',
     );

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.18",
+  "version": "4.2.19",
   "history": [
+    {
+      "version": "4.2.19",
+      "releasedAt": "2026-08-24",
+      "labels": {
+        "fr": "Les noms et libellés longs restent lisibles sur mobile.",
+        "en": "Long names and labels remain readable on mobile.",
+        "de": "Lange Namen und Beschriftungen bleiben auf Mobilgeräten lesbar.",
+        "nl": "Lange namen en labels blijven leesbaar op mobiel.",
+        "it": "I nomi e le etichette lunghi restano leggibili sui dispositivi mobili.",
+        "es": "Los nombres y las etiquetas siguen siendo legibles en el móvil.",
+        "pl": "Długie nazwy i etykiety pozostają czytelne na urządzeniach mobilnych.",
+        "pt": "Os nomes e as etiquetas continuam legíveis em dispositivos móveis."
+      }
+    },
     {
       "version": "4.2.18",
       "releasedAt": "2026-08-24",

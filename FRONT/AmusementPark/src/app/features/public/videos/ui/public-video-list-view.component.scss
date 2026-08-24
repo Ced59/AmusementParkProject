@@ -29,6 +29,7 @@
   position: relative;
   z-index: 1;
   display: grid;
+  min-width: 0;
   gap: 0.75rem;
 }
 
@@ -40,6 +41,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  min-width: 0;
   gap: 0.65rem;
 }
 
@@ -335,6 +337,23 @@
   .public-video-list__load-more button {
     width: 100%;
     justify-content: center;
+  }
+
+  .public-video-list__actions a,
+  .public-video-list__filter-actions button,
+  .public-video-list__load-more button {
+    min-width: 0;
+    height: auto;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .public-video-list__actions a span,
+  .public-video-list__filter-actions button span,
+  .public-video-list__load-more button span {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .public-video-list__tabs {
