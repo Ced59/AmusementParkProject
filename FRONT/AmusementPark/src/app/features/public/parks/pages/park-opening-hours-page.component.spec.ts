@@ -227,6 +227,12 @@ describe('ParkOpeningHoursPageComponent', () => {
     paramMapSubject.next(convertToParamMap({ id: 'park-1', lang: 'fr' }));
     fixture.detectChanges();
 
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.park-opening-hours-page.public-page',
+      ),
+    ).not.toBeNull();
+
     const sharePanel: PublicSharePanelComponent = fixture.debugElement.query(
       By.directive(PublicSharePanelComponent),
     ).componentInstance as PublicSharePanelComponent;

@@ -1,5 +1,5 @@
 @if (unavailablePark(); as park) {
-  <section class="park-opening-hours-page">
+  <section class="park-opening-hours-page public-page">
     <header class="park-opening-hours-hero">
       <p class="park-opening-hours-hero__kicker">{{ 'parkOpeningHours.page.kicker' | translate }}</p>
       <h1>{{ 'parkOpeningHours.page.unavailableTitle' | translate:{ name: park.name } }}</h1>
@@ -29,7 +29,7 @@
     errorMessageKey: 'parkOpeningHours.page.errorMessage'
   }">
   @if (state().data; as data) {
-    <section class="park-opening-hours-page">
+    <section class="park-opening-hours-page public-page">
       <header class="park-opening-hours-hero">
         <p class="park-opening-hours-hero__kicker">{{ 'parkOpeningHours.page.kicker' | translate }}</p>
         <h1>{{ 'parkOpeningHours.page.title' | translate:{ name: data.park.name } }}</h1>

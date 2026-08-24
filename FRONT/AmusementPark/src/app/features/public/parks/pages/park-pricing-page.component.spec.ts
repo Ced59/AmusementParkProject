@@ -114,6 +114,11 @@ describe('ParkPricingPageComponent', () => {
     const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
     const text: string = (fixture.nativeElement as HTMLElement).textContent ?? '';
 
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.park-pricing-page.public-page',
+      ),
+    ).not.toBeNull();
     expect(parksApiService.getParkPricing).toHaveBeenCalledWith('park-1', expect.any(Object));
     expect(text).toContain('Adulte');
     expect(text).toContain('En ligne');

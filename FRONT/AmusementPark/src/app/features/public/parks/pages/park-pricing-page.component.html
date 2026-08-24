@@ -1,5 +1,5 @@
 @if (unavailablePark(); as park) {
-  <section class="park-pricing-page">
+  <section class="park-pricing-page public-page">
     <header class="park-pricing-hero">
       <p class="park-pricing-hero__kicker">{{ 'parkPricing.page.kicker' | translate }}</p>
       <h1>{{ 'parkPricing.page.unavailableTitle' | translate:{ name: park.name } }}</h1>
@@ -28,7 +28,7 @@
     }">
     @if (state().data; as data) {
       @if (data.pricing; as pricing) {
-        <article class="park-pricing-page">
+        <article class="park-pricing-page public-page">
           <nav class="park-pricing-breadcrumb" [attr.aria-label]="'parkPricing.page.breadcrumbLabel' | translate">
             @if (detailLink()) {
               <a [routerLink]="detailLink()">{{ data.park.name }}</a>
