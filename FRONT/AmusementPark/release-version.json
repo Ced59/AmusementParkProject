@@ -1,6 +1,20 @@
 {
-  "version": "4.2.17",
+  "version": "4.2.18",
   "history": [
+    {
+      "version": "4.2.18",
+      "releasedAt": "2026-08-24",
+      "labels": {
+        "fr": "La qualité éditoriale des fiches de parcs est mieux protégée.",
+        "en": "The editorial quality of park pages is better protected.",
+        "de": "Die redaktionelle Qualität der Parkseiten ist besser geschützt.",
+        "nl": "De redactionele kwaliteit van parkpagina's wordt beter bewaakt.",
+        "it": "La qualità editoriale delle pagine dei parchi è meglio tutelata.",
+        "es": "La calidad editorial de las páginas de parques está mejor protegida.",
+        "pl": "Jakość redakcyjna stron parków jest lepiej chroniona.",
+        "pt": "A qualidade editorial das páginas dos parques está mais protegida."
+      }
+    },
     {
       "version": "4.2.17",
       "releasedAt": "2026-08-24",

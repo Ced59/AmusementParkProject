@@ -29,6 +29,89 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.False(DataCompletenessScoringRules.HasForbiddenPublicText(value));
     }
 
+    [Theory]
+    [InlineData("fr", "appartient à l’univers de et à l’identité du parc parisien")]
+    [InlineData("en", "belongs to the world of and to the identity of the Paris park")]
+    [InlineData("de", "gehört zur Welt von und zur Identität des Pariser Parks")]
+    [InlineData("nl", "hoort bij de wereld van en bij de identiteit van het Parijse park")]
+    [InlineData("it", "appartiene al mondo di e all’identità del parco parigino")]
+    [InlineData("es", "pertenece al universo de y a la identidad del parque parisino")]
+    [InlineData("pl", "należy do świata i do tożsamości paryskiego parku")]
+    [InlineData("pt", "pertence ao universo de e à identidade do parque parisiense")]
+    public void HasFormulaicPublicText_WhenEntityNamesHideRepeatedSentence_ShouldRejectEveryPublicLanguage(
+        string languageCode,
+        string normalizedTemplate)
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>
+        {
+            new(languageCode, $"Orbitron {normalizedTemplate.Replace(" de ", " de Discoveryland ", StringComparison.Ordinal)}."),
+            new(languageCode, $"Star Tours {normalizedTemplate.Replace(" de ", " de Discoveryland ", StringComparison.Ordinal)}."),
+        };
+
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            publicTexts,
+            new[] { "Orbitron", "Star Tours", "Discoveryland" });
+
+        Assert.True(result);
+    }
+
+    [Theory]
+    [InlineData("fr", "Horse-Drawn Streetcars appartient à l''univers de Main Street U.S.A. et à l''identité du parc parisien.")]
+    [InlineData("en", "Horse-Drawn Streetcars belongs to the world of Main Street U.S.A. and to the identity of the Paris park.")]
+    [InlineData("de", "Horse-Drawn Streetcars gehört zur Welt von Main Street U.S.A. und zur Identität des Pariser Parks.")]
+    [InlineData("nl", "Horse-Drawn Streetcars behoort tot de wereld van Main Street U.S.A. en de identiteit van het Parijse park.")]
+    [InlineData("it", "Horse-Drawn Streetcars appartiene al mondo di Main Street U.S.A. e all''identità del parco parigino.")]
+    [InlineData("es", "Horse-Drawn Streetcars forma parte del universo de Main Street U.S.A. y de la identidad del parque parisino.")]
+    [InlineData("pl", "Horse-Drawn Streetcars należy do świata Main Street U.S.A. i tożsamości paryskiego parku.")]
+    [InlineData("pt", "Horse-Drawn Streetcars pertence ao universo de Main Street U.S.A. e à identidade do parque parisiense.")]
+    public void HasFormulaicPublicText_WhenKnownTemplateAppearsOnce_ShouldRejectEveryPublicLanguage(
+        string languageCode,
+        string value)
+    {
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            new[] { new LocalizedText(languageCode, value) },
+            new[] { "Horse-Drawn Streetcars", "Main Street U.S.A." });
+
+        Assert.True(result);
+    }
+
+    [Theory]
+    [InlineData("fr", "Une scène de Star Wars Hyperspace Mountain à Disneyland Park.")]
+    [InlineData("en", "A scene from Star Wars Hyperspace Mountain at Disneyland Park.")]
+    [InlineData("de", "Eine Szene aus Star Wars Hyperspace Mountain im Disneyland Park.")]
+    [InlineData("nl", "Een scène van Star Wars Hyperspace Mountain in Disneyland Park.")]
+    [InlineData("it", "Una scena di Star Wars Hyperspace Mountain a Disneyland Park.")]
+    [InlineData("es", "Una escena de Star Wars Hyperspace Mountain en Disneyland Park.")]
+    [InlineData("pl", "Scena z Star Wars Hyperspace Mountain w Disneyland Park.")]
+    [InlineData("pt", "Uma cena de Star Wars Hyperspace Mountain na Disneyland Park.")]
+    public void HasFormulaicPublicText_WhenGenericImageAltAppearsOnce_ShouldRejectEveryPublicLanguage(
+        string languageCode,
+        string value)
+    {
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            new[] { new LocalizedText(languageCode, value) },
+            new[] { "Star Wars Hyperspace Mountain", "Disneyland Park" });
+
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void HasFormulaicPublicText_WhenDescriptionsAreSpecific_ShouldAcceptCorpus()
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>
+        {
+            new("fr", "Le galion glisse autour de Big Thunder Mountain, entre geysers et falaises rouges."),
+            new("fr", "Sous le dôme cuivré, un départ brutal ouvre une course dans l’obscurité étoilée."),
+            new("fr", "La terrasse ombragée entoure un arbre chargé de lanternes et de fruits colorés."),
+        };
+
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            publicTexts,
+            new[] { "Thunder Mesa Riverboat Landing", "Star Wars Hyperspace Mountain", "L’Arbre Enchanté" });
+
+        Assert.False(result);
+    }
+
     [Fact]
     public void CalculateDataCompletenessScore_WhenParkHasNoOfficialZones_DoesNotApplyZonePoints()
     {
@@ -236,6 +319,48 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenPublicCorpusIsFormulaic_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext context = CreateRichParkContext() with
+        {
+            HasNoFormulaicPublicText = false,
+        };
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.formulaic-content", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenVisibleParkHasNoLogo_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.CurrentLogoImageId = null;
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("media.logo-required", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenCurrentLogoIsNotPublished_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext context = CreateRichParkContext() with
+        {
+            HasPublishedCurrentLogo = false,
+        };
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("media.logo-required", score.PublicationBlocker);
+    }
+
     private static Park CreatePublishablePark()
     {
         Park park = new Park
@@ -282,6 +407,7 @@ public sealed class ParkDataCompletenessScoreTests
             ParkImagesWithResolvedOwnerCount = 4,
             ParkImagesWithLocalizedAltTextCount = 4,
             ParkItemPublishedImageCount = 8,
+            HasPublishedCurrentLogo = true,
             HasOriginalMedia = true,
             HasOpeningHours = true,
             OpeningHoursStatus = ParkOpeningHoursAdminStatus.UpToDate,

@@ -45,7 +45,7 @@ internal static class DataCompletenessContextFactory
             .ToDictionary(static group => group.Key, static group => group.ToList(), StringComparer.Ordinal);
 
         Dictionary<string, List<ParkZone>> zonesByParkId = await LoadZonesByParkIdAsync(parkIds, parkZoneRepository, cancellationToken);
-        Dictionary<string, List<Image>> parkImagesByParkId = await LoadImagesByOwnerIdAsync(ImageOwnerType.Park, parkIds, ImageCategory.Park, imageRepository, cancellationToken);
+        Dictionary<string, List<Image>> parkImagesByParkId = await LoadImagesByOwnerIdAsync(ImageOwnerType.Park, parkIds, null, imageRepository, cancellationToken);
         Dictionary<string, List<Image>> parkItemImagesByItemId = await LoadImagesByOwnerIdAsync(
             ImageOwnerType.ParkItem,
             parkItems.Select(static item => item.Id ?? string.Empty).ToList(),
@@ -100,9 +100,12 @@ internal static class DataCompletenessContextFactory
             IReadOnlyCollection<HistoryEvent> currentPublicParkItemHistory = currentParkItemHistory
                 .Where(historyEvent => !string.IsNullOrWhiteSpace(historyEvent.OwnerId) && publicParkItemIds.Contains(historyEvent.OwnerId.Trim()))
                 .ToList();
-            IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
+            IReadOnlyCollection<Image> scoreParkOwnedImages = projectCurrentParkForPublication
                 ? currentParkImages
                 : currentParkImages.Where(static image => image.IsPublished).ToList();
+            IReadOnlyCollection<Image> scoreParkImages = scoreParkOwnedImages
+                .Where(static image => image.Category == ImageCategory.Park)
+                .ToList();
             IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
                 ? currentPublicParkItemImages
                 : currentPublicParkItemImages.Where(static image => image.IsPublished).ToList();
@@ -115,11 +118,22 @@ internal static class DataCompletenessContextFactory
             bool hasNoForbiddenPublicText = HasNoForbiddenParkRelatedPublicText(
                 currentParkItems,
                 currentZones,
-                scoreParkImages,
+                scoreParkOwnedImages,
                 scoreParkItemImages,
                 scoreParkHistory,
                 scoreParkItemHistory,
                 projectCurrentParkForPublication);
+            bool hasNoFormulaicPublicText = !DataCompletenessScoringRules.HasFormulaicPublicText(
+                CollectParkPublicTexts(
+                    park,
+                    currentParkItems,
+                    currentZones,
+                    scoreParkOwnedImages,
+                    scoreParkItemImages,
+                    scoreParkHistory,
+                    scoreParkItemHistory,
+                    projectCurrentParkForPublication),
+                CollectParkEntityNames(park, currentParkItems, currentZones, scoreParkHistory, scoreParkItemHistory));
 
             ParkDataCompletenessContext context = new ParkDataCompletenessContext
             {
@@ -141,6 +155,10 @@ internal static class DataCompletenessContextFactory
                 ParkImagesWithResolvedOwnerCount = scoreParkImages.Count(image => string.Equals(image.OwnerId, parkId, StringComparison.Ordinal)),
                 ParkImagesWithLocalizedAltTextCount = scoreParkImages.Count(static image => HasLocalizedText(image.AltTexts)),
                 ParkItemPublishedImageCount = scoreParkItemImages.Count,
+                HasPublishedCurrentLogo = !string.IsNullOrWhiteSpace(park.CurrentLogoImageId)
+                    && scoreParkOwnedImages.Any(image =>
+                        string.Equals(image.Id, park.CurrentLogoImageId, StringComparison.Ordinal)
+                        && image.Category == ImageCategory.Logo),
                 HasOriginalMedia = scoreParkImages.Any(static image => !string.IsNullOrWhiteSpace(image.OriginalFileName)),
                 HasOpeningHours = openingHoursSummary?.HasScheduleData == true,
                 OpeningHoursStatus = openingHoursSummary is null
@@ -163,6 +181,7 @@ internal static class DataCompletenessContextFactory
                 HasCriticalSources = HasCriticalSource(park, currentParkHistory),
                 HasStructuredTechnicalDataOnly = hasNoForbiddenPublicText,
                 HasNoForbiddenPublicText = hasNoForbiddenPublicText,
+                HasNoFormulaicPublicText = hasNoFormulaicPublicText,
                 HasDocumentedRemainingDebt = projectCurrentParkForPublication
                     ? false
                     : park.AdminReviewStatus != AdminReviewStatus.Validated,
@@ -274,7 +293,7 @@ internal static class DataCompletenessContextFactory
     private static async Task<Dictionary<string, List<Image>>> LoadImagesByOwnerIdAsync(
         ImageOwnerType ownerType,
         IReadOnlyCollection<string> ownerIds,
-        ImageCategory category,
+        ImageCategory? category,
         IImageRepository? imageRepository,
         CancellationToken cancellationToken)
     {
@@ -449,6 +468,75 @@ internal static class DataCompletenessContextFactory
     private static bool HasForbiddenLocalizedPublicText(IEnumerable<LocalizedText> values)
     {
         return values.Any(static value => DataCompletenessScoringRules.HasForbiddenPublicText(value.Value));
+    }
+
+    private static IReadOnlyCollection<LocalizedText> CollectParkPublicTexts(
+        Park park,
+        IReadOnlyCollection<ParkItem> parkItems,
+        IReadOnlyCollection<ParkZone> zones,
+        IReadOnlyCollection<Image> parkImages,
+        IReadOnlyCollection<Image> parkItemImages,
+        IReadOnlyCollection<HistoryEvent> parkHistory,
+        IReadOnlyCollection<HistoryEvent> parkItemHistory,
+        bool projectForPublication)
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>();
+        publicTexts.AddRange(park.Descriptions);
+        publicTexts.AddRange(parkItems
+            .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+            .SelectMany(static item => item.Descriptions));
+        publicTexts.AddRange(zones
+            .Where(static zone => zone.IsVisible)
+            .SelectMany(static zone => zone.Descriptions));
+
+        foreach (Image image in parkImages.Concat(parkItemImages))
+        {
+            if (!string.IsNullOrWhiteSpace(image.Description))
+            {
+                publicTexts.Add(new LocalizedText("und", image.Description));
+            }
+
+            publicTexts.AddRange(image.AltTexts);
+            publicTexts.AddRange(image.Captions);
+        }
+
+        foreach (HistoryEvent historyEvent in parkHistory.Concat(parkItemHistory))
+        {
+            publicTexts.AddRange(historyEvent.Titles);
+            publicTexts.AddRange(historyEvent.Summaries);
+            HistoryArticle? article = historyEvent.Article;
+            if (article is null || (!projectForPublication && !article.IsPublished))
+            {
+                continue;
+            }
+
+            publicTexts.AddRange(article.Titles);
+            publicTexts.AddRange(article.Subtitles);
+            publicTexts.AddRange(article.Summaries);
+            publicTexts.AddRange(article.Blocks.SelectMany(static block => block.Texts));
+            publicTexts.AddRange(article.Blocks.SelectMany(static block => block.Captions));
+        }
+
+        return publicTexts;
+    }
+
+    private static IReadOnlyCollection<string?> CollectParkEntityNames(
+        Park park,
+        IReadOnlyCollection<ParkItem> parkItems,
+        IReadOnlyCollection<ParkZone> zones,
+        IReadOnlyCollection<HistoryEvent> parkHistory,
+        IReadOnlyCollection<HistoryEvent> parkItemHistory)
+    {
+        List<string?> entityNames = new List<string?> { park.Name };
+        entityNames.AddRange(parkItems.Select(static item => item.Name));
+        entityNames.AddRange(zones.SelectMany(static zone => zone.Names).Select(static name => name.Value));
+        entityNames.AddRange(parkHistory.Concat(parkItemHistory).SelectMany(static historyEvent => historyEvent.Titles).Select(static title => title.Value));
+        entityNames.AddRange(parkHistory
+            .Concat(parkItemHistory)
+            .Where(static historyEvent => historyEvent.Article is not null)
+            .SelectMany(static historyEvent => historyEvent.Article!.Titles)
+            .Select(static title => title.Value));
+        return entityNames;
     }
 
     private static int CountReferenceDescriptions(Park park, IReadOnlyCollection<ParkItem> parkItems)

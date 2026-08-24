@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-08-09-r4**
+Version : **2026-08-24-r5**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -170,7 +170,9 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 - parc majeur ou parkItem publiable réduit à une description plate et nettement sous les bandes de profondeur de l’étape 4, sans exception sourcée documentée ;
 - article durable d’un parc majeur réduit à un résumé et deux paragraphes minces, sans développement proportionné au sujet.
 
-Le contrôle automatisé des formulations interdites couvre les descriptions du parc et des parkItems, les zones visibles, les textes des médias publiés et les timelines ou articles publics. Lorsqu’il détecte du jargon interne, une justification de recherche ou de source, un conseil d’itinéraire interdit, une mesure technique brute ou une accumulation de vocabulaire mécanique, il ajoute le bloqueur stable `public-text.forbidden-editorial-language`. Tant que ce bloqueur existe, `completenessScore` est plafonné à **95**, même si le total brut aurait donné 96 à 100 : la fiche ne peut donc pas franchir une condition de publication strictement supérieure à 95.
+Le contrôle automatisé des formulations interdites couvre les descriptions du parc et des parkItems, les zones visibles, les textes des médias publiés et les timelines ou articles publics. Lorsqu’il détecte du jargon interne, une justification de recherche ou de source, un conseil d’itinéraire interdit, une mesure technique brute ou une accumulation de vocabulaire mécanique, il ajoute le bloqueur stable `public-text.forbidden-editorial-language`. Le contrôle transversal retire aussi les noms d'entités et balises avant de chercher les phrases et longues séquences répétées ; il bloque également, dès leur première occurrence, les gabarits taxonomiques et les textes d’image génériques déjà identifiés dans les huit langues. Une détection ajoute `public-text.formulaic-content`. Un parc visible ou candidat à la publication sans logo courant ajoute `media.logo-required`. Tant qu’un de ces bloqueurs existe, `completenessScore` est plafonné à **95**, même si le total brut aurait donné 96 à 100 : la fiche ne peut donc pas franchir une condition de publication strictement supérieure à 95.
+
+Ces contrôles ne valident jamais le style à eux seuls. L'étape 9 doit encore relire chaque champ public dans les huit langues et refuser toute phrase unique mais transférable à une autre entité par simple substitution de nom, de zone, de catégorie ou de type d'offre. Le logo reste obligatoire par défaut ; l'exception d'un très petit parc exige une recherche infructueuse documentée et l'acceptation explicite de la lacune.
 
 ## Scoring des parcs
 
