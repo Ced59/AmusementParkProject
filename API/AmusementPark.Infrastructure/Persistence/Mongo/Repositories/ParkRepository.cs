@@ -569,7 +569,7 @@ public sealed class ParkRepository : IParkRepository
             filter &= Builders<ParkDocument>.Filter.Eq(document => document.Status, criteria.Status.Value);
         }
 
-        FilterDefinition<ParkDocument>? searchFilter = this.BuildSearchTermFilter(criteria);
+        FilterDefinition<ParkDocument>? searchFilter = BuildSearchTermFilter(criteria);
         if (searchFilter is not null)
         {
             filter &= searchFilter;
@@ -578,7 +578,7 @@ public sealed class ParkRepository : IParkRepository
         return filter;
     }
 
-    private FilterDefinition<ParkDocument>? BuildSearchTermFilter(ParkSearchCriteria criteria)
+    internal static FilterDefinition<ParkDocument>? BuildSearchTermFilter(ParkSearchCriteria criteria)
     {
         string normalizedTerm = (criteria.SearchTerm ?? string.Empty).Trim();
         List<string> matchingCountryCodes = NormalizeCountryCodes(criteria.MatchingCountryCodes);
@@ -599,6 +599,16 @@ public sealed class ParkRepository : IParkRepository
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.CountryCode, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.Street, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.PostalCode, expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex("descriptions.value", expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex("type", expression));
+
+            string compactTypeSearch = CompactTypeSearchTerm(normalizedTerm);
+            if (!string.Equals(compactTypeSearch, normalizedTerm, StringComparison.OrdinalIgnoreCase))
+            {
+                filters.Add(Builders<ParkDocument>.Filter.Regex(
+                    "type",
+                    new BsonRegularExpression(Regex.Escape(compactTypeSearch), "i")));
+            }
         }
 
         if (matchingCountryCodes.Count > 0)
@@ -618,6 +628,14 @@ public sealed class ParkRepository : IParkRepository
             .Select(static countryCode => countryCode.Trim().ToUpperInvariant())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private static string CompactTypeSearchTerm(string searchTerm)
+    {
+        return searchTerm
+            .Replace(" ", string.Empty, StringComparison.Ordinal)
+            .Replace("_", string.Empty, StringComparison.Ordinal)
+            .Replace("-", string.Empty, StringComparison.Ordinal);
     }
 
     private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, ParkAudienceClassificationFilter? audienceClassificationFilter = null)

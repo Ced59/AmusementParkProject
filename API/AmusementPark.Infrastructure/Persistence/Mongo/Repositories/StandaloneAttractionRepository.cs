@@ -6,6 +6,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -129,25 +130,10 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
             filter &= Builders<StandaloneAttractionDocument>.Filter.In(document => document.CountryCode, criteria.RegionCountryCodes);
         }
 
-        if (criteria.HasSearchTerm)
+        FilterDefinition<StandaloneAttractionDocument>? searchFilter = BuildMapSearchTermFilter(criteria);
+        if (searchFilter is not null)
         {
-            string escapedSearch = Regex.Escape(criteria.SearchTerm!.Trim());
-            BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
-            List<FilterDefinition<StandaloneAttractionDocument>> searchFilters = new List<FilterDefinition<StandaloneAttractionDocument>>
-            {
-                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Name, regex),
-                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Subtype, regex),
-                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.City, regex),
-                Builders<StandaloneAttractionDocument>.Filter.Regex("descriptions.value", regex),
-                Builders<StandaloneAttractionDocument>.Filter.Regex("attractionDetails.model", regex),
-            };
-
-            if (criteria.HasMatchingCountryCodes)
-            {
-                searchFilters.Add(Builders<StandaloneAttractionDocument>.Filter.In(document => document.CountryCode, criteria.MatchingCountryCodes));
-            }
-
-            filter &= Builders<StandaloneAttractionDocument>.Filter.Or(searchFilters);
+            filter &= searchFilter;
         }
 
         List<StandaloneAttractionDocument> documents = await this.collection.Find(filter)
@@ -172,6 +158,51 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    internal static FilterDefinition<StandaloneAttractionDocument>? BuildMapSearchTermFilter(StandaloneAttractionSearchCriteria criteria)
+    {
+        string normalizedTerm = (criteria.SearchTerm ?? string.Empty).Trim();
+        if (normalizedTerm.Length == 0 && !criteria.HasMatchingCountryCodes)
+        {
+            return null;
+        }
+
+        if (PublicSearchAliases.MatchesStandaloneAttractionTerm(normalizedTerm))
+        {
+            return null;
+        }
+
+        List<FilterDefinition<StandaloneAttractionDocument>> filters = new List<FilterDefinition<StandaloneAttractionDocument>>();
+        if (normalizedTerm.Length > 0)
+        {
+            string escapedSearch = Regex.Escape(normalizedTerm);
+            BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Name, regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Subtype, regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.City, regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.CountryCode, regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex("descriptions.value", regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex("attractionDetails.model", regex));
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex("type", regex));
+
+            string compactTypeSearch = CompactTypeSearchTerm(normalizedTerm);
+            if (!string.Equals(compactTypeSearch, normalizedTerm, StringComparison.OrdinalIgnoreCase))
+            {
+                filters.Add(Builders<StandaloneAttractionDocument>.Filter.Regex(
+                    "type",
+                    new BsonRegularExpression(Regex.Escape(compactTypeSearch), "i")));
+            }
+        }
+
+        if (criteria.HasMatchingCountryCodes)
+        {
+            filters.Add(Builders<StandaloneAttractionDocument>.Filter.In(document => document.CountryCode, criteria.MatchingCountryCodes));
+        }
+
+        return filters.Count == 0
+            ? null
+            : Builders<StandaloneAttractionDocument>.Filter.Or(filters);
     }
 
     public async Task<IReadOnlyCollection<StandaloneAttraction>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)
@@ -351,5 +382,13 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
             .Select(static id => id.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private static string CompactTypeSearchTerm(string searchTerm)
+    {
+        return searchTerm
+            .Replace(" ", string.Empty, StringComparison.Ordinal)
+            .Replace("_", string.Empty, StringComparison.Ordinal)
+            .Replace("-", string.Empty, StringComparison.Ordinal);
     }
 }
