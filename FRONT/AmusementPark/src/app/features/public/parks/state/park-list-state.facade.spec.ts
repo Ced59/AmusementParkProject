@@ -20,6 +20,8 @@ import {
 import { ParkListStateFacade } from './park-list-state.facade';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 class FakeParksPort implements ParkListStateParksApiServicePort {
   public parkResponse$: Observable<Park> = of(createPark('park-2'));
@@ -28,7 +30,13 @@ class FakeParksPort implements ParkListStateParksApiServicePort {
   public mapPointsResponse$: Observable<ParkMapPoint[]> = of([createMapPoint('park-1')]);
   public readonly pageCalls: { page: number; size: number; visibleOnly: boolean; region: ParkRegionFilter | null; filters: ParkAdminListFilters | null }[] = [];
   public readonly searchCalls: { term: string; page: number; size: number; visibleOnly: boolean; region: ParkRegionFilter | null; filters: ParkAdminListFilters | null }[] = [];
-  public readonly mapCalls: { term: string | null; region: ParkRegionFilter | null; audienceClassificationFilter: ParkAudienceClassificationFilter | null }[] = [];
+  public readonly mapCalls: {
+    term: string | null;
+    region: ParkRegionFilter | null;
+    closedFilter: ClosedEntityFilter | null;
+    status: ParkStatus | null;
+    audienceClassificationFilter: ParkAudienceClassificationFilter | null;
+  }[] = [];
   public readonly parkByIdCalls: string[] = [];
 
   getParkById(id: string): Observable<Park> {
@@ -41,8 +49,18 @@ class FakeParksPort implements ParkListStateParksApiServicePort {
     return this.pageResponse$;
   }
 
-  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: { audienceClassificationFilter?: ParkAudienceClassificationFilter | null } = {}): Observable<ParkMapPoint[]> {
-    this.mapCalls.push({ term: query, region, audienceClassificationFilter: options.audienceClassificationFilter ?? null });
+  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: {
+    closedFilter?: ClosedEntityFilter;
+    status?: ParkStatus | null;
+    audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
+  } = {}): Observable<ParkMapPoint[]> {
+    this.mapCalls.push({
+      term: query,
+      region,
+      closedFilter: options.closedFilter ?? null,
+      status: options.status ?? null,
+      audienceClassificationFilter: options.audienceClassificationFilter ?? null
+    });
     return this.mapPointsResponse$;
   }
 
@@ -182,7 +200,13 @@ describe('ParkListStateFacade', () => {
   it('loads visible map points and exposes country coverage', () => {
     facade.loadVisibleMapPoints(' paris ', null);
 
-    expect(port.mapCalls).toEqual([{ term: ' paris ', region: null, audienceClassificationFilter: null }]);
+    expect(port.mapCalls).toEqual([{
+      term: ' paris ',
+      region: null,
+      closedFilter: 'openOnly',
+      status: 'Operating',
+      audienceClassificationFilter: null
+    }]);
     expect(facade.visibleMapPoints().map((point) => point.id)).toEqual(['park-1']);
     expect(facade.visibleCountryCount()).toBe(1);
   });
@@ -218,6 +242,7 @@ describe('ParkListStateFacade', () => {
     facade.loadVisibleMapPoints('', null, 'parksAndStandaloneAttractions');
 
     expect(facade.visibleMapPoints().map((point) => point.kind)).toEqual(['park', 'standaloneAttraction']);
+    expect(port.mapCalls[0]).toMatchObject({ closedFilter: 'all', status: null });
     expect(standalonePort.calls).toEqual([{ query: '', region: null }]);
   });
 

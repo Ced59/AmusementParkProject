@@ -44,10 +44,14 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
             return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(errors);
         }
 
+        IReadOnlyCollection<string> matchingCountryCodes = await this.countryReferenceService.FindCountryCodesByLocalizedSearchAsync(
+            query.Text,
+            cancellationToken);
         IReadOnlyCollection<string> regionCountryCodes = this.countryReferenceService.GetCountryCodesForRegion(query.Region);
         SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(
             query.Text ?? string.Empty,
             query.Categories,
+            matchingCountryCodes,
             regionCountryCodes,
             query.Paging.Page,
             query.Paging.PageSize,

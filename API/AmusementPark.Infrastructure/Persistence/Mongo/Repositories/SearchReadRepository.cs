@@ -38,13 +38,14 @@ public sealed class SearchReadRepository : ISearchReadRepository
     public async Task<SearchResultPage<SearchHitResult>> SearchAsync(
         string text,
         IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
         IReadOnlyCollection<string> regionCountryCodes,
         int page,
         int pageSize,
         string languageCode,
         CancellationToken cancellationToken)
     {
-        BsonDocument filter = BuildSearchFilter(text, categories, regionCountryCodes);
+        BsonDocument filter = BuildSearchFilter(text, categories, matchingCountryCodes, regionCountryCodes);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -76,6 +77,7 @@ public sealed class SearchReadRepository : ISearchReadRepository
     private static BsonDocument BuildSearchFilter(
         string text,
         IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
         IReadOnlyCollection<string> regionCountryCodes)
     {
         List<BsonDocument> filters = new List<BsonDocument>
@@ -88,14 +90,21 @@ public sealed class SearchReadRepository : ISearchReadRepository
             string escapedQuery = Regex.Escape(text.Trim());
             BsonRegularExpression regex = new BsonRegularExpression($".*{escapedQuery}.*", "i");
 
-            filters.Add(new BsonDocument("$or", new BsonArray
+            BsonArray textFilters = new BsonArray
             {
                 new BsonDocument("title", regex),
                 new BsonDocument("subtitle", regex),
                 new BsonDocument("description", regex),
                 new BsonDocument("localizedDescriptions.value", regex),
                 new BsonDocument("keywords", regex),
-            }));
+            };
+
+            if (matchingCountryCodes.Count > 0)
+            {
+                textFilters.Add(new BsonDocument("countryCode", new BsonDocument("$in", ToBsonArray(matchingCountryCodes))));
+            }
+
+            filters.Add(new BsonDocument("$or", textFilters));
         }
 
         if (regionCountryCodes.Count > 0)

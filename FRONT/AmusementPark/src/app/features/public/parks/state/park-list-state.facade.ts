@@ -324,7 +324,7 @@ export class ParkListStateFacade {
   ): Observable<ParkMapPointViewModel[]> {
     const parkRequest: Observable<ParkMapPointViewModel[]> = this.parksApiService.getVisibleParkMapPoints(term, region, {
       ...anonymousHttpOptions(),
-      closedFilter: scope === 'parks' && this.selectedStatusSignal() === null ? 'all' : 'openOnly',
+      closedFilter: scope === 'parks' && this.selectedStatusSignal() !== null ? 'openOnly' : 'all',
       status: scope === 'parks' ? this.selectedStatusSignal() ?? undefined : undefined,
       audienceClassificationFilter: scope === 'parks' ? this.selectedAudienceClassificationFilterSignal() : null
     }).pipe(map((points: ParkMapPoint[]) => points

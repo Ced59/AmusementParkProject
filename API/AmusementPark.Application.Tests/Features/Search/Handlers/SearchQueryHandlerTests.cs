@@ -19,6 +19,8 @@ public sealed class SearchQueryHandlerTests
     {
         FakeSearchReadRepository repository = new FakeSearchReadRepository();
         Mock<ICountryReferenceService> countryReferenceService = new Mock<ICountryReferenceService>(MockBehavior.Strict);
+        countryReferenceService.Setup(service => service.FindCountryCodesByLocalizedSearchAsync("bellewaerde", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "AT" });
         countryReferenceService.Setup(service => service.GetCountryCodesForRegion(WorldRegionFilter.Europe))
             .Returns(new[] { "FR", "BE" });
         SearchQueryHandler handler = new SearchQueryHandler(repository, new PagedQueryValidator(), countryReferenceService.Object);
@@ -30,6 +32,7 @@ public sealed class SearchQueryHandlerTests
         Assert.Equal(2, repository.LastPage);
         Assert.Equal(12, repository.LastPageSize);
         Assert.Equal("fr", repository.LastLanguageCode);
+        Assert.Equal(new[] { "AT" }, repository.LastMatchingCountryCodes);
         Assert.Equal(new[] { "FR", "BE" }, repository.LastRegionCountryCodes);
     }
 
@@ -41,6 +44,8 @@ public sealed class SearchQueryHandlerTests
 
         public int LastPage { get; private set; }
 
+        public IReadOnlyCollection<string> LastMatchingCountryCodes { get; private set; } = Array.Empty<string>();
+
         public IReadOnlyCollection<string> LastRegionCountryCodes { get; private set; } = Array.Empty<string>();
 
         public int LastPageSize { get; private set; }
@@ -50,6 +55,7 @@ public sealed class SearchQueryHandlerTests
         public Task<SearchResultPage<SearchHitResult>> SearchAsync(
             string text,
             IReadOnlyCollection<string> categories,
+            IReadOnlyCollection<string> matchingCountryCodes,
             IReadOnlyCollection<string> regionCountryCodes,
             int page,
             int pageSize,
@@ -58,6 +64,7 @@ public sealed class SearchQueryHandlerTests
         {
             this.LastText = text;
             this.LastCategories = categories;
+            this.LastMatchingCountryCodes = matchingCountryCodes;
             this.LastRegionCountryCodes = regionCountryCodes;
             this.LastPage = page;
             this.LastPageSize = pageSize;

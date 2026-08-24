@@ -14,6 +14,7 @@ public interface ISearchReadRepository
     Task<SearchResultPage<SearchHitResult>> SearchAsync(
         string text,
         IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> matchingCountryCodes,
         IReadOnlyCollection<string> regionCountryCodes,
         int page,
         int pageSize,
