@@ -60,7 +60,7 @@ if "${cleanup_script}" 'amusementpark;unsafe' >/dev/null 2>&1; then
   exit 1
 fi
 
-health_check_line="$(grep -n '^wait_for_static_seo_snapshot 60$' "${deploy_script}" | cut -d: -f1)"
+health_check_line="$(grep -n '^[[:space:]]*wait_for_static_seo_snapshot 60$' "${deploy_script}" | cut -d: -f1)"
 cleanup_call_line="$(grep -n '^./scripts/cleanup-stale-deploy-candidates.sh ' "${deploy_script}" | cut -d: -f1)"
 if [ -z "${health_check_line}" ] || [ -z "${cleanup_call_line}" ] || [ "${cleanup_call_line}" -le "${health_check_line}" ]; then
   echo 'Stale candidates must only be removed after the canonical public health checks.' >&2

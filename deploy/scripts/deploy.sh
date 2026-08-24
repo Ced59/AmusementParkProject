@@ -11,6 +11,8 @@ fi
 # shellcheck disable=SC1091
 source ./scripts/env-loader.sh
 load_env_file .env
+# shellcheck disable=SC1091
+source ./scripts/seo-static-snapshot-policy.sh
 
 compose_project_name="${COMPOSE_PROJECT_NAME:-amusementpark}"
 public_http_port="${PUBLIC_HTTP_PORT:-18080}"
@@ -481,7 +483,11 @@ curl_with_retry \
   "Checking robots.txt through the public edge..." \
   "http://127.0.0.1:${public_http_port}/robots.txt"
 
-wait_for_static_seo_snapshot 60
+if is_static_seo_snapshot_enabled; then
+  wait_for_static_seo_snapshot 60
+else
+  echo "Static SEO snapshot publishing is disabled; deployment validation keeps the SSR/API fallback path."
+fi
 
 if [ "${rolling_deploy}" = "true" ]; then
   echo "Canonical services are healthy; removing deployment candidates."
