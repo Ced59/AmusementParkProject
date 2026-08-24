@@ -372,6 +372,15 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
     {
         string typeTag = HumanizeValue(source.Type.ToString());
         string fallbackDescription = BuildStandaloneAttractionFallbackDescription(source, typeTag);
+        List<string?> keywordSources = new List<string?>
+        {
+            source.Name,
+            source.Subtype,
+            source.Type.ToString(),
+            typeTag,
+            source.AttractionDetails?.Model,
+        };
+        keywordSources.AddRange(PublicSearchAliases.StandaloneAttractions);
 
         return new SearchItemDocument
         {
@@ -385,15 +394,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Descriptions),
             City = source.City,
             CountryCode = source.CountryCode,
-            Keywords = this.BuildKeywords(
-                source.Name,
-                source.Subtype,
-                source.Type.ToString(),
-                typeTag,
-                source.AttractionDetails?.Model,
-                PublicSearchAliases.StandaloneAttractions[0],
-                PublicSearchAliases.StandaloneAttractions[1],
-                PublicSearchAliases.StandaloneAttractions[2]),
+            Keywords = this.BuildKeywords(keywordSources.ToArray()),
             CompositeScore = 0.0,
             Latitude = source.Latitude,
             Longitude = source.Longitude,

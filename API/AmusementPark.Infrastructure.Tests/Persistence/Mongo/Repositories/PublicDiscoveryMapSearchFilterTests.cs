@@ -30,7 +30,16 @@ public sealed class PublicDiscoveryMapSearchFilterTests
     [InlineData("isolated attraction")]
     [InlineData("isolated")]
     [InlineData("attraction isolee")]
+    [InlineData("attraction isolée")]
     [InlineData("attraction")]
+    [InlineData("Standalone attractions only")]
+    [InlineData("Nur eigenständige Attraktionen")]
+    [InlineData("Alleen losse attracties")]
+    [InlineData("Solo attrazioni isolate")]
+    [InlineData("Solo atracciones aisladas")]
+    [InlineData("Attractions isolées seules")]
+    [InlineData("Tylko samodzielne atrakcje")]
+    [InlineData("Só atrações isoladas")]
     public void BuildStandaloneMapSearchTermFilter_WhenProjectionAliasMatches_ShouldKeepAllStandalonePoints(string searchTerm)
     {
         StandaloneAttractionSearchCriteria criteria = new StandaloneAttractionSearchCriteria(
@@ -76,6 +85,7 @@ public sealed class PublicDiscoveryMapSearchFilterTests
 
         Assert.Contains("descriptions.value", renderedFilter, StringComparison.Ordinal);
         Assert.Contains("themepark", renderedFilter, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("street", renderedFilter, StringComparison.OrdinalIgnoreCase);
     }
 
     private static BsonDocument Render<TDocument>(FilterDefinition<TDocument> filter)

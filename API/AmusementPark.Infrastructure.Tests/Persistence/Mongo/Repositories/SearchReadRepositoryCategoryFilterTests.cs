@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using Xunit;
@@ -64,6 +65,29 @@ public sealed class SearchReadRepositoryCategoryFilterTests
         Assert.Contains("Autriche", json, StringComparison.Ordinal);
         Assert.Contains("countryCode", json, StringComparison.Ordinal);
         Assert.Contains("AT", json, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [InlineData("attraction isolée")]
+    [InlineData("Standalone attractions only")]
+    [InlineData("Nur eigenständige Attraktionen")]
+    [InlineData("Alleen losse attracties")]
+    [InlineData("Solo attrazioni isolate")]
+    [InlineData("Solo atracciones aisladas")]
+    [InlineData("Attractions isolées seules")]
+    [InlineData("Tylko samodzielne atrakcje")]
+    [InlineData("Só atrações isoladas")]
+    public void BuildSearchFilter_WithLocalizedStandaloneLabel_ShouldUseIndexedCanonicalAlias(string localizedLabel)
+    {
+        BsonDocument filter = BuildSearchFilter(localizedLabel, new[] { "standaloneAttractions" });
+        BsonArray clauses = filter["$and"].AsBsonArray;
+        BsonDocument textClause = clauses
+            .Select(value => value.AsBsonDocument)
+            .Single(clause => clause.Contains("$or") && clause["$or"].AsBsonArray.Any(filterValue => filterValue.AsBsonDocument.Contains("title")));
+        BsonRegularExpression titleExpression = textClause["$or"].AsBsonArray[0].AsBsonDocument["title"].AsBsonRegularExpression;
+
+        Assert.Equal($".*{Regex.Escape("standalone attraction")}.*", titleExpression.Pattern);
+        Assert.DoesNotContain(localizedLabel, titleExpression.Pattern, StringComparison.OrdinalIgnoreCase);
     }
 
     private static BsonDocument BuildSearchFilter(

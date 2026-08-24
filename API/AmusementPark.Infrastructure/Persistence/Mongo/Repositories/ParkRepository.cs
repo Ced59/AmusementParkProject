@@ -597,7 +597,6 @@ public sealed class ParkRepository : IParkRepository
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.Name, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.City, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.CountryCode, expression));
-            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.Street, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.PostalCode, expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex("descriptions.value", expression));
             filters.Add(Builders<ParkDocument>.Filter.Regex("type", expression));

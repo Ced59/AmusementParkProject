@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Search.Results;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -80,6 +81,7 @@ public sealed class SearchReadRepository : ISearchReadRepository
         IReadOnlyCollection<string> matchingCountryCodes,
         IReadOnlyCollection<string> regionCountryCodes)
     {
+        (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
         List<BsonDocument> filters = new List<BsonDocument>
         {
             new BsonDocument("isVisible", true),
@@ -87,7 +89,13 @@ public sealed class SearchReadRepository : ISearchReadRepository
 
         if (!string.IsNullOrWhiteSpace(text))
         {
-            string escapedQuery = Regex.Escape(text.Trim());
+            string normalizedText = text.Trim();
+            if (normalizedCategories.Contains("standaloneAttraction", StringComparer.Ordinal))
+            {
+                normalizedText = PublicSearchAliases.NormalizeStandaloneAttractionTermForProjection(normalizedText);
+            }
+
+            string escapedQuery = Regex.Escape(normalizedText);
             BsonRegularExpression regex = new BsonRegularExpression($".*{escapedQuery}.*", "i");
 
             BsonArray textFilters = new BsonArray
@@ -112,7 +120,6 @@ public sealed class SearchReadRepository : ISearchReadRepository
             filters.Add(new BsonDocument("countryCode", new BsonDocument("$in", ToBsonArray(regionCountryCodes))));
         }
 
-        (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
         if (normalizedCategories.Length > 0 || normalizedResourceTypes.Length > 0)
         {
             BsonArray categoryFilters = new BsonArray();
