@@ -5,7 +5,7 @@ Cette configuration est prévue pour un VPS qui possède déjà Nginx Proxy Mana
 ## Exposition réseau prévue
 
 - Nginx Proxy Manager expose publiquement `https://amusement-parks.fun`.
-- Le container front est publié uniquement sur `127.0.0.1:${PUBLIC_HTTP_PORT:-18080}`.
+- Le Nginx edge est publié uniquement sur `127.0.0.1:${PUBLIC_HTTP_PORT:-18080}` ; le container SSR reste sur le réseau Docker privé.
 - L'API filtre les en-têtes `Host` via `AllowedHosts`, injecté par la variable `ALLOWED_HOSTS`.
 - L'API n'a aucun port public : elle est appelée par le front via `/api`.
 - MongoDB n'a aucun port public.
@@ -289,11 +289,14 @@ Les scripts de déploiement ne font plus de `source .env` direct. Ils passent pa
 
 ## M19 — SEO technique public
 
-Le serveur Angular SSR proxifie maintenant les documents SEO racine vers l'API :
+L'API reste l'unique générateur des documents SEO. Le serveur Angular SSR les publie sous forme de snapshot validé dans un volume persistant, puis le Nginx edge les sert directement :
 
-- `GET /robots.txt` -> `api:8080/robots.txt`
-- `GET /sitemap.xml` -> `api:8080/sitemap.xml`
-- `GET /sitemaps/*.xml` -> `api:8080/sitemaps/*.xml`
+- `GET /robots.txt` -> snapshot statique, avec repli SSR/API avant la première publication
+- `GET /sitemap.xml` -> snapshot statique, avec repli SSR/API avant la première publication
+- `GET /*.xml` -> sections du snapshot statique, avec repli SSR/API si le fichier est absent
+
+Le remplacement du snapshot est atomique et conserve la version précédente pendant la bascule. Nginx fournit `ETag`, `Last-Modified`, les réponses conditionnelles `304` et un cache navigateur de dix minutes sans solliciter Node, l'API ou MongoDB.
+L'edge démarre indépendamment du SSR et de l'API : après un redémarrage du VPS, le dernier snapshot valide reste donc disponible même si la pile applicative met plus longtemps à revenir.
 
 La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`. En production, cette valeur doit rester une origin racine en `https://` : elle sert aussi de référence SEO pour éviter des canonical/hreflang/sitemap en `http://`.
 
@@ -318,16 +321,16 @@ Forward Port          : 18080 ou PUBLIC_HTTP_PORT
 Le mapping Docker publie désormais :
 
 ```txt
-127.0.0.1:${PUBLIC_HTTP_PORT:-18080} -> container front:4000
+127.0.0.1:${PUBLIC_HTTP_PORT:-18080} -> Nginx edge:4000 -> front SSR:4000
 ```
 
-Le serveur SSR relaie aussi :
+Le Nginx edge sert les documents SEO statiques et relaie le reste au serveur SSR. Le serveur SSR relaie ensuite :
 
 ```txt
 /api/*       -> API interne Docker
-/robots.txt  -> API interne Docker
-/sitemap.xml -> API interne Docker
-/sitemaps/*  -> API interne Docker
+/robots.txt  -> API interne Docker (repli uniquement)
+/sitemap.xml -> API interne Docker (repli uniquement)
+/sitemaps/*  -> API interne Docker (repli uniquement)
 ```
 
 Variable disponible si le nom du service API change :

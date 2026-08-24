@@ -8,8 +8,8 @@ services:
     depends_on:
       api:
         condition: service_healthy
-    ports:
-      - "127.0.0.1:${PUBLIC_HTTP_PORT:-18080}:4000"
+    expose:
+      - "4000"
     cpus: ${FRONT_CPUS:-1.5}
     mem_limit: ${FRONT_MEMORY_LIMIT:-1536m}
     memswap_limit: ${FRONT_MEMORY_SWAP_LIMIT:-2g}
@@ -32,6 +32,14 @@ services:
       SSR_SEO_DOCUMENT_CACHE_SECONDS: ${SSR_SEO_DOCUMENT_CACHE_SECONDS:-0}
       SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES: ${SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES:-128}
       SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL: ${SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL:-no-cache, max-age=0, must-revalidate}
+      SSR_SEO_STATIC_SNAPSHOT_ENABLED: ${SSR_SEO_STATIC_SNAPSHOT_ENABLED:-true}
+      SSR_SEO_STATIC_SNAPSHOT_DIR: /var/cache/amusementpark-seo-static
+      SSR_SEO_STATIC_SNAPSHOT_REFRESH_INTERVAL_SECONDS: ${SSR_SEO_STATIC_SNAPSHOT_REFRESH_INTERVAL_SECONDS:-21600}
+      SSR_SEO_STATIC_SNAPSHOT_REFRESH_DEBOUNCE_MILLISECONDS: ${SSR_SEO_STATIC_SNAPSHOT_REFRESH_DEBOUNCE_MILLISECONDS:-30000}
+      SSR_SEO_STATIC_SNAPSHOT_FETCH_CONCURRENCY: ${SSR_SEO_STATIC_SNAPSHOT_FETCH_CONCURRENCY:-2}
+      SSR_SEO_STATIC_SNAPSHOT_FETCH_TIMEOUT_SECONDS: ${SSR_SEO_STATIC_SNAPSHOT_FETCH_TIMEOUT_SECONDS:-60}
+      SSR_SEO_STATIC_SNAPSHOT_MAX_DOCUMENT_BYTES: ${SSR_SEO_STATIC_SNAPSHOT_MAX_DOCUMENT_BYTES:-33554432}
+      SSR_PUBLIC_ORIGIN: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
       SSR_CACHE_INVALIDATION_TOKEN: ${SSR_CACHE_INVALIDATION_TOKEN:?SSR_CACHE_INVALIDATION_TOKEN is required}
       SSR_PAGE_CACHE_SECONDS: ${SSR_PAGE_CACHE_SECONDS:-86400}
       SSR_PAGE_CACHE_MAX_ENTRIES: ${SSR_PAGE_CACHE_MAX_ENTRIES:-2000}
@@ -67,12 +75,9 @@ services:
       FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}
       SOCIAL_PUBLISHING_FACEBOOK_ENABLED: ${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}
     networks:
-      npm_proxy_external:
-        aliases:
-          - amusementpark-front
-          - amusementpark-front-ssr
       backend_private:
         aliases:
+          - front
           - amusementpark-front
     healthcheck:
       test: ["CMD-SHELL", "wget -q --header=\"X-Forwarded-Proto: https\" --spider http://127.0.0.1:4000/healthz || exit 1"]
@@ -85,7 +90,45 @@ services:
     read_only: true
     volumes:
       - ssr_page_cache:/var/cache/amusementpark-ssr
+      - seo_static_documents:/var/cache/amusementpark-seo-static
     tmpfs:
+      - /tmp
+
+  edge:
+    image: nginx:1.29-alpine
+    container_name: amusementpark-edge
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PUBLIC_HTTP_PORT:-18080}:4000"
+    expose:
+      - "4000"
+    cpus: ${EDGE_CPUS:-0.25}
+    mem_limit: ${EDGE_MEMORY_LIMIT:-96m}
+    memswap_limit: ${EDGE_MEMORY_SWAP_LIMIT:-128m}
+    pids_limit: ${EDGE_PIDS_LIMIT:-64}
+    networks:
+      npm_proxy_external:
+        aliases:
+          - amusementpark-front
+          - amusementpark-front-ssr
+      backend_private:
+        aliases:
+          - amusementpark-edge
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:4000/edge-healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    volumes:
+      - ./nginx/edge.conf:/etc/nginx/nginx.conf:ro
+      - seo_static_documents:/srv/seo:ro
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
       - /tmp
 
   api:
@@ -274,3 +317,4 @@ volumes:
   mongodb_data:
   minio_data:
   ssr_page_cache:
+  seo_static_documents:

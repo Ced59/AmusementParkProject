@@ -247,13 +247,6 @@ attach_candidate_aliases() {
     docker network connect --alias api --alias amusementpark-api "${backend_network}" "${container_name}"
   else
     docker network connect --alias front --alias amusementpark-front "${backend_network}" "${container_name}"
-    wait_for_container_healthy "${container_name}" 30
-    docker network disconnect "${npm_docker_network_name}" "${container_name}"
-    docker network connect \
-      --alias amusementpark-front \
-      --alias amusementpark-front-ssr \
-      "${npm_docker_network_name}" \
-      "${container_name}"
   fi
 
   wait_for_container_healthy "${container_name}" 30
@@ -345,6 +338,67 @@ curl_with_retry() {
   return 1
 }
 
+wait_for_static_seo_snapshot() {
+  local max_attempts="${1:-60}"
+  local attempt=1
+  local response_headers=""
+  local response_body=""
+  local child_url=""
+  local child_path=""
+
+  echo "Waiting for the validated static SEO snapshot at the Nginx edge..."
+
+  while [ "${attempt}" -le "${max_attempts}" ]; do
+    response_headers="$(mktemp)"
+    response_body="$(mktemp)"
+
+    if curl -fsS \
+      -H "Host: ${public_domain}" \
+      -H "X-Forwarded-Proto: https" \
+      -D "${response_headers}" \
+      "http://127.0.0.1:${public_http_port}/sitemap.xml" \
+      -o "${response_body}" \
+      && grep -qi '^X-AmusementPark-SEO-Source: static' "${response_headers}" \
+      && grep -qi '<sitemapindex' "${response_body}"; then
+      child_url="$(grep -im1 -o '<loc>[^<]*</loc>' "${response_body}" | sed -e 's#<loc>##I' -e 's#</loc>##I')"
+      child_path="/${child_url##*/}"
+
+      if [ -n "${child_url}" ] \
+        && curl -fsS \
+          -H "Host: ${public_domain}" \
+          -H "X-Forwarded-Proto: https" \
+          -D "${response_headers}" \
+          "http://127.0.0.1:${public_http_port}${child_path}" \
+          -o "${response_body}" \
+        && grep -qi '^X-AmusementPark-SEO-Source: static' "${response_headers}" \
+        && grep -qi '<urlset' "${response_body}" \
+        && curl -fsS \
+          -H "Host: ${public_domain}" \
+          -H "X-Forwarded-Proto: https" \
+          -D "${response_headers}" \
+          "http://127.0.0.1:${public_http_port}/robots.txt" \
+          -o "${response_body}" \
+        && grep -qi '^X-AmusementPark-SEO-Source: static' "${response_headers}" \
+        && grep -qi '^Sitemap:' "${response_body}"; then
+        rm -f "${response_headers}" "${response_body}"
+        echo "Static SEO snapshot is active for the index, a child sitemap, and robots.txt."
+        return 0
+      fi
+    fi
+
+    rm -f "${response_headers}" "${response_body}"
+    echo "Attempt ${attempt}/${max_attempts}: static SEO snapshot is not active yet. Retrying..." >&2
+    sleep 3
+    attempt=$((attempt + 1))
+  done
+
+  echo "Static SEO snapshot did not become active after ${max_attempts} attempts." >&2
+  compose ps >&2 || true
+  compose_logs 160 edge >&2 || true
+  compose_logs 200 front >&2 || true
+  return 1
+}
+
 ./scripts/validate-production-env.sh .env
 
 if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
@@ -390,6 +444,8 @@ if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d; then
   compose_logs 80 minio >&2 || true
   echo "Recent Front SSR logs:" >&2
   compose_logs 120 front >&2 || true
+  echo "Recent Nginx edge logs:" >&2
+  compose_logs 120 edge >&2 || true
   exit 1
 fi
 
@@ -411,6 +467,7 @@ fi
 
 wait_for_service_healthy api 180
 wait_for_service_healthy front 180
+wait_for_service_healthy edge 180
 
 curl_with_retry \
   "Checking SSR frontend health on 127.0.0.1:${public_http_port}..." \
@@ -421,8 +478,10 @@ curl_with_retry \
   "http://127.0.0.1:${public_http_port}/api/health"
 
 curl_with_retry \
-  "Checking robots.txt through SSR public proxy..." \
+  "Checking robots.txt through the public edge..." \
   "http://127.0.0.1:${public_http_port}/robots.txt"
+
+wait_for_static_seo_snapshot 60
 
 if [ "${rolling_deploy}" = "true" ]; then
   echo "Canonical services are healthy; removing deployment candidates."
@@ -469,4 +528,4 @@ fi
 echo "Pruning old Docker images older than 7 days..."
 run_with_timeout "${deploy_docker_prune_timeout_seconds}" docker image prune -af --filter "until=168h" >/dev/null || true
 
-echo "Deployment completed. Configure Nginx Proxy Manager to forward ${public_domain} to amusementpark-front:4000 on Docker network ${npm_docker_network_name} with SSL + Force SSL."
+echo "Deployment completed. Nginx Proxy Manager forwards ${public_domain} to the static-capable amusementpark-front:4000 edge on Docker network ${npm_docker_network_name}."

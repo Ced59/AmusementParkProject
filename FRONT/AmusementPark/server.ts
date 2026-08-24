@@ -59,6 +59,11 @@ import {
   buildPreferredLanguageHomeUrl,
   resolveLanguagePreferenceCookie,
 } from './src/server/localization/language-preference-cookie';
+import {
+  SeoStaticDocumentResponse,
+  SeoStaticSnapshotPublisher,
+  SeoStaticSnapshotPublishResult,
+} from './src/server/seo/seo-static-snapshot';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
@@ -90,6 +95,49 @@ const seoDocumentCacheTtlSeconds = normalizeInteger(process.env['SSR_SEO_DOCUMEN
 const seoDocumentCacheMaxEntries = normalizeInteger(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'], 128, 0, Number.MAX_SAFE_INTEGER);
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
+const seoStaticSnapshotEnabled = (process.env['SSR_SEO_STATIC_SNAPSHOT_ENABLED'] ?? 'false').toLowerCase() === 'true';
+const seoStaticSnapshotDirectory = process.env['SSR_SEO_STATIC_SNAPSHOT_DIR'] ?? '/tmp/amusementpark-seo-static';
+const seoStaticSnapshotPublicOrigin = process.env['SSR_PUBLIC_ORIGIN'] ?? 'https://amusement-parks.fun';
+const seoStaticSnapshotRefreshIntervalSeconds = normalizeInteger(
+  process.env['SSR_SEO_STATIC_SNAPSHOT_REFRESH_INTERVAL_SECONDS'],
+  21_600,
+  300,
+  86_400,
+);
+const seoStaticSnapshotRefreshDebounceMilliseconds = normalizeInteger(
+  process.env['SSR_SEO_STATIC_SNAPSHOT_REFRESH_DEBOUNCE_MILLISECONDS'],
+  30_000,
+  0,
+  300_000,
+);
+const seoStaticSnapshotFetchConcurrency = normalizeInteger(
+  process.env['SSR_SEO_STATIC_SNAPSHOT_FETCH_CONCURRENCY'],
+  2,
+  1,
+  8,
+);
+const seoStaticSnapshotFetchTimeoutSeconds = normalizeInteger(
+  process.env['SSR_SEO_STATIC_SNAPSHOT_FETCH_TIMEOUT_SECONDS'],
+  60,
+  5,
+  300,
+);
+const seoStaticSnapshotMaxDocumentBytes = normalizeInteger(
+  process.env['SSR_SEO_STATIC_SNAPSHOT_MAX_DOCUMENT_BYTES'],
+  32 * 1024 * 1024,
+  1024,
+  128 * 1024 * 1024,
+);
+const seoStaticSnapshotPublisher = new SeoStaticSnapshotPublisher({
+  directory: seoStaticSnapshotDirectory,
+  publicOrigin: seoStaticSnapshotPublicOrigin,
+  fetchDocument: fetchSeoStaticDocumentFromApi,
+  fetchConcurrency: seoStaticSnapshotFetchConcurrency,
+});
+const pendingSeoStaticSnapshotRefreshReasons = new Set<string>();
+let seoStaticSnapshotRefreshTimer: ReturnType<typeof setTimeout> | null = null;
+let seoStaticSnapshotRefreshInProgress: boolean = false;
+let seoStaticSnapshotRefreshRequestedWhileRunning: boolean = false;
 const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
 const renderMaxConcurrency = normalizeInteger(process.env['SSR_RENDER_MAX_CONCURRENCY'], 1, 1, Number.MAX_SAFE_INTEGER);
 const renderQueueMaxEntries = normalizeInteger(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'], 8, 0, Number.MAX_SAFE_INTEGER);
@@ -607,6 +655,10 @@ async function handleInternalCacheInvalidationRequest(req: Request, res: Respons
     const invalidationRequest = normalizeCacheInvalidationRequest(req.body);
     const result = await executeCacheInvalidationRequest(invalidationRequest);
     recordCacheInvalidation(invalidationRequest, result);
+
+    if (invalidationRequest.includeSeoDocuments) {
+      scheduleSeoStaticSnapshotRefresh('seo-cache-invalidation');
+    }
 
     res.status(200).type('application/json').send(JSON.stringify(result));
   } catch (error: unknown) {
@@ -1650,6 +1702,7 @@ function run(): void {
     console.log(`SSR page browser Cache-Control: ${pageCacheBrowserCacheControl}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR SEO document browser Cache-Control: ${seoDocumentBrowserCacheControl}`);
+    console.log(`SSR static SEO snapshot: ${seoStaticSnapshotEnabled ? 'enabled' : 'disabled'} / ${seoStaticSnapshotDirectory} / refresh=${seoStaticSnapshotRefreshIntervalSeconds}s`);
     console.log(`SSR stale page cache: ${stalePageCacheSeconds}s / targeted refresh=${targetedRefreshEnabled} / max=${targetedRefreshMaxUrls} / concurrency=${targetedRefreshConcurrency}`);
     console.log(`SSR targeted invalidation disk scan: batch=${targetedInvalidationDiskBatchSize} / yield=${targetedInvalidationDiskYieldMilliseconds}ms`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
@@ -1658,7 +1711,81 @@ function run(): void {
     console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
     console.log(`SSR SEO-ready render retry: count=${seoReadyRenderRetryCount} / delay=${seoReadyRenderRetryDelayMilliseconds}ms`);
     console.log(`SSR slow render threshold: ${slowRenderThresholdMilliseconds}ms`);
+
+    startSeoStaticSnapshotPublishing();
   });
+}
+
+function startSeoStaticSnapshotPublishing(): void {
+  if (!seoStaticSnapshotEnabled) {
+    return;
+  }
+
+  scheduleSeoStaticSnapshotRefresh('startup', 0);
+  const refreshInterval: ReturnType<typeof setInterval> = setInterval((): void => {
+    scheduleSeoStaticSnapshotRefresh('periodic-safety-refresh', 0);
+  }, seoStaticSnapshotRefreshIntervalSeconds * 1000);
+  refreshInterval.unref();
+}
+
+function scheduleSeoStaticSnapshotRefresh(
+  reason: string,
+  delayMilliseconds: number = seoStaticSnapshotRefreshDebounceMilliseconds,
+): void {
+  if (!seoStaticSnapshotEnabled) {
+    return;
+  }
+
+  pendingSeoStaticSnapshotRefreshReasons.add(reason);
+  if (seoStaticSnapshotRefreshInProgress) {
+    seoStaticSnapshotRefreshRequestedWhileRunning = true;
+    return;
+  }
+
+  if (seoStaticSnapshotRefreshTimer !== null) {
+    clearTimeout(seoStaticSnapshotRefreshTimer);
+  }
+
+  seoStaticSnapshotRefreshTimer = setTimeout((): void => {
+    seoStaticSnapshotRefreshTimer = null;
+    void refreshSeoStaticSnapshot();
+  }, delayMilliseconds);
+  seoStaticSnapshotRefreshTimer.unref();
+}
+
+async function refreshSeoStaticSnapshot(): Promise<void> {
+  if (!seoStaticSnapshotEnabled) {
+    return;
+  }
+
+  if (seoStaticSnapshotRefreshInProgress) {
+    seoStaticSnapshotRefreshRequestedWhileRunning = true;
+    return;
+  }
+
+  const reasons: string = Array.from(pendingSeoStaticSnapshotRefreshReasons).join(', ') || 'unspecified';
+  pendingSeoStaticSnapshotRefreshReasons.clear();
+  seoStaticSnapshotRefreshInProgress = true;
+
+  try {
+    const result: SeoStaticSnapshotPublishResult = await seoStaticSnapshotPublisher.refresh();
+    if (result.status === 'busy') {
+      console.log(`SSR static SEO snapshot refresh deferred because another frontend instance is publishing (${reasons}).`);
+      scheduleSeoStaticSnapshotRefresh('publisher-busy-retry', 30_000);
+      return;
+    }
+
+    console.log(`SSR static SEO snapshot ${result.status}: ${result.documentCount} documents / ${result.totalBytes} bytes (${reasons}).`);
+  } catch (error: unknown) {
+    console.warn(`SSR static SEO snapshot refresh failed (${reasons}); the last valid snapshot remains active.`, error);
+    scheduleSeoStaticSnapshotRefresh('failed-refresh-retry', 60_000);
+  } finally {
+    seoStaticSnapshotRefreshInProgress = false;
+    if (seoStaticSnapshotRefreshRequestedWhileRunning) {
+      seoStaticSnapshotRefreshRequestedWhileRunning = false;
+      scheduleSeoStaticSnapshotRefresh('queued-refresh');
+    }
+  }
 }
 
 async function renderSsrHtmlWithSeoReadyRetries(
@@ -3340,6 +3467,80 @@ function fetchSeoDocumentFromApi(
 
   proxyRequest.on('error', (error: Error) => complete(error, null));
   proxyRequest.end();
+}
+
+function fetchSeoStaticDocumentFromApi(targetPath: string): Promise<SeoStaticDocumentResponse> {
+  return new Promise((resolvePromise, rejectPromise): void => {
+    const targetUrl = new URL(targetPath, apiInternalOrigin);
+    const publicUrl = new URL(seoStaticSnapshotPublicOrigin);
+    const client = targetUrl.protocol === 'https:' ? https : http;
+    let isSettled: boolean = false;
+    const complete = (error: Error | null, response: SeoStaticDocumentResponse | null): void => {
+      if (isSettled) {
+        return;
+      }
+
+      isSettled = true;
+      if (error !== null) {
+        rejectPromise(error);
+        return;
+      }
+
+      if (response === null) {
+        rejectPromise(new Error(`SEO static snapshot received no response for ${targetPath}.`));
+        return;
+      }
+
+      resolvePromise(response);
+    };
+    const request = client.request(
+      targetUrl,
+      {
+        method: 'GET',
+        headers: {
+          'host': publicUrl.host,
+          'x-forwarded-host': publicUrl.host,
+          'x-forwarded-proto': publicUrl.protocol.replace(':', ''),
+          'x-forwarded-for': '127.0.0.1',
+          'accept': 'application/xml, text/plain, */*',
+          'accept-language': 'en',
+          'user-agent': 'AmusementPark-SEO-StaticPublisher/1.0',
+          [internalSsrHeaderName]: '1',
+        },
+      },
+      (response: http.IncomingMessage): void => {
+        const chunks: Buffer[] = [];
+        let receivedBytes: number = 0;
+
+        response.on('data', (chunk: Buffer | string): void => {
+          const buffer: Buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+          receivedBytes += buffer.length;
+          if (receivedBytes > seoStaticSnapshotMaxDocumentBytes) {
+            request.destroy(new Error(`SEO document ${targetPath} exceeds ${seoStaticSnapshotMaxDocumentBytes} bytes.`));
+            return;
+          }
+
+          chunks.push(buffer);
+        });
+        response.on('end', (): void => {
+          complete(null, {
+            statusCode: response.statusCode ?? 502,
+            body: Buffer.concat(chunks),
+          });
+        });
+        response.on('aborted', (): void => {
+          complete(new Error(`SEO static snapshot API response aborted for ${targetPath}.`), null);
+        });
+        response.on('error', (error: Error): void => complete(error, null));
+      },
+    );
+
+    request.setTimeout(seoStaticSnapshotFetchTimeoutSeconds * 1000, (): void => {
+      request.destroy(new Error(`SEO static snapshot API request timed out for ${targetPath}.`));
+    });
+    request.on('error', (error: Error): void => complete(error, null));
+    request.end();
+  });
 }
 
 function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLength: number): Record<string, string | string[]> {
