@@ -13,6 +13,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class StandaloneAttractionRepository : IStandaloneAttractionRepository
 {
+    internal const string NormalizedClosedStatusPattern = "^(closed[\\s_'-]*definitively|permanently[\\s_'-]*closed|definitively[\\s_'-]*closed|ferm[eé][\\s_'-]*d[eé]finitivement)$";
+
     private readonly IMongoCollection<StandaloneAttractionDocument> collection;
 
     public StandaloneAttractionRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -330,14 +332,16 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
         return filter;
     }
 
-    private static FilterDefinition<StandaloneAttractionDocument> BuildPublicFilter()
+    internal static FilterDefinition<StandaloneAttractionDocument> BuildPublicFilter()
     {
-        return Builders<StandaloneAttractionDocument>.Filter.Eq(document => document.IsVisible, true)
+        FilterDefinition<StandaloneAttractionDocument> filter = Builders<StandaloneAttractionDocument>.Filter.Eq(document => document.IsVisible, true)
             & Builders<StandaloneAttractionDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
             & Builders<StandaloneAttractionDocument>.Filter.Not(
                 Builders<StandaloneAttractionDocument>.Filter.Regex(
                     "attractionDetails.status",
-                    new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermÃ©\\s*dÃ©finitivement|fermedefinitivement)$", "i")));
+                    new BsonRegularExpression(NormalizedClosedStatusPattern, "i")));
+
+        return filter;
     }
 
     private static List<string> NormalizeIds(IEnumerable<string> ids)

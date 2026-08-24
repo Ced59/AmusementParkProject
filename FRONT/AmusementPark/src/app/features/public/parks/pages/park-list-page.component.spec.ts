@@ -61,7 +61,8 @@ class FakeParkListStateFacade {
     signal<ParkRegionFilter | null>(null).asReadonly();
   readonly selectedStatus: Signal<ParkStatus | null> = signal<ParkStatus | null>('Operating').asReadonly();
   readonly selectedAudienceClassificationFilter: Signal<ParkAudienceClassificationFilter | null> = signal<ParkAudienceClassificationFilter | null>(null).asReadonly();
-  readonly discoveryScope: Signal<PublicPlaceDiscoveryScope> = signal<PublicPlaceDiscoveryScope>('parks').asReadonly();
+  readonly discoveryScopeSignal = signal<PublicPlaceDiscoveryScope>('parks');
+  readonly discoveryScope: Signal<PublicPlaceDiscoveryScope> = this.discoveryScopeSignal.asReadonly();
   readonly currentPage: Signal<number> = signal(1).asReadonly();
   readonly pageSize: Signal<number> = signal(9).asReadonly();
   readonly mapLoads: Array<{
@@ -76,6 +77,8 @@ class FakeParkListStateFacade {
     region: ParkRegionFilter | null;
   }> = [];
   readonly languages: string[] = [];
+  readonly parkMapSelections: Array<string | null> = [];
+  readonly discoveryMapSelections: Array<string | null> = [];
 
   setCurrentLanguage(language: string): void {
     this.languages.push(language);
@@ -110,7 +113,13 @@ class FakeParkListStateFacade {
 
   loadDiscoveryResults(): void {}
 
-  selectParkFromMap(): void {}
+  selectParkFromMap(parkId: string | null): void {
+    this.parkMapSelections.push(parkId);
+  }
+
+  selectDiscoveryPointFromMap(pointId: string | null): void {
+    this.discoveryMapSelections.push(pointId);
+  }
 
   selectParkFromCard(): void {}
 }
@@ -193,6 +202,22 @@ describe('ParkListPageComponent', () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it('keeps mixed discovery results when a park marker is selected', () => {
+    const routeParams$: BehaviorSubject<ParamMap> =
+      new BehaviorSubject<ParamMap>(convertToParamMap({ lang: 'fr' }));
+    const stateFacade: FakeParkListStateFacade = new FakeParkListStateFacade();
+    const component: ParkListPageComponent = createComponent(
+      stateFacade,
+      routeParams$,
+    );
+    stateFacade.discoveryScopeSignal.set('parksAndStandaloneAttractions');
+
+    component.onMapParkSelected('park-1');
+
+    expect(stateFacade.discoveryMapSelections).toEqual(['park-1']);
+    expect(stateFacade.parkMapSelections).toEqual([]);
   });
 });
 

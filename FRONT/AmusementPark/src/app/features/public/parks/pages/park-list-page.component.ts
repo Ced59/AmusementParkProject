@@ -174,6 +174,11 @@ export class ParkListPageComponent implements OnInit {
   }
 
   onMapParkSelected(parkId: string | null): void {
+    if (this.discoveryScope() !== 'parks') {
+      this.stateFacade.selectDiscoveryPointFromMap(parkId);
+      return;
+    }
+
     this.stateFacade.selectParkFromMap(parkId);
   }
 

@@ -147,6 +147,18 @@ export class ParkListStateFacade {
     this.selectedParkCardSignal.set(park);
   }
 
+  selectDiscoveryPointFromMap(pointId: string | null): void {
+    const normalizedPointId: string | null = pointId?.trim() || null;
+
+    if (!normalizedPointId) {
+      this.clearSelectedPark();
+      return;
+    }
+
+    this.selectedParkIdSignal.set(normalizedPointId);
+    this.selectedParkCardSignal.set(null);
+  }
+
   selectParkFromMap(parkId: string | null): void {
     const normalizedParkId: string | null = parkId?.trim() || null;
 

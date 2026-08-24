@@ -287,6 +287,18 @@ describe('ParkListStateFacade', () => {
     expect(facade.selectedParkCard()).toBeNull();
   });
 
+  it('highlights a discovery map point without filtering mixed results to one park', () => {
+    facade.loadParks(1, 9, '', null);
+    facade.selectParkFromCard(facade.parks()[0]);
+
+    facade.selectDiscoveryPointFromMap('park-2');
+
+    expect(facade.selectedParkId()).toBe('park-2');
+    expect(facade.selectedParkCard()).toBeNull();
+    expect(facade.displayedParks().map((park) => park.id)).toEqual(['park-1']);
+    expect(port.parkByIdCalls).toEqual([]);
+  });
+
   it('keeps previous parks when a reload fails', () => {
     facade.loadParks(1, 9, '', null);
     port.pageResponse$ = throwError(() => new Error('network'));
