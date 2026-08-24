@@ -6,6 +6,8 @@
   errorMessageKey="common.errorMessage">
   <section class="standalone-attraction-page public-page" *ngIf="attraction() as current">
     <section class="standalone-hero">
+      <div class="standalone-hero__backdrop" aria-hidden="true"></div>
+      <div class="standalone-hero__pattern" aria-hidden="true"></div>
       <div class="standalone-hero__media" *ngIf="heroImage() as image">
         <app-image-display
           [imageId]="image.id"
@@ -19,26 +21,29 @@
       </div>
 
       <div class="standalone-hero__content">
-        <span class="standalone-kicker">{{ t('standalone') }}</span>
-        <h1>{{ current.name }}</h1>
-        <p>{{ getHeroLocation(current) || t('visibleDataOnly') }}</p>
+        <div class="standalone-hero__info">
+          <div class="standalone-hero__chips">
+            <app-ui-kicker iconClass="pi pi-bolt">{{ t('standalone') }}</app-ui-kicker>
+            <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="getHeroLocation(current)">{{ getHeroLocation(current) }}</app-ui-chip>
+            <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ current.type }}</app-ui-chip>
+            <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ current.subtype }}</app-ui-chip>
+            <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="current.attractionDetails?.status">{{ current.attractionDetails?.status }}</app-ui-chip>
+          </div>
 
-        <div class="standalone-hero__chips">
-          <span>{{ current.type }}</span>
-          <span *ngIf="current.subtype">{{ current.subtype }}</span>
-          <span *ngIf="current.attractionDetails?.status">{{ current.attractionDetails?.status }}</span>
+          <h1>{{ current.name }}</h1>
+          <p>{{ t('visibleDataOnly') }}</p>
         </div>
 
         <div class="standalone-hero__actions">
-          <a class="btn btn--ghost" [routerLink]="['/', currentLanguage(), 'parks']">
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'parks']">
             <i class="pi pi-arrow-left" aria-hidden="true"></i>
             <span>{{ t('backToParks') }}</span>
           </a>
-          <a class="btn btn--ghost" [routerLink]="historyLink(current)">
+          <a appUiButton="ghost" [routerLink]="historyLink(current)">
             <i class="pi pi-history" aria-hidden="true"></i>
             <span>{{ t('history') }}</span>
           </a>
-          <a class="btn btn--primary" *ngIf="getWebsiteUrl(current) as websiteUrl" [href]="websiteUrl" target="_blank" rel="noopener">
+          <a appUiButton="primary" *ngIf="getWebsiteUrl(current) as websiteUrl" [href]="websiteUrl" target="_blank" rel="noopener">
             <i class="pi pi-external-link" aria-hidden="true"></i>
             <span>{{ t('officialWebsite') }}</span>
           </a>
@@ -79,6 +84,23 @@
               <strong>{{ row.value }}</strong>
             </div>
           </div>
+        </section>
+
+        <section class="standalone-panel standalone-map-card" *ngIf="hasCoordinates()">
+          <div class="standalone-map-card__header">
+            <span class="standalone-map-card__icon"><i class="pi pi-map-marker" aria-hidden="true"></i></span>
+            <div>
+              <h2>{{ t('mapTitle') }}</h2>
+              <p>{{ t('mapSubtitle') }}</p>
+            </div>
+          </div>
+          <app-leaflet-map
+            class="standalone-map-card__map"
+            [center]="mapCenter()"
+            [zoom]="14"
+            [fitBounds]="false"
+            [markers]="mapMarkers()">
+          </app-leaflet-map>
         </section>
       </aside>
     </div>

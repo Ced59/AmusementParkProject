@@ -8,6 +8,8 @@
     "darkRide": { "one": "Atracción oscura", "few": "Atracciones oscuras", "many": "Atracciones oscuras", "other": "Atracciones oscuras" },
     "manufacturerFound": { "one": "{{count}} fabricante encontrado", "few": "{{count}} fabricantes encontrados", "many": "{{count}} fabricantes encontrados", "other": "{{count}} fabricantes encontrados" },
     "parkOnMap": { "one": "{{count}} parque en el mapa", "few": "{{count}} parques en el mapa", "many": "{{count}} parques en el mapa", "other": "{{count}} parques en el mapa" },
+    "placeOnMap": { "one": "{{count}} lugar en el mapa", "few": "{{count}} lugares en el mapa", "many": "{{count}} lugares en el mapa", "other": "{{count}} lugares en el mapa" },
+    "standaloneAttractionOnMap": { "one": "{{count}} atracción aislada en el mapa", "few": "{{count}} atracciones aisladas en el mapa", "many": "{{count}} atracciones aisladas en el mapa", "other": "{{count}} atracciones aisladas en el mapa" },
     "result": { "one": "{{count}} resultado", "few": "{{count}} resultados", "many": "{{count}} resultados", "other": "{{count}} resultados" },
     "unlocatedPlace": { "one": "{{count}} lugar fuera del mapa", "few": "{{count}} lugares fuera del mapa", "many": "{{count}} lugares fuera del mapa", "other": "{{count}} lugares fuera del mapa" },
     "resultRange": { "one": "Mostrando {{start}} a {{end}} de {{total}} lugar", "few": "Mostrando {{start}} a {{end}} de {{total}} lugares", "many": "Mostrando {{start}} a {{end}} de {{total}} lugares", "other": "Mostrando {{start}} a {{end}} de {{total}} lugares" },

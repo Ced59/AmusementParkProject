@@ -5,6 +5,8 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { StandaloneAttraction, StandaloneAttractionMigrationRequest } from '@app/models/standalone-attractions/standalone-attraction';
+import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
@@ -51,6 +53,20 @@ export class StandaloneAttractionsApiService {
 
   getById(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttraction> {
     return this.http.get<StandaloneAttraction>(`${this.baseUrl}/${encodeURIComponent(id)}`, options);
+  }
+
+  getVisibleMapPoints(query: string = '', region: ParkRegionFilter | null = null, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttractionMapPoint[]> {
+    let params: HttpParams = new HttpParams();
+    const normalizedQuery: string = query.trim();
+    if (normalizedQuery) {
+      params = params.set('query', normalizedQuery);
+    }
+
+    if (region) {
+      params = params.set('region', region);
+    }
+
+    return this.http.get<StandaloneAttractionMapPoint[]>(`${this.baseUrl}/map-visible`, { ...options, params });
   }
 
   getAdminById(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttraction> {

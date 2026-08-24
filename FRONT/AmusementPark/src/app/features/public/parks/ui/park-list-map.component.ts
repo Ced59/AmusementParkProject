@@ -9,6 +9,7 @@ import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 import { LocalizedPluralPipe } from '@shared/pipes';
+import { buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 
 @Component({
   selector: 'app-park-list-map',
@@ -29,6 +30,9 @@ export class ParkListMapComponent {
   @Input() mapPoints: Signal<ParkMapPointViewModel[]> = this.emptyMapPoints.asReadonly();
   @Input() selectedParkId: Signal<string | null> = this.emptySelectedParkId.asReadonly();
   @Input() selectedRegion: Signal<ParkRegionFilter | null> = this.emptySelectedRegion.asReadonly();
+  @Input() titleKey: string = 'parks.map.title';
+  @Input() subtitleKey: string = 'parks.map.subtitle';
+  @Input() mapCountPluralKey: string = 'publicCounts.parkOnMap';
   @Output() parkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
 
@@ -68,20 +72,27 @@ export class ParkListMapComponent {
       lng: point.longitude,
       title: point.name,
       subtitle: point.locationLine ?? point.countryName ?? point.countryCode ?? null,
-      iconKind: 'park',
+      iconKind: point.kind === 'park' ? 'park' : 'rollerCoaster',
+      detailActionRouteCommands: point.kind === 'standaloneAttraction'
+        ? buildPublicStandaloneAttractionRouteCommands({
+          language: this.translateService.currentLang,
+          attractionId: point.id,
+          attractionName: point.name
+        })
+        : null,
       details: this.buildMarkerDetails(point)
     }, {
-      directions: point.status === 'Operating' ? {
+      directions: this.isOperating(point) ? {
         latitude: point.latitude,
         longitude: point.longitude,
         label: point.name
       } : null,
-      directionsLabel: point.status === 'Operating' ? navigateLabel : null,
-      parkDetail: {
+      directionsLabel: this.isOperating(point) ? navigateLabel : null,
+      parkDetail: point.kind === 'park' ? {
         language: this.translateService.currentLang,
         parkId: point.id,
         parkName: point.name
-      },
+      } : null,
       detailLabel: openDetailLabel
     }));
   });
@@ -107,5 +118,10 @@ export class ParkListMapComponent {
     }
 
     return details;
+  }
+
+  private isOperating(point: ParkMapPointViewModel): boolean {
+    const status: string = point.status?.trim().toLowerCase().replace(/[\s_-]+/g, '') ?? '';
+    return status === 'operating' || status === 'open' || status === 'opened';
   }
 }

@@ -13,6 +13,7 @@ import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkStatus } from '@app/models/parks/park-status';
+import { PUBLIC_PLACE_DISCOVERY_SCOPE_OPTIONS, PublicPlaceDiscoveryScope, PublicSearchCategoryOption } from '@shared/models/search/public-search-category-option.model';
 
 @Component({
   selector: 'app-park-list-page',
@@ -26,6 +27,7 @@ export class ParkListPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly mapState = this.stateFacade.mapState;
   protected readonly parks = this.stateFacade.parks;
+  protected readonly searchResults = this.stateFacade.searchResults;
   protected readonly displayedParks = this.stateFacade.displayedParks;
   protected readonly pagination = this.stateFacade.pagination;
   protected readonly visibleMapPoints = this.stateFacade.visibleMapPoints;
@@ -35,8 +37,13 @@ export class ParkListPageComponent implements OnInit {
   protected readonly selectedRegion = this.stateFacade.selectedRegion;
   protected readonly selectedStatus = this.stateFacade.selectedStatus;
   protected readonly selectedAudienceClassificationFilter = this.stateFacade.selectedAudienceClassificationFilter;
+  protected readonly discoveryScope = this.stateFacade.discoveryScope;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
+  protected readonly discoveryScopeFilterOptions = signal(PUBLIC_PLACE_DISCOVERY_SCOPE_OPTIONS.map((option: PublicSearchCategoryOption) => ({
+    labelKey: option.labelKey,
+    value: option.value
+  })));
   protected readonly statusFilterOptions = signal([
     { labelKey: 'parks.statusFilters.all', value: null },
     { labelKey: 'parks.statuses.operating', value: 'Operating' },
@@ -83,12 +90,10 @@ export class ParkListPageComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((trigger: ParkSearchTrigger) => {
       this.stateFacade.clearSelectedPark();
-      this.stateFacade.loadVisibleMapPoints(trigger.term, this.selectedRegion());
-      this.stateFacade.loadParks(1, this.stateFacade.pageSize(), trigger.term, this.selectedRegion());
+      this.reloadResults(1, this.stateFacade.pageSize(), trigger.term);
     });
 
-    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
-    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
   private watchRouteLanguageChanges(): void {
@@ -114,7 +119,7 @@ export class ParkListPageComponent implements OnInit {
     this.seoService.applyParkListSeo(language, this.router.url);
 
     if (reloadVisibleMapPoints) {
-      this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+      this.reloadResults(this.stateFacade.currentPage(), this.stateFacade.pageSize(), this.searchTerm());
     }
   }
 
@@ -136,14 +141,13 @@ export class ParkListPageComponent implements OnInit {
   onPageChange(event: { page?: number; rows?: number }): void {
     const page: number = (event.page ?? 0) + 1;
     const rows: number = event.rows ?? this.stateFacade.pageSize();
-    this.stateFacade.loadParks(page, rows, this.searchTerm(), this.selectedRegion());
+    this.loadListResults(page, rows, this.searchTerm());
   }
 
   onRegionFilterChanged(region: ParkRegionFilter | null): void {
     this.stateFacade.setSelectedRegion(region);
     this.stateFacade.clearSelectedPark();
-    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), region);
-    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), region);
+    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
   onStatusFilterChanged(value: string | null): void {
@@ -151,8 +155,7 @@ export class ParkListPageComponent implements OnInit {
 
     this.stateFacade.setStatus(status);
     this.stateFacade.clearSelectedPark();
-    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
-    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
   onAudienceClassificationFilterChanged(value: string | null): void {
@@ -160,8 +163,14 @@ export class ParkListPageComponent implements OnInit {
 
     this.stateFacade.setAudienceClassificationFilter(audienceClassificationFilter);
     this.stateFacade.clearSelectedPark();
-    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
-    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
+  }
+
+  onDiscoveryScopeChanged(value: string | null): void {
+    const scope: PublicPlaceDiscoveryScope = normalizeDiscoveryScope(value);
+    this.stateFacade.setDiscoveryScope(scope);
+    this.stateFacade.clearSelectedPark();
+    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
   onMapParkSelected(parkId: string | null): void {
@@ -174,6 +183,21 @@ export class ParkListPageComponent implements OnInit {
 
   clearSelectedPark(): void {
     this.stateFacade.clearSelectedPark();
+  }
+
+  private reloadResults(page: number, size: number, term: string): void {
+    this.stateFacade.loadVisibleMapPoints(term, this.selectedRegion(), this.discoveryScope());
+    this.loadListResults(page, size, term);
+  }
+
+  private loadListResults(page: number, size: number, term: string): void {
+    const scope: PublicPlaceDiscoveryScope = this.discoveryScope();
+    if (scope === 'parks') {
+      this.stateFacade.loadParks(page, size, term, this.selectedRegion());
+      return;
+    }
+
+    this.stateFacade.loadDiscoveryResults(scope, page, size, term, this.selectedRegion());
   }
 }
 
@@ -206,5 +230,15 @@ function normalizeAudienceClassificationFilter(value: string | null): ParkAudien
       return value;
     default:
       return null;
+  }
+}
+
+function normalizeDiscoveryScope(value: string | null): PublicPlaceDiscoveryScope {
+  switch (value) {
+    case 'parksAndStandaloneAttractions':
+    case 'standaloneAttractions':
+      return value;
+    default:
+      return 'parks';
   }
 }

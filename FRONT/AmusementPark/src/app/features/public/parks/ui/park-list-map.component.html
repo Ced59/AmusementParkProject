@@ -2,8 +2,8 @@
   class="parks-map"
   kickerIconClass="pi pi-map-marker"
   kickerLabelKey="parks.map.badge"
-  titleKey="parks.map.title"
-  subtitleKey="parks.map.subtitle">
+  [titleKey]="titleKey"
+  [subtitleKey]="subtitleKey">
   <div uiMapShellActions class="parks-map__actions">
     <div class="parks-map__filters" [attr.aria-label]="'parks.map.regionFilterAriaLabel' | translate">
       @for (filter of regionFilters; track filter.labelKey) {
@@ -19,7 +19,7 @@
     </div>
 
     <app-ui-chip tone="sky" iconClass="pi pi-eye">
-      {{ 'publicCounts.parkOnMap' | localizedPlural:mapPoints().length }}
+      {{ mapCountPluralKey | localizedPlural:mapPoints().length }}
     </app-ui-chip>
   </div>
 

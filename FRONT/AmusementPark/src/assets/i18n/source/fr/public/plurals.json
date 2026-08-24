@@ -8,6 +8,8 @@
     "darkRide": { "one": "Parcours scénique", "few": "Parcours scéniques", "many": "Parcours scéniques", "other": "Parcours scéniques" },
     "manufacturerFound": { "one": "{{count}} constructeur trouvé", "few": "{{count}} constructeurs trouvés", "many": "{{count}} constructeurs trouvés", "other": "{{count}} constructeurs trouvés" },
     "parkOnMap": { "one": "{{count}} parc sur la carte", "few": "{{count}} parcs sur la carte", "many": "{{count}} parcs sur la carte", "other": "{{count}} parcs sur la carte" },
+    "placeOnMap": { "one": "{{count}} lieu sur la carte", "few": "{{count}} lieux sur la carte", "many": "{{count}} lieux sur la carte", "other": "{{count}} lieux sur la carte" },
+    "standaloneAttractionOnMap": { "one": "{{count}} attraction isolée sur la carte", "few": "{{count}} attractions isolées sur la carte", "many": "{{count}} attractions isolées sur la carte", "other": "{{count}} attractions isolées sur la carte" },
     "result": { "one": "{{count}} résultat", "few": "{{count}} résultats", "many": "{{count}} résultats", "other": "{{count}} résultats" },
     "unlocatedPlace": { "one": "{{count}} lieu sans carte", "few": "{{count}} lieux sans carte", "many": "{{count}} lieux sans carte", "other": "{{count}} lieux sans carte" },
     "resultRange": { "one": "Affichage de {{start}} à {{end}} sur {{total}} lieu", "few": "Affichage de {{start}} à {{end}} sur {{total}} lieux", "many": "Affichage de {{start}} à {{end}} sur {{total}} lieux", "other": "Affichage de {{start}} à {{end}} sur {{total}} lieux" },

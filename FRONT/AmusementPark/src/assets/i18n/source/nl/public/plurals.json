@@ -8,6 +8,8 @@
     "darkRide": { "one": "Darkride", "few": "Darkrides", "many": "Darkrides", "other": "Darkrides" },
     "manufacturerFound": { "one": "{{count}} bouwer gevonden", "few": "{{count}} bouwers gevonden", "many": "{{count}} bouwers gevonden", "other": "{{count}} bouwers gevonden" },
     "parkOnMap": { "one": "{{count}} park op de kaart", "few": "{{count}} parken op de kaart", "many": "{{count}} parken op de kaart", "other": "{{count}} parken op de kaart" },
+    "placeOnMap": { "one": "{{count}} locatie op de kaart", "few": "{{count}} locaties op de kaart", "many": "{{count}} locaties op de kaart", "other": "{{count}} locaties op de kaart" },
+    "standaloneAttractionOnMap": { "one": "{{count}} losstaande attractie op de kaart", "few": "{{count}} losstaande attracties op de kaart", "many": "{{count}} losstaande attracties op de kaart", "other": "{{count}} losstaande attracties op de kaart" },
     "result": { "one": "{{count}} resultaat", "few": "{{count}} resultaten", "many": "{{count}} resultaten", "other": "{{count}} resultaten" },
     "unlocatedPlace": { "one": "{{count}} plek buiten de kaart", "few": "{{count}} plekken buiten de kaart", "many": "{{count}} plekken buiten de kaart", "other": "{{count}} plekken buiten de kaart" },
     "resultRange": { "one": "Weergave {{start}} tot {{end}} van {{total}} plek", "few": "Weergave {{start}} tot {{end}} van {{total}} plekken", "many": "Weergave {{start}} tot {{end}} van {{total}} plekken", "other": "Weergave {{start}} tot {{end}} van {{total}} plekken" },

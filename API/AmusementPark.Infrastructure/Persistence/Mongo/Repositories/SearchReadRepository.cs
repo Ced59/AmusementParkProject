@@ -35,9 +35,16 @@ public sealed class SearchReadRepository : ISearchReadRepository
         this.collection = database.GetCollection<SearchItemDocument>(settings.SearchItemCollectionName);
     }
 
-    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(string text, IReadOnlyCollection<string> categories, int page, int pageSize, string languageCode, CancellationToken cancellationToken)
+    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> regionCountryCodes,
+        int page,
+        int pageSize,
+        string languageCode,
+        CancellationToken cancellationToken)
     {
-        BsonDocument filter = BuildSearchFilter(text, categories);
+        BsonDocument filter = BuildSearchFilter(text, categories, regionCountryCodes);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -66,7 +73,10 @@ public sealed class SearchReadRepository : ISearchReadRepository
             totalItems);
     }
 
-    private static BsonDocument BuildSearchFilter(string text, IReadOnlyCollection<string> categories)
+    private static BsonDocument BuildSearchFilter(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string> regionCountryCodes)
     {
         List<BsonDocument> filters = new List<BsonDocument>
         {
@@ -86,6 +96,11 @@ public sealed class SearchReadRepository : ISearchReadRepository
                 new BsonDocument("localizedDescriptions.value", regex),
                 new BsonDocument("keywords", regex),
             }));
+        }
+
+        if (regionCountryCodes.Count > 0)
+        {
+            filters.Add(new BsonDocument("countryCode", new BsonDocument("$in", ToBsonArray(regionCountryCodes))));
         }
 
         (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);

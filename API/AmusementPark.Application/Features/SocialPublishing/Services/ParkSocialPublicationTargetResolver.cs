@@ -54,7 +54,11 @@ public sealed class ParkSocialPublicationTargetResolver
             && string.Equals(segments[4], "item", StringComparison.OrdinalIgnoreCase)
                 ? 4
                 : -1;
-        ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, cancellationToken);
+        int prospectiveEntityBaseLength = itemSegmentIndex < 0 ? 4 : itemSegmentIndex + 3;
+        bool allowClosedItem = itemSegmentIndex >= 0
+            && segments.Count > prospectiveEntityBaseLength
+            && string.Equals(segments[prospectiveEntityBaseLength], "history", StringComparison.OrdinalIgnoreCase);
+        ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, allowClosedItem, cancellationToken);
         if (itemSegmentIndex >= 0 && item is null)
         {
             return null;
@@ -115,6 +119,7 @@ public sealed class ParkSocialPublicationTargetResolver
         IReadOnlyList<string> segments,
         int itemSegmentIndex,
         string parkId,
+        bool allowClosedItem,
         CancellationToken cancellationToken)
     {
         if (itemSegmentIndex < 0)
@@ -135,7 +140,7 @@ public sealed class ParkSocialPublicationTargetResolver
             && !string.IsNullOrWhiteSpace(item.Id)
             && item.IsVisible
             && item.AdminReviewStatus != AdminReviewStatus.NotRelevant
-            && !ParkItemStatusNormalizer.IsClosedDefinitively(item.AttractionDetails?.Status)
+            && (allowClosedItem || !ParkItemStatusNormalizer.IsClosedDefinitively(item.AttractionDetails?.Status))
             && string.Equals(item.ParkId, parkId, StringComparison.Ordinal)
             && !string.IsNullOrWhiteSpace(item.Name)
                 ? item

@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Search.Results;
+using AmusementPark.Application.Features.Countries;
 
 namespace AmusementPark.Application.Features.Search.Queries;
 
@@ -13,4 +14,10 @@ namespace AmusementPark.Application.Features.Search.Queries;
 /// <param name="Categories">Catégories filtrées éventuelles.</param>
 /// <param name="Paging">Paramètres de pagination.</param>
 /// <param name="LanguageCode">Langue d'affichage demandée.</param>
-public sealed record SearchQuery(string Text, IReadOnlyCollection<string> Categories, PagedQuery Paging, string LanguageCode) : IQuery<ApplicationResult<SearchResultPage<SearchHitResult>>>;
+/// <param name="Region">Région du monde filtrée éventuelle.</param>
+public sealed record SearchQuery(
+    string Text,
+    IReadOnlyCollection<string> Categories,
+    PagedQuery Paging,
+    string LanguageCode,
+    WorldRegionFilter? Region = null) : IQuery<ApplicationResult<SearchResultPage<SearchHitResult>>>;

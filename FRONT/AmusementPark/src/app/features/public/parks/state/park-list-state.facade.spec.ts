@@ -11,9 +11,15 @@ import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
 import {
   PARK_LIST_STATE_PARKS_API_SERVICE_PORT,
-  ParkListStateParksApiServicePort
+  ParkListStateParksApiServicePort,
+  PARK_LIST_STATE_SEARCH_API_SERVICE_PORT,
+  ParkListStateSearchApiServicePort,
+  PARK_LIST_STATE_STANDALONE_ATTRACTIONS_API_SERVICE_PORT,
+  ParkListStateStandaloneAttractionsApiServicePort
 } from './park-list-state-data.ports';
 import { ParkListStateFacade } from './park-list-state.facade';
+import { SearchApiResponse } from '@app/models/search/search-api-response';
+import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
 
 class FakeParksPort implements ParkListStateParksApiServicePort {
   public parkResponse$: Observable<Park> = of(createPark('park-2'));
@@ -43,6 +49,39 @@ class FakeParksPort implements ParkListStateParksApiServicePort {
   searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
     this.searchCalls.push({ term: query, page, size, visibleOnly, region, filters });
     return this.searchResponse$;
+  }
+}
+
+class FakeSearchPort implements ParkListStateSearchApiServicePort {
+  public readonly calls: Array<{ query: string; categories: string[]; page: number; size: number; region: ParkRegionFilter | null }> = [];
+
+  getSearch(query: string, categories: string[], page: number, size: number, _options: object = {}, region: ParkRegionFilter | null = null): Observable<SearchApiResponse> {
+    this.calls.push({ query, categories, page, size, region });
+    return of({
+      data: [{ originalId: 'standaloneAttraction_standalone-1', category: 'standaloneAttraction', title: 'Pendolino', description: 'Description' }],
+      pagination: createPagination(page, size, 1)
+    });
+  }
+}
+
+class FakeStandaloneAttractionsPort implements ParkListStateStandaloneAttractionsApiServicePort {
+  public readonly calls: Array<{ query: string; region: ParkRegionFilter | null }> = [];
+
+  getVisibleMapPoints(query: string = '', region: ParkRegionFilter | null = null): Observable<StandaloneAttractionMapPoint[]> {
+    this.calls.push({ query, region });
+    return of([{
+      id: 'standalone-1',
+      name: 'Pendolino',
+      countryCode: 'AT',
+      type: 'RollerCoaster',
+      subtype: 'Mountain Coaster',
+      status: 'Operating',
+      city: 'Nassfeld',
+      street: null,
+      postalCode: null,
+      latitude: 46.56,
+      longitude: 13.25
+    }]);
   }
 }
 
@@ -87,15 +126,21 @@ function createResponse(data: Park[], pagination: Pagination): ParksApiResponse 
 describe('ParkListStateFacade', () => {
   let facade: ParkListStateFacade;
   let port: FakeParksPort;
+  let searchPort: FakeSearchPort;
+  let standalonePort: FakeStandaloneAttractionsPort;
 
   beforeEach(() => {
     port = new FakeParksPort();
+    searchPort = new FakeSearchPort();
+    standalonePort = new FakeStandaloneAttractionsPort();
 
     TestBed.configureTestingModule({
       providers: [
         ParkListStateFacade,
         CountryDisplayService,
-        { provide: PARK_LIST_STATE_PARKS_API_SERVICE_PORT, useValue: port }
+        { provide: PARK_LIST_STATE_PARKS_API_SERVICE_PORT, useValue: port },
+        { provide: PARK_LIST_STATE_SEARCH_API_SERVICE_PORT, useValue: searchPort },
+        { provide: PARK_LIST_STATE_STANDALONE_ATTRACTIONS_API_SERVICE_PORT, useValue: standalonePort }
       ]
     });
 
@@ -144,6 +189,30 @@ describe('ParkListStateFacade', () => {
 
     expect(port.pageCalls[0].filters).toEqual({ audienceClassification: 'Unspecified' });
     expect(port.mapCalls[0].audienceClassificationFilter).toBe('Unspecified');
+  });
+
+  it('loads standalone discovery results through the shared search categories', () => {
+    facade.setDiscoveryScope('standaloneAttractions');
+
+    facade.loadDiscoveryResults('standaloneAttractions', 1, 9, ' pendolino ', 'europe');
+
+    expect(searchPort.calls).toEqual([{
+      query: 'pendolino',
+      categories: ['standaloneAttractions'],
+      page: 1,
+      size: 9,
+      region: 'europe'
+    }]);
+    expect(facade.searchResults().map((result) => result.originalId)).toEqual(['standaloneAttraction_standalone-1']);
+  });
+
+  it('combines park and standalone attraction points for the discovery map', () => {
+    facade.setDiscoveryScope('parksAndStandaloneAttractions');
+
+    facade.loadVisibleMapPoints('', null, 'parksAndStandaloneAttractions');
+
+    expect(facade.visibleMapPoints().map((point) => point.kind)).toEqual(['park', 'standaloneAttraction']);
+    expect(standalonePort.calls).toEqual([{ query: '', region: null }]);
   });
 
   it('keeps previous parks when a reload fails', () => {

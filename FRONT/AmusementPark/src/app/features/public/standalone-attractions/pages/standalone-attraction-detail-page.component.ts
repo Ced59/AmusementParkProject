@@ -18,6 +18,10 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts';
 import { SafeRichHtmlPipe } from '@shared/pipes';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
+import { MapMarker } from '@app/models/map/map-marker';
+import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicRoutePath, buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
@@ -45,6 +49,9 @@ interface StandaloneAttractionPublicCopy {
   manufacturer: string;
   coordinates: string;
   noDescription: string;
+  mapTitle: string;
+  mapSubtitle: string;
+  directions: string;
 }
 
 const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
@@ -70,7 +77,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Durée',
     manufacturer: 'Constructeur',
     coordinates: 'Coordonnées',
-    noDescription: 'Aucune description publique n’est encore disponible.'
+    noDescription: 'Aucune description publique n’est encore disponible.',
+    mapTitle: 'Carte',
+    mapSubtitle: 'Retrouve l’attraction et ouvre un itinéraire vers ses coordonnées.',
+    directions: 'Y aller'
   },
   en: {
     standalone: 'Standalone attraction',
@@ -94,7 +104,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Duration',
     manufacturer: 'Manufacturer',
     coordinates: 'Coordinates',
-    noDescription: 'No public description is available yet.'
+    noDescription: 'No public description is available yet.',
+    mapTitle: 'Map',
+    mapSubtitle: 'Find the attraction and open directions to its coordinates.',
+    directions: 'Get directions'
   },
   es: {
     standalone: 'Atracción aislada',
@@ -118,7 +131,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Duración',
     manufacturer: 'Fabricante',
     coordinates: 'Coordenadas',
-    noDescription: 'Aún no hay descripción pública disponible.'
+    noDescription: 'Aún no hay descripción pública disponible.',
+    mapTitle: 'Mapa',
+    mapSubtitle: 'Localiza la atracción y abre una ruta hasta sus coordenadas.',
+    directions: 'Cómo llegar'
   },
   de: {
     standalone: 'Eigenständige Attraktion',
@@ -142,7 +158,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Dauer',
     manufacturer: 'Hersteller',
     coordinates: 'Koordinaten',
-    noDescription: 'Noch keine öffentliche Beschreibung verfügbar.'
+    noDescription: 'Noch keine öffentliche Beschreibung verfügbar.',
+    mapTitle: 'Karte',
+    mapSubtitle: 'Finde die Attraktion und öffne eine Route zu ihren Koordinaten.',
+    directions: 'Route öffnen'
   },
   it: {
     standalone: 'Attrazione isolata',
@@ -166,7 +185,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Durata',
     manufacturer: 'Costruttore',
     coordinates: 'Coordinate',
-    noDescription: 'Non è ancora disponibile una descrizione pubblica.'
+    noDescription: 'Non è ancora disponibile una descrizione pubblica.',
+    mapTitle: 'Mappa',
+    mapSubtitle: 'Trova l’attrazione e apri un itinerario verso le sue coordinate.',
+    directions: 'Indicazioni'
   },
   nl: {
     standalone: 'Losstaande attractie',
@@ -190,7 +212,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Duur',
     manufacturer: 'Bouwer',
     coordinates: 'Coördinaten',
-    noDescription: 'Er is nog geen openbare beschrijving beschikbaar.'
+    noDescription: 'Er is nog geen openbare beschrijving beschikbaar.',
+    mapTitle: 'Kaart',
+    mapSubtitle: 'Vind de attractie en open een route naar de coördinaten.',
+    directions: 'Route openen'
   },
   pl: {
     standalone: 'Samodzielna atrakcja',
@@ -214,7 +239,10 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Czas trwania',
     manufacturer: 'Producent',
     coordinates: 'Współrzędne',
-    noDescription: 'Brak jeszcze publicznego opisu.'
+    noDescription: 'Brak jeszcze publicznego opisu.',
+    mapTitle: 'Mapa',
+    mapSubtitle: 'Znajdź atrakcję i otwórz trasę do jej współrzędnych.',
+    directions: 'Wyznacz trasę'
   },
   pt: {
     standalone: 'Atração isolada',
@@ -238,14 +266,17 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
     duration: 'Duração',
     manufacturer: 'Fabricante',
     coordinates: 'Coordenadas',
-    noDescription: 'Ainda não há descrição pública disponível.'
+    noDescription: 'Ainda não há descrição pública disponível.',
+    mapTitle: 'Mapa',
+    mapSubtitle: 'Encontra a atração e abre uma rota até às coordenadas.',
+    directions: 'Obter direções'
   }
 };
 
 @Component({
   selector: 'app-standalone-attraction-detail-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe],
+  imports: [CommonModule, RouterLink, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent],
   templateUrl: './standalone-attraction-detail-page.component.html',
   styleUrl: './standalone-attraction-detail-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -256,6 +287,32 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
   protected readonly photos = signal<ImageDto[]>([]);
   protected readonly currentLanguage = signal<string>('en');
   protected readonly heroImage = computed<ImageDto | null>(() => this.photos()[0] ?? null);
+  protected readonly hasCoordinates = computed<boolean>(() => {
+    const current: StandaloneAttraction | null = this.attraction();
+    return Number.isFinite(current?.latitude) && Number.isFinite(current?.longitude);
+  });
+  protected readonly mapCenter = computed<[number, number]>(() => {
+    const current: StandaloneAttraction | null = this.attraction();
+    return [current?.latitude ?? 46.8, current?.longitude ?? 2.2];
+  });
+  protected readonly mapMarkers = computed<MapMarker[]>(() => {
+    const current: StandaloneAttraction | null = this.attraction();
+    if (!current || !this.hasCoordinates()) {
+      return [];
+    }
+
+    return [this.mapMarkerPopupActionService.enrich({
+      id: current.id ?? 'standalone-attraction',
+      lat: current.latitude!,
+      lng: current.longitude!,
+      title: current.name,
+      subtitle: this.getHeroLocation(current),
+      iconKind: 'rollerCoaster'
+    }, {
+      directions: { latitude: current.latitude!, longitude: current.longitude!, label: current.name },
+      directionsLabel: this.t('directions')
+    })];
+  });
   protected readonly description = computed<string>(() => {
     const current: StandaloneAttraction | null = this.attraction();
     return resolveLocalizedText(current?.descriptions, this.currentLanguage(), '');
@@ -288,7 +345,8 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     private readonly imagesApiService: ImagesApiService,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
-    private readonly ssrHttpStatusService: SsrHttpStatusService
+    private readonly ssrHttpStatusService: SsrHttpStatusService,
+    private readonly mapMarkerPopupActionService: MapMarkerPopupActionService
   ) {
   }
 

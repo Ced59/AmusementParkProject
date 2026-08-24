@@ -10,4 +10,9 @@ describe('SEARCH_API_ENDPOINTS', () => {
     expect(SEARCH_API_ENDPOINTS.getSearch('ride', ['parks', 'parkItems'], 1, 10))
       .toBe('search?query=ride&categories=parks,parkItems&page=1&pageSize=10');
   });
+
+  it('adds the selected world region for discovery searches', () => {
+    expect(SEARCH_API_ENDPOINTS.getSearch('', ['park', 'standaloneAttractions'], 1, 9, 'europe'))
+      .toBe('search?query=&categories=park,standaloneAttractions&page=1&pageSize=9&region=europe');
+  });
 });

@@ -132,6 +132,16 @@
     },
     "titlePrefix": "Alle",
     "titleAccent": "parken",
+    "discoveryScopes": {
+      "label": "Type locatie",
+      "parksAndStandaloneAttractions": "Parken + losstaande attracties",
+      "visiblePlaces": "Zichtbare locaties",
+      "visibleStandaloneAttractions": "Losstaande attracties",
+      "mapTitle": "Kaart van parken en losstaande attracties",
+      "mapSubtitle": "Ontdek geolokaliseerde parken en losstaande attracties en filter de kaart op regio.",
+      "resultsTitle": "Parken en losstaande attracties",
+      "standaloneResultsTitle": "Lijst met losstaande attracties"
+    },
     "stats": {
       "visibleParks": "Zichtbare parken",
       "countries": "Landen"

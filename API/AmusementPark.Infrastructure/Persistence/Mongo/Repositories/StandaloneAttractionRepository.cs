@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Contracts;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
@@ -111,6 +112,64 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
             page,
             pageSize,
             totalItems);
+    }
+
+    public async Task<IReadOnlyCollection<StandaloneAttraction>> GetVisibleMapPointsAsync(
+        StandaloneAttractionSearchCriteria criteria,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<StandaloneAttractionDocument> filter = BuildPublicFilter()
+            & Builders<StandaloneAttractionDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<StandaloneAttractionDocument>.Filter.Ne(document => document.Longitude, null);
+
+        if (criteria.HasRegionCountryCodes)
+        {
+            filter &= Builders<StandaloneAttractionDocument>.Filter.In(document => document.CountryCode, criteria.RegionCountryCodes);
+        }
+
+        if (criteria.HasSearchTerm)
+        {
+            string escapedSearch = Regex.Escape(criteria.SearchTerm!.Trim());
+            BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
+            List<FilterDefinition<StandaloneAttractionDocument>> searchFilters = new List<FilterDefinition<StandaloneAttractionDocument>>
+            {
+                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Name, regex),
+                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.Subtype, regex),
+                Builders<StandaloneAttractionDocument>.Filter.Regex(document => document.City, regex),
+                Builders<StandaloneAttractionDocument>.Filter.Regex("descriptions.value", regex),
+                Builders<StandaloneAttractionDocument>.Filter.Regex("attractionDetails.model", regex),
+            };
+
+            if (criteria.HasMatchingCountryCodes)
+            {
+                searchFilters.Add(Builders<StandaloneAttractionDocument>.Filter.In(document => document.CountryCode, criteria.MatchingCountryCodes));
+            }
+
+            filter &= Builders<StandaloneAttractionDocument>.Filter.Or(searchFilters);
+        }
+
+        List<StandaloneAttractionDocument> documents = await this.collection.Find(filter)
+            .Project(static document => new StandaloneAttractionDocument
+            {
+                Id = document.Id,
+                Name = document.Name,
+                CountryCode = document.CountryCode,
+                Type = document.Type,
+                Subtype = document.Subtype,
+                Street = document.Street,
+                City = document.City,
+                PostalCode = document.PostalCode,
+                Latitude = document.Latitude,
+                Longitude = document.Longitude,
+                AttractionDetails = document.AttractionDetails,
+                IsVisible = document.IsVisible,
+                AdminReviewStatus = document.AdminReviewStatus,
+            })
+            .SortBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
     }
 
     public async Task<IReadOnlyCollection<StandaloneAttraction>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)
