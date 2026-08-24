@@ -29,6 +29,49 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.False(DataCompletenessScoringRules.HasForbiddenPublicText(value));
     }
 
+    [Theory]
+    [InlineData("fr", "appartient à l’univers de et à l’identité du parc parisien")]
+    [InlineData("en", "belongs to the world of and to the identity of the Paris park")]
+    [InlineData("de", "gehört zur Welt von und zur Identität des Pariser Parks")]
+    [InlineData("nl", "hoort bij de wereld van en bij de identiteit van het Parijse park")]
+    [InlineData("it", "appartiene al mondo di e all’identità del parco parigino")]
+    [InlineData("es", "pertenece al universo de y a la identidad del parque parisino")]
+    [InlineData("pl", "należy do świata i do tożsamości paryskiego parku")]
+    [InlineData("pt", "pertence ao universo de e à identidade do parque parisiense")]
+    public void HasFormulaicPublicText_WhenEntityNamesHideRepeatedSentence_ShouldRejectEveryPublicLanguage(
+        string languageCode,
+        string normalizedTemplate)
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>
+        {
+            new(languageCode, $"Orbitron {normalizedTemplate.Replace(" de ", " de Discoveryland ", StringComparison.Ordinal)}."),
+            new(languageCode, $"Star Tours {normalizedTemplate.Replace(" de ", " de Discoveryland ", StringComparison.Ordinal)}."),
+        };
+
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            publicTexts,
+            new[] { "Orbitron", "Star Tours", "Discoveryland" });
+
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void HasFormulaicPublicText_WhenDescriptionsAreSpecific_ShouldAcceptCorpus()
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>
+        {
+            new("fr", "Le galion glisse autour de Big Thunder Mountain, entre geysers et falaises rouges."),
+            new("fr", "Sous le dôme cuivré, un départ brutal ouvre une course dans l’obscurité étoilée."),
+            new("fr", "La terrasse ombragée entoure un arbre chargé de lanternes et de fruits colorés."),
+        };
+
+        bool result = DataCompletenessScoringRules.HasFormulaicPublicText(
+            publicTexts,
+            new[] { "Thunder Mesa Riverboat Landing", "Star Wars Hyperspace Mountain", "L’Arbre Enchanté" });
+
+        Assert.False(result);
+    }
+
     [Fact]
     public void CalculateDataCompletenessScore_WhenParkHasNoOfficialZones_DoesNotApplyZonePoints()
     {
@@ -236,6 +279,48 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenPublicCorpusIsFormulaic_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext context = CreateRichParkContext() with
+        {
+            HasNoFormulaicPublicText = false,
+        };
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.formulaic-content", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenVisibleParkHasNoLogo_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.CurrentLogoImageId = null;
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("media.logo-required", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenCurrentLogoIsNotPublished_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext context = CreateRichParkContext() with
+        {
+            HasPublishedCurrentLogo = false,
+        };
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("media.logo-required", score.PublicationBlocker);
+    }
+
     private static Park CreatePublishablePark()
     {
         Park park = new Park
@@ -282,6 +367,7 @@ public sealed class ParkDataCompletenessScoreTests
             ParkImagesWithResolvedOwnerCount = 4,
             ParkImagesWithLocalizedAltTextCount = 4,
             ParkItemPublishedImageCount = 8,
+            HasPublishedCurrentLogo = true,
             HasOriginalMedia = true,
             HasOpeningHours = true,
             OpeningHoursStatus = ParkOpeningHoursAdminStatus.UpToDate,

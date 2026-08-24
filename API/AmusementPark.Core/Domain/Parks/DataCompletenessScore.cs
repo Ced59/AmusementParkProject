@@ -128,6 +128,8 @@ public sealed record ParkDataCompletenessContext
 
     public int ParkItemPublishedImageCount { get; init; }
 
+    public bool HasPublishedCurrentLogo { get; init; }
+
     public bool HasOriginalMedia { get; init; }
 
     public bool HasOpeningHours { get; init; }
@@ -177,6 +179,8 @@ public sealed record ParkDataCompletenessContext
     public bool HasStructuredTechnicalDataOnly { get; init; } = true;
 
     public bool HasNoForbiddenPublicText { get; init; } = true;
+
+    public bool HasNoFormulaicPublicText { get; init; } = true;
 
     public bool HasDocumentedRemainingDebt { get; init; }
 
@@ -305,6 +309,10 @@ public static class DataCompletenessScoringRules
 {
     public const string ForbiddenPublicTextPublicationBlocker = "public-text.forbidden-editorial-language";
 
+    public const string FormulaicPublicTextPublicationBlocker = "public-text.formulaic-content";
+
+    public const string MissingRequiredLogoPublicationBlocker = "media.logo-required";
+
     private static readonly string[] PublicLanguageCodes =
     [
         "fr",
@@ -390,6 +398,21 @@ public static class DataCompletenessScoringRules
 
     private static readonly Regex WhitespaceRegex = new Regex(
         @"\s+",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex HtmlBlockBoundaryRegex = new Regex(
+        @"</?(?:h[1-6]|p|div|li|section|article|blockquote|br)\b[^>]*>",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex SentenceBoundaryRegex = new Regex(
+        @"(?<=[.!?])\s+|[\r\n]+",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex WordRegex = new Regex(
+        @"[\p{L}\p{N}]+",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromMilliseconds(100));
 
@@ -484,6 +507,93 @@ public static class DataCompletenessScoringRules
 
         int technicalNarrativeCategoryCount = TechnicalNarrativeCategoryRegexes.Count(regex => regex.IsMatch(normalizedValue));
         return technicalNarrativeCategoryCount >= 3;
+    }
+
+    public static bool HasFormulaicPublicText(
+        IEnumerable<LocalizedText> publicTexts,
+        IEnumerable<string?> entityNames)
+    {
+        ArgumentNullException.ThrowIfNull(publicTexts);
+        ArgumentNullException.ThrowIfNull(entityNames);
+
+        List<string> normalizedEntityNames = entityNames
+            .Where(static name => !string.IsNullOrWhiteSpace(name))
+            .Select(static name => NormalizePublicText(name!).ToLowerInvariant())
+            .Where(static name => name.Length >= 3)
+            .Distinct(StringComparer.Ordinal)
+            .OrderByDescending(static name => name.Length)
+            .ToList();
+        Dictionary<string, int> firstDocumentBySentence = new Dictionary<string, int>(StringComparer.Ordinal);
+        Dictionary<string, int> firstDocumentByLongSequence = new Dictionary<string, int>(StringComparer.Ordinal);
+        int documentIndex = 0;
+
+        foreach (IGrouping<string, LocalizedText> languageGroup in publicTexts
+            .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
+            .GroupBy(
+                static text => string.IsNullOrWhiteSpace(text.LanguageCode) ? "und" : text.LanguageCode.Trim(),
+                StringComparer.OrdinalIgnoreCase))
+        {
+            firstDocumentBySentence.Clear();
+            firstDocumentByLongSequence.Clear();
+
+            foreach (LocalizedText publicText in languageGroup)
+            {
+                documentIndex += 1;
+                string decodedValue = WebUtility.HtmlDecode(publicText.Value ?? string.Empty);
+                string withBoundaries = HtmlBlockBoundaryRegex.Replace(decodedValue, ". ");
+                string withoutHtml = HtmlTagRegex.Replace(withBoundaries, " ");
+
+                foreach (string rawSentence in SentenceBoundaryRegex.Split(withoutHtml))
+                {
+                    string normalizedSentence = WhitespaceRegex.Replace(rawSentence, " ").Trim().ToLowerInvariant();
+                    foreach (string entityName in normalizedEntityNames)
+                    {
+                        normalizedSentence = normalizedSentence.Replace(entityName, " ", StringComparison.Ordinal);
+                    }
+
+                    normalizedSentence = WhitespaceRegex.Replace(normalizedSentence, " ").Trim(' ', '.', ',', ';', ':', '-', '–', '—');
+                    List<string> words = WordRegex.Matches(normalizedSentence)
+                        .Select(static match => match.Value)
+                        .ToList();
+                    if (words.Count < 6)
+                    {
+                        continue;
+                    }
+
+                    string sentenceFingerprint = string.Join(' ', words);
+                    if (WasSeenInAnotherDocument(firstDocumentBySentence, sentenceFingerprint, documentIndex))
+                    {
+                        return true;
+                    }
+
+                    const int longSequenceWordCount = 9;
+                    for (int index = 0; index <= words.Count - longSequenceWordCount; index += 1)
+                    {
+                        string sequenceFingerprint = string.Join(' ', words.Skip(index).Take(longSequenceWordCount));
+                        if (WasSeenInAnotherDocument(firstDocumentByLongSequence, sequenceFingerprint, documentIndex))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private static bool WasSeenInAnotherDocument(
+        IDictionary<string, int> firstDocumentByFingerprint,
+        string fingerprint,
+        int documentIndex)
+    {
+        if (firstDocumentByFingerprint.TryGetValue(fingerprint, out int firstDocumentIndex))
+        {
+            return firstDocumentIndex != documentIndex;
+        }
+
+        firstDocumentByFingerprint[fingerprint] = documentIndex;
+        return false;
     }
 
     private static string NormalizePublicText(string value)

@@ -77,9 +77,14 @@ Une photo non officielle peut être utilisée si elle satisfait ces contrôles, 
 
 Le logo officiel visible comme sujet de son propre fichier n’est pas un watermark. En revanche, une photographie portant le logo ou le filigrane d’un autre site reste refusée.
 
+Une photo non officielle exige quatre preuves conservées dans l'état de travail : page source exacte, auteur ou détenteur identifié, licence ou autorisation de réutilisation compatible, et inspection visuelle confirmant sans ambiguïté le bon parc et la bonne entité. Une image simplement accessible publiquement n'est pas nécessairement réutilisable. Les miniatures de moteur de recherche, captures de réseaux sociaux et fichiers sans page source sont refusés.
+
+Le nom du fichier, les segments d'URL ou la langue utilisée par un CDN ne déterminent jamais la langue du contenu public. Les huit `altTexts` et `captions` sont rédigés naturellement dans leur langue ; les mots visibles dans la scène, les enseignes et les noms officiels restent conformes à la réalité photographiée.
+
 ### Image courante ou image de contexte
 
 - Le logo officiel actuel devient le logo courant du parc et n’est jamais watermarqué par le projet.
+- Le logo est obligatoire par défaut, y compris lorsqu'une photo principale existe. Seul un très petit parc peut conserver une exception, après recherche réelle et documentée dans les sources officielles, les archives de l'exploitant et les sources spécialisées, puis acceptation explicite de cette lacune ; la difficulté de téléchargement ou le manque de temps ne constituent pas une exception.
 - La meilleure vue représentative peut devenir l’image principale du parc ou de l’attraction lorsqu’aucune image courante plus juste n’existe.
 - Une image historique, un rendu, une vue de chantier ou une illustration d’article reste secondaire et ne remplace pas automatiquement l’image courante.
 - Vérifier `setAsCurrent` ou `isCurrent` pour chaque import ; ne pas laisser la valeur par défaut choisir la hiérarchie éditoriale.
@@ -353,7 +358,7 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Les exploitants liés au parc ont une description et des informations utiles ou une limite de source documentée.
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
-- Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant, ou son absence après recherche est documentée comme lacune.
+- Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant. L'exception rarissime d'un très petit parc suit la procédure documentée ci-dessus et reste un bloqueur tant que la lacune exacte n'a pas été explicitement acceptée.
 - Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 9 n’a pas été donnée.
 - Chaque attraction actuelle, annoncée, en construction ou définitivement fermée a au moins une image fidèle, ou une exception de recherche précisément documentée.
 - Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.

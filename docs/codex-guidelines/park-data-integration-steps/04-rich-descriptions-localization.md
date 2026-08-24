@@ -104,6 +104,8 @@ Le style attendu est naturel, éditorial, spécifique au lieu, agréable à lire
 
 Cette charte s’applique à tout texte public produit dans les étapes suivantes, notamment titres, résumés, articles, textes alternatifs et légendes d’images. Aucun de ces textes ne doit ressembler à un champ rempli automatiquement, à une fiche technique, à une note de contrôle ou à une explication du processus d’intégration.
 
+La règle porte sur chaque contenu, pas seulement sur les familles de doublons. Des phrases comme « appartient à l'univers de … et à l'identité du parc », « prolonge l'atmosphère de … par son architecture et son offre » ou leurs équivalents traduits ne décrivent pas la scène ni l'expérience : elles sont mécaniques même si elles n'apparaissent qu'une fois. Retirer le nom de l'entité et du land doit laisser une observation concrète, singulière et vérifiable ; sinon le texte est à réécrire.
+
 Une description ne déroule jamais la séquence d’un dispositif. Vitesse, durée, capacité, nombre de sièges ou de véhicules, détail du tracé, enchaînement des inversions, rotations, accélérations, retenues et principe de fonctionnement appartiennent aux champs structurés. Les convertir en phrases complètes ne les rend pas éditoriaux.
 
 Un nom physique reste possible lorsqu’il désigne naturellement ce que le visiteur voit ou le sujet même du lieu : un train dans un chemin de fer, un bateau sur une rivière, des voies dans un diorama. En revanche, l’accumulation de termes comme « rails », « tracé », « structure », « véhicule », « siège », « rotation », « accélération » ou leurs équivalents traduits est un signal bloquant. Relire alors le paragraphe en retirant le nom de l’entité : s’il ne reste qu’une explication de mouvement ou de construction, le réécrire autour du décor, du récit, de l’atmosphère, des sensations et de l’héritage.
@@ -156,6 +158,8 @@ La présence de huit textes et de noms différents ne suffit pas. Avant Apply pu
 5. refaire ce contrôle sur l’export complet frais précédant l’étape 9, car un titre différent peut masquer un corps de paragraphe cloné.
 
 Un même fait peut naturellement employer un vocabulaire proche, mais deux entités distinctes ne doivent pas partager un paragraphe passe-partout. Les traductions allemande et néerlandaise, comme toutes les autres, ne peuvent pas servir de versions de secours plus génériques que le français ou l’anglais.
+
+Le détecteur automatisé de phrases ou longues séquences répétées est un filet de sécurité, pas une preuve de qualité. Avant chaque lot puis à l'étape 9, Codex relit **chaque champ public dans les huit langues** et atteste qu'aucune phrase ne pourrait être transférée à une autre entité par simple remplacement du nom, de la zone, de la catégorie ou du type d'offre.
 
 ## Règles par type de description
 

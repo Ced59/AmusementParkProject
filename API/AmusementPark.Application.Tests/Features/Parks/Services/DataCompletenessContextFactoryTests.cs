@@ -21,9 +21,13 @@ public sealed class DataCompletenessContextFactoryTests
         {
             Id = "park-1",
             Name = "Projection Park",
+            CurrentLogoImageId = "park-image-1",
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.ToReview,
-            Descriptions = new List<LocalizedText> { new("fr", "Une description éditoriale suffisamment développée pour le parc.") },
+            Descriptions = new List<LocalizedText>
+            {
+                new("fr", "Projection Park appartient à l’univers de Discoveryland et à l’identité du parc parisien. La page publique confirme l'inventaire actuel."),
+            },
         };
         ParkItem parkItem = new ParkItem
         {
@@ -33,7 +37,7 @@ public sealed class DataCompletenessContextFactoryTests
             IsVisible = true,
             Descriptions = new List<LocalizedText>
             {
-                new("fr", "La page publique confirme l'inventaire actuel de cette attraction."),
+                new("fr", "Projection Ride appartient à l’univers de Discoveryland et à l’identité du parc parisien. La page publique confirme l'inventaire actuel."),
             },
         };
         Image parkImage = new Image
@@ -41,7 +45,7 @@ public sealed class DataCompletenessContextFactoryTests
             Id = "park-image-1",
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
-            Category = ImageCategory.Park,
+            Category = ImageCategory.Logo,
             IsPublished = false,
             OriginalFileName = "park.jpg",
             AltTexts = new List<LocalizedText> { new("fr", "Vue générale du parc") },
@@ -91,7 +95,7 @@ public sealed class DataCompletenessContextFactoryTests
             .Setup(repository => repository.GetByOwnersAsync(
                 ImageOwnerType.Park,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
-                ImageCategory.Park,
+                null,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkImage });
         imageRepository
@@ -154,14 +158,17 @@ public sealed class DataCompletenessContextFactoryTests
         ParkDataCompletenessContext projected = projectedContexts["park-1"];
         Assert.False(current.ProjectForPublication);
         Assert.Equal(0, current.ParkPublishedImageCount);
+        Assert.False(current.HasPublishedCurrentLogo);
         Assert.Equal(0, current.ParkItemPublishedImageCount);
         Assert.Equal(0, current.PublishedArticleCount);
         Assert.False(current.HasPublicSeoSignals);
         Assert.True(current.HasDocumentedRemainingDebt);
         Assert.False(current.HasNoForbiddenPublicText);
         Assert.False(current.HasStructuredTechnicalDataOnly);
+        Assert.False(current.HasNoFormulaicPublicText);
         Assert.True(projected.ProjectForPublication);
         Assert.Equal(1, projected.ParkPublishedImageCount);
+        Assert.True(projected.HasPublishedCurrentLogo);
         Assert.Equal(1, projected.ParkImagesWithResolvedOwnerCount);
         Assert.Equal(1, projected.ParkImagesWithLocalizedAltTextCount);
         Assert.Equal(1, projected.ParkItemPublishedImageCount);
@@ -172,6 +179,7 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.False(projected.HasDocumentedRemainingDebt);
         Assert.False(projected.HasNoForbiddenPublicText);
         Assert.False(projected.HasStructuredTechnicalDataOnly);
+        Assert.False(projected.HasNoFormulaicPublicText);
 
         park.AdminReviewStatus = AdminReviewStatus.NotRelevant;
         IReadOnlyDictionary<string, ParkDataCompletenessContext> notRelevantContexts =
@@ -282,7 +290,7 @@ public sealed class DataCompletenessContextFactoryTests
             .Setup(repository => repository.GetByOwnersAsync(
                 ImageOwnerType.Park,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
-                ImageCategory.Park,
+                null,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Image>());
         imageRepository
@@ -343,6 +351,8 @@ public sealed class DataCompletenessContextFactoryTests
 
         Assert.True(currentContexts["park-1"].HasNoForbiddenPublicText);
         Assert.True(projectedContexts["park-1"].HasNoForbiddenPublicText);
+        Assert.True(currentContexts["park-1"].HasNoFormulaicPublicText);
+        Assert.True(projectedContexts["park-1"].HasNoFormulaicPublicText);
         parkItemRepository.VerifyAll();
         imageRepository.VerifyAll();
         historyEventRepository.VerifyAll();

@@ -122,10 +122,20 @@ public sealed class Park : GeolocatedEntityBase
         bool hasForbiddenPublicText = this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenPublicText(description.Value))
             || !scoreContext.HasNoForbiddenPublicText
             || !scoreContext.HasStructuredTechnicalDataOnly;
+        bool isPublicationCandidate = this.IsVisible || isPotentiallyPublishable;
+        bool hasPublishedCurrentLogo = DataCompletenessScoringRules.HasText(this.CurrentLogoImageId)
+            && scoreContext.HasPublishedCurrentLogo;
+        bool isMissingRequiredLogo = isPublicationCandidate && !hasPublishedCurrentLogo;
 
         score.AddPublicationBlocker(
             hasForbiddenPublicText,
             DataCompletenessScoringRules.ForbiddenPublicTextPublicationBlocker);
+        score.AddPublicationBlocker(
+            isPublicationCandidate && !scoreContext.HasNoFormulaicPublicText,
+            DataCompletenessScoringRules.FormulaicPublicTextPublicationBlocker);
+        score.AddPublicationBlocker(
+            isMissingRequiredLogo,
+            DataCompletenessScoringRules.MissingRequiredLogoPublicationBlocker);
 
         score.Add(DataCompletenessScoringRules.HasText(this.Name), 2);
         score.Add(this.IsProjectRelevantForScoring(), 2);
@@ -170,7 +180,7 @@ public sealed class Park : GeolocatedEntityBase
         score.Add(!hasForbiddenPublicText, 1);
         score.Add(this.Descriptions.Any(static description => DataCompletenessScoringRules.HasMeaningfulText(description.Value)), 1);
 
-        score.Add(DataCompletenessScoringRules.HasText(this.CurrentLogoImageId) || scoreContext.ParkPublishedImageCount > 0, 2);
+        score.Add(hasPublishedCurrentLogo, 2);
         score.Add(scoreContext.ParkPublishedImageCount > 0, 2);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.ParkItemPublishedImageCount > 0, 2);
         score.AddIfApplicable(scoreContext.ParkPublishedImageCount > 0, scoreContext.ParkImagesWithResolvedOwnerCount == scoreContext.ParkPublishedImageCount, 1);

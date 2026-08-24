@@ -23,6 +23,8 @@ Un score élevé ne remplace jamais cet audit. Il est interdit de rendre un crit
 
 Même avec un score de 100, l’étape 9 reste incomplète tant que le corpus éditorial n’a pas été relu dans son ensemble. Les contrôles de présence ne détectent ni un paragraphe de secours répété, ni une traduction littérale faible, ni un conseil d’itinéraire injecté dans des dizaines de fiches.
 
+La décision attendue est binaire : **zéro formulation mécanique dans zéro champ public**, pour les huit langues. Une seule phrase transférable à une autre entité par remplacement du nom, du land, de la catégorie ou du type d'offre impose une reprise ciblée de l'étape concernée. Un contrôle automatique silencieux, un score élevé ou des pourcentages moyens ne permettent aucune tolérance.
+
 Cette relecture est effectuée et assumée par Codex dans chacune des huit langues. Une sortie de traduction automatique non réécrite, une validation limitée à des motifs interdits ou une simple comparaison de longueurs bloque la fin de l’étape 9, même lorsque tous les champs sont présents.
 
 ## Tableau de couverture obligatoire
@@ -33,7 +35,7 @@ Produire les numérateurs, dénominateurs et identifiants manquants pour :
 - attractions avec un `attractionDetails.status` lifecycle canonique, et liste des identifiants portant encore une valeur non canonique ;
 - attractions avec 8 descriptions naturelles ;
 - attractions avec au moins une image fidèle ;
-- logo officiel présent, courant et sans watermark ajouté ;
+- logo officiel présent, courant et sans watermark ajouté ; une exception n'est recevable que pour un très petit parc, après recherche infructueuse documentée et acceptation explicite de la lacune ;
 - image principale du parc ;
 - jalons historiques avec sources et image contextualisée ;
 - articles avec sources joignables, localisations attendues et image contextualisée ;
@@ -125,6 +127,7 @@ Auditer ensemble, dans chacune des huit langues : descriptions du parc, zones, p
 
 - normaliser le HTML et comparer les corps après retrait des titres, noms d’entités et balises de mise en forme ;
 - signaler les paragraphes identiques et les familles de phrases quasi identiques, même lorsque le `<h2>` ou le nom injecté diffère ;
+- relire aussi les phrases uniques : les formulations taxonomiques telles que « appartient à l'univers de », les conclusions sur « l'identité du parc » et les phrases de catégorie telles que « prolonge l'atmosphère par son architecture et son offre » restent bloquantes sans avoir besoin d'un doublon ;
 - rechercher les conseils d’itinéraire, les classements internes, les descriptions de « rôle dans la journée », les pauses suggérées entre files et tout remplissage de catégorie ;
 - vérifier qu’aucune langue n’est plus générique, plus technique ou moins contextualisée que les autres ;
 - rechercher par langue les familles de termes liées aux rails, voies, véhicules, sièges, structures, rotations, accélérations et trajectoires, puis relire manuellement chaque groupe dense. Un terme concret isolé peut être légitime ; une accumulation ou une succession opératoire est bloquante.
