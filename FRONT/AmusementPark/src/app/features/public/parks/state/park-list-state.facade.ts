@@ -59,6 +59,8 @@ export class ParkListStateFacade {
   private readonly selectedStatusSignal = signal<ParkStatus | null>('Operating');
   private readonly selectedAudienceClassificationFilterSignal = signal<ParkAudienceClassificationFilter | null>(null);
   private readonly discoveryScopeSignal = signal<PublicPlaceDiscoveryScope>('parks');
+  private screenRequestGeneration = 0;
+  private mapRequestGeneration = 0;
 
   public readonly state = this.screenStateStore.state;
   public readonly mapState = this.mapStateStore.state;
@@ -190,6 +192,7 @@ export class ParkListStateFacade {
     const normalizedTerm: string = term.trim();
     const previousData: ParkListSourceData | undefined = this.screenStateStore.data();
     const filters: ParkAdminListFilters | null = this.buildAudienceClassificationFilters();
+    const requestGeneration: number = ++this.screenRequestGeneration;
 
     this.currentPageSignal.set(page);
     this.pageSizeSignal.set(size);
@@ -201,6 +204,10 @@ export class ParkListStateFacade {
 
     request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
+        if (requestGeneration !== this.screenRequestGeneration) {
+          return;
+        }
+
         const pagedResult = mapCollectionResponse(response, (park: Park) => park);
         const sourceData: ParkListSourceData = {
           parks: pagedResult.items,
@@ -216,6 +223,10 @@ export class ParkListStateFacade {
         this.screenStateStore.setReady(sourceData);
       },
       error: (error: unknown) => {
+        if (requestGeneration !== this.screenRequestGeneration) {
+          return;
+        }
+
         console.error('Error fetching parks:', error);
         this.screenStateStore.setError('parks.errorMessage', previousData);
       }
@@ -233,6 +244,7 @@ export class ParkListStateFacade {
     const categories: string[] = scope === 'standaloneAttractions'
       ? ['standaloneAttractions']
       : ['park', 'standaloneAttractions'];
+    const requestGeneration: number = ++this.screenRequestGeneration;
 
     this.currentPageSignal.set(page);
     this.pageSizeSignal.set(size);
@@ -242,6 +254,10 @@ export class ParkListStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response: SearchApiResponse) => {
+          if (requestGeneration !== this.screenRequestGeneration) {
+            return;
+          }
+
           const sourceData: ParkListSourceData = {
             parks: [],
             searchResults: response.data ?? [],
@@ -256,6 +272,10 @@ export class ParkListStateFacade {
           this.screenStateStore.setReady(sourceData);
         },
         error: (error: unknown) => {
+          if (requestGeneration !== this.screenRequestGeneration) {
+            return;
+          }
+
           console.error('Error fetching public places:', error);
           this.screenStateStore.setError('parks.errorMessage', previousData);
         }
@@ -268,12 +288,17 @@ export class ParkListStateFacade {
     scope: PublicPlaceDiscoveryScope = this.discoveryScopeSignal()
   ): void {
     const previousData: ParkMapPointViewModel[] | undefined = this.mapStateStore.data();
+    const requestGeneration: number = ++this.mapRequestGeneration;
     this.mapStateStore.setLoading(previousData);
 
     this.buildMapPointsRequest(term, region, scope)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (viewModels: ParkMapPointViewModel[]) => {
+          if (requestGeneration !== this.mapRequestGeneration) {
+            return;
+          }
+
           if (viewModels.length === 0) {
             this.mapStateStore.setEmpty([]);
             return;
@@ -282,6 +307,10 @@ export class ParkListStateFacade {
           this.mapStateStore.setReady(viewModels);
         },
         error: (error: unknown) => {
+          if (requestGeneration !== this.mapRequestGeneration) {
+            return;
+          }
+
           console.error('Error fetching visible park map points:', error);
           this.mapStateStore.setError('parks.map.errorMessage', previousData);
         }

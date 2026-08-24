@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, Subject, throwError } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
@@ -53,35 +53,25 @@ class FakeParksPort implements ParkListStateParksApiServicePort {
 }
 
 class FakeSearchPort implements ParkListStateSearchApiServicePort {
+  public response$: Observable<SearchApiResponse> = of({
+    data: [{ originalId: 'standaloneAttraction_standalone-1', category: 'standaloneAttraction', title: 'Pendolino', description: 'Description' }],
+    pagination: createPagination(1, 9, 1)
+  });
   public readonly calls: Array<{ query: string; categories: string[]; page: number; size: number; region: ParkRegionFilter | null }> = [];
 
   getSearch(query: string, categories: string[], page: number, size: number, _options: object = {}, region: ParkRegionFilter | null = null): Observable<SearchApiResponse> {
     this.calls.push({ query, categories, page, size, region });
-    return of({
-      data: [{ originalId: 'standaloneAttraction_standalone-1', category: 'standaloneAttraction', title: 'Pendolino', description: 'Description' }],
-      pagination: createPagination(page, size, 1)
-    });
+    return this.response$;
   }
 }
 
 class FakeStandaloneAttractionsPort implements ParkListStateStandaloneAttractionsApiServicePort {
+  public response$: Observable<StandaloneAttractionMapPoint[]> = of([createStandaloneMapPoint()]);
   public readonly calls: Array<{ query: string; region: ParkRegionFilter | null }> = [];
 
   getVisibleMapPoints(query: string = '', region: ParkRegionFilter | null = null): Observable<StandaloneAttractionMapPoint[]> {
     this.calls.push({ query, region });
-    return of([{
-      id: 'standalone-1',
-      name: 'Pendolino',
-      countryCode: 'AT',
-      type: 'RollerCoaster',
-      subtype: 'Mountain Coaster',
-      status: 'Operating',
-      city: 'Nassfeld',
-      street: null,
-      postalCode: null,
-      latitude: 46.56,
-      longitude: 13.25
-    }]);
+    return this.response$;
   }
 }
 
@@ -107,6 +97,22 @@ function createMapPoint(id: string): ParkMapPoint {
     latitude: 48.8,
     longitude: 2.3,
     currentLogoImageId: null
+  };
+}
+
+function createStandaloneMapPoint(): StandaloneAttractionMapPoint {
+  return {
+    id: 'standalone-1',
+    name: 'Pendolino',
+    countryCode: 'AT',
+    type: 'RollerCoaster',
+    subtype: 'Mountain Coaster',
+    status: 'Operating',
+    city: 'Nassfeld',
+    street: null,
+    postalCode: null,
+    latitude: 46.56,
+    longitude: 13.25
   };
 }
 
@@ -213,6 +219,35 @@ describe('ParkListStateFacade', () => {
 
     expect(facade.visibleMapPoints().map((point) => point.kind)).toEqual(['park', 'standaloneAttraction']);
     expect(standalonePort.calls).toEqual([{ query: '', region: null }]);
+  });
+
+  it('ignores a stale discovery response after the parks scope reloads', () => {
+    const staleResponse: Subject<SearchApiResponse> = new Subject<SearchApiResponse>();
+    searchPort.response$ = staleResponse;
+
+    facade.loadDiscoveryResults('standaloneAttractions', 1, 9, '', null);
+    facade.loadParks(1, 9, '', null);
+    staleResponse.next({
+      data: [{ originalId: 'standaloneAttraction_stale', category: 'standaloneAttraction', title: 'Stale', description: 'Stale' }],
+      pagination: createPagination(1, 9, 1)
+    });
+
+    expect(facade.parks().map((park) => park.id)).toEqual(['park-1']);
+    expect(facade.searchResults()).toEqual([]);
+    expect(facade.state().kind).toBe('ready');
+  });
+
+  it('ignores stale standalone map points after the parks map reloads', () => {
+    const staleResponse: Subject<StandaloneAttractionMapPoint[]> = new Subject<StandaloneAttractionMapPoint[]>();
+    standalonePort.response$ = staleResponse;
+
+    facade.loadVisibleMapPoints('', null, 'standaloneAttractions');
+    facade.loadVisibleMapPoints('', null, 'parks');
+    staleResponse.next([createStandaloneMapPoint()]);
+
+    expect(facade.visibleMapPoints().map((point) => point.id)).toEqual(['park-1']);
+    expect(facade.visibleMapPoints().map((point) => point.kind)).toEqual(['park']);
+    expect(facade.mapState().kind).toBe('ready');
   });
 
   it('keeps previous parks when a reload fails', () => {
