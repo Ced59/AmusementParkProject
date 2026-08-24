@@ -77,17 +77,25 @@ public sealed class SearchReadRepositoryCategoryFilterTests
     [InlineData("Attractions isolées seules")]
     [InlineData("Tylko samodzielne atrakcje")]
     [InlineData("Só atrações isoladas")]
-    public void BuildSearchFilter_WithLocalizedStandaloneLabel_ShouldUseIndexedCanonicalAlias(string localizedLabel)
+    public void BuildSearchFilter_WithLocalizedStandaloneLabelInMixedScope_ShouldKeepOriginalAndAddStandaloneAlias(string localizedLabel)
     {
-        BsonDocument filter = BuildSearchFilter(localizedLabel, new[] { "standaloneAttractions" });
+        BsonDocument filter = BuildSearchFilter(localizedLabel, new[] { "park", "standaloneAttractions" });
         BsonArray clauses = filter["$and"].AsBsonArray;
         BsonDocument textClause = clauses
             .Select(value => value.AsBsonDocument)
             .Single(clause => clause.Contains("$or") && clause["$or"].AsBsonArray.Any(filterValue => filterValue.AsBsonDocument.Contains("title")));
-        BsonRegularExpression titleExpression = textClause["$or"].AsBsonArray[0].AsBsonDocument["title"].AsBsonRegularExpression;
+        BsonArray textAlternatives = textClause["$or"].AsBsonArray;
+        BsonRegularExpression originalTitleExpression = textAlternatives[0].AsBsonDocument["title"].AsBsonRegularExpression;
+        BsonDocument standaloneAliasBranch = textAlternatives
+            .Select(value => value.AsBsonDocument)
+            .Single(alternative => alternative.Contains("$and"));
+        BsonArray standaloneAliasClauses = standaloneAliasBranch["$and"].AsBsonArray;
+        BsonRegularExpression canonicalTitleExpression = standaloneAliasClauses[1].AsBsonDocument["$or"].AsBsonArray[0].AsBsonDocument["title"].AsBsonRegularExpression;
 
-        Assert.Equal($".*{Regex.Escape("standalone attraction")}.*", titleExpression.Pattern);
-        Assert.DoesNotContain(localizedLabel, titleExpression.Pattern, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal($".*{Regex.Escape(localizedLabel)}.*", originalTitleExpression.Pattern);
+        Assert.Equal($".*{Regex.Escape("standalone attraction")}.*", canonicalTitleExpression.Pattern);
+        Assert.Contains("standaloneAttraction", standaloneAliasBranch.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("standaloneAttractions", standaloneAliasBranch.ToJson(), StringComparison.Ordinal);
     }
 
     private static BsonDocument BuildSearchFilter(
