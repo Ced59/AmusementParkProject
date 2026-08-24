@@ -38,11 +38,25 @@ public sealed class SearchReadRepositoryCategoryFilterTests
         Assert.DoesNotContain("parkItems", json, StringComparison.Ordinal);
     }
 
-    private static BsonDocument BuildSearchFilter(string text, IReadOnlyCollection<string> categories)
+    [Fact]
+    public void BuildSearchFilter_WithRegionCountryCodes_ShouldRestrictCountries()
+    {
+        BsonDocument filter = BuildSearchFilter(string.Empty, new[] { "park" }, new[] { "FR", "DE" });
+        string json = filter.ToJson();
+
+        Assert.Contains("countryCode", json, StringComparison.Ordinal);
+        Assert.Contains("FR", json, StringComparison.Ordinal);
+        Assert.Contains("DE", json, StringComparison.Ordinal);
+    }
+
+    private static BsonDocument BuildSearchFilter(
+        string text,
+        IReadOnlyCollection<string> categories,
+        IReadOnlyCollection<string>? regionCountryCodes = null)
     {
         MethodInfo method = typeof(SearchReadRepository).GetMethod("BuildSearchFilter", BindingFlags.NonPublic | BindingFlags.Static)
             ?? throw new InvalidOperationException("SearchReadRepository.BuildSearchFilter was not found.");
-        object? result = method.Invoke(null, new object[] { text, categories });
+        object? result = method.Invoke(null, new object[] { text, categories, regionCountryCodes ?? Array.Empty<string>() });
         return result as BsonDocument ?? throw new InvalidOperationException("SearchReadRepository.BuildSearchFilter did not return a BSON document.");
     }
 }
