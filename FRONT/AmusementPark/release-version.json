@@ -1,6 +1,20 @@
 {
-  "version": "4.2.15",
+  "version": "4.2.16",
   "history": [
+    {
+      "version": "4.2.16",
+      "releasedAt": "2026-08-24",
+      "labels": {
+        "fr": "La disponibilité des sitemaps reste mieux protégée.",
+        "en": "Sitemap availability remains better protected.",
+        "de": "Die Verfügbarkeit der Sitemaps bleibt besser geschützt.",
+        "nl": "De beschikbaarheid van sitemaps blijft beter beschermd.",
+        "it": "La disponibilità delle sitemap rimane meglio protetta.",
+        "es": "La disponibilidad de los sitemaps sigue mejor protegida.",
+        "pl": "Dostępność map witryny pozostaje lepiej chroniona.",
+        "pt": "A disponibilidade dos sitemaps continua mais bem protegida."
+      }
+    },
     {
       "version": "4.2.15",
       "releasedAt": "2026-08-24",

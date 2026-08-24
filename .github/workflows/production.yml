@@ -146,8 +146,15 @@ jobs:
         shell: bash
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
-          bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
-          docker run --rm -v "${PWD}/deploy/nginx/edge.conf:/etc/nginx/nginx.conf:ro" nginx:1.29-alpine nginx -t
+          bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
+          for static_snapshot_policy in true false; do
+            docker run --rm \
+              -v "${PWD}/deploy/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
+              -v "${PWD}/deploy/nginx/seo-static-${static_snapshot_policy}.conf:/etc/nginx/seo-static-routing.conf:ro" \
+              nginx:1.29-alpine nginx -t
+          done
+          deploy/scripts/tests/seo-static-snapshot-policy.test.sh
+          deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/stale-deploy-candidates.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
