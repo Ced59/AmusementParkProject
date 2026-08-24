@@ -275,6 +275,18 @@ describe('ParkListStateFacade', () => {
     expect(facade.mapState().kind).toBe('ready');
   });
 
+  it('ignores a stale marker detail response after the selection is cleared', () => {
+    const staleResponse: Subject<Park> = new Subject<Park>();
+    port.parkResponse$ = staleResponse;
+
+    facade.selectParkFromMap('park-2');
+    facade.clearSelectedPark();
+    staleResponse.next(createPark('park-2'));
+
+    expect(facade.selectedParkId()).toBeNull();
+    expect(facade.selectedParkCard()).toBeNull();
+  });
+
   it('keeps previous parks when a reload fails', () => {
     facade.loadParks(1, 9, '', null);
     port.pageResponse$ = throwError(() => new Error('network'));

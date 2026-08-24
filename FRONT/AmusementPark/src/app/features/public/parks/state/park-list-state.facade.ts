@@ -179,10 +179,18 @@ export class ParkListStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (park: Park) => {
+          if (this.selectedParkIdSignal() !== normalizedParkId) {
+            return;
+          }
+
           const selectedPark: ParkCardModel = mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService, this.textTruncator);
           this.selectedParkCardSignal.set(selectedPark);
         },
         error: (error: unknown) => {
+          if (this.selectedParkIdSignal() !== normalizedParkId) {
+            return;
+          }
+
           console.error('Error fetching selected park:', error);
         }
       });
