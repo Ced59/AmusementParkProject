@@ -137,27 +137,30 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
         }
 
         List<StandaloneAttractionDocument> documents = await this.collection.Find(filter)
-            .Project(static document => new StandaloneAttractionDocument
-            {
-                Id = document.Id,
-                Name = document.Name,
-                CountryCode = document.CountryCode,
-                Type = document.Type,
-                Subtype = document.Subtype,
-                Street = document.Street,
-                City = document.City,
-                PostalCode = document.PostalCode,
-                Latitude = document.Latitude,
-                Longitude = document.Longitude,
-                AttractionDetails = document.AttractionDetails,
-                IsVisible = document.IsVisible,
-                AdminReviewStatus = document.AdminReviewStatus,
-            })
+            .Project<StandaloneAttractionDocument>(BuildMapPointProjection())
             .SortBy(document => document.Name)
             .ThenBy(document => document.Id)
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    internal static ProjectionDefinition<StandaloneAttractionDocument> BuildMapPointProjection()
+    {
+        return Builders<StandaloneAttractionDocument>.Projection
+            .Include(document => document.Id)
+            .Include(document => document.Name)
+            .Include(document => document.CountryCode)
+            .Include(document => document.Type)
+            .Include(document => document.Subtype)
+            .Include(document => document.Street)
+            .Include(document => document.City)
+            .Include(document => document.PostalCode)
+            .Include(document => document.Latitude)
+            .Include(document => document.Longitude)
+            .Include("attractionDetails.status")
+            .Include(document => document.IsVisible)
+            .Include(document => document.AdminReviewStatus);
     }
 
     internal static FilterDefinition<StandaloneAttractionDocument>? BuildMapSearchTermFilter(StandaloneAttractionSearchCriteria criteria)

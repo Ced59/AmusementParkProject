@@ -12,6 +12,18 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class PublicDiscoveryMapSearchFilterTests
 {
+    [Fact]
+    public void BuildStandaloneMapPointProjection_ShouldIncludeOnlyTheAttractionStatus()
+    {
+        ProjectionDefinition<StandaloneAttractionDocument> projection = StandaloneAttractionRepository.BuildMapPointProjection();
+        IBsonSerializer<StandaloneAttractionDocument> serializer = BsonSerializer.SerializerRegistry.GetSerializer<StandaloneAttractionDocument>();
+        BsonDocument renderedProjection = projection.Render(new RenderArgs<StandaloneAttractionDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(1, renderedProjection["attractionDetails.status"].AsInt32);
+        Assert.DoesNotContain("attractionDetails.model", renderedProjection.Names);
+        Assert.DoesNotContain("attractionDetails.accessConditions", renderedProjection.Names);
+    }
+
     [Theory]
     [InlineData("standalone attraction")]
     [InlineData("standalone")]
