@@ -3,6 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 deploy_directory="$(cd "${script_dir}/../.." && pwd)"
+deploy_script="${deploy_directory}/scripts/deploy.sh"
 temp_dir="$(mktemp -d)"
 container_name="amusementpark-static-seo-edge-test-${RANDOM}-$$"
 front_container_name="${container_name}-front"
@@ -129,6 +130,29 @@ fi
 if [ "${body}" != 'front-fallback' ]; then
   echo 'Snapshot-disabled routing did not return the frontend fallback response.' >&2
   printf 'Response body: %s\n' "${body}" >&2
+  exit 1
+fi
+
+if ! grep -Fq 'if ! compose exec -T edge nginx -t; then' "${deploy_script}" \
+  || ! grep -Fq 'if ! compose exec -T edge nginx -s reload; then' "${deploy_script}"; then
+  echo 'Deployments must validate and reload the bind-mounted Nginx edge configuration.' >&2
+  exit 1
+fi
+
+edge_healthy_line="$(grep -n '^wait_for_service_healthy edge 180$' "${deploy_script}" | cut -d: -f1)"
+edge_reload_line="$(grep -n '^reload_edge_configuration$' "${deploy_script}" | cut -d: -f1)"
+snapshot_check_line="$(grep -n '^[[:space:]]*wait_for_static_seo_snapshot 60$' "${deploy_script}" | cut -d: -f1)"
+if [ -z "${edge_healthy_line}" ] \
+  || [ -z "${edge_reload_line}" ] \
+  || [ -z "${snapshot_check_line}" ] \
+  || [ "${edge_reload_line}" -le "${edge_healthy_line}" ] \
+  || [ "${edge_reload_line}" -ge "${snapshot_check_line}" ]; then
+  echo 'The Nginx edge must be healthy, then reloaded before the static sitemap validation.' >&2
+  exit 1
+fi
+
+if [ "$(grep -Fc "grep -Eqi '^Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8'" "${deploy_script}")" -lt 2 ]; then
+  echo 'Deployment validation must enforce the XML UTF-8 content type on the sitemap index and a child sitemap.' >&2
   exit 1
 fi
 
