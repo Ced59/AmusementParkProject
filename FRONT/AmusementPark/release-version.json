@@ -1,6 +1,20 @@
 {
-  "version": "4.2.22",
+  "version": "4.2.23",
   "history": [
+    {
+      "version": "4.2.23",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "Les contrôles de déploiement des sitemaps sont plus stables.",
+        "en": "Sitemap deployment checks are more stable.",
+        "de": "Die Prüfungen der Sitemap-Bereitstellung sind stabiler.",
+        "nl": "De controles van de sitemapimplementatie zijn stabieler.",
+        "it": "I controlli di distribuzione delle sitemap sono più stabili.",
+        "es": "Las comprobaciones de despliegue de los sitemaps son más estables.",
+        "pl": "Kontrole wdrażania map witryny są stabilniejsze.",
+        "pt": "As verificações de implementação dos sitemaps estão mais estáveis."
+      }
+    },
     {
       "version": "4.2.22",
       "releasedAt": "2026-08-25",
