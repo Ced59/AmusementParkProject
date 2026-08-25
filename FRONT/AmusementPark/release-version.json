@@ -1,6 +1,20 @@
 {
-  "version": "4.2.23",
+  "version": "4.2.24",
   "history": [
+    {
+      "version": "4.2.24",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "Les horaires et les emplacements des parcs sont contrôlés plus complètement.",
+        "en": "Park schedules and locations are checked more completely.",
+        "de": "Parköffnungszeiten und Standorte werden vollständiger geprüft.",
+        "nl": "Openingstijden en locaties van parken worden vollediger gecontroleerd.",
+        "it": "Gli orari e le posizioni dei parchi vengono controllati in modo più completo.",
+        "es": "Los horarios y las ubicaciones de los parques se comprueban de forma más completa.",
+        "pl": "Godziny otwarcia i lokalizacje w parkach są sprawdzane pełniej.",
+        "pt": "Os horários e as localizações dos parques são verificados de forma mais completa."
+      }
+    },
     {
       "version": "4.2.23",
       "releasedAt": "2026-08-25",

@@ -98,6 +98,14 @@ Ne pas créer d’événement pour :
 
 Les événements nommés liés au calendrier vont d’abord dans `openingHours.labels` ou `openingHours.reasons`. Ils deviennent des événements `history` seulement s’ils ont une valeur durable pour l’histoire du parc.
 
+## Horizon obligatoire du calendrier
+
+Pour un parc `Operating`, parcourir tout l’horizon futur que la source officielle rend effectivement consultable au moment de la vérification. Ne pas s’arrêter à la première semaine, aux sept ou huit premiers jours, au mois actuellement affiché ou au premier écran d’un calendrier paginé lorsque les mois suivants sont disponibles. Le lot couvre chaque date officielle depuis le premier jour vérifié jusqu’au dernier jour publié par la source, fermetures comprises.
+
+Cette règle n’autorise aucune extrapolation : si la source officielle ne publie réellement qu’une courte période, conserver seulement cette période et documenter la limite exacte, l’URL et la date de vérification. Pour un parc majeur, une fenêtre courte exige une seconde recherche sur les autres calendriers officiels de la destination et reste un bloqueur si davantage de dates étaient accessibles mais n’ont pas été intégrées.
+
+Après génération, développer les règles en dates civiles dans le fuseau du parc et annoncer : première date, dernière date, nombre de jours inclus, dates sans règle et dates couvertes plusieurs fois. Zéro date manquante et zéro chevauchement sont requis à l’intérieur de l’horizon revendiqué, sauf exception datée explicitement représentée par le modèle.
+
 ## Forme des horaires
 
 - `timeZoneId` obligatoire et cohérent avec le pays.
@@ -168,6 +176,8 @@ Section principale : `openingHours`.
 - Aucun commentaire général n’est répété sur les jours normaux du calendrier.
 - Les `daysOfWeek` utilisent uniquement les valeurs canoniques de `park-graph-upsert-enums.md`.
 - Le calendrier n’est pas extrapolé au-delà des sources.
+- Le calendrier couvre tout l’horizon futur réellement accessible dans la source officielle, sans arrêt arbitraire après une semaine ou un mois affiché.
+- La plage inclusive, le nombre de jours, les dates non couvertes et les chevauchements ont été calculés ; aucune lacune ou collision silencieuse ne subsiste dans l’horizon annoncé.
 - Les fermetures exceptionnelles ne sont pas confondues avec une fermeture définitive du parc.
 
 ## Après Apply
