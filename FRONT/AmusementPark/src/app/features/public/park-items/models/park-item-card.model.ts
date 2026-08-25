@@ -9,6 +9,14 @@ export interface ParkItemCardViewModel {
   zoneName: string | null;
   imageUrl: string | null;
   imageSrcSet: string | null;
+  lifecycleStatus: ParkItemCardLifecycleStatusViewModel | null;
   highlights: string[];
   itemLink: string[] | null;
+}
+
+export interface ParkItemCardLifecycleStatusViewModel {
+  labelKey: string | null;
+  label: string | null;
+  tone: 'sky' | 'rose' | 'gold' | 'soft';
+  iconClass: string;
 }

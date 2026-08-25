@@ -16,4 +16,24 @@ describe('mapParkMapItemsToViewModel lifecycle actions', () => {
     expect(viewModel.markers[0].directionsActionEnabled).toBe(false);
     expect(viewModel.markers[0].detailActionRouteCommands).not.toBeNull();
   });
+
+  it('adds a localized closed status to a removed item marker', () => {
+    const response: ParkMapItems = {
+      park: { id: 'park-1', name: 'Disney California Adventure', status: 'Operating', latitude: 33.8, longitude: -117.9 },
+      items: [{
+        id: 'item-1',
+        name: 'California Screamin’',
+        category: 'Attraction',
+        type: 'RollerCoaster',
+        attractionDetails: { status: 'Removed' },
+        latitude: 33.805,
+        longitude: -117.922
+      }],
+      zones: []
+    };
+
+    const viewModel = mapParkMapItemsToViewModel(response, 'fr');
+
+    expect(viewModel.markers[0].detailTranslationKeys).toContain('parkItems.statuses.removed');
+  });
 });

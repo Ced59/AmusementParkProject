@@ -1,5 +1,6 @@
 import { ParkMapItem, ParkMapItems, ParkMapUnlocatedItem, ParkMapZone } from '@app/models/parks/park-map-items';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getAttractionStatusValueKey } from '@shared/utils/display/park-item-presentation.helpers';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -52,6 +53,11 @@ function mapUnlocatedItems(response: ParkMapItems, language: string): ParkItemsM
 function mapItemToMarker(response: ParkMapItems, item: ParkMapItem, language: string): ParkItemsMapMarkerViewModel {
   const zoneName: string | null = resolveZoneName(item.zoneId ?? null, response.zones ?? []);
   const details: string[] = zoneName ? [zoneName] : [];
+  const detailTranslationKeys: string[] = [getParkItemTypeTranslationKey(item.type)];
+  const statusTranslationKey: string | null = getAttractionStatusValueKey(item.attractionDetails?.status);
+  if (statusTranslationKey && statusTranslationKey !== 'parkItems.statuses.operating') {
+    detailTranslationKeys.unshift(statusTranslationKey);
+  }
 
   return {
     id: item.id,
@@ -69,7 +75,7 @@ function mapItemToMarker(response: ParkMapItems, item: ParkMapItem, language: st
       subtype: item.subtype ?? null
     }),
     details,
-    detailTranslationKeys: [getParkItemTypeTranslationKey(item.type)],
+    detailTranslationKeys,
     detailActionRouteCommands: buildParkItemMapDetailRouteCommands({
       language,
       parkId: response.park.id,

@@ -17,6 +17,11 @@
       </span>
 
       <div class="ui-item-card__chips">
+        @if (currentCard.lifecycleStatus; as lifecycleStatus) {
+          <app-ui-chip [tone]="lifecycleStatus.tone" [iconClass]="lifecycleStatus.iconClass">
+            {{ lifecycleStatus.labelKey ? (lifecycleStatus.labelKey | translate) : lifecycleStatus.label }}
+          </app-ui-chip>
+        }
         <app-ui-chip tone="primary">{{ currentCard.categoryLabelKey | translate }}</app-ui-chip>
         <app-ui-chip tone="soft">{{ currentCard.typeLabelKey | translate }}</app-ui-chip>
         @if (currentCard.zoneName) {

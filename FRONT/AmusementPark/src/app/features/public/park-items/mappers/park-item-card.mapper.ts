@@ -1,6 +1,7 @@
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
+  getAttractionStatusValueKey,
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -9,7 +10,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
-import { ParkItemCardViewModel } from '../models/park-item-card.model';
+import { ParkItemCardLifecycleStatusViewModel, ParkItemCardViewModel } from '../models/park-item-card.model';
 
 const PARK_ITEM_CARD_DESCRIPTION_MAX_LENGTH = 160;
 const defaultMeasurementConversionService = new MeasurementConversionService();
@@ -41,6 +42,7 @@ export function mapParkItemToCardViewModel(
     zoneName,
     imageUrl,
     imageSrcSet,
+    lifecycleStatus: buildLifecycleStatus(item.attractionDetails?.status),
     highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage, measurementSystem, measurementConversionService),
     itemLink: buildParkItemLink(park, item, currentLanguage)
   };
@@ -77,11 +79,6 @@ function buildParkItemHighlights(
     values.push(item.attractionDetails.model);
   }
 
-  const statusLabel: string | null = resolveAttractionStatusDisplay(item.attractionDetails?.status, currentLanguage);
-  if (statusLabel) {
-    values.push(statusLabel);
-  }
-
   const heightLine: string | null = measurementConversionService.formatLengthFromMeters(
     item.attractionDetails?.heightInMeters,
     measurementSystem,
@@ -108,114 +105,35 @@ function buildParkItemHighlights(
 }
 
 
-function resolveAttractionStatusDisplay(status: string | null | undefined, currentLanguage: string): string | null {
+function buildLifecycleStatus(status: string | null | undefined): ParkItemCardLifecycleStatusViewModel | null {
   const normalized: string = status?.trim() ?? '';
   if (normalized.length === 0) {
     return null;
   }
 
-  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
-  const statusKey: string | undefined = {
-    operating: 'operating',
-    open: 'operating',
-    opened: 'operating',
-    enfonctionnement: 'operating',
-    underconstruction: 'underConstruction',
-    construction: 'underConstruction',
-    temporarilyclosed: 'temporarilyClosed',
-    temporaryclosed: 'temporarilyClosed',
-    closedtemporarily: 'temporarilyClosed',
-    closeddefinitively: 'closedDefinitively',
-    permanentlyclosed: 'closedDefinitively',
-    definitivelyclosed: 'closedDefinitively',
-    fermedefinitivement: 'closedDefinitively',
-    removed: 'removed',
-    dismantled: 'removed',
-    planned: 'planned',
-    announced: 'planned',
-    unknown: 'unknown'
-  }[normalizedKey];
-
-  if (!statusKey) {
-    return normalized;
+  const labelKey: string | null = getAttractionStatusValueKey(normalized);
+  if (labelKey === 'parkItems.statuses.operating') {
+    return null;
   }
 
-  const labels: Record<string, Record<string, string>> = {
-    fr: {
-      operating: 'En fonctionnement',
-      underConstruction: 'En construction',
-      temporarilyClosed: 'Fermé temporairement',
-      closedDefinitively: 'Fermé définitivement',
-      removed: 'Supprimé / démonté',
-      planned: 'Prévu',
-      unknown: 'Inconnu'
-    },
-    en: {
-      operating: 'Operating',
-      underConstruction: 'Under construction',
-      temporarilyClosed: 'Temporarily closed',
-      closedDefinitively: 'Permanently closed',
-      removed: 'Removed / dismantled',
-      planned: 'Planned',
-      unknown: 'Unknown'
-    },
-    es: {
-      operating: 'En funcionamiento',
-      underConstruction: 'En construcción',
-      temporarilyClosed: 'Cerrado temporalmente',
-      closedDefinitively: 'Cerrado definitivamente',
-      removed: 'Retirado / desmontado',
-      planned: 'Previsto',
-      unknown: 'Desconocido'
-    },
-    de: {
-      operating: 'In Betrieb',
-      underConstruction: 'Im Bau',
-      temporarilyClosed: 'Vorübergehend geschlossen',
-      closedDefinitively: 'Dauerhaft geschlossen',
-      removed: 'Entfernt / abgebaut',
-      planned: 'Geplant',
-      unknown: 'Unbekannt'
-    },
-    it: {
-      operating: 'In funzione',
-      underConstruction: 'In costruzione',
-      temporarilyClosed: 'Chiuso temporaneamente',
-      closedDefinitively: 'Chiuso definitivamente',
-      removed: 'Rimosso / smontato',
-      planned: 'Previsto',
-      unknown: 'Sconosciuto'
-    },
-    pl: {
-      operating: 'Działa',
-      underConstruction: 'W budowie',
-      temporarilyClosed: 'Tymczasowo zamknięte',
-      closedDefinitively: 'Zamknięte na stałe',
-      removed: 'Usunięte / zdemontowane',
-      planned: 'Planowane',
-      unknown: 'Nieznane'
-    },
-    nl: {
-      operating: 'In werking',
-      underConstruction: 'In aanbouw',
-      temporarilyClosed: 'Tijdelijk gesloten',
-      closedDefinitively: 'Definitief gesloten',
-      removed: 'Verwijderd / afgebroken',
-      planned: 'Gepland',
-      unknown: 'Onbekend'
-    },
-    pt: {
-      operating: 'Em funcionamento',
-      underConstruction: 'Em construção',
-      temporarilyClosed: 'Fechado temporariamente',
-      closedDefinitively: 'Fechado definitivamente',
-      removed: 'Removido / desmontado',
-      planned: 'Planeado',
-      unknown: 'Desconhecido'
-    }
-  };
+  if (labelKey === 'parkItems.statuses.temporarilyClosed') {
+    return { labelKey, label: null, tone: 'gold', iconClass: 'pi pi-pause-circle' };
+  }
 
-  return labels[currentLanguage]?.[statusKey] ?? labels['en']?.[statusKey] ?? normalized;
+  if (labelKey === 'parkItems.statuses.closedDefinitively' || labelKey === 'parkItems.statuses.removed') {
+    return { labelKey, label: null, tone: 'rose', iconClass: 'pi pi-ban' };
+  }
+
+  if (labelKey === 'parkItems.statuses.underConstruction' || labelKey === 'parkItems.statuses.planned') {
+    return { labelKey, label: null, tone: 'sky', iconClass: 'pi pi-clock' };
+  }
+
+  return {
+    labelKey,
+    label: labelKey ? null : normalized,
+    tone: 'soft',
+    iconClass: 'pi pi-info-circle'
+  };
 }
 
 function buildParkItemLink(park: Park | null, item: ParkItem, currentLanguage: string): string[] | null {

@@ -9,7 +9,6 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
 
@@ -115,7 +114,7 @@ public sealed class ParkZoneRepository : IParkZoneRepository
         FilterDefinition<ParkZoneDocument> zoneFilter = Builders<ParkZoneDocument>.Filter.Eq(document => document.ParkId, parkId);
         FilterDefinition<ParkItemDocument> itemFilter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
-            & BuildClosedFilter(closedFilter);
+            & ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         if (!includeHidden)
         {
@@ -153,17 +152,4 @@ public sealed class ParkZoneRepository : IParkZoneRepository
         };
     }
 
-    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
-    {
-        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
-            "attractionDetails.status",
-            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
-
-        return closedFilter switch
-        {
-            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
-            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
-            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
-        };
-    }
 }

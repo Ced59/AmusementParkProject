@@ -50,6 +50,7 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.typeIconClass).toBe('pi pi-bolt');
     expect(result.zoneName).toBe('Zone A');
     expect(result.imageUrl).toBeNull();
+    expect(result.lifecycleStatus).toBeNull();
     expect(result.itemLink).toEqual([
       '/',
       'fr',
@@ -93,7 +94,7 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.imageSrcSet).toBe('/images/main 640w');
   });
 
-  it('limits highlights to four values and localizes known statuses', () => {
+  it('limits highlights to four values without hiding measurements behind the operating status', () => {
     const result = mapParkItemToCardViewModel(
       createItem(),
       park,
@@ -105,9 +106,25 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.highlights).toEqual([
       'B&M',
       'Hyper Coaster',
-      'En fonctionnement',
       '50 m',
+      '120 km/h',
     ]);
+  });
+
+  it.each([
+    ['TemporarilyClosed', 'parkItems.statuses.temporarilyClosed', 'gold'],
+    ['ClosedDefinitively', 'parkItems.statuses.closedDefinitively', 'rose'],
+    ['Removed', 'parkItems.statuses.removed', 'rose'],
+  ])('exposes %s as a prominent lifecycle marker', (status: string, labelKey: string, tone: string) => {
+    const result = mapParkItemToCardViewModel(
+      createItem({ attractionDetails: { status } as never }),
+      park,
+      'fr',
+      null,
+      null,
+    );
+
+    expect(result.lifecycleStatus).toEqual(expect.objectContaining({ labelKey, tone }));
   });
 
   it('formats attraction highlights with imperial units when requested', () => {
@@ -138,7 +155,12 @@ describe('mapParkItemToCardViewModel', () => {
       null,
     );
 
-    expect(result.highlights).toEqual(['Soft opening']);
+    expect(result.highlights).toEqual([]);
+    expect(result.lifecycleStatus).toEqual(expect.objectContaining({
+      label: 'Soft opening',
+      labelKey: null,
+      tone: 'soft',
+    }));
   });
 
   it('returns null subtitle and link when related data is missing', () => {
@@ -153,6 +175,7 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.subtitle).toBeNull();
     expect(result.itemLink).toBeNull();
     expect(result.highlights).toEqual([]);
+    expect(result.lifecycleStatus).toBeNull();
   });
 
   it('truncates card descriptions with the shared text truncator when provided', () => {

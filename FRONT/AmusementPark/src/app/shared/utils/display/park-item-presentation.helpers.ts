@@ -18,6 +18,38 @@ export function getParkItemTypeTranslationKey(type: ParkItemType | string | null
   return getSharedParkItemTypeTranslationKey(type);
 }
 
+export function getAttractionStatusValueKey(status: string | null | undefined): string | null {
+  const normalized: string = status?.trim() ?? '';
+  if (normalized.length === 0) {
+    return null;
+  }
+
+  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
+  const translationSegments: Record<string, string> = {
+    operating: 'operating',
+    open: 'operating',
+    opened: 'operating',
+    enfonctionnement: 'operating',
+    underconstruction: 'underConstruction',
+    construction: 'underConstruction',
+    temporarilyclosed: 'temporarilyClosed',
+    temporaryclosed: 'temporarilyClosed',
+    closedtemporarily: 'temporarilyClosed',
+    closeddefinitively: 'closedDefinitively',
+    permanentlyclosed: 'closedDefinitively',
+    definitivelyclosed: 'closedDefinitively',
+    fermedefinitivement: 'closedDefinitively',
+    removed: 'removed',
+    dismantled: 'removed',
+    planned: 'planned',
+    announced: 'planned',
+    unknown: 'unknown'
+  };
+  const segment: string | undefined = translationSegments[normalizedKey];
+
+  return segment ? `parkItems.statuses.${segment}` : null;
+}
+
 export function resolveParkItemDescription(item: ParkItem | null | undefined, currentLang: string): string | null {
   const localizedDescription: string | undefined = resolveLocalizedValue(item?.descriptions, currentLang);
   const plainText: string = stripHtml(localizedDescription);
