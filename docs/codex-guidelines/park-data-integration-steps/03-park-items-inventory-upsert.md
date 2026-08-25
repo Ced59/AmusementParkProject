@@ -71,6 +71,14 @@ Pour chaque item :
 - conditions d’accès dans `attractionDetails.accessConditions` si elles sont disponibles ;
 - coordonnées uniquement si l’emplacement est précis.
 
+## Couverture géographique
+
+La géolocalisation ne se limite pas aux attractions. Rechercher un point précis pour chaque parkItem fixe et publiquement identifiable : attraction, restaurant, boutique, service, station, entrée, théâtre ou lieu de rencontre stable. Pour un grand parc, procéder zone par zone et rapprocher le plan officiel d’une source cartographique ou photographique suffisamment précise ; un point déjà utilisé par une autre entité ne peut être recopié que si les deux lieux occupent réellement le même bâtiment ou le même emplacement.
+
+Ne jamais placer artificiellement au centre du parc un défilé, un spectacle itinérant, une animation répartie sur plusieurs scènes, une installation temporaire, un ancien lieu démoli dont la position reste incertaine ou une nouveauté dont l’implantation exacte n’est pas encore publique. Ces exceptions restent sans coordonnées et sont nommées dans le registre avec leur motif factuel.
+
+Avant de quitter l’étape, produire le nombre `parkItems fixes géolocalisés / parkItems fixes identifiés`, la liste nominative des absences et la justification de chacune. Une couverture partielle sans recherche dédiée est un lot incomplet, même lorsque les attractions majeures sont déjà placées.
+
 ## Conditions d’accès des attractions
 
 Pour chaque attraction, rechercher systématiquement les conditions d’accès publiées par le parc ou une source fiable. Ces données sont importantes et ne doivent pas être oubliées.
@@ -292,6 +300,7 @@ Sections possibles :
 - Les anciens items importants ne sont pas supprimés.
 - Les trois passes d’inventaire sont terminées et leurs totaux sont annoncés séparément.
 - Les attractions définitivement fermées ont fait l’objet d’une recherche historique dédiée ; les lacunes restantes indiquent les sources vérifiées.
+- Tous les parkItems fixes et publiquement identifiables ont un point précis, ou figurent dans le registre nominatif des exceptions avec une impossibilité factuelle ; aucun point central ou voisin n’est utilisé comme approximation silencieuse.
 - Toute anomalie legacy de statut historique est enregistrée pour correction et préservation en timeline à l’étape 8.
 - Les items sans source fiable restent absents ou `ToReview`.
 
@@ -303,6 +312,7 @@ Avant le fichier JSON, résumer systématiquement :
 - les parkItems inclus dans le lot, avec leur type principal quand le lot porte sur l’inventaire ;
 - le compteur d’avancement de l’étape 3, par exemple `parkItems : 30 / 147` et `attractions uniquement : 30 / 49` quand ces totaux sont connus ;
 - le sous-compteur des attractions actuelles, annoncées/en construction et définitivement fermées ;
+- la couverture géographique des lieux fixes et la liste nominative des exceptions non positionnables ;
 - le reste à traiter avant l’étape 4, notamment les lots d’items non encore intégrés ;
 - les sources principales et les limites du lot.
 

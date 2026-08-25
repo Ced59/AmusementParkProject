@@ -35,6 +35,7 @@ Produire les numérateurs, dénominateurs et identifiants manquants pour :
 - attractions avec un `attractionDetails.status` lifecycle canonique, et liste des identifiants portant encore une valeur non canonique ;
 - attractions avec 8 descriptions naturelles ;
 - attractions avec au moins une image fidèle ;
+- parkItems fixes géolocalisés / parkItems fixes identifiés, avec la liste nominative et le motif de chaque exception non positionnable ;
 - logo officiel présent, courant et sans watermark ajouté ; une exception n'est recevable que pour un très petit parc, après recherche infructueuse documentée et acceptation explicite de la lacune ;
 - image principale du parc ;
 - jalons historiques avec sources et image contextualisée ;
@@ -231,6 +232,8 @@ Pour chaque article avec image :
 Vérifier :
 
 - horaires sourcés et récents pour `Operating` uniquement ;
+- horizon officiel entièrement parcouru : première date, dernière date et nombre inclusif de jours couverts ; une première semaine, les seuls jours du mois affiché ou toute autre coupe arbitraire bloquent l’audit lorsque la source propose davantage ;
+- zéro date sans règle et zéro chevauchement après développement des règles sur tout l’horizon revendiqué, avec la liste explicite de toute exception réellement portée par le modèle ;
 - aucun CTA, calendrier ou donnée « ouvert maintenant » pour `Planned`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively` ou `Cancelled` ;
 - aucun tarif n’est stocké dans `openingHours`, ses libellés ou ses raisons ;
 - événements nommés seulement ;
