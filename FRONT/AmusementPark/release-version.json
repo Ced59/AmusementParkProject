@@ -1,6 +1,20 @@
 {
-  "version": "4.2.27",
+  "version": "4.2.28",
   "history": [
+    {
+      "version": "4.2.28",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "Les lieux fermés sont mieux identifiés et filtrés.",
+        "en": "Closed places are identified and filtered more clearly.",
+        "de": "Geschlossene Orte sind klarer gekennzeichnet und gefiltert.",
+        "nl": "Gesloten plekken zijn duidelijker gemarkeerd en gefilterd.",
+        "it": "I luoghi chiusi sono identificati e filtrati più chiaramente.",
+        "es": "Los lugares cerrados se identifican y filtran con más claridad.",
+        "pl": "Zamknięte miejsca są wyraźniej oznaczone i filtrowane.",
+        "pt": "Os locais encerrados são identificados e filtrados com mais clareza."
+      }
+    },
     {
       "version": "4.2.27",
       "releasedAt": "2026-08-25",

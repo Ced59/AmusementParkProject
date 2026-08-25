@@ -121,7 +121,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 | Builders<ParkItemDocument>.Filter.Ne(document => document.Longitude, 0d));
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
-            & BuildClosedFilter(closedFilter)
+            & ParkItemClosedEntityMongoFilter.Build(closedFilter)
             & validCoordinatesFilter;
         if (!includeHidden)
         {
@@ -156,7 +156,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
-            & BuildClosedFilter(closedFilter);
+            & ParkItemClosedEntityMongoFilter.Build(closedFilter);
         if (!includeHidden)
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
@@ -266,17 +266,4 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
     }
 
-    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
-    {
-        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
-            "attractionDetails.status",
-            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
-
-        return closedFilter switch
-        {
-            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
-            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
-            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
-        };
-    }
 }

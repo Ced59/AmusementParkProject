@@ -80,4 +80,18 @@ public sealed class ParkStatusTests
         Assert.Equal(canReceiveRatings, ParkItemStatusNormalizer.CanReceiveVisitorRatings(category, status));
         Assert.Equal(canAppearInCurrentRankings, ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(category, status));
     }
+
+    [Theory]
+    [InlineData(ParkItemStatusNormalizer.Operating, false)]
+    [InlineData(ParkItemStatusNormalizer.Planned, false)]
+    [InlineData(ParkItemStatusNormalizer.UnderConstruction, false)]
+    [InlineData(ParkItemStatusNormalizer.TemporarilyClosed, true)]
+    [InlineData(ParkItemStatusNormalizer.ClosedDefinitively, true)]
+    [InlineData(ParkItemStatusNormalizer.Removed, true)]
+    [InlineData(ParkItemStatusNormalizer.Unknown, false)]
+    [InlineData(null, false)]
+    public void IsClosedForPublicBrowsing_ShouldIncludeEveryClosedVisitorState(string? status, bool expected)
+    {
+        Assert.Equal(expected, ParkItemStatusNormalizer.IsClosedForPublicBrowsing(status));
+    }
 }

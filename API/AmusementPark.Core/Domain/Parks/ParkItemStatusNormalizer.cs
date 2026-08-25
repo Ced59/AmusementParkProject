@@ -45,6 +45,14 @@ public static class ParkItemStatusNormalizer
         return string.Equals(Normalize(value), ClosedDefinitively, StringComparison.Ordinal);
     }
 
+    public static bool IsClosedForPublicBrowsing(string? value)
+    {
+        string? normalized = Normalize(value);
+        return normalized is TemporarilyClosed
+            or ClosedDefinitively
+            or Removed;
+    }
+
     public static bool CanReceiveVisitorRatings(ParkItemCategory category, string? value)
     {
         string? normalized = Normalize(value);

@@ -63,4 +63,37 @@ describe('mapParkItemsZoneFocusViewModel lifecycle actions', () => {
 
     expect(viewModel?.map.markers[0].directionsActionEnabled).toBe(true);
   });
+
+  it('labels removed items on zone-focus markers', () => {
+    const park: Park = {
+      id: 'park-1',
+      name: 'Open Park',
+      status: 'Operating',
+      latitude: 48,
+      longitude: 2,
+      isVisible: true,
+    };
+    const removedItem: ParkItem = {
+      ...item,
+      attractionDetails: {
+        status: 'Removed',
+      },
+    };
+
+    const viewModel = mapParkItemsZoneFocusViewModel(
+      park,
+      null,
+      [],
+      [removedItem],
+      [removedItem],
+      null,
+      [],
+      'en',
+    );
+
+    expect(viewModel?.map.markers[0].detailTranslationKeys).toEqual([
+      'parkItems.statuses.removed',
+      'parkExplorer.types.rollerCoaster',
+    ]);
+  });
 });

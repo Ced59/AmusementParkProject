@@ -5,7 +5,6 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -121,7 +120,7 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
-            & BuildClosedFilter(closedFilter);
+            & ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         if (!includeHidden)
         {
@@ -160,20 +159,6 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
             && Math.Abs(latitude.Value) <= 90d
             && Math.Abs(longitude.Value) <= 180d
             && !(Math.Abs(latitude.Value) < double.Epsilon && Math.Abs(longitude.Value) < double.Epsilon);
-    }
-
-    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
-    {
-        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
-            "attractionDetails.status",
-            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermedefinitivement)$", "i"));
-
-        return closedFilter switch
-        {
-            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
-            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
-            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
-        };
     }
 
     private static ParkMapAttractionDetailsResult? ToMapAttractionDetails(AttractionDetailsDocument? document)

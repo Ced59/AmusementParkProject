@@ -19,6 +19,7 @@ import { MeasurementConversionService } from '@shared/services/measurements/meas
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkItemMarkerDetailTranslationKeys } from '@shared/utils/display/park-item-presentation.helpers';
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
@@ -344,7 +345,10 @@ export class ParkZonesPageStateFacade {
         lng: item.longitude!,
         title: item.name,
         subtitle: item.category,
-        detailTranslationKeys: item.type ? [getParkItemTypeTranslationKey(item.type)] : [],
+        detailTranslationKeys: getParkItemMarkerDetailTranslationKeys(
+          item.type,
+          item.attractionDetails?.status
+        ),
         directionsActionEnabled: park.status === 'Operating',
         iconKind: resolveParkItemMarkerIconKind({
           category: item.category,

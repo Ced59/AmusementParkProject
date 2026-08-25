@@ -50,7 +50,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         List<ParkItemDocument> documents = await this.collection.Find(filter)
             .SortBy(document => document.Category)
@@ -149,7 +149,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         List<ParkItemSiblingNavigationItem> items = await this.collection.Find(filter)
             .SortBy(document => document.Category)
@@ -188,7 +188,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= filterBuilder.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         List<FilterDefinition<ParkItemDocument>> affinityFilters = new List<FilterDefinition<ParkItemDocument>>
         {
@@ -301,7 +301,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
@@ -331,7 +331,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
@@ -357,7 +357,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         List<BsonDocument> aggregationResults = await this.collection.Aggregate()
             .Match(filter)
@@ -796,7 +796,7 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= BuildClosedFilter(closedFilter);
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         if (category.HasValue)
         {
@@ -899,20 +899,6 @@ public sealed class ParkItemRepository : IParkItemRepository
             .Select(static parkId => parkId.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
-    }
-
-    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
-    {
-        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
-            "attractionDetails.status",
-            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
-
-        return closedFilter switch
-        {
-            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
-            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
-            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
-        };
     }
 
     public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken, bool includeHidden = false)

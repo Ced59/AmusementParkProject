@@ -1,5 +1,7 @@
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 
+export { getAttractionStatusValueKey } from '@shared/utils/display/park-item-presentation.helpers';
+
 export type AttractionTechnicalValueKind = 'material' | 'seating' | 'launch' | 'restraint';
 
 const ATTRACTION_TECHNICAL_VALUE_SEGMENTS: Record<AttractionTechnicalValueKind, Record<string, string>> = {
@@ -32,38 +34,6 @@ export function getAttractionTechnicalValueKey(
   const segment: string | undefined = ATTRACTION_TECHNICAL_VALUE_SEGMENTS[kind][normalizedValue];
 
   return segment ? `parkItems.technicalValues.${kind}.${segment}` : null;
-}
-
-export function getAttractionStatusValueKey(status: string | null | undefined): string | null {
-  const normalized: string = status?.trim() ?? '';
-  if (normalized.length === 0) {
-    return null;
-  }
-
-  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
-  const translationSegments: Record<string, string> = {
-    operating: 'operating',
-    open: 'operating',
-    opened: 'operating',
-    enfonctionnement: 'operating',
-    underconstruction: 'underConstruction',
-    construction: 'underConstruction',
-    temporarilyclosed: 'temporarilyClosed',
-    temporaryclosed: 'temporarilyClosed',
-    closedtemporarily: 'temporarilyClosed',
-    closeddefinitively: 'closedDefinitively',
-    permanentlyclosed: 'closedDefinitively',
-    definitivelyclosed: 'closedDefinitively',
-    fermedefinitivement: 'closedDefinitively',
-    removed: 'removed',
-    dismantled: 'removed',
-    planned: 'planned',
-    announced: 'planned',
-    unknown: 'unknown'
-  };
-  const segment: string | undefined = translationSegments[normalizedKey];
-
-  return segment ? `parkItems.statuses.${segment}` : null;
 }
 
 export function getAccessConditionTypeLabelKey(type: AttractionAccessConditionType): string {
