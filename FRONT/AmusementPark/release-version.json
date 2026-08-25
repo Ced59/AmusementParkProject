@@ -1,6 +1,20 @@
 {
-  "version": "4.2.19",
+  "version": "4.2.20",
   "history": [
+    {
+      "version": "4.2.20",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "Les sitemaps sont mieux reconnus par les navigateurs et les moteurs de recherche.",
+        "en": "Sitemaps are better recognized by browsers and search engines.",
+        "de": "Sitemaps werden von Browsern und Suchmaschinen besser erkannt.",
+        "nl": "Sitemaps worden beter herkend door browsers en zoekmachines.",
+        "it": "Le sitemap vengono riconosciute meglio dai browser e dai motori di ricerca.",
+        "es": "Los sitemaps se reconocen mejor en los navegadores y los motores de búsqueda.",
+        "pl": "Mapy witryny są lepiej rozpoznawane przez przeglądarki i wyszukiwarki.",
+        "pt": "Os sitemaps são mais bem reconhecidos pelos navegadores e motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.19",
       "releasedAt": "2026-08-24",
