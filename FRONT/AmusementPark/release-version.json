@@ -1,6 +1,20 @@
 {
-  "version": "4.2.21",
+  "version": "4.2.22",
   "history": [
+    {
+      "version": "4.2.22",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "La configuration de lecture des sitemaps est renouvelée de façon fiable.",
+        "en": "The sitemap reading configuration is refreshed reliably.",
+        "de": "Die Konfiguration zum Lesen der Sitemaps wird zuverlässig erneuert.",
+        "nl": "De configuratie voor het lezen van sitemaps wordt betrouwbaar vernieuwd.",
+        "it": "La configurazione per la lettura delle sitemap viene rinnovata in modo affidabile.",
+        "es": "La configuración de lectura de los sitemaps se renueva de forma fiable.",
+        "pl": "Konfiguracja odczytu map witryny jest niezawodnie odnawiana.",
+        "pt": "A configuração de leitura dos sitemaps é renovada de forma fiável."
+      }
+    },
     {
       "version": "4.2.21",
       "releasedAt": "2026-08-25",

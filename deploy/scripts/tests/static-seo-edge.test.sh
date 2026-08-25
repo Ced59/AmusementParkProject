@@ -4,11 +4,16 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 deploy_directory="$(cd "${script_dir}/../.." && pwd)"
 deploy_script="${deploy_directory}/scripts/deploy.sh"
+compose_file="${deploy_directory}/compose.prod.yml"
 temp_dir="$(mktemp -d)"
 container_name="amusementpark-static-seo-edge-test-${RANDOM}-$$"
 front_container_name="${container_name}-front"
 network_name="${container_name}-network"
-live_static_policy="${temp_dir}/seo-static-true.conf"
+live_nginx_directory="${temp_dir}/nginx"
+live_static_policy="${live_nginx_directory}/seo-static-routing.conf"
+
+mkdir -p "${live_nginx_directory}"
+cp "${deploy_directory}/nginx/edge.conf" "${live_nginx_directory}/edge.conf"
 
 sed \
   -e '/^[[:space:]]*types {$/,/^[[:space:]]*}$/d' \
@@ -64,13 +69,6 @@ docker run -d \
   nginx:1.29-alpine >/dev/null
 
 start_edge() {
-  local snapshot_policy="$1"
-  local routing_configuration="${deploy_directory}/nginx/seo-static-${snapshot_policy}.conf"
-
-  if [ "${snapshot_policy}" = 'true' ]; then
-    routing_configuration="${live_static_policy}"
-  fi
-
   docker rm -f "${container_name}" >/dev/null 2>&1 || true
   docker run -d \
     --name "${container_name}" \
@@ -79,10 +77,12 @@ start_edge() {
     --tmpfs /var/cache/nginx \
     --tmpfs /var/run \
     --tmpfs /tmp \
-    -v "${deploy_directory}/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
-    -v "${routing_configuration}:/etc/nginx/seo-static-routing.conf:ro" \
+    -v "${live_nginx_directory}:/etc/nginx/amusementpark:ro" \
     -v "${temp_dir}/seo:/srv/seo:ro" \
-    nginx:1.29-alpine >/dev/null
+    nginx:1.29-alpine \
+    /bin/sh -ec \
+    "ln -sf /etc/nginx/amusementpark/seo-static-routing.conf /tmp/seo-static-routing.conf && exec nginx -c /etc/nginx/amusementpark/edge.conf -g 'daemon off;'" \
+    >/dev/null
 }
 
 read_response_headers() {
@@ -126,9 +126,10 @@ assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'ref
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
 
-cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}"
-docker exec "${container_name}" nginx -t
-docker exec "${container_name}" nginx -s reload
+cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}.next"
+mv -f "${live_static_policy}.next" "${live_static_policy}"
+docker exec "${container_name}" nginx -t -c /etc/nginx/amusementpark/edge.conf
+docker exec "${container_name}" nginx -s reload -c /etc/nginx/amusementpark/edge.conf
 
 for _attempt in $(seq 1 20); do
   headers="$(read_response_headers)"
@@ -137,14 +138,24 @@ for _attempt in $(seq 1 20); do
   fi
   sleep 1
 done
-assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'reloaded XML UTF-8 content type'
+assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'atomically refreshed XML UTF-8 content type'
 
 headers="$(read_response_headers /parks-fr.xml)"
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
 
-start_edge false
-headers="$(read_response_headers)"
+cp "${deploy_directory}/nginx/seo-static-false.conf" "${live_static_policy}.next"
+mv -f "${live_static_policy}.next" "${live_static_policy}"
+docker exec "${container_name}" nginx -t -c /etc/nginx/amusementpark/edge.conf
+docker exec "${container_name}" nginx -s reload -c /etc/nginx/amusementpark/edge.conf
+
+for _attempt in $(seq 1 20); do
+  headers="$(read_response_headers)"
+  if grep -qi 'X-AmusementPark-Test-Source:[[:space:]]*front' <<< "${headers}"; then
+    break
+  fi
+  sleep 1
+done
 body="$(docker exec "${container_name}" wget -qO- http://127.0.0.1:4000/sitemap.xml)"
 
 assert_header 'X-AmusementPark-Test-Source:[[:space:]]*front' 'SSR/API fallback source'
@@ -159,9 +170,19 @@ if [ "${body}" != 'front-fallback' ]; then
   exit 1
 fi
 
-if ! grep -Fq 'if ! compose exec -T edge nginx -t; then' "${deploy_script}" \
-  || ! grep -Fq 'if ! compose exec -T edge nginx -s reload; then' "${deploy_script}"; then
-  echo 'Deployments must validate and reload the bind-mounted Nginx edge configuration.' >&2
+if ! grep -Fq './nginx:/etc/nginx/amusementpark:ro' "${compose_file}"; then
+  echo 'The complete Nginx configuration directory must be bind-mounted so atomic file replacements remain visible.' >&2
+  exit 1
+fi
+
+if grep -Fq 'force-recreate edge' "${deploy_script}"; then
+  echo 'Routine deployments must not interrupt the sole Nginx edge service.' >&2
+  exit 1
+fi
+
+if ! grep -Fq 'if ! compose exec -T edge nginx -t -c /etc/nginx/amusementpark/edge.conf; then' "${deploy_script}" \
+  || ! grep -Fq 'if ! compose exec -T edge nginx -s reload -c /etc/nginx/amusementpark/edge.conf; then' "${deploy_script}"; then
+  echo 'Deployments must validate and gracefully reload the directory-mounted Nginx edge configuration.' >&2
   exit 1
 fi
 
@@ -173,7 +194,7 @@ if [ -z "${edge_healthy_line}" ] \
   || [ -z "${snapshot_check_line}" ] \
   || [ "${edge_reload_line}" -le "${edge_healthy_line}" ] \
   || [ "${edge_reload_line}" -ge "${snapshot_check_line}" ]; then
-  echo 'The Nginx edge must be healthy, then reloaded before the static sitemap validation.' >&2
+  echo 'The Nginx edge must be healthy, reload gracefully, then pass the static sitemap validation.' >&2
   exit 1
 fi
 

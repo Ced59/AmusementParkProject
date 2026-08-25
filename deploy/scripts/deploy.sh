@@ -115,14 +115,14 @@ compose_logs() {
 
 reload_edge_configuration() {
   echo "Validating the deployed Nginx edge configuration..."
-  if ! compose exec -T edge nginx -t; then
+  if ! compose exec -T edge nginx -t -c /etc/nginx/amusementpark/edge.conf; then
     echo "The deployed Nginx edge configuration is invalid." >&2
     compose_logs 120 edge >&2 || true
     return 1
   fi
 
   echo "Reloading the Nginx edge configuration..."
-  if ! compose exec -T edge nginx -s reload; then
+  if ! compose exec -T edge nginx -s reload -c /etc/nginx/amusementpark/edge.conf; then
     echo "The Nginx edge configuration could not be reloaded." >&2
     compose_logs 120 edge >&2 || true
     return 1
