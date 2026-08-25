@@ -113,6 +113,22 @@ compose_logs() {
   compose_with_timeout "${deploy_compose_log_timeout_seconds}" logs --tail="${tail_lines}" "${service_name}"
 }
 
+reload_edge_configuration() {
+  echo "Validating the deployed Nginx edge configuration..."
+  if ! compose exec -T edge nginx -t; then
+    echo "The deployed Nginx edge configuration is invalid." >&2
+    compose_logs 120 edge >&2 || true
+    return 1
+  fi
+
+  echo "Reloading the Nginx edge configuration..."
+  if ! compose exec -T edge nginx -s reload; then
+    echo "The Nginx edge configuration could not be reloaded." >&2
+    compose_logs 120 edge >&2 || true
+    return 1
+  fi
+}
+
 if ! command -v flock >/dev/null 2>&1; then
   echo "Missing required flock command; deployment locking cannot be enforced." >&2
   exit 1
@@ -361,6 +377,7 @@ wait_for_static_seo_snapshot() {
       "http://127.0.0.1:${public_http_port}/sitemap.xml" \
       -o "${response_body}" \
       && grep -qi '^X-AmusementPark-SEO-Source: static' "${response_headers}" \
+      && grep -Eqi '^Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' "${response_headers}" \
       && grep -qi '<sitemapindex' "${response_body}"; then
       child_url="$(grep -im1 -o '<loc>[^<]*</loc>' "${response_body}" | sed -e 's#<loc>##I' -e 's#</loc>##I')"
       child_path="/${child_url##*/}"
@@ -373,6 +390,7 @@ wait_for_static_seo_snapshot() {
           "http://127.0.0.1:${public_http_port}${child_path}" \
           -o "${response_body}" \
         && grep -qi '^X-AmusementPark-SEO-Source: static' "${response_headers}" \
+        && grep -Eqi '^Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' "${response_headers}" \
         && grep -qi '<urlset' "${response_body}" \
         && curl -fsS \
           -H "Host: ${public_domain}" \
@@ -470,6 +488,8 @@ fi
 wait_for_service_healthy api 180
 wait_for_service_healthy front 180
 wait_for_service_healthy edge 180
+reload_edge_configuration
+wait_for_service_healthy edge 60
 
 curl_with_retry \
   "Checking SSR frontend health on 127.0.0.1:${public_http_port}..." \

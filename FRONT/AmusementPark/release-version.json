@@ -1,6 +1,20 @@
 {
-  "version": "4.2.20",
+  "version": "4.2.21",
   "history": [
+    {
+      "version": "4.2.21",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "Les améliorations de lecture des sitemaps sont appliquées plus sûrement.",
+        "en": "Sitemap reading improvements are applied more reliably.",
+        "de": "Verbesserungen beim Lesen der Sitemaps werden zuverlässiger angewendet.",
+        "nl": "Verbeteringen voor het lezen van sitemaps worden betrouwbaarder toegepast.",
+        "it": "I miglioramenti alla lettura delle sitemap vengono applicati in modo più affidabile.",
+        "es": "Las mejoras de lectura de los sitemaps se aplican de forma más fiable.",
+        "pl": "Ulepszenia odczytu map witryny są stosowane bardziej niezawodnie.",
+        "pt": "As melhorias de leitura dos sitemaps são aplicadas de forma mais fiável."
+      }
+    },
     {
       "version": "4.2.20",
       "releasedAt": "2026-08-25",
