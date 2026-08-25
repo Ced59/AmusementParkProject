@@ -28,7 +28,7 @@
       "coverage": "Listed period",
       "coverageUnknown": "Unknown period",
       "timeZone": "Time zone",
-      "daysCount": "Listed days",
+      "daysCount": "Dates listed in the displayed month",
       "daysCountValue": "{{ count }} days",
       "calendarLabel": "Opening dates and hours for {{ name }}",
       "monthNavigationLabel": "Monthly navigation",
