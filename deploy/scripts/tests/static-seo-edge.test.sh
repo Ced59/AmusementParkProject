@@ -126,18 +126,18 @@ assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'ref
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
 
-cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}"
+cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}.next"
+mv -f "${live_static_policy}.next" "${live_static_policy}"
 docker exec "${container_name}" nginx -t
 docker exec "${container_name}" nginx -s reload
+sleep 1
 
-for _attempt in $(seq 1 20); do
-  headers="$(read_response_headers)"
-  if grep -Eqi 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' <<< "${headers}"; then
-    break
-  fi
-  sleep 1
-done
-assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'reloaded XML UTF-8 content type'
+headers="$(read_response_headers)"
+assert_header 'Content-Type:[[:space:]]*text/xml' 'stale bind-mounted content type after an atomic replacement and reload'
+
+start_edge true
+headers="$(read_response_headers)"
+assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'recreated XML UTF-8 content type'
 
 headers="$(read_response_headers /parks-fr.xml)"
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
@@ -159,21 +159,20 @@ if [ "${body}" != 'front-fallback' ]; then
   exit 1
 fi
 
-if ! grep -Fq 'if ! compose exec -T edge nginx -t; then' "${deploy_script}" \
-  || ! grep -Fq 'if ! compose exec -T edge nginx -s reload; then' "${deploy_script}"; then
-  echo 'Deployments must validate and reload the bind-mounted Nginx edge configuration.' >&2
+if ! grep -Fq 'up -d --no-deps --force-recreate edge' "${deploy_script}"; then
+  echo 'Deployments must recreate the edge service after atomically replacing bind-mounted configuration files.' >&2
   exit 1
 fi
 
+edge_recreate_line="$(grep -n '^recreate_edge_service$' "${deploy_script}" | cut -d: -f1)"
 edge_healthy_line="$(grep -n '^wait_for_service_healthy edge 180$' "${deploy_script}" | cut -d: -f1)"
-edge_reload_line="$(grep -n '^reload_edge_configuration$' "${deploy_script}" | cut -d: -f1)"
 snapshot_check_line="$(grep -n '^[[:space:]]*wait_for_static_seo_snapshot 60$' "${deploy_script}" | cut -d: -f1)"
-if [ -z "${edge_healthy_line}" ] \
-  || [ -z "${edge_reload_line}" ] \
+if [ -z "${edge_recreate_line}" ] \
+  || [ -z "${edge_healthy_line}" ] \
   || [ -z "${snapshot_check_line}" ] \
-  || [ "${edge_reload_line}" -le "${edge_healthy_line}" ] \
-  || [ "${edge_reload_line}" -ge "${snapshot_check_line}" ]; then
-  echo 'The Nginx edge must be healthy, then reloaded before the static sitemap validation.' >&2
+  || [ "${edge_recreate_line}" -ge "${edge_healthy_line}" ] \
+  || [ "${edge_healthy_line}" -ge "${snapshot_check_line}" ]; then
+  echo 'The Nginx edge must be recreated, become healthy, then pass the static sitemap validation.' >&2
   exit 1
 fi
 

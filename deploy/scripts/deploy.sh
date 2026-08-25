@@ -113,17 +113,10 @@ compose_logs() {
   compose_with_timeout "${deploy_compose_log_timeout_seconds}" logs --tail="${tail_lines}" "${service_name}"
 }
 
-reload_edge_configuration() {
-  echo "Validating the deployed Nginx edge configuration..."
-  if ! compose exec -T edge nginx -t; then
-    echo "The deployed Nginx edge configuration is invalid." >&2
-    compose_logs 120 edge >&2 || true
-    return 1
-  fi
-
-  echo "Reloading the Nginx edge configuration..."
-  if ! compose exec -T edge nginx -s reload; then
-    echo "The Nginx edge configuration could not be reloaded." >&2
+recreate_edge_service() {
+  echo "Recreating the Nginx edge service with the deployed bind-mounted configuration..."
+  if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --no-deps --force-recreate edge; then
+    echo "The Nginx edge service could not be recreated with the deployed configuration." >&2
     compose_logs 120 edge >&2 || true
     return 1
   fi
@@ -487,9 +480,8 @@ fi
 
 wait_for_service_healthy api 180
 wait_for_service_healthy front 180
+recreate_edge_service
 wait_for_service_healthy edge 180
-reload_edge_configuration
-wait_for_service_healthy edge 60
 
 curl_with_retry \
   "Checking SSR frontend health on 127.0.0.1:${public_http_port}..." \
