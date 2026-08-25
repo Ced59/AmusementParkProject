@@ -21,6 +21,10 @@ printf '%s\n' \
   '<?xml version="1.0" encoding="utf-8"?>' \
   '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></sitemapindex>' \
   > "${temp_dir}/seo/current/sitemap.xml"
+printf '%s\n' \
+  '<?xml version="1.0" encoding="utf-8"?>' \
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>' \
+  > "${temp_dir}/seo/current/parks-fr.xml"
 
 cat > "${temp_dir}/front.conf" <<'EOF'
 worker_processes 1;
@@ -68,10 +72,11 @@ start_edge() {
 }
 
 read_response_headers() {
+  local request_path="${1:-/sitemap.xml}"
   local response_headers=""
 
   for _attempt in $(seq 1 20); do
-    response_headers="$(docker exec "${container_name}" wget -S --spider http://127.0.0.1:4000/sitemap.xml 2>&1 || true)"
+    response_headers="$(docker exec "${container_name}" wget -S --spider "http://127.0.0.1:4000${request_path}" 2>&1 || true)"
     if grep -qi 'HTTP/1.1 200 OK' <<< "${response_headers}"; then
       printf '%s' "${response_headers}"
       return 0
@@ -99,12 +104,17 @@ assert_header() {
 }
 
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static source header'
+assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'XML UTF-8 content type'
 assert_header 'Cache-Control:[[:space:]]*public, max-age=600' 'public cache policy'
 assert_header 'X-Content-Type-Options:[[:space:]]*nosniff' 'content type protection'
 assert_header 'X-Frame-Options:[[:space:]]*DENY' 'frame protection'
 assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'referrer policy'
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
+
+headers="$(read_response_headers /parks-fr.xml)"
+assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
+assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
 
 start_edge false
 headers="$(read_response_headers)"
