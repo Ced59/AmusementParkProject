@@ -93,7 +93,7 @@ describe('ParkOpeningHoursPageComponent', () => {
           closed: 'Fermé',
           notDefined: 'Non renseigné',
           dayHasInformation: 'Information ajoutée',
-          daysCount: 'Dates renseignées ce mois',
+          daysCount: 'Dates renseignées pour le mois affiché',
           nextDaySuffix: 'lendemain',
           kicker: 'Horaires',
           unavailableTitle: 'Horaires indisponibles pour {{name}}',
@@ -247,7 +247,7 @@ describe('ParkOpeningHoursPageComponent', () => {
     );
     expect(sharePanel.textKey).toBe('shareSocial.openingHours.text');
     expect((fixture.nativeElement as HTMLElement).textContent).toContain(
-      'Dates renseignées ce mois',
+      'Dates renseignées pour le mois affiché',
     );
   });
 

@@ -28,7 +28,7 @@
       "coverage": "Podany okres",
       "coverageUnknown": "Nieznany okres",
       "timeZone": "Strefa czasowa",
-      "daysCount": "Daty podane w tym miesiącu",
+      "daysCount": "Daty podane w wyświetlanym miesiącu",
       "daysCountValue": "{{ count }} dni",
       "calendarLabel": "Daty i godziny otwarcia {{ name }}",
       "monthNavigationLabel": "Nawigacja po miesiącach",

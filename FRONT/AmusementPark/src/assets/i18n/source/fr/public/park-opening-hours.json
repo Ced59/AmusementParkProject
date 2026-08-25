@@ -28,7 +28,7 @@
       "coverage": "Période renseignée",
       "coverageUnknown": "Période inconnue",
       "timeZone": "Fuseau horaire",
-      "daysCount": "Dates renseignées ce mois",
+      "daysCount": "Dates renseignées pour le mois affiché",
       "daysCountValue": "{{ count }} jours",
       "calendarLabel": "Dates et horaires de {{ name }}",
       "monthNavigationLabel": "Navigation par mois",

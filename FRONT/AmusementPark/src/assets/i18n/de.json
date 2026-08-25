@@ -3520,7 +3520,7 @@
       "coverage": "Erfasster Zeitraum",
       "coverageUnknown": "Unbekannter Zeitraum",
       "timeZone": "Zeitzone",
-      "daysCount": "Erfasste Kalendertage in diesem Monat",
+      "daysCount": "Erfasste Kalendertage im angezeigten Monat",
       "daysCountValue": "{{ count }} Tage",
       "calendarLabel": "Daten und Öffnungszeiten für {{ name }}",
       "monthNavigationLabel": "Monatsnavigation",

@@ -3520,7 +3520,7 @@
       "coverage": "Vermelde periode",
       "coverageUnknown": "Onbekende periode",
       "timeZone": "Tijdzone",
-      "daysCount": "Vermelde datums deze maand",
+      "daysCount": "Vermelde datums in de getoonde maand",
       "daysCountValue": "{{ count }} dagen",
       "calendarLabel": "Data en openingstijden van {{ name }}",
       "monthNavigationLabel": "Navigatie per maand",
