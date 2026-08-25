@@ -8,6 +8,14 @@ temp_dir="$(mktemp -d)"
 container_name="amusementpark-static-seo-edge-test-${RANDOM}-$$"
 front_container_name="${container_name}-front"
 network_name="${container_name}-network"
+live_static_policy="${temp_dir}/seo-static-true.conf"
+
+sed \
+  -e '/^[[:space:]]*types {$/,/^[[:space:]]*}$/d' \
+  -e '/^[[:space:]]*charset utf-8;$/d' \
+  -e '/^[[:space:]]*charset_types application\/xml;$/d' \
+  "${deploy_directory}/nginx/seo-static-true.conf" \
+  > "${live_static_policy}"
 
 cleanup() {
   docker rm -f "${container_name}" >/dev/null 2>&1 || true
@@ -57,6 +65,11 @@ docker run -d \
 
 start_edge() {
   local snapshot_policy="$1"
+  local routing_configuration="${deploy_directory}/nginx/seo-static-${snapshot_policy}.conf"
+
+  if [ "${snapshot_policy}" = 'true' ]; then
+    routing_configuration="${live_static_policy}"
+  fi
 
   docker rm -f "${container_name}" >/dev/null 2>&1 || true
   docker run -d \
@@ -67,7 +80,7 @@ start_edge() {
     --tmpfs /var/run \
     --tmpfs /tmp \
     -v "${deploy_directory}/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
-    -v "${deploy_directory}/nginx/seo-static-${snapshot_policy}.conf:/etc/nginx/seo-static-routing.conf:ro" \
+    -v "${routing_configuration}:/etc/nginx/seo-static-routing.conf:ro" \
     -v "${temp_dir}/seo:/srv/seo:ro" \
     nginx:1.29-alpine >/dev/null
 }
@@ -105,13 +118,26 @@ assert_header() {
 }
 
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static source header'
-assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'XML UTF-8 content type'
+assert_header 'Content-Type:[[:space:]]*text/xml' 'initial legacy XML content type'
 assert_header 'Cache-Control:[[:space:]]*public, max-age=600' 'public cache policy'
 assert_header 'X-Content-Type-Options:[[:space:]]*nosniff' 'content type protection'
 assert_header 'X-Frame-Options:[[:space:]]*DENY' 'frame protection'
 assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'referrer policy'
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
+
+cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}"
+docker exec "${container_name}" nginx -t
+docker exec "${container_name}" nginx -s reload
+
+for _attempt in $(seq 1 20); do
+  headers="$(read_response_headers)"
+  if grep -Eqi 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' <<< "${headers}"; then
+    break
+  fi
+  sleep 1
+done
+assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'reloaded XML UTF-8 content type'
 
 headers="$(read_response_headers /parks-fr.xml)"
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
