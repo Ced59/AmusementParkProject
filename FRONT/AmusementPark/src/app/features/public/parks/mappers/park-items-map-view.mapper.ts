@@ -2,6 +2,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkItemMarkerDetailTranslationKeys } from '@shared/utils/display/park-item-presentation.helpers';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -73,9 +74,10 @@ function mapParkItemToMarker(
   const details: string[] = [
     zoneName ? `${zoneName}` : ''
   ].filter((value: string) => value.trim().length > 0);
-  const detailTranslationKeys: string[] = normalizeOptionalString(item.type)
-    ? [getParkItemTypeTranslationKey(item.type)]
-    : [];
+  const detailTranslationKeys: string[] = getParkItemMarkerDetailTranslationKeys(
+    item.type,
+    item.attractionDetails?.status
+  );
 
   return {
     id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,

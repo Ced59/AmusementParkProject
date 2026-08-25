@@ -50,6 +50,24 @@ export function getAttractionStatusValueKey(status: string | null | undefined): 
   return segment ? `parkItems.statuses.${segment}` : null;
 }
 
+export function getParkItemMarkerDetailTranslationKeys(
+  type: ParkItemType | string | null | undefined,
+  status: string | null | undefined
+): string[] {
+  const translationKeys: string[] = [];
+  const statusTranslationKey: string | null = getAttractionStatusValueKey(status);
+
+  if (statusTranslationKey && statusTranslationKey !== 'parkItems.statuses.operating') {
+    translationKeys.push(statusTranslationKey);
+  }
+
+  if (type?.trim()) {
+    translationKeys.push(getParkItemTypeTranslationKey(type));
+  }
+
+  return translationKeys;
+}
+
 export function resolveParkItemDescription(item: ParkItem | null | undefined, currentLang: string): string | null {
   const localizedDescription: string | undefined = resolveLocalizedValue(item?.descriptions, currentLang);
   const plainText: string = stripHtml(localizedDescription);

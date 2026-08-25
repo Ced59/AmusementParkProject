@@ -4,6 +4,7 @@ import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explore
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkItemMarkerDetailTranslationKeys } from '@shared/utils/display/park-item-presentation.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
@@ -94,9 +95,10 @@ function mapDisplayedItemsToMapViewModel(
     .map((item: ParkItem) => {
       const zoneName: string | null = resolveZoneNameById(item.zoneId ?? null, zones, currentLanguage);
       const details: string[] = [zoneName].filter((value: string | null | undefined): value is string => !!value && value.trim().length > 0);
-      const detailTranslationKeys: string[] = normalizeOptionalString(item.type)
-        ? [getParkItemTypeTranslationKey(item.type)]
-        : [];
+      const detailTranslationKeys: string[] = getParkItemMarkerDetailTranslationKeys(
+        item.type,
+        item.attractionDetails?.status
+      );
 
       return {
         id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,
