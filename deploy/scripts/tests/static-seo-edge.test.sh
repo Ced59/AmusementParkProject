@@ -39,6 +39,10 @@ printf '%s\n' \
   '<?xml version="1.0" encoding="utf-8"?>' \
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>' \
   > "${temp_dir}/seo/current/parks-fr.xml"
+printf '%s\n' \
+  'User-agent: *' \
+  'Disallow:' \
+  > "${temp_dir}/seo/current/robots.txt"
 
 cat > "${temp_dir}/front.conf" <<'EOF'
 worker_processes 1;
@@ -137,7 +141,15 @@ assert_header 'X-Content-Type-Options:[[:space:]]*nosniff' 'content type protect
 assert_header 'X-Frame-Options:[[:space:]]*DENY' 'frame protection'
 assert_header 'Referrer-Policy:[[:space:]]*strict-origin-when-cross-origin' 'referrer policy'
 assert_header 'Permissions-Policy:[[:space:]]*camera=\(\), microphone=\(\), geolocation=\(self\)' 'permissions policy'
-assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'content security policy'
+assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'XML viewer-compatible content security policy'
+
+headers="$(read_response /robots.txt)"
+assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'strict non-XML content security policy'
+if grep -qi "style-src 'unsafe-inline'" <<< "${headers}"; then
+  echo 'Inline styles must only be permitted on XML responses rendered by the browser XML viewer.' >&2
+  printf '%s\n' "${headers}" >&2
+  exit 1
+fi
 
 cp "${deploy_directory}/nginx/seo-static-true.conf" "${live_static_policy}.next"
 mv -f "${live_static_policy}.next" "${live_static_policy}"
@@ -156,6 +168,7 @@ assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-
 headers="$(read_response /parks-fr.xml)"
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
+assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'child sitemap XML viewer-compatible content security policy'
 
 cp "${deploy_directory}/nginx/seo-static-false.conf" "${live_static_policy}.next"
 mv -f "${live_static_policy}.next" "${live_static_policy}"

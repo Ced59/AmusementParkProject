@@ -1,6 +1,20 @@
 {
-  "version": "4.2.24",
+  "version": "4.2.25",
   "history": [
+    {
+      "version": "4.2.25",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "L’affichage des sitemaps est plus lisible dans les navigateurs.",
+        "en": "Sitemaps are easier to read in browsers.",
+        "de": "Sitemaps sind in Browsern leichter lesbar.",
+        "nl": "Sitemaps zijn beter leesbaar in browsers.",
+        "it": "Le sitemap sono più leggibili nei browser.",
+        "es": "Los sitemaps son más fáciles de leer en los navegadores.",
+        "pl": "Mapy witryny są czytelniejsze w przeglądarkach.",
+        "pt": "Os sitemaps são mais fáceis de ler nos navegadores."
+      }
+    },
     {
       "version": "4.2.24",
       "releasedAt": "2026-08-25",
