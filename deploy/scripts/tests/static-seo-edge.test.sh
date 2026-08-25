@@ -85,26 +85,39 @@ start_edge() {
     >/dev/null
 }
 
-read_response_headers() {
+read_response() {
   local request_path="${1:-/sitemap.xml}"
-  local response_headers=""
+  local response=""
 
   for _attempt in $(seq 1 20); do
-    response_headers="$(docker exec "${container_name}" wget -S --spider "http://127.0.0.1:4000${request_path}" 2>&1 || true)"
-    if grep -qi 'HTTP/1.1 200 OK' <<< "${response_headers}"; then
-      printf '%s' "${response_headers}"
+    response="$(docker exec "${container_name}" /bin/sh -ec '
+      request_path="$1"
+      headers_file=/tmp/static-seo-test-headers
+      body_file=/tmp/static-seo-test-body
+
+      if ! wget -S -O "${body_file}" "http://127.0.0.1:4000${request_path}" 2> "${headers_file}"; then
+        cat "${headers_file}" >&2
+        exit 1
+      fi
+
+      cat "${headers_file}"
+      printf "\n---BODY---\n"
+      cat "${body_file}"
+    ' sh "${request_path}" 2>&1 || true)"
+    if grep -qi 'HTTP/1.1 200 OK' <<< "${response}"; then
+      printf '%s' "${response}"
       return 0
     fi
     sleep 1
   done
 
-  printf '%s\n' "${response_headers}" >&2
+  printf '%s\n' "${response}" >&2
   return 1
 }
 
 start_edge true
 
-headers="$(read_response_headers)"
+headers="$(read_response)"
 
 assert_header() {
   local expected_pattern="$1"
@@ -132,7 +145,7 @@ docker exec "${container_name}" nginx -t -c /etc/nginx/amusementpark/edge.conf
 docker exec "${container_name}" nginx -s reload -c /etc/nginx/amusementpark/edge.conf
 
 for _attempt in $(seq 1 20); do
-  headers="$(read_response_headers)"
+  headers="$(read_response)"
   if grep -Eqi 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' <<< "${headers}"; then
     break
   fi
@@ -140,7 +153,7 @@ for _attempt in $(seq 1 20); do
 done
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'atomically refreshed XML UTF-8 content type'
 
-headers="$(read_response_headers /parks-fr.xml)"
+headers="$(read_response /parks-fr.xml)"
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
 
@@ -150,13 +163,14 @@ docker exec "${container_name}" nginx -t -c /etc/nginx/amusementpark/edge.conf
 docker exec "${container_name}" nginx -s reload -c /etc/nginx/amusementpark/edge.conf
 
 for _attempt in $(seq 1 20); do
-  headers="$(read_response_headers)"
-  if grep -qi 'X-AmusementPark-Test-Source:[[:space:]]*front' <<< "${headers}"; then
+  headers="$(read_response)"
+  body="${headers#*$'\n---BODY---\n'}"
+  if grep -qi 'X-AmusementPark-Test-Source:[[:space:]]*front' <<< "${headers}" \
+    && [ "${body}" = 'front-fallback' ]; then
     break
   fi
   sleep 1
 done
-body="$(docker exec "${container_name}" wget -qO- http://127.0.0.1:4000/sitemap.xml)"
 
 assert_header 'X-AmusementPark-Test-Source:[[:space:]]*front' 'SSR/API fallback source'
 if grep -qi 'X-AmusementPark-SEO-Source:[[:space:]]*static' <<< "${headers}"; then
