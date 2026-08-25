@@ -149,9 +149,10 @@ jobs:
           bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
           for static_snapshot_policy in true false; do
             docker run --rm \
-              -v "${PWD}/deploy/nginx/edge.conf:/etc/nginx/nginx.conf:ro" \
-              -v "${PWD}/deploy/nginx/seo-static-${static_snapshot_policy}.conf:/etc/nginx/seo-static-routing.conf:ro" \
-              nginx:1.29-alpine nginx -t
+              --tmpfs /tmp \
+              -v "${PWD}/deploy/nginx:/etc/nginx/amusementpark:ro" \
+              nginx:1.29-alpine \
+              /bin/sh -ec "ln -sf /etc/nginx/amusementpark/seo-static-${static_snapshot_policy}.conf /tmp/seo-static-routing.conf && nginx -t -c /etc/nginx/amusementpark/edge.conf"
           done
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh

@@ -98,6 +98,14 @@ services:
     image: nginx:1.29-alpine
     container_name: amusementpark-edge
     restart: unless-stopped
+    environment:
+      SEO_STATIC_POLICY_SOURCE: /etc/nginx/amusementpark/seo-static-${SSR_SEO_STATIC_SNAPSHOT_ENABLED:-true}.conf
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        ln -sf "$${SEO_STATIC_POLICY_SOURCE}" /tmp/seo-static-routing.conf
+        exec nginx -c /etc/nginx/amusementpark/edge.conf -g 'daemon off;'
     ports:
       - "127.0.0.1:${PUBLIC_HTTP_PORT:-18080}:4000"
     expose:
@@ -124,8 +132,7 @@ services:
       - no-new-privileges:true
     read_only: true
     volumes:
-      - ./nginx/edge.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/seo-static-${SSR_SEO_STATIC_SNAPSHOT_ENABLED:-true}.conf:/etc/nginx/seo-static-routing.conf:ro
+      - ./nginx:/etc/nginx/amusementpark:ro
       - seo_static_documents:/srv/seo:ro
     tmpfs:
       - /var/cache/nginx
