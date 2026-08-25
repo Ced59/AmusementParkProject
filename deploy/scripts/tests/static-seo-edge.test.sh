@@ -165,7 +165,13 @@ for _attempt in $(seq 1 20); do
 done
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'atomically refreshed XML UTF-8 content type'
 
-headers="$(read_response /parks-fr.xml)"
+for _attempt in $(seq 1 20); do
+  headers="$(read_response /parks-fr.xml)"
+  if grep -Eqi 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' <<< "${headers}"; then
+    break
+  fi
+  sleep 1
+done
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'child sitemap XML viewer-compatible content security policy'

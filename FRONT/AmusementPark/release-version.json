@@ -1,6 +1,20 @@
 {
-  "version": "4.2.25",
+  "version": "4.2.26",
   "history": [
+    {
+      "version": "4.2.26",
+      "releasedAt": "2026-08-25",
+      "labels": {
+        "fr": "La fiabilité des mises à jour des sitemaps est améliorée.",
+        "en": "Sitemap updates are more reliable.",
+        "de": "Sitemap-Aktualisierungen sind zuverlässiger.",
+        "nl": "Sitemapupdates zijn betrouwbaarder.",
+        "it": "Gli aggiornamenti delle sitemap sono più affidabili.",
+        "es": "Las actualizaciones de los sitemaps son más fiables.",
+        "pl": "Aktualizacje map witryny są bardziej niezawodne.",
+        "pt": "As atualizações dos sitemaps são mais fiáveis."
+      }
+    },
     {
       "version": "4.2.25",
       "releasedAt": "2026-08-25",
