@@ -1,6 +1,20 @@
 {
-  "version": "4.2.28",
+  "version": "4.2.29",
   "history": [
+    {
+      "version": "4.2.29",
+      "releasedAt": "2026-08-27",
+      "labels": {
+        "fr": "Les prochaines évolutions des classements et du passeport de visites sont planifiées.",
+        "en": "Upcoming ranking and visit passport improvements are now planned.",
+        "de": "Die nächsten Verbesserungen an Ranglisten und Besuchspass sind jetzt geplant.",
+        "nl": "De volgende verbeteringen aan ranglijsten en het bezoekpaspoort zijn nu gepland.",
+        "it": "I prossimi miglioramenti alle classifiche e al passaporto delle visite sono ora pianificati.",
+        "es": "Las próximas mejoras de las clasificaciones y del pasaporte de visitas ya están planificadas.",
+        "pl": "Zaplanowano kolejne ulepszenia rankingów i paszportu wizyt.",
+        "pt": "As próximas melhorias das classificações e do passaporte de visitas estão agora planeadas."
+      }
+    },
     {
       "version": "4.2.28",
       "releasedAt": "2026-08-25",
