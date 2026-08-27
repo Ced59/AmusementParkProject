@@ -1,0 +1,87 @@
+name: Temporary documentation release bump
+
+on:
+  push:
+    branches:
+      - docs/web-product-growth-roadmaps
+    paths:
+      - .github/workflows/docs-release-bump-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  bump-release-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs/web-product-growth-roadmaps
+          fetch-depth: 0
+
+      - name: Add release entry
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+
+          path = Path("FRONT/AmusementPark/release-version.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+
+          expected_previous = "4.2.28"
+          next_version = "4.2.29"
+          released_at = "2026-08-27"
+          labels = {
+              "fr": "Les prochaines évolutions des classements et du passeport de visites sont planifiées.",
+              "en": "Upcoming ranking and visit passport improvements are now planned.",
+              "de": "Die nächsten Verbesserungen an Ranglisten und Besuchspass sind jetzt geplant.",
+              "nl": "De volgende verbeteringen aan ranglijsten en het bezoekpaspoort zijn nu gepland.",
+              "it": "I prossimi miglioramenti alle classifiche e al passaporto delle visite sono ora pianificati.",
+              "es": "Las próximas mejoras de las clasificaciones y del pasaporte de visitas ya están planificadas.",
+              "pl": "Zaplanowano kolejne ulepszenia rankingów i paszportu wizyt.",
+              "pt": "As próximas melhorias das classificações e do passaporte de visitas estão agora planeadas."
+          }
+
+          if data.get("version") not in {expected_previous, next_version}:
+              raise SystemExit(
+                  f"Unexpected release version {data.get('version')!r}; expected "
+                  f"{expected_previous!r} or {next_version!r}."
+              )
+
+          history = data.setdefault("history", [])
+          existing = next(
+              (entry for entry in history if entry.get("version") == next_version),
+              None
+          )
+
+          entry = {
+              "version": next_version,
+              "releasedAt": released_at,
+              "labels": labels
+          }
+
+          if existing is None:
+              history.insert(0, entry)
+          else:
+              existing.clear()
+              existing.update(entry)
+
+          data["version"] = next_version
+          path.write_text(
+              json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+      - name: Commit release entry
+        shell: bash
+        run: |
+          if git diff --quiet -- FRONT/AmusementPark/release-version.json; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add FRONT/AmusementPark/release-version.json
+          git commit -m "chore: bump release version to 4.2.29"
+          git push origin HEAD:docs/web-product-growth-roadmaps
