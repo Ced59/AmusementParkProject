@@ -6,6 +6,17 @@
 >
 > Périmètre : préparation Web avant la visite. Aucun chat généraliste, aucune position partagée, aucune réservation intégrée et aucune optimisation live de journée dans cette roadmap.
 
+## 0. Avenant technique FOUNDATION
+
+- `TripPlanId`, invitation et participant restent des chaînes opaques aux frontières ;
+- la version optimiste du plan protège chaque opération fine ;
+- les listes ordonnées utilisent `SortPosition: long` avec positions espacées et renormalisation locale, pas un index contigu réécrit à chaque déplacement ;
+- une invitation acceptée est idempotente et son token est consommé atomiquement ;
+- le rafraîchissement des faits officiels et les notifications sont différés par jobs bornés ;
+- une indisponibilité du worker n’empêche pas l’édition du plan, mais signale les faits potentiellement anciens ;
+- SignalR, CRDT et broker ne sont pas des prérequis ;
+- un passage à une collaboration temps réel nécessiterait un ADR séparé et des mesures d’usage.
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :

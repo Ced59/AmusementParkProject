@@ -8,6 +8,61 @@
 >
 > Décision centrale : une note de visite ou de ride est une **observation personnelle temporelle**. Elle n’ajoute jamais automatiquement un vote supplémentaire au classement communautaire.
 
+## 0. Avenant technique FOUNDATION
+
+Les décisions suivantes sont figées avant les premières PR persistantes de cette roadmap. Elles prévalent sur les exemples illustratifs plus bas lorsqu’ils utilisent directement `Guid`, placent le fuseau dans `VisitDate` ou proposent des collections séparées pour les assessments actifs.
+
+### 0.1 Identifiants
+
+- les documents Mongo et DTO continuent d’utiliser des chaînes opaques ;
+- le Core peut utiliser `VisitId`, `RideOccurrenceId` et autres value objects autour d’une chaîne normalisée ;
+- aucune migration générale des IDs existants vers `Guid` ;
+- Angular ne déduit jamais le format d’un identifiant.
+
+### 0.2 Note exacte
+
+- `RatingValue` représente de 1 à 10 demi-points ;
+- les nouvelles notes temporelles persistent `valueHalfSteps` ;
+- l’API peut continuer d’exposer `0.5`, `1.0`, ..., `5.0` ;
+- la note globale historique en `double` est convertie par mapper validé ;
+- aucune coexistence durable de règles `double` et `decimal` dans le domaine.
+
+### 0.3 Définition d’une visite
+
+Une visite est une session déclarée par un utilisateur dans un seul parc. Lorsqu’un jour est connu, elle est rattachée à un jour de service local. Deux parcs le même jour sont deux visites ; deux jours consécutifs dans le même parc sont deux visites ; plusieurs visites du même parc le même jour restent autorisées.
+
+Le fuseau IANA appartient à `Visit`, pas à `VisitDate`. Une heure de ride exige une date précise au jour et un fuseau. Une ancienne visite connue seulement à l’année ou au mois ne reçoit jamais une heure ou une date UTC inventée.
+
+### 0.4 Assessments actifs embarqués
+
+Première version :
+
+```text
+Visit.parkAssessment
+RideOccurrence.assessment
+```
+
+Les sous-documents contiennent valeur, commentaire privé facultatif, révision et timestamps. La création, modification ou suppression de l’assessment est atomique avec la version du parent sur MongoDB autonome.
+
+L’audit append-only reste séparé. Les anciennes propositions `user-visit-park-assessments` et `user-ride-assessments` doivent être lues comme une option de séparation future conditionnée par une mesure, pas comme le stockage V1.
+
+### 0.5 Ordre des rides
+
+`RideOccurrence` utilise `SortPosition: long` avec un pas initial de 1024. L’affichage calcule le numéro après tri. Une insertion utilise l’espace entre deux positions ; lorsque cet espace est épuisé, les occurrences de la seule visite concernée sont renormalisées par bulk write borné et version optimiste.
+
+### 0.6 Travaux différés
+
+- création et modification courantes restent synchrones et atomiques ;
+- exports, purges, statistiques matérialisées éventuelles et réparations utilisent les jobs Mongo à lease ;
+- la source porte une révision monotone ;
+- un reconciler recrée un job manquant ;
+- aucun broker externe n’est introduit pour le premier socle ;
+- les statistiques sont calculées à la demande avant toute matérialisation.
+
+### 0.7 Gate préalable
+
+`PASS-02` ne commence qu’après validation des décisions IDs, `RatingValue`, `VisitDate`, fuseau, documents, assessments embarqués, ordre et idempotence décrites dans les roadmaps FOUNDATION.
+
 ## 1. Vision produit
 
 Le Passeport doit permettre à une personne de reconstruire et poursuivre son histoire de visite :
@@ -552,14 +607,15 @@ Si une visite similaire existe :
 
 ## 9.1 Collections proposées
 
-- `user-visits` ;
-- `user-ride-occurrences` ;
-- `user-visit-park-assessments` ;
-- `user-ride-assessments` ;
+- `user-visits`, avec `parkAssessment` actif embarqué ;
+- `user-ride-occurrences`, avec `assessment` actif embarqué ;
 - `user-visit-audit-events` ou intégration à l’audit existant ;
+- `durable-background-jobs` pour exports, purges et recalculs réellement différés ;
 - `user-passport-stat-snapshots` seulement après besoin mesuré.
 
-Séparer les occurrences évite qu’une visite très riche dépasse une taille de document raisonnable et facilite les requêtes temporelles par cible.
+Séparer les occurrences évite qu’une visite très riche dépasse une taille de document raisonnable et facilite les requêtes temporelles par cible. Les assessments actifs un-à-un restent embarqués dans leur parent afin d’éviter les écritures multi-documents et les orphelins sur MongoDB autonome. Une séparation future suit expand/contract et exige un besoin mesuré.
+
+<!-- FOUNDATION: embedded-active-assessments -->
 
 ## 9.2 Indexes `user-visits`
 

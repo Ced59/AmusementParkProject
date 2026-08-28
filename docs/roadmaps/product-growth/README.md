@@ -87,10 +87,37 @@ Le moteur de choix d’un parc est d’abord déterministe et fondé sur des rè
 
 Un temps d’attente, un statut ou une prévision n’est pas publié sans source durable, date de collecte, TTL, état de fraîcheur, attribution et mécanisme de repli. `0`, `fermé`, `inconnu` et `donnée périmée` restent quatre états différents.
 
+## 3.8 Fondations techniques transverses
+
+Deux roadmaps techniques précèdent désormais les tranches fonctionnelles :
+
+- [`00-technical-foundations-and-architecture-decisions-roadmap.md`](00-technical-foundations-and-architecture-decisions-roadmap.md) fixe les représentations et invariants d’architecture ;
+- [`00a-technical-foundations-delivery-migration-and-validation-roadmap.md`](00a-technical-foundations-delivery-migration-and-validation-roadmap.md) fixe l’ordre des PR, migrations, tests, budgets, réparateurs et rollbacks.
+
+Elles rendent explicites les décisions qui étaient seulement illustrées dans les premiers documents :
+
+- les identifiants restent des chaînes persistées et exposées, avec des value objects typés dans le nouveau domaine ;
+- la valeur de note est représentée exactement par un nombre de demi-points ;
+- une visite correspond à une session dans un parc et à un jour de service local lorsqu’il est connu ;
+- les notes temporelles actives sont embarquées dans leur parent pour rester atomiques sur MongoDB autonome ;
+- l’ordre des rides repose sur une position entière espacée ;
+- les snapshots de classement sont limités à des scopes canoniques ;
+- les travaux différés utilisent un worker .NET borné, des leases Mongo, des révisions source et des réparateurs, sans broker externe initial.
+
+### Précédence
+
+Lorsque les exemples antérieurs utilisent directement `Guid`, `decimal`, une collection séparée d’assessments, une séquence contiguë ou une outbox supposée transactionnelle, les roadmaps FOUNDATION indiquent la représentation retenue pour l’implémentation. Les invariants métier des documents spécialisés restent inchangés.
+
+### Gate ajoutée
+
+La gate `FOUNDATION-G` est requise avant toute généralisation de persistance `PASS` et avant l’activation des snapshots canoniques `RANK`. L’éligibilité et l’affichage honnête des classements peuvent toutefois être livrés avant le moteur complet de snapshots.
+
 ## 4. Roadmaps spécialisées
 
 | Ordre | Document | Résultat attendu | Gate principale |
 |---:|---|---|---|
+| 0 | [`00-technical-foundations-and-architecture-decisions-roadmap.md`](00-technical-foundations-and-architecture-decisions-roadmap.md) | Conventions compatibles, exactes et proportionnées | ADR techniques figés sans migration globale inutile |
+| 0A | [`00a-technical-foundations-delivery-migration-and-validation-roadmap.md`](00a-technical-foundations-delivery-migration-and-validation-roadmap.md) | PR, migrations, jobs, tests et rollbacks exécutables | `FOUNDATION-DELIVERY-G` |
 | 1 | [`01-ranking-trust-and-methodology-roadmap.md`](01-ranking-trust-and-methodology-roadmap.md) | Classements honnêtes, seuils, preuve et méthode publique | Aucun rang faible n’est présenté comme établi |
 | 2 | [`02-visit-passport-and-ride-log-roadmap.md`](02-visit-passport-and-ride-log-roadmap.md) | Passeport, visites, occurrences de ride, notes temporelles et statistiques | Aucune perte, aucun doublage de poids communautaire |
 | 3 | [`03-shareable-recaps-and-comparisons-roadmap.md`](03-shareable-recaps-and-comparisons-roadmap.md) | Récapitulatifs de visite, bilans et comparaisons révocables | Le partage produit de la valeur sans exposer de données privées |
