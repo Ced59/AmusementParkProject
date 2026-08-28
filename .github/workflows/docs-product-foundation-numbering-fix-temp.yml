@@ -1,0 +1,146 @@
+name: Temporary product foundation numbering fix
+
+on:
+  push:
+    branches:
+      - docs/product-growth-foundation-numbering-fix
+    paths:
+      - .github/workflows/docs-product-foundation-numbering-fix-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix-foundation-numbering:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out documentation branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs/product-growth-foundation-numbering-fix
+          fetch-depth: 0
+
+      - name: Align dependency map with detailed PR sequence
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+
+          roadmap_path = Path("docs/roadmaps/product-growth/00a-technical-foundations-delivery-migration-and-validation-roadmap.md")
+          text = roadmap_path.read_text(encoding="utf-8")
+
+          old = '''```text
+          FOUNDATION-01  Inventaire et ADR effectifs
+              ├── FOUNDATION-02  RatingValue
+              │       └── RANK-02+ et PASS-09+
+              ├── FOUNDATION-03  IDs typés compatibles
+              │       └── PASS, SHARE, WATCH, TRIP
+              ├── FOUNDATION-04  Temps local / VisitDate
+              │       └── PASS-02+
+              ├── FOUNDATION-05  Jobs durables minimaux
+              │       ├── RANK snapshots
+              │       ├── PASS exports/recalculs
+              │       └── WATCH digests
+              ├── FOUNDATION-06  Registre des scopes
+              │       └── RANK snapshots
+              └── FOUNDATION-07  Conventions Mongo assessments/ordre
+                      └── PASS occurrences et notes temporelles
+
+          RANK evidence peut commencer après FOUNDATION-01/02.
+          PASS persistence attend FOUNDATION-03/04/07.
+          Les jobs critiques attendent FOUNDATION-05.
+          ```'''.replace("          ", "")
+
+          new = '''```text
+          FOUNDATION-01  Inventaires et ADR effectifs
+              ├── FOUNDATION-02  RatingValue et compatibilité mathématique
+              │       └── RANK-02+ et PASS-09+
+              ├── FOUNDATION-03  IDs typés compatibles
+              │       └── PASS, SHARE, WATCH, TRIP
+              ├── FOUNDATION-04  VisitDate et jour de service
+              │       └── FOUNDATION-05  Fuseaux et heures locales
+              ├── FOUNDATION-06  Documents et indexes Visit/Ride
+              │       ├── FOUNDATION-07  Assessments actifs embarqués
+              │       └── FOUNDATION-08  SortPosition et renormalisation
+              ├── FOUNDATION-09  Repository de jobs Mongo
+              │       └── FOUNDATION-10  Worker .NET borné
+              │               └── FOUNDATION-11  Réconciliateurs
+              └── FOUNDATION-12  Registre des scopes canoniques
+                      └── FOUNDATION-13  Snapshots header/chunks/pointer
+                              └── FOUNDATION-14  Diagnostics et runbooks
+                                      └── FOUNDATION-15  Clôture et retrait de dette temporaire
+
+          RANK evidence peut commencer après FOUNDATION-01/02.
+          PASS persistence attend FOUNDATION-03/04/05/06/07/08.
+          Les jobs critiques attendent FOUNDATION-09/10 ; leur réparation attend FOUNDATION-11.
+          Les snapshots canoniques attendent FOUNDATION-09/10/12 et sont livrés en FOUNDATION-13.
+          ```'''.replace("          ", "")
+
+          marker = "<!-- FOUNDATION-DELIVERY: numbering-aligned -->"
+          if marker not in text:
+              if old not in text:
+                  raise SystemExit("The expected dependency map was not found.")
+              text = text.replace(old, new + "\n\n" + marker, 1)
+              roadmap_path.write_text(text, encoding="utf-8")
+
+          release_path = Path("FRONT/AmusementPark/release-version.json")
+          release = json.loads(release_path.read_text(encoding="utf-8"))
+          previous = "4.2.30"
+          next_version = "4.2.31"
+          if release.get("version") not in {previous, next_version}:
+              raise SystemExit(
+                  f"Unexpected release version {release.get('version')!r}; expected {previous!r} or {next_version!r}."
+              )
+
+          labels = {
+              "fr": "L’ordre technique des prochaines évolutions est clarifié.",
+              "en": "The technical order of upcoming improvements is clearer.",
+              "de": "Die technische Reihenfolge der nächsten Verbesserungen ist klarer.",
+              "nl": "De technische volgorde van de komende verbeteringen is verduidelijkt.",
+              "it": "L’ordine tecnico dei prossimi miglioramenti è stato chiarito.",
+              "es": "Se ha aclarado el orden técnico de las próximas mejoras.",
+              "pl": "Doprecyzowano techniczną kolejność kolejnych ulepszeń.",
+              "pt": "A ordem técnica das próximas melhorias foi clarificada."
+          }
+          entry = {
+              "version": next_version,
+              "releasedAt": "2026-08-28",
+              "labels": labels
+          }
+          history = release.setdefault("history", [])
+          existing = next((item for item in history if item.get("version") == next_version), None)
+          if existing is None:
+              history.insert(0, entry)
+          else:
+              existing.clear()
+              existing.update(entry)
+          release["version"] = next_version
+          release_path.write_text(
+              json.dumps(release, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+      - name: Validate numbering consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          file=docs/roadmaps/product-growth/00a-technical-foundations-delivery-migration-and-validation-roadmap.md
+          grep -q "FOUNDATION-05  Fuseaux et heures locales" "$file"
+          grep -q "FOUNDATION-09  Repository de jobs Mongo" "$file"
+          grep -q "FOUNDATION-12  Registre des scopes canoniques" "$file"
+          grep -q "FOUNDATION-15  Clôture" "$file"
+          grep -q '"version": "4.2.31"' FRONT/AmusementPark/release-version.json
+          git diff --check
+
+      - name: Commit numbering correction
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/roadmaps/product-growth/00a-technical-foundations-delivery-migration-and-validation-roadmap.md FRONT/AmusementPark/release-version.json
+          git commit -m "docs: aligner la carte de dépendances FOUNDATION"
+          git push origin HEAD:docs/product-growth-foundation-numbering-fix
