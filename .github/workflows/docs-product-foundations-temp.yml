@@ -1,0 +1,405 @@
+name: Temporary product foundations roadmap update
+
+on:
+  push:
+    branches:
+      - docs/product-growth-technical-foundations
+    paths:
+      - .github/workflows/docs-product-foundations-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-roadmaps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out documentation branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs/product-growth-technical-foundations
+          fetch-depth: 0
+
+      - name: Apply technical foundation amendments
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          import textwrap
+
+          ROOT = Path("docs/roadmaps/product-growth")
+
+          def insert_before(path: Path, marker: str, heading: str, block: str) -> None:
+              text = path.read_text(encoding="utf-8")
+              if heading in text:
+                  return
+              if marker not in text:
+                  raise SystemExit(f"Marker not found in {path}: {marker}")
+              normalized = textwrap.dedent(block).strip() + "\n\n"
+              path.write_text(text.replace(marker, normalized + marker, 1), encoding="utf-8")
+
+          def replace_once(path: Path, old: str, new: str, sentinel: str) -> None:
+              text = path.read_text(encoding="utf-8")
+              if sentinel in text:
+                  return
+              if old not in text:
+                  raise SystemExit(f"Replacement source not found in {path}: {old[:80]!r}")
+              path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          readme = ROOT / "README.md"
+          insert_before(
+              readme,
+              "## 4. Roadmaps spécialisées",
+              "## 3.8 Fondations techniques transverses",
+              r'''
+              ## 3.8 Fondations techniques transverses
+
+              Deux roadmaps techniques précèdent désormais les tranches fonctionnelles :
+
+              - [`00-technical-foundations-and-architecture-decisions-roadmap.md`](00-technical-foundations-and-architecture-decisions-roadmap.md) fixe les représentations et invariants d’architecture ;
+              - [`00a-technical-foundations-delivery-migration-and-validation-roadmap.md`](00a-technical-foundations-delivery-migration-and-validation-roadmap.md) fixe l’ordre des PR, migrations, tests, budgets, réparateurs et rollbacks.
+
+              Elles rendent explicites les décisions qui étaient seulement illustrées dans les premiers documents :
+
+              - les identifiants restent des chaînes persistées et exposées, avec des value objects typés dans le nouveau domaine ;
+              - la valeur de note est représentée exactement par un nombre de demi-points ;
+              - une visite correspond à une session dans un parc et à un jour de service local lorsqu’il est connu ;
+              - les notes temporelles actives sont embarquées dans leur parent pour rester atomiques sur MongoDB autonome ;
+              - l’ordre des rides repose sur une position entière espacée ;
+              - les snapshots de classement sont limités à des scopes canoniques ;
+              - les travaux différés utilisent un worker .NET borné, des leases Mongo, des révisions source et des réparateurs, sans broker externe initial.
+
+              ### Précédence
+
+              Lorsque les exemples antérieurs utilisent directement `Guid`, `decimal`, une collection séparée d’assessments, une séquence contiguë ou une outbox supposée transactionnelle, les roadmaps FOUNDATION indiquent la représentation retenue pour l’implémentation. Les invariants métier des documents spécialisés restent inchangés.
+
+              ### Gate ajoutée
+
+              La gate `FOUNDATION-G` est requise avant toute généralisation de persistance `PASS` et avant l’activation des snapshots canoniques `RANK`. L’éligibilité et l’affichage honnête des classements peuvent toutefois être livrés avant le moteur complet de snapshots.
+              ''')
+
+          table_old = """| Ordre | Document | Résultat attendu | Gate principale |\n|---:|---|---|---|\n| 1 | [`01-ranking-trust-and-methodology-roadmap.md`](01-ranking-trust-and-methodology-roadmap.md)"""
+          table_new = """| Ordre | Document | Résultat attendu | Gate principale |\n|---:|---|---|---|\n| 0 | [`00-technical-foundations-and-architecture-decisions-roadmap.md`](00-technical-foundations-and-architecture-decisions-roadmap.md) | Conventions compatibles, exactes et proportionnées | ADR techniques figés sans migration globale inutile |\n| 0A | [`00a-technical-foundations-delivery-migration-and-validation-roadmap.md`](00a-technical-foundations-delivery-migration-and-validation-roadmap.md) | PR, migrations, jobs, tests et rollbacks exécutables | `FOUNDATION-DELIVERY-G` |\n| 1 | [`01-ranking-trust-and-methodology-roadmap.md`](01-ranking-trust-and-methodology-roadmap.md)"""
+          replace_once(readme, table_old, table_new, "| 0A | [`00a-technical-foundations")
+
+          rank = ROOT / "01-ranking-trust-and-methodology-roadmap.md"
+          insert_before(
+              rank,
+              "## 1. Problème à résoudre",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              Cette roadmap dépend désormais de la gate [`FOUNDATION-G`](00-technical-foundations-and-architecture-decisions-roadmap.md#15-gate-foundation-g) pour ses primitives, mais l’affichage honnête des seuils ne doit pas attendre la totalité de l’infrastructure de snapshots.
+
+              ### Décisions applicables
+
+              1. **Valeur exacte.** Les notes sont manipulées dans le Core via `RatingValue`, fondé sur 1 à 10 demi-points. Le champ `double` historique reste lisible par mapping compatible pendant expand/contract.
+              2. **Éligibilité avant snapshot.** Les premières PR calculent `RankingEvidence` depuis les agrégats actuels et retirent les rangs insuffisants. Un snapshot n’est pas un prérequis pour cesser d’afficher une affirmation trompeuse.
+              3. **Scopes canoniques uniquement.** Les snapshots durables sont réservés aux classements explicitement publiés : parcs globaux, catégories publiques d’éléments et quelques scopes territoriaux ayant franchi leur gate. Aucune combinaison arbitraire de query string n’est matérialisée.
+              4. **Publication atomique.** Lorsqu’ils sont introduits, les snapshots utilisent un header, des chunks bornés et un pointeur courant atomique. Un build incomplet ne peut pas devenir public.
+              5. **Reconstruction coalescée.** Une mutation augmente une révision source et demande un job `ratings.rebuild-scope`. Plusieurs mutations rapprochées mettent à jour la révision demandée du même job au lieu d’empiler des reconstructions.
+              6. **Budget VPS.** Un seul rebuild lourd est exécuté simultanément. Une révision devenue obsolète peut interrompre proprement un build avant publication.
+              7. **Rollback éditorial sûr.** En cas d’échec, le site conserve le dernier snapshot validé ou masque le rang. Il ne revient jamais silencieusement à un classement sous-échantillonné.
+
+              ### Scopes initiaux
+
+              ```text
+              parks:global
+              park-items:category:{category}
+              park-items:type:{type}        seulement si route et volume validés
+              parks:country:{countryId}     seulement après gate de volume et utilité
+              ```
+
+              La langue, les filtres utilisateur et les combinaisons libres ne créent pas de snapshot. Les classements personnels restent une lecture des préférences courantes du propriétaire.
+
+              ### Ajustement du découpage RANK
+
+              - `RANK-02` à `RANK-04` peuvent livrer preuve, contrats et UI sans snapshot ;
+              - `RANK-05` devient l’introduction du registre de scopes et du format header/chunks/pointer ;
+              - `RANK-06` bascule uniquement les scopes canoniques derrière feature flag ;
+              - les filtres rares restent calculés à la demande, triés sans rang ou dérivés d’un scope canonique lorsque la sémantique le permet.
+              ''')
+
+          passport = ROOT / "02-visit-passport-and-ride-log-roadmap.md"
+          insert_before(
+              passport,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              Les décisions suivantes sont figées avant les premières PR persistantes de cette roadmap. Elles prévalent sur les exemples illustratifs plus bas lorsqu’ils utilisent directement `Guid`, placent le fuseau dans `VisitDate` ou proposent des collections séparées pour les assessments actifs.
+
+              ### 0.1 Identifiants
+
+              - les documents Mongo et DTO continuent d’utiliser des chaînes opaques ;
+              - le Core peut utiliser `VisitId`, `RideOccurrenceId` et autres value objects autour d’une chaîne normalisée ;
+              - aucune migration générale des IDs existants vers `Guid` ;
+              - Angular ne déduit jamais le format d’un identifiant.
+
+              ### 0.2 Note exacte
+
+              - `RatingValue` représente de 1 à 10 demi-points ;
+              - les nouvelles notes temporelles persistent `valueHalfSteps` ;
+              - l’API peut continuer d’exposer `0.5`, `1.0`, ..., `5.0` ;
+              - la note globale historique en `double` est convertie par mapper validé ;
+              - aucune coexistence durable de règles `double` et `decimal` dans le domaine.
+
+              ### 0.3 Définition d’une visite
+
+              Une visite est une session déclarée par un utilisateur dans un seul parc. Lorsqu’un jour est connu, elle est rattachée à un jour de service local. Deux parcs le même jour sont deux visites ; deux jours consécutifs dans le même parc sont deux visites ; plusieurs visites du même parc le même jour restent autorisées.
+
+              Le fuseau IANA appartient à `Visit`, pas à `VisitDate`. Une heure de ride exige une date précise au jour et un fuseau. Une ancienne visite connue seulement à l’année ou au mois ne reçoit jamais une heure ou une date UTC inventée.
+
+              ### 0.4 Assessments actifs embarqués
+
+              Première version :
+
+              ```text
+              Visit.parkAssessment
+              RideOccurrence.assessment
+              ```
+
+              Les sous-documents contiennent valeur, commentaire privé facultatif, révision et timestamps. La création, modification ou suppression de l’assessment est atomique avec la version du parent sur MongoDB autonome.
+
+              L’audit append-only reste séparé. Les anciennes propositions `user-visit-park-assessments` et `user-ride-assessments` doivent être lues comme une option de séparation future conditionnée par une mesure, pas comme le stockage V1.
+
+              ### 0.5 Ordre des rides
+
+              `RideOccurrence` utilise `SortPosition: long` avec un pas initial de 1024. L’affichage calcule le numéro après tri. Une insertion utilise l’espace entre deux positions ; lorsque cet espace est épuisé, les occurrences de la seule visite concernée sont renormalisées par bulk write borné et version optimiste.
+
+              ### 0.6 Travaux différés
+
+              - création et modification courantes restent synchrones et atomiques ;
+              - exports, purges, statistiques matérialisées éventuelles et réparations utilisent les jobs Mongo à lease ;
+              - la source porte une révision monotone ;
+              - un reconciler recrée un job manquant ;
+              - aucun broker externe n’est introduit pour le premier socle ;
+              - les statistiques sont calculées à la demande avant toute matérialisation.
+
+              ### 0.7 Gate préalable
+
+              `PASS-02` ne commence qu’après validation des décisions IDs, `RatingValue`, `VisitDate`, fuseau, documents, assessments embarqués, ordre et idempotence décrites dans les roadmaps FOUNDATION.
+              ''')
+
+          collections_old = """- `user-visits` ;\n- `user-ride-occurrences` ;\n- `user-visit-park-assessments` ;\n- `user-ride-assessments` ;\n- `user-visit-audit-events` ou intégration à l’audit existant ;\n- `user-passport-stat-snapshots` seulement après besoin mesuré.\n\nSéparer les occurrences évite qu’une visite très riche dépasse une taille de document raisonnable et facilite les requêtes temporelles par cible."""
+          collections_new = """- `user-visits`, avec `parkAssessment` actif embarqué ;\n- `user-ride-occurrences`, avec `assessment` actif embarqué ;\n- `user-visit-audit-events` ou intégration à l’audit existant ;\n- `durable-background-jobs` pour exports, purges et recalculs réellement différés ;\n- `user-passport-stat-snapshots` seulement après besoin mesuré.\n\nSéparer les occurrences évite qu’une visite très riche dépasse une taille de document raisonnable et facilite les requêtes temporelles par cible. Les assessments actifs un-à-un restent embarqués dans leur parent afin d’éviter les écritures multi-documents et les orphelins sur MongoDB autonome. Une séparation future suit expand/contract et exige un besoin mesuré.\n\n<!-- FOUNDATION: embedded-active-assessments -->"""
+          replace_once(passport, collections_old, collections_new, "FOUNDATION: embedded-active-assessments")
+
+          share = ROOT / "03-shareable-recaps-and-comparisons-roadmap.md"
+          insert_before(
+              share,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              - les identifiants de publication restent des chaînes opaques et non dérivables ;
+              - `SharePublicationId` peut être un value object autour d’une chaîne sans modifier les routes ;
+              - le snapshot hybride conserve `SourceVersion`, `PublicationVersion` et la politique exacte utilisée ;
+              - une révocation est une écriture synchrone et atomique qui coupe immédiatement la résolution ;
+              - l’invalidation d’Open Graph, de cache et des rendus dérivés est un job coalescé par publication ;
+              - si le job manque, un reconciler compare source et publication ;
+              - aucun commentaire privé n’est copié dans le payload du job ;
+              - le cache public est versionné par publication et non seulement par URL.
+
+              Une indisponibilité du worker ne doit jamais empêcher une révocation. Le comportement sûr est de refuser ou suspendre le partage jusqu’à cohérence, pas de continuer à servir un snapshot dont la politique est incertaine.
+              ''')
+
+          fit = ROOT / "04-park-fit-recommendation-and-comparison-roadmap.md"
+          insert_before(
+              fit,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              Les profils, recherches sauvegardées et résultats utilisent des identifiants chaîne opaques, éventuellement typés dans le Core. Les premiers calculs sont synchrones, déterministes et bornés sur le portefeuille de parcs éligibles. Aucun snapshot par combinaison libre de critères n’est créé.
+
+              Une projection ou un job de pré-calcul n’est ajouté qu’après mesure d’un p95 insuffisant malgré les indexes et la réduction du portefeuille. Les données inconnues restent `Unknown` pendant tout cache ou calcul différé ; une projection ne peut pas transformer une absence en compatibilité.
+              ''')
+
+          watch = ROOT / "05-favorites-watchlists-and-factual-alerts-roadmap.md"
+          insert_before(
+              watch,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              La distribution des alertes réutilise le worker durable défini par FOUNDATION :
+
+              - le changement factuel validé est l’état source ;
+              - il porte une révision et une clé de déduplication ;
+              - l’application tente d’enregistrer un job après la mutation ;
+              - un reconciler recrée toute distribution manquante à partir de la révision source ;
+              - les jobs digest sont coalescés par utilisateur, canal et période ;
+              - les envois exacts utilisent une idempotency key ;
+              - les retries sont bornés et une dead-letter est visible en administration ;
+              - le centre Web peut être alimenté avant l’e-mail ;
+              - aucun broker externe n’est nécessaire dans la première version.
+
+              Une correction ou rétractation est un nouvel état factuel versionné. Elle ne modifie pas silencieusement le texte d’un e-mail déjà envoyé ; elle crée une notification de correction lorsque l’impact le justifie.
+              ''')
+
+          trip = ROOT / "06-collaborative-trip-planning-roadmap.md"
+          insert_before(
+              trip,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              - `TripPlanId`, invitation et participant restent des chaînes opaques aux frontières ;
+              - la version optimiste du plan protège chaque opération fine ;
+              - les listes ordonnées utilisent `SortPosition: long` avec positions espacées et renormalisation locale, pas un index contigu réécrit à chaque déplacement ;
+              - une invitation acceptée est idempotente et son token est consommé atomiquement ;
+              - le rafraîchissement des faits officiels et les notifications sont différés par jobs bornés ;
+              - une indisponibilité du worker n’empêche pas l’édition du plan, mais signale les faits potentiellement anciens ;
+              - SignalR, CRDT et broker ne sont pas des prérequis ;
+              - un passage à une collaboration temps réel nécessiterait un ADR séparé et des mesures d’usage.
+              ''')
+
+          history = ROOT / "07-park-history-explorer-roadmap.md"
+          insert_before(
+              history,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              Les références historiques conservent les identifiants chaîne des entités actuelles et peuvent utiliser des wrappers typés sans migration. `HistoricalDate` et `VisitDate` partagent les principes de précision et d’incertitude, mais restent deux types distincts : une visite est une occurrence personnelle, un fait historique peut être une période, une borne ouverte ou une qualification `Before/After/Circa`.
+
+              Les snapshots historiques sont d’abord calculés à la demande avec cache borné. Ils ne deviennent des projections durables que pour des dates ou pages réellement consultées, avec méthodologie et révision source. Les jobs de génération utilisent le worker FOUNDATION ; aucune année arbitraire ne crée automatiquement un document persistant ou une URL indexable.
+              ''')
+
+          live = ROOT / "08-live-wait-times-and-crowd-intelligence-roadmap.md"
+          insert_before(
+              live,
+              "## 1. Vision produit",
+              "## 0. Avenant technique FOUNDATION",
+              r'''
+              ## 0. Avenant technique FOUNDATION
+
+              `LIVE` peut réutiliser les primitives de lease, retry, dead-letter et réconciliation de FOUNDATION, mais possède un budget de concurrence distinct. L’ingestion externe ne doit jamais affamer les jobs de classement, d’export, de purge ou de notification.
+
+              - natural key par source et fenêtre de collecte ;
+              - un seul poll actif par source ;
+              - payload brut hors job lorsqu’il est volumineux ;
+              - mapping et provenance référencés par identifiant/version ;
+              - lease plus courte que l’intervalle de polling, renouvelable ;
+              - kill switch par source ;
+              - backlog et CPU surveillés ;
+              - aucun passage automatique au replica set ou à un broker sans ADR et besoin démontré.
+              ''')
+
+          quality = ROOT / "09-product-quality-privacy-and-rollout-roadmap.md"
+          insert_before(
+              quality,
+              "## 1. Objectifs",
+              "## 0. Gate technique FOUNDATION",
+              r'''
+              ## 0. Gate technique FOUNDATION
+
+              La définition de terminé inclut désormais les deux roadmaps FOUNDATION. Avant une généralisation :
+
+              - compatibilité des IDs démontrée ;
+              - `RatingValue` testé sur les dix valeurs et les données historiques ;
+              - dates partielles et fuseaux validés ;
+              - source de vérité active atomique ;
+              - idempotence et concurrence testées ;
+              - ordre des éléments stable ;
+              - jobs à lease, retry borné et reconciler pour toute réaction critique ;
+              - scopes canoniques pour les snapshots ;
+              - calcul à la demande mesuré avant matérialisation ;
+              - rollback ne supprimant ni visite ni publication privée ;
+              - dette temporaire et feature flags avec date de retrait.
+
+              ### Contrôles CI ajoutés au programme
+
+              - tests de mapping des identifiants ;
+              - fixtures indépendantes `RatingValue` ;
+              - tests Mongo standalone des écritures conditionnelles ;
+              - vérification des indexes par nom et définition ;
+              - tests de lease, crash et replay ;
+              - test qu’un snapshot incomplet ne peut pas devenir courant ;
+              - test qu’un filtre arbitraire ne crée pas de scope persistant ;
+              - tests de renormalisation d’ordre ;
+              - OpenAPI diff confirmant que les IDs restent des chaînes ;
+              - absence de données privées dans jobs, logs, SSR et caches publics.
+
+              ### Métriques d’exploitation ajoutées
+
+              - backlog et âge du plus vieux job ;
+              - leases expirés ;
+              - dead-letters ;
+              - retard de révision des snapshots ;
+              - retard des statistiques ;
+              - conflits optimistes ;
+              - replays idempotents ;
+              - renormalisations ;
+              - anomalies de conversion de notes ;
+              - CPU des jobs lourds.
+              ''')
+
+          release_path = Path("FRONT/AmusementPark/release-version.json")
+          release = json.loads(release_path.read_text(encoding="utf-8"))
+          previous = "4.2.29"
+          next_version = "4.2.30"
+          if release.get("version") not in {previous, next_version}:
+              raise SystemExit(
+                  f"Unexpected release version {release.get('version')!r}; expected {previous!r} or {next_version!r}."
+              )
+
+          labels = {
+              "fr": "Les fondations techniques des classements et du passeport sont précisées.",
+              "en": "The technical foundations for rankings and the visit passport are clarified.",
+              "de": "Die technischen Grundlagen für Ranglisten und den Besuchspass sind präzisiert.",
+              "nl": "De technische basis voor ranglijsten en het bezoekpaspoort is verduidelijkt.",
+              "it": "Le basi tecniche delle classifiche e del passaporto delle visite sono state precisate.",
+              "es": "Se han precisado las bases técnicas de las clasificaciones y del pasaporte de visitas.",
+              "pl": "Doprecyzowano podstawy techniczne rankingów i paszportu wizyt.",
+              "pt": "As bases técnicas das classificações e do passaporte de visitas foram clarificadas."
+          }
+          entry = {
+              "version": next_version,
+              "releasedAt": "2026-08-28",
+              "labels": labels
+          }
+          history = release.setdefault("history", [])
+          existing = next((item for item in history if item.get("version") == next_version), None)
+          if existing is None:
+              history.insert(0, entry)
+          else:
+              existing.clear()
+              existing.update(entry)
+          release["version"] = next_version
+          release_path.write_text(
+              json.dumps(release, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+      - name: Validate generated documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f docs/roadmaps/product-growth/00-technical-foundations-and-architecture-decisions-roadmap.md
+          test -f docs/roadmaps/product-growth/00a-technical-foundations-delivery-migration-and-validation-roadmap.md
+          grep -q "FOUNDATION-ADR-07" docs/roadmaps/product-growth/00-technical-foundations-and-architecture-decisions-roadmap.md
+          grep -q "FOUNDATION: embedded-active-assessments" docs/roadmaps/product-growth/02-visit-passport-and-ride-log-roadmap.md
+          grep -q '"version": "4.2.30"' FRONT/AmusementPark/release-version.json
+          git diff --check
+
+      - name: Commit generated roadmap amendments
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/roadmaps/product-growth FRONT/AmusementPark/release-version.json
+          git commit -m "docs: intégrer les décisions techniques aux roadmaps produit"
+          git push origin HEAD:docs/product-growth-technical-foundations
