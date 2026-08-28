@@ -2,7 +2,7 @@
 
 > Statut : roadmap directrice prête à être arbitrée et découpée en PR d’implémentation.
 >
-> Base technique auditée : `master` au commit `943f6f9c07548b91582cbe853cf17bb14cbeb0df`, le 27 août 2026.
+> Base fonctionnelle initialement auditée : `master` au commit `943f6f9c07548b91582cbe853cf17bb14cbeb0df`, le 27 août 2026. Les fondations techniques ont ensuite été réévaluées sur `master` au commit `8742d6e657ef6c1c64f6e360e29fe2aa2ae6b019`, le 28 août 2026.
 >
 > Périmètre : site Web responsive Angular SSR et API .NET. L’application native, le mode visite hors ligne, la géolocalisation de fond, les widgets et les fonctions propres aux stores restent hors périmètre.
 >

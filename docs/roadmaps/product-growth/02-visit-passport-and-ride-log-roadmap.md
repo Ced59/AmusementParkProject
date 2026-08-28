@@ -2,7 +2,7 @@
 
 > Code programme : `PASS`
 >
-> Dépendance bloquante : gate `RANK-G` de la roadmap 01.
+> Dépendances bloquantes : gate `FOUNDATION-G` des roadmaps 00/00A, puis gate `RANK-G` de la roadmap 01.
 >
 > Périmètre : Web responsive uniquement. Les contrats sont conçus pour rester réutilisables par un futur client mobile, mais aucun fonctionnement hors ligne, GPS, push ou application native n’est engagé ici.
 >

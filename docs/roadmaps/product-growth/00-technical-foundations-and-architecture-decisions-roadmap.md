@@ -199,7 +199,7 @@ Le mapping Application/WebAPI convertit depuis les types métier. Le front Angul
 
 ## 5.1 Problème
 
-L’échelle autorise exactement vingt? Non : dix valeurs, de `0,5` à `5,0`, par pas de `0,5`. Une représentation métier en `double` nécessite une tolérance flottante. Une nouvelle représentation en `decimal` pour les notes temporelles créerait deux vérités techniques pour la même notion.
+L’échelle autorise exactement dix valeurs, de `0,5` à `5,0`, par pas de `0,5`. Une représentation métier en `double` nécessite une tolérance flottante. Une nouvelle représentation en `decimal` pour les notes temporelles créerait deux vérités techniques pour la même notion.
 
 Le domaine doit exprimer l’ensemble fini réellement autorisé, pas seulement un nombre à virgule validé après coup.
 
