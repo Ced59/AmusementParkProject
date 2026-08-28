@@ -6,6 +6,22 @@
 >
 > Principe : une alerte décrit un changement vérifiable, sa source, sa date et ses limites. Elle ne crée ni urgence artificielle ni contenu sensationnaliste.
 
+## 0. Avenant technique FOUNDATION
+
+La distribution des alertes réutilise le worker durable défini par FOUNDATION :
+
+- le changement factuel validé est l’état source ;
+- il porte une révision et une clé de déduplication ;
+- l’application tente d’enregistrer un job après la mutation ;
+- un reconciler recrée toute distribution manquante à partir de la révision source ;
+- les jobs digest sont coalescés par utilisateur, canal et période ;
+- les envois exacts utilisent une idempotency key ;
+- les retries sont bornés et une dead-letter est visible en administration ;
+- le centre Web peut être alimenté avant l’e-mail ;
+- aucun broker externe n’est nécessaire dans la première version.
+
+Une correction ou rétractation est un nouvel état factuel versionné. Elle ne modifie pas silencieusement le texte d’un e-mail déjà envoyé ; elle crée une notification de correction lorsque l’impact le justifie.
+
 ## 1. Vision produit
 
 Un simple cœur « favori » ne suffit pas à créer une raison de revenir. Le produit distingue quatre intentions :

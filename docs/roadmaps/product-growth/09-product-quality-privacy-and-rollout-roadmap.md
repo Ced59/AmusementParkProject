@@ -6,6 +6,48 @@
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
+## 0. Gate technique FOUNDATION
+
+La définition de terminé inclut désormais les deux roadmaps FOUNDATION. Avant une généralisation :
+
+- compatibilité des IDs démontrée ;
+- `RatingValue` testé sur les dix valeurs et les données historiques ;
+- dates partielles et fuseaux validés ;
+- source de vérité active atomique ;
+- idempotence et concurrence testées ;
+- ordre des éléments stable ;
+- jobs à lease, retry borné et reconciler pour toute réaction critique ;
+- scopes canoniques pour les snapshots ;
+- calcul à la demande mesuré avant matérialisation ;
+- rollback ne supprimant ni visite ni publication privée ;
+- dette temporaire et feature flags avec date de retrait.
+
+### Contrôles CI ajoutés au programme
+
+- tests de mapping des identifiants ;
+- fixtures indépendantes `RatingValue` ;
+- tests Mongo standalone des écritures conditionnelles ;
+- vérification des indexes par nom et définition ;
+- tests de lease, crash et replay ;
+- test qu’un snapshot incomplet ne peut pas devenir courant ;
+- test qu’un filtre arbitraire ne crée pas de scope persistant ;
+- tests de renormalisation d’ordre ;
+- OpenAPI diff confirmant que les IDs restent des chaînes ;
+- absence de données privées dans jobs, logs, SSR et caches publics.
+
+### Métriques d’exploitation ajoutées
+
+- backlog et âge du plus vieux job ;
+- leases expirés ;
+- dead-letters ;
+- retard de révision des snapshots ;
+- retard des statistiques ;
+- conflits optimistes ;
+- replays idempotents ;
+- renormalisations ;
+- anomalies de conversion de notes ;
+- CPU des jobs lourds.
+
 ## 1. Objectifs
 
 - Définir une mesure produit minimale et cohérente.

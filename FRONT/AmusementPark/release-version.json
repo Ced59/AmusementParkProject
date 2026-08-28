@@ -1,6 +1,20 @@
 {
-  "version": "4.2.29",
+  "version": "4.2.30",
   "history": [
+    {
+      "version": "4.2.30",
+      "releasedAt": "2026-08-28",
+      "labels": {
+        "fr": "Les fondations techniques des classements et du passeport sont précisées.",
+        "en": "The technical foundations for rankings and the visit passport are clarified.",
+        "de": "Die technischen Grundlagen für Ranglisten und den Besuchspass sind präzisiert.",
+        "nl": "De technische basis voor ranglijsten en het bezoekpaspoort is verduidelijkt.",
+        "it": "Le basi tecniche delle classifiche e del passaporto delle visite sono state precisate.",
+        "es": "Se han precisado las bases técnicas de las clasificaciones y del pasaporte de visitas.",
+        "pl": "Doprecyzowano podstawy techniczne rankingów i paszportu wizyt.",
+        "pt": "As bases técnicas das classificações e do passaporte de visitas foram clarificadas."
+      }
+    },
     {
       "version": "4.2.29",
       "releasedAt": "2026-08-27",

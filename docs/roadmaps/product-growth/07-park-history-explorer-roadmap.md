@@ -6,6 +6,12 @@
 >
 > Principe : l’interface rend visibles les faits, les périodes, les sources et les incertitudes. Elle ne déduit pas une continuité, un remplacement ou une localisation historique lorsqu’ils ne sont pas documentés.
 
+## 0. Avenant technique FOUNDATION
+
+Les références historiques conservent les identifiants chaîne des entités actuelles et peuvent utiliser des wrappers typés sans migration. `HistoricalDate` et `VisitDate` partagent les principes de précision et d’incertitude, mais restent deux types distincts : une visite est une occurrence personnelle, un fait historique peut être une période, une borne ouverte ou une qualification `Before/After/Circa`.
+
+Les snapshots historiques sont d’abord calculés à la demande avec cache borné. Ils ne deviennent des projections durables que pour des dates ou pages réellement consultées, avec méthodologie et révision source. Les jobs de génération utilisent le worker FOUNDATION ; aucune année arbitraire ne crée automatiquement un document persistant ou une URL indexable.
+
 ## 1. Vision produit
 
 Amusement Parks Fun possède un actif difficile à reproduire : des histoires contextualisées, des dates, des changements de noms, des exploitants, des constructeurs, des ouvertures, fermetures et relations entre entités.

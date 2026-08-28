@@ -6,6 +6,12 @@
 >
 > Périmètre : moteur déterministe Web. Aucune recommandation opaque générée par IA, aucune géolocalisation obligatoire et aucune promesse de compatibilité lorsque les données manquent.
 
+## 0. Avenant technique FOUNDATION
+
+Les profils, recherches sauvegardées et résultats utilisent des identifiants chaîne opaques, éventuellement typés dans le Core. Les premiers calculs sont synchrones, déterministes et bornés sur le portefeuille de parcs éligibles. Aucun snapshot par combinaison libre de critères n’est créé.
+
+Une projection ou un job de pré-calcul n’est ajouté qu’après mesure d’un p95 insuffisant malgré les indexes et la réduction du portefeuille. Les données inconnues restent `Unknown` pendant tout cache ou calcul différé ; une projection ne peut pas transformer une absence en compatibilité.
+
 ## 1. Vision produit
 
 La recherche actuelle permet de retrouver une entité connue. Le nouveau moteur doit répondre à une question de décision :

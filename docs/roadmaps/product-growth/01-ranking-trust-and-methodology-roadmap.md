@@ -8,6 +8,38 @@
 >
 > Résultat attendu : le site ne présente plus un rang communautaire comme significatif lorsque le volume, la diversité ou la couverture sont insuffisants.
 
+## 0. Avenant technique FOUNDATION
+
+Cette roadmap dépend désormais de la gate [`FOUNDATION-G`](00-technical-foundations-and-architecture-decisions-roadmap.md#15-gate-foundation-g) pour ses primitives, mais l’affichage honnête des seuils ne doit pas attendre la totalité de l’infrastructure de snapshots.
+
+### Décisions applicables
+
+1. **Valeur exacte.** Les notes sont manipulées dans le Core via `RatingValue`, fondé sur 1 à 10 demi-points. Le champ `double` historique reste lisible par mapping compatible pendant expand/contract.
+2. **Éligibilité avant snapshot.** Les premières PR calculent `RankingEvidence` depuis les agrégats actuels et retirent les rangs insuffisants. Un snapshot n’est pas un prérequis pour cesser d’afficher une affirmation trompeuse.
+3. **Scopes canoniques uniquement.** Les snapshots durables sont réservés aux classements explicitement publiés : parcs globaux, catégories publiques d’éléments et quelques scopes territoriaux ayant franchi leur gate. Aucune combinaison arbitraire de query string n’est matérialisée.
+4. **Publication atomique.** Lorsqu’ils sont introduits, les snapshots utilisent un header, des chunks bornés et un pointeur courant atomique. Un build incomplet ne peut pas devenir public.
+5. **Reconstruction coalescée.** Une mutation augmente une révision source et demande un job `ratings.rebuild-scope`. Plusieurs mutations rapprochées mettent à jour la révision demandée du même job au lieu d’empiler des reconstructions.
+6. **Budget VPS.** Un seul rebuild lourd est exécuté simultanément. Une révision devenue obsolète peut interrompre proprement un build avant publication.
+7. **Rollback éditorial sûr.** En cas d’échec, le site conserve le dernier snapshot validé ou masque le rang. Il ne revient jamais silencieusement à un classement sous-échantillonné.
+
+### Scopes initiaux
+
+```text
+parks:global
+park-items:category:{category}
+park-items:type:{type}        seulement si route et volume validés
+parks:country:{countryId}     seulement après gate de volume et utilité
+```
+
+La langue, les filtres utilisateur et les combinaisons libres ne créent pas de snapshot. Les classements personnels restent une lecture des préférences courantes du propriétaire.
+
+### Ajustement du découpage RANK
+
+- `RANK-02` à `RANK-04` peuvent livrer preuve, contrats et UI sans snapshot ;
+- `RANK-05` devient l’introduction du registre de scopes et du format header/chunks/pointer ;
+- `RANK-06` bascule uniquement les scopes canoniques derrière feature flag ;
+- les filtres rares restent calculés à la demande, triés sans rang ou dérivés d’un scope canonique lorsque la sémantique le permet.
+
 ## 1. Problème à résoudre
 
 Le classement actuel peut attribuer un rang à une cible dès qu’un agrégat non vide existe. Le lissage bayésien réduit l’effet d’une note extrême, mais il ne transforme pas un ou deux contributeurs en échantillon représentatif.

@@ -8,6 +8,19 @@
 >
 > Principe : le partage transforme une histoire personnelle réelle en objet lisible. Il ne doit jamais publier une présence, une date exacte, une note privée ou une identité sans choix explicite.
 
+## 0. Avenant technique FOUNDATION
+
+- les identifiants de publication restent des chaînes opaques et non dérivables ;
+- `SharePublicationId` peut être un value object autour d’une chaîne sans modifier les routes ;
+- le snapshot hybride conserve `SourceVersion`, `PublicationVersion` et la politique exacte utilisée ;
+- une révocation est une écriture synchrone et atomique qui coupe immédiatement la résolution ;
+- l’invalidation d’Open Graph, de cache et des rendus dérivés est un job coalescé par publication ;
+- si le job manque, un reconciler compare source et publication ;
+- aucun commentaire privé n’est copié dans le payload du job ;
+- le cache public est versionné par publication et non seulement par URL.
+
+Une indisponibilité du worker ne doit jamais empêcher une révocation. Le comportement sûr est de refuser ou suspendre le partage jusqu’à cohérence, pas de continuer à servir un snapshot dont la politique est incertaine.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

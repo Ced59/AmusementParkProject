@@ -8,6 +8,19 @@
 >
 > Principe : une donnée live affiche toujours sa source, son âge et son état. Une prévision affiche une fourchette, une méthode et un niveau de confiance. L’absence de donnée n’est jamais transformée en zéro minute.
 
+## 0. Avenant technique FOUNDATION
+
+`LIVE` peut réutiliser les primitives de lease, retry, dead-letter et réconciliation de FOUNDATION, mais possède un budget de concurrence distinct. L’ingestion externe ne doit jamais affamer les jobs de classement, d’export, de purge ou de notification.
+
+- natural key par source et fenêtre de collecte ;
+- un seul poll actif par source ;
+- payload brut hors job lorsqu’il est volumineux ;
+- mapping et provenance référencés par identifiant/version ;
+- lease plus courte que l’intervalle de polling, renouvelable ;
+- kill switch par source ;
+- backlog et CPU surveillés ;
+- aucun passage automatique au replica set ou à un broker sans ADR et besoin démontré.
+
 ## 1. Vision produit
 
 À terme, le site peut aider avant et pendant une visite avec :
