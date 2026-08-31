@@ -1,6 +1,20 @@
 {
-  "version": "4.2.30",
+  "version": "4.2.31",
   "history": [
+    {
+      "version": "4.2.31",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "Les prochaines évolutions personnelles reposent sur des fondations plus fiables.",
+        "en": "Upcoming personal features now rely on more reliable foundations.",
+        "de": "Künftige persönliche Funktionen basieren jetzt auf zuverlässigeren Grundlagen.",
+        "nl": "Komende persoonlijke functies steunen nu op betrouwbaardere fundamenten.",
+        "it": "Le prossime funzionalità personali si basano ora su fondamenta più affidabili.",
+        "es": "Las próximas funciones personales se apoyan ahora en bases más fiables.",
+        "pl": "Nadchodzące funkcje osobiste opierają się teraz na solidniejszych podstawach.",
+        "pt": "As próximas funcionalidades pessoais assentam agora em bases mais fiáveis."
+      }
+    },
     {
       "version": "4.2.30",
       "releasedAt": "2026-08-28",
