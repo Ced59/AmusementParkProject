@@ -11,13 +11,16 @@ public static class RatingResultFactory
         RatingTargetType targetType,
         string targetId,
         RatingAggregate? aggregate,
-        bool targetCanReceiveVisitorRatings = true,
+        bool targetCanReceiveVisitorRatings,
         bool? aggregateIntegrityIsValid = null)
     {
         long ratingCount = aggregate?.RatingCount ?? 0;
         bool? resolvedAggregateIntegrity = aggregateIntegrityIsValid ?? aggregate?.IsCalculationCurrent;
         RankingEvidenceResult? evidence = aggregate is null
-            ? TryCreateSimpleEvidence(ratingCount, targetCanReceiveVisitorRatings)
+            ? TryCreateSimpleEvidence(
+                ratingCount,
+                targetCanReceiveVisitorRatings,
+                aggregateIntegrityIsValid: true)
             : resolvedAggregateIntegrity.HasValue
                 ? TryCreateSimpleEvidence(
                     ratingCount,
@@ -38,8 +41,8 @@ public static class RatingResultFactory
 
     public static RankingEvidenceResult? TryCreateSimpleEvidence(
         long ratingCount,
-        bool targetCanReceiveVisitorRatings = true,
-        bool aggregateIntegrityIsValid = true)
+        bool targetCanReceiveVisitorRatings,
+        bool aggregateIntegrityIsValid)
     {
         if (!TryConvertToDomainCount(ratingCount, out int boundedRatingCount))
         {

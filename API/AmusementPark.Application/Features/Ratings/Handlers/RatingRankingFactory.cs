@@ -140,6 +140,7 @@ internal static class RatingRankingFactory
                     Evidence = source.AggregateIntegrityIsValid.HasValue
                         ? RatingResultFactory.TryCreateSimpleEvidence(
                             source.RatingCount,
+                            targetCanReceiveVisitorRatings: true,
                             aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value)
                         : null,
                 };
@@ -267,6 +268,7 @@ internal static class RatingRankingFactory
 
             RankingEvidenceResult? itemEvidence = RatingResultFactory.TryCreateSimpleEvidence(
                 itemSource.RatingCount,
+                targetCanReceiveVisitorRatings: true,
                 aggregateIntegrityIsValid: itemSource.AggregateIntegrityIsValid.Value);
             if (itemEvidence is null)
             {

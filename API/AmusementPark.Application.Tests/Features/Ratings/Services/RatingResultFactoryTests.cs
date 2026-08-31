@@ -15,7 +15,8 @@ public sealed class RatingResultFactoryTests
         RatingSummaryResult result = RatingResultFactory.CreateSummary(
             RatingTargetType.Park,
             "park-1",
-            aggregate);
+            aggregate,
+            targetCanReceiveVisitorRatings: true);
 
         Assert.Equal(RankingEvidenceLevel.Excluded, result.Evidence?.Level);
         Assert.Equal(
@@ -31,7 +32,8 @@ public sealed class RatingResultFactoryTests
         RatingSummaryResult result = RatingResultFactory.CreateSummary(
             RatingTargetType.Park,
             "park-1",
-            aggregate);
+            aggregate,
+            targetCanReceiveVisitorRatings: true);
 
         Assert.Null(result.Evidence);
     }
@@ -44,7 +46,8 @@ public sealed class RatingResultFactoryTests
         RatingSummaryResult result = RatingResultFactory.CreateSummary(
             RatingTargetType.Park,
             "park-1",
-            aggregate);
+            aggregate,
+            targetCanReceiveVisitorRatings: true);
 
         Assert.Equal(RankingEvidenceLevel.Eligible, result.Evidence?.Level);
     }
