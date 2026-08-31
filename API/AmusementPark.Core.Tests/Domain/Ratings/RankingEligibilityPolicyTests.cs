@@ -330,6 +330,41 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
+    public void TryEvaluatePark_WhenInputViolatesDomainInvariants_ShouldReturnFalseWithoutEvidence()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 0,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        bool wasEvaluated = RankingEligibilityPolicy.Initial.TryEvaluatePark(
+            input,
+            out RankingEvidence? evidence);
+
+        Assert.False(wasEvaluated);
+        Assert.Null(evidence);
+    }
+
+    [Fact]
+    public void TryEvaluatePark_WhenInputIsValid_ShouldReturnTheDomainVerdict()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 10,
+            directContributorCount: 10,
+            itemContributorCount: 0,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        bool wasEvaluated = RankingEligibilityPolicy.Initial.TryEvaluatePark(
+            input,
+            out RankingEvidence? evidence);
+
+        Assert.True(wasEvaluated);
+        Assert.Equal(RankingEvidenceLevel.Eligible, evidence?.Level);
+        Assert.True(evidence?.IsEligibleForMainRanking);
+    }
+
+    [Fact]
     public void EvaluatePark_WhenObservationsCoverContributorsButNotEligibleItems_ShouldRejectInput()
     {
         ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(

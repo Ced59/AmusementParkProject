@@ -171,6 +171,31 @@ public sealed class RankingEligibilityPolicy
             null);
     }
 
+    public bool TryEvaluatePark(ParkRankingEvidenceInput? input, out RankingEvidence? evidence)
+    {
+        if (input is null)
+        {
+            evidence = null;
+            return false;
+        }
+
+        try
+        {
+            evidence = this.EvaluatePark(input);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            evidence = null;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            evidence = null;
+            return false;
+        }
+    }
+
     public ParkItemComponentEligibility EvaluateParkItemComponent(ParkRankingEvidenceInput input)
     {
         ArgumentNullException.ThrowIfNull(input);

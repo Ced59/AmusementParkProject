@@ -277,12 +277,6 @@ internal static class RatingRankingFactory
                 group.Count(item => itemEvidenceById.TryGetValue(item.TargetId, out RankingEvidenceResult? evidence)
                     && evidence.IsEligibleForMainRanking)))
             .ToList();
-        int publicItemCount = categoryCoverage.Sum(static category => category.PublicItemCount);
-        int eligibleItemCount = categoryCoverage.Sum(static category => category.EligibleItemCount);
-        if (!HasStructurallyValidParkEvidence(counts, publicItemCount, eligibleItemCount))
-        {
-            return null;
-        }
 
         if (!TrySumObservationCounts(directParkSource, itemSources, out long sourceObservationCount))
         {
@@ -301,7 +295,11 @@ internal static class RatingRankingFactory
             TargetCanReceiveVisitorRatings: true,
             IsExcludedByModeration: false,
             aggregateIntegrityIsValid);
-        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+        if (!RankingEligibilityPolicy.Initial.TryEvaluatePark(input, out RankingEvidence? evidence)
+            || evidence is null)
+        {
+            return null;
+        }
 
         return RatingResultFactory.ToResult(evidence);
     }
@@ -356,33 +354,6 @@ internal static class RatingRankingFactory
         }
 
         return true;
-    }
-
-    private static bool HasStructurallyValidParkEvidence(
-        ParkContributorDomainCounts counts,
-        int publicItemCount,
-        int eligibleItemCount)
-    {
-        if (counts.RatingObservationCount < counts.UniqueContributorCount
-            || (counts.UniqueContributorCount == 0 && counts.RatingObservationCount > 0)
-            || counts.DirectParkContributorCount > counts.UniqueContributorCount
-            || counts.ItemContributorCount > counts.UniqueContributorCount
-            || counts.UniqueContributorCount > counts.DirectParkContributorCount + counts.ItemContributorCount
-            || (eligibleItemCount > 0
-                && counts.ItemContributorCount < RankingEligibilityPolicy.Initial.EligibleMinUniqueContributors))
-        {
-            return false;
-        }
-
-        long minimumItemObservationCount = Math.Max(
-            counts.ItemContributorCount,
-            checked((long)eligibleItemCount * RankingEligibilityPolicy.Initial.EligibleMinUniqueContributors));
-        long minimumObservationCount = counts.DirectParkContributorCount + minimumItemObservationCount;
-        long maximumObservationCount = counts.DirectParkContributorCount
-            + checked((long)counts.ItemContributorCount * publicItemCount);
-
-        return counts.RatingObservationCount >= minimumObservationCount
-            && counts.RatingObservationCount <= maximumObservationCount;
     }
 
     private readonly record struct ParkContributorDomainCounts(
