@@ -32,6 +32,16 @@ public sealed partial class MongoDatabaseInitializer
                 })
             },
         };
+        BsonDocument scheduledJobFilter = new BsonDocument(
+            "status",
+            new BsonDocument("$in", new BsonArray
+            {
+                DurableBackgroundJobStatus.Pending.ToString(),
+                DurableBackgroundJobStatus.RetryScheduled.ToString(),
+            }));
+        BsonDocument leasedJobFilter = new BsonDocument(
+            "status",
+            DurableBackgroundJobStatus.Leased.ToString());
 
         return new List<CreateIndexModel<DurableBackgroundJobDocument>>
         {
@@ -57,14 +67,33 @@ public sealed partial class MongoDatabaseInitializer
                 }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys
-                    .Ascending(item => item.Status)
-                    .Ascending(item => item.NotBeforeUtc)
+                    .Ascending(item => item.Kind)
                     .Descending(item => item.Priority)
+                    .Ascending(item => item.NotBeforeUtc)
                     .Ascending(item => item.CreatedAt),
-                new CreateIndexOptions { Name = "idx_background_jobs_runnable" }),
+                new CreateIndexOptions<DurableBackgroundJobDocument>
+                {
+                    Name = "idx_background_jobs_runnable",
+                    PartialFilterExpression = scheduledJobFilter,
+                }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys
+                    .Ascending(item => item.Kind)
+                    .Descending(item => item.Priority)
+                    .Ascending(item => item.LeaseExpiresAtUtc)
+                    .Ascending(item => item.CreatedAt),
+                new CreateIndexOptions<DurableBackgroundJobDocument>
+                {
+                    Name = "idx_background_jobs_expired_claim",
+                    PartialFilterExpression = leasedJobFilter,
+                }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys.Ascending(item => item.LeaseExpiresAtUtc),
-                new CreateIndexOptions { Name = "idx_background_jobs_lease_expiry" }),
+                new CreateIndexOptions<DurableBackgroundJobDocument>
+                {
+                    Name = "idx_background_jobs_lease_expiry",
+                    PartialFilterExpression = leasedJobFilter,
+                }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys
                     .Ascending(item => item.Kind)

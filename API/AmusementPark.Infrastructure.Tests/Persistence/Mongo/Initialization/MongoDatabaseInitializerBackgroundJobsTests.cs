@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 using MongoDB.Bson;
@@ -43,6 +44,9 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         CreateIndexModel<DurableBackgroundJobDocument> runnable = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_runnable", StringComparison.Ordinal));
+        CreateIndexModel<DurableBackgroundJobDocument> expiredClaims = Assert.Single(
+            indexes,
+            static index => string.Equals(index.Options.Name, "idx_background_jobs_expired_claim", StringComparison.Ordinal));
         CreateIndexModel<DurableBackgroundJobDocument> leases = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_lease_expiry", StringComparison.Ordinal));
@@ -51,10 +55,23 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
             static index => string.Equals(index.Options.Name, "idx_background_jobs_diagnostics", StringComparison.Ordinal));
 
         Assert.Equal(
-            new BsonDocument { { "status", 1 }, { "notBeforeUtc", 1 }, { "priority", -1 }, { "createdAt", 1 } },
+            new BsonDocument { { "kind", 1 }, { "priority", -1 }, { "notBeforeUtc", 1 }, { "createdAt", 1 } },
             Render(runnable.Keys));
+        Assert.Equal(
+            new BsonDocument { { "kind", 1 }, { "priority", -1 }, { "leaseExpiresAtUtc", 1 }, { "createdAt", 1 } },
+            Render(expiredClaims.Keys));
         Assert.Equal(new BsonDocument("leaseExpiresAtUtc", 1), Render(leases.Keys));
         Assert.Equal(new BsonDocument { { "kind", 1 }, { "status", 1 }, { "updatedAt", -1 } }, Render(diagnostics.Keys));
+
+        string runnableFilter = Render(runnable.Options.PartialFilterExpression!).ToJson();
+        Assert.Contains(DurableBackgroundJobStatus.Pending.ToString(), runnableFilter, StringComparison.Ordinal);
+        Assert.Contains(DurableBackgroundJobStatus.RetryScheduled.ToString(), runnableFilter, StringComparison.Ordinal);
+        Assert.Equal(
+            DurableBackgroundJobStatus.Leased.ToString(),
+            Render(expiredClaims.Options.PartialFilterExpression!)["status"].AsString);
+        Assert.Equal(
+            DurableBackgroundJobStatus.Leased.ToString(),
+            Render(leases.Options.PartialFilterExpression!)["status"].AsString);
     }
 
     private static BsonDocument Render(IndexKeysDefinition<DurableBackgroundJobDocument> keys)

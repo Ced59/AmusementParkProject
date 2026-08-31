@@ -177,18 +177,49 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         TimeSpan leaseDuration = ValidateLeaseDuration(request.LeaseDuration);
         DateTime nowUtc = this.GetUtcNow();
         string leaseToken = Guid.NewGuid().ToString("N");
+        DurableBackgroundJobDocument? leased = await this.TryLeaseAsync(
+            BuildScheduledRunnableFilter(kinds, nowUtc),
+            BuildScheduledRunnableSort(),
+            leaseOwner,
+            leaseToken,
+            leaseDuration,
+            nowUtc,
+            cancellationToken);
+        if (leased is not null)
+        {
+            return leased.ToApplication();
+        }
+
+        leased = await this.TryLeaseAsync(
+            BuildExpiredLeaseRunnableFilter(kinds, nowUtc),
+            BuildExpiredLeaseRunnableSort(),
+            leaseOwner,
+            leaseToken,
+            leaseDuration,
+            nowUtc,
+            cancellationToken);
+        return leased?.ToApplication();
+    }
+
+    private async Task<DurableBackgroundJobDocument?> TryLeaseAsync(
+        FilterDefinition<DurableBackgroundJobDocument> filter,
+        SortDefinition<DurableBackgroundJobDocument> sort,
+        string leaseOwner,
+        string leaseToken,
+        TimeSpan leaseDuration,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
         FindOneAndUpdateOptions<DurableBackgroundJobDocument> options = new FindOneAndUpdateOptions<DurableBackgroundJobDocument>
         {
             ReturnDocument = ReturnDocument.After,
-            Sort = BuildRunnableSort(),
+            Sort = sort,
         };
-
-        DurableBackgroundJobDocument? leased = await this.collection.FindOneAndUpdateAsync(
-            BuildRunnableFilter(kinds, nowUtc),
+        return await this.collection.FindOneAndUpdateAsync(
+            filter,
             BuildLeaseUpdate(leaseOwner, leaseToken, nowUtc.Add(leaseDuration), nowUtc),
             options,
             cancellationToken);
-        return leased?.ToApplication();
     }
 
     public async Task<bool> RenewLeaseAsync(

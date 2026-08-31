@@ -14,32 +14,54 @@ public sealed class DurableBackgroundJobRepositoryTests
     private static readonly DateTime NowUtc = new DateTime(2026, 8, 31, 18, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public void BuildRunnableFilter_ShouldSelectDueOrExpiredJobsForRequestedKinds()
+    public void BuildScheduledRunnableFilter_ShouldSelectDueJobsForRequestedKinds()
     {
         FilterDefinition<DurableBackgroundJobDocument> filter =
-            DurableBackgroundJobRepository.BuildRunnableFilter(new[] { "rank.snapshot", "seo.refresh" }, NowUtc);
+            DurableBackgroundJobRepository.BuildScheduledRunnableFilter(
+                new[] { "rank.snapshot", "seo.refresh" },
+                NowUtc);
 
         BsonDocument rendered = Render(filter);
 
         BsonArray kinds = rendered["kind"].AsBsonDocument["$in"].AsBsonArray;
         Assert.Equal(new[] { "rank.snapshot", "seo.refresh" }, kinds.Select(static item => item.AsString));
-        BsonArray alternatives = rendered["$or"].AsBsonArray;
-        Assert.Equal(2, alternatives.Count);
         Assert.Equal(
             new[] { DurableBackgroundJobStatus.Pending.ToString(), DurableBackgroundJobStatus.RetryScheduled.ToString() },
-            alternatives[0].AsBsonDocument["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
-        Assert.Equal(NowUtc, alternatives[0].AsBsonDocument["notBeforeUtc"].AsBsonDocument["$lte"].ToUniversalTime());
-        Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), alternatives[1].AsBsonDocument["status"].AsString);
-        Assert.Equal(NowUtc, alternatives[1].AsBsonDocument["leaseExpiresAtUtc"].AsBsonDocument["$lte"].ToUniversalTime());
+            rendered["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Equal(NowUtc, rendered["notBeforeUtc"].AsBsonDocument["$lte"].ToUniversalTime());
     }
 
     [Fact]
-    public void BuildRunnableSort_ShouldPrioritizePriorityThenScheduleThenCreation()
+    public void BuildExpiredLeaseRunnableFilter_ShouldSelectExpiredLeasesForRequestedKinds()
     {
-        BsonDocument rendered = Render(DurableBackgroundJobRepository.BuildRunnableSort());
+        FilterDefinition<DurableBackgroundJobDocument> filter =
+            DurableBackgroundJobRepository.BuildExpiredLeaseRunnableFilter(
+                new[] { "rank.snapshot", "seo.refresh" },
+                NowUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), rendered["status"].AsString);
+        Assert.Equal(NowUtc, rendered["leaseExpiresAtUtc"].AsBsonDocument["$lte"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void BuildScheduledRunnableSort_ShouldPrioritizePriorityThenScheduleThenCreation()
+    {
+        BsonDocument rendered = Render(DurableBackgroundJobRepository.BuildScheduledRunnableSort());
 
         Assert.Equal(-1, rendered["priority"].AsInt32);
         Assert.Equal(1, rendered["notBeforeUtc"].AsInt32);
+        Assert.Equal(1, rendered["createdAt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildExpiredLeaseRunnableSort_ShouldPrioritizePriorityThenExpiryThenCreation()
+    {
+        BsonDocument rendered = Render(DurableBackgroundJobRepository.BuildExpiredLeaseRunnableSort());
+
+        Assert.Equal(-1, rendered["priority"].AsInt32);
+        Assert.Equal(1, rendered["leaseExpiresAtUtc"].AsInt32);
         Assert.Equal(1, rendered["createdAt"].AsInt32);
     }
 

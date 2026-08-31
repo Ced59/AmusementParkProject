@@ -74,29 +74,43 @@ internal static class DurableBackgroundJobMongoDefinitions
         return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
     }
 
-    internal static FilterDefinition<DurableBackgroundJobDocument> BuildRunnableFilter(
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableFilter(
         IReadOnlyCollection<string> kinds,
         DateTime nowUtc)
     {
         FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
-        FilterDefinition<DurableBackgroundJobDocument> scheduled =
-            filters.In(item => item.Status, new[]
+        return filters.In(item => item.Kind, kinds)
+            & filters.In(item => item.Status, new[]
             {
                 DurableBackgroundJobStatus.Pending,
                 DurableBackgroundJobStatus.RetryScheduled,
             })
             & filters.Lte(item => item.NotBeforeUtc, nowUtc);
-        FilterDefinition<DurableBackgroundJobDocument> expiredLease =
-            filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
-            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc);
-        return filters.In(item => item.Kind, kinds) & filters.Or(scheduled, expiredLease);
     }
 
-    internal static SortDefinition<DurableBackgroundJobDocument> BuildRunnableSort()
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildExpiredLeaseRunnableFilter(
+        IReadOnlyCollection<string> kinds,
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        return filters.In(item => item.Kind, kinds)
+            & filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
+            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc);
+    }
+
+    internal static SortDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableSort()
     {
         return Builders<DurableBackgroundJobDocument>.Sort
             .Descending(item => item.Priority)
             .Ascending(item => item.NotBeforeUtc)
+            .Ascending(item => item.CreatedAt);
+    }
+
+    internal static SortDefinition<DurableBackgroundJobDocument> BuildExpiredLeaseRunnableSort()
+    {
+        return Builders<DurableBackgroundJobDocument>.Sort
+            .Descending(item => item.Priority)
+            .Ascending(item => item.LeaseExpiresAtUtc)
             .Ascending(item => item.CreatedAt);
     }
 
