@@ -70,7 +70,7 @@ public sealed class RatingDiagnosticsReaderTests
         BsonDocument targetGroup = integrity[2]["$group"].AsBsonDocument;
 
         Assert.Equal("$_diagnosticUserText", contributorKey["userId"].AsString);
-        Assert.Equal(1, targetGroup["sourceUniqueContributorCount"]["$sum"].AsInt32);
+        Assert.Equal("$hasValidUser", targetGroup["sourceUniqueContributorCount"]["$sum"].AsString);
         Assert.Equal("$ratingObservationCount", targetGroup["sourceRatingObservationCount"]["$sum"].AsString);
 
         BsonDocument facets = CreateIntegrityFacets(
@@ -105,11 +105,14 @@ public sealed class RatingDiagnosticsReaderTests
         BsonArray integrity = pipeline.Last()["$facet"]["integrity"].AsBsonArray;
         BsonDocument integrityMatch = integrity[0]["$match"].AsBsonDocument;
         BsonDocument sourceGroup = integrity[1]["$group"].AsBsonDocument;
+        BsonDocument targetGroup = integrity[2]["$group"].AsBsonDocument;
 
         Assert.True(integrityMatch["_diagnosticHasTarget"].AsBoolean);
         Assert.False(integrityMatch.Contains("_diagnosticHasUser"));
         Assert.False(integrityMatch.Contains("_diagnosticIsExactHalfStep"));
         Assert.Equal("$_diagnosticNumericValue", sourceGroup["sourceRatingSum"]["$sum"].AsString);
+        Assert.Contains("$_diagnosticHasUser", sourceGroup["hasValidUser"].ToJson(), StringComparison.Ordinal);
+        Assert.Equal("$hasValidUser", targetGroup["sourceUniqueContributorCount"]["$sum"].AsString);
     }
 
     [Fact]

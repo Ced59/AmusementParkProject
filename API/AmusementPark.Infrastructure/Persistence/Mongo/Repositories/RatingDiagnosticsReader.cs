@@ -203,6 +203,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     "$group": {
                       "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText", "userId": "$_diagnosticUserText" },
                       "ratingObservationCount": { "$sum": 1 },
+                      "hasValidUser": { "$max": { "$cond": [ "$_diagnosticHasUser", 1, 0 ] } },
                       "sourceRatingSum": { "$sum": "$_diagnosticNumericValue" }
                     }
                   },
@@ -210,7 +211,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     "$group": {
                       "_id": { "targetType": "$_id.targetType", "targetId": "$_id.targetId" },
                       "sourceRatingObservationCount": { "$sum": "$ratingObservationCount" },
-                      "sourceUniqueContributorCount": { "$sum": 1 },
+                      "sourceUniqueContributorCount": { "$sum": "$hasValidUser" },
                       "sourceRatingSum": { "$sum": "$sourceRatingSum" }
                     }
                   },

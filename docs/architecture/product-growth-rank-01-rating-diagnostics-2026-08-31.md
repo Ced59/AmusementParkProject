@@ -32,6 +32,7 @@ Le rapport ne retourne aucun identifiant d’utilisateur ou de cible. Cette mini
 - endpoint non mis en cache et absent des bundles Angular publics et administrateur ;
 - la valeur exacte reste vérifiée sans epsilon ; la marge de `0,000001` sert uniquement à compter les anciennes valeurs presque conformes.
 - la distribution de preuve ne retient que les valeurs exactes, tandis que la comparaison des agrégats conserve toutes les sources stockées pour reproduire le calcul du synchroniseur ; les valeurs malformées restent signalées séparément comme anomalies.
+- les documents sans identifiant utilisateur restent des observations sources, mais ne créent jamais un contributeur unique synthétique.
 
 ## Validation opérationnelle
 
