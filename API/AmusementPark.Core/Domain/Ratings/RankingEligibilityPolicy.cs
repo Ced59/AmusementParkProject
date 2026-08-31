@@ -301,6 +301,7 @@ public sealed class RankingEligibilityPolicy
                 nameof(input));
         }
 
+        int publicItemCount = 0;
         int eligibleItemCount = 0;
         foreach (RankingCategoryCoverage category in input.ItemCategories)
         {
@@ -322,6 +323,7 @@ public sealed class RankingEligibilityPolicy
                     nameof(input));
             }
 
+            publicItemCount = checked(publicItemCount + category.PublicItemCount);
             eligibleItemCount = checked(eligibleItemCount + category.EligibleItemCount);
         }
 
@@ -340,6 +342,15 @@ public sealed class RankingEligibilityPolicy
         {
             throw new ArgumentException(
                 "Park observations cannot be lower than the minimum required by both active component inputs.",
+                nameof(input));
+        }
+
+        long maximumItemObservationCount = checked((long)input.ItemContributorCount * publicItemCount);
+        long maximumObservationCount = input.DirectParkContributorCount + maximumItemObservationCount;
+        if (input.RatingObservationCount > maximumObservationCount)
+        {
+            throw new ArgumentException(
+                "Park observations cannot exceed one current rating per contributor and public target.",
                 nameof(input));
         }
 

@@ -258,7 +258,7 @@ public sealed class RankingEligibilityPolicyTests
             uniqueContributorCount: 100,
             directContributorCount: 10,
             itemContributorCount: 90,
-            categories: Array.Empty<RankingCategoryCoverage>());
+            categories: new[] { new RankingCategoryCoverage(5, 0) });
 
         RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
 
@@ -332,6 +332,28 @@ public sealed class RankingEligibilityPolicyTests
         ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
             UniqueContributorCount: 10,
             RatingObservationCount: 20,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            ItemCategories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            },
+            IsSingleCategoryParkException: false,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+
+        Assert.Throws<ArgumentException>(
+            () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
+    }
+
+    [Fact]
+    public void EvaluatePark_WhenObservationsExceedOneCurrentRatingPerPublicTarget_ShouldRejectInput()
+    {
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 10,
+            RatingObservationCount: 1_000,
             DirectParkContributorCount: 10,
             ItemContributorCount: 10,
             ItemCategories: new[]
