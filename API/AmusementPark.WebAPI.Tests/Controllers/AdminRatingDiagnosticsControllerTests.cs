@@ -28,9 +28,9 @@ public sealed class AdminRatingDiagnosticsControllerTests
             new[] { "0.5", "1" },
             false,
             new RatingAnomalySummaryResult(0, 0, 0, 0, 0, 0, 0, 0, 0),
-            new RatingAggregateIntegrityResult(8, 0, 0, 0),
+            new RatingAggregateIntegrityResult(true, true, 8, 0, 0, 0),
             new[] { new RatingTargetDistributionResult("Park", "3-9", 2, 12, 12) },
-            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, true, "{ userId: 1 }", "{ userId: 1 }") });
+            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, false, true, "{ userId: 1 }", "{ userId: 1 }") });
         Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>> handler =
             new Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(It.IsAny<GetRatingDiagnosticsQuery>(), It.IsAny<CancellationToken>()))
@@ -43,8 +43,11 @@ public sealed class AdminRatingDiagnosticsControllerTests
         RatingDiagnosticsDto dto = Assert.IsType<RatingDiagnosticsDto>(ok.Value);
         Assert.Equal(24, dto.TotalRatings);
         Assert.Equal("3-9", Assert.Single(dto.TargetDistribution).EvidenceBand);
+        Assert.True(dto.AggregateIntegrity.IsSourceComparisonEvaluated);
+        Assert.True(dto.AggregateIntegrity.IsOrphanCheckEvaluated);
         Assert.True(Assert.Single(dto.Indexes).MatchesExpectedDefinition);
         Assert.False(Assert.Single(dto.Indexes).IsHidden);
+        Assert.False(Assert.Single(dto.Indexes).HasUnexpectedOptions);
         handler.VerifyAll();
     }
 

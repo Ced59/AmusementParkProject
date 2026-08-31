@@ -47,6 +47,10 @@ public sealed class RatingAnomalySummaryDto
 
 public sealed class RatingAggregateIntegrityDto
 {
+    public bool IsSourceComparisonEvaluated { get; set; }
+
+    public bool IsOrphanCheckEvaluated { get; set; }
+
     public long SourceTargetCount { get; set; }
 
     public long MissingAggregateCount { get; set; }
@@ -80,6 +84,8 @@ public sealed class RatingIndexStatusDto
     public bool IsUnique { get; set; }
 
     public bool IsHidden { get; set; }
+
+    public bool HasUnexpectedOptions { get; set; }
 
     public bool MatchesExpectedDefinition { get; set; }
 

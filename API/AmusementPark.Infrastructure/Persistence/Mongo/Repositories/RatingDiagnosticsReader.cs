@@ -15,6 +15,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 {
     internal const int DistinctValueSampleLimit = 25;
 
+    internal const string UserRatingsTargetIndexName = "idx_user_ratings_target";
+
+    internal const string RatingAggregatesTargetIndexName = "idx_rating_aggregates_target_unique";
+
     private static readonly TimeSpan QueryMaxTime = TimeSpan.FromSeconds(30);
 
     private readonly IMongoCollection<BsonDocument> userRatingsCollection;
@@ -35,16 +39,27 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
     public async Task<RatingDiagnosticsResult> GetDiagnosticsAsync(CancellationToken cancellationToken)
     {
         long startedAt = Stopwatch.GetTimestamp();
+        IReadOnlyCollection<RatingIndexStatusResult> indexes = await ReadIndexStatusesAsync(cancellationToken);
+        bool canEvaluateSourceIntegrity = HasMatchingIndex(
+            indexes,
+            this.settings.RatingAggregatesCollectionName,
+            RatingAggregatesTargetIndexName);
+        bool canEvaluateOrphans = HasMatchingIndex(
+            indexes,
+            this.settings.UserRatingsCollectionName,
+            UserRatingsTargetIndexName);
         EligibleTargetInventory eligibleTargets = await ReadEligibleTargetInventoryAsync(cancellationToken);
         BsonDocument facets = await RunPipelineAsync(
             this.userRatingsCollection,
             BuildUserRatingsDiagnosticPipeline(
                 this.settings.RatingAggregatesCollectionName,
                 eligibleTargets.ParkIds,
-                eligibleTargets.ParkItemIds),
+                eligibleTargets.ParkItemIds,
+                canEvaluateSourceIntegrity),
             cancellationToken);
-        long orphanAggregateCount = await ReadOrphanAggregateCountAsync(cancellationToken);
-        IReadOnlyCollection<RatingIndexStatusResult> indexes = await ReadIndexStatusesAsync(cancellationToken);
+        long orphanAggregateCount = canEvaluateOrphans
+            ? await ReadOrphanAggregateCountAsync(cancellationToken)
+            : 0;
 
         BsonDocument summary = GetFirstFacetDocument(facets, "summary");
         BsonDocument duplicates = GetFirstFacetDocument(facets, "duplicates");
@@ -64,6 +79,8 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             ReadInt64(duplicates, "duplicateVoteKeyCount"),
             ReadInt64(duplicates, "extraDuplicateDocumentCount"));
         RatingAggregateIntegrityResult aggregateIntegrity = new RatingAggregateIntegrityResult(
+            canEvaluateSourceIntegrity,
+            canEvaluateOrphans,
             ReadInt64(integrity, "sourceTargetCount"),
             ReadInt64(integrity, "missingAggregateCount"),
             ReadInt64(integrity, "divergentAggregateCount"),
@@ -88,7 +105,8 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
     internal static IReadOnlyCollection<BsonDocument> BuildUserRatingsDiagnosticPipeline(
         string ratingAggregatesCollectionName,
         IReadOnlyCollection<string> eligibleParkIds,
-        IReadOnlyCollection<string> eligibleParkItemIds)
+        IReadOnlyCollection<string> eligibleParkItemIds,
+        bool includeAggregateIntegrity)
     {
         BsonDocument facetStage = BsonDocument.Parse(
             """
@@ -235,9 +253,17 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
               }
             }
             """);
-        facetStage["$facet"].AsBsonDocument["integrity"].AsBsonArray[2].AsBsonDocument["$lookup"].AsBsonDocument["from"] =
-            ratingAggregatesCollectionName;
-        facetStage["$facet"].AsBsonDocument["targetDistribution"].AsBsonArray[0] =
+        BsonDocument facets = facetStage["$facet"].AsBsonDocument;
+        if (includeAggregateIntegrity)
+        {
+            facets["integrity"].AsBsonArray[2].AsBsonDocument["$lookup"].AsBsonDocument["from"] =
+                ratingAggregatesCollectionName;
+        }
+        else
+        {
+            facets.Remove("integrity");
+        }
+        facets["targetDistribution"].AsBsonArray[0] =
             BuildEligibleTargetMatch(eligibleParkIds, eligibleParkItemIds);
 
         return new[]
@@ -366,10 +392,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         List<ExpectedIndex> expectedIndexes = new List<ExpectedIndex>
         {
             new ExpectedIndex(userRatingsCollectionName, "idx_user_ratings_user_target_unique", true, new BsonDocument { { "userId", 1 }, { "targetType", 1 }, { "targetId", 1 } }),
-            new ExpectedIndex(userRatingsCollectionName, "idx_user_ratings_target", false, new BsonDocument { { "targetType", 1 }, { "targetId", 1 } }),
+            new ExpectedIndex(userRatingsCollectionName, UserRatingsTargetIndexName, false, new BsonDocument { { "targetType", 1 }, { "targetId", 1 } }),
             new ExpectedIndex(userRatingsCollectionName, "idx_user_ratings_user_updated", false, new BsonDocument { { "userId", 1 }, { "updatedAt", -1 } }),
             new ExpectedIndex(userRatingsCollectionName, "idx_user_ratings_user_park", false, new BsonDocument { { "userId", 1 }, { "parkId", 1 } }),
-            new ExpectedIndex(ratingAggregatesCollectionName, "idx_rating_aggregates_target_unique", true, new BsonDocument { { "targetType", 1 }, { "targetId", 1 } }),
+            new ExpectedIndex(ratingAggregatesCollectionName, RatingAggregatesTargetIndexName, true, new BsonDocument { { "targetType", 1 }, { "targetId", 1 } }),
             new ExpectedIndex(ratingAggregatesCollectionName, "idx_rating_aggregates_ranking", false, new BsonDocument { { "bayesianScore", -1 }, { "ratingCount", -1 }, { "averageRating", -1 } }),
             new ExpectedIndex(ratingAggregatesCollectionName, "idx_rating_aggregates_type_ranking", false, new BsonDocument { { "targetType", 1 }, { "bayesianScore", -1 }, { "ratingCount", -1 } }),
             new ExpectedIndex(ratingAggregatesCollectionName, "idx_rating_aggregates_category_ranking", false, new BsonDocument { { "parkItemCategory", 1 }, { "bayesianScore", -1 }, { "ratingCount", -1 } }),
@@ -397,6 +423,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 && actual!.TryGetValue("hidden", out BsonValue? hidden)
                 && hidden.IsBoolean
                 && hidden.AsBoolean;
+            bool hasUnexpectedOptions = isPresent && HasUnexpectedIndexOptions(actual!);
             BsonDocument? actualKeys = isPresent
                 && actual!.TryGetValue("key", out BsonValue? key)
                 && key.IsBsonDocument
@@ -405,6 +432,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             bool matchesExpectedDefinition = isPresent
                 && isUnique == expectedIndex.IsUnique
                 && !isHidden
+                && !hasUnexpectedOptions
                 && actualKeys is not null
                 && expectedIndex.Keys.Equals(actualKeys);
 
@@ -414,12 +442,53 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 isPresent,
                 isUnique,
                 isHidden,
+                hasUnexpectedOptions,
                 matchesExpectedDefinition,
                 expectedIndex.Keys.ToJson(),
                 actualKeys?.ToJson()));
         }
 
         return results;
+    }
+
+    private static bool HasMatchingIndex(
+        IEnumerable<RatingIndexStatusResult> indexes,
+        string collection,
+        string name)
+    {
+        return indexes.Any(index => string.Equals(index.Collection, collection, StringComparison.Ordinal)
+            && string.Equals(index.Name, name, StringComparison.Ordinal)
+            && index.MatchesExpectedDefinition);
+    }
+
+    private static bool HasUnexpectedIndexOptions(BsonDocument index)
+    {
+        if (index.Contains("partialFilterExpression") || index.Contains("expireAfterSeconds"))
+        {
+            return true;
+        }
+
+        if (index.TryGetValue("sparse", out BsonValue? sparse)
+            && (!sparse.IsBoolean || sparse.AsBoolean))
+        {
+            return true;
+        }
+
+        if (!index.TryGetValue("collation", out BsonValue? collation))
+        {
+            return false;
+        }
+
+        if (!collation.IsBsonDocument)
+        {
+            return true;
+        }
+
+        BsonDocument definition = collation.AsBsonDocument;
+        return definition.ElementCount != 1
+            || !definition.TryGetValue("locale", out BsonValue? locale)
+            || !locale.IsString
+            || !string.Equals(locale.AsString, "simple", StringComparison.Ordinal);
     }
 
     private async Task<EligibleTargetInventory> ReadEligibleTargetInventoryAsync(CancellationToken cancellationToken)

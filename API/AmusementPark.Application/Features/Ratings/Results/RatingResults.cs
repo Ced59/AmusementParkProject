@@ -37,6 +37,8 @@ public sealed record RatingAnomalySummaryResult(
     long ExtraDuplicateDocumentCount);
 
 public sealed record RatingAggregateIntegrityResult(
+    bool IsSourceComparisonEvaluated,
+    bool IsOrphanCheckEvaluated,
     long SourceTargetCount,
     long MissingAggregateCount,
     long DivergentAggregateCount,
@@ -55,6 +57,7 @@ public sealed record RatingIndexStatusResult(
     bool IsPresent,
     bool IsUnique,
     bool IsHidden,
+    bool HasUnexpectedOptions,
     bool MatchesExpectedDefinition,
     string ExpectedKeys,
     string? ActualKeys);

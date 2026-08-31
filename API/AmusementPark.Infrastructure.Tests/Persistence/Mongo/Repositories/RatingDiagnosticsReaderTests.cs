@@ -14,7 +14,8 @@ public sealed class RatingDiagnosticsReaderTests
             RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
                 "custom-rating-aggregates",
                 new[] { "park-1" },
-                new[] { "item-1" });
+                new[] { "item-1" },
+                true);
 
         Assert.Equal(4, pipeline.Count);
         BsonDocument facet = pipeline.Last()["$facet"].AsBsonDocument;
@@ -42,7 +43,8 @@ public sealed class RatingDiagnosticsReaderTests
             RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
                 "ratingAggregates",
                 Array.Empty<string>(),
-                Array.Empty<string>());
+                Array.Empty<string>(),
+                true);
 
         BsonDocument hasTarget = pipeline.ElementAt(1)["$set"]["_diagnosticHasTarget"].AsBsonDocument;
         BsonArray requirements = hasTarget["$and"].AsBsonArray;
@@ -50,6 +52,22 @@ public sealed class RatingDiagnosticsReaderTests
         BsonArray targetTypes = targetTypeRequirement["$in"].AsBsonArray[1].AsBsonArray;
 
         Assert.Equal(new[] { "Park", "ParkItem" }, targetTypes.Select(static value => value.AsString));
+    }
+
+    [Fact]
+    public void BuildUserRatingsDiagnosticPipeline_WhenAggregateIndexIsUnavailable_ShouldSkipTheDependentLookup()
+    {
+        IReadOnlyCollection<BsonDocument> pipeline =
+            RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
+                "ratingAggregates",
+                Array.Empty<string>(),
+                Array.Empty<string>(),
+                false);
+
+        BsonDocument facet = pipeline.Last()["$facet"].AsBsonDocument;
+        Assert.False(facet.Contains("integrity"));
+        Assert.True(facet.Contains("summary"));
+        Assert.True(facet.Contains("targetDistribution"));
     }
 
     [Fact]
@@ -151,6 +169,49 @@ public sealed class RatingDiagnosticsReaderTests
         RatingIndexStatusResult result = results.Single(static item => item.Name == "idx_user_ratings_target");
         Assert.True(result.IsPresent);
         Assert.True(result.IsHidden);
+        Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    [Theory]
+    [InlineData("partial")]
+    [InlineData("sparse")]
+    [InlineData("collation")]
+    [InlineData("ttl")]
+    public void EvaluateIndexStatuses_WhenIndexHasUnexpectedOptions_ShouldExposeTheDefinitionMismatch(
+        string option)
+    {
+        BsonDocument index = CreateIndex(
+            RatingDiagnosticsReader.UserRatingsTargetIndexName,
+            false,
+            ("targetType", 1),
+            ("targetId", 1));
+        switch (option)
+        {
+            case "partial":
+                index.Add("partialFilterExpression", new BsonDocument("targetId", new BsonDocument("$exists", true)));
+                break;
+            case "sparse":
+                index.Add("sparse", true);
+                break;
+            case "collation":
+                index.Add("collation", new BsonDocument("locale", "fr"));
+                break;
+            case "ttl":
+                index.Add("expireAfterSeconds", 3600);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported index option fixture: {option}.");
+        }
+
+        IReadOnlyCollection<RatingIndexStatusResult> results = RatingDiagnosticsReader.EvaluateIndexStatuses(
+            "userRatings",
+            new[] { index },
+            "ratingAggregates",
+            Array.Empty<BsonDocument>());
+
+        RatingIndexStatusResult result = results.Single(static item =>
+            item.Name == RatingDiagnosticsReader.UserRatingsTargetIndexName);
+        Assert.True(result.HasUnexpectedOptions);
         Assert.False(result.MatchesExpectedDefinition);
     }
 

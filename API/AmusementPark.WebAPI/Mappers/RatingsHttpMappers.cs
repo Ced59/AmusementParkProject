@@ -59,6 +59,8 @@ internal static class RatingsHttpMappers
             },
             AggregateIntegrity = new RatingAggregateIntegrityDto
             {
+                IsSourceComparisonEvaluated = value.AggregateIntegrity.IsSourceComparisonEvaluated,
+                IsOrphanCheckEvaluated = value.AggregateIntegrity.IsOrphanCheckEvaluated,
                 SourceTargetCount = value.AggregateIntegrity.SourceTargetCount,
                 MissingAggregateCount = value.AggregateIntegrity.MissingAggregateCount,
                 DivergentAggregateCount = value.AggregateIntegrity.DivergentAggregateCount,
@@ -79,6 +81,7 @@ internal static class RatingsHttpMappers
                 IsPresent = index.IsPresent,
                 IsUnique = index.IsUnique,
                 IsHidden = index.IsHidden,
+                HasUnexpectedOptions = index.HasUnexpectedOptions,
                 MatchesExpectedDefinition = index.MatchesExpectedDefinition,
                 ExpectedKeys = index.ExpectedKeys,
                 ActualKeys = index.ActualKeys,
