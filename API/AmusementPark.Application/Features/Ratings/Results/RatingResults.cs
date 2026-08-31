@@ -13,6 +13,51 @@ public sealed record RatingSummaryResult(
     public int? Rank { get; init; }
 }
 
+public sealed record RatingDiagnosticsResult(
+    DateTime GeneratedAtUtc,
+    long ExecutionDurationMilliseconds,
+    long TotalRatings,
+    long DistinctNumericValueCount,
+    IReadOnlyCollection<string> DistinctNumericValueSample,
+    bool IsDistinctNumericValueSampleTruncated,
+    RatingAnomalySummaryResult Anomalies,
+    RatingAggregateIntegrityResult AggregateIntegrity,
+    IReadOnlyCollection<RatingTargetDistributionResult> TargetDistribution,
+    IReadOnlyCollection<RatingIndexStatusResult> Indexes);
+
+public sealed record RatingAnomalySummaryResult(
+    long NonNumericValueCount,
+    long UnexpectedValueStorageTypeCount,
+    long OutOfRangeValueCount,
+    long NonHalfStepValueCount,
+    long NearHalfStepValueCount,
+    long MissingUserIdCount,
+    long MissingTargetCount,
+    long DuplicateVoteKeyCount,
+    long ExtraDuplicateDocumentCount);
+
+public sealed record RatingAggregateIntegrityResult(
+    long SourceTargetCount,
+    long MissingAggregateCount,
+    long DivergentAggregateCount,
+    long OrphanAggregateCount);
+
+public sealed record RatingTargetDistributionResult(
+    string TargetType,
+    string EvidenceBand,
+    long TargetCount,
+    long RatingObservationCount,
+    long UniqueContributorCount);
+
+public sealed record RatingIndexStatusResult(
+    string Collection,
+    string Name,
+    bool IsPresent,
+    bool IsUnique,
+    bool MatchesExpectedDefinition,
+    string ExpectedKeys,
+    string? ActualKeys);
+
 public sealed record RatingTargetMetadataResult(
     RatingTargetType TargetType,
     string TargetId,

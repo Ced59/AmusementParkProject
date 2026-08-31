@@ -1,6 +1,20 @@
 {
-  "version": "4.2.32",
+  "version": "4.2.33",
   "history": [
+    {
+      "version": "4.2.33",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration continue de s’améliorer.",
+        "en": "Administration tools continue to become easier to use.",
+        "de": "Die Bedienung der Verwaltungswerkzeuge wird weiter verbessert.",
+        "nl": "De beheerhulpmiddelen worden verder gebruiksvriendelijker.",
+        "it": "Gli strumenti di amministrazione continuano a diventare più pratici.",
+        "es": "Las herramientas de administración siguen siendo más fáciles de usar.",
+        "pl": "Narzędzia administracyjne są coraz wygodniejsze w użyciu.",
+        "pt": "As ferramentas de administração continuam mais fáceis de utilizar."
+      }
+    },
     {
       "version": "4.2.32",
       "releasedAt": "2026-08-31",
