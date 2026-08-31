@@ -115,6 +115,47 @@ internal static class DurableBackgroundJobMongoDefinitions
             & filters.Lte(item => item.NotBeforeUtc, nowUtc);
     }
 
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildActiveKindScanFilter(string? afterKind)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        FilterDefinition<DurableBackgroundJobDocument> filter = filters.In(item => item.Status, ActiveStatuses);
+        if (afterKind is not null)
+        {
+            filter &= filters.Gt(item => item.Kind, afterKind);
+        }
+
+        return filter;
+    }
+
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildScheduledUnknownKindRunnableFilter(
+        string kind,
+        DateTime maximumUpdatedAtUtc,
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        return filters.Eq(item => item.Kind, kind)
+            & filters.In(item => item.Status, new[]
+            {
+                DurableBackgroundJobStatus.Pending,
+                DurableBackgroundJobStatus.RetryScheduled,
+            })
+            & filters.Lte(item => item.NotBeforeUtc, nowUtc)
+            & filters.Lte(item => item.UpdatedAt, maximumUpdatedAtUtc);
+    }
+
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildExpiredUnknownKindLeaseRunnableFilter(
+        string kind,
+        DateTime maximumUpdatedAtUtc,
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        return filters.Eq(item => item.Kind, kind)
+            & filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
+            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc)
+            & filters.Lte(item => item.NotBeforeUtc, nowUtc)
+            & filters.Lte(item => item.UpdatedAt, maximumUpdatedAtUtc);
+    }
+
     internal static SortDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableSort()
     {
         return Builders<DurableBackgroundJobDocument>.Sort

@@ -47,6 +47,12 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         CreateIndexModel<DurableBackgroundJobDocument> expiredClaims = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_expired_claim", StringComparison.Ordinal));
+        CreateIndexModel<DurableBackgroundJobDocument> activeKindScan = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                "idx_background_jobs_active_kind_scan",
+                StringComparison.Ordinal));
         CreateIndexModel<DurableBackgroundJobDocument> leases = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_lease_expiry", StringComparison.Ordinal));
@@ -78,6 +84,7 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         Assert.Equal(
             new BsonDocument { { "kind", 1 }, { "priority", -1 }, { "leaseExpiresAtUtc", 1 }, { "createdAt", 1 } },
             Render(expiredClaims.Keys));
+        Assert.Equal(new BsonDocument("kind", 1), Render(activeKindScan.Keys));
         Assert.Equal(new BsonDocument("leaseExpiresAtUtc", 1), Render(leases.Keys));
         Assert.Equal(new BsonDocument("updatedAt", -1), Render(recentDiagnostics.Keys));
         Assert.Equal(new BsonDocument { { "status", 1 }, { "updatedAt", -1 } }, Render(statusDiagnostics.Keys));
@@ -93,6 +100,10 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         Assert.Equal(
             DurableBackgroundJobStatus.Leased.ToString(),
             Render(leases.Options.PartialFilterExpression!)["status"].AsString);
+        string activeKindScanFilter = Render(activeKindScan.Options.PartialFilterExpression!).ToJson();
+        Assert.Contains(DurableBackgroundJobStatus.Pending.ToString(), activeKindScanFilter, StringComparison.Ordinal);
+        Assert.Contains(DurableBackgroundJobStatus.Leased.ToString(), activeKindScanFilter, StringComparison.Ordinal);
+        Assert.Contains(DurableBackgroundJobStatus.RetryScheduled.ToString(), activeKindScanFilter, StringComparison.Ordinal);
     }
 
     private static BsonDocument Render(IndexKeysDefinition<DurableBackgroundJobDocument> keys)

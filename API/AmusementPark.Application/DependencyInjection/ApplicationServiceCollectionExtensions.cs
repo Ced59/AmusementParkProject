@@ -1,6 +1,8 @@
 using System.Reflection;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
+using AmusementPark.Application.Features.BackgroundJobs.Services;
 using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Contact.Services;
 using AmusementPark.Application.Features.Comments.Services;
@@ -49,6 +51,9 @@ public static class ApplicationServiceCollectionExtensions
 
         services.AddSingleton<PagedQueryValidator>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
+        services.AddScoped<IDurableBackgroundJobHandlerResolver, DurableBackgroundJobHandlerRegistry>();
+        services.AddSingleton<DurableBackgroundJobRetryDelayCalculator>();
+        services.AddScoped<DurableBackgroundJobExecutionOrchestrator>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();
         services.AddScoped<CommentImageManager>();
@@ -103,6 +108,14 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IPublicSeoUpdateNotifier, PublicSeoUpdateNotifier>();
         services.AddSingleton<ISeoSitemapRefreshScheduler, NoOpSeoSitemapRefreshScheduler>();
         services.AddSingleton<ISeoSitemapRuntimeStateStore, InMemorySeoSitemapRuntimeStateStore>();
+        return services;
+    }
+
+    public static IServiceCollection AddDurableBackgroundJobHandler<THandler>(this IServiceCollection services)
+        where THandler : class, IDurableBackgroundJobHandler
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        services.AddScoped<IDurableBackgroundJobHandler, THandler>();
         return services;
     }
 

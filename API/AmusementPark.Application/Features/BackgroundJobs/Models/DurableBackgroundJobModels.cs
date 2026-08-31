@@ -59,12 +59,30 @@ public sealed record LeaseBackgroundJobRequest(
     string LeaseOwner,
     TimeSpan LeaseDuration);
 
+public sealed record LeaseUnknownBackgroundJobRequest(
+    IReadOnlyCollection<string> KnownKinds,
+    string LeaseOwner,
+    TimeSpan LeaseDuration,
+    TimeSpan MinimumAge,
+    int MaximumCandidateDocuments,
+    string? AfterKind = null);
+
+public sealed record LeaseUnknownBackgroundJobResult(
+    DurableBackgroundJob? Job,
+    string? NextAfterKind);
+
 public sealed record DurableBackgroundJobLease(
     string JobId,
     string LeaseOwner,
     string LeaseToken);
 
 public sealed record DurableBackgroundJobCompletionResult(
+    string JobId,
+    DurableBackgroundJobStatus Status,
+    long? RequestedRevision,
+    long? ProcessedRevision);
+
+public sealed record DurableBackgroundJobStateTransitionResult(
     string JobId,
     DurableBackgroundJobStatus Status,
     long? RequestedRevision,

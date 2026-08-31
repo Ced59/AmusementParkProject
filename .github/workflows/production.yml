@@ -157,6 +157,7 @@ jobs:
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/stale-deploy-candidates.test.sh
+          deploy/scripts/tests/deploy-candidate-background-jobs.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
           python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py

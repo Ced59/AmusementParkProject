@@ -31,6 +31,7 @@ using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
+using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.Configuration.Email;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
@@ -42,6 +43,7 @@ using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
+using AmusementPark.Infrastructure.Services.BackgroundJobs;
 using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Services.DataSources;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
@@ -78,6 +80,10 @@ public static class InfrastructureServiceCollectionExtensions
 
         MongoDbSettings mongoDbSettings = MongoDbSettings.Bind(configuration);
         services.AddSingleton(mongoDbSettings);
+
+        DurableBackgroundJobWorkerSettings durableBackgroundJobWorkerSettings =
+            DurableBackgroundJobWorkerSettings.Bind(configuration);
+        services.AddSingleton(durableBackgroundJobWorkerSettings);
 
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
@@ -167,6 +173,8 @@ public static class InfrastructureServiceCollectionExtensions
         });
 
         services.AddScoped<IDurableBackgroundJobRepository, DurableBackgroundJobRepository>();
+        services.AddSingleton<DurableBackgroundJobMetrics>();
+        services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

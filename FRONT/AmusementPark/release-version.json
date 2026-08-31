@@ -1,6 +1,20 @@
 {
-  "version": "4.2.38",
+  "version": "4.2.39",
   "history": [
+    {
+      "version": "4.2.39",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Les traitements en arrière-plan reprennent plus fiablement après une interruption.",
+        "en": "Background processing now resumes more reliably after an interruption.",
+        "de": "Hintergrundaufgaben werden nach einer Unterbrechung zuverlässiger fortgesetzt.",
+        "nl": "Achtergrondtaken worden na een onderbreking betrouwbaarder hervat.",
+        "it": "Le attività in background riprendono in modo più affidabile dopo un’interruzione.",
+        "es": "Las tareas en segundo plano se reanudan con mayor fiabilidad tras una interrupción.",
+        "pl": "Zadania w tle są teraz niezawodniej wznawiane po przerwie.",
+        "pt": "As tarefas em segundo plano são retomadas com maior fiabilidade após uma interrupção."
+      }
+    },
     {
       "version": "4.2.38",
       "releasedAt": "2026-09-01",
