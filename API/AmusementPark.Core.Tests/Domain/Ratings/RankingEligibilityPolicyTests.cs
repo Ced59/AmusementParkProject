@@ -161,7 +161,7 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Theory]
-    [InlineData(9, 5, 2, RankingIneligibilityReason.TooFewUniqueContributors)]
+    [InlineData(9, 0, 0, RankingIneligibilityReason.TooFewUniqueContributors)]
     [InlineData(10, 4, 2, RankingIneligibilityReason.InsufficientItemCoverage)]
     [InlineData(10, 5, 1, RankingIneligibilityReason.InsufficientCategoryCoverage)]
     public void EvaluateParkItemComponent_WhenOneThresholdIsMissing_ShouldReturnPreciseReason(
@@ -178,7 +178,7 @@ public sealed class RankingEligibilityPolicyTests
             }
             : new[]
             {
-                new RankingCategoryCoverage(eligibleItemCount, eligibleItemCount),
+                new RankingCategoryCoverage(Math.Max(1, eligibleItemCount), eligibleItemCount),
                 new RankingCategoryCoverage(3, 0),
             };
         ParkRankingEvidenceInput input = CreateParkInput(
@@ -226,7 +226,7 @@ public sealed class RankingEligibilityPolicyTests
         Assert.False(evidence.IsEligibleForMainRanking);
         Assert.Equal(RankingIneligibilityReason.TooFewUniqueContributors, evidence.IneligibilityReason);
         Assert.Equal(10, evidence.UniqueContributorCount);
-        Assert.Equal(10, evidence.RatingObservationCount);
+        Assert.Equal(50, evidence.RatingObservationCount);
         Assert.Equal(9, evidence.DirectParkContributorCount);
         Assert.Equal(10, evidence.ItemContributorCount);
         Assert.Equal(5, evidence.EligibleItemCount);
@@ -310,6 +310,28 @@ public sealed class RankingEligibilityPolicyTests
         ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
             UniqueContributorCount: 10,
             RatingObservationCount: 10,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            ItemCategories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            },
+            IsSingleCategoryParkException: false,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+
+        Assert.Throws<ArgumentException>(
+            () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
+    }
+
+    [Fact]
+    public void EvaluatePark_WhenObservationsCoverContributorsButNotEligibleItems_ShouldRejectInput()
+    {
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 10,
+            RatingObservationCount: 20,
             DirectParkContributorCount: 10,
             ItemContributorCount: 10,
             ItemCategories: new[]
@@ -460,13 +482,16 @@ public sealed class RankingEligibilityPolicyTests
         IReadOnlyCollection<RankingCategoryCoverage> categories,
         bool isSingleCategoryParkException = false)
     {
+        int eligibleItemCount = categories.Sum(static category => category.EligibleItemCount);
+        int itemObservationMinimum = Math.Max(
+            itemContributorCount,
+            checked(eligibleItemCount * RankingEligibilityPolicy.Initial.EligibleMinUniqueContributors));
+
         return new ParkRankingEvidenceInput(
             uniqueContributorCount,
             RatingObservationCount: Math.Max(
                 uniqueContributorCount,
-                directContributorCount + Math.Max(
-                    itemContributorCount,
-                    categories.Sum(static category => category.EligibleItemCount))),
+                directContributorCount + itemObservationMinimum),
             directContributorCount,
             itemContributorCount,
             categories,

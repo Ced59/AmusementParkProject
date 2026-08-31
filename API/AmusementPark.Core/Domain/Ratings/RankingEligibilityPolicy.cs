@@ -301,20 +301,7 @@ public sealed class RankingEligibilityPolicy
                 nameof(input));
         }
 
-        if (input.RatingObservationCount < maximumContributorUnion)
-        {
-            throw new ArgumentException(
-                "Park observations cannot be lower than the sum of direct and item contributors.",
-                nameof(input));
-        }
-
-        if (input.IsSingleCategoryParkException && input.ItemCategories.Count != 1)
-        {
-            throw new ArgumentException(
-                "The single-category exception requires exactly one public item category.",
-                nameof(input));
-        }
-
+        int eligibleItemCount = 0;
         foreach (RankingCategoryCoverage category in input.ItemCategories)
         {
             if (category is null)
@@ -334,7 +321,35 @@ public sealed class RankingEligibilityPolicy
                     "Eligible item count cannot exceed public item count.",
                     nameof(input));
             }
+
+            eligibleItemCount = checked(eligibleItemCount + category.EligibleItemCount);
         }
+
+        if (eligibleItemCount > 0 && input.ItemContributorCount < this.EligibleMinUniqueContributors)
+        {
+            throw new ArgumentException(
+                "Eligible items require at least the eligible contributor threshold across item ratings.",
+                nameof(input));
+        }
+
+        long minimumItemObservationCount = Math.Max(
+            input.ItemContributorCount,
+            checked((long)eligibleItemCount * this.EligibleMinUniqueContributors));
+        long minimumObservationCount = input.DirectParkContributorCount + minimumItemObservationCount;
+        if (input.RatingObservationCount < minimumObservationCount)
+        {
+            throw new ArgumentException(
+                "Park observations cannot be lower than the minimum required by both active component inputs.",
+                nameof(input));
+        }
+
+        if (input.IsSingleCategoryParkException && input.ItemCategories.Count != 1)
+        {
+            throw new ArgumentException(
+                "The single-category exception requires exactly one public item category.",
+                nameof(input));
+        }
+
     }
 
     private static bool IsCategoryCovered(RankingCategoryCoverage category, int minimumEligibleItemsPerCategory)
