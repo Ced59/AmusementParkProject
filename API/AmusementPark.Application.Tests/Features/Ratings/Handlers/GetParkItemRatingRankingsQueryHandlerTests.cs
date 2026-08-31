@@ -71,6 +71,9 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
             10,
             45,
             4.5,
-            bayesianScore);
+            bayesianScore)
+        {
+            AggregateIntegrityIsValid = true,
+        };
     }
 }

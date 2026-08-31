@@ -1,5 +1,8 @@
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Xunit;
 
@@ -34,6 +37,71 @@ public sealed class RatingRepositoryTests
         Assert.Equal(5, result.Count);
         Assert.Equal("park-match", result.First().ParkId);
         Assert.Contains(result, static item => item.ParkId == "park-top");
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Operating, true)]
+    [InlineData(ParkStatus.TemporarilyClosed, true)]
+    [InlineData(ParkStatus.ClosedDefinitively, true)]
+    [InlineData(ParkStatus.Planned, false)]
+    [InlineData(ParkStatus.UnderConstruction, false)]
+    [InlineData(ParkStatus.Cancelled, false)]
+    public void CanTargetReceiveVisitorRatings_ForRetainedParkRating_ShouldHonorParkStatus(
+        ParkStatus status,
+        bool expected)
+    {
+        UserRatingDocument rating = new UserRatingDocument
+        {
+            TargetType = RatingTargetType.Park,
+            TargetId = "park-1",
+            ParkId = "park-1",
+        };
+        Dictionary<string, ParkDocument> parks = new Dictionary<string, ParkDocument>(StringComparer.Ordinal)
+        {
+            ["park-1"] = new ParkDocument { Id = "park-1", Status = status },
+        };
+
+        bool result = RatingRepository.CanTargetReceiveVisitorRatings(
+            rating,
+            parks,
+            new Dictionary<string, ParkItemDocument>(StringComparer.Ordinal));
+
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Operating, ParkItemStatusNormalizer.Operating, true)]
+    [InlineData(ParkStatus.Operating, ParkItemStatusNormalizer.Planned, false)]
+    [InlineData(ParkStatus.Planned, ParkItemStatusNormalizer.Operating, false)]
+    public void CanTargetReceiveVisitorRatings_ForRetainedParkItemRating_ShouldHonorParentAndItemStatus(
+        ParkStatus parkStatus,
+        string itemStatus,
+        bool expected)
+    {
+        UserRatingDocument rating = new UserRatingDocument
+        {
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+        };
+        Dictionary<string, ParkDocument> parks = new Dictionary<string, ParkDocument>(StringComparer.Ordinal)
+        {
+            ["park-1"] = new ParkDocument { Id = "park-1", Status = parkStatus },
+        };
+        Dictionary<string, ParkItemDocument> parkItems = new Dictionary<string, ParkItemDocument>(StringComparer.Ordinal)
+        {
+            ["item-1"] = new ParkItemDocument
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Category = ParkItemCategory.Attraction,
+                AttractionDetails = new AttractionDetailsDocument { Status = itemStatus },
+            },
+        };
+
+        bool result = RatingRepository.CanTargetReceiveVisitorRatings(rating, parks, parkItems);
+
+        Assert.Equal(expected, result);
     }
 
     private static UserRatingListItemResult CreateRating(

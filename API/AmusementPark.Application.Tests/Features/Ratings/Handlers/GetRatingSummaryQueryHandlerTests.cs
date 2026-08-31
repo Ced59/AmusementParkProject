@@ -69,6 +69,8 @@ public sealed class GetRatingSummaryQueryHandlerTests
             RatingSum = 57,
             AverageRating = 4.75,
             BayesianScore = 4.42,
+            MutationVersion = 2,
+            CalculatedVersion = 2,
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository

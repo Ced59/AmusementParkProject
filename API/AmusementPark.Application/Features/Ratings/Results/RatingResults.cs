@@ -148,7 +148,10 @@ public sealed record RatingRankingItemResult(
     long RatingCount,
     double RatingSum,
     double AverageRating,
-    double BayesianScore);
+    double BayesianScore)
+{
+    public bool? AggregateIntegrityIsValid { get; init; }
+}
 
 public sealed record ParkRatingRankingItemResult(
     string TargetId,

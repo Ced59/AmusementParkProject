@@ -27,4 +27,29 @@ public sealed class RatingAggregate : AuditableEntity
     public double BayesianScore { get; set; }
 
     public DateTime? LastRatedAtUtc { get; set; }
+
+    public long? MutationVersion { get; set; }
+
+    public long? CalculatedVersion { get; set; }
+
+    public bool? IsCalculationCurrent
+    {
+        get
+        {
+            if (!this.MutationVersion.HasValue || !this.CalculatedVersion.HasValue)
+            {
+                return null;
+            }
+
+            return IsCalculationCurrentForVersions(
+                this.MutationVersion.Value,
+                this.CalculatedVersion.Value);
+        }
+    }
+
+    public static bool IsCalculationCurrentForVersions(long mutationVersion, long calculatedVersion)
+    {
+        return mutationVersion >= 0
+            && calculatedVersion >= mutationVersion;
+    }
 }

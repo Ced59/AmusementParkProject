@@ -76,6 +76,38 @@ public sealed class RatingRankingFactoryEvidenceTests
     }
 
     [Fact]
+    public void BuildParkRankings_WhenPersistedAggregateIsStale_ShouldExposeIntegrityExclusion()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            ratingCount: 10) with
+        {
+            AggregateIntegrityIsValid = false,
+        };
+        ParkRankingEvidenceFactsBatch facts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    DirectParkContributorCount: 10,
+                    ItemContributorCount: 0),
+            },
+            Array.Empty<PublicParkItemEvidenceFact>());
+
+        ParkRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkRankings(new[] { source }, evidenceFacts: facts));
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, ranking.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            ranking.Evidence?.IneligibilityReason);
+    }
+
+    [Fact]
     public void BuildParkItemRankings_WhenLegacyCountIsOutsideDomainRange_ShouldPreserveRankingWithoutEvidence()
     {
         RatingRankingItemResult source = CreateSource(
@@ -90,6 +122,45 @@ public sealed class RatingRankingFactoryEvidenceTests
         Assert.Equal((long)int.MaxValue + 1, ranking.RatingCount);
         Assert.Null(ranking.Evidence);
         Assert.Null(ranking.UniqueContributorCount);
+    }
+
+    [Fact]
+    public void BuildParkItemRankings_WhenAggregateIsStale_ShouldExposeIntegrityExclusion()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.ParkItem,
+            "attraction-stale",
+            ParkItemCategory.Attraction,
+            ratingCount: 10) with
+        {
+            AggregateIntegrityIsValid = false,
+        };
+
+        ParkItemRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkItemRankings(new[] { source }));
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, ranking.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            ranking.Evidence?.IneligibilityReason);
+    }
+
+    [Fact]
+    public void BuildParkItemRankings_WhenAggregateIntegrityIsUnknown_ShouldWithholdEvidence()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.ParkItem,
+            "attraction-unknown",
+            ParkItemCategory.Attraction,
+            ratingCount: 10) with
+        {
+            AggregateIntegrityIsValid = null,
+        };
+
+        ParkItemRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkItemRankings(new[] { source }));
+
+        Assert.Null(ranking.Evidence);
     }
 
     [Fact]
@@ -228,7 +299,10 @@ public sealed class RatingRankingFactoryEvidenceTests
             ratingCount,
             ratingCount * 4.5,
             4.5,
-            4.2);
+            4.2)
+        {
+            AggregateIntegrityIsValid = true,
+        };
     }
 
     private static PublicParkItemEvidenceFact CreatePublicItem(

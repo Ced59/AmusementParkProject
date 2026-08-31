@@ -151,9 +151,19 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<IReadOnlyCollection<UserRatingListItemResult>> EnrichUserRatingsAsync(IReadOnlyCollection<UserRatingDocument> documents, CancellationToken cancellationToken)
     {
-        IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(documents.Select(static document => document.ParkId), false, cancellationToken);
+        List<string> parkTargetIds = documents
+            .Where(static document => document.TargetType == RatingTargetType.Park)
+            .Select(static document => document.TargetId)
+            .ToList();
         IReadOnlyDictionary<string, ParkItemDocument> parkItems = await this.LoadParkItemsAsync(
             documents.Where(static document => document.TargetType == RatingTargetType.ParkItem).Select(static document => document.TargetId),
+            false,
+            cancellationToken);
+        Dictionary<string, ParkDocument> parks = await this.LoadParkDocumentsAsync(
+            documents
+                .Select(static document => document.ParkId)
+                .Concat(parkTargetIds)
+                .Concat(parkItems.Values.Select(static parkItem => parkItem.ParkId)),
             false,
             cancellationToken);
         IReadOnlyDictionary<string, RatingAggregate> aggregates = await this.LoadAggregatesAsync(documents, cancellationToken);
@@ -162,8 +172,15 @@ public sealed class RatingRepository : IRatingRepository
         {
             string key = BuildTargetKey(document.TargetType, document.TargetId);
             aggregates.TryGetValue(key, out RatingAggregate? aggregate);
-            RatingSummaryResult summary = ToSummary(document.TargetType, document.TargetId, aggregate);
-            string? parkName = parkNames.TryGetValue(document.ParkId, out string? resolvedParkName) ? resolvedParkName : null;
+            bool targetCanReceiveVisitorRatings = CanTargetReceiveVisitorRatings(document, parks, parkItems);
+            RatingSummaryResult summary = ToSummary(
+                document.TargetType,
+                document.TargetId,
+                aggregate,
+                targetCanReceiveVisitorRatings);
+            string? parkName = parks.TryGetValue(document.ParkId, out ParkDocument? park)
+                ? park.Name?.Trim() ?? park.Id
+                : null;
             string targetName = ResolveTargetName(document, parkName, parkItems);
 
             return new UserRatingListItemResult(
@@ -437,7 +454,10 @@ public sealed class RatingRepository : IRatingRepository
                     document.RatingCount,
                     document.RatingSum,
                     document.AverageRating,
-                    document.BayesianScore));
+                    document.BayesianScore)
+                {
+                    AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
+                });
                 continue;
             }
 
@@ -470,7 +490,10 @@ public sealed class RatingRepository : IRatingRepository
                 document.RatingCount,
                 document.RatingSum,
                 document.AverageRating,
-                document.BayesianScore));
+                document.BayesianScore)
+            {
+                AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
+            });
         }
 
         return items;
@@ -639,9 +662,43 @@ public sealed class RatingRepository : IRatingRepository
             .Ascending(document => document.TargetId);
     }
 
-    private static RatingSummaryResult ToSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
+    internal static bool CanTargetReceiveVisitorRatings(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkDocument> parks,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems)
     {
-        return RatingResultFactory.CreateSummary(targetType, targetId, aggregate);
+        if (document.TargetType == RatingTargetType.Park)
+        {
+            return parks.TryGetValue(document.TargetId, out ParkDocument? park)
+                && park.Status.CanReceiveVisitorRatings();
+        }
+
+        return parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            && parks.TryGetValue(parkItem.ParkId, out ParkDocument? parentPark)
+            && parentPark.Status.CanReceiveVisitorRatings()
+            && ParkItemStatusNormalizer.CanReceiveVisitorRatings(
+                parkItem.Category,
+                parkItem.AttractionDetails?.Status);
+    }
+
+    private static bool IsAggregateCalculationCurrent(RatingAggregateDocument document)
+    {
+        return RatingAggregate.IsCalculationCurrentForVersions(
+            document.MutationVersion,
+            document.CalculatedVersion);
+    }
+
+    private static RatingSummaryResult ToSummary(
+        RatingTargetType targetType,
+        string targetId,
+        RatingAggregate? aggregate,
+        bool targetCanReceiveVisitorRatings)
+    {
+        return RatingResultFactory.CreateSummary(
+            targetType,
+            targetId,
+            aggregate,
+            targetCanReceiveVisitorRatings);
     }
 
     private static string ResolveTargetName(UserRatingDocument document, string? parkName, IReadOnlyDictionary<string, ParkItemDocument> parkItems)

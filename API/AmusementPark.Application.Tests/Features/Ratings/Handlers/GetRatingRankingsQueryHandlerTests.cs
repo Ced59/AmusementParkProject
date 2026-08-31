@@ -167,7 +167,10 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 10,
                 score * 10,
                 score,
-                score));
+                score)
+            {
+                AggregateIntegrityIsValid = true,
+            });
         }
 
         return sources;
@@ -204,7 +207,10 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 10,
                 45,
                 4.5,
-                4.2),
+                4.2)
+            {
+                AggregateIntegrityIsValid = true,
+            },
         };
         for (int index = 1; index <= 5; index += 1)
         {
@@ -222,7 +228,10 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 10,
                 45,
                 4.5,
-                4.1));
+                4.1)
+            {
+                AggregateIntegrityIsValid = true,
+            });
         }
 
         return sources;
@@ -247,6 +256,9 @@ public sealed class GetRatingRankingsQueryHandlerTests
             10,
             45,
             4.5,
-            bayesianScore);
+            bayesianScore)
+        {
+            AggregateIntegrityIsValid = true,
+        };
     }
 }

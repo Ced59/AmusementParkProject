@@ -49,6 +49,8 @@ public sealed class ParkDetailSummaryReadRepositoryTests
             RatingSum = 45,
             AverageRating = 4.5,
             BayesianScore = 4,
+            MutationVersion = 1,
+            CalculatedVersion = 1,
         };
     }
 }
