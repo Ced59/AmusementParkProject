@@ -139,6 +139,21 @@ internal sealed class DurableBackgroundJobClaim : IDisposable
 
     public DurableBackgroundJob Job { get; }
 
+    public async Task ReleaseAfterAsync(Task completion, IDisposable dependencyScope)
+    {
+        ArgumentNullException.ThrowIfNull(completion);
+        ArgumentNullException.ThrowIfNull(dependencyScope);
+        try
+        {
+            await completion;
+        }
+        finally
+        {
+            this.Dispose();
+            dependencyScope.Dispose();
+        }
+    }
+
     public void Dispose()
     {
         Action? releaseAction = Interlocked.Exchange(ref this.release, null);

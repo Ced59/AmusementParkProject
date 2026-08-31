@@ -310,7 +310,7 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
     }
 
     [Fact]
-    public async Task ExecuteAsync_WhenHandlerIgnoresTimeoutCancellation_ShouldStillReleaseTheWorkerAndScheduleRetry()
+    public async Task ExecuteAsync_WhenHandlerIgnoresTimeoutCancellation_ShouldDeadLetterAndExposeItsLifetime()
     {
         TaskCompletionSource<DurableBackgroundJobHandlerResult> handlerRelease =
             new TaskCompletionSource<DurableBackgroundJobHandlerResult>(
@@ -321,13 +321,12 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
             timeout: TimeSpan.FromMilliseconds(20));
         Mock<IDurableBackgroundJobRepository> repository = new Mock<IDurableBackgroundJobRepository>();
         repository
-            .Setup(item => item.ScheduleRetryAsync(
+            .Setup(item => item.DeadLetterAsync(
                 It.IsAny<DurableBackgroundJobLease>(),
                 7,
-                It.IsAny<TimeSpan>(),
                 DurableBackgroundJobErrorCodes.HandlerTimeout,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateTransition(DurableBackgroundJobStatus.RetryScheduled));
+            .ReturnsAsync(CreateTransition(DurableBackgroundJobStatus.DeadLetter));
         DurableBackgroundJobExecutionOrchestrator orchestrator = CreateOrchestrator(repository.Object, handler);
 
         DurableBackgroundJobExecutionResult result = await orchestrator.ExecuteAsync(
@@ -336,9 +335,13 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
                 TimeSpan.FromSeconds(30),
                 CancellationToken.None)
             .WaitAsync(TimeSpan.FromSeconds(1));
-        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
 
-        Assert.Equal(DurableBackgroundJobExecutionDisposition.RetryScheduled, result.Disposition);
+        Assert.Equal(DurableBackgroundJobExecutionDisposition.DeadLettered, result.Disposition);
+        Task ongoingHandlerCompletion = Assert.IsAssignableFrom<Task>(result.OngoingHandlerCompletion);
+        Assert.False(ongoingHandlerCompletion.IsCompleted);
+
+        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
+        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(1));
     }
 
     [Fact]
@@ -438,15 +441,19 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
         await handlerStarted.Task;
         stoppingSource.Cancel();
         DurableBackgroundJobExecutionResult result = await execution.WaitAsync(TimeSpan.FromSeconds(1));
-        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
 
         Assert.Equal(DurableBackgroundJobExecutionDisposition.Cancelled, result.Disposition);
+        Task ongoingHandlerCompletion = Assert.IsAssignableFrom<Task>(result.OngoingHandlerCompletion);
+        Assert.False(ongoingHandlerCompletion.IsCompleted);
         repository.Verify(
             item => item.CompleteAsync(
                 It.IsAny<DurableBackgroundJobLease>(),
                 It.IsAny<long?>(),
                 It.IsAny<CancellationToken>()),
             Times.Never);
+
+        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
+        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(1));
     }
 
     private static DurableBackgroundJobExecutionOrchestrator CreateOrchestrator(

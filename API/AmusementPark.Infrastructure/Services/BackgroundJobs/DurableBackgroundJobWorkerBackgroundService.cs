@@ -128,23 +128,34 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
         {
             try
             {
-                using IServiceScope scope = this.serviceScopeFactory.CreateScope();
-                IDurableBackgroundJobRepository repository =
-                    scope.ServiceProvider.GetRequiredService<IDurableBackgroundJobRepository>();
-                using DurableBackgroundJobClaim? claim = await claimCoordinator.TryClaimAsync(
-                    repository,
-                    workload,
-                    leaseOwner,
-                    this.settings.LeaseDuration,
-                    stoppingToken);
+                IServiceScope scope = this.serviceScopeFactory.CreateScope();
+                DurableBackgroundJobClaim? claim;
+                try
+                {
+                    IDurableBackgroundJobRepository repository =
+                        scope.ServiceProvider.GetRequiredService<IDurableBackgroundJobRepository>();
+                    claim = await claimCoordinator.TryClaimAsync(
+                        repository,
+                        workload,
+                        leaseOwner,
+                        this.settings.LeaseDuration,
+                        stoppingToken);
+                }
+                catch
+                {
+                    scope.Dispose();
+                    throw;
+                }
+
                 if (claim is null)
                 {
+                    scope.Dispose();
                     await Task.Delay(idleBackoff.TakeNextDelay(), this.timeProvider, stoppingToken);
                     continue;
                 }
 
                 idleBackoff.Reset();
-                await this.ExecuteClaimAsync(scope, claim, stoppingToken);
+                await this.ExecuteClaimWithLifetimeAsync(scope, claim, stoppingToken);
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {
@@ -179,24 +190,35 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
         {
             try
             {
-                using IServiceScope scope = this.serviceScopeFactory.CreateScope();
-                IDurableBackgroundJobRepository repository =
-                    scope.ServiceProvider.GetRequiredService<IDurableBackgroundJobRepository>();
-                using DurableBackgroundJobClaim? claim = await claimCoordinator.TryClaimUnknownKindAsync(
-                    repository,
-                    leaseOwner,
-                    this.settings.LeaseDuration,
-                    this.settings.UnknownKindGracePeriod,
-                    this.settings.UnknownKindScanBatchSize,
-                    stoppingToken);
+                IServiceScope scope = this.serviceScopeFactory.CreateScope();
+                DurableBackgroundJobClaim? claim;
+                try
+                {
+                    IDurableBackgroundJobRepository repository =
+                        scope.ServiceProvider.GetRequiredService<IDurableBackgroundJobRepository>();
+                    claim = await claimCoordinator.TryClaimUnknownKindAsync(
+                        repository,
+                        leaseOwner,
+                        this.settings.LeaseDuration,
+                        this.settings.UnknownKindGracePeriod,
+                        this.settings.UnknownKindScanBatchSize,
+                        stoppingToken);
+                }
+                catch
+                {
+                    scope.Dispose();
+                    throw;
+                }
+
                 if (claim is null)
                 {
+                    scope.Dispose();
                     await Task.Delay(idleBackoff.TakeNextDelay(), this.timeProvider, stoppingToken);
                     continue;
                 }
 
                 idleBackoff.Reset();
-                await this.ExecuteClaimAsync(scope, claim, stoppingToken);
+                await this.ExecuteClaimWithLifetimeAsync(scope, claim, stoppingToken);
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {
@@ -212,7 +234,7 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
         }
     }
 
-    private async Task ExecuteClaimAsync(
+    private async Task<DurableBackgroundJobExecutionResult> ExecuteClaimAsync(
         IServiceScope scope,
         DurableBackgroundJobClaim claim,
         CancellationToken stoppingToken)
@@ -234,6 +256,59 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
             result.Disposition,
             claim.Job.AttemptCount,
             elapsed.TotalMilliseconds);
+        return result;
+    }
+
+    private async Task ExecuteClaimWithLifetimeAsync(
+        IServiceScope scope,
+        DurableBackgroundJobClaim claim,
+        CancellationToken stoppingToken)
+    {
+        bool retainedForHandler = false;
+        try
+        {
+            DurableBackgroundJobExecutionResult result = await this.ExecuteClaimAsync(
+                scope,
+                claim,
+                stoppingToken);
+            if (result.OngoingHandlerCompletion is { IsCompleted: false } ongoingHandlerCompletion)
+            {
+                retainedForHandler = true;
+                _ = this.ReleaseDetachedExecutionAsync(
+                    ongoingHandlerCompletion,
+                    scope,
+                    claim,
+                    claim.Job);
+            }
+        }
+        finally
+        {
+            if (!retainedForHandler)
+            {
+                claim.Dispose();
+                scope.Dispose();
+            }
+        }
+    }
+
+    private async Task ReleaseDetachedExecutionAsync(
+        Task ongoingHandlerCompletion,
+        IServiceScope scope,
+        DurableBackgroundJobClaim claim,
+        DurableBackgroundJob job)
+    {
+        try
+        {
+            await claim.ReleaseAfterAsync(ongoingHandlerCompletion, scope);
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogError(
+                exception,
+                "Unable to observe the retained execution lifetime for durable background job {JobId} of kind {Kind}.",
+                job.Id,
+                job.Kind);
+        }
     }
 
     private async Task RunLeaseRecoveryLoopAsync(CancellationToken stoppingToken)

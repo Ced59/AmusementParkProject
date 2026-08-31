@@ -184,7 +184,8 @@ public sealed record DurableBackgroundJobHandlerResult
 public sealed record DurableBackgroundJobExecutionResult(
     DurableBackgroundJobExecutionDisposition Disposition,
     DurableBackgroundJobStatus? PersistedStatus = null,
-    string? ErrorCode = null);
+    string? ErrorCode = null,
+    Task? OngoingHandlerCompletion = null);
 
 public static class DurableBackgroundJobErrorCodes
 {

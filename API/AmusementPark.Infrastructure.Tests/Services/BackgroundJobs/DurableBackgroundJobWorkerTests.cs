@@ -221,6 +221,30 @@ public sealed class DurableBackgroundJobWorkerTests
             Times.Once);
     }
 
+    [Fact]
+    public async Task ClaimLifetime_ShouldRetainConcurrencyAndDependenciesUntilDetachedHandlerCompletes()
+    {
+        int releaseCount = 0;
+        Mock<IDisposable> dependencyScope = new Mock<IDisposable>(MockBehavior.Strict);
+        dependencyScope.Setup(item => item.Dispose());
+        DurableBackgroundJobClaim claim = new DurableBackgroundJobClaim(
+            CreateLeasedJob("job-1"),
+            () => releaseCount++);
+        TaskCompletionSource handlerCompletion = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task release = claim.ReleaseAfterAsync(handlerCompletion.Task, dependencyScope.Object);
+
+        Assert.Equal(0, releaseCount);
+        dependencyScope.Verify(item => item.Dispose(), Times.Never);
+
+        handlerCompletion.TrySetResult();
+        await release;
+
+        Assert.Equal(1, releaseCount);
+        dependencyScope.Verify(item => item.Dispose(), Times.Once);
+    }
+
     private static DurableBackgroundJobHandlerDefinition CreateDefinition(int maximumConcurrency)
     {
         return new DurableBackgroundJobHandlerDefinition(

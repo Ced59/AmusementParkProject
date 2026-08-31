@@ -6,6 +6,7 @@ namespace AmusementPark.Application.Features.BackgroundJobs.Services;
 
 public sealed class DurableBackgroundJobExecutionOrchestrator
 {
+    private static readonly TimeSpan HandlerCancellationGracePeriod = TimeSpan.FromMilliseconds(250);
     private readonly IDurableBackgroundJobRepository repository;
     private readonly IDurableBackgroundJobHandlerResolver handlerResolver;
     private readonly DurableBackgroundJobRetryDelayCalculator retryDelayCalculator;
@@ -95,6 +96,7 @@ public sealed class DurableBackgroundJobExecutionOrchestrator
             leaseLostSource);
         DurableBackgroundJobHandlerResult? handlerResult = null;
         Task<DurableBackgroundJobHandlerResult>? handlerTask = null;
+        Task? ongoingHandlerCompletion = null;
         bool timeoutObserved = false;
 
         try
@@ -112,17 +114,21 @@ public sealed class DurableBackgroundJobExecutionOrchestrator
         }
         catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
         {
-            this.ObserveDetachedHandler(handlerTask, job);
-            return new DurableBackgroundJobExecutionResult(DurableBackgroundJobExecutionDisposition.Cancelled);
+            ongoingHandlerCompletion = await this.ResolveHandlerLifetimeAfterCancellationAsync(handlerTask, job);
+            return new DurableBackgroundJobExecutionResult(
+                DurableBackgroundJobExecutionDisposition.Cancelled,
+                OngoingHandlerCompletion: ongoingHandlerCompletion);
         }
         catch (OperationCanceledException) when (leaseLostSource.IsCancellationRequested)
         {
-            this.ObserveDetachedHandler(handlerTask, job);
-            return new DurableBackgroundJobExecutionResult(DurableBackgroundJobExecutionDisposition.LeaseLost);
+            ongoingHandlerCompletion = await this.ResolveHandlerLifetimeAfterCancellationAsync(handlerTask, job);
+            return new DurableBackgroundJobExecutionResult(
+                DurableBackgroundJobExecutionDisposition.LeaseLost,
+                OngoingHandlerCompletion: ongoingHandlerCompletion);
         }
         catch (OperationCanceledException) when (timeoutSource.IsCancellationRequested)
         {
-            this.ObserveDetachedHandler(handlerTask, job);
+            ongoingHandlerCompletion = await this.ResolveHandlerLifetimeAfterCancellationAsync(handlerTask, job);
             timeoutObserved = true;
         }
         catch (OperationCanceledException exception)
@@ -165,8 +171,9 @@ public sealed class DurableBackgroundJobExecutionOrchestrator
 
         if (timeoutObserved)
         {
-            handlerResult = DurableBackgroundJobHandlerResult.Retry(
-                DurableBackgroundJobErrorCodes.HandlerTimeout);
+            handlerResult = ongoingHandlerCompletion is null
+                ? DurableBackgroundJobHandlerResult.Retry(DurableBackgroundJobErrorCodes.HandlerTimeout)
+                : DurableBackgroundJobHandlerResult.DeadLetter(DurableBackgroundJobErrorCodes.HandlerTimeout);
         }
 
         if (handlerResult is null)
@@ -175,7 +182,15 @@ public sealed class DurableBackgroundJobExecutionOrchestrator
                 DurableBackgroundJobErrorCodes.InvalidHandlerResult);
         }
 
-        return await this.ApplyHandlerResultAsync(job, lease, definition, handlerResult, stoppingToken);
+        DurableBackgroundJobExecutionResult result = await this.ApplyHandlerResultAsync(
+            job,
+            lease,
+            definition,
+            handlerResult,
+            stoppingToken);
+        return ongoingHandlerCompletion is null
+            ? result
+            : result with { OngoingHandlerCompletion = ongoingHandlerCompletion };
     }
 
     private async Task<DurableBackgroundJobExecutionResult> ApplyHandlerResultAsync(
@@ -343,16 +358,37 @@ public sealed class DurableBackgroundJobExecutionOrchestrator
             job.Kind);
     }
 
-    private void ObserveDetachedHandler(
+    private async Task<Task?> ResolveHandlerLifetimeAfterCancellationAsync(
         Task<DurableBackgroundJobHandlerResult>? handlerTask,
         DurableBackgroundJob job)
     {
         if (handlerTask is null || handlerTask.IsCompleted)
         {
-            return;
+            return null;
         }
 
-        _ = this.ObserveDetachedHandlerAsync(handlerTask, job);
+        try
+        {
+            await handlerTask.WaitAsync(HandlerCancellationGracePeriod);
+            return null;
+        }
+        catch (TimeoutException)
+        {
+            return this.ObserveDetachedHandlerAsync(handlerTask, job);
+        }
+        catch (OperationCanceledException)
+        {
+            return null;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(
+                exception,
+                "Handler for durable background job {JobId} of kind {Kind} failed while stopping after cancellation.",
+                job.Id,
+                job.Kind);
+            return null;
+        }
     }
 
     private async Task ObserveDetachedHandlerAsync(
