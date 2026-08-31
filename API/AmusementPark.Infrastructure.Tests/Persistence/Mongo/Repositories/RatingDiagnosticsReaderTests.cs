@@ -258,6 +258,50 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void EvaluateIndexStatuses_WhenIndexHasTrailingKey_ShouldKeepTheQueryUsable()
+    {
+        BsonDocument aggregateIndex = CreateIndex(
+            RatingDiagnosticsReader.RatingAggregatesTargetIndexName,
+            true,
+            ("targetType", 1),
+            ("targetId", 1),
+            ("updatedAt", -1));
+
+        IReadOnlyCollection<RatingIndexStatusResult> results = RatingDiagnosticsReader.EvaluateIndexStatuses(
+            "userRatings",
+            Array.Empty<BsonDocument>(),
+            "ratingAggregates",
+            new[] { aggregateIndex });
+
+        RatingIndexStatusResult result = results.Single(static item =>
+            item.Name == RatingDiagnosticsReader.RatingAggregatesTargetIndexName);
+        Assert.True(result.SupportsExpectedQueries);
+        Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    [Fact]
+    public void EvaluateIndexStatuses_WhenExpectedKeysAreNotTheLeadingPrefix_ShouldRejectQuerySupport()
+    {
+        BsonDocument aggregateIndex = CreateIndex(
+            RatingDiagnosticsReader.RatingAggregatesTargetIndexName,
+            true,
+            ("updatedAt", -1),
+            ("targetType", 1),
+            ("targetId", 1));
+
+        IReadOnlyCollection<RatingIndexStatusResult> results = RatingDiagnosticsReader.EvaluateIndexStatuses(
+            "userRatings",
+            Array.Empty<BsonDocument>(),
+            "ratingAggregates",
+            new[] { aggregateIndex });
+
+        RatingIndexStatusResult result = results.Single(static item =>
+            item.Name == RatingDiagnosticsReader.RatingAggregatesTargetIndexName);
+        Assert.False(result.SupportsExpectedQueries);
+        Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    [Fact]
     public void EvaluateIndexStatuses_WhenIndexIsHidden_ShouldExposeTheDefinitionMismatch()
     {
         BsonDocument hiddenIndex = CreateIndex(

@@ -522,7 +522,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             bool supportsExpectedQueries = isPresent
                 && !isHidden
                 && actualKeys is not null
-                && expectedIndex.Keys.Equals(actualKeys)
+                && IndexKeysStartWith(actualKeys, expectedIndex.Keys)
                 && !HasQueryLimitingIndexOptions(actual!);
             bool matchesExpectedDefinition = isPresent
                 && isUnique == expectedIndex.IsUnique
@@ -545,6 +545,27 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
 
         return results;
+    }
+
+    private static bool IndexKeysStartWith(BsonDocument actualKeys, BsonDocument expectedPrefix)
+    {
+        if (actualKeys.ElementCount < expectedPrefix.ElementCount)
+        {
+            return false;
+        }
+
+        for (int index = 0; index < expectedPrefix.ElementCount; index++)
+        {
+            BsonElement actualElement = actualKeys.GetElement(index);
+            BsonElement expectedElement = expectedPrefix.GetElement(index);
+            if (!string.Equals(actualElement.Name, expectedElement.Name, StringComparison.Ordinal)
+                || !actualElement.Value.Equals(expectedElement.Value))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static bool HasUsableIndex(
