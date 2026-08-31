@@ -73,6 +73,10 @@ internal static class DurableBackgroundJobMongoDefinitions
                     "$notBeforeUtc",
                 })
             },
+            {
+                "attemptCount",
+                new BsonDocument("$cond", new BsonArray { hasNewerRevision, 0, "$attemptCount" })
+            },
             { "updatedAt", nowUtc },
         };
         if (correlationId is not null)

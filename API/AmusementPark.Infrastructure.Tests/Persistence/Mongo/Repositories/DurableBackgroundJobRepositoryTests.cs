@@ -178,6 +178,11 @@ public sealed class DurableBackgroundJobRepositoryTests
             NowUtc.AddMinutes(3),
             scheduleCondition[1].ToUniversalTime());
 
+        BsonArray attemptCountCondition = set["attemptCount"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(newerRevision, attemptCountCondition[0].AsBsonDocument);
+        Assert.Equal(0, attemptCountCondition[1].AsInt32);
+        Assert.Equal("$attemptCount", attemptCountCondition[2].AsString);
+
         BsonArray priorityCondition = set["priority"].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(40, priorityCondition[1].AsInt32);
         Assert.Equal("$priority", priorityCondition[2].AsString);
