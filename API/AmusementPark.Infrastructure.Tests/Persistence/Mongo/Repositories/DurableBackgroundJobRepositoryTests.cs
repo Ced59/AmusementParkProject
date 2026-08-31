@@ -1,8 +1,10 @@
 using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using Moq;
 using Xunit;
 using DurableBackgroundJobRepository = AmusementPark.Infrastructure.Persistence.Mongo.Repositories.DurableBackgroundJobMongoDefinitions;
 using DurableBackgroundJobStore = AmusementPark.Infrastructure.Persistence.Mongo.Repositories.DurableBackgroundJobRepository;
@@ -12,6 +14,46 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class DurableBackgroundJobRepositoryTests
 {
     private static readonly DateTime NowUtc = new DateTime(2026, 8, 31, 18, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public async Task TryLeaseNextAsync_ShouldCheckExpiredLeasesBeforeScheduledJobs()
+    {
+        Mock<IMongoCollection<DurableBackgroundJobDocument>> collection =
+            new Mock<IMongoCollection<DurableBackgroundJobDocument>>(MockBehavior.Strict);
+        List<FilterDefinition<DurableBackgroundJobDocument>> filters =
+            new List<FilterDefinition<DurableBackgroundJobDocument>>();
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<DurableBackgroundJobDocument>>(),
+                It.IsAny<UpdateDefinition<DurableBackgroundJobDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<DurableBackgroundJobDocument, DurableBackgroundJobDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<DurableBackgroundJobDocument> filter,
+                UpdateDefinition<DurableBackgroundJobDocument> _,
+                FindOneAndUpdateOptions<DurableBackgroundJobDocument, DurableBackgroundJobDocument> _,
+                CancellationToken _) => filters.Add(filter))
+            .ReturnsAsync((DurableBackgroundJobDocument)null!);
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database.Setup(value => value.GetCollection<DurableBackgroundJobDocument>("background_jobs", null))
+            .Returns(collection.Object);
+        DurableBackgroundJobStore repository = new DurableBackgroundJobStore(
+            database.Object,
+            new MongoDbSettings { DurableBackgroundJobsCollectionName = "background_jobs" });
+
+        DurableBackgroundJob? leased = await repository.TryLeaseNextAsync(
+            new LeaseBackgroundJobRequest(new[] { "rank.snapshot" }, "worker-1", TimeSpan.FromMinutes(2)),
+            CancellationToken.None);
+
+        Assert.Null(leased);
+        Assert.Equal(2, filters.Count);
+        Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), Render(filters[0])["status"].AsString);
+        BsonArray scheduledStatuses = Render(filters[1])["status"].AsBsonDocument["$in"].AsBsonArray;
+        Assert.Contains(
+            DurableBackgroundJobStatus.Pending.ToString(),
+            scheduledStatuses.Select(static item => item.AsString));
+        collection.VerifyAll();
+        database.VerifyAll();
+    }
 
     [Fact]
     public void BuildScheduledRunnableFilter_ShouldSelectDueJobsForRequestedKinds()

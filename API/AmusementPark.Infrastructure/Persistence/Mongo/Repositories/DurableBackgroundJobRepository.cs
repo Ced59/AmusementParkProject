@@ -178,8 +178,8 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         DateTime nowUtc = this.GetUtcNow();
         string leaseToken = Guid.NewGuid().ToString("N");
         DurableBackgroundJobDocument? leased = await this.TryLeaseAsync(
-            BuildScheduledRunnableFilter(kinds, nowUtc),
-            BuildScheduledRunnableSort(),
+            BuildExpiredLeaseRunnableFilter(kinds, nowUtc),
+            BuildExpiredLeaseRunnableSort(),
             leaseOwner,
             leaseToken,
             leaseDuration,
@@ -191,8 +191,8 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         }
 
         leased = await this.TryLeaseAsync(
-            BuildExpiredLeaseRunnableFilter(kinds, nowUtc),
-            BuildExpiredLeaseRunnableSort(),
+            BuildScheduledRunnableFilter(kinds, nowUtc),
+            BuildScheduledRunnableSort(),
             leaseOwner,
             leaseToken,
             leaseDuration,
