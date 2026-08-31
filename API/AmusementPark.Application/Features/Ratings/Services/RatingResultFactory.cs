@@ -12,21 +12,16 @@ public static class RatingResultFactory
         string targetId,
         RatingAggregate? aggregate,
         bool targetCanReceiveVisitorRatings,
-        bool? aggregateIntegrityIsValid = null)
+        bool? aggregateIntegrityIsValid)
     {
         long ratingCount = aggregate?.RatingCount ?? 0;
         bool? resolvedAggregateIntegrity = aggregateIntegrityIsValid ?? aggregate?.IsCalculationCurrent;
-        RankingEvidenceResult? evidence = aggregate is null
+        RankingEvidenceResult? evidence = resolvedAggregateIntegrity.HasValue
             ? TryCreateSimpleEvidence(
                 ratingCount,
                 targetCanReceiveVisitorRatings,
-                aggregateIntegrityIsValid: true)
-            : resolvedAggregateIntegrity.HasValue
-                ? TryCreateSimpleEvidence(
-                    ratingCount,
-                    targetCanReceiveVisitorRatings,
-                    resolvedAggregateIntegrity.Value)
-                : null;
+                resolvedAggregateIntegrity.Value)
+            : null;
 
         return new RatingSummaryResult(
             aggregate?.TargetType ?? targetType,

@@ -82,9 +82,16 @@ internal sealed class RatingAggregateSynchronizer
                 continue;
             }
 
-            if (currentDocument.CalculatedVersion >= currentDocument.MutationVersion)
+            if (RatingAggregate.IsCalculationCurrentForVersions(
+                    currentDocument.MutationVersion,
+                    currentDocument.CalculatedVersion))
             {
                 return ToVisibleAggregate(currentDocument);
+            }
+
+            if (currentDocument.CalculatedVersion > currentDocument.MutationVersion)
+            {
+                throw new InvalidOperationException("Rating aggregate calculation version exceeds its mutation version.");
             }
 
             pendingMutation = ToPendingMutation(currentDocument);

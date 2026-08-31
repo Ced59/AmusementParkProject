@@ -99,7 +99,8 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.TargetType,
             metadata.TargetId,
             mutation.Aggregate,
-            metadata.CanReceiveVisitorRatings);
+            metadata.CanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: mutation.Aggregate is null ? false : null);
 
         return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(mutation.Rating, summary));
     }
@@ -178,7 +179,8 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             command.TargetType,
             targetId,
             aggregate,
-            metadata?.CanReceiveVisitorRatings ?? false);
+            metadata?.CanReceiveVisitorRatings ?? false,
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
 }
@@ -236,7 +238,8 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
             query.TargetType,
             targetId,
             aggregate,
-            metadata.CanReceiveVisitorRatings);
+            metadata.CanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
         if (aggregate is not null && aggregate.RatingCount > 0)
         {
             int? rank = await this.ratingRankProvider.GetRankAsync(aggregate, cancellationToken);
@@ -361,7 +364,8 @@ public sealed class GetUserRatingQueryHandler : IQueryHandler<GetUserRatingQuery
             query.TargetType,
             targetId,
             aggregate,
-            metadata?.CanReceiveVisitorRatings ?? false);
+            metadata?.CanReceiveVisitorRatings ?? false,
+            aggregateIntegrityIsValid: aggregate is null ? false : null);
 
         UserRatingResult result = new UserRatingResult(
             rating.Id,

@@ -722,7 +722,8 @@ public sealed class RatingRepository : IRatingRepository
             targetType,
             targetId,
             aggregate,
-            targetCanReceiveVisitorRatings);
+            targetCanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: aggregate is null ? false : null);
     }
 
     private static string ResolveTargetName(UserRatingDocument document, string? parkName, IReadOnlyDictionary<string, ParkItemDocument> parkItems)

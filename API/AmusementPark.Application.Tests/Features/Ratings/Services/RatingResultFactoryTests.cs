@@ -16,7 +16,8 @@ public sealed class RatingResultFactoryTests
             RatingTargetType.Park,
             "park-1",
             aggregate,
-            targetCanReceiveVisitorRatings: true);
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
 
         Assert.Equal(RankingEvidenceLevel.Excluded, result.Evidence?.Level);
         Assert.Equal(
@@ -33,7 +34,8 @@ public sealed class RatingResultFactoryTests
             RatingTargetType.Park,
             "park-1",
             aggregate,
-            targetCanReceiveVisitorRatings: true);
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
 
         Assert.Null(result.Evidence);
     }
@@ -47,9 +49,57 @@ public sealed class RatingResultFactoryTests
             RatingTargetType.Park,
             "park-1",
             aggregate,
-            targetCanReceiveVisitorRatings: true);
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
 
         Assert.Equal(RankingEvidenceLevel.Eligible, result.Evidence?.Level);
+    }
+
+    [Fact]
+    public void CreateSummary_WhenCalculatedVersionIsAhead_ShouldExposeIntegrityExclusion()
+    {
+        RatingAggregate aggregate = CreateAggregate(mutationVersion: 2, calculatedVersion: 3);
+
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, result.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            result.Evidence?.IneligibilityReason);
+    }
+
+    [Fact]
+    public void CreateSummary_WhenMissingAggregateIsKnownInvalid_ShouldExposeIntegrityExclusion()
+    {
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate: null,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: false);
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, result.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            result.Evidence?.IneligibilityReason);
+    }
+
+    [Fact]
+    public void CreateSummary_WhenMissingAggregateIntegrityIsUnknown_ShouldWithholdEvidence()
+    {
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate: null,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
+
+        Assert.Null(result.Evidence);
     }
 
     private static RatingAggregate CreateAggregate(long? mutationVersion, long? calculatedVersion)

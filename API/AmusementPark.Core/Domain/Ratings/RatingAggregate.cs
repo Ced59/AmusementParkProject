@@ -50,6 +50,6 @@ public sealed class RatingAggregate : AuditableEntity
     public static bool IsCalculationCurrentForVersions(long mutationVersion, long calculatedVersion)
     {
         return mutationVersion >= 0
-            && calculatedVersion >= mutationVersion;
+            && calculatedVersion == mutationVersion;
     }
 }

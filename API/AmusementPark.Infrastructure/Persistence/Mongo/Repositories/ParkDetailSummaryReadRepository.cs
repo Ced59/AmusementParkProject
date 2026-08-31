@@ -158,7 +158,8 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             RatingTargetType.Park,
             parkId,
             aggregate,
-            parkStatus.CanReceiveVisitorRatings());
+            parkStatus.CanReceiveVisitorRatings(),
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
     }
 
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)

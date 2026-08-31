@@ -83,9 +83,37 @@ public sealed class GetUserRatingQueryHandlerTests
         parkItemRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenRetainedRatingHasNoAggregate_ShouldExposeIntegrityExclusion()
+    {
+        UserRating rating = CreateRating(RatingTargetType.Park, "park-1", "park-1");
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository(rating, aggregate: null);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Demo Park", Status = ParkStatus.Operating });
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        GetUserRatingQueryHandler handler = new GetUserRatingQueryHandler(
+            ratingRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object);
+
+        ApplicationResult<UserRatingResult?> result = await handler.HandleAsync(
+            new GetUserRatingQuery("user-1", RatingTargetType.Park, "park-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(RankingEvidenceLevel.Excluded, result.Value?.Summary.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            result.Value?.Summary.Evidence?.IneligibilityReason);
+        ratingRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
     private static Mock<IRatingRepository> CreateRatingRepository(
         UserRating rating,
-        RatingAggregate aggregate)
+        RatingAggregate? aggregate)
     {
         Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
         repository
@@ -97,8 +125,8 @@ public sealed class GetUserRatingQueryHandlerTests
             .ReturnsAsync(rating);
         repository
             .Setup(value => value.GetAggregateAsync(
-                aggregate.TargetType,
-                aggregate.TargetId,
+                rating.TargetType,
+                rating.TargetId,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
         return repository;
