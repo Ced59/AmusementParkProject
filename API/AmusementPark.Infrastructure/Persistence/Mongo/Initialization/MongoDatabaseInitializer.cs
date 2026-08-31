@@ -52,6 +52,9 @@ public sealed partial class MongoDatabaseInitializer
     {
         await this.EnsureCollectionExistsAsync(this.settings.CountersCollectionName, cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.DurableBackgroundJobsCollectionName, cancellationToken);
+        await this.InitializeDurableBackgroundJobIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
         await this.InitializeUsersIndexesAsync(cancellationToken);
 

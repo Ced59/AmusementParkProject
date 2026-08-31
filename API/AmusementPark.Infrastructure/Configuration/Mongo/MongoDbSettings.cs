@@ -24,6 +24,8 @@ public sealed class MongoDbSettings
 
     public string CountersCollectionName { get; set; } = "systemCounters";
 
+    public string DurableBackgroundJobsCollectionName { get; set; } = "durableBackgroundJobs";
+
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";
 
     public string ParkDataEditorAccessTokensCollectionName { get; set; } = "parkDataEditorAccessTokens";

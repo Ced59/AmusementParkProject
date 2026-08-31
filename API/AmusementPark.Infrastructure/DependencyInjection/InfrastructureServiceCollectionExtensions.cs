@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.AdminAudit.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.CaptainCoaster.Ports;
 using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
@@ -164,6 +165,8 @@ public static class InfrastructureServiceCollectionExtensions
             IMongoClient client = serviceProvider.GetRequiredService<IMongoClient>();
             return client.GetDatabase(mongoDbSettings.DatabaseName);
         });
+
+        services.AddScoped<IDurableBackgroundJobRepository, DurableBackgroundJobRepository>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

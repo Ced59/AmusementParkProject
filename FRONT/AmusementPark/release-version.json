@@ -1,6 +1,20 @@
 {
-  "version": "4.2.36",
+  "version": "4.2.37",
   "history": [
+    {
+      "version": "4.2.37",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "La fiabilité des traitements en arrière-plan est renforcée.",
+        "en": "Background processing is now more reliable.",
+        "de": "Die Hintergrundverarbeitung ist jetzt zuverlässiger.",
+        "nl": "Achtergrondverwerking is nu betrouwbaarder.",
+        "it": "L’elaborazione in background è ora più affidabile.",
+        "es": "El procesamiento en segundo plano es ahora más fiable.",
+        "pl": "Przetwarzanie w tle jest teraz bardziej niezawodne.",
+        "pt": "O processamento em segundo plano está agora mais fiável."
+      }
+    },
     {
       "version": "4.2.36",
       "releasedAt": "2026-08-31",
