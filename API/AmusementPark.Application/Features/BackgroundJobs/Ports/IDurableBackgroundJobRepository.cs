@@ -16,6 +16,10 @@ public interface IDurableBackgroundJobRepository
         LeaseBackgroundJobRequest request,
         CancellationToken cancellationToken);
 
+    Task<DurableBackgroundJob?> TryLeaseNextUnknownKindAsync(
+        LeaseUnknownBackgroundJobRequest request,
+        CancellationToken cancellationToken);
+
     Task<bool> RenewLeaseAsync(
         DurableBackgroundJobLease lease,
         TimeSpan leaseDuration,
@@ -26,14 +30,14 @@ public interface IDurableBackgroundJobRepository
         long? processedRevision,
         CancellationToken cancellationToken);
 
-    Task<bool> ScheduleRetryAsync(
+    Task<DurableBackgroundJobStateTransitionResult?> ScheduleRetryAsync(
         DurableBackgroundJobLease lease,
         long? attemptedRevision,
         TimeSpan delay,
         string errorCode,
         CancellationToken cancellationToken);
 
-    Task<bool> DeadLetterAsync(
+    Task<DurableBackgroundJobStateTransitionResult?> DeadLetterAsync(
         DurableBackgroundJobLease lease,
         long? attemptedRevision,
         string errorCode,

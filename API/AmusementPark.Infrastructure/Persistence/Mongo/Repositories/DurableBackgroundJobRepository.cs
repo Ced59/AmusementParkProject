@@ -204,6 +204,43 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         return leased?.ToApplication();
     }
 
+    public async Task<DurableBackgroundJob?> TryLeaseNextUnknownKindAsync(
+        LeaseUnknownBackgroundJobRequest request,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+
+        IReadOnlyCollection<string> knownKinds = NormalizeKinds(request.KnownKinds, allowEmpty: true);
+        string leaseOwner = NormalizeRequired(request.LeaseOwner, nameof(request.LeaseOwner));
+        TimeSpan leaseDuration = ValidateLeaseDuration(request.LeaseDuration);
+        TimeSpan minimumAge = ValidateDelay(request.MinimumAge);
+        DateTime nowUtc = this.GetUtcNow();
+        DateTime maximumUpdatedAtUtc = nowUtc.Subtract(minimumAge);
+        string leaseToken = Guid.NewGuid().ToString("N");
+        DurableBackgroundJobDocument? leased = await this.TryLeaseAsync(
+            BuildExpiredUnknownKindLeaseRunnableFilter(knownKinds, maximumUpdatedAtUtc, nowUtc),
+            BuildExpiredLeaseRunnableSort(),
+            leaseOwner,
+            leaseToken,
+            leaseDuration,
+            nowUtc,
+            cancellationToken);
+        if (leased is not null)
+        {
+            return leased.ToApplication();
+        }
+
+        leased = await this.TryLeaseAsync(
+            BuildScheduledUnknownKindRunnableFilter(knownKinds, maximumUpdatedAtUtc, nowUtc),
+            BuildScheduledRunnableSort(),
+            leaseOwner,
+            leaseToken,
+            leaseDuration,
+            nowUtc,
+            cancellationToken);
+        return leased?.ToApplication();
+    }
+
     private async Task<DurableBackgroundJobDocument?> TryLeaseAsync(
         FilterDefinition<DurableBackgroundJobDocument> filter,
         SortDefinition<DurableBackgroundJobDocument> sort,
@@ -275,7 +312,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
                 completed.ProcessedRevision);
     }
 
-    public async Task<bool> ScheduleRetryAsync(
+    public async Task<DurableBackgroundJobStateTransitionResult?> ScheduleRetryAsync(
         DurableBackgroundJobLease lease,
         long? attemptedRevision,
         TimeSpan delay,
@@ -293,14 +330,19 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             nowUtc.Add(validDelay),
             normalizedErrorCode,
             nowUtc);
-        UpdateResult result = await this.collection.UpdateOneAsync(
+        FindOneAndUpdateOptions<DurableBackgroundJobDocument> options = new FindOneAndUpdateOptions<DurableBackgroundJobDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        DurableBackgroundJobDocument? scheduled = await this.collection.FindOneAndUpdateAsync(
             BuildLeaseOwnershipFilter(lease, nowUtc),
             update,
-            cancellationToken: cancellationToken);
-        return result.ModifiedCount == 1;
+            options,
+            cancellationToken);
+        return CreateStateTransitionResult(scheduled);
     }
 
-    public async Task<bool> DeadLetterAsync(
+    public async Task<DurableBackgroundJobStateTransitionResult?> DeadLetterAsync(
         DurableBackgroundJobLease lease,
         long? attemptedRevision,
         string errorCode,
@@ -315,11 +357,16 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             attemptedRevision,
             normalizedErrorCode,
             nowUtc);
-        UpdateResult result = await this.collection.UpdateOneAsync(
+        FindOneAndUpdateOptions<DurableBackgroundJobDocument> options = new FindOneAndUpdateOptions<DurableBackgroundJobDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        DurableBackgroundJobDocument? deadLettered = await this.collection.FindOneAndUpdateAsync(
             BuildLeaseOwnershipFilter(lease, nowUtc),
             update,
-            cancellationToken: cancellationToken);
-        return result.ModifiedCount == 1;
+            options,
+            cancellationToken);
+        return CreateStateTransitionResult(deadLettered);
     }
 
     public async Task<bool> CancelAsync(string jobId, CancellationToken cancellationToken)
@@ -393,14 +440,16 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         return documents.Select(static item => item.ToDiagnosticItem()).ToList();
     }
 
-    private static IReadOnlyCollection<string> NormalizeKinds(IReadOnlyCollection<string> kinds)
+    private static IReadOnlyCollection<string> NormalizeKinds(
+        IReadOnlyCollection<string> kinds,
+        bool allowEmpty = false)
     {
         ArgumentNullException.ThrowIfNull(kinds);
         string[] normalizedKinds = kinds
             .Select(kind => NormalizeRequired(kind, nameof(kinds)))
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        if (normalizedKinds.Length == 0)
+        if (!allowEmpty && normalizedKinds.Length == 0)
         {
             throw new ArgumentException("At least one job kind is required.", nameof(kinds));
         }
@@ -430,6 +479,18 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
     internal static bool CanRetryCoalesceInsert(int failedAttempt)
     {
         return failedAttempt >= 0 && failedAttempt < MaximumCoalesceInsertAttempts - 1;
+    }
+
+    private static DurableBackgroundJobStateTransitionResult? CreateStateTransitionResult(
+        DurableBackgroundJobDocument? document)
+    {
+        return document is null
+            ? null
+            : new DurableBackgroundJobStateTransitionResult(
+                document.Id,
+                document.Status,
+                document.RequestedRevision,
+                document.ProcessedRevision);
     }
 
     private static string? NormalizeOptional(string? value, string parameterName)

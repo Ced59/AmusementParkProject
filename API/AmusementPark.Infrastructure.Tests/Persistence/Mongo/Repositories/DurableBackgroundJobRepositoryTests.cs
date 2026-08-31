@@ -219,6 +219,48 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
+    public void BuildScheduledUnknownKindRunnableFilter_ShouldExcludeKnownKindsAndEnforceTheGracePeriod()
+    {
+        DateTime maximumUpdatedAtUtc = NowUtc.AddHours(-1);
+
+        BsonDocument rendered = Render(
+            DurableBackgroundJobRepository.BuildScheduledUnknownKindRunnableFilter(
+                new[] { "rank.compute", "projection.refresh" },
+                maximumUpdatedAtUtc,
+                NowUtc));
+
+        Assert.Equal(
+            new[] { "rank.compute", "projection.refresh" },
+            rendered["kind"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Equal(maximumUpdatedAtUtc, rendered["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
+        Assert.Equal(NowUtc, rendered["notBeforeUtc"].AsBsonDocument["$lte"].ToUniversalTime());
+        Assert.Equal(
+            new[]
+            {
+                DurableBackgroundJobStatus.Pending.ToString(),
+                DurableBackgroundJobStatus.RetryScheduled.ToString(),
+            },
+            rendered["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+    }
+
+    [Fact]
+    public void BuildExpiredUnknownKindLeaseRunnableFilter_ShouldRequireAnExpiredAgedLease()
+    {
+        DateTime maximumUpdatedAtUtc = NowUtc.AddHours(-1);
+
+        BsonDocument rendered = Render(
+            DurableBackgroundJobRepository.BuildExpiredUnknownKindLeaseRunnableFilter(
+                Array.Empty<string>(),
+                maximumUpdatedAtUtc,
+                NowUtc));
+
+        Assert.Empty(rendered["kind"].AsBsonDocument["$nin"].AsBsonArray);
+        Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), rendered["status"].AsString);
+        Assert.Equal(NowUtc, rendered["leaseExpiresAtUtc"].AsBsonDocument["$lte"].ToUniversalTime());
+        Assert.Equal(maximumUpdatedAtUtc, rendered["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
+    }
+
+    [Fact]
     public void BuildRenewLeaseUpdate_ShouldOnlyExtendTheOwnedLeaseMetadata()
     {
         DateTime expiresAtUtc = NowUtc.AddMinutes(2);

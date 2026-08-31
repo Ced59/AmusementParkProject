@@ -115,6 +115,35 @@ internal static class DurableBackgroundJobMongoDefinitions
             & filters.Lte(item => item.NotBeforeUtc, nowUtc);
     }
 
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildScheduledUnknownKindRunnableFilter(
+        IReadOnlyCollection<string> knownKinds,
+        DateTime maximumUpdatedAtUtc,
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        return filters.Nin(item => item.Kind, knownKinds)
+            & filters.In(item => item.Status, new[]
+            {
+                DurableBackgroundJobStatus.Pending,
+                DurableBackgroundJobStatus.RetryScheduled,
+            })
+            & filters.Lte(item => item.NotBeforeUtc, nowUtc)
+            & filters.Lte(item => item.UpdatedAt, maximumUpdatedAtUtc);
+    }
+
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildExpiredUnknownKindLeaseRunnableFilter(
+        IReadOnlyCollection<string> knownKinds,
+        DateTime maximumUpdatedAtUtc,
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        return filters.Nin(item => item.Kind, knownKinds)
+            & filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
+            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc)
+            & filters.Lte(item => item.NotBeforeUtc, nowUtc)
+            & filters.Lte(item => item.UpdatedAt, maximumUpdatedAtUtc);
+    }
+
     internal static SortDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableSort()
     {
         return Builders<DurableBackgroundJobDocument>.Sort
