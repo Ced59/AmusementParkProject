@@ -1,0 +1,180 @@
+using AmusementPark.Core.Domain.Parks;
+
+namespace AmusementPark.Core.Domain.Ratings;
+
+public enum RankingTargetFamily
+{
+    Parks,
+    ParkItems,
+}
+
+public enum RankingScopeFilterKind
+{
+    Global,
+    ParkItemCategory,
+}
+
+public enum RankingPublicationMode
+{
+    DurableSnapshot,
+}
+
+/// <summary>
+/// Filtre métier fermé d'un scope canonique. Il ne contient jamais de filtre HTTP libre.
+/// </summary>
+public sealed class RankingFilterDefinition
+{
+    private RankingFilterDefinition(RankingScopeFilterKind kind, ParkItemCategory? parkItemCategory)
+    {
+        this.Kind = kind;
+        this.ParkItemCategory = parkItemCategory;
+    }
+
+    public static RankingFilterDefinition Global { get; } =
+        new RankingFilterDefinition(RankingScopeFilterKind.Global, null);
+
+    public RankingScopeFilterKind Kind { get; }
+
+    public ParkItemCategory? ParkItemCategory { get; }
+
+    public static RankingFilterDefinition ForParkItemCategory(ParkItemCategory category)
+    {
+        if (!Enum.IsDefined(category))
+        {
+            throw new ArgumentOutOfRangeException(nameof(category));
+        }
+
+        return new RankingFilterDefinition(RankingScopeFilterKind.ParkItemCategory, category);
+    }
+}
+
+/// <summary>
+/// Définition immuable d'un classement pouvant être matérialisé.
+/// </summary>
+public sealed class RankingScopeDefinition
+{
+    public const int MinimumPageSize = 250;
+
+    public const int MaximumPageSize = 500;
+
+    public RankingScopeDefinition(
+        RankingScopeKey key,
+        RankingTargetFamily targetFamily,
+        RankingFilterDefinition filter,
+        bool isPublic,
+        RatingMethodologyVersion methodologyVersion,
+        int minimumEligibleEntries,
+        int pageSize,
+        RankingPublicationMode publicationMode)
+    {
+        _ = key.Value;
+        if (!Enum.IsDefined(targetFamily))
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetFamily));
+        }
+
+        ArgumentNullException.ThrowIfNull(filter);
+        ValidateFilterCompatibility(targetFamily, filter);
+        ValidateKeyCompatibility(key, targetFamily, filter);
+        _ = methodologyVersion.Value;
+
+        if (minimumEligibleEntries <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minimumEligibleEntries));
+        }
+
+        if (pageSize < MinimumPageSize || pageSize > MaximumPageSize)
+        {
+            throw new ArgumentOutOfRangeException(nameof(pageSize));
+        }
+
+        if (!Enum.IsDefined(publicationMode))
+        {
+            throw new ArgumentOutOfRangeException(nameof(publicationMode));
+        }
+
+        this.Key = key;
+        this.TargetFamily = targetFamily;
+        this.Filter = filter;
+        this.IsPublic = isPublic;
+        this.MethodologyVersion = methodologyVersion;
+        this.MinimumEligibleEntries = minimumEligibleEntries;
+        this.PageSize = pageSize;
+        this.PublicationMode = publicationMode;
+    }
+
+    public RankingScopeKey Key { get; }
+
+    public RankingTargetFamily TargetFamily { get; }
+
+    public RankingFilterDefinition Filter { get; }
+
+    public bool IsPublic { get; }
+
+    public RatingMethodologyVersion MethodologyVersion { get; }
+
+    public int MinimumEligibleEntries { get; }
+
+    public int PageSize { get; }
+
+    public RankingPublicationMode PublicationMode { get; }
+
+    private static void ValidateFilterCompatibility(
+        RankingTargetFamily targetFamily,
+        RankingFilterDefinition filter)
+    {
+        bool isCompatible = targetFamily switch
+        {
+            RankingTargetFamily.Parks => filter.Kind == RankingScopeFilterKind.Global
+                && !filter.ParkItemCategory.HasValue,
+            RankingTargetFamily.ParkItems => filter.Kind == RankingScopeFilterKind.ParkItemCategory
+                && filter.ParkItemCategory.HasValue,
+            _ => false,
+        };
+
+        if (!isCompatible)
+        {
+            throw new ArgumentException(
+                "The ranking filter is incompatible with its target family.",
+                nameof(filter));
+        }
+    }
+
+    private static void ValidateKeyCompatibility(
+        RankingScopeKey key,
+        RankingTargetFamily targetFamily,
+        RankingFilterDefinition filter)
+    {
+        string expectedKey = targetFamily switch
+        {
+            RankingTargetFamily.Parks => "parks:global",
+            RankingTargetFamily.ParkItems =>
+                $"park-items:category:{ResolveCategoryKey(filter.ParkItemCategory!.Value)}",
+            _ => string.Empty,
+        };
+
+        if (!string.Equals(key.Value, expectedKey, StringComparison.Ordinal))
+        {
+            throw new ArgumentException(
+                "The ranking scope key does not match its target family and filter.",
+                nameof(key));
+        }
+    }
+
+    private static string ResolveCategoryKey(ParkItemCategory category)
+    {
+        return category switch
+        {
+            ParkItemCategory.Attraction => "attraction",
+            ParkItemCategory.Restaurant => "restaurant",
+            ParkItemCategory.Hotel => "hotel",
+            ParkItemCategory.Animal => "animal",
+            ParkItemCategory.Show => "show",
+            ParkItemCategory.Shop => "shop",
+            ParkItemCategory.Service => "service",
+            ParkItemCategory.Transport => "transport",
+            ParkItemCategory.Other => "other",
+            _ => throw new ArgumentOutOfRangeException(nameof(category)),
+        };
+    }
+}

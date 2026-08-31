@@ -1,6 +1,20 @@
 {
-  "version": "4.2.39",
+  "version": "4.2.40",
   "history": [
+    {
+      "version": "4.2.40",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Les futurs classements s’appuient désormais sur des périmètres mieux définis.",
+        "en": "Future rankings now rely on more clearly defined scopes.",
+        "de": "Künftige Ranglisten basieren nun auf klarer definierten Bereichen.",
+        "nl": "Toekomstige ranglijsten steunen nu op duidelijker afgebakende bereiken.",
+        "it": "Le future classifiche si basano ora su ambiti definiti più chiaramente.",
+        "es": "Las futuras clasificaciones se basan ahora en ámbitos mejor definidos.",
+        "pl": "Przyszłe rankingi opierają się teraz na precyzyjniej określonych zakresach.",
+        "pt": "As futuras classificações passam a basear-se em âmbitos mais bem definidos."
+      }
+    },
     {
       "version": "4.2.39",
       "releasedAt": "2026-09-01",
