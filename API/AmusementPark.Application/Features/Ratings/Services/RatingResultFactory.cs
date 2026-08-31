@@ -50,13 +50,17 @@ public static class RatingResultFactory
             return null;
         }
 
-        RankingEvidence evidence = EligibilityPolicy.EvaluateSimpleTarget(
-            new SimpleRankingEvidenceInput(
+        SimpleRankingEvidenceInput input = new SimpleRankingEvidenceInput(
                 boundedUniqueContributorCount,
                 boundedRatingObservationCount,
                 targetCanReceiveVisitorRatings,
                 IsExcludedByModeration: false,
-                aggregateIntegrityIsValid));
+                aggregateIntegrityIsValid);
+        if (!EligibilityPolicy.TryEvaluateSimpleTarget(input, out RankingEvidence? evidence)
+            || evidence is null)
+        {
+            return null;
+        }
 
         return ToResult(evidence);
     }

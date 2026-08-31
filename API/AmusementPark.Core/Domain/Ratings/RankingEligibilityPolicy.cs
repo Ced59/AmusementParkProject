@@ -101,6 +101,31 @@ public sealed class RankingEligibilityPolicy
         return this.CreateSimpleEvidence(input, level, isEligible, ineligibilityReason);
     }
 
+    public bool TryEvaluateSimpleTarget(SimpleRankingEvidenceInput? input, out RankingEvidence? evidence)
+    {
+        if (input is null)
+        {
+            evidence = null;
+            return false;
+        }
+
+        try
+        {
+            evidence = this.EvaluateSimpleTarget(input);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            evidence = null;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            evidence = null;
+            return false;
+        }
+    }
+
     public RankingEvidence EvaluatePark(ParkRankingEvidenceInput input)
     {
         ArgumentNullException.ThrowIfNull(input);

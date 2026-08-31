@@ -98,6 +98,17 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
+    public void TryEvaluateSimpleTarget_WhenContributorsExceedObservations_ShouldFailSafely()
+    {
+        SimpleRankingEvidenceInput input = CreateSimpleInput(2, 1);
+
+        bool result = RankingEligibilityPolicy.Initial.TryEvaluateSimpleTarget(input, out RankingEvidence? evidence);
+
+        Assert.False(result);
+        Assert.Null(evidence);
+    }
+
+    [Fact]
     public void EvaluateParkItemComponent_WhenCoverageMeetsAllThresholds_ShouldBeEligible()
     {
         ParkRankingEvidenceInput input = CreateParkInput(

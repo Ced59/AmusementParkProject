@@ -124,6 +124,25 @@ public sealed class RatingResultFactoryTests
             result.Evidence?.IneligibilityReason);
     }
 
+    [Fact]
+    public void CreateSummary_WhenContributorsExceedObservations_ShouldWithholdMalformedEvidence()
+    {
+        RatingAggregate aggregate = CreateAggregate(mutationVersion: 3, calculatedVersion: 3);
+        aggregate.RatingCount = 5;
+        aggregate.UniqueContributorCount = 10;
+
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
+
+        Assert.Equal(5, result.RatingObservationCount);
+        Assert.Null(result.Evidence);
+        Assert.Null(result.UniqueContributorCount);
+    }
+
     private static RatingAggregate CreateAggregate(long? mutationVersion, long? calculatedVersion)
     {
         return new RatingAggregate
