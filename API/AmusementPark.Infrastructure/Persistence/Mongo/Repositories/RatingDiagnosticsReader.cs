@@ -196,18 +196,15 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   { "$match": { "_diagnosticHasTarget": true } },
                   {
                     "$group": {
-                      "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText", "userId": "$_diagnosticUserText" },
-                      "ratingObservationCount": { "$sum": 1 },
-                      "hasValidUser": { "$max": { "$cond": [ "$_diagnosticHasUser", 1, 0 ] } },
+                      "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText" },
+                      "sourceRatingObservationCount": { "$sum": 1 },
+                      "sourceContributorIds": { "$addToSet": { "$cond": [ "$_diagnosticHasUser", "$_diagnosticUserText", null ] } },
                       "sourceRatingSum": { "$sum": "$_diagnosticNumericValue" }
                     }
                   },
                   {
-                    "$group": {
-                      "_id": { "targetType": "$_id.targetType", "targetId": "$_id.targetId" },
-                      "sourceRatingObservationCount": { "$sum": "$ratingObservationCount" },
-                      "sourceUniqueContributorCount": { "$sum": "$hasValidUser" },
-                      "sourceRatingSum": { "$sum": "$sourceRatingSum" }
+                    "$set": {
+                      "sourceUniqueContributorCount": { "$size": { "$setDifference": [ "$sourceContributorIds", [ null ] ] } }
                     }
                   },
                   {
