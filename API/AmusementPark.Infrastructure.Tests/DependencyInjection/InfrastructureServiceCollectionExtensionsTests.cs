@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Infrastructure.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -17,5 +18,19 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
         services.AddInfrastructure(configuration);
 
         Assert.Contains(services, static service => service.ServiceType == typeof(ITechnicalStatsProvider));
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterDurableBackgroundJobRepository()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IDurableBackgroundJobRepository));
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
     }
 }
