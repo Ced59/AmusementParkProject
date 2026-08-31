@@ -67,14 +67,22 @@ internal static class RatingRankingFactory
             .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
         ILookup<string, PublicParkItemEvidenceFact> publicItemsByPark = evidenceFacts.PublicItems
             .ToLookup(static item => item.ParkId, StringComparer.Ordinal);
+        HashSet<string> incompletePublicInventoryParkIds = evidenceFacts.IncompletePublicInventoryParkIds
+            .ToHashSet(StringComparer.Ordinal);
 
         return rankings.Select(ranking =>
         {
             if (!sourcesByPark.TryGetValue(ranking.ParkId, out IReadOnlyCollection<RatingRankingItemResult>? parkSources)
-                || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts))
+                || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts)
+                || incompletePublicInventoryParkIds.Contains(ranking.ParkId))
             {
                 return ranking;
             }
+
+            parkSources = ApplyVerifiedAggregateIntegrity(
+                parkSources,
+                evidenceFacts.AggregateSources,
+                evidenceFacts.AggregateSourceFactsWereRead);
 
             List<RatingRankingItemResult> directParkSources = parkSources
                 .Where(static source => source.TargetType == RatingTargetType.Park)
@@ -103,6 +111,45 @@ internal static class RatingRankingFactory
                         publicItems,
                         isSingleCategoryParkException)
                     : null,
+            };
+        }).ToList();
+    }
+
+    public static IReadOnlyCollection<ParkItemRatingRankingResult> ApplyParkItemEvidence(
+        IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
+    {
+        ArgumentNullException.ThrowIfNull(rankings);
+        ArgumentNullException.ThrowIfNull(sources);
+        ArgumentNullException.ThrowIfNull(aggregateSourceFacts);
+
+        IReadOnlyCollection<RatingRankingItemResult> verifiedSources = ApplyVerifiedAggregateIntegrity(
+            sources,
+            aggregateSourceFacts,
+            sourceFactsWereRead: true);
+        IReadOnlyDictionary<string, RatingRankingItemResult> sourceByTargetId = verifiedSources
+            .Where(static source => source.TargetType == RatingTargetType.ParkItem)
+            .GroupBy(static source => source.TargetId, StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+
+        return rankings.Select(ranking =>
+        {
+            if (!sourceByTargetId.TryGetValue(ranking.TargetId, out RatingRankingItemResult? source)
+                || !source.AggregateIntegrityIsValid.HasValue
+                || !source.UniqueContributorCount.HasValue)
+            {
+                return ranking with { Evidence = null };
+            }
+
+            return ranking with
+            {
+                Evidence = RatingResultFactory.TryCreateSimpleEvidence(
+                    source.UniqueContributorCount.Value,
+                    source.RatingCount,
+                    targetCanReceiveVisitorRatings: true,
+                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value),
             };
         }).ToList();
     }
@@ -353,6 +400,57 @@ internal static class RatingRankingFactory
         }
 
         return integrityFacts.All(static fact => fact!.Value);
+    }
+
+    private static IReadOnlyCollection<RatingRankingItemResult> ApplyVerifiedAggregateIntegrity(
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts,
+        bool sourceFactsWereRead)
+    {
+        if (!sourceFactsWereRead)
+        {
+            return sources;
+        }
+
+        IReadOnlyDictionary<string, RatingAggregateSourceFact> sourceFactsByTarget = aggregateSourceFacts
+            .GroupBy(
+                static fact => BuildTargetKey(fact.TargetType, fact.TargetId),
+                StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+
+        return sources.Select(source =>
+        {
+            bool? aggregateIntegrityIsValid = source.AggregateIntegrityIsValid;
+            if (!aggregateIntegrityIsValid.HasValue)
+            {
+                return source;
+            }
+
+            sourceFactsByTarget.TryGetValue(
+                BuildTargetKey(source.TargetType, source.TargetId),
+                out RatingAggregateSourceFact? sourceFact);
+            bool sourceProjectionIsValid = sourceFact is not null
+                && RatingAggregate.HasValidSourceProjection(
+                    source.RatingCount,
+                    source.UniqueContributorCount,
+                    source.RatingSum,
+                    source.AverageRating,
+                    source.BayesianScore,
+                    sourceFact.RatingObservationCount,
+                    sourceFact.UniqueContributorCount,
+                    sourceFact.RatingSum);
+
+            return source with
+            {
+                AggregateIntegrityIsValid = aggregateIntegrityIsValid.Value && sourceProjectionIsValid,
+            };
+        }).ToList();
+    }
+
+    private static string BuildTargetKey(RatingTargetType targetType, string targetId)
+    {
+        return $"{targetType}:{targetId}";
     }
 
     private static bool TryConvertEvidenceCounts(

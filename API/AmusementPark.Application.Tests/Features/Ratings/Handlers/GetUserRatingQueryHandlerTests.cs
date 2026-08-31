@@ -177,6 +177,7 @@ public sealed class GetUserRatingQueryHandlerTests
             BayesianScore = 4,
             MutationVersion = 2,
             CalculatedVersion = 2,
+            SourceIntegrityIsValid = true,
         };
     }
 }

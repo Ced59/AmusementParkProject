@@ -17,7 +17,7 @@ public static class RatingResultFactory
         long ratingCount = aggregate?.RatingCount ?? 0;
         long? uniqueContributorCount = aggregate?.UniqueContributorCount
             ?? (aggregate is null ? 0 : null);
-        bool? resolvedAggregateIntegrity = aggregateIntegrityIsValid ?? aggregate?.IsCalculationCurrent;
+        bool? resolvedAggregateIntegrity = aggregateIntegrityIsValid ?? aggregate?.IsIntegrityVerified;
         RankingEvidenceResult? evidence = resolvedAggregateIntegrity.HasValue
             && uniqueContributorCount.HasValue
             ? TryCreateSimpleEvidence(

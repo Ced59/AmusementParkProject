@@ -22,6 +22,7 @@ public sealed class RatingRepository : IRatingRepository
     private readonly IMongoCollection<ParkDocument> parksCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
     private readonly RatingAggregateSynchronizer aggregateSynchronizer;
+    private readonly RatingAggregateSourceReader aggregateSourceReader;
 
     public RatingRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -32,6 +33,7 @@ public sealed class RatingRepository : IRatingRepository
         this.aggregateSynchronizer = new RatingAggregateSynchronizer(
             this.userRatingsCollection,
             this.ratingAggregatesCollection);
+        this.aggregateSourceReader = new RatingAggregateSourceReader(this.userRatingsCollection);
     }
 
     public async Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
@@ -84,7 +86,19 @@ public sealed class RatingRepository : IRatingRepository
         FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId)
             & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
         RatingAggregateDocument? document = await this.ratingAggregatesCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
-        return document?.ToDomain();
+        if (document is null)
+        {
+            return null;
+        }
+
+        RatingAggregate aggregate = document.ToDomain();
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
+            new[] { new RatingAggregateSourceTarget(targetType, targetId) },
+            cancellationToken);
+        aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.IsProjectionValid(
+            aggregate,
+            sourceFacts.SingleOrDefault());
+        return aggregate;
     }
 
     private async Task<UserRating> UpsertUserRatingDocumentAsync(UserRating rating, CancellationToken cancellationToken)
@@ -537,10 +551,29 @@ public sealed class RatingRepository : IRatingRepository
             Builders<RatingAggregateDocument>.Filter.Or(filters)
             & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
         List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(aggregateFilter).ToListAsync(cancellationToken);
-        return documents.ToDictionary(
-            static document => BuildTargetKey(document.TargetType, document.TargetId),
-            static document => document.ToDomain(),
-            StringComparer.Ordinal);
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
+            documents.Select(static document => new RatingAggregateSourceTarget(
+                    document.TargetType,
+                    document.TargetId))
+                .ToList(),
+            cancellationToken);
+        IReadOnlyDictionary<string, RatingAggregateSourceFact> sourceFactsByTarget = sourceFacts
+            .GroupBy(
+                static fact => BuildTargetKey(fact.TargetType, fact.TargetId),
+                StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+        Dictionary<string, RatingAggregate> aggregates = new Dictionary<string, RatingAggregate>(StringComparer.Ordinal);
+        foreach (RatingAggregateDocument document in documents)
+        {
+            string key = BuildTargetKey(document.TargetType, document.TargetId);
+            RatingAggregate aggregate = document.ToDomain();
+            sourceFactsByTarget.TryGetValue(key, out RatingAggregateSourceFact? sourceFact);
+            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.IsProjectionValid(aggregate, sourceFact);
+            aggregates[key] = aggregate;
+        }
+
+        return aggregates;
     }
 
     private async Task<IReadOnlyDictionary<string, string>> LoadParkNamesAsync(IEnumerable<string> parkIds, bool visibleOnly, CancellationToken cancellationToken)

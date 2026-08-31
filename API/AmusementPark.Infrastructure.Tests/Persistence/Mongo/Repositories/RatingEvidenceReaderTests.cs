@@ -46,7 +46,7 @@ public sealed class RatingEvidenceReaderTests
     [Fact]
     public void BuildPublicItemFacts_WhenFixturesMixStatuses_ShouldKeepOnlyCurrentPublicCoverage()
     {
-        IReadOnlyCollection<RatingEvidenceReader.PublicParkItemProjection> documents = new[]
+        IReadOnlyCollection<BsonDocument> documents = new[]
         {
             CreateProjection("coaster-open", ParkItemCategory.Attraction, ParkItemStatusNormalizer.Operating),
             CreateProjection("coaster-closed", ParkItemCategory.Attraction, ParkItemStatusNormalizer.ClosedDefinitively),
@@ -55,10 +55,11 @@ public sealed class RatingEvidenceReaderTests
             CreateProjection(string.Empty, ParkItemCategory.Shop, null),
         };
 
-        IReadOnlyCollection<PublicParkItemEvidenceFact> facts = RatingEvidenceReader.BuildPublicItemFacts(documents);
+        RatingEvidenceReader.PublicParkItemEvidenceReadResult result =
+            RatingEvidenceReader.BuildPublicItemFacts(documents);
 
         Assert.Collection(
-            facts.OrderBy(static fact => fact.TargetId, StringComparer.Ordinal),
+            result.Facts.OrderBy(static fact => fact.TargetId, StringComparer.Ordinal),
             first =>
             {
                 Assert.Equal("coaster-open", first.TargetId);
@@ -69,19 +70,46 @@ public sealed class RatingEvidenceReaderTests
                 Assert.Equal("restaurant", second.TargetId);
                 Assert.Equal(ParkItemCategory.Restaurant, second.Category);
             });
+        Assert.Equal("park-1", Assert.Single(result.IncompleteParkIds));
     }
 
-    private static RatingEvidenceReader.PublicParkItemProjection CreateProjection(
+    [Fact]
+    public void BuildPublicItemFacts_WhenCategoryIsMalformed_ShouldMarkParkInventoryIncomplete()
+    {
+        IReadOnlyCollection<BsonDocument> documents = new[]
+        {
+            CreateProjection("valid-item", ParkItemCategory.Attraction, ParkItemStatusNormalizer.Operating),
+            new BsonDocument
+            {
+                { "_id", "broken-item" },
+                { "parkId", "park-1" },
+                { "category", "FutureCategory" },
+            },
+        };
+
+        RatingEvidenceReader.PublicParkItemEvidenceReadResult result =
+            RatingEvidenceReader.BuildPublicItemFacts(documents);
+
+        Assert.Single(result.Facts);
+        Assert.Equal("park-1", Assert.Single(result.IncompleteParkIds));
+    }
+
+    private static BsonDocument CreateProjection(
         string id,
         ParkItemCategory category,
         string? status)
     {
-        return new RatingEvidenceReader.PublicParkItemProjection
+        BsonDocument document = new BsonDocument
         {
-            Id = id,
-            ParkId = "park-1",
-            Category = category,
-            AttractionStatus = status,
+            { "_id", id },
+            { "parkId", "park-1" },
+            { "category", category.ToString() },
         };
+        if (status is not null)
+        {
+            document["attractionDetails"] = new BsonDocument("status", status);
+        }
+
+        return document;
     }
 }

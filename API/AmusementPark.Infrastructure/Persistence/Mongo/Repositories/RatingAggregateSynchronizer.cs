@@ -65,7 +65,7 @@ internal sealed class RatingAggregateSynchronizer
                 cancellationToken);
             if (committedDocument is not null)
             {
-                return ToVisibleAggregate(committedDocument);
+                return ToVisibleAggregate(committedDocument, sourceIntegrityIsValid: true);
             }
 
             // Une mutation plus récente a invalidé ce snapshot. Le recalcul courant
@@ -85,7 +85,7 @@ internal sealed class RatingAggregateSynchronizer
                     currentDocument.MutationVersion,
                     currentDocument.CalculatedVersion))
             {
-                return ToVisibleAggregate(currentDocument);
+                return ToVisibleAggregate(currentDocument, sourceIntegrityIsValid: null);
             }
 
             if (currentDocument.CalculatedVersion > currentDocument.MutationVersion)
@@ -362,9 +362,18 @@ internal sealed class RatingAggregateSynchronizer
             & Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetId, targetId.Trim());
     }
 
-    private static RatingAggregate? ToVisibleAggregate(RatingAggregateDocument document)
+    private static RatingAggregate? ToVisibleAggregate(
+        RatingAggregateDocument document,
+        bool? sourceIntegrityIsValid)
     {
-        return document.RatingCount > 0 ? document.ToDomain() : null;
+        if (document.RatingCount <= 0)
+        {
+            return null;
+        }
+
+        RatingAggregate aggregate = document.ToDomain();
+        aggregate.SourceIntegrityIsValid = sourceIntegrityIsValid;
+        return aggregate;
     }
 
     private static DateTime? ReadOptionalDateTime(BsonDocument document, string elementName)

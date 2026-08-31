@@ -85,6 +85,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 1,
             sourceRatingSum: 8d,
             aggregateRatingCount: 2,
+            aggregateUniqueContributorCount: 2,
             aggregateRatingSum: 8d,
             aggregateAverageRating: 4d,
             aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
@@ -155,6 +156,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 2,
             sourceRatingSum: 8d,
             aggregateRatingCount: 2,
+            aggregateUniqueContributorCount: 2,
             aggregateRatingSum: 8d,
             aggregateAverageRating: 3.75d,
             aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
@@ -171,7 +173,7 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Theory]
-    [InlineData("ratingSum", false)]
+    [InlineData("ratingSum", true)]
     [InlineData("averageRating", true)]
     [InlineData("bayesianScore", true)]
     public void EvaluateAggregateIntegrity_WhenNanSourceHasMissingAggregateDouble_ShouldExposeTheDivergence(
@@ -183,6 +185,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 1,
             sourceRatingSum: double.NaN,
             aggregateRatingCount: 1,
+            aggregateUniqueContributorCount: 1,
             aggregateRatingSum: double.NaN,
             aggregateAverageRating: double.NaN,
             aggregateBayesianScore: double.NaN);
@@ -502,6 +505,7 @@ public sealed class RatingDiagnosticsReaderTests
         long sourceUniqueContributorCount,
         double sourceRatingSum,
         long aggregateRatingCount,
+        long aggregateUniqueContributorCount,
         double aggregateRatingSum,
         double aggregateAverageRating,
         double aggregateBayesianScore)
@@ -519,6 +523,7 @@ public sealed class RatingDiagnosticsReaderTests
                     new BsonDocument
                     {
                         { "ratingCount", aggregateRatingCount },
+                        { "uniqueContributorCount", aggregateUniqueContributorCount },
                         { "ratingSum", aggregateRatingSum },
                         { "averageRating", aggregateAverageRating },
                         { "bayesianScore", aggregateBayesianScore },

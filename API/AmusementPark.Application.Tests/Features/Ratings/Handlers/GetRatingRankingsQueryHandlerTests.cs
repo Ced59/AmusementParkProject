@@ -144,11 +144,32 @@ public sealed class GetRatingRankingsQueryHandlerTests
             .ReturnsAsync(new[]
             {
                 CreateParkItemSource("flat-1", "Talocan", "park-1", "Phantasialand", ParkItemType.FlatRide, 4.1),
-                CreateParkItemSource("coaster-1", "Taron", "park-1", "Phantasialand", ParkItemType.RollerCoaster, 4.8),
-                CreateParkItemSource("flat-2", "Sledge Hammer", "park-2", "Bobbejaanland", ParkItemType.FlatRide, 4.5),
+                CreateParkItemSource("coaster-1", "Taron", "park-1", "Phantasialand", ParkItemType.RollerCoaster, 4.225),
+                CreateParkItemSource("flat-2", "Sledge Hammer", "park-2", "Bobbejaanland", ParkItemType.FlatRide, 4.2),
+            });
+        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        ratingEvidenceReader
+            .Setup(reader => reader.ReadAggregateSourceFactsAsync(
+                It.Is<IReadOnlyCollection<RatingAggregateSourceTarget>>(targets => targets.Count == 2),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new RatingAggregateSourceFact(
+                    RatingTargetType.ParkItem,
+                    "flat-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    RatingSum: 47d),
+                new RatingAggregateSourceFact(
+                    RatingTargetType.ParkItem,
+                    "flat-2",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    RatingSum: 49d),
             });
         GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
             ratingRepository.Object,
+            ratingEvidenceReader.Object,
             new PagedQueryValidator());
 
         ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result = await handler.HandleAsync(
@@ -166,14 +187,17 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 Assert.Equal(1, first.Rank);
                 Assert.Equal("Sledge Hammer", first.TargetName);
                 Assert.Equal("Bobbejaanland", first.ParkName);
+                Assert.Equal(RankingEvidenceLevel.Eligible, first.Evidence?.Level);
             },
             second =>
             {
                 Assert.Equal(2, second.Rank);
                 Assert.Equal("Talocan", second.TargetName);
                 Assert.Equal("Phantasialand", second.ParkName);
+                Assert.Equal(RankingEvidenceLevel.Eligible, second.Evidence?.Level);
             });
         ratingRepository.VerifyAll();
+        ratingEvidenceReader.VerifyAll();
     }
 
     private static IReadOnlyCollection<RatingRankingItemResult> CreateParkSources()
@@ -274,6 +298,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
         ParkItemType parkItemType,
         double bayesianScore)
     {
+        double ratingSum = (bayesianScore * 20d) - 35d;
         return new RatingRankingItemResult(
             RatingTargetType.ParkItem,
             targetId,
@@ -283,8 +308,8 @@ public sealed class GetRatingRankingsQueryHandlerTests
             ParkItemCategory.Attraction,
             parkItemType,
             10,
-            45,
-            4.5,
+            ratingSum,
+            ratingSum / 10d,
             bayesianScore)
         {
             UniqueContributorCount = 10,

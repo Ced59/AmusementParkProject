@@ -56,6 +56,22 @@ public sealed class RatingResultFactoryTests
     }
 
     [Fact]
+    public void CreateSummary_WhenSourceIntegrityIsUnknown_ShouldWithholdEvidence()
+    {
+        RatingAggregate aggregate = CreateAggregate(mutationVersion: 3, calculatedVersion: 3);
+        aggregate.SourceIntegrityIsValid = null;
+
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
+
+        Assert.Null(result.Evidence);
+    }
+
+    [Fact]
     public void CreateSummary_WhenCalculatedVersionIsAhead_ShouldExposeIntegrityExclusion()
     {
         RatingAggregate aggregate = CreateAggregate(mutationVersion: 2, calculatedVersion: 3);
@@ -157,6 +173,7 @@ public sealed class RatingResultFactoryTests
             BayesianScore = 4,
             MutationVersion = mutationVersion,
             CalculatedVersion = calculatedVersion,
+            SourceIntegrityIsValid = true,
         };
     }
 }

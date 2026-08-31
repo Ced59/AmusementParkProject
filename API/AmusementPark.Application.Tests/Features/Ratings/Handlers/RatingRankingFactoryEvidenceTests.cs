@@ -218,6 +218,112 @@ public sealed class RatingRankingFactoryEvidenceTests
     }
 
     [Fact]
+    public void ApplyParkItemEvidence_WhenPersistedScoreDivergesFromSource_ShouldExcludeAggregate()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.ParkItem,
+            "attraction-corrupted",
+            ParkItemCategory.Attraction,
+            ratingCount: 10);
+        IReadOnlyCollection<ParkItemRatingRankingResult> rankings =
+            RatingRankingFactory.BuildParkItemRankings(new[] { source });
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = new[]
+        {
+            new RatingAggregateSourceFact(
+                RatingTargetType.ParkItem,
+                "attraction-corrupted",
+                UniqueContributorCount: 10,
+                RatingObservationCount: 10,
+                RatingSum: 45d),
+        };
+
+        ParkItemRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.ApplyParkItemEvidence(rankings, new[] { source }, sourceFacts));
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, ranking.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            ranking.Evidence?.IneligibilityReason);
+    }
+
+    [Fact]
+    public void BuildParkRankings_WhenPublicInventoryIsIncomplete_ShouldWithholdEvidence()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            ratingCount: 10);
+        ParkRankingEvidenceFactsBatch evidenceFacts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    DirectParkContributorCount: 10,
+                    ItemContributorCount: 0),
+            },
+            Array.Empty<PublicParkItemEvidenceFact>(),
+            new[]
+            {
+                new RatingAggregateSourceFact(
+                    RatingTargetType.Park,
+                    "park-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    RatingSum: 45d),
+            },
+            new[] { "park-1" },
+            AggregateSourceFactsWereRead: true);
+
+        ParkRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkRankings(new[] { source }, evidenceFacts: evidenceFacts));
+
+        Assert.Null(ranking.Evidence);
+    }
+
+    [Fact]
+    public void BuildParkRankings_WhenAggregateMatchesVerifiedSource_ShouldKeepEvidenceEligible()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            ratingCount: 10) with
+        {
+            BayesianScore = 4d,
+        };
+        ParkRankingEvidenceFactsBatch evidenceFacts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    DirectParkContributorCount: 10,
+                    ItemContributorCount: 0),
+            },
+            Array.Empty<PublicParkItemEvidenceFact>(),
+            new[]
+            {
+                new RatingAggregateSourceFact(
+                    RatingTargetType.Park,
+                    "park-1",
+                    UniqueContributorCount: 10,
+                    RatingObservationCount: 10,
+                    RatingSum: 45d),
+            },
+            Array.Empty<string>(),
+            AggregateSourceFactsWereRead: true);
+
+        ParkRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkRankings(new[] { source }, evidenceFacts: evidenceFacts));
+
+        Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
+    }
+
+    [Fact]
     public void BuildParkRankings_WhenContributorFactsAreDuplicated_ShouldPreserveRankingWithoutEvidence()
     {
         RatingRankingItemResult source = CreateSource(

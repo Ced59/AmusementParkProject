@@ -52,6 +52,7 @@ public sealed class ParkDetailSummaryReadRepositoryTests
             BayesianScore = 4,
             MutationVersion = 1,
             CalculatedVersion = 1,
+            SourceIntegrityIsValid = true,
         };
     }
 }

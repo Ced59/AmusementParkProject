@@ -104,13 +104,16 @@ public sealed class GetParkItemRatingRankingsQueryHandler
     private const int RankingSourceLimit = 5000;
 
     private readonly IRatingRepository ratingRepository;
+    private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
 
     public GetParkItemRatingRankingsQueryHandler(
         IRatingRepository ratingRepository,
+        IRatingEvidenceReader ratingEvidenceReader,
         PagedQueryValidator pagedQueryValidator)
     {
         this.ratingRepository = ratingRepository;
+        this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
     }
 
@@ -147,6 +150,30 @@ public sealed class GetParkItemRatingRankingsQueryHandler
             filteredRankings,
             query.Paging.Page,
             query.Paging.PageSize);
+        if (result.Items.Count > 0)
+        {
+            HashSet<string> resultTargetIds = result.Items
+                .Select(static ranking => ranking.TargetId)
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<RatingRankingItemResult> resultSources = sources
+                .Where(source => resultTargetIds.Contains(source.TargetId))
+                .ToList();
+            IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts =
+                await this.ratingEvidenceReader.ReadAggregateSourceFactsAsync(
+                    resultSources.Select(static source => new RatingAggregateSourceTarget(
+                            source.TargetType,
+                            source.TargetId))
+                        .Distinct()
+                        .ToList(),
+                    cancellationToken);
+            IReadOnlyCollection<ParkItemRatingRankingResult> enrichedItems =
+                RatingRankingFactory.ApplyParkItemEvidence(result.Items, resultSources, sourceFacts);
+            result = new PagedResult<ParkItemRatingRankingResult>(
+                enrichedItems,
+                result.Page,
+                result.PageSize,
+                result.TotalItems);
+        }
 
         return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(result);
     }

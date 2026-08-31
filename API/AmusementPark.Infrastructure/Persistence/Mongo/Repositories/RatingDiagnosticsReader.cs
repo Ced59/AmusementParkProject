@@ -231,6 +231,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                       "sourceRatingSum": 1,
                       "aggregateCount": 1,
                       "aggregate.ratingCount": 1,
+                      "aggregate.uniqueContributorCount": 1,
                       "aggregate.ratingSum": 1,
                       "aggregate.averageRating": 1,
                       "aggregate.bayesianScore": 1
@@ -360,28 +361,43 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             long sourceUniqueContributorCount = ReadInt64(document, "sourceUniqueContributorCount");
             double sourceRatingSum = ReadDouble(document, "sourceRatingSum");
             bool hasAggregateRatingCount = TryReadInt64(aggregate, "ratingCount", out long aggregateRatingCount);
+            bool hasAggregateUniqueContributorCount = TryReadInt64(
+                aggregate,
+                "uniqueContributorCount",
+                out long aggregateUniqueContributorCount);
             bool hasAggregateRatingSum = TryReadDouble(aggregate, "ratingSum", out double aggregateRatingSum);
             bool hasAggregateAverage = TryReadDouble(aggregate, "averageRating", out double aggregateAverage);
             bool hasAggregateBayesianScore = TryReadDouble(
                 aggregate,
                 "bayesianScore",
                 out double aggregateBayesianScore);
+            bool contributorCountMismatch = !hasAggregateUniqueContributorCount
+                || sourceUniqueContributorCount != aggregateUniqueContributorCount;
+            bool sourceProjectionMismatch = !hasAggregateRatingCount
+                || !hasAggregateRatingSum
+                || sourceObservationCount != aggregateRatingCount
+                || !sourceRatingSum.Equals(aggregateRatingSum);
             double expectedAverage = RatingScoreCalculator.CalculateAverage(
                 sourceRatingSum,
                 sourceObservationCount);
             double expectedBayesianScore = RatingScoreCalculator.CalculateBayesianScore(
                 sourceRatingSum,
                 sourceObservationCount);
-            bool contributorCountMismatch = !hasAggregateRatingCount
-                || sourceUniqueContributorCount != aggregateRatingCount;
-            bool sourceProjectionMismatch = !hasAggregateRatingCount
-                || !hasAggregateRatingSum
-                || sourceObservationCount != aggregateRatingCount
-                || !sourceRatingSum.Equals(aggregateRatingSum);
             bool derivedScoreMismatch = !hasAggregateAverage
                 || !hasAggregateBayesianScore
+                || !double.IsFinite(expectedAverage)
+                || !double.IsFinite(expectedBayesianScore)
                 || !expectedAverage.Equals(aggregateAverage)
                 || !expectedBayesianScore.Equals(aggregateBayesianScore);
+            bool sourceProjectionIsValid = RatingAggregate.HasValidSourceProjection(
+                aggregateRatingCount,
+                hasAggregateUniqueContributorCount ? aggregateUniqueContributorCount : null,
+                aggregateRatingSum,
+                aggregateAverage,
+                aggregateBayesianScore,
+                sourceObservationCount,
+                sourceUniqueContributorCount,
+                sourceRatingSum);
 
             if (contributorCountMismatch)
             {
@@ -393,7 +409,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 derivedScoreMismatchCount++;
             }
 
-            if (contributorCountMismatch || sourceProjectionMismatch || derivedScoreMismatch)
+            if (contributorCountMismatch
+                || sourceProjectionMismatch
+                || derivedScoreMismatch
+                || !sourceProjectionIsValid)
             {
                 divergentAggregateCount++;
             }

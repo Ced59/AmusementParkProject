@@ -72,6 +72,7 @@ public sealed class GetRatingSummaryQueryHandlerTests
             BayesianScore = 4.42,
             MutationVersion = 2,
             CalculatedVersion = 2,
+            SourceIntegrityIsValid = true,
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository

@@ -2,7 +2,6 @@ using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
-using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -14,12 +13,14 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
     private static readonly TimeSpan QueryMaxTime = TimeSpan.FromSeconds(10);
 
     private readonly IMongoCollection<UserRatingDocument> userRatingsCollection;
-    private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
+    private readonly IMongoCollection<BsonDocument> parkItemsCollection;
+    private readonly RatingAggregateSourceReader aggregateSourceReader;
 
     public RatingEvidenceReader(IMongoDatabase database, MongoDbSettings settings)
     {
         this.userRatingsCollection = database.GetCollection<UserRatingDocument>(settings.UserRatingsCollectionName);
-        this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.parkItemsCollection = database.GetCollection<BsonDocument>(settings.ParkItemsCollectionName);
+        this.aggregateSourceReader = new RatingAggregateSourceReader(this.userRatingsCollection);
     }
 
     public async Task<ParkRankingEvidenceFactsBatch> ReadParkRankingFactsAsync(
@@ -53,23 +54,42 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
                 MaxTime = QueryMaxTime,
             })
             .ToListAsync(cancellationToken);
-        Task<List<PublicParkItemProjection>> publicItemDocumentsTask = this.LoadPublicItemDocumentsAsync(
+        Task<List<BsonDocument>> publicItemDocumentsTask = this.LoadPublicItemDocumentsAsync(
             normalizedTargets.Select(static target => target.ParkId).Distinct(StringComparer.Ordinal).ToList(),
             cancellationToken);
+        Task<IReadOnlyCollection<RatingAggregateSourceFact>> aggregateSourceFactsTask =
+            this.ReadAggregateSourceFactsAsync(
+                normalizedTargets.Select(static target => new RatingAggregateSourceTarget(
+                        target.TargetType,
+                        target.TargetId))
+                    .ToList(),
+                cancellationToken);
 
-        await Task.WhenAll(contributorDocumentsTask, publicItemDocumentsTask);
+        await Task.WhenAll(contributorDocumentsTask, publicItemDocumentsTask, aggregateSourceFactsTask);
 
         List<BsonDocument> contributorDocuments = await contributorDocumentsTask;
-        List<PublicParkItemProjection> publicItemDocuments = await publicItemDocumentsTask;
+        List<BsonDocument> publicItemDocuments = await publicItemDocumentsTask;
         List<ParkRankingContributorFacts> contributors = contributorDocuments
             .Select(TryMapContributorFacts)
             .Where(static facts => facts is not null)
             .Select(static facts => facts!)
             .ToList();
-        IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems = BuildPublicItemFacts(
+        PublicParkItemEvidenceReadResult publicItemResult = BuildPublicItemFacts(
             publicItemDocuments);
 
-        return new ParkRankingEvidenceFactsBatch(contributors, publicItems);
+        return new ParkRankingEvidenceFactsBatch(
+            contributors,
+            publicItemResult.Facts,
+            await aggregateSourceFactsTask,
+            publicItemResult.IncompleteParkIds,
+            AggregateSourceFactsWereRead: true);
+    }
+
+    public Task<IReadOnlyCollection<RatingAggregateSourceFact>> ReadAggregateSourceFactsAsync(
+        IReadOnlyCollection<RatingAggregateSourceTarget> targets,
+        CancellationToken cancellationToken)
+    {
+        return this.aggregateSourceReader.ReadAsync(targets, cancellationToken);
     }
 
     internal static IReadOnlyCollection<BsonDocument> BuildContributorPipeline(
@@ -199,46 +219,57 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
         };
     }
 
-    internal static IReadOnlyCollection<PublicParkItemEvidenceFact> BuildPublicItemFacts(
-        IReadOnlyCollection<PublicParkItemProjection> documents)
+    internal static PublicParkItemEvidenceReadResult BuildPublicItemFacts(
+        IReadOnlyCollection<BsonDocument> documents)
     {
         ArgumentNullException.ThrowIfNull(documents);
 
-        return documents
-            .Where(static document => !string.IsNullOrWhiteSpace(document.Id)
-                && !string.IsNullOrWhiteSpace(document.ParkId)
-                && ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
-                    document.Category,
-                    document.AttractionStatus))
-            .Select(static document => new PublicParkItemEvidenceFact(
-                document.ParkId.Trim(),
-                document.Id.Trim(),
-                document.Category))
-            .Distinct()
-            .ToList();
+        List<PublicParkItemEvidenceFact> facts = new List<PublicParkItemEvidenceFact>();
+        HashSet<string> incompleteParkIds = new HashSet<string>(StringComparer.Ordinal);
+        foreach (BsonDocument document in documents)
+        {
+            if (!TryReadRequiredString(document, "parkId", out string parkId))
+            {
+                continue;
+            }
+
+            if (!TryReadRequiredString(document, "_id", out string targetId)
+                || !TryReadCategory(document, out ParkItemCategory category)
+                || !TryReadAttractionStatus(document, out string? attractionStatus))
+            {
+                incompleteParkIds.Add(parkId);
+                continue;
+            }
+
+            if (ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(category, attractionStatus))
+            {
+                facts.Add(new PublicParkItemEvidenceFact(parkId, targetId, category));
+            }
+        }
+
+        return new PublicParkItemEvidenceReadResult(
+            facts.Distinct().ToList(),
+            incompleteParkIds.ToList());
     }
 
-    private async Task<List<PublicParkItemProjection>> LoadPublicItemDocumentsAsync(
+    private async Task<List<BsonDocument>> LoadPublicItemDocumentsAsync(
         IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(
-                document => document.ParkId,
-                parkIds)
-            & Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.In("parkId", parkIds)
+            & Builders<BsonDocument>.Filter.Eq("isVisible", true);
+        ProjectionDefinition<BsonDocument> projection = Builders<BsonDocument>.Projection
+            .Include("_id")
+            .Include("parkId")
+            .Include("category")
+            .Include("attractionDetails.status");
         FindOptions findOptions = new FindOptions
         {
             MaxTime = QueryMaxTime,
         };
 
         return await this.parkItemsCollection.Find(filter, findOptions)
-            .Project(static document => new PublicParkItemProjection
-            {
-                Id = document.Id,
-                ParkId = document.ParkId,
-                Category = document.Category,
-                AttractionStatus = document.AttractionDetails!.Status,
-            })
+            .Project<BsonDocument>(projection)
             .ToListAsync(cancellationToken);
     }
 
@@ -290,14 +321,64 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
         return value >= 0;
     }
 
-    internal sealed class PublicParkItemProjection
+    private static bool TryReadRequiredString(BsonDocument document, string name, out string value)
     {
-        public string Id { get; init; } = string.Empty;
+        if (!document.TryGetValue(name, out BsonValue? bsonValue)
+            || !bsonValue.IsString
+            || string.IsNullOrWhiteSpace(bsonValue.AsString))
+        {
+            value = string.Empty;
+            return false;
+        }
 
-        public string ParkId { get; init; } = string.Empty;
-
-        public ParkItemCategory Category { get; init; }
-
-        public string? AttractionStatus { get; init; }
+        value = bsonValue.AsString.Trim();
+        return true;
     }
+
+    private static bool TryReadCategory(BsonDocument document, out ParkItemCategory category)
+    {
+        if (!TryReadRequiredString(document, "category", out string value)
+            || !Enum.TryParse(value, true, out category)
+            || !Enum.IsDefined(category))
+        {
+            category = default;
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool TryReadAttractionStatus(BsonDocument document, out string? status)
+    {
+        status = null;
+        if (!document.TryGetValue("attractionDetails", out BsonValue? detailsValue)
+            || detailsValue.IsBsonNull)
+        {
+            return true;
+        }
+
+        if (!detailsValue.IsBsonDocument)
+        {
+            return false;
+        }
+
+        BsonDocument details = detailsValue.AsBsonDocument;
+        if (!details.TryGetValue("status", out BsonValue? statusValue)
+            || statusValue.IsBsonNull)
+        {
+            return true;
+        }
+
+        if (!statusValue.IsString)
+        {
+            return false;
+        }
+
+        status = statusValue.AsString;
+        return true;
+    }
+
+    internal sealed record PublicParkItemEvidenceReadResult(
+        IReadOnlyCollection<PublicParkItemEvidenceFact> Facts,
+        IReadOnlyCollection<string> IncompleteParkIds);
 }

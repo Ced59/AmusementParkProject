@@ -168,6 +168,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
             BayesianScore = 3.7,
             MutationVersion = 2,
             CalculatedVersion = 2,
+            SourceIntegrityIsValid = true,
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
