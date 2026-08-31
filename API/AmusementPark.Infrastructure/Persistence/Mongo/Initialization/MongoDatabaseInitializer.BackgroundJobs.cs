@@ -99,6 +99,16 @@ public sealed partial class MongoDatabaseInitializer
                 new CreateIndexOptions { Name = "idx_background_jobs_diagnostics_recent" }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys
+                    .Ascending(item => item.Status)
+                    .Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_background_jobs_diagnostics_status" }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys
+                    .Ascending(item => item.Kind)
+                    .Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_background_jobs_diagnostics_kind" }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys
                     .Ascending(item => item.Kind)
                     .Ascending(item => item.Status)
                     .Descending(item => item.UpdatedAt),

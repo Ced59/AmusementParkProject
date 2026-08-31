@@ -56,6 +56,18 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
                 index.Options.Name,
                 "idx_background_jobs_diagnostics_recent",
                 StringComparison.Ordinal));
+        CreateIndexModel<DurableBackgroundJobDocument> statusDiagnostics = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                "idx_background_jobs_diagnostics_status",
+                StringComparison.Ordinal));
+        CreateIndexModel<DurableBackgroundJobDocument> kindDiagnostics = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                "idx_background_jobs_diagnostics_kind",
+                StringComparison.Ordinal));
         CreateIndexModel<DurableBackgroundJobDocument> diagnostics = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_diagnostics", StringComparison.Ordinal));
@@ -68,6 +80,8 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
             Render(expiredClaims.Keys));
         Assert.Equal(new BsonDocument("leaseExpiresAtUtc", 1), Render(leases.Keys));
         Assert.Equal(new BsonDocument("updatedAt", -1), Render(recentDiagnostics.Keys));
+        Assert.Equal(new BsonDocument { { "status", 1 }, { "updatedAt", -1 } }, Render(statusDiagnostics.Keys));
+        Assert.Equal(new BsonDocument { { "kind", 1 }, { "updatedAt", -1 } }, Render(kindDiagnostics.Keys));
         Assert.Equal(new BsonDocument { { "kind", 1 }, { "status", 1 }, { "updatedAt", -1 } }, Render(diagnostics.Keys));
 
         string runnableFilter = Render(runnable.Options.PartialFilterExpression!).ToJson();
