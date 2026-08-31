@@ -30,20 +30,48 @@ internal static class DurableBackgroundJobMongoDefinitions
         DateTime nowUtc,
         string? correlationId)
     {
-        UpdateDefinitionBuilder<DurableBackgroundJobDocument> updates = Builders<DurableBackgroundJobDocument>.Update;
-        List<UpdateDefinition<DurableBackgroundJobDocument>> definitions = new List<UpdateDefinition<DurableBackgroundJobDocument>>
+        BsonDocument currentRevision = new BsonDocument(
+            "$ifNull",
+            new BsonArray { "$requestedRevision", new BsonInt64(-1) });
+        BsonDocument hasNewerRevision = new BsonDocument(
+            "$gt",
+            new BsonArray { new BsonInt64(requestedRevision), currentRevision });
+        BsonDocument hasHigherPriority = new BsonDocument(
+            "$gt",
+            new BsonArray { new BsonInt32(priority), "$priority" });
+        BsonDocument hasEarlierSchedule = new BsonDocument(
+            "$lt",
+            new BsonArray { notBeforeUtc, "$notBeforeUtc" });
+        BsonDocument set = new BsonDocument
         {
-            updates.Max(item => item.RequestedRevision, requestedRevision),
-            updates.Max(item => item.Priority, priority),
-            updates.Min(item => item.NotBeforeUtc, notBeforeUtc),
-            updates.Set(item => item.UpdatedAt, nowUtc),
+            {
+                "requestedRevision",
+                new BsonDocument("$cond", new BsonArray { hasNewerRevision, requestedRevision, "$requestedRevision" })
+            },
+            {
+                "priority",
+                new BsonDocument("$cond", new BsonArray { hasHigherPriority, priority, "$priority" })
+            },
+            {
+                "notBeforeUtc",
+                new BsonDocument("$cond", new BsonArray
+                {
+                    hasNewerRevision,
+                    new BsonDocument("$cond", new BsonArray { hasEarlierSchedule, notBeforeUtc, "$notBeforeUtc" }),
+                    "$notBeforeUtc",
+                })
+            },
+            { "updatedAt", nowUtc },
         };
         if (correlationId is not null)
         {
-            definitions.Add(updates.Set(item => item.CorrelationId, correlationId));
+            set.Add("correlationId", correlationId);
         }
 
-        return updates.Combine(definitions);
+        PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument> pipeline =
+            PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument>.Create(
+                new[] { new BsonDocument("$set", set) });
+        return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
     }
 
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildRunnableFilter(

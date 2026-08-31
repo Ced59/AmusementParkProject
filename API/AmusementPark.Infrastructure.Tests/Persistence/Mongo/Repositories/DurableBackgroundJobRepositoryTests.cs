@@ -77,21 +77,35 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
-    public void BuildCoalesceUpdate_ShouldAdvanceSignalsWithoutReplacingPayload()
+    public void BuildCoalesceUpdate_ShouldOnlyAdvanceTheScheduleForANewerRevision()
     {
-        BsonDocument rendered = Render(DurableBackgroundJobRepository.BuildCoalesceUpdate(
+        BsonValue rendered = Render(DurableBackgroundJobRepository.BuildCoalesceUpdate(
             17,
             40,
             NowUtc.AddMinutes(3),
             NowUtc,
-            "correlation-1")).AsBsonDocument;
+            "correlation-1"));
 
-        Assert.Equal(17, rendered["$max"].AsBsonDocument["requestedRevision"].AsInt64);
-        Assert.Equal(40, rendered["$max"].AsBsonDocument["priority"].AsInt32);
+        BsonDocument set = Assert.Single(rendered.AsBsonArray).AsBsonDocument["$set"].AsBsonDocument;
+        BsonArray revisionCondition = set["requestedRevision"].AsBsonDocument["$cond"].AsBsonArray;
+        BsonDocument newerRevision = revisionCondition[0].AsBsonDocument;
+        Assert.Equal(17, revisionCondition[1].AsInt64);
+        Assert.Equal("$requestedRevision", revisionCondition[2].AsString);
+        Assert.Equal(17, newerRevision["$gt"].AsBsonArray[0].AsInt64);
+
+        BsonArray scheduleCondition = set["notBeforeUtc"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(newerRevision, scheduleCondition[0].AsBsonDocument);
+        Assert.Equal("$notBeforeUtc", scheduleCondition[2].AsString);
+        BsonArray earlierScheduleCondition = scheduleCondition[1].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(
             NowUtc.AddMinutes(3),
-            rendered["$min"].AsBsonDocument["notBeforeUtc"].ToUniversalTime());
-        Assert.Equal("correlation-1", rendered["$set"].AsBsonDocument["correlationId"].AsString);
+            earlierScheduleCondition[1].ToUniversalTime());
+        Assert.Equal("$notBeforeUtc", earlierScheduleCondition[2].AsString);
+
+        BsonArray priorityCondition = set["priority"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(40, priorityCondition[1].AsInt32);
+        Assert.Equal("$priority", priorityCondition[2].AsString);
+        Assert.Equal("correlation-1", set["correlationId"].AsString);
         Assert.DoesNotContain("payload", rendered.ToJson(), StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("payloadVersion", rendered.ToJson(), StringComparison.OrdinalIgnoreCase);
     }
