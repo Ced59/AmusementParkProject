@@ -85,6 +85,7 @@ public sealed class DurableBackgroundJobRepositoryTests
 
         Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), rendered["status"].AsString);
         Assert.Equal(NowUtc, rendered["leaseExpiresAtUtc"].AsBsonDocument["$lte"].ToUniversalTime());
+        Assert.Equal(NowUtc, rendered["notBeforeUtc"].AsBsonDocument["$lte"].ToUniversalTime());
     }
 
     [Fact]
@@ -319,13 +320,13 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
-    public void BuildReleaseExpiredLeaseUpdate_ShouldMakeTheJobImmediatelyRunnable()
+    public void BuildReleaseExpiredLeaseUpdate_ShouldPreserveTheRequestedSchedule()
     {
         BsonDocument rendered = Render(
             DurableBackgroundJobRepository.BuildReleaseExpiredLeaseUpdate(NowUtc)).AsBsonDocument;
 
         Assert.Equal(DurableBackgroundJobStatus.RetryScheduled.ToString(), rendered["$set"].AsBsonDocument["status"].AsString);
-        Assert.Equal(NowUtc, rendered["$set"].AsBsonDocument["notBeforeUtc"].ToUniversalTime());
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("notBeforeUtc"));
         AssertLeaseMetadataIsUnset(rendered);
     }
 

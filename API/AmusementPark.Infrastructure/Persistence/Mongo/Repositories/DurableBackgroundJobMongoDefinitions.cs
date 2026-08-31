@@ -107,7 +107,8 @@ internal static class DurableBackgroundJobMongoDefinitions
         FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
         return filters.In(item => item.Kind, kinds)
             & filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
-            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc);
+            & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc)
+            & filters.Lte(item => item.NotBeforeUtc, nowUtc);
     }
 
     internal static SortDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableSort()
@@ -316,7 +317,6 @@ internal static class DurableBackgroundJobMongoDefinitions
     {
         return Builders<DurableBackgroundJobDocument>.Update
             .Set(item => item.Status, DurableBackgroundJobStatus.RetryScheduled)
-            .Set(item => item.NotBeforeUtc, nowUtc)
             .Set(item => item.UpdatedAt, nowUtc)
             .Unset(item => item.LeaseOwner)
             .Unset(item => item.LeaseToken)
