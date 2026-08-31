@@ -225,6 +225,10 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Equal(RankingEvidenceLevel.Provisional, evidence.Level);
         Assert.False(evidence.IsEligibleForMainRanking);
         Assert.Equal(RankingIneligibilityReason.TooFewUniqueContributors, evidence.IneligibilityReason);
+        Assert.Equal(10, evidence.UniqueContributorCount);
+        Assert.Equal(10, evidence.RatingObservationCount);
+        Assert.Equal(9, evidence.DirectParkContributorCount);
+        Assert.Equal(10, evidence.ItemContributorCount);
         Assert.Equal(5, evidence.EligibleItemCount);
         Assert.Equal(2, evidence.EligibleCategoryCount);
     }

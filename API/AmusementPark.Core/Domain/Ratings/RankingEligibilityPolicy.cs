@@ -127,12 +127,15 @@ public sealed class RankingEligibilityPolicy
                 exclusionReason);
         }
 
-        int activeContributorCount = itemComponent.IsEligible
-            ? input.UniqueContributorCount
-            : input.DirectParkContributorCount;
-        int activeObservationCount = itemComponent.IsEligible
-            ? input.RatingObservationCount
-            : input.DirectParkContributorCount;
+        bool directComponentIsEligible = input.DirectParkContributorCount >= this.EligibleMinUniqueContributors;
+        int activeContributorCount = ResolveActiveContributorCount(
+            input,
+            directComponentIsEligible,
+            itemComponent.IsEligible);
+        int activeObservationCount = ResolveActiveObservationCount(
+            input,
+            directComponentIsEligible,
+            itemComponent.IsEligible);
         RankingEvidenceLevel level = this.ResolveEvidenceLevel(activeContributorCount);
         if (level is RankingEvidenceLevel.NoEvidence or RankingEvidenceLevel.Insufficient or RankingEvidenceLevel.Provisional)
         {
@@ -146,7 +149,7 @@ public sealed class RankingEligibilityPolicy
                 ResolveVolumeIneligibilityReason(level));
         }
 
-        if (input.DirectParkContributorCount < this.EligibleMinUniqueContributors)
+        if (!directComponentIsEligible)
         {
             return this.CreateParkEvidence(
                 input,
@@ -338,6 +341,36 @@ public sealed class RankingEligibilityPolicy
     {
         return category.EligibleItemCount >= minimumEligibleItemsPerCategory
             || (category.PublicItemCount == 1 && category.EligibleItemCount == 1);
+    }
+
+    private static int ResolveActiveContributorCount(
+        ParkRankingEvidenceInput input,
+        bool directComponentIsEligible,
+        bool itemComponentIsEligible)
+    {
+        if (directComponentIsEligible && itemComponentIsEligible)
+        {
+            return input.UniqueContributorCount;
+        }
+
+        return itemComponentIsEligible
+            ? input.ItemContributorCount
+            : input.DirectParkContributorCount;
+    }
+
+    private static int ResolveActiveObservationCount(
+        ParkRankingEvidenceInput input,
+        bool directComponentIsEligible,
+        bool itemComponentIsEligible)
+    {
+        if (directComponentIsEligible && itemComponentIsEligible)
+        {
+            return input.RatingObservationCount;
+        }
+
+        return itemComponentIsEligible
+            ? input.RatingObservationCount - input.DirectParkContributorCount
+            : input.DirectParkContributorCount;
     }
 
     private RankingEvidence CreateSimpleEvidence(
