@@ -66,7 +66,10 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         Task<Image?> mainImageTask = this.GetMainImageAsync(parkDocument, cancellationToken);
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
         Task<string?> operatorNameTask = this.GetOperatorNameAsync(parkDocument.OperatorId, cancellationToken);
-        Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(parkDocument.Id, cancellationToken);
+        Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(
+            parkDocument.Id,
+            parkDocument.Status,
+            cancellationToken);
         Task<ParkPricingEntity?> pricingTask = this.GetPricingAsync(parkDocument.Id, cancellationToken);
 
         await Task.WhenAll(countsTask, zoneCountTask, mappableItemsCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask, pricingTask);
@@ -133,17 +136,29 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         return count > int.MaxValue ? int.MaxValue : checked((int)count);
     }
 
-    private async Task<RatingSummaryResult> GetRatingSummaryAsync(string parkId, CancellationToken cancellationToken)
+    private async Task<RatingSummaryResult> GetRatingSummaryAsync(
+        string parkId,
+        ParkStatus parkStatus,
+        CancellationToken cancellationToken)
     {
         RatingAggregateDocument? aggregate = await this.ratingAggregatesCollection.Find(
                 Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, RatingTargetType.Park)
                 & Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetId, parkId))
             .FirstOrDefaultAsync(cancellationToken);
 
+        return BuildRatingSummary(parkId, parkStatus, aggregate?.ToDomain());
+    }
+
+    internal static RatingSummaryResult BuildRatingSummary(
+        string parkId,
+        ParkStatus parkStatus,
+        RatingAggregate? aggregate)
+    {
         return RatingResultFactory.CreateSummary(
             RatingTargetType.Park,
             parkId,
-            aggregate?.ToDomain());
+            aggregate,
+            parkStatus.CanReceiveVisitorRatings());
     }
 
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
