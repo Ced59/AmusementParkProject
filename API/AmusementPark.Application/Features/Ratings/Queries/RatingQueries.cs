@@ -12,6 +12,8 @@ public sealed record GetRatingSummaryQuery(
     RatingTargetType TargetType,
     string TargetId) : IQuery<ApplicationResult<RatingSummaryResult>>;
 
+public sealed record GetRatingDiagnosticsQuery : IQuery<ApplicationResult<RatingDiagnosticsResult>>;
+
 public sealed record GetUserRatingQuery(
     string UserId,
     RatingTargetType TargetType,

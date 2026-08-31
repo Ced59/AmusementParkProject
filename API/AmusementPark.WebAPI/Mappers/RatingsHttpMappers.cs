@@ -35,6 +35,63 @@ internal static class RatingsHttpMappers
         };
     }
 
+    public static RatingDiagnosticsDto ToHttp(this RatingDiagnosticsResult value)
+    {
+        return new RatingDiagnosticsDto
+        {
+            GeneratedAtUtc = value.GeneratedAtUtc,
+            ExecutionDurationMilliseconds = value.ExecutionDurationMilliseconds,
+            TotalRatings = value.TotalRatings,
+            DistinctNumericValueCount = value.DistinctNumericValueCount,
+            DistinctNumericValueSample = value.DistinctNumericValueSample,
+            IsDistinctNumericValueSampleTruncated = value.IsDistinctNumericValueSampleTruncated,
+            Anomalies = new RatingAnomalySummaryDto
+            {
+                NonNumericValueCount = value.Anomalies.NonNumericValueCount,
+                UnexpectedValueStorageTypeCount = value.Anomalies.UnexpectedValueStorageTypeCount,
+                OutOfRangeValueCount = value.Anomalies.OutOfRangeValueCount,
+                NonHalfStepValueCount = value.Anomalies.NonHalfStepValueCount,
+                NearHalfStepValueCount = value.Anomalies.NearHalfStepValueCount,
+                MissingUserIdCount = value.Anomalies.MissingUserIdCount,
+                MissingTargetCount = value.Anomalies.MissingTargetCount,
+                DuplicateVoteKeyCount = value.Anomalies.DuplicateVoteKeyCount,
+                ExtraDuplicateDocumentCount = value.Anomalies.ExtraDuplicateDocumentCount,
+            },
+            AggregateIntegrity = new RatingAggregateIntegrityDto
+            {
+                IsSourceComparisonEvaluated = value.AggregateIntegrity.IsSourceComparisonEvaluated,
+                IsOrphanCheckEvaluated = value.AggregateIntegrity.IsOrphanCheckEvaluated,
+                SourceTargetCount = value.AggregateIntegrity.SourceTargetCount,
+                MissingAggregateCount = value.AggregateIntegrity.MissingAggregateCount,
+                DivergentAggregateCount = value.AggregateIntegrity.DivergentAggregateCount,
+                ContributorCountMismatchCount = value.AggregateIntegrity.ContributorCountMismatchCount,
+                DerivedScoreMismatchCount = value.AggregateIntegrity.DerivedScoreMismatchCount,
+                OrphanAggregateCount = value.AggregateIntegrity.OrphanAggregateCount,
+            },
+            TargetDistribution = value.TargetDistribution.Select(static item => new RatingTargetDistributionDto
+            {
+                TargetType = item.TargetType,
+                EvidenceBand = item.EvidenceBand,
+                TargetCount = item.TargetCount,
+                RatingObservationCount = item.RatingObservationCount,
+                UniqueContributorCount = item.UniqueContributorCount,
+            }).ToList(),
+            Indexes = value.Indexes.Select(static index => new RatingIndexStatusDto
+            {
+                Collection = index.Collection,
+                Name = index.Name,
+                IsPresent = index.IsPresent,
+                IsUnique = index.IsUnique,
+                IsHidden = index.IsHidden,
+                HasUnexpectedOptions = index.HasUnexpectedOptions,
+                SupportsExpectedQueries = index.SupportsExpectedQueries,
+                MatchesExpectedDefinition = index.MatchesExpectedDefinition,
+                ExpectedKeys = index.ExpectedKeys,
+                ActualKeys = index.ActualKeys,
+            }).ToList(),
+        };
+    }
+
     public static UserRatingDto ToHttp(this UserRatingResult value)
     {
         return new UserRatingDto
