@@ -189,6 +189,9 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
                 new BsonDocument("$strLenCP", new BsonDocument("$trim", new BsonDocument("input", "$userId"))),
                 0,
             }))),
+            new BsonDocument("$match", new BsonDocument(
+                "$expr",
+                RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"))),
             perUserGroup,
             perParkGroup,
             project,

@@ -153,6 +153,10 @@ public sealed record RatingRankingItemResult(
     public bool? AggregateIntegrityIsValid { get; init; }
 }
 
+public sealed record RatingRankingSourceBatch(
+    IReadOnlyCollection<RatingRankingItemResult> Sources,
+    bool IsTruncated);
+
 public sealed record ParkRatingRankingItemResult(
     string TargetId,
     string TargetName,

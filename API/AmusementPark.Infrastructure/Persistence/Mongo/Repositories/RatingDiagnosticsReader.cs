@@ -252,6 +252,17 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
         facets["targetDistribution"].AsBsonArray[0] =
             BuildEligibleTargetMatch(eligibleParkIds, eligibleParkItemIds);
+        BsonDocument exactRatingValueStage = BsonDocument.Parse(
+            """
+            {
+              "$set": {
+                "_diagnosticIsExactHalfStep": false,
+                "_diagnosticHalfStepDistance": { "$cond": [ "$_diagnosticInRange", { "$abs": { "$subtract": [ "$_diagnosticNumericValue", { "$divide": [ { "$round": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 0 ] }, 2 ] } ] } }, null ] }
+              }
+            }
+            """);
+        exactRatingValueStage["$set"]["_diagnosticIsExactHalfStep"] =
+            RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value");
 
         return new[]
         {
@@ -278,15 +289,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   }
                 }
                 """),
-            BsonDocument.Parse(
-                """
-                {
-                  "$set": {
-                    "_diagnosticIsExactHalfStep": { "$cond": [ "$_diagnosticInRange", { "$eq": [ { "$mod": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 1 ] }, 0 ] }, false ] },
-                    "_diagnosticHalfStepDistance": { "$cond": [ "$_diagnosticInRange", { "$abs": { "$subtract": [ "$_diagnosticNumericValue", { "$divide": [ { "$round": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 0 ] }, 2 ] } ] } }, null ] }
-                  }
-                }
-                """),
+            exactRatingValueStage,
             facetStage,
         };
     }

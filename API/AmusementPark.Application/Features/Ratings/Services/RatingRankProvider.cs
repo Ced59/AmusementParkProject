@@ -56,12 +56,12 @@ public sealed class RatingRankProvider : IRatingRankProvider
 
     private async Task<IReadOnlyDictionary<string, int>> BuildParkRanksAsync(CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<RatingRankingItemResult> sources =
+        RatingRankingSourceBatch sourceBatch =
             await this.ratingRepository.GetVisibleRankingSourcesAsync(
                 null,
                 RankingSourceLimit,
                 cancellationToken);
-        return RatingRankingFactory.BuildParkRankings(sources)
+        return RatingRankingFactory.BuildParkRankings(sourceBatch.Sources)
             .ToDictionary(
                 static ranking => ranking.ParkId,
                 static ranking => ranking.Rank,

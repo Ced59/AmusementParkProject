@@ -104,6 +104,24 @@ public sealed class RatingRepositoryTests
         Assert.Equal(expected, result);
     }
 
+    [Theory]
+    [InlineData(5000, 100, 100, false)]
+    [InlineData(5001, 100, 100, true)]
+    [InlineData(5000, 101, 100, true)]
+    public void IsVisibleRankingSourceSetTruncated_ShouldDetectLookAheadDocument(
+        int parkDocumentCount,
+        int parkItemDocumentCount,
+        int parkItemLimit,
+        bool expected)
+    {
+        bool result = RatingRepository.IsVisibleRankingSourceSetTruncated(
+            parkDocumentCount,
+            parkItemDocumentCount,
+            parkItemLimit);
+
+        Assert.Equal(expected, result);
+    }
+
     private static UserRatingListItemResult CreateRating(
         string id,
         string targetId,

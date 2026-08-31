@@ -21,7 +21,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
             .Setup(repository => repository.GetVisibleRankingSourcesAsync(null, It.IsAny<int>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateParkSources());
+            .ReturnsAsync(new RatingRankingSourceBatch(CreateParkSources(), IsTruncated: false));
         Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         ratingEvidenceReader
             .Setup(reader => reader.ReadParkRankingFactsAsync(
@@ -59,7 +59,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
             .Setup(repository => repository.GetVisibleRankingSourcesAsync(null, It.IsAny<int>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(sources);
+            .ReturnsAsync(new RatingRankingSourceBatch(sources, IsTruncated: false));
         Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         ratingEvidenceReader
             .Setup(reader => reader.ReadParkRankingFactsAsync(
@@ -104,6 +104,32 @@ public sealed class GetRatingRankingsQueryHandlerTests
         Assert.True(ranking.Evidence?.IsEligibleForMainRanking);
         ratingRepository.VerifyAll();
         ratingEvidenceReader.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenRankingSourcesAreTruncated_ShouldWithholdEvidence()
+    {
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetVisibleRankingSourcesAsync(
+                null,
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new RatingRankingSourceBatch(CreateParkSources(), IsTruncated: true));
+        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        GetRatingRankingsQueryHandler handler = new GetRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            ratingEvidenceReader.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkRatingRankingResult>> result = await handler.HandleAsync(
+            new GetRatingRankingsQuery(null, new PagedQuery(1, 20), null));
+
+        Assert.True(result.IsSuccess);
+        Assert.NotEmpty(result.Value!.Items);
+        Assert.All(result.Value.Items, static ranking => Assert.Null(ranking.Evidence));
+        ratingRepository.VerifyAll();
+        ratingEvidenceReader.VerifyNoOtherCalls();
     }
 
     [Fact]

@@ -274,25 +274,40 @@ public sealed class RatingRepository : IRatingRepository
             byParkItemCategory);
     }
 
-    public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleRankingSourcesAsync(ParkItemCategory? parkItemCategory, int maxItems, CancellationToken cancellationToken)
+    public async Task<RatingRankingSourceBatch> GetVisibleRankingSourcesAsync(
+        ParkItemCategory? parkItemCategory,
+        int maxItems,
+        CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
         List<RatingAggregateDocument> parkDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingParkFilter())
             .Sort(BuildRankingSort())
-            .Limit(RankingCandidateHardLimit)
+            .Limit(RankingCandidateHardLimit + 1)
             .ToListAsync(cancellationToken);
         List<RatingAggregateDocument> parkItemDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingItemFilter(parkItemCategory))
             .Sort(BuildRankingSort())
-            .Limit(effectiveMaxItems)
+            .Limit(effectiveMaxItems + 1)
             .ToListAsync(cancellationToken);
-        List<RatingAggregateDocument> candidateDocuments = parkDocuments.Concat(parkItemDocuments).ToList();
+        bool isTruncated = IsVisibleRankingSourceSetTruncated(
+            parkDocuments.Count,
+            parkItemDocuments.Count,
+            effectiveMaxItems);
+        List<RatingAggregateDocument> candidateDocuments = parkDocuments
+            .Take(RankingCandidateHardLimit)
+            .Concat(parkItemDocuments.Take(effectiveMaxItems))
+            .ToList();
 
         if (candidateDocuments.Count == 0)
         {
-            return Array.Empty<RatingRankingItemResult>();
+            return new RatingRankingSourceBatch(
+                Array.Empty<RatingRankingItemResult>(),
+                isTruncated);
         }
 
-        return await this.EnrichVisibleRankingSourcesAsync(candidateDocuments, cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> sources = await this.EnrichVisibleRankingSourcesAsync(
+            candidateDocuments,
+            cancellationToken);
+        return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
     public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
@@ -679,6 +694,15 @@ public sealed class RatingRepository : IRatingRepository
             && ParkItemStatusNormalizer.CanReceiveVisitorRatings(
                 parkItem.Category,
                 parkItem.AttractionDetails?.Status);
+    }
+
+    internal static bool IsVisibleRankingSourceSetTruncated(
+        int parkDocumentCount,
+        int parkItemDocumentCount,
+        int parkItemLimit)
+    {
+        return parkDocumentCount > RankingCandidateHardLimit
+            || parkItemDocumentCount > parkItemLimit;
     }
 
     private static bool IsAggregateCalculationCurrent(RatingAggregateDocument document)

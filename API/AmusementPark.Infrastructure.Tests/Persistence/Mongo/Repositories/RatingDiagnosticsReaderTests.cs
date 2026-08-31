@@ -19,6 +19,9 @@ public sealed class RatingDiagnosticsReaderTests
                 true);
 
         Assert.Equal(4, pipeline.Count);
+        Assert.Equal(
+            RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"),
+            pipeline.ElementAt(2)["$set"]["_diagnosticIsExactHalfStep"].AsBsonDocument);
         BsonDocument facet = pipeline.Last()["$facet"].AsBsonDocument;
         Assert.True(facet.Contains("summary"));
         Assert.True(facet.Contains("duplicates"));

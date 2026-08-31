@@ -35,17 +35,18 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
             return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Failure(errors);
         }
 
-        IReadOnlyCollection<RatingRankingItemResult> sources = await this.ratingRepository.GetVisibleRankingSourcesAsync(
+        RatingRankingSourceBatch sourceBatch = await this.ratingRepository.GetVisibleRankingSourcesAsync(
             query.ParkItemCategory,
             RankingSourceLimit,
             cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
         IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(
             sources,
             query.ParkItemCategory);
         PagedResult<ParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
             ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
             : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
-        if (result.Items.Count > 0)
+        if (result.Items.Count > 0 && !sourceBatch.IsTruncated)
         {
             HashSet<string> resultParkIds = result.Items
                 .Select(static ranking => ranking.ParkId)

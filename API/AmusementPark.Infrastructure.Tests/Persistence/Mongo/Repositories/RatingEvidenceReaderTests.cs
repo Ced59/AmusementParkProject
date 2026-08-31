@@ -19,13 +19,19 @@ public sealed class RatingEvidenceReaderTests
             new RatingEvidenceTarget(RatingTargetType.ParkItem, "item-2", "park-1"),
         });
 
-        Assert.Equal(6, pipeline.Count);
-        BsonDocument perUserGroup = pipeline.ElementAt(2)["$group"].AsBsonDocument;
+        Assert.Equal(7, pipeline.Count);
+        BsonDocument ratingValueExpression = pipeline.ElementAt(2)["$match"]["$expr"].AsBsonDocument;
+        BsonArray ratingValueCondition = ratingValueExpression["$cond"].AsBsonArray;
+        Assert.Equal("$value", ratingValueCondition[0]["$isNumber"].AsString);
+        Assert.Contains("$mod", ratingValueCondition[1].ToJson(), StringComparison.Ordinal);
+        Assert.False(ratingValueCondition[2].AsBoolean);
+
+        BsonDocument perUserGroup = pipeline.ElementAt(3)["$group"].AsBsonDocument;
         Assert.Equal("$parkId", perUserGroup["_id"]["parkId"].AsString);
         Assert.Equal("$userId", perUserGroup["_id"]["userId"].AsString);
         Assert.Equal(1, perUserGroup["ratingObservationCount"]["$sum"].AsInt32);
 
-        BsonDocument perParkGroup = pipeline.ElementAt(3)["$group"].AsBsonDocument;
+        BsonDocument perParkGroup = pipeline.ElementAt(4)["$group"].AsBsonDocument;
         Assert.Equal("$_id.parkId", perParkGroup["_id"].AsString);
         Assert.Equal(1, perParkGroup["uniqueContributorCount"]["$sum"].AsInt32);
         Assert.Equal("$ratingObservationCount", perParkGroup["ratingObservationCount"]["$sum"].AsString);
