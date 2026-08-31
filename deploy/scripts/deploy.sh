@@ -251,7 +251,13 @@ start_deploy_candidate() {
   local container_name="$2"
 
   echo "Starting healthy ${service_name} deployment candidate ${container_name}..."
-  compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null
+  if [ "${service_name}" = "api" ]; then
+    compose run -d --no-deps --name "${container_name}" \
+      -e DurableBackgroundJobs__Worker__Enabled=false \
+      "${service_name}" >/dev/null
+  else
+    compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null
+  fi
   wait_for_container_healthy "${container_name}" 180
 }
 
