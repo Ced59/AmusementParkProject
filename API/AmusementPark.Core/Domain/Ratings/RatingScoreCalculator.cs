@@ -30,6 +30,49 @@ public static class RatingScoreCalculator
         return (ratingSum + (PriorMean * PriorWeight)) / (ratingCount + PriorWeight);
     }
 
+    public static long SumHalfSteps(IEnumerable<RatingValue> values)
+    {
+        ArgumentNullException.ThrowIfNull(values);
+
+        long sumHalfSteps = 0;
+        foreach (RatingValue value in values)
+        {
+            sumHalfSteps = checked(sumHalfSteps + value.HalfSteps);
+        }
+
+        return sumHalfSteps;
+    }
+
+    public static double CalculateAverageFromHalfSteps(long sumHalfSteps, long ratingCount)
+    {
+        if (sumHalfSteps < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(sumHalfSteps));
+        }
+
+        if (ratingCount <= 0)
+        {
+            return 0d;
+        }
+
+        return (sumHalfSteps / 2d) / ratingCount;
+    }
+
+    public static double CalculateBayesianScoreFromHalfSteps(long sumHalfSteps, long ratingCount)
+    {
+        if (sumHalfSteps < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(sumHalfSteps));
+        }
+
+        if (ratingCount <= 0)
+        {
+            return PriorMean;
+        }
+
+        return ((sumHalfSteps / 2d) + (PriorMean * PriorWeight)) / (ratingCount + PriorWeight);
+    }
+
     public static double CalculateCompositeParkScore(double? directParkScore, double? parkItemsScore)
     {
         if (directParkScore.HasValue && parkItemsScore.HasValue)
@@ -62,12 +105,6 @@ public static class RatingScoreCalculator
 
     public static bool IsValidUserRating(double value)
     {
-        if (value < 0.5d || value > 5d)
-        {
-            return false;
-        }
-
-        double doubledValue = value * 2d;
-        return Math.Abs(doubledValue - Math.Round(doubledValue, MidpointRounding.AwayFromZero)) < 0.000001d;
+        return RatingValue.TryFromDouble(value, out RatingValue _, out string? _);
     }
 }

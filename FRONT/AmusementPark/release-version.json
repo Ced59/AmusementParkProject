@@ -1,6 +1,20 @@
 {
-  "version": "4.2.31",
+  "version": "4.2.32",
   "history": [
+    {
+      "version": "4.2.32",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "La fiabilité des notes est renforcée pour les prochaines évolutions.",
+        "en": "Rating reliability is strengthened for upcoming improvements.",
+        "de": "Die Zuverlässigkeit der Bewertungen wird für kommende Verbesserungen gestärkt.",
+        "nl": "De betrouwbaarheid van beoordelingen is versterkt voor komende verbeteringen.",
+        "it": "L'affidabilità delle valutazioni è rafforzata per i prossimi miglioramenti.",
+        "es": "La fiabilidad de las valoraciones se refuerza para las próximas mejoras.",
+        "pl": "Wiarygodność ocen została wzmocniona z myślą o kolejnych ulepszeniach.",
+        "pt": "A fiabilidade das avaliações foi reforçada para as próximas melhorias."
+      }
+    },
     {
       "version": "4.2.31",
       "releasedAt": "2026-08-31",
