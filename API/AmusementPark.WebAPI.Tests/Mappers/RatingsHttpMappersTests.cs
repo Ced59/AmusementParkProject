@@ -10,6 +10,25 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 public sealed class RatingsHttpMappersTests
 {
     [Fact]
+    public void ToHttp_WhenSummaryHasNoEvidence_ShouldKeepLegacyCountWithoutInventingProof()
+    {
+        RatingSummaryResult result = new RatingSummaryResult(
+            RatingTargetType.ParkItem,
+            "item-legacy",
+            4,
+            4.25d,
+            3.75d);
+
+        RatingSummaryDto dto = result.ToHttp();
+
+        Assert.Equal(4, dto.RatingCount);
+        Assert.Equal(4, dto.RatingObservationCount);
+        Assert.Null(dto.UniqueContributorCount);
+        Assert.Null(dto.Evidence);
+        Assert.Null(dto.MethodologyVersion);
+    }
+
+    [Fact]
     public void ToHttp_WhenSummaryIsMapped_ShouldExposeRatingNumbers()
     {
         RatingSummaryResult result = new RatingSummaryResult(
@@ -20,6 +39,18 @@ public sealed class RatingsHttpMappersTests
             3.88d)
         {
             Rank = 2,
+            Evidence = new RankingEvidenceResult(
+                RankingEvidenceLevel.Eligible,
+                true,
+                12,
+                12,
+                null,
+                null,
+                null,
+                null,
+                RatingMethodologyVersion.Parse("ratings-2026-01"),
+                null,
+                30),
         };
 
         RatingSummaryDto dto = result.ToHttp();
@@ -27,9 +58,16 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal("Park", dto.TargetType);
         Assert.Equal("park-1", dto.TargetId);
         Assert.Equal(12, dto.RatingCount);
+        Assert.Equal(12, dto.RatingObservationCount);
+        Assert.Equal(12, dto.UniqueContributorCount);
         Assert.Equal(4.35d, dto.AverageRating);
         Assert.Equal(3.88d, dto.BayesianScore);
         Assert.Equal(2, dto.Rank);
+        Assert.Equal("Eligible", dto.Evidence?.Level);
+        Assert.True(dto.Evidence?.IsEligibleForMainRanking);
+        Assert.Null(dto.Evidence?.IneligibilityReason);
+        Assert.Equal(30, dto.Evidence?.NextThreshold);
+        Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
     }
 
     [Fact]
@@ -63,7 +101,21 @@ public sealed class RatingsHttpMappersTests
                             4.75d,
                             4.1d)
                     })
-            });
+            })
+        {
+            Evidence = new RankingEvidenceResult(
+                RankingEvidenceLevel.Eligible,
+                true,
+                10,
+                12,
+                10,
+                8,
+                5,
+                2,
+                RatingMethodologyVersion.Parse("ratings-2026-01"),
+                null,
+                30),
+        };
 
         ParkRatingRankingDto dto = result.ToHttp();
 
@@ -71,7 +123,15 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal("park-1", dto.ParkId);
         Assert.Equal("Demo Park", dto.ParkName);
         Assert.Equal(12, dto.RatingCount);
+        Assert.Equal(12, dto.RatingObservationCount);
+        Assert.Equal(10, dto.UniqueContributorCount);
         Assert.Equal(4.2d, dto.Score);
+        Assert.Equal("Eligible", dto.Evidence?.Level);
+        Assert.Equal(10, dto.Evidence?.DirectParkContributorCount);
+        Assert.Equal(8, dto.Evidence?.ItemContributorCount);
+        Assert.Equal(5, dto.Evidence?.EligibleItemCount);
+        Assert.Equal(2, dto.Evidence?.EligibleCategoryCount);
+        Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
         Assert.Single(dto.Categories);
         ParkRatingRankingCategoryDto category = dto.Categories.Single();
         Assert.Equal("Attraction", category.ParkItemCategory);
@@ -109,9 +169,23 @@ public sealed class RatingsHttpMappersTests
             "Phantasialand",
             ParkItemCategory.Attraction,
             ParkItemType.FlatRide,
-            12,
+            7,
             4.5d,
-            4.2d);
+            4.2d)
+        {
+            Evidence = new RankingEvidenceResult(
+                RankingEvidenceLevel.Provisional,
+                false,
+                7,
+                7,
+                null,
+                null,
+                null,
+                null,
+                RatingMethodologyVersion.Parse("ratings-2026-01"),
+                RankingIneligibilityReason.TooFewUniqueContributors,
+                10),
+        };
 
         ParkItemRatingRankingDto dto = result.ToHttp();
 
@@ -120,5 +194,12 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal("park-1", dto.ParkId);
         Assert.Equal("Phantasialand", dto.ParkName);
         Assert.Equal("FlatRide", dto.ParkItemType);
+        Assert.Equal(7, dto.RatingObservationCount);
+        Assert.Equal(7, dto.UniqueContributorCount);
+        Assert.Equal("Provisional", dto.Evidence?.Level);
+        Assert.False(dto.Evidence?.IsEligibleForMainRanking);
+        Assert.Equal("TooFewUniqueContributors", dto.Evidence?.IneligibilityReason);
+        Assert.Equal(10, dto.Evidence?.NextThreshold);
+        Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
     }
 }

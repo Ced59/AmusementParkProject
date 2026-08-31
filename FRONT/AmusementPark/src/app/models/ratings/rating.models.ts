@@ -2,13 +2,49 @@ import { PagedResult } from '@shared/models/contracts';
 
 export type RatingTargetType = 'Park' | 'ParkItem';
 
+export type RankingEvidenceLevel =
+  | 'NoEvidence'
+  | 'Insufficient'
+  | 'Provisional'
+  | 'Eligible'
+  | 'Established'
+  | 'StrongEvidence'
+  | 'Excluded';
+
+export type RankingIneligibilityReason =
+  | 'NoRatings'
+  | 'TooFewUniqueContributors'
+  | 'TooFewComparableEntries'
+  | 'InsufficientItemCoverage'
+  | 'InsufficientCategoryCoverage'
+  | 'TargetUnavailable'
+  | 'TargetExcluded'
+  | 'AggregateIntegrityFailure'
+  | 'UnsupportedComposition';
+
+export interface RankingEvidence {
+  level: RankingEvidenceLevel;
+  isEligibleForMainRanking: boolean;
+  directParkContributorCount?: number | null;
+  itemContributorCount?: number | null;
+  eligibleItemCount?: number | null;
+  eligibleCategoryCount?: number | null;
+  ineligibilityReason?: RankingIneligibilityReason | null;
+  nextThreshold?: number | null;
+}
+
 export interface RatingSummary {
   targetType: RatingTargetType;
   targetId: string;
+  /** Compatibility alias for the retained observation count of this simple target. */
   ratingCount: number;
+  ratingObservationCount?: number;
+  uniqueContributorCount?: number | null;
   averageRating: number;
   bayesianScore: number;
   rank?: number | null;
+  evidence?: RankingEvidence | null;
+  methodologyVersion?: string | null;
 }
 
 export interface UserRatingUpsertRequest {
@@ -100,12 +136,17 @@ export interface ParkRatingRanking {
   rank: number;
   parkId: string;
   parkName: string;
+  /** Compatibility alias for observations retained in the composed park score. */
   ratingCount: number;
+  ratingObservationCount?: number;
+  uniqueContributorCount?: number | null;
   score: number;
   parkRatingCount: number;
   parkAverageRating: number;
   itemsRatingCount: number;
   itemsAverageRating: number;
+  evidence?: RankingEvidence | null;
+  methodologyVersion?: string | null;
   categories: ParkRatingRankingCategory[];
 }
 
@@ -117,9 +158,14 @@ export interface ParkItemRatingRanking {
   parkName: string;
   parkItemCategory: string;
   parkItemType?: string | null;
+  /** Compatibility alias for the retained observation count of this item. */
   ratingCount: number;
+  ratingObservationCount?: number;
+  uniqueContributorCount?: number | null;
   averageRating: number;
   bayesianScore: number;
+  evidence?: RankingEvidence | null;
+  methodologyVersion?: string | null;
 }
 
 export interface UserParkRatingRankingCategory {

@@ -11,7 +11,28 @@ public sealed record RatingSummaryResult(
     double BayesianScore)
 {
     public int? Rank { get; init; }
+
+    public long RatingObservationCount => this.Evidence?.RatingObservationCount ?? this.RatingCount;
+
+    public long? UniqueContributorCount => this.Evidence?.UniqueContributorCount;
+
+    public RankingEvidenceResult? Evidence { get; init; }
+
+    public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
 }
+
+public sealed record RankingEvidenceResult(
+    RankingEvidenceLevel Level,
+    bool IsEligibleForMainRanking,
+    long UniqueContributorCount,
+    long RatingObservationCount,
+    long? DirectParkContributorCount,
+    long? ItemContributorCount,
+    int? EligibleItemCount,
+    int? EligibleCategoryCount,
+    RatingMethodologyVersion MethodologyVersion,
+    RankingIneligibilityReason? IneligibilityReason,
+    int? NextThreshold);
 
 public sealed record RatingDiagnosticsResult(
     DateTime GeneratedAtUtc,
@@ -155,7 +176,16 @@ public sealed record ParkRatingRankingResult(
     double ParkAverageRating,
     long ItemsRatingCount,
     double ItemsAverageRating,
-    IReadOnlyCollection<ParkRatingRankingCategoryResult> Categories);
+    IReadOnlyCollection<ParkRatingRankingCategoryResult> Categories)
+{
+    public long RatingObservationCount => this.Evidence?.RatingObservationCount ?? this.RatingCount;
+
+    public long? UniqueContributorCount => this.Evidence?.UniqueContributorCount;
+
+    public RankingEvidenceResult? Evidence { get; init; }
+
+    public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
+}
 
 public sealed record ParkItemRatingRankingResult(
     int Rank,
@@ -167,7 +197,16 @@ public sealed record ParkItemRatingRankingResult(
     ParkItemType? ParkItemType,
     long RatingCount,
     double AverageRating,
-    double BayesianScore);
+    double BayesianScore)
+{
+    public long RatingObservationCount => this.Evidence?.RatingObservationCount ?? this.RatingCount;
+
+    public long? UniqueContributorCount => this.Evidence?.UniqueContributorCount;
+
+    public RankingEvidenceResult? Evidence { get; init; }
+
+    public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
+}
 
 public sealed record UserParkRatingRankingCategoryResult(
     ParkItemCategory ParkItemCategory,

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.34",
+  "version": "4.2.35",
   "history": [
+    {
+      "version": "4.2.35",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "Les prochains classements disposeront d’indicateurs de fiabilité plus clairs.",
+        "en": "Upcoming rankings will include clearer reliability indicators.",
+        "de": "Künftige Ranglisten erhalten klarere Hinweise zur Verlässlichkeit.",
+        "nl": "Toekomstige ranglijsten krijgen duidelijkere betrouwbaarheidsindicatoren.",
+        "it": "Le prossime classifiche avranno indicatori di affidabilità più chiari.",
+        "es": "Las próximas clasificaciones incluirán indicadores de fiabilidad más claros.",
+        "pl": "Przyszłe rankingi otrzymają czytelniejsze wskaźniki wiarygodności.",
+        "pt": "As próximas classificações terão indicadores de fiabilidade mais claros."
+      }
+    },
     {
       "version": "4.2.34",
       "releasedAt": "2026-08-31",
