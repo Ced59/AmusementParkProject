@@ -242,7 +242,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 {
                   "$set": {
                     "_diagnosticHasUser": { "$gt": [ { "$strLenCP": { "$trim": { "input": "$_diagnosticUserText" } } }, 0 ] },
-                    "_diagnosticHasTarget": { "$gt": [ { "$strLenCP": { "$trim": { "input": "$_diagnosticTargetText" } } }, 0 ] },
+                    "_diagnosticHasTarget": { "$and": [ { "$gt": [ { "$strLenCP": { "$trim": { "input": "$_diagnosticTargetText" } } }, 0 ] }, { "$in": [ "$_diagnosticTargetType", [ "Park", "ParkItem" ] ] } ] },
                     "_diagnosticInRange": { "$and": [ "$_diagnosticIsNumericValue", { "$gte": [ "$_diagnosticNumericValue", 0.5 ] }, { "$lte": [ "$_diagnosticNumericValue", 5.0 ] } ] }
                   }
                 }

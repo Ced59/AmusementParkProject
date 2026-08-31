@@ -27,6 +27,20 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void BuildUserRatingsDiagnosticPipeline_ShouldRequireAValidTargetTypeForTargetMeasurements()
+    {
+        IReadOnlyCollection<BsonDocument> pipeline =
+            RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline("ratingAggregates");
+
+        BsonDocument hasTarget = pipeline.ElementAt(1)["$set"]["_diagnosticHasTarget"].AsBsonDocument;
+        BsonArray requirements = hasTarget["$and"].AsBsonArray;
+        BsonDocument targetTypeRequirement = requirements[1].AsBsonDocument;
+        BsonArray targetTypes = targetTypeRequirement["$in"].AsBsonArray[1].AsBsonArray;
+
+        Assert.Equal(new[] { "Park", "ParkItem" }, targetTypes.Select(static value => value.AsString));
+    }
+
+    [Fact]
     public void EvaluateIndexStatuses_WhenDefinitionsMatch_ShouldValidateEveryRequiredIndex()
     {
         IReadOnlyCollection<BsonDocument> userIndexes = new[]
