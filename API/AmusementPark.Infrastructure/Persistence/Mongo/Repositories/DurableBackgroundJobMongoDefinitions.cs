@@ -115,13 +115,25 @@ internal static class DurableBackgroundJobMongoDefinitions
             & filters.Lte(item => item.NotBeforeUtc, nowUtc);
     }
 
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildActiveKindScanFilter(string? afterKind)
+    {
+        FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
+        FilterDefinition<DurableBackgroundJobDocument> filter = filters.In(item => item.Status, ActiveStatuses);
+        if (afterKind is not null)
+        {
+            filter &= filters.Gt(item => item.Kind, afterKind);
+        }
+
+        return filter;
+    }
+
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildScheduledUnknownKindRunnableFilter(
-        IReadOnlyCollection<string> knownKinds,
+        string kind,
         DateTime maximumUpdatedAtUtc,
         DateTime nowUtc)
     {
         FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
-        return filters.Nin(item => item.Kind, knownKinds)
+        return filters.Eq(item => item.Kind, kind)
             & filters.In(item => item.Status, new[]
             {
                 DurableBackgroundJobStatus.Pending,
@@ -132,12 +144,12 @@ internal static class DurableBackgroundJobMongoDefinitions
     }
 
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildExpiredUnknownKindLeaseRunnableFilter(
-        IReadOnlyCollection<string> knownKinds,
+        string kind,
         DateTime maximumUpdatedAtUtc,
         DateTime nowUtc)
     {
         FilterDefinitionBuilder<DurableBackgroundJobDocument> filters = Builders<DurableBackgroundJobDocument>.Filter;
-        return filters.Nin(item => item.Kind, knownKinds)
+        return filters.Eq(item => item.Kind, kind)
             & filters.Eq(item => item.Status, DurableBackgroundJobStatus.Leased)
             & filters.Lte(item => item.LeaseExpiresAtUtc, nowUtc)
             & filters.Lte(item => item.NotBeforeUtc, nowUtc)

@@ -204,21 +204,73 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         return leased?.ToApplication();
     }
 
-    public async Task<DurableBackgroundJob?> TryLeaseNextUnknownKindAsync(
+    public async Task<LeaseUnknownBackgroundJobResult> TryLeaseNextUnknownKindAsync(
         LeaseUnknownBackgroundJobRequest request,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        IReadOnlyCollection<string> knownKinds = NormalizeKinds(request.KnownKinds, allowEmpty: true);
+        HashSet<string> knownKinds = NormalizeKinds(request.KnownKinds, allowEmpty: true)
+            .ToHashSet(StringComparer.Ordinal);
         string leaseOwner = NormalizeRequired(request.LeaseOwner, nameof(request.LeaseOwner));
         TimeSpan leaseDuration = ValidateLeaseDuration(request.LeaseDuration);
         TimeSpan minimumAge = ValidateDelay(request.MinimumAge);
+        if (request.MaximumCandidateDocuments <= 0 ||
+            request.MaximumCandidateDocuments > MaximumDiagnosticLimit)
+        {
+            throw new ArgumentOutOfRangeException(nameof(request.MaximumCandidateDocuments));
+        }
+
+        string? afterKind = NormalizeOptional(request.AfterKind, nameof(request.AfterKind));
         DateTime nowUtc = this.GetUtcNow();
         DateTime maximumUpdatedAtUtc = nowUtc.Subtract(minimumAge);
+        List<string> candidateKinds = await this.collection
+            .Find(BuildActiveKindScanFilter(afterKind))
+            .SortBy(item => item.Kind)
+            .Limit(request.MaximumCandidateDocuments)
+            .Project(item => item.Kind)
+            .ToListAsync(cancellationToken);
+        string? processedAfterKind = afterKind;
+        foreach (string candidateKind in candidateKinds.Distinct(StringComparer.Ordinal))
+        {
+            if (knownKinds.Contains(candidateKind))
+            {
+                processedAfterKind = candidateKind;
+                continue;
+            }
+
+            DurableBackgroundJob? leased = await this.TryLeaseUnknownKindAsync(
+                candidateKind,
+                leaseOwner,
+                leaseDuration,
+                maximumUpdatedAtUtc,
+                nowUtc,
+                cancellationToken);
+            if (leased is not null)
+            {
+                return new LeaseUnknownBackgroundJobResult(leased, processedAfterKind);
+            }
+
+            processedAfterKind = candidateKind;
+        }
+
+        string? nextAfterKind = candidateKinds.Count < request.MaximumCandidateDocuments
+            ? null
+            : candidateKinds[^1];
+        return new LeaseUnknownBackgroundJobResult(null, nextAfterKind);
+    }
+
+    private async Task<DurableBackgroundJob?> TryLeaseUnknownKindAsync(
+        string kind,
+        string leaseOwner,
+        TimeSpan leaseDuration,
+        DateTime maximumUpdatedAtUtc,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
         string leaseToken = Guid.NewGuid().ToString("N");
         DurableBackgroundJobDocument? leased = await this.TryLeaseAsync(
-            BuildExpiredUnknownKindLeaseRunnableFilter(knownKinds, maximumUpdatedAtUtc, nowUtc),
+            BuildExpiredUnknownKindLeaseRunnableFilter(kind, maximumUpdatedAtUtc, nowUtc),
             BuildExpiredLeaseRunnableSort(),
             leaseOwner,
             leaseToken,
@@ -231,7 +283,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         }
 
         leased = await this.TryLeaseAsync(
-            BuildScheduledUnknownKindRunnableFilter(knownKinds, maximumUpdatedAtUtc, nowUtc),
+            BuildScheduledUnknownKindRunnableFilter(kind, maximumUpdatedAtUtc, nowUtc),
             BuildScheduledRunnableSort(),
             leaseOwner,
             leaseToken,

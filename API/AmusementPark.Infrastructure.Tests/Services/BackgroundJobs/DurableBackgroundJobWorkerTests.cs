@@ -27,6 +27,7 @@ public sealed class DurableBackgroundJobWorkerTests
         Assert.Equal(TimeSpan.FromSeconds(5), settings.EmptyQueueMaximumDelay);
         Assert.Equal(100, settings.LeaseRecoveryBatchSize);
         Assert.Equal(TimeSpan.FromHours(1), settings.UnknownKindGracePeriod);
+        Assert.Equal(100, settings.UnknownKindScanBatchSize);
     }
 
     [Fact]
@@ -155,19 +156,69 @@ public sealed class DurableBackgroundJobWorkerTests
                 It.Is<LeaseUnknownBackgroundJobRequest>(request =>
                     request.KnownKinds.Count == 1 &&
                     request.KnownKinds.Contains("heavy.kind") &&
-                    request.MinimumAge == TimeSpan.FromHours(1)),
+                    request.MinimumAge == TimeSpan.FromHours(1) &&
+                    request.MaximumCandidateDocuments == 100 &&
+                    request.AfterKind == null),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(CreateLeasedJob("job-unknown", "obsolete.kind"));
+            .ReturnsAsync(new LeaseUnknownBackgroundJobResult(
+                CreateLeasedJob("job-unknown", "obsolete.kind"),
+                null));
 
         using DurableBackgroundJobClaim? claim = await coordinator.TryClaimUnknownKindAsync(
             repository.Object,
             "worker-unknown",
             TimeSpan.FromMinutes(2),
             TimeSpan.FromHours(1),
+            100,
             CancellationToken.None);
 
         Assert.Equal("obsolete.kind", claim?.Job.Kind);
         repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ClaimCoordinator_ShouldResumeUnknownKindScanningAfterTheLastBoundedBatch()
+    {
+        DurableBackgroundJobHandlerDefinition definition = CreateDefinition(maximumConcurrency: 1);
+        DurableBackgroundJobClaimCoordinator coordinator =
+            new DurableBackgroundJobClaimCoordinator(new[] { definition });
+        Mock<IDurableBackgroundJobRepository> repository = new Mock<IDurableBackgroundJobRepository>();
+        repository
+            .SetupSequence(item => item.TryLeaseNextUnknownKindAsync(
+                It.IsAny<LeaseUnknownBackgroundJobRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LeaseUnknownBackgroundJobResult(null, "heavy.kind"))
+            .ReturnsAsync(new LeaseUnknownBackgroundJobResult(
+                CreateLeasedJob("job-unknown", "obsolete.kind"),
+                "heavy.kind"));
+
+        DurableBackgroundJobClaim? first = await coordinator.TryClaimUnknownKindAsync(
+            repository.Object,
+            "worker-unknown",
+            TimeSpan.FromMinutes(2),
+            TimeSpan.FromHours(1),
+            25,
+            CancellationToken.None);
+        using DurableBackgroundJobClaim? second = await coordinator.TryClaimUnknownKindAsync(
+            repository.Object,
+            "worker-unknown",
+            TimeSpan.FromMinutes(2),
+            TimeSpan.FromHours(1),
+            25,
+            CancellationToken.None);
+
+        Assert.Null(first);
+        Assert.Equal("obsolete.kind", second?.Job.Kind);
+        repository.Verify(
+            item => item.TryLeaseNextUnknownKindAsync(
+                It.Is<LeaseUnknownBackgroundJobRequest>(request => request.AfterKind == null),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+        repository.Verify(
+            item => item.TryLeaseNextUnknownKindAsync(
+                It.Is<LeaseUnknownBackgroundJobRequest>(request => request.AfterKind == "heavy.kind"),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
     }
 
     private static DurableBackgroundJobHandlerDefinition CreateDefinition(int maximumConcurrency)

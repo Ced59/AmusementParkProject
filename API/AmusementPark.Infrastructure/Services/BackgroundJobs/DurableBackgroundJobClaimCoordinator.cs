@@ -9,6 +9,7 @@ internal sealed class DurableBackgroundJobClaimCoordinator
     private readonly object activeCountGate = new object();
     private readonly IReadOnlyDictionary<string, DurableBackgroundJobHandlerDefinition> definitions;
     private readonly Dictionary<string, int> activeCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+    private string? unknownKindScanAfterKind;
 
     public DurableBackgroundJobClaimCoordinator(
         IReadOnlyCollection<DurableBackgroundJobHandlerDefinition> definitions)
@@ -72,6 +73,7 @@ internal sealed class DurableBackgroundJobClaimCoordinator
         string leaseOwner,
         TimeSpan leaseDuration,
         TimeSpan minimumAge,
+        int maximumCandidateDocuments,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(repository);
@@ -81,16 +83,19 @@ internal sealed class DurableBackgroundJobClaimCoordinator
             string[] knownKinds = this.definitions.Keys
                 .OrderBy(static kind => kind, StringComparer.Ordinal)
                 .ToArray();
-            DurableBackgroundJob? job = await repository.TryLeaseNextUnknownKindAsync(
+            LeaseUnknownBackgroundJobResult result = await repository.TryLeaseNextUnknownKindAsync(
                 new LeaseUnknownBackgroundJobRequest(
                     knownKinds,
                     leaseOwner,
                     leaseDuration,
-                    minimumAge),
+                    minimumAge,
+                    maximumCandidateDocuments,
+                    this.unknownKindScanAfterKind),
                 cancellationToken);
-            return job is null
+            this.unknownKindScanAfterKind = result.NextAfterKind;
+            return result.Job is null
                 ? null
-                : new DurableBackgroundJobClaim(job, static () => { });
+                : new DurableBackgroundJobClaim(result.Job, static () => { });
         }
         finally
         {

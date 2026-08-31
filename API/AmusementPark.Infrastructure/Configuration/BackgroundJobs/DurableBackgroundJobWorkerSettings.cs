@@ -28,6 +28,8 @@ public sealed class DurableBackgroundJobWorkerSettings
 
     public int UnknownKindGracePeriodSeconds { get; set; } = 3600;
 
+    public int UnknownKindScanBatchSize { get; set; } = 100;
+
     public TimeSpan LeaseDuration => TimeSpan.FromSeconds(this.LeaseDurationSeconds);
 
     public TimeSpan LeaseRenewalInterval => TimeSpan.FromSeconds(this.LeaseRenewalIntervalSeconds);
@@ -87,6 +89,7 @@ public sealed class DurableBackgroundJobWorkerSettings
             nameof(this.LeaseRecoveryIntervalSeconds));
         ValidateRange(this.LeaseRecoveryBatchSize, 1, 500, nameof(this.LeaseRecoveryBatchSize));
         ValidateRange(this.UnknownKindGracePeriodSeconds, 300, 86_400, nameof(this.UnknownKindGracePeriodSeconds));
+        ValidateRange(this.UnknownKindScanBatchSize, 1, 500, nameof(this.UnknownKindScanBatchSize));
     }
 
     private static void ValidateRange(int value, int minimum, int maximum, string propertyName)

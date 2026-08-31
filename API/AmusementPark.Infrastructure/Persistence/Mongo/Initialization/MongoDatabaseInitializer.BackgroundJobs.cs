@@ -32,6 +32,14 @@ public sealed partial class MongoDatabaseInitializer
                 })
             },
         };
+        BsonDocument activeJobFilter = new BsonDocument(
+            "status",
+            new BsonDocument("$in", new BsonArray
+            {
+                DurableBackgroundJobStatus.Pending.ToString(),
+                DurableBackgroundJobStatus.Leased.ToString(),
+                DurableBackgroundJobStatus.RetryScheduled.ToString(),
+            }));
         BsonDocument scheduledJobFilter = new BsonDocument(
             "status",
             new BsonDocument("$in", new BsonArray
@@ -64,6 +72,13 @@ public sealed partial class MongoDatabaseInitializer
                     Name = "idx_background_jobs_active_natural_key_unique",
                     Unique = true,
                     PartialFilterExpression = activeCoalescibleJobFilter,
+                }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys.Ascending(item => item.Kind),
+                new CreateIndexOptions<DurableBackgroundJobDocument>
+                {
+                    Name = "idx_background_jobs_active_kind_scan",
+                    PartialFilterExpression = activeJobFilter,
                 }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys

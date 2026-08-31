@@ -187,6 +187,7 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
                     leaseOwner,
                     this.settings.LeaseDuration,
                     this.settings.UnknownKindGracePeriod,
+                    this.settings.UnknownKindScanBatchSize,
                     stoppingToken);
                 if (claim is null)
                 {

@@ -63,7 +63,13 @@ public sealed record LeaseUnknownBackgroundJobRequest(
     IReadOnlyCollection<string> KnownKinds,
     string LeaseOwner,
     TimeSpan LeaseDuration,
-    TimeSpan MinimumAge);
+    TimeSpan MinimumAge,
+    int MaximumCandidateDocuments,
+    string? AfterKind = null);
+
+public sealed record LeaseUnknownBackgroundJobResult(
+    DurableBackgroundJob? Job,
+    string? NextAfterKind);
 
 public sealed record DurableBackgroundJobLease(
     string JobId,

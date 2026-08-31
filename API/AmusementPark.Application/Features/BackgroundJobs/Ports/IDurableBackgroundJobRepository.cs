@@ -16,7 +16,7 @@ public interface IDurableBackgroundJobRepository
         LeaseBackgroundJobRequest request,
         CancellationToken cancellationToken);
 
-    Task<DurableBackgroundJob?> TryLeaseNextUnknownKindAsync(
+    Task<LeaseUnknownBackgroundJobResult> TryLeaseNextUnknownKindAsync(
         LeaseUnknownBackgroundJobRequest request,
         CancellationToken cancellationToken);
 

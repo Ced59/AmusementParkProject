@@ -310,6 +310,38 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenHandlerIgnoresTimeoutCancellation_ShouldStillReleaseTheWorkerAndScheduleRetry()
+    {
+        TaskCompletionSource<DurableBackgroundJobHandlerResult> handlerRelease =
+            new TaskCompletionSource<DurableBackgroundJobHandlerResult>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+        StubHandler handler = CreateHandler(
+            maximumAttempts: 3,
+            (_, _) => handlerRelease.Task,
+            timeout: TimeSpan.FromMilliseconds(20));
+        Mock<IDurableBackgroundJobRepository> repository = new Mock<IDurableBackgroundJobRepository>();
+        repository
+            .Setup(item => item.ScheduleRetryAsync(
+                It.IsAny<DurableBackgroundJobLease>(),
+                7,
+                It.IsAny<TimeSpan>(),
+                DurableBackgroundJobErrorCodes.HandlerTimeout,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateTransition(DurableBackgroundJobStatus.RetryScheduled));
+        DurableBackgroundJobExecutionOrchestrator orchestrator = CreateOrchestrator(repository.Object, handler);
+
+        DurableBackgroundJobExecutionResult result = await orchestrator.ExecuteAsync(
+                CreateLeasedJob(requestedRevision: 7),
+                TimeSpan.FromMinutes(2),
+                TimeSpan.FromSeconds(30),
+                CancellationToken.None)
+            .WaitAsync(TimeSpan.FromSeconds(1));
+        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
+
+        Assert.Equal(DurableBackgroundJobExecutionDisposition.RetryScheduled, result.Disposition);
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenLeaseRenewalIsRejected_ShouldAbandonWithoutTransition()
     {
         StubHandler handler = CreateHandler(
@@ -369,6 +401,44 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
         await handlerStarted.Task;
         stoppingSource.Cancel();
         DurableBackgroundJobExecutionResult result = await execution;
+
+        Assert.Equal(DurableBackgroundJobExecutionDisposition.Cancelled, result.Disposition);
+        repository.Verify(
+            item => item.CompleteAsync(
+                It.IsAny<DurableBackgroundJobLease>(),
+                It.IsAny<long?>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenHandlerIgnoresHostCancellation_ShouldStillReleaseTheWorker()
+    {
+        TaskCompletionSource handlerStarted = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<DurableBackgroundJobHandlerResult> handlerRelease =
+            new TaskCompletionSource<DurableBackgroundJobHandlerResult>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+        StubHandler handler = CreateHandler(
+            maximumAttempts: 3,
+            (_, _) =>
+            {
+                handlerStarted.TrySetResult();
+                return handlerRelease.Task;
+            });
+        Mock<IDurableBackgroundJobRepository> repository = new Mock<IDurableBackgroundJobRepository>();
+        DurableBackgroundJobExecutionOrchestrator orchestrator = CreateOrchestrator(repository.Object, handler);
+        using CancellationTokenSource stoppingSource = new CancellationTokenSource();
+
+        Task<DurableBackgroundJobExecutionResult> execution = orchestrator.ExecuteAsync(
+            CreateLeasedJob(requestedRevision: 7),
+            TimeSpan.FromMinutes(2),
+            TimeSpan.FromSeconds(30),
+            stoppingSource.Token);
+        await handlerStarted.Task;
+        stoppingSource.Cancel();
+        DurableBackgroundJobExecutionResult result = await execution.WaitAsync(TimeSpan.FromSeconds(1));
+        handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
 
         Assert.Equal(DurableBackgroundJobExecutionDisposition.Cancelled, result.Disposition);
         repository.Verify(

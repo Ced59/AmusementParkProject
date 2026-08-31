@@ -219,19 +219,33 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
-    public void BuildScheduledUnknownKindRunnableFilter_ShouldExcludeKnownKindsAndEnforceTheGracePeriod()
+    public void BuildActiveKindScanFilter_ShouldResumeAfterTheLastInspectedKind()
+    {
+        BsonDocument rendered = Render(DurableBackgroundJobRepository.BuildActiveKindScanFilter("rank.compute"));
+
+        Assert.Equal("rank.compute", rendered["kind"].AsBsonDocument["$gt"].AsString);
+        Assert.Equal(
+            new[]
+            {
+                DurableBackgroundJobStatus.Pending.ToString(),
+                DurableBackgroundJobStatus.Leased.ToString(),
+                DurableBackgroundJobStatus.RetryScheduled.ToString(),
+            },
+            rendered["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+    }
+
+    [Fact]
+    public void BuildScheduledUnknownKindRunnableFilter_ShouldTargetOneKindAndEnforceTheGracePeriod()
     {
         DateTime maximumUpdatedAtUtc = NowUtc.AddHours(-1);
 
         BsonDocument rendered = Render(
             DurableBackgroundJobRepository.BuildScheduledUnknownKindRunnableFilter(
-                new[] { "rank.compute", "projection.refresh" },
+                "obsolete.kind",
                 maximumUpdatedAtUtc,
                 NowUtc));
 
-        Assert.Equal(
-            new[] { "rank.compute", "projection.refresh" },
-            rendered["kind"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Equal("obsolete.kind", rendered["kind"].AsString);
         Assert.Equal(maximumUpdatedAtUtc, rendered["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
         Assert.Equal(NowUtc, rendered["notBeforeUtc"].AsBsonDocument["$lte"].ToUniversalTime());
         Assert.Equal(
@@ -250,11 +264,11 @@ public sealed class DurableBackgroundJobRepositoryTests
 
         BsonDocument rendered = Render(
             DurableBackgroundJobRepository.BuildExpiredUnknownKindLeaseRunnableFilter(
-                Array.Empty<string>(),
+                "obsolete.kind",
                 maximumUpdatedAtUtc,
                 NowUtc));
 
-        Assert.Empty(rendered["kind"].AsBsonDocument["$nin"].AsBsonArray);
+        Assert.Equal("obsolete.kind", rendered["kind"].AsString);
         Assert.Equal(DurableBackgroundJobStatus.Leased.ToString(), rendered["status"].AsString);
         Assert.Equal(NowUtc, rendered["leaseExpiresAtUtc"].AsBsonDocument["$lte"].ToUniversalTime());
         Assert.Equal(maximumUpdatedAtUtc, rendered["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
