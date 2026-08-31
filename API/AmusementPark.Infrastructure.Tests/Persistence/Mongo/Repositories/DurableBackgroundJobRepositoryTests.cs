@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Xunit;
 using DurableBackgroundJobRepository = AmusementPark.Infrastructure.Persistence.Mongo.Repositories.DurableBackgroundJobMongoDefinitions;
+using DurableBackgroundJobStore = AmusementPark.Infrastructure.Persistence.Mongo.Repositories.DurableBackgroundJobRepository;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
@@ -134,6 +135,26 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Single(rendered);
         Assert.Equal(expiresAtUtc, rendered["$set"].AsBsonDocument["leaseExpiresAtUtc"].ToUniversalTime());
         Assert.Equal(NowUtc, rendered["$set"].AsBsonDocument["updatedAt"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void WasSingleJobMatched_ShouldAcceptAnOwnedLeaseWithoutPhysicalModification()
+    {
+        UpdateResult result = new UpdateResult.Acknowledged(1, 0, null);
+
+        bool matched = DurableBackgroundJobStore.WasSingleJobMatched(result);
+
+        Assert.True(matched);
+    }
+
+    [Fact]
+    public void WasSingleJobMatched_ShouldRejectAMissingLease()
+    {
+        UpdateResult result = new UpdateResult.Acknowledged(0, 0, null);
+
+        bool matched = DurableBackgroundJobStore.WasSingleJobMatched(result);
+
+        Assert.False(matched);
     }
 
     [Fact]

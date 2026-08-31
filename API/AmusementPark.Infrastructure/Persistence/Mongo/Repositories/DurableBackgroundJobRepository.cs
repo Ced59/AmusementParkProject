@@ -198,7 +198,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             BuildLeaseOwnershipFilter(lease, nowUtc),
             update,
             cancellationToken: cancellationToken);
-        return result.ModifiedCount == 1;
+        return WasSingleJobMatched(result);
     }
 
     public async Task<DurableBackgroundJobCompletionResult?> CompleteAsync(
@@ -368,6 +368,12 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         }
 
         return normalized;
+    }
+
+    internal static bool WasSingleJobMatched(UpdateResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return result.IsAcknowledged && result.MatchedCount == 1;
     }
 
     private static string? NormalizeOptional(string? value, string parameterName)
