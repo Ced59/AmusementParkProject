@@ -28,9 +28,9 @@ public sealed class AdminRatingDiagnosticsControllerTests
             new[] { "0.5", "1" },
             false,
             new RatingAnomalySummaryResult(0, 0, 0, 0, 0, 0, 0, 0, 0),
-            new RatingAggregateIntegrityResult(true, true, 8, 0, 0, 0, 0),
+            new RatingAggregateIntegrityResult(true, true, 8, 0, 0, 0, 0, 0),
             new[] { new RatingTargetDistributionResult("Park", "3-9", 2, 12, 12) },
-            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, false, true, "{ userId: 1 }", "{ userId: 1 }") });
+            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, false, true, true, "{ userId: 1 }", "{ userId: 1 }") });
         Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>> handler =
             new Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(It.IsAny<GetRatingDiagnosticsQuery>(), It.IsAny<CancellationToken>()))
@@ -48,6 +48,7 @@ public sealed class AdminRatingDiagnosticsControllerTests
         Assert.True(Assert.Single(dto.Indexes).MatchesExpectedDefinition);
         Assert.False(Assert.Single(dto.Indexes).IsHidden);
         Assert.False(Assert.Single(dto.Indexes).HasUnexpectedOptions);
+        Assert.True(Assert.Single(dto.Indexes).SupportsExpectedQueries);
         handler.VerifyAll();
     }
 

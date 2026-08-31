@@ -40,11 +40,11 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
     {
         long startedAt = Stopwatch.GetTimestamp();
         IReadOnlyCollection<RatingIndexStatusResult> indexes = await ReadIndexStatusesAsync(cancellationToken);
-        bool canEvaluateSourceIntegrity = HasMatchingIndex(
+        bool canEvaluateSourceIntegrity = HasUsableIndex(
             indexes,
             this.settings.RatingAggregatesCollectionName,
             RatingAggregatesTargetIndexName);
-        bool canEvaluateOrphans = HasMatchingIndex(
+        bool canEvaluateOrphans = HasUsableIndex(
             indexes,
             this.settings.UserRatingsCollectionName,
             UserRatingsTargetIndexName);
@@ -63,7 +63,6 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 
         BsonDocument summary = GetFirstFacetDocument(facets, "summary");
         BsonDocument duplicates = GetFirstFacetDocument(facets, "duplicates");
-        BsonDocument integrity = GetFirstFacetDocument(facets, "integrity");
         BsonDocument distinctValues = GetFirstFacetDocument(facets, "distinctValues");
         IReadOnlyCollection<string> distinctValueSample = ReadDistinctValueSample(distinctValues);
         long distinctValueCount = ReadNestedCount(distinctValues, "count");
@@ -78,13 +77,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             ReadInt64(summary, "missingTargetCount"),
             ReadInt64(duplicates, "duplicateVoteKeyCount"),
             ReadInt64(duplicates, "extraDuplicateDocumentCount"));
-        RatingAggregateIntegrityResult aggregateIntegrity = new RatingAggregateIntegrityResult(
+        RatingAggregateIntegrityResult aggregateIntegrity = EvaluateAggregateIntegrity(
+            facets,
             canEvaluateSourceIntegrity,
             canEvaluateOrphans,
-            ReadInt64(integrity, "sourceTargetCount"),
-            ReadInt64(integrity, "missingAggregateCount"),
-            ReadInt64(integrity, "divergentAggregateCount"),
-            ReadInt64(integrity, "contributorCountMismatchCount"),
             orphanAggregateCount);
 
         return new RatingDiagnosticsResult(
@@ -236,29 +232,17 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     }
                   },
                   {
-                    "$group": {
-                      "_id": null,
-                      "sourceTargetCount": { "$sum": 1 },
-                      "missingAggregateCount": { "$sum": { "$cond": [ { "$eq": [ "$aggregateCount", 0 ] }, 1, 0 ] } },
-                      "contributorCountMismatchCount": { "$sum": { "$cond": [ { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceUniqueContributorCount", "$aggregate.ratingCount" ] } ] }, 1, 0 ] } },
-                      "divergentAggregateCount": {
-                        "$sum": {
-                          "$cond": [
-                            {
-                              "$or": [
-                                { "$gt": [ "$aggregateCount", 1 ] },
-                                { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceUniqueContributorCount", "$aggregate.ratingCount" ] } ] },
-                                { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceRatingSum", "$aggregate.ratingSum" ] } ] }
-                              ]
-                            },
-                            1,
-                            0
-                          ]
-                        }
-                      }
+                    "$project": {
+                      "sourceRatingObservationCount": 1,
+                      "sourceUniqueContributorCount": 1,
+                      "sourceRatingSum": 1,
+                      "aggregateCount": 1,
+                      "aggregate.ratingCount": 1,
+                      "aggregate.ratingSum": 1,
+                      "aggregate.averageRating": 1,
+                      "aggregate.bayesianScore": 1
                     }
-                  },
-                  { "$project": { "_id": 0 } }
+                  }
                 ]
               }
             }
@@ -323,6 +307,101 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         AddTargetTypeDistribution(results, ratedTargets, RatingTargetType.Park.ToString(), eligibleParkCount);
         AddTargetTypeDistribution(results, ratedTargets, RatingTargetType.ParkItem.ToString(), eligibleParkItemCount);
         return results;
+    }
+
+    internal static RatingAggregateIntegrityResult EvaluateAggregateIntegrity(
+        BsonDocument facets,
+        bool isSourceComparisonEvaluated,
+        bool isOrphanCheckEvaluated,
+        long orphanAggregateCount)
+    {
+        if (!isSourceComparisonEvaluated
+            || !facets.TryGetValue("integrity", out BsonValue? value)
+            || !value.IsBsonArray)
+        {
+            return new RatingAggregateIntegrityResult(
+                isSourceComparisonEvaluated,
+                isOrphanCheckEvaluated,
+                0,
+                0,
+                0,
+                0,
+                0,
+                orphanAggregateCount);
+        }
+
+        long sourceTargetCount = 0;
+        long missingAggregateCount = 0;
+        long divergentAggregateCount = 0;
+        long contributorCountMismatchCount = 0;
+        long derivedScoreMismatchCount = 0;
+        foreach (BsonValue item in value.AsBsonArray)
+        {
+            if (!item.IsBsonDocument)
+            {
+                continue;
+            }
+
+            sourceTargetCount++;
+            BsonDocument document = item.AsBsonDocument;
+            long aggregateCount = ReadInt64(document, "aggregateCount");
+            if (aggregateCount == 0)
+            {
+                missingAggregateCount++;
+                continue;
+            }
+
+            if (aggregateCount != 1
+                || !document.TryGetValue("aggregate", out BsonValue? aggregateValue)
+                || !aggregateValue.IsBsonDocument)
+            {
+                divergentAggregateCount++;
+                continue;
+            }
+
+            BsonDocument aggregate = aggregateValue.AsBsonDocument;
+            long sourceObservationCount = ReadInt64(document, "sourceRatingObservationCount");
+            long sourceUniqueContributorCount = ReadInt64(document, "sourceUniqueContributorCount");
+            double sourceRatingSum = ReadDouble(document, "sourceRatingSum");
+            long aggregateRatingCount = ReadInt64(aggregate, "ratingCount");
+            double aggregateRatingSum = ReadDouble(aggregate, "ratingSum");
+            double expectedAverage = RatingScoreCalculator.CalculateAverage(
+                sourceRatingSum,
+                sourceObservationCount);
+            double expectedBayesianScore = RatingScoreCalculator.CalculateBayesianScore(
+                sourceRatingSum,
+                sourceObservationCount);
+            bool contributorCountMismatch = sourceUniqueContributorCount != aggregateRatingCount;
+            bool sourceProjectionMismatch = sourceObservationCount != aggregateRatingCount
+                || !sourceRatingSum.Equals(aggregateRatingSum);
+            bool derivedScoreMismatch = !expectedAverage.Equals(ReadDouble(aggregate, "averageRating"))
+                || !expectedBayesianScore.Equals(ReadDouble(aggregate, "bayesianScore"));
+
+            if (contributorCountMismatch)
+            {
+                contributorCountMismatchCount++;
+            }
+
+            if (derivedScoreMismatch)
+            {
+                derivedScoreMismatchCount++;
+            }
+
+            if (contributorCountMismatch || sourceProjectionMismatch || derivedScoreMismatch)
+            {
+                divergentAggregateCount++;
+            }
+        }
+
+        return new RatingAggregateIntegrityResult(
+            isSourceComparisonEvaluated,
+            isOrphanCheckEvaluated,
+            sourceTargetCount,
+            missingAggregateCount,
+            divergentAggregateCount,
+            contributorCountMismatchCount,
+            derivedScoreMismatchCount,
+            orphanAggregateCount);
     }
 
     private static BsonDocument BuildEligibleTargetMatch(
@@ -439,6 +518,11 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 && key.IsBsonDocument
                     ? key.AsBsonDocument
                     : null;
+            bool supportsExpectedQueries = isPresent
+                && !isHidden
+                && actualKeys is not null
+                && expectedIndex.Keys.Equals(actualKeys)
+                && !HasQueryLimitingIndexOptions(actual!);
             bool matchesExpectedDefinition = isPresent
                 && isUnique == expectedIndex.IsUnique
                 && !isHidden
@@ -453,6 +537,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 isUnique,
                 isHidden,
                 hasUnexpectedOptions,
+                supportsExpectedQueries,
                 matchesExpectedDefinition,
                 expectedIndex.Keys.ToJson(),
                 actualKeys?.ToJson()));
@@ -461,29 +546,36 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return results;
     }
 
-    private static bool HasMatchingIndex(
+    private static bool HasUsableIndex(
         IEnumerable<RatingIndexStatusResult> indexes,
         string collection,
         string name)
     {
         return indexes.Any(index => string.Equals(index.Collection, collection, StringComparison.Ordinal)
             && string.Equals(index.Name, name, StringComparison.Ordinal)
-            && index.MatchesExpectedDefinition);
+            && index.SupportsExpectedQueries);
     }
 
     private static bool HasUnexpectedIndexOptions(BsonDocument index)
     {
-        if (index.Contains("partialFilterExpression") || index.Contains("expireAfterSeconds"))
-        {
-            return true;
-        }
+        return index.Contains("expireAfterSeconds") || HasQueryLimitingIndexOptions(index);
+    }
 
-        if (index.TryGetValue("sparse", out BsonValue? sparse)
-            && (!sparse.IsBoolean || sparse.AsBoolean))
-        {
-            return true;
-        }
+    private static bool HasQueryLimitingIndexOptions(BsonDocument index)
+    {
+        return index.Contains("partialFilterExpression")
+            || HasActiveOrInvalidSparseOption(index)
+            || HasNonSimpleCollation(index);
+    }
 
+    private static bool HasActiveOrInvalidSparseOption(BsonDocument index)
+    {
+        return index.TryGetValue("sparse", out BsonValue? sparse)
+            && (!sparse.IsBoolean || sparse.AsBoolean);
+    }
+
+    private static bool HasNonSimpleCollation(BsonDocument index)
+    {
         if (!index.TryGetValue("collation", out BsonValue? collation))
         {
             return false;
@@ -718,6 +810,16 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
 
         return value.ToInt64();
+    }
+
+    private static double ReadDouble(BsonDocument document, string name)
+    {
+        if (!document.TryGetValue(name, out BsonValue? value) || !value.IsNumeric)
+        {
+            return double.NaN;
+        }
+
+        return value.ToDouble();
     }
 
     private static string ReadString(BsonDocument document, string name, string fallback)

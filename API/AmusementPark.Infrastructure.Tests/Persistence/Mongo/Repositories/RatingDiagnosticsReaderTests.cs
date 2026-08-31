@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using Xunit;
@@ -67,19 +68,28 @@ public sealed class RatingDiagnosticsReaderTests
         BsonArray integrity = pipeline.Last()["$facet"]["integrity"].AsBsonArray;
         BsonDocument contributorKey = integrity[1]["$group"]["_id"].AsBsonDocument;
         BsonDocument targetGroup = integrity[2]["$group"].AsBsonDocument;
-        BsonDocument integritySummary = integrity[5]["$group"].AsBsonDocument;
 
         Assert.Equal("$_diagnosticUserText", contributorKey["userId"].AsString);
         Assert.Equal(1, targetGroup["sourceUniqueContributorCount"]["$sum"].AsInt32);
         Assert.Equal("$ratingObservationCount", targetGroup["sourceRatingObservationCount"]["$sum"].AsString);
-        Assert.Contains(
-            "$sourceUniqueContributorCount",
-            integritySummary["contributorCountMismatchCount"].ToJson(),
-            StringComparison.Ordinal);
-        Assert.Contains(
-            "$aggregate.ratingCount",
-            integritySummary["contributorCountMismatchCount"].ToJson(),
-            StringComparison.Ordinal);
+
+        BsonDocument facets = CreateIntegrityFacets(
+            sourceObservationCount: 2,
+            sourceUniqueContributorCount: 1,
+            sourceRatingSum: 8d,
+            aggregateRatingCount: 2,
+            aggregateRatingSum: 8d,
+            aggregateAverageRating: 4d,
+            aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
+        RatingAggregateIntegrityResult result = RatingDiagnosticsReader.EvaluateAggregateIntegrity(
+            facets,
+            true,
+            true,
+            0);
+
+        Assert.Equal(1, result.ContributorCountMismatchCount);
+        Assert.Equal(1, result.DivergentAggregateCount);
+        Assert.Equal(0, result.DerivedScoreMismatchCount);
     }
 
     [Fact]
@@ -100,6 +110,29 @@ public sealed class RatingDiagnosticsReaderTests
         Assert.False(integrityMatch.Contains("_diagnosticHasUser"));
         Assert.False(integrityMatch.Contains("_diagnosticIsExactHalfStep"));
         Assert.Equal("$_diagnosticNumericValue", sourceGroup["sourceRatingSum"]["$sum"].AsString);
+    }
+
+    [Fact]
+    public void EvaluateAggregateIntegrity_WhenDerivedScoresAreStale_ShouldExposeTheDivergence()
+    {
+        BsonDocument facets = CreateIntegrityFacets(
+            sourceObservationCount: 2,
+            sourceUniqueContributorCount: 2,
+            sourceRatingSum: 8d,
+            aggregateRatingCount: 2,
+            aggregateRatingSum: 8d,
+            aggregateAverageRating: 3.75d,
+            aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
+
+        RatingAggregateIntegrityResult result = RatingDiagnosticsReader.EvaluateAggregateIntegrity(
+            facets,
+            true,
+            true,
+            0);
+
+        Assert.Equal(1, result.DerivedScoreMismatchCount);
+        Assert.Equal(1, result.DivergentAggregateCount);
+        Assert.Equal(0, result.ContributorCountMismatchCount);
     }
 
     [Fact]
@@ -171,6 +204,7 @@ public sealed class RatingDiagnosticsReaderTests
         Assert.All(results, static result =>
         {
             Assert.True(result.IsPresent);
+            Assert.True(result.SupportsExpectedQueries);
             Assert.True(result.MatchesExpectedDefinition);
         });
         Assert.True(results.Single(static result => result.Name == "idx_user_ratings_user_target_unique").IsUnique);
@@ -199,6 +233,28 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void EvaluateIndexStatuses_WhenAggregateIndexLosesUniqueness_ShouldKeepTheLookupUsable()
+    {
+        BsonDocument aggregateIndex = CreateIndex(
+            RatingDiagnosticsReader.RatingAggregatesTargetIndexName,
+            false,
+            ("targetType", 1),
+            ("targetId", 1));
+
+        IReadOnlyCollection<RatingIndexStatusResult> results = RatingDiagnosticsReader.EvaluateIndexStatuses(
+            "userRatings",
+            Array.Empty<BsonDocument>(),
+            "ratingAggregates",
+            new[] { aggregateIndex });
+
+        RatingIndexStatusResult result = results.Single(static item =>
+            item.Name == RatingDiagnosticsReader.RatingAggregatesTargetIndexName);
+        Assert.False(result.IsUnique);
+        Assert.True(result.SupportsExpectedQueries);
+        Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    [Fact]
     public void EvaluateIndexStatuses_WhenIndexIsHidden_ShouldExposeTheDefinitionMismatch()
     {
         BsonDocument hiddenIndex = CreateIndex(
@@ -217,6 +273,7 @@ public sealed class RatingDiagnosticsReaderTests
         RatingIndexStatusResult result = results.Single(static item => item.Name == "idx_user_ratings_target");
         Assert.True(result.IsPresent);
         Assert.True(result.IsHidden);
+        Assert.False(result.SupportsExpectedQueries);
         Assert.False(result.MatchesExpectedDefinition);
     }
 
@@ -260,7 +317,39 @@ public sealed class RatingDiagnosticsReaderTests
         RatingIndexStatusResult result = results.Single(static item =>
             item.Name == RatingDiagnosticsReader.UserRatingsTargetIndexName);
         Assert.True(result.HasUnexpectedOptions);
+        Assert.Equal(option == "ttl", result.SupportsExpectedQueries);
         Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    private static BsonDocument CreateIntegrityFacets(
+        long sourceObservationCount,
+        long sourceUniqueContributorCount,
+        double sourceRatingSum,
+        long aggregateRatingCount,
+        double aggregateRatingSum,
+        double aggregateAverageRating,
+        double aggregateBayesianScore)
+    {
+        return new BsonDocument("integrity", new BsonArray
+        {
+            new BsonDocument
+            {
+                { "sourceRatingObservationCount", sourceObservationCount },
+                { "sourceUniqueContributorCount", sourceUniqueContributorCount },
+                { "sourceRatingSum", sourceRatingSum },
+                { "aggregateCount", 1 },
+                {
+                    "aggregate",
+                    new BsonDocument
+                    {
+                        { "ratingCount", aggregateRatingCount },
+                        { "ratingSum", aggregateRatingSum },
+                        { "averageRating", aggregateAverageRating },
+                        { "bayesianScore", aggregateBayesianScore },
+                    }
+                },
+            },
+        });
     }
 
     private static BsonDocument CreateIndex(string name, bool unique, params (string Name, int Direction)[] keys)

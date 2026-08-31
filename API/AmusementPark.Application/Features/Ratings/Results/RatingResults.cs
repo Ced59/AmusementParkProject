@@ -43,6 +43,7 @@ public sealed record RatingAggregateIntegrityResult(
     long MissingAggregateCount,
     long DivergentAggregateCount,
     long ContributorCountMismatchCount,
+    long DerivedScoreMismatchCount,
     long OrphanAggregateCount);
 
 public sealed record RatingTargetDistributionResult(
@@ -59,6 +60,7 @@ public sealed record RatingIndexStatusResult(
     bool IsUnique,
     bool IsHidden,
     bool HasUnexpectedOptions,
+    bool SupportsExpectedQueries,
     bool MatchesExpectedDefinition,
     string ExpectedKeys,
     string? ActualKeys);

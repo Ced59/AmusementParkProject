@@ -59,6 +59,8 @@ public sealed class RatingAggregateIntegrityDto
 
     public long ContributorCountMismatchCount { get; set; }
 
+    public long DerivedScoreMismatchCount { get; set; }
+
     public long OrphanAggregateCount { get; set; }
 }
 
@@ -88,6 +90,8 @@ public sealed class RatingIndexStatusDto
     public bool IsHidden { get; set; }
 
     public bool HasUnexpectedOptions { get; set; }
+
+    public bool SupportsExpectedQueries { get; set; }
 
     public bool MatchesExpectedDefinition { get; set; }
 

@@ -65,6 +65,7 @@ internal static class RatingsHttpMappers
                 MissingAggregateCount = value.AggregateIntegrity.MissingAggregateCount,
                 DivergentAggregateCount = value.AggregateIntegrity.DivergentAggregateCount,
                 ContributorCountMismatchCount = value.AggregateIntegrity.ContributorCountMismatchCount,
+                DerivedScoreMismatchCount = value.AggregateIntegrity.DerivedScoreMismatchCount,
                 OrphanAggregateCount = value.AggregateIntegrity.OrphanAggregateCount,
             },
             TargetDistribution = value.TargetDistribution.Select(static item => new RatingTargetDistributionDto
@@ -83,6 +84,7 @@ internal static class RatingsHttpMappers
                 IsUnique = index.IsUnique,
                 IsHidden = index.IsHidden,
                 HasUnexpectedOptions = index.HasUnexpectedOptions,
+                SupportsExpectedQueries = index.SupportsExpectedQueries,
                 MatchesExpectedDefinition = index.MatchesExpectedDefinition,
                 ExpectedKeys = index.ExpectedKeys,
                 ActualKeys = index.ActualKeys,

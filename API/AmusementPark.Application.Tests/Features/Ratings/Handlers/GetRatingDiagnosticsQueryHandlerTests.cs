@@ -38,7 +38,7 @@ public sealed class GetRatingDiagnosticsQueryHandlerTests
             new[] { "0.5", "1" },
             false,
             new RatingAnomalySummaryResult(0, 0, 0, 0, 0, 0, 0, 0, 0),
-            new RatingAggregateIntegrityResult(true, true, 3, 0, 0, 0, 0),
+            new RatingAggregateIntegrityResult(true, true, 3, 0, 0, 0, 0, 0),
             Array.Empty<RatingTargetDistributionResult>(),
             Array.Empty<RatingIndexStatusResult>());
     }
