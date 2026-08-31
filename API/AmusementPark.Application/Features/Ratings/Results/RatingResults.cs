@@ -54,6 +54,7 @@ public sealed record RatingIndexStatusResult(
     string Name,
     bool IsPresent,
     bool IsUnique,
+    bool IsHidden,
     bool MatchesExpectedDefinition,
     string ExpectedKeys,
     string? ActualKeys);

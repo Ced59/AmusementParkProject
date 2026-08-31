@@ -78,6 +78,7 @@ internal static class RatingsHttpMappers
                 Name = index.Name,
                 IsPresent = index.IsPresent,
                 IsUnique = index.IsUnique,
+                IsHidden = index.IsHidden,
                 MatchesExpectedDefinition = index.MatchesExpectedDefinition,
                 ExpectedKeys = index.ExpectedKeys,
                 ActualKeys = index.ActualKeys,

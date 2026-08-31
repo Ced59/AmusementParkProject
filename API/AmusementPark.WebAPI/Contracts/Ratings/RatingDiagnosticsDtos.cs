@@ -79,6 +79,8 @@ public sealed class RatingIndexStatusDto
 
     public bool IsUnique { get; set; }
 
+    public bool IsHidden { get; set; }
+
     public bool MatchesExpectedDefinition { get; set; }
 
     public string ExpectedKeys { get; set; } = string.Empty;

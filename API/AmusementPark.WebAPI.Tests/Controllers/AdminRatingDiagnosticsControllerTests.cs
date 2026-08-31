@@ -30,7 +30,7 @@ public sealed class AdminRatingDiagnosticsControllerTests
             new RatingAnomalySummaryResult(0, 0, 0, 0, 0, 0, 0, 0, 0),
             new RatingAggregateIntegrityResult(8, 0, 0, 0),
             new[] { new RatingTargetDistributionResult("Park", "3-9", 2, 12, 12) },
-            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, true, "{ userId: 1 }", "{ userId: 1 }") });
+            new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, true, "{ userId: 1 }", "{ userId: 1 }") });
         Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>> handler =
             new Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(It.IsAny<GetRatingDiagnosticsQuery>(), It.IsAny<CancellationToken>()))
@@ -44,6 +44,7 @@ public sealed class AdminRatingDiagnosticsControllerTests
         Assert.Equal(24, dto.TotalRatings);
         Assert.Equal("3-9", Assert.Single(dto.TargetDistribution).EvidenceBand);
         Assert.True(Assert.Single(dto.Indexes).MatchesExpectedDefinition);
+        Assert.False(Assert.Single(dto.Indexes).IsHidden);
         handler.VerifyAll();
     }
 

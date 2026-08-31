@@ -2,7 +2,10 @@ using System.Diagnostics;
 using System.Globalization;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -16,6 +19,8 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 
     private readonly IMongoCollection<BsonDocument> userRatingsCollection;
     private readonly IMongoCollection<BsonDocument> ratingAggregatesCollection;
+    private readonly IMongoCollection<ParkDocument> parksCollection;
+    private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
     private readonly MongoDbSettings settings;
 
     public RatingDiagnosticsReader(IMongoDatabase database, MongoDbSettings settings)
@@ -23,14 +28,20 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         this.settings = settings;
         this.userRatingsCollection = database.GetCollection<BsonDocument>(settings.UserRatingsCollectionName);
         this.ratingAggregatesCollection = database.GetCollection<BsonDocument>(settings.RatingAggregatesCollectionName);
+        this.parksCollection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
+        this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
     }
 
     public async Task<RatingDiagnosticsResult> GetDiagnosticsAsync(CancellationToken cancellationToken)
     {
         long startedAt = Stopwatch.GetTimestamp();
+        EligibleTargetInventory eligibleTargets = await ReadEligibleTargetInventoryAsync(cancellationToken);
         BsonDocument facets = await RunPipelineAsync(
             this.userRatingsCollection,
-            BuildUserRatingsDiagnosticPipeline(this.settings.RatingAggregatesCollectionName),
+            BuildUserRatingsDiagnosticPipeline(
+                this.settings.RatingAggregatesCollectionName,
+                eligibleTargets.ParkIds,
+                eligibleTargets.ParkItemIds),
             cancellationToken);
         long orphanAggregateCount = await ReadOrphanAggregateCountAsync(cancellationToken);
         IReadOnlyCollection<RatingIndexStatusResult> indexes = await ReadIndexStatusesAsync(cancellationToken);
@@ -67,12 +78,17 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             distinctValueCount > distinctValueSample.Count,
             anomalies,
             aggregateIntegrity,
-            ReadTargetDistribution(facets),
+            CompleteTargetDistribution(
+                ReadTargetDistribution(facets),
+                eligibleTargets.ParkIds.Count,
+                eligibleTargets.ParkItemIds.Count),
             indexes);
     }
 
     internal static IReadOnlyCollection<BsonDocument> BuildUserRatingsDiagnosticPipeline(
-        string ratingAggregatesCollectionName)
+        string ratingAggregatesCollectionName,
+        IReadOnlyCollection<string> eligibleParkIds,
+        IReadOnlyCollection<string> eligibleParkItemIds)
     {
         BsonDocument facetStage = BsonDocument.Parse(
             """
@@ -221,6 +237,8 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             """);
         facetStage["$facet"].AsBsonDocument["integrity"].AsBsonArray[2].AsBsonDocument["$lookup"].AsBsonDocument["from"] =
             ratingAggregatesCollectionName;
+        facetStage["$facet"].AsBsonDocument["targetDistribution"].AsBsonArray[0] =
+            BuildEligibleTargetMatch(eligibleParkIds, eligibleParkItemIds);
 
         return new[]
         {
@@ -260,6 +278,85 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         };
     }
 
+    internal static IReadOnlyCollection<RatingTargetDistributionResult> CompleteTargetDistribution(
+        IReadOnlyCollection<RatingTargetDistributionResult> ratedTargets,
+        long eligibleParkCount,
+        long eligibleParkItemCount)
+    {
+        List<RatingTargetDistributionResult> results = new List<RatingTargetDistributionResult>();
+        AddTargetTypeDistribution(results, ratedTargets, RatingTargetType.Park.ToString(), eligibleParkCount);
+        AddTargetTypeDistribution(results, ratedTargets, RatingTargetType.ParkItem.ToString(), eligibleParkItemCount);
+        return results;
+    }
+
+    private static BsonDocument BuildEligibleTargetMatch(
+        IReadOnlyCollection<string> eligibleParkIds,
+        IReadOnlyCollection<string> eligibleParkItemIds)
+    {
+        BsonArray parkIds = new BsonArray(eligibleParkIds.Select(static id => new BsonString(id)));
+        BsonArray parkItemIds = new BsonArray(eligibleParkItemIds.Select(static id => new BsonString(id)));
+        return new BsonDocument("$match", new BsonDocument
+        {
+            { "_diagnosticHasUser", true },
+            { "_diagnosticHasTarget", true },
+            { "_diagnosticIsExactHalfStep", true },
+            {
+                "$or",
+                new BsonArray
+                {
+                    new BsonDocument
+                    {
+                        { "_diagnosticTargetType", RatingTargetType.Park.ToString() },
+                        { "_diagnosticTargetText", new BsonDocument("$in", parkIds) },
+                    },
+                    new BsonDocument
+                    {
+                        { "_diagnosticTargetType", RatingTargetType.ParkItem.ToString() },
+                        { "_diagnosticTargetText", new BsonDocument("$in", parkItemIds) },
+                    },
+                }
+            },
+        });
+    }
+
+    private static void AddTargetTypeDistribution(
+        ICollection<RatingTargetDistributionResult> results,
+        IReadOnlyCollection<RatingTargetDistributionResult> ratedTargets,
+        string targetType,
+        long eligibleTargetCount)
+    {
+        List<RatingTargetDistributionResult> targetTypeResults = ratedTargets
+            .Where(result => string.Equals(result.TargetType, targetType, StringComparison.Ordinal)
+                && !string.Equals(result.EvidenceBand, "0", StringComparison.Ordinal))
+            .OrderBy(static result => GetEvidenceBandOrder(result.EvidenceBand))
+            .ToList();
+        long ratedTargetCount = targetTypeResults.Sum(static result => result.TargetCount);
+        results.Add(new RatingTargetDistributionResult(
+            targetType,
+            "0",
+            Math.Max(0, eligibleTargetCount - ratedTargetCount),
+            0,
+            0));
+
+        foreach (RatingTargetDistributionResult result in targetTypeResults)
+        {
+            results.Add(result);
+        }
+    }
+
+    private static int GetEvidenceBandOrder(string evidenceBand)
+    {
+        return evidenceBand switch
+        {
+            "1-2" => 1,
+            "3-9" => 2,
+            "10-29" => 3,
+            "30-99" => 4,
+            "100+" => 5,
+            _ => int.MaxValue,
+        };
+    }
+
     internal static IReadOnlyCollection<RatingIndexStatusResult> EvaluateIndexStatuses(
         string userRatingsCollectionName,
         IReadOnlyCollection<BsonDocument> userRatingIndexes,
@@ -296,6 +393,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 && actual!.TryGetValue("unique", out BsonValue? unique)
                 && unique.IsBoolean
                 && unique.AsBoolean;
+            bool isHidden = isPresent
+                && actual!.TryGetValue("hidden", out BsonValue? hidden)
+                && hidden.IsBoolean
+                && hidden.AsBoolean;
             BsonDocument? actualKeys = isPresent
                 && actual!.TryGetValue("key", out BsonValue? key)
                 && key.IsBsonDocument
@@ -303,6 +404,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     : null;
             bool matchesExpectedDefinition = isPresent
                 && isUnique == expectedIndex.IsUnique
+                && !isHidden
                 && actualKeys is not null
                 && expectedIndex.Keys.Equals(actualKeys);
 
@@ -311,12 +413,59 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 expectedIndex.Name,
                 isPresent,
                 isUnique,
+                isHidden,
                 matchesExpectedDefinition,
                 expectedIndex.Keys.ToJson(),
                 actualKeys?.ToJson()));
         }
 
         return results;
+    }
+
+    private async Task<EligibleTargetInventory> ReadEligibleTargetInventoryAsync(CancellationToken cancellationToken)
+    {
+        FindOptions findOptions = new FindOptions
+        {
+            MaxTime = QueryMaxTime,
+        };
+        FilterDefinition<ParkDocument> visibleParkFilter = Builders<ParkDocument>.Filter.Eq(
+            document => document.IsVisible,
+            true);
+        List<EligibleParkProjection> parks = await this.parksCollection.Find(visibleParkFilter, findOptions)
+            .Project(static document => new EligibleParkProjection
+            {
+                Id = document.Id,
+                Status = document.Status,
+            })
+            .ToListAsync(cancellationToken);
+        HashSet<string> eligibleParkIds = parks
+            .Where(static document => document.Status.CanReceiveVisitorRatings())
+            .Select(static document => document.Id)
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .ToHashSet(StringComparer.Ordinal);
+
+        FilterDefinition<ParkItemDocument> visibleParkItemFilter = Builders<ParkItemDocument>.Filter.Eq(
+            document => document.IsVisible,
+            true);
+        List<EligibleParkItemProjection> parkItems = await this.parkItemsCollection.Find(visibleParkItemFilter, findOptions)
+            .Project(static document => new EligibleParkItemProjection
+            {
+                Id = document.Id,
+                ParkId = document.ParkId,
+                Category = document.Category,
+                AttractionStatus = document.AttractionDetails!.Status,
+            })
+            .ToListAsync(cancellationToken);
+        HashSet<string> eligibleParkItemIds = parkItems
+            .Where(document => eligibleParkIds.Contains(document.ParkId)
+                && ParkItemStatusNormalizer.CanReceiveVisitorRatings(
+                    document.Category,
+                    document.AttractionStatus))
+            .Select(static document => document.Id)
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .ToHashSet(StringComparer.Ordinal);
+
+        return new EligibleTargetInventory(eligibleParkIds, eligibleParkItemIds);
     }
 
     private async Task<long> ReadOrphanAggregateCountAsync(CancellationToken cancellationToken)
@@ -507,4 +656,26 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         string Name,
         bool IsUnique,
         BsonDocument Keys);
+
+    private sealed record EligibleTargetInventory(
+        IReadOnlySet<string> ParkIds,
+        IReadOnlySet<string> ParkItemIds);
+
+    private sealed class EligibleParkProjection
+    {
+        public string Id { get; init; } = string.Empty;
+
+        public ParkStatus Status { get; init; }
+    }
+
+    private sealed class EligibleParkItemProjection
+    {
+        public string Id { get; init; } = string.Empty;
+
+        public string ParkId { get; init; } = string.Empty;
+
+        public ParkItemCategory Category { get; init; }
+
+        public string? AttractionStatus { get; init; }
+    }
 }
