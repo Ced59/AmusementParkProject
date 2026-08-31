@@ -95,6 +95,9 @@ public sealed partial class MongoDatabaseInitializer
                     PartialFilterExpression = leasedJobFilter,
                 }),
             new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys.Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_background_jobs_diagnostics_recent" }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
                 Builders<DurableBackgroundJobDocument>.IndexKeys
                     .Ascending(item => item.Kind)
                     .Ascending(item => item.Status)
