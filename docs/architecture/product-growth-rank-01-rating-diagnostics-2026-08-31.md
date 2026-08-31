@@ -30,6 +30,7 @@ Le rapport ne retourne aucun identifiant d’utilisateur ou de cible. Cette mini
 - les définitions d’index sont vérifiées avant les comparaisons croisées : un index absent, masqué, partiel, sparse, TTL ou doté d’une collation non simple désactive le contrôle qui en dépend au lieu de provoquer un parcours potentiellement quadratique ;
 - endpoint non mis en cache et absent des bundles Angular publics et administrateur ;
 - la valeur exacte reste vérifiée sans epsilon ; la marge de `0,000001` sert uniquement à compter les anciennes valeurs presque conformes.
+- la distribution de preuve ne retient que les valeurs exactes, tandis que la comparaison des agrégats conserve toutes les sources stockées pour reproduire le calcul du synchroniseur ; les valeurs malformées restent signalées séparément comme anomalies.
 
 ## Validation opérationnelle
 

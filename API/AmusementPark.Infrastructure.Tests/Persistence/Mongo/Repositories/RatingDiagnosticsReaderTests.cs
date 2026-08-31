@@ -83,6 +83,26 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void BuildUserRatingsDiagnosticPipeline_WithMalformedValues_ShouldKeepEveryStoredSourceInIntegrityChecks()
+    {
+        IReadOnlyCollection<BsonDocument> pipeline =
+            RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
+                "ratingAggregates",
+                Array.Empty<string>(),
+                Array.Empty<string>(),
+                true);
+
+        BsonArray integrity = pipeline.Last()["$facet"]["integrity"].AsBsonArray;
+        BsonDocument integrityMatch = integrity[0]["$match"].AsBsonDocument;
+        BsonDocument sourceGroup = integrity[1]["$group"].AsBsonDocument;
+
+        Assert.True(integrityMatch["_diagnosticHasTarget"].AsBoolean);
+        Assert.False(integrityMatch.Contains("_diagnosticHasUser"));
+        Assert.False(integrityMatch.Contains("_diagnosticIsExactHalfStep"));
+        Assert.Equal("$_diagnosticNumericValue", sourceGroup["sourceRatingSum"]["$sum"].AsString);
+    }
+
+    [Fact]
     public void BuildUserRatingsDiagnosticPipeline_WhenAggregateIndexIsUnavailable_ShouldSkipTheDependentLookup()
     {
         IReadOnlyCollection<BsonDocument> pipeline =

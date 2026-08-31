@@ -202,7 +202,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   { "$sort": { "_id.targetType": 1, "_id.evidenceBand": 1 } }
                 ],
                 "integrity": [
-                  { "$match": { "_diagnosticHasUser": true, "_diagnosticHasTarget": true, "_diagnosticIsExactHalfStep": true } },
+                  { "$match": { "_diagnosticHasTarget": true } },
                   {
                     "$group": {
                       "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText", "userId": "$_diagnosticUserText" },
