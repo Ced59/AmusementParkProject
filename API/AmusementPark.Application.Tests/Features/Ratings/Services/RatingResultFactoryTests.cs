@@ -102,6 +102,28 @@ public sealed class RatingResultFactoryTests
         Assert.Null(result.Evidence);
     }
 
+    [Fact]
+    public void CreateSummary_WhenObservationsContainDuplicateContributors_ShouldUseDistinctCount()
+    {
+        RatingAggregate aggregate = CreateAggregate(mutationVersion: 3, calculatedVersion: 3);
+        aggregate.RatingCount = 10;
+        aggregate.UniqueContributorCount = 5;
+
+        RatingSummaryResult result = RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            "park-1",
+            aggregate,
+            targetCanReceiveVisitorRatings: true,
+            aggregateIntegrityIsValid: null);
+
+        Assert.Equal(5, result.UniqueContributorCount);
+        Assert.Equal(10, result.RatingObservationCount);
+        Assert.Equal(RankingEvidenceLevel.Excluded, result.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            result.Evidence?.IneligibilityReason);
+    }
+
     private static RatingAggregate CreateAggregate(long? mutationVersion, long? calculatedVersion)
     {
         return new RatingAggregate
@@ -110,6 +132,7 @@ public sealed class RatingResultFactoryTests
             TargetId = "park-1",
             ParkId = "park-1",
             RatingCount = 10,
+            UniqueContributorCount = 10,
             RatingSum = 45,
             AverageRating = 4.5,
             BayesianScore = 4,

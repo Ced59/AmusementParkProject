@@ -73,6 +73,7 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
             4.5,
             bayesianScore)
         {
+            UniqueContributorCount = 10,
             AggregateIntegrityIsValid = true,
         };
     }

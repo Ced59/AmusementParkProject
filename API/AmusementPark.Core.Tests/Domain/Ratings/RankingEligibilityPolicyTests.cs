@@ -70,12 +70,17 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
-    public void EvaluateSimpleTarget_WhenObservationsExceedContributors_ShouldRejectDuplicateOrTemporalInput()
+    public void EvaluateSimpleTarget_WhenObservationsExceedContributors_ShouldExcludeInvalidAggregate()
     {
         SimpleRankingEvidenceInput input = CreateSimpleInput(10, 16);
 
-        Assert.Throws<ArgumentException>(
-            () => RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input));
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input);
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, evidence.Level);
+        Assert.False(evidence.IsEligibleForMainRanking);
+        Assert.Equal(RankingIneligibilityReason.AggregateIntegrityFailure, evidence.IneligibilityReason);
+        Assert.Equal(10, evidence.UniqueContributorCount);
+        Assert.Equal(16, evidence.RatingObservationCount);
     }
 
     [Theory]

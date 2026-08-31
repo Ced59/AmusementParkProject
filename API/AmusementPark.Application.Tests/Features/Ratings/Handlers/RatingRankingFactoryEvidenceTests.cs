@@ -108,6 +108,37 @@ public sealed class RatingRankingFactoryEvidenceTests
     }
 
     [Fact]
+    public void BuildParkRankings_WhenDirectObservationsContainDuplicates_ShouldWithholdInvalidEvidence()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            ratingCount: 10) with
+        {
+            UniqueContributorCount = 5,
+        };
+        ParkRankingEvidenceFactsBatch facts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 5,
+                    RatingObservationCount: 10,
+                    DirectParkContributorCount: 5,
+                    ItemContributorCount: 0),
+            },
+            Array.Empty<PublicParkItemEvidenceFact>());
+
+        ParkRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkRankings(new[] { source }, evidenceFacts: facts));
+
+        Assert.Null(ranking.Evidence);
+        Assert.Null(ranking.UniqueContributorCount);
+        Assert.Equal(10, ranking.RatingObservationCount);
+    }
+
+    [Fact]
     public void BuildParkItemRankings_WhenLegacyCountIsOutsideDomainRange_ShouldPreserveRankingWithoutEvidence()
     {
         RatingRankingItemResult source = CreateSource(
@@ -161,6 +192,29 @@ public sealed class RatingRankingFactoryEvidenceTests
             RatingRankingFactory.BuildParkItemRankings(new[] { source }));
 
         Assert.Null(ranking.Evidence);
+    }
+
+    [Fact]
+    public void BuildParkItemRankings_WhenObservationsContainDuplicateContributors_ShouldUseDistinctCount()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.ParkItem,
+            "attraction-duplicates",
+            ParkItemCategory.Attraction,
+            ratingCount: 10) with
+        {
+            UniqueContributorCount = 5,
+        };
+
+        ParkItemRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.BuildParkItemRankings(new[] { source }));
+
+        Assert.Equal(5, ranking.UniqueContributorCount);
+        Assert.Equal(10, ranking.RatingObservationCount);
+        Assert.Equal(RankingEvidenceLevel.Excluded, ranking.Evidence?.Level);
+        Assert.Equal(
+            RankingIneligibilityReason.AggregateIntegrityFailure,
+            ranking.Evidence?.IneligibilityReason);
     }
 
     [Fact]
@@ -301,6 +355,7 @@ public sealed class RatingRankingFactoryEvidenceTests
             4.5,
             4.2)
         {
+            UniqueContributorCount = ratingCount,
             AggregateIntegrityIsValid = true,
         };
     }

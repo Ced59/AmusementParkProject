@@ -83,6 +83,10 @@ public sealed class RatingAggregateDocument : MongoDocumentBase
     [BsonElement("ratingCount")]
     public long RatingCount { get; set; }
 
+    [BsonElement("uniqueContributorCount")]
+    [BsonIgnoreIfNull]
+    public long? UniqueContributorCount { get; set; }
+
     [BsonElement("ratingSum")]
     [BsonRepresentation(BsonType.Double)]
     public double RatingSum { get; set; }

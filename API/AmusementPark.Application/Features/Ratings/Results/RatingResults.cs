@@ -150,6 +150,8 @@ public sealed record RatingRankingItemResult(
     double AverageRating,
     double BayesianScore)
 {
+    public long? UniqueContributorCount { get; init; }
+
     public bool? AggregateIntegrityIsValid { get; init; }
 }
 

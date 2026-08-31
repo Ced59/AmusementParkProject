@@ -18,12 +18,14 @@ public sealed class EntityMongoMappersRatingsTests
             ParkId = "park-1",
             MutationVersion = 4,
             CalculatedVersion = 3,
+            UniqueContributorCount = 7,
         };
 
         RatingAggregate result = document.ToDomain();
 
         Assert.Equal(4, result.MutationVersion);
         Assert.Equal(3, result.CalculatedVersion);
+        Assert.Equal(7, result.UniqueContributorCount);
         Assert.False(result.IsCalculationCurrent);
     }
 
@@ -38,12 +40,14 @@ public sealed class EntityMongoMappersRatingsTests
             ParkId = "park-1",
             MutationVersion = 5,
             CalculatedVersion = 5,
+            UniqueContributorCount = 8,
         };
 
         RatingAggregateDocument result = aggregate.ToDocument();
 
         Assert.Equal(5, result.MutationVersion);
         Assert.Equal(5, result.CalculatedVersion);
+        Assert.Equal(8, result.UniqueContributorCount);
     }
 
     [Fact]

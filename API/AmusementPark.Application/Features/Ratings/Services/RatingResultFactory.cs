@@ -15,9 +15,13 @@ public static class RatingResultFactory
         bool? aggregateIntegrityIsValid)
     {
         long ratingCount = aggregate?.RatingCount ?? 0;
+        long? uniqueContributorCount = aggregate?.UniqueContributorCount
+            ?? (aggregate is null ? 0 : null);
         bool? resolvedAggregateIntegrity = aggregateIntegrityIsValid ?? aggregate?.IsCalculationCurrent;
         RankingEvidenceResult? evidence = resolvedAggregateIntegrity.HasValue
+            && uniqueContributorCount.HasValue
             ? TryCreateSimpleEvidence(
+                uniqueContributorCount.Value,
                 ratingCount,
                 targetCanReceiveVisitorRatings,
                 resolvedAggregateIntegrity.Value)
@@ -35,19 +39,21 @@ public static class RatingResultFactory
     }
 
     public static RankingEvidenceResult? TryCreateSimpleEvidence(
-        long ratingCount,
+        long uniqueContributorCount,
+        long ratingObservationCount,
         bool targetCanReceiveVisitorRatings,
         bool aggregateIntegrityIsValid)
     {
-        if (!TryConvertToDomainCount(ratingCount, out int boundedRatingCount))
+        if (!TryConvertToDomainCount(uniqueContributorCount, out int boundedUniqueContributorCount)
+            || !TryConvertToDomainCount(ratingObservationCount, out int boundedRatingObservationCount))
         {
             return null;
         }
 
         RankingEvidence evidence = EligibilityPolicy.EvaluateSimpleTarget(
             new SimpleRankingEvidenceInput(
-                boundedRatingCount,
-                boundedRatingCount,
+                boundedUniqueContributorCount,
+                boundedRatingObservationCount,
                 targetCanReceiveVisitorRatings,
                 IsExcludedByModeration: false,
                 aggregateIntegrityIsValid));

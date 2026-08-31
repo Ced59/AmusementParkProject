@@ -171,6 +171,7 @@ public sealed class GetUserRatingQueryHandlerTests
                 ? ParkItemType.RollerCoaster
                 : null,
             RatingCount = 10,
+            UniqueContributorCount = 10,
             RatingSum = 45,
             AverageRating = 4.5,
             BayesianScore = 4,

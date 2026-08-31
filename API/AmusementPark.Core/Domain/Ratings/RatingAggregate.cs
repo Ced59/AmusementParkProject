@@ -20,6 +20,8 @@ public sealed class RatingAggregate : AuditableEntity
 
     public long RatingCount { get; set; }
 
+    public long? UniqueContributorCount { get; set; }
+
     public double RatingSum { get; set; }
 
     public double AverageRating { get; set; }

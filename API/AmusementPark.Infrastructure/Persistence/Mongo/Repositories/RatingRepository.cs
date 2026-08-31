@@ -471,6 +471,7 @@ public sealed class RatingRepository : IRatingRepository
                     document.AverageRating,
                     document.BayesianScore)
                 {
+                    UniqueContributorCount = document.UniqueContributorCount,
                     AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
                 });
                 continue;
@@ -507,6 +508,7 @@ public sealed class RatingRepository : IRatingRepository
                 document.AverageRating,
                 document.BayesianScore)
             {
+                UniqueContributorCount = document.UniqueContributorCount,
                 AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
             });
         }

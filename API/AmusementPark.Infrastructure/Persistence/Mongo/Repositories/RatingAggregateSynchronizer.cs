@@ -36,16 +36,14 @@ internal sealed class RatingAggregateSynchronizer
         {
             BsonDocument? aggregateValues = await this.userRatingsCollection.Aggregate()
                 .Match(BuildUserRatingTargetFilter(pendingMutation.Target))
-                .Group(new BsonDocument
-                {
-                    { "_id", BsonNull.Value },
-                    { "count", new BsonDocument("$sum", 1) },
-                    { "sum", new BsonDocument("$sum", "$value") },
-                    { "lastRatedAtUtc", new BsonDocument("$max", "$updatedAt") },
-                })
+                .AppendStage<BsonDocument>(BuildValidRatingSourceMatchStage())
+                .AppendStage<BsonDocument>(BuildPerContributorGroupStage())
+                .AppendStage<BsonDocument>(BuildAggregateValuesGroupStage())
                 .FirstOrDefaultAsync(cancellationToken);
 
             long ratingCount = aggregateValues?.GetValue("count", BsonValue.Create(0)).ToInt64() ?? 0;
+            long uniqueContributorCount = aggregateValues?
+                .GetValue("uniqueContributorCount", BsonValue.Create(0)).ToInt64() ?? 0;
             double ratingSum = aggregateValues?.GetValue("sum", BsonValue.Create(0d)).ToDouble() ?? 0d;
             double averageRating = RatingScoreCalculator.CalculateAverage(ratingSum, ratingCount);
             double bayesianScore = ratingCount > 0
@@ -59,6 +57,7 @@ internal sealed class RatingAggregateSynchronizer
                 pendingMutation.Target,
                 pendingMutation.Version,
                 ratingCount,
+                uniqueContributorCount,
                 ratingSum,
                 averageRating,
                 bayesianScore,
@@ -157,6 +156,7 @@ internal sealed class RatingAggregateSynchronizer
             .SetOnInsert(document => document.TargetType, target.TargetType)
             .SetOnInsert(document => document.TargetId, target.TargetId.Trim())
             .SetOnInsert(document => document.RatingCount, 0)
+            .SetOnInsert(document => document.UniqueContributorCount, 0)
             .SetOnInsert(document => document.RatingSum, 0d)
             .SetOnInsert(document => document.AverageRating, 0d)
             .SetOnInsert(document => document.BayesianScore, RatingScoreCalculator.PriorMean)
@@ -189,6 +189,7 @@ internal sealed class RatingAggregateSynchronizer
         RatingAggregateTarget target,
         long mutationVersion,
         long ratingCount,
+        long uniqueContributorCount,
         double ratingSum,
         double averageRating,
         double bayesianScore,
@@ -202,6 +203,7 @@ internal sealed class RatingAggregateSynchronizer
             target,
             mutationVersion,
             ratingCount,
+            uniqueContributorCount,
             ratingSum,
             averageRating,
             bayesianScore,
@@ -224,6 +226,7 @@ internal sealed class RatingAggregateSynchronizer
         RatingAggregateTarget target,
         long mutationVersion,
         long ratingCount,
+        long uniqueContributorCount,
         double ratingSum,
         double averageRating,
         double bayesianScore,
@@ -238,6 +241,7 @@ internal sealed class RatingAggregateSynchronizer
             .Set(document => document.ParkItemCategory, target.ParkItemCategory)
             .Set(document => document.ParkItemType, target.ParkItemType)
             .Set(document => document.RatingCount, ratingCount)
+            .Set(document => document.UniqueContributorCount, uniqueContributorCount)
             .Set(document => document.RatingSum, ratingSum)
             .Set(document => document.AverageRating, averageRating)
             .Set(document => document.BayesianScore, bayesianScore)
@@ -288,6 +292,61 @@ internal sealed class RatingAggregateSynchronizer
     {
         return Builders<UserRatingDocument>.Filter.Eq(document => document.TargetType, target.TargetType)
             & Builders<UserRatingDocument>.Filter.Eq(document => document.TargetId, target.TargetId.Trim());
+    }
+
+    internal static BsonDocument BuildValidRatingSourceMatchStage()
+    {
+        BsonDocument safeUserIdString = new BsonDocument("$convert", new BsonDocument
+        {
+            { "input", "$userId" },
+            { "to", "string" },
+            { "onError", string.Empty },
+            { "onNull", string.Empty },
+        });
+        BsonDocument hasUserId = new BsonDocument("$and", new BsonArray
+        {
+            new BsonDocument("$eq", new BsonArray
+            {
+                new BsonDocument("$type", "$userId"),
+                "string",
+            }),
+            new BsonDocument("$gt", new BsonArray
+            {
+                new BsonDocument("$strLenCP", new BsonDocument(
+                    "$trim",
+                    new BsonDocument("input", safeUserIdString))),
+                0,
+            }),
+        });
+        BsonDocument validSource = new BsonDocument("$and", new BsonArray
+        {
+            hasUserId,
+            RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"),
+        });
+        return new BsonDocument("$match", new BsonDocument("$expr", validSource));
+    }
+
+    internal static BsonDocument BuildAggregateValuesGroupStage()
+    {
+        return new BsonDocument("$group", new BsonDocument
+        {
+            { "_id", BsonNull.Value },
+            { "count", new BsonDocument("$sum", "$observationCount") },
+            { "uniqueContributorCount", new BsonDocument("$sum", 1) },
+            { "sum", new BsonDocument("$sum", "$ratingSum") },
+            { "lastRatedAtUtc", new BsonDocument("$max", "$lastRatedAtUtc") },
+        });
+    }
+
+    internal static BsonDocument BuildPerContributorGroupStage()
+    {
+        return new BsonDocument("$group", new BsonDocument
+        {
+            { "_id", "$userId" },
+            { "observationCount", new BsonDocument("$sum", 1) },
+            { "ratingSum", new BsonDocument("$sum", "$value") },
+            { "lastRatedAtUtc", new BsonDocument("$max", "$updatedAt") },
+        });
     }
 
     private static FilterDefinition<RatingAggregateDocument> BuildAggregateTargetFilter(RatingAggregateTarget target)

@@ -66,6 +66,7 @@ public sealed class GetRatingSummaryQueryHandlerTests
             ParkItemCategory = ParkItemCategory.Attraction,
             ParkItemType = ParkItemType.RollerCoaster,
             RatingCount = 12,
+            UniqueContributorCount = 12,
             RatingSum = 57,
             AverageRating = 4.75,
             BayesianScore = 4.42,

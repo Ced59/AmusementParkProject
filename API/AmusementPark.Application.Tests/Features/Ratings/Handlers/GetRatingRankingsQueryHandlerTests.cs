@@ -195,6 +195,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 score,
                 score)
             {
+                UniqueContributorCount = 10,
                 AggregateIntegrityIsValid = true,
             });
         }
@@ -235,6 +236,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 4.5,
                 4.2)
             {
+                UniqueContributorCount = 10,
                 AggregateIntegrityIsValid = true,
             },
         };
@@ -256,6 +258,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 4.5,
                 4.1)
             {
+                UniqueContributorCount = 10,
                 AggregateIntegrityIsValid = true,
             });
         }
@@ -284,6 +287,7 @@ public sealed class GetRatingRankingsQueryHandlerTests
             4.5,
             bayesianScore)
         {
+            UniqueContributorCount = 10,
             AggregateIntegrityIsValid = true,
         };
     }

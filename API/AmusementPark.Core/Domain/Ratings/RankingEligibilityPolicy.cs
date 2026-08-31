@@ -80,17 +80,13 @@ public sealed class RankingEligibilityPolicy
     {
         ArgumentNullException.ThrowIfNull(input);
         ValidateObservationCounts(input.UniqueContributorCount, input.RatingObservationCount);
-        if (input.RatingObservationCount != input.UniqueContributorCount)
-        {
-            throw new ArgumentException(
-                "A simple target requires exactly one current observation per unique contributor.",
-                nameof(input));
-        }
+        bool aggregateIntegrityIsValid = input.AggregateIntegrityIsValid
+            && input.RatingObservationCount == input.UniqueContributorCount;
 
         RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
             input.TargetCanReceiveVisitorRatings,
             input.IsExcludedByModeration,
-            input.AggregateIntegrityIsValid);
+            aggregateIntegrityIsValid);
         if (exclusionReason.HasValue)
         {
             return this.CreateSimpleEvidence(input, RankingEvidenceLevel.Excluded, false, exclusionReason);

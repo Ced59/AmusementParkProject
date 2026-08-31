@@ -46,6 +46,7 @@ public sealed class ParkDetailSummaryReadRepositoryTests
             TargetId = "park-1",
             ParkId = "park-1",
             RatingCount = 10,
+            UniqueContributorCount = 10,
             RatingSum = 45,
             AverageRating = 4.5,
             BayesianScore = 4,

@@ -162,6 +162,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
             TargetId = "park-1",
             ParkId = "park-1",
             RatingCount = 2,
+            UniqueContributorCount = 2,
             RatingSum = 9,
             AverageRating = 4.5,
             BayesianScore = 3.7,

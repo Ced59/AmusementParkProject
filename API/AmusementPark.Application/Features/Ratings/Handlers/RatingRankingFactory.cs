@@ -138,7 +138,9 @@ internal static class RatingRankingFactory
                     source.BayesianScore)
                 {
                     Evidence = source.AggregateIntegrityIsValid.HasValue
+                        && source.UniqueContributorCount.HasValue
                         ? RatingResultFactory.TryCreateSimpleEvidence(
+                            source.UniqueContributorCount.Value,
                             source.RatingCount,
                             targetCanReceiveVisitorRatings: true,
                             aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value)
@@ -249,6 +251,11 @@ internal static class RatingRankingFactory
             return null;
         }
 
+        if (directParkSource is not null && !directParkSource.UniqueContributorCount.HasValue)
+        {
+            return null;
+        }
+
         Dictionary<string, RankingEvidenceResult> itemEvidenceById = new Dictionary<string, RankingEvidenceResult>(
             StringComparer.Ordinal);
         foreach (IGrouping<string, RatingRankingItemResult> itemSourceGroup in itemSources.GroupBy(
@@ -261,12 +268,14 @@ internal static class RatingRankingFactory
             }
 
             RatingRankingItemResult itemSource = itemSourceGroup.Single();
-            if (!itemSource.AggregateIntegrityIsValid.HasValue)
+            if (!itemSource.AggregateIntegrityIsValid.HasValue
+                || !itemSource.UniqueContributorCount.HasValue)
             {
                 return null;
             }
 
             RankingEvidenceResult? itemEvidence = RatingResultFactory.TryCreateSimpleEvidence(
+                itemSource.UniqueContributorCount.Value,
                 itemSource.RatingCount,
                 targetCanReceiveVisitorRatings: true,
                 aggregateIntegrityIsValid: itemSource.AggregateIntegrityIsValid.Value);
@@ -302,9 +311,13 @@ internal static class RatingRankingFactory
             return null;
         }
 
+        bool sourceContributorCountsAreConsistent = (directParkSource is null
+                || directParkSource.UniqueContributorCount == directParkSource.RatingCount)
+            && itemSources.All(static source => source.UniqueContributorCount == source.RatingCount);
         bool aggregateIntegrityIsValid = sourceAggregateIntegrity.Value
+            && sourceContributorCountsAreConsistent
             && sourceObservationCount == contributorFacts.RatingObservationCount
-            && (directParkSource?.RatingCount ?? 0) == contributorFacts.DirectParkContributorCount;
+            && (directParkSource?.UniqueContributorCount ?? 0) == contributorFacts.DirectParkContributorCount;
         ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
             counts.UniqueContributorCount,
             counts.RatingObservationCount,
