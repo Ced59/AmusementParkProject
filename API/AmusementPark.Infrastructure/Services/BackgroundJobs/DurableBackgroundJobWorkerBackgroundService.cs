@@ -16,6 +16,8 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
     private readonly ILogger<DurableBackgroundJobWorkerBackgroundService> logger;
     private readonly TimeProvider timeProvider;
     private readonly string workerInstanceId;
+    private readonly DurableBackgroundJobRetainedExecutionTracker retainedExecutionTracker =
+        new DurableBackgroundJobRetainedExecutionTracker();
 
     public DurableBackgroundJobWorkerBackgroundService(
         IServiceScopeFactory serviceScopeFactory,
@@ -83,6 +85,7 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
         }
 
         await Task.WhenAll(workers);
+        await this.retainedExecutionTracker.WaitForAllAsync();
     }
 
     private IReadOnlyCollection<DurableBackgroundJobHandlerDefinition> LoadDefinitions()
@@ -274,11 +277,12 @@ internal sealed class DurableBackgroundJobWorkerBackgroundService : BackgroundSe
             if (result.OngoingHandlerCompletion is { IsCompleted: false } ongoingHandlerCompletion)
             {
                 retainedForHandler = true;
-                _ = this.ReleaseDetachedExecutionAsync(
+                Task release = this.ReleaseDetachedExecutionAsync(
                     ongoingHandlerCompletion,
                     scope,
                     claim,
                     claim.Job);
+                this.retainedExecutionTracker.Track(release);
             }
         }
         finally

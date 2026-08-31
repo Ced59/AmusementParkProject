@@ -245,6 +245,23 @@ public sealed class DurableBackgroundJobWorkerTests
         dependencyScope.Verify(item => item.Dispose(), Times.Once);
     }
 
+    [Fact]
+    public async Task RetainedExecutionTracker_ShouldDelayShutdownUntilTrackedHandlersComplete()
+    {
+        DurableBackgroundJobRetainedExecutionTracker tracker =
+            new DurableBackgroundJobRetainedExecutionTracker();
+        TaskCompletionSource handlerCompletion = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        tracker.Track(handlerCompletion.Task);
+
+        Task shutdown = tracker.WaitForAllAsync();
+
+        Assert.False(shutdown.IsCompleted);
+
+        handlerCompletion.TrySetResult();
+        await shutdown.WaitAsync(TimeSpan.FromSeconds(1));
+    }
+
     private static DurableBackgroundJobHandlerDefinition CreateDefinition(int maximumConcurrency)
     {
         return new DurableBackgroundJobHandlerDefinition(
