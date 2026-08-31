@@ -160,7 +160,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         RatingAggregate? aggregate = aggregateDocument?.ToDomain();
         if (aggregate is not null)
         {
-            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.IsProjectionValid(
+            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
                 aggregate,
                 (await sourceFactsTask).SingleOrDefault());
         }

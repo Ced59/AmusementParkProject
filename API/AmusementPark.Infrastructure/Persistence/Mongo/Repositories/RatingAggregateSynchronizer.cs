@@ -342,11 +342,16 @@ internal sealed class RatingAggregateSynchronizer
     {
         return new BsonDocument("$group", new BsonDocument
         {
-            { "_id", "$userId" },
+            { "_id", BuildCanonicalUserIdExpression() },
             { "observationCount", new BsonDocument("$sum", 1) },
             { "ratingSum", new BsonDocument("$sum", "$value") },
             { "lastRatedAtUtc", new BsonDocument("$max", "$updatedAt") },
         });
+    }
+
+    internal static BsonDocument BuildCanonicalUserIdExpression()
+    {
+        return new BsonDocument("$trim", new BsonDocument("input", "$userId"));
     }
 
     private static FilterDefinition<RatingAggregateDocument> BuildAggregateTargetFilter(RatingAggregateTarget target)

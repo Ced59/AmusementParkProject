@@ -144,7 +144,7 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
                 new BsonDocument
                 {
                     { "parkId", "$parkId" },
-                    { "userId", "$userId" },
+                    { "userId", RatingAggregateSynchronizer.BuildCanonicalUserIdExpression() },
                 }
             },
             { "ratingObservationCount", new BsonDocument("$sum", 1) },

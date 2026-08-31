@@ -28,7 +28,8 @@ public sealed class RatingEvidenceReaderTests
 
         BsonDocument perUserGroup = pipeline.ElementAt(3)["$group"].AsBsonDocument;
         Assert.Equal("$parkId", perUserGroup["_id"]["parkId"].AsString);
-        Assert.Equal("$userId", perUserGroup["_id"]["userId"].AsString);
+        Assert.Contains("$trim", perUserGroup["_id"]["userId"].ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$userId", perUserGroup["_id"]["userId"].ToJson(), StringComparison.Ordinal);
         Assert.Equal(1, perUserGroup["ratingObservationCount"]["$sum"].AsInt32);
 
         BsonDocument perParkGroup = pipeline.ElementAt(4)["$group"].AsBsonDocument;

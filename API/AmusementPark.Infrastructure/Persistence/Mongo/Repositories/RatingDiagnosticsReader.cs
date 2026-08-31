@@ -193,7 +193,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   { "$sort": { "_id.targetType": 1, "_id.evidenceBand": 1 } }
                 ],
                 "integrity": [
-                  { "$match": { "_diagnosticHasTarget": true } },
+                  { "$match": { "_diagnosticHasTarget": true, "_diagnosticHasUser": true, "_diagnosticIsExactHalfStep": true } },
                   {
                     "$group": {
                       "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText" },
@@ -274,7 +274,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     "_diagnosticIsNumericValue": { "$isNumber": "$value" },
                     "_diagnosticNumericValue": { "$cond": [ { "$isNumber": "$value" }, "$value", null ] },
                     "_diagnosticValueType": { "$type": "$value" },
-                    "_diagnosticUserText": { "$cond": [ { "$eq": [ { "$type": "$userId" }, "string" ] }, "$userId", "" ] },
+                    "_diagnosticUserText": { "$cond": [ { "$eq": [ { "$type": "$userId" }, "string" ] }, { "$trim": { "input": "$userId" } }, "" ] },
                     "_diagnosticTargetText": { "$cond": [ { "$eq": [ { "$type": "$targetId" }, "string" ] }, "$targetId", "" ] },
                     "_diagnosticTargetType": { "$cond": [ { "$eq": [ { "$type": "$targetType" }, "string" ] }, "$targetType", "Unknown" ] }
                   }

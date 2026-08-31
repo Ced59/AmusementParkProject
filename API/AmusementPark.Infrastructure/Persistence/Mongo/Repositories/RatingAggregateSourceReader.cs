@@ -85,7 +85,7 @@ internal sealed class RatingAggregateSourceReader
                 {
                     { "targetType", "$targetType" },
                     { "targetId", "$targetId" },
-                    { "userId", "$userId" },
+                    { "userId", RatingAggregateSynchronizer.BuildCanonicalUserIdExpression() },
                 }
             },
             { "observationCount", new BsonDocument("$sum", 1) },
@@ -130,36 +130,36 @@ internal sealed class RatingAggregateSourceReader
         };
     }
 
-    internal static bool IsProjectionValid(
+    internal static bool TryVerifyAndHydrateProjection(
         RatingAggregate aggregate,
         RatingAggregateSourceFact? source)
     {
         ArgumentNullException.ThrowIfNull(aggregate);
 
-        if (source is null)
-        {
-            return RatingAggregate.HasValidSourceProjection(
+        long sourceRatingObservationCount = source?.RatingObservationCount ?? 0;
+        long sourceUniqueContributorCount = source?.UniqueContributorCount ?? 0;
+        double sourceRatingSum = source?.RatingSum ?? 0d;
+        bool sourceIdentityMatches = source is null
+            || (aggregate.TargetType == source.TargetType
+                && string.Equals(aggregate.TargetId, source.TargetId, StringComparison.Ordinal));
+        long verifiedUniqueContributorCount = 0;
+        bool sourceProjectionIsValid = sourceIdentityMatches
+            && RatingAggregate.TryResolveVerifiedSourceProjection(
                 aggregate.RatingCount,
                 aggregate.UniqueContributorCount,
                 aggregate.RatingSum,
                 aggregate.AverageRating,
                 aggregate.BayesianScore,
-                sourceRatingObservationCount: 0,
-                sourceUniqueContributorCount: 0,
-                sourceRatingSum: 0d);
+                sourceRatingObservationCount,
+                sourceUniqueContributorCount,
+                sourceRatingSum,
+                out verifiedUniqueContributorCount);
+        if (sourceProjectionIsValid)
+        {
+            aggregate.UniqueContributorCount = verifiedUniqueContributorCount;
         }
 
-        return aggregate.TargetType == source.TargetType
-            && string.Equals(aggregate.TargetId, source.TargetId, StringComparison.Ordinal)
-            && RatingAggregate.HasValidSourceProjection(
-                aggregate.RatingCount,
-                aggregate.UniqueContributorCount,
-                aggregate.RatingSum,
-                aggregate.AverageRating,
-                aggregate.BayesianScore,
-                source.RatingObservationCount,
-                source.UniqueContributorCount,
-                source.RatingSum);
+        return sourceProjectionIsValid;
     }
 
     private static RatingAggregateSourceFact? TryMap(BsonDocument document)

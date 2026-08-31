@@ -95,7 +95,7 @@ public sealed class RatingRepository : IRatingRepository
         IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
             new[] { new RatingAggregateSourceTarget(targetType, targetId) },
             cancellationToken);
-        aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.IsProjectionValid(
+        aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
             aggregate,
             sourceFacts.SingleOrDefault());
         return aggregate;
@@ -569,7 +569,9 @@ public sealed class RatingRepository : IRatingRepository
             string key = BuildTargetKey(document.TargetType, document.TargetId);
             RatingAggregate aggregate = document.ToDomain();
             sourceFactsByTarget.TryGetValue(key, out RatingAggregateSourceFact? sourceFact);
-            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.IsProjectionValid(aggregate, sourceFact);
+            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
+                aggregate,
+                sourceFact);
             aggregates[key] = aggregate;
         }
 

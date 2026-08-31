@@ -43,6 +43,42 @@ public sealed class RatingAggregateTests
         Assert.False(result);
     }
 
+    [Fact]
+    public void TryResolveVerifiedSourceProjection_WhenLegacyContributorCountIsMissing_ShouldUseSourceCount()
+    {
+        bool result = RatingAggregate.TryResolveVerifiedSourceProjection(
+            ratingCount: 10,
+            uniqueContributorCount: null,
+            ratingSum: 45d,
+            averageRating: 4.5d,
+            bayesianScore: 4d,
+            sourceRatingObservationCount: 10,
+            sourceUniqueContributorCount: 8,
+            sourceRatingSum: 45d,
+            out long verifiedUniqueContributorCount);
+
+        Assert.True(result);
+        Assert.Equal(8, verifiedUniqueContributorCount);
+    }
+
+    [Fact]
+    public void TryResolveVerifiedSourceProjection_WhenPersistedContributorCountDiffers_ShouldRejectProjection()
+    {
+        bool result = RatingAggregate.TryResolveVerifiedSourceProjection(
+            ratingCount: 10,
+            uniqueContributorCount: 9,
+            ratingSum: 45d,
+            averageRating: 4.5d,
+            bayesianScore: 4d,
+            sourceRatingObservationCount: 10,
+            sourceUniqueContributorCount: 8,
+            sourceRatingSum: 45d,
+            out long verifiedUniqueContributorCount);
+
+        Assert.False(result);
+        Assert.Equal(0, verifiedUniqueContributorCount);
+    }
+
     [Theory]
     [InlineData(true, true, true)]
     [InlineData(true, null, null)]

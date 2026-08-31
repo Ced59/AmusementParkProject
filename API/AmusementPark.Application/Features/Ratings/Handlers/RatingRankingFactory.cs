@@ -430,8 +430,9 @@ internal static class RatingRankingFactory
             sourceFactsByTarget.TryGetValue(
                 BuildTargetKey(source.TargetType, source.TargetId),
                 out RatingAggregateSourceFact? sourceFact);
+            long verifiedUniqueContributorCount = 0;
             bool sourceProjectionIsValid = sourceFact is not null
-                && RatingAggregate.HasValidSourceProjection(
+                && RatingAggregate.TryResolveVerifiedSourceProjection(
                     source.RatingCount,
                     source.UniqueContributorCount,
                     source.RatingSum,
@@ -439,11 +440,15 @@ internal static class RatingRankingFactory
                     source.BayesianScore,
                     sourceFact.RatingObservationCount,
                     sourceFact.UniqueContributorCount,
-                    sourceFact.RatingSum);
+                    sourceFact.RatingSum,
+                    out verifiedUniqueContributorCount);
 
             return source with
             {
                 AggregateIntegrityIsValid = aggregateIntegrityIsValid.Value && sourceProjectionIsValid,
+                UniqueContributorCount = sourceProjectionIsValid
+                    ? verifiedUniqueContributorCount
+                    : source.UniqueContributorCount,
             };
         }).ToList();
     }

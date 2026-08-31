@@ -19,6 +19,10 @@ public sealed class RatingDiagnosticsReaderTests
                 true);
 
         Assert.Equal(4, pipeline.Count);
+        Assert.Contains(
+            "$trim",
+            pipeline.First()["$set"]["_diagnosticUserText"].ToJson(),
+            StringComparison.Ordinal);
         Assert.Equal(
             RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"),
             pipeline.ElementAt(2)["$set"]["_diagnosticIsExactHalfStep"].AsBsonDocument);
@@ -101,7 +105,7 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
-    public void BuildUserRatingsDiagnosticPipeline_WithMalformedValues_ShouldKeepEveryStoredSourceInIntegrityChecks()
+    public void BuildUserRatingsDiagnosticPipeline_WithMalformedValues_ShouldKeepOnlyCanonicalSourcesInIntegrityChecks()
     {
         IReadOnlyCollection<BsonDocument> pipeline =
             RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
@@ -117,8 +121,8 @@ public sealed class RatingDiagnosticsReaderTests
             targetGroup["sourceContributorIds"]["$addToSet"].AsBsonDocument;
 
         Assert.True(integrityMatch["_diagnosticHasTarget"].AsBoolean);
-        Assert.False(integrityMatch.Contains("_diagnosticHasUser"));
-        Assert.False(integrityMatch.Contains("_diagnosticIsExactHalfStep"));
+        Assert.True(integrityMatch["_diagnosticHasUser"].AsBoolean);
+        Assert.True(integrityMatch["_diagnosticIsExactHalfStep"].AsBoolean);
         Assert.Equal("$_diagnosticNumericValue", targetGroup["sourceRatingSum"]["$sum"].AsString);
         Assert.Contains("$_diagnosticHasUser", contributorExpression.ToJson(), StringComparison.Ordinal);
     }

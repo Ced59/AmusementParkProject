@@ -119,7 +119,8 @@ public sealed class RatingAggregateSynchronizerTests
         Assert.Contains("$mod", matchStage.ToJson(), StringComparison.Ordinal);
         Assert.Contains("$convert", matchStage.ToJson(), StringComparison.Ordinal);
         Assert.Contains("$userId", matchStage.ToJson(), StringComparison.Ordinal);
-        Assert.Equal("$userId", contributorGroupStage["$group"]["_id"].AsString);
+        Assert.Contains("$trim", contributorGroupStage["$group"]["_id"].ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$userId", contributorGroupStage["$group"]["_id"].ToJson(), StringComparison.Ordinal);
         Assert.Equal(1, contributorGroupStage["$group"]["observationCount"]["$sum"].AsInt32);
         Assert.Equal("$observationCount", groupStage["$group"]["count"]["$sum"].AsString);
         Assert.Equal(1, groupStage["$group"]["uniqueContributorCount"]["$sum"].AsInt32);

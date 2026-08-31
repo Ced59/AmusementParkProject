@@ -247,6 +247,37 @@ public sealed class RatingRankingFactoryEvidenceTests
     }
 
     [Fact]
+    public void ApplyParkItemEvidence_WhenLegacyContributorCountIsMissing_ShouldHydrateVerifiedCount()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.ParkItem,
+            "attraction-legacy",
+            ParkItemCategory.Attraction,
+            ratingCount: 10) with
+        {
+            UniqueContributorCount = null,
+            BayesianScore = 4d,
+        };
+        IReadOnlyCollection<ParkItemRatingRankingResult> rankings =
+            RatingRankingFactory.BuildParkItemRankings(new[] { source });
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = new[]
+        {
+            new RatingAggregateSourceFact(
+                RatingTargetType.ParkItem,
+                "attraction-legacy",
+                UniqueContributorCount: 10,
+                RatingObservationCount: 10,
+                RatingSum: 45d),
+        };
+
+        ParkItemRatingRankingResult ranking = Assert.Single(
+            RatingRankingFactory.ApplyParkItemEvidence(rankings, new[] { source }, sourceFacts));
+
+        Assert.Equal(10, ranking.UniqueContributorCount);
+        Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
+    }
+
+    [Fact]
     public void BuildParkRankings_WhenPublicInventoryIsIncomplete_ShouldWithholdEvidence()
     {
         RatingRankingItemResult source = CreateSource(
