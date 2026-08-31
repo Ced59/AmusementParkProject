@@ -109,6 +109,10 @@ describe('ParkOpeningHoursPageComponent', () => {
     component = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('builds month groups as calendar weeks with the year in the month label', () => {
     const group = component.monthGroup(
       createCalendar([
@@ -313,6 +317,8 @@ describe('ParkOpeningHoursPageComponent', () => {
   });
 
   it('ignores pending month responses from a previously loaded park', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-08-31T12:00:00Z'));
     const currentMonthKey: string = component['resolveCurrentMonthKey'](null);
     const nextMonthKey: string = component['addMonths'](currentMonthKey, 1);
     const currentRange: {
@@ -351,7 +357,7 @@ describe('ParkOpeningHoursPageComponent', () => {
           parkId === 'park-1' ? nextRange.to : range.to;
 
         return of(
-          createCalendar([createOpenDay(range.from, '10:00', '18:00')], {
+          createCalendar([createOpenDay(range.to, '10:00', '18:00')], {
             parkId,
             firstDate: currentRange.from,
             lastDate: coverageLastDate,
