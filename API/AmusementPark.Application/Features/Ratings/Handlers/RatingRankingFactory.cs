@@ -83,9 +83,15 @@ internal static class RatingRankingFactory
                 .Where(static source => source.TargetType == RatingTargetType.ParkItem
                     && source.ParkItemCategory.HasValue)
                 .ToList();
-            IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems = publicItemsByPark[ranking.ParkId]
+            IReadOnlyCollection<PublicParkItemEvidenceFact> allPublicItems = publicItemsByPark[ranking.ParkId]
+                .ToList();
+            IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems = allPublicItems
                 .Where(item => !categoryFilter.HasValue || item.Category == categoryFilter.Value)
                 .ToList();
+            bool isSingleCategoryParkException = allPublicItems
+                .Select(static item => item.Category)
+                .Distinct()
+                .Count() == 1;
 
             return ranking with
             {
@@ -94,7 +100,8 @@ internal static class RatingRankingFactory
                         directParkSources.FirstOrDefault(),
                         itemSources,
                         contributorFacts,
-                        publicItems)
+                        publicItems,
+                        isSingleCategoryParkException)
                     : null,
             };
         }).ToList();
@@ -221,7 +228,8 @@ internal static class RatingRankingFactory
         RatingRankingItemResult? directParkSource,
         IReadOnlyCollection<RatingRankingItemResult> itemSources,
         ParkRankingContributorFacts contributorFacts,
-        IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems)
+        IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems,
+        bool isSingleCategoryParkException)
     {
         if (!TryConvertEvidenceCounts(contributorFacts, out ParkContributorDomainCounts counts))
         {
@@ -289,7 +297,7 @@ internal static class RatingRankingFactory
             counts.DirectParkContributorCount,
             counts.ItemContributorCount,
             categoryCoverage,
-            IsSingleCategoryParkException: categoryCoverage.Count == 1,
+            IsSingleCategoryParkException: isSingleCategoryParkException,
             TargetCanReceiveVisitorRatings: true,
             IsExcludedByModeration: false,
             aggregateIntegrityIsValid);

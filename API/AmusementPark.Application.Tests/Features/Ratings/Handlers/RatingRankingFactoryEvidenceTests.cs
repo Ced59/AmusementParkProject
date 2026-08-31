@@ -151,6 +151,53 @@ public sealed class RatingRankingFactoryEvidenceTests
         Assert.Equal(5, ranking.Evidence?.EligibleItemCount);
     }
 
+    [Fact]
+    public void BuildParkRankings_WhenCategoryFilterTargetsMultiCategoryPark_ShouldNotGrantMonoCategoryException()
+    {
+        List<RatingRankingItemResult> sources = new List<RatingRankingItemResult>
+        {
+            CreateSource(RatingTargetType.Park, "park-1", null, ratingCount: 3),
+        };
+        for (int index = 1; index <= 5; index += 1)
+        {
+            sources.Add(CreateSource(
+                RatingTargetType.ParkItem,
+                $"attraction-{index}",
+                ParkItemCategory.Attraction,
+                ratingCount: 10));
+        }
+
+        ParkRankingEvidenceFactsBatch evidenceFacts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 15,
+                    RatingObservationCount: 53,
+                    DirectParkContributorCount: 3,
+                    ItemContributorCount: 12),
+            },
+            new[]
+            {
+                CreatePublicItem("attraction-1", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-2", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-3", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-4", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-5", ParkItemCategory.Attraction),
+                CreatePublicItem("restaurant-1", ParkItemCategory.Restaurant),
+            });
+
+        ParkRatingRankingResult ranking = Assert.Single(RatingRankingFactory.BuildParkRankings(
+            sources,
+            ParkItemCategory.Attraction,
+            evidenceFacts));
+
+        Assert.Equal(RankingEvidenceLevel.Provisional, ranking.Evidence?.Level);
+        Assert.Equal(3, ranking.UniqueContributorCount);
+        Assert.Equal(3, ranking.RatingObservationCount);
+        Assert.Equal(1, ranking.Evidence?.EligibleCategoryCount);
+    }
+
     private static IReadOnlyCollection<RatingRankingItemResult> CreateSources()
     {
         return new[]
