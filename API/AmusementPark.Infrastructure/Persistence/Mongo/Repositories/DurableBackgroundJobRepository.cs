@@ -15,6 +15,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
     private const int MaximumPayloadSizeBytes = 64 * 1024;
     private const int MaximumDiagnosticLimit = 500;
     private const int MaximumTextLength = 200;
+    private const int MaximumCoalesceInsertAttempts = 3;
     private readonly IMongoCollection<DurableBackgroundJobDocument> collection;
     private readonly TimeProvider timeProvider;
 
@@ -136,25 +137,33 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             CorrelationId = correlationId,
         };
 
-        try
+        for (int insertAttempt = 0; insertAttempt < MaximumCoalesceInsertAttempts; insertAttempt++)
         {
-            await this.collection.InsertOneAsync(pending, cancellationToken: cancellationToken);
-            return pending.ToApplication();
-        }
-        catch (MongoWriteException exception) when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-        {
-            DurableBackgroundJobDocument? raced = await this.collection.FindOneAndUpdateAsync(
-                activeFilter,
-                coalesceUpdate,
-                options,
-                cancellationToken);
-            if (raced is not null)
+            try
             {
-                return raced.ToApplication();
+                await this.collection.InsertOneAsync(pending, cancellationToken: cancellationToken);
+                return pending.ToApplication();
             }
+            catch (MongoWriteException exception) when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+            {
+                DurableBackgroundJobDocument? raced = await this.collection.FindOneAndUpdateAsync(
+                    activeFilter,
+                    coalesceUpdate,
+                    options,
+                    cancellationToken);
+                if (raced is not null)
+                {
+                    return raced.ToApplication();
+                }
 
-            throw;
+                if (!CanRetryCoalesceInsert(insertAttempt))
+                {
+                    throw;
+                }
+            }
         }
+
+        throw new InvalidOperationException("The bounded coalescing retry loop completed unexpectedly.");
     }
 
     public async Task<DurableBackgroundJob?> TryLeaseNextAsync(
@@ -374,6 +383,11 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
     {
         ArgumentNullException.ThrowIfNull(result);
         return result.IsAcknowledged && result.MatchedCount == 1;
+    }
+
+    internal static bool CanRetryCoalesceInsert(int failedAttempt)
+    {
+        return failedAttempt >= 0 && failedAttempt < MaximumCoalesceInsertAttempts - 1;
     }
 
     private static string? NormalizeOptional(string? value, string parameterName)

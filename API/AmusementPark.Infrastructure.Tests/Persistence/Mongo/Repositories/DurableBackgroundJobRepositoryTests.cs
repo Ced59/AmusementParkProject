@@ -157,6 +157,18 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.False(matched);
     }
 
+    [Theory]
+    [InlineData(0, true)]
+    [InlineData(1, true)]
+    [InlineData(2, false)]
+    [InlineData(3, false)]
+    public void CanRetryCoalesceInsert_ShouldBoundTerminalRaceRetries(int failedAttempt, bool expected)
+    {
+        bool canRetry = DurableBackgroundJobStore.CanRetryCoalesceInsert(failedAttempt);
+
+        Assert.Equal(expected, canRetry);
+    }
+
     [Fact]
     public void BuildScheduleRetryUpdate_ShouldRequeueAndReleaseTheLease()
     {
