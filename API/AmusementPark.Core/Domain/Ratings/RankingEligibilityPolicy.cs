@@ -1,0 +1,558 @@
+namespace AmusementPark.Core.Domain.Ratings;
+
+/// <summary>
+/// Politique pure et versionnée qui décide si une preuve autorise un rang public.
+/// </summary>
+public sealed class RankingEligibilityPolicy
+{
+    public static readonly RatingMethodologyVersion InitialMethodologyVersion =
+        RatingMethodologyVersion.Parse("ratings-2026-01");
+
+    public static readonly RankingEligibilityPolicy Initial = new RankingEligibilityPolicy(
+        InitialMethodologyVersion,
+        provisionalMinUniqueContributors: 3,
+        eligibleMinUniqueContributors: 10,
+        establishedMinUniqueContributors: 30,
+        strongEvidenceMinUniqueContributors: 100,
+        minimumEligibleEntriesPerRanking: 3,
+        minimumEligibleItemsForParkItemComponent: 5,
+        minimumEligibleItemsPerCategory: 2,
+        minimumEligibleCategories: 2,
+        scoreTieEpsilon: 0.0001m);
+
+    public RankingEligibilityPolicy(
+        RatingMethodologyVersion version,
+        int provisionalMinUniqueContributors,
+        int eligibleMinUniqueContributors,
+        int establishedMinUniqueContributors,
+        int strongEvidenceMinUniqueContributors,
+        int minimumEligibleEntriesPerRanking,
+        int minimumEligibleItemsForParkItemComponent,
+        int minimumEligibleItemsPerCategory,
+        int minimumEligibleCategories,
+        decimal scoreTieEpsilon)
+    {
+        ValidateThresholds(
+            provisionalMinUniqueContributors,
+            eligibleMinUniqueContributors,
+            establishedMinUniqueContributors,
+            strongEvidenceMinUniqueContributors,
+            minimumEligibleEntriesPerRanking,
+            minimumEligibleItemsForParkItemComponent,
+            minimumEligibleItemsPerCategory,
+            minimumEligibleCategories,
+            scoreTieEpsilon);
+
+        _ = version.Value;
+        this.Version = version;
+        this.ProvisionalMinUniqueContributors = provisionalMinUniqueContributors;
+        this.EligibleMinUniqueContributors = eligibleMinUniqueContributors;
+        this.EstablishedMinUniqueContributors = establishedMinUniqueContributors;
+        this.StrongEvidenceMinUniqueContributors = strongEvidenceMinUniqueContributors;
+        this.MinimumEligibleEntriesPerRanking = minimumEligibleEntriesPerRanking;
+        this.MinimumEligibleItemsForParkItemComponent = minimumEligibleItemsForParkItemComponent;
+        this.MinimumEligibleItemsPerCategory = minimumEligibleItemsPerCategory;
+        this.MinimumEligibleCategories = minimumEligibleCategories;
+        this.ScoreTieEpsilon = scoreTieEpsilon;
+    }
+
+    public RatingMethodologyVersion Version { get; }
+
+    public int ProvisionalMinUniqueContributors { get; }
+
+    public int EligibleMinUniqueContributors { get; }
+
+    public int EstablishedMinUniqueContributors { get; }
+
+    public int StrongEvidenceMinUniqueContributors { get; }
+
+    public int MinimumEligibleEntriesPerRanking { get; }
+
+    public int MinimumEligibleItemsForParkItemComponent { get; }
+
+    public int MinimumEligibleItemsPerCategory { get; }
+
+    public int MinimumEligibleCategories { get; }
+
+    public decimal ScoreTieEpsilon { get; }
+
+    public RankingEvidence EvaluateSimpleTarget(SimpleRankingEvidenceInput input)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        ValidateObservationCounts(input.UniqueContributorCount, input.RatingObservationCount);
+        if (input.RatingObservationCount != input.UniqueContributorCount)
+        {
+            throw new ArgumentException(
+                "A simple target requires exactly one current observation per unique contributor.",
+                nameof(input));
+        }
+
+        RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
+            input.TargetCanReceiveVisitorRatings,
+            input.IsExcludedByModeration,
+            input.AggregateIntegrityIsValid);
+        if (exclusionReason.HasValue)
+        {
+            return this.CreateSimpleEvidence(input, RankingEvidenceLevel.Excluded, false, exclusionReason);
+        }
+
+        RankingEvidenceLevel level = this.ResolveEvidenceLevel(input.UniqueContributorCount);
+        bool isEligible = level is RankingEvidenceLevel.Eligible
+            or RankingEvidenceLevel.Established
+            or RankingEvidenceLevel.StrongEvidence;
+        RankingIneligibilityReason? ineligibilityReason = ResolveVolumeIneligibilityReason(level);
+
+        return this.CreateSimpleEvidence(input, level, isEligible, ineligibilityReason);
+    }
+
+    public RankingEvidence EvaluatePark(ParkRankingEvidenceInput input)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        this.ValidateParkInput(input);
+
+        ParkItemComponentEligibility itemComponent = this.EvaluateParkItemComponentValidated(input);
+        RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
+            input.TargetCanReceiveVisitorRatings,
+            input.IsExcludedByModeration,
+            input.AggregateIntegrityIsValid);
+        if (exclusionReason.HasValue)
+        {
+            return this.CreateParkEvidence(
+                input,
+                itemComponent,
+                input.UniqueContributorCount,
+                input.RatingObservationCount,
+                RankingEvidenceLevel.Excluded,
+                false,
+                exclusionReason);
+        }
+
+        bool directComponentIsEligible = input.DirectParkContributorCount >= this.EligibleMinUniqueContributors;
+        int activeContributorCount = ResolveActiveContributorCount(
+            input,
+            directComponentIsEligible,
+            itemComponent.IsEligible);
+        int activeObservationCount = ResolveActiveObservationCount(
+            input,
+            directComponentIsEligible,
+            itemComponent.IsEligible);
+        RankingEvidenceLevel level = this.ResolveEvidenceLevel(activeContributorCount);
+        if (level is RankingEvidenceLevel.NoEvidence or RankingEvidenceLevel.Insufficient or RankingEvidenceLevel.Provisional)
+        {
+            return this.CreateParkEvidence(
+                input,
+                itemComponent,
+                activeContributorCount,
+                activeObservationCount,
+                level,
+                false,
+                ResolveVolumeIneligibilityReason(level));
+        }
+
+        if (!directComponentIsEligible)
+        {
+            return this.CreateParkEvidence(
+                input,
+                itemComponent,
+                activeContributorCount,
+                activeObservationCount,
+                RankingEvidenceLevel.Provisional,
+                false,
+                RankingIneligibilityReason.TooFewUniqueContributors);
+        }
+
+        return this.CreateParkEvidence(
+            input,
+            itemComponent,
+            activeContributorCount,
+            activeObservationCount,
+            level,
+            true,
+            null);
+    }
+
+    public ParkItemComponentEligibility EvaluateParkItemComponent(ParkRankingEvidenceInput input)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        this.ValidateParkInput(input);
+
+        return this.EvaluateParkItemComponentValidated(input);
+    }
+
+    private ParkItemComponentEligibility EvaluateParkItemComponentValidated(ParkRankingEvidenceInput input)
+    {
+        int eligibleItemCount = 0;
+        int eligibleCategoryCount = 0;
+        foreach (RankingCategoryCoverage category in input.ItemCategories)
+        {
+            eligibleItemCount = checked(eligibleItemCount + category.EligibleItemCount);
+            if (IsCategoryCovered(category, this.MinimumEligibleItemsPerCategory))
+            {
+                eligibleCategoryCount++;
+            }
+        }
+
+        if (input.ItemContributorCount < this.EligibleMinUniqueContributors)
+        {
+            return new ParkItemComponentEligibility(
+                false,
+                eligibleItemCount,
+                eligibleCategoryCount,
+                RankingIneligibilityReason.TooFewUniqueContributors);
+        }
+
+        if (eligibleItemCount < this.MinimumEligibleItemsForParkItemComponent)
+        {
+            return new ParkItemComponentEligibility(
+                false,
+                eligibleItemCount,
+                eligibleCategoryCount,
+                RankingIneligibilityReason.InsufficientItemCoverage);
+        }
+
+        int requiredCategoryCount = input.IsSingleCategoryParkException
+            ? 1
+            : this.MinimumEligibleCategories;
+        if (eligibleCategoryCount < requiredCategoryCount)
+        {
+            return new ParkItemComponentEligibility(
+                false,
+                eligibleItemCount,
+                eligibleCategoryCount,
+                RankingIneligibilityReason.InsufficientCategoryCoverage);
+        }
+
+        return new ParkItemComponentEligibility(true, eligibleItemCount, eligibleCategoryCount, null);
+    }
+
+    public RankingPublicationEligibility EvaluateRankingPublication(int eligibleEntryCount)
+    {
+        if (eligibleEntryCount < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(eligibleEntryCount));
+        }
+
+        return eligibleEntryCount >= this.MinimumEligibleEntriesPerRanking
+            ? new RankingPublicationEligibility(true, null)
+            : new RankingPublicationEligibility(false, RankingIneligibilityReason.TooFewComparableEntries);
+    }
+
+    public bool AreScoresTied(double leftScore, double rightScore)
+    {
+        ValidateScore(leftScore, nameof(leftScore));
+        ValidateScore(rightScore, nameof(rightScore));
+
+        decimal difference = Math.Abs((decimal)leftScore - (decimal)rightScore);
+        return difference < this.ScoreTieEpsilon;
+    }
+
+    private RankingEvidenceLevel ResolveEvidenceLevel(int uniqueContributorCount)
+    {
+        if (uniqueContributorCount == 0)
+        {
+            return RankingEvidenceLevel.NoEvidence;
+        }
+
+        if (uniqueContributorCount < this.ProvisionalMinUniqueContributors)
+        {
+            return RankingEvidenceLevel.Insufficient;
+        }
+
+        if (uniqueContributorCount < this.EligibleMinUniqueContributors)
+        {
+            return RankingEvidenceLevel.Provisional;
+        }
+
+        if (uniqueContributorCount < this.EstablishedMinUniqueContributors)
+        {
+            return RankingEvidenceLevel.Eligible;
+        }
+
+        if (uniqueContributorCount < this.StrongEvidenceMinUniqueContributors)
+        {
+            return RankingEvidenceLevel.Established;
+        }
+
+        return RankingEvidenceLevel.StrongEvidence;
+    }
+
+    private void ValidateParkInput(ParkRankingEvidenceInput input)
+    {
+        ValidateObservationCounts(input.UniqueContributorCount, input.RatingObservationCount);
+        ValidateCount(input.DirectParkContributorCount, nameof(input.DirectParkContributorCount));
+        ValidateCount(input.ItemContributorCount, nameof(input.ItemContributorCount));
+        ArgumentNullException.ThrowIfNull(input.ItemCategories);
+
+        if (input.DirectParkContributorCount > input.UniqueContributorCount)
+        {
+            throw new ArgumentOutOfRangeException(nameof(input.DirectParkContributorCount));
+        }
+
+        if (input.ItemContributorCount > input.UniqueContributorCount)
+        {
+            throw new ArgumentOutOfRangeException(nameof(input.ItemContributorCount));
+        }
+
+        long maximumContributorUnion = (long)input.DirectParkContributorCount + input.ItemContributorCount;
+        if (input.UniqueContributorCount > maximumContributorUnion)
+        {
+            throw new ArgumentException(
+                "Unique park contributors cannot exceed the union capacity of direct and item contributors.",
+                nameof(input));
+        }
+
+        int publicItemCount = 0;
+        int eligibleItemCount = 0;
+        foreach (RankingCategoryCoverage category in input.ItemCategories)
+        {
+            if (category is null)
+            {
+                throw new ArgumentException("Item category coverage cannot contain null values.", nameof(input));
+            }
+
+            if (category.PublicItemCount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(category.PublicItemCount));
+            }
+
+            ValidateCount(category.EligibleItemCount, nameof(category.EligibleItemCount));
+            if (category.EligibleItemCount > category.PublicItemCount)
+            {
+                throw new ArgumentException(
+                    "Eligible item count cannot exceed public item count.",
+                    nameof(input));
+            }
+
+            publicItemCount = checked(publicItemCount + category.PublicItemCount);
+            eligibleItemCount = checked(eligibleItemCount + category.EligibleItemCount);
+        }
+
+        if (eligibleItemCount > 0 && input.ItemContributorCount < this.EligibleMinUniqueContributors)
+        {
+            throw new ArgumentException(
+                "Eligible items require at least the eligible contributor threshold across item ratings.",
+                nameof(input));
+        }
+
+        long minimumItemObservationCount = Math.Max(
+            input.ItemContributorCount,
+            checked((long)eligibleItemCount * this.EligibleMinUniqueContributors));
+        long minimumObservationCount = input.DirectParkContributorCount + minimumItemObservationCount;
+        if (input.RatingObservationCount < minimumObservationCount)
+        {
+            throw new ArgumentException(
+                "Park observations cannot be lower than the minimum required by both active component inputs.",
+                nameof(input));
+        }
+
+        long maximumItemObservationCount = checked((long)input.ItemContributorCount * publicItemCount);
+        long maximumObservationCount = input.DirectParkContributorCount + maximumItemObservationCount;
+        if (input.RatingObservationCount > maximumObservationCount)
+        {
+            throw new ArgumentException(
+                "Park observations cannot exceed one current rating per contributor and public target.",
+                nameof(input));
+        }
+
+        if (input.IsSingleCategoryParkException && input.ItemCategories.Count != 1)
+        {
+            throw new ArgumentException(
+                "The single-category exception requires exactly one public item category.",
+                nameof(input));
+        }
+
+    }
+
+    private static bool IsCategoryCovered(RankingCategoryCoverage category, int minimumEligibleItemsPerCategory)
+    {
+        return category.EligibleItemCount >= minimumEligibleItemsPerCategory
+            || (category.PublicItemCount == 1 && category.EligibleItemCount == 1);
+    }
+
+    private static int ResolveActiveContributorCount(
+        ParkRankingEvidenceInput input,
+        bool directComponentIsEligible,
+        bool itemComponentIsEligible)
+    {
+        if (directComponentIsEligible && itemComponentIsEligible)
+        {
+            return input.UniqueContributorCount;
+        }
+
+        return itemComponentIsEligible
+            ? input.ItemContributorCount
+            : input.DirectParkContributorCount;
+    }
+
+    private static int ResolveActiveObservationCount(
+        ParkRankingEvidenceInput input,
+        bool directComponentIsEligible,
+        bool itemComponentIsEligible)
+    {
+        if (directComponentIsEligible && itemComponentIsEligible)
+        {
+            return input.RatingObservationCount;
+        }
+
+        return itemComponentIsEligible
+            ? input.RatingObservationCount - input.DirectParkContributorCount
+            : input.DirectParkContributorCount;
+    }
+
+    private RankingEvidence CreateSimpleEvidence(
+        SimpleRankingEvidenceInput input,
+        RankingEvidenceLevel level,
+        bool isEligible,
+        RankingIneligibilityReason? ineligibilityReason)
+    {
+        return new RankingEvidence(
+            level,
+            isEligible,
+            input.UniqueContributorCount,
+            input.RatingObservationCount,
+            null,
+            null,
+            null,
+            null,
+            this.Version,
+            ineligibilityReason);
+    }
+
+    private RankingEvidence CreateParkEvidence(
+        ParkRankingEvidenceInput input,
+        ParkItemComponentEligibility itemComponent,
+        int activeContributorCount,
+        int activeObservationCount,
+        RankingEvidenceLevel level,
+        bool isEligible,
+        RankingIneligibilityReason? ineligibilityReason)
+    {
+        return new RankingEvidence(
+            level,
+            isEligible,
+            activeContributorCount,
+            activeObservationCount,
+            input.DirectParkContributorCount,
+            input.ItemContributorCount,
+            itemComponent.EligibleItemCount,
+            itemComponent.EligibleCategoryCount,
+            this.Version,
+            ineligibilityReason);
+    }
+
+    private static RankingIneligibilityReason? ResolveExclusionReason(
+        bool targetCanReceiveVisitorRatings,
+        bool isExcludedByModeration,
+        bool aggregateIntegrityIsValid)
+    {
+        if (!targetCanReceiveVisitorRatings)
+        {
+            return RankingIneligibilityReason.TargetUnavailable;
+        }
+
+        if (isExcludedByModeration)
+        {
+            return RankingIneligibilityReason.TargetExcluded;
+        }
+
+        if (!aggregateIntegrityIsValid)
+        {
+            return RankingIneligibilityReason.AggregateIntegrityFailure;
+        }
+
+        return null;
+    }
+
+    private static RankingIneligibilityReason? ResolveVolumeIneligibilityReason(RankingEvidenceLevel level)
+    {
+        return level switch
+        {
+            RankingEvidenceLevel.NoEvidence => RankingIneligibilityReason.NoRatings,
+            RankingEvidenceLevel.Insufficient or RankingEvidenceLevel.Provisional =>
+                RankingIneligibilityReason.TooFewUniqueContributors,
+            _ => null,
+        };
+    }
+
+    private static void ValidateObservationCounts(int uniqueContributorCount, int ratingObservationCount)
+    {
+        ValidateCount(uniqueContributorCount, nameof(uniqueContributorCount));
+        ValidateCount(ratingObservationCount, nameof(ratingObservationCount));
+        if (ratingObservationCount < uniqueContributorCount)
+        {
+            throw new ArgumentException(
+                "Rating observation count cannot be lower than unique contributor count.",
+                nameof(ratingObservationCount));
+        }
+
+        if (uniqueContributorCount == 0 && ratingObservationCount > 0)
+        {
+            throw new ArgumentException(
+                "Rating observations require at least one unique contributor.",
+                nameof(ratingObservationCount));
+        }
+    }
+
+    private static void ValidateCount(int value, string parameterName)
+    {
+        if (value < 0)
+        {
+            throw new ArgumentOutOfRangeException(parameterName);
+        }
+    }
+
+    private static void ValidateScore(double value, string parameterName)
+    {
+        if (!double.IsFinite(value)
+            || value < RatingValue.MinimumHalfSteps / 2d
+            || value > RatingValue.MaximumHalfSteps / 2d)
+        {
+            throw new ArgumentOutOfRangeException(parameterName);
+        }
+    }
+
+    private static void ValidateThresholds(
+        int provisionalMinUniqueContributors,
+        int eligibleMinUniqueContributors,
+        int establishedMinUniqueContributors,
+        int strongEvidenceMinUniqueContributors,
+        int minimumEligibleEntriesPerRanking,
+        int minimumEligibleItemsForParkItemComponent,
+        int minimumEligibleItemsPerCategory,
+        int minimumEligibleCategories,
+        decimal scoreTieEpsilon)
+    {
+        if (provisionalMinUniqueContributors <= 0
+            || eligibleMinUniqueContributors <= provisionalMinUniqueContributors
+            || establishedMinUniqueContributors <= eligibleMinUniqueContributors
+            || strongEvidenceMinUniqueContributors <= establishedMinUniqueContributors)
+        {
+            throw new ArgumentException("Contributor thresholds must be positive and strictly increasing.");
+        }
+
+        if (minimumEligibleEntriesPerRanking <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minimumEligibleEntriesPerRanking));
+        }
+
+        if (minimumEligibleItemsForParkItemComponent <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minimumEligibleItemsForParkItemComponent));
+        }
+
+        if (minimumEligibleItemsPerCategory <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minimumEligibleItemsPerCategory));
+        }
+
+        if (minimumEligibleCategories <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(minimumEligibleCategories));
+        }
+
+        if (scoreTieEpsilon <= 0m)
+        {
+            throw new ArgumentOutOfRangeException(nameof(scoreTieEpsilon));
+        }
+    }
+}

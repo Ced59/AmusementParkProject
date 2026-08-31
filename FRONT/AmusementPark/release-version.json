@@ -1,6 +1,20 @@
 {
-  "version": "4.2.33",
+  "version": "4.2.34",
   "history": [
+    {
+      "version": "4.2.34",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "La fiabilité des futurs classements communautaires est renforcée.",
+        "en": "The reliability of upcoming community rankings is strengthened.",
+        "de": "Die Zuverlässigkeit künftiger Community-Ranglisten wird gestärkt.",
+        "nl": "De betrouwbaarheid van toekomstige communityranglijsten is versterkt.",
+        "it": "L'affidabilità delle future classifiche della community è rafforzata.",
+        "es": "Se refuerza la fiabilidad de las futuras clasificaciones de la comunidad.",
+        "pl": "Wiarygodność przyszłych rankingów społeczności została wzmocniona.",
+        "pt": "A fiabilidade das futuras classificações da comunidade foi reforçada."
+      }
+    },
     {
       "version": "4.2.33",
       "releasedAt": "2026-08-31",
