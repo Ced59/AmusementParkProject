@@ -29,9 +29,13 @@ internal static class RatingsHttpMappers
             TargetType = value.TargetType.ToString(),
             TargetId = value.TargetId,
             RatingCount = value.RatingCount,
+            RatingObservationCount = value.RatingObservationCount,
+            UniqueContributorCount = value.UniqueContributorCount,
             AverageRating = value.AverageRating,
             BayesianScore = value.BayesianScore,
             Rank = value.Rank,
+            Evidence = value.Evidence?.ToHttp(),
+            MethodologyVersion = value.MethodologyVersion?.ToString(),
         };
     }
 
@@ -149,11 +153,15 @@ internal static class RatingsHttpMappers
             ParkId = value.ParkId,
             ParkName = value.ParkName,
             RatingCount = value.RatingCount,
+            RatingObservationCount = value.RatingObservationCount,
+            UniqueContributorCount = value.UniqueContributorCount,
             Score = value.Score,
             ParkRatingCount = value.ParkRatingCount,
             ParkAverageRating = value.ParkAverageRating,
             ItemsRatingCount = value.ItemsRatingCount,
             ItemsAverageRating = value.ItemsAverageRating,
+            Evidence = value.Evidence?.ToHttp(),
+            MethodologyVersion = value.MethodologyVersion?.ToString(),
             Categories = value.Categories.Select(static category => category.ToHttp()).ToList(),
         };
     }
@@ -170,8 +178,12 @@ internal static class RatingsHttpMappers
             ParkItemCategory = value.ParkItemCategory.ToString(),
             ParkItemType = value.ParkItemType?.ToString(),
             RatingCount = value.RatingCount,
+            RatingObservationCount = value.RatingObservationCount,
+            UniqueContributorCount = value.UniqueContributorCount,
             AverageRating = value.AverageRating,
             BayesianScore = value.BayesianScore,
+            Evidence = value.Evidence?.ToHttp(),
+            MethodologyVersion = value.MethodologyVersion?.ToString(),
         };
     }
 
@@ -230,6 +242,21 @@ internal static class RatingsHttpMappers
             Label = value.Label,
             Count = value.Count,
             AverageRating = value.AverageRating,
+        };
+    }
+
+    private static RankingEvidenceDto ToHttp(this RankingEvidenceResult value)
+    {
+        return new RankingEvidenceDto
+        {
+            Level = value.Level.ToString(),
+            IsEligibleForMainRanking = value.IsEligibleForMainRanking,
+            DirectParkContributorCount = value.DirectParkContributorCount,
+            ItemContributorCount = value.ItemContributorCount,
+            EligibleItemCount = value.EligibleItemCount,
+            EligibleCategoryCount = value.EligibleCategoryCount,
+            IneligibilityReason = value.IneligibilityReason?.ToString(),
+            NextThreshold = value.NextThreshold,
         };
     }
 

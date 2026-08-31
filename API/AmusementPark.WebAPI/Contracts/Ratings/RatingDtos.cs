@@ -18,13 +18,41 @@ public sealed class RatingSummaryDto
 
     public string TargetId { get; set; } = string.Empty;
 
+    /// <summary>Alias historique du nombre d'observations retenues pour cette cible simple.</summary>
     public long RatingCount { get; set; }
+
+    public long RatingObservationCount { get; set; }
+
+    public long? UniqueContributorCount { get; set; }
 
     public double AverageRating { get; set; }
 
     public double BayesianScore { get; set; }
 
     public int? Rank { get; set; }
+
+    public RankingEvidenceDto? Evidence { get; set; }
+
+    public string? MethodologyVersion { get; set; }
+}
+
+public sealed class RankingEvidenceDto
+{
+    public string Level { get; set; } = string.Empty;
+
+    public bool IsEligibleForMainRanking { get; set; }
+
+    public long? DirectParkContributorCount { get; set; }
+
+    public long? ItemContributorCount { get; set; }
+
+    public int? EligibleItemCount { get; set; }
+
+    public int? EligibleCategoryCount { get; set; }
+
+    public string? IneligibilityReason { get; set; }
+
+    public int? NextThreshold { get; set; }
 }
 
 public sealed class UserRatingDto
@@ -141,7 +169,12 @@ public sealed class ParkRatingRankingDto
 
     public string ParkName { get; set; } = string.Empty;
 
+    /// <summary>Alias historique du nombre d'observations retenues dans le score composé du parc.</summary>
     public long RatingCount { get; set; }
+
+    public long RatingObservationCount { get; set; }
+
+    public long? UniqueContributorCount { get; set; }
 
     public double Score { get; set; }
 
@@ -152,6 +185,10 @@ public sealed class ParkRatingRankingDto
     public long ItemsRatingCount { get; set; }
 
     public double ItemsAverageRating { get; set; }
+
+    public RankingEvidenceDto? Evidence { get; set; }
+
+    public string? MethodologyVersion { get; set; }
 
     public IReadOnlyCollection<ParkRatingRankingCategoryDto> Categories { get; set; } = Array.Empty<ParkRatingRankingCategoryDto>();
 }
@@ -172,11 +209,20 @@ public sealed class ParkItemRatingRankingDto
 
     public string? ParkItemType { get; set; }
 
+    /// <summary>Alias historique du nombre d'observations retenues pour cet élément.</summary>
     public long RatingCount { get; set; }
+
+    public long RatingObservationCount { get; set; }
+
+    public long? UniqueContributorCount { get; set; }
 
     public double AverageRating { get; set; }
 
     public double BayesianScore { get; set; }
+
+    public RankingEvidenceDto? Evidence { get; set; }
+
+    public string? MethodologyVersion { get; set; }
 }
 
 public sealed class UserParkRatingRankingCategoryDto
