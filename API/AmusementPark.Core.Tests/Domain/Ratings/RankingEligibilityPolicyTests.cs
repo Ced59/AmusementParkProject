@@ -5,18 +5,18 @@ namespace AmusementPark.Core.Tests.Domain.Ratings;
 
 public sealed class RankingEligibilityPolicyTests
 {
-    public static TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?> EvidenceBoundaries => new TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?>
+    public static TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?, int?> EvidenceBoundaries => new TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?, int?>
     {
-        { 0, RankingEvidenceLevel.NoEvidence, false, RankingIneligibilityReason.NoRatings },
-        { 1, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 2, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 3, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 9, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 10, RankingEvidenceLevel.Eligible, true, null },
-        { 29, RankingEvidenceLevel.Eligible, true, null },
-        { 30, RankingEvidenceLevel.Established, true, null },
-        { 99, RankingEvidenceLevel.Established, true, null },
-        { 100, RankingEvidenceLevel.StrongEvidence, true, null },
+        { 0, RankingEvidenceLevel.NoEvidence, false, RankingIneligibilityReason.NoRatings, 3 },
+        { 1, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors, 3 },
+        { 2, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors, 3 },
+        { 3, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors, 10 },
+        { 9, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors, 10 },
+        { 10, RankingEvidenceLevel.Eligible, true, null, 30 },
+        { 29, RankingEvidenceLevel.Eligible, true, null, 30 },
+        { 30, RankingEvidenceLevel.Established, true, null, 100 },
+        { 99, RankingEvidenceLevel.Established, true, null, 100 },
+        { 100, RankingEvidenceLevel.StrongEvidence, true, null, null },
     };
 
     [Theory]
@@ -25,7 +25,8 @@ public sealed class RankingEligibilityPolicyTests
         int contributorCount,
         RankingEvidenceLevel expectedLevel,
         bool expectedEligibility,
-        RankingIneligibilityReason? expectedReason)
+        RankingIneligibilityReason? expectedReason,
+        int? expectedNextContributorThreshold)
     {
         RankingEligibilityPolicy policy = RankingEligibilityPolicy.Initial;
         SimpleRankingEvidenceInput input = CreateSimpleInput(contributorCount, contributorCount);
@@ -35,6 +36,7 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Equal(expectedLevel, evidence.Level);
         Assert.Equal(expectedEligibility, evidence.IsEligibleForMainRanking);
         Assert.Equal(expectedReason, evidence.IneligibilityReason);
+        Assert.Equal(expectedNextContributorThreshold, evidence.NextContributorThreshold);
         Assert.Equal(contributorCount, evidence.UniqueContributorCount);
         Assert.Equal(contributorCount, evidence.RatingObservationCount);
         Assert.Equal(policy.Version, evidence.MethodologyVersion);
@@ -64,15 +66,21 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Equal(RankingEvidenceLevel.Excluded, evidence.Level);
         Assert.False(evidence.IsEligibleForMainRanking);
         Assert.Equal(expectedReason, evidence.IneligibilityReason);
+        Assert.Null(evidence.NextContributorThreshold);
     }
 
     [Fact]
-    public void EvaluateSimpleTarget_WhenObservationsExceedContributors_ShouldRejectDuplicateOrTemporalInput()
+    public void EvaluateSimpleTarget_WhenObservationsExceedContributors_ShouldExcludeInvalidAggregate()
     {
         SimpleRankingEvidenceInput input = CreateSimpleInput(10, 16);
 
-        Assert.Throws<ArgumentException>(
-            () => RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input));
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input);
+
+        Assert.Equal(RankingEvidenceLevel.Excluded, evidence.Level);
+        Assert.False(evidence.IsEligibleForMainRanking);
+        Assert.Equal(RankingIneligibilityReason.AggregateIntegrityFailure, evidence.IneligibilityReason);
+        Assert.Equal(10, evidence.UniqueContributorCount);
+        Assert.Equal(16, evidence.RatingObservationCount);
     }
 
     [Theory]
@@ -87,6 +95,17 @@ public sealed class RankingEligibilityPolicyTests
 
         Assert.ThrowsAny<ArgumentException>(
             () => RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input));
+    }
+
+    [Fact]
+    public void TryEvaluateSimpleTarget_WhenContributorsExceedObservations_ShouldFailSafely()
+    {
+        SimpleRankingEvidenceInput input = CreateSimpleInput(2, 1);
+
+        bool result = RankingEligibilityPolicy.Initial.TryEvaluateSimpleTarget(input, out RankingEvidence? evidence);
+
+        Assert.False(result);
+        Assert.Null(evidence);
     }
 
     [Fact]
@@ -324,6 +343,41 @@ public sealed class RankingEligibilityPolicyTests
 
         Assert.Throws<ArgumentException>(
             () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
+    }
+
+    [Fact]
+    public void TryEvaluatePark_WhenInputViolatesDomainInvariants_ShouldReturnFalseWithoutEvidence()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 0,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        bool wasEvaluated = RankingEligibilityPolicy.Initial.TryEvaluatePark(
+            input,
+            out RankingEvidence? evidence);
+
+        Assert.False(wasEvaluated);
+        Assert.Null(evidence);
+    }
+
+    [Fact]
+    public void TryEvaluatePark_WhenInputIsValid_ShouldReturnTheDomainVerdict()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 10,
+            directContributorCount: 10,
+            itemContributorCount: 0,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        bool wasEvaluated = RankingEligibilityPolicy.Initial.TryEvaluatePark(
+            input,
+            out RankingEvidence? evidence);
+
+        Assert.True(wasEvaluated);
+        Assert.Equal(RankingEvidenceLevel.Eligible, evidence?.Level);
+        Assert.True(evidence?.IsEligibleForMainRanking);
     }
 
     [Fact]

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.35",
+  "version": "4.2.36",
   "history": [
+    {
+      "version": "4.2.36",
+      "releasedAt": "2026-08-31",
+      "labels": {
+        "fr": "La fiabilité des classements progresse grâce à des comptages plus précis.",
+        "en": "Ranking reliability improves with more precise participation counts.",
+        "de": "Präzisere Beteiligungszahlen verbessern die Verlässlichkeit der Ranglisten.",
+        "nl": "Nauwkeurigere deelnametellingen maken de ranglijsten betrouwbaarder.",
+        "it": "Conteggi di partecipazione più precisi rendono le classifiche più affidabili.",
+        "es": "Unos recuentos de participación más precisos mejoran la fiabilidad de las clasificaciones.",
+        "pl": "Dokładniejsze zliczanie uczestników zwiększa wiarygodność rankingów.",
+        "pt": "Contagens de participação mais precisas aumentam a fiabilidade das classificações."
+      }
+    },
     {
       "version": "4.2.35",
       "releasedAt": "2026-08-31",

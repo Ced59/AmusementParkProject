@@ -148,7 +148,16 @@ public sealed record RatingRankingItemResult(
     long RatingCount,
     double RatingSum,
     double AverageRating,
-    double BayesianScore);
+    double BayesianScore)
+{
+    public long? UniqueContributorCount { get; init; }
+
+    public bool? AggregateIntegrityIsValid { get; init; }
+}
+
+public sealed record RatingRankingSourceBatch(
+    IReadOnlyCollection<RatingRankingItemResult> Sources,
+    bool IsTruncated);
 
 public sealed record ParkRatingRankingItemResult(
     string TargetId,

@@ -19,6 +19,13 @@ public sealed class RatingDiagnosticsReaderTests
                 true);
 
         Assert.Equal(4, pipeline.Count);
+        Assert.Contains(
+            "$trim",
+            pipeline.First()["$set"]["_diagnosticUserText"].ToJson(),
+            StringComparison.Ordinal);
+        Assert.Equal(
+            RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"),
+            pipeline.ElementAt(2)["$set"]["_diagnosticIsExactHalfStep"].AsBsonDocument);
         BsonDocument facet = pipeline.Last()["$facet"].AsBsonDocument;
         Assert.True(facet.Contains("summary"));
         Assert.True(facet.Contains("duplicates"));
@@ -82,6 +89,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 1,
             sourceRatingSum: 8d,
             aggregateRatingCount: 2,
+            aggregateUniqueContributorCount: 2,
             aggregateRatingSum: 8d,
             aggregateAverageRating: 4d,
             aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
@@ -97,7 +105,7 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
-    public void BuildUserRatingsDiagnosticPipeline_WithMalformedValues_ShouldKeepEveryStoredSourceInIntegrityChecks()
+    public void BuildUserRatingsDiagnosticPipeline_WithMalformedValues_ShouldKeepOnlyCanonicalSourcesInIntegrityChecks()
     {
         IReadOnlyCollection<BsonDocument> pipeline =
             RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
@@ -113,8 +121,8 @@ public sealed class RatingDiagnosticsReaderTests
             targetGroup["sourceContributorIds"]["$addToSet"].AsBsonDocument;
 
         Assert.True(integrityMatch["_diagnosticHasTarget"].AsBoolean);
-        Assert.False(integrityMatch.Contains("_diagnosticHasUser"));
-        Assert.False(integrityMatch.Contains("_diagnosticIsExactHalfStep"));
+        Assert.True(integrityMatch["_diagnosticHasUser"].AsBoolean);
+        Assert.True(integrityMatch["_diagnosticIsExactHalfStep"].AsBoolean);
         Assert.Equal("$_diagnosticNumericValue", targetGroup["sourceRatingSum"]["$sum"].AsString);
         Assert.Contains("$_diagnosticHasUser", contributorExpression.ToJson(), StringComparison.Ordinal);
     }
@@ -152,6 +160,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 2,
             sourceRatingSum: 8d,
             aggregateRatingCount: 2,
+            aggregateUniqueContributorCount: 2,
             aggregateRatingSum: 8d,
             aggregateAverageRating: 3.75d,
             aggregateBayesianScore: RatingScoreCalculator.CalculateBayesianScore(8d, 2));
@@ -168,7 +177,7 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Theory]
-    [InlineData("ratingSum", false)]
+    [InlineData("ratingSum", true)]
     [InlineData("averageRating", true)]
     [InlineData("bayesianScore", true)]
     public void EvaluateAggregateIntegrity_WhenNanSourceHasMissingAggregateDouble_ShouldExposeTheDivergence(
@@ -180,6 +189,7 @@ public sealed class RatingDiagnosticsReaderTests
             sourceUniqueContributorCount: 1,
             sourceRatingSum: double.NaN,
             aggregateRatingCount: 1,
+            aggregateUniqueContributorCount: 1,
             aggregateRatingSum: double.NaN,
             aggregateAverageRating: double.NaN,
             aggregateBayesianScore: double.NaN);
@@ -499,6 +509,7 @@ public sealed class RatingDiagnosticsReaderTests
         long sourceUniqueContributorCount,
         double sourceRatingSum,
         long aggregateRatingCount,
+        long aggregateUniqueContributorCount,
         double aggregateRatingSum,
         double aggregateAverageRating,
         double aggregateBayesianScore)
@@ -516,6 +527,7 @@ public sealed class RatingDiagnosticsReaderTests
                     new BsonDocument
                     {
                         { "ratingCount", aggregateRatingCount },
+                        { "uniqueContributorCount", aggregateUniqueContributorCount },
                         { "ratingSum", aggregateRatingSum },
                         { "averageRating", aggregateAverageRating },
                         { "bayesianScore", aggregateBayesianScore },

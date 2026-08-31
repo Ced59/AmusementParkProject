@@ -80,17 +80,13 @@ public sealed class RankingEligibilityPolicy
     {
         ArgumentNullException.ThrowIfNull(input);
         ValidateObservationCounts(input.UniqueContributorCount, input.RatingObservationCount);
-        if (input.RatingObservationCount != input.UniqueContributorCount)
-        {
-            throw new ArgumentException(
-                "A simple target requires exactly one current observation per unique contributor.",
-                nameof(input));
-        }
+        bool aggregateIntegrityIsValid = input.AggregateIntegrityIsValid
+            && input.RatingObservationCount == input.UniqueContributorCount;
 
         RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
             input.TargetCanReceiveVisitorRatings,
             input.IsExcludedByModeration,
-            input.AggregateIntegrityIsValid);
+            aggregateIntegrityIsValid);
         if (exclusionReason.HasValue)
         {
             return this.CreateSimpleEvidence(input, RankingEvidenceLevel.Excluded, false, exclusionReason);
@@ -103,6 +99,31 @@ public sealed class RankingEligibilityPolicy
         RankingIneligibilityReason? ineligibilityReason = ResolveVolumeIneligibilityReason(level);
 
         return this.CreateSimpleEvidence(input, level, isEligible, ineligibilityReason);
+    }
+
+    public bool TryEvaluateSimpleTarget(SimpleRankingEvidenceInput? input, out RankingEvidence? evidence)
+    {
+        if (input is null)
+        {
+            evidence = null;
+            return false;
+        }
+
+        try
+        {
+            evidence = this.EvaluateSimpleTarget(input);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            evidence = null;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            evidence = null;
+            return false;
+        }
     }
 
     public RankingEvidence EvaluatePark(ParkRankingEvidenceInput input)
@@ -169,6 +190,31 @@ public sealed class RankingEligibilityPolicy
             level,
             true,
             null);
+    }
+
+    public bool TryEvaluatePark(ParkRankingEvidenceInput? input, out RankingEvidence? evidence)
+    {
+        if (input is null)
+        {
+            evidence = null;
+            return false;
+        }
+
+        try
+        {
+            evidence = this.EvaluatePark(input);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            evidence = null;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            evidence = null;
+            return false;
+        }
     }
 
     public ParkItemComponentEligibility EvaluateParkItemComponent(ParkRankingEvidenceInput input)
@@ -405,7 +451,7 @@ public sealed class RankingEligibilityPolicy
         bool isEligible,
         RankingIneligibilityReason? ineligibilityReason)
     {
-        return new RankingEvidence(
+        RankingEvidence evidence = new RankingEvidence(
             level,
             isEligible,
             input.UniqueContributorCount,
@@ -416,6 +462,8 @@ public sealed class RankingEligibilityPolicy
             null,
             this.Version,
             ineligibilityReason);
+
+        return evidence with { NextContributorThreshold = this.ResolveNextContributorThreshold(level) };
     }
 
     private RankingEvidence CreateParkEvidence(
@@ -427,7 +475,7 @@ public sealed class RankingEligibilityPolicy
         bool isEligible,
         RankingIneligibilityReason? ineligibilityReason)
     {
-        return new RankingEvidence(
+        RankingEvidence evidence = new RankingEvidence(
             level,
             isEligible,
             activeContributorCount,
@@ -438,6 +486,21 @@ public sealed class RankingEligibilityPolicy
             itemComponent.EligibleCategoryCount,
             this.Version,
             ineligibilityReason);
+
+        return evidence with { NextContributorThreshold = this.ResolveNextContributorThreshold(level) };
+    }
+
+    private int? ResolveNextContributorThreshold(RankingEvidenceLevel level)
+    {
+        return level switch
+        {
+            RankingEvidenceLevel.NoEvidence or RankingEvidenceLevel.Insufficient =>
+                this.ProvisionalMinUniqueContributors,
+            RankingEvidenceLevel.Provisional => this.EligibleMinUniqueContributors,
+            RankingEvidenceLevel.Eligible => this.EstablishedMinUniqueContributors,
+            RankingEvidenceLevel.Established => this.StrongEvidenceMinUniqueContributors,
+            _ => null,
+        };
     }
 
     private static RankingIneligibilityReason? ResolveExclusionReason(

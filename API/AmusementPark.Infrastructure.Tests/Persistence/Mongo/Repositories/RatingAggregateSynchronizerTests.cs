@@ -82,6 +82,7 @@ public sealed class RatingAggregateSynchronizerTests
             target,
             8,
             2,
+            2,
             9d,
             4.5d,
             4.2d,
@@ -100,10 +101,29 @@ public sealed class RatingAggregateSynchronizerTests
         Assert.Equal("Restaurant", publishedSnapshot["parkItemCategory"].AsString);
         Assert.Equal("Restaurant", publishedSnapshot["parkItemType"].AsString);
         Assert.Equal(2, publishedSnapshot["ratingCount"].ToInt64());
+        Assert.Equal(2, publishedSnapshot["uniqueContributorCount"].ToInt64());
         BsonDocument clearedPendingMetadata = renderedUpdate["$unset"].AsBsonDocument;
         Assert.True(clearedPendingMetadata.Contains("pendingParkId"));
         Assert.True(clearedPendingMetadata.Contains("pendingParkItemCategory"));
         Assert.True(clearedPendingMetadata.Contains("pendingParkItemType"));
+    }
+
+    [Fact]
+    public void AggregateSourceStages_ShouldFilterInvalidRatingsAndDeduplicateUserIds()
+    {
+        BsonDocument matchStage = RatingAggregateSynchronizer.BuildValidRatingSourceMatchStage();
+        BsonDocument contributorGroupStage = RatingAggregateSynchronizer.BuildPerContributorGroupStage();
+        BsonDocument groupStage = RatingAggregateSynchronizer.BuildAggregateValuesGroupStage();
+
+        Assert.Contains("$isNumber", matchStage.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$mod", matchStage.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$convert", matchStage.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$userId", matchStage.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$trim", contributorGroupStage["$group"]["_id"].ToJson(), StringComparison.Ordinal);
+        Assert.Contains("$userId", contributorGroupStage["$group"]["_id"].ToJson(), StringComparison.Ordinal);
+        Assert.Equal(1, contributorGroupStage["$group"]["observationCount"]["$sum"].AsInt32);
+        Assert.Equal("$observationCount", groupStage["$group"]["count"]["$sum"].AsString);
+        Assert.Equal(1, groupStage["$group"]["uniqueContributorCount"]["$sum"].AsInt32);
     }
 
     [Fact]

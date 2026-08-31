@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -94,7 +95,12 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             aggregateTarget,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(metadata.TargetType, metadata.TargetId, mutation.Aggregate);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(
+            metadata.TargetType,
+            metadata.TargetId,
+            mutation.Aggregate,
+            metadata.CanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: mutation.Aggregate is null ? false : null);
 
         return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(mutation.Rating, summary));
     }
@@ -120,13 +126,19 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
 {
     private readonly IRatingRepository ratingRepository;
     private readonly IRatingRankProvider ratingRankProvider;
+    private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
 
     public DeleteUserRatingCommandHandler(
         IRatingRepository ratingRepository,
-        IRatingRankProvider ratingRankProvider)
+        IRatingRankProvider ratingRankProvider,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository)
     {
         this.ratingRepository = ratingRepository;
         this.ratingRankProvider = ratingRankProvider;
+        this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
     }
 
     public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(
@@ -150,6 +162,12 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
 
         string userId = command.UserId.Trim();
         string targetId = command.TargetId.Trim();
+        RatingTargetMetadataResult? metadata = await RatingTargetMetadataResolver.ResolveAsync(
+            command.TargetType,
+            targetId,
+            this.parkRepository,
+            this.parkItemRepository,
+            cancellationToken);
         RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,
             command.TargetType,
@@ -157,26 +175,13 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             cancellationToken);
         this.ratingRankProvider.Invalidate();
 
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(command.TargetType, targetId, aggregate);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(
+            command.TargetType,
+            targetId,
+            aggregate,
+            metadata?.CanReceiveVisitorRatings ?? false,
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
-    }
-}
-
-internal static class RatingResultFactory
-{
-    public static RatingSummaryResult CreateSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
-    {
-        if (aggregate is null)
-        {
-            return new RatingSummaryResult(targetType, targetId, 0, 0d, RatingScoreCalculator.PriorMean);
-        }
-
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
     }
 }
 
@@ -229,7 +234,12 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
         }
 
         RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, targetId, cancellationToken);
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, targetId, aggregate);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(
+            query.TargetType,
+            targetId,
+            aggregate,
+            metadata.CanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
         if (aggregate is not null && aggregate.RatingCount > 0)
         {
             int? rank = await this.ratingRankProvider.GetRankAsync(aggregate, cancellationToken);
@@ -303,10 +313,17 @@ internal static class RatingTargetMetadataResolver
 public sealed class GetUserRatingQueryHandler : IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>>
 {
     private readonly IRatingRepository ratingRepository;
+    private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
 
-    public GetUserRatingQueryHandler(IRatingRepository ratingRepository)
+    public GetUserRatingQueryHandler(
+        IRatingRepository ratingRepository,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository)
     {
         this.ratingRepository = ratingRepository;
+        this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
     }
 
     public async Task<ApplicationResult<UserRatingResult?>> HandleAsync(GetUserRatingQuery query, CancellationToken cancellationToken = default)
@@ -332,8 +349,23 @@ public sealed class GetUserRatingQueryHandler : IQueryHandler<GetUserRatingQuery
             return ApplicationResult<UserRatingResult?>.Success(null);
         }
 
-        RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, query.TargetId.Trim(), cancellationToken);
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, query.TargetId.Trim(), aggregate);
+        string targetId = query.TargetId.Trim();
+        RatingTargetMetadataResult? metadata = await RatingTargetMetadataResolver.ResolveAsync(
+            query.TargetType,
+            targetId,
+            this.parkRepository,
+            this.parkItemRepository,
+            cancellationToken);
+        RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(
+            query.TargetType,
+            targetId,
+            cancellationToken);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(
+            query.TargetType,
+            targetId,
+            aggregate,
+            metadata?.CanReceiveVisitorRatings ?? false,
+            aggregateIntegrityIsValid: aggregate is null ? false : null);
 
         UserRatingResult result = new UserRatingResult(
             rating.Id,

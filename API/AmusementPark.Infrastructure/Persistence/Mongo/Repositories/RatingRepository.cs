@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -21,6 +22,7 @@ public sealed class RatingRepository : IRatingRepository
     private readonly IMongoCollection<ParkDocument> parksCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
     private readonly RatingAggregateSynchronizer aggregateSynchronizer;
+    private readonly RatingAggregateSourceReader aggregateSourceReader;
 
     public RatingRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -31,6 +33,7 @@ public sealed class RatingRepository : IRatingRepository
         this.aggregateSynchronizer = new RatingAggregateSynchronizer(
             this.userRatingsCollection,
             this.ratingAggregatesCollection);
+        this.aggregateSourceReader = new RatingAggregateSourceReader(this.userRatingsCollection);
     }
 
     public async Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
@@ -83,7 +86,19 @@ public sealed class RatingRepository : IRatingRepository
         FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId)
             & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
         RatingAggregateDocument? document = await this.ratingAggregatesCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
-        return document?.ToDomain();
+        if (document is null)
+        {
+            return null;
+        }
+
+        RatingAggregate aggregate = document.ToDomain();
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
+            new[] { new RatingAggregateSourceTarget(targetType, targetId) },
+            cancellationToken);
+        aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
+            aggregate,
+            sourceFacts.SingleOrDefault());
+        return aggregate;
     }
 
     private async Task<UserRating> UpsertUserRatingDocumentAsync(UserRating rating, CancellationToken cancellationToken)
@@ -150,9 +165,19 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<IReadOnlyCollection<UserRatingListItemResult>> EnrichUserRatingsAsync(IReadOnlyCollection<UserRatingDocument> documents, CancellationToken cancellationToken)
     {
-        IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(documents.Select(static document => document.ParkId), false, cancellationToken);
+        List<string> parkTargetIds = documents
+            .Where(static document => document.TargetType == RatingTargetType.Park)
+            .Select(static document => document.TargetId)
+            .ToList();
         IReadOnlyDictionary<string, ParkItemDocument> parkItems = await this.LoadParkItemsAsync(
             documents.Where(static document => document.TargetType == RatingTargetType.ParkItem).Select(static document => document.TargetId),
+            false,
+            cancellationToken);
+        Dictionary<string, ParkDocument> parks = await this.LoadParkDocumentsAsync(
+            documents
+                .Select(static document => document.ParkId)
+                .Concat(parkTargetIds)
+                .Concat(parkItems.Values.Select(static parkItem => parkItem.ParkId)),
             false,
             cancellationToken);
         IReadOnlyDictionary<string, RatingAggregate> aggregates = await this.LoadAggregatesAsync(documents, cancellationToken);
@@ -161,8 +186,15 @@ public sealed class RatingRepository : IRatingRepository
         {
             string key = BuildTargetKey(document.TargetType, document.TargetId);
             aggregates.TryGetValue(key, out RatingAggregate? aggregate);
-            RatingSummaryResult summary = ToSummary(document.TargetType, document.TargetId, aggregate);
-            string? parkName = parkNames.TryGetValue(document.ParkId, out string? resolvedParkName) ? resolvedParkName : null;
+            bool targetCanReceiveVisitorRatings = CanTargetReceiveVisitorRatings(document, parks, parkItems);
+            RatingSummaryResult summary = ToSummary(
+                document.TargetType,
+                document.TargetId,
+                aggregate,
+                targetCanReceiveVisitorRatings);
+            string? parkName = parks.TryGetValue(document.ParkId, out ParkDocument? park)
+                ? park.Name?.Trim() ?? park.Id
+                : null;
             string targetName = ResolveTargetName(document, parkName, parkItems);
 
             return new UserRatingListItemResult(
@@ -256,25 +288,40 @@ public sealed class RatingRepository : IRatingRepository
             byParkItemCategory);
     }
 
-    public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleRankingSourcesAsync(ParkItemCategory? parkItemCategory, int maxItems, CancellationToken cancellationToken)
+    public async Task<RatingRankingSourceBatch> GetVisibleRankingSourcesAsync(
+        ParkItemCategory? parkItemCategory,
+        int maxItems,
+        CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
         List<RatingAggregateDocument> parkDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingParkFilter())
             .Sort(BuildRankingSort())
-            .Limit(RankingCandidateHardLimit)
+            .Limit(RankingCandidateHardLimit + 1)
             .ToListAsync(cancellationToken);
         List<RatingAggregateDocument> parkItemDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingItemFilter(parkItemCategory))
             .Sort(BuildRankingSort())
-            .Limit(effectiveMaxItems)
+            .Limit(effectiveMaxItems + 1)
             .ToListAsync(cancellationToken);
-        List<RatingAggregateDocument> candidateDocuments = parkDocuments.Concat(parkItemDocuments).ToList();
+        bool isTruncated = IsVisibleRankingSourceSetTruncated(
+            parkDocuments.Count,
+            parkItemDocuments.Count,
+            effectiveMaxItems);
+        List<RatingAggregateDocument> candidateDocuments = parkDocuments
+            .Take(RankingCandidateHardLimit)
+            .Concat(parkItemDocuments.Take(effectiveMaxItems))
+            .ToList();
 
         if (candidateDocuments.Count == 0)
         {
-            return Array.Empty<RatingRankingItemResult>();
+            return new RatingRankingSourceBatch(
+                Array.Empty<RatingRankingItemResult>(),
+                isTruncated);
         }
 
-        return await this.EnrichVisibleRankingSourcesAsync(candidateDocuments, cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> sources = await this.EnrichVisibleRankingSourcesAsync(
+            candidateDocuments,
+            cancellationToken);
+        return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
     public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
@@ -436,7 +483,11 @@ public sealed class RatingRepository : IRatingRepository
                     document.RatingCount,
                     document.RatingSum,
                     document.AverageRating,
-                    document.BayesianScore));
+                    document.BayesianScore)
+                {
+                    UniqueContributorCount = document.UniqueContributorCount,
+                    AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
+                });
                 continue;
             }
 
@@ -469,7 +520,11 @@ public sealed class RatingRepository : IRatingRepository
                 document.RatingCount,
                 document.RatingSum,
                 document.AverageRating,
-                document.BayesianScore));
+                document.BayesianScore)
+            {
+                UniqueContributorCount = document.UniqueContributorCount,
+                AggregateIntegrityIsValid = IsAggregateCalculationCurrent(document),
+            });
         }
 
         return items;
@@ -496,10 +551,31 @@ public sealed class RatingRepository : IRatingRepository
             Builders<RatingAggregateDocument>.Filter.Or(filters)
             & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
         List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(aggregateFilter).ToListAsync(cancellationToken);
-        return documents.ToDictionary(
-            static document => BuildTargetKey(document.TargetType, document.TargetId),
-            static document => document.ToDomain(),
-            StringComparer.Ordinal);
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
+            documents.Select(static document => new RatingAggregateSourceTarget(
+                    document.TargetType,
+                    document.TargetId))
+                .ToList(),
+            cancellationToken);
+        IReadOnlyDictionary<string, RatingAggregateSourceFact> sourceFactsByTarget = sourceFacts
+            .GroupBy(
+                static fact => BuildTargetKey(fact.TargetType, fact.TargetId),
+                StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+        Dictionary<string, RatingAggregate> aggregates = new Dictionary<string, RatingAggregate>(StringComparer.Ordinal);
+        foreach (RatingAggregateDocument document in documents)
+        {
+            string key = BuildTargetKey(document.TargetType, document.TargetId);
+            RatingAggregate aggregate = document.ToDomain();
+            sourceFactsByTarget.TryGetValue(key, out RatingAggregateSourceFact? sourceFact);
+            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
+                aggregate,
+                sourceFact);
+            aggregates[key] = aggregate;
+        }
+
+        return aggregates;
     }
 
     private async Task<IReadOnlyDictionary<string, string>> LoadParkNamesAsync(IEnumerable<string> parkIds, bool visibleOnly, CancellationToken cancellationToken)
@@ -638,19 +714,53 @@ public sealed class RatingRepository : IRatingRepository
             .Ascending(document => document.TargetId);
     }
 
-    private static RatingSummaryResult ToSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
+    internal static bool CanTargetReceiveVisitorRatings(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkDocument> parks,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems)
     {
-        if (aggregate is null)
+        if (document.TargetType == RatingTargetType.Park)
         {
-            return new RatingSummaryResult(targetType, targetId, 0, 0d, RatingScoreCalculator.PriorMean);
+            return parks.TryGetValue(document.TargetId, out ParkDocument? park)
+                && park.Status.CanReceiveVisitorRatings();
         }
 
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
+        return parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            && parks.TryGetValue(parkItem.ParkId, out ParkDocument? parentPark)
+            && parentPark.Status.CanReceiveVisitorRatings()
+            && ParkItemStatusNormalizer.CanReceiveVisitorRatings(
+                parkItem.Category,
+                parkItem.AttractionDetails?.Status);
+    }
+
+    internal static bool IsVisibleRankingSourceSetTruncated(
+        int parkDocumentCount,
+        int parkItemDocumentCount,
+        int parkItemLimit)
+    {
+        return parkDocumentCount > RankingCandidateHardLimit
+            || parkItemDocumentCount > parkItemLimit;
+    }
+
+    private static bool IsAggregateCalculationCurrent(RatingAggregateDocument document)
+    {
+        return RatingAggregate.IsCalculationCurrentForVersions(
+            document.MutationVersion,
+            document.CalculatedVersion);
+    }
+
+    private static RatingSummaryResult ToSummary(
+        RatingTargetType targetType,
+        string targetId,
+        RatingAggregate? aggregate,
+        bool targetCanReceiveVisitorRatings)
+    {
+        return RatingResultFactory.CreateSummary(
+            targetType,
+            targetId,
+            aggregate,
+            targetCanReceiveVisitorRatings,
+            aggregateIntegrityIsValid: aggregate is null ? false : null);
     }
 
     private static string ResolveTargetName(UserRatingDocument document, string? parkName, IReadOnlyDictionary<string, ParkItemDocument> parkItems)

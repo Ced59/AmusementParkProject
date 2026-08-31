@@ -14,11 +14,16 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
     private const int RankingSourceLimit = 5000;
 
     private readonly IRatingRepository ratingRepository;
+    private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
 
-    public GetRatingRankingsQueryHandler(IRatingRepository ratingRepository, PagedQueryValidator pagedQueryValidator)
+    public GetRatingRankingsQueryHandler(
+        IRatingRepository ratingRepository,
+        IRatingEvidenceReader ratingEvidenceReader,
+        PagedQueryValidator pagedQueryValidator)
     {
         this.ratingRepository = ratingRepository;
+        this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
     }
 
@@ -30,15 +35,44 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
             return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Failure(errors);
         }
 
-        IReadOnlyCollection<RatingRankingItemResult> sources = await this.ratingRepository.GetVisibleRankingSourcesAsync(
+        RatingRankingSourceBatch sourceBatch = await this.ratingRepository.GetVisibleRankingSourcesAsync(
             query.ParkItemCategory,
             RankingSourceLimit,
             cancellationToken);
-
-        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(sources, query.ParkItemCategory);
+        IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
+        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(
+            sources,
+            query.ParkItemCategory);
         PagedResult<ParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
             ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
             : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
+        if (result.Items.Count > 0 && !sourceBatch.IsTruncated)
+        {
+            HashSet<string> resultParkIds = result.Items
+                .Select(static ranking => ranking.ParkId)
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<RatingRankingItemResult> resultSources = sources
+                .Where(source => resultParkIds.Contains(source.ParkId))
+                .ToList();
+            ParkRankingEvidenceFactsBatch evidenceFacts = await this.ratingEvidenceReader.ReadParkRankingFactsAsync(
+                resultSources.Select(static source => new RatingEvidenceTarget(
+                        source.TargetType,
+                        source.TargetId,
+                        source.ParkId))
+                    .Distinct()
+                    .ToList(),
+                cancellationToken);
+            IReadOnlyCollection<ParkRatingRankingResult> enrichedItems = RatingRankingFactory.ApplyParkEvidence(
+                result.Items,
+                resultSources,
+                evidenceFacts,
+                query.ParkItemCategory);
+            result = new PagedResult<ParkRatingRankingResult>(
+                enrichedItems,
+                result.Page,
+                result.PageSize,
+                result.TotalItems);
+        }
 
         return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Success(result);
     }
@@ -70,13 +104,16 @@ public sealed class GetParkItemRatingRankingsQueryHandler
     private const int RankingSourceLimit = 5000;
 
     private readonly IRatingRepository ratingRepository;
+    private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
 
     public GetParkItemRatingRankingsQueryHandler(
         IRatingRepository ratingRepository,
+        IRatingEvidenceReader ratingEvidenceReader,
         PagedQueryValidator pagedQueryValidator)
     {
         this.ratingRepository = ratingRepository;
+        this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
     }
 
@@ -113,6 +150,30 @@ public sealed class GetParkItemRatingRankingsQueryHandler
             filteredRankings,
             query.Paging.Page,
             query.Paging.PageSize);
+        if (result.Items.Count > 0)
+        {
+            HashSet<string> resultTargetIds = result.Items
+                .Select(static ranking => ranking.TargetId)
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<RatingRankingItemResult> resultSources = sources
+                .Where(source => resultTargetIds.Contains(source.TargetId))
+                .ToList();
+            IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts =
+                await this.ratingEvidenceReader.ReadAggregateSourceFactsAsync(
+                    resultSources.Select(static source => new RatingAggregateSourceTarget(
+                            source.TargetType,
+                            source.TargetId))
+                        .Distinct()
+                        .ToList(),
+                    cancellationToken);
+            IReadOnlyCollection<ParkItemRatingRankingResult> enrichedItems =
+                RatingRankingFactory.ApplyParkItemEvidence(result.Items, resultSources, sourceFacts);
+            result = new PagedResult<ParkItemRatingRankingResult>(
+                enrichedItems,
+                result.Page,
+                result.PageSize,
+                result.TotalItems);
+        }
 
         return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(result);
     }

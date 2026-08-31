@@ -44,6 +44,11 @@ public sealed class GetRatingSummaryQueryHandlerTests
         Assert.Equal(0, result.Value.RatingCount);
         Assert.Equal(0d, result.Value.AverageRating);
         Assert.Equal(RatingScoreCalculator.PriorMean, result.Value.BayesianScore);
+        Assert.Equal(RankingEvidenceLevel.NoEvidence, result.Value.Evidence?.Level);
+        Assert.Equal(0, result.Value.UniqueContributorCount);
+        Assert.Equal(0, result.Value.RatingObservationCount);
+        Assert.Equal(3, result.Value.Evidence?.NextThreshold);
+        Assert.Equal("ratings-2026-01", result.Value.MethodologyVersion?.ToString());
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
@@ -61,9 +66,13 @@ public sealed class GetRatingSummaryQueryHandlerTests
             ParkItemCategory = ParkItemCategory.Attraction,
             ParkItemType = ParkItemType.RollerCoaster,
             RatingCount = 12,
+            UniqueContributorCount = 12,
             RatingSum = 57,
             AverageRating = 4.75,
             BayesianScore = 4.42,
+            MutationVersion = 2,
+            CalculatedVersion = 2,
+            SourceIntegrityIsValid = true,
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
@@ -104,6 +113,10 @@ public sealed class GetRatingSummaryQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(2, result.Value!.Rank);
+        Assert.Equal(RankingEvidenceLevel.Eligible, result.Value.Evidence?.Level);
+        Assert.Equal(12, result.Value.UniqueContributorCount);
+        Assert.Equal(12, result.Value.RatingObservationCount);
+        Assert.Equal(30, result.Value.Evidence?.NextThreshold);
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();

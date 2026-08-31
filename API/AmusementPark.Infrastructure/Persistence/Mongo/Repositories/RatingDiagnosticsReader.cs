@@ -193,7 +193,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   { "$sort": { "_id.targetType": 1, "_id.evidenceBand": 1 } }
                 ],
                 "integrity": [
-                  { "$match": { "_diagnosticHasTarget": true } },
+                  { "$match": { "_diagnosticHasTarget": true, "_diagnosticHasUser": true, "_diagnosticIsExactHalfStep": true } },
                   {
                     "$group": {
                       "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText" },
@@ -231,6 +231,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                       "sourceRatingSum": 1,
                       "aggregateCount": 1,
                       "aggregate.ratingCount": 1,
+                      "aggregate.uniqueContributorCount": 1,
                       "aggregate.ratingSum": 1,
                       "aggregate.averageRating": 1,
                       "aggregate.bayesianScore": 1
@@ -252,6 +253,17 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
         facets["targetDistribution"].AsBsonArray[0] =
             BuildEligibleTargetMatch(eligibleParkIds, eligibleParkItemIds);
+        BsonDocument exactRatingValueStage = BsonDocument.Parse(
+            """
+            {
+              "$set": {
+                "_diagnosticIsExactHalfStep": false,
+                "_diagnosticHalfStepDistance": { "$cond": [ "$_diagnosticInRange", { "$abs": { "$subtract": [ "$_diagnosticNumericValue", { "$divide": [ { "$round": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 0 ] }, 2 ] } ] } }, null ] }
+              }
+            }
+            """);
+        exactRatingValueStage["$set"]["_diagnosticIsExactHalfStep"] =
+            RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value");
 
         return new[]
         {
@@ -262,7 +274,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                     "_diagnosticIsNumericValue": { "$isNumber": "$value" },
                     "_diagnosticNumericValue": { "$cond": [ { "$isNumber": "$value" }, "$value", null ] },
                     "_diagnosticValueType": { "$type": "$value" },
-                    "_diagnosticUserText": { "$cond": [ { "$eq": [ { "$type": "$userId" }, "string" ] }, "$userId", "" ] },
+                    "_diagnosticUserText": { "$cond": [ { "$eq": [ { "$type": "$userId" }, "string" ] }, { "$trim": { "input": "$userId" } }, "" ] },
                     "_diagnosticTargetText": { "$cond": [ { "$eq": [ { "$type": "$targetId" }, "string" ] }, "$targetId", "" ] },
                     "_diagnosticTargetType": { "$cond": [ { "$eq": [ { "$type": "$targetType" }, "string" ] }, "$targetType", "Unknown" ] }
                   }
@@ -278,15 +290,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   }
                 }
                 """),
-            BsonDocument.Parse(
-                """
-                {
-                  "$set": {
-                    "_diagnosticIsExactHalfStep": { "$cond": [ "$_diagnosticInRange", { "$eq": [ { "$mod": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 1 ] }, 0 ] }, false ] },
-                    "_diagnosticHalfStepDistance": { "$cond": [ "$_diagnosticInRange", { "$abs": { "$subtract": [ "$_diagnosticNumericValue", { "$divide": [ { "$round": [ { "$multiply": [ "$_diagnosticNumericValue", 2 ] }, 0 ] }, 2 ] } ] } }, null ] }
-                  }
-                }
-                """),
+            exactRatingValueStage,
             facetStage,
         };
     }
@@ -357,28 +361,43 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             long sourceUniqueContributorCount = ReadInt64(document, "sourceUniqueContributorCount");
             double sourceRatingSum = ReadDouble(document, "sourceRatingSum");
             bool hasAggregateRatingCount = TryReadInt64(aggregate, "ratingCount", out long aggregateRatingCount);
+            bool hasAggregateUniqueContributorCount = TryReadInt64(
+                aggregate,
+                "uniqueContributorCount",
+                out long aggregateUniqueContributorCount);
             bool hasAggregateRatingSum = TryReadDouble(aggregate, "ratingSum", out double aggregateRatingSum);
             bool hasAggregateAverage = TryReadDouble(aggregate, "averageRating", out double aggregateAverage);
             bool hasAggregateBayesianScore = TryReadDouble(
                 aggregate,
                 "bayesianScore",
                 out double aggregateBayesianScore);
+            bool contributorCountMismatch = !hasAggregateUniqueContributorCount
+                || sourceUniqueContributorCount != aggregateUniqueContributorCount;
+            bool sourceProjectionMismatch = !hasAggregateRatingCount
+                || !hasAggregateRatingSum
+                || sourceObservationCount != aggregateRatingCount
+                || !sourceRatingSum.Equals(aggregateRatingSum);
             double expectedAverage = RatingScoreCalculator.CalculateAverage(
                 sourceRatingSum,
                 sourceObservationCount);
             double expectedBayesianScore = RatingScoreCalculator.CalculateBayesianScore(
                 sourceRatingSum,
                 sourceObservationCount);
-            bool contributorCountMismatch = !hasAggregateRatingCount
-                || sourceUniqueContributorCount != aggregateRatingCount;
-            bool sourceProjectionMismatch = !hasAggregateRatingCount
-                || !hasAggregateRatingSum
-                || sourceObservationCount != aggregateRatingCount
-                || !sourceRatingSum.Equals(aggregateRatingSum);
             bool derivedScoreMismatch = !hasAggregateAverage
                 || !hasAggregateBayesianScore
+                || !double.IsFinite(expectedAverage)
+                || !double.IsFinite(expectedBayesianScore)
                 || !expectedAverage.Equals(aggregateAverage)
                 || !expectedBayesianScore.Equals(aggregateBayesianScore);
+            bool sourceProjectionIsValid = RatingAggregate.HasValidSourceProjection(
+                aggregateRatingCount,
+                hasAggregateUniqueContributorCount ? aggregateUniqueContributorCount : null,
+                aggregateRatingSum,
+                aggregateAverage,
+                aggregateBayesianScore,
+                sourceObservationCount,
+                sourceUniqueContributorCount,
+                sourceRatingSum);
 
             if (contributorCountMismatch)
             {
@@ -390,7 +409,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 derivedScoreMismatchCount++;
             }
 
-            if (contributorCountMismatch || sourceProjectionMismatch || derivedScoreMismatch)
+            if (contributorCountMismatch
+                || sourceProjectionMismatch
+                || derivedScoreMismatch
+                || !sourceProjectionIsValid)
             {
                 divergentAggregateCount++;
             }

@@ -13,7 +13,10 @@ public sealed record RankingEvidence(
     int? EligibleItemCount,
     int? EligibleCategoryCount,
     RatingMethodologyVersion MethodologyVersion,
-    RankingIneligibilityReason? IneligibilityReason);
+    RankingIneligibilityReason? IneligibilityReason)
+{
+    public int? NextContributorThreshold { get; init; }
+}
 
 /// <summary>
 /// Faits déjà collectés pour évaluer une cible simple.

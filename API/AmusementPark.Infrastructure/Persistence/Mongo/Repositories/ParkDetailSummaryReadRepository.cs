@@ -1,7 +1,9 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -29,6 +31,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     private readonly IMongoCollection<ParkFounderDocument> parkFoundersCollection;
     private readonly IMongoCollection<ParkOperatorDocument> parkOperatorsCollection;
     private readonly IMongoCollection<RatingAggregateDocument> ratingAggregatesCollection;
+    private readonly RatingAggregateSourceReader ratingAggregateSourceReader;
     private readonly IMongoCollection<ParkPricingDocument> parkPricingCollection;
     private readonly TimeProvider timeProvider;
 
@@ -41,6 +44,9 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         this.parkFoundersCollection = database.GetCollection<ParkFounderDocument>(settings.ParkFoundersCollectionName);
         this.parkOperatorsCollection = database.GetCollection<ParkOperatorDocument>(settings.ParkOperatorsCollectionName);
         this.ratingAggregatesCollection = database.GetCollection<RatingAggregateDocument>(settings.RatingAggregatesCollectionName);
+        IMongoCollection<UserRatingDocument> userRatingsCollection = database.GetCollection<UserRatingDocument>(
+            settings.UserRatingsCollectionName);
+        this.ratingAggregateSourceReader = new RatingAggregateSourceReader(userRatingsCollection);
         this.parkPricingCollection = database.GetCollection<ParkPricingDocument>(settings.ParkPricingCollectionName);
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -65,7 +71,10 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         Task<Image?> mainImageTask = this.GetMainImageAsync(parkDocument, cancellationToken);
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
         Task<string?> operatorNameTask = this.GetOperatorNameAsync(parkDocument.OperatorId, cancellationToken);
-        Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(parkDocument.Id, cancellationToken);
+        Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(
+            parkDocument.Id,
+            parkDocument.Status,
+            cancellationToken);
         Task<ParkPricingEntity?> pricingTask = this.GetPricingAsync(parkDocument.Id, cancellationToken);
 
         await Task.WhenAll(countsTask, zoneCountTask, mappableItemsCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask, pricingTask);
@@ -132,24 +141,44 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         return count > int.MaxValue ? int.MaxValue : checked((int)count);
     }
 
-    private async Task<RatingSummaryResult> GetRatingSummaryAsync(string parkId, CancellationToken cancellationToken)
+    private async Task<RatingSummaryResult> GetRatingSummaryAsync(
+        string parkId,
+        ParkStatus parkStatus,
+        CancellationToken cancellationToken)
     {
-        RatingAggregateDocument? aggregate = await this.ratingAggregatesCollection.Find(
+        Task<RatingAggregateDocument> aggregateTask = this.ratingAggregatesCollection.Find(
                 Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, RatingTargetType.Park)
                 & Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetId, parkId))
             .FirstOrDefaultAsync(cancellationToken);
+        Task<IReadOnlyCollection<RatingAggregateSourceFact>> sourceFactsTask =
+            this.ratingAggregateSourceReader.ReadAsync(
+                new[] { new RatingAggregateSourceTarget(RatingTargetType.Park, parkId) },
+                cancellationToken);
+        await Task.WhenAll(aggregateTask, sourceFactsTask);
 
-        if (aggregate is null)
+        RatingAggregateDocument? aggregateDocument = await aggregateTask;
+        RatingAggregate? aggregate = aggregateDocument?.ToDomain();
+        if (aggregate is not null)
         {
-            return new RatingSummaryResult(RatingTargetType.Park, parkId, 0, 0d, RatingScoreCalculator.PriorMean);
+            aggregate.SourceIntegrityIsValid = RatingAggregateSourceReader.TryVerifyAndHydrateProjection(
+                aggregate,
+                (await sourceFactsTask).SingleOrDefault());
         }
 
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
+        return BuildRatingSummary(parkId, parkStatus, aggregate);
+    }
+
+    internal static RatingSummaryResult BuildRatingSummary(
+        string parkId,
+        ParkStatus parkStatus,
+        RatingAggregate? aggregate)
+    {
+        return RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            parkId,
+            aggregate,
+            parkStatus.CanReceiveVisitorRatings(),
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
     }
 
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)

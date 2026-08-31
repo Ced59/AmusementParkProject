@@ -50,10 +50,13 @@ internal static partial class EntityMongoMappers
             ParkItemCategory = document.ParkItemCategory,
             ParkItemType = document.ParkItemType,
             RatingCount = document.RatingCount,
+            UniqueContributorCount = document.UniqueContributorCount,
             RatingSum = document.RatingSum,
             AverageRating = document.AverageRating,
             BayesianScore = document.BayesianScore,
             LastRatedAtUtc = document.LastRatedAtUtc,
+            MutationVersion = document.MutationVersion,
+            CalculatedVersion = document.CalculatedVersion,
             CreatedAtUtc = document.CreatedAt,
             UpdatedAtUtc = document.UpdatedAt,
         };
@@ -70,10 +73,15 @@ internal static partial class EntityMongoMappers
             ParkItemCategory = entity.ParkItemCategory,
             ParkItemType = entity.ParkItemType,
             RatingCount = entity.RatingCount,
+            UniqueContributorCount = entity.UniqueContributorCount,
             RatingSum = entity.RatingSum,
             AverageRating = entity.AverageRating,
             BayesianScore = entity.BayesianScore,
             LastRatedAtUtc = entity.LastRatedAtUtc,
+            MutationVersion = entity.MutationVersion
+                ?? throw new InvalidOperationException("Rating aggregate mutation version is required for persistence."),
+            CalculatedVersion = entity.CalculatedVersion
+                ?? throw new InvalidOperationException("Rating aggregate calculation version is required for persistence."),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };
