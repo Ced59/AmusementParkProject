@@ -14,6 +14,15 @@ public static class IdentifierRules
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
 
+        string normalizedValue = value?.Trim() ?? string.Empty;
+        if (normalizedValue.Length == 0)
+        {
+            throw new IdentifierValidationException(
+                IdentifierErrorCodes.Required,
+                "A non-empty identifier is required.",
+                parameterName);
+        }
+
         if (value is not null)
         {
             foreach (char character in value)
@@ -26,15 +35,6 @@ public static class IdentifierRules
                         parameterName);
                 }
             }
-        }
-
-        string normalizedValue = value?.Trim() ?? string.Empty;
-        if (normalizedValue.Length == 0)
-        {
-            throw new IdentifierValidationException(
-                IdentifierErrorCodes.Required,
-                "A non-empty identifier is required.",
-                parameterName);
         }
 
         if (normalizedValue.Length > MaximumLength)

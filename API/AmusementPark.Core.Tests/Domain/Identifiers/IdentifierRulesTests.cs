@@ -23,6 +23,8 @@ public sealed class IdentifierRulesTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("   ")]
+    [InlineData("\t")]
+    [InlineData("\r\n")]
     public void NormalizeRequired_WhenValueIsMissing_ShouldReturnStableErrorCode(string? source)
     {
         IdentifierValidationException exception = Assert.Throws<IdentifierValidationException>(
