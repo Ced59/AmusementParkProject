@@ -38,6 +38,50 @@ public sealed class RatingScoreCalculatorTests
     }
 
     [Fact]
+    public void SumHalfSteps_WhenRatingsExist_ShouldKeepAnExactIntegerSum()
+    {
+        IReadOnlyCollection<RatingValue> ratings = new[]
+        {
+            RatingValue.FromHalfSteps(1),
+            RatingValue.FromHalfSteps(8),
+            RatingValue.FromHalfSteps(10),
+        };
+
+        long sumHalfSteps = RatingScoreCalculator.SumHalfSteps(ratings);
+
+        Assert.Equal(19, sumHalfSteps);
+    }
+
+    [Theory]
+    [InlineData(1, 1)]
+    [InlineData(15, 3)]
+    [InlineData(36, 4)]
+    [InlineData(73, 10)]
+    public void HalfStepCalculations_WhenFixtureIsValid_ShouldMatchHistoricalCalculations(
+        long sumHalfSteps,
+        long ratingCount)
+    {
+        double historicalSum = sumHalfSteps / 2d;
+
+        double historicalAverage = RatingScoreCalculator.CalculateAverage(historicalSum, ratingCount);
+        double exactAverage = RatingScoreCalculator.CalculateAverageFromHalfSteps(sumHalfSteps, ratingCount);
+        double historicalBayesianScore = RatingScoreCalculator.CalculateBayesianScore(historicalSum, ratingCount);
+        double exactBayesianScore = RatingScoreCalculator.CalculateBayesianScoreFromHalfSteps(sumHalfSteps, ratingCount);
+
+        Assert.Equal(historicalAverage, exactAverage);
+        Assert.Equal(historicalBayesianScore, exactBayesianScore);
+    }
+
+    [Fact]
+    public void HalfStepCalculations_WhenSumIsNegative_ShouldRejectInvalidAggregate()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => RatingScoreCalculator.CalculateAverageFromHalfSteps(-1, 0));
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => RatingScoreCalculator.CalculateBayesianScoreFromHalfSteps(-1, 0));
+    }
+
+    [Fact]
     public void CalculateCompositeParkScore_WhenParkAndItemsExist_ShouldFavorDirectParkRating()
     {
         double score = RatingScoreCalculator.CalculateCompositeParkScore(4.5d, 3.5d);
@@ -61,6 +105,8 @@ public sealed class RatingScoreCalculatorTests
     [InlineData(0d)]
     [InlineData(0.25d)]
     [InlineData(4.25d)]
+    [InlineData(4.499999d)]
+    [InlineData(4.500001d)]
     [InlineData(5.5d)]
     public void IsValidUserRating_WhenValueIsOutsideRules_ShouldReturnFalse(double value)
     {
