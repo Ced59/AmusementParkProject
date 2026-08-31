@@ -356,19 +356,29 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             long sourceObservationCount = ReadInt64(document, "sourceRatingObservationCount");
             long sourceUniqueContributorCount = ReadInt64(document, "sourceUniqueContributorCount");
             double sourceRatingSum = ReadDouble(document, "sourceRatingSum");
-            long aggregateRatingCount = ReadInt64(aggregate, "ratingCount");
-            double aggregateRatingSum = ReadDouble(aggregate, "ratingSum");
+            bool hasAggregateRatingCount = TryReadInt64(aggregate, "ratingCount", out long aggregateRatingCount);
+            bool hasAggregateRatingSum = TryReadDouble(aggregate, "ratingSum", out double aggregateRatingSum);
+            bool hasAggregateAverage = TryReadDouble(aggregate, "averageRating", out double aggregateAverage);
+            bool hasAggregateBayesianScore = TryReadDouble(
+                aggregate,
+                "bayesianScore",
+                out double aggregateBayesianScore);
             double expectedAverage = RatingScoreCalculator.CalculateAverage(
                 sourceRatingSum,
                 sourceObservationCount);
             double expectedBayesianScore = RatingScoreCalculator.CalculateBayesianScore(
                 sourceRatingSum,
                 sourceObservationCount);
-            bool contributorCountMismatch = sourceUniqueContributorCount != aggregateRatingCount;
-            bool sourceProjectionMismatch = sourceObservationCount != aggregateRatingCount
+            bool contributorCountMismatch = !hasAggregateRatingCount
+                || sourceUniqueContributorCount != aggregateRatingCount;
+            bool sourceProjectionMismatch = !hasAggregateRatingCount
+                || !hasAggregateRatingSum
+                || sourceObservationCount != aggregateRatingCount
                 || !sourceRatingSum.Equals(aggregateRatingSum);
-            bool derivedScoreMismatch = !expectedAverage.Equals(ReadDouble(aggregate, "averageRating"))
-                || !expectedBayesianScore.Equals(ReadDouble(aggregate, "bayesianScore"));
+            bool derivedScoreMismatch = !hasAggregateAverage
+                || !hasAggregateBayesianScore
+                || !expectedAverage.Equals(aggregateAverage)
+                || !expectedBayesianScore.Equals(aggregateBayesianScore);
 
             if (contributorCountMismatch)
             {
@@ -722,9 +732,16 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             }
             """);
         lookupStage["$lookup"].AsBsonDocument["from"] = userRatingsCollectionName;
+        BsonDocument validEmptySnapshot = new BsonDocument
+        {
+            { "ratingCount", 0 },
+            { "ratingSum", 0d },
+            { "averageRating", 0d },
+            { "bayesianScore", RatingScoreCalculator.PriorMean },
+        };
         return new[]
         {
-            BsonDocument.Parse("{ \"$match\": { \"ratingCount\": { \"$ne\": 0 } } }"),
+            new BsonDocument("$match", new BsonDocument("$nor", new BsonArray { validEmptySnapshot })),
             lookupStage,
             BsonDocument.Parse("{ \"$match\": { \"_diagnosticSources\": { \"$size\": 0 } } }"),
             BsonDocument.Parse("{ \"$count\": \"value\" }"),
@@ -880,6 +897,19 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return value.ToInt64();
     }
 
+    private static bool TryReadInt64(BsonDocument document, string name, out long result)
+    {
+        if (!document.TryGetValue(name, out BsonValue? value)
+            || (!value.IsInt32 && !value.IsInt64))
+        {
+            result = 0;
+            return false;
+        }
+
+        result = value.ToInt64();
+        return true;
+    }
+
     private static double ReadDouble(BsonDocument document, string name)
     {
         if (!document.TryGetValue(name, out BsonValue? value) || !value.IsNumeric)
@@ -888,6 +918,18 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
 
         return value.ToDouble();
+    }
+
+    private static bool TryReadDouble(BsonDocument document, string name, out double result)
+    {
+        if (!document.TryGetValue(name, out BsonValue? value) || !value.IsNumeric)
+        {
+            result = 0d;
+            return false;
+        }
+
+        result = value.ToDouble();
+        return true;
     }
 
     private static string ReadString(BsonDocument document, string name, string fallback)

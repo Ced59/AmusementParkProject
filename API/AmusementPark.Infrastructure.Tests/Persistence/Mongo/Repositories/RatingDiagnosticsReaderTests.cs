@@ -167,6 +167,34 @@ public sealed class RatingDiagnosticsReaderTests
         Assert.Equal(0, result.ContributorCountMismatchCount);
     }
 
+    [Theory]
+    [InlineData("ratingSum", false)]
+    [InlineData("averageRating", true)]
+    [InlineData("bayesianScore", true)]
+    public void EvaluateAggregateIntegrity_WhenNanSourceHasMissingAggregateDouble_ShouldExposeTheDivergence(
+        string missingField,
+        bool expectedDerivedMismatch)
+    {
+        BsonDocument facets = CreateIntegrityFacets(
+            sourceObservationCount: 1,
+            sourceUniqueContributorCount: 1,
+            sourceRatingSum: double.NaN,
+            aggregateRatingCount: 1,
+            aggregateRatingSum: double.NaN,
+            aggregateAverageRating: double.NaN,
+            aggregateBayesianScore: double.NaN);
+        facets["integrity"][0]["aggregate"].AsBsonDocument.Remove(missingField);
+
+        RatingAggregateIntegrityResult result = RatingDiagnosticsReader.EvaluateAggregateIntegrity(
+            facets,
+            true,
+            true,
+            0);
+
+        Assert.Equal(1, result.DivergentAggregateCount);
+        Assert.Equal(expectedDerivedMismatch ? 1 : 0, result.DerivedScoreMismatchCount);
+    }
+
     [Fact]
     public void BuildUserRatingsDiagnosticPipeline_WhenAggregateIndexIsUnavailable_ShouldSkipTheDependentLookup()
     {
@@ -191,7 +219,11 @@ public sealed class RatingDiagnosticsReaderTests
 
         Assert.Equal(4, pipeline.Count);
         BsonDocument initialMatch = pipeline.First()["$match"].AsBsonDocument;
-        Assert.Equal(0, initialMatch["ratingCount"]["$ne"].AsInt32);
+        BsonDocument validEmptySnapshot = Assert.Single(initialMatch["$nor"].AsBsonArray).AsBsonDocument;
+        Assert.Equal(0, validEmptySnapshot["ratingCount"].AsInt32);
+        Assert.Equal(0d, validEmptySnapshot["ratingSum"].AsDouble);
+        Assert.Equal(0d, validEmptySnapshot["averageRating"].AsDouble);
+        Assert.Equal(RatingScoreCalculator.PriorMean, validEmptySnapshot["bayesianScore"].AsDouble);
         BsonDocument lookup = pipeline.ElementAt(1)["$lookup"].AsBsonDocument;
         Assert.Equal("custom-user-ratings", lookup["from"].AsString);
         Assert.Equal("value", pipeline.Last()["$count"].AsString);
