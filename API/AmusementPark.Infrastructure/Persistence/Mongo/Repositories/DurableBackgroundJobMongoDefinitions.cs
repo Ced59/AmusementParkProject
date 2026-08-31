@@ -41,9 +41,6 @@ internal static class DurableBackgroundJobMongoDefinitions
         BsonDocument hasHigherPriority = new BsonDocument(
             "$gt",
             new BsonArray { new BsonInt32(priority), "$priority" });
-        BsonDocument hasEarlierSchedule = new BsonDocument(
-            "$lt",
-            new BsonArray { notBeforeUtc, "$notBeforeUtc" });
         BsonDocument set = new BsonDocument
         {
             {
@@ -72,7 +69,7 @@ internal static class DurableBackgroundJobMongoDefinitions
                 new BsonDocument("$cond", new BsonArray
                 {
                     hasNewerRevision,
-                    new BsonDocument("$cond", new BsonArray { hasEarlierSchedule, notBeforeUtc, "$notBeforeUtc" }),
+                    notBeforeUtc,
                     "$notBeforeUtc",
                 })
             },
@@ -176,9 +173,7 @@ internal static class DurableBackgroundJobMongoDefinitions
         BsonValue processedRevisionValue = processedRevision.HasValue
             ? new BsonInt64(processedRevision.Value)
             : "$processedRevision";
-        BsonDocument requiresReplay = new BsonDocument(
-            "$gt",
-            new BsonArray { "$requestedRevision", processedRevision.HasValue ? new BsonInt64(processedRevision.Value) : BsonNull.Value });
+        BsonDocument requiresReplay = BuildRequiresReplay(processedRevision);
         BsonDocument set = new BsonDocument
         {
             { "processedRevision", processedRevisionValue },
@@ -191,10 +186,7 @@ internal static class DurableBackgroundJobMongoDefinitions
                     DurableBackgroundJobStatus.Succeeded.ToString(),
                 })
             },
-            {
-                "notBeforeUtc",
-                new BsonDocument("$cond", new BsonArray { requiresReplay, nowUtc, "$notBeforeUtc" })
-            },
+            { "notBeforeUtc", "$notBeforeUtc" },
             {
                 "completedAtUtc",
                 new BsonDocument("$cond", new BsonArray { requiresReplay, "$$REMOVE", nowUtc })
@@ -220,33 +212,87 @@ internal static class DurableBackgroundJobMongoDefinitions
     }
 
     internal static UpdateDefinition<DurableBackgroundJobDocument> BuildScheduleRetryUpdate(
+        long? attemptedRevision,
         DateTime notBeforeUtc,
         string errorCode,
         DateTime nowUtc)
     {
-        return Builders<DurableBackgroundJobDocument>.Update
-            .Set(item => item.Status, DurableBackgroundJobStatus.RetryScheduled)
-            .Set(item => item.NotBeforeUtc, notBeforeUtc)
-            .Set(item => item.LastErrorCode, errorCode)
-            .Set(item => item.UpdatedAt, nowUtc)
-            .Unset(item => item.LeaseOwner)
-            .Unset(item => item.LeaseToken)
-            .Unset(item => item.LeaseExpiresAtUtc)
-            .Unset(item => item.CompletedAtUtc);
+        BsonDocument requiresReplay = BuildRequiresReplay(attemptedRevision);
+        BsonDocument set = new BsonDocument
+        {
+            {
+                "status",
+                new BsonDocument("$cond", new BsonArray
+                {
+                    requiresReplay,
+                    DurableBackgroundJobStatus.Pending.ToString(),
+                    DurableBackgroundJobStatus.RetryScheduled.ToString(),
+                })
+            },
+            {
+                "notBeforeUtc",
+                new BsonDocument("$cond", new BsonArray { requiresReplay, "$notBeforeUtc", notBeforeUtc })
+            },
+            {
+                "lastErrorCode",
+                new BsonDocument("$cond", new BsonArray { requiresReplay, "$$REMOVE", errorCode })
+            },
+            { "leaseOwner", "$$REMOVE" },
+            { "leaseToken", "$$REMOVE" },
+            { "leaseExpiresAtUtc", "$$REMOVE" },
+            { "completedAtUtc", "$$REMOVE" },
+            { "updatedAt", nowUtc },
+        };
+        PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument> pipeline =
+            PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument>.Create(
+                new[] { new BsonDocument("$set", set) });
+        return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
     }
 
     internal static UpdateDefinition<DurableBackgroundJobDocument> BuildDeadLetterUpdate(
+        long? attemptedRevision,
         string errorCode,
         DateTime nowUtc)
     {
-        return Builders<DurableBackgroundJobDocument>.Update
-            .Set(item => item.Status, DurableBackgroundJobStatus.DeadLetter)
-            .Set(item => item.LastErrorCode, errorCode)
-            .Set(item => item.CompletedAtUtc, nowUtc)
-            .Set(item => item.UpdatedAt, nowUtc)
-            .Unset(item => item.LeaseOwner)
-            .Unset(item => item.LeaseToken)
-            .Unset(item => item.LeaseExpiresAtUtc);
+        BsonDocument requiresReplay = BuildRequiresReplay(attemptedRevision);
+        BsonDocument set = new BsonDocument
+        {
+            {
+                "status",
+                new BsonDocument("$cond", new BsonArray
+                {
+                    requiresReplay,
+                    DurableBackgroundJobStatus.Pending.ToString(),
+                    DurableBackgroundJobStatus.DeadLetter.ToString(),
+                })
+            },
+            {
+                "lastErrorCode",
+                new BsonDocument("$cond", new BsonArray { requiresReplay, "$$REMOVE", errorCode })
+            },
+            {
+                "completedAtUtc",
+                new BsonDocument("$cond", new BsonArray { requiresReplay, "$$REMOVE", nowUtc })
+            },
+            { "leaseOwner", "$$REMOVE" },
+            { "leaseToken", "$$REMOVE" },
+            { "leaseExpiresAtUtc", "$$REMOVE" },
+            { "updatedAt", nowUtc },
+        };
+        PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument> pipeline =
+            PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument>.Create(
+                new[] { new BsonDocument("$set", set) });
+        return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
+    }
+
+    private static BsonDocument BuildRequiresReplay(long? attemptedRevision)
+    {
+        BsonValue attemptedRevisionValue = attemptedRevision.HasValue
+            ? new BsonInt64(attemptedRevision.Value)
+            : BsonNull.Value;
+        return new BsonDocument(
+            "$gt",
+            new BsonArray { "$requestedRevision", attemptedRevisionValue });
     }
 
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildCancelFilter(string jobId)

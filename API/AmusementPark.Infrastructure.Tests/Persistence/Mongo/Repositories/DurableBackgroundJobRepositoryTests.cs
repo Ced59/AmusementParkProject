@@ -173,11 +173,9 @@ public sealed class DurableBackgroundJobRepositoryTests
         BsonArray scheduleCondition = set["notBeforeUtc"].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(newerRevision, scheduleCondition[0].AsBsonDocument);
         Assert.Equal("$notBeforeUtc", scheduleCondition[2].AsString);
-        BsonArray earlierScheduleCondition = scheduleCondition[1].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(
             NowUtc.AddMinutes(3),
-            earlierScheduleCondition[1].ToUniversalTime());
-        Assert.Equal("$notBeforeUtc", earlierScheduleCondition[2].AsString);
+            scheduleCondition[1].ToUniversalTime());
 
         BsonArray priorityCondition = set["priority"].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(40, priorityCondition[1].AsInt32);
@@ -198,6 +196,7 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Equal(16, revisionComparison[1].AsInt64);
         Assert.Equal(DurableBackgroundJobStatus.Pending.ToString(), statusCondition[1].AsString);
         Assert.Equal(DurableBackgroundJobStatus.Succeeded.ToString(), statusCondition[2].AsString);
+        Assert.Equal("$notBeforeUtc", set["notBeforeUtc"].AsString);
         Assert.Equal("$$REMOVE", set["leaseOwner"].AsString);
         Assert.Equal("$$REMOVE", set["leaseToken"].AsString);
         Assert.Equal("$$REMOVE", set["leaseExpiresAtUtc"].AsString);
@@ -259,30 +258,44 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
-    public void BuildScheduleRetryUpdate_ShouldRequeueAndReleaseTheLease()
+    public void BuildScheduleRetryUpdate_ShouldReplayANewerRevisionOrRetryTheAttemptedRevision()
     {
         DateTime notBeforeUtc = NowUtc.AddMinutes(5);
 
-        BsonDocument rendered = Render(
-            DurableBackgroundJobRepository.BuildScheduleRetryUpdate(notBeforeUtc, "temporary", NowUtc)).AsBsonDocument;
+        BsonValue rendered = Render(
+            DurableBackgroundJobRepository.BuildScheduleRetryUpdate(16, notBeforeUtc, "temporary", NowUtc));
 
-        Assert.Equal(DurableBackgroundJobStatus.RetryScheduled.ToString(), rendered["$set"].AsBsonDocument["status"].AsString);
-        Assert.Equal(notBeforeUtc, rendered["$set"].AsBsonDocument["notBeforeUtc"].ToUniversalTime());
-        Assert.Equal("temporary", rendered["$set"].AsBsonDocument["lastErrorCode"].AsString);
-        AssertLeaseMetadataIsUnset(rendered);
-        Assert.True(rendered["$unset"].AsBsonDocument.Contains("completedAtUtc"));
+        BsonDocument set = Assert.Single(rendered.AsBsonArray).AsBsonDocument["$set"].AsBsonDocument;
+        BsonArray statusCondition = set["status"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(DurableBackgroundJobStatus.Pending.ToString(), statusCondition[1].AsString);
+        Assert.Equal(DurableBackgroundJobStatus.RetryScheduled.ToString(), statusCondition[2].AsString);
+        BsonArray scheduleCondition = set["notBeforeUtc"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal("$notBeforeUtc", scheduleCondition[1].AsString);
+        Assert.Equal(notBeforeUtc, scheduleCondition[2].ToUniversalTime());
+        BsonArray errorCondition = set["lastErrorCode"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal("$$REMOVE", errorCondition[1].AsString);
+        Assert.Equal("temporary", errorCondition[2].AsString);
+        AssertLeaseMetadataIsRemoved(set);
+        Assert.Equal("$$REMOVE", set["completedAtUtc"].AsString);
     }
 
     [Fact]
-    public void BuildDeadLetterUpdate_ShouldTerminateAndReleaseTheLease()
+    public void BuildDeadLetterUpdate_ShouldReplayANewerRevisionOrTerminateTheAttemptedRevision()
     {
-        BsonDocument rendered = Render(
-            DurableBackgroundJobRepository.BuildDeadLetterUpdate("permanent", NowUtc)).AsBsonDocument;
+        BsonValue rendered = Render(
+            DurableBackgroundJobRepository.BuildDeadLetterUpdate(16, "permanent", NowUtc));
 
-        Assert.Equal(DurableBackgroundJobStatus.DeadLetter.ToString(), rendered["$set"].AsBsonDocument["status"].AsString);
-        Assert.Equal("permanent", rendered["$set"].AsBsonDocument["lastErrorCode"].AsString);
-        Assert.Equal(NowUtc, rendered["$set"].AsBsonDocument["completedAtUtc"].ToUniversalTime());
-        AssertLeaseMetadataIsUnset(rendered);
+        BsonDocument set = Assert.Single(rendered.AsBsonArray).AsBsonDocument["$set"].AsBsonDocument;
+        BsonArray statusCondition = set["status"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(DurableBackgroundJobStatus.Pending.ToString(), statusCondition[1].AsString);
+        Assert.Equal(DurableBackgroundJobStatus.DeadLetter.ToString(), statusCondition[2].AsString);
+        BsonArray errorCondition = set["lastErrorCode"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal("$$REMOVE", errorCondition[1].AsString);
+        Assert.Equal("permanent", errorCondition[2].AsString);
+        BsonArray completionCondition = set["completedAtUtc"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal("$$REMOVE", completionCondition[1].AsString);
+        Assert.Equal(NowUtc, completionCondition[2].ToUniversalTime());
+        AssertLeaseMetadataIsRemoved(set);
     }
 
     [Fact]
@@ -322,6 +335,13 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.True(unset.Contains("leaseOwner"));
         Assert.True(unset.Contains("leaseToken"));
         Assert.True(unset.Contains("leaseExpiresAtUtc"));
+    }
+
+    private static void AssertLeaseMetadataIsRemoved(BsonDocument set)
+    {
+        Assert.Equal("$$REMOVE", set["leaseOwner"].AsString);
+        Assert.Equal("$$REMOVE", set["leaseToken"].AsString);
+        Assert.Equal("$$REMOVE", set["leaseExpiresAtUtc"].AsString);
     }
 
     private static BsonDocument Render(FilterDefinition<DurableBackgroundJobDocument> filter)

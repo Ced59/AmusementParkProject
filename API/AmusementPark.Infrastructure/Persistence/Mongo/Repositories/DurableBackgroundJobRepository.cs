@@ -277,16 +277,19 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
 
     public async Task<bool> ScheduleRetryAsync(
         DurableBackgroundJobLease lease,
+        long? attemptedRevision,
         TimeSpan delay,
         string errorCode,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(lease);
+        ValidateAttemptedRevision(attemptedRevision);
 
         DateTime nowUtc = this.GetUtcNow();
         TimeSpan validDelay = ValidateDelay(delay);
         string normalizedErrorCode = NormalizeRequired(errorCode, nameof(errorCode));
         UpdateDefinition<DurableBackgroundJobDocument> update = BuildScheduleRetryUpdate(
+            attemptedRevision,
             nowUtc.Add(validDelay),
             normalizedErrorCode,
             nowUtc);
@@ -299,14 +302,19 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
 
     public async Task<bool> DeadLetterAsync(
         DurableBackgroundJobLease lease,
+        long? attemptedRevision,
         string errorCode,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(lease);
+        ValidateAttemptedRevision(attemptedRevision);
 
         DateTime nowUtc = this.GetUtcNow();
         string normalizedErrorCode = NormalizeRequired(errorCode, nameof(errorCode));
-        UpdateDefinition<DurableBackgroundJobDocument> update = BuildDeadLetterUpdate(normalizedErrorCode, nowUtc);
+        UpdateDefinition<DurableBackgroundJobDocument> update = BuildDeadLetterUpdate(
+            attemptedRevision,
+            normalizedErrorCode,
+            nowUtc);
         UpdateResult result = await this.collection.UpdateOneAsync(
             BuildLeaseOwnershipFilter(lease, nowUtc),
             update,
@@ -459,6 +467,14 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         if (priority < -1000 || priority > 1000)
         {
             throw new ArgumentOutOfRangeException(nameof(priority));
+        }
+    }
+
+    private static void ValidateAttemptedRevision(long? attemptedRevision)
+    {
+        if (attemptedRevision < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(attemptedRevision));
         }
     }
 

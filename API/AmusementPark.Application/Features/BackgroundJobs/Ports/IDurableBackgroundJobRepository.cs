@@ -28,12 +28,14 @@ public interface IDurableBackgroundJobRepository
 
     Task<bool> ScheduleRetryAsync(
         DurableBackgroundJobLease lease,
+        long? attemptedRevision,
         TimeSpan delay,
         string errorCode,
         CancellationToken cancellationToken);
 
     Task<bool> DeadLetterAsync(
         DurableBackgroundJobLease lease,
+        long? attemptedRevision,
         string errorCode,
         CancellationToken cancellationToken);
 
