@@ -67,15 +67,12 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
-    public void EvaluateSimpleTarget_WhenObservationsIncludeMoreThanOnePerContributor_ShouldKeepBothCountsDistinct()
+    public void EvaluateSimpleTarget_WhenObservationsExceedContributors_ShouldRejectDuplicateOrTemporalInput()
     {
         SimpleRankingEvidenceInput input = CreateSimpleInput(10, 16);
 
-        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input);
-
-        Assert.Equal(10, evidence.UniqueContributorCount);
-        Assert.Equal(16, evidence.RatingObservationCount);
-        Assert.True(evidence.IsEligibleForMainRanking);
+        Assert.Throws<ArgumentException>(
+            () => RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(input));
     }
 
     [Theory]
@@ -248,6 +245,19 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Null(evidence.IneligibilityReason);
         Assert.Equal(0, evidence.EligibleItemCount);
         Assert.Equal(0, evidence.EligibleCategoryCount);
+    }
+
+    [Fact]
+    public void EvaluatePark_WhenUniqueUnionExceedsBothContributorSets_ShouldRejectInput()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 0,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        Assert.Throws<ArgumentException>(
+            () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
     }
 
     [Theory]

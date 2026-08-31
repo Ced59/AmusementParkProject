@@ -80,6 +80,12 @@ public sealed class RankingEligibilityPolicy
     {
         ArgumentNullException.ThrowIfNull(input);
         ValidateObservationCounts(input.UniqueContributorCount, input.RatingObservationCount);
+        if (input.RatingObservationCount != input.UniqueContributorCount)
+        {
+            throw new ArgumentException(
+                "A simple target requires exactly one current observation per unique contributor.",
+                nameof(input));
+        }
 
         RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
             input.TargetCanReceiveVisitorRatings,
@@ -263,6 +269,14 @@ public sealed class RankingEligibilityPolicy
         if (input.ItemContributorCount > input.UniqueContributorCount)
         {
             throw new ArgumentOutOfRangeException(nameof(input.ItemContributorCount));
+        }
+
+        long maximumContributorUnion = (long)input.DirectParkContributorCount + input.ItemContributorCount;
+        if (input.UniqueContributorCount > maximumContributorUnion)
+        {
+            throw new ArgumentException(
+                "Unique park contributors cannot exceed the union capacity of direct and item contributors.",
+                nameof(input));
         }
 
         if (input.IsSingleCategoryParkException && input.ItemCategories.Count != 1)
