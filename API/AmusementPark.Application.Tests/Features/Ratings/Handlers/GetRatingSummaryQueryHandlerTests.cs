@@ -44,6 +44,11 @@ public sealed class GetRatingSummaryQueryHandlerTests
         Assert.Equal(0, result.Value.RatingCount);
         Assert.Equal(0d, result.Value.AverageRating);
         Assert.Equal(RatingScoreCalculator.PriorMean, result.Value.BayesianScore);
+        Assert.Equal(RankingEvidenceLevel.NoEvidence, result.Value.Evidence?.Level);
+        Assert.Equal(0, result.Value.UniqueContributorCount);
+        Assert.Equal(0, result.Value.RatingObservationCount);
+        Assert.Equal(3, result.Value.Evidence?.NextThreshold);
+        Assert.Equal("ratings-2026-01", result.Value.MethodologyVersion?.ToString());
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
@@ -104,6 +109,10 @@ public sealed class GetRatingSummaryQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(2, result.Value!.Rank);
+        Assert.Equal(RankingEvidenceLevel.Eligible, result.Value.Evidence?.Level);
+        Assert.Equal(12, result.Value.UniqueContributorCount);
+        Assert.Equal(12, result.Value.RatingObservationCount);
+        Assert.Equal(30, result.Value.Evidence?.NextThreshold);
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();

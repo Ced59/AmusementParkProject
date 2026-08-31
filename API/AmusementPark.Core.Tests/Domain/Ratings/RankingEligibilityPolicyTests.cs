@@ -5,18 +5,18 @@ namespace AmusementPark.Core.Tests.Domain.Ratings;
 
 public sealed class RankingEligibilityPolicyTests
 {
-    public static TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?> EvidenceBoundaries => new TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?>
+    public static TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?, int?> EvidenceBoundaries => new TheoryData<int, RankingEvidenceLevel, bool, RankingIneligibilityReason?, int?>
     {
-        { 0, RankingEvidenceLevel.NoEvidence, false, RankingIneligibilityReason.NoRatings },
-        { 1, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 2, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 3, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 9, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors },
-        { 10, RankingEvidenceLevel.Eligible, true, null },
-        { 29, RankingEvidenceLevel.Eligible, true, null },
-        { 30, RankingEvidenceLevel.Established, true, null },
-        { 99, RankingEvidenceLevel.Established, true, null },
-        { 100, RankingEvidenceLevel.StrongEvidence, true, null },
+        { 0, RankingEvidenceLevel.NoEvidence, false, RankingIneligibilityReason.NoRatings, 3 },
+        { 1, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors, 3 },
+        { 2, RankingEvidenceLevel.Insufficient, false, RankingIneligibilityReason.TooFewUniqueContributors, 3 },
+        { 3, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors, 10 },
+        { 9, RankingEvidenceLevel.Provisional, false, RankingIneligibilityReason.TooFewUniqueContributors, 10 },
+        { 10, RankingEvidenceLevel.Eligible, true, null, 30 },
+        { 29, RankingEvidenceLevel.Eligible, true, null, 30 },
+        { 30, RankingEvidenceLevel.Established, true, null, 100 },
+        { 99, RankingEvidenceLevel.Established, true, null, 100 },
+        { 100, RankingEvidenceLevel.StrongEvidence, true, null, null },
     };
 
     [Theory]
@@ -25,7 +25,8 @@ public sealed class RankingEligibilityPolicyTests
         int contributorCount,
         RankingEvidenceLevel expectedLevel,
         bool expectedEligibility,
-        RankingIneligibilityReason? expectedReason)
+        RankingIneligibilityReason? expectedReason,
+        int? expectedNextContributorThreshold)
     {
         RankingEligibilityPolicy policy = RankingEligibilityPolicy.Initial;
         SimpleRankingEvidenceInput input = CreateSimpleInput(contributorCount, contributorCount);
@@ -35,6 +36,7 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Equal(expectedLevel, evidence.Level);
         Assert.Equal(expectedEligibility, evidence.IsEligibleForMainRanking);
         Assert.Equal(expectedReason, evidence.IneligibilityReason);
+        Assert.Equal(expectedNextContributorThreshold, evidence.NextContributorThreshold);
         Assert.Equal(contributorCount, evidence.UniqueContributorCount);
         Assert.Equal(contributorCount, evidence.RatingObservationCount);
         Assert.Equal(policy.Version, evidence.MethodologyVersion);
@@ -64,6 +66,7 @@ public sealed class RankingEligibilityPolicyTests
         Assert.Equal(RankingEvidenceLevel.Excluded, evidence.Level);
         Assert.False(evidence.IsEligibleForMainRanking);
         Assert.Equal(expectedReason, evidence.IneligibilityReason);
+        Assert.Null(evidence.NextContributorThreshold);
     }
 
     [Fact]

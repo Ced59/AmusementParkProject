@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -640,17 +641,7 @@ public sealed class RatingRepository : IRatingRepository
 
     private static RatingSummaryResult ToSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
     {
-        if (aggregate is null)
-        {
-            return new RatingSummaryResult(targetType, targetId, 0, 0d, RatingScoreCalculator.PriorMean);
-        }
-
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
+        return RatingResultFactory.CreateSummary(targetType, targetId, aggregate);
     }
 
     private static string ResolveTargetName(UserRatingDocument document, string? parkName, IReadOnlyDictionary<string, ParkItemDocument> parkItems)

@@ -22,8 +22,17 @@ public sealed class GetRatingRankingsQueryHandlerTests
         ratingRepository
             .Setup(repository => repository.GetVisibleRankingSourcesAsync(null, It.IsAny<int>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(CreateParkSources());
+        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        ratingEvidenceReader
+            .Setup(reader => reader.ReadParkRankingFactsAsync(
+                It.Is<IReadOnlyCollection<RatingEvidenceTarget>>(targets => targets.Count == 10),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateDirectOnlyEvidenceFacts());
 
-        GetRatingRankingsQueryHandler handler = new GetRatingRankingsQueryHandler(ratingRepository.Object, new PagedQueryValidator());
+        GetRatingRankingsQueryHandler handler = new GetRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            ratingEvidenceReader.Object,
+            new PagedQueryValidator());
 
         ApplicationResult<PagedResult<ParkRatingRankingResult>> result = await handler.HandleAsync(
             new GetRatingRankingsQuery(null, new PagedQuery(1, 20), "Park 08"));
@@ -33,7 +42,68 @@ public sealed class GetRatingRankingsQueryHandlerTests
         Assert.Equal(3, result.Value.Items.First().Rank);
         Assert.Contains(result.Value.Items, static item => item.ParkName == "Park 08");
         Assert.Equal(12, result.Value.Items.Last().Rank);
+        Assert.All(result.Value.Items, static item =>
+        {
+            Assert.Equal(RankingEvidenceLevel.Eligible, item.Evidence?.Level);
+            Assert.Equal(10, item.UniqueContributorCount);
+            Assert.Equal(10, item.RatingObservationCount);
+        });
         ratingRepository.VerifyAll();
+        ratingEvidenceReader.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenVisitorsOverlapAcrossParkAndItems_ShouldUseUnionAndPublicCoverage()
+    {
+        IReadOnlyCollection<RatingRankingItemResult> sources = CreateComposedParkSources();
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetVisibleRankingSourcesAsync(null, It.IsAny<int>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sources);
+        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        ratingEvidenceReader
+            .Setup(reader => reader.ReadParkRankingFactsAsync(
+                It.Is<IReadOnlyCollection<RatingEvidenceTarget>>(targets => targets.Count == 6),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkRankingEvidenceFactsBatch(
+                new[]
+                {
+                    new ParkRankingContributorFacts(
+                        "park-composed",
+                        UniqueContributorCount: 15,
+                        RatingObservationCount: 60,
+                        DirectParkContributorCount: 10,
+                        ItemContributorCount: 12),
+                },
+                new[]
+                {
+                    new PublicParkItemEvidenceFact("park-composed", "item-1", ParkItemCategory.Attraction),
+                    new PublicParkItemEvidenceFact("park-composed", "item-2", ParkItemCategory.Attraction),
+                    new PublicParkItemEvidenceFact("park-composed", "item-3", ParkItemCategory.Attraction),
+                    new PublicParkItemEvidenceFact("park-composed", "item-4", ParkItemCategory.Restaurant),
+                    new PublicParkItemEvidenceFact("park-composed", "item-5", ParkItemCategory.Restaurant),
+                }));
+        GetRatingRankingsQueryHandler handler = new GetRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            ratingEvidenceReader.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkRatingRankingResult>> result = await handler.HandleAsync(
+            new GetRatingRankingsQuery(null, new PagedQuery(1, 20), null));
+
+        Assert.True(result.IsSuccess);
+        ParkRatingRankingResult ranking = Assert.Single(result.Value!.Items);
+        Assert.Equal(60, ranking.RatingCount);
+        Assert.Equal(60, ranking.RatingObservationCount);
+        Assert.Equal(15, ranking.UniqueContributorCount);
+        Assert.Equal(10, ranking.Evidence?.DirectParkContributorCount);
+        Assert.Equal(12, ranking.Evidence?.ItemContributorCount);
+        Assert.Equal(5, ranking.Evidence?.EligibleItemCount);
+        Assert.Equal(2, ranking.Evidence?.EligibleCategoryCount);
+        Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
+        Assert.True(ranking.Evidence?.IsEligibleForMainRanking);
+        ratingRepository.VerifyAll();
+        ratingEvidenceReader.VerifyAll();
     }
 
     [Fact]
@@ -98,6 +168,61 @@ public sealed class GetRatingRankingsQueryHandlerTests
                 score * 10,
                 score,
                 score));
+        }
+
+        return sources;
+    }
+
+    private static ParkRankingEvidenceFactsBatch CreateDirectOnlyEvidenceFacts()
+    {
+        IReadOnlyCollection<ParkRankingContributorFacts> contributors = Enumerable.Range(1, 12)
+            .Select(index => new ParkRankingContributorFacts(
+                $"park-{index:00}",
+                UniqueContributorCount: 10,
+                RatingObservationCount: 10,
+                DirectParkContributorCount: 10,
+                ItemContributorCount: 0))
+            .ToList();
+
+        return new ParkRankingEvidenceFactsBatch(
+            contributors,
+            Array.Empty<PublicParkItemEvidenceFact>());
+    }
+
+    private static IReadOnlyCollection<RatingRankingItemResult> CreateComposedParkSources()
+    {
+        List<RatingRankingItemResult> sources = new List<RatingRankingItemResult>
+        {
+            new RatingRankingItemResult(
+                RatingTargetType.Park,
+                "park-composed",
+                "Composed Park",
+                "park-composed",
+                "Composed Park",
+                null,
+                null,
+                10,
+                45,
+                4.5,
+                4.2),
+        };
+        for (int index = 1; index <= 5; index += 1)
+        {
+            ParkItemCategory category = index <= 3
+                ? ParkItemCategory.Attraction
+                : ParkItemCategory.Restaurant;
+            sources.Add(new RatingRankingItemResult(
+                RatingTargetType.ParkItem,
+                $"item-{index}",
+                $"Item {index}",
+                "park-composed",
+                "Composed Park",
+                category,
+                category == ParkItemCategory.Attraction ? ParkItemType.RollerCoaster : null,
+                10,
+                45,
+                4.5,
+                4.1));
         }
 
         return sources;

@@ -405,7 +405,7 @@ public sealed class RankingEligibilityPolicy
         bool isEligible,
         RankingIneligibilityReason? ineligibilityReason)
     {
-        return new RankingEvidence(
+        RankingEvidence evidence = new RankingEvidence(
             level,
             isEligible,
             input.UniqueContributorCount,
@@ -416,6 +416,8 @@ public sealed class RankingEligibilityPolicy
             null,
             this.Version,
             ineligibilityReason);
+
+        return evidence with { NextContributorThreshold = this.ResolveNextContributorThreshold(level) };
     }
 
     private RankingEvidence CreateParkEvidence(
@@ -427,7 +429,7 @@ public sealed class RankingEligibilityPolicy
         bool isEligible,
         RankingIneligibilityReason? ineligibilityReason)
     {
-        return new RankingEvidence(
+        RankingEvidence evidence = new RankingEvidence(
             level,
             isEligible,
             activeContributorCount,
@@ -438,6 +440,21 @@ public sealed class RankingEligibilityPolicy
             itemComponent.EligibleCategoryCount,
             this.Version,
             ineligibilityReason);
+
+        return evidence with { NextContributorThreshold = this.ResolveNextContributorThreshold(level) };
+    }
+
+    private int? ResolveNextContributorThreshold(RankingEvidenceLevel level)
+    {
+        return level switch
+        {
+            RankingEvidenceLevel.NoEvidence or RankingEvidenceLevel.Insufficient =>
+                this.ProvisionalMinUniqueContributors,
+            RankingEvidenceLevel.Provisional => this.EligibleMinUniqueContributors,
+            RankingEvidenceLevel.Eligible => this.EstablishedMinUniqueContributors,
+            RankingEvidenceLevel.Established => this.StrongEvidenceMinUniqueContributors,
+            _ => null,
+        };
     }
 
     private static RankingIneligibilityReason? ResolveExclusionReason(

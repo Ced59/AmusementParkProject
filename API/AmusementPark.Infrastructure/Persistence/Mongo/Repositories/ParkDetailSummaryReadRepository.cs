@@ -2,6 +2,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -139,17 +140,10 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 & Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetId, parkId))
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (aggregate is null)
-        {
-            return new RatingSummaryResult(RatingTargetType.Park, parkId, 0, 0d, RatingScoreCalculator.PriorMean);
-        }
-
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
+        return RatingResultFactory.CreateSummary(
+            RatingTargetType.Park,
+            parkId,
+            aggregate?.ToDomain());
     }
 
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)

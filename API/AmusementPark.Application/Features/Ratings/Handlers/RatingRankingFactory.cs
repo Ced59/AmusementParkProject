@@ -1,5 +1,7 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -22,7 +24,8 @@ internal static class RatingRankingFactory
 {
     public static IReadOnlyCollection<ParkRatingRankingResult> BuildParkRankings(
         IReadOnlyCollection<RatingRankingItemResult> sources,
-        ParkItemCategory? categoryFilter = null)
+        ParkItemCategory? categoryFilter = null,
+        ParkRankingEvidenceFactsBatch? evidenceFacts = null)
     {
         List<ParkRatingRankingResult> rankings = sources
             .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
@@ -36,7 +39,65 @@ internal static class RatingRankingFactory
             .Select(static (ranking, index) => ranking with { Rank = index + 1 })
             .ToList();
 
-        return rankings;
+        return evidenceFacts is null
+            ? rankings
+            : ApplyParkEvidence(rankings, sources, evidenceFacts, categoryFilter);
+    }
+
+    public static IReadOnlyCollection<ParkRatingRankingResult> ApplyParkEvidence(
+        IReadOnlyCollection<ParkRatingRankingResult> rankings,
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        ParkRankingEvidenceFactsBatch evidenceFacts,
+        ParkItemCategory? categoryFilter = null)
+    {
+        ArgumentNullException.ThrowIfNull(rankings);
+        ArgumentNullException.ThrowIfNull(sources);
+        ArgumentNullException.ThrowIfNull(evidenceFacts);
+
+        IReadOnlyDictionary<string, IReadOnlyCollection<RatingRankingItemResult>> sourcesByPark = sources
+            .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
+            .GroupBy(static source => source.ParkId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => (IReadOnlyCollection<RatingRankingItemResult>)group.ToList(),
+                StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkRankingContributorFacts> contributorFactsByPark = evidenceFacts.Contributors
+            .GroupBy(static facts => facts.ParkId, StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+        ILookup<string, PublicParkItemEvidenceFact> publicItemsByPark = evidenceFacts.PublicItems
+            .ToLookup(static item => item.ParkId, StringComparer.Ordinal);
+
+        return rankings.Select(ranking =>
+        {
+            if (!sourcesByPark.TryGetValue(ranking.ParkId, out IReadOnlyCollection<RatingRankingItemResult>? parkSources)
+                || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts))
+            {
+                return ranking;
+            }
+
+            List<RatingRankingItemResult> directParkSources = parkSources
+                .Where(static source => source.TargetType == RatingTargetType.Park)
+                .ToList();
+            IReadOnlyCollection<RatingRankingItemResult> itemSources = parkSources
+                .Where(static source => source.TargetType == RatingTargetType.ParkItem
+                    && source.ParkItemCategory.HasValue)
+                .ToList();
+            IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems = publicItemsByPark[ranking.ParkId]
+                .Where(item => !categoryFilter.HasValue || item.Category == categoryFilter.Value)
+                .ToList();
+
+            return ranking with
+            {
+                Evidence = directParkSources.Count <= 1
+                    ? TryCreateParkEvidence(
+                        directParkSources.FirstOrDefault(),
+                        itemSources,
+                        contributorFacts,
+                        publicItems)
+                    : null,
+            };
+        }).ToList();
     }
 
     public static IReadOnlyCollection<ParkItemRatingRankingResult> BuildParkItemRankings(
@@ -55,17 +116,23 @@ internal static class RatingRankingFactory
             .ThenByDescending(static source => source.AverageRating)
             .ThenBy(static source => source.TargetName, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static source => source.TargetId, StringComparer.Ordinal)
-            .Select(static (source, index) => new ParkItemRatingRankingResult(
-                index + 1,
-                source.TargetId,
-                source.TargetName,
-                source.ParkId,
-                source.ParkName!.Trim(),
-                source.ParkItemCategory!.Value,
-                source.ParkItemType,
-                source.RatingCount,
-                source.AverageRating,
-                source.BayesianScore))
+            .Select(static (source, index) =>
+            {
+                return new ParkItemRatingRankingResult(
+                    index + 1,
+                    source.TargetId,
+                    source.TargetName,
+                    source.ParkId,
+                    source.ParkName!.Trim(),
+                    source.ParkItemCategory!.Value,
+                    source.ParkItemType,
+                    source.RatingCount,
+                    source.AverageRating,
+                    source.BayesianScore)
+                {
+                    Evidence = RatingResultFactory.TryCreateSimpleEvidence(source.RatingCount),
+                };
+            })
             .ToList();
     }
 
@@ -149,6 +216,172 @@ internal static class RatingRankingFactory
             RatingScoreCalculator.CalculateAverage(itemRatingSum, itemRatingCount),
             categories);
     }
+
+    private static RankingEvidenceResult? TryCreateParkEvidence(
+        RatingRankingItemResult? directParkSource,
+        IReadOnlyCollection<RatingRankingItemResult> itemSources,
+        ParkRankingContributorFacts contributorFacts,
+        IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems)
+    {
+        if (!TryConvertEvidenceCounts(contributorFacts, out ParkContributorDomainCounts counts))
+        {
+            return null;
+        }
+
+        HashSet<string> publicItemIds = publicItems
+            .Select(static item => item.TargetId)
+            .ToHashSet(StringComparer.Ordinal);
+        if (itemSources.Any(source => !publicItemIds.Contains(source.TargetId)))
+        {
+            return null;
+        }
+
+        Dictionary<string, RankingEvidenceResult> itemEvidenceById = new Dictionary<string, RankingEvidenceResult>(
+            StringComparer.Ordinal);
+        foreach (IGrouping<string, RatingRankingItemResult> itemSourceGroup in itemSources.GroupBy(
+                     static source => source.TargetId,
+                     StringComparer.Ordinal))
+        {
+            if (itemSourceGroup.Count() != 1)
+            {
+                return null;
+            }
+
+            RatingRankingItemResult itemSource = itemSourceGroup.Single();
+            RankingEvidenceResult? itemEvidence = RatingResultFactory.TryCreateSimpleEvidence(itemSource.RatingCount);
+            if (itemEvidence is null)
+            {
+                return null;
+            }
+
+            itemEvidenceById.Add(itemSource.TargetId, itemEvidence);
+        }
+
+        if (publicItemIds.Count != publicItems.Count)
+        {
+            return null;
+        }
+
+        List<RankingCategoryCoverage> categoryCoverage = publicItems
+            .GroupBy(static item => item.Category)
+            .Select(group => new RankingCategoryCoverage(
+                group.Count(),
+                group.Count(item => itemEvidenceById.TryGetValue(item.TargetId, out RankingEvidenceResult? evidence)
+                    && evidence.IsEligibleForMainRanking)))
+            .ToList();
+        int publicItemCount = categoryCoverage.Sum(static category => category.PublicItemCount);
+        int eligibleItemCount = categoryCoverage.Sum(static category => category.EligibleItemCount);
+        if (!HasStructurallyValidParkEvidence(counts, publicItemCount, eligibleItemCount))
+        {
+            return null;
+        }
+
+        if (!TrySumObservationCounts(directParkSource, itemSources, out long sourceObservationCount))
+        {
+            return null;
+        }
+
+        bool aggregateIntegrityIsValid = sourceObservationCount == contributorFacts.RatingObservationCount
+            && (directParkSource?.RatingCount ?? 0) == contributorFacts.DirectParkContributorCount;
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            counts.UniqueContributorCount,
+            counts.RatingObservationCount,
+            counts.DirectParkContributorCount,
+            counts.ItemContributorCount,
+            categoryCoverage,
+            IsSingleCategoryParkException: categoryCoverage.Count == 1,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            aggregateIntegrityIsValid);
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        return RatingResultFactory.ToResult(evidence);
+    }
+
+    private static bool TryConvertEvidenceCounts(
+        ParkRankingContributorFacts facts,
+        out ParkContributorDomainCounts counts)
+    {
+        if (facts.UniqueContributorCount < 0
+            || facts.UniqueContributorCount > int.MaxValue
+            || facts.RatingObservationCount < 0
+            || facts.RatingObservationCount > int.MaxValue
+            || facts.DirectParkContributorCount < 0
+            || facts.DirectParkContributorCount > int.MaxValue
+            || facts.ItemContributorCount < 0
+            || facts.ItemContributorCount > int.MaxValue)
+        {
+            counts = default;
+            return false;
+        }
+
+        counts = new ParkContributorDomainCounts(
+            checked((int)facts.UniqueContributorCount),
+            checked((int)facts.RatingObservationCount),
+            checked((int)facts.DirectParkContributorCount),
+            checked((int)facts.ItemContributorCount));
+        return true;
+    }
+
+    private static bool TrySumObservationCounts(
+        RatingRankingItemResult? directParkSource,
+        IReadOnlyCollection<RatingRankingItemResult> itemSources,
+        out long sourceObservationCount)
+    {
+        sourceObservationCount = directParkSource?.RatingCount ?? 0;
+        if (sourceObservationCount < 0 || sourceObservationCount > int.MaxValue)
+        {
+            return false;
+        }
+
+        foreach (RatingRankingItemResult itemSource in itemSources)
+        {
+            if (itemSource.RatingCount < 0
+                || itemSource.RatingCount > int.MaxValue
+                || sourceObservationCount > int.MaxValue - itemSource.RatingCount)
+            {
+                sourceObservationCount = 0;
+                return false;
+            }
+
+            sourceObservationCount += itemSource.RatingCount;
+        }
+
+        return true;
+    }
+
+    private static bool HasStructurallyValidParkEvidence(
+        ParkContributorDomainCounts counts,
+        int publicItemCount,
+        int eligibleItemCount)
+    {
+        if (counts.RatingObservationCount < counts.UniqueContributorCount
+            || (counts.UniqueContributorCount == 0 && counts.RatingObservationCount > 0)
+            || counts.DirectParkContributorCount > counts.UniqueContributorCount
+            || counts.ItemContributorCount > counts.UniqueContributorCount
+            || counts.UniqueContributorCount > counts.DirectParkContributorCount + counts.ItemContributorCount
+            || (eligibleItemCount > 0
+                && counts.ItemContributorCount < RankingEligibilityPolicy.Initial.EligibleMinUniqueContributors))
+        {
+            return false;
+        }
+
+        long minimumItemObservationCount = Math.Max(
+            counts.ItemContributorCount,
+            checked((long)eligibleItemCount * RankingEligibilityPolicy.Initial.EligibleMinUniqueContributors));
+        long minimumObservationCount = counts.DirectParkContributorCount + minimumItemObservationCount;
+        long maximumObservationCount = counts.DirectParkContributorCount
+            + checked((long)counts.ItemContributorCount * publicItemCount);
+
+        return counts.RatingObservationCount >= minimumObservationCount
+            && counts.RatingObservationCount <= maximumObservationCount;
+    }
+
+    private readonly record struct ParkContributorDomainCounts(
+        int UniqueContributorCount,
+        int RatingObservationCount,
+        int DirectParkContributorCount,
+        int ItemContributorCount);
 
     private static UserParkRatingRankingResult BuildUserParkRanking(
         string parkId,

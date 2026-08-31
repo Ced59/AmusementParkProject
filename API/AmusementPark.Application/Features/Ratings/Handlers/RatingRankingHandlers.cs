@@ -14,11 +14,16 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
     private const int RankingSourceLimit = 5000;
 
     private readonly IRatingRepository ratingRepository;
+    private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
 
-    public GetRatingRankingsQueryHandler(IRatingRepository ratingRepository, PagedQueryValidator pagedQueryValidator)
+    public GetRatingRankingsQueryHandler(
+        IRatingRepository ratingRepository,
+        IRatingEvidenceReader ratingEvidenceReader,
+        PagedQueryValidator pagedQueryValidator)
     {
         this.ratingRepository = ratingRepository;
+        this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
     }
 
@@ -34,11 +39,39 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
             query.ParkItemCategory,
             RankingSourceLimit,
             cancellationToken);
-
-        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(sources, query.ParkItemCategory);
+        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(
+            sources,
+            query.ParkItemCategory);
         PagedResult<ParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
             ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
             : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
+        if (result.Items.Count > 0)
+        {
+            HashSet<string> resultParkIds = result.Items
+                .Select(static ranking => ranking.ParkId)
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<RatingRankingItemResult> resultSources = sources
+                .Where(source => resultParkIds.Contains(source.ParkId))
+                .ToList();
+            ParkRankingEvidenceFactsBatch evidenceFacts = await this.ratingEvidenceReader.ReadParkRankingFactsAsync(
+                resultSources.Select(static source => new RatingEvidenceTarget(
+                        source.TargetType,
+                        source.TargetId,
+                        source.ParkId))
+                    .Distinct()
+                    .ToList(),
+                cancellationToken);
+            IReadOnlyCollection<ParkRatingRankingResult> enrichedItems = RatingRankingFactory.ApplyParkEvidence(
+                result.Items,
+                resultSources,
+                evidenceFacts,
+                query.ParkItemCategory);
+            result = new PagedResult<ParkRatingRankingResult>(
+                enrichedItems,
+                result.Page,
+                result.PageSize,
+                result.TotalItems);
+        }
 
         return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Success(result);
     }

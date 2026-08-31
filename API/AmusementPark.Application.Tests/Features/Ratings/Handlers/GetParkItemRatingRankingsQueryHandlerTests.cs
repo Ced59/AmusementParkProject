@@ -48,6 +48,10 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         ParkItemRatingRankingResult ranking = Assert.Single(result.Value.Items);
         Assert.Equal(2, ranking.Rank);
         Assert.Equal("Ride Beta", ranking.TargetName);
+        Assert.Equal(10, ranking.RatingObservationCount);
+        Assert.Equal(10, ranking.UniqueContributorCount);
+        Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
+        Assert.Equal("ratings-2026-01", ranking.MethodologyVersion?.ToString());
         ratingRepository.VerifyAll();
     }
 

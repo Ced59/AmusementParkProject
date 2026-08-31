@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -159,24 +160,6 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(command.TargetType, targetId, aggregate);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
-    }
-}
-
-internal static class RatingResultFactory
-{
-    public static RatingSummaryResult CreateSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
-    {
-        if (aggregate is null)
-        {
-            return new RatingSummaryResult(targetType, targetId, 0, 0d, RatingScoreCalculator.PriorMean);
-        }
-
-        return new RatingSummaryResult(
-            aggregate.TargetType,
-            aggregate.TargetId,
-            aggregate.RatingCount,
-            aggregate.AverageRating,
-            aggregate.BayesianScore);
     }
 }
 
