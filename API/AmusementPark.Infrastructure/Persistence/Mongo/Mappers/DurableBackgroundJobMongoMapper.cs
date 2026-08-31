@@ -1,29 +1,21 @@
 using System.Text.Json;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
-using MongoDB.Bson;
-using MongoDB.Bson.IO;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
 internal static class DurableBackgroundJobMongoMapper
 {
-    private static readonly JsonWriterSettings PayloadJsonWriterSettings = new JsonWriterSettings
+    public static string ToStoredPayload(this JsonElement payload)
     {
-        OutputMode = JsonOutputMode.RelaxedExtendedJson,
-    };
-
-    public static BsonDocument ToBsonPayload(this JsonElement payload)
-    {
-        return BsonDocument.Parse(payload.GetRawText());
+        return payload.GetRawText();
     }
 
     public static DurableBackgroundJob ToApplication(this DurableBackgroundJobDocument document)
     {
         ArgumentNullException.ThrowIfNull(document);
 
-        using JsonDocument payloadDocument = JsonDocument.Parse(
-            document.Payload.ToJson(PayloadJsonWriterSettings));
+        using JsonDocument payloadDocument = JsonDocument.Parse(document.PayloadJson);
         return new DurableBackgroundJob(
             document.Id,
             document.Kind,

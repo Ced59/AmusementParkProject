@@ -19,7 +19,7 @@ public sealed class DurableBackgroundJobMongoMapperTests
             Kind = "rank.snapshot",
             NaturalKey = "world",
             PayloadVersion = 2,
-            Payload = payload.RootElement.ToBsonPayload(),
+            PayloadJson = payload.RootElement.ToStoredPayload(),
             RequestedRevision = 12,
             Status = DurableBackgroundJobStatus.Leased,
             Priority = 50,
@@ -42,5 +42,25 @@ public sealed class DurableBackgroundJobMongoMapperTests
         Assert.Equal(DurableBackgroundJobStatus.Leased, mapped.Status);
         Assert.Equal("token-1", mapped.LeaseToken);
         Assert.Equal("correlation-1", mapped.CorrelationId);
+    }
+
+    [Fact]
+    public void StoredPayload_ShouldRoundTripOrdinaryJsonWithoutExtendedJsonInterpretation()
+    {
+        const string PayloadJson =
+            "{\"$numberLong\":\"42\",\"fakeOid\":{\"$oid\":\"not-an-object-id\"},\"precise\":12345678901234567890.123456789}";
+        using JsonDocument payload = JsonDocument.Parse(PayloadJson);
+        string storedPayload = payload.RootElement.ToStoredPayload();
+        DurableBackgroundJobDocument document = new DurableBackgroundJobDocument
+        {
+            PayloadJson = storedPayload,
+        };
+
+        DurableBackgroundJob mapped = document.ToApplication();
+
+        Assert.Equal(PayloadJson, storedPayload);
+        Assert.Equal("42", mapped.Payload.GetProperty("$numberLong").GetString());
+        Assert.Equal("not-an-object-id", mapped.Payload.GetProperty("fakeOid").GetProperty("$oid").GetString());
+        Assert.Equal("12345678901234567890.123456789", mapped.Payload.GetProperty("precise").GetRawText());
     }
 }

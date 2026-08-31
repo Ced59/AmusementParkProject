@@ -23,7 +23,7 @@ public sealed class DurableBackgroundJobDocument : MongoDocumentBase
     public int PayloadVersion { get; set; }
 
     [BsonElement("payload")]
-    public BsonDocument Payload { get; set; } = new BsonDocument();
+    public string PayloadJson { get; set; } = "{}";
 
     [BsonElement("requestedRevision")]
     [BsonIgnoreIfNull]

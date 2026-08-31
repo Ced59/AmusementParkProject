@@ -141,10 +141,12 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
-    public void BuildCoalesceUpdate_ShouldOnlyAdvanceTheScheduleForANewerRevision()
+    public void BuildCoalesceUpdate_ShouldOnlyAdvancePayloadAndScheduleForANewerRevision()
     {
         BsonValue rendered = Render(DurableBackgroundJobRepository.BuildCoalesceUpdate(
             17,
+            3,
+            "{\"scope\":\"world\",\"revision\":17}",
             40,
             NowUtc.AddMinutes(3),
             NowUtc,
@@ -156,6 +158,17 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Equal(17, revisionCondition[1].AsInt64);
         Assert.Equal("$requestedRevision", revisionCondition[2].AsString);
         Assert.Equal(17, newerRevision["$gt"].AsBsonArray[0].AsInt64);
+
+        BsonArray payloadVersionCondition = set["payloadVersion"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(newerRevision, payloadVersionCondition[0].AsBsonDocument);
+        Assert.Equal(3, payloadVersionCondition[1].AsInt32);
+        Assert.Equal("$payloadVersion", payloadVersionCondition[2].AsString);
+        BsonArray payloadCondition = set["payload"].AsBsonDocument["$cond"].AsBsonArray;
+        Assert.Equal(newerRevision, payloadCondition[0].AsBsonDocument);
+        Assert.Equal(
+            "{\"scope\":\"world\",\"revision\":17}",
+            payloadCondition[1].AsBsonDocument["$literal"].AsString);
+        Assert.Equal("$payload", payloadCondition[2].AsString);
 
         BsonArray scheduleCondition = set["notBeforeUtc"].AsBsonDocument["$cond"].AsBsonArray;
         Assert.Equal(newerRevision, scheduleCondition[0].AsBsonDocument);
@@ -170,8 +183,6 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Equal(40, priorityCondition[1].AsInt32);
         Assert.Equal("$priority", priorityCondition[2].AsString);
         Assert.Equal("correlation-1", set["correlationId"].AsString);
-        Assert.DoesNotContain("payload", rendered.ToJson(), StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("payloadVersion", rendered.ToJson(), StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

@@ -52,7 +52,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             Kind = kind,
             IdempotencyKey = idempotencyKey,
             PayloadVersion = request.PayloadVersion,
-            Payload = request.Payload.ToBsonPayload(),
+            PayloadJson = request.Payload.ToStoredPayload(),
             Status = DurableBackgroundJobStatus.Pending,
             Priority = request.Priority,
             NotBeforeUtc = nowUtc.Add(delay),
@@ -99,9 +99,12 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         string? correlationId = NormalizeOptional(request.CorrelationId, nameof(request.CorrelationId));
         DateTime nowUtc = this.GetUtcNow();
         DateTime notBeforeUtc = nowUtc.Add(delay);
+        string payloadJson = request.Payload.ToStoredPayload();
         FilterDefinition<DurableBackgroundJobDocument> activeFilter = BuildActiveNaturalKeyFilter(kind, naturalKey);
         UpdateDefinition<DurableBackgroundJobDocument> coalesceUpdate = BuildCoalesceUpdate(
             request.RequestedRevision,
+            request.PayloadVersion,
+            payloadJson,
             request.Priority,
             notBeforeUtc,
             nowUtc,
@@ -127,7 +130,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             Kind = kind,
             NaturalKey = naturalKey,
             PayloadVersion = request.PayloadVersion,
-            Payload = request.Payload.ToBsonPayload(),
+            PayloadJson = payloadJson,
             RequestedRevision = request.RequestedRevision,
             Status = DurableBackgroundJobStatus.Pending,
             Priority = request.Priority,
@@ -372,7 +375,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         }
 
         ProjectionDefinition<DurableBackgroundJobDocument> projection =
-            Builders<DurableBackgroundJobDocument>.Projection.Exclude(item => item.Payload);
+            Builders<DurableBackgroundJobDocument>.Projection.Exclude(item => item.PayloadJson);
         List<DurableBackgroundJobDocument> documents = await this.collection
             .Find(filter)
             .SortByDescending(item => item.UpdatedAt)

@@ -25,6 +25,8 @@ internal static class DurableBackgroundJobMongoDefinitions
 
     internal static UpdateDefinition<DurableBackgroundJobDocument> BuildCoalesceUpdate(
         long requestedRevision,
+        int payloadVersion,
+        string payloadJson,
         int priority,
         DateTime notBeforeUtc,
         DateTime nowUtc,
@@ -47,6 +49,19 @@ internal static class DurableBackgroundJobMongoDefinitions
             {
                 "requestedRevision",
                 new BsonDocument("$cond", new BsonArray { hasNewerRevision, requestedRevision, "$requestedRevision" })
+            },
+            {
+                "payloadVersion",
+                new BsonDocument("$cond", new BsonArray { hasNewerRevision, payloadVersion, "$payloadVersion" })
+            },
+            {
+                "payload",
+                new BsonDocument("$cond", new BsonArray
+                {
+                    hasNewerRevision,
+                    new BsonDocument("$literal", payloadJson),
+                    "$payload",
+                })
             },
             {
                 "priority",
