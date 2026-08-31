@@ -120,17 +120,27 @@ public sealed class RankingEligibilityPolicy
             return this.CreateParkEvidence(
                 input,
                 itemComponent,
+                input.UniqueContributorCount,
+                input.RatingObservationCount,
                 RankingEvidenceLevel.Excluded,
                 false,
                 exclusionReason);
         }
 
-        RankingEvidenceLevel level = this.ResolveEvidenceLevel(input.UniqueContributorCount);
+        int activeContributorCount = itemComponent.IsEligible
+            ? input.UniqueContributorCount
+            : input.DirectParkContributorCount;
+        int activeObservationCount = itemComponent.IsEligible
+            ? input.RatingObservationCount
+            : input.DirectParkContributorCount;
+        RankingEvidenceLevel level = this.ResolveEvidenceLevel(activeContributorCount);
         if (level is RankingEvidenceLevel.NoEvidence or RankingEvidenceLevel.Insufficient or RankingEvidenceLevel.Provisional)
         {
             return this.CreateParkEvidence(
                 input,
                 itemComponent,
+                activeContributorCount,
+                activeObservationCount,
                 level,
                 false,
                 ResolveVolumeIneligibilityReason(level));
@@ -141,12 +151,21 @@ public sealed class RankingEligibilityPolicy
             return this.CreateParkEvidence(
                 input,
                 itemComponent,
+                activeContributorCount,
+                activeObservationCount,
                 RankingEvidenceLevel.Provisional,
                 false,
                 RankingIneligibilityReason.TooFewUniqueContributors);
         }
 
-        return this.CreateParkEvidence(input, itemComponent, level, true, null);
+        return this.CreateParkEvidence(
+            input,
+            itemComponent,
+            activeContributorCount,
+            activeObservationCount,
+            level,
+            true,
+            null);
     }
 
     public ParkItemComponentEligibility EvaluateParkItemComponent(ParkRankingEvidenceInput input)
@@ -279,6 +298,13 @@ public sealed class RankingEligibilityPolicy
                 nameof(input));
         }
 
+        if (input.RatingObservationCount < maximumContributorUnion)
+        {
+            throw new ArgumentException(
+                "Park observations cannot be lower than the sum of direct and item contributors.",
+                nameof(input));
+        }
+
         if (input.IsSingleCategoryParkException && input.ItemCategories.Count != 1)
         {
             throw new ArgumentException(
@@ -336,6 +362,8 @@ public sealed class RankingEligibilityPolicy
     private RankingEvidence CreateParkEvidence(
         ParkRankingEvidenceInput input,
         ParkItemComponentEligibility itemComponent,
+        int activeContributorCount,
+        int activeObservationCount,
         RankingEvidenceLevel level,
         bool isEligible,
         RankingIneligibilityReason? ineligibilityReason)
@@ -343,8 +371,8 @@ public sealed class RankingEligibilityPolicy
         return new RankingEvidence(
             level,
             isEligible,
-            input.UniqueContributorCount,
-            input.RatingObservationCount,
+            activeContributorCount,
+            activeObservationCount,
             input.DirectParkContributorCount,
             input.ItemContributorCount,
             itemComponent.EligibleItemCount,

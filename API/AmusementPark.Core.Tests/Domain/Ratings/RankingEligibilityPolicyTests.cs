@@ -248,6 +248,46 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
+    public void EvaluatePark_WhenItemComponentIsIneligible_ShouldBaseEvidenceOnDirectRatingsOnly()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 90,
+            categories: Array.Empty<RankingCategoryCoverage>());
+
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        Assert.Equal(RankingEvidenceLevel.Eligible, evidence.Level);
+        Assert.True(evidence.IsEligibleForMainRanking);
+        Assert.Equal(10, evidence.UniqueContributorCount);
+        Assert.Equal(10, evidence.RatingObservationCount);
+        Assert.Equal(90, evidence.ItemContributorCount);
+        Assert.Equal(0, evidence.EligibleItemCount);
+    }
+
+    [Fact]
+    public void EvaluatePark_WhenItemComponentIsEligible_ShouldUseTheContributorUnion()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 90,
+            categories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            });
+
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        Assert.Equal(RankingEvidenceLevel.StrongEvidence, evidence.Level);
+        Assert.True(evidence.IsEligibleForMainRanking);
+        Assert.Equal(100, evidence.UniqueContributorCount);
+        Assert.Equal(100, evidence.RatingObservationCount);
+    }
+
+    [Fact]
     public void EvaluatePark_WhenUniqueUnionExceedsBothContributorSets_ShouldRejectInput()
     {
         ParkRankingEvidenceInput input = CreateParkInput(
@@ -255,6 +295,28 @@ public sealed class RankingEligibilityPolicyTests
             directContributorCount: 10,
             itemContributorCount: 0,
             categories: Array.Empty<RankingCategoryCoverage>());
+
+        Assert.Throws<ArgumentException>(
+            () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
+    }
+
+    [Fact]
+    public void EvaluatePark_WhenObservationsDoNotCoverBothContributorSets_ShouldRejectInput()
+    {
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 10,
+            RatingObservationCount: 10,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            ItemCategories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            },
+            IsSingleCategoryParkException: false,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
 
         Assert.Throws<ArgumentException>(
             () => RankingEligibilityPolicy.Initial.EvaluatePark(input));
@@ -398,7 +460,9 @@ public sealed class RankingEligibilityPolicyTests
             uniqueContributorCount,
             RatingObservationCount: Math.Max(
                 uniqueContributorCount,
-                directContributorCount + categories.Sum(static category => category.EligibleItemCount)),
+                directContributorCount + Math.Max(
+                    itemContributorCount,
+                    categories.Sum(static category => category.EligibleItemCount))),
             directContributorCount,
             itemContributorCount,
             categories,
