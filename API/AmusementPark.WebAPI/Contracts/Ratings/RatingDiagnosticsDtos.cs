@@ -57,6 +57,8 @@ public sealed class RatingAggregateIntegrityDto
 
     public long DivergentAggregateCount { get; set; }
 
+    public long ContributorCountMismatchCount { get; set; }
+
     public long OrphanAggregateCount { get; set; }
 }
 

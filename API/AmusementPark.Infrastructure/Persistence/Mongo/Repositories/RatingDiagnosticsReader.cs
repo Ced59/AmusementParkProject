@@ -84,6 +84,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             ReadInt64(integrity, "sourceTargetCount"),
             ReadInt64(integrity, "missingAggregateCount"),
             ReadInt64(integrity, "divergentAggregateCount"),
+            ReadInt64(integrity, "contributorCountMismatchCount"),
             orphanAggregateCount);
 
         return new RatingDiagnosticsResult(
@@ -201,12 +202,20 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                   { "$sort": { "_id.targetType": 1, "_id.evidenceBand": 1 } }
                 ],
                 "integrity": [
-                  { "$match": { "_diagnosticHasTarget": true } },
+                  { "$match": { "_diagnosticHasUser": true, "_diagnosticHasTarget": true, "_diagnosticIsExactHalfStep": true } },
                   {
                     "$group": {
-                      "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText" },
-                      "sourceRatingCount": { "$sum": 1 },
+                      "_id": { "targetType": "$_diagnosticTargetType", "targetId": "$_diagnosticTargetText", "userId": "$_diagnosticUserText" },
+                      "ratingObservationCount": { "$sum": 1 },
                       "sourceRatingSum": { "$sum": "$_diagnosticNumericValue" }
+                    }
+                  },
+                  {
+                    "$group": {
+                      "_id": { "targetType": "$_id.targetType", "targetId": "$_id.targetId" },
+                      "sourceRatingObservationCount": { "$sum": "$ratingObservationCount" },
+                      "sourceUniqueContributorCount": { "$sum": 1 },
+                      "sourceRatingSum": { "$sum": "$sourceRatingSum" }
                     }
                   },
                   {
@@ -231,13 +240,14 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                       "_id": null,
                       "sourceTargetCount": { "$sum": 1 },
                       "missingAggregateCount": { "$sum": { "$cond": [ { "$eq": [ "$aggregateCount", 0 ] }, 1, 0 ] } },
+                      "contributorCountMismatchCount": { "$sum": { "$cond": [ { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceUniqueContributorCount", "$aggregate.ratingCount" ] } ] }, 1, 0 ] } },
                       "divergentAggregateCount": {
                         "$sum": {
                           "$cond": [
                             {
                               "$or": [
                                 { "$gt": [ "$aggregateCount", 1 ] },
-                                { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceRatingCount", "$aggregate.ratingCount" ] } ] },
+                                { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceUniqueContributorCount", "$aggregate.ratingCount" ] } ] },
                                 { "$and": [ { "$eq": [ "$aggregateCount", 1 ] }, { "$ne": [ "$sourceRatingSum", "$aggregate.ratingSum" ] } ] }
                               ]
                             },
@@ -256,7 +266,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         BsonDocument facets = facetStage["$facet"].AsBsonDocument;
         if (includeAggregateIntegrity)
         {
-            facets["integrity"].AsBsonArray[2].AsBsonDocument["$lookup"].AsBsonDocument["from"] =
+            facets["integrity"].AsBsonArray[3].AsBsonDocument["$lookup"].AsBsonDocument["from"] =
                 ratingAggregatesCollectionName;
         }
         else

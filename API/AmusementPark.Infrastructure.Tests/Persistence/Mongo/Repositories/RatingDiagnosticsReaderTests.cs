@@ -24,7 +24,7 @@ public sealed class RatingDiagnosticsReaderTests
         Assert.True(facet.Contains("targetDistribution"));
         Assert.True(facet.Contains("integrity"));
         BsonArray integrity = facet["integrity"].AsBsonArray;
-        Assert.Equal("custom-rating-aggregates", integrity[2]["$lookup"]["from"].AsString);
+        Assert.Equal("custom-rating-aggregates", integrity[3]["$lookup"]["from"].AsString);
         BsonArray distinctValues = facet["distinctValues"].AsBsonArray;
         BsonArray sample = distinctValues[3]["$facet"]["sample"].AsBsonArray;
         Assert.Equal(RatingDiagnosticsReader.DistinctValueSampleLimit, sample[0]["$limit"].AsInt32);
@@ -52,6 +52,34 @@ public sealed class RatingDiagnosticsReaderTests
         BsonArray targetTypes = targetTypeRequirement["$in"].AsBsonArray[1].AsBsonArray;
 
         Assert.Equal(new[] { "Park", "ParkItem" }, targetTypes.Select(static value => value.AsString));
+    }
+
+    [Fact]
+    public void BuildUserRatingsDiagnosticPipeline_WithDuplicateVotes_ShouldCompareAggregateCountToUniqueContributors()
+    {
+        IReadOnlyCollection<BsonDocument> pipeline =
+            RatingDiagnosticsReader.BuildUserRatingsDiagnosticPipeline(
+                "ratingAggregates",
+                Array.Empty<string>(),
+                Array.Empty<string>(),
+                true);
+
+        BsonArray integrity = pipeline.Last()["$facet"]["integrity"].AsBsonArray;
+        BsonDocument contributorKey = integrity[1]["$group"]["_id"].AsBsonDocument;
+        BsonDocument targetGroup = integrity[2]["$group"].AsBsonDocument;
+        BsonDocument integritySummary = integrity[5]["$group"].AsBsonDocument;
+
+        Assert.Equal("$_diagnosticUserText", contributorKey["userId"].AsString);
+        Assert.Equal(1, targetGroup["sourceUniqueContributorCount"]["$sum"].AsInt32);
+        Assert.Equal("$ratingObservationCount", targetGroup["sourceRatingObservationCount"]["$sum"].AsString);
+        Assert.Contains(
+            "$sourceUniqueContributorCount",
+            integritySummary["contributorCountMismatchCount"].ToJson(),
+            StringComparison.Ordinal);
+        Assert.Contains(
+            "$aggregate.ratingCount",
+            integritySummary["contributorCountMismatchCount"].ToJson(),
+            StringComparison.Ordinal);
     }
 
     [Fact]

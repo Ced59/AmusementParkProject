@@ -28,7 +28,7 @@ public sealed class AdminRatingDiagnosticsControllerTests
             new[] { "0.5", "1" },
             false,
             new RatingAnomalySummaryResult(0, 0, 0, 0, 0, 0, 0, 0, 0),
-            new RatingAggregateIntegrityResult(true, true, 8, 0, 0, 0),
+            new RatingAggregateIntegrityResult(true, true, 8, 0, 0, 0, 0),
             new[] { new RatingTargetDistributionResult("Park", "3-9", 2, 12, 12) },
             new[] { new RatingIndexStatusResult("userRatings", "idx", true, true, false, false, true, "{ userId: 1 }", "{ userId: 1 }") });
         Mock<IQueryHandler<GetRatingDiagnosticsQuery, ApplicationResult<RatingDiagnosticsResult>>> handler =

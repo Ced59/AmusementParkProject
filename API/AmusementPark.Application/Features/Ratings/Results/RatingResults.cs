@@ -42,6 +42,7 @@ public sealed record RatingAggregateIntegrityResult(
     long SourceTargetCount,
     long MissingAggregateCount,
     long DivergentAggregateCount,
+    long ContributorCountMismatchCount,
     long OrphanAggregateCount);
 
 public sealed record RatingTargetDistributionResult(

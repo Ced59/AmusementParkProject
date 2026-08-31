@@ -64,6 +64,7 @@ internal static class RatingsHttpMappers
                 SourceTargetCount = value.AggregateIntegrity.SourceTargetCount,
                 MissingAggregateCount = value.AggregateIntegrity.MissingAggregateCount,
                 DivergentAggregateCount = value.AggregateIntegrity.DivergentAggregateCount,
+                ContributorCountMismatchCount = value.AggregateIntegrity.ContributorCountMismatchCount,
                 OrphanAggregateCount = value.AggregateIntegrity.OrphanAggregateCount,
             },
             TargetDistribution = value.TargetDistribution.Select(static item => new RatingTargetDistributionDto
