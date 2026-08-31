@@ -280,6 +280,57 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void EvaluateIndexStatuses_WhenTargetEqualityKeysAreReversedAndDescending_ShouldKeepTheQueryUsable()
+    {
+        BsonDocument aggregateIndex = CreateIndex(
+            RatingDiagnosticsReader.RatingAggregatesTargetIndexName,
+            true,
+            ("targetId", -1),
+            ("targetType", -1));
+
+        IReadOnlyCollection<RatingIndexStatusResult> results = RatingDiagnosticsReader.EvaluateIndexStatuses(
+            "userRatings",
+            Array.Empty<BsonDocument>(),
+            "ratingAggregates",
+            new[] { aggregateIndex });
+
+        RatingIndexStatusResult result = results.Single(static item =>
+            item.Name == RatingDiagnosticsReader.RatingAggregatesTargetIndexName);
+        Assert.True(result.SupportsExpectedQueries);
+        Assert.False(result.MatchesExpectedDefinition);
+    }
+
+    [Fact]
+    public void HasQueryCompatibleTargetIndex_WhenEquivalentIndexHasAnotherName_ShouldReturnTrue()
+    {
+        BsonDocument alternateIndex = CreateIndex(
+            "idx_alternate_target_lookup",
+            false,
+            ("targetId", -1),
+            ("targetType", 1),
+            ("updatedAt", -1));
+
+        bool result = RatingDiagnosticsReader.HasQueryCompatibleTargetIndex(new[] { alternateIndex });
+
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void HasQueryCompatibleTargetIndex_WhenEquivalentIndexIsHidden_ShouldReturnFalse()
+    {
+        BsonDocument alternateIndex = CreateIndex(
+            "idx_alternate_target_lookup",
+            false,
+            ("targetType", 1),
+            ("targetId", 1));
+        alternateIndex.Add("hidden", true);
+
+        bool result = RatingDiagnosticsReader.HasQueryCompatibleTargetIndex(new[] { alternateIndex });
+
+        Assert.False(result);
+    }
+
+    [Fact]
     public void EvaluateIndexStatuses_WhenExpectedKeysAreNotTheLeadingPrefix_ShouldRejectQuerySupport()
     {
         BsonDocument aggregateIndex = CreateIndex(

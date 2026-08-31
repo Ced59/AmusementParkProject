@@ -39,15 +39,10 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
     public async Task<RatingDiagnosticsResult> GetDiagnosticsAsync(CancellationToken cancellationToken)
     {
         long startedAt = Stopwatch.GetTimestamp();
-        IReadOnlyCollection<RatingIndexStatusResult> indexes = await ReadIndexStatusesAsync(cancellationToken);
-        bool canEvaluateSourceIntegrity = HasUsableIndex(
-            indexes,
-            this.settings.RatingAggregatesCollectionName,
-            RatingAggregatesTargetIndexName);
-        bool canEvaluateOrphans = HasUsableIndex(
-            indexes,
-            this.settings.UserRatingsCollectionName,
-            UserRatingsTargetIndexName);
+        RatingIndexAssessment indexAssessment = await ReadIndexAssessmentAsync(cancellationToken);
+        IReadOnlyCollection<RatingIndexStatusResult> indexes = indexAssessment.Statuses;
+        bool canEvaluateSourceIntegrity = indexAssessment.RatingAggregatesTargetLookupSupported;
+        bool canEvaluateOrphans = indexAssessment.UserRatingsTargetLookupSupported;
         EligibleTargetInventory eligibleTargets = await ReadEligibleTargetInventoryAsync(cancellationToken);
         BsonDocument facets = await RunPipelineAsync(
             this.userRatingsCollection,
@@ -522,7 +517,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
             bool supportsExpectedQueries = isPresent
                 && !isHidden
                 && actualKeys is not null
-                && IndexKeysStartWith(actualKeys, expectedIndex.Keys)
+                && SupportsExpectedIndexQueries(expectedIndex, actualKeys)
                 && !HasQueryLimitingIndexOptions(actual!);
             bool matchesExpectedDefinition = isPresent
                 && isUnique == expectedIndex.IsUnique
@@ -547,6 +542,52 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return results;
     }
 
+    internal static bool HasQueryCompatibleTargetIndex(IEnumerable<BsonDocument> indexes)
+    {
+        return indexes.Any(index =>
+            !IsHiddenIndex(index)
+            && !HasQueryLimitingIndexOptions(index)
+            && index.TryGetValue("key", out BsonValue? key)
+            && key.IsBsonDocument
+            && HasLeadingTargetEqualityKeys(key.AsBsonDocument));
+    }
+
+    private static bool SupportsExpectedIndexQueries(ExpectedIndex expectedIndex, BsonDocument actualKeys)
+    {
+        return IsTargetLookupIndex(expectedIndex)
+            ? HasLeadingTargetEqualityKeys(actualKeys)
+            : IndexKeysStartWith(actualKeys, expectedIndex.Keys);
+    }
+
+    private static bool IsTargetLookupIndex(ExpectedIndex expectedIndex)
+    {
+        return string.Equals(expectedIndex.Name, UserRatingsTargetIndexName, StringComparison.Ordinal)
+            || string.Equals(expectedIndex.Name, RatingAggregatesTargetIndexName, StringComparison.Ordinal);
+    }
+
+    private static bool HasLeadingTargetEqualityKeys(BsonDocument actualKeys)
+    {
+        if (actualKeys.ElementCount < 2)
+        {
+            return false;
+        }
+
+        BsonElement first = actualKeys.GetElement(0);
+        BsonElement second = actualKeys.GetElement(1);
+        bool hasExpectedNames = (string.Equals(first.Name, "targetType", StringComparison.Ordinal)
+                && string.Equals(second.Name, "targetId", StringComparison.Ordinal))
+            || (string.Equals(first.Name, "targetId", StringComparison.Ordinal)
+                && string.Equals(second.Name, "targetType", StringComparison.Ordinal));
+        return hasExpectedNames
+            && IsAscendingOrDescending(first.Value)
+            && IsAscendingOrDescending(second.Value);
+    }
+
+    private static bool IsAscendingOrDescending(BsonValue value)
+    {
+        return value.IsNumeric && Math.Abs(value.ToInt32()) == 1;
+    }
+
     private static bool IndexKeysStartWith(BsonDocument actualKeys, BsonDocument expectedPrefix)
     {
         if (actualKeys.ElementCount < expectedPrefix.ElementCount)
@@ -568,14 +609,11 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return true;
     }
 
-    private static bool HasUsableIndex(
-        IEnumerable<RatingIndexStatusResult> indexes,
-        string collection,
-        string name)
+    private static bool IsHiddenIndex(BsonDocument index)
     {
-        return indexes.Any(index => string.Equals(index.Collection, collection, StringComparison.Ordinal)
-            && string.Equals(index.Name, name, StringComparison.Ordinal)
-            && index.SupportsExpectedQueries);
+        return index.TryGetValue("hidden", out BsonValue? hidden)
+            && hidden.IsBoolean
+            && hidden.AsBoolean;
     }
 
     private static bool HasUnexpectedIndexOptions(BsonDocument index)
@@ -688,7 +726,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return ReadInt64(result, "value");
     }
 
-    private async Task<IReadOnlyCollection<RatingIndexStatusResult>> ReadIndexStatusesAsync(
+    private async Task<RatingIndexAssessment> ReadIndexAssessmentAsync(
         CancellationToken cancellationToken)
     {
         IReadOnlyCollection<BsonDocument> userRatingIndexes = await ListIndexesAsync(
@@ -697,11 +735,14 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         IReadOnlyCollection<BsonDocument> ratingAggregateIndexes = await ListIndexesAsync(
             this.ratingAggregatesCollection,
             cancellationToken);
-        return EvaluateIndexStatuses(
-            this.settings.UserRatingsCollectionName,
-            userRatingIndexes,
-            this.settings.RatingAggregatesCollectionName,
-            ratingAggregateIndexes);
+        return new RatingIndexAssessment(
+            EvaluateIndexStatuses(
+                this.settings.UserRatingsCollectionName,
+                userRatingIndexes,
+                this.settings.RatingAggregatesCollectionName,
+                ratingAggregateIndexes),
+            HasQueryCompatibleTargetIndex(userRatingIndexes),
+            HasQueryCompatibleTargetIndex(ratingAggregateIndexes));
     }
 
     private static async Task<IReadOnlyCollection<BsonDocument>> ListIndexesAsync(
@@ -859,6 +900,11 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         string Name,
         bool IsUnique,
         BsonDocument Keys);
+
+    private sealed record RatingIndexAssessment(
+        IReadOnlyCollection<RatingIndexStatusResult> Statuses,
+        bool UserRatingsTargetLookupSupported,
+        bool RatingAggregatesTargetLookupSupported);
 
     private sealed record EligibleTargetInventory(
         IReadOnlySet<string> ParkIds,
