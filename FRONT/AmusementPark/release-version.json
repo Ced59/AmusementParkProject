@@ -1,6 +1,20 @@
 {
-  "version": "4.2.37",
+  "version": "4.2.38",
   "history": [
+    {
+      "version": "4.2.38",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Améliorations générales de fiabilité.",
+        "en": "General reliability improvements.",
+        "de": "Allgemeine Verbesserungen der Zuverlässigkeit.",
+        "nl": "Algemene betrouwbaarheidsverbeteringen.",
+        "it": "Miglioramenti generali dell’affidabilità.",
+        "es": "Mejoras generales de fiabilidad.",
+        "pl": "Ogólne usprawnienia niezawodności.",
+        "pt": "Melhorias gerais de fiabilidade."
+      }
+    },
     {
       "version": "4.2.37",
       "releasedAt": "2026-08-31",
