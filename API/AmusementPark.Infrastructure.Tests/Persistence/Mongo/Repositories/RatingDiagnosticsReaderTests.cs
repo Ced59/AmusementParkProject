@@ -184,6 +184,20 @@ public sealed class RatingDiagnosticsReaderTests
     }
 
     [Fact]
+    public void BuildOrphanAggregatePipeline_ShouldExcludeValidEmptySnapshotsBeforeTheLookup()
+    {
+        IReadOnlyCollection<BsonDocument> pipeline =
+            RatingDiagnosticsReader.BuildOrphanAggregatePipeline("custom-user-ratings");
+
+        Assert.Equal(4, pipeline.Count);
+        BsonDocument initialMatch = pipeline.First()["$match"].AsBsonDocument;
+        Assert.Equal(0, initialMatch["ratingCount"]["$ne"].AsInt32);
+        BsonDocument lookup = pipeline.ElementAt(1)["$lookup"].AsBsonDocument;
+        Assert.Equal("custom-user-ratings", lookup["from"].AsString);
+        Assert.Equal("value", pipeline.Last()["$count"].AsString);
+    }
+
+    [Fact]
     public void CompleteTargetDistribution_ShouldIncludeEveryEligibleTargetWithoutAContributor()
     {
         IReadOnlyCollection<RatingTargetDistributionResult> ratedTargets = new[]

@@ -698,6 +698,15 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 
     private async Task<long> ReadOrphanAggregateCountAsync(CancellationToken cancellationToken)
     {
+        IReadOnlyCollection<BsonDocument> pipeline = BuildOrphanAggregatePipeline(
+            this.settings.UserRatingsCollectionName);
+        BsonDocument result = await RunPipelineAsync(this.ratingAggregatesCollection, pipeline, cancellationToken);
+        return ReadInt64(result, "value");
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildOrphanAggregatePipeline(
+        string userRatingsCollectionName)
+    {
         BsonDocument lookupStage = BsonDocument.Parse(
             """
             {
@@ -712,15 +721,14 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
               }
             }
             """);
-        lookupStage["$lookup"].AsBsonDocument["from"] = this.settings.UserRatingsCollectionName;
-        IReadOnlyCollection<BsonDocument> pipeline = new[]
+        lookupStage["$lookup"].AsBsonDocument["from"] = userRatingsCollectionName;
+        return new[]
         {
+            BsonDocument.Parse("{ \"$match\": { \"ratingCount\": { \"$ne\": 0 } } }"),
             lookupStage,
             BsonDocument.Parse("{ \"$match\": { \"_diagnosticSources\": { \"$size\": 0 } } }"),
             BsonDocument.Parse("{ \"$count\": \"value\" }"),
         };
-        BsonDocument result = await RunPipelineAsync(this.ratingAggregatesCollection, pipeline, cancellationToken);
-        return ReadInt64(result, "value");
     }
 
     private async Task<RatingIndexAssessment> ReadIndexAssessmentAsync(
