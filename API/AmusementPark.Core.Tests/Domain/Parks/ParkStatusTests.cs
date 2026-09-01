@@ -82,6 +82,24 @@ public sealed class ParkStatusTests
     }
 
     [Theory]
+    [InlineData("Operating")]
+    [InlineData("operating")]
+    [InlineData("Open")]
+    [InlineData("OPENED")]
+    [InlineData("En fonctionnement")]
+    [InlineData("en-fonctionnement")]
+    [InlineData(" o_p_e_n ")]
+    public void OperatingAliases_ShouldRemainEligibleForCurrentRankings(string status)
+    {
+        Assert.Equal(
+            ParkItemStatusNormalizer.Operating,
+            ParkItemStatusNormalizer.Normalize(status));
+        Assert.True(ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+            ParkItemCategory.Attraction,
+            status));
+    }
+
+    [Theory]
     [InlineData(ParkItemStatusNormalizer.Operating, false)]
     [InlineData(ParkItemStatusNormalizer.Planned, false)]
     [InlineData(ParkItemStatusNormalizer.UnderConstruction, false)]

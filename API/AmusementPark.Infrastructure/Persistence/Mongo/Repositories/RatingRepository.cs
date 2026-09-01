@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
@@ -17,6 +18,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class RatingRepository : IRatingRepository
 {
+    private static readonly BsonRegularExpression OperatingStatusExpression =
+        BuildOperatingStatusExpression();
+
     private const int RankingCandidateHardLimit = 5000;
     private const int UserRatingSearchHardLimit = 1000;
 
@@ -789,7 +793,7 @@ public sealed class RatingRepository : IRatingRepository
             new BsonDocument
             {
                 { categoryField, ParkItemCategory.Attraction.ToString() },
-                { statusField, ParkItemStatusNormalizer.Operating },
+                { statusField, OperatingStatusExpression },
             },
             new BsonDocument
             {
@@ -799,11 +803,23 @@ public sealed class RatingRepository : IRatingRepository
                     new BsonDocument("$in", new BsonArray
                     {
                         BsonNull.Value,
-                        ParkItemStatusNormalizer.Operating,
+                        new BsonRegularExpression("^\\s*$"),
+                        OperatingStatusExpression,
                     })
                 },
             },
         });
+    }
+
+    private static BsonRegularExpression BuildOperatingStatusExpression()
+    {
+        const string ignoredSeparatorPattern = "[ _'-]*";
+        IEnumerable<string> aliasPatterns = ParkItemStatusNormalizer.NormalizedOperatingStatusAliases
+            .Select(alias => string.Join(
+                ignoredSeparatorPattern,
+                alias.Select(character => Regex.Escape(character.ToString()))));
+        string pattern = $"^\\s*(?:{string.Join("|", aliasPatterns)})\\s*$";
+        return new BsonRegularExpression(pattern, "i");
     }
 
     internal static BsonDocument[] BuildParkRankingCandidatePipeline(

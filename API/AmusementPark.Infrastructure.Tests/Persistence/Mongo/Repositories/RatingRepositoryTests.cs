@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -234,6 +235,71 @@ public sealed class RatingRepositoryTests
         Assert.True(limitIndex < projectionIndex);
         Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
         Assert.DoesNotContain(pipeline, static stage => stage.Contains("$skip"));
+    }
+
+    [Theory]
+    [InlineData("Operating", true)]
+    [InlineData("operating", true)]
+    [InlineData("Open", true)]
+    [InlineData("OPENED", true)]
+    [InlineData("En fonctionnement", true)]
+    [InlineData("en-fonctionnement", true)]
+    [InlineData(" o_p_e_n ", true)]
+    [InlineData("TemporarilyClosed", false)]
+    [InlineData("Planned", false)]
+    public void BuildParkItemRankingCandidatePipeline_ShouldMatchDomainOperatingAliases(
+        string status,
+        bool expected)
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Attraction,
+            "parkItems",
+            "parks",
+            5001);
+        BsonDocument eligibilityMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("$or"));
+        BsonDocument attractionBranch = eligibilityMatch["$or"].AsBsonArray[0].AsBsonDocument;
+        BsonRegularExpression expression = attractionBranch["rankingParkItem.attractionDetails.status"]
+            .AsBsonRegularExpression;
+        Regex regex = new Regex(expression.Pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+        bool domainResult = ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+            ParkItemCategory.Attraction,
+            status);
+
+        Assert.Equal(expected, domainResult);
+        Assert.Equal(domainResult, regex.IsMatch(status));
+    }
+
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_ForNonAttractions_ShouldMatchMissingAndWhitespaceStatuses()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Restaurant,
+            "parkItems",
+            "parks",
+            5001);
+        BsonDocument eligibilityMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("$or"));
+        BsonDocument nonAttractionBranch = eligibilityMatch["$or"].AsBsonArray[1].AsBsonDocument;
+        BsonArray allowedStatuses = nonAttractionBranch["rankingParkItem.attractionDetails.status"]
+            .AsBsonDocument["$in"]
+            .AsBsonArray;
+
+        Assert.Contains(allowedStatuses, static value => value.IsBsonNull);
+        Assert.Contains(
+            allowedStatuses,
+            static value => value.IsBsonRegularExpression
+                && value.AsBsonRegularExpression.Pattern == "^\\s*$");
+        Assert.True(ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+            ParkItemCategory.Restaurant,
+            "   "));
     }
 
     [Fact]

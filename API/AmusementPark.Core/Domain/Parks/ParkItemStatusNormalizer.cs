@@ -5,6 +5,15 @@ namespace AmusementPark.Core.Domain.Parks;
 
 public static class ParkItemStatusNormalizer
 {
+    private static readonly IReadOnlyList<string> OperatingStatusAliasTokens =
+        Array.AsReadOnly(new[]
+        {
+            "operating",
+            "open",
+            "opened",
+            "enfonctionnement",
+        });
+
     public const string Operating = "Operating";
 
     public const string UnderConstruction = "UnderConstruction";
@@ -19,6 +28,9 @@ public static class ParkItemStatusNormalizer
 
     public const string Unknown = "Unknown";
 
+    public static IReadOnlyList<string> NormalizedOperatingStatusAliases =>
+        OperatingStatusAliasTokens;
+
     public static string? Normalize(string? value)
     {
         string normalized = NormalizeToken(value);
@@ -27,9 +39,13 @@ public static class ParkItemStatusNormalizer
             return null;
         }
 
+        if (OperatingStatusAliasTokens.Contains(normalized, StringComparer.Ordinal))
+        {
+            return Operating;
+        }
+
         return normalized switch
         {
-            "operating" or "open" or "opened" or "enfonctionnement" => Operating,
             "underconstruction" or "construction" => UnderConstruction,
             "temporarilyclosed" or "temporaryclosed" or "closedtemporarily" => TemporarilyClosed,
             "closeddefinitively" or "permanentlyclosed" or "definitivelyclosed" or "fermedefinitivement" => ClosedDefinitively,
