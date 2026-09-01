@@ -98,6 +98,30 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildChunkAttemptFilter_ShouldHideChunksFromAStaleWorker()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildChunkAttemptFilter(
+            RankingSnapshotId.Parse("snapshot-current"),
+            expectedBuildAttempt: 4));
+
+        Assert.Equal("snapshot-current", rendered["snapshotId"].AsString);
+        Assert.Equal(4, rendered["buildAttempt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildChunkIdentityAttemptFilter_ShouldDeleteOnlyTheStaleInsertedChunk()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildChunkIdentityAttemptFilter(
+            RankingSnapshotId.Parse("snapshot-current"),
+            chunkIndex: 2,
+            expectedBuildAttempt: 4));
+
+        Assert.Equal("snapshot-current", rendered["snapshotId"].AsString);
+        Assert.Equal(2, rendered["chunkIndex"].AsInt32);
+        Assert.Equal(4, rendered["buildAttempt"].AsInt32);
+    }
+
+    [Fact]
     public void BuildRetentionCandidateFilter_ShouldKeepCurrentAndRollbackSnapshots()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(
@@ -106,16 +130,25 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             {
                 RankingSnapshotId.Parse("snapshot-current"),
                 RankingSnapshotId.Parse("snapshot-previous"),
-            }));
+            },
+            highestPublishedSourceRevision: 42));
 
         Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
+        BsonArray terminalConditions = rendered["$or"].AsBsonArray;
         Assert.Equal(
             new[]
             {
                 nameof(RankingSnapshotStatus.Superseded),
                 nameof(RankingSnapshotStatus.Failed),
             },
-            rendered["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+            terminalConditions[0]["status"].AsBsonDocument["$in"].AsBsonArray
+                .Select(static item => item.AsString));
+        Assert.Equal(
+            nameof(RankingSnapshotStatus.Validated),
+            terminalConditions[1]["status"].AsString);
+        Assert.Equal(
+            42,
+            terminalConditions[1]["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
         Assert.Equal(
             new[] { "snapshot-current", "snapshot-previous" },
             rendered["_id"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
@@ -129,6 +162,18 @@ public sealed class RankingSnapshotMongoDefinitionsTests
 
         Assert.Equal("snapshot-old", rendered["_id"].AsString);
         Assert.Equal(nameof(RankingSnapshotStatus.Superseded), rendered["status"].AsString);
+    }
+
+    [Fact]
+    public void BuildStaleValidatedHeaderPruneFilter_ShouldFenceTheLiveHighWater()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildStaleValidatedHeaderPruneFilter(
+            RankingSnapshotId.Parse("snapshot-stale"),
+            highestPublishedSourceRevision: 42));
+
+        Assert.Equal("snapshot-stale", rendered["_id"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Validated), rendered["status"].AsString);
+        Assert.Equal(42, rendered["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
     }
 
     [Theory]
