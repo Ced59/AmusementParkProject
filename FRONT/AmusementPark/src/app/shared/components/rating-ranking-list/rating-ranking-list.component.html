@@ -1,7 +1,9 @@
 <div class="rating-ranking-list">
   @for (item of items; track item.id) {
     <article class="rating-ranking-list__item">
-      <span class="rating-ranking-list__rank">#{{ item.rank }}</span>
+      @if (item.rank !== null) {
+        <span class="rating-ranking-list__rank">#{{ item.rank }}</span>
+      }
 
       <span class="rating-ranking-list__main">
         @if (item.route; as route) {

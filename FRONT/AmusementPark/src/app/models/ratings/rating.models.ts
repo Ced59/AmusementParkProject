@@ -43,6 +43,7 @@ export interface RatingSummary {
   averageRating: number;
   bayesianScore: number;
   rank?: number | null;
+  generatedAtUtc?: string | null;
   evidence?: RankingEvidence | null;
   methodologyVersion?: string | null;
 }
@@ -133,7 +134,7 @@ export interface ParkRatingRankingCategory {
 }
 
 export interface ParkRatingRanking {
-  rank: number;
+  rank: number | null;
   parkId: string;
   parkName: string;
   /** Compatibility alias for observations retained in the composed park score. */
@@ -147,11 +148,12 @@ export interface ParkRatingRanking {
   itemsAverageRating: number;
   evidence?: RankingEvidence | null;
   methodologyVersion?: string | null;
+  generatedAtUtc?: string | null;
   categories: ParkRatingRankingCategory[];
 }
 
 export interface ParkItemRatingRanking {
-  rank: number;
+  rank: number | null;
   targetId: string;
   targetName: string;
   parkId: string;
@@ -166,6 +168,7 @@ export interface ParkItemRatingRanking {
   bayesianScore: number;
   evidence?: RankingEvidence | null;
   methodologyVersion?: string | null;
+  generatedAtUtc?: string | null;
 }
 
 export interface UserParkRatingRankingCategory {

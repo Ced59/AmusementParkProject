@@ -39,6 +39,7 @@ public sealed class RatingsHttpMappersTests
             3.88d)
         {
             Rank = 2,
+            GeneratedAtUtc = new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc),
             Evidence = new RankingEvidenceResult(
                 RankingEvidenceLevel.Eligible,
                 true,
@@ -63,6 +64,7 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal(4.35d, dto.AverageRating);
         Assert.Equal(3.88d, dto.BayesianScore);
         Assert.Equal(2, dto.Rank);
+        Assert.Equal(new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc), dto.GeneratedAtUtc);
         Assert.Equal("Eligible", dto.Evidence?.Level);
         Assert.True(dto.Evidence?.IsEligibleForMainRanking);
         Assert.Null(dto.Evidence?.IneligibilityReason);
@@ -103,6 +105,7 @@ public sealed class RatingsHttpMappersTests
                     })
             })
         {
+            GeneratedAtUtc = new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc),
             Evidence = new RankingEvidenceResult(
                 RankingEvidenceLevel.Eligible,
                 true,
@@ -132,6 +135,7 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal(5, dto.Evidence?.EligibleItemCount);
         Assert.Equal(2, dto.Evidence?.EligibleCategoryCount);
         Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
+        Assert.Equal(new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc), dto.GeneratedAtUtc);
         Assert.Single(dto.Categories);
         ParkRatingRankingCategoryDto category = dto.Categories.Single();
         Assert.Equal("Attraction", category.ParkItemCategory);
@@ -173,6 +177,7 @@ public sealed class RatingsHttpMappersTests
             4.5d,
             4.2d)
         {
+            GeneratedAtUtc = new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc),
             Evidence = new RankingEvidenceResult(
                 RankingEvidenceLevel.Provisional,
                 false,
@@ -201,5 +206,6 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal("TooFewUniqueContributors", dto.Evidence?.IneligibilityReason);
         Assert.Equal(10, dto.Evidence?.NextThreshold);
         Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
+        Assert.Equal(new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc), dto.GeneratedAtUtc);
     }
 }

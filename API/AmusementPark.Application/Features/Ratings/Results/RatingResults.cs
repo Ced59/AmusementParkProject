@@ -10,7 +10,11 @@ public sealed record RatingSummaryResult(
     double AverageRating,
     double BayesianScore)
 {
+    private RatingMethodologyVersion? methodologyVersion;
+
     public int? Rank { get; init; }
+
+    public DateTime? GeneratedAtUtc { get; init; }
 
     public long RatingObservationCount => this.Evidence?.RatingObservationCount ?? this.RatingCount;
 
@@ -18,7 +22,11 @@ public sealed record RatingSummaryResult(
 
     public RankingEvidenceResult? Evidence { get; init; }
 
-    public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
+    public RatingMethodologyVersion? MethodologyVersion
+    {
+        get => this.methodologyVersion ?? this.Evidence?.MethodologyVersion;
+        init => this.methodologyVersion = value;
+    }
 }
 
 public sealed record RankingEvidenceResult(
@@ -180,7 +188,7 @@ public sealed record ParkRatingRankingCategoryResult(
     IReadOnlyCollection<ParkRatingRankingItemResult> Items);
 
 public sealed record ParkRatingRankingResult(
-    int Rank,
+    int? Rank,
     string ParkId,
     string ParkName,
     long RatingCount,
@@ -198,10 +206,12 @@ public sealed record ParkRatingRankingResult(
     public RankingEvidenceResult? Evidence { get; init; }
 
     public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
+
+    public DateTime? GeneratedAtUtc { get; init; }
 }
 
 public sealed record ParkItemRatingRankingResult(
-    int Rank,
+    int? Rank,
     string TargetId,
     string TargetName,
     string ParkId,
@@ -219,6 +229,8 @@ public sealed record ParkItemRatingRankingResult(
     public RankingEvidenceResult? Evidence { get; init; }
 
     public RatingMethodologyVersion? MethodologyVersion => this.Evidence?.MethodologyVersion;
+
+    public DateTime? GeneratedAtUtc { get; init; }
 }
 
 public sealed record UserParkRatingRankingCategoryResult(

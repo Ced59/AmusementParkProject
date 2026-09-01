@@ -1,6 +1,8 @@
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
+using AmusementPark.Infrastructure.Configuration.Ratings;
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
 using AmusementPark.Infrastructure.Services.Ratings;
@@ -70,5 +72,25 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             static service =>
                 service.ServiceType == typeof(IHostedService) &&
                 service.ImplementationType == typeof(RatingRankingRebuildReconciliationBackgroundService));
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenEligibilityFlagIsConfigured_ShouldExposeItThroughApplicationPort()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["Ratings:Eligibility:Enabled"] = "true",
+            })
+            .Build();
+
+        services.AddInfrastructure(configuration);
+
+        using ServiceProvider provider = services.BuildServiceProvider();
+        IRatingRankingFeatureFlags flags = provider.GetRequiredService<IRatingRankingFeatureFlags>();
+        RatingRankingFeatureSettings settings = provider.GetRequiredService<RatingRankingFeatureSettings>();
+        Assert.True(flags.EligibilityEnabled);
+        Assert.True(settings.Enabled);
     }
 }

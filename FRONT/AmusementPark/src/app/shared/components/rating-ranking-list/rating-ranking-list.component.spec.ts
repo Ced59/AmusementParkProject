@@ -61,4 +61,23 @@ describe('RatingRankingListComponent', () => {
 
     expect(changes).toEqual([{ ratingId: 'rating-1', value: 4 }]);
   });
+
+  it('does not render a misleading place when the item has no public rank', () => {
+    fixture.componentRef.setInput('items', [
+      {
+        id: 'item-unranked',
+        rank: null,
+        name: 'Provisional attraction',
+        score: 4.5,
+        ratingCount: 2,
+        route: null,
+        parkName: 'Demo Park',
+        parkRoute: null,
+      },
+    ]);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.rating-ranking-list__rank')).toBeNull();
+    expect(fixture.nativeElement.textContent).not.toContain('#null');
+  });
 });

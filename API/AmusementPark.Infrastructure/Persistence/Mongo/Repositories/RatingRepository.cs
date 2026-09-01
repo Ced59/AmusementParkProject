@@ -361,6 +361,60 @@ public sealed class RatingRepository : IRatingRepository
         return aggregate;
     }
 
+    public async Task<IReadOnlyCollection<RatingAggregate>> GetAggregatesAsync(
+        RatingTargetType targetType,
+        IReadOnlyCollection<string> targetIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(targetIds);
+        List<string> normalizedTargetIds = targetIds
+            .Where(static targetId => !string.IsNullOrWhiteSpace(targetId))
+            .Select(static targetId => targetId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .Take(RankingCandidateHardLimit + 1)
+            .ToList();
+        if (normalizedTargetIds.Count > RankingCandidateHardLimit)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetIds));
+        }
+
+        if (normalizedTargetIds.Count == 0)
+        {
+            return Array.Empty<RatingAggregate>();
+        }
+
+        FilterDefinition<RatingAggregateDocument> filter =
+            Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, targetType)
+            & Builders<RatingAggregateDocument>.Filter.In(document => document.TargetId, normalizedTargetIds)
+            & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
+        List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection
+            .Find(filter)
+            .ToListAsync(cancellationToken);
+        List<RatingAggregate> aggregates = documents
+            .Select(static document => document.ToDomain())
+            .ToList();
+        IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts = await this.aggregateSourceReader.ReadAsync(
+            aggregates.Select(static aggregate => new RatingAggregateSourceTarget(
+                    aggregate.TargetType,
+                    aggregate.TargetId))
+                .ToList(),
+            cancellationToken);
+        IReadOnlyDictionary<string, RatingAggregateSourceFact> sourceFactsByTargetId = sourceFacts
+            .GroupBy(static fact => fact.TargetId, StringComparer.Ordinal)
+            .Where(static group => group.Count() == 1)
+            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
+        foreach (RatingAggregate aggregate in aggregates)
+        {
+            sourceFactsByTargetId.TryGetValue(
+                aggregate.TargetId,
+                out RatingAggregateSourceFact? sourceFact);
+            aggregate.SourceIntegrityIsValid =
+                RatingAggregateSourceReader.TryVerifyAndHydrateProjection(aggregate, sourceFact);
+        }
+
+        return aggregates;
+    }
+
     private async Task<UserRatingDocumentMutationResult> UpsertUserRatingDocumentAsync(
         UserRating rating,
         string mutationToken,

@@ -34,6 +34,7 @@ internal static class RatingsHttpMappers
             AverageRating = value.AverageRating,
             BayesianScore = value.BayesianScore,
             Rank = value.Rank,
+            GeneratedAtUtc = value.GeneratedAtUtc,
             Evidence = value.Evidence?.ToHttp(),
             MethodologyVersion = value.MethodologyVersion?.ToString(),
         };
@@ -162,6 +163,7 @@ internal static class RatingsHttpMappers
             ItemsAverageRating = value.ItemsAverageRating,
             Evidence = value.Evidence?.ToHttp(),
             MethodologyVersion = value.MethodologyVersion?.ToString(),
+            GeneratedAtUtc = value.GeneratedAtUtc,
             Categories = value.Categories.Select(static category => category.ToHttp()).ToList(),
         };
     }
@@ -184,6 +186,7 @@ internal static class RatingsHttpMappers
             BayesianScore = value.BayesianScore,
             Evidence = value.Evidence?.ToHttp(),
             MethodologyVersion = value.MethodologyVersion?.ToString(),
+            GeneratedAtUtc = value.GeneratedAtUtc,
         };
     }
 
