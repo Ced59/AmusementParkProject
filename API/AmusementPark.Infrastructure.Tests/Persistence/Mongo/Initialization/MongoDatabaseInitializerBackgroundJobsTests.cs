@@ -77,6 +77,12 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         CreateIndexModel<DurableBackgroundJobDocument> diagnostics = Assert.Single(
             indexes,
             static index => string.Equals(index.Options.Name, "idx_background_jobs_diagnostics", StringComparison.Ordinal));
+        CreateIndexModel<DurableBackgroundJobDocument> terminalRevision = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                "idx_background_jobs_terminal_revision",
+                StringComparison.Ordinal));
 
         Assert.Equal(
             new BsonDocument { { "kind", 1 }, { "priority", -1 }, { "notBeforeUtc", 1 }, { "createdAt", 1 } },
@@ -90,6 +96,15 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
         Assert.Equal(new BsonDocument { { "status", 1 }, { "updatedAt", -1 } }, Render(statusDiagnostics.Keys));
         Assert.Equal(new BsonDocument { { "kind", 1 }, { "updatedAt", -1 } }, Render(kindDiagnostics.Keys));
         Assert.Equal(new BsonDocument { { "kind", 1 }, { "status", 1 }, { "updatedAt", -1 } }, Render(diagnostics.Keys));
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "kind", 1 },
+                { "naturalKey", 1 },
+                { "status", 1 },
+                { "requestedRevision", 1 },
+            },
+            Render(terminalRevision.Keys));
 
         string runnableFilter = Render(runnable.Options.PartialFilterExpression!).ToJson();
         Assert.Contains(DurableBackgroundJobStatus.Pending.ToString(), runnableFilter, StringComparison.Ordinal);

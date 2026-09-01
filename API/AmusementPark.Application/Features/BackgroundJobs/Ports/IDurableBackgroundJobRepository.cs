@@ -47,6 +47,12 @@ public interface IDurableBackgroundJobRepository
 
     Task<int> ReleaseExpiredLeasesAsync(int maximumCount, CancellationToken cancellationToken);
 
+    Task<bool> HasDeadLetteredRevisionAsync(
+        string kind,
+        string naturalKey,
+        long requestedRevision,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<DurableBackgroundJobDiagnosticItem>> ListDiagnosticsAsync(
         DurableBackgroundJobDiagnosticQuery query,
         CancellationToken cancellationToken);

@@ -33,7 +33,10 @@ internal static class RatingRankingMutationCompletion
                     cancellationToken);
             if (targetType != RatingTargetType.ParkItem)
             {
-                return new RatingRankingPreparedMutation(currentMetadata, preparation);
+                return new RatingRankingPreparedMutation(
+                    currentMetadata,
+                    preparation,
+                    Array.Empty<ParkItemCategory>());
             }
 
             RatingTargetMetadataResult? authoritativeMetadata;
@@ -57,7 +60,19 @@ internal static class RatingRankingMutationCompletion
 
             if (HasEquivalentRankingMetadata(currentMetadata, authoritativeMetadata))
             {
-                return new RatingRankingPreparedMutation(authoritativeMetadata, preparation);
+                IReadOnlyCollection<ParkItemCategory> protectedCategories = new[]
+                    {
+                        authoritativeMetadata?.ParkItemCategory,
+                        retainedCategory,
+                    }
+                    .Where(static category => category.HasValue)
+                    .Select(static category => category!.Value)
+                    .Distinct()
+                    .ToArray();
+                return new RatingRankingPreparedMutation(
+                    authoritativeMetadata,
+                    preparation,
+                    protectedCategories);
             }
 
             await rankingMutationGuard.CompleteMutationAsync(
@@ -81,6 +96,68 @@ internal static class RatingRankingMutationCompletion
             CancellationToken.None);
     }
 
+    public static async Task CompleteAfterWriteAsync(
+        RatingTargetType targetType,
+        string targetId,
+        RatingRankingPreparedMutation preparedMutation,
+        bool sourceChanged,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        IRatingRankingMutationGuard rankingMutationGuard)
+    {
+        RatingRankingMutationPreparation? finalCategoryPreparation = null;
+        try
+        {
+            if (sourceChanged && targetType == RatingTargetType.ParkItem)
+            {
+                RatingTargetMetadataResult? finalMetadata = await RatingTargetMetadataResolver.ResolveAsync(
+                    targetType,
+                    targetId,
+                    parkRepository,
+                    parkItemRepository,
+                    CancellationToken.None);
+                ParkItemCategory? finalCategory = finalMetadata?.ParkItemCategory;
+                if (finalCategory.HasValue && !ProtectsCategory(preparedMutation, finalCategory.Value))
+                {
+                    finalCategoryPreparation = await rankingMutationGuard.PrepareMutationAsync(
+                        targetType,
+                        finalCategory,
+                        null,
+                        CancellationToken.None);
+                }
+            }
+        }
+        catch
+        {
+            await CompleteAsync(preparedMutation.Preparation, sourceChanged, rankingMutationGuard);
+            throw;
+        }
+
+        try
+        {
+            await CompleteAsync(preparedMutation.Preparation, sourceChanged, rankingMutationGuard);
+        }
+        finally
+        {
+            if (finalCategoryPreparation is not null)
+            {
+                await CompleteAsync(
+                    finalCategoryPreparation,
+                    sourceChanged,
+                    rankingMutationGuard);
+            }
+        }
+    }
+
+    private static bool ProtectsCategory(
+        RatingRankingPreparedMutation preparedMutation,
+        ParkItemCategory category)
+    {
+        RankingScopeDefinition? categoryScope = CanonicalRankingScopes.PublicItemCategories
+            .SingleOrDefault(definition => definition.Filter.ParkItemCategory == category);
+        return categoryScope is null || preparedMutation.ProtectedCategories.Contains(category);
+    }
+
     private static bool HasEquivalentRankingMetadata(
         RatingTargetMetadataResult? observed,
         RatingTargetMetadataResult? authoritative)
@@ -101,4 +178,5 @@ internal static class RatingRankingMutationCompletion
 
 internal sealed record RatingRankingPreparedMutation(
     RatingTargetMetadataResult? Metadata,
-    RatingRankingMutationPreparation Preparation);
+    RatingRankingMutationPreparation Preparation,
+    IReadOnlyCollection<ParkItemCategory> ProtectedCategories);

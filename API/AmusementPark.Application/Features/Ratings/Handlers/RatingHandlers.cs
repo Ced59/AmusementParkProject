@@ -152,9 +152,13 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             this.ratingRankProvider.Invalidate();
         }
 
-        await RatingRankingMutationCompletion.CompleteAsync(
-            preparedMutation.Preparation,
+        await RatingRankingMutationCompletion.CompleteAfterWriteAsync(
+            metadata.TargetType,
+            metadata.TargetId,
+            preparedMutation,
             mutation.SourceChanged,
+            this.parkRepository,
+            this.parkItemRepository,
             this.rankingMutationGuard);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
@@ -272,9 +276,13 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             this.ratingRankProvider.Invalidate();
         }
 
-        await RatingRankingMutationCompletion.CompleteAsync(
-            preparedMutation.Preparation,
+        await RatingRankingMutationCompletion.CompleteAfterWriteAsync(
+            command.TargetType,
+            targetId,
+            preparedMutation,
             mutation.SourceChanged,
+            this.parkRepository,
+            this.parkItemRepository,
             this.rankingMutationGuard);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(

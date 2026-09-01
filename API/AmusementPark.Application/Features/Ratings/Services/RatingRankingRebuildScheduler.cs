@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Ratings;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.Ratings.Services;
 
@@ -13,17 +14,20 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
     private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRankingSnapshotRepository snapshotRepository;
     private readonly IRankingScopeRegistry scopeRegistry;
+    private readonly ILogger<RatingRankingRebuildScheduler> logger;
 
     public RatingRankingRebuildScheduler(
         IDurableBackgroundJobRepository backgroundJobRepository,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRankingSnapshotRepository snapshotRepository,
-        IRankingScopeRegistry scopeRegistry)
+        IRankingScopeRegistry scopeRegistry,
+        ILogger<RatingRankingRebuildScheduler> logger)
     {
         this.backgroundJobRepository = backgroundJobRepository;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.snapshotRepository = snapshotRepository;
         this.scopeRegistry = scopeRegistry;
+        this.logger = logger;
     }
 
     public async Task ScheduleIfOutstandingAsync(
@@ -60,23 +64,37 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
     {
         foreach (RankingScopeDefinition scope in this.scopeRegistry.Definitions)
         {
-            RatingRankingSourceRevision? sourceRevision = await this.sourceRevisionRepository.GetAsync(
-                scope.Key,
-                cancellationToken);
-            if (sourceRevision is not null && !sourceRevision.IsRebuildable)
+            try
             {
-                continue;
-            }
+                RatingRankingSourceRevision? sourceRevision = await this.sourceRevisionRepository.GetAsync(
+                    scope.Key,
+                    cancellationToken);
+                if (sourceRevision is not null && !sourceRevision.IsRebuildable)
+                {
+                    continue;
+                }
 
-            long requestedRevision = sourceRevision?.Revision ?? 0;
-            bool isCovered = await this.IsCoveredAsync(
-                scope,
-                sourceRevision,
-                requestedRevision,
-                cancellationToken);
-            if (!isCovered)
+                long requestedRevision = sourceRevision?.Revision ?? 0;
+                bool isCovered = await this.IsCoveredAsync(
+                    scope,
+                    sourceRevision,
+                    requestedRevision,
+                    cancellationToken);
+                if (!isCovered)
+                {
+                    await this.EnqueueAsync(scope, requestedRevision, cancellationToken);
+                }
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
-                await this.EnqueueAsync(scope, requestedRevision, cancellationToken);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to reconcile ranking rebuild scope {ScopeKey}; remaining scopes will continue.",
+                    scope.Key.Value);
             }
         }
     }
@@ -97,9 +115,18 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
             scope.Key,
             cancellationToken);
-        return pointer is not null
+        if (pointer is not null
             && pointer.MethodologyVersion == scope.MethodologyVersion
-            && pointer.HighestPublishedSourceRevision >= requestedRevision;
+            && pointer.HighestPublishedSourceRevision >= requestedRevision)
+        {
+            return true;
+        }
+
+        return await this.backgroundJobRepository.HasDeadLetteredRevisionAsync(
+            RatingRankingRebuildScopeJob.Kind,
+            RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
+            requestedRevision,
+            cancellationToken);
     }
 
     private async Task EnqueueAsync(

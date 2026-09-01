@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Ratings;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
@@ -22,6 +23,13 @@ public sealed class RatingRankingRebuildSchedulerTests
         CoalesceBackgroundJobRequest? capturedRequest = null;
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
+                RatingRankingRebuildScopeJob.Kind,
+                "ratings.rebuild-scope:parks:global",
+                12,
+                CancellationToken.None))
+            .ReturnsAsync(false);
         jobs
             .Setup(repository => repository.CoalesceAsync(
                 It.IsAny<CoalesceBackgroundJobRequest>(),
@@ -95,6 +103,13 @@ public sealed class RatingRankingRebuildSchedulerTests
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         jobs
+            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
+                RatingRankingRebuildScopeJob.Kind,
+                "ratings.rebuild-scope:parks:global",
+                13,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        jobs
             .Setup(repository => repository.CoalesceAsync(
                 It.Is<CoalesceBackgroundJobRequest>(request => request.RequestedRevision == 13),
                 CancellationToken.None))
@@ -155,6 +170,13 @@ public sealed class RatingRankingRebuildSchedulerTests
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
+                RatingRankingRebuildScopeJob.Kind,
+                "ratings.rebuild-scope:parks:global",
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(false);
         jobs
             .Setup(repository => repository.CoalesceAsync(
                 It.Is<CoalesceBackgroundJobRequest>(request =>
@@ -280,6 +302,91 @@ public sealed class RatingRankingRebuildSchedulerTests
         snapshots.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task ScheduleIfOutstandingAsync_WhenRevisionWasDeadLettered_ShouldNotRequeueIt()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(scope.Key, 12, NowUtc);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
+                RatingRankingRebuildScopeJob.Kind,
+                "ratings.rebuild-scope:parks:global",
+                12,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots
+            .Setup(repository => repository.GetPointerAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync((RankingPublicationPointer?)null);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+
+        jobs.VerifyAll();
+        revisions.VerifyNoOtherCalls();
+        snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ScheduleOutstandingAsync_WhenOneScopeFails_ShouldContinueWithRemainingScopes()
+    {
+        RankingScopeDefinition failingScope = CanonicalRankingScopes.GlobalParks;
+        RankingScopeDefinition healthyScope = CanonicalRankingScopes.PublicItemCategories[0];
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
+                RatingRankingRebuildScopeJob.Kind,
+                RatingRankingRebuildScopeJob.BuildNaturalKey(healthyScope.Key),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        jobs
+            .Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
+                    request.NaturalKey == RatingRankingRebuildScopeJob.BuildNaturalKey(healthyScope.Key)
+                    && request.RequestedRevision == 0),
+                CancellationToken.None))
+            .ReturnsAsync((CoalesceBackgroundJobRequest request, CancellationToken _) => CreateJob(request));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.GetAsync(failingScope.Key, CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Invalid persisted revision"));
+        revisions
+            .Setup(repository => repository.GetAsync(healthyScope.Key, CancellationToken.None))
+            .ReturnsAsync((RatingRankingSourceRevision?)null);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots
+            .Setup(repository => repository.GetPointerAsync(healthyScope.Key, CancellationToken.None))
+            .ReturnsAsync((RankingPublicationPointer?)null);
+        RankingScopeRegistry registry = new RankingScopeRegistry(
+            "test-scopes",
+            new[] { failingScope, healthyScope });
+        RatingRankingRebuildScheduler scheduler = new RatingRankingRebuildScheduler(
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object,
+            registry,
+            NullLogger<RatingRankingRebuildScheduler>.Instance);
+
+        await scheduler.ScheduleOutstandingAsync(CancellationToken.None);
+
+        jobs.VerifyAll();
+        revisions.VerifyAll();
+        snapshots.VerifyAll();
+    }
+
     private static RatingRankingRebuildScheduler CreateScheduler(
         RankingScopeDefinition scope,
         IDurableBackgroundJobRepository jobs,
@@ -287,7 +394,12 @@ public sealed class RatingRankingRebuildSchedulerTests
         IRankingSnapshotRepository snapshots)
     {
         RankingScopeRegistry registry = new RankingScopeRegistry("test-scopes", new[] { scope });
-        return new RatingRankingRebuildScheduler(jobs, revisions, snapshots, registry);
+        return new RatingRankingRebuildScheduler(
+            jobs,
+            revisions,
+            snapshots,
+            registry,
+            NullLogger<RatingRankingRebuildScheduler>.Instance);
     }
 
     private static DurableBackgroundJob CreateJob(CoalesceBackgroundJobRequest request)

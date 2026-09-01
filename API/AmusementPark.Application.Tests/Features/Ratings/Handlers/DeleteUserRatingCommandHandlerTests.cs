@@ -83,12 +83,22 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 Name = "Demo Restaurant",
                 Category = ParkItemCategory.Restaurant,
                 Type = ParkItemType.Restaurant,
+            })
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Hotel",
+                Category = ParkItemCategory.Hotel,
+                Type = ParkItemType.Hotel,
             });
         Mock<IRatingRankingMutationGuard> rankingMutationGuard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
             Array.Empty<RatingRankingMutationLease>());
         RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation finalCategoryPreparation = new RatingRankingMutationPreparation(
             Array.Empty<RatingRankingMutationLease>());
         rankingMutationGuard
             .Setup(value => value.PrepareMutationAsync(
@@ -113,6 +123,19 @@ public sealed class DeleteUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(value => value.CompleteMutationAsync(
                 authoritativePreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Hotel,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(finalCategoryPreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                finalCategoryPreparation,
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);

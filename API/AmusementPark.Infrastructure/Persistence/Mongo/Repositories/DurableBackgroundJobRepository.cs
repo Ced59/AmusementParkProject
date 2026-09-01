@@ -459,6 +459,29 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         return checked((int)result.ModifiedCount);
     }
 
+    public async Task<bool> HasDeadLetteredRevisionAsync(
+        string kind,
+        string naturalKey,
+        long requestedRevision,
+        CancellationToken cancellationToken)
+    {
+        string normalizedKind = NormalizeRequired(kind, nameof(kind));
+        string normalizedNaturalKey = NormalizeRequired(naturalKey, nameof(naturalKey));
+        if (requestedRevision < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(requestedRevision));
+        }
+
+        long count = await this.collection.CountDocumentsAsync(
+            BuildDeadLetteredRevisionFilter(
+                normalizedKind,
+                normalizedNaturalKey,
+                requestedRevision),
+            new CountOptions { Limit = 1 },
+            cancellationToken);
+        return count > 0;
+    }
+
     public async Task<IReadOnlyCollection<DurableBackgroundJobDiagnosticItem>> ListDiagnosticsAsync(
         DurableBackgroundJobDiagnosticQuery query,
         CancellationToken cancellationToken)
