@@ -47,6 +47,12 @@ public sealed class RankingSnapshotIntegrityValidator
                 return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.ChunkIndexMismatch);
             }
 
+            if (chunk.BuildAttempt != header.BuildAttempt)
+            {
+                return RankingSnapshotIntegrityResult.Invalid(
+                    RankingSnapshotErrorCodes.BuildAttemptMismatch);
+            }
+
             int expectedChunkEntryCount = chunkIndex == header.ChunkCount - 1
                 ? header.EligibleEntryCount - (chunkIndex * header.ChunkSize)
                 : header.ChunkSize;

@@ -176,6 +176,7 @@ public sealed class RankingSnapshotModelsTests
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-1"),
             null,
+            null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
             sourceRevision: 4,
             highestPublishedSourceRevision: 4,
@@ -190,10 +191,26 @@ public sealed class RankingSnapshotModelsTests
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-1"),
             null,
+            null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
             sourceRevision: 5,
             highestPublishedSourceRevision: 4,
             version: 1,
+            NowUtc));
+    }
+
+    [Fact]
+    public void Pointer_WhenPreviousSnapshotTimestampIsMissing_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentException>(() => new RankingPublicationPointer(
+            RankingScopeKey.Parse("parks:global"),
+            RankingSnapshotId.Parse("snapshot-2"),
+            RankingSnapshotId.Parse("snapshot-1"),
+            previousSnapshotPublishedAtUtc: null,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            sourceRevision: 5,
+            highestPublishedSourceRevision: 5,
+            version: 2,
             NowUtc));
     }
 

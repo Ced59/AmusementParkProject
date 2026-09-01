@@ -55,6 +55,9 @@ public sealed class RankingSnapshotHeaderDocument : MongoDocumentBase
     [BsonElement("reconciledPointerVersion")]
     [BsonIgnoreIfNull]
     public long? ReconciledPointerVersion { get; set; }
+
+    [BsonElement("buildAttempt")]
+    public int BuildAttempt { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -80,6 +83,9 @@ public sealed class RankingSnapshotChunkDocument : MongoDocumentBase
 
     [BsonElement("entryCount")]
     public int EntryCount { get; set; }
+
+    [BsonElement("buildAttempt")]
+    public int BuildAttempt { get; set; }
 
     [BsonElement("checksum")]
     public string Checksum { get; set; } = string.Empty;
@@ -154,6 +160,10 @@ public sealed class RankingPublicationPointerDocument : MongoDocumentBase
     [BsonElement("previousSnapshotId")]
     [BsonIgnoreIfNull]
     public string? PreviousSnapshotId { get; set; }
+
+    [BsonElement("previousSnapshotPublishedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? PreviousSnapshotPublishedAtUtc { get; set; }
 
     [BsonElement("methodologyVersion")]
     public string MethodologyVersion { get; set; } = string.Empty;

@@ -22,7 +22,8 @@ internal static class RankingSnapshotMongoMapper
             EnsureUtc(document.GeneratedAtUtc),
             EnsureOptionalUtc(document.ValidatedAtUtc),
             EnsureOptionalUtc(document.PublishedAtUtc),
-            document.FailureCode);
+            document.FailureCode,
+            NormalizeBuildAttempt(document.BuildAttempt));
     }
 
     public static RankingSnapshotChunk ToDomain(
@@ -37,7 +38,8 @@ internal static class RankingSnapshotMongoMapper
             RankingSnapshotId.Parse(document.SnapshotId),
             document.ChunkIndex,
             entries,
-            RankingSnapshotChecksum.Parse(document.Checksum));
+            RankingSnapshotChecksum.Parse(document.Checksum),
+            NormalizeBuildAttempt(document.BuildAttempt));
     }
 
     public static RankingPublicationPointer ToDomain(this RankingPublicationPointerDocument document)
@@ -49,6 +51,7 @@ internal static class RankingSnapshotMongoMapper
             string.IsNullOrWhiteSpace(document.PreviousSnapshotId)
                 ? null
                 : RankingSnapshotId.Parse(document.PreviousSnapshotId),
+            ResolvePreviousSnapshotPublishedAt(document),
             RatingMethodologyVersion.Parse(document.MethodologyVersion),
             document.SourceRevision,
             Math.Max(document.SourceRevision, document.HighestPublishedSourceRevision),
@@ -71,6 +74,7 @@ internal static class RankingSnapshotMongoMapper
             FirstPosition = chunk.FirstPosition,
             LastPosition = chunk.LastPosition,
             EntryCount = chunk.Entries.Count,
+            BuildAttempt = chunk.BuildAttempt,
             Checksum = chunk.Checksum.Value,
             Entries = chunk.Entries.Select(static entry => entry.ToDocument()).ToList(),
             CreatedAt = nowUtc,
@@ -99,6 +103,7 @@ internal static class RankingSnapshotMongoMapper
             ValidatedAtUtc = header.ValidatedAtUtc,
             PublishedAtUtc = header.PublishedAtUtc,
             FailureCode = header.FailureCode,
+            BuildAttempt = header.BuildAttempt,
             CreatedAt = nowUtc,
             UpdatedAt = nowUtc,
         };
@@ -117,6 +122,7 @@ internal static class RankingSnapshotMongoMapper
             ScopeKey = pointer.ScopeKey.Value,
             CurrentSnapshotId = pointer.CurrentSnapshotId.Value,
             PreviousSnapshotId = pointer.PreviousSnapshotId?.Value,
+            PreviousSnapshotPublishedAtUtc = pointer.PreviousSnapshotPublishedAtUtc,
             MethodologyVersion = pointer.MethodologyVersion.Value,
             SourceRevision = pointer.SourceRevision,
             HighestPublishedSourceRevision = pointer.HighestPublishedSourceRevision,
@@ -185,5 +191,21 @@ internal static class RankingSnapshotMongoMapper
     private static DateTime? EnsureOptionalUtc(DateTime? value)
     {
         return value.HasValue ? EnsureUtc(value.Value) : null;
+    }
+
+    private static DateTime? ResolvePreviousSnapshotPublishedAt(
+        RankingPublicationPointerDocument document)
+    {
+        if (string.IsNullOrWhiteSpace(document.PreviousSnapshotId))
+        {
+            return null;
+        }
+
+        return EnsureOptionalUtc(document.PreviousSnapshotPublishedAtUtc) ?? EnsureUtc(document.UpdatedAt);
+    }
+
+    private static int NormalizeBuildAttempt(int buildAttempt)
+    {
+        return Math.Max(1, buildAttempt);
     }
 }

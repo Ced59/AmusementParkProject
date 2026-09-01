@@ -94,6 +94,46 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 return new RankingSnapshotBuildStartResult(RankingSnapshotBuildStartDisposition.Conflict, existing);
             }
 
+            if (existing.Status == RankingSnapshotStatus.Failed)
+            {
+                int nextBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
+                    existingDocument!.BuildAttempt) + 1;
+                UpdateDefinition<RankingSnapshotHeaderDocument> restartUpdate =
+                    Builders<RankingSnapshotHeaderDocument>.Update
+                        .Set(item => item.Status, RankingSnapshotStatus.Building)
+                        .Set(item => item.GeneratedAtUtc, nowUtc)
+                        .Set(item => item.UpdatedAt, nowUtc)
+                        .Set(item => item.BuildAttempt, nextBuildAttempt)
+                        .Unset(item => item.ValidatedAtUtc)
+                        .Unset(item => item.PublishedAtUtc)
+                        .Unset(item => item.FailureCode)
+                        .Unset(item => item.ReconciledPointerVersion);
+                RankingSnapshotHeaderDocument? restartedDocument = await this.headers.FindOneAndUpdateAsync(
+                    RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(existing.Id),
+                    restartUpdate,
+                    new FindOneAndUpdateOptions<RankingSnapshotHeaderDocument>
+                    {
+                        IsUpsert = false,
+                        ReturnDocument = ReturnDocument.After,
+                    },
+                    cancellationToken);
+                if (TryMapHeader(restartedDocument, out RankingSnapshotHeader? restarted))
+                {
+                    return new RankingSnapshotBuildStartResult(
+                        RankingSnapshotBuildStartDisposition.Restarted,
+                        restarted);
+                }
+
+                RankingSnapshotHeader? raced = await this.LoadHeaderAsync(existing.Id, cancellationToken);
+                return raced is not null && HasSameBuildDefinition(raced, header)
+                    ? new RankingSnapshotBuildStartResult(
+                        RankingSnapshotBuildStartDisposition.Existing,
+                        raced)
+                    : new RankingSnapshotBuildStartResult(
+                        RankingSnapshotBuildStartDisposition.Conflict,
+                        raced);
+            }
+
             return new RankingSnapshotBuildStartResult(RankingSnapshotBuildStartDisposition.Existing, existing);
         }
     }
@@ -123,6 +163,14 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         }
 
         RankingSnapshotChunkDocument document = chunk.ToDocument(this.GetUtcNow());
+        int currentBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
+            headerDocument.BuildAttempt);
+        if (chunk.BuildAttempt != currentBuildAttempt)
+        {
+            return new RankingSnapshotChunkWriteResult(
+                RankingSnapshotChunkWriteDisposition.BuildNotWritable);
+        }
+
         try
         {
             await this.chunks.InsertOneAsync(document, cancellationToken: cancellationToken);
@@ -133,13 +181,31 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             RankingSnapshotChunkDocument? existing = await this.chunks
                 .Find(item => item.SnapshotId == chunk.SnapshotId.Value && item.ChunkIndex == chunk.ChunkIndex)
                 .FirstOrDefaultAsync(cancellationToken);
+            if (existing is not null && existing.BuildAttempt < currentBuildAttempt)
+            {
+                ReplaceOneResult replaceResult = await this.chunks.ReplaceOneAsync(
+                    RankingSnapshotMongoDefinitions.BuildStaleChunkAttemptFilter(
+                        chunk.SnapshotId,
+                        chunk.ChunkIndex,
+                        currentBuildAttempt),
+                    document,
+                    new ReplaceOptions { IsUpsert = false },
+                    cancellationToken);
+                if (replaceResult.MatchedCount == 1)
+                {
+                    return new RankingSnapshotChunkWriteResult(
+                        RankingSnapshotChunkWriteDisposition.Written);
+                }
+
+                existing = await this.chunks
+                    .Find(item => item.SnapshotId == chunk.SnapshotId.Value &&
+                        item.ChunkIndex == chunk.ChunkIndex)
+                    .FirstOrDefaultAsync(cancellationToken);
+            }
+
             bool isIdentical = existing is not null &&
-                existing.EntryCount == chunk.Entries.Count &&
-                existing.FirstRank == chunk.FirstRank &&
-                existing.LastRank == chunk.LastRank &&
-                existing.FirstPosition == chunk.FirstPosition &&
-                existing.LastPosition == chunk.LastPosition &&
-                string.Equals(existing.Checksum, chunk.Checksum.Value, StringComparison.Ordinal);
+                existing.BuildAttempt == currentBuildAttempt &&
+                IsSameChunkDefinition(existing, chunk);
             return new RankingSnapshotChunkWriteResult(
                 isIdentical
                     ? RankingSnapshotChunkWriteDisposition.AlreadyWritten
@@ -149,8 +215,14 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
     public async Task<RankingSnapshotValidationResult> ValidateBuildAsync(
         RankingSnapshotId snapshotId,
+        int expectedBuildAttempt,
         CancellationToken cancellationToken)
     {
+        if (expectedBuildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedBuildAttempt));
+        }
+
         RankingSnapshotHeaderDocument? headerDocument = await this.headers
             .Find(document => document.Id == snapshotId.Value)
             .FirstOrDefaultAsync(cancellationToken);
@@ -165,6 +237,13 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 RankingSnapshotValidationDisposition.Failed,
                 null,
                 RankingSnapshotErrorCodes.BuildFailed);
+        }
+
+        if (header.BuildAttempt != expectedBuildAttempt)
+        {
+            return new RankingSnapshotValidationResult(
+                RankingSnapshotValidationDisposition.ConcurrencyConflict,
+                header);
         }
 
         if (header.Status is RankingSnapshotStatus.Validated
@@ -216,7 +295,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         DateTime nowUtc = this.GetUtcNow();
         FilterDefinition<RankingSnapshotHeaderDocument> filter = Builders<RankingSnapshotHeaderDocument>.Filter.And(
-            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(document => document.Id, snapshotId.Value),
+            RankingSnapshotMongoDefinitions.BuildHeaderAttemptFilter(snapshotId, expectedBuildAttempt),
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
                 RankingSnapshotStatus.Building));
@@ -229,7 +308,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         if (result.MatchedCount != 1)
         {
             RankingSnapshotHeader? raced = await this.LoadHeaderAsync(snapshotId, cancellationToken);
-            if (raced?.Status is RankingSnapshotStatus.Validated
+            if (raced?.BuildAttempt == expectedBuildAttempt &&
+                raced.Status is RankingSnapshotStatus.Validated
                 or RankingSnapshotStatus.Current
                 or RankingSnapshotStatus.Superseded)
             {
@@ -255,19 +335,26 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             header.ChunkCount,
             header.Checksum,
             header.GeneratedAtUtc,
-            nowUtc);
+            nowUtc,
+            buildAttempt: header.BuildAttempt);
         return new RankingSnapshotValidationResult(RankingSnapshotValidationDisposition.Validated, validated);
     }
 
     public async Task<bool> FailBuildAsync(
         RankingSnapshotId snapshotId,
+        int expectedBuildAttempt,
         string errorCode,
         CancellationToken cancellationToken)
     {
+        if (expectedBuildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedBuildAttempt));
+        }
+
         string normalizedErrorCode = NormalizeFailureCode(errorCode);
         DateTime nowUtc = this.GetUtcNow();
         FilterDefinition<RankingSnapshotHeaderDocument> filter = Builders<RankingSnapshotHeaderDocument>.Filter.And(
-            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(document => document.Id, snapshotId.Value),
+            RankingSnapshotMongoDefinitions.BuildHeaderAttemptFilter(snapshotId, expectedBuildAttempt),
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
                 RankingSnapshotStatus.Building));
@@ -339,6 +426,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 candidate.ScopeKey,
                 candidate.Id,
                 null,
+                null,
                 candidate.MethodologyVersion,
                 candidate.SourceRevision,
                 candidate.SourceRevision,
@@ -378,10 +466,15 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             }
         }
 
+        DateTime previousSnapshotPublishedAtUtc = await this.ResolveSnapshotPublishedAtAsync(
+            pointer!.CurrentSnapshotId,
+            pointer.UpdatedAtUtc,
+            cancellationToken);
         RankingPublicationPointer nextPointer = new RankingPublicationPointer(
             candidate.ScopeKey,
             candidate.Id,
-            pointer!.CurrentSnapshotId,
+            pointer.CurrentSnapshotId,
+            previousSnapshotPublishedAtUtc,
             candidate.MethodologyVersion,
             candidate.SourceRevision,
             Math.Max(pointer.HighestPublishedSourceRevision, candidate.SourceRevision),
@@ -487,10 +580,15 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         }
 
         DateTime nowUtc = this.GetUtcNow();
+        DateTime rolledBackSnapshotPublishedAtUtc = await this.ResolveSnapshotPublishedAtAsync(
+            request.ExpectedCurrentSnapshotId,
+            current.UpdatedAtUtc,
+            cancellationToken);
         RankingPublicationPointer rolledBack = new RankingPublicationPointer(
             request.ScopeKey,
             request.ExpectedPreviousSnapshotId,
             request.ExpectedCurrentSnapshotId,
+            rolledBackSnapshotPublishedAtUtc,
             previous.MethodologyVersion,
             previous.SourceRevision,
             current.HighestPublishedSourceRevision,
@@ -645,9 +743,15 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         string errorCode,
         CancellationToken cancellationToken)
     {
-        bool changed = await this.FailBuildAsync(header.Id, errorCode, cancellationToken);
+        bool changed = await this.FailBuildAsync(
+            header.Id,
+            header.BuildAttempt,
+            errorCode,
+            cancellationToken);
         RankingSnapshotHeader? current = await this.LoadHeaderAsync(header.Id, cancellationToken);
-        if (!changed && current?.Status != RankingSnapshotStatus.Failed)
+        if (!changed &&
+            (current?.BuildAttempt != header.BuildAttempt ||
+                current.Status != RankingSnapshotStatus.Failed))
         {
             return new RankingSnapshotValidationResult(
                 RankingSnapshotValidationDisposition.ConcurrencyConflict,
@@ -735,6 +839,9 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         UpdateDefinition<RankingSnapshotHeaderDocument> previousUpdate = Builders<RankingSnapshotHeaderDocument>.Update
             .Set(document => document.Status, RankingSnapshotStatus.Superseded)
+            .Set(
+                document => document.PublishedAtUtc,
+                expectedPointer.PreviousSnapshotPublishedAtUtc!.Value)
             .Set(document => document.ReconciledPointerVersion, expectedPointer.Version)
             .Set(document => document.UpdatedAt, nowUtc);
         await this.headers.UpdateOneAsync(
@@ -754,6 +861,25 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
         return livePointer is not null;
+    }
+
+    private async Task<DateTime> ResolveSnapshotPublishedAtAsync(
+        RankingSnapshotId snapshotId,
+        DateTime fallbackPublishedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        RankingSnapshotHeaderDocument? document = await this.headers
+            .Find(item => item.Id == snapshotId.Value)
+            .Limit(1)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document?.PublishedAtUtc is not DateTime publishedAtUtc)
+        {
+            return fallbackPublishedAtUtc;
+        }
+
+        return publishedAtUtc.Kind == DateTimeKind.Utc
+            ? publishedAtUtc
+            : DateTime.SpecifyKind(publishedAtUtc, DateTimeKind.Utc);
     }
 
     private async Task<RankingSnapshotHeader?> LoadHeaderAsync(
@@ -826,6 +952,18 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             existing.ChunkSize == requested.ChunkSize &&
             existing.ChunkCount == requested.ChunkCount &&
             existing.Checksum == requested.Checksum;
+    }
+
+    private static bool IsSameChunkDefinition(
+        RankingSnapshotChunkDocument existing,
+        RankingSnapshotChunk requested)
+    {
+        return existing.EntryCount == requested.Entries.Count &&
+            existing.FirstRank == requested.FirstRank &&
+            existing.LastRank == requested.LastRank &&
+            existing.FirstPosition == requested.FirstPosition &&
+            existing.LastPosition == requested.LastPosition &&
+            string.Equals(existing.Checksum, requested.Checksum.Value, StringComparison.Ordinal);
     }
 
     private static bool TryMapHeader(
@@ -902,6 +1040,74 @@ internal static class RankingSnapshotMongoDefinitions
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.SourceRevision,
                 sourceRevision));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildFailedHeaderRestartFilter(
+        RankingSnapshotId snapshotId)
+    {
+        return Builders<RankingSnapshotHeaderDocument>.Filter.And(
+            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                document => document.Id,
+                snapshotId.Value),
+            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                document => document.Status,
+                RankingSnapshotStatus.Failed));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildHeaderAttemptFilter(
+        RankingSnapshotId snapshotId,
+        int expectedBuildAttempt)
+    {
+        if (expectedBuildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedBuildAttempt));
+        }
+
+        FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters =
+            Builders<RankingSnapshotHeaderDocument>.Filter;
+        FilterDefinition<RankingSnapshotHeaderDocument> attemptFilter =
+            filters.Eq(document => document.BuildAttempt, expectedBuildAttempt);
+        if (expectedBuildAttempt == 1)
+        {
+            attemptFilter = filters.Or(
+                attemptFilter,
+                filters.Exists(document => document.BuildAttempt, false),
+                filters.Eq(document => document.BuildAttempt, 0));
+        }
+
+        return filters.And(
+            filters.Eq(document => document.Id, snapshotId.Value),
+            attemptFilter);
+    }
+
+    public static FilterDefinition<RankingSnapshotChunkDocument> BuildStaleChunkAttemptFilter(
+        RankingSnapshotId snapshotId,
+        int chunkIndex,
+        int currentBuildAttempt)
+    {
+        if (chunkIndex < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(chunkIndex));
+        }
+
+        if (currentBuildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(currentBuildAttempt));
+        }
+
+        FilterDefinitionBuilder<RankingSnapshotChunkDocument> filters =
+            Builders<RankingSnapshotChunkDocument>.Filter;
+        return filters.And(
+            filters.Eq(document => document.SnapshotId, snapshotId.Value),
+            filters.Eq(document => document.ChunkIndex, chunkIndex),
+            filters.Or(
+                filters.Exists(document => document.BuildAttempt, false),
+                filters.Lt(document => document.BuildAttempt, currentBuildAttempt)));
+    }
+
+    public static int NormalizeBuildAttempt(int buildAttempt)
+    {
+        return Math.Max(1, buildAttempt);
     }
 
     public static FilterDefinition<RankingPublicationPointerDocument> BuildPointerVersionFilter(

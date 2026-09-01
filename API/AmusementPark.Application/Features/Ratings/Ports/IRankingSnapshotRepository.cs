@@ -15,10 +15,12 @@ public interface IRankingSnapshotRepository
 
     Task<RankingSnapshotValidationResult> ValidateBuildAsync(
         RankingSnapshotId snapshotId,
+        int expectedBuildAttempt,
         CancellationToken cancellationToken);
 
     Task<bool> FailBuildAsync(
         RankingSnapshotId snapshotId,
+        int expectedBuildAttempt,
         string errorCode,
         CancellationToken cancellationToken);
 

@@ -224,7 +224,8 @@ public sealed class RankingSnapshotHeader
         DateTime generatedAtUtc,
         DateTime? validatedAtUtc = null,
         DateTime? publishedAtUtc = null,
-        string? failureCode = null)
+        string? failureCode = null,
+        int buildAttempt = 1)
     {
         _ = id.Value;
         _ = scopeKey.Value;
@@ -266,6 +267,11 @@ public sealed class RankingSnapshotHeader
                 nameof(chunkCount));
         }
 
+        if (buildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(buildAttempt));
+        }
+
         ValidateUtc(generatedAtUtc, nameof(generatedAtUtc));
         ValidateOptionalUtc(validatedAtUtc, nameof(validatedAtUtc));
         ValidateOptionalUtc(publishedAtUtc, nameof(publishedAtUtc));
@@ -288,6 +294,7 @@ public sealed class RankingSnapshotHeader
         this.ValidatedAtUtc = validatedAtUtc;
         this.PublishedAtUtc = publishedAtUtc;
         this.FailureCode = normalizedFailureCode;
+        this.BuildAttempt = buildAttempt;
     }
 
     public RankingSnapshotId Id { get; }
@@ -317,6 +324,8 @@ public sealed class RankingSnapshotHeader
     public DateTime? PublishedAtUtc { get; }
 
     public string? FailureCode { get; }
+
+    public int BuildAttempt { get; }
 
     private static void ValidateLifecycle(
         RankingSnapshotStatus status,
@@ -368,7 +377,8 @@ public sealed class RankingSnapshotChunk
         RankingSnapshotId snapshotId,
         int chunkIndex,
         IReadOnlyCollection<RankingSnapshotEntry> entries,
-        RankingSnapshotChecksum checksum)
+        RankingSnapshotChecksum checksum,
+        int buildAttempt = 1)
     {
         _ = snapshotId.Value;
         if (chunkIndex < 0)
@@ -382,6 +392,11 @@ public sealed class RankingSnapshotChunk
             materializedEntries.Length > RankingScopeDefinition.MaximumPageSize)
         {
             throw new ArgumentOutOfRangeException(nameof(entries));
+        }
+
+        if (buildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(buildAttempt));
         }
 
         for (int index = 0; index < materializedEntries.Length; index++)
@@ -403,6 +418,7 @@ public sealed class RankingSnapshotChunk
         this.ChunkIndex = chunkIndex;
         this.Entries = Array.AsReadOnly(materializedEntries);
         this.Checksum = checksum;
+        this.BuildAttempt = buildAttempt;
     }
 
     public RankingSnapshotId SnapshotId { get; }
@@ -420,6 +436,8 @@ public sealed class RankingSnapshotChunk
     public int LastRank => this.Entries.Last().Rank;
 
     public RankingSnapshotChecksum Checksum { get; }
+
+    public int BuildAttempt { get; }
 }
 
 public sealed class RankingPublicationPointer
@@ -428,6 +446,7 @@ public sealed class RankingPublicationPointer
         RankingScopeKey scopeKey,
         RankingSnapshotId currentSnapshotId,
         RankingSnapshotId? previousSnapshotId,
+        DateTime? previousSnapshotPublishedAtUtc,
         RatingMethodologyVersion methodologyVersion,
         long sourceRevision,
         long highestPublishedSourceRevision,
@@ -439,6 +458,21 @@ public sealed class RankingPublicationPointer
         if (previousSnapshotId.HasValue)
         {
             _ = previousSnapshotId.Value.Value;
+        }
+
+        if (previousSnapshotId.HasValue != previousSnapshotPublishedAtUtc.HasValue)
+        {
+            throw new ArgumentException(
+                "A previous snapshot and its publication timestamp must be provided together.",
+                nameof(previousSnapshotPublishedAtUtc));
+        }
+
+        if (previousSnapshotPublishedAtUtc.HasValue &&
+            previousSnapshotPublishedAtUtc.Value.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The previous snapshot publication timestamp must use UTC.",
+                nameof(previousSnapshotPublishedAtUtc));
         }
 
         _ = methodologyVersion.Value;
@@ -462,9 +496,18 @@ public sealed class RankingPublicationPointer
             throw new ArgumentException("The timestamp must use UTC.", nameof(updatedAtUtc));
         }
 
+        if (previousSnapshotPublishedAtUtc.HasValue &&
+            previousSnapshotPublishedAtUtc.Value > updatedAtUtc)
+        {
+            throw new ArgumentException(
+                "The previous snapshot cannot have been published after the pointer update.",
+                nameof(previousSnapshotPublishedAtUtc));
+        }
+
         this.ScopeKey = scopeKey;
         this.CurrentSnapshotId = currentSnapshotId;
         this.PreviousSnapshotId = previousSnapshotId;
+        this.PreviousSnapshotPublishedAtUtc = previousSnapshotPublishedAtUtc;
         this.MethodologyVersion = methodologyVersion;
         this.SourceRevision = sourceRevision;
         this.HighestPublishedSourceRevision = highestPublishedSourceRevision;
@@ -477,6 +520,8 @@ public sealed class RankingPublicationPointer
     public RankingSnapshotId CurrentSnapshotId { get; }
 
     public RankingSnapshotId? PreviousSnapshotId { get; }
+
+    public DateTime? PreviousSnapshotPublishedAtUtc { get; }
 
     public RatingMethodologyVersion MethodologyVersion { get; }
 

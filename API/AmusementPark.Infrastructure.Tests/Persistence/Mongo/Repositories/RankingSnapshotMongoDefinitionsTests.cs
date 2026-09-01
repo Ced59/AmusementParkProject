@@ -30,6 +30,54 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildFailedHeaderRestartFilter_ShouldClaimOnlyTheFailedAttempt()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
+            RankingSnapshotId.Parse("snapshot-failed")));
+
+        Assert.Equal("snapshot-failed", rendered["_id"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Failed), rendered["status"].AsString);
+    }
+
+    [Fact]
+    public void BuildHeaderAttemptFilter_ShouldFenceAStaleWorker()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildHeaderAttemptFilter(
+            RankingSnapshotId.Parse("snapshot-current"),
+            expectedBuildAttempt: 3));
+
+        Assert.Equal("snapshot-current", rendered["_id"].AsString);
+        Assert.Equal(3, rendered["buildAttempt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildStaleChunkAttemptFilter_ShouldFenceEarlierAttempts()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildStaleChunkAttemptFilter(
+            RankingSnapshotId.Parse("snapshot-failed"),
+            chunkIndex: 2,
+            currentBuildAttempt: 3));
+
+        Assert.Equal("snapshot-failed", rendered["snapshotId"].AsString);
+        Assert.Equal(2, rendered["chunkIndex"].AsInt32);
+        Assert.Contains(rendered["$or"].AsBsonArray, static item =>
+            item["buildAttempt"].IsBsonDocument &&
+            item["buildAttempt"].AsBsonDocument.Contains("$lt") &&
+            item["buildAttempt"].AsBsonDocument["$lt"].AsInt32 == 3);
+    }
+
+    [Theory]
+    [InlineData(0, 1)]
+    [InlineData(1, 1)]
+    [InlineData(3, 3)]
+    public void NormalizeBuildAttempt_ShouldSupportLegacyDocuments(
+        int storedAttempt,
+        int expectedAttempt)
+    {
+        Assert.Equal(expectedAttempt, RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(storedAttempt));
+    }
+
+    [Fact]
     public void BuildPointerVersionFilter_ShouldRequireScopeAndExpectedVersion()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildPointerVersionFilter(ScopeKey, 7));
@@ -58,6 +106,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-current"),
             null,
+            null,
             MethodologyVersion,
             42,
             42,
@@ -85,6 +134,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-restored"),
             RankingSnapshotId.Parse("snapshot-rolled-back"),
+            NowUtc.AddMinutes(-1),
             MethodologyVersion,
             sourceRevision: 42,
             highestPublishedSourceRevision: 50,
@@ -105,6 +155,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         RankingPublicationPointer pointer = new RankingPublicationPointer(
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-current"),
+            null,
             null,
             MethodologyVersion,
             sourceRevision: 42,

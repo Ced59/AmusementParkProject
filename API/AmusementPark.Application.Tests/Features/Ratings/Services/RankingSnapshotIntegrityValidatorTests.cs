@@ -40,6 +40,27 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenChunkBelongsToAnEarlierBuildAttempt_ShouldRejectTheBuild()
+    {
+        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
+        RankingSnapshotHeader restartedHeader = CreateHeader(
+            fixture.Header.Id,
+            fixture.Header.TotalEntryCount,
+            fixture.Header.EligibleEntryCount,
+            fixture.Header.ChunkCount,
+            fixture.Header.Checksum,
+            buildAttempt: 2);
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            restartedHeader,
+            fixture.Chunks,
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.False(result.IsValid);
+        Assert.Equal(RankingSnapshotErrorCodes.BuildAttemptMismatch, result.ErrorCode);
+    }
+
+    [Fact]
     public void Validate_WhenAChunkChecksumWasAltered_ShouldRejectTheBuild()
     {
         SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
@@ -343,7 +364,8 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         int eligibleEntryCount,
         int chunkCount,
         RankingSnapshotChecksum checksum,
-        RankingScopeKey? scopeKey = null)
+        RankingScopeKey? scopeKey = null,
+        int buildAttempt = 1)
     {
         return new RankingSnapshotHeader(
             snapshotId,
@@ -356,7 +378,8 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             chunkSize: 500,
             chunkCount,
             checksum,
-            NowUtc);
+            NowUtc,
+            buildAttempt: buildAttempt);
     }
 
     private static RankingSnapshotEntry CreateEntry(

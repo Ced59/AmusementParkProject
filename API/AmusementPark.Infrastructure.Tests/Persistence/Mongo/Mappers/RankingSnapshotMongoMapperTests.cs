@@ -32,7 +32,8 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingSnapshotChecksum.Parse(new string('a', 64)),
             GeneratedAtUtc,
             ValidatedAtUtc,
-            PublishedAtUtc);
+            PublishedAtUtc,
+            buildAttempt: 3);
 
         RankingSnapshotHeaderDocument document = header.ToDocument(GeneratedAtUtc);
         RankingSnapshotHeader restored = document.ToDomain();
@@ -45,6 +46,8 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(header.EligibleEntryCount, restored.EligibleEntryCount);
         Assert.Equal(header.Checksum, restored.Checksum);
         Assert.Equal(PublishedAtUtc, restored.PublishedAtUtc);
+        Assert.Equal(3, restored.BuildAttempt);
+        Assert.Equal(3, document.BuildAttempt);
     }
 
     [Fact]
@@ -55,7 +58,8 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingSnapshotId.Parse("snapshot-1"),
             0,
             new[] { entry },
-            RankingSnapshotChecksum.Parse(new string('b', 64)));
+            RankingSnapshotChecksum.Parse(new string('b', 64)),
+            buildAttempt: 2);
 
         RankingSnapshotChunkDocument document = chunk.ToDocument(GeneratedAtUtc);
         RankingSnapshotChunk restored = document.ToDomain(MethodologyVersion);
@@ -68,6 +72,8 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(entry.TargetId, restoredEntry.TargetId);
         Assert.Equal(entry.Score, restoredEntry.Score);
         Assert.Equal(entry.Evidence, restoredEntry.Evidence);
+        Assert.Equal(2, restored.BuildAttempt);
+        Assert.Equal(2, document.BuildAttempt);
     }
 
     [Fact]
@@ -101,6 +107,7 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-2"),
             RankingSnapshotId.Parse("snapshot-1"),
+            GeneratedAtUtc,
             MethodologyVersion,
             43,
             50,
@@ -113,6 +120,9 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(pointer.ScopeKey, restored.ScopeKey);
         Assert.Equal(pointer.CurrentSnapshotId, restored.CurrentSnapshotId);
         Assert.Equal(pointer.PreviousSnapshotId, restored.PreviousSnapshotId);
+        Assert.Equal(
+            pointer.PreviousSnapshotPublishedAtUtc,
+            restored.PreviousSnapshotPublishedAtUtc);
         Assert.Equal(pointer.MethodologyVersion, restored.MethodologyVersion);
         Assert.Equal(pointer.SourceRevision, restored.SourceRevision);
         Assert.Equal(pointer.HighestPublishedSourceRevision, restored.HighestPublishedSourceRevision);
@@ -130,6 +140,7 @@ public sealed class RankingSnapshotMongoMapperTests
             Id = "pointer-legacy",
             ScopeKey = "parks:global",
             CurrentSnapshotId = "snapshot-1",
+            PreviousSnapshotId = "snapshot-0",
             MethodologyVersion = MethodologyVersion.Value,
             SourceRevision = 43,
             Version = 2,
@@ -140,6 +151,7 @@ public sealed class RankingSnapshotMongoMapperTests
         RankingPublicationPointer restored = legacy.ToDomain();
 
         Assert.Equal(43, restored.HighestPublishedSourceRevision);
+        Assert.Equal(PublishedAtUtc, restored.PreviousSnapshotPublishedAtUtc);
     }
 
     [Fact]

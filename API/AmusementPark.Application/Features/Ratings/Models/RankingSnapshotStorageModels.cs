@@ -13,6 +13,7 @@ public sealed record StartRankingSnapshotBuildRequest(
 public enum RankingSnapshotBuildStartDisposition
 {
     Created,
+    Restarted,
     Existing,
     Conflict,
 }
@@ -101,6 +102,7 @@ public static class RankingSnapshotErrorCodes
 {
     public const string ChunkCountMismatch = "ranking-snapshot.chunk-count-mismatch";
     public const string ChunkIndexMismatch = "ranking-snapshot.chunk-index-mismatch";
+    public const string BuildAttemptMismatch = "ranking-snapshot.build-attempt-mismatch";
     public const string ChunkSizeInvalid = "ranking-snapshot.chunk-size-invalid";
     public const string PositionSequenceInvalid = "ranking-snapshot.position-sequence-invalid";
     public const string RankSequenceInvalid = "ranking-snapshot.rank-sequence-invalid";
