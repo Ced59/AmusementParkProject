@@ -65,6 +65,7 @@ public sealed class RankingScopeDefinition
         RatingMethodologyVersion methodologyVersion,
         int minimumEligibleEntries,
         int pageSize,
+        decimal scoreTieEpsilon,
         RankingPublicationMode publicationMode)
     {
         _ = key.Value;
@@ -88,6 +89,11 @@ public sealed class RankingScopeDefinition
             throw new ArgumentOutOfRangeException(nameof(pageSize));
         }
 
+        if (scoreTieEpsilon <= 0m || scoreTieEpsilon > 0.1m)
+        {
+            throw new ArgumentOutOfRangeException(nameof(scoreTieEpsilon));
+        }
+
         if (!Enum.IsDefined(publicationMode))
         {
             throw new ArgumentOutOfRangeException(nameof(publicationMode));
@@ -100,6 +106,7 @@ public sealed class RankingScopeDefinition
         this.MethodologyVersion = methodologyVersion;
         this.MinimumEligibleEntries = minimumEligibleEntries;
         this.PageSize = pageSize;
+        this.ScoreTieEpsilon = scoreTieEpsilon;
         this.PublicationMode = publicationMode;
     }
 
@@ -117,7 +124,46 @@ public sealed class RankingScopeDefinition
 
     public int PageSize { get; }
 
+    public decimal ScoreTieEpsilon { get; }
+
     public RankingPublicationMode PublicationMode { get; }
+
+    public RankingPublicationEligibility EvaluatePublication(int eligibleEntryCount)
+    {
+        if (eligibleEntryCount < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(eligibleEntryCount));
+        }
+
+        return eligibleEntryCount >= this.MinimumEligibleEntries
+            ? new RankingPublicationEligibility(true, null)
+            : new RankingPublicationEligibility(false, RankingIneligibilityReason.TooFewComparableEntries);
+    }
+
+    public bool AreScoresTied(double leftScore, double rightScore)
+    {
+        ValidateScore(leftScore, nameof(leftScore));
+        ValidateScore(rightScore, nameof(rightScore));
+        decimal difference = Math.Abs((decimal)leftScore - (decimal)rightScore);
+        return difference < this.ScoreTieEpsilon;
+    }
+
+    public bool AcceptsTarget(RatingTargetType targetType, ParkItemCategory? parkItemCategory)
+    {
+        if (!Enum.IsDefined(targetType))
+        {
+            return false;
+        }
+
+        return this.TargetFamily switch
+        {
+            RankingTargetFamily.Parks => targetType == RatingTargetType.Park &&
+                !parkItemCategory.HasValue,
+            RankingTargetFamily.ParkItems => targetType == RatingTargetType.ParkItem &&
+                parkItemCategory == this.Filter.ParkItemCategory,
+            _ => false,
+        };
+    }
 
     private static void ValidateFilterCompatibility(
         RankingTargetFamily targetFamily,
@@ -176,5 +222,15 @@ public sealed class RankingScopeDefinition
             ParkItemCategory.Other => "other",
             _ => throw new ArgumentOutOfRangeException(nameof(category)),
         };
+    }
+
+    private static void ValidateScore(double score, string parameterName)
+    {
+        if (!double.IsFinite(score) ||
+            score < RatingValue.MinimumHalfSteps / 2d ||
+            score > RatingValue.MaximumHalfSteps / 2d)
+        {
+            throw new ArgumentOutOfRangeException(parameterName);
+        }
     }
 }

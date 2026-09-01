@@ -39,6 +39,7 @@ public static class CanonicalRankingScopes
             RankingEligibilityPolicy.InitialMethodologyVersion,
             RankingEligibilityPolicy.Initial.MinimumEligibleEntriesPerRanking,
             SnapshotPageSize,
+            RankingEligibilityPolicy.Initial.ScoreTieEpsilon,
             RankingPublicationMode.DurableSnapshot);
     }
 
@@ -54,6 +55,7 @@ public static class CanonicalRankingScopes
             RankingEligibilityPolicy.InitialMethodologyVersion,
             RankingEligibilityPolicy.Initial.MinimumEligibleEntriesPerRanking,
             SnapshotPageSize,
+            RankingEligibilityPolicy.Initial.ScoreTieEpsilon,
             RankingPublicationMode.DurableSnapshot);
     }
 

@@ -19,6 +19,7 @@ public sealed class RankingScopeDefinitionTests
         Assert.Equal(RankingEligibilityPolicy.InitialMethodologyVersion, definition.MethodologyVersion);
         Assert.Equal(3, definition.MinimumEligibleEntries);
         Assert.Equal(500, definition.PageSize);
+        Assert.Equal(0.0001m, definition.ScoreTieEpsilon);
         Assert.Equal(RankingPublicationMode.DurableSnapshot, definition.PublicationMode);
     }
 
@@ -33,6 +34,7 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 4,
             pageSize: 250,
+            scoreTieEpsilon: 0.0001m,
             RankingPublicationMode.DurableSnapshot);
 
         Assert.Equal(RankingScopeFilterKind.ParkItemCategory, definition.Filter.Kind);
@@ -55,6 +57,7 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 3,
             pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
             RankingPublicationMode.DurableSnapshot));
     }
 
@@ -69,6 +72,7 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 3,
             pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
             RankingPublicationMode.DurableSnapshot));
     }
 
@@ -83,6 +87,7 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 3,
             pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
             RankingPublicationMode.DurableSnapshot));
     }
 
@@ -103,6 +108,26 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries,
             pageSize,
+            scoreTieEpsilon: 0.0001m,
+            RankingPublicationMode.DurableSnapshot));
+    }
+
+    [Theory]
+    [InlineData(0d)]
+    [InlineData(-0.0001d)]
+    [InlineData(0.1001d)]
+    public void Constructor_WhenScoreTieEpsilonIsOutsideThePolicy_ShouldRejectIt(
+        double scoreTieEpsilon)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new RankingScopeDefinition(
+            RankingScopeKey.Parse("parks:global"),
+            RankingTargetFamily.Parks,
+            RankingFilterDefinition.Global,
+            isPublic: true,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            minimumEligibleEntries: 3,
+            pageSize: 500,
+            scoreTieEpsilon: (decimal)scoreTieEpsilon,
             RankingPublicationMode.DurableSnapshot));
     }
 
@@ -111,6 +136,74 @@ public sealed class RankingScopeDefinitionTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(
             () => RankingFilterDefinition.ForParkItemCategory((ParkItemCategory)999));
+    }
+
+    [Theory]
+    [InlineData(2, false, RankingIneligibilityReason.TooFewComparableEntries)]
+    [InlineData(3, true, null)]
+    [InlineData(4, true, null)]
+    public void EvaluatePublication_ShouldApplyTheScopeMinimum(
+        int eligibleEntryCount,
+        bool expectedEligibility,
+        RankingIneligibilityReason? expectedReason)
+    {
+        RankingPublicationEligibility result = CreateGlobalParkDefinition()
+            .EvaluatePublication(eligibleEntryCount);
+
+        Assert.Equal(expectedEligibility, result.IsEligible);
+        Assert.Equal(expectedReason, result.IneligibilityReason);
+    }
+
+    [Fact]
+    public void EvaluatePublication_WhenCountIsNegative_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => CreateGlobalParkDefinition().EvaluatePublication(-1));
+    }
+
+    [Theory]
+    [InlineData(4.5d, 4.49995d, true)]
+    [InlineData(4.5d, 4.4998d, false)]
+    public void AreScoresTied_ShouldUseTheScopeMethodologyEpsilon(
+        double leftScore,
+        double rightScore,
+        bool expected)
+    {
+        Assert.Equal(expected, CreateGlobalParkDefinition().AreScoresTied(leftScore, rightScore));
+    }
+
+    [Theory]
+    [InlineData(0.49d, 0.5d)]
+    [InlineData(5d, 5.01d)]
+    public void AreScoresTied_WhenScoreIsOutsideTheRatingScale_ShouldRejectIt(
+        double leftScore,
+        double rightScore)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => CreateGlobalParkDefinition().AreScoresTied(leftScore, rightScore));
+    }
+
+    [Fact]
+    public void AcceptsTarget_ShouldApplyTheTypedScopeFilter()
+    {
+        RankingScopeDefinition definition = new RankingScopeDefinition(
+            RankingScopeKey.Parse("park-items:category:attraction"),
+            RankingTargetFamily.ParkItems,
+            RankingFilterDefinition.ForParkItemCategory(ParkItemCategory.Attraction),
+            isPublic: true,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            minimumEligibleEntries: 3,
+            pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
+            RankingPublicationMode.DurableSnapshot);
+
+        Assert.True(definition.AcceptsTarget(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction));
+        Assert.False(definition.AcceptsTarget(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Restaurant));
+        Assert.False(definition.AcceptsTarget(RatingTargetType.Park, null));
     }
 
     private static RankingScopeDefinition CreateGlobalParkDefinition()
@@ -123,6 +216,7 @@ public sealed class RankingScopeDefinitionTests
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 3,
             pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
             RankingPublicationMode.DurableSnapshot);
     }
 }
