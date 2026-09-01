@@ -971,18 +971,22 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             {
                 int buildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
                     candidate.BuildAttempt);
-                await this.chunks.DeleteManyAsync(
-                    RankingSnapshotMongoDefinitions.BuildChunkAttemptAtMostFilter(
-                        candidateId,
-                        buildAttempt),
-                    cancellationToken);
-                await this.headers.DeleteOneAsync(
+                DeleteResult headerDeleteResult = await this.headers.DeleteOneAsync(
                     RankingSnapshotMongoDefinitions.BuildStaleBuildingHeaderPruneFilter(
                         candidateId,
                         buildAttempt,
                         livePointer.HighestPublishedSourceRevision,
                         activeMethodologyVersion),
                     cancellationToken);
+                if (headerDeleteResult.DeletedCount == 1)
+                {
+                    await this.chunks.DeleteManyAsync(
+                        RankingSnapshotMongoDefinitions.BuildChunkAttemptAtMostFilter(
+                            candidateId,
+                            buildAttempt),
+                        cancellationToken);
+                }
+
                 continue;
             }
 
