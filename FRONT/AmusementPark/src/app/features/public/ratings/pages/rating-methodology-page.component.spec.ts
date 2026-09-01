@@ -88,7 +88,9 @@ describe('RatingMethodologyPageComponent', () => {
     expect(root.querySelector('h1')?.textContent).toContain('Comment les classements sont calculés');
     expect(root.textContent).toContain('Les mêmes règles publiques rendent les résultats comparables.');
     expect(root.querySelectorAll('section[id]')).toHaveLength(13);
-    expect(root.querySelector('#bayesian-score code')?.textContent).toContain('3.5 × 10');
+    expect(root.querySelector('#scale')?.textContent).toContain('De 0,5 à 5 par 0,5');
+    expect(root.querySelector('#bayesian-score code')?.textContent).toContain('3,5 × 10');
+    expect(root.querySelector('#ties')?.textContent).toContain('0,0001');
     expect(root.querySelectorAll('tbody tr')).toHaveLength(4);
     expect(root.querySelector('.methodology-table-wrap')?.getAttribute('tabindex')).toBe('0');
     expect(root.querySelector('.sr-only')?.textContent).toContain('Formule expliquée');

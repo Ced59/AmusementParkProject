@@ -22,6 +22,8 @@ import { RatingMethodologyStateFacade } from '../state/rating-methodology-state.
   imports: [DatePipe, RouterLink, TranslateModule, UiButtonDirective, UiSectionHeaderComponent]
 })
 export class RatingMethodologyPageComponent implements OnInit {
+  private readonly methodologyNumberFormatters = new Map<string, Intl.NumberFormat>();
+
   protected readonly currentLang = signal<string>('en');
   protected readonly selectedVersion = signal<string | null>(null);
   protected readonly methodology: Signal<RatingMethodology | null> = this.stateFacade.methodology;
@@ -86,7 +88,23 @@ export class RatingMethodologyPageComponent implements OnInit {
   }
 
   protected formula(methodology: RatingMethodology): string {
-    return `(x̄ × n + ${methodology.bayesian.priorMean} × ${methodology.bayesian.priorWeight}) ÷ (n + ${methodology.bayesian.priorWeight})`;
+    const priorMean: string = this.formatMethodologyNumber(methodology.bayesian.priorMean);
+    const priorWeight: string = this.formatMethodologyNumber(methodology.bayesian.priorWeight);
+    return `(x̄ × n + ${priorMean} × ${priorWeight}) ÷ (n + ${priorWeight})`;
+  }
+
+  protected formatMethodologyNumber(value: number): string {
+    const locale: string = this.currentLang();
+    let formatter: Intl.NumberFormat | undefined = this.methodologyNumberFormatters.get(locale);
+    if (!formatter) {
+      formatter = new Intl.NumberFormat(locale, {
+        useGrouping: false,
+        maximumFractionDigits: 4
+      });
+      this.methodologyNumberFormatters.set(locale, formatter);
+    }
+
+    return formatter.format(value);
   }
 
   protected versionTranslationKey(version: string, field: 'summary' | 'reason' | 'effect'): string {

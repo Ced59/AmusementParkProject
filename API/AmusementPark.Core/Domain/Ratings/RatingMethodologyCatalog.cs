@@ -8,9 +8,28 @@ namespace AmusementPark.Core.Domain.Ratings;
 public static class RatingMethodologyCatalog
 {
     private static readonly RatingMethodologyDefinition Initial = new RatingMethodologyDefinition(
-        RankingEligibilityPolicy.Initial,
+        new RankingEligibilityPolicy(
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            provisionalMinUniqueContributors: 3,
+            eligibleMinUniqueContributors: 10,
+            establishedMinUniqueContributors: 30,
+            strongEvidenceMinUniqueContributors: 100,
+            minimumEligibleEntriesPerRanking: 3,
+            minimumEligibleItemsForParkItemComponent: 5,
+            minimumEligibleItemsPerCategory: 2,
+            minimumEligibleCategories: 2,
+            scoreTieEpsilon: 0.0001m),
         new DateOnly(2026, 8, 31),
-        null);
+        null,
+        RatingMinimum: 0.5m,
+        RatingMaximum: 5m,
+        RatingStep: 0.5m,
+        BayesianPriorMean: 3.5d,
+        BayesianPriorWeight: 10,
+        ParkDirectScoreWeight: 0.7d,
+        ParkItemsScoreWeight: 0.3d,
+        BalancesItemCategoriesEqually: true,
+        RankingConvention: "competition");
 
     private static readonly IReadOnlyCollection<RatingMethodologyDefinition> Definitions =
         Array.AsReadOnly(new[] { Initial });

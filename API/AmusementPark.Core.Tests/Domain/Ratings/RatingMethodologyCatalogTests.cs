@@ -22,6 +22,15 @@ public sealed class RatingMethodologyCatalogTests
         Assert.Equal(0.3d, definition.ParkItemsScoreWeight);
         Assert.True(definition.BalancesItemCategoriesEqually);
         Assert.Equal("competition", definition.RankingConvention);
+        Assert.Equal(3, definition.EligibilityPolicy.ProvisionalMinUniqueContributors);
+        Assert.Equal(10, definition.EligibilityPolicy.EligibleMinUniqueContributors);
+        Assert.Equal(30, definition.EligibilityPolicy.EstablishedMinUniqueContributors);
+        Assert.Equal(100, definition.EligibilityPolicy.StrongEvidenceMinUniqueContributors);
+        Assert.Equal(3, definition.EligibilityPolicy.MinimumEligibleEntriesPerRanking);
+        Assert.Equal(5, definition.EligibilityPolicy.MinimumEligibleItemsForParkItemComponent);
+        Assert.Equal(2, definition.EligibilityPolicy.MinimumEligibleItemsPerCategory);
+        Assert.Equal(2, definition.EligibilityPolicy.MinimumEligibleCategories);
+        Assert.Equal(0.0001m, definition.EligibilityPolicy.ScoreTieEpsilon);
     }
 
     [Fact]

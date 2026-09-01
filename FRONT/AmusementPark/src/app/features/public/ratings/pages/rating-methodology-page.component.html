@@ -65,15 +65,15 @@
 
     <section id="scale" class="methodology-section">
       <h2>{{ 'ratings.methodology.scale.title' | translate }}</h2>
-      <p>{{ 'ratings.methodology.scale.text' | translate:{ minimum: method.ratingScale.minimum, maximum: method.ratingScale.maximum, step: method.ratingScale.step } }}</p>
+      <p>{{ 'ratings.methodology.scale.text' | translate:{ minimum: formatMethodologyNumber(method.ratingScale.minimum), maximum: formatMethodologyNumber(method.ratingScale.maximum), step: formatMethodologyNumber(method.ratingScale.step) } }}</p>
     </section>
 
     <section id="bayesian-score" class="methodology-section methodology-section--accent">
       <h2>{{ 'ratings.methodology.bayesian.title' | translate }}</h2>
-      <p>{{ 'ratings.methodology.bayesian.simple' | translate:{ priorMean: method.bayesian.priorMean, priorWeight: method.bayesian.priorWeight } }}</p>
+      <p>{{ 'ratings.methodology.bayesian.simple' | translate:{ priorMean: formatMethodologyNumber(method.bayesian.priorMean), priorWeight: formatMethodologyNumber(method.bayesian.priorWeight) } }}</p>
       <div class="methodology-formula">
         <code aria-hidden="true">{{ formula(method) }}</code>
-        <span class="sr-only">{{ 'ratings.methodology.bayesian.formulaAccessible' | translate:{ priorMean: method.bayesian.priorMean, priorWeight: method.bayesian.priorWeight } }}</span>
+        <span class="sr-only">{{ 'ratings.methodology.bayesian.formulaAccessible' | translate:{ priorMean: formatMethodologyNumber(method.bayesian.priorMean), priorWeight: formatMethodologyNumber(method.bayesian.priorWeight) } }}</span>
       </div>
     </section>
 
@@ -128,7 +128,7 @@
     <div class="methodology-grid methodology-grid--three">
       <section id="ties" class="methodology-card">
         <h2>{{ 'ratings.methodology.ties.title' | translate }}</h2>
-        <p>{{ 'ratings.methodology.ties.text' | translate:{ epsilon: method.publicationRules.scoreTieEpsilon } }}</p>
+        <p>{{ 'ratings.methodology.ties.text' | translate:{ epsilon: formatMethodologyNumber(method.publicationRules.scoreTieEpsilon) } }}</p>
       </section>
       <section id="lifecycle" class="methodology-card">
         <h2>{{ 'ratings.methodology.lifecycle.title' | translate }}</h2>

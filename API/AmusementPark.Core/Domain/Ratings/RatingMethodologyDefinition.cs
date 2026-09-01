@@ -6,25 +6,16 @@ namespace AmusementPark.Core.Domain.Ratings;
 public sealed record RatingMethodologyDefinition(
     RankingEligibilityPolicy EligibilityPolicy,
     DateOnly EffectiveDate,
-    RatingMethodologyVersion? PreviousVersion)
+    RatingMethodologyVersion? PreviousVersion,
+    decimal RatingMinimum,
+    decimal RatingMaximum,
+    decimal RatingStep,
+    double BayesianPriorMean,
+    int BayesianPriorWeight,
+    double ParkDirectScoreWeight,
+    double ParkItemsScoreWeight,
+    bool BalancesItemCategoriesEqually,
+    string RankingConvention)
 {
     public RatingMethodologyVersion Version => this.EligibilityPolicy.Version;
-
-    public decimal RatingMinimum => RatingValue.MinimumHalfSteps / 2m;
-
-    public decimal RatingMaximum => RatingValue.MaximumHalfSteps / 2m;
-
-    public decimal RatingStep => 0.5m;
-
-    public double BayesianPriorMean => RatingScoreCalculator.PriorMean;
-
-    public int BayesianPriorWeight => RatingScoreCalculator.PriorWeight;
-
-    public double ParkDirectScoreWeight => RatingScoreCalculator.ParkDirectScoreWeight;
-
-    public double ParkItemsScoreWeight => RatingScoreCalculator.ParkItemsScoreWeight;
-
-    public bool BalancesItemCategoriesEqually => true;
-
-    public string RankingConvention => "competition";
 }
