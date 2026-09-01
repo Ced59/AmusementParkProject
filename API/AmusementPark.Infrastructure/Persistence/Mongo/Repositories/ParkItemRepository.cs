@@ -572,42 +572,42 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<ParkItem?> UpdateAsync(string parkItemId, ParkItem parkItem, CancellationToken cancellationToken)
     {
-        ParkItemDocument? existing = await this.collection.Find(document => document.Id == parkItemId)
-            .FirstOrDefaultAsync(cancellationToken);
-        if (existing is null)
+        while (true)
         {
-            return null;
-        }
+            ParkItemDocument? existing = await this.collection.Find(document => document.Id == parkItemId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
+            {
+                return null;
+            }
 
-        ParkItemDocument document = parkItem.ToDocument();
-        document.Id = parkItemId;
-        document.UpdatedAt = DateTime.UtcNow;
-        RatingRankingMutationPreparation rankingPreparation =
-            await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
-                new[] { existing.ToDomain() },
-                new[] { document.ToDomain() },
-                cancellationToken);
+            ParkItemDocument document = parkItem.ToDocument();
+            document.Id = parkItemId;
+            document.UpdatedAt = DateTime.UtcNow;
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
+                    new[] { existing.ToDomain() },
+                    new[] { document.ToDomain() },
+                    cancellationToken);
 
-        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            existing => existing.Id == parkItemId,
-            document,
-            cancellationToken: cancellationToken);
+            ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+                BuildObservedRankingStateFilter(existing),
+                document,
+                cancellationToken: cancellationToken);
 
-        if (result.MatchedCount == 0)
-        {
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
-                sourceChanged: false,
+                sourceChanged: result.MatchedCount > 0,
                 CancellationToken.None);
-            return null;
-        }
+            if (result.MatchedCount == 0)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                continue;
+            }
 
-        this.ratingRankSnapshotCache.Invalidate();
-        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: true,
-            CancellationToken.None);
-        return document.ToDomain();
+            this.ratingRankSnapshotCache.Invalidate();
+            return document.ToDomain();
+        }
     }
 
     public async Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken)

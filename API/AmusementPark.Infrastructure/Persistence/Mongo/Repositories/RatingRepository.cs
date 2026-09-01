@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Ratings.Services;
@@ -308,6 +309,7 @@ public sealed class RatingRepository : IRatingRepository
         RatingRankingSourceBatch parkItemBatch = await this.LoadVisibleParkItemRankingSourceBatchAsync(
             parkItemCategory,
             effectiveMaxItems,
+            null,
             cancellationToken);
         bool isTruncated = IsVisibleRankingSourceSetTruncated(
             parkDocuments.Count,
@@ -323,7 +325,7 @@ public sealed class RatingRepository : IRatingRepository
         return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
-    public async Task<RatingRankingSourceBatch> GetVisibleParkRankingSnapshotSourceBatchAsync(
+    public async Task<RatingRankingParkCandidateBatch> GetVisibleParkRankingSnapshotCandidateBatchAsync(
         int maxParks,
         CancellationToken cancellationToken)
     {
@@ -334,27 +336,122 @@ public sealed class RatingRepository : IRatingRepository
         List<BsonDocument> parkCandidateBsonDocuments = await this.ratingAggregatesCollection
             .Aggregate<BsonDocument>(parkPipeline, cancellationToken: cancellationToken)
             .ToListAsync(cancellationToken);
-        List<RatingAggregateDocument> parkDocuments = parkCandidateBsonDocuments
+        List<string> directParkIds = parkCandidateBsonDocuments
             .Select(static document => BsonSerializer.Deserialize<RatingAggregateDocument>(document))
+            .Select(static document => document.TargetId)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
             .ToList();
-        IReadOnlyCollection<RatingRankingItemResult> parkSources =
-            await this.EnrichVisibleRankingSourcesAsync(
-                parkDocuments.Take(effectiveMaxParks).ToList(),
-                cancellationToken);
-        if (parkDocuments.Count > effectiveMaxParks)
+        BsonDocument[] parkItemPipeline = BuildParkItemRankingParkCandidatePipeline(
+            this.ratingAggregatesCollection.CollectionNamespace.CollectionName,
+            this.parksCollection.CollectionNamespace.CollectionName,
+            effectiveMaxParks + 1);
+        List<BsonDocument> parkItemCandidates = await this.parkItemsCollection
+            .Aggregate<BsonDocument>(
+                parkItemPipeline,
+                new AggregateOptions { AllowDiskUse = true },
+                cancellationToken)
+            .ToListAsync(cancellationToken);
+        List<string> combinedParkIds = directParkIds
+            .Concat(parkItemCandidates
+                .Where(static document => document.TryGetValue("parkId", out BsonValue? value)
+                    && value.IsString
+                    && !string.IsNullOrWhiteSpace(value.AsString))
+                .Select(static document => document["parkId"].AsString))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static parkId => parkId, StringComparer.Ordinal)
+            .ToList();
+        return new RatingRankingParkCandidateBatch(
+            combinedParkIds.Take(effectiveMaxParks).ToArray(),
+            combinedParkIds.Count > effectiveMaxParks);
+    }
+
+    public async Task<RatingRankingSourceBatch> GetVisibleParkRankingSnapshotSourceBatchAsync(
+        IReadOnlyCollection<string> parkIds,
+        int maxSourceComponents,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+        List<string> normalizedParkIds = NormalizeIds(parkIds);
+        if (normalizedParkIds.Count == 0)
         {
-            return new RatingRankingSourceBatch(parkSources, true);
+            return new RatingRankingSourceBatch(Array.Empty<RatingRankingItemResult>(), false);
         }
 
-        RatingRankingSourceBatch parkItemBatch = await this.LoadVisibleParkItemRankingSourceBatchAsync(
-            null,
-            null,
+        int effectiveMaxSourceComponents = Math.Clamp(
+            maxSourceComponents,
+            1,
+            RatingRankingSnapshotBuildLimits.MaximumSourceComponentCountPerParkBatch);
+        FilterDefinition<RatingAggregateDocument> directParkFilter =
+            Builders<RatingAggregateDocument>.Filter.Eq(
+                document => document.TargetType,
+                RatingTargetType.Park)
+            & Builders<RatingAggregateDocument>.Filter.In(
+                document => document.TargetId,
+                normalizedParkIds)
+            & Builders<RatingAggregateDocument>.Filter.Gt(
+                document => document.RatingCount,
+                0);
+        List<RatingAggregateDocument> directParkDocuments = await this.ratingAggregatesCollection
+            .Find(directParkFilter)
+            .Limit(effectiveMaxSourceComponents + 1)
+            .ToListAsync(cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> directParkSources =
+            await this.EnrichVisibleRankingSourcesAsync(
+                directParkDocuments.Take(effectiveMaxSourceComponents).ToArray(),
+                cancellationToken);
+        if (directParkDocuments.Count > effectiveMaxSourceComponents)
+        {
+            return new RatingRankingSourceBatch(directParkSources, true);
+        }
+
+        int remainingSourceCapacity = effectiveMaxSourceComponents - directParkSources.Count;
+        if (remainingSourceCapacity <= 0)
+        {
+            return new RatingRankingSourceBatch(directParkSources, true);
+        }
+
+        RatingRankingSourceBatch parkItemBatch =
+            await this.LoadVisibleParkItemRankingSnapshotSourceBatchAsync(
+            normalizedParkIds,
+            remainingSourceCapacity,
             cancellationToken);
-        IReadOnlyCollection<RatingRankingItemResult> sources = parkSources
+        IReadOnlyCollection<RatingRankingItemResult> sources = directParkSources
             .Concat(parkItemBatch.Sources)
             .ToArray();
-        bool isTruncated = IsParkRankingSetTruncated(sources, effectiveMaxParks);
-        return new RatingRankingSourceBatch(sources, isTruncated);
+        return new RatingRankingSourceBatch(sources, parkItemBatch.IsTruncated);
+    }
+
+    private async Task<RatingRankingSourceBatch> LoadVisibleParkItemRankingSnapshotSourceBatchAsync(
+        IReadOnlyCollection<string> parkIds,
+        int maximumSourceComponents,
+        CancellationToken cancellationToken)
+    {
+        BsonDocument[] pipeline = BuildParkItemRankingSnapshotSourcePipeline(
+            this.ratingAggregatesCollection.CollectionNamespace.CollectionName,
+            this.parksCollection.CollectionNamespace.CollectionName,
+            parkIds,
+            maximumSourceComponents + 1);
+        List<BsonDocument> bsonDocuments = await this.parkItemsCollection
+            .Aggregate<BsonDocument>(
+                pipeline,
+                new AggregateOptions
+                {
+                    AllowDiskUse = true,
+                    BatchSize = 500,
+                },
+                cancellationToken)
+            .ToListAsync(cancellationToken);
+        List<RatingAggregateDocument> documents = bsonDocuments
+            .Select(static document => BsonSerializer.Deserialize<RatingAggregateDocument>(document))
+            .ToList();
+        IReadOnlyCollection<RatingRankingItemResult> sources =
+            await this.EnrichVisibleRankingSourcesAsync(
+                documents.Take(maximumSourceComponents).ToArray(),
+                cancellationToken);
+        return new RatingRankingSourceBatch(
+            sources,
+            documents.Count > maximumSourceComponents);
     }
 
     public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
@@ -378,12 +475,14 @@ public sealed class RatingRepository : IRatingRepository
         return await this.LoadVisibleParkItemRankingSourceBatchAsync(
             parkItemCategory,
             effectiveMaxItems,
+            null,
             cancellationToken);
     }
 
     private async Task<RatingRankingSourceBatch> LoadVisibleParkItemRankingSourceBatchAsync(
         ParkItemCategory? parkItemCategory,
         int? effectiveMaxItems,
+        IReadOnlyCollection<string>? parkIds,
         CancellationToken cancellationToken)
     {
         const int candidatePageSize = 500;
@@ -391,7 +490,8 @@ public sealed class RatingRepository : IRatingRepository
         BsonDocument[] pipeline = BuildParkItemRankingCandidatePipeline(
             parkItemCategory,
             this.parkItemsCollection.CollectionNamespace.CollectionName,
-            this.parksCollection.CollectionNamespace.CollectionName);
+            this.parksCollection.CollectionNamespace.CollectionName,
+            parkIds);
         AggregateOptions options = new AggregateOptions
         {
             BatchSize = candidatePageSize,
@@ -425,7 +525,8 @@ public sealed class RatingRepository : IRatingRepository
     internal static BsonDocument[] BuildParkItemRankingCandidatePipeline(
         ParkItemCategory? parkItemCategory,
         string parkItemsCollectionName,
-        string parksCollectionName)
+        string parksCollectionName,
+        IReadOnlyCollection<string>? parkIds = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(parkItemsCollectionName);
         ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
@@ -439,20 +540,20 @@ public sealed class RatingRepository : IRatingRepository
             parkItemMatch.Add("rankingParkItem.category", parkItemCategory.Value.ToString());
         }
 
+        List<string> normalizedParkIds = NormalizeIds(parkIds ?? Array.Empty<string>());
+        if (normalizedParkIds.Count > 0)
+        {
+            parkItemMatch.Add(
+                "rankingParkItem.parkId",
+                new BsonDocument("$in", new BsonArray(normalizedParkIds)));
+        }
+
         return new[]
         {
             new BsonDocument("$match", new BsonDocument
             {
                 { "targetType", RatingTargetType.ParkItem.ToString() },
                 { "ratingCount", new BsonDocument("$gt", 0) },
-            }),
-            new BsonDocument("$sort", new BsonDocument
-            {
-                { "bayesianScore", -1 },
-                { "ratingCount", -1 },
-                { "averageRating", -1 },
-                { "targetType", 1 },
-                { "targetId", 1 },
             }),
             new BsonDocument("$lookup", new BsonDocument
             {
@@ -463,6 +564,7 @@ public sealed class RatingRepository : IRatingRepository
             }),
             new BsonDocument("$unwind", "$rankingParkItem"),
             new BsonDocument("$match", parkItemMatch),
+            new BsonDocument("$match", BuildCurrentParkItemRankingEligibilityMatch()),
             new BsonDocument("$lookup", new BsonDocument
             {
                 { "from", parksCollectionName },
@@ -476,12 +578,158 @@ public sealed class RatingRepository : IRatingRepository
                 { "rankingParentPark.isVisible", true },
                 { "rankingParentPark.status", ParkStatus.Operating.ToString() },
             }),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                { "bayesianScore", -1 },
+                { "ratingCount", -1 },
+                { "averageRating", -1 },
+                { "targetType", 1 },
+                { "targetId", 1 },
+            }),
             new BsonDocument("$project", new BsonDocument
             {
                 { "rankingParkItem", 0 },
                 { "rankingParentPark", 0 },
             }),
         };
+    }
+
+    internal static BsonDocument[] BuildParkItemRankingParkCandidatePipeline(
+        string ratingAggregatesCollectionName,
+        string parksCollectionName,
+        int limit)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(ratingAggregatesCollectionName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
+        ArgumentOutOfRangeException.ThrowIfLessThan(limit, 1);
+        return BuildParkItemRankingSnapshotBasePipeline(
+                ratingAggregatesCollectionName,
+                parksCollectionName,
+                null)
+            .Concat(new[]
+            {
+                new BsonDocument("$group", new BsonDocument("_id", "$parkId")),
+                new BsonDocument("$sort", new BsonDocument("_id", 1)),
+                new BsonDocument("$limit", limit),
+                new BsonDocument("$project", new BsonDocument
+                {
+                    { "_id", 0 },
+                    { "parkId", "$_id" },
+                }),
+            })
+            .ToArray();
+    }
+
+    internal static BsonDocument[] BuildParkItemRankingSnapshotSourcePipeline(
+        string ratingAggregatesCollectionName,
+        string parksCollectionName,
+        IReadOnlyCollection<string> parkIds,
+        int limit)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(ratingAggregatesCollectionName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
+        ArgumentNullException.ThrowIfNull(parkIds);
+        ArgumentOutOfRangeException.ThrowIfLessThan(limit, 1);
+        List<string> normalizedParkIds = NormalizeIds(parkIds);
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<BsonDocument>();
+        }
+
+        return BuildParkItemRankingSnapshotBasePipeline(
+                ratingAggregatesCollectionName,
+                parksCollectionName,
+                normalizedParkIds)
+            .Concat(new[]
+            {
+                new BsonDocument("$sort", new BsonDocument
+                {
+                    { "ratingAggregate.bayesianScore", -1 },
+                    { "ratingAggregate.ratingCount", -1 },
+                    { "ratingAggregate.averageRating", -1 },
+                    { "ratingAggregate.targetId", 1 },
+                }),
+                new BsonDocument("$limit", limit),
+                new BsonDocument("$replaceRoot", new BsonDocument(
+                    "newRoot",
+                    "$ratingAggregate")),
+            })
+            .ToArray();
+    }
+
+    private static IEnumerable<BsonDocument> BuildParkItemRankingSnapshotBasePipeline(
+        string ratingAggregatesCollectionName,
+        string parksCollectionName,
+        IReadOnlyCollection<string>? parkIds)
+    {
+        BsonDocument parkItemMatch = new BsonDocument("isVisible", true);
+        if (parkIds is not null)
+        {
+            parkItemMatch.Add("parkId", new BsonDocument("$in", new BsonArray(parkIds)));
+        }
+
+        return new[]
+        {
+            new BsonDocument("$match", parkItemMatch),
+            new BsonDocument("$match", BuildCurrentParkItemRankingEligibilityMatch(string.Empty)),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", parksCollectionName },
+                { "localField", "parkId" },
+                { "foreignField", "_id" },
+                { "as", "rankingParentPark" },
+            }),
+            new BsonDocument("$unwind", "$rankingParentPark"),
+            new BsonDocument("$match", new BsonDocument
+            {
+                { "rankingParentPark.isVisible", true },
+                { "rankingParentPark.status", ParkStatus.Operating.ToString() },
+            }),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", ratingAggregatesCollectionName },
+                { "localField", "_id" },
+                { "foreignField", "targetId" },
+                { "as", "ratingAggregate" },
+            }),
+            new BsonDocument("$unwind", "$ratingAggregate"),
+            new BsonDocument("$match", new BsonDocument
+            {
+                { "ratingAggregate.targetType", RatingTargetType.ParkItem.ToString() },
+                { "ratingAggregate.ratingCount", new BsonDocument("$gt", 0) },
+            }),
+        };
+    }
+
+    private static BsonDocument BuildCurrentParkItemRankingEligibilityMatch(
+        string fieldPrefix = "rankingParkItem.")
+    {
+        string categoryField = $"{fieldPrefix}category";
+        string statusField = $"{fieldPrefix}attractionDetails.status";
+        BsonArray nonAttractionCategories = new BsonArray(
+            Enum.GetValues<ParkItemCategory>()
+                .Where(static category => category != ParkItemCategory.Attraction)
+                .Select(static category => (BsonValue)category.ToString()));
+        return new BsonDocument("$or", new BsonArray
+        {
+            new BsonDocument
+            {
+                { categoryField, ParkItemCategory.Attraction.ToString() },
+                { statusField, ParkItemStatusNormalizer.Operating },
+            },
+            new BsonDocument
+            {
+                { categoryField, new BsonDocument("$in", nonAttractionCategories) },
+                {
+                    statusField,
+                    new BsonDocument("$in", new BsonArray
+                    {
+                        BsonNull.Value,
+                        ParkItemStatusNormalizer.Operating,
+                    })
+                },
+            },
+        });
     }
 
     internal static BsonDocument[] BuildParkRankingCandidatePipeline(
@@ -893,18 +1141,6 @@ public sealed class RatingRepository : IRatingRepository
     {
         return parkDocumentCount > RankingCandidateHardLimit
             || parkItemDocumentCount > parkItemLimit;
-    }
-
-    internal static bool IsParkRankingSetTruncated(
-        IReadOnlyCollection<RatingRankingItemResult> sources,
-        int parkLimit)
-    {
-        return sources
-            .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
-            .Select(static source => source.ParkId)
-            .Distinct(StringComparer.Ordinal)
-            .Take(parkLimit + 1)
-            .Count() > parkLimit;
     }
 
     internal static bool IsParkItemRankingSourceSetTruncated(

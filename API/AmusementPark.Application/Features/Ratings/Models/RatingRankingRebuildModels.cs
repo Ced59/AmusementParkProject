@@ -19,6 +19,12 @@ public static class RatingRankingRebuildScopeJob
     }
 }
 
+public static class RatingRankingSnapshotBuildLimits
+{
+    public const int ParkCandidateBatchSize = 50;
+    public const int MaximumSourceComponentCountPerParkBatch = 50000;
+}
+
 public static class RatingRankingRebuildErrorCodes
 {
     public const string InvalidPayload = "ranking-snapshot.invalid-rebuild-payload";

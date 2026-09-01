@@ -44,6 +44,7 @@ internal static class RatingRankingFactory
             .OrderByDescending(static ranking => ranking.Score)
             .ThenByDescending(static ranking => ranking.RatingCount)
             .ThenBy(static ranking => ranking.ParkName, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static ranking => ranking.ParkId, StringComparer.Ordinal)
             .Select(static (ranking, index) => ranking with { Rank = index + 1 })
             .ToList();
 
@@ -135,6 +136,22 @@ internal static class RatingRankingFactory
                 : null;
             return new ParkRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
+    }
+
+    internal static IReadOnlyCollection<ParkRankingSnapshotCandidate> OrderParkSnapshotCandidates(
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates)
+    {
+        ArgumentNullException.ThrowIfNull(candidates);
+        return candidates
+            .OrderByDescending(static candidate => candidate.Ranking.Score)
+            .ThenByDescending(static candidate => candidate.Ranking.RatingCount)
+            .ThenBy(static candidate => candidate.Ranking.ParkName, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static candidate => candidate.Ranking.ParkId, StringComparer.Ordinal)
+            .Select(static (candidate, index) => candidate with
+            {
+                Ranking = candidate.Ranking with { Rank = index + 1 },
+            })
+            .ToList();
     }
 
     public static IReadOnlyCollection<ParkItemRatingRankingResult> ApplyParkItemEvidence(

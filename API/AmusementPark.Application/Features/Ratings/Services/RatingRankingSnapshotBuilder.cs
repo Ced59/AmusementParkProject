@@ -37,36 +37,65 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
         RankingScopeDefinition scope,
         CancellationToken cancellationToken)
     {
-        RatingRankingSourceBatch sourceBatch =
-            await this.ratingRepository.GetVisibleParkRankingSnapshotSourceBatchAsync(
+        RatingRankingParkCandidateBatch parkCandidateBatch =
+            await this.ratingRepository.GetVisibleParkRankingSnapshotCandidateBatchAsync(
                 RankingSnapshotHeader.MaximumCandidateEntryCount,
                 cancellationToken);
-        IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
-        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(sources);
-        if (sourceBatch.IsTruncated
-            || rankings.Count > RankingSnapshotHeader.MaximumCandidateEntryCount)
+        if (parkCandidateBatch.IsTruncated)
         {
             return new RatingRankingSnapshotBuildPlan(
-                rankings.Count,
+                parkCandidateBatch.ParkIds.Count,
                 Array.Empty<RankingSnapshotEntry>(),
                 true);
         }
 
-        ParkRankingEvidenceFactsBatch evidenceFacts = await this.ratingEvidenceReader.ReadParkRankingFactsAsync(
-            sources.Select(static source => new RatingEvidenceTarget(
-                    source.TargetType,
-                    source.TargetId,
-                    source.ParkId))
-                .Distinct()
-                .ToList(),
-            cancellationToken);
-        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
-            RatingRankingFactory.BuildParkSnapshotCandidates(rankings, sources, evidenceFacts);
+        List<ParkRankingSnapshotCandidate> candidates = new List<ParkRankingSnapshotCandidate>();
+        for (int offset = 0;
+             offset < parkCandidateBatch.ParkIds.Count;
+             offset += RatingRankingSnapshotBuildLimits.ParkCandidateBatchSize)
+        {
+            IReadOnlyCollection<string> parkIds = parkCandidateBatch.ParkIds
+                .Skip(offset)
+                .Take(RatingRankingSnapshotBuildLimits.ParkCandidateBatchSize)
+                .ToArray();
+            RatingRankingSourceBatch sourceBatch =
+                await this.ratingRepository.GetVisibleParkRankingSnapshotSourceBatchAsync(
+                    parkIds,
+                    RatingRankingSnapshotBuildLimits.MaximumSourceComponentCountPerParkBatch,
+                    cancellationToken);
+            if (sourceBatch.IsTruncated)
+            {
+                return new RatingRankingSnapshotBuildPlan(
+                    parkCandidateBatch.ParkIds.Count,
+                    Array.Empty<RankingSnapshotEntry>(),
+                    true);
+            }
+
+            IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
+            IReadOnlyCollection<ParkRatingRankingResult> rankings =
+                RatingRankingFactory.BuildParkRankings(sources);
+            ParkRankingEvidenceFactsBatch evidenceFacts =
+                await this.ratingEvidenceReader.ReadParkRankingFactsAsync(
+                    sources.Select(static source => new RatingEvidenceTarget(
+                            source.TargetType,
+                            source.TargetId,
+                            source.ParkId))
+                        .Distinct()
+                        .ToList(),
+                    cancellationToken);
+            candidates.AddRange(RatingRankingFactory.BuildParkSnapshotCandidates(
+                rankings,
+                sources,
+                evidenceFacts));
+        }
+
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> orderedCandidates =
+            RatingRankingFactory.OrderParkSnapshotCandidates(candidates);
         List<RankingSnapshotEntry> entries = new List<RankingSnapshotEntry>();
         int position = 0;
         int rank = 0;
         double? rankAnchorScore = null;
-        foreach (ParkRankingSnapshotCandidate candidate in candidates)
+        foreach (ParkRankingSnapshotCandidate candidate in orderedCandidates)
         {
             RankingEvidence? evidence = candidate.Evidence;
             if (evidence is null || !evidence.IsEligibleForMainRanking)
@@ -86,7 +115,7 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
                 evidence));
         }
 
-        return new RatingRankingSnapshotBuildPlan(rankings.Count, entries, false);
+        return new RatingRankingSnapshotBuildPlan(orderedCandidates.Count, entries, false);
     }
 
     private async Task<RatingRankingSnapshotBuildPlan> BuildParkItemScopeAsync(

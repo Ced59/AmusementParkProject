@@ -139,20 +139,6 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
-    public void IsParkRankingSetTruncated_ShouldApplyLimitAfterGroupingSourcesByPark()
-    {
-        IReadOnlyCollection<RatingRankingItemResult> sameParkSources = Enumerable.Range(1, 6)
-            .Select(index => CreateParkItemRankingSource($"item-{index}", "park-1"))
-            .ToArray();
-        IReadOnlyCollection<RatingRankingItemResult> distinctParkSources = Enumerable.Range(1, 6)
-            .Select(index => CreateParkItemRankingSource($"item-{index}", $"park-{index}"))
-            .ToArray();
-
-        Assert.False(RatingRepository.IsParkRankingSetTruncated(sameParkSources, 5));
-        Assert.True(RatingRepository.IsParkRankingSetTruncated(distinctParkSources, 5));
-    }
-
-    [Fact]
     public void BuildParkItemRankingCandidatePipeline_ShouldStreamCandidatesAfterCurrentEligibilityJoins()
     {
         BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
@@ -202,6 +188,85 @@ public sealed class RatingRepositoryTests
         Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
     }
 
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_WhenParkBatchIsProvided_ShouldFilterJoinedParkIds()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            null,
+            "parkItems",
+            "parks",
+            new[] { "park-1", "park-2" });
+
+        BsonDocument parkItemMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("rankingParkItem.parkId"));
+        BsonArray parkIds = parkItemMatch["rankingParkItem.parkId"]
+            .AsBsonDocument["$in"]
+            .AsBsonArray;
+
+        Assert.Equal(new[] { "park-1", "park-2" }, parkIds.Select(static value => value.AsString));
+    }
+
+    [Fact]
+    public void BuildParkItemRankingParkCandidatePipeline_ShouldGroupBeforeApplyingParkLookAhead()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingParkCandidatePipeline(
+            "ratingAggregates",
+            "parks",
+            5001);
+
+        int parentEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int itemEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("$or"))
+            .index;
+        int groupIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$group"));
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+
+        Assert.True(parentEligibilityMatchIndex < groupIndex);
+        Assert.True(itemEligibilityMatchIndex < groupIndex);
+        Assert.True(groupIndex < limitIndex);
+        Assert.Equal("$parkId", pipeline[groupIndex]["$group"].AsBsonDocument["_id"].AsString);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildParkItemRankingSnapshotSourcePipeline_ShouldBoundJoinedAggregatesForTheParkBatch()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingSnapshotSourcePipeline(
+            "ratingAggregates",
+            "parks",
+            new[] { "park-1", "park-2" },
+            50001);
+
+        BsonDocument parkMatch = pipeline[0]["$match"].AsBsonDocument;
+        int aggregateLookupIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$lookup")
+                && value.stage["$lookup"].AsBsonDocument["from"].AsString == "ratingAggregates")
+            .index;
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+        int replaceRootIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$replaceRoot"));
+
+        Assert.Equal(
+            new[] { "park-1", "park-2" },
+            parkMatch["parkId"].AsBsonDocument["$in"].AsBsonArray
+                .Select(static value => value.AsString));
+        Assert.True(aggregateLookupIndex < limitIndex);
+        Assert.True(limitIndex < replaceRootIndex);
+        Assert.Equal(50001, pipeline[limitIndex]["$limit"].AsInt32);
+        Assert.Equal(
+            "$ratingAggregate",
+            pipeline[replaceRootIndex]["$replaceRoot"].AsBsonDocument["newRoot"].AsString);
+    }
+
     private static UserRatingListItemResult CreateRating(
         string id,
         string targetId,
@@ -225,21 +290,4 @@ public sealed class RatingRepositoryTests
             summary);
     }
 
-    private static RatingRankingItemResult CreateParkItemRankingSource(
-        string targetId,
-        string parkId)
-    {
-        return new RatingRankingItemResult(
-            RatingTargetType.ParkItem,
-            targetId,
-            targetId,
-            parkId,
-            parkId,
-            ParkItemCategory.Attraction,
-            ParkItemType.RollerCoaster,
-            10,
-            45d,
-            4.5d,
-            4d);
-    }
 }

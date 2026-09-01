@@ -115,20 +115,18 @@ public sealed class RatingRankingSnapshotBuilderTests
     }
 
     [Fact]
-    public async Task BuildAsync_WhenCombinedSourcesExceedDistinctParkLimit_ShouldWithholdEntries()
+    public async Task BuildAsync_WhenDistinctParkCandidatesExceedLimit_ShouldWithholdEntries()
     {
-        IReadOnlyCollection<RatingRankingItemResult> sources = Enumerable
+        IReadOnlyCollection<string> parkIds = Enumerable
             .Range(1, RankingSnapshotHeader.MaximumCandidateEntryCount + 1)
-            .Select(index => CreateParkRankingSource(
-                index,
-                index <= RankingSnapshotHeader.MaximumCandidateEntryCount / 2))
+            .Select(index => $"park-{index:D5}")
             .ToArray();
         Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
         repository
-            .Setup(value => value.GetVisibleParkRankingSnapshotSourceBatchAsync(
+            .Setup(value => value.GetVisibleParkRankingSnapshotCandidateBatchAsync(
                 RankingSnapshotHeader.MaximumCandidateEntryCount,
                 CancellationToken.None))
-            .ReturnsAsync(new RatingRankingSourceBatch(sources, false));
+            .ReturnsAsync(new RatingRankingParkCandidateBatch(parkIds, true));
         Mock<IRatingEvidenceReader> evidenceReader =
             new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         RatingRankingSnapshotBuilder builder = new RatingRankingSnapshotBuilder(
@@ -141,6 +139,46 @@ public sealed class RatingRankingSnapshotBuilderTests
 
         Assert.True(plan.IsSourceTruncated);
         Assert.Equal(RankingSnapshotHeader.MaximumCandidateEntryCount + 1, plan.TotalEntryCount);
+        Assert.Empty(plan.EligibleEntries);
+        repository.VerifyAll();
+        evidenceReader.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task BuildAsync_ShouldReadParkSourceComponentsInBoundedParkBatches()
+    {
+        IReadOnlyCollection<string> parkIds = Enumerable.Range(
+                1,
+                RatingRankingSnapshotBuildLimits.ParkCandidateBatchSize + 1)
+            .Select(index => $"park-{index:D3}")
+            .ToArray();
+        Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.GetVisibleParkRankingSnapshotCandidateBatchAsync(
+                RankingSnapshotHeader.MaximumCandidateEntryCount,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingParkCandidateBatch(parkIds, false));
+        repository
+            .Setup(value => value.GetVisibleParkRankingSnapshotSourceBatchAsync(
+                It.Is<IReadOnlyCollection<string>>(batch =>
+                    batch.Count == RatingRankingSnapshotBuildLimits.ParkCandidateBatchSize),
+                RatingRankingSnapshotBuildLimits.MaximumSourceComponentCountPerParkBatch,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceBatch(
+                Array.Empty<RatingRankingItemResult>(),
+                true));
+        Mock<IRatingEvidenceReader> evidenceReader =
+            new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        RatingRankingSnapshotBuilder builder = new RatingRankingSnapshotBuilder(
+            repository.Object,
+            evidenceReader.Object);
+
+        RatingRankingSnapshotBuildPlan plan = await builder.BuildAsync(
+            CanonicalRankingScopes.GlobalParks,
+            CancellationToken.None);
+
+        Assert.True(plan.IsSourceTruncated);
+        Assert.Equal(parkIds.Count, plan.TotalEntryCount);
         Assert.Empty(plan.EligibleEntries);
         repository.VerifyAll();
         evidenceReader.VerifyNoOtherCalls();
@@ -176,25 +214,4 @@ public sealed class RatingRankingSnapshotBuilderTests
         };
     }
 
-    private static RatingRankingItemResult CreateParkRankingSource(int index, bool directParkRating)
-    {
-        string parkId = $"park-{index:D5}";
-        string targetId = directParkRating ? parkId : $"item-{index:D5}";
-        return new RatingRankingItemResult(
-            directParkRating ? RatingTargetType.Park : RatingTargetType.ParkItem,
-            targetId,
-            targetId,
-            parkId,
-            $"Park {index:D5}",
-            directParkRating ? null : ParkItemCategory.Attraction,
-            directParkRating ? null : ParkItemType.RollerCoaster,
-            10,
-            45d,
-            4.5d,
-            4.0d)
-        {
-            UniqueContributorCount = 10,
-            AggregateIntegrityIsValid = true,
-        };
-    }
 }
