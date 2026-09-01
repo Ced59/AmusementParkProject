@@ -137,6 +137,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 existing.EntryCount == chunk.Entries.Count &&
                 existing.FirstRank == chunk.FirstRank &&
                 existing.LastRank == chunk.LastRank &&
+                existing.FirstPosition == chunk.FirstPosition &&
+                existing.LastPosition == chunk.LastPosition &&
                 string.Equals(existing.Checksum, chunk.Checksum.Value, StringComparison.Ordinal);
             return new RankingSnapshotChunkWriteResult(
                 isIdentical
@@ -571,13 +573,16 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             return new RankingSnapshotPage(header, Array.Empty<RankingSnapshotEntry>(), offset, limit);
         }
 
-        int firstRank = offset + 1;
+        int firstPosition = offset + 1;
         int expectedEntryCount = Math.Min(limit, header.EligibleEntryCount - offset);
-        int lastRank = firstRank + expectedEntryCount - 1;
-        int firstChunkIndex = (firstRank - 1) / header.ChunkSize;
-        int lastChunkIndex = (lastRank - 1) / header.ChunkSize;
+        int lastPosition = firstPosition + expectedEntryCount - 1;
+        int firstChunkIndex = (firstPosition - 1) / header.ChunkSize;
+        int lastChunkIndex = (lastPosition - 1) / header.ChunkSize;
         List<RankingSnapshotChunkDocument> documents = await this.chunks
-            .Find(RankingSnapshotMongoDefinitions.BuildPageChunkFilter(header.Id, firstRank, lastRank))
+            .Find(RankingSnapshotMongoDefinitions.BuildPageChunkFilter(
+                header.Id,
+                firstChunkIndex,
+                lastChunkIndex))
             .SortBy(document => document.ChunkIndex)
             .Limit((lastChunkIndex - firstChunkIndex) + 1)
             .ToListAsync(cancellationToken);
@@ -596,11 +601,11 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 int expectedChunkEntryCount = expectedChunkIndex == header.ChunkCount - 1
                     ? header.EligibleEntryCount - (expectedChunkIndex * header.ChunkSize)
                     : header.ChunkSize;
-                int expectedFirstRank = (expectedChunkIndex * header.ChunkSize) + 1;
+                int expectedFirstPosition = (expectedChunkIndex * header.ChunkSize) + 1;
                 if (chunk.SnapshotId != header.Id ||
                     chunk.ChunkIndex != expectedChunkIndex ||
                     chunk.Entries.Count != expectedChunkEntryCount ||
-                    chunk.FirstRank != expectedFirstRank ||
+                    chunk.FirstPosition != expectedFirstPosition ||
                     this.checksumCalculator.CalculateChunk(chunk.Entries) != chunk.Checksum)
                 {
                     return null;
@@ -617,7 +622,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                         return null;
                     }
 
-                    if (entry.Rank >= firstRank && entry.Rank <= lastRank)
+                    if (entry.Position >= firstPosition && entry.Position <= lastPosition)
                     {
                         entries.Add(entry);
                     }
@@ -630,8 +635,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         }
 
         if (entries.Count != expectedEntryCount ||
-            entries[0].Rank != firstRank ||
-            entries[^1].Rank != lastRank)
+            entries[0].Position != firstPosition ||
+            entries[^1].Position != lastPosition)
         {
             return null;
         }
@@ -766,7 +771,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
     {
         if (chunk.SnapshotId != header.Id ||
             chunk.ChunkIndex >= header.ChunkCount ||
-            chunk.FirstRank != (chunk.ChunkIndex * header.ChunkSize) + 1)
+            chunk.FirstPosition != (chunk.ChunkIndex * header.ChunkSize) + 1)
         {
             return false;
         }
@@ -889,20 +894,24 @@ internal static class RankingSnapshotMongoDefinitions
 
     public static FilterDefinition<RankingSnapshotChunkDocument> BuildPageChunkFilter(
         RankingSnapshotId snapshotId,
-        int firstRank,
-        int lastRank)
+        int firstChunkIndex,
+        int lastChunkIndex)
     {
-        if (firstRank <= 0 || lastRank < firstRank)
+        if (firstChunkIndex < 0 || lastChunkIndex < firstChunkIndex)
         {
-            throw new ArgumentOutOfRangeException(nameof(firstRank));
+            throw new ArgumentOutOfRangeException(nameof(firstChunkIndex));
         }
 
         return Builders<RankingSnapshotChunkDocument>.Filter.And(
             Builders<RankingSnapshotChunkDocument>.Filter.Eq(
                 document => document.SnapshotId,
                 snapshotId.Value),
-            Builders<RankingSnapshotChunkDocument>.Filter.Lte(document => document.FirstRank, lastRank),
-            Builders<RankingSnapshotChunkDocument>.Filter.Gte(document => document.LastRank, firstRank));
+            Builders<RankingSnapshotChunkDocument>.Filter.Gte(
+                document => document.ChunkIndex,
+                firstChunkIndex),
+            Builders<RankingSnapshotChunkDocument>.Filter.Lte(
+                document => document.ChunkIndex,
+                lastChunkIndex));
     }
 
     public static bool IsStale(RankingPublicationPointer pointer, RankingSnapshotHeader candidate)

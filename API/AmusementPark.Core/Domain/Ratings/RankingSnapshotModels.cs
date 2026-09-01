@@ -99,8 +99,24 @@ public sealed class RankingSnapshotEntry
         string targetId,
         double score,
         RankingEvidence evidence)
+        : this(rank, rank, targetType, targetId, score, evidence)
     {
-        if (rank <= 0)
+    }
+
+    public RankingSnapshotEntry(
+        int position,
+        int rank,
+        RatingTargetType targetType,
+        string targetId,
+        double score,
+        RankingEvidence evidence)
+    {
+        if (position <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(position));
+        }
+
+        if (rank <= 0 || rank > position)
         {
             throw new ArgumentOutOfRangeException(nameof(rank));
         }
@@ -135,12 +151,15 @@ public sealed class RankingSnapshotEntry
             throw new ArgumentException("Ranking evidence counts are inconsistent.", nameof(evidence));
         }
 
+        this.Position = position;
         this.Rank = rank;
         this.TargetType = targetType;
         this.TargetId = normalizedTargetId;
         this.Score = score;
         this.Evidence = evidence;
     }
+
+    public int Position { get; }
 
     public int Rank { get; }
 
@@ -337,9 +356,14 @@ public sealed class RankingSnapshotChunk
         for (int index = 0; index < materializedEntries.Length; index++)
         {
             ArgumentNullException.ThrowIfNull(materializedEntries[index]);
-            if (index > 0 && materializedEntries[index].Rank != materializedEntries[index - 1].Rank + 1)
+            if (index > 0 && materializedEntries[index].Position != materializedEntries[index - 1].Position + 1)
             {
-                throw new ArgumentException("Chunk ranks must be contiguous.", nameof(entries));
+                throw new ArgumentException("Chunk positions must be contiguous.", nameof(entries));
+            }
+
+            if (index > 0 && materializedEntries[index].Rank < materializedEntries[index - 1].Rank)
+            {
+                throw new ArgumentException("Public ranks must be ordered.", nameof(entries));
             }
         }
 
@@ -355,6 +379,10 @@ public sealed class RankingSnapshotChunk
     public int ChunkIndex { get; }
 
     public IReadOnlyCollection<RankingSnapshotEntry> Entries { get; }
+
+    public int FirstPosition => this.Entries.First().Position;
+
+    public int LastPosition => this.Entries.Last().Position;
 
     public int FirstRank => this.Entries.First().Rank;
 

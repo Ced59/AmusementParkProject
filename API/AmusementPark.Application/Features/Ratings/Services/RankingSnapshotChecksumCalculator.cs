@@ -16,6 +16,7 @@ public sealed class RankingSnapshotChecksumCalculator
         foreach (RankingSnapshotEntry entry in entries)
         {
             ArgumentNullException.ThrowIfNull(entry);
+            AppendInt32(hash, entry.Position);
             AppendInt32(hash, entry.Rank);
             AppendInt32(hash, (int)entry.TargetType);
             AppendString(hash, entry.TargetId);

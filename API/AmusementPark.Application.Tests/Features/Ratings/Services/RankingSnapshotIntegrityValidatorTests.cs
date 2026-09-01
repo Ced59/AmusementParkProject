@@ -101,6 +101,126 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenScoresAreTied_ShouldAcceptSharedCompetitionRanks()
+    {
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-ties");
+        RankingSnapshotEntry[] entries =
+        {
+            CreateEntry(position: 1, rank: 1, "park-1", RatingTargetType.Park, 4.5d),
+            CreateEntry(position: 2, rank: 1, "park-2", RatingTargetType.Park, 4.49995d),
+            CreateEntry(position: 3, rank: 3, "park-3", RatingTargetType.Park, 4.25d),
+        };
+        RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, entries);
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            entries.Length,
+            entries.Length,
+            1,
+            this.checksumCalculator.CalculateSnapshot(entries.Length, entries.Length, 500, new[] { chunk }));
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            new[] { chunk },
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.True(result.IsValid);
+    }
+
+    [Fact]
+    public void Validate_WhenTiedScoresUseSequentialRanks_ShouldRejectTheBuild()
+    {
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-invalid-ties");
+        RankingSnapshotEntry[] entries =
+        {
+            CreateEntry(position: 1, rank: 1, "park-1", RatingTargetType.Park, 4.5d),
+            CreateEntry(position: 2, rank: 2, "park-2", RatingTargetType.Park, 4.49995d),
+            CreateEntry(position: 3, rank: 3, "park-3", RatingTargetType.Park, 4.25d),
+        };
+        RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, entries);
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            entries.Length,
+            entries.Length,
+            1,
+            this.checksumCalculator.CalculateSnapshot(entries.Length, entries.Length, 500, new[] { chunk }));
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            new[] { chunk },
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.False(result.IsValid);
+        Assert.Equal(RankingSnapshotErrorCodes.RankSequenceInvalid, result.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenScoresIncreaseWithinTheTieEpsilon_ShouldRejectTheBuild()
+    {
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-invalid-score-order");
+        RankingSnapshotEntry[] entries =
+        {
+            CreateEntry(position: 1, rank: 1, "park-1", RatingTargetType.Park, 4.5d),
+            CreateEntry(position: 2, rank: 1, "park-2", RatingTargetType.Park, 4.50005d),
+            CreateEntry(position: 3, rank: 3, "park-3", RatingTargetType.Park, 4.25d),
+        };
+        RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, entries);
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            entries.Length,
+            entries.Length,
+            1,
+            this.checksumCalculator.CalculateSnapshot(entries.Length, entries.Length, 500, new[] { chunk }));
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            new[] { chunk },
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.False(result.IsValid);
+        Assert.Equal(RankingSnapshotErrorCodes.ScoreOrderInvalid, result.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenATieCrossesAChunkBoundary_ShouldPreserveTheSharedRank()
+    {
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-cross-chunk-tie");
+        List<RankingSnapshotEntry> entries = Enumerable.Range(1, 501)
+            .Select(position => CreateEntry(
+                position,
+                position,
+                $"park-{position}",
+                RatingTargetType.Park,
+                5d - (position * 0.001d)))
+            .ToList();
+        RankingSnapshotEntry positionFiveHundred = entries[499];
+        entries[500] = CreateEntry(
+            position: 501,
+            rank: 500,
+            "park-501",
+            RatingTargetType.Park,
+            positionFiveHundred.Score);
+        List<RankingSnapshotChunk> chunks = entries
+            .Chunk(500)
+            .Select((items, index) => CreateChunk(snapshotId, index, items))
+            .ToList();
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            entries.Count,
+            entries.Count,
+            chunks.Count,
+            this.checksumCalculator.CalculateSnapshot(entries.Count, entries.Count, 500, chunks));
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            chunks,
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.True(result.IsValid);
+        Assert.Equal(500, chunks[1].Entries.Single().Rank);
+        Assert.Equal(501, chunks[1].Entries.Single().Position);
+    }
+
+    [Fact]
     public void CalculateChunk_WhenAnyRankingFactChanges_ShouldChangeTheChecksum()
     {
         RankingSnapshotEntry first = CreateEntry(1, "park-1", RatingTargetType.Park);
@@ -122,7 +242,12 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-1");
         List<RankingSnapshotEntry> entries = Enumerable.Range(1, eligibleEntryCount)
-            .Select(rank => CreateEntry(rank, $"park-{rank}", RatingTargetType.Park))
+            .Select(position => CreateEntry(
+                position,
+                position,
+                $"park-{position}",
+                RatingTargetType.Park,
+                5d - (position * 0.001d)))
             .ToList();
         List<RankingSnapshotChunk> chunks = entries
             .Chunk(500)
@@ -180,7 +305,17 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         string targetId,
         RatingTargetType targetType)
     {
-        return new RankingSnapshotEntry(rank, targetType, targetId, 4.25d, CreateEvidence());
+        return CreateEntry(rank, rank, targetId, targetType, 4.25d);
+    }
+
+    private static RankingSnapshotEntry CreateEntry(
+        int position,
+        int rank,
+        string targetId,
+        RatingTargetType targetType,
+        double score)
+    {
+        return new RankingSnapshotEntry(position, rank, targetType, targetId, score, CreateEvidence());
     }
 
     private static RankingEvidence CreateEvidence()

@@ -39,16 +39,16 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
-    public void BuildPageChunkFilter_ShouldOnlySelectOverlappingChunksFromTheSnapshot()
+    public void BuildPageChunkFilter_ShouldOnlySelectTheRequiredChunkRangeFromTheSnapshot()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildPageChunkFilter(
             RankingSnapshotId.Parse("snapshot-1"),
-            451,
-            550));
+            0,
+            1));
 
         Assert.Equal("snapshot-1", rendered["snapshotId"].AsString);
-        Assert.Equal(550, rendered["firstRank"].AsBsonDocument["$lte"].AsInt32);
-        Assert.Equal(451, rendered["lastRank"].AsBsonDocument["$gte"].AsInt32);
+        Assert.Equal(0, rendered["chunkIndex"].AsBsonDocument["$gte"].AsInt32);
+        Assert.Equal(1, rendered["chunkIndex"].AsBsonDocument["$lte"].AsInt32);
     }
 
     [Fact]

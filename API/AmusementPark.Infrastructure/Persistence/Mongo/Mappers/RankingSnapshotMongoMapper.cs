@@ -67,6 +67,8 @@ internal static class RankingSnapshotMongoMapper
             ChunkIndex = chunk.ChunkIndex,
             FirstRank = chunk.FirstRank,
             LastRank = chunk.LastRank,
+            FirstPosition = chunk.FirstPosition,
+            LastPosition = chunk.LastPosition,
             EntryCount = chunk.Entries.Count,
             Checksum = chunk.Checksum.Value,
             Entries = chunk.Entries.Select(static entry => entry.ToDocument()).ToList(),
@@ -141,6 +143,7 @@ internal static class RankingSnapshotMongoMapper
             NextContributorThreshold = document.NextContributorThreshold,
         };
         return new RankingSnapshotEntry(
+            document.Position,
             document.Rank,
             document.TargetType,
             document.TargetId,
@@ -152,6 +155,7 @@ internal static class RankingSnapshotMongoMapper
     {
         return new RankingSnapshotEntryDocument
         {
+            Position = entry.Position,
             Rank = entry.Rank,
             TargetType = entry.TargetType,
             TargetId = entry.TargetId,

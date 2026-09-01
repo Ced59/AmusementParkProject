@@ -35,6 +35,7 @@ public sealed class RankingSnapshotModelsTests
     {
         RankingSnapshotEntry entry = CreateEntry(1, "park-1");
 
+        Assert.Equal(1, entry.Position);
         Assert.Equal(1, entry.Rank);
         Assert.Equal(RatingTargetType.Park, entry.TargetType);
         Assert.Equal("park-1", entry.TargetId);
@@ -98,13 +99,32 @@ public sealed class RankingSnapshotModelsTests
     }
 
     [Fact]
-    public void Chunk_WhenRanksAreNotContiguous_ShouldRejectIt()
+    public void Chunk_WhenPositionsAreNotContiguous_ShouldRejectIt()
     {
         Assert.Throws<ArgumentException>(() => new RankingSnapshotChunk(
             RankingSnapshotId.Parse("snapshot-1"),
             0,
             new[] { CreateEntry(1, "park-1"), CreateEntry(3, "park-3") },
             Checksum));
+    }
+
+    [Fact]
+    public void Chunk_WhenPublicRanksContainACompetitionTie_ShouldPreservePositionsAndRanks()
+    {
+        RankingSnapshotChunk chunk = new RankingSnapshotChunk(
+            RankingSnapshotId.Parse("snapshot-1"),
+            0,
+            new[]
+            {
+                CreateEntry(position: 1, rank: 1, "park-1", 4.5d),
+                CreateEntry(position: 2, rank: 1, "park-2", 4.5d),
+                CreateEntry(position: 3, rank: 3, "park-3", 4.25d),
+            },
+            Checksum);
+
+        Assert.Equal(1, chunk.FirstPosition);
+        Assert.Equal(3, chunk.LastPosition);
+        Assert.Equal(new[] { 1, 1, 3 }, chunk.Entries.Select(static entry => entry.Rank));
     }
 
     [Fact]
@@ -163,6 +183,21 @@ public sealed class RankingSnapshotModelsTests
             RatingTargetType.Park,
             targetId,
             4.25d,
+            CreateEvidence());
+    }
+
+    private static RankingSnapshotEntry CreateEntry(
+        int position,
+        int rank,
+        string targetId,
+        double score)
+    {
+        return new RankingSnapshotEntry(
+            position,
+            rank,
+            RatingTargetType.Park,
+            targetId,
+            score,
             CreateEvidence());
     }
 

@@ -67,6 +67,12 @@ public sealed class RankingSnapshotChunkDocument : MongoDocumentBase
     [BsonElement("lastRank")]
     public int LastRank { get; set; }
 
+    [BsonElement("firstPosition")]
+    public int FirstPosition { get; set; }
+
+    [BsonElement("lastPosition")]
+    public int LastPosition { get; set; }
+
     [BsonElement("entryCount")]
     public int EntryCount { get; set; }
 
@@ -79,6 +85,9 @@ public sealed class RankingSnapshotChunkDocument : MongoDocumentBase
 
 public sealed class RankingSnapshotEntryDocument
 {
+    [BsonElement("position")]
+    public int Position { get; set; }
+
     [BsonElement("rank")]
     public int Rank { get; set; }
 

@@ -63,6 +63,7 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(chunk.SnapshotId, restored.SnapshotId);
         Assert.Equal(chunk.ChunkIndex, restored.ChunkIndex);
         Assert.Equal(chunk.Checksum, restored.Checksum);
+        Assert.Equal(entry.Position, restoredEntry.Position);
         Assert.Equal(entry.TargetId, restoredEntry.TargetId);
         Assert.Equal(entry.Score, restoredEntry.Score);
         Assert.Equal(entry.Evidence, restoredEntry.Evidence);

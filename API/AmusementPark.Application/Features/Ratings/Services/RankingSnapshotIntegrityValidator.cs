@@ -37,7 +37,8 @@ public sealed class RankingSnapshotIntegrityValidator
         HashSet<(RatingTargetType TargetType, string TargetId)> targetKeys =
             new HashSet<(RatingTargetType TargetType, string TargetId)>();
         int entryCount = 0;
-        int expectedRank = 1;
+        int expectedPosition = 1;
+        RankingSnapshotEntry? previousEntry = null;
         for (int chunkIndex = 0; chunkIndex < orderedChunks.Count; chunkIndex++)
         {
             RankingSnapshotChunk chunk = orderedChunks[chunkIndex];
@@ -61,9 +62,37 @@ public sealed class RankingSnapshotIntegrityValidator
 
             foreach (RankingSnapshotEntry entry in chunk.Entries)
             {
-                if (entry.Rank != expectedRank)
+                if (entry.Position != expectedPosition)
                 {
-                    return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.RankSequenceInvalid);
+                    return RankingSnapshotIntegrityResult.Invalid(
+                        RankingSnapshotErrorCodes.PositionSequenceInvalid);
+                }
+
+                if (previousEntry is null)
+                {
+                    if (entry.Rank != 1)
+                    {
+                        return RankingSnapshotIntegrityResult.Invalid(
+                            RankingSnapshotErrorCodes.RankSequenceInvalid);
+                    }
+                }
+                else
+                {
+                    if (entry.Score > previousEntry.Score)
+                    {
+                        return RankingSnapshotIntegrityResult.Invalid(
+                            RankingSnapshotErrorCodes.ScoreOrderInvalid);
+                    }
+
+                    bool scoresAreTied = scope.AreScoresTied(
+                        previousEntry.Score,
+                        entry.Score);
+                    int expectedRank = scoresAreTied ? previousEntry.Rank : expectedPosition;
+                    if (entry.Rank != expectedRank)
+                    {
+                        return RankingSnapshotIntegrityResult.Invalid(
+                            RankingSnapshotErrorCodes.RankSequenceInvalid);
+                    }
                 }
 
                 RatingTargetType expectedTargetType = scope.TargetFamily == RankingTargetFamily.Parks
@@ -84,7 +113,8 @@ public sealed class RankingSnapshotIntegrityValidator
                     return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.DuplicateTarget);
                 }
 
-                expectedRank++;
+                previousEntry = entry;
+                expectedPosition++;
                 entryCount++;
             }
         }
