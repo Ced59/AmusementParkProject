@@ -902,6 +902,12 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         CancellationToken cancellationToken)
     {
         RankingPublicationPointer? livePointer = await this.GetPointerAsync(scopeKey, cancellationToken);
+        RatingMethodologyVersion? activeMethodologyVersion = this.scopeRegistry.Definitions
+            .FirstOrDefault(definition => string.Equals(
+                definition.Key.Value,
+                scopeKey.Value,
+                StringComparison.Ordinal))
+            ?.MethodologyVersion;
         List<RankingSnapshotId> protectedSnapshotIds = new List<RankingSnapshotId>();
         if (livePointer is not null)
         {
@@ -924,7 +930,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             .Find(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(
                 scopeKey,
                 protectedSnapshotIds,
-                livePointer?.HighestPublishedSourceRevision ?? 0))
+                livePointer?.HighestPublishedSourceRevision ?? 0,
+                activeMethodologyVersion))
             .SortByDescending(document => document.GeneratedAtUtc)
             .ThenByDescending(document => document.Id)
             .Skip(retainedTerminalCount)
@@ -979,7 +986,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 await this.headers.DeleteOneAsync(
                     RankingSnapshotMongoDefinitions.BuildStaleValidatedHeaderPruneFilter(
                         candidateId,
-                        livePointer.HighestPublishedSourceRevision),
+                        livePointer.HighestPublishedSourceRevision,
+                        activeMethodologyVersion),
                     cancellationToken);
             }
         }
@@ -1354,7 +1362,8 @@ internal static class RankingSnapshotMongoDefinitions
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildRetentionCandidateFilter(
         RankingScopeKey scopeKey,
         IReadOnlyCollection<RankingSnapshotId> protectedSnapshotIds,
-        long highestPublishedSourceRevision)
+        long highestPublishedSourceRevision,
+        RatingMethodologyVersion? activeMethodologyVersion)
     {
         ArgumentNullException.ThrowIfNull(protectedSnapshotIds);
         if (highestPublishedSourceRevision < 0)
@@ -1368,6 +1377,11 @@ internal static class RankingSnapshotMongoDefinitions
             .ToArray();
         FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters =
             Builders<RankingSnapshotHeaderDocument>.Filter;
+        FilterDefinition<RankingSnapshotHeaderDocument> staleValidatedFilter =
+            BuildStaleValidatedRevisionFilter(
+                filters,
+                highestPublishedSourceRevision,
+                activeMethodologyVersion);
         FilterDefinition<RankingSnapshotHeaderDocument> filter = filters.And(
             filters.Eq(document => document.ScopeKey, scopeKey.Value),
             filters.Or(
@@ -1382,9 +1396,7 @@ internal static class RankingSnapshotMongoDefinitions
                     filters.Eq(
                         document => document.Status,
                         RankingSnapshotStatus.Validated),
-                    filters.Lt(
-                        document => document.SourceRevision,
-                        highestPublishedSourceRevision))));
+                    staleValidatedFilter)));
         return protectedIds.Length == 0
             ? filter
             : filters.And(filter, filters.Nin(document => document.Id, protectedIds));
@@ -1430,7 +1442,8 @@ internal static class RankingSnapshotMongoDefinitions
 
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildStaleValidatedHeaderPruneFilter(
         RankingSnapshotId snapshotId,
-        long highestPublishedSourceRevision)
+        long highestPublishedSourceRevision,
+        RatingMethodologyVersion? activeMethodologyVersion)
     {
         if (highestPublishedSourceRevision < 0)
         {
@@ -1444,9 +1457,36 @@ internal static class RankingSnapshotMongoDefinitions
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
                 RankingSnapshotStatus.Validated),
-            Builders<RankingSnapshotHeaderDocument>.Filter.Lt(
+            BuildStaleValidatedRevisionFilter(
+                Builders<RankingSnapshotHeaderDocument>.Filter,
+                highestPublishedSourceRevision,
+                activeMethodologyVersion));
+    }
+
+    private static FilterDefinition<RankingSnapshotHeaderDocument> BuildStaleValidatedRevisionFilter(
+        FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters,
+        long highestPublishedSourceRevision,
+        RatingMethodologyVersion? activeMethodologyVersion)
+    {
+        FilterDefinition<RankingSnapshotHeaderDocument> olderRevision = filters.Lt(
+            document => document.SourceRevision,
+            highestPublishedSourceRevision);
+        if (!activeMethodologyVersion.HasValue)
+        {
+            return filters.Lte(
                 document => document.SourceRevision,
-                highestPublishedSourceRevision));
+                highestPublishedSourceRevision);
+        }
+
+        return filters.Or(
+            olderRevision,
+            filters.And(
+                filters.Eq(
+                    document => document.SourceRevision,
+                    highestPublishedSourceRevision),
+                filters.Ne(
+                    document => document.MethodologyVersion,
+                    activeMethodologyVersion.Value.Value)));
     }
 
     public static int NormalizeBuildAttempt(int buildAttempt)

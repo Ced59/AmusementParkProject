@@ -131,7 +131,8 @@ public sealed class RankingSnapshotMongoDefinitionsTests
                 RankingSnapshotId.Parse("snapshot-current"),
                 RankingSnapshotId.Parse("snapshot-previous"),
             },
-            highestPublishedSourceRevision: 42));
+            highestPublishedSourceRevision: 42,
+            activeMethodologyVersion: MethodologyVersion));
 
         Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
         BsonArray terminalConditions = rendered["$or"].AsBsonArray;
@@ -146,12 +147,30 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         Assert.Equal(
             nameof(RankingSnapshotStatus.Validated),
             terminalConditions[1]["status"].AsString);
+        BsonArray staleRevisionConditions = terminalConditions[1]["$or"].AsBsonArray;
+        Assert.Equal(42, staleRevisionConditions[0]["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
+        Assert.Equal(42, staleRevisionConditions[1]["sourceRevision"].AsInt64);
         Assert.Equal(
-            42,
-            terminalConditions[1]["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
+            MethodologyVersion.Value,
+            staleRevisionConditions[1]["methodologyVersion"].AsBsonDocument["$ne"].AsString);
         Assert.Equal(
             new[] { "snapshot-current", "snapshot-previous" },
             rendered["_id"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
+    }
+
+    [Fact]
+    public void BuildRetentionCandidateFilter_WithoutAnActiveMethodology_ShouldPruneTheHighWaterRevision()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(
+            ScopeKey,
+            Array.Empty<RankingSnapshotId>(),
+            highestPublishedSourceRevision: 42,
+            activeMethodologyVersion: null));
+
+        BsonArray terminalConditions = rendered["$or"].AsBsonArray;
+        Assert.Equal(
+            42,
+            terminalConditions[1]["sourceRevision"].AsBsonDocument["$lte"].AsInt64);
     }
 
     [Fact]
@@ -198,11 +217,17 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildStaleValidatedHeaderPruneFilter(
             RankingSnapshotId.Parse("snapshot-stale"),
-            highestPublishedSourceRevision: 42));
+            highestPublishedSourceRevision: 42,
+            activeMethodologyVersion: MethodologyVersion));
 
         Assert.Equal("snapshot-stale", rendered["_id"].AsString);
         Assert.Equal(nameof(RankingSnapshotStatus.Validated), rendered["status"].AsString);
-        Assert.Equal(42, rendered["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
+        BsonArray staleRevisionConditions = rendered["$or"].AsBsonArray;
+        Assert.Equal(42, staleRevisionConditions[0]["sourceRevision"].AsBsonDocument["$lt"].AsInt64);
+        Assert.Equal(42, staleRevisionConditions[1]["sourceRevision"].AsInt64);
+        Assert.Equal(
+            MethodologyVersion.Value,
+            staleRevisionConditions[1]["methodologyVersion"].AsBsonDocument["$ne"].AsString);
     }
 
     [Theory]
