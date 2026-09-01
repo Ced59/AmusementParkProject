@@ -1,6 +1,20 @@
 {
-  "version": "4.2.42",
+  "version": "4.2.43",
   "history": [
+    {
+      "version": "4.2.43",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Les futurs classements se mettent désormais à jour plus fiablement.",
+        "en": "Future rankings now update more reliably.",
+        "de": "Künftige Ranglisten werden nun zuverlässiger aktualisiert.",
+        "nl": "Toekomstige ranglijsten worden nu betrouwbaarder bijgewerkt.",
+        "it": "Le future classifiche si aggiornano ora in modo più affidabile.",
+        "es": "Las futuras clasificaciones se actualizan ahora con mayor fiabilidad.",
+        "pl": "Przyszłe rankingi są teraz aktualizowane bardziej niezawodnie.",
+        "pt": "As futuras classificações são agora atualizadas com maior fiabilidade."
+      }
+    },
     {
       "version": "4.2.42",
       "releasedAt": "2026-09-01",

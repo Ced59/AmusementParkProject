@@ -206,12 +206,72 @@ public sealed class RankingScopeDefinitionTests
         Assert.False(definition.AcceptsTarget(RatingTargetType.Park, null));
     }
 
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkItemChanges_ShouldAffectParkAndMatchingCategoryScopes()
+    {
+        RankingScopeDefinition globalParks = CreateGlobalParkDefinition();
+        RankingScopeDefinition attractions = CreateParkItemDefinition(ParkItemCategory.Attraction, "attraction");
+        RankingScopeDefinition restaurants = CreateParkItemDefinition(ParkItemCategory.Restaurant, "restaurant");
+
+        Assert.True(globalParks.IsAffectedByRatingMutation(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction));
+        Assert.True(attractions.IsAffectedByRatingMutation(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction));
+        Assert.False(restaurants.IsAffectedByRatingMutation(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction));
+    }
+
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkChanges_ShouldOnlyAffectParkScopes()
+    {
+        Assert.True(CreateGlobalParkDefinition().IsAffectedByRatingMutation(RatingTargetType.Park, null));
+        Assert.False(CreateParkItemDefinition(ParkItemCategory.Attraction, "attraction")
+            .IsAffectedByRatingMutation(RatingTargetType.Park, null));
+    }
+
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkItemCategoryIsUnavailable_ShouldStillProtectParkScopes()
+    {
+        Assert.True(CreateGlobalParkDefinition().IsAffectedByRatingMutation(
+            RatingTargetType.ParkItem,
+            null));
+        Assert.False(CreateParkItemDefinition(ParkItemCategory.Attraction, "attraction")
+            .IsAffectedByRatingMutation(RatingTargetType.ParkItem, null));
+    }
+
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkHasItemMetadata_ShouldRejectTheImpact()
+    {
+        Assert.False(CreateGlobalParkDefinition().IsAffectedByRatingMutation(
+            RatingTargetType.Park,
+            ParkItemCategory.Attraction));
+    }
+
     private static RankingScopeDefinition CreateGlobalParkDefinition()
     {
         return new RankingScopeDefinition(
             RankingScopeKey.Parse("parks:global"),
             RankingTargetFamily.Parks,
             RankingFilterDefinition.Global,
+            isPublic: true,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            minimumEligibleEntries: 3,
+            pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
+            RankingPublicationMode.DurableSnapshot);
+    }
+
+    private static RankingScopeDefinition CreateParkItemDefinition(
+        ParkItemCategory category,
+        string categoryKey)
+    {
+        return new RankingScopeDefinition(
+            RankingScopeKey.Parse($"park-items:category:{categoryKey}"),
+            RankingTargetFamily.ParkItems,
+            RankingFilterDefinition.ForParkItemCategory(category),
             isPublic: true,
             RankingEligibilityPolicy.InitialMethodologyVersion,
             minimumEligibleEntries: 3,

@@ -165,6 +165,37 @@ public sealed class RankingScopeDefinition
         };
     }
 
+    /// <summary>
+    /// Indique si une mutation de note peut modifier le contenu de ce scope.
+    /// Une note d'élément influe aussi sur les classements de parcs, dont le score est composé.
+    /// </summary>
+    public bool IsAffectedByRatingMutation(
+        RatingTargetType targetType,
+        ParkItemCategory? parkItemCategory)
+    {
+        if (!Enum.IsDefined(targetType))
+        {
+            return false;
+        }
+
+        if (targetType == RatingTargetType.Park)
+        {
+            return !parkItemCategory.HasValue && this.TargetFamily == RankingTargetFamily.Parks;
+        }
+
+        if (this.TargetFamily == RankingTargetFamily.Parks)
+        {
+            return true;
+        }
+
+        if (!parkItemCategory.HasValue || !Enum.IsDefined(parkItemCategory.Value))
+        {
+            return false;
+        }
+
+        return this.AcceptsTarget(targetType, parkItemCategory);
+    }
+
     private static void ValidateFilterCompatibility(
         RankingTargetFamily targetFamily,
         RankingFilterDefinition filter)

@@ -18,6 +18,7 @@ public sealed class MongoDatabaseInitializerRankingSnapshotsTests
         Assert.Equal("rating-ranking-snapshot-headers", settings.RatingRankingSnapshotHeadersCollectionName);
         Assert.Equal("rating-ranking-snapshot-chunks", settings.RatingRankingSnapshotChunksCollectionName);
         Assert.Equal("rating-ranking-publication-pointers", settings.RatingRankingPublicationPointersCollectionName);
+        Assert.Equal("rating-ranking-source-revisions", settings.RatingRankingSourceRevisionsCollectionName);
     }
 
     [Fact]

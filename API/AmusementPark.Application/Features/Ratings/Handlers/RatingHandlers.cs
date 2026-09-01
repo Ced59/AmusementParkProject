@@ -20,17 +20,20 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IRatingRankProvider ratingRankProvider;
+    private readonly IRatingRankingMutationGuard rankingMutationGuard;
 
     public UpsertUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        IRatingRankProvider ratingRankProvider)
+        IRatingRankProvider ratingRankProvider,
+        IRatingRankingMutationGuard rankingMutationGuard)
     {
         this.ratingRepository = ratingRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.ratingRankProvider = ratingRankProvider;
+        this.rankingMutationGuard = rankingMutationGuard;
     }
 
     public async Task<ApplicationResult<UserRatingResult>> HandleAsync(UpsertUserRatingCommand command, CancellationToken cancellationToken = default)
@@ -71,6 +74,16 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             return ApplicationResult<UserRatingResult>.Failure(RatingApplicationErrors.TargetUnavailable());
         }
 
+        UserRating? retainedRating = null;
+        if (metadata.TargetType == RatingTargetType.ParkItem)
+        {
+            retainedRating = await this.ratingRepository.GetUserRatingAsync(
+                command.UserId.Trim(),
+                metadata.TargetType,
+                metadata.TargetId,
+                cancellationToken);
+        }
+
         DateTime nowUtc = DateTime.UtcNow;
         UserRating rating = new UserRating
         {
@@ -90,6 +103,11 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
+        await this.rankingMutationGuard.PrepareMutationAsync(
+            metadata.TargetType,
+            metadata.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
+            cancellationToken);
         UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
             rating,
             aggregateTarget,
@@ -128,17 +146,20 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
     private readonly IRatingRankProvider ratingRankProvider;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IRatingRankingMutationGuard rankingMutationGuard;
 
     public DeleteUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IRatingRankProvider ratingRankProvider,
         IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkItemRepository parkItemRepository,
+        IRatingRankingMutationGuard rankingMutationGuard)
     {
         this.ratingRepository = ratingRepository;
         this.ratingRankProvider = ratingRankProvider;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.rankingMutationGuard = rankingMutationGuard;
     }
 
     public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(
@@ -167,6 +188,21 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             targetId,
             this.parkRepository,
             this.parkItemRepository,
+            cancellationToken);
+        UserRating? retainedRating = null;
+        if (command.TargetType == RatingTargetType.ParkItem)
+        {
+            retainedRating = await this.ratingRepository.GetUserRatingAsync(
+                userId,
+                command.TargetType,
+                targetId,
+                cancellationToken);
+        }
+
+        await this.rankingMutationGuard.PrepareMutationAsync(
+            command.TargetType,
+            metadata?.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
             cancellationToken);
         RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,

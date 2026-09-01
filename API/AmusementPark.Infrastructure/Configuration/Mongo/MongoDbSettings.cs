@@ -106,6 +106,8 @@ public sealed class MongoDbSettings
 
     public string RatingRankingPublicationPointersCollectionName { get; set; } = "rating-ranking-publication-pointers";
 
+    public string RatingRankingSourceRevisionsCollectionName { get; set; } = "rating-ranking-source-revisions";
+
     public string UserRankingSharesCollectionName { get; set; } = "userRankingShares";
 
     public string CommentsCollectionName { get; set; } = "comments";
