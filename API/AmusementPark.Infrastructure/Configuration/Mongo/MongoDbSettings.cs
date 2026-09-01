@@ -100,6 +100,12 @@ public sealed class MongoDbSettings
 
     public string RatingAggregatesCollectionName { get; set; } = "ratingAggregates";
 
+    public string RatingRankingSnapshotHeadersCollectionName { get; set; } = "rating-ranking-snapshot-headers";
+
+    public string RatingRankingSnapshotChunksCollectionName { get; set; } = "rating-ranking-snapshot-chunks";
+
+    public string RatingRankingPublicationPointersCollectionName { get; set; } = "rating-ranking-publication-pointers";
+
     public string UserRankingSharesCollectionName { get; set; } = "userRankingShares";
 
     public string CommentsCollectionName { get; set; } = "comments";

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Ports;
@@ -11,5 +12,5 @@ public interface IRankingScopeRegistry
     bool TryResolve(
         string? scopeKey,
         RatingMethodologyVersion methodologyVersion,
-        out RankingScopeDefinition? definition);
+        [NotNullWhen(true)] out RankingScopeDefinition? definition);
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -50,7 +51,7 @@ public sealed class RankingScopeRegistry : IRankingScopeRegistry
     public bool TryResolve(
         string? scopeKey,
         RatingMethodologyVersion methodologyVersion,
-        out RankingScopeDefinition? definition)
+        [NotNullWhen(true)] out RankingScopeDefinition? definition)
     {
         definition = null;
         if (!RankingScopeKey.TryParse(scopeKey, out RankingScopeKey parsedKey))

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.40",
+  "version": "4.2.41",
   "history": [
+    {
+      "version": "4.2.41",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "La publication des futurs classements gagne en stabilité et en cohérence.",
+        "en": "Future ranking publication is now more stable and consistent.",
+        "de": "Die Veröffentlichung künftiger Ranglisten ist jetzt stabiler und konsistenter.",
+        "nl": "De publicatie van toekomstige ranglijsten is nu stabieler en consistenter.",
+        "it": "La pubblicazione delle future classifiche è ora più stabile e coerente.",
+        "es": "La publicación de futuras clasificaciones es ahora más estable y coherente.",
+        "pl": "Publikowanie przyszłych rankingów jest teraz stabilniejsze i bardziej spójne.",
+        "pt": "A publicação das futuras classificações é agora mais estável e coerente."
+      }
+    },
     {
       "version": "4.2.40",
       "releasedAt": "2026-09-01",

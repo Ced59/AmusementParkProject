@@ -210,6 +210,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IRatingEvidenceReader, RatingEvidenceReader>();
         services.AddScoped<IRatingDiagnosticsReader, RatingDiagnosticsReader>();
+        services.AddScoped<IRankingSnapshotRepository, RankingSnapshotRepository>();
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();

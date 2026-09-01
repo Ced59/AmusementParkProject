@@ -85,6 +85,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
         services.AddSingleton<IRankingScopeRegistry>(
             new RankingScopeRegistry(CanonicalRankingScopes.Version, CanonicalRankingScopes.All));
+        services.AddSingleton<RankingSnapshotChecksumCalculator>();
+        services.AddSingleton<RankingSnapshotIntegrityValidator>();
         services.AddScoped<IRatingRankProvider, RatingRankProvider>();
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
