@@ -39,6 +39,13 @@ public static class RatingApplicationErrors
             "Cette cible ne peut pas recevoir de note avec son statut actuel.");
     }
 
+    public static ApplicationError TargetChangedConcurrently()
+    {
+        return ApplicationError.Conflict(
+            "rating.target.concurrent-modification",
+            "La cible de note a été modifiée simultanément. Réessaie.");
+    }
+
     public static ApplicationError SharedRankingNotFound()
     {
         return ApplicationError.NotFound(

@@ -9,6 +9,14 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 [BsonIgnoreExtraElements]
 public sealed class UserRatingDocument : MongoDocumentBase
 {
+    [BsonElement("isMutationPlaceholder")]
+    [BsonIgnoreIfDefault]
+    public bool IsMutationPlaceholder { get; set; }
+
+    [BsonElement("activeRankingMutationToken")]
+    [BsonIgnoreIfNull]
+    public string? ActiveRankingMutationToken { get; set; }
+
     [BsonElement("userId")]
     public string UserId { get; set; } = string.Empty;
 

@@ -235,6 +235,27 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
+    public void BuildDeadLetteredRevisionFilter_ShouldMatchTheExactTerminalRevision()
+    {
+        FilterDefinition<DurableBackgroundJobDocument> filter =
+            DurableBackgroundJobRepository.BuildDeadLetteredRevisionFilter(
+                "ratings.rebuild-scope",
+                "ratings.rebuild-scope:parks:global",
+                17,
+                1,
+                "{\"methodologyVersion\":\"ratings-v1\"}");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("ratings.rebuild-scope", rendered["kind"].AsString);
+        Assert.Equal("ratings.rebuild-scope:parks:global", rendered["naturalKey"].AsString);
+        Assert.Equal(DurableBackgroundJobStatus.DeadLetter.ToString(), rendered["status"].AsString);
+        Assert.Equal(17, rendered["requestedRevision"].AsInt64);
+        Assert.Equal(1, rendered["payloadVersion"].AsInt32);
+        Assert.Equal("{\"methodologyVersion\":\"ratings-v1\"}", rendered["payload"].AsString);
+    }
+
+    [Fact]
     public void BuildScheduledUnknownKindRunnableFilter_ShouldTargetOneKindAndEnforceTheGracePeriod()
     {
         DateTime maximumUpdatedAtUtc = NowUtc.AddHours(-1);

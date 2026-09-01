@@ -128,6 +128,14 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Status)
                     .Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_background_jobs_diagnostics" }),
+            new CreateIndexModel<DurableBackgroundJobDocument>(
+                Builders<DurableBackgroundJobDocument>.IndexKeys
+                    .Ascending(item => item.Kind)
+                    .Ascending(item => item.NaturalKey)
+                    .Ascending(item => item.Status)
+                    .Ascending(item => item.RequestedRevision)
+                    .Ascending(item => item.PayloadVersion),
+                new CreateIndexOptions { Name = "idx_background_jobs_terminal_revision" }),
         };
     }
 }

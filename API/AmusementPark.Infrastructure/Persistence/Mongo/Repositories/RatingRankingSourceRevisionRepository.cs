@@ -9,6 +9,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSourceRevisionRepository
 {
+    internal static readonly TimeSpan MutationLeaseDuration = TimeSpan.FromMinutes(5);
+
     private readonly IMongoCollection<RatingRankingSourceRevisionDocument> collection;
     private readonly TimeProvider timeProvider;
 
@@ -25,11 +27,30 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public async Task<RatingRankingSourceRevision> IncrementAsync(
+    public async Task<RatingRankingMutationLease> BeginMutationAsync(
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken)
     {
+        return await this.BeginMutationCoreAsync(scopeKey, null, cancellationToken);
+    }
+
+    public async Task<RatingRankingMutationLease> BeginMutationAsync(
+        RankingScopeKey scopeKey,
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(recoveryTarget);
+        return await this.BeginMutationCoreAsync(scopeKey, recoveryTarget, cancellationToken);
+    }
+
+    private async Task<RatingRankingMutationLease> BeginMutationCoreAsync(
+        RankingScopeKey scopeKey,
+        RatingRankingMutationRecoveryTarget? recoveryTarget,
+        CancellationToken cancellationToken)
+    {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        DateTime leaseExpiresAtUtc = nowUtc.Add(MutationLeaseDuration);
+        RatingRankingMutationLease mutationLease = RatingRankingMutationLease.Create(scopeKey);
         FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
             new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
             {
@@ -38,16 +59,126 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             };
         RatingRankingSourceRevisionDocument? document = await this.collection.FindOneAndUpdateAsync(
             RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
-            RatingRankingSourceRevisionMongoDefinitions.BuildIncrementUpdate(scopeKey, nowUtc),
+            RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
+                scopeKey,
+                mutationLease,
+                recoveryTarget,
+                nowUtc,
+                leaseExpiresAtUtc),
             options,
             cancellationToken);
         if (document is null)
         {
             throw new InvalidOperationException(
-                $"The source revision for ranking scope '{scopeKey.Value}' could not be incremented.");
+                $"The source mutation lease for ranking scope '{scopeKey.Value}' could not be acquired.");
+        }
+
+        return mutationLease;
+    }
+
+    public async Task<RatingRankingSourceRevision> CompleteMutationAsync(
+        RatingRankingMutationLease mutationLease,
+        bool sourceChanged,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(mutationLease);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
+            new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            };
+        RatingRankingSourceRevisionDocument? document = await this.collection.FindOneAndUpdateAsync(
+            RatingRankingSourceRevisionMongoDefinitions.BuildMutationLeaseFilter(mutationLease),
+            RatingRankingSourceRevisionMongoDefinitions.BuildCompleteMutationUpdate(
+                mutationLease,
+                sourceChanged,
+                nowUtc),
+            options,
+            cancellationToken);
+        if (document is null && sourceChanged)
+        {
+            document = await this.collection.FindOneAndUpdateAsync(
+                RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(
+                    mutationLease.ScopeKey),
+                RatingRankingSourceRevisionMongoDefinitions.BuildLateChangedMutationUpdate(nowUtc),
+                options,
+                cancellationToken);
+        }
+
+        document ??= await this.collection
+            .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(
+                mutationLease.ScopeKey))
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document is null)
+        {
+            throw new InvalidOperationException(
+                $"The source mutation lease for ranking scope '{mutationLease.ScopeKey.Value}' could not be completed.");
         }
 
         return ToApplication(document);
+    }
+
+    public async Task MarkUnavailableAsync(
+        RankingScopeKey scopeKey,
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision,
+        string reasonCode,
+        CancellationToken cancellationToken)
+    {
+        if (sourceRevision < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(sourceRevision));
+        }
+
+        if (string.IsNullOrWhiteSpace(reasonCode))
+        {
+            throw new ArgumentException("An unavailable reason code is required.", nameof(reasonCode));
+        }
+
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        FilterDefinition<RatingRankingSourceRevisionDocument> filter =
+            RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
+                document => document.Revision,
+                sourceRevision)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
+                document => document.PendingMutationCount,
+                0);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            Builders<RatingRankingSourceRevisionDocument>.Update
+                .Set(document => document.UnavailableMethodologyVersion, methodologyVersion.Value)
+                .Set(document => document.HighestUnavailableSourceRevision, sourceRevision)
+                .Set(document => document.UnavailableReasonCode, reasonCode.Trim())
+                .Set(document => document.UpdatedAt, nowUtc),
+            cancellationToken: cancellationToken);
+        if (result.MatchedCount > 0 || sourceRevision != 0)
+        {
+            return;
+        }
+
+        try
+        {
+            await this.collection.InsertOneAsync(
+                new RatingRankingSourceRevisionDocument
+                {
+                    Id = scopeKey.Value,
+                    ScopeKey = scopeKey.Value,
+                    Revision = 0,
+                    UnavailableMethodologyVersion = methodologyVersion.Value,
+                    HighestUnavailableSourceRevision = 0,
+                    UnavailableReasonCode = reasonCode.Trim(),
+                    CreatedAt = nowUtc,
+                    UpdatedAt = nowUtc,
+                },
+                cancellationToken: cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // A concurrent mutation created or advanced the scope; its revision supersedes this marker.
+        }
     }
 
     public async Task<RatingRankingSourceRevision?> GetAsync(
@@ -57,19 +188,183 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         RatingRankingSourceRevisionDocument? document = await this.collection
             .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey))
             .FirstOrDefaultAsync(cancellationToken);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        if (document is not null
+            && document.PendingMutationCount > 0
+            && document.MutationLeaseExpiresAtUtc <= nowUtc)
+        {
+            FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
+                new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
+                {
+                    ReturnDocument = ReturnDocument.After,
+                };
+            RatingRankingSourceRevisionDocument? recovered = await this.collection.FindOneAndUpdateAsync(
+                RatingRankingSourceRevisionMongoDefinitions.BuildPendingMutationFilter(scopeKey)
+                    & Builders<RatingRankingSourceRevisionDocument>.Filter.Lte(
+                        value => value.MutationLeaseExpiresAtUtc,
+                        nowUtc),
+                Builders<RatingRankingSourceRevisionDocument>.Update
+                    .Inc(value => value.Revision, 1)
+                    .Set(value => value.PendingMutationCount, 0)
+                    .Unset(value => value.MutationLeaseExpiresAtUtc)
+                    .Set(value => value.UpdatedAt, nowUtc),
+                options,
+                cancellationToken);
+            document = recovered ?? await this.collection
+                .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey))
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        IReadOnlyCollection<RatingRankingMutationLease> expiredMutationLeases =
+            (document?.MutationLeases ?? new Dictionary<string, DateTime>())
+                .Where(entry => entry.Value <= nowUtc)
+                .Select(entry => new RatingRankingMutationLease(scopeKey, entry.Key))
+                .ToArray();
+        foreach (RatingRankingMutationLease mutationLease in expiredMutationLeases)
+        {
+            RatingRankingMutationRecoveryTarget? recoveryTarget = null;
+            if (document?.MutationRecoveryTargets?.TryGetValue(
+                    mutationLease.Token,
+                    out RatingRankingMutationRecoveryTargetDocument? recoveryTargetDocument) == true)
+            {
+                recoveryTarget = ToRecoveryTarget(recoveryTargetDocument);
+            }
+            FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
+                new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
+                {
+                    ReturnDocument = ReturnDocument.After,
+                };
+            RatingRankingSourceRevisionDocument? recovered = await this.collection.FindOneAndUpdateAsync(
+                RatingRankingSourceRevisionMongoDefinitions.BuildExpiredMutationLeaseFilter(
+                    mutationLease,
+                    nowUtc),
+                RatingRankingSourceRevisionMongoDefinitions.BuildRecoverMutationUpdate(
+                    mutationLease,
+                    recoveryTarget,
+                    nowUtc),
+                options,
+                cancellationToken);
+            document = recovered ?? document;
+        }
+
         return document is null ? null : ToApplication(document);
+    }
+
+    public async Task<bool> AcknowledgeRecoveredMutationAsync(
+        RankingScopeKey scopeKey,
+        RatingRankingRecoveredMutation recoveredMutation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(recoveredMutation);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            RatingRankingSourceRevisionMongoDefinitions.BuildRecoveredMutationFilter(
+                scopeKey,
+                recoveredMutation),
+            RatingRankingSourceRevisionMongoDefinitions.BuildAcknowledgeRecoveredMutationUpdate(
+                recoveredMutation,
+                nowUtc),
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount == 1;
     }
 
     private static RatingRankingSourceRevision ToApplication(
         RatingRankingSourceRevisionDocument document)
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse(document.ScopeKey);
+        Dictionary<string, DateTime> mutationLeases = document.MutationLeases
+            ?? new Dictionary<string, DateTime>();
+        Dictionary<string, RatingRankingMutationRecoveryTargetDocument> recoveryTargets =
+            document.MutationRecoveryTargets
+            ?? new Dictionary<string, RatingRankingMutationRecoveryTargetDocument>();
+        Dictionary<string, RatingRankingMutationRecoveryTargetDocument> recoveredTargets =
+            document.RecoveredMutationTargets
+            ?? new Dictionary<string, RatingRankingMutationRecoveryTargetDocument>();
+        IReadOnlyCollection<RatingRankingRecoveredMutation> recoveredMutations = recoveredTargets
+            .Select(entry =>
+            {
+                RatingRankingMutationRecoveryTarget target = ToRecoveryTarget(entry.Value);
+                return new RatingRankingRecoveredMutation(
+                    entry.Key,
+                    target.TargetType,
+                    target.TargetId,
+                    target.UserId,
+                    target.MutationToken);
+            })
+            .OrderBy(static recoveredMutation => recoveredMutation.RecoveryToken, StringComparer.Ordinal)
+            .ToArray();
         if (!string.Equals(document.Id, scopeKey.Value, StringComparison.Ordinal) ||
-            document.Revision <= 0)
+            document.Revision < 0 ||
+            document.PendingMutationCount < 0 ||
+            (document.PendingMutationCount > 0 && !document.MutationLeaseExpiresAtUtc.HasValue) ||
+            mutationLeases.Keys.Any(static token => !Guid.TryParseExact(token, "N", out _)) ||
+            recoveryTargets.Any(entry =>
+                !Guid.TryParseExact(entry.Key, "N", out _)
+                || !IsValidRecoveryTarget(entry.Value)
+                || !mutationLeases.ContainsKey(entry.Key)))
         {
             throw new InvalidOperationException("The persisted ranking source revision is invalid.");
         }
 
-        return new RatingRankingSourceRevision(scopeKey, document.Revision, document.UpdatedAt);
+        int pendingMutationCount = checked(document.PendingMutationCount + mutationLeases.Count);
+        IEnumerable<DateTime> mutationLeaseExpirations = mutationLeases.Values;
+        if (document.PendingMutationCount > 0 && document.MutationLeaseExpiresAtUtc.HasValue)
+        {
+            mutationLeaseExpirations = mutationLeaseExpirations.Prepend(
+                document.MutationLeaseExpiresAtUtc.Value);
+        }
+
+        DateTime? mutationLeaseExpiresAtUtc = mutationLeaseExpirations
+            .Cast<DateTime?>()
+            .Min();
+
+        RatingMethodologyVersion? unavailableMethodologyVersion =
+            string.IsNullOrWhiteSpace(document.UnavailableMethodologyVersion)
+                ? null
+                : RatingMethodologyVersion.Parse(document.UnavailableMethodologyVersion);
+        return new RatingRankingSourceRevision(
+            scopeKey,
+            document.Revision,
+            document.UpdatedAt,
+            pendingMutationCount,
+            mutationLeaseExpiresAtUtc,
+            unavailableMethodologyVersion,
+            document.HighestUnavailableSourceRevision,
+            document.UnavailableReasonCode,
+            recoveredMutations);
+    }
+
+    private static bool IsValidRecoveryTarget(
+        RatingRankingMutationRecoveryTargetDocument? document)
+    {
+        return document is not null
+            && Enum.TryParse(
+                document.TargetType,
+                ignoreCase: false,
+                out RatingTargetType targetType)
+            && targetType is RatingTargetType.Park or RatingTargetType.ParkItem
+            && !string.IsNullOrWhiteSpace(document.TargetId)
+            && !string.IsNullOrWhiteSpace(document.UserId)
+            && Guid.TryParseExact(document.MutationToken, "N", out _);
+    }
+
+    private static RatingRankingMutationRecoveryTarget ToRecoveryTarget(
+        RatingRankingMutationRecoveryTargetDocument document)
+    {
+        if (!IsValidRecoveryTarget(document)
+            || !Enum.TryParse(
+                document.TargetType,
+                ignoreCase: false,
+                out RatingTargetType targetType))
+        {
+            throw new InvalidOperationException("The persisted ranking mutation recovery target is invalid.");
+        }
+
+        return new RatingRankingMutationRecoveryTarget(
+            targetType,
+            document.TargetId,
+            document.UserId,
+            document.MutationToken);
     }
 }

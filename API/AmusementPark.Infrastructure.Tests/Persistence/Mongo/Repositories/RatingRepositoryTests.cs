@@ -1,15 +1,105 @@
+using System.Text.RegularExpressions;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class RatingRepositoryTests
 {
+    [Fact]
+    public void BuildOwnedMutationFenceFilter_ShouldRejectAWriterAfterItsTokenIsRevoked()
+    {
+        string mutationToken = 7.ToString("x32");
+
+        FilterDefinition<UserRatingDocument> filter = RatingRepository.BuildOwnedMutationFenceFilter(
+            " user-1 ",
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            mutationToken);
+        IBsonSerializer<UserRatingDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserRatingDocument>();
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<UserRatingDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), rendered["targetType"].AsString);
+        Assert.Equal("item-1", rendered["targetId"].AsString);
+        Assert.Equal(mutationToken, rendered["activeRankingMutationToken"].AsString);
+    }
+
+    [Fact]
+    public void HasRankingSourceChanged_WhenRetryKeepsTheSameSemanticValue_ShouldReturnFalse()
+    {
+        UserRatingDocument previous = new UserRatingDocument
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+        UserRating retry = new UserRating
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = " park-1 ",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+
+        bool result = RatingRepository.HasRankingSourceChanged(previous, retry);
+
+        Assert.False(result);
+    }
+
+    [Theory]
+    [InlineData(4d, ParkItemCategory.Attraction, ParkItemType.RollerCoaster)]
+    [InlineData(4.5d, ParkItemCategory.Show, ParkItemType.RollerCoaster)]
+    [InlineData(4.5d, ParkItemCategory.Attraction, ParkItemType.DarkRide)]
+    public void HasRankingSourceChanged_WhenRankingFactChanges_ShouldReturnTrue(
+        double value,
+        ParkItemCategory category,
+        ParkItemType type)
+    {
+        UserRatingDocument previous = new UserRatingDocument
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+        UserRating update = new UserRating
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = category,
+            ParkItemType = type,
+            Value = value,
+        };
+
+        bool result = RatingRepository.HasRankingSourceChanged(previous, update);
+
+        Assert.True(result);
+    }
+
     [Fact]
     public void BuildUserRatingSearchWindow_WhenMatchedParkHasManyRatings_ShouldCapResultsToPageSize()
     {
@@ -122,6 +212,315 @@ public sealed class RatingRepositoryTests
         Assert.Equal(expected, result);
     }
 
+    [Theory]
+    [InlineData(5000, 5000, false)]
+    [InlineData(5001, 5000, true)]
+    public void IsParkItemRankingSourceSetTruncated_ShouldDetectLookAheadDocument(
+        int documentCount,
+        int documentLimit,
+        bool expected)
+    {
+        bool result = RatingRepository.IsParkItemRankingSourceSetTruncated(
+            documentCount,
+            documentLimit);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_ShouldBoundCandidatesAfterCurrentEligibilityJoins()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Attraction,
+            "parkItems",
+            "parks",
+            5001);
+
+        int parkItemCategoryMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParkItem.category"))
+            .index;
+        int parentEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int projectionIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$project"))
+            .index;
+        int sortIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$sort"));
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+
+        Assert.True(parkItemCategoryMatchIndex < sortIndex);
+        Assert.True(parentEligibilityMatchIndex < sortIndex);
+        Assert.True(sortIndex < limitIndex);
+        Assert.True(limitIndex < projectionIndex);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$skip"));
+    }
+
+    [Theory]
+    [InlineData("Operating", true)]
+    [InlineData("operating", true)]
+    [InlineData("Open", true)]
+    [InlineData("OPENED", true)]
+    [InlineData("En fonctionnement", true)]
+    [InlineData("en-fonctionnement", true)]
+    [InlineData(" o_p_e_n ", true)]
+    [InlineData("TemporarilyClosed", false)]
+    [InlineData("Planned", false)]
+    public void BuildParkItemRankingCandidatePipeline_ShouldMatchDomainOperatingAliases(
+        string status,
+        bool expected)
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Attraction,
+            "parkItems",
+            "parks",
+            5001);
+        BsonDocument eligibilityMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("$or"));
+        BsonDocument attractionBranch = eligibilityMatch["$or"].AsBsonArray[0].AsBsonDocument;
+        BsonRegularExpression expression = attractionBranch["rankingParkItem.attractionDetails.status"]
+            .AsBsonRegularExpression;
+        Regex regex = new Regex(expression.Pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+        bool domainResult = ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+            ParkItemCategory.Attraction,
+            status);
+
+        Assert.Equal(expected, domainResult);
+        Assert.Equal(domainResult, regex.IsMatch(status));
+    }
+
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_ForNonAttractions_ShouldMatchMissingAndWhitespaceStatuses()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Restaurant,
+            "parkItems",
+            "parks",
+            5001);
+        BsonDocument eligibilityMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("$or"));
+        BsonDocument nonAttractionBranch = eligibilityMatch["$or"].AsBsonArray[1].AsBsonDocument;
+        BsonArray allowedStatuses = nonAttractionBranch["rankingParkItem.attractionDetails.status"]
+            .AsBsonDocument["$in"]
+            .AsBsonArray;
+
+        Assert.Contains(allowedStatuses, static value => value.IsBsonNull);
+        Assert.Contains(
+            allowedStatuses,
+            static value => value.IsBsonRegularExpression
+                && value.AsBsonRegularExpression.Pattern == "^\\s*$");
+        Assert.True(ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+            ParkItemCategory.Restaurant,
+            "   "));
+    }
+
+    [Fact]
+    public void BuildParkRankingCandidatePipeline_ShouldApplyLookAheadAfterCurrentParkEligibility()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkRankingCandidatePipeline(
+            "parks",
+            5001);
+
+        int eligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingPark.status"))
+            .index;
+        int limitIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$limit"))
+            .index;
+        int sortIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$sort"))
+            .index;
+
+        Assert.True(eligibilityMatchIndex < sortIndex);
+        Assert.True(sortIndex < limitIndex);
+        Assert.True(eligibilityMatchIndex < limitIndex);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_WhenParkBatchIsProvided_ShouldFilterJoinedParkIds()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            null,
+            "parkItems",
+            "parks",
+            5001,
+            new[] { "park-1", "park-2" });
+
+        BsonDocument parkItemMatch = pipeline
+            .Select(static stage => stage.GetValue("$match", null))
+            .Where(static value => value?.IsBsonDocument == true)
+            .Select(static value => value!.AsBsonDocument)
+            .Single(static match => match.Contains("rankingParkItem.parkId"));
+        BsonArray parkIds = parkItemMatch["rankingParkItem.parkId"]
+            .AsBsonDocument["$in"]
+            .AsBsonArray;
+
+        Assert.Equal(new[] { "park-1", "park-2" }, parkIds.Select(static value => value.AsString));
+    }
+
+    [Fact]
+    public void BuildParkItemRankingParkCandidatePipeline_ShouldGroupBeforeApplyingParkLookAhead()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingParkCandidatePipeline(
+            "ratingAggregates",
+            "parks",
+            5001);
+
+        int parentEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int itemEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("$or"))
+            .index;
+        int groupIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$group"));
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+
+        Assert.True(parentEligibilityMatchIndex < groupIndex);
+        Assert.True(itemEligibilityMatchIndex < groupIndex);
+        Assert.True(groupIndex < limitIndex);
+        Assert.Equal("$parkId", pipeline[groupIndex]["$group"].AsBsonDocument["_id"].AsString);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildParkItemRankingSnapshotSourcePipeline_ShouldBoundJoinedAggregatesForTheParkBatch()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingSnapshotSourcePipeline(
+            "ratingAggregates",
+            "parks",
+            new[] { "park-1", "park-2" },
+            50001);
+
+        BsonDocument parkMatch = pipeline[0]["$match"].AsBsonDocument;
+        int aggregateLookupIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$lookup")
+                && value.stage["$lookup"].AsBsonDocument["from"].AsString == "ratingAggregates")
+            .index;
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+        int replaceRootIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$replaceRoot"));
+        BsonDocument aggregateLookup = pipeline[aggregateLookupIndex]["$lookup"].AsBsonDocument;
+        BsonArray aggregateLookupPipeline = aggregateLookup["pipeline"].AsBsonArray;
+        BsonDocument aggregateMatch = aggregateLookupPipeline[0]
+            .AsBsonDocument["$match"]
+            .AsBsonDocument;
+        BsonArray targetIdEquality = aggregateMatch["$expr"]
+            .AsBsonDocument["$eq"]
+            .AsBsonArray;
+
+        Assert.Equal(
+            new[] { "park-1", "park-2" },
+            parkMatch["parkId"].AsBsonDocument["$in"].AsBsonArray
+                .Select(static value => value.AsString));
+        Assert.True(aggregateLookupIndex < limitIndex);
+        Assert.False(aggregateLookup.Contains("localField"));
+        Assert.Equal("$_id", aggregateLookup["let"].AsBsonDocument["rankingTargetId"].AsString);
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), aggregateMatch["targetType"].AsString);
+        Assert.Equal("$targetId", targetIdEquality[0].AsString);
+        Assert.Equal("$$rankingTargetId", targetIdEquality[1].AsString);
+        Assert.Equal(1, aggregateLookupPipeline[1].AsBsonDocument["$limit"].AsInt32);
+        Assert.True(limitIndex < replaceRootIndex);
+        Assert.Equal(50001, pipeline[limitIndex]["$limit"].AsInt32);
+        Assert.Equal(
+            "$ratingAggregate",
+            pipeline[replaceRootIndex]["$replaceRoot"].AsBsonDocument["newRoot"].AsString);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenParkItemExists_ShouldUseCurrentParkItemMetadata()
+    {
+        ParkItemDocument parkItem = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = " park-current ",
+            Category = ParkItemCategory.Hotel,
+            Type = ParkItemType.Hotel,
+        };
+        UserRatingDocument staleRating = new UserRatingDocument
+        {
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-old",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+        };
+
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            parkItem,
+            staleRating,
+            null);
+
+        Assert.NotNull(result);
+        Assert.Equal("item-1", result.TargetId);
+        Assert.Equal("park-current", result.ParkId);
+        Assert.Equal(ParkItemCategory.Hotel, result.ParkItemCategory);
+        Assert.Equal(ParkItemType.Hotel, result.ParkItemType);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenDeletedTargetHasNoRating_ShouldUsePendingAggregateMetadata()
+    {
+        RatingAggregateDocument aggregate = new RatingAggregateDocument
+        {
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-old",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            PendingParkId = " park-pending ",
+            PendingParkItemCategory = ParkItemCategory.Show,
+            PendingParkItemType = ParkItemType.Show,
+        };
+
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            "item-1",
+            null,
+            null,
+            aggregate);
+
+        Assert.NotNull(result);
+        Assert.Equal("park-pending", result.ParkId);
+        Assert.Equal(ParkItemCategory.Show, result.ParkItemCategory);
+        Assert.Equal(ParkItemType.Show, result.ParkItemType);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenParkItemHasNoRemainingSource_ShouldReturnNull()
+    {
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            "item-1",
+            null,
+            null,
+            null);
+
+        Assert.Null(result);
+    }
+
     private static UserRatingListItemResult CreateRating(
         string id,
         string targetId,
@@ -144,4 +543,5 @@ public sealed class RatingRepositoryTests
             DateTime.UtcNow,
             summary);
     }
+
 }

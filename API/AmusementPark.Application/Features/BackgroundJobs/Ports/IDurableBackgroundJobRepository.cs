@@ -1,3 +1,4 @@
+using System.Text.Json;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 
 namespace AmusementPark.Application.Features.BackgroundJobs.Ports;
@@ -46,6 +47,14 @@ public interface IDurableBackgroundJobRepository
     Task<bool> CancelAsync(string jobId, CancellationToken cancellationToken);
 
     Task<int> ReleaseExpiredLeasesAsync(int maximumCount, CancellationToken cancellationToken);
+
+    Task<bool> HasDeadLetteredRevisionAsync(
+        string kind,
+        string naturalKey,
+        long requestedRevision,
+        int payloadVersion,
+        JsonElement payload,
+        CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<DurableBackgroundJobDiagnosticItem>> ListDiagnosticsAsync(
         DurableBackgroundJobDiagnosticQuery query,

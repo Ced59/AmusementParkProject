@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Handlers;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -17,7 +18,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenRatingValueIsInvalid_ShouldRejectWithoutRepositoryCall()
     {
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
@@ -60,6 +61,24 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 Status = ParkItemStatusNormalizer.Operating,
             },
         };
+        ParkItem authoritativeItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Demo Restaurant",
+            Category = ParkItemCategory.Restaurant,
+            Type = ParkItemType.Restaurant,
+            IsVisible = true,
+        };
+        ParkItem finalItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Demo Hotel",
+            Category = ParkItemCategory.Hotel,
+            Type = ParkItemType.Hotel,
+            IsVisible = true,
+        };
         Park park = new Park
         {
             Id = "park-1",
@@ -71,14 +90,14 @@ public sealed class UpsertUserRatingCommandHandlerTests
             TargetType = RatingTargetType.ParkItem,
             TargetId = "item-1",
             ParkId = "park-1",
-            ParkItemCategory = ParkItemCategory.Attraction,
-            ParkItemType = ParkItemType.RollerCoaster,
+            ParkItemCategory = ParkItemCategory.Restaurant,
+            ParkItemType = ParkItemType.Restaurant,
             RatingCount = 3,
             AverageRating = 4.5d,
             BayesianScore = 3.72d,
         };
 
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         ratingRepository
             .Setup(repository => repository.GetUserRatingAsync(
                 "user-1",
@@ -97,12 +116,13 @@ public sealed class UpsertUserRatingCommandHandlerTests
             .Setup(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
                 It.IsAny<UserRating>(),
                 It.IsAny<RatingAggregateTarget>(),
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((UserRating rating, RatingAggregateTarget _, CancellationToken _) =>
+            .ReturnsAsync((UserRating rating, RatingAggregateTarget _, string _, CancellationToken _) =>
             {
                 rating.Id = "rating-1";
                 rating.CreatedAtUtc = new DateTime(2026, 6, 19, 10, 0, 0, DateTimeKind.Utc);
-                return new UserRatingMutationResult(rating, aggregate);
+                return new UserRatingMutationResult(true, rating, aggregate);
             });
 
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -112,18 +132,68 @@ public sealed class UpsertUserRatingCommandHandlerTests
 
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
-            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(item);
+            .SetupSequence(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item)
+            .ReturnsAsync(authoritativeItem)
+            .ReturnsAsync(authoritativeItem)
+            .ReturnsAsync(finalItem);
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         ratingRankProvider
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation finalCategoryPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
-                RatingTargetType.ParkItem,
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
                 ParkItemCategory.Attraction,
                 ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initialPreparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                initialPreparation,
+                false,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
+                ParkItemCategory.Restaurant,
+                ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(authoritativePreparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                authoritativePreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
+                ParkItemCategory.Hotel,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(finalCategoryPreparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                finalCategoryPreparation,
+                true,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
 
         UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
@@ -145,8 +215,8 @@ public sealed class UpsertUserRatingCommandHandlerTests
         Assert.Equal(RatingTargetType.ParkItem, result.Value.TargetType);
         Assert.Equal("item-1", result.Value.TargetId);
         Assert.Equal("park-1", result.Value.ParkId);
-        Assert.Equal(ParkItemCategory.Attraction, result.Value.ParkItemCategory);
-        Assert.Equal(ParkItemType.RollerCoaster, result.Value.ParkItemType);
+        Assert.Equal(ParkItemCategory.Restaurant, result.Value.ParkItemCategory);
+        Assert.Equal(ParkItemType.Restaurant, result.Value.ParkItemType);
         Assert.Equal(4.5d, result.Value.Value);
         Assert.Equal(3, result.Value.Summary.RatingCount);
         Assert.Equal(4.5d, result.Value.Summary.AverageRating);
@@ -158,15 +228,16 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 rating.TargetType == RatingTargetType.ParkItem &&
                 rating.TargetId == "item-1" &&
                 rating.ParkId == "park-1" &&
-                rating.ParkItemCategory == ParkItemCategory.Attraction &&
-                rating.ParkItemType == ParkItemType.RollerCoaster &&
+                rating.ParkItemCategory == ParkItemCategory.Restaurant &&
+                rating.ParkItemType == ParkItemType.Restaurant &&
                 rating.Value == 4.5d),
             It.Is<RatingAggregateTarget>(target =>
                 target.TargetType == RatingTargetType.ParkItem &&
                 target.TargetId == "item-1" &&
                 target.ParkId == "park-1" &&
-                target.ParkItemCategory == ParkItemCategory.Attraction &&
-                target.ParkItemType == ParkItemType.RollerCoaster),
+                target.ParkItemCategory == ParkItemCategory.Restaurant &&
+                target.ParkItemType == ParkItemType.Restaurant),
+            It.IsAny<string>(),
             It.IsAny<CancellationToken>()), Times.Once);
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
@@ -176,9 +247,89 @@ public sealed class UpsertUserRatingCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenUpsertIsIdempotent_ShouldReleaseFenceWithoutInvalidatingRanks()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        UserRating rating = new UserRating
+        {
+            Id = "rating-1",
+            UserId = "user-1",
+            TargetType = RatingTargetType.Park,
+            TargetId = "park-1",
+            ParkId = "park-1",
+            Value = 4.5d,
+        };
+        RatingAggregate aggregate = new RatingAggregate
+        {
+            TargetType = RatingTargetType.Park,
+            TargetId = "park-1",
+            ParkId = "park-1",
+            RatingCount = 3,
+            AverageRating = 4.5d,
+            BayesianScore = 3.8d,
+        };
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
+        ratingRepository
+            .Setup(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
+                It.IsAny<UserRating>(),
+                It.IsAny<RatingAggregateTarget>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UserRatingMutationResult(false, rating, aggregate));
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        Mock<IRatingRankingMutationGuard> rankingMutationGuard =
+            new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.Park &&
+                    target.TargetId == "park-1" &&
+                    target.UserId == "user-1"),
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                preparation,
+                false,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
+            ratingRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            ratingRankProvider.Object,
+            rankingMutationGuard.Object);
+
+        ApplicationResult<UserRatingResult> result = await handler.HandleAsync(
+            new UpsertUserRatingCommand("user-1", RatingTargetType.Park, "park-1", 4.5d));
+
+        Assert.True(result.IsSuccess);
+        ratingRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        ratingRankProvider.VerifyNoOtherCalls();
+        rankingMutationGuard.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSourceRevisionCannotBePrepared_ShouldNotPersistTheRating()
     {
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -188,7 +339,10 @@ public sealed class UpsertUserRatingCommandHandlerTests
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
-                RatingTargetType.Park,
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.Park &&
+                    target.TargetId == "park-1" &&
+                    target.UserId == "user-1"),
                 null,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -205,9 +359,90 @@ public sealed class UpsertUserRatingCommandHandlerTests
 
         parkRepository.VerifyAll();
         rankingMutationGuard.VerifyAll();
-        ratingRepository.VerifyNoOtherCalls();
+        ratingRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
         ratingRankProvider.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenRecoveryRevokedTheMutationFence_ShouldRejectTheLateWriter()
+    {
+        UserRating fencedRating = new UserRating
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.Park,
+            TargetId = "park-1",
+            ParkId = "park-1",
+            Value = 4.5d,
+        };
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
+        ratingRepository
+            .Setup(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
+                It.IsAny<UserRating>(),
+                It.IsAny<RatingAggregateTarget>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UserRatingMutationResult(
+                false,
+                fencedRating,
+                null,
+                WasFencedOut: true));
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "park-1",
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                Name = "Demo Park",
+                Status = ParkStatus.Operating,
+            });
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankProvider> ratingRankProvider =
+            new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        Mock<IRatingRankingMutationGuard> rankingMutationGuard =
+            new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                preparation,
+                false,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
+            ratingRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            ratingRankProvider.Object,
+            rankingMutationGuard.Object);
+
+        ApplicationResult<UserRatingResult> result = await handler.HandleAsync(
+            new UpsertUserRatingCommand(
+                "user-1",
+                RatingTargetType.Park,
+                "park-1",
+                4.5d));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "rating.target.concurrent-modification");
+        ratingRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        ratingRankProvider.VerifyNoOtherCalls();
+        rankingMutationGuard.VerifyAll();
     }
 
     [Theory]
@@ -222,7 +457,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             Name = "Future Park",
             Status = status,
         };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -276,7 +511,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             Name = "Operating Park",
             Status = ParkStatus.Operating,
         };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -307,5 +542,21 @@ public sealed class UpsertUserRatingCommandHandlerTests
         ratingRepository.VerifyNoOtherCalls();
         ratingRankProvider.VerifyNoOtherCalls();
         rankingMutationGuard.VerifyNoOtherCalls();
+    }
+
+    private static Mock<IRatingRepository> CreateRatingRepository()
+    {
+        Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.PrepareMutationFenceAsync(
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        repository
+            .Setup(value => value.ReleaseMutationFenceAsync(
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        return repository;
     }
 }

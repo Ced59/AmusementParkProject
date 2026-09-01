@@ -62,6 +62,23 @@ public sealed record RankingSnapshotPublicationResult(
     RankingSnapshotPublicationDisposition Disposition,
     RankingPublicationPointer? Pointer);
 
+public sealed record RetireRankingPublicationRequest(
+    RankingScopeKey ScopeKey,
+    RatingMethodologyVersion MethodologyVersion,
+    long SourceRevision);
+
+public enum RankingSnapshotRetirementDisposition
+{
+    Retired,
+    AlreadyUnavailable,
+    Stale,
+    ConcurrencyConflict,
+}
+
+public sealed record RankingSnapshotRetirementResult(
+    RankingSnapshotRetirementDisposition Disposition,
+    RankingPublicationPointer? Pointer);
+
 public sealed record RankingSnapshotRollbackRequest(
     RankingScopeKey ScopeKey,
     RankingSnapshotId ExpectedCurrentSnapshotId,

@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -19,18 +20,23 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class ParkRepository : IParkRepository
 {
+    private const int ConditionalBulkMutationBatchSize = 200;
+
     private const int RandomVisibleFallbackHardLimit = 100;
 
     private readonly IMongoCollection<ParkDocument> collection;
     private readonly IRatingRankSnapshotCache ratingRankSnapshotCache;
+    private readonly IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator;
 
     public ParkRepository(
         IMongoDatabase database,
         MongoDbSettings settings,
-        IRatingRankSnapshotCache ratingRankSnapshotCache)
+        IRatingRankSnapshotCache ratingRankSnapshotCache,
+        IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator)
     {
         this.collection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
         this.ratingRankSnapshotCache = ratingRankSnapshotCache;
+        this.rankingSourceChangeCoordinator = rankingSourceChangeCoordinator;
     }
 
     public async Task<Park?> GetByIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -294,86 +300,158 @@ public sealed class ParkRepository : IParkRepository
 
     public async Task<Park> CreateAsync(Park park, CancellationToken cancellationToken)
     {
+        RatingRankingMutationPreparation rankingPreparation =
+            await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                Array.Empty<Park>(),
+                new[] { park },
+                cancellationToken);
         ParkDocument document = park.ToDocument();
         document.CreatedAt = DateTime.UtcNow;
         document.UpdatedAt = document.CreatedAt;
         document.RandomSortKey = CreateRandomSortKey();
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+
         this.ratingRankSnapshotCache.Invalidate();
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: true,
+            CancellationToken.None);
         return document.ToDomain();
     }
 
     public async Task<Park?> UpdateAsync(string parkId, Park park, CancellationToken cancellationToken)
     {
-        ParkDocument? existing = await this.collection.Find(document => document.Id == parkId)
-            .Project(static document => new ParkDocument
+        while (true)
+        {
+            ParkDocument? existing = await this.collection.Find(document => document.Id == parkId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
             {
-                Id = document.Id,
-                CreatedAt = document.CreatedAt,
-                RandomSortKey = document.RandomSortKey,
-            })
-            .FirstOrDefaultAsync(cancellationToken);
+                return null;
+            }
 
-        if (existing is null)
-        {
-            return null;
+            ParkDocument document = park.ToDocument();
+            document.Id = parkId;
+            document.CreatedAt = existing.CreatedAt;
+            document.UpdatedAt = DateTime.UtcNow;
+            document.RandomSortKey = existing.RandomSortKey ?? CreateRandomSortKey();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    new[] { existing.ToDomain() },
+                    new[] { document.ToDomain() },
+                    cancellationToken);
+
+            ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+                BuildObservedRankingStateFilter(existing),
+                document,
+                cancellationToken: cancellationToken);
+
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: result.MatchedCount > 0,
+                CancellationToken.None);
+            if (result.MatchedCount == 0)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                continue;
+            }
+
+            this.ratingRankSnapshotCache.Invalidate();
+            return document.ToDomain();
         }
-
-        ParkDocument document = park.ToDocument();
-        document.Id = parkId;
-        document.CreatedAt = existing.CreatedAt;
-        document.UpdatedAt = DateTime.UtcNow;
-        document.RandomSortKey = existing.RandomSortKey ?? CreateRandomSortKey();
-
-        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            current => current.Id == parkId,
-            document,
-            cancellationToken: cancellationToken);
-
-        if (result.MatchedCount == 0)
-        {
-            return null;
-        }
-
-        this.ratingRankSnapshotCache.Invalidate();
-        return document.ToDomain();
     }
 
     public async Task<bool> DeleteAsync(string parkId, CancellationToken cancellationToken)
     {
-        DeleteResult result = await this.collection.DeleteOneAsync(
-            document => document.Id == parkId,
-            cancellationToken: cancellationToken);
-
-        bool deleted = result.DeletedCount > 0;
-        if (deleted)
+        while (true)
         {
-            this.ratingRankSnapshotCache.Invalidate();
-        }
+            ParkDocument? existing = await this.collection.Find(document => document.Id == parkId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
+            {
+                return false;
+            }
 
-        return deleted;
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    new[] { existing.ToDomain() },
+                    Array.Empty<Park>(),
+                    cancellationToken);
+            DeleteResult result = await this.collection.DeleteOneAsync(
+                BuildObservedRankingStateFilter(existing),
+                cancellationToken: cancellationToken);
+            bool deleted = result.DeletedCount > 0;
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: deleted,
+                CancellationToken.None);
+            if (!deleted)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                continue;
+            }
+
+            this.ratingRankSnapshotCache.Invalidate();
+            return true;
+        }
+    }
+
+    internal static FilterDefinition<ParkDocument> BuildObservedRankingStateFilter(
+        ParkDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return Builders<ParkDocument>.Filter.Eq(value => value.Id, document.Id)
+            & Builders<ParkDocument>.Filter.Eq(value => value.IsVisible, document.IsVisible)
+            & Builders<ParkDocument>.Filter.Eq(value => value.Status, document.Status)
+            & Builders<ParkDocument>.Filter.Eq(value => value.Name, document.Name);
     }
 
     public async Task<Park?> UpdateVisibilityAsync(string parkId, bool isVisible, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.Id, parkId);
-        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update
-            .Set(document => document.IsVisible, isVisible)
-            .Set(document => document.UpdatedAt, DateTime.UtcNow);
-
-        FindOneAndUpdateOptions<ParkDocument> options = new FindOneAndUpdateOptions<ParkDocument>
+        while (true)
         {
-            ReturnDocument = ReturnDocument.After,
-        };
+            ParkDocument? existing = await this.collection.Find(document => document.Id == parkId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
+            {
+                return null;
+            }
 
-        ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
-        if (updated is not null)
-        {
+            Park current = existing.ToDomain();
+            current.IsVisible = isVisible;
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    new[] { existing.ToDomain() },
+                    new[] { current },
+                    cancellationToken);
+            UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update
+                .Set(document => document.IsVisible, isVisible)
+                .Set(document => document.UpdatedAt, DateTime.UtcNow);
+
+            FindOneAndUpdateOptions<ParkDocument> options = new FindOneAndUpdateOptions<ParkDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            };
+
+            ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(
+                BuildObservedRankingStateFilter(existing),
+                update,
+                options,
+                cancellationToken);
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: updated is not null,
+                CancellationToken.None);
+            if (updated is null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                continue;
+            }
+
             this.ratingRankSnapshotCache.Invalidate();
+            return updated.ToDomain();
         }
-
-        return updated?.ToDomain();
     }
 
     public async Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
@@ -384,7 +462,98 @@ public sealed class ParkRepository : IParkRepository
             return 0;
         }
 
-        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
+        AdminReviewStatus? normalizedAdminReviewStatus = adminReviewStatus.HasValue
+            ? adminReviewStatus.Value.NormalizeForAdministration()
+            : null;
+        HashSet<string> pendingIds = normalizedParkIds.ToHashSet(StringComparer.Ordinal);
+        HashSet<string> updatedIds = new HashSet<string>(StringComparer.Ordinal);
+        bool rankingSourceChanged = false;
+        while (pendingIds.Count > 0)
+        {
+            string[] batchIds = pendingIds.Take(ConditionalBulkMutationBatchSize).ToArray();
+            List<ParkDocument> previousDocuments = await this.collection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, previousDocuments.Select(static document => document.Id));
+            if (previousDocuments.Count == 0)
+            {
+                continue;
+            }
+
+            IReadOnlyCollection<Park> previousParks = previousDocuments
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            IReadOnlyCollection<Park> currentParks = previousDocuments
+                .Select(document =>
+                {
+                    Park current = document.ToDomain();
+                    if (isVisible.HasValue)
+                    {
+                        current.IsVisible = isVisible.Value;
+                    }
+
+                    return current;
+                })
+                .ToArray();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    previousParks,
+                    currentParks,
+                    cancellationToken);
+            UpdateDefinition<ParkDocument> update = BuildBulkAdministrationUpdate(
+                isVisible,
+                normalizedAdminReviewStatus,
+                DateTime.UtcNow);
+            FilterDefinition<ParkDocument> observedStatesFilter = Builders<ParkDocument>.Filter.Or(
+                previousDocuments.Select(BuildObservedRankingStateFilter));
+            UpdateResult result = await this.collection.UpdateManyAsync(
+                observedStatesFilter,
+                update,
+                cancellationToken: cancellationToken);
+            bool batchSourceChanged = result.ModifiedCount > 0;
+            rankingSourceChanged |= batchSourceChanged;
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                batchSourceChanged,
+                CancellationToken.None);
+
+            List<ParkDocument> currentDocuments = await this.collection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, currentDocuments.Select(static document => document.Id));
+            foreach (ParkDocument document in currentDocuments.Where(document =>
+                         MatchesBulkAdministrationTarget(document, isVisible, normalizedAdminReviewStatus)))
+            {
+                pendingIds.Remove(document.Id);
+                updatedIds.Add(document.Id);
+            }
+        }
+
+        if (rankingSourceChanged && isVisible.HasValue)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return updatedIds.Count;
+    }
+
+    internal static bool MatchesBulkAdministrationTarget(
+        ParkDocument document,
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return (!isVisible.HasValue || document.IsVisible == isVisible.Value)
+            && (!adminReviewStatus.HasValue || document.AdminReviewStatus == adminReviewStatus.Value);
+    }
+
+    private static UpdateDefinition<ParkDocument> BuildBulkAdministrationUpdate(
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus,
+        DateTime updatedAtUtc)
+    {
+        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update
+            .Set(document => document.UpdatedAt, updatedAtUtc);
         if (isVisible.HasValue)
         {
             update = update.Set(document => document.IsVisible, isVisible.Value);
@@ -392,24 +561,24 @@ public sealed class ParkRepository : IParkRepository
 
         if (adminReviewStatus.HasValue)
         {
-            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
             update = update
-                .Set(document => document.AdminReviewStatus, normalizedStatus)
-                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
+                .Set(document => document.AdminReviewStatus, adminReviewStatus.Value)
+                .Set(document => document.AdminReviewPriority, adminReviewStatus.Value.ToAdminReviewPriority());
         }
 
-        UpdateResult result = await this.collection.UpdateManyAsync(
-            Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds),
-            update,
-            cancellationToken: cancellationToken);
+        return update;
+    }
 
-        int updatedCount = checked((int)result.ModifiedCount);
-        if (updatedCount > 0 && isVisible.HasValue)
+    private static void RemoveMissingIds(
+        ISet<string> pendingIds,
+        IReadOnlyCollection<string> requestedIds,
+        IEnumerable<string> foundIds)
+    {
+        HashSet<string> found = foundIds.ToHashSet(StringComparer.Ordinal);
+        foreach (string missingId in requestedIds.Where(id => !found.Contains(id)))
         {
-            this.ratingRankSnapshotCache.Invalidate();
+            pendingIds.Remove(missingId);
         }
-
-        return updatedCount;
     }
 
     public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken, ParkAudienceClassificationFilter? audienceClassificationFilter = null)

@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.DataSources.Results;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
@@ -32,6 +33,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     private readonly ICaptainCoasterCoasterPageParser coasterPageParser;
     private readonly ICaptainCoasterMapPageParser mapPageParser;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator;
     private readonly ILogger<CaptainCoasterDataSourceProvider> logger;
 
     public CaptainCoasterDataSourceProvider(
@@ -43,6 +45,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         ICaptainCoasterCoasterPageParser coasterPageParser,
         ICaptainCoasterMapPageParser mapPageParser,
         ISearchProjectionWriter searchProjectionWriter,
+        IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator,
         ILogger<CaptainCoasterDataSourceProvider> logger)
     {
         this.settingsCollection = database.GetCollection<CaptainCoasterSettingsDocument>(mongoDbSettings.CaptainCoasterSettingsCollectionName);
@@ -60,6 +63,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         this.coasterPageParser = coasterPageParser;
         this.mapPageParser = mapPageParser;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.rankingSourceChangeCoordinator = rankingSourceChangeCoordinator;
         this.logger = logger;
     }
 

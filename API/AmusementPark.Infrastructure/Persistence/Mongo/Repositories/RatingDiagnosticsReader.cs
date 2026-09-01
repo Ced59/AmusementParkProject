@@ -267,6 +267,9 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 
         return new[]
         {
+            new BsonDocument("$match", new BsonDocument(
+                "isMutationPlaceholder",
+                new BsonDocument("$ne", true))),
             BsonDocument.Parse(
                 """
                 {
@@ -746,7 +749,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 "from": "__userRatings__",
                 "let": { "targetType": "$targetType", "targetId": "$targetId" },
                 "pipeline": [
-                  { "$match": { "$expr": { "$and": [ { "$eq": [ "$targetType", "$$targetType" ] }, { "$eq": [ "$targetId", "$$targetId" ] } ] } } },
+                  { "$match": { "isMutationPlaceholder": { "$ne": true }, "$expr": { "$and": [ { "$eq": [ "$targetType", "$$targetType" ] }, { "$eq": [ "$targetId", "$$targetId" ] } ] } } },
                   { "$limit": 1 }
                 ],
                 "as": "_diagnosticSources"

@@ -20,6 +20,14 @@ internal static class RatingRankingPaging
     }
 }
 
+internal sealed record ParkRankingSnapshotCandidate(
+    ParkRatingRankingResult Ranking,
+    RankingEvidence? Evidence);
+
+internal sealed record ParkItemRankingSnapshotCandidate(
+    ParkItemRatingRankingResult Ranking,
+    RankingEvidence? Evidence);
+
 internal static class RatingRankingFactory
 {
     public static IReadOnlyCollection<ParkRatingRankingResult> BuildParkRankings(
@@ -36,6 +44,7 @@ internal static class RatingRankingFactory
             .OrderByDescending(static ranking => ranking.Score)
             .ThenByDescending(static ranking => ranking.RatingCount)
             .ThenBy(static ranking => ranking.ParkName, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static ranking => ranking.ParkId, StringComparer.Ordinal)
             .Select(static (ranking, index) => ranking with { Rank = index + 1 })
             .ToList();
 
@@ -45,6 +54,22 @@ internal static class RatingRankingFactory
     }
 
     public static IReadOnlyCollection<ParkRatingRankingResult> ApplyParkEvidence(
+        IReadOnlyCollection<ParkRatingRankingResult> rankings,
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        ParkRankingEvidenceFactsBatch evidenceFacts,
+        ParkItemCategory? categoryFilter = null)
+    {
+        return BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter)
+            .Select(static candidate => candidate.Ranking with
+            {
+                Evidence = candidate.Evidence is null
+                    ? null
+                    : RatingResultFactory.ToResult(candidate.Evidence),
+            })
+            .ToList();
+    }
+
+    internal static IReadOnlyCollection<ParkRankingSnapshotCandidate> BuildParkSnapshotCandidates(
         IReadOnlyCollection<ParkRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
         ParkRankingEvidenceFactsBatch evidenceFacts,
@@ -76,7 +101,7 @@ internal static class RatingRankingFactory
                 || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts)
                 || incompletePublicInventoryParkIds.Contains(ranking.ParkId))
             {
-                return ranking;
+                return new ParkRankingSnapshotCandidate(ranking, null);
             }
 
             parkSources = ApplyVerifiedAggregateIntegrity(
@@ -101,21 +126,50 @@ internal static class RatingRankingFactory
                 .Distinct()
                 .Count() == 1;
 
-            return ranking with
-            {
-                Evidence = directParkSources.Count <= 1
-                    ? TryCreateParkEvidence(
-                        directParkSources.FirstOrDefault(),
-                        itemSources,
-                        contributorFacts,
-                        publicItems,
-                        isSingleCategoryParkException)
-                    : null,
-            };
+            RankingEvidence? evidence = directParkSources.Count <= 1
+                ? TryCreateParkEvidence(
+                    directParkSources.FirstOrDefault(),
+                    itemSources,
+                    contributorFacts,
+                    publicItems,
+                    isSingleCategoryParkException)
+                : null;
+            return new ParkRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
     }
 
+    internal static IReadOnlyCollection<ParkRankingSnapshotCandidate> OrderParkSnapshotCandidates(
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates)
+    {
+        ArgumentNullException.ThrowIfNull(candidates);
+        return candidates
+            .OrderByDescending(static candidate => candidate.Ranking.Score)
+            .ThenByDescending(static candidate => candidate.Ranking.RatingCount)
+            .ThenBy(static candidate => candidate.Ranking.ParkName, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static candidate => candidate.Ranking.ParkId, StringComparer.Ordinal)
+            .Select(static (candidate, index) => candidate with
+            {
+                Ranking = candidate.Ranking with { Rank = index + 1 },
+            })
+            .ToList();
+    }
+
     public static IReadOnlyCollection<ParkItemRatingRankingResult> ApplyParkItemEvidence(
+        IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
+    {
+        return BuildParkItemSnapshotCandidates(rankings, sources, aggregateSourceFacts)
+            .Select(static candidate => candidate.Ranking with
+            {
+                Evidence = candidate.Evidence is null
+                    ? null
+                    : RatingResultFactory.ToResult(candidate.Evidence),
+            })
+            .ToList();
+    }
+
+    internal static IReadOnlyCollection<ParkItemRankingSnapshotCandidate> BuildParkItemSnapshotCandidates(
         IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
         IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
@@ -140,17 +194,15 @@ internal static class RatingRankingFactory
                 || !source.AggregateIntegrityIsValid.HasValue
                 || !source.UniqueContributorCount.HasValue)
             {
-                return ranking with { Evidence = null };
+                return new ParkItemRankingSnapshotCandidate(ranking, null);
             }
 
-            return ranking with
-            {
-                Evidence = RatingResultFactory.TryCreateSimpleEvidence(
+            RankingEvidence? evidence = RatingResultFactory.TryCreateSimpleDomainEvidence(
                     source.UniqueContributorCount.Value,
                     source.RatingCount,
                     targetCanReceiveVisitorRatings: true,
-                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value),
-            };
+                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value);
+            return new ParkItemRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
     }
 
@@ -278,7 +330,7 @@ internal static class RatingRankingFactory
             categories);
     }
 
-    private static RankingEvidenceResult? TryCreateParkEvidence(
+    private static RankingEvidence? TryCreateParkEvidence(
         RatingRankingItemResult? directParkSource,
         IReadOnlyCollection<RatingRankingItemResult> itemSources,
         ParkRankingContributorFacts contributorFacts,
@@ -303,7 +355,7 @@ internal static class RatingRankingFactory
             return null;
         }
 
-        Dictionary<string, RankingEvidenceResult> itemEvidenceById = new Dictionary<string, RankingEvidenceResult>(
+        Dictionary<string, RankingEvidence> itemEvidenceById = new Dictionary<string, RankingEvidence>(
             StringComparer.Ordinal);
         foreach (IGrouping<string, RatingRankingItemResult> itemSourceGroup in itemSources.GroupBy(
                      static source => source.TargetId,
@@ -321,7 +373,7 @@ internal static class RatingRankingFactory
                 return null;
             }
 
-            RankingEvidenceResult? itemEvidence = RatingResultFactory.TryCreateSimpleEvidence(
+            RankingEvidence? itemEvidence = RatingResultFactory.TryCreateSimpleDomainEvidence(
                 itemSource.UniqueContributorCount.Value,
                 itemSource.RatingCount,
                 targetCanReceiveVisitorRatings: true,
@@ -343,7 +395,7 @@ internal static class RatingRankingFactory
             .GroupBy(static item => item.Category)
             .Select(group => new RankingCategoryCoverage(
                 group.Count(),
-                group.Count(item => itemEvidenceById.TryGetValue(item.TargetId, out RankingEvidenceResult? evidence)
+                group.Count(item => itemEvidenceById.TryGetValue(item.TargetId, out RankingEvidence? evidence)
                     && evidence.IsEligibleForMainRanking)))
             .ToList();
 
@@ -381,7 +433,7 @@ internal static class RatingRankingFactory
             return null;
         }
 
-        return RatingResultFactory.ToResult(evidence);
+        return evidence;
     }
 
     private static bool? TryResolveAggregateIntegrity(

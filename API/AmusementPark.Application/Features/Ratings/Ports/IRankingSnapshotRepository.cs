@@ -28,6 +28,10 @@ public interface IRankingSnapshotRepository
         RankingSnapshotId snapshotId,
         CancellationToken cancellationToken);
 
+    Task<RankingSnapshotRetirementResult> RetirePublicationAsync(
+        RetireRankingPublicationRequest request,
+        CancellationToken cancellationToken);
+
     Task<RankingSnapshotRollbackResult> RollbackAsync(
         RankingSnapshotRollbackRequest request,
         CancellationToken cancellationToken);

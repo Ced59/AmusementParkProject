@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -84,6 +85,45 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
                 cancellationToken);
         }
 
+        RatingRankingPreparedMutation? preparedMutation =
+            await RatingRankingMutationCompletion.PrepareAsync(
+                command.UserId,
+                metadata.TargetType,
+                metadata.TargetId,
+                metadata,
+                retainedRating?.ParkItemCategory,
+                this.parkRepository,
+                this.parkItemRepository,
+                this.ratingRepository,
+                this.rankingMutationGuard,
+                cancellationToken);
+        if (preparedMutation is null)
+        {
+            return ApplicationResult<UserRatingResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        metadata = preparedMutation.Metadata;
+        if (metadata is null)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<UserRatingResult>.Failure(
+                RatingApplicationErrors.TargetNotFound());
+        }
+
+        if (!metadata.CanReceiveVisitorRatings)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<UserRatingResult>.Failure(
+                RatingApplicationErrors.TargetUnavailable());
+        }
+
         DateTime nowUtc = DateTime.UtcNow;
         UserRating rating = new UserRating
         {
@@ -103,16 +143,40 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
-        await this.rankingMutationGuard.PrepareMutationAsync(
+        UserRatingMutationResult mutation =
+            await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
+                rating,
+                aggregateTarget,
+                preparedMutation.RecoveryTarget.MutationToken,
+                cancellationToken);
+        if (mutation.WasFencedOut)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<UserRatingResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        await this.ratingRepository.ReleaseMutationFenceAsync(
+            preparedMutation.RecoveryTarget,
+            CancellationToken.None);
+
+        if (mutation.SourceChanged)
+        {
+            this.ratingRankProvider.Invalidate();
+        }
+
+        await RatingRankingMutationCompletion.CompleteAfterWriteAsync(
             metadata.TargetType,
-            metadata.ParkItemCategory,
-            retainedRating?.ParkItemCategory,
-            cancellationToken);
-        UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
-            rating,
-            aggregateTarget,
-            cancellationToken);
-        this.ratingRankProvider.Invalidate();
+            metadata.TargetId,
+            preparedMutation,
+            mutation.SourceChanged,
+            this.parkRepository,
+            this.parkItemRepository,
+            this.rankingMutationGuard);
+
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
             metadata.TargetId,
@@ -199,24 +263,66 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
                 cancellationToken);
         }
 
-        await this.rankingMutationGuard.PrepareMutationAsync(
-            command.TargetType,
-            metadata?.ParkItemCategory,
-            retainedRating?.ParkItemCategory,
-            cancellationToken);
-        RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
-            userId,
+        RatingRankingPreparedMutation? preparedMutation =
+            await RatingRankingMutationCompletion.PrepareAsync(
+                userId,
+                command.TargetType,
+                targetId,
+                metadata,
+                retainedRating?.ParkItemCategory,
+                this.parkRepository,
+                this.parkItemRepository,
+                this.ratingRepository,
+                this.rankingMutationGuard,
+                cancellationToken);
+        if (preparedMutation is null)
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        metadata = preparedMutation.Metadata;
+        UserRatingDeletionResult mutation =
+            await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
+                userId,
+                command.TargetType,
+                targetId,
+                preparedMutation.RecoveryTarget.MutationToken,
+                cancellationToken);
+        if (mutation.WasFencedOut)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<RatingSummaryResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        await this.ratingRepository.ReleaseMutationFenceAsync(
+            preparedMutation.RecoveryTarget,
+            CancellationToken.None);
+
+        if (mutation.SourceChanged)
+        {
+            this.ratingRankProvider.Invalidate();
+        }
+
+        await RatingRankingMutationCompletion.CompleteAfterWriteAsync(
             command.TargetType,
             targetId,
-            cancellationToken);
-        this.ratingRankProvider.Invalidate();
+            preparedMutation,
+            mutation.SourceChanged,
+            this.parkRepository,
+            this.parkItemRepository,
+            this.rankingMutationGuard);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,
             targetId,
-            aggregate,
+            mutation.Aggregate,
             metadata?.CanReceiveVisitorRatings ?? false,
-            aggregateIntegrityIsValid: aggregate is null ? true : null);
+            aggregateIntegrityIsValid: mutation.Aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
 }
@@ -283,66 +389,6 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
         }
 
         return ApplicationResult<RatingSummaryResult>.Success(summary);
-    }
-}
-
-internal static class RatingTargetMetadataResolver
-{
-    public static async Task<RatingTargetMetadataResult?> ResolveAsync(
-        RatingTargetType targetType,
-        string targetId,
-        IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository,
-        CancellationToken cancellationToken)
-    {
-        if (targetType == RatingTargetType.Park)
-        {
-            Park? park = await parkRepository.GetByIdAsync(targetId, false, cancellationToken);
-            if (park is null || string.IsNullOrWhiteSpace(park.Id))
-            {
-                return null;
-            }
-
-            return new RatingTargetMetadataResult(
-                RatingTargetType.Park,
-                park.Id.Trim(),
-                park.Name?.Trim() ?? park.Id.Trim(),
-                park.Id.Trim(),
-                park.Name?.Trim(),
-                null,
-                null,
-                park.Status.CanReceiveVisitorRatings());
-        }
-
-        if (targetType == RatingTargetType.ParkItem)
-        {
-            ParkItem? item = await parkItemRepository.GetByIdAsync(targetId, false, cancellationToken);
-            if (item is null || string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.ParkId))
-            {
-                return null;
-            }
-
-            Park? park = await parkRepository.GetByIdAsync(item.ParkId, false, cancellationToken);
-            if (park is null || string.IsNullOrWhiteSpace(park.Id))
-            {
-                return null;
-            }
-
-            bool canReceiveVisitorRatings = park.Status.CanReceiveVisitorRatings()
-                && ParkItemStatusNormalizer.CanReceiveVisitorRatings(item.Category, item.AttractionDetails?.Status);
-
-            return new RatingTargetMetadataResult(
-                RatingTargetType.ParkItem,
-                item.Id.Trim(),
-                item.Name.Trim(),
-                park.Id.Trim(),
-                park.Name?.Trim(),
-                item.Category,
-                item.Type,
-                canReceiveVisitorRatings);
-        }
-
-        return null;
     }
 }
 

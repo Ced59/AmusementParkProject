@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Handlers;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -28,7 +29,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
             AverageRating = 4d,
             BayesianScore = 3.5d,
         };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         ratingRepository
             .Setup(repository => repository.GetUserRatingAsync(
                 "user-1",
@@ -48,8 +49,9 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 "user-1",
                 RatingTargetType.ParkItem,
                 "item-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
+            .ReturnsAsync(new UserRatingDeletionResult(true, aggregate));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -57,7 +59,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
             .ReturnsAsync(new Park { Id = "park-1", Name = "Demo Park", Status = ParkStatus.Operating });
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
-            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .SetupSequence(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ParkItem
             {
                 Id = "item-1",
@@ -66,11 +68,87 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 Category = ParkItemCategory.Attraction,
                 Type = ParkItemType.RollerCoaster,
                 AttractionDetails = new AttractionDetails { Status = ParkItemStatusNormalizer.Operating },
+            })
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Restaurant",
+                Category = ParkItemCategory.Restaurant,
+                Type = ParkItemType.Restaurant,
+            })
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Restaurant",
+                Category = ParkItemCategory.Restaurant,
+                Type = ParkItemType.Restaurant,
+            })
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Hotel",
+                Category = ParkItemCategory.Hotel,
+                Type = ParkItemType.Hotel,
             });
-        Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
-            RatingTargetType.ParkItem,
-            ParkItemCategory.Attraction,
-            ParkItemCategory.Show);
+        Mock<IRatingRankingMutationGuard> rankingMutationGuard =
+            new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation finalCategoryPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
+                ParkItemCategory.Attraction,
+                ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initialPreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                initialPreparation,
+                false,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
+                ParkItemCategory.Restaurant,
+                ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(authoritativePreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                authoritativePreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.ParkItem &&
+                    target.TargetId == "item-1" &&
+                    target.UserId == "user-1"),
+                ParkItemCategory.Hotel,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(finalCategoryPreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                finalCategoryPreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
             ratingRepository.Object,
             ratingRankProvider.Object,
@@ -105,15 +183,17 @@ public sealed class DeleteUserRatingCommandHandlerTests
             AverageRating = 4.5d,
             BayesianScore = 3.8d,
         };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         ratingRepository
             .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
                 RatingTargetType.Park,
                 "park-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
-        Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
+            .ReturnsAsync(new UserRatingDeletionResult(false, aggregate));
+        Mock<IRatingRankProvider> ratingRankProvider =
+            new Mock<IRatingRankProvider>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -121,8 +201,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
-            null);
+            null,
+            sourceChanged: false);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
             ratingRepository.Object,
             ratingRankProvider.Object,
@@ -136,7 +218,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Assert.True(result.IsSuccess);
         Assert.Equal(3, result.Value!.RatingCount);
         ratingRepository.VerifyAll();
-        ratingRankProvider.VerifyAll();
+        ratingRankProvider.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
         rankingMutationGuard.VerifyAll();
@@ -145,14 +227,15 @@ public sealed class DeleteUserRatingCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenLastRatingIsDeleted_ShouldReturnAnEmptySummary()
     {
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         ratingRepository
             .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
                 RatingTargetType.Park,
                 "park-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((RatingAggregate?)null);
+            .ReturnsAsync(new UserRatingDeletionResult(true, null));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -161,6 +244,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
             null);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
@@ -188,7 +272,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenSourceRevisionCannotBePrepared_ShouldNotDeleteTheRating()
     {
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -198,7 +282,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
-                RatingTargetType.Park,
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.Park &&
+                    target.TargetId == "park-1" &&
+                    target.UserId == "user-1"),
                 null,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -215,9 +302,67 @@ public sealed class DeleteUserRatingCommandHandlerTests
 
         parkRepository.VerifyAll();
         rankingMutationGuard.VerifyAll();
-        ratingRepository.VerifyNoOtherCalls();
+        ratingRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
         ratingRankProvider.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenRecoveryRevokedTheMutationFence_ShouldRejectTheLateWriter()
+    {
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
+        ratingRepository
+            .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
+                "user-1",
+                RatingTargetType.Park,
+                "park-1",
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UserRatingDeletionResult(
+                false,
+                null,
+                WasFencedOut: true));
+        Mock<IRatingRankProvider> ratingRankProvider =
+            new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "park-1",
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                Name = "Demo Park",
+                Status = ParkStatus.Operating,
+            });
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            null,
+            sourceChanged: false);
+        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            rankingMutationGuard.Object);
+
+        ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(
+            new DeleteUserRatingCommand("user-1", RatingTargetType.Park, "park-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "rating.target.concurrent-modification");
+        ratingRepository.VerifyAll();
+        ratingRankProvider.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        rankingMutationGuard.VerifyAll();
     }
 
     [Fact]
@@ -237,14 +382,15 @@ public sealed class DeleteUserRatingCommandHandlerTests
             CalculatedVersion = 2,
             SourceIntegrityIsValid = true,
         };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratingRepository = CreateRatingRepository();
         ratingRepository
             .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
                 RatingTargetType.Park,
                 "park-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
+            .ReturnsAsync(new UserRatingDeletionResult(true, aggregate));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -253,6 +399,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
             null);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
@@ -287,18 +434,47 @@ public sealed class DeleteUserRatingCommandHandlerTests
 
     private static Mock<IRatingRankingMutationGuard> CreateMutationGuard(
         RatingTargetType targetType,
+        string targetId,
         ParkItemCategory? currentParkItemCategory,
-        ParkItemCategory? previousParkItemCategory)
+        ParkItemCategory? previousParkItemCategory,
+        bool sourceChanged = true)
     {
         Mock<IRatingRankingMutationGuard> guard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
         guard
             .Setup(value => value.PrepareMutationAsync(
-                targetType,
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == targetType &&
+                    target.TargetId == targetId &&
+                    target.UserId == "user-1"),
                 currentParkItemCategory,
                 previousParkItemCategory,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        guard
+            .Setup(value => value.CompleteMutationAsync(
+                preparation,
+                sourceChanged,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
         return guard;
+    }
+
+    private static Mock<IRatingRepository> CreateRatingRepository()
+    {
+        Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.PrepareMutationFenceAsync(
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        repository
+            .Setup(value => value.ReleaseMutationFenceAsync(
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        return repository;
     }
 }

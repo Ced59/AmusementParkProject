@@ -44,6 +44,20 @@ public static class RatingResultFactory
         bool targetCanReceiveVisitorRatings,
         bool aggregateIntegrityIsValid)
     {
+        RankingEvidence? evidence = TryCreateSimpleDomainEvidence(
+            uniqueContributorCount,
+            ratingObservationCount,
+            targetCanReceiveVisitorRatings,
+            aggregateIntegrityIsValid);
+        return evidence is null ? null : ToResult(evidence);
+    }
+
+    internal static RankingEvidence? TryCreateSimpleDomainEvidence(
+        long uniqueContributorCount,
+        long ratingObservationCount,
+        bool targetCanReceiveVisitorRatings,
+        bool aggregateIntegrityIsValid)
+    {
         if (!TryConvertToDomainCount(uniqueContributorCount, out int boundedUniqueContributorCount)
             || !TryConvertToDomainCount(ratingObservationCount, out int boundedRatingObservationCount))
         {
@@ -62,7 +76,7 @@ public static class RatingResultFactory
             return null;
         }
 
-        return ToResult(evidence);
+        return evidence;
     }
 
     public static RankingEvidenceResult ToResult(RankingEvidence evidence)

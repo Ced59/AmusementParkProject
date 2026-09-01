@@ -1,7 +1,11 @@
 using AmusementPark.Application.Features.DataSources.Contracts;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
@@ -49,21 +53,20 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     {
         if (context.PendingParkWrites.Count > 0)
         {
-            await this.localParksCollection.BulkWriteAsync(
-                context.PendingParkWrites,
-                new BulkWriteOptions { IsOrdered = false },
-                cancellationToken);
-
+            IReadOnlyCollection<ReplaceOneModel<ParkDocument>> replacements = context.PendingParkWrites
+                .OfType<ReplaceOneModel<ParkDocument>>()
+                .ToArray();
+            await this.FlushParkReplacementsAsync(replacements, cancellationToken);
             context.PendingParkWrites.Clear();
         }
 
         if (context.PendingParkItemWrites.Count > 0)
         {
-            await this.localParkItemsCollection.BulkWriteAsync(
-                context.PendingParkItemWrites,
-                new BulkWriteOptions { IsOrdered = false },
-                cancellationToken);
-
+            IReadOnlyCollection<ReplaceOneModel<ParkItemDocument>> replacements =
+                context.PendingParkItemWrites
+                .OfType<ReplaceOneModel<ParkItemDocument>>()
+                .ToArray();
+            await this.FlushParkItemReplacementsAsync(replacements, cancellationToken);
             context.PendingParkItemWrites.Clear();
         }
 
@@ -86,6 +89,192 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
             context.PendingComparisonWrites.Clear();
         }
+    }
+
+    private async Task FlushParkReplacementsAsync(
+        IReadOnlyCollection<ReplaceOneModel<ParkDocument>> replacements,
+        CancellationToken cancellationToken)
+    {
+        Dictionary<string, ParkDocument> pending = replacements
+            .Select(static write => write.Replacement)
+            .GroupBy(static document => document.Id, StringComparer.Ordinal)
+            .ToDictionary(static group => group.Key, static group => group.Last(), StringComparer.Ordinal);
+        while (pending.Count > 0)
+        {
+            string[] parkIds = pending.Keys.ToArray();
+            List<ParkDocument> previousDocuments = await this.localParksCollection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, parkIds))
+                .ToListAsync(cancellationToken);
+            IReadOnlyDictionary<string, ParkDocument> previousById = previousDocuments
+                .ToDictionary(static document => document.Id, StringComparer.Ordinal);
+            IReadOnlyCollection<Park> previousParks = previousDocuments
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            IReadOnlyCollection<Park> currentParks = pending.Values
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    previousParks,
+                    currentParks,
+                    cancellationToken);
+            IReadOnlyCollection<WriteModel<ParkDocument>> writes = pending.Values
+                .Select(document => BuildFencedParkReplacement(
+                    document,
+                    previousById.GetValueOrDefault(document.Id)))
+                .ToArray();
+            BulkWriteResult<ParkDocument> result = await ExecuteInsertAwareBulkWriteAsync(
+                this.localParksCollection,
+                writes,
+                cancellationToken);
+            bool sourceChanged = HasSourceChanges(result);
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged,
+                CancellationToken.None);
+
+            List<ParkDocument> committedDocuments = await this.localParksCollection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, parkIds))
+                .ToListAsync(cancellationToken);
+            foreach (ParkDocument committed in committedDocuments.Where(document =>
+                         pending.TryGetValue(document.Id, out ParkDocument? replacement)
+                         && DocumentsAreEquivalent(document, replacement)))
+            {
+                pending.Remove(committed.Id);
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    private async Task FlushParkItemReplacementsAsync(
+        IReadOnlyCollection<ReplaceOneModel<ParkItemDocument>> replacements,
+        CancellationToken cancellationToken)
+    {
+        Dictionary<string, ParkItemDocument> pending = replacements
+            .Select(static write => write.Replacement)
+            .GroupBy(static document => document.Id, StringComparer.Ordinal)
+            .ToDictionary(static group => group.Key, static group => group.Last(), StringComparer.Ordinal);
+        while (pending.Count > 0)
+        {
+            string[] parkItemIds = pending.Keys.ToArray();
+            List<ParkItemDocument> previousDocuments = await this.localParkItemsCollection
+                .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, parkItemIds))
+                .ToListAsync(cancellationToken);
+            IReadOnlyDictionary<string, ParkItemDocument> previousById = previousDocuments
+                .ToDictionary(static document => document.Id, StringComparer.Ordinal);
+            IReadOnlyCollection<ParkItem> previousItems = previousDocuments
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            IReadOnlyCollection<ParkItem> currentItems = pending.Values
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
+                    previousItems,
+                    currentItems,
+                    cancellationToken);
+            IReadOnlyCollection<WriteModel<ParkItemDocument>> writes = pending.Values
+                .Select(document => BuildFencedParkItemReplacement(
+                    document,
+                    previousById.GetValueOrDefault(document.Id)))
+                .ToArray();
+            BulkWriteResult<ParkItemDocument> result = await ExecuteInsertAwareBulkWriteAsync(
+                this.localParkItemsCollection,
+                writes,
+                cancellationToken);
+            bool sourceChanged = HasSourceChanges(result);
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged,
+                CancellationToken.None);
+
+            List<ParkItemDocument> committedDocuments = await this.localParkItemsCollection
+                .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, parkItemIds))
+                .ToListAsync(cancellationToken);
+            foreach (ParkItemDocument committed in committedDocuments.Where(document =>
+                         pending.TryGetValue(document.Id, out ParkItemDocument? replacement)
+                         && DocumentsAreEquivalent(document, replacement)))
+            {
+                pending.Remove(committed.Id);
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+    }
+
+    internal static WriteModel<ParkDocument> BuildFencedParkReplacement(
+        ParkDocument replacement,
+        ParkDocument? previousDocument)
+    {
+        ArgumentNullException.ThrowIfNull(replacement);
+        if (previousDocument is null)
+        {
+            return new InsertOneModel<ParkDocument>(replacement);
+        }
+
+        return new ReplaceOneModel<ParkDocument>(
+            ParkRepository.BuildObservedRankingStateFilter(previousDocument),
+            replacement)
+        {
+            IsUpsert = false,
+        };
+    }
+
+    internal static WriteModel<ParkItemDocument> BuildFencedParkItemReplacement(
+        ParkItemDocument replacement,
+        ParkItemDocument? previousDocument)
+    {
+        ArgumentNullException.ThrowIfNull(replacement);
+        if (previousDocument is null)
+        {
+            return new InsertOneModel<ParkItemDocument>(replacement);
+        }
+
+        return new ReplaceOneModel<ParkItemDocument>(
+            ParkItemRepository.BuildObservedRankingStateFilter(previousDocument),
+            replacement)
+        {
+            IsUpsert = false,
+        };
+    }
+
+    private static async Task<BulkWriteResult<TDocument>> ExecuteInsertAwareBulkWriteAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        IReadOnlyCollection<WriteModel<TDocument>> writes,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await collection.BulkWriteAsync(
+                writes,
+                new BulkWriteOptions { IsOrdered = false },
+                cancellationToken);
+        }
+        catch (MongoBulkWriteException<TDocument> exception)
+            when (exception.WriteConcernError is null
+                && exception.WriteErrors.Count > 0
+                && exception.WriteErrors.All(
+                    static error => error.Category == ServerErrorCategory.DuplicateKey))
+        {
+            return exception.Result;
+        }
+    }
+
+    private static bool HasSourceChanges<TDocument>(BulkWriteResult<TDocument> result)
+    {
+        return result.InsertedCount > 0
+            || result.ModifiedCount > 0
+            || result.Upserts.Count > 0;
+    }
+
+    internal static bool DocumentsAreEquivalent<TDocument>(
+        TDocument current,
+        TDocument replacement)
+    {
+        ArgumentNullException.ThrowIfNull(current);
+        ArgumentNullException.ThrowIfNull(replacement);
+        return current.ToBsonDocument().Equals(replacement.ToBsonDocument());
     }
 
     private CaptainCoasterApplyImpact ApplyParkResultWithContext(

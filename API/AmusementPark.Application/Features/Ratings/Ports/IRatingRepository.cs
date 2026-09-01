@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -13,20 +14,42 @@ public sealed record RatingAggregateTarget(
     ParkItemType? ParkItemType);
 
 public sealed record UserRatingMutationResult(
+    bool SourceChanged,
     UserRating Rating,
-    RatingAggregate? Aggregate);
+    RatingAggregate? Aggregate,
+    bool WasFencedOut = false);
+
+public sealed record UserRatingDeletionResult(
+    bool SourceChanged,
+    RatingAggregate? Aggregate,
+    bool WasFencedOut = false);
 
 public interface IRatingRepository
 {
     Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
 
+    Task PrepareMutationFenceAsync(
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken);
+
+    Task ReleaseMutationFenceAsync(
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken);
+
     Task<UserRatingMutationResult> UpsertUserRatingAndRecalculateAggregateAsync(
         UserRating rating,
         RatingAggregateTarget aggregateTarget,
+        string mutationToken,
         CancellationToken cancellationToken);
 
-    Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
+    Task<UserRatingDeletionResult> DeleteUserRatingAndRecalculateAggregateAsync(
         string userId,
+        RatingTargetType targetType,
+        string targetId,
+        string mutationToken,
+        CancellationToken cancellationToken);
+
+    Task RepairAggregateAsync(
         RatingTargetType targetType,
         string targetId,
         CancellationToken cancellationToken);
@@ -44,7 +67,21 @@ public interface IRatingRepository
         int maxItems,
         CancellationToken cancellationToken);
 
+    Task<RatingRankingParkCandidateBatch> GetVisibleParkRankingSnapshotCandidateBatchAsync(
+        int maxParks,
+        CancellationToken cancellationToken);
+
+    Task<RatingRankingSourceBatch> GetVisibleParkRankingSnapshotSourceBatchAsync(
+        IReadOnlyCollection<string> parkIds,
+        int maxSourceComponents,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
+        ParkItemCategory parkItemCategory,
+        int maxItems,
+        CancellationToken cancellationToken);
+
+    Task<RatingRankingSourceBatch> GetVisibleParkItemRankingSourceBatchAsync(
         ParkItemCategory parkItemCategory,
         int maxItems,
         CancellationToken cancellationToken);

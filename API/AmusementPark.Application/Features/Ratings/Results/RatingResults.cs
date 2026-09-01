@@ -159,6 +159,10 @@ public sealed record RatingRankingSourceBatch(
     IReadOnlyCollection<RatingRankingItemResult> Sources,
     bool IsTruncated);
 
+public sealed record RatingRankingParkCandidateBatch(
+    IReadOnlyCollection<string> ParkIds,
+    bool IsTruncated);
+
 public sealed record ParkRatingRankingItemResult(
     string TargetId,
     string TargetName,
