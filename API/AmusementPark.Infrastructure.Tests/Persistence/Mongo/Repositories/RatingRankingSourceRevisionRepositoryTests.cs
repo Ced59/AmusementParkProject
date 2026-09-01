@@ -16,7 +16,7 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
     private static readonly DateTime NowUtc = new DateTime(2026, 9, 1, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public void BuildBeginMutationUpdate_ShouldHideTheRevisionBehindADurableLease()
+    public void BuildBeginMutationUpdate_ShouldKeepTheEarliestDurableLeaseDeadline()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
         DateTime leaseExpiresAtUtc = NowUtc.Add(
@@ -38,7 +38,8 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         Assert.Equal(1, update["$inc"].AsBsonDocument["pendingMutationCount"].AsInt32);
         Assert.Equal(
             leaseExpiresAtUtc,
-            update["$max"].AsBsonDocument["mutationLeaseExpiresAtUtc"].ToUniversalTime());
+            update["$min"].AsBsonDocument["mutationLeaseExpiresAtUtc"].ToUniversalTime());
+        Assert.False(update.Contains("$max"));
         Assert.False(update["$inc"].AsBsonDocument.Contains("revision"));
     }
 

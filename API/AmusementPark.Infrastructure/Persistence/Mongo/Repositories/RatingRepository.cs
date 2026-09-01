@@ -323,6 +323,40 @@ public sealed class RatingRepository : IRatingRepository
         return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
+    public async Task<RatingRankingSourceBatch> GetVisibleParkRankingSnapshotSourceBatchAsync(
+        int maxParks,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxParks = Math.Clamp(maxParks, 1, RankingCandidateHardLimit);
+        BsonDocument[] parkPipeline = BuildParkRankingCandidatePipeline(
+            this.parksCollection.CollectionNamespace.CollectionName,
+            effectiveMaxParks + 1);
+        List<BsonDocument> parkCandidateBsonDocuments = await this.ratingAggregatesCollection
+            .Aggregate<BsonDocument>(parkPipeline, cancellationToken: cancellationToken)
+            .ToListAsync(cancellationToken);
+        List<RatingAggregateDocument> parkDocuments = parkCandidateBsonDocuments
+            .Select(static document => BsonSerializer.Deserialize<RatingAggregateDocument>(document))
+            .ToList();
+        IReadOnlyCollection<RatingRankingItemResult> parkSources =
+            await this.EnrichVisibleRankingSourcesAsync(
+                parkDocuments.Take(effectiveMaxParks).ToList(),
+                cancellationToken);
+        if (parkDocuments.Count > effectiveMaxParks)
+        {
+            return new RatingRankingSourceBatch(parkSources, true);
+        }
+
+        RatingRankingSourceBatch parkItemBatch = await this.LoadVisibleParkItemRankingSourceBatchAsync(
+            null,
+            null,
+            cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> sources = parkSources
+            .Concat(parkItemBatch.Sources)
+            .ToArray();
+        bool isTruncated = IsParkRankingSetTruncated(sources, effectiveMaxParks);
+        return new RatingRankingSourceBatch(sources, isTruncated);
+    }
+
     public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
         ParkItemCategory parkItemCategory,
         int maxItems,
@@ -349,7 +383,7 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<RatingRankingSourceBatch> LoadVisibleParkItemRankingSourceBatchAsync(
         ParkItemCategory? parkItemCategory,
-        int effectiveMaxItems,
+        int? effectiveMaxItems,
         CancellationToken cancellationToken)
     {
         const int candidatePageSize = 500;
@@ -364,7 +398,8 @@ public sealed class RatingRepository : IRatingRepository
         };
         using IAsyncCursor<BsonDocument> cursor = await this.ratingAggregatesCollection
             .AggregateAsync<BsonDocument>(pipeline, options, cancellationToken);
-        while (eligibleSources.Count <= effectiveMaxItems
+        while ((!effectiveMaxItems.HasValue
+                || eligibleSources.Count <= effectiveMaxItems.Value)
                && await cursor.MoveNextAsync(cancellationToken))
         {
             List<RatingAggregateDocument> candidateDocuments = cursor.Current
@@ -377,12 +412,13 @@ public sealed class RatingRepository : IRatingRepository
                 || source.ParkItemCategory == parkItemCategory.Value));
         }
 
-        bool isTruncated = IsParkItemRankingSourceSetTruncated(
-            eligibleSources.Count,
-            effectiveMaxItems);
-        IReadOnlyCollection<RatingRankingItemResult> sources = eligibleSources
-            .Take(effectiveMaxItems)
-            .ToArray();
+        bool isTruncated = effectiveMaxItems.HasValue
+            && IsParkItemRankingSourceSetTruncated(
+                eligibleSources.Count,
+                effectiveMaxItems.Value);
+        IReadOnlyCollection<RatingRankingItemResult> sources = effectiveMaxItems.HasValue
+            ? eligibleSources.Take(effectiveMaxItems.Value).ToArray()
+            : eligibleSources;
         return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
@@ -857,6 +893,18 @@ public sealed class RatingRepository : IRatingRepository
     {
         return parkDocumentCount > RankingCandidateHardLimit
             || parkItemDocumentCount > parkItemLimit;
+    }
+
+    internal static bool IsParkRankingSetTruncated(
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        int parkLimit)
+    {
+        return sources
+            .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
+            .Select(static source => source.ParkId)
+            .Distinct(StringComparer.Ordinal)
+            .Take(parkLimit + 1)
+            .Count() > parkLimit;
     }
 
     internal static bool IsParkItemRankingSourceSetTruncated(

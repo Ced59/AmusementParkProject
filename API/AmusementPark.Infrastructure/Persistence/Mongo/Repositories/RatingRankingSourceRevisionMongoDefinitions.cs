@@ -24,7 +24,7 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             .SetOnInsert(document => document.CreatedAt, nowUtc)
             .Set(document => document.ScopeKey, scopeKey.Value)
             .Inc(document => document.PendingMutationCount, 1)
-            .Max(document => document.MutationLeaseExpiresAtUtc, leaseExpiresAtUtc)
+            .Min(document => document.MutationLeaseExpiresAtUtc, leaseExpiresAtUtc)
             .Set(document => document.UpdatedAt, nowUtc);
     }
 

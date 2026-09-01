@@ -37,10 +37,10 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
         RankingScopeDefinition scope,
         CancellationToken cancellationToken)
     {
-        RatingRankingSourceBatch sourceBatch = await this.ratingRepository.GetVisibleRankingSourcesAsync(
-            null,
-            RankingSnapshotHeader.MaximumCandidateEntryCount,
-            cancellationToken);
+        RatingRankingSourceBatch sourceBatch =
+            await this.ratingRepository.GetVisibleParkRankingSnapshotSourceBatchAsync(
+                RankingSnapshotHeader.MaximumCandidateEntryCount,
+                cancellationToken);
         IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
         IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(sources);
         if (sourceBatch.IsTruncated

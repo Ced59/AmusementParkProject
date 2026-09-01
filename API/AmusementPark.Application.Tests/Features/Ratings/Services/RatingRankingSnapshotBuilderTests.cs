@@ -125,8 +125,7 @@ public sealed class RatingRankingSnapshotBuilderTests
             .ToArray();
         Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
         repository
-            .Setup(value => value.GetVisibleRankingSourcesAsync(
-                null,
+            .Setup(value => value.GetVisibleParkRankingSnapshotSourceBatchAsync(
                 RankingSnapshotHeader.MaximumCandidateEntryCount,
                 CancellationToken.None))
             .ReturnsAsync(new RatingRankingSourceBatch(sources, false));

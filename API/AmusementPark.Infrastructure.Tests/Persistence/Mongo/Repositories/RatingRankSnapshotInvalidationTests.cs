@@ -5,6 +5,8 @@ using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Moq;
 using Xunit;
@@ -79,6 +81,37 @@ public sealed class RatingRankSnapshotInvalidationTests
         collection.VerifyAll();
         snapshotCache.VerifyAll();
         sourceChanges.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildObservedRankingStateFilter_ShouldFenceEveryScopeRelevantParkItemField()
+    {
+        ParkItemDocument document = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Category = ParkItemCategory.Attraction,
+            IsVisible = true,
+            AttractionDetails = new AttractionDetailsDocument
+            {
+                Status = ParkItemStatusNormalizer.Operating,
+            },
+        };
+
+        IBsonSerializer<ParkItemDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ParkItemDocument>();
+        RenderArgs<ParkItemDocument> arguments =
+            new RenderArgs<ParkItemDocument>(serializer, BsonSerializer.SerializerRegistry);
+        BsonDocument filter = ParkItemRepository.BuildObservedRankingStateFilter(document)
+            .Render(arguments);
+
+        Assert.Equal(document.Id, filter["_id"].AsString);
+        Assert.Equal(document.ParkId, filter["parkId"].AsString);
+        Assert.Equal(document.Category.ToString(), filter["category"].AsString);
+        Assert.True(filter["isVisible"].AsBoolean);
+        Assert.Equal(
+            ParkItemStatusNormalizer.Operating,
+            filter["attractionDetails.status"].AsString);
     }
 
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(

@@ -139,6 +139,20 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
+    public void IsParkRankingSetTruncated_ShouldApplyLimitAfterGroupingSourcesByPark()
+    {
+        IReadOnlyCollection<RatingRankingItemResult> sameParkSources = Enumerable.Range(1, 6)
+            .Select(index => CreateParkItemRankingSource($"item-{index}", "park-1"))
+            .ToArray();
+        IReadOnlyCollection<RatingRankingItemResult> distinctParkSources = Enumerable.Range(1, 6)
+            .Select(index => CreateParkItemRankingSource($"item-{index}", $"park-{index}"))
+            .ToArray();
+
+        Assert.False(RatingRepository.IsParkRankingSetTruncated(sameParkSources, 5));
+        Assert.True(RatingRepository.IsParkRankingSetTruncated(distinctParkSources, 5));
+    }
+
+    [Fact]
     public void BuildParkItemRankingCandidatePipeline_ShouldStreamCandidatesAfterCurrentEligibilityJoins()
     {
         BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
@@ -209,5 +223,23 @@ public sealed class RatingRepositoryTests
             value,
             DateTime.UtcNow,
             summary);
+    }
+
+    private static RatingRankingItemResult CreateParkItemRankingSource(
+        string targetId,
+        string parkId)
+    {
+        return new RatingRankingItemResult(
+            RatingTargetType.ParkItem,
+            targetId,
+            targetId,
+            parkId,
+            parkId,
+            ParkItemCategory.Attraction,
+            ParkItemType.RollerCoaster,
+            10,
+            45d,
+            4.5d,
+            4d);
     }
 }

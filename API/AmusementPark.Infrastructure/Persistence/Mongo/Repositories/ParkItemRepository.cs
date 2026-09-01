@@ -612,29 +612,51 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken)
     {
-        ParkItemDocument? existing = await this.collection.Find(document => document.Id == parkItemId)
-            .FirstOrDefaultAsync(cancellationToken);
-        RatingRankingMutationPreparation rankingPreparation =
-            await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
-                existing is null ? Array.Empty<ParkItem>() : new[] { existing.ToDomain() },
-                Array.Empty<ParkItem>(),
-                cancellationToken);
-        DeleteResult result = await this.collection.DeleteOneAsync(
-            document => document.Id == parkItemId,
-            cancellationToken: cancellationToken);
-
-        bool deleted = result.DeletedCount > 0;
-        if (deleted)
+        while (true)
         {
+            ParkItemDocument? existing = await this.collection.Find(
+                    document => document.Id == parkItemId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
+            {
+                return false;
+            }
+
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
+                    new[] { existing.ToDomain() },
+                    Array.Empty<ParkItem>(),
+                    cancellationToken);
+            DeleteResult result = await this.collection.DeleteOneAsync(
+                BuildObservedRankingStateFilter(existing),
+                cancellationToken: cancellationToken);
+            bool deleted = result.DeletedCount > 0;
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: deleted,
+                CancellationToken.None);
+            if (!deleted)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                continue;
+            }
+
             this.ratingRankSnapshotCache.Invalidate();
+            return true;
         }
+    }
 
-        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: deleted,
-            CancellationToken.None);
-
-        return deleted;
+    internal static FilterDefinition<ParkItemDocument> BuildObservedRankingStateFilter(
+        ParkItemDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return Builders<ParkItemDocument>.Filter.Eq(value => value.Id, document.Id)
+            & Builders<ParkItemDocument>.Filter.Eq(value => value.ParkId, document.ParkId)
+            & Builders<ParkItemDocument>.Filter.Eq(value => value.Category, document.Category)
+            & Builders<ParkItemDocument>.Filter.Eq(value => value.IsVisible, document.IsVisible)
+            & Builders<ParkItemDocument>.Filter.Eq(
+                value => value.AttractionDetails!.Status,
+                document.AttractionDetails?.Status);
     }
 
     public async Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkItemIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
