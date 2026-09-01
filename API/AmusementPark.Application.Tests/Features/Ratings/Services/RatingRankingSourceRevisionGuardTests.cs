@@ -188,6 +188,45 @@ public sealed class RatingRankingSourceRevisionGuardTests
     }
 
     [Fact]
+    public async Task PrepareParkChangesAsync_WhenIncludedParkNameChanges_ShouldInvalidateOnlyParkScope()
+    {
+        List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                It.IsAny<RankingScopeKey>(),
+                CancellationToken.None))
+            .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
+            .Returns(Task.CompletedTask);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+        Park previous = new Park
+        {
+            Id = "park-1",
+            Name = "Alpha Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        Park current = new Park
+        {
+            Id = "park-1",
+            Name = "Beta Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        RankingScopeKey scopeKey = Assert.Single(preparation.ScopeKeys);
+        Assert.Equal("parks:global", scopeKey.Value);
+        Assert.Equal(new[] { "parks:global" }, incrementedScopes.Select(static scope => scope.Value));
+        revisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task PrepareParkItemChangesAsync_WhenCategoryChanges_ShouldInvalidateOldNewAndParkScopes()
     {
         List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
@@ -212,6 +251,37 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
             incrementedScopes.Select(static scope => scope.Value));
         Assert.Equal(3, preparation.ScopeKeys.Count);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareParkItemChangesAsync_WhenIncludedItemNameChanges_ShouldInvalidateOnlyItsCategoryScope()
+    {
+        List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                It.IsAny<RankingScopeKey>(),
+                CancellationToken.None))
+            .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
+            .Returns(Task.CompletedTask);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+        ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        previous.Name = "Alpha Ride";
+        ParkItem current = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        current.Name = "Beta Ride";
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkItemChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        RankingScopeKey scopeKey = Assert.Single(preparation.ScopeKeys);
+        Assert.Equal("park-items:category:attraction", scopeKey.Value);
+        Assert.Equal(
+            new[] { "park-items:category:attraction" },
+            incrementedScopes.Select(static scope => scope.Value));
         revisions.VerifyAll();
     }
 

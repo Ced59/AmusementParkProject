@@ -4,6 +4,7 @@ using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
@@ -135,6 +136,56 @@ public sealed class RatingRepositoryTests
             documentLimit);
 
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BuildParkItemRankingCandidatePipeline_ShouldStreamCandidatesAfterCurrentEligibilityJoins()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
+            ParkItemCategory.Attraction,
+            "parkItems",
+            "parks");
+
+        int parkItemCategoryMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParkItem.category"))
+            .index;
+        int parentEligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int projectionIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$project"))
+            .index;
+
+        Assert.True(parkItemCategoryMatchIndex < projectionIndex);
+        Assert.True(parentEligibilityMatchIndex < projectionIndex);
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$limit"));
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$skip"));
+    }
+
+    [Fact]
+    public void BuildParkRankingCandidatePipeline_ShouldApplyLookAheadAfterCurrentParkEligibility()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildParkRankingCandidatePipeline(
+            "parks",
+            5001);
+
+        int eligibilityMatchIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingPark.status"))
+            .index;
+        int limitIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$limit"))
+            .index;
+
+        Assert.True(eligibilityMatchIndex < limitIndex);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
     }
 
     private static UserRatingListItemResult CreateRating(

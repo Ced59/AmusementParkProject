@@ -63,14 +63,35 @@ public sealed class RatingRankingSourceRevisionGuard :
         ArgumentNullException.ThrowIfNull(currentParks);
         IReadOnlyDictionary<string, Park> previousById = IndexParks(previousParks);
         IReadOnlyDictionary<string, Park> currentById = IndexParks(currentParks);
-        bool affectsRankingSources = previousById.Keys
-            .Concat(currentById.Keys)
-            .Distinct(StringComparer.Ordinal)
-            .Any(parkId => IsParkIncluded(previousById.GetValueOrDefault(parkId))
-                != IsParkIncluded(currentById.GetValueOrDefault(parkId)));
-        IReadOnlyCollection<RankingScopeDefinition> affectedScopes = affectsRankingSources
-            ? this.scopeRegistry.Definitions
-            : Array.Empty<RankingScopeDefinition>();
+        bool affectsAllRankingSources = false;
+        bool affectsParkRankingSources = false;
+        foreach (string parkId in previousById.Keys
+                     .Concat(currentById.Keys)
+                     .Distinct(StringComparer.Ordinal))
+        {
+            previousById.TryGetValue(parkId, out Park? previous);
+            currentById.TryGetValue(parkId, out Park? current);
+            bool previousIncluded = IsParkIncluded(previous);
+            bool currentIncluded = IsParkIncluded(current);
+            if (previousIncluded != currentIncluded)
+            {
+                affectsAllRankingSources = true;
+                break;
+            }
+
+            if (previousIncluded
+                && currentIncluded
+                && !NamesHaveEquivalentRankingOrder(previous!.Name, current!.Name))
+            {
+                affectsParkRankingSources = true;
+            }
+        }
+
+        IReadOnlyCollection<RankingScopeDefinition> affectedScopes = this.scopeRegistry.Definitions
+            .Where(definition => affectsAllRankingSources
+                || (affectsParkRankingSources
+                    && definition.TargetFamily == RankingTargetFamily.Parks))
+            .ToArray();
         return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
     }
 
@@ -84,6 +105,7 @@ public sealed class RatingRankingSourceRevisionGuard :
         IReadOnlyDictionary<string, ParkItem> previousById = IndexParkItems(previousItems);
         IReadOnlyDictionary<string, ParkItem> currentById = IndexParkItems(currentItems);
         HashSet<ParkItemCategory> affectedCategories = new HashSet<ParkItemCategory>();
+        bool affectsParkRankingSources = false;
         foreach (string itemId in previousById.Keys
                      .Concat(currentById.Keys)
                      .Distinct(StringComparer.Ordinal))
@@ -97,9 +119,17 @@ public sealed class RatingRankingSourceRevisionGuard :
                 && currentIncluded
                 && (previous!.Category != current!.Category
                     || !string.Equals(previous.ParkId, current.ParkId, StringComparison.Ordinal));
-            if (!membershipChanged && !placementChanged)
+            bool rankingNameChanged = previousIncluded
+                && currentIncluded
+                && !NamesHaveEquivalentRankingOrder(previous!.Name, current!.Name);
+            if (!membershipChanged && !placementChanged && !rankingNameChanged)
             {
                 continue;
+            }
+
+            if (membershipChanged || placementChanged)
+            {
+                affectsParkRankingSources = true;
             }
 
             if (previousIncluded)
@@ -116,7 +146,8 @@ public sealed class RatingRankingSourceRevisionGuard :
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes = affectedCategories.Count == 0
             ? Array.Empty<RankingScopeDefinition>()
             : this.scopeRegistry.Definitions
-                .Where(definition => definition.TargetFamily == RankingTargetFamily.Parks
+                .Where(definition => (affectsParkRankingSources
+                        && definition.TargetFamily == RankingTargetFamily.Parks)
                     || (definition.Filter.ParkItemCategory.HasValue
                         && affectedCategories.Contains(definition.Filter.ParkItemCategory.Value)))
                 .ToArray();
@@ -183,6 +214,14 @@ public sealed class RatingRankingSourceRevisionGuard :
             && ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
                 item.Category,
                 item.AttractionDetails?.Status);
+    }
+
+    private static bool NamesHaveEquivalentRankingOrder(string? previousName, string? currentName)
+    {
+        return string.Equals(
+            previousName?.Trim(),
+            currentName?.Trim(),
+            StringComparison.OrdinalIgnoreCase);
     }
 
     public async Task CompleteMutationAsync(
