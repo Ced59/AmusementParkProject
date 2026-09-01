@@ -294,7 +294,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IRatingRankingMutationGuard> guard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RatingRankingSourceRevision>());
+            Array.Empty<RankingScopeKey>());
         guard
             .Setup(value => value.PrepareMutationAsync(
                 targetType,
@@ -303,9 +303,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(preparation);
         guard
-            .Setup(value => value.ScheduleRebuildsAsync(
+            .Setup(value => value.CompleteMutationAsync(
                 preparation,
-                It.IsAny<CancellationToken>()))
+                true,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
         return guard;
     }

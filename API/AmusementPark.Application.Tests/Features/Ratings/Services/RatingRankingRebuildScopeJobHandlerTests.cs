@@ -87,6 +87,33 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenSourceMutationIsPending_ShouldRetryWithoutReadingSources()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync((RankingPublicationPointer?)null);
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                fixture.Scope.Key,
+                8,
+                NowUtc,
+                PendingMutationCount: 1,
+                MutationLeaseExpiresAtUtc: NowUtc.AddMinutes(30)));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(8),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(RatingRankingRebuildErrorCodes.SourceRevisionUnavailable, result.ErrorCode);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSourceBatchIsTruncated_ShouldDeadLetterWithoutStartingBuild()
     {
         HandlerFixture fixture = new HandlerFixture();
@@ -200,6 +227,13 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             .ReturnsAsync(new RankingSnapshotRetirementResult(
                 RankingSnapshotRetirementDisposition.Retired,
                 fixture.CreatePointer(5)));
+        fixture.Revisions
+            .Setup(repository => repository.MarkUnavailableAsync(
+                fixture.Scope.Key,
+                fixture.Scope.MethodologyVersion,
+                6,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
 
         DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
             fixture.CreateContext(6),

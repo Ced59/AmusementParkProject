@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -103,7 +104,7 @@ public sealed class RatingRankSnapshotInvalidationTests
     private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkSourceChangeCoordinator()
     {
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RatingRankingSourceRevision>());
+            Array.Empty<RankingScopeKey>());
         Mock<IRatingRankingSourceChangeCoordinator> coordinator =
             new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
         coordinator
@@ -113,9 +114,10 @@ public sealed class RatingRankSnapshotInvalidationTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(preparation);
         coordinator
-            .Setup(value => value.ScheduleRebuildsAsync(
+            .Setup(value => value.CompleteMutationAsync(
                 preparation,
-                It.IsAny<CancellationToken>()))
+                true,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
         return coordinator;
     }
@@ -123,7 +125,7 @@ public sealed class RatingRankSnapshotInvalidationTests
     private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkItemSourceChangeCoordinator()
     {
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RatingRankingSourceRevision>());
+            Array.Empty<RankingScopeKey>());
         Mock<IRatingRankingSourceChangeCoordinator> coordinator =
             new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
         coordinator
@@ -133,9 +135,10 @@ public sealed class RatingRankSnapshotInvalidationTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(preparation);
         coordinator
-            .Setup(value => value.ScheduleRebuildsAsync(
+            .Setup(value => value.CompleteMutationAsync(
                 preparation,
-                It.IsAny<CancellationToken>()))
+                true,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
         return coordinator;
     }

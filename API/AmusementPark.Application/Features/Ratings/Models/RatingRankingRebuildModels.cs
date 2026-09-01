@@ -40,15 +40,14 @@ public sealed record RatingRankingSnapshotBuildPlan(
 public sealed class RatingRankingMutationPreparation
 {
     public RatingRankingMutationPreparation(
-        IReadOnlyCollection<RatingRankingSourceRevision> sourceRevisions)
+        IReadOnlyCollection<RankingScopeKey> scopeKeys)
     {
-        ArgumentNullException.ThrowIfNull(sourceRevisions);
-        this.SourceRevisions = Array.AsReadOnly(sourceRevisions
-            .GroupBy(static revision => revision.ScopeKey)
-            .Select(static group => group.OrderByDescending(static revision => revision.Revision).First())
-            .OrderBy(static revision => revision.ScopeKey.Value, StringComparer.Ordinal)
+        ArgumentNullException.ThrowIfNull(scopeKeys);
+        this.ScopeKeys = Array.AsReadOnly(scopeKeys
+            .Distinct()
+            .OrderBy(static scopeKey => scopeKey.Value, StringComparer.Ordinal)
             .ToArray());
     }
 
-    public IReadOnlyCollection<RatingRankingSourceRevision> SourceRevisions { get; }
+    public IReadOnlyCollection<RankingScopeKey> ScopeKeys { get; }
 }

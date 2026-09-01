@@ -14,15 +14,26 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             scopeKey.Value);
     }
 
-    public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildIncrementUpdate(
+    public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildBeginMutationUpdate(
         RankingScopeKey scopeKey,
-        DateTime nowUtc)
+        DateTime nowUtc,
+        DateTime leaseExpiresAtUtc)
     {
         return Builders<RatingRankingSourceRevisionDocument>.Update
             .SetOnInsert(document => document.Id, scopeKey.Value)
             .SetOnInsert(document => document.CreatedAt, nowUtc)
             .Set(document => document.ScopeKey, scopeKey.Value)
-            .Inc(document => document.Revision, 1)
+            .Inc(document => document.PendingMutationCount, 1)
+            .Max(document => document.MutationLeaseExpiresAtUtc, leaseExpiresAtUtc)
             .Set(document => document.UpdatedAt, nowUtc);
+    }
+
+    public static FilterDefinition<RatingRankingSourceRevisionDocument> BuildPendingMutationFilter(
+        RankingScopeKey scopeKey)
+    {
+        return BuildScopeFilter(scopeKey)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Gt(
+                document => document.PendingMutationCount,
+                0);
     }
 }

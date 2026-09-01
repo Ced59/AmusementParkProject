@@ -561,10 +561,12 @@ public sealed class ParkItemRepository : IParkItemRepository
         document.UpdatedAt = document.CreatedAt;
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+
         this.ratingRankSnapshotCache.Invalidate();
-        await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
         return document.ToDomain();
     }
 
@@ -593,13 +595,18 @@ public sealed class ParkItemRepository : IParkItemRepository
 
         if (result.MatchedCount == 0)
         {
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: false,
+                CancellationToken.None);
             return null;
         }
 
         this.ratingRankSnapshotCache.Invalidate();
-        await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
         return document.ToDomain();
     }
 
@@ -612,15 +619,20 @@ public sealed class ParkItemRepository : IParkItemRepository
                 existing is null ? Array.Empty<ParkItem>() : new[] { existing.ToDomain() },
                 Array.Empty<ParkItem>(),
                 cancellationToken);
-        DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == parkItemId, cancellationToken: cancellationToken);
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            document => document.Id == parkItemId,
+            cancellationToken: cancellationToken);
+
         bool deleted = result.DeletedCount > 0;
         if (deleted)
         {
             this.ratingRankSnapshotCache.Invalidate();
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
         }
+
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: deleted,
+            CancellationToken.None);
 
         return deleted;
     }
@@ -687,12 +699,10 @@ public sealed class ParkItemRepository : IParkItemRepository
             this.ratingRankSnapshotCache.Invalidate();
         }
 
-        if (updatedCount > 0)
-        {
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
-        }
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: updatedCount > 0,
+            CancellationToken.None);
 
         return updatedCount;
     }
@@ -789,12 +799,10 @@ public sealed class ParkItemRepository : IParkItemRepository
             this.ratingRankSnapshotCache.Invalidate();
         }
 
-        if (updatedCount > 0)
-        {
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
-        }
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: updatedCount > 0,
+            CancellationToken.None);
 
         return updatedCount;
     }

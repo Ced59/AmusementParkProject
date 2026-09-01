@@ -109,14 +109,17 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkItemCategory,
             retainedRating?.ParkItemCategory,
             cancellationToken);
-        UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
-            rating,
-            aggregateTarget,
-            cancellationToken);
+        UserRatingMutationResult mutation =
+            await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
+                rating,
+                aggregateTarget,
+                cancellationToken);
+
         this.ratingRankProvider.Invalidate();
-        await this.rankingMutationGuard.ScheduleRebuildsAsync(
+        await this.rankingMutationGuard.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
             metadata.TargetId,
@@ -208,15 +211,18 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             metadata?.ParkItemCategory,
             retainedRating?.ParkItemCategory,
             cancellationToken);
-        RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
-            userId,
-            command.TargetType,
-            targetId,
-            cancellationToken);
+        RatingAggregate? aggregate =
+            await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
+                userId,
+                command.TargetType,
+                targetId,
+                cancellationToken);
+
         this.ratingRankProvider.Invalidate();
-        await this.rankingMutationGuard.ScheduleRebuildsAsync(
+        await this.rankingMutationGuard.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,

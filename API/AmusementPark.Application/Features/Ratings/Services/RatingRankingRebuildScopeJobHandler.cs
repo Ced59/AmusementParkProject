@@ -73,7 +73,8 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (initialFence == RevisionFenceDisposition.RequestedRevisionUnavailable)
+        if (initialFence is RevisionFenceDisposition.RequestedRevisionUnavailable
+            or RevisionFenceDisposition.MutationPending)
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -97,7 +98,8 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (preWriteFence == RevisionFenceDisposition.RequestedRevisionUnavailable)
+        if (preWriteFence is RevisionFenceDisposition.RequestedRevisionUnavailable
+            or RevisionFenceDisposition.MutationPending)
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -185,7 +187,8 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (publicationFence == RevisionFenceDisposition.RequestedRevisionUnavailable)
+        if (publicationFence is RevisionFenceDisposition.RequestedRevisionUnavailable
+            or RevisionFenceDisposition.MutationPending)
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -200,17 +203,21 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                         scope.MethodologyVersion,
                         requestedRevision),
                     cancellationToken);
-            return retirement.Disposition switch
+            if (retirement.Disposition is RankingSnapshotRetirementDisposition.Retired
+                or RankingSnapshotRetirementDisposition.AlreadyUnavailable)
             {
-                RankingSnapshotRetirementDisposition.Retired =>
-                    DurableBackgroundJobHandlerResult.Success(),
-                RankingSnapshotRetirementDisposition.AlreadyUnavailable =>
-                    DurableBackgroundJobHandlerResult.Success(),
-                RankingSnapshotRetirementDisposition.Stale =>
-                    DurableBackgroundJobHandlerResult.Success(),
-                _ => DurableBackgroundJobHandlerResult.Retry(
-                    RatingRankingRebuildErrorCodes.RetirementConflict),
-            };
+                await this.sourceRevisionRepository.MarkUnavailableAsync(
+                    scope.Key,
+                    scope.MethodologyVersion,
+                    requestedRevision,
+                    cancellationToken);
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+
+            return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
+                ? DurableBackgroundJobHandlerResult.Success()
+                : DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.RetirementConflict);
         }
 
         RankingSnapshotPublicationResult publication = await this.snapshotRepository.PublishAsync(
@@ -262,6 +269,11 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         RatingRankingSourceRevision? current = await this.sourceRevisionRepository.GetAsync(
             scopeKey,
             cancellationToken);
+        if (current is not null && !current.IsRebuildable)
+        {
+            return RevisionFenceDisposition.MutationPending;
+        }
+
         long currentRevision = current?.Revision ?? 0;
         if (currentRevision > requestedRevision)
         {
@@ -338,5 +350,6 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         Current,
         NewerRevisionExists,
         RequestedRevisionUnavailable,
+        MutationPending,
     }
 }

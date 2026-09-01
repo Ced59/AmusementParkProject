@@ -12,7 +12,8 @@ public interface IRatingRankingMutationGuard
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken);
 
-    Task ScheduleRebuildsAsync(
+    Task CompleteMutationAsync(
         RatingRankingMutationPreparation preparation,
+        bool sourceChanged,
         CancellationToken cancellationToken);
 }

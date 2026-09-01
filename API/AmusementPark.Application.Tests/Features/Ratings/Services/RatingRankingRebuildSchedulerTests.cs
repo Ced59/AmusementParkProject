@@ -123,6 +123,73 @@ public sealed class RatingRankingRebuildSchedulerTests
         snapshots.VerifyAll();
     }
 
+    [Fact]
+    public async Task ScheduleOutstandingAsync_WhenMutationLeaseIsPending_ShouldNotExposeRevision()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            8,
+            NowUtc,
+            PendingMutationCount: 1,
+            MutationLeaseExpiresAtUtc: NowUtc.AddMinutes(30));
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(revision);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        await scheduler.ScheduleOutstandingAsync(CancellationToken.None);
+
+        jobs.VerifyNoOtherCalls();
+        revisions.VerifyAll();
+        snapshots.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ScheduleOutstandingAsync_WhenUnavailableMarkerCoversRevision_ShouldSkipJob()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            8,
+            NowUtc,
+            UnavailableMethodologyVersion: scope.MethodologyVersion,
+            HighestUnavailableSourceRevision: 8);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(revision);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots
+            .Setup(repository => repository.GetPointerAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync((RankingPublicationPointer?)null);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        await scheduler.ScheduleOutstandingAsync(CancellationToken.None);
+
+        jobs.VerifyNoOtherCalls();
+        revisions.VerifyAll();
+        snapshots.VerifyAll();
+    }
+
     private static RatingRankingRebuildScheduler CreateScheduler(
         RankingScopeDefinition scope,
         IDurableBackgroundJobRepository jobs,

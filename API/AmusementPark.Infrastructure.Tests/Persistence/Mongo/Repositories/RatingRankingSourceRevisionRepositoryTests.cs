@@ -16,25 +16,34 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
     private static readonly DateTime NowUtc = new DateTime(2026, 9, 1, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public void BuildIncrementUpdate_ShouldAtomicallyCreateOrAdvanceOneCanonicalScope()
+    public void BuildBeginMutationUpdate_ShouldHideTheRevisionBehindADurableLease()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        DateTime leaseExpiresAtUtc = NowUtc.Add(
+            RatingRankingSourceRevisionRepository.MutationLeaseDuration);
 
         BsonDocument filter = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey));
         BsonDocument update = Render(
-            RatingRankingSourceRevisionMongoDefinitions.BuildIncrementUpdate(scopeKey, NowUtc));
+            RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
+                scopeKey,
+                NowUtc,
+                leaseExpiresAtUtc));
 
         Assert.Equal(scopeKey.Value, filter["_id"].AsString);
         Assert.Equal(scopeKey.Value, update["$setOnInsert"].AsBsonDocument["_id"].AsString);
         Assert.Equal(NowUtc, update["$setOnInsert"].AsBsonDocument["createdAt"].ToUniversalTime());
         Assert.Equal(scopeKey.Value, update["$set"].AsBsonDocument["scopeKey"].AsString);
         Assert.Equal(NowUtc, update["$set"].AsBsonDocument["updatedAt"].ToUniversalTime());
-        Assert.Equal(1, update["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.Equal(1, update["$inc"].AsBsonDocument["pendingMutationCount"].AsInt32);
+        Assert.Equal(
+            leaseExpiresAtUtc,
+            update["$max"].AsBsonDocument["mutationLeaseExpiresAtUtc"].ToUniversalTime());
+        Assert.False(update["$inc"].AsBsonDocument.Contains("revision"));
     }
 
     [Fact]
-    public async Task IncrementAsync_ShouldReturnTheAtomicPostIncrementRevision()
+    public async Task BeginMutationAsync_ShouldPersistThePendingLeaseWithoutExposingANewRevision()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
         Mock<IMongoCollection<RatingRankingSourceRevisionDocument>> collection =
@@ -50,7 +59,10 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
             {
                 Id = scopeKey.Value,
                 ScopeKey = scopeKey.Value,
-                Revision = 42,
+                Revision = 41,
+                PendingMutationCount = 1,
+                MutationLeaseExpiresAtUtc = NowUtc.Add(
+                    RatingRankingSourceRevisionRepository.MutationLeaseDuration),
                 CreatedAt = NowUtc,
                 UpdatedAt = NowUtc,
             });
@@ -63,15 +75,78 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
             new MongoDbSettings { RatingRankingSourceRevisionsCollectionName = "scope-revisions" },
             new FixedTimeProvider(NowUtc));
 
-        RatingRankingSourceRevision revision = await repository.IncrementAsync(
+        await repository.BeginMutationAsync(
             scopeKey,
             CancellationToken.None);
 
-        Assert.Equal(scopeKey, revision.ScopeKey);
-        Assert.Equal(42, revision.Revision);
-        Assert.Equal(NowUtc, revision.UpdatedAtUtc);
         collection.VerifyAll();
         database.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CompleteMutationAsync_ShouldAtomicallyAdvanceRevisionBeforeRemovingLastLease()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        UpdateDefinition<RatingRankingSourceRevisionDocument>? capturedUpdate = null;
+        Mock<IMongoCollection<RatingRankingSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<RatingRankingSourceRevisionDocument>>(MockBehavior.Strict);
+        collection
+            .Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.Is<FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument>>(
+                    options => !options.IsUpsert && options.ReturnDocument == ReturnDocument.After),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<RatingRankingSourceRevisionDocument> _,
+                UpdateDefinition<RatingRankingSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument> _,
+                CancellationToken _) => capturedUpdate = update)
+            .ReturnsAsync(new RatingRankingSourceRevisionDocument
+            {
+                Id = scopeKey.Value,
+                ScopeKey = scopeKey.Value,
+                Revision = 42,
+                PendingMutationCount = 0,
+                MutationLeaseExpiresAtUtc = NowUtc.AddMinutes(30),
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            });
+        collection
+            .Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        RatingRankingSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        RatingRankingSourceRevision revision = await repository.CompleteMutationAsync(
+            scopeKey,
+            sourceChanged: true,
+            CancellationToken.None);
+
+        Assert.NotNull(capturedUpdate);
+        BsonDocument updateDocument = Render(capturedUpdate);
+        Assert.Equal(-1, updateDocument["$inc"].AsBsonDocument["pendingMutationCount"].AsInt32);
+        Assert.Equal(1, updateDocument["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.Equal(42, revision.Revision);
+        Assert.True(revision.IsRebuildable);
+        Assert.Null(revision.MutationLeaseExpiresAtUtc);
+        collection.VerifyAll();
+    }
+
+    private static RatingRankingSourceRevisionRepository CreateRepository(
+        IMongoCollection<RatingRankingSourceRevisionDocument> collection)
+    {
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database
+            .Setup(value => value.GetCollection<RatingRankingSourceRevisionDocument>("scope-revisions", null))
+            .Returns(collection);
+        return new RatingRankingSourceRevisionRepository(
+            database.Object,
+            new MongoDbSettings { RatingRankingSourceRevisionsCollectionName = "scope-revisions" },
+            new FixedTimeProvider(NowUtc));
     }
 
     private static BsonDocument Render(

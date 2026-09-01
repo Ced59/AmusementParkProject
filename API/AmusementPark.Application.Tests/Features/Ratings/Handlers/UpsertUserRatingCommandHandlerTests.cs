@@ -120,7 +120,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RatingRankingSourceRevision>());
+            Array.Empty<RankingScopeKey>());
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
@@ -129,9 +129,10 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(preparation);
         rankingMutationGuard
-            .Setup(guard => guard.ScheduleRebuildsAsync(
+            .Setup(guard => guard.CompleteMutationAsync(
                 preparation,
-                It.IsAny<CancellationToken>()))
+                true,
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
 
         UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(

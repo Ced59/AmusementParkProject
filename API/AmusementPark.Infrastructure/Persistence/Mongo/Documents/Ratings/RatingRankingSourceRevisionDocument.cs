@@ -11,4 +11,19 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
 
     [BsonElement("revision")]
     public long Revision { get; set; }
+
+    [BsonElement("pendingMutationCount")]
+    public int PendingMutationCount { get; set; }
+
+    [BsonElement("mutationLeaseExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? MutationLeaseExpiresAtUtc { get; set; }
+
+    [BsonElement("unavailableMethodologyVersion")]
+    [BsonIgnoreIfNull]
+    public string? UnavailableMethodologyVersion { get; set; }
+
+    [BsonElement("highestUnavailableSourceRevision")]
+    [BsonIgnoreIfNull]
+    public long? HighestUnavailableSourceRevision { get; set; }
 }

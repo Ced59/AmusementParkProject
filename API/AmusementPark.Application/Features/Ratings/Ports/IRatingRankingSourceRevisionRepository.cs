@@ -5,8 +5,19 @@ namespace AmusementPark.Application.Features.Ratings.Ports;
 
 public interface IRatingRankingSourceRevisionRepository
 {
-    Task<RatingRankingSourceRevision> IncrementAsync(
+    Task BeginMutationAsync(
         RankingScopeKey scopeKey,
+        CancellationToken cancellationToken);
+
+    Task<RatingRankingSourceRevision> CompleteMutationAsync(
+        RankingScopeKey scopeKey,
+        bool sourceChanged,
+        CancellationToken cancellationToken);
+
+    Task MarkUnavailableAsync(
+        RankingScopeKey scopeKey,
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision,
         CancellationToken cancellationToken);
 
     Task<RatingRankingSourceRevision?> GetAsync(

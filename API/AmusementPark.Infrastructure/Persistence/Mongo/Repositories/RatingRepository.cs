@@ -342,8 +342,39 @@ public sealed class RatingRepository : IRatingRepository
         CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        FilterDefinition<ParkItemDocument> currentCategoryFilter =
+            Builders<ParkItemDocument>.Filter.Eq(
+                document => document.Category,
+                parkItemCategory)
+            & Builders<ParkItemDocument>.Filter.Eq(
+                document => document.IsVisible,
+                true);
+        List<string> currentCategoryItemIds = await this.parkItemsCollection
+            .Find(currentCategoryFilter)
+            .Project(document => document.Id)
+            .Limit(effectiveMaxItems + 1)
+            .ToListAsync(cancellationToken);
+        if (currentCategoryItemIds.Count > effectiveMaxItems)
+        {
+            return new RatingRankingSourceBatch(
+                Array.Empty<RatingRankingItemResult>(),
+                true);
+        }
+
+        if (currentCategoryItemIds.Count == 0)
+        {
+            return new RatingRankingSourceBatch(
+                Array.Empty<RatingRankingItemResult>(),
+                false);
+        }
+
+        FilterDefinition<RatingAggregateDocument> aggregateFilter =
+            BuildParkRankingItemFilter(null)
+            & Builders<RatingAggregateDocument>.Filter.In(
+                document => document.TargetId,
+                currentCategoryItemIds);
         List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(
-                BuildParkRankingItemFilter(null))
+                aggregateFilter)
             .Sort(BuildRankingSort())
             .Limit(effectiveMaxItems + 1)
             .ToListAsync(cancellationToken);

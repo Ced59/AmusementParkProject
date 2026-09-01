@@ -15,7 +15,8 @@ public interface IRatingRankingSourceChangeCoordinator
         IReadOnlyCollection<ParkItem> currentItems,
         CancellationToken cancellationToken);
 
-    Task ScheduleRebuildsAsync(
+    Task CompleteMutationAsync(
         RatingRankingMutationPreparation preparation,
+        bool sourceChanged,
         CancellationToken cancellationToken);
 }

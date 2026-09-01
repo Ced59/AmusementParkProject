@@ -309,10 +309,12 @@ public sealed class ParkRepository : IParkRepository
         document.RandomSortKey = CreateRandomSortKey();
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+
         this.ratingRankSnapshotCache.Invalidate();
-        await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
         return document.ToDomain();
     }
 
@@ -344,13 +346,18 @@ public sealed class ParkRepository : IParkRepository
 
         if (result.MatchedCount == 0)
         {
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                sourceChanged: false,
+                CancellationToken.None);
             return null;
         }
 
         this.ratingRankSnapshotCache.Invalidate();
-        await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
             rankingPreparation,
-            cancellationToken);
+            sourceChanged: true,
+            CancellationToken.None);
         return document.ToDomain();
     }
 
@@ -371,10 +378,12 @@ public sealed class ParkRepository : IParkRepository
         if (deleted)
         {
             this.ratingRankSnapshotCache.Invalidate();
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
         }
+
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: deleted,
+            CancellationToken.None);
 
         return deleted;
     }
@@ -405,14 +414,21 @@ public sealed class ParkRepository : IParkRepository
             ReturnDocument = ReturnDocument.After,
         };
 
-        ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+
         if (updated is not null)
         {
             this.ratingRankSnapshotCache.Invalidate();
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
         }
+
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: updated is not null,
+            CancellationToken.None);
 
         return updated?.ToDomain();
     }
@@ -474,12 +490,10 @@ public sealed class ParkRepository : IParkRepository
             this.ratingRankSnapshotCache.Invalidate();
         }
 
-        if (updatedCount > 0)
-        {
-            await this.rankingSourceChangeCoordinator.ScheduleRebuildsAsync(
-                rankingPreparation,
-                cancellationToken);
-        }
+        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: updatedCount > 0,
+            CancellationToken.None);
 
         return updatedCount;
     }

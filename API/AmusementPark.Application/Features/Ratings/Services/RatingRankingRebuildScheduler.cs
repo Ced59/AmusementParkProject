@@ -48,6 +48,11 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             RatingRankingSourceRevision? sourceRevision = await this.sourceRevisionRepository.GetAsync(
                 scope.Key,
                 cancellationToken);
+            if (sourceRevision is not null && !sourceRevision.IsRebuildable)
+            {
+                continue;
+            }
+
             long requestedRevision = sourceRevision?.Revision ?? 0;
             RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
                 scope.Key,
@@ -55,6 +60,10 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             bool isCovered = pointer is not null
                 && pointer.MethodologyVersion == scope.MethodologyVersion
                 && pointer.HighestPublishedSourceRevision >= requestedRevision;
+            isCovered = isCovered
+                || (sourceRevision?.CoversUnavailable(
+                    scope.MethodologyVersion,
+                    requestedRevision) ?? false);
             if (!isCovered)
             {
                 await this.ScheduleAsync(scope, requestedRevision, cancellationToken);

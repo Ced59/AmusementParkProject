@@ -7,10 +7,9 @@ using Microsoft.Extensions.Logging;
 namespace AmusementPark.Application.Features.Ratings.Services;
 
 /// <summary>
-/// Incrémente durablement les révisions des scopes avant une mutation de note
-/// ou un changement de métadonnées qui modifie les sources classables.
-/// Sur MongoDB standalone, cette écriture anticipée peut provoquer une reconstruction superflue,
-/// mais empêche qu'une mutation validée soit invisible pour le futur réconciliateur.
+/// Réserve durablement les scopes avant une mutation de note ou de métadonnées,
+/// puis ne rend leur nouvelle révision reconstructible qu'après la fin de l'écriture.
+/// Une expiration de lease récupère conservativement les mutations interrompues sur MongoDB standalone.
 /// </summary>
 public sealed class RatingRankingSourceRevisionGuard :
     IRatingRankingMutationGuard,
@@ -128,17 +127,28 @@ public sealed class RatingRankingSourceRevisionGuard :
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes,
         CancellationToken cancellationToken)
     {
-        List<RatingRankingSourceRevision> sourceRevisions = new List<RatingRankingSourceRevision>();
-        foreach (RankingScopeDefinition scope in affectedScopes
-                     .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
+        List<RankingScopeKey> begunScopes = new List<RankingScopeKey>();
+        try
         {
-            RatingRankingSourceRevision sourceRevision = await this.sourceRevisionRepository.IncrementAsync(
-                scope.Key,
-                cancellationToken);
-            sourceRevisions.Add(sourceRevision);
+            foreach (RankingScopeDefinition scope in affectedScopes
+                         .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
+            {
+                await this.sourceRevisionRepository.BeginMutationAsync(
+                    scope.Key,
+                    cancellationToken);
+                begunScopes.Add(scope.Key);
+            }
+        }
+        catch
+        {
+            await this.CompleteMutationAsync(
+                new RatingRankingMutationPreparation(begunScopes),
+                sourceChanged: false,
+                CancellationToken.None);
+            throw;
         }
 
-        return new RatingRankingMutationPreparation(sourceRevisions);
+        return new RatingRankingMutationPreparation(begunScopes);
     }
 
     private static IReadOnlyDictionary<string, Park> IndexParks(
@@ -175,22 +185,41 @@ public sealed class RatingRankingSourceRevisionGuard :
                 item.AttractionDetails?.Status);
     }
 
-    public async Task ScheduleRebuildsAsync(
+    public async Task CompleteMutationAsync(
         RatingRankingMutationPreparation preparation,
+        bool sourceChanged,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(preparation);
-        foreach (RatingRankingSourceRevision sourceRevision in preparation.SourceRevisions)
+        List<RatingRankingSourceRevision> rebuildableRevisions = new List<RatingRankingSourceRevision>();
+        foreach (RankingScopeKey scopeKey in preparation.ScopeKeys)
+        {
+            try
+            {
+                RatingRankingSourceRevision sourceRevision =
+                    await this.sourceRevisionRepository.CompleteMutationAsync(
+                        scopeKey,
+                        sourceChanged,
+                        cancellationToken);
+                if (sourceRevision.IsRebuildable && sourceRevision.Revision > 0)
+                {
+                    rebuildableRevisions.Add(sourceRevision);
+                }
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to settle the ranking source mutation for scope {ScopeKey}; its durable lease will be recovered.",
+                    scopeKey.Value);
+            }
+        }
+
+        foreach (RatingRankingSourceRevision sourceRevision in rebuildableRevisions)
         {
             try
             {
                 await this.rebuildScheduler.ScheduleAsync(sourceRevision, cancellationToken);
-            }
-            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-            {
-                this.logger.LogWarning(
-                    "Ranking rebuild scheduling was cancelled after its source revision was persisted; periodic reconciliation will recover it.");
-                break;
             }
             catch (Exception exception)
             {
