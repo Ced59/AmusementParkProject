@@ -74,6 +74,16 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             return ApplicationResult<UserRatingResult>.Failure(RatingApplicationErrors.TargetUnavailable());
         }
 
+        UserRating? retainedRating = null;
+        if (metadata.TargetType == RatingTargetType.ParkItem)
+        {
+            retainedRating = await this.ratingRepository.GetUserRatingAsync(
+                command.UserId.Trim(),
+                metadata.TargetType,
+                metadata.TargetId,
+                cancellationToken);
+        }
+
         DateTime nowUtc = DateTime.UtcNow;
         UserRating rating = new UserRating
         {
@@ -96,6 +106,7 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
         await this.rankingMutationGuard.PrepareMutationAsync(
             metadata.TargetType,
             metadata.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
             cancellationToken);
         UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
             rating,
@@ -178,20 +189,20 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             this.parkRepository,
             this.parkItemRepository,
             cancellationToken);
-        ParkItemCategory? parkItemCategory = metadata?.ParkItemCategory;
-        if (command.TargetType == RatingTargetType.ParkItem && !parkItemCategory.HasValue)
+        UserRating? retainedRating = null;
+        if (command.TargetType == RatingTargetType.ParkItem)
         {
-            UserRating? retainedRating = await this.ratingRepository.GetUserRatingAsync(
+            retainedRating = await this.ratingRepository.GetUserRatingAsync(
                 userId,
                 command.TargetType,
                 targetId,
                 cancellationToken);
-            parkItemCategory = retainedRating?.ParkItemCategory;
         }
 
         await this.rankingMutationGuard.PrepareMutationAsync(
             command.TargetType,
-            parkItemCategory,
+            metadata?.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
             cancellationToken);
         RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,

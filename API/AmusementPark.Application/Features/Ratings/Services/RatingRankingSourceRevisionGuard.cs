@@ -24,11 +24,20 @@ public sealed class RatingRankingSourceRevisionGuard : IRatingRankingMutationGua
 
     public async Task PrepareMutationAsync(
         RatingTargetType targetType,
-        ParkItemCategory? parkItemCategory,
+        ParkItemCategory? currentParkItemCategory,
+        ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken)
     {
+        IReadOnlyCollection<ParkItemCategory?> affectedCategories = new[]
+        {
+            currentParkItemCategory,
+            previousParkItemCategory,
+        }
+            .Distinct()
+            .ToArray();
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes = this.scopeRegistry.Definitions
-            .Where(definition => definition.IsAffectedByRatingMutation(targetType, parkItemCategory))
+            .Where(definition => affectedCategories.Any(
+                category => definition.IsAffectedByRatingMutation(targetType, category)))
             .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal)
             .ToArray();
 

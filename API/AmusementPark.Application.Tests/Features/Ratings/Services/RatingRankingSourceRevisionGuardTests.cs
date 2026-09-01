@@ -13,7 +13,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
     private static readonly DateTime NowUtc = new DateTime(2026, 9, 1, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public async Task PrepareMutationAsync_WhenParkItemChanges_ShouldInvalidateCategoryAndComposedParkScopes()
+    public async Task PrepareMutationAsync_WhenParkItemCategoryChanged_ShouldInvalidateBothCategoriesAndParkScope()
     {
         List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
         Mock<IRatingRankingSourceRevisionRepository> revisions =
@@ -30,10 +30,11 @@ public sealed class RatingRankingSourceRevisionGuardTests
         await guard.PrepareMutationAsync(
             RatingTargetType.ParkItem,
             ParkItemCategory.Attraction,
+            ParkItemCategory.Show,
             CancellationToken.None);
 
         Assert.Equal(
-            new[] { "park-items:category:attraction", "parks:global" },
+            new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
             incrementedScopes.Select(static scopeKey => scopeKey.Value));
         revisions.VerifyAll();
     }
@@ -52,6 +53,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         await Assert.ThrowsAsync<InvalidOperationException>(() => guard.PrepareMutationAsync(
             RatingTargetType.ParkItem,
             ParkItemCategory.Attraction,
+            null,
             CancellationToken.None));
 
         revisions.VerifyAll();
@@ -68,7 +70,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             .ReturnsAsync(new RatingRankingSourceRevision(globalScopeKey, 3, NowUtc));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
-        await guard.PrepareMutationAsync(RatingTargetType.Park, null, CancellationToken.None);
+        await guard.PrepareMutationAsync(RatingTargetType.Park, null, null, CancellationToken.None);
 
         revisions.VerifyAll();
     }

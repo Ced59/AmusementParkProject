@@ -80,6 +80,20 @@ public sealed class UpsertUserRatingCommandHandlerTests
 
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
+            .Setup(repository => repository.GetUserRatingAsync(
+                "user-1",
+                RatingTargetType.ParkItem,
+                "item-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UserRating
+            {
+                UserId = "user-1",
+                TargetType = RatingTargetType.ParkItem,
+                TargetId = "item-1",
+                ParkId = "park-1",
+                ParkItemCategory = ParkItemCategory.Show,
+            });
+        ratingRepository
             .Setup(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
                 It.IsAny<UserRating>(),
                 It.IsAny<RatingAggregateTarget>(),
@@ -108,6 +122,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
                 ParkItemCategory.Attraction,
+                ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
@@ -174,6 +189,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.Park,
+                null,
                 null,
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Mongo unavailable"));
