@@ -48,7 +48,7 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             ? update
             : update.Set(
                 BuildMutationRecoveryTargetField(mutationLease.Token),
-                recoveryTarget.TargetId);
+                ToDocument(recoveryTarget));
     }
 
     public static FilterDefinition<RatingRankingSourceRevisionDocument> BuildMutationLeaseFilter(
@@ -94,7 +94,7 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
 
     public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildRecoverMutationUpdate(
         RatingRankingMutationLease mutationLease,
-        string? recoveredParkItemTargetId,
+        RatingRankingMutationRecoveryTarget? recoveredTarget,
         DateTime nowUtc)
     {
         UpdateDefinition<RatingRankingSourceRevisionDocument> update =
@@ -103,11 +103,34 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             .Unset(BuildMutationRecoveryTargetField(mutationLease.Token))
             .Inc(document => document.Revision, 1)
             .Set(document => document.UpdatedAt, nowUtc);
-        return string.IsNullOrWhiteSpace(recoveredParkItemTargetId)
+        return recoveredTarget is null
             ? update
-            : update.AddToSet(
-                document => document.RecoveredParkItemTargetIds,
-                recoveredParkItemTargetId.Trim());
+            : update.Set(
+                BuildRecoveredMutationTargetField(mutationLease.Token),
+                ToDocument(recoveredTarget));
+    }
+
+    public static FilterDefinition<RatingRankingSourceRevisionDocument> BuildRecoveredMutationFilter(
+        RankingScopeKey scopeKey,
+        RatingRankingRecoveredMutation recoveredMutation)
+    {
+        ArgumentNullException.ThrowIfNull(recoveredMutation);
+        return BuildScopeFilter(scopeKey)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
+                BuildRecoveredMutationTargetField(recoveredMutation.RecoveryToken),
+                ToDocument(new RatingRankingMutationRecoveryTarget(
+                    recoveredMutation.TargetType,
+                    recoveredMutation.TargetId)));
+    }
+
+    public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildAcknowledgeRecoveredMutationUpdate(
+        RatingRankingRecoveredMutation recoveredMutation,
+        DateTime nowUtc)
+    {
+        ArgumentNullException.ThrowIfNull(recoveredMutation);
+        return Builders<RatingRankingSourceRevisionDocument>.Update
+            .Unset(BuildRecoveredMutationTargetField(recoveredMutation.RecoveryToken))
+            .Set(document => document.UpdatedAt, nowUtc);
     }
 
     public static FilterDefinition<RatingRankingSourceRevisionDocument> BuildPendingMutationFilter(
@@ -136,7 +159,27 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             throw new ArgumentException("The ranking mutation lease token is invalid.", nameof(token));
         }
 
-        return $"mutationRecoveryParkItemTargetIds.{token}";
+        return $"mutationRecoveryTargets.{token}";
+    }
+
+    private static string BuildRecoveredMutationTargetField(string token)
+    {
+        if (!Guid.TryParseExact(token, "N", out _))
+        {
+            throw new ArgumentException("The ranking recovery token is invalid.", nameof(token));
+        }
+
+        return $"recoveredMutationTargets.{token}";
+    }
+
+    private static RatingRankingMutationRecoveryTargetDocument ToDocument(
+        RatingRankingMutationRecoveryTarget recoveryTarget)
+    {
+        return new RatingRankingMutationRecoveryTargetDocument
+        {
+            TargetType = recoveryTarget.TargetType.ToString(),
+            TargetId = recoveryTarget.TargetId,
+        };
     }
 
     private static void EnsureScopeMatches(

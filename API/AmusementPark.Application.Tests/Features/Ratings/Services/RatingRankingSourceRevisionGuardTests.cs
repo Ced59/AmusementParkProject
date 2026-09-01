@@ -122,7 +122,12 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions
-            .Setup(repository => repository.BeginMutationAsync(globalScopeKey, CancellationToken.None))
+            .Setup(repository => repository.BeginMutationAsync(
+                globalScopeKey,
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.TargetType == RatingTargetType.Park
+                    && target.TargetId == "park-1"),
+                CancellationToken.None))
             .ReturnsAsync(CreateLease(globalScopeKey));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 

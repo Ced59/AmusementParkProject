@@ -51,9 +51,8 @@ public sealed class RatingRankingSourceRevisionGuard :
                 category => definition.IsAffectedByRatingMutation(targetType, category)))
             .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal)
             .ToArray();
-        RatingRankingMutationRecoveryTarget? recoveryTarget = targetType == RatingTargetType.ParkItem
-            ? new RatingRankingMutationRecoveryTarget(targetType, targetId)
-            : null;
+        RatingRankingMutationRecoveryTarget recoveryTarget =
+            new RatingRankingMutationRecoveryTarget(targetType, targetId);
         return await this.PrepareScopesAsync(
             affectedScopes,
             recoveryTarget,

@@ -19,9 +19,9 @@ public sealed class RatingRankingRebuildReconciliationBackgroundServiceTests
         Mock<IRatingRankingRecoveryCoordinator> recoveryCoordinator =
             new Mock<IRatingRankingRecoveryCoordinator>(MockBehavior.Strict);
         recoveryCoordinator
-            .Setup(value => value.ReconcileRecoveredParkItemMutationsAsync(
+            .Setup(value => value.ReconcileRecoveredRatingMutationsAsync(
                 It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         scheduler
             .Setup(value => value.ScheduleOutstandingAsync(It.IsAny<CancellationToken>()))
             .Callback(() => reconciled.TrySetResult(true))
@@ -44,7 +44,41 @@ public sealed class RatingRankingRebuildReconciliationBackgroundServiceTests
             value => value.ScheduleOutstandingAsync(It.IsAny<CancellationToken>()),
             Times.Once);
         recoveryCoordinator.Verify(
-            value => value.ReconcileRecoveredParkItemMutationsAsync(It.IsAny<CancellationToken>()),
+            value => value.ReconcileRecoveredRatingMutationsAsync(It.IsAny<CancellationToken>()),
             Times.Once);
+    }
+
+    [Fact]
+    public async Task StartAsync_WhenRecoveryIsIncomplete_ShouldNotPublishOutstandingSnapshots()
+    {
+        TaskCompletionSource<bool> recoveryAttempted = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        Mock<IRatingRankingRebuildScheduler> scheduler =
+            new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
+        Mock<IRatingRankingRecoveryCoordinator> recoveryCoordinator =
+            new Mock<IRatingRankingRecoveryCoordinator>(MockBehavior.Strict);
+        recoveryCoordinator
+            .Setup(value => value.ReconcileRecoveredRatingMutationsAsync(
+                It.IsAny<CancellationToken>()))
+            .Callback(() => recoveryAttempted.TrySetResult(true))
+            .ReturnsAsync(false);
+        ServiceCollection services = new ServiceCollection();
+        services.AddScoped(_ => recoveryCoordinator.Object);
+        services.AddScoped(_ => scheduler.Object);
+        using ServiceProvider provider = services.BuildServiceProvider();
+        RatingRankingRebuildReconciliationBackgroundService service =
+            new RatingRankingRebuildReconciliationBackgroundService(
+                provider.GetRequiredService<IServiceScopeFactory>(),
+                NullLogger<RatingRankingRebuildReconciliationBackgroundService>.Instance,
+                TimeProvider.System);
+
+        await service.StartAsync(CancellationToken.None);
+        await recoveryAttempted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        await service.StopAsync(CancellationToken.None);
+
+        recoveryCoordinator.Verify(
+            value => value.ReconcileRecoveredRatingMutationsAsync(It.IsAny<CancellationToken>()),
+            Times.Once);
+        scheduler.VerifyNoOtherCalls();
     }
 }

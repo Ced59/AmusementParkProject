@@ -114,6 +114,139 @@ public sealed class RatingRepository : IRatingRepository
         return new UserRatingDeletionResult(true, aggregate);
     }
 
+    public async Task RepairAggregateAsync(
+        RatingTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken)
+    {
+        if (targetType is not RatingTargetType.Park and not RatingTargetType.ParkItem)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetType));
+        }
+
+        if (string.IsNullOrWhiteSpace(targetId))
+        {
+            throw new ArgumentException("A rating aggregate target identifier is required.", nameof(targetId));
+        }
+
+        string normalizedTargetId = targetId.Trim();
+        RatingAggregateTarget? repairTarget;
+        if (targetType == RatingTargetType.Park)
+        {
+            repairTarget = BuildRepairAggregateTarget(
+                targetType,
+                normalizedTargetId,
+                null,
+                null,
+                null);
+        }
+        else
+        {
+            ParkItemDocument? parkItem = await this.parkItemsCollection
+                .Find(document => document.Id == normalizedTargetId)
+                .FirstOrDefaultAsync(cancellationToken);
+            UserRatingDocument? retainedRating = null;
+            RatingAggregateDocument? retainedAggregate = null;
+            if (parkItem is null)
+            {
+                FilterDefinition<UserRatingDocument> ratingFilter =
+                    Builders<UserRatingDocument>.Filter.Eq(document => document.TargetType, targetType)
+                    & Builders<UserRatingDocument>.Filter.Eq(document => document.TargetId, normalizedTargetId);
+                retainedRating = await this.userRatingsCollection
+                    .Find(ratingFilter)
+                    .SortByDescending(document => document.UpdatedAt)
+                    .FirstOrDefaultAsync(cancellationToken);
+                if (retainedRating is null)
+                {
+                    retainedAggregate = await this.ratingAggregatesCollection
+                        .Find(BuildAggregateTargetFilter(targetType, normalizedTargetId))
+                        .FirstOrDefaultAsync(cancellationToken);
+                }
+            }
+            repairTarget = BuildRepairAggregateTarget(
+                targetType,
+                normalizedTargetId,
+                parkItem,
+                retainedRating,
+                retainedAggregate);
+        }
+        if (repairTarget is not null)
+        {
+            await this.aggregateSynchronizer.RecalculateAsync(repairTarget, cancellationToken);
+        }
+    }
+
+    internal static RatingAggregateTarget? BuildRepairAggregateTarget(
+        RatingTargetType targetType,
+        string targetId,
+        ParkItemDocument? parkItem,
+        UserRatingDocument? retainedRating,
+        RatingAggregateDocument? retainedAggregate)
+    {
+        if (string.IsNullOrWhiteSpace(targetId))
+        {
+            throw new ArgumentException("A rating aggregate target identifier is required.", nameof(targetId));
+        }
+
+        string normalizedTargetId = targetId.Trim();
+        if (targetType == RatingTargetType.Park)
+        {
+            return new RatingAggregateTarget(
+                targetType,
+                normalizedTargetId,
+                normalizedTargetId,
+                null,
+                null);
+        }
+
+        if (targetType != RatingTargetType.ParkItem)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetType));
+        }
+
+        if (parkItem is not null)
+        {
+            return new RatingAggregateTarget(
+                targetType,
+                normalizedTargetId,
+                NormalizeRepairParkId(parkItem.ParkId),
+                parkItem.Category,
+                parkItem.Type);
+        }
+
+        if (retainedRating is not null)
+        {
+            return new RatingAggregateTarget(
+                targetType,
+                normalizedTargetId,
+                NormalizeRepairParkId(retainedRating.ParkId),
+                retainedRating.ParkItemCategory,
+                retainedRating.ParkItemType);
+        }
+
+        if (retainedAggregate is null)
+        {
+            return null;
+        }
+
+        return new RatingAggregateTarget(
+            targetType,
+            normalizedTargetId,
+            NormalizeRepairParkId(retainedAggregate.PendingParkId ?? retainedAggregate.ParkId),
+            retainedAggregate.PendingParkItemCategory ?? retainedAggregate.ParkItemCategory,
+            retainedAggregate.PendingParkItemType ?? retainedAggregate.ParkItemType);
+    }
+
+    private static string NormalizeRepairParkId(string? parkId)
+    {
+        if (string.IsNullOrWhiteSpace(parkId))
+        {
+            throw new InvalidOperationException("Rating aggregate recovery metadata has no park identifier.");
+        }
+
+        return parkId.Trim();
+    }
+
     public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
     {
         FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId)

@@ -39,10 +39,14 @@ internal sealed class RatingRankingRebuildReconciliationBackgroundService : Back
                 using IServiceScope scope = this.serviceScopeFactory.CreateScope();
                 IRatingRankingRecoveryCoordinator recoveryCoordinator =
                     scope.ServiceProvider.GetRequiredService<IRatingRankingRecoveryCoordinator>();
-                await recoveryCoordinator.ReconcileRecoveredParkItemMutationsAsync(stoppingToken);
-                IRatingRankingRebuildScheduler scheduler =
-                    scope.ServiceProvider.GetRequiredService<IRatingRankingRebuildScheduler>();
-                await scheduler.ScheduleOutstandingAsync(stoppingToken);
+                bool recoveryCompleted =
+                    await recoveryCoordinator.ReconcileRecoveredRatingMutationsAsync(stoppingToken);
+                if (recoveryCompleted)
+                {
+                    IRatingRankingRebuildScheduler scheduler =
+                        scope.ServiceProvider.GetRequiredService<IRatingRankingRebuildScheduler>();
+                    await scheduler.ScheduleOutstandingAsync(stoppingToken);
+                }
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {

@@ -169,6 +169,40 @@ public sealed class RatingRankingRebuildSchedulerTests
     }
 
     [Fact]
+    public async Task ScheduleIfOutstandingAsync_WhenRecoveryEventIsPending_ShouldSkipJobWithoutSnapshotRead()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            12,
+            NowUtc,
+            RecoveredMutations: new[]
+            {
+                new RatingRankingRecoveredMutation(
+                    1.ToString("x32"),
+                    RatingTargetType.Park,
+                    "park-1"),
+            });
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+
+        jobs.VerifyNoOtherCalls();
+        revisions.VerifyNoOtherCalls();
+        snapshots.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ScheduleOutstandingAsync_WhenNoRevisionOrPointerExists_ShouldScheduleInitialRevisionZero()
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;

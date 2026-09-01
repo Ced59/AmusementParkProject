@@ -60,10 +60,10 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
                 NowUtc,
                 NowUtc.Add(RatingRankingSourceRevisionRepository.MutationLeaseDuration)));
 
-        Assert.Equal(
-            "item-1",
-            update["$set"].AsBsonDocument[
-                $"mutationRecoveryParkItemTargetIds.{mutationLease.Token}"].AsString);
+        BsonDocument persistedTarget = update["$set"].AsBsonDocument[
+            $"mutationRecoveryTargets.{mutationLease.Token}"].AsBsonDocument;
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), persistedTarget["targetType"].AsString);
+        Assert.Equal("item-1", persistedTarget["targetId"].AsString);
     }
 
     [Fact]
@@ -75,17 +75,43 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         BsonDocument update = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildRecoverMutationUpdate(
                 mutationLease,
-                " item-1 ",
+                new RatingRankingMutationRecoveryTarget(RatingTargetType.ParkItem, " item-1 "),
                 NowUtc));
 
         Assert.True(update["$unset"].AsBsonDocument.Contains(
             $"mutationLeases.{mutationLease.Token}"));
         Assert.True(update["$unset"].AsBsonDocument.Contains(
-            $"mutationRecoveryParkItemTargetIds.{mutationLease.Token}"));
+            $"mutationRecoveryTargets.{mutationLease.Token}"));
         Assert.Equal(1, update["$inc"].AsBsonDocument["revision"].AsInt64);
-        Assert.Equal(
-            "item-1",
-            update["$addToSet"].AsBsonDocument["recoveredParkItemTargetIds"].AsString);
+        BsonDocument recoveredTarget = update["$set"].AsBsonDocument[
+            $"recoveredMutationTargets.{mutationLease.Token}"].AsBsonDocument;
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), recoveredTarget["targetType"].AsString);
+        Assert.Equal("item-1", recoveredTarget["targetId"].AsString);
+    }
+
+    [Fact]
+    public void BuildAcknowledgeRecoveredMutationUpdate_ShouldRemoveOnlyTheExactRecoveryToken()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingRecoveredMutation recoveredMutation = new RatingRankingRecoveredMutation(
+            CreateLease(scopeKey, 7).Token,
+            RatingTargetType.ParkItem,
+            "item-1");
+
+        BsonDocument filter = Render(
+            RatingRankingSourceRevisionMongoDefinitions.BuildRecoveredMutationFilter(
+                scopeKey,
+                recoveredMutation));
+        BsonDocument update = Render(
+            RatingRankingSourceRevisionMongoDefinitions.BuildAcknowledgeRecoveredMutationUpdate(
+                recoveredMutation,
+                NowUtc));
+
+        string eventField = $"recoveredMutationTargets.{recoveredMutation.RecoveryToken}";
+        Assert.Equal(scopeKey.Value, filter["_id"].AsString);
+        Assert.Equal("item-1", filter[eventField].AsBsonDocument["targetId"].AsString);
+        Assert.True(update["$unset"].AsBsonDocument.Contains(eventField));
+        Assert.Equal(NowUtc, update["$set"].AsBsonDocument["updatedAt"].ToUniversalTime());
     }
 
     [Fact]

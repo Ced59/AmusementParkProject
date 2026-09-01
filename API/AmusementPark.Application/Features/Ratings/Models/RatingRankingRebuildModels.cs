@@ -72,7 +72,7 @@ public sealed record RatingRankingMutationRecoveryTarget
         RatingTargetType targetType,
         string targetId)
     {
-        if (targetType != RatingTargetType.ParkItem)
+        if (targetType is not RatingTargetType.Park and not RatingTargetType.ParkItem)
         {
             throw new ArgumentOutOfRangeException(nameof(targetType));
         }
@@ -85,6 +85,32 @@ public sealed record RatingRankingMutationRecoveryTarget
         this.TargetType = targetType;
         this.TargetId = targetId.Trim();
     }
+
+    public RatingTargetType TargetType { get; }
+
+    public string TargetId { get; }
+}
+
+public sealed record RatingRankingRecoveredMutation
+{
+    public RatingRankingRecoveredMutation(
+        string recoveryToken,
+        RatingTargetType targetType,
+        string targetId)
+    {
+        if (!Guid.TryParseExact(recoveryToken, "N", out Guid parsedToken))
+        {
+            throw new ArgumentException("The ranking recovery token is invalid.", nameof(recoveryToken));
+        }
+
+        RatingRankingMutationRecoveryTarget recoveryTarget =
+            new RatingRankingMutationRecoveryTarget(targetType, targetId);
+        this.RecoveryToken = parsedToken.ToString("N");
+        this.TargetType = recoveryTarget.TargetType;
+        this.TargetId = recoveryTarget.TargetId;
+    }
+
+    public string RecoveryToken { get; }
 
     public RatingTargetType TargetType { get; }
 

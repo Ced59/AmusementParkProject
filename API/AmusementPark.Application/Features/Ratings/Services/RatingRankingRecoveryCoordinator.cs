@@ -9,66 +9,107 @@ namespace AmusementPark.Application.Features.Ratings.Services;
 
 public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoordinator
 {
+    private readonly IRatingRepository ratingRepository;
+    private readonly IRatingRankProvider ratingRankProvider;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRankingRebuildScheduler rebuildScheduler;
     private readonly ILogger<RatingRankingRecoveryCoordinator> logger;
 
     public RatingRankingRecoveryCoordinator(
+        IRatingRepository ratingRepository,
+        IRatingRankProvider ratingRankProvider,
         IParkItemRepository parkItemRepository,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRatingRankingRebuildScheduler rebuildScheduler,
         ILogger<RatingRankingRecoveryCoordinator> logger)
     {
+        this.ratingRepository = ratingRepository;
+        this.ratingRankProvider = ratingRankProvider;
         this.parkItemRepository = parkItemRepository;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.rebuildScheduler = rebuildScheduler;
         this.logger = logger;
     }
 
-    public async Task ReconcileRecoveredParkItemMutationsAsync(
+    public async Task<bool> ReconcileRecoveredRatingMutationsAsync(
         CancellationToken cancellationToken)
     {
         RankingScopeKey globalScopeKey = CanonicalRankingScopes.GlobalParks.Key;
         RatingRankingSourceRevision? globalRevision = await this.sourceRevisionRepository.GetAsync(
             globalScopeKey,
             cancellationToken);
-        IReadOnlyCollection<string> recoveredTargetIds =
-            globalRevision?.RecoveredParkItemTargetIds ?? Array.Empty<string>();
-        foreach (string targetId in recoveredTargetIds)
+        IReadOnlyCollection<RatingRankingRecoveredMutation> recoveredMutations =
+            globalRevision?.RecoveredMutations ?? Array.Empty<RatingRankingRecoveredMutation>();
+        bool allRecovered = true;
+        foreach (RatingRankingRecoveredMutation recoveredMutation in recoveredMutations)
         {
             try
             {
-                ParkItem? parkItem = await this.parkItemRepository.GetByIdAsync(
-                    targetId,
-                    false,
+                await this.ratingRepository.RepairAggregateAsync(
+                    recoveredMutation.TargetType,
+                    recoveredMutation.TargetId,
                     cancellationToken);
-                RankingScopeDefinition? categoryScope = parkItem is null
-                    ? null
-                    : CanonicalRankingScopes.PublicItemCategories.SingleOrDefault(
-                        definition => definition.Filter.ParkItemCategory == parkItem.Category);
-                if (categoryScope is not null)
+                this.ratingRankProvider.Invalidate();
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                allRecovered = false;
+                this.logger.LogError(
+                    exception,
+                    "Unable to reconcile recovered rating mutation {RecoveryToken} for {TargetType} target {TargetId}.",
+                    recoveredMutation.RecoveryToken,
+                    recoveredMutation.TargetType,
+                    recoveredMutation.TargetId);
+            }
+        }
+
+        if (!allRecovered)
+        {
+            return false;
+        }
+
+        foreach (RatingRankingRecoveredMutation recoveredMutation in recoveredMutations)
+        {
+            try
+            {
+                if (recoveredMutation.TargetType == RatingTargetType.ParkItem)
                 {
-                    RatingRankingMutationLease lease =
-                        await this.sourceRevisionRepository.BeginMutationAsync(
-                            categoryScope.Key,
-                            cancellationToken);
-                    RatingRankingSourceRevision categoryRevision =
-                        await this.sourceRevisionRepository.CompleteMutationAsync(
-                            lease,
-                            sourceChanged: true,
-                            cancellationToken);
-                    if (categoryRevision.IsRebuildable)
+                    ParkItem? parkItem = await this.parkItemRepository.GetByIdAsync(
+                        recoveredMutation.TargetId,
+                        false,
+                        cancellationToken);
+                    RankingScopeDefinition? categoryScope = parkItem is null
+                        ? null
+                        : CanonicalRankingScopes.PublicItemCategories.SingleOrDefault(
+                            definition => definition.Filter.ParkItemCategory == parkItem.Category);
+                    if (categoryScope is not null)
                     {
-                        await this.rebuildScheduler.ScheduleIfOutstandingAsync(
-                            categoryRevision,
-                            cancellationToken);
+                        RatingRankingMutationLease lease =
+                            await this.sourceRevisionRepository.BeginMutationAsync(
+                                categoryScope.Key,
+                                cancellationToken);
+                        RatingRankingSourceRevision categoryRevision =
+                            await this.sourceRevisionRepository.CompleteMutationAsync(
+                                lease,
+                                sourceChanged: true,
+                                cancellationToken);
+                        if (categoryRevision.IsRebuildable)
+                        {
+                            await this.rebuildScheduler.ScheduleIfOutstandingAsync(
+                                categoryRevision,
+                                cancellationToken);
+                        }
                     }
                 }
 
-                await this.sourceRevisionRepository.AcknowledgeRecoveredParkItemTargetAsync(
+                await this.sourceRevisionRepository.AcknowledgeRecoveredMutationAsync(
                     globalScopeKey,
-                    targetId,
+                    recoveredMutation,
                     cancellationToken);
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -77,11 +118,16 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
             }
             catch (Exception exception)
             {
+                allRecovered = false;
                 this.logger.LogError(
                     exception,
-                    "Unable to reconcile recovered park-item ranking mutation for target {TargetId}.",
-                    targetId);
+                    "Unable to finalize recovered rating mutation {RecoveryToken} for {TargetType} target {TargetId}.",
+                    recoveredMutation.RecoveryToken,
+                    recoveredMutation.TargetType,
+                    recoveredMutation.TargetId);
             }
         }
+
+        return allRecovered;
     }
 }

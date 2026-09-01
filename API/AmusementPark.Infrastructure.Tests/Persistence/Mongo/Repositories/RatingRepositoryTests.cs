@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -415,6 +416,80 @@ public sealed class RatingRepositoryTests
         Assert.Equal(
             "$ratingAggregate",
             pipeline[replaceRootIndex]["$replaceRoot"].AsBsonDocument["newRoot"].AsString);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenParkItemExists_ShouldUseCurrentParkItemMetadata()
+    {
+        ParkItemDocument parkItem = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = " park-current ",
+            Category = ParkItemCategory.Hotel,
+            Type = ParkItemType.Hotel,
+        };
+        UserRatingDocument staleRating = new UserRatingDocument
+        {
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-old",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+        };
+
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            parkItem,
+            staleRating,
+            null);
+
+        Assert.NotNull(result);
+        Assert.Equal("item-1", result.TargetId);
+        Assert.Equal("park-current", result.ParkId);
+        Assert.Equal(ParkItemCategory.Hotel, result.ParkItemCategory);
+        Assert.Equal(ParkItemType.Hotel, result.ParkItemType);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenDeletedTargetHasNoRating_ShouldUsePendingAggregateMetadata()
+    {
+        RatingAggregateDocument aggregate = new RatingAggregateDocument
+        {
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-old",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            PendingParkId = " park-pending ",
+            PendingParkItemCategory = ParkItemCategory.Show,
+            PendingParkItemType = ParkItemType.Show,
+        };
+
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            "item-1",
+            null,
+            null,
+            aggregate);
+
+        Assert.NotNull(result);
+        Assert.Equal("park-pending", result.ParkId);
+        Assert.Equal(ParkItemCategory.Show, result.ParkItemCategory);
+        Assert.Equal(ParkItemType.Show, result.ParkItemType);
+    }
+
+    [Fact]
+    public void BuildRepairAggregateTarget_WhenParkItemHasNoRemainingSource_ShouldReturnNull()
+    {
+        RatingAggregateTarget? result = RatingRepository.BuildRepairAggregateTarget(
+            RatingTargetType.ParkItem,
+            "item-1",
+            null,
+            null,
+            null);
+
+        Assert.Null(result);
     }
 
     private static UserRatingListItemResult CreateRating(

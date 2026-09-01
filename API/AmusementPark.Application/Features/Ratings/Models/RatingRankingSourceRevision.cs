@@ -11,9 +11,10 @@ public sealed record RatingRankingSourceRevision(
     RatingMethodologyVersion? UnavailableMethodologyVersion = null,
     long? HighestUnavailableSourceRevision = null,
     string? UnavailableReasonCode = null,
-    IReadOnlyCollection<string>? RecoveredParkItemTargetIds = null)
+    IReadOnlyCollection<RatingRankingRecoveredMutation>? RecoveredMutations = null)
 {
-    public bool IsRebuildable => this.PendingMutationCount == 0;
+    public bool IsRebuildable => this.PendingMutationCount == 0
+        && (this.RecoveredMutations?.Count ?? 0) == 0;
 
     public bool CoversUnavailable(
         RatingMethodologyVersion methodologyVersion,

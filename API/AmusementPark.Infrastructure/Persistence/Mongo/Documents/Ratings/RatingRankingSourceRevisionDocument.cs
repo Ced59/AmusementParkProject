@@ -23,13 +23,13 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonIgnoreIfDefault]
     public Dictionary<string, DateTime> MutationLeases { get; set; } = new();
 
-    [BsonElement("mutationRecoveryParkItemTargetIds")]
+    [BsonElement("mutationRecoveryTargets")]
     [BsonIgnoreIfDefault]
-    public Dictionary<string, string> MutationRecoveryParkItemTargetIds { get; set; } = new();
+    public Dictionary<string, RatingRankingMutationRecoveryTargetDocument> MutationRecoveryTargets { get; set; } = new();
 
-    [BsonElement("recoveredParkItemTargetIds")]
+    [BsonElement("recoveredMutationTargets")]
     [BsonIgnoreIfDefault]
-    public List<string> RecoveredParkItemTargetIds { get; set; } = new();
+    public Dictionary<string, RatingRankingMutationRecoveryTargetDocument> RecoveredMutationTargets { get; set; } = new();
 
     [BsonElement("unavailableMethodologyVersion")]
     [BsonIgnoreIfNull]
@@ -42,4 +42,13 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonElement("unavailableReasonCode")]
     [BsonIgnoreIfNull]
     public string? UnavailableReasonCode { get; set; }
+}
+
+public sealed class RatingRankingMutationRecoveryTargetDocument
+{
+    [BsonElement("targetType")]
+    public string TargetType { get; set; } = string.Empty;
+
+    [BsonElement("targetId")]
+    public string TargetId { get; set; } = string.Empty;
 }

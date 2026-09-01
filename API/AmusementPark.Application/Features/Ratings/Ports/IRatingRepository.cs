@@ -36,6 +36,11 @@ public interface IRatingRepository
         string targetId,
         CancellationToken cancellationToken);
 
+    Task RepairAggregateAsync(
+        RatingTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken);
+
     Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
 
     Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken);

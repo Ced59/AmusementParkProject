@@ -30,8 +30,8 @@ public interface IRatingRankingSourceRevisionRepository
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken);
 
-    Task<bool> AcknowledgeRecoveredParkItemTargetAsync(
+    Task<bool> AcknowledgeRecoveredMutationAsync(
         RankingScopeKey scopeKey,
-        string targetId,
+        RatingRankingRecoveredMutation recoveredMutation,
         CancellationToken cancellationToken);
 }
