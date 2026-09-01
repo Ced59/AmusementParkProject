@@ -96,8 +96,9 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
             if (existing.Status == RankingSnapshotStatus.Failed)
             {
-                int nextBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
-                    existingDocument!.BuildAttempt) + 1;
+                int observedBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
+                    existingDocument!.BuildAttempt);
+                int nextBuildAttempt = observedBuildAttempt + 1;
                 UpdateDefinition<RankingSnapshotHeaderDocument> restartUpdate =
                     Builders<RankingSnapshotHeaderDocument>.Update
                         .Set(item => item.Status, RankingSnapshotStatus.Building)
@@ -109,7 +110,9 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                         .Unset(item => item.FailureCode)
                         .Unset(item => item.ReconciledPointerVersion);
                 RankingSnapshotHeaderDocument? restartedDocument = await this.headers.FindOneAndUpdateAsync(
-                    RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(existing.Id),
+                    RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
+                        existing.Id,
+                        observedBuildAttempt),
                     restartUpdate,
                     new FindOneAndUpdateOptions<RankingSnapshotHeaderDocument>
                     {
@@ -1043,12 +1046,11 @@ internal static class RankingSnapshotMongoDefinitions
     }
 
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildFailedHeaderRestartFilter(
-        RankingSnapshotId snapshotId)
+        RankingSnapshotId snapshotId,
+        int expectedBuildAttempt)
     {
         return Builders<RankingSnapshotHeaderDocument>.Filter.And(
-            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
-                document => document.Id,
-                snapshotId.Value),
+            BuildHeaderAttemptFilter(snapshotId, expectedBuildAttempt),
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
                 RankingSnapshotStatus.Failed));

@@ -33,10 +33,27 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     public void BuildFailedHeaderRestartFilter_ShouldClaimOnlyTheFailedAttempt()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
-            RankingSnapshotId.Parse("snapshot-failed")));
+            RankingSnapshotId.Parse("snapshot-failed"),
+            expectedBuildAttempt: 3));
 
         Assert.Equal("snapshot-failed", rendered["_id"].AsString);
         Assert.Equal(nameof(RankingSnapshotStatus.Failed), rendered["status"].AsString);
+        Assert.Equal(3, rendered["buildAttempt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildFailedHeaderRestartFilter_ShouldFenceALegacyFirstAttempt()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
+            RankingSnapshotId.Parse("snapshot-legacy"),
+            expectedBuildAttempt: 1));
+
+        Assert.Equal("snapshot-legacy", rendered["_id"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Failed), rendered["status"].AsString);
+        Assert.Contains(rendered["$or"].AsBsonArray, static item =>
+            item["buildAttempt"].IsBsonDocument &&
+            item["buildAttempt"].AsBsonDocument.Contains("$exists") &&
+            !item["buildAttempt"].AsBsonDocument["$exists"].AsBoolean);
     }
 
     [Fact]
