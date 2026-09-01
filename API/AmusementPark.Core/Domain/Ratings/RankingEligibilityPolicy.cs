@@ -131,7 +131,9 @@ public sealed class RankingEligibilityPolicy
         {
             RatingTargetType.Park => IsEligibleParkSnapshotEvidence(
                 evidence,
-                this.EligibleMinUniqueContributors),
+                this.EligibleMinUniqueContributors,
+                this.MinimumEligibleItemsForParkItemComponent,
+                this.MinimumEligibleCategories),
             RatingTargetType.ParkItem => IsEligibleSimpleSnapshotEvidence(evidence),
             _ => false,
         };
@@ -609,18 +611,47 @@ public sealed class RankingEligibilityPolicy
 
     private static bool IsEligibleParkSnapshotEvidence(
         RankingEvidence evidence,
-        int eligibleMinUniqueContributors)
+        int eligibleMinUniqueContributors,
+        int minimumEligibleItemsForParkItemComponent,
+        int minimumEligibleCategories)
     {
-        return evidence.DirectParkContributorCount is int directParkContributorCount &&
-            directParkContributorCount >= eligibleMinUniqueContributors &&
-            directParkContributorCount <= evidence.UniqueContributorCount &&
-            evidence.ItemContributorCount is int itemContributorCount &&
-            itemContributorCount >= 0 &&
-            evidence.EligibleItemCount is int eligibleItemCount &&
-            eligibleItemCount >= 0 &&
-            evidence.EligibleCategoryCount is int eligibleCategoryCount &&
-            eligibleCategoryCount >= 0 &&
-            eligibleCategoryCount <= eligibleItemCount;
+        if (evidence.DirectParkContributorCount is not int directParkContributorCount ||
+            directParkContributorCount < eligibleMinUniqueContributors ||
+            directParkContributorCount > evidence.UniqueContributorCount ||
+            evidence.ItemContributorCount is not int itemContributorCount ||
+            itemContributorCount < 0 ||
+            evidence.EligibleItemCount is not int eligibleItemCount ||
+            eligibleItemCount < 0 ||
+            evidence.EligibleCategoryCount is not int eligibleCategoryCount ||
+            eligibleCategoryCount < 0 ||
+            eligibleCategoryCount > eligibleItemCount)
+        {
+            return false;
+        }
+
+        bool itemComponentContributed =
+            evidence.UniqueContributorCount > directParkContributorCount ||
+            evidence.RatingObservationCount > directParkContributorCount;
+        bool itemComponentMustContribute =
+            itemContributorCount >= eligibleMinUniqueContributors &&
+            eligibleItemCount >= minimumEligibleItemsForParkItemComponent &&
+            eligibleCategoryCount >= minimumEligibleCategories;
+        if (!itemComponentContributed)
+        {
+            return !itemComponentMustContribute &&
+                evidence.UniqueContributorCount == directParkContributorCount &&
+                evidence.RatingObservationCount == directParkContributorCount;
+        }
+
+        long minimumItemObservationCount = Math.Max(
+            itemContributorCount,
+            (long)eligibleItemCount * eligibleMinUniqueContributors);
+        return itemContributorCount >= eligibleMinUniqueContributors &&
+            eligibleItemCount >= minimumEligibleItemsForParkItemComponent &&
+            eligibleCategoryCount >= 1 &&
+            itemContributorCount <= evidence.UniqueContributorCount &&
+            evidence.UniqueContributorCount <= (long)directParkContributorCount + itemContributorCount &&
+            evidence.RatingObservationCount >= (long)directParkContributorCount + minimumItemObservationCount;
     }
 
     private static void ValidateObservationCounts(int uniqueContributorCount, int ratingObservationCount)

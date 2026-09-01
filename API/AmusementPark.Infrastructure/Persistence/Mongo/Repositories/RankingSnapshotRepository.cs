@@ -456,6 +456,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             RankingPublicationPointer firstPointer = new RankingPublicationPointer(
                 candidate.ScopeKey,
                 candidate.Id,
+                nowUtc,
                 null,
                 null,
                 candidate.MethodologyVersion,
@@ -504,6 +505,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         RankingPublicationPointer nextPointer = new RankingPublicationPointer(
             candidate.ScopeKey,
             candidate.Id,
+            nowUtc,
             pointer.CurrentSnapshotId,
             previousSnapshotPublishedAtUtc,
             candidate.MethodologyVersion,
@@ -618,6 +620,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         RankingPublicationPointer rolledBack = new RankingPublicationPointer(
             request.ScopeKey,
             request.ExpectedPreviousSnapshotId,
+            current.PreviousSnapshotPublishedAtUtc!.Value,
             request.ExpectedCurrentSnapshotId,
             rolledBackSnapshotPublishedAtUtc,
             previous.MethodologyVersion,
@@ -847,7 +850,9 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             .Set(document => document.Status, RankingSnapshotStatus.Current)
             .Set(
                 document => document.PublishedAtUtc,
-                RankingSnapshotMongoDefinitions.ResolvePublishedAt(current, expectedPointer.UpdatedAtUtc))
+                RankingSnapshotMongoDefinitions.ResolvePublishedAt(
+                    current,
+                    expectedPointer.CurrentSnapshotPublishedAtUtc))
             .Set(document => document.ReconciledPointerVersion, expectedPointer.Version)
             .Set(document => document.UpdatedAt, nowUtc);
         await this.headers.UpdateOneAsync(
@@ -1540,14 +1545,16 @@ internal static class RankingSnapshotMongoDefinitions
 
     public static DateTime ResolvePublishedAt(
         RankingSnapshotHeader snapshot,
-        DateTime pointerUpdatedAtUtc)
+        DateTime fallbackPublishedAtUtc)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
-        if (pointerUpdatedAtUtc.Kind != DateTimeKind.Utc)
+        if (fallbackPublishedAtUtc.Kind != DateTimeKind.Utc)
         {
-            throw new ArgumentException("The pointer timestamp must use UTC.", nameof(pointerUpdatedAtUtc));
+            throw new ArgumentException(
+                "The fallback publication timestamp must use UTC.",
+                nameof(fallbackPublishedAtUtc));
         }
 
-        return snapshot.PublishedAtUtc ?? pointerUpdatedAtUtc;
+        return snapshot.PublishedAtUtc ?? fallbackPublishedAtUtc;
     }
 }

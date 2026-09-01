@@ -157,6 +157,10 @@ public sealed class RankingPublicationPointerDocument : MongoDocumentBase
     [BsonElement("currentSnapshotId")]
     public string CurrentSnapshotId { get; set; } = string.Empty;
 
+    [BsonElement("currentSnapshotPublishedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? CurrentSnapshotPublishedAtUtc { get; set; }
+
     [BsonElement("previousSnapshotId")]
     [BsonIgnoreIfNull]
     public string? PreviousSnapshotId { get; set; }

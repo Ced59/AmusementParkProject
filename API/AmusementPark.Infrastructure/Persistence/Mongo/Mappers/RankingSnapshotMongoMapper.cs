@@ -48,6 +48,7 @@ internal static class RankingSnapshotMongoMapper
         return new RankingPublicationPointer(
             RankingScopeKey.Parse(document.ScopeKey),
             RankingSnapshotId.Parse(document.CurrentSnapshotId),
+            ResolveCurrentSnapshotPublishedAt(document),
             string.IsNullOrWhiteSpace(document.PreviousSnapshotId)
                 ? null
                 : RankingSnapshotId.Parse(document.PreviousSnapshotId),
@@ -121,6 +122,7 @@ internal static class RankingSnapshotMongoMapper
             Id = documentId,
             ScopeKey = pointer.ScopeKey.Value,
             CurrentSnapshotId = pointer.CurrentSnapshotId.Value,
+            CurrentSnapshotPublishedAtUtc = pointer.CurrentSnapshotPublishedAtUtc,
             PreviousSnapshotId = pointer.PreviousSnapshotId?.Value,
             PreviousSnapshotPublishedAtUtc = pointer.PreviousSnapshotPublishedAtUtc,
             MethodologyVersion = pointer.MethodologyVersion.Value,
@@ -202,6 +204,12 @@ internal static class RankingSnapshotMongoMapper
         }
 
         return EnsureOptionalUtc(document.PreviousSnapshotPublishedAtUtc) ?? EnsureUtc(document.UpdatedAt);
+    }
+
+    private static DateTime ResolveCurrentSnapshotPublishedAt(
+        RankingPublicationPointerDocument document)
+    {
+        return EnsureOptionalUtc(document.CurrentSnapshotPublishedAtUtc) ?? EnsureUtc(document.UpdatedAt);
     }
 
     private static int NormalizeBuildAttempt(int buildAttempt)

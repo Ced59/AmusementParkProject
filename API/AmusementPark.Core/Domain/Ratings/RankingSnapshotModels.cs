@@ -440,6 +440,7 @@ public sealed class RankingPublicationPointer
     public RankingPublicationPointer(
         RankingScopeKey scopeKey,
         RankingSnapshotId currentSnapshotId,
+        DateTime currentSnapshotPublishedAtUtc,
         RankingSnapshotId? previousSnapshotId,
         DateTime? previousSnapshotPublishedAtUtc,
         RatingMethodologyVersion methodologyVersion,
@@ -453,6 +454,13 @@ public sealed class RankingPublicationPointer
         if (previousSnapshotId.HasValue)
         {
             _ = previousSnapshotId.Value.Value;
+        }
+
+        if (currentSnapshotPublishedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The current snapshot publication timestamp must use UTC.",
+                nameof(currentSnapshotPublishedAtUtc));
         }
 
         if (previousSnapshotId.HasValue != previousSnapshotPublishedAtUtc.HasValue)
@@ -499,8 +507,16 @@ public sealed class RankingPublicationPointer
                 nameof(previousSnapshotPublishedAtUtc));
         }
 
+        if (currentSnapshotPublishedAtUtc > updatedAtUtc)
+        {
+            throw new ArgumentException(
+                "The current snapshot cannot have been published after the pointer update.",
+                nameof(currentSnapshotPublishedAtUtc));
+        }
+
         this.ScopeKey = scopeKey;
         this.CurrentSnapshotId = currentSnapshotId;
+        this.CurrentSnapshotPublishedAtUtc = currentSnapshotPublishedAtUtc;
         this.PreviousSnapshotId = previousSnapshotId;
         this.PreviousSnapshotPublishedAtUtc = previousSnapshotPublishedAtUtc;
         this.MethodologyVersion = methodologyVersion;
@@ -513,6 +529,8 @@ public sealed class RankingPublicationPointer
     public RankingScopeKey ScopeKey { get; }
 
     public RankingSnapshotId CurrentSnapshotId { get; }
+
+    public DateTime CurrentSnapshotPublishedAtUtc { get; }
 
     public RankingSnapshotId? PreviousSnapshotId { get; }
 

@@ -160,6 +160,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         RankingPublicationPointer pointer = new RankingPublicationPointer(
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-current"),
+            NowUtc.AddMinutes(-2),
             RankingSnapshotId.Parse("snapshot-previous"),
             NowUtc.AddMinutes(-1),
             MethodologyVersion,
@@ -243,6 +244,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         RankingPublicationPointer pointer = new RankingPublicationPointer(
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-current"),
+            NowUtc,
             null,
             null,
             MethodologyVersion,
@@ -271,6 +273,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         RankingPublicationPointer rolledBack = new RankingPublicationPointer(
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-restored"),
+            NowUtc.AddMinutes(-2),
             RankingSnapshotId.Parse("snapshot-rolled-back"),
             NowUtc.AddMinutes(-1),
             MethodologyVersion,
@@ -293,6 +296,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         RankingPublicationPointer pointer = new RankingPublicationPointer(
             ScopeKey,
             RankingSnapshotId.Parse("snapshot-current"),
+            NowUtc,
             null,
             null,
             MethodologyVersion,

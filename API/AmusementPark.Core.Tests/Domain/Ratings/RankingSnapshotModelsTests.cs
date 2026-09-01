@@ -134,6 +134,33 @@ public sealed class RankingSnapshotModelsTests
     }
 
     [Fact]
+    public void Entry_WhenBothParkComponentsAreActiveWithoutTheirMinimumObservations_ShouldRejectIt()
+    {
+        RankingEvidence forgedEvidence = new RankingEvidence(
+            RankingEvidenceLevel.Eligible,
+            true,
+            UniqueContributorCount: 10,
+            RatingObservationCount: 10,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            EligibleItemCount: 5,
+            EligibleCategoryCount: 2,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            null)
+        {
+            NextContributorThreshold = 30,
+        };
+
+        Assert.Throws<ArgumentException>(() => new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            forgedEvidence));
+    }
+
+    [Fact]
     public void Entry_WhenParkItemCategoryIsPresent_ShouldPreserveIt()
     {
         RankingSnapshotEntry entry = new RankingSnapshotEntry(
@@ -246,6 +273,7 @@ public sealed class RankingSnapshotModelsTests
         Assert.Throws<ArgumentOutOfRangeException>(() => new RankingPublicationPointer(
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-1"),
+            NowUtc,
             null,
             null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
@@ -261,6 +289,7 @@ public sealed class RankingSnapshotModelsTests
         Assert.Throws<ArgumentOutOfRangeException>(() => new RankingPublicationPointer(
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-1"),
+            NowUtc,
             null,
             null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
@@ -276,12 +305,29 @@ public sealed class RankingSnapshotModelsTests
         Assert.Throws<ArgumentException>(() => new RankingPublicationPointer(
             RankingScopeKey.Parse("parks:global"),
             RankingSnapshotId.Parse("snapshot-2"),
+            NowUtc,
             RankingSnapshotId.Parse("snapshot-1"),
             previousSnapshotPublishedAtUtc: null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
             sourceRevision: 5,
             highestPublishedSourceRevision: 5,
             version: 2,
+            NowUtc));
+    }
+
+    [Fact]
+    public void Pointer_WhenCurrentSnapshotTimestampIsAfterThePointerUpdate_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentException>(() => new RankingPublicationPointer(
+            RankingScopeKey.Parse("parks:global"),
+            RankingSnapshotId.Parse("snapshot-1"),
+            NowUtc.AddMinutes(1),
+            null,
+            null,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            sourceRevision: 4,
+            highestPublishedSourceRevision: 4,
+            version: 1,
             NowUtc));
     }
 
