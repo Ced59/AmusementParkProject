@@ -155,6 +155,34 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildOrphanedCurrentHeadersReconciliationFilter_ShouldProtectTheLivePointerPair()
+    {
+        RankingPublicationPointer pointer = new RankingPublicationPointer(
+            ScopeKey,
+            RankingSnapshotId.Parse("snapshot-current"),
+            RankingSnapshotId.Parse("snapshot-previous"),
+            NowUtc.AddMinutes(-1),
+            MethodologyVersion,
+            sourceRevision: 42,
+            highestPublishedSourceRevision: 42,
+            version: 7,
+            NowUtc);
+
+        BsonDocument rendered = Render(
+            RankingSnapshotMongoDefinitions.BuildOrphanedCurrentHeadersReconciliationFilter(pointer));
+
+        Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Current), rendered["status"].AsString);
+        Assert.Equal(
+            new[] { "snapshot-current", "snapshot-previous" },
+            rendered["_id"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Contains(rendered["$or"].AsBsonArray, static item =>
+            item["reconciledPointerVersion"].IsBsonDocument &&
+            item["reconciledPointerVersion"].AsBsonDocument.Contains("$lt") &&
+            item["reconciledPointerVersion"].AsBsonDocument["$lt"].AsInt64 == 7);
+    }
+
+    [Fact]
     public void BuildSupersededHeaderPruneFilter_ShouldNotDeleteAnActiveSnapshot()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildSupersededHeaderPruneFilter(

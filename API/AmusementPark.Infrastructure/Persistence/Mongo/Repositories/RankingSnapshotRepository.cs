@@ -906,6 +906,10 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             {
                 protectedSnapshotIds.Add(livePointer.PreviousSnapshotId.Value);
             }
+
+            await this.ReconcileOrphanedCurrentHeadersAsync(
+                livePointer,
+                cancellationToken);
         }
 
         int retainedTerminalCount = Math.Max(
@@ -974,6 +978,27 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                     cancellationToken);
             }
         }
+    }
+
+    private async Task ReconcileOrphanedCurrentHeadersAsync(
+        RankingPublicationPointer livePointer,
+        CancellationToken cancellationToken)
+    {
+        if (!await this.IsLivePointerAsync(livePointer, cancellationToken))
+        {
+            return;
+        }
+
+        UpdateDefinition<RankingSnapshotHeaderDocument> update =
+            Builders<RankingSnapshotHeaderDocument>.Update
+                .Set(document => document.Status, RankingSnapshotStatus.Superseded)
+                .Set(document => document.ReconciledPointerVersion, livePointer.Version)
+                .Set(document => document.UpdatedAt, this.GetUtcNow());
+        await this.headers.UpdateManyAsync(
+            RankingSnapshotMongoDefinitions.BuildOrphanedCurrentHeadersReconciliationFilter(
+                livePointer),
+            update,
+            cancellationToken: cancellationToken);
     }
 
     private async Task<RankingSnapshotChunkWriteResult> FinalizeChunkWriteAsync(
@@ -1370,6 +1395,32 @@ internal static class RankingSnapshotMongoDefinitions
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
                 RankingSnapshotStatus.Superseded));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument>
+        BuildOrphanedCurrentHeadersReconciliationFilter(RankingPublicationPointer livePointer)
+    {
+        ArgumentNullException.ThrowIfNull(livePointer);
+        FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters =
+            Builders<RankingSnapshotHeaderDocument>.Filter;
+        List<string> protectedSnapshotIds = new List<string>
+        {
+            livePointer.CurrentSnapshotId.Value,
+        };
+        if (livePointer.PreviousSnapshotId.HasValue &&
+            livePointer.PreviousSnapshotId.Value != livePointer.CurrentSnapshotId)
+        {
+            protectedSnapshotIds.Add(livePointer.PreviousSnapshotId.Value.Value);
+        }
+
+        return filters.And(
+            filters.Eq(document => document.ScopeKey, livePointer.ScopeKey.Value),
+            filters.Eq(document => document.Status, RankingSnapshotStatus.Current),
+            filters.Nin(document => document.Id, protectedSnapshotIds),
+            filters.Or(
+                filters.Exists(document => document.ReconciledPointerVersion, false),
+                filters.Eq(document => document.ReconciledPointerVersion, null),
+                filters.Lt(document => document.ReconciledPointerVersion, livePointer.Version)));
     }
 
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildStaleValidatedHeaderPruneFilter(
