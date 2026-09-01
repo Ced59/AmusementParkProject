@@ -636,7 +636,10 @@ public sealed class RankingEligibilityPolicy
             publicItemCategoryCount < 0 ||
             eligibleCategoryCount > publicItemCategoryCount ||
             evidence.IsSingleCategoryParkException is not bool isSingleCategoryParkException ||
-            (isSingleCategoryParkException && publicItemCategoryCount != 1))
+            (isSingleCategoryParkException && publicItemCategoryCount != 1) ||
+            (eligibleItemCount > 0 &&
+                (publicItemCategoryCount == 0 ||
+                    itemContributorCount < eligibleMinUniqueContributors)))
         {
             return false;
         }
