@@ -26,10 +26,24 @@ public sealed class RatingRankingSourceRevisionGuardTests
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
             .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
                 Task.FromResult(CreateLease(scopeKey)));
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                It.IsAny<RankingScopeKey>(),
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                CancellationToken.None))
+            .Callback((
+                RankingScopeKey scopeKey,
+                RatingRankingMutationRecoveryTarget _,
+                CancellationToken _) => incrementedScopes.Add(scopeKey))
+            .Returns((
+                RankingScopeKey scopeKey,
+                RatingRankingMutationRecoveryTarget _,
+                CancellationToken _) => Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
             RatingTargetType.ParkItem,
+            "item-1",
             ParkItemCategory.Attraction,
             ParkItemCategory.Show,
             CancellationToken.None);
@@ -38,6 +52,45 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
             incrementedScopes.Select(static scopeKey => scopeKey.Value));
         Assert.Equal(3, preparation.MutationLeases.Count);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareMutationAsync_ShouldPersistRecoveryTargetOnGlobalFenceOnly()
+    {
+        RatingRankingMutationRecoveryTarget? capturedRecoveryTarget = null;
+        RankingScopeKey categoryScopeKey = RankingScopeKey.Parse("park-items:category:attraction");
+        RankingScopeKey globalScopeKey = RankingScopeKey.Parse("parks:global");
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                categoryScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(CreateLease(categoryScopeKey));
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                globalScopeKey,
+                It.IsAny<RatingRankingMutationRecoveryTarget>(),
+                CancellationToken.None))
+            .Callback((
+                RankingScopeKey _,
+                RatingRankingMutationRecoveryTarget recoveryTarget,
+                CancellationToken _) => capturedRecoveryTarget = recoveryTarget)
+            .ReturnsAsync(CreateLease(globalScopeKey));
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            ParkItemCategory.Attraction,
+            null,
+            CancellationToken.None);
+
+        Assert.Equal(2, preparation.MutationLeases.Count);
+        Assert.NotNull(capturedRecoveryTarget);
+        Assert.Equal(RatingTargetType.ParkItem, capturedRecoveryTarget.TargetType);
+        Assert.Equal("item-1", capturedRecoveryTarget.TargetId);
         revisions.VerifyAll();
     }
 
@@ -54,6 +107,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => guard.PrepareMutationAsync(
             RatingTargetType.ParkItem,
+            "item-1",
             ParkItemCategory.Attraction,
             null,
             CancellationToken.None));
@@ -74,6 +128,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
             RatingTargetType.Park,
+            "park-1",
             null,
             null,
             CancellationToken.None);

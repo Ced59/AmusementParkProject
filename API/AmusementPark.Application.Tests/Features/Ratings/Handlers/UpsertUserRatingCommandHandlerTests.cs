@@ -149,6 +149,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Attraction,
                 ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
@@ -162,6 +163,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Restaurant,
                 ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
@@ -175,6 +177,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Hotel,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -283,6 +286,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.Park,
+                "park-1",
                 null,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -325,6 +329,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.Park,
+                "park-1",
                 null,
                 null,
                 It.IsAny<CancellationToken>()))

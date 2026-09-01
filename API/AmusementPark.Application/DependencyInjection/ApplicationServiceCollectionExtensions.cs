@@ -89,6 +89,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<RankingSnapshotIntegrityValidator>();
         services.AddScoped<IRatingRankingSnapshotBuilder, RatingRankingSnapshotBuilder>();
         services.AddScoped<IRatingRankingRebuildScheduler, RatingRankingRebuildScheduler>();
+        services.AddScoped<IRatingRankingRecoveryCoordinator, RatingRankingRecoveryCoordinator>();
         services.AddDurableBackgroundJobHandler<RatingRankingRebuildScopeJobHandler>();
         services.AddScoped<IRatingRankProvider, RatingRankProvider>();
         services.AddScoped<RatingRankingSourceRevisionGuard>();

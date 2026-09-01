@@ -133,7 +133,8 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Kind)
                     .Ascending(item => item.NaturalKey)
                     .Ascending(item => item.Status)
-                    .Ascending(item => item.RequestedRevision),
+                    .Ascending(item => item.RequestedRevision)
+                    .Ascending(item => item.PayloadVersion),
                 new CreateIndexOptions { Name = "idx_background_jobs_terminal_revision" }),
         };
     }

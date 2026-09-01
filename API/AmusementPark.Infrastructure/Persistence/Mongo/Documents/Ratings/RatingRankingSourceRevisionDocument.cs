@@ -23,6 +23,14 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonIgnoreIfDefault]
     public Dictionary<string, DateTime> MutationLeases { get; set; } = new();
 
+    [BsonElement("mutationRecoveryParkItemTargetIds")]
+    [BsonIgnoreIfDefault]
+    public Dictionary<string, string> MutationRecoveryParkItemTargetIds { get; set; } = new();
+
+    [BsonElement("recoveredParkItemTargetIds")]
+    [BsonIgnoreIfDefault]
+    public List<string> RecoveredParkItemTargetIds { get; set; } = new();
+
     [BsonElement("unavailableMethodologyVersion")]
     [BsonIgnoreIfNull]
     public string? UnavailableMethodologyVersion { get; set; }

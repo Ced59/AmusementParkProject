@@ -9,6 +9,11 @@ public interface IRatingRankingSourceRevisionRepository
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken);
 
+    Task<RatingRankingMutationLease> BeginMutationAsync(
+        RankingScopeKey scopeKey,
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken);
+
     Task<RatingRankingSourceRevision> CompleteMutationAsync(
         RatingRankingMutationLease mutationLease,
         bool sourceChanged,
@@ -23,5 +28,10 @@ public interface IRatingRankingSourceRevisionRepository
 
     Task<RatingRankingSourceRevision?> GetAsync(
         RankingScopeKey scopeKey,
+        CancellationToken cancellationToken);
+
+    Task<bool> AcknowledgeRecoveredParkItemTargetAsync(
+        RankingScopeKey scopeKey,
+        string targetId,
         CancellationToken cancellationToken);
 }

@@ -66,6 +66,31 @@ public sealed record RatingRankingMutationLease
     }
 }
 
+public sealed record RatingRankingMutationRecoveryTarget
+{
+    public RatingRankingMutationRecoveryTarget(
+        RatingTargetType targetType,
+        string targetId)
+    {
+        if (targetType != RatingTargetType.ParkItem)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetType));
+        }
+
+        if (string.IsNullOrWhiteSpace(targetId))
+        {
+            throw new ArgumentException("A recovery target identifier is required.", nameof(targetId));
+        }
+
+        this.TargetType = targetType;
+        this.TargetId = targetId.Trim();
+    }
+
+    public RatingTargetType TargetType { get; }
+
+    public string TargetId { get; }
+}
+
 public sealed record RatingRankingSnapshotBuildPlan(
     int TotalEntryCount,
     IReadOnlyCollection<RankingSnapshotEntry> EligibleEntries,

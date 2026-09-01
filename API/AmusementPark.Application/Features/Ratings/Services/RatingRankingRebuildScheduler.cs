@@ -126,6 +126,8 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             RatingRankingRebuildScopeJob.Kind,
             RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
             requestedRevision,
+            RatingRankingRebuildScopeJob.PayloadVersion,
+            CreatePayload(scope, requestedRevision),
             cancellationToken);
     }
 
@@ -134,11 +136,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         long requestedRevision,
         CancellationToken cancellationToken)
     {
-        RatingRankingRebuildScopePayload payload = new RatingRankingRebuildScopePayload(
-            scope.Key.Value,
-            requestedRevision,
-            scope.MethodologyVersion.Value);
-        JsonElement serializedPayload = JsonSerializer.SerializeToElement(payload);
+        JsonElement serializedPayload = CreatePayload(scope, requestedRevision);
         CoalesceBackgroundJobRequest request = new CoalesceBackgroundJobRequest(
             RatingRankingRebuildScopeJob.Kind,
             RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
@@ -146,5 +144,16 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             RatingRankingRebuildScopeJob.PayloadVersion,
             serializedPayload);
         await this.backgroundJobRepository.CoalesceAsync(request, cancellationToken);
+    }
+
+    private static JsonElement CreatePayload(
+        RankingScopeDefinition scope,
+        long requestedRevision)
+    {
+        RatingRankingRebuildScopePayload payload = new RatingRankingRebuildScopePayload(
+            scope.Key.Value,
+            requestedRevision,
+            scope.MethodologyVersion.Value);
+        return JsonSerializer.SerializeToElement(payload);
     }
 }

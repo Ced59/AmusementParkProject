@@ -8,6 +8,7 @@ public interface IRatingRankingMutationGuard
 {
     Task<RatingRankingMutationPreparation> PrepareMutationAsync(
         RatingTargetType targetType,
+        string targetId,
         ParkItemCategory? currentParkItemCategory,
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken);

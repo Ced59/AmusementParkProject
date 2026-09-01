@@ -103,6 +103,7 @@ public sealed class MongoDatabaseInitializerBackgroundJobsTests
                 { "naturalKey", 1 },
                 { "status", 1 },
                 { "requestedRevision", 1 },
+                { "payloadVersion", 1 },
             },
             Render(terminalRevision.Keys));
 

@@ -28,6 +28,8 @@ public sealed class RatingRankingRebuildSchedulerTests
                 RatingRankingRebuildScopeJob.Kind,
                 "ratings.rebuild-scope:parks:global",
                 12,
+                RatingRankingRebuildScopeJob.PayloadVersion,
+                It.IsAny<JsonElement>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
         jobs
@@ -107,6 +109,8 @@ public sealed class RatingRankingRebuildSchedulerTests
                 RatingRankingRebuildScopeJob.Kind,
                 "ratings.rebuild-scope:parks:global",
                 13,
+                RatingRankingRebuildScopeJob.PayloadVersion,
+                It.IsAny<JsonElement>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
         jobs
@@ -175,6 +179,8 @@ public sealed class RatingRankingRebuildSchedulerTests
                 RatingRankingRebuildScopeJob.Kind,
                 "ratings.rebuild-scope:parks:global",
                 0,
+                RatingRankingRebuildScopeJob.PayloadVersion,
+                It.IsAny<JsonElement>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
         jobs
@@ -314,6 +320,10 @@ public sealed class RatingRankingRebuildSchedulerTests
                 RatingRankingRebuildScopeJob.Kind,
                 "ratings.rebuild-scope:parks:global",
                 12,
+                RatingRankingRebuildScopeJob.PayloadVersion,
+                It.Is<JsonElement>(payload => payload.GetRawText().Contains(
+                    scope.MethodologyVersion.Value,
+                    StringComparison.Ordinal)),
                 CancellationToken.None))
             .ReturnsAsync(true);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
@@ -348,6 +358,8 @@ public sealed class RatingRankingRebuildSchedulerTests
                 RatingRankingRebuildScopeJob.Kind,
                 RatingRankingRebuildScopeJob.BuildNaturalKey(healthyScope.Key),
                 0,
+                RatingRankingRebuildScopeJob.PayloadVersion,
+                It.IsAny<JsonElement>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
         jobs

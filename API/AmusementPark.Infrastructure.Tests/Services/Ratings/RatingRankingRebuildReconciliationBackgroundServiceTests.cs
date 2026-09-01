@@ -16,11 +16,18 @@ public sealed class RatingRankingRebuildReconciliationBackgroundServiceTests
             TaskCreationOptions.RunContinuationsAsynchronously);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
+        Mock<IRatingRankingRecoveryCoordinator> recoveryCoordinator =
+            new Mock<IRatingRankingRecoveryCoordinator>(MockBehavior.Strict);
+        recoveryCoordinator
+            .Setup(value => value.ReconcileRecoveredParkItemMutationsAsync(
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
         scheduler
             .Setup(value => value.ScheduleOutstandingAsync(It.IsAny<CancellationToken>()))
             .Callback(() => reconciled.TrySetResult(true))
             .Returns(Task.CompletedTask);
         ServiceCollection services = new ServiceCollection();
+        services.AddScoped(_ => recoveryCoordinator.Object);
         services.AddScoped(_ => scheduler.Object);
         using ServiceProvider provider = services.BuildServiceProvider();
         RatingRankingRebuildReconciliationBackgroundService service =
@@ -35,6 +42,9 @@ public sealed class RatingRankingRebuildReconciliationBackgroundServiceTests
 
         scheduler.Verify(
             value => value.ScheduleOutstandingAsync(It.IsAny<CancellationToken>()),
+            Times.Once);
+        recoveryCoordinator.Verify(
+            value => value.ReconcileRecoveredParkItemMutationsAsync(It.IsAny<CancellationToken>()),
             Times.Once);
     }
 }

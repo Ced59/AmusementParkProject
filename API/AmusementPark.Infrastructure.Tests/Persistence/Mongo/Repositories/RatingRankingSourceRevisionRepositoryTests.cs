@@ -45,6 +45,50 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
     }
 
     [Fact]
+    public void BuildBeginMutationUpdate_WithRecoveryTarget_ShouldPersistItUnderTheLeaseToken()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease mutationLease = CreateLease(scopeKey, 1);
+        RatingRankingMutationRecoveryTarget recoveryTarget =
+            new RatingRankingMutationRecoveryTarget(RatingTargetType.ParkItem, " item-1 ");
+
+        BsonDocument update = Render(
+            RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
+                scopeKey,
+                mutationLease,
+                recoveryTarget,
+                NowUtc,
+                NowUtc.Add(RatingRankingSourceRevisionRepository.MutationLeaseDuration)));
+
+        Assert.Equal(
+            "item-1",
+            update["$set"].AsBsonDocument[
+                $"mutationRecoveryParkItemTargetIds.{mutationLease.Token}"].AsString);
+    }
+
+    [Fact]
+    public void BuildRecoverMutationUpdate_WithRecoveryTarget_ShouldRetainItForReconciliation()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease mutationLease = CreateLease(scopeKey, 1);
+
+        BsonDocument update = Render(
+            RatingRankingSourceRevisionMongoDefinitions.BuildRecoverMutationUpdate(
+                mutationLease,
+                " item-1 ",
+                NowUtc));
+
+        Assert.True(update["$unset"].AsBsonDocument.Contains(
+            $"mutationLeases.{mutationLease.Token}"));
+        Assert.True(update["$unset"].AsBsonDocument.Contains(
+            $"mutationRecoveryParkItemTargetIds.{mutationLease.Token}"));
+        Assert.Equal(1, update["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.Equal(
+            "item-1",
+            update["$addToSet"].AsBsonDocument["recoveredParkItemTargetIds"].AsString);
+    }
+
+    [Fact]
     public async Task BeginMutationAsync_ShouldPersistThePendingLeaseWithoutExposingANewRevision()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");

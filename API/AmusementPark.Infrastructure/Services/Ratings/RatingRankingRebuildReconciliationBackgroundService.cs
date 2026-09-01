@@ -37,6 +37,9 @@ internal sealed class RatingRankingRebuildReconciliationBackgroundService : Back
             try
             {
                 using IServiceScope scope = this.serviceScopeFactory.CreateScope();
+                IRatingRankingRecoveryCoordinator recoveryCoordinator =
+                    scope.ServiceProvider.GetRequiredService<IRatingRankingRecoveryCoordinator>();
+                await recoveryCoordinator.ReconcileRecoveredParkItemMutationsAsync(stoppingToken);
                 IRatingRankingRebuildScheduler scheduler =
                     scope.ServiceProvider.GetRequiredService<IRatingRankingRebuildScheduler>();
                 await scheduler.ScheduleOutstandingAsync(stoppingToken);

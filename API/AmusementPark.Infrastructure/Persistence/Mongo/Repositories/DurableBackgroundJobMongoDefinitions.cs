@@ -26,14 +26,18 @@ internal static class DurableBackgroundJobMongoDefinitions
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildDeadLetteredRevisionFilter(
         string kind,
         string naturalKey,
-        long requestedRevision)
+        long requestedRevision,
+        int payloadVersion,
+        string payloadJson)
     {
         FilterDefinitionBuilder<DurableBackgroundJobDocument> filters =
             Builders<DurableBackgroundJobDocument>.Filter;
         return filters.Eq(item => item.Kind, kind)
             & filters.Eq(item => item.NaturalKey, naturalKey)
             & filters.Eq(item => item.Status, DurableBackgroundJobStatus.DeadLetter)
-            & filters.Eq(item => item.RequestedRevision, requestedRevision);
+            & filters.Eq(item => item.RequestedRevision, requestedRevision)
+            & filters.Eq(item => item.PayloadVersion, payloadVersion)
+            & filters.Eq(item => item.PayloadJson, payloadJson);
     }
 
     internal static UpdateDefinition<DurableBackgroundJobDocument> BuildCoalesceUpdate(

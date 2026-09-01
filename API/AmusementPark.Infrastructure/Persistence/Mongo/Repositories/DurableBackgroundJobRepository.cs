@@ -463,6 +463,8 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         string kind,
         string naturalKey,
         long requestedRevision,
+        int payloadVersion,
+        JsonElement payload,
         CancellationToken cancellationToken)
     {
         string normalizedKind = NormalizeRequired(kind, nameof(kind));
@@ -472,11 +474,15 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             throw new ArgumentOutOfRangeException(nameof(requestedRevision));
         }
 
+        ValidatePayload(payloadVersion, payload);
+
         long count = await this.collection.CountDocumentsAsync(
             BuildDeadLetteredRevisionFilter(
                 normalizedKind,
                 normalizedNaturalKey,
-                requestedRevision),
+                requestedRevision,
+                payloadVersion,
+                payload.ToStoredPayload()),
             new CountOptions { Limit = 1 },
             cancellationToken);
         return count > 0;

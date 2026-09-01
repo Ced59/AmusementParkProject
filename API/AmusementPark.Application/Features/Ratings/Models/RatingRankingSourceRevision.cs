@@ -10,7 +10,8 @@ public sealed record RatingRankingSourceRevision(
     DateTime? MutationLeaseExpiresAtUtc = null,
     RatingMethodologyVersion? UnavailableMethodologyVersion = null,
     long? HighestUnavailableSourceRevision = null,
-    string? UnavailableReasonCode = null)
+    string? UnavailableReasonCode = null,
+    IReadOnlyCollection<string>? RecoveredParkItemTargetIds = null)
 {
     public bool IsRebuildable => this.PendingMutationCount == 0;
 

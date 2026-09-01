@@ -34,6 +34,7 @@ public sealed class RatingRankingSourceRevisionGuard :
 
     public async Task<RatingRankingMutationPreparation> PrepareMutationAsync(
         RatingTargetType targetType,
+        string targetId,
         ParkItemCategory? currentParkItemCategory,
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken)
@@ -50,8 +51,13 @@ public sealed class RatingRankingSourceRevisionGuard :
                 category => definition.IsAffectedByRatingMutation(targetType, category)))
             .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal)
             .ToArray();
-
-        return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
+        RatingRankingMutationRecoveryTarget? recoveryTarget = targetType == RatingTargetType.ParkItem
+            ? new RatingRankingMutationRecoveryTarget(targetType, targetId)
+            : null;
+        return await this.PrepareScopesAsync(
+            affectedScopes,
+            recoveryTarget,
+            cancellationToken);
     }
 
     public async Task<RatingRankingMutationPreparation> PrepareParkChangesAsync(
@@ -92,7 +98,7 @@ public sealed class RatingRankingSourceRevisionGuard :
                 || (affectsParkRankingSources
                     && definition.TargetFamily == RankingTargetFamily.Parks))
             .ToArray();
-        return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
+        return await this.PrepareScopesAsync(affectedScopes, null, cancellationToken);
     }
 
     public async Task<RatingRankingMutationPreparation> PrepareParkItemChangesAsync(
@@ -161,11 +167,12 @@ public sealed class RatingRankingSourceRevisionGuard :
                     || (definition.Filter.ParkItemCategory.HasValue
                         && affectedCategories.Contains(definition.Filter.ParkItemCategory.Value)))
                 .ToArray();
-        return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
+        return await this.PrepareScopesAsync(affectedScopes, null, cancellationToken);
     }
 
     private async Task<RatingRankingMutationPreparation> PrepareScopesAsync(
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes,
+        RatingRankingMutationRecoveryTarget? recoveryTarget,
         CancellationToken cancellationToken)
     {
         List<RatingRankingMutationLease> mutationLeases = new List<RatingRankingMutationLease>();
@@ -174,8 +181,13 @@ public sealed class RatingRankingSourceRevisionGuard :
             foreach (RankingScopeDefinition scope in affectedScopes
                          .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
             {
-                RatingRankingMutationLease mutationLease =
-                    await this.sourceRevisionRepository.BeginMutationAsync(
+                RatingRankingMutationLease mutationLease = recoveryTarget is not null
+                    && scope.Key == CanonicalRankingScopes.GlobalParks.Key
+                    ? await this.sourceRevisionRepository.BeginMutationAsync(
+                        scope.Key,
+                        recoveryTarget,
+                        cancellationToken)
+                    : await this.sourceRevisionRepository.BeginMutationAsync(
                         scope.Key,
                         cancellationToken);
                 mutationLeases.Add(mutationLease);

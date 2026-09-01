@@ -103,6 +103,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(value => value.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Attraction,
                 ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
@@ -116,6 +117,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(value => value.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Restaurant,
                 ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
@@ -129,6 +131,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(value => value.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
+                "item-1",
                 ParkItemCategory.Hotel,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -190,6 +193,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
             null,
             sourceChanged: false);
@@ -231,6 +235,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
             null);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
@@ -269,6 +274,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.Park,
+                "park-1",
                 null,
                 null,
                 It.IsAny<CancellationToken>()))
@@ -323,6 +329,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
+            "park-1",
             null,
             null);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
@@ -357,6 +364,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
 
     private static Mock<IRatingRankingMutationGuard> CreateMutationGuard(
         RatingTargetType targetType,
+        string targetId,
         ParkItemCategory? currentParkItemCategory,
         ParkItemCategory? previousParkItemCategory,
         bool sourceChanged = true)
@@ -368,6 +376,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         guard
             .Setup(value => value.PrepareMutationAsync(
                 targetType,
+                targetId,
                 currentParkItemCategory,
                 previousParkItemCategory,
                 It.IsAny<CancellationToken>()))

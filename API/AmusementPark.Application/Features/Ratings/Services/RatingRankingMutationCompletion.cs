@@ -28,6 +28,7 @@ internal static class RatingRankingMutationCompletion
             RatingRankingMutationPreparation preparation =
                 await rankingMutationGuard.PrepareMutationAsync(
                     targetType,
+                    targetId,
                     currentMetadata?.ParkItemCategory,
                     retainedCategory,
                     cancellationToken);
@@ -121,6 +122,7 @@ internal static class RatingRankingMutationCompletion
                 {
                     finalCategoryPreparation = await rankingMutationGuard.PrepareMutationAsync(
                         targetType,
+                        targetId,
                         finalCategory,
                         null,
                         CancellationToken.None);

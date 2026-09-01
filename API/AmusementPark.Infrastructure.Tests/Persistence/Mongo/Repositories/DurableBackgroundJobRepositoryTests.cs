@@ -241,7 +241,9 @@ public sealed class DurableBackgroundJobRepositoryTests
             DurableBackgroundJobRepository.BuildDeadLetteredRevisionFilter(
                 "ratings.rebuild-scope",
                 "ratings.rebuild-scope:parks:global",
-                17);
+                17,
+                1,
+                "{\"methodologyVersion\":\"ratings-v1\"}");
 
         BsonDocument rendered = Render(filter);
 
@@ -249,6 +251,8 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Equal("ratings.rebuild-scope:parks:global", rendered["naturalKey"].AsString);
         Assert.Equal(DurableBackgroundJobStatus.DeadLetter.ToString(), rendered["status"].AsString);
         Assert.Equal(17, rendered["requestedRevision"].AsInt64);
+        Assert.Equal(1, rendered["payloadVersion"].AsInt32);
+        Assert.Equal("{\"methodologyVersion\":\"ratings-v1\"}", rendered["payload"].AsString);
     }
 
     [Fact]
