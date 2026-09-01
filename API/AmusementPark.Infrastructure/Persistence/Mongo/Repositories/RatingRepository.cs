@@ -748,16 +748,30 @@ public sealed class RatingRepository : IRatingRepository
             new BsonDocument("$lookup", new BsonDocument
             {
                 { "from", ratingAggregatesCollectionName },
-                { "localField", "_id" },
-                { "foreignField", "targetId" },
+                { "let", new BsonDocument("rankingTargetId", "$_id") },
+                {
+                    "pipeline",
+                    new BsonArray
+                    {
+                        new BsonDocument("$match", new BsonDocument
+                        {
+                            { "targetType", RatingTargetType.ParkItem.ToString() },
+                            { "ratingCount", new BsonDocument("$gt", 0) },
+                            {
+                                "$expr",
+                                new BsonDocument("$eq", new BsonArray
+                                {
+                                    "$targetId",
+                                    "$$rankingTargetId",
+                                })
+                            },
+                        }),
+                        new BsonDocument("$limit", 1),
+                    }
+                },
                 { "as", "ratingAggregate" },
             }),
             new BsonDocument("$unwind", "$ratingAggregate"),
-            new BsonDocument("$match", new BsonDocument
-            {
-                { "ratingAggregate.targetType", RatingTargetType.ParkItem.ToString() },
-                { "ratingAggregate.ratingCount", new BsonDocument("$gt", 0) },
-            }),
         };
     }
 

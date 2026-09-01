@@ -324,12 +324,26 @@ public sealed class RatingRepositoryTests
             .index;
         int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
         int replaceRootIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$replaceRoot"));
+        BsonDocument aggregateLookup = pipeline[aggregateLookupIndex]["$lookup"].AsBsonDocument;
+        BsonArray aggregateLookupPipeline = aggregateLookup["pipeline"].AsBsonArray;
+        BsonDocument aggregateMatch = aggregateLookupPipeline[0]
+            .AsBsonDocument["$match"]
+            .AsBsonDocument;
+        BsonArray targetIdEquality = aggregateMatch["$expr"]
+            .AsBsonDocument["$eq"]
+            .AsBsonArray;
 
         Assert.Equal(
             new[] { "park-1", "park-2" },
             parkMatch["parkId"].AsBsonDocument["$in"].AsBsonArray
                 .Select(static value => value.AsString));
         Assert.True(aggregateLookupIndex < limitIndex);
+        Assert.False(aggregateLookup.Contains("localField"));
+        Assert.Equal("$_id", aggregateLookup["let"].AsBsonDocument["rankingTargetId"].AsString);
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), aggregateMatch["targetType"].AsString);
+        Assert.Equal("$targetId", targetIdEquality[0].AsString);
+        Assert.Equal("$$rankingTargetId", targetIdEquality[1].AsString);
+        Assert.Equal(1, aggregateLookupPipeline[1].AsBsonDocument["$limit"].AsInt32);
         Assert.True(limitIndex < replaceRootIndex);
         Assert.Equal(50001, pipeline[limitIndex]["$limit"].AsInt32);
         Assert.Equal(
