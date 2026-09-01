@@ -25,6 +25,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class ParkItemRepository : IParkItemRepository
 {
+    private const int ConditionalBulkMutationBatchSize = 200;
+
     private readonly IMongoCollection<ParkItemDocument> collection;
     private readonly IRatingRankSnapshotCache ratingRankSnapshotCache;
     private readonly IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator;
@@ -653,6 +655,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         return Builders<ParkItemDocument>.Filter.Eq(value => value.Id, document.Id)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.ParkId, document.ParkId)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.Category, document.Category)
+            & Builders<ParkItemDocument>.Filter.Eq(value => value.Type, document.Type)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.Name, document.Name)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.IsVisible, document.IsVisible)
             & Builders<ParkItemDocument>.Filter.Eq(
@@ -673,14 +676,29 @@ public sealed class ParkItemRepository : IParkItemRepository
             return 0;
         }
 
-        List<ParkItemDocument> previousDocuments = await this.collection
-            .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds))
-            .ToListAsync(cancellationToken);
-        IReadOnlyCollection<ParkItem> previousItems = previousDocuments
-            .Select(static document => document.ToDomain())
-            .ToArray();
-        IReadOnlyCollection<ParkItem> currentItems = previousDocuments
-            .Select(document =>
+        AdminReviewStatus? normalizedAdminReviewStatus = adminReviewStatus.HasValue
+            ? adminReviewStatus.Value.NormalizeForAdministration()
+            : null;
+        UpdateDefinition<ParkItemDocument> update = Builders<ParkItemDocument>.Update
+            .Set(document => document.UpdatedAt, DateTime.UtcNow);
+        if (isVisible.HasValue)
+        {
+            update = update.Set(document => document.IsVisible, isVisible.Value);
+        }
+
+        if (normalizedAdminReviewStatus.HasValue)
+        {
+            update = update
+                .Set(document => document.AdminReviewStatus, normalizedAdminReviewStatus.Value)
+                .Set(
+                    document => document.AdminReviewPriority,
+                    normalizedAdminReviewStatus.Value.ToAdminReviewPriority());
+        }
+
+        return await this.ApplyConditionalBulkMutationAsync(
+            normalizedParkItemIds,
+            update,
+            document =>
             {
                 ParkItem current = document.ToDomain();
                 if (isVisible.HasValue)
@@ -689,45 +707,13 @@ public sealed class ParkItemRepository : IParkItemRepository
                 }
 
                 return current;
-            })
-            .ToArray();
-        RatingRankingMutationPreparation rankingPreparation =
-            await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
-                previousItems,
-                currentItems,
-                cancellationToken);
-
-        UpdateDefinition<ParkItemDocument> update = Builders<ParkItemDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
-        if (isVisible.HasValue)
-        {
-            update = update.Set(document => document.IsVisible, isVisible.Value);
-        }
-
-        if (adminReviewStatus.HasValue)
-        {
-            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
-            update = update
-                .Set(document => document.AdminReviewStatus, normalizedStatus)
-                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
-        }
-
-        UpdateResult result = await this.collection.UpdateManyAsync(
-            Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds),
-            update,
-            cancellationToken: cancellationToken);
-
-        int updatedCount = checked((int)result.ModifiedCount);
-        if (updatedCount > 0 && isVisible.HasValue)
-        {
-            this.ratingRankSnapshotCache.Invalidate();
-        }
-
-        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: updatedCount > 0,
-            CancellationToken.None);
-
-        return updatedCount;
+            },
+            document => MatchesBulkAdministrationTarget(
+                document,
+                isVisible,
+                normalizedAdminReviewStatus),
+            invalidatesRankCache: isVisible.HasValue,
+            cancellationToken);
     }
 
     public async Task<int> UpdateBulkFieldsAsync(IReadOnlyCollection<string> parkItemIds, bool updateZone, string? zoneId, ParkItemCategory? category, ParkItemType? type, bool updateManufacturer, string? manufacturerId, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
@@ -743,41 +729,20 @@ public sealed class ParkItemRepository : IParkItemRepository
             return 0;
         }
 
-        List<ParkItemDocument> previousDocuments = await this.collection
-            .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds))
-            .ToListAsync(cancellationToken);
-        IReadOnlyCollection<ParkItem> previousItems = previousDocuments
-            .Select(static document => document.ToDomain())
-            .ToArray();
-        IReadOnlyCollection<ParkItem> currentItems = previousDocuments
-            .Select(document =>
-            {
-                ParkItem current = document.ToDomain();
-                if (category.HasValue)
-                {
-                    current.Category = category.Value;
-                }
-
-                if (isVisible.HasValue)
-                {
-                    current.IsVisible = isVisible.Value;
-                }
-
-                return current;
-            })
-            .ToArray();
-        RatingRankingMutationPreparation rankingPreparation =
-            await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
-                previousItems,
-                currentItems,
-                cancellationToken);
-
-        UpdateDefinition<ParkItemDocument> update = Builders<ParkItemDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
+        string? normalizedZoneId = string.IsNullOrWhiteSpace(zoneId) ? null : zoneId.Trim();
+        string? normalizedManufacturerId = string.IsNullOrWhiteSpace(manufacturerId)
+            ? null
+            : manufacturerId.Trim();
+        AdminReviewStatus? normalizedAdminReviewStatus = adminReviewStatus.HasValue
+            ? adminReviewStatus.Value.NormalizeForAdministration()
+            : null;
+        UpdateDefinition<ParkItemDocument> update = Builders<ParkItemDocument>.Update
+            .Set(document => document.UpdatedAt, DateTime.UtcNow);
         if (updateZone)
         {
-            update = string.IsNullOrWhiteSpace(zoneId)
+            update = normalizedZoneId is null
                 ? update.Unset(document => document.ZoneId)
-                : update.Set(document => document.ZoneId, zoneId.Trim());
+                : update.Set(document => document.ZoneId, normalizedZoneId);
         }
 
         if (category.HasValue)
@@ -792,9 +757,9 @@ public sealed class ParkItemRepository : IParkItemRepository
 
         if (updateManufacturer)
         {
-            update = string.IsNullOrWhiteSpace(manufacturerId)
+            update = normalizedManufacturerId is null
                 ? update.Unset("attractionDetails.manufacturerId")
-                : update.Set("attractionDetails.manufacturerId", manufacturerId.Trim());
+                : update.Set("attractionDetails.manufacturerId", normalizedManufacturerId);
         }
 
         if (isVisible.HasValue)
@@ -802,32 +767,163 @@ public sealed class ParkItemRepository : IParkItemRepository
             update = update.Set(document => document.IsVisible, isVisible.Value);
         }
 
-        if (adminReviewStatus.HasValue)
+        if (normalizedAdminReviewStatus.HasValue)
         {
-            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
             update = update
-                .Set(document => document.AdminReviewStatus, normalizedStatus)
-                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
+                .Set(document => document.AdminReviewStatus, normalizedAdminReviewStatus.Value)
+                .Set(
+                    document => document.AdminReviewPriority,
+                    normalizedAdminReviewStatus.Value.ToAdminReviewPriority());
         }
 
-        UpdateResult result = await this.collection.UpdateManyAsync(
-            Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds),
+        return await this.ApplyConditionalBulkMutationAsync(
+            normalizedParkItemIds,
             update,
-            cancellationToken: cancellationToken);
+            document =>
+            {
+                ParkItem current = document.ToDomain();
+                if (category.HasValue)
+                {
+                    current.Category = category.Value;
+                }
 
-        int updatedCount = checked((int)result.ModifiedCount);
-        if (updatedCount > 0
-            && (category.HasValue || type.HasValue || isVisible.HasValue))
+                if (type.HasValue)
+                {
+                    current.Type = type.Value;
+                }
+
+                if (isVisible.HasValue)
+                {
+                    current.IsVisible = isVisible.Value;
+                }
+
+                return current;
+            },
+            document => MatchesBulkFieldsTarget(
+                document,
+                updateZone,
+                normalizedZoneId,
+                category,
+                type,
+                updateManufacturer,
+                normalizedManufacturerId,
+                isVisible,
+                normalizedAdminReviewStatus),
+            invalidatesRankCache: category.HasValue || type.HasValue || isVisible.HasValue,
+            cancellationToken);
+    }
+
+    private async Task<int> ApplyConditionalBulkMutationAsync(
+        IReadOnlyCollection<string> parkItemIds,
+        UpdateDefinition<ParkItemDocument> update,
+        Func<ParkItemDocument, ParkItem> createCurrentItem,
+        Func<ParkItemDocument, bool> matchesTarget,
+        bool invalidatesRankCache,
+        CancellationToken cancellationToken)
+    {
+        HashSet<string> pendingIds = parkItemIds.ToHashSet(StringComparer.Ordinal);
+        HashSet<string> updatedIds = new HashSet<string>(StringComparer.Ordinal);
+        bool rankingSourceChanged = false;
+        while (pendingIds.Count > 0)
+        {
+            string[] batchIds = pendingIds.Take(ConditionalBulkMutationBatchSize).ToArray();
+            List<ParkItemDocument> previousDocuments = await this.collection
+                .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, previousDocuments.Select(static document => document.Id));
+            if (previousDocuments.Count == 0)
+            {
+                continue;
+            }
+
+            IReadOnlyCollection<ParkItem> previousItems = previousDocuments
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            IReadOnlyCollection<ParkItem> currentItems = previousDocuments
+                .Select(createCurrentItem)
+                .ToArray();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkItemChangesAsync(
+                    previousItems,
+                    currentItems,
+                    cancellationToken);
+            FilterDefinition<ParkItemDocument> observedStatesFilter =
+                Builders<ParkItemDocument>.Filter.Or(
+                    previousDocuments.Select(BuildObservedRankingStateFilter));
+            UpdateResult result = await this.collection.UpdateManyAsync(
+                observedStatesFilter,
+                update,
+                cancellationToken: cancellationToken);
+            bool batchSourceChanged = result.ModifiedCount > 0;
+            rankingSourceChanged |= batchSourceChanged;
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                batchSourceChanged,
+                CancellationToken.None);
+
+            List<ParkItemDocument> currentDocuments = await this.collection
+                .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, currentDocuments.Select(static document => document.Id));
+            foreach (ParkItemDocument document in currentDocuments.Where(matchesTarget))
+            {
+                pendingIds.Remove(document.Id);
+                updatedIds.Add(document.Id);
+            }
+        }
+
+        if (rankingSourceChanged && invalidatesRankCache)
         {
             this.ratingRankSnapshotCache.Invalidate();
         }
 
-        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: updatedCount > 0,
-            CancellationToken.None);
+        return updatedIds.Count;
+    }
 
-        return updatedCount;
+    internal static bool MatchesBulkAdministrationTarget(
+        ParkItemDocument document,
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return (!isVisible.HasValue || document.IsVisible == isVisible.Value)
+            && (!adminReviewStatus.HasValue || document.AdminReviewStatus == adminReviewStatus.Value);
+    }
+
+    internal static bool MatchesBulkFieldsTarget(
+        ParkItemDocument document,
+        bool updateZone,
+        string? zoneId,
+        ParkItemCategory? category,
+        ParkItemType? type,
+        bool updateManufacturer,
+        string? manufacturerId,
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return (!updateZone || string.Equals(document.ZoneId, zoneId, StringComparison.Ordinal))
+            && (!category.HasValue || document.Category == category.Value)
+            && (!type.HasValue || document.Type == type.Value)
+            && (!updateManufacturer
+                || string.Equals(
+                    document.AttractionDetails?.ManufacturerId,
+                    manufacturerId,
+                    StringComparison.Ordinal))
+            && (!isVisible.HasValue || document.IsVisible == isVisible.Value)
+            && (!adminReviewStatus.HasValue || document.AdminReviewStatus == adminReviewStatus.Value);
+    }
+
+    private static void RemoveMissingIds(
+        ISet<string> pendingIds,
+        IReadOnlyCollection<string> requestedIds,
+        IEnumerable<string> foundIds)
+    {
+        HashSet<string> found = foundIds.ToHashSet(StringComparer.Ordinal);
+        foreach (string missingId in requestedIds.Where(id => !found.Contains(id)))
+        {
+            pendingIds.Remove(missingId);
+        }
     }
 
     private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId, ParkItemContentBacklogFilter? contentBacklogFilter)

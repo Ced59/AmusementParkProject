@@ -8,13 +8,26 @@ namespace AmusementPark.Application.Features.Ratings.Services;
 
 internal static class RatingRankingMutationCompletion
 {
-    public static async Task<RatingRankingMutationPreparation?> PrepareAuthoritativeParkItemCategoryAsync(
+    public static Task<RatingRankingMutationPreparation> PrepareAsync(
         RatingTargetType targetType,
-        string targetId,
         ParkItemCategory? observedCategory,
         ParkItemCategory? retainedCategory,
-        IParkItemRepository parkItemRepository,
-        IRatingRankingMutationGuard rankingMutationGuard)
+        IRatingRankingMutationGuard rankingMutationGuard,
+        CancellationToken cancellationToken)
+    {
+        return targetType == RatingTargetType.ParkItem
+            ? rankingMutationGuard.PreparePotentialParkItemMutationAsync(cancellationToken)
+            : rankingMutationGuard.PrepareMutationAsync(
+                targetType,
+                observedCategory,
+                retainedCategory,
+                cancellationToken);
+    }
+
+    public static async Task<ParkItemCategory?> ResolveAuthoritativeParkItemCategoryAsync(
+        RatingTargetType targetType,
+        string targetId,
+        IParkItemRepository parkItemRepository)
     {
         if (targetType != RatingTargetType.ParkItem)
         {
@@ -25,18 +38,27 @@ internal static class RatingRankingMutationCompletion
             targetId,
             includeHidden: false,
             cancellationToken: CancellationToken.None);
-        ParkItemCategory? authoritativeCategory = currentParkItem?.Category;
-        if (!authoritativeCategory.HasValue
-            || authoritativeCategory == observedCategory
-            || authoritativeCategory == retainedCategory)
-        {
-            return null;
-        }
+        return currentParkItem?.Category;
+    }
 
-        return await rankingMutationGuard.PrepareMutationAsync(
-            RatingTargetType.ParkItem,
-            authoritativeCategory,
-            previousParkItemCategory: null,
-            cancellationToken: CancellationToken.None);
+    public static Task CompleteAsync(
+        RatingTargetType targetType,
+        RatingRankingMutationPreparation preparation,
+        bool sourceChanged,
+        ParkItemCategory? observedCategory,
+        ParkItemCategory? retainedCategory,
+        ParkItemCategory? authoritativeCategory,
+        IRatingRankingMutationGuard rankingMutationGuard)
+    {
+        return targetType == RatingTargetType.ParkItem
+            ? rankingMutationGuard.CompletePotentialParkItemMutationAsync(
+                preparation,
+                new[] { observedCategory, retainedCategory, authoritativeCategory },
+                sourceChanged,
+                CancellationToken.None)
+            : rankingMutationGuard.CompleteMutationAsync(
+                preparation,
+                sourceChanged,
+                CancellationToken.None);
     }
 }

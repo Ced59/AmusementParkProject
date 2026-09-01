@@ -20,6 +20,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class ParkRepository : IParkRepository
 {
+    private const int ConditionalBulkMutationBatchSize = 200;
+
     private const int RandomVisibleFallbackHardLimit = 100;
 
     private readonly IMongoCollection<ParkDocument> collection;
@@ -460,31 +462,98 @@ public sealed class ParkRepository : IParkRepository
             return 0;
         }
 
-        List<ParkDocument> previousDocuments = await this.collection
-            .Find(Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds))
-            .ToListAsync(cancellationToken);
-        IReadOnlyCollection<Park> previousParks = previousDocuments
-            .Select(static document => document.ToDomain())
-            .ToArray();
-        IReadOnlyCollection<Park> currentParks = previousDocuments
-            .Select(document =>
+        AdminReviewStatus? normalizedAdminReviewStatus = adminReviewStatus.HasValue
+            ? adminReviewStatus.Value.NormalizeForAdministration()
+            : null;
+        HashSet<string> pendingIds = normalizedParkIds.ToHashSet(StringComparer.Ordinal);
+        HashSet<string> updatedIds = new HashSet<string>(StringComparer.Ordinal);
+        bool rankingSourceChanged = false;
+        while (pendingIds.Count > 0)
+        {
+            string[] batchIds = pendingIds.Take(ConditionalBulkMutationBatchSize).ToArray();
+            List<ParkDocument> previousDocuments = await this.collection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, previousDocuments.Select(static document => document.Id));
+            if (previousDocuments.Count == 0)
             {
-                Park current = document.ToDomain();
-                if (isVisible.HasValue)
+                continue;
+            }
+
+            IReadOnlyCollection<Park> previousParks = previousDocuments
+                .Select(static document => document.ToDomain())
+                .ToArray();
+            IReadOnlyCollection<Park> currentParks = previousDocuments
+                .Select(document =>
                 {
-                    current.IsVisible = isVisible.Value;
-                }
+                    Park current = document.ToDomain();
+                    if (isVisible.HasValue)
+                    {
+                        current.IsVisible = isVisible.Value;
+                    }
 
-                return current;
-            })
-            .ToArray();
-        RatingRankingMutationPreparation rankingPreparation =
-            await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
-                previousParks,
-                currentParks,
-                cancellationToken);
+                    return current;
+                })
+                .ToArray();
+            RatingRankingMutationPreparation rankingPreparation =
+                await this.rankingSourceChangeCoordinator.PrepareParkChangesAsync(
+                    previousParks,
+                    currentParks,
+                    cancellationToken);
+            UpdateDefinition<ParkDocument> update = BuildBulkAdministrationUpdate(
+                isVisible,
+                normalizedAdminReviewStatus,
+                DateTime.UtcNow);
+            FilterDefinition<ParkDocument> observedStatesFilter = Builders<ParkDocument>.Filter.Or(
+                previousDocuments.Select(BuildObservedRankingStateFilter));
+            UpdateResult result = await this.collection.UpdateManyAsync(
+                observedStatesFilter,
+                update,
+                cancellationToken: cancellationToken);
+            bool batchSourceChanged = result.ModifiedCount > 0;
+            rankingSourceChanged |= batchSourceChanged;
+            await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
+                rankingPreparation,
+                batchSourceChanged,
+                CancellationToken.None);
 
-        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
+            List<ParkDocument> currentDocuments = await this.collection
+                .Find(Builders<ParkDocument>.Filter.In(document => document.Id, batchIds))
+                .ToListAsync(cancellationToken);
+            RemoveMissingIds(pendingIds, batchIds, currentDocuments.Select(static document => document.Id));
+            foreach (ParkDocument document in currentDocuments.Where(document =>
+                         MatchesBulkAdministrationTarget(document, isVisible, normalizedAdminReviewStatus)))
+            {
+                pendingIds.Remove(document.Id);
+                updatedIds.Add(document.Id);
+            }
+        }
+
+        if (rankingSourceChanged && isVisible.HasValue)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return updatedIds.Count;
+    }
+
+    internal static bool MatchesBulkAdministrationTarget(
+        ParkDocument document,
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return (!isVisible.HasValue || document.IsVisible == isVisible.Value)
+            && (!adminReviewStatus.HasValue || document.AdminReviewStatus == adminReviewStatus.Value);
+    }
+
+    private static UpdateDefinition<ParkDocument> BuildBulkAdministrationUpdate(
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus,
+        DateTime updatedAtUtc)
+    {
+        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update
+            .Set(document => document.UpdatedAt, updatedAtUtc);
         if (isVisible.HasValue)
         {
             update = update.Set(document => document.IsVisible, isVisible.Value);
@@ -492,29 +561,24 @@ public sealed class ParkRepository : IParkRepository
 
         if (adminReviewStatus.HasValue)
         {
-            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
             update = update
-                .Set(document => document.AdminReviewStatus, normalizedStatus)
-                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
+                .Set(document => document.AdminReviewStatus, adminReviewStatus.Value)
+                .Set(document => document.AdminReviewPriority, adminReviewStatus.Value.ToAdminReviewPriority());
         }
 
-        UpdateResult result = await this.collection.UpdateManyAsync(
-            Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds),
-            update,
-            cancellationToken: cancellationToken);
+        return update;
+    }
 
-        int updatedCount = checked((int)result.ModifiedCount);
-        if (updatedCount > 0 && isVisible.HasValue)
+    private static void RemoveMissingIds(
+        ISet<string> pendingIds,
+        IReadOnlyCollection<string> requestedIds,
+        IEnumerable<string> foundIds)
+    {
+        HashSet<string> found = foundIds.ToHashSet(StringComparer.Ordinal);
+        foreach (string missingId in requestedIds.Where(id => !found.Contains(id)))
         {
-            this.ratingRankSnapshotCache.Invalidate();
+            pendingIds.Remove(missingId);
         }
-
-        await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: updatedCount > 0,
-            CancellationToken.None);
-
-        return updatedCount;
     }
 
     public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken, ParkAudienceClassificationFilter? audienceClassificationFilter = null)

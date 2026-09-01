@@ -54,9 +54,28 @@ public sealed class RatingRepository : IRatingRepository
         ArgumentNullException.ThrowIfNull(rating);
         ArgumentNullException.ThrowIfNull(aggregateTarget);
 
-        UserRating upsertedRating = await this.UpsertUserRatingDocumentAsync(rating, cancellationToken);
-        RatingAggregate? aggregate = await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
-        return new UserRatingMutationResult(upsertedRating, aggregate);
+        UserRatingDocumentMutationResult documentMutation =
+            await this.UpsertUserRatingDocumentAsync(rating, cancellationToken);
+        bool sourceChanged = documentMutation.SourceChanged;
+        RatingAggregate? aggregate;
+        if (sourceChanged)
+        {
+            aggregate = await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
+        }
+        else
+        {
+            aggregate = await this.GetAggregateAsync(rating.TargetType, rating.TargetId, cancellationToken);
+            if (aggregate is null || aggregate.SourceIntegrityIsValid != true)
+            {
+                aggregate = await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
+                sourceChanged = true;
+            }
+        }
+
+        return new UserRatingMutationResult(
+            sourceChanged,
+            documentMutation.Rating,
+            aggregate);
     }
 
     public async Task<UserRatingDeletionResult> DeleteUserRatingAndRecalculateAggregateAsync(
@@ -111,7 +130,9 @@ public sealed class RatingRepository : IRatingRepository
         return aggregate;
     }
 
-    private async Task<UserRating> UpsertUserRatingDocumentAsync(UserRating rating, CancellationToken cancellationToken)
+    private async Task<UserRatingDocumentMutationResult> UpsertUserRatingDocumentAsync(
+        UserRating rating,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(rating);
 
@@ -133,17 +154,46 @@ public sealed class RatingRepository : IRatingRepository
         FindOneAndUpdateOptions<UserRatingDocument> options = new FindOneAndUpdateOptions<UserRatingDocument>
         {
             IsUpsert = true,
-            ReturnDocument = ReturnDocument.After,
+            ReturnDocument = ReturnDocument.Before,
         };
 
-        UserRatingDocument? document = await this.userRatingsCollection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
-        if (document is null)
+        UserRatingDocument? previousDocument = await this.userRatingsCollection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        bool sourceChanged = HasRankingSourceChanged(previousDocument, rating);
+        UserRating upsertedRating = new UserRating
         {
-            document = await this.userRatingsCollection.Find(filter).FirstAsync(cancellationToken);
-        }
-
-        return document.ToDomain();
+            Id = previousDocument?.Id ?? documentId,
+            UserId = rating.UserId.Trim(),
+            TargetType = rating.TargetType,
+            TargetId = rating.TargetId.Trim(),
+            ParkId = rating.ParkId.Trim(),
+            ParkItemCategory = rating.ParkItemCategory,
+            ParkItemType = rating.ParkItemType,
+            Value = rating.Value,
+            CreatedAtUtc = previousDocument?.CreatedAt ?? nowUtc,
+            UpdatedAtUtc = nowUtc,
+        };
+        return new UserRatingDocumentMutationResult(sourceChanged, upsertedRating);
     }
+
+    internal static bool HasRankingSourceChanged(
+        UserRatingDocument? previousDocument,
+        UserRating rating)
+    {
+        ArgumentNullException.ThrowIfNull(rating);
+        return previousDocument is null
+            || previousDocument.Value != rating.Value
+            || !string.Equals(previousDocument.ParkId, rating.ParkId.Trim(), StringComparison.Ordinal)
+            || previousDocument.ParkItemCategory != rating.ParkItemCategory
+            || previousDocument.ParkItemType != rating.ParkItemType;
+    }
+
+    private sealed record UserRatingDocumentMutationResult(
+        bool SourceChanged,
+        UserRating Rating);
 
     public async Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken)
     {

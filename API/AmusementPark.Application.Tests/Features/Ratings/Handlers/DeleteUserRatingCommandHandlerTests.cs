@@ -79,36 +79,17 @@ public sealed class DeleteUserRatingCommandHandlerTests
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
             Array.Empty<RatingRankingMutationLease>());
-        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
-            new[]
-            {
-                new RatingRankingMutationLease(
-                    RankingScopeKey.Parse("park-items:category:restaurant"),
-                    Guid.NewGuid().ToString("N")),
-            });
         rankingMutationGuard
-            .Setup(value => value.PrepareMutationAsync(
-                RatingTargetType.ParkItem,
-                ParkItemCategory.Attraction,
-                ParkItemCategory.Show,
+            .Setup(value => value.PreparePotentialParkItemMutationAsync(
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(initialPreparation);
         rankingMutationGuard
-            .Setup(value => value.CompleteMutationAsync(
+            .Setup(value => value.CompletePotentialParkItemMutationAsync(
                 initialPreparation,
-                true,
-                CancellationToken.None))
-            .Returns(Task.CompletedTask);
-        rankingMutationGuard
-            .Setup(value => value.PrepareMutationAsync(
-                RatingTargetType.ParkItem,
-                ParkItemCategory.Restaurant,
-                null,
-                CancellationToken.None))
-            .ReturnsAsync(authoritativePreparation);
-        rankingMutationGuard
-            .Setup(value => value.CompleteMutationAsync(
-                authoritativePreparation,
+                It.Is<IReadOnlyCollection<ParkItemCategory?>>(categories =>
+                    categories.Contains(ParkItemCategory.Attraction)
+                    && categories.Contains(ParkItemCategory.Show)
+                    && categories.Contains(ParkItemCategory.Restaurant)),
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);

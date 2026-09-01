@@ -13,6 +13,7 @@ public sealed record RatingAggregateTarget(
     ParkItemType? ParkItemType);
 
 public sealed record UserRatingMutationResult(
+    bool SourceChanged,
     UserRating Rating,
     RatingAggregate? Aggregate);
 

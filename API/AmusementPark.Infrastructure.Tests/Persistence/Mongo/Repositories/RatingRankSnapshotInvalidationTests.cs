@@ -92,6 +92,7 @@ public sealed class RatingRankSnapshotInvalidationTests
             ParkId = "park-1",
             Name = "Demo Ride",
             Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
             IsVisible = true,
             AttractionDetails = new AttractionDetailsDocument
             {
@@ -110,6 +111,7 @@ public sealed class RatingRankSnapshotInvalidationTests
         Assert.Equal(document.ParkId, filter["parkId"].AsString);
         Assert.Equal(document.Name, filter["name"].AsString);
         Assert.Equal(document.Category.ToString(), filter["category"].AsString);
+        Assert.Equal(document.Type.ToString(), filter["type"].AsString);
         Assert.True(filter["isVisible"].AsBoolean);
         Assert.Equal(
             ParkItemStatusNormalizer.Operating,
@@ -138,6 +140,55 @@ public sealed class RatingRankSnapshotInvalidationTests
         Assert.Equal(document.Name, filter["name"].AsString);
         Assert.True(filter["isVisible"].AsBoolean);
         Assert.Equal(document.Status.ToString(), filter["status"].AsString);
+    }
+
+    [Fact]
+    public void MatchesBulkAdministrationTarget_WhenConcurrentParkStateDiffers_ShouldRequireRetry()
+    {
+        ParkDocument concurrent = new ParkDocument
+        {
+            Id = "park-1",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        bool result = ParkRepository.MatchesBulkAdministrationTarget(
+            concurrent,
+            isVisible: true,
+            AdminReviewStatus.Validated);
+
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void MatchesBulkFieldsTarget_WhenEveryRequestedValueIsApplied_ShouldFinishRetryLoop()
+    {
+        ParkItemDocument updated = new ParkItemDocument
+        {
+            Id = "item-1",
+            ZoneId = "zone-2",
+            Category = ParkItemCategory.Show,
+            Type = ParkItemType.DarkRide,
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            AttractionDetails = new AttractionDetailsDocument
+            {
+                ManufacturerId = "manufacturer-2",
+            },
+        };
+
+        bool result = ParkItemRepository.MatchesBulkFieldsTarget(
+            updated,
+            updateZone: true,
+            "zone-2",
+            ParkItemCategory.Show,
+            ParkItemType.DarkRide,
+            updateManufacturer: true,
+            "manufacturer-2",
+            isVisible: true,
+            AdminReviewStatus.Validated);
+
+        Assert.True(result);
     }
 
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(

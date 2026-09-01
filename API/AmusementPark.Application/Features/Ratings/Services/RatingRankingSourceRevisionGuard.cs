@@ -54,6 +54,16 @@ public sealed class RatingRankingSourceRevisionGuard :
         return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
     }
 
+    public async Task<RatingRankingMutationPreparation> PreparePotentialParkItemMutationAsync(
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<RankingScopeDefinition> affectedScopes = this.scopeRegistry.Definitions
+            .Where(static definition => definition.TargetFamily is RankingTargetFamily.Parks
+                or RankingTargetFamily.ParkItems)
+            .ToArray();
+        return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
+    }
+
     public async Task<RatingRankingMutationPreparation> PrepareParkChangesAsync(
         IReadOnlyCollection<Park> previousParks,
         IReadOnlyCollection<Park> currentParks,
@@ -119,31 +129,41 @@ public sealed class RatingRankingSourceRevisionGuard :
                 && currentIncluded
                 && (previous!.Category != current!.Category
                     || !string.Equals(previous.ParkId, current.ParkId, StringComparison.Ordinal));
+            bool parkCompositionChanged = previousIncluded
+                && currentIncluded
+                && previous!.Type != current!.Type;
             bool rankingNameChanged = previousIncluded
                 && currentIncluded
                 && !NamesHaveEquivalentRankingOrder(previous!.Name, current!.Name);
-            if (!membershipChanged && !placementChanged && !rankingNameChanged)
+            if (!membershipChanged
+                && !placementChanged
+                && !parkCompositionChanged
+                && !rankingNameChanged)
             {
                 continue;
             }
 
-            if (membershipChanged || placementChanged)
+            if (membershipChanged || placementChanged || parkCompositionChanged)
             {
                 affectsParkRankingSources = true;
             }
 
-            if (previousIncluded)
+            if (membershipChanged || placementChanged || rankingNameChanged)
             {
-                affectedCategories.Add(previous!.Category);
-            }
+                if (previousIncluded)
+                {
+                    affectedCategories.Add(previous!.Category);
+                }
 
-            if (currentIncluded)
-            {
-                affectedCategories.Add(current!.Category);
+                if (currentIncluded)
+                {
+                    affectedCategories.Add(current!.Category);
+                }
             }
         }
 
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes = affectedCategories.Count == 0
+            && !affectsParkRankingSources
             ? Array.Empty<RankingScopeDefinition>()
             : this.scopeRegistry.Definitions
                 .Where(definition => (affectsParkRankingSources
@@ -230,7 +250,42 @@ public sealed class RatingRankingSourceRevisionGuard :
         bool sourceChanged,
         CancellationToken cancellationToken)
     {
+        await this.CompleteMutationAsync(
+            preparation,
+            _ => sourceChanged,
+            cancellationToken);
+    }
+
+    public async Task CompletePotentialParkItemMutationAsync(
+        RatingRankingMutationPreparation preparation,
+        IReadOnlyCollection<ParkItemCategory?> affectedCategories,
+        bool sourceChanged,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(affectedCategories);
+        HashSet<ParkItemCategory> normalizedCategories = affectedCategories
+            .Where(static category => category.HasValue && Enum.IsDefined(category.Value))
+            .Select(static category => category!.Value)
+            .ToHashSet();
+        IReadOnlyDictionary<RankingScopeKey, RankingScopeDefinition> definitionsByKey =
+            this.scopeRegistry.Definitions.ToDictionary(static definition => definition.Key);
+        await this.CompleteMutationAsync(
+            preparation,
+            scopeKey => sourceChanged
+                && definitionsByKey.TryGetValue(scopeKey, out RankingScopeDefinition? definition)
+                && (definition.TargetFamily == RankingTargetFamily.Parks
+                    || (definition.Filter.ParkItemCategory.HasValue
+                        && normalizedCategories.Contains(definition.Filter.ParkItemCategory.Value))),
+            cancellationToken);
+    }
+
+    private async Task CompleteMutationAsync(
+        RatingRankingMutationPreparation preparation,
+        Func<RankingScopeKey, bool> sourceChangedByScope,
+        CancellationToken cancellationToken)
+    {
         ArgumentNullException.ThrowIfNull(preparation);
+        ArgumentNullException.ThrowIfNull(sourceChangedByScope);
         List<RatingRankingSourceRevision> rebuildableRevisions = new List<RatingRankingSourceRevision>();
         foreach (RatingRankingMutationLease mutationLease in preparation.MutationLeases)
         {
@@ -239,7 +294,7 @@ public sealed class RatingRankingSourceRevisionGuard :
                 RatingRankingSourceRevision sourceRevision =
                     await this.sourceRevisionRepository.CompleteMutationAsync(
                         mutationLease,
-                        sourceChanged,
+                        sourceChangedByScope(mutationLease.ScopeKey),
                         cancellationToken);
                 if (sourceRevision.IsRebuildable && sourceRevision.Revision > 0)
                 {

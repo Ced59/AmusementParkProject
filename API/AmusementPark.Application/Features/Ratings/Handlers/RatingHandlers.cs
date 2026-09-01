@@ -104,37 +104,37 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
-        RatingRankingMutationPreparation rankingPreparation = await this.rankingMutationGuard.PrepareMutationAsync(
+        RatingRankingMutationPreparation rankingPreparation = await RatingRankingMutationCompletion.PrepareAsync(
             metadata.TargetType,
             metadata.ParkItemCategory,
             retainedRating?.ParkItemCategory,
+            this.rankingMutationGuard,
             cancellationToken);
-        RatingRankingMutationPreparation? authoritativeCategoryPreparation =
-            await RatingRankingMutationCompletion.PrepareAuthoritativeParkItemCategoryAsync(
-                metadata.TargetType,
-                metadata.TargetId,
-                metadata.ParkItemCategory,
-                retainedRating?.ParkItemCategory,
-                this.parkItemRepository,
-                this.rankingMutationGuard);
         UserRatingMutationResult mutation =
             await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
                 rating,
                 aggregateTarget,
                 cancellationToken);
 
-        this.ratingRankProvider.Invalidate();
-        await this.rankingMutationGuard.CompleteMutationAsync(
-            rankingPreparation,
-            sourceChanged: true,
-            CancellationToken.None);
-        if (authoritativeCategoryPreparation is not null)
+        ParkItemCategory? authoritativeCategory = mutation.SourceChanged
+            ? await RatingRankingMutationCompletion.ResolveAuthoritativeParkItemCategoryAsync(
+                metadata.TargetType,
+                metadata.TargetId,
+                this.parkItemRepository)
+            : null;
+        if (mutation.SourceChanged)
         {
-            await this.rankingMutationGuard.CompleteMutationAsync(
-                authoritativeCategoryPreparation,
-                sourceChanged: true,
-                CancellationToken.None);
+            this.ratingRankProvider.Invalidate();
         }
+
+        await RatingRankingMutationCompletion.CompleteAsync(
+            metadata.TargetType,
+            rankingPreparation,
+            mutation.SourceChanged,
+            metadata.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
+            authoritativeCategory,
+            this.rankingMutationGuard);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
@@ -222,19 +222,12 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
                 cancellationToken);
         }
 
-        RatingRankingMutationPreparation rankingPreparation = await this.rankingMutationGuard.PrepareMutationAsync(
+        RatingRankingMutationPreparation rankingPreparation = await RatingRankingMutationCompletion.PrepareAsync(
             command.TargetType,
             metadata?.ParkItemCategory,
             retainedRating?.ParkItemCategory,
+            this.rankingMutationGuard,
             cancellationToken);
-        RatingRankingMutationPreparation? authoritativeCategoryPreparation =
-            await RatingRankingMutationCompletion.PrepareAuthoritativeParkItemCategoryAsync(
-                command.TargetType,
-                targetId,
-                metadata?.ParkItemCategory,
-                retainedRating?.ParkItemCategory,
-                this.parkItemRepository,
-                this.rankingMutationGuard);
         UserRatingDeletionResult mutation =
             await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
                 userId,
@@ -247,17 +240,20 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             this.ratingRankProvider.Invalidate();
         }
 
-        await this.rankingMutationGuard.CompleteMutationAsync(
+        ParkItemCategory? authoritativeCategory = mutation.SourceChanged
+            ? await RatingRankingMutationCompletion.ResolveAuthoritativeParkItemCategoryAsync(
+                command.TargetType,
+                targetId,
+                this.parkItemRepository)
+            : null;
+        await RatingRankingMutationCompletion.CompleteAsync(
+            command.TargetType,
             rankingPreparation,
             mutation.SourceChanged,
-            CancellationToken.None);
-        if (authoritativeCategoryPreparation is not null)
-        {
-            await this.rankingMutationGuard.CompleteMutationAsync(
-                authoritativeCategoryPreparation,
-                mutation.SourceChanged,
-                CancellationToken.None);
-        }
+            metadata?.ParkItemCategory,
+            retainedRating?.ParkItemCategory,
+            authoritativeCategory,
+            this.rankingMutationGuard);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,

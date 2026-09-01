@@ -12,6 +12,70 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class RatingRepositoryTests
 {
     [Fact]
+    public void HasRankingSourceChanged_WhenRetryKeepsTheSameSemanticValue_ShouldReturnFalse()
+    {
+        UserRatingDocument previous = new UserRatingDocument
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+        UserRating retry = new UserRating
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = " park-1 ",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+
+        bool result = RatingRepository.HasRankingSourceChanged(previous, retry);
+
+        Assert.False(result);
+    }
+
+    [Theory]
+    [InlineData(4d, ParkItemCategory.Attraction, ParkItemType.RollerCoaster)]
+    [InlineData(4.5d, ParkItemCategory.Show, ParkItemType.RollerCoaster)]
+    [InlineData(4.5d, ParkItemCategory.Attraction, ParkItemType.DarkRide)]
+    public void HasRankingSourceChanged_WhenRankingFactChanges_ShouldReturnTrue(
+        double value,
+        ParkItemCategory category,
+        ParkItemType type)
+    {
+        UserRatingDocument previous = new UserRatingDocument
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            Value = 4.5d,
+        };
+        UserRating update = new UserRating
+        {
+            UserId = "user-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            ParkId = "park-1",
+            ParkItemCategory = category,
+            ParkItemType = type,
+            Value = value,
+        };
+
+        bool result = RatingRepository.HasRankingSourceChanged(previous, update);
+
+        Assert.True(result);
+    }
+
+    [Fact]
     public void BuildUserRatingSearchWindow_WhenMatchedParkHasManyRatings_ShouldCapResultsToPageSize()
     {
         List<UserRatingListItemResult> ratings = Enumerable.Range(1, 12)
