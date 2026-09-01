@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
@@ -38,6 +38,7 @@ interface RankingFilter {
   imports: [
     RatingTreeComponent,
     RatingRankingListComponent,
+    RouterLink,
     TranslateModule,
     UiButtonDirective,
     UiSectionHeaderComponent

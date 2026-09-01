@@ -4465,6 +4465,112 @@
       "loadMoreItems": "Carregar mais locais",
       "loadingMoreItems": "A carregar locais..."
     },
+    "methodology": {
+      "actions": {
+        "rankings": "Compreender o método",
+        "ratingZone": "Como esta avaliação influencia a classificação"
+      },
+      "breadcrumb": {
+        "label": "Navegação estrutural",
+        "home": "Início",
+        "rankings": "Classificações",
+        "methodology": "Metodologia"
+      },
+      "kicker": "Classificações transparentes",
+      "title": "Como são calculadas as classificações",
+      "subtitle": "Descobre as regras, os limiares e os pesos que tornam comparáveis as avaliações dos visitantes.",
+      "loading": "A carregar a metodologia...",
+      "errorTitle": "Não foi possível carregar a metodologia",
+      "errorText": "Um erro temporário impede a apresentação das regras. Tenta novamente dentro de instantes.",
+      "notFoundTitle": "Esta versão da metodologia não existe",
+      "notFoundText": "Consulta a versão atual para conheceres as regras em vigor.",
+      "currentAction": "Ver a metodologia atual",
+      "intro": "Uma classificação útil distingue uma apreciação duradoura de um entusiasmo baseado em poucas avaliações. As mesmas regras públicas aplicam-se a todos os alvos comparáveis.",
+      "versionLabel": "Versão da metodologia",
+      "effectiveDate": "Em vigor desde",
+      "currentBadge": "Versão atual",
+      "viewCurrent": "Ver as regras atuais",
+      "measures": {
+        "title": "O que a classificação mede",
+        "text": "Mede a apreciação declarada pelos visitantes, consolidada para limitar o efeito de amostras pequenas e comparar alvos do mesmo tipo."
+      },
+      "doesNotMeasure": {
+        "title": "O que não mede",
+        "text": "Não mede segurança, qualidade editorial das páginas, popularidade bruta nem as preferências de uma pessoa em particular."
+      },
+      "contributors": {
+        "title": "Contribuidores e observações",
+        "text": "Um contribuidor único é uma conta distinta com uma avaliação retida. Uma observação é uma avaliação registada; os limiares usam contribuidores únicos, não apenas volume técnico."
+      },
+      "scale": {
+        "title": "Escala de avaliação",
+        "text": "Cada visitante avalia de {{minimum}} a {{maximum}}, em passos de {{step}}. A média bruta continua visível, mas a classificação usa uma pontuação estabilizada."
+      },
+      "bayesian": {
+        "title": "Porquê uma pontuação bayesiana?",
+        "simple": "Um alvo com poucas avaliações aproxima-se de uma média de referência de {{priorMean}}, com um peso inicial equivalente a {{priorWeight}} avaliações. Essa influência diminui à medida que aumentam as contribuições reais.",
+        "formulaAccessible": "A pontuação é a média vezes o número de avaliações mais a média de referência {{priorMean}} vezes o peso {{priorWeight}}, dividida pelo número de avaliações mais esse peso."
+      },
+      "parkScore": {
+        "title": "Pontuação composta de um parque",
+        "text": "Com provas suficientes, combina {{directWeight}}% de avaliações diretas do parque e {{itemWeight}}% das avaliações dos seus locais. As categorias têm peso igual. São necessários {{itemMinimum}} locais elegíveis em {{categoryMinimum}} categorias, cada uma com pelo menos {{perCategoryMinimum}} locais."
+      },
+      "evidence": {
+        "title": "Limiares e níveis de prova",
+        "text": "O nível acompanha sempre a pontuação e explica a robustez da amostra sem depender da cor do distintivo.",
+        "tableLabel": "Tabela deslocável dos níveis de prova",
+        "level": "Nível",
+        "contributors": "Contribuidores únicos",
+        "rankingEffect": "Efeito na classificação",
+        "provisional": "Provisório",
+        "eligible": "Elegível",
+        "established": "Estabelecido",
+        "strong": "Prova forte",
+        "provisionalEffect": "Pontuação visível, sem posição principal",
+        "eligibleEffect": "Pode entrar na classificação principal",
+        "establishedEffect": "Amostra consolidada",
+        "strongEffect": "Amostra muito robusta",
+        "publication": "A classificação principal só é publicada com pelo menos {{minimumEntries}} entradas elegíveis. Abaixo do limiar provisório, a prova é insuficiente.",
+        "rolloutPending": "Ativação em breve: estas regras de elegibilidade são publicadas antes de entrarem em vigor. Até à ativação, as classificações atuais mantêm as regras anteriores."
+      },
+      "ties": {
+        "title": "Empates",
+        "text": "Duas pontuações com diferença inferior a {{epsilon}} ficam empatadas. Usa-se a classificação de competição: depois de dois primeiros lugares, surge o terceiro."
+      },
+      "lifecycle": {
+        "title": "Encerramentos e ciclo de vida",
+        "text": "Só parques e locais públicos atualmente em funcionamento entram na classificação atual. As avaliações históricas podem continuar visíveis sem gerar uma posição atual."
+      },
+      "moderation": {
+        "title": "Moderação e exclusões",
+        "text": "Avaliações inválidas, duplicadas ou associadas a um alvo excluído não contam. Os controlos de integridade podem reter uma posição em vez de publicar um resultado duvidoso."
+      },
+      "recalculation": {
+        "title": "Quando as posições são recalculadas",
+        "text": "Os resultados são recalculados após uma alteração relevante nas avaliações ou no estado público. Só uma publicação completa e coerente substitui a anterior."
+      },
+      "history": {
+        "title": "Histórico das metodologias",
+        "intro": "Cada versão fixa os seus parâmetros para que um resultado continue explicável ao longo do tempo.",
+        "reason": "Motivo",
+        "effect": "Efeito esperado",
+        "previous": "Versão anterior",
+        "none": "Primeira versão",
+        "recomputation": "Quando entra uma nova metodologia, os dados podem ser recalculados. Uma posição pode mudar mesmo sem uma nova avaliação."
+      },
+      "report": {
+        "title": "Comunicar um erro",
+        "text": "Encontraste uma incoerência numa avaliação, num alvo ou nesta explicação? Indica-nos a página e os factos verificáveis.",
+        "action": "Contactar-nos"
+      },
+      "versions": {
+        "ratings-2026-01": {
+          "summary": "Primeiro método público: pontuação bayesiana, provas por contribuidores únicos e composição equilibrada dos parques.",
+          "reason": "Tornar as classificações comparáveis, compreensíveis e resistentes a amostras pequenas.",
+          "effect": "Os alvos com poucas provas continuam visíveis sem receber demasiado cedo uma posição principal."
+        }
+      }
+    },
     "targetTypes": {
       "Park": "Parques",
       "ParkItem": "Locais"

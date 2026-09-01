@@ -175,6 +175,8 @@ export const routes: Routes = [
           { path: 'technical/:slug', loadComponent: () => import('./features/public/technical-pages/pages/technical-page-detail-page.component').then((m) => m.TechnicalPageDetailPageComponent) },
           { path: 'manufacturers', loadComponent: () => import('@features/public/manufacturers/pages/manufacturers-page.component').then((m) => m.ManufacturersPageComponent) },
           { path: 'rankings/shared/:shareId', loadComponent: () => import('@features/public/ratings/pages/shared-user-rankings-page.component').then((m) => m.SharedUserRankingsPageComponent) },
+          { path: 'rankings/methodology/:version', loadComponent: () => import('@features/public/ratings/pages/rating-methodology-page.component').then((m) => m.RatingMethodologyPageComponent) },
+          { path: 'rankings/methodology', loadComponent: () => import('@features/public/ratings/pages/rating-methodology-page.component').then((m) => m.RatingMethodologyPageComponent) },
           { path: 'rankings', loadComponent: () => import('@features/public/ratings/pages/rankings-page.component').then((m) => m.RankingsPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
           { path: 'contact', loadComponent: () => import('@features/public/contact/pages/contact-page.component').then((m) => m.ContactPageComponent) },

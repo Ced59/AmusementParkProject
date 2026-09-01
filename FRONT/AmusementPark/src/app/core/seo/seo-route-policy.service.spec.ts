@@ -57,6 +57,8 @@ describe('SeoRoutePolicyService', (): void => {
     ).toBe('de');
     expect(service.resolveStaticRouteKey('/de/privacy')).toBe('privacy');
     expect(service.resolveStaticRouteKey('/fr/not-found')).toBe('notFound');
+    expect(service.resolveStaticRouteKey('/fr/rankings/methodology')).toBe('ratingMethodology');
+    expect(service.resolveStaticRouteKey('/fr/rankings/methodology/ratings-2026-01')).toBe('ratingMethodology');
     expect(service.resolveStaticRouteKey('/fr/park/id/slug')).toBeNull();
     expect(service.resolveStaticRouteKey('/fr/constructor')).toBeNull();
   });

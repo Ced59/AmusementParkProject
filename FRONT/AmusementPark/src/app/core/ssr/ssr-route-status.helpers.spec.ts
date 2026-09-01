@@ -37,6 +37,8 @@ describe('SSR route status helpers', () => {
       '/fr/parks',
       '/fr/sitemap',
       '/fr/rankings',
+      '/fr/rankings/methodology',
+      '/fr/rankings/methodology/ratings-2026-01',
       '/fr/rankings/shared/opaque-token',
       '/fr/manufacturers',
       '/fr/technical',

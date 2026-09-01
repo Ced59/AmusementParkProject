@@ -336,6 +336,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             new PublicHtmlSitemapNode { Id = "technical", Label = Label(language, "technical"), RelativeUrl = $"/{language}/technical", HasChildren = true },
             new PublicHtmlSitemapNode { Id = "references", Label = Label(language, "references"), HasChildren = true },
             CreateLeaf("rankings", Label(language, "rankings"), $"/{language}/rankings"),
+            CreateLeaf("rating-methodology", Label(language, "ratingMethodology"), $"/{language}/rankings/methodology"),
             CreateLeaf("about", Label(language, "about"), $"/{language}/about"),
             CreateLeaf("contact", Label(language, "contact"), $"/{language}/contact"),
             CreateLeaf("versions", Label(language, "versions"), $"/{language}/versions"),

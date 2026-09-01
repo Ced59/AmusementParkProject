@@ -35,6 +35,13 @@
   line-height: 1.55;
 }
 
+.rankings-hero__note a {
+  color: var(--app-primary);
+  font-weight: 900;
+  white-space: nowrap;
+  text-underline-offset: 0.18em;
+}
+
 .rankings-filters {
   display: flex;
   flex-wrap: wrap;

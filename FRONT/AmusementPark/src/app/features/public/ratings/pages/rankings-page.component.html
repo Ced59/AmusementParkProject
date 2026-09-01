@@ -18,6 +18,9 @@
     <div class="rankings-hero__note rankings-hero__note--calculation">
       <i class="pi pi-info-circle" aria-hidden="true"></i>
       <span>{{ 'ratings.rankings.calculationHint' | translate }}</span>
+      <a [routerLink]="['/', currentLang(), 'rankings', 'methodology']">
+        {{ 'ratings.methodology.actions.rankings' | translate }}
+      </a>
     </div>
   </header>
 

@@ -107,6 +107,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/rankings");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/rankings");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/rankings/methodology");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/rankings/methodology");
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/images" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));

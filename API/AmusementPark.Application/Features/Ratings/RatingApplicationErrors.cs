@@ -52,4 +52,11 @@ public static class RatingApplicationErrors
             "rating.shared-ranking.not-found",
             "Le classement partagé est introuvable ou n'est plus public.");
     }
+
+    public static ApplicationError MethodologyNotFound()
+    {
+        return ApplicationError.NotFound(
+            "rating.methodology.not-found",
+            "La méthodologie de classement demandée est introuvable.");
+    }
 }

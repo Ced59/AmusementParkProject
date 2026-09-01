@@ -14,6 +14,14 @@ public sealed record GetRatingSummaryQuery(
 
 public sealed record GetRatingDiagnosticsQuery : IQuery<ApplicationResult<RatingDiagnosticsResult>>;
 
+public sealed record GetCurrentRatingMethodologyQuery : IQuery<ApplicationResult<RatingMethodologyResult>>;
+
+public sealed record GetRatingMethodologyQuery(
+    string Version) : IQuery<ApplicationResult<RatingMethodologyResult>>;
+
+public sealed record ListRatingMethodologiesQuery
+    : IQuery<ApplicationResult<IReadOnlyCollection<RatingMethodologyResult>>>;
+
 public sealed record GetUserRatingQuery(
     string UserId,
     RatingTargetType TargetType,

@@ -1,0 +1,181 @@
+<article class="methodology-page public-page">
+  <nav class="methodology-breadcrumb" [attr.aria-label]="'ratings.methodology.breadcrumb.label' | translate">
+    <a [routerLink]="['/', currentLang(), 'home']">{{ 'ratings.methodology.breadcrumb.home' | translate }}</a>
+    <span aria-hidden="true">/</span>
+    <a [routerLink]="rankingRoute()">{{ 'ratings.methodology.breadcrumb.rankings' | translate }}</a>
+    <span aria-hidden="true">/</span>
+    @if (selectedVersion(); as version) {
+      <a [routerLink]="methodologyRoute()">{{ 'ratings.methodology.breadcrumb.methodology' | translate }}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ version }}</span>
+    } @else {
+      <span aria-current="page">{{ 'ratings.methodology.breadcrumb.methodology' | translate }}</span>
+    }
+  </nav>
+
+  <app-ui-section-header
+    kickerTone="gold"
+    kickerIconClass="pi pi-chart-bar"
+    kickerLabelKey="ratings.methodology.kicker"
+    subtitleKey="ratings.methodology.subtitle">
+    <h1 uiSectionTitle class="app-section-header__title">
+      {{ 'ratings.methodology.title' | translate }}
+    </h1>
+  </app-ui-section-header>
+
+  @if (loading()) {
+    <p class="methodology-state" role="status">{{ 'ratings.methodology.loading' | translate }}</p>
+  } @else if (error()) {
+    <section class="methodology-state methodology-state--error" role="alert">
+      <h2>{{ (notFound() ? 'ratings.methodology.notFoundTitle' : 'ratings.methodology.errorTitle') | translate }}</h2>
+      <p>{{ (notFound() ? 'ratings.methodology.notFoundText' : 'ratings.methodology.errorText') | translate }}</p>
+      <a appUiButton="primary" [routerLink]="methodologyRoute()">{{ 'ratings.methodology.currentAction' | translate }}</a>
+    </section>
+  } @else if (methodology(); as method) {
+    <p class="methodology-intro">{{ 'ratings.methodology.intro' | translate }}</p>
+
+    <aside class="methodology-version" [attr.aria-label]="'ratings.methodology.versionLabel' | translate">
+      <span class="methodology-version__badge">
+        <i class="pi pi-bookmark" aria-hidden="true"></i>
+        {{ method.version }}
+      </span>
+      <span>{{ 'ratings.methodology.effectiveDate' | translate }} {{ method.effectiveDate | date:'longDate':undefined:currentLang() }}</span>
+      @if (method.isCurrent) {
+        <strong><i class="pi pi-check-circle" aria-hidden="true"></i> {{ 'ratings.methodology.currentBadge' | translate }}</strong>
+      } @else {
+        <a [routerLink]="methodologyRoute()">{{ 'ratings.methodology.viewCurrent' | translate }}</a>
+      }
+    </aside>
+
+    <div class="methodology-grid">
+      <section id="measures" class="methodology-card">
+        <h2>{{ 'ratings.methodology.measures.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.measures.text' | translate }}</p>
+      </section>
+      <section id="does-not-measure" class="methodology-card">
+        <h2>{{ 'ratings.methodology.doesNotMeasure.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.doesNotMeasure.text' | translate }}</p>
+      </section>
+    </div>
+
+    <section id="contributors" class="methodology-section">
+      <h2>{{ 'ratings.methodology.contributors.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.contributors.text' | translate }}</p>
+    </section>
+
+    <section id="scale" class="methodology-section">
+      <h2>{{ 'ratings.methodology.scale.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.scale.text' | translate:{ minimum: formatMethodologyNumber(method.ratingScale.minimum), maximum: formatMethodologyNumber(method.ratingScale.maximum), step: formatMethodologyNumber(method.ratingScale.step) } }}</p>
+    </section>
+
+    <section id="bayesian-score" class="methodology-section methodology-section--accent">
+      <h2>{{ 'ratings.methodology.bayesian.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.bayesian.simple' | translate:{ priorMean: formatMethodologyNumber(method.bayesian.priorMean), priorWeight: formatMethodologyNumber(method.bayesian.priorWeight) } }}</p>
+      <div class="methodology-formula">
+        <code aria-hidden="true">{{ formula(method) }}</code>
+        <span class="sr-only">{{ 'ratings.methodology.bayesian.formulaAccessible' | translate:{ priorMean: formatMethodologyNumber(method.bayesian.priorMean), priorWeight: formatMethodologyNumber(method.bayesian.priorWeight) } }}</span>
+      </div>
+    </section>
+
+    <section id="park-score" class="methodology-section">
+      <h2>{{ 'ratings.methodology.parkScore.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.parkScore.text' | translate:{ directWeight: percent(method.parkComposition.directRatingWeight), itemWeight: percent(method.parkComposition.itemRatingWeight), itemMinimum: method.parkComposition.minimumEligibleItems, categoryMinimum: method.parkComposition.minimumCategories, perCategoryMinimum: method.parkComposition.minimumItemsPerCategory } }}</p>
+    </section>
+
+    <section id="evidence" class="methodology-section">
+      <h2>{{ 'ratings.methodology.evidence.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.evidence.text' | translate }}</p>
+      <div class="methodology-table-wrap" tabindex="0" [attr.aria-label]="'ratings.methodology.evidence.tableLabel' | translate">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">{{ 'ratings.methodology.evidence.level' | translate }}</th>
+              <th scope="col">{{ 'ratings.methodology.evidence.contributors' | translate }}</th>
+              <th scope="col">{{ 'ratings.methodology.evidence.rankingEffect' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><i class="pi pi-circle" aria-hidden="true"></i> {{ 'ratings.methodology.evidence.provisional' | translate }}</th>
+              <td>{{ method.evidenceThresholds.provisional }}–{{ method.evidenceThresholds.eligible - 1 }}</td>
+              <td>{{ 'ratings.methodology.evidence.provisionalEffect' | translate }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="pi pi-check" aria-hidden="true"></i> {{ 'ratings.methodology.evidence.eligible' | translate }}</th>
+              <td>{{ method.evidenceThresholds.eligible }}–{{ method.evidenceThresholds.established - 1 }}</td>
+              <td>{{ 'ratings.methodology.evidence.eligibleEffect' | translate }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="pi pi-check-circle" aria-hidden="true"></i> {{ 'ratings.methodology.evidence.established' | translate }}</th>
+              <td>{{ method.evidenceThresholds.established }}–{{ method.evidenceThresholds.strong - 1 }}</td>
+              <td>{{ 'ratings.methodology.evidence.establishedEffect' | translate }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="pi pi-shield" aria-hidden="true"></i> {{ 'ratings.methodology.evidence.strong' | translate }}</th>
+              <td>≥ {{ method.evidenceThresholds.strong }}</td>
+              <td>{{ 'ratings.methodology.evidence.strongEffect' | translate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="methodology-note">{{ 'ratings.methodology.evidence.publication' | translate:{ minimumEntries: method.publicationRules.minimumEligibleEntries } }}</p>
+      <p class="methodology-note methodology-note--pending">
+        <i class="pi pi-clock" aria-hidden="true"></i>
+        {{ 'ratings.methodology.evidence.rolloutPending' | translate }}
+      </p>
+    </section>
+
+    <div class="methodology-grid methodology-grid--three">
+      <section id="ties" class="methodology-card">
+        <h2>{{ 'ratings.methodology.ties.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.ties.text' | translate:{ epsilon: formatMethodologyNumber(method.publicationRules.scoreTieEpsilon) } }}</p>
+      </section>
+      <section id="lifecycle" class="methodology-card">
+        <h2>{{ 'ratings.methodology.lifecycle.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.lifecycle.text' | translate }}</p>
+      </section>
+      <section id="moderation" class="methodology-card">
+        <h2>{{ 'ratings.methodology.moderation.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.moderation.text' | translate }}</p>
+      </section>
+    </div>
+
+    <section id="recalculation" class="methodology-section">
+      <h2>{{ 'ratings.methodology.recalculation.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.recalculation.text' | translate }}</p>
+    </section>
+
+    <section id="history" class="methodology-section">
+      <h2>{{ 'ratings.methodology.history.title' | translate }}</h2>
+      <p>{{ 'ratings.methodology.history.intro' | translate }}</p>
+      <ol class="methodology-history">
+        @for (entry of history(); track entry.version) {
+          <li [class.methodology-history__item--selected]="entry.version === method.version">
+            <header>
+              <a [routerLink]="methodologyRoute(entry.version)">{{ entry.version }}</a>
+              <time [attr.datetime]="entry.effectiveDate">{{ entry.effectiveDate | date:'longDate':undefined:currentLang() }}</time>
+              @if (entry.isCurrent) {
+                <strong>{{ 'ratings.methodology.currentBadge' | translate }}</strong>
+              }
+            </header>
+            <p>{{ versionTranslationKey(entry.version, 'summary') | translate }}</p>
+            <dl>
+              <div><dt>{{ 'ratings.methodology.history.reason' | translate }}</dt><dd>{{ versionTranslationKey(entry.version, 'reason') | translate }}</dd></div>
+              <div><dt>{{ 'ratings.methodology.history.effect' | translate }}</dt><dd>{{ versionTranslationKey(entry.version, 'effect') | translate }}</dd></div>
+              <div><dt>{{ 'ratings.methodology.history.previous' | translate }}</dt><dd>{{ entry.previousVersion || ('ratings.methodology.history.none' | translate) }}</dd></div>
+            </dl>
+          </li>
+        }
+      </ol>
+      <p class="methodology-note">{{ 'ratings.methodology.history.recomputation' | translate }}</p>
+    </section>
+
+    <section id="report" class="methodology-report">
+      <div>
+        <h2>{{ 'ratings.methodology.report.title' | translate }}</h2>
+        <p>{{ 'ratings.methodology.report.text' | translate }}</p>
+      </div>
+      <a appUiButton="primary" [routerLink]="contactRoute()">{{ 'ratings.methodology.report.action' | translate }}</a>
+    </section>
+  }
+</article>
