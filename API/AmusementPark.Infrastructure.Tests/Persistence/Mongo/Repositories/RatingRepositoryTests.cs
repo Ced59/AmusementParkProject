@@ -122,6 +122,21 @@ public sealed class RatingRepositoryTests
         Assert.Equal(expected, result);
     }
 
+    [Theory]
+    [InlineData(5000, 5000, false)]
+    [InlineData(5001, 5000, true)]
+    public void IsParkItemRankingSourceSetTruncated_ShouldDetectLookAheadDocument(
+        int documentCount,
+        int documentLimit,
+        bool expected)
+    {
+        bool result = RatingRepository.IsParkItemRankingSourceSetTruncated(
+            documentCount,
+            documentLimit);
+
+        Assert.Equal(expected, result);
+    }
+
     private static UserRatingListItemResult CreateRating(
         string id,
         string targetId,

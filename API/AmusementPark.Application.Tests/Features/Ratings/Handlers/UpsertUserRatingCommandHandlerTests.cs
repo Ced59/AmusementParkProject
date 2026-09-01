@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Handlers;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -118,11 +119,18 @@ public sealed class UpsertUserRatingCommandHandlerTests
         ratingRankProvider
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingSourceRevision>());
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
                 ParkItemCategory.Attraction,
                 ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        rankingMutationGuard
+            .Setup(guard => guard.ScheduleRebuildsAsync(
+                preparation,
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 

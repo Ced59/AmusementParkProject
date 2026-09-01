@@ -175,6 +175,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IDurableBackgroundJobRepository, DurableBackgroundJobRepository>();
         services.AddSingleton<DurableBackgroundJobMetrics>();
         services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
+        services.AddHostedService<RatingRankingRebuildActivationHostedService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Handlers;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -292,11 +293,18 @@ public sealed class DeleteUserRatingCommandHandlerTests
     {
         Mock<IRatingRankingMutationGuard> guard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingSourceRevision>());
         guard
             .Setup(value => value.PrepareMutationAsync(
                 targetType,
                 currentParkItemCategory,
                 previousParkItemCategory,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        guard
+            .Setup(value => value.ScheduleRebuildsAsync(
+                preparation,
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
         return guard;

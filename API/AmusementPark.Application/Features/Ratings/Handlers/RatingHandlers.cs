@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Commands;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -103,7 +104,7 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
-        await this.rankingMutationGuard.PrepareMutationAsync(
+        RatingRankingMutationPreparation rankingPreparation = await this.rankingMutationGuard.PrepareMutationAsync(
             metadata.TargetType,
             metadata.ParkItemCategory,
             retainedRating?.ParkItemCategory,
@@ -113,6 +114,9 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             aggregateTarget,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
+        await this.rankingMutationGuard.ScheduleRebuildsAsync(
+            rankingPreparation,
+            cancellationToken);
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
             metadata.TargetId,
@@ -199,7 +203,7 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
                 cancellationToken);
         }
 
-        await this.rankingMutationGuard.PrepareMutationAsync(
+        RatingRankingMutationPreparation rankingPreparation = await this.rankingMutationGuard.PrepareMutationAsync(
             command.TargetType,
             metadata?.ParkItemCategory,
             retainedRating?.ParkItemCategory,
@@ -210,6 +214,9 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             targetId,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
+        await this.rankingMutationGuard.ScheduleRebuildsAsync(
+            rankingPreparation,
+            cancellationToken);
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,

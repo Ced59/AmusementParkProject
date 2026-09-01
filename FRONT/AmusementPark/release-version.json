@@ -1,6 +1,20 @@
 {
-  "version": "4.2.43",
+  "version": "4.2.44",
   "history": [
+    {
+      "version": "4.2.44",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Les futurs classements peuvent désormais être reconstruits automatiquement et sans interruption.",
+        "en": "Future rankings can now be rebuilt automatically without interruption.",
+        "de": "Künftige Ranglisten können nun automatisch und ohne Unterbrechung neu aufgebaut werden.",
+        "nl": "Toekomstige ranglijsten kunnen nu automatisch en zonder onderbreking opnieuw worden opgebouwd.",
+        "it": "Le future classifiche possono ora essere ricostruite automaticamente e senza interruzioni.",
+        "es": "Las futuras clasificaciones ya pueden reconstruirse automáticamente y sin interrupciones.",
+        "pl": "Przyszłe rankingi mogą być teraz automatycznie i bez przerw przebudowywane.",
+        "pt": "As futuras classificações podem agora ser reconstruídas automaticamente e sem interrupções."
+      }
+    },
     {
       "version": "4.2.43",
       "releasedAt": "2026-09-01",

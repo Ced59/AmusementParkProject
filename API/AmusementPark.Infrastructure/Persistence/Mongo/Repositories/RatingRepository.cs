@@ -329,19 +329,37 @@ public sealed class RatingRepository : IRatingRepository
         int maxItems,
         CancellationToken cancellationToken)
     {
+        RatingRankingSourceBatch batch = await this.GetVisibleParkItemRankingSourceBatchAsync(
+            parkItemCategory,
+            maxItems,
+            cancellationToken);
+        return batch.Sources;
+    }
+
+    public async Task<RatingRankingSourceBatch> GetVisibleParkItemRankingSourceBatchAsync(
+        ParkItemCategory parkItemCategory,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
         List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(
                 BuildParkRankingItemFilter(parkItemCategory))
             .Sort(BuildRankingSort())
-            .Limit(effectiveMaxItems)
+            .Limit(effectiveMaxItems + 1)
             .ToListAsync(cancellationToken);
 
         if (documents.Count == 0)
         {
-            return Array.Empty<RatingRankingItemResult>();
+            return new RatingRankingSourceBatch(Array.Empty<RatingRankingItemResult>(), false);
         }
 
-        return await this.EnrichVisibleRankingSourcesAsync(documents, cancellationToken);
+        bool isTruncated = IsParkItemRankingSourceSetTruncated(
+            documents.Count,
+            effectiveMaxItems);
+        IReadOnlyCollection<RatingRankingItemResult> sources = await this.EnrichVisibleRankingSourcesAsync(
+            documents.Take(effectiveMaxItems).ToList(),
+            cancellationToken);
+        return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
     public async Task<IReadOnlyCollection<UserRatingListItemResult>> GetUserRankingSourcesAsync(
@@ -740,6 +758,13 @@ public sealed class RatingRepository : IRatingRepository
     {
         return parkDocumentCount > RankingCandidateHardLimit
             || parkItemDocumentCount > parkItemLimit;
+    }
+
+    internal static bool IsParkItemRankingSourceSetTruncated(
+        int documentCount,
+        int documentLimit)
+    {
+        return documentCount > documentLimit;
     }
 
     private static bool IsAggregateCalculationCurrent(RatingAggregateDocument document)
