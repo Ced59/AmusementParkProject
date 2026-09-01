@@ -910,7 +910,6 @@ internal static class RankingSnapshotMongoDefinitions
         ArgumentNullException.ThrowIfNull(pointer);
         ArgumentNullException.ThrowIfNull(candidate);
         return pointer.ScopeKey == candidate.ScopeKey &&
-            pointer.MethodologyVersion == candidate.MethodologyVersion &&
             pointer.SourceRevision >= candidate.SourceRevision;
     }
 
