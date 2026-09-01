@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
@@ -23,10 +24,12 @@ public sealed class RatingRankSnapshotInvalidationTests
             .Returns(Task.CompletedTask);
         Mock<IMongoDatabase> database = CreateDatabase("parks", collection.Object);
         Mock<IRatingRankSnapshotCache> snapshotCache = CreateSnapshotCache();
+        Mock<IRatingRankingSourceChangeCoordinator> sourceChanges = CreateParkSourceChangeCoordinator();
         ParkRepository repository = new ParkRepository(
             database.Object,
             new MongoDbSettings { ParksCollectionName = "parks" },
-            snapshotCache.Object);
+            snapshotCache.Object,
+            sourceChanges.Object);
 
         await repository.CreateAsync(
             new Park
@@ -39,6 +42,7 @@ public sealed class RatingRankSnapshotInvalidationTests
 
         collection.VerifyAll();
         snapshotCache.VerifyAll();
+        sourceChanges.VerifyAll();
     }
 
     [Fact]
@@ -53,10 +57,12 @@ public sealed class RatingRankSnapshotInvalidationTests
             .Returns(Task.CompletedTask);
         Mock<IMongoDatabase> database = CreateDatabase("parkItems", collection.Object);
         Mock<IRatingRankSnapshotCache> snapshotCache = CreateSnapshotCache();
+        Mock<IRatingRankingSourceChangeCoordinator> sourceChanges = CreateParkItemSourceChangeCoordinator();
         ParkItemRepository repository = new ParkItemRepository(
             database.Object,
             new MongoDbSettings { ParkItemsCollectionName = "parkItems" },
-            snapshotCache.Object);
+            snapshotCache.Object,
+            sourceChanges.Object);
 
         await repository.CreateAsync(
             new ParkItem
@@ -71,6 +77,7 @@ public sealed class RatingRankSnapshotInvalidationTests
 
         collection.VerifyAll();
         snapshotCache.VerifyAll();
+        sourceChanges.VerifyAll();
     }
 
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(
@@ -91,5 +98,45 @@ public sealed class RatingRankSnapshotInvalidationTests
         snapshotCache
             .Setup(value => value.Invalidate());
         return snapshotCache;
+    }
+
+    private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkSourceChangeCoordinator()
+    {
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingSourceRevision>());
+        Mock<IRatingRankingSourceChangeCoordinator> coordinator =
+            new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
+        coordinator
+            .Setup(value => value.PrepareParkChangesAsync(
+                It.IsAny<IReadOnlyCollection<Park>>(),
+                It.IsAny<IReadOnlyCollection<Park>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        coordinator
+            .Setup(value => value.ScheduleRebuildsAsync(
+                preparation,
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        return coordinator;
+    }
+
+    private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkItemSourceChangeCoordinator()
+    {
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingSourceRevision>());
+        Mock<IRatingRankingSourceChangeCoordinator> coordinator =
+            new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
+        coordinator
+            .Setup(value => value.PrepareParkItemChangesAsync(
+                It.IsAny<IReadOnlyCollection<ParkItem>>(),
+                It.IsAny<IReadOnlyCollection<ParkItem>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(preparation);
+        coordinator
+            .Setup(value => value.ScheduleRebuildsAsync(
+                preparation,
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        return coordinator;
     }
 }

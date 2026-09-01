@@ -113,6 +113,96 @@ public sealed class RatingRankingSourceRevisionGuardTests
         revisions.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task PrepareParkChangesAsync_WhenVisibleParkBecomesHidden_ShouldInvalidateAllCanonicalScopes()
+    {
+        List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.IncrementAsync(
+                It.IsAny<RankingScopeKey>(),
+                CancellationToken.None))
+            .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
+            .ReturnsAsync((RankingScopeKey scopeKey, CancellationToken _) =>
+                new RatingRankingSourceRevision(scopeKey, 2, NowUtc));
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+        Park previous = new Park
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        Park current = new Park
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            IsVisible = false,
+            Status = ParkStatus.Operating,
+        };
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Equal(CanonicalRankingScopes.All.Count, preparation.SourceRevisions.Count);
+        Assert.Equal(
+            CanonicalRankingScopes.All.Select(static scope => scope.Key.Value).OrderBy(static key => key),
+            incrementedScopes.Select(static scope => scope.Value));
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareParkItemChangesAsync_WhenCategoryChanges_ShouldInvalidateOldNewAndParkScopes()
+    {
+        List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.IncrementAsync(
+                It.IsAny<RankingScopeKey>(),
+                CancellationToken.None))
+            .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
+            .ReturnsAsync((RankingScopeKey scopeKey, CancellationToken _) =>
+                new RatingRankingSourceRevision(scopeKey, 3, NowUtc));
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+        ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        ParkItem current = CreateVisibleParkItem(ParkItemCategory.Show);
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkItemChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Equal(
+            new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
+            incrementedScopes.Select(static scope => scope.Value));
+        Assert.Equal(3, preparation.SourceRevisions.Count);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareParkItemChangesAsync_WhenHiddenItemMetadataChanges_ShouldNotAdvanceRevision()
+    {
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
+        ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        previous.IsVisible = false;
+        ParkItem current = CreateVisibleParkItem(ParkItemCategory.Show);
+        current.IsVisible = false;
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkItemChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Empty(preparation.SourceRevisions);
+        revisions.VerifyNoOtherCalls();
+    }
+
     private static RatingRankingSourceRevisionGuard CreateGuard(
         IRatingRankingSourceRevisionRepository revisions,
         IRatingRankingRebuildScheduler? scheduler = null)
@@ -127,5 +217,21 @@ public sealed class RatingRankingSourceRevisionGuardTests
             revisions,
             resolvedScheduler,
             NullLogger<RatingRankingSourceRevisionGuard>.Instance);
+    }
+
+    private static ParkItem CreateVisibleParkItem(ParkItemCategory category)
+    {
+        return new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Demo Item",
+            Category = category,
+            IsVisible = true,
+            AttractionDetails = new AttractionDetails
+            {
+                Status = ParkItemStatusNormalizer.Operating,
+            },
+        };
     }
 }

@@ -549,6 +549,84 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         return new RankingSnapshotPublicationResult(RankingSnapshotPublicationDisposition.Published, nextPointer);
     }
 
+    public async Task<RankingSnapshotRetirementResult> RetirePublicationAsync(
+        RetireRankingPublicationRequest request,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        if (request.SourceRevision < 0 ||
+            !this.TryResolveScope(
+                request.ScopeKey,
+                request.MethodologyVersion,
+                out RankingScopeDefinition? _))
+        {
+            return new RankingSnapshotRetirementResult(
+                RankingSnapshotRetirementDisposition.ConcurrencyConflict,
+                null);
+        }
+
+        RankingPublicationPointer? pointer = await this.GetPointerAsync(
+            request.ScopeKey,
+            cancellationToken);
+        if (pointer is null)
+        {
+            return new RankingSnapshotRetirementResult(
+                RankingSnapshotRetirementDisposition.AlreadyUnavailable,
+                null);
+        }
+
+        if (IsRetirementStale(pointer, request))
+        {
+            return new RankingSnapshotRetirementResult(
+                RankingSnapshotRetirementDisposition.Stale,
+                pointer);
+        }
+
+        DeleteResult deletion = await this.pointers.DeleteOneAsync(
+            RankingSnapshotMongoDefinitions.BuildLivePointerFilter(pointer),
+            cancellationToken);
+        if (deletion.DeletedCount != 1)
+        {
+            RankingPublicationPointer? raced = await this.GetPointerAsync(
+                request.ScopeKey,
+                cancellationToken);
+            if (raced is null)
+            {
+                return new RankingSnapshotRetirementResult(
+                    RankingSnapshotRetirementDisposition.AlreadyUnavailable,
+                    null);
+            }
+
+            return IsRetirementStale(raced, request)
+                ? new RankingSnapshotRetirementResult(
+                    RankingSnapshotRetirementDisposition.Stale,
+                    raced)
+                : new RankingSnapshotRetirementResult(
+                    RankingSnapshotRetirementDisposition.ConcurrencyConflict,
+                    raced);
+        }
+
+        DateTime nowUtc = this.GetUtcNow();
+        UpdateDefinition<RankingSnapshotHeaderDocument> retireHeader =
+            Builders<RankingSnapshotHeaderDocument>.Update
+                .Set(document => document.Status, RankingSnapshotStatus.Superseded)
+                .Set(document => document.UpdatedAt, nowUtc);
+        await this.headers.UpdateOneAsync(
+            Builders<RankingSnapshotHeaderDocument>.Filter.And(
+                Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                    document => document.Id,
+                    pointer.CurrentSnapshotId.Value),
+                Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                    document => document.Status,
+                    RankingSnapshotStatus.Current)),
+            retireHeader,
+            cancellationToken: cancellationToken);
+        await this.PruneTerminalSnapshotsAsync(request.ScopeKey, cancellationToken);
+        return new RankingSnapshotRetirementResult(
+            RankingSnapshotRetirementDisposition.Retired,
+            pointer);
+    }
+
     public async Task<RankingSnapshotRollbackResult> RollbackAsync(
         RankingSnapshotRollbackRequest request,
         CancellationToken cancellationToken)
@@ -652,6 +730,15 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             rolledBack,
             cancellationToken);
         return new RankingSnapshotRollbackResult(RankingSnapshotRollbackDisposition.RolledBack, rolledBack);
+    }
+
+    internal static bool IsRetirementStale(
+        RankingPublicationPointer pointer,
+        RetireRankingPublicationRequest request)
+    {
+        return pointer.HighestPublishedSourceRevision > request.SourceRevision
+            || (pointer.HighestPublishedSourceRevision == request.SourceRevision
+                && pointer.MethodologyVersion == request.MethodologyVersion);
     }
 
     public async Task<RankingPublicationPointer?> GetPointerAsync(

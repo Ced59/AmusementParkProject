@@ -58,7 +58,7 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
-    public void AddInfrastructure_WhenCalled_ShouldRegisterRankingRebuildActivation()
+    public void AddInfrastructure_WhenCalled_ShouldRegisterRankingRebuildReconciliation()
     {
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
@@ -69,6 +69,6 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             services,
             static service =>
                 service.ServiceType == typeof(IHostedService) &&
-                service.ImplementationType == typeof(RatingRankingRebuildActivationHostedService));
+                service.ImplementationType == typeof(RatingRankingRebuildReconciliationBackgroundService));
     }
 }

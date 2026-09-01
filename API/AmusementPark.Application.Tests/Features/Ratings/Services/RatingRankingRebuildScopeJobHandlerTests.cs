@@ -153,6 +153,65 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenValidatedScopeFallsBelowThreshold_ShouldRetireStalePublication()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries()
+            .Take(2)
+            .ToArray();
+        fixture.SetupUncoveredRevision(6);
+        fixture.Builder
+            .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSnapshotBuildPlan(entries.Count, entries, false));
+        fixture.Snapshots
+            .Setup(repository => repository.StartBuildAsync(
+                It.IsAny<StartRankingSnapshotBuildRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Created,
+                fixture.CreateHeader(
+                    RankingSnapshotStatus.Building,
+                    sourceRevision: 6,
+                    entryCount: 2)));
+        fixture.Snapshots
+            .Setup(repository => repository.WriteChunkAsync(
+                It.Is<RankingSnapshotChunk>(chunk => chunk.Entries.Count == 2),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotChunkWriteResult(
+                RankingSnapshotChunkWriteDisposition.Written));
+        fixture.Snapshots
+            .Setup(repository => repository.ValidateBuildAsync(
+                RankingSnapshotId.Parse("snapshot-1"),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotValidationResult(
+                RankingSnapshotValidationDisposition.Validated,
+                fixture.CreateHeader(
+                    RankingSnapshotStatus.Validated,
+                    sourceRevision: 6,
+                    entryCount: 2)));
+        fixture.Snapshots
+            .Setup(repository => repository.RetirePublicationAsync(
+                It.Is<RetireRankingPublicationRequest>(request =>
+                    request.ScopeKey == fixture.Scope.Key
+                    && request.MethodologyVersion == fixture.Scope.MethodologyVersion
+                    && request.SourceRevision == 6),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotRetirementResult(
+                RankingSnapshotRetirementDisposition.Retired,
+                fixture.CreatePointer(5)));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(6),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenBuildIsCompleteAndStillCurrent_ShouldPublishValidatedSnapshot()
     {
         HandlerFixture fixture = new HandlerFixture();
@@ -272,7 +331,8 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
 
         public RankingSnapshotHeader CreateHeader(
             RankingSnapshotStatus status,
-            long sourceRevision = 5)
+            long sourceRevision = 5,
+            int entryCount = 3)
         {
             DateTime? validatedAtUtc = status is RankingSnapshotStatus.Validated
                 or RankingSnapshotStatus.Current
@@ -289,8 +349,8 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                 this.Scope.MethodologyVersion,
                 sourceRevision,
                 status,
-                3,
-                3,
+                entryCount,
+                entryCount,
                 this.Scope.PageSize,
                 1,
                 PlaceholderChecksum,

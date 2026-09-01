@@ -29,6 +29,7 @@ public static class RatingRankingRebuildErrorCodes
     public const string ChunkWriteConflict = "ranking-snapshot.chunk-write-conflict";
     public const string ValidationFailed = "ranking-snapshot.validation-failed";
     public const string PublicationConflict = "ranking-snapshot.publication-conflict";
+    public const string RetirementConflict = "ranking-snapshot.retirement-conflict";
 }
 
 public sealed record RatingRankingSnapshotBuildPlan(

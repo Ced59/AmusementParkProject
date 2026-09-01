@@ -343,7 +343,7 @@ public sealed class RatingRepository : IRatingRepository
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
         List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(
-                BuildParkRankingItemFilter(parkItemCategory))
+                BuildParkRankingItemFilter(null))
             .Sort(BuildRankingSort())
             .Limit(effectiveMaxItems + 1)
             .ToListAsync(cancellationToken);
@@ -356,9 +356,12 @@ public sealed class RatingRepository : IRatingRepository
         bool isTruncated = IsParkItemRankingSourceSetTruncated(
             documents.Count,
             effectiveMaxItems);
-        IReadOnlyCollection<RatingRankingItemResult> sources = await this.EnrichVisibleRankingSourcesAsync(
+        IReadOnlyCollection<RatingRankingItemResult> enrichedSources = await this.EnrichVisibleRankingSourcesAsync(
             documents.Take(effectiveMaxItems).ToList(),
             cancellationToken);
+        IReadOnlyCollection<RatingRankingItemResult> sources = enrichedSources
+            .Where(source => source.ParkItemCategory == parkItemCategory)
+            .ToArray();
         return new RatingRankingSourceBatch(sources, isTruncated);
     }
 

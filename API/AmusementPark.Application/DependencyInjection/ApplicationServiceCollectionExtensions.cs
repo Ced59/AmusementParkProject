@@ -91,7 +91,11 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IRatingRankingRebuildScheduler, RatingRankingRebuildScheduler>();
         services.AddDurableBackgroundJobHandler<RatingRankingRebuildScopeJobHandler>();
         services.AddScoped<IRatingRankProvider, RatingRankProvider>();
-        services.AddScoped<IRatingRankingMutationGuard, RatingRankingSourceRevisionGuard>();
+        services.AddScoped<RatingRankingSourceRevisionGuard>();
+        services.AddScoped<IRatingRankingMutationGuard>(provider =>
+            provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
+        services.AddScoped<IRatingRankingSourceChangeCoordinator>(provider =>
+            provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();

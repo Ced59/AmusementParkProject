@@ -1,5 +1,5 @@
-using System.Text.Json;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
@@ -176,11 +176,6 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 RatingRankingRebuildErrorCodes.ValidationFailed);
         }
 
-        if (!scope.EvaluatePublication(plan.EligibleEntries.Count).IsEligible)
-        {
-            return DurableBackgroundJobHandlerResult.Success();
-        }
-
         RevisionFenceDisposition publicationFence = await this.CheckRevisionFenceAsync(
             scope.Key,
             requestedRevision,
@@ -194,6 +189,28 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
+        }
+
+        if (!scope.EvaluatePublication(plan.EligibleEntries.Count).IsEligible)
+        {
+            RankingSnapshotRetirementResult retirement =
+                await this.snapshotRepository.RetirePublicationAsync(
+                    new RetireRankingPublicationRequest(
+                        scope.Key,
+                        scope.MethodologyVersion,
+                        requestedRevision),
+                    cancellationToken);
+            return retirement.Disposition switch
+            {
+                RankingSnapshotRetirementDisposition.Retired =>
+                    DurableBackgroundJobHandlerResult.Success(),
+                RankingSnapshotRetirementDisposition.AlreadyUnavailable =>
+                    DurableBackgroundJobHandlerResult.Success(),
+                RankingSnapshotRetirementDisposition.Stale =>
+                    DurableBackgroundJobHandlerResult.Success(),
+                _ => DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.RetirementConflict),
+            };
         }
 
         RankingSnapshotPublicationResult publication = await this.snapshotRepository.PublishAsync(
