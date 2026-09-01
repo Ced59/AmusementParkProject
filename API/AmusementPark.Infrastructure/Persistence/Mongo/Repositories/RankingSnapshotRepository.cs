@@ -6,6 +6,7 @@ using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -15,6 +16,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
     private const int MaximumFailureCodeLength = 200;
     private const int RetainedSnapshotVersionCountPerScope = 5;
     private const int RetentionPruneBatchSize = 20;
+    private const int OrphanChunkPruneBatchSize = 100;
+    private static readonly TimeSpan OrphanChunkMinimumAge = TimeSpan.FromMinutes(5);
     private readonly IMongoCollection<RankingSnapshotHeaderDocument> headers;
     private readonly IMongoCollection<RankingSnapshotChunkDocument> chunks;
     private readonly IMongoCollection<RankingPublicationPointerDocument> pointers;
@@ -59,6 +62,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             return new RankingSnapshotBuildStartResult(RankingSnapshotBuildStartDisposition.Conflict, null);
         }
 
+        await this.PruneOrphanedChunksAsync(request.ScopeKey, cancellationToken);
         DateTime nowUtc = this.GetUtcNow();
         int chunkCount = request.EligibleEntryCount == 0
             ? 0
@@ -167,7 +171,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             return new RankingSnapshotChunkWriteResult(RankingSnapshotChunkWriteDisposition.Conflict);
         }
 
-        RankingSnapshotChunkDocument document = chunk.ToDocument(this.GetUtcNow());
+        RankingSnapshotChunkDocument document = chunk.ToDocument(header.ScopeKey, this.GetUtcNow());
         int currentBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
             headerDocument.BuildAttempt);
         if (chunk.BuildAttempt != currentBuildAttempt)
@@ -901,6 +905,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken)
     {
+        await this.PruneOrphanedChunksAsync(scopeKey, cancellationToken);
         RankingPublicationPointer? livePointer = await this.GetPointerAsync(scopeKey, cancellationToken);
         RatingMethodologyVersion? activeMethodologyVersion = this.scopeRegistry.Definitions
             .FirstOrDefault(definition => string.Equals(
@@ -1014,6 +1019,39 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                     cancellationToken);
             }
         }
+    }
+
+    private async Task PruneOrphanedChunksAsync(
+        RankingScopeKey scopeKey,
+        CancellationToken cancellationToken)
+    {
+        DateTime staleBeforeUtc = this.GetUtcNow().Subtract(OrphanChunkMinimumAge);
+        IReadOnlyCollection<BsonDocument> stages =
+            RankingSnapshotMongoDefinitions.BuildOrphanChunkCleanupPipeline(
+                scopeKey,
+                this.headers.CollectionNamespace.CollectionName,
+                staleBeforeUtc,
+                OrphanChunkPruneBatchSize);
+        PipelineDefinition<RankingSnapshotChunkDocument, BsonDocument> pipeline = stages.ToArray();
+        List<BsonDocument> orphanDocuments = await this.chunks
+            .Aggregate<BsonDocument>(pipeline)
+            .ToListAsync(cancellationToken);
+        string[] orphanDocumentIds = orphanDocuments
+            .Where(static document => document.TryGetValue("_id", out BsonValue? id) && id.IsString)
+            .Select(static document => document["_id"].AsString)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (orphanDocumentIds.Length == 0)
+        {
+            return;
+        }
+
+        await this.chunks.DeleteManyAsync(
+            RankingSnapshotMongoDefinitions.BuildConfirmedOrphanChunkPruneFilter(
+                scopeKey,
+                orphanDocumentIds,
+                staleBeforeUtc),
+            cancellationToken);
     }
 
     private async Task ReconcileOrphanedCurrentHeadersAsync(
@@ -1244,6 +1282,73 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
 internal static class RankingSnapshotMongoDefinitions
 {
+    public static IReadOnlyCollection<BsonDocument> BuildOrphanChunkCleanupPipeline(
+        RankingScopeKey scopeKey,
+        string headerCollectionName,
+        DateTime staleBeforeUtc,
+        int maximumResultCount)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(headerCollectionName);
+        if (staleBeforeUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The orphan cutoff must use UTC.", nameof(staleBeforeUtc));
+        }
+
+        if (maximumResultCount <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumResultCount));
+        }
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$match", new BsonDocument
+            {
+                { "scopeKey", scopeKey.Value },
+                { "updatedAt", new BsonDocument("$lte", staleBeforeUtc) },
+            }),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", headerCollectionName },
+                { "localField", "snapshotId" },
+                { "foreignField", "_id" },
+                { "as", "_snapshotHeader" },
+            }),
+            new BsonDocument("$match", new BsonDocument(
+                "_snapshotHeader",
+                new BsonDocument("$size", 0))),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                { "updatedAt", 1 },
+                { "_id", 1 },
+            }),
+            new BsonDocument("$limit", maximumResultCount),
+            new BsonDocument("$project", new BsonDocument("_id", 1)),
+        };
+    }
+
+    public static FilterDefinition<RankingSnapshotChunkDocument> BuildConfirmedOrphanChunkPruneFilter(
+        RankingScopeKey scopeKey,
+        IReadOnlyCollection<string> orphanDocumentIds,
+        DateTime staleBeforeUtc)
+    {
+        ArgumentNullException.ThrowIfNull(orphanDocumentIds);
+        if (staleBeforeUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The orphan cutoff must use UTC.", nameof(staleBeforeUtc));
+        }
+
+        return Builders<RankingSnapshotChunkDocument>.Filter.And(
+            Builders<RankingSnapshotChunkDocument>.Filter.Eq(
+                document => document.ScopeKey,
+                scopeKey.Value),
+            Builders<RankingSnapshotChunkDocument>.Filter.In(
+                document => document.Id,
+                orphanDocumentIds),
+            Builders<RankingSnapshotChunkDocument>.Filter.Lte(
+                document => document.UpdatedAt,
+                staleBeforeUtc));
+    }
+
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildHeaderNaturalKeyFilter(
         RankingScopeKey scopeKey,
         RatingMethodologyVersion methodologyVersion,

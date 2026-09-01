@@ -122,6 +122,46 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildOrphanChunkCleanupPipeline_ShouldFindOldChunksWithoutAHeaderInBoundedLots()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            RankingSnapshotMongoDefinitions.BuildOrphanChunkCleanupPipeline(
+                ScopeKey,
+                "custom-ranking-headers",
+                NowUtc,
+                maximumResultCount: 100);
+
+        Assert.Equal(6, stages.Count);
+        BsonDocument match = stages.ElementAt(0)["$match"].AsBsonDocument;
+        Assert.Equal(ScopeKey.Value, match["scopeKey"].AsString);
+        Assert.Equal(NowUtc, match["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
+        BsonDocument lookup = stages.ElementAt(1)["$lookup"].AsBsonDocument;
+        Assert.Equal("custom-ranking-headers", lookup["from"].AsString);
+        Assert.Equal("snapshotId", lookup["localField"].AsString);
+        Assert.Equal("_id", lookup["foreignField"].AsString);
+        Assert.Equal(0, stages.ElementAt(2)["$match"].AsBsonDocument["_snapshotHeader"]
+            .AsBsonDocument["$size"].AsInt32);
+        Assert.Equal(100, stages.ElementAt(4)["$limit"].AsInt32);
+        Assert.Equal(1, stages.ElementAt(5)["$project"].AsBsonDocument["_id"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildConfirmedOrphanChunkPruneFilter_ShouldRecheckScopeIdentityAndAge()
+    {
+        BsonDocument rendered = Render(
+            RankingSnapshotMongoDefinitions.BuildConfirmedOrphanChunkPruneFilter(
+                ScopeKey,
+                new[] { "snapshot-1:0", "snapshot-1:1" },
+                NowUtc));
+
+        Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
+        Assert.Equal(
+            new[] { "snapshot-1:0", "snapshot-1:1" },
+            rendered["_id"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Equal(NowUtc, rendered["updatedAt"].AsBsonDocument["$lte"].ToUniversalTime());
+    }
+
+    [Fact]
     public void BuildRetentionCandidateFilter_ShouldKeepCurrentAndRollbackSnapshots()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(

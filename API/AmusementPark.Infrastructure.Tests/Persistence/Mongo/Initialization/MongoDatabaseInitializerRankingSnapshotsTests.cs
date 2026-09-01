@@ -67,12 +67,21 @@ public sealed class MongoDatabaseInitializerRankingSnapshotsTests
                 index.Options.Name,
                 "idx_ranking_snapshot_chunk_rank_range",
                 StringComparison.Ordinal));
+        CreateIndexModel<RankingSnapshotChunkDocument> orphanCleanup = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                "idx_ranking_snapshot_chunk_orphan_cleanup",
+                StringComparison.Ordinal));
 
         Assert.True(identity.Options.Unique);
         Assert.Equal(new BsonDocument { { "snapshotId", 1 }, { "chunkIndex", 1 } }, Render(identity.Keys));
         Assert.Equal(
             new BsonDocument { { "snapshotId", 1 }, { "firstRank", 1 }, { "lastRank", 1 } },
             Render(rankRange.Keys));
+        Assert.Equal(
+            new BsonDocument { { "scopeKey", 1 }, { "updatedAt", 1 } },
+            Render(orphanCleanup.Keys));
         Assert.All(indexes, static index => Assert.Null(index.Options.ExpireAfter));
     }
 

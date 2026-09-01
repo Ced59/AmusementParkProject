@@ -63,6 +63,9 @@ public sealed class RankingSnapshotHeaderDocument : MongoDocumentBase
 [BsonIgnoreExtraElements]
 public sealed class RankingSnapshotChunkDocument : MongoDocumentBase
 {
+    [BsonElement("scopeKey")]
+    public string ScopeKey { get; set; } = string.Empty;
+
     [BsonElement("snapshotId")]
     public string SnapshotId { get; set; } = string.Empty;
 

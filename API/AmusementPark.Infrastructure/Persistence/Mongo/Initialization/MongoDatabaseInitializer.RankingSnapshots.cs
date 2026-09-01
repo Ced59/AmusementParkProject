@@ -53,6 +53,11 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(document => document.FirstRank)
                     .Ascending(document => document.LastRank),
                 new CreateIndexOptions { Name = "idx_ranking_snapshot_chunk_rank_range" }),
+            new CreateIndexModel<RankingSnapshotChunkDocument>(
+                Builders<RankingSnapshotChunkDocument>.IndexKeys
+                    .Ascending(document => document.ScopeKey)
+                    .Ascending(document => document.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_ranking_snapshot_chunk_orphan_cleanup" }),
         };
     }
 

@@ -62,12 +62,14 @@ internal static class RankingSnapshotMongoMapper
 
     public static RankingSnapshotChunkDocument ToDocument(
         this RankingSnapshotChunk chunk,
+        RankingScopeKey scopeKey,
         DateTime nowUtc)
     {
         ArgumentNullException.ThrowIfNull(chunk);
         return new RankingSnapshotChunkDocument
         {
             Id = $"{chunk.SnapshotId.Value}:{chunk.ChunkIndex}",
+            ScopeKey = scopeKey.Value,
             SnapshotId = chunk.SnapshotId.Value,
             ChunkIndex = chunk.ChunkIndex,
             FirstRank = chunk.FirstRank,

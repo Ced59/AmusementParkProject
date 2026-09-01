@@ -61,7 +61,8 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingSnapshotChecksum.Parse(new string('b', 64)),
             buildAttempt: 2);
 
-        RankingSnapshotChunkDocument document = chunk.ToDocument(GeneratedAtUtc);
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RankingSnapshotChunkDocument document = chunk.ToDocument(scopeKey, GeneratedAtUtc);
         RankingSnapshotChunk restored = document.ToDomain(MethodologyVersion);
 
         RankingSnapshotEntry restoredEntry = Assert.Single(restored.Entries);
@@ -74,6 +75,7 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(entry.Evidence, restoredEntry.Evidence);
         Assert.Equal(2, restored.BuildAttempt);
         Assert.Equal(2, document.BuildAttempt);
+        Assert.Equal(scopeKey.Value, document.ScopeKey);
     }
 
     [Fact]
@@ -95,7 +97,9 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingSnapshotChecksum.Parse(new string('b', 64)));
 
         RankingSnapshotEntry restored = Assert.Single(
-            chunk.ToDocument(GeneratedAtUtc).ToDomain(MethodologyVersion).Entries);
+            chunk.ToDocument(
+                RankingScopeKey.Parse("park-items:attraction"),
+                GeneratedAtUtc).ToDomain(MethodologyVersion).Entries);
 
         Assert.Equal(ParkItemCategory.Attraction, restored.ParkItemCategory);
     }
