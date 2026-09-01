@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Identifiers;
+using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Core.Domain.Ratings;
 
@@ -99,7 +100,7 @@ public sealed class RankingSnapshotEntry
         string targetId,
         double score,
         RankingEvidence evidence)
-        : this(rank, rank, targetType, targetId, score, evidence)
+        : this(rank, rank, targetType, targetId, null, score, evidence)
     {
     }
 
@@ -108,6 +109,18 @@ public sealed class RankingSnapshotEntry
         int rank,
         RatingTargetType targetType,
         string targetId,
+        double score,
+        RankingEvidence evidence)
+        : this(position, rank, targetType, targetId, null, score, evidence)
+    {
+    }
+
+    public RankingSnapshotEntry(
+        int position,
+        int rank,
+        RatingTargetType targetType,
+        string targetId,
+        ParkItemCategory? parkItemCategory,
         double score,
         RankingEvidence evidence)
     {
@@ -124,6 +137,21 @@ public sealed class RankingSnapshotEntry
         if (!Enum.IsDefined(targetType))
         {
             throw new ArgumentOutOfRangeException(nameof(targetType));
+        }
+
+        if (targetType == RatingTargetType.ParkItem &&
+            (!parkItemCategory.HasValue || !Enum.IsDefined(parkItemCategory.Value)))
+        {
+            throw new ArgumentException(
+                "A park-item ranking entry must preserve its category.",
+                nameof(parkItemCategory));
+        }
+
+        if (targetType == RatingTargetType.Park && parkItemCategory.HasValue)
+        {
+            throw new ArgumentException(
+                "A park ranking entry cannot have a park-item category.",
+                nameof(parkItemCategory));
         }
 
         string normalizedTargetId = IdentifierRules.NormalizeRequired(targetId, nameof(targetId));
@@ -155,6 +183,7 @@ public sealed class RankingSnapshotEntry
         this.Rank = rank;
         this.TargetType = targetType;
         this.TargetId = normalizedTargetId;
+        this.ParkItemCategory = parkItemCategory;
         this.Score = score;
         this.Evidence = evidence;
     }
@@ -166,6 +195,8 @@ public sealed class RankingSnapshotEntry
     public RatingTargetType TargetType { get; }
 
     public string TargetId { get; }
+
+    public ParkItemCategory? ParkItemCategory { get; }
 
     public double Score { get; }
 
@@ -399,6 +430,7 @@ public sealed class RankingPublicationPointer
         RankingSnapshotId? previousSnapshotId,
         RatingMethodologyVersion methodologyVersion,
         long sourceRevision,
+        long highestPublishedSourceRevision,
         long version,
         DateTime updatedAtUtc)
     {
@@ -413,6 +445,11 @@ public sealed class RankingPublicationPointer
         if (sourceRevision < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(sourceRevision));
+        }
+
+        if (highestPublishedSourceRevision < sourceRevision)
+        {
+            throw new ArgumentOutOfRangeException(nameof(highestPublishedSourceRevision));
         }
 
         if (version <= 0)
@@ -430,6 +467,7 @@ public sealed class RankingPublicationPointer
         this.PreviousSnapshotId = previousSnapshotId;
         this.MethodologyVersion = methodologyVersion;
         this.SourceRevision = sourceRevision;
+        this.HighestPublishedSourceRevision = highestPublishedSourceRevision;
         this.Version = version;
         this.UpdatedAtUtc = updatedAtUtc;
     }
@@ -443,6 +481,8 @@ public sealed class RankingPublicationPointer
     public RatingMethodologyVersion MethodologyVersion { get; }
 
     public long SourceRevision { get; }
+
+    public long HighestPublishedSourceRevision { get; }
 
     public long Version { get; }
 

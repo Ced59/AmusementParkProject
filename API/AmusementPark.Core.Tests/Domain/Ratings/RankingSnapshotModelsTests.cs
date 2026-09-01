@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Xunit;
 
@@ -59,6 +60,32 @@ public sealed class RankingSnapshotModelsTests
             "park-1",
             4.25d,
             evidence));
+    }
+
+    [Fact]
+    public void Entry_WhenParkItemCategoryIsPresent_ShouldPreserveIt()
+    {
+        RankingSnapshotEntry entry = new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Attraction,
+            4.25d,
+            CreateEvidence());
+
+        Assert.Equal(ParkItemCategory.Attraction, entry.ParkItemCategory);
+    }
+
+    [Fact]
+    public void Entry_WhenParkItemCategoryIsMissing_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentException>(() => new RankingSnapshotEntry(
+            1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            4.25d,
+            CreateEvidence()));
     }
 
     [Theory]
@@ -151,7 +178,22 @@ public sealed class RankingSnapshotModelsTests
             null,
             RankingEligibilityPolicy.InitialMethodologyVersion,
             sourceRevision: 4,
+            highestPublishedSourceRevision: 4,
             version: 0,
+            NowUtc));
+    }
+
+    [Fact]
+    public void Pointer_WhenHighWaterRevisionIsBelowCurrentRevision_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new RankingPublicationPointer(
+            RankingScopeKey.Parse("parks:global"),
+            RankingSnapshotId.Parse("snapshot-1"),
+            null,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            sourceRevision: 5,
+            highestPublishedSourceRevision: 4,
+            version: 1,
             NowUtc));
     }
 

@@ -172,6 +172,29 @@ public sealed class RankingScopeDefinitionTests
         Assert.Equal(expected, CreateGlobalParkDefinition().AreScoresTied(leftScore, rightScore));
     }
 
+    [Fact]
+    public void AcceptsTarget_ShouldApplyTheTypedScopeFilter()
+    {
+        RankingScopeDefinition definition = new RankingScopeDefinition(
+            RankingScopeKey.Parse("park-items:category:attraction"),
+            RankingTargetFamily.ParkItems,
+            RankingFilterDefinition.ForParkItemCategory(ParkItemCategory.Attraction),
+            isPublic: true,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            minimumEligibleEntries: 3,
+            pageSize: 500,
+            scoreTieEpsilon: 0.0001m,
+            RankingPublicationMode.DurableSnapshot);
+
+        Assert.True(definition.AcceptsTarget(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction));
+        Assert.False(definition.AcceptsTarget(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Restaurant));
+        Assert.False(definition.AcceptsTarget(RatingTargetType.Park, null));
+    }
+
     private static RankingScopeDefinition CreateGlobalParkDefinition()
     {
         return new RankingScopeDefinition(

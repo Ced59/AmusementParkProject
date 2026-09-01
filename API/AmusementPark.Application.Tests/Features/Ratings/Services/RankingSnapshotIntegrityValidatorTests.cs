@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Services;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Xunit;
 
@@ -98,6 +99,38 @@ public sealed class RankingSnapshotIntegrityValidatorTests
 
         Assert.False(result.IsValid);
         Assert.Equal(RankingSnapshotErrorCodes.TargetFamilyMismatch, result.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenParkItemCategoryDoesNotMatchScope_ShouldRejectTheBuild()
+    {
+        RankingScopeDefinition attractionScope = CanonicalRankingScopes.PublicItemCategories
+            .Single(static scope => scope.Filter.ParkItemCategory == ParkItemCategory.Attraction);
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-wrong-category");
+        RankingSnapshotEntry restaurantEntry = new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Restaurant,
+            4.25d,
+            CreateEvidence());
+        RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, new[] { restaurantEntry });
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            totalEntryCount: 1,
+            eligibleEntryCount: 1,
+            chunkCount: 1,
+            this.checksumCalculator.CalculateSnapshot(1, 1, 500, new[] { chunk }),
+            attractionScope.Key);
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            new[] { chunk },
+            attractionScope);
+
+        Assert.False(result.IsValid);
+        Assert.Equal(RankingSnapshotErrorCodes.ScopeFilterMismatch, result.ErrorCode);
     }
 
     [Fact]
@@ -238,6 +271,31 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         Assert.Equal(RankingSnapshotChecksum.HexadecimalLength, original.Value.Length);
     }
 
+    [Fact]
+    public void CalculateChunk_WhenParkItemCategoryChanges_ShouldChangeTheChecksum()
+    {
+        RankingSnapshotEntry attraction = new RankingSnapshotEntry(
+            1,
+            1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Attraction,
+            4.25d,
+            CreateEvidence());
+        RankingSnapshotEntry restaurant = new RankingSnapshotEntry(
+            1,
+            1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Restaurant,
+            4.25d,
+            CreateEvidence());
+
+        Assert.NotEqual(
+            this.checksumCalculator.CalculateChunk(new[] { attraction }),
+            this.checksumCalculator.CalculateChunk(new[] { restaurant }));
+    }
+
     private SnapshotFixture CreateFixture(int eligibleEntryCount)
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-1");
@@ -284,11 +342,12 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         int totalEntryCount,
         int eligibleEntryCount,
         int chunkCount,
-        RankingSnapshotChecksum checksum)
+        RankingSnapshotChecksum checksum,
+        RankingScopeKey? scopeKey = null)
     {
         return new RankingSnapshotHeader(
             snapshotId,
-            RankingScopeKey.Parse("parks:global"),
+            scopeKey ?? RankingScopeKey.Parse("parks:global"),
             RankingEligibilityPolicy.InitialMethodologyVersion,
             sourceRevision: 7,
             RankingSnapshotStatus.Building,
@@ -315,7 +374,17 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         RatingTargetType targetType,
         double score)
     {
-        return new RankingSnapshotEntry(position, rank, targetType, targetId, score, CreateEvidence());
+        ParkItemCategory? parkItemCategory = targetType == RatingTargetType.ParkItem
+            ? ParkItemCategory.Attraction
+            : null;
+        return new RankingSnapshotEntry(
+            position,
+            rank,
+            targetType,
+            targetId,
+            parkItemCategory,
+            score,
+            CreateEvidence());
     }
 
     private static RankingEvidence CreateEvidence()

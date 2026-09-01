@@ -103,6 +103,11 @@ public sealed class RankingSnapshotIntegrityValidator
                     return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.TargetFamilyMismatch);
                 }
 
+                if (!scope.AcceptsTarget(entry.TargetType, entry.ParkItemCategory))
+                {
+                    return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.ScopeFilterMismatch);
+                }
+
                 if (entry.Evidence.MethodologyVersion != header.MethodologyVersion)
                 {
                     return RankingSnapshotIntegrityResult.Invalid(RankingSnapshotErrorCodes.MethodologyMismatch);

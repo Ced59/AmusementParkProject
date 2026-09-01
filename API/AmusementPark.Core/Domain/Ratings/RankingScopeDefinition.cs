@@ -148,6 +148,23 @@ public sealed class RankingScopeDefinition
         return difference < this.ScoreTieEpsilon;
     }
 
+    public bool AcceptsTarget(RatingTargetType targetType, ParkItemCategory? parkItemCategory)
+    {
+        if (!Enum.IsDefined(targetType))
+        {
+            return false;
+        }
+
+        return this.TargetFamily switch
+        {
+            RankingTargetFamily.Parks => targetType == RatingTargetType.Park &&
+                !parkItemCategory.HasValue,
+            RankingTargetFamily.ParkItems => targetType == RatingTargetType.ParkItem &&
+                parkItemCategory == this.Filter.ParkItemCategory,
+            _ => false,
+        };
+    }
+
     private static void ValidateFilterCompatibility(
         RankingTargetFamily targetFamily,
         RankingFilterDefinition filter)

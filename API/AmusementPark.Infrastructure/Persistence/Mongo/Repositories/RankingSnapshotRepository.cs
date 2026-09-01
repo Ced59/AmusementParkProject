@@ -313,8 +313,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         {
             await this.ReconcilePublicationStatusesAsync(
                 candidate,
-                pointer.PreviousSnapshotId,
-                pointer.UpdatedAtUtc,
+                pointer,
                 cancellationToken);
             return new RankingSnapshotPublicationResult(
                 RankingSnapshotPublicationDisposition.AlreadyPublished,
@@ -342,6 +341,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 null,
                 candidate.MethodologyVersion,
                 candidate.SourceRevision,
+                candidate.SourceRevision,
                 1,
                 nowUtc);
             RankingPublicationPointerDocument firstDocument = firstPointer.ToDocument(
@@ -352,8 +352,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 await this.pointers.InsertOneAsync(firstDocument, cancellationToken: cancellationToken);
                 await this.ReconcilePublicationStatusesAsync(
                     candidate,
-                    null,
-                    firstPointer.UpdatedAtUtc,
+                    firstPointer,
                     cancellationToken);
                 return new RankingSnapshotPublicationResult(
                     RankingSnapshotPublicationDisposition.Published,
@@ -366,8 +365,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 {
                     await this.ReconcilePublicationStatusesAsync(
                         candidate,
-                        raced.PreviousSnapshotId,
-                        raced.UpdatedAtUtc,
+                        raced,
                         cancellationToken);
                     return new RankingSnapshotPublicationResult(
                         RankingSnapshotPublicationDisposition.AlreadyPublished,
@@ -386,6 +384,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             pointer!.CurrentSnapshotId,
             candidate.MethodologyVersion,
             candidate.SourceRevision,
+            Math.Max(pointer.HighestPublishedSourceRevision, candidate.SourceRevision),
             pointer.Version + 1,
             nowUtc);
         RankingPublicationPointerDocument replacement = nextPointer.ToDocument(currentDocument.Id, currentDocument.CreatedAt);
@@ -401,8 +400,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             {
                 await this.ReconcilePublicationStatusesAsync(
                     candidate,
-                    raced.PreviousSnapshotId,
-                    raced.UpdatedAtUtc,
+                    raced,
                     cancellationToken);
                 return new RankingSnapshotPublicationResult(
                     RankingSnapshotPublicationDisposition.AlreadyPublished,
@@ -416,8 +414,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         await this.ReconcilePublicationStatusesAsync(
             candidate,
-            pointer.CurrentSnapshotId,
-            nextPointer.UpdatedAtUtc,
+            nextPointer,
             cancellationToken);
         return new RankingSnapshotPublicationResult(RankingSnapshotPublicationDisposition.Published, nextPointer);
     }
@@ -457,8 +454,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
             await this.ReconcilePublicationStatusesAsync(
                 restored,
-                request.ExpectedCurrentSnapshotId,
-                current.UpdatedAtUtc,
+                current,
                 cancellationToken);
             return new RankingSnapshotRollbackResult(
                 RankingSnapshotRollbackDisposition.AlreadyRolledBack,
@@ -497,6 +493,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             request.ExpectedCurrentSnapshotId,
             previous.MethodologyVersion,
             previous.SourceRevision,
+            current.HighestPublishedSourceRevision,
             current.Version + 1,
             nowUtc);
         RankingPublicationPointerDocument replacement = rolledBack.ToDocument(
@@ -516,8 +513,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         await this.ReconcilePublicationStatusesAsync(
             previous,
-            request.ExpectedCurrentSnapshotId,
-            rolledBack.UpdatedAtUtc,
+            rolledBack,
             cancellationToken);
         return new RankingSnapshotRollbackResult(RankingSnapshotRollbackDisposition.RolledBack, rolledBack);
     }
@@ -698,38 +694,66 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
     private async Task ReconcilePublicationStatusesAsync(
         RankingSnapshotHeader current,
-        RankingSnapshotId? previousSnapshotId,
-        DateTime pointerUpdatedAtUtc,
+        RankingPublicationPointer expectedPointer,
         CancellationToken cancellationToken)
     {
+        if (current.Id != expectedPointer.CurrentSnapshotId)
+        {
+            return;
+        }
+
+        if (!await this.IsLivePointerAsync(expectedPointer, cancellationToken))
+        {
+            return;
+        }
+
         DateTime nowUtc = this.GetUtcNow();
         UpdateDefinition<RankingSnapshotHeaderDocument> currentUpdate = Builders<RankingSnapshotHeaderDocument>.Update
             .Set(document => document.Status, RankingSnapshotStatus.Current)
             .Set(
                 document => document.PublishedAtUtc,
-                RankingSnapshotMongoDefinitions.ResolvePublishedAt(current, pointerUpdatedAtUtc))
+                RankingSnapshotMongoDefinitions.ResolvePublishedAt(current, expectedPointer.UpdatedAtUtc))
+            .Set(document => document.ReconciledPointerVersion, expectedPointer.Version)
             .Set(document => document.UpdatedAt, nowUtc);
         await this.headers.UpdateOneAsync(
-            document => document.Id == current.Id.Value &&
-                document.Status != RankingSnapshotStatus.Building &&
-                document.Status != RankingSnapshotStatus.Failed,
+            RankingSnapshotMongoDefinitions.BuildHeaderReconciliationFilter(
+                current.Id,
+                expectedPointer.Version),
             currentUpdate,
             cancellationToken: cancellationToken);
 
+        RankingSnapshotId? previousSnapshotId = expectedPointer.PreviousSnapshotId;
         if (!previousSnapshotId.HasValue || previousSnapshotId.Value == current.Id)
+        {
+            return;
+        }
+
+        if (!await this.IsLivePointerAsync(expectedPointer, cancellationToken))
         {
             return;
         }
 
         UpdateDefinition<RankingSnapshotHeaderDocument> previousUpdate = Builders<RankingSnapshotHeaderDocument>.Update
             .Set(document => document.Status, RankingSnapshotStatus.Superseded)
+            .Set(document => document.ReconciledPointerVersion, expectedPointer.Version)
             .Set(document => document.UpdatedAt, nowUtc);
         await this.headers.UpdateOneAsync(
-            document => document.Id == previousSnapshotId.Value.Value &&
-                document.Status != RankingSnapshotStatus.Building &&
-                document.Status != RankingSnapshotStatus.Failed,
+            RankingSnapshotMongoDefinitions.BuildHeaderReconciliationFilter(
+                previousSnapshotId.Value,
+                expectedPointer.Version),
             previousUpdate,
             cancellationToken: cancellationToken);
+    }
+
+    private async Task<bool> IsLivePointerAsync(
+        RankingPublicationPointer expectedPointer,
+        CancellationToken cancellationToken)
+    {
+        RankingPublicationPointerDocument? livePointer = await this.pointers
+            .Find(RankingSnapshotMongoDefinitions.BuildLivePointerFilter(expectedPointer))
+            .Limit(1)
+            .FirstOrDefaultAsync(cancellationToken);
+        return livePointer is not null;
     }
 
     private async Task<RankingSnapshotHeader?> LoadHeaderAsync(
@@ -785,11 +809,8 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             return false;
         }
 
-        RatingTargetType expectedTargetType = scope.TargetFamily == RankingTargetFamily.Parks
-            ? RatingTargetType.Park
-            : RatingTargetType.ParkItem;
         return chunk.Entries.All(entry =>
-            entry.TargetType == expectedTargetType &&
+            scope.AcceptsTarget(entry.TargetType, entry.ParkItemCategory) &&
             entry.Evidence.MethodologyVersion == header.MethodologyVersion);
     }
 
@@ -892,6 +913,39 @@ internal static class RankingSnapshotMongoDefinitions
             Builders<RankingPublicationPointerDocument>.Filter.Eq(document => document.Version, expectedVersion));
     }
 
+    public static FilterDefinition<RankingPublicationPointerDocument> BuildLivePointerFilter(
+        RankingPublicationPointer pointer)
+    {
+        ArgumentNullException.ThrowIfNull(pointer);
+        return Builders<RankingPublicationPointerDocument>.Filter.And(
+            BuildPointerVersionFilter(pointer.ScopeKey, pointer.Version),
+            Builders<RankingPublicationPointerDocument>.Filter.Eq(
+                document => document.CurrentSnapshotId,
+                pointer.CurrentSnapshotId.Value));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildHeaderReconciliationFilter(
+        RankingSnapshotId snapshotId,
+        long pointerVersion)
+    {
+        if (pointerVersion <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(pointerVersion));
+        }
+
+        FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters =
+            Builders<RankingSnapshotHeaderDocument>.Filter;
+        return filters.And(
+            filters.Eq(document => document.Id, snapshotId.Value),
+            filters.Nin(
+                document => document.Status,
+                new[] { RankingSnapshotStatus.Building, RankingSnapshotStatus.Failed }),
+            filters.Or(
+                filters.Exists(document => document.ReconciledPointerVersion, false),
+                filters.Eq(document => document.ReconciledPointerVersion, null),
+                filters.Lte(document => document.ReconciledPointerVersion, pointerVersion)));
+    }
+
     public static FilterDefinition<RankingSnapshotChunkDocument> BuildPageChunkFilter(
         RankingSnapshotId snapshotId,
         int firstChunkIndex,
@@ -919,8 +973,8 @@ internal static class RankingSnapshotMongoDefinitions
         ArgumentNullException.ThrowIfNull(pointer);
         ArgumentNullException.ThrowIfNull(candidate);
         return pointer.ScopeKey == candidate.ScopeKey &&
-            (pointer.SourceRevision > candidate.SourceRevision ||
-                (pointer.SourceRevision == candidate.SourceRevision &&
+            (pointer.HighestPublishedSourceRevision > candidate.SourceRevision ||
+                (pointer.HighestPublishedSourceRevision == candidate.SourceRevision &&
                     pointer.MethodologyVersion == candidate.MethodologyVersion));
     }
 

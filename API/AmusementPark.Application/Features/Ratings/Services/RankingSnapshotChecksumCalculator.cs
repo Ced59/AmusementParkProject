@@ -20,6 +20,9 @@ public sealed class RankingSnapshotChecksumCalculator
             AppendInt32(hash, entry.Rank);
             AppendInt32(hash, (int)entry.TargetType);
             AppendString(hash, entry.TargetId);
+            AppendNullableInt32(hash, entry.ParkItemCategory.HasValue
+                ? (int)entry.ParkItemCategory.Value
+                : null);
             AppendInt64(hash, BitConverter.DoubleToInt64Bits(entry.Score));
             RankingEvidence evidence = entry.Evidence;
             AppendInt32(hash, (int)evidence.Level);

@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using MongoDB.Bson;
@@ -50,6 +51,10 @@ public sealed class RankingSnapshotHeaderDocument : MongoDocumentBase
     [BsonElement("failureCode")]
     [BsonIgnoreIfNull]
     public string? FailureCode { get; set; }
+
+    [BsonElement("reconciledPointerVersion")]
+    [BsonIgnoreIfNull]
+    public long? ReconciledPointerVersion { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -97,6 +102,11 @@ public sealed class RankingSnapshotEntryDocument
 
     [BsonElement("targetId")]
     public string TargetId { get; set; } = string.Empty;
+
+    [BsonElement("parkItemCategory")]
+    [BsonRepresentation(BsonType.String)]
+    [BsonIgnoreIfNull]
+    public ParkItemCategory? ParkItemCategory { get; set; }
 
     [BsonElement("score")]
     public double Score { get; set; }
@@ -150,6 +160,9 @@ public sealed class RankingPublicationPointerDocument : MongoDocumentBase
 
     [BsonElement("sourceRevision")]
     public long SourceRevision { get; set; }
+
+    [BsonElement("highestPublishedSourceRevision")]
+    public long HighestPublishedSourceRevision { get; set; }
 
     [BsonElement("version")]
     public long Version { get; set; }

@@ -60,6 +60,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             null,
             MethodologyVersion,
             42,
+            42,
             3,
             NowUtc);
 
@@ -75,6 +76,62 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         Assert.False(RankingSnapshotMongoDefinitions.IsStale(
             pointer,
             CreateHeader(43, RatingMethodologyVersion.Parse("ratings-2027-01"))));
+    }
+
+    [Fact]
+    public void IsStale_AfterRollback_ShouldRetainThePublishedRevisionHighWatermark()
+    {
+        RankingPublicationPointer rolledBack = new RankingPublicationPointer(
+            ScopeKey,
+            RankingSnapshotId.Parse("snapshot-restored"),
+            RankingSnapshotId.Parse("snapshot-rolled-back"),
+            MethodologyVersion,
+            sourceRevision: 42,
+            highestPublishedSourceRevision: 50,
+            version: 4,
+            NowUtc);
+
+        Assert.True(RankingSnapshotMongoDefinitions.IsStale(
+            rolledBack,
+            CreateHeader(45, MethodologyVersion)));
+        Assert.False(RankingSnapshotMongoDefinitions.IsStale(
+            rolledBack,
+            CreateHeader(51, MethodologyVersion)));
+    }
+
+    [Fact]
+    public void BuildLivePointerFilter_ShouldFenceSnapshotAndPointerVersion()
+    {
+        RankingPublicationPointer pointer = new RankingPublicationPointer(
+            ScopeKey,
+            RankingSnapshotId.Parse("snapshot-current"),
+            null,
+            MethodologyVersion,
+            sourceRevision: 42,
+            highestPublishedSourceRevision: 42,
+            version: 7,
+            NowUtc);
+
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildLivePointerFilter(pointer));
+
+        Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
+        Assert.Equal("snapshot-current", rendered["currentSnapshotId"].AsString);
+        Assert.Equal(7, rendered["version"].AsInt64);
+    }
+
+    [Fact]
+    public void BuildHeaderReconciliationFilter_ShouldRejectANewerReconciliationVersion()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildHeaderReconciliationFilter(
+            RankingSnapshotId.Parse("snapshot-current"),
+            pointerVersion: 7));
+
+        Assert.Equal("snapshot-current", rendered["_id"].AsString);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        Assert.Contains(alternatives, static item =>
+            item["reconciledPointerVersion"].IsBsonDocument &&
+            item["reconciledPointerVersion"].AsBsonDocument.Contains("$lte") &&
+            item["reconciledPointerVersion"].AsBsonDocument["$lte"].AsInt64 == 7);
     }
 
     [Fact]

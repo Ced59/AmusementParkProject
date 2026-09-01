@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
@@ -70,6 +71,30 @@ public sealed class RankingSnapshotMongoMapperTests
     }
 
     [Fact]
+    public void ChunkDocument_ShouldRoundTripTheParkItemCategory()
+    {
+        RankingEvidence evidence = CreateEvidence();
+        RankingSnapshotEntry entry = new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Attraction,
+            4.25d,
+            evidence);
+        RankingSnapshotChunk chunk = new RankingSnapshotChunk(
+            RankingSnapshotId.Parse("snapshot-item"),
+            0,
+            new[] { entry },
+            RankingSnapshotChecksum.Parse(new string('b', 64)));
+
+        RankingSnapshotEntry restored = Assert.Single(
+            chunk.ToDocument(GeneratedAtUtc).ToDomain(MethodologyVersion).Entries);
+
+        Assert.Equal(ParkItemCategory.Attraction, restored.ParkItemCategory);
+    }
+
+    [Fact]
     public void PointerDocument_ShouldRoundTripOptimisticVersionAndPreviousSnapshot()
     {
         RankingPublicationPointer pointer = new RankingPublicationPointer(
@@ -78,6 +103,7 @@ public sealed class RankingSnapshotMongoMapperTests
             RankingSnapshotId.Parse("snapshot-1"),
             MethodologyVersion,
             43,
+            50,
             7,
             PublishedAtUtc);
 
@@ -89,10 +115,31 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(pointer.PreviousSnapshotId, restored.PreviousSnapshotId);
         Assert.Equal(pointer.MethodologyVersion, restored.MethodologyVersion);
         Assert.Equal(pointer.SourceRevision, restored.SourceRevision);
+        Assert.Equal(pointer.HighestPublishedSourceRevision, restored.HighestPublishedSourceRevision);
         Assert.Equal(pointer.Version, restored.Version);
         Assert.Equal(pointer.UpdatedAtUtc, restored.UpdatedAtUtc);
         Assert.Equal("pointer-1", document.Id);
         Assert.Equal(GeneratedAtUtc, document.CreatedAt);
+    }
+
+    [Fact]
+    public void PointerDocument_WhenHighWaterFieldIsMissing_ShouldUseTheCurrentRevision()
+    {
+        RankingPublicationPointerDocument legacy = new RankingPublicationPointerDocument
+        {
+            Id = "pointer-legacy",
+            ScopeKey = "parks:global",
+            CurrentSnapshotId = "snapshot-1",
+            MethodologyVersion = MethodologyVersion.Value,
+            SourceRevision = 43,
+            Version = 2,
+            CreatedAt = GeneratedAtUtc,
+            UpdatedAt = PublishedAtUtc,
+        };
+
+        RankingPublicationPointer restored = legacy.ToDomain();
+
+        Assert.Equal(43, restored.HighestPublishedSourceRevision);
     }
 
     [Fact]
@@ -110,7 +157,12 @@ public sealed class RankingSnapshotMongoMapperTests
 
     private static RankingSnapshotEntry CreateEntry(int rank, string targetId)
     {
-        RankingEvidence evidence = new RankingEvidence(
+        return new RankingSnapshotEntry(rank, RatingTargetType.Park, targetId, 4.25d, CreateEvidence());
+    }
+
+    private static RankingEvidence CreateEvidence()
+    {
+        return new RankingEvidence(
             RankingEvidenceLevel.Established,
             true,
             8,
@@ -124,6 +176,5 @@ public sealed class RankingSnapshotMongoMapperTests
         {
             NextContributorThreshold = 15,
         };
-        return new RankingSnapshotEntry(rank, RatingTargetType.Park, targetId, 4.25d, evidence);
     }
 }

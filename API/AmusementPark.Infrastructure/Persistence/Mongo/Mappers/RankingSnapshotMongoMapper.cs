@@ -51,6 +51,7 @@ internal static class RankingSnapshotMongoMapper
                 : RankingSnapshotId.Parse(document.PreviousSnapshotId),
             RatingMethodologyVersion.Parse(document.MethodologyVersion),
             document.SourceRevision,
+            Math.Max(document.SourceRevision, document.HighestPublishedSourceRevision),
             document.Version,
             EnsureUtc(document.UpdatedAt));
     }
@@ -118,6 +119,7 @@ internal static class RankingSnapshotMongoMapper
             PreviousSnapshotId = pointer.PreviousSnapshotId?.Value,
             MethodologyVersion = pointer.MethodologyVersion.Value,
             SourceRevision = pointer.SourceRevision,
+            HighestPublishedSourceRevision = pointer.HighestPublishedSourceRevision,
             Version = pointer.Version,
             CreatedAt = createdAtUtc,
             UpdatedAt = pointer.UpdatedAtUtc,
@@ -147,6 +149,7 @@ internal static class RankingSnapshotMongoMapper
             document.Rank,
             document.TargetType,
             document.TargetId,
+            document.ParkItemCategory,
             document.Score,
             evidence);
     }
@@ -159,6 +162,7 @@ internal static class RankingSnapshotMongoMapper
             Rank = entry.Rank,
             TargetType = entry.TargetType,
             TargetId = entry.TargetId,
+            ParkItemCategory = entry.ParkItemCategory,
             Score = entry.Score,
             EvidenceLevel = entry.Evidence.Level,
             UniqueContributorCount = entry.Evidence.UniqueContributorCount,
