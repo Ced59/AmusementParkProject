@@ -1,6 +1,20 @@
 {
-  "version": "4.2.46",
+  "version": "4.2.47",
   "history": [
+    {
+      "version": "4.2.47",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "La page expliquant les classements est désormais pleinement accessible aux moteurs de recherche.",
+        "en": "The page explaining rankings is now fully accessible to search engines.",
+        "de": "Die Seite zur Erklärung der Ranglisten ist jetzt für Suchmaschinen vollständig zugänglich.",
+        "nl": "De pagina met uitleg over ranglijsten is nu volledig toegankelijk voor zoekmachines.",
+        "it": "La pagina che spiega le classifiche è ora completamente accessibile ai motori di ricerca.",
+        "es": "La página que explica las clasificaciones ya es totalmente accesible para los motores de búsqueda.",
+        "pl": "Strona wyjaśniająca rankingi jest teraz w pełni dostępna dla wyszukiwarek.",
+        "pt": "A página que explica as classificações está agora totalmente acessível aos motores de pesquisa."
+      }
+    },
     {
       "version": "4.2.46",
       "releasedAt": "2026-09-01",

@@ -36,6 +36,7 @@ import {
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
 import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-shared-user-rankings-ssr-route-policy';
+import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
   isPublicPricingSsrRoute,
@@ -2352,6 +2353,7 @@ function isPublicStaticSsrRoute(path: string): boolean {
     || /^\/[a-z]{2}\/parks\/?$/i.test(path)
     || /^\/[a-z]{2}\/sitemap\/?$/i.test(path)
     || /^\/[a-z]{2}\/rankings\/?$/i.test(path)
+    || isPublicRatingMethodologySsrRoute(path)
     || /^\/[a-z]{2}\/manufacturers\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/about\/?$/i.test(path)
