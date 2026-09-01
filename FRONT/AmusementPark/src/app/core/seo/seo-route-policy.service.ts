@@ -16,7 +16,11 @@ export class SeoRoutePolicyService {
   }
 
   resolveStaticRouteKey(url: string): string | null {
-    const routeSegment: string = this.getPathSegments(url)[1] ?? 'home';
+    const pathSegments: string[] = this.getPathSegments(url);
+    const routeSegment: string = pathSegments[1] ?? 'home';
+    if (routeSegment === 'rankings' && pathSegments[2] === 'methodology') {
+      return 'ratingMethodology';
+    }
     const routeKeys: ReadonlyMap<string, string> = new Map<string, string>([
       ['home', 'home'],
       ['parks', 'parks'],

@@ -72,6 +72,11 @@
     </p>
   }
 
+  <a class="rating-stars__methodology" [routerLink]="methodologyRoute()">
+    <i class="pi pi-info-circle" aria-hidden="true"></i>
+    {{ 'ratings.methodology.actions.ratingZone' | translate }}
+  </a>
+
   @if (selectedValue() && messageKey()) {
     <p class="rating-stars__status">{{ (messageKey() || '') | translate }}</p>
   }

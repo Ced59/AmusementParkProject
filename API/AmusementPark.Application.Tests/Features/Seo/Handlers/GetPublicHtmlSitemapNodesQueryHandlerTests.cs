@@ -45,6 +45,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.Contains(result.Value, static node => node.Id == "sitemap" && node.RelativeUrl == "/fr/sitemap");
         Assert.Contains(result.Value, static node => node.Id == "parks" && node.RelativeUrl == "/fr/parks" && node.HasChildren);
         Assert.Contains(result.Value, static node => node.Id == "technical" && node.RelativeUrl == "/fr/technical" && node.HasChildren);
+        Assert.Contains(result.Value, static node => node.Id == "rating-methodology" && node.Label == "Méthodologie des classements" && node.RelativeUrl == "/fr/rankings/methodology");
         Assert.DoesNotContain(result.Value, static node => node.Id.Contains("admin", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(result.Value, static node => node.RelativeUrl?.Contains("/login", StringComparison.OrdinalIgnoreCase) == true);
         Assert.DoesNotContain(result.Value, static node => node.RelativeUrl?.Contains("/profile", StringComparison.OrdinalIgnoreCase) == true);

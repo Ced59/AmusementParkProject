@@ -32,6 +32,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         "manufacturers",
         "technical",
         "rankings",
+        "rankings/methodology",
         "about",
         "contact",
         "versions",

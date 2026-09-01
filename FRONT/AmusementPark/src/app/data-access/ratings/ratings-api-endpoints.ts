@@ -1,6 +1,9 @@
 import { RatingTargetType } from '@app/models/ratings/rating.models';
 
 export const RATINGS_API_ENDPOINTS = {
+  getCurrentMethodology: 'ratings/methodology/current',
+  getMethodology: (version: string) => `ratings/methodology/${encodeURIComponent(version)}`,
+  getMethodologyHistory: 'ratings/methodology',
   getSummary: (targetType: RatingTargetType, targetId: string) =>
     `ratings/${encodeURIComponent(targetType)}/${encodeURIComponent(targetId)}/summary`,
   getMyRating: (targetType: RatingTargetType, targetId: string) =>

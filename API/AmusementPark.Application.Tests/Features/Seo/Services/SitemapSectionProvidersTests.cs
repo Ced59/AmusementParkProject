@@ -35,10 +35,11 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(new SitemapGenerationContext(), CancellationToken.None);
 
-        Assert.Equal(8, urls.Count);
+        Assert.Equal(9, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/en/home" && url.Priority == 1.0m);
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/en/sitemap");
         Assert.Contains(urls, static url => url.RelativePath == "/en/rankings" && url.Priority == 0.82m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/rankings/methodology" && url.ChangeFrequency == "monthly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/manufacturers" && url.ChangeFrequency == "weekly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/privacy" && url.ChangeFrequency == "yearly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/contact" && url.ChangeFrequency == "monthly");
@@ -57,11 +58,12 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(16, urls.Count);
+        Assert.Equal(18, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/home");
         Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/sitemap", StringComparison.OrdinalIgnoreCase));
         Assert.Contains(urls, static url => url.RelativePath == "/en/home");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/rankings");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/rankings/methodology");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/manufacturers");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/contact");
         Assert.Contains(urls, static url => url.RelativePath == "/en/versions");

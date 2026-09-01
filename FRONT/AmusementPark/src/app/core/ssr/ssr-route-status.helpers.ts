@@ -53,6 +53,7 @@ function isKnownLocalizedPageRoute(path: string): boolean {
 function isKnownPublicPageRoute(path: string): boolean {
   return /^\/[a-z]{2}\/?$/i.test(path)
     || /^\/[a-z]{2}\/(?:home|parks|sitemap|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
+    || /^\/[a-z]{2}\/rankings\/methodology(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || isSharedUserRankingRoute(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)

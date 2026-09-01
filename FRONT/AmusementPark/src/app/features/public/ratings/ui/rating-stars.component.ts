@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, Signal, SimpleChanges, computed, signal } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 import { RatingSummary, RatingTargetType } from '@app/models/ratings/rating.models';
 import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
@@ -11,7 +12,7 @@ import { LocalizedPluralPipe } from '@shared/pipes';
   styleUrls: ['./rating-stars.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PublicRatingStateFacade],
-  imports: [TranslateModule, LocalizedPluralPipe]
+  imports: [TranslateModule, LocalizedPluralPipe, RouterLink]
 })
 export class RatingStarsComponent implements OnChanges {
   protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];
@@ -84,6 +85,13 @@ export class RatingStarsComponent implements OnChanges {
 
   protected count(): number {
     return this.summary()?.ratingCount ?? 0;
+  }
+
+  protected methodologyRoute(): string[] {
+    const language: string = this.translateService.currentLang
+      || this.translateService.defaultLang
+      || 'en';
+    return ['/', language, 'rankings', 'methodology'];
   }
 
   private formatRating(value: number): string {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import {
   RatingRankingsPage,
   ParkRatingRanking,
@@ -42,6 +43,21 @@ export class RatingsApiService {
   };
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  getCurrentMethodology(options: RatingsHttpOptions = {}): Observable<RatingMethodology> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getCurrentMethodology}`;
+    return this.http.get<RatingMethodology>(url, options);
+  }
+
+  getMethodology(version: string, options: RatingsHttpOptions = {}): Observable<RatingMethodology> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMethodology(version)}`;
+    return this.http.get<RatingMethodology>(url, options);
+  }
+
+  getMethodologyHistory(options: RatingsHttpOptions = {}): Observable<RatingMethodology[]> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMethodologyHistory}`;
+    return this.http.get<RatingMethodology[]>(url, options);
   }
 
   getSummary(targetType: RatingTargetType, targetId: string, options: RatingsHttpOptions = {}): Observable<RatingSummary> {

@@ -4465,6 +4465,111 @@
       "loadMoreItems": "Załaduj więcej miejsc",
       "loadingMoreItems": "Ładowanie miejsc..."
     },
+    "methodology": {
+      "actions": {
+        "rankings": "Poznaj metodę",
+        "ratingZone": "Jak ta ocena wpływa na ranking"
+      },
+      "breadcrumb": {
+        "label": "Okruszki nawigacyjne",
+        "home": "Strona główna",
+        "rankings": "Rankingi",
+        "methodology": "Metodologia"
+      },
+      "kicker": "Przejrzyste rankingi",
+      "title": "Jak obliczamy rankingi",
+      "subtitle": "Poznaj zasady, progi i wagi, które zmieniają oceny odwiedzających w porównywalne rankingi.",
+      "loading": "Ładowanie metodologii...",
+      "errorTitle": "Nie można załadować metodologii",
+      "errorText": "Tymczasowy błąd uniemożliwia wyświetlenie zasad. Spróbuj ponownie za chwilę.",
+      "notFoundTitle": "Ta wersja metodologii nie istnieje",
+      "notFoundText": "Sprawdź aktualną wersję, aby poznać obowiązujące zasady.",
+      "currentAction": "Zobacz aktualną metodologię",
+      "intro": "Przydatny ranking odróżnia trwałe uznanie od entuzjazmu opartego na kilku ocenach. Te same publiczne zasady dotyczą wszystkich porównywalnych celów.",
+      "versionLabel": "Wersja metodologii",
+      "effectiveDate": "Obowiązuje od",
+      "currentBadge": "Aktualna wersja",
+      "viewCurrent": "Zobacz aktualne zasady",
+      "measures": {
+        "title": "Co mierzy ranking",
+        "text": "Mierzy deklarowane uznanie odwiedzających, stabilizowane wobec małych prób i porównywane między celami tego samego rodzaju."
+      },
+      "doesNotMeasure": {
+        "title": "Czego nie mierzy",
+        "text": "Nie mierzy bezpieczeństwa, jakości redakcyjnej stron, surowej popularności ani preferencji jednej osoby."
+      },
+      "contributors": {
+        "title": "Autorzy i obserwacje",
+        "text": "Unikalny autor to jedno odrębne konto z uwzględnioną oceną. Obserwacja to jedna zapisana ocena; progi dowodów opierają się na unikalnych autorach, a nie wyłącznie na technicznej liczbie wpisów."
+      },
+      "scale": {
+        "title": "Skala ocen",
+        "text": "Każdy odwiedzający ocenia od {{minimum}} do {{maximum}} co {{step}}. Surowa średnia pozostaje widoczna, lecz ranking korzysta ze stabilizowanego wyniku."
+      },
+      "bayesian": {
+        "title": "Dlaczego wynik bayesowski?",
+        "simple": "Cel z małą liczbą ocen zbliża się do średniej referencyjnej {{priorMean}}, z początkową wagą równą {{priorWeight}} ocenom. Jej wpływ maleje wraz z liczbą rzeczywistych wpisów.",
+        "formulaAccessible": "Wynik to średnia razy liczba ocen plus średnia referencyjna {{priorMean}} razy waga {{priorWeight}}, podzielone przez liczbę ocen plus ta waga."
+      },
+      "parkScore": {
+        "title": "Złożony wynik parku",
+        "text": "Przy wystarczających dowodach {{directWeight}}% wyniku pochodzi z bezpośrednich ocen parku, a {{itemWeight}}% z ocen jego miejsc. Kategorie mają równe wagi. Potrzeba {{itemMinimum}} kwalifikujących się miejsc w {{categoryMinimum}} kategoriach, po co najmniej {{perCategoryMinimum}} miejsca."
+      },
+      "evidence": {
+        "title": "Progi i poziomy dowodów",
+        "text": "Poziom zawsze towarzyszy wynikowi i słownie wyjaśnia siłę próby, niezależnie od koloru odznaki.",
+        "tableLabel": "Przewijana tabela poziomów dowodów",
+        "level": "Poziom",
+        "contributors": "Unikalni autorzy",
+        "rankingEffect": "Wpływ na ranking",
+        "provisional": "Wstępny",
+        "eligible": "Kwalifikujący",
+        "established": "Ugruntowany",
+        "strong": "Mocne dowody",
+        "provisionalEffect": "Wynik widoczny, bez głównej pozycji",
+        "eligibleEffect": "Może wejść do głównego rankingu",
+        "establishedEffect": "Ugruntowana próba",
+        "strongEffect": "Bardzo solidna próba",
+        "publication": "Główny ranking publikujemy dopiero przy co najmniej {{minimumEntries}} kwalifikujących się pozycjach. Poniżej progu wstępnego dowody są niewystarczające."
+      },
+      "ties": {
+        "title": "Remisy",
+        "text": "Wyniki różniące się o mniej niż {{epsilon}} są równe. Stosujemy ranking sportowy: po dwóch pierwszych miejscach następuje miejsce trzecie."
+      },
+      "lifecycle": {
+        "title": "Zamknięcia i cykl życia",
+        "text": "Do bieżącego rankingu trafiają wyłącznie publiczne, obecnie działające parki i miejsca. Oceny historyczne mogą pozostać widoczne, ale nie tworzą aktualnej pozycji."
+      },
+      "moderation": {
+        "title": "Moderacja i wykluczenia",
+        "text": "Nieprawidłowe, zduplikowane lub powiązane z wykluczonym celem oceny nie są liczone. Kontrola integralności może wstrzymać pozycję zamiast pokazać wątpliwy wynik."
+      },
+      "recalculation": {
+        "title": "Kiedy przeliczamy pozycje",
+        "text": "Wyniki są przeliczane po istotnej zmianie ocen lub publicznego statusu celu. Poprzednią publikację zastępuje tylko pełny i spójny zestaw."
+      },
+      "history": {
+        "title": "Historia metodologii",
+        "intro": "Każda wersja utrwala parametry, aby wynik dało się wyjaśnić także później.",
+        "reason": "Powód",
+        "effect": "Oczekiwany efekt",
+        "previous": "Poprzednia wersja",
+        "none": "Pierwsza wersja",
+        "recomputation": "Po wejściu nowej metodologii dane mogą zostać przeliczone. Pozycja może więc zmienić się bez nowej oceny."
+      },
+      "report": {
+        "title": "Zgłoś błąd",
+        "text": "Widzisz niespójność w ocenie, celu lub tym wyjaśnieniu? Podaj stronę i możliwe do zweryfikowania fakty.",
+        "action": "Skontaktuj się"
+      },
+      "versions": {
+        "ratings-2026-01": {
+          "summary": "Pierwsza publiczna metoda: wynik bayesowski, dowody oparte na unikalnych autorach i zrównoważona kompozycja parków.",
+          "reason": "Zapewnić porównywalne, zrozumiałe i odporne na małe próby rankingi.",
+          "effect": "Cele z niewielką liczbą dowodów pozostają widoczne, ale nie dostają zbyt wcześnie głównej pozycji."
+        }
+      }
+    },
     "targetTypes": {
       "Park": "Parki",
       "ParkItem": "Miejsca"

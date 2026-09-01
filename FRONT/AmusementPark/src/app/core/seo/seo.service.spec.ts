@@ -1666,6 +1666,16 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
+  it('applies indexable localized metadata and alternates to the rating methodology', () => {
+    service.applyRouteDefaults('/fr/rankings/methodology/ratings-2026-01');
+
+    expect(documentRef.title).toBe('Comment les classements sont calculés — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toContain('score bayésien');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/rankings/methodology/ratings-2026-01');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(9);
+  });
+
   it('keeps parameterized rankings out of the index', () => {
     service.applyRouteDefaults('/fr/rankings?category=Attraction&page=2');
 

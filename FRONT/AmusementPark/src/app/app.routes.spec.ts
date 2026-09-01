@@ -150,6 +150,26 @@ describe('App routes', () => {
     expect(publicRoutes[sharedRouteIndex]?.loadComponent).toBeDefined();
   });
 
+  it('exposes current and historical rating methodology pages before the rankings collection', () => {
+    const publicRoutes: Route[] = getPublicRoutes();
+    const currentIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'rankings/methodology'
+    );
+    const historicalIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'rankings/methodology/:version'
+    );
+    const rankingsIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'rankings'
+    );
+
+    expect(currentIndex).toBeGreaterThanOrEqual(0);
+    expect(historicalIndex).toBeGreaterThanOrEqual(0);
+    expect(currentIndex).toBeLessThan(rankingsIndex);
+    expect(historicalIndex).toBeLessThan(rankingsIndex);
+    expect(publicRoutes[currentIndex]?.loadComponent).toBeDefined();
+    expect(publicRoutes[historicalIndex]?.loadComponent).toBeDefined();
+  });
+
   it('exposes the admin history management route behind the admin layout', () => {
     const adminRoutes: Route[] = getAdminRoutes();
     const route: Route | undefined = adminRoutes.find(

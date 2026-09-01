@@ -37,6 +37,20 @@ describe('Server routes', () => {
     expect(sharedRankingRoute?.renderMode).toBe(RenderMode.Server);
   });
 
+  it('server-renders current and historical rating methodology pages', () => {
+    const expectedPaths: string[] = [
+      ':lang/rankings/methodology',
+      ':lang/rankings/methodology/:version'
+    ];
+
+    for (const path of expectedPaths) {
+      const route: ServerRoute | undefined = serverRoutes.find(
+        (candidate: ServerRoute): boolean => candidate.path === path
+      );
+      expect(route?.renderMode, path).toBe(RenderMode.Server);
+    }
+  });
+
   it('server-renders standalone attraction history timelines', () => {
     const expectedPaths: string[] = [
       ':lang/attraction/:standaloneAttractionId/:slug/history',

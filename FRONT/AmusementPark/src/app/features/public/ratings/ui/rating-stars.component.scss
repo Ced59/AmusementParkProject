@@ -39,6 +39,19 @@
   line-height: 1.3;
 }
 
+.rating-stars__methodology {
+  display: inline-flex;
+  flex-basis: 100%;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: -0.25rem;
+  color: var(--app-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
 .rating-stars__rank {
   display: inline-flex;
   align-items: center;

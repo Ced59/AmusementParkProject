@@ -4465,6 +4465,111 @@
       "loadMoreItems": "Charger plus de lieux",
       "loadingMoreItems": "Chargement des lieux..."
     },
+    "methodology": {
+      "actions": {
+        "rankings": "Comprendre la méthode",
+        "ratingZone": "Comment cette note compte dans le classement"
+      },
+      "breadcrumb": {
+        "label": "Fil d’Ariane",
+        "home": "Accueil",
+        "rankings": "Classements",
+        "methodology": "Méthodologie"
+      },
+      "kicker": "Transparence des classements",
+      "title": "Comment les classements sont calculés",
+      "subtitle": "Découvre les règles, seuils et pondérations qui transforment les notes des visiteurs en classements comparables.",
+      "loading": "Chargement de la méthodologie...",
+      "errorTitle": "La méthodologie ne peut pas être chargée",
+      "errorText": "Une erreur temporaire empêche d’afficher les règles. Réessaie dans un instant.",
+      "notFoundTitle": "Cette version de la méthodologie n’existe pas",
+      "notFoundText": "Consulte la version actuelle pour retrouver les règles en vigueur.",
+      "currentAction": "Voir la méthodologie actuelle",
+      "intro": "Un classement utile doit distinguer une appréciation durable d’un enthousiasme fondé sur quelques notes. Les mêmes règles publiques s’appliquent à toutes les cibles comparables.",
+      "versionLabel": "Version de la méthodologie",
+      "effectiveDate": "En vigueur depuis le",
+      "currentBadge": "Version actuelle",
+      "viewCurrent": "Voir les règles actuelles",
+      "measures": {
+        "title": "Ce que le classement mesure",
+        "text": "Il mesure l’appréciation déclarée par les visiteurs, consolidée pour limiter l’effet des petits échantillons et rendre comparables des cibles de même nature."
+      },
+      "doesNotMeasure": {
+        "title": "Ce qu’il ne mesure pas",
+        "text": "Il ne mesure ni la sécurité, ni la qualité éditoriale de nos fiches, ni la popularité brute, ni les préférences d’une personne en particulier."
+      },
+      "contributors": {
+        "title": "Contributeurs et observations",
+        "text": "Un contributeur unique correspond à un compte distinct ayant laissé une note retenue. Une observation correspond à une note enregistrée : les seuils de preuve reposent sur les contributeurs uniques, pas sur un simple volume technique."
+      },
+      "scale": {
+        "title": "Échelle des notes",
+        "text": "Chaque visiteur note de {{minimum}} à {{maximum}}, par pas de {{step}}. La moyenne brute reste visible, mais le classement emploie un score stabilisé."
+      },
+      "bayesian": {
+        "title": "Pourquoi un score bayésien ?",
+        "simple": "Une cible peu notée est rapprochée d’une moyenne de référence de {{priorMean}}, avec un poids initial équivalent à {{priorWeight}} notes. L’influence de cette référence diminue à mesure que les contributions réelles augmentent.",
+        "formulaAccessible": "Le score est la somme de la moyenne multipliée par le nombre de notes et de la moyenne de référence {{priorMean}} multipliée par son poids {{priorWeight}}, divisée par le nombre de notes plus ce poids."
+      },
+      "parkScore": {
+        "title": "Score composé d’un parc",
+        "text": "Quand les preuves suffisent, le score combine {{directWeight}} % de notes directes du parc et {{itemWeight}} % de notes de ses lieux. Les catégories de lieux sont équilibrées à poids égal. Il faut au moins {{itemMinimum}} lieux admissibles, répartis dans {{categoryMinimum}} catégories comptant chacune au moins {{perCategoryMinimum}} lieux."
+      },
+      "evidence": {
+        "title": "Seuils et niveaux de preuve",
+        "text": "Le niveau accompagne toujours le score : son libellé explicite la solidité de l’échantillon, sans dépendre de la couleur du badge.",
+        "tableLabel": "Tableau défilant des niveaux de preuve",
+        "level": "Niveau",
+        "contributors": "Contributeurs uniques",
+        "rankingEffect": "Effet sur le classement",
+        "provisional": "Provisoire",
+        "eligible": "Admissible",
+        "established": "Établi",
+        "strong": "Preuve forte",
+        "provisionalEffect": "Score affichable, mais pas de rang principal",
+        "eligibleEffect": "Peut rejoindre le classement principal",
+        "establishedEffect": "Échantillon consolidé",
+        "strongEffect": "Échantillon très robuste",
+        "publication": "Un classement principal n’est publié qu’avec au moins {{minimumEntries}} entrées admissibles. En dessous du seuil provisoire, la preuve reste insuffisante."
+      },
+      "ties": {
+        "title": "Égalités",
+        "text": "Deux scores séparés de moins de {{epsilon}} sont ex æquo. Le classement suit la convention de compétition : après deux n° 1, la position suivante est n° 3."
+      },
+      "lifecycle": {
+        "title": "Fermetures et cycle de vie",
+        "text": "Seuls les parcs et lieux publics actuellement exploitables entrent dans le classement courant. Les notes historiques restent consultables lorsqu’elles sont utiles, sans produire de rang actuel."
+      },
+      "moderation": {
+        "title": "Modération et exclusions",
+        "text": "Les notes invalides, dupliquées ou rattachées à une cible exclue ne participent pas au calcul. Les contrôles d’intégrité peuvent suspendre un rang plutôt que publier un résultat douteux."
+      },
+      "recalculation": {
+        "title": "Quand les positions sont recalculées",
+        "text": "Les résultats sont recalculés après une évolution pertinente des notes ou du statut public d’une cible. Une publication complète et cohérente remplace alors la précédente ; un calcul incomplet n’est pas présenté comme actuel."
+      },
+      "history": {
+        "title": "Historique des méthodologies",
+        "intro": "Chaque version fige ses paramètres pour qu’un résultat reste explicable dans le temps.",
+        "reason": "Pourquoi",
+        "effect": "Effet attendu",
+        "previous": "Version précédente",
+        "none": "Première version",
+        "recomputation": "Lorsqu’une nouvelle méthodologie entre en vigueur, les données peuvent être recalculées avec ses règles. Une position peut donc évoluer même sans nouvelle note."
+      },
+      "report": {
+        "title": "Signaler une erreur",
+        "text": "Tu as repéré une incohérence dans une note, une cible ou cette explication ? Indique-nous la page concernée et les faits vérifiables.",
+        "action": "Nous contacter"
+      },
+      "versions": {
+        "ratings-2026-01": {
+          "summary": "Première méthode publique : score bayésien, preuves par contributeurs uniques et composition équilibrée des parcs.",
+          "reason": "Rendre les classements comparables, lisibles et résistants aux petits échantillons.",
+          "effect": "Les cibles peu documentées restent visibles sans obtenir prématurément un rang principal."
+        }
+      }
+    },
     "targetTypes": {
       "Park": "Parcs",
       "ParkItem": "Lieux"
