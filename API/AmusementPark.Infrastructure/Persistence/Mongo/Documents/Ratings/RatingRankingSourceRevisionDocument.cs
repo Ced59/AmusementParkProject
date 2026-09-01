@@ -51,4 +51,10 @@ public sealed class RatingRankingMutationRecoveryTargetDocument
 
     [BsonElement("targetId")]
     public string TargetId { get; set; } = string.Empty;
+
+    [BsonElement("userId")]
+    public string UserId { get; set; } = string.Empty;
+
+    [BsonElement("mutationToken")]
+    public string MutationToken { get; set; } = string.Empty;
 }

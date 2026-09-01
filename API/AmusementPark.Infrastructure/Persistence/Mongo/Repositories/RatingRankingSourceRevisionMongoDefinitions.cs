@@ -120,7 +120,9 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
                 BuildRecoveredMutationTargetField(recoveredMutation.RecoveryToken),
                 ToDocument(new RatingRankingMutationRecoveryTarget(
                     recoveredMutation.TargetType,
-                    recoveredMutation.TargetId)));
+                    recoveredMutation.TargetId,
+                    recoveredMutation.UserId,
+                    recoveredMutation.MutationToken)));
     }
 
     public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildAcknowledgeRecoveredMutationUpdate(
@@ -179,6 +181,8 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
         {
             TargetType = recoveryTarget.TargetType.ToString(),
             TargetId = recoveryTarget.TargetId,
+            UserId = recoveryTarget.UserId,
+            MutationToken = recoveryTarget.MutationToken,
         };
     }
 

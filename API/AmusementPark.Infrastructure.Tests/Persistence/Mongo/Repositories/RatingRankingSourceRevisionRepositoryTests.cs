@@ -50,7 +50,11 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
         RatingRankingMutationLease mutationLease = CreateLease(scopeKey, 1);
         RatingRankingMutationRecoveryTarget recoveryTarget =
-            new RatingRankingMutationRecoveryTarget(RatingTargetType.ParkItem, " item-1 ");
+            new RatingRankingMutationRecoveryTarget(
+                RatingTargetType.ParkItem,
+                " item-1 ",
+                " user-1 ",
+                9.ToString("x32"));
 
         BsonDocument update = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
@@ -64,6 +68,8 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
             $"mutationRecoveryTargets.{mutationLease.Token}"].AsBsonDocument;
         Assert.Equal(RatingTargetType.ParkItem.ToString(), persistedTarget["targetType"].AsString);
         Assert.Equal("item-1", persistedTarget["targetId"].AsString);
+        Assert.Equal("user-1", persistedTarget["userId"].AsString);
+        Assert.Equal(9.ToString("x32"), persistedTarget["mutationToken"].AsString);
     }
 
     [Fact]
@@ -75,7 +81,11 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         BsonDocument update = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildRecoverMutationUpdate(
                 mutationLease,
-                new RatingRankingMutationRecoveryTarget(RatingTargetType.ParkItem, " item-1 "),
+                new RatingRankingMutationRecoveryTarget(
+                    RatingTargetType.ParkItem,
+                    " item-1 ",
+                    "user-1",
+                    9.ToString("x32")),
                 NowUtc));
 
         Assert.True(update["$unset"].AsBsonDocument.Contains(
@@ -96,7 +106,9 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         RatingRankingRecoveredMutation recoveredMutation = new RatingRankingRecoveredMutation(
             CreateLease(scopeKey, 7).Token,
             RatingTargetType.ParkItem,
-            "item-1");
+            "item-1",
+            "user-1",
+            9.ToString("x32"));
 
         BsonDocument filter = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildRecoveredMutationFilter(

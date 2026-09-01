@@ -7,8 +7,7 @@ namespace AmusementPark.Application.Features.Ratings.Ports;
 public interface IRatingRankingMutationGuard
 {
     Task<RatingRankingMutationPreparation> PrepareMutationAsync(
-        RatingTargetType targetType,
-        string targetId,
+        RatingRankingMutationRecoveryTarget recoveryTarget,
         ParkItemCategory? currentParkItemCategory,
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken);

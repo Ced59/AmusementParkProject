@@ -13,77 +13,116 @@ internal static class RatingRankingMutationCompletion
     private const int MaximumMetadataFenceAttempts = 3;
 
     public static async Task<RatingRankingPreparedMutation?> PrepareAsync(
+        string userId,
         RatingTargetType targetType,
         string targetId,
         RatingTargetMetadataResult? observedMetadata,
         ParkItemCategory? retainedCategory,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
+        IRatingRepository ratingRepository,
         IRatingRankingMutationGuard rankingMutationGuard,
         CancellationToken cancellationToken)
     {
+        RatingRankingMutationRecoveryTarget recoveryTarget =
+            new RatingRankingMutationRecoveryTarget(
+                targetType,
+                targetId,
+                userId,
+                Guid.NewGuid().ToString("N"));
+        await ratingRepository.PrepareMutationFenceAsync(
+            recoveryTarget,
+            cancellationToken);
         RatingTargetMetadataResult? currentMetadata = observedMetadata;
-        for (int attempt = 1; attempt <= MaximumMetadataFenceAttempts; attempt++)
+        try
         {
-            RatingRankingMutationPreparation preparation =
-                await rankingMutationGuard.PrepareMutationAsync(
-                    targetType,
-                    targetId,
-                    currentMetadata?.ParkItemCategory,
-                    retainedCategory,
-                    cancellationToken);
-            if (targetType != RatingTargetType.ParkItem)
+            for (int attempt = 1; attempt <= MaximumMetadataFenceAttempts; attempt++)
             {
-                return new RatingRankingPreparedMutation(
-                    currentMetadata,
-                    preparation,
-                    Array.Empty<ParkItemCategory>());
-            }
+                RatingRankingMutationPreparation preparation =
+                    await rankingMutationGuard.PrepareMutationAsync(
+                        recoveryTarget,
+                        currentMetadata?.ParkItemCategory,
+                        retainedCategory,
+                        cancellationToken);
+                if (targetType != RatingTargetType.ParkItem)
+                {
+                    return new RatingRankingPreparedMutation(
+                        currentMetadata,
+                        preparation,
+                        recoveryTarget,
+                        Array.Empty<ParkItemCategory>());
+                }
 
-            RatingTargetMetadataResult? authoritativeMetadata;
-            try
-            {
-                authoritativeMetadata = await RatingTargetMetadataResolver.ResolveAsync(
-                    targetType,
-                    targetId,
-                    parkRepository,
-                    parkItemRepository,
-                    cancellationToken);
-            }
-            catch
-            {
+                RatingTargetMetadataResult? authoritativeMetadata;
+                try
+                {
+                    authoritativeMetadata = await RatingTargetMetadataResolver.ResolveAsync(
+                        targetType,
+                        targetId,
+                        parkRepository,
+                        parkItemRepository,
+                        cancellationToken);
+                }
+                catch
+                {
+                    await rankingMutationGuard.CompleteMutationAsync(
+                        preparation,
+                        sourceChanged: false,
+                        CancellationToken.None);
+                    throw;
+                }
+
+                if (HasEquivalentRankingMetadata(currentMetadata, authoritativeMetadata))
+                {
+                    IReadOnlyCollection<ParkItemCategory> protectedCategories = new[]
+                        {
+                            authoritativeMetadata?.ParkItemCategory,
+                            retainedCategory,
+                        }
+                        .Where(static category => category.HasValue)
+                        .Select(static category => category!.Value)
+                        .Distinct()
+                        .ToArray();
+                    return new RatingRankingPreparedMutation(
+                        authoritativeMetadata,
+                        preparation,
+                        recoveryTarget,
+                        protectedCategories);
+                }
+
                 await rankingMutationGuard.CompleteMutationAsync(
                     preparation,
                     sourceChanged: false,
                     CancellationToken.None);
-                throw;
+                currentMetadata = authoritativeMetadata;
             }
 
-            if (HasEquivalentRankingMetadata(currentMetadata, authoritativeMetadata))
-            {
-                IReadOnlyCollection<ParkItemCategory> protectedCategories = new[]
-                    {
-                        authoritativeMetadata?.ParkItemCategory,
-                        retainedCategory,
-                    }
-                    .Where(static category => category.HasValue)
-                    .Select(static category => category!.Value)
-                    .Distinct()
-                    .ToArray();
-                return new RatingRankingPreparedMutation(
-                    authoritativeMetadata,
-                    preparation,
-                    protectedCategories);
-            }
-
-            await rankingMutationGuard.CompleteMutationAsync(
-                preparation,
-                sourceChanged: false,
+            await ratingRepository.ReleaseMutationFenceAsync(
+                recoveryTarget,
                 CancellationToken.None);
-            currentMetadata = authoritativeMetadata;
+            return null;
         }
+        catch
+        {
+            await ratingRepository.ReleaseMutationFenceAsync(
+                recoveryTarget,
+                CancellationToken.None);
+            throw;
+        }
+    }
 
-        return null;
+    public static async Task AbortAsync(
+        RatingRankingPreparedMutation preparedMutation,
+        IRatingRepository ratingRepository,
+        IRatingRankingMutationGuard rankingMutationGuard)
+    {
+        await ratingRepository.ReleaseMutationFenceAsync(
+            preparedMutation.RecoveryTarget,
+            CancellationToken.None);
+        await CompleteAsync(
+            preparedMutation.Preparation,
+            sourceChanged: false,
+            rankingMutationGuard);
     }
 
     public static Task CompleteAsync(
@@ -121,8 +160,7 @@ internal static class RatingRankingMutationCompletion
                 if (finalCategory.HasValue && !ProtectsCategory(preparedMutation, finalCategory.Value))
                 {
                     finalCategoryPreparation = await rankingMutationGuard.PrepareMutationAsync(
-                        targetType,
-                        targetId,
+                        preparedMutation.RecoveryTarget,
                         finalCategory,
                         null,
                         CancellationToken.None);
@@ -182,4 +220,5 @@ internal static class RatingRankingMutationCompletion
 internal sealed record RatingRankingPreparedMutation(
     RatingTargetMetadataResult? Metadata,
     RatingRankingMutationPreparation Preparation,
+    RatingRankingMutationRecoveryTarget RecoveryTarget,
     IReadOnlyCollection<ParkItemCategory> ProtectedCategories);

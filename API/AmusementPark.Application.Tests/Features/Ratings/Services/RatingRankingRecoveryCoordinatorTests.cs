@@ -33,6 +33,13 @@ public sealed class RatingRankingRecoveryCoordinatorTests
         List<string> operations = new List<string>();
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings
+            .Setup(repository => repository.ReleaseMutationFenceAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.MutationToken == recoveredMutation.MutationToken),
+                CancellationToken.None))
+            .Callback(() => operations.Add("revoke-fence"))
+            .Returns(Task.CompletedTask);
+        ratings
             .Setup(repository => repository.RepairAggregateAsync(
                 RatingTargetType.ParkItem,
                 "item-1",
@@ -98,6 +105,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
         Assert.Equal(
             new[]
             {
+                "revoke-fence",
                 "repair-aggregate",
                 "invalidate-cache",
                 "read-current-category",
@@ -123,6 +131,12 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             RatingTargetType.Park,
             "park-1");
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings
+            .Setup(repository => repository.ReleaseMutationFenceAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.MutationToken == recoveredMutation.MutationToken),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         ratings
             .Setup(repository => repository.RepairAggregateAsync(
                 RatingTargetType.Park,
@@ -172,6 +186,13 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             RatingTargetType.ParkItem,
             "item-1");
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings
+            .Setup(repository => repository.ReleaseMutationFenceAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.MutationToken == failedMutation.MutationToken
+                    || target.MutationToken == repairedMutation.MutationToken),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         ratings
             .Setup(repository => repository.RepairAggregateAsync(
                 RatingTargetType.Park,
@@ -224,6 +245,12 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             RatingTargetType.ParkItem,
             "deleted-item");
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings
+            .Setup(repository => repository.ReleaseMutationFenceAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.MutationToken == recoveredMutation.MutationToken),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         ratings
             .Setup(repository => repository.RepairAggregateAsync(
                 RatingTargetType.ParkItem,
@@ -294,6 +321,8 @@ public sealed class RatingRankingRecoveryCoordinatorTests
         return new RatingRankingRecoveredMutation(
             tokenSeed.ToString("x32"),
             targetType,
-            targetId);
+            targetId,
+            "user-1",
+            (tokenSeed + 100).ToString("x32"));
     }
 }

@@ -7,12 +7,35 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class RatingRepositoryTests
 {
+    [Fact]
+    public void BuildOwnedMutationFenceFilter_ShouldRejectAWriterAfterItsTokenIsRevoked()
+    {
+        string mutationToken = 7.ToString("x32");
+
+        FilterDefinition<UserRatingDocument> filter = RatingRepository.BuildOwnedMutationFenceFilter(
+            " user-1 ",
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            mutationToken);
+        IBsonSerializer<UserRatingDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserRatingDocument>();
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<UserRatingDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(RatingTargetType.ParkItem.ToString(), rendered["targetType"].AsString);
+        Assert.Equal("item-1", rendered["targetId"].AsString);
+        Assert.Equal(mutationToken, rendered["activeRankingMutationToken"].AsString);
+    }
+
     [Fact]
     public void HasRankingSourceChanged_WhenRetryKeepsTheSameSemanticValue_ShouldReturnFalse()
     {
@@ -319,7 +342,13 @@ public sealed class RatingRepositoryTests
             .Select(static (stage, index) => (stage, index))
             .Single(value => value.stage.Contains("$limit"))
             .index;
+        int sortIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$sort"))
+            .index;
 
+        Assert.True(eligibilityMatchIndex < sortIndex);
+        Assert.True(sortIndex < limitIndex);
         Assert.True(eligibilityMatchIndex < limitIndex);
         Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
     }

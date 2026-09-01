@@ -288,7 +288,9 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
                 return new RatingRankingRecoveredMutation(
                     entry.Key,
                     target.TargetType,
-                    target.TargetId);
+                    target.TargetId,
+                    target.UserId,
+                    target.MutationToken);
             })
             .OrderBy(static recoveredMutation => recoveredMutation.RecoveryToken, StringComparer.Ordinal)
             .ToArray();
@@ -342,7 +344,9 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
                 ignoreCase: false,
                 out RatingTargetType targetType)
             && targetType is RatingTargetType.Park or RatingTargetType.ParkItem
-            && !string.IsNullOrWhiteSpace(document.TargetId);
+            && !string.IsNullOrWhiteSpace(document.TargetId)
+            && !string.IsNullOrWhiteSpace(document.UserId)
+            && Guid.TryParseExact(document.MutationToken, "N", out _);
     }
 
     private static RatingRankingMutationRecoveryTarget ToRecoveryTarget(
@@ -357,6 +361,10 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             throw new InvalidOperationException("The persisted ranking mutation recovery target is invalid.");
         }
 
-        return new RatingRankingMutationRecoveryTarget(targetType, document.TargetId);
+        return new RatingRankingMutationRecoveryTarget(
+            targetType,
+            document.TargetId,
+            document.UserId,
+            document.MutationToken);
     }
 }

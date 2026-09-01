@@ -181,7 +181,9 @@ public sealed class RatingRankingRebuildSchedulerTests
                 new RatingRankingRecoveredMutation(
                     1.ToString("x32"),
                     RatingTargetType.Park,
-                    "park-1"),
+                    "park-1",
+                    "user-1",
+                    2.ToString("x32")),
             });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);

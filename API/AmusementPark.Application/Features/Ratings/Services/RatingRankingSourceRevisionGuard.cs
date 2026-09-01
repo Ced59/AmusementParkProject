@@ -33,12 +33,12 @@ public sealed class RatingRankingSourceRevisionGuard :
     }
 
     public async Task<RatingRankingMutationPreparation> PrepareMutationAsync(
-        RatingTargetType targetType,
-        string targetId,
+        RatingRankingMutationRecoveryTarget recoveryTarget,
         ParkItemCategory? currentParkItemCategory,
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(recoveryTarget);
         IReadOnlyCollection<ParkItemCategory?> affectedCategories = new[]
         {
             currentParkItemCategory,
@@ -48,11 +48,9 @@ public sealed class RatingRankingSourceRevisionGuard :
             .ToArray();
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes = this.scopeRegistry.Definitions
             .Where(definition => affectedCategories.Any(
-                category => definition.IsAffectedByRatingMutation(targetType, category)))
+                category => definition.IsAffectedByRatingMutation(recoveryTarget.TargetType, category)))
             .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal)
             .ToArray();
-        RatingRankingMutationRecoveryTarget recoveryTarget =
-            new RatingRankingMutationRecoveryTarget(targetType, targetId);
         return await this.PrepareScopesAsync(
             affectedScopes,
             recoveryTarget,

@@ -87,12 +87,14 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
 
         RatingRankingPreparedMutation? preparedMutation =
             await RatingRankingMutationCompletion.PrepareAsync(
+                command.UserId,
                 metadata.TargetType,
                 metadata.TargetId,
                 metadata,
                 retainedRating?.ParkItemCategory,
                 this.parkRepository,
                 this.parkItemRepository,
+                this.ratingRepository,
                 this.rankingMutationGuard,
                 cancellationToken);
         if (preparedMutation is null)
@@ -104,9 +106,9 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
         metadata = preparedMutation.Metadata;
         if (metadata is null)
         {
-            await RatingRankingMutationCompletion.CompleteAsync(
-                preparedMutation.Preparation,
-                sourceChanged: false,
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
                 this.rankingMutationGuard);
             return ApplicationResult<UserRatingResult>.Failure(
                 RatingApplicationErrors.TargetNotFound());
@@ -114,9 +116,9 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
 
         if (!metadata.CanReceiveVisitorRatings)
         {
-            await RatingRankingMutationCompletion.CompleteAsync(
-                preparedMutation.Preparation,
-                sourceChanged: false,
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
                 this.rankingMutationGuard);
             return ApplicationResult<UserRatingResult>.Failure(
                 RatingApplicationErrors.TargetUnavailable());
@@ -145,7 +147,21 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
                 rating,
                 aggregateTarget,
+                preparedMutation.RecoveryTarget.MutationToken,
                 cancellationToken);
+        if (mutation.WasFencedOut)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<UserRatingResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        await this.ratingRepository.ReleaseMutationFenceAsync(
+            preparedMutation.RecoveryTarget,
+            CancellationToken.None);
 
         if (mutation.SourceChanged)
         {
@@ -249,12 +265,14 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
 
         RatingRankingPreparedMutation? preparedMutation =
             await RatingRankingMutationCompletion.PrepareAsync(
+                userId,
                 command.TargetType,
                 targetId,
                 metadata,
                 retainedRating?.ParkItemCategory,
                 this.parkRepository,
                 this.parkItemRepository,
+                this.ratingRepository,
                 this.rankingMutationGuard,
                 cancellationToken);
         if (preparedMutation is null)
@@ -269,7 +287,21 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
                 userId,
                 command.TargetType,
                 targetId,
+                preparedMutation.RecoveryTarget.MutationToken,
                 cancellationToken);
+        if (mutation.WasFencedOut)
+        {
+            await RatingRankingMutationCompletion.AbortAsync(
+                preparedMutation,
+                this.ratingRepository,
+                this.rankingMutationGuard);
+            return ApplicationResult<RatingSummaryResult>.Failure(
+                RatingApplicationErrors.TargetChangedConcurrently());
+        }
+
+        await this.ratingRepository.ReleaseMutationFenceAsync(
+            preparedMutation.RecoveryTarget,
+            CancellationToken.None);
 
         if (mutation.SourceChanged)
         {

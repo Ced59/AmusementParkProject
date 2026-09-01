@@ -46,6 +46,13 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
         {
             try
             {
+                await this.ratingRepository.ReleaseMutationFenceAsync(
+                    new RatingRankingMutationRecoveryTarget(
+                        recoveredMutation.TargetType,
+                        recoveredMutation.TargetId,
+                        recoveredMutation.UserId,
+                        recoveredMutation.MutationToken),
+                    cancellationToken);
                 await this.ratingRepository.RepairAggregateAsync(
                     recoveredMutation.TargetType,
                     recoveredMutation.TargetId,

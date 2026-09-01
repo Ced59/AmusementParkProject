@@ -18,14 +18,15 @@ public sealed class RatingDiagnosticsReaderTests
                 new[] { "item-1" },
                 true);
 
-        Assert.Equal(4, pipeline.Count);
+        Assert.Equal(5, pipeline.Count);
+        Assert.True(pipeline.First()["$match"]["isMutationPlaceholder"]["$ne"].AsBoolean);
         Assert.Contains(
             "$trim",
-            pipeline.First()["$set"]["_diagnosticUserText"].ToJson(),
+            pipeline.ElementAt(1)["$set"]["_diagnosticUserText"].ToJson(),
             StringComparison.Ordinal);
         Assert.Equal(
             RatingValueMongoExpressions.BuildIsExactValidRatingValue("$value"),
-            pipeline.ElementAt(2)["$set"]["_diagnosticIsExactHalfStep"].AsBsonDocument);
+            pipeline.ElementAt(3)["$set"]["_diagnosticIsExactHalfStep"].AsBsonDocument);
         BsonDocument facet = pipeline.Last()["$facet"].AsBsonDocument;
         Assert.True(facet.Contains("summary"));
         Assert.True(facet.Contains("duplicates"));
@@ -54,7 +55,7 @@ public sealed class RatingDiagnosticsReaderTests
                 Array.Empty<string>(),
                 true);
 
-        BsonDocument hasTarget = pipeline.ElementAt(1)["$set"]["_diagnosticHasTarget"].AsBsonDocument;
+        BsonDocument hasTarget = pipeline.ElementAt(2)["$set"]["_diagnosticHasTarget"].AsBsonDocument;
         BsonArray requirements = hasTarget["$and"].AsBsonArray;
         BsonDocument targetTypeRequirement = requirements[1].AsBsonDocument;
         BsonArray targetTypes = targetTypeRequirement["$in"].AsBsonArray[1].AsBsonArray;

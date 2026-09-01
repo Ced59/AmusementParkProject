@@ -45,21 +45,103 @@ public sealed class RatingRepository : IRatingRepository
 
     public async Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
     {
-        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId);
+        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId)
+            & BuildPersistedUserRatingFilter();
         UserRatingDocument? document = await this.userRatingsCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();
+    }
+
+    public async Task PrepareMutationFenceAsync(
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(recoveryTarget);
+        DateTime nowUtc = DateTime.UtcNow;
+        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(
+            recoveryTarget.UserId,
+            recoveryTarget.TargetType,
+            recoveryTarget.TargetId);
+        UpdateDefinition<UserRatingDocument> update = Builders<UserRatingDocument>.Update
+            .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
+            .SetOnInsert(document => document.CreatedAt, nowUtc)
+            .SetOnInsert(document => document.UserId, recoveryTarget.UserId)
+            .SetOnInsert(document => document.TargetType, recoveryTarget.TargetType)
+            .SetOnInsert(document => document.TargetId, recoveryTarget.TargetId)
+            .SetOnInsert(document => document.IsMutationPlaceholder, true)
+            .Set(document => document.ActiveRankingMutationToken, recoveryTarget.MutationToken);
+        FindOneAndUpdateOptions<UserRatingDocument> options = new FindOneAndUpdateOptions<UserRatingDocument>
+        {
+            IsUpsert = true,
+            ReturnDocument = ReturnDocument.After,
+        };
+        UserRatingDocument? document;
+        try
+        {
+            document = await this.userRatingsCollection.FindOneAndUpdateAsync(
+                filter,
+                update,
+                options,
+                cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            options.IsUpsert = false;
+            document = await this.userRatingsCollection.FindOneAndUpdateAsync(
+                filter,
+                update,
+                options,
+                cancellationToken);
+        }
+        catch (MongoCommandException exception) when (exception.Code == 11000)
+        {
+            options.IsUpsert = false;
+            document = await this.userRatingsCollection.FindOneAndUpdateAsync(
+                filter,
+                update,
+                options,
+                cancellationToken);
+        }
+
+        if (document is null)
+        {
+            throw new InvalidOperationException("Unable to prepare the rating mutation fence.");
+        }
+    }
+
+    public async Task ReleaseMutationFenceAsync(
+        RatingRankingMutationRecoveryTarget recoveryTarget,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(recoveryTarget);
+        await this.ReleaseMutationFenceCoreAsync(
+            recoveryTarget.UserId,
+            recoveryTarget.TargetType,
+            recoveryTarget.TargetId,
+            recoveryTarget.MutationToken,
+            cancellationToken);
     }
 
     public async Task<UserRatingMutationResult> UpsertUserRatingAndRecalculateAggregateAsync(
         UserRating rating,
         RatingAggregateTarget aggregateTarget,
+        string mutationToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(rating);
         ArgumentNullException.ThrowIfNull(aggregateTarget);
 
         UserRatingDocumentMutationResult documentMutation =
-            await this.UpsertUserRatingDocumentAsync(rating, cancellationToken);
+            await this.UpsertUserRatingDocumentAsync(rating, mutationToken, cancellationToken);
+        if (documentMutation.WasFencedOut)
+        {
+            return new UserRatingMutationResult(
+                false,
+                documentMutation.Rating,
+                null,
+                WasFencedOut: true);
+        }
+
         bool sourceChanged = documentMutation.SourceChanged;
         RatingAggregate? aggregate;
         if (sourceChanged)
@@ -86,13 +168,24 @@ public sealed class RatingRepository : IRatingRepository
         string userId,
         RatingTargetType targetType,
         string targetId,
+        string mutationToken,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId);
+        EnsureMutationToken(mutationToken);
+        FilterDefinition<UserRatingDocument> filter = BuildOwnedMutationFenceFilter(
+            userId,
+            targetType,
+            targetId,
+            mutationToken);
         UserRatingDocument? document = await this.userRatingsCollection.FindOneAndDeleteAsync(
             filter,
             cancellationToken: cancellationToken);
         if (document is null)
+        {
+            return new UserRatingDeletionResult(false, null, WasFencedOut: true);
+        }
+
+        if (document.IsMutationPlaceholder)
         {
             RatingAggregate? retainedAggregate = await this.GetAggregateAsync(
                 targetType,
@@ -151,7 +244,8 @@ public sealed class RatingRepository : IRatingRepository
             {
                 FilterDefinition<UserRatingDocument> ratingFilter =
                     Builders<UserRatingDocument>.Filter.Eq(document => document.TargetType, targetType)
-                    & Builders<UserRatingDocument>.Filter.Eq(document => document.TargetId, normalizedTargetId);
+                    & Builders<UserRatingDocument>.Filter.Eq(document => document.TargetId, normalizedTargetId)
+                    & BuildPersistedUserRatingFilter();
                 retainedRating = await this.userRatingsCollection
                     .Find(ratingFilter)
                     .SortByDescending(document => document.UpdatedAt)
@@ -269,16 +363,19 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<UserRatingDocumentMutationResult> UpsertUserRatingDocumentAsync(
         UserRating rating,
+        string mutationToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(rating);
+        EnsureMutationToken(mutationToken);
 
         DateTime nowUtc = DateTime.UtcNow;
-        string documentId = string.IsNullOrWhiteSpace(rating.Id) ? Guid.NewGuid().ToString("N") : rating.Id;
-        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(rating.UserId, rating.TargetType, rating.TargetId);
+        FilterDefinition<UserRatingDocument> filter = BuildOwnedMutationFenceFilter(
+            rating.UserId,
+            rating.TargetType,
+            rating.TargetId,
+            mutationToken);
         UpdateDefinition<UserRatingDocument> update = Builders<UserRatingDocument>.Update
-            .SetOnInsert(document => document.Id, documentId)
-            .SetOnInsert(document => document.CreatedAt, nowUtc)
             .Set(document => document.UserId, rating.UserId.Trim())
             .Set(document => document.TargetType, rating.TargetType)
             .Set(document => document.TargetId, rating.TargetId.Trim())
@@ -286,11 +383,12 @@ public sealed class RatingRepository : IRatingRepository
             .Set(document => document.ParkItemCategory, rating.ParkItemCategory)
             .Set(document => document.ParkItemType, rating.ParkItemType)
             .Set(document => document.Value, rating.Value)
-            .Set(document => document.UpdatedAt, nowUtc);
+            .Set(document => document.UpdatedAt, nowUtc)
+            .Unset(document => document.IsMutationPlaceholder);
 
         FindOneAndUpdateOptions<UserRatingDocument> options = new FindOneAndUpdateOptions<UserRatingDocument>
         {
-            IsUpsert = true,
+            IsUpsert = false,
             ReturnDocument = ReturnDocument.Before,
         };
 
@@ -299,10 +397,12 @@ public sealed class RatingRepository : IRatingRepository
             update,
             options,
             cancellationToken);
-        bool sourceChanged = HasRankingSourceChanged(previousDocument, rating);
+        bool wasFencedOut = previousDocument is null;
+        bool sourceChanged = previousDocument?.IsMutationPlaceholder == true
+            || HasRankingSourceChanged(previousDocument, rating);
         UserRating upsertedRating = new UserRating
         {
-            Id = previousDocument?.Id ?? documentId,
+            Id = previousDocument?.Id ?? rating.Id,
             UserId = rating.UserId.Trim(),
             TargetType = rating.TargetType,
             TargetId = rating.TargetId.Trim(),
@@ -313,7 +413,10 @@ public sealed class RatingRepository : IRatingRepository
             CreatedAtUtc = previousDocument?.CreatedAt ?? nowUtc,
             UpdatedAtUtc = nowUtc,
         };
-        return new UserRatingDocumentMutationResult(sourceChanged, upsertedRating);
+        return new UserRatingDocumentMutationResult(
+            sourceChanged,
+            upsertedRating,
+            wasFencedOut);
     }
 
     internal static bool HasRankingSourceChanged(
@@ -330,11 +433,38 @@ public sealed class RatingRepository : IRatingRepository
 
     private sealed record UserRatingDocumentMutationResult(
         bool SourceChanged,
-        UserRating Rating);
+        UserRating Rating,
+        bool WasFencedOut);
+
+    private async Task ReleaseMutationFenceCoreAsync(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        string mutationToken,
+        CancellationToken cancellationToken)
+    {
+        EnsureMutationToken(mutationToken);
+        FilterDefinition<UserRatingDocument> ownedFenceFilter = BuildOwnedMutationFenceFilter(
+            userId,
+            targetType,
+            targetId,
+            mutationToken);
+        await this.userRatingsCollection.DeleteOneAsync(
+            ownedFenceFilter
+                & Builders<UserRatingDocument>.Filter.Eq(
+                    document => document.IsMutationPlaceholder,
+                    true),
+            cancellationToken);
+        await this.userRatingsCollection.UpdateOneAsync(
+            ownedFenceFilter,
+            Builders<UserRatingDocument>.Update.Unset(
+                document => document.ActiveRankingMutationToken),
+            cancellationToken: cancellationToken);
+    }
 
     public async Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken)
     {
-        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(document => document.UserId, userId);
+        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
 
         if (!string.IsNullOrWhiteSpace(parkSearch))
         {
@@ -413,7 +543,7 @@ public sealed class RatingRepository : IRatingRepository
 
     public async Task<UserRatingStatsResult> GetUserRatingStatsAsync(string userId, CancellationToken cancellationToken)
     {
-        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(document => document.UserId, userId);
+        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter).ToListAsync(cancellationToken);
         return await this.BuildUserRatingStatsAsync(documents, false, cancellationToken);
     }
@@ -422,9 +552,7 @@ public sealed class RatingRepository : IRatingRepository
         string userId,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
-            document => document.UserId,
-            userId.Trim());
+        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter).ToListAsync(cancellationToken);
         IReadOnlyCollection<UserRatingDocument> visibleDocuments = await this.FilterVisibleUserRatingsAsync(
             documents,
@@ -495,7 +623,10 @@ public sealed class RatingRepository : IRatingRepository
             this.parksCollection.CollectionNamespace.CollectionName,
             RankingCandidateHardLimit + 1);
         List<BsonDocument> parkCandidateBsonDocuments = await this.ratingAggregatesCollection
-            .Aggregate<BsonDocument>(parkPipeline, cancellationToken: cancellationToken)
+            .Aggregate<BsonDocument>(
+                parkPipeline,
+                new AggregateOptions { AllowDiskUse = true },
+                cancellationToken)
             .ToListAsync(cancellationToken);
         List<RatingAggregateDocument> parkDocuments = parkCandidateBsonDocuments
             .Select(static document => BsonSerializer.Deserialize<RatingAggregateDocument>(document))
@@ -528,7 +659,10 @@ public sealed class RatingRepository : IRatingRepository
             this.parksCollection.CollectionNamespace.CollectionName,
             effectiveMaxParks + 1);
         List<BsonDocument> parkCandidateBsonDocuments = await this.ratingAggregatesCollection
-            .Aggregate<BsonDocument>(parkPipeline, cancellationToken: cancellationToken)
+            .Aggregate<BsonDocument>(
+                parkPipeline,
+                new AggregateOptions { AllowDiskUse = true },
+                cancellationToken)
             .ToListAsync(cancellationToken);
         List<string> directParkIds = parkCandidateBsonDocuments
             .Select(static document => BsonSerializer.Deserialize<RatingAggregateDocument>(document))
@@ -969,14 +1103,6 @@ public sealed class RatingRepository : IRatingRepository
                 { "targetType", RatingTargetType.Park.ToString() },
                 { "ratingCount", new BsonDocument("$gt", 0) },
             }),
-            new BsonDocument("$sort", new BsonDocument
-            {
-                { "bayesianScore", -1 },
-                { "ratingCount", -1 },
-                { "averageRating", -1 },
-                { "targetType", 1 },
-                { "targetId", 1 },
-            }),
             new BsonDocument("$lookup", new BsonDocument
             {
                 { "from", parksCollectionName },
@@ -989,6 +1115,14 @@ public sealed class RatingRepository : IRatingRepository
             {
                 { "rankingPark.isVisible", true },
                 { "rankingPark.status", ParkStatus.Operating.ToString() },
+            }),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                { "bayesianScore", -1 },
+                { "ratingCount", -1 },
+                { "averageRating", -1 },
+                { "targetType", 1 },
+                { "targetId", 1 },
             }),
             new BsonDocument("$limit", limit),
             new BsonDocument("$project", new BsonDocument
@@ -1004,9 +1138,7 @@ public sealed class RatingRepository : IRatingRepository
         CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
-        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
-            document => document.UserId,
-            userId.Trim());
+        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
             .SortByDescending(document => document.Value)
             .ThenBy(document => document.TargetId)
@@ -1022,9 +1154,7 @@ public sealed class RatingRepository : IRatingRepository
         CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
-        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
-            document => document.UserId,
-            userId.Trim());
+        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
             .SortByDescending(document => document.Value)
             .ThenBy(document => document.TargetId)
@@ -1413,6 +1543,43 @@ public sealed class RatingRepository : IRatingRepository
     {
         return Builders<UserRatingDocument>.Filter.Eq(document => document.UserId, userId.Trim())
             & BuildUserRatingTargetFilter(targetType, targetId);
+    }
+
+    internal static FilterDefinition<UserRatingDocument> BuildOwnedMutationFenceFilter(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        string mutationToken)
+    {
+        EnsureMutationToken(mutationToken);
+        return BuildUserTargetFilter(userId, targetType, targetId)
+            & Builders<UserRatingDocument>.Filter.Eq(
+                document => document.ActiveRankingMutationToken,
+                mutationToken);
+    }
+
+    private static FilterDefinition<UserRatingDocument> BuildPersistedUserRatingsForUserFilter(
+        string userId)
+    {
+        return Builders<UserRatingDocument>.Filter.Eq(
+                document => document.UserId,
+                userId.Trim())
+            & BuildPersistedUserRatingFilter();
+    }
+
+    private static FilterDefinition<UserRatingDocument> BuildPersistedUserRatingFilter()
+    {
+        return Builders<UserRatingDocument>.Filter.Ne(
+            document => document.IsMutationPlaceholder,
+            true);
+    }
+
+    private static void EnsureMutationToken(string mutationToken)
+    {
+        if (!Guid.TryParseExact(mutationToken, "N", out _))
+        {
+            throw new ArgumentException("The rating mutation fence token is invalid.", nameof(mutationToken));
+        }
     }
 
     private static FilterDefinition<UserRatingDocument> BuildUserRatingTargetFilter(RatingTargetType targetType, string targetId)

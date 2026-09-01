@@ -42,8 +42,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
-            RatingTargetType.ParkItem,
-            "item-1",
+            CreateRecoveryTarget(RatingTargetType.ParkItem, "item-1"),
             ParkItemCategory.Attraction,
             ParkItemCategory.Show,
             CancellationToken.None);
@@ -81,8 +80,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
-            RatingTargetType.ParkItem,
-            " item-1 ",
+            CreateRecoveryTarget(RatingTargetType.ParkItem, " item-1 "),
             ParkItemCategory.Attraction,
             null,
             CancellationToken.None);
@@ -91,6 +89,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Assert.NotNull(capturedRecoveryTarget);
         Assert.Equal(RatingTargetType.ParkItem, capturedRecoveryTarget.TargetType);
         Assert.Equal("item-1", capturedRecoveryTarget.TargetId);
+        Assert.Equal("user-1", capturedRecoveryTarget.UserId);
+        Assert.Equal(9.ToString("x32"), capturedRecoveryTarget.MutationToken);
         revisions.VerifyAll();
     }
 
@@ -106,8 +106,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => guard.PrepareMutationAsync(
-            RatingTargetType.ParkItem,
-            "item-1",
+            CreateRecoveryTarget(RatingTargetType.ParkItem, "item-1"),
             ParkItemCategory.Attraction,
             null,
             CancellationToken.None));
@@ -132,8 +131,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
-            RatingTargetType.Park,
-            "park-1",
+            CreateRecoveryTarget(RatingTargetType.Park, "park-1"),
             null,
             null,
             CancellationToken.None);
@@ -442,5 +440,16 @@ public sealed class RatingRankingSourceRevisionGuardTests
         return new RatingRankingMutationLease(
             scopeKey,
             tokenSeed.ToString("x32"));
+    }
+
+    private static RatingRankingMutationRecoveryTarget CreateRecoveryTarget(
+        RatingTargetType targetType,
+        string targetId)
+    {
+        return new RatingRankingMutationRecoveryTarget(
+            targetType,
+            targetId,
+            "user-1",
+            9.ToString("x32"));
     }
 }

@@ -30,6 +30,11 @@ public sealed class RatingRankingMutationCompletionTests
                 ParkItemType.RollerCoaster,
                 true),
             preparation,
+            new RatingRankingMutationRecoveryTarget(
+                RatingTargetType.ParkItem,
+                "item-1",
+                "user-1",
+                1.ToString("x32")),
             new[] { ParkItemCategory.Attraction });
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
