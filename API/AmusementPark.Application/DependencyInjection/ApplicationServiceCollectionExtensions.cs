@@ -88,6 +88,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<RankingSnapshotChecksumCalculator>();
         services.AddSingleton<RankingSnapshotIntegrityValidator>();
         services.AddScoped<IRatingRankProvider, RatingRankProvider>();
+        services.AddScoped<IRatingRankingMutationNotifier, RatingRankingRebuildNotifier>();
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();

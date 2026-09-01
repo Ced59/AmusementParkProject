@@ -20,17 +20,20 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IRatingRankProvider ratingRankProvider;
+    private readonly IRatingRankingMutationNotifier rankingMutationNotifier;
 
     public UpsertUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        IRatingRankProvider ratingRankProvider)
+        IRatingRankProvider ratingRankProvider,
+        IRatingRankingMutationNotifier rankingMutationNotifier)
     {
         this.ratingRepository = ratingRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.ratingRankProvider = ratingRankProvider;
+        this.rankingMutationNotifier = rankingMutationNotifier;
     }
 
     public async Task<ApplicationResult<UserRatingResult>> HandleAsync(UpsertUserRatingCommand command, CancellationToken cancellationToken = default)
@@ -95,6 +98,10 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             aggregateTarget,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
+        await this.rankingMutationNotifier.NotifyMutationAsync(
+            metadata.TargetType,
+            metadata.ParkItemCategory,
+            cancellationToken);
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
             metadata.TargetId,
@@ -128,17 +135,20 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
     private readonly IRatingRankProvider ratingRankProvider;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IRatingRankingMutationNotifier rankingMutationNotifier;
 
     public DeleteUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IRatingRankProvider ratingRankProvider,
         IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkItemRepository parkItemRepository,
+        IRatingRankingMutationNotifier rankingMutationNotifier)
     {
         this.ratingRepository = ratingRepository;
         this.ratingRankProvider = ratingRankProvider;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.rankingMutationNotifier = rankingMutationNotifier;
     }
 
     public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(
@@ -168,19 +178,26 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             this.parkRepository,
             this.parkItemRepository,
             cancellationToken);
-        RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
+        UserRatingDeletionResult deletion = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,
             command.TargetType,
             targetId,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
+        if (deletion.WasDeleted)
+        {
+            await this.rankingMutationNotifier.NotifyMutationAsync(
+                deletion.DeletedRating?.TargetType ?? command.TargetType,
+                deletion.DeletedRating?.ParkItemCategory ?? metadata?.ParkItemCategory,
+                cancellationToken);
+        }
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,
             targetId,
-            aggregate,
+            deletion.Aggregate,
             metadata?.CanReceiveVisitorRatings ?? false,
-            aggregateIntegrityIsValid: aggregate is null ? true : null);
+            aggregateIntegrityIsValid: deletion.Aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
 }
