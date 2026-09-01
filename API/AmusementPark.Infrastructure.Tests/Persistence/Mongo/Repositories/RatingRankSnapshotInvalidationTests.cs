@@ -5,6 +5,7 @@ using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -189,6 +190,104 @@ public sealed class RatingRankSnapshotInvalidationTests
             AdminReviewStatus.Validated);
 
         Assert.True(result);
+    }
+
+    [Fact]
+    public void BuildFencedParkItemReplacement_WhenDocumentExists_ShouldUseObservedRankingState()
+    {
+        ParkItemDocument previous = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Demo Ride",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = false,
+            AttractionDetails = new AttractionDetailsDocument
+            {
+                Status = ParkItemStatusNormalizer.Operating,
+            },
+        };
+        ParkItemDocument replacement = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Imported Ride",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = false,
+        };
+
+        ReplaceOneModel<ParkItemDocument> write =
+            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, previous);
+        IBsonSerializer<ParkItemDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ParkItemDocument>();
+        RenderArgs<ParkItemDocument> arguments =
+            new RenderArgs<ParkItemDocument>(serializer, BsonSerializer.SerializerRegistry);
+        BsonDocument filter = write.Filter.Render(arguments);
+
+        Assert.False(write.IsUpsert);
+        Assert.Equal(previous.Id, filter["_id"].AsString);
+        Assert.Equal(previous.ParkId, filter["parkId"].AsString);
+        Assert.Equal(previous.Category.ToString(), filter["category"].AsString);
+        Assert.Equal(previous.Type.ToString(), filter["type"].AsString);
+        Assert.Equal(previous.Name, filter["name"].AsString);
+        Assert.False(filter["isVisible"].AsBoolean);
+        Assert.Equal(
+            ParkItemStatusNormalizer.Operating,
+            filter["attractionDetails.status"].AsString);
+    }
+
+    [Fact]
+    public void BuildFencedParkReplacement_WhenDocumentIsNew_ShouldKeepUpsertById()
+    {
+        ParkDocument replacement = new ParkDocument
+        {
+            Id = "park-1",
+            Name = "Imported Park",
+            IsVisible = false,
+        };
+
+        ReplaceOneModel<ParkDocument> write =
+            CaptainCoasterDataSourceProvider.BuildFencedParkReplacement(replacement, null);
+        IBsonSerializer<ParkDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ParkDocument>();
+        RenderArgs<ParkDocument> arguments =
+            new RenderArgs<ParkDocument>(serializer, BsonSerializer.SerializerRegistry);
+        BsonDocument filter = write.Filter.Render(arguments);
+
+        Assert.True(write.IsUpsert);
+        Assert.Single(filter);
+        Assert.Equal(replacement.Id, filter["_id"].AsString);
+    }
+
+    [Fact]
+    public void DocumentsAreEquivalent_WhenConcurrentRankingFieldDiffers_ShouldKeepReplacementPending()
+    {
+        ParkItemDocument replacement = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Imported Ride",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = false,
+        };
+        ParkItemDocument concurrent = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Imported Ride",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = true,
+        };
+
+        bool result = CaptainCoasterDataSourceProvider.DocumentsAreEquivalent(
+            concurrent,
+            replacement);
+
+        Assert.False(result);
     }
 
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(
