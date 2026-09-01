@@ -150,6 +150,21 @@ tbody th i {
   font-size: 0.92rem;
 }
 
+.methodology-note--pending {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.8rem 0.9rem;
+  border-left: 0.25rem solid var(--app-primary);
+  border-radius: var(--app-radius-sm);
+  background: color-mix(in srgb, var(--app-primary) 7%, transparent);
+}
+
+.methodology-note--pending i {
+  margin-top: 0.25rem;
+  color: var(--app-primary);
+}
+
 .methodology-history {
   display: grid;
   gap: 1rem;

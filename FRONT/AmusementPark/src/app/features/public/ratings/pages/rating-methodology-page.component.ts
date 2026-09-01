@@ -56,6 +56,7 @@ export class RatingMethodologyPageComponent implements OnInit {
     this.applySeoAndBreadcrumb();
 
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
+      this.applySeoAndBreadcrumb();
       this.stateFacade.load(params.get('version'));
     });
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string): void => {

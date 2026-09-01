@@ -4530,7 +4530,8 @@
         "eligibleEffect": "Can join the main ranking",
         "establishedEffect": "Consolidated sample",
         "strongEffect": "Highly robust sample",
-        "publication": "A main ranking is published only with at least {{minimumEntries}} eligible entries. Below the provisional threshold, evidence remains insufficient."
+        "publication": "A main ranking is published only with at least {{minimumEntries}} eligible entries. Below the provisional threshold, evidence remains insufficient.",
+        "rolloutPending": "Coming soon: these eligibility rules are published before they go live. Current rankings keep their previous rules until activation."
       },
       "ties": {
         "title": "Ties",

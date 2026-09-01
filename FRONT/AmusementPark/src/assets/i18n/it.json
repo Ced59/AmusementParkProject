@@ -4530,7 +4530,8 @@
         "eligibleEffect": "Può entrare nella classifica principale",
         "establishedEffect": "Campione consolidato",
         "strongEffect": "Campione molto robusto",
-        "publication": "La classifica principale viene pubblicata solo con almeno {{minimumEntries}} voci idonee. Sotto la soglia provvisoria le prove sono insufficienti."
+        "publication": "La classifica principale viene pubblicata solo con almeno {{minimumEntries}} voci idonee. Sotto la soglia provvisoria le prove sono insufficienti.",
+        "rolloutPending": "Prossima attivazione: queste regole di idoneità vengono pubblicate prima di entrare in vigore. Fino all’attivazione, le classifiche attuali mantengono le regole precedenti."
       },
       "ties": {
         "title": "Parità",

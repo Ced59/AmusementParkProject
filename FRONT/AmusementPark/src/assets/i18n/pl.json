@@ -4530,7 +4530,8 @@
         "eligibleEffect": "Może wejść do głównego rankingu",
         "establishedEffect": "Ugruntowana próba",
         "strongEffect": "Bardzo solidna próba",
-        "publication": "Główny ranking publikujemy dopiero przy co najmniej {{minimumEntries}} kwalifikujących się pozycjach. Poniżej progu wstępnego dowody są niewystarczające."
+        "publication": "Główny ranking publikujemy dopiero przy co najmniej {{minimumEntries}} kwalifikujących się pozycjach. Poniżej progu wstępnego dowody są niewystarczające.",
+        "rolloutPending": "Wkrótce aktywne: te zasady kwalifikacji publikujemy przed ich uruchomieniem. Do czasu aktywacji obecne rankingi zachowują dotychczasowe zasady."
       },
       "ties": {
         "title": "Remisy",

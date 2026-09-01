@@ -33,7 +33,7 @@
         <i class="pi pi-bookmark" aria-hidden="true"></i>
         {{ method.version }}
       </span>
-      <span>{{ 'ratings.methodology.effectiveDate' | translate }} {{ method.effectiveDate | date:'longDate' }}</span>
+      <span>{{ 'ratings.methodology.effectiveDate' | translate }} {{ method.effectiveDate | date:'longDate':undefined:currentLang() }}</span>
       @if (method.isCurrent) {
         <strong><i class="pi pi-check-circle" aria-hidden="true"></i> {{ 'ratings.methodology.currentBadge' | translate }}</strong>
       } @else {
@@ -113,6 +113,10 @@
         </table>
       </div>
       <p class="methodology-note">{{ 'ratings.methodology.evidence.publication' | translate:{ minimumEntries: method.publicationRules.minimumEligibleEntries } }}</p>
+      <p class="methodology-note methodology-note--pending">
+        <i class="pi pi-clock" aria-hidden="true"></i>
+        {{ 'ratings.methodology.evidence.rolloutPending' | translate }}
+      </p>
     </section>
 
     <div class="methodology-grid methodology-grid--three">
@@ -143,7 +147,7 @@
           <li [class.methodology-history__item--selected]="entry.version === method.version">
             <header>
               <a [routerLink]="methodologyRoute(entry.version)">{{ entry.version }}</a>
-              <time [attr.datetime]="entry.effectiveDate">{{ entry.effectiveDate | date:'longDate' }}</time>
+              <time [attr.datetime]="entry.effectiveDate">{{ entry.effectiveDate | date:'longDate':undefined:currentLang() }}</time>
               @if (entry.isCurrent) {
                 <strong>{{ 'ratings.methodology.currentBadge' | translate }}</strong>
               }

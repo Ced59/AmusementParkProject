@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { TranslationService } from '@app/services/translation.service';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { registerSupportedAngularLocales } from '@core/i18n/supported-angular-locales';
 import { SeoService } from '@core/seo/seo.service';
 import { RATING_METHODOLOGY_PORT, RatingMethodologyPort } from '../state/rating-methodology-state-data.ports';
 import { RatingMethodologyPageComponent } from './rating-methodology-page.component';
@@ -27,8 +28,11 @@ class FakeRatingMethodologyPort implements RatingMethodologyPort {
 
 describe('RatingMethodologyPageComponent', () => {
   let fixture: ComponentFixture<RatingMethodologyPageComponent>;
+  let paramMapSubject: BehaviorSubject<ReturnType<typeof convertToParamMap>>;
 
   beforeEach(async () => {
+    registerSupportedAngularLocales();
+    paramMapSubject = new BehaviorSubject(convertToParamMap({ lang: 'fr' }));
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, RatingMethodologyPageComponent],
       providers: [
@@ -39,7 +43,7 @@ describe('RatingMethodologyPageComponent', () => {
           useValue: {
             snapshot: { paramMap: convertToParamMap({ lang: 'fr' }) },
             parent: null,
-            paramMap: of(convertToParamMap({ lang: 'fr' }))
+            paramMap: paramMapSubject
           }
         },
         { provide: TranslationService, useValue: { getCurrentLang: (): string => 'fr', languageChanged: of('fr') } },
@@ -60,7 +64,7 @@ describe('RatingMethodologyPageComponent', () => {
           scale: { title: 'Échelle des notes', text: 'De {{minimum}} à {{maximum}} par {{step}}.' },
           bayesian: { title: 'Pourquoi un score bayésien ?', simple: 'Référence {{priorMean}} pour {{priorWeight}} notes.', formulaAccessible: 'Formule expliquée avec {{priorMean}} et {{priorWeight}}.' },
           parkScore: { title: 'Score composé', text: '{{directWeight}} et {{itemWeight}}.' },
-          evidence: { title: 'Niveaux de preuve', text: 'Le texte complète la couleur.', tableLabel: 'Niveaux', level: 'Niveau', contributors: 'Contributeurs', rankingEffect: 'Effet', provisional: 'Provisoire', eligible: 'Admissible', established: 'Établi', strong: 'Fort', provisionalEffect: 'Sans rang', eligibleEffect: 'Classé', establishedEffect: 'Consolidé', strongEffect: 'Robuste', publication: '{{minimumEntries}} entrées.' },
+          evidence: { title: 'Niveaux de preuve', text: 'Le texte complète la couleur.', tableLabel: 'Niveaux', level: 'Niveau', contributors: 'Contributeurs', rankingEffect: 'Effet', provisional: 'Provisoire', eligible: 'Admissible', established: 'Établi', strong: 'Fort', provisionalEffect: 'Sans rang', eligibleEffect: 'Classé', establishedEffect: 'Consolidé', strongEffect: 'Robuste', publication: '{{minimumEntries}} entrées.', rolloutPending: 'Activation prochaine : règles bientôt appliquées.' },
           ties: { title: 'Égalités', text: '{{epsilon}}.' },
           lifecycle: { title: 'Cycle de vie', text: 'Cibles actives.' },
           moderation: { title: 'Modération', text: 'Contrôles.' },
@@ -86,6 +90,8 @@ describe('RatingMethodologyPageComponent', () => {
     expect(root.querySelectorAll('tbody tr')).toHaveLength(4);
     expect(root.querySelector('.methodology-table-wrap')?.getAttribute('tabindex')).toBe('0');
     expect(root.querySelector('.sr-only')?.textContent).toContain('Formule expliquée');
+    expect(root.textContent).toContain('31 août 2026');
+    expect(root.textContent).toContain('Activation prochaine');
   });
 
   it('exposes visible, clickable parent breadcrumbs and the version history', () => {
@@ -97,6 +103,16 @@ describe('RatingMethodologyPageComponent', () => {
     expect(links[1]?.getAttribute('href')).toBe('/fr/rankings');
     expect(fixture.nativeElement.querySelector('.methodology-history a')?.getAttribute('href'))
       .toBe('/fr/rankings/methodology/ratings-2026-01');
+  });
+
+  it('refreshes route SEO when Angular reuses the component for another methodology version', () => {
+    const seoService: SeoService = TestBed.inject(SeoService);
+    fixture.detectChanges();
+    const callsBeforeNavigation: number = vi.mocked(seoService.applyRouteDefaults).mock.calls.length;
+
+    paramMapSubject.next(convertToParamMap({ version: 'ratings-2025-01' }));
+
+    expect(seoService.applyRouteDefaults).toHaveBeenCalledTimes(callsBeforeNavigation + 1);
   });
 });
 

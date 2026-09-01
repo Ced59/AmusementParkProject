@@ -4530,7 +4530,8 @@
         "eligibleEffect": "Kann in die Hauptrangliste",
         "establishedEffect": "Gefestigte Stichprobe",
         "strongEffect": "Sehr robuste Stichprobe",
-        "publication": "Eine Hauptrangliste erscheint erst mit mindestens {{minimumEntries}} zulässigen Einträgen. Unter der vorläufigen Schwelle reicht die Evidenz nicht aus."
+        "publication": "Eine Hauptrangliste erscheint erst mit mindestens {{minimumEntries}} zulässigen Einträgen. Unter der vorläufigen Schwelle reicht die Evidenz nicht aus.",
+        "rolloutPending": "Demnächst aktiv: Diese Zulassungsregeln werden vor ihrer Einführung veröffentlicht. Bis zur Aktivierung gelten für bestehende Ranglisten weiterhin die bisherigen Regeln."
       },
       "ties": {
         "title": "Gleichstände",

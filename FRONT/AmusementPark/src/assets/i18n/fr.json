@@ -4530,7 +4530,8 @@
         "eligibleEffect": "Peut rejoindre le classement principal",
         "establishedEffect": "Échantillon consolidé",
         "strongEffect": "Échantillon très robuste",
-        "publication": "Un classement principal n’est publié qu’avec au moins {{minimumEntries}} entrées admissibles. En dessous du seuil provisoire, la preuve reste insuffisante."
+        "publication": "Un classement principal n’est publié qu’avec au moins {{minimumEntries}} entrées admissibles. En dessous du seuil provisoire, la preuve reste insuffisante.",
+        "rolloutPending": "Activation prochaine : ces règles d’admissibilité sont publiées avant leur mise en service. Les classements actuels conservent leurs règles précédentes jusqu’à cette activation."
       },
       "ties": {
         "title": "Égalités",
