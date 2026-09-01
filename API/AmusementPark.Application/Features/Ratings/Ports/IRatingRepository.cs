@@ -16,13 +16,6 @@ public sealed record UserRatingMutationResult(
     UserRating Rating,
     RatingAggregate? Aggregate);
 
-public sealed record UserRatingDeletionResult(
-    UserRating? DeletedRating,
-    RatingAggregate? Aggregate)
-{
-    public bool WasDeleted => this.DeletedRating is not null;
-}
-
 public interface IRatingRepository
 {
     Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
@@ -32,7 +25,7 @@ public interface IRatingRepository
         RatingAggregateTarget aggregateTarget,
         CancellationToken cancellationToken);
 
-    Task<UserRatingDeletionResult> DeleteUserRatingAndRecalculateAggregateAsync(
+    Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
         string userId,
         RatingTargetType targetType,
         string targetId,

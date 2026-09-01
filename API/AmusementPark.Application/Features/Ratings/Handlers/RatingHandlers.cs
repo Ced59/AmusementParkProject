@@ -20,20 +20,20 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IRatingRankProvider ratingRankProvider;
-    private readonly IRatingRankingMutationNotifier rankingMutationNotifier;
+    private readonly IRatingRankingMutationGuard rankingMutationGuard;
 
     public UpsertUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IRatingRankProvider ratingRankProvider,
-        IRatingRankingMutationNotifier rankingMutationNotifier)
+        IRatingRankingMutationGuard rankingMutationGuard)
     {
         this.ratingRepository = ratingRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.ratingRankProvider = ratingRankProvider;
-        this.rankingMutationNotifier = rankingMutationNotifier;
+        this.rankingMutationGuard = rankingMutationGuard;
     }
 
     public async Task<ApplicationResult<UserRatingResult>> HandleAsync(UpsertUserRatingCommand command, CancellationToken cancellationToken = default)
@@ -93,15 +93,15 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
+        await this.rankingMutationGuard.PrepareMutationAsync(
+            metadata.TargetType,
+            metadata.ParkItemCategory,
+            cancellationToken);
         UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
             rating,
             aggregateTarget,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
-        await this.rankingMutationNotifier.NotifyMutationAsync(
-            metadata.TargetType,
-            metadata.ParkItemCategory,
-            cancellationToken);
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             metadata.TargetType,
             metadata.TargetId,
@@ -135,20 +135,20 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
     private readonly IRatingRankProvider ratingRankProvider;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
-    private readonly IRatingRankingMutationNotifier rankingMutationNotifier;
+    private readonly IRatingRankingMutationGuard rankingMutationGuard;
 
     public DeleteUserRatingCommandHandler(
         IRatingRepository ratingRepository,
         IRatingRankProvider ratingRankProvider,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        IRatingRankingMutationNotifier rankingMutationNotifier)
+        IRatingRankingMutationGuard rankingMutationGuard)
     {
         this.ratingRepository = ratingRepository;
         this.ratingRankProvider = ratingRankProvider;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
-        this.rankingMutationNotifier = rankingMutationNotifier;
+        this.rankingMutationGuard = rankingMutationGuard;
     }
 
     public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(
@@ -178,26 +178,34 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             this.parkRepository,
             this.parkItemRepository,
             cancellationToken);
-        UserRatingDeletionResult deletion = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
+        ParkItemCategory? parkItemCategory = metadata?.ParkItemCategory;
+        if (command.TargetType == RatingTargetType.ParkItem && !parkItemCategory.HasValue)
+        {
+            UserRating? retainedRating = await this.ratingRepository.GetUserRatingAsync(
+                userId,
+                command.TargetType,
+                targetId,
+                cancellationToken);
+            parkItemCategory = retainedRating?.ParkItemCategory;
+        }
+
+        await this.rankingMutationGuard.PrepareMutationAsync(
+            command.TargetType,
+            parkItemCategory,
+            cancellationToken);
+        RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,
             command.TargetType,
             targetId,
             cancellationToken);
         this.ratingRankProvider.Invalidate();
-        if (deletion.WasDeleted)
-        {
-            await this.rankingMutationNotifier.NotifyMutationAsync(
-                deletion.DeletedRating?.TargetType ?? command.TargetType,
-                deletion.DeletedRating?.ParkItemCategory ?? metadata?.ParkItemCategory,
-                cancellationToken);
-        }
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,
             targetId,
-            deletion.Aggregate,
+            aggregate,
             metadata?.CanReceiveVisitorRatings ?? false,
-            aggregateIntegrityIsValid: deletion.Aggregate is null ? true : null);
+            aggregateIntegrityIsValid: aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
 }

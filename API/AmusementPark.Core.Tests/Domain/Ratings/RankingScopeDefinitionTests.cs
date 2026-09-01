@@ -232,16 +232,22 @@ public sealed class RankingScopeDefinitionTests
             .IsAffectedByRatingMutation(RatingTargetType.Park, null));
     }
 
-    [Theory]
-    [InlineData(RatingTargetType.ParkItem, null)]
-    [InlineData(RatingTargetType.Park, ParkItemCategory.Attraction)]
-    public void IsAffectedByRatingMutation_WhenTargetMetadataIsInconsistent_ShouldRejectTheImpact(
-        RatingTargetType targetType,
-        ParkItemCategory? parkItemCategory)
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkItemCategoryIsUnavailable_ShouldStillProtectParkScopes()
+    {
+        Assert.True(CreateGlobalParkDefinition().IsAffectedByRatingMutation(
+            RatingTargetType.ParkItem,
+            null));
+        Assert.False(CreateParkItemDefinition(ParkItemCategory.Attraction, "attraction")
+            .IsAffectedByRatingMutation(RatingTargetType.ParkItem, null));
+    }
+
+    [Fact]
+    public void IsAffectedByRatingMutation_WhenParkHasItemMetadata_ShouldRejectTheImpact()
     {
         Assert.False(CreateGlobalParkDefinition().IsAffectedByRatingMutation(
-            targetType,
-            parkItemCategory));
+            RatingTargetType.Park,
+            ParkItemCategory.Attraction));
     }
 
     private static RankingScopeDefinition CreateGlobalParkDefinition()

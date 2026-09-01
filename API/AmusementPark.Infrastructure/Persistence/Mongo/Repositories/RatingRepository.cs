@@ -56,7 +56,7 @@ public sealed class RatingRepository : IRatingRepository
         return new UserRatingMutationResult(upsertedRating, aggregate);
     }
 
-    public async Task<UserRatingDeletionResult> DeleteUserRatingAndRecalculateAggregateAsync(
+    public async Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
         string userId,
         RatingTargetType targetType,
         string targetId,
@@ -68,8 +68,7 @@ public sealed class RatingRepository : IRatingRepository
             cancellationToken: cancellationToken);
         if (document is null)
         {
-            RatingAggregate? currentAggregate = await this.GetAggregateAsync(targetType, targetId, cancellationToken);
-            return new UserRatingDeletionResult(null, currentAggregate);
+            return await this.GetAggregateAsync(targetType, targetId, cancellationToken);
         }
 
         UserRating deletedRating = document.ToDomain();
@@ -79,10 +78,7 @@ public sealed class RatingRepository : IRatingRepository
             deletedRating.ParkId,
             deletedRating.ParkItemCategory,
             deletedRating.ParkItemType);
-        RatingAggregate? aggregate = await this.aggregateSynchronizer.RecalculateAsync(
-            aggregateTarget,
-            cancellationToken);
-        return new UserRatingDeletionResult(deletedRating, aggregate);
+        return await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
     }
 
     public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)

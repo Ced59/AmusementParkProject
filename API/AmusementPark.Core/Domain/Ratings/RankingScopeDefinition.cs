@@ -183,13 +183,17 @@ public sealed class RankingScopeDefinition
             return !parkItemCategory.HasValue && this.TargetFamily == RankingTargetFamily.Parks;
         }
 
+        if (this.TargetFamily == RankingTargetFamily.Parks)
+        {
+            return true;
+        }
+
         if (!parkItemCategory.HasValue || !Enum.IsDefined(parkItemCategory.Value))
         {
             return false;
         }
 
-        return this.TargetFamily == RankingTargetFamily.Parks ||
-            this.AcceptsTarget(targetType, parkItemCategory);
+        return this.AcceptsTarget(targetType, parkItemCategory);
     }
 
     private static void ValidateFilterCompatibility(

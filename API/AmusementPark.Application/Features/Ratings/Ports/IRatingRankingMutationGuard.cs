@@ -3,9 +3,9 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Ports;
 
-public interface IRatingRankingMutationNotifier
+public interface IRatingRankingMutationGuard
 {
-    Task NotifyMutationAsync(
+    Task PrepareMutationAsync(
         RatingTargetType targetType,
         ParkItemCategory? parkItemCategory,
         CancellationToken cancellationToken);
