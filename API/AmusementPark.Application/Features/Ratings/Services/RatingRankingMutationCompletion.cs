@@ -1,6 +1,8 @@
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -8,57 +10,95 @@ namespace AmusementPark.Application.Features.Ratings.Services;
 
 internal static class RatingRankingMutationCompletion
 {
-    public static Task<RatingRankingMutationPreparation> PrepareAsync(
+    private const int MaximumMetadataFenceAttempts = 3;
+
+    public static async Task<RatingRankingPreparedMutation?> PrepareAsync(
         RatingTargetType targetType,
-        ParkItemCategory? observedCategory,
+        string targetId,
+        RatingTargetMetadataResult? observedMetadata,
         ParkItemCategory? retainedCategory,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
         IRatingRankingMutationGuard rankingMutationGuard,
         CancellationToken cancellationToken)
     {
-        return targetType == RatingTargetType.ParkItem
-            ? rankingMutationGuard.PreparePotentialParkItemMutationAsync(cancellationToken)
-            : rankingMutationGuard.PrepareMutationAsync(
-                targetType,
-                observedCategory,
-                retainedCategory,
-                cancellationToken);
-    }
-
-    public static async Task<ParkItemCategory?> ResolveAuthoritativeParkItemCategoryAsync(
-        RatingTargetType targetType,
-        string targetId,
-        IParkItemRepository parkItemRepository)
-    {
-        if (targetType != RatingTargetType.ParkItem)
+        RatingTargetMetadataResult? currentMetadata = observedMetadata;
+        for (int attempt = 1; attempt <= MaximumMetadataFenceAttempts; attempt++)
         {
-            return null;
+            RatingRankingMutationPreparation preparation =
+                await rankingMutationGuard.PrepareMutationAsync(
+                    targetType,
+                    currentMetadata?.ParkItemCategory,
+                    retainedCategory,
+                    cancellationToken);
+            if (targetType != RatingTargetType.ParkItem)
+            {
+                return new RatingRankingPreparedMutation(currentMetadata, preparation);
+            }
+
+            RatingTargetMetadataResult? authoritativeMetadata;
+            try
+            {
+                authoritativeMetadata = await RatingTargetMetadataResolver.ResolveAsync(
+                    targetType,
+                    targetId,
+                    parkRepository,
+                    parkItemRepository,
+                    cancellationToken);
+            }
+            catch
+            {
+                await rankingMutationGuard.CompleteMutationAsync(
+                    preparation,
+                    sourceChanged: false,
+                    CancellationToken.None);
+                throw;
+            }
+
+            if (HasEquivalentRankingMetadata(currentMetadata, authoritativeMetadata))
+            {
+                return new RatingRankingPreparedMutation(authoritativeMetadata, preparation);
+            }
+
+            await rankingMutationGuard.CompleteMutationAsync(
+                preparation,
+                sourceChanged: false,
+                CancellationToken.None);
+            currentMetadata = authoritativeMetadata;
         }
 
-        ParkItem? currentParkItem = await parkItemRepository.GetByIdAsync(
-            targetId,
-            includeHidden: false,
-            cancellationToken: CancellationToken.None);
-        return currentParkItem?.Category;
+        return null;
     }
 
     public static Task CompleteAsync(
-        RatingTargetType targetType,
         RatingRankingMutationPreparation preparation,
         bool sourceChanged,
-        ParkItemCategory? observedCategory,
-        ParkItemCategory? retainedCategory,
-        ParkItemCategory? authoritativeCategory,
         IRatingRankingMutationGuard rankingMutationGuard)
     {
-        return targetType == RatingTargetType.ParkItem
-            ? rankingMutationGuard.CompletePotentialParkItemMutationAsync(
-                preparation,
-                new[] { observedCategory, retainedCategory, authoritativeCategory },
-                sourceChanged,
-                CancellationToken.None)
-            : rankingMutationGuard.CompleteMutationAsync(
-                preparation,
-                sourceChanged,
-                CancellationToken.None);
+        return rankingMutationGuard.CompleteMutationAsync(
+            preparation,
+            sourceChanged,
+            CancellationToken.None);
+    }
+
+    private static bool HasEquivalentRankingMetadata(
+        RatingTargetMetadataResult? observed,
+        RatingTargetMetadataResult? authoritative)
+    {
+        if (observed is null || authoritative is null)
+        {
+            return observed is null && authoritative is null;
+        }
+
+        return observed.TargetType == authoritative.TargetType
+            && string.Equals(observed.TargetId, authoritative.TargetId, StringComparison.Ordinal)
+            && string.Equals(observed.ParkId, authoritative.ParkId, StringComparison.Ordinal)
+            && observed.ParkItemCategory == authoritative.ParkItemCategory
+            && observed.ParkItemType == authoritative.ParkItemType
+            && observed.CanReceiveVisitorRatings == authoritative.CanReceiveVisitorRatings;
     }
 }
+
+internal sealed record RatingRankingPreparedMutation(
+    RatingTargetMetadataResult? Metadata,
+    RatingRankingMutationPreparation Preparation);

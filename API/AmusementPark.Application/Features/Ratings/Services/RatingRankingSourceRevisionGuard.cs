@@ -54,16 +54,6 @@ public sealed class RatingRankingSourceRevisionGuard :
         return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
     }
 
-    public async Task<RatingRankingMutationPreparation> PreparePotentialParkItemMutationAsync(
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<RankingScopeDefinition> affectedScopes = this.scopeRegistry.Definitions
-            .Where(static definition => definition.TargetFamily is RankingTargetFamily.Parks
-                or RankingTargetFamily.ParkItems)
-            .ToArray();
-        return await this.PrepareScopesAsync(affectedScopes, cancellationToken);
-    }
-
     public async Task<RatingRankingMutationPreparation> PrepareParkChangesAsync(
         IReadOnlyCollection<Park> previousParks,
         IReadOnlyCollection<Park> currentParks,
@@ -253,29 +243,6 @@ public sealed class RatingRankingSourceRevisionGuard :
         await this.CompleteMutationAsync(
             preparation,
             _ => sourceChanged,
-            cancellationToken);
-    }
-
-    public async Task CompletePotentialParkItemMutationAsync(
-        RatingRankingMutationPreparation preparation,
-        IReadOnlyCollection<ParkItemCategory?> affectedCategories,
-        bool sourceChanged,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(affectedCategories);
-        HashSet<ParkItemCategory> normalizedCategories = affectedCategories
-            .Where(static category => category.HasValue && Enum.IsDefined(category.Value))
-            .Select(static category => category!.Value)
-            .ToHashSet();
-        IReadOnlyDictionary<RankingScopeKey, RankingScopeDefinition> definitionsByKey =
-            this.scopeRegistry.Definitions.ToDictionary(static definition => definition.Key);
-        await this.CompleteMutationAsync(
-            preparation,
-            scopeKey => sourceChanged
-                && definitionsByKey.TryGetValue(scopeKey, out RankingScopeDefinition? definition)
-                && (definition.TargetFamily == RankingTargetFamily.Parks
-                    || (definition.Filter.ParkItemCategory.HasValue
-                        && normalizedCategories.Contains(definition.Filter.ParkItemCategory.Value))),
             cancellationToken);
     }
 

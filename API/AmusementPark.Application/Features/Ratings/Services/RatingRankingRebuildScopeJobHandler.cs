@@ -64,38 +64,40 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        RevisionFenceDisposition initialFence = await this.CheckRevisionFenceAsync(
-            scope.Key,
+        RevisionFenceCheck initialFence = await this.CheckRevisionFenceAsync(
+            scope,
             requestedRevision,
+            expectedGlobalRevision: null,
             cancellationToken);
-        if (initialFence == RevisionFenceDisposition.NewerRevisionExists)
+        if (initialFence.Disposition == RevisionFenceDisposition.NewerRevisionExists)
         {
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (initialFence is RevisionFenceDisposition.RequestedRevisionUnavailable
-            or RevisionFenceDisposition.MutationPending)
+        if (RequiresRetry(initialFence.Disposition))
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
         }
+
+        long? expectedGlobalRevision = initialFence.GlobalRevision;
 
         RatingRankingSnapshotBuildPlan plan = await this.snapshotBuilder.BuildAsync(
             scope,
             cancellationToken);
         if (plan.IsSourceTruncated)
         {
-            RevisionFenceDisposition overflowFence = await this.CheckRevisionFenceAsync(
-                scope.Key,
+            RevisionFenceCheck overflowFence = await this.CheckRevisionFenceAsync(
+                scope,
                 requestedRevision,
+                expectedGlobalRevision,
                 cancellationToken);
-            if (overflowFence == RevisionFenceDisposition.NewerRevisionExists)
+            if (overflowFence.Disposition == RevisionFenceDisposition.NewerRevisionExists)
             {
                 return DurableBackgroundJobHandlerResult.Success();
             }
 
-            if (overflowFence is RevisionFenceDisposition.RequestedRevisionUnavailable
-                or RevisionFenceDisposition.MutationPending)
+            if (RequiresRetry(overflowFence.Disposition))
             {
                 return DurableBackgroundJobHandlerResult.Retry(
                     RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -111,17 +113,17 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 RatingRankingRebuildErrorCodes.SourceSetTruncated);
         }
 
-        RevisionFenceDisposition preWriteFence = await this.CheckRevisionFenceAsync(
-            scope.Key,
+        RevisionFenceCheck preWriteFence = await this.CheckRevisionFenceAsync(
+            scope,
             requestedRevision,
+            expectedGlobalRevision,
             cancellationToken);
-        if (preWriteFence == RevisionFenceDisposition.NewerRevisionExists)
+        if (preWriteFence.Disposition == RevisionFenceDisposition.NewerRevisionExists)
         {
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (preWriteFence is RevisionFenceDisposition.RequestedRevisionUnavailable
-            or RevisionFenceDisposition.MutationPending)
+        if (RequiresRetry(preWriteFence.Disposition))
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -227,17 +229,17 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 RatingRankingRebuildErrorCodes.ValidationFailed);
         }
 
-        RevisionFenceDisposition publicationFence = await this.CheckRevisionFenceAsync(
-            scope.Key,
+        RevisionFenceCheck publicationFence = await this.CheckRevisionFenceAsync(
+            scope,
             requestedRevision,
+            expectedGlobalRevision,
             cancellationToken);
-        if (publicationFence == RevisionFenceDisposition.NewerRevisionExists)
+        if (publicationFence.Disposition == RevisionFenceDisposition.NewerRevisionExists)
         {
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        if (publicationFence is RevisionFenceDisposition.RequestedRevisionUnavailable
-            or RevisionFenceDisposition.MutationPending)
+        if (RequiresRetry(publicationFence.Disposition))
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
@@ -284,28 +286,66 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         return chunks;
     }
 
-    private async Task<RevisionFenceDisposition> CheckRevisionFenceAsync(
-        RankingScopeKey scopeKey,
+    private async Task<RevisionFenceCheck> CheckRevisionFenceAsync(
+        RankingScopeDefinition scope,
         long requestedRevision,
+        long? expectedGlobalRevision,
         CancellationToken cancellationToken)
     {
         RatingRankingSourceRevision? current = await this.sourceRevisionRepository.GetAsync(
-            scopeKey,
+            scope.Key,
             cancellationToken);
         if (current is not null && !current.IsRebuildable)
         {
-            return RevisionFenceDisposition.MutationPending;
+            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null);
         }
 
         long currentRevision = current?.Revision ?? 0;
         if (currentRevision > requestedRevision)
         {
-            return RevisionFenceDisposition.NewerRevisionExists;
+            return new RevisionFenceCheck(RevisionFenceDisposition.NewerRevisionExists, null);
         }
 
-        return currentRevision < requestedRevision
-            ? RevisionFenceDisposition.RequestedRevisionUnavailable
-            : RevisionFenceDisposition.Current;
+        if (currentRevision < requestedRevision)
+        {
+            return new RevisionFenceCheck(
+                RevisionFenceDisposition.RequestedRevisionUnavailable,
+                null);
+        }
+
+        if (scope.TargetFamily != RankingTargetFamily.ParkItems)
+        {
+            return new RevisionFenceCheck(RevisionFenceDisposition.Current, null);
+        }
+
+        RatingRankingSourceRevision? globalRevision =
+            await this.sourceRevisionRepository.GetAsync(
+                CanonicalRankingScopes.GlobalParks.Key,
+                cancellationToken);
+        if (globalRevision is not null && !globalRevision.IsRebuildable)
+        {
+            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null);
+        }
+
+        long currentGlobalRevision = globalRevision?.Revision ?? 0;
+        if (expectedGlobalRevision.HasValue
+            && currentGlobalRevision != expectedGlobalRevision.Value)
+        {
+            return new RevisionFenceCheck(
+                RevisionFenceDisposition.DependencyChanged,
+                currentGlobalRevision);
+        }
+
+        return new RevisionFenceCheck(
+            RevisionFenceDisposition.Current,
+            currentGlobalRevision);
+    }
+
+    private static bool RequiresRetry(RevisionFenceDisposition disposition)
+    {
+        return disposition is RevisionFenceDisposition.RequestedRevisionUnavailable
+            or RevisionFenceDisposition.MutationPending
+            or RevisionFenceDisposition.DependencyChanged;
     }
 
     private static bool TryResolveRequest(
@@ -374,5 +414,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         NewerRevisionExists,
         RequestedRevisionUnavailable,
         MutationPending,
+        DependencyChanged,
     }
+
+    private sealed record RevisionFenceCheck(
+        RevisionFenceDisposition Disposition,
+        long? GlobalRevision);
 }

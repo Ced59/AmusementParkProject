@@ -12,17 +12,8 @@ public interface IRatingRankingMutationGuard
         ParkItemCategory? previousParkItemCategory,
         CancellationToken cancellationToken);
 
-    Task<RatingRankingMutationPreparation> PreparePotentialParkItemMutationAsync(
-        CancellationToken cancellationToken);
-
     Task CompleteMutationAsync(
         RatingRankingMutationPreparation preparation,
-        bool sourceChanged,
-        CancellationToken cancellationToken);
-
-    Task CompletePotentialParkItemMutationAsync(
-        RatingRankingMutationPreparation preparation,
-        IReadOnlyCollection<ParkItemCategory?> affectedCategories,
         bool sourceChanged,
         CancellationToken cancellationToken);
 }

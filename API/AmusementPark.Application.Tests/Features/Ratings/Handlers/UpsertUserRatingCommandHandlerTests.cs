@@ -67,6 +67,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             ParkId = "park-1",
             Name = "Demo Restaurant",
             Category = ParkItemCategory.Restaurant,
+            Type = ParkItemType.Restaurant,
             IsVisible = true,
         };
         Park park = new Park
@@ -80,8 +81,8 @@ public sealed class UpsertUserRatingCommandHandlerTests
             TargetType = RatingTargetType.ParkItem,
             TargetId = "item-1",
             ParkId = "park-1",
-            ParkItemCategory = ParkItemCategory.Attraction,
-            ParkItemType = ParkItemType.RollerCoaster,
+            ParkItemCategory = ParkItemCategory.Restaurant,
+            ParkItemType = ParkItemType.Restaurant,
             RatingCount = 3,
             AverageRating = 4.5d,
             BayesianScore = 3.72d,
@@ -123,24 +124,39 @@ public sealed class UpsertUserRatingCommandHandlerTests
         parkItemRepository
             .SetupSequence(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(item)
+            .ReturnsAsync(authoritativeItem)
             .ReturnsAsync(authoritativeItem);
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         ratingRankProvider
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
-        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+        RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
             Array.Empty<RatingRankingMutationLease>());
         rankingMutationGuard
-            .Setup(guard => guard.PreparePotentialParkItemMutationAsync(
+            .Setup(guard => guard.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Attraction,
+                ParkItemCategory.Show,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(preparation);
+            .ReturnsAsync(initialPreparation);
         rankingMutationGuard
-            .Setup(guard => guard.CompletePotentialParkItemMutationAsync(
-                preparation,
-                It.Is<IReadOnlyCollection<ParkItemCategory?>>(categories =>
-                    categories.Contains(ParkItemCategory.Attraction)
-                    && categories.Contains(ParkItemCategory.Show)
-                    && categories.Contains(ParkItemCategory.Restaurant)),
+            .Setup(guard => guard.CompleteMutationAsync(
+                initialPreparation,
+                false,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Restaurant,
+                ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(authoritativePreparation);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                authoritativePreparation,
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -164,8 +180,8 @@ public sealed class UpsertUserRatingCommandHandlerTests
         Assert.Equal(RatingTargetType.ParkItem, result.Value.TargetType);
         Assert.Equal("item-1", result.Value.TargetId);
         Assert.Equal("park-1", result.Value.ParkId);
-        Assert.Equal(ParkItemCategory.Attraction, result.Value.ParkItemCategory);
-        Assert.Equal(ParkItemType.RollerCoaster, result.Value.ParkItemType);
+        Assert.Equal(ParkItemCategory.Restaurant, result.Value.ParkItemCategory);
+        Assert.Equal(ParkItemType.Restaurant, result.Value.ParkItemType);
         Assert.Equal(4.5d, result.Value.Value);
         Assert.Equal(3, result.Value.Summary.RatingCount);
         Assert.Equal(4.5d, result.Value.Summary.AverageRating);
@@ -177,15 +193,15 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 rating.TargetType == RatingTargetType.ParkItem &&
                 rating.TargetId == "item-1" &&
                 rating.ParkId == "park-1" &&
-                rating.ParkItemCategory == ParkItemCategory.Attraction &&
-                rating.ParkItemType == ParkItemType.RollerCoaster &&
+                rating.ParkItemCategory == ParkItemCategory.Restaurant &&
+                rating.ParkItemType == ParkItemType.Restaurant &&
                 rating.Value == 4.5d),
             It.Is<RatingAggregateTarget>(target =>
                 target.TargetType == RatingTargetType.ParkItem &&
                 target.TargetId == "item-1" &&
                 target.ParkId == "park-1" &&
-                target.ParkItemCategory == ParkItemCategory.Attraction &&
-                target.ParkItemType == ParkItemType.RollerCoaster),
+                target.ParkItemCategory == ParkItemCategory.Restaurant &&
+                target.ParkItemType == ParkItemType.Restaurant),
             It.IsAny<CancellationToken>()), Times.Once);
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
