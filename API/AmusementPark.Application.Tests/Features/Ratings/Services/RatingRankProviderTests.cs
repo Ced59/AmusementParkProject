@@ -39,6 +39,26 @@ public sealed class RatingRankProviderTests
     }
 
     [Fact]
+    public async Task GetCanonicalSnapshotAsync_WhenPointerBackedHeaderAwaitsStatusReconciliation_ShouldReturnSnapshot()
+    {
+        ProviderFixture fixture = new ProviderFixture();
+        SnapshotFixture snapshot = fixture.CreateSnapshot(
+            3,
+            sourceRevision: 7,
+            awaitingStatusReconciliation: true);
+        fixture.SetupCurrent(snapshot);
+
+        RatingPublishedRankingSnapshot? result = await fixture.Provider.GetCanonicalSnapshotAsync(
+            RatingTargetType.Park,
+            null,
+            CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(snapshot.Header.Id, result.SnapshotId);
+        Assert.Equal(3, result.Entries.Count);
+    }
+
+    [Fact]
     public async Task GetCanonicalSnapshotAsync_WhenSourceMutationIsPending_ShouldWithholdRankWithoutReadingPointer()
     {
         ProviderFixture fixture = new ProviderFixture();
@@ -251,7 +271,10 @@ public sealed class RatingRankProviderTests
 
         public RatingRankProvider Provider { get; }
 
-        public SnapshotFixture CreateSnapshot(int entryCount, long sourceRevision)
+        public SnapshotFixture CreateSnapshot(
+            int entryCount,
+            long sourceRevision,
+            bool awaitingStatusReconciliation = false)
         {
             RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-current");
             List<RankingSnapshotEntry> entries = Enumerable.Range(1, entryCount)
@@ -279,7 +302,9 @@ public sealed class RatingRankProviderTests
                 CanonicalRankingScopes.GlobalParks.Key,
                 RankingEligibilityPolicy.InitialMethodologyVersion,
                 sourceRevision,
-                RankingSnapshotStatus.Current,
+                awaitingStatusReconciliation
+                    ? RankingSnapshotStatus.Validated
+                    : RankingSnapshotStatus.Current,
                 entryCount,
                 entryCount,
                 500,
@@ -287,7 +312,7 @@ public sealed class RatingRankProviderTests
                 checksum,
                 GeneratedAtUtc,
                 GeneratedAtUtc.AddMinutes(2),
-                PublishedAtUtc);
+                awaitingStatusReconciliation ? null : PublishedAtUtc);
             return new SnapshotFixture(
                 header,
                 chunk,

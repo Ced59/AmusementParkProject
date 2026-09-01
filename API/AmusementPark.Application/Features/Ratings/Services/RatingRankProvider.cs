@@ -193,8 +193,10 @@ public sealed class RatingRankProvider : IRatingRankProvider
             || header.ScopeKey != scope.Key
             || header.MethodologyVersion != scope.MethodologyVersion
             || header.SourceRevision != state.SourceRevision
-            || header.Status is not (RankingSnapshotStatus.Current or RankingSnapshotStatus.Superseded)
-            || !header.PublishedAtUtc.HasValue
+            || header.Status is not (
+                RankingSnapshotStatus.Validated
+                or RankingSnapshotStatus.Current
+                or RankingSnapshotStatus.Superseded)
             || !scope.EvaluatePublication(header.EligibleEntryCount).IsEligible)
         {
             return null;
