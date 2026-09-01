@@ -218,8 +218,8 @@ public sealed class RatingRankSnapshotInvalidationTests
             IsVisible = false,
         };
 
-        ReplaceOneModel<ParkItemDocument> write =
-            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, previous);
+        ReplaceOneModel<ParkItemDocument> write = Assert.IsType<ReplaceOneModel<ParkItemDocument>>(
+            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, previous));
         IBsonSerializer<ParkItemDocument> serializer =
             BsonSerializer.SerializerRegistry.GetSerializer<ParkItemDocument>();
         RenderArgs<ParkItemDocument> arguments =
@@ -239,7 +239,7 @@ public sealed class RatingRankSnapshotInvalidationTests
     }
 
     [Fact]
-    public void BuildFencedParkReplacement_WhenDocumentIsNew_ShouldKeepUpsertById()
+    public void BuildFencedParkReplacement_WhenDocumentIsNew_ShouldUseInsertOnly()
     {
         ParkDocument replacement = new ParkDocument
         {
@@ -248,17 +248,29 @@ public sealed class RatingRankSnapshotInvalidationTests
             IsVisible = false,
         };
 
-        ReplaceOneModel<ParkDocument> write =
-            CaptainCoasterDataSourceProvider.BuildFencedParkReplacement(replacement, null);
-        IBsonSerializer<ParkDocument> serializer =
-            BsonSerializer.SerializerRegistry.GetSerializer<ParkDocument>();
-        RenderArgs<ParkDocument> arguments =
-            new RenderArgs<ParkDocument>(serializer, BsonSerializer.SerializerRegistry);
-        BsonDocument filter = write.Filter.Render(arguments);
+        InsertOneModel<ParkDocument> write = Assert.IsType<InsertOneModel<ParkDocument>>(
+            CaptainCoasterDataSourceProvider.BuildFencedParkReplacement(replacement, null));
 
-        Assert.True(write.IsUpsert);
-        Assert.Single(filter);
-        Assert.Equal(replacement.Id, filter["_id"].AsString);
+        Assert.Same(replacement, write.Document);
+    }
+
+    [Fact]
+    public void BuildFencedParkItemReplacement_WhenDocumentIsNew_ShouldUseInsertOnly()
+    {
+        ParkItemDocument replacement = new ParkItemDocument
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Imported Ride",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = false,
+        };
+
+        InsertOneModel<ParkItemDocument> write = Assert.IsType<InsertOneModel<ParkItemDocument>>(
+            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, null));
+
+        Assert.Same(replacement, write.Document);
     }
 
     [Fact]

@@ -122,13 +122,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 .Select(document => BuildFencedParkReplacement(
                     document,
                     previousById.GetValueOrDefault(document.Id)))
-                .Cast<WriteModel<ParkDocument>>()
                 .ToArray();
-            BulkWriteResult<ParkDocument> result = await this.localParksCollection.BulkWriteAsync(
+            BulkWriteResult<ParkDocument> result = await ExecuteInsertAwareBulkWriteAsync(
+                this.localParksCollection,
                 writes,
-                new BulkWriteOptions { IsOrdered = false },
                 cancellationToken);
-            bool sourceChanged = result.ModifiedCount > 0 || result.Upserts.Count > 0;
+            bool sourceChanged = HasSourceChanges(result);
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
                 sourceChanged,
@@ -179,14 +178,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 .Select(document => BuildFencedParkItemReplacement(
                     document,
                     previousById.GetValueOrDefault(document.Id)))
-                .Cast<WriteModel<ParkItemDocument>>()
                 .ToArray();
-            BulkWriteResult<ParkItemDocument> result =
-                await this.localParkItemsCollection.BulkWriteAsync(
-                    writes,
-                    new BulkWriteOptions { IsOrdered = false },
-                    cancellationToken);
-            bool sourceChanged = result.ModifiedCount > 0 || result.Upserts.Count > 0;
+            BulkWriteResult<ParkItemDocument> result = await ExecuteInsertAwareBulkWriteAsync(
+                this.localParkItemsCollection,
+                writes,
+                cancellationToken);
+            bool sourceChanged = HasSourceChanges(result);
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
                 sourceChanged,
@@ -206,32 +203,69 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         }
     }
 
-    internal static ReplaceOneModel<ParkDocument> BuildFencedParkReplacement(
+    internal static WriteModel<ParkDocument> BuildFencedParkReplacement(
         ParkDocument replacement,
         ParkDocument? previousDocument)
     {
         ArgumentNullException.ThrowIfNull(replacement);
-        FilterDefinition<ParkDocument> filter = previousDocument is null
-            ? Builders<ParkDocument>.Filter.Eq(document => document.Id, replacement.Id)
-            : ParkRepository.BuildObservedRankingStateFilter(previousDocument);
-        return new ReplaceOneModel<ParkDocument>(filter, replacement)
+        if (previousDocument is null)
         {
-            IsUpsert = previousDocument is null,
+            return new InsertOneModel<ParkDocument>(replacement);
+        }
+
+        return new ReplaceOneModel<ParkDocument>(
+            ParkRepository.BuildObservedRankingStateFilter(previousDocument),
+            replacement)
+        {
+            IsUpsert = false,
         };
     }
 
-    internal static ReplaceOneModel<ParkItemDocument> BuildFencedParkItemReplacement(
+    internal static WriteModel<ParkItemDocument> BuildFencedParkItemReplacement(
         ParkItemDocument replacement,
         ParkItemDocument? previousDocument)
     {
         ArgumentNullException.ThrowIfNull(replacement);
-        FilterDefinition<ParkItemDocument> filter = previousDocument is null
-            ? Builders<ParkItemDocument>.Filter.Eq(document => document.Id, replacement.Id)
-            : ParkItemRepository.BuildObservedRankingStateFilter(previousDocument);
-        return new ReplaceOneModel<ParkItemDocument>(filter, replacement)
+        if (previousDocument is null)
         {
-            IsUpsert = previousDocument is null,
+            return new InsertOneModel<ParkItemDocument>(replacement);
+        }
+
+        return new ReplaceOneModel<ParkItemDocument>(
+            ParkItemRepository.BuildObservedRankingStateFilter(previousDocument),
+            replacement)
+        {
+            IsUpsert = false,
         };
+    }
+
+    private static async Task<BulkWriteResult<TDocument>> ExecuteInsertAwareBulkWriteAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        IReadOnlyCollection<WriteModel<TDocument>> writes,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await collection.BulkWriteAsync(
+                writes,
+                new BulkWriteOptions { IsOrdered = false },
+                cancellationToken);
+        }
+        catch (MongoBulkWriteException<TDocument> exception)
+            when (exception.WriteConcernError is null
+                && exception.WriteErrors.Count > 0
+                && exception.WriteErrors.All(
+                    static error => error.Category == ServerErrorCategory.DuplicateKey))
+        {
+            return exception.Result;
+        }
+    }
+
+    private static bool HasSourceChanges<TDocument>(BulkWriteResult<TDocument> result)
+    {
+        return result.InsertedCount > 0
+            || result.ModifiedCount > 0
+            || result.Upserts.Count > 0;
     }
 
     internal static bool DocumentsAreEquivalent<TDocument>(

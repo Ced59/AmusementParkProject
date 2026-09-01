@@ -131,7 +131,8 @@ internal static class RatingRankingMutationCompletion
         }
         catch
         {
-            await CompleteAsync(preparedMutation.Preparation, sourceChanged, rankingMutationGuard);
+            // The persisted recovery target belongs to the initial global lease. Keep that
+            // lease recoverable when final-category resolution fails after the rating commit.
             throw;
         }
 
