@@ -31,6 +31,8 @@ public sealed class RatingSummaryDto
 
     public int? Rank { get; set; }
 
+    public DateTime? GeneratedAtUtc { get; set; }
+
     public RankingEvidenceDto? Evidence { get; set; }
 
     public string? MethodologyVersion { get; set; }
@@ -163,7 +165,7 @@ public sealed class ParkRatingRankingCategoryDto
 
 public sealed class ParkRatingRankingDto
 {
-    public int Rank { get; set; }
+    public int? Rank { get; set; }
 
     public string ParkId { get; set; } = string.Empty;
 
@@ -190,12 +192,14 @@ public sealed class ParkRatingRankingDto
 
     public string? MethodologyVersion { get; set; }
 
+    public DateTime? GeneratedAtUtc { get; set; }
+
     public IReadOnlyCollection<ParkRatingRankingCategoryDto> Categories { get; set; } = Array.Empty<ParkRatingRankingCategoryDto>();
 }
 
 public sealed class ParkItemRatingRankingDto
 {
-    public int Rank { get; set; }
+    public int? Rank { get; set; }
 
     public string TargetId { get; set; } = string.Empty;
 
@@ -223,6 +227,8 @@ public sealed class ParkItemRatingRankingDto
     public RankingEvidenceDto? Evidence { get; set; }
 
     public string? MethodologyVersion { get; set; }
+
+    public DateTime? GeneratedAtUtc { get; set; }
 }
 
 public sealed class UserParkRatingRankingCategoryDto

@@ -1,6 +1,20 @@
 {
-  "version": "4.2.44",
+  "version": "4.2.45",
   "history": [
+    {
+      "version": "4.2.45",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "Les classements se préparent à n’afficher que des rangs appuyés par assez d’avis.",
+        "en": "Rankings are preparing to show only positions backed by enough ratings.",
+        "de": "Ranglisten werden darauf vorbereitet, nur ausreichend belegte Platzierungen anzuzeigen.",
+        "nl": "Ranglijsten worden voorbereid om alleen posities met voldoende beoordelingen te tonen.",
+        "it": "Le classifiche si preparano a mostrare solo posizioni sostenute da un numero sufficiente di valutazioni.",
+        "es": "Las clasificaciones se preparan para mostrar solo posiciones respaldadas por suficientes valoraciones.",
+        "pl": "Rankingi są przygotowywane tak, aby pokazywać tylko pozycje poparte wystarczającą liczbą ocen.",
+        "pt": "As classificações estão a ser preparadas para mostrar apenas posições sustentadas por avaliações suficientes."
+      }
+    },
     {
       "version": "4.2.44",
       "releasedAt": "2026-09-01",

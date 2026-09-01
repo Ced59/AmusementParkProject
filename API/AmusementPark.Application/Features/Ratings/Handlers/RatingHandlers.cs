@@ -384,8 +384,16 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
             aggregateIntegrityIsValid: aggregate is null ? true : null);
         if (aggregate is not null && aggregate.RatingCount > 0)
         {
-            int? rank = await this.ratingRankProvider.GetRankAsync(aggregate, cancellationToken);
-            summary = summary with { Rank = rank };
+            RatingPublishedRank? publishedRank = await this.ratingRankProvider.GetRankAsync(
+                aggregate,
+                cancellationToken);
+            summary = summary with
+            {
+                Rank = publishedRank?.Rank,
+                GeneratedAtUtc = publishedRank?.GeneratedAtUtc,
+                MethodologyVersion = publishedRank?.MethodologyVersion
+                    ?? summary.MethodologyVersion,
+            };
         }
 
         return ApplicationResult<RatingSummaryResult>.Success(summary);

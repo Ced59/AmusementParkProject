@@ -2,6 +2,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Handlers;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -82,9 +83,14 @@ public sealed class GetRatingSummaryQueryHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        RatingMethodologyVersion publishedMethodologyVersion =
+            RatingMethodologyVersion.Parse("ratings-2030-01");
         ratingRankProvider
             .Setup(provider => provider.GetRankAsync(aggregate, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(2);
+            .ReturnsAsync(new RatingPublishedRank(
+                2,
+                publishedMethodologyVersion,
+                new DateTime(2026, 9, 1, 10, 0, 0, DateTimeKind.Utc)));
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -113,6 +119,10 @@ public sealed class GetRatingSummaryQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(2, result.Value!.Rank);
+        Assert.Equal(
+            new DateTime(2026, 9, 1, 10, 0, 0, DateTimeKind.Utc),
+            result.Value.GeneratedAtUtc);
+        Assert.Equal(publishedMethodologyVersion, result.Value.MethodologyVersion);
         Assert.Equal(RankingEvidenceLevel.Eligible, result.Value.Evidence?.Level);
         Assert.Equal(12, result.Value.UniqueContributorCount);
         Assert.Equal(12, result.Value.RatingObservationCount);

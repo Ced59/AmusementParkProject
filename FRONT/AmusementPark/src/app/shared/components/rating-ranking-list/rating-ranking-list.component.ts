@@ -11,7 +11,7 @@ export interface RatingRankingListEditableScore {
 
 export interface RatingRankingListItem {
   id: string;
-  rank: number;
+  rank: number | null;
   name: string;
   score: number;
   ratingCount?: number | null;

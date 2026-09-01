@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Parks;
@@ -43,16 +44,33 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
         using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
         using InMemoryRatingRankSnapshotCache snapshotCache =
             new InMemoryRatingRankSnapshotCache(memoryCache);
-        RatingRankProvider provider = new RatingRankProvider(ratingRepository.Object, snapshotCache);
+        Mock<IRankingSnapshotRepository> rankingSnapshotRepository =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingSourceRevisionRepository> sourceRevisionRepository =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        Mock<IRankingScopeRegistry> scopeRegistry = new Mock<IRankingScopeRegistry>(MockBehavior.Strict);
+        Mock<IRatingRankingFeatureFlags> featureFlags =
+            new Mock<IRatingRankingFeatureFlags>(MockBehavior.Strict);
+        featureFlags.SetupGet(flags => flags.EligibilityEnabled).Returns(false);
+        RankingSnapshotChecksumCalculator checksumCalculator = new RankingSnapshotChecksumCalculator();
+        RatingRankProvider provider = new RatingRankProvider(
+            ratingRepository.Object,
+            snapshotCache,
+            rankingSnapshotRepository.Object,
+            sourceRevisionRepository.Object,
+            scopeRegistry.Object,
+            featureFlags.Object,
+            checksumCalculator,
+            new RankingSnapshotIntegrityValidator(checksumCalculator));
 
-        int? firstRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
-        int? cachedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
+        RatingPublishedRank? firstRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
+        RatingPublishedRank? cachedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
         provider.Invalidate();
-        int? refreshedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
+        RatingPublishedRank? refreshedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
 
-        Assert.Equal(2, firstRank);
-        Assert.Equal(2, cachedRank);
-        Assert.Equal(2, refreshedRank);
+        Assert.Equal(2, firstRank?.Rank);
+        Assert.Equal(2, cachedRank?.Rank);
+        Assert.Equal(2, refreshedRank?.Rank);
         ratingRepository.Verify(repository => repository.GetVisibleParkItemRankingSourcesAsync(
             ParkItemCategory.Attraction,
             It.IsAny<int>(),
@@ -111,6 +129,74 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
         Assert.Equal(1, parkRanks["park-1"]);
     }
 
+    [Fact]
+    public async Task GetOrCreatePublishedAsync_WhenPointerIdentityChanges_ShouldNotReusePreviousPublication()
+    {
+        using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
+        using InMemoryRatingRankSnapshotCache snapshotCache =
+            new InMemoryRatingRankSnapshotCache(memoryCache);
+        RankingScopeKey scopeKey = CanonicalRankingScopes.GlobalParks.Key;
+        RatingMethodologyVersion methodologyVersion =
+            RankingEligibilityPolicy.InitialMethodologyVersion;
+        int firstFactoryCalls = 0;
+        int secondFactoryCalls = 0;
+        RatingPublishedRankingSnapshot firstSnapshot = CreatePublishedSnapshot(
+            scopeKey,
+            RankingSnapshotId.Parse("snapshot-1"),
+            methodologyVersion,
+            sourceRevision: 4,
+            pointerVersion: 1);
+        RatingPublishedRankingSnapshot secondSnapshot = CreatePublishedSnapshot(
+            scopeKey,
+            RankingSnapshotId.Parse("snapshot-2"),
+            methodologyVersion,
+            sourceRevision: 5,
+            pointerVersion: 2);
+
+        RatingPublishedRankingSnapshot? first = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            firstSnapshot.SnapshotId,
+            methodologyVersion,
+            firstSnapshot.SourceRevision,
+            firstSnapshot.PointerVersion,
+            _ =>
+            {
+                firstFactoryCalls++;
+                return Task.FromResult<RatingPublishedRankingSnapshot?>(firstSnapshot);
+            },
+            CancellationToken.None);
+        RatingPublishedRankingSnapshot? firstCached = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            firstSnapshot.SnapshotId,
+            methodologyVersion,
+            firstSnapshot.SourceRevision,
+            firstSnapshot.PointerVersion,
+            _ =>
+            {
+                firstFactoryCalls++;
+                return Task.FromResult<RatingPublishedRankingSnapshot?>(firstSnapshot);
+            },
+            CancellationToken.None);
+        RatingPublishedRankingSnapshot? second = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            secondSnapshot.SnapshotId,
+            methodologyVersion,
+            secondSnapshot.SourceRevision,
+            secondSnapshot.PointerVersion,
+            _ =>
+            {
+                secondFactoryCalls++;
+                return Task.FromResult<RatingPublishedRankingSnapshot?>(secondSnapshot);
+            },
+            CancellationToken.None);
+
+        Assert.Same(firstSnapshot, first);
+        Assert.Same(firstSnapshot, firstCached);
+        Assert.Same(secondSnapshot, second);
+        Assert.Equal(1, firstFactoryCalls);
+        Assert.Equal(1, secondFactoryCalls);
+    }
+
     private static RatingRankingItemResult CreateRankingSource(
         string targetId,
         string targetName,
@@ -128,5 +214,22 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
             45,
             4.5,
             bayesianScore);
+    }
+
+    private static RatingPublishedRankingSnapshot CreatePublishedSnapshot(
+        RankingScopeKey scopeKey,
+        RankingSnapshotId snapshotId,
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision,
+        long pointerVersion)
+    {
+        return new RatingPublishedRankingSnapshot(
+            scopeKey,
+            snapshotId,
+            methodologyVersion,
+            sourceRevision,
+            pointerVersion,
+            new DateTime(2026, 9, 1, 10, 0, 0, DateTimeKind.Utc),
+            Array.Empty<RankingSnapshotEntry>());
     }
 }

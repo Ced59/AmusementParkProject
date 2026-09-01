@@ -92,6 +92,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IRatingRankingRecoveryCoordinator, RatingRankingRecoveryCoordinator>();
         services.AddDurableBackgroundJobHandler<RatingRankingRebuildScopeJobHandler>();
         services.AddScoped<IRatingRankProvider, RatingRankProvider>();
+        services.AddScoped<ICanonicalParkRatingRankingReader, CanonicalParkRatingRankingReader>();
+        services.AddScoped<ICanonicalParkItemRatingRankingReader, CanonicalParkItemRatingRankingReader>();
         services.AddScoped<RatingRankingSourceRevisionGuard>();
         services.AddScoped<IRatingRankingMutationGuard>(provider =>
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
