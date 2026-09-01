@@ -162,21 +162,14 @@ public sealed class RankingSnapshotEntry
 
         ArgumentNullException.ThrowIfNull(evidence);
         _ = evidence.MethodologyVersion.Value;
-        if (!evidence.IsEligibleForMainRanking ||
-            evidence.Level is not (RankingEvidenceLevel.Eligible
-                or RankingEvidenceLevel.Established
-                or RankingEvidenceLevel.StrongEvidence) ||
-            evidence.IneligibilityReason.HasValue)
+        if (!RankingEligibilityPolicy.TryResolve(
+                evidence.MethodologyVersion,
+                out RankingEligibilityPolicy? eligibilityPolicy) ||
+            !eligibilityPolicy.IsEligibleSnapshotEvidence(targetType, evidence))
         {
             throw new ArgumentException(
-                "A ranking snapshot can contain only entries eligible for the main ranking.",
+                "A ranking snapshot can contain only evidence derived from its versioned policy.",
                 nameof(evidence));
-        }
-
-        if (evidence.UniqueContributorCount < 0 ||
-            evidence.RatingObservationCount < evidence.UniqueContributorCount)
-        {
-            throw new ArgumentException("Ranking evidence counts are inconsistent.", nameof(evidence));
         }
 
         this.Position = position;

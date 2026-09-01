@@ -63,6 +63,34 @@ public sealed class RankingSnapshotModelsTests
     }
 
     [Fact]
+    public void Entry_WhenEvidenceClaimsEligibilityBelowThePolicyThreshold_ShouldRejectIt()
+    {
+        RankingEvidence forgedEvidence = new RankingEvidence(
+            RankingEvidenceLevel.Eligible,
+            true,
+            1,
+            1,
+            null,
+            null,
+            null,
+            null,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            null)
+        {
+            NextContributorThreshold = 30,
+        };
+
+        Assert.Throws<ArgumentException>(() => new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.ParkItem,
+            "item-1",
+            ParkItemCategory.Attraction,
+            4.25d,
+            forgedEvidence));
+    }
+
+    [Fact]
     public void Entry_WhenParkItemCategoryIsPresent_ShouldPreserveIt()
     {
         RankingSnapshotEntry entry = new RankingSnapshotEntry(
@@ -72,7 +100,7 @@ public sealed class RankingSnapshotModelsTests
             "item-1",
             ParkItemCategory.Attraction,
             4.25d,
-            CreateEvidence());
+            CreateSimpleEvidence());
 
         Assert.Equal(ParkItemCategory.Attraction, entry.ParkItemCategory);
     }
@@ -85,7 +113,7 @@ public sealed class RankingSnapshotModelsTests
             RatingTargetType.ParkItem,
             "item-1",
             4.25d,
-            CreateEvidence()));
+            CreateSimpleEvidence()));
     }
 
     [Theory]
@@ -276,5 +304,16 @@ public sealed class RankingSnapshotModelsTests
         {
             NextContributorThreshold = 30,
         };
+    }
+
+    private static RankingEvidence CreateSimpleEvidence()
+    {
+        return RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(
+            new SimpleRankingEvidenceInput(
+                UniqueContributorCount: 12,
+                RatingObservationCount: 12,
+                TargetCanReceiveVisitorRatings: true,
+                IsExcludedByModeration: false,
+                AggregateIntegrityIsValid: true));
     }
 }

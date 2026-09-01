@@ -79,7 +79,7 @@ public sealed class RankingSnapshotMongoMapperTests
     [Fact]
     public void ChunkDocument_ShouldRoundTripTheParkItemCategory()
     {
-        RankingEvidence evidence = CreateEvidence();
+        RankingEvidence evidence = CreateSimpleEvidence();
         RankingSnapshotEntry entry = new RankingSnapshotEntry(
             position: 1,
             rank: 1,
@@ -175,18 +175,29 @@ public sealed class RankingSnapshotMongoMapperTests
     private static RankingEvidence CreateEvidence()
     {
         return new RankingEvidence(
-            RankingEvidenceLevel.Established,
+            RankingEvidenceLevel.Eligible,
             true,
-            8,
-            10,
-            8,
+            12,
+            12,
+            12,
             0,
             0,
             0,
             MethodologyVersion,
             null)
         {
-            NextContributorThreshold = 15,
+            NextContributorThreshold = 30,
         };
+    }
+
+    private static RankingEvidence CreateSimpleEvidence()
+    {
+        return RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(
+            new SimpleRankingEvidenceInput(
+                UniqueContributorCount: 12,
+                RatingObservationCount: 12,
+                TargetCanReceiveVisitorRatings: true,
+                IsExcludedByModeration: false,
+                AggregateIntegrityIsValid: true));
     }
 }

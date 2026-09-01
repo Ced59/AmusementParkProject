@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace AmusementPark.Core.Domain.Ratings;
 
 /// <summary>
@@ -75,6 +77,65 @@ public sealed class RankingEligibilityPolicy
     public int MinimumEligibleCategories { get; }
 
     public decimal ScoreTieEpsilon { get; }
+
+    public static bool TryResolve(
+        RatingMethodologyVersion version,
+        [NotNullWhen(true)] out RankingEligibilityPolicy? policy)
+    {
+        if (version == Initial.Version)
+        {
+            policy = Initial;
+            return true;
+        }
+
+        policy = null;
+        return false;
+    }
+
+    public bool IsEligibleSnapshotEvidence(
+        RatingTargetType targetType,
+        RankingEvidence evidence)
+    {
+        ArgumentNullException.ThrowIfNull(evidence);
+        if (!Enum.IsDefined(targetType) ||
+            evidence.MethodologyVersion != this.Version ||
+            !evidence.IsEligibleForMainRanking ||
+            evidence.IneligibilityReason.HasValue)
+        {
+            return false;
+        }
+
+        try
+        {
+            ValidateObservationCounts(
+                evidence.UniqueContributorCount,
+                evidence.RatingObservationCount);
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+
+        RankingEvidenceLevel expectedLevel = this.ResolveEvidenceLevel(
+            evidence.UniqueContributorCount);
+        if (evidence.Level != expectedLevel ||
+            expectedLevel is not (RankingEvidenceLevel.Eligible
+                or RankingEvidenceLevel.Established
+                or RankingEvidenceLevel.StrongEvidence) ||
+            evidence.NextContributorThreshold != this.ResolveNextContributorThreshold(expectedLevel))
+        {
+            return false;
+        }
+
+        return targetType switch
+        {
+            RatingTargetType.Park => IsEligibleParkSnapshotEvidence(
+                evidence,
+                this.EligibleMinUniqueContributors),
+            RatingTargetType.ParkItem => IsEligibleSimpleSnapshotEvidence(evidence),
+            _ => false,
+        };
+    }
 
     public RankingEvidence EvaluateSimpleTarget(SimpleRankingEvidenceInput input)
     {
@@ -535,6 +596,31 @@ public sealed class RankingEligibilityPolicy
                 RankingIneligibilityReason.TooFewUniqueContributors,
             _ => null,
         };
+    }
+
+    private static bool IsEligibleSimpleSnapshotEvidence(RankingEvidence evidence)
+    {
+        return evidence.RatingObservationCount == evidence.UniqueContributorCount &&
+            !evidence.DirectParkContributorCount.HasValue &&
+            !evidence.ItemContributorCount.HasValue &&
+            !evidence.EligibleItemCount.HasValue &&
+            !evidence.EligibleCategoryCount.HasValue;
+    }
+
+    private static bool IsEligibleParkSnapshotEvidence(
+        RankingEvidence evidence,
+        int eligibleMinUniqueContributors)
+    {
+        return evidence.DirectParkContributorCount is int directParkContributorCount &&
+            directParkContributorCount >= eligibleMinUniqueContributors &&
+            directParkContributorCount <= evidence.UniqueContributorCount &&
+            evidence.ItemContributorCount is int itemContributorCount &&
+            itemContributorCount >= 0 &&
+            evidence.EligibleItemCount is int eligibleItemCount &&
+            eligibleItemCount >= 0 &&
+            evidence.EligibleCategoryCount is int eligibleCategoryCount &&
+            eligibleCategoryCount >= 0 &&
+            eligibleCategoryCount <= eligibleItemCount;
     }
 
     private static void ValidateObservationCounts(int uniqueContributorCount, int ratingObservationCount)

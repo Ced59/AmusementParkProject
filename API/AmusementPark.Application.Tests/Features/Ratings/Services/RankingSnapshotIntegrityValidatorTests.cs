@@ -135,7 +135,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             "item-1",
             ParkItemCategory.Restaurant,
             4.25d,
-            CreateEvidence());
+            CreateSimpleEvidence());
         RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, new[] { restaurantEntry });
         RankingSnapshotHeader header = CreateHeader(
             snapshotId,
@@ -302,7 +302,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             "item-1",
             ParkItemCategory.Attraction,
             4.25d,
-            CreateEvidence());
+            CreateSimpleEvidence());
         RankingSnapshotEntry restaurant = new RankingSnapshotEntry(
             1,
             1,
@@ -310,7 +310,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             "item-1",
             ParkItemCategory.Restaurant,
             4.25d,
-            CreateEvidence());
+            CreateSimpleEvidence());
 
         Assert.NotEqual(
             this.checksumCalculator.CalculateChunk(new[] { attraction }),
@@ -407,7 +407,9 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             targetId,
             parkItemCategory,
             score,
-            CreateEvidence());
+            targetType == RatingTargetType.ParkItem
+                ? CreateSimpleEvidence()
+                : CreateEvidence());
     }
 
     private static RankingEvidence CreateEvidence()
@@ -426,6 +428,17 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         {
             NextContributorThreshold = 30,
         };
+    }
+
+    private static RankingEvidence CreateSimpleEvidence()
+    {
+        return RankingEligibilityPolicy.Initial.EvaluateSimpleTarget(
+            new SimpleRankingEvidenceInput(
+                UniqueContributorCount: 12,
+                RatingObservationCount: 12,
+                TargetCanReceiveVisitorRatings: true,
+                IsExcludedByModeration: false,
+                AggregateIntegrityIsValid: true));
     }
 
     private RankingSnapshotIntegrityValidator CreateValidator()

@@ -83,6 +83,54 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             item["buildAttempt"].AsBsonDocument["$lt"].AsInt32 == 3);
     }
 
+    [Fact]
+    public void BuildChunkAttemptAtMostFilter_ShouldPreserveChunksFromANewerRestart()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildChunkAttemptAtMostFilter(
+            RankingSnapshotId.Parse("snapshot-failed"),
+            maximumBuildAttempt: 3));
+
+        Assert.Equal("snapshot-failed", rendered["snapshotId"].AsString);
+        Assert.Contains(rendered["$or"].AsBsonArray, static item =>
+            item["buildAttempt"].IsBsonDocument &&
+            item["buildAttempt"].AsBsonDocument.Contains("$lte") &&
+            item["buildAttempt"].AsBsonDocument["$lte"].AsInt32 == 3);
+    }
+
+    [Fact]
+    public void BuildRetentionCandidateFilter_ShouldKeepCurrentAndRollbackSnapshots()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(
+            ScopeKey,
+            new[]
+            {
+                RankingSnapshotId.Parse("snapshot-current"),
+                RankingSnapshotId.Parse("snapshot-previous"),
+            }));
+
+        Assert.Equal(ScopeKey.Value, rendered["scopeKey"].AsString);
+        Assert.Equal(
+            new[]
+            {
+                nameof(RankingSnapshotStatus.Superseded),
+                nameof(RankingSnapshotStatus.Failed),
+            },
+            rendered["status"].AsBsonDocument["$in"].AsBsonArray.Select(static item => item.AsString));
+        Assert.Equal(
+            new[] { "snapshot-current", "snapshot-previous" },
+            rendered["_id"].AsBsonDocument["$nin"].AsBsonArray.Select(static item => item.AsString));
+    }
+
+    [Fact]
+    public void BuildSupersededHeaderPruneFilter_ShouldNotDeleteAnActiveSnapshot()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildSupersededHeaderPruneFilter(
+            RankingSnapshotId.Parse("snapshot-old")));
+
+        Assert.Equal("snapshot-old", rendered["_id"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Superseded), rendered["status"].AsString);
+    }
+
     [Theory]
     [InlineData(0, 1)]
     [InlineData(1, 1)]

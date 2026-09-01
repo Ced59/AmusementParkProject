@@ -13,6 +13,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 {
     private const int MaximumFailureCodeLength = 200;
+    private const int RetainedSnapshotVersionCountPerScope = 5;
+    private const int RetentionPruneBatchSize = 20;
     private readonly IMongoCollection<RankingSnapshotHeaderDocument> headers;
     private readonly IMongoCollection<RankingSnapshotChunkDocument> chunks;
     private readonly IMongoCollection<RankingPublicationPointerDocument> pointers;
@@ -401,7 +403,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         if (pointer?.CurrentSnapshotId == candidate.Id)
         {
-            await this.ReconcilePublicationStatusesAsync(
+            await this.ReconcileAndPruneAsync(
                 candidate,
                 pointer,
                 cancellationToken);
@@ -441,7 +443,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             try
             {
                 await this.pointers.InsertOneAsync(firstDocument, cancellationToken: cancellationToken);
-                await this.ReconcilePublicationStatusesAsync(
+                await this.ReconcileAndPruneAsync(
                     candidate,
                     firstPointer,
                     cancellationToken);
@@ -454,7 +456,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 RankingPublicationPointer? raced = await this.GetPointerAsync(candidate.ScopeKey, cancellationToken);
                 if (raced?.CurrentSnapshotId == candidate.Id)
                 {
-                    await this.ReconcilePublicationStatusesAsync(
+                    await this.ReconcileAndPruneAsync(
                         candidate,
                         raced,
                         cancellationToken);
@@ -494,7 +496,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
             RankingPublicationPointer? raced = await this.GetPointerAsync(candidate.ScopeKey, cancellationToken);
             if (raced?.CurrentSnapshotId == candidate.Id)
             {
-                await this.ReconcilePublicationStatusesAsync(
+                await this.ReconcileAndPruneAsync(
                     candidate,
                     raced,
                     cancellationToken);
@@ -508,7 +510,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 raced);
         }
 
-        await this.ReconcilePublicationStatusesAsync(
+        await this.ReconcileAndPruneAsync(
             candidate,
             nextPointer,
             cancellationToken);
@@ -548,7 +550,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                     current);
             }
 
-            await this.ReconcilePublicationStatusesAsync(
+            await this.ReconcileAndPruneAsync(
                 restored,
                 current,
                 cancellationToken);
@@ -612,7 +614,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 await this.GetPointerAsync(request.ScopeKey, cancellationToken));
         }
 
-        await this.ReconcilePublicationStatusesAsync(
+        await this.ReconcileAndPruneAsync(
             previous,
             rolledBack,
             cancellationToken);
@@ -853,6 +855,89 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
                 expectedPointer.Version),
             previousUpdate,
             cancellationToken: cancellationToken);
+    }
+
+    private async Task ReconcileAndPruneAsync(
+        RankingSnapshotHeader current,
+        RankingPublicationPointer expectedPointer,
+        CancellationToken cancellationToken)
+    {
+        await this.ReconcilePublicationStatusesAsync(current, expectedPointer, cancellationToken);
+        await this.PruneTerminalSnapshotsAsync(expectedPointer.ScopeKey, cancellationToken);
+    }
+
+    private async Task PruneTerminalSnapshotsAsync(
+        RankingScopeKey scopeKey,
+        CancellationToken cancellationToken)
+    {
+        RankingPublicationPointer? livePointer = await this.GetPointerAsync(scopeKey, cancellationToken);
+        if (livePointer is null)
+        {
+            return;
+        }
+
+        List<RankingSnapshotId> protectedSnapshotIds = new List<RankingSnapshotId>
+        {
+            livePointer.CurrentSnapshotId,
+        };
+        if (livePointer.PreviousSnapshotId.HasValue &&
+            livePointer.PreviousSnapshotId.Value != livePointer.CurrentSnapshotId)
+        {
+            protectedSnapshotIds.Add(livePointer.PreviousSnapshotId.Value);
+        }
+
+        int retainedTerminalCount = Math.Max(
+            0,
+            RetainedSnapshotVersionCountPerScope - protectedSnapshotIds.Count);
+        List<RankingSnapshotHeaderDocument> candidates = await this.headers
+            .Find(RankingSnapshotMongoDefinitions.BuildRetentionCandidateFilter(
+                scopeKey,
+                protectedSnapshotIds))
+            .SortByDescending(document => document.GeneratedAtUtc)
+            .ThenByDescending(document => document.Id)
+            .Skip(retainedTerminalCount)
+            .Limit(RetentionPruneBatchSize)
+            .ToListAsync(cancellationToken);
+
+        foreach (RankingSnapshotHeaderDocument candidate in candidates)
+        {
+            RankingSnapshotId candidateId;
+            try
+            {
+                candidateId = RankingSnapshotId.Parse(candidate.Id);
+            }
+            catch (ArgumentException)
+            {
+                continue;
+            }
+
+            if (candidate.Status == RankingSnapshotStatus.Failed)
+            {
+                int buildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
+                    candidate.BuildAttempt);
+                await this.chunks.DeleteManyAsync(
+                    RankingSnapshotMongoDefinitions.BuildChunkAttemptAtMostFilter(
+                        candidateId,
+                        buildAttempt),
+                    cancellationToken);
+                await this.headers.DeleteOneAsync(
+                    RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
+                        candidateId,
+                        buildAttempt),
+                    cancellationToken);
+                continue;
+            }
+
+            if (candidate.Status == RankingSnapshotStatus.Superseded)
+            {
+                await this.chunks.DeleteManyAsync(
+                    document => document.SnapshotId == candidate.Id,
+                    cancellationToken);
+                await this.headers.DeleteOneAsync(
+                    RankingSnapshotMongoDefinitions.BuildSupersededHeaderPruneFilter(candidateId),
+                    cancellationToken);
+            }
+        }
     }
 
     private async Task<bool> IsLivePointerAsync(
@@ -1105,6 +1190,61 @@ internal static class RankingSnapshotMongoDefinitions
             filters.Or(
                 filters.Exists(document => document.BuildAttempt, false),
                 filters.Lt(document => document.BuildAttempt, currentBuildAttempt)));
+    }
+
+    public static FilterDefinition<RankingSnapshotChunkDocument> BuildChunkAttemptAtMostFilter(
+        RankingSnapshotId snapshotId,
+        int maximumBuildAttempt)
+    {
+        if (maximumBuildAttempt <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumBuildAttempt));
+        }
+
+        FilterDefinitionBuilder<RankingSnapshotChunkDocument> filters =
+            Builders<RankingSnapshotChunkDocument>.Filter;
+        return filters.And(
+            filters.Eq(document => document.SnapshotId, snapshotId.Value),
+            filters.Or(
+                filters.Lte(document => document.BuildAttempt, maximumBuildAttempt),
+                filters.Exists(document => document.BuildAttempt, false)));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildRetentionCandidateFilter(
+        RankingScopeKey scopeKey,
+        IReadOnlyCollection<RankingSnapshotId> protectedSnapshotIds)
+    {
+        ArgumentNullException.ThrowIfNull(protectedSnapshotIds);
+        string[] protectedIds = protectedSnapshotIds
+            .Select(static snapshotId => snapshotId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        FilterDefinitionBuilder<RankingSnapshotHeaderDocument> filters =
+            Builders<RankingSnapshotHeaderDocument>.Filter;
+        FilterDefinition<RankingSnapshotHeaderDocument> filter = filters.And(
+            filters.Eq(document => document.ScopeKey, scopeKey.Value),
+            filters.In(
+                document => document.Status,
+                new[]
+                {
+                    RankingSnapshotStatus.Superseded,
+                    RankingSnapshotStatus.Failed,
+                }));
+        return protectedIds.Length == 0
+            ? filter
+            : filters.And(filter, filters.Nin(document => document.Id, protectedIds));
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildSupersededHeaderPruneFilter(
+        RankingSnapshotId snapshotId)
+    {
+        return Builders<RankingSnapshotHeaderDocument>.Filter.And(
+            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                document => document.Id,
+                snapshotId.Value),
+            Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
+                document => document.Status,
+                RankingSnapshotStatus.Superseded));
     }
 
     public static int NormalizeBuildAttempt(int buildAttempt)
