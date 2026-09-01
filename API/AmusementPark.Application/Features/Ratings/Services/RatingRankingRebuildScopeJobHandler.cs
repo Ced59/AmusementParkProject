@@ -127,6 +127,33 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
         }
 
+        if (!scope.EvaluatePublication(plan.EligibleEntries.Count).IsEligible)
+        {
+            RankingSnapshotRetirementResult retirement =
+                await this.snapshotRepository.RetirePublicationAsync(
+                    new RetireRankingPublicationRequest(
+                        scope.Key,
+                        scope.MethodologyVersion,
+                        requestedRevision),
+                    cancellationToken);
+            if (retirement.Disposition is RankingSnapshotRetirementDisposition.Retired
+                or RankingSnapshotRetirementDisposition.AlreadyUnavailable)
+            {
+                await this.sourceRevisionRepository.MarkUnavailableAsync(
+                    scope.Key,
+                    scope.MethodologyVersion,
+                    requestedRevision,
+                    RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
+                    cancellationToken);
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+
+            return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
+                ? DurableBackgroundJobHandlerResult.Success()
+                : DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.RetirementConflict);
+        }
+
         IReadOnlyCollection<RankingSnapshotChunk> checksumChunks = this.CreateChunks(
             plan.EligibleEntries,
             scope.PageSize,
@@ -214,33 +241,6 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
-        }
-
-        if (!scope.EvaluatePublication(plan.EligibleEntries.Count).IsEligible)
-        {
-            RankingSnapshotRetirementResult retirement =
-                await this.snapshotRepository.RetirePublicationAsync(
-                    new RetireRankingPublicationRequest(
-                        scope.Key,
-                        scope.MethodologyVersion,
-                        requestedRevision),
-                    cancellationToken);
-            if (retirement.Disposition is RankingSnapshotRetirementDisposition.Retired
-                or RankingSnapshotRetirementDisposition.AlreadyUnavailable)
-            {
-                await this.sourceRevisionRepository.MarkUnavailableAsync(
-                    scope.Key,
-                    scope.MethodologyVersion,
-                    requestedRevision,
-                    RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
-                    cancellationToken);
-                return DurableBackgroundJobHandlerResult.Success();
-            }
-
-            return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
-                ? DurableBackgroundJobHandlerResult.Success()
-                : DurableBackgroundJobHandlerResult.Retry(
-                    RatingRankingRebuildErrorCodes.RetirementConflict);
         }
 
         RankingSnapshotPublicationResult publication = await this.snapshotRepository.PublishAsync(

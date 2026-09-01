@@ -188,7 +188,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenValidatedScopeFallsBelowThreshold_ShouldRetireStalePublication()
+    public async Task HandleAsync_WhenScopeFallsBelowThreshold_ShouldRetireWithoutStartingBuild()
     {
         HandlerFixture fixture = new HandlerFixture();
         IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries()
@@ -198,33 +198,6 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
         fixture.Builder
             .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
             .ReturnsAsync(new RatingRankingSnapshotBuildPlan(entries.Count, entries, false));
-        fixture.Snapshots
-            .Setup(repository => repository.StartBuildAsync(
-                It.IsAny<StartRankingSnapshotBuildRequest>(),
-                CancellationToken.None))
-            .ReturnsAsync(new RankingSnapshotBuildStartResult(
-                RankingSnapshotBuildStartDisposition.Created,
-                fixture.CreateHeader(
-                    RankingSnapshotStatus.Building,
-                    sourceRevision: 6,
-                    entryCount: 2)));
-        fixture.Snapshots
-            .Setup(repository => repository.WriteChunkAsync(
-                It.Is<RankingSnapshotChunk>(chunk => chunk.Entries.Count == 2),
-                CancellationToken.None))
-            .ReturnsAsync(new RankingSnapshotChunkWriteResult(
-                RankingSnapshotChunkWriteDisposition.Written));
-        fixture.Snapshots
-            .Setup(repository => repository.ValidateBuildAsync(
-                RankingSnapshotId.Parse("snapshot-1"),
-                1,
-                CancellationToken.None))
-            .ReturnsAsync(new RankingSnapshotValidationResult(
-                RankingSnapshotValidationDisposition.Validated,
-                fixture.CreateHeader(
-                    RankingSnapshotStatus.Validated,
-                    sourceRevision: 6,
-                    entryCount: 2)));
         fixture.Snapshots
             .Setup(repository => repository.RetirePublicationAsync(
                 It.Is<RetireRankingPublicationRequest>(request =>
