@@ -113,6 +113,29 @@ public sealed class RankingScopeDefinitionTests
             () => RankingFilterDefinition.ForParkItemCategory((ParkItemCategory)999));
     }
 
+    [Theory]
+    [InlineData(2, false, RankingIneligibilityReason.TooFewComparableEntries)]
+    [InlineData(3, true, null)]
+    [InlineData(4, true, null)]
+    public void EvaluatePublication_ShouldApplyTheScopeMinimum(
+        int eligibleEntryCount,
+        bool expectedEligibility,
+        RankingIneligibilityReason? expectedReason)
+    {
+        RankingPublicationEligibility result = CreateGlobalParkDefinition()
+            .EvaluatePublication(eligibleEntryCount);
+
+        Assert.Equal(expectedEligibility, result.IsEligible);
+        Assert.Equal(expectedReason, result.IneligibilityReason);
+    }
+
+    [Fact]
+    public void EvaluatePublication_WhenCountIsNegative_ShouldRejectIt()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => CreateGlobalParkDefinition().EvaluatePublication(-1));
+    }
+
     private static RankingScopeDefinition CreateGlobalParkDefinition()
     {
         return new RankingScopeDefinition(

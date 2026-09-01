@@ -119,6 +119,18 @@ public sealed class RankingScopeDefinition
 
     public RankingPublicationMode PublicationMode { get; }
 
+    public RankingPublicationEligibility EvaluatePublication(int eligibleEntryCount)
+    {
+        if (eligibleEntryCount < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(eligibleEntryCount));
+        }
+
+        return eligibleEntryCount >= this.MinimumEligibleEntries
+            ? new RankingPublicationEligibility(true, null)
+            : new RankingPublicationEligibility(false, RankingIneligibilityReason.TooFewComparableEntries);
+    }
+
     private static void ValidateFilterCompatibility(
         RankingTargetFamily targetFamily,
         RankingFilterDefinition filter)

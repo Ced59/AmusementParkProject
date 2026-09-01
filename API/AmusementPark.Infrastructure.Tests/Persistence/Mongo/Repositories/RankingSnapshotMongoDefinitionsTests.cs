@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
@@ -70,23 +71,85 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             CreateHeader(1, RatingMethodologyVersion.Parse("ratings-2027-01"))));
     }
 
+    [Fact]
+    public void IsPublishableForScope_ShouldRejectASnapshotBelowTheScopeMinimum()
+    {
+        RankingSnapshotHeader sparse = CreateHeader(42, MethodologyVersion, eligibleEntryCount: 2);
+        RankingSnapshotHeader sufficient = CreateHeader(42, MethodologyVersion, eligibleEntryCount: 3);
+
+        Assert.False(RankingSnapshotMongoDefinitions.IsPublishableForScope(
+            sparse,
+            CanonicalRankingScopes.GlobalParks));
+        Assert.True(RankingSnapshotMongoDefinitions.IsPublishableForScope(
+            sufficient,
+            CanonicalRankingScopes.GlobalParks));
+    }
+
+    [Fact]
+    public void IsPublishableForScope_ShouldRejectAnUnsupportedMethodology()
+    {
+        RankingSnapshotHeader previousMethodology = CreateHeader(
+            41,
+            RatingMethodologyVersion.Parse("ratings-2025-01"),
+            eligibleEntryCount: 3);
+
+        Assert.False(RankingSnapshotMongoDefinitions.IsPublishableForScope(
+            previousMethodology,
+            CanonicalRankingScopes.GlobalParks));
+    }
+
+    [Fact]
+    public void ResolvePublishedAt_ShouldUseThePointerTimeAfterAnInterruptedPublication()
+    {
+        RankingSnapshotHeader validated = CreateHeader(42, MethodologyVersion, eligibleEntryCount: 3);
+        DateTime pointerUpdatedAtUtc = NowUtc.AddMinutes(5);
+
+        DateTime publishedAtUtc = RankingSnapshotMongoDefinitions.ResolvePublishedAt(
+            validated,
+            pointerUpdatedAtUtc);
+
+        Assert.Equal(pointerUpdatedAtUtc, publishedAtUtc);
+    }
+
+    [Fact]
+    public void ResolvePublishedAt_ShouldPreserveTheOriginalSnapshotPublicationTime()
+    {
+        RankingSnapshotHeader current = CreateHeader(
+            42,
+            MethodologyVersion,
+            eligibleEntryCount: 3,
+            RankingSnapshotStatus.Current);
+
+        DateTime publishedAtUtc = RankingSnapshotMongoDefinitions.ResolvePublishedAt(
+            current,
+            NowUtc.AddHours(1));
+
+        Assert.Equal(current.PublishedAtUtc, publishedAtUtc);
+    }
+
     private static RankingSnapshotHeader CreateHeader(
         long sourceRevision,
-        RatingMethodologyVersion methodologyVersion)
+        RatingMethodologyVersion methodologyVersion,
+        int eligibleEntryCount = 0,
+        RankingSnapshotStatus status = RankingSnapshotStatus.Validated)
     {
+        DateTime? publishedAtUtc = status is RankingSnapshotStatus.Current or RankingSnapshotStatus.Superseded
+            ? NowUtc.AddMinutes(1)
+            : null;
         return new RankingSnapshotHeader(
             RankingSnapshotId.Parse($"snapshot-{sourceRevision}-{methodologyVersion.Value}"),
             ScopeKey,
             methodologyVersion,
             sourceRevision,
-            RankingSnapshotStatus.Validated,
-            0,
-            0,
+            status,
+            eligibleEntryCount,
+            eligibleEntryCount,
             500,
-            0,
+            eligibleEntryCount == 0 ? 0 : 1,
             RankingSnapshotChecksum.Parse(new string('a', 64)),
             NowUtc,
-            NowUtc);
+            NowUtc,
+            publishedAtUtc);
     }
 
     private static BsonDocument Render(FilterDefinition<RankingSnapshotHeaderDocument> filter)
