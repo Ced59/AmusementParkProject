@@ -50,7 +50,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 RatingTargetType.ParkItem,
                 "item-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
+            .ReturnsAsync(new UserRatingDeletionResult(true, aggregate));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -153,8 +153,9 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 RatingTargetType.Park,
                 "park-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
-        Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
+            .ReturnsAsync(new UserRatingDeletionResult(false, aggregate));
+        Mock<IRatingRankProvider> ratingRankProvider =
+            new Mock<IRatingRankProvider>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -163,7 +164,8 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
             RatingTargetType.Park,
             null,
-            null);
+            null,
+            sourceChanged: false);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
             ratingRepository.Object,
             ratingRankProvider.Object,
@@ -177,7 +179,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Assert.True(result.IsSuccess);
         Assert.Equal(3, result.Value!.RatingCount);
         ratingRepository.VerifyAll();
-        ratingRankProvider.VerifyAll();
+        ratingRankProvider.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
         rankingMutationGuard.VerifyAll();
@@ -193,7 +195,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 RatingTargetType.Park,
                 "park-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((RatingAggregate?)null);
+            .ReturnsAsync(new UserRatingDeletionResult(true, null));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -285,7 +287,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 RatingTargetType.Park,
                 "park-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
+            .ReturnsAsync(new UserRatingDeletionResult(true, aggregate));
         Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -329,7 +331,8 @@ public sealed class DeleteUserRatingCommandHandlerTests
     private static Mock<IRatingRankingMutationGuard> CreateMutationGuard(
         RatingTargetType targetType,
         ParkItemCategory? currentParkItemCategory,
-        ParkItemCategory? previousParkItemCategory)
+        ParkItemCategory? previousParkItemCategory,
+        bool sourceChanged = true)
     {
         Mock<IRatingRankingMutationGuard> guard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
@@ -345,7 +348,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         guard
             .Setup(value => value.CompleteMutationAsync(
                 preparation,
-                true,
+                sourceChanged,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         return guard;

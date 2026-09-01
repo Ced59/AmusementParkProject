@@ -59,7 +59,7 @@ public sealed class RatingRepository : IRatingRepository
         return new UserRatingMutationResult(upsertedRating, aggregate);
     }
 
-    public async Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
+    public async Task<UserRatingDeletionResult> DeleteUserRatingAndRecalculateAggregateAsync(
         string userId,
         RatingTargetType targetType,
         string targetId,
@@ -71,7 +71,11 @@ public sealed class RatingRepository : IRatingRepository
             cancellationToken: cancellationToken);
         if (document is null)
         {
-            return await this.GetAggregateAsync(targetType, targetId, cancellationToken);
+            RatingAggregate? retainedAggregate = await this.GetAggregateAsync(
+                targetType,
+                targetId,
+                cancellationToken);
+            return new UserRatingDeletionResult(false, retainedAggregate);
         }
 
         UserRating deletedRating = document.ToDomain();
@@ -81,7 +85,10 @@ public sealed class RatingRepository : IRatingRepository
             deletedRating.ParkId,
             deletedRating.ParkItemCategory,
             deletedRating.ParkItemType);
-        return await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
+        RatingAggregate? aggregate = await this.aggregateSynchronizer.RecalculateAsync(
+            aggregateTarget,
+            cancellationToken);
+        return new UserRatingDeletionResult(true, aggregate);
     }
 
     public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
@@ -481,7 +488,7 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<RatingRankingSourceBatch> LoadVisibleParkItemRankingSourceBatchAsync(
         ParkItemCategory? parkItemCategory,
-        int? effectiveMaxItems,
+        int effectiveMaxItems,
         IReadOnlyCollection<string>? parkIds,
         CancellationToken cancellationToken)
     {
@@ -491,15 +498,16 @@ public sealed class RatingRepository : IRatingRepository
             parkItemCategory,
             this.parkItemsCollection.CollectionNamespace.CollectionName,
             this.parksCollection.CollectionNamespace.CollectionName,
+            effectiveMaxItems + 1,
             parkIds);
         AggregateOptions options = new AggregateOptions
         {
+            AllowDiskUse = true,
             BatchSize = candidatePageSize,
         };
         using IAsyncCursor<BsonDocument> cursor = await this.ratingAggregatesCollection
             .AggregateAsync<BsonDocument>(pipeline, options, cancellationToken);
-        while ((!effectiveMaxItems.HasValue
-                || eligibleSources.Count <= effectiveMaxItems.Value)
+        while (eligibleSources.Count <= effectiveMaxItems
                && await cursor.MoveNextAsync(cancellationToken))
         {
             List<RatingAggregateDocument> candidateDocuments = cursor.Current
@@ -512,13 +520,12 @@ public sealed class RatingRepository : IRatingRepository
                 || source.ParkItemCategory == parkItemCategory.Value));
         }
 
-        bool isTruncated = effectiveMaxItems.HasValue
-            && IsParkItemRankingSourceSetTruncated(
-                eligibleSources.Count,
-                effectiveMaxItems.Value);
-        IReadOnlyCollection<RatingRankingItemResult> sources = effectiveMaxItems.HasValue
-            ? eligibleSources.Take(effectiveMaxItems.Value).ToArray()
-            : eligibleSources;
+        bool isTruncated = IsParkItemRankingSourceSetTruncated(
+            eligibleSources.Count,
+            effectiveMaxItems);
+        IReadOnlyCollection<RatingRankingItemResult> sources = eligibleSources
+            .Take(effectiveMaxItems)
+            .ToArray();
         return new RatingRankingSourceBatch(sources, isTruncated);
     }
 
@@ -526,10 +533,12 @@ public sealed class RatingRepository : IRatingRepository
         ParkItemCategory? parkItemCategory,
         string parkItemsCollectionName,
         string parksCollectionName,
+        int limit,
         IReadOnlyCollection<string>? parkIds = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(parkItemsCollectionName);
         ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
+        ArgumentOutOfRangeException.ThrowIfLessThan(limit, 1);
 
         BsonDocument parkItemMatch = new BsonDocument
         {
@@ -586,6 +595,7 @@ public sealed class RatingRepository : IRatingRepository
                 { "targetType", 1 },
                 { "targetId", 1 },
             }),
+            new BsonDocument("$limit", limit),
             new BsonDocument("$project", new BsonDocument
             {
                 { "rankingParkItem", 0 },

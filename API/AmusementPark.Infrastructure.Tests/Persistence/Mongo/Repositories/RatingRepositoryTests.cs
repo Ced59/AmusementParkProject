@@ -139,12 +139,13 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
-    public void BuildParkItemRankingCandidatePipeline_ShouldStreamCandidatesAfterCurrentEligibilityJoins()
+    public void BuildParkItemRankingCandidatePipeline_ShouldBoundCandidatesAfterCurrentEligibilityJoins()
     {
         BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(
             ParkItemCategory.Attraction,
             "parkItems",
-            "parks");
+            "parks",
+            5001);
 
         int parkItemCategoryMatchIndex = pipeline
             .Select(static (stage, index) => (stage, index))
@@ -160,10 +161,14 @@ public sealed class RatingRepositoryTests
             .Select(static (stage, index) => (stage, index))
             .Single(value => value.stage.Contains("$project"))
             .index;
+        int sortIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$sort"));
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
 
-        Assert.True(parkItemCategoryMatchIndex < projectionIndex);
-        Assert.True(parentEligibilityMatchIndex < projectionIndex);
-        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$limit"));
+        Assert.True(parkItemCategoryMatchIndex < sortIndex);
+        Assert.True(parentEligibilityMatchIndex < sortIndex);
+        Assert.True(sortIndex < limitIndex);
+        Assert.True(limitIndex < projectionIndex);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
         Assert.DoesNotContain(pipeline, static stage => stage.Contains("$skip"));
     }
 
@@ -195,6 +200,7 @@ public sealed class RatingRepositoryTests
             null,
             "parkItems",
             "parks",
+            5001,
             new[] { "park-1", "park-2" });
 
         BsonDocument parkItemMatch = pipeline

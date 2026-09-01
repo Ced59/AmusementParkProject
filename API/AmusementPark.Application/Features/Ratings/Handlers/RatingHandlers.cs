@@ -227,25 +227,31 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
             metadata?.ParkItemCategory,
             retainedRating?.ParkItemCategory,
             cancellationToken);
-        RatingAggregate? aggregate =
+        UserRatingDeletionResult mutation =
             await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
                 userId,
                 command.TargetType,
                 targetId,
                 cancellationToken);
         RatingRankingMutationPreparation? authoritativeCategoryPreparation =
-            await RatingRankingMutationCompletion.PrepareAuthoritativeParkItemCategoryAsync(
-                command.TargetType,
-                targetId,
-                metadata?.ParkItemCategory,
-                retainedRating?.ParkItemCategory,
-                this.parkItemRepository,
-                this.rankingMutationGuard);
+            mutation.SourceChanged
+                ? await RatingRankingMutationCompletion.PrepareAuthoritativeParkItemCategoryAsync(
+                    command.TargetType,
+                    targetId,
+                    metadata?.ParkItemCategory,
+                    retainedRating?.ParkItemCategory,
+                    this.parkItemRepository,
+                    this.rankingMutationGuard)
+                : null;
 
-        this.ratingRankProvider.Invalidate();
+        if (mutation.SourceChanged)
+        {
+            this.ratingRankProvider.Invalidate();
+        }
+
         await this.rankingMutationGuard.CompleteMutationAsync(
             rankingPreparation,
-            sourceChanged: true,
+            mutation.SourceChanged,
             CancellationToken.None);
         if (authoritativeCategoryPreparation is not null)
         {
@@ -258,9 +264,9 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(
             command.TargetType,
             targetId,
-            aggregate,
+            mutation.Aggregate,
             metadata?.CanReceiveVisitorRatings ?? false,
-            aggregateIntegrityIsValid: aggregate is null ? true : null);
+            aggregateIntegrityIsValid: mutation.Aggregate is null ? true : null);
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
 }
