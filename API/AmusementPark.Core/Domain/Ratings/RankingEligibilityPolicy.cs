@@ -554,6 +554,7 @@ public sealed class RankingEligibilityPolicy
         {
             NextContributorThreshold = this.ResolveNextContributorThreshold(level),
             IsSingleCategoryParkException = input.IsSingleCategoryParkException,
+            PublicItemCategoryCount = input.ItemCategories.Count,
         };
     }
 
@@ -611,7 +612,8 @@ public sealed class RankingEligibilityPolicy
             !evidence.ItemContributorCount.HasValue &&
             !evidence.EligibleItemCount.HasValue &&
             !evidence.EligibleCategoryCount.HasValue &&
-            !evidence.IsSingleCategoryParkException.HasValue;
+            !evidence.IsSingleCategoryParkException.HasValue &&
+            !evidence.PublicItemCategoryCount.HasValue;
     }
 
     private static bool IsEligibleParkSnapshotEvidence(
@@ -630,8 +632,11 @@ public sealed class RankingEligibilityPolicy
             evidence.EligibleCategoryCount is not int eligibleCategoryCount ||
             eligibleCategoryCount < 0 ||
             eligibleCategoryCount > eligibleItemCount ||
+            evidence.PublicItemCategoryCount is not int publicItemCategoryCount ||
+            publicItemCategoryCount < 0 ||
+            eligibleCategoryCount > publicItemCategoryCount ||
             evidence.IsSingleCategoryParkException is not bool isSingleCategoryParkException ||
-            (isSingleCategoryParkException && eligibleCategoryCount > 1))
+            (isSingleCategoryParkException && publicItemCategoryCount != 1))
         {
             return false;
         }

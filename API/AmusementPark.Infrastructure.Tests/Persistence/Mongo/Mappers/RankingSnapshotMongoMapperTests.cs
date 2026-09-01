@@ -73,6 +73,7 @@ public sealed class RankingSnapshotMongoMapperTests
         Assert.Equal(entry.TargetId, restoredEntry.TargetId);
         Assert.Equal(entry.Score, restoredEntry.Score);
         Assert.Equal(entry.Evidence, restoredEntry.Evidence);
+        Assert.Equal(1, restoredEntry.Evidence.PublicItemCategoryCount);
         Assert.Equal(2, restored.BuildAttempt);
         Assert.Equal(2, document.BuildAttempt);
         Assert.Equal(scopeKey.Value, document.ScopeKey);
@@ -195,6 +196,7 @@ public sealed class RankingSnapshotMongoMapperTests
         {
             NextContributorThreshold = 30,
             IsSingleCategoryParkException = false,
+            PublicItemCategoryCount = 1,
         };
     }
 

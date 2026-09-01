@@ -208,6 +208,33 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenAdjacentScoresExtendATieBeyondItsAnchor_ShouldRejectTheBuild()
+    {
+        RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-transitive-tie");
+        RankingSnapshotEntry[] entries =
+        {
+            CreateEntry(position: 1, rank: 1, "park-1", RatingTargetType.Park, 4d),
+            CreateEntry(position: 2, rank: 1, "park-2", RatingTargetType.Park, 3.99994d),
+            CreateEntry(position: 3, rank: 1, "park-3", RatingTargetType.Park, 3.99988d),
+        };
+        RankingSnapshotChunk chunk = CreateChunk(snapshotId, 0, entries);
+        RankingSnapshotHeader header = CreateHeader(
+            snapshotId,
+            entries.Length,
+            entries.Length,
+            1,
+            this.checksumCalculator.CalculateSnapshot(entries.Length, entries.Length, 500, new[] { chunk }));
+
+        RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
+            header,
+            new[] { chunk },
+            CanonicalRankingScopes.GlobalParks);
+
+        Assert.False(result.IsValid);
+        Assert.Equal(RankingSnapshotErrorCodes.RankSequenceInvalid, result.ErrorCode);
+    }
+
+    [Fact]
     public void Validate_WhenScoresIncreaseWithinTheTieEpsilon_ShouldRejectTheBuild()
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-invalid-score-order");
@@ -333,6 +360,22 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             this.checksumCalculator.CalculateChunk(new[] { singleCategoryPark }));
     }
 
+    [Fact]
+    public void CalculateChunk_WhenPublicCategoryEvidenceChanges_ShouldChangeTheChecksum()
+    {
+        RankingSnapshotEntry onePublicCategory = CreateEntry(1, "park-1", RatingTargetType.Park);
+        RankingSnapshotEntry twoPublicCategories = new RankingSnapshotEntry(
+            1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            CreateEvidence() with { PublicItemCategoryCount = 2 });
+
+        Assert.NotEqual(
+            this.checksumCalculator.CalculateChunk(new[] { onePublicCategory }),
+            this.checksumCalculator.CalculateChunk(new[] { twoPublicCategories }));
+    }
+
     private SnapshotFixture CreateFixture(int eligibleEntryCount)
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-1");
@@ -444,6 +487,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
         {
             NextContributorThreshold = 30,
             IsSingleCategoryParkException = false,
+            PublicItemCategoryCount = 1,
         };
     }
 

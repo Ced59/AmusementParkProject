@@ -32,6 +32,7 @@ public sealed class RankingSnapshotChecksumCalculator
             AppendNullableInt32(hash, evidence.ItemContributorCount);
             AppendNullableInt32(hash, evidence.EligibleItemCount);
             AppendNullableInt32(hash, evidence.EligibleCategoryCount);
+            AppendNullableInt32(hash, evidence.PublicItemCategoryCount);
             AppendNullableBoolean(hash, evidence.IsSingleCategoryParkException);
             AppendString(hash, evidence.MethodologyVersion.Value);
             AppendNullableInt32(hash, evidence.NextContributorThreshold);

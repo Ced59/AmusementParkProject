@@ -18,6 +18,8 @@ public sealed record RankingEvidence(
     public int? NextContributorThreshold { get; init; }
 
     public bool? IsSingleCategoryParkException { get; init; }
+
+    public int? PublicItemCategoryCount { get; init; }
 }
 
 /// <summary>

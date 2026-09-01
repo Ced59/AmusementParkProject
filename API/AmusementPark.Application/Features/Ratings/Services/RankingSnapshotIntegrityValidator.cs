@@ -39,6 +39,7 @@ public sealed class RankingSnapshotIntegrityValidator
         int entryCount = 0;
         int expectedPosition = 1;
         RankingSnapshotEntry? previousEntry = null;
+        double? currentRankAnchorScore = null;
         for (int chunkIndex = 0; chunkIndex < orderedChunks.Count; chunkIndex++)
         {
             RankingSnapshotChunk chunk = orderedChunks[chunkIndex];
@@ -81,6 +82,8 @@ public sealed class RankingSnapshotIntegrityValidator
                         return RankingSnapshotIntegrityResult.Invalid(
                             RankingSnapshotErrorCodes.RankSequenceInvalid);
                     }
+
+                    currentRankAnchorScore = entry.Score;
                 }
                 else
                 {
@@ -91,13 +94,18 @@ public sealed class RankingSnapshotIntegrityValidator
                     }
 
                     bool scoresAreTied = scope.AreScoresTied(
-                        previousEntry.Score,
+                        currentRankAnchorScore!.Value,
                         entry.Score);
                     int expectedRank = scoresAreTied ? previousEntry.Rank : expectedPosition;
                     if (entry.Rank != expectedRank)
                     {
                         return RankingSnapshotIntegrityResult.Invalid(
                             RankingSnapshotErrorCodes.RankSequenceInvalid);
+                    }
+
+                    if (!scoresAreTied)
+                    {
+                        currentRankAnchorScore = entry.Score;
                     }
                 }
 
