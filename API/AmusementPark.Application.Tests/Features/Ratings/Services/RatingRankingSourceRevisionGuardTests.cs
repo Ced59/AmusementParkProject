@@ -90,7 +90,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         scheduler
-            .Setup(value => value.ScheduleAsync(
+            .Setup(value => value.ScheduleIfOutstandingAsync(
                 It.IsAny<RatingRankingSourceRevision>(),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -109,7 +109,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 .Select(static completion => completion.ScopeKey.Value)
                 .OrderBy(static key => key));
         revisions.VerifyAll();
-        scheduler.Verify(value => value.ScheduleAsync(
+        scheduler.Verify(value => value.ScheduleIfOutstandingAsync(
             It.IsAny<RatingRankingSourceRevision>(),
             CancellationToken.None), Times.Exactly(3));
     }
@@ -171,10 +171,10 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         scheduler
-            .Setup(value => value.ScheduleAsync(first, CancellationToken.None))
+            .Setup(value => value.ScheduleIfOutstandingAsync(first, CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("Queue unavailable"));
         scheduler
-            .Setup(value => value.ScheduleAsync(second, CancellationToken.None))
+            .Setup(value => value.ScheduleIfOutstandingAsync(second, CancellationToken.None))
             .Returns(Task.CompletedTask);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);

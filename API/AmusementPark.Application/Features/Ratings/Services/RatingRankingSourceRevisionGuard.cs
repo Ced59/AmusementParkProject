@@ -314,7 +314,9 @@ public sealed class RatingRankingSourceRevisionGuard :
         {
             try
             {
-                await this.rebuildScheduler.ScheduleAsync(sourceRevision, cancellationToken);
+                await this.rebuildScheduler.ScheduleIfOutstandingAsync(
+                    sourceRevision,
+                    cancellationToken);
             }
             catch (Exception exception)
             {

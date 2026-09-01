@@ -5,7 +5,7 @@ namespace AmusementPark.Application.Features.Ratings.Ports;
 
 public interface IRatingRankingRebuildScheduler
 {
-    Task ScheduleAsync(
+    Task ScheduleIfOutstandingAsync(
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken);
 

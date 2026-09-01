@@ -26,7 +26,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         this.scopeRegistry = scopeRegistry;
     }
 
-    public async Task ScheduleAsync(
+    public async Task ScheduleIfOutstandingAsync(
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken)
     {
@@ -38,7 +38,22 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
                 $"The ranking scope '{sourceRevision.ScopeKey.Value}' is not registered.");
         }
 
-        await this.ScheduleAsync(scope, sourceRevision.Revision, cancellationToken);
+        if (!sourceRevision.IsRebuildable)
+        {
+            return;
+        }
+
+        bool isCovered = await this.IsCoveredAsync(
+            scope,
+            sourceRevision,
+            sourceRevision.Revision,
+            cancellationToken);
+        if (isCovered)
+        {
+            return;
+        }
+
+        await this.EnqueueAsync(scope, sourceRevision.Revision, cancellationToken);
     }
 
     public async Task ScheduleOutstandingAsync(CancellationToken cancellationToken)
@@ -54,24 +69,40 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             }
 
             long requestedRevision = sourceRevision?.Revision ?? 0;
-            RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
-                scope.Key,
+            bool isCovered = await this.IsCoveredAsync(
+                scope,
+                sourceRevision,
+                requestedRevision,
                 cancellationToken);
-            bool isCovered = pointer is not null
-                && pointer.MethodologyVersion == scope.MethodologyVersion
-                && pointer.HighestPublishedSourceRevision >= requestedRevision;
-            isCovered = isCovered
-                || (sourceRevision?.CoversUnavailable(
-                    scope.MethodologyVersion,
-                    requestedRevision) ?? false);
             if (!isCovered)
             {
-                await this.ScheduleAsync(scope, requestedRevision, cancellationToken);
+                await this.EnqueueAsync(scope, requestedRevision, cancellationToken);
             }
         }
     }
 
-    private async Task ScheduleAsync(
+    private async Task<bool> IsCoveredAsync(
+        RankingScopeDefinition scope,
+        RatingRankingSourceRevision? sourceRevision,
+        long requestedRevision,
+        CancellationToken cancellationToken)
+    {
+        if (sourceRevision?.CoversUnavailable(
+                scope.MethodologyVersion,
+                requestedRevision) == true)
+        {
+            return true;
+        }
+
+        RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
+            scope.Key,
+            cancellationToken);
+        return pointer is not null
+            && pointer.MethodologyVersion == scope.MethodologyVersion
+            && pointer.HighestPublishedSourceRevision >= requestedRevision;
+    }
+
+    private async Task EnqueueAsync(
         RankingScopeDefinition scope,
         long requestedRevision,
         CancellationToken cancellationToken)
