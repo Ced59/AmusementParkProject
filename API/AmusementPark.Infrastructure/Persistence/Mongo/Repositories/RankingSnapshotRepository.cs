@@ -919,7 +919,9 @@ internal static class RankingSnapshotMongoDefinitions
         ArgumentNullException.ThrowIfNull(pointer);
         ArgumentNullException.ThrowIfNull(candidate);
         return pointer.ScopeKey == candidate.ScopeKey &&
-            pointer.SourceRevision >= candidate.SourceRevision;
+            (pointer.SourceRevision > candidate.SourceRevision ||
+                (pointer.SourceRevision == candidate.SourceRevision &&
+                    pointer.MethodologyVersion == candidate.MethodologyVersion));
     }
 
     public static bool IsPublishableForScope(

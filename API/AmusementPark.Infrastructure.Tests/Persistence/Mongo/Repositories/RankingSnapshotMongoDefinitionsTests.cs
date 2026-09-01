@@ -52,7 +52,7 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
-    public void IsStale_ShouldRejectAnEqualOrOlderRevisionAcrossMethodologies()
+    public void IsStale_ShouldFenceSourceRevisionsWhileAllowingAnEqualRevisionForANewMethodology()
     {
         RankingPublicationPointer pointer = new RankingPublicationPointer(
             ScopeKey,
@@ -69,6 +69,9 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         Assert.True(RankingSnapshotMongoDefinitions.IsStale(
             pointer,
             CreateHeader(1, RatingMethodologyVersion.Parse("ratings-2027-01"))));
+        Assert.False(RankingSnapshotMongoDefinitions.IsStale(
+            pointer,
+            CreateHeader(42, RatingMethodologyVersion.Parse("ratings-2027-01"))));
         Assert.False(RankingSnapshotMongoDefinitions.IsStale(
             pointer,
             CreateHeader(43, RatingMethodologyVersion.Parse("ratings-2027-01"))));
