@@ -155,7 +155,9 @@ public sealed class RankingSnapshotEntry
         }
 
         string normalizedTargetId = IdentifierRules.NormalizeRequired(targetId, nameof(targetId));
-        if (!double.IsFinite(score) || score < 0d || score > 5d)
+        if (!double.IsFinite(score) ||
+            score < RatingValue.MinimumHalfSteps / 2d ||
+            score > RatingValue.MaximumHalfSteps / 2d)
         {
             throw new ArgumentOutOfRangeException(nameof(score));
         }

@@ -90,6 +90,49 @@ public sealed class RankingSnapshotModelsTests
             forgedEvidence));
     }
 
+    [Theory]
+    [InlineData(0d)]
+    [InlineData(0.49d)]
+    [InlineData(5.01d)]
+    public void Entry_WhenScoreIsOutsideTheRatingScale_ShouldRejectIt(double score)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.Park,
+            "park-1",
+            score,
+            CreateEvidence()));
+    }
+
+    [Fact]
+    public void Entry_WhenParkUsesOnlyItsEligibleDirectComponent_ShouldPreserveSourceItemCounts()
+    {
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 100,
+            RatingObservationCount: 100,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 90,
+            ItemCategories: new[] { new RankingCategoryCoverage(5, 0) },
+            IsSingleCategoryParkException: false,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        RankingSnapshotEntry entry = new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            evidence);
+
+        Assert.Equal(10, entry.Evidence.UniqueContributorCount);
+        Assert.Equal(10, entry.Evidence.RatingObservationCount);
+        Assert.Equal(90, entry.Evidence.ItemContributorCount);
+    }
+
     [Fact]
     public void Entry_WhenParkItemCategoryIsPresent_ShouldPreserveIt()
     {

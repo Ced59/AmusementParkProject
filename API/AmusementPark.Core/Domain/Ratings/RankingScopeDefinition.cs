@@ -226,7 +226,9 @@ public sealed class RankingScopeDefinition
 
     private static void ValidateScore(double score, string parameterName)
     {
-        if (!double.IsFinite(score) || score < 0d || score > 5d)
+        if (!double.IsFinite(score) ||
+            score < RatingValue.MinimumHalfSteps / 2d ||
+            score > RatingValue.MaximumHalfSteps / 2d)
         {
             throw new ArgumentOutOfRangeException(parameterName);
         }

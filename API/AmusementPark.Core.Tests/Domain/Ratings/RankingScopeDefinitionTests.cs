@@ -172,6 +172,17 @@ public sealed class RankingScopeDefinitionTests
         Assert.Equal(expected, CreateGlobalParkDefinition().AreScoresTied(leftScore, rightScore));
     }
 
+    [Theory]
+    [InlineData(0.49d, 0.5d)]
+    [InlineData(5d, 5.01d)]
+    public void AreScoresTied_WhenScoreIsOutsideTheRatingScale_ShouldRejectIt(
+        double leftScore,
+        double rightScore)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => CreateGlobalParkDefinition().AreScoresTied(leftScore, rightScore));
+    }
+
     [Fact]
     public void AcceptsTarget_ShouldApplyTheTypedScopeFilter()
     {
