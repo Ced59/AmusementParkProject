@@ -16,9 +16,10 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
     private static readonly DateTime NowUtc = new DateTime(2026, 9, 1, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public void BuildBeginMutationUpdate_ShouldKeepTheEarliestDurableLeaseDeadline()
+    public void BuildBeginMutationUpdate_ShouldPersistAnOwnedLeaseWithoutAdvancingRevision()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease mutationLease = CreateLease(scopeKey, 1);
         DateTime leaseExpiresAtUtc = NowUtc.Add(
             RatingRankingSourceRevisionRepository.MutationLeaseDuration);
 
@@ -27,6 +28,7 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         BsonDocument update = Render(
             RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
                 scopeKey,
+                mutationLease,
                 NowUtc,
                 leaseExpiresAtUtc));
 
@@ -35,12 +37,11 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         Assert.Equal(NowUtc, update["$setOnInsert"].AsBsonDocument["createdAt"].ToUniversalTime());
         Assert.Equal(scopeKey.Value, update["$set"].AsBsonDocument["scopeKey"].AsString);
         Assert.Equal(NowUtc, update["$set"].AsBsonDocument["updatedAt"].ToUniversalTime());
-        Assert.Equal(1, update["$inc"].AsBsonDocument["pendingMutationCount"].AsInt32);
         Assert.Equal(
             leaseExpiresAtUtc,
-            update["$min"].AsBsonDocument["mutationLeaseExpiresAtUtc"].ToUniversalTime());
-        Assert.False(update.Contains("$max"));
-        Assert.False(update["$inc"].AsBsonDocument.Contains("revision"));
+            update["$set"].AsBsonDocument[$"mutationLeases.{mutationLease.Token}"].ToUniversalTime());
+        Assert.False(update.Contains("$inc"));
+        Assert.False(update.Contains("$min"));
     }
 
     [Fact]
@@ -76,10 +77,12 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
             new MongoDbSettings { RatingRankingSourceRevisionsCollectionName = "scope-revisions" },
             new FixedTimeProvider(NowUtc));
 
-        await repository.BeginMutationAsync(
+        RatingRankingMutationLease mutationLease = await repository.BeginMutationAsync(
             scopeKey,
             CancellationToken.None);
 
+        Assert.Equal(scopeKey, mutationLease.ScopeKey);
+        Assert.True(Guid.TryParseExact(mutationLease.Token, "N", out _));
         collection.VerifyAll();
         database.VerifyAll();
     }
@@ -88,6 +91,8 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
     public async Task CompleteMutationAsync_ShouldAtomicallyAdvanceRevisionBeforeRemovingLastLease()
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease mutationLease = CreateLease(scopeKey, 1);
+        FilterDefinition<RatingRankingSourceRevisionDocument>? capturedFilter = null;
         UpdateDefinition<RatingRankingSourceRevisionDocument>? capturedUpdate = null;
         Mock<IMongoCollection<RatingRankingSourceRevisionDocument>> collection =
             new Mock<IMongoCollection<RatingRankingSourceRevisionDocument>>(MockBehavior.Strict);
@@ -99,42 +104,56 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
                     options => !options.IsUpsert && options.ReturnDocument == ReturnDocument.After),
                 CancellationToken.None))
             .Callback((
-                FilterDefinition<RatingRankingSourceRevisionDocument> _,
+                FilterDefinition<RatingRankingSourceRevisionDocument> filter,
                 UpdateDefinition<RatingRankingSourceRevisionDocument> update,
                 FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument> _,
-                CancellationToken _) => capturedUpdate = update)
+                CancellationToken _) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+            })
             .ReturnsAsync(new RatingRankingSourceRevisionDocument
             {
                 Id = scopeKey.Value,
                 ScopeKey = scopeKey.Value,
                 Revision = 42,
-                PendingMutationCount = 0,
-                MutationLeaseExpiresAtUtc = NowUtc.AddMinutes(30),
                 CreatedAt = NowUtc,
                 UpdatedAt = NowUtc,
             });
-        collection
-            .Setup(value => value.UpdateOneAsync(
-                It.IsAny<FilterDefinition<RatingRankingSourceRevisionDocument>>(),
-                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
-                It.IsAny<UpdateOptions>(),
-                CancellationToken.None))
-            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         RatingRankingSourceRevisionRepository repository = CreateRepository(collection.Object);
 
         RatingRankingSourceRevision revision = await repository.CompleteMutationAsync(
-            scopeKey,
+            mutationLease,
             sourceChanged: true,
             CancellationToken.None);
 
+        Assert.NotNull(capturedFilter);
         Assert.NotNull(capturedUpdate);
+        BsonDocument filterDocument = Render(capturedFilter);
         BsonDocument updateDocument = Render(capturedUpdate);
-        Assert.Equal(-1, updateDocument["$inc"].AsBsonDocument["pendingMutationCount"].AsInt32);
+        Assert.Equal(scopeKey.Value, filterDocument["_id"].AsString);
+        Assert.True(filterDocument[$"mutationLeases.{mutationLease.Token}"].AsBsonDocument["$exists"].AsBoolean);
+        Assert.True(updateDocument["$unset"].AsBsonDocument.Contains(
+            $"mutationLeases.{mutationLease.Token}"));
         Assert.Equal(1, updateDocument["$inc"].AsBsonDocument["revision"].AsInt64);
         Assert.Equal(42, revision.Revision);
         Assert.True(revision.IsRebuildable);
         Assert.Null(revision.MutationLeaseExpiresAtUtc);
         collection.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildMutationLeaseFilter_ShouldNotAllowAnExpiredOwnerToSettleANewerLease()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease expiredLease = CreateLease(scopeKey, 1);
+        RatingRankingMutationLease newerLease = CreateLease(scopeKey, 2);
+
+        BsonDocument filter = Render(
+            RatingRankingSourceRevisionMongoDefinitions.BuildMutationLeaseFilter(expiredLease));
+
+        Assert.True(filter.Contains($"mutationLeases.{expiredLease.Token}"));
+        Assert.False(filter.Contains($"mutationLeases.{newerLease.Token}"));
     }
 
     private static RatingRankingSourceRevisionRepository CreateRepository(
@@ -168,6 +187,15 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         RenderArgs<RatingRankingSourceRevisionDocument> arguments =
             new RenderArgs<RatingRankingSourceRevisionDocument>(serializer, BsonSerializer.SerializerRegistry);
         return update.Render(arguments).AsBsonDocument;
+    }
+
+    private static RatingRankingMutationLease CreateLease(
+        RankingScopeKey scopeKey,
+        int tokenSeed)
+    {
+        return new RatingRankingMutationLease(
+            scopeKey,
+            tokenSeed.ToString("x32"));
     }
 
     private sealed class FixedTimeProvider : TimeProvider

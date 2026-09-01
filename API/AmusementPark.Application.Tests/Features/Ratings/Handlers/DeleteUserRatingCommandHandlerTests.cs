@@ -294,7 +294,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Mock<IRatingRankingMutationGuard> guard =
             new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RankingScopeKey>());
+            Array.Empty<RatingRankingMutationLease>());
         guard
             .Setup(value => value.PrepareMutationAsync(
                 targetType,

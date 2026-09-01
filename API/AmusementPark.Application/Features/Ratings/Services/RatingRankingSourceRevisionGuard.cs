@@ -158,28 +158,29 @@ public sealed class RatingRankingSourceRevisionGuard :
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes,
         CancellationToken cancellationToken)
     {
-        List<RankingScopeKey> begunScopes = new List<RankingScopeKey>();
+        List<RatingRankingMutationLease> mutationLeases = new List<RatingRankingMutationLease>();
         try
         {
             foreach (RankingScopeDefinition scope in affectedScopes
                          .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
             {
-                await this.sourceRevisionRepository.BeginMutationAsync(
-                    scope.Key,
-                    cancellationToken);
-                begunScopes.Add(scope.Key);
+                RatingRankingMutationLease mutationLease =
+                    await this.sourceRevisionRepository.BeginMutationAsync(
+                        scope.Key,
+                        cancellationToken);
+                mutationLeases.Add(mutationLease);
             }
         }
         catch
         {
             await this.CompleteMutationAsync(
-                new RatingRankingMutationPreparation(begunScopes),
+                new RatingRankingMutationPreparation(mutationLeases),
                 sourceChanged: false,
                 CancellationToken.None);
             throw;
         }
 
-        return new RatingRankingMutationPreparation(begunScopes);
+        return new RatingRankingMutationPreparation(mutationLeases);
     }
 
     private static IReadOnlyDictionary<string, Park> IndexParks(
@@ -231,13 +232,13 @@ public sealed class RatingRankingSourceRevisionGuard :
     {
         ArgumentNullException.ThrowIfNull(preparation);
         List<RatingRankingSourceRevision> rebuildableRevisions = new List<RatingRankingSourceRevision>();
-        foreach (RankingScopeKey scopeKey in preparation.ScopeKeys)
+        foreach (RatingRankingMutationLease mutationLease in preparation.MutationLeases)
         {
             try
             {
                 RatingRankingSourceRevision sourceRevision =
                     await this.sourceRevisionRepository.CompleteMutationAsync(
-                        scopeKey,
+                        mutationLease,
                         sourceChanged,
                         cancellationToken);
                 if (sourceRevision.IsRebuildable && sourceRevision.Revision > 0)
@@ -250,7 +251,7 @@ public sealed class RatingRankingSourceRevisionGuard :
                 this.logger.LogError(
                     exception,
                     "Unable to settle the ranking source mutation for scope {ScopeKey}; its durable lease will be recovered.",
-                    scopeKey.Value);
+                    mutationLease.ScopeKey.Value);
             }
         }
 

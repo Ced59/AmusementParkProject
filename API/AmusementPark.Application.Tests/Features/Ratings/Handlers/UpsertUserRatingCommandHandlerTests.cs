@@ -120,7 +120,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RankingScopeKey>());
+            Array.Empty<RatingRankingMutationLease>());
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,

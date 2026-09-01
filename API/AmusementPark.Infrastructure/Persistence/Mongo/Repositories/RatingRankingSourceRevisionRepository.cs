@@ -27,12 +27,13 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public async Task BeginMutationAsync(
+    public async Task<RatingRankingMutationLease> BeginMutationAsync(
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken)
     {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         DateTime leaseExpiresAtUtc = nowUtc.Add(MutationLeaseDuration);
+        RatingRankingMutationLease mutationLease = RatingRankingMutationLease.Create(scopeKey);
         FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
             new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
             {
@@ -43,6 +44,7 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
             RatingRankingSourceRevisionMongoDefinitions.BuildBeginMutationUpdate(
                 scopeKey,
+                mutationLease,
                 nowUtc,
                 leaseExpiresAtUtc),
             options,
@@ -52,73 +54,38 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             throw new InvalidOperationException(
                 $"The source mutation lease for ranking scope '{scopeKey.Value}' could not be acquired.");
         }
+
+        return mutationLease;
     }
 
     public async Task<RatingRankingSourceRevision> CompleteMutationAsync(
-        RankingScopeKey scopeKey,
+        RatingRankingMutationLease mutationLease,
         bool sourceChanged,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(mutationLease);
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        UpdateDefinition<RatingRankingSourceRevisionDocument> update =
-            Builders<RatingRankingSourceRevisionDocument>.Update
-                .Inc(document => document.PendingMutationCount, -1)
-                .Set(document => document.UpdatedAt, nowUtc);
-        if (sourceChanged)
-        {
-            update = update.Inc(document => document.Revision, 1);
-        }
-
         FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
             new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
             {
                 ReturnDocument = ReturnDocument.After,
             };
         RatingRankingSourceRevisionDocument? document = await this.collection.FindOneAndUpdateAsync(
-            RatingRankingSourceRevisionMongoDefinitions.BuildPendingMutationFilter(scopeKey),
-            update,
+            RatingRankingSourceRevisionMongoDefinitions.BuildMutationLeaseFilter(mutationLease),
+            RatingRankingSourceRevisionMongoDefinitions.BuildCompleteMutationUpdate(
+                mutationLease,
+                sourceChanged,
+                nowUtc),
             options,
             cancellationToken);
-        if (document is null && sourceChanged)
-        {
-            FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> recoveryOptions =
-                new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
-                {
-                    IsUpsert = true,
-                    ReturnDocument = ReturnDocument.After,
-                };
-            document = await this.collection.FindOneAndUpdateAsync(
-                RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
-                Builders<RatingRankingSourceRevisionDocument>.Update
-                    .SetOnInsert(value => value.Id, scopeKey.Value)
-                    .SetOnInsert(value => value.CreatedAt, nowUtc)
-                    .Set(value => value.ScopeKey, scopeKey.Value)
-                    .Inc(value => value.Revision, 1)
-                    .Set(value => value.UpdatedAt, nowUtc),
-                recoveryOptions,
-                cancellationToken);
-        }
-
         document ??= await this.collection
-            .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey))
+            .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(
+                mutationLease.ScopeKey))
             .FirstOrDefaultAsync(cancellationToken);
         if (document is null)
         {
             throw new InvalidOperationException(
-                $"The source mutation lease for ranking scope '{scopeKey.Value}' could not be completed.");
-        }
-
-        if (document.PendingMutationCount == 0 && document.MutationLeaseExpiresAtUtc.HasValue)
-        {
-            await this.collection.UpdateOneAsync(
-                RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey)
-                    & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
-                        value => value.PendingMutationCount,
-                        0),
-                Builders<RatingRankingSourceRevisionDocument>.Update
-                    .Unset(value => value.MutationLeaseExpiresAtUtc),
-                cancellationToken: cancellationToken);
-            document.MutationLeaseExpiresAtUtc = null;
+                $"The source mutation lease for ranking scope '{mutationLease.ScopeKey.Value}' could not be completed.");
         }
 
         return ToApplication(document);
@@ -128,11 +95,17 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         RankingScopeKey scopeKey,
         RatingMethodologyVersion methodologyVersion,
         long sourceRevision,
+        string reasonCode,
         CancellationToken cancellationToken)
     {
         if (sourceRevision < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(sourceRevision));
+        }
+
+        if (string.IsNullOrWhiteSpace(reasonCode))
+        {
+            throw new ArgumentException("An unavailable reason code is required.", nameof(reasonCode));
         }
 
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -149,6 +122,7 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             Builders<RatingRankingSourceRevisionDocument>.Update
                 .Set(document => document.UnavailableMethodologyVersion, methodologyVersion.Value)
                 .Set(document => document.HighestUnavailableSourceRevision, sourceRevision)
+                .Set(document => document.UnavailableReasonCode, reasonCode.Trim())
                 .Set(document => document.UpdatedAt, nowUtc),
             cancellationToken: cancellationToken);
         if (result.MatchedCount > 0 || sourceRevision != 0)
@@ -166,6 +140,7 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
                     Revision = 0,
                     UnavailableMethodologyVersion = methodologyVersion.Value,
                     HighestUnavailableSourceRevision = 0,
+                    UnavailableReasonCode = reasonCode.Trim(),
                     CreatedAt = nowUtc,
                     UpdatedAt = nowUtc,
                 },
@@ -212,6 +187,30 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
+        IReadOnlyCollection<RatingRankingMutationLease> expiredMutationLeases =
+            (document?.MutationLeases ?? new Dictionary<string, DateTime>())
+                .Where(entry => entry.Value <= nowUtc)
+                .Select(entry => new RatingRankingMutationLease(scopeKey, entry.Key))
+                .ToArray();
+        foreach (RatingRankingMutationLease mutationLease in expiredMutationLeases)
+        {
+            FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument> options =
+                new FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument>
+                {
+                    ReturnDocument = ReturnDocument.After,
+                };
+            RatingRankingSourceRevisionDocument? recovered = await this.collection.FindOneAndUpdateAsync(
+                RatingRankingSourceRevisionMongoDefinitions.BuildExpiredMutationLeaseFilter(
+                    mutationLease,
+                    nowUtc),
+                RatingRankingSourceRevisionMongoDefinitions.BuildRecoverMutationUpdate(
+                    mutationLease,
+                    nowUtc),
+                options,
+                cancellationToken);
+            document = recovered ?? document;
+        }
+
         return document is null ? null : ToApplication(document);
     }
 
@@ -219,13 +218,28 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         RatingRankingSourceRevisionDocument document)
     {
         RankingScopeKey scopeKey = RankingScopeKey.Parse(document.ScopeKey);
+        Dictionary<string, DateTime> mutationLeases = document.MutationLeases
+            ?? new Dictionary<string, DateTime>();
         if (!string.Equals(document.Id, scopeKey.Value, StringComparison.Ordinal) ||
             document.Revision < 0 ||
             document.PendingMutationCount < 0 ||
-            (document.PendingMutationCount > 0 && !document.MutationLeaseExpiresAtUtc.HasValue))
+            (document.PendingMutationCount > 0 && !document.MutationLeaseExpiresAtUtc.HasValue) ||
+            mutationLeases.Keys.Any(static token => !Guid.TryParseExact(token, "N", out _)))
         {
             throw new InvalidOperationException("The persisted ranking source revision is invalid.");
         }
+
+        int pendingMutationCount = checked(document.PendingMutationCount + mutationLeases.Count);
+        IEnumerable<DateTime> mutationLeaseExpirations = mutationLeases.Values;
+        if (document.PendingMutationCount > 0 && document.MutationLeaseExpiresAtUtc.HasValue)
+        {
+            mutationLeaseExpirations = mutationLeaseExpirations.Prepend(
+                document.MutationLeaseExpiresAtUtc.Value);
+        }
+
+        DateTime? mutationLeaseExpiresAtUtc = mutationLeaseExpirations
+            .Cast<DateTime?>()
+            .Min();
 
         RatingMethodologyVersion? unavailableMethodologyVersion =
             string.IsNullOrWhiteSpace(document.UnavailableMethodologyVersion)
@@ -235,9 +249,10 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             scopeKey,
             document.Revision,
             document.UpdatedAt,
-            document.PendingMutationCount,
-            document.MutationLeaseExpiresAtUtc,
+            pendingMutationCount,
+            mutationLeaseExpiresAtUtc,
             unavailableMethodologyVersion,
-            document.HighestUnavailableSourceRevision);
+            document.HighestUnavailableSourceRevision,
+            document.UnavailableReasonCode);
     }
 }

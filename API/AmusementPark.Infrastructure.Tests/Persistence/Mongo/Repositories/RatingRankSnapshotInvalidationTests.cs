@@ -114,6 +114,30 @@ public sealed class RatingRankSnapshotInvalidationTests
             filter["attractionDetails.status"].AsString);
     }
 
+    [Fact]
+    public void BuildObservedRankingStateFilter_ShouldFenceEveryScopeRelevantParkField()
+    {
+        ParkDocument document = new ParkDocument
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+
+        IBsonSerializer<ParkDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ParkDocument>();
+        RenderArgs<ParkDocument> arguments =
+            new RenderArgs<ParkDocument>(serializer, BsonSerializer.SerializerRegistry);
+        BsonDocument filter = ParkRepository.BuildObservedRankingStateFilter(document)
+            .Render(arguments);
+
+        Assert.Equal(document.Id, filter["_id"].AsString);
+        Assert.Equal(document.Name, filter["name"].AsString);
+        Assert.True(filter["isVisible"].AsBoolean);
+        Assert.Equal(document.Status.ToString(), filter["status"].AsString);
+    }
+
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(
         string collectionName,
         IMongoCollection<TDocument> collection)
@@ -137,7 +161,7 @@ public sealed class RatingRankSnapshotInvalidationTests
     private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkSourceChangeCoordinator()
     {
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RankingScopeKey>());
+            Array.Empty<RatingRankingMutationLease>());
         Mock<IRatingRankingSourceChangeCoordinator> coordinator =
             new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
         coordinator
@@ -158,7 +182,7 @@ public sealed class RatingRankSnapshotInvalidationTests
     private static Mock<IRatingRankingSourceChangeCoordinator> CreateParkItemSourceChangeCoordinator()
     {
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
-            Array.Empty<RankingScopeKey>());
+            Array.Empty<RatingRankingMutationLease>());
         Mock<IRatingRankingSourceChangeCoordinator> coordinator =
             new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
         coordinator

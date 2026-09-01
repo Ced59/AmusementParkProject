@@ -24,7 +24,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 It.IsAny<RankingScopeKey>(),
                 CancellationToken.None))
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
-            .Returns(Task.CompletedTask);
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
@@ -36,7 +37,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Assert.Equal(
             new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
             incrementedScopes.Select(static scopeKey => scopeKey.Value));
-        Assert.Equal(3, preparation.ScopeKeys.Count);
+        Assert.Equal(3, preparation.MutationLeases.Count);
         revisions.VerifyAll();
     }
 
@@ -68,7 +69,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions
             .Setup(repository => repository.BeginMutationAsync(globalScopeKey, CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(CreateLease(globalScopeKey));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         RatingRankingMutationPreparation preparation = await guard.PrepareMutationAsync(
@@ -77,7 +78,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             null,
             CancellationToken.None);
 
-        Assert.Single(preparation.ScopeKeys);
+        Assert.Single(preparation.MutationLeases);
         revisions.VerifyAll();
     }
 
@@ -92,6 +93,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
             RankingScopeKey.Parse("parks:global"),
             7,
             NowUtc);
+        RatingRankingMutationLease firstLease = CreateLease(first.ScopeKey, 1);
+        RatingRankingMutationLease secondLease = CreateLease(second.ScopeKey, 2);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         scheduler
@@ -103,15 +106,15 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions
-            .Setup(value => value.CompleteMutationAsync(first.ScopeKey, true, CancellationToken.None))
+            .Setup(value => value.CompleteMutationAsync(firstLease, true, CancellationToken.None))
             .ReturnsAsync(first);
         revisions
-            .Setup(value => value.CompleteMutationAsync(second.ScopeKey, true, CancellationToken.None))
+            .Setup(value => value.CompleteMutationAsync(secondLease, true, CancellationToken.None))
             .ReturnsAsync(second);
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object, scheduler.Object);
 
         await guard.CompleteMutationAsync(
-            new RatingRankingMutationPreparation(new[] { first.ScopeKey, second.ScopeKey }),
+            new RatingRankingMutationPreparation(new[] { firstLease, secondLease }),
             sourceChanged: true,
             CancellationToken.None);
 
@@ -129,17 +132,18 @@ public sealed class RatingRankingSourceRevisionGuardTests
             NowUtc,
             PendingMutationCount: 1,
             MutationLeaseExpiresAtUtc: NowUtc.AddMinutes(30));
+        RatingRankingMutationLease mutationLease = CreateLease(scopeKey);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions
-            .Setup(value => value.CompleteMutationAsync(scopeKey, true, CancellationToken.None))
+            .Setup(value => value.CompleteMutationAsync(mutationLease, true, CancellationToken.None))
             .ReturnsAsync(blockedRevision);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object, scheduler.Object);
 
         await guard.CompleteMutationAsync(
-            new RatingRankingMutationPreparation(new[] { scopeKey }),
+            new RatingRankingMutationPreparation(new[] { mutationLease }),
             sourceChanged: true,
             CancellationToken.None);
 
@@ -158,7 +162,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 It.IsAny<RankingScopeKey>(),
                 CancellationToken.None))
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
-            .Returns(Task.CompletedTask);
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
         Park previous = new Park
         {
@@ -180,7 +185,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { current },
             CancellationToken.None);
 
-        Assert.Equal(CanonicalRankingScopes.All.Count, preparation.ScopeKeys.Count);
+        Assert.Equal(CanonicalRankingScopes.All.Count, preparation.MutationLeases.Count);
         Assert.Equal(
             CanonicalRankingScopes.All.Select(static scope => scope.Key.Value).OrderBy(static key => key),
             incrementedScopes.Select(static scope => scope.Value));
@@ -198,7 +203,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 It.IsAny<RankingScopeKey>(),
                 CancellationToken.None))
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
-            .Returns(Task.CompletedTask);
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
         Park previous = new Park
         {
@@ -220,7 +226,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { current },
             CancellationToken.None);
 
-        RankingScopeKey scopeKey = Assert.Single(preparation.ScopeKeys);
+        RankingScopeKey scopeKey = Assert.Single(preparation.MutationLeases).ScopeKey;
         Assert.Equal("parks:global", scopeKey.Value);
         Assert.Equal(new[] { "parks:global" }, incrementedScopes.Select(static scope => scope.Value));
         revisions.VerifyAll();
@@ -237,7 +243,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 It.IsAny<RankingScopeKey>(),
                 CancellationToken.None))
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
-            .Returns(Task.CompletedTask);
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
         ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
         ParkItem current = CreateVisibleParkItem(ParkItemCategory.Show);
@@ -250,7 +257,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         Assert.Equal(
             new[] { "park-items:category:attraction", "park-items:category:show", "parks:global" },
             incrementedScopes.Select(static scope => scope.Value));
-        Assert.Equal(3, preparation.ScopeKeys.Count);
+        Assert.Equal(3, preparation.MutationLeases.Count);
         revisions.VerifyAll();
     }
 
@@ -265,7 +272,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 It.IsAny<RankingScopeKey>(),
                 CancellationToken.None))
             .Callback((RankingScopeKey scopeKey, CancellationToken _) => incrementedScopes.Add(scopeKey))
-            .Returns(Task.CompletedTask);
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
         RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object);
         ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
         previous.Name = "Alpha Ride";
@@ -277,7 +285,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { current },
             CancellationToken.None);
 
-        RankingScopeKey scopeKey = Assert.Single(preparation.ScopeKeys);
+        RankingScopeKey scopeKey = Assert.Single(preparation.MutationLeases).ScopeKey;
         Assert.Equal("park-items:category:attraction", scopeKey.Value);
         Assert.Equal(
             new[] { "park-items:category:attraction" },
@@ -301,7 +309,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             new[] { current },
             CancellationToken.None);
 
-        Assert.Empty(preparation.ScopeKeys);
+        Assert.Empty(preparation.MutationLeases);
         revisions.VerifyNoOtherCalls();
     }
 
@@ -335,5 +343,14 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 Status = ParkItemStatusNormalizer.Operating,
             },
         };
+    }
+
+    private static RatingRankingMutationLease CreateLease(
+        RankingScopeKey scopeKey,
+        int tokenSeed = 1)
+    {
+        return new RatingRankingMutationLease(
+            scopeKey,
+            tokenSeed.ToString("x32"));
     }
 }

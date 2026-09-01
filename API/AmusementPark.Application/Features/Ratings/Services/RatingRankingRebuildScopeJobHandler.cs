@@ -85,6 +85,28 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             cancellationToken);
         if (plan.IsSourceTruncated)
         {
+            RevisionFenceDisposition overflowFence = await this.CheckRevisionFenceAsync(
+                scope.Key,
+                requestedRevision,
+                cancellationToken);
+            if (overflowFence == RevisionFenceDisposition.NewerRevisionExists)
+            {
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+
+            if (overflowFence is RevisionFenceDisposition.RequestedRevisionUnavailable
+                or RevisionFenceDisposition.MutationPending)
+            {
+                return DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
+            }
+
+            await this.sourceRevisionRepository.MarkUnavailableAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                requestedRevision,
+                RatingRankingRebuildErrorCodes.SourceSetTruncated,
+                cancellationToken);
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 RatingRankingRebuildErrorCodes.SourceSetTruncated);
         }
@@ -210,6 +232,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                     scope.Key,
                     scope.MethodologyVersion,
                     requestedRevision,
+                    RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
                     cancellationToken);
                 return DurableBackgroundJobHandlerResult.Success();
             }

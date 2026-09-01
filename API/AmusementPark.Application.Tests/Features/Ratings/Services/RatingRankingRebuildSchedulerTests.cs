@@ -156,7 +156,7 @@ public sealed class RatingRankingRebuildSchedulerTests
     }
 
     [Fact]
-    public async Task ScheduleOutstandingAsync_WhenUnavailableMarkerCoversRevision_ShouldSkipJob()
+    public async Task ScheduleOutstandingAsync_WhenOverflowMarkerCoversRevision_ShouldSkipJob()
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
@@ -164,7 +164,8 @@ public sealed class RatingRankingRebuildSchedulerTests
             8,
             NowUtc,
             UnavailableMethodologyVersion: scope.MethodologyVersion,
-            HighestUnavailableSourceRevision: 8);
+            HighestUnavailableSourceRevision: 8,
+            UnavailableReasonCode: RatingRankingRebuildErrorCodes.SourceSetTruncated);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         Mock<IRatingRankingSourceRevisionRepository> revisions =

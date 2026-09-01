@@ -19,6 +19,10 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? MutationLeaseExpiresAtUtc { get; set; }
 
+    [BsonElement("mutationLeases")]
+    [BsonIgnoreIfDefault]
+    public Dictionary<string, DateTime> MutationLeases { get; set; } = new();
+
     [BsonElement("unavailableMethodologyVersion")]
     [BsonIgnoreIfNull]
     public string? UnavailableMethodologyVersion { get; set; }
@@ -26,4 +30,8 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonElement("highestUnavailableSourceRevision")]
     [BsonIgnoreIfNull]
     public long? HighestUnavailableSourceRevision { get; set; }
+
+    [BsonElement("unavailableReasonCode")]
+    [BsonIgnoreIfNull]
+    public string? UnavailableReasonCode { get; set; }
 }

@@ -124,6 +124,14 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                 RankingSnapshotHeader.MaximumCandidateEntryCount,
                 Array.Empty<RankingSnapshotEntry>(),
                 true));
+        fixture.Revisions
+            .Setup(repository => repository.MarkUnavailableAsync(
+                fixture.Scope.Key,
+                fixture.Scope.MethodologyVersion,
+                5,
+                RatingRankingRebuildErrorCodes.SourceSetTruncated,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
 
         DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
             fixture.CreateContext(5),
@@ -232,6 +240,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                 fixture.Scope.Key,
                 fixture.Scope.MethodologyVersion,
                 6,
+                RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
 

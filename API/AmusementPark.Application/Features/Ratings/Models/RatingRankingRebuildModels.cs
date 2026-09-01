@@ -25,11 +25,39 @@ public static class RatingRankingRebuildErrorCodes
     public const string UnknownScope = "ranking-snapshot.unknown-scope";
     public const string SourceRevisionUnavailable = "ranking-snapshot.source-revision-unavailable";
     public const string SourceSetTruncated = "ranking-snapshot.source-set-truncated";
+    public const string BelowMinimumEligibleEntries = "ranking-snapshot.below-minimum-eligible-entries";
     public const string BuildConflict = "ranking-snapshot.build-conflict";
     public const string ChunkWriteConflict = "ranking-snapshot.chunk-write-conflict";
     public const string ValidationFailed = "ranking-snapshot.validation-failed";
     public const string PublicationConflict = "ranking-snapshot.publication-conflict";
     public const string RetirementConflict = "ranking-snapshot.retirement-conflict";
+}
+
+public sealed record RatingRankingMutationLease
+{
+    public RatingRankingMutationLease(
+        RankingScopeKey scopeKey,
+        string token)
+    {
+        if (!Guid.TryParseExact(token, "N", out Guid parsedToken))
+        {
+            throw new ArgumentException("The ranking mutation lease token is invalid.", nameof(token));
+        }
+
+        this.ScopeKey = scopeKey;
+        this.Token = parsedToken.ToString("N");
+    }
+
+    public RankingScopeKey ScopeKey { get; }
+
+    public string Token { get; }
+
+    public static RatingRankingMutationLease Create(RankingScopeKey scopeKey)
+    {
+        return new RatingRankingMutationLease(
+            scopeKey,
+            Guid.NewGuid().ToString("N"));
+    }
 }
 
 public sealed record RatingRankingSnapshotBuildPlan(
@@ -40,14 +68,14 @@ public sealed record RatingRankingSnapshotBuildPlan(
 public sealed class RatingRankingMutationPreparation
 {
     public RatingRankingMutationPreparation(
-        IReadOnlyCollection<RankingScopeKey> scopeKeys)
+        IReadOnlyCollection<RatingRankingMutationLease> mutationLeases)
     {
-        ArgumentNullException.ThrowIfNull(scopeKeys);
-        this.ScopeKeys = Array.AsReadOnly(scopeKeys
-            .Distinct()
-            .OrderBy(static scopeKey => scopeKey.Value, StringComparer.Ordinal)
+        ArgumentNullException.ThrowIfNull(mutationLeases);
+        this.MutationLeases = Array.AsReadOnly(mutationLeases
+            .DistinctBy(static lease => lease.ScopeKey)
+            .OrderBy(static lease => lease.ScopeKey.Value, StringComparer.Ordinal)
             .ToArray());
     }
 
-    public IReadOnlyCollection<RankingScopeKey> ScopeKeys { get; }
+    public IReadOnlyCollection<RatingRankingMutationLease> MutationLeases { get; }
 }
