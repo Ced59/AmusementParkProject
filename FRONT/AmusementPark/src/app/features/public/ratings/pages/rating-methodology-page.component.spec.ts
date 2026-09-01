@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { registerSupportedAngularLocales } from '@core/i18n/supported-angular-locales';
+import { JsonLdService } from '@core/seo/json-ld.service';
 import { SeoService } from '@core/seo/seo.service';
 import { RATING_METHODOLOGY_PORT, RatingMethodologyPort } from '../state/rating-methodology-state-data.ports';
 import { RatingMethodologyPageComponent } from './rating-methodology-page.component';
@@ -47,7 +48,8 @@ describe('RatingMethodologyPageComponent', () => {
           }
         },
         { provide: TranslationService, useValue: { getCurrentLang: (): string => 'fr', languageChanged: of('fr') } },
-        { provide: SeoService, useValue: { applyRouteDefaults: vi.fn(), applyNotFoundSeo: vi.fn() } }
+        { provide: SeoService, useValue: { applyRouteDefaults: vi.fn(), applyNotFoundSeo: vi.fn() } },
+        { provide: JsonLdService, useValue: { replaceJsonLdByType: vi.fn() } }
       ]
     }).compileComponents();
 
@@ -113,6 +115,29 @@ describe('RatingMethodologyPageComponent', () => {
     paramMapSubject.next(convertToParamMap({ version: 'ratings-2025-01' }));
 
     expect(seoService.applyRouteDefaults).toHaveBeenCalledTimes(callsBeforeNavigation + 1);
+  });
+
+  it('adds a clickable methodology parent and contextual version breadcrumb on a historical route', () => {
+    const jsonLdService: JsonLdService = TestBed.inject(JsonLdService);
+    fixture.detectChanges();
+
+    paramMapSubject.next(convertToParamMap({ version: 'ratings-2025-01' }));
+    fixture.detectChanges();
+    const links: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('.methodology-breadcrumb a');
+
+    expect(links).toHaveLength(3);
+    expect(links[2]?.getAttribute('href')).toBe('/fr/rankings/methodology');
+    expect(fixture.nativeElement.querySelector('[aria-current="page"]')?.textContent)
+      .toContain('ratings-2025-01');
+    expect(jsonLdService.replaceJsonLdByType).toHaveBeenLastCalledWith(
+      'BreadcrumbList',
+      expect.objectContaining({
+        itemListElement: expect.arrayContaining([
+          expect.objectContaining({ position: 3, name: 'Méthodologie' }),
+          expect.objectContaining({ position: 4, name: 'ratings-2025-01' })
+        ])
+      })
+    );
   });
 });
 

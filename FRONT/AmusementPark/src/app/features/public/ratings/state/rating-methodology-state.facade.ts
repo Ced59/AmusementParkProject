@@ -1,7 +1,7 @@
 import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, Subscription, forkJoin } from 'rxjs';
 
 import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
@@ -21,6 +21,7 @@ export class RatingMethodologyStateFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
   private readonly notFoundSignal = signal<boolean>(false);
+  private loadSubscription: Subscription | null = null;
 
   public readonly methodology: Signal<RatingMethodology | null> = this.methodologySignal.asReadonly();
   public readonly history: Signal<RatingMethodology[]> = this.historySignal.asReadonly();
@@ -36,6 +37,7 @@ export class RatingMethodologyStateFacade {
   }
 
   load(version: string | null): void {
+    this.loadSubscription?.unsubscribe();
     const normalizedVersion: string | null = version?.trim() || null;
     const selectedRequest: Observable<RatingMethodology> = normalizedVersion
       ? this.methodologyPort.getMethodology(normalizedVersion, anonymousHttpOptions())
@@ -44,7 +46,7 @@ export class RatingMethodologyStateFacade {
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
     this.notFoundSignal.set(false);
-    forkJoin({
+    this.loadSubscription = forkJoin({
       selected: selectedRequest,
       history: this.methodologyPort.getMethodologyHistory(anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({

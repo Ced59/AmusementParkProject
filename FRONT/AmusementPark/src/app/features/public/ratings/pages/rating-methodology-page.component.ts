@@ -23,6 +23,7 @@ import { RatingMethodologyStateFacade } from '../state/rating-methodology-state.
 })
 export class RatingMethodologyPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
+  protected readonly selectedVersion = signal<string | null>(null);
   protected readonly methodology: Signal<RatingMethodology | null> = this.stateFacade.methodology;
   protected readonly history: Signal<RatingMethodology[]> = this.stateFacade.history;
   protected readonly loading: Signal<boolean> = this.stateFacade.loading;
@@ -53,11 +54,13 @@ export class RatingMethodologyPageComponent implements OnInit {
       this.translationService.getCurrentLang() || 'en'
     );
     this.currentLang.set(language);
-    this.applySeoAndBreadcrumb();
+    this.selectedVersion.set(this.normalizeVersion(this.route.snapshot.paramMap.get('version')));
 
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
+      const version: string | null = this.normalizeVersion(params.get('version'));
+      this.selectedVersion.set(version);
       this.applySeoAndBreadcrumb();
-      this.stateFacade.load(params.get('version'));
+      this.stateFacade.load(version);
     });
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string): void => {
       this.currentLang.set(lang);
@@ -93,32 +96,48 @@ export class RatingMethodologyPageComponent implements OnInit {
   private applySeoAndBreadcrumb(): void {
     this.seoService.applyRouteDefaults(this.router.url);
     const language: string = this.currentLang();
+    const selectedVersion: string | null = this.selectedVersion();
     const homeUrl: string = this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`);
     const rankingsUrl: string = this.canonicalUrlService.buildAbsoluteUrl(`/${language}/rankings`);
-    const methodologyUrl: string = this.canonicalUrlService.buildAbsoluteUrl(this.router.url);
+    const methodologyUrl: string = this.canonicalUrlService.buildAbsoluteUrl(`/${language}/rankings/methodology`);
+    const currentUrl: string = this.canonicalUrlService.buildAbsoluteUrl(this.router.url);
+    const itemListElement: Array<Record<string, string | number>> = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: this.translateService.instant('ratings.methodology.breadcrumb.home'),
+        item: homeUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: this.translateService.instant('ratings.methodology.breadcrumb.rankings'),
+        item: rankingsUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: this.translateService.instant('ratings.methodology.breadcrumb.methodology'),
+        item: methodologyUrl
+      }
+    ];
+    if (selectedVersion) {
+      itemListElement.push({
+        '@type': 'ListItem',
+        position: 4,
+        name: selectedVersion,
+        item: currentUrl
+      });
+    }
     this.jsonLdService.replaceJsonLdByType('BreadcrumbList', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: this.translateService.instant('ratings.methodology.breadcrumb.home'),
-          item: homeUrl
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: this.translateService.instant('ratings.methodology.breadcrumb.rankings'),
-          item: rankingsUrl
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: this.translateService.instant('ratings.methodology.breadcrumb.methodology'),
-          item: methodologyUrl
-        }
-      ]
+      itemListElement
     });
+  }
+
+  private normalizeVersion(value: string | null): string | null {
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue.length > 0 ? normalizedValue : null;
   }
 }

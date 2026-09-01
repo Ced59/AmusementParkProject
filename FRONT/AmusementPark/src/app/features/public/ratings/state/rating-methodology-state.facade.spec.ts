@@ -62,6 +62,19 @@ describe('RatingMethodologyStateFacade', () => {
     expect(facade.error()).toBe(true);
     expect(ssrStatus.setNotFound).toHaveBeenCalledTimes(1);
   });
+
+  it('ignores a stale historical response after loading the current version', () => {
+    facade.load('ratings-old');
+    facade.load(null);
+
+    port.missingResponse.error(new HttpErrorResponse({ status: 404 }));
+
+    expect(facade.methodology()?.version).toBe('ratings-2026-01');
+    expect(facade.loading()).toBe(false);
+    expect(facade.error()).toBe(false);
+    expect(facade.notFound()).toBe(false);
+    expect(ssrStatus.setNotFound).not.toHaveBeenCalled();
+  });
 });
 
 function createMethodology(): RatingMethodology {

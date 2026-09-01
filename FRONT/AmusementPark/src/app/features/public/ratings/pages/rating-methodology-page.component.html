@@ -4,7 +4,13 @@
     <span aria-hidden="true">/</span>
     <a [routerLink]="rankingRoute()">{{ 'ratings.methodology.breadcrumb.rankings' | translate }}</a>
     <span aria-hidden="true">/</span>
-    <span aria-current="page">{{ 'ratings.methodology.breadcrumb.methodology' | translate }}</span>
+    @if (selectedVersion(); as version) {
+      <a [routerLink]="methodologyRoute()">{{ 'ratings.methodology.breadcrumb.methodology' | translate }}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ version }}</span>
+    } @else {
+      <span aria-current="page">{{ 'ratings.methodology.breadcrumb.methodology' | translate }}</span>
+    }
   </nav>
 
   <app-ui-section-header
