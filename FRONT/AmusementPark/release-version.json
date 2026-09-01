@@ -1,6 +1,20 @@
 {
-  "version": "4.2.41",
+  "version": "4.2.42",
   "history": [
+    {
+      "version": "4.2.42",
+      "releasedAt": "2026-09-01",
+      "labels": {
+        "fr": "La cohérence des futurs classements est renforcée.",
+        "en": "Future ranking consistency has been strengthened.",
+        "de": "Die Konsistenz künftiger Ranglisten wurde verbessert.",
+        "nl": "De samenhang van toekomstige ranglijsten is versterkt.",
+        "it": "La coerenza delle future classifiche è stata rafforzata.",
+        "es": "Se ha reforzado la coherencia de las futuras clasificaciones.",
+        "pl": "Wzmocniono spójność przyszłych rankingów.",
+        "pt": "A coerência das futuras classificações foi reforçada."
+      }
+    },
     {
       "version": "4.2.41",
       "releasedAt": "2026-09-01",
