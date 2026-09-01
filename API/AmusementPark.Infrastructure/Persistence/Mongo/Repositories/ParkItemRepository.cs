@@ -653,6 +653,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         return Builders<ParkItemDocument>.Filter.Eq(value => value.Id, document.Id)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.ParkId, document.ParkId)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.Category, document.Category)
+            & Builders<ParkItemDocument>.Filter.Eq(value => value.Name, document.Name)
             & Builders<ParkItemDocument>.Filter.Eq(value => value.IsVisible, document.IsVisible)
             & Builders<ParkItemDocument>.Filter.Eq(
                 value => value.AttractionDetails!.Status,

@@ -90,6 +90,7 @@ public sealed class RatingRankSnapshotInvalidationTests
         {
             Id = "item-1",
             ParkId = "park-1",
+            Name = "Demo Ride",
             Category = ParkItemCategory.Attraction,
             IsVisible = true,
             AttractionDetails = new AttractionDetailsDocument
@@ -107,6 +108,7 @@ public sealed class RatingRankSnapshotInvalidationTests
 
         Assert.Equal(document.Id, filter["_id"].AsString);
         Assert.Equal(document.ParkId, filter["parkId"].AsString);
+        Assert.Equal(document.Name, filter["name"].AsString);
         Assert.Equal(document.Category.ToString(), filter["category"].AsString);
         Assert.True(filter["isVisible"].AsBoolean);
         Assert.Equal(
