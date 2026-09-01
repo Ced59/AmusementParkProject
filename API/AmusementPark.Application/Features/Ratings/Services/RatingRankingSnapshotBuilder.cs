@@ -43,7 +43,8 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
             cancellationToken);
         IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
         IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(sources);
-        if (sourceBatch.IsTruncated)
+        if (sourceBatch.IsTruncated
+            || rankings.Count > RankingSnapshotHeader.MaximumCandidateEntryCount)
         {
             return new RatingRankingSnapshotBuildPlan(
                 rankings.Count,
