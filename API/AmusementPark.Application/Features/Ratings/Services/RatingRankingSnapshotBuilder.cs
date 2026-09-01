@@ -91,23 +91,22 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
 
         IReadOnlyCollection<ParkRankingSnapshotCandidate> orderedCandidates =
             RatingRankingFactory.OrderParkSnapshotCandidates(candidates);
+        IReadOnlyList<ParkRankingSnapshotCandidate> eligibleCandidates = orderedCandidates
+            .Where(static candidate => candidate.Evidence?.IsEligibleForMainRanking == true)
+            .ToArray();
+        IReadOnlyList<CompetitionRankAssignment> rankAssignments =
+            CompetitionRankCalculator.AssignOrderedRanks(
+                scope,
+                eligibleCandidates.Select(static candidate => candidate.Ranking.Score));
         List<RankingSnapshotEntry> entries = new List<RankingSnapshotEntry>();
-        int position = 0;
-        int rank = 0;
-        double? rankAnchorScore = null;
-        foreach (ParkRankingSnapshotCandidate candidate in orderedCandidates)
+        for (int index = 0; index < eligibleCandidates.Count; index++)
         {
-            RankingEvidence? evidence = candidate.Evidence;
-            if (evidence is null || !evidence.IsEligibleForMainRanking)
-            {
-                continue;
-            }
-
-            position++;
-            ResolveRank(scope, candidate.Ranking.Score, position, ref rank, ref rankAnchorScore);
+            ParkRankingSnapshotCandidate candidate = eligibleCandidates[index];
+            RankingEvidence evidence = candidate.Evidence!;
+            CompetitionRankAssignment assignment = rankAssignments[index];
             entries.Add(new RankingSnapshotEntry(
-                position,
-                rank,
+                assignment.Position,
+                assignment.Rank,
                 RatingTargetType.Park,
                 candidate.Ranking.ParkId,
                 null,
@@ -150,23 +149,22 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
                 cancellationToken);
         IReadOnlyCollection<ParkItemRankingSnapshotCandidate> candidates =
             RatingRankingFactory.BuildParkItemSnapshotCandidates(rankings, sources, sourceFacts);
+        IReadOnlyList<ParkItemRankingSnapshotCandidate> eligibleCandidates = candidates
+            .Where(static candidate => candidate.Evidence?.IsEligibleForMainRanking == true)
+            .ToArray();
+        IReadOnlyList<CompetitionRankAssignment> rankAssignments =
+            CompetitionRankCalculator.AssignOrderedRanks(
+                scope,
+                eligibleCandidates.Select(static candidate => candidate.Ranking.BayesianScore));
         List<RankingSnapshotEntry> entries = new List<RankingSnapshotEntry>();
-        int position = 0;
-        int rank = 0;
-        double? rankAnchorScore = null;
-        foreach (ParkItemRankingSnapshotCandidate candidate in candidates)
+        for (int index = 0; index < eligibleCandidates.Count; index++)
         {
-            RankingEvidence? evidence = candidate.Evidence;
-            if (evidence is null || !evidence.IsEligibleForMainRanking)
-            {
-                continue;
-            }
-
-            position++;
-            ResolveRank(scope, candidate.Ranking.BayesianScore, position, ref rank, ref rankAnchorScore);
+            ParkItemRankingSnapshotCandidate candidate = eligibleCandidates[index];
+            RankingEvidence evidence = candidate.Evidence!;
+            CompetitionRankAssignment assignment = rankAssignments[index];
             entries.Add(new RankingSnapshotEntry(
-                position,
-                rank,
+                assignment.Position,
+                assignment.Rank,
                 RatingTargetType.ParkItem,
                 candidate.Ranking.TargetId,
                 candidate.Ranking.ParkItemCategory,
@@ -175,19 +173,5 @@ public sealed class RatingRankingSnapshotBuilder : IRatingRankingSnapshotBuilder
         }
 
         return new RatingRankingSnapshotBuildPlan(rankings.Count, entries, false);
-    }
-
-    private static void ResolveRank(
-        RankingScopeDefinition scope,
-        double score,
-        int position,
-        ref int rank,
-        ref double? rankAnchorScore)
-    {
-        if (!rankAnchorScore.HasValue || !scope.AreScoresTied(rankAnchorScore.Value, score))
-        {
-            rank = position;
-            rankAnchorScore = score;
-        }
     }
 }
