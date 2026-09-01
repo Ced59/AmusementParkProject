@@ -32,6 +32,7 @@ public sealed class RankingSnapshotChecksumCalculator
             AppendNullableInt32(hash, evidence.ItemContributorCount);
             AppendNullableInt32(hash, evidence.EligibleItemCount);
             AppendNullableInt32(hash, evidence.EligibleCategoryCount);
+            AppendNullableBoolean(hash, evidence.IsSingleCategoryParkException);
             AppendString(hash, evidence.MethodologyVersion.Value);
             AppendNullableInt32(hash, evidence.NextContributorThreshold);
         }
@@ -83,6 +84,15 @@ public sealed class RankingSnapshotChecksumCalculator
         if (value.HasValue)
         {
             AppendInt32(hash, value.Value);
+        }
+    }
+
+    private static void AppendNullableBoolean(IncrementalHash hash, bool? value)
+    {
+        AppendInt32(hash, value.HasValue ? 1 : 0);
+        if (value.HasValue)
+        {
+            AppendInt32(hash, value.Value ? 1 : 0);
         }
     }
 

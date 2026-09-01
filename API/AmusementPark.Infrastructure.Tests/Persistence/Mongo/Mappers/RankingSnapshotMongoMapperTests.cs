@@ -190,6 +190,7 @@ public sealed class RankingSnapshotMongoMapperTests
             null)
         {
             NextContributorThreshold = 30,
+            IsSingleCategoryParkException = false,
         };
     }
 

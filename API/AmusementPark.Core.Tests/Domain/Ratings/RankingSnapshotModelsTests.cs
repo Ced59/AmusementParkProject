@@ -149,6 +149,34 @@ public sealed class RankingSnapshotModelsTests
             null)
         {
             NextContributorThreshold = 30,
+            IsSingleCategoryParkException = false,
+        };
+
+        Assert.Throws<ArgumentException>(() => new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            forgedEvidence));
+    }
+
+    [Fact]
+    public void Entry_WhenSingleCategoryItemComponentHasNoExceptionProof_ShouldRejectIt()
+    {
+        RankingEvidence forgedEvidence = new RankingEvidence(
+            RankingEvidenceLevel.Eligible,
+            true,
+            UniqueContributorCount: 10,
+            RatingObservationCount: 60,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            EligibleItemCount: 5,
+            EligibleCategoryCount: 1,
+            RankingEligibilityPolicy.InitialMethodologyVersion,
+            null)
+        {
+            NextContributorThreshold = 30,
         };
 
         Assert.Throws<ArgumentException>(() => new RankingSnapshotEntry(
@@ -173,6 +201,33 @@ public sealed class RankingSnapshotModelsTests
             CreateSimpleEvidence());
 
         Assert.Equal(ParkItemCategory.Attraction, entry.ParkItemCategory);
+    }
+
+    [Fact]
+    public void Entry_WhenSingleCategoryExceptionIsPolicyProduced_ShouldPreserveItsProof()
+    {
+        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 10,
+            RatingObservationCount: 60,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            ItemCategories: new[] { new RankingCategoryCoverage(5, 5) },
+            IsSingleCategoryParkException: true,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        RankingSnapshotEntry entry = new RankingSnapshotEntry(
+            position: 1,
+            rank: 1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            evidence);
+
+        Assert.True(entry.Evidence.IsSingleCategoryParkException);
+        Assert.Equal(1, entry.Evidence.EligibleCategoryCount);
     }
 
     [Fact]
@@ -392,6 +447,7 @@ public sealed class RankingSnapshotModelsTests
             null)
         {
             NextContributorThreshold = 30,
+            IsSingleCategoryParkException = false,
         };
     }
 

@@ -151,6 +151,7 @@ internal static class RankingSnapshotMongoMapper
             null)
         {
             NextContributorThreshold = document.NextContributorThreshold,
+            IsSingleCategoryParkException = document.IsSingleCategoryParkException,
         };
         return new RankingSnapshotEntry(
             document.Position,
@@ -179,6 +180,7 @@ internal static class RankingSnapshotMongoMapper
             ItemContributorCount = entry.Evidence.ItemContributorCount,
             EligibleItemCount = entry.Evidence.EligibleItemCount,
             EligibleCategoryCount = entry.Evidence.EligibleCategoryCount,
+            IsSingleCategoryParkException = entry.Evidence.IsSingleCategoryParkException,
             NextContributorThreshold = entry.Evidence.NextContributorThreshold,
         };
     }

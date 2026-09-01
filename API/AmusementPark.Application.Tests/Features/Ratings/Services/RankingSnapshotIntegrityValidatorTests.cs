@@ -317,6 +317,22 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             this.checksumCalculator.CalculateChunk(new[] { restaurant }));
     }
 
+    [Fact]
+    public void CalculateChunk_WhenSingleCategoryExceptionChanges_ShouldChangeTheChecksum()
+    {
+        RankingSnapshotEntry regularPark = CreateEntry(1, "park-1", RatingTargetType.Park);
+        RankingSnapshotEntry singleCategoryPark = new RankingSnapshotEntry(
+            1,
+            RatingTargetType.Park,
+            "park-1",
+            4.25d,
+            CreateEvidence() with { IsSingleCategoryParkException = true });
+
+        Assert.NotEqual(
+            this.checksumCalculator.CalculateChunk(new[] { regularPark }),
+            this.checksumCalculator.CalculateChunk(new[] { singleCategoryPark }));
+    }
+
     private SnapshotFixture CreateFixture(int eligibleEntryCount)
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-1");
@@ -427,6 +443,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             null)
         {
             NextContributorThreshold = 30,
+            IsSingleCategoryParkException = false,
         };
     }
 

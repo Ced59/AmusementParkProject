@@ -143,6 +143,10 @@ public sealed class RankingSnapshotEntryDocument
     [BsonIgnoreIfNull]
     public int? EligibleCategoryCount { get; set; }
 
+    [BsonElement("isSingleCategoryParkException")]
+    [BsonIgnoreIfNull]
+    public bool? IsSingleCategoryParkException { get; set; }
+
     [BsonElement("nextContributorThreshold")]
     [BsonIgnoreIfNull]
     public int? NextContributorThreshold { get; set; }

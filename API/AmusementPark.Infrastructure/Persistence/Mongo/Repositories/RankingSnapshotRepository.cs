@@ -500,7 +500,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
         DateTime previousSnapshotPublishedAtUtc = await this.ResolveSnapshotPublishedAtAsync(
             pointer!.CurrentSnapshotId,
-            pointer.UpdatedAtUtc,
+            pointer.CurrentSnapshotPublishedAtUtc,
             cancellationToken);
         RankingPublicationPointer nextPointer = new RankingPublicationPointer(
             candidate.ScopeKey,
@@ -615,7 +615,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
         DateTime nowUtc = this.GetUtcNow();
         DateTime rolledBackSnapshotPublishedAtUtc = await this.ResolveSnapshotPublishedAtAsync(
             request.ExpectedCurrentSnapshotId,
-            current.UpdatedAtUtc,
+            current.CurrentSnapshotPublishedAtUtc,
             cancellationToken);
         RankingPublicationPointer rolledBack = new RankingPublicationPointer(
             request.ScopeKey,

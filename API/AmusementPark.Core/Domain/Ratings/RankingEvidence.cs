@@ -16,6 +16,8 @@ public sealed record RankingEvidence(
     RankingIneligibilityReason? IneligibilityReason)
 {
     public int? NextContributorThreshold { get; init; }
+
+    public bool? IsSingleCategoryParkException { get; init; }
 }
 
 /// <summary>

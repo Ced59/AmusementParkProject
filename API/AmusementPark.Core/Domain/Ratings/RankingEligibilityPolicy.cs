@@ -550,7 +550,11 @@ public sealed class RankingEligibilityPolicy
             this.Version,
             ineligibilityReason);
 
-        return evidence with { NextContributorThreshold = this.ResolveNextContributorThreshold(level) };
+        return evidence with
+        {
+            NextContributorThreshold = this.ResolveNextContributorThreshold(level),
+            IsSingleCategoryParkException = input.IsSingleCategoryParkException,
+        };
     }
 
     private int? ResolveNextContributorThreshold(RankingEvidenceLevel level)
@@ -606,7 +610,8 @@ public sealed class RankingEligibilityPolicy
             !evidence.DirectParkContributorCount.HasValue &&
             !evidence.ItemContributorCount.HasValue &&
             !evidence.EligibleItemCount.HasValue &&
-            !evidence.EligibleCategoryCount.HasValue;
+            !evidence.EligibleCategoryCount.HasValue &&
+            !evidence.IsSingleCategoryParkException.HasValue;
     }
 
     private static bool IsEligibleParkSnapshotEvidence(
@@ -624,18 +629,23 @@ public sealed class RankingEligibilityPolicy
             eligibleItemCount < 0 ||
             evidence.EligibleCategoryCount is not int eligibleCategoryCount ||
             eligibleCategoryCount < 0 ||
-            eligibleCategoryCount > eligibleItemCount)
+            eligibleCategoryCount > eligibleItemCount ||
+            evidence.IsSingleCategoryParkException is not bool isSingleCategoryParkException ||
+            (isSingleCategoryParkException && eligibleCategoryCount > 1))
         {
             return false;
         }
 
+        int minimumEligibleCategoryCount = isSingleCategoryParkException
+            ? 1
+            : minimumEligibleCategories;
         bool itemComponentContributed =
             evidence.UniqueContributorCount > directParkContributorCount ||
             evidence.RatingObservationCount > directParkContributorCount;
         bool itemComponentMustContribute =
             itemContributorCount >= eligibleMinUniqueContributors &&
             eligibleItemCount >= minimumEligibleItemsForParkItemComponent &&
-            eligibleCategoryCount >= minimumEligibleCategories;
+            eligibleCategoryCount >= minimumEligibleCategoryCount;
         if (!itemComponentContributed)
         {
             return !itemComponentMustContribute &&
@@ -648,7 +658,7 @@ public sealed class RankingEligibilityPolicy
             (long)eligibleItemCount * eligibleMinUniqueContributors);
         return itemContributorCount >= eligibleMinUniqueContributors &&
             eligibleItemCount >= minimumEligibleItemsForParkItemComponent &&
-            eligibleCategoryCount >= 1 &&
+            eligibleCategoryCount >= minimumEligibleCategoryCount &&
             itemContributorCount <= evidence.UniqueContributorCount &&
             evidence.UniqueContributorCount <= (long)directParkContributorCount + itemContributorCount &&
             evidence.RatingObservationCount >= (long)directParkContributorCount + minimumItemObservationCount;
