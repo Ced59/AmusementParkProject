@@ -58,7 +58,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
             .ReturnsAsync(new Park { Id = "park-1", Name = "Demo Park", Status = ParkStatus.Operating });
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
-            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .SetupSequence(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ParkItem
             {
                 Id = "item-1",
@@ -67,11 +67,51 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 Category = ParkItemCategory.Attraction,
                 Type = ParkItemType.RollerCoaster,
                 AttractionDetails = new AttractionDetails { Status = ParkItemStatusNormalizer.Operating },
+            })
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Restaurant",
+                Category = ParkItemCategory.Restaurant,
             });
-        Mock<IRatingRankingMutationGuard> rankingMutationGuard = CreateMutationGuard(
-            RatingTargetType.ParkItem,
-            ParkItemCategory.Attraction,
-            ParkItemCategory.Show);
+        Mock<IRatingRankingMutationGuard> rankingMutationGuard =
+            new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
+        RatingRankingMutationPreparation initialPreparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
+            new[]
+            {
+                new RatingRankingMutationLease(
+                    RankingScopeKey.Parse("park-items:category:restaurant"),
+                    Guid.NewGuid().ToString("N")),
+            });
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Attraction,
+                ParkItemCategory.Show,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initialPreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                initialPreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(value => value.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Restaurant,
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(authoritativePreparation);
+        rankingMutationGuard
+            .Setup(value => value.CompleteMutationAsync(
+                authoritativePreparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
             ratingRepository.Object,
             ratingRankProvider.Object,

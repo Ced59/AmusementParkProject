@@ -61,6 +61,14 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 Status = ParkItemStatusNormalizer.Operating,
             },
         };
+        ParkItem authoritativeItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Demo Restaurant",
+            Category = ParkItemCategory.Restaurant,
+            IsVisible = true,
+        };
         Park park = new Park
         {
             Id = "park-1",
@@ -113,14 +121,22 @@ public sealed class UpsertUserRatingCommandHandlerTests
 
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
-            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(item);
+            .SetupSequence(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item)
+            .ReturnsAsync(authoritativeItem);
         Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         ratingRankProvider
             .Setup(provider => provider.Invalidate());
         Mock<IRatingRankingMutationGuard> rankingMutationGuard = new Mock<IRatingRankingMutationGuard>(MockBehavior.Strict);
         RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
             Array.Empty<RatingRankingMutationLease>());
+        RatingRankingMutationPreparation authoritativePreparation = new RatingRankingMutationPreparation(
+            new[]
+            {
+                new RatingRankingMutationLease(
+                    RankingScopeKey.Parse("park-items:category:restaurant"),
+                    Guid.NewGuid().ToString("N")),
+            });
         rankingMutationGuard
             .Setup(guard => guard.PrepareMutationAsync(
                 RatingTargetType.ParkItem,
@@ -129,8 +145,21 @@ public sealed class UpsertUserRatingCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(preparation);
         rankingMutationGuard
+            .Setup(guard => guard.PrepareMutationAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Restaurant,
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(authoritativePreparation);
+        rankingMutationGuard
             .Setup(guard => guard.CompleteMutationAsync(
                 preparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        rankingMutationGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                authoritativePreparation,
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);

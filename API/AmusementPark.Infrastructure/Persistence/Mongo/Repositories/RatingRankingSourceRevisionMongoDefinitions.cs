@@ -62,6 +62,14 @@ internal static class RatingRankingSourceRevisionMongoDefinitions
             : update;
     }
 
+    public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildLateChangedMutationUpdate(
+        DateTime nowUtc)
+    {
+        return Builders<RatingRankingSourceRevisionDocument>.Update
+            .Inc(document => document.Revision, 1)
+            .Set(document => document.UpdatedAt, nowUtc);
+    }
+
     public static UpdateDefinition<RatingRankingSourceRevisionDocument> BuildRecoverMutationUpdate(
         RatingRankingMutationLease mutationLease,
         DateTime nowUtc)

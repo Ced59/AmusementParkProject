@@ -78,6 +78,16 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
                 nowUtc),
             options,
             cancellationToken);
+        if (document is null && sourceChanged)
+        {
+            document = await this.collection.FindOneAndUpdateAsync(
+                RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(
+                    mutationLease.ScopeKey),
+                RatingRankingSourceRevisionMongoDefinitions.BuildLateChangedMutationUpdate(nowUtc),
+                options,
+                cancellationToken);
+        }
+
         document ??= await this.collection
             .Find(RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(
                 mutationLease.ScopeKey))

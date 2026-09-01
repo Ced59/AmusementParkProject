@@ -156,6 +156,83 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
         Assert.False(filter.Contains($"mutationLeases.{newerLease.Token}"));
     }
 
+    [Fact]
+    public async Task CompleteMutationAsync_WhenChangedLeaseWasRecovered_ShouldAdvanceAnotherRevisionWithoutSettlingNewerLeases()
+    {
+        RankingScopeKey scopeKey = RankingScopeKey.Parse("parks:global");
+        RatingRankingMutationLease recoveredLease = CreateLease(scopeKey, 1);
+        List<FilterDefinition<RatingRankingSourceRevisionDocument>> capturedFilters = new();
+        List<UpdateDefinition<RatingRankingSourceRevisionDocument>> capturedUpdates = new();
+        Mock<IMongoCollection<RatingRankingSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<RatingRankingSourceRevisionDocument>>(MockBehavior.Strict);
+        collection
+            .Setup(value => value.FindOneAndUpdateAsync(
+                It.Is<FilterDefinition<RatingRankingSourceRevisionDocument>>(filter =>
+                    Render(filter).Contains($"mutationLeases.{recoveredLease.Token}")),
+                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.Is<FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument>>(
+                    options => !options.IsUpsert && options.ReturnDocument == ReturnDocument.After),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<RatingRankingSourceRevisionDocument> filter,
+                UpdateDefinition<RatingRankingSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                capturedFilters.Add(filter);
+                capturedUpdates.Add(update);
+            })
+            .ReturnsAsync((RatingRankingSourceRevisionDocument)null!);
+        collection
+            .Setup(value => value.FindOneAndUpdateAsync(
+                It.Is<FilterDefinition<RatingRankingSourceRevisionDocument>>(filter =>
+                    !Render(filter).Contains($"mutationLeases.{recoveredLease.Token}")),
+                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.Is<FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument>>(
+                    options => !options.IsUpsert && options.ReturnDocument == ReturnDocument.After),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<RatingRankingSourceRevisionDocument> filter,
+                UpdateDefinition<RatingRankingSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<RatingRankingSourceRevisionDocument, RatingRankingSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                capturedFilters.Add(filter);
+                capturedUpdates.Add(update);
+            })
+            .ReturnsAsync(new RatingRankingSourceRevisionDocument
+            {
+                Id = scopeKey.Value,
+                ScopeKey = scopeKey.Value,
+                Revision = 43,
+                MutationLeases = new Dictionary<string, DateTime>
+                {
+                    [CreateLease(scopeKey, 2).Token] = NowUtc.AddMinutes(5),
+                },
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            });
+        RatingRankingSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        RatingRankingSourceRevision revision = await repository.CompleteMutationAsync(
+            recoveredLease,
+            sourceChanged: true,
+            CancellationToken.None);
+
+        Assert.Equal(2, capturedFilters.Count);
+        BsonDocument ownedFilter = Render(capturedFilters[0]);
+        BsonDocument fallbackFilter = Render(capturedFilters[1]);
+        BsonDocument fallbackUpdate = Render(capturedUpdates[1]);
+        Assert.True(ownedFilter.Contains($"mutationLeases.{recoveredLease.Token}"));
+        Assert.Equal(scopeKey.Value, fallbackFilter["_id"].AsString);
+        Assert.Single(fallbackFilter);
+        Assert.Equal(1, fallbackUpdate["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.False(fallbackUpdate.Contains("$unset"));
+        Assert.Equal(43, revision.Revision);
+        Assert.Equal(1, revision.PendingMutationCount);
+        collection.VerifyAll();
+    }
+
     private static RatingRankingSourceRevisionRepository CreateRepository(
         IMongoCollection<RatingRankingSourceRevisionDocument> collection)
     {
