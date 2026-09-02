@@ -1,7 +1,5 @@
-using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Services;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Services.Ratings;
 using Microsoft.Extensions.Caching.Memory;
@@ -12,87 +10,114 @@ namespace AmusementPark.Infrastructure.Tests.Services.Ratings;
 public sealed class InMemoryRatingRankSnapshotCacheTests
 {
     [Fact]
-    public async Task GetOrCreateAsync_WhenSnapshotIsReused_ShouldBuildRankingOnlyOnceUntilInvalidated()
+    public async Task GetOrCreatePublishedAsync_WhenSnapshotIsReused_ShouldBuildOnlyOnceUntilInvalidated()
     {
         int factoryCalls = 0;
-        Task<IReadOnlyDictionary<string, int>> CreateRanks(CancellationToken cancellationToken)
-        {
-            factoryCalls++;
-            IReadOnlyDictionary<string, int> ranks = new Dictionary<string, int>(StringComparer.Ordinal)
-            {
-                ["fly"] = 1,
-                ["taron"] = 2,
-            };
-            return Task.FromResult(ranks);
-        }
-
         using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
         using InMemoryRatingRankSnapshotCache snapshotCache =
             new InMemoryRatingRankSnapshotCache(memoryCache);
+        RankingScopeKey scopeKey = CanonicalRankingScopes.GlobalParks.Key;
+        RatingMethodologyVersion methodologyVersion =
+            RankingEligibilityPolicy.InitialMethodologyVersion;
+        RatingPublishedRankingSnapshot publishedSnapshot = CreatePublishedSnapshot(
+            scopeKey,
+            RankingSnapshotId.Parse("snapshot-current"),
+            methodologyVersion,
+            sourceRevision: 4,
+            pointerVersion: 1);
+        Task<RatingPublishedRankingSnapshot?> CreateSnapshot(CancellationToken cancellationToken)
+        {
+            factoryCalls++;
+            return Task.FromResult<RatingPublishedRankingSnapshot?>(publishedSnapshot);
+        }
 
-        IReadOnlyDictionary<string, int> firstRanks = await snapshotCache.GetOrCreateAsync(
-            RatingTargetType.ParkItem,
-            ParkItemCategory.Attraction,
-            CreateRanks,
+        RatingPublishedRankingSnapshot? first = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            publishedSnapshot.SnapshotId,
+            methodologyVersion,
+            publishedSnapshot.SourceRevision,
+            publishedSnapshot.PointerVersion,
+            CreateSnapshot,
             CancellationToken.None);
-        IReadOnlyDictionary<string, int> cachedRanks = await snapshotCache.GetOrCreateAsync(
-            RatingTargetType.ParkItem,
-            ParkItemCategory.Attraction,
-            CreateRanks,
+        RatingPublishedRankingSnapshot? cached = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            publishedSnapshot.SnapshotId,
+            methodologyVersion,
+            publishedSnapshot.SourceRevision,
+            publishedSnapshot.PointerVersion,
+            CreateSnapshot,
             CancellationToken.None);
         snapshotCache.Invalidate();
-        IReadOnlyDictionary<string, int> refreshedRanks = await snapshotCache.GetOrCreateAsync(
-            RatingTargetType.ParkItem,
-            ParkItemCategory.Attraction,
-            CreateRanks,
+        RatingPublishedRankingSnapshot? refreshed = await snapshotCache.GetOrCreatePublishedAsync(
+            scopeKey,
+            publishedSnapshot.SnapshotId,
+            methodologyVersion,
+            publishedSnapshot.SourceRevision,
+            publishedSnapshot.PointerVersion,
+            CreateSnapshot,
             CancellationToken.None);
 
-        Assert.Equal(2, firstRanks["taron"]);
-        Assert.Equal(2, cachedRanks["taron"]);
-        Assert.Equal(2, refreshedRanks["taron"]);
+        Assert.Same(publishedSnapshot, first);
+        Assert.Same(publishedSnapshot, cached);
+        Assert.Same(publishedSnapshot, refreshed);
         Assert.Equal(2, factoryCalls);
     }
 
     [Fact]
-    public async Task GetOrCreateAsync_WhenDifferentSnapshotsRefresh_ShouldNotSerializeFactories()
+    public async Task GetOrCreatePublishedAsync_WhenDifferentScopesRefresh_ShouldNotSerializeFactories()
     {
         using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
         using InMemoryRatingRankSnapshotCache snapshotCache =
             new InMemoryRatingRankSnapshotCache(memoryCache);
+        RatingMethodologyVersion methodologyVersion =
+            RankingEligibilityPolicy.InitialMethodologyVersion;
+        RatingPublishedRankingSnapshot parkSnapshot = CreatePublishedSnapshot(
+            CanonicalRankingScopes.GlobalParks.Key,
+            RankingSnapshotId.Parse("snapshot-parks"),
+            methodologyVersion,
+            sourceRevision: 4,
+            pointerVersion: 1);
+        RankingScopeDefinition itemScope = CanonicalRankingScopes.PublicItemCategories.First();
+        RatingPublishedRankingSnapshot itemSnapshot = CreatePublishedSnapshot(
+            itemScope.Key,
+            RankingSnapshotId.Parse("snapshot-items"),
+            itemScope.MethodologyVersion,
+            sourceRevision: 5,
+            pointerVersion: 1);
         TaskCompletionSource<bool> parkRefreshStarted = new TaskCompletionSource<bool>(
             TaskCreationOptions.RunContinuationsAsynchronously);
         TaskCompletionSource<bool> releaseParkRefresh = new TaskCompletionSource<bool>(
             TaskCreationOptions.RunContinuationsAsynchronously);
 
-        Task<IReadOnlyDictionary<string, int>> parkRefresh = snapshotCache.GetOrCreateAsync(
-            RatingTargetType.Park,
-            null,
+        Task<RatingPublishedRankingSnapshot?> parkRefresh = snapshotCache.GetOrCreatePublishedAsync(
+            parkSnapshot.ScopeKey,
+            parkSnapshot.SnapshotId,
+            parkSnapshot.MethodologyVersion,
+            parkSnapshot.SourceRevision,
+            parkSnapshot.PointerVersion,
             async cancellationToken =>
             {
                 parkRefreshStarted.SetResult(true);
                 await releaseParkRefresh.Task.WaitAsync(cancellationToken);
-                return new Dictionary<string, int>(StringComparer.Ordinal)
-                {
-                    ["park-1"] = 1,
-                };
+                return parkSnapshot;
             },
             CancellationToken.None);
 
         await parkRefreshStarted.Task.WaitAsync(TimeSpan.FromSeconds(1));
         try
         {
-            IReadOnlyDictionary<string, int> itemRanks = await snapshotCache.GetOrCreateAsync(
-                    RatingTargetType.ParkItem,
-                    ParkItemCategory.Attraction,
-                    static _ => Task.FromResult<IReadOnlyDictionary<string, int>>(
-                        new Dictionary<string, int>(StringComparer.Ordinal)
-                        {
-                            ["item-1"] = 1,
-                        }),
+            RatingPublishedRankingSnapshot? itemResult =
+                await snapshotCache.GetOrCreatePublishedAsync(
+                    itemSnapshot.ScopeKey,
+                    itemSnapshot.SnapshotId,
+                    itemSnapshot.MethodologyVersion,
+                    itemSnapshot.SourceRevision,
+                    itemSnapshot.PointerVersion,
+                    _ => Task.FromResult<RatingPublishedRankingSnapshot?>(itemSnapshot),
                     CancellationToken.None)
                 .WaitAsync(TimeSpan.FromSeconds(1));
 
-            Assert.Equal(1, itemRanks["item-1"]);
+            Assert.Same(itemSnapshot, itemResult);
             Assert.False(parkRefresh.IsCompleted);
         }
         finally
@@ -100,8 +125,8 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
             releaseParkRefresh.TrySetResult(true);
         }
 
-        IReadOnlyDictionary<string, int> parkRanks = await parkRefresh;
-        Assert.Equal(1, parkRanks["park-1"]);
+        RatingPublishedRankingSnapshot? parkResult = await parkRefresh;
+        Assert.Same(parkSnapshot, parkResult);
     }
 
     [Fact]

@@ -10,6 +10,21 @@ namespace AmusementPark.Application.Tests.Features.Ratings.Handlers;
 public sealed class RatingRankingFactoryEvidenceTests
 {
     [Fact]
+    public void BuildParkDetails_WhenHydratingCanonicalSnapshot_ShouldNotCreateTransientRank()
+    {
+        RatingRankingItemResult source = CreateSource(
+            RatingTargetType.Park,
+            "park-1",
+            null,
+            ratingCount: 10);
+
+        ParkRatingRankingResult detail = Assert.Single(
+            RatingRankingFactory.BuildParkDetails(new[] { source }));
+
+        Assert.Null(detail.Rank);
+    }
+
+    [Fact]
     public void BuildParkRankings_WhenPublicInventoryContainsUnratedItems_ShouldUseThemForCategoryCoverage()
     {
         IReadOnlyCollection<RatingRankingItemResult> sources = CreateSources();
@@ -218,7 +233,7 @@ public sealed class RatingRankingFactoryEvidenceTests
     }
 
     [Fact]
-    public void ApplyParkItemEvidence_WhenPersistedScoreDivergesFromSource_ShouldExcludeAggregate()
+    public void BuildParkItemSnapshotCandidates_WhenPersistedScoreDivergesFromSource_ShouldExcludeAggregate()
     {
         RatingRankingItemResult source = CreateSource(
             RatingTargetType.ParkItem,
@@ -237,17 +252,20 @@ public sealed class RatingRankingFactoryEvidenceTests
                 RatingSum: 45d),
         };
 
-        ParkItemRatingRankingResult ranking = Assert.Single(
-            RatingRankingFactory.ApplyParkItemEvidence(rankings, new[] { source }, sourceFacts));
+        ParkItemRankingSnapshotCandidate candidate = Assert.Single(
+            RatingRankingFactory.BuildParkItemSnapshotCandidates(
+                rankings,
+                new[] { source },
+                sourceFacts));
 
-        Assert.Equal(RankingEvidenceLevel.Excluded, ranking.Evidence?.Level);
+        Assert.Equal(RankingEvidenceLevel.Excluded, candidate.Evidence?.Level);
         Assert.Equal(
             RankingIneligibilityReason.AggregateIntegrityFailure,
-            ranking.Evidence?.IneligibilityReason);
+            candidate.Evidence?.IneligibilityReason);
     }
 
     [Fact]
-    public void ApplyParkItemEvidence_WhenLegacyContributorCountIsMissing_ShouldHydrateVerifiedCount()
+    public void BuildParkItemSnapshotCandidates_WhenPersistedContributorCountIsMissing_ShouldHydrateVerifiedCount()
     {
         RatingRankingItemResult source = CreateSource(
             RatingTargetType.ParkItem,
@@ -270,11 +288,14 @@ public sealed class RatingRankingFactoryEvidenceTests
                 RatingSum: 45d),
         };
 
-        ParkItemRatingRankingResult ranking = Assert.Single(
-            RatingRankingFactory.ApplyParkItemEvidence(rankings, new[] { source }, sourceFacts));
+        ParkItemRankingSnapshotCandidate candidate = Assert.Single(
+            RatingRankingFactory.BuildParkItemSnapshotCandidates(
+                rankings,
+                new[] { source },
+                sourceFacts));
 
-        Assert.Equal(10, ranking.UniqueContributorCount);
-        Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
+        Assert.Equal(10, candidate.Evidence?.UniqueContributorCount);
+        Assert.Equal(RankingEvidenceLevel.Eligible, candidate.Evidence?.Level);
     }
 
     [Fact]

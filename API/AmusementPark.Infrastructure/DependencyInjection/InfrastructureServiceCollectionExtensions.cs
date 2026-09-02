@@ -36,7 +36,6 @@ using AmusementPark.Infrastructure.Configuration.Email;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
-using AmusementPark.Infrastructure.Configuration.Ratings;
 using AmusementPark.Infrastructure.Configuration.Ssr;
 using AmusementPark.Infrastructure.Configuration.SocialPublishing;
 using AmusementPark.Infrastructure.Configuration.Videos;
@@ -85,11 +84,6 @@ public static class InfrastructureServiceCollectionExtensions
         DurableBackgroundJobWorkerSettings durableBackgroundJobWorkerSettings =
             DurableBackgroundJobWorkerSettings.Bind(configuration);
         services.AddSingleton(durableBackgroundJobWorkerSettings);
-
-        RatingRankingFeatureSettings ratingRankingFeatureSettings =
-            RatingRankingFeatureSettings.Bind(configuration);
-        services.AddSingleton(ratingRankingFeatureSettings);
-        services.AddSingleton<IRatingRankingFeatureFlags>(ratingRankingFeatureSettings);
 
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);

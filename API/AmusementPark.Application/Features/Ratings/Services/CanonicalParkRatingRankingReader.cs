@@ -172,7 +172,7 @@ public sealed class CanonicalParkRatingRankingReader : ICanonicalParkRatingRanki
             .Where(source => validParkIds.Contains(source.ParkId))
             .ToList();
         IReadOnlyDictionary<string, ParkRatingRankingResult> rankingsByParkId =
-            RatingRankingFactory.BuildParkRankings(validSources)
+            RatingRankingFactory.BuildParkDetails(validSources)
                 .GroupBy(static ranking => ranking.ParkId, StringComparer.Ordinal)
                 .Where(static group => group.Count() == 1)
                 .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
