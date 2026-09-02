@@ -46,10 +46,12 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 CancellationToken.None))
             .Callback(() => operations.Add("repair-aggregate"))
             .Returns(Task.CompletedTask);
-        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
-        rankProvider
-            .Setup(provider => provider.Invalidate())
-            .Callback(() => operations.Add("invalidate-cache"));
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(provider => provider.InvalidateAsync(CancellationToken.None))
+            .Callback(() => operations.Add("invalidate-public-caches"))
+            .ReturnsAsync(true);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItems
             .Setup(repository => repository.GetByIdAsync("item-1", false, CancellationToken.None))
@@ -69,6 +71,14 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 NowUtc,
                 RecoveredMutations: new[] { recoveredMutation }));
         revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                globalScopeKey,
+                CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                12,
+                CancellationToken.None))
+            .Callback(() => operations.Add("mark-global-cache-converged"))
+            .Returns(Task.CompletedTask);
+        revisions
             .Setup(repository => repository.BeginMutationAsync(hotelScope.Key, CancellationToken.None))
             .Callback(() => operations.Add("begin-category-fence"))
             .ReturnsAsync(hotelLease);
@@ -79,6 +89,14 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 CancellationToken.None))
             .Callback(() => operations.Add("complete-category-fence"))
             .ReturnsAsync(hotelRevision);
+        revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                hotelScope.Key,
+                hotelScope.MethodologyVersion,
+                hotelRevision.Revision,
+                CancellationToken.None))
+            .Callback(() => operations.Add("mark-category-cache-converged"))
+            .Returns(Task.CompletedTask);
         revisions
             .Setup(repository => repository.AcknowledgeRecoveredMutationAsync(
                 globalScopeKey,
@@ -94,7 +112,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
         RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
             ratings.Object,
-            rankProvider.Object,
+            cacheInvalidator.Object,
             parkItems.Object,
             revisions.Object,
             scheduler.Object);
@@ -107,16 +125,19 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             {
                 "revoke-fence",
                 "repair-aggregate",
-                "invalidate-cache",
+                "invalidate-public-caches",
+                "mark-global-cache-converged",
                 "read-current-category",
                 "begin-category-fence",
                 "complete-category-fence",
+                "invalidate-public-caches",
+                "mark-category-cache-converged",
                 "schedule-category",
                 "acknowledge-event",
             },
             operations);
         ratings.VerifyAll();
-        rankProvider.VerifyAll();
+        cacheInvalidator.VerifyAll();
         parkItems.VerifyAll();
         revisions.VerifyAll();
         scheduler.VerifyAll();
@@ -143,7 +164,11 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 "park-1",
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("Mongo unavailable"));
-        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(provider => provider.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
@@ -154,11 +179,18 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 12,
                 NowUtc,
                 RecoveredMutations: new[] { recoveredMutation }));
+        revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                globalScopeKey,
+                CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                12,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
             ratings.Object,
-            rankProvider.Object,
+            cacheInvalidator.Object,
             parkItems.Object,
             revisions.Object,
             scheduler.Object);
@@ -167,7 +199,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
 
         Assert.False(result);
         ratings.VerifyAll();
-        rankProvider.VerifyNoOtherCalls();
+        cacheInvalidator.VerifyAll();
         parkItems.VerifyNoOtherCalls();
         revisions.VerifyAll();
         scheduler.VerifyNoOtherCalls();
@@ -205,8 +237,11 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 "item-1",
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
-        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
-        rankProvider.Setup(provider => provider.Invalidate());
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(provider => provider.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
@@ -217,11 +252,18 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 12,
                 NowUtc,
                 RecoveredMutations: new[] { failedMutation, repairedMutation }));
+        revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                globalScopeKey,
+                CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                12,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
             ratings.Object,
-            rankProvider.Object,
+            cacheInvalidator.Object,
             parkItems.Object,
             revisions.Object,
             scheduler.Object);
@@ -230,7 +272,62 @@ public sealed class RatingRankingRecoveryCoordinatorTests
 
         Assert.False(result);
         ratings.VerifyAll();
-        rankProvider.Verify(provider => provider.Invalidate(), Times.Once);
+        cacheInvalidator.VerifyAll();
+        parkItems.VerifyNoOtherCalls();
+        revisions.VerifyAll();
+        scheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileRecoveredRatingMutationsAsync_WhenCacheInvalidationFails_ShouldKeepEventAndBlockPublication()
+    {
+        RankingScopeKey globalScopeKey = CanonicalRankingScopes.GlobalParks.Key;
+        RatingRankingRecoveredMutation recoveredMutation = CreateRecoveredMutation(
+            6,
+            RatingTargetType.Park,
+            "park-1");
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings
+            .Setup(repository => repository.ReleaseMutationFenceAsync(
+                It.Is<RatingRankingMutationRecoveryTarget>(target =>
+                    target.MutationToken == recoveredMutation.MutationToken),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        ratings
+            .Setup(repository => repository.RepairAggregateAsync(
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(provider => provider.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(false);
+        Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.GetAsync(globalScopeKey, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                globalScopeKey,
+                12,
+                NowUtc,
+                RecoveredMutations: new[] { recoveredMutation }));
+        Mock<IRatingRankingRebuildScheduler> scheduler =
+            new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
+        RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
+            ratings.Object,
+            cacheInvalidator.Object,
+            parkItems.Object,
+            revisions.Object,
+            scheduler.Object);
+
+        bool result = await coordinator.ReconcileRecoveredRatingMutationsAsync(CancellationToken.None);
+
+        Assert.False(result);
+        ratings.VerifyAll();
+        cacheInvalidator.VerifyAll();
         parkItems.VerifyNoOtherCalls();
         revisions.VerifyAll();
         scheduler.VerifyNoOtherCalls();
@@ -257,8 +354,11 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 "deleted-item",
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
-        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
-        rankProvider.Setup(provider => provider.Invalidate());
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(provider => provider.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItems
             .Setup(repository => repository.GetByIdAsync("deleted-item", false, CancellationToken.None))
@@ -273,6 +373,13 @@ public sealed class RatingRankingRecoveryCoordinatorTests
                 NowUtc,
                 RecoveredMutations: new[] { recoveredMutation }));
         revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                globalScopeKey,
+                CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                12,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        revisions
             .Setup(repository => repository.AcknowledgeRecoveredMutationAsync(
                 globalScopeKey,
                 recoveredMutation,
@@ -282,7 +389,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
             ratings.Object,
-            rankProvider.Object,
+            cacheInvalidator.Object,
             parkItems.Object,
             revisions.Object,
             scheduler.Object);
@@ -291,7 +398,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
 
         Assert.True(result);
         ratings.VerifyAll();
-        rankProvider.VerifyAll();
+        cacheInvalidator.VerifyAll();
         parkItems.VerifyAll();
         revisions.VerifyAll();
         scheduler.VerifyNoOtherCalls();
@@ -299,14 +406,14 @@ public sealed class RatingRankingRecoveryCoordinatorTests
 
     private static RatingRankingRecoveryCoordinator CreateCoordinator(
         IRatingRepository ratings,
-        IRatingRankProvider rankProvider,
+        IRatingRankingPublicationCacheInvalidator cacheInvalidator,
         IParkItemRepository parkItems,
         IRatingRankingSourceRevisionRepository revisions,
         IRatingRankingRebuildScheduler scheduler)
     {
         return new RatingRankingRecoveryCoordinator(
             ratings,
-            rankProvider,
+            cacheInvalidator,
             parkItems,
             revisions,
             scheduler,
