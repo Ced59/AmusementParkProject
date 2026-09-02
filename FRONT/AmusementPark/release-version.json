@@ -1,6 +1,20 @@
 {
-  "version": "4.3.1",
+  "version": "5.0.0",
   "history": [
+    {
+      "version": "5.0.0",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Préparation du futur passeport pour respecter les dates de visite exactes ou partielles.",
+        "en": "Preparation for the upcoming passport to preserve exact or partial visit dates.",
+        "de": "Vorbereitung des künftigen Besuchspasses für genaue oder unvollständige Besuchsdatumsangaben.",
+        "nl": "Voorbereiding van het toekomstige bezoekpaspoort voor exacte of gedeeltelijke bezoekdatums.",
+        "it": "Preparazione del futuro passaporto delle visite per date esatte o parziali.",
+        "es": "Preparación del futuro pasaporte de visitas para fechas exactas o parciales.",
+        "pl": "Przygotowanie przyszłego paszportu wizyt do obsługi dokładnych lub częściowych dat.",
+        "pt": "Preparação do futuro passaporte de visitas para datas exatas ou parciais."
+      }
+    },
     {
       "version": "4.3.1",
       "releasedAt": "2026-09-03",
