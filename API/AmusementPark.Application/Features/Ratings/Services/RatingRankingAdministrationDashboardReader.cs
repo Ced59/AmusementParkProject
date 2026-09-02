@@ -72,19 +72,32 @@ public sealed class RatingRankingAdministrationDashboardReader
                 cancellationToken);
             RatingRankingSourceRevision? sourceRevision =
                 await this.sourceRevisionRepository.GetAsync(scope.Key, cancellationToken);
-            DurableBackgroundJobDiagnosticItem? latestJob = jobs
+            IReadOnlyCollection<DurableBackgroundJobDiagnosticItem> scopeJobs = jobs
                 .Where(job => string.Equals(
                     job.NaturalKey,
                     RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
                     StringComparison.Ordinal))
+                .ToArray();
+            DurableBackgroundJobDiagnosticItem? latestJob = scopeJobs
                 .OrderByDescending(static job => job.UpdatedAtUtc)
                 .FirstOrDefault();
+            DurableBackgroundJobDiagnosticItem? publishedSnapshotJob = header is null
+                ? null
+                : scopeJobs
+                    .Where(job => job.Status == DurableBackgroundJobStatus.Succeeded
+                        && job.ProcessedRevision == header.SourceRevision
+                        && job.CompletedAtUtc.HasValue)
+                    .OrderByDescending(static job => job.CompletedAtUtc)
+                    .FirstOrDefault();
             long resolvedSourceRevision = sourceRevision?.Revision ?? 0;
             bool isOutstanding = pointer is null
                 || pointer.MethodologyVersion != scope.MethodologyVersion
                 || pointer.HighestPublishedSourceRevision < resolvedSourceRevision;
             long? durationMilliseconds = header?.PublishedAtUtc is DateTime publishedAtUtc
-                ? Math.Max(0, checked((long)(publishedAtUtc - header.GeneratedAtUtc).TotalMilliseconds))
+                && publishedSnapshotJob is not null
+                ? Math.Max(
+                    0,
+                    checked((long)(publishedAtUtc - publishedSnapshotJob.CreatedAtUtc).TotalMilliseconds))
                 : null;
             RatingRankingPolicyEvaluationPlan evaluation =
                 await this.policyEvaluationBuilder.EvaluateAsync(scope, policy, cancellationToken);

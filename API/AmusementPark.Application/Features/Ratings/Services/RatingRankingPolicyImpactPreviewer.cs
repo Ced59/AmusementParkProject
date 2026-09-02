@@ -235,7 +235,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
                 offset,
                 scope.PageSize,
                 cancellationToken);
-            if (page is null)
+            if (page is null || page.Header.Id != header.Id)
             {
                 return CurrentRankingSnapshot.Unavailable;
             }
