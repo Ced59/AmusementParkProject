@@ -298,7 +298,7 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         Assert.Equal(3, result.Value.TotalItems);
         Assert.Equal(3, result.Value.TotalPages);
         ParkItemRatingRankingResult ranking = Assert.Single(result.Value.Items);
-        Assert.Equal(2, ranking.Rank);
+        Assert.Null(ranking.Rank);
         Assert.Equal("Ride Beta", ranking.TargetName);
         Assert.Equal(10, ranking.RatingObservationCount);
         Assert.Equal(10, ranking.UniqueContributorCount);

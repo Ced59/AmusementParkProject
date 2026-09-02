@@ -40,12 +40,19 @@ public sealed class HttpSsrPageCacheInvalidator : ISsrPageCacheInvalidator
 
     public async Task InvalidateAsync(SsrPageCacheInvalidationRequest request, CancellationToken cancellationToken = default)
     {
+        await this.TryInvalidateAsync(request, cancellationToken);
+    }
+
+    public async Task<bool> TryInvalidateAsync(
+        SsrPageCacheInvalidationRequest request,
+        CancellationToken cancellationToken = default)
+    {
         ArgumentNullException.ThrowIfNull(request);
 
         if (string.IsNullOrWhiteSpace(this.settings.InternalBaseUrl) || string.IsNullOrWhiteSpace(this.settings.CacheInvalidationToken))
         {
             this.logger.LogDebug("SSR page cache invalidation skipped: SSR internal base URL or token is not configured.");
-            return;
+            return true;
         }
 
         try
@@ -64,11 +71,19 @@ public sealed class HttpSsrPageCacheInvalidator : ISsrPageCacheInvalidator
             if (!response.IsSuccessStatusCode)
             {
                 this.logger.LogWarning("SSR page cache invalidation returned HTTP {StatusCode}.", (int)response.StatusCode);
+                return false;
             }
+
+            return true;
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
         }
         catch (Exception exception)
         {
             this.logger.LogWarning(exception, "SSR page cache invalidation request failed.");
+            return false;
         }
     }
 

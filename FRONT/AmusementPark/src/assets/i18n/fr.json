@@ -4773,7 +4773,7 @@
         "establishedEffect": "Échantillon consolidé",
         "strongEffect": "Échantillon très robuste",
         "publication": "Un classement principal n’est publié qu’avec au moins {{minimumEntries}} entrées admissibles. En dessous du seuil provisoire, la preuve reste insuffisante.",
-        "rolloutPending": "Activation prochaine : ces règles d’admissibilité sont publiées avant leur mise en service. Les classements actuels conservent leurs règles précédentes jusqu’à cette activation."
+        "rolloutActive": "Règles actives : les classements publiés appliquent désormais ces seuils et masquent les rangs dont les preuves restent insuffisantes."
       },
       "ties": {
         "title": "Égalités",

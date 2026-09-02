@@ -527,6 +527,10 @@ fi
 # rollout, so only remove stale candidates once the canonical stack is healthy.
 ./scripts/cleanup-stale-deploy-candidates.sh "${compose_project_name}"
 
+# Purge rendered pages exactly once whenever the public ranking eligibility
+# switch changes, including rollback from enabled to disabled.
+./scripts/reconcile-rating-ranking-eligibility-cache.sh "${compose_project_name}"
+
 ./scripts/verify-public-response-integrity.sh \
   "${PUBLIC_BASE_URL%/}/fr/home"
 

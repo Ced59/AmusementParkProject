@@ -4,6 +4,8 @@ namespace AmusementPark.Application.Ports;
 
 public sealed class SsrPageCacheInvalidationRequest
 {
+    public const string RatingRankingPageGroup = "rating-rankings";
+
     [JsonPropertyName("all")]
     public bool All { get; init; }
 
@@ -12,6 +14,9 @@ public sealed class SsrPageCacheInvalidationRequest
 
     [JsonPropertyName("prefixes")]
     public IReadOnlyCollection<string> Prefixes { get; init; } = Array.Empty<string>();
+
+    [JsonPropertyName("pageGroups")]
+    public IReadOnlyCollection<string> PageGroups { get; init; } = Array.Empty<string>();
 
     [JsonPropertyName("includeSeoDocuments")]
     public bool IncludeSeoDocuments { get; init; }
@@ -32,6 +37,18 @@ public sealed class SsrPageCacheInvalidationRequest
             Refresh = false,
         };
     }
+
+    public static SsrPageCacheInvalidationRequest RatingRankingPages()
+    {
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = false,
+            PageGroups = new string[] { RatingRankingPageGroup },
+            IncludeSeoDocuments = false,
+            AllowStale = false,
+            Refresh = false,
+        };
+    }
 }
 
 /// <summary>
@@ -42,6 +59,19 @@ public sealed class SsrPageCacheInvalidationRequest
 /// </summary>
 public interface ISsrPageCacheInvalidator
 {
+    /// <summary>
+    /// Demande une purge et indique si le serveur SSR l'a confirmée. Ce contrat
+    /// strict est réservé aux publications qui doivent pouvoir être rejouées
+    /// tant que les caches publics n'ont pas convergé.
+    /// </summary>
+    async Task<bool> TryInvalidateAsync(
+        SsrPageCacheInvalidationRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        await this.InvalidateAsync(request, cancellationToken);
+        return true;
+    }
+
     /// <summary>
     /// Demande au serveur SSR de purger uniquement les pages impactees quand
     /// l'impact public peut etre resolu.

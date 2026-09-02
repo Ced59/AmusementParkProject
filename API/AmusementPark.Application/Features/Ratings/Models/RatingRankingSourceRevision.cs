@@ -11,7 +11,9 @@ public sealed record RatingRankingSourceRevision(
     RatingMethodologyVersion? UnavailableMethodologyVersion = null,
     long? HighestUnavailableSourceRevision = null,
     string? UnavailableReasonCode = null,
-    IReadOnlyCollection<RatingRankingRecoveredMutation>? RecoveredMutations = null)
+    IReadOnlyCollection<RatingRankingRecoveredMutation>? RecoveredMutations = null,
+    RatingMethodologyVersion? CacheConvergedMethodologyVersion = null,
+    long? HighestCacheConvergedSourceRevision = null)
 {
     public bool IsRebuildable => this.PendingMutationCount == 0
         && (this.RecoveredMutations?.Count ?? 0) == 0;
@@ -22,5 +24,13 @@ public sealed record RatingRankingSourceRevision(
     {
         return this.UnavailableMethodologyVersion == methodologyVersion
             && this.HighestUnavailableSourceRevision >= sourceRevision;
+    }
+
+    public bool CoversCacheConvergence(
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision)
+    {
+        return this.CacheConvergedMethodologyVersion == methodologyVersion
+            && this.HighestCacheConvergedSourceRevision >= sourceRevision;
     }
 }

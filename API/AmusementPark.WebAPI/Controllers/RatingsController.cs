@@ -63,7 +63,7 @@ public sealed class RatingsController : ControllerBase
 
     [HttpGet("{targetType}/{targetId}/summary")]
     [AllowAnonymous]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicRatingDataShort)]
     [ProducesResponseType(typeof(RatingSummaryDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSummaryAsync([FromRoute] string targetType, [FromRoute] string targetId, CancellationToken cancellationToken = default)
     {
@@ -81,7 +81,7 @@ public sealed class RatingsController : ControllerBase
 
     [HttpGet("rankings")]
     [AllowAnonymous]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicRatingDataShort)]
     [ProducesResponseType(typeof(PagedResponseDto<ParkRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,
@@ -104,7 +104,7 @@ public sealed class RatingsController : ControllerBase
 
     [HttpGet("rankings/park-items")]
     [AllowAnonymous]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicRatingDataShort)]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkItemRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,

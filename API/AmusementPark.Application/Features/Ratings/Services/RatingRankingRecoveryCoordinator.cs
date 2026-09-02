@@ -10,7 +10,7 @@ namespace AmusementPark.Application.Features.Ratings.Services;
 public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoordinator
 {
     private readonly IRatingRepository ratingRepository;
-    private readonly IRatingRankProvider ratingRankProvider;
+    private readonly IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRankingRebuildScheduler rebuildScheduler;
@@ -18,14 +18,14 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
 
     public RatingRankingRecoveryCoordinator(
         IRatingRepository ratingRepository,
-        IRatingRankProvider ratingRankProvider,
+        IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator,
         IParkItemRepository parkItemRepository,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRatingRankingRebuildScheduler rebuildScheduler,
         ILogger<RatingRankingRecoveryCoordinator> logger)
     {
         this.ratingRepository = ratingRepository;
-        this.ratingRankProvider = ratingRankProvider;
+        this.publicationCacheInvalidator = publicationCacheInvalidator;
         this.parkItemRepository = parkItemRepository;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.rebuildScheduler = rebuildScheduler;
@@ -57,7 +57,6 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
                     recoveredMutation.TargetType,
                     recoveredMutation.TargetId,
                     cancellationToken);
-                this.ratingRankProvider.Invalidate();
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
@@ -72,6 +71,38 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
                     recoveredMutation.RecoveryToken,
                     recoveredMutation.TargetType,
                     recoveredMutation.TargetId);
+            }
+        }
+
+        if (recoveredMutations.Count > 0)
+        {
+            try
+            {
+                bool invalidated = await this.publicationCacheInvalidator.InvalidateAsync(
+                    cancellationToken);
+                if (!invalidated)
+                {
+                    this.logger.LogError(
+                        "Ranking cache invalidation was not confirmed while recovering expired mutation leases.");
+                    return false;
+                }
+
+                await this.sourceRevisionRepository.MarkCacheConvergedAsync(
+                    globalScopeKey,
+                    CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                    globalRevision?.Revision ?? 0,
+                    cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to fence ranking caches while recovering expired mutation leases.");
+                return false;
             }
         }
 
@@ -107,6 +138,24 @@ public sealed class RatingRankingRecoveryCoordinator : IRatingRankingRecoveryCoo
                                 cancellationToken);
                         if (categoryRevision.IsRebuildable)
                         {
+                            bool categoryCachesInvalidated =
+                                await this.publicationCacheInvalidator.InvalidateAsync(
+                                    cancellationToken);
+                            if (!categoryCachesInvalidated)
+                            {
+                                this.logger.LogError(
+                                    "Ranking cache invalidation was not confirmed for recovered scope {ScopeKey} at revision {Revision}.",
+                                    categoryScope.Key.Value,
+                                    categoryRevision.Revision);
+                                allRecovered = false;
+                                continue;
+                            }
+
+                            await this.sourceRevisionRepository.MarkCacheConvergedAsync(
+                                categoryScope.Key,
+                                categoryScope.MethodologyVersion,
+                                categoryRevision.Revision,
+                                cancellationToken);
                             await this.rebuildScheduler.ScheduleIfOutstandingAsync(
                                 categoryRevision,
                                 cancellationToken);

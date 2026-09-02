@@ -4773,7 +4773,7 @@
         "establishedEffect": "Amostra consolidada",
         "strongEffect": "Amostra muito robusta",
         "publication": "A classificação principal só é publicada com pelo menos {{minimumEntries}} entradas elegíveis. Abaixo do limiar provisório, a prova é insuficiente.",
-        "rolloutPending": "Ativação em breve: estas regras de elegibilidade são publicadas antes de entrarem em vigor. Até à ativação, as classificações atuais mantêm as regras anteriores."
+        "rolloutActive": "Regras agora ativas: as classificações publicadas aplicam estes limiares e ocultam posições quando as provas continuam insuficientes."
       },
       "ties": {
         "title": "Empates",

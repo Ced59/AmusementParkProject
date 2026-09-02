@@ -4773,7 +4773,7 @@
         "establishedEffect": "Stevige steekproef",
         "strongEffect": "Zeer robuuste steekproef",
         "publication": "Een hoofdranglijst verschijnt pas met minstens {{minimumEntries}} geschikte vermeldingen. Onder de voorlopige drempel is het bewijs onvoldoende.",
-        "rolloutPending": "Binnenkort actief: deze toelatingsregels worden vóór hun ingebruikname gepubliceerd. Tot de activering blijven de bestaande regels voor de huidige ranglijsten gelden."
+        "rolloutActive": "Regels nu actief: gepubliceerde ranglijsten passen deze drempels toe en tonen geen rang als het bewijs onvoldoende blijft."
       },
       "ties": {
         "title": "Gelijke standen",

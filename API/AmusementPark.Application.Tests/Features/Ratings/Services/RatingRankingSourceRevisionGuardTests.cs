@@ -153,6 +153,9 @@ public sealed class RatingRankingSourceRevisionGuardTests
             NowUtc);
         RatingRankingMutationLease firstLease = CreateLease(first.ScopeKey, 1);
         RatingRankingMutationLease secondLease = CreateLease(second.ScopeKey, 2);
+        RatingMethodologyVersion itemMethodologyVersion =
+            CanonicalRankingScopes.PublicItemCategories.Single(
+                static scope => scope.Key.Value == "park-items:category:attraction").MethodologyVersion;
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         scheduler
@@ -169,7 +172,29 @@ public sealed class RatingRankingSourceRevisionGuardTests
         revisions
             .Setup(value => value.CompleteMutationAsync(secondLease, true, CancellationToken.None))
             .ReturnsAsync(second);
-        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object, scheduler.Object);
+        revisions
+            .Setup(value => value.MarkCacheConvergedAsync(
+                first.ScopeKey,
+                itemMethodologyVersion,
+                first.Revision,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        revisions
+            .Setup(value => value.MarkCacheConvergedAsync(
+                second.ScopeKey,
+                CanonicalRankingScopes.GlobalParks.MethodologyVersion,
+                second.Revision,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(value => value.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(true);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(
+            revisions.Object,
+            scheduler.Object,
+            cacheInvalidator.Object);
 
         await guard.CompleteMutationAsync(
             new RatingRankingMutationPreparation(new[] { firstLease, secondLease }),
@@ -177,6 +202,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             CancellationToken.None);
 
         scheduler.VerifyAll();
+        cacheInvalidator.VerifyAll();
         revisions.VerifyAll();
     }
 
@@ -198,7 +224,15 @@ public sealed class RatingRankingSourceRevisionGuardTests
             .ReturnsAsync(blockedRevision);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
-        RatingRankingSourceRevisionGuard guard = CreateGuard(revisions.Object, scheduler.Object);
+        Mock<IRatingRankingPublicationCacheInvalidator> cacheInvalidator =
+            new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(value => value.InvalidateAsync(CancellationToken.None))
+            .ReturnsAsync(true);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(
+            revisions.Object,
+            scheduler.Object,
+            cacheInvalidator.Object);
 
         await guard.CompleteMutationAsync(
             new RatingRankingMutationPreparation(new[] { mutationLease }),
@@ -206,6 +240,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             CancellationToken.None);
 
         revisions.VerifyAll();
+        cacheInvalidator.VerifyAll();
         scheduler.VerifyNoOtherCalls();
     }
 
@@ -403,17 +438,21 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
     private static RatingRankingSourceRevisionGuard CreateGuard(
         IRatingRankingSourceRevisionRepository revisions,
-        IRatingRankingRebuildScheduler? scheduler = null)
+        IRatingRankingRebuildScheduler? scheduler = null,
+        IRatingRankingPublicationCacheInvalidator? cacheInvalidator = null)
     {
         RankingScopeRegistry registry = new RankingScopeRegistry(
             CanonicalRankingScopes.Version,
             CanonicalRankingScopes.All);
         IRatingRankingRebuildScheduler resolvedScheduler = scheduler
             ?? new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict).Object;
+        IRatingRankingPublicationCacheInvalidator resolvedCacheInvalidator = cacheInvalidator
+            ?? new Mock<IRatingRankingPublicationCacheInvalidator>(MockBehavior.Strict).Object;
         return new RatingRankingSourceRevisionGuard(
             registry,
             revisions,
             resolvedScheduler,
+            resolvedCacheInvalidator,
             NullLogger<RatingRankingSourceRevisionGuard>.Instance);
     }
 

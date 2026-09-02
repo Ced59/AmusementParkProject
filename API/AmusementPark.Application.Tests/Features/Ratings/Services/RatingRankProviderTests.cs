@@ -16,6 +16,21 @@ public sealed class RatingRankProviderTests
         new DateTime(2026, 9, 1, 8, 5, 0, DateTimeKind.Utc);
 
     [Fact]
+    public async Task GetRankAsync_WhenEligibilityIsDisabled_ShouldWithholdRankWithoutReadingSources()
+    {
+        ProviderFixture fixture = new ProviderFixture(eligibilityEnabled: false);
+
+        RatingPublishedRank? result = await fixture.Provider.GetRankAsync(
+            CreateAggregate("park-2"),
+            CancellationToken.None);
+
+        Assert.Null(result);
+        fixture.Ratings.VerifyNoOtherCalls();
+        fixture.Snapshots.VerifyNoOtherCalls();
+        fixture.Revisions.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task GetRankAsync_WhenPublishedSnapshotIsCurrentAndValid_ShouldReturnItsCompetitionRank()
     {
         ProviderFixture fixture = new ProviderFixture();
@@ -244,7 +259,7 @@ public sealed class RatingRankProviderTests
         private readonly RankingSnapshotChecksumCalculator checksumCalculator =
             new RankingSnapshotChecksumCalculator();
 
-        public ProviderFixture()
+        public ProviderFixture(bool eligibilityEnabled = true)
         {
             this.Ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
             this.Snapshots = new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
@@ -258,7 +273,7 @@ public sealed class RatingRankProviderTests
                 this.Snapshots.Object,
                 this.Revisions.Object,
                 registry,
-                new EnabledFeatureFlags(),
+                new ConfigurableFeatureFlags(eligibilityEnabled),
                 this.checksumCalculator,
                 new RankingSnapshotIntegrityValidator(this.checksumCalculator));
         }
@@ -404,9 +419,14 @@ public sealed class RatingRankProviderTests
 
     }
 
-    private sealed class EnabledFeatureFlags : IRatingRankingFeatureFlags
+    private sealed class ConfigurableFeatureFlags : IRatingRankingFeatureFlags
     {
-        public bool EligibilityEnabled => true;
+        public ConfigurableFeatureFlags(bool eligibilityEnabled)
+        {
+            this.EligibilityEnabled = eligibilityEnabled;
+        }
+
+        public bool EligibilityEnabled { get; }
     }
 
     private sealed class PassthroughRankSnapshotCache : IRatingRankSnapshotCache

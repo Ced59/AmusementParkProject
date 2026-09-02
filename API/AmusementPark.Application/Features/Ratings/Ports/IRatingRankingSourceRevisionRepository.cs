@@ -26,6 +26,12 @@ public interface IRatingRankingSourceRevisionRepository
         string reasonCode,
         CancellationToken cancellationToken);
 
+    Task MarkCacheConvergedAsync(
+        RankingScopeKey scopeKey,
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision,
+        CancellationToken cancellationToken);
+
     Task<RatingRankingSourceRevision?> GetAsync(
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken);

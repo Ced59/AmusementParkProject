@@ -18,17 +18,20 @@ public sealed class RatingRankingSourceRevisionGuard :
     private readonly IRankingScopeRegistry scopeRegistry;
     private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRankingRebuildScheduler rebuildScheduler;
+    private readonly IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator;
     private readonly ILogger<RatingRankingSourceRevisionGuard> logger;
 
     public RatingRankingSourceRevisionGuard(
         IRankingScopeRegistry scopeRegistry,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRatingRankingRebuildScheduler rebuildScheduler,
+        IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator,
         ILogger<RatingRankingSourceRevisionGuard> logger)
     {
         this.scopeRegistry = scopeRegistry;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.rebuildScheduler = rebuildScheduler;
+        this.publicationCacheInvalidator = publicationCacheInvalidator;
         this.logger = logger;
     }
 
@@ -263,15 +266,22 @@ public sealed class RatingRankingSourceRevisionGuard :
         ArgumentNullException.ThrowIfNull(preparation);
         ArgumentNullException.ThrowIfNull(sourceChangedByScope);
         List<RatingRankingSourceRevision> rebuildableRevisions = new List<RatingRankingSourceRevision>();
+        List<RatingRankingSourceRevision> changedRevisions = new List<RatingRankingSourceRevision>();
         foreach (RatingRankingMutationLease mutationLease in preparation.MutationLeases)
         {
             try
             {
+                bool sourceChanged = sourceChangedByScope(mutationLease.ScopeKey);
                 RatingRankingSourceRevision sourceRevision =
                     await this.sourceRevisionRepository.CompleteMutationAsync(
                         mutationLease,
-                        sourceChangedByScope(mutationLease.ScopeKey),
+                        sourceChanged,
                         cancellationToken);
+                if (sourceChanged)
+                {
+                    changedRevisions.Add(sourceRevision);
+                }
+
                 if (sourceRevision.IsRebuildable && sourceRevision.Revision > 0)
                 {
                     rebuildableRevisions.Add(sourceRevision);
@@ -284,6 +294,13 @@ public sealed class RatingRankingSourceRevisionGuard :
                     "Unable to settle the ranking source mutation for scope {ScopeKey}; its durable lease will be recovered.",
                     mutationLease.ScopeKey.Value);
             }
+        }
+
+        if (changedRevisions.Count > 0)
+        {
+            await this.TryConvergeChangedRevisionCachesAsync(
+                changedRevisions,
+                cancellationToken);
         }
 
         foreach (RatingRankingSourceRevision sourceRevision in rebuildableRevisions)
@@ -299,6 +316,61 @@ public sealed class RatingRankingSourceRevisionGuard :
                 this.logger.LogError(
                     exception,
                     "Unable to schedule the recoverable ranking rebuild for scope {ScopeKey} at revision {SourceRevision}.",
+                    sourceRevision.ScopeKey.Value,
+                    sourceRevision.Revision);
+            }
+        }
+    }
+
+    private async Task TryConvergeChangedRevisionCachesAsync(
+        IReadOnlyCollection<RatingRankingSourceRevision> changedRevisions,
+        CancellationToken cancellationToken)
+    {
+        bool invalidated;
+        try
+        {
+            invalidated = await this.publicationCacheInvalidator.InvalidateAsync(cancellationToken);
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogError(
+                exception,
+                "Unable to invalidate ranking caches after a source revision change; the durable rebuild will retry convergence.");
+            return;
+        }
+
+        if (!invalidated)
+        {
+            this.logger.LogError(
+                "Ranking cache invalidation was not confirmed after a source revision change; the durable rebuild will retry convergence.");
+            return;
+        }
+
+        foreach (RatingRankingSourceRevision sourceRevision in changedRevisions
+                     .Where(static revision => revision.IsRebuildable)
+                     .GroupBy(static revision => revision.ScopeKey)
+                     .Select(static group => group.Last()))
+        {
+            RankingScopeDefinition? scope = this.scopeRegistry.Definitions.SingleOrDefault(
+                definition => definition.Key == sourceRevision.ScopeKey);
+            if (scope is null)
+            {
+                continue;
+            }
+
+            try
+            {
+                await this.sourceRevisionRepository.MarkCacheConvergedAsync(
+                    sourceRevision.ScopeKey,
+                    scope.MethodologyVersion,
+                    sourceRevision.Revision,
+                    cancellationToken);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to persist ranking cache convergence for scope {ScopeKey} at revision {SourceRevision}; the durable rebuild will retry convergence.",
                     sourceRevision.ScopeKey.Value,
                     sourceRevision.Revision);
             }

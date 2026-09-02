@@ -48,13 +48,7 @@ public sealed class RatingRankProvider : IRatingRankProvider
 
         if (!this.featureFlags.EligibilityEnabled)
         {
-            int? legacyRank = await this.GetLegacyRankAsync(aggregate, cancellationToken);
-            return legacyRank.HasValue
-                ? new RatingPublishedRank(
-                    legacyRank.Value,
-                    RankingEligibilityPolicy.InitialMethodologyVersion,
-                    null)
-                : null;
+            return null;
         }
 
         RatingPublishedRankingSnapshot? snapshot = await this.GetCanonicalSnapshotAsync(

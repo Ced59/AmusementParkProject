@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Models;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
@@ -236,6 +237,52 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
 
         Assert.True(filter.Contains($"mutationLeases.{expiredLease.Token}"));
         Assert.False(filter.Contains($"mutationLeases.{newerLease.Token}"));
+    }
+
+    [Fact]
+    public async Task MarkCacheConvergedAsync_ShouldPersistMethodologyAndExactSourceRevision()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        FilterDefinition<RatingRankingSourceRevisionDocument>? capturedFilter = null;
+        UpdateDefinition<RatingRankingSourceRevisionDocument>? capturedUpdate = null;
+        Mock<IMongoCollection<RatingRankingSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<RatingRankingSourceRevisionDocument>>(MockBehavior.Strict);
+        collection
+            .Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<RatingRankingSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<RatingRankingSourceRevisionDocument> filter,
+                UpdateDefinition<RatingRankingSourceRevisionDocument> update,
+                UpdateOptions _,
+                CancellationToken _) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+            })
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        RatingRankingSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        await repository.MarkCacheConvergedAsync(
+            scope.Key,
+            scope.MethodologyVersion,
+            42,
+            CancellationToken.None);
+
+        BsonDocument filter = Render(Assert.IsAssignableFrom<
+            FilterDefinition<RatingRankingSourceRevisionDocument>>(capturedFilter));
+        BsonDocument update = Render(Assert.IsAssignableFrom<
+            UpdateDefinition<RatingRankingSourceRevisionDocument>>(capturedUpdate));
+        Assert.Equal(scope.Key.Value, filter["_id"].AsString);
+        Assert.Equal(42, filter["revision"].AsInt64);
+        Assert.Equal(0, filter["pendingMutationCount"].AsInt32);
+        Assert.Equal(
+            scope.MethodologyVersion.Value,
+            update["$set"]["cacheConvergedMethodologyVersion"].AsString);
+        Assert.Equal(42, update["$set"]["highestCacheConvergedSourceRevision"].AsInt64);
+        collection.VerifyAll();
     }
 
     [Fact]

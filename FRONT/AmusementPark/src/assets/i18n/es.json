@@ -4773,7 +4773,7 @@
         "establishedEffect": "Muestra consolidada",
         "strongEffect": "Muestra muy robusta",
         "publication": "La clasificación principal solo se publica con al menos {{minimumEntries}} entradas aptas. Por debajo del umbral provisional, la prueba es insuficiente.",
-        "rolloutPending": "Próxima activación: estas reglas de admisibilidad se publican antes de su entrada en vigor. Hasta entonces, las clasificaciones actuales mantienen sus reglas anteriores."
+        "rolloutActive": "Reglas ya activas: las clasificaciones publicadas aplican estos umbrales y ocultan los puestos cuando las pruebas siguen siendo insuficientes."
       },
       "ties": {
         "title": "Empates",

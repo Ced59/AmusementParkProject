@@ -16,6 +16,7 @@ public static class OutputCacheServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
 
         services.AddSingleton<PricingDateBoundaryOutputCachePolicy>();
+        services.AddSingleton<RatingRankingGenerationOutputCachePolicy>();
 
         services.AddOutputCache(options =>
         {
@@ -52,6 +53,37 @@ public static class OutputCacheServiceCollectionExtensions
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag));
+
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicRatingDataShort, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromMinutes(5))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicRatingDataTag)
+                .AddPolicy<RatingRankingGenerationOutputCachePolicy>());
+
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicParkDetailData, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromMinutes(30))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicRatingDataTag)
+                .AddPolicy<RatingRankingGenerationOutputCachePolicy>()
+                .AddPolicy<PricingDateBoundaryOutputCachePolicy>());
+
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicParkItemDetailData, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromMinutes(30))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicRatingDataTag)
+                .AddPolicy<RatingRankingGenerationOutputCachePolicy>());
 
             options.AddPolicy(ApiOutputCachePolicyNames.PublicPricingData, policy => policy
                 .With(IsAnonymousCacheCandidate)

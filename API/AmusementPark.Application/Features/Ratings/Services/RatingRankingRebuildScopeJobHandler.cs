@@ -16,19 +16,22 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
     private readonly IRankingSnapshotRepository snapshotRepository;
     private readonly IRatingRankingSnapshotBuilder snapshotBuilder;
     private readonly RankingSnapshotChecksumCalculator checksumCalculator;
+    private readonly IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator;
 
     public RatingRankingRebuildScopeJobHandler(
         IRankingScopeRegistry scopeRegistry,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRankingSnapshotRepository snapshotRepository,
         IRatingRankingSnapshotBuilder snapshotBuilder,
-        RankingSnapshotChecksumCalculator checksumCalculator)
+        RankingSnapshotChecksumCalculator checksumCalculator,
+        IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator)
     {
         this.scopeRegistry = scopeRegistry;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.snapshotRepository = snapshotRepository;
         this.snapshotBuilder = snapshotBuilder;
         this.checksumCalculator = checksumCalculator;
+        this.publicationCacheInvalidator = publicationCacheInvalidator;
     }
 
     public DurableBackgroundJobHandlerDefinition Definition { get; } =
@@ -62,7 +65,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             cancellationToken);
         if (!forceRebuild && IsCovered(pointer, scope, requestedRevision))
         {
-            return DurableBackgroundJobHandlerResult.Success();
+            return await this.CompleteWithCacheInvalidationAsync(
+                scope,
+                requestedRevision,
+                cancellationToken);
         }
 
         RevisionFenceCheck initialFence = await this.CheckRevisionFenceAsync(
@@ -79,6 +85,19 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 RatingRankingRebuildErrorCodes.SourceRevisionUnavailable);
+        }
+
+        if (!initialFence.CacheConverged)
+        {
+            DurableBackgroundJobHandlerResult convergence =
+                await this.CompleteWithCacheInvalidationAsync(
+                    scope,
+                    requestedRevision,
+                    cancellationToken);
+            if (convergence.Outcome != DurableBackgroundJobHandlerOutcome.Succeeded)
+            {
+                return convergence;
+            }
         }
 
         long? expectedGlobalRevision = initialFence.GlobalRevision;
@@ -110,8 +129,15 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 requestedRevision,
                 RatingRankingRebuildErrorCodes.SourceSetTruncated,
                 cancellationToken);
-            return DurableBackgroundJobHandlerResult.DeadLetter(
-                RatingRankingRebuildErrorCodes.SourceSetTruncated);
+            DurableBackgroundJobHandlerResult convergence =
+                await this.CompleteWithCacheInvalidationAsync(
+                    scope,
+                    requestedRevision,
+                    cancellationToken);
+            return convergence.Outcome == DurableBackgroundJobHandlerOutcome.Succeeded
+                ? DurableBackgroundJobHandlerResult.DeadLetter(
+                    RatingRankingRebuildErrorCodes.SourceSetTruncated)
+                : convergence;
         }
 
         RevisionFenceCheck preWriteFence = await this.CheckRevisionFenceAsync(
@@ -148,7 +174,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                     requestedRevision,
                     RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
                     cancellationToken);
-                return DurableBackgroundJobHandlerResult.Success();
+                return await this.CompleteWithCacheInvalidationAsync(
+                    scope,
+                    requestedRevision,
+                    cancellationToken);
             }
 
             return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
@@ -250,14 +279,50 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         RankingSnapshotPublicationResult publication = await this.snapshotRepository.PublishAsync(
             header.Id,
             cancellationToken);
-        return publication.Disposition switch
+        if (publication.Disposition is RankingSnapshotPublicationDisposition.Published
+            or RankingSnapshotPublicationDisposition.AlreadyPublished
+            or RankingSnapshotPublicationDisposition.Stale)
         {
-            RankingSnapshotPublicationDisposition.Published => DurableBackgroundJobHandlerResult.Success(),
-            RankingSnapshotPublicationDisposition.AlreadyPublished => DurableBackgroundJobHandlerResult.Success(),
-            RankingSnapshotPublicationDisposition.Stale => DurableBackgroundJobHandlerResult.Success(),
-            _ => DurableBackgroundJobHandlerResult.Retry(
-                RatingRankingRebuildErrorCodes.PublicationConflict),
-        };
+            return await this.CompleteWithCacheInvalidationAsync(
+                scope,
+                requestedRevision,
+                cancellationToken);
+        }
+
+        return DurableBackgroundJobHandlerResult.Retry(
+            RatingRankingRebuildErrorCodes.PublicationConflict);
+    }
+
+    private async Task<DurableBackgroundJobHandlerResult> CompleteWithCacheInvalidationAsync(
+        RankingScopeDefinition scope,
+        long requestedRevision,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            bool invalidated = await this.publicationCacheInvalidator.InvalidateAsync(cancellationToken);
+            if (!invalidated)
+            {
+                return DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.CacheInvalidationFailed);
+            }
+
+            await this.sourceRevisionRepository.MarkCacheConvergedAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                requestedRevision,
+                cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch
+        {
+            return DurableBackgroundJobHandlerResult.Retry(
+                RatingRankingRebuildErrorCodes.CacheInvalidationFailed);
+        }
     }
 
     private IReadOnlyCollection<RankingSnapshotChunk> CreateChunks(
@@ -299,25 +364,33 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             cancellationToken);
         if (current is not null && !current.IsRebuildable)
         {
-            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null);
+            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null, false);
         }
 
         long currentRevision = current?.Revision ?? 0;
         if (currentRevision > requestedRevision)
         {
-            return new RevisionFenceCheck(RevisionFenceDisposition.NewerRevisionExists, null);
+            return new RevisionFenceCheck(RevisionFenceDisposition.NewerRevisionExists, null, false);
         }
 
         if (currentRevision < requestedRevision)
         {
             return new RevisionFenceCheck(
                 RevisionFenceDisposition.RequestedRevisionUnavailable,
-                null);
+                null,
+                false);
         }
+
+        bool cacheConverged = current?.CoversCacheConvergence(
+            scope.MethodologyVersion,
+            requestedRevision) == true;
 
         if (scope.TargetFamily != RankingTargetFamily.ParkItems)
         {
-            return new RevisionFenceCheck(RevisionFenceDisposition.Current, null);
+            return new RevisionFenceCheck(
+                RevisionFenceDisposition.Current,
+                null,
+                cacheConverged);
         }
 
         RatingRankingSourceRevision? globalRevision =
@@ -326,7 +399,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 cancellationToken);
         if (globalRevision is not null && !globalRevision.IsRebuildable)
         {
-            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null);
+            return new RevisionFenceCheck(RevisionFenceDisposition.MutationPending, null, false);
         }
 
         long currentGlobalRevision = globalRevision?.Revision ?? 0;
@@ -335,12 +408,14 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         {
             return new RevisionFenceCheck(
                 RevisionFenceDisposition.DependencyChanged,
-                currentGlobalRevision);
+                currentGlobalRevision,
+                false);
         }
 
         return new RevisionFenceCheck(
             RevisionFenceDisposition.Current,
-            currentGlobalRevision);
+            currentGlobalRevision,
+            cacheConverged);
     }
 
     private static bool RequiresRetry(RevisionFenceDisposition disposition)
@@ -424,5 +499,6 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
 
     private sealed record RevisionFenceCheck(
         RevisionFenceDisposition Disposition,
-        long? GlobalRevision);
+        long? GlobalRevision,
+        bool CacheConverged);
 }
