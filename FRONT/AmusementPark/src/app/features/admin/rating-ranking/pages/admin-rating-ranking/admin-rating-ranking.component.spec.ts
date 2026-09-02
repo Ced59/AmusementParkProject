@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 import {
   RatingRankingAdministration,
@@ -24,6 +24,7 @@ interface AdminRatingRankingComponentHarness {
 class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
   public readonly previewRequests: RatingRankingPolicyCandidateRequest[] = [];
   public rebuildCallCount: number = 0;
+  public rebuildResult: Observable<RatingRankingRebuildRequestResult> | null = null;
 
   getDashboard(): Observable<RatingRankingAdministration> {
     return of(createDashboard());
@@ -50,7 +51,7 @@ class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
 
   rebuild(): Observable<RatingRankingRebuildRequestResult> {
     this.rebuildCallCount++;
-    return of({
+    return this.rebuildResult ?? of({
       requestedAtUtc: '2026-09-02T12:00:00Z',
       scheduledScopeCount: 1,
       scopes: [{ scopeKey: 'parks:global', requestedSourceRevision: 8 }]
@@ -104,6 +105,25 @@ describe('AdminRatingRankingComponent', () => {
 
     expect(port.rebuildCallCount).toBe(1);
     expect(component.rebuildConfirmed.value).toBe(false);
+  });
+
+  it('disables and blocks rebuild submission while the request is pending', () => {
+    const component = fixture.componentInstance as unknown as AdminRatingRankingComponentHarness;
+    const response: Subject<RatingRankingRebuildRequestResult> =
+      new Subject<RatingRankingRebuildRequestResult>();
+    port.rebuildResult = response;
+    component.rebuildConfirmed.setValue(true);
+
+    component.rebuild();
+    component.rebuildConfirmed.setValue(true);
+    component.rebuild();
+    fixture.detectChanges();
+
+    const rebuildButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button.p-button-danger'
+    );
+    expect(port.rebuildCallCount).toBe(1);
+    expect(rebuildButton.disabled).toBe(true);
   });
 });
 

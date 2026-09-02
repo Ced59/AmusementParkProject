@@ -1876,7 +1876,7 @@
         "lost": "Idoneità persa",
         "averageRank": "Variazione media di posizione",
         "maximumRank": "Variazione massima di posizione",
-        "smallScopes": "Ambiti con meno di tre voci",
+        "smallScopes": "Ambiti con meno di {{minimum}} voci",
         "incompleteParks": "Composizioni del parco incomplete",
         "cost": "Costo stimato: obiettivi / blocchi",
         "currentCandidate": "Corrente → candidata",
@@ -1884,7 +1884,7 @@
         "rankChange": "Variazione media / max.",
         "publication": "Pubblicazione",
         "publishable": "La pubblicazione offrirebbe una classifica affidabile",
-        "notPublishable": "Meno di tre voci: classifica nascosta",
+        "notPublishable": "Meno di {{minimum}} voci: classifica nascosta",
         "unavailable": "Simulazione non disponibile: la fonte supera il limite di sicurezza.",
         "gainedSamples": "Voci ottenute",
         "lostSamples": "Voci perse"

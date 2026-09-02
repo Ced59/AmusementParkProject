@@ -117,7 +117,7 @@ export class AdminRatingRankingComponent implements OnInit {
   }
 
   protected rebuild(): void {
-    if (!this.rebuildConfirmed.value) {
+    if (!this.rebuildConfirmed.value || this.rebuilding()) {
       return;
     }
 

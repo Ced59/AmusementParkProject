@@ -117,7 +117,7 @@
         "lost": "Elegibilidad perdida",
         "averageRank": "Variación media de puesto",
         "maximumRank": "Variación máxima de puesto",
-        "smallScopes": "Ámbitos con menos de tres entradas",
+        "smallScopes": "Ámbitos con menos de {{minimum}} entradas",
         "incompleteParks": "Composiciones de parque incompletas",
         "cost": "Coste estimado: objetivos / bloques",
         "currentCandidate": "Actual → candidata",
@@ -125,7 +125,7 @@
         "rankChange": "Variación media / máx.",
         "publication": "Publicación",
         "publishable": "La publicación ofrecería un listado fiable",
-        "notPublishable": "Menos de tres entradas: listado oculto",
+        "notPublishable": "Menos de {{minimum}} entradas: listado oculto",
         "unavailable": "Simulación no disponible: el origen supera el límite de seguridad.",
         "gainedSamples": "Entradas ganadas",
         "lostSamples": "Entradas perdidas"

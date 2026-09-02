@@ -117,7 +117,7 @@
         "lost": "Eligibility lost",
         "averageRank": "Average rank change",
         "maximumRank": "Maximum rank change",
-        "smallScopes": "Scopes below three entries",
+        "smallScopes": "Scopes below {{minimum}} entries",
         "incompleteParks": "Incomplete park compositions",
         "cost": "Estimated cost: targets / chunks",
         "currentCandidate": "Current → candidate",
@@ -125,7 +125,7 @@
         "rankChange": "Average / max. change",
         "publication": "Publication",
         "publishable": "Publishing would provide a reliable top list",
-        "notPublishable": "Fewer than three entries: top list hidden",
+        "notPublishable": "Fewer than {{minimum}} entries: top list hidden",
         "unavailable": "Simulation unavailable: the source exceeds the safety limit.",
         "gainedSamples": "Gained entries",
         "lostSamples": "Lost entries"

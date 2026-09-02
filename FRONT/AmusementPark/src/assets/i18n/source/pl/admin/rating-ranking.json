@@ -117,7 +117,7 @@
         "lost": "Utracone uprawnienia",
         "averageRank": "Średnia zmiana pozycji",
         "maximumRank": "Maksymalna zmiana pozycji",
-        "smallScopes": "Zakresy poniżej trzech pozycji",
+        "smallScopes": "Zakresy poniżej {{minimum}} pozycji",
         "incompleteParks": "Niepełny skład parków",
         "cost": "Szacowany koszt: cele / bloki",
         "currentCandidate": "Bieżąca → kandydująca",
@@ -125,7 +125,7 @@
         "rankChange": "Zmiana śr. / maks.",
         "publication": "Publikacja",
         "publishable": "Publikacja zapewniłaby wiarygodną listę",
-        "notPublishable": "Mniej niż trzy pozycje: lista ukryta",
+        "notPublishable": "Mniej niż {{minimum}} pozycji: lista ukryta",
         "unavailable": "Symulacja niedostępna: źródło przekracza limit bezpieczeństwa.",
         "gainedSamples": "Uzyskane pozycje",
         "lostSamples": "Utracone pozycje"

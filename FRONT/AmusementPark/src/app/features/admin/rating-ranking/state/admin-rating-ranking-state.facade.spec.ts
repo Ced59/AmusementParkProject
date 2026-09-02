@@ -18,6 +18,7 @@ class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
   public dashboardCallCount: number = 0;
   public rebuildCallCount: number = 0;
   public previewResult: Observable<RatingRankingPolicyImpact> | null = null;
+  public rebuildResult: Observable<RatingRankingRebuildRequestResult> | null = null;
 
   getDashboard(): Observable<RatingRankingAdministration> {
     this.dashboardCallCount++;
@@ -31,7 +32,7 @@ class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
 
   rebuild(): Observable<RatingRankingRebuildRequestResult> {
     this.rebuildCallCount++;
-    return of({
+    return this.rebuildResult ?? of({
       requestedAtUtc: '2026-09-02T12:00:00Z',
       scheduledScopeCount: 1,
       scopes: [{ scopeKey: 'parks:global', requestedSourceRevision: 8 }]
@@ -108,6 +109,25 @@ describe('AdminRatingRankingStateFacade', () => {
     expect(port.dashboardCallCount).toBe(1);
     expect(facade.rebuildResult()?.scheduledScopeCount).toBe(1);
     expect(facade.actionMessageKey()).toBe('admin.ratingRanking.rebuild.success');
+  });
+
+  it('keeps at most one expensive rebuild request in flight', () => {
+    const response: Subject<RatingRankingRebuildRequestResult> =
+      new Subject<RatingRankingRebuildRequestResult>();
+    port.rebuildResult = response;
+
+    facade.rebuild();
+    facade.rebuild();
+
+    expect(port.rebuildCallCount).toBe(1);
+    expect(facade.rebuilding()).toBe(true);
+    response.next({
+      requestedAtUtc: '2026-09-02T12:00:00Z',
+      scheduledScopeCount: 1,
+      scopes: [{ scopeKey: 'parks:global', requestedSourceRevision: 8 }]
+    });
+    response.complete();
+    expect(facade.rebuilding()).toBe(false);
   });
 });
 

@@ -1876,7 +1876,7 @@
         "lost": "Éligibilités perdues",
         "averageRank": "Variation moyenne de rang",
         "maximumRank": "Variation maximale de rang",
-        "smallScopes": "Scopes sous trois entrées",
+        "smallScopes": "Scopes sous {{minimum}} entrées",
         "incompleteParks": "Compositions de parc incomplètes",
         "cost": "Coût estimé : cibles / chunks",
         "currentCandidate": "Courant → candidat",
@@ -1884,7 +1884,7 @@
         "rankChange": "Variation moy. / max.",
         "publication": "Publication",
         "publishable": "Publier permettrait un top fiable",
-        "notPublishable": "Moins de trois entrées : top masqué",
+        "notPublishable": "Moins de {{minimum}} entrées : top masqué",
         "unavailable": "Simulation indisponible : la source dépasse la limite de sécurité.",
         "gainedSamples": "Entrées gagnées",
         "lostSamples": "Entrées perdues"

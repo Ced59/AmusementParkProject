@@ -79,6 +79,10 @@ export class AdminRatingRankingStateFacade {
   }
 
   rebuild(): void {
+    if (this.rebuildingSignal()) {
+      return;
+    }
+
     this.rebuildingSignal.set(true);
     this.actionMessageKeySignal.set(null);
     this.apiService.rebuild()

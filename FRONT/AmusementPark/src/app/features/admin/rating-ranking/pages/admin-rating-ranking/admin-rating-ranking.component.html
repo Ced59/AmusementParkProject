@@ -252,7 +252,7 @@
             <article><span>{{ 'admin.ratingRanking.impact.lost' | translate }}</span><strong>-{{ previewImpact.lostEligibilityCount }}</strong></article>
             <article><span>{{ 'admin.ratingRanking.impact.averageRank' | translate }}</span><strong>{{ previewImpact.averageRankChange ?? '—' }}</strong></article>
             <article><span>{{ 'admin.ratingRanking.impact.maximumRank' | translate }}</span><strong>{{ previewImpact.maximumRankChange ?? '—' }}</strong></article>
-            <article><span>{{ 'admin.ratingRanking.impact.smallScopes' | translate }}</span><strong>{{ previewImpact.scopeCountBelowMinimum }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.smallScopes' | translate:{ minimum: previewImpact.candidate.minimumEligibleEntriesPerRanking } }}</span><strong>{{ previewImpact.scopeCountBelowMinimum }}</strong></article>
             <article><span>{{ 'admin.ratingRanking.impact.incompleteParks' | translate }}</span><strong>{{ previewImpact.incompleteParkCompositionCount }}</strong></article>
             <article><span>{{ 'admin.ratingRanking.impact.cost' | translate }}</span><strong>{{ previewImpact.estimatedTargetCount }} / {{ previewImpact.estimatedChunkCount }}</strong></article>
           </div>
@@ -275,7 +275,7 @@
                       <td>{{ scope.hasCurrentSnapshot ? scope.currentEligibleCount : '—' }} → {{ scope.candidateEligibleCount }}</td>
                       <td>+{{ scope.gainedEligibilityCount }} / -{{ scope.lostEligibilityCount }}</td>
                       <td>{{ scope.averageRankChange ?? '—' }} / {{ scope.maximumRankChange ?? '—' }}</td>
-                      <td>{{ (scope.hasMinimumComparableEntries ? 'admin.ratingRanking.impact.publishable' : 'admin.ratingRanking.impact.notPublishable') | translate }}</td>
+                      <td>{{ (scope.hasMinimumComparableEntries ? 'admin.ratingRanking.impact.publishable' : 'admin.ratingRanking.impact.notPublishable') | translate:{ minimum: previewImpact.candidate.minimumEligibleEntriesPerRanking } }}</td>
                     } @else {
                       <td colspan="4">{{ 'admin.ratingRanking.impact.unavailable' | translate }}</td>
                     }
@@ -330,7 +330,7 @@
           <p>{{ 'admin.ratingRanking.rebuild.subtitle' | translate }}</p>
         </header>
         <label class="admin-rating-ranking__confirmation">
-          <app-ui-checkbox [formControl]="rebuildConfirmed" [binary]="true"></app-ui-checkbox>
+          <app-ui-checkbox [formControl]="rebuildConfirmed" [binary]="true" [disabled]="rebuilding()"></app-ui-checkbox>
           <span>{{ 'admin.ratingRanking.rebuild.confirmation' | translate }}</span>
         </label>
         <button
@@ -339,7 +339,7 @@
           class="p-button-danger"
           icon="pi pi-sync"
           [label]="'admin.ratingRanking.rebuild.action' | translate"
-          [disabled]="!rebuildConfirmed.value"
+          [disabled]="!rebuildConfirmed.value || rebuilding()"
           [loading]="rebuilding()"
           (click)="rebuild()">
         </button>

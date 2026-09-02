@@ -1876,7 +1876,7 @@
         "lost": "Teilnahmeberechtigung verloren",
         "averageRank": "Durchschnittliche Rangänderung",
         "maximumRank": "Maximale Rangänderung",
-        "smallScopes": "Bereiche mit weniger als drei Einträgen",
+        "smallScopes": "Bereiche mit weniger als {{minimum}} Einträgen",
         "incompleteParks": "Unvollständige Parkzusammensetzungen",
         "cost": "Geschätzter Aufwand: Ziele / Blöcke",
         "currentCandidate": "Aktuell → Entwurf",
@@ -1884,7 +1884,7 @@
         "rankChange": "Änderung Ø / max.",
         "publication": "Veröffentlichung",
         "publishable": "Eine verlässliche Bestenliste wäre veröffentlichbar",
-        "notPublishable": "Weniger als drei Einträge: Bestenliste ausgeblendet",
+        "notPublishable": "Weniger als {{minimum}} Einträge: Bestenliste ausgeblendet",
         "unavailable": "Simulation nicht verfügbar: Die Quelle überschreitet die Sicherheitsgrenze.",
         "gainedSamples": "Hinzugekommene Einträge",
         "lostSamples": "Entfallene Einträge"

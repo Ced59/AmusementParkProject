@@ -1876,7 +1876,7 @@
         "lost": "Geschiktheid verloren",
         "averageRank": "Gemiddelde rangwijziging",
         "maximumRank": "Maximale rangwijziging",
-        "smallScopes": "Bereiken met minder dan drie vermeldingen",
+        "smallScopes": "Bereiken met minder dan {{minimum}} vermeldingen",
         "incompleteParks": "Onvolledige parksamenstellingen",
         "cost": "Geschatte kosten: doelen / blokken",
         "currentCandidate": "Actueel → kandidaat",
@@ -1884,7 +1884,7 @@
         "rankChange": "Wijziging gem. / max.",
         "publication": "Publicatie",
         "publishable": "Publicatie zou een betrouwbare toplijst opleveren",
-        "notPublishable": "Minder dan drie vermeldingen: toplijst verborgen",
+        "notPublishable": "Minder dan {{minimum}} vermeldingen: toplijst verborgen",
         "unavailable": "Simulatie niet beschikbaar: de bron overschrijdt de veiligheidslimiet.",
         "gainedSamples": "Nieuwe vermeldingen",
         "lostSamples": "Verdwenen vermeldingen"
