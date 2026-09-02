@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -9,10 +10,12 @@ import {
   ParkRatingRankingCategory,
   ParkRatingRankingItem
 } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { RatingTreeComponent, RatingTreePark } from '@shared/components/rating-tree/rating-tree.component';
+import { RatingEvidenceViewModel } from '@shared/components/rating-evidence/rating-evidence.component';
 import {
   RatingRankingListComponent,
   RatingRankingListItem
@@ -22,6 +25,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { RankingsStateFacade } from '../state/rankings-state.facade';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 interface RankingFilter {
   key: string;
@@ -36,10 +40,12 @@ interface RankingFilter {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [RankingsStateFacade],
   imports: [
+    DatePipe,
     RatingTreeComponent,
     RatingRankingListComponent,
     RouterLink,
     TranslateModule,
+    LocalizedPluralPipe,
     UiButtonDirective,
     UiSectionHeaderComponent
   ]
@@ -62,6 +68,7 @@ export class RankingsPageComponent implements OnInit {
   protected readonly hasMore: Signal<boolean> = this.stateFacade.hasMore;
   protected readonly items: Signal<ParkRatingRanking[]> = this.stateFacade.items;
   protected readonly parkItems: Signal<ParkItemRatingRanking[]> = this.stateFacade.parkItems;
+  protected readonly methodology: Signal<RatingMethodology | null> = this.stateFacade.methodology;
   protected readonly isParkItemRanking: Signal<boolean> = computed(() => this.currentFilter().category !== null);
   protected readonly hasRankings: Signal<boolean> = computed(() => {
     return this.isParkItemRanking() ? this.parkItems().length > 0 : this.items().length > 0;
@@ -73,7 +80,7 @@ export class RankingsPageComponent implements OnInit {
     return this.parkItems().map((item: ParkItemRatingRanking): RatingRankingListItem => {
       return {
         id: item.targetId,
-        rank: item.rank,
+        rank: this.visibleRank(item.rank, item.evidence),
         name: item.targetName,
         score: item.averageRating,
         ratingCount: item.ratingCount,
@@ -89,9 +96,32 @@ export class RankingsPageComponent implements OnInit {
           language: this.currentLang(),
           parkId: item.parkId,
           parkName: item.parkName
-        })
+        }),
+        evidence: this.mapEvidence(
+          'ParkItem',
+          item.evidence,
+          item.uniqueContributorCount,
+          item.ratingObservationCount ?? item.ratingCount,
+          item.rank,
+          item.methodologyVersion
+        )
       };
     });
+  });
+  protected readonly rankedDisplayedCount: Signal<number> = computed(() => {
+    return this.displayedEntries().filter((entry: ParkRatingRanking | ParkItemRatingRanking): boolean => {
+      return this.visibleRank(entry.rank, entry.evidence) !== null;
+    }).length;
+  });
+  protected readonly provisionalDisplayedCount: Signal<number> = computed(() => {
+    return this.displayedEntries().filter((entry: ParkRatingRanking | ParkItemRatingRanking): boolean => {
+      return entry.evidence?.level === 'Provisional';
+    }).length;
+  });
+  protected readonly generatedAtUtc: Signal<string | null> = computed(() => {
+    return this.displayedEntries().find((entry: ParkRatingRanking | ParkItemRatingRanking): boolean => {
+      return Boolean(entry.generatedAtUtc);
+    })?.generatedAtUtc ?? null;
   });
 
   constructor(
@@ -180,11 +210,19 @@ export class RankingsPageComponent implements OnInit {
   private mapRankingToTree(item: ParkRatingRanking): RatingTreePark {
     return {
       id: item.parkId,
-      rank: item.rank,
+      rank: this.visibleRank(item.rank, item.evidence),
       name: item.parkName,
       score: item.score,
       ratingCount: item.ratingCount,
       route: this.parkRoute(item),
+      evidence: this.mapEvidence(
+        'Park',
+        item.evidence,
+        item.uniqueContributorCount,
+        item.ratingObservationCount ?? null,
+        item.rank,
+        item.methodologyVersion
+      ),
       metrics: [
         {
           labelKey: 'ratings.rankings.parkSignal',
@@ -214,6 +252,40 @@ export class RankingsPageComponent implements OnInit {
           })
         };
       })
+    };
+  }
+
+  private displayedEntries(): Array<ParkRatingRanking | ParkItemRatingRanking> {
+    return this.isParkItemRanking() ? this.parkItems() : this.items();
+  }
+
+  private visibleRank(
+    rank: number | null,
+    evidence: ParkRatingRanking['evidence'] | ParkItemRatingRanking['evidence']
+  ): number | null {
+    return evidence && !evidence.isEligibleForMainRanking ? null : rank;
+  }
+
+  private mapEvidence(
+    targetType: 'Park' | 'ParkItem',
+    evidence: ParkRatingRanking['evidence'] | ParkItemRatingRanking['evidence'],
+    uniqueContributorCount: number | null | undefined,
+    ratingObservationCount: number | null | undefined,
+    rank: number | null,
+    methodologyVersion: string | null | undefined
+  ): RatingEvidenceViewModel | null {
+    if (!evidence) {
+      return null;
+    }
+
+    return {
+      evidence,
+      uniqueContributorCount: uniqueContributorCount ?? null,
+      ratingObservationCount: ratingObservationCount ?? null,
+      targetType,
+      rank: this.visibleRank(rank, evidence),
+      methodologyVersion: methodologyVersion ?? this.methodology()?.version ?? null,
+      eligibilityThreshold: this.methodology()?.evidenceThresholds.eligible ?? null
     };
   }
 }

@@ -21,6 +21,22 @@
       "pastVisitHint": "Deze beoordelingen gaan over bezoeken vóór de tijdelijke sluiting.",
       "historicalHint": "Deze beoordelingen gaan over eerdere bezoeken en tellen niet mee voor de huidige ranglijst."
     },
+    "evidence": {
+      "detailsAction": "Waarom deze status?",
+      "levels": { "noEvidence": "Geen onderbouwing", "insufficient": "Onvoldoende gegevens", "provisional": "Voorlopige trend", "eligible": "Toelaatbaar", "established": "Gevestigd", "strongEvidence": "Sterke onderbouwing", "excluded": "Uitgesloten" },
+      "messages": {
+        "noEvidence": { "one": "Nog geen unieke bijdrager heeft deze plek beoordeeld. Een gemiddelde of positie geldt daarom niet als gevestigd.", "other": "Nog geen unieke bijdrager heeft deze plek beoordeeld. Een gemiddelde of positie geldt daarom niet als gevestigd." },
+        "insufficient": { "one": "{{count}} persoon heeft deze plek beoordeeld. Het huidige gemiddelde blijft zichtbaar, maar voor de ranglijst zijn {{threshold}} unieke bijdragers nodig.", "other": "{{count}} personen hebben deze plek beoordeeld. Het huidige gemiddelde blijft zichtbaar, maar voor de ranglijst zijn {{threshold}} unieke bijdragers nodig." },
+        "provisional": { "one": "Voorlopige trend: {{count}} unieke bijdrager van de {{threshold}} die voor de ranglijst nodig zijn.", "other": "Voorlopige trend: {{count}} unieke bijdragers van de {{threshold}} die voor de ranglijst nodig zijn." },
+        "ranked": { "one": "Positie {{rank}} volgens methode {{version}}, met {{count}} unieke bijdrager.", "other": "Positie {{rank}} volgens methode {{version}}, met {{count}} unieke bijdragers." },
+        "eligibleWithoutRank": { "one": "De individuele drempel is bereikt met {{count}} unieke bijdrager, maar voor deze selectie wordt geen hoofdpositie gepubliceerd.", "other": "De individuele drempel is bereikt met {{count}} unieke bijdragers, maar voor deze selectie wordt geen hoofdpositie gepubliceerd." },
+        "excluded": { "one": "Dit doel is uitgesloten van de huidige ranglijst. Het historische gemiddelde kan zichtbaar blijven als nuttige context.", "other": "Dit doel is uitgesloten van de huidige ranglijst. Het historische gemiddelde kan zichtbaar blijven als nuttige context." }
+      },
+      "facts": { "uniqueContributors": "Unieke bijdragers", "observations": "Meegetelde beoordelingen", "directObservations": "Directe parkbeoordelingen", "nextEvidenceThreshold": "Volgend bewijsniveau" },
+      "composition": { "title": "Onderbouwing van het park", "directContributors": "Bijdragers aan het park", "itemContributors": "Bijdragers aan plekken", "eligibleItems": "Toelaatbare plekken", "eligibleCategories": "Toelaatbare categorieën" },
+      "reasonLabel": "Reden:",
+      "reasons": { "noRatings": "geen meegetelde beoordeling", "tooFewUniqueContributors": "nog niet genoeg unieke bijdragers", "tooFewComparableEntries": "niet genoeg vergelijkbare resultaten in deze selectie", "insufficientItemCoverage": "niet genoeg toelaatbare plekken", "insufficientCategoryCoverage": "niet genoeg gedekte categorieën", "targetUnavailable": "doel niet beschikbaar in de huidige ranglijst", "targetExcluded": "doel uitgesloten via een gecontroleerde beslissing", "aggregateIntegrityFailure": "integriteitscontrole van het totaal niet geslaagd", "unsupportedComposition": "niet-ondersteunde parksamenstelling" }
+    },
     "tree": {
       "detailAction": "Details bekijken",
       "collapseAction": "Inklappen",
@@ -72,6 +88,18 @@
       "ratingCount": { "one": "{{count}} beoordeling", "few": "{{count}} beoordelingen", "many": "{{count}} beoordelingen", "other": "{{count}} beoordelingen" },
       "totalRatingCount": { "one": "{{count}} beoordeling in totaal", "few": "{{count}} beoordelingen in totaal", "many": "{{count}} beoordelingen in totaal", "other": "{{count}} beoordelingen in totaal" },
       "reliableBadge": "Betrouwbaar",
+      "evidenceSummary": {
+        "label": "Transparantie van de ranglijst",
+        "threshold": "Een hoofdpositie vereist minstens {{threshold}} unieke bijdragers. Een gemiddelde kan voor die drempel zichtbaar blijven zonder als gevestigde positie te worden getoond.",
+        "rankedLabel": "Gepubliceerde posities",
+        "rankedDisplayed": { "one": "{{count}} getoond resultaat", "few": "{{count}} getoonde resultaten", "many": "{{count}} getoonde resultaten", "other": "{{count}} getoonde resultaten" },
+        "provisionalLabel": "Voorlopige trends",
+        "provisionalDisplayed": { "one": "{{count}} getoonde trend", "few": "{{count}} getoonde trends", "many": "{{count}} getoonde trends", "other": "{{count}} getoonde trends" },
+        "methodology": "Methode {{version}}",
+        "generatedAt": "Gegenereerd op {{date}}",
+        "generatedAtUnavailable": "Snapshotdatum niet beschikbaar tijdens de overgang",
+        "displayedScope": "Deze aantallen gelden alleen voor de momenteel geladen resultaten."
+      },
       "filters": {
         "label": "Ranglijsten filteren",
         "all": "Alles",

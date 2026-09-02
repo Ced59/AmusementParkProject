@@ -4,10 +4,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs';
 
 import { RatingSummary, RatingTargetType, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { PUBLIC_RATING_RATINGS_PORT, PublicRatingRatingsPort } from './public-rating-state-data.ports';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 @Injectable()
 export class PublicRatingStateFacade {
@@ -17,11 +19,14 @@ export class PublicRatingStateFacade {
   private readonly userRatingSignal = signal<UserRating | null>(null);
   private readonly savingSignal = signal<boolean>(false);
   private readonly messageKeySignal = signal<string | null>(null);
+  private readonly methodologySignal = signal<RatingMethodology | null>(null);
+  private methodologyLoadStarted: boolean = false;
 
   public readonly summary: Signal<RatingSummary | null> = this.summarySignal.asReadonly();
   public readonly userRatingValue: Signal<number | null> = computed(() => this.userRatingSignal()?.value ?? null);
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   public readonly messageKey: Signal<string | null> = this.messageKeySignal.asReadonly();
+  public readonly methodology: Signal<RatingMethodology | null> = this.methodologySignal.asReadonly();
 
   constructor(
     @Inject(PUBLIC_RATING_RATINGS_PORT) private readonly ratingsApiService: PublicRatingRatingsPort,
@@ -42,6 +47,7 @@ export class PublicRatingStateFacade {
     this.targetIdSignal.set(normalizedTargetId);
     this.summarySignal.set(summary);
     this.messageKeySignal.set(null);
+    this.loadMethodology();
 
     if (previousType !== targetType || previousId !== normalizedTargetId) {
       this.userRatingSignal.set(null);
@@ -206,6 +212,26 @@ export class PublicRatingStateFacade {
         console.error('Error loading rating rank', error);
       }
     });
+  }
+
+  private loadMethodology(): void {
+    if (this.methodologySignal() || this.methodologyLoadStarted) {
+      return;
+    }
+
+    this.methodologyLoadStarted = true;
+    this.ratingsApiService.getCurrentMethodology(anonymousHttpOptions())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (methodology: RatingMethodology): void => {
+          this.methodologySignal.set(methodology);
+          this.methodologyLoadStarted = false;
+        },
+        error: (error: unknown): void => {
+          console.error('Error loading rating methodology', error);
+          this.methodologyLoadStarted = false;
+        }
+      });
   }
 
   private isCurrentTarget(targetType: RatingTargetType, targetId: string): boolean {

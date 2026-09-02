@@ -3,6 +3,10 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { LocalizedPluralPipe } from '@shared/pipes';
+import {
+  RatingEvidenceComponent,
+  RatingEvidenceViewModel
+} from '@shared/components/rating-evidence/rating-evidence.component';
 
 export interface RatingRankingListEditableScore {
   ratingId: string;
@@ -19,6 +23,7 @@ export interface RatingRankingListItem {
   parkName: string;
   parkRoute: string[] | null;
   editable?: RatingRankingListEditableScore | null;
+  evidence?: RatingEvidenceViewModel | null;
 }
 
 export interface RatingRankingListRatingChange {
@@ -31,7 +36,7 @@ export interface RatingRankingListRatingChange {
   templateUrl: './rating-ranking-list.component.html',
   styleUrls: ['./rating-ranking-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, LocalizedPluralPipe]
+  imports: [RouterLink, TranslateModule, LocalizedPluralPipe, RatingEvidenceComponent]
 })
 export class RatingRankingListComponent {
   protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];

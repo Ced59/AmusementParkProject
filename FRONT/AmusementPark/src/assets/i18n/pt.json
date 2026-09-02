@@ -4368,6 +4368,69 @@
       "pastVisitHint": "Estas avaliações correspondem a visitas anteriores ao encerramento temporário.",
       "historicalHint": "Estas avaliações correspondem a visitas passadas e não contam para o ranking atual."
     },
+    "evidence": {
+      "detailsAction": "Porquê este estado?",
+      "levels": {
+        "noEvidence": "Sem evidência",
+        "insufficient": "Dados insuficientes",
+        "provisional": "Tendência provisória",
+        "eligible": "Elegível",
+        "established": "Consolidado",
+        "strongEvidence": "Evidência forte",
+        "excluded": "Excluído"
+      },
+      "messages": {
+        "noEvidence": {
+          "one": "Ainda nenhum colaborador único avaliou este local. Nem a média nem a posição são consideradas consolidadas.",
+          "other": "Ainda nenhum colaborador único avaliou este local. Nem a média nem a posição são consideradas consolidadas."
+        },
+        "insufficient": {
+          "one": "{{count}} pessoa avaliou este local. A média atual continua visível, mas são necessários {{threshold}} colaboradores únicos para entrar na classificação.",
+          "other": "{{count}} pessoas avaliaram este local. A média atual continua visível, mas são necessários {{threshold}} colaboradores únicos para entrar na classificação."
+        },
+        "provisional": {
+          "one": "Tendência provisória: {{count}} colaborador único dos {{threshold}} necessários para a classificação.",
+          "other": "Tendência provisória: {{count}} colaboradores únicos dos {{threshold}} necessários para a classificação."
+        },
+        "ranked": {
+          "one": "Posição n.º {{rank}} segundo o método {{version}}, com {{count}} colaborador único.",
+          "other": "Posição n.º {{rank}} segundo o método {{version}}, com {{count}} colaboradores únicos."
+        },
+        "eligibleWithoutRank": {
+          "one": "O limiar individual foi atingido com {{count}} colaborador único, mas não é publicada uma posição principal para esta seleção.",
+          "other": "O limiar individual foi atingido com {{count}} colaboradores únicos, mas não é publicada uma posição principal para esta seleção."
+        },
+        "excluded": {
+          "one": "Este elemento está excluído da classificação atual. A sua média histórica pode continuar visível quando oferece contexto útil.",
+          "other": "Este elemento está excluído da classificação atual. A sua média histórica pode continuar visível quando oferece contexto útil."
+        }
+      },
+      "facts": {
+        "uniqueContributors": "Colaboradores únicos",
+        "observations": "Avaliações consideradas",
+        "directObservations": "Avaliações diretas do parque",
+        "nextEvidenceThreshold": "Próximo nível de evidência"
+      },
+      "composition": {
+        "title": "Composição da evidência do parque",
+        "directContributors": "Colaboradores do parque",
+        "itemContributors": "Colaboradores dos locais",
+        "eligibleItems": "Locais elegíveis",
+        "eligibleCategories": "Categorias elegíveis"
+      },
+      "reasonLabel": "Motivo:",
+      "reasons": {
+        "noRatings": "nenhuma avaliação considerada",
+        "tooFewUniqueContributors": "ainda não há colaboradores únicos suficientes",
+        "tooFewComparableEntries": "não há elementos comparáveis suficientes nesta seleção",
+        "insufficientItemCoverage": "não há locais elegíveis suficientes",
+        "insufficientCategoryCoverage": "não há categorias cobertas suficientes",
+        "targetUnavailable": "elemento indisponível na classificação atual",
+        "targetExcluded": "elemento excluído por uma decisão controlada",
+        "aggregateIntegrityFailure": "verificação de integridade do agregado não satisfeita",
+        "unsupportedComposition": "composição do parque não suportada"
+      }
+    },
     "tree": {
       "detailAction": "Ver detalhe",
       "collapseAction": "Recolher",
@@ -4439,6 +4502,28 @@
         "other": "{{count}} avaliações no total"
       },
       "reliableBadge": "Fiável",
+      "evidenceSummary": {
+        "label": "Transparência da classificação",
+        "threshold": "Uma posição principal exige pelo menos {{threshold}} colaboradores únicos. Antes desse limiar, uma média pode continuar visível sem ser apresentada como posição consolidada.",
+        "rankedLabel": "Posições publicadas",
+        "rankedDisplayed": {
+          "one": "{{count}} resultado apresentado",
+          "few": "{{count}} resultados apresentados",
+          "many": "{{count}} resultados apresentados",
+          "other": "{{count}} resultados apresentados"
+        },
+        "provisionalLabel": "Tendências provisórias",
+        "provisionalDisplayed": {
+          "one": "{{count}} tendência apresentada",
+          "few": "{{count}} tendências apresentadas",
+          "many": "{{count}} tendências apresentadas",
+          "other": "{{count}} tendências apresentadas"
+        },
+        "methodology": "Método {{version}}",
+        "generatedAt": "Gerado em {{date}}",
+        "generatedAtUnavailable": "Data do snapshot indisponível durante a transição",
+        "displayedScope": "Estas contagens abrangem apenas os resultados atualmente carregados."
+      },
       "filters": {
         "label": "Filtrar rankings",
         "all": "Todos",

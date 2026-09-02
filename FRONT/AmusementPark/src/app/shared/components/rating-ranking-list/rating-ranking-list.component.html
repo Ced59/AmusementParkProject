@@ -5,7 +5,7 @@
         <span class="rating-ranking-list__rank">#{{ item.rank }}</span>
       }
 
-      <span class="rating-ranking-list__main">
+      <div class="rating-ranking-list__main">
         @if (item.route; as route) {
           <a class="rating-ranking-list__name" [routerLink]="route">{{ item.name }}</a>
         } @else {
@@ -26,7 +26,10 @@
             {{ ratingCountLabelKey | localizedPlural:item.ratingCount }}
           </span>
         }
-      </span>
+        @if (item.evidence; as evidence) {
+          <app-rating-evidence [model]="evidence"></app-rating-evidence>
+        }
+      </div>
 
       <span class="rating-ranking-list__score-block">
         <span class="rating-ranking-list__score-label">{{ scoreLabelKey | translate }}</span>

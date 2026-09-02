@@ -8,6 +8,7 @@ import {
   ParkRatingRanking,
   RatingRankingsPage
 } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { PaginationContract } from '@shared/models/contracts';
 import { RANKINGS_RATINGS_PORT, RankingsRatingsPort } from './rankings-state-data.ports';
@@ -24,11 +25,14 @@ export class RankingsStateFacade {
   private readonly categorySignal = signal<string | null>(null);
   private readonly parkItemTypeSignal = signal<string | null>(null);
   private readonly searchSignal = signal<string | null>(null);
+  private readonly methodologySignal = signal<RatingMethodology | null>(null);
+  private methodologyLoadStarted: boolean = false;
 
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
   public readonly items: Signal<ParkRatingRanking[]> = this.itemsSignal.asReadonly();
   public readonly parkItems: Signal<ParkItemRatingRanking[]> = this.parkItemsSignal.asReadonly();
+  public readonly methodology: Signal<RatingMethodology | null> = this.methodologySignal.asReadonly();
   public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly hasMore: Signal<boolean> = computed(() => {
     const pagination: PaginationContract | null = this.paginationSignal();
@@ -47,6 +51,7 @@ export class RankingsStateFacade {
     this.searchSignal.set(normalizeSearch(search));
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
+    this.loadMethodology();
     const request: Observable<RatingRankingsPage | ParkItemRatingRankingsPage> = category
       ? this.ratingsApiService.getParkItemRankings(
         1,
@@ -124,6 +129,26 @@ export class RankingsStateFacade {
         this.loadingMoreSignal.set(false);
       }
     });
+  }
+
+  private loadMethodology(): void {
+    if (this.methodologySignal() || this.methodologyLoadStarted) {
+      return;
+    }
+
+    this.methodologyLoadStarted = true;
+    this.ratingsApiService.getCurrentMethodology(anonymousHttpOptions())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (methodology: RatingMethodology): void => {
+          this.methodologySignal.set(methodology);
+          this.methodologyLoadStarted = false;
+        },
+        error: (error: unknown): void => {
+          console.error('Error loading rating methodology', error);
+          this.methodologyLoadStarted = false;
+        }
+      });
   }
 }
 

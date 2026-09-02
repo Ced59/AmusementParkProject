@@ -1,0 +1,71 @@
+@if (mode === 'badge') {
+  <span [class]="'rating-evidence__badge rating-evidence__badge--' + levelClass()">
+    <i [class]="levelIconClass()" aria-hidden="true"></i>
+    {{ levelLabelKey() | translate }}
+  </span>
+} @else {
+  <details [class]="'rating-evidence rating-evidence--' + levelClass()">
+    <summary class="rating-evidence__summary">
+      <span class="rating-evidence__badge">
+        <i [class]="levelIconClass()" aria-hidden="true"></i>
+        {{ levelLabelKey() | translate }}
+      </span>
+      <span class="rating-evidence__action">
+        <i class="pi pi-info-circle" aria-hidden="true"></i>
+        {{ 'ratings.evidence.detailsAction' | translate }}
+      </span>
+    </summary>
+
+    <div class="rating-evidence__panel">
+      <p class="rating-evidence__message">
+        {{ messageKey() | localizedPlural:contributorCount():messageParams() }}
+      </p>
+
+      <dl class="rating-evidence__facts">
+        <div>
+          <dt>{{ 'ratings.evidence.facts.uniqueContributors' | translate }}</dt>
+          <dd>{{ contributorCount() }}</dd>
+        </div>
+        @if (model.ratingObservationCount !== null) {
+          <div>
+            <dt>{{ (model.targetType === 'Park' ? 'ratings.evidence.facts.directObservations' : 'ratings.evidence.facts.observations') | translate }}</dt>
+            <dd>{{ model.ratingObservationCount }}</dd>
+          </div>
+        }
+        @if (hasNextThreshold()) {
+          <div>
+            <dt>{{ 'ratings.evidence.facts.nextEvidenceThreshold' | translate }}</dt>
+            <dd>{{ model.evidence.nextThreshold }}</dd>
+          </div>
+        }
+      </dl>
+
+      @if (hasParkComposition()) {
+        <section class="rating-evidence__composition" [attr.aria-label]="'ratings.evidence.composition.title' | translate">
+          <strong>{{ 'ratings.evidence.composition.title' | translate }}</strong>
+          <dl class="rating-evidence__facts">
+            @if (model.evidence.directParkContributorCount !== null && model.evidence.directParkContributorCount !== undefined) {
+              <div><dt>{{ 'ratings.evidence.composition.directContributors' | translate }}</dt><dd>{{ model.evidence.directParkContributorCount }}</dd></div>
+            }
+            @if (model.evidence.itemContributorCount !== null && model.evidence.itemContributorCount !== undefined) {
+              <div><dt>{{ 'ratings.evidence.composition.itemContributors' | translate }}</dt><dd>{{ model.evidence.itemContributorCount }}</dd></div>
+            }
+            @if (model.evidence.eligibleItemCount !== null && model.evidence.eligibleItemCount !== undefined) {
+              <div><dt>{{ 'ratings.evidence.composition.eligibleItems' | translate }}</dt><dd>{{ model.evidence.eligibleItemCount }}</dd></div>
+            }
+            @if (model.evidence.eligibleCategoryCount !== null && model.evidence.eligibleCategoryCount !== undefined) {
+              <div><dt>{{ 'ratings.evidence.composition.eligibleCategories' | translate }}</dt><dd>{{ model.evidence.eligibleCategoryCount }}</dd></div>
+            }
+          </dl>
+        </section>
+      }
+
+      @if (reasonLabelKey(); as reasonKey) {
+        <p class="rating-evidence__reason">
+          <strong>{{ 'ratings.evidence.reasonLabel' | translate }}</strong>
+          {{ reasonKey | translate }}
+        </p>
+      }
+    </div>
+  </details>
+}

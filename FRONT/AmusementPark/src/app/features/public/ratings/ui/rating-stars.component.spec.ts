@@ -2,6 +2,7 @@ import { signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { RatingSummary } from '@app/models/ratings/rating.models';
 import {
   COMMON_TEST_IMPORTS,
@@ -11,6 +12,9 @@ import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
 import { RatingStarsComponent } from './rating-stars.component';
 
 class FakePublicRatingStateFacade {
+  readonly methodology: WritableSignal<RatingMethodology | null> = signal<RatingMethodology | null>(
+    createMethodology(),
+  );
   readonly summary: WritableSignal<RatingSummary | null> = signal<RatingSummary | null>({
     targetType: 'ParkItem',
     targetId: 'item-1',
@@ -65,6 +69,12 @@ describe('RatingStarsComponent', () => {
           rankLabel: 'Classé #{{rank}}',
           historicalHint: 'Ces notes reflètent des visites passées.',
         },
+        methodology: {
+          actions: {
+            ratingZone: 'Comprendre le classement',
+          },
+        },
+        evidence: createEvidenceTranslations(),
       },
       publicCounts: {
         averageRating: {
@@ -108,6 +118,58 @@ describe('RatingStarsComponent', () => {
       fixture.nativeElement.querySelector('.rating-stars__rank');
 
     expect(rank?.textContent?.trim()).toBe('Classé #4');
+  });
+
+  it('hides an ineligible place and explains the provisional evidence', () => {
+    facade.summary.set({
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      ratingCount: 9,
+      ratingObservationCount: 9,
+      uniqueContributorCount: 7,
+      averageRating: 4.8,
+      bayesianScore: 4.1,
+      rank: 4,
+      methodologyVersion: 'ratings-2026-01',
+      evidence: {
+        level: 'Provisional',
+        isEligibleForMainRanking: false,
+        ineligibilityReason: 'TooFewUniqueContributors',
+        nextThreshold: 10,
+      },
+    });
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.rating-stars__rank')).toBeNull();
+    expect(fixture.nativeElement.textContent).toContain('Provisoire');
+    expect(fixture.nativeElement.textContent).toContain('7 contributeurs uniques');
+    expect(fixture.nativeElement.textContent).toContain('10');
+    expect(
+      fixture.nativeElement.querySelector('.rating-stars__methodology')?.getAttribute('href'),
+    ).toBe('/fr/rankings/methodology/ratings-2026-01');
+  });
+
+  it('keeps an eligible rank and identifies its methodology version', () => {
+    facade.summary.set({
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      ratingCount: 41,
+      uniqueContributorCount: 38,
+      averageRating: 4.6,
+      bayesianScore: 4.3,
+      rank: 12,
+      methodologyVersion: 'ratings-2026-01',
+      evidence: {
+        level: 'Established',
+        isEligibleForMainRanking: true,
+        nextThreshold: 50,
+      },
+    });
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.rating-stars__rank')?.textContent).toContain('#12');
+    expect(fixture.nativeElement.textContent)
+      .toContain('méthode ratings-2026-01');
   });
 
   it('explains when ratings describe past visits', () => {
@@ -192,3 +254,85 @@ describe('RatingStarsComponent', () => {
     ).toEqual(['0%', '0%', '0%', '0%', '0%']);
   });
 });
+
+function createMethodology(): RatingMethodology {
+  return {
+    version: 'ratings-2026-01',
+    effectiveDate: '2026-09-01',
+    isCurrent: true,
+    previousVersion: null,
+    ratingScale: { minimum: 0.5, maximum: 5, step: 0.5 },
+    bayesian: { priorMean: 3.5, priorWeight: 5 },
+    parkComposition: {
+      directRatingWeight: 0.4,
+      itemRatingWeight: 0.6,
+      balancesItemCategoriesEqually: true,
+      minimumEligibleItems: 3,
+      minimumItemsPerCategory: 1,
+      minimumCategories: 2,
+    },
+    evidenceThresholds: {
+      provisional: 3,
+      eligible: 10,
+      established: 25,
+      strong: 50,
+    },
+    publicationRules: {
+      minimumEligibleEntries: 3,
+      scoreTieEpsilon: 0.001,
+      rankingConvention: 'competition',
+    },
+  };
+}
+
+function createEvidenceTranslations(): Record<string, unknown> {
+  return {
+    detailsAction: 'Voir les preuves',
+    levels: {
+      noEvidence: 'Aucune donnée',
+      insufficient: 'Données insuffisantes',
+      provisional: 'Provisoire',
+      eligible: 'Éligible',
+      established: 'Établi',
+      strongEvidence: 'Preuves solides',
+      excluded: 'Exclu',
+    },
+    messages: {
+      noEvidence: { one: 'Aucune preuve.', other: 'Aucune preuve.' },
+      excluded: { one: 'Exclu.', other: 'Exclu.' },
+      insufficient: {
+        one: '{{count}} contributeur unique sur {{threshold}}.',
+        other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      provisional: {
+        one: '{{count}} contributeur unique sur {{threshold}}.',
+        other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      ranked: {
+        one: 'Classé #{{rank}} avec la méthode {{version}}.',
+        other: 'Classé #{{rank}} avec la méthode {{version}}.',
+      },
+      eligibleWithoutRank: {
+        one: 'Éligible avec la méthode {{version}}.',
+        other: 'Éligible avec la méthode {{version}}.',
+      },
+    },
+    facts: {
+      uniqueContributors: 'Contributeurs uniques',
+      observations: 'Notes conservées',
+      directObservations: 'Notes directes',
+      nextEvidenceThreshold: 'Prochain seuil',
+    },
+    composition: {
+      title: 'Composition du parc',
+      directContributors: 'Contributeurs directs',
+      itemContributors: 'Contributeurs des lieux',
+      eligibleItems: 'Lieux éligibles',
+      eligibleCategories: 'Catégories éligibles',
+    },
+    reasonLabel: 'Pourquoi :',
+    reasons: {
+      tooFewUniqueContributors: 'Pas assez de contributeurs uniques.',
+    },
+  };
+}

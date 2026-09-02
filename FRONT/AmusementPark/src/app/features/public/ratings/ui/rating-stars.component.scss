@@ -52,6 +52,11 @@
   text-underline-offset: 0.18em;
 }
 
+.rating-stars__evidence {
+  flex-basis: 100%;
+  min-width: 0;
+}
+
 .rating-stars__rank {
   display: inline-flex;
   align-items: center;

@@ -3,8 +3,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 
 import { RatingSummary, RatingTargetType } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
 import { LocalizedPluralPipe } from '@shared/pipes';
+import {
+  RatingEvidenceComponent,
+  RatingEvidenceViewModel
+} from '@shared/components/rating-evidence/rating-evidence.component';
 
 @Component({
   selector: 'app-rating-stars',
@@ -12,7 +17,7 @@ import { LocalizedPluralPipe } from '@shared/pipes';
   styleUrls: ['./rating-stars.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PublicRatingStateFacade],
-  imports: [TranslateModule, LocalizedPluralPipe, RouterLink]
+  imports: [TranslateModule, LocalizedPluralPipe, RouterLink, RatingEvidenceComponent]
 })
 export class RatingStarsComponent implements OnChanges {
   protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];
@@ -21,8 +26,35 @@ export class RatingStarsComponent implements OnChanges {
   protected readonly saving: Signal<boolean> = this.stateFacade.saving;
   protected readonly messageKey: Signal<string | null> = this.stateFacade.messageKey;
   protected readonly selectedValue: Signal<number | null> = this.stateFacade.userRatingValue;
+  protected readonly methodology: Signal<RatingMethodology | null> = this.stateFacade.methodology;
   protected readonly displayValue: Signal<number> = computed(() => {
     return this.hoverValue() ?? this.selectedValue() ?? 0;
+  });
+  protected readonly visibleRank: Signal<number | null> = computed(() => {
+    const summary: RatingSummary | null = this.summary();
+    if (!summary) {
+      return null;
+    }
+
+    return summary.evidence && !summary.evidence.isEligibleForMainRanking
+      ? null
+      : summary.rank ?? null;
+  });
+  protected readonly evidenceModel: Signal<RatingEvidenceViewModel | null> = computed(() => {
+    const summary: RatingSummary | null = this.summary();
+    if (!summary?.evidence) {
+      return null;
+    }
+
+    return {
+      evidence: summary.evidence,
+      uniqueContributorCount: summary.uniqueContributorCount ?? null,
+      ratingObservationCount: summary.ratingObservationCount ?? summary.ratingCount,
+      targetType: summary.targetType,
+      rank: this.visibleRank(),
+      methodologyVersion: summary.methodologyVersion ?? this.methodology()?.version ?? null,
+      eligibilityThreshold: this.methodology()?.evidenceThresholds.eligible ?? null
+    };
   });
 
   @Input({ required: true }) targetType!: RatingTargetType;
@@ -91,7 +123,10 @@ export class RatingStarsComponent implements OnChanges {
     const language: string = this.translateService.currentLang
       || this.translateService.defaultLang
       || 'en';
-    return ['/', language, 'rankings', 'methodology'];
+    const version: string | null = this.summary()?.methodologyVersion ?? this.methodology()?.version ?? null;
+    return version
+      ? ['/', language, 'rankings', 'methodology', version]
+      : ['/', language, 'rankings', 'methodology'];
   }
 
   private formatRating(value: number): string {

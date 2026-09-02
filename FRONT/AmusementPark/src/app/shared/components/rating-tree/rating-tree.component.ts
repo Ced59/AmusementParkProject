@@ -2,6 +2,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedPluralPipe } from '@shared/pipes';
+import {
+  RatingEvidenceComponent,
+  RatingEvidenceViewModel
+} from '@shared/components/rating-evidence/rating-evidence.component';
 
 export interface RatingTreeEditableScore {
   ratingId: string;
@@ -43,6 +47,7 @@ export interface RatingTreePark {
   route: string[] | null;
   metrics: RatingTreeMetric[];
   sections: RatingTreeSection[];
+  evidence?: RatingEvidenceViewModel | null;
 }
 
 export interface RatingTreeRatingChange {
@@ -55,7 +60,7 @@ export interface RatingTreeRatingChange {
   templateUrl: './rating-tree.component.html',
   styleUrls: ['./rating-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, LocalizedPluralPipe]
+  imports: [RouterLink, TranslateModule, LocalizedPluralPipe, RatingEvidenceComponent]
 })
 export class RatingTreeComponent {
   protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];
