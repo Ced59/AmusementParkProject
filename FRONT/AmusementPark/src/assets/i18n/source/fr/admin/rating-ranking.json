@@ -133,7 +133,7 @@
       },
       "rebuild": {
         "title": "Reconstruction auditée",
-        "subtitle": "Planifie une nouvelle révision pour tous les scopes. Le traitement reste séquentiel et s’exécute en arrière-plan.",
+        "subtitle": "Force le recalcul de la révision courante pour tous les scopes. Le traitement reste séquentiel et s’exécute en arrière-plan.",
         "confirmation": "Je confirme vouloir reconstruire tous les snapshots de classement.",
         "action": "Reconstruire les snapshots",
         "scheduled": "Reconstruction planifiée pour {{count}} scope(s).",

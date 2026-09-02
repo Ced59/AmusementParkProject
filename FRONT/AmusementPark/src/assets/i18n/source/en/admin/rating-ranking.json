@@ -133,7 +133,7 @@
       },
       "rebuild": {
         "title": "Audited rebuild",
-        "subtitle": "Schedules a new revision for every scope. Processing remains sequential and runs in the background.",
+        "subtitle": "Forces the current revision to be recomputed for every scope. Processing remains sequential and runs in the background.",
         "confirmation": "I confirm that I want to rebuild every ranking snapshot.",
         "action": "Rebuild snapshots",
         "scheduled": "Rebuild scheduled for {{count}} scope(s).",

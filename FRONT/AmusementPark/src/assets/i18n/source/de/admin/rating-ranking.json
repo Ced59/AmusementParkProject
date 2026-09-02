@@ -133,7 +133,7 @@
       },
       "rebuild": {
         "title": "Protokollierte Neuerstellung",
-        "subtitle": "Plant eine neue Revision für alle Bereiche. Die Verarbeitung bleibt sequenziell und läuft im Hintergrund.",
+        "subtitle": "Erzwingt für alle Bereiche die Neuberechnung der aktuellen Revision. Die Verarbeitung bleibt sequenziell und läuft im Hintergrund.",
         "confirmation": "Ich bestätige, dass alle Ranglisten-Snapshots neu erstellt werden sollen.",
         "action": "Snapshots neu erstellen",
         "scheduled": "Neuerstellung für {{count}} Bereich(e) geplant.",

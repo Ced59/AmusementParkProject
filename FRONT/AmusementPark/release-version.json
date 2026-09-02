@@ -1,6 +1,20 @@
 {
-  "version": "4.2.51",
+  "version": "4.2.52",
   "history": [
+    {
+      "version": "4.2.52",
+      "releasedAt": "2026-09-02",
+      "labels": {
+        "fr": "Les explications de l’administration sont désormais plus précises.",
+        "en": "Administration explanations are now more precise.",
+        "de": "Die Erklärungen im Administrationsbereich sind jetzt präziser.",
+        "nl": "De uitleg in de administratie is nu nauwkeuriger.",
+        "it": "Le spiegazioni nell’amministrazione sono ora più precise.",
+        "es": "Las explicaciones de la administración son ahora más precisas.",
+        "pl": "Wyjaśnienia w panelu administracyjnym są teraz bardziej precyzyjne.",
+        "pt": "As explicações na administração são agora mais precisas."
+      }
+    },
     {
       "version": "4.2.51",
       "releasedAt": "2026-09-02",

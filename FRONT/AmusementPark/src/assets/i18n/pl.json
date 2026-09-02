@@ -1892,7 +1892,7 @@
       },
       "rebuild": {
         "title": "Audytowana przebudowa",
-        "subtitle": "Planuje nową rewizję dla wszystkich zakresów. Przetwarzanie pozostaje sekwencyjne i działa w tle.",
+        "subtitle": "Wymusza ponowne obliczenie bieżącej rewizji dla wszystkich zakresów. Przetwarzanie pozostaje sekwencyjne i działa w tle.",
         "confirmation": "Potwierdzam przebudowę wszystkich migawek rankingów.",
         "action": "Przebuduj migawki",
         "scheduled": "Przebudowę zaplanowano dla {{count}} zakresów.",
