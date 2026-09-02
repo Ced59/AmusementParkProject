@@ -1,6 +1,20 @@
 {
-  "version": "4.2.47",
+  "version": "4.2.48",
   "history": [
+    {
+      "version": "4.2.48",
+      "releasedAt": "2026-09-02",
+      "labels": {
+        "fr": "L’explication des classements s’adapte désormais parfaitement aux petits écrans.",
+        "en": "The ranking explanation now fits small screens perfectly.",
+        "de": "Die Erklärung der Ranglisten passt sich jetzt vollständig an kleine Bildschirme an.",
+        "nl": "De uitleg over ranglijsten past nu volledig op kleine schermen.",
+        "it": "La spiegazione delle classifiche ora si adatta perfettamente agli schermi piccoli.",
+        "es": "La explicación de las clasificaciones ahora se adapta perfectamente a las pantallas pequeñas.",
+        "pl": "Objaśnienie rankingów jest teraz w pełni dostosowane do małych ekranów.",
+        "pt": "A explicação das classificações adapta-se agora perfeitamente aos ecrãs pequenos."
+      }
+    },
     {
       "version": "4.2.47",
       "releasedAt": "2026-09-01",

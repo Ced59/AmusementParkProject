@@ -98,6 +98,19 @@ describe('RatingMethodologyPageComponent', () => {
     expect(root.textContent).toContain('Activation prochaine');
   });
 
+  it('allows every wide section to shrink inside a narrow viewport', () => {
+    const styles: string = (
+      RatingMethodologyPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('width: 100%');
+    expect(styles).toContain('.methodology-page > *');
+    expect(styles).toContain('.methodology-grid > *');
+    expect(styles).toContain('.methodology-history dl > *');
+    expect(styles).toContain('min-width: 0');
+    expect(styles).toContain('max-width: 100%');
+  });
+
   it('exposes visible, clickable parent breadcrumbs and the version history', () => {
     fixture.detectChanges();
     const links: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('.methodology-breadcrumb a');
