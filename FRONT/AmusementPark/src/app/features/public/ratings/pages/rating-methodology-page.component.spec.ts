@@ -104,11 +104,12 @@ describe('RatingMethodologyPageComponent', () => {
     ).ɵcmp.styles.join('\n');
 
     expect(styles).toContain('width: 100%');
-    expect(styles).toContain('.methodology-page > *');
-    expect(styles).toContain('.methodology-grid > *');
-    expect(styles).toContain('.methodology-history dl > *');
-    expect(styles).toContain('min-width: 0');
+    expect(styles).toContain('.methodology-page');
+    expect(styles).toContain('.methodology-grid');
+    expect(styles).toContain('.methodology-history');
+    expect(styles.match(/min-width: 0/g)?.length ?? 0).toBeGreaterThanOrEqual(2);
     expect(styles).toContain('max-width: 100%');
+    expect(styles).toContain('overflow-x: auto');
   });
 
   it('exposes visible, clickable parent breadcrumbs and the version history', () => {
