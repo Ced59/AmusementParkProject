@@ -152,6 +152,13 @@ public sealed record RatingRankingSnapshotBuildPlan(
     IReadOnlyCollection<RankingSnapshotEntry> EligibleEntries,
     bool IsSourceTruncated);
 
+public enum RatingRankingRebuildScheduleDisposition
+{
+    Scheduled,
+    Covered,
+    Deferred,
+}
+
 public sealed class RatingRankingMutationPreparation
 {
     public RatingRankingMutationPreparation(

@@ -73,6 +73,7 @@ public sealed class RatingRankingAdministrationHandlersTests
         return new RatingRankingPolicyImpactPreviewer(
             scopeRegistry.Object,
             Mock.Of<IRankingSnapshotRepository>(),
+            Mock.Of<IRatingRankingSourceRevisionRepository>(),
             Mock.Of<IRatingRankingPolicyEvaluationBuilder>());
     }
 

@@ -91,7 +91,7 @@ public sealed class RatingRankingRecoveryCoordinatorTests
         scheduler
             .Setup(value => value.ScheduleIfOutstandingAsync(hotelRevision, CancellationToken.None))
             .Callback(() => operations.Add("schedule-category"))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
         RatingRankingRecoveryCoordinator coordinator = CreateCoordinator(
             ratings.Object,
             rankProvider.Object,

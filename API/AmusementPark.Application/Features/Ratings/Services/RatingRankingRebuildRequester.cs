@@ -52,10 +52,16 @@ public sealed class RatingRankingRebuildRequester
                 throw;
             }
 
-            await this.rebuildScheduler.ScheduleIfOutstandingAsync(sourceRevision, cancellationToken);
-            scheduledScopes.Add(new RatingRankingScheduledScopeResult(
-                scope.Key.Value,
-                sourceRevision.Revision));
+            RatingRankingRebuildScheduleDisposition disposition =
+                await this.rebuildScheduler.ScheduleIfOutstandingAsync(
+                    sourceRevision,
+                    cancellationToken);
+            if (disposition == RatingRankingRebuildScheduleDisposition.Scheduled)
+            {
+                scheduledScopes.Add(new RatingRankingScheduledScopeResult(
+                    scope.Key.Value,
+                    sourceRevision.Revision));
+            }
         }
 
         return new RatingRankingRebuildRequestResult(

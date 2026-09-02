@@ -11,17 +11,20 @@ public sealed class RatingRankingPolicyImpactPreviewer
 
     private readonly IRankingScopeRegistry scopeRegistry;
     private readonly IRankingSnapshotRepository snapshotRepository;
+    private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRankingPolicyEvaluationBuilder policyEvaluationBuilder;
     private readonly TimeProvider timeProvider;
 
     public RatingRankingPolicyImpactPreviewer(
         IRankingScopeRegistry scopeRegistry,
         IRankingSnapshotRepository snapshotRepository,
+        IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRatingRankingPolicyEvaluationBuilder policyEvaluationBuilder,
         TimeProvider? timeProvider = null)
     {
         this.scopeRegistry = scopeRegistry;
         this.snapshotRepository = snapshotRepository;
+        this.sourceRevisionRepository = sourceRevisionRepository;
         this.policyEvaluationBuilder = policyEvaluationBuilder;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -39,6 +42,10 @@ public sealed class RatingRankingPolicyImpactPreviewer
                      .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
         {
             RankingScopeDefinition candidateScope = CreateCandidateScope(currentScope, candidatePolicy);
+            RatingRankingSourceRevision? sourceRevisionBeforeEvaluation =
+                await this.sourceRevisionRepository.GetAsync(
+                    currentScope.Key,
+                    cancellationToken);
             RatingRankingPolicyEvaluationPlan evaluation =
                 await this.policyEvaluationBuilder.EvaluateAsync(
                     currentScope,
@@ -46,7 +53,18 @@ public sealed class RatingRankingPolicyImpactPreviewer
                     cancellationToken);
             CurrentRankingSnapshot currentSnapshot = await this.LoadCurrentSnapshotAsync(
                 currentScope,
+                sourceRevisionBeforeEvaluation,
                 cancellationToken);
+            RatingRankingSourceRevision? sourceRevisionAfterSnapshot =
+                await this.sourceRevisionRepository.GetAsync(
+                    currentScope.Key,
+                    cancellationToken);
+            if (!SourceRevisionsMatch(
+                    sourceRevisionBeforeEvaluation,
+                    sourceRevisionAfterSnapshot))
+            {
+                currentSnapshot = CurrentRankingSnapshot.Unavailable;
+            }
             scopeImpacts.Add(BuildScopeImpact(
                 currentScope,
                 candidateScope,
@@ -215,13 +233,19 @@ public sealed class RatingRankingPolicyImpactPreviewer
 
     private async Task<CurrentRankingSnapshot> LoadCurrentSnapshotAsync(
         RankingScopeDefinition scope,
+        RatingRankingSourceRevision? sourceRevision,
         CancellationToken cancellationToken)
     {
+        if (sourceRevision is null || !sourceRevision.IsRebuildable)
+        {
+            return CurrentRankingSnapshot.Unavailable;
+        }
+
         RankingSnapshotHeader? header = await this.snapshotRepository.GetCurrentHeaderAsync(
             scope.Key,
             scope.MethodologyVersion,
             cancellationToken);
-        if (header is null)
+        if (header is null || header.SourceRevision != sourceRevision.Revision)
         {
             return CurrentRankingSnapshot.Unavailable;
         }
@@ -250,6 +274,18 @@ public sealed class RatingRankingPolicyImpactPreviewer
         }
 
         return new CurrentRankingSnapshot(true, ranks);
+    }
+
+    private static bool SourceRevisionsMatch(
+        RatingRankingSourceRevision? before,
+        RatingRankingSourceRevision? after)
+    {
+        return before is not null
+            && after is not null
+            && before.ScopeKey == after.ScopeKey
+            && before.Revision == after.Revision
+            && before.IsRebuildable
+            && after.IsRebuildable;
     }
 
     private static RankingScopeDefinition CreateCandidateScope(

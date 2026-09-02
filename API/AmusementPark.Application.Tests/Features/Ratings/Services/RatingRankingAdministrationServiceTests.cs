@@ -57,9 +57,13 @@ public sealed class RatingRankingAdministrationServicesTests
             .ReturnsAsync(diagnostics);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        List<DurableBackgroundJobDiagnosticQuery> diagnosticQueries =
+            new List<DurableBackgroundJobDiagnosticQuery>();
         jobs.Setup(repository => repository.ListDiagnosticsAsync(
                 It.IsAny<DurableBackgroundJobDiagnosticQuery>(),
                 CancellationToken.None))
+            .Callback<DurableBackgroundJobDiagnosticQuery, CancellationToken>(
+                (query, _) => diagnosticQueries.Add(query))
             .ReturnsAsync(new[]
             {
                 new DurableBackgroundJobDiagnosticItem(
@@ -102,6 +106,9 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal(
             RankingIneligibilityReason.TooFewUniqueContributors,
             Assert.Single(result.Exclusions).Reason);
+        DurableBackgroundJobDiagnosticQuery diagnosticQuery = Assert.Single(diagnosticQueries);
+        Assert.Equal(RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key), diagnosticQuery.NaturalKey);
+        Assert.Equal(1, diagnosticQuery.Limit);
         snapshots.VerifyAll();
         revisions.VerifyAll();
         evaluator.VerifyAll();
@@ -150,9 +157,12 @@ public sealed class RatingRankingAdministrationServicesTests
                 It.Is<RankingEligibilityPolicy>(policy => policy.Version == candidatePolicy.Version),
                 CancellationToken.None))
             .ReturnsAsync(new RatingRankingPolicyEvaluationPlan(4, candidateEntries, false));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            CreateStableRevisionRepository(scope, header.SourceRevision);
         RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
             registry.Object,
             snapshots.Object,
+            revisions.Object,
             evaluator.Object);
         RatingRankingPolicyCandidate candidate = CreateCandidate();
 
@@ -172,6 +182,7 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal("item-a", Assert.Single(impact.LostTargets).TargetId);
         Assert.True(impact.HasMinimumComparableEntries);
         snapshots.VerifyAll();
+        revisions.VerifyAll();
         evaluator.VerifyAll();
     }
 
@@ -197,7 +208,7 @@ public sealed class RatingRankingAdministrationServicesTests
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
         scheduler.Setup(value => value.ScheduleIfOutstandingAsync(revision, CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
         RatingRankingRebuildRequester requester = new RatingRankingRebuildRequester(
             registry.Object,
             revisions.Object,
@@ -235,9 +246,12 @@ public sealed class RatingRankingAdministrationServicesTests
                 50_000,
                 Array.Empty<RatingRankingPolicyEvaluationEntry>(),
                 true));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            CreateStableRevisionRepository(scope, 7);
         RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
             registry.Object,
             snapshots.Object,
+            revisions.Object,
             evaluator.Object);
 
         RatingRankingPolicyImpactResult result = await previewer.PreviewImpactAsync(
@@ -252,6 +266,7 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Null(impact.AverageRankChange);
         Assert.Equal(0, result.ScopeCountBelowMinimum);
         snapshots.VerifyAll();
+        revisions.VerifyAll();
         evaluator.VerifyAll();
     }
 
@@ -305,9 +320,12 @@ public sealed class RatingRankingAdministrationServicesTests
                 1,
                 new[] { CreateEvaluationEntry(candidatePolicy, "item-a", "A", 4.9, true) },
                 false));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            CreateStableRevisionRepository(scope, initialHeader.SourceRevision);
         RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
             registry.Object,
             snapshots.Object,
+            revisions.Object,
             evaluator.Object);
 
         RatingRankingPolicyImpactResult result = await previewer.PreviewImpactAsync(
@@ -320,18 +338,125 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal(0, impact.LostEligibilityCount);
         Assert.Equal(0, impact.ComparedRankCount);
         snapshots.VerifyAll();
+        revisions.VerifyAll();
         evaluator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewImpactAsync_WhenSourceRevisionChangesDuringEvaluation_ShouldRejectTheComparison()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.PublicItemCategories
+            .Single(static definition => definition.Filter.ParkItemCategory == ParkItemCategory.Attraction);
+        RankingSnapshotHeader header = CreateCurrentHeader(scope, 1, sourceRevision: 8);
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                CancellationToken.None))
+            .ReturnsAsync(header);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.SetupSequence(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(scope.Key, 7, header.GeneratedAtUtc.AddMinutes(-1)))
+            .ReturnsAsync(new RatingRankingSourceRevision(scope.Key, 8, header.GeneratedAtUtc));
+        RankingEligibilityPolicy candidatePolicy = CreateCandidatePolicy();
+        Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
+            new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
+        evaluator.Setup(value => value.EvaluateAsync(
+                scope,
+                It.Is<RankingEligibilityPolicy>(policy => policy.Version == candidatePolicy.Version),
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingPolicyEvaluationPlan(
+                1,
+                new[] { CreateEvaluationEntry(candidatePolicy, "item-a", "A", 4.9, true) },
+                false));
+        RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
+            registry.Object,
+            snapshots.Object,
+            revisions.Object,
+            evaluator.Object);
+
+        RatingRankingPolicyImpactResult result = await previewer.PreviewImpactAsync(
+            CreateCandidate(),
+            CancellationToken.None);
+
+        RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
+        Assert.False(impact.HasCurrentSnapshot);
+        Assert.Equal(0, impact.GainedEligibilityCount);
+        Assert.Equal(0, impact.LostEligibilityCount);
+        Assert.Equal(0, impact.ComparedRankCount);
+        snapshots.VerifyAll();
+        revisions.VerifyAll();
+        evaluator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RequestRebuildAsync_WhenSchedulingIsDeferred_ShouldNotReportTheScopeAsScheduled()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        RatingRankingMutationLease lease = RatingRankingMutationLease.Create(scope.Key);
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            8,
+            new DateTime(2026, 9, 2, 12, 0, 0, DateTimeKind.Utc),
+            PendingMutationCount: 1);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(repository => repository.BeginMutationAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(lease);
+        revisions.Setup(repository => repository.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .ReturnsAsync(revision);
+        Mock<IRatingRankingRebuildScheduler> scheduler =
+            new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
+        scheduler.Setup(value => value.ScheduleIfOutstandingAsync(revision, CancellationToken.None))
+            .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Deferred);
+        RatingRankingRebuildRequester requester = new RatingRankingRebuildRequester(
+            registry.Object,
+            revisions.Object,
+            scheduler.Object);
+
+        RatingRankingRebuildRequestResult result = await requester.RequestRebuildAsync(
+            CancellationToken.None);
+
+        Assert.Equal(0, result.ScheduledScopeCount);
+        Assert.Empty(result.Scopes);
+        revisions.VerifyAll();
+        scheduler.VerifyAll();
     }
 
     private static RatingRankingPolicyImpactPreviewer CreatePreviewer(
         IRankingScopeRegistry registry,
         IRankingSnapshotRepository? snapshotRepository = null,
+        IRatingRankingSourceRevisionRepository? sourceRevisionRepository = null,
         IRatingRankingPolicyEvaluationBuilder? evaluator = null)
     {
         return new RatingRankingPolicyImpactPreviewer(
             registry,
             snapshotRepository ?? Mock.Of<IRankingSnapshotRepository>(),
+            sourceRevisionRepository ?? Mock.Of<IRatingRankingSourceRevisionRepository>(),
             evaluator ?? Mock.Of<IRatingRankingPolicyEvaluationBuilder>());
+    }
+
+    private static Mock<IRatingRankingSourceRevisionRepository> CreateStableRevisionRepository(
+        RankingScopeDefinition scope,
+        long sourceRevision)
+    {
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            sourceRevision,
+            new DateTime(2026, 9, 2, 11, 59, 0, DateTimeKind.Utc));
+        revisions.SetupSequence(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(revision)
+            .ReturnsAsync(revision);
+        return revisions;
     }
 
     private static Mock<IRankingScopeRegistry> CreateRegistry(RankingScopeDefinition scope)
@@ -378,7 +503,8 @@ public sealed class RatingRankingAdministrationServicesTests
 
     private static RankingSnapshotHeader CreateCurrentHeader(
         RankingScopeDefinition scope,
-        int eligibleEntryCount)
+        int eligibleEntryCount,
+        long sourceRevision = 7)
     {
         DateTime generatedAtUtc = new DateTime(2026, 9, 2, 11, 59, 0, DateTimeKind.Utc);
         DateTime publishedAtUtc = generatedAtUtc.AddSeconds(2);
@@ -386,7 +512,7 @@ public sealed class RatingRankingAdministrationServicesTests
             RankingSnapshotId.Parse("snapshot-current"),
             scope.Key,
             scope.MethodologyVersion,
-            7,
+            sourceRevision,
             RankingSnapshotStatus.Current,
             eligibleEntryCount,
             eligibleEntryCount,

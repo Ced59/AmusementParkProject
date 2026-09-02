@@ -30,7 +30,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         this.logger = logger;
     }
 
-    public async Task ScheduleIfOutstandingAsync(
+    public async Task<RatingRankingRebuildScheduleDisposition> ScheduleIfOutstandingAsync(
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken)
     {
@@ -44,7 +44,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
 
         if (!sourceRevision.IsRebuildable)
         {
-            return;
+            return RatingRankingRebuildScheduleDisposition.Deferred;
         }
 
         bool isCovered = await this.IsCoveredAsync(
@@ -54,10 +54,11 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             cancellationToken);
         if (isCovered)
         {
-            return;
+            return RatingRankingRebuildScheduleDisposition.Covered;
         }
 
         await this.EnqueueAsync(scope, sourceRevision.Revision, cancellationToken);
+        return RatingRankingRebuildScheduleDisposition.Scheduled;
     }
 
     public async Task ScheduleOutstandingAsync(CancellationToken cancellationToken)
