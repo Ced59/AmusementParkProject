@@ -4,6 +4,8 @@ namespace AmusementPark.Application.Ports;
 
 public sealed class SsrPageCacheInvalidationRequest
 {
+    public const string RatingRankingPageGroup = "rating-rankings";
+
     [JsonPropertyName("all")]
     public bool All { get; init; }
 
@@ -12,6 +14,9 @@ public sealed class SsrPageCacheInvalidationRequest
 
     [JsonPropertyName("prefixes")]
     public IReadOnlyCollection<string> Prefixes { get; init; } = Array.Empty<string>();
+
+    [JsonPropertyName("pageGroups")]
+    public IReadOnlyCollection<string> PageGroups { get; init; } = Array.Empty<string>();
 
     [JsonPropertyName("includeSeoDocuments")]
     public bool IncludeSeoDocuments { get; init; }
@@ -28,6 +33,18 @@ public sealed class SsrPageCacheInvalidationRequest
         {
             All = true,
             IncludeSeoDocuments = true,
+            AllowStale = false,
+            Refresh = false,
+        };
+    }
+
+    public static SsrPageCacheInvalidationRequest RatingRankingPages()
+    {
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = false,
+            PageGroups = new string[] { RatingRankingPageGroup },
+            IncludeSeoDocuments = false,
             AllowStale = false,
             Refresh = false,
         };

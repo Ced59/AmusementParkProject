@@ -210,7 +210,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicParkItemDetailData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)

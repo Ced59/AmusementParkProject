@@ -57,6 +57,12 @@ import {
 } from './src/server/ssr/facebook-open-graph-meta';
 import { prepareFacebookHtmlResponse } from './src/server/ssr/facebook-html-response';
 import {
+  isRatingRankingDependentCacheKey,
+  RATING_RANKING_PAGE_GROUP,
+  SsrPageCacheGenerationTracker,
+} from './src/server/ssr/rating-ranking-cache-generation';
+import type { SsrPageCacheGenerationStamp } from './src/server/ssr/rating-ranking-cache-generation';
+import {
   buildPreferredLanguageHomeUrl,
   resolveLanguagePreferenceCookie,
 } from './src/server/localization/language-preference-cookie';
@@ -85,6 +91,7 @@ const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 
 const pageCacheTtlSeconds = normalizeInteger(process.env['SSR_PAGE_CACHE_SECONDS'], 86400, 0, 31_536_000);
 const pageCacheMaxEntries = normalizeInteger(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'], 2000, 0, Number.MAX_SAFE_INTEGER);
 const pageCache = new Map<string, PageCacheEntry>();
+const pageCacheGenerationTracker = new SsrPageCacheGenerationTracker();
 const pageCacheAllowAuthenticatedPublicHtml = (process.env['SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheEnabled = (process.env['SSR_DISK_PAGE_CACHE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/amusementpark-ssr-page-cache';
@@ -399,12 +406,14 @@ interface PageCacheEntry {
   readonly seoReady?: boolean;
   readonly expiresAt: number;
   readonly staleUntil?: number;
+  readonly ratingRankingGeneration?: string;
 }
 
 interface CacheInvalidationRequest {
   readonly all?: boolean;
   readonly paths?: string[];
   readonly prefixes?: string[];
+  readonly pageGroups?: string[];
   readonly includeSeoDocuments?: boolean;
   readonly allowStale?: boolean;
   readonly refresh?: boolean;
@@ -414,6 +423,7 @@ interface NormalizedCacheInvalidationRequest {
   readonly all: boolean;
   readonly paths: string[];
   readonly prefixes: string[];
+  readonly pageGroups: string[];
   readonly includeSeoDocuments: boolean;
   readonly allowStale: boolean;
   readonly refresh: boolean;
@@ -575,6 +585,9 @@ export function app(): express.Express {
     applySearchRobotsHeaders(req, res);
 
     const cacheKey = buildPageCacheKey(req);
+    const cacheGenerationAtRenderStart = cacheKey === null
+      ? null
+      : pageCacheGenerationTracker.capture(cacheKey);
     const warmupRequest = isSsrWarmupRequest(req);
     const forceWarmupRefresh = warmupRequest && isSsrWarmupRefreshRequest(req);
     const cachedEntry = cacheKey === null || forceWarmupRefresh ? null : getCachedPage(cacheKey);
@@ -620,7 +633,11 @@ export function app(): express.Express {
 
     scheduleSsrRender(() => renderSsrHtmlWithSeoReadyRetries(renderHtml, res, statusCode, req.originalUrl), req.originalUrl)
       .then((html: string) => {
-        if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300 && setCachedPage(cacheKey, res.statusCode, html)) {
+        if (cacheKey !== null
+          && cacheGenerationAtRenderStart !== null
+          && res.statusCode >= 200
+          && res.statusCode < 300
+          && setCachedPage(cacheKey, res.statusCode, html, cacheGenerationAtRenderStart)) {
           const cacheStatus: SsrPageResponseStatus = warmupRequest ? 'WARMED' : 'MISS';
           setPageCacheResponseHeaders(res, cacheStatus);
           recordPageResponse(req, cacheStatus, cacheKey);
@@ -672,6 +689,10 @@ async function executeCacheInvalidationRequest(invalidationRequest: NormalizedCa
   if (invalidationRequest.all) {
     clearPendingTargetedSsrCacheInvalidation();
     return clearAllSsrCaches();
+  }
+
+  if (isRatingRankingGenerationOnlyRequest(invalidationRequest)) {
+    return clearRatingRankingSsrCaches(invalidationRequest);
   }
 
   if (!invalidationRequest.allowStale) {
@@ -2484,6 +2505,12 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
   const memoryEntry = pageCache.get(cacheKey);
 
   if (memoryEntry) {
+    if (!pageCacheGenerationTracker.isStoredEntryCurrent(cacheKey, memoryEntry.ratingRankingGeneration)) {
+      pageCache.delete(cacheKey);
+      removeDiskPageCacheFile(getDiskPageCacheFilePath(cacheKey));
+      return null;
+    }
+
     if (isUsablePageCacheEntry(memoryEntry)) {
       const activeInvalidationRequest = findActiveTargetedInvalidationRequest(cacheKey);
       return activeInvalidationRequest === null
@@ -2497,7 +2524,16 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
   return getDiskCachedPage(cacheKey);
 }
 
-function setCachedPage(cacheKey: string, statusCode: number, html: string): boolean {
+function setCachedPage(
+  cacheKey: string,
+  statusCode: number,
+  html: string,
+  generationAtRenderStart: SsrPageCacheGenerationStamp
+): boolean {
+  if (!pageCacheGenerationTracker.canStore(cacheKey, generationAtRenderStart)) {
+    return false;
+  }
+
   const htmlCacheDecision = shouldCacheSsrRenderedHtml(html);
   if (!htmlCacheDecision.canCache) {
     console.warn(`SSR page cache skipped: seoReady=${htmlCacheDecision.reason}, bodyTextLength=${htmlCacheDecision.bodyTextLength}, key=${cacheKey}`);
@@ -2518,6 +2554,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): bool
     statusCode,
     html,
     seoReady: true,
+    ratingRankingGeneration: generationAtRenderStart.ratingRankingPages ?? undefined,
     expiresAt: resolvePricingAwarePageCacheExpiration(
       cacheKey,
       nowMs,
@@ -2593,7 +2630,9 @@ function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
     const serializedEntry: string = readFileSync(cacheFilePath, 'utf8');
     const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
 
-    if (!isUsablePageCacheEntry(parsedEntry) || typeof parsedEntry.html !== 'string') {
+    if (!isUsablePageCacheEntry(parsedEntry)
+      || typeof parsedEntry.html !== 'string'
+      || !pageCacheGenerationTracker.isStoredEntryCurrent(cacheKey, parsedEntry.ratingRankingGeneration)) {
       removeDiskPageCacheFile(cacheFilePath);
       return null;
     }
@@ -2673,6 +2712,8 @@ function enforceDiskPageCacheBudget(): void {
 }
 
 function clearAllSsrCaches(): CacheInvalidationResult {
+  pageCacheGenerationTracker.invalidateAll();
+
   const pageMemoryEntries: number = pageCache.size;
   const seoDocumentEntries: number = seoDocumentCache.size;
 
@@ -2692,6 +2733,8 @@ function clearAllSsrCaches(): CacheInvalidationResult {
 }
 
 async function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
+  invalidatePageGroupGenerations(request);
+
   const matchedCacheKeys = new Set<string>();
   const pageMemoryEntries = clearMatchingMemoryPageCache(request, matchedCacheKeys);
   const seoDocumentEntries = request.includeSeoDocuments ? seoDocumentCache.size : 0;
@@ -2716,6 +2759,38 @@ async function clearTargetedSsrCaches(request: NormalizedCacheInvalidationReques
     queuedRefreshes,
     all: false
   };
+}
+
+function clearRatingRankingSsrCaches(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
+  pageCacheGenerationTracker.invalidateRatingRankingPages();
+  const matchedCacheKeys = new Set<string>();
+  const pageMemoryEntries = clearMatchingMemoryPageCache(request, matchedCacheKeys);
+
+  return {
+    cleared: pageMemoryEntries,
+    pageMemoryEntries,
+    pageDiskEntries: 0,
+    seoDocumentEntries: 0,
+    stalePageEntries: 0,
+    queuedRefreshes: 0,
+    all: false
+  };
+}
+
+function isRatingRankingGenerationOnlyRequest(request: NormalizedCacheInvalidationRequest): boolean {
+  return request.pageGroups.length === 1
+    && request.pageGroups[0] === RATING_RANKING_PAGE_GROUP
+    && request.paths.length === 0
+    && request.prefixes.length === 0
+    && !request.includeSeoDocuments
+    && !request.allowStale
+    && !request.refresh;
+}
+
+function invalidatePageGroupGenerations(request: NormalizedCacheInvalidationRequest): void {
+  if (request.pageGroups.includes(RATING_RANKING_PAGE_GROUP)) {
+    pageCacheGenerationTracker.invalidateRatingRankingPages();
+  }
 }
 
 async function clearImmediateTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
@@ -2805,6 +2880,7 @@ function mergeTargetedInvalidationRequests(
     all: false,
     paths: mergeNormalizedStrings(current.paths, next.paths),
     prefixes: mergeNormalizedStrings(current.prefixes, next.prefixes),
+    pageGroups: mergeNormalizedStrings(current.pageGroups, next.pageGroups),
     includeSeoDocuments: current.includeSeoDocuments || next.includeSeoDocuments,
     allowStale,
     refresh: allowStale && (current.refresh || next.refresh)
@@ -3016,15 +3092,18 @@ function normalizeCacheInvalidationRequest(body: unknown): NormalizedCacheInvali
   const request: CacheInvalidationRequest = isObject(body) ? body as CacheInvalidationRequest : {};
   const paths = normalizeInvalidationPaths(request.paths);
   const prefixes = normalizeInvalidationPaths(request.prefixes);
+  const pageGroups = normalizeInvalidationPageGroups(request.pageGroups);
   const includeSeoDocuments = request.includeSeoDocuments === true;
-  const all = request.all === true || (paths.length === 0 && prefixes.length === 0 && !includeSeoDocuments);
-  const allowStale = !all && request.allowStale !== false;
+  const all = request.all === true
+    || (paths.length === 0 && prefixes.length === 0 && pageGroups.length === 0 && !includeSeoDocuments);
+  const allowStale = !all && pageGroups.length === 0 && request.allowStale !== false;
   const refresh = allowStale && targetedRefreshEnabled && request.refresh !== false;
 
   return {
     all,
     paths,
     prefixes,
+    pageGroups,
     includeSeoDocuments: all || includeSeoDocuments,
     allowStale,
     refresh
@@ -3143,6 +3222,14 @@ function normalizeInvalidationPaths(values: string[] | undefined): string[] {
     .filter((value: string | null): value is string => value !== null)));
 }
 
+function normalizeInvalidationPageGroups(values: string[] | undefined): string[] {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return values.includes(RATING_RANKING_PAGE_GROUP) ? [RATING_RANKING_PAGE_GROUP] : [];
+}
+
 function normalizeInvalidationPath(value: string): string | null {
   if (typeof value !== 'string' || value.trim().length === 0) {
     return null;
@@ -3165,6 +3252,11 @@ function normalizeInvalidationPath(value: string): string | null {
 }
 
 function isPageCacheKeyMatched(cacheKey: string, request: NormalizedCacheInvalidationRequest): boolean {
+  if (request.pageGroups.includes(RATING_RANKING_PAGE_GROUP)
+    && isRatingRankingDependentCacheKey(cacheKey)) {
+    return true;
+  }
+
   const path = extractPathFromCacheKey(cacheKey);
 
   if (path === null) {

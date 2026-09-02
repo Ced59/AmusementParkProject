@@ -45,7 +45,7 @@ public sealed class RatingRankingPublicationCacheInvalidator : IRatingRankingPub
         try
         {
             await this.outputCacheStore.EvictByTagAsync(
-                ApiOutputCachePolicyNames.PublicDataTag,
+                ApiOutputCachePolicyNames.PublicRatingDataTag,
                 cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -61,7 +61,7 @@ public sealed class RatingRankingPublicationCacheInvalidator : IRatingRankingPub
         try
         {
             bool ssrSucceeded = await this.ssrPageCacheInvalidator.TryInvalidateAsync(
-                SsrPageCacheInvalidationRequest.AllCaches(),
+                SsrPageCacheInvalidationRequest.RatingRankingPages(),
                 cancellationToken);
             if (!ssrSucceeded)
             {

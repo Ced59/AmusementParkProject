@@ -30,7 +30,7 @@ if [ "${previous_state}" = "${desired_state}" ]; then
   exit 0
 fi
 
-echo "Rating ranking eligibility transition '${previous_state:-unset}' -> '${desired_state}'; purging public SSR caches."
+echo "Rating ranking eligibility transition '${previous_state:-unset}' -> '${desired_state}'; invalidating ranking-dependent SSR pages."
 docker compose --project-name "${compose_project_name}" -f compose.prod.yml exec -T front \
   node --input-type=module -e '
 const response = await fetch("http://127.0.0.1:4000/internal/cache/invalidate", {
@@ -40,10 +40,11 @@ const response = await fetch("http://127.0.0.1:4000/internal/cache/invalidate", 
     "X-AmusementPark-Cache-Token": process.env.SSR_CACHE_INVALIDATION_TOKEN ?? "",
   },
   body: JSON.stringify({
-    all: true,
+    all: false,
     paths: [],
     prefixes: [],
-    includeSeoDocuments: true,
+    pageGroups: ["rating-rankings"],
+    includeSeoDocuments: false,
     allowStale: false,
     refresh: false,
   }),

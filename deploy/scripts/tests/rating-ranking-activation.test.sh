@@ -50,6 +50,14 @@ if ! grep -Fq 'internal/cache/invalidate' "${docker_log}"; then
   echo 'The transition did not call the internal SSR cache invalidation endpoint.' >&2
   exit 1
 fi
+if ! grep -Fq 'pageGroups: ["rating-rankings"]' "${docker_log}"; then
+  echo 'The transition did not limit SSR invalidation to ranking-dependent pages.' >&2
+  exit 1
+fi
+if grep -Fq 'all: true' "${docker_log}" || grep -Fq 'includeSeoDocuments: true' "${docker_log}"; then
+  echo 'The transition unexpectedly requested a full SSR or static SEO purge.' >&2
+  exit 1
+fi
 
 "${activation_script}" amusementpark
 if [ "$(wc -l < "${docker_log}")" -ne 1 ]; then

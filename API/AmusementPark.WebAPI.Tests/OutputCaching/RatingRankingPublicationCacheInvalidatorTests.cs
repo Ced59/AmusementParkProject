@@ -18,15 +18,16 @@ public sealed class RatingRankingPublicationCacheInvalidatorTests
         Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);
         outputCacheStore
             .Setup(store => store.EvictByTagAsync(
-                ApiOutputCachePolicyNames.PublicDataTag,
+                ApiOutputCachePolicyNames.PublicRatingDataTag,
                 CancellationToken.None))
             .Returns(ValueTask.CompletedTask);
         Mock<ISsrPageCacheInvalidator> ssrInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         ssrInvalidator
             .Setup(invalidator => invalidator.TryInvalidateAsync(
                 It.Is<SsrPageCacheInvalidationRequest>(request =>
-                    request.All
-                    && request.IncludeSeoDocuments
+                    !request.All
+                    && request.PageGroups.SequenceEqual(new string[] { SsrPageCacheInvalidationRequest.RatingRankingPageGroup })
+                    && !request.IncludeSeoDocuments
                     && !request.AllowStale
                     && !request.Refresh),
                 CancellationToken.None))
@@ -53,7 +54,7 @@ public sealed class RatingRankingPublicationCacheInvalidatorTests
         Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);
         outputCacheStore
             .Setup(store => store.EvictByTagAsync(
-                ApiOutputCachePolicyNames.PublicDataTag,
+                ApiOutputCachePolicyNames.PublicRatingDataTag,
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("output-cache-failed"));
         Mock<ISsrPageCacheInvalidator> ssrInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
