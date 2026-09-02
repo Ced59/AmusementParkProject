@@ -1892,7 +1892,7 @@
       },
       "rebuild": {
         "title": "Ricostruzione tracciata",
-        "subtitle": "Pianifica una nuova revisione per tutti gli ambiti. L’elaborazione resta sequenziale e avviene in background.",
+        "subtitle": "Forza il ricalcolo della revisione corrente per tutti gli ambiti. L’elaborazione resta sequenziale e avviene in background.",
         "confirmation": "Confermo di voler ricostruire tutti gli snapshot delle classifiche.",
         "action": "Ricostruisci gli snapshot",
         "scheduled": "Ricostruzione pianificata per {{count}} ambito/i.",

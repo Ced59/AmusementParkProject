@@ -133,7 +133,7 @@
       },
       "rebuild": {
         "title": "Reconstrucción auditada",
-        "subtitle": "Programa una nueva revisión para todos los ámbitos. El proceso sigue siendo secuencial y se ejecuta en segundo plano.",
+        "subtitle": "Fuerza el recálculo de la revisión actual para todos los ámbitos. El proceso sigue siendo secuencial y se ejecuta en segundo plano.",
         "confirmation": "Confirmo que quiero reconstruir todas las instantáneas de clasificación.",
         "action": "Reconstruir instantáneas",
         "scheduled": "Reconstrucción programada para {{count}} ámbito(s).",

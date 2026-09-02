@@ -1892,7 +1892,7 @@
       },
       "rebuild": {
         "title": "Reconstrução auditada",
-        "subtitle": "Agenda uma nova revisão para todos os âmbitos. O processamento mantém-se sequencial e decorre em segundo plano.",
+        "subtitle": "Força o recálculo da revisão atual para todos os âmbitos. O processamento mantém-se sequencial e decorre em segundo plano.",
         "confirmation": "Confirmo que quero reconstruir todos os snapshots das classificações.",
         "action": "Reconstruir snapshots",
         "scheduled": "Reconstrução agendada para {{count}} âmbito(s).",

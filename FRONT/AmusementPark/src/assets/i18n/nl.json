@@ -1892,7 +1892,7 @@
       },
       "rebuild": {
         "title": "Gecontroleerde heropbouw",
-        "subtitle": "Plant een nieuwe revisie voor elk bereik. De verwerking blijft sequentieel en loopt op de achtergrond.",
+        "subtitle": "Dwingt voor elk bereik een herberekening van de huidige revisie af. De verwerking blijft sequentieel en loopt op de achtergrond.",
         "confirmation": "Ik bevestig dat ik alle ranglijst-snapshots opnieuw wil opbouwen.",
         "action": "Snapshots opnieuw opbouwen",
         "scheduled": "Heropbouw gepland voor {{count}} bereik(en).",
