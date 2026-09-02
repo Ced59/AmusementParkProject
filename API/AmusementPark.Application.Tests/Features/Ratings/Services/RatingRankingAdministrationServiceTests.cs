@@ -57,8 +57,9 @@ public sealed class RatingRankingAdministrationServicesTests
         revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
             .ReturnsAsync(new RatingRankingSourceRevision(
                 scope.Key,
-                header.SourceRevision + 1,
-                header.PublishedAtUtc!.Value.AddSeconds(1)));
+                header.SourceRevision,
+                header.PublishedAtUtc!.Value.AddSeconds(1),
+                PendingMutationCount: 1));
         Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
             new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
         evaluator.Setup(value => value.EvaluateAsync(

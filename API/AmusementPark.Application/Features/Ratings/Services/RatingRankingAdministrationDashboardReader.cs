@@ -88,7 +88,8 @@ public sealed class RatingRankingAdministrationDashboardReader
                         header,
                         cancellationToken);
             long resolvedSourceRevision = sourceRevision?.Revision ?? 0;
-            bool isOutstanding = pointer is null
+            bool isOutstanding = (sourceRevision is not null && !sourceRevision.IsRebuildable)
+                || pointer is null
                 || pointer.MethodologyVersion != scope.MethodologyVersion
                 || pointer.HighestPublishedSourceRevision < resolvedSourceRevision;
             long? durationMilliseconds = header?.PublishedAtUtc is DateTime publishedAtUtc
