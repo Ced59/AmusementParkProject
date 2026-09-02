@@ -36,6 +36,28 @@ internal static class RatingRankingFactory
         ParkItemCategory? categoryFilter = null,
         ParkRankingEvidenceFactsBatch? evidenceFacts = null)
     {
+        return BuildParkResults(sources, categoryFilter, evidenceFacts, publishRanks: true);
+    }
+
+    public static IReadOnlyCollection<ParkRatingRankingResult> BuildParkTrends(
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        ParkItemCategory categoryFilter)
+    {
+        return BuildParkResults(sources, categoryFilter, null, publishRanks: false);
+    }
+
+    public static IReadOnlyCollection<ParkRatingRankingResult> BuildParkDetails(
+        IReadOnlyCollection<RatingRankingItemResult> sources)
+    {
+        return BuildParkResults(sources, null, null, publishRanks: false);
+    }
+
+    private static IReadOnlyCollection<ParkRatingRankingResult> BuildParkResults(
+        IReadOnlyCollection<RatingRankingItemResult> sources,
+        ParkItemCategory? categoryFilter,
+        ParkRankingEvidenceFactsBatch? evidenceFacts,
+        bool publishRanks)
+    {
         List<ParkRatingRankingResult> rankings = sources
             .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
             .GroupBy(static source => source.ParkId, StringComparer.Ordinal)
@@ -46,7 +68,10 @@ internal static class RatingRankingFactory
             .ThenByDescending(static ranking => ranking.RatingCount)
             .ThenBy(static ranking => ranking.ParkName, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static ranking => ranking.ParkId, StringComparer.Ordinal)
-            .Select(static (ranking, index) => ranking with { Rank = index + 1 })
+            .Select((ranking, index) => ranking with
+            {
+                Rank = publishRanks ? index + 1 : null,
+            })
             .ToList();
 
         if (evidenceFacts is null)
@@ -178,21 +203,6 @@ internal static class RatingRankingFactory
             .Select(static (candidate, index) => candidate with
             {
                 Ranking = candidate.Ranking with { Rank = index + 1 },
-            })
-            .ToList();
-    }
-
-    public static IReadOnlyCollection<ParkItemRatingRankingResult> ApplyParkItemEvidence(
-        IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
-        IReadOnlyCollection<RatingRankingItemResult> sources,
-        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
-    {
-        return BuildParkItemSnapshotCandidates(rankings, sources, aggregateSourceFacts)
-            .Select(static candidate => candidate.Ranking with
-            {
-                Evidence = candidate.Evidence is null
-                    ? null
-                    : RatingResultFactory.ToResult(candidate.Evidence),
             })
             .ToList();
     }

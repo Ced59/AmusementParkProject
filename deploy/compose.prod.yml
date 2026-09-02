@@ -223,7 +223,6 @@ services:
       SocialPublishing__Facebook__WebhookEnabled: ${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED:-false}
       SocialPublishing__Facebook__AppSecret: ${SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET:-}
       SocialPublishing__Facebook__WebhookVerifyToken: ${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN:-}
-      Ratings__Eligibility__Enabled: ${RATINGS_ELIGIBILITY_ENABLED:-false}
       Cors__AllowedOriginsCsv: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required};${PUBLIC_WWW_BASE_URL:-}
       Cors__AllowedMethods__0: GET
       Cors__AllowedMethods__1: POST

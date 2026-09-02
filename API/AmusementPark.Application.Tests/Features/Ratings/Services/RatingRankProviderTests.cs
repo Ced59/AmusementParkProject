@@ -16,21 +16,6 @@ public sealed class RatingRankProviderTests
         new DateTime(2026, 9, 1, 8, 5, 0, DateTimeKind.Utc);
 
     [Fact]
-    public async Task GetRankAsync_WhenEligibilityIsDisabled_ShouldWithholdRankWithoutReadingSources()
-    {
-        ProviderFixture fixture = new ProviderFixture(eligibilityEnabled: false);
-
-        RatingPublishedRank? result = await fixture.Provider.GetRankAsync(
-            CreateAggregate("park-2"),
-            CancellationToken.None);
-
-        Assert.Null(result);
-        fixture.Ratings.VerifyNoOtherCalls();
-        fixture.Snapshots.VerifyNoOtherCalls();
-        fixture.Revisions.VerifyNoOtherCalls();
-    }
-
-    [Fact]
     public async Task GetRankAsync_WhenPublishedSnapshotIsCurrentAndValid_ShouldReturnItsCompetitionRank()
     {
         ProviderFixture fixture = new ProviderFixture();
@@ -173,7 +158,6 @@ public sealed class RatingRankProviderTests
             CancellationToken.None);
 
         Assert.Null(result);
-        fixture.Ratings.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -259,26 +243,21 @@ public sealed class RatingRankProviderTests
         private readonly RankingSnapshotChecksumCalculator checksumCalculator =
             new RankingSnapshotChecksumCalculator();
 
-        public ProviderFixture(bool eligibilityEnabled = true)
+        public ProviderFixture()
         {
-            this.Ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
             this.Snapshots = new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
             this.Revisions = new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
             RankingScopeRegistry registry = new RankingScopeRegistry(
                 CanonicalRankingScopes.Version,
                 CanonicalRankingScopes.All);
             this.Provider = new RatingRankProvider(
-                this.Ratings.Object,
                 new PassthroughRankSnapshotCache(),
                 this.Snapshots.Object,
                 this.Revisions.Object,
                 registry,
-                new ConfigurableFeatureFlags(eligibilityEnabled),
                 this.checksumCalculator,
                 new RankingSnapshotIntegrityValidator(this.checksumCalculator));
         }
-
-        public Mock<IRatingRepository> Ratings { get; }
 
         public Mock<IRankingSnapshotRepository> Snapshots { get; }
 
@@ -419,27 +398,8 @@ public sealed class RatingRankProviderTests
 
     }
 
-    private sealed class ConfigurableFeatureFlags : IRatingRankingFeatureFlags
-    {
-        public ConfigurableFeatureFlags(bool eligibilityEnabled)
-        {
-            this.EligibilityEnabled = eligibilityEnabled;
-        }
-
-        public bool EligibilityEnabled { get; }
-    }
-
     private sealed class PassthroughRankSnapshotCache : IRatingRankSnapshotCache
     {
-        public Task<IReadOnlyDictionary<string, int>> GetOrCreateAsync(
-            RatingTargetType targetType,
-            ParkItemCategory? parkItemCategory,
-            Func<CancellationToken, Task<IReadOnlyDictionary<string, int>>> factory,
-            CancellationToken cancellationToken)
-        {
-            throw new InvalidOperationException("Legacy rank computation must not be used.");
-        }
-
         public Task<RatingPublishedRankingSnapshot?> GetOrCreatePublishedAsync(
             RankingScopeKey scopeKey,
             RankingSnapshotId snapshotId,

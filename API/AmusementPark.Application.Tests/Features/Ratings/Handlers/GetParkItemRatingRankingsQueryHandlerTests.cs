@@ -31,7 +31,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "ride-2" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { CreateAggregate("ride-2") });
-        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         rankProvider
             .Setup(provider => provider.GetCanonicalSnapshotAsync(
@@ -39,8 +38,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 ParkItemCategory.Attraction,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(snapshot);
-        Mock<IRatingRankingFeatureFlags> featureFlags = new Mock<IRatingRankingFeatureFlags>(MockBehavior.Strict);
-        featureFlags.SetupGet(flags => flags.EligibilityEnabled).Returns(true);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
             .Setup(repository => repository.GetByIdsAsync(
@@ -63,10 +60,7 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 },
             });
         GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
-            ratingRepository.Object,
-            ratingEvidenceReader.Object,
             new PagedQueryValidator(),
-            featureFlags.Object,
             new CanonicalParkItemRatingRankingReader(
                 rankProvider.Object,
                 ratingRepository.Object,
@@ -89,7 +83,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         Assert.Equal(generatedAtUtc, ranking.GeneratedAtUtc);
         Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
         ratingRepository.VerifyAll();
-        ratingEvidenceReader.VerifyNoOtherCalls();
         rankProvider.VerifyAll();
         parkItemRepository.VerifyAll();
         parkRepository.VerifyAll();
@@ -107,7 +100,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "ride-1", "ride-3" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { CreateAggregate("ride-1"), CreateAggregate("ride-3") });
-        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         rankProvider
             .Setup(provider => provider.GetCanonicalSnapshotAsync(
@@ -115,8 +107,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 ParkItemCategory.Attraction,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(snapshot);
-        Mock<IRatingRankingFeatureFlags> featureFlags = new Mock<IRatingRankingFeatureFlags>(MockBehavior.Strict);
-        featureFlags.SetupGet(flags => flags.EligibilityEnabled).Returns(true);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
             .Setup(repository => repository.GetByIdsAsync(
@@ -150,10 +140,7 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 parkRepository.Object,
                 parkItemRepository.Object);
         GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
-            ratingRepository.Object,
-            ratingEvidenceReader.Object,
             new PagedQueryValidator(),
-            featureFlags.Object,
             canonicalReader);
 
         ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result = await handler.HandleAsync(
@@ -168,7 +155,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         Assert.Equal(new[] { "ride-1", "ride-3" }, result.Value.Items.Select(static item => item.TargetId));
         Assert.All(result.Value.Items, static item => Assert.Null(item.Rank));
         ratingRepository.VerifyAll();
-        ratingEvidenceReader.VerifyNoOtherCalls();
         rankProvider.VerifyAll();
         parkItemRepository.VerifyAll();
         parkRepository.VerifyAll();
@@ -193,8 +179,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                 ParkItemCategory.Attraction,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(snapshot);
-        Mock<IRatingRankingFeatureFlags> featureFlags = new Mock<IRatingRankingFeatureFlags>(MockBehavior.Strict);
-        featureFlags.SetupGet(flags => flags.EligibilityEnabled).Returns(true);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         parkItemRepository
             .Setup(repository => repository.GetByIdsAsync(
@@ -220,12 +204,8 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
                     Status = ParkStatus.Operating,
                 },
             });
-        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
         GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
-            ratingRepository.Object,
-            ratingEvidenceReader.Object,
             new PagedQueryValidator(),
-            featureFlags.Object,
             new CanonicalParkItemRatingRankingReader(
                 rankProvider.Object,
                 ratingRepository.Object,
@@ -243,7 +223,6 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         Assert.Empty(result.Value!.Items);
         Assert.Equal(0, result.Value.TotalItems);
         ratingRepository.VerifyAll();
-        ratingEvidenceReader.VerifyNoOtherCalls();
         rankProvider.VerifyAll();
         parkItemRepository.VerifyAll();
         parkRepository.VerifyAll();
@@ -252,40 +231,57 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
     [Fact]
     public async Task HandleAsync_WhenSearchHasSeveralPages_ShouldReturnRequestedPage()
     {
-        IReadOnlyCollection<RatingRankingItemResult> sources = new[]
-        {
-            CreateRankingSource("ride-1", "Ride Alpha", 4.2),
-            CreateRankingSource("ride-2", "Ride Beta", 4.1),
-            CreateRankingSource("ride-3", "Ride Gamma", 4.0),
-        };
+        RatingPublishedRankingSnapshot snapshot = CreatePublishedItemSnapshot(
+            new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc));
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
-            .Setup(repository => repository.GetVisibleParkItemRankingSourcesAsync(
-                ParkItemCategory.Attraction,
-                It.IsAny<int>(),
+            .Setup(repository => repository.GetAggregatesAsync(
+                RatingTargetType.ParkItem,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "ride-2" })),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(sources);
-        Mock<IRatingEvidenceReader> ratingEvidenceReader = new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
-        ratingEvidenceReader
-            .Setup(reader => reader.ReadAggregateSourceFactsAsync(
-                It.Is<IReadOnlyCollection<RatingAggregateSourceTarget>>(targets =>
-                    targets.Count == 1 && targets.Single().TargetId == "ride-2"),
+            .ReturnsAsync(new[] { CreateAggregate("ride-2") });
+        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        rankProvider
+            .Setup(provider => provider.GetCanonicalSnapshotAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Attraction,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(snapshot);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.SequenceEqual(new[] { "ride-1", "ride-2", "ride-3" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
             {
-                new RatingAggregateSourceFact(
-                    RatingTargetType.ParkItem,
-                    "ride-2",
-                    UniqueContributorCount: 10,
-                    RatingObservationCount: 10,
-                    RatingSum: 47d),
+                CreateParkItem("ride-1", ParkItemType.RollerCoaster),
+                CreateParkItem("ride-2", ParkItemType.RollerCoaster),
+                CreateParkItem("ride-3", ParkItemType.RollerCoaster),
+            });
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(
+                    new[] { "park-1", "park-1", "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-1",
+                    Name = "Demo Park",
+                    IsVisible = true,
+                    Status = ParkStatus.Operating,
+                },
             });
         GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
-            ratingRepository.Object,
-            ratingEvidenceReader.Object,
             new PagedQueryValidator(),
-            DisabledFeatureFlags.Instance,
-            Mock.Of<ICanonicalParkItemRatingRankingReader>());
+            new CanonicalParkItemRatingRankingReader(
+                rankProvider.Object,
+                ratingRepository.Object,
+                parkRepository.Object,
+                parkItemRepository.Object));
 
         ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result = await handler.HandleAsync(
             new GetParkItemRatingRankingsQuery(
@@ -298,37 +294,53 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         Assert.Equal(3, result.Value.TotalItems);
         Assert.Equal(3, result.Value.TotalPages);
         ParkItemRatingRankingResult ranking = Assert.Single(result.Value.Items);
-        Assert.Null(ranking.Rank);
-        Assert.Equal("Ride Beta", ranking.TargetName);
-        Assert.Equal(10, ranking.RatingObservationCount);
-        Assert.Equal(10, ranking.UniqueContributorCount);
+        Assert.Equal(2, ranking.Rank);
+        Assert.Equal("ride-2", ranking.TargetName);
+        Assert.Equal(12, ranking.RatingObservationCount);
+        Assert.Equal(12, ranking.UniqueContributorCount);
         Assert.Equal(RankingEvidenceLevel.Eligible, ranking.Evidence?.Level);
         Assert.Equal("ratings-2026-01", ranking.MethodologyVersion?.ToString());
         ratingRepository.VerifyAll();
-        ratingEvidenceReader.VerifyAll();
+        rankProvider.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkRepository.VerifyAll();
     }
 
-    private static RatingRankingItemResult CreateRankingSource(
-        string targetId,
-        string targetName,
-        double bayesianScore)
+    [Fact]
+    public async Task HandleAsync_WhenCanonicalSnapshotIsUnavailable_ShouldReturnNoLegacyRanking()
     {
-        return new RatingRankingItemResult(
-            RatingTargetType.ParkItem,
-            targetId,
-            targetName,
-            "park-1",
-            "Demo Park",
-            ParkItemCategory.Attraction,
-            ParkItemType.RollerCoaster,
-            10,
-            (bayesianScore * 20d) - 35d,
-            ((bayesianScore * 20d) - 35d) / 10d,
-            bayesianScore)
-        {
-            UniqueContributorCount = 10,
-            AggregateIntegrityIsValid = true,
-        };
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IRatingRankProvider> rankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        rankProvider
+            .Setup(provider => provider.GetCanonicalSnapshotAsync(
+                RatingTargetType.ParkItem,
+                ParkItemCategory.Attraction,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((RatingPublishedRankingSnapshot?)null);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
+            new PagedQueryValidator(),
+            new CanonicalParkItemRatingRankingReader(
+                rankProvider.Object,
+                ratingRepository.Object,
+                parkRepository.Object,
+                parkItemRepository.Object));
+
+        ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result = await handler.HandleAsync(
+            new GetParkItemRatingRankingsQuery(
+                ParkItemCategory.Attraction,
+                new PagedQuery(1, 20),
+                null,
+                null));
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Items);
+        Assert.Equal(0, result.Value.TotalItems);
+        ratingRepository.VerifyNoOtherCalls();
+        rankProvider.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyNoOtherCalls();
     }
 
     private static RatingPublishedRankingSnapshot CreatePublishedItemSnapshot(DateTime generatedAtUtc)
@@ -393,14 +405,4 @@ public sealed class GetParkItemRatingRankingsQueryHandlerTests
         };
     }
 
-    private sealed class DisabledFeatureFlags : IRatingRankingFeatureFlags
-    {
-        public static DisabledFeatureFlags Instance { get; } = new DisabledFeatureFlags();
-
-        public bool EligibilityEnabled => false;
-
-        private DisabledFeatureFlags()
-        {
-        }
-    }
 }

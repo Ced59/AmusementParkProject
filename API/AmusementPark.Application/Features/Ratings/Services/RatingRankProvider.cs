@@ -1,7 +1,5 @@
-using AmusementPark.Application.Features.Ratings.Handlers;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
-using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -9,33 +7,25 @@ namespace AmusementPark.Application.Features.Ratings.Services;
 
 public sealed class RatingRankProvider : IRatingRankProvider
 {
-    private const int RankingSourceLimit = 5000;
-
-    private readonly IRatingRepository ratingRepository;
     private readonly IRatingRankSnapshotCache snapshotCache;
     private readonly IRankingSnapshotRepository rankingSnapshotRepository;
     private readonly IRatingRankingSourceRevisionRepository sourceRevisionRepository;
     private readonly IRankingScopeRegistry scopeRegistry;
-    private readonly IRatingRankingFeatureFlags featureFlags;
     private readonly RankingSnapshotChecksumCalculator checksumCalculator;
     private readonly RankingSnapshotIntegrityValidator integrityValidator;
 
     public RatingRankProvider(
-        IRatingRepository ratingRepository,
         IRatingRankSnapshotCache snapshotCache,
         IRankingSnapshotRepository rankingSnapshotRepository,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRankingScopeRegistry scopeRegistry,
-        IRatingRankingFeatureFlags featureFlags,
         RankingSnapshotChecksumCalculator checksumCalculator,
         RankingSnapshotIntegrityValidator integrityValidator)
     {
-        this.ratingRepository = ratingRepository;
         this.snapshotCache = snapshotCache;
         this.rankingSnapshotRepository = rankingSnapshotRepository;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.scopeRegistry = scopeRegistry;
-        this.featureFlags = featureFlags;
         this.checksumCalculator = checksumCalculator;
         this.integrityValidator = integrityValidator;
     }
@@ -45,11 +35,6 @@ public sealed class RatingRankProvider : IRatingRankProvider
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(aggregate);
-
-        if (!this.featureFlags.EligibilityEnabled)
-        {
-            return null;
-        }
 
         RatingPublishedRankingSnapshot? snapshot = await this.GetCanonicalSnapshotAsync(
             aggregate.TargetType,
@@ -72,11 +57,6 @@ public sealed class RatingRankProvider : IRatingRankProvider
         ParkItemCategory? parkItemCategory,
         CancellationToken cancellationToken)
     {
-        if (!this.featureFlags.EligibilityEnabled)
-        {
-            return null;
-        }
-
         RankingScopeDefinition? scope = this.ResolveScope(targetType, parkItemCategory);
         if (scope is null)
         {
@@ -111,34 +91,6 @@ public sealed class RatingRankProvider : IRatingRankProvider
     public void Invalidate()
     {
         this.snapshotCache.Invalidate();
-    }
-
-    private async Task<int?> GetLegacyRankAsync(
-        RatingAggregate aggregate,
-        CancellationToken cancellationToken)
-    {
-        if (aggregate.TargetType == RatingTargetType.Park)
-        {
-            IReadOnlyDictionary<string, int> ranks = await this.snapshotCache.GetOrCreateAsync(
-                RatingTargetType.Park,
-                null,
-                this.BuildParkRanksAsync,
-                cancellationToken);
-            return ranks.TryGetValue(aggregate.TargetId, out int rank) ? rank : null;
-        }
-
-        if (aggregate.TargetType == RatingTargetType.ParkItem && aggregate.ParkItemCategory.HasValue)
-        {
-            ParkItemCategory category = aggregate.ParkItemCategory.Value;
-            IReadOnlyDictionary<string, int> ranks = await this.snapshotCache.GetOrCreateAsync(
-                RatingTargetType.ParkItem,
-                category,
-                token => this.BuildParkItemRanksAsync(category, token),
-                cancellationToken);
-            return ranks.TryGetValue(aggregate.TargetId, out int rank) ? rank : null;
-        }
-
-        return null;
     }
 
     private async Task<PublishedSnapshotState?> ReadCurrentStateAsync(
@@ -297,37 +249,6 @@ public sealed class RatingRankProvider : IRatingRankProvider
             && expected.Checksum == actual.Checksum
             && expected.GeneratedAtUtc == actual.GeneratedAtUtc
             && expected.BuildAttempt == actual.BuildAttempt;
-    }
-
-    private async Task<IReadOnlyDictionary<string, int>> BuildParkRanksAsync(
-        CancellationToken cancellationToken)
-    {
-        RatingRankingSourceBatch sourceBatch =
-            await this.ratingRepository.GetVisibleRankingSourcesAsync(
-                null,
-                RankingSourceLimit,
-                cancellationToken);
-        return RatingRankingFactory.BuildParkRankings(sourceBatch.Sources)
-            .ToDictionary(
-                static ranking => ranking.ParkId,
-                static ranking => ranking.Rank!.Value,
-                StringComparer.Ordinal);
-    }
-
-    private async Task<IReadOnlyDictionary<string, int>> BuildParkItemRanksAsync(
-        ParkItemCategory category,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<RatingRankingItemResult> sources =
-            await this.ratingRepository.GetVisibleParkItemRankingSourcesAsync(
-                category,
-                RankingSourceLimit,
-                cancellationToken);
-        return RatingRankingFactory.BuildParkItemRankings(sources)
-            .ToDictionary(
-                static ranking => ranking.TargetId,
-                static ranking => ranking.Rank!.Value,
-                StringComparer.Ordinal);
     }
 
     private sealed record PublishedSnapshotState(

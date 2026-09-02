@@ -1,6 +1,20 @@
 {
-  "version": "4.3.0",
+  "version": "4.3.1",
   "history": [
+    {
+      "version": "4.3.1",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Les classements reposent désormais exclusivement sur la méthodologie publiée et ses preuves.",
+        "en": "Rankings now rely exclusively on the published methodology and its evidence.",
+        "de": "Ranglisten basieren jetzt ausschließlich auf der veröffentlichten Methodik und ihren Nachweisen.",
+        "nl": "Ranglijsten zijn nu uitsluitend gebaseerd op de gepubliceerde methode en het bijbehorende bewijs.",
+        "it": "Le classifiche si basano ora esclusivamente sulla metodologia pubblicata e sulle relative prove.",
+        "es": "Las clasificaciones se basan ahora exclusivamente en la metodología publicada y sus pruebas.",
+        "pl": "Rankingi opierają się teraz wyłącznie na opublikowanej metodologii i jej dowodach.",
+        "pt": "As classificações baseiam-se agora exclusivamente na metodologia publicada e nas respetivas provas."
+      }
+    },
     {
       "version": "4.3.0",
       "releasedAt": "2026-09-02",

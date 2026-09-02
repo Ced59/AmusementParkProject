@@ -46,7 +46,6 @@ assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN=test-page-access-t
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL=https://www.facebook.com/profile.php?id=61592732938801'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS=30'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED=false'
-assert_env_line 'RATINGS_ELIGIBILITY_ENABLED=true'
 
 if ! grep -Fq 'FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}' "${deploy_scripts_dir}/../compose.prod.yml"; then
   echo 'The frontend SSR service does not receive FACEBOOK_APP_ID.' >&2
@@ -101,14 +100,5 @@ export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='false'
 publishing_disabled_without_app_id_env_file="${temp_dir}/publishing-disabled-without-app-id.env"
 "${deploy_scripts_dir}/write-production-env.sh" "${publishing_disabled_without_app_id_env_file}"
 "${deploy_scripts_dir}/validate-production-env.sh" "${publishing_disabled_without_app_id_env_file}"
-
-export RATINGS_ELIGIBILITY_ENABLED='invalid'
-invalid_rating_flag_env_file="${temp_dir}/invalid-rating-flag.env"
-"${deploy_scripts_dir}/write-production-env.sh" "${invalid_rating_flag_env_file}"
-
-if "${deploy_scripts_dir}/validate-production-env.sh" "${invalid_rating_flag_env_file}" >/dev/null 2>&1; then
-  echo 'Validation unexpectedly accepted an invalid rating eligibility flag.' >&2
-  exit 1
-fi
 
 echo 'Social publishing production environment tests passed.'

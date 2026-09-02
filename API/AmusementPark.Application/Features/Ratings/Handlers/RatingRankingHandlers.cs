@@ -16,20 +16,17 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
     private readonly IRatingRepository ratingRepository;
     private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
-    private readonly IRatingRankingFeatureFlags featureFlags;
     private readonly ICanonicalParkRatingRankingReader canonicalRankingReader;
 
     public GetRatingRankingsQueryHandler(
         IRatingRepository ratingRepository,
         IRatingEvidenceReader ratingEvidenceReader,
         PagedQueryValidator pagedQueryValidator,
-        IRatingRankingFeatureFlags featureFlags,
         ICanonicalParkRatingRankingReader canonicalRankingReader)
     {
         this.ratingRepository = ratingRepository;
         this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
-        this.featureFlags = featureFlags;
         this.canonicalRankingReader = canonicalRankingReader;
     }
 
@@ -41,7 +38,7 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
             return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Failure(errors);
         }
 
-        if (this.featureFlags.EligibilityEnabled && !query.ParkItemCategory.HasValue)
+        if (!query.ParkItemCategory.HasValue)
         {
             PagedResult<ParkRatingRankingResult> canonicalResult =
                 await this.canonicalRankingReader.ReadAsync(
@@ -57,9 +54,9 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
             RankingSourceLimit,
             cancellationToken);
         IReadOnlyCollection<RatingRankingItemResult> sources = sourceBatch.Sources;
-        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkRankings(
+        IReadOnlyCollection<ParkRatingRankingResult> rankings = RatingRankingFactory.BuildParkTrends(
             sources,
-            query.ParkItemCategory);
+            query.ParkItemCategory.Value);
         PagedResult<ParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
             ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
             : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
@@ -91,12 +88,6 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
                 result.TotalItems);
         }
 
-        result = new PagedResult<ParkRatingRankingResult>(
-            result.Items.Select(static ranking => ranking with { Rank = null }).ToList(),
-            result.Page,
-            result.PageSize,
-            result.TotalItems);
-
         return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Success(result);
     }
 
@@ -124,25 +115,14 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
 public sealed class GetParkItemRatingRankingsQueryHandler
     : IQueryHandler<GetParkItemRatingRankingsQuery, ApplicationResult<PagedResult<ParkItemRatingRankingResult>>>
 {
-    private const int RankingSourceLimit = 5000;
-
-    private readonly IRatingRepository ratingRepository;
-    private readonly IRatingEvidenceReader ratingEvidenceReader;
     private readonly PagedQueryValidator pagedQueryValidator;
-    private readonly IRatingRankingFeatureFlags featureFlags;
     private readonly ICanonicalParkItemRatingRankingReader canonicalRankingReader;
 
     public GetParkItemRatingRankingsQueryHandler(
-        IRatingRepository ratingRepository,
-        IRatingEvidenceReader ratingEvidenceReader,
         PagedQueryValidator pagedQueryValidator,
-        IRatingRankingFeatureFlags featureFlags,
         ICanonicalParkItemRatingRankingReader canonicalRankingReader)
     {
-        this.ratingRepository = ratingRepository;
-        this.ratingEvidenceReader = ratingEvidenceReader;
         this.pagedQueryValidator = pagedQueryValidator;
-        this.featureFlags = featureFlags;
         this.canonicalRankingReader = canonicalRankingReader;
     }
 
@@ -162,68 +142,15 @@ public sealed class GetParkItemRatingRankingsQueryHandler
                 RatingApplicationErrors.InvalidParkItemCategory());
         }
 
-        if (this.featureFlags.EligibilityEnabled)
-        {
-            PagedResult<ParkItemRatingRankingResult> canonicalResult =
-                await this.canonicalRankingReader.ReadAsync(
-                    query.ParkItemCategory,
-                    query.Paging.Page,
-                    query.Paging.PageSize,
-                    query.Search,
-                    query.ParkItemType,
-                    cancellationToken);
-            return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(canonicalResult);
-        }
-
-        IReadOnlyCollection<RatingRankingItemResult> sources = await this.ratingRepository.GetVisibleParkItemRankingSourcesAsync(
+        PagedResult<ParkItemRatingRankingResult> canonicalResult =
+            await this.canonicalRankingReader.ReadAsync(
             query.ParkItemCategory,
-            RankingSourceLimit,
-            cancellationToken);
-        IReadOnlyCollection<ParkItemRatingRankingResult> rankings = RatingRankingFactory.BuildParkItemRankings(
-            sources,
-            query.ParkItemType);
-        IReadOnlyCollection<ParkItemRatingRankingResult> filteredRankings = string.IsNullOrWhiteSpace(query.Search)
-            ? rankings
-            : rankings.Where(ranking =>
-                    ranking.TargetName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase)
-                    || ranking.ParkName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase))
-                .ToList();
-        PagedResult<ParkItemRatingRankingResult> result = RatingRankingPaging.BuildPage(
-            filteredRankings,
             query.Paging.Page,
-            query.Paging.PageSize);
-        if (result.Items.Count > 0)
-        {
-            HashSet<string> resultTargetIds = result.Items
-                .Select(static ranking => ranking.TargetId)
-                .ToHashSet(StringComparer.Ordinal);
-            IReadOnlyCollection<RatingRankingItemResult> resultSources = sources
-                .Where(source => resultTargetIds.Contains(source.TargetId))
-                .ToList();
-            IReadOnlyCollection<RatingAggregateSourceFact> sourceFacts =
-                await this.ratingEvidenceReader.ReadAggregateSourceFactsAsync(
-                    resultSources.Select(static source => new RatingAggregateSourceTarget(
-                            source.TargetType,
-                            source.TargetId))
-                        .Distinct()
-                        .ToList(),
-                    cancellationToken);
-            IReadOnlyCollection<ParkItemRatingRankingResult> enrichedItems =
-                RatingRankingFactory.ApplyParkItemEvidence(result.Items, resultSources, sourceFacts);
-            result = new PagedResult<ParkItemRatingRankingResult>(
-                enrichedItems,
-                result.Page,
-                result.PageSize,
-                result.TotalItems);
-        }
-
-        result = new PagedResult<ParkItemRatingRankingResult>(
-            result.Items.Select(static ranking => ranking with { Rank = null }).ToList(),
-            result.Page,
-            result.PageSize,
-            result.TotalItems);
-
-        return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(result);
+            query.Paging.PageSize,
+            query.Search,
+            query.ParkItemType,
+            cancellationToken);
+        return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(canonicalResult);
     }
 
 }
