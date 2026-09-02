@@ -281,19 +281,24 @@ public sealed class RatingRankingAdministrationServicesTests
         evaluator.VerifyAll();
     }
 
-    [Fact]
-    public async Task PreviewImpactAsync_WhenOnlyParkItemComponentIsIncomplete_ShouldCountTheComposition()
+    [Theory]
+    [InlineData(10, 4, RankingIneligibilityReason.InsufficientItemCoverage)]
+    [InlineData(9, 0, RankingIneligibilityReason.TooFewUniqueContributors)]
+    public async Task PreviewImpactAsync_WhenParkItemComponentIsIncomplete_ShouldCountTheComposition(
+        int itemContributorCount,
+        int eligibleItemCount,
+        RankingIneligibilityReason expectedReason)
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         RankingEligibilityPolicy candidatePolicy = CreateCandidatePolicy();
         ParkRankingEvidenceInput parkInput = new ParkRankingEvidenceInput(
-            UniqueContributorCount: 20,
+            UniqueContributorCount: 10 + itemContributorCount,
             RatingObservationCount: 50,
             DirectParkContributorCount: 10,
-            ItemContributorCount: 10,
+            ItemContributorCount: itemContributorCount,
             ItemCategories: new[]
             {
-                new RankingCategoryCoverage(5, 4),
+                new RankingCategoryCoverage(5, eligibleItemCount),
             },
             IsSingleCategoryParkException: true,
             TargetCanReceiveVisitorRatings: true,
@@ -341,9 +346,7 @@ public sealed class RatingRankingAdministrationServicesTests
         RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
         Assert.Equal(1, impact.IncompleteParkCompositionCount);
         Assert.True(parkEvaluation.Evidence.IsEligibleForMainRanking);
-        Assert.Equal(
-            RankingIneligibilityReason.InsufficientItemCoverage,
-            parkEvaluation.ItemComponent.IneligibilityReason);
+        Assert.Equal(expectedReason, parkEvaluation.ItemComponent.IneligibilityReason);
         snapshots.VerifyAll();
         revisions.VerifyAll();
         evaluator.VerifyAll();

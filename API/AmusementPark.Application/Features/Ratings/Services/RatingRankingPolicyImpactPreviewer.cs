@@ -160,9 +160,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
             : Array.Empty<int>();
         int incompleteParkCompositionCount = currentScope.TargetFamily == RankingTargetFamily.Parks
             ? evaluation.Entries.Count(static entry =>
-                entry.ParkItemComponent?.IneligibilityReason is RankingIneligibilityReason.InsufficientItemCoverage
-                    or RankingIneligibilityReason.InsufficientCategoryCoverage
-                    or RankingIneligibilityReason.UnsupportedComposition)
+                entry.ParkItemComponent is { IsEligible: false })
             : 0;
         int estimatedChunkCount = eligibleEntries.Count == 0
             ? 0

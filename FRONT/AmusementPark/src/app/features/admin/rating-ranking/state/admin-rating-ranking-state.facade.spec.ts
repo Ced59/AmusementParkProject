@@ -111,6 +111,18 @@ describe('AdminRatingRankingStateFacade', () => {
     expect(facade.actionMessageKey()).toBe('admin.ratingRanking.rebuild.success');
   });
 
+  it('clears the previous rebuild result when a new rebuild fails', () => {
+    facade.rebuild();
+    expect(facade.rebuildResult()).not.toBeNull();
+    port.rebuildResult = throwError(() => new Error('rebuild failed'));
+
+    facade.rebuild();
+
+    expect(facade.rebuildResult()).toBeNull();
+    expect(facade.rebuilding()).toBe(false);
+    expect(facade.actionMessageKey()).toBe('admin.ratingRanking.rebuild.error');
+  });
+
   it('keeps at most one expensive rebuild request in flight', () => {
     const response: Subject<RatingRankingRebuildRequestResult> =
       new Subject<RatingRankingRebuildRequestResult>();
