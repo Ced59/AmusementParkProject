@@ -197,8 +197,11 @@ public sealed class RatingRankingAdministrationDashboardReader
                 continue;
             }
 
+            int eligibilityContributorCount = policy.ResolveMainRankingEligibilityContributorCount(
+                entry.TargetType,
+                evidence);
             int remainingContributorCount = policy.EligibleMinUniqueContributors
-                - evidence.UniqueContributorCount;
+                - eligibilityContributorCount;
             if (remainingContributorCount <= 0
                 || remainingContributorCount > NearEligibilityMaximumGap)
             {
@@ -210,7 +213,7 @@ public sealed class RatingRankingAdministrationDashboardReader
                 entry.TargetType,
                 entry.TargetId,
                 entry.TargetName,
-                evidence.UniqueContributorCount,
+                eligibilityContributorCount,
                 policy.EligibleMinUniqueContributors,
                 remainingContributorCount));
         }

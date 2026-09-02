@@ -195,6 +195,85 @@ public sealed class RankingEligibilityPolicy
         this.ValidateParkInput(input);
 
         ParkItemComponentEligibility itemComponent = this.EvaluateParkItemComponentValidated(input);
+        return this.EvaluateParkValidated(input, itemComponent);
+    }
+
+    public ParkRankingEvaluation EvaluateParkRanking(
+        ParkRankingEvidenceInput input,
+        double? directParkScore,
+        double? parkItemsScore)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        this.ValidateParkInput(input);
+        ValidateOptionalScore(directParkScore, nameof(directParkScore));
+        ValidateOptionalScore(parkItemsScore, nameof(parkItemsScore));
+
+        ParkItemComponentEligibility itemComponent = this.EvaluateParkItemComponentValidated(input);
+        RankingEvidence evidence = this.EvaluateParkValidated(input, itemComponent);
+        bool directComponentContributes =
+            input.DirectParkContributorCount >= this.EligibleMinUniqueContributors
+            && directParkScore.HasValue;
+        bool itemComponentContributes = itemComponent.IsEligible && parkItemsScore.HasValue;
+        ParkRankingCompositionMode compositionMode = ResolveCompositionMode(
+            directComponentContributes,
+            itemComponentContributes);
+        double score = RatingScoreCalculator.CalculateCompositeParkScore(
+            directComponentContributes ? directParkScore : null,
+            itemComponentContributes ? parkItemsScore : null);
+
+        return new ParkRankingEvaluation(evidence, itemComponent, compositionMode, score);
+    }
+
+    public bool TryEvaluateParkRanking(
+        ParkRankingEvidenceInput? input,
+        double? directParkScore,
+        double? parkItemsScore,
+        [NotNullWhen(true)] out ParkRankingEvaluation? evaluation)
+    {
+        if (input is null)
+        {
+            evaluation = null;
+            return false;
+        }
+
+        try
+        {
+            evaluation = this.EvaluateParkRanking(input, directParkScore, parkItemsScore);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            evaluation = null;
+            return false;
+        }
+        catch (OverflowException)
+        {
+            evaluation = null;
+            return false;
+        }
+    }
+
+    public int ResolveMainRankingEligibilityContributorCount(
+        RatingTargetType targetType,
+        RankingEvidence evidence)
+    {
+        ArgumentNullException.ThrowIfNull(evidence);
+        if (!Enum.IsDefined(targetType))
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetType));
+        }
+
+        return targetType == RatingTargetType.Park
+            && evidence.IneligibilityReason == RankingIneligibilityReason.TooFewUniqueContributors
+            && evidence.DirectParkContributorCount.HasValue
+                ? evidence.DirectParkContributorCount.Value
+                : evidence.UniqueContributorCount;
+    }
+
+    private RankingEvidence EvaluateParkValidated(
+        ParkRankingEvidenceInput input,
+        ParkItemComponentEligibility itemComponent)
+    {
         RankingIneligibilityReason? exclusionReason = ResolveExclusionReason(
             input.TargetCanReceiveVisitorRatings,
             input.IsExcludedByModeration,
@@ -332,6 +411,25 @@ public sealed class RankingEligibilityPolicy
         }
 
         return new ParkItemComponentEligibility(true, eligibleItemCount, eligibleCategoryCount, null);
+    }
+
+    private static ParkRankingCompositionMode ResolveCompositionMode(
+        bool directComponentContributes,
+        bool itemComponentContributes)
+    {
+        if (directComponentContributes && itemComponentContributes)
+        {
+            return ParkRankingCompositionMode.DirectAndItems;
+        }
+
+        if (directComponentContributes)
+        {
+            return ParkRankingCompositionMode.DirectOnly;
+        }
+
+        return itemComponentContributes
+            ? ParkRankingCompositionMode.ItemsOnly
+            : ParkRankingCompositionMode.None;
     }
 
     public RankingPublicationEligibility EvaluateRankingPublication(int eligibleEntryCount)
@@ -688,6 +786,14 @@ public sealed class RankingEligibilityPolicy
             throw new ArgumentException(
                 "Rating observations require at least one unique contributor.",
                 nameof(ratingObservationCount));
+        }
+    }
+
+    private static void ValidateOptionalScore(double? value, string parameterName)
+    {
+        if (value.HasValue)
+        {
+            ValidateScore(value.Value, parameterName);
         }
     }
 

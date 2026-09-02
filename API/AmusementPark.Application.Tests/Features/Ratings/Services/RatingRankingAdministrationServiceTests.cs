@@ -16,18 +16,31 @@ public sealed class RatingRankingAdministrationServicesTests
     [Fact]
     public async Task GetDashboardAsync_ShouldExposeEvidenceThresholdAndSnapshotDiagnostics()
     {
-        RankingScopeDefinition scope = CanonicalRankingScopes.PublicItemCategories
-            .Single(static definition => definition.Filter.ParkItemCategory == ParkItemCategory.Attraction);
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         RankingEligibilityPolicy policy = RankingEligibilityPolicy.Initial;
-        RatingRankingPolicyEvaluationEntry entry = CreateEvaluationEntry(
-            policy,
-            "item-a",
+        ParkRankingEvidenceInput parkInput = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 18,
+            RatingObservationCount: 58,
+            DirectParkContributorCount: 8,
+            ItemContributorCount: 10,
+            ItemCategories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            },
+            IsSingleCategoryParkException: false,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+        ParkRankingEvaluation parkEvaluation = policy.EvaluateParkRanking(parkInput, 4.2d, 4d);
+        RatingRankingPolicyEvaluationEntry entry = new RatingRankingPolicyEvaluationEntry(
+            RatingTargetType.Park,
+            "park-a",
             "A",
-            4.2,
-            false) with
-        {
-            Evidence = CreateSimpleEvidence(policy, 8, false),
-        };
+            null,
+            parkEvaluation.Score,
+            parkEvaluation.Evidence,
+            parkEvaluation.ItemComponent);
         Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
         Mock<IRankingSnapshotRepository> snapshots =
             new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
@@ -101,6 +114,7 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal(32_000, scopeDiagnostics.RebuildDurationMilliseconds);
         RatingRankingNearThresholdTargetResult nearThreshold =
             Assert.Single(result.NearThresholdTargets);
+        Assert.Equal(8, nearThreshold.UniqueContributorCount);
         Assert.Equal(2, nearThreshold.RemainingContributorCount);
         Assert.Equal(RankingEvidenceLevel.Provisional, Assert.Single(result.EvidenceDistribution).Level);
         Assert.Equal(
@@ -181,6 +195,74 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal("item-c", Assert.Single(impact.GainedTargets).TargetId);
         Assert.Equal("item-a", Assert.Single(impact.LostTargets).TargetId);
         Assert.True(impact.HasMinimumComparableEntries);
+        snapshots.VerifyAll();
+        revisions.VerifyAll();
+        evaluator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewImpactAsync_WhenOnlyParkItemComponentIsIncomplete_ShouldCountTheComposition()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RankingEligibilityPolicy candidatePolicy = CreateCandidatePolicy();
+        ParkRankingEvidenceInput parkInput = new ParkRankingEvidenceInput(
+            UniqueContributorCount: 20,
+            RatingObservationCount: 50,
+            DirectParkContributorCount: 10,
+            ItemContributorCount: 10,
+            ItemCategories: new[]
+            {
+                new RankingCategoryCoverage(5, 4),
+            },
+            IsSingleCategoryParkException: true,
+            TargetCanReceiveVisitorRatings: true,
+            IsExcludedByModeration: false,
+            AggregateIntegrityIsValid: true);
+        ParkRankingEvaluation parkEvaluation = candidatePolicy.EvaluateParkRanking(
+            parkInput,
+            directParkScore: 4.2d,
+            parkItemsScore: 3.8d);
+        RatingRankingPolicyEvaluationEntry entry = new RatingRankingPolicyEvaluationEntry(
+            RatingTargetType.Park,
+            "park-a",
+            "A",
+            null,
+            parkEvaluation.Score,
+            parkEvaluation.Evidence,
+            parkEvaluation.ItemComponent);
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                CancellationToken.None))
+            .ReturnsAsync((RankingSnapshotHeader?)null);
+        Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
+            new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
+        evaluator.Setup(value => value.EvaluateAsync(
+                scope,
+                It.Is<RankingEligibilityPolicy>(policy => policy.Version == candidatePolicy.Version),
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingPolicyEvaluationPlan(1, new[] { entry }, false));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            CreateStableRevisionRepository(scope, 7);
+        RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
+            registry.Object,
+            snapshots.Object,
+            revisions.Object,
+            evaluator.Object);
+
+        RatingRankingPolicyImpactResult result = await previewer.PreviewImpactAsync(
+            CreateCandidate(),
+            CancellationToken.None);
+
+        RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
+        Assert.Equal(1, impact.IncompleteParkCompositionCount);
+        Assert.True(parkEvaluation.Evidence.IsEligibleForMainRanking);
+        Assert.Equal(
+            RankingIneligibilityReason.InsufficientItemCoverage,
+            parkEvaluation.ItemComponent.IneligibilityReason);
         snapshots.VerifyAll();
         revisions.VerifyAll();
         evaluator.VerifyAll();

@@ -22,7 +22,8 @@ internal static class RatingRankingPaging
 
 internal sealed record ParkRankingSnapshotCandidate(
     ParkRatingRankingResult Ranking,
-    RankingEvidence? Evidence);
+    RankingEvidence? Evidence,
+    ParkItemComponentEligibility? ItemComponent);
 
 internal sealed record ParkItemRankingSnapshotCandidate(
     ParkItemRatingRankingResult Ranking,
@@ -48,9 +49,14 @@ internal static class RatingRankingFactory
             .Select(static (ranking, index) => ranking with { Rank = index + 1 })
             .ToList();
 
-        return evidenceFacts is null
-            ? rankings
-            : ApplyParkEvidence(rankings, sources, evidenceFacts, categoryFilter);
+        if (evidenceFacts is null)
+        {
+            return rankings;
+        }
+
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
+            BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter);
+        return MapParkEvidence(OrderParkSnapshotCandidates(candidates));
     }
 
     public static IReadOnlyCollection<ParkRatingRankingResult> ApplyParkEvidence(
@@ -59,7 +65,15 @@ internal static class RatingRankingFactory
         ParkRankingEvidenceFactsBatch evidenceFacts,
         ParkItemCategory? categoryFilter = null)
     {
-        return BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter)
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
+            BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter);
+        return MapParkEvidence(candidates);
+    }
+
+    private static IReadOnlyCollection<ParkRatingRankingResult> MapParkEvidence(
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates)
+    {
+        return candidates
             .Select(static candidate => candidate.Ranking with
             {
                 Evidence = candidate.Evidence is null
@@ -102,7 +116,7 @@ internal static class RatingRankingFactory
                 || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts)
                 || incompletePublicInventoryParkIds.Contains(ranking.ParkId))
             {
-                return new ParkRankingSnapshotCandidate(ranking, null);
+                return new ParkRankingSnapshotCandidate(ranking, null, null);
             }
 
             parkSources = ApplyVerifiedAggregateIntegrity(
@@ -127,16 +141,20 @@ internal static class RatingRankingFactory
                 .Distinct()
                 .Count() == 1;
 
-            RankingEvidence? evidence = directParkSources.Count <= 1
-                ? TryCreateParkEvidence(
+            ParkRankingEvaluation? evaluation = directParkSources.Count <= 1
+                ? TryCreateParkEvaluation(
                     directParkSources.FirstOrDefault(),
                     itemSources,
                     contributorFacts,
                     publicItems,
                     isSingleCategoryParkException,
+                    ranking.Categories,
                     eligibilityPolicy ?? RankingEligibilityPolicy.Initial)
                 : null;
-            return new ParkRankingSnapshotCandidate(ranking, evidence);
+            return new ParkRankingSnapshotCandidate(
+                evaluation is null ? ranking : ranking with { Score = evaluation.Score },
+                evaluation?.Evidence,
+                evaluation?.ItemComponent);
         }).ToList();
     }
 
@@ -334,12 +352,13 @@ internal static class RatingRankingFactory
             categories);
     }
 
-    private static RankingEvidence? TryCreateParkEvidence(
+    private static ParkRankingEvaluation? TryCreateParkEvaluation(
         RatingRankingItemResult? directParkSource,
         IReadOnlyCollection<RatingRankingItemResult> itemSources,
         ParkRankingContributorFacts contributorFacts,
         IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems,
         bool isSingleCategoryParkException,
+        IReadOnlyCollection<ParkRatingRankingCategoryResult> categories,
         RankingEligibilityPolicy eligibilityPolicy)
     {
         if (!TryConvertEvidenceCounts(contributorFacts, out ParkContributorDomainCounts counts))
@@ -433,13 +452,21 @@ internal static class RatingRankingFactory
             TargetCanReceiveVisitorRatings: true,
             IsExcludedByModeration: false,
             aggregateIntegrityIsValid);
-        if (!eligibilityPolicy.TryEvaluatePark(input, out RankingEvidence? evidence)
-            || evidence is null)
+        double? itemsScore = categories.Count == 0
+            ? null
+            : RatingScoreCalculator.CalculateCategoryBalancedItemsScore(
+                categories.Select(static category => category.BayesianScore).ToList());
+        if (!eligibilityPolicy.TryEvaluateParkRanking(
+                input,
+                directParkSource?.BayesianScore,
+                itemsScore,
+                out ParkRankingEvaluation? evaluation)
+            || evaluation is null)
         {
             return null;
         }
 
-        return evidence;
+        return evaluation;
     }
 
     private static bool? TryResolveAggregateIntegrity(

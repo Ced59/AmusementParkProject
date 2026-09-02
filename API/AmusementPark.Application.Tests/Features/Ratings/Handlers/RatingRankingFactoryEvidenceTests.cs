@@ -460,6 +460,61 @@ public sealed class RatingRankingFactoryEvidenceTests
         Assert.Equal(1, ranking.Evidence?.EligibleCategoryCount);
     }
 
+    [Fact]
+    public void BuildParkSnapshotCandidates_WhenCandidateRejectsItemCoverage_ShouldRecalculateDirectOnlyScore()
+    {
+        IReadOnlyCollection<RatingRankingItemResult> sources = CreateSources()
+            .Select(source => source.TargetType == RatingTargetType.Park
+                ? source with { BayesianScore = 4.8d }
+                : source with { BayesianScore = 2d })
+            .ToList();
+        ParkRankingEvidenceFactsBatch evidenceFacts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 15,
+                    RatingObservationCount: 60,
+                    DirectParkContributorCount: 10,
+                    ItemContributorCount: 12),
+            },
+            new[]
+            {
+                CreatePublicItem("attraction-1", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-2", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-3", ParkItemCategory.Attraction),
+                CreatePublicItem("restaurant-1", ParkItemCategory.Restaurant),
+                CreatePublicItem("shop-1", ParkItemCategory.Shop),
+            });
+        RankingEligibilityPolicy candidatePolicy = new RankingEligibilityPolicy(
+            RatingMethodologyVersion.Parse("ratings-test-candidate"),
+            3,
+            10,
+            30,
+            100,
+            3,
+            minimumEligibleItemsForParkItemComponent: 6,
+            minimumEligibleItemsPerCategory: 2,
+            minimumEligibleCategories: 2,
+            scoreTieEpsilon: 0.0001m);
+        IReadOnlyCollection<ParkRatingRankingResult> rankings =
+            RatingRankingFactory.BuildParkRankings(sources);
+
+        ParkRankingSnapshotCandidate candidate = Assert.Single(
+            RatingRankingFactory.BuildParkSnapshotCandidates(
+                rankings,
+                sources,
+                evidenceFacts,
+                eligibilityPolicy: candidatePolicy));
+
+        Assert.Equal(4.8d, candidate.Ranking.Score);
+        Assert.True(candidate.Evidence?.IsEligibleForMainRanking);
+        Assert.False(candidate.ItemComponent?.IsEligible);
+        Assert.Equal(
+            RankingIneligibilityReason.InsufficientItemCoverage,
+            candidate.ItemComponent?.IneligibilityReason);
+    }
+
     private static IReadOnlyCollection<RatingRankingItemResult> CreateSources()
     {
         return new[]

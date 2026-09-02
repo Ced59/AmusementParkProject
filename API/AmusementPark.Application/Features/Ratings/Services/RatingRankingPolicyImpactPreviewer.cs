@@ -160,7 +160,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
             : Array.Empty<int>();
         int incompleteParkCompositionCount = currentScope.TargetFamily == RankingTargetFamily.Parks
             ? evaluation.Entries.Count(static entry =>
-                entry.Evidence?.IneligibilityReason is RankingIneligibilityReason.InsufficientItemCoverage
+                entry.ParkItemComponent?.IneligibilityReason is RankingIneligibilityReason.InsufficientItemCoverage
                     or RankingIneligibilityReason.InsufficientCategoryCoverage
                     or RankingIneligibilityReason.UnsupportedComposition)
             : 0;

@@ -63,6 +63,26 @@ public sealed record ParkItemComponentEligibility(
     RankingIneligibilityReason? IneligibilityReason);
 
 /// <summary>
+/// Composants effectivement retenus par la politique pour calculer la note d'un parc.
+/// </summary>
+public enum ParkRankingCompositionMode
+{
+    None = 0,
+    DirectOnly = 1,
+    ItemsOnly = 2,
+    DirectAndItems = 3,
+}
+
+/// <summary>
+/// Verdict atomique sur l'éligibilité, la composition et la note d'un parc.
+/// </summary>
+public sealed record ParkRankingEvaluation(
+    RankingEvidence Evidence,
+    ParkItemComponentEligibility ItemComponent,
+    ParkRankingCompositionMode CompositionMode,
+    double Score);
+
+/// <summary>
 /// Verdict sur la possibilité de publier un tableau de classement.
 /// </summary>
 public sealed record RankingPublicationEligibility(

@@ -37,7 +37,8 @@ public sealed record RatingRankingPolicyEvaluationEntry(
     string TargetName,
     ParkItemCategory? ParkItemCategory,
     double Score,
-    RankingEvidence? Evidence);
+    RankingEvidence? Evidence,
+    ParkItemComponentEligibility? ParkItemComponent = null);
 
 public sealed record RatingRankingPolicyEvaluationPlan(
     int TotalEntryCount,

@@ -265,7 +265,8 @@ public sealed class RatingRankingSnapshotBuilder :
                 candidate.Ranking.ParkName,
                 null,
                 candidate.Ranking.Score,
-                candidate.Evidence))
+                candidate.Evidence,
+                candidate.ItemComponent))
             .ToArray();
         return new RatingRankingPolicyEvaluationPlan(entries.Count, entries, false);
     }
@@ -314,7 +315,8 @@ public sealed class RatingRankingSnapshotBuilder :
                 candidate.Ranking.TargetName,
                 candidate.Ranking.ParkItemCategory,
                 candidate.Ranking.BayesianScore,
-                candidate.Evidence))
+                candidate.Evidence,
+                null))
             .ToArray();
         return new RatingRankingPolicyEvaluationPlan(entries.Count, entries, false);
     }
