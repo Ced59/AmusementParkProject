@@ -32,15 +32,18 @@ public sealed class RatingRankingPublicationCacheInvalidatorTests
                     && !request.Refresh),
                 CancellationToken.None))
             .ReturnsAsync(true);
+        RatingRankingGenerationOutputCachePolicy generationPolicy = new RatingRankingGenerationOutputCachePolicy();
         RatingRankingPublicationCacheInvalidator invalidator = new RatingRankingPublicationCacheInvalidator(
             rankProvider.Object,
             outputCacheStore.Object,
+            generationPolicy,
             ssrInvalidator.Object,
             NullLogger<RatingRankingPublicationCacheInvalidator>.Instance);
 
         bool result = await invalidator.InvalidateAsync(CancellationToken.None);
 
         Assert.True(result);
+        Assert.Equal(1, generationPolicy.CurrentGeneration);
         rankProvider.VerifyAll();
         outputCacheStore.VerifyAll();
         ssrInvalidator.VerifyAll();
@@ -63,15 +66,18 @@ public sealed class RatingRankingPublicationCacheInvalidatorTests
                 It.IsAny<SsrPageCacheInvalidationRequest>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
+        RatingRankingGenerationOutputCachePolicy generationPolicy = new RatingRankingGenerationOutputCachePolicy();
         RatingRankingPublicationCacheInvalidator invalidator = new RatingRankingPublicationCacheInvalidator(
             rankProvider.Object,
             outputCacheStore.Object,
+            generationPolicy,
             ssrInvalidator.Object,
             NullLogger<RatingRankingPublicationCacheInvalidator>.Instance);
 
         bool result = await invalidator.InvalidateAsync(CancellationToken.None);
 
         Assert.False(result);
+        Assert.Equal(1, generationPolicy.CurrentGeneration);
         rankProvider.VerifyAll();
         outputCacheStore.VerifyAll();
         ssrInvalidator.VerifyAll();

@@ -13,17 +13,20 @@ public sealed class RatingRankingPublicationCacheInvalidator : IRatingRankingPub
 {
     private readonly IRatingRankProvider ratingRankProvider;
     private readonly IOutputCacheStore outputCacheStore;
+    private readonly RatingRankingGenerationOutputCachePolicy outputCacheGenerationPolicy;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
     private readonly ILogger<RatingRankingPublicationCacheInvalidator> logger;
 
     public RatingRankingPublicationCacheInvalidator(
         IRatingRankProvider ratingRankProvider,
         IOutputCacheStore outputCacheStore,
+        RatingRankingGenerationOutputCachePolicy outputCacheGenerationPolicy,
         ISsrPageCacheInvalidator ssrPageCacheInvalidator,
         ILogger<RatingRankingPublicationCacheInvalidator> logger)
     {
         this.ratingRankProvider = ratingRankProvider;
         this.outputCacheStore = outputCacheStore;
+        this.outputCacheGenerationPolicy = outputCacheGenerationPolicy;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
         this.logger = logger;
     }
@@ -41,6 +44,8 @@ public sealed class RatingRankingPublicationCacheInvalidator : IRatingRankingPub
             succeeded = false;
             this.logger.LogWarning(exception, "Rating rank memory cache invalidation failed.");
         }
+
+        this.outputCacheGenerationPolicy.Advance();
 
         try
         {
