@@ -13,8 +13,11 @@ namespace AmusementPark.Application.Tests.Features.Ratings.Services;
 
 public sealed class RatingRankingAdministrationServicesTests
 {
-    [Fact]
-    public async Task GetDashboardAsync_ShouldExposeEvidenceThresholdAndSnapshotDiagnostics()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task GetDashboardAsync_ShouldExposeEvidenceThresholdAndSnapshotDiagnostics(
+        bool sourceRevisionIsMissing)
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         RankingEligibilityPolicy policy = RankingEligibilityPolicy.Initial;
@@ -54,12 +57,15 @@ public sealed class RatingRankingAdministrationServicesTests
             .ReturnsAsync(header);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
-            .ReturnsAsync(new RatingRankingSourceRevision(
+        RatingRankingSourceRevision? sourceRevision = sourceRevisionIsMissing
+            ? null
+            : new RatingRankingSourceRevision(
                 scope.Key,
                 header.SourceRevision,
                 header.PublishedAtUtc!.Value.AddSeconds(1),
-                PendingMutationCount: 1));
+                PendingMutationCount: 1);
+        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(sourceRevision);
         Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
             new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
         evaluator.Setup(value => value.EvaluateAsync(

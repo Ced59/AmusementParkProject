@@ -88,7 +88,8 @@ public sealed class RatingRankingAdministrationDashboardReader
                         header,
                         cancellationToken);
             long resolvedSourceRevision = sourceRevision?.Revision ?? 0;
-            bool isOutstanding = (sourceRevision is not null && !sourceRevision.IsRebuildable)
+            bool isOutstanding = sourceRevision is null
+                || !sourceRevision.IsRebuildable
                 || pointer is null
                 || pointer.MethodologyVersion != scope.MethodologyVersion
                 || pointer.HighestPublishedSourceRevision < resolvedSourceRevision;
