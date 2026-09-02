@@ -1,6 +1,20 @@
 {
-  "version": "4.2.48",
+  "version": "4.2.49",
   "history": [
+    {
+      "version": "4.2.49",
+      "releasedAt": "2026-09-02",
+      "labels": {
+        "fr": "La sécurité des dépendances de l’interface a été renforcée.",
+        "en": "The security of the interface dependencies has been strengthened.",
+        "de": "Die Sicherheit der Oberflächen-Abhängigkeiten wurde verbessert.",
+        "nl": "De beveiliging van de interface-afhankelijkheden is verbeterd.",
+        "it": "La sicurezza delle dipendenze dell’interfaccia è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad de las dependencias de la interfaz.",
+        "pl": "Wzmocniono bezpieczeństwo zależności interfejsu.",
+        "pt": "A segurança das dependências da interface foi reforçada."
+      }
+    },
     {
       "version": "4.2.48",
       "releasedAt": "2026-09-02",
