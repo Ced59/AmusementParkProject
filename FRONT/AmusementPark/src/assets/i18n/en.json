@@ -4392,6 +4392,18 @@
           "one": "Provisional trend: {{count}} unique contributor out of the {{threshold}} required for the ranking.",
           "other": "Provisional trend: {{count}} unique contributors out of the {{threshold}} required for the ranking."
         },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} person has rated this place, but the sample remains insufficient. The exact ranking threshold is currently unavailable.",
+          "other": "{{count}} people have rated this place, but the sample remains insufficient. The exact ranking threshold is currently unavailable."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "The trend remains provisional with {{count}} unique contributor. The exact ranking threshold is currently unavailable.",
+          "other": "The trend remains provisional with {{count}} unique contributors. The exact ranking threshold is currently unavailable."
+        },
+        "parkDirectProvisional": {
+          "one": "Provisional park trend: {{count}} person has rated the park directly. Ratings of its places add evidence, but do not replace the required direct park ratings.",
+          "other": "Provisional park trend: {{count}} people have rated the park directly. Ratings of its places add evidence, but do not replace the required direct park ratings."
+        },
         "ranked": {
           "one": "Ranked No. {{rank}} under methodology {{version}}, with {{count}} unique contributor.",
           "other": "Ranked No. {{rank}} under methodology {{version}}, with {{count}} unique contributors."

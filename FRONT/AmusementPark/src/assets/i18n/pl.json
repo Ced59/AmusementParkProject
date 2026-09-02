@@ -4392,6 +4392,18 @@
           "one": "Trend wstępny: liczba unikalnych autorów to {{count}} z {{threshold}} wymaganych do rankingu.",
           "other": "Trend wstępny: liczba unikalnych autorów to {{count}} z {{threshold}} wymaganych do rankingu."
         },
+        "insufficientWithoutThreshold": {
+          "one": "Liczba unikalnych autorów ocen: {{count}}, ale próba jest nadal niewystarczająca. Dokładny próg wejścia do rankingu jest obecnie niedostępny.",
+          "other": "Liczba unikalnych autorów ocen: {{count}}, ale próba jest nadal niewystarczająca. Dokładny próg wejścia do rankingu jest obecnie niedostępny."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "Trend pozostaje wstępny; liczba unikalnych autorów to {{count}}. Dokładny próg wejścia do rankingu jest obecnie niedostępny.",
+          "other": "Trend pozostaje wstępny; liczba unikalnych autorów to {{count}}. Dokładny próg wejścia do rankingu jest obecnie niedostępny."
+        },
+        "parkDirectProvisional": {
+          "one": "Wstępny trend parku: liczba osób, które oceniły bezpośrednio park, wynosi {{count}}. Oceny jego miejsc uzupełniają dane, ale nie zastępują wymaganych bezpośrednich ocen parku.",
+          "other": "Wstępny trend parku: liczba osób, które oceniły bezpośrednio park, wynosi {{count}}. Oceny jego miejsc uzupełniają dane, ale nie zastępują wymaganych bezpośrednich ocen parku."
+        },
         "ranked": {
           "one": "Pozycja {{rank}} według metody {{version}}; liczba unikalnych autorów: {{count}}.",
           "other": "Pozycja {{rank}} według metody {{version}}; liczba unikalnych autorów: {{count}}."

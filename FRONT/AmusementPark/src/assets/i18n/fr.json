@@ -4392,6 +4392,18 @@
           "one": "Tendance provisoire : {{count}} contributeur unique sur les {{threshold}} nécessaires au classement.",
           "other": "Tendance provisoire : {{count}} contributeurs uniques sur les {{threshold}} nécessaires au classement."
         },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} personne a évalué ce lieu, mais l’échantillon reste insuffisant. Le seuil exact d’entrée au classement est temporairement indisponible.",
+          "other": "{{count}} personnes ont évalué ce lieu, mais l’échantillon reste insuffisant. Le seuil exact d’entrée au classement est temporairement indisponible."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "La tendance reste provisoire avec {{count}} contributeur unique. Le seuil exact d’entrée au classement est temporairement indisponible.",
+          "other": "La tendance reste provisoire avec {{count}} contributeurs uniques. Le seuil exact d’entrée au classement est temporairement indisponible."
+        },
+        "parkDirectProvisional": {
+          "one": "Tendance provisoire du parc : {{count}} personne l’a évalué directement. Les notes de ses lieux complètent la preuve, sans remplacer les évaluations directes nécessaires.",
+          "other": "Tendance provisoire du parc : {{count}} personnes l’ont évalué directement. Les notes de ses lieux complètent la preuve, sans remplacer les évaluations directes nécessaires."
+        },
         "ranked": {
           "one": "Classé n° {{rank}} selon la méthode {{version}}, avec {{count}} contributeur unique.",
           "other": "Classé n° {{rank}} selon la méthode {{version}}, avec {{count}} contributeurs uniques."

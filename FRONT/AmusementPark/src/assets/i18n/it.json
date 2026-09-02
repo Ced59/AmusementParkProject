@@ -4392,6 +4392,18 @@
           "one": "Tendenza provvisoria: {{count}} contributore unico dei {{threshold}} necessari per la classifica.",
           "other": "Tendenza provvisoria: {{count}} contributori unici dei {{threshold}} necessari per la classifica."
         },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} persona ha valutato questo luogo, ma il campione resta insufficiente. La soglia esatta per entrare in classifica non è al momento disponibile.",
+          "other": "{{count}} persone hanno valutato questo luogo, ma il campione resta insufficiente. La soglia esatta per entrare in classifica non è al momento disponibile."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "La tendenza resta provvisoria con {{count}} contributore unico. La soglia esatta per entrare in classifica non è al momento disponibile.",
+          "other": "La tendenza resta provvisoria con {{count}} contributori unici. La soglia esatta per entrare in classifica non è al momento disponibile."
+        },
+        "parkDirectProvisional": {
+          "one": "Tendenza provvisoria del parco: {{count}} persona ha valutato direttamente il parco. Le valutazioni dei suoi luoghi aggiungono evidenza, ma non sostituiscono le valutazioni dirette necessarie.",
+          "other": "Tendenza provvisoria del parco: {{count}} persone hanno valutato direttamente il parco. Le valutazioni dei suoi luoghi aggiungono evidenza, ma non sostituiscono le valutazioni dirette necessarie."
+        },
         "ranked": {
           "one": "Posizione n. {{rank}} secondo il metodo {{version}}, con {{count}} contributore unico.",
           "other": "Posizione n. {{rank}} secondo il metodo {{version}}, con {{count}} contributori unici."

@@ -308,6 +308,18 @@ function createEvidenceTranslations(): Record<string, unknown> {
         one: '{{count}} contributeur unique sur {{threshold}}.',
         other: '{{count}} contributeurs uniques sur {{threshold}}.',
       },
+      insufficientWithoutThreshold: {
+        one: 'Échantillon insuffisant.',
+        other: 'Échantillon insuffisant.',
+      },
+      provisionalWithoutThreshold: {
+        one: 'Tendance provisoire.',
+        other: 'Tendance provisoire.',
+      },
+      parkDirectProvisional: {
+        one: '{{count}} contributeur direct au parc.',
+        other: '{{count}} contributeurs directs au parc.',
+      },
       ranked: {
         one: 'Classé #{{rank}} avec la méthode {{version}}.',
         other: 'Classé #{{rank}} avec la méthode {{version}}.',

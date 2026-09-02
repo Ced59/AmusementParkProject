@@ -76,6 +76,12 @@ export class RatingEvidenceComponent {
     return Math.max(0, this.model.uniqueContributorCount ?? 0);
   }
 
+  protected messagePluralCount(): number {
+    return this.isParkDirectEvidenceProvisional()
+      ? Math.max(0, this.model.evidence.directParkContributorCount ?? 0)
+      : this.contributorCount();
+  }
+
   protected messageKey(): string {
     const level: RankingEvidenceLevel = this.model.evidence.level;
     if (level === 'NoEvidence') {
@@ -84,7 +90,16 @@ export class RatingEvidenceComponent {
     if (level === 'Excluded') {
       return 'ratings.evidence.messages.excluded';
     }
+    if (this.isParkDirectEvidenceProvisional()) {
+      return 'ratings.evidence.messages.parkDirectProvisional';
+    }
     if (!this.model.evidence.isEligibleForMainRanking) {
+      if (this.model.eligibilityThreshold === null) {
+        return level === 'Provisional'
+          ? 'ratings.evidence.messages.provisionalWithoutThreshold'
+          : 'ratings.evidence.messages.insufficientWithoutThreshold';
+      }
+
       return level === 'Provisional'
         ? 'ratings.evidence.messages.provisional'
         : 'ratings.evidence.messages.insufficient';
@@ -98,11 +113,20 @@ export class RatingEvidenceComponent {
 
   protected messageParams(): Record<string, unknown> {
     return {
-      count: this.contributorCount(),
-      threshold: this.model.eligibilityThreshold ?? this.model.evidence.nextThreshold ?? '—',
+      count: this.messagePluralCount(),
+      threshold: this.model.eligibilityThreshold ?? '—',
       rank: this.model.rank ?? '—',
       version: this.model.methodologyVersion ?? '—'
     };
+  }
+
+  private isParkDirectEvidenceProvisional(): boolean {
+    return this.model.targetType === 'Park'
+      && this.model.evidence.level === 'Provisional'
+      && this.model.evidence.ineligibilityReason === 'TooFewUniqueContributors'
+      && this.model.evidence.directParkContributorCount !== null
+      && this.model.evidence.directParkContributorCount !== undefined
+      && this.contributorCount() > this.model.evidence.directParkContributorCount;
   }
 
   protected reasonLabelKey(): string | null {

@@ -114,6 +114,48 @@ describe('RatingEvidenceComponent', () => {
     expect(fixture.nativeElement.textContent).toContain('Pas assez de lieux éligibles.');
   });
 
+  it('explains provisional park eligibility with direct park contributors', () => {
+    fixture.componentRef.setInput('model', {
+      ...createModel('Provisional', 'TooFewUniqueContributors'),
+      targetType: 'Park',
+      uniqueContributorCount: 20,
+      ratingObservationCount: 24,
+      eligibilityThreshold: 10,
+      evidence: {
+        level: 'Provisional',
+        isEligibleForMainRanking: false,
+        directParkContributorCount: 5,
+        itemContributorCount: 18,
+        eligibleItemCount: 6,
+        eligibleCategoryCount: 3,
+        ineligibilityReason: 'TooFewUniqueContributors',
+        nextThreshold: 10,
+      },
+    } satisfies RatingEvidenceViewModel);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('5 personnes l’ont évalué directement');
+    expect(fixture.nativeElement.textContent).not.toContain('20 contributeurs uniques sur 10');
+  });
+
+  it('does not present the next evidence level as the eligibility threshold', () => {
+    fixture.componentRef.setInput('model', {
+      ...createModel('Insufficient', 'TooFewUniqueContributors'),
+      uniqueContributorCount: 2,
+      eligibilityThreshold: null,
+      evidence: {
+        level: 'Insufficient',
+        isEligibleForMainRanking: false,
+        ineligibilityReason: 'TooFewUniqueContributors',
+        nextThreshold: 3,
+      },
+    } satisfies RatingEvidenceViewModel);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('Le seuil exact d’entrée au classement est temporairement indisponible.');
+    expect(fixture.nativeElement.textContent).not.toContain('sur 3');
+  });
+
   it('states the public rank and exact methodology for eligible evidence', () => {
     fixture.componentRef.setInput('model', {
       ...createModel('Established'),
@@ -175,6 +217,18 @@ function createTranslations(): Record<string, unknown> {
       provisional: {
         one: '{{count}} contributeur unique sur {{threshold}}.',
         other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      insufficientWithoutThreshold: {
+        one: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
+        other: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
+      },
+      provisionalWithoutThreshold: {
+        one: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
+        other: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
+      },
+      parkDirectProvisional: {
+        one: '{{count}} personne l’a évalué directement.',
+        other: '{{count}} personnes l’ont évalué directement.',
       },
       ranked: {
         one: 'Classé #{{rank}} avec la méthode {{version}}.',

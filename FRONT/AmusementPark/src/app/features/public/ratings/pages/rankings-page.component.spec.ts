@@ -252,7 +252,7 @@ describe('RankingsPageComponent', () => {
 
     expect(parkSummary?.textContent).not.toContain('#1');
     expect(parkSummary?.textContent).toContain('Provisoire');
-    expect(evidence?.textContent).toContain('5 contributeurs uniques');
+    expect(evidence?.textContent).toContain('2 personnes l’ont évalué directement');
     expect(evidence?.textContent).toContain('Notes directes');
     expect(evidence?.textContent).toContain('Composition du parc');
     expect(evidence?.textContent).toContain('3');
@@ -456,6 +456,18 @@ function createEvidenceTranslations(): Record<string, unknown> {
       provisional: {
         one: '{{count}} contributeur unique sur {{threshold}}.',
         other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      insufficientWithoutThreshold: {
+        one: 'Échantillon insuffisant.',
+        other: 'Échantillon insuffisant.',
+      },
+      provisionalWithoutThreshold: {
+        one: 'Tendance provisoire.',
+        other: 'Tendance provisoire.',
+      },
+      parkDirectProvisional: {
+        one: '{{count}} personne l’a évalué directement.',
+        other: '{{count}} personnes l’ont évalué directement.',
       },
       ranked: {
         one: 'Classé #{{rank}} avec la méthode {{version}}.',

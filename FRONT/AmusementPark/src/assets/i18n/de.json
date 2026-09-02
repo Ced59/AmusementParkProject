@@ -4392,6 +4392,18 @@
           "one": "Vorläufiger Trend: {{count}} einzelne beitragende Person von {{threshold}}, die für die Rangliste nötig sind.",
           "other": "Vorläufiger Trend: {{count}} einzelne Beitragende von {{threshold}}, die für die Rangliste nötig sind."
         },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} Person hat diesen Ort bewertet, die Stichprobe reicht aber noch nicht aus. Die genaue Schwelle für die Rangliste ist derzeit nicht verfügbar.",
+          "other": "{{count}} Personen haben diesen Ort bewertet, die Stichprobe reicht aber noch nicht aus. Die genaue Schwelle für die Rangliste ist derzeit nicht verfügbar."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "Der Trend bleibt mit {{count}} einzelnen beitragenden Person vorläufig. Die genaue Schwelle für die Rangliste ist derzeit nicht verfügbar.",
+          "other": "Der Trend bleibt mit {{count}} einzelnen Beitragenden vorläufig. Die genaue Schwelle für die Rangliste ist derzeit nicht verfügbar."
+        },
+        "parkDirectProvisional": {
+          "one": "Vorläufiger Parktrend: {{count}} Person hat den Park direkt bewertet. Bewertungen seiner Orte ergänzen die Datengrundlage, ersetzen aber nicht die nötigen direkten Parkbewertungen.",
+          "other": "Vorläufiger Parktrend: {{count}} Personen haben den Park direkt bewertet. Bewertungen seiner Orte ergänzen die Datengrundlage, ersetzen aber nicht die nötigen direkten Parkbewertungen."
+        },
         "ranked": {
           "one": "Rang {{rank}} nach Methode {{version}}, gestützt auf {{count}} einzelne beitragende Person.",
           "other": "Rang {{rank}} nach Methode {{version}}, gestützt auf {{count}} einzelne Beitragende."

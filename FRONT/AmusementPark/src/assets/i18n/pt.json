@@ -4392,6 +4392,18 @@
           "one": "Tendência provisória: {{count}} colaborador único dos {{threshold}} necessários para a classificação.",
           "other": "Tendência provisória: {{count}} colaboradores únicos dos {{threshold}} necessários para a classificação."
         },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} pessoa avaliou este local, mas a amostra continua insuficiente. O limiar exato para entrar na classificação está temporariamente indisponível.",
+          "other": "{{count}} pessoas avaliaram este local, mas a amostra continua insuficiente. O limiar exato para entrar na classificação está temporariamente indisponível."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "A tendência continua provisória com {{count}} colaborador único. O limiar exato para entrar na classificação está temporariamente indisponível.",
+          "other": "A tendência continua provisória com {{count}} colaboradores únicos. O limiar exato para entrar na classificação está temporariamente indisponível."
+        },
+        "parkDirectProvisional": {
+          "one": "Tendência provisória do parque: {{count}} pessoa avaliou diretamente o parque. As avaliações dos seus locais acrescentam evidência, mas não substituem as avaliações diretas necessárias.",
+          "other": "Tendência provisória do parque: {{count}} pessoas avaliaram diretamente o parque. As avaliações dos seus locais acrescentam evidência, mas não substituem as avaliações diretas necessárias."
+        },
         "ranked": {
           "one": "Posição n.º {{rank}} segundo o método {{version}}, com {{count}} colaborador único.",
           "other": "Posição n.º {{rank}} segundo o método {{version}}, com {{count}} colaboradores únicos."
