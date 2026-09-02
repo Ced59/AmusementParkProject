@@ -120,11 +120,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         bool cacheConverged = sourceRevision?.CoversCacheConvergence(
             scope.MethodologyVersion,
             requestedRevision) == true;
-        if (unavailable
-            && string.Equals(
-                sourceRevision?.UnavailableReasonCode,
-                RatingRankingRebuildErrorCodes.SourceSetTruncated,
-                StringComparison.Ordinal))
+        if (unavailable && cacheConverged)
         {
             return true;
         }

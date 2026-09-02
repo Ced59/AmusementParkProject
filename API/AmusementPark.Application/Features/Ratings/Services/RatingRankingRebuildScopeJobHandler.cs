@@ -116,8 +116,15 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 requestedRevision,
                 RatingRankingRebuildErrorCodes.SourceSetTruncated,
                 cancellationToken);
-            return DurableBackgroundJobHandlerResult.DeadLetter(
-                RatingRankingRebuildErrorCodes.SourceSetTruncated);
+            DurableBackgroundJobHandlerResult convergence =
+                await this.CompleteWithCacheInvalidationAsync(
+                    scope,
+                    requestedRevision,
+                    cancellationToken);
+            return convergence.Outcome == DurableBackgroundJobHandlerOutcome.Succeeded
+                ? DurableBackgroundJobHandlerResult.DeadLetter(
+                    RatingRankingRebuildErrorCodes.SourceSetTruncated)
+                : convergence;
         }
 
         RevisionFenceCheck preWriteFence = await this.CheckRevisionFenceAsync(

@@ -320,6 +320,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     public async Task HandleAsync_WhenSourceBatchIsTruncated_ShouldDeadLetterWithoutStartingBuild()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(5);
         fixture.SetupUncoveredRevision(5);
         fixture.Builder
             .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
@@ -342,6 +343,40 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.DeadLetter, result.Outcome);
         Assert.Equal(RatingRankingRebuildErrorCodes.SourceSetTruncated, result.ErrorCode);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenTruncatedSourceCacheInvalidationFails_ShouldRemainRetryable()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        fixture.CacheInvalidator.Result = false;
+        fixture.SetupUncoveredRevision(5);
+        fixture.Builder
+            .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSnapshotBuildPlan(
+                RankingSnapshotHeader.MaximumCandidateEntryCount,
+                Array.Empty<RankingSnapshotEntry>(),
+                true));
+        fixture.Revisions
+            .Setup(repository => repository.MarkUnavailableAsync(
+                fixture.Scope.Key,
+                fixture.Scope.MethodologyVersion,
+                5,
+                RatingRankingRebuildErrorCodes.SourceSetTruncated,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(5),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(RatingRankingRebuildErrorCodes.CacheInvalidationFailed, result.ErrorCode);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyAll();
         fixture.Builder.VerifyAll();
