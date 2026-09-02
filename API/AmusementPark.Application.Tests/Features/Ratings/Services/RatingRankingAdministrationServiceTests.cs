@@ -594,9 +594,15 @@ public sealed class RatingRankingAdministrationServicesTests
 
         RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
         Assert.False(impact.HasCurrentSnapshot);
+        Assert.False(impact.IsImpactAvailable);
+        Assert.False(impact.IsSourceTruncated);
+        Assert.Equal(0, impact.CandidateEligibleCount);
         Assert.Equal(0, impact.GainedEligibilityCount);
         Assert.Equal(0, impact.LostEligibilityCount);
         Assert.Equal(0, impact.ComparedRankCount);
+        Assert.Equal(0, impact.IncompleteParkCompositionCount);
+        Assert.Equal(0, impact.EstimatedTargetCount);
+        Assert.Equal(0, impact.EstimatedChunkCount);
         snapshots.VerifyAll();
         revisions.VerifyAll();
         evaluator.VerifyAll();

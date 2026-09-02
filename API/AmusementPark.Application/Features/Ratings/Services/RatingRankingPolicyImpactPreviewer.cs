@@ -59,9 +59,10 @@ public sealed class RatingRankingPolicyImpactPreviewer
                 await this.sourceRevisionRepository.GetAsync(
                     currentScope.Key,
                     cancellationToken);
-            if (!SourceRevisionsMatch(
-                    sourceRevisionBeforeEvaluation,
-                    sourceRevisionAfterSnapshot))
+            bool isSourceStable = SourceRevisionsMatch(
+                sourceRevisionBeforeEvaluation,
+                sourceRevisionAfterSnapshot);
+            if (!isSourceStable)
             {
                 currentSnapshot = CurrentRankingSnapshot.Unavailable;
             }
@@ -69,7 +70,8 @@ public sealed class RatingRankingPolicyImpactPreviewer
                 currentScope,
                 candidateScope,
                 evaluation,
-                currentSnapshot));
+                currentSnapshot,
+                isSourceStable));
         }
 
         int comparedRankCount = scopeImpacts.Sum(static scope => scope.ComparedRankCount);
@@ -103,9 +105,10 @@ public sealed class RatingRankingPolicyImpactPreviewer
         RankingScopeDefinition currentScope,
         RankingScopeDefinition candidateScope,
         RatingRankingPolicyEvaluationPlan evaluation,
-        CurrentRankingSnapshot currentSnapshot)
+        CurrentRankingSnapshot currentSnapshot,
+        bool isSourceStable)
     {
-        if (evaluation.IsSourceTruncated)
+        if (!isSourceStable || evaluation.IsSourceTruncated)
         {
             return new RatingRankingPolicyScopeImpactResult(
                 currentScope.Key.Value,
@@ -113,7 +116,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
                 currentScope.Filter.ParkItemCategory,
                 currentSnapshot.IsAvailable,
                 false,
-                true,
+                evaluation.IsSourceTruncated,
                 currentSnapshot.Ranks.Count,
                 0,
                 0,
@@ -124,7 +127,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
                 null,
                 false,
                 0,
-                evaluation.TotalEntryCount,
+                isSourceStable ? evaluation.TotalEntryCount : 0,
                 0,
                 Array.Empty<RatingRankingPolicyTargetChangeResult>(),
                 Array.Empty<RatingRankingPolicyTargetChangeResult>());
