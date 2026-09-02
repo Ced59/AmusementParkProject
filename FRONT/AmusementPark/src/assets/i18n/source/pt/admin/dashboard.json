@@ -15,7 +15,8 @@
         "auditLogs": "Consultar ações administrativas sensíveis registadas.",
         "parkGraphUpserts": "Pré-visualizar e aplicar um JSON completo ou parcial de parque.",
         "seoSitemaps": "Gerir índice sitemap, secções XML, estatísticas e IndexNow.",
-        "history": "Gerir linhas do tempo, marcos documentados e artigos históricos."
+        "history": "Gerir linhas do tempo, marcos documentados e artigos históricos.",
+        "ratingRankings": "Diagnosticar, simular e reconstruir classificações de avaliações."
       }
     }
   }

@@ -87,7 +87,14 @@ public static class ApplicationServiceCollectionExtensions
             new RankingScopeRegistry(CanonicalRankingScopes.Version, CanonicalRankingScopes.All));
         services.AddSingleton<RankingSnapshotChecksumCalculator>();
         services.AddSingleton<RankingSnapshotIntegrityValidator>();
-        services.AddScoped<IRatingRankingSnapshotBuilder, RatingRankingSnapshotBuilder>();
+        services.AddScoped<RatingRankingSnapshotBuilder>();
+        services.AddScoped<IRatingRankingSnapshotBuilder>(provider =>
+            provider.GetRequiredService<RatingRankingSnapshotBuilder>());
+        services.AddScoped<IRatingRankingPolicyEvaluationBuilder>(provider =>
+            provider.GetRequiredService<RatingRankingSnapshotBuilder>());
+        services.AddScoped<RatingRankingAdministrationDashboardReader>();
+        services.AddScoped<RatingRankingPolicyImpactPreviewer>();
+        services.AddScoped<RatingRankingRebuildRequester>();
         services.AddScoped<IRatingRankingRebuildScheduler, RatingRankingRebuildScheduler>();
         services.AddScoped<IRatingRankingRecoveryCoordinator, RatingRankingRecoveryCoordinator>();
         services.AddDurableBackgroundJobHandler<RatingRankingRebuildScopeJobHandler>();

@@ -52,8 +52,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
         Assert.NotNull(capturedRequest);
         Assert.Equal(RatingRankingRebuildScopeJob.Kind, capturedRequest.Kind);
         Assert.Equal("ratings.rebuild-scope:parks:global", capturedRequest.NaturalKey);
@@ -65,9 +67,56 @@ public sealed class RatingRankingRebuildSchedulerTests
         Assert.Equal(scope.Key.Value, payload.ScopeKey);
         Assert.Equal(12, payload.RequestedSourceRevision);
         Assert.Equal(scope.MethodologyVersion.Value, payload.MethodologyVersion);
+        Assert.False(payload.ForceRebuild);
+        Assert.False(capturedRequest.Payload.TryGetProperty("forceRebuild", out JsonElement _));
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ScheduleForcedAsync_WhenPublishedPointerCoversRevision_ShouldStillEnqueueForcedJob()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(scope.Key, 12, NowUtc);
+        CoalesceBackgroundJobRequest? capturedRequest = null;
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.CoalesceAsync(
+                It.IsAny<CoalesceBackgroundJobRequest>(),
+                CancellationToken.None))
+            .Callback((CoalesceBackgroundJobRequest request, CancellationToken _) =>
+                capturedRequest = request)
+            .ReturnsAsync((CoalesceBackgroundJobRequest request, CancellationToken _) => CreateJob(request));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleForcedAsync(revision, CancellationToken.None);
+
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
+        Assert.NotNull(capturedRequest);
+        Assert.Equal(
+            RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key),
+            capturedRequest.NaturalKey);
+        RatingRankingRebuildScopePayload? payload =
+            capturedRequest.Payload.Deserialize<RatingRankingRebuildScopePayload>();
+        Assert.NotNull(payload);
+        Assert.Equal(12, payload.RequestedSourceRevision);
+        Assert.True(payload.ForceRebuild);
+        Assert.True(capturedRequest.Payload.TryGetProperty("forceRebuild", out JsonElement forceRebuild));
+        Assert.True(forceRebuild.GetBoolean());
+        jobs.VerifyAll();
+        revisions.VerifyNoOtherCalls();
+        snapshots.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -90,8 +139,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Covered, disposition);
         jobs.VerifyNoOtherCalls();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
@@ -131,8 +182,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
@@ -161,8 +214,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Covered, disposition);
         jobs.VerifyNoOtherCalls();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyNoOtherCalls();
@@ -197,8 +252,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Deferred, disposition);
         jobs.VerifyNoOtherCalls();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyNoOtherCalls();
@@ -375,8 +432,10 @@ public sealed class RatingRankingRebuildSchedulerTests
             revisions.Object,
             snapshots.Object);
 
-        await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleIfOutstandingAsync(revision, CancellationToken.None);
 
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Covered, disposition);
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();

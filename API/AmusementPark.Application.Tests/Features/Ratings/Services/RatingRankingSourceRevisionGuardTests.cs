@@ -160,7 +160,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
             .ThrowsAsync(new InvalidOperationException("Queue unavailable"));
         scheduler
             .Setup(value => value.ScheduleIfOutstandingAsync(second, CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions

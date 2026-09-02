@@ -290,6 +290,72 @@ public sealed class RankingEligibilityPolicyTests
     }
 
     [Fact]
+    public void EvaluateParkRanking_WhenItemComponentIsIneligible_ShouldUseDirectScoreOnly()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 100,
+            directContributorCount: 10,
+            itemContributorCount: 90,
+            categories: new[] { new RankingCategoryCoverage(5, 0) });
+
+        ParkRankingEvaluation evaluation = RankingEligibilityPolicy.Initial.EvaluateParkRanking(
+            input,
+            directParkScore: 4.7d,
+            parkItemsScore: 2.1d);
+
+        Assert.True(evaluation.Evidence.IsEligibleForMainRanking);
+        Assert.False(evaluation.ItemComponent.IsEligible);
+        Assert.Equal(
+            RankingIneligibilityReason.InsufficientItemCoverage,
+            evaluation.ItemComponent.IneligibilityReason);
+        Assert.Equal(ParkRankingCompositionMode.DirectOnly, evaluation.CompositionMode);
+        Assert.Equal(4.7d, evaluation.Score);
+    }
+
+    [Fact]
+    public void EvaluateParkRanking_WhenBothComponentsAreEligible_ShouldUseCompositeScore()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 20,
+            directContributorCount: 10,
+            itemContributorCount: 10,
+            categories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            });
+
+        ParkRankingEvaluation evaluation = RankingEligibilityPolicy.Initial.EvaluateParkRanking(
+            input,
+            directParkScore: 4.5d,
+            parkItemsScore: 3.5d);
+
+        Assert.Equal(ParkRankingCompositionMode.DirectAndItems, evaluation.CompositionMode);
+        Assert.Equal(4.2d, evaluation.Score, precision: 10);
+    }
+
+    [Fact]
+    public void ResolveMainRankingEligibilityContributorCount_WhenParkDirectComponentIsShort_ShouldUseDirectCount()
+    {
+        ParkRankingEvidenceInput input = CreateParkInput(
+            uniqueContributorCount: 19,
+            directContributorCount: 9,
+            itemContributorCount: 10,
+            categories: new[]
+            {
+                new RankingCategoryCoverage(3, 3),
+                new RankingCategoryCoverage(2, 2),
+            });
+        RankingEvidence evidence = RankingEligibilityPolicy.Initial.EvaluatePark(input);
+
+        int contributorCount = RankingEligibilityPolicy.Initial
+            .ResolveMainRankingEligibilityContributorCount(RatingTargetType.Park, evidence);
+
+        Assert.Equal(9, contributorCount);
+        Assert.Equal(10, evidence.UniqueContributorCount);
+    }
+
+    [Fact]
     public void EvaluatePark_WhenItemComponentIsEligible_ShouldUseTheContributorUnion()
     {
         ParkRankingEvidenceInput input = CreateParkInput(

@@ -498,7 +498,25 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             throw new ArgumentOutOfRangeException(nameof(query.Limit));
         }
 
-        FilterDefinition<DurableBackgroundJobDocument> filter = Builders<DurableBackgroundJobDocument>.Filter.Empty;
+        FilterDefinition<DurableBackgroundJobDocument> filter = BuildDiagnosticFilter(query);
+
+        ProjectionDefinition<DurableBackgroundJobDocument> projection =
+            Builders<DurableBackgroundJobDocument>.Projection.Exclude(item => item.PayloadJson);
+        List<DurableBackgroundJobDocument> documents = await this.collection
+            .Find(filter)
+            .SortByDescending(item => item.UpdatedAt)
+            .Limit(query.Limit)
+            .Project<DurableBackgroundJobDocument>(projection)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static item => item.ToDiagnosticItem()).ToList();
+    }
+
+    internal static FilterDefinition<DurableBackgroundJobDocument> BuildDiagnosticFilter(
+        DurableBackgroundJobDiagnosticQuery query)
+    {
+        ArgumentNullException.ThrowIfNull(query);
+        FilterDefinition<DurableBackgroundJobDocument> filter =
+            Builders<DurableBackgroundJobDocument>.Filter.Empty;
         if (query.Statuses is { Count: > 0 })
         {
             filter &= Builders<DurableBackgroundJobDocument>.Filter.In(item => item.Status, query.Statuses.Distinct());
@@ -510,15 +528,34 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             filter &= Builders<DurableBackgroundJobDocument>.Filter.Eq(item => item.Kind, kind);
         }
 
-        ProjectionDefinition<DurableBackgroundJobDocument> projection =
-            Builders<DurableBackgroundJobDocument>.Projection.Exclude(item => item.PayloadJson);
-        List<DurableBackgroundJobDocument> documents = await this.collection
-            .Find(filter)
-            .SortByDescending(item => item.UpdatedAt)
-            .Limit(query.Limit)
-            .Project<DurableBackgroundJobDocument>(projection)
-            .ToListAsync(cancellationToken);
-        return documents.Select(static item => item.ToDiagnosticItem()).ToList();
+        string? naturalKey = NormalizeOptional(query.NaturalKey, nameof(query.NaturalKey));
+        if (naturalKey is not null)
+        {
+            filter &= Builders<DurableBackgroundJobDocument>.Filter.Eq(
+                item => item.NaturalKey,
+                naturalKey);
+        }
+
+        if (query.ProcessedRevision.HasValue)
+        {
+            if (query.ProcessedRevision.Value < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(query.ProcessedRevision));
+            }
+
+            filter &= Builders<DurableBackgroundJobDocument>.Filter.Eq(
+                item => item.ProcessedRevision,
+                query.ProcessedRevision.Value);
+        }
+
+        if (query.MaximumCreatedAtUtc.HasValue)
+        {
+            filter &= Builders<DurableBackgroundJobDocument>.Filter.Lte(
+                item => item.CreatedAt,
+                query.MaximumCreatedAtUtc.Value);
+        }
+
+        return filter;
     }
 
     private static IReadOnlyCollection<string> NormalizeKinds(

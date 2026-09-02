@@ -256,6 +256,28 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
+    public void BuildDiagnosticFilter_ShouldTargetOneNaturalKeyAndProcessedRevision()
+    {
+        DurableBackgroundJobDiagnosticQuery query = new DurableBackgroundJobDiagnosticQuery(
+            Statuses: new[] { DurableBackgroundJobStatus.Succeeded },
+            Kind: "ratings.rebuild-scope",
+            Limit: 1,
+            NaturalKey: "ratings.rebuild-scope:parks:global",
+            ProcessedRevision: 17,
+            MaximumCreatedAtUtc: NowUtc);
+
+        BsonDocument rendered = Render(DurableBackgroundJobStore.BuildDiagnosticFilter(query));
+
+        Assert.Equal(
+            DurableBackgroundJobStatus.Succeeded.ToString(),
+            Assert.Single(rendered["status"].AsBsonDocument["$in"].AsBsonArray).AsString);
+        Assert.Equal("ratings.rebuild-scope", rendered["kind"].AsString);
+        Assert.Equal("ratings.rebuild-scope:parks:global", rendered["naturalKey"].AsString);
+        Assert.Equal(17, rendered["processedRevision"].AsInt64);
+        Assert.Equal(NowUtc, rendered["createdAt"].AsBsonDocument["$lte"].ToUniversalTime());
+    }
+
+    [Fact]
     public void BuildScheduledUnknownKindRunnableFilter_ShouldTargetOneKindAndEnforceTheGracePeriod()
     {
         DateTime maximumUpdatedAtUtc = NowUtc.AddHours(-1);

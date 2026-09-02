@@ -15,7 +15,8 @@
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
-        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren."
+        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren.",
+        "ratingRankings": "Beoordelingsranglijsten controleren, simuleren en opnieuw opbouwen."
       }
     }
   }

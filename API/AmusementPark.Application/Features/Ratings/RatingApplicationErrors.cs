@@ -59,4 +59,25 @@ public static class RatingApplicationErrors
             "rating.methodology.not-found",
             "La méthodologie de classement demandée est introuvable.");
     }
+
+    public static ApplicationError InvalidRankingPolicyCandidate()
+    {
+        return ApplicationError.Validation(
+            "rating.ranking-policy.invalid",
+            "La politique de classement candidate est invalide.");
+    }
+
+    public static ApplicationError RankingPolicyVersionAlreadyPublished()
+    {
+        return ApplicationError.Conflict(
+            "rating.ranking-policy.version-already-published",
+            "Une méthodologie publiée ne peut pas être modifiée par une simulation.");
+    }
+
+    public static ApplicationError RankingRebuildConfirmationRequired()
+    {
+        return ApplicationError.Validation(
+            "rating.ranking-rebuild.confirmation-required",
+            "La reconstruction des classements doit être confirmée explicitement.");
+    }
 }

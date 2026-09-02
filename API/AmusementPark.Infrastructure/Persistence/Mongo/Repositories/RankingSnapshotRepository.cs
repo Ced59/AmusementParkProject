@@ -102,49 +102,141 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
 
             if (existing.Status == RankingSnapshotStatus.Failed)
             {
-                int observedBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
-                    existingDocument!.BuildAttempt);
-                int nextBuildAttempt = observedBuildAttempt + 1;
-                UpdateDefinition<RankingSnapshotHeaderDocument> restartUpdate =
-                    Builders<RankingSnapshotHeaderDocument>.Update
-                        .Set(item => item.Status, RankingSnapshotStatus.Building)
-                        .Set(item => item.GeneratedAtUtc, nowUtc)
-                        .Set(item => item.UpdatedAt, nowUtc)
-                        .Set(item => item.BuildAttempt, nextBuildAttempt)
-                        .Unset(item => item.ValidatedAtUtc)
-                        .Unset(item => item.PublishedAtUtc)
-                        .Unset(item => item.FailureCode)
-                        .Unset(item => item.ReconciledPointerVersion);
-                RankingSnapshotHeaderDocument? restartedDocument = await this.headers.FindOneAndUpdateAsync(
-                    RankingSnapshotMongoDefinitions.BuildFailedHeaderRestartFilter(
-                        existing.Id,
-                        observedBuildAttempt),
-                    restartUpdate,
-                    new FindOneAndUpdateOptions<RankingSnapshotHeaderDocument>
-                    {
-                        IsUpsert = false,
-                        ReturnDocument = ReturnDocument.After,
-                    },
+                return await this.RestartExistingBuildAsync(
+                    existingDocument!,
+                    existing,
+                    header,
+                    RankingSnapshotStatus.Failed,
+                    nowUtc,
                     cancellationToken);
-                if (TryMapHeader(restartedDocument, out RankingSnapshotHeader? restarted))
+            }
+
+            if (request.ForceRebuild && existing.Status == RankingSnapshotStatus.Current)
+            {
+                bool isValid = await this.HasValidStoredChunksAsync(
+                    existing,
+                    scope,
+                    cancellationToken);
+                if (isValid)
                 {
                     return new RankingSnapshotBuildStartResult(
-                        RankingSnapshotBuildStartDisposition.Restarted,
-                        restarted);
+                        RankingSnapshotBuildStartDisposition.Existing,
+                        existing);
                 }
 
-                RankingSnapshotHeader? raced = await this.LoadHeaderAsync(existing.Id, cancellationToken);
-                return raced is not null && HasSameBuildDefinition(raced, header)
-                    ? new RankingSnapshotBuildStartResult(
-                        RankingSnapshotBuildStartDisposition.Existing,
-                        raced)
-                    : new RankingSnapshotBuildStartResult(
-                        RankingSnapshotBuildStartDisposition.Conflict,
-                        raced);
+                return await this.RestartExistingBuildAsync(
+                    existingDocument!,
+                    existing,
+                    header,
+                    RankingSnapshotStatus.Current,
+                    nowUtc,
+                    cancellationToken);
+            }
+
+            if (request.ForceRebuild && existing.Status == RankingSnapshotStatus.Superseded)
+            {
+                DateTime replacementGeneratedAtUtc =
+                    await this.ResolveReplacementGeneratedAtUtcAsync(
+                        existing.ScopeKey,
+                        nowUtc,
+                        cancellationToken);
+                return await this.RestartExistingBuildAsync(
+                    existingDocument!,
+                    existing,
+                    header,
+                    RankingSnapshotStatus.Superseded,
+                    replacementGeneratedAtUtc,
+                    cancellationToken);
             }
 
             return new RankingSnapshotBuildStartResult(RankingSnapshotBuildStartDisposition.Existing, existing);
         }
+    }
+
+    private async Task<RankingSnapshotBuildStartResult> RestartExistingBuildAsync(
+        RankingSnapshotHeaderDocument existingDocument,
+        RankingSnapshotHeader existing,
+        RankingSnapshotHeader expected,
+        RankingSnapshotStatus expectedStatus,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        int observedBuildAttempt = RankingSnapshotMongoDefinitions.NormalizeBuildAttempt(
+            existingDocument.BuildAttempt);
+        int nextBuildAttempt = observedBuildAttempt + 1;
+        UpdateDefinition<RankingSnapshotHeaderDocument> restartUpdate =
+            Builders<RankingSnapshotHeaderDocument>.Update
+                .Set(item => item.Status, RankingSnapshotStatus.Building)
+                .Set(item => item.GeneratedAtUtc, nowUtc)
+                .Set(item => item.UpdatedAt, nowUtc)
+                .Set(item => item.BuildAttempt, nextBuildAttempt)
+                .Unset(item => item.ValidatedAtUtc)
+                .Unset(item => item.PublishedAtUtc)
+                .Unset(item => item.FailureCode)
+                .Unset(item => item.ReconciledPointerVersion);
+        RankingSnapshotHeaderDocument? restartedDocument = await this.headers.FindOneAndUpdateAsync(
+            RankingSnapshotMongoDefinitions.BuildHeaderRestartFilter(
+                existing.Id,
+                observedBuildAttempt,
+                expectedStatus),
+            restartUpdate,
+            new FindOneAndUpdateOptions<RankingSnapshotHeaderDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (TryMapHeader(restartedDocument, out RankingSnapshotHeader? restarted))
+        {
+            return new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Restarted,
+                restarted);
+        }
+
+        RankingSnapshotHeader? raced = await this.LoadHeaderAsync(existing.Id, cancellationToken);
+        return raced is not null && HasSameBuildDefinition(raced, expected)
+            ? new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Existing,
+                raced)
+            : new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Conflict,
+                raced);
+    }
+
+    private async Task<bool> HasValidStoredChunksAsync(
+        RankingSnapshotHeader header,
+        RankingScopeDefinition scope,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            List<RankingSnapshotChunkDocument> storedDocuments = await this.chunks
+                .Find(RankingSnapshotMongoDefinitions.BuildChunkAttemptFilter(
+                    header.Id,
+                    header.BuildAttempt))
+                .SortBy(document => document.ChunkIndex)
+                .Limit(header.ChunkCount + 1)
+                .ToListAsync(cancellationToken);
+            IReadOnlyCollection<RankingSnapshotChunk> storedChunks = storedDocuments
+                .Select(document => document.ToDomain(header.MethodologyVersion))
+                .ToArray();
+            return this.integrityValidator.Validate(header, storedChunks, scope).IsValid;
+        }
+        catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
+    private async Task<DateTime> ResolveReplacementGeneratedAtUtcAsync(
+        RankingScopeKey scopeKey,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        RankingPublicationPointer? pointer = await this.GetPointerAsync(scopeKey, cancellationToken);
+        return pointer is not null && nowUtc <= pointer.UpdatedAtUtc
+            ? pointer.UpdatedAtUtc.AddMilliseconds(1)
+            : nowUtc;
     }
 
     public async Task<RankingSnapshotChunkWriteResult> WriteChunkAsync(
@@ -1455,11 +1547,22 @@ internal static class RankingSnapshotMongoDefinitions
         RankingSnapshotId snapshotId,
         int expectedBuildAttempt)
     {
+        return BuildHeaderRestartFilter(
+            snapshotId,
+            expectedBuildAttempt,
+            RankingSnapshotStatus.Failed);
+    }
+
+    public static FilterDefinition<RankingSnapshotHeaderDocument> BuildHeaderRestartFilter(
+        RankingSnapshotId snapshotId,
+        int expectedBuildAttempt,
+        RankingSnapshotStatus expectedStatus)
+    {
         return Builders<RankingSnapshotHeaderDocument>.Filter.And(
             BuildHeaderAttemptFilter(snapshotId, expectedBuildAttempt),
             Builders<RankingSnapshotHeaderDocument>.Filter.Eq(
                 document => document.Status,
-                RankingSnapshotStatus.Failed));
+                expectedStatus));
     }
 
     public static FilterDefinition<RankingSnapshotHeaderDocument> BuildHeaderAttemptFilter(
@@ -1815,7 +1918,8 @@ internal static class RankingSnapshotMongoDefinitions
         return pointer.ScopeKey == candidate.ScopeKey &&
             (pointer.HighestPublishedSourceRevision > candidate.SourceRevision ||
                 (pointer.HighestPublishedSourceRevision == candidate.SourceRevision &&
-                    pointer.MethodologyVersion == candidate.MethodologyVersion));
+                    pointer.MethodologyVersion == candidate.MethodologyVersion &&
+                    candidate.GeneratedAtUtc <= pointer.UpdatedAtUtc));
     }
 
     public static bool IsPublishableForScope(

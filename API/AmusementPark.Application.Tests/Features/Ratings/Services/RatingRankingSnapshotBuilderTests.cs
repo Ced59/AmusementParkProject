@@ -12,6 +12,67 @@ namespace AmusementPark.Application.Tests.Features.Ratings.Services;
 public sealed class RatingRankingSnapshotBuilderTests
 {
     [Fact]
+    public async Task EvaluateAsync_ShouldApplyTheCandidatePolicyWithoutCreatingSnapshotEntries()
+    {
+        RankingScopeDefinition scope = ResolveAttractionScope();
+        IReadOnlyCollection<RatingRankingItemResult> sources = new[]
+        {
+            CreateSource("item-1", 4.2, 10),
+        };
+        Mock<IRatingRepository> repository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.GetVisibleParkItemRankingSourceBatchAsync(
+                ParkItemCategory.Attraction,
+                RankingSnapshotHeader.MaximumCandidateEntryCount,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceBatch(sources, false));
+        Mock<IRatingEvidenceReader> evidenceReader =
+            new Mock<IRatingEvidenceReader>(MockBehavior.Strict);
+        evidenceReader
+            .Setup(reader => reader.ReadAggregateSourceFactsAsync(
+                It.IsAny<IReadOnlyCollection<RatingAggregateSourceTarget>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new RatingAggregateSourceFact(
+                    RatingTargetType.ParkItem,
+                    "item-1",
+                    10,
+                    10,
+                    sources.Single().RatingSum),
+            });
+        RatingRankingSnapshotBuilder builder = new RatingRankingSnapshotBuilder(
+            repository.Object,
+            evidenceReader.Object);
+        RankingEligibilityPolicy candidatePolicy = new RankingEligibilityPolicy(
+            RatingMethodologyVersion.Parse("ratings-2026-02"),
+            3,
+            20,
+            30,
+            100,
+            3,
+            5,
+            2,
+            2,
+            0.0001m);
+
+        RatingRankingPolicyEvaluationPlan plan = await builder.EvaluateAsync(
+            scope,
+            candidatePolicy,
+            CancellationToken.None);
+
+        RatingRankingPolicyEvaluationEntry entry = Assert.Single(plan.Entries);
+        Assert.False(plan.IsSourceTruncated);
+        Assert.Equal("item-1", entry.TargetId);
+        Assert.NotNull(entry.Evidence);
+        Assert.False(entry.Evidence.IsEligibleForMainRanking);
+        Assert.Equal(candidatePolicy.Version, entry.Evidence.MethodologyVersion);
+        Assert.Equal(20, entry.Evidence.NextContributorThreshold);
+        repository.VerifyAll();
+        evidenceReader.VerifyAll();
+    }
+
+    [Fact]
     public async Task BuildAsync_WhenParkItemsHaveMixedEvidence_ShouldKeepOnlyEligibleEntriesAndRecomputeCompetitionRanks()
     {
         RankingScopeDefinition scope = ResolveAttractionScope();

@@ -6,7 +6,10 @@ namespace AmusementPark.Application.Features.Ratings.Models;
 public sealed record RatingRankingRebuildScopePayload(
     [property: JsonPropertyName("scopeKey")] string ScopeKey,
     [property: JsonPropertyName("requestedSourceRevision")] long RequestedSourceRevision,
-    [property: JsonPropertyName("methodologyVersion")] string MethodologyVersion);
+    [property: JsonPropertyName("methodologyVersion")] string MethodologyVersion,
+    [property: JsonPropertyName("forceRebuild")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    bool ForceRebuild = false);
 
 public static class RatingRankingRebuildScopeJob
 {
@@ -16,6 +19,11 @@ public static class RatingRankingRebuildScopeJob
     public static string BuildNaturalKey(RankingScopeKey scopeKey)
     {
         return $"{Kind}:{scopeKey.Value}";
+    }
+
+    public static string BuildForcedNaturalKey(RankingScopeKey scopeKey)
+    {
+        return $"{BuildNaturalKey(scopeKey)}:forced";
     }
 }
 
@@ -151,6 +159,13 @@ public sealed record RatingRankingSnapshotBuildPlan(
     int TotalEntryCount,
     IReadOnlyCollection<RankingSnapshotEntry> EligibleEntries,
     bool IsSourceTruncated);
+
+public enum RatingRankingRebuildScheduleDisposition
+{
+    Scheduled,
+    Covered,
+    Deferred,
+}
 
 public sealed class RatingRankingMutationPreparation
 {

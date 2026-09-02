@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
@@ -15,35 +16,7 @@ public sealed class GetCurrentRatingMethodologyQueryHandler
     {
         cancellationToken.ThrowIfCancellationRequested();
         return Task.FromResult(ApplicationResult<RatingMethodologyResult>.Success(
-            ToResult(RatingMethodologyCatalog.Current)));
-    }
-
-    internal static RatingMethodologyResult ToResult(RatingMethodologyDefinition definition)
-    {
-        RankingEligibilityPolicy policy = definition.EligibilityPolicy;
-        return new RatingMethodologyResult(
-            definition.Version,
-            definition.EffectiveDate,
-            definition.Version == RatingMethodologyCatalog.Current.Version,
-            definition.PreviousVersion,
-            definition.RatingMinimum,
-            definition.RatingMaximum,
-            definition.RatingStep,
-            definition.BayesianPriorMean,
-            definition.BayesianPriorWeight,
-            definition.ParkDirectScoreWeight,
-            definition.ParkItemsScoreWeight,
-            definition.BalancesItemCategoriesEqually,
-            policy.ProvisionalMinUniqueContributors,
-            policy.EligibleMinUniqueContributors,
-            policy.EstablishedMinUniqueContributors,
-            policy.StrongEvidenceMinUniqueContributors,
-            policy.MinimumEligibleEntriesPerRanking,
-            policy.MinimumEligibleItemsForParkItemComponent,
-            policy.MinimumEligibleItemsPerCategory,
-            policy.MinimumEligibleCategories,
-            policy.ScoreTieEpsilon,
-            definition.RankingConvention);
+            RatingMethodologyResultFactory.Create(RatingMethodologyCatalog.Current)));
     }
 }
 
@@ -72,7 +45,7 @@ public sealed class GetRatingMethodologyQueryHandler
         }
 
         return Task.FromResult(ApplicationResult<RatingMethodologyResult>.Success(
-            GetCurrentRatingMethodologyQueryHandler.ToResult(definition)));
+            RatingMethodologyResultFactory.Create(definition)));
     }
 }
 
@@ -85,7 +58,7 @@ public sealed class ListRatingMethodologiesQueryHandler
     {
         cancellationToken.ThrowIfCancellationRequested();
         IReadOnlyCollection<RatingMethodologyResult> results = RatingMethodologyCatalog.All
-            .Select(GetCurrentRatingMethodologyQueryHandler.ToResult)
+            .Select(RatingMethodologyResultFactory.Create)
             .ToList()
             .AsReadOnly();
         return Task.FromResult(ApplicationResult<IReadOnlyCollection<RatingMethodologyResult>>.Success(results));

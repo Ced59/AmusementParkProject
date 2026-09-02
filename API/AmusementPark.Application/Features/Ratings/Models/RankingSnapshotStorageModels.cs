@@ -8,7 +8,8 @@ public sealed record StartRankingSnapshotBuildRequest(
     long SourceRevision,
     int TotalEntryCount,
     int EligibleEntryCount,
-    RankingSnapshotChecksum Checksum);
+    RankingSnapshotChecksum Checksum,
+    bool ForceRebuild = false);
 
 public enum RankingSnapshotBuildStartDisposition
 {

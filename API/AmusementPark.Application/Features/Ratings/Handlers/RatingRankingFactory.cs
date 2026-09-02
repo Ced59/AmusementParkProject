@@ -22,7 +22,8 @@ internal static class RatingRankingPaging
 
 internal sealed record ParkRankingSnapshotCandidate(
     ParkRatingRankingResult Ranking,
-    RankingEvidence? Evidence);
+    RankingEvidence? Evidence,
+    ParkItemComponentEligibility? ItemComponent);
 
 internal sealed record ParkItemRankingSnapshotCandidate(
     ParkItemRatingRankingResult Ranking,
@@ -48,9 +49,14 @@ internal static class RatingRankingFactory
             .Select(static (ranking, index) => ranking with { Rank = index + 1 })
             .ToList();
 
-        return evidenceFacts is null
-            ? rankings
-            : ApplyParkEvidence(rankings, sources, evidenceFacts, categoryFilter);
+        if (evidenceFacts is null)
+        {
+            return rankings;
+        }
+
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
+            BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter);
+        return MapParkEvidence(OrderParkSnapshotCandidates(candidates));
     }
 
     public static IReadOnlyCollection<ParkRatingRankingResult> ApplyParkEvidence(
@@ -59,7 +65,20 @@ internal static class RatingRankingFactory
         ParkRankingEvidenceFactsBatch evidenceFacts,
         ParkItemCategory? categoryFilter = null)
     {
-        return BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter)
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
+            BuildParkSnapshotCandidates(
+                rankings,
+                sources,
+                evidenceFacts,
+                categoryFilter,
+                replaceScoreWithPolicyScore: false);
+        return MapParkEvidence(candidates);
+    }
+
+    private static IReadOnlyCollection<ParkRatingRankingResult> MapParkEvidence(
+        IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates)
+    {
+        return candidates
             .Select(static candidate => candidate.Ranking with
             {
                 Evidence = candidate.Evidence is null
@@ -73,7 +92,9 @@ internal static class RatingRankingFactory
         IReadOnlyCollection<ParkRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
         ParkRankingEvidenceFactsBatch evidenceFacts,
-        ParkItemCategory? categoryFilter = null)
+        ParkItemCategory? categoryFilter = null,
+        RankingEligibilityPolicy? eligibilityPolicy = null,
+        bool replaceScoreWithPolicyScore = true)
     {
         ArgumentNullException.ThrowIfNull(rankings);
         ArgumentNullException.ThrowIfNull(sources);
@@ -101,10 +122,10 @@ internal static class RatingRankingFactory
                 || !contributorFactsByPark.TryGetValue(ranking.ParkId, out ParkRankingContributorFacts? contributorFacts)
                 || incompletePublicInventoryParkIds.Contains(ranking.ParkId))
             {
-                return new ParkRankingSnapshotCandidate(ranking, null);
+                return new ParkRankingSnapshotCandidate(ranking, null, null);
             }
 
-            parkSources = ApplyVerifiedAggregateIntegrity(
+            parkSources = RatingRankingEvidenceFactory.ApplyVerifiedAggregateIntegrity(
                 parkSources,
                 evidenceFacts.AggregateSources,
                 evidenceFacts.AggregateSourceFactsWereRead);
@@ -126,15 +147,22 @@ internal static class RatingRankingFactory
                 .Distinct()
                 .Count() == 1;
 
-            RankingEvidence? evidence = directParkSources.Count <= 1
-                ? TryCreateParkEvidence(
+            ParkRankingEvaluation? evaluation = directParkSources.Count <= 1
+                ? RatingRankingEvidenceFactory.TryCreateParkEvaluation(
                     directParkSources.FirstOrDefault(),
                     itemSources,
                     contributorFacts,
                     publicItems,
-                    isSingleCategoryParkException)
+                    isSingleCategoryParkException,
+                    ranking.Categories,
+                    eligibilityPolicy ?? RankingEligibilityPolicy.Initial)
                 : null;
-            return new ParkRankingSnapshotCandidate(ranking, evidence);
+            return new ParkRankingSnapshotCandidate(
+                evaluation is null || !replaceScoreWithPolicyScore
+                    ? ranking
+                    : ranking with { Score = evaluation.Score },
+                evaluation?.Evidence,
+                evaluation?.ItemComponent);
         }).ToList();
     }
 
@@ -172,13 +200,15 @@ internal static class RatingRankingFactory
     internal static IReadOnlyCollection<ParkItemRankingSnapshotCandidate> BuildParkItemSnapshotCandidates(
         IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
-        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
+        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts,
+        RankingEligibilityPolicy? eligibilityPolicy = null)
     {
         ArgumentNullException.ThrowIfNull(rankings);
         ArgumentNullException.ThrowIfNull(sources);
         ArgumentNullException.ThrowIfNull(aggregateSourceFacts);
 
-        IReadOnlyCollection<RatingRankingItemResult> verifiedSources = ApplyVerifiedAggregateIntegrity(
+        IReadOnlyCollection<RatingRankingItemResult> verifiedSources =
+            RatingRankingEvidenceFactory.ApplyVerifiedAggregateIntegrity(
             sources,
             aggregateSourceFacts,
             sourceFactsWereRead: true);
@@ -201,7 +231,8 @@ internal static class RatingRankingFactory
                     source.UniqueContributorCount.Value,
                     source.RatingCount,
                     targetCanReceiveVisitorRatings: true,
-                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value);
+                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value,
+                    eligibilityPolicy ?? RankingEligibilityPolicy.Initial);
             return new ParkItemRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
     }
@@ -329,244 +360,6 @@ internal static class RatingRankingFactory
             RatingScoreCalculator.CalculateAverage(itemRatingSum, itemRatingCount),
             categories);
     }
-
-    private static RankingEvidence? TryCreateParkEvidence(
-        RatingRankingItemResult? directParkSource,
-        IReadOnlyCollection<RatingRankingItemResult> itemSources,
-        ParkRankingContributorFacts contributorFacts,
-        IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems,
-        bool isSingleCategoryParkException)
-    {
-        if (!TryConvertEvidenceCounts(contributorFacts, out ParkContributorDomainCounts counts))
-        {
-            return null;
-        }
-
-        HashSet<string> publicItemIds = publicItems
-            .Select(static item => item.TargetId)
-            .ToHashSet(StringComparer.Ordinal);
-        if (itemSources.Any(source => !publicItemIds.Contains(source.TargetId)))
-        {
-            return null;
-        }
-
-        if (directParkSource is not null && !directParkSource.UniqueContributorCount.HasValue)
-        {
-            return null;
-        }
-
-        Dictionary<string, RankingEvidence> itemEvidenceById = new Dictionary<string, RankingEvidence>(
-            StringComparer.Ordinal);
-        foreach (IGrouping<string, RatingRankingItemResult> itemSourceGroup in itemSources.GroupBy(
-                     static source => source.TargetId,
-                     StringComparer.Ordinal))
-        {
-            if (itemSourceGroup.Count() != 1)
-            {
-                return null;
-            }
-
-            RatingRankingItemResult itemSource = itemSourceGroup.Single();
-            if (!itemSource.AggregateIntegrityIsValid.HasValue
-                || !itemSource.UniqueContributorCount.HasValue)
-            {
-                return null;
-            }
-
-            RankingEvidence? itemEvidence = RatingResultFactory.TryCreateSimpleDomainEvidence(
-                itemSource.UniqueContributorCount.Value,
-                itemSource.RatingCount,
-                targetCanReceiveVisitorRatings: true,
-                aggregateIntegrityIsValid: itemSource.AggregateIntegrityIsValid.Value);
-            if (itemEvidence is null)
-            {
-                return null;
-            }
-
-            itemEvidenceById.Add(itemSource.TargetId, itemEvidence);
-        }
-
-        if (publicItemIds.Count != publicItems.Count)
-        {
-            return null;
-        }
-
-        List<RankingCategoryCoverage> categoryCoverage = publicItems
-            .GroupBy(static item => item.Category)
-            .Select(group => new RankingCategoryCoverage(
-                group.Count(),
-                group.Count(item => itemEvidenceById.TryGetValue(item.TargetId, out RankingEvidence? evidence)
-                    && evidence.IsEligibleForMainRanking)))
-            .ToList();
-
-        if (!TrySumObservationCounts(directParkSource, itemSources, out long sourceObservationCount))
-        {
-            return null;
-        }
-
-        bool? sourceAggregateIntegrity = TryResolveAggregateIntegrity(directParkSource, itemSources);
-        if (!sourceAggregateIntegrity.HasValue)
-        {
-            return null;
-        }
-
-        bool sourceContributorCountsAreConsistent = (directParkSource is null
-                || directParkSource.UniqueContributorCount == directParkSource.RatingCount)
-            && itemSources.All(static source => source.UniqueContributorCount == source.RatingCount);
-        bool aggregateIntegrityIsValid = sourceAggregateIntegrity.Value
-            && sourceContributorCountsAreConsistent
-            && sourceObservationCount == contributorFacts.RatingObservationCount
-            && (directParkSource?.UniqueContributorCount ?? 0) == contributorFacts.DirectParkContributorCount;
-        ParkRankingEvidenceInput input = new ParkRankingEvidenceInput(
-            counts.UniqueContributorCount,
-            counts.RatingObservationCount,
-            counts.DirectParkContributorCount,
-            counts.ItemContributorCount,
-            categoryCoverage,
-            IsSingleCategoryParkException: isSingleCategoryParkException,
-            TargetCanReceiveVisitorRatings: true,
-            IsExcludedByModeration: false,
-            aggregateIntegrityIsValid);
-        if (!RankingEligibilityPolicy.Initial.TryEvaluatePark(input, out RankingEvidence? evidence)
-            || evidence is null)
-        {
-            return null;
-        }
-
-        return evidence;
-    }
-
-    private static bool? TryResolveAggregateIntegrity(
-        RatingRankingItemResult? directParkSource,
-        IReadOnlyCollection<RatingRankingItemResult> itemSources)
-    {
-        IEnumerable<RatingRankingItemResult> aggregateSources = directParkSource is null
-            ? itemSources
-            : itemSources.Prepend(directParkSource);
-        List<bool?> integrityFacts = aggregateSources
-            .Select(static source => source.AggregateIntegrityIsValid)
-            .ToList();
-        if (integrityFacts.Any(static fact => !fact.HasValue))
-        {
-            return null;
-        }
-
-        return integrityFacts.All(static fact => fact!.Value);
-    }
-
-    private static IReadOnlyCollection<RatingRankingItemResult> ApplyVerifiedAggregateIntegrity(
-        IReadOnlyCollection<RatingRankingItemResult> sources,
-        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts,
-        bool sourceFactsWereRead)
-    {
-        if (!sourceFactsWereRead)
-        {
-            return sources;
-        }
-
-        IReadOnlyDictionary<string, RatingAggregateSourceFact> sourceFactsByTarget = aggregateSourceFacts
-            .GroupBy(
-                static fact => BuildTargetKey(fact.TargetType, fact.TargetId),
-                StringComparer.Ordinal)
-            .Where(static group => group.Count() == 1)
-            .ToDictionary(static group => group.Key, static group => group.Single(), StringComparer.Ordinal);
-
-        return sources.Select(source =>
-        {
-            bool? aggregateIntegrityIsValid = source.AggregateIntegrityIsValid;
-            if (!aggregateIntegrityIsValid.HasValue)
-            {
-                return source;
-            }
-
-            sourceFactsByTarget.TryGetValue(
-                BuildTargetKey(source.TargetType, source.TargetId),
-                out RatingAggregateSourceFact? sourceFact);
-            long verifiedUniqueContributorCount = 0;
-            bool sourceProjectionIsValid = sourceFact is not null
-                && RatingAggregate.TryResolveVerifiedSourceProjection(
-                    source.RatingCount,
-                    source.UniqueContributorCount,
-                    source.RatingSum,
-                    source.AverageRating,
-                    source.BayesianScore,
-                    sourceFact.RatingObservationCount,
-                    sourceFact.UniqueContributorCount,
-                    sourceFact.RatingSum,
-                    out verifiedUniqueContributorCount);
-
-            return source with
-            {
-                AggregateIntegrityIsValid = aggregateIntegrityIsValid.Value && sourceProjectionIsValid,
-                UniqueContributorCount = sourceProjectionIsValid
-                    ? verifiedUniqueContributorCount
-                    : source.UniqueContributorCount,
-            };
-        }).ToList();
-    }
-
-    private static string BuildTargetKey(RatingTargetType targetType, string targetId)
-    {
-        return $"{targetType}:{targetId}";
-    }
-
-    private static bool TryConvertEvidenceCounts(
-        ParkRankingContributorFacts facts,
-        out ParkContributorDomainCounts counts)
-    {
-        if (facts.UniqueContributorCount < 0
-            || facts.UniqueContributorCount > int.MaxValue
-            || facts.RatingObservationCount < 0
-            || facts.RatingObservationCount > int.MaxValue
-            || facts.DirectParkContributorCount < 0
-            || facts.DirectParkContributorCount > int.MaxValue
-            || facts.ItemContributorCount < 0
-            || facts.ItemContributorCount > int.MaxValue)
-        {
-            counts = default;
-            return false;
-        }
-
-        counts = new ParkContributorDomainCounts(
-            checked((int)facts.UniqueContributorCount),
-            checked((int)facts.RatingObservationCount),
-            checked((int)facts.DirectParkContributorCount),
-            checked((int)facts.ItemContributorCount));
-        return true;
-    }
-
-    private static bool TrySumObservationCounts(
-        RatingRankingItemResult? directParkSource,
-        IReadOnlyCollection<RatingRankingItemResult> itemSources,
-        out long sourceObservationCount)
-    {
-        sourceObservationCount = directParkSource?.RatingCount ?? 0;
-        if (sourceObservationCount < 0 || sourceObservationCount > int.MaxValue)
-        {
-            return false;
-        }
-
-        foreach (RatingRankingItemResult itemSource in itemSources)
-        {
-            if (itemSource.RatingCount < 0
-                || itemSource.RatingCount > int.MaxValue
-                || sourceObservationCount > int.MaxValue - itemSource.RatingCount)
-            {
-                sourceObservationCount = 0;
-                return false;
-            }
-
-            sourceObservationCount += itemSource.RatingCount;
-        }
-
-        return true;
-    }
-
-    private readonly record struct ParkContributorDomainCounts(
-        int UniqueContributorCount,
-        int RatingObservationCount,
-        int DirectParkContributorCount,
-        int ItemContributorCount);
 
     private static UserParkRatingRankingResult BuildUserParkRanking(
         string parkId,

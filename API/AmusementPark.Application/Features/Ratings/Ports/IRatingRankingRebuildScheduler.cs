@@ -5,7 +5,11 @@ namespace AmusementPark.Application.Features.Ratings.Ports;
 
 public interface IRatingRankingRebuildScheduler
 {
-    Task ScheduleIfOutstandingAsync(
+    Task<RatingRankingRebuildScheduleDisposition> ScheduleIfOutstandingAsync(
+        RatingRankingSourceRevision sourceRevision,
+        CancellationToken cancellationToken);
+
+    Task<RatingRankingRebuildScheduleDisposition> ScheduleForcedAsync(
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken);
 

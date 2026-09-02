@@ -125,6 +125,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/social-publishing/pages/admin-social-publishing/admin-social-publishing.component').then((m) => m.AdminSocialPublishingComponent)
           },
           {
+            path: 'rating-rankings',
+            loadComponent: () => import('@features/admin/rating-ranking/pages/admin-rating-ranking/admin-rating-ranking.component').then((m) => m.AdminRatingRankingComponent)
+          },
+          {
             path: 'technical-stats',
             loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
           },

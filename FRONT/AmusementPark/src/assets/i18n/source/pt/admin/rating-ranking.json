@@ -1,0 +1,145 @@
+{
+  "admin": {
+    "ratingRanking": {
+      "navTitle": "Classificações e evidências",
+      "title": "Controlo das classificações",
+      "subtitle": "Analisa as evidências, simula uma política versionada e reconstrói snapshots sem alterar diretamente as regras publicadas.",
+      "loading": "A carregar o diagnóstico das classificações...",
+      "loadError": "Não foi possível carregar o diagnóstico das classificações.",
+      "empty": "Não existe nenhum diagnóstico de classificação disponível.",
+      "methodology": {
+        "current": "Metodologia publicada",
+        "preparing": "Metodologia em preparação",
+        "none": "Nenhuma versão preparada",
+        "thresholdSummary": "Limite principal: {{eligible}} contribuidores · pelo menos {{minimum}} entradas comparáveis.",
+        "previewOnly": "Uma política candidata permanece uma simulação até ser publicada através de um processo versionado separado."
+      },
+      "overview": {
+        "title": "Visão geral",
+        "ratings": "Avaliações de origem",
+        "scopes": "Âmbitos canónicos",
+        "anomalies": "Anomalias de dados",
+        "aggregateIssues": "Agregados a verificar"
+      },
+      "scopes": {
+        "title": "Snapshots e recálculos",
+        "subtitle": "Cada âmbito apresenta a revisão de origem, o snapshot atual, a duração e o último erro.",
+        "scope": "Âmbito",
+        "status": "Estado",
+        "entries": "Elegíveis / alvos",
+        "revision": "Publicada → revisão de origem",
+        "lastRun": "Última publicação",
+        "duration": "Duração",
+        "error": "Último erro"
+      },
+      "scopeStatus": {
+        "current": "Atualizado",
+        "outstanding": "Reconstrução necessária",
+        "missing": "Snapshot em falta",
+        "error": "Erro",
+        "truncated": "Diagnóstico limitado"
+      },
+      "common": {
+        "target": "Tipo",
+        "level": "Nível de evidência",
+        "targets": "Alvos",
+        "contributors": "Contribuidores únicos acumulados",
+        "observations": "Observações acumuladas",
+        "none": "Sem dados"
+      },
+      "targetTypes": { "park": "Parque", "parkItem": "Local do parque" },
+      "evidence": {
+        "title": "Distribuição das evidências",
+        "subtitle": "As pessoas e as observações continuam a ser contabilizadas separadamente."
+      },
+      "levels": {
+        "noEvidence": "Sem evidências",
+        "insufficient": "Dados insuficientes",
+        "provisional": "Tendência provisória",
+        "eligible": "Elegível",
+        "established": "Evidência estabelecida",
+        "strongEvidence": "Evidência forte",
+        "excluded": "Excluído"
+      },
+      "exclusions": {
+        "title": "Alvos excluídos",
+        "subtitle": "Motivos que impedem atualmente uma posição na classificação principal."
+      },
+      "reasons": {
+        "noRatings": "Sem avaliações",
+        "tooFewUniqueContributors": "Poucos contribuidores únicos",
+        "tooFewComparableEntries": "Poucas entradas comparáveis",
+        "insufficientItemCoverage": "Cobertura insuficiente dos locais",
+        "insufficientCategoryCoverage": "Cobertura insuficiente das categorias",
+        "targetUnavailable": "Alvo indisponível",
+        "targetExcluded": "Alvo excluído",
+        "aggregateIntegrityFailure": "Integridade do agregado inválida",
+        "unsupportedComposition": "Composição não verificável"
+      },
+      "nearThreshold": {
+        "title": "Alvos próximos do limite",
+        "subtitle": "Alvos a que faltam, no máximo, três contribuidores para se tornarem elegíveis.",
+        "remaining": "Faltam {{count}} contribuidor(es)"
+      },
+      "coverage": {
+        "title": "Cobertura por categoria",
+        "subtitle": "Entradas elegíveis entre os alvos avaliados em cada categoria."
+      },
+      "categories": {
+        "attraction": "Atrações",
+        "restaurant": "Restaurantes",
+        "hotel": "Hotéis",
+        "animal": "Animais",
+        "show": "Espetáculos",
+        "shop": "Lojas",
+        "service": "Serviços",
+        "transport": "Transportes"
+      },
+      "preview": {
+        "title": "Simulação antes da publicação",
+        "subtitle": "A simulação compara a política candidata com os snapshots atuais. Não guarda nem publica qualquer definição.",
+        "version": "Nova versão obrigatória",
+        "provisional": "Limite provisório",
+        "eligible": "Limite de elegibilidade",
+        "established": "Limite estabelecido",
+        "strong": "Limite de evidência forte",
+        "minimumEntries": "Entradas mínimas por classificação",
+        "minimumItems": "Locais elegíveis para o componente do parque",
+        "minimumItemsPerCategory": "Locais mínimos por categoria",
+        "minimumCategories": "Categorias mínimas",
+        "tieEpsilon": "Tolerância de empate",
+        "action": "Simular o impacto",
+        "success": "Simulação concluída. Nenhuma definição de produção foi alterada.",
+        "error": "A simulação falhou. Verifica a versão e a ordem dos limites."
+      },
+      "impact": {
+        "gained": "Elegibilidade obtida",
+        "lost": "Elegibilidade perdida",
+        "averageRank": "Variação média de posição",
+        "maximumRank": "Variação máxima de posição",
+        "smallScopes": "Âmbitos com menos de {{minimum}} entradas",
+        "incompleteParks": "Composições de parque incompletas",
+        "cost": "Custo estimado: alvos / blocos",
+        "currentCandidate": "Atual → candidata",
+        "gainedLost": "Obtida / perdida",
+        "rankChange": "Variação média / máx.",
+        "publication": "Publicação",
+        "publishable": "A publicação disponibilizaria uma lista fiável",
+        "notPublishable": "Menos de {{minimum}} entradas: lista oculta",
+        "unavailable": "Simulação indisponível: a origem ultrapassa o limite de segurança.",
+        "sourceChanged": "Simulação indisponível: os dados foram alterados durante o cálculo. Executa novamente a simulação.",
+        "gainedSamples": "Entradas obtidas",
+        "lostSamples": "Entradas perdidas"
+      },
+      "rebuild": {
+        "title": "Reconstrução auditada",
+        "subtitle": "Agenda uma nova revisão para todos os âmbitos. O processamento mantém-se sequencial e decorre em segundo plano.",
+        "confirmation": "Confirmo que quero reconstruir todos os snapshots das classificações.",
+        "action": "Reconstruir snapshots",
+        "scheduled": "Reconstrução agendada para {{count}} âmbito(s).",
+        "success": "A reconstrução foi agendada e registada no histórico de auditoria.",
+        "error": "Não foi possível agendar a reconstrução."
+      }
+    }
+  }
+}

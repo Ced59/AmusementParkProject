@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
         "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow.",
         "history": "Gestionar cronologías, hitos documentados y artículos históricos.",
+        "ratingRankings": "Diagnosticar, simular y reconstruir clasificaciones de valoraciones.",
         "standaloneAttractions": "Gestionar atracciones independientes que no están asociadas a un parque.",
         "fieldMode": "Completar rápidamente fotos y ubicaciones directamente sobre el terreno.",
         "technicalPages": "Administrar las páginas técnicas y su contenido localizado.",
@@ -1753,6 +1754,150 @@
           "label": "Fabricante",
           "description": "Borrador upsert JSON prerrellenado para este fabricante."
         }
+      }
+    },
+    "ratingRanking": {
+      "navTitle": "Clasificaciones y evidencias",
+      "title": "Control de las clasificaciones",
+      "subtitle": "Inspecciona las evidencias, simula una política versionada y reconstruye instantáneas sin modificar directamente las reglas publicadas.",
+      "loading": "Cargando el diagnóstico de las clasificaciones...",
+      "loadError": "No se ha podido cargar el diagnóstico de las clasificaciones.",
+      "empty": "No hay ningún diagnóstico de clasificación disponible.",
+      "methodology": {
+        "current": "Metodología publicada",
+        "preparing": "Metodología en preparación",
+        "none": "Ninguna versión preparada",
+        "thresholdSummary": "Umbral principal: {{eligible}} colaboradores · al menos {{minimum}} entradas comparables.",
+        "previewOnly": "Una política candidata sigue siendo una simulación hasta que se publica mediante un proceso versionado independiente."
+      },
+      "overview": {
+        "title": "Vista general",
+        "ratings": "Valoraciones de origen",
+        "scopes": "Ámbitos canónicos",
+        "anomalies": "Anomalías de datos",
+        "aggregateIssues": "Agregados por revisar"
+      },
+      "scopes": {
+        "title": "Instantáneas y recálculos",
+        "subtitle": "Cada ámbito muestra su revisión de origen, instantánea actual, duración y último error.",
+        "scope": "Ámbito",
+        "status": "Estado",
+        "entries": "Elegibles / objetivos",
+        "revision": "Publicada → revisión de origen",
+        "lastRun": "Última publicación",
+        "duration": "Duración",
+        "error": "Último error"
+      },
+      "scopeStatus": {
+        "current": "Al día",
+        "outstanding": "Requiere reconstrucción",
+        "missing": "Falta la instantánea",
+        "error": "Error",
+        "truncated": "Diagnóstico limitado"
+      },
+      "common": {
+        "target": "Tipo",
+        "level": "Nivel de evidencia",
+        "targets": "Objetivos",
+        "contributors": "Colaboradores únicos acumulados",
+        "observations": "Observaciones acumuladas",
+        "none": "Sin datos"
+      },
+      "targetTypes": {
+        "park": "Parque",
+        "parkItem": "Lugar del parque"
+      },
+      "evidence": {
+        "title": "Distribución de las evidencias",
+        "subtitle": "Las personas y las observaciones se siguen contando por separado."
+      },
+      "levels": {
+        "noEvidence": "Sin evidencias",
+        "insufficient": "Datos insuficientes",
+        "provisional": "Tendencia provisional",
+        "eligible": "Elegible",
+        "established": "Evidencia consolidada",
+        "strongEvidence": "Evidencia sólida",
+        "excluded": "Excluido"
+      },
+      "exclusions": {
+        "title": "Objetivos excluidos",
+        "subtitle": "Motivos que impiden actualmente aparecer en la clasificación principal."
+      },
+      "reasons": {
+        "noRatings": "Sin valoraciones",
+        "tooFewUniqueContributors": "Muy pocos colaboradores únicos",
+        "tooFewComparableEntries": "Muy pocas entradas comparables",
+        "insufficientItemCoverage": "Cobertura insuficiente de lugares",
+        "insufficientCategoryCoverage": "Cobertura insuficiente de categorías",
+        "targetUnavailable": "Objetivo no disponible",
+        "targetExcluded": "Objetivo excluido",
+        "aggregateIntegrityFailure": "Integridad del agregado no válida",
+        "unsupportedComposition": "Composición no verificable"
+      },
+      "nearThreshold": {
+        "title": "Objetivos próximos al umbral",
+        "subtitle": "Objetivos a los que les faltan como máximo tres colaboradores para ser elegibles.",
+        "remaining": "Faltan {{count}} colaborador(es)"
+      },
+      "coverage": {
+        "title": "Cobertura por categoría",
+        "subtitle": "Entradas elegibles entre los objetivos evaluados de cada categoría."
+      },
+      "categories": {
+        "attraction": "Atracciones",
+        "restaurant": "Restaurantes",
+        "hotel": "Hoteles",
+        "animal": "Animales",
+        "show": "Espectáculos",
+        "shop": "Tiendas",
+        "service": "Servicios",
+        "transport": "Transporte"
+      },
+      "preview": {
+        "title": "Simulación antes de publicar",
+        "subtitle": "La simulación compara la política candidata con las instantáneas actuales. No guarda ni publica ningún ajuste.",
+        "version": "Nueva versión obligatoria",
+        "provisional": "Umbral provisional",
+        "eligible": "Umbral de elegibilidad",
+        "established": "Umbral consolidado",
+        "strong": "Umbral de evidencia sólida",
+        "minimumEntries": "Entradas mínimas por clasificación",
+        "minimumItems": "Lugares elegibles para el componente del parque",
+        "minimumItemsPerCategory": "Lugares mínimos por categoría",
+        "minimumCategories": "Categorías mínimas",
+        "tieEpsilon": "Tolerancia de empate",
+        "action": "Simular el impacto",
+        "success": "Simulación finalizada. No se ha modificado ningún ajuste de producción.",
+        "error": "La simulación ha fallado. Comprueba la versión y el orden de los umbrales."
+      },
+      "impact": {
+        "gained": "Elegibilidad ganada",
+        "lost": "Elegibilidad perdida",
+        "averageRank": "Variación media de puesto",
+        "maximumRank": "Variación máxima de puesto",
+        "smallScopes": "Ámbitos con menos de {{minimum}} entradas",
+        "incompleteParks": "Composiciones de parque incompletas",
+        "cost": "Coste estimado: objetivos / bloques",
+        "currentCandidate": "Actual → candidata",
+        "gainedLost": "Ganada / perdida",
+        "rankChange": "Variación media / máx.",
+        "publication": "Publicación",
+        "publishable": "La publicación ofrecería un listado fiable",
+        "notPublishable": "Menos de {{minimum}} entradas: listado oculto",
+        "unavailable": "Simulación no disponible: el origen supera el límite de seguridad.",
+        "sourceChanged": "Simulación no disponible: los datos cambiaron durante el cálculo. Vuelve a ejecutar la simulación.",
+        "gainedSamples": "Entradas ganadas",
+        "lostSamples": "Entradas perdidas"
+      },
+      "rebuild": {
+        "title": "Reconstrucción auditada",
+        "subtitle": "Programa una nueva revisión para todos los ámbitos. El proceso sigue siendo secuencial y se ejecuta en segundo plano.",
+        "confirmation": "Confirmo que quiero reconstruir todas las instantáneas de clasificación.",
+        "action": "Reconstruir instantáneas",
+        "scheduled": "Reconstrucción programada para {{count}} ámbito(s).",
+        "success": "La reconstrucción se ha programado y registrado en la auditoría.",
+        "error": "No se ha podido programar la reconstrucción."
       }
     },
     "references": {

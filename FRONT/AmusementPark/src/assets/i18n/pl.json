@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
         "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
+        "ratingRankings": "Diagnozuj, symuluj i przebudowuj rankingi ocen.",
         "standaloneAttractions": "Zarządzaj samodzielnymi atrakcjami, które nie są przypisane do parku.",
         "fieldMode": "Szybko uzupełniaj zdjęcia i lokalizacje bezpośrednio w terenie.",
         "technicalPages": "Zarządzaj stronami technicznymi i ich zlokalizowaną treścią.",
@@ -1753,6 +1754,150 @@
           "label": "Producent",
           "description": "Wypelniony szkic upsert JSON dla tego producenta."
         }
+      }
+    },
+    "ratingRanking": {
+      "navTitle": "Rankingi i dowody",
+      "title": "Zarządzanie rankingami",
+      "subtitle": "Sprawdzaj dowody, symuluj wersjonowaną politykę i przebudowuj migawki bez bezpośredniej zmiany opublikowanych zasad.",
+      "loading": "Wczytywanie diagnostyki rankingów...",
+      "loadError": "Nie udało się wczytać diagnostyki rankingów.",
+      "empty": "Brak dostępnej diagnostyki rankingów.",
+      "methodology": {
+        "current": "Opublikowana metodologia",
+        "preparing": "Metodologia w przygotowaniu",
+        "none": "Brak przygotowanej wersji",
+        "thresholdSummary": "Główny próg: {{eligible}} uczestników · co najmniej {{minimum}} porównywalne pozycje.",
+        "previewOnly": "Polityka kandydująca pozostaje symulacją do czasu publikacji w oddzielnym, wersjonowanym procesie."
+      },
+      "overview": {
+        "title": "Przegląd",
+        "ratings": "Oceny źródłowe",
+        "scopes": "Zakresy kanoniczne",
+        "anomalies": "Anomalie danych",
+        "aggregateIssues": "Agregaty do sprawdzenia"
+      },
+      "scopes": {
+        "title": "Migawki i ponowne obliczenia",
+        "subtitle": "Każdy zakres pokazuje rewizję źródła, bieżącą migawkę, czas i ostatni błąd.",
+        "scope": "Zakres",
+        "status": "Stan",
+        "entries": "Uprawnione / cele",
+        "revision": "Opublikowana → rewizja źródła",
+        "lastRun": "Ostatnia publikacja",
+        "duration": "Czas",
+        "error": "Ostatni błąd"
+      },
+      "scopeStatus": {
+        "current": "Aktualny",
+        "outstanding": "Wymagana przebudowa",
+        "missing": "Brak migawki",
+        "error": "Błąd",
+        "truncated": "Diagnostyka ograniczona"
+      },
+      "common": {
+        "target": "Typ",
+        "level": "Poziom dowodów",
+        "targets": "Cele",
+        "contributors": "Łączna liczba unikalnych uczestników",
+        "observations": "Łączna liczba obserwacji",
+        "none": "Brak danych"
+      },
+      "targetTypes": {
+        "park": "Park",
+        "parkItem": "Miejsce w parku"
+      },
+      "evidence": {
+        "title": "Rozkład dowodów",
+        "subtitle": "Osoby i obserwacje są nadal liczone osobno."
+      },
+      "levels": {
+        "noEvidence": "Brak dowodów",
+        "insufficient": "Niewystarczające dane",
+        "provisional": "Wstępny trend",
+        "eligible": "Uprawnione",
+        "established": "Ugruntowane dowody",
+        "strongEvidence": "Silne dowody",
+        "excluded": "Wykluczone"
+      },
+      "exclusions": {
+        "title": "Wykluczone cele",
+        "subtitle": "Powody, które obecnie uniemożliwiają miejsce w głównym rankingu."
+      },
+      "reasons": {
+        "noRatings": "Brak ocen",
+        "tooFewUniqueContributors": "Za mało unikalnych uczestników",
+        "tooFewComparableEntries": "Za mało porównywalnych pozycji",
+        "insufficientItemCoverage": "Niewystarczające pokrycie miejsc",
+        "insufficientCategoryCoverage": "Niewystarczające pokrycie kategorii",
+        "targetUnavailable": "Cel niedostępny",
+        "targetExcluded": "Cel wykluczony",
+        "aggregateIntegrityFailure": "Nieprawidłowa integralność agregatu",
+        "unsupportedComposition": "Skład niemożliwy do zweryfikowania"
+      },
+      "nearThreshold": {
+        "title": "Cele blisko progu",
+        "subtitle": "Cele, którym brakuje najwyżej trzech uczestników do uzyskania uprawnienia.",
+        "remaining": "Brakuje jeszcze: {{count}}"
+      },
+      "coverage": {
+        "title": "Pokrycie według kategorii",
+        "subtitle": "Uprawnione pozycje wśród ocenionych celów w każdej kategorii."
+      },
+      "categories": {
+        "attraction": "Atrakcje",
+        "restaurant": "Restauracje",
+        "hotel": "Hotele",
+        "animal": "Zwierzęta",
+        "show": "Pokazy",
+        "shop": "Sklepy",
+        "service": "Usługi",
+        "transport": "Transport"
+      },
+      "preview": {
+        "title": "Symulacja przed publikacją",
+        "subtitle": "Symulacja porównuje politykę kandydującą z bieżącymi migawkami. Nie zapisuje ani nie publikuje żadnego ustawienia.",
+        "version": "Wymagana nowa wersja",
+        "provisional": "Próg wstępny",
+        "eligible": "Próg uprawnienia",
+        "established": "Próg ugruntowanych dowodów",
+        "strong": "Próg silnych dowodów",
+        "minimumEntries": "Minimalna liczba pozycji w rankingu",
+        "minimumItems": "Uprawnione miejsca dla składowej parku",
+        "minimumItemsPerCategory": "Minimalna liczba miejsc w kategorii",
+        "minimumCategories": "Minimalna liczba kategorii",
+        "tieEpsilon": "Tolerancja remisu",
+        "action": "Symuluj wpływ",
+        "success": "Symulacja zakończona. Żadne ustawienie produkcyjne nie zostało zmienione.",
+        "error": "Symulacja nie powiodła się. Sprawdź wersję i kolejność progów."
+      },
+      "impact": {
+        "gained": "Uzyskane uprawnienia",
+        "lost": "Utracone uprawnienia",
+        "averageRank": "Średnia zmiana pozycji",
+        "maximumRank": "Maksymalna zmiana pozycji",
+        "smallScopes": "Zakresy poniżej {{minimum}} pozycji",
+        "incompleteParks": "Niepełny skład parków",
+        "cost": "Szacowany koszt: cele / bloki",
+        "currentCandidate": "Bieżąca → kandydująca",
+        "gainedLost": "Uzyskane / utracone",
+        "rankChange": "Zmiana śr. / maks.",
+        "publication": "Publikacja",
+        "publishable": "Publikacja zapewniłaby wiarygodną listę",
+        "notPublishable": "Mniej niż {{minimum}} pozycji: lista ukryta",
+        "unavailable": "Symulacja niedostępna: źródło przekracza limit bezpieczeństwa.",
+        "sourceChanged": "Symulacja niedostępna: dane zmieniły się podczas obliczeń. Uruchom symulację ponownie.",
+        "gainedSamples": "Uzyskane pozycje",
+        "lostSamples": "Utracone pozycje"
+      },
+      "rebuild": {
+        "title": "Audytowana przebudowa",
+        "subtitle": "Planuje nową rewizję dla wszystkich zakresów. Przetwarzanie pozostaje sekwencyjne i działa w tle.",
+        "confirmation": "Potwierdzam przebudowę wszystkich migawek rankingów.",
+        "action": "Przebuduj migawki",
+        "scheduled": "Przebudowę zaplanowano dla {{count}} zakresów.",
+        "success": "Przebudowa została zaplanowana i zapisana w dzienniku audytu.",
+        "error": "Nie udało się zaplanować przebudowy."
       }
     },
     "references": {

@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
         "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren.",
+        "ratingRankings": "Beoordelingsranglijsten controleren, simuleren en opnieuw opbouwen.",
         "standaloneAttractions": "Zelfstandige attracties beheren die niet aan een park zijn gekoppeld.",
         "fieldMode": "Foto's en locaties snel ter plaatse aanvullen.",
         "technicalPages": "Technische pagina's en hun gelokaliseerde inhoud beheren.",
@@ -1753,6 +1754,150 @@
           "label": "Fabrikant",
           "description": "Vooraf ingevuld JSON-upsert-concept voor deze fabrikant."
         }
+      }
+    },
+    "ratingRanking": {
+      "navTitle": "Ranglijsten en bewijs",
+      "title": "Beheer van ranglijsten",
+      "subtitle": "Controleer het bewijs, simuleer een versiegebonden beleid en bouw snapshots opnieuw op zonder gepubliceerde regels rechtstreeks te wijzigen.",
+      "loading": "Diagnose van ranglijsten laden...",
+      "loadError": "De diagnose van ranglijsten kon niet worden geladen.",
+      "empty": "Er is geen diagnose van ranglijsten beschikbaar.",
+      "methodology": {
+        "current": "Gepubliceerde methodologie",
+        "preparing": "Methodologie in voorbereiding",
+        "none": "Geen voorbereide versie",
+        "thresholdSummary": "Hoofddrempel: {{eligible}} bijdragers · minstens {{minimum}} vergelijkbare vermeldingen.",
+        "previewOnly": "Een kandidaatbeleid blijft een simulatie tot het via een afzonderlijk versiegebonden proces wordt gepubliceerd."
+      },
+      "overview": {
+        "title": "Overzicht",
+        "ratings": "Bronbeoordelingen",
+        "scopes": "Canonieke bereiken",
+        "anomalies": "Gegevensafwijkingen",
+        "aggregateIssues": "Te controleren aggregaten"
+      },
+      "scopes": {
+        "title": "Snapshots en herberekeningen",
+        "subtitle": "Elk bereik toont de bronrevisie, actuele snapshot, duur en laatste fout.",
+        "scope": "Bereik",
+        "status": "Status",
+        "entries": "Geschikt / doelen",
+        "revision": "Gepubliceerd → bronrevisie",
+        "lastRun": "Laatste publicatie",
+        "duration": "Duur",
+        "error": "Laatste fout"
+      },
+      "scopeStatus": {
+        "current": "Actueel",
+        "outstanding": "Opnieuw opbouwen vereist",
+        "missing": "Snapshot ontbreekt",
+        "error": "Fout",
+        "truncated": "Diagnose beperkt"
+      },
+      "common": {
+        "target": "Type",
+        "level": "Bewijsniveau",
+        "targets": "Doelen",
+        "contributors": "Cumulatieve unieke bijdragers",
+        "observations": "Cumulatieve waarnemingen",
+        "none": "Geen gegevens"
+      },
+      "targetTypes": {
+        "park": "Park",
+        "parkItem": "Plek in het park"
+      },
+      "evidence": {
+        "title": "Verdeling van bewijs",
+        "subtitle": "Personen en waarnemingen blijven afzonderlijk geteld."
+      },
+      "levels": {
+        "noEvidence": "Geen bewijs",
+        "insufficient": "Onvoldoende gegevens",
+        "provisional": "Voorlopige trend",
+        "eligible": "Geschikt",
+        "established": "Gevestigd bewijs",
+        "strongEvidence": "Sterk bewijs",
+        "excluded": "Uitgesloten"
+      },
+      "exclusions": {
+        "title": "Uitgesloten doelen",
+        "subtitle": "Redenen die momenteel een plaats in de hoofdranglijst verhinderen."
+      },
+      "reasons": {
+        "noRatings": "Geen beoordelingen",
+        "tooFewUniqueContributors": "Te weinig unieke bijdragers",
+        "tooFewComparableEntries": "Te weinig vergelijkbare vermeldingen",
+        "insufficientItemCoverage": "Onvoldoende dekking van parkplekken",
+        "insufficientCategoryCoverage": "Onvoldoende categoriedekking",
+        "targetUnavailable": "Doel niet beschikbaar",
+        "targetExcluded": "Doel uitgesloten",
+        "aggregateIntegrityFailure": "Ongeldige integriteit van het aggregaat",
+        "unsupportedComposition": "Niet-controleerbare samenstelling"
+      },
+      "nearThreshold": {
+        "title": "Doelen dicht bij de drempel",
+        "subtitle": "Doelen die maximaal drie bijdragers verwijderd zijn van geschiktheid.",
+        "remaining": "Nog {{count}} bijdrager(s) nodig"
+      },
+      "coverage": {
+        "title": "Dekking per categorie",
+        "subtitle": "Geschikte vermeldingen onder de geëvalueerde doelen in elke categorie."
+      },
+      "categories": {
+        "attraction": "Attracties",
+        "restaurant": "Restaurants",
+        "hotel": "Hotels",
+        "animal": "Dieren",
+        "show": "Shows",
+        "shop": "Winkels",
+        "service": "Diensten",
+        "transport": "Vervoer"
+      },
+      "preview": {
+        "title": "Simulatie vóór publicatie",
+        "subtitle": "De simulatie vergelijkt het kandidaatbeleid met de actuele snapshots. Er wordt geen instelling opgeslagen of gepubliceerd.",
+        "version": "Nieuwe versie verplicht",
+        "provisional": "Voorlopige drempel",
+        "eligible": "Geschiktheidsdrempel",
+        "established": "Drempel voor gevestigd bewijs",
+        "strong": "Drempel voor sterk bewijs",
+        "minimumEntries": "Minimumaantal vermeldingen per ranglijst",
+        "minimumItems": "Geschikte parkplekken voor het parkonderdeel",
+        "minimumItemsPerCategory": "Minimumaantal plekken per categorie",
+        "minimumCategories": "Minimumaantal categorieën",
+        "tieEpsilon": "Tolerantie bij gelijke stand",
+        "action": "Impact simuleren",
+        "success": "Simulatie voltooid. Er is geen productie-instelling gewijzigd.",
+        "error": "De simulatie is mislukt. Controleer de versie en de volgorde van de drempels."
+      },
+      "impact": {
+        "gained": "Geschiktheid verkregen",
+        "lost": "Geschiktheid verloren",
+        "averageRank": "Gemiddelde rangwijziging",
+        "maximumRank": "Maximale rangwijziging",
+        "smallScopes": "Bereiken met minder dan {{minimum}} vermeldingen",
+        "incompleteParks": "Onvolledige parksamenstellingen",
+        "cost": "Geschatte kosten: doelen / blokken",
+        "currentCandidate": "Actueel → kandidaat",
+        "gainedLost": "Verkregen / verloren",
+        "rankChange": "Wijziging gem. / max.",
+        "publication": "Publicatie",
+        "publishable": "Publicatie zou een betrouwbare toplijst opleveren",
+        "notPublishable": "Minder dan {{minimum}} vermeldingen: toplijst verborgen",
+        "unavailable": "Simulatie niet beschikbaar: de bron overschrijdt de veiligheidslimiet.",
+        "sourceChanged": "Simulatie niet beschikbaar: de gegevens zijn tijdens de berekening gewijzigd. Voer de simulatie opnieuw uit.",
+        "gainedSamples": "Nieuwe vermeldingen",
+        "lostSamples": "Verdwenen vermeldingen"
+      },
+      "rebuild": {
+        "title": "Gecontroleerde heropbouw",
+        "subtitle": "Plant een nieuwe revisie voor elk bereik. De verwerking blijft sequentieel en loopt op de achtergrond.",
+        "confirmation": "Ik bevestig dat ik alle ranglijst-snapshots opnieuw wil opbouwen.",
+        "action": "Snapshots opnieuw opbouwen",
+        "scheduled": "Heropbouw gepland voor {{count}} bereik(en).",
+        "success": "De heropbouw is gepland en in het auditlog vastgelegd.",
+        "error": "De heropbouw kon niet worden gepland."
       }
     },
     "references": {

@@ -30,21 +30,15 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         this.logger = logger;
     }
 
-    public async Task ScheduleIfOutstandingAsync(
+    public async Task<RatingRankingRebuildScheduleDisposition> ScheduleIfOutstandingAsync(
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken)
     {
-        RankingScopeDefinition? scope = this.scopeRegistry.Definitions
-            .SingleOrDefault(definition => definition.Key == sourceRevision.ScopeKey);
-        if (scope is null)
-        {
-            throw new InvalidOperationException(
-                $"The ranking scope '{sourceRevision.ScopeKey.Value}' is not registered.");
-        }
+        RankingScopeDefinition scope = this.ResolveScope(sourceRevision);
 
         if (!sourceRevision.IsRebuildable)
         {
-            return;
+            return RatingRankingRebuildScheduleDisposition.Deferred;
         }
 
         bool isCovered = await this.IsCoveredAsync(
@@ -54,10 +48,25 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             cancellationToken);
         if (isCovered)
         {
-            return;
+            return RatingRankingRebuildScheduleDisposition.Covered;
         }
 
-        await this.EnqueueAsync(scope, sourceRevision.Revision, cancellationToken);
+        await this.EnqueueAsync(scope, sourceRevision.Revision, false, cancellationToken);
+        return RatingRankingRebuildScheduleDisposition.Scheduled;
+    }
+
+    public async Task<RatingRankingRebuildScheduleDisposition> ScheduleForcedAsync(
+        RatingRankingSourceRevision sourceRevision,
+        CancellationToken cancellationToken)
+    {
+        RankingScopeDefinition scope = this.ResolveScope(sourceRevision);
+        if (!sourceRevision.IsRebuildable)
+        {
+            return RatingRankingRebuildScheduleDisposition.Deferred;
+        }
+
+        await this.EnqueueAsync(scope, sourceRevision.Revision, true, cancellationToken);
+        return RatingRankingRebuildScheduleDisposition.Scheduled;
     }
 
     public async Task ScheduleOutstandingAsync(CancellationToken cancellationToken)
@@ -82,7 +91,7 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
                     cancellationToken);
                 if (!isCovered)
                 {
-                    await this.EnqueueAsync(scope, requestedRevision, cancellationToken);
+                    await this.EnqueueAsync(scope, requestedRevision, false, cancellationToken);
                 }
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -134,12 +143,15 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
     private async Task EnqueueAsync(
         RankingScopeDefinition scope,
         long requestedRevision,
+        bool forceRebuild,
         CancellationToken cancellationToken)
     {
-        JsonElement serializedPayload = CreatePayload(scope, requestedRevision);
+        JsonElement serializedPayload = CreatePayload(scope, requestedRevision, forceRebuild);
         CoalesceBackgroundJobRequest request = new CoalesceBackgroundJobRequest(
             RatingRankingRebuildScopeJob.Kind,
-            RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
+            forceRebuild
+                ? RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key)
+                : RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
             requestedRevision,
             RatingRankingRebuildScopeJob.PayloadVersion,
             serializedPayload);
@@ -148,12 +160,22 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
 
     private static JsonElement CreatePayload(
         RankingScopeDefinition scope,
-        long requestedRevision)
+        long requestedRevision,
+        bool forceRebuild = false)
     {
         RatingRankingRebuildScopePayload payload = new RatingRankingRebuildScopePayload(
             scope.Key.Value,
             requestedRevision,
-            scope.MethodologyVersion.Value);
+            scope.MethodologyVersion.Value,
+            forceRebuild);
         return JsonSerializer.SerializeToElement(payload);
+    }
+
+    private RankingScopeDefinition ResolveScope(RatingRankingSourceRevision sourceRevision)
+    {
+        RankingScopeDefinition? scope = this.scopeRegistry.Definitions
+            .SingleOrDefault(definition => definition.Key == sourceRevision.ScopeKey);
+        return scope ?? throw new InvalidOperationException(
+            $"The ranking scope '{sourceRevision.ScopeKey.Value}' is not registered.");
     }
 }
