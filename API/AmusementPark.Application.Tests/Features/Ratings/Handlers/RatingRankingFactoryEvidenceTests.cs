@@ -515,6 +515,60 @@ public sealed class RatingRankingFactoryEvidenceTests
             candidate.ItemComponent?.IneligibilityReason);
     }
 
+    [Fact]
+    public void ApplyParkEvidence_WhenPolicyEvaluationChangesScore_ShouldPreservePagedScoreAndRank()
+    {
+        IReadOnlyCollection<RatingRankingItemResult> sources = CreateSources()
+            .Select(source => source.TargetType == RatingTargetType.Park
+                ? source with { BayesianScore = 4.8d }
+                : source.TargetId == "shop-1"
+                    ? source with
+                    {
+                        RatingCount = 2,
+                        RatingSum = 9d,
+                        BayesianScore = 2d,
+                        UniqueContributorCount = 2,
+                    }
+                    : source with { BayesianScore = 2d })
+            .ToList();
+        ParkRankingEvidenceFactsBatch evidenceFacts = new ParkRankingEvidenceFactsBatch(
+            new[]
+            {
+                new ParkRankingContributorFacts(
+                    "park-1",
+                    UniqueContributorCount: 15,
+                    RatingObservationCount: 52,
+                    DirectParkContributorCount: 10,
+                    ItemContributorCount: 12),
+            },
+            new[]
+            {
+                CreatePublicItem("attraction-1", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-2", ParkItemCategory.Attraction),
+                CreatePublicItem("attraction-3", ParkItemCategory.Attraction),
+                CreatePublicItem("restaurant-1", ParkItemCategory.Restaurant),
+                CreatePublicItem("shop-1", ParkItemCategory.Shop),
+            });
+        ParkRatingRankingResult pagedRanking = Assert.Single(
+            RatingRankingFactory.BuildParkRankings(sources));
+        ParkRankingSnapshotCandidate policyCandidate = Assert.Single(
+            RatingRankingFactory.BuildParkSnapshotCandidates(
+                new[] { pagedRanking },
+                sources,
+                evidenceFacts));
+        Assert.NotEqual(pagedRanking.Score, policyCandidate.Ranking.Score);
+
+        ParkRatingRankingResult enrichedRanking = Assert.Single(
+            RatingRankingFactory.ApplyParkEvidence(
+                new[] { pagedRanking },
+                sources,
+                evidenceFacts));
+
+        Assert.Equal(pagedRanking.Score, enrichedRanking.Score);
+        Assert.Equal(pagedRanking.Rank, enrichedRanking.Rank);
+        Assert.NotNull(enrichedRanking.Evidence);
+    }
+
     private static IReadOnlyCollection<RatingRankingItemResult> CreateSources()
     {
         return new[]

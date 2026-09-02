@@ -66,7 +66,12 @@ internal static class RatingRankingFactory
         ParkItemCategory? categoryFilter = null)
     {
         IReadOnlyCollection<ParkRankingSnapshotCandidate> candidates =
-            BuildParkSnapshotCandidates(rankings, sources, evidenceFacts, categoryFilter);
+            BuildParkSnapshotCandidates(
+                rankings,
+                sources,
+                evidenceFacts,
+                categoryFilter,
+                replaceScoreWithPolicyScore: false);
         return MapParkEvidence(candidates);
     }
 
@@ -88,7 +93,8 @@ internal static class RatingRankingFactory
         IReadOnlyCollection<RatingRankingItemResult> sources,
         ParkRankingEvidenceFactsBatch evidenceFacts,
         ParkItemCategory? categoryFilter = null,
-        RankingEligibilityPolicy? eligibilityPolicy = null)
+        RankingEligibilityPolicy? eligibilityPolicy = null,
+        bool replaceScoreWithPolicyScore = true)
     {
         ArgumentNullException.ThrowIfNull(rankings);
         ArgumentNullException.ThrowIfNull(sources);
@@ -152,7 +158,9 @@ internal static class RatingRankingFactory
                     eligibilityPolicy ?? RankingEligibilityPolicy.Initial)
                 : null;
             return new ParkRankingSnapshotCandidate(
-                evaluation is null ? ranking : ranking with { Score = evaluation.Score },
+                evaluation is null || !replaceScoreWithPolicyScore
+                    ? ranking
+                    : ranking with { Score = evaluation.Score },
                 evaluation?.Evidence,
                 evaluation?.ItemComponent);
         }).ToList();
