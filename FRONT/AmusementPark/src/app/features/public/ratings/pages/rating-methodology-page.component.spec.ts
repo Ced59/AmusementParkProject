@@ -98,6 +98,26 @@ describe('RatingMethodologyPageComponent', () => {
     expect(root.textContent).toContain('Activation prochaine');
   });
 
+  it('allows every wide section to shrink inside a narrow viewport', () => {
+    const styles: string = (
+      RatingMethodologyPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+    const shrinkableChildrenRule: RegExp = new RegExp(
+      String.raw`\.methodology-page[^,{]*>\s*\*[^,{]*,\s*` +
+      String.raw`\.methodology-grid[^,{]*>\s*\*[^,{]*,\s*` +
+      String.raw`\.methodology-history[^,{]*>\s*\*[^,{]*,\s*` +
+      String.raw`\.methodology-history[^,{]*dl[^,{]*>\s*\*[^{]*\{[^}]*min-width:\s*0`,
+    );
+    const scrollContainerRule: RegExp = new RegExp(
+      String.raw`\.methodology-table-wrap[^{]*\{[^}]*max-width:\s*100%[^}]*` +
+      String.raw`min-width:\s*0[^}]*overflow-x:\s*auto`,
+    );
+
+    expect(styles).toContain('width: 100%');
+    expect(styles).toMatch(shrinkableChildrenRule);
+    expect(styles).toMatch(scrollContainerRule);
+  });
+
   it('exposes visible, clickable parent breadcrumbs and the version history', () => {
     fixture.detectChanges();
     const links: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('.methodology-breadcrumb a');
