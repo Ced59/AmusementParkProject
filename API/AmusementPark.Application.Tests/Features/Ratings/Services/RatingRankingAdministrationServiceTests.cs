@@ -353,27 +353,21 @@ public sealed class RatingRankingAdministrationServicesTests
     }
 
     [Fact]
-    public async Task RequestRebuildAsync_ShouldAdvanceEveryScopeRevisionBeforeScheduling()
+    public async Task RequestRebuildAsync_ShouldForceCurrentScopeRevisionWithoutAdvancingIt()
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
-        RatingRankingMutationLease lease = RatingRankingMutationLease.Create(scope.Key);
         RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
             scope.Key,
             8,
             new DateTime(2026, 9, 2, 12, 0, 0, DateTimeKind.Utc));
-        revisions.Setup(repository => repository.BeginMutationAsync(scope.Key, CancellationToken.None))
-            .ReturnsAsync(lease);
-        revisions.Setup(repository => repository.CompleteMutationAsync(
-                lease,
-                true,
-                CancellationToken.None))
+        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
             .ReturnsAsync(revision);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
-        scheduler.Setup(value => value.ScheduleIfOutstandingAsync(revision, CancellationToken.None))
+        scheduler.Setup(value => value.ScheduleForcedAsync(revision, CancellationToken.None))
             .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
         RatingRankingRebuildRequester requester = new RatingRankingRebuildRequester(
             registry.Object,
@@ -385,6 +379,45 @@ public sealed class RatingRankingAdministrationServicesTests
 
         Assert.Equal(1, result.ScheduledScopeCount);
         Assert.Equal(8, Assert.Single(result.Scopes).RequestedSourceRevision);
+        revisions.VerifyAll();
+        scheduler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RequestRebuildAsync_WhenRevisionDoesNotExist_ShouldCreateRevisionZeroWithoutSourceChange()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        RatingRankingMutationLease lease = RatingRankingMutationLease.Create(scope.Key);
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
+            scope.Key,
+            0,
+            new DateTime(2026, 9, 2, 12, 0, 0, DateTimeKind.Utc));
+        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync((RatingRankingSourceRevision?)null);
+        revisions.Setup(repository => repository.BeginMutationAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(lease);
+        revisions.Setup(repository => repository.CompleteMutationAsync(
+                lease,
+                false,
+                CancellationToken.None))
+            .ReturnsAsync(revision);
+        Mock<IRatingRankingRebuildScheduler> scheduler =
+            new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
+        scheduler.Setup(value => value.ScheduleForcedAsync(revision, CancellationToken.None))
+            .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Scheduled);
+        RatingRankingRebuildRequester requester = new RatingRankingRebuildRequester(
+            registry.Object,
+            revisions.Object,
+            scheduler.Object);
+
+        RatingRankingRebuildRequestResult result = await requester.RequestRebuildAsync(
+            CancellationToken.None);
+
+        Assert.Equal(1, result.ScheduledScopeCount);
+        Assert.Equal(0, Assert.Single(result.Scopes).RequestedSourceRevision);
         revisions.VerifyAll();
         scheduler.VerifyAll();
     }
@@ -613,7 +646,6 @@ public sealed class RatingRankingAdministrationServicesTests
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
         Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
-        RatingRankingMutationLease lease = RatingRankingMutationLease.Create(scope.Key);
         RatingRankingSourceRevision revision = new RatingRankingSourceRevision(
             scope.Key,
             8,
@@ -621,16 +653,11 @@ public sealed class RatingRankingAdministrationServicesTests
             PendingMutationCount: 1);
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(repository => repository.BeginMutationAsync(scope.Key, CancellationToken.None))
-            .ReturnsAsync(lease);
-        revisions.Setup(repository => repository.CompleteMutationAsync(
-                lease,
-                true,
-                CancellationToken.None))
+        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
             .ReturnsAsync(revision);
         Mock<IRatingRankingRebuildScheduler> scheduler =
             new Mock<IRatingRankingRebuildScheduler>(MockBehavior.Strict);
-        scheduler.Setup(value => value.ScheduleIfOutstandingAsync(revision, CancellationToken.None))
+        scheduler.Setup(value => value.ScheduleForcedAsync(revision, CancellationToken.None))
             .ReturnsAsync(RatingRankingRebuildScheduleDisposition.Deferred);
         RatingRankingRebuildRequester requester = new RatingRankingRebuildRequester(
             registry.Object,

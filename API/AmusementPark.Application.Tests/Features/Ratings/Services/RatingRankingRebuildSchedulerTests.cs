@@ -67,9 +67,50 @@ public sealed class RatingRankingRebuildSchedulerTests
         Assert.Equal(scope.Key.Value, payload.ScopeKey);
         Assert.Equal(12, payload.RequestedSourceRevision);
         Assert.Equal(scope.MethodologyVersion.Value, payload.MethodologyVersion);
+        Assert.False(payload.ForceRebuild);
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ScheduleForcedAsync_WhenPublishedPointerCoversRevision_ShouldStillEnqueueForcedJob()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RatingRankingSourceRevision revision = new RatingRankingSourceRevision(scope.Key, 12, NowUtc);
+        CoalesceBackgroundJobRequest? capturedRequest = null;
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs
+            .Setup(repository => repository.CoalesceAsync(
+                It.IsAny<CoalesceBackgroundJobRequest>(),
+                CancellationToken.None))
+            .Callback((CoalesceBackgroundJobRequest request, CancellationToken _) =>
+                capturedRequest = request)
+            .ReturnsAsync((CoalesceBackgroundJobRequest request, CancellationToken _) => CreateJob(request));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        RatingRankingRebuildScheduler scheduler = CreateScheduler(
+            scope,
+            jobs.Object,
+            revisions.Object,
+            snapshots.Object);
+
+        RatingRankingRebuildScheduleDisposition disposition =
+            await scheduler.ScheduleForcedAsync(revision, CancellationToken.None);
+
+        Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
+        Assert.NotNull(capturedRequest);
+        RatingRankingRebuildScopePayload? payload =
+            capturedRequest.Payload.Deserialize<RatingRankingRebuildScopePayload>();
+        Assert.NotNull(payload);
+        Assert.Equal(12, payload.RequestedSourceRevision);
+        Assert.True(payload.ForceRebuild);
+        jobs.VerifyAll();
+        revisions.VerifyNoOtherCalls();
+        snapshots.VerifyNoOtherCalls();
     }
 
     [Fact]

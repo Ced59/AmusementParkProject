@@ -66,6 +66,55 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenForcedAndPointerCoversRevision_ShouldVerifyAndRepublishCurrentSnapshot()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(fixture.CreatePointer(6));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(fixture.Scope.Key, 6, NowUtc));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(
+                CanonicalRankingScopes.GlobalParks.Key,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                CanonicalRankingScopes.GlobalParks.Key,
+                20,
+                NowUtc));
+        fixture.Builder
+            .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSnapshotBuildPlan(entries.Count, entries, false));
+        fixture.Snapshots
+            .Setup(repository => repository.StartBuildAsync(
+                It.Is<StartRankingSnapshotBuildRequest>(request =>
+                    request.SourceRevision == 6
+                    && request.EligibleEntryCount == entries.Count),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Existing,
+                fixture.CreateHeader(RankingSnapshotStatus.Current, sourceRevision: 6)));
+        fixture.Snapshots
+            .Setup(repository => repository.PublishAsync(
+                RankingSnapshotId.Parse("snapshot-1"),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotPublicationResult(
+                RankingSnapshotPublicationDisposition.AlreadyPublished,
+                fixture.CreatePointer(6)));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(6, forceRebuild: true),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenNewerRevisionExists_ShouldFenceStaleBuildBeforeReadingSources()
     {
         HandlerFixture fixture = new HandlerFixture();
@@ -398,12 +447,15 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
 
         public RatingRankingRebuildScopeJobHandler Handler { get; }
 
-        public DurableBackgroundJobExecutionContext CreateContext(long requestedRevision)
+        public DurableBackgroundJobExecutionContext CreateContext(
+            long requestedRevision,
+            bool forceRebuild = false)
         {
             RatingRankingRebuildScopePayload payload = new RatingRankingRebuildScopePayload(
                 this.Scope.Key.Value,
                 requestedRevision,
-                this.Scope.MethodologyVersion.Value);
+                this.Scope.MethodologyVersion.Value,
+                forceRebuild);
             return new DurableBackgroundJobExecutionContext(
                 "job-1",
                 RatingRankingRebuildScopeJob.PayloadVersion,

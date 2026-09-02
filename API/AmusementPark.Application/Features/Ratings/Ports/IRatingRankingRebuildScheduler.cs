@@ -9,5 +9,9 @@ public interface IRatingRankingRebuildScheduler
         RatingRankingSourceRevision sourceRevision,
         CancellationToken cancellationToken);
 
+    Task<RatingRankingRebuildScheduleDisposition> ScheduleForcedAsync(
+        RatingRankingSourceRevision sourceRevision,
+        CancellationToken cancellationToken);
+
     Task ScheduleOutstandingAsync(CancellationToken cancellationToken);
 }

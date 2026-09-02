@@ -50,7 +50,8 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 context,
                 this.scopeRegistry,
                 out RankingScopeDefinition? scope,
-                out long requestedRevision))
+                out long requestedRevision,
+                out bool forceRebuild))
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 RatingRankingRebuildErrorCodes.InvalidPayload);
@@ -59,7 +60,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
             scope.Key,
             cancellationToken);
-        if (IsCovered(pointer, scope, requestedRevision))
+        if (!forceRebuild && IsCovered(pointer, scope, requestedRevision))
         {
             return DurableBackgroundJobHandlerResult.Success();
         }
@@ -352,10 +353,12 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         DurableBackgroundJobExecutionContext context,
         IRankingScopeRegistry scopeRegistry,
         [NotNullWhen(true)] out RankingScopeDefinition? scope,
-        out long requestedRevision)
+        out long requestedRevision,
+        out bool forceRebuild)
     {
         scope = null;
         requestedRevision = 0;
+        forceRebuild = false;
         if (context.PayloadVersion != RatingRankingRebuildScopeJob.PayloadVersion)
         {
             return false;
@@ -395,6 +398,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         }
 
         requestedRevision = contextRevision;
+        forceRebuild = payload.ForceRebuild;
         return true;
     }
 
