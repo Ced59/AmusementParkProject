@@ -9,6 +9,7 @@ import {
   UserRating,
   UserRatingUpsertRequest,
 } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
@@ -25,6 +26,8 @@ class FakeDestroyRef implements DestroyRef {
 }
 
 class FakeRatingsPort implements PublicRatingRatingsPort {
+  readonly getCurrentMethodologyCalls: number[] = [];
+  readonly getMethodologyCalls: string[] = [];
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
   readonly getSummaryCalls: Array<{
     targetType: RatingTargetType;
@@ -55,6 +58,16 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
     averageRating: 4,
     bayesianScore: 3.4,
   };
+
+  getCurrentMethodology(): Observable<RatingMethodology> {
+    this.getCurrentMethodologyCalls.push(this.getCurrentMethodologyCalls.length + 1);
+    return of(createMethodology());
+  }
+
+  getMethodology(version: string): Observable<RatingMethodology> {
+    this.getMethodologyCalls.push(version);
+    return of(createMethodology(version));
+  }
 
   getSummary(
     targetType: RatingTargetType,
@@ -161,6 +174,44 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.userRatingValue()).toBe(3.5);
     expect(facade.summary()?.averageRating).toBe(4);
     expect(port.getSummaryCalls).toEqual([]);
+    expect(port.getCurrentMethodologyCalls).toHaveLength(1);
+    expect(facade.methodology()?.evidenceThresholds.eligible).toBe(10);
+  });
+
+  it('loads the shared methodology only once when the target changes', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      new FakeAuthService(),
+    );
+
+    facade.configure('Park', 'park-1', null);
+    facade.configure('ParkItem', 'item-1', null);
+
+    expect(port.getCurrentMethodologyCalls).toHaveLength(1);
+    expect(facade.methodology()?.version).toBe('ratings-2026-01');
+  });
+
+  it('loads the methodology attached to an historical rating summary', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      new FakeAuthService(),
+    );
+
+    facade.configure('ParkItem', 'item-1', {
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      ratingCount: 12,
+      averageRating: 4.2,
+      bayesianScore: 3.9,
+      rank: 4,
+      methodologyVersion: 'ratings-2025-02',
+    });
+
+    expect(port.getMethodologyCalls).toEqual(['ratings-2025-02']);
+    expect(port.getCurrentMethodologyCalls).toHaveLength(0);
+    expect(facade.methodology()?.version).toBe('ratings-2025-02');
   });
 
   it('ignores a user rating returned for another target', () => {
@@ -331,6 +382,36 @@ function createUserRating(
       ratingCount,
       averageRating,
       bayesianScore: 3.8,
+    },
+  };
+}
+
+function createMethodology(version: string = 'ratings-2026-01'): RatingMethodology {
+  return {
+    version,
+    effectiveDate: '2026-09-01',
+    isCurrent: true,
+    previousVersion: null,
+    ratingScale: { minimum: 0.5, maximum: 5, step: 0.5 },
+    bayesian: { priorMean: 3.5, priorWeight: 5 },
+    parkComposition: {
+      directRatingWeight: 0.4,
+      itemRatingWeight: 0.6,
+      balancesItemCategoriesEqually: true,
+      minimumEligibleItems: 3,
+      minimumItemsPerCategory: 1,
+      minimumCategories: 2,
+    },
+    evidenceThresholds: {
+      provisional: 3,
+      eligible: 10,
+      established: 25,
+      strong: 50,
+    },
+    publicationRules: {
+      minimumEligibleEntries: 3,
+      scoreTieEpsilon: 0.001,
+      rankingConvention: 'competition',
     },
   };
 }

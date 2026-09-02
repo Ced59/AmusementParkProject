@@ -155,6 +155,34 @@ describe('RatingTreeComponent', () => {
 
     expect(changes).toEqual([{ ratingId: 'rating-item-1', value: 4 }]);
   });
+
+  it('renders evidence without requiring it for existing tree consumers', () => {
+    fixture.componentRef.setInput('parks', [
+      {
+        ...createPark(),
+        rank: null,
+        evidence: {
+          evidence: {
+            level: 'Provisional',
+            isEligibleForMainRanking: false,
+            nextThreshold: 10,
+          },
+          uniqueContributorCount: 7,
+          ratingObservationCount: 9,
+          targetType: 'Park',
+          rank: null,
+          methodologyVersion: 'ratings-2026-01',
+          eligibilityThreshold: 10,
+        },
+      },
+    ]);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.rating-tree__rank')).toBeNull();
+    expect(
+      fixture.nativeElement.querySelectorAll('app-rating-evidence'),
+    ).toHaveLength(2);
+  });
 });
 
 function createPark(): RatingTreePark {

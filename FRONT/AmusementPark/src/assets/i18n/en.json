@@ -4368,6 +4368,81 @@
       "pastVisitHint": "These ratings reflect visits made before the temporary closure.",
       "historicalHint": "These ratings reflect past visits and do not count toward the current ranking."
     },
+    "evidence": {
+      "detailsAction": "Why this status?",
+      "levels": {
+        "noEvidence": "No evidence",
+        "insufficient": "Insufficient data",
+        "provisional": "Provisional trend",
+        "eligible": "Eligible",
+        "established": "Established",
+        "strongEvidence": "Strong evidence",
+        "excluded": "Excluded"
+      },
+      "messages": {
+        "noEvidence": {
+          "one": "No unique contributor has rated this place yet. Neither an average nor a rank is treated as established.",
+          "other": "No unique contributor has rated this place yet. Neither an average nor a rank is treated as established."
+        },
+        "insufficient": {
+          "one": "{{count}} person has rated this place. The current average remains visible, but {{threshold}} unique contributors are required to enter the ranking.",
+          "other": "{{count}} people have rated this place. The current average remains visible, but {{threshold}} unique contributors are required to enter the ranking."
+        },
+        "provisional": {
+          "one": "Provisional trend: {{count}} unique contributor out of the {{threshold}} required for the ranking.",
+          "other": "Provisional trend: {{count}} unique contributors out of the {{threshold}} required for the ranking."
+        },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} person has rated this place, but the sample remains insufficient. The exact ranking threshold is currently unavailable.",
+          "other": "{{count}} people have rated this place, but the sample remains insufficient. The exact ranking threshold is currently unavailable."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "The trend remains provisional with {{count}} unique contributor. The exact ranking threshold is currently unavailable.",
+          "other": "The trend remains provisional with {{count}} unique contributors. The exact ranking threshold is currently unavailable."
+        },
+        "parkDirectProvisional": {
+          "one": "Provisional park trend: {{count}} person has rated the park directly. Ratings of its places add evidence, but do not replace the required direct park ratings.",
+          "other": "Provisional park trend: {{count}} people have rated the park directly. Ratings of its places add evidence, but do not replace the required direct park ratings."
+        },
+        "ranked": {
+          "one": "Ranked No. {{rank}} under methodology {{version}}, with {{count}} unique contributor.",
+          "other": "Ranked No. {{rank}} under methodology {{version}}, with {{count}} unique contributors."
+        },
+        "eligibleWithoutRank": {
+          "one": "The individual threshold is met with {{count}} unique contributor, but no main rank is published for this selection.",
+          "other": "The individual threshold is met with {{count}} unique contributors, but no main rank is published for this selection."
+        },
+        "excluded": {
+          "one": "This target is excluded from the current ranking. Its historical average may remain visible when it provides useful context.",
+          "other": "This target is excluded from the current ranking. Its historical average may remain visible when it provides useful context."
+        }
+      },
+      "facts": {
+        "uniqueContributors": "Unique contributors",
+        "observations": "Retained ratings",
+        "parkObservations": "Ratings retained as evidence",
+        "nextEvidenceThreshold": "Next evidence level"
+      },
+      "composition": {
+        "title": "Park evidence composition",
+        "directContributors": "Park contributors",
+        "itemContributors": "Place contributors",
+        "eligibleItems": "Eligible places",
+        "eligibleCategories": "Eligible categories"
+      },
+      "reasonLabel": "Why:",
+      "reasons": {
+        "noRatings": "no retained rating",
+        "tooFewUniqueContributors": "not enough unique contributors yet",
+        "tooFewComparableEntries": "not enough comparable entries in this selection",
+        "insufficientItemCoverage": "not enough eligible places",
+        "insufficientCategoryCoverage": "not enough categories covered",
+        "targetUnavailable": "target unavailable in the current ranking",
+        "targetExcluded": "target excluded by a controlled decision",
+        "aggregateIntegrityFailure": "aggregate integrity check not satisfied",
+        "unsupportedComposition": "unsupported park composition"
+      }
+    },
     "tree": {
       "detailAction": "View detail",
       "collapseAction": "Collapse",
@@ -4439,6 +4514,28 @@
         "other": "{{count}} ratings in total"
       },
       "reliableBadge": "Reliable",
+      "evidenceSummary": {
+        "label": "Ranking transparency",
+        "threshold": "A main rank requires at least {{threshold}} unique contributors. An average can remain visible before that threshold without being presented as an established ranking.",
+        "rankedLabel": "Published ranks",
+        "rankedDisplayed": {
+          "one": "{{count}} displayed result",
+          "few": "{{count}} displayed results",
+          "many": "{{count}} displayed results",
+          "other": "{{count}} displayed results"
+        },
+        "provisionalLabel": "Provisional trends",
+        "provisionalDisplayed": {
+          "one": "{{count}} displayed trend",
+          "few": "{{count}} displayed trends",
+          "many": "{{count}} displayed trends",
+          "other": "{{count}} displayed trends"
+        },
+        "methodology": "Methodology {{version}}",
+        "generatedAt": "Generated on {{date}}",
+        "generatedAtUnavailable": "Snapshot date unavailable during the transition",
+        "displayedScope": "These counts cover only the results currently loaded."
+      },
       "filters": {
         "label": "Filter rankings",
         "all": "All",

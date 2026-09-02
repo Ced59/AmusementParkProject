@@ -4368,6 +4368,81 @@
       "pastVisitHint": "Estas valoraciones corresponden a visitas anteriores al cierre temporal.",
       "historicalHint": "Estas valoraciones corresponden a visitas pasadas y no cuentan para el ranking actual."
     },
+    "evidence": {
+      "detailsAction": "¿Por qué este estado?",
+      "levels": {
+        "noEvidence": "Sin evidencia",
+        "insufficient": "Datos insuficientes",
+        "provisional": "Tendencia provisional",
+        "eligible": "Admisible",
+        "established": "Consolidado",
+        "strongEvidence": "Evidencia sólida",
+        "excluded": "Excluido"
+      },
+      "messages": {
+        "noEvidence": {
+          "one": "Ningún colaborador único ha valorado todavía este lugar. Ni la media ni la posición se consideran consolidadas.",
+          "other": "Ningún colaborador único ha valorado todavía este lugar. Ni la media ni la posición se consideran consolidadas."
+        },
+        "insufficient": {
+          "one": "{{count}} persona ha valorado este lugar. La media actual sigue visible, pero hacen falta {{threshold}} colaboradores únicos para entrar en la clasificación.",
+          "other": "{{count}} personas han valorado este lugar. La media actual sigue visible, pero hacen falta {{threshold}} colaboradores únicos para entrar en la clasificación."
+        },
+        "provisional": {
+          "one": "Tendencia provisional: {{count}} colaborador único de los {{threshold}} necesarios para la clasificación.",
+          "other": "Tendencia provisional: {{count}} colaboradores únicos de los {{threshold}} necesarios para la clasificación."
+        },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} persona ha valorado este lugar, pero la muestra sigue siendo insuficiente. El umbral exacto de entrada en la clasificación no está disponible en este momento.",
+          "other": "{{count}} personas han valorado este lugar, pero la muestra sigue siendo insuficiente. El umbral exacto de entrada en la clasificación no está disponible en este momento."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "La tendencia sigue siendo provisional con {{count}} colaborador único. El umbral exacto de entrada en la clasificación no está disponible en este momento.",
+          "other": "La tendencia sigue siendo provisional con {{count}} colaboradores únicos. El umbral exacto de entrada en la clasificación no está disponible en este momento."
+        },
+        "parkDirectProvisional": {
+          "one": "Tendencia provisional del parque: {{count}} persona ha valorado directamente el parque. Las valoraciones de sus lugares aportan evidencia, pero no sustituyen las valoraciones directas necesarias.",
+          "other": "Tendencia provisional del parque: {{count}} personas han valorado directamente el parque. Las valoraciones de sus lugares aportan evidencia, pero no sustituyen las valoraciones directas necesarias."
+        },
+        "ranked": {
+          "one": "Puesto n.º {{rank}} según el método {{version}}, con {{count}} colaborador único.",
+          "other": "Puesto n.º {{rank}} según el método {{version}}, con {{count}} colaboradores únicos."
+        },
+        "eligibleWithoutRank": {
+          "one": "El umbral individual se alcanza con {{count}} colaborador único, pero no se publica un puesto principal para esta selección.",
+          "other": "El umbral individual se alcanza con {{count}} colaboradores únicos, pero no se publica un puesto principal para esta selección."
+        },
+        "excluded": {
+          "one": "Este elemento está excluido de la clasificación actual. Su media histórica puede seguir visible cuando aporta un contexto útil.",
+          "other": "Este elemento está excluido de la clasificación actual. Su media histórica puede seguir visible cuando aporta un contexto útil."
+        }
+      },
+      "facts": {
+        "uniqueContributors": "Colaboradores únicos",
+        "observations": "Valoraciones consideradas",
+        "parkObservations": "Valoraciones consideradas como evidencia",
+        "nextEvidenceThreshold": "Siguiente nivel de evidencia"
+      },
+      "composition": {
+        "title": "Composición de la evidencia del parque",
+        "directContributors": "Colaboradores del parque",
+        "itemContributors": "Colaboradores de los lugares",
+        "eligibleItems": "Lugares admisibles",
+        "eligibleCategories": "Categorías admisibles"
+      },
+      "reasonLabel": "Motivo:",
+      "reasons": {
+        "noRatings": "ninguna valoración considerada",
+        "tooFewUniqueContributors": "todavía no hay suficientes colaboradores únicos",
+        "tooFewComparableEntries": "no hay suficientes elementos comparables en esta selección",
+        "insufficientItemCoverage": "no hay suficientes lugares admisibles",
+        "insufficientCategoryCoverage": "no hay suficientes categorías cubiertas",
+        "targetUnavailable": "elemento no disponible en la clasificación actual",
+        "targetExcluded": "elemento excluido mediante una decisión controlada",
+        "aggregateIntegrityFailure": "control de integridad del agregado no superado",
+        "unsupportedComposition": "composición del parque no compatible"
+      }
+    },
     "tree": {
       "detailAction": "Ver detalle",
       "collapseAction": "Plegar",
@@ -4439,6 +4514,28 @@
         "other": "{{count}} valoraciones en total"
       },
       "reliableBadge": "Fiable",
+      "evidenceSummary": {
+        "label": "Transparencia de la clasificación",
+        "threshold": "Un puesto principal requiere al menos {{threshold}} colaboradores únicos. Antes del umbral, una media puede seguir visible sin presentarse como un puesto consolidado.",
+        "rankedLabel": "Puestos publicados",
+        "rankedDisplayed": {
+          "one": "{{count}} resultado mostrado",
+          "few": "{{count}} resultados mostrados",
+          "many": "{{count}} resultados mostrados",
+          "other": "{{count}} resultados mostrados"
+        },
+        "provisionalLabel": "Tendencias provisionales",
+        "provisionalDisplayed": {
+          "one": "{{count}} tendencia mostrada",
+          "few": "{{count}} tendencias mostradas",
+          "many": "{{count}} tendencias mostradas",
+          "other": "{{count}} tendencias mostradas"
+        },
+        "methodology": "Método {{version}}",
+        "generatedAt": "Generado el {{date}}",
+        "generatedAtUnavailable": "Fecha de la instantánea no disponible durante la transición",
+        "displayedScope": "Estos recuentos solo incluyen los resultados cargados actualmente."
+      },
       "filters": {
         "label": "Filtrar rankings",
         "all": "Todos",

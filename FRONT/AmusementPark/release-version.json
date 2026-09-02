@@ -1,6 +1,20 @@
 {
-  "version": "4.2.49",
+  "version": "4.2.50",
   "history": [
+    {
+      "version": "4.2.50",
+      "releasedAt": "2026-09-02",
+      "labels": {
+        "fr": "Les classements indiquent désormais clairement la solidité des avis et les tendances encore provisoires.",
+        "en": "Rankings now clearly show the strength of visitor feedback and trends that are still provisional.",
+        "de": "Ranglisten zeigen jetzt klar, wie belastbar die Bewertungen sind und welche Trends noch vorläufig bleiben.",
+        "nl": "Ranglijsten tonen nu duidelijk hoe sterk de beoordelingen zijn en welke trends nog voorlopig zijn.",
+        "it": "Le classifiche mostrano ora con chiarezza la solidità delle valutazioni e le tendenze ancora provvisorie.",
+        "es": "Las clasificaciones muestran ahora con claridad la solidez de las valoraciones y las tendencias aún provisionales.",
+        "pl": "Rankingi pokazują teraz wyraźnie wiarygodność ocen oraz trendy, które nadal są wstępne.",
+        "pt": "As classificações mostram agora claramente a consistência das avaliações e as tendências ainda provisórias."
+      }
+    },
     {
       "version": "4.2.49",
       "releasedAt": "2026-09-02",

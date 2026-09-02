@@ -1,13 +1,15 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 import { RatingSummary, RatingTargetType, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { PUBLIC_RATING_RATINGS_PORT, PublicRatingRatingsPort } from './public-rating-state-data.ports';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 @Injectable()
 export class PublicRatingStateFacade {
@@ -17,11 +19,16 @@ export class PublicRatingStateFacade {
   private readonly userRatingSignal = signal<UserRating | null>(null);
   private readonly savingSignal = signal<boolean>(false);
   private readonly messageKeySignal = signal<string | null>(null);
+  private readonly methodologySignal = signal<RatingMethodology | null>(null);
+  private methodologyRequestKey: string | null = null;
+  private methodologyResolvedKey: string | null = null;
+  private methodologyRequestId: number = 0;
 
   public readonly summary: Signal<RatingSummary | null> = this.summarySignal.asReadonly();
   public readonly userRatingValue: Signal<number | null> = computed(() => this.userRatingSignal()?.value ?? null);
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   public readonly messageKey: Signal<string | null> = this.messageKeySignal.asReadonly();
+  public readonly methodology: Signal<RatingMethodology | null> = this.methodologySignal.asReadonly();
 
   constructor(
     @Inject(PUBLIC_RATING_RATINGS_PORT) private readonly ratingsApiService: PublicRatingRatingsPort,
@@ -40,7 +47,7 @@ export class PublicRatingStateFacade {
 
     this.targetTypeSignal.set(targetType);
     this.targetIdSignal.set(normalizedTargetId);
-    this.summarySignal.set(summary);
+    this.setSummary(summary);
     this.messageKeySignal.set(null);
 
     if (previousType !== targetType || previousId !== normalizedTargetId) {
@@ -88,7 +95,7 @@ export class PublicRatingStateFacade {
             }
 
             this.userRatingSignal.set(rating);
-            this.summarySignal.set(rating.summary);
+            this.setSummary(rating.summary);
             this.loadSummary(targetType, targetId);
             this.messageKeySignal.set(null);
             this.savingSignal.set(false);
@@ -142,7 +149,7 @@ export class PublicRatingStateFacade {
             }
 
             this.userRatingSignal.set(null);
-            this.summarySignal.set(summary);
+            this.setSummary(summary);
             this.loadSummary(targetType, targetId);
             this.messageKeySignal.set(null);
             this.savingSignal.set(false);
@@ -199,7 +206,7 @@ export class PublicRatingStateFacade {
         if (this.isCurrentTarget(targetType, targetId)
           && summary.targetType === targetType
           && summary.targetId === targetId) {
-          this.summarySignal.set(summary);
+          this.setSummary(summary);
         }
       },
       error: (error: unknown): void => {
@@ -208,7 +215,58 @@ export class PublicRatingStateFacade {
     });
   }
 
+  private setSummary(summary: RatingSummary | null): void {
+    this.summarySignal.set(summary);
+    this.loadMethodology(summary?.methodologyVersion ?? null);
+  }
+
+  private loadMethodology(version: string | null): void {
+    const normalizedVersion: string | null = normalizeMethodologyVersion(version);
+    const requestKey: string = normalizedVersion ?? 'current';
+    if (this.methodologyResolvedKey === requestKey || this.methodologyRequestKey === requestKey) {
+      return;
+    }
+
+    this.methodologySignal.set(null);
+    this.methodologyResolvedKey = null;
+    const requestId: number = ++this.methodologyRequestId;
+    this.methodologyRequestKey = requestKey;
+    const request: Observable<RatingMethodology> = normalizedVersion
+      ? this.ratingsApiService.getMethodology(normalizedVersion, anonymousHttpOptions())
+      : this.ratingsApiService.getCurrentMethodology(anonymousHttpOptions());
+    request
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (methodology: RatingMethodology): void => {
+          if (requestId !== this.methodologyRequestId) {
+            return;
+          }
+
+          this.methodologyRequestKey = null;
+          if (normalizedVersion !== null && methodology.version !== normalizedVersion) {
+            return;
+          }
+
+          this.methodologySignal.set(methodology);
+          this.methodologyResolvedKey = requestKey;
+        },
+        error: (error: unknown): void => {
+          if (requestId !== this.methodologyRequestId) {
+            return;
+          }
+
+          console.error('Error loading rating methodology', error);
+          this.methodologyRequestKey = null;
+        }
+      });
+  }
+
   private isCurrentTarget(targetType: RatingTargetType, targetId: string): boolean {
     return this.targetTypeSignal() === targetType && this.targetIdSignal() === targetId;
   }
+}
+
+function normalizeMethodologyVersion(value: string | null | undefined): string | null {
+  const trimmedValue: string = value?.trim() ?? '';
+  return trimmedValue.length > 0 ? trimmedValue : null;
 }

@@ -1,13 +1,16 @@
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import {
   ParkItemRatingRankingsPage,
   ParkRatingRanking,
   RatingRankingsPage,
 } from '@app/models/ratings/rating.models';
+import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import { TranslationService } from '@app/services/translation.service';
 import {
   COMMON_TEST_IMPORTS,
@@ -22,13 +25,39 @@ import {
 } from '../state/rankings-state-data.ports';
 import { RankingsPageComponent } from './rankings-page.component';
 
+registerLocaleData(localeFr);
+
 class FakeRankingsRatingsPort implements RankingsRatingsPort {
+  methodologyError: unknown | null = null;
+  methodologyCalls: number = 0;
+  methodologyVersion: string = 'ratings-2026-01';
+  methodologyEligibleThreshold: number = 10;
+  readonly requestedMethodologyVersions: string[] = [];
   readonly parkItemCalls: Array<{
     page: number;
     category: string;
     type: string | null;
     search: string | null;
   }> = [];
+
+  getCurrentMethodology(): Observable<RatingMethodology> {
+    this.methodologyCalls += 1;
+    if (this.methodologyError) {
+      return throwError(() => this.methodologyError);
+    }
+
+    return of(createMethodology(this.methodologyVersion, this.methodologyEligibleThreshold));
+  }
+
+  getMethodology(version: string): Observable<RatingMethodology> {
+    this.methodologyCalls += 1;
+    this.requestedMethodologyVersions.push(version);
+    if (this.methodologyError) {
+      return throwError(() => this.methodologyError);
+    }
+
+    return of(createMethodology(version, this.methodologyEligibleThreshold));
+  }
 
   getRankings(
     _page: number,
@@ -37,8 +66,9 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
     _search: string | null,
     _options?: AnonymousHttpOptions,
   ): Observable<RatingRankingsPage> {
+    const ranking: ParkRatingRanking = createRanking();
     return of({
-      items: [createRanking()],
+      items: [{ ...ranking, methodologyVersion: this.methodologyVersion }],
       pagination: {
         ...DEFAULT_PAGINATION,
         currentPage: 1,
@@ -69,8 +99,17 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
           parkItemCategory: 'Attraction',
           parkItemType: 'RollerCoaster',
           ratingCount: 3,
+          ratingObservationCount: 3,
+          uniqueContributorCount: 38,
           averageRating: 4.5,
           bayesianScore: 4.1,
+          methodologyVersion: this.methodologyVersion,
+          generatedAtUtc: '2026-09-02T08:00:00Z',
+          evidence: {
+            level: 'Established',
+            isEligibleForMainRanking: true,
+            nextThreshold: 50,
+          },
         },
       ],
       pagination: {
@@ -136,7 +175,31 @@ describe('RankingsPageComponent', () => {
           rankingScore: 'Score agrégé du classement',
           parkSignal: 'Note directe du parc',
           itemsSignal: 'Moyenne de tous les lieux',
+          evidenceSummary: {
+            label: 'Résumé des preuves',
+            threshold: 'Le classement demande {{threshold}} contributeurs uniques.',
+            rankedLabel: 'Classés affichés',
+            rankedDisplayed: {
+              one: '{{count}} résultat',
+              other: '{{count}} résultats',
+            },
+            provisionalLabel: 'Provisoires affichés',
+            provisionalDisplayed: {
+              one: '{{count}} résultat',
+              other: '{{count}} résultats',
+            },
+            methodology: 'Méthode {{version}}',
+            generatedAt: 'Calculé le {{date}}',
+            generatedAtUnavailable: 'Date indisponible',
+            displayedScope: 'Compte les résultats actuellement chargés.',
+          },
         },
+        methodology: {
+          actions: {
+            rankings: 'Comprendre la méthode',
+          },
+        },
+        evidence: createEvidenceTranslations(),
         categories: {
           Attraction: 'Attractions',
         },
@@ -191,6 +254,74 @@ describe('RankingsPageComponent', () => {
     expect(itemCount?.textContent?.trim()).toBe('3 notes');
   });
 
+  it('hides an ineligible park place and exposes its evidence composition', () => {
+    fixture.detectChanges();
+
+    const parkSummary: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rating-tree__park-summary',
+    );
+    const evidence: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rating-tree__park-content app-rating-evidence',
+    );
+
+    expect(parkSummary?.textContent).not.toContain('#1');
+    expect(parkSummary?.textContent).toContain('Provisoire');
+    expect(evidence?.textContent).toContain('2 personnes l’ont évalué directement');
+    expect(evidence?.textContent).toContain('Notes retenues comme preuves');
+    expect(evidence?.textContent).toContain('Composition du parc');
+    expect(evidence?.textContent).toContain('3');
+  });
+
+  it('summarizes loaded eligibility data with the versioned methodology link', () => {
+    fixture.detectChanges();
+
+    const summary: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rankings-evidence-summary',
+    );
+    const link: HTMLAnchorElement | null = summary?.querySelector('a') ?? null;
+
+    expect(summary?.textContent).toContain('10 contributeurs uniques');
+    expect(summary?.textContent).toContain('0 résultat');
+    expect(summary?.textContent).toContain('1 résultat');
+    expect(summary?.textContent).toContain('Compte les résultats actuellement chargés.');
+    expect(link?.getAttribute('href')).toBe(
+      '/fr/rankings/methodology/ratings-2026-01',
+    );
+  });
+
+  it('loads the methodology matching a historical ranking snapshot', () => {
+    port.methodologyVersion = 'ratings-2025-02';
+    port.methodologyEligibleThreshold = 7;
+
+    fixture.detectChanges();
+
+    const summary: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rankings-evidence-summary',
+    );
+    const link: HTMLAnchorElement | null = summary?.querySelector('a') ?? null;
+
+    expect(port.requestedMethodologyVersions).toEqual(['ratings-2025-02']);
+    expect(summary?.textContent).toContain('7 contributeurs uniques');
+    expect(summary?.textContent).not.toContain('10 contributeurs uniques');
+    expect(link?.getAttribute('href')).toBe(
+      '/fr/rankings/methodology/ratings-2025-02',
+    );
+  });
+
+  it('keeps rankings available when the methodology endpoint is temporarily unavailable', () => {
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    port.methodologyError = new Error('methodology unavailable');
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('app-rating-tree')).not.toBeNull();
+    expect(fixture.nativeElement.querySelector('.rankings-evidence-summary')).toBeNull();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'Error loading rating methodology',
+      port.methodologyError,
+    );
+  });
+
   it('shows a cross-park attraction ranking and filters it by attraction type', () => {
     fixture.detectChanges();
 
@@ -224,6 +355,7 @@ describe('RankingsPageComponent', () => {
       type: 'FlatRide',
       search: null,
     });
+    expect(port.methodologyCalls).toBe(1);
   });
 
   it('loads the next park item search page with the active search term', () => {
@@ -264,11 +396,25 @@ function createRanking(): ParkRatingRanking {
     parkId: 'park-1',
     parkName: 'Phantasialand',
     ratingCount: 8,
+    ratingObservationCount: 2,
+    uniqueContributorCount: 5,
     score: 4.3,
     parkRatingCount: 2,
     parkAverageRating: 4.5,
     itemsRatingCount: 6,
     itemsAverageRating: 4.2,
+    methodologyVersion: 'ratings-2026-01',
+    generatedAtUtc: '2026-09-02T08:00:00Z',
+    evidence: {
+      level: 'Provisional',
+      isEligibleForMainRanking: false,
+      directParkContributorCount: 2,
+      itemContributorCount: 4,
+      eligibleItemCount: 3,
+      eligibleCategoryCount: 2,
+      ineligibilityReason: 'TooFewUniqueContributors',
+      nextThreshold: 10,
+    },
     categories: [
       {
         parkItemCategory: 'Attraction',
@@ -288,5 +434,102 @@ function createRanking(): ParkRatingRanking {
         ],
       },
     ],
+  };
+}
+
+function createMethodology(
+  version: string = 'ratings-2026-01',
+  eligibleThreshold: number = 10,
+): RatingMethodology {
+  return {
+    version,
+    effectiveDate: '2026-09-01',
+    isCurrent: true,
+    previousVersion: null,
+    ratingScale: { minimum: 0.5, maximum: 5, step: 0.5 },
+    bayesian: { priorMean: 3.5, priorWeight: 5 },
+    parkComposition: {
+      directRatingWeight: 0.4,
+      itemRatingWeight: 0.6,
+      balancesItemCategoriesEqually: true,
+      minimumEligibleItems: 3,
+      minimumItemsPerCategory: 1,
+      minimumCategories: 2,
+    },
+    evidenceThresholds: {
+      provisional: 3,
+      eligible: eligibleThreshold,
+      established: 25,
+      strong: 50,
+    },
+    publicationRules: {
+      minimumEligibleEntries: 3,
+      scoreTieEpsilon: 0.001,
+      rankingConvention: 'competition',
+    },
+  };
+}
+
+function createEvidenceTranslations(): Record<string, unknown> {
+  return {
+    detailsAction: 'Voir les preuves',
+    levels: {
+      noEvidence: 'Aucune donnée',
+      insufficient: 'Données insuffisantes',
+      provisional: 'Provisoire',
+      eligible: 'Éligible',
+      established: 'Établi',
+      strongEvidence: 'Preuves solides',
+      excluded: 'Exclu',
+    },
+    messages: {
+      noEvidence: { one: 'Aucune preuve.', other: 'Aucune preuve.' },
+      excluded: { one: 'Exclu.', other: 'Exclu.' },
+      insufficient: {
+        one: '{{count}} contributeur unique sur {{threshold}}.',
+        other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      provisional: {
+        one: '{{count}} contributeur unique sur {{threshold}}.',
+        other: '{{count}} contributeurs uniques sur {{threshold}}.',
+      },
+      insufficientWithoutThreshold: {
+        one: 'Échantillon insuffisant.',
+        other: 'Échantillon insuffisant.',
+      },
+      provisionalWithoutThreshold: {
+        one: 'Tendance provisoire.',
+        other: 'Tendance provisoire.',
+      },
+      parkDirectProvisional: {
+        one: '{{count}} personne l’a évalué directement.',
+        other: '{{count}} personnes l’ont évalué directement.',
+      },
+      ranked: {
+        one: 'Classé #{{rank}} avec la méthode {{version}}.',
+        other: 'Classé #{{rank}} avec la méthode {{version}}.',
+      },
+      eligibleWithoutRank: {
+        one: 'Éligible avec la méthode {{version}}.',
+        other: 'Éligible avec la méthode {{version}}.',
+      },
+    },
+    facts: {
+      uniqueContributors: 'Contributeurs uniques',
+      observations: 'Notes conservées',
+      parkObservations: 'Notes retenues comme preuves',
+      nextEvidenceThreshold: 'Prochain seuil',
+    },
+    composition: {
+      title: 'Composition du parc',
+      directContributors: 'Contributeurs directs',
+      itemContributors: 'Contributeurs des lieux',
+      eligibleItems: 'Lieux éligibles',
+      eligibleCategories: 'Catégories éligibles',
+    },
+    reasonLabel: 'Pourquoi :',
+    reasons: {
+      tooFewUniqueContributors: 'Pas assez de contributeurs uniques.',
+    },
   };
 }

@@ -9,7 +9,7 @@
         {{ 'ratings.stars.noRatings' | translate }}
       }
     </span>
-    @if (summary()?.rank; as rank) {
+    @if (visibleRank(); as rank) {
       <span class="rating-stars__rank">
         <i class="pi pi-trophy" aria-hidden="true"></i>
         {{ 'ratings.stars.rankLabel' | translate:{ rank } }}
@@ -76,6 +76,10 @@
     <i class="pi pi-info-circle" aria-hidden="true"></i>
     {{ 'ratings.methodology.actions.ratingZone' | translate }}
   </a>
+
+  @if (evidenceModel(); as evidence) {
+    <app-rating-evidence class="rating-stars__evidence" [model]="evidence"></app-rating-evidence>
+  }
 
   @if (selectedValue() && messageKey()) {
     <p class="rating-stars__status">{{ (messageKey() || '') | translate }}</p>

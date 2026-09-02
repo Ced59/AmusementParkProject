@@ -80,4 +80,37 @@ describe('RatingRankingListComponent', () => {
     expect(fixture.nativeElement.querySelector('.rating-ranking-list__rank')).toBeNull();
     expect(fixture.nativeElement.textContent).not.toContain('#null');
   });
+
+  it('renders optional evidence for a public ranking item', () => {
+    fixture.componentRef.setInput('items', [
+      {
+        id: 'item-evidence',
+        rank: 8,
+        name: 'Evidence attraction',
+        score: 4.4,
+        ratingCount: 41,
+        route: null,
+        parkName: 'Demo Park',
+        parkRoute: null,
+        evidence: {
+          evidence: {
+            level: 'Established',
+            isEligibleForMainRanking: true,
+            nextThreshold: 50,
+          },
+          uniqueContributorCount: 38,
+          ratingObservationCount: 41,
+          targetType: 'ParkItem',
+          rank: 8,
+          methodologyVersion: 'ratings-2026-01',
+          eligibilityThreshold: 10,
+        },
+      },
+    ]);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.rating-ranking-list__rank')?.textContent)
+      .toContain('#8');
+    expect(fixture.nativeElement.querySelector('app-rating-evidence')).not.toBeNull();
+  });
 });

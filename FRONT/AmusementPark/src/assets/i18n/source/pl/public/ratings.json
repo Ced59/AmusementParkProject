@@ -21,6 +21,25 @@
       "pastVisitHint": "Te oceny dotyczą wizyt sprzed tymczasowego zamknięcia.",
       "historicalHint": "Te oceny dotyczą wcześniejszych wizyt i nie są uwzględniane w aktualnym rankingu."
     },
+    "evidence": {
+      "detailsAction": "Skąd ten status?",
+      "levels": { "noEvidence": "Brak danych", "insufficient": "Niewystarczające dane", "provisional": "Trend wstępny", "eligible": "Kwalifikuje się", "established": "Ugruntowane", "strongEvidence": "Mocne dane", "excluded": "Wykluczone" },
+      "messages": {
+        "noEvidence": { "one": "Żaden unikalny autor nie ocenił jeszcze tego miejsca. Ani średnia, ani pozycja nie są uznawane za ugruntowane.", "other": "Żaden unikalny autor nie ocenił jeszcze tego miejsca. Ani średnia, ani pozycja nie są uznawane za ugruntowane." },
+        "insufficient": { "one": "Liczba unikalnych autorów ocen: {{count}}. Obecna średnia pozostaje widoczna, ale do rankingu potrzeba {{threshold}} unikalnych autorów.", "other": "Liczba unikalnych autorów ocen: {{count}}. Obecna średnia pozostaje widoczna, ale do rankingu potrzeba {{threshold}} unikalnych autorów." },
+        "provisional": { "one": "Trend wstępny: liczba unikalnych autorów to {{count}} z {{threshold}} wymaganych do rankingu.", "other": "Trend wstępny: liczba unikalnych autorów to {{count}} z {{threshold}} wymaganych do rankingu." },
+        "insufficientWithoutThreshold": { "one": "Liczba unikalnych autorów ocen: {{count}}, ale próba jest nadal niewystarczająca. Dokładny próg wejścia do rankingu jest obecnie niedostępny.", "other": "Liczba unikalnych autorów ocen: {{count}}, ale próba jest nadal niewystarczająca. Dokładny próg wejścia do rankingu jest obecnie niedostępny." },
+        "provisionalWithoutThreshold": { "one": "Trend pozostaje wstępny; liczba unikalnych autorów to {{count}}. Dokładny próg wejścia do rankingu jest obecnie niedostępny.", "other": "Trend pozostaje wstępny; liczba unikalnych autorów to {{count}}. Dokładny próg wejścia do rankingu jest obecnie niedostępny." },
+        "parkDirectProvisional": { "one": "Wstępny trend parku: liczba osób, które oceniły bezpośrednio park, wynosi {{count}}. Oceny jego miejsc uzupełniają dane, ale nie zastępują wymaganych bezpośrednich ocen parku.", "other": "Wstępny trend parku: liczba osób, które oceniły bezpośrednio park, wynosi {{count}}. Oceny jego miejsc uzupełniają dane, ale nie zastępują wymaganych bezpośrednich ocen parku." },
+        "ranked": { "one": "Pozycja {{rank}} według metody {{version}}; liczba unikalnych autorów: {{count}}.", "other": "Pozycja {{rank}} według metody {{version}}; liczba unikalnych autorów: {{count}}." },
+        "eligibleWithoutRank": { "one": "Próg indywidualny został osiągnięty; liczba unikalnych autorów: {{count}}. Dla tego wyboru nie opublikowano jednak głównej pozycji.", "other": "Próg indywidualny został osiągnięty; liczba unikalnych autorów: {{count}}. Dla tego wyboru nie opublikowano jednak głównej pozycji." },
+        "excluded": { "one": "Ten obiekt jest wykluczony z bieżącego rankingu. Jego historyczna średnia może pozostać widoczna jako przydatny kontekst.", "other": "Ten obiekt jest wykluczony z bieżącego rankingu. Jego historyczna średnia może pozostać widoczna jako przydatny kontekst." }
+      },
+      "facts": { "uniqueContributors": "Unikalni autorzy", "observations": "Uwzględnione oceny", "parkObservations": "Oceny uwzględnione jako dane", "nextEvidenceThreshold": "Następny poziom danych" },
+      "composition": { "title": "Skład danych parku", "directContributors": "Autorzy ocen parku", "itemContributors": "Autorzy ocen miejsc", "eligibleItems": "Kwalifikujące się miejsca", "eligibleCategories": "Kwalifikujące się kategorie" },
+      "reasonLabel": "Powód:",
+      "reasons": { "noRatings": "brak uwzględnionych ocen", "tooFewUniqueContributors": "za mało unikalnych autorów ocen", "tooFewComparableEntries": "za mało porównywalnych wyników w tym wyborze", "insufficientItemCoverage": "za mało kwalifikujących się miejsc", "insufficientCategoryCoverage": "za mało objętych kategorii", "targetUnavailable": "obiekt niedostępny w bieżącym rankingu", "targetExcluded": "obiekt wykluczony na podstawie kontrolowanej decyzji", "aggregateIntegrityFailure": "niespełniona kontrola integralności wyniku", "unsupportedComposition": "nieobsługiwany skład parku" }
+    },
     "tree": {
       "detailAction": "Zobacz szczegóły",
       "collapseAction": "Zwiń",
@@ -72,6 +91,18 @@
       "ratingCount": { "one": "{{count}} ocena", "few": "{{count}} oceny", "many": "{{count}} ocen", "other": "{{count}} oceny" },
       "totalRatingCount": { "one": "Łącznie {{count}} ocena", "few": "Łącznie {{count}} oceny", "many": "Łącznie {{count}} ocen", "other": "Łącznie {{count}} oceny" },
       "reliableBadge": "Pewne",
+      "evidenceSummary": {
+        "label": "Przejrzystość rankingu",
+        "threshold": "Główna pozycja wymaga co najmniej {{threshold}} unikalnych autorów ocen. Przed osiągnięciem progu średnia może być widoczna, ale nie jest przedstawiana jako ugruntowana pozycja.",
+        "rankedLabel": "Opublikowane pozycje",
+        "rankedDisplayed": { "one": "{{count}} wyświetlony wynik", "few": "{{count}} wyświetlone wyniki", "many": "{{count}} wyświetlonych wyników", "other": "{{count}} wyświetlonego wyniku" },
+        "provisionalLabel": "Trendy wstępne",
+        "provisionalDisplayed": { "one": "{{count}} wyświetlony trend", "few": "{{count}} wyświetlone trendy", "many": "{{count}} wyświetlonych trendów", "other": "{{count}} wyświetlonego trendu" },
+        "methodology": "Metoda {{version}}",
+        "generatedAt": "Wygenerowano {{date}}",
+        "generatedAtUnavailable": "Data migawki niedostępna podczas przejścia",
+        "displayedScope": "Te liczniki obejmują wyłącznie obecnie wczytane wyniki."
+      },
       "filters": {
         "label": "Filtruj rankingi",
         "all": "Wszystko",

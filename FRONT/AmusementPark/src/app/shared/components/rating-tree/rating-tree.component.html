@@ -6,12 +6,15 @@
           <span class="rating-tree__rank">#{{ park.rank }}</span>
         }
 
-        <span class="rating-tree__park-main">
+        <div class="rating-tree__park-main">
           <strong class="rating-tree__title">{{ park.name }}</strong>
           <span class="rating-tree__rating-count">
             {{ (totalRatingCountLabelKey || ratingCountLabelKey) | localizedPlural:park.ratingCount }}
           </span>
-        </span>
+          @if (park.evidence; as evidence) {
+            <app-rating-evidence [model]="evidence" mode="badge"></app-rating-evidence>
+          }
+        </div>
 
         <span class="rating-tree__summary-actions">
           <span class="rating-tree__park-score">
@@ -45,6 +48,10 @@
       </summary>
 
       <div class="rating-tree__park-content">
+        @if (park.evidence; as evidence) {
+          <app-rating-evidence [model]="evidence"></app-rating-evidence>
+        }
+
         @if (park.metrics.length > 0) {
           <div class="rating-tree__metrics">
             @for (metric of park.metrics; track metric.labelKey) {

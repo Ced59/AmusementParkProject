@@ -4368,6 +4368,81 @@
       "pastVisitHint": "Queste valutazioni si riferiscono a visite precedenti alla chiusura temporanea.",
       "historicalHint": "Queste valutazioni si riferiscono a visite passate e non rientrano nella classifica attuale."
     },
+    "evidence": {
+      "detailsAction": "Perché questo stato?",
+      "levels": {
+        "noEvidence": "Nessuna evidenza",
+        "insufficient": "Dati insufficienti",
+        "provisional": "Tendenza provvisoria",
+        "eligible": "Ammissibile",
+        "established": "Consolidato",
+        "strongEvidence": "Evidenza forte",
+        "excluded": "Escluso"
+      },
+      "messages": {
+        "noEvidence": {
+          "one": "Nessun contributore unico ha ancora valutato questo luogo. Né la media né la posizione sono considerate consolidate.",
+          "other": "Nessun contributore unico ha ancora valutato questo luogo. Né la media né la posizione sono considerate consolidate."
+        },
+        "insufficient": {
+          "one": "{{count}} persona ha valutato questo luogo. La media attuale resta visibile, ma servono {{threshold}} contributori unici per entrare in classifica.",
+          "other": "{{count}} persone hanno valutato questo luogo. La media attuale resta visibile, ma servono {{threshold}} contributori unici per entrare in classifica."
+        },
+        "provisional": {
+          "one": "Tendenza provvisoria: {{count}} contributore unico dei {{threshold}} necessari per la classifica.",
+          "other": "Tendenza provvisoria: {{count}} contributori unici dei {{threshold}} necessari per la classifica."
+        },
+        "insufficientWithoutThreshold": {
+          "one": "{{count}} persona ha valutato questo luogo, ma il campione resta insufficiente. La soglia esatta per entrare in classifica non è al momento disponibile.",
+          "other": "{{count}} persone hanno valutato questo luogo, ma il campione resta insufficiente. La soglia esatta per entrare in classifica non è al momento disponibile."
+        },
+        "provisionalWithoutThreshold": {
+          "one": "La tendenza resta provvisoria con {{count}} contributore unico. La soglia esatta per entrare in classifica non è al momento disponibile.",
+          "other": "La tendenza resta provvisoria con {{count}} contributori unici. La soglia esatta per entrare in classifica non è al momento disponibile."
+        },
+        "parkDirectProvisional": {
+          "one": "Tendenza provvisoria del parco: {{count}} persona ha valutato direttamente il parco. Le valutazioni dei suoi luoghi aggiungono evidenza, ma non sostituiscono le valutazioni dirette necessarie.",
+          "other": "Tendenza provvisoria del parco: {{count}} persone hanno valutato direttamente il parco. Le valutazioni dei suoi luoghi aggiungono evidenza, ma non sostituiscono le valutazioni dirette necessarie."
+        },
+        "ranked": {
+          "one": "Posizione n. {{rank}} secondo il metodo {{version}}, con {{count}} contributore unico.",
+          "other": "Posizione n. {{rank}} secondo il metodo {{version}}, con {{count}} contributori unici."
+        },
+        "eligibleWithoutRank": {
+          "one": "La soglia individuale è raggiunta con {{count}} contributore unico, ma per questa selezione non viene pubblicata una posizione principale.",
+          "other": "La soglia individuale è raggiunta con {{count}} contributori unici, ma per questa selezione non viene pubblicata una posizione principale."
+        },
+        "excluded": {
+          "one": "Questo elemento è escluso dalla classifica attuale. La sua media storica può restare visibile quando offre un contesto utile.",
+          "other": "Questo elemento è escluso dalla classifica attuale. La sua media storica può restare visibile quando offre un contesto utile."
+        }
+      },
+      "facts": {
+        "uniqueContributors": "Contributori unici",
+        "observations": "Valutazioni considerate",
+        "parkObservations": "Valutazioni considerate come evidenza",
+        "nextEvidenceThreshold": "Livello di evidenza successivo"
+      },
+      "composition": {
+        "title": "Composizione dell’evidenza del parco",
+        "directContributors": "Contributori del parco",
+        "itemContributors": "Contributori dei luoghi",
+        "eligibleItems": "Luoghi ammissibili",
+        "eligibleCategories": "Categorie ammissibili"
+      },
+      "reasonLabel": "Motivo:",
+      "reasons": {
+        "noRatings": "nessuna valutazione considerata",
+        "tooFewUniqueContributors": "contributori unici ancora insufficienti",
+        "tooFewComparableEntries": "elementi comparabili insufficienti in questa selezione",
+        "insufficientItemCoverage": "luoghi ammissibili insufficienti",
+        "insufficientCategoryCoverage": "categorie coperte insufficienti",
+        "targetUnavailable": "elemento non disponibile nella classifica attuale",
+        "targetExcluded": "elemento escluso con una decisione controllata",
+        "aggregateIntegrityFailure": "controllo di integrità dell’aggregato non superato",
+        "unsupportedComposition": "composizione del parco non supportata"
+      }
+    },
     "tree": {
       "detailAction": "Vedi dettaglio",
       "collapseAction": "Richiudi",
@@ -4439,6 +4514,28 @@
         "other": "{{count}} valutazioni in totale"
       },
       "reliableBadge": "Affidabile",
+      "evidenceSummary": {
+        "label": "Trasparenza della classifica",
+        "threshold": "Una posizione principale richiede almeno {{threshold}} contributori unici. Prima della soglia, una media può restare visibile senza essere presentata come posizione consolidata.",
+        "rankedLabel": "Posizioni pubblicate",
+        "rankedDisplayed": {
+          "one": "{{count}} risultato mostrato",
+          "few": "{{count}} risultati mostrati",
+          "many": "{{count}} risultati mostrati",
+          "other": "{{count}} risultati mostrati"
+        },
+        "provisionalLabel": "Tendenze provvisorie",
+        "provisionalDisplayed": {
+          "one": "{{count}} tendenza mostrata",
+          "few": "{{count}} tendenze mostrate",
+          "many": "{{count}} tendenze mostrate",
+          "other": "{{count}} tendenze mostrate"
+        },
+        "methodology": "Metodo {{version}}",
+        "generatedAt": "Generato il {{date}}",
+        "generatedAtUnavailable": "Data dello snapshot non disponibile durante la transizione",
+        "displayedScope": "Questi conteggi riguardano solo i risultati attualmente caricati."
+      },
       "filters": {
         "label": "Filtra classifiche",
         "all": "Tutti",

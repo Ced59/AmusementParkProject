@@ -22,6 +22,36 @@
         {{ 'ratings.methodology.actions.rankings' | translate }}
       </a>
     </div>
+
+    @if (methodology(); as method) {
+      <aside class="rankings-evidence-summary" [attr.aria-label]="'ratings.rankings.evidenceSummary.label' | translate">
+        <div class="rankings-evidence-summary__intro">
+          <i class="pi pi-users" aria-hidden="true"></i>
+          <p>{{ 'ratings.rankings.evidenceSummary.threshold' | translate:{ threshold: method.evidenceThresholds.eligible } }}</p>
+        </div>
+        <dl class="rankings-evidence-summary__stats">
+          <div>
+            <dt>{{ 'ratings.rankings.evidenceSummary.rankedLabel' | translate }}</dt>
+            <dd>{{ 'ratings.rankings.evidenceSummary.rankedDisplayed' | localizedPlural:rankedDisplayedCount() }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'ratings.rankings.evidenceSummary.provisionalLabel' | translate }}</dt>
+            <dd>{{ 'ratings.rankings.evidenceSummary.provisionalDisplayed' | localizedPlural:provisionalDisplayedCount() }}</dd>
+          </div>
+        </dl>
+        <div class="rankings-evidence-summary__meta">
+          <a [routerLink]="['/', currentLang(), 'rankings', 'methodology', method.version]">
+            {{ 'ratings.rankings.evidenceSummary.methodology' | translate:{ version: method.version } }}
+          </a>
+          @if (generatedAtUtc(); as generatedAt) {
+            <span>{{ 'ratings.rankings.evidenceSummary.generatedAt' | translate:{ date: (generatedAt | date:'longDate':undefined:currentLang()) } }}</span>
+          } @else {
+            <span>{{ 'ratings.rankings.evidenceSummary.generatedAtUnavailable' | translate }}</span>
+          }
+          <small>{{ 'ratings.rankings.evidenceSummary.displayedScope' | translate }}</small>
+        </div>
+      </aside>
+    }
   </header>
 
   <nav class="rankings-filters" [attr.aria-label]="'ratings.rankings.filters.label' | translate">

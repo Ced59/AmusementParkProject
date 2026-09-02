@@ -42,6 +42,72 @@
   text-underline-offset: 0.18em;
 }
 
+.rankings-evidence-summary {
+  display: grid;
+  min-width: 0;
+  gap: 0.85rem;
+  padding: clamp(0.9rem, 2vw, 1.2rem);
+  border: 1px solid color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+  border-radius: var(--app-radius-lg);
+  background: color-mix(in srgb, var(--app-primary) 6%, var(--app-surface));
+}
+
+.rankings-evidence-summary__intro,
+.rankings-evidence-summary__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.8rem;
+}
+
+.rankings-evidence-summary__intro p {
+  margin: 0;
+  color: var(--app-heading);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.rankings-evidence-summary__intro i {
+  color: var(--app-primary);
+}
+
+.rankings-evidence-summary__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.rankings-evidence-summary__stats div {
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+}
+
+.rankings-evidence-summary__stats dt,
+.rankings-evidence-summary__meta,
+.rankings-evidence-summary__meta small {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.rankings-evidence-summary__stats dd {
+  margin: 0.2rem 0 0;
+  color: var(--app-heading);
+  font-weight: 900;
+}
+
+.rankings-evidence-summary__meta a {
+  color: var(--app-primary);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.rankings-evidence-summary__meta small {
+  flex-basis: 100%;
+}
+
 .rankings-filters {
   display: flex;
   flex-wrap: wrap;
@@ -129,5 +195,9 @@
     grid-column: 1 / -1;
     justify-content: center;
     width: 100%;
+  }
+
+  .rankings-evidence-summary__stats {
+    grid-template-columns: 1fr;
   }
 }
