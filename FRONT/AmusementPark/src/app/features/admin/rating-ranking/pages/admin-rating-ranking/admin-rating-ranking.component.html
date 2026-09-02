@@ -240,6 +240,7 @@
               type="submit"
               icon="pi pi-chart-line"
               [label]="'admin.ratingRanking.preview.action' | translate"
+              [disabled]="previewing()"
               [loading]="previewing()">
             </button>
           </div>

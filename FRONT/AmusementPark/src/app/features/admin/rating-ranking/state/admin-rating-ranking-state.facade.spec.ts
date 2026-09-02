@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 
 import {
   RatingRankingAdministration,
@@ -17,6 +17,7 @@ class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
   public readonly previewRequests: RatingRankingPolicyCandidateRequest[] = [];
   public dashboardCallCount: number = 0;
   public rebuildCallCount: number = 0;
+  public previewResult: Observable<RatingRankingPolicyImpact> | null = null;
 
   getDashboard(): Observable<RatingRankingAdministration> {
     this.dashboardCallCount++;
@@ -25,7 +26,7 @@ class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
 
   previewImpact(request: RatingRankingPolicyCandidateRequest): Observable<RatingRankingPolicyImpact> {
     this.previewRequests.push(request);
-    return of(createImpact(request));
+    return this.previewResult ?? of(createImpact(request));
   }
 
   rebuild(): Observable<RatingRankingRebuildRequestResult> {
@@ -70,6 +71,34 @@ describe('AdminRatingRankingStateFacade', () => {
     expect(facade.impact()?.candidate.version).toBe('ratings-2026-02');
     expect(facade.previewing()).toBe(false);
     expect(facade.actionMessageKey()).toBe('admin.ratingRanking.preview.success');
+  });
+
+  it('clears the previous impact when a new preview fails', () => {
+    const candidate: RatingRankingPolicyCandidateRequest = createCandidate();
+    facade.preview(candidate);
+    expect(facade.impact()).not.toBeNull();
+    port.previewResult = throwError(() => new Error('preview failed'));
+
+    facade.preview({ ...candidate, eligibleMinUniqueContributors: 12 });
+
+    expect(facade.impact()).toBeNull();
+    expect(facade.previewing()).toBe(false);
+    expect(facade.actionMessageKey()).toBe('admin.ratingRanking.preview.error');
+  });
+
+  it('keeps at most one expensive preview request in flight', () => {
+    const response: Subject<RatingRankingPolicyImpact> = new Subject<RatingRankingPolicyImpact>();
+    const candidate: RatingRankingPolicyCandidateRequest = createCandidate();
+    port.previewResult = response;
+
+    facade.preview(candidate);
+    facade.preview({ ...candidate, eligibleMinUniqueContributors: 12 });
+
+    expect(port.previewRequests).toEqual([candidate]);
+    expect(facade.previewing()).toBe(true);
+    response.next(createImpact(candidate));
+    response.complete();
+    expect(facade.previewing()).toBe(false);
   });
 
   it('reloads diagnostics after scheduling a rebuild', () => {

@@ -57,13 +57,18 @@ public sealed class RatingRankingAdministrationDashboardReader
         foreach (RankingScopeDefinition scope in this.scopeRegistry.Definitions
                      .OrderBy(static definition => definition.Key.Value, StringComparer.Ordinal))
         {
-            RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
-                scope.Key,
-                cancellationToken);
             RankingSnapshotHeader? header = await this.snapshotRepository.GetCurrentHeaderAsync(
                 scope.Key,
                 scope.MethodologyVersion,
                 cancellationToken);
+            RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
+                scope.Key,
+                cancellationToken);
+            if (!PublicationStateMatches(scope, header, pointer))
+            {
+                header = null;
+                pointer = null;
+            }
             RatingRankingSourceRevision? sourceRevision =
                 await this.sourceRevisionRepository.GetAsync(scope.Key, cancellationToken);
             string rebuildNaturalKey = RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key);
@@ -250,6 +255,24 @@ public sealed class RatingRankingAdministrationDashboardReader
             && job.Status == DurableBackgroundJobStatus.Succeeded
             && job.ProcessedRevision == header.SourceRevision
             && job.CompletedAtUtc.HasValue;
+    }
+
+    private static bool PublicationStateMatches(
+        RankingScopeDefinition scope,
+        RankingSnapshotHeader? header,
+        RankingPublicationPointer? pointer)
+    {
+        if (header is null || pointer is null)
+        {
+            return header is null && pointer is null;
+        }
+
+        return header.Id == pointer.CurrentSnapshotId
+            && header.ScopeKey == scope.Key
+            && pointer.ScopeKey == scope.Key
+            && header.MethodologyVersion == scope.MethodologyVersion
+            && pointer.MethodologyVersion == scope.MethodologyVersion
+            && header.SourceRevision == pointer.SourceRevision;
     }
 
     private DateTime GetUtcNow()

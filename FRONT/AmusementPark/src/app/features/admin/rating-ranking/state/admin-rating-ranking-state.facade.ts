@@ -55,7 +55,12 @@ export class AdminRatingRankingStateFacade {
   }
 
   preview(request: RatingRankingPolicyCandidateRequest): void {
+    if (this.previewingSignal()) {
+      return;
+    }
+
     this.previewingSignal.set(true);
+    this.impactSignal.set(null);
     this.actionMessageKeySignal.set(null);
     this.apiService.previewImpact(request)
       .pipe(takeUntilDestroyed(this.destroyRef))

@@ -46,7 +46,7 @@ public sealed class RatingRankingAdministrationServicesTests
             new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
         RankingSnapshotHeader header = CreateCurrentHeader(scope, 1);
         snapshots.Setup(repository => repository.GetPointerAsync(scope.Key, CancellationToken.None))
-            .ReturnsAsync((RankingPublicationPointer?)null);
+            .ReturnsAsync(CreatePointer(header));
         snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
                 scope.Key,
                 scope.MethodologyVersion,
@@ -55,7 +55,10 @@ public sealed class RatingRankingAdministrationServicesTests
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
-            .ReturnsAsync((RatingRankingSourceRevision?)null);
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                scope.Key,
+                header.SourceRevision + 1,
+                header.PublishedAtUtc!.Value.AddSeconds(1)));
         Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
             new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
         evaluator.Setup(value => value.EvaluateAsync(
@@ -123,6 +126,77 @@ public sealed class RatingRankingAdministrationServicesTests
         DurableBackgroundJobDiagnosticQuery diagnosticQuery = Assert.Single(diagnosticQueries);
         Assert.Equal(RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key), diagnosticQuery.NaturalKey);
         Assert.Equal(1, diagnosticQuery.Limit);
+        snapshots.VerifyAll();
+        revisions.VerifyAll();
+        evaluator.VerifyAll();
+        diagnosticsReader.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetDashboardAsync_WhenPublicationChangesBetweenReads_ShouldHideTheIncoherentState()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.GlobalParks;
+        RankingSnapshotHeader currentHeader = CreateCurrentHeader(scope, 1);
+        RankingSnapshotHeader previousHeader = CreateCurrentHeader(
+            scope,
+            1,
+            sourceRevision: 6,
+            snapshotId: "snapshot-previous");
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                CancellationToken.None))
+            .ReturnsAsync(currentHeader);
+        snapshots.Setup(repository => repository.GetPointerAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(CreatePointer(previousHeader));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                scope.Key,
+                currentHeader.SourceRevision,
+                currentHeader.GeneratedAtUtc));
+        Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
+            new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
+        evaluator.Setup(value => value.EvaluateAsync(
+                scope,
+                It.IsAny<RankingEligibilityPolicy>(),
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingPolicyEvaluationPlan(
+                0,
+                Array.Empty<RatingRankingPolicyEvaluationEntry>(),
+                false));
+        Mock<IRatingDiagnosticsReader> diagnosticsReader =
+            new Mock<IRatingDiagnosticsReader>(MockBehavior.Strict);
+        diagnosticsReader.Setup(reader => reader.GetDiagnosticsAsync(CancellationToken.None))
+            .ReturnsAsync(CreateDiagnostics());
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.ListDiagnosticsAsync(
+                It.IsAny<DurableBackgroundJobDiagnosticQuery>(),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<DurableBackgroundJobDiagnosticItem>());
+        RatingRankingAdministrationDashboardReader reader =
+            new RatingRankingAdministrationDashboardReader(
+                registry.Object,
+                snapshots.Object,
+                revisions.Object,
+                evaluator.Object,
+                diagnosticsReader.Object,
+                jobs.Object);
+
+        RatingRankingAdministrationResult result = await reader.GetDashboardAsync(
+            CancellationToken.None);
+
+        RatingRankingScopeDiagnosticsResult diagnostics = Assert.Single(result.Scopes);
+        Assert.Null(diagnostics.CurrentSnapshotId);
+        Assert.Null(diagnostics.PublishedSourceRevision);
+        Assert.Null(diagnostics.PublishedAtUtc);
+        Assert.True(diagnostics.IsRebuildOutstanding);
         snapshots.VerifyAll();
         revisions.VerifyAll();
         evaluator.VerifyAll();
@@ -425,6 +499,67 @@ public sealed class RatingRankingAdministrationServicesTests
     }
 
     [Fact]
+    public async Task PreviewImpactAsync_WhenRevisionDocumentIsStablyAbsent_ShouldCompareRevisionZeroSnapshot()
+    {
+        RankingScopeDefinition scope = CanonicalRankingScopes.PublicItemCategories
+            .Single(static definition => definition.Filter.ParkItemCategory == ParkItemCategory.Attraction);
+        RankingSnapshotHeader header = CreateCurrentHeader(scope, 1, sourceRevision: 0);
+        Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
+        Mock<IRankingSnapshotRepository> snapshots =
+            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
+        snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                CancellationToken.None))
+            .ReturnsAsync(header);
+        snapshots.Setup(repository => repository.GetCurrentPageAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                0,
+                scope.PageSize,
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotPage(
+                header,
+                new[] { CreateSnapshotEntry(scope, 1, "item-a", 4.9d) },
+                0,
+                scope.PageSize));
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.SetupSequence(repository => repository.GetAsync(scope.Key, CancellationToken.None))
+            .ReturnsAsync((RatingRankingSourceRevision?)null)
+            .ReturnsAsync((RatingRankingSourceRevision?)null);
+        RankingEligibilityPolicy candidatePolicy = CreateCandidatePolicy();
+        Mock<IRatingRankingPolicyEvaluationBuilder> evaluator =
+            new Mock<IRatingRankingPolicyEvaluationBuilder>(MockBehavior.Strict);
+        evaluator.Setup(value => value.EvaluateAsync(
+                scope,
+                It.Is<RankingEligibilityPolicy>(policy => policy.Version == candidatePolicy.Version),
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingPolicyEvaluationPlan(
+                1,
+                new[] { CreateEvaluationEntry(candidatePolicy, "item-a", "A", 4.9d, true) },
+                false));
+        RatingRankingPolicyImpactPreviewer previewer = CreatePreviewer(
+            registry.Object,
+            snapshots.Object,
+            revisions.Object,
+            evaluator.Object);
+
+        RatingRankingPolicyImpactResult result = await previewer.PreviewImpactAsync(
+            CreateCandidate(),
+            CancellationToken.None);
+
+        RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
+        Assert.True(impact.HasCurrentSnapshot);
+        Assert.Equal(1, impact.ComparedRankCount);
+        Assert.Equal(0, impact.GainedEligibilityCount);
+        Assert.Equal(0, impact.LostEligibilityCount);
+        snapshots.VerifyAll();
+        revisions.VerifyAll();
+        evaluator.VerifyAll();
+    }
+
+    [Fact]
     public async Task PreviewImpactAsync_WhenSourceRevisionChangesDuringEvaluation_ShouldRejectTheComparison()
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.PublicItemCategories
@@ -586,12 +721,13 @@ public sealed class RatingRankingAdministrationServicesTests
     private static RankingSnapshotHeader CreateCurrentHeader(
         RankingScopeDefinition scope,
         int eligibleEntryCount,
-        long sourceRevision = 7)
+        long sourceRevision = 7,
+        string snapshotId = "snapshot-current")
     {
         DateTime generatedAtUtc = new DateTime(2026, 9, 2, 11, 59, 0, DateTimeKind.Utc);
         DateTime publishedAtUtc = generatedAtUtc.AddSeconds(2);
         return new RankingSnapshotHeader(
-            RankingSnapshotId.Parse("snapshot-current"),
+            RankingSnapshotId.Parse(snapshotId),
             scope.Key,
             scope.MethodologyVersion,
             sourceRevision,
@@ -604,6 +740,21 @@ public sealed class RatingRankingAdministrationServicesTests
             generatedAtUtc,
             generatedAtUtc.AddSeconds(1),
             publishedAtUtc);
+    }
+
+    private static RankingPublicationPointer CreatePointer(RankingSnapshotHeader header)
+    {
+        return new RankingPublicationPointer(
+            header.ScopeKey,
+            header.Id,
+            header.PublishedAtUtc!.Value,
+            null,
+            null,
+            header.MethodologyVersion,
+            header.SourceRevision,
+            header.SourceRevision,
+            version: 1,
+            updatedAtUtc: header.PublishedAtUtc.Value);
     }
 
     private static RankingSnapshotEntry CreateSnapshotEntry(
