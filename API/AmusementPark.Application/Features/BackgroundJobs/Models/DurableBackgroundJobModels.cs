@@ -93,7 +93,8 @@ public sealed record DurableBackgroundJobDiagnosticQuery(
     string? Kind = null,
     int Limit = 100,
     string? NaturalKey = null,
-    long? ProcessedRevision = null);
+    long? ProcessedRevision = null,
+    DateTime? MaximumCreatedAtUtc = null);
 
 public sealed record DurableBackgroundJobDiagnosticItem(
     string Id,

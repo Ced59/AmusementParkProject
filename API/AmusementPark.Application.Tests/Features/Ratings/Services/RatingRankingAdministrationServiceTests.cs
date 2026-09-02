@@ -91,7 +91,7 @@ public sealed class RatingRankingAdministrationServicesTests
                 DurableBackgroundJobDiagnosticItem producingJob = new DurableBackgroundJobDiagnosticItem(
                     "job-1",
                     RatingRankingRebuildScopeJob.Kind,
-                    RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
+                    RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key),
                     DurableBackgroundJobStatus.Succeeded,
                     0,
                     1,
@@ -105,6 +105,11 @@ public sealed class RatingRankingAdministrationServicesTests
                     null,
                     null);
                 if (query.NaturalKey == RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key))
+                {
+                    return Array.Empty<DurableBackgroundJobDiagnosticItem>();
+                }
+
+                if (query.MaximumCreatedAtUtc.HasValue)
                 {
                     return new[] { producingJob };
                 }
@@ -158,6 +163,10 @@ public sealed class RatingRankingAdministrationServicesTests
             2,
             diagnosticQueries.Count(
                 query => query.NaturalKey == RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key)));
+        Assert.Equal(2, diagnosticQueries.Count(query => query.MaximumCreatedAtUtc.HasValue));
+        Assert.All(
+            diagnosticQueries.Where(query => query.MaximumCreatedAtUtc.HasValue),
+            query => Assert.Equal(header.GeneratedAtUtc, query.MaximumCreatedAtUtc));
         Assert.All(diagnosticQueries, query => Assert.Equal(1, query.Limit));
         snapshots.VerifyAll();
         revisions.VerifyAll();

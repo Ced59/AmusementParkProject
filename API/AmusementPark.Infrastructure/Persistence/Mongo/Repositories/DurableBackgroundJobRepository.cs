@@ -548,6 +548,13 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
                 query.ProcessedRevision.Value);
         }
 
+        if (query.MaximumCreatedAtUtc.HasValue)
+        {
+            filter &= Builders<DurableBackgroundJobDocument>.Filter.Lte(
+                item => item.CreatedAt,
+                query.MaximumCreatedAtUtc.Value);
+        }
+
         return filter;
     }
 

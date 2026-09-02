@@ -269,7 +269,8 @@ public sealed class RatingRankingAdministrationDashboardReader
                         Kind: RatingRankingRebuildScopeJob.Kind,
                         Limit: 1,
                         NaturalKey: naturalKey,
-                        ProcessedRevision: header.SourceRevision),
+                        ProcessedRevision: header.SourceRevision,
+                        MaximumCreatedAtUtc: header.GeneratedAtUtc),
                     cancellationToken);
             jobs.AddRange(matchingJobs);
         }

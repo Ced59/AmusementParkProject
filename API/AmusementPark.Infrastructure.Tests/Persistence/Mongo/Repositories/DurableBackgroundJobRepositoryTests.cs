@@ -263,7 +263,8 @@ public sealed class DurableBackgroundJobRepositoryTests
             Kind: "ratings.rebuild-scope",
             Limit: 1,
             NaturalKey: "ratings.rebuild-scope:parks:global",
-            ProcessedRevision: 17);
+            ProcessedRevision: 17,
+            MaximumCreatedAtUtc: NowUtc);
 
         BsonDocument rendered = Render(DurableBackgroundJobStore.BuildDiagnosticFilter(query));
 
@@ -273,6 +274,7 @@ public sealed class DurableBackgroundJobRepositoryTests
         Assert.Equal("ratings.rebuild-scope", rendered["kind"].AsString);
         Assert.Equal("ratings.rebuild-scope:parks:global", rendered["naturalKey"].AsString);
         Assert.Equal(17, rendered["processedRevision"].AsInt64);
+        Assert.Equal(NowUtc, rendered["createdAt"].AsBsonDocument["$lte"].ToUniversalTime());
     }
 
     [Fact]
