@@ -235,7 +235,7 @@ public sealed class RankingSnapshotRepository : IRankingSnapshotRepository
     {
         RankingPublicationPointer? pointer = await this.GetPointerAsync(scopeKey, cancellationToken);
         return pointer is not null && nowUtc <= pointer.UpdatedAtUtc
-            ? pointer.UpdatedAtUtc.AddTicks(1)
+            ? pointer.UpdatedAtUtc.AddMilliseconds(1)
             : nowUtc;
     }
 
