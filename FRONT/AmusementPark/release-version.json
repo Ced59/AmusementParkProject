@@ -1,6 +1,20 @@
 {
-  "version": "4.3.1",
+  "version": "5.0.0",
   "history": [
+    {
+      "version": "5.0.0",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Le passeport de visites dispose désormais d’un modèle fiable pour conserver les dates exactes ou partielles.",
+        "en": "The visit passport now has a reliable model for preserving exact or partial dates.",
+        "de": "Der Besuchspass verfügt jetzt über ein zuverlässiges Modell für genaue oder unvollständige Datumsangaben.",
+        "nl": "Het bezoekpaspoort heeft nu een betrouwbaar model voor exacte of gedeeltelijke datums.",
+        "it": "Il passaporto delle visite dispone ora di un modello affidabile per conservare date esatte o parziali.",
+        "es": "El pasaporte de visitas dispone ahora de un modelo fiable para conservar fechas exactas o parciales.",
+        "pl": "Paszport wizyt ma teraz wiarygodny model przechowywania dokładnych lub częściowych dat.",
+        "pt": "O passaporte de visitas dispõe agora de um modelo fiável para preservar datas exatas ou parciais."
+      }
+    },
     {
       "version": "4.3.1",
       "releasedAt": "2026-09-03",
