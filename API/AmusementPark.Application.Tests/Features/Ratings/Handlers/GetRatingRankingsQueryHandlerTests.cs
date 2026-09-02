@@ -234,9 +234,9 @@ public sealed class GetRatingRankingsQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(10, result.Value!.Items.Count);
-        Assert.Equal(3, result.Value.Items.First().Rank);
+        Assert.Null(result.Value.Items.First().Rank);
         Assert.Contains(result.Value.Items, static item => item.ParkName == "Park 08");
-        Assert.Equal(12, result.Value.Items.Last().Rank);
+        Assert.Null(result.Value.Items.Last().Rank);
         Assert.All(result.Value.Items, static item =>
         {
             Assert.Equal(RankingEvidenceLevel.Eligible, item.Evidence?.Level);
@@ -385,14 +385,14 @@ public sealed class GetRatingRankingsQueryHandlerTests
             result.Value!.Items,
             first =>
             {
-                Assert.Equal(1, first.Rank);
+                Assert.Null(first.Rank);
                 Assert.Equal("Sledge Hammer", first.TargetName);
                 Assert.Equal("Bobbejaanland", first.ParkName);
                 Assert.Equal(RankingEvidenceLevel.Eligible, first.Evidence?.Level);
             },
             second =>
             {
-                Assert.Equal(2, second.Rank);
+                Assert.Null(second.Rank);
                 Assert.Equal("Talocan", second.TargetName);
                 Assert.Equal("Phantasialand", second.ParkName);
                 Assert.Equal(RankingEvidenceLevel.Eligible, second.Evidence?.Level);

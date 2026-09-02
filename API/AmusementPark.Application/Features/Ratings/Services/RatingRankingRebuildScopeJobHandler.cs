@@ -16,19 +16,22 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
     private readonly IRankingSnapshotRepository snapshotRepository;
     private readonly IRatingRankingSnapshotBuilder snapshotBuilder;
     private readonly RankingSnapshotChecksumCalculator checksumCalculator;
+    private readonly IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator;
 
     public RatingRankingRebuildScopeJobHandler(
         IRankingScopeRegistry scopeRegistry,
         IRatingRankingSourceRevisionRepository sourceRevisionRepository,
         IRankingSnapshotRepository snapshotRepository,
         IRatingRankingSnapshotBuilder snapshotBuilder,
-        RankingSnapshotChecksumCalculator checksumCalculator)
+        RankingSnapshotChecksumCalculator checksumCalculator,
+        IRatingRankingPublicationCacheInvalidator publicationCacheInvalidator)
     {
         this.scopeRegistry = scopeRegistry;
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.snapshotRepository = snapshotRepository;
         this.snapshotBuilder = snapshotBuilder;
         this.checksumCalculator = checksumCalculator;
+        this.publicationCacheInvalidator = publicationCacheInvalidator;
     }
 
     public DurableBackgroundJobHandlerDefinition Definition { get; } =
@@ -62,7 +65,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             cancellationToken);
         if (!forceRebuild && IsCovered(pointer, scope, requestedRevision))
         {
-            return DurableBackgroundJobHandlerResult.Success();
+            return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
         }
 
         RevisionFenceCheck initialFence = await this.CheckRevisionFenceAsync(
@@ -148,7 +151,7 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                     requestedRevision,
                     RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
                     cancellationToken);
-                return DurableBackgroundJobHandlerResult.Success();
+                return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
             }
 
             return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
@@ -250,14 +253,37 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
         RankingSnapshotPublicationResult publication = await this.snapshotRepository.PublishAsync(
             header.Id,
             cancellationToken);
-        return publication.Disposition switch
+        if (publication.Disposition is RankingSnapshotPublicationDisposition.Published
+            or RankingSnapshotPublicationDisposition.AlreadyPublished
+            or RankingSnapshotPublicationDisposition.Stale)
         {
-            RankingSnapshotPublicationDisposition.Published => DurableBackgroundJobHandlerResult.Success(),
-            RankingSnapshotPublicationDisposition.AlreadyPublished => DurableBackgroundJobHandlerResult.Success(),
-            RankingSnapshotPublicationDisposition.Stale => DurableBackgroundJobHandlerResult.Success(),
-            _ => DurableBackgroundJobHandlerResult.Retry(
-                RatingRankingRebuildErrorCodes.PublicationConflict),
-        };
+            return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
+        }
+
+        return DurableBackgroundJobHandlerResult.Retry(
+            RatingRankingRebuildErrorCodes.PublicationConflict);
+    }
+
+    private async Task<DurableBackgroundJobHandlerResult> CompleteWithCacheInvalidationAsync(
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            bool invalidated = await this.publicationCacheInvalidator.InvalidateAsync(cancellationToken);
+            return invalidated
+                ? DurableBackgroundJobHandlerResult.Success()
+                : DurableBackgroundJobHandlerResult.Retry(
+                    RatingRankingRebuildErrorCodes.CacheInvalidationFailed);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch
+        {
+            return DurableBackgroundJobHandlerResult.Retry(
+                RatingRankingRebuildErrorCodes.CacheInvalidationFailed);
+        }
     }
 
     private IReadOnlyCollection<RankingSnapshotChunk> CreateChunks(

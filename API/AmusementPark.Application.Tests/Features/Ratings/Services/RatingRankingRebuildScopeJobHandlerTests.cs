@@ -60,6 +60,28 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             CancellationToken.None);
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyNoOtherCalls();
+        fixture.Builder.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPublishedPointerAlreadyCoversRevisionButCacheInvalidationFails_ShouldRetry()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        fixture.CacheInvalidator.Result = false;
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(fixture.CreatePointer(7));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(7),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(RatingRankingRebuildErrorCodes.CacheInvalidationFailed, result.ErrorCode);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyNoOtherCalls();
         fixture.Builder.VerifyNoOtherCalls();
@@ -110,6 +132,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             CancellationToken.None);
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyAll();
         fixture.Builder.VerifyAll();
@@ -371,6 +394,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             CancellationToken.None);
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyAll();
         fixture.Builder.VerifyAll();
@@ -422,6 +446,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             CancellationToken.None);
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyAll();
         fixture.Builder.VerifyAll();
@@ -497,12 +522,14 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             this.Revisions = new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
             this.Snapshots = new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
             this.Builder = new Mock<IRatingRankingSnapshotBuilder>(MockBehavior.Strict);
+            this.CacheInvalidator = new RecordingPublicationCacheInvalidator();
             this.Handler = new RatingRankingRebuildScopeJobHandler(
                 registry,
                 this.Revisions.Object,
                 this.Snapshots.Object,
                 this.Builder.Object,
-                new RankingSnapshotChecksumCalculator());
+                new RankingSnapshotChecksumCalculator(),
+                this.CacheInvalidator);
         }
 
         public RankingScopeDefinition Scope { get; }
@@ -512,6 +539,8 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
         public Mock<IRankingSnapshotRepository> Snapshots { get; }
 
         public Mock<IRatingRankingSnapshotBuilder> Builder { get; }
+
+        public RecordingPublicationCacheInvalidator CacheInvalidator { get; }
 
         public RatingRankingRebuildScopeJobHandler Handler { get; }
 
@@ -615,6 +644,19 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             this.Revisions.VerifyNoOtherCalls();
             this.Snapshots.VerifyNoOtherCalls();
             this.Builder.VerifyNoOtherCalls();
+        }
+    }
+
+    private sealed class RecordingPublicationCacheInvalidator : IRatingRankingPublicationCacheInvalidator
+    {
+        public int CallCount { get; private set; }
+
+        public bool Result { get; set; } = true;
+
+        public Task<bool> InvalidateAsync(CancellationToken cancellationToken)
+        {
+            this.CallCount++;
+            return Task.FromResult(this.Result);
         }
     }
 }

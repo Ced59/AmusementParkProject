@@ -146,7 +146,7 @@ jobs:
         shell: bash
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
-          bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
+          bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/reconcile-rating-ranking-eligibility-cache.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
           for static_snapshot_policy in true false; do
             docker run --rm \
               --tmpfs /tmp \
@@ -157,6 +157,7 @@ jobs:
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/stale-deploy-candidates.test.sh
+          deploy/scripts/tests/rating-ranking-activation.test.sh
           deploy/scripts/tests/deploy-candidate-background-jobs.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
@@ -454,6 +455,7 @@ jobs:
       JWT_KEY: ${{ secrets.PROD_JWT_KEY }}
       JWT_ISSUER: ${{ vars.PROD_JWT_ISSUER || 'AmusementPark' }}
       JWT_AUDIENCE: ${{ vars.PROD_JWT_AUDIENCE || 'AmusementPark' }}
+      RATINGS_ELIGIBILITY_ENABLED: ${{ vars.PROD_RATINGS_ELIGIBILITY_ENABLED || 'true' }}
       GOOGLE_CLIENT_ID: ${{ secrets.PROD_GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
       GOOGLE_REDIRECT_URI: ${{ vars.PROD_GOOGLE_REDIRECT_URI || 'https://amusement-parks.fun/api/auth/external/google/callback' }}

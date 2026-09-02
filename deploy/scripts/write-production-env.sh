@@ -226,6 +226,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line JWT_KEY "${JWT_KEY:?JWT_KEY is required}"
   write_line JWT_ISSUER "$(value_or_default JWT_ISSUER 'AmusementPark')"
   write_line JWT_AUDIENCE "$(value_or_default JWT_AUDIENCE 'AmusementPark')"
+  write_line RATINGS_ELIGIBILITY_ENABLED "$(value_or_default RATINGS_ELIGIBILITY_ENABLED 'true')"
   write_line GOOGLE_CLIENT_ID "$(value_or_default GOOGLE_CLIENT_ID '')"
   write_line GOOGLE_CLIENT_SECRET "$(value_or_default GOOGLE_CLIENT_SECRET '')"
   write_line GOOGLE_REDIRECT_URI "$(value_or_default GOOGLE_REDIRECT_URI "${public_base_url%/}/api/auth/external/google/callback")"

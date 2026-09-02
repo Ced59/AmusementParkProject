@@ -1,6 +1,20 @@
 {
-  "version": "4.2.52",
+  "version": "4.3.0",
   "history": [
+    {
+      "version": "4.3.0",
+      "releasedAt": "2026-09-02",
+      "labels": {
+        "fr": "Les classements fiables sont désormais activés avec une mise à jour immédiate des pages publiques.",
+        "en": "Reliable rankings are now enabled with immediate updates across public pages.",
+        "de": "Verlässliche Ranglisten sind jetzt aktiviert und öffentliche Seiten werden sofort aktualisiert.",
+        "nl": "Betrouwbare ranglijsten zijn nu actief en openbare pagina’s worden meteen bijgewerkt.",
+        "it": "Le classifiche affidabili sono ora attive e le pagine pubbliche si aggiornano immediatamente.",
+        "es": "Las clasificaciones fiables ya están activas y las páginas públicas se actualizan de inmediato.",
+        "pl": "Wiarygodne rankingi są już aktywne, a strony publiczne aktualizują się natychmiast.",
+        "pt": "As classificações fiáveis estão agora ativas e as páginas públicas são atualizadas de imediato."
+      }
+    },
     {
       "version": "4.2.52",
       "releasedAt": "2026-09-02",

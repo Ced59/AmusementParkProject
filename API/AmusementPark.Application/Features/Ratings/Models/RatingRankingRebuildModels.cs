@@ -45,6 +45,7 @@ public static class RatingRankingRebuildErrorCodes
     public const string ValidationFailed = "ranking-snapshot.validation-failed";
     public const string PublicationConflict = "ranking-snapshot.publication-conflict";
     public const string RetirementConflict = "ranking-snapshot.retirement-conflict";
+    public const string CacheInvalidationFailed = "ranking-snapshot.cache-invalidation-failed";
 }
 
 public sealed record RatingRankingMutationLease

@@ -91,14 +91,11 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
                 result.TotalItems);
         }
 
-        if (this.featureFlags.EligibilityEnabled)
-        {
-            result = new PagedResult<ParkRatingRankingResult>(
-                result.Items.Select(static ranking => ranking with { Rank = null }).ToList(),
-                result.Page,
-                result.PageSize,
-                result.TotalItems);
-        }
+        result = new PagedResult<ParkRatingRankingResult>(
+            result.Items.Select(static ranking => ranking with { Rank = null }).ToList(),
+            result.Page,
+            result.PageSize,
+            result.TotalItems);
 
         return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Success(result);
     }
@@ -219,6 +216,12 @@ public sealed class GetParkItemRatingRankingsQueryHandler
                 result.PageSize,
                 result.TotalItems);
         }
+
+        result = new PagedResult<ParkItemRatingRankingResult>(
+            result.Items.Select(static ranking => ranking with { Rank = null }).ToList(),
+            result.Page,
+            result.PageSize,
+            result.TotalItems);
 
         return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(result);
     }

@@ -1,12 +1,10 @@
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
-using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Services.Ratings;
 using Microsoft.Extensions.Caching.Memory;
-using Moq;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Services.Ratings;
@@ -14,68 +12,45 @@ namespace AmusementPark.Infrastructure.Tests.Services.Ratings;
 public sealed class InMemoryRatingRankSnapshotCacheTests
 {
     [Fact]
-    public async Task GetRankAsync_WhenSnapshotIsReused_ShouldBuildRankingOnlyOnceUntilInvalidated()
+    public async Task GetOrCreateAsync_WhenSnapshotIsReused_ShouldBuildRankingOnlyOnceUntilInvalidated()
     {
-        RatingAggregate aggregate = new RatingAggregate
+        int factoryCalls = 0;
+        Task<IReadOnlyDictionary<string, int>> CreateRanks(CancellationToken cancellationToken)
         {
-            TargetType = RatingTargetType.ParkItem,
-            TargetId = "taron",
-            ParkId = "park-1",
-            ParkItemCategory = ParkItemCategory.Attraction,
-            ParkItemType = ParkItemType.RollerCoaster,
-            RatingCount = 12,
-            RatingSum = 57,
-            AverageRating = 4.75,
-            BayesianScore = 4.42,
-        };
-        IReadOnlyCollection<RatingRankingItemResult> sources = new[]
-        {
-            CreateRankingSource("fly", "F.L.Y.", 4.6),
-            CreateRankingSource("taron", "Taron", 4.42),
-        };
-        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
-        ratingRepository
-            .Setup(repository => repository.GetVisibleParkItemRankingSourcesAsync(
-                ParkItemCategory.Attraction,
-                It.IsAny<int>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(sources);
+            factoryCalls++;
+            IReadOnlyDictionary<string, int> ranks = new Dictionary<string, int>(StringComparer.Ordinal)
+            {
+                ["fly"] = 1,
+                ["taron"] = 2,
+            };
+            return Task.FromResult(ranks);
+        }
 
         using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
         using InMemoryRatingRankSnapshotCache snapshotCache =
             new InMemoryRatingRankSnapshotCache(memoryCache);
-        Mock<IRankingSnapshotRepository> rankingSnapshotRepository =
-            new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
-        Mock<IRatingRankingSourceRevisionRepository> sourceRevisionRepository =
-            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
-        Mock<IRankingScopeRegistry> scopeRegistry = new Mock<IRankingScopeRegistry>(MockBehavior.Strict);
-        Mock<IRatingRankingFeatureFlags> featureFlags =
-            new Mock<IRatingRankingFeatureFlags>(MockBehavior.Strict);
-        featureFlags.SetupGet(flags => flags.EligibilityEnabled).Returns(false);
-        RankingSnapshotChecksumCalculator checksumCalculator = new RankingSnapshotChecksumCalculator();
-        RatingRankProvider provider = new RatingRankProvider(
-            ratingRepository.Object,
-            snapshotCache,
-            rankingSnapshotRepository.Object,
-            sourceRevisionRepository.Object,
-            scopeRegistry.Object,
-            featureFlags.Object,
-            checksumCalculator,
-            new RankingSnapshotIntegrityValidator(checksumCalculator));
 
-        RatingPublishedRank? firstRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
-        RatingPublishedRank? cachedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
-        provider.Invalidate();
-        RatingPublishedRank? refreshedRank = await provider.GetRankAsync(aggregate, CancellationToken.None);
-
-        Assert.Equal(2, firstRank?.Rank);
-        Assert.Equal(2, cachedRank?.Rank);
-        Assert.Equal(2, refreshedRank?.Rank);
-        ratingRepository.Verify(repository => repository.GetVisibleParkItemRankingSourcesAsync(
+        IReadOnlyDictionary<string, int> firstRanks = await snapshotCache.GetOrCreateAsync(
+            RatingTargetType.ParkItem,
             ParkItemCategory.Attraction,
-            It.IsAny<int>(),
-            It.IsAny<CancellationToken>()), Times.Exactly(2));
-        ratingRepository.VerifyNoOtherCalls();
+            CreateRanks,
+            CancellationToken.None);
+        IReadOnlyDictionary<string, int> cachedRanks = await snapshotCache.GetOrCreateAsync(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction,
+            CreateRanks,
+            CancellationToken.None);
+        snapshotCache.Invalidate();
+        IReadOnlyDictionary<string, int> refreshedRanks = await snapshotCache.GetOrCreateAsync(
+            RatingTargetType.ParkItem,
+            ParkItemCategory.Attraction,
+            CreateRanks,
+            CancellationToken.None);
+
+        Assert.Equal(2, firstRanks["taron"]);
+        Assert.Equal(2, cachedRanks["taron"]);
+        Assert.Equal(2, refreshedRanks["taron"]);
+        Assert.Equal(2, factoryCalls);
     }
 
     [Fact]
@@ -195,25 +170,6 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
         Assert.Same(secondSnapshot, second);
         Assert.Equal(1, firstFactoryCalls);
         Assert.Equal(1, secondFactoryCalls);
-    }
-
-    private static RatingRankingItemResult CreateRankingSource(
-        string targetId,
-        string targetName,
-        double bayesianScore)
-    {
-        return new RatingRankingItemResult(
-            RatingTargetType.ParkItem,
-            targetId,
-            targetName,
-            "park-1",
-            "Phantasialand",
-            ParkItemCategory.Attraction,
-            ParkItemType.RollerCoaster,
-            10,
-            45,
-            4.5,
-            bayesianScore);
     }
 
     private static RatingPublishedRankingSnapshot CreatePublishedSnapshot(
