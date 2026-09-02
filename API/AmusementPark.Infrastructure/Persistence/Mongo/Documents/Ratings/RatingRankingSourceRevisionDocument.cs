@@ -42,6 +42,14 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonElement("unavailableReasonCode")]
     [BsonIgnoreIfNull]
     public string? UnavailableReasonCode { get; set; }
+
+    [BsonElement("cacheConvergedMethodologyVersion")]
+    [BsonIgnoreIfNull]
+    public string? CacheConvergedMethodologyVersion { get; set; }
+
+    [BsonElement("highestCacheConvergedSourceRevision")]
+    [BsonIgnoreIfNull]
+    public long? HighestCacheConvergedSourceRevision { get; set; }
 }
 
 public sealed class RatingRankingMutationRecoveryTargetDocument

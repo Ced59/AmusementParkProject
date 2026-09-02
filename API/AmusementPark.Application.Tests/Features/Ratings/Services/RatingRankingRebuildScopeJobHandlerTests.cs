@@ -51,6 +51,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     public async Task HandleAsync_WhenPublishedPointerAlreadyCoversRevision_ShouldSkipReplay()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(7);
         fixture.Snapshots
             .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
             .ReturnsAsync(fixture.CreatePointer(7));
@@ -62,6 +63,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
         Assert.Equal(1, fixture.CacheInvalidator.CallCount);
         fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
         fixture.Revisions.VerifyNoOtherCalls();
         fixture.Builder.VerifyNoOtherCalls();
     }
@@ -88,9 +90,37 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenCacheInvalidatesButConvergenceMarkerCannotBePersisted_ShouldRetry()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(fixture.CreatePointer(7));
+        fixture.Revisions
+            .Setup(repository => repository.MarkCacheConvergedAsync(
+                fixture.Scope.Key,
+                fixture.Scope.MethodologyVersion,
+                7,
+                CancellationToken.None))
+            .ThrowsAsync(new TimeoutException("Mongo acknowledgement unavailable."));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(7),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(RatingRankingRebuildErrorCodes.CacheInvalidationFailed, result.ErrorCode);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenForcedAndPointerCoversRevision_ShouldVerifyAndRepublishCurrentSnapshot()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(6);
         IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
         fixture.Snapshots
             .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
@@ -142,6 +172,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     public async Task HandleAsync_WhenForcedCurrentSnapshotNeedsRestart_ShouldRewriteAndRepublishIt()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(6);
         IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
         fixture.Snapshots
             .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
@@ -363,6 +394,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     public async Task HandleAsync_WhenScopeFallsBelowThreshold_ShouldRetireWithoutStartingBuild()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(6);
         IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries()
             .Take(2)
             .ToArray();
@@ -404,6 +436,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
     public async Task HandleAsync_WhenBuildIsCompleteAndStillCurrent_ShouldPublishValidatedSnapshot()
     {
         HandlerFixture fixture = new HandlerFixture();
+        fixture.SetupCacheConvergence(6);
         IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
         fixture.SetupUncoveredRevision(6);
         fixture.Builder
@@ -578,6 +611,17 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                     CanonicalRankingScopes.GlobalParks.Key,
                     20,
                     NowUtc));
+        }
+
+        public void SetupCacheConvergence(long requestedRevision)
+        {
+            this.Revisions
+                .Setup(repository => repository.MarkCacheConvergedAsync(
+                    this.Scope.Key,
+                    this.Scope.MethodologyVersion,
+                    requestedRevision,
+                    CancellationToken.None))
+                .Returns(Task.CompletedTask);
         }
 
         public IReadOnlyCollection<RankingSnapshotEntry> CreateEligibleEntries()

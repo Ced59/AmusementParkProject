@@ -114,9 +114,17 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         long requestedRevision,
         CancellationToken cancellationToken)
     {
-        if (sourceRevision?.CoversUnavailable(
-                scope.MethodologyVersion,
-                requestedRevision) == true)
+        bool unavailable = sourceRevision?.CoversUnavailable(
+            scope.MethodologyVersion,
+            requestedRevision) == true;
+        bool cacheConverged = sourceRevision?.CoversCacheConvergence(
+            scope.MethodologyVersion,
+            requestedRevision) == true;
+        if (unavailable
+            && string.Equals(
+                sourceRevision?.UnavailableReasonCode,
+                RatingRankingRebuildErrorCodes.SourceSetTruncated,
+                StringComparison.Ordinal))
         {
             return true;
         }
@@ -124,11 +132,12 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         RankingPublicationPointer? pointer = await this.snapshotRepository.GetPointerAsync(
             scope.Key,
             cancellationToken);
-        if (pointer is not null
+        bool published = pointer is not null
             && pointer.MethodologyVersion == scope.MethodologyVersion
-            && pointer.HighestPublishedSourceRevision >= requestedRevision)
+            && pointer.HighestPublishedSourceRevision >= requestedRevision;
+        if (unavailable || published)
         {
-            return true;
+            return cacheConverged;
         }
 
         return await this.backgroundJobRepository.HasDeadLetteredRevisionAsync(

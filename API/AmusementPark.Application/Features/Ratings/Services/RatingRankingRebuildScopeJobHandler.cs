@@ -65,7 +65,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             cancellationToken);
         if (!forceRebuild && IsCovered(pointer, scope, requestedRevision))
         {
-            return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
+            return await this.CompleteWithCacheInvalidationAsync(
+                scope,
+                requestedRevision,
+                cancellationToken);
         }
 
         RevisionFenceCheck initialFence = await this.CheckRevisionFenceAsync(
@@ -151,7 +154,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                     requestedRevision,
                     RatingRankingRebuildErrorCodes.BelowMinimumEligibleEntries,
                     cancellationToken);
-                return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
+                return await this.CompleteWithCacheInvalidationAsync(
+                    scope,
+                    requestedRevision,
+                    cancellationToken);
             }
 
             return retirement.Disposition == RankingSnapshotRetirementDisposition.Stale
@@ -257,7 +263,10 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             or RankingSnapshotPublicationDisposition.AlreadyPublished
             or RankingSnapshotPublicationDisposition.Stale)
         {
-            return await this.CompleteWithCacheInvalidationAsync(cancellationToken);
+            return await this.CompleteWithCacheInvalidationAsync(
+                scope,
+                requestedRevision,
+                cancellationToken);
         }
 
         return DurableBackgroundJobHandlerResult.Retry(
@@ -265,15 +274,25 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
     }
 
     private async Task<DurableBackgroundJobHandlerResult> CompleteWithCacheInvalidationAsync(
+        RankingScopeDefinition scope,
+        long requestedRevision,
         CancellationToken cancellationToken)
     {
         try
         {
             bool invalidated = await this.publicationCacheInvalidator.InvalidateAsync(cancellationToken);
-            return invalidated
-                ? DurableBackgroundJobHandlerResult.Success()
-                : DurableBackgroundJobHandlerResult.Retry(
+            if (!invalidated)
+            {
+                return DurableBackgroundJobHandlerResult.Retry(
                     RatingRankingRebuildErrorCodes.CacheInvalidationFailed);
+            }
+
+            await this.sourceRevisionRepository.MarkCacheConvergedAsync(
+                scope.Key,
+                scope.MethodologyVersion,
+                requestedRevision,
+                cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {

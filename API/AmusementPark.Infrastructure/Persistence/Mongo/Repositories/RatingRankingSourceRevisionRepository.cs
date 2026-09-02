@@ -181,6 +181,60 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         }
     }
 
+    public async Task MarkCacheConvergedAsync(
+        RankingScopeKey scopeKey,
+        RatingMethodologyVersion methodologyVersion,
+        long sourceRevision,
+        CancellationToken cancellationToken)
+    {
+        if (sourceRevision < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(sourceRevision));
+        }
+
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        FilterDefinition<RatingRankingSourceRevisionDocument> filter =
+            RatingRankingSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
+                document => document.Revision,
+                sourceRevision)
+            & Builders<RatingRankingSourceRevisionDocument>.Filter.Eq(
+                document => document.PendingMutationCount,
+                0);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            Builders<RatingRankingSourceRevisionDocument>.Update
+                .Set(document => document.CacheConvergedMethodologyVersion, methodologyVersion.Value)
+                .Set(document => document.HighestCacheConvergedSourceRevision, sourceRevision)
+                .Set(document => document.UpdatedAt, nowUtc),
+            cancellationToken: cancellationToken);
+        if (result.MatchedCount > 0 || sourceRevision != 0)
+        {
+            return;
+        }
+
+        try
+        {
+            await this.collection.InsertOneAsync(
+                new RatingRankingSourceRevisionDocument
+                {
+                    Id = scopeKey.Value,
+                    ScopeKey = scopeKey.Value,
+                    Revision = 0,
+                    CacheConvergedMethodologyVersion = methodologyVersion.Value,
+                    HighestCacheConvergedSourceRevision = 0,
+                    CreatedAt = nowUtc,
+                    UpdatedAt = nowUtc,
+                },
+                cancellationToken: cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // A concurrent mutation created or advanced the scope; that revision must converge separately.
+        }
+    }
+
     public async Task<RatingRankingSourceRevision?> GetAsync(
         RankingScopeKey scopeKey,
         CancellationToken cancellationToken)
@@ -297,6 +351,9 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
         if (!string.Equals(document.Id, scopeKey.Value, StringComparison.Ordinal) ||
             document.Revision < 0 ||
             document.PendingMutationCount < 0 ||
+            document.HighestCacheConvergedSourceRevision < 0 ||
+            (string.IsNullOrWhiteSpace(document.CacheConvergedMethodologyVersion)
+                != !document.HighestCacheConvergedSourceRevision.HasValue) ||
             (document.PendingMutationCount > 0 && !document.MutationLeaseExpiresAtUtc.HasValue) ||
             mutationLeases.Keys.Any(static token => !Guid.TryParseExact(token, "N", out _)) ||
             recoveryTargets.Any(entry =>
@@ -323,6 +380,10 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             string.IsNullOrWhiteSpace(document.UnavailableMethodologyVersion)
                 ? null
                 : RatingMethodologyVersion.Parse(document.UnavailableMethodologyVersion);
+        RatingMethodologyVersion? cacheConvergedMethodologyVersion =
+            string.IsNullOrWhiteSpace(document.CacheConvergedMethodologyVersion)
+                ? null
+                : RatingMethodologyVersion.Parse(document.CacheConvergedMethodologyVersion);
         return new RatingRankingSourceRevision(
             scopeKey,
             document.Revision,
@@ -332,7 +393,9 @@ public sealed class RatingRankingSourceRevisionRepository : IRatingRankingSource
             unavailableMethodologyVersion,
             document.HighestUnavailableSourceRevision,
             document.UnavailableReasonCode,
-            recoveredMutations);
+            recoveredMutations,
+            cacheConvergedMethodologyVersion,
+            document.HighestCacheConvergedSourceRevision);
     }
 
     private static bool IsValidRecoveryTarget(
