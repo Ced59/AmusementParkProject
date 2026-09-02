@@ -122,8 +122,16 @@ describe('AdminRatingRankingComponent', () => {
     const rebuildButton: HTMLButtonElement = fixture.nativeElement.querySelector(
       'button.p-button-danger'
     );
+    const refreshButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button.p-button-secondary'
+    );
+    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'form button[type="submit"]'
+    );
     expect(port.rebuildCallCount).toBe(1);
     expect(rebuildButton.disabled).toBe(true);
+    expect(refreshButton.disabled).toBe(true);
+    expect(previewButton.disabled).toBe(true);
   });
 });
 

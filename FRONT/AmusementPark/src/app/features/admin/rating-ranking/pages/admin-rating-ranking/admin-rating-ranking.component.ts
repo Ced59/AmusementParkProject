@@ -54,6 +54,7 @@ export class AdminRatingRankingComponent implements OnInit {
   protected readonly dashboard = this.facade.dashboard;
   protected readonly previewing = this.facade.previewing;
   protected readonly rebuilding = this.facade.rebuilding;
+  protected readonly operationInProgress = this.facade.operationInProgress;
   protected readonly impact = this.facade.impact;
   protected readonly rebuildResult = this.facade.rebuildResult;
   protected readonly actionMessageKey = this.facade.actionMessageKey;
@@ -117,7 +118,7 @@ export class AdminRatingRankingComponent implements OnInit {
   }
 
   protected rebuild(): void {
-    if (!this.rebuildConfirmed.value || this.rebuilding()) {
+    if (!this.rebuildConfirmed.value || this.operationInProgress()) {
       return;
     }
 

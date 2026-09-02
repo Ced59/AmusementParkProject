@@ -12,7 +12,7 @@
         class="p-button-secondary"
         icon="pi pi-refresh"
         [label]="'actions.refresh' | translate"
-        [disabled]="loading()"
+        [disabled]="operationInProgress()"
         (click)="refresh()">
       </button>
     </div>
@@ -240,7 +240,7 @@
               type="submit"
               icon="pi pi-chart-line"
               [label]="'admin.ratingRanking.preview.action' | translate"
-              [disabled]="previewing()"
+              [disabled]="operationInProgress()"
               [loading]="previewing()">
             </button>
           </div>
@@ -330,7 +330,7 @@
           <p>{{ 'admin.ratingRanking.rebuild.subtitle' | translate }}</p>
         </header>
         <label class="admin-rating-ranking__confirmation">
-          <app-ui-checkbox [formControl]="rebuildConfirmed" [binary]="true" [disabled]="rebuilding()"></app-ui-checkbox>
+          <app-ui-checkbox [formControl]="rebuildConfirmed" [binary]="true" [disabled]="operationInProgress()"></app-ui-checkbox>
           <span>{{ 'admin.ratingRanking.rebuild.confirmation' | translate }}</span>
         </label>
         <button
@@ -339,7 +339,7 @@
           class="p-button-danger"
           icon="pi pi-sync"
           [label]="'admin.ratingRanking.rebuild.action' | translate"
-          [disabled]="!rebuildConfirmed.value || rebuilding()"
+          [disabled]="!rebuildConfirmed.value || operationInProgress()"
           [loading]="rebuilding()"
           (click)="rebuild()">
         </button>

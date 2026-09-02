@@ -16,6 +16,7 @@ import {
 @Injectable()
 export class AdminRatingRankingStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<RatingRankingAdministration>();
+  private readonly loadingDashboardSignal = signal<boolean>(false);
   private readonly previewingSignal = signal<boolean>(false);
   private readonly rebuildingSignal = signal<boolean>(false);
   private readonly impactSignal = signal<RatingRankingPolicyImpact | null>(null);
@@ -28,6 +29,8 @@ export class AdminRatingRankingStateFacade {
     () => this.screenStateStore.data() ?? null);
   public readonly previewing = this.previewingSignal.asReadonly();
   public readonly rebuilding = this.rebuildingSignal.asReadonly();
+  public readonly operationInProgress: Signal<boolean> = computed(
+    () => this.loadingDashboardSignal() || this.previewingSignal() || this.rebuildingSignal());
   public readonly impact = this.impactSignal.asReadonly();
   public readonly rebuildResult = this.rebuildResultSignal.asReadonly();
   public readonly actionMessageKey = this.actionMessageKeySignal.asReadonly();
@@ -39,23 +42,30 @@ export class AdminRatingRankingStateFacade {
   }
 
   load(): void {
+    if (this.operationInProgress()) {
+      return;
+    }
+
     const previousData: RatingRankingAdministration | undefined = this.screenStateStore.data();
+    this.loadingDashboardSignal.set(true);
     this.screenStateStore.setLoading(previousData);
     this.apiService.getDashboard()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (dashboard: RatingRankingAdministration): void => {
+          this.loadingDashboardSignal.set(false);
           this.screenStateStore.setReady(dashboard);
         },
         error: (error: unknown): void => {
           console.error('Error loading rating ranking administration', error);
+          this.loadingDashboardSignal.set(false);
           this.screenStateStore.setError('admin.ratingRanking.loadError', previousData);
         }
       });
   }
 
   preview(request: RatingRankingPolicyCandidateRequest): void {
-    if (this.previewingSignal()) {
+    if (this.operationInProgress()) {
       return;
     }
 
@@ -79,7 +89,7 @@ export class AdminRatingRankingStateFacade {
   }
 
   rebuild(): void {
-    if (this.rebuildingSignal()) {
+    if (this.operationInProgress()) {
       return;
     }
 

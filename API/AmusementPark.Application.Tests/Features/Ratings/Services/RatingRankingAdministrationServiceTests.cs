@@ -509,30 +509,13 @@ public sealed class RatingRankingAdministrationServicesTests
     }
 
     [Fact]
-    public async Task PreviewImpactAsync_WhenRevisionDocumentIsStablyAbsent_ShouldCompareRevisionZeroSnapshot()
+    public async Task PreviewImpactAsync_WhenRevisionDocumentIsStablyAbsent_ShouldRejectRevisionZeroSnapshot()
     {
         RankingScopeDefinition scope = CanonicalRankingScopes.PublicItemCategories
             .Single(static definition => definition.Filter.ParkItemCategory == ParkItemCategory.Attraction);
-        RankingSnapshotHeader header = CreateCurrentHeader(scope, 1, sourceRevision: 0);
         Mock<IRankingScopeRegistry> registry = CreateRegistry(scope);
         Mock<IRankingSnapshotRepository> snapshots =
             new Mock<IRankingSnapshotRepository>(MockBehavior.Strict);
-        snapshots.Setup(repository => repository.GetCurrentHeaderAsync(
-                scope.Key,
-                scope.MethodologyVersion,
-                CancellationToken.None))
-            .ReturnsAsync(header);
-        snapshots.Setup(repository => repository.GetCurrentPageAsync(
-                scope.Key,
-                scope.MethodologyVersion,
-                0,
-                scope.PageSize,
-                CancellationToken.None))
-            .ReturnsAsync(new RankingSnapshotPage(
-                header,
-                new[] { CreateSnapshotEntry(scope, 1, "item-a", 4.9d) },
-                0,
-                scope.PageSize));
         Mock<IRatingRankingSourceRevisionRepository> revisions =
             new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
         revisions.SetupSequence(repository => repository.GetAsync(scope.Key, CancellationToken.None))
@@ -560,8 +543,8 @@ public sealed class RatingRankingAdministrationServicesTests
             CancellationToken.None);
 
         RatingRankingPolicyScopeImpactResult impact = Assert.Single(result.Scopes);
-        Assert.True(impact.HasCurrentSnapshot);
-        Assert.Equal(1, impact.ComparedRankCount);
+        Assert.False(impact.HasCurrentSnapshot);
+        Assert.Equal(0, impact.ComparedRankCount);
         Assert.Equal(0, impact.GainedEligibilityCount);
         Assert.Equal(0, impact.LostEligibilityCount);
         snapshots.VerifyAll();

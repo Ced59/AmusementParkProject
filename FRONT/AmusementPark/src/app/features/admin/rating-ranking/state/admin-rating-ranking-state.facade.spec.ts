@@ -102,6 +102,33 @@ describe('AdminRatingRankingStateFacade', () => {
     expect(facade.previewing()).toBe(false);
   });
 
+  it('serializes every action sharing the diagnostics limiter', () => {
+    const previewResponse: Subject<RatingRankingPolicyImpact> = new Subject<RatingRankingPolicyImpact>();
+    const rebuildResponse: Subject<RatingRankingRebuildRequestResult> =
+      new Subject<RatingRankingRebuildRequestResult>();
+    const candidate: RatingRankingPolicyCandidateRequest = createCandidate();
+    port.previewResult = previewResponse;
+
+    facade.preview(candidate);
+    facade.rebuild();
+    facade.load();
+
+    expect(facade.operationInProgress()).toBe(true);
+    expect(port.rebuildCallCount).toBe(0);
+    expect(port.dashboardCallCount).toBe(0);
+    previewResponse.next(createImpact(candidate));
+
+    port.rebuildResult = rebuildResponse;
+    facade.rebuild();
+    facade.preview({ ...candidate, eligibleMinUniqueContributors: 12 });
+    facade.load();
+
+    expect(facade.operationInProgress()).toBe(true);
+    expect(port.rebuildCallCount).toBe(1);
+    expect(port.previewRequests).toEqual([candidate]);
+    expect(port.dashboardCallCount).toBe(0);
+  });
+
   it('reloads diagnostics after scheduling a rebuild', () => {
     facade.rebuild();
 

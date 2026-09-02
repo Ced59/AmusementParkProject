@@ -234,12 +234,12 @@ public sealed class RatingRankingPolicyImpactPreviewer
         RatingRankingSourceRevision? sourceRevision,
         CancellationToken cancellationToken)
     {
-        if (sourceRevision is not null && !sourceRevision.IsRebuildable)
+        if (sourceRevision is null || !sourceRevision.IsRebuildable)
         {
             return CurrentRankingSnapshot.Unavailable;
         }
 
-        long expectedSourceRevision = sourceRevision?.Revision ?? 0;
+        long expectedSourceRevision = sourceRevision.Revision;
 
         RankingSnapshotHeader? header = await this.snapshotRepository.GetCurrentHeaderAsync(
             scope.Key,
@@ -282,7 +282,7 @@ public sealed class RatingRankingPolicyImpactPreviewer
     {
         if (before is null || after is null)
         {
-            return before is null && after is null;
+            return false;
         }
 
         return before.ScopeKey == after.ScopeKey
