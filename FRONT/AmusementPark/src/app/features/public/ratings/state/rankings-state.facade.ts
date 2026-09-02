@@ -26,7 +26,9 @@ export class RankingsStateFacade {
   private readonly parkItemTypeSignal = signal<string | null>(null);
   private readonly searchSignal = signal<string | null>(null);
   private readonly methodologySignal = signal<RatingMethodology | null>(null);
-  private methodologyLoadStarted: boolean = false;
+  private methodologyRequestKey: string | null = null;
+  private methodologyResolvedKey: string | null = null;
+  private methodologyRequestId: number = 0;
 
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
@@ -51,7 +53,6 @@ export class RankingsStateFacade {
     this.searchSignal.set(normalizeSearch(search));
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
-    this.loadMethodology();
     const request: Observable<RatingRankingsPage | ParkItemRatingRankingsPage> = category
       ? this.ratingsApiService.getParkItemRankings(
         1,
@@ -72,6 +73,7 @@ export class RankingsStateFacade {
           this.parkItemsSignal.set([]);
         }
         this.paginationSignal.set(page.pagination);
+        this.loadMethodology(resolvePageMethodologyVersion(page));
         this.loadingSignal.set(false);
       },
       error: (error: unknown): void => {
@@ -131,22 +133,43 @@ export class RankingsStateFacade {
     });
   }
 
-  private loadMethodology(): void {
-    if (this.methodologySignal() || this.methodologyLoadStarted) {
+  private loadMethodology(version: string | null): void {
+    const normalizedVersion: string | null = normalizeMethodologyVersion(version);
+    const requestKey: string = normalizedVersion ?? 'current';
+    if (this.methodologyResolvedKey === requestKey || this.methodologyRequestKey === requestKey) {
       return;
     }
 
-    this.methodologyLoadStarted = true;
-    this.ratingsApiService.getCurrentMethodology(anonymousHttpOptions())
+    this.methodologySignal.set(null);
+    this.methodologyResolvedKey = null;
+    const requestId: number = ++this.methodologyRequestId;
+    this.methodologyRequestKey = requestKey;
+    const request: Observable<RatingMethodology> = normalizedVersion
+      ? this.ratingsApiService.getMethodology(normalizedVersion, anonymousHttpOptions())
+      : this.ratingsApiService.getCurrentMethodology(anonymousHttpOptions());
+    request
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (methodology: RatingMethodology): void => {
+          if (requestId !== this.methodologyRequestId) {
+            return;
+          }
+
+          this.methodologyRequestKey = null;
+          if (normalizedVersion !== null && methodology.version !== normalizedVersion) {
+            return;
+          }
+
           this.methodologySignal.set(methodology);
-          this.methodologyLoadStarted = false;
+          this.methodologyResolvedKey = requestKey;
         },
         error: (error: unknown): void => {
+          if (requestId !== this.methodologyRequestId) {
+            return;
+          }
+
           console.error('Error loading rating methodology', error);
-          this.methodologyLoadStarted = false;
+          this.methodologyRequestKey = null;
         }
       });
   }
@@ -155,4 +178,20 @@ export class RankingsStateFacade {
 function normalizeSearch(value: string | null | undefined): string | null {
   const trimmedValue: string = value?.trim() ?? '';
   return trimmedValue.length > 0 ? trimmedValue : null;
+}
+
+function normalizeMethodologyVersion(value: string | null | undefined): string | null {
+  const trimmedValue: string = value?.trim() ?? '';
+  return trimmedValue.length > 0 ? trimmedValue : null;
+}
+
+function resolvePageMethodologyVersion(
+  page: RatingRankingsPage | ParkItemRatingRankingsPage
+): string | null {
+  const versions: string[] = page.items
+    .map((item: ParkRatingRanking | ParkItemRatingRanking): string | null =>
+      normalizeMethodologyVersion(item.methodologyVersion))
+    .filter((version: string | null): version is string => version !== null);
+  const uniqueVersions: string[] = Array.from(new Set(versions));
+  return uniqueVersions.length === 1 ? uniqueVersions[0] : null;
 }

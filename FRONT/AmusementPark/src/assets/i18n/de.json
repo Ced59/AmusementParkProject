@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Einzelne Beitragende",
         "observations": "Berücksichtigte Bewertungen",
-        "directObservations": "Direkte Parkbewertungen",
+        "parkObservations": "Als Evidenz berücksichtigte Bewertungen",
         "nextEvidenceThreshold": "Nächste Evidenzstufe"
       },
       "composition": {

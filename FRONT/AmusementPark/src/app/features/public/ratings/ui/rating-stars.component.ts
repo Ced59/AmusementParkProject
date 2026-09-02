@@ -46,14 +46,21 @@ export class RatingStarsComponent implements OnChanges {
       return null;
     }
 
+    const resolvedMethodologyVersion: string | null = summary.methodologyVersion ?? null;
+    const methodology: RatingMethodology | null = this.methodology();
+    const matchingMethodology: RatingMethodology | null = resolvedMethodologyVersion
+      && methodology?.version === resolvedMethodologyVersion
+      ? methodology
+      : null;
+
     return {
       evidence: summary.evidence,
       uniqueContributorCount: summary.uniqueContributorCount ?? null,
       ratingObservationCount: summary.ratingObservationCount ?? summary.ratingCount,
       targetType: summary.targetType,
       rank: this.visibleRank(),
-      methodologyVersion: summary.methodologyVersion ?? this.methodology()?.version ?? null,
-      eligibilityThreshold: this.methodology()?.evidenceThresholds.eligible ?? null
+      methodologyVersion: resolvedMethodologyVersion,
+      eligibilityThreshold: matchingMethodology?.evidenceThresholds.eligible ?? null
     };
   });
 

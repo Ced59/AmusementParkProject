@@ -149,6 +149,31 @@ describe('RatingStarsComponent', () => {
     ).toBe('/fr/rankings/methodology/ratings-2026-01');
   });
 
+  it('withholds the threshold when the loaded methodology does not match the summary', () => {
+    facade.summary.set({
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      ratingCount: 9,
+      ratingObservationCount: 9,
+      uniqueContributorCount: 7,
+      averageRating: 4.8,
+      bayesianScore: 4.1,
+      methodologyVersion: 'ratings-2025-02',
+      evidence: {
+        level: 'Provisional',
+        isEligibleForMainRanking: false,
+        ineligibilityReason: 'TooFewUniqueContributors',
+        nextThreshold: 10,
+      },
+    });
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain(
+      'Le seuil exact d’entrée au classement est temporairement indisponible.',
+    );
+    expect(fixture.nativeElement.textContent).not.toContain('sur 10');
+  });
+
   it('keeps an eligible rank and identifies its methodology version', () => {
     facade.summary.set({
       targetType: 'ParkItem',
@@ -313,8 +338,8 @@ function createEvidenceTranslations(): Record<string, unknown> {
         other: 'Échantillon insuffisant.',
       },
       provisionalWithoutThreshold: {
-        one: 'Tendance provisoire.',
-        other: 'Tendance provisoire.',
+        one: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
+        other: 'Le seuil exact d’entrée au classement est temporairement indisponible.',
       },
       parkDirectProvisional: {
         one: '{{count}} contributeur direct au parc.',
@@ -332,7 +357,7 @@ function createEvidenceTranslations(): Record<string, unknown> {
     facts: {
       uniqueContributors: 'Contributeurs uniques',
       observations: 'Notes conservées',
-      directObservations: 'Notes directes',
+      parkObservations: 'Notes retenues comme preuves',
       nextEvidenceThreshold: 'Prochain seuil',
     },
     composition: {

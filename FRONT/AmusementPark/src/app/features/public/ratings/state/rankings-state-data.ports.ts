@@ -8,6 +8,7 @@ import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface RankingsRatingsPort {
   getCurrentMethodology(options?: AnonymousHttpOptions): Observable<RatingMethodology>;
+  getMethodology(version: string, options?: AnonymousHttpOptions): Observable<RatingMethodology>;
   getRankings(page: number, size: number, category: string | null, search: string | null, options?: AnonymousHttpOptions): Observable<RatingRankingsPage>;
   getParkItemRankings(page: number, size: number, category: string, type: string | null, search: string | null, options?: AnonymousHttpOptions): Observable<ParkItemRatingRankingsPage>;
 }

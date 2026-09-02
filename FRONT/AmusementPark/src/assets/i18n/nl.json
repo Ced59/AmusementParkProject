@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Unieke bijdragers",
         "observations": "Meegetelde beoordelingen",
-        "directObservations": "Directe parkbeoordelingen",
+        "parkObservations": "Beoordelingen die als bewijs meetellen",
         "nextEvidenceThreshold": "Volgend bewijsniveau"
       },
       "composition": {

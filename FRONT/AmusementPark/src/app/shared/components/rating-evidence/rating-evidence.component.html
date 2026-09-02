@@ -28,7 +28,7 @@
         </div>
         @if (model.ratingObservationCount !== null) {
           <div>
-            <dt>{{ (model.targetType === 'Park' ? 'ratings.evidence.facts.directObservations' : 'ratings.evidence.facts.observations') | translate }}</dt>
+            <dt>{{ (model.targetType === 'Park' ? 'ratings.evidence.facts.parkObservations' : 'ratings.evidence.facts.observations') | translate }}</dt>
             <dd>{{ model.ratingObservationCount }}</dd>
           </div>
         }

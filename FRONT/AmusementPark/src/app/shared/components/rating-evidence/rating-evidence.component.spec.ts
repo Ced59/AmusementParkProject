@@ -242,7 +242,7 @@ function createTranslations(): Record<string, unknown> {
     facts: {
       uniqueContributors: 'Contributeurs uniques',
       observations: 'Notes conservées',
-      directObservations: 'Notes directes',
+      parkObservations: 'Notes retenues comme preuves',
       nextEvidenceThreshold: 'Prochain seuil',
     },
     composition: {

@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Colaboradores únicos",
         "observations": "Avaliações consideradas",
-        "directObservations": "Avaliações diretas do parque",
+        "parkObservations": "Avaliações consideradas como evidência",
         "nextEvidenceThreshold": "Próximo nível de evidência"
       },
       "composition": {

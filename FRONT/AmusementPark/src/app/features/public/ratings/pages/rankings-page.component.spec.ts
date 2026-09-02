@@ -30,6 +30,9 @@ registerLocaleData(localeFr);
 class FakeRankingsRatingsPort implements RankingsRatingsPort {
   methodologyError: unknown | null = null;
   methodologyCalls: number = 0;
+  methodologyVersion: string = 'ratings-2026-01';
+  methodologyEligibleThreshold: number = 10;
+  readonly requestedMethodologyVersions: string[] = [];
   readonly parkItemCalls: Array<{
     page: number;
     category: string;
@@ -43,7 +46,17 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
       return throwError(() => this.methodologyError);
     }
 
-    return of(createMethodology());
+    return of(createMethodology(this.methodologyVersion, this.methodologyEligibleThreshold));
+  }
+
+  getMethodology(version: string): Observable<RatingMethodology> {
+    this.methodologyCalls += 1;
+    this.requestedMethodologyVersions.push(version);
+    if (this.methodologyError) {
+      return throwError(() => this.methodologyError);
+    }
+
+    return of(createMethodology(version, this.methodologyEligibleThreshold));
   }
 
   getRankings(
@@ -53,8 +66,9 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
     _search: string | null,
     _options?: AnonymousHttpOptions,
   ): Observable<RatingRankingsPage> {
+    const ranking: ParkRatingRanking = createRanking();
     return of({
-      items: [createRanking()],
+      items: [{ ...ranking, methodologyVersion: this.methodologyVersion }],
       pagination: {
         ...DEFAULT_PAGINATION,
         currentPage: 1,
@@ -89,7 +103,7 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
           uniqueContributorCount: 38,
           averageRating: 4.5,
           bayesianScore: 4.1,
-          methodologyVersion: 'ratings-2026-01',
+          methodologyVersion: this.methodologyVersion,
           generatedAtUtc: '2026-09-02T08:00:00Z',
           evidence: {
             level: 'Established',
@@ -253,7 +267,7 @@ describe('RankingsPageComponent', () => {
     expect(parkSummary?.textContent).not.toContain('#1');
     expect(parkSummary?.textContent).toContain('Provisoire');
     expect(evidence?.textContent).toContain('2 personnes l’ont évalué directement');
-    expect(evidence?.textContent).toContain('Notes directes');
+    expect(evidence?.textContent).toContain('Notes retenues comme preuves');
     expect(evidence?.textContent).toContain('Composition du parc');
     expect(evidence?.textContent).toContain('3');
   });
@@ -272,6 +286,25 @@ describe('RankingsPageComponent', () => {
     expect(summary?.textContent).toContain('Compte les résultats actuellement chargés.');
     expect(link?.getAttribute('href')).toBe(
       '/fr/rankings/methodology/ratings-2026-01',
+    );
+  });
+
+  it('loads the methodology matching a historical ranking snapshot', () => {
+    port.methodologyVersion = 'ratings-2025-02';
+    port.methodologyEligibleThreshold = 7;
+
+    fixture.detectChanges();
+
+    const summary: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rankings-evidence-summary',
+    );
+    const link: HTMLAnchorElement | null = summary?.querySelector('a') ?? null;
+
+    expect(port.requestedMethodologyVersions).toEqual(['ratings-2025-02']);
+    expect(summary?.textContent).toContain('7 contributeurs uniques');
+    expect(summary?.textContent).not.toContain('10 contributeurs uniques');
+    expect(link?.getAttribute('href')).toBe(
+      '/fr/rankings/methodology/ratings-2025-02',
     );
   });
 
@@ -404,9 +437,12 @@ function createRanking(): ParkRatingRanking {
   };
 }
 
-function createMethodology(): RatingMethodology {
+function createMethodology(
+  version: string = 'ratings-2026-01',
+  eligibleThreshold: number = 10,
+): RatingMethodology {
   return {
-    version: 'ratings-2026-01',
+    version,
     effectiveDate: '2026-09-01',
     isCurrent: true,
     previousVersion: null,
@@ -422,7 +458,7 @@ function createMethodology(): RatingMethodology {
     },
     evidenceThresholds: {
       provisional: 3,
-      eligible: 10,
+      eligible: eligibleThreshold,
       established: 25,
       strong: 50,
     },
@@ -481,7 +517,7 @@ function createEvidenceTranslations(): Record<string, unknown> {
     facts: {
       uniqueContributors: 'Contributeurs uniques',
       observations: 'Notes conservées',
-      directObservations: 'Notes directes',
+      parkObservations: 'Notes retenues comme preuves',
       nextEvidenceThreshold: 'Prochain seuil',
     },
     composition: {

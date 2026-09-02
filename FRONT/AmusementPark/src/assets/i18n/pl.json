@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Unikalni autorzy",
         "observations": "Uwzględnione oceny",
-        "directObservations": "Bezpośrednie oceny parku",
+        "parkObservations": "Oceny uwzględnione jako dane",
         "nextEvidenceThreshold": "Następny poziom danych"
       },
       "composition": {

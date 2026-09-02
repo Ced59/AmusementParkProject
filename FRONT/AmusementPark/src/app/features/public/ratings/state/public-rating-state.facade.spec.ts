@@ -27,6 +27,7 @@ class FakeDestroyRef implements DestroyRef {
 
 class FakeRatingsPort implements PublicRatingRatingsPort {
   readonly getCurrentMethodologyCalls: number[] = [];
+  readonly getMethodologyCalls: string[] = [];
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
   readonly getSummaryCalls: Array<{
     targetType: RatingTargetType;
@@ -61,6 +62,11 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
   getCurrentMethodology(): Observable<RatingMethodology> {
     this.getCurrentMethodologyCalls.push(this.getCurrentMethodologyCalls.length + 1);
     return of(createMethodology());
+  }
+
+  getMethodology(version: string): Observable<RatingMethodology> {
+    this.getMethodologyCalls.push(version);
+    return of(createMethodology(version));
   }
 
   getSummary(
@@ -184,6 +190,28 @@ describe('PublicRatingStateFacade', () => {
 
     expect(port.getCurrentMethodologyCalls).toHaveLength(1);
     expect(facade.methodology()?.version).toBe('ratings-2026-01');
+  });
+
+  it('loads the methodology attached to an historical rating summary', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      new FakeAuthService(),
+    );
+
+    facade.configure('ParkItem', 'item-1', {
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      ratingCount: 12,
+      averageRating: 4.2,
+      bayesianScore: 3.9,
+      rank: 4,
+      methodologyVersion: 'ratings-2025-02',
+    });
+
+    expect(port.getMethodologyCalls).toEqual(['ratings-2025-02']);
+    expect(port.getCurrentMethodologyCalls).toHaveLength(0);
+    expect(facade.methodology()?.version).toBe('ratings-2025-02');
   });
 
   it('ignores a user rating returned for another target', () => {
@@ -358,9 +386,9 @@ function createUserRating(
   };
 }
 
-function createMethodology(): RatingMethodology {
+function createMethodology(version: string = 'ratings-2026-01'): RatingMethodology {
   return {
-    version: 'ratings-2026-01',
+    version,
     effectiveDate: '2026-09-01',
     isCurrent: true,
     previousVersion: null,

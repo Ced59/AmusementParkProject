@@ -278,14 +278,21 @@ export class RankingsPageComponent implements OnInit {
       return null;
     }
 
+    const resolvedMethodologyVersion: string | null = methodologyVersion ?? null;
+    const methodology: RatingMethodology | null = this.methodology();
+    const matchingMethodology: RatingMethodology | null = resolvedMethodologyVersion
+      && methodology?.version === resolvedMethodologyVersion
+      ? methodology
+      : null;
+
     return {
       evidence,
       uniqueContributorCount: uniqueContributorCount ?? null,
       ratingObservationCount: ratingObservationCount ?? null,
       targetType,
       rank: this.visibleRank(rank, evidence),
-      methodologyVersion: methodologyVersion ?? this.methodology()?.version ?? null,
-      eligibilityThreshold: this.methodology()?.evidenceThresholds.eligible ?? null
+      methodologyVersion: resolvedMethodologyVersion,
+      eligibilityThreshold: matchingMethodology?.evidenceThresholds.eligible ?? null
     };
   }
 }

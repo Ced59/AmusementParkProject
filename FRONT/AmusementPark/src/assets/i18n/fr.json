@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Contributeurs uniques",
         "observations": "Notes retenues",
-        "directObservations": "Notes directes du parc",
+        "parkObservations": "Notes retenues comme preuves",
         "nextEvidenceThreshold": "Prochain niveau de preuve"
       },
       "composition": {

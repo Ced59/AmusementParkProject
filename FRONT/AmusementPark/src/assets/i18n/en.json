@@ -4420,7 +4420,7 @@
       "facts": {
         "uniqueContributors": "Unique contributors",
         "observations": "Retained ratings",
-        "directObservations": "Direct park ratings",
+        "parkObservations": "Ratings retained as evidence",
         "nextEvidenceThreshold": "Next evidence level"
       },
       "composition": {
