@@ -7,7 +7,9 @@ public sealed record RatingRankingRebuildScopePayload(
     [property: JsonPropertyName("scopeKey")] string ScopeKey,
     [property: JsonPropertyName("requestedSourceRevision")] long RequestedSourceRevision,
     [property: JsonPropertyName("methodologyVersion")] string MethodologyVersion,
-    [property: JsonPropertyName("forceRebuild")] bool ForceRebuild = false);
+    [property: JsonPropertyName("forceRebuild")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    bool ForceRebuild = false);
 
 public static class RatingRankingRebuildScopeJob
 {

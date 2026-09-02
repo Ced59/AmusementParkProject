@@ -68,6 +68,7 @@ public sealed class RatingRankingRebuildSchedulerTests
         Assert.Equal(12, payload.RequestedSourceRevision);
         Assert.Equal(scope.MethodologyVersion.Value, payload.MethodologyVersion);
         Assert.False(payload.ForceRebuild);
+        Assert.False(capturedRequest.Payload.TryGetProperty("forceRebuild", out JsonElement _));
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
@@ -108,6 +109,8 @@ public sealed class RatingRankingRebuildSchedulerTests
         Assert.NotNull(payload);
         Assert.Equal(12, payload.RequestedSourceRevision);
         Assert.True(payload.ForceRebuild);
+        Assert.True(capturedRequest.Payload.TryGetProperty("forceRebuild", out JsonElement forceRebuild));
+        Assert.True(forceRebuild.GetBoolean());
         jobs.VerifyAll();
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyNoOtherCalls();
