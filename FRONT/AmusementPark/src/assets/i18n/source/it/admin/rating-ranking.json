@@ -1,0 +1,144 @@
+{
+  "admin": {
+    "ratingRanking": {
+      "navTitle": "Classifiche e prove",
+      "title": "Controllo delle classifiche",
+      "subtitle": "Esamina le prove, simula una politica versionata e ricostruisci gli snapshot senza modificare direttamente le regole pubblicate.",
+      "loading": "Caricamento della diagnostica delle classifiche...",
+      "loadError": "Impossibile caricare la diagnostica delle classifiche.",
+      "empty": "Non è disponibile alcuna diagnostica delle classifiche.",
+      "methodology": {
+        "current": "Metodologia pubblicata",
+        "preparing": "Metodologia in preparazione",
+        "none": "Nessuna versione preparata",
+        "thresholdSummary": "Soglia principale: {{eligible}} contributori · almeno {{minimum}} voci confrontabili.",
+        "previewOnly": "Una politica candidata resta una simulazione finché non viene pubblicata tramite un processo versionato separato."
+      },
+      "overview": {
+        "title": "Panoramica",
+        "ratings": "Valutazioni di origine",
+        "scopes": "Ambiti canonici",
+        "anomalies": "Anomalie dei dati",
+        "aggregateIssues": "Aggregati da verificare"
+      },
+      "scopes": {
+        "title": "Snapshot e ricalcoli",
+        "subtitle": "Ogni ambito mostra revisione di origine, snapshot corrente, durata e ultimo errore.",
+        "scope": "Ambito",
+        "status": "Stato",
+        "entries": "Idonee / obiettivi",
+        "revision": "Pubblicata → revisione di origine",
+        "lastRun": "Ultima pubblicazione",
+        "duration": "Durata",
+        "error": "Ultimo errore"
+      },
+      "scopeStatus": {
+        "current": "Aggiornato",
+        "outstanding": "Ricostruzione richiesta",
+        "missing": "Snapshot assente",
+        "error": "Errore",
+        "truncated": "Diagnostica limitata"
+      },
+      "common": {
+        "target": "Tipo",
+        "level": "Livello di prova",
+        "targets": "Obiettivi",
+        "contributors": "Contributori unici cumulativi",
+        "observations": "Osservazioni cumulative",
+        "none": "Nessun dato"
+      },
+      "targetTypes": { "park": "Parco", "parkItem": "Luogo del parco" },
+      "evidence": {
+        "title": "Distribuzione delle prove",
+        "subtitle": "Persone e osservazioni restano conteggiate separatamente."
+      },
+      "levels": {
+        "noEvidence": "Nessuna prova",
+        "insufficient": "Dati insufficienti",
+        "provisional": "Tendenza provvisoria",
+        "eligible": "Idoneo",
+        "established": "Prova consolidata",
+        "strongEvidence": "Prova forte",
+        "excluded": "Escluso"
+      },
+      "exclusions": {
+        "title": "Obiettivi esclusi",
+        "subtitle": "Motivi che impediscono attualmente un posto nella classifica principale."
+      },
+      "reasons": {
+        "noRatings": "Nessuna valutazione",
+        "tooFewUniqueContributors": "Contributori unici insufficienti",
+        "tooFewComparableEntries": "Voci confrontabili insufficienti",
+        "insufficientItemCoverage": "Copertura dei luoghi insufficiente",
+        "insufficientCategoryCoverage": "Copertura delle categorie insufficiente",
+        "targetUnavailable": "Obiettivo non disponibile",
+        "targetExcluded": "Obiettivo escluso",
+        "aggregateIntegrityFailure": "Integrità dell’aggregato non valida",
+        "unsupportedComposition": "Composizione non verificabile"
+      },
+      "nearThreshold": {
+        "title": "Obiettivi vicini alla soglia",
+        "subtitle": "Obiettivi a cui mancano al massimo tre contributori per diventare idonei.",
+        "remaining": "Mancano {{count}} contributore/i"
+      },
+      "coverage": {
+        "title": "Copertura per categoria",
+        "subtitle": "Voci idonee tra gli obiettivi valutati in ogni categoria."
+      },
+      "categories": {
+        "attraction": "Attrazioni",
+        "restaurant": "Ristoranti",
+        "hotel": "Hotel",
+        "animal": "Animali",
+        "show": "Spettacoli",
+        "shop": "Negozi",
+        "service": "Servizi",
+        "transport": "Trasporti"
+      },
+      "preview": {
+        "title": "Simulazione prima della pubblicazione",
+        "subtitle": "La simulazione confronta la politica candidata con gli snapshot correnti. Non salva né pubblica alcuna impostazione.",
+        "version": "Nuova versione obbligatoria",
+        "provisional": "Soglia provvisoria",
+        "eligible": "Soglia di idoneità",
+        "established": "Soglia consolidata",
+        "strong": "Soglia di prova forte",
+        "minimumEntries": "Voci minime per classifica",
+        "minimumItems": "Luoghi idonei per il componente parco",
+        "minimumItemsPerCategory": "Luoghi minimi per categoria",
+        "minimumCategories": "Categorie minime",
+        "tieEpsilon": "Tolleranza di parità",
+        "action": "Simula l’impatto",
+        "success": "Simulazione completata. Nessuna impostazione di produzione è stata modificata.",
+        "error": "La simulazione non è riuscita. Verifica la versione e l’ordine delle soglie."
+      },
+      "impact": {
+        "gained": "Idoneità ottenuta",
+        "lost": "Idoneità persa",
+        "averageRank": "Variazione media di posizione",
+        "maximumRank": "Variazione massima di posizione",
+        "smallScopes": "Ambiti con meno di tre voci",
+        "incompleteParks": "Composizioni del parco incomplete",
+        "cost": "Costo stimato: obiettivi / blocchi",
+        "currentCandidate": "Corrente → candidata",
+        "gainedLost": "Ottenuta / persa",
+        "rankChange": "Variazione media / max.",
+        "publication": "Pubblicazione",
+        "publishable": "La pubblicazione offrirebbe una classifica affidabile",
+        "notPublishable": "Meno di tre voci: classifica nascosta",
+        "unavailable": "Simulazione non disponibile: la fonte supera il limite di sicurezza.",
+        "gainedSamples": "Voci ottenute",
+        "lostSamples": "Voci perse"
+      },
+      "rebuild": {
+        "title": "Ricostruzione tracciata",
+        "subtitle": "Pianifica una nuova revisione per tutti gli ambiti. L’elaborazione resta sequenziale e avviene in background.",
+        "confirmation": "Confermo di voler ricostruire tutti gli snapshot delle classifiche.",
+        "action": "Ricostruisci gli snapshot",
+        "scheduled": "Ricostruzione pianificata per {{count}} ambito/i.",
+        "success": "La ricostruzione è stata pianificata e registrata nel log di audit.",
+        "error": "Impossibile pianificare la ricostruzione."
+      }
+    }
+  }
+}

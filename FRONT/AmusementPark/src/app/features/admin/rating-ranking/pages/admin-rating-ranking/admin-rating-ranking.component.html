@@ -1,0 +1,357 @@
+<app-ui-card styleClass="admin-list-card admin-rating-ranking-card">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header admin-rating-ranking-header">
+      <div>
+        <span class="admin-kicker">RANK09 · TRUST</span>
+        <h2>{{ 'admin.ratingRanking.title' | translate }}</h2>
+        <p>{{ 'admin.ratingRanking.subtitle' | translate }}</p>
+      </div>
+      <button
+        appUiButton
+        type="button"
+        class="p-button-secondary"
+        icon="pi pi-refresh"
+        [label]="'actions.refresh' | translate"
+        [disabled]="loading()"
+        (click)="refresh()">
+      </button>
+    </div>
+  </ng-template>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.ratingRanking.loading"
+    errorMessageKey="admin.ratingRanking.loadError"
+    emptyMessageKey="admin.ratingRanking.empty">
+    @if (dashboard(); as data) {
+      <section class="admin-rating-ranking__methodology" aria-labelledby="rating-methodology-heading">
+        <div>
+          <span>{{ 'admin.ratingRanking.methodology.current' | translate }}</span>
+          <h3 id="rating-methodology-heading">{{ data.currentMethodology.version }}</h3>
+          <p>
+            {{ 'admin.ratingRanking.methodology.thresholdSummary' | translate:{
+              eligible: data.currentMethodology.evidenceThresholds.eligible,
+              minimum: data.currentMethodology.publicationRules.minimumEligibleEntries
+            } }}
+          </p>
+        </div>
+        <div>
+          <span>{{ 'admin.ratingRanking.methodology.preparing' | translate }}</span>
+          <h3>{{ data.preparingMethodology?.version || policyForm.controls.version.value || ('admin.ratingRanking.methodology.none' | translate) }}</h3>
+          <p>{{ 'admin.ratingRanking.methodology.previewOnly' | translate }}</p>
+        </div>
+      </section>
+
+      <section class="admin-rating-ranking__stats" [attr.aria-label]="'admin.ratingRanking.overview.title' | translate">
+        <article>
+          <span>{{ 'admin.ratingRanking.overview.ratings' | translate }}</span>
+          <strong>{{ data.dataDiagnostics.totalRatings }}</strong>
+        </article>
+        <article>
+          <span>{{ 'admin.ratingRanking.overview.scopes' | translate }}</span>
+          <strong>{{ data.scopes.length }}</strong>
+        </article>
+        <article>
+          <span>{{ 'admin.ratingRanking.overview.anomalies' | translate }}</span>
+          <strong>{{ dataAnomalyCount() }}</strong>
+        </article>
+        <article>
+          <span>{{ 'admin.ratingRanking.overview.aggregateIssues' | translate }}</span>
+          <strong>{{ aggregateIssueCount() }}</strong>
+        </article>
+      </section>
+
+      <section class="admin-rating-ranking__section">
+        <header>
+          <h3>{{ 'admin.ratingRanking.scopes.title' | translate }}</h3>
+          <p>{{ 'admin.ratingRanking.scopes.subtitle' | translate }}</p>
+        </header>
+        <div class="admin-rating-ranking__table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.scope' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.status' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.entries' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.revision' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.lastRun' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.duration' | translate }}</th>
+                <th scope="col">{{ 'admin.ratingRanking.scopes.error' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (scope of data.scopes; track scope.scopeKey) {
+                <tr>
+                  <td><code>{{ scope.scopeKey }}</code></td>
+                  <td>
+                    <app-ui-tag
+                      [value]="scopeStatusKey(scope) | translate"
+                      [severity]="scopeSeverity(scope)">
+                    </app-ui-tag>
+                  </td>
+                  <td>{{ scope.eligibleEntryCount }} / {{ scope.totalEntryCount }}</td>
+                  <td>{{ scope.publishedSourceRevision ?? '—' }} → {{ scope.sourceRevision }}</td>
+                  <td>{{ scope.publishedAtUtc ? (scope.publishedAtUtc | date:'short':'UTC') : '—' }}</td>
+                  <td>{{ scope.rebuildDurationMilliseconds === null || scope.rebuildDurationMilliseconds === undefined ? '—' : (scope.rebuildDurationMilliseconds + ' ms') }}</td>
+                  <td><code>{{ scope.lastErrorCode || '—' }}</code></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="admin-rating-ranking__diagnostic-grid">
+        <section class="admin-rating-ranking__section">
+          <header>
+            <h3>{{ 'admin.ratingRanking.evidence.title' | translate }}</h3>
+            <p>{{ 'admin.ratingRanking.evidence.subtitle' | translate }}</p>
+          </header>
+          <div class="admin-rating-ranking__table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'admin.ratingRanking.common.target' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.common.level' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.common.targets' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.common.contributors' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.common.observations' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (distribution of data.evidenceDistribution; track distribution.targetType + distribution.level) {
+                  <tr>
+                    <td>{{ ('admin.ratingRanking.targetTypes.' + (distribution.targetType === 'Park' ? 'park' : 'parkItem')) | translate }}</td>
+                    <td>{{ enumLabelKey('levels', distribution.level) | translate }}</td>
+                    <td>{{ distribution.targetCount }}</td>
+                    <td>{{ distribution.uniqueContributorCount }}</td>
+                    <td>{{ distribution.ratingObservationCount }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-rating-ranking__section">
+          <header>
+            <h3>{{ 'admin.ratingRanking.exclusions.title' | translate }}</h3>
+            <p>{{ 'admin.ratingRanking.exclusions.subtitle' | translate }}</p>
+          </header>
+          <ul class="admin-rating-ranking__metric-list">
+            @for (exclusion of data.exclusions; track exclusion.targetType + exclusion.reason) {
+              <li>
+                <span>{{ enumLabelKey('reasons', exclusion.reason) | translate }}</span>
+                <strong>{{ exclusion.targetCount }}</strong>
+              </li>
+            } @empty {
+              <li>{{ 'admin.ratingRanking.common.none' | translate }}</li>
+            }
+          </ul>
+        </section>
+      </div>
+
+      <div class="admin-rating-ranking__diagnostic-grid">
+        <section class="admin-rating-ranking__section">
+          <header>
+            <h3>{{ 'admin.ratingRanking.nearThreshold.title' | translate }}</h3>
+            <p>{{ 'admin.ratingRanking.nearThreshold.subtitle' | translate }}</p>
+          </header>
+          <ul class="admin-rating-ranking__target-list">
+            @for (target of data.nearThresholdTargets; track target.scopeKey + target.targetId) {
+              <li>
+                <div>
+                  <strong>{{ target.targetName }}</strong>
+                  <code>{{ target.scopeKey }}</code>
+                </div>
+                <span>{{ 'admin.ratingRanking.nearThreshold.remaining' | translate:{ count: target.remainingContributorCount } }}</span>
+              </li>
+            } @empty {
+              <li>{{ 'admin.ratingRanking.common.none' | translate }}</li>
+            }
+          </ul>
+        </section>
+
+        <section class="admin-rating-ranking__section">
+          <header>
+            <h3>{{ 'admin.ratingRanking.coverage.title' | translate }}</h3>
+            <p>{{ 'admin.ratingRanking.coverage.subtitle' | translate }}</p>
+          </header>
+          <ul class="admin-rating-ranking__metric-list">
+            @for (coverage of data.categoryCoverage; track coverage.scopeKey) {
+              <li>
+                <span>{{ enumLabelKey('categories', coverage.category) | translate }}</span>
+                <strong>{{ coverage.eligibleCount }} / {{ coverage.candidateCount }}</strong>
+              </li>
+            }
+          </ul>
+        </section>
+      </div>
+
+      <section class="admin-rating-ranking__section admin-rating-ranking__preview">
+        <header>
+          <h3>{{ 'admin.ratingRanking.preview.title' | translate }}</h3>
+          <p>{{ 'admin.ratingRanking.preview.subtitle' | translate }}</p>
+        </header>
+        <form [formGroup]="policyForm" (ngSubmit)="preview()">
+          <label class="admin-rating-ranking__field admin-rating-ranking__field--wide">
+            <span>{{ 'admin.ratingRanking.preview.version' | translate }}</span>
+            <input appUiInputText type="text" formControlName="version" autocomplete="off" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.provisional' | translate }}</span>
+            <input type="number" min="1" formControlName="provisionalMinUniqueContributors" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.eligible' | translate }}</span>
+            <input type="number" min="1" formControlName="eligibleMinUniqueContributors" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.established' | translate }}</span>
+            <input type="number" min="1" formControlName="establishedMinUniqueContributors" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.strong' | translate }}</span>
+            <input type="number" min="1" formControlName="strongEvidenceMinUniqueContributors" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.minimumEntries' | translate }}</span>
+            <input type="number" min="1" formControlName="minimumEligibleEntriesPerRanking" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.minimumItems' | translate }}</span>
+            <input type="number" min="1" formControlName="minimumEligibleItemsForParkItemComponent" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.minimumItemsPerCategory' | translate }}</span>
+            <input type="number" min="1" formControlName="minimumEligibleItemsPerCategory" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.minimumCategories' | translate }}</span>
+            <input type="number" min="1" formControlName="minimumEligibleCategories" />
+          </label>
+          <label class="admin-rating-ranking__field">
+            <span>{{ 'admin.ratingRanking.preview.tieEpsilon' | translate }}</span>
+            <input type="number" min="0.000001" max="0.1" step="0.000001" formControlName="scoreTieEpsilon" />
+          </label>
+          <div class="admin-rating-ranking__form-actions">
+            <button
+              appUiButton
+              type="submit"
+              icon="pi pi-chart-line"
+              [label]="'admin.ratingRanking.preview.action' | translate"
+              [loading]="previewing()">
+            </button>
+          </div>
+        </form>
+
+        @if (impact(); as previewImpact) {
+          <div class="admin-rating-ranking__impact-summary">
+            <article><span>{{ 'admin.ratingRanking.impact.gained' | translate }}</span><strong>+{{ previewImpact.gainedEligibilityCount }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.lost' | translate }}</span><strong>-{{ previewImpact.lostEligibilityCount }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.averageRank' | translate }}</span><strong>{{ previewImpact.averageRankChange ?? '—' }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.maximumRank' | translate }}</span><strong>{{ previewImpact.maximumRankChange ?? '—' }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.smallScopes' | translate }}</span><strong>{{ previewImpact.scopeCountBelowMinimum }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.incompleteParks' | translate }}</span><strong>{{ previewImpact.incompleteParkCompositionCount }}</strong></article>
+            <article><span>{{ 'admin.ratingRanking.impact.cost' | translate }}</span><strong>{{ previewImpact.estimatedTargetCount }} / {{ previewImpact.estimatedChunkCount }}</strong></article>
+          </div>
+          <div class="admin-rating-ranking__table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'admin.ratingRanking.scopes.scope' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.impact.currentCandidate' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.impact.gainedLost' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.impact.rankChange' | translate }}</th>
+                  <th scope="col">{{ 'admin.ratingRanking.impact.publication' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (scope of previewImpact.scopes; track scope.scopeKey) {
+                  <tr [class.admin-rating-ranking__row--warning]="scope.isSourceTruncated || !scope.hasMinimumComparableEntries">
+                    <td><code>{{ scope.scopeKey }}</code></td>
+                    @if (scope.isImpactAvailable) {
+                      <td>{{ scope.hasCurrentSnapshot ? scope.currentEligibleCount : '—' }} → {{ scope.candidateEligibleCount }}</td>
+                      <td>+{{ scope.gainedEligibilityCount }} / -{{ scope.lostEligibilityCount }}</td>
+                      <td>{{ scope.averageRankChange ?? '—' }} / {{ scope.maximumRankChange ?? '—' }}</td>
+                      <td>{{ (scope.hasMinimumComparableEntries ? 'admin.ratingRanking.impact.publishable' : 'admin.ratingRanking.impact.notPublishable') | translate }}</td>
+                    } @else {
+                      <td colspan="4">{{ 'admin.ratingRanking.impact.unavailable' | translate }}</td>
+                    }
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <div class="admin-rating-ranking__diff-grid">
+            @for (scope of previewImpact.scopes; track scope.scopeKey) {
+              @if (scope.gainedTargets.length > 0 || scope.lostTargets.length > 0) {
+                <article>
+                  <h4>{{ scope.scopeKey }}</h4>
+                  <div>
+                    @if (scope.gainedTargets.length > 0) {
+                      <section>
+                        <strong>{{ 'admin.ratingRanking.impact.gainedSamples' | translate }}</strong>
+                        <ul>
+                          @for (target of scope.gainedTargets; track target.targetId) {
+                            <li>
+                              <span>{{ target.targetName }}</span>
+                              <code>{{ target.previousRank ?? '—' }} → {{ target.candidateRank ?? '—' }}</code>
+                            </li>
+                          }
+                        </ul>
+                      </section>
+                    }
+                    @if (scope.lostTargets.length > 0) {
+                      <section>
+                        <strong>{{ 'admin.ratingRanking.impact.lostSamples' | translate }}</strong>
+                        <ul>
+                          @for (target of scope.lostTargets; track target.targetId) {
+                            <li>
+                              <span>{{ target.targetName }}</span>
+                              <code>{{ target.previousRank ?? '—' }} → {{ target.candidateRank ?? '—' }}</code>
+                            </li>
+                          }
+                        </ul>
+                      </section>
+                    }
+                  </div>
+                </article>
+              }
+            }
+          </div>
+        }
+      </section>
+
+      <section class="admin-rating-ranking__section admin-rating-ranking__rebuild">
+        <header>
+          <h3>{{ 'admin.ratingRanking.rebuild.title' | translate }}</h3>
+          <p>{{ 'admin.ratingRanking.rebuild.subtitle' | translate }}</p>
+        </header>
+        <label class="admin-rating-ranking__confirmation">
+          <app-ui-checkbox [formControl]="rebuildConfirmed" [binary]="true"></app-ui-checkbox>
+          <span>{{ 'admin.ratingRanking.rebuild.confirmation' | translate }}</span>
+        </label>
+        <button
+          appUiButton
+          type="button"
+          class="p-button-danger"
+          icon="pi pi-sync"
+          [label]="'admin.ratingRanking.rebuild.action' | translate"
+          [disabled]="!rebuildConfirmed.value"
+          [loading]="rebuilding()"
+          (click)="rebuild()">
+        </button>
+        @if (rebuildResult(); as result) {
+          <p class="admin-rating-ranking__notice">
+            {{ 'admin.ratingRanking.rebuild.scheduled' | translate:{ count: result.scheduledScopeCount } }}
+          </p>
+        }
+      </section>
+
+      @if (actionMessageKey(); as messageKey) {
+        <p class="admin-rating-ranking__notice" role="status">{{ messageKey | translate }}</p>
+      }
+    }
+  </app-page-state>
+</app-ui-card>

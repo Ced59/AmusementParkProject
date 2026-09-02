@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
         "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow.",
         "history": "Manage timelines, sourced milestones and article content.",
+        "ratingRankings": "Diagnose, simulate, and rebuild rating rankings.",
         "standaloneAttractions": "Manage attractions that are not attached to a park.",
         "fieldMode": "Quickly complete photos and locations directly on site.",
         "technicalPages": "Manage technical pages and their localized content.",
@@ -1753,6 +1754,149 @@
           "label": "Manufacturer",
           "description": "Prefilled JSON upsert draft for this manufacturer."
         }
+      }
+    },
+    "ratingRanking": {
+      "navTitle": "Rankings & evidence",
+      "title": "Ranking control panel",
+      "subtitle": "Inspect evidence, simulate a versioned policy, and rebuild snapshots without directly changing published rules.",
+      "loading": "Loading ranking diagnostics...",
+      "loadError": "Ranking diagnostics could not be loaded.",
+      "empty": "No ranking diagnostics are available.",
+      "methodology": {
+        "current": "Published methodology",
+        "preparing": "Methodology in preparation",
+        "none": "No prepared version",
+        "thresholdSummary": "Main threshold: {{eligible}} contributors · at least {{minimum}} comparable entries.",
+        "previewOnly": "A candidate policy remains a simulation until it is published through a separate versioned process."
+      },
+      "overview": {
+        "title": "Overview",
+        "ratings": "Source ratings",
+        "scopes": "Canonical scopes",
+        "anomalies": "Data anomalies",
+        "aggregateIssues": "Aggregates to review"
+      },
+      "scopes": {
+        "title": "Snapshots and recomputations",
+        "subtitle": "Each scope exposes its source revision, current snapshot, duration, and latest error.",
+        "scope": "Scope",
+        "status": "Status",
+        "entries": "Eligible / targets",
+        "revision": "Published → source revision",
+        "lastRun": "Last publication",
+        "duration": "Duration",
+        "error": "Latest error"
+      },
+      "scopeStatus": {
+        "current": "Current",
+        "outstanding": "Rebuild required",
+        "missing": "Snapshot missing",
+        "error": "Error",
+        "truncated": "Diagnostics limited"
+      },
+      "common": {
+        "target": "Type",
+        "level": "Evidence level",
+        "targets": "Targets",
+        "contributors": "Cumulative unique contributors",
+        "observations": "Cumulative observations",
+        "none": "No data"
+      },
+      "targetTypes": {
+        "park": "Park",
+        "parkItem": "Park place"
+      },
+      "evidence": {
+        "title": "Evidence distribution",
+        "subtitle": "People and observations remain counted separately."
+      },
+      "levels": {
+        "noEvidence": "No evidence",
+        "insufficient": "Insufficient data",
+        "provisional": "Provisional trend",
+        "eligible": "Eligible",
+        "established": "Established evidence",
+        "strongEvidence": "Strong evidence",
+        "excluded": "Excluded"
+      },
+      "exclusions": {
+        "title": "Excluded targets",
+        "subtitle": "Reasons currently preventing a main rank."
+      },
+      "reasons": {
+        "noRatings": "No ratings",
+        "tooFewUniqueContributors": "Too few unique contributors",
+        "tooFewComparableEntries": "Too few comparable entries",
+        "insufficientItemCoverage": "Insufficient place coverage",
+        "insufficientCategoryCoverage": "Insufficient category coverage",
+        "targetUnavailable": "Target unavailable",
+        "targetExcluded": "Target excluded",
+        "aggregateIntegrityFailure": "Invalid aggregate integrity",
+        "unsupportedComposition": "Unverifiable composition"
+      },
+      "nearThreshold": {
+        "title": "Targets near the threshold",
+        "subtitle": "Targets no more than three contributors away from eligibility.",
+        "remaining": "{{count}} contributor(s) remaining"
+      },
+      "coverage": {
+        "title": "Coverage by category",
+        "subtitle": "Eligible entries among evaluated targets in each category."
+      },
+      "categories": {
+        "attraction": "Attractions",
+        "restaurant": "Restaurants",
+        "hotel": "Hotels",
+        "animal": "Animals",
+        "show": "Shows",
+        "shop": "Shops",
+        "service": "Services",
+        "transport": "Transport"
+      },
+      "preview": {
+        "title": "Simulation before publication",
+        "subtitle": "The simulation compares the candidate policy with current snapshots. It saves and publishes no setting.",
+        "version": "Required new version",
+        "provisional": "Provisional threshold",
+        "eligible": "Eligibility threshold",
+        "established": "Established threshold",
+        "strong": "Strong evidence threshold",
+        "minimumEntries": "Minimum entries per ranking",
+        "minimumItems": "Eligible places for the park component",
+        "minimumItemsPerCategory": "Minimum places per category",
+        "minimumCategories": "Minimum categories",
+        "tieEpsilon": "Tie tolerance",
+        "action": "Simulate impact",
+        "success": "Simulation completed. No production setting was changed.",
+        "error": "The simulation failed. Check the version and threshold order."
+      },
+      "impact": {
+        "gained": "Eligibility gained",
+        "lost": "Eligibility lost",
+        "averageRank": "Average rank change",
+        "maximumRank": "Maximum rank change",
+        "smallScopes": "Scopes below three entries",
+        "incompleteParks": "Incomplete park compositions",
+        "cost": "Estimated cost: targets / chunks",
+        "currentCandidate": "Current → candidate",
+        "gainedLost": "Gained / lost",
+        "rankChange": "Average / max. change",
+        "publication": "Publication",
+        "publishable": "Publishing would provide a reliable top list",
+        "notPublishable": "Fewer than three entries: top list hidden",
+        "unavailable": "Simulation unavailable: the source exceeds the safety limit.",
+        "gainedSamples": "Gained entries",
+        "lostSamples": "Lost entries"
+      },
+      "rebuild": {
+        "title": "Audited rebuild",
+        "subtitle": "Schedules a new revision for every scope. Processing remains sequential and runs in the background.",
+        "confirmation": "I confirm that I want to rebuild every ranking snapshot.",
+        "action": "Rebuild snapshots",
+        "scheduled": "Rebuild scheduled for {{count}} scope(s).",
+        "success": "The rebuild was scheduled and recorded in the audit log.",
+        "error": "The rebuild could not be scheduled."
       }
     },
     "references": {

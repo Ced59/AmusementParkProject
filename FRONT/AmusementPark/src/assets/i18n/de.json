@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
         "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten.",
         "history": "Timelines, belegte Meilensteine und historische Artikel verwalten.",
+        "ratingRankings": "Bewertungsranglisten prüfen, simulieren und neu erstellen.",
         "standaloneAttractions": "Eigenständige Attraktionen verwalten, die keinem Park zugeordnet sind.",
         "fieldMode": "Fotos und Positionen direkt vor Ort schnell ergänzen.",
         "technicalPages": "Technische Seiten und ihre lokalisierten Inhalte verwalten.",
@@ -1753,6 +1754,149 @@
           "label": "Hersteller",
           "description": "Vorausgefüllter JSON-Upsert-Entwurf für diesen Hersteller."
         }
+      }
+    },
+    "ratingRanking": {
+      "navTitle": "Ranglisten & Nachweise",
+      "title": "Ranglistensteuerung",
+      "subtitle": "Prüfe die Datengrundlage, simuliere eine versionierte Richtlinie und erstelle Snapshots neu, ohne veröffentlichte Regeln direkt zu ändern.",
+      "loading": "Ranglistendiagnose wird geladen...",
+      "loadError": "Die Ranglistendiagnose konnte nicht geladen werden.",
+      "empty": "Es ist keine Ranglistendiagnose verfügbar.",
+      "methodology": {
+        "current": "Veröffentlichte Methodik",
+        "preparing": "Methodik in Vorbereitung",
+        "none": "Keine vorbereitete Version",
+        "thresholdSummary": "Hauptschwelle: {{eligible}} Mitwirkende · mindestens {{minimum}} vergleichbare Einträge.",
+        "previewOnly": "Eine Richtlinie im Entwurf bleibt eine Simulation, bis sie über einen separaten versionierten Prozess veröffentlicht wird."
+      },
+      "overview": {
+        "title": "Übersicht",
+        "ratings": "Ausgangsbewertungen",
+        "scopes": "Kanonische Bereiche",
+        "anomalies": "Datenanomalien",
+        "aggregateIssues": "Zu prüfende Aggregate"
+      },
+      "scopes": {
+        "title": "Snapshots und Neuberechnungen",
+        "subtitle": "Jeder Bereich zeigt Quellrevision, aktuellen Snapshot, Dauer und letzten Fehler.",
+        "scope": "Bereich",
+        "status": "Status",
+        "entries": "Teilnahmeberechtigt / Ziele",
+        "revision": "Veröffentlicht → Quellrevision",
+        "lastRun": "Letzte Veröffentlichung",
+        "duration": "Dauer",
+        "error": "Letzter Fehler"
+      },
+      "scopeStatus": {
+        "current": "Aktuell",
+        "outstanding": "Neuerstellung erforderlich",
+        "missing": "Snapshot fehlt",
+        "error": "Fehler",
+        "truncated": "Diagnose begrenzt"
+      },
+      "common": {
+        "target": "Typ",
+        "level": "Nachweisstufe",
+        "targets": "Ziele",
+        "contributors": "Kumulierte eindeutige Mitwirkende",
+        "observations": "Kumulierte Bewertungen",
+        "none": "Keine Daten"
+      },
+      "targetTypes": {
+        "park": "Park",
+        "parkItem": "Ort im Park"
+      },
+      "evidence": {
+        "title": "Verteilung der Nachweise",
+        "subtitle": "Personen und Bewertungen werden weiterhin getrennt gezählt."
+      },
+      "levels": {
+        "noEvidence": "Keine Nachweise",
+        "insufficient": "Unzureichende Daten",
+        "provisional": "Vorläufiger Trend",
+        "eligible": "Teilnahmeberechtigt",
+        "established": "Gesicherte Nachweise",
+        "strongEvidence": "Starke Nachweise",
+        "excluded": "Ausgeschlossen"
+      },
+      "exclusions": {
+        "title": "Ausgeschlossene Ziele",
+        "subtitle": "Gründe, die derzeit eine Platzierung in der Hauptrangliste verhindern."
+      },
+      "reasons": {
+        "noRatings": "Keine Bewertungen",
+        "tooFewUniqueContributors": "Zu wenige eindeutige Mitwirkende",
+        "tooFewComparableEntries": "Zu wenige vergleichbare Einträge",
+        "insufficientItemCoverage": "Unzureichende Abdeckung der Parkorte",
+        "insufficientCategoryCoverage": "Unzureichende Kategorieabdeckung",
+        "targetUnavailable": "Ziel nicht verfügbar",
+        "targetExcluded": "Ziel ausgeschlossen",
+        "aggregateIntegrityFailure": "Ungültige Aggregatintegrität",
+        "unsupportedComposition": "Nicht überprüfbare Zusammensetzung"
+      },
+      "nearThreshold": {
+        "title": "Ziele nahe der Schwelle",
+        "subtitle": "Ziele, denen höchstens drei Mitwirkende bis zur Teilnahmeberechtigung fehlen.",
+        "remaining": "Noch {{count}} Mitwirkende"
+      },
+      "coverage": {
+        "title": "Abdeckung nach Kategorie",
+        "subtitle": "Teilnahmeberechtigte Einträge unter den ausgewerteten Zielen jeder Kategorie."
+      },
+      "categories": {
+        "attraction": "Attraktionen",
+        "restaurant": "Restaurants",
+        "hotel": "Hotels",
+        "animal": "Tiere",
+        "show": "Shows",
+        "shop": "Shops",
+        "service": "Services",
+        "transport": "Transport"
+      },
+      "preview": {
+        "title": "Simulation vor der Veröffentlichung",
+        "subtitle": "Die Simulation vergleicht die Richtlinie im Entwurf mit den aktuellen Snapshots. Sie speichert und veröffentlicht keine Einstellung.",
+        "version": "Neue Version erforderlich",
+        "provisional": "Schwelle für vorläufige Daten",
+        "eligible": "Teilnahmeschwelle",
+        "established": "Schwelle für gesicherte Daten",
+        "strong": "Schwelle für starke Nachweise",
+        "minimumEntries": "Mindesteinträge pro Rangliste",
+        "minimumItems": "Teilnahmeberechtigte Parkorte für die Parkkomponente",
+        "minimumItemsPerCategory": "Mindestanzahl Orte pro Kategorie",
+        "minimumCategories": "Mindestanzahl Kategorien",
+        "tieEpsilon": "Toleranz bei Gleichstand",
+        "action": "Auswirkungen simulieren",
+        "success": "Simulation abgeschlossen. Keine Produktionseinstellung wurde geändert.",
+        "error": "Die Simulation ist fehlgeschlagen. Prüfe Version und Reihenfolge der Schwellen."
+      },
+      "impact": {
+        "gained": "Teilnahmeberechtigung gewonnen",
+        "lost": "Teilnahmeberechtigung verloren",
+        "averageRank": "Durchschnittliche Rangänderung",
+        "maximumRank": "Maximale Rangänderung",
+        "smallScopes": "Bereiche mit weniger als drei Einträgen",
+        "incompleteParks": "Unvollständige Parkzusammensetzungen",
+        "cost": "Geschätzter Aufwand: Ziele / Blöcke",
+        "currentCandidate": "Aktuell → Entwurf",
+        "gainedLost": "Gewonnen / verloren",
+        "rankChange": "Änderung Ø / max.",
+        "publication": "Veröffentlichung",
+        "publishable": "Eine verlässliche Bestenliste wäre veröffentlichbar",
+        "notPublishable": "Weniger als drei Einträge: Bestenliste ausgeblendet",
+        "unavailable": "Simulation nicht verfügbar: Die Quelle überschreitet die Sicherheitsgrenze.",
+        "gainedSamples": "Hinzugekommene Einträge",
+        "lostSamples": "Entfallene Einträge"
+      },
+      "rebuild": {
+        "title": "Protokollierte Neuerstellung",
+        "subtitle": "Plant eine neue Revision für alle Bereiche. Die Verarbeitung bleibt sequenziell und läuft im Hintergrund.",
+        "confirmation": "Ich bestätige, dass alle Ranglisten-Snapshots neu erstellt werden sollen.",
+        "action": "Snapshots neu erstellen",
+        "scheduled": "Neuerstellung für {{count}} Bereich(e) geplant.",
+        "success": "Die Neuerstellung wurde geplant und im Auditprotokoll erfasst.",
+        "error": "Die Neuerstellung konnte nicht geplant werden."
       }
     },
     "references": {

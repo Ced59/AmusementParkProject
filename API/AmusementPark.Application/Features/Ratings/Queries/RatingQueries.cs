@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -13,6 +14,13 @@ public sealed record GetRatingSummaryQuery(
     string TargetId) : IQuery<ApplicationResult<RatingSummaryResult>>;
 
 public sealed record GetRatingDiagnosticsQuery : IQuery<ApplicationResult<RatingDiagnosticsResult>>;
+
+public sealed record GetRatingRankingAdministrationQuery
+    : IQuery<ApplicationResult<RatingRankingAdministrationResult>>;
+
+public sealed record PreviewRatingRankingPolicyImpactQuery(
+    RatingRankingPolicyCandidate Candidate)
+    : IQuery<ApplicationResult<RatingRankingPolicyImpactResult>>;
 
 public sealed record GetCurrentRatingMethodologyQuery : IQuery<ApplicationResult<RatingMethodologyResult>>;
 

@@ -73,7 +73,8 @@ internal static class RatingRankingFactory
         IReadOnlyCollection<ParkRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
         ParkRankingEvidenceFactsBatch evidenceFacts,
-        ParkItemCategory? categoryFilter = null)
+        ParkItemCategory? categoryFilter = null,
+        RankingEligibilityPolicy? eligibilityPolicy = null)
     {
         ArgumentNullException.ThrowIfNull(rankings);
         ArgumentNullException.ThrowIfNull(sources);
@@ -132,7 +133,8 @@ internal static class RatingRankingFactory
                     itemSources,
                     contributorFacts,
                     publicItems,
-                    isSingleCategoryParkException)
+                    isSingleCategoryParkException,
+                    eligibilityPolicy ?? RankingEligibilityPolicy.Initial)
                 : null;
             return new ParkRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
@@ -172,7 +174,8 @@ internal static class RatingRankingFactory
     internal static IReadOnlyCollection<ParkItemRankingSnapshotCandidate> BuildParkItemSnapshotCandidates(
         IReadOnlyCollection<ParkItemRatingRankingResult> rankings,
         IReadOnlyCollection<RatingRankingItemResult> sources,
-        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts)
+        IReadOnlyCollection<RatingAggregateSourceFact> aggregateSourceFacts,
+        RankingEligibilityPolicy? eligibilityPolicy = null)
     {
         ArgumentNullException.ThrowIfNull(rankings);
         ArgumentNullException.ThrowIfNull(sources);
@@ -201,7 +204,8 @@ internal static class RatingRankingFactory
                     source.UniqueContributorCount.Value,
                     source.RatingCount,
                     targetCanReceiveVisitorRatings: true,
-                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value);
+                    aggregateIntegrityIsValid: source.AggregateIntegrityIsValid.Value,
+                    eligibilityPolicy ?? RankingEligibilityPolicy.Initial);
             return new ParkItemRankingSnapshotCandidate(ranking, evidence);
         }).ToList();
     }
@@ -335,7 +339,8 @@ internal static class RatingRankingFactory
         IReadOnlyCollection<RatingRankingItemResult> itemSources,
         ParkRankingContributorFacts contributorFacts,
         IReadOnlyCollection<PublicParkItemEvidenceFact> publicItems,
-        bool isSingleCategoryParkException)
+        bool isSingleCategoryParkException,
+        RankingEligibilityPolicy eligibilityPolicy)
     {
         if (!TryConvertEvidenceCounts(contributorFacts, out ParkContributorDomainCounts counts))
         {
@@ -377,7 +382,8 @@ internal static class RatingRankingFactory
                 itemSource.UniqueContributorCount.Value,
                 itemSource.RatingCount,
                 targetCanReceiveVisitorRatings: true,
-                aggregateIntegrityIsValid: itemSource.AggregateIntegrityIsValid.Value);
+                aggregateIntegrityIsValid: itemSource.AggregateIntegrityIsValid.Value,
+                eligibilityPolicy);
             if (itemEvidence is null)
             {
                 return null;
@@ -427,7 +433,7 @@ internal static class RatingRankingFactory
             TargetCanReceiveVisitorRatings: true,
             IsExcludedByModeration: false,
             aggregateIntegrityIsValid);
-        if (!RankingEligibilityPolicy.Initial.TryEvaluatePark(input, out RankingEvidence? evidence)
+        if (!eligibilityPolicy.TryEvaluatePark(input, out RankingEvidence? evidence)
             || evidence is null)
         {
             return null;

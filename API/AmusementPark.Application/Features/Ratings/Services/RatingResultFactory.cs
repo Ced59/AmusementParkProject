@@ -58,6 +58,22 @@ public static class RatingResultFactory
         bool targetCanReceiveVisitorRatings,
         bool aggregateIntegrityIsValid)
     {
+        return TryCreateSimpleDomainEvidence(
+            uniqueContributorCount,
+            ratingObservationCount,
+            targetCanReceiveVisitorRatings,
+            aggregateIntegrityIsValid,
+            EligibilityPolicy);
+    }
+
+    internal static RankingEvidence? TryCreateSimpleDomainEvidence(
+        long uniqueContributorCount,
+        long ratingObservationCount,
+        bool targetCanReceiveVisitorRatings,
+        bool aggregateIntegrityIsValid,
+        RankingEligibilityPolicy eligibilityPolicy)
+    {
+        ArgumentNullException.ThrowIfNull(eligibilityPolicy);
         if (!TryConvertToDomainCount(uniqueContributorCount, out int boundedUniqueContributorCount)
             || !TryConvertToDomainCount(ratingObservationCount, out int boundedRatingObservationCount))
         {
@@ -70,7 +86,7 @@ public static class RatingResultFactory
                 targetCanReceiveVisitorRatings,
                 IsExcludedByModeration: false,
                 aggregateIntegrityIsValid);
-        if (!EligibilityPolicy.TryEvaluateSimpleTarget(input, out RankingEvidence? evidence)
+        if (!eligibilityPolicy.TryEvaluateSimpleTarget(input, out RankingEvidence? evidence)
             || evidence is null)
         {
             return null;

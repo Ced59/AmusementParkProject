@@ -185,6 +185,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'rating-rankings',
+    segments: ['rating-rankings'],
+    iconClass: 'pi pi-chart-bar',
+    titleKey: 'admin.ratingRanking.navTitle',
+    descriptionKey: 'admin.dashboard.shortcuts.ratingRankings',
+    exact: false
+  },
+  {
     id: 'technical-stats',
     segments: ['technical-stats'],
     iconClass: 'pi pi-server',

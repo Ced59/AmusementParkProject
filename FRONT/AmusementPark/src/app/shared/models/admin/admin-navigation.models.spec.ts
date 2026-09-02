@@ -27,6 +27,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'contact-grievances',
       'social-share',
       'social-publications',
+      'rating-rankings',
       'technical-stats'
     ]);
     expect(new Set(routes).size).toBe(routes.length);

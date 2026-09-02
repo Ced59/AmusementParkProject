@@ -1,0 +1,144 @@
+{
+  "admin": {
+    "ratingRanking": {
+      "navTitle": "Classements & preuves",
+      "title": "Pilotage des classements",
+      "subtitle": "Diagnostique les preuves, simule une politique versionnée et reconstruis les snapshots sans modifier directement les règles publiées.",
+      "loading": "Chargement du diagnostic des classements...",
+      "loadError": "Impossible de charger le diagnostic des classements.",
+      "empty": "Aucun diagnostic de classement disponible.",
+      "methodology": {
+        "current": "Méthodologie publiée",
+        "preparing": "Méthodologie en préparation",
+        "none": "Aucune version préparée",
+        "thresholdSummary": "Seuil principal : {{eligible}} contributeurs · au moins {{minimum}} entrées comparables.",
+        "previewOnly": "Une politique candidate reste une simulation tant qu’elle n’est pas publiée par un processus versionné distinct."
+      },
+      "overview": {
+        "title": "Vue d’ensemble",
+        "ratings": "Notes sources",
+        "scopes": "Scopes canoniques",
+        "anomalies": "Anomalies de données",
+        "aggregateIssues": "Agrégats à vérifier"
+      },
+      "scopes": {
+        "title": "Snapshots et recomputations",
+        "subtitle": "Chaque scope expose sa révision source, son snapshot courant, sa durée et sa dernière erreur.",
+        "scope": "Scope",
+        "status": "État",
+        "entries": "Éligibles / cibles",
+        "revision": "Révision publiée → source",
+        "lastRun": "Dernière publication",
+        "duration": "Durée",
+        "error": "Dernière erreur"
+      },
+      "scopeStatus": {
+        "current": "À jour",
+        "outstanding": "Reconstruction requise",
+        "missing": "Snapshot absent",
+        "error": "Erreur",
+        "truncated": "Diagnostic limité"
+      },
+      "common": {
+        "target": "Type",
+        "level": "Niveau de preuve",
+        "targets": "Cibles",
+        "contributors": "Contributeurs uniques cumulés",
+        "observations": "Observations cumulées",
+        "none": "Aucune donnée"
+      },
+      "targetTypes": { "park": "Parc", "parkItem": "Lieu du parc" },
+      "evidence": {
+        "title": "Distribution des preuves",
+        "subtitle": "Les personnes et les observations restent comptées séparément."
+      },
+      "levels": {
+        "noEvidence": "Aucune preuve",
+        "insufficient": "Données insuffisantes",
+        "provisional": "Tendance provisoire",
+        "eligible": "Éligible",
+        "established": "Preuve établie",
+        "strongEvidence": "Preuve forte",
+        "excluded": "Exclu"
+      },
+      "exclusions": {
+        "title": "Cibles exclues",
+        "subtitle": "Répartition des raisons qui empêchent actuellement un rang principal."
+      },
+      "reasons": {
+        "noRatings": "Aucune note",
+        "tooFewUniqueContributors": "Trop peu de contributeurs uniques",
+        "tooFewComparableEntries": "Trop peu d’entrées comparables",
+        "insufficientItemCoverage": "Couverture insuffisante des lieux",
+        "insufficientCategoryCoverage": "Couverture insuffisante des catégories",
+        "targetUnavailable": "Cible indisponible",
+        "targetExcluded": "Cible exclue",
+        "aggregateIntegrityFailure": "Intégrité de l’agrégat invalide",
+        "unsupportedComposition": "Composition non vérifiable"
+      },
+      "nearThreshold": {
+        "title": "Cibles proches du seuil",
+        "subtitle": "Cibles auxquelles il manque au plus trois contributeurs pour devenir éligibles.",
+        "remaining": "Encore {{count}} contributeur(s)"
+      },
+      "coverage": {
+        "title": "Couverture par catégorie",
+        "subtitle": "Entrées éligibles parmi les cibles évaluées dans chaque catégorie."
+      },
+      "categories": {
+        "attraction": "Attractions",
+        "restaurant": "Restaurants",
+        "hotel": "Hôtels",
+        "animal": "Animaux",
+        "show": "Spectacles",
+        "shop": "Boutiques",
+        "service": "Services",
+        "transport": "Transports"
+      },
+      "preview": {
+        "title": "Simulation avant publication",
+        "subtitle": "La simulation compare la politique candidate aux snapshots courants. Elle n’enregistre et ne publie aucun réglage.",
+        "version": "Nouvelle version obligatoire",
+        "provisional": "Seuil provisoire",
+        "eligible": "Seuil d’éligibilité",
+        "established": "Seuil établi",
+        "strong": "Seuil de preuve forte",
+        "minimumEntries": "Entrées minimales par classement",
+        "minimumItems": "Lieux éligibles pour la composante parc",
+        "minimumItemsPerCategory": "Lieux minimaux par catégorie",
+        "minimumCategories": "Catégories minimales",
+        "tieEpsilon": "Tolérance d’égalité",
+        "action": "Simuler l’impact",
+        "success": "Simulation terminée. Aucun réglage de production n’a été modifié.",
+        "error": "La simulation a échoué. Vérifie la version et l’ordre des seuils."
+      },
+      "impact": {
+        "gained": "Éligibilités gagnées",
+        "lost": "Éligibilités perdues",
+        "averageRank": "Variation moyenne de rang",
+        "maximumRank": "Variation maximale de rang",
+        "smallScopes": "Scopes sous trois entrées",
+        "incompleteParks": "Compositions de parc incomplètes",
+        "cost": "Coût estimé : cibles / chunks",
+        "currentCandidate": "Courant → candidat",
+        "gainedLost": "Gagnées / perdues",
+        "rankChange": "Variation moy. / max.",
+        "publication": "Publication",
+        "publishable": "Publier permettrait un top fiable",
+        "notPublishable": "Moins de trois entrées : top masqué",
+        "unavailable": "Simulation indisponible : la source dépasse la limite de sécurité.",
+        "gainedSamples": "Entrées gagnées",
+        "lostSamples": "Entrées perdues"
+      },
+      "rebuild": {
+        "title": "Reconstruction auditée",
+        "subtitle": "Planifie une nouvelle révision pour tous les scopes. Le traitement reste séquentiel et s’exécute en arrière-plan.",
+        "confirmation": "Je confirme vouloir reconstruire tous les snapshots de classement.",
+        "action": "Reconstruire les snapshots",
+        "scheduled": "Reconstruction planifiée pour {{count}} scope(s).",
+        "success": "La reconstruction a été planifiée et journalisée.",
+        "error": "Impossible de planifier la reconstruction."
+      }
+    }
+  }
+}
