@@ -149,7 +149,9 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
         JsonElement serializedPayload = CreatePayload(scope, requestedRevision, forceRebuild);
         CoalesceBackgroundJobRequest request = new CoalesceBackgroundJobRequest(
             RatingRankingRebuildScopeJob.Kind,
-            RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
+            forceRebuild
+                ? RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key)
+                : RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
             requestedRevision,
             RatingRankingRebuildScopeJob.PayloadVersion,
             serializedPayload);

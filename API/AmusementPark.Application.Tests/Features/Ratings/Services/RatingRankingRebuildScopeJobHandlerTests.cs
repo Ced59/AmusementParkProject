@@ -91,11 +91,79 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             .Setup(repository => repository.StartBuildAsync(
                 It.Is<StartRankingSnapshotBuildRequest>(request =>
                     request.SourceRevision == 6
-                    && request.EligibleEntryCount == entries.Count),
+                    && request.EligibleEntryCount == entries.Count
+                    && request.ForceRebuild),
                 CancellationToken.None))
             .ReturnsAsync(new RankingSnapshotBuildStartResult(
                 RankingSnapshotBuildStartDisposition.Existing,
                 fixture.CreateHeader(RankingSnapshotStatus.Current, sourceRevision: 6)));
+        fixture.Snapshots
+            .Setup(repository => repository.PublishAsync(
+                RankingSnapshotId.Parse("snapshot-1"),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotPublicationResult(
+                RankingSnapshotPublicationDisposition.AlreadyPublished,
+                fixture.CreatePointer(6)));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(6, forceRebuild: true),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenForcedCurrentSnapshotNeedsRestart_ShouldRewriteAndRepublishIt()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(fixture.CreatePointer(6));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(fixture.Scope.Key, 6, NowUtc));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(
+                CanonicalRankingScopes.GlobalParks.Key,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                CanonicalRankingScopes.GlobalParks.Key,
+                20,
+                NowUtc));
+        fixture.Builder
+            .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSnapshotBuildPlan(entries.Count, entries, false));
+        fixture.Snapshots
+            .Setup(repository => repository.StartBuildAsync(
+                It.Is<StartRankingSnapshotBuildRequest>(request => request.ForceRebuild),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Restarted,
+                fixture.CreateHeader(
+                    RankingSnapshotStatus.Building,
+                    sourceRevision: 6,
+                    buildAttempt: 2)));
+        fixture.Snapshots
+            .Setup(repository => repository.WriteChunkAsync(
+                It.Is<RankingSnapshotChunk>(chunk => chunk.BuildAttempt == 2),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotChunkWriteResult(
+                RankingSnapshotChunkWriteDisposition.Written));
+        fixture.Snapshots
+            .Setup(repository => repository.ValidateBuildAsync(
+                RankingSnapshotId.Parse("snapshot-1"),
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotValidationResult(
+                RankingSnapshotValidationDisposition.Validated,
+                fixture.CreateHeader(
+                    RankingSnapshotStatus.Validated,
+                    sourceRevision: 6,
+                    buildAttempt: 2)));
         fixture.Snapshots
             .Setup(repository => repository.PublishAsync(
                 RankingSnapshotId.Parse("snapshot-1"),
@@ -498,7 +566,8 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
         public RankingSnapshotHeader CreateHeader(
             RankingSnapshotStatus status,
             long sourceRevision = 5,
-            int entryCount = 3)
+            int entryCount = 3,
+            int buildAttempt = 1)
         {
             DateTime? validatedAtUtc = status is RankingSnapshotStatus.Validated
                 or RankingSnapshotStatus.Current
@@ -522,7 +591,8 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                 PlaceholderChecksum,
                 NowUtc,
                 validatedAtUtc,
-                publishedAtUtc);
+                publishedAtUtc,
+                buildAttempt: buildAttempt);
         }
 
         public RankingPublicationPointer CreatePointer(long revision)

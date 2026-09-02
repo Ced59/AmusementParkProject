@@ -69,38 +69,40 @@ public sealed class RatingRankingAdministrationDashboardReader
                 header = null;
                 pointer = null;
             }
-            RatingRankingSourceRevision? sourceRevision =
+            RatingRankingSourceRevision? sourceRevisionBeforeEvaluation =
                 await this.sourceRevisionRepository.GetAsync(scope.Key, cancellationToken);
-            string rebuildNaturalKey = RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key);
-            IReadOnlyCollection<DurableBackgroundJobDiagnosticItem> latestJobs =
-                await this.backgroundJobRepository.ListDiagnosticsAsync(
-                    new DurableBackgroundJobDiagnosticQuery(
-                        Kind: RatingRankingRebuildScopeJob.Kind,
-                        Limit: 1,
-                        NaturalKey: rebuildNaturalKey),
-                    cancellationToken);
-            DurableBackgroundJobDiagnosticItem? latestJob = latestJobs.SingleOrDefault();
+            DurableBackgroundJobDiagnosticItem? latestJob = await this.GetLatestScopeJobAsync(
+                scope.Key,
+                cancellationToken);
             DurableBackgroundJobDiagnosticItem? publishedSnapshotJob =
                 IsSuccessfulJobForHeader(latestJob, header)
                     ? latestJob
                     : await this.GetPublishedSnapshotJobAsync(
-                        rebuildNaturalKey,
+                        scope.Key,
                         header,
                         cancellationToken);
+            RatingRankingPolicyEvaluationPlan evaluation =
+                await this.policyEvaluationBuilder.EvaluateAsync(scope, policy, cancellationToken);
+            RatingRankingSourceRevision? sourceRevisionAfterEvaluation =
+                await this.sourceRevisionRepository.GetAsync(scope.Key, cancellationToken);
+            bool isDiagnosticSourceStable = SourceRevisionsMatch(
+                sourceRevisionBeforeEvaluation,
+                sourceRevisionAfterEvaluation);
+            RatingRankingSourceRevision? sourceRevision =
+                sourceRevisionAfterEvaluation ?? sourceRevisionBeforeEvaluation;
             long resolvedSourceRevision = sourceRevision?.Revision ?? 0;
-            bool isOutstanding = sourceRevision is null
+            bool isOutstanding = !isDiagnosticSourceStable
+                || sourceRevision is null
                 || !sourceRevision.IsRebuildable
                 || pointer is null
                 || pointer.MethodologyVersion != scope.MethodologyVersion
-                || pointer.HighestPublishedSourceRevision < resolvedSourceRevision;
+                || pointer.SourceRevision != resolvedSourceRevision;
             long? durationMilliseconds = header?.PublishedAtUtc is DateTime publishedAtUtc
                 && publishedSnapshotJob is not null
                 ? Math.Max(
                     0,
                     checked((long)(publishedAtUtc - publishedSnapshotJob.CreatedAtUtc).TotalMilliseconds))
                 : null;
-            RatingRankingPolicyEvaluationPlan evaluation =
-                await this.policyEvaluationBuilder.EvaluateAsync(scope, policy, cancellationToken);
             scopes.Add(new RatingRankingScopeDiagnosticsResult(
                 scope.Key.Value,
                 scope.TargetFamily,
@@ -120,7 +122,7 @@ public sealed class RatingRankingAdministrationDashboardReader
                 latestJob?.LastErrorCode,
                 latestJob?.UpdatedAtUtc));
 
-            if (evaluation.IsSourceTruncated)
+            if (!isDiagnosticSourceStable || evaluation.IsSourceTruncated)
             {
                 continue;
             }
@@ -226,8 +228,30 @@ public sealed class RatingRankingAdministrationDashboardReader
         }
     }
 
+    private async Task<DurableBackgroundJobDiagnosticItem?> GetLatestScopeJobAsync(
+        RankingScopeKey scopeKey,
+        CancellationToken cancellationToken)
+    {
+        List<DurableBackgroundJobDiagnosticItem> jobs = new List<DurableBackgroundJobDiagnosticItem>();
+        foreach (string naturalKey in GetRebuildNaturalKeys(scopeKey))
+        {
+            IReadOnlyCollection<DurableBackgroundJobDiagnosticItem> matchingJobs =
+                await this.backgroundJobRepository.ListDiagnosticsAsync(
+                    new DurableBackgroundJobDiagnosticQuery(
+                        Kind: RatingRankingRebuildScopeJob.Kind,
+                        Limit: 1,
+                        NaturalKey: naturalKey),
+                    cancellationToken);
+            jobs.AddRange(matchingJobs);
+        }
+
+        return jobs
+            .OrderByDescending(static job => job.UpdatedAtUtc)
+            .FirstOrDefault();
+    }
+
     private async Task<DurableBackgroundJobDiagnosticItem?> GetPublishedSnapshotJobAsync(
-        string naturalKey,
+        RankingScopeKey scopeKey,
         RankingSnapshotHeader? header,
         CancellationToken cancellationToken)
     {
@@ -236,16 +260,33 @@ public sealed class RatingRankingAdministrationDashboardReader
             return null;
         }
 
-        IReadOnlyCollection<DurableBackgroundJobDiagnosticItem> matchingJobs =
-            await this.backgroundJobRepository.ListDiagnosticsAsync(
-                new DurableBackgroundJobDiagnosticQuery(
-                    Statuses: new[] { DurableBackgroundJobStatus.Succeeded },
-                    Kind: RatingRankingRebuildScopeJob.Kind,
-                    Limit: 1,
-                    NaturalKey: naturalKey,
-                    ProcessedRevision: header.SourceRevision),
-                cancellationToken);
-        return matchingJobs.SingleOrDefault();
+        List<DurableBackgroundJobDiagnosticItem> jobs = new List<DurableBackgroundJobDiagnosticItem>();
+        foreach (string naturalKey in GetRebuildNaturalKeys(scopeKey))
+        {
+            IReadOnlyCollection<DurableBackgroundJobDiagnosticItem> matchingJobs =
+                await this.backgroundJobRepository.ListDiagnosticsAsync(
+                    new DurableBackgroundJobDiagnosticQuery(
+                        Statuses: new[] { DurableBackgroundJobStatus.Succeeded },
+                        Kind: RatingRankingRebuildScopeJob.Kind,
+                        Limit: 1,
+                        NaturalKey: naturalKey,
+                        ProcessedRevision: header.SourceRevision),
+                    cancellationToken);
+            jobs.AddRange(matchingJobs);
+        }
+
+        return jobs
+            .OrderByDescending(static job => job.CompletedAtUtc ?? job.UpdatedAtUtc)
+            .FirstOrDefault();
+    }
+
+    private static IReadOnlyCollection<string> GetRebuildNaturalKeys(RankingScopeKey scopeKey)
+    {
+        return new[]
+        {
+            RatingRankingRebuildScopeJob.BuildNaturalKey(scopeKey),
+            RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scopeKey),
+        };
     }
 
     private static bool IsSuccessfulJobForHeader(
@@ -275,6 +316,21 @@ public sealed class RatingRankingAdministrationDashboardReader
             && header.MethodologyVersion == scope.MethodologyVersion
             && pointer.MethodologyVersion == scope.MethodologyVersion
             && header.SourceRevision == pointer.SourceRevision;
+    }
+
+    private static bool SourceRevisionsMatch(
+        RatingRankingSourceRevision? before,
+        RatingRankingSourceRevision? after)
+    {
+        if (before is null || after is null)
+        {
+            return before is null && after is null;
+        }
+
+        return before.ScopeKey == after.ScopeKey
+            && before.Revision == after.Revision
+            && before.IsRebuildable
+            && after.IsRebuildable;
     }
 
     private DateTime GetUtcNow()

@@ -57,6 +57,19 @@ public sealed class RankingSnapshotMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildHeaderRestartFilter_ShouldFenceTheExpectedCurrentAttempt()
+    {
+        BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildHeaderRestartFilter(
+            RankingSnapshotId.Parse("snapshot-current"),
+            expectedBuildAttempt: 3,
+            expectedStatus: RankingSnapshotStatus.Current));
+
+        Assert.Equal("snapshot-current", rendered["_id"].AsString);
+        Assert.Equal(nameof(RankingSnapshotStatus.Current), rendered["status"].AsString);
+        Assert.Equal(3, rendered["buildAttempt"].AsInt32);
+    }
+
+    [Fact]
     public void BuildHeaderAttemptFilter_ShouldFenceAStaleWorker()
     {
         BsonDocument rendered = Render(RankingSnapshotMongoDefinitions.BuildHeaderAttemptFilter(
@@ -363,6 +376,12 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             NowUtc);
 
         Assert.True(RankingSnapshotMongoDefinitions.IsStale(pointer, CreateHeader(42, MethodologyVersion)));
+        Assert.False(RankingSnapshotMongoDefinitions.IsStale(
+            pointer,
+            CreateHeader(
+                42,
+                MethodologyVersion,
+                generatedAtUtc: NowUtc.AddSeconds(1))));
         Assert.True(RankingSnapshotMongoDefinitions.IsStale(pointer, CreateHeader(41, MethodologyVersion)));
         Assert.False(RankingSnapshotMongoDefinitions.IsStale(pointer, CreateHeader(43, MethodologyVersion)));
         Assert.True(RankingSnapshotMongoDefinitions.IsStale(
@@ -394,6 +413,15 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         Assert.True(RankingSnapshotMongoDefinitions.IsStale(
             rolledBack,
             CreateHeader(45, MethodologyVersion)));
+        Assert.True(RankingSnapshotMongoDefinitions.IsStale(
+            rolledBack,
+            CreateHeader(50, MethodologyVersion)));
+        Assert.False(RankingSnapshotMongoDefinitions.IsStale(
+            rolledBack,
+            CreateHeader(
+                50,
+                MethodologyVersion,
+                generatedAtUtc: NowUtc.AddSeconds(1))));
         Assert.False(RankingSnapshotMongoDefinitions.IsStale(
             rolledBack,
             CreateHeader(51, MethodologyVersion)));
@@ -496,10 +524,12 @@ public sealed class RankingSnapshotMongoDefinitionsTests
         long sourceRevision,
         RatingMethodologyVersion methodologyVersion,
         int eligibleEntryCount = 0,
-        RankingSnapshotStatus status = RankingSnapshotStatus.Validated)
+        RankingSnapshotStatus status = RankingSnapshotStatus.Validated,
+        DateTime? generatedAtUtc = null)
     {
+        DateTime resolvedGeneratedAtUtc = generatedAtUtc ?? NowUtc;
         DateTime? publishedAtUtc = status is RankingSnapshotStatus.Current or RankingSnapshotStatus.Superseded
-            ? NowUtc.AddMinutes(1)
+            ? resolvedGeneratedAtUtc.AddMinutes(1)
             : null;
         return new RankingSnapshotHeader(
             RankingSnapshotId.Parse($"snapshot-{sourceRevision}-{methodologyVersion.Value}"),
@@ -512,8 +542,8 @@ public sealed class RankingSnapshotMongoDefinitionsTests
             500,
             eligibleEntryCount == 0 ? 0 : 1,
             RankingSnapshotChecksum.Parse(new string('a', 64)),
-            NowUtc,
-            NowUtc,
+            resolvedGeneratedAtUtc,
+            resolvedGeneratedAtUtc,
             publishedAtUtc);
     }
 

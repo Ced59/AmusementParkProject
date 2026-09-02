@@ -104,6 +104,9 @@ public sealed class RatingRankingRebuildSchedulerTests
 
         Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
         Assert.NotNull(capturedRequest);
+        Assert.Equal(
+            RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key),
+            capturedRequest.NaturalKey);
         RatingRankingRebuildScopePayload? payload =
             capturedRequest.Payload.Deserialize<RatingRankingRebuildScopePayload>();
         Assert.NotNull(payload);

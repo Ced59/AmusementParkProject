@@ -20,6 +20,11 @@ public static class RatingRankingRebuildScopeJob
     {
         return $"{Kind}:{scopeKey.Value}";
     }
+
+    public static string BuildForcedNaturalKey(RankingScopeKey scopeKey)
+    {
+        return $"{BuildNaturalKey(scopeKey)}:forced";
+    }
 }
 
 public static class RatingRankingSnapshotBuildLimits

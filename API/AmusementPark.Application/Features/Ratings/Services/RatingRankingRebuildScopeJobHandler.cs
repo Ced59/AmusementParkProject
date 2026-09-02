@@ -174,7 +174,8 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
                 requestedRevision,
                 plan.TotalEntryCount,
                 plan.EligibleEntries.Count,
-                checksum),
+                checksum,
+                forceRebuild),
             cancellationToken);
         if (start.Disposition == RankingSnapshotBuildStartDisposition.Conflict || start.Header is null)
         {
