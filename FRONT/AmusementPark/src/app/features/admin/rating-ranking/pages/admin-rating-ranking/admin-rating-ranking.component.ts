@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   RatingRankingPolicyCandidateRequest,
+  RatingRankingPolicyScopeImpact,
   RatingRankingScopeDiagnostics
 } from '@app/models/admin/ratings/rating-ranking-administration.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -160,6 +161,14 @@ export class AdminRatingRankingComponent implements OnInit {
     return scope.currentSnapshotId
       ? 'admin.ratingRanking.scopeStatus.current'
       : 'admin.ratingRanking.scopeStatus.missing';
+  }
+
+  protected impactUnavailableKey(
+    scope: Pick<RatingRankingPolicyScopeImpact, 'isSourceTruncated'>
+  ): string {
+    return scope.isSourceTruncated
+      ? 'admin.ratingRanking.impact.unavailable'
+      : 'admin.ratingRanking.impact.sourceChanged';
   }
 
   protected enumLabelKey(group: 'levels' | 'reasons' | 'categories', value: string): string {

@@ -1886,6 +1886,7 @@
         "publishable": "Publier permettrait un top fiable",
         "notPublishable": "Moins de {{minimum}} entrées : top masqué",
         "unavailable": "Simulation indisponible : la source dépasse la limite de sécurité.",
+        "sourceChanged": "Simulation indisponible : les données ont changé pendant le calcul. Relance la simulation.",
         "gainedSamples": "Entrées gagnées",
         "lostSamples": "Entrées perdues"
       },

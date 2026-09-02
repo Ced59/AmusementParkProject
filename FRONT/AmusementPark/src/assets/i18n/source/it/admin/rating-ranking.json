@@ -127,6 +127,7 @@
         "publishable": "La pubblicazione offrirebbe una classifica affidabile",
         "notPublishable": "Meno di {{minimum}} voci: classifica nascosta",
         "unavailable": "Simulazione non disponibile: la fonte supera il limite di sicurezza.",
+        "sourceChanged": "Simulazione non disponibile: i dati sono cambiati durante il calcolo. Esegui nuovamente la simulazione.",
         "gainedSamples": "Voci ottenute",
         "lostSamples": "Voci perse"
       },

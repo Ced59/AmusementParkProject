@@ -19,6 +19,7 @@ interface AdminRatingRankingComponentHarness {
   policyForm: FormGroup;
   rebuildConfirmed: FormControl<boolean>;
   rebuild(): void;
+  impactUnavailableKey(scope: { isSourceTruncated: boolean }): string;
 }
 
 class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
@@ -105,6 +106,15 @@ describe('AdminRatingRankingComponent', () => {
 
     expect(port.rebuildCallCount).toBe(1);
     expect(component.rebuildConfirmed.value).toBe(false);
+  });
+
+  it('distinguishes a safety limit from a concurrent source change', () => {
+    const component = fixture.componentInstance as unknown as AdminRatingRankingComponentHarness;
+
+    expect(component.impactUnavailableKey({ isSourceTruncated: true }))
+      .toBe('admin.ratingRanking.impact.unavailable');
+    expect(component.impactUnavailableKey({ isSourceTruncated: false }))
+      .toBe('admin.ratingRanking.impact.sourceChanged');
   });
 
   it('disables and blocks rebuild submission while the request is pending', () => {

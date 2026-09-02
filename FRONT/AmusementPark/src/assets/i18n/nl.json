@@ -1886,6 +1886,7 @@
         "publishable": "Publicatie zou een betrouwbare toplijst opleveren",
         "notPublishable": "Minder dan {{minimum}} vermeldingen: toplijst verborgen",
         "unavailable": "Simulatie niet beschikbaar: de bron overschrijdt de veiligheidslimiet.",
+        "sourceChanged": "Simulatie niet beschikbaar: de gegevens zijn tijdens de berekening gewijzigd. Voer de simulatie opnieuw uit.",
         "gainedSamples": "Nieuwe vermeldingen",
         "lostSamples": "Verdwenen vermeldingen"
       },

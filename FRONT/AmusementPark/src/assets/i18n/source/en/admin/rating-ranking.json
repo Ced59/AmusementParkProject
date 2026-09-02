@@ -127,6 +127,7 @@
         "publishable": "Publishing would provide a reliable top list",
         "notPublishable": "Fewer than {{minimum}} entries: top list hidden",
         "unavailable": "Simulation unavailable: the source exceeds the safety limit.",
+        "sourceChanged": "Simulation unavailable: the data changed during calculation. Run the simulation again.",
         "gainedSamples": "Gained entries",
         "lostSamples": "Lost entries"
       },

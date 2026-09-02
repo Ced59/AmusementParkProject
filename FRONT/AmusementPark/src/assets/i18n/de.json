@@ -1886,6 +1886,7 @@
         "publishable": "Eine verlässliche Bestenliste wäre veröffentlichbar",
         "notPublishable": "Weniger als {{minimum}} Einträge: Bestenliste ausgeblendet",
         "unavailable": "Simulation nicht verfügbar: Die Quelle überschreitet die Sicherheitsgrenze.",
+        "sourceChanged": "Simulation nicht verfügbar: Die Daten haben sich während der Berechnung geändert. Starte die Simulation erneut.",
         "gainedSamples": "Hinzugekommene Einträge",
         "lostSamples": "Entfallene Einträge"
       },

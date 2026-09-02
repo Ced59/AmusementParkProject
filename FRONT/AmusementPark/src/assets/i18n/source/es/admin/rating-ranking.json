@@ -127,6 +127,7 @@
         "publishable": "La publicación ofrecería un listado fiable",
         "notPublishable": "Menos de {{minimum}} entradas: listado oculto",
         "unavailable": "Simulación no disponible: el origen supera el límite de seguridad.",
+        "sourceChanged": "Simulación no disponible: los datos cambiaron durante el cálculo. Vuelve a ejecutar la simulación.",
         "gainedSamples": "Entradas ganadas",
         "lostSamples": "Entradas perdidas"
       },

@@ -277,7 +277,7 @@
                       <td>{{ scope.averageRankChange ?? '—' }} / {{ scope.maximumRankChange ?? '—' }}</td>
                       <td>{{ (scope.hasMinimumComparableEntries ? 'admin.ratingRanking.impact.publishable' : 'admin.ratingRanking.impact.notPublishable') | translate:{ minimum: previewImpact.candidate.minimumEligibleEntriesPerRanking } }}</td>
                     } @else {
-                      <td colspan="4">{{ 'admin.ratingRanking.impact.unavailable' | translate }}</td>
+                      <td colspan="4">{{ impactUnavailableKey(scope) | translate }}</td>
                     }
                   </tr>
                 }

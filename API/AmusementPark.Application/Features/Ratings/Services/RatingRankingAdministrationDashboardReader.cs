@@ -97,11 +97,10 @@ public sealed class RatingRankingAdministrationDashboardReader
                 || pointer is null
                 || pointer.MethodologyVersion != scope.MethodologyVersion
                 || pointer.SourceRevision != resolvedSourceRevision;
-            long? durationMilliseconds = header?.PublishedAtUtc is DateTime publishedAtUtc
-                && publishedSnapshotJob is not null
+            long? durationMilliseconds = publishedSnapshotJob?.CompletedAtUtc is DateTime completedAtUtc
                 ? Math.Max(
                     0,
-                    checked((long)(publishedAtUtc - publishedSnapshotJob.CreatedAtUtc).TotalMilliseconds))
+                    checked((long)(completedAtUtc - publishedSnapshotJob.CreatedAtUtc).TotalMilliseconds))
                 : null;
             scopes.Add(new RatingRankingScopeDiagnosticsResult(
                 scope.Key.Value,
@@ -276,6 +275,7 @@ public sealed class RatingRankingAdministrationDashboardReader
         }
 
         return jobs
+            .Where(job => job.CreatedAtUtc <= header.GeneratedAtUtc)
             .OrderByDescending(static job => job.CompletedAtUtc ?? job.UpdatedAtUtc)
             .FirstOrDefault();
     }
@@ -297,6 +297,7 @@ public sealed class RatingRankingAdministrationDashboardReader
             && header is not null
             && job.Status == DurableBackgroundJobStatus.Succeeded
             && job.ProcessedRevision == header.SourceRevision
+            && job.CreatedAtUtc <= header.GeneratedAtUtc
             && job.CompletedAtUtc.HasValue;
     }
 

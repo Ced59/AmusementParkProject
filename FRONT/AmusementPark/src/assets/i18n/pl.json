@@ -1886,6 +1886,7 @@
         "publishable": "Publikacja zapewniłaby wiarygodną listę",
         "notPublishable": "Mniej niż {{minimum}} pozycji: lista ukryta",
         "unavailable": "Symulacja niedostępna: źródło przekracza limit bezpieczeństwa.",
+        "sourceChanged": "Symulacja niedostępna: dane zmieniły się podczas obliczeń. Uruchom symulację ponownie.",
         "gainedSamples": "Uzyskane pozycje",
         "lostSamples": "Utracone pozycje"
       },

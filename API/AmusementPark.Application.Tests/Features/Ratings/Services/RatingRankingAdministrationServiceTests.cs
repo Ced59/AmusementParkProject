@@ -86,9 +86,9 @@ public sealed class RatingRankingAdministrationServicesTests
                 CancellationToken.None))
             .Callback<DurableBackgroundJobDiagnosticQuery, CancellationToken>(
                 (query, _) => diagnosticQueries.Add(query))
-            .ReturnsAsync(new[]
+            .ReturnsAsync((DurableBackgroundJobDiagnosticQuery query, CancellationToken _) =>
             {
-                new DurableBackgroundJobDiagnosticItem(
+                DurableBackgroundJobDiagnosticItem producingJob = new DurableBackgroundJobDiagnosticItem(
                     "job-1",
                     RatingRankingRebuildScopeJob.Kind,
                     RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),
@@ -103,7 +103,21 @@ public sealed class RatingRankingAdministrationServicesTests
                     header.PublishedAtUtc!.Value.AddSeconds(1),
                     header.PublishedAtUtc!.Value.AddSeconds(1),
                     null,
-                    null),
+                    null);
+                if (query.NaturalKey == RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key))
+                {
+                    return new[] { producingJob };
+                }
+
+                DurableBackgroundJobDiagnosticItem noOpForcedJob = producingJob with
+                {
+                    Id = "job-forced-no-op",
+                    NaturalKey = RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key),
+                    CreatedAtUtc = header.PublishedAtUtc.Value.AddSeconds(10),
+                    UpdatedAtUtc = header.PublishedAtUtc.Value.AddSeconds(11),
+                    CompletedAtUtc = header.PublishedAtUtc.Value.AddSeconds(11),
+                };
+                return new[] { noOpForcedJob };
             });
         RatingRankingAdministrationDashboardReader reader =
             new RatingRankingAdministrationDashboardReader(
@@ -120,7 +134,7 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Same(diagnostics, result.DataDiagnostics);
         RatingRankingScopeDiagnosticsResult scopeDiagnostics = Assert.Single(result.Scopes);
         Assert.Equal(sourceRevisionIsMissing, scopeDiagnostics.IsRebuildOutstanding);
-        Assert.Equal(32_000, scopeDiagnostics.RebuildDurationMilliseconds);
+        Assert.Equal(33_000, scopeDiagnostics.RebuildDurationMilliseconds);
         RatingRankingNearThresholdTargetResult nearThreshold =
             Assert.Single(result.NearThresholdTargets);
         Assert.Equal(8, nearThreshold.UniqueContributorCount);
@@ -129,13 +143,21 @@ public sealed class RatingRankingAdministrationServicesTests
         Assert.Equal(
             RankingIneligibilityReason.TooFewUniqueContributors,
             Assert.Single(result.Exclusions).Reason);
-        Assert.Equal(2, diagnosticQueries.Count);
+        Assert.Equal(4, diagnosticQueries.Count);
         Assert.Contains(
             diagnosticQueries,
             query => query.NaturalKey == RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key));
         Assert.Contains(
             diagnosticQueries,
             query => query.NaturalKey == RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key));
+        Assert.Equal(
+            2,
+            diagnosticQueries.Count(
+                query => query.NaturalKey == RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key)));
+        Assert.Equal(
+            2,
+            diagnosticQueries.Count(
+                query => query.NaturalKey == RatingRankingRebuildScopeJob.BuildForcedNaturalKey(scope.Key)));
         Assert.All(diagnosticQueries, query => Assert.Equal(1, query.Limit));
         snapshots.VerifyAll();
         revisions.VerifyAll();
