@@ -127,7 +127,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             .ReturnsAsync(fixture.CreatePointer(6));
         fixture.Revisions
             .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
-            .ReturnsAsync(new RatingRankingSourceRevision(fixture.Scope.Key, 6, NowUtc));
+            .ReturnsAsync(fixture.CreateConvergedSourceRevision(fixture.Scope, 6));
         fixture.Revisions
             .Setup(repository => repository.GetAsync(
                 CanonicalRankingScopes.GlobalParks.Key,
@@ -179,7 +179,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
             .ReturnsAsync(fixture.CreatePointer(6));
         fixture.Revisions
             .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
-            .ReturnsAsync(new RatingRankingSourceRevision(fixture.Scope.Key, 6, NowUtc));
+            .ReturnsAsync(fixture.CreateConvergedSourceRevision(fixture.Scope, 6));
         fixture.Revisions
             .Setup(repository => repository.GetAsync(
                 CanonicalRankingScopes.GlobalParks.Key,
@@ -255,6 +255,49 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
         fixture.Snapshots.VerifyAll();
         fixture.Revisions.VerifyAll();
         fixture.Builder.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSourceRevisionCacheDidNotConverge_ShouldInvalidateBeforeBuilding()
+    {
+        HandlerFixture fixture = new HandlerFixture();
+        IReadOnlyCollection<RankingSnapshotEntry> entries = fixture.CreateEligibleEntries();
+        fixture.Snapshots
+            .Setup(repository => repository.GetPointerAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(fixture.CreatePointer(5));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(fixture.Scope.Key, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(fixture.Scope.Key, 6, NowUtc));
+        fixture.Revisions
+            .Setup(repository => repository.GetAsync(
+                CanonicalRankingScopes.GlobalParks.Key,
+                CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSourceRevision(
+                CanonicalRankingScopes.GlobalParks.Key,
+                20,
+                NowUtc));
+        fixture.SetupCacheConvergence(6);
+        fixture.Builder
+            .Setup(builder => builder.BuildAsync(fixture.Scope, CancellationToken.None))
+            .ReturnsAsync(new RatingRankingSnapshotBuildPlan(entries.Count, entries, false));
+        fixture.Snapshots
+            .Setup(repository => repository.StartBuildAsync(
+                It.IsAny<StartRankingSnapshotBuildRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(new RankingSnapshotBuildStartResult(
+                RankingSnapshotBuildStartDisposition.Conflict,
+                null));
+
+        DurableBackgroundJobHandlerResult result = await fixture.Handler.HandleAsync(
+            fixture.CreateContext(6),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(RatingRankingRebuildErrorCodes.BuildConflict, result.ErrorCode);
+        Assert.Equal(1, fixture.CacheInvalidator.CallCount);
+        fixture.Snapshots.VerifyAll();
+        fixture.Revisions.VerifyAll();
+        fixture.Builder.VerifyAll();
     }
 
     [Fact]
@@ -637,7 +680,7 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                 .ReturnsAsync((RankingPublicationPointer?)null);
             this.Revisions
                 .Setup(repository => repository.GetAsync(this.Scope.Key, CancellationToken.None))
-                .ReturnsAsync(new RatingRankingSourceRevision(this.Scope.Key, requestedRevision, NowUtc));
+                .ReturnsAsync(this.CreateConvergedSourceRevision(this.Scope, requestedRevision));
             this.Revisions
                 .Setup(repository => repository.GetAsync(
                     CanonicalRankingScopes.GlobalParks.Key,
@@ -646,6 +689,18 @@ public sealed class RatingRankingRebuildScopeJobHandlerTests
                     CanonicalRankingScopes.GlobalParks.Key,
                     20,
                     NowUtc));
+        }
+
+        public RatingRankingSourceRevision CreateConvergedSourceRevision(
+            RankingScopeDefinition scope,
+            long revision)
+        {
+            return new RatingRankingSourceRevision(
+                scope.Key,
+                revision,
+                NowUtc,
+                CacheConvergedMethodologyVersion: scope.MethodologyVersion,
+                HighestCacheConvergedSourceRevision: revision);
         }
 
         public void SetupCacheConvergence(long requestedRevision)

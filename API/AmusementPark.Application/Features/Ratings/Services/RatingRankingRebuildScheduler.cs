@@ -136,6 +136,11 @@ public sealed class RatingRankingRebuildScheduler : IRatingRankingRebuildSchedul
             return cacheConverged;
         }
 
+        if (pointer is not null && !cacheConverged)
+        {
+            return false;
+        }
+
         return await this.backgroundJobRepository.HasDeadLetteredRevisionAsync(
             RatingRankingRebuildScopeJob.Kind,
             RatingRankingRebuildScopeJob.BuildNaturalKey(scope.Key),

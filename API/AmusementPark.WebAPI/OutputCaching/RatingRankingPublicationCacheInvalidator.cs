@@ -6,8 +6,8 @@ using Microsoft.Extensions.Logging;
 namespace AmusementPark.WebAPI.OutputCaching;
 
 /// <summary>
-/// Fait converger les trois niveaux de cache public après la publication ou
-/// le retrait d'un snapshot de classement.
+/// Fait converger les trois niveaux de cache public après une mutation de source,
+/// la publication ou le retrait d'un snapshot de classement.
 /// </summary>
 public sealed class RatingRankingPublicationCacheInvalidator : IRatingRankingPublicationCacheInvalidator
 {

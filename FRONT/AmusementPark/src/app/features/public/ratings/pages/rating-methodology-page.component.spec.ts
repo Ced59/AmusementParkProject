@@ -66,7 +66,7 @@ describe('RatingMethodologyPageComponent', () => {
           scale: { title: 'Échelle des notes', text: 'De {{minimum}} à {{maximum}} par {{step}}.' },
           bayesian: { title: 'Pourquoi un score bayésien ?', simple: 'Référence {{priorMean}} pour {{priorWeight}} notes.', formulaAccessible: 'Formule expliquée avec {{priorMean}} et {{priorWeight}}.' },
           parkScore: { title: 'Score composé', text: '{{directWeight}} et {{itemWeight}}.' },
-          evidence: { title: 'Niveaux de preuve', text: 'Le texte complète la couleur.', tableLabel: 'Niveaux', level: 'Niveau', contributors: 'Contributeurs', rankingEffect: 'Effet', provisional: 'Provisoire', eligible: 'Admissible', established: 'Établi', strong: 'Fort', provisionalEffect: 'Sans rang', eligibleEffect: 'Classé', establishedEffect: 'Consolidé', strongEffect: 'Robuste', publication: '{{minimumEntries}} entrées.', rolloutPending: 'Activation prochaine : règles bientôt appliquées.' },
+          evidence: { title: 'Niveaux de preuve', text: 'Le texte complète la couleur.', tableLabel: 'Niveaux', level: 'Niveau', contributors: 'Contributeurs', rankingEffect: 'Effet', provisional: 'Provisoire', eligible: 'Admissible', established: 'Établi', strong: 'Fort', provisionalEffect: 'Sans rang', eligibleEffect: 'Classé', establishedEffect: 'Consolidé', strongEffect: 'Robuste', publication: '{{minimumEntries}} entrées.', rolloutActive: 'Règles actives sur les classements publiés.' },
           ties: { title: 'Égalités', text: '{{epsilon}}.' },
           lifecycle: { title: 'Cycle de vie', text: 'Cibles actives.' },
           moderation: { title: 'Modération', text: 'Contrôles.' },
@@ -95,7 +95,7 @@ describe('RatingMethodologyPageComponent', () => {
     expect(root.querySelector('.methodology-table-wrap')?.getAttribute('tabindex')).toBe('0');
     expect(root.querySelector('.sr-only')?.textContent).toContain('Formule expliquée');
     expect(root.textContent).toContain('31 août 2026');
-    expect(root.textContent).toContain('Activation prochaine');
+    expect(root.textContent).toContain('Règles actives sur les classements publiés.');
   });
 
   it('allows every wide section to shrink inside a narrow viewport', () => {

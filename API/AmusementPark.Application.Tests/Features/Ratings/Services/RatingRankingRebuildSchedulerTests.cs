@@ -204,15 +204,6 @@ public sealed class RatingRankingRebuildSchedulerTests
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         jobs
-            .Setup(repository => repository.HasDeadLetteredRevisionAsync(
-                RatingRankingRebuildScopeJob.Kind,
-                "ratings.rebuild-scope:parks:global",
-                13,
-                RatingRankingRebuildScopeJob.PayloadVersion,
-                It.IsAny<JsonElement>(),
-                CancellationToken.None))
-            .ReturnsAsync(false);
-        jobs
             .Setup(repository => repository.CoalesceAsync(
                 It.Is<CoalesceBackgroundJobRequest>(request => request.RequestedRevision == 13),
                 CancellationToken.None))
@@ -235,6 +226,13 @@ public sealed class RatingRankingRebuildSchedulerTests
 
         Assert.Equal(RatingRankingRebuildScheduleDisposition.Scheduled, disposition);
         jobs.VerifyAll();
+        jobs.Verify(repository => repository.HasDeadLetteredRevisionAsync(
+            It.IsAny<string>(),
+            It.IsAny<string>(),
+            It.IsAny<long>(),
+            It.IsAny<int>(),
+            It.IsAny<JsonElement>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         revisions.VerifyNoOtherCalls();
         snapshots.VerifyAll();
     }
