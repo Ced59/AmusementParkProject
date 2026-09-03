@@ -1,6 +1,20 @@
 {
-  "version": "5.0.0",
+  "version": "5.0.1",
   "history": [
+    {
+      "version": "5.0.1",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Préparation du futur passeport avec un suivi fiable des visites privées.",
+        "en": "Preparation for the upcoming passport with reliable tracking of private visits.",
+        "de": "Vorbereitung des künftigen Besuchspasses mit zuverlässiger Erfassung privater Besuche.",
+        "nl": "Voorbereiding van het toekomstige bezoekpaspoort met betrouwbare registratie van privébezoeken.",
+        "it": "Preparazione del futuro passaporto con un registro affidabile delle visite private.",
+        "es": "Preparación del futuro pasaporte con un registro fiable de las visitas privadas.",
+        "pl": "Przygotowanie przyszłego paszportu z wiarygodnym zapisem prywatnych wizyt.",
+        "pt": "Preparação do futuro passaporte com um registo fiável das visitas privadas."
+      }
+    },
     {
       "version": "5.0.0",
       "releasedAt": "2026-09-03",
