@@ -79,6 +79,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonElement("lastReorderOperationKeyHash")]
     [BsonIgnoreIfNull]
     public string? LastReorderOperationKeyHash { get; set; }
+
+    [BsonElement("lastDeleteOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? LastDeleteOperationKeyHash { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -205,6 +209,18 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfNull]
     [BsonRepresentation(BsonType.String)]
     public RideOccurrencePlacement? ReorderPlacement { get; set; }
+
+    [BsonElement("deleteOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? DeleteOccurrenceId { get; set; }
+
+    [BsonElement("deleteExpectedVersion")]
+    [BsonIgnoreIfNull]
+    public long? DeleteExpectedVersion { get; set; }
+
+    [BsonElement("deleteAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? DeleteAtUtc { get; set; }
 
     [BsonElement("wasNormalized")]
     [BsonIgnoreIfDefault]

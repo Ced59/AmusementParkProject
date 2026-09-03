@@ -30,6 +30,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly UserRideOccurrenceReorderRecovery reorderRecovery;
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
+    private readonly UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator;
     private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
 
     public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -47,11 +48,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.collection,
             this.operationCollection);
         this.creationRecovery = new UserRideOccurrenceCreationRecovery(this.collection);
+        this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
+            this.collection,
+            this.operationCollection);
         this.pendingOperationRecovery = new UserRideOccurrencePendingOperationRecovery(
             this.collection,
             this.operationCollection,
             this.orderGuardValidator,
-            this.creationRecovery);
+            this.creationRecovery,
+            this.deletionCoordinator);
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(
@@ -342,6 +347,33 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
+    }
+
+    public async Task<bool> TryDeleteOwnedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(occurrence);
+        if (!occurrence.IsDeleted
+            || expectedVersion == long.MaxValue
+            || occurrence.Version != expectedVersion + 1)
+        {
+            throw new ArgumentException(
+                "The deleted ride occurrence must be exactly one version ahead of the expected version.",
+                nameof(occurrence));
+        }
+
+        UserRideOccurrenceDocument document = occurrence.ToDocument();
+        return await this.deletionCoordinator.TryReserveAndApplyAsync(
+            document,
+            expectedVersion,
+            recoveryCancellationToken => this.pendingOperationRecovery.TryCompleteVisitAsync(
+                document.UserId,
+                VisitId.Parse(document.VisitId),
+                this.ResumeReservedReorderAsync,
+                recoveryCancellationToken),
+            cancellationToken);
     }
 
     public async Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(

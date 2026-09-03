@@ -39,6 +39,11 @@ public interface IRideOccurrenceRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task<bool> TryDeleteOwnedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
     Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(
         RideOccurrenceReorderRequest request,
         string clientOperationId,

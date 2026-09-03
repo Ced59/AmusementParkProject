@@ -581,6 +581,186 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task TryDeleteOwnedAsync_ShouldReserveTheVisitBeforeApplyingTheTombstone()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        MockSequence sequence = new MockSequence();
+        UserRideOccurrenceCreationOperationDocument? reserved = null;
+        FilterDefinition<UserRideOccurrenceDocument>? capturedFilter = null;
+        UpdateDefinition<UserRideOccurrenceDocument>? capturedUpdate = null;
+        operationCollection.InSequence(sequence).Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument operation,
+                InsertOneOptions _,
+                CancellationToken _) => reserved = operation)
+            .Returns(Task.CompletedTask);
+        collection.InSequence(sequence).Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceDocument> filter,
+                UpdateDefinition<UserRideOccurrenceDocument> update,
+                UpdateOptions options,
+                CancellationToken _) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+                Assert.False(options.IsUpsert);
+            })
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        operationCollection.InSequence(sequence).Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        occurrence.Delete(NowUtc.AddMinutes(1));
+
+        bool deleted = await repository.TryDeleteOwnedAsync(
+            occurrence,
+            1,
+            CancellationToken.None);
+
+        Assert.True(deleted);
+        Assert.NotNull(reserved);
+        Assert.Equal("delete", reserved.OperationKind);
+        Assert.Equal("visit-1", reserved.VisitId);
+        Assert.Equal("occurrence-1", reserved.DeleteOccurrenceId);
+        Assert.Equal(1, reserved.DeleteExpectedVersion);
+        Assert.Equal(NowUtc.AddMinutes(1), reserved.DeleteAtUtc);
+        Assert.Equal("completed", reserved.OperationState);
+        Assert.NotNull(capturedFilter);
+        BsonDocument filter = Render(capturedFilter);
+        Assert.Equal("occurrence-1", filter["_id"].AsString);
+        Assert.Equal(1, filter["version"].AsInt64);
+        Assert.True(filter.Contains("deletedAtUtc"));
+        Assert.NotNull(capturedUpdate);
+        BsonDocument update = Render(capturedUpdate);
+        Assert.Equal(2, update["$set"]["version"].AsInt64);
+        Assert.Equal(
+            64,
+            update["$set"]["lastDeleteOperationKeyHash"].AsString.Length);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryDeleteOwnedAsync_WithAbandonedDelete_ShouldRecoverItBeforeRetrying()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        string abandonedKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("abandoned-delete");
+        UserRideOccurrenceCreationOperationDocument abandoned =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = abandonedKeyHash,
+                PayloadHash = abandonedKeyHash,
+                OperationKind = "delete",
+                VisitId = "visit-1",
+                OperationState = "pending",
+                DeleteOccurrenceId = "occurrence-1",
+                DeleteExpectedVersion = 1,
+                DeleteAtUtc = NowUtc.AddMinutes(1),
+                CreatedAt = NowUtc.AddMinutes(1),
+                UpdatedAt = NowUtc.AddMinutes(1),
+            };
+        RideOccurrence currentOccurrence =
+            CreateOccurrence("occurrence-1", "item-1", 1024);
+        currentOccurrence.Delete(NowUtc.AddMinutes(1));
+        UserRideOccurrenceDocument current = currentOccurrence.ToDocument();
+        current.LastDeleteOperationKeyHash = abandonedKeyHash;
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> pendingCursor =
+            CreateAsyncCursor(new[] { abandoned });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> releasedCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> currentCursor =
+            CreateAsyncCursor(new[] { current });
+        UserRideOccurrenceCreationOperationDocument? retryOperation = null;
+        int insertionAttempt = 0;
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument operation,
+                InsertOneOptions _,
+                CancellationToken _) =>
+            {
+                insertionAttempt++;
+                if (insertionAttempt == 1)
+                {
+                    throw CreateDuplicateKeyException();
+                }
+
+                retryOperation = operation;
+            })
+            .Returns(Task.CompletedTask);
+        operationCollection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(pendingCursor.Object)
+            .ReturnsAsync(releasedCursor.Object);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        collection.SetupSequence(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(currentCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        RideOccurrence requested = CreateOccurrence("occurrence-1", "item-1", 1024);
+        requested.Delete(NowUtc.AddMinutes(2));
+
+        bool deleted = await repository.TryDeleteOwnedAsync(
+            requested,
+            1,
+            CancellationToken.None);
+
+        Assert.False(deleted);
+        Assert.Equal("completed", abandoned.OperationState);
+        Assert.NotNull(retryOperation);
+        Assert.Equal("conflict", retryOperation.OperationState);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        pendingCursor.VerifyAll();
+        releasedCursor.VerifyAll();
+        currentCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReorderIdempotentAsync_ShouldReserveApplyAndCompleteTheOperation()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =

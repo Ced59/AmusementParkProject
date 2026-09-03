@@ -8,6 +8,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal sealed class UserRideOccurrencePendingOperationRecovery
 {
     private const string CreationOperationKind = "creation";
+    private const string DeleteOperationKind = "delete";
     private const string ReorderOperationKind = "reorder";
     private const string PendingOperationState = "pending";
     private const string CompletedOperationState = "completed";
@@ -17,21 +18,25 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         operationCollection;
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
+    private readonly UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator;
 
     public UserRideOccurrencePendingOperationRecovery(
         IMongoCollection<UserRideOccurrenceDocument> collection,
         IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection,
         UserRideOccurrenceOrderGuardValidator orderGuardValidator,
-        UserRideOccurrenceCreationRecovery creationRecovery)
+        UserRideOccurrenceCreationRecovery creationRecovery,
+        UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator)
     {
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(operationCollection);
         ArgumentNullException.ThrowIfNull(orderGuardValidator);
         ArgumentNullException.ThrowIfNull(creationRecovery);
+        ArgumentNullException.ThrowIfNull(deletionCoordinator);
         this.collection = collection;
         this.operationCollection = operationCollection;
         this.orderGuardValidator = orderGuardValidator;
         this.creationRecovery = creationRecovery;
+        this.deletionCoordinator = deletionCoordinator;
     }
 
     public async Task<bool> TryCompleteVisitAsync(
@@ -62,6 +67,22 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             return await this.TryCompleteCreationAsync(
                 pending,
                 cancellationToken);
+        }
+
+        if (string.Equals(
+            pending.OperationKind,
+            DeleteOperationKind,
+            StringComparison.Ordinal))
+        {
+            _ = await this.deletionCoordinator.TryCompleteAsync(
+                pending,
+                cancellationToken);
+            UserRideOccurrenceCreationOperationDocument? stillPendingDelete =
+                await this.LoadPendingVisitOperationAsync(
+                    userId,
+                    visitId,
+                    cancellationToken);
+            return stillPendingDelete is null;
         }
 
         if (!TryBuildReservedReorderRequest(pending, out RideOccurrenceReorderRequest request))

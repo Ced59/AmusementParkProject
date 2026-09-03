@@ -97,17 +97,18 @@ sequenceDiagram
     end
 ```
 
-Une opération Mongo conserve son empreinte, sa cible, les versions attendues, les positions précédentes, le snapshot borné de l'ordre lu et les snapshots de résultat. Après réservation exclusive d'une opération `pending`, l'infrastructure relit toute la visite active et exige exactement les mêmes identifiants et positions avant la première mutation. Un ajout, une suppression ou un déplacement concurrent rend donc le plan obsolète et retourne `409` sans l'appliquer. Le marqueur `orderGuardsValidated` rend cette barrière durable si le processus redémarre.
+Une opération Mongo conserve son empreinte, sa cible, les versions attendues, les positions précédentes, le snapshot borné de l'ordre lu et les snapshots de résultat. Après réservation exclusive d'une opération `pending`, l'infrastructure relit toute la visite active et exige exactement les mêmes identifiants et positions avant la première mutation. Un ajout ou un déplacement concurrent rend donc le plan obsolète et retourne `409` sans l'appliquer. Une suppression acquiert elle aussi cette réservation avant d'écrire son tombstone : si elle passe la première, le déplacement revalide ensuite un ordre sans sa cible ; si elle passe après, elle attend la fin du déplacement puis applique son propre CAS. Le marqueur `orderGuardsValidated` rend la barrière du déplacement durable si le processus redémarre.
 
 Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, y compris après une correction ultérieure qui a augmenté leur version, termine les lignes restantes puis rejoue le snapshot réservé. Si une version réellement concurrente bloque une ligne, les mutations déjà appliquées sont restaurées en ordre inverse par CAS. L'opération n'est marquée `conflict` qu'après ce rollback complet ; sinon elle reste `pending` et récupérable par la même clé. Une réutilisation de la clé avec un autre déplacement retourne `ride-occurrence.idempotency-key-conflict`, distinct d'un conflit de version récupérable par rechargement.
 
-MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId)` sérialise toutes les mutations d'ordre `pending`, créations comprises. Si le processus s'arrête après une réservation, la mutation suivante reprend d'abord l'opération déjà réservée depuis ses snapshots : elle termine une création incomplète, reprend un déplacement ligne par ligne ou effectue sa compensation. L'ancien propriétaire et cette reprise peuvent coexister sans doubler les effets grâce aux marqueurs et aux CAS. La visite est libérée uniquement lorsque l'opération atteint `completed` ou `conflict`, ce qui évite à la fois un bail expirant trop tôt et un verrou abandonné définitivement. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
+MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId)` sérialise toutes les mutations d'ordre `pending`, créations et suppressions comprises. Si le processus s'arrête après une réservation, la mutation suivante reprend d'abord l'opération déjà réservée depuis ses snapshots : elle termine une création incomplète, reprend un déplacement ligne par ligne ou effectue sa compensation, ou termine exactement le tombstone identifié par `lastDeleteOperationKeyHash`. L'ancien propriétaire et cette reprise peuvent coexister sans doubler les effets grâce aux marqueurs et aux CAS. La visite est libérée uniquement lorsque l'opération atteint `completed` ou `conflict`, ce qui évite à la fois un bail expirant trop tôt et un verrou abandonné définitivement. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
 
 ## Mutations et concurrence
 
 - `PATCH` et `DELETE` exigent la version active ;
+- un corps `PATCH` sans version positive ou sans statut défini est rejeté en validation `400`, avant toute lecture de persistance ;
 - une correction réelle incrémente la version, un no-op ne l'incrémente pas ;
-- une suppression conserve un tombstone et disparaît des lectures actives ;
+- une suppression conserve un tombstone, disparaît des lectures actives et partage la réservation exclusive de timeline avec les créations et déplacements ;
 - un conflit de version retourne `ride-occurrence.version-conflict` et impose un rechargement ;
 - seul `Completed` expose `CountsAsRide=true` ;
 - l'heure locale reste facultative et exige une visite au jour exact avec fuseau lorsqu'elle est fournie.
@@ -117,9 +118,10 @@ MongoDB autonome ne fournit pas de transaction multi-document : la renormalisati
 ```text
 user-ride-occurrences:
   lastReorderOperationKeyHash?: SHA-256
+  lastDeleteOperationKeyHash?: SHA-256
 
 user-ride-occurrence-operations:
-  operationKind: creation | reorder
+  operationKind: creation | reorder | delete
   items: [{
     index: int32,
     occurrenceId: string,
@@ -137,6 +139,9 @@ user-ride-occurrence-operations:
   reorderExpectedVersion?: int64
   reorderAnchorOccurrenceId?: string
   reorderPlacement?: First | Last | Before | After
+  deleteOccurrenceId?: string
+  deleteExpectedVersion?: int64
+  deleteAtUtc?: date
   wasNormalized?: boolean
   reorderItems?: [{
     index: int32,
@@ -150,7 +155,7 @@ user-ride-occurrence-operations:
   reorderResultSnapshot?: occurrence déplacée renvoyée au client
 ```
 
-La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations et déplacements ; l'index unique partiel `(userId, visitId)` couvre toute opération `pending`, quel que soit son type, pour sérialiser la timeline d'une visite.
+La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations, déplacements et identifiants internes de suppression ; l'index unique partiel `(userId, visitId)` couvre toute opération `pending`, quel que soit son type, pour sérialiser la timeline d'une visite.
 
 ## Responsive et suite
 

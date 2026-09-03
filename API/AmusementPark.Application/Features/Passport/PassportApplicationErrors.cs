@@ -178,4 +178,11 @@ public static class PassportApplicationErrors
             "ride-occurrence.reorder-invalid",
             "Le déplacement demandé est invalide.");
     }
+
+    public static ApplicationError InvalidRideOccurrenceUpdate()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.update-invalid",
+            "Les données de correction de l’occurrence sont invalides.");
+    }
 }

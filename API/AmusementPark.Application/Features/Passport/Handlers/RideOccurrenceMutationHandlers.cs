@@ -38,9 +38,14 @@ public sealed class UpdateRideOccurrenceCommandHandler
             command.UserId,
             command.VisitId,
             command.OccurrenceId);
-        if (scope is null || command.ExpectedVersion < 1 || !Enum.IsDefined(command.Status))
+        if (scope is null)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
+        }
+
+        if (command.ExpectedVersion < 1 || !Enum.IsDefined(command.Status))
+        {
+            return Failure(PassportApplicationErrors.InvalidRideOccurrenceUpdate());
         }
 
         Visit? visit = await this.visitRepository.GetOwnedAsync(
@@ -183,7 +188,7 @@ public sealed class DeleteRideOccurrenceCommandHandler
 
         long expectedVersion = occurrence.Version;
         occurrence.Delete(this.clock.UtcNow);
-        bool deleted = await this.occurrenceRepository.TryUpdateOwnedAsync(
+        bool deleted = await this.occurrenceRepository.TryDeleteOwnedAsync(
             occurrence,
             expectedVersion,
             cancellationToken);

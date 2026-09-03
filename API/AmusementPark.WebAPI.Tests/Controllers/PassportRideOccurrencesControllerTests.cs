@@ -120,6 +120,24 @@ public sealed class PassportRideOccurrencesControllerTests
     }
 
     [Fact]
+    public void UpdateRequest_ShouldRejectMissingVersionAndStatusDuringModelValidation()
+    {
+        UpdatePassportRideOccurrenceRequestDto request =
+            new UpdatePassportRideOccurrenceRequestDto();
+        List<ValidationResult> results = new List<ValidationResult>();
+
+        bool isValid = Validator.TryValidateObject(
+            request,
+            new ValidationContext(request),
+            results,
+            validateAllProperties: true);
+
+        Assert.False(isValid);
+        Assert.Contains(results, result => result.MemberNames.Contains("ExpectedVersion"));
+        Assert.Contains(results, result => result.MemberNames.Contains("Status"));
+    }
+
+    [Fact]
     public void Controller_ShouldExposeOnlyPrivateNoStoreRoutes()
     {
         RouteAttribute route = Assert.IsType<RouteAttribute>(

@@ -273,6 +273,78 @@ public sealed class RideOccurrenceHandlersTests
         targets.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData(0, RideOccurrenceStatus.Completed)]
+    [InlineData(1, (RideOccurrenceStatus)0)]
+    public async Task Update_WithMalformedFields_ShouldReturnValidationBeforePersistence(
+        long expectedVersion,
+        RideOccurrenceStatus status)
+    {
+        Mock<IUserVisitRepository> visits =
+            new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            CreateClock());
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpdateRideOccurrenceCommand(
+                "owner-1",
+                "visit-1",
+                "occurrence-1",
+                expectedVersion,
+                null,
+                false,
+                status,
+                null,
+                false));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("ride-occurrence.update-invalid", Assert.Single(result.Errors).Code);
+        visits.VerifyNoOtherCalls();
+        occurrences.VerifyNoOtherCalls();
+        targets.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Delete_ShouldUseTheSerializedDeletionPort()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        occurrences.Setup(repository => repository.TryDeleteOwnedAsync(
+                It.Is<RideOccurrence>(item => item.IsDeleted && item.Version == 2),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        DeleteRideOccurrenceCommandHandler handler = new DeleteRideOccurrenceCommandHandler(
+            occurrences.Object,
+            CreateClock());
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new DeleteRideOccurrenceCommand(
+                visit.UserId,
+                visit.Id.Value,
+                occurrence.Id.Value,
+                1));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("occurrence-1", result.Value?.Id);
+        occurrences.VerifyAll();
+    }
+
     [Fact]
     public async Task Reorder_WhenOperationAlreadyExists_ShouldReplayBeforeMutableReads()
     {
