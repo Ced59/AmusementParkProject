@@ -13,9 +13,9 @@ public sealed class CorsSettings
 
     public string[] AllowedMethods { get; init; } = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"];
 
-    public string[] AllowedHeaders { get; init; } = ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", "X-AmusementPark-Public-View-Mode"];
+    public string[] AllowedHeaders { get; init; } = ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", "X-AmusementPark-Public-View-Mode", "Idempotency-Key"];
 
-    public string[] ExposedHeaders { get; init; } = ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", "X-AmusementPark-Public-View-Mode-Applied"];
+    public string[] ExposedHeaders { get; init; } = ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", "X-AmusementPark-Public-View-Mode-Applied", "Idempotency-Replayed", "Ride-Order-Normalized"];
 
     public bool AllowCredentials { get; init; } = true;
 }

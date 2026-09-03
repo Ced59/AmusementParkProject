@@ -8,13 +8,29 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IRideOccurrenceRepository
 {
+    Task<RideOccurrenceCreationKeyReservationResult>
+        ResolveBatchCreationKeyReservationAsync(
+            RideOccurrenceCreationRequest request,
+            string clientOperationId,
+            CancellationToken cancellationToken);
+
+    Task<RideOccurrenceCreationKeyReservationResult> ReserveBatchCreationKeyAsync(
+        RideOccurrenceCreationRequest request,
+        RideOccurrenceCreationPreparation preparation,
+        string clientOperationId,
+        DateTime reservedAtUtc,
+        CancellationToken cancellationToken);
+
     Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(
-        IReadOnlyList<RideOccurrence> requestedOccurrences,
+        RideOccurrenceCreationRequest request,
         string clientOperationId,
         CancellationToken cancellationToken);
 
     Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
+        RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
+        long? expectedLastSortPosition,
+        bool wasOrderNormalized,
         string clientOperationId,
         CancellationToken cancellationToken);
 
@@ -28,13 +44,42 @@ public interface IRideOccurrenceRepository
         RideOccurrenceListCriteria criteria,
         CancellationToken cancellationToken);
 
-    Task<long?> GetLastSortPositionAsync(
+    Task<RideOccurrenceAppendState> GetAppendStateAsync(
         VisitId visitId,
         string userId,
+        string clientOperationId,
         CancellationToken cancellationToken);
 
     Task<bool> TryUpdateOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryConfirmOwnedVersionAsync(
+        RideOccurrenceId occurrenceId,
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryDeleteOwnedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(
+        RideOccurrenceReorderRequest request,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
+    Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
         CancellationToken cancellationToken);
 }

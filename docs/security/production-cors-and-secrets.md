@@ -37,13 +37,16 @@ GET, POST, PUT, PATCH, DELETE, OPTIONS
 Headers autorisés :
 
 ```txt
-Authorization, Content-Type, Accept-Language, X-Requested-With
+Authorization, Content-Type, Accept-Language, X-Requested-With,
+X-AmusementPark-Public-View-Mode, Idempotency-Key
 ```
 
 Headers exposés au navigateur :
 
 ```txt
-Retry-After, X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset
+Retry-After, X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset,
+X-AmusementPark-Public-View-Mode-Applied, Idempotency-Replayed,
+Ride-Order-Normalized
 ```
 
 ## Secrets production

@@ -103,4 +103,86 @@ public static class PassportApplicationErrors
             "visit.list-status-invalid",
             "Le statut de filtrage est invalide.");
     }
+
+    public static ApplicationError InvalidRideOccurrence(string code, string message)
+    {
+        return ApplicationError.Validation(code, message);
+    }
+
+    public static ApplicationError InvalidRideOccurrenceBatch()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.batch-invalid",
+            "Le lot doit créer entre 1 et 100 occurrences valides.");
+    }
+
+    public static ApplicationError InvalidRideOccurrenceListLimit()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.list-limit-invalid",
+            $"La taille de page doit être comprise entre 1 et {RideOccurrenceListCriteria.MaximumLimit}.");
+    }
+
+    public static ApplicationError RideOccurrenceNotFound()
+    {
+        return ApplicationError.NotFound(
+            "ride-occurrence.not-found",
+            "L’occurrence demandée est introuvable.");
+    }
+
+    public static ApplicationError VisitTargetNotFound()
+    {
+        return ApplicationError.NotFound(
+            "ride-occurrence.target-not-found",
+            "L’attraction associée à l’occurrence est introuvable.");
+    }
+
+    public static ApplicationError VisitTargetParkMismatch()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.target-park-mismatch",
+            "L’attraction n’appartient pas au parc de cette visite.");
+    }
+
+    public static ApplicationError VisitTargetNotAttraction()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.target-not-attraction",
+            "Seules les attractions peuvent être ajoutées au journal des tours.");
+    }
+
+    public static ApplicationError HistoricalConflictConfirmationRequired()
+    {
+        return ApplicationError.Conflict(
+            "ride-occurrence.historical-conflict-confirmation-required",
+            "Les dates connues de l’attraction sont incompatibles avec la visite. Une confirmation explicite est requise.");
+    }
+
+    public static ApplicationError RideOccurrenceConcurrencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "ride-occurrence.version-conflict",
+            "L’occurrence ou son ordre a changé. Recharge le journal avant de réessayer.");
+    }
+
+    public static ApplicationError RideOccurrenceIdempotencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "ride-occurrence.idempotency-key-conflict",
+            "Cette clé d’idempotence a déjà été utilisée avec un contenu différent.");
+    }
+
+    public static ApplicationError InvalidRideOccurrenceReorder()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.reorder-invalid",
+            "Le déplacement demandé est invalide.");
+    }
+
+    public static ApplicationError InvalidRideOccurrenceUpdate()
+    {
+        return ApplicationError.Validation(
+            "ride-occurrence.update-invalid",
+            "Les données de correction de l’occurrence sont invalides.");
+    }
 }

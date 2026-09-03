@@ -25,6 +25,41 @@ internal static class UserRideOccurrenceMongoDefinitions
             & filters.Eq(static document => document.DeletedAtUtc, null);
     }
 
+    public static FilterDefinition<UserRideOccurrenceDocument> BuildOwnedAnyStateFilter(
+        string occurrenceId,
+        string visitId,
+        string userId)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        return filters.Eq(
+                static document => document.Id,
+                NormalizeRequired(occurrenceId, nameof(occurrenceId)))
+            & filters.Eq(
+                static document => document.VisitId,
+                NormalizeRequired(visitId, nameof(visitId)))
+            & filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)));
+    }
+
+    public static FilterDefinition<UserRideOccurrenceDocument>
+        BuildOwnedAnyStateReorderVersionFilter(
+            string occurrenceId,
+            string visitId,
+            string userId,
+            long expectedVersion,
+            string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        return BuildOwnedAnyStateFilter(occurrenceId, visitId, userId)
+            & filters.Eq(static document => document.Version, expectedVersion)
+            & filters.Eq(
+                static document => document.LastReorderOperationKeyHash,
+                NormalizeRequired(operationKeyHash, nameof(operationKeyHash)));
+    }
+
     public static FilterDefinition<UserRideOccurrenceDocument> BuildOwnedVersionFilter(
         string occurrenceId,
         string visitId,

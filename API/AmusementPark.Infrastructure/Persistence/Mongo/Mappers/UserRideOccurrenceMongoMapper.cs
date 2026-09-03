@@ -108,7 +108,32 @@ internal static class UserRideOccurrenceMongoMapper
             null);
     }
 
-    private static RideOccurrenceMomentDocument ToDocument(this OccurrenceMoment moment)
+    public static RideOccurrence SnapshotToDomain(
+        this UserRideOccurrenceCreationSnapshotDocument snapshot,
+        string occurrenceId,
+        string userId)
+    {
+        ArgumentNullException.ThrowIfNull(snapshot);
+        return RideOccurrence.Restore(
+            RideOccurrenceId.Parse(occurrenceId),
+            VisitId.Parse(snapshot.VisitId),
+            userId,
+            snapshot.ParkId,
+            snapshot.ParkItemId,
+            snapshot.SortPosition,
+            snapshot.Moment.ToDomain(),
+            snapshot.Status,
+            snapshot.Source,
+            snapshot.HistoricalConsistency,
+            snapshot.HistoricalTarget.ToDomain(),
+            snapshot.PrivateNote,
+            snapshot.Version,
+            snapshot.CreatedAtUtc,
+            snapshot.UpdatedAtUtc,
+            null);
+    }
+
+    internal static RideOccurrenceMomentDocument ToDocument(this OccurrenceMoment moment)
     {
         return new RideOccurrenceMomentDocument
         {
@@ -117,7 +142,7 @@ internal static class UserRideOccurrenceMongoMapper
         };
     }
 
-    private static OccurrenceMoment ToDomain(this RideOccurrenceMomentDocument document)
+    internal static OccurrenceMoment ToDomain(this RideOccurrenceMomentDocument document)
     {
         TimeOnly? localTime = string.IsNullOrWhiteSpace(document.LocalTime)
             ? null
@@ -129,7 +154,7 @@ internal static class UserRideOccurrenceMongoMapper
         return new OccurrenceMoment(localTime, document.IsApproximate);
     }
 
-    private static HistoricalTargetReferenceDocument? ToDocument(
+    internal static HistoricalTargetReferenceDocument? ToDocument(
         this HistoricalTargetReference? reference)
     {
         return reference is null
@@ -141,7 +166,7 @@ internal static class UserRideOccurrenceMongoMapper
             };
     }
 
-    private static HistoricalTargetReference? ToDomain(
+    internal static HistoricalTargetReference? ToDomain(
         this HistoricalTargetReferenceDocument? document)
     {
         return document is null

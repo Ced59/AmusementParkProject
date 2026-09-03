@@ -27,8 +27,14 @@ public static class CorsServiceCollectionExtensions
         string[] configuredAllowedOrigins = ParseConfiguredOrigins(corsSettings);
         string[] allowedOrigins = NormalizeAllowedOrigins(configuredAllowedOrigins, corsSettings.AllowCredentials, environment);
         string[] allowedMethods = NormalizeTokens(corsSettings.AllowedMethods, ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]);
-        string[] allowedHeaders = NormalizeTokens(corsSettings.AllowedHeaders, ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", AdminPublicViewSimulation.RequestHeaderName]);
-        string[] exposedHeaders = NormalizeTokens(corsSettings.ExposedHeaders, ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", AdminPublicViewSimulation.AppliedResponseHeaderName]);
+        string[] allowedHeaders = IncludeRequiredTokens(
+            corsSettings.AllowedHeaders,
+            ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", AdminPublicViewSimulation.RequestHeaderName, "Idempotency-Key"],
+            ["Idempotency-Key"]);
+        string[] exposedHeaders = IncludeRequiredTokens(
+            corsSettings.ExposedHeaders,
+            ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", AdminPublicViewSimulation.AppliedResponseHeaderName, "Idempotency-Replayed", "Ride-Order-Normalized"],
+            ["Idempotency-Replayed", "Ride-Order-Normalized"]);
 
         CorsSettings normalizedSettings = new CorsSettings
         {
@@ -178,5 +184,16 @@ public static class CorsServiceCollectionExtensions
         }
 
         return defaultTokens.ToArray();
+    }
+
+    private static string[] IncludeRequiredTokens(
+        string[] configuredTokens,
+        IReadOnlyCollection<string> defaultTokens,
+        IReadOnlyCollection<string> requiredTokens)
+    {
+        return NormalizeTokens(configuredTokens, defaultTokens)
+            .Concat(requiredTokens)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
     }
 }

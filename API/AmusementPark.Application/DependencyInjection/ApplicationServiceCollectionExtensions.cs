@@ -16,6 +16,8 @@ using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkWeather.Services;
 using AmusementPark.Application.Features.Parks.Services;
+using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -108,6 +110,8 @@ public static class ApplicationServiceCollectionExtensions
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
+        services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
+        services.AddScoped<RideOccurrenceAppendOrderNormalizer>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkOpeningHoursSitemapSectionProvider>();

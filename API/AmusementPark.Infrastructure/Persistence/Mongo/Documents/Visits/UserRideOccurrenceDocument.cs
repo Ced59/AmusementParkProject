@@ -75,6 +75,14 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? CreationSnapshot { get; set; }
+
+    [BsonElement("lastReorderOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? LastReorderOperationKeyHash { get; set; }
+
+    [BsonElement("lastDeleteOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? LastDeleteOperationKeyHash { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -162,9 +170,126 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonElement("payloadHash")]
     public string PayloadHash { get; set; } = string.Empty;
 
+    [BsonElement("operationKind")]
+    public string OperationKind { get; set; } = "creation";
+
+    [BsonElement("visitId")]
+    [BsonIgnoreIfNull]
+    public string? VisitId { get; set; }
+
+    [BsonElement("operationState")]
+    [BsonIgnoreIfNull]
+    public string? OperationState { get; set; }
+
+    [BsonElement("creationPreparation")]
+    [BsonIgnoreIfNull]
+    public UserRideOccurrenceCreationPreparationDocument? CreationPreparation { get; set; }
+
+    [BsonElement("appendBaseWasEmpty")]
+    [BsonIgnoreIfDefault]
+    public bool AppendBaseWasEmpty { get; set; }
+
+    [BsonElement("appendBaseSortPosition")]
+    [BsonIgnoreIfNull]
+    public long? AppendBaseSortPosition { get; set; }
+
+    [BsonElement("appendBaseValidated")]
+    [BsonIgnoreIfDefault]
+    public bool AppendBaseValidated { get; set; }
+
+    [BsonElement("movedOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? MovedOccurrenceId { get; set; }
+
+    [BsonElement("reorderExpectedVersion")]
+    [BsonIgnoreIfNull]
+    public long? ReorderExpectedVersion { get; set; }
+
+    [BsonElement("reorderAnchorOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? ReorderAnchorOccurrenceId { get; set; }
+
+    [BsonElement("reorderPlacement")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public RideOccurrencePlacement? ReorderPlacement { get; set; }
+
+    [BsonElement("deleteOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? DeleteOccurrenceId { get; set; }
+
+    [BsonElement("deleteExpectedVersion")]
+    [BsonIgnoreIfNull]
+    public long? DeleteExpectedVersion { get; set; }
+
+    [BsonElement("deleteAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? DeleteAtUtc { get; set; }
+
+    [BsonElement("wasNormalized")]
+    [BsonIgnoreIfDefault]
+    public bool WasNormalized { get; set; }
+
+    [BsonElement("relatedCreationOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? RelatedCreationOperationKeyHash { get; set; }
+
     [BsonElement("items")]
     public List<UserRideOccurrenceCreationAllocationDocument> Items { get; set; } =
         new List<UserRideOccurrenceCreationAllocationDocument>();
+
+    [BsonElement("reorderItems")]
+    [BsonIgnoreIfNull]
+    public List<UserRideOccurrenceReorderAllocationDocument>? ReorderItems { get; set; }
+
+    [BsonElement("orderGuards")]
+    [BsonIgnoreIfNull]
+    public List<UserRideOccurrenceOrderGuardDocument>? OrderGuards { get; set; }
+
+    [BsonElement("orderGuardsValidated")]
+    [BsonIgnoreIfDefault]
+    public bool OrderGuardsValidated { get; set; }
+
+    [BsonElement("reorderCompensationStarted")]
+    [BsonIgnoreIfDefault]
+    public bool ReorderCompensationStarted { get; set; }
+
+    [BsonElement("reorderResultSnapshot")]
+    [BsonIgnoreIfNull]
+    public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceCreationPreparationDocument
+{
+    [BsonElement("parkId")]
+    public string ParkId { get; set; } = string.Empty;
+
+    [BsonElement("visitDate")]
+    public VisitDateDocument VisitDate { get; set; } = new VisitDateDocument();
+
+    [BsonElement("timeZoneId")]
+    [BsonIgnoreIfNull]
+    public string? TimeZoneId { get; set; }
+
+    [BsonElement("serviceDayConvention")]
+    [BsonRepresentation(BsonType.String)]
+    public LocalServiceDayConvention ServiceDayConvention { get; set; }
+
+    [BsonElement("items")]
+    public List<UserRideOccurrenceCreationPreparationItemDocument> Items { get; set; } =
+        new List<UserRideOccurrenceCreationPreparationItemDocument>();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceCreationPreparationItemDocument
+{
+    [BsonElement("index")]
+    public int Index { get; set; }
+
+    [BsonElement("historicalConsistency")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalConsistency HistoricalConsistency { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -184,4 +309,43 @@ public sealed class UserRideOccurrenceCreationAllocationDocument
 
     [BsonElement("updatedAtUtc")]
     public DateTime UpdatedAtUtc { get; set; }
+
+    [BsonElement("creationSnapshot")]
+    public UserRideOccurrenceCreationSnapshotDocument CreationSnapshot { get; set; } =
+        new UserRideOccurrenceCreationSnapshotDocument();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceOrderGuardDocument
+{
+    [BsonElement("occurrenceId")]
+    public string OccurrenceId { get; set; } = string.Empty;
+
+    [BsonElement("sortPosition")]
+    public long SortPosition { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceReorderAllocationDocument
+{
+    [BsonElement("index")]
+    public int Index { get; set; }
+
+    [BsonElement("occurrenceId")]
+    public string OccurrenceId { get; set; } = string.Empty;
+
+    [BsonElement("expectedVersion")]
+    public long ExpectedVersion { get; set; }
+
+    [BsonElement("previousSortPosition")]
+    public long PreviousSortPosition { get; set; }
+
+    [BsonElement("resultSortPosition")]
+    public long ResultSortPosition { get; set; }
+
+    [BsonElement("resultVersion")]
+    public long ResultVersion { get; set; }
+
+    [BsonElement("resultUpdatedAtUtc")]
+    public DateTime ResultUpdatedAtUtc { get; set; }
 }
