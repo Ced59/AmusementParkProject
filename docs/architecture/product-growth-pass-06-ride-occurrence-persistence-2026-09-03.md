@@ -178,7 +178,7 @@ sequenceDiagram
     R-->>A: Created ou Replayed avec snapshots initiaux
 ```
 
-Le hash sémantique ignore les identifiants, positions et timestamps générés. Il reste sensible à l'ordre et au contenu fonctionnel du lot. Ainsi, un retry qui régénère ses détails techniques retrouve le résultat réservé, tandis qu'une réutilisation de la même clé pour un autre contenu produit un conflit.
+Le hash sémantique ignore les identifiants, positions et timestamps générés. Il reste sensible à l'ordre et au contenu fonctionnel du lot. Ainsi, un retry qui régénère ses détails techniques retrouve le résultat réservé, tandis qu'une réutilisation de la même clé pour un autre contenu produit un conflit. La validation de cette réservation consulte le `creationSnapshot` immuable : une occurrence déplacée, corrigée ou supprimée après sa création n'invalide donc pas le replay de son résultat initial.
 
 ## Indexes et requêtes couvertes
 

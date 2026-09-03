@@ -203,6 +203,58 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public void ResolveAgainstOperation_AfterALiveOccurrenceMutation_ShouldReplayTheSnapshot()
+    {
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+            new[] { occurrence });
+        UserRideOccurrenceDocument document = CreateCreationDocument(
+            occurrence,
+            payloadHash,
+            0,
+            1);
+        document.SortPosition = 4096;
+        document.Status = RideOccurrenceStatus.MissedClosed;
+        document.Version = 3;
+        document.UpdatedAt = NowUtc.AddHours(2);
+        document.DeletedAtUtc = NowUtc.AddHours(2);
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = "operation-hash",
+                PayloadHash = payloadHash,
+                Items = new List<UserRideOccurrenceCreationAllocationDocument>
+                {
+                    new UserRideOccurrenceCreationAllocationDocument
+                    {
+                        Index = 0,
+                        OccurrenceId = "occurrence-1",
+                        SortPosition = 1024,
+                        CreatedAtUtc = NowUtc,
+                        UpdatedAtUtc = NowUtc,
+                    },
+                },
+            };
+
+        IdempotentRideOccurrenceCreationResult? result =
+            UserRideOccurrenceRepository.ResolveAgainstOperation(
+                operation,
+                new[] { document },
+                payloadHash,
+                1);
+
+        Assert.NotNull(result);
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.Replayed, result.Status);
+        RideOccurrence replayed = Assert.Single(result.Occurrences);
+        Assert.Equal(1024, replayed.SortPosition);
+        Assert.Equal(RideOccurrenceStatus.Completed, replayed.Status);
+        Assert.Equal(1, replayed.Version);
+        Assert.False(replayed.IsDeleted);
+        Assert.Equal(NowUtc, replayed.UpdatedAtUtc);
+    }
+
+    [Fact]
     public void CreateCreationDocument_ShouldReuseTheReservedOriginalTimestamps()
     {
         RideOccurrence retryOccurrence = CreateOccurrence(

@@ -285,13 +285,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             operation.Items.ToDictionary(static item => item.Index);
         bool allocationsMatch = existing.All(document =>
             document.CreationOperationIndex.HasValue
+            && document.CreationSnapshot is not null
             && allocations.TryGetValue(
                 document.CreationOperationIndex.Value,
                 out UserRideOccurrenceCreationAllocationDocument? allocation)
             && string.Equals(document.Id, allocation.OccurrenceId, StringComparison.Ordinal)
-            && document.SortPosition == allocation.SortPosition
-            && document.CreatedAt == allocation.CreatedAtUtc
-            && document.UpdatedAt == allocation.UpdatedAtUtc);
+            && document.CreationSnapshot.SortPosition == allocation.SortPosition
+            && document.CreationSnapshot.CreatedAtUtc == allocation.CreatedAtUtc
+            && document.CreationSnapshot.UpdatedAtUtc == allocation.UpdatedAtUtc);
         if (!allocationsMatch)
         {
             return CreateConflictResult();
