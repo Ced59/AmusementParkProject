@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 using Moq;
@@ -152,6 +153,30 @@ public sealed class PassportVisitHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("visit.time-zone-id-invalid", Assert.Single(result.Errors).Code);
+        visits.VerifyNoOtherCalls();
+        parks.VerifyNoOtherCalls();
+        timeZones.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CreateVisit_WhenParkIdentifierIsInvalid_ShouldReturnValidationBeforeAnyRepositoryCall()
+    {
+        Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
+        CreateVisitCommandHandler handler = CreateHandler(visits.Object, parks.Object, timeZones.Object);
+        string invalidParkId = new string('p', IdentifierRules.MaximumLength + 1);
+
+        ApplicationResult<CreateVisitResult> result = await handler.HandleAsync(
+            CreateCommand() with { ParkId = invalidParkId });
+
+        ApplicationError error = Assert.Single(result.Errors);
+        Assert.False(result.IsSuccess);
+        Assert.Equal(ApplicationErrorType.Validation, error.Type);
+        Assert.Equal(IdentifierErrorCodes.TooLong, error.Code);
+        Assert.Equal(
+            new[] { IdentifierErrorCodes.TooLong },
+            Assert.Single(error.Details!).Value);
         visits.VerifyNoOtherCalls();
         parks.VerifyNoOtherCalls();
         timeZones.VerifyAll();

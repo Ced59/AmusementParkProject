@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 
@@ -106,6 +107,14 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
                 PassportApplicationErrors.InvalidVisit(
                     exception.ErrorCode,
                     exception.Message));
+        }
+        catch (IdentifierValidationException exception)
+        {
+            return ApplicationResult<CreateVisitResult>.Failure(
+                PassportApplicationErrors.InvalidIdentifier(
+                    exception.ErrorCode,
+                    exception.Message,
+                    exception.ParamName));
         }
 
         IdempotentVisitCreationResult? existingCreation =

@@ -25,6 +25,21 @@ public static class PassportApplicationErrors
         return ApplicationError.Validation(code, message);
     }
 
+    public static ApplicationError InvalidIdentifier(
+        string code,
+        string message,
+        string? parameterName)
+    {
+        IReadOnlyDictionary<string, IReadOnlyCollection<string>>? details =
+            string.IsNullOrWhiteSpace(parameterName)
+                ? null
+                : new Dictionary<string, IReadOnlyCollection<string>>
+                {
+                    [parameterName] = new[] { code },
+                };
+        return ApplicationError.Validation(code, message, details);
+    }
+
     public static ApplicationError InvalidTimeZone()
     {
         return ApplicationError.Validation(
