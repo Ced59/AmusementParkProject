@@ -1,9 +1,11 @@
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
+using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
 using AmusementPark.Infrastructure.Services.Ratings;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,6 +37,21 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
         ServiceDescriptor registration = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IDurableBackgroundJobRepository));
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterUserVisitRepository()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IUserVisitRepository));
+        Assert.Equal(typeof(UserVisitRepository), registration.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
     }
 
