@@ -33,6 +33,14 @@ public sealed record VisitDate
 
     public bool IsApproximate { get; }
 
+    /// <summary>
+    /// Valeur d'ordre chronologique qui conserve la précision déclarée.
+    /// Dans une même période, un jour connu vient avant le mois seul,
+    /// puis le mois seul avant l'année seule dans un tri décroissant.
+    /// </summary>
+    public int ChronologicalOrderValue =>
+        checked((this.Year * 10000) + ((this.Month ?? 0) * 100) + (this.Day ?? 0));
+
     public static VisitDate ForYear(int year, bool isApproximate = false)
     {
         return new VisitDate(year, null, null, VisitDatePrecision.Year, isApproximate);

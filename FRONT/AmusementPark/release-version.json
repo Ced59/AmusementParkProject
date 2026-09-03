@@ -1,6 +1,20 @@
 {
-  "version": "5.0.4",
+  "version": "5.0.5",
   "history": [
+    {
+      "version": "5.0.5",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Premiers accès sécurisés aux visites privées du futur passeport.",
+        "en": "First secure access to private visits in the upcoming passport.",
+        "de": "Erste sichere Zugriffe auf private Besuche im künftigen Besuchspass.",
+        "nl": "Eerste veilige toegang tot privébezoeken in het toekomstige bezoekpaspoort.",
+        "it": "Primi accessi sicuri alle visite private del futuro passaporto.",
+        "es": "Primeros accesos seguros a las visitas privadas del futuro pasaporte.",
+        "pl": "Pierwszy bezpieczny dostęp do prywatnych wizyt w przyszłym paszporcie.",
+        "pt": "Primeiros acessos seguros às visitas privadas do futuro passaporte."
+      }
+    },
     {
       "version": "5.0.4",
       "releasedAt": "2026-09-03",

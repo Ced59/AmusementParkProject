@@ -140,6 +140,22 @@ public sealed class VisitDateTests
     }
 
     [Fact]
+    public void ChronologicalOrderValue_ShouldOrderKnownPartsWithoutInventingPrecision()
+    {
+        VisitDate year = VisitDate.ForYear(2024);
+        VisitDate month = VisitDate.ForMonth(2024, 2);
+        VisitDate day = VisitDate.ForDay(2024, 2, 29);
+
+        Assert.Equal(20240000, year.ChronologicalOrderValue);
+        Assert.Equal(20240200, month.ChronologicalOrderValue);
+        Assert.Equal(20240229, day.ChronologicalOrderValue);
+        Assert.True(day.ChronologicalOrderValue > month.ChronologicalOrderValue);
+        Assert.True(month.ChronologicalOrderValue > year.ChronologicalOrderValue);
+        Assert.Null(year.Month);
+        Assert.Null(month.Day);
+    }
+
+    [Fact]
     public void ValueEquality_ShouldIncludePrecisionAndApproximation()
     {
         VisitDate exact = VisitDate.ForMonth(2024, 7);

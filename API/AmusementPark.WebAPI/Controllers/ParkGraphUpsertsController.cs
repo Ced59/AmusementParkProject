@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
+using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -16,7 +17,6 @@ using AmusementPark.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
 
 using AmusementPark.WebAPI.OutputCaching;
 
@@ -29,7 +29,8 @@ namespace AmusementPark.WebAPI.Controllers;
 [RequireActivatedUnblockedUser]
 public sealed class ParkGraphUpsertsController : ControllerBase
 {
-    internal const string ForwardedPrefixHeaderName = "X-Forwarded-Prefix";
+    internal const string ForwardedPrefixHeaderName =
+        HttpRequestPublicPathExtensions.ForwardedPrefixHeaderName;
 
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
     private readonly ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler;
@@ -312,7 +313,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
 
     internal static string BuildBulkExportDownloadUrl(HttpRequest request, string jobId, string token)
     {
-        string pathPrefix = GetPublicPathPrefix(request);
+        string pathPrefix = request.GetPublicPathPrefix();
         string escapedJobId = Uri.EscapeDataString(jobId);
         string escapedToken = Uri.EscapeDataString(token);
         return $"{request.Scheme}://{request.Host}{pathPrefix}/admin/park-graph-upserts/bulk/export-jobs/{escapedJobId}/download?token={escapedToken}";
@@ -328,55 +329,4 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         return BuildBulkExportDownloadUrl(this.Request, snapshot.JobId, snapshot.DownloadToken);
     }
 
-    private static string GetPublicPathPrefix(HttpRequest request)
-    {
-        if (request.Headers.TryGetValue(ForwardedPrefixHeaderName, out StringValues forwardedPrefixValues))
-        {
-            foreach (string? rawForwardedPrefix in forwardedPrefixValues)
-            {
-                if (string.IsNullOrWhiteSpace(rawForwardedPrefix))
-                {
-                    continue;
-                }
-
-                string[] candidates = rawForwardedPrefix.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-                foreach (string candidate in candidates)
-                {
-                    string? normalizedPrefix = NormalizePublicPathPrefix(candidate);
-                    if (normalizedPrefix is not null)
-                    {
-                        return normalizedPrefix;
-                    }
-                }
-            }
-        }
-
-        if (!request.PathBase.HasValue)
-        {
-            return string.Empty;
-        }
-
-        return NormalizePublicPathPrefix(request.PathBase.Value ?? string.Empty) ?? string.Empty;
-    }
-
-    private static string? NormalizePublicPathPrefix(string value)
-    {
-        string trimmedValue = value.Trim().TrimEnd('/');
-        if (trimmedValue.Length == 0 || string.Equals(trimmedValue, "/", StringComparison.Ordinal))
-        {
-            return string.Empty;
-        }
-
-        if (!trimmedValue.StartsWith("/", StringComparison.Ordinal)
-            || trimmedValue.StartsWith("//", StringComparison.Ordinal)
-            || trimmedValue.Contains('\\', StringComparison.Ordinal)
-            || trimmedValue.Contains(':', StringComparison.Ordinal)
-            || trimmedValue.Contains('?', StringComparison.Ordinal)
-            || trimmedValue.Contains('#', StringComparison.Ordinal))
-        {
-            return null;
-        }
-
-        return trimmedValue;
-    }
 }

@@ -45,6 +45,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
+using AmusementPark.Infrastructure.Services.Passport;
 using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Services.DataSources;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
@@ -216,6 +217,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRatingRankingSourceRevisionRepository, RatingRankingSourceRevisionRepository>();
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
+        services.AddSingleton<IPassportClock, SystemPassportClock>();
+        services.AddSingleton<IPassportTimeZoneValidator, SystemPassportTimeZoneValidator>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
