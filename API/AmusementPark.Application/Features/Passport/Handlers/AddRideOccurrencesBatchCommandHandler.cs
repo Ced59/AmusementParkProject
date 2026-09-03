@@ -400,7 +400,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         }
 
         CreateRideOccurrencesResult value = new CreateRideOccurrencesResult(
-            result.Occurrences.Select(PassportRideOccurrenceResultFactory.Create).ToArray(),
+            result.Occurrences.Select(static occurrence =>
+                PassportRideOccurrenceResultFactory.Create(occurrence)).ToArray(),
             result.Status == IdempotentRideOccurrenceCreationStatus.Replayed,
             result.WasNormalized);
         return ApplicationResult<CreateRideOccurrencesResult>.Success(value);

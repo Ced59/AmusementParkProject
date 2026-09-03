@@ -13,6 +13,7 @@
       "actions": {
         "openForPark": "Aggiungi una visita",
         "done": "Fine",
+        "addAttractions": "Aggiungi attrazioni",
         "addAnother": "Aggiungi un’altra visita",
         "saving": "Salvataggio…",
         "create": "Crea la visita",
@@ -72,6 +73,126 @@
         "date": "La data della visita non è valida.",
         "retryConflict": "Questo tentativo non corrisponde più ai dati iniziali. Controlla i campi e riprova.",
         "network": "La risposta del server non è arrivata. Riprova: la visita non verrà creata due volte."
+      }
+    },
+    "editor": {
+      "kicker": "Diario della visita",
+      "title": "Completa la tua visita",
+      "private": "Privato",
+      "loading": "Caricamento della visita…",
+      "actions": {
+        "back": "Torna al profilo",
+        "retry": "Riprova",
+        "filter": "Cerca",
+        "clear": "Cancella i filtri",
+        "previous": "Precedente",
+        "next": "Successiva",
+        "clearSelection": "Rimuovi tutto",
+        "retryAdd": "Verifica l’ultimo inserimento",
+        "adding": "Aggiunta…",
+        "addToTimeline": { "one": "Aggiungi {{count}} voce", "few": "Aggiungi {{count}} voci", "many": "Aggiungi {{count}} voci", "other": "Aggiungi {{count}} voci" },
+        "dismiss": "Chiudi il messaggio",
+        "moveFirst": "Sposta all’inizio",
+        "moveUp": "Sposta in alto di una posizione",
+        "moveDown": "Sposta in basso di una posizione",
+        "moveLast": "Sposta alla fine",
+        "edit": "Modifica questa voce",
+        "save": "Salva le modifiche",
+        "duplicate": "Fatta di nuovo",
+        "retryDuplicate": "Verifica questa voce",
+        "delete": "Elimina",
+        "confirmDelete": "Conferma",
+        "cancel": "Annulla",
+        "loadMore": "Carica altro"
+      },
+      "selector": {
+        "title": "Scegli le attrazioni",
+        "description": "Seleziona una o più attrazioni, comprese quelle chiuse dopo la tua visita.",
+        "searchLabel": "Nome dell’attrazione",
+        "searchPlaceholder": "Cerca un’attrazione…",
+        "zoneLabel": "Zona del parco",
+        "allZones": "Tutte le zone",
+        "loading": "Caricamento delle attrazioni…",
+        "empty": "Nessuna attrazione corrisponde a questi filtri.",
+        "results": "Attrazioni disponibili per questa visita",
+        "historical": "storica",
+        "pagination": "Pagine delle attrazioni",
+        "page": "Pagina {{current}} di {{total}}"
+      },
+      "selection": {
+        "title": "Voci da aggiungere",
+        "attractionCount": { "one": "{{count}} attrazione", "few": "{{count}} attrazioni", "many": "{{count}} attrazioni", "other": "{{count}} attrazioni" },
+        "occurrenceCount": { "one": "{{count}} voce in totale", "few": "{{count}} voci in totale", "many": "{{count}} voci in totale", "other": "{{count}} voci in totale" },
+        "rideCount": { "one": "{{count}} voce", "few": "{{count}} voci", "many": "{{count}} voci", "other": "{{count}} voci" },
+        "pendingRecovery": "L’esito dell’ultimo inserimento è incerto. Riprova prima di inviare le modifiche più recenti."
+      },
+      "fields": {
+        "status": "Esito",
+        "count": "Numero di giri",
+        "time": "Ora locale",
+        "approximateTime": "Ora approssimativa",
+        "privateNote": "Nota privata",
+        "confirmHistoricalConflict": "Confermo nonostante un conflitto di date noto",
+        "confirmHistoricalConflictHint": "Usa questa opzione solo se sei certo di questo ricordo.",
+        "timeUnavailable": "Puoi aggiungere un’ora solo a una visita con giorno esatto e fuso orario."
+      },
+      "status": {
+        "completed": "Fatta",
+        "attempted": "Tentata",
+        "missedClosed": "Persa perché chiusa",
+        "missedUnavailable": "Persa perché non disponibile",
+        "skippedByChoice": "Saltata per scelta"
+      },
+      "lifecycle": {
+        "Operating": "In funzione",
+        "UnderConstruction": "In costruzione",
+        "TemporarilyClosed": "Chiusa temporaneamente",
+        "ClosedDefinitively": "Chiusa definitivamente",
+        "Removed": "Rimossa",
+        "Planned": "Prevista",
+        "Unknown": "Stato sconosciuto"
+      },
+      "consistency": {
+        "verified": "Date coerenti",
+        "unverified": "Date non verificabili",
+        "confirmedConflict": "Conflitto di date confermato"
+      },
+      "timeline": {
+        "title": "La tua timeline",
+        "entryCount": { "one": "{{count}} voce caricata", "few": "{{count}} voci caricate", "many": "{{count}} voci caricate", "other": "{{count}} voci caricate" },
+        "completedCount": { "one": "{{count}} giro effettuato", "few": "{{count}} giri effettuati", "many": "{{count}} giri effettuati", "other": "{{count}} giri effettuati" },
+        "normalized": "L’ordine è stato ricalcolato per restare affidabile. La timeline visualizzata è stata ricaricata.",
+        "loading": "Aggiornamento della timeline…",
+        "emptyTitle": "Ancora nessuna voce",
+        "emptyDescription": "Seleziona le attrazioni e ricostruisci questa giornata con i tuoi tempi.",
+        "unknownAttraction": "Attrazione storica non disponibile",
+        "occurrenceNumber": "Voce {{current}} di {{total}}",
+        "hasPrivateNote": "Nota privata",
+        "orderActions": "Azioni per ordinare la voce",
+        "deleteConfirmation": "Eliminare definitivamente questa voce dalla visita?",
+        "pendingDuplicateRecovery": "L’esito dell’aggiunta di questa voce è incerto. Verificalo: verrà ripetuta la stessa richiesta senza creare un duplicato."
+      },
+      "errors": {
+        "visitNotFound": "Questa visita non è stata trovata o non ti appartiene più.",
+        "load": "Non è stato possibile caricare la visita. Riprova tra poco.",
+        "attractions": "Non è stato possibile caricare le attrazioni.",
+        "timeline": "Non è stato possibile aggiornare la timeline.",
+        "operation": "Non è stato possibile salvare la modifica. I dati inseriti restano disponibili.",
+        "network": "La risposta del server non è arrivata. Riprova: l’operazione non verrà duplicata.",
+        "batchTooLarge": "Puoi aggiungere al massimo 100 voci alla volta.",
+        "historicalConflict": "Le date note non corrispondono a questa visita. Conferma solo se sei sicuro del ricordo.",
+        "versionConflict": "Questa voce è cambiata nel frattempo. La timeline è stata ricaricata; controllala prima di riprovare.",
+        "idempotencyConflict": "Questo tentativo non corrisponde più all’operazione iniziale. Controlla i dati e riprova.",
+        "attractionUnavailable": "Questa attrazione non è più disponibile nel diario.",
+        "noteTooLong": "La nota privata non può superare i 4.000 caratteri.",
+        "timeUnavailable": "La visita deve avere un giorno esatto e un fuso orario per accettare un’ora."
+      },
+      "messages": {
+        "added": "Le voci sono state aggiunte alla visita.",
+        "updated": "La voce è stata aggiornata.",
+        "duplicated": "È stata aggiunta una nuova voce.",
+        "deleted": "La voce è stata eliminata.",
+        "reordered": "La timeline è stata riordinata."
       }
     }
   }

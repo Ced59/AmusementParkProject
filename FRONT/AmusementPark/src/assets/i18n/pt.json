@@ -21,6 +21,7 @@
       "actions": {
         "openForPark": "Adicionar uma visita",
         "done": "Concluir",
+        "addAttractions": "Adicionar atrações",
         "addAnother": "Adicionar outra visita",
         "saving": "A guardar…",
         "create": "Criar visita",
@@ -80,6 +81,156 @@
         "date": "A data da visita não é válida.",
         "retryConflict": "Esta tentativa já não corresponde aos dados iniciais. Verifica os campos e tenta novamente.",
         "network": "A resposta do servidor não chegou. Tenta novamente: a visita não será criada duas vezes."
+      }
+    },
+    "editor": {
+      "kicker": "Diário da visita",
+      "title": "Completa a tua visita",
+      "private": "Privado",
+      "loading": "A carregar a tua visita…",
+      "actions": {
+        "back": "Voltar ao perfil",
+        "retry": "Tentar novamente",
+        "filter": "Pesquisar",
+        "clear": "Limpar filtros",
+        "previous": "Anterior",
+        "next": "Seguinte",
+        "clearSelection": "Remover tudo",
+        "retryAdd": "Verificar a última adição",
+        "adding": "A adicionar…",
+        "addToTimeline": {
+          "one": "Adicionar {{count}} registo",
+          "few": "Adicionar {{count}} registos",
+          "many": "Adicionar {{count}} registos",
+          "other": "Adicionar {{count}} registos"
+        },
+        "dismiss": "Fechar mensagem",
+        "moveFirst": "Mover para o início",
+        "moveUp": "Subir uma posição",
+        "moveDown": "Descer uma posição",
+        "moveLast": "Mover para o fim",
+        "edit": "Editar este registo",
+        "save": "Guardar alterações",
+        "duplicate": "Repetir",
+        "retryDuplicate": "Verificar este registo",
+        "delete": "Eliminar",
+        "confirmDelete": "Confirmar",
+        "cancel": "Cancelar",
+        "loadMore": "Carregar mais"
+      },
+      "selector": {
+        "title": "Escolhe as atrações",
+        "description": "Seleciona uma ou várias atrações, incluindo as que fecharam depois da tua visita.",
+        "searchLabel": "Nome da atração",
+        "searchPlaceholder": "Pesquisar uma atração…",
+        "zoneLabel": "Zona do parque",
+        "allZones": "Todas as zonas",
+        "loading": "A carregar atrações…",
+        "empty": "Nenhuma atração corresponde a estes filtros.",
+        "results": "Atrações disponíveis para esta visita",
+        "historical": "histórica",
+        "pagination": "Páginas de atrações",
+        "page": "Página {{current}} de {{total}}"
+      },
+      "selection": {
+        "title": "Registos a adicionar",
+        "attractionCount": {
+          "one": "{{count}} atração",
+          "few": "{{count}} atrações",
+          "many": "{{count}} atrações",
+          "other": "{{count}} atrações"
+        },
+        "occurrenceCount": {
+          "one": "{{count}} registo no total",
+          "few": "{{count}} registos no total",
+          "many": "{{count}} registos no total",
+          "other": "{{count}} registos no total"
+        },
+        "rideCount": {
+          "one": "{{count}} registo",
+          "few": "{{count}} registos",
+          "many": "{{count}} registos",
+          "other": "{{count}} registos"
+        },
+        "pendingRecovery": "O resultado da última adição é incerto. Repete-a antes de enviares as alterações mais recentes."
+      },
+      "fields": {
+        "status": "Resultado",
+        "count": "Número de voltas",
+        "time": "Hora local",
+        "approximateTime": "Hora aproximada",
+        "privateNote": "Nota privada",
+        "confirmHistoricalConflict": "Confirmo apesar de um conflito de datas conhecido",
+        "confirmHistoricalConflictHint": "Usa esta opção apenas se tiveres a certeza desta memória.",
+        "timeUnavailable": "Só podes adicionar uma hora a uma visita com dia exato e fuso horário."
+      },
+      "status": {
+        "completed": "Realizada",
+        "attempted": "Tentada",
+        "missedClosed": "Perdida por estar fechada",
+        "missedUnavailable": "Perdida por estar indisponível",
+        "skippedByChoice": "Ignorada por escolha"
+      },
+      "lifecycle": {
+        "Operating": "Em funcionamento",
+        "UnderConstruction": "Em construção",
+        "TemporarilyClosed": "Temporariamente fechada",
+        "ClosedDefinitively": "Fechada definitivamente",
+        "Removed": "Removida",
+        "Planned": "Planeada",
+        "Unknown": "Estado desconhecido"
+      },
+      "consistency": {
+        "verified": "Datas coerentes",
+        "unverified": "Datas não verificáveis",
+        "confirmedConflict": "Conflito de datas confirmado"
+      },
+      "timeline": {
+        "title": "A tua cronologia",
+        "entryCount": {
+          "one": "{{count}} registo carregado",
+          "few": "{{count}} registos carregados",
+          "many": "{{count}} registos carregados",
+          "other": "{{count}} registos carregados"
+        },
+        "completedCount": {
+          "one": "{{count}} volta realizada",
+          "few": "{{count}} voltas realizadas",
+          "many": "{{count}} voltas realizadas",
+          "other": "{{count}} voltas realizadas"
+        },
+        "normalized": "A ordem foi recalculada para se manter fiável. A cronologia apresentada foi recarregada.",
+        "loading": "A atualizar a cronologia…",
+        "emptyTitle": "Ainda não há registos",
+        "emptyDescription": "Seleciona atrações e reconstrói este dia ao teu ritmo.",
+        "unknownAttraction": "Atração histórica indisponível",
+        "occurrenceNumber": "Registo {{current}} de {{total}}",
+        "hasPrivateNote": "Nota privada",
+        "orderActions": "Ações de ordenação do registo",
+        "deleteConfirmation": "Eliminar definitivamente este registo da tua visita?",
+        "pendingDuplicateRecovery": "O resultado da adição deste registo é incerto. Verifica-o: o mesmo pedido será repetido sem criar um duplicado."
+      },
+      "errors": {
+        "visitNotFound": "Esta visita não foi encontrada ou já não te pertence.",
+        "load": "Não foi possível carregar a tua visita. Tenta novamente dentro de instantes.",
+        "attractions": "Não foi possível carregar as atrações.",
+        "timeline": "Não foi possível atualizar a cronologia.",
+        "operation": "Não foi possível guardar a alteração. Os dados introduzidos continuam disponíveis.",
+        "network": "A resposta do servidor não chegou. Tenta novamente: a operação não será duplicada.",
+        "batchTooLarge": "Podes adicionar no máximo 100 registos de cada vez.",
+        "historicalConflict": "As datas conhecidas não correspondem a esta visita. Confirma apenas se tiveres a certeza da memória.",
+        "versionConflict": "Este registo foi alterado entretanto. A cronologia foi recarregada; confirma-a antes de tentares novamente.",
+        "idempotencyConflict": "Esta tentativa já não corresponde à operação inicial. Confirma os dados e tenta novamente.",
+        "attractionUnavailable": "Esta atração já não está disponível para o diário.",
+        "noteTooLong": "A nota privada não pode exceder 4 000 caracteres.",
+        "timeUnavailable": "A visita precisa de um dia exato e de um fuso horário para guardar uma hora."
+      },
+      "messages": {
+        "added": "Os registos foram adicionados à tua visita.",
+        "updated": "O registo foi atualizado.",
+        "duplicated": "Foi adicionado um novo registo.",
+        "deleted": "O registo foi eliminado.",
+        "reordered": "A cronologia foi reordenada."
       }
     }
   },

@@ -45,6 +45,17 @@ public sealed class PassportRideOccurrenceMomentDto
     public bool IsApproximate { get; init; }
 }
 
+public sealed class PassportRideOccurrenceTargetDto
+{
+    public string Name { get; init; } = string.Empty;
+
+    public string? Category { get; init; }
+
+    public string? LifecycleStatus { get; init; }
+
+    public bool IsHistoricalSnapshot { get; init; }
+}
+
 public sealed class CreatePassportRideOccurrenceRequestDto
 {
     public string ParkItemId { get; init; } = string.Empty;
@@ -140,6 +151,8 @@ public sealed class PassportRideOccurrenceDto
     public DateTime CreatedAtUtc { get; init; }
 
     public DateTime UpdatedAtUtc { get; init; }
+
+    public PassportRideOccurrenceTargetDto? Target { get; init; }
 }
 
 public sealed class PassportRideOccurrenceListRequestDto

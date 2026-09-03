@@ -64,6 +64,7 @@ export const serverRoutes: ServerRoute[] = [
 
   // Authenticated or user-specific routes: CSR shell + noindex handled by SEO service.
   { path: ':lang/profile', renderMode: RenderMode.Client },
+  { path: ':lang/profile/**', renderMode: RenderMode.Client },
   { path: ':lang/confirm-account', renderMode: RenderMode.Client },
   { path: ':lang/forgot-password', renderMode: RenderMode.Client },
   { path: ':lang/reset-password', renderMode: RenderMode.Client },

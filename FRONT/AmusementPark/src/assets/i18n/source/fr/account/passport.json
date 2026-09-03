@@ -13,6 +13,7 @@
       "actions": {
         "openForPark": "Ajouter une visite",
         "done": "Terminer",
+        "addAttractions": "Ajouter des attractions",
         "addAnother": "Ajouter une autre visite",
         "saving": "Enregistrement…",
         "create": "Créer la visite",
@@ -72,6 +73,126 @@
         "date": "La date de visite n’est pas valide.",
         "retryConflict": "Cette tentative ne correspond plus à la saisie initiale. Vérifie les champs puis réessaie.",
         "network": "La réponse du serveur n’est pas arrivée. Réessaie : la visite ne sera pas créée en double."
+      }
+    },
+    "editor": {
+      "kicker": "Journal de visite",
+      "title": "Détaille ta visite",
+      "private": "Privé",
+      "loading": "Chargement de ta visite…",
+      "actions": {
+        "back": "Retour au profil",
+        "retry": "Réessayer",
+        "filter": "Rechercher",
+        "clear": "Effacer les filtres",
+        "previous": "Précédente",
+        "next": "Suivante",
+        "clearSelection": "Tout retirer",
+        "retryAdd": "Vérifier l’ajout",
+        "adding": "Ajout…",
+        "addToTimeline": { "one": "Ajouter {{count}} passage", "few": "Ajouter {{count}} passages", "many": "Ajouter {{count}} passages", "other": "Ajouter {{count}} passages" },
+        "dismiss": "Fermer le message",
+        "moveFirst": "Placer en premier",
+        "moveUp": "Monter d’une place",
+        "moveDown": "Descendre d’une place",
+        "moveLast": "Placer en dernier",
+        "edit": "Modifier ce passage",
+        "save": "Enregistrer les modifications",
+        "duplicate": "Refaire",
+        "retryDuplicate": "Vérifier ce passage",
+        "delete": "Supprimer",
+        "confirmDelete": "Confirmer",
+        "cancel": "Annuler",
+        "loadMore": "Charger la suite"
+      },
+      "selector": {
+        "title": "Choisis les attractions",
+        "description": "Sélectionne une ou plusieurs attractions, y compris celles qui ont fermé depuis ta visite.",
+        "searchLabel": "Nom de l’attraction",
+        "searchPlaceholder": "Rechercher une attraction…",
+        "zoneLabel": "Zone du parc",
+        "allZones": "Toutes les zones",
+        "loading": "Chargement des attractions…",
+        "empty": "Aucune attraction ne correspond à ces filtres.",
+        "results": "Attractions disponibles pour cette visite",
+        "historical": "historique",
+        "pagination": "Pages d’attractions",
+        "page": "Page {{current}} sur {{total}}"
+      },
+      "selection": {
+        "title": "Passages à ajouter",
+        "attractionCount": { "one": "{{count}} attraction", "few": "{{count}} attractions", "many": "{{count}} attractions", "other": "{{count}} attractions" },
+        "occurrenceCount": { "one": "{{count}} passage au total", "few": "{{count}} passages au total", "many": "{{count}} passages au total", "other": "{{count}} passages au total" },
+        "rideCount": { "one": "{{count}} passage", "few": "{{count}} passages", "many": "{{count}} passages", "other": "{{count}} passages" },
+        "pendingRecovery": "Le résultat du dernier ajout est incertain. Réessaie pour le vérifier avant d’envoyer tes nouvelles modifications."
+      },
+      "fields": {
+        "status": "Résultat",
+        "count": "Nombre de tours",
+        "time": "Heure locale",
+        "approximateTime": "Heure approximative",
+        "privateNote": "Note privée",
+        "confirmHistoricalConflict": "Je confirme malgré une incohérence de dates connue",
+        "confirmHistoricalConflictHint": "À utiliser seulement si tu es certain de ce souvenir.",
+        "timeUnavailable": "Une heure ne peut être ajoutée que pour une visite datée au jour exact et associée à un fuseau horaire."
+      },
+      "status": {
+        "completed": "Effectué",
+        "attempted": "Tenté",
+        "missedClosed": "Manqué car fermé",
+        "missedUnavailable": "Manqué car indisponible",
+        "skippedByChoice": "Passé volontairement"
+      },
+      "lifecycle": {
+        "Operating": "En activité",
+        "UnderConstruction": "En construction",
+        "TemporarilyClosed": "Fermée temporairement",
+        "ClosedDefinitively": "Fermée définitivement",
+        "Removed": "Retirée",
+        "Planned": "Prévue",
+        "Unknown": "Statut inconnu"
+      },
+      "consistency": {
+        "verified": "Dates cohérentes",
+        "unverified": "Dates non vérifiables",
+        "confirmedConflict": "Incohérence confirmée"
+      },
+      "timeline": {
+        "title": "Ta timeline",
+        "entryCount": { "one": "{{count}} entrée chargée", "few": "{{count}} entrées chargées", "many": "{{count}} entrées chargées", "other": "{{count}} entrées chargées" },
+        "completedCount": { "one": "{{count}} tour effectué", "few": "{{count}} tours effectués", "many": "{{count}} tours effectués", "other": "{{count}} tours effectués" },
+        "normalized": "L’ordre a été recalculé pour rester fiable. La timeline affichée a été rechargée.",
+        "loading": "Actualisation de la timeline…",
+        "emptyTitle": "Aucun passage pour le moment",
+        "emptyDescription": "Sélectionne des attractions pour reconstituer cette journée à ton rythme.",
+        "unknownAttraction": "Attraction historique indisponible",
+        "occurrenceNumber": "Passage {{current}} sur {{total}}",
+        "hasPrivateNote": "Note privée",
+        "orderActions": "Actions de classement du passage",
+        "deleteConfirmation": "Supprimer définitivement ce passage de ta visite ?",
+        "pendingDuplicateRecovery": "Le résultat de ce passage ajouté est incertain. Vérifie-le : la même demande sera rejouée sans créer de doublon."
+      },
+      "errors": {
+        "visitNotFound": "Cette visite est introuvable ou ne t’appartient plus.",
+        "load": "Ta visite n’a pas pu être chargée. Réessaie dans un instant.",
+        "attractions": "Les attractions n’ont pas pu être chargées.",
+        "timeline": "La timeline n’a pas pu être actualisée.",
+        "operation": "La modification n’a pas pu être enregistrée. Ta saisie reste disponible.",
+        "network": "La réponse du serveur n’est pas arrivée. Réessaie : l’opération ne sera pas répétée en double.",
+        "batchTooLarge": "Tu peux ajouter au maximum 100 passages à la fois.",
+        "historicalConflict": "Les dates connues ne correspondent pas à cette visite. Coche la confirmation uniquement si ton souvenir est certain.",
+        "versionConflict": "Ce passage a changé entre-temps. La timeline a été rechargée ; vérifie-la avant de recommencer.",
+        "idempotencyConflict": "Cette tentative ne correspond plus à l’opération initiale. Vérifie les données puis réessaie.",
+        "attractionUnavailable": "Cette attraction n’est plus disponible pour le journal.",
+        "noteTooLong": "La note privée ne peut pas dépasser 4 000 caractères.",
+        "timeUnavailable": "Cette visite doit avoir un jour exact et un fuseau horaire pour accepter une heure."
+      },
+      "messages": {
+        "added": "Les passages ont été ajoutés à ta visite.",
+        "updated": "Le passage a été mis à jour.",
+        "duplicated": "Un nouveau passage a été ajouté.",
+        "deleted": "Le passage a été supprimé.",
+        "reordered": "La timeline a été réordonnée."
       }
     }
   }

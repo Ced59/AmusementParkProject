@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { PassportVisitDatePrecision } from '@app/models/passport/passport-visit.models';
@@ -67,6 +68,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
   private readonly renderer: Renderer2 = inject(Renderer2);
+  private readonly router: Router = inject(Router);
   private modalLayerElement: HTMLElement | null = null;
 
   constructor() {
@@ -158,6 +160,17 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
 
   protected startAnotherVisit(): void {
     this.resetForm();
+  }
+
+  protected manageCreatedVisit(): void {
+    const visitId: string = this.facade.createdVisit()?.id?.trim() ?? '';
+    if (!visitId) {
+      return;
+    }
+
+    const currentLanguage: string = this.router.url.split('/')[1] || 'en';
+    this.close();
+    void this.router.navigate(['/', currentLanguage, 'profile', 'visits', visitId]);
   }
 
   protected trackPark(_index: number, option: PassportParkOption): string {

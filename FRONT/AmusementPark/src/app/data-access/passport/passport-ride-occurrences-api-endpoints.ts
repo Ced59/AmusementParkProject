@@ -1,0 +1,15 @@
+export const PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS = {
+  list: (visitId: string, limit: number, cursor: string | null = null): string => {
+    const encodedVisitId: string = encodeURIComponent(visitId);
+    const cursorQuery: string = cursor ? `&cursor=${encodeURIComponent(cursor)}` : '';
+    return `me/passport/visits/${encodedVisitId}/occurrences?limit=${limit}${cursorQuery}`;
+  },
+  addBatch: (visitId: string): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/occurrences:batch`,
+  update: (visitId: string, occurrenceId: string): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/occurrences/${encodeURIComponent(occurrenceId)}`,
+  delete: (visitId: string, occurrenceId: string, expectedVersion: number): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/occurrences/${encodeURIComponent(occurrenceId)}?expectedVersion=${expectedVersion}`,
+  reorder: (visitId: string): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/occurrences:reorder`
+};

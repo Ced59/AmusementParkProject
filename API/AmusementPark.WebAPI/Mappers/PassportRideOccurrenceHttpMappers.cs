@@ -79,6 +79,15 @@ internal static class PassportRideOccurrenceHttpMappers
             Version = result.Version,
             CreatedAtUtc = result.CreatedAtUtc,
             UpdatedAtUtc = result.UpdatedAtUtc,
+            Target = result.Target is null
+                ? null
+                : new PassportRideOccurrenceTargetDto
+                {
+                    Name = result.Target.Name,
+                    Category = result.Target.Category,
+                    LifecycleStatus = result.Target.LifecycleStatus,
+                    IsHistoricalSnapshot = result.Target.IsHistoricalSnapshot,
+                },
         };
     }
 

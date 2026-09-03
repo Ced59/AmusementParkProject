@@ -37,6 +37,22 @@ describe('Server routes', () => {
     expect(sharedRankingRoute?.renderMode).toBe(RenderMode.Server);
   });
 
+  it('keeps every nested private profile route client-rendered before the fallback', () => {
+    const profileRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/profile'
+    );
+    const nestedProfileRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/profile/**'
+    );
+    const fallbackIndex: number = serverRoutes.findIndex(
+      (route: ServerRoute): boolean => route.path === '**'
+    );
+
+    expect(profileRoute?.renderMode).toBe(RenderMode.Client);
+    expect(nestedProfileRoute?.renderMode).toBe(RenderMode.Client);
+    expect(serverRoutes.indexOf(nestedProfileRoute as ServerRoute)).toBeLessThan(fallbackIndex);
+  });
+
   it('server-renders current and historical rating methodology pages', () => {
     const expectedPaths: string[] = [
       ':lang/rankings/methodology',

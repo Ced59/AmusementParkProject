@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { PassportVisitQuickCreateStateFacade } from '../../state/passport-visit-quick-create-state.facade';
@@ -55,7 +56,8 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
 
   it('raises and restores the main stacking layer above fixed public toolbars while the modal is open', async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent]
+      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
+      providers: [{ provide: Router, useValue: { url: '/fr/profile', navigate: vi.fn() } }]
     })
       .overrideComponent(PassportVisitQuickCreateComponent, {
         set: {
@@ -75,5 +77,45 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
       .componentInstance as PassportVisitQuickCreateComponent;
     (dialog as unknown as { onDialogVisibleChange(visible: boolean): void }).onDialogVisibleChange(false);
     expect(main.classList.contains('app-layout-main--modal-open')).toBe(false);
+  });
+
+  it('opens the localized visit editor from the successful creation step', async () => {
+    const router = { url: '/fr/profile', navigate: vi.fn().mockResolvedValue(true) };
+    fakeFacade.createdVisit.set({
+      id: 'visit-1',
+      parkId: 'park-1',
+      date: { year: 2026, month: 9, day: 3, precision: 'Day', isApproximate: false },
+      timeZoneId: 'Europe/Paris',
+      serviceDayConvention: 'VisitStartLocalDate',
+      status: 'Draft',
+      privacy: 'Private',
+      title: null,
+      privateNote: null,
+      version: 1,
+      createdAtUtc: '2026-09-03T00:00:00Z',
+      updatedAtUtc: '2026-09-03T00:00:00Z',
+      completedAtUtc: null
+    });
+    await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
+      providers: [{ provide: Router, useValue: router }]
+    })
+      .overrideComponent(PassportVisitQuickCreateComponent, {
+        set: {
+          providers: [{ provide: PassportVisitQuickCreateStateFacade, useValue: fakeFacade }]
+        }
+      })
+      .compileComponents();
+    const fixture: ComponentFixture<PassportVisitQuickCreateHostComponent> = TestBed.createComponent(
+      PassportVisitQuickCreateHostComponent
+    );
+    fixture.detectChanges();
+    const dialog: PassportVisitQuickCreateComponent = fixture.debugElement.children[0].children[0]
+      .componentInstance as PassportVisitQuickCreateComponent;
+
+    (dialog as unknown as { manageCreatedVisit(): void }).manageCreatedVisit();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'fr', 'profile', 'visits', 'visit-1']);
+    fakeFacade.createdVisit.set(null);
   });
 });

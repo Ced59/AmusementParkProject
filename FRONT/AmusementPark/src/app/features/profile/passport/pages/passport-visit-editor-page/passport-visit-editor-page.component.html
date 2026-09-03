@@ -1,0 +1,425 @@
+<article class="passport-editor">
+  <header class="passport-editor__hero">
+    <button appUiButton="ghost" type="button" class="passport-editor__back" (click)="goBack()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'passport.editor.actions.back' | translate }}</span>
+    </button>
+
+    <app-ui-kicker tone="lime" iconClass="pi pi-ticket">
+      {{ 'passport.editor.kicker' | translate }}
+    </app-ui-kicker>
+
+    @if (facade.visit(); as visit) {
+      <div class="passport-editor__heading">
+        <div>
+          <h1>{{ visit.title || facade.parkName() }}</h1>
+          <p>{{ facade.parkName() }} · {{ visitDateLabel() }}</p>
+        </div>
+        <app-ui-chip tone="primary" iconClass="pi pi-lock">
+          {{ 'passport.editor.private' | translate }}
+        </app-ui-chip>
+      </div>
+    } @else {
+      <h1>{{ 'passport.editor.title' | translate }}</h1>
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="passport-editor__state" appUiSurface="panel" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ 'passport.editor.loading' | translate }}</p>
+    </section>
+  } @else if (facade.loadErrorKey(); as errorKey) {
+    <section class="passport-editor__state passport-editor__state--error" appUiSurface="panel" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <p>{{ errorKey | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="retryLoad()">
+        {{ 'passport.editor.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.visit()) {
+    <div class="passport-editor__workspace">
+      <section class="passport-panel passport-selector" appUiSurface="panel" aria-labelledby="passport-selector-title">
+        <div class="passport-panel__heading">
+          <div>
+            <span class="passport-panel__step" aria-hidden="true">1</span>
+            <h2 id="passport-selector-title">{{ 'passport.editor.selector.title' | translate }}</h2>
+          </div>
+          <p>{{ 'passport.editor.selector.description' | translate }}</p>
+        </div>
+
+        <form class="passport-filters" (ngSubmit)="applyFilters()">
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.editor.selector.searchLabel' | translate }}</span>
+            <input
+              class="app-input"
+              type="search"
+              autocomplete="off"
+              [formControl]="searchControl"
+              [placeholder]="'passport.editor.selector.searchPlaceholder' | translate" />
+          </label>
+
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.editor.selector.zoneLabel' | translate }}</span>
+            <select class="app-input" [formControl]="zoneControl">
+              <option value="">{{ 'passport.editor.selector.allZones' | translate }}</option>
+              @for (zone of facade.zones(); track zone.id) {
+                <option [value]="zone.id">{{ zone.name }}</option>
+              }
+            </select>
+          </label>
+
+          <div class="passport-filters__actions">
+            <button appUiButton="primary" type="submit" [disabled]="facade.attractionsLoading()">
+              <i class="pi pi-search" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.actions.filter' | translate }}</span>
+            </button>
+            <button appUiButton="ghost" type="button" [disabled]="facade.attractionsLoading()" (click)="clearFilters()">
+              {{ 'passport.editor.actions.clear' | translate }}
+            </button>
+          </div>
+        </form>
+
+        @if (facade.attractionErrorKey(); as attractionErrorKey) {
+          <p class="passport-inline-message passport-inline-message--error" role="alert">
+            {{ attractionErrorKey | translate }}
+          </p>
+        }
+
+        @if (facade.attractionsLoading()) {
+          <p class="passport-inline-message" role="status">
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            {{ 'passport.editor.selector.loading' | translate }}
+          </p>
+        } @else if (facade.attractions().length === 0) {
+          <p class="passport-inline-message">{{ 'passport.editor.selector.empty' | translate }}</p>
+        } @else {
+          <div class="passport-attraction-grid" role="list" [attr.aria-label]="'passport.editor.selector.results' | translate">
+            @for (attraction of facade.attractions(); track trackAttraction($index, attraction)) {
+              <button
+                type="button"
+                class="passport-attraction"
+                [class.passport-attraction--selected]="facade.isSelected(attraction.id)"
+                [attr.aria-pressed]="facade.isSelected(attraction.id)"
+                (click)="toggleAttraction(attraction)">
+                <span class="passport-attraction__check" aria-hidden="true">
+                  <i [class]="facade.isSelected(attraction.id) ? 'pi pi-check' : 'pi pi-plus'"></i>
+                </span>
+                <span class="passport-attraction__body">
+                  <strong>{{ attraction.name }}</strong>
+                  <small>
+                    {{ lifecycleLabelKey(attraction.lifecycleStatus) | translate }}
+                    @if (attraction.isHistorical) {
+                      · {{ 'passport.editor.selector.historical' | translate }}
+                    }
+                  </small>
+                </span>
+              </button>
+            }
+          </div>
+        }
+
+        @if (facade.attractionPagination().totalPages > 1) {
+          <nav class="passport-pagination" [attr.aria-label]="'passport.editor.selector.pagination' | translate">
+            <button
+              appUiButton="ghost"
+              type="button"
+              [disabled]="facade.attractionPagination().currentPage <= 1 || facade.attractionsLoading()"
+              (click)="facade.goToAttractionPage(facade.attractionPagination().currentPage - 1)">
+              <i class="pi pi-chevron-left" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.actions.previous' | translate }}</span>
+            </button>
+            <span>{{ 'passport.editor.selector.page' | translate:{ current: facade.attractionPagination().currentPage, total: facade.attractionPagination().totalPages } }}</span>
+            <button
+              appUiButton="ghost"
+              type="button"
+              [disabled]="facade.attractionPagination().currentPage >= facade.attractionPagination().totalPages || facade.attractionsLoading()"
+              (click)="facade.goToAttractionPage(facade.attractionPagination().currentPage + 1)">
+              <span>{{ 'passport.editor.actions.next' | translate }}</span>
+              <i class="pi pi-chevron-right" aria-hidden="true"></i>
+            </button>
+          </nav>
+        }
+
+        @if (facade.selectedAttractions().length > 0 || facade.pendingAddRecovery()) {
+          <section class="passport-selection" aria-labelledby="passport-selection-title">
+            <div class="passport-selection__heading">
+              <div>
+                <h3 id="passport-selection-title">{{ 'passport.editor.selection.title' | translate }}</h3>
+                <p>
+                  {{ 'passport.editor.selection.attractionCount' | localizedPlural:facade.selectedAttractions().length }} ·
+                  {{ 'passport.editor.selection.occurrenceCount' | localizedPlural:facade.selectedOccurrenceTotal() }}
+                </p>
+              </div>
+              <button appUiButton="ghost" type="button" [disabled]="facade.adding() || facade.pendingAddRecovery()" (click)="facade.clearSelection()">
+                {{ 'passport.editor.actions.clearSelection' | translate }}
+              </button>
+            </div>
+
+            @if (facade.pendingAddRecovery()) {
+              <p class="passport-inline-message" role="status">
+                <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                {{ 'passport.editor.selection.pendingRecovery' | translate }}
+              </p>
+            }
+
+            <div class="passport-selection__items">
+              @for (selection of facade.selectedAttractions(); track trackSelection($index, selection)) {
+                <details class="passport-selection-card" open>
+                  <summary>
+                    <span>{{ selection.attractionName }}</span>
+                    <small>{{ 'passport.editor.selection.rideCount' | localizedPlural:selection.count }}</small>
+                  </summary>
+                  <div class="passport-entry-form">
+                    <label class="app-field">
+                      <span class="app-field__label">{{ 'passport.editor.fields.status' | translate }}</span>
+                      <select class="app-input" [value]="selection.status" (change)="updateSelectionStatus(selection.parkItemId, $event)">
+                        @for (status of statusOptions; track status.value) {
+                          <option [value]="status.value">{{ status.labelKey | translate }}</option>
+                        }
+                      </select>
+                    </label>
+
+                    <label class="app-field">
+                      <span class="app-field__label">{{ 'passport.editor.fields.count' | translate }}</span>
+                      <input class="app-input" type="number" inputmode="numeric" min="1" max="100" [value]="selection.count" (input)="updateSelectionCount(selection.parkItemId, $event)" />
+                    </label>
+
+                    @if (facade.acceptsLocalTime()) {
+                      <label class="app-field">
+                        <span class="app-field__label">{{ 'passport.editor.fields.time' | translate }}</span>
+                        <input class="app-input" type="time" [value]="selection.localTime" (input)="updateSelectionTime(selection.parkItemId, $event)" />
+                      </label>
+                      <label class="passport-check">
+                        <input type="checkbox" [checked]="selection.isApproximate" (change)="updateSelectionApproximate(selection.parkItemId, $event)" />
+                        <span>{{ 'passport.editor.fields.approximateTime' | translate }}</span>
+                      </label>
+                    }
+
+                    <label class="app-field passport-entry-form__wide">
+                      <span class="app-field__label">{{ 'passport.editor.fields.privateNote' | translate }}</span>
+                      <textarea rows="2" maxlength="4000" [value]="selection.privateNote" (input)="updateSelectionNote(selection.parkItemId, $event)"></textarea>
+                    </label>
+
+                    <label class="passport-check passport-entry-form__wide">
+                      <input type="checkbox" [checked]="selection.confirmHistoricalConflict" (change)="updateSelectionHistoricalConfirmation(selection.parkItemId, $event)" />
+                      <span>
+                        <strong>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</strong>
+                        <small>{{ 'passport.editor.fields.confirmHistoricalConflictHint' | translate }}</small>
+                      </span>
+                    </label>
+                  </div>
+                </details>
+              }
+            </div>
+
+            @if (!facade.acceptsLocalTime()) {
+              <p class="passport-inline-message">
+                <i class="pi pi-info-circle" aria-hidden="true"></i>
+                {{ 'passport.editor.fields.timeUnavailable' | translate }}
+              </p>
+            }
+
+            <button appUiButton="primary" type="button" class="passport-selection__submit" [disabled]="facade.adding()" (click)="facade.addSelected()">
+              @if (facade.adding()) {
+                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              } @else {
+                <i class="pi pi-plus" aria-hidden="true"></i>
+              }
+              @if (facade.adding()) {
+                <span>{{ 'passport.editor.actions.adding' | translate }}</span>
+              } @else if (facade.pendingAddRecovery()) {
+                <span>{{ 'passport.editor.actions.retryAdd' | translate }}</span>
+              } @else {
+                <span>{{ 'passport.editor.actions.addToTimeline' | localizedPlural:facade.selectedOccurrenceTotal() }}</span>
+              }
+            </button>
+          </section>
+        }
+      </section>
+
+      <section class="passport-panel passport-timeline" appUiSurface="panel" aria-labelledby="passport-timeline-title">
+        <div class="passport-panel__heading passport-timeline__heading">
+          <div>
+            <span class="passport-panel__step" aria-hidden="true">2</span>
+            <h2 id="passport-timeline-title">{{ 'passport.editor.timeline.title' | translate }}</h2>
+          </div>
+          <p>
+            {{ 'passport.editor.timeline.entryCount' | localizedPlural:facade.occurrences().length }} ·
+            {{ 'passport.editor.timeline.completedCount' | localizedPlural:facade.rideCount() }}
+          </p>
+        </div>
+
+        @if (facade.normalizationNotice()) {
+          <div class="passport-notice" role="status">
+            <i class="pi pi-refresh" aria-hidden="true"></i>
+            <span>{{ 'passport.editor.timeline.normalized' | translate }}</span>
+            <button type="button" [attr.aria-label]="'passport.editor.actions.dismiss' | translate" (click)="facade.dismissNormalizationNotice()">
+              <i class="pi pi-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        }
+
+        @if (facade.operationErrorKey(); as operationErrorKey) {
+          <p class="passport-inline-message passport-inline-message--error" role="alert">
+            <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+            {{ operationErrorKey | translate }}
+          </p>
+        }
+
+        @if (facade.timelineLoading()) {
+          <p class="passport-inline-message" role="status">
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            {{ 'passport.editor.timeline.loading' | translate }}
+          </p>
+        } @else if (facade.occurrenceRows().length === 0) {
+          <div class="passport-timeline__empty">
+            <i class="pi pi-list" aria-hidden="true"></i>
+            <h3>{{ 'passport.editor.timeline.emptyTitle' | translate }}</h3>
+            <p>{{ 'passport.editor.timeline.emptyDescription' | translate }}</p>
+          </div>
+        } @else {
+          <ol class="passport-timeline__list">
+            @for (row of facade.occurrenceRows(); track row.occurrence.id; let index = $index) {
+              <li class="passport-occurrence">
+                <article>
+                  <header class="passport-occurrence__header">
+                    <span class="passport-occurrence__index">{{ index + 1 }}</span>
+                    <div>
+                      <h3>{{ row.attractionName || ('passport.editor.timeline.unknownAttraction' | translate) }}</h3>
+                      @if (row.occurrenceCount > 1) {
+                        <small>{{ 'passport.editor.timeline.occurrenceNumber' | translate:{ current: row.occurrenceNumber, total: row.occurrenceCount } }}</small>
+                      }
+                    </div>
+                    <app-ui-chip [tone]="row.occurrence.countsAsRide ? 'lime' : 'gold'">
+                      {{ statusLabelKey(row.occurrence.status) | translate }}
+                    </app-ui-chip>
+                  </header>
+
+                  <div class="passport-occurrence__meta">
+                    @if (row.occurrence.moment.localTime) {
+                      <span><i class="pi pi-clock" aria-hidden="true"></i>{{ timeLabel(row.occurrence.moment.localTime) }}</span>
+                    }
+                    <span><i class="pi pi-history" aria-hidden="true"></i>{{ consistencyLabelKey(row.historicalConsistency) | translate }}</span>
+                    @if (row.occurrence.target?.lifecycleStatus; as lifecycleStatus) {
+                      <span><i class="pi pi-info-circle" aria-hidden="true"></i>{{ lifecycleLabelKey(lifecycleStatus) | translate }}</span>
+                    }
+                    @if (row.occurrence.target?.isHistoricalSnapshot) {
+                      <span><i class="pi pi-book" aria-hidden="true"></i>{{ 'passport.editor.selector.historical' | translate }}</span>
+                    }
+                    @if (row.occurrence.privateNote) {
+                      <span><i class="pi pi-lock" aria-hidden="true"></i>{{ 'passport.editor.timeline.hasPrivateNote' | translate }}</span>
+                    }
+                  </div>
+
+                  <div class="passport-occurrence__order" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
+                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
+                      <i class="pi pi-angle-double-up" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveUp' | translate" (click)="facade.moveOccurrence(row.occurrence, 'up')">
+                      <i class="pi pi-angle-up" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" [disabled]="index >= facade.occurrences().length - 1 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveDown' | translate" (click)="facade.moveOccurrence(row.occurrence, 'down')">
+                      <i class="pi pi-angle-down" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" [disabled]="(index >= facade.occurrences().length - 1 && !facade.nextTimelineCursor()) || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveLast' | translate" (click)="facade.moveOccurrence(row.occurrence, 'last')">
+                      <i class="pi pi-angle-double-down" aria-hidden="true"></i>
+                    </button>
+                  </div>
+
+                  <div class="passport-occurrence__actions">
+                    @if (row.occurrence.target?.category === 'Attraction' && row.occurrence.target?.isHistoricalSnapshot === false) {
+                      <details>
+                        <summary>{{ 'passport.editor.actions.edit' | translate }}</summary>
+                        @if (facade.editDrafts()[row.occurrence.id]; as draft) {
+                          <div class="passport-entry-form passport-entry-form--edit">
+                            <label class="app-field">
+                              <span class="app-field__label">{{ 'passport.editor.fields.status' | translate }}</span>
+                              <select class="app-input" [value]="draft.status" (change)="updateEditStatus(row.occurrence.id, $event)">
+                                @for (status of statusOptions; track status.value) {
+                                  <option [value]="status.value">{{ status.labelKey | translate }}</option>
+                                }
+                              </select>
+                            </label>
+
+                            @if (facade.acceptsLocalTime()) {
+                              <label class="app-field">
+                                <span class="app-field__label">{{ 'passport.editor.fields.time' | translate }}</span>
+                                <input class="app-input" type="time" [value]="draft.localTime" (input)="updateEditTime(row.occurrence.id, $event)" />
+                              </label>
+                              <label class="passport-check">
+                                <input type="checkbox" [checked]="draft.isApproximate" (change)="updateEditApproximate(row.occurrence.id, $event)" />
+                                <span>{{ 'passport.editor.fields.approximateTime' | translate }}</span>
+                              </label>
+                            }
+
+                            <label class="app-field passport-entry-form__wide">
+                              <span class="app-field__label">{{ 'passport.editor.fields.privateNote' | translate }}</span>
+                              <textarea rows="2" maxlength="4000" [value]="draft.privateNote" (input)="updateEditNote(row.occurrence.id, $event)"></textarea>
+                            </label>
+
+                            <label class="passport-check passport-entry-form__wide">
+                              <input type="checkbox" [checked]="draft.confirmHistoricalConflict" (change)="updateEditHistoricalConfirmation(row.occurrence.id, $event)" />
+                              <span>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</span>
+                            </label>
+
+                            <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="saveOccurrence(row.occurrence)">
+                              {{ 'passport.editor.actions.save' | translate }}
+                            </button>
+                          </div>
+                        }
+                      </details>
+
+                      <button appUiButton="soft" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="facade.duplicateOccurrence(row.occurrence)">
+                        <i class="pi pi-copy" aria-hidden="true"></i>
+                        <span>
+                          {{ (facade.pendingDuplicateRecoveryIds().has(row.occurrence.id)
+                            ? 'passport.editor.actions.retryDuplicate'
+                            : 'passport.editor.actions.duplicate') | translate }}
+                        </span>
+                      </button>
+                      @if (facade.pendingDuplicateRecoveryIds().has(row.occurrence.id)) {
+                        <p class="passport-inline-message passport-occurrence__recovery" role="status">
+                          <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                          {{ 'passport.editor.timeline.pendingDuplicateRecovery' | translate }}
+                        </p>
+                      }
+                    }
+
+                    @if (deleteConfirmationId() === row.occurrence.id) {
+                      <div class="passport-delete-confirmation">
+                        <span>{{ 'passport.editor.timeline.deleteConfirmation' | translate }}</span>
+                        <button appUiButton="rose" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="confirmDelete(row.occurrence)">
+                          {{ 'passport.editor.actions.confirmDelete' | translate }}
+                        </button>
+                        <button appUiButton="ghost" type="button" (click)="cancelDelete()">
+                          {{ 'passport.editor.actions.cancel' | translate }}
+                        </button>
+                      </div>
+                    } @else {
+                      <button appUiButton="ghost" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="requestDelete(row.occurrence.id)">
+                        <i class="pi pi-trash" aria-hidden="true"></i>
+                        <span>{{ 'passport.editor.actions.delete' | translate }}</span>
+                      </button>
+                    }
+                  </div>
+                </article>
+              </li>
+            }
+          </ol>
+
+          @if (facade.nextTimelineCursor()) {
+            <button appUiButton="soft" type="button" class="passport-timeline__more" [disabled]="facade.timelineLoadingMore()" (click)="facade.loadMoreTimeline()">
+              @if (facade.timelineLoadingMore()) {
+                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              } @else {
+                <i class="pi pi-chevron-down" aria-hidden="true"></i>
+              }
+              <span>{{ 'passport.editor.actions.loadMore' | translate }}</span>
+            </button>
+          }
+        }
+      </section>
+    </div>
+  }
+</article>

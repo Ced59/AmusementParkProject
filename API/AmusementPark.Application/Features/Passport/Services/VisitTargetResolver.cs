@@ -31,12 +31,19 @@ public sealed class VisitTargetResolver : IVisitTargetResolver
                 parkItem.Name,
                 parkItem.Category,
                 ToDateOnly(parkItem.AttractionDetails?.OpeningDate),
-                ToDateOnly(parkItem.AttractionDetails?.ClosingDate)),
+                ToDateOnly(parkItem.AttractionDetails?.ClosingDate),
+                NormalizeOptional(parkItem.AttractionDetails?.Status)),
             StringComparer.Ordinal);
     }
 
     private static DateOnly? ToDateOnly(DateTime? value)
     {
         return value.HasValue ? DateOnly.FromDateTime(value.Value) : null;
+    }
+
+    private static string? NormalizeOptional(string? value)
+    {
+        string normalized = value?.Trim() ?? string.Empty;
+        return normalized.Length == 0 ? null : normalized;
     }
 }

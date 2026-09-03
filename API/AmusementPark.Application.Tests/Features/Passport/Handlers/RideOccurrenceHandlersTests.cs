@@ -981,8 +981,18 @@ public sealed class RideOccurrenceHandlersTests
                 visit.UserId,
                 CancellationToken.None))
             .ReturnsAsync(occurrence);
+        VisitTarget target = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Current ride name",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            "Operating");
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
-            occurrences.Object);
+            occurrences.Object,
+            targets.Object);
 
         ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
             new GetRideOccurrenceQuery(
@@ -993,7 +1003,11 @@ public sealed class RideOccurrenceHandlersTests
         Assert.True(result.IsSuccess);
         Assert.Equal(occurrence.Id.Value, result.Value?.Id);
         Assert.Equal(occurrence.PrivateNote, result.Value?.PrivateNote);
+        Assert.Equal("Current ride name", result.Value?.Target?.Name);
+        Assert.Equal("Operating", result.Value?.Target?.LifecycleStatus);
+        Assert.False(result.Value!.Target!.IsHistoricalSnapshot);
         occurrences.VerifyAll();
+        targets.VerifyAll();
     }
 
     [Fact]
@@ -1007,8 +1021,11 @@ public sealed class RideOccurrenceHandlersTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync((RideOccurrence?)null);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
-            occurrences.Object);
+            occurrences.Object,
+            targets.Object);
 
         ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
             new GetRideOccurrenceQuery("owner-1", "visit-1", "occurrence-1"));
@@ -1016,6 +1033,86 @@ public sealed class RideOccurrenceHandlersTests
         Assert.False(result.IsSuccess);
         Assert.Equal("ride-occurrence.not-found", Assert.Single(result.Errors).Code);
         occurrences.VerifyAll();
+        targets.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Get_WhenLiveTargetNoLongerExists_ShouldUseHistoricalSnapshot()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-1",
+            1024,
+            new HistoricalTargetReference("Former ride name", "Attraction"));
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == occurrence.ParkItemId),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, VisitTarget>());
+        GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
+            occurrences.Object,
+            targets.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new GetRideOccurrenceQuery(visit.UserId, visit.Id.Value, occurrence.Id.Value));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("Former ride name", result.Value?.Target?.Name);
+        Assert.Equal("Attraction", result.Value?.Target?.Category);
+        Assert.True(result.Value!.Target!.IsHistoricalSnapshot);
+        occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Get_WhenLiveTargetMovedToAnotherPark_ShouldUseHistoricalSnapshot()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-1",
+            1024,
+            new HistoricalTargetReference("Original ride name", "Attraction"));
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        VisitTarget movedTarget = new VisitTarget(
+            occurrence.ParkItemId,
+            "another-park",
+            "Moved ride name",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            "Operating");
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(movedTarget);
+        GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
+            occurrences.Object,
+            targets.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new GetRideOccurrenceQuery(visit.UserId, visit.Id.Value, occurrence.Id.Value));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("Original ride name", result.Value?.Target?.Name);
+        Assert.Equal("Attraction", result.Value?.Target?.Category);
+        Assert.True(result.Value!.Target!.IsHistoricalSnapshot);
+        occurrences.VerifyAll();
+        targets.VerifyAll();
     }
 
     [Fact]
@@ -1033,17 +1130,31 @@ public sealed class RideOccurrenceHandlersTests
                     && criteria.Limit == 25),
                 CancellationToken.None))
             .ReturnsAsync(new RideOccurrencePage(new[] { occurrence }, null));
+        VisitTarget target = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Batch-resolved ride",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            "ClosedDefinitively");
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
         ListRideOccurrencesQueryHandler handler = new ListRideOccurrencesQueryHandler(
             visits.Object,
-            occurrences.Object);
+            occurrences.Object,
+            targets.Object);
 
         ApplicationResult<RideOccurrencePageResult> result = await handler.HandleAsync(
             new ListRideOccurrencesQuery("owner-1", "visit-1", 25));
 
         Assert.True(result.IsSuccess);
-        Assert.Equal("occurrence-1", Assert.Single(result.Value!.Items).Id);
+        RideOccurrenceResult item = Assert.Single(result.Value!.Items);
+        Assert.Equal("occurrence-1", item.Id);
+        Assert.Equal("Batch-resolved ride", item.Target?.Name);
+        Assert.Equal("ClosedDefinitively", item.Target?.LifecycleStatus);
         visits.VerifyAll();
         occurrences.VerifyAll();
+        targets.VerifyAll();
     }
 
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(
@@ -1162,7 +1273,8 @@ public sealed class RideOccurrenceHandlersTests
     private static RideOccurrence CreateOccurrence(
         Visit visit,
         string id,
-        long position)
+        long position,
+        HistoricalTargetReference? historicalTarget = null)
     {
         return RideOccurrence.Create(
             RideOccurrenceId.Parse(id),
@@ -1173,7 +1285,7 @@ public sealed class RideOccurrenceHandlersTests
             RideOccurrenceStatus.Completed,
             RideLogSource.Manual,
             HistoricalConsistency.Verified,
-            null,
+            historicalTarget,
             null,
             NowUtc);
     }

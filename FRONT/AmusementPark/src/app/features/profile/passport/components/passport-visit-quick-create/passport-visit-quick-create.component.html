@@ -22,6 +22,10 @@
         <button appUiButton="primary" type="button" (click)="close()">
           <span>{{ 'passport.quickCreate.actions.done' | translate }}</span>
         </button>
+        <button appUiButton="soft" type="button" (click)="manageCreatedVisit()">
+          <i class="pi pi-list" aria-hidden="true"></i>
+          <span>{{ 'passport.quickCreate.actions.addAttractions' | translate }}</span>
+        </button>
         <button appUiButton="ghost" type="button" (click)="startAnotherVisit()">
           <i class="pi pi-plus" aria-hidden="true"></i>
           <span>{{ 'passport.quickCreate.actions.addAnother' | translate }}</span>
