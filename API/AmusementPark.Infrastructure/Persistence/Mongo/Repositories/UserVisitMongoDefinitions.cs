@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -50,6 +51,38 @@ internal static class UserVisitMongoDefinitions
             .Descending(static document => document.DateSortKey)
             .Descending(static document => document.UpdatedAt)
             .Ascending(static document => document.Id);
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildMissingDateSortKeyFilter()
+    {
+        return Builders<UserVisitDocument>.Filter.Exists(
+            static document => document.DateSortKey,
+            false);
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildDateSortKeyBackfillUpdate()
+    {
+        BsonDocument chronologicalOrder = new BsonDocument(
+            "$add",
+            new BsonArray
+            {
+                new BsonDocument("$multiply", new BsonArray { "$date.year", 10000 }),
+                new BsonDocument(
+                    "$multiply",
+                    new BsonArray
+                    {
+                        new BsonDocument("$ifNull", new BsonArray { "$date.month", 0 }),
+                        100,
+                    }),
+                new BsonDocument("$ifNull", new BsonArray { "$date.day", 0 }),
+            });
+        return new PipelineUpdateDefinition<UserVisitDocument>(
+            new[]
+            {
+                new BsonDocument(
+                    "$set",
+                    new BsonDocument("dateSortKey", chronologicalOrder)),
+            });
     }
 
     public static FilterDefinition<UserVisitDocument> BuildCreationOperationFilter(

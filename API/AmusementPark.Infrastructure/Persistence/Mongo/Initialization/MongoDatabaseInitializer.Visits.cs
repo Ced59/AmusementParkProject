@@ -10,6 +10,10 @@ public sealed partial class MongoDatabaseInitializer
     {
         IMongoCollection<UserVisitDocument> collection =
             this.database.GetCollection<UserVisitDocument>(this.settings.UserVisitsCollectionName);
+        await collection.UpdateManyAsync(
+            UserVisitMongoDefinitions.BuildMissingDateSortKeyFilter(),
+            UserVisitMongoDefinitions.BuildDateSortKeyBackfillUpdate(),
+            cancellationToken: cancellationToken);
         await collection.Indexes.CreateManyAsync(
             UserVisitMongoDefinitions.BuildIndexes(),
             cancellationToken);

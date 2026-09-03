@@ -65,6 +65,22 @@ public sealed class UserVisitMongoDefinitionsTests
     }
 
     [Fact]
+    public void DateSortKeyBackfill_ShouldTargetOnlyLegacyDocumentsAndUseDomainEquivalentOrder()
+    {
+        BsonDocument filter = Render(
+            UserVisitMongoDefinitions.BuildMissingDateSortKeyFilter());
+        BsonArray pipeline = Render(
+            UserVisitMongoDefinitions.BuildDateSortKeyBackfillUpdate());
+
+        Assert.False(filter["dateSortKey"]["$exists"].AsBoolean);
+        BsonValue expression = pipeline[0]["$set"]["dateSortKey"];
+        Assert.Equal("$date.year", expression["$add"][0]["$multiply"][0].AsString);
+        Assert.Equal(10000, expression["$add"][0]["$multiply"][1].AsInt32);
+        Assert.Equal("$date.month", expression["$add"][1]["$multiply"][0]["$ifNull"][0].AsString);
+        Assert.Equal("$date.day", expression["$add"][2]["$ifNull"][0].AsString);
+    }
+
+    [Fact]
     public void BuildIndexes_ShouldCoverOwnerDateParkYearAndStatusAccessPaths()
     {
         CreateIndexModel<UserVisitDocument>[] indexes =
@@ -185,6 +201,18 @@ public sealed class UserVisitMongoDefinitionsTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return sort.Render(arguments);
+    }
+
+    private static BsonArray Render(
+        UpdateDefinition<UserVisitDocument> update)
+    {
+        IBsonSerializer<UserVisitDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserVisitDocument>();
+        RenderArgs<UserVisitDocument> arguments =
+            new RenderArgs<UserVisitDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry);
+        return update.Render(arguments).AsBsonArray;
     }
 
     private static BsonDocument Render(

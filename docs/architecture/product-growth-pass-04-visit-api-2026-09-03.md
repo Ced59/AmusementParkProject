@@ -55,6 +55,8 @@ dateSortKey DESC, updatedAt DESC, _id ASC
 
 `dateSortKey` vaut `YYYYMMDD`, avec `00` pour une partie inconnue. Ainsi une date exacte reste avant le mois correspondant, puis le mois avant l'année seule, sans inventer une précision métier. Un index propriétaire dédié couvre ce tri.
 
+Au démarrage, un backfill Mongo idempotent calcule cette projection pour les éventuelles visites écrites par PASS-03 avant la création de l'index. Le calcul source reste dans `VisitDate` (Core) ; le pipeline Mongo en reproduit la formule uniquement pour migrer les documents historiques.
+
 Le filtre `hasAssessment` restera absent jusqu'à PASS-09, car exposer un filtre sur une donnée qui n'existe pas encore créerait un faux contrat.
 
 ## Frontières d'architecture
