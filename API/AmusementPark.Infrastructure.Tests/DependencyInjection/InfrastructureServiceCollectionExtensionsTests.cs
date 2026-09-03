@@ -57,6 +57,21 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterRideOccurrenceRepository()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IRideOccurrenceRepository));
+        Assert.Equal(typeof(UserRideOccurrenceRepository), registration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
     public void AddInfrastructure_WhenCalled_ShouldRegisterPassportClockAndTimeZoneValidator()
     {
         ServiceCollection services = new ServiceCollection();

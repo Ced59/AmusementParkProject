@@ -18,4 +18,26 @@ public sealed partial class MongoDatabaseInitializer
             UserVisitMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
+
+    private async Task InitializeUserRideOccurrenceIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<UserRideOccurrenceDocument> collection =
+            this.database.GetCollection<UserRideOccurrenceDocument>(
+                this.settings.UserRideOccurrencesCollectionName);
+        await collection.Indexes.CreateManyAsync(
+            UserRideOccurrenceMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeUserRideOccurrenceOperationIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<UserRideOccurrenceCreationOperationDocument> collection =
+            this.database.GetCollection<UserRideOccurrenceCreationOperationDocument>(
+                this.settings.UserRideOccurrenceOperationsCollectionName);
+        await collection.Indexes.CreateManyAsync(
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
 }
