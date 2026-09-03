@@ -95,10 +95,7 @@ internal static class UserVisitMongoDefinitions
 
         if (criteria.After is not null)
         {
-            int dateSortKey = ToDateSortKey(
-                criteria.After.Date.Year,
-                criteria.After.Date.Month,
-                criteria.After.Date.Day);
+            int dateSortKey = criteria.After.Date.ChronologicalOrderValue;
             FilterDefinition<UserVisitDocument> afterFilter =
                 filters.Lt(static document => document.DateSortKey, dateSortKey)
                 | (filters.Eq(static document => document.DateSortKey, dateSortKey)
@@ -110,11 +107,6 @@ internal static class UserVisitMongoDefinitions
         }
 
         return filter;
-    }
-
-    public static int ToDateSortKey(int year, int? month, int? day)
-    {
-        return checked((year * 10000) + ((month ?? 0) * 100) + (day ?? 0));
     }
 
     public static IReadOnlyCollection<CreateIndexModel<UserVisitDocument>> BuildIndexes()

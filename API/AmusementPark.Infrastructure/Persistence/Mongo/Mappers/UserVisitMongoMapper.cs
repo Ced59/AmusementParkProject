@@ -16,10 +16,7 @@ internal static class UserVisitMongoMapper
             UserId = visit.UserId,
             ParkId = visit.ParkId,
             Date = visit.Date.ToDocument(),
-            DateSortKey = UserVisitMongoDefinitions.ToDateSortKey(
-                visit.Date.Year,
-                visit.Date.Month,
-                visit.Date.Day),
+            DateSortKey = visit.Date.ChronologicalOrderValue,
             TimeZoneId = visit.TimeZoneId,
             ServiceDayConvention = visit.ServiceDayConvention,
             Status = visit.Status,
