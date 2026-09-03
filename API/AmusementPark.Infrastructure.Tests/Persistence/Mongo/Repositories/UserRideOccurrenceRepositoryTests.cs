@@ -130,6 +130,8 @@ public sealed class UserRideOccurrenceRepositoryTests
             .ToDocument();
         Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
             CreateAsyncCursor(new[] { concurrentLast });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> normalizationCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
         UserRideOccurrenceCreationOperationDocument? reserved = null;
         operationCollection.Setup(value => value.InsertOneAsync(
                 It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
@@ -140,6 +142,12 @@ public sealed class UserRideOccurrenceRepositoryTests
                 InsertOneOptions _,
                 CancellationToken _) => reserved = document)
             .Returns(Task.CompletedTask);
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(normalizationCursor.Object);
         collection.Setup(value => value.FindAsync(
                 It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
                 It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
@@ -170,6 +178,94 @@ public sealed class UserRideOccurrenceRepositoryTests
         collection.VerifyAll();
         operationCollection.VerifyAll();
         appendBaseCursor.VerifyAll();
+        normalizationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CreateBatchIdempotentAsync_WhenNormalizationCompletesBeforeReservation_ShouldPersistTheSignal()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        string operationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("request-1");
+        UserRideOccurrenceCreationOperationDocument normalization =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash =
+                    UserRideOccurrenceCreationFingerprint.HashOperationKey(
+                        "normalization-request"),
+                PayloadHash = "normalization-payload",
+                OperationKind = "reorder",
+                VisitId = "visit-1",
+                OperationState = "completed",
+                RelatedCreationOperationKeyHash = operationKeyHash,
+                WasNormalized = true,
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> normalizationCursor =
+            CreateAsyncCursor(new[] { normalization });
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceDocument>());
+        UserRideOccurrenceCreationOperationDocument? reserved = null;
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument document,
+                InsertOneOptions _,
+                CancellationToken _) => reserved = document)
+            .Returns(Task.CompletedTask);
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(normalizationCursor.Object);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument,
+                    UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(appendBaseCursor.Object);
+        collection.Setup(value => value.InsertManyAsync(
+                It.IsAny<IEnumerable<UserRideOccurrenceDocument>>(),
+                It.IsAny<InsertManyOptions>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceCreationResult result =
+            await repository.CreateBatchIdempotentAsync(
+                CreateRequest(new[] { occurrence }),
+                new[] { occurrence },
+                null,
+                false,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.Created, result.Status);
+        Assert.True(result.WasNormalized);
+        Assert.NotNull(reserved);
+        Assert.True(reserved.WasNormalized);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        appendBaseCursor.VerifyAll();
+        normalizationCursor.VerifyAll();
     }
 
     [Fact]

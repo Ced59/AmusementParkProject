@@ -88,6 +88,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             return CreateConflictResult();
         }
 
+        bool normalizationSignalPersisted =
+            await this.EnsureCreationNormalizationSignalAsync(
+                operation,
+                request.VisitId,
+                cancellationToken);
+        if (!normalizationSignalPersisted)
+        {
+            return null;
+        }
+
         List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
             request.UserId,
             operationKeyHash,
@@ -1006,6 +1016,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             await this.operationCollection.InsertOneAsync(
                 requested,
                 cancellationToken: cancellationToken);
+            bool normalizationSignalPersisted =
+                await this.EnsureCreationNormalizationSignalAsync(
+                    requested,
+                    visitId,
+                    cancellationToken);
+            if (!normalizationSignalPersisted)
+            {
+                return null;
+            }
+
             return (requested, true);
         }
         catch (MongoWriteException exception)
@@ -1018,6 +1038,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
             if (existing is not null)
             {
+                bool normalizationSignalPersisted =
+                    await this.EnsureCreationNormalizationSignalAsync(
+                        existing,
+                        visitId,
+                        cancellationToken);
+                if (!normalizationSignalPersisted)
+                {
+                    return null;
+                }
+
                 return (existing, false);
             }
 
@@ -1052,9 +1082,71 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     userId,
                     operationKeyHash,
                     cancellationToken);
-                return existing is null ? null : (existing, false);
+                if (existing is null)
+                {
+                    return null;
+                }
+
+                bool normalizationSignalPersisted =
+                    await this.EnsureCreationNormalizationSignalAsync(
+                        existing,
+                        visitId,
+                        cancellationToken);
+                return normalizationSignalPersisted
+                    ? (existing, false)
+                    : null;
             }
         }
+    }
+
+    private async Task<bool> EnsureCreationNormalizationSignalAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        VisitId visitId,
+        CancellationToken cancellationToken)
+    {
+        if (operation.WasNormalized
+            || !string.Equals(
+                operation.OperationKind,
+                CreationOperationKind,
+                StringComparison.Ordinal))
+        {
+            return true;
+        }
+
+        bool wasNormalized = await this.WasCreationOrderNormalizedAsync(
+            operation.UserId,
+            visitId,
+            operation.OperationKeyHash,
+            cancellationToken);
+        if (!wasNormalized)
+        {
+            return true;
+        }
+
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(
+                static document => document.OperationKind,
+                CreationOperationKind);
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update
+                .Set(static document => document.WasNormalized, true);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            update,
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        if (result.MatchedCount != 1)
+        {
+            return false;
+        }
+
+        operation.WasNormalized = true;
+        return true;
     }
 
     private async Task<bool> WasCreationOrderNormalizedAsync(
@@ -1072,7 +1164,28 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         relatedCreationOperationKeyHash))
                 .Limit(1)
                 .FirstOrDefaultAsync(cancellationToken);
-        return operation is not null;
+        return operation is not null
+            && string.Equals(
+                operation.UserId,
+                userId,
+                StringComparison.Ordinal)
+            && string.Equals(
+                operation.VisitId,
+                visitId.Value,
+                StringComparison.Ordinal)
+            && string.Equals(
+                operation.OperationKind,
+                ReorderOperationKind,
+                StringComparison.Ordinal)
+            && string.Equals(
+                operation.OperationState,
+                CompletedOperationState,
+                StringComparison.Ordinal)
+            && operation.WasNormalized
+            && string.Equals(
+                operation.RelatedCreationOperationKeyHash,
+                relatedCreationOperationKeyHash,
+                StringComparison.Ordinal);
     }
 
     internal static UserRideOccurrenceDocument CreateCreationDocument(
