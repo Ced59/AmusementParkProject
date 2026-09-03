@@ -19,6 +19,30 @@ public sealed class PassportAuditStoreTests
         new DateTime(2026, 9, 4, 8, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public void ContentFenceAllowsAuditDelivery_ShouldExposeOnlyTheSafeGenerationInterval()
+    {
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(
+            null,
+            false,
+            null,
+            null));
+        Assert.False(PassportAuditStore.ContentFenceAllowsAuditDelivery(
+            null,
+            false,
+            null,
+            1));
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, true, 7, 7));
+        Assert.False(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, true, 7, 6));
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, 6, 6));
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, 6, 7));
+        Assert.False(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, 6, 5));
+        Assert.False(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, 6, null));
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, null, null));
+        Assert.True(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, null, 1));
+        Assert.False(PassportAuditStore.ContentFenceAllowsAuditDelivery(7, false, null, 8));
+    }
+
+    [Fact]
     public async Task TryPublishAsync_ShouldAppendBeforeAcknowledgingTheSourceMarker()
     {
         PassportAuditEvent auditEvent = CreateVisitAuditEvent();

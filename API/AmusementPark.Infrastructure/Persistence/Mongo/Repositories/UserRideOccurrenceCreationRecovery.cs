@@ -23,7 +23,20 @@ internal sealed class UserRideOccurrenceCreationRecovery
         int expectedCount,
         CancellationToken cancellationToken)
     {
-        HashSet<int> existingIndexes = existing
+        IReadOnlyCollection<UserRideOccurrenceDocument> recoverable = existing;
+        if (operation.ContentMutationFenceToken.HasValue)
+        {
+            await this.AdoptLateDocumentsAsync(
+                operation,
+                payloadHash,
+                expectedCount,
+                cancellationToken);
+            recoverable = await this.LoadCurrentDocumentsAsync(
+                operation,
+                cancellationToken);
+        }
+
+        HashSet<int> existingIndexes = recoverable
             .Where(static document => document.CreationOperationIndex.HasValue)
             .Select(static document => document.CreationOperationIndex!.Value)
             .ToHashSet();
@@ -50,10 +63,74 @@ internal sealed class UserRideOccurrenceCreationRecovery
                 when (ContainsOnlyDuplicateKeyErrors(exception))
             {
                 // Une autre reprise de la même clé peut avoir terminé les allocations.
+                if (operation.ContentMutationFenceToken.HasValue)
+                {
+                    await this.AdoptLateDocumentsAsync(
+                        operation,
+                        payloadHash,
+                        expectedCount,
+                        cancellationToken);
+                }
             }
+
+            recoverable = await this.LoadCurrentDocumentsAsync(
+                operation,
+                cancellationToken);
         }
 
-        List<UserRideOccurrenceDocument> recovered = await this.collection
+        return UserRideOccurrenceRepository.ResolveAgainstOperation(
+                operation,
+                recoverable,
+                payloadHash,
+                expectedCount)
+            ?? new IdempotentRideOccurrenceCreationResult(
+                IdempotentRideOccurrenceCreationStatus.Conflict,
+                Array.Empty<RideOccurrence>());
+    }
+
+    private async Task AdoptLateDocumentsAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        string payloadHash,
+        int expectedCount,
+        CancellationToken cancellationToken)
+    {
+        long currentFenceToken = operation.ContentMutationFenceToken!.Value;
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceDocument> olderFence = filters.Or(
+            filters.Exists(
+                static document => document.ContentMutationFenceToken,
+                false),
+            filters.Eq(
+                static document => document.ContentMutationFenceToken,
+                null),
+            filters.Lt(
+                static document => document.ContentMutationFenceToken,
+                currentFenceToken));
+        FilterDefinition<UserRideOccurrenceDocument> exactAllocation =
+            UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.VisitId, operation.VisitId)
+            & filters.Eq(static document => document.CreationPayloadHash, payloadHash)
+            & filters.Eq(static document => document.CreationOperationCount, expectedCount)
+            & filters.In(
+                static document => document.Id,
+                operation.Items.Select(static item => item.OccurrenceId));
+        _ = await this.collection.UpdateManyAsync(
+            exactAllocation & olderFence,
+            Builders<UserRideOccurrenceDocument>.Update.Set(
+                static document => document.ContentMutationFenceToken,
+                currentFenceToken),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+    }
+
+    private async Task<List<UserRideOccurrenceDocument>> LoadCurrentDocumentsAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        return await this.collection
             .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
                 UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
                     operation.UserId,
@@ -61,14 +138,6 @@ internal sealed class UserRideOccurrenceCreationRecovery
                 operation.ContentMutationFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildCreationOperationSort())
             .ToListAsync(cancellationToken);
-        return UserRideOccurrenceRepository.ResolveAgainstOperation(
-                operation,
-                recovered,
-                payloadHash,
-                expectedCount)
-            ?? new IdempotentRideOccurrenceCreationResult(
-                IdempotentRideOccurrenceCreationStatus.Conflict,
-                Array.Empty<RideOccurrence>());
     }
 
     private static bool ContainsOnlyDuplicateKeyErrors(

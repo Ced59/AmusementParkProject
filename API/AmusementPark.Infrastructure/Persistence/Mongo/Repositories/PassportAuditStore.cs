@@ -277,13 +277,15 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 .Include(static document => document.Id)
                 .Include(static document => document.UserId)
                 .Include(static document => document.ContentMutationFenceToken)
+                .Include(static document => document.ContentMutationFenceStableToken)
                 .Include(static document => document.ContentMutationFenceReady))
             .ToListAsync(cancellationToken);
         return visits.ToDictionary(
             static visit => BuildFenceScopeKey(visit.UserId, visit.Id),
             static visit => new CurrentContentFence(
                 visit.ContentMutationFenceToken,
-                visit.ContentMutationFenceReady),
+                visit.ContentMutationFenceReady,
+                visit.ContentMutationFenceStableToken),
             StringComparer.Ordinal);
     }
 
@@ -304,13 +306,39 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
         return string.Concat(userId, "\n", visitId);
     }
 
-    private sealed record CurrentContentFence(long? Token, bool IsReady)
+    internal static bool ContentFenceAllowsAuditDelivery(
+        long? token,
+        bool isReady,
+        long? stableToken,
+        long? sourceFence)
+    {
+        if (!token.HasValue)
+        {
+            return !sourceFence.HasValue;
+        }
+
+        if (isReady)
+        {
+            return sourceFence == token;
+        }
+
+        return stableToken.HasValue
+            ? sourceFence >= stableToken && sourceFence <= token
+            : !sourceFence.HasValue || sourceFence is >= 1 && sourceFence <= token;
+    }
+
+    private sealed record CurrentContentFence(
+        long? Token,
+        bool IsReady,
+        long? StableToken)
     {
         public bool Matches(long? sourceFence)
         {
-            return this.Token.HasValue
-                ? this.IsReady && sourceFence == this.Token
-                : !sourceFence.HasValue;
+            return ContentFenceAllowsAuditDelivery(
+                this.Token,
+                this.IsReady,
+                this.StableToken,
+                sourceFence);
         }
     }
 
