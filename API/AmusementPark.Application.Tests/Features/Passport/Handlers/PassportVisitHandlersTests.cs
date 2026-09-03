@@ -65,12 +65,13 @@ public sealed class PassportVisitHandlersTests
     }
 
     [Fact]
-    public async Task CreateVisit_WhenTheSameOperationIsReplayedAfterParkDeletion_ShouldExposeTheOriginalVisit()
+    public async Task CreateVisit_WhenMutableDependenciesChanged_ShouldReplayTheOriginalVisit()
     {
         Visit existing = CreateVisit("existing-visit", "owner-1");
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
-        Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
+        Mock<IPassportTimeZoneValidator> timeZones =
+            new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         visits.Setup(repository => repository.ResolveExistingCreationAsync(
                 It.IsAny<Visit>(),
                 "request-1",
@@ -87,6 +88,7 @@ public sealed class PassportVisitHandlersTests
         Assert.Equal("existing-visit", result.Value?.Visit.Id);
         visits.VerifyAll();
         parks.VerifyNoOtherCalls();
+        timeZones.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -94,7 +96,8 @@ public sealed class PassportVisitHandlersTests
     {
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
-        Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
+        Mock<IPassportTimeZoneValidator> timeZones =
+            new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         visits.Setup(repository => repository.ResolveExistingCreationAsync(
                 It.IsAny<Visit>(),
                 "request-1",
@@ -146,6 +149,11 @@ public sealed class PassportVisitHandlersTests
             new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         timeZones.Setup(validator => validator.IsValid("Mars/Olympus"))
             .Returns(false);
+        visits.Setup(repository => repository.ResolveExistingCreationAsync(
+                It.IsAny<Visit>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentVisitCreationResult?)null);
         CreateVisitCommandHandler handler = CreateHandler(visits.Object, parks.Object, timeZones.Object);
 
         ApplicationResult<CreateVisitResult> result = await handler.HandleAsync(
@@ -153,7 +161,7 @@ public sealed class PassportVisitHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("visit.time-zone-id-invalid", Assert.Single(result.Errors).Code);
-        visits.VerifyNoOtherCalls();
+        visits.VerifyAll();
         parks.VerifyNoOtherCalls();
         timeZones.VerifyAll();
     }
@@ -163,7 +171,8 @@ public sealed class PassportVisitHandlersTests
     {
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
-        Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
+        Mock<IPassportTimeZoneValidator> timeZones =
+            new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         CreateVisitCommandHandler handler = CreateHandler(visits.Object, parks.Object, timeZones.Object);
         string invalidParkId = new string('p', IdentifierRules.MaximumLength + 1);
 
@@ -179,7 +188,7 @@ public sealed class PassportVisitHandlersTests
             Assert.Single(error.Details!).Value);
         visits.VerifyNoOtherCalls();
         parks.VerifyNoOtherCalls();
-        timeZones.VerifyAll();
+        timeZones.VerifyNoOtherCalls();
     }
 
     [Fact]

@@ -26,10 +26,11 @@ Le corps public ne contient jamais `userId`. Le contrôleur le lit dans le claim
 
 ```text
 claim propriétaire
-  -> validation date partielle + fuseau IANA
+  -> validation date partielle + forme des données de l'agrégat
   -> création en mémoire de l'agrégat Visit privé
   -> recherche d'un replay par hash(clé) + hash(payload normalisé)
-  -> si opération nouvelle, vérification de l'existence du parc
+  -> si opération nouvelle, validation du fuseau IANA par l'hôte
+  -> vérification de l'existence du parc
   -> insert Mongo avec empreintes + snapshot de création immuable
 ```
 
@@ -43,6 +44,8 @@ La collection possède l'index partiel unique suivant :
 - même propriétaire + même clé + payload différent : `409 visit.idempotency-key-conflict` ;
 - la clé brute n'est jamais persistée ;
 - la durée de rejouabilité est la durée de vie de la visite. Le futur workflow de suppression devra conserver un tombstone d'idempotence pendant sa période de rétention avant purge.
+
+La résolution du replay précède volontairement les validations dépendant d'un état mutable : existence du parc et disponibilité du fuseau dans la tzdata de l'hôte. Une réponse de création perdue reste donc récupérable après suppression du parc ou évolution de l'image système, sans affaiblir ces contrôles pour une nouvelle opération.
 
 Le hash du payload couvre le parc, la date complète ou partielle, son caractère approximatif, le fuseau, la convention de jour de service, le titre et la note privée. Il exclut l'identifiant généré et les timestamps.
 

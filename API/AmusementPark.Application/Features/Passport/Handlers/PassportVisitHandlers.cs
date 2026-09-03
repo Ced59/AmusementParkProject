@@ -79,12 +79,6 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
         string? timeZoneId = string.IsNullOrWhiteSpace(command.TimeZoneId)
             ? null
             : command.TimeZoneId.Trim();
-        if (timeZoneId is not null && !this.timeZoneValidator.IsValid(timeZoneId))
-        {
-            return ApplicationResult<CreateVisitResult>.Failure(
-                PassportApplicationErrors.InvalidTimeZone());
-        }
-
         string userId = command.UserId.Trim();
         string parkId = command.ParkId.Trim();
         Visit visit;
@@ -125,6 +119,12 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
         if (existingCreation is not null)
         {
             return ToApplicationResult(existingCreation);
+        }
+
+        if (timeZoneId is not null && !this.timeZoneValidator.IsValid(timeZoneId))
+        {
+            return ApplicationResult<CreateVisitResult>.Failure(
+                PassportApplicationErrors.InvalidTimeZone());
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(
