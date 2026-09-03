@@ -260,14 +260,6 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
-        if (validatedVisit is not null
-            && !RideOccurrenceCreationPreparationVisitGuard.Matches(
-                reservation.Preparation,
-                validatedVisit))
-        {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
-        }
-
         return await this.CreateWithOrderRetryAsync(
             reservation.Preparation,
             expanded,
