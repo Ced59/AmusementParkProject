@@ -39,12 +39,25 @@ public sealed record RideOccurrenceCreationRequest(
     string UserId,
     IReadOnlyList<RideOccurrenceCreationRequestItem> Items);
 
+public sealed record RideOccurrenceCreationPreparation(
+    string ParkId,
+    VisitDate VisitDate,
+    string? TimeZoneId,
+    LocalServiceDayConvention ServiceDayConvention,
+    IReadOnlyList<HistoricalConsistency> HistoricalConsistencies);
+
 public enum RideOccurrenceCreationKeyReservationStatus
 {
-    Reserved = 1,
-    Replayed = 2,
-    Conflict = 3,
+    Missing = 1,
+    Reserved = 2,
+    Replayed = 3,
+    Finalized = 4,
+    Conflict = 5,
 }
+
+public sealed record RideOccurrenceCreationKeyReservationResult(
+    RideOccurrenceCreationKeyReservationStatus Status,
+    RideOccurrenceCreationPreparation? Preparation = null);
 
 public enum IdempotentRideOccurrenceCreationStatus
 {

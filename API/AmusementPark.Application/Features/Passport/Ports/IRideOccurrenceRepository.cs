@@ -8,8 +8,15 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IRideOccurrenceRepository
 {
-    Task<RideOccurrenceCreationKeyReservationStatus> ReserveBatchCreationKeyAsync(
+    Task<RideOccurrenceCreationKeyReservationResult>
+        ResolveBatchCreationKeyReservationAsync(
+            RideOccurrenceCreationRequest request,
+            string clientOperationId,
+            CancellationToken cancellationToken);
+
+    Task<RideOccurrenceCreationKeyReservationResult> ReserveBatchCreationKeyAsync(
         RideOccurrenceCreationRequest request,
+        RideOccurrenceCreationPreparation preparation,
         string clientOperationId,
         DateTime reservedAtUtc,
         CancellationToken cancellationToken);

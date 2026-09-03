@@ -8,9 +8,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal sealed class UserRideOccurrencePendingOperationRecovery
 {
     private const string CreationOperationKind = "creation";
+    private const string CreationKeyReservationOperationKind =
+        "creation-key-reservation";
     private const string DeleteOperationKind = "delete";
     private const string ReorderOperationKind = "reorder";
     private const string PendingOperationState = "pending";
+    private const string ReservedOperationState = "reserved";
     private const string CompletedOperationState = "completed";
     private const string ConflictOperationState = "conflict";
 
@@ -100,7 +103,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         return stillPending is null;
     }
 
-    public async Task<bool> DeleteUnvalidatedCreationAsync(
+    public async Task<bool> ReleaseUnvalidatedCreationAsync(
         UserRideOccurrenceCreationOperationDocument operation,
         CancellationToken cancellationToken)
     {
@@ -113,6 +116,51 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             & filters.Eq(static document => document.OperationKind, CreationOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.AppendBaseValidated, false);
+        if (operation.CreationPreparation is not null)
+        {
+            UpdateDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> updates =
+                Builders<UserRideOccurrenceCreationOperationDocument>.Update;
+            UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
+                updates.Combine(
+                    updates.Set(
+                        static document => document.OperationKind,
+                        CreationKeyReservationOperationKind),
+                    updates.Set(
+                        static document => document.OperationState,
+                        ReservedOperationState),
+                    updates.Set(
+                        static document => document.AppendBaseWasEmpty,
+                        false),
+                    updates.Unset(
+                        static document => document.AppendBaseSortPosition),
+                    updates.Set(
+                        static document => document.AppendBaseValidated,
+                        false),
+                    updates.Set(
+                        static document => document.Items,
+                        new List<UserRideOccurrenceCreationAllocationDocument>()),
+                    updates.Set(
+                        static document => document.UpdatedAt,
+                        operation.UpdatedAt));
+            UpdateResult updateResult = await this.operationCollection.UpdateOneAsync(
+                filter,
+                update,
+                new UpdateOptions { IsUpsert = false },
+                cancellationToken);
+            if (updateResult.MatchedCount == 1)
+            {
+                operation.OperationKind = CreationKeyReservationOperationKind;
+                operation.OperationState = ReservedOperationState;
+                operation.AppendBaseWasEmpty = false;
+                operation.AppendBaseSortPosition = null;
+                operation.AppendBaseValidated = false;
+                operation.Items.Clear();
+                return true;
+            }
+
+            return false;
+        }
+
         DeleteResult result = await this.operationCollection.DeleteOneAsync(
             filter,
             cancellationToken);
@@ -308,7 +356,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                     cancellationToken);
             if (validation == RideOccurrenceOrderGuardValidationStatus.Stale)
             {
-                return await this.DeleteUnvalidatedCreationAsync(
+                return await this.ReleaseUnvalidatedCreationAsync(
                     operation,
                     cancellationToken);
             }

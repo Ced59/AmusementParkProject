@@ -76,6 +76,39 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return ToApplicationResult(existing);
         }
 
+        RideOccurrenceCreationKeyReservationResult reservation =
+            await this.occurrenceRepository.ResolveBatchCreationKeyReservationAsync(
+                creationRequest,
+                operationId,
+                cancellationToken);
+        if (reservation.Status == RideOccurrenceCreationKeyReservationStatus.Conflict)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+        }
+
+        if (reservation.Status == RideOccurrenceCreationKeyReservationStatus.Finalized)
+        {
+            return await this.ResolveFinalizedCreationAsync(
+                creationRequest,
+                operationId,
+                cancellationToken);
+        }
+
+        if (reservation.Status == RideOccurrenceCreationKeyReservationStatus.Replayed)
+        {
+            if (reservation.Preparation is null)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+
+            return await this.CreateWithOrderRetryAsync(
+                reservation.Preparation,
+                expanded,
+                creationRequest,
+                operationId,
+                cancellationToken);
+        }
+
         Visit? visit = await this.visitRepository.GetOwnedAsync(
             visitId,
             userId,
@@ -99,42 +132,62 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(targetError);
         }
 
-        RideOccurrenceCreationKeyReservationStatus reservationStatus =
+        RideOccurrenceCreationPreparation preparation = CreatePreparation(
+            visit,
+            expanded,
+            targets);
+        reservation =
             await this.occurrenceRepository.ReserveBatchCreationKeyAsync(
                 creationRequest,
+                preparation,
                 operationId,
                 this.clock.UtcNow,
                 cancellationToken);
-        if (reservationStatus == RideOccurrenceCreationKeyReservationStatus.Conflict)
+        if (reservation.Status == RideOccurrenceCreationKeyReservationStatus.Conflict)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
         }
 
-        if (reservationStatus == RideOccurrenceCreationKeyReservationStatus.Replayed)
+        if (reservation.Status == RideOccurrenceCreationKeyReservationStatus.Finalized)
         {
-            existing = await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
+            return await this.ResolveFinalizedCreationAsync(
                 creationRequest,
                 operationId,
                 cancellationToken);
-            if (existing is not null)
-            {
-                return ToApplicationResult(existing);
-            }
+        }
+
+        if (reservation.Preparation is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
         return await this.CreateWithOrderRetryAsync(
-            visit,
+            reservation.Preparation,
             expanded,
-            targets,
             creationRequest,
             operationId,
             cancellationToken);
     }
 
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        ResolveFinalizedCreationAsync(
+            RideOccurrenceCreationRequest creationRequest,
+            string operationId,
+            CancellationToken cancellationToken)
+    {
+        IdempotentRideOccurrenceCreationResult? existing =
+            await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
+                creationRequest,
+                operationId,
+                cancellationToken);
+        return existing is null
+            ? Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict())
+            : ToApplicationResult(existing);
+    }
+
     private async Task<ApplicationResult<CreateRideOccurrencesResult>> CreateWithOrderRetryAsync(
-        Visit visit,
+        RideOccurrenceCreationPreparation preparation,
         IReadOnlyList<RideOccurrenceCreationItem> items,
-        IReadOnlyDictionary<string, VisitTarget> targets,
         RideOccurrenceCreationRequest creationRequest,
         string operationId,
         CancellationToken cancellationToken)
@@ -145,8 +198,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         {
             RideOccurrenceAppendState appendState =
                 await this.occurrenceRepository.GetAppendStateAsync(
-                    visit.Id,
-                    visit.UserId,
+                    creationRequest.VisitId,
+                    creationRequest.UserId,
                     operationId,
                     cancellationToken);
             wasOrderNormalized |= appendState.WasNormalizedForOperation;
@@ -161,7 +214,10 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             catch (OverflowException)
             {
                 bool normalized = await this.appendOrderNormalizer.TryNormalizeAsync(
-                    visit,
+                    CreateVisitContext(
+                        creationRequest,
+                        preparation,
+                        this.clock.UtcNow),
                     operationId,
                     cancellationToken);
                 if (!normalized)
@@ -172,8 +228,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 wasOrderNormalized = true;
 
                 appendState = await this.occurrenceRepository.GetAppendStateAsync(
-                    visit.Id,
-                    visit.UserId,
+                    creationRequest.VisitId,
+                    creationRequest.UserId,
                     operationId,
                     cancellationToken);
                 wasOrderNormalized |= appendState.WasNormalizedForOperation;
@@ -194,9 +250,9 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             try
             {
                 occurrences = BuildOccurrences(
-                    visit,
+                    creationRequest,
+                    preparation,
                     items,
-                    targets,
                     positions,
                     this.clock.UtcNow);
             }
@@ -232,37 +288,67 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     }
 
     private static List<RideOccurrence> BuildOccurrences(
-        Visit visit,
+        RideOccurrenceCreationRequest creationRequest,
+        RideOccurrenceCreationPreparation preparation,
         IReadOnlyList<RideOccurrenceCreationItem> items,
-        IReadOnlyDictionary<string, VisitTarget> targets,
         IReadOnlyList<long> positions,
         DateTime nowUtc)
     {
+        Visit visit = CreateVisitContext(creationRequest, preparation, nowUtc);
         List<RideOccurrence> occurrences = new List<RideOccurrence>(items.Count);
         for (int index = 0; index < items.Count; index++)
         {
             RideOccurrenceCreationItem item = items[index];
-            VisitTarget target = targets[item.ParkItemId.Trim()];
-            HistoricalConsistency consistency =
-                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                    visit.Date,
-                    target.OpeningDate,
-                    target.ClosingDate);
             occurrences.Add(RideOccurrence.Create(
                 RideOccurrenceId.New(),
                 visit,
-                target.ParkItemId,
+                item.ParkItemId.Trim(),
                 positions[index],
                 new OccurrenceMoment(item.LocalTime, item.IsApproximate),
                 item.Status,
                 RideLogSource.Manual,
-                consistency,
+                preparation.HistoricalConsistencies[index],
                 null,
                 item.PrivateNote,
                 nowUtc));
         }
 
         return occurrences;
+    }
+
+    private static RideOccurrenceCreationPreparation CreatePreparation(
+        Visit visit,
+        IReadOnlyList<RideOccurrenceCreationItem> items,
+        IReadOnlyDictionary<string, VisitTarget> targets)
+    {
+        return new RideOccurrenceCreationPreparation(
+            visit.ParkId,
+            visit.Date,
+            visit.TimeZoneId,
+            visit.ServiceDayConvention,
+            items.Select(item =>
+                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
+                    visit.Date,
+                    targets[item.ParkItemId.Trim()].OpeningDate,
+                    targets[item.ParkItemId.Trim()].ClosingDate))
+                .ToArray());
+    }
+
+    private static Visit CreateVisitContext(
+        RideOccurrenceCreationRequest request,
+        RideOccurrenceCreationPreparation preparation,
+        DateTime nowUtc)
+    {
+        return Visit.Create(
+            request.VisitId,
+            request.UserId,
+            preparation.ParkId,
+            preparation.VisitDate,
+            preparation.TimeZoneId,
+            preparation.ServiceDayConvention,
+            null,
+            null,
+            nowUtc);
     }
 
     private static IReadOnlyList<RideOccurrenceCreationItem>? Expand(

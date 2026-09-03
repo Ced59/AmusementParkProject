@@ -27,6 +27,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private const string ConflictOperationState = "conflict";
 
+    private const string ReservedOperationState = "reserved";
+
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
         operationCollection;
@@ -64,14 +66,38 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.deletionCoordinator);
     }
 
-    public async Task<RideOccurrenceCreationKeyReservationStatus>
+    public async Task<RideOccurrenceCreationKeyReservationResult>
+        ResolveBatchCreationKeyReservationAsync(
+            RideOccurrenceCreationRequest request,
+            string clientOperationId,
+            CancellationToken cancellationToken)
+    {
+        ValidateCreationRequest(request);
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
+        UserRideOccurrenceCreationOperationDocument? existing =
+            await this.LoadCreationOperationAsync(
+                request.UserId,
+                operationKeyHash,
+                cancellationToken);
+        return CreateCreationKeyReservationResult(
+            existing,
+            request,
+            payloadHash,
+            RideOccurrenceCreationKeyReservationStatus.Replayed);
+    }
+
+    public async Task<RideOccurrenceCreationKeyReservationResult>
         ReserveBatchCreationKeyAsync(
             RideOccurrenceCreationRequest request,
+            RideOccurrenceCreationPreparation preparation,
             string clientOperationId,
             DateTime reservedAtUtc,
             CancellationToken cancellationToken)
     {
         ValidateCreationRequest(request);
+        ValidateCreationPreparation(request, preparation);
         if (reservedAtUtc.Kind != DateTimeKind.Utc)
         {
             throw new ArgumentException(
@@ -82,19 +108,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string normalizedOperationId = NormalizeRequired(
             clientOperationId,
             nameof(clientOperationId));
-        string reservationOperationKey =
-            UserRideOccurrenceCreationFingerprint.CreateReservationOperationKey(
-                normalizedOperationId);
+        string operationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey(normalizedOperationId);
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
         UserRideOccurrenceCreationOperationDocument reservation =
             new UserRideOccurrenceCreationOperationDocument
             {
                 UserId = request.UserId,
-                OperationKeyHash = reservationOperationKey,
+                OperationKeyHash = operationKeyHash,
                 PayloadHash = payloadHash,
                 OperationKind = CreationKeyReservationOperationKind,
                 VisitId = request.VisitId.Value,
-                OperationState = CompletedOperationState,
+                OperationState = ReservedOperationState,
+                CreationPreparation = CreatePreparationDocument(preparation),
                 CreatedAt = reservedAtUtc,
                 UpdatedAt = reservedAtUtc,
             };
@@ -103,7 +129,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             await this.operationCollection.InsertOneAsync(
                 reservation,
                 cancellationToken: cancellationToken);
-            return RideOccurrenceCreationKeyReservationStatus.Reserved;
+            return new RideOccurrenceCreationKeyReservationResult(
+                RideOccurrenceCreationKeyReservationStatus.Reserved,
+                preparation);
         }
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
@@ -111,28 +139,13 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     request.UserId,
-                    reservationOperationKey,
+                    operationKeyHash,
                     cancellationToken);
-            bool matches = existing is not null
-                && string.Equals(
-                    existing.OperationKind,
-                    CreationKeyReservationOperationKind,
-                    StringComparison.Ordinal)
-                && string.Equals(
-                    existing.OperationState,
-                    CompletedOperationState,
-                    StringComparison.Ordinal)
-                && string.Equals(
-                    existing.VisitId,
-                    request.VisitId.Value,
-                    StringComparison.Ordinal)
-                && string.Equals(
-                    existing.PayloadHash,
-                    payloadHash,
-                    StringComparison.Ordinal);
-            return matches
-                ? RideOccurrenceCreationKeyReservationStatus.Replayed
-                : RideOccurrenceCreationKeyReservationStatus.Conflict;
+            return CreateCreationKeyReservationResult(
+                existing,
+                request,
+                payloadHash,
+                RideOccurrenceCreationKeyReservationStatus.Replayed);
         }
     }
 
@@ -153,6 +166,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         if (operation is null)
         {
             return null;
+        }
+
+        if (string.Equals(
+            operation.OperationKind,
+            CreationKeyReservationOperationKind,
+            StringComparison.Ordinal))
+        {
+            RideOccurrenceCreationKeyReservationResult reservation =
+                CreateCreationKeyReservationResult(
+                    operation,
+                    request,
+                    payloadHash,
+                    RideOccurrenceCreationKeyReservationStatus.Replayed);
+            return reservation.Status == RideOccurrenceCreationKeyReservationStatus.Replayed
+                ? null
+                : CreateConflictResult();
         }
 
         if (!UserRideOccurrenceOperationValidator.CreationMatches(
@@ -205,10 +234,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 cancellationToken);
         if (validation == RideOccurrenceOrderGuardValidationStatus.Stale)
         {
-            bool deleted = await this.pendingOperationRecovery.DeleteUnvalidatedCreationAsync(
+            bool released = await this.pendingOperationRecovery.ReleaseUnvalidatedCreationAsync(
                 operation,
                 cancellationToken);
-            return deleted
+            return released
                 ? null
                 : CreateCreationConcurrencyConflictResult();
         }
@@ -281,7 +310,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 cancellationToken);
         if (validation == RideOccurrenceOrderGuardValidationStatus.Stale)
         {
-            await this.pendingOperationRecovery.DeleteUnvalidatedCreationAsync(
+            await this.pendingOperationRecovery.ReleaseUnvalidatedCreationAsync(
                 operation,
                 cancellationToken);
             return CreateCreationConcurrencyConflictResult();
@@ -1113,6 +1142,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
             if (existing is not null)
             {
+                if (CreationReservationMatchesBatch(existing, requested))
+                {
+                    return await this.ActivateCreationReservationAsync(
+                        existing,
+                        requested,
+                        visitId,
+                        cancellationToken);
+                }
+
                 bool normalizationSignalPersisted =
                     await this.EnsureCreationNormalizationSignalAsync(
                         existing,
@@ -1182,6 +1220,151 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     : null;
             }
         }
+    }
+
+    private async Task<(UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)?>
+        ActivateCreationReservationAsync(
+            UserRideOccurrenceCreationOperationDocument reservation,
+            UserRideOccurrenceCreationOperationDocument requested,
+            VisitId visitId,
+            CancellationToken cancellationToken)
+    {
+        const int maximumAttempts = 3;
+        for (int attempt = 0; attempt < maximumAttempts; attempt++)
+        {
+            requested.WasNormalized |= await this.WasCreationOrderNormalizedAsync(
+                requested.UserId,
+                visitId,
+                requested.OperationKeyHash,
+                cancellationToken);
+            try
+            {
+                bool activated = await this.TryActivateCreationReservationAsync(
+                    reservation,
+                    requested,
+                    cancellationToken);
+                if (activated)
+                {
+                    bool activationSignalPersisted =
+                        await this.EnsureCreationNormalizationSignalAsync(
+                            requested,
+                            visitId,
+                            cancellationToken);
+                    return activationSignalPersisted
+                        ? (requested, true)
+                        : null;
+                }
+            }
+            catch (MongoWriteException exception)
+                when (exception.WriteError?.Category
+                    == ServerErrorCategory.DuplicateKey)
+            {
+                bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
+                    requested.UserId,
+                    visitId,
+                    this.ResumeReservedReorderAsync,
+                    cancellationToken);
+                if (!recovered)
+                {
+                    return null;
+                }
+
+                continue;
+            }
+
+            UserRideOccurrenceCreationOperationDocument? durable =
+                await this.LoadCreationOperationAsync(
+                    requested.UserId,
+                    requested.OperationKeyHash,
+                    cancellationToken);
+            if (durable is null)
+            {
+                return null;
+            }
+
+            if (CreationReservationMatchesBatch(durable, requested))
+            {
+                reservation = durable;
+                continue;
+            }
+
+            bool normalizationSignalPersisted =
+                await this.EnsureCreationNormalizationSignalAsync(
+                    durable,
+                    visitId,
+                    cancellationToken);
+            return normalizationSignalPersisted
+                ? (durable, false)
+                : null;
+        }
+
+        return null;
+    }
+
+    private async Task<bool> TryActivateCreationReservationAsync(
+        UserRideOccurrenceCreationOperationDocument reservation,
+        UserRideOccurrenceCreationOperationDocument requested,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                reservation.UserId,
+                reservation.OperationKeyHash)
+            & filters.Eq(
+                static document => document.OperationKind,
+                CreationKeyReservationOperationKind)
+            & filters.Eq(
+                static document => document.OperationState,
+                ReservedOperationState)
+            & filters.Eq(
+                static document => document.PayloadHash,
+                reservation.PayloadHash)
+            & filters.Eq(
+                static document => document.VisitId,
+                reservation.VisitId);
+        UpdateDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> updates =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update;
+        List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>> definitions =
+            new List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>
+            {
+                updates.Set(
+                    static document => document.OperationKind,
+                    CreationOperationKind),
+                updates.Set(
+                    static document => document.OperationState,
+                    PendingOperationState),
+                updates.Set(
+                    static document => document.AppendBaseWasEmpty,
+                    requested.AppendBaseWasEmpty),
+                updates.Set(
+                    static document => document.AppendBaseValidated,
+                    false),
+                updates.Set(
+                    static document => document.WasNormalized,
+                    requested.WasNormalized),
+                updates.Set(static document => document.Items, requested.Items),
+                updates.Set(static document => document.UpdatedAt, requested.UpdatedAt),
+            };
+        if (requested.AppendBaseSortPosition.HasValue)
+        {
+            definitions.Add(updates.Set(
+                static document => document.AppendBaseSortPosition,
+                requested.AppendBaseSortPosition));
+        }
+        else
+        {
+            definitions.Add(updates.Unset(
+                static document => document.AppendBaseSortPosition));
+        }
+
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            updates.Combine(definitions),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        return result.MatchedCount == 1;
     }
 
     private async Task<bool> EnsureCreationNormalizationSignalAsync(
@@ -1468,6 +1651,202 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             || !guards.Any(guard => guard.OccurrenceId == request.OccurrenceId))
         {
             throw new ArgumentException("The reorder plan is invalid.", nameof(changes));
+        }
+    }
+
+    private static RideOccurrenceCreationKeyReservationResult
+        CreateCreationKeyReservationResult(
+            UserRideOccurrenceCreationOperationDocument? operation,
+            RideOccurrenceCreationRequest request,
+            string payloadHash,
+            RideOccurrenceCreationKeyReservationStatus matchingReservationStatus)
+    {
+        if (operation is null)
+        {
+            return new RideOccurrenceCreationKeyReservationResult(
+                RideOccurrenceCreationKeyReservationStatus.Missing);
+        }
+
+        bool scopeAndPayloadMatch = string.Equals(
+                operation.UserId,
+                request.UserId,
+                StringComparison.Ordinal)
+            && string.Equals(
+                operation.VisitId,
+                request.VisitId.Value,
+                StringComparison.Ordinal)
+            && string.Equals(operation.PayloadHash, payloadHash, StringComparison.Ordinal);
+        if (scopeAndPayloadMatch
+            && string.Equals(
+                operation.OperationKind,
+                CreationKeyReservationOperationKind,
+                StringComparison.Ordinal)
+            && string.Equals(
+                operation.OperationState,
+                ReservedOperationState,
+                StringComparison.Ordinal)
+            && TryCreatePreparation(
+                operation.CreationPreparation,
+                request.Items.Count,
+                out RideOccurrenceCreationPreparation preparation))
+        {
+            return new RideOccurrenceCreationKeyReservationResult(
+                matchingReservationStatus,
+                preparation);
+        }
+
+        if (scopeAndPayloadMatch
+            && string.Equals(
+                operation.OperationKind,
+                CreationOperationKind,
+                StringComparison.Ordinal)
+            && operation.OperationState is PendingOperationState
+                or CompletedOperationState)
+        {
+            return new RideOccurrenceCreationKeyReservationResult(
+                RideOccurrenceCreationKeyReservationStatus.Finalized);
+        }
+
+        return new RideOccurrenceCreationKeyReservationResult(
+            RideOccurrenceCreationKeyReservationStatus.Conflict);
+    }
+
+    private static bool CreationReservationMatchesBatch(
+        UserRideOccurrenceCreationOperationDocument reservation,
+        UserRideOccurrenceCreationOperationDocument requested)
+    {
+        if (!string.Equals(
+                reservation.OperationKind,
+                CreationKeyReservationOperationKind,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                reservation.OperationState,
+                ReservedOperationState,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                reservation.UserId,
+                requested.UserId,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                reservation.VisitId,
+                requested.VisitId,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                reservation.PayloadHash,
+                requested.PayloadHash,
+                StringComparison.Ordinal)
+            || !TryCreatePreparation(
+                reservation.CreationPreparation,
+                requested.Items.Count,
+                out RideOccurrenceCreationPreparation preparation)
+            || !string.Equals(
+                preparation.ParkId,
+                requested.Items[0].CreationSnapshot.ParkId,
+                StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        for (int index = 0; index < requested.Items.Count; index++)
+        {
+            if (preparation.HistoricalConsistencies[index]
+                != requested.Items[index].CreationSnapshot.HistoricalConsistency)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static UserRideOccurrenceCreationPreparationDocument CreatePreparationDocument(
+        RideOccurrenceCreationPreparation preparation)
+    {
+        return new UserRideOccurrenceCreationPreparationDocument
+        {
+            ParkId = preparation.ParkId,
+            VisitDate = new VisitDateDocument
+            {
+                Year = preparation.VisitDate.Year,
+                Month = preparation.VisitDate.Month,
+                Day = preparation.VisitDate.Day,
+                Precision = preparation.VisitDate.Precision,
+                IsApproximate = preparation.VisitDate.IsApproximate,
+            },
+            TimeZoneId = preparation.TimeZoneId,
+            ServiceDayConvention = preparation.ServiceDayConvention,
+            Items = preparation.HistoricalConsistencies
+                .Select((consistency, index) =>
+                    new UserRideOccurrenceCreationPreparationItemDocument
+                    {
+                        Index = index,
+                        HistoricalConsistency = consistency,
+                    })
+                .ToList(),
+        };
+    }
+
+    private static bool TryCreatePreparation(
+        UserRideOccurrenceCreationPreparationDocument? document,
+        int expectedCount,
+        out RideOccurrenceCreationPreparation preparation)
+    {
+        preparation = null!;
+        if (document is null
+            || string.IsNullOrWhiteSpace(document.ParkId)
+            || document.VisitDate is null
+            || !Enum.IsDefined(document.ServiceDayConvention)
+            || document.Items.Count != expectedCount
+            || document.Items.Select(static item => item.Index).Distinct().Count()
+                != expectedCount
+            || document.Items.Any(item =>
+                item.Index is < 0
+                || item.Index >= expectedCount
+                || !Enum.IsDefined(item.HistoricalConsistency)))
+        {
+            return false;
+        }
+
+        try
+        {
+            VisitDate visitDate = new VisitDate(
+                document.VisitDate.Year,
+                document.VisitDate.Month,
+                document.VisitDate.Day,
+                document.VisitDate.Precision,
+                document.VisitDate.IsApproximate);
+            preparation = new RideOccurrenceCreationPreparation(
+                document.ParkId,
+                visitDate,
+                document.TimeZoneId,
+                document.ServiceDayConvention,
+                document.Items
+                    .OrderBy(static item => item.Index)
+                    .Select(static item => item.HistoricalConsistency)
+                    .ToArray());
+            return true;
+        }
+        catch (VisitDateValidationException)
+        {
+            return false;
+        }
+    }
+
+    private static void ValidateCreationPreparation(
+        RideOccurrenceCreationRequest request,
+        RideOccurrenceCreationPreparation preparation)
+    {
+        ArgumentNullException.ThrowIfNull(preparation);
+        _ = preparation.VisitDate;
+        _ = NormalizeRequired(preparation.ParkId, nameof(preparation.ParkId));
+        if (!Enum.IsDefined(preparation.ServiceDayConvention)
+            || preparation.HistoricalConsistencies.Count != request.Items.Count
+            || preparation.HistoricalConsistencies.Any(
+                static consistency => !Enum.IsDefined(consistency)))
+        {
+            throw new ArgumentException(
+                "The ride occurrence creation preparation is invalid.",
+                nameof(preparation));
         }
     }
 

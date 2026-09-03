@@ -181,6 +181,10 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfNull]
     public string? OperationState { get; set; }
 
+    [BsonElement("creationPreparation")]
+    [BsonIgnoreIfNull]
+    public UserRideOccurrenceCreationPreparationDocument? CreationPreparation { get; set; }
+
     [BsonElement("appendBaseWasEmpty")]
     [BsonIgnoreIfDefault]
     public bool AppendBaseWasEmpty { get; set; }
@@ -253,6 +257,39 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonElement("reorderResultSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceCreationPreparationDocument
+{
+    [BsonElement("parkId")]
+    public string ParkId { get; set; } = string.Empty;
+
+    [BsonElement("visitDate")]
+    public VisitDateDocument VisitDate { get; set; } = new VisitDateDocument();
+
+    [BsonElement("timeZoneId")]
+    [BsonIgnoreIfNull]
+    public string? TimeZoneId { get; set; }
+
+    [BsonElement("serviceDayConvention")]
+    [BsonRepresentation(BsonType.String)]
+    public LocalServiceDayConvention ServiceDayConvention { get; set; }
+
+    [BsonElement("items")]
+    public List<UserRideOccurrenceCreationPreparationItemDocument> Items { get; set; } =
+        new List<UserRideOccurrenceCreationPreparationItemDocument>();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceCreationPreparationItemDocument
+{
+    [BsonElement("index")]
+    public int Index { get; set; }
+
+    [BsonElement("historicalConsistency")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalConsistency HistoricalConsistency { get; set; }
 }
 
 [BsonIgnoreExtraElements]
