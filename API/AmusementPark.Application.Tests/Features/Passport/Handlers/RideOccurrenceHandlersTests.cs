@@ -93,6 +93,43 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
+    public async Task AddBatch_WhenPendingOperationIsRetriedAfterCompletion_ShouldNotResumeIt()
+    {
+        Visit visit = CreateVisit();
+        visit.Complete(new DateOnly(2026, 9, 3), NowUtc.AddMinutes(1));
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        IPassportClock clock = CreateClock();
+        AddRideOccurrencesBatchCommandHandler handler =
+            new AddRideOccurrencesBatchCommandHandler(
+                visits.Object,
+                occurrences.Object,
+                targets.Object,
+                new RideOccurrenceAppendOrderNormalizer(occurrences.Object, clock),
+                clock,
+                audit.Object,
+                leases.Object);
+
+        ApplicationResult<CreateRideOccurrencesResult> result =
+            await handler.HandleAsync(CreateBatchCommand());
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.not-editable", Assert.Single(result.Errors).Code);
+        visits.VerifyAll();
+        occurrences.VerifyNoOtherCalls();
+        targets.VerifyNoOtherCalls();
+        audit.VerifyNoOtherCalls();
+        leases.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task AddBatch_WhenPriorNormalizationIsDurable_ShouldPreserveTheSignal()
     {
         Visit visit = CreateVisit();
@@ -865,6 +902,44 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal(1536, result.Value?.Occurrence.SortPosition);
         occurrences.VerifyAll();
         visits.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Reorder_WhenPendingOperationIsRetriedAfterCompletion_ShouldNotResumeIt()
+    {
+        Visit visit = CreateVisit();
+        visit.Complete(new DateOnly(2026, 9, 3), NowUtc.AddMinutes(1));
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        ReorderRideOccurrenceCommandHandler handler =
+            new ReorderRideOccurrenceCommandHandler(
+                visits.Object,
+                occurrences.Object,
+                CreateClock(),
+                audit.Object,
+                leases.Object);
+
+        ApplicationResult<ReorderRideOccurrenceResult> result = await handler.HandleAsync(
+            new ReorderRideOccurrenceCommand(
+                "owner-1",
+                "visit-1",
+                "request-1",
+                "occurrence-1",
+                1,
+                "occurrence-2",
+                RideOccurrencePlacement.Before));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.not-editable", Assert.Single(result.Errors).Code);
+        visits.VerifyAll();
+        occurrences.VerifyNoOtherCalls();
+        audit.VerifyNoOtherCalls();
+        leases.VerifyNoOtherCalls();
     }
 
     [Fact]

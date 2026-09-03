@@ -135,6 +135,7 @@
           "recovery": "No se pudo comprobar el cambio. Tus datos se conservan; inténtalo de nuevo.",
           "save": "No se pudo actualizar la visita.",
           "transition": "Este cambio de estado no es posible para la visita.",
+          "temporalMetadataLocked": "La fecha, la zona horaria y la convención del día de visita no pueden cambiar mientras la visita contenga recorridos.",
           "saveBeforeStatus": "Guarda primero los datos modificados."
         },
         "messages": {

@@ -135,6 +135,7 @@
           "recovery": "Die Änderung konnte nicht geprüft werden. Deine Eingabe bleibt erhalten; versuche es erneut.",
           "save": "Der Besuch konnte nicht aktualisiert werden.",
           "transition": "Dieser Statuswechsel ist für den Besuch nicht möglich.",
+          "temporalMetadataLocked": "Datum, Zeitzone und Besuchstagskonvention können nicht geändert werden, solange der Besuch Fahrten enthält.",
           "saveBeforeStatus": "Speichere zuerst die geänderten Angaben."
         },
         "messages": {

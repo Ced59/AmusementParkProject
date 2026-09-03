@@ -45,6 +45,8 @@ Les constructeurs publics des handlers de mutation exigent `IPassportAuditPublis
 
 Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. Son bail Mongo est acquis sur l'identité propriétaire, la version et le statut `Draft` de la visite. Toute mutation directe de la visite exige en retour l'absence d'un bail actif. Cette exclusion distribuée ferme la course entre une écriture de contenu et `Complete`/`Archive`, y compris avec plusieurs processus API. Un bail abandonné devient récupérable après cinq minutes ; les commandes normales sont bornées très en dessous de cette durée.
 
+L'acquisition et la validation `Draft` précèdent aussi toute reprise d'une opération idempotente de création ou de réordonnancement : un retry ne peut donc pas relancer une écriture réservée après la clôture de la visite. Une correction de date, précision, fuseau ou convention de journée est refusée lorsque des occurrences existent. C'est la barrière conservatrice retenue tant qu'une opération dédiée de revalidation atomique des enfants n'existe pas ; le titre, la note privée et le caractère approximatif restent corrigeables sans altérer leur chronologie.
+
 ## 3. Modèle MongoDB
 
 ### 3.1 État actif et marqueur réparable
@@ -236,6 +238,7 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - handlers : marqueur persisté avant tentative de publication ;
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
 - exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, mutations de visite bloquées pendant un bail actif ;
+- cohérence temporelle : reprise idempotente sous bail et refus des changements temporels d'une visite qui contient déjà des occurrences ;
 - repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;

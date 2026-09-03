@@ -89,6 +89,68 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 RideLogSource.Manual,
                 NormalizePrivateNote(item.PrivateNote),
                 item.ConfirmHistoricalConflict)).ToArray());
+        return await this.HandleWithContentMutationLeaseAsync(
+            creationRequest,
+            expanded,
+            operationId,
+            cancellationToken);
+    }
+
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        HandleWithContentMutationLeaseAsync(
+            RideOccurrenceCreationRequest creationRequest,
+            IReadOnlyList<RideOccurrenceCreationItem> expanded,
+            string operationId,
+            CancellationToken cancellationToken)
+    {
+        Visit? validatedVisit = null;
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (this.contentMutationLeaseManager is not null)
+        {
+            validatedVisit = await this.visitRepository.GetOwnedAsync(
+                creationRequest.VisitId,
+                creationRequest.UserId,
+                cancellationToken);
+            if (validatedVisit is null)
+            {
+                return Failure(PassportApplicationErrors.VisitNotFound());
+            }
+
+            ApplicationError? editableError =
+                PassportRideOccurrenceHandlerSupport.ValidateEditable(validatedVisit);
+            if (editableError is not null)
+            {
+                return Failure(editableError);
+            }
+
+            contentMutationLease = await this.contentMutationLeaseManager.TryAcquireAsync(
+                validatedVisit,
+                this.clock.UtcNow,
+                cancellationToken);
+            if (contentMutationLease is null)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        return await this.HandleWithinContentMutationLeaseAsync(
+            creationRequest,
+            expanded,
+            operationId,
+            validatedVisit,
+            cancellationToken);
+    }
+
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        HandleWithinContentMutationLeaseAsync(
+            RideOccurrenceCreationRequest creationRequest,
+            IReadOnlyList<RideOccurrenceCreationItem> expanded,
+            string operationId,
+            Visit? validatedVisit,
+            CancellationToken cancellationToken)
+    {
         IdempotentRideOccurrenceCreationResult? existing =
             await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
                 creationRequest,
@@ -132,9 +194,9 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 cancellationToken);
         }
 
-        Visit? visit = await this.visitRepository.GetOwnedAsync(
-            visitId,
-            userId,
+        Visit? visit = validatedVisit ?? await this.visitRepository.GetOwnedAsync(
+            creationRequest.VisitId,
+            creationRequest.UserId,
             cancellationToken);
         if (visit is null)
         {
@@ -214,62 +276,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             : ToApplicationResult(existing);
     }
 
-    private async Task<ApplicationResult<CreateRideOccurrencesResult>> CreateWithOrderRetryAsync(
-        RideOccurrenceCreationPreparation preparation,
-        IReadOnlyList<RideOccurrenceCreationItem> items,
-        RideOccurrenceCreationRequest creationRequest,
-        string operationId,
-        CancellationToken cancellationToken)
-    {
-        if (this.contentMutationLeaseManager is null)
-        {
-            return await this.CreateWithOrderRetryCoreAsync(
-                preparation,
-                items,
-                creationRequest,
-                operationId,
-                cancellationToken);
-        }
-
-        Visit? currentVisit = await this.visitRepository.GetOwnedAsync(
-            creationRequest.VisitId,
-            creationRequest.UserId,
-            cancellationToken);
-        if (currentVisit is null)
-        {
-            return Failure(PassportApplicationErrors.VisitNotFound());
-        }
-
-        ApplicationError? editableError =
-            PassportRideOccurrenceHandlerSupport.ValidateEditable(currentVisit);
-        if (editableError is not null)
-        {
-            return Failure(editableError);
-        }
-
-        IVisitContentMutationLease? contentMutationLease =
-            await this.contentMutationLeaseManager.TryAcquireAsync(
-                currentVisit,
-                this.clock.UtcNow,
-                cancellationToken);
-        if (contentMutationLease is null)
-        {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
-        }
-
-        await using (contentMutationLease)
-        {
-            return await this.CreateWithOrderRetryCoreAsync(
-                preparation,
-                items,
-                creationRequest,
-                operationId,
-                cancellationToken);
-        }
-    }
-
     private async Task<ApplicationResult<CreateRideOccurrencesResult>>
-        CreateWithOrderRetryCoreAsync(
+        CreateWithOrderRetryAsync(
             RideOccurrenceCreationPreparation preparation,
             IReadOnlyList<RideOccurrenceCreationItem> items,
             RideOccurrenceCreationRequest creationRequest,

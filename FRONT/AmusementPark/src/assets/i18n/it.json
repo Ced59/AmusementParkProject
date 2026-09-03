@@ -135,6 +135,7 @@
           "recovery": "Non è stato possibile verificare la modifica. I dati restano disponibili; riprova.",
           "save": "Non è stato possibile aggiornare la visita.",
           "transition": "Questo cambio di stato non è possibile per la visita.",
+          "temporalMetadataLocked": "La data, il fuso orario e la convenzione del giorno di visita non possono cambiare finché la visita contiene corse.",
           "saveBeforeStatus": "Salva prima i dettagli modificati."
         },
         "messages": {

@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
@@ -13,17 +14,34 @@ public sealed class UpdateVisitMetadataCommandHandler :
     ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>
 {
     private readonly IUserVisitRepository visitRepository;
+    private readonly IRideOccurrenceRepository? occurrenceRepository;
     private readonly IPassportClock clock;
     private readonly IPassportTimeZoneValidator timeZoneValidator;
     private readonly IPassportAuditPublisher auditPublisher;
 
+    internal UpdateVisitMetadataCommandHandler(
+        IUserVisitRepository visitRepository,
+        IPassportClock clock,
+        IPassportTimeZoneValidator timeZoneValidator,
+        IPassportAuditPublisher auditPublisher)
+        : this(
+            visitRepository,
+            null!,
+            clock,
+            timeZoneValidator,
+            auditPublisher)
+    {
+    }
+
     public UpdateVisitMetadataCommandHandler(
         IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock,
         IPassportTimeZoneValidator timeZoneValidator,
         IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
+        this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
         this.timeZoneValidator = timeZoneValidator;
         this.auditPublisher = auditPublisher;
@@ -73,6 +91,27 @@ public sealed class UpdateVisitMetadataCommandHandler :
         }
 
         Visit visit = loaded.Value;
+        if (this.occurrenceRepository is not null
+            && TemporalIdentityChanged(
+                visit,
+                date,
+                timeZoneId,
+                command.ServiceDayConvention))
+        {
+            RideOccurrencePage firstOccurrencePage =
+                await this.occurrenceRepository.ListOwnedByVisitAsync(
+                    new RideOccurrenceListCriteria(
+                        visit.Id,
+                        visit.UserId,
+                        1),
+                    cancellationToken);
+            if (firstOccurrencePage.Items.Count > 0)
+            {
+                return ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.VisitTemporalMetadataLocked());
+            }
+        }
+
         VisitAuditSnapshot previous = VisitAuditSnapshot.Capture(visit);
         try
         {
@@ -122,6 +161,20 @@ public sealed class UpdateVisitMetadataCommandHandler :
             auditEvent,
             cancellationToken);
         return ApplicationResult<VisitResult>.Success(PassportVisitResultFactory.Create(visit));
+    }
+
+    private static bool TemporalIdentityChanged(
+        Visit visit,
+        VisitDate date,
+        string? timeZoneId,
+        LocalServiceDayConvention serviceDayConvention)
+    {
+        return visit.Date.Year != date.Year
+            || visit.Date.Month != date.Month
+            || visit.Date.Day != date.Day
+            || visit.Date.Precision != date.Precision
+            || !string.Equals(visit.TimeZoneId, timeZoneId, StringComparison.Ordinal)
+            || visit.ServiceDayConvention != serviceDayConvention;
     }
 }
 

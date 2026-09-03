@@ -191,6 +191,38 @@ public sealed class ReorderRideOccurrenceCommandHandler
             command.ExpectedVersion,
             anchorId,
             command.Placement);
+        Visit? visit = null;
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (this.contentMutationLeaseManager is not null)
+        {
+            visit = await this.visitRepository.GetOwnedAsync(
+                scope.VisitId,
+                scope.UserId,
+                cancellationToken);
+            if (visit is null)
+            {
+                return Failure(PassportApplicationErrors.VisitNotFound());
+            }
+
+            ApplicationError? currentEditableError =
+                PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+            if (currentEditableError is not null)
+            {
+                return Failure(currentEditableError);
+            }
+
+            contentMutationLease = await this.contentMutationLeaseManager.TryAcquireAsync(
+                visit,
+                this.clock.UtcNow,
+                cancellationToken);
+            if (contentMutationLease is null)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
         IdempotentRideOccurrenceReorderResult? existing =
             await this.occurrenceRepository.ResolveExistingReorderAsync(
                 request,
@@ -201,7 +233,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
             return ToApplicationResult(existing);
         }
 
-        Visit? visit = await this.visitRepository.GetOwnedAsync(
+        visit ??= await this.visitRepository.GetOwnedAsync(
             scope.VisitId,
             scope.UserId,
             cancellationToken);
@@ -258,21 +290,6 @@ public sealed class ReorderRideOccurrenceCommandHandler
         {
             return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
         }
-
-        IVisitContentMutationLease? contentMutationLease =
-            this.contentMutationLeaseManager is null
-                ? null
-                : await this.contentMutationLeaseManager.TryAcquireAsync(
-                    visit,
-                    this.clock.UtcNow,
-                    cancellationToken);
-        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
-        {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
-        }
-
-        await using IVisitContentMutationLease? contentMutationLeaseScope =
-            contentMutationLease;
 
         Dictionary<RideOccurrenceId, RideOccurrence> byId = occurrences.ToDictionary(
             static occurrence => occurrence.Id);

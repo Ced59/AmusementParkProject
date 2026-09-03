@@ -1925,6 +1925,10 @@ export class PassportVisitEditorStateFacade {
       return 'passport.editor.visit.errors.transition';
     }
 
+    if (errorCode === 'visit.temporal-metadata-locked') {
+      return 'passport.editor.visit.errors.temporalMetadataLocked';
+    }
+
     if (errorCode === 'visit.not-found') {
       return 'passport.editor.errors.visitNotFound';
     }

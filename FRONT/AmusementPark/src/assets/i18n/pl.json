@@ -135,6 +135,7 @@
           "recovery": "Nie udało się sprawdzić zmiany. Dane pozostają zachowane; spróbuj ponownie.",
           "save": "Nie udało się zaktualizować wizyty.",
           "transition": "Ta zmiana stanu nie jest możliwa dla wizyty.",
+          "temporalMetadataLocked": "Daty, strefy czasowej ani reguły dnia wizyty nie można zmienić, dopóki wizyta zawiera przejazdy.",
           "saveBeforeStatus": "Najpierw zapisz zmienione dane."
         },
         "messages": {

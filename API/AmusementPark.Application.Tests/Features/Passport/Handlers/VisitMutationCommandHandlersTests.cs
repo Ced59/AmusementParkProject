@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Handlers;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Core.Domain.Identifiers;
@@ -54,6 +55,58 @@ public sealed class VisitMutationCommandHandlersTests
         Assert.Contains(PassportAuditChangedField.PrivateNote, capturedAudit.ChangedFields);
         visits.VerifyAll();
         audit.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateMetadata_WhenTemporalIdentityChangesWithOccurrences_ShouldRejectTheCorrection()
+    {
+        Visit visit = CreateVisit(VisitStatus.Draft);
+        RideOccurrence occurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-1"),
+            visit,
+            "item-1",
+            1024,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.Verified,
+            null,
+            null,
+            NowUtc);
+        Mock<IUserVisitRepository> visits = CreateOwnedRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.ListOwnedByVisitAsync(
+                It.Is<RideOccurrenceListCriteria>(criteria =>
+                    criteria.VisitId == visit.Id
+                    && criteria.UserId == visit.UserId
+                    && criteria.Limit == 1),
+                CancellationToken.None))
+            .ReturnsAsync(new RideOccurrencePage(new[] { occurrence }, null));
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IPassportTimeZoneValidator> timeZones =
+            new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
+        timeZones.Setup(validator => validator.IsValid("Europe/Paris")).Returns(true);
+        UpdateVisitMetadataCommandHandler handler = new UpdateVisitMetadataCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            CreateClock().Object,
+            timeZones.Object,
+            audit.Object);
+
+        ApplicationResult<VisitResult> result = await handler.HandleAsync(
+            new UpdateVisitMetadataCommand(
+                "owner-1", "visit-1", 2025, null, null, VisitDatePrecision.Year, true,
+                "Europe/Paris", LocalServiceDayConvention.VisitStartLocalDate,
+                "Souvenir", "Privé", 1));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.temporal-metadata-locked", Assert.Single(result.Errors).Code);
+        Assert.Equal(VisitDate.ForDay(2026, 9, 3), visit.Date);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        audit.VerifyNoOtherCalls();
     }
 
     [Fact]

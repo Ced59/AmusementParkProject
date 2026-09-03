@@ -135,6 +135,7 @@
           "recovery": "De wijziging kon niet worden gecontroleerd. Je invoer blijft bewaard; probeer opnieuw.",
           "save": "Het bezoek kon niet worden bijgewerkt.",
           "transition": "Deze statuswijziging is niet mogelijk voor het bezoek.",
+          "temporalMetadataLocked": "De datum, tijdzone en bezoekdagconventie kunnen niet worden gewijzigd zolang het bezoek ritten bevat.",
           "saveBeforeStatus": "Sla eerst de gewijzigde gegevens op."
         },
         "messages": {

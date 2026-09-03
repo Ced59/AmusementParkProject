@@ -192,6 +192,27 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.conflict');
   });
 
+  it('explains why temporal metadata stays locked when the visit contains rides', () => {
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.temporal-metadata-locked'
+      }
+    })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ year: 2025 });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.metadataDraft().year).toBe(2025);
+    expect(facade.metadataHasChanges()).toBe(true);
+    expect(facade.visitMutationErrorKey())
+      .toBe('passport.editor.visit.errors.temporalMetadataLocked');
+  });
+
   it('requires an explicit lifecycle transition and reconciles a lost completion response', () => {
     const completedVisit: PassportVisit = {
       ...visit,

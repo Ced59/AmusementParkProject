@@ -99,7 +99,7 @@
         },
         "errors": {
           "conflict": "The visit changed in the meantime. Its current state was reloaded; check your input.", "recovery": "The change could not be verified. Your input is preserved; try again.",
-          "save": "The visit could not be updated.", "transition": "This status change is not possible for this visit.", "saveBeforeStatus": "Save the changed details first."
+          "save": "The visit could not be updated.", "transition": "This status change is not possible for this visit.", "temporalMetadataLocked": "The date, time zone and service-day convention cannot change while the visit contains rides.", "saveBeforeStatus": "Save the changed details first."
         },
         "messages": { "updated": "The visit details were updated.", "completed": "The visit is now completed.", "reopened": "The visit was reopened for correction.", "archived": "The visit was archived." }
       },

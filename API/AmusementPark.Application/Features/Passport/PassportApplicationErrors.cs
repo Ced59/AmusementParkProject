@@ -104,6 +104,13 @@ public static class PassportApplicationErrors
             "Rouvre la visite avant de modifier son contenu.");
     }
 
+    public static ApplicationError VisitTemporalMetadataLocked()
+    {
+        return ApplicationError.Conflict(
+            "visit.temporal-metadata-locked",
+            "La date, le fuseau et la convention de journée ne peuvent pas changer tant que la visite contient des occurrences.");
+    }
+
     public static ApplicationError InvalidListLimit()
     {
         return ApplicationError.Validation(

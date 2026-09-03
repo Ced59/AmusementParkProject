@@ -135,6 +135,7 @@
           "recovery": "Impossible de vérifier la modification. Ta saisie reste disponible ; réessaie.",
           "save": "La visite n’a pas pu être modifiée.",
           "transition": "Ce changement d’état n’est pas possible pour cette visite.",
+          "temporalMetadataLocked": "La date, le fuseau et la convention de journée ne peuvent pas changer tant que la visite contient des passages.",
           "saveBeforeStatus": "Enregistre d’abord les informations modifiées."
         },
         "messages": {
