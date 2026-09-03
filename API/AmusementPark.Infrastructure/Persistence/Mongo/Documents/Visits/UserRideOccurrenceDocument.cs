@@ -229,6 +229,9 @@ public sealed class UserRideOccurrenceReorderAllocationDocument
     [BsonElement("expectedVersion")]
     public long ExpectedVersion { get; set; }
 
+    [BsonElement("previousSortPosition")]
+    public long PreviousSortPosition { get; set; }
+
     [BsonElement("resultSnapshot")]
     public UserRideOccurrenceCreationSnapshotDocument ResultSnapshot { get; set; } =
         new UserRideOccurrenceCreationSnapshotDocument();

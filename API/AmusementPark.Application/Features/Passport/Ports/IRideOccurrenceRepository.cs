@@ -9,7 +9,7 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 public interface IRideOccurrenceRepository
 {
     Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(
-        IReadOnlyList<RideOccurrence> requestedOccurrences,
+        RideOccurrenceCreationRequest request,
         string clientOperationId,
         CancellationToken cancellationToken);
 

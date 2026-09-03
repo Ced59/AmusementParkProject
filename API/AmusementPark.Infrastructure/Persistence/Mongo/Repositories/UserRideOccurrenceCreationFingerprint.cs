@@ -16,18 +16,37 @@ internal static class UserRideOccurrenceCreationFingerprint
     public static string HashPayload(IReadOnlyList<RideOccurrence> occurrences)
     {
         ArgumentNullException.ThrowIfNull(occurrences);
+        if (occurrences.Count == 0)
+        {
+            throw new ArgumentException("At least one occurrence is required.", nameof(occurrences));
+        }
 
-        IReadOnlyList<CreationItemPayload> items = occurrences
-            .Select(static occurrence => new CreationItemPayload(
-                occurrence.VisitId.Value,
-                occurrence.UserId,
-                occurrence.ParkId,
+        RideOccurrence first = occurrences[0];
+        RideOccurrenceCreationRequest request = new RideOccurrenceCreationRequest(
+            first.VisitId,
+            first.UserId,
+            occurrences.Select(static occurrence => new RideOccurrenceCreationRequestItem(
                 occurrence.ParkItemId,
-                occurrence.Moment.LocalTime,
-                occurrence.Moment.IsApproximate,
+                occurrence.Moment,
                 occurrence.Status,
                 occurrence.Source,
-                occurrence.PrivateNote))
+                occurrence.PrivateNote)).ToArray());
+        return HashPayload(request);
+    }
+
+    public static string HashPayload(RideOccurrenceCreationRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        IReadOnlyList<CreationItemPayload> items = request.Items
+            .Select(item => new CreationItemPayload(
+                request.VisitId.Value,
+                request.UserId,
+                item.ParkItemId,
+                item.Moment.LocalTime,
+                item.Moment.IsApproximate,
+                item.Status,
+                item.Source,
+                item.PrivateNote))
             .ToArray();
         string canonicalPayload = JsonSerializer.Serialize(items);
         return Hash(canonicalPayload);
@@ -55,7 +74,6 @@ internal static class UserRideOccurrenceCreationFingerprint
     private sealed record CreationItemPayload(
         string VisitId,
         string UserId,
-        string ParkId,
         string ParkItemId,
         TimeOnly? LocalTime,
         bool IsApproximate,

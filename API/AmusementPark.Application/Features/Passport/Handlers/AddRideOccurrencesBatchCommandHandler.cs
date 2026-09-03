@@ -53,6 +53,25 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 : PassportApplicationErrors.InvalidRideOccurrenceBatch());
         }
 
+        RideOccurrenceCreationRequest creationRequest = new RideOccurrenceCreationRequest(
+            visitId,
+            userId,
+            expanded.Select(static item => new RideOccurrenceCreationRequestItem(
+                item.ParkItemId.Trim(),
+                new OccurrenceMoment(item.LocalTime, item.IsApproximate),
+                item.Status,
+                RideLogSource.Manual,
+                NormalizePrivateNote(item.PrivateNote))).ToArray());
+        IdempotentRideOccurrenceCreationResult? existing =
+            await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
+                creationRequest,
+                operationId,
+                cancellationToken);
+        if (existing is not null)
+        {
+            return ToApplicationResult(existing);
+        }
+
         Visit? visit = await this.visitRepository.GetOwnedAsync(
             visitId,
             userId,
@@ -77,40 +96,6 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         }
 
         DateTime nowUtc = this.clock.UtcNow;
-        List<RideOccurrence> provisionalOccurrences;
-        try
-        {
-            provisionalOccurrences = BuildOccurrences(
-                visit,
-                expanded,
-                targets,
-                RideOccurrenceOrderPlanner.AllocateAppend(null, expanded.Count),
-                nowUtc);
-        }
-        catch (RideOccurrenceValidationException exception)
-        {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
-        }
-        catch (IdentifierValidationException exception)
-        {
-            return Failure(PassportApplicationErrors.InvalidIdentifier(
-                exception.ErrorCode,
-                exception.Message,
-                exception.ParamName));
-        }
-
-        IdempotentRideOccurrenceCreationResult? existing =
-            await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
-                provisionalOccurrences,
-                operationId,
-                cancellationToken);
-        if (existing is not null)
-        {
-            return ToApplicationResult(existing);
-        }
-
         IReadOnlyList<long>? positions = await this.AllocatePositionsAsync(
             visitId,
             userId,
@@ -229,8 +214,12 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         {
             RideOccurrence occurrence = byId[position.OccurrenceId];
             long expectedVersion = occurrence.Version;
+            long previousSortPosition = occurrence.SortPosition;
             occurrence.MoveTo(position.SortPosition, nowUtc);
-            changes.Add(new RideOccurrenceVersionedChange(occurrence, expectedVersion));
+            changes.Add(new RideOccurrenceVersionedChange(
+                occurrence,
+                expectedVersion,
+                previousSortPosition));
         }
 
         RideOccurrence last = occurrences
@@ -321,6 +310,12 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         }
 
         return expanded;
+    }
+
+    private static string? NormalizePrivateNote(string? value)
+    {
+        string normalized = value?.Trim() ?? string.Empty;
+        return normalized.Length == 0 ? null : normalized;
     }
 
     private static ApplicationResult<CreateRideOccurrencesResult> ToApplicationResult(

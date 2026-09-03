@@ -38,7 +38,11 @@ public sealed class RideOccurrenceHandlersTests
                 CancellationToken.None))
             .ReturnsAsync((long?)null);
         occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
-                It.Is<IReadOnlyList<RideOccurrence>>(items => items.Count == 2),
+                It.Is<RideOccurrenceCreationRequest>(request =>
+                    request.VisitId == visit.Id
+                    && request.UserId == visit.UserId
+                    && request.Items.Count == 2
+                    && request.Items.All(static item => item.ParkItemId == "item-1")),
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
@@ -75,6 +79,46 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
+    public async Task AddBatch_WhenOperationAlreadyExists_ShouldReplayBeforeMutableReads()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
+        Mock<IUserVisitRepository> visits =
+            new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.Is<RideOccurrenceCreationRequest>(request =>
+                    request.VisitId == visit.Id
+                    && request.UserId == visit.UserId
+                    && Assert.Single(request.Items).ParkItemId == "item-1"),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync(new IdempotentRideOccurrenceCreationResult(
+                IdempotentRideOccurrenceCreationStatus.Replayed,
+                new[] { occurrence }));
+        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            clock.Object);
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value?.WasReplayed);
+        Assert.Equal("occurrence-1", Assert.Single(result.Value!.Occurrences).Id);
+        occurrences.VerifyAll();
+        visits.VerifyNoOtherCalls();
+        targets.VerifyNoOtherCalls();
+        clock.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task AddBatch_WithCertainHistoricalConflict_ShouldRequireExplicitConfirmation()
     {
         Visit visit = CreateVisit();
@@ -89,6 +133,11 @@ public sealed class RideOccurrenceHandlersTests
                 ParkItemCategory.Attraction,
                 new DateOnly(2027, 1, 1),
                 null));
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
         AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
             visits.Object,
             occurrences.Object,
@@ -102,6 +151,7 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal(
             "ride-occurrence.historical-conflict-confirmation-required",
             Assert.Single(result.Errors).Code);
+        occurrences.VerifyAll();
         occurrences.VerifyNoOtherCalls();
     }
 

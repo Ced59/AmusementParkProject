@@ -416,7 +416,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         IdempotentRideOccurrenceReorderResult result =
             await repository.ReorderIdempotentAsync(
                 request,
-                new[] { new RideOccurrenceVersionedChange(occurrence, 1) },
+                new[] { new RideOccurrenceVersionedChange(occurrence, 1, 1024) },
                 occurrence,
                 false,
                 NowUtc.AddMinutes(1),
@@ -430,6 +430,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal("completed", reserved.OperationState);
         Assert.Equal("occurrence-1", reserved.MovedOccurrenceId);
         Assert.Single(reserved.ReorderItems!);
+        Assert.Equal(1024, Assert.Single(reserved.ReorderItems!).PreviousSortPosition);
         Assert.Equal(64, reserved.OperationKeyHash.Length);
         Assert.NotNull(occurrenceUpdate);
         BsonDocument renderedUpdate = Render(occurrenceUpdate);
@@ -438,6 +439,62 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal(64, renderedUpdate["$set"]["lastReorderOperationKeyHash"].AsString.Length);
         collection.VerifyAll();
         operationCollection.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildReorderRollbackUpdate_ShouldRestorePositionFenceAndOperationMarker()
+    {
+        UserRideOccurrenceDocument current = CreateOccurrence(
+                "occurrence-1",
+                "item-1",
+                1536)
+            .ToDocument();
+        current.Version = 4;
+        current.LastReorderOperationKeyHash = "operation-hash";
+        UserRideOccurrenceReorderAllocationDocument allocation =
+            new UserRideOccurrenceReorderAllocationDocument
+            {
+                PreviousSortPosition = 1024,
+            };
+
+        UpdateDefinition<UserRideOccurrenceDocument> update =
+            UserRideOccurrenceReorderRecovery.BuildRollbackUpdate(current, allocation);
+
+        BsonDocument rendered = Render(update);
+        Assert.Equal(1024, rendered["$set"]["sortPosition"].AsInt64);
+        Assert.Equal(5, rendered["$set"]["version"].AsInt64);
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("lastReorderOperationKeyHash"));
+    }
+
+    [Fact]
+    public void ReorderAllocationWasApplied_AfterANewerDomainUpdate_ShouldRemainRecoverable()
+    {
+        UserRideOccurrenceDocument current = CreateOccurrence(
+                "occurrence-1",
+                "item-1",
+                1536)
+            .ToDocument();
+        current.Version = 3;
+        current.UpdatedAt = NowUtc.AddMinutes(2);
+        current.LastReorderOperationKeyHash = "operation-hash";
+        UserRideOccurrenceReorderAllocationDocument allocation =
+            new UserRideOccurrenceReorderAllocationDocument
+            {
+                PreviousSortPosition = 1024,
+                ResultSnapshot = new UserRideOccurrenceCreationSnapshotDocument
+                {
+                    SortPosition = 1536,
+                    Version = 2,
+                    UpdatedAtUtc = NowUtc.AddMinutes(1),
+                },
+            };
+
+        bool wasApplied = UserRideOccurrenceReorderRecovery.AllocationWasApplied(
+            current,
+            allocation,
+            "operation-hash");
+
+        Assert.True(wasApplied);
     }
 
     private static UserRideOccurrenceDocument CreateCreationDocument(

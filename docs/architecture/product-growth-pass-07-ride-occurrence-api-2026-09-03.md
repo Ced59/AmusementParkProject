@@ -38,7 +38,7 @@ DELETE /api/me/passport/visits/{visitId}/occurrences/{occurrenceId}?expectedVers
 POST   /api/me/passport/visits/{visitId}/occurrences:reorder
 ```
 
-Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic.
+Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic. L'empreinte de création porte sur la requête normalisée et est recherchée avant la visite ou la cible mutable : un retry reste donc rejouable même si l'attraction a ensuite été masquée, déplacée ou supprimée.
 
 La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
 
@@ -85,14 +85,17 @@ sequenceDiagram
       end
       OP->>OCC: CAS sur chaque version attendue
       OCC-->>OP: écritures ou conflit
+      alt conflit après une écriture partielle
+        OP->>OCC: restaurer les positions précédentes en ordre inverse
+      end
       OP-->>API: résultat figé ou 409
       API-->>UI: ordre ou demande de rechargement
     end
 ```
 
-Une opération Mongo conserve son empreinte, sa cible, les versions attendues et les snapshots de résultat. Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, termine les lignes restantes puis rejoue le snapshot réservé. Une réutilisation de la clé avec un autre déplacement retourne `409`.
+Une opération Mongo conserve son empreinte, sa cible, les versions attendues, les positions précédentes et les snapshots de résultat. Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, y compris après une correction ultérieure qui a augmenté leur version, termine les lignes restantes puis rejoue le snapshot réservé. Si une version réellement concurrente bloque une ligne, les mutations déjà appliquées sont restaurées en ordre inverse par CAS. L'opération n'est marquée `conflict` qu'après ce rollback complet ; sinon elle reste `pending` et récupérable par la même clé. Une réutilisation de la clé avec un autre déplacement retourne `409`.
 
-MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
+MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId, operationKind)` limité aux réordonnancements `pending` empêche deux renormalisations actives de se concurrencer pour une même visite. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
 
 ## Mutations et concurrence
 
@@ -119,12 +122,13 @@ user-ride-occurrence-operations:
     index: int32,
     occurrenceId: string,
     expectedVersion: int64,
+    previousSortPosition: int64,
     resultSnapshot: occurrence initiale après déplacement
   }]
   reorderResultSnapshot?: occurrence déplacée renvoyée au client
 ```
 
-La clé client brute n'est jamais stockée. L'index unique existant `(userId, operationKeyHash)` couvre créations et déplacements.
+La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations et déplacements ; l'index unique partiel des opérations `pending` sérialise en plus les réordonnancements d'une visite.
 
 ## Responsive et suite
 

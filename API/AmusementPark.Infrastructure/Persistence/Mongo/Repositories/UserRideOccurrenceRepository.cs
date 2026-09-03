@@ -27,6 +27,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
         operationCollection;
+    private readonly UserRideOccurrenceReorderRecovery reorderRecovery;
 
     public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -38,21 +39,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         this.operationCollection =
             database.GetCollection<UserRideOccurrenceCreationOperationDocument>(
                 settings.UserRideOccurrenceOperationsCollectionName);
+        this.reorderRecovery = new UserRideOccurrenceReorderRecovery(this.collection);
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(
-        IReadOnlyList<RideOccurrence> requestedOccurrences,
+        RideOccurrenceCreationRequest request,
         string clientOperationId,
         CancellationToken cancellationToken)
     {
-        BatchScope scope = ValidateBatch(requestedOccurrences);
+        ValidateCreationRequest(request);
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
-        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
-            requestedOccurrences);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.LoadCreationOperationAsync(
-                scope.UserId,
+                request.UserId,
                 operationKeyHash,
                 cancellationToken);
         if (operation is null)
@@ -61,14 +62,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
-            scope.UserId,
+            request.UserId,
             operationKeyHash,
             cancellationToken);
         return ResolveAgainstOperation(
             operation,
             existing,
             payloadHash,
-            requestedOccurrences.Count);
+            request.Items.Count);
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
@@ -476,6 +477,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             CompletedOperationState,
             StringComparison.Ordinal))
         {
+            List<UserRideOccurrenceReorderAllocationDocument> appliedAllocations =
+                new List<UserRideOccurrenceReorderAllocationDocument>();
             foreach (UserRideOccurrenceReorderAllocationDocument allocation in
                 operation.ReorderItems!.OrderBy(static item => item.Index))
             {
@@ -490,6 +493,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
                 if (update.MatchedCount == 1)
                 {
+                    appliedAllocations.Add(allocation);
                     continue;
                 }
 
@@ -500,18 +504,28 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         request.UserId))
                     .FirstOrDefaultAsync(cancellationToken);
                 if (current is not null
-                    && ReorderAllocationWasApplied(
+                    && UserRideOccurrenceReorderRecovery.AllocationWasApplied(
                         current,
                         allocation,
                         operationKeyHash))
                 {
+                    appliedAllocations.Add(allocation);
                     continue;
                 }
 
-                await this.SetReorderOperationStateAsync(
-                    operation,
-                    ConflictOperationState,
+                bool rolledBack = await this.reorderRecovery.TryRollbackAsync(
+                    request,
+                    appliedAllocations,
+                    operationKeyHash,
                     cancellationToken);
+                if (rolledBack)
+                {
+                    await this.SetReorderOperationStateAsync(
+                        operation,
+                        ConflictOperationState,
+                        cancellationToken);
+                }
+
                 return CreateReorderConflictResult(operation.WasNormalized);
             }
 
@@ -669,6 +683,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         Index = index,
                         OccurrenceId = change.Occurrence.Id.Value,
                         ExpectedVersion = change.ExpectedVersion,
+                        PreviousSortPosition = change.PreviousSortPosition,
                         ResultSnapshot = document.CreateCreationSnapshot(),
                     };
                 })
@@ -751,20 +766,6 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 operationKeyHash));
     }
 
-    private static bool ReorderAllocationWasApplied(
-        UserRideOccurrenceDocument current,
-        UserRideOccurrenceReorderAllocationDocument allocation,
-        string operationKeyHash)
-    {
-        return string.Equals(
-                current.LastReorderOperationKeyHash,
-                operationKeyHash,
-                StringComparison.Ordinal)
-            && current.SortPosition == allocation.ResultSnapshot.SortPosition
-            && current.Version == allocation.ResultSnapshot.Version
-            && current.UpdatedAt == allocation.ResultSnapshot.UpdatedAtUtc;
-    }
-
     private static void ValidateReorderRequest(RideOccurrenceReorderRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -792,9 +793,27 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 change.ExpectedVersion < 1
                 || change.Occurrence.VisitId != request.VisitId
                 || !string.Equals(change.Occurrence.UserId, request.UserId, StringComparison.Ordinal)
+                || change.PreviousSortPosition == change.Occurrence.SortPosition
                 || change.Occurrence.Version != change.ExpectedVersion + 1))
         {
             throw new ArgumentException("The reorder plan is invalid.", nameof(changes));
+        }
+    }
+
+    private static void ValidateCreationRequest(RideOccurrenceCreationRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        _ = request.VisitId.Value;
+        _ = NormalizeRequired(request.UserId, nameof(request.UserId));
+        if (request.Items.Count is < 1 or > MaximumBatchSize
+            || request.Items.Any(item =>
+                item is null
+                || string.IsNullOrWhiteSpace(item.ParkItemId)
+                || item.Moment is null
+                || !Enum.IsDefined(item.Status)
+                || !Enum.IsDefined(item.Source)))
+        {
+            throw new ArgumentException("The ride occurrence creation request is invalid.", nameof(request));
         }
     }
 

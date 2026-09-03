@@ -22,6 +22,18 @@ public sealed record RideOccurrencePage(
     IReadOnlyCollection<RideOccurrence> Items,
     RideOccurrenceListCursor? NextCursor);
 
+public sealed record RideOccurrenceCreationRequestItem(
+    string ParkItemId,
+    OccurrenceMoment Moment,
+    RideOccurrenceStatus Status,
+    RideLogSource Source,
+    string? PrivateNote);
+
+public sealed record RideOccurrenceCreationRequest(
+    VisitId VisitId,
+    string UserId,
+    IReadOnlyList<RideOccurrenceCreationRequestItem> Items);
+
 public enum IdempotentRideOccurrenceCreationStatus
 {
     Created = 1,
@@ -43,7 +55,8 @@ public sealed record RideOccurrenceReorderRequest(
 
 public sealed record RideOccurrenceVersionedChange(
     RideOccurrence Occurrence,
-    long ExpectedVersion);
+    long ExpectedVersion,
+    long PreviousSortPosition);
 
 public enum IdempotentRideOccurrenceReorderStatus
 {

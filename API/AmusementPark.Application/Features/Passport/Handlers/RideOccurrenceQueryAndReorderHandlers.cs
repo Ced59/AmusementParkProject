@@ -183,8 +183,12 @@ public sealed class ReorderRideOccurrenceCommandHandler
         {
             RideOccurrence occurrence = byId[position.OccurrenceId];
             long expectedVersion = occurrence.Version;
+            long previousSortPosition = occurrence.SortPosition;
             occurrence.MoveTo(position.SortPosition, nowUtc);
-            changes.Add(new RideOccurrenceVersionedChange(occurrence, expectedVersion));
+            changes.Add(new RideOccurrenceVersionedChange(
+                occurrence,
+                expectedVersion,
+                previousSortPosition));
         }
 
         IdempotentRideOccurrenceReorderResult result =
