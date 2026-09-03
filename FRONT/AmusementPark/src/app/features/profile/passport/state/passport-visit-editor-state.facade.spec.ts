@@ -423,6 +423,59 @@ describe('PassportVisitEditorStateFacade', () => {
   it('reloads the parent version and preserves the draft after an assessment conflict', () => {
     const currentVisit: PassportVisit = {
       ...visit,
+      title: 'Version distante',
+      version: 2,
+      parkAssessment: {
+        value: 3,
+        privateComment: 'État serveur',
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(currentVisit));
+    visitsPort.upsertParkAssessment.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit-park-assessment.version-conflict'
+      }
+    })));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...currentVisit,
+      privateNote: 'Note locale',
+      version: 3
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Ma saisie' });
+
+    facade.saveParkAssessment();
+
+    expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataDraft().title).toBe('Version distante');
+    expect(facade.metadataHasChanges()).toBe(false);
+    expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });
+    expect(facade.assessmentErrorKey()).toBe('passport.editor.assessment.errors.conflict');
+
+    facade.updateVisitMetadataDraft({ privateNote: 'Note locale' });
+    facade.saveVisitMetadata();
+
+    expect(visitsPort.updateVisit).toHaveBeenCalledWith('visit-1', expect.objectContaining({
+      title: 'Version distante',
+      privateNote: 'Note locale',
+      expectedVersion: 2
+    }));
+  });
+
+  it('preserves unsaved metadata when an assessment conflict refreshes the parent version', () => {
+    const currentVisit: PassportVisit = {
+      ...visit,
+      title: 'Version distante',
       version: 2,
       parkAssessment: {
         value: 3,
@@ -445,14 +498,14 @@ describe('PassportVisitEditorStateFacade', () => {
     })));
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Brouillon local' });
     facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Ma saisie' });
 
     facade.saveParkAssessment();
 
-    expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
-    expect(facade.visit()?.version).toBe(2);
-    expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });
-    expect(facade.assessmentErrorKey()).toBe('passport.editor.assessment.errors.conflict');
+    expect(facade.visit()?.title).toBe('Version distante');
+    expect(facade.metadataDraft().title).toBe('Brouillon local');
+    expect(facade.metadataHasChanges()).toBe(true);
   });
 
   it('recognises an assessment that was committed before an ambiguous response failed', () => {

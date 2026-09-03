@@ -1767,8 +1767,13 @@ export class PassportVisitEditorStateFacade {
           : serverFingerprint === submittedFingerprint;
         const draftChangedDuringRequest: boolean =
           this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== submittedFingerprint;
+        const preserveMetadataDraft: boolean = this.metadataHasChanges();
         this.visitSignal.set(currentVisit);
+        this.persistedMetadataFingerprintSignal.set(this.metadataVisitFingerprint(currentVisit));
         this.persistedAssessmentFingerprintSignal.set(serverFingerprint);
+        if (!preserveMetadataDraft) {
+          this.metadataDraftSignal.set(createPassportVisitMetadataDraft(currentVisit));
+        }
         if (mutationWasApplied && !draftChangedDuringRequest) {
           this.syncAssessmentDraft(currentVisit.parkAssessment ?? null);
         }
