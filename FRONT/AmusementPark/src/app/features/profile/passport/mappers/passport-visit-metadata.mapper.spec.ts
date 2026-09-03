@@ -35,4 +35,17 @@ describe('passport visit metadata mapper', () => {
     expect(mapPassportVisitMetadataDraft({ ...draft, year: 2025, month: 2, day: 29 }, 2))
       .toEqual({ request: null, errorKey: 'passport.editor.visit.validation.dayInvalid' });
   });
+
+  it('preserves a stored user-selected service-day convention', () => {
+    const userSelectedVisit: PassportVisit = {
+      ...visit,
+      serviceDayConvention: 'UserSelectedServiceDate'
+    };
+
+    const result = mapPassportVisitMetadataDraft(
+      createPassportVisitMetadataDraft(userSelectedVisit),
+      2);
+
+    expect(result.request?.serviceDayConvention).toBe('UserSelectedServiceDate');
+  });
 });

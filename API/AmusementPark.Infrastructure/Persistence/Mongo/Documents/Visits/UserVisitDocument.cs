@@ -70,6 +70,14 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("pendingAuditEvents")]
     [BsonIgnoreIfNull]
     public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
+
+    [BsonElement("contentMutationLeaseToken")]
+    [BsonIgnoreIfNull]
+    public string? ContentMutationLeaseToken { get; set; }
+
+    [BsonElement("contentMutationLeaseExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? ContentMutationLeaseExpiresAtUtc { get; set; }
 }
 
 [BsonIgnoreExtraElements]

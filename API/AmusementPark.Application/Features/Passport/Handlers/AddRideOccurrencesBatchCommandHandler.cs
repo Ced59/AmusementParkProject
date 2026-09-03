@@ -19,6 +19,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     private readonly RideOccurrenceAppendOrderNormalizer appendOrderNormalizer;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
@@ -32,6 +33,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             targetResolver,
             appendOrderNormalizer,
             clock,
+            null!,
             null!)
     {
     }
@@ -42,7 +44,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         IVisitTargetResolver targetResolver,
         RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
@@ -50,6 +53,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         this.appendOrderNormalizer = appendOrderNormalizer;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<CreateRideOccurrencesResult>> HandleAsync(
@@ -216,6 +220,61 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         RideOccurrenceCreationRequest creationRequest,
         string operationId,
         CancellationToken cancellationToken)
+    {
+        if (this.contentMutationLeaseManager is null)
+        {
+            return await this.CreateWithOrderRetryCoreAsync(
+                preparation,
+                items,
+                creationRequest,
+                operationId,
+                cancellationToken);
+        }
+
+        Visit? currentVisit = await this.visitRepository.GetOwnedAsync(
+            creationRequest.VisitId,
+            creationRequest.UserId,
+            cancellationToken);
+        if (currentVisit is null)
+        {
+            return Failure(PassportApplicationErrors.VisitNotFound());
+        }
+
+        ApplicationError? editableError =
+            PassportRideOccurrenceHandlerSupport.ValidateEditable(currentVisit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
+        }
+
+        IVisitContentMutationLease? contentMutationLease =
+            await this.contentMutationLeaseManager.TryAcquireAsync(
+                currentVisit,
+                this.clock.UtcNow,
+                cancellationToken);
+        if (contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using (contentMutationLease)
+        {
+            return await this.CreateWithOrderRetryCoreAsync(
+                preparation,
+                items,
+                creationRequest,
+                operationId,
+                cancellationToken);
+        }
+    }
+
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        CreateWithOrderRetryCoreAsync(
+            RideOccurrenceCreationPreparation preparation,
+            IReadOnlyList<RideOccurrenceCreationItem> items,
+            RideOccurrenceCreationRequest creationRequest,
+            string operationId,
+            CancellationToken cancellationToken)
     {
         const int maximumAttempts = 3;
         bool wasOrderNormalized = false;

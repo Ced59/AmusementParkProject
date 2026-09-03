@@ -132,12 +132,13 @@ public sealed class ReorderRideOccurrenceCommandHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal ReorderRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock)
-        : this(visitRepository, occurrenceRepository, clock, null!)
+        : this(visitRepository, occurrenceRepository, clock, null!, null!)
     {
     }
 
@@ -145,12 +146,14 @@ public sealed class ReorderRideOccurrenceCommandHandler
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<ReorderRideOccurrenceResult>> HandleAsync(
@@ -255,6 +258,21 @@ public sealed class ReorderRideOccurrenceCommandHandler
         {
             return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
         }
+
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
 
         Dictionary<RideOccurrenceId, RideOccurrence> byId = occurrences.ToDictionary(
             static occurrence => occurrence.Id);

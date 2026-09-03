@@ -7,6 +7,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserVisitMongoDefinitions
 {
+    public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
+    public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
+
     public static FilterDefinition<UserVisitDocument> BuildOwnerFilter(string userId)
     {
         return Builders<UserVisitDocument>.Filter.Eq(
@@ -43,6 +46,25 @@ internal static class UserVisitMongoDefinitions
             & Builders<UserVisitDocument>.Filter.Eq(
                 static document => document.Version,
                 expectedVersion);
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedMutableVersionFilter(
+        string visitId,
+        string userId,
+        long expectedVersion,
+        DateTime mutationAtUtc)
+    {
+        if (mutationAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The mutation timestamp must be UTC.", nameof(mutationAtUtc));
+        }
+
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildOwnedVersionFilter(visitId, userId, expectedVersion)
+            & filters.Or(
+                filters.Exists(ContentMutationLeaseTokenPath, false),
+                filters.Lte(ContentMutationLeaseExpiresAtUtcPath, mutationAtUtc));
     }
 
     public static SortDefinition<UserVisitDocument> BuildNewestVisitSort()

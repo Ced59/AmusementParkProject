@@ -176,11 +176,14 @@ public sealed class RideAssessmentCommandHandlersTests
                 CancellationToken.None))
             .ReturnsAsync(completedVisit);
         Mock<IPassportAuditPublisher> audit = new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
         UpsertRideAssessmentCommandHandler handler = new UpsertRideAssessmentCommandHandler(
             visits.Object,
             occurrences.Object,
             CreateClock(),
-            audit.Object);
+            audit.Object,
+            leases.Object);
 
         ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
             new UpsertRideAssessmentCommand("user-1", "occurrence-1", 4d, null, 1));
@@ -190,6 +193,62 @@ public sealed class RideAssessmentCommandHandlersTests
         Assert.Null(occurrence.Assessment);
         visits.VerifyAll();
         occurrences.VerifyAll();
+        audit.VerifyNoOtherCalls();
+        leases.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Upsert_WhenVisitLifecycleLeaseIsContended_ShouldNotMutateTheOccurrence()
+    {
+        RideOccurrence occurrence = CreateOccurrence();
+        Visit visit = Visit.Create(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 3),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            NowUtc.AddHours(-1));
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedByIdAsync(
+                occurrence.Id,
+                "user-1",
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        visits.Setup(repository => repository.GetOwnedAsync(
+                visit.Id,
+                "user-1",
+                CancellationToken.None))
+            .ReturnsAsync(visit);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        leases.Setup(manager => manager.TryAcquireAsync(
+                visit,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync((IVisitContentMutationLease?)null);
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        UpsertRideAssessmentCommandHandler handler = new UpsertRideAssessmentCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            CreateClock(),
+            audit.Object,
+            leases.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpsertRideAssessmentCommand("user-1", "occurrence-1", 4d, null, 1));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("ride-assessment.version-conflict", Assert.Single(result.Errors).Code);
+        Assert.Null(occurrence.Assessment);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        leases.VerifyAll();
         audit.VerifyNoOtherCalls();
     }
 

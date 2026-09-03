@@ -27,7 +27,9 @@ flowchart LR
     H --> F[PassportAuditEventFactory]
     H --> P[IUserVisitRepository / IRideOccurrenceRepository]
     H --> A[IPassportAuditPublisher]
+    H --> L[IVisitContentMutationLeaseManager]
     P --> M[(Documents Mongo actifs)]
+    L --> M
     A --> M
     A --> J[(passport-audit-events)]
     R[Réconciliateur borné] --> A
@@ -40,6 +42,8 @@ flowchart LR
 - `AmusementPark.WebAPI` ne contient aucune règle d'audit et n'expose aucune route de lecture publique ou privée du journal dans cette tranche.
 
 Les constructeurs publics des handlers de mutation exigent `IPassportAuditPublisher`. Les surcharges sans publisher sont internes à l'assembly et servent uniquement aux tests unitaires isolés : la composition de production ne peut pas omettre silencieusement l'audit.
+
+Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. Son bail Mongo est acquis sur l'identité propriétaire, la version et le statut `Draft` de la visite. Toute mutation directe de la visite exige en retour l'absence d'un bail actif. Cette exclusion distribuée ferme la course entre une écriture de contenu et `Complete`/`Archive`, y compris avec plusieurs processus API. Un bail abandonné devient récupérable après cinq minutes ; les commandes normales sont bornées très en dessous de cette durée.
 
 ## 3. Modèle MongoDB
 
@@ -60,6 +64,8 @@ erDiagram
       long version
       object parkAssessment
       array pendingAuditEvents
+      string contentMutationLeaseToken
+      datetime contentMutationLeaseExpiresAtUtc
     }
     RIDE_OCCURRENCE {
       string _id
@@ -126,12 +132,17 @@ sequenceDiagram
     participant U as Utilisateur
     participant H as Handler Application
     participant C as Domaine Core
+    participant L as Bail de contenu Mongo
     participant S as Repository source
     participant A as Audit publisher
     participant J as Journal append-only
 
     U->>H: commande + expectedVersion
     H->>S: charge l'objet propriétaire
+    opt mutation d'une occurrence
+        H->>L: acquiert Visit(owner, version, Draft)
+        L-->>H: bail exclusif court
+    end
     H->>C: valide et applique la mutation
     H->>H: construit la preuve minimisée
     H->>S: update état + version + pendingAuditEvent
@@ -140,10 +151,14 @@ sequenceDiagram
     A->>S: vérifie le marqueur durable
     A->>J: insertOne(_id = eventId)
     A->>S: pull pendingAuditEvent
+    opt bail acquis
+        H->>L: libère avec le token propriétaire
+    end
     H-->>U: état actif validé
 ```
 
 Si l'écriture de l'état échoue sur la version attendue, aucun marqueur n'est créé et aucun audit n'est publié.
+Une transition de cycle de vie utilise le filtre inverse et échoue si un bail de contenu est actif. Si la transition gagne la course, l'acquisition exige encore `Draft` et la version observée : l'occurrence ne peut alors plus être modifiée. Si le contenu gagne, `Complete` ou `Archive` ne peut pas franchir son write fence avant la libération.
 
 ### 4.2 Reprise après incident
 
@@ -209,6 +224,8 @@ sequenceDiagram
 | journal indisponible | valide | marqueur conservé |
 | arrêt après insertion du journal | valide | doublon absorbé, marqueur acquitté à la reprise |
 | compensation d'un réordonnancement | restauré | opération non `completed`, donc aucune fausse preuve publiée |
+| contenu et changement de statut concurrents | une seule mutation franchit son write fence | preuve produite uniquement pour la mutation gagnante |
+| arrêt avec bail de contenu | état déjà écrit ou inchangé | bail récupérable après cinq minutes, marqueur d'audit repris séparément |
 
 L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classements. Il reste une preuve privée de correction, pas une source de calcul produit.
 
@@ -218,13 +235,14 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - factory Application : ancien/nouveau rating, statut et rang, détection de texte privé modifié, absence de valeurs privées ;
 - handlers : marqueur persisté avant tentative de publication ;
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
+- exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, mutations de visite bloquées pendant un bail actif ;
 - repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;
 - background service : lancement immédiat et taille de lot fixée à 50 ;
 - non-régression : suites Passport Application et persistance Mongo existantes ;
-- frontend : mapper sans précision inventée, ports HTTP, réconciliation après réponse réseau perdue, template Angular compilé et tests Passport ciblés ;
+- frontend : mapper sans précision ou convention de journée inventée, saisie conservée après conflit, ports HTTP, réconciliation après réponse réseau perdue, template Angular compilé et tests Passport ciblés ;
 
 ## 7. Hors périmètre de PASS-11
 

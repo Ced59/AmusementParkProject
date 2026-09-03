@@ -42,6 +42,30 @@ public sealed class UserVisitMongoDefinitionsTests
         Assert.Equal(7, rendered["version"].AsInt64);
     }
 
+    [Fact]
+    public void BuildOwnedMutableVersionFilter_ShouldRejectAnActiveContentLease()
+    {
+        DateTime mutationAtUtc = new DateTime(2026, 9, 3, 20, 0, 0, DateTimeKind.Utc);
+
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
+                "visit-1",
+                "user-1",
+                7,
+                mutationAtUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(7, rendered["version"].AsInt64);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        Assert.False(alternatives[0]["contentMutationLeaseToken"]["$exists"].AsBoolean);
+        Assert.Equal(
+            mutationAtUtc,
+            alternatives[1]["contentMutationLeaseExpiresAtUtc"]["$lte"].ToUniversalTime());
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]

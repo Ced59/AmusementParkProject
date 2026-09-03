@@ -14,6 +14,7 @@ export function createPassportVisitMetadataDraft(visit: PassportVisit): Passport
     day: visit.date.day,
     isApproximate: visit.date.isApproximate,
     timeZoneId: visit.timeZoneId ?? '',
+    serviceDayConvention: visit.serviceDayConvention,
     title: visit.title ?? '',
     privateNote: visit.privateNote ?? ''
   };
@@ -64,7 +65,7 @@ export function mapPassportVisitMetadataDraft(
         isApproximate: draft.isApproximate
       },
       timeZoneId,
-      serviceDayConvention: 'VisitStartLocalDate',
+      serviceDayConvention: draft.serviceDayConvention,
       title,
       privateNote,
       expectedVersion

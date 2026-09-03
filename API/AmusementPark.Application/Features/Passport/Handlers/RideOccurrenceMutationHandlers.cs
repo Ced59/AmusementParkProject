@@ -18,13 +18,14 @@ public sealed class UpdateRideOccurrenceCommandHandler
     private readonly IVisitTargetResolver targetResolver;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal UpdateRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
         IPassportClock clock)
-        : this(visitRepository, occurrenceRepository, targetResolver, clock, null!)
+        : this(visitRepository, occurrenceRepository, targetResolver, clock, null!, null!)
     {
     }
 
@@ -33,13 +34,15 @@ public sealed class UpdateRideOccurrenceCommandHandler
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -115,6 +118,21 @@ public sealed class UpdateRideOccurrenceCommandHandler
         {
             return Failure(PassportApplicationErrors.HistoricalConflictConfirmationRequired());
         }
+
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
@@ -198,11 +216,12 @@ public sealed class DeleteRideOccurrenceCommandHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal DeleteRideOccurrenceCommandHandler(
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock)
-        : this(null!, occurrenceRepository, clock, null!)
+        : this(null!, occurrenceRepository, clock, null!, null!)
     {
     }
 
@@ -210,12 +229,14 @@ public sealed class DeleteRideOccurrenceCommandHandler
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -241,9 +262,10 @@ public sealed class DeleteRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
         }
 
+        Visit? visit = null;
         if (this.visitRepository is not null)
         {
-            Visit? visit = await this.visitRepository.GetOwnedAsync(
+            visit = await this.visitRepository.GetOwnedAsync(
                 scope.VisitId,
                 scope.UserId,
                 cancellationToken);
@@ -263,6 +285,21 @@ public sealed class DeleteRideOccurrenceCommandHandler
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
+
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null || visit is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
 
         long expectedVersion = occurrence.Version;
         occurrence.Delete(this.clock.UtcNow);

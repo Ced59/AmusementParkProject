@@ -163,6 +163,35 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.metadataHasChanges()).toBe(false);
   });
 
+  it('preserves submitted metadata when conflict reconciliation loads another version', () => {
+    const concurrentVisit: PassportVisit = {
+      ...visit,
+      title: 'Version distante',
+      version: 2
+    };
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.version-conflict'
+      }
+    })));
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(concurrentVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Ma correction' });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataDraft().title).toBe('Ma correction');
+    expect(facade.metadataHasChanges()).toBe(true);
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.conflict');
+  });
+
   it('requires an explicit lifecycle transition and reconciles a lost completion response', () => {
     const completedVisit: PassportVisit = {
       ...visit,

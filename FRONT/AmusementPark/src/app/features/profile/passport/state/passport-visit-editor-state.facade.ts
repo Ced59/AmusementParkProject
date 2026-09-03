@@ -106,6 +106,7 @@ export class PassportVisitEditorStateFacade {
     day: null,
     isApproximate: false,
     timeZoneId: '',
+    serviceDayConvention: 'VisitStartLocalDate',
     title: '',
     privateNote: ''
   });
@@ -1844,12 +1845,13 @@ export class PassportVisitEditorStateFacade {
         const mutationWasApplied: boolean = targetStatus
           ? currentVisit.status === targetStatus
           : this.metadataVisitFingerprint(currentVisit) === submittedFingerprint;
-        this.applyVisitMutationResult(currentVisit, submittedFingerprint);
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
+          this.applyVisitMutationResult(currentVisit, submittedFingerprint);
           this.showSuccess(successKey);
           return;
         }
 
+        this.applyLoadedVisit(currentVisit);
         this.visitMutationErrorKeySignal.set('passport.editor.visit.errors.conflict');
       },
       error: (): void => {
@@ -2042,6 +2044,7 @@ export class PassportVisitEditorStateFacade {
       day: null,
       isApproximate: false,
       timeZoneId: '',
+      serviceDayConvention: 'VisitStartLocalDate',
       title: '',
       privateNote: ''
     });

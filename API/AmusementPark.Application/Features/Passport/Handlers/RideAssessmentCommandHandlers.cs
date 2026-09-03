@@ -16,11 +16,12 @@ public sealed class UpsertRideAssessmentCommandHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal UpsertRideAssessmentCommandHandler(
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock)
-        : this(null!, occurrenceRepository, clock, null!)
+        : this(null!, occurrenceRepository, clock, null!, null!)
     {
     }
 
@@ -28,12 +29,14 @@ public sealed class UpsertRideAssessmentCommandHandler
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -72,20 +75,35 @@ public sealed class UpsertRideAssessmentCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
         }
 
-        ApplicationError? editableError = await ValidateVisitEditableAsync(
+        EditableVisitValidation editableVisit = await LoadEditableVisitAsync(
             occurrence,
             scope.UserId,
             this.visitRepository,
             cancellationToken);
-        if (editableError is not null)
+        if (editableVisit.Error is not null)
         {
-            return Failure(editableError);
+            return Failure(editableVisit.Error);
         }
 
         if (occurrence.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
         }
+
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null || editableVisit.Visit is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    editableVisit.Visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
@@ -161,7 +179,7 @@ public sealed class UpsertRideAssessmentCommandHandler
         return ApplicationResult<RideOccurrenceResult>.Failure(error);
     }
 
-    internal static async Task<ApplicationError?> ValidateVisitEditableAsync(
+    internal static async Task<EditableVisitValidation> LoadEditableVisitAsync(
         RideOccurrence occurrence,
         string userId,
         IUserVisitRepository? visitRepository,
@@ -169,7 +187,7 @@ public sealed class UpsertRideAssessmentCommandHandler
     {
         if (visitRepository is null)
         {
-            return null;
+            return new EditableVisitValidation(null, null);
         }
 
         Visit? visit = await visitRepository.GetOwnedAsync(
@@ -177,9 +195,13 @@ public sealed class UpsertRideAssessmentCommandHandler
             userId,
             cancellationToken);
         return visit is null
-            ? PassportApplicationErrors.VisitNotFound()
-            : PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+            ? new EditableVisitValidation(null, PassportApplicationErrors.VisitNotFound())
+            : new EditableVisitValidation(
+                visit,
+                PassportRideOccurrenceHandlerSupport.ValidateEditable(visit));
     }
+
+    internal sealed record EditableVisitValidation(Visit? Visit, ApplicationError? Error);
 
     private sealed record ParsedRideAssessmentScope(string UserId, RideOccurrenceId OccurrenceId);
 }
@@ -191,11 +213,12 @@ public sealed class DeleteRideAssessmentCommandHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
     internal DeleteRideAssessmentCommandHandler(
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock)
-        : this(null!, occurrenceRepository, clock, null!)
+        : this(null!, occurrenceRepository, clock, null!, null!)
     {
     }
 
@@ -203,12 +226,14 @@ public sealed class DeleteRideAssessmentCommandHandler
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -245,20 +270,36 @@ public sealed class DeleteRideAssessmentCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
         }
 
-        ApplicationError? editableError = await UpsertRideAssessmentCommandHandler.ValidateVisitEditableAsync(
+        UpsertRideAssessmentCommandHandler.EditableVisitValidation editableVisit =
+            await UpsertRideAssessmentCommandHandler.LoadEditableVisitAsync(
             occurrence,
             userId,
             this.visitRepository,
             cancellationToken);
-        if (editableError is not null)
+        if (editableVisit.Error is not null)
         {
-            return Failure(editableError);
+            return Failure(editableVisit.Error);
         }
 
         if (occurrence.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
         }
+
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null || editableVisit.Visit is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    editableVisit.Visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);

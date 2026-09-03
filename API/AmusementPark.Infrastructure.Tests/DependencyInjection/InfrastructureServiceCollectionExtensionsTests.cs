@@ -109,8 +109,13 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
         ServiceDescriptor reconciler = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IPassportAuditReconciler));
+        ServiceDescriptor contentMutationLeases = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IVisitContentMutationLeaseManager));
         Assert.Equal(ServiceLifetime.Scoped, publisher.Lifetime);
         Assert.Equal(ServiceLifetime.Scoped, reconciler.Lifetime);
+        Assert.Equal(typeof(MongoVisitContentMutationLeaseManager), contentMutationLeases.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, contentMutationLeases.Lifetime);
         Assert.Contains(
             services,
             static service => service.ServiceType == typeof(IHostedService)

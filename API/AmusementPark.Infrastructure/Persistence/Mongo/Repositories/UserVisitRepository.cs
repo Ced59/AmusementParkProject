@@ -213,10 +213,11 @@ public sealed class UserVisitRepository : IUserVisitRepository
         }
 
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
                 document.Id,
                 document.UserId,
-                expectedVersion),
+                expectedVersion,
+                document.UpdatedAt),
             BuildDomainUpdate(document, pendingAuditEvent),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
@@ -230,10 +231,11 @@ public sealed class UserVisitRepository : IUserVisitRepository
         CancellationToken cancellationToken)
     {
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
                 visitId.Value,
                 userId,
-                expectedVersion),
+                expectedVersion,
+                DateTime.UtcNow),
             Builders<UserVisitDocument>.Update.Set(
                 static document => document.Version,
                 expectedVersion),
@@ -249,10 +251,11 @@ public sealed class UserVisitRepository : IUserVisitRepository
         CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
                 visitId.Value,
                 userId,
-                expectedVersion),
+                expectedVersion,
+                DateTime.UtcNow),
             cancellationToken);
         return result.DeletedCount == 1;
     }
