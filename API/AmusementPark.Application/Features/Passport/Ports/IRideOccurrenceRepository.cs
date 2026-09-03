@@ -31,9 +31,10 @@ public interface IRideOccurrenceRepository
         RideOccurrenceListCriteria criteria,
         CancellationToken cancellationToken);
 
-    Task<long?> GetLastSortPositionAsync(
+    Task<RideOccurrenceAppendState> GetAppendStateAsync(
         VisitId visitId,
         string userId,
+        string clientOperationId,
         CancellationToken cancellationToken);
 
     Task<bool> TryUpdateOwnedAsync(
@@ -66,5 +67,6 @@ public interface IRideOccurrenceRepository
         bool wasNormalized,
         DateTime operationAtUtc,
         string clientOperationId,
+        string? relatedCreationClientOperationId,
         CancellationToken cancellationToken);
 }

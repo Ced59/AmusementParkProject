@@ -109,6 +109,7 @@ public sealed class RideOccurrenceAppendOrderNormalizer
                 true,
                 nowUtc,
                 normalizationOperationId,
+                clientOperationId,
                 cancellationToken);
         return result.Status is IdempotentRideOccurrenceReorderStatus.Applied
             or IdempotentRideOccurrenceReorderStatus.Replayed;

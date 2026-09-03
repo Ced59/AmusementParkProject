@@ -22,6 +22,10 @@ public sealed record RideOccurrencePage(
     IReadOnlyCollection<RideOccurrence> Items,
     RideOccurrenceListCursor? NextCursor);
 
+public sealed record RideOccurrenceAppendState(
+    long? LastSortPosition,
+    bool WasNormalizedForOperation);
+
 public sealed record RideOccurrenceCreationRequestItem(
     string ParkItemId,
     OccurrenceMoment Moment,

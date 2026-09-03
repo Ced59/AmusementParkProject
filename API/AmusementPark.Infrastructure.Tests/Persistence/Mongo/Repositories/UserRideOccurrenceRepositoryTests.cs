@@ -594,6 +594,75 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task GetAppendStateAsync_WithCompletedRelatedNormalization_ShouldRestoreTheSignal()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        UserRideOccurrenceDocument last = CreateOccurrence(
+                "occurrence-1",
+                "item-1",
+                2048)
+            .ToDocument();
+        UserRideOccurrenceCreationOperationDocument normalization =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                VisitId = "visit-1",
+                OperationKind = "reorder",
+                OperationState = "completed",
+                WasNormalized = true,
+                RelatedCreationOperationKeyHash =
+                    UserRideOccurrenceCreationFingerprint.HashOperationKey("request-1"),
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> lastCursor =
+            CreateAsyncCursor(new[] { last });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> normalizationCursor =
+            CreateAsyncCursor(new[] { normalization });
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument>? capturedFilter = null;
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(lastCursor.Object);
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter,
+                FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument> _,
+                CancellationToken _) => capturedFilter = filter)
+            .ReturnsAsync(normalizationCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        RideOccurrenceAppendState state = await repository.GetAppendStateAsync(
+            VisitId.Parse("visit-1"),
+            " user-1 ",
+            " request-1 ",
+            CancellationToken.None);
+
+        Assert.Equal(2048, state.LastSortPosition);
+        Assert.True(state.WasNormalizedForOperation);
+        Assert.NotNull(capturedFilter);
+        BsonDocument rendered = Render(capturedFilter);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal("visit-1", rendered["visitId"].AsString);
+        Assert.Equal(64, rendered["relatedCreationOperationKeyHash"].AsString.Length);
+        Assert.Equal("completed", rendered["operationState"].AsString);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        lastCursor.VerifyAll();
+        normalizationCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task TryUpdateOwnedAsync_ShouldFenceTheWriteWithoutReplacingIdempotencyData()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
@@ -985,6 +1054,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 false,
                 NowUtc.AddMinutes(2),
                 "request-1",
+                null,
                 CancellationToken.None);
 
         Assert.Equal(IdempotentRideOccurrenceReorderStatus.Conflict, result.Status);
@@ -1078,9 +1148,10 @@ public sealed class UserRideOccurrenceRepositoryTests
                 new[] { new RideOccurrenceVersionedChange(occurrence, 1, 1024) },
                 new[] { new RideOccurrenceOrderGuard(occurrence.Id, 1024) },
                 occurrence,
-                false,
+                true,
                 NowUtc.AddMinutes(1),
                 "request-1",
+                "creation-request-1",
                 CancellationToken.None);
 
         Assert.Equal(IdempotentRideOccurrenceReorderStatus.Applied, result.Status);
@@ -1094,6 +1165,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.True(reserved.OrderGuardsValidated);
         Assert.Equal(1024, Assert.Single(reserved.ReorderItems!).PreviousSortPosition);
         Assert.Equal(64, reserved.OperationKeyHash.Length);
+        Assert.Equal(64, reserved.RelatedCreationOperationKeyHash?.Length);
         Assert.NotNull(occurrenceUpdate);
         BsonDocument renderedUpdate = Render(occurrenceUpdate);
         Assert.Equal(1536, renderedUpdate["$set"]["sortPosition"].AsInt64);
@@ -1391,6 +1463,7 @@ public sealed class UserRideOccurrenceRepositoryTests
             false,
             NowUtc.AddMinutes(2),
             "new-request",
+            null,
             CancellationToken.None);
 
         Assert.Equal(IdempotentRideOccurrenceReorderStatus.Applied, result.Status);

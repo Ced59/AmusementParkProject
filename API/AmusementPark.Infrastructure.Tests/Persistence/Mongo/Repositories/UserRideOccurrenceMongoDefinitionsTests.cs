@@ -147,7 +147,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
     {
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument>[] indexes =
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes().ToArray();
-        Assert.Equal(2, indexes.Length);
+        Assert.Equal(3, indexes.Length);
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument> index = indexes[0];
 
         Assert.Equal(
@@ -179,6 +179,50 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "visitId", 1 },
             },
             Render(activeMutation.Keys));
+
+        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> normalization =
+            indexes[2];
+        Assert.Equal(
+            "idx_user_ride_occurrence_operations_creation_normalization",
+            normalization.Options.Name);
+        Assert.NotEqual(true, normalization.Options.Unique);
+        Assert.NotNull(normalization.Options.PartialFilterExpression);
+        Assert.Equal(
+            new BsonDocument(
+                "relatedCreationOperationKeyHash",
+                new BsonDocument("$exists", true)),
+            Render(normalization.Options.PartialFilterExpression));
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "userId", 1 },
+                { "relatedCreationOperationKeyHash", 1 },
+                { "visitId", 1 },
+                { "operationState", 1 },
+            },
+            Render(normalization.Keys));
+    }
+
+    [Fact]
+    public void CompletedCreationNormalizationFilter_ShouldRequireTheDurableLink()
+    {
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildCompletedCreationNormalizationFilter(
+                    " user-1 ",
+                    " visit-1 ",
+                    " creation-hash ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal("visit-1", rendered["visitId"].AsString);
+        Assert.Equal(
+            "creation-hash",
+            rendered["relatedCreationOperationKeyHash"].AsString);
+        Assert.Equal("reorder", rendered["operationKind"].AsString);
+        Assert.True(rendered["wasNormalized"].AsBoolean);
+        Assert.Equal("completed", rendered["operationState"].AsString);
     }
 
     [Fact]

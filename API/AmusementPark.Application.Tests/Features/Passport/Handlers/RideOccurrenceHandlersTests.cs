@@ -33,11 +33,12 @@ public sealed class RideOccurrenceHandlersTests
                 ParkItemCategory.Attraction,
                 new DateOnly(2000, 1, 1),
                 null));
-        occurrences.Setup(repository => repository.GetLastSortPositionAsync(
+        occurrences.Setup(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 "owner-1",
+                "request-1",
                 CancellationToken.None))
-            .ReturnsAsync((long?)null);
+            .ReturnsAsync(new RideOccurrenceAppendState(null, false));
         occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
                 It.Is<RideOccurrenceCreationRequest>(request =>
                     request.VisitId == visit.Id
@@ -91,6 +92,65 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
+    public async Task AddBatch_WhenPriorNormalizationIsDurable_ShouldPreserveTheSignal()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                "item-1",
+                "park-1",
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        occurrences.Setup(repository => repository.GetAppendStateAsync(
+                visit.Id,
+                visit.UserId,
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync(new RideOccurrenceAppendState(2048, true));
+        occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                It.IsAny<IReadOnlyList<RideOccurrence>>(),
+                2048,
+                true,
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((
+                RideOccurrenceCreationRequest _,
+                IReadOnlyList<RideOccurrence> created,
+                long? _,
+                bool _,
+                string _,
+                CancellationToken _) => new IdempotentRideOccurrenceCreationResult(
+                    IdempotentRideOccurrenceCreationStatus.Created,
+                    created,
+                    true));
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
+            CreateClock());
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value?.WasNormalized);
+        occurrences.VerifyAll();
+        visits.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
     public async Task AddBatch_WhenAppendBaseChanges_ShouldReallocateTheWholeBatch()
     {
         Visit visit = CreateVisit();
@@ -110,12 +170,13 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
-        occurrences.SetupSequence(repository => repository.GetLastSortPositionAsync(
+        occurrences.SetupSequence(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 "owner-1",
+                "request-1",
                 CancellationToken.None))
-            .ReturnsAsync((long?)null)
-            .ReturnsAsync(2048);
+            .ReturnsAsync(new RideOccurrenceAppendState(null, false))
+            .ReturnsAsync(new RideOccurrenceAppendState(2048, false));
         List<IReadOnlyList<long>> attemptedPositions = new List<IReadOnlyList<long>>();
         int persistenceAttempt = 0;
         occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
@@ -197,12 +258,13 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
-        occurrences.SetupSequence(repository => repository.GetLastSortPositionAsync(
+        occurrences.SetupSequence(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 visit.UserId,
+                "request-1",
                 CancellationToken.None))
-            .ReturnsAsync(last.SortPosition)
-            .ReturnsAsync(2048);
+            .ReturnsAsync(new RideOccurrenceAppendState(last.SortPosition, false))
+            .ReturnsAsync(new RideOccurrenceAppendState(2048, true));
         occurrences.Setup(repository => repository.ListOwnedByVisitAsync(
                 It.Is<RideOccurrenceListCriteria>(criteria =>
                     criteria.VisitId == visit.Id
@@ -243,6 +305,7 @@ public sealed class RideOccurrenceHandlersTests
                         "internal-passport-append-normalization-v1:",
                         StringComparison.Ordinal)
                     && operationId.Length == 106),
+                "request-1",
                 CancellationToken.None))
             .ReturnsAsync(() => new IdempotentRideOccurrenceReorderResult(
                 IdempotentRideOccurrenceReorderStatus.Applied,
@@ -382,11 +445,12 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
-        occurrences.Setup(repository => repository.GetLastSortPositionAsync(
+        occurrences.Setup(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 visit.UserId,
+                "request-1",
                 CancellationToken.None))
-            .ReturnsAsync((long?)null);
+            .ReturnsAsync(new RideOccurrenceAppendState(null, false));
         occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
                 It.Is<RideOccurrenceCreationRequest>(request =>
                     Assert.Single(request.Items).ConfirmHistoricalConflict),
@@ -666,6 +730,7 @@ public sealed class RideOccurrenceHandlersTests
                 false,
                 NowUtc.AddMinutes(1),
                 "request-1",
+                null,
                 CancellationToken.None))
             .ReturnsAsync(() => new IdempotentRideOccurrenceReorderResult(
                 IdempotentRideOccurrenceReorderStatus.Applied,

@@ -226,6 +226,10 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfDefault]
     public bool WasNormalized { get; set; }
 
+    [BsonElement("relatedCreationOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? RelatedCreationOperationKeyHash { get; set; }
+
     [BsonElement("items")]
     public List<UserRideOccurrenceCreationAllocationDocument> Items { get; set; } =
         new List<UserRideOccurrenceCreationAllocationDocument>();

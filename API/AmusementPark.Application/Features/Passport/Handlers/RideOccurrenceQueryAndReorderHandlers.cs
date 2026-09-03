@@ -237,6 +237,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 plan.WasNormalized,
                 nowUtc,
                 operationId,
+                null,
                 cancellationToken);
         return ToApplicationResult(result);
     }

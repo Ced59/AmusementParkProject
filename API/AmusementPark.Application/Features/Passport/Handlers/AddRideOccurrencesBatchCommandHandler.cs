@@ -120,10 +120,14 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         bool wasOrderNormalized = false;
         for (int attempt = 0; attempt < maximumAttempts; attempt++)
         {
-            long? currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
-                visit.Id,
-                visit.UserId,
-                cancellationToken);
+            RideOccurrenceAppendState appendState =
+                await this.occurrenceRepository.GetAppendStateAsync(
+                    visit.Id,
+                    visit.UserId,
+                    operationId,
+                    cancellationToken);
+            wasOrderNormalized |= appendState.WasNormalizedForOperation;
+            long? currentMaximum = appendState.LastSortPosition;
             IReadOnlyList<long> positions;
             try
             {
@@ -144,10 +148,13 @@ public sealed class AddRideOccurrencesBatchCommandHandler
 
                 wasOrderNormalized = true;
 
-                currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
+                appendState = await this.occurrenceRepository.GetAppendStateAsync(
                     visit.Id,
                     visit.UserId,
+                    operationId,
                     cancellationToken);
+                wasOrderNormalized |= appendState.WasNormalizedForOperation;
+                currentMaximum = appendState.LastSortPosition;
                 try
                 {
                     positions = RideOccurrenceOrderPlanner.AllocateAppend(

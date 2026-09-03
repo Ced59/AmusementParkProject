@@ -316,19 +316,31 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return new RideOccurrencePage(occurrences, nextCursor);
     }
 
-    public async Task<long?> GetLastSortPositionAsync(
+    public async Task<RideOccurrenceAppendState> GetAppendStateAsync(
         VisitId visitId,
         string userId,
+        string clientOperationId,
         CancellationToken cancellationToken)
     {
-        UserRideOccurrenceDocument? document = await this.collection
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string relatedCreationOperationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey(
+                NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        UserRideOccurrenceDocument? lastOccurrence = await this.collection
             .Find(UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
                 visitId.Value,
-                userId))
+                normalizedUserId))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildReverseVisitOrderSort())
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
-        return document?.SortPosition;
+        bool wasNormalized = await this.WasCreationOrderNormalizedAsync(
+            normalizedUserId,
+            visitId,
+            relatedCreationOperationKeyHash,
+            cancellationToken);
+        return new RideOccurrenceAppendState(
+            lastOccurrence?.SortPosition,
+            wasNormalized);
     }
 
     public async Task<bool> TryUpdateOwnedAsync(
@@ -433,6 +445,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         bool wasNormalized,
         DateTime operationAtUtc,
         string clientOperationId,
+        string? relatedCreationClientOperationId,
         CancellationToken cancellationToken)
     {
         ValidateReorderRequest(request);
@@ -443,6 +456,11 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        string? relatedCreationOperationKeyHash =
+            string.IsNullOrWhiteSpace(relatedCreationClientOperationId)
+                ? null
+                : UserRideOccurrenceCreationFingerprint.HashOperationKey(
+                    relatedCreationClientOperationId.Trim());
         string payloadHash =
             UserRideOccurrenceCreationFingerprint.HashReorderPayload(request);
         UserRideOccurrenceCreationOperationDocument requested = CreateReorderOperation(
@@ -451,6 +469,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             guards,
             resultOccurrence,
             wasNormalized,
+            relatedCreationOperationKeyHash,
             operationAtUtc,
             operationKeyHash,
             payloadHash);
@@ -888,6 +907,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 return null;
             }
 
+            requested.WasNormalized |= await this.WasCreationOrderNormalizedAsync(
+                userId,
+                visitId,
+                operationKeyHash,
+                cancellationToken);
+
             try
             {
                 await this.operationCollection.InsertOneAsync(
@@ -906,6 +931,24 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 return existing is null ? null : (existing, false);
             }
         }
+    }
+
+    private async Task<bool> WasCreationOrderNormalizedAsync(
+        string userId,
+        VisitId visitId,
+        string relatedCreationOperationKeyHash,
+        CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? operation =
+            await this.operationCollection
+                .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                    .BuildCompletedCreationNormalizationFilter(
+                        userId,
+                        visitId.Value,
+                        relatedCreationOperationKeyHash))
+                .Limit(1)
+                .FirstOrDefaultAsync(cancellationToken);
+        return operation is not null;
     }
 
     internal static UserRideOccurrenceDocument CreateCreationDocument(
@@ -997,6 +1040,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
         RideOccurrence resultOccurrence,
         bool wasNormalized,
+        string? relatedCreationOperationKeyHash,
         DateTime operationAtUtc,
         string operationKeyHash,
         string payloadHash)
@@ -1016,6 +1060,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             ReorderAnchorOccurrenceId = request.AnchorOccurrenceId?.Value,
             ReorderPlacement = request.Placement,
             WasNormalized = wasNormalized,
+            RelatedCreationOperationKeyHash = relatedCreationOperationKeyHash,
             ReorderItems = changes
                 .Select((change, index) =>
                 {
