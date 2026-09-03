@@ -135,7 +135,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
         IReadOnlyList<RideOccurrence> occurrences;
         try
         {
-            occurrences = await PassportRideOccurrenceHandlerSupport.LoadAllAsync(
+            occurrences = await RideOccurrenceOrderLoader.LoadAllAsync(
                 this.occurrenceRepository,
                 scope.VisitId,
                 scope.UserId,

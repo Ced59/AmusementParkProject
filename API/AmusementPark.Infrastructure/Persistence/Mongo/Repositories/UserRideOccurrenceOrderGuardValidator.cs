@@ -15,6 +15,7 @@ internal enum RideOccurrenceOrderGuardValidationStatus
 internal sealed class UserRideOccurrenceOrderGuardValidator
 {
     private const string PendingOperationState = "pending";
+    private const string CompletedOperationState = "completed";
 
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
@@ -52,7 +53,27 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
             .ToListAsync(cancellationToken);
         if (!GuardsMatch(guards, current))
         {
-            return RideOccurrenceOrderGuardValidationStatus.Stale;
+            UserRideOccurrenceCreationOperationDocument? concurrent =
+                await this.LoadOperationAsync(operation, cancellationToken);
+            if (concurrent is not null)
+            {
+                operation.OperationState = concurrent.OperationState;
+                if (concurrent.OrderGuardsValidated
+                    && concurrent.OperationState is (
+                        PendingOperationState or CompletedOperationState))
+                {
+                    operation.OrderGuardsValidated = true;
+                    return RideOccurrenceOrderGuardValidationStatus.Validated;
+                }
+            }
+
+            return concurrent is not null
+                && string.Equals(
+                    concurrent.OperationState,
+                    PendingOperationState,
+                    StringComparison.Ordinal)
+                ? RideOccurrenceOrderGuardValidationStatus.Stale
+                : RideOccurrenceOrderGuardValidationStatus.Unavailable;
         }
 
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
@@ -74,9 +95,19 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
         {
             UserRideOccurrenceCreationOperationDocument? concurrent =
                 await this.LoadOperationAsync(operation, cancellationToken);
-            return concurrent?.OrderGuardsValidated == true
-                ? RideOccurrenceOrderGuardValidationStatus.Validated
-                : RideOccurrenceOrderGuardValidationStatus.Unavailable;
+            if (concurrent is not null)
+            {
+                operation.OperationState = concurrent.OperationState;
+                if (concurrent.OrderGuardsValidated
+                    && concurrent.OperationState is (
+                        PendingOperationState or CompletedOperationState))
+                {
+                    operation.OrderGuardsValidated = true;
+                    return RideOccurrenceOrderGuardValidationStatus.Validated;
+                }
+            }
+
+            return RideOccurrenceOrderGuardValidationStatus.Unavailable;
         }
 
         operation.OrderGuardsValidated = true;

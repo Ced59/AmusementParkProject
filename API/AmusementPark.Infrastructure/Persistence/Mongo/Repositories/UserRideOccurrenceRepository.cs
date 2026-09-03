@@ -708,14 +708,38 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
                 if (guardStatus == RideOccurrenceOrderGuardValidationStatus.Stale)
                 {
-                    await this.pendingOperationRecovery.SetStateAsync(
+                    bool conflictWasReserved = await this.pendingOperationRecovery
+                        .TrySetUnvalidatedReorderConflictAsync(
+                            operation,
+                            cancellationToken);
+                    if (conflictWasReserved)
+                    {
+                        return CreateReorderConflictResult(operation.WasNormalized);
+                    }
+
+                    guardStatus = await this.orderGuardValidator.EnsureValidatedAsync(
                         operation,
-                        ConflictOperationState,
+                        request,
                         cancellationToken);
-                    return CreateReorderConflictResult(operation.WasNormalized);
                 }
 
                 if (guardStatus != RideOccurrenceOrderGuardValidationStatus.Validated)
+                {
+                    return CreateReorderConflictResult(operation.WasNormalized);
+                }
+
+                if (string.Equals(
+                    operation.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal))
+                {
+                    return CreateReorderReplayResult(operation);
+                }
+
+                if (!string.Equals(
+                    operation.OperationState,
+                    PendingOperationState,
+                    StringComparison.Ordinal))
                 {
                     return CreateReorderConflictResult(operation.WasNormalized);
                 }
@@ -798,15 +822,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             operation.OperationState = CompletedOperationState;
         }
 
-        RideOccurrence occurrence = operation.ReorderResultSnapshot!.SnapshotToDomain(
-            operation.MovedOccurrenceId!,
-            operation.UserId);
-        return new IdempotentRideOccurrenceReorderResult(
-            wasExisting
-                ? IdempotentRideOccurrenceReorderStatus.Replayed
-                : IdempotentRideOccurrenceReorderStatus.Applied,
-            occurrence,
-            operation.WasNormalized);
+        return wasExisting
+            ? CreateReorderReplayResult(operation)
+            : new IdempotentRideOccurrenceReorderResult(
+                IdempotentRideOccurrenceReorderStatus.Applied,
+                operation.ReorderResultSnapshot!.SnapshotToDomain(
+                    operation.MovedOccurrenceId!,
+                    operation.UserId),
+                operation.WasNormalized);
     }
 
     private async Task<(UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)?>
@@ -1126,6 +1149,17 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             IdempotentRideOccurrenceReorderStatus.Conflict,
             null,
             wasNormalized);
+    }
+
+    private static IdempotentRideOccurrenceReorderResult CreateReorderReplayResult(
+        UserRideOccurrenceCreationOperationDocument operation)
+    {
+        return new IdempotentRideOccurrenceReorderResult(
+            IdempotentRideOccurrenceReorderStatus.Replayed,
+            operation.ReorderResultSnapshot!.SnapshotToDomain(
+                operation.MovedOccurrenceId!,
+                operation.UserId),
+            operation.WasNormalized);
     }
 
     private static IdempotentRideOccurrenceReorderResult

@@ -16,17 +16,20 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IVisitTargetResolver targetResolver;
+    private readonly RideOccurrenceAppendOrderNormalizer appendOrderNormalizer;
     private readonly IPassportClock clock;
 
     public AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
+        RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
         IPassportClock clock)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
+        this.appendOrderNormalizer = appendOrderNormalizer;
         this.clock = clock;
     }
 
@@ -129,7 +132,29 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             }
             catch (OverflowException)
             {
-                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+                bool normalized = await this.appendOrderNormalizer.TryNormalizeAsync(
+                    visit,
+                    operationId,
+                    cancellationToken);
+                if (!normalized)
+                {
+                    continue;
+                }
+
+                currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
+                    visit.Id,
+                    visit.UserId,
+                    cancellationToken);
+                try
+                {
+                    positions = RideOccurrenceOrderPlanner.AllocateAppend(
+                        currentMaximum,
+                        items.Count);
+                }
+                catch (OverflowException)
+                {
+                    continue;
+                }
             }
 
             List<RideOccurrence> occurrences;

@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 using Moq;
@@ -64,10 +65,10 @@ public sealed class RideOccurrenceHandlersTests
             .ReturnsAsync(() => new IdempotentRideOccurrenceCreationResult(
                 IdempotentRideOccurrenceCreationStatus.Created,
                 captured!));
-        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
-            visits.Object,
-            occurrences.Object,
-            targets.Object,
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
@@ -144,10 +145,10 @@ public sealed class RideOccurrenceHandlersTests
                 : new IdempotentRideOccurrenceCreationResult(
                     IdempotentRideOccurrenceCreationStatus.Created,
                     items));
-        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
-            visits.Object,
-            occurrences.Object,
-            targets.Object,
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
@@ -159,6 +160,117 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal(new[] { 3072L, 4096L }, attemptedPositions[1]);
         visits.VerifyAll();
         occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddBatch_WhenAppendPositionOverflows_ShouldNormalizeBeforeCreating()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence first = CreateOccurrence(
+            visit,
+            "occurrence-1",
+            long.MaxValue - 2048);
+        RideOccurrence last = CreateOccurrence(
+            visit,
+            "occurrence-2",
+            long.MaxValue - 100);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                "item-1",
+                "park-1",
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        occurrences.SetupSequence(repository => repository.GetLastSortPositionAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(last.SortPosition)
+            .ReturnsAsync(2048);
+        occurrences.Setup(repository => repository.ListOwnedByVisitAsync(
+                It.Is<RideOccurrenceListCriteria>(criteria =>
+                    criteria.VisitId == visit.Id
+                    && criteria.UserId == visit.UserId
+                    && criteria.After == null
+                    && criteria.Limit == RideOccurrenceListCriteria.MaximumLimit),
+                CancellationToken.None))
+            .ReturnsAsync(new RideOccurrencePage(new[] { first, last }, null));
+        occurrences.Setup(repository => repository.ReorderIdempotentAsync(
+                It.Is<RideOccurrenceReorderRequest>(request =>
+                    request.OccurrenceId == first.Id
+                    && request.ExpectedVersion == 1
+                    && request.AnchorOccurrenceId == null
+                    && request.Placement == RideOccurrencePlacement.First),
+                It.Is<IReadOnlyCollection<RideOccurrenceVersionedChange>>(changes =>
+                    changes.Count == 2
+                    && changes.Any(change =>
+                        change.Occurrence.Id == first.Id
+                        && change.Occurrence.SortPosition == 1024)
+                    && changes.Any(change =>
+                        change.Occurrence.Id == last.Id
+                        && change.Occurrence.SortPosition == 2048)),
+                It.Is<IReadOnlyCollection<RideOccurrenceOrderGuard>>(guards =>
+                    guards.Count == 2
+                    && guards.Any(guard =>
+                        guard.OccurrenceId == first.Id
+                        && guard.SortPosition == long.MaxValue - 2048)
+                    && guards.Any(guard =>
+                        guard.OccurrenceId == last.Id
+                        && guard.SortPosition == long.MaxValue - 100)),
+                It.Is<RideOccurrence>(occurrence =>
+                    occurrence.Id == first.Id
+                    && occurrence.SortPosition == 1024),
+                true,
+                NowUtc.AddMinutes(1),
+                It.Is<string>(operationId =>
+                    operationId.StartsWith(
+                        "internal-passport-append-normalization-v1:",
+                        StringComparison.Ordinal)
+                    && operationId.Length == 106),
+                CancellationToken.None))
+            .ReturnsAsync(() => new IdempotentRideOccurrenceReorderResult(
+                IdempotentRideOccurrenceReorderStatus.Applied,
+                first,
+                true));
+        IReadOnlyList<RideOccurrence>? created = null;
+        occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                It.IsAny<IReadOnlyList<RideOccurrence>>(),
+                2048,
+                "request-1",
+                CancellationToken.None))
+            .Callback((
+                RideOccurrenceCreationRequest _,
+                IReadOnlyList<RideOccurrence> items,
+                long? _,
+                string _,
+                CancellationToken _) => created = items)
+            .ReturnsAsync(() => new IdempotentRideOccurrenceCreationResult(
+                IdempotentRideOccurrenceCreationStatus.Created,
+                created!));
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
+            CreateClock());
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(3072, Assert.Single(created!).SortPosition);
+        occurrences.VerifyAll();
+        visits.VerifyAll();
         targets.VerifyAll();
     }
 
@@ -184,10 +296,10 @@ public sealed class RideOccurrenceHandlersTests
             .ReturnsAsync(new IdempotentRideOccurrenceCreationResult(
                 IdempotentRideOccurrenceCreationStatus.Replayed,
                 new[] { occurrence }));
-        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
-            visits.Object,
-            occurrences.Object,
-            targets.Object,
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
             clock.Object);
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
@@ -222,10 +334,10 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
-        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
-            visits.Object,
-            occurrences.Object,
-            targets.Object,
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
@@ -280,10 +392,10 @@ public sealed class RideOccurrenceHandlersTests
                 CancellationToken _) => new IdempotentRideOccurrenceCreationResult(
                     IdempotentRideOccurrenceCreationStatus.Created,
                     created));
-        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
-            visits.Object,
-            occurrences.Object,
-            targets.Object,
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
@@ -665,6 +777,20 @@ public sealed class RideOccurrenceHandlersTests
                 CancellationToken.None))
             .ReturnsAsync(visit);
         return visits;
+    }
+
+    private static AddRideOccurrencesBatchCommandHandler CreateAddHandler(
+        Mock<IUserVisitRepository> visits,
+        Mock<IRideOccurrenceRepository> occurrences,
+        Mock<IVisitTargetResolver> targets,
+        IPassportClock clock)
+    {
+        return new AddRideOccurrencesBatchCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            new RideOccurrenceAppendOrderNormalizer(occurrences.Object, clock),
+            clock);
     }
 
     private static Mock<IVisitTargetResolver> CreateTargetResolver(VisitTarget target)

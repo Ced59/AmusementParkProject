@@ -12,6 +12,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
     private const string ReorderOperationKind = "reorder";
     private const string PendingOperationState = "pending";
     private const string CompletedOperationState = "completed";
+    private const string ConflictOperationState = "conflict";
 
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
@@ -137,6 +138,37 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         if (result.MatchedCount == 1)
         {
             operation.OperationState = state;
+            return true;
+        }
+
+        return false;
+    }
+
+    public async Task<bool> TrySetUnvalidatedReorderConflictAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
+            & filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Eq(static document => document.OrderGuardsValidated, false);
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update
+                .Set(static document => document.OperationState, ConflictOperationState)
+                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            update,
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        if (result.MatchedCount == 1)
+        {
+            operation.OperationState = ConflictOperationState;
             return true;
         }
 

@@ -111,6 +111,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
+        services.AddScoped<RideOccurrenceAppendOrderNormalizer>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkOpeningHoursSitemapSectionProvider>();
