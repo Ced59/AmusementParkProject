@@ -53,7 +53,7 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
     expect(styles).toContain('@media (max-width: 360px)');
   });
 
-  it('raises and restores the main stacking layer while the modal is open', async () => {
+  it('raises and restores the main stacking layer above fixed public toolbars while the modal is open', async () => {
     await TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent]
     })

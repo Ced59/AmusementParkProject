@@ -103,7 +103,10 @@
 }
 
 .app-layout-main.app-layout-main--modal-open {
-  z-index: 230;
+  // Keep an in-content dialog above every fixed navigation, admin toolbar and
+  // contextual drawer, while leaving the global dialog/toast layers (12000+)
+  // available for authentication and notifications.
+  z-index: 2000;
 }
 
 .app-public-layout__content,
