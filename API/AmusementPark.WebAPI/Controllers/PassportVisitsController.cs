@@ -24,6 +24,9 @@ namespace AmusementPark.WebAPI.Controllers;
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public sealed class PassportVisitsController : ControllerBase
 {
+    internal const string ForwardedPrefixHeaderName =
+        HttpRequestPublicPathExtensions.ForwardedPrefixHeaderName;
+
     private readonly ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>> createHandler;
     private readonly IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>> listHandler;
     private readonly IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>> getHandler;
@@ -71,10 +74,7 @@ public sealed class PassportVisitsController : ControllerBase
         }
 
         PassportVisitDto response = result.Value.Visit.ToHttp();
-        return this.CreatedAtAction(
-            nameof(GetByIdAsync),
-            new { visitId = response.Id },
-            response);
+        return this.Created(BuildVisitLocation(this.Request, response.Id), response);
     }
 
     [HttpGet]
@@ -131,5 +131,12 @@ public sealed class PassportVisitsController : ControllerBase
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())
             : this.ToActionResult(result);
+    }
+
+    internal static string BuildVisitLocation(HttpRequest request, string visitId)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        string escapedVisitId = Uri.EscapeDataString(visitId);
+        return $"{request.GetPublicPathPrefix()}/me/passport/visits/{escapedVisitId}";
     }
 }

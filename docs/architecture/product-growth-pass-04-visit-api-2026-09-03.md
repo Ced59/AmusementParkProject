@@ -16,6 +16,8 @@ GET  /api/me/passport/visits/{visitId}
 
 Le préfixe `/api` est fourni par le routage d'hébergement existant ; le contrôleur déclare `me/passport/visits`. Les trois opérations exigent un compte authentifié, activé et non bloqué, et répondent avec `Cache-Control: no-store`.
 
+La réponse `201` fournit une URI `Location` relative vers le détail. Sa construction réutilise le préfixe public validé (`X-Forwarded-Prefix` ou `PathBase`) afin de conserver `/api` lorsque Nginx le retire avant de transférer la requête à ASP.NET.
+
 Le corps public ne contient jamais `userId`. Le contrôleur le lit dans le claim authentifié, puis les handlers Application le transmettent au repository propriétaire. Une visite appartenant à un autre compte et une visite absente produisent le même `404 visit.not-found`.
 
 ## Création idempotente

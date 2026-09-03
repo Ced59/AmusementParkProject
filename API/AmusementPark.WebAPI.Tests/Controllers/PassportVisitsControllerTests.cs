@@ -39,15 +39,15 @@ public sealed class PassportVisitsControllerTests
                 new CreateVisitResult(CreateResult("visit-1"), false)));
         PassportVisitsController controller = CreateController(create.Object);
         controller.ControllerContext = CreateControllerContext("owner-1");
+        controller.Request.Headers[PassportVisitsController.ForwardedPrefixHeaderName] = "/api";
 
         IActionResult result = await controller.CreateAsync(
             CreateRequest(),
             "request-1",
             CancellationToken.None);
 
-        CreatedAtActionResult created = Assert.IsType<CreatedAtActionResult>(result);
-        Assert.Equal(nameof(PassportVisitsController.GetByIdAsync), created.ActionName);
-        Assert.Equal("visit-1", created.RouteValues?["visitId"]);
+        CreatedResult created = Assert.IsType<CreatedResult>(result);
+        Assert.Equal("/api/me/passport/visits/visit-1", created.Location);
         PassportVisitDto body = Assert.IsType<PassportVisitDto>(created.Value);
         Assert.Equal("visit-1", body.Id);
         Assert.Null(typeof(PassportVisitDto).GetProperty("UserId"));
@@ -72,8 +72,21 @@ public sealed class PassportVisitsControllerTests
             "request-1",
             CancellationToken.None);
 
-        Assert.IsType<CreatedAtActionResult>(result);
+        Assert.IsType<CreatedResult>(result);
         Assert.Equal("true", controller.Response.Headers["Idempotency-Replayed"]);
+    }
+
+    [Fact]
+    public void BuildVisitLocation_ShouldFallbackToPathBaseAndEscapeTheIdentifier()
+    {
+        DefaultHttpContext httpContext = new DefaultHttpContext();
+        httpContext.Request.PathBase = "/backend";
+
+        string result = PassportVisitsController.BuildVisitLocation(
+            httpContext.Request,
+            "visit 1");
+
+        Assert.Equal("/backend/me/passport/visits/visit%201", result);
     }
 
     [Fact]
