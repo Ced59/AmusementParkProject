@@ -416,6 +416,17 @@ public sealed class VisitTests
         Assert.Equal(VisitErrorCodes.TimeZoneIdControlCharacter, timeZone.ErrorCode);
     }
 
+    [Theory]
+    [InlineData("Titre\u2028ligne")]
+    [InlineData("Titre\u2029paragraphe")]
+    public void Create_WhenTitleContainsAUnicodeLineSeparator_ShouldRejectIt(string title)
+    {
+        VisitValidationException exception = Assert.Throws<VisitValidationException>(
+            () => CreateVisit(title: title));
+
+        Assert.Equal(VisitErrorCodes.TitleControlCharacter, exception.ErrorCode);
+    }
+
     [Fact]
     public void Create_WhenPrivateNoteContainsLineBreaks_ShouldPreserveThem()
     {

@@ -1,3 +1,4 @@
+using System.Globalization;
 using AmusementPark.Core.Domain.Identifiers;
 
 namespace AmusementPark.Core.Domain.Visits;
@@ -362,7 +363,9 @@ public sealed class Visit
 
         foreach (char character in normalizedValue)
         {
-            if (char.IsControl(character))
+            UnicodeCategory category = char.GetUnicodeCategory(character);
+            if (char.IsControl(character)
+                || category is UnicodeCategory.LineSeparator or UnicodeCategory.ParagraphSeparator)
             {
                 throw CreateValidationException(
                     VisitErrorCodes.TitleControlCharacter,
