@@ -38,6 +38,92 @@
       </button>
     </section>
   } @else if (facade.visit()) {
+    <section class="passport-assessment" appUiSurface="panel" aria-labelledby="passport-assessment-title">
+      <div class="passport-assessment__heading">
+        <div class="passport-assessment__icon" aria-hidden="true">
+          <i class="pi pi-star-fill"></i>
+        </div>
+        <div>
+          <h2 id="passport-assessment-title">{{ 'passport.editor.assessment.title' | translate }}</h2>
+          <p>{{ 'passport.editor.assessment.description' | translate }}</p>
+        </div>
+        <app-ui-chip tone="soft" iconClass="pi pi-lock">
+          {{ 'passport.editor.assessment.privateBadge' | translate }}
+        </app-ui-chip>
+      </div>
+
+      <div
+        class="passport-assessment__ratings"
+        role="radiogroup"
+        [attr.aria-label]="'passport.editor.assessment.ratingLabel' | translate">
+        @for (value of assessmentValues; track value) {
+          <button
+            type="button"
+            role="radio"
+            class="passport-assessment__rating"
+            [class.passport-assessment__rating--selected]="facade.assessmentDraft().value === value"
+            [attr.aria-checked]="facade.assessmentDraft().value === value"
+            [disabled]="facade.assessmentSaving()"
+            (click)="selectAssessmentValue(value)">
+            <i class="pi pi-star" aria-hidden="true"></i>
+            <span>{{ assessmentValueLabel(value) }}</span>
+          </button>
+        }
+      </div>
+
+      <label class="app-field passport-assessment__comment">
+        <span class="app-field__label">{{ 'passport.editor.assessment.commentLabel' | translate }}</span>
+        <textarea
+          rows="3"
+          maxlength="4000"
+          [value]="facade.assessmentDraft().privateComment"
+          [disabled]="facade.assessmentSaving()"
+          [placeholder]="'passport.editor.assessment.commentPlaceholder' | translate"
+          (input)="updateAssessmentComment($event)"></textarea>
+        <small>{{ 'passport.editor.assessment.commentHint' | translate }}</small>
+      </label>
+
+      @if (facade.assessmentErrorKey(); as assessmentErrorKey) {
+        <p class="passport-inline-message passport-inline-message--error" role="alert">
+          {{ assessmentErrorKey | translate }}
+        </p>
+      }
+
+      <div class="passport-assessment__actions">
+        <button
+          appUiButton="primary"
+          type="button"
+          [disabled]="!facade.assessmentCanSave()"
+          (click)="saveAssessment()">
+          @if (facade.assessmentSaving()) {
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            <span>{{ 'passport.editor.assessment.saving' | translate }}</span>
+          } @else {
+            <i class="pi pi-check" aria-hidden="true"></i>
+            <span>{{ 'passport.editor.assessment.save' | translate }}</span>
+          }
+        </button>
+
+        @if (facade.visit()?.parkAssessment) {
+          @if (assessmentDeleteConfirmation()) {
+            <div class="passport-assessment__delete-confirmation" role="group" [attr.aria-label]="'passport.editor.assessment.deleteConfirmation' | translate">
+              <span>{{ 'passport.editor.assessment.deleteConfirmation' | translate }}</span>
+              <button appUiButton="rose" type="button" [disabled]="facade.assessmentSaving()" (click)="confirmAssessmentDelete()">
+                {{ 'passport.editor.assessment.confirmDelete' | translate }}
+              </button>
+              <button appUiButton="ghost" type="button" [disabled]="facade.assessmentSaving()" (click)="cancelAssessmentDelete()">
+                {{ 'passport.editor.actions.cancel' | translate }}
+              </button>
+            </div>
+          } @else {
+            <button appUiButton="ghost" type="button" [disabled]="facade.assessmentSaving()" (click)="requestAssessmentDelete()">
+              {{ 'passport.editor.assessment.delete' | translate }}
+            </button>
+          }
+        }
+      </div>
+    </section>
+
     <div class="passport-editor__workspace">
       <section class="passport-panel passport-selector" appUiSurface="panel" aria-labelledby="passport-selector-title">
         <div class="passport-panel__heading">

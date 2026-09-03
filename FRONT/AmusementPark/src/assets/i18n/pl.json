@@ -88,6 +88,29 @@
       "title": "Uzupełnij swoją wizytę",
       "private": "Prywatne",
       "loading": "Wczytywanie wizyty…",
+      "assessment": {
+        "title": "Twoje wrażenia z tego parku",
+        "description": "Oceń tę konkretną wizytę od 0,5 do 5. Ta obserwacja pozostaje prywatna i nigdy nie zmienia oceny ani rankingów społeczności.",
+        "privateBadge": "Prywatna obserwacja",
+        "ratingLabel": "Ocena parku dla tej wizyty",
+        "commentLabel": "Opcjonalny prywatny komentarz",
+        "commentPlaceholder": "Co szczególnie zapadło ci w pamięć…",
+        "commentHint": "Tylko ty możesz przeczytać ten komentarz. Maksymalnie 4000 znaków.",
+        "save": "Zapisz moje wrażenia",
+        "saving": "Zapisywanie…",
+        "delete": "Usuń moje wrażenia",
+        "deleteConfirmation": "Trwale usunąć ocenę i komentarz dotyczące tej wizyty?",
+        "confirmDelete": "Potwierdź usunięcie",
+        "saved": "Twoje wrażenia z tej wizyty zostały zapisane.",
+        "deleted": "Twoje wrażenia z tej wizyty zostały usunięte.",
+        "errors": {
+          "invalidValue": "Wybierz ocenę od 0,5 do 5 z dokładnością do pół punktu.",
+          "commentTooLong": "Prywatny komentarz nie może przekraczać 4000 znaków.",
+          "conflict": "Ta wizyta została w międzyczasie zmieniona. Wczytano jej aktualny stan; sprawdź wpis przed ponowną próbą.",
+          "recovery": "Nie udało się sprawdzić, czy zmiana została zapisana. Twój wpis pozostał dostępny; spróbuj ponownie za chwilę.",
+          "save": "Nie udało się zapisać twoich wrażeń. Twój wpis pozostał dostępny."
+        }
+      },
       "actions": {
         "back": "Wróć do profilu",
         "retry": "Spróbuj ponownie",

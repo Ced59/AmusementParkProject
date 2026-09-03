@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
@@ -23,6 +24,7 @@ internal static class UserVisitMongoMapper
             Privacy = visit.Privacy,
             Title = visit.Title,
             PrivateNote = visit.PrivateNote,
+            ParkAssessment = visit.ParkAssessment?.ToDocument(),
             Version = visit.Version,
             CreatedAt = ToMongoPrecision(visit.CreatedAtUtc),
             UpdatedAt = ToMongoPrecision(visit.UpdatedAtUtc),
@@ -78,7 +80,8 @@ internal static class UserVisitMongoMapper
             document.Version,
             document.CreatedAt,
             document.UpdatedAt,
-            document.CompletedAtUtc);
+            document.CompletedAtUtc,
+            document.ParkAssessment?.ToDomain());
     }
 
     public static Visit CreationSnapshotToDomain(this UserVisitDocument document)
@@ -115,6 +118,30 @@ internal static class UserVisitMongoMapper
             Precision = date.Precision,
             IsApproximate = date.IsApproximate,
         };
+    }
+
+    private static UserVisitParkAssessmentDocument ToDocument(
+        this VisitParkAssessment assessment)
+    {
+        return new UserVisitParkAssessmentDocument
+        {
+            ValueHalfSteps = assessment.Value.HalfSteps,
+            PrivateComment = assessment.PrivateComment,
+            Revision = assessment.Revision,
+            CreatedAtUtc = ToMongoPrecision(assessment.CreatedAtUtc),
+            UpdatedAtUtc = ToMongoPrecision(assessment.UpdatedAtUtc),
+        };
+    }
+
+    private static VisitParkAssessment ToDomain(
+        this UserVisitParkAssessmentDocument document)
+    {
+        return VisitParkAssessment.Restore(
+            RatingValue.FromHalfSteps(document.ValueHalfSteps),
+            document.PrivateComment,
+            document.Revision,
+            document.CreatedAtUtc,
+            document.UpdatedAtUtc);
     }
 
     private static VisitDate ToDomain(this VisitDateDocument document)

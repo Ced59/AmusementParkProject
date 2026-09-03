@@ -27,6 +27,12 @@ public interface IUserVisitRepository
         UserVisitListCriteria criteria,
         CancellationToken cancellationToken);
 
+    Task<bool> TryConfirmOwnedVersionAsync(
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
     Task<bool> TryUpdateOwnedAsync(
         Visit visit,
         long expectedVersion,

@@ -71,6 +71,16 @@ internal static class PassportVisitHttpMappers
             Privacy = (PassportVisitPrivacyDto)result.Privacy,
             Title = result.Title,
             PrivateNote = result.PrivateNote,
+            ParkAssessment = result.ParkAssessment is null
+                ? null
+                : new PassportVisitParkAssessmentDto
+                {
+                    Value = result.ParkAssessment.Value,
+                    PrivateComment = result.ParkAssessment.PrivateComment,
+                    Revision = result.ParkAssessment.Revision,
+                    CreatedAtUtc = result.ParkAssessment.CreatedAtUtc,
+                    UpdatedAtUtc = result.ParkAssessment.UpdatedAtUtc,
+                },
             Version = result.Version,
             CreatedAtUtc = result.CreatedAtUtc,
             UpdatedAtUtc = result.UpdatedAtUtc,

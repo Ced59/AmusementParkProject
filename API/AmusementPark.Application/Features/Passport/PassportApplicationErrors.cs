@@ -109,6 +109,25 @@ public static class PassportApplicationErrors
         return ApplicationError.Validation(code, message);
     }
 
+    public static ApplicationError InvalidVisitParkAssessment(string code, string message)
+    {
+        return ApplicationError.Validation(code, message);
+    }
+
+    public static ApplicationError InvalidVisitParkAssessmentVersion()
+    {
+        return ApplicationError.Validation(
+            "visit-park-assessment.version-invalid",
+            "La version de la visite doit être positive.");
+    }
+
+    public static ApplicationError VisitParkAssessmentConcurrencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "visit-park-assessment.version-conflict",
+            "La visite ou son évaluation a changé. Recharge la visite avant de réessayer.");
+    }
+
     public static ApplicationError InvalidRideOccurrenceBatch()
     {
         return ApplicationError.Validation(

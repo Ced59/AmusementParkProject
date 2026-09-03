@@ -17,6 +17,11 @@ export interface PassportVisitEditorZone {
   name: string;
 }
 
+export interface PassportVisitParkAssessmentDraft {
+  value: number | null;
+  privateComment: string;
+}
+
 export interface PassportAttractionSelectionDraft {
   parkItemId: string;
   attractionName: string;

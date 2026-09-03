@@ -1,6 +1,20 @@
 {
-  "version": "5.0.10",
+  "version": "5.0.11",
   "history": [
+    {
+      "version": "5.0.11",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Une note privée peut maintenant accompagner chaque visite de parc.",
+        "en": "A private rating can now accompany each park visit.",
+        "de": "Jeder Parkbesuch kann jetzt eine private Bewertung enthalten.",
+        "nl": "Elk parkbezoek kan nu een privébeoordeling bevatten.",
+        "it": "Ogni visita al parco può ora includere una valutazione privata.",
+        "es": "Cada visita al parque puede incluir ahora una valoración privada.",
+        "pl": "Każda wizyta w parku może teraz zawierać prywatną ocenę.",
+        "pt": "Cada visita ao parque pode agora incluir uma avaliação privada."
+      }
+    },
     {
       "version": "5.0.10",
       "releasedAt": "2026-09-03",

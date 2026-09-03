@@ -138,6 +138,81 @@ public sealed class UserVisitRepositoryTests
     }
 
     [Fact]
+    public async Task TryUpdateOwnedAsync_ShouldWriteTheAssessmentWithTheParentVersionAtomically()
+    {
+        Mock<IMongoCollection<UserVisitDocument>> collection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        UpdateDefinition<UserVisitDocument>? capturedUpdate = null;
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> _,
+                UpdateDefinition<UserVisitDocument> update,
+                UpdateOptions _,
+                CancellationToken _) => capturedUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserVisitRepository repository = CreateRepository(collection.Object);
+        Visit visit = CreateDraftVisit();
+        visit.UpsertParkAssessment(
+            AmusementPark.Core.Domain.Ratings.RatingValue.FromDouble(4.5d),
+            "Souvenir privé",
+            NowUtc.AddMinutes(1));
+
+        bool updated = await repository.TryUpdateOwnedAsync(visit, 1, CancellationToken.None);
+
+        Assert.True(updated);
+        Assert.NotNull(capturedUpdate);
+        BsonDocument renderedUpdate = Render(capturedUpdate);
+        BsonDocument set = renderedUpdate["$set"].AsBsonDocument;
+        Assert.Equal(2, set["version"].AsInt64);
+        Assert.Equal(9, set["parkAssessment"]["valueHalfSteps"].AsInt32);
+        Assert.Equal(1, set["parkAssessment"]["revision"].AsInt32);
+        collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryConfirmOwnedVersionAsync_ShouldFenceANoOpWithoutIncrementingVersion()
+    {
+        Mock<IMongoCollection<UserVisitDocument>> collection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        FilterDefinition<UserVisitDocument>? capturedFilter = null;
+        UpdateDefinition<UserVisitDocument>? capturedUpdate = null;
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> filter,
+                UpdateDefinition<UserVisitDocument> update,
+                UpdateOptions options,
+                CancellationToken _) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+                Assert.False(options.IsUpsert);
+            })
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 0, null));
+        UserVisitRepository repository = CreateRepository(collection.Object);
+
+        bool confirmed = await repository.TryConfirmOwnedVersionAsync(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            3,
+            CancellationToken.None);
+
+        Assert.True(confirmed);
+        Assert.Equal(3, Render(capturedFilter!)["version"].AsInt64);
+        BsonDocument set = Render(capturedUpdate!)["$set"].AsBsonDocument;
+        Assert.Equal(3, set["version"].AsInt64);
+        Assert.Single(set);
+        collection.VerifyAll();
+    }
+
+    [Fact]
     public async Task TryDeleteOwnedAsync_ShouldRequireOwnerAndCurrentVersion()
     {
         Mock<IMongoCollection<UserVisitDocument>> collection =

@@ -80,6 +80,29 @@
       "title": "Completa tu visita",
       "private": "Privado",
       "loading": "Cargando tu visita…",
+      "assessment": {
+        "title": "Tu impresión de este parque",
+        "description": "Valora esta visita concreta de 0,5 a 5. Esta observación sigue siendo privada y nunca modifica la valoración ni las clasificaciones de la comunidad.",
+        "privateBadge": "Observación privada",
+        "ratingLabel": "Valoración del parque para esta visita",
+        "commentLabel": "Comentario privado opcional",
+        "commentPlaceholder": "Lo que más te marcó de esta visita…",
+        "commentHint": "Solo tú puedes leer este comentario. Máximo 4.000 caracteres.",
+        "save": "Guardar mi impresión",
+        "saving": "Guardando…",
+        "delete": "Eliminar mi impresión",
+        "deleteConfirmation": "¿Eliminar definitivamente la valoración y el comentario de esta visita?",
+        "confirmDelete": "Confirmar eliminación",
+        "saved": "Tu impresión de esta visita se ha guardado.",
+        "deleted": "Tu impresión de esta visita se ha eliminado.",
+        "errors": {
+          "invalidValue": "Elige una valoración de 0,5 a 5 en intervalos de medio punto.",
+          "commentTooLong": "El comentario privado no puede superar los 4.000 caracteres.",
+          "conflict": "Esta visita ha cambiado mientras tanto. Se ha recargado su estado actual; comprueba tu entrada antes de volver a intentarlo.",
+          "recovery": "No se ha podido comprobar si el cambio se guardó. Tu entrada sigue disponible; inténtalo de nuevo en un momento.",
+          "save": "No se ha podido guardar tu impresión. Tu entrada sigue disponible."
+        }
+      },
       "actions": {
         "back": "Volver al perfil",
         "retry": "Volver a intentar",

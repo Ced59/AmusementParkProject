@@ -80,6 +80,29 @@
       "title": "Ergänze deinen Besuch",
       "private": "Privat",
       "loading": "Dein Besuch wird geladen…",
+      "assessment": {
+        "title": "Dein Eindruck von diesem Park",
+        "description": "Bewerte genau diesen Besuch von 0,5 bis 5. Diese Beobachtung bleibt privat und verändert weder die Community-Bewertung noch die Ranglisten.",
+        "privateBadge": "Private Beobachtung",
+        "ratingLabel": "Parkbewertung für diesen Besuch",
+        "commentLabel": "Optionaler privater Kommentar",
+        "commentPlaceholder": "Was diesen Besuch besonders gemacht hat…",
+        "commentHint": "Nur du kannst diesen Kommentar lesen. Maximal 4.000 Zeichen.",
+        "save": "Meinen Eindruck speichern",
+        "saving": "Wird gespeichert…",
+        "delete": "Meinen Eindruck löschen",
+        "deleteConfirmation": "Bewertung und Kommentar für diesen Besuch endgültig löschen?",
+        "confirmDelete": "Löschen bestätigen",
+        "saved": "Dein Eindruck zu diesem Besuch wurde gespeichert.",
+        "deleted": "Dein Eindruck zu diesem Besuch wurde gelöscht.",
+        "errors": {
+          "invalidValue": "Wähle eine Bewertung von 0,5 bis 5 in Halbpunkt-Schritten.",
+          "commentTooLong": "Der private Kommentar darf höchstens 4.000 Zeichen lang sein.",
+          "conflict": "Dieser Besuch wurde inzwischen geändert. Der aktuelle Stand wurde geladen; prüfe deine Eingabe und versuche es erneut.",
+          "recovery": "Es konnte nicht geprüft werden, ob die Änderung gespeichert wurde. Deine Eingabe bleibt erhalten; versuche es gleich noch einmal.",
+          "save": "Dein Eindruck konnte nicht gespeichert werden. Deine Eingabe bleibt erhalten."
+        }
+      },
       "actions": {
         "back": "Zurück zum Profil",
         "retry": "Erneut versuchen",

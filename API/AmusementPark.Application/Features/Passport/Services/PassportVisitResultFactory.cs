@@ -27,6 +27,14 @@ internal static class PassportVisitResultFactory
             visit.Version,
             visit.CreatedAtUtc,
             visit.UpdatedAtUtc,
-            visit.CompletedAtUtc);
+            visit.CompletedAtUtc,
+            visit.ParkAssessment is null
+                ? null
+                : new VisitParkAssessmentResult(
+                    visit.ParkAssessment.Value.DoubleValue,
+                    visit.ParkAssessment.PrivateComment,
+                    visit.ParkAssessment.Revision,
+                    visit.ParkAssessment.CreatedAtUtc,
+                    visit.ParkAssessment.UpdatedAtUtc));
     }
 }
