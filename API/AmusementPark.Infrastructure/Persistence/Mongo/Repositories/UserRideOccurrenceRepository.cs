@@ -1072,6 +1072,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 await this.operationCollection.InsertOneAsync(
                     requested,
                     cancellationToken: cancellationToken);
+                bool normalizationSignalPersisted =
+                    await this.EnsureCreationNormalizationSignalAsync(
+                        requested,
+                        visitId,
+                        cancellationToken);
+                if (!normalizationSignalPersisted)
+                {
+                    return null;
+                }
+
                 return (requested, true);
             }
             catch (MongoWriteException retryException)
