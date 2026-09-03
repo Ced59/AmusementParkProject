@@ -55,6 +55,14 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 cancellationToken);
             if (visit is null || visit.Status != VisitStatus.Draft)
             {
+                if (await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                    candidate,
+                    this.clock.UtcNow,
+                    cancellationToken))
+                {
+                    reconciledCount++;
+                }
+
                 continue;
             }
 
@@ -70,10 +78,14 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
 
             await using (contentMutationLease)
             {
-                bool reconciled =
-                    await this.occurrenceRepository.TryCompletePendingMutationAsync(
-                        candidate.UserId,
-                        candidate.VisitId,
+                bool canRecover = CanRecover(candidate, visit);
+                bool reconciled = canRecover
+                    ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
+                        candidate,
+                        cancellationToken)
+                    : await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                        candidate,
+                        this.clock.UtcNow,
                         cancellationToken);
                 if (reconciled)
                 {
@@ -83,5 +95,22 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
         }
 
         return reconciledCount;
+    }
+
+    private static bool CanRecover(
+        PendingPassportMutationVisit candidate,
+        Visit visit)
+    {
+        return candidate.Kind switch
+        {
+            PendingPassportMutationKind.Creation =>
+                candidate.CreationPreparation is not null
+                && RideOccurrenceCreationPreparationVisitGuard.Matches(
+                    candidate.CreationPreparation,
+                    visit),
+            PendingPassportMutationKind.Reorder => true,
+            PendingPassportMutationKind.Delete => true,
+            _ => false,
+        };
     }
 }

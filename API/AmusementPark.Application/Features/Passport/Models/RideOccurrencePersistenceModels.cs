@@ -26,9 +26,20 @@ public sealed record RideOccurrenceAppendState(
     long? LastSortPosition,
     bool WasNormalizedForOperation);
 
+public enum PendingPassportMutationKind
+{
+    Unknown = 0,
+    Creation = 1,
+    Reorder = 2,
+    Delete = 3,
+}
+
 public sealed record PendingPassportMutationVisit(
     string UserId,
-    VisitId VisitId);
+    VisitId VisitId,
+    string OperationKeyHash,
+    PendingPassportMutationKind Kind,
+    RideOccurrenceCreationPreparation? CreationPreparation);
 
 public sealed record RideOccurrenceCreationRequestItem(
     string ParkItemId,

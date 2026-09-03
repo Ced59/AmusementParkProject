@@ -14,8 +14,12 @@ public interface IRideOccurrenceRepository
             CancellationToken cancellationToken);
 
     Task<bool> TryCompletePendingMutationAsync(
-        string userId,
-        VisitId visitId,
+        PendingPassportMutationVisit mutation,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryRejectPendingMutationAsync(
+        PendingPassportMutationVisit mutation,
+        DateTime rejectedAtUtc,
         CancellationToken cancellationToken);
 
     Task<RideOccurrenceCreationKeyReservationResult>

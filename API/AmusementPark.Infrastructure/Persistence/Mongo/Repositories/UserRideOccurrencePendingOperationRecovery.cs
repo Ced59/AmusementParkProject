@@ -63,6 +63,79 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             return true;
         }
 
+        return await this.TryCompleteAsync(
+            pending,
+            resumeReorderAsync,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryCompleteOperationAsync(
+        string userId,
+        VisitId visitId,
+        string operationKeyHash,
+        Func<UserRideOccurrenceCreationOperationDocument,
+            RideOccurrenceReorderRequest,
+            CancellationToken,
+            Task<IdempotentRideOccurrenceReorderResult>> resumeReorderAsync,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(resumeReorderAsync);
+        UserRideOccurrenceCreationOperationDocument? pending =
+            await this.LoadPendingOperationAsync(
+                userId,
+                visitId,
+                operationKeyHash,
+                cancellationToken);
+        if (pending is null)
+        {
+            return true;
+        }
+
+        return await this.TryCompleteAsync(
+            pending,
+            resumeReorderAsync,
+            cancellationToken);
+    }
+
+    public async Task<bool> TrySetPendingConflictAsync(
+        string userId,
+        VisitId visitId,
+        string operationKeyHash,
+        DateTime conflictedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        if (conflictedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The pending mutation conflict timestamp must be UTC.",
+                nameof(conflictedAtUtc));
+        }
+
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                userId,
+                operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value)
+            & filters.Eq(static document => document.OperationState, PendingOperationState);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            BuildStateUpdate(ConflictOperationState, conflictedAtUtc),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    private async Task<bool> TryCompleteAsync(
+        UserRideOccurrenceCreationOperationDocument pending,
+        Func<UserRideOccurrenceCreationOperationDocument,
+            RideOccurrenceReorderRequest,
+            CancellationToken,
+            Task<IdempotentRideOccurrenceReorderResult>> resumeReorderAsync,
+        CancellationToken cancellationToken)
+    {
+
         if (string.Equals(
             pending.OperationKind,
             CreationOperationKind,
@@ -71,6 +144,16 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             return await this.TryCompleteCreationAsync(
                 pending,
                 cancellationToken);
+        }
+
+        VisitId pendingVisitId;
+        try
+        {
+            pendingVisitId = VisitId.Parse(pending.VisitId ?? string.Empty);
+        }
+        catch (ArgumentException)
+        {
+            return false;
         }
 
         if (string.Equals(
@@ -82,9 +165,10 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                 pending,
                 cancellationToken);
             UserRideOccurrenceCreationOperationDocument? stillPendingDelete =
-                await this.LoadPendingVisitOperationAsync(
-                    userId,
-                    visitId,
+                await this.LoadPendingOperationAsync(
+                    pending.UserId,
+                    pendingVisitId,
+                    pending.OperationKeyHash,
                     cancellationToken);
             return stillPendingDelete is null;
         }
@@ -96,9 +180,10 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
 
         _ = await resumeReorderAsync(pending, request, cancellationToken);
         UserRideOccurrenceCreationOperationDocument? stillPending =
-            await this.LoadPendingVisitOperationAsync(
-                userId,
-                visitId,
+            await this.LoadPendingOperationAsync(
+                pending.UserId,
+                pendingVisitId,
+                pending.OperationKeyHash,
                 cancellationToken);
         return stillPending is null;
     }
@@ -419,6 +504,26 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildPendingVisitFilter(
                 userId,
                 visitId.Value))
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    private async Task<UserRideOccurrenceCreationOperationDocument?>
+        LoadPendingOperationAsync(
+            string userId,
+            VisitId visitId,
+            string operationKeyHash,
+            CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                userId,
+                operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value)
+            & filters.Eq(static document => document.OperationState, PendingOperationState);
+        return await this.operationCollection
+            .Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
     }
 

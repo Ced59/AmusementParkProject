@@ -23,6 +23,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private const string ReorderOperationKind = "reorder";
 
+    private const string DeleteOperationKind = "delete";
+
     private const string PendingOperationState = "pending";
 
     private const string CompletedOperationState = "completed";
@@ -109,21 +111,57 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 continue;
             }
 
-            candidates.Add(new PendingPassportMutationVisit(operation.UserId, visitId));
+            PendingPassportMutationKind kind = operation.OperationKind switch
+            {
+                CreationOperationKind => PendingPassportMutationKind.Creation,
+                ReorderOperationKind => PendingPassportMutationKind.Reorder,
+                DeleteOperationKind => PendingPassportMutationKind.Delete,
+                _ => PendingPassportMutationKind.Unknown,
+            };
+            RideOccurrenceCreationPreparation? preparation = null;
+            if (kind == PendingPassportMutationKind.Creation)
+            {
+                _ = TryCreatePreparation(
+                    operation.CreationPreparation,
+                    operation.Items.Count,
+                    out preparation);
+            }
+
+            candidates.Add(new PendingPassportMutationVisit(
+                operation.UserId,
+                visitId,
+                operation.OperationKeyHash,
+                kind,
+                preparation));
         }
 
         return candidates;
     }
 
     public Task<bool> TryCompletePendingMutationAsync(
-        string userId,
-        VisitId visitId,
+        PendingPassportMutationVisit mutation,
         CancellationToken cancellationToken)
     {
-        return this.pendingOperationRecovery.TryCompleteVisitAsync(
-            userId,
-            visitId,
+        ArgumentNullException.ThrowIfNull(mutation);
+        return this.pendingOperationRecovery.TryCompleteOperationAsync(
+            mutation.UserId,
+            mutation.VisitId,
+            mutation.OperationKeyHash,
             this.ResumeReservedReorderAsync,
+            cancellationToken);
+    }
+
+    public Task<bool> TryRejectPendingMutationAsync(
+        PendingPassportMutationVisit mutation,
+        DateTime rejectedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(mutation);
+        return this.pendingOperationRecovery.TrySetPendingConflictAsync(
+            mutation.UserId,
+            mutation.VisitId,
+            mutation.OperationKeyHash,
+            rejectedAtUtc,
             cancellationToken);
     }
 

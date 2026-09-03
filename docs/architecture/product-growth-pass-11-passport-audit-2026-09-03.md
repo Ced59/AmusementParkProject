@@ -45,7 +45,7 @@ Les constructeurs publics des handlers de mutation exigent `IPassportAuditPublis
 
 Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. Son bail Mongo est acquis sur l'identité propriétaire, la version et le statut `Draft` de la visite. Toute mutation directe de la visite exige en retour l'absence d'un bail actif. Cette exclusion distribuée ferme la course entre une écriture de contenu et `Complete`/`Archive`, y compris avec plusieurs processus API. Un bail abandonné devient récupérable après cinq minutes ; les commandes normales sont bornées très en dessous de cette durée.
 
-L'acquisition et la validation `Draft` précèdent aussi toute reprise d'une opération idempotente de création ou de réordonnancement : un retry ne peut donc pas relancer une écriture réservée après la clôture de la visite. Une correction de date, précision, fuseau ou convention de journée acquiert le même bail avant de vérifier l'absence d'occurrences, puis écrit la visite avec un filtre exigeant le token exact de ce bail. Aucune création ne peut donc se glisser entre le contrôle et l'écriture. La correction est refusée lorsque des occurrences existent : c'est la barrière conservatrice retenue tant qu'une opération dédiée de revalidation atomique des enfants n'existe pas. Le titre, la note privée et le caractère approximatif restent corrigeables sans altérer leur chronologie.
+L'acquisition et la validation `Draft` précèdent aussi toute reprise d'une opération idempotente de création ou de réordonnancement : un retry ne peut donc pas relancer une écriture réservée après la clôture de la visite. Une création réservée conserve en outre l'identité temporelle utilisée pour valider ses occurrences — parc, date avec sa précision, fuseau et convention de journée. Cette identité doit encore correspondre à la visite rechargée sous bail ; sinon l'opération exacte devient `conflict`, ses marqueurs sont retirés et aucun ancien instant local n'est appliqué. Le même contrôle protège le retry interactif. Une correction de date, précision, fuseau ou convention de journée acquiert le même bail avant de vérifier l'absence d'occurrences, puis écrit la visite avec un filtre exigeant le token exact de ce bail. Aucune création ne peut donc se glisser entre le contrôle et l'écriture. La correction est refusée lorsque des occurrences existent : c'est la barrière conservatrice retenue tant qu'une opération dédiée de revalidation atomique des enfants n'existe pas. Le titre, la note privée et le caractère approximatif restent corrigeables sans altérer leur chronologie.
 
 ## 3. Modèle MongoDB
 
@@ -188,7 +188,7 @@ sequenceDiagram
     R->>S: acquitte le marqueur
 ```
 
-Le service exécute un premier lot au démarrage puis au maximum un lot de 50 opérations et un lot de 50 événements par minute. Pour chaque opération, l'orchestrateur Application recharge la visite propriétaire, exige son statut `Draft`, puis acquiert le même bail distribué que les mutations interactives. Sous cette barrière seulement, il termine les créations, suppressions et réordonnancements dont l'état métier a été appliqué avant l'acquittement de leur opération idempotente. Une opération ainsi confirmée devient `completed` et ses preuves deviennent publiables ; une opération compensée ou terminée en conflit perd ses marqueurs, puisqu'aucune mutation nette ne doit être journalisée. Le scan d'événements intervient seulement ensuite.
+Le service exécute un premier lot au démarrage puis au maximum un lot de 50 opérations et un lot de 50 événements par minute. Pour chaque opération, l'orchestrateur Application recharge la visite propriétaire. Une visite absente, terminée ou archivée fait passer l'opération exacte en `conflict` et retire ses marqueurs : ces entrées terminales ne peuvent donc pas saturer durablement le lot borné. Pour une visite `Draft`, le service acquiert le même bail distribué que les mutations interactives, puis compare l'éventuelle identité temporelle réservée. Sous cette barrière seulement, il termine les créations, suppressions et réordonnancements dont l'état métier a été appliqué avant l'acquittement de leur opération idempotente. La clé opaque remontée par le scan borne la reprise et l'abandon au document Mongo observé ; une opération plus récente de la même visite ne peut pas être touchée par erreur. Une opération ainsi confirmée devient `completed` et ses preuves deviennent publiables ; une opération compensée ou terminée en conflit perd ses marqueurs, puisqu'aucune mutation nette ne doit être journalisée. Le scan d'événements intervient seulement ensuite.
 
 Chaque recherche s'appuie directement sur l'index multikey partiel `pendingAuditEvents.eventId`. L'ordre des opérations est borné et déterministe ; l'ordre de publication des preuves est stabilisé en mémoire. Le worker ne parcourt donc pas les documents dépourvus de marqueur et traite les reprises séquentiellement pour préserver le budget du VPS.
 
@@ -234,6 +234,8 @@ sequenceDiagram
 | compensation ou conflit d'un réordonnancement | restauré ou inchangé | marqueurs supprimés de l'opération terminale, donc aucune fausse preuve publiée |
 | contenu et changement de statut concurrents | une seule mutation franchit son write fence | preuve produite uniquement pour la mutation gagnante |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail récupérable après cinq minutes, marqueur d'audit repris séparément |
+| création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée | opération exacte en conflit, marqueurs retirés |
+| opération pendante après clôture ou disparition de la visite | aucune reprise de contenu verrouillé | opération terminalisée, sans famine des lots suivants |
 
 L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classements. Il reste une preuve privée de correction, pas une source de calcul produit.
 
@@ -244,12 +246,12 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - handlers : marqueur persisté avant tentative de publication ;
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
 - exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, mutations de visite bloquées pendant un bail actif ;
-- cohérence temporelle : reprise idempotente sous bail, contrôle d'absence et écriture sous le même token, refus des changements temporels d'une visite qui contient déjà des occurrences ;
+- cohérence temporelle : reprise idempotente sous bail, identité réservée comparée à la visite courante, contrôle d'absence et écriture sous le même token, refus des changements temporels d'une visite qui contient déjà des occurrences ;
 - repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;
-- background service : lancement immédiat, reprise des opérations avant les preuves et tailles de lots fixées à 50 ;
+- background service : lancement immédiat, reprise ou abandon terminal de l'opération exacte avant les preuves, ordre stable au sein du lot borné, et tailles de lots fixées à 50 ;
 - non-régression : suites Passport Application et persistance Mongo existantes ;
 - frontend : mapper sans précision ou convention de journée inventée, saisie conservée après conflit, ports HTTP, réconciliation après réponse réseau perdue, template Angular compilé et tests Passport ciblés ;
 

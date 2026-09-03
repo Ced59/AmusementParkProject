@@ -596,6 +596,72 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
+    public async Task AddBatch_WithStaleReservedVisitIdentity_ShouldRejectUnderLease()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        RideOccurrenceCreationPreparation stalePreparation =
+            new RideOccurrenceCreationPreparation(
+                visit.ParkId,
+                VisitDate.ForDay(2026, 9, 2),
+                visit.TimeZoneId,
+                visit.ServiceDayConvention,
+                new[] { HistoricalConsistency.Verified });
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        occurrences.Setup(repository => repository.ResolveBatchCreationKeyReservationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync(new RideOccurrenceCreationKeyReservationResult(
+                RideOccurrenceCreationKeyReservationStatus.Replayed,
+                stalePreparation));
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc.AddMinutes(1));
+        leases.Setup(value => value.TryAcquireAsync(
+                visit,
+                NowUtc.AddMinutes(1),
+                CancellationToken.None))
+            .ReturnsAsync(lease.Object);
+        lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
+        AddRideOccurrencesBatchCommandHandler handler =
+            new AddRideOccurrencesBatchCommandHandler(
+                visits.Object,
+                occurrences.Object,
+                targets.Object,
+                new RideOccurrenceAppendOrderNormalizer(occurrences.Object, clock.Object),
+                clock.Object,
+                audit.Object,
+                leases.Object);
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("ride-occurrence.version-conflict", Assert.Single(result.Errors).Code);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        targets.VerifyNoOtherCalls();
+        audit.VerifyNoOtherCalls();
+        leases.VerifyAll();
+        lease.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task AddBatch_WithCertainHistoricalConflict_ShouldRequireExplicitConfirmation()
     {
         Visit visit = CreateVisit();

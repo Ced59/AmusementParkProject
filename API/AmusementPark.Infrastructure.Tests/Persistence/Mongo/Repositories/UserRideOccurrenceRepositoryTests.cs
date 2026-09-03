@@ -2521,6 +2521,27 @@ public sealed class UserRideOccurrenceRepositoryTests
                 VisitId = "visit-1",
                 AppendBaseWasEmpty = true,
                 AppendBaseValidated = true,
+                CreationPreparation = new UserRideOccurrenceCreationPreparationDocument
+                {
+                    ParkId = "park-1",
+                    VisitDate = new VisitDateDocument
+                    {
+                        Year = 2026,
+                        Month = 9,
+                        Day = 3,
+                        Precision = VisitDatePrecision.Day,
+                    },
+                    TimeZoneId = "Europe/Paris",
+                    ServiceDayConvention = LocalServiceDayConvention.VisitStartLocalDate,
+                    Items = new List<UserRideOccurrenceCreationPreparationItemDocument>
+                    {
+                        new UserRideOccurrenceCreationPreparationItemDocument
+                        {
+                            Index = 0,
+                            HistoricalConsistency = HistoricalConsistency.Verified,
+                        },
+                    },
+                },
                 Items = new List<UserRideOccurrenceCreationAllocationDocument>
                 {
                     new UserRideOccurrenceCreationAllocationDocument
@@ -2581,13 +2602,16 @@ public sealed class UserRideOccurrenceRepositoryTests
             CancellationToken.None);
         PendingPassportMutationVisit candidate = Assert.Single(candidates);
         bool reconciled = await repository.TryCompletePendingMutationAsync(
-            candidate.UserId,
-            candidate.VisitId,
+            candidate,
             CancellationToken.None);
 
         Assert.True(reconciled);
         Assert.Equal("user-1", candidate.UserId);
         Assert.Equal("visit-1", candidate.VisitId.Value);
+        Assert.Equal(operationKeyHash, candidate.OperationKeyHash);
+        Assert.Equal(PendingPassportMutationKind.Creation, candidate.Kind);
+        Assert.NotNull(candidate.CreationPreparation);
+        Assert.Equal(VisitDate.ForDay(2026, 9, 3), candidate.CreationPreparation.VisitDate);
         Assert.Equal("completed", operation.OperationState);
         Assert.NotNull(stateUpdate);
         Assert.Equal("completed", Render(stateUpdate)["$set"]["operationState"].AsString);
@@ -2596,6 +2620,62 @@ public sealed class UserRideOccurrenceRepositoryTests
         scanCursor.VerifyAll();
         pendingCursor.VerifyAll();
         occurrenceCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RejectPendingMutation_ShouldFenceExactOperationAndClearAuditMarkers()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument>? capturedFilter = null;
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument>? capturedUpdate = null;
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter,
+                UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update,
+                UpdateOptions _,
+                CancellationToken _) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+            })
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        PendingPassportMutationVisit mutation = new PendingPassportMutationVisit(
+            "user-1",
+            VisitId.Parse("visit-1"),
+            "operation-hash",
+            PendingPassportMutationKind.Creation,
+            null);
+
+        bool rejected = await repository.TryRejectPendingMutationAsync(
+            mutation,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.True(rejected);
+        Assert.NotNull(capturedFilter);
+        BsonDocument filter = Render(capturedFilter);
+        Assert.Equal("user-1", filter["userId"].AsString);
+        Assert.Equal("visit-1", filter["visitId"].AsString);
+        Assert.Equal("operation-hash", filter["operationKeyHash"].AsString);
+        Assert.Equal("pending", filter["operationState"].AsString);
+        Assert.NotNull(capturedUpdate);
+        BsonDocument update = Render(capturedUpdate);
+        Assert.Equal("conflict", update["$set"]["operationState"].AsString);
+        Assert.Equal(NowUtc, update["$set"]["updatedAt"].ToUniversalTime());
+        Assert.True(update["$unset"].AsBsonDocument.Contains("pendingAuditEvents"));
+        collection.VerifyNoOtherCalls();
+        operationCollection.VerifyAll();
     }
 
     [Fact]
