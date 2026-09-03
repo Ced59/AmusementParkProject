@@ -35,6 +35,19 @@ public sealed class RideOccurrenceAppendOrderNormalizer
         string clientOperationId,
         CancellationToken cancellationToken)
     {
+        return await this.TryNormalizeAsync(
+            visit,
+            clientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryNormalizeAsync(
+        Visit visit,
+        string clientOperationId,
+        long? contentFenceToken,
+        CancellationToken cancellationToken)
+    {
         IReadOnlyList<RideOccurrence> occurrences;
         try
         {
@@ -119,7 +132,8 @@ public sealed class RideOccurrenceAppendOrderNormalizer
             first.Id,
             expectedFirstVersion,
             null,
-            RideOccurrencePlacement.First);
+            RideOccurrencePlacement.First,
+            contentFenceToken);
         IdempotentRideOccurrenceReorderResult result = this.auditPublisher is null
             ? await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,

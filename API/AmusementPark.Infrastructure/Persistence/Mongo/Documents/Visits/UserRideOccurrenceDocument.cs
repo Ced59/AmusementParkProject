@@ -91,6 +91,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonElement("pendingAuditEvents")]
     [BsonIgnoreIfNull]
     public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
+
+    [BsonElement("contentMutationFenceToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceToken { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -208,6 +212,10 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonElement("visitId")]
     [BsonIgnoreIfNull]
     public string? VisitId { get; set; }
+
+    [BsonElement("contentMutationFenceToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceToken { get; set; }
 
     [BsonElement("operationState")]
     [BsonIgnoreIfNull]

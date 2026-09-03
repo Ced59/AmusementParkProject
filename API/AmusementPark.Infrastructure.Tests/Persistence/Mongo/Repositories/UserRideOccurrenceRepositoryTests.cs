@@ -442,6 +442,221 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task CreateBatchIdempotentAsync_WhenFenceChangesBeforeCompletion_ShouldConflict()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceDocument>());
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> normalizationCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrenceCreationRequest unfenced = CreateRequest(new[] { occurrence });
+        RideOccurrenceCreationRequest request = unfenced with { ContentFenceToken = 12 };
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.Is<UserRideOccurrenceCreationOperationDocument>(document =>
+                    document.ContentMutationFenceToken == 12),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        operationCollection.SetupSequence(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(normalizationCursor.Object);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(appendBaseCursor.Object);
+        collection.Setup(value => value.InsertManyAsync(
+                It.Is<IEnumerable<UserRideOccurrenceDocument>>(documents =>
+                    documents.All(document => document.ContentMutationFenceToken == 12)),
+                It.IsAny<InsertManyOptions>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceCreationResult result =
+            await repository.CreateBatchIdempotentAsync(
+                request,
+                new[] { occurrence },
+                null,
+                false,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict, result.Status);
+        Assert.Empty(result.Occurrences);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        appendBaseCursor.VerifyAll();
+        normalizationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CreateBatchIdempotentAsync_WhenInsertedAfterFenceTakeover_ShouldConflict()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceDocument>());
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> normalizationCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        Mock<IAsyncCursor<UserVisitDocument>> visitCursor = CreateAsyncCursor(
+            new[]
+            {
+                new UserVisitDocument
+                {
+                    Id = "visit-1",
+                    UserId = "user-1",
+                    ContentMutationFenceToken = 13,
+                    ContentMutationFenceStableToken = 13,
+                    ContentMutationFenceReady = true,
+                },
+            });
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrenceCreationRequest request = CreateRequest(new[] { occurrence }) with
+        {
+            ContentFenceToken = 12,
+        };
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.Is<UserRideOccurrenceCreationOperationDocument>(document =>
+                    document.ContentMutationFenceToken == 12),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(normalizationCursor.Object);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(appendBaseCursor.Object);
+        collection.Setup(value => value.InsertManyAsync(
+                It.Is<IEnumerable<UserRideOccurrenceDocument>>(documents =>
+                    documents.All(document => document.ContentMutationFenceToken == 12)),
+                It.IsAny<InsertManyOptions>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        visitCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOptions<UserVisitDocument, UserVisitDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(visitCursor.Object);
+        UserRideOccurrenceRepository repository = new UserRideOccurrenceRepository(
+            collection.Object,
+            operationCollection.Object,
+            visitCollection.Object);
+
+        IdempotentRideOccurrenceCreationResult result =
+            await repository.CreateBatchIdempotentAsync(
+                request,
+                new[] { occurrence },
+                null,
+                false,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict, result.Status);
+        Assert.Empty(result.Occurrences);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        visitCollection.VerifyAll();
+        appendBaseCursor.VerifyAll();
+        normalizationCursor.VerifyAll();
+        visitCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetOwnedAsync_WhenFenceIsReady_ShouldReadOnlyTheCurrentGeneration()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        Mock<IAsyncCursor<UserVisitDocument>> visitCursor = CreateAsyncCursor(
+            new[]
+            {
+                new UserVisitDocument
+                {
+                    Id = "visit-1",
+                    UserId = "user-1",
+                    ContentMutationFenceToken = 13,
+                    ContentMutationFenceStableToken = 13,
+                    ContentMutationFenceReady = true,
+                },
+            });
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> occurrenceCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceDocument>());
+        FilterDefinition<UserRideOccurrenceDocument>? capturedFilter = null;
+        visitCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOptions<UserVisitDocument, UserVisitDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(visitCursor.Object);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceDocument> filter,
+                FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument> _,
+                CancellationToken _) => capturedFilter = filter)
+            .ReturnsAsync(occurrenceCursor.Object);
+        UserRideOccurrenceRepository repository = new UserRideOccurrenceRepository(
+            collection.Object,
+            operationCollection.Object,
+            visitCollection.Object);
+
+        RideOccurrence? occurrence = await repository.GetOwnedAsync(
+            RideOccurrenceId.Parse("occurrence-1"),
+            VisitId.Parse("visit-1"),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.Null(occurrence);
+        Assert.NotNull(capturedFilter);
+        Assert.Equal(13, Render(capturedFilter)["contentMutationFenceToken"].AsInt64);
+        collection.VerifyAll();
+        operationCollection.VerifyNoOtherCalls();
+        visitCollection.VerifyAll();
+        visitCursor.VerifyAll();
+        occurrenceCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task CreateBatchIdempotentAsync_WithAStaleAppendBase_ShouldReleaseForRetry()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
@@ -1179,7 +1394,7 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
-    public async Task TryUpdateOwnedAsync_ShouldFenceTheWriteWithoutReplacingIdempotencyData()
+    public async Task TryUpdateOwnedFencedAsync_ShouldRequireAndPersistTheLeaseGeneration()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
             new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
@@ -1210,9 +1425,10 @@ public sealed class UserRideOccurrenceRepositoryTests
         RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
         occurrence.MoveTo(2048, NowUtc.AddMinutes(1));
 
-        bool updated = await repository.TryUpdateOwnedAsync(
+        bool updated = await repository.TryUpdateOwnedFencedAsync(
             occurrence,
             1,
+            7,
             CancellationToken.None);
 
         Assert.True(updated);
@@ -1222,16 +1438,18 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal("visit-1", filter["visitId"].AsString);
         Assert.Equal("user-1", filter["userId"].AsString);
         Assert.Equal(1, filter["version"].AsInt64);
+        Assert.Equal(7, filter["contentMutationFenceToken"].AsInt64);
         Assert.NotNull(capturedUpdate);
         BsonDocument update = Render(capturedUpdate);
         Assert.Equal(2048, update["$set"]["sortPosition"].AsInt64);
+        Assert.Equal(7, update["$set"]["contentMutationFenceToken"].AsInt64);
         Assert.False(update.ToString().Contains("creationOperationKeyHash", StringComparison.Ordinal));
         Assert.False(update.ToString().Contains("creationSnapshot", StringComparison.Ordinal));
         collection.VerifyAll();
     }
 
     [Fact]
-    public async Task TryConfirmOwnedVersionAsync_ShouldMatchWithoutIncrementingTheVersion()
+    public async Task TryConfirmOwnedVersionFencedAsync_ShouldMatchExactGeneration()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
             new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
@@ -1260,21 +1478,23 @@ public sealed class UserRideOccurrenceRepositoryTests
             collection.Object,
             operationCollection.Object);
 
-        bool confirmed = await repository.TryConfirmOwnedVersionAsync(
+        bool confirmed = await repository.TryConfirmOwnedVersionFencedAsync(
             RideOccurrenceId.Parse("occurrence-1"),
             VisitId.Parse("visit-1"),
             "user-1",
             3,
+            7,
             CancellationToken.None);
 
         Assert.True(confirmed);
         Assert.NotNull(capturedFilter);
         BsonDocument filter = Render(capturedFilter);
         Assert.Equal(3, filter["version"].AsInt64);
+        Assert.Equal(7, filter["contentMutationFenceToken"].AsInt64);
         Assert.NotNull(capturedUpdate);
         BsonDocument update = Render(capturedUpdate);
         Assert.Equal(3, update["$set"]["version"].AsInt64);
-        Assert.Single(update["$set"].AsBsonDocument);
+        Assert.Equal(7, update["$set"]["contentMutationFenceToken"].AsInt64);
         collection.VerifyAll();
         operationCollection.VerifyNoOtherCalls();
     }
@@ -2801,23 +3021,9 @@ public sealed class UserRideOccurrenceRepositoryTests
         IMongoCollection<UserRideOccurrenceDocument> collection,
         IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection)
     {
-        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
-        database.Setup(value => value.GetCollection<UserRideOccurrenceDocument>(
-                "user-ride-occurrences",
-                null))
-            .Returns(collection);
-        database.Setup(value => value.GetCollection<UserRideOccurrenceCreationOperationDocument>(
-                "user-ride-occurrence-operations",
-                null))
-            .Returns(operationCollection);
         return new UserRideOccurrenceRepository(
-            database.Object,
-            new MongoDbSettings
-            {
-                UserRideOccurrencesCollectionName = "user-ride-occurrences",
-                UserRideOccurrenceOperationsCollectionName =
-                    "user-ride-occurrence-operations",
-            });
+            collection,
+            operationCollection);
     }
 
     private static Mock<IAsyncCursor<TDocument>> CreateAsyncCursor<TDocument>(

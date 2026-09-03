@@ -6,6 +6,17 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserRideOccurrenceMongoDefinitions
 {
+    public static FilterDefinition<UserRideOccurrenceDocument> WithContentFence(
+        FilterDefinition<UserRideOccurrenceDocument> filter,
+        long? contentFenceToken)
+    {
+        return !contentFenceToken.HasValue
+            ? filter
+            : filter & Builders<UserRideOccurrenceDocument>.Filter.Eq(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken.Value);
+    }
+
     public static FilterDefinition<UserRideOccurrenceDocument> BuildOwnedOccurrenceByIdFilter(
         string occurrenceId,
         string userId)
@@ -186,6 +197,18 @@ internal static class UserRideOccurrenceMongoDefinitions
                     .Ascending(static document => document.CreatedAt)
                     .Ascending(static document => document.Id),
                 new CreateIndexOptions { Name = "idx_user_ride_occurrences_visit_order" }),
+            new CreateIndexModel<UserRideOccurrenceDocument>(
+                Builders<UserRideOccurrenceDocument>.IndexKeys
+                    .Ascending(static document => document.VisitId)
+                    .Ascending(static document => document.UserId)
+                    .Ascending(static document => document.ContentMutationFenceToken)
+                    .Ascending(static document => document.SortPosition)
+                    .Ascending(static document => document.CreatedAt)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions
+                {
+                    Name = "idx_user_ride_occurrences_visit_fenced_order",
+                }),
             new CreateIndexModel<UserRideOccurrenceDocument>(
                 Builders<UserRideOccurrenceDocument>.IndexKeys
                     .Ascending(static document => document.UserId)

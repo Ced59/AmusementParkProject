@@ -160,13 +160,12 @@ public sealed class UpdateRideOccurrenceCommandHandler
 
         if (occurrence.Version == expectedVersion)
         {
-            bool versionIsCurrent =
-                await this.occurrenceRepository.TryConfirmOwnedVersionAsync(
-                    occurrence.Id,
-                    occurrence.VisitId,
-                    occurrence.UserId,
-                    expectedVersion,
-                    guardedCancellationToken);
+            bool versionIsCurrent = await RideOccurrenceFencedPersistence.TryConfirmAsync(
+                this.occurrenceRepository,
+                occurrence,
+                expectedVersion,
+                contentMutationLease,
+                guardedCancellationToken);
             return versionIsCurrent
                 ? Success(occurrence)
                 : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -178,16 +177,13 @@ public sealed class UpdateRideOccurrenceCommandHandler
                 occurrence,
                 previous,
                 $"{occurrence.Id.Value}:{occurrence.Version}:update");
-        bool updated = auditEvent is null
-            ? await this.occurrenceRepository.TryUpdateOwnedAsync(
-                occurrence,
-                expectedVersion,
-                guardedCancellationToken)
-            : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
-                occurrence,
-                expectedVersion,
-                auditEvent,
-                guardedCancellationToken);
+        bool updated = await RideOccurrenceFencedPersistence.TryUpdateAsync(
+            this.occurrenceRepository,
+            occurrence,
+            expectedVersion,
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -316,16 +312,13 @@ public sealed class DeleteRideOccurrenceCommandHandler
             : PassportRideAuditEventFactory.RideOccurrenceDeleted(
                 occurrence,
                 $"{occurrence.Id.Value}:{occurrence.Version}:delete");
-        bool deleted = auditEvent is null
-            ? await this.occurrenceRepository.TryDeleteOwnedAsync(
-                occurrence,
-                expectedVersion,
-                guardedCancellationToken)
-            : await this.occurrenceRepository.TryDeleteOwnedAuditedAsync(
-                occurrence,
-                expectedVersion,
-                auditEvent,
-                guardedCancellationToken);
+        bool deleted = await RideOccurrenceFencedPersistence.TryDeleteAsync(
+            this.occurrenceRepository,
+            occurrence,
+            expectedVersion,
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
         if (!deleted)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());

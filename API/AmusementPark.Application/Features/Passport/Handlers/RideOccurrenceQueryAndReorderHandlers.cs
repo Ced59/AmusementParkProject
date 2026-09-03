@@ -227,6 +227,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
             PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
         CancellationToken guardedCancellationToken =
             leaseCancellationSource?.Token ?? cancellationToken;
+        request = RideOccurrenceFencedPersistence.Attach(request, contentMutationLease);
         IdempotentRideOccurrenceReorderResult? existing =
             await this.occurrenceRepository.ResolveExistingReorderAsync(
                 request,

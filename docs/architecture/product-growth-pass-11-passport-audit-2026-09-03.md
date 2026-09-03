@@ -43,7 +43,13 @@ flowchart LR
 
 Les constructeurs publics des handlers de mutation exigent `IPassportAuditPublisher`. Les surcharges sans publisher sont internes à l'assembly et servent uniquement aux tests unitaires isolés : la composition de production ne peut pas omettre silencieusement l'audit.
 
-Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. Son bail Mongo est acquis sur l'identité propriétaire, la version et le statut `Draft` de la visite. Avant `Complete` ou `Archive`, l'Application acquiert ce même bail et règle successivement toutes les opérations de contenu `pending` exactes : elle confirme chacune si son état métier est déjà appliqué, ou la compense et la place en conflit dans le cas contraire. La transition de cycle de vie n'est ensuite tentée qu'après la libération du bail. Toute mutation directe de la visite exige en retour l'absence d'un bail actif. Cette exclusion distribuée ferme la course entre une écriture de contenu et `Complete`/`Archive`, y compris avec plusieurs processus API et après plusieurs arrêts entre une écriture métier et son acquittement idempotent. Le détenteur renouvelle toutes les minutes son échéance de cinq minutes avec un filtre exigeant son token exact et une échéance non expirée. Un échec ou une perte de propriété annule le travail protégé encore en cours ; un ancien détenteur ne peut donc pas continuer silencieusement. Un bail réellement abandonné reste récupérable après cinq minutes.
+Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. Son bail Mongo est acquis sur l'identité propriétaire, la version et le statut `Draft` de la visite. Avant `Complete` ou `Archive`, l'Application acquiert ce même bail et règle successivement toutes les opérations de contenu `pending` exactes : elle confirme chacune si son état métier est déjà appliqué, ou la compense et la place en conflit dans le cas contraire. La transition de cycle de vie n'est ensuite tentée qu'après la libération du bail. Toute mutation directe de la visite exige en retour l'absence d'un bail actif. Cette exclusion distribuée ferme la course entre une écriture de contenu et `Complete`/`Archive`, y compris avec plusieurs processus API et après plusieurs arrêts entre une écriture métier et son acquittement idempotent.
+
+Le bail porte en plus une génération persistante et monotone, `contentMutationFenceToken`. Chaque acquisition — première utilisation, succession normale ou reprise après expiration — incrémente cette génération et place temporairement `contentMutationFenceReady` à `false`. Chaque écriture d'occurrence et chaque transition d'opération exige ensuite la génération exacte obtenue avec le bail. `contentMutationFenceStableToken` mémorise la dernière génération entièrement publiée. Le nouveau détenteur ne promeut que les descendants compris entre cette génération stable et la nouvelle génération : une écriture très ancienne arrivée après sa barrière reste donc exclue. Il promeut les occurrences puis les opérations avant de publier la nouvelle génération avec un `updateOne` exigeant le token de bail exact, la génération exacte et une échéance encore valide. Il n'utilise la nouvelle génération que si cet acquittement réussit, puis avance la génération stable.
+
+Dès que la génération est déclarée prête, les lectures n'exposent que ses descendants et l'audit ignore toute génération obsolète. Pendant une promotion incomplète, les lectures restent bornées à l'intervalle sûr entre la dernière génération stable et la génération en cours, tandis que l'audit est suspendu ; la prochaine acquisition crée une autre génération et recommence la barrière avant toute mutation. Une création tardive n'est donc jamais publiée comme un faux succès et reste masquée jusqu'à une reprise explicite de sa clé idempotente. Cette barrière persistante protège même une écriture Mongo déjà envoyée qu'une simple annulation en mémoire ne pourrait plus arrêter.
+
+Le détenteur renouvelle toutes les minutes son échéance de cinq minutes avec un filtre exigeant son token exact et une échéance non expirée. Un échec ou une perte de propriété annule le travail protégé encore en cours ; les filtres de génération refusent aussi toute écriture déjà envoyée qui arriverait après la reprise. Un bail réellement abandonné reste récupérable après cinq minutes.
 
 L'acquisition et la validation `Draft` précèdent aussi toute reprise d'une opération idempotente de création ou de réordonnancement : un retry ne peut donc pas relancer une écriture réservée après la clôture de la visite. Une création réservée conserve en outre l'identité temporelle utilisée pour valider ses occurrences — parc, date avec sa précision, fuseau et convention de journée. Cette identité doit encore correspondre à la visite rechargée sous bail ; sinon l'opération exacte devient `conflict`, ses marqueurs sont retirés et aucun ancien instant local n'est appliqué. Le même contrôle protège le retry interactif. Une correction de date, précision, fuseau ou convention de journée acquiert le même bail avant de vérifier l'absence d'occurrences, puis écrit la visite avec un filtre exigeant le token exact de ce bail. Aucune création ne peut donc se glisser entre le contrôle et l'écriture. La correction est refusée lorsque des occurrences existent : c'est la barrière conservatrice retenue tant qu'une opération dédiée de revalidation atomique des enfants n'existe pas. Le titre, la note privée et le caractère approximatif restent corrigeables sans altérer leur chronologie.
 
@@ -68,6 +74,9 @@ erDiagram
       array pendingAuditEvents
       string contentMutationLeaseToken
       datetime contentMutationLeaseExpiresAtUtc
+      long contentMutationFenceToken
+      long contentMutationFenceStableToken
+      bool contentMutationFenceReady
     }
     RIDE_OCCURRENCE {
       string _id
@@ -77,12 +86,14 @@ erDiagram
       object assessment
       datetime deletedAtUtc
       array pendingAuditEvents
+      long contentMutationFenceToken
     }
     RIDE_OPERATION {
       string _id
       string userId
       string operationState
       array pendingAuditEvents
+      long contentMutationFenceToken
     }
     PENDING_AUDIT_EVENT {
       string eventId
@@ -143,11 +154,15 @@ sequenceDiagram
     H->>S: charge l'objet propriétaire
     opt mutation d'une occurrence
         H->>L: acquiert Visit(owner, version, Draft)
-        L-->>H: bail exclusif court
+        L->>S: incrémente la génération, ready=false
+        L->>S: promeut occurrences dans l'intervalle sûr
+        L->>S: promeut opérations dans l'intervalle sûr
+        L->>S: ready=true + stable=génération si bail exact non expiré
+        L-->>H: bail + nouvelle génération
     end
     H->>C: valide et applique la mutation
     H->>H: construit la preuve minimisée
-    H->>S: update état + version + pendingAuditEvent
+    H->>S: update état + version + pendingAuditEvent avec génération exacte
     S-->>H: succès avec write fence
     H->>A: TryPublish(event)
     A->>S: vérifie le marqueur durable
@@ -161,6 +176,8 @@ sequenceDiagram
 
 Si l'écriture de l'état échoue sur la version attendue, aucun marqueur n'est créé et aucun audit n'est publié.
 Une transition de cycle de vie acquiert d'abord le bail de contenu, réconcilie jusqu'à épuisement les opérations `pending` exactes, puis libère le bail avant d'utiliser le filtre inverse. Si une mutation de contenu acquiert le bail entre ces deux étapes, la transition échoue sur le bail actif. Si la transition gagne la course, l'acquisition de contenu exige encore `Draft` et la version observée : l'occurrence ne peut alors plus être modifiée. Si le contenu gagne, `Complete` ou `Archive` ne peut pas franchir son write fence avant sa réconciliation et la libération. Une correction temporelle est la seule mutation de visite autorisée sous bail, et uniquement avec son token exact ; l'écriture incrémente la version avant de libérer le bail.
+
+Un insert batch est le seul write qui ne peut pas comparer un document préexistant. Chaque document inséré porte néanmoins la génération du bail. La clôture de l'opération doit ensuite réussir avec cette même génération avant que le repository retourne `Created` ou `Replayed`. Si une reprise a gagné entre les deux, le résultat devient un conflit de concurrence : la génération ancienne est masquée, puis le prochain passage idempotent l'adopte ou la compense sous la génération courante.
 
 ### 4.2 Reprise après incident
 
@@ -234,6 +251,8 @@ sequenceDiagram
 | compensation ou conflit d'un réordonnancement | restauré ou inchangé | marqueurs supprimés de l'opération terminale, donc aucune fausse preuve publiée |
 | contenu et changement de statut concurrents | l'opération de contenu est réglée sous bail avant la transition ; une seule mutation franchit ensuite son write fence | preuve produite uniquement pour chaque mutation effectivement validée |
 | opération longue avec bail de contenu | état protégé tant que le token exact est renouvelé | renouvellement chaque minute ; annulation du travail si la propriété est perdue |
+| écriture déjà envoyée lors de l'expiration du bail | filtre de génération refusé, ou insert ancien masqué jusqu'à reprise idempotente | aucune preuve de succès tant que l'opération n'est pas clôturée sous la génération courante |
+| arrêt pendant la promotion d'une nouvelle génération | seules les générations de l'intervalle sûr restent lisibles ; aucune nouvelle mutation n'obtient le bail | audit suspendu ; nouvelle acquisition incrémente et reprend depuis la dernière génération stable |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail non renouvelé et récupérable après cinq minutes, marqueur d'audit repris séparément |
 | création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée | opération exacte en conflit, marqueurs retirés |
 | arrêt après état métier mais avant acquittement, puis demande de clôture | opération exacte complétée ou compensée sous bail avant la clôture | preuve conservée si et seulement si la mutation métier est confirmée |
@@ -247,9 +266,9 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - factory Application : ancien/nouveau rating, statut et rang, détection de texte privé modifié, absence de valeurs privées ;
 - handlers : marqueur persisté avant tentative de publication ;
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
-- exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, renouvellement périodique du token exact non expiré, annulation des opérations lors d'une perte du bail, opération pendante réglée sous le même bail avant `Complete`/`Archive`, mutations de visite bloquées pendant un bail actif ;
+- exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, nouvelle génération monotone à chaque détenteur, borne stable persistée, promotion uniquement ascendante dans l'intervalle sûr, indicateur `ready`, renouvellement périodique du token exact non expiré, annulation lors d'une perte du bail, refus d'une clôture de création après changement de génération, opération pendante réglée sous le même bail avant `Complete`/`Archive`, mutations de visite bloquées pendant un bail actif ;
 - cohérence temporelle : reprise idempotente sous bail, identité réservée comparée à la visite courante, contrôle d'absence et écriture sous le même token, refus des changements temporels d'une visite qui contient déjà des occurrences ;
-- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture ;
+- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture, filtres exacts sur `contentMutationFenceToken`, lecture et audit limités à la génération prête ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;

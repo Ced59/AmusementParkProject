@@ -46,6 +46,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
     public async Task<bool> TryCompleteVisitAsync(
         string userId,
         VisitId visitId,
+        long? contentFenceToken,
         Func<UserRideOccurrenceCreationOperationDocument,
             RideOccurrenceReorderRequest,
             CancellationToken,
@@ -57,6 +58,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             await this.LoadPendingVisitOperationAsync(
                 userId,
                 visitId,
+                contentFenceToken,
                 cancellationToken);
         if (pending is null)
         {
@@ -73,6 +75,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         string userId,
         VisitId visitId,
         string operationKeyHash,
+        long? contentFenceToken,
         Func<UserRideOccurrenceCreationOperationDocument,
             RideOccurrenceReorderRequest,
             CancellationToken,
@@ -85,6 +88,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                 userId,
                 visitId,
                 operationKeyHash,
+                contentFenceToken,
                 cancellationToken);
         if (pending is null)
         {
@@ -101,6 +105,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         string userId,
         VisitId visitId,
         string operationKeyHash,
+        long? contentFenceToken,
         DateTime conflictedAtUtc,
         CancellationToken cancellationToken)
     {
@@ -114,9 +119,11 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                userId,
-                operationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    userId,
+                    operationKeyHash),
+                contentFenceToken)
             & filters.Eq(static document => document.VisitId, visitId.Value)
             & filters.Eq(static document => document.OperationState, PendingOperationState);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
@@ -169,6 +176,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                     pending.UserId,
                     pendingVisitId,
                     pending.OperationKeyHash,
+                    pending.ContentMutationFenceToken,
                     cancellationToken);
             return stillPendingDelete is null;
         }
@@ -184,6 +192,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                 pending.UserId,
                 pendingVisitId,
                 pending.OperationKeyHash,
+                pending.ContentMutationFenceToken,
                 cancellationToken);
         return stillPending is null;
     }
@@ -195,9 +204,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(static document => document.OperationKind, CreationOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.AppendBaseValidated, false);
@@ -263,9 +270,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
             BuildStateUpdate(state, operation.UpdatedAt);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash),
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation),
             update,
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
@@ -285,9 +290,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.OrderGuardsValidated, false);
@@ -314,9 +317,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Ne(static document => document.ReorderCompensationStarted, true);
@@ -345,9 +346,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Ne(static document => document.ReorderCompensationStarted, true);
@@ -365,9 +364,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.ReorderCompensationStarted, true);
@@ -445,9 +442,11 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         }
 
         List<UserRideOccurrenceDocument> existing = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash))
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildCreationOperationSort())
             .ToListAsync(cancellationToken);
         IdempotentRideOccurrenceCreationResult? resolution =
@@ -496,30 +495,35 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
 
     private async Task<UserRideOccurrenceCreationOperationDocument?>
         LoadPendingVisitOperationAsync(
-            string userId,
-            VisitId visitId,
-            CancellationToken cancellationToken)
+        string userId,
+        VisitId visitId,
+        long? contentFenceToken,
+        CancellationToken cancellationToken)
     {
         return await this.operationCollection
             .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildPendingVisitFilter(
                 userId,
-                visitId.Value))
+                visitId.Value,
+                contentFenceToken))
             .FirstOrDefaultAsync(cancellationToken);
     }
 
     private async Task<UserRideOccurrenceCreationOperationDocument?>
         LoadPendingOperationAsync(
             string userId,
-            VisitId visitId,
-            string operationKeyHash,
-            CancellationToken cancellationToken)
+        VisitId visitId,
+        string operationKeyHash,
+        long? contentFenceToken,
+        CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                userId,
-                operationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    userId,
+                    operationKeyHash),
+                contentFenceToken)
             & filters.Eq(static document => document.VisitId, visitId.Value)
             & filters.Eq(static document => document.OperationState, PendingOperationState);
         return await this.operationCollection
@@ -556,7 +560,8 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                 RideOccurrenceId.Parse(operation.MovedOccurrenceId),
                 operation.ReorderExpectedVersion.Value,
                 anchorId,
-                operation.ReorderPlacement.Value);
+                operation.ReorderPlacement.Value,
+                operation.ContentMutationFenceToken);
             return true;
         }
         catch (ArgumentException)

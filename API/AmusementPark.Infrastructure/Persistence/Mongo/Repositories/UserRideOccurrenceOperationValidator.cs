@@ -79,6 +79,7 @@ internal static class UserRideOccurrenceOperationValidator
             && string.Equals(operation.PayloadHash, payloadHash, StringComparison.Ordinal)
             && string.Equals(operation.VisitId, request.VisitId.Value, StringComparison.Ordinal)
             && string.Equals(operation.UserId, request.UserId, StringComparison.Ordinal)
+            && operation.ContentMutationFenceToken == request.ContentFenceToken
             && string.Equals(
                 operation.MovedOccurrenceId,
                 request.OccurrenceId.Value,

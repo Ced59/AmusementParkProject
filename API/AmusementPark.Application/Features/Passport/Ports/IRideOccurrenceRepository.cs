@@ -13,6 +13,12 @@ public interface IRideOccurrenceRepository
         VisitId visitId,
         CancellationToken cancellationToken);
 
+    Task<PendingPassportMutationVisit?> GetPendingMutationFencedAsync(
+        string userId,
+        VisitId visitId,
+        long contentFenceToken,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<PendingPassportMutationVisit>>
         ListPendingAuditMutationVisitsAsync(
             int maximumVisitCount,
@@ -94,11 +100,32 @@ public interface IRideOccurrenceRepository
         PassportAuditEvent pendingAuditEvent,
         CancellationToken cancellationToken);
 
+    Task<bool> TryUpdateOwnedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        long contentFenceToken,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryUpdateOwnedAuditedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        long contentFenceToken,
+        CancellationToken cancellationToken);
+
     Task<bool> TryConfirmOwnedVersionAsync(
         RideOccurrenceId occurrenceId,
         VisitId visitId,
         string userId,
         long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryConfirmOwnedVersionFencedAsync(
+        RideOccurrenceId occurrenceId,
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        long contentFenceToken,
         CancellationToken cancellationToken);
 
     Task<bool> TryDeleteOwnedAsync(
@@ -110,6 +137,19 @@ public interface IRideOccurrenceRepository
         RideOccurrence occurrence,
         long expectedVersion,
         PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryDeleteOwnedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        long contentFenceToken,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryDeleteOwnedAuditedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        long contentFenceToken,
         CancellationToken cancellationToken);
 
     Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(

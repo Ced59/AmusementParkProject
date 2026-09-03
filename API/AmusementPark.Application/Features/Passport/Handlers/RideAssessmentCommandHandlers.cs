@@ -133,16 +133,13 @@ public sealed class UpsertRideAssessmentCommandHandler
             : PassportRideAuditEventFactory.RideAssessmentUpserted(
                 occurrence,
                 previous);
-        bool updated = auditEvent is null
-            ? await this.occurrenceRepository.TryUpdateOwnedAsync(
-                occurrence,
-                expectedVersion,
-                guardedCancellationToken)
-            : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
-                occurrence,
-                expectedVersion,
-                auditEvent,
-                guardedCancellationToken);
+        bool updated = await RideOccurrenceFencedPersistence.TryUpdateAsync(
+            this.occurrenceRepository,
+            occurrence,
+            expectedVersion,
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
@@ -324,11 +321,11 @@ public sealed class DeleteRideAssessmentCommandHandler
 
         if (occurrence.Version == expectedVersion)
         {
-            bool versionIsCurrent = await this.occurrenceRepository.TryConfirmOwnedVersionAsync(
-                occurrence.Id,
-                occurrence.VisitId,
-                occurrence.UserId,
+            bool versionIsCurrent = await RideOccurrenceFencedPersistence.TryConfirmAsync(
+                this.occurrenceRepository,
+                occurrence,
                 expectedVersion,
+                contentMutationLease,
                 guardedCancellationToken);
             return versionIsCurrent
                 ? Success(occurrence)
@@ -340,16 +337,13 @@ public sealed class DeleteRideAssessmentCommandHandler
             : PassportRideAuditEventFactory.RideAssessmentDeleted(
                 occurrence,
                 previous);
-        bool updated = auditEvent is null
-            ? await this.occurrenceRepository.TryUpdateOwnedAsync(
-                occurrence,
-                expectedVersion,
-                guardedCancellationToken)
-            : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
-                occurrence,
-                expectedVersion,
-                auditEvent,
-                guardedCancellationToken);
+        bool updated = await RideOccurrenceFencedPersistence.TryUpdateAsync(
+            this.occurrenceRepository,
+            occurrence,
+            expectedVersion,
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());

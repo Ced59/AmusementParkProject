@@ -189,9 +189,22 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
             .Limit(maximumEventCount - destination.Count)
             .Project<UserRideOccurrenceDocument>(
                 Builders<UserRideOccurrenceDocument>.Projection
+                    .Include(static document => document.VisitId)
+                    .Include(static document => document.UserId)
+                    .Include(static document => document.ContentMutationFenceToken)
                     .Include(static document => document.PendingAuditEvents))
             .ToListAsync(cancellationToken);
-        AppendUntilLimit(destination, sources.SelectMany(static source =>
+        IReadOnlyDictionary<string, CurrentContentFence> currentFences =
+            await this.LoadCurrentFencesAsync(
+                sources.Select(static source => (source.UserId, source.VisitId)),
+                cancellationToken);
+        AppendUntilLimit(destination, sources
+            .Where(source => CurrentFenceMatches(
+                currentFences,
+                source.UserId,
+                source.VisitId,
+                source.ContentMutationFenceToken))
+            .SelectMany(static source =>
             source.PendingAuditEvents ?? Enumerable.Empty<PassportAuditEventDocument>()),
             maximumEventCount);
     }
@@ -217,11 +230,88 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 .Limit(maximumEventCount - destination.Count)
                 .Project<UserRideOccurrenceCreationOperationDocument>(
                     Builders<UserRideOccurrenceCreationOperationDocument>.Projection
+                        .Include(static document => document.VisitId)
+                        .Include(static document => document.UserId)
+                        .Include(static document => document.ContentMutationFenceToken)
                         .Include(static document => document.PendingAuditEvents))
                 .ToListAsync(cancellationToken);
-        AppendUntilLimit(destination, sources.SelectMany(static source =>
+        IReadOnlyDictionary<string, CurrentContentFence> currentFences =
+            await this.LoadCurrentFencesAsync(
+                sources
+                    .Where(static source => !string.IsNullOrWhiteSpace(source.VisitId))
+                    .Select(static source => (source.UserId, source.VisitId!)),
+                cancellationToken);
+        AppendUntilLimit(destination, sources
+            .Where(source => !string.IsNullOrWhiteSpace(source.VisitId)
+                && CurrentFenceMatches(
+                    currentFences,
+                    source.UserId,
+                    source.VisitId,
+                    source.ContentMutationFenceToken))
+            .SelectMany(static source =>
             source.PendingAuditEvents ?? Enumerable.Empty<PassportAuditEventDocument>()),
             maximumEventCount);
+    }
+
+    private async Task<IReadOnlyDictionary<string, CurrentContentFence>>
+        LoadCurrentFencesAsync(
+        IEnumerable<(string UserId, string VisitId)> scopes,
+        CancellationToken cancellationToken)
+    {
+        (string UserId, string VisitId)[] uniqueScopes = scopes
+            .Distinct()
+            .ToArray();
+        if (uniqueScopes.Length == 0)
+        {
+            return new Dictionary<string, CurrentContentFence>(StringComparer.Ordinal);
+        }
+
+        FilterDefinition<UserVisitDocument>[] scopeFilters = uniqueScopes
+            .Select(scope => UserVisitMongoDefinitions.BuildOwnedVisitFilter(
+                scope.VisitId,
+                scope.UserId))
+            .ToArray();
+        List<UserVisitDocument> visits = await this.visitCollection
+            .Find(Builders<UserVisitDocument>.Filter.Or(scopeFilters))
+            .Project<UserVisitDocument>(Builders<UserVisitDocument>.Projection
+                .Include(static document => document.Id)
+                .Include(static document => document.UserId)
+                .Include(static document => document.ContentMutationFenceToken)
+                .Include(static document => document.ContentMutationFenceReady))
+            .ToListAsync(cancellationToken);
+        return visits.ToDictionary(
+            static visit => BuildFenceScopeKey(visit.UserId, visit.Id),
+            static visit => new CurrentContentFence(
+                visit.ContentMutationFenceToken,
+                visit.ContentMutationFenceReady),
+            StringComparer.Ordinal);
+    }
+
+    private static bool CurrentFenceMatches(
+        IReadOnlyDictionary<string, CurrentContentFence> currentFences,
+        string userId,
+        string visitId,
+        long? sourceFence)
+    {
+        return currentFences.TryGetValue(
+                BuildFenceScopeKey(userId, visitId),
+                out CurrentContentFence? currentFence)
+            && currentFence.Matches(sourceFence);
+    }
+
+    private static string BuildFenceScopeKey(string userId, string visitId)
+    {
+        return string.Concat(userId, "\n", visitId);
+    }
+
+    private sealed record CurrentContentFence(long? Token, bool IsReady)
+    {
+        public bool Matches(long? sourceFence)
+        {
+            return this.Token.HasValue
+                ? this.IsReady && sourceFence == this.Token
+                : !sourceFence.HasValue;
+        }
     }
 
     private async Task<IReadOnlyDictionary<string, PassportAuditEvent>> LoadDurableEventsAsync(

@@ -22,14 +22,16 @@ public sealed class PassportPendingMutationReconcilerTests
                 visit.Id,
                 "operation-1",
                 PendingPassportMutationKind.Creation,
-                CreatePreparation(visit));
+                CreatePreparation(visit),
+                7);
         PendingPassportMutationVisit deletion =
             new PendingPassportMutationVisit(
                 visit.UserId,
                 visit.Id,
                 "operation-2",
                 PendingPassportMutationKind.Delete,
-                null);
+                null,
+                7);
         Mock<IUserVisitRepository> visits =
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
@@ -47,9 +49,10 @@ public sealed class PassportPendingMutationReconcilerTests
                 CancellationToken.None))
             .Callback(() => leaseWasAcquired = true)
             .ReturnsAsync(lease.Object);
-        occurrences.SetupSequence(value => value.GetPendingMutationAsync(
+        occurrences.SetupSequence(value => value.GetPendingMutationFencedAsync(
                 visit.UserId,
                 visit.Id,
+                7,
                 CancellationToken.None))
             .ReturnsAsync(creation)
             .ReturnsAsync(deletion)
@@ -65,6 +68,7 @@ public sealed class PassportPendingMutationReconcilerTests
             .Callback(() => Assert.True(leaseWasAcquired))
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.SetupGet(value => value.ContentFenceToken).Returns(7);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -94,7 +98,12 @@ public sealed class PassportPendingMutationReconcilerTests
                 visit.Id,
                 "operation-1",
                 PendingPassportMutationKind.Creation,
-                CreatePreparation(visit));
+                CreatePreparation(visit),
+                6);
+        PendingPassportMutationVisit fencedCandidate = candidate with
+        {
+            ContentFenceToken = 7,
+        };
         Mock<IUserVisitRepository> visits =
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
@@ -121,12 +130,19 @@ public sealed class PassportPendingMutationReconcilerTests
                 CancellationToken.None))
             .Callback(() => leaseWasAcquired = true)
             .ReturnsAsync(lease.Object);
+        occurrences.Setup(value => value.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                7,
+                CancellationToken.None))
+            .ReturnsAsync(fencedCandidate);
         occurrences.Setup(value => value.TryCompletePendingMutationAsync(
-                candidate,
+                fencedCandidate,
                 CancellationToken.None))
             .Callback(() => Assert.True(leaseWasAcquired))
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.SetupGet(value => value.ContentFenceToken).Returns(7);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -200,6 +216,74 @@ public sealed class PassportPendingMutationReconcilerTests
     }
 
     [Fact]
+    public async Task ReconcileBatchAsync_WhenCandidateWasNotPromoted_ShouldRejectItsOldFence()
+    {
+        Visit visit = CreateVisit();
+        PendingPassportMutationVisit staleCandidate =
+            new PendingPassportMutationVisit(
+                visit.UserId,
+                visit.Id,
+                "operation-1",
+                PendingPassportMutationKind.Creation,
+                CreatePreparation(visit),
+                5);
+        Mock<IUserVisitRepository> visits =
+            new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        occurrences.Setup(value => value.ListPendingAuditMutationVisitsAsync(
+                50,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { staleCandidate });
+        visits.Setup(value => value.GetOwnedAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(visit);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        leases.Setup(value => value.TryAcquireAsync(
+                visit,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(lease.Object);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        occurrences.Setup(value => value.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                7,
+                CancellationToken.None))
+            .ReturnsAsync((PendingPassportMutationVisit?)null);
+        occurrences.Setup(value => value.TryRejectPendingMutationAsync(
+                staleCandidate,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
+        PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
+            visits.Object,
+            occurrences.Object,
+            leases.Object,
+            clock.Object);
+
+        int reconciled = await reconciler.ReconcileBatchAsync(
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(1, reconciled);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        leases.VerifyAll();
+        lease.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReconcileBatchAsync_WhenCreationIdentityChanged_ShouldRejectUnderLease()
     {
         Visit visit = CreateVisit();
@@ -214,7 +298,12 @@ public sealed class PassportPendingMutationReconcilerTests
                     VisitDate.ForDay(2026, 9, 2),
                     visit.TimeZoneId,
                     visit.ServiceDayConvention,
-                    new[] { HistoricalConsistency.Verified }));
+                    new[] { HistoricalConsistency.Verified }),
+                6);
+        PendingPassportMutationVisit fencedCandidate = candidate with
+        {
+            ContentFenceToken = 7,
+        };
         Mock<IUserVisitRepository> visits =
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
@@ -239,12 +328,19 @@ public sealed class PassportPendingMutationReconcilerTests
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(lease.Object);
+        occurrences.Setup(value => value.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                7,
+                CancellationToken.None))
+            .ReturnsAsync(fencedCandidate);
         occurrences.Setup(value => value.TryRejectPendingMutationAsync(
-                candidate,
+                fencedCandidate,
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.SetupGet(value => value.ContentFenceToken).Returns(7);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,

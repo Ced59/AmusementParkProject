@@ -84,13 +84,32 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                         cancellationToken);
                 CancellationToken guardedCancellationToken =
                     leaseCancellationSource?.Token ?? cancellationToken;
-                bool canRecover = CanRecover(candidate, visit);
+                PendingPassportMutationVisit? fencedCandidate =
+                    await this.occurrenceRepository.GetPendingMutationFencedAsync(
+                        visit.UserId,
+                        visit.Id,
+                        contentMutationLease.ContentFenceToken,
+                        guardedCancellationToken);
+                if (fencedCandidate is null)
+                {
+                    if (await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                        candidate,
+                        this.clock.UtcNow,
+                        guardedCancellationToken))
+                    {
+                        reconciledCount++;
+                    }
+
+                    continue;
+                }
+
+                bool canRecover = CanRecover(fencedCandidate, visit);
                 bool reconciled = canRecover
                     ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
-                        candidate,
+                        fencedCandidate,
                         guardedCancellationToken)
                     : await this.occurrenceRepository.TryRejectPendingMutationAsync(
-                        candidate,
+                        fencedCandidate,
                         this.clock.UtcNow,
                         guardedCancellationToken);
                 if (reconciled)
@@ -134,9 +153,10 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
             while (true)
             {
                 PendingPassportMutationVisit? candidate =
-                    await this.occurrenceRepository.GetPendingMutationAsync(
+                    await this.occurrenceRepository.GetPendingMutationFencedAsync(
                         visit.UserId,
                         visit.Id,
+                        contentMutationLease.ContentFenceToken,
                         guardedCancellationToken);
                 if (candidate is null)
                 {

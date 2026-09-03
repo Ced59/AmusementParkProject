@@ -54,9 +54,11 @@ internal sealed class UserRideOccurrenceCreationRecovery
         }
 
         List<UserRideOccurrenceDocument> recovered = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash))
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildCreationOperationSort())
             .ToListAsync(cancellationToken);
         return UserRideOccurrenceRepository.ResolveAgainstOperation(

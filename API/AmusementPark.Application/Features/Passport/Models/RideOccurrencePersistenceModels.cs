@@ -39,7 +39,8 @@ public sealed record PendingPassportMutationVisit(
     VisitId VisitId,
     string OperationKeyHash,
     PendingPassportMutationKind Kind,
-    RideOccurrenceCreationPreparation? CreationPreparation);
+    RideOccurrenceCreationPreparation? CreationPreparation,
+    long? ContentFenceToken = null);
 
 public sealed record RideOccurrenceCreationRequestItem(
     string ParkItemId,
@@ -52,7 +53,8 @@ public sealed record RideOccurrenceCreationRequestItem(
 public sealed record RideOccurrenceCreationRequest(
     VisitId VisitId,
     string UserId,
-    IReadOnlyList<RideOccurrenceCreationRequestItem> Items);
+    IReadOnlyList<RideOccurrenceCreationRequestItem> Items,
+    long? ContentFenceToken = null);
 
 public sealed record RideOccurrenceCreationPreparation(
     string ParkId,
@@ -93,7 +95,8 @@ public sealed record RideOccurrenceReorderRequest(
     RideOccurrenceId OccurrenceId,
     long ExpectedVersion,
     RideOccurrenceId? AnchorOccurrenceId,
-    RideOccurrencePlacement Placement);
+    RideOccurrencePlacement Placement,
+    long? ContentFenceToken = null);
 
 public sealed record RideOccurrenceVersionedChange(
     RideOccurrence Occurrence,

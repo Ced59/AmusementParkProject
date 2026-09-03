@@ -78,6 +78,18 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("contentMutationLeaseExpiresAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? ContentMutationLeaseExpiresAtUtc { get; set; }
+
+    [BsonElement("contentMutationFenceToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceToken { get; set; }
+
+    [BsonElement("contentMutationFenceStableToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceStableToken { get; set; }
+
+    [BsonElement("contentMutationFenceReady")]
+    [BsonIgnoreIfDefault]
+    public bool ContentMutationFenceReady { get; set; }
 }
 
 [BsonIgnoreExtraElements]

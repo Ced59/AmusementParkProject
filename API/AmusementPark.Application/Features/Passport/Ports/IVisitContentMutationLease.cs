@@ -10,6 +10,11 @@ public interface IVisitContentMutationLease : IAsyncDisposable
     string Token { get; }
 
     /// <summary>
+    /// Génération persistée que chaque écriture de contenu doit vérifier dans MongoDB.
+    /// </summary>
+    long ContentFenceToken { get; }
+
+    /// <summary>
     /// Annule le travail protégé si le détenteur ne peut plus renouveler son token exact.
     /// </summary>
     CancellationToken LeaseLostToken { get; }

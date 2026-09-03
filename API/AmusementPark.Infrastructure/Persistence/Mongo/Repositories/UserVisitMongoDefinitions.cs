@@ -9,6 +9,10 @@ internal static class UserVisitMongoDefinitions
 {
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
+    public const string ContentMutationFenceTokenPath = "contentMutationFenceToken";
+    public const string ContentMutationFenceStableTokenPath =
+        "contentMutationFenceStableToken";
+    public const string ContentMutationFenceReadyPath = "contentMutationFenceReady";
 
     public static FilterDefinition<UserVisitDocument> BuildOwnerFilter(string userId)
     {

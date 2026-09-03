@@ -104,13 +104,18 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
             updates.Set(static document => document.UpdatedAt, deleteAtUtc),
             updates.Set(
                 static document => document.LastDeleteOperationKeyHash,
-                operation.OperationKeyHash));
+                operation.OperationKeyHash),
+            updates.Set(
+                static document => document.ContentMutationFenceToken,
+                operation.ContentMutationFenceToken));
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
-                operation.DeleteOccurrenceId,
-                operation.VisitId,
-                operation.UserId,
-                expectedVersion),
+            UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
+                    operation.DeleteOccurrenceId,
+                    operation.VisitId,
+                    operation.UserId,
+                    expectedVersion),
+                operation.ContentMutationFenceToken),
             update,
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
@@ -119,10 +124,12 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
         if (!wasApplied)
         {
             UserRideOccurrenceDocument? current = await this.collection
-                .Find(UserRideOccurrenceMongoDefinitions.BuildOwnedAnyStateFilter(
-                    operation.DeleteOccurrenceId,
-                    operation.VisitId,
-                    operation.UserId))
+                .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                    UserRideOccurrenceMongoDefinitions.BuildOwnedAnyStateFilter(
+                        operation.DeleteOccurrenceId,
+                        operation.VisitId,
+                        operation.UserId),
+                    operation.ContentMutationFenceToken))
                 .FirstOrDefaultAsync(cancellationToken);
             wasApplied = current is not null
                 && current.Version == expectedVersion + 1
@@ -180,9 +187,11 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
             updates.Combine(definitions);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash),
+            UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken),
             update,
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
@@ -215,6 +224,7 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
             PayloadHash = operationKeyHash,
             OperationKind = DeleteOperationKind,
             VisitId = deletedOccurrence.VisitId,
+            ContentMutationFenceToken = deletedOccurrence.ContentMutationFenceToken,
             OperationState = PendingOperationState,
             DeleteOccurrenceId = deletedOccurrence.Id,
             DeleteExpectedVersion = expectedVersion,
