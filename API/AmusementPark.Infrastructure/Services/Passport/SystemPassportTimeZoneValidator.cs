@@ -12,19 +12,14 @@ public sealed class SystemPassportTimeZoneValidator : IPassportTimeZoneValidator
         }
 
         string normalizedTimeZoneId = timeZoneId.Trim();
-        if (!TimeZoneInfo.TryConvertIanaIdToWindowsId(
+        if (!string.Equals(normalizedTimeZoneId, "UTC", StringComparison.Ordinal)
+            && TimeZoneInfo.TryConvertWindowsIdToIanaId(
                 normalizedTimeZoneId,
-                out string? windowsTimeZoneId)
-            || string.IsNullOrWhiteSpace(windowsTimeZoneId))
+                out _))
         {
             return false;
         }
 
-        if (TimeZoneInfo.TryFindSystemTimeZoneById(normalizedTimeZoneId, out _))
-        {
-            return true;
-        }
-
-        return TimeZoneInfo.TryFindSystemTimeZoneById(windowsTimeZoneId, out _);
+        return TimeZoneInfo.TryFindSystemTimeZoneById(normalizedTimeZoneId, out _);
     }
 }

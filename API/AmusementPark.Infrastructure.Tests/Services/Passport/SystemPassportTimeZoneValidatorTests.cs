@@ -15,6 +15,21 @@ public sealed class SystemPassportTimeZoneValidatorTests
         Assert.True(validator.IsValid(timeZoneId));
     }
 
+    [Fact]
+    public void IsValid_WhenHostRecognizesIanaZoneWithoutWindowsMapping_ShouldAcceptIt()
+    {
+        const string timeZoneId = "Antarctica/Troll";
+        Assert.False(TimeZoneInfo.TryConvertIanaIdToWindowsId(timeZoneId, out _));
+        if (!TimeZoneInfo.TryFindSystemTimeZoneById(timeZoneId, out _))
+        {
+            return;
+        }
+
+        SystemPassportTimeZoneValidator validator = new SystemPassportTimeZoneValidator();
+
+        Assert.True(validator.IsValid(timeZoneId));
+    }
+
     [Theory]
     [InlineData("")]
     [InlineData("Mars/Olympus")]
