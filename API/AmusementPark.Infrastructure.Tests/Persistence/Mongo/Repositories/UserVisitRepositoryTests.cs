@@ -1,6 +1,8 @@
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -16,7 +18,7 @@ public sealed class UserVisitRepositoryTests
         new DateTime(2026, 9, 3, 8, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public async Task CreateAsync_ShouldInsertWithoutUpsertAndReturnThePersistedVisit()
+    public async Task CreateIdempotentAsync_ShouldInsertHashesAndReturnTheCreatedVisit()
     {
         Mock<IMongoCollection<UserVisitDocument>> collection =
             new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
@@ -33,13 +35,19 @@ public sealed class UserVisitRepositoryTests
         UserVisitRepository repository = CreateRepository(collection.Object);
         Visit visit = CreateDraftVisit();
 
-        Visit persisted = await repository.CreateAsync(visit, CancellationToken.None);
+        IdempotentVisitCreationResult result = await repository.CreateIdempotentAsync(
+            visit,
+            " request-1 ",
+            CancellationToken.None);
 
         Assert.NotNull(insertedDocument);
         Assert.Equal("visit-1", insertedDocument.Id);
         Assert.Equal("user-1", insertedDocument.UserId);
-        Assert.Equal(visit.Id, persisted.Id);
-        Assert.Equal(visit.Version, persisted.Version);
+        Assert.Equal(64, insertedDocument.CreationOperationKeyHash?.Length);
+        Assert.Equal(64, insertedDocument.CreationPayloadHash?.Length);
+        Assert.Equal(IdempotentVisitCreationStatus.Created, result.Status);
+        Assert.Equal(visit.Id, result.Visit?.Id);
+        Assert.Equal(visit.Version, result.Visit?.Version);
         collection.VerifyAll();
     }
 
@@ -49,23 +57,23 @@ public sealed class UserVisitRepositoryTests
         Mock<IMongoCollection<UserVisitDocument>> collection =
             new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
         FilterDefinition<UserVisitDocument>? capturedFilter = null;
-        UserVisitDocument? replacement = null;
-        collection.Setup(value => value.ReplaceOneAsync(
+        UpdateDefinition<UserVisitDocument>? capturedUpdate = null;
+        collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
-                It.IsAny<UserVisitDocument>(),
-                It.IsAny<ReplaceOptions>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
                 CancellationToken.None))
             .Callback((
                 FilterDefinition<UserVisitDocument> filter,
-                UserVisitDocument document,
-                ReplaceOptions options,
+                UpdateDefinition<UserVisitDocument> update,
+                UpdateOptions options,
                 CancellationToken _) =>
             {
                 capturedFilter = filter;
-                replacement = document;
+                capturedUpdate = update;
                 Assert.False(options.IsUpsert);
             })
-            .ReturnsAsync(new ReplaceOneResult.Acknowledged(1, 1, null));
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         UserVisitRepository repository = CreateRepository(collection.Object);
         Visit visit = CreateDraftVisit();
         visit.UpdateDraft(
@@ -87,7 +95,11 @@ public sealed class UserVisitRepositoryTests
         Assert.Equal("visit-1", rendered["_id"].AsString);
         Assert.Equal("user-1", rendered["userId"].AsString);
         Assert.Equal(1, rendered["version"].AsInt64);
-        Assert.Equal(2, replacement?.Version);
+        Assert.NotNull(capturedUpdate);
+        BsonDocument renderedUpdate = Render(capturedUpdate);
+        Assert.Equal(2, renderedUpdate["$set"].AsBsonDocument["version"].AsInt64);
+        Assert.False(renderedUpdate.ToString().Contains("creationOperationKeyHash", StringComparison.Ordinal));
+        Assert.False(renderedUpdate.ToString().Contains("creationPayloadHash", StringComparison.Ordinal));
         collection.VerifyAll();
     }
 
@@ -96,12 +108,12 @@ public sealed class UserVisitRepositoryTests
     {
         Mock<IMongoCollection<UserVisitDocument>> collection =
             new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
-        collection.Setup(value => value.ReplaceOneAsync(
+        collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
-                It.IsAny<UserVisitDocument>(),
-                It.IsAny<ReplaceOptions>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ReplaceOneResult.Acknowledged(0, 0, null));
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
         UserVisitRepository repository = CreateRepository(collection.Object);
         Visit visit = CreateDraftVisit();
         visit.UpdateDraft(
@@ -160,9 +172,39 @@ public sealed class UserVisitRepositoryTests
 
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
             () => repository.ListOwnedAsync(
-                "user-1",
-                UserVisitRepository.MaximumListSize + 1,
+                new UserVisitListCriteria(
+                    "user-1",
+                    UserVisitRepository.MaximumListSize + 1),
                 CancellationToken.None));
+    }
+
+    [Fact]
+    public void ResolveIdempotentCreation_WhenPayloadMatches_ShouldReplayTheExistingVisit()
+    {
+        Visit visit = CreateDraftVisit();
+        UserVisitDocument document = visit.ToDocument();
+        document.CreationPayloadHash = UserVisitCreationFingerprint.HashPayload(visit);
+
+        IdempotentVisitCreationResult result = UserVisitRepository.ResolveIdempotentCreation(
+            document,
+            document.CreationPayloadHash);
+
+        Assert.Equal(IdempotentVisitCreationStatus.Replayed, result.Status);
+        Assert.Equal(visit.Id, result.Visit?.Id);
+    }
+
+    [Fact]
+    public void ResolveIdempotentCreation_WhenPayloadDiffers_ShouldReturnAConflict()
+    {
+        UserVisitDocument document = CreateDraftVisit().ToDocument();
+        document.CreationPayloadHash = "first-payload";
+
+        IdempotentVisitCreationResult result = UserVisitRepository.ResolveIdempotentCreation(
+            document,
+            "second-payload");
+
+        Assert.Equal(IdempotentVisitCreationStatus.Conflict, result.Status);
+        Assert.Null(result.Visit);
     }
 
     private static UserVisitRepository CreateRepository(
@@ -200,5 +242,17 @@ public sealed class UserVisitRepositoryTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return filter.Render(arguments);
+    }
+
+    private static BsonDocument Render(
+        UpdateDefinition<UserVisitDocument> update)
+    {
+        IBsonSerializer<UserVisitDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserVisitDocument>();
+        RenderArgs<UserVisitDocument> arguments =
+            new RenderArgs<UserVisitDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry);
+        return update.Render(arguments).AsBsonDocument;
     }
 }

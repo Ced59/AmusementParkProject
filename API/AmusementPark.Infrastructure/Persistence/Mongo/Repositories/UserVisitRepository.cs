@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -22,15 +23,44 @@ public sealed class UserVisitRepository : IUserVisitRepository
             settings.UserVisitsCollectionName);
     }
 
-    public async Task<Visit> CreateAsync(
+    public async Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
         Visit visit,
+        string clientOperationId,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(visit);
+        string normalizedOperationId = NormalizeRequired(
+            clientOperationId,
+            nameof(clientOperationId));
         UserVisitDocument document = visit.ToDocument();
-        await this.collection.InsertOneAsync(
-            document,
-            cancellationToken: cancellationToken);
-        return document.ToDomain();
+        document.CreationOperationKeyHash =
+            UserVisitCreationFingerprint.HashOperationKey(normalizedOperationId);
+        document.CreationPayloadHash = UserVisitCreationFingerprint.HashPayload(visit);
+
+        try
+        {
+            await this.collection.InsertOneAsync(
+                document,
+                cancellationToken: cancellationToken);
+            return new IdempotentVisitCreationResult(
+                IdempotentVisitCreationStatus.Created,
+                document.ToDomain());
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            UserVisitDocument? existing = await this.collection
+                .Find(UserVisitMongoDefinitions.BuildCreationOperationFilter(
+                    document.UserId,
+                    document.CreationOperationKeyHash))
+                .FirstOrDefaultAsync(cancellationToken);
+            if (existing is null)
+            {
+                throw;
+            }
+
+            return ResolveIdempotentCreation(existing, document.CreationPayloadHash);
+        }
     }
 
     public async Task<Visit?> GetOwnedAsync(
@@ -44,26 +74,36 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return document?.ToDomain();
     }
 
-    public async Task<IReadOnlyCollection<Visit>> ListOwnedAsync(
-        string userId,
-        int limit,
+    public async Task<UserVisitPage> ListOwnedAsync(
+        UserVisitListCriteria criteria,
         CancellationToken cancellationToken)
     {
-        if (limit is < 1 or > MaximumListSize)
+        ArgumentNullException.ThrowIfNull(criteria);
+        if (criteria.Limit is < 1 or > MaximumListSize)
         {
             throw new ArgumentOutOfRangeException(
-                nameof(limit),
+                nameof(criteria),
                 $"The visit list size must be between 1 and {MaximumListSize}.");
         }
 
         List<UserVisitDocument> documents = await this.collection
-            .Find(UserVisitMongoDefinitions.BuildOwnerFilter(userId))
+            .Find(UserVisitMongoDefinitions.BuildListFilter(criteria))
             .Sort(UserVisitMongoDefinitions.BuildNewestVisitSort())
-            .Limit(limit)
+            .Limit(criteria.Limit + 1)
             .ToListAsync(cancellationToken);
-        return documents
+
+        bool hasNextPage = documents.Count > criteria.Limit;
+        List<Visit> visits = documents
+            .Take(criteria.Limit)
             .Select(static document => document.ToDomain())
             .ToList();
+        UserVisitListCursor? nextCursor = hasNextPage && visits.Count > 0
+            ? new UserVisitListCursor(
+                visits[^1].Date,
+                visits[^1].UpdatedAtUtc,
+                visits[^1].Id)
+            : null;
+        return new UserVisitPage(visits, nextCursor);
     }
 
     public async Task<bool> TryUpdateOwnedAsync(
@@ -80,13 +120,13 @@ public sealed class UserVisitRepository : IUserVisitRepository
         }
 
         UserVisitDocument document = visit.ToDocument();
-        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+        UpdateResult result = await this.collection.UpdateOneAsync(
             UserVisitMongoDefinitions.BuildOwnedVersionFilter(
                 document.Id,
                 document.UserId,
                 expectedVersion),
-            document,
-            new ReplaceOptions { IsUpsert = false },
+            BuildDomainUpdate(document),
+            new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
     }
@@ -104,5 +144,72 @@ public sealed class UserVisitRepository : IUserVisitRepository
                 expectedVersion),
             cancellationToken);
         return result.DeletedCount == 1;
+    }
+
+    internal static IdempotentVisitCreationResult ResolveIdempotentCreation(
+        UserVisitDocument existing,
+        string payloadHash)
+    {
+        ArgumentNullException.ThrowIfNull(existing);
+        bool payloadMatches = !string.IsNullOrWhiteSpace(existing.CreationPayloadHash)
+            && string.Equals(
+                existing.CreationPayloadHash,
+                payloadHash,
+                StringComparison.Ordinal);
+        return payloadMatches
+            ? new IdempotentVisitCreationResult(
+                IdempotentVisitCreationStatus.Replayed,
+                existing.ToDomain())
+            : new IdempotentVisitCreationResult(
+                IdempotentVisitCreationStatus.Conflict,
+                null);
+    }
+
+    internal static UpdateDefinition<UserVisitDocument> BuildDomainUpdate(
+        UserVisitDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+
+        UpdateDefinitionBuilder<UserVisitDocument> updates =
+            Builders<UserVisitDocument>.Update;
+        List<UpdateDefinition<UserVisitDocument>> definitions = new List<UpdateDefinition<UserVisitDocument>>
+        {
+            updates.Set(static item => item.ParkId, document.ParkId),
+            updates.Set(static item => item.Date, document.Date),
+            updates.Set(static item => item.DateSortKey, document.DateSortKey),
+            updates.Set(static item => item.ServiceDayConvention, document.ServiceDayConvention),
+            updates.Set(static item => item.Status, document.Status),
+            updates.Set(static item => item.Privacy, document.Privacy),
+            updates.Set(static item => item.Version, document.Version),
+            updates.Set(static item => item.CreatedAt, document.CreatedAt),
+            updates.Set(static item => item.UpdatedAt, document.UpdatedAt),
+        };
+        AddOptionalUpdate(definitions, updates, "timeZoneId", document.TimeZoneId);
+        AddOptionalUpdate(definitions, updates, "title", document.Title);
+        AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
+        AddOptionalUpdate(definitions, updates, "completedAtUtc", document.CompletedAtUtc);
+        return updates.Combine(definitions);
+    }
+
+    private static void AddOptionalUpdate<TValue>(
+        ICollection<UpdateDefinition<UserVisitDocument>> definitions,
+        UpdateDefinitionBuilder<UserVisitDocument> updates,
+        string fieldName,
+        TValue? value)
+    {
+        definitions.Add(value is null
+            ? updates.Unset(fieldName)
+            : updates.Set(fieldName, value));
+    }
+
+    private static string NormalizeRequired(string? value, string parameterName)
+    {
+        string normalizedValue = value?.Trim() ?? string.Empty;
+        if (normalizedValue.Length == 0)
+        {
+            throw new ArgumentException("A non-empty value is required.", parameterName);
+        }
+
+        return normalizedValue;
     }
 }

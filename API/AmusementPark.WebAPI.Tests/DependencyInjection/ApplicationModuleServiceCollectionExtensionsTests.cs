@@ -10,6 +10,9 @@ using AmusementPark.Application.Features.Contact.Commands;
 using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Queries;
+using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.ParkPricing.Commands;
 using AmusementPark.Application.Features.ParkPricing.Queries;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -62,6 +65,9 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpdateTechnicalStatsSettingsCommand, ApplicationResult<TechnicalStatsSettings>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkPricingQuery, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertParkPricingCommand, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>));
     }
 
     [Fact]

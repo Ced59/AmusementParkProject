@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
+using AmusementPark.Infrastructure.Services.Passport;
 using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -53,6 +54,26 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             static service => service.ServiceType == typeof(IUserVisitRepository));
         Assert.Equal(typeof(UserVisitRepository), registration.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterPassportClockAndTimeZoneValidator()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor clock = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IPassportClock));
+        Assert.Equal(typeof(SystemPassportClock), clock.ImplementationType);
+        Assert.Equal(ServiceLifetime.Singleton, clock.Lifetime);
+        ServiceDescriptor timeZones = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IPassportTimeZoneValidator));
+        Assert.Equal(typeof(SystemPassportTimeZoneValidator), timeZones.ImplementationType);
+        Assert.Equal(ServiceLifetime.Singleton, timeZones.Lifetime);
     }
 
     [Fact]

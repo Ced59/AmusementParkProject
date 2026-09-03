@@ -24,6 +24,7 @@ Chaque feature migrée doit suivre une structure homogène :
 - `Images`
 - `Search`
 - `CaptainCoaster`
+- `Passport`
 
 ## Règles
 

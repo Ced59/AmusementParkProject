@@ -17,6 +17,9 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("date")]
     public VisitDateDocument Date { get; set; } = new VisitDateDocument();
 
+    [BsonElement("dateSortKey")]
+    public int DateSortKey { get; set; }
+
     [BsonElement("timeZoneId")]
     [BsonIgnoreIfNull]
     public string? TimeZoneId { get; set; }
@@ -47,6 +50,14 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("completedAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? CompletedAtUtc { get; set; }
+
+    [BsonElement("creationOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? CreationOperationKeyHash { get; set; }
+
+    [BsonElement("creationPayloadHash")]
+    [BsonIgnoreIfNull]
+    public string? CreationPayloadHash { get; set; }
 }
 
 [BsonIgnoreExtraElements]

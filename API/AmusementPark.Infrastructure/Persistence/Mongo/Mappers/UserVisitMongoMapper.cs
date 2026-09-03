@@ -1,5 +1,6 @@
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
@@ -15,6 +16,10 @@ internal static class UserVisitMongoMapper
             UserId = visit.UserId,
             ParkId = visit.ParkId,
             Date = visit.Date.ToDocument(),
+            DateSortKey = UserVisitMongoDefinitions.ToDateSortKey(
+                visit.Date.Year,
+                visit.Date.Month,
+                visit.Date.Day),
             TimeZoneId = visit.TimeZoneId,
             ServiceDayConvention = visit.ServiceDayConvention,
             Status = visit.Status,

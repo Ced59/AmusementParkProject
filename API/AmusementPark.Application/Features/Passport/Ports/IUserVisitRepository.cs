@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Ports;
@@ -7,16 +8,18 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IUserVisitRepository
 {
-    Task<Visit> CreateAsync(Visit visit, CancellationToken cancellationToken);
+    Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
+        Visit visit,
+        string clientOperationId,
+        CancellationToken cancellationToken);
 
     Task<Visit?> GetOwnedAsync(
         VisitId visitId,
         string userId,
         CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<Visit>> ListOwnedAsync(
-        string userId,
-        int limit,
+    Task<UserVisitPage> ListOwnedAsync(
+        UserVisitListCriteria criteria,
         CancellationToken cancellationToken);
 
     Task<bool> TryUpdateOwnedAsync(

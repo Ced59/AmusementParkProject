@@ -92,6 +92,7 @@ public sealed class UserVisitMongoMapperTests
         Assert.Equal("visit-3", serialized["_id"].AsString);
         Assert.Equal("user-1", serialized["userId"].AsString);
         Assert.Equal("park-1", serialized["parkId"].AsString);
+        Assert.Equal(20010000, serialized["dateSortKey"].AsInt32);
         Assert.Equal("VisitStartLocalDate", serialized["serviceDayConvention"].AsString);
         Assert.Equal("Draft", serialized["status"].AsString);
         Assert.Equal("Private", serialized["privacy"].AsString);
@@ -103,6 +104,8 @@ public sealed class UserVisitMongoMapperTests
         Assert.False(date.Contains("day"));
         Assert.False(serialized.Contains("timeZoneId"));
         Assert.False(serialized.Contains("completedAtUtc"));
+        Assert.False(serialized.Contains("creationOperationKeyHash"));
+        Assert.False(serialized.Contains("creationPayloadHash"));
     }
 
     [Fact]

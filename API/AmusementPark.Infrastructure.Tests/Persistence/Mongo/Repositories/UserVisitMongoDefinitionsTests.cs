@@ -1,3 +1,5 @@
+using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -57,9 +59,7 @@ public sealed class UserVisitMongoDefinitionsTests
     {
         BsonDocument rendered = Render(UserVisitMongoDefinitions.BuildNewestVisitSort());
 
-        Assert.Equal(-1, rendered["date.year"].AsInt32);
-        Assert.Equal(-1, rendered["date.month"].AsInt32);
-        Assert.Equal(-1, rendered["date.day"].AsInt32);
+        Assert.Equal(-1, rendered["dateSortKey"].AsInt32);
         Assert.Equal(-1, rendered["updatedAt"].AsInt32);
         Assert.Equal(1, rendered["_id"].AsInt32);
     }
@@ -70,7 +70,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(3, indexes.Length);
+        Assert.Equal(5, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -99,7 +99,64 @@ public sealed class UserVisitMongoDefinitionsTests
                 { "status", 1 },
                 { "updatedAt", -1 },
             });
-        Assert.All(indexes, static index => Assert.NotEqual(true, index.Options.Unique));
+        AssertIndex(
+            indexes[3],
+            "idx_user_visits_user_cursor",
+            new BsonDocument
+            {
+                { "userId", 1 },
+                { "dateSortKey", -1 },
+                { "updatedAt", -1 },
+                { "_id", 1 },
+            });
+        AssertIndex(
+            indexes[4],
+            "idx_user_visits_user_creation_operation",
+            new BsonDocument
+            {
+                { "userId", 1 },
+                { "creationOperationKeyHash", 1 },
+            });
+        Assert.True(indexes[4].Options.Unique);
+        Assert.NotNull(indexes[4].Options.PartialFilterExpression);
+        Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
+    }
+
+    [Fact]
+    public void BuildListFilter_ShouldApplyOwnerFiltersAndAnExclusiveCursor()
+    {
+        UserVisitListCriteria criteria = new UserVisitListCriteria(
+            " user-1 ",
+            25,
+            " park-1 ",
+            2026,
+            VisitStatus.Completed,
+            new UserVisitListCursor(
+                VisitDate.ForDay(2026, 8, 31),
+                new DateTime(2026, 9, 1, 8, 0, 0, DateTimeKind.Utc),
+                VisitId.Parse("visit-9")));
+
+        BsonDocument rendered = Render(UserVisitMongoDefinitions.BuildListFilter(criteria));
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal("park-1", rendered["parkId"].AsString);
+        Assert.Equal(2026, rendered["date.year"].AsInt32);
+        Assert.Equal("Completed", rendered["status"].AsString);
+        Assert.True(rendered.Contains("$or"));
+        Assert.Equal(3, rendered["$or"].AsBsonArray.Count);
+    }
+
+    [Theory]
+    [InlineData(2026, null, null, 20260000)]
+    [InlineData(2026, 8, null, 20260800)]
+    [InlineData(2026, 8, 31, 20260831)]
+    public void ToDateSortKey_ShouldKeepPartialDatesChronological(
+        int year,
+        int? month,
+        int? day,
+        int expected)
+    {
+        Assert.Equal(expected, UserVisitMongoDefinitions.ToDateSortKey(year, month, day));
     }
 
     [Fact]
