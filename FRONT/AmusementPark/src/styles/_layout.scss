@@ -102,6 +102,10 @@
   flex: 1 0 auto;
 }
 
+.app-layout-main.app-layout-main--modal-open {
+  z-index: 230;
+}
+
 .app-public-layout__content,
 .app-account-layout__content {
   min-height: calc(100vh - var(--topbar-height) - 9rem);

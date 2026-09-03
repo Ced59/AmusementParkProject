@@ -77,6 +77,8 @@ desktop/tablette : largeur <= 100vw - marges, contenu scrollé dans le dialogue
 
 Les conteneurs utilisent `min-width: 0`, les textes longs peuvent se replier, les champs et zones de texte sont limités à `100%`, et les paddings respectent les safe areas gauche, droite, haute et basse. Les actions restent accessibles au clavier et au-dessus de la safe area pendant le défilement.
 
+Pendant l'ouverture, le composant élève temporairement le contexte d'empilement `.app-layout-main` au-dessus de la navigation mobile fixe. La classe est retirée à la fermeture et à la destruction du composant. Le masque et les actions ne peuvent donc ni être recouverts ni perdre les clics au profit de la navigation basse.
+
 Les tests de régression vérifient explicitement `100dvh`, `100vw`, les safe areas et les ruptures à 520 et 360 pixels. La validation finale après déploiement doit contrôler les largeurs réelles 320, 360 et 390 pixels sur les deux points d'entrée.
 
 ## Preuves automatisées
@@ -84,7 +86,7 @@ Les tests de régression vérifient explicitement `100dvh`, `100vw`, les safe ar
 - mapper : année seule, date approximative, année bissextile, jour impossible, textes optionnels et identifiants opaques ;
 - data access : route propriétaire et header `Idempotency-Key` ;
 - façade : retry identique, changement de payload, session absente et date partielle invalide ;
-- composant : bornes viewport, safe areas et repli mobile ;
+- composant : bornes viewport, safe areas, repli mobile et priorité du calque modal sur la navigation fixe ;
 - intégration : suites existantes du profil et des parcs.
 
 ## Limites de la tranche

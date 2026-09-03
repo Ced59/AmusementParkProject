@@ -1,4 +1,18 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  Renderer2,
+  SimpleChanges,
+  inject,
+  signal
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,7 +43,7 @@ type PassportVisitQuickCreateForm = FormGroup<{
   providers: [PassportVisitQuickCreateStateFacade],
   imports: [Dialog, ReactiveFormsModule, TranslateModule, UiButtonDirective]
 })
-export class PassportVisitQuickCreateComponent implements OnChanges {
+export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
   @Input() visible: boolean = false;
   @Input() fixedParkId: string | null = null;
   @Input() fixedParkName: string | null = null;
@@ -51,6 +65,9 @@ export class PassportVisitQuickCreateComponent implements OnChanges {
   });
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
+  private readonly renderer: Renderer2 = inject(Renderer2);
+  private modalLayerElement: HTMLElement | null = null;
 
   constructor() {
     this.parkSearchControl.valueChanges
@@ -68,12 +85,19 @@ export class PassportVisitQuickCreateComponent implements OnChanges {
       && !fixedParkChange.firstChange
       && fixedParkChange.previousValue !== fixedParkChange.currentValue) {
       this.resetForm();
-      return;
     }
 
     if (changes['fixedParkId'] || changes['fixedParkName'] || changes['visible']) {
       this.applyFixedPark();
     }
+
+    if (changes['visible']) {
+      this.setModalLayerActive(this.visible);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.setModalLayerActive(false);
   }
 
   protected setPrecision(precision: PassportVisitDatePrecision): void {
@@ -116,6 +140,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges {
   protected close(): void {
     const shouldReset: boolean = this.facade.createdVisit() !== null;
     this.visible = false;
+    this.setModalLayerActive(false);
     this.visibleChange.emit(false);
     if (shouldReset) {
       this.resetForm();
@@ -124,6 +149,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges {
 
   protected onDialogVisibleChange(visible: boolean): void {
     this.visible = visible;
+    this.setModalLayerActive(visible);
     this.visibleChange.emit(visible);
     if (!visible && this.facade.createdVisit()) {
       this.resetForm();
@@ -176,5 +202,23 @@ export class PassportVisitQuickCreateComponent implements OnChanges {
 
     this.form.controls.parkId.setValue(parkId, { emitEvent: false });
     this.selectedParkName.set(this.fixedParkName?.trim() || parkId);
+  }
+
+  private setModalLayerActive(active: boolean): void {
+    if (active && !this.modalLayerElement) {
+      this.modalLayerElement = this.elementRef.nativeElement.closest('.app-layout-main');
+    }
+
+    if (!this.modalLayerElement) {
+      return;
+    }
+
+    if (active) {
+      this.renderer.addClass(this.modalLayerElement, 'app-layout-main--modal-open');
+      return;
+    }
+
+    this.renderer.removeClass(this.modalLayerElement, 'app-layout-main--modal-open');
+    this.modalLayerElement = null;
   }
 }
