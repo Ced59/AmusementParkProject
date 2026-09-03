@@ -87,6 +87,20 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(component.shouldDisplayAssessment('Completed', false)).toBe(false);
   });
 
+  it('keeps a saved occurrence note readable without reopening a locked visit', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      shouldDisplayReadOnlyOccurrenceNote(
+        status: 'Draft' | 'Completed' | 'Archived' | null,
+        privateNote: string | null
+      ): boolean;
+    };
+
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Completed', 'Tour nocturne')).toBe(true);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Archived', 'Souvenir')).toBe(true);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Draft', 'Encore modifiable')).toBe(false);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Completed', '   ')).toBe(false);
+  });
+
   it('forwards private assessment comments on input so newer text survives in-flight saves', () => {
     const updateParkAssessmentDraft = vi.fn();
     const component = Object.create(PassportVisitEditorPageComponent.prototype) as {

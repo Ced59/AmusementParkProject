@@ -135,12 +135,14 @@ public sealed class AddRideOccurrencesBatchCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
         return await this.HandleWithinContentMutationLeaseAsync(
             creationRequest,
             expanded,
             operationId,
             validatedVisit,
-            cancellationToken);
+            leaseCancellationSource?.Token ?? cancellationToken);
     }
 
     private async Task<ApplicationResult<CreateRideOccurrencesResult>>

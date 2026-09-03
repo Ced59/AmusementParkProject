@@ -223,11 +223,15 @@ public sealed class ReorderRideOccurrenceCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
         IdempotentRideOccurrenceReorderResult? existing =
             await this.occurrenceRepository.ResolveExistingReorderAsync(
                 request,
                 operationId,
-                cancellationToken);
+                guardedCancellationToken);
         if (existing is not null)
         {
             return ToApplicationResult(existing);
@@ -236,7 +240,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
         visit ??= await this.visitRepository.GetOwnedAsync(
             scope.VisitId,
             scope.UserId,
-            cancellationToken);
+            guardedCancellationToken);
         if (visit is null)
         {
             return Failure(PassportApplicationErrors.VisitNotFound());
@@ -255,7 +259,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 this.occurrenceRepository,
                 scope.VisitId,
                 scope.UserId,
-                cancellationToken);
+                guardedCancellationToken);
         }
         catch (InvalidOperationException)
         {
@@ -327,7 +331,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 nowUtc,
                 operationId,
                 null,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.occurrenceRepository.ReorderIdempotentAuditedAsync(
                 request,
                 changes,
@@ -338,14 +342,14 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 operationId,
                 null,
                 auditEvents,
-                cancellationToken);
+                guardedCancellationToken);
         if (result.Status is IdempotentRideOccurrenceReorderStatus.Applied
             or IdempotentRideOccurrenceReorderStatus.Replayed)
         {
             await PassportAuditDelivery.PublishAsync(
                 this.auditPublisher,
                 auditEvents,
-                cancellationToken);
+                guardedCancellationToken);
         }
 
         return ToApplicationResult(result);

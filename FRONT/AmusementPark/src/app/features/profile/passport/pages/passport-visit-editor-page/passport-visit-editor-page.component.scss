@@ -685,6 +685,37 @@
   overflow-wrap: anywhere;
 }
 
+.passport-occurrence__private-note {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.4rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 18%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 5%, var(--app-surface));
+  box-sizing: border-box;
+}
+
+.passport-occurrence__private-note strong {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-heading);
+  overflow-wrap: anywhere;
+}
+
+.passport-occurrence__private-note p {
+  min-width: 0;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .passport-ride-assessment {
   width: 100%;
   max-width: 100%;

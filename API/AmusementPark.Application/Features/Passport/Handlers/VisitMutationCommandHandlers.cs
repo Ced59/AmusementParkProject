@@ -118,6 +118,10 @@ public sealed class UpdateVisitMetadataCommandHandler :
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
         if (temporalIdentityChanged && this.occurrenceRepository is not null)
         {
             RideOccurrencePage firstOccurrencePage =
@@ -126,7 +130,7 @@ public sealed class UpdateVisitMetadataCommandHandler :
                         visit.Id,
                         visit.UserId,
                         1),
-                    cancellationToken);
+                    guardedCancellationToken);
             if (firstOccurrencePage.Items.Count > 0)
             {
                 return ApplicationResult<VisitResult>.Failure(
@@ -156,7 +160,7 @@ public sealed class UpdateVisitMetadataCommandHandler :
                 visit.Id,
                 visit.UserId,
                 command.ExpectedVersion,
-                cancellationToken);
+                guardedCancellationToken);
             if (!versionIsCurrent)
             {
                 return ApplicationResult<VisitResult>.Failure(
@@ -172,13 +176,13 @@ public sealed class UpdateVisitMetadataCommandHandler :
                 visit,
                 command.ExpectedVersion,
                 auditEvent,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.visitRepository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
                 visit,
                 command.ExpectedVersion,
                 auditEvent,
                 contentMutationLease.Token,
-                cancellationToken);
+                guardedCancellationToken);
         if (!updated)
         {
             return ApplicationResult<VisitResult>.Failure(
@@ -188,7 +192,7 @@ public sealed class UpdateVisitMetadataCommandHandler :
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
-            cancellationToken);
+            guardedCancellationToken);
         return ApplicationResult<VisitResult>.Success(PassportVisitResultFactory.Create(visit));
     }
 

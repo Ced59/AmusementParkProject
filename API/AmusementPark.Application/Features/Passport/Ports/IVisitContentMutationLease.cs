@@ -8,6 +8,11 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 public interface IVisitContentMutationLease : IAsyncDisposable
 {
     string Token { get; }
+
+    /// <summary>
+    /// Annule le travail protégé si le détenteur ne peut plus renouveler son token exact.
+    /// </summary>
+    CancellationToken LeaseLostToken { get; }
 }
 
 public interface IVisitContentMutationLeaseManager

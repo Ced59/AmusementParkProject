@@ -78,15 +78,21 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
 
             await using (contentMutationLease)
             {
+                using CancellationTokenSource? leaseCancellationSource =
+                    PassportLeaseCancellation.Link(
+                        contentMutationLease,
+                        cancellationToken);
+                CancellationToken guardedCancellationToken =
+                    leaseCancellationSource?.Token ?? cancellationToken;
                 bool canRecover = CanRecover(candidate, visit);
                 bool reconciled = canRecover
                     ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
                         candidate,
-                        cancellationToken)
+                        guardedCancellationToken)
                     : await this.occurrenceRepository.TryRejectPendingMutationAsync(
                         candidate,
                         this.clock.UtcNow,
-                        cancellationToken);
+                        guardedCancellationToken);
                 if (reconciled)
                 {
                     reconciledCount++;
@@ -119,13 +125,19 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
 
         await using (contentMutationLease)
         {
+            using CancellationTokenSource? leaseCancellationSource =
+                PassportLeaseCancellation.Link(
+                    contentMutationLease,
+                    cancellationToken);
+            CancellationToken guardedCancellationToken =
+                leaseCancellationSource?.Token ?? cancellationToken;
             while (true)
             {
                 PendingPassportMutationVisit? candidate =
                     await this.occurrenceRepository.GetPendingMutationAsync(
                         visit.UserId,
                         visit.Id,
-                        cancellationToken);
+                        guardedCancellationToken);
                 if (candidate is null)
                 {
                     return true;
@@ -134,11 +146,11 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 bool reconciled = CanRecover(candidate, visit)
                     ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
                         candidate,
-                        cancellationToken)
+                        guardedCancellationToken)
                     : await this.occurrenceRepository.TryRejectPendingMutationAsync(
                         candidate,
                         this.clock.UtcNow,
-                        cancellationToken);
+                        guardedCancellationToken);
                 if (!reconciled)
                 {
                     return false;

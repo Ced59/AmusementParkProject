@@ -104,6 +104,10 @@ public sealed class UpsertRideAssessmentCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
@@ -133,12 +137,12 @@ public sealed class UpsertRideAssessmentCommandHandler
             ? await this.occurrenceRepository.TryUpdateOwnedAsync(
                 occurrence,
                 expectedVersion,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
                 occurrence,
                 expectedVersion,
                 auditEvent,
-                cancellationToken);
+                guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
@@ -147,7 +151,7 @@ public sealed class UpsertRideAssessmentCommandHandler
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
-            cancellationToken);
+            guardedCancellationToken);
         return Success(occurrence);
     }
 
@@ -300,6 +304,10 @@ public sealed class DeleteRideAssessmentCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
@@ -321,7 +329,7 @@ public sealed class DeleteRideAssessmentCommandHandler
                 occurrence.VisitId,
                 occurrence.UserId,
                 expectedVersion,
-                cancellationToken);
+                guardedCancellationToken);
             return versionIsCurrent
                 ? Success(occurrence)
                 : Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
@@ -336,12 +344,12 @@ public sealed class DeleteRideAssessmentCommandHandler
             ? await this.occurrenceRepository.TryUpdateOwnedAsync(
                 occurrence,
                 expectedVersion,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
                 occurrence,
                 expectedVersion,
                 auditEvent,
-                cancellationToken);
+                guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
@@ -350,7 +358,7 @@ public sealed class DeleteRideAssessmentCommandHandler
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
-            cancellationToken);
+            guardedCancellationToken);
         return Success(occurrence);
     }
 

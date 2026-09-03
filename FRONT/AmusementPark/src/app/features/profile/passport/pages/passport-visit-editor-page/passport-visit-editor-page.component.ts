@@ -153,6 +153,13 @@ export class PassportVisitEditorPageComponent {
     return status === 'Draft' || hasAssessment;
   }
 
+  protected shouldDisplayReadOnlyOccurrenceNote(
+    status: PassportVisitStatus | null | undefined,
+    privateNote: string | null | undefined
+  ): boolean {
+    return status !== 'Draft' && status != null && Boolean(privateNote?.trim());
+  }
+
   protected updateVisitPrecision(event: Event): void {
     this.facade.updateVisitMetadataDraft({
       precision: this.eventValue(event) as PassportVisitDatePrecision

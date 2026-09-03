@@ -636,6 +636,7 @@ public sealed class RideOccurrenceHandlersTests
                 NowUtc.AddMinutes(1),
                 CancellationToken.None))
             .ReturnsAsync(lease.Object);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         AddRideOccurrencesBatchCommandHandler handler =
             new AddRideOccurrencesBatchCommandHandler(

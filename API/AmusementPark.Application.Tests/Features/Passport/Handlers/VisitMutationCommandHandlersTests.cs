@@ -33,6 +33,7 @@ public sealed class VisitMutationCommandHandlersTests
         Mock<IVisitContentMutationLease> lease =
             new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
         lease.SetupGet(value => value.Token).Returns("lease-1");
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         Mock<IVisitContentMutationLeaseManager> leases =
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
@@ -118,6 +119,7 @@ public sealed class VisitMutationCommandHandlersTests
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
         Mock<IVisitContentMutationLease> lease =
             new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         Mock<IVisitContentMutationLeaseManager> leases =
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);

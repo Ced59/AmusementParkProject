@@ -530,6 +530,19 @@
                     }
                   </div>
 
+                  @if (shouldDisplayReadOnlyOccurrenceNote(
+                    facade.visit()?.status,
+                    row.occurrence.privateNote
+                  )) {
+                    <div class="passport-occurrence__private-note" role="note">
+                      <strong>
+                        <i class="pi pi-lock" aria-hidden="true"></i>
+                        {{ 'passport.editor.fields.privateNote' | translate }}
+                      </strong>
+                      <p>{{ row.occurrence.privateNote }}</p>
+                    </div>
+                  }
+
                   @if (shouldDisplayAssessment(
                     facade.visit()?.status,
                     row.occurrence.assessment != null

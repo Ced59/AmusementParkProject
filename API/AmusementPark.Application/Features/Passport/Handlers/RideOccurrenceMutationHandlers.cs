@@ -133,6 +133,10 @@ public sealed class UpdateRideOccurrenceCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
 
         long expectedVersion = occurrence.Version;
         RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
@@ -162,7 +166,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
                     occurrence.VisitId,
                     occurrence.UserId,
                     expectedVersion,
-                    cancellationToken);
+                    guardedCancellationToken);
             return versionIsCurrent
                 ? Success(occurrence)
                 : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -178,12 +182,12 @@ public sealed class UpdateRideOccurrenceCommandHandler
             ? await this.occurrenceRepository.TryUpdateOwnedAsync(
                 occurrence,
                 expectedVersion,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.occurrenceRepository.TryUpdateOwnedAuditedAsync(
                 occurrence,
                 expectedVersion,
                 auditEvent,
-                cancellationToken);
+                guardedCancellationToken);
         if (!updated)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -192,7 +196,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
-            cancellationToken);
+            guardedCancellationToken);
         return Success(occurrence);
     }
 
@@ -300,6 +304,10 @@ public sealed class DeleteRideOccurrenceCommandHandler
 
         await using IVisitContentMutationLease? contentMutationLeaseScope =
             contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
 
         long expectedVersion = occurrence.Version;
         occurrence.Delete(this.clock.UtcNow);
@@ -312,12 +320,12 @@ public sealed class DeleteRideOccurrenceCommandHandler
             ? await this.occurrenceRepository.TryDeleteOwnedAsync(
                 occurrence,
                 expectedVersion,
-                cancellationToken)
+                guardedCancellationToken)
             : await this.occurrenceRepository.TryDeleteOwnedAuditedAsync(
                 occurrence,
                 expectedVersion,
                 auditEvent,
-                cancellationToken);
+                guardedCancellationToken);
         if (!deleted)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -326,7 +334,7 @@ public sealed class DeleteRideOccurrenceCommandHandler
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
-            cancellationToken);
+            guardedCancellationToken);
         return ApplicationResult<RideOccurrenceResult>.Success(
             PassportRideOccurrenceResultFactory.Create(occurrence));
     }

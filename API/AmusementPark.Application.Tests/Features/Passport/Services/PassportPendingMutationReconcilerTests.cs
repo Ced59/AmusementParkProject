@@ -64,6 +64,7 @@ public sealed class PassportPendingMutationReconcilerTests
                 CancellationToken.None))
             .Callback(() => Assert.True(leaseWasAcquired))
             .ReturnsAsync(true);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -125,6 +126,7 @@ public sealed class PassportPendingMutationReconcilerTests
                 CancellationToken.None))
             .Callback(() => Assert.True(leaseWasAcquired))
             .ReturnsAsync(true);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -242,6 +244,7 @@ public sealed class PassportPendingMutationReconcilerTests
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
