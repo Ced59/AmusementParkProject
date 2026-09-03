@@ -78,6 +78,7 @@
 }
 
 .passport-assessment__rating {
+  position: relative;
   display: grid;
   min-width: 0;
   min-height: 3.1rem;
@@ -93,8 +94,17 @@
   cursor: pointer;
 }
 
+.passport-assessment__rating input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .passport-assessment__rating:hover,
-.passport-assessment__rating:focus-visible,
+.passport-assessment__rating:focus-within,
 .passport-assessment__rating--selected {
   border-color: var(--app-primary);
   color: var(--app-primary);
@@ -104,9 +114,14 @@
   background: color-mix(in srgb, var(--app-primary) 12%, var(--app-surface));
 }
 
-.passport-assessment__rating:focus-visible {
+.passport-assessment__rating:focus-within {
   outline: 3px solid color-mix(in srgb, var(--app-primary) 35%, transparent);
   outline-offset: 2px;
+}
+
+.passport-assessment__rating--disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 .passport-assessment__comment {

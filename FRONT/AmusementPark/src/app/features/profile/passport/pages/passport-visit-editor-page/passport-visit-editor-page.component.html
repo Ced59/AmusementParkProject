@@ -57,17 +57,21 @@
         role="radiogroup"
         [attr.aria-label]="'passport.editor.assessment.ratingLabel' | translate">
         @for (value of assessmentValues; track value) {
-          <button
-            type="button"
-            role="radio"
+          <label
             class="passport-assessment__rating"
             [class.passport-assessment__rating--selected]="facade.assessmentDraft().value === value"
-            [attr.aria-checked]="facade.assessmentDraft().value === value"
-            [disabled]="facade.assessmentSaving()"
-            (click)="selectAssessmentValue(value)">
+            [class.passport-assessment__rating--disabled]="facade.assessmentSaving()">
+            <input
+              type="radio"
+              name="visitParkAssessment"
+              [value]="value"
+              [checked]="facade.assessmentDraft().value === value"
+              [disabled]="facade.assessmentSaving()"
+              [attr.aria-label]="assessmentValueLabel(value)"
+              (change)="selectAssessmentValue(value)" />
             <i class="pi pi-star" aria-hidden="true"></i>
             <span>{{ assessmentValueLabel(value) }}</span>
-          </button>
+          </label>
         }
       </div>
 

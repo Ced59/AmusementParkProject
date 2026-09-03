@@ -129,7 +129,7 @@ Les deux routes exigent un utilisateur activé dans les rôles autorisés, désa
 
 La carte d'évaluation est bornée par `width/max-width: 100%`, `min-width: 0` sur chaque branche de grille et `overflow-wrap` sur les libellés. Les dix notes passent de dix colonnes à cinq colonnes sous 900 px. Sous 620 px, l'en-tête, les actions et la confirmation de suppression se replient sans largeur fixe ; les champs utilisent `box-sizing: border-box` et le bas de page conserve la safe area de la navigation mobile.
 
-Les notes forment un `radiogroup`, chaque bouton expose `role="radio"` et `aria-checked`, les cibles dépassent 44 px et le focus reste visible. Le commentaire possède un libellé, une limite native et une aide localisée. Les messages de reprise utilisent `role="alert"`.
+Les notes forment un `radiogroup` de champs radio natifs habillés : la navigation aux flèches, le focus unique et l'annonce de la sélection restent donc ceux du navigateur et des technologies d'assistance. Les cibles dépassent 44 px et le focus reste visible. Le commentaire possède un libellé, une limite native et une aide localisée. Les messages de reprise utilisent `role="alert"`.
 
 ## Preuves attendues
 
