@@ -6,6 +6,21 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserRideOccurrenceMongoDefinitions
 {
+    public static FilterDefinition<UserRideOccurrenceDocument> BuildOwnedOccurrenceByIdFilter(
+        string occurrenceId,
+        string userId)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        return filters.Eq(
+                static document => document.Id,
+                NormalizeRequired(occurrenceId, nameof(occurrenceId)))
+            & filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.Eq(static document => document.DeletedAtUtc, null);
+    }
+
     public static FilterDefinition<UserRideOccurrenceDocument> BuildOwnedOccurrenceFilter(
         string occurrenceId,
         string visitId,

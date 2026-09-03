@@ -32,6 +32,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('outline: 3px solid');
     expect(styles).toContain('grid-template-columns: repeat(5, minmax(0, 1fr))');
     expect(styles).toContain('.passport-assessment__actions');
+    expect(styles).toContain('.passport-ride-assessment__actions');
+    expect(styles).toContain('.passport-ride-assessment__ratings');
   });
 
   it('forwards the selected park rating without deriving business rules in the component', () => {
@@ -60,6 +62,26 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     component.updateAssessmentComment({ target: textarea } as unknown as Event);
 
     expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ privateComment: 'Souvenir plus précis' });
+  });
+
+  it('forwards a ride rating and its private comment to the facade', () => {
+    const updateRideAssessmentDraft = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'updateRideAssessmentDraft'>;
+      selectRideAssessmentValue(occurrenceId: string, value: number): void;
+      updateRideAssessmentComment(occurrenceId: string, event: Event): void;
+    };
+    component.facade = { updateRideAssessmentDraft };
+    const textarea: HTMLTextAreaElement = document.createElement('textarea');
+    textarea.value = 'Tour du soir';
+
+    component.selectRideAssessmentValue('occurrence-1', 4.5);
+    component.updateRideAssessmentComment('occurrence-1', { target: textarea } as unknown as Event);
+
+    expect(updateRideAssessmentDraft).toHaveBeenNthCalledWith(1, 'occurrence-1', { value: 4.5 });
+    expect(updateRideAssessmentDraft).toHaveBeenNthCalledWith(2, 'occurrence-1', {
+      privateComment: 'Tour du soir'
+    });
   });
 
   it('falls back to the translated unknown label for unsupported lifecycle statuses', () => {
@@ -158,11 +180,13 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
       zoneControl: { setValue(value: string): void; value: string };
       deleteConfirmationId: WritableSignal<string | null>;
       assessmentDeleteConfirmation: WritableSignal<boolean>;
+      rideAssessmentDeleteConfirmationId: WritableSignal<string | null>;
     };
     controls.searchControl.setValue('ancienne recherche');
     controls.zoneControl.setValue('ancienne-zone');
     controls.deleteConfirmationId.set('occurrence-1');
     controls.assessmentDeleteConfirmation.set(true);
+    controls.rideAssessmentDeleteConfirmationId.set('occurrence-1');
 
     languageParams.next(convertToParamMap({ lang: 'de' }));
     visitParams.next(convertToParamMap({ visitId: 'visit-2' }));
@@ -176,6 +200,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(controls.zoneControl.value).toBe('');
     expect(controls.deleteConfirmationId()).toBeNull();
     expect(controls.assessmentDeleteConfirmation()).toBe(false);
+    expect(controls.rideAssessmentDeleteConfirmationId()).toBeNull();
     expect((component as unknown as { currentLanguage: WritableSignal<string> }).currentLanguage()).toBe('de');
     expect(router.navigate).toHaveBeenCalledWith(['/', 'de', 'profile']);
     expect(facade.retryLoad).toHaveBeenCalledOnce();

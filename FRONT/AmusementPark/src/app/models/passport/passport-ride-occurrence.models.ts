@@ -23,6 +23,25 @@ export interface PassportRideOccurrenceTarget {
   isHistoricalSnapshot: boolean;
 }
 
+export interface PassportRideAssessment {
+  value: number;
+  privateComment: string | null;
+  revision: number;
+  createdAtUtc: string;
+  updatedAtUtc: string;
+}
+
+export interface PassportRideAssessmentDraft {
+  value: number | null;
+  privateComment: string;
+}
+
+export interface UpsertPassportRideAssessmentRequest {
+  value: number;
+  privateComment: string | null;
+  expectedVersion: number;
+}
+
 export interface CreatePassportRideOccurrenceBatchItem {
   parkItemId: string;
   moment: PassportRideOccurrenceMoment;
@@ -67,6 +86,7 @@ export interface PassportRideOccurrence {
   createdAtUtc: string;
   updatedAtUtc: string;
   target?: PassportRideOccurrenceTarget | null;
+  assessment?: PassportRideAssessment | null;
 }
 
 export interface PassportRideOccurrencePage {

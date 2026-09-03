@@ -28,7 +28,15 @@ internal static class PassportRideOccurrenceResultFactory
             occurrence.Version,
             occurrence.CreatedAtUtc,
             occurrence.UpdatedAtUtc,
-            CreateTarget(occurrence, target));
+            CreateTarget(occurrence, target),
+            occurrence.Assessment is null
+                ? null
+                : new RideAssessmentResult(
+                    occurrence.Assessment.Value.DoubleValue,
+                    occurrence.Assessment.PrivateComment,
+                    occurrence.Assessment.Revision,
+                    occurrence.Assessment.CreatedAtUtc,
+                    occurrence.Assessment.UpdatedAtUtc));
     }
 
     private static RideOccurrenceTargetResult? CreateTarget(

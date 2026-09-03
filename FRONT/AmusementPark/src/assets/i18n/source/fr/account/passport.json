@@ -103,6 +103,28 @@
           "save": "Ton ressenti n’a pas pu être enregistré. Ta saisie reste disponible."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Noter ce tour",
+        "editTitle": "Modifier la note de ce tour",
+        "description": "Garde ton ressenti sur ce passage précis, indépendamment de tes autres tours.",
+        "ratingLabel": "Note de ce tour",
+        "privateHint": "Cette observation reste privée et ne modifie jamais les notes ni les classements communautaires.",
+        "commentLabel": "Commentaire privé facultatif",
+        "commentHint": "Toi seul peux le lire. 4 000 caractères maximum.",
+        "save": "Enregistrer la note",
+        "delete": "Supprimer la note",
+        "deleteConfirmation": "Supprimer définitivement la note et son commentaire pour ce tour ?",
+        "saved": "La note privée de ce tour a été enregistrée.",
+        "deleted": "La note privée de ce tour a été supprimée.",
+        "errors": {
+          "invalidValue": "Choisis une note comprise entre 0,5 et 5, par demi-point.",
+          "commentTooLong": "Le commentaire privé ne peut pas dépasser 4 000 caractères.",
+          "occurrenceNotFound": "Ce tour n’existe plus dans ta visite.",
+          "conflict": "Ce tour a changé entre-temps. Son état actuel a été rechargé ; vérifie ta saisie avant de réessayer.",
+          "recovery": "Impossible de vérifier si la modification a été enregistrée. Ta saisie reste disponible ; réessaie dans un instant.",
+          "save": "La note de ce tour n’a pas pu être enregistrée. Ta saisie reste disponible."
+        }
+      },
       "actions": {
         "back": "Retour au profil",
         "retry": "Réessayer",

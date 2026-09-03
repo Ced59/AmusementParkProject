@@ -8,6 +8,7 @@ import {
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
   ReorderPassportRideOccurrenceRequest,
+  UpsertPassportRideAssessmentRequest,
   UpdatePassportRideOccurrenceRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { environment } from '../../../environments/environment';
@@ -23,6 +24,11 @@ export class PassportRideOccurrencesApiService {
   list(visitId: string, cursor: string | null = null, limit: number = 50): Observable<PassportRideOccurrencePage> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.list(visitId, limit, cursor)}`;
     return this.http.get<PassportRideOccurrencePage>(url, { transferCache: false });
+  }
+
+  get(visitId: string, occurrenceId: string): Observable<PassportRideOccurrence> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.get(visitId, occurrenceId)}`;
+    return this.http.get<PassportRideOccurrence>(url, { transferCache: false });
   }
 
   addBatch(
@@ -63,6 +69,19 @@ export class PassportRideOccurrencesApiService {
       observe: 'response'
     }).pipe(map((response: HttpResponse<PassportRideOccurrence>): PassportRideOccurrenceMutationResult =>
       this.toMutationResult(response, response.body ? [response.body] : [])));
+  }
+
+  upsertAssessment(
+    occurrenceId: string,
+    request: UpsertPassportRideAssessmentRequest
+  ): Observable<PassportRideOccurrence> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.assessment(occurrenceId)}`;
+    return this.http.put<PassportRideOccurrence>(url, request);
+  }
+
+  deleteAssessment(occurrenceId: string, expectedVersion: number): Observable<PassportRideOccurrence> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.deleteAssessment(occurrenceId, expectedVersion)}`;
+    return this.http.delete<PassportRideOccurrence>(url);
   }
 
   private idempotencyHeaders(idempotencyKey: string): HttpHeaders {

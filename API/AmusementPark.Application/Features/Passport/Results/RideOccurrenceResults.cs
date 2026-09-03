@@ -13,6 +13,13 @@ public sealed record RideOccurrenceTargetResult(
     string? LifecycleStatus,
     bool IsHistoricalSnapshot);
 
+public sealed record RideAssessmentResult(
+    double Value,
+    string? PrivateComment,
+    int Revision,
+    DateTime CreatedAtUtc,
+    DateTime UpdatedAtUtc);
+
 public sealed record RideOccurrenceResult(
     string Id,
     string VisitId,
@@ -28,7 +35,8 @@ public sealed record RideOccurrenceResult(
     long Version,
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
-    RideOccurrenceTargetResult? Target = null);
+    RideOccurrenceTargetResult? Target = null,
+    RideAssessmentResult? Assessment = null);
 
 public sealed record CreateRideOccurrencesResult(
     IReadOnlyCollection<RideOccurrenceResult> Occurrences,

@@ -430,6 +430,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return new RideOccurrencePage(occurrences, nextCursor);
     }
 
+    public async Task<RideOccurrence?> GetOwnedByIdAsync(
+        RideOccurrenceId occurrenceId,
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceDocument? document = await this.collection
+            .Find(UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceByIdFilter(
+                occurrenceId.Value,
+                userId))
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<RideOccurrenceAppendState> GetAppendStateAsync(
         VisitId visitId,
         string userId,
@@ -767,6 +780,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             };
         AddOptionalUpdate(definitions, updates, "historicalTarget", document.HistoricalTarget);
         AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
+        AddOptionalUpdate(definitions, updates, "assessment", document.Assessment);
         AddOptionalUpdate(definitions, updates, "deletedAtUtc", document.DeletedAtUtc);
         return updates.Combine(definitions);
     }

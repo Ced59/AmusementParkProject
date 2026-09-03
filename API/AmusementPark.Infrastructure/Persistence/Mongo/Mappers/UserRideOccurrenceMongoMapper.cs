@@ -1,4 +1,5 @@
 using System.Globalization;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 
@@ -6,7 +7,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
 internal static class UserRideOccurrenceMongoMapper
 {
-    public const int CurrentSchemaVersion = 1;
+    public const int CurrentSchemaVersion = 2;
 
     public static UserRideOccurrenceDocument ToDocument(this RideOccurrence occurrence)
     {
@@ -27,6 +28,7 @@ internal static class UserRideOccurrenceMongoMapper
             HistoricalConsistency = occurrence.HistoricalConsistency,
             HistoricalTarget = occurrence.HistoricalTarget.ToDocument(),
             PrivateNote = occurrence.PrivateNote,
+            Assessment = occurrence.Assessment.ToDocument(),
             Version = occurrence.Version,
             CreatedAt = ToMongoPrecision(occurrence.CreatedAtUtc),
             UpdatedAt = ToMongoPrecision(occurrence.UpdatedAtUtc),
@@ -51,6 +53,7 @@ internal static class UserRideOccurrenceMongoMapper
             HistoricalConsistency = document.HistoricalConsistency,
             HistoricalTarget = document.HistoricalTarget.Clone(),
             PrivateNote = document.PrivateNote,
+            Assessment = document.Assessment.Clone(),
             Version = document.Version,
             CreatedAtUtc = document.CreatedAt,
             UpdatedAtUtc = document.UpdatedAt,
@@ -78,7 +81,8 @@ internal static class UserRideOccurrenceMongoMapper
             document.Version,
             document.CreatedAt,
             document.UpdatedAt,
-            document.DeletedAtUtc);
+            document.DeletedAtUtc,
+            document.Assessment.ToDomain());
     }
 
     public static RideOccurrence CreationSnapshotToDomain(
@@ -105,7 +109,8 @@ internal static class UserRideOccurrenceMongoMapper
             snapshot.Version,
             snapshot.CreatedAtUtc,
             snapshot.UpdatedAtUtc,
-            null);
+            null,
+            snapshot.Assessment.ToDomain());
     }
 
     public static RideOccurrence SnapshotToDomain(
@@ -130,7 +135,8 @@ internal static class UserRideOccurrenceMongoMapper
             snapshot.Version,
             snapshot.CreatedAtUtc,
             snapshot.UpdatedAtUtc,
-            null);
+            null,
+            snapshot.Assessment.ToDomain());
     }
 
     internal static RideOccurrenceMomentDocument ToDocument(this OccurrenceMoment moment)
@@ -174,6 +180,32 @@ internal static class UserRideOccurrenceMongoMapper
             : new HistoricalTargetReference(document.Name, document.Category);
     }
 
+    internal static UserRideAssessmentDocument? ToDocument(this RideAssessment? assessment)
+    {
+        return assessment is null
+            ? null
+            : new UserRideAssessmentDocument
+            {
+                ValueHalfSteps = assessment.Value.HalfSteps,
+                PrivateComment = assessment.PrivateComment,
+                Revision = assessment.Revision,
+                CreatedAtUtc = ToMongoPrecision(assessment.CreatedAtUtc),
+                UpdatedAtUtc = ToMongoPrecision(assessment.UpdatedAtUtc),
+            };
+    }
+
+    internal static RideAssessment? ToDomain(this UserRideAssessmentDocument? document)
+    {
+        return document is null
+            ? null
+            : RideAssessment.Restore(
+                RatingValue.FromHalfSteps(document.ValueHalfSteps),
+                document.PrivateComment,
+                document.Revision,
+                DateTime.SpecifyKind(document.CreatedAtUtc, DateTimeKind.Utc),
+                DateTime.SpecifyKind(document.UpdatedAtUtc, DateTimeKind.Utc));
+    }
+
     private static RideOccurrenceMomentDocument Clone(this RideOccurrenceMomentDocument document)
     {
         return new RideOccurrenceMomentDocument
@@ -192,6 +224,20 @@ internal static class UserRideOccurrenceMongoMapper
             {
                 Name = document.Name,
                 Category = document.Category,
+            };
+    }
+
+    private static UserRideAssessmentDocument? Clone(this UserRideAssessmentDocument? document)
+    {
+        return document is null
+            ? null
+            : new UserRideAssessmentDocument
+            {
+                ValueHalfSteps = document.ValueHalfSteps,
+                PrivateComment = document.PrivateComment,
+                Revision = document.Revision,
+                CreatedAtUtc = document.CreatedAtUtc,
+                UpdatedAtUtc = document.UpdatedAtUtc,
             };
     }
 

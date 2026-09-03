@@ -23,6 +23,20 @@ describe('PassportRideOccurrencesApiService', () => {
     );
   });
 
+  it('loads one private occurrence with transfer caching disabled for mutation recovery', () => {
+    const httpClient = { get: vi.fn().mockReturnValue(of(createOccurrence())) };
+    const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(
+      httpClient as unknown as HttpClient
+    );
+
+    service.get('visit/one', 'ride/two').subscribe();
+
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone/occurrences/ride%2Ftwo`,
+      { transferCache: false }
+    );
+  });
+
   it('sends idempotency and exposes replay and normalization evidence for a batch', () => {
     const occurrence: PassportRideOccurrence = createOccurrence();
     const response: HttpResponse<PassportRideOccurrence[]> = new HttpResponse({
@@ -84,6 +98,29 @@ describe('PassportRideOccurrencesApiService', () => {
     );
     const reorderOptions = httpClient.post.mock.calls[0][2] as { headers: HttpHeaders };
     expect(reorderOptions.headers.get('Idempotency-Key')).toBe('move-1');
+  });
+
+  it('upserts and deletes a private ride assessment with the occurrence version', () => {
+    const occurrence: PassportRideOccurrence = createOccurrence();
+    const httpClient = {
+      put: vi.fn().mockReturnValue(of(occurrence)),
+      delete: vi.fn().mockReturnValue(of(occurrence))
+    };
+    const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(
+      httpClient as unknown as HttpClient
+    );
+    const request = { value: 4.5, privateComment: 'Excellent', expectedVersion: 7 };
+
+    service.upsertAssessment('ride/1', request).subscribe();
+    service.deleteAssessment('ride/1', 8).subscribe();
+
+    expect(httpClient.put).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/occurrences/ride%2F1/assessment`,
+      request
+    );
+    expect(httpClient.delete).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/occurrences/ride%2F1/assessment?expectedVersion=8`
+    );
   });
 });
 

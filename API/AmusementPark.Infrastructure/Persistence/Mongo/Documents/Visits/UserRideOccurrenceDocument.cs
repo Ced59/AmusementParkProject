@@ -49,6 +49,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? PrivateNote { get; set; }
 
+    [BsonElement("assessment")]
+    [BsonIgnoreIfNull]
+    public UserRideAssessmentDocument? Assessment { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 
@@ -145,8 +149,32 @@ public sealed class UserRideOccurrenceCreationSnapshotDocument
     [BsonIgnoreIfNull]
     public string? PrivateNote { get; set; }
 
+    [BsonElement("assessment")]
+    [BsonIgnoreIfNull]
+    public UserRideAssessmentDocument? Assessment { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
+
+    [BsonElement("createdAtUtc")]
+    public DateTime CreatedAtUtc { get; set; }
+
+    [BsonElement("updatedAtUtc")]
+    public DateTime UpdatedAtUtc { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideAssessmentDocument
+{
+    [BsonElement("valueHalfSteps")]
+    public byte ValueHalfSteps { get; set; }
+
+    [BsonElement("privateComment")]
+    [BsonIgnoreIfNull]
+    public string? PrivateComment { get; set; }
+
+    [BsonElement("revision")]
+    public int Revision { get; set; }
 
     [BsonElement("createdAtUtc")]
     public DateTime CreatedAtUtc { get; set; }

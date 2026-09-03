@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
@@ -52,7 +53,7 @@ public sealed class UserRideOccurrenceMongoMapperTests
         BsonDocument serialized = occurrence.ToDocument().ToBsonDocument();
 
         Assert.Equal("occurrence-1", serialized["_id"].AsString);
-        Assert.Equal(1, serialized["schemaVersion"].AsInt32);
+        Assert.Equal(2, serialized["schemaVersion"].AsInt32);
         Assert.Equal("visit-1", serialized["visitId"].AsString);
         Assert.Equal("user-1", serialized["userId"].AsString);
         Assert.Equal("park-1", serialized["parkId"].AsString);
@@ -64,9 +65,48 @@ public sealed class UserRideOccurrenceMongoMapperTests
         Assert.False(serialized["moment"].AsBsonDocument.Contains("localTime"));
         Assert.False(serialized.Contains("historicalTarget"));
         Assert.False(serialized.Contains("privateNote"));
+        Assert.False(serialized.Contains("assessment"));
         Assert.False(serialized.Contains("deletedAtUtc"));
         Assert.False(serialized.Contains("creationOperationKeyHash"));
         Assert.False(serialized.Contains("creationSnapshot"));
+    }
+
+    [Fact]
+    public void Mapper_ShouldRoundTripTheEmbeddedAssessmentAndItsExactHalfSteps()
+    {
+        RideOccurrence occurrence = CreateOccurrence();
+        occurrence.UpsertAssessment(
+            RatingValue.FromDouble(4.5d),
+            " Tour mémorable ",
+            CreatedAtUtc.AddMinutes(1));
+
+        UserRideOccurrenceDocument document = occurrence.ToDocument();
+        RideOccurrence restored = document.ToDomain();
+
+        Assert.NotNull(document.Assessment);
+        Assert.Equal(9, document.Assessment.ValueHalfSteps);
+        Assert.Equal("Tour mémorable", restored.Assessment?.PrivateComment);
+        Assert.Equal(4.5d, restored.Assessment?.Value.DoubleValue);
+        Assert.Equal(1, restored.Assessment?.Revision);
+        Assert.Equal(2, restored.Version);
+    }
+
+    [Fact]
+    public void CreationSnapshot_ShouldKeepAnAssessmentForReorderReplay()
+    {
+        RideOccurrence occurrence = CreateOccurrence();
+        occurrence.UpsertAssessment(
+            RatingValue.FromDouble(4d),
+            null,
+            CreatedAtUtc.AddMinutes(1));
+        UserRideOccurrenceDocument document = occurrence.ToDocument();
+        document.CreationSnapshot = document.CreateCreationSnapshot();
+        document.Assessment = null;
+
+        RideOccurrence replayed = document.CreationSnapshotToDomain();
+
+        Assert.Equal(4d, replayed.Assessment?.Value.DoubleValue);
+        Assert.Equal(2, replayed.Version);
     }
 
     [Fact]

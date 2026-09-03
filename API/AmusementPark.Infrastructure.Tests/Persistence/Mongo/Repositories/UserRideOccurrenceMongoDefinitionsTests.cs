@@ -13,6 +13,22 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class UserRideOccurrenceMongoDefinitionsTests
 {
     [Fact]
+    public void BuildOwnedOccurrenceByIdFilter_ShouldFenceByOccurrenceOwnerAndTombstone()
+    {
+        FilterDefinition<UserRideOccurrenceDocument> filter =
+            UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceByIdFilter(
+                " occurrence-1 ",
+                " user-1 ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("occurrence-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.True(rendered["deletedAtUtc"].IsBsonNull);
+        Assert.False(rendered.Contains("visitId"));
+    }
+
+    [Fact]
     public void BuildOwnedOccurrenceFilter_ShouldFenceByOccurrenceVisitOwnerAndTombstone()
     {
         FilterDefinition<UserRideOccurrenceDocument> filter =

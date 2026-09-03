@@ -110,6 +110,29 @@ public sealed class UpdatePassportRideOccurrenceRequestDto
     public bool ConfirmHistoricalConflict { get; init; }
 }
 
+public sealed class UpsertPassportRideAssessmentRequestDto
+{
+    public double Value { get; init; }
+
+    public string? PrivateComment { get; init; }
+
+    [Range(1, long.MaxValue)]
+    public long ExpectedVersion { get; init; }
+}
+
+public sealed class PassportRideAssessmentDto
+{
+    public double Value { get; init; }
+
+    public string? PrivateComment { get; init; }
+
+    public int Revision { get; init; }
+
+    public DateTime CreatedAtUtc { get; init; }
+
+    public DateTime UpdatedAtUtc { get; init; }
+}
+
 public sealed class ReorderPassportRideOccurrenceRequestDto
 {
     public string OccurrenceId { get; init; } = string.Empty;
@@ -151,6 +174,8 @@ public sealed class PassportRideOccurrenceDto
     public DateTime CreatedAtUtc { get; init; }
 
     public DateTime UpdatedAtUtc { get; init; }
+
+    public PassportRideAssessmentDto? Assessment { get; init; }
 
     public PassportRideOccurrenceTargetDto? Target { get; init; }
 }

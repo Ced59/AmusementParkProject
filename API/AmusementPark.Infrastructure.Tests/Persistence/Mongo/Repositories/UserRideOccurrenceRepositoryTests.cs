@@ -1343,6 +1343,29 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public void BuildDomainUpdate_ShouldSetAndUnsetTheAssessmentAtomicallyWithTheVersion()
+    {
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        occurrence.UpsertAssessment(
+            AmusementPark.Core.Domain.Ratings.RatingValue.FromDouble(4.5d),
+            "Tour mémorable",
+            NowUtc.AddMinutes(1));
+
+        BsonDocument assessedUpdate = Render(
+            UserRideOccurrenceRepository.BuildDomainUpdate(occurrence.ToDocument()));
+
+        Assert.Equal(2, assessedUpdate["$set"]["version"].AsInt64);
+        Assert.Equal(9, assessedUpdate["$set"]["assessment"]["valueHalfSteps"].AsInt32);
+
+        occurrence.DeleteAssessment(NowUtc.AddMinutes(2));
+        BsonDocument deletedUpdate = Render(
+            UserRideOccurrenceRepository.BuildDomainUpdate(occurrence.ToDocument()));
+
+        Assert.Equal(3, deletedUpdate["$set"]["version"].AsInt64);
+        Assert.True(deletedUpdate["$unset"].AsBsonDocument.Contains("assessment"));
+    }
+
+    [Fact]
     public async Task TryDeleteOwnedAsync_WithAbandonedDelete_ShouldRecoverItBeforeRetrying()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
