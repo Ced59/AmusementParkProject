@@ -79,8 +79,8 @@ public sealed class CreatePassportRideOccurrenceBatchItemDto
 
 public sealed class CreatePassportRideOccurrencesBatchRequestDto
 {
-    public IReadOnlyCollection<CreatePassportRideOccurrenceBatchItemDto> Items { get; init; } =
-        Array.Empty<CreatePassportRideOccurrenceBatchItemDto>();
+    public IReadOnlyCollection<CreatePassportRideOccurrenceBatchItemDto?> Items { get; init; } =
+        Array.Empty<CreatePassportRideOccurrenceBatchItemDto?>();
 }
 
 public sealed class UpdatePassportRideOccurrenceRequestDto

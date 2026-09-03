@@ -18,7 +18,7 @@ public sealed record AddRideOccurrencesBatchCommand(
     string UserId,
     string VisitId,
     string ClientOperationId,
-    IReadOnlyCollection<RideOccurrenceCreationItem> Items)
+    IReadOnlyCollection<RideOccurrenceCreationItem?> Items)
     : ICommand<ApplicationResult<CreateRideOccurrencesResult>>;
 
 public sealed record UpdateRideOccurrenceCommand(

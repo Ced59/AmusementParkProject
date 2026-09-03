@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Security.Claims;
+using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Passport;
 using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
@@ -34,7 +36,8 @@ public sealed class PassportRideOccurrencesControllerTests
                     command.UserId == "owner-1"
                     && command.VisitId == "visit-1"
                     && command.ClientOperationId == "request-1"
-                    && command.Items.Single().Count == 1),
+                    && command.Items.Single() != null
+                    && command.Items.Single()!.Count == 1),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(
@@ -61,6 +64,40 @@ public sealed class PassportRideOccurrencesControllerTests
             created.Value);
         Assert.Equal("occurrence-1", body.Id);
         Assert.Null(typeof(PassportRideOccurrenceDto).GetProperty("UserId"));
+        add.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddBatchAsync_WithNullItem_ShouldReturnBoundedValidationFailure()
+    {
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>> add =
+            new Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>>(MockBehavior.Strict);
+        add.Setup(handler => handler.HandleAsync(
+                It.Is<AddRideOccurrencesBatchCommand>(command =>
+                    command.Items.Count == 1
+                    && command.Items.Single() == null),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Failure(
+                PassportApplicationErrors.InvalidRideOccurrenceBatch()));
+        PassportRideOccurrencesController controller = CreateController(add.Object);
+        controller.ControllerContext = CreateControllerContext();
+        CreatePassportRideOccurrencesBatchRequestDto request =
+            JsonSerializer.Deserialize<CreatePassportRideOccurrencesBatchRequestDto>(
+                "{\"items\":[null]}",
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+            ?? throw new InvalidOperationException();
+
+        IActionResult result = await controller.AddBatchAsync(
+            "visit-1",
+            request,
+            "request-1",
+            CancellationToken.None);
+
+        ObjectResult problem = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, problem.StatusCode);
+        Assert.Equal(
+            "ride-occurrence.batch-invalid",
+            Assert.IsType<ProblemDetails>(problem.Value).Extensions["errorCode"]);
         add.VerifyAll();
     }
 

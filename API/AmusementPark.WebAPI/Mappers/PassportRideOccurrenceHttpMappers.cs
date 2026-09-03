@@ -117,9 +117,14 @@ internal static class PassportRideOccurrenceHttpMappers
             1);
     }
 
-    private static RideOccurrenceCreationItem ToApplication(
-        CreatePassportRideOccurrenceBatchItemDto request)
+    private static RideOccurrenceCreationItem? ToApplication(
+        CreatePassportRideOccurrenceBatchItemDto? request)
     {
+        if (request is null)
+        {
+            return null;
+        }
+
         return new RideOccurrenceCreationItem(
             request.ParkItemId,
             request.Moment.LocalTime,

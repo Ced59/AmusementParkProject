@@ -203,7 +203,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     }
 
     private static IReadOnlyList<RideOccurrenceCreationItem>? Expand(
-        IReadOnlyCollection<RideOccurrenceCreationItem>? items)
+        IReadOnlyCollection<RideOccurrenceCreationItem?>? items)
     {
         if (items is null || items.Count is < 1 or > 100)
         {
@@ -211,7 +211,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         }
 
         List<RideOccurrenceCreationItem> expanded = new List<RideOccurrenceCreationItem>();
-        foreach (RideOccurrenceCreationItem item in items)
+        foreach (RideOccurrenceCreationItem? item in items)
         {
             if (item is null
                 || string.IsNullOrWhiteSpace(item.ParkItemId)
