@@ -8,6 +8,11 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IRideOccurrenceRepository
 {
+    Task<PendingPassportMutationVisit?> GetPendingMutationAsync(
+        string userId,
+        VisitId visitId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<PendingPassportMutationVisit>>
         ListPendingAuditMutationVisitsAsync(
             int maximumVisitCount,

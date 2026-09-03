@@ -97,6 +97,56 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
         return reconciledCount;
     }
 
+    public async Task<bool> ReconcileBeforeLifecycleTransitionAsync(
+        Visit visit,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(visit);
+        if (visit.Status != VisitStatus.Draft)
+        {
+            return false;
+        }
+
+        IVisitContentMutationLease? contentMutationLease =
+            await this.contentMutationLeaseManager.TryAcquireAsync(
+                visit,
+                this.clock.UtcNow,
+                cancellationToken);
+        if (contentMutationLease is null)
+        {
+            return false;
+        }
+
+        await using (contentMutationLease)
+        {
+            while (true)
+            {
+                PendingPassportMutationVisit? candidate =
+                    await this.occurrenceRepository.GetPendingMutationAsync(
+                        visit.UserId,
+                        visit.Id,
+                        cancellationToken);
+                if (candidate is null)
+                {
+                    return true;
+                }
+
+                bool reconciled = CanRecover(candidate, visit)
+                    ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
+                        candidate,
+                        cancellationToken)
+                    : await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                        candidate,
+                        this.clock.UtcNow,
+                        cancellationToken);
+                if (!reconciled)
+                {
+                    return false;
+                }
+            }
+        }
+    }
+
     private static bool CanRecover(
         PendingPassportMutationVisit candidate,
         Visit visit)

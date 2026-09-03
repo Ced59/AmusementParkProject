@@ -159,6 +159,12 @@ public sealed class VisitMutationCommandHandlersTests
         Visit visit = CreateVisit(VisitStatus.Draft);
         Mock<IUserVisitRepository> visits = CreateOwnedRepository(visit);
         Mock<IPassportAuditPublisher> audit = CreateAuditPublisher();
+        Mock<IPassportPendingMutationReconciler> pendingMutations =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
+        pendingMutations.Setup(reconciler => reconciler.ReconcileBeforeLifecycleTransitionAsync(
+                visit,
+                CancellationToken.None))
+            .ReturnsAsync(true);
         visits.Setup(repository => repository.TryUpdateOwnedAuditedAsync(
                 visit,
                 1,
@@ -175,7 +181,8 @@ public sealed class VisitMutationCommandHandlersTests
             visits.Object,
             CreateClock().Object,
             localDate.Object,
-            audit.Object);
+            audit.Object,
+            pendingMutations.Object);
 
         ApplicationResult<VisitResult> result = await handler.HandleAsync(
             new CompleteVisitCommand("owner-1", "visit-1", 1));
@@ -186,6 +193,41 @@ public sealed class VisitMutationCommandHandlersTests
         visits.VerifyAll();
         localDate.VerifyAll();
         audit.VerifyAll();
+        pendingMutations.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Complete_WhenPendingContentCannotBeReconciled_ShouldKeepDraft()
+    {
+        Visit visit = CreateVisit(VisitStatus.Draft);
+        Mock<IUserVisitRepository> visits = CreateOwnedRepository(visit);
+        Mock<IPassportAuditPublisher> audit =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IPassportPendingMutationReconciler> pendingMutations =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
+        pendingMutations.Setup(reconciler => reconciler.ReconcileBeforeLifecycleTransitionAsync(
+                visit,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        Mock<IPassportLocalDateResolver> localDate =
+            new Mock<IPassportLocalDateResolver>(MockBehavior.Strict);
+        CompleteVisitCommandHandler handler = new CompleteVisitCommandHandler(
+            visits.Object,
+            CreateClock().Object,
+            localDate.Object,
+            audit.Object,
+            pendingMutations.Object);
+
+        ApplicationResult<VisitResult> result = await handler.HandleAsync(
+            new CompleteVisitCommand("owner-1", "visit-1", 1));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.version-conflict", Assert.Single(result.Errors).Code);
+        Assert.Equal(VisitStatus.Draft, visit.Status);
+        visits.VerifyAll();
+        pendingMutations.VerifyAll();
+        localDate.VerifyNoOtherCalls();
+        audit.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -255,10 +297,13 @@ public sealed class VisitMutationCommandHandlersTests
         Visit visit = CreateVisit(VisitStatus.Draft);
         Mock<IUserVisitRepository> visits = CreateOwnedRepository(visit);
         Mock<IPassportAuditPublisher> audit = new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IPassportPendingMutationReconciler> pendingMutations =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
         ArchiveVisitCommandHandler handler = new ArchiveVisitCommandHandler(
             visits.Object,
             CreateClock().Object,
-            audit.Object);
+            audit.Object,
+            pendingMutations.Object);
 
         ApplicationResult<VisitResult> result = await handler.HandleAsync(
             new ArchiveVisitCommand("owner-1", "visit-1", 2));
@@ -269,6 +314,7 @@ public sealed class VisitMutationCommandHandlersTests
         Assert.Equal(VisitStatus.Draft, visit.Status);
         visits.VerifyAll();
         audit.VerifyNoOtherCalls();
+        pendingMutations.VerifyNoOtherCalls();
     }
 
     private static Mock<IUserVisitRepository> CreateOwnedRepository(Visit visit)

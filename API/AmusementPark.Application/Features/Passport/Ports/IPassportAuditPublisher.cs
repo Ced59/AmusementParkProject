@@ -45,6 +45,10 @@ public interface IPassportAuditReconciler
 /// </summary>
 public interface IPassportPendingMutationReconciler
 {
+    Task<bool> ReconcileBeforeLifecycleTransitionAsync(
+        Visit visit,
+        CancellationToken cancellationToken);
+
     Task<int> ReconcileBatchAsync(
         int maximumOperationCount,
         CancellationToken cancellationToken);

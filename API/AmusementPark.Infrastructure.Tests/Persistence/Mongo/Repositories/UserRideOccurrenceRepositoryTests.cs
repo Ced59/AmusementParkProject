@@ -2492,6 +2492,50 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task GetPendingMutationAsync_ShouldReturnTheExactOperationIdentity()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                VisitId = "visit-1",
+                OperationKeyHash = "operation-hash",
+                OperationKind = "reorder",
+                OperationState = "pending",
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> cursor =
+            CreateAsyncCursor(new[] { operation });
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        PendingPassportMutationVisit? candidate =
+            await repository.GetPendingMutationAsync(
+                "user-1",
+                VisitId.Parse("visit-1"),
+                CancellationToken.None);
+
+        Assert.NotNull(candidate);
+        Assert.Equal("operation-hash", candidate.OperationKeyHash);
+        Assert.Equal(PendingPassportMutationKind.Reorder, candidate.Kind);
+        Assert.Null(candidate.CreationPreparation);
+        collection.VerifyNoOtherCalls();
+        operationCollection.VerifyAll();
+        cursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task PendingMutationPorts_WhenCreationWasApplied_ShouldCompleteOperation()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =

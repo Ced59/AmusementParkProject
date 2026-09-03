@@ -70,6 +70,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.deletionCoordinator);
     }
 
+    public async Task<PendingPassportMutationVisit?> GetPendingMutationAsync(
+        string userId,
+        VisitId visitId,
+        CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? operation =
+            await this.operationCollection
+                .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                    .BuildPendingVisitFilter(userId, visitId.Value))
+                .FirstOrDefaultAsync(cancellationToken);
+        return operation is null
+            ? null
+            : CreatePendingMutation(operation, visitId);
+    }
+
     public async Task<IReadOnlyCollection<PendingPassportMutationVisit>>
         ListPendingAuditMutationVisitsAsync(
         int maximumVisitCount,
@@ -111,28 +126,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 continue;
             }
 
-            PendingPassportMutationKind kind = operation.OperationKind switch
-            {
-                CreationOperationKind => PendingPassportMutationKind.Creation,
-                ReorderOperationKind => PendingPassportMutationKind.Reorder,
-                DeleteOperationKind => PendingPassportMutationKind.Delete,
-                _ => PendingPassportMutationKind.Unknown,
-            };
-            RideOccurrenceCreationPreparation? preparation = null;
-            if (kind == PendingPassportMutationKind.Creation)
-            {
-                _ = TryCreatePreparation(
-                    operation.CreationPreparation,
-                    operation.Items.Count,
-                    out preparation);
-            }
-
-            candidates.Add(new PendingPassportMutationVisit(
-                operation.UserId,
-                visitId,
-                operation.OperationKeyHash,
-                kind,
-                preparation));
+            candidates.Add(CreatePendingMutation(operation, visitId));
         }
 
         return candidates;
@@ -2136,6 +2130,34 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     })
                 .ToList(),
         };
+    }
+
+    private static PendingPassportMutationVisit CreatePendingMutation(
+        UserRideOccurrenceCreationOperationDocument operation,
+        VisitId visitId)
+    {
+        PendingPassportMutationKind kind = operation.OperationKind switch
+        {
+            CreationOperationKind => PendingPassportMutationKind.Creation,
+            ReorderOperationKind => PendingPassportMutationKind.Reorder,
+            DeleteOperationKind => PendingPassportMutationKind.Delete,
+            _ => PendingPassportMutationKind.Unknown,
+        };
+        RideOccurrenceCreationPreparation? preparation = null;
+        if (kind == PendingPassportMutationKind.Creation)
+        {
+            _ = TryCreatePreparation(
+                operation.CreationPreparation,
+                operation.Items.Count,
+                out preparation);
+        }
+
+        return new PendingPassportMutationVisit(
+            operation.UserId,
+            visitId,
+            operation.OperationKeyHash,
+            kind,
+            preparation);
     }
 
     private static bool TryCreatePreparation(

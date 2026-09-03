@@ -214,17 +214,20 @@ public sealed class CompleteVisitCommandHandler :
     private readonly IPassportClock clock;
     private readonly IPassportLocalDateResolver localDateResolver;
     private readonly IPassportAuditPublisher auditPublisher;
+    private readonly IPassportPendingMutationReconciler pendingMutationReconciler;
 
     public CompleteVisitCommandHandler(
         IUserVisitRepository visitRepository,
         IPassportClock clock,
         IPassportLocalDateResolver localDateResolver,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IPassportPendingMutationReconciler pendingMutationReconciler)
     {
         this.visitRepository = visitRepository;
         this.clock = clock;
         this.localDateResolver = localDateResolver;
         this.auditPublisher = auditPublisher;
+        this.pendingMutationReconciler = pendingMutationReconciler;
     }
 
     public Task<ApplicationResult<VisitResult>> HandleAsync(
@@ -238,6 +241,7 @@ public sealed class CompleteVisitCommandHandler :
             this.visitRepository,
             this.clock,
             this.auditPublisher,
+            this.pendingMutationReconciler,
             (visit, nowUtc) => visit.Complete(
                 this.localDateResolver.Resolve(nowUtc, visit.TimeZoneId),
                 nowUtc),
@@ -273,6 +277,7 @@ public sealed class ReopenVisitCommandHandler :
             this.visitRepository,
             this.clock,
             this.auditPublisher,
+            null,
             static (visit, nowUtc) =>
             {
                 if (visit.Status == VisitStatus.Archived)
@@ -293,15 +298,18 @@ public sealed class ArchiveVisitCommandHandler :
     private readonly IUserVisitRepository visitRepository;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher auditPublisher;
+    private readonly IPassportPendingMutationReconciler pendingMutationReconciler;
 
     public ArchiveVisitCommandHandler(
         IUserVisitRepository visitRepository,
         IPassportClock clock,
-        IPassportAuditPublisher auditPublisher)
+        IPassportAuditPublisher auditPublisher,
+        IPassportPendingMutationReconciler pendingMutationReconciler)
     {
         this.visitRepository = visitRepository;
         this.clock = clock;
         this.auditPublisher = auditPublisher;
+        this.pendingMutationReconciler = pendingMutationReconciler;
     }
 
     public Task<ApplicationResult<VisitResult>> HandleAsync(
@@ -315,6 +323,7 @@ public sealed class ArchiveVisitCommandHandler :
             this.visitRepository,
             this.clock,
             this.auditPublisher,
+            this.pendingMutationReconciler,
             static (visit, nowUtc) => visit.Archive(nowUtc),
             cancellationToken);
     }
@@ -371,6 +380,7 @@ internal static class VisitMutationCommandSupport
         IUserVisitRepository visitRepository,
         IPassportClock clock,
         IPassportAuditPublisher auditPublisher,
+        IPassportPendingMutationReconciler? pendingMutationReconciler,
         Action<Visit, DateTime> mutation,
         CancellationToken cancellationToken)
     {
@@ -386,6 +396,16 @@ internal static class VisitMutationCommandSupport
         }
 
         Visit visit = loaded.Value;
+        if (visit.Status == VisitStatus.Draft
+            && pendingMutationReconciler is not null
+            && !await pendingMutationReconciler.ReconcileBeforeLifecycleTransitionAsync(
+                visit,
+                cancellationToken))
+        {
+            return ApplicationResult<VisitResult>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
         VisitStatus previousStatus = visit.Status;
         try
         {
