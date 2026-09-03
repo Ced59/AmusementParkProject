@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Identifiers;
+using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Core.Domain.Visits;
 
@@ -28,7 +29,8 @@ public sealed class RideOccurrence
         long version,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        DateTime? deletedAtUtc)
+        DateTime? deletedAtUtc,
+        RideAssessment? assessment)
     {
         _ = id.Value;
         _ = visitId.Value;
@@ -38,6 +40,7 @@ public sealed class RideOccurrence
         ValidateHistoricalConsistency(historicalConsistency);
         ValidateVersion(version);
         ValidateTimestamps(createdAtUtc, updatedAtUtc, deletedAtUtc);
+        ValidateRestoredAssessment(assessment, createdAtUtc, updatedAtUtc);
 
         this.Id = id;
         this.VisitId = visitId;
@@ -55,6 +58,7 @@ public sealed class RideOccurrence
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.DeletedAtUtc = deletedAtUtc;
+        this.Assessment = assessment;
     }
 
     public RideOccurrenceId Id { get; }
@@ -88,6 +92,8 @@ public sealed class RideOccurrence
     public DateTime UpdatedAtUtc { get; private set; }
 
     public DateTime? DeletedAtUtc { get; private set; }
+
+    public RideAssessment? Assessment { get; private set; }
 
     public bool CountsAsRide => this.Status == RideOccurrenceStatus.Completed;
 
@@ -124,6 +130,7 @@ public sealed class RideOccurrence
             1,
             nowUtc,
             nowUtc,
+            null,
             null);
     }
 
@@ -143,7 +150,8 @@ public sealed class RideOccurrence
         long version,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        DateTime? deletedAtUtc)
+        DateTime? deletedAtUtc,
+        RideAssessment? assessment = null)
     {
         return new RideOccurrence(
             id,
@@ -161,7 +169,37 @@ public sealed class RideOccurrence
             version,
             createdAtUtc,
             updatedAtUtc,
-            deletedAtUtc);
+            deletedAtUtc,
+            assessment);
+    }
+
+    public void UpsertAssessment(
+        RatingValue value,
+        string? privateComment,
+        DateTime nowUtc)
+    {
+        this.EnsureMutable();
+        RideAssessment nextAssessment = this.Assessment is null
+            ? RideAssessment.Create(value, privateComment, nowUtc)
+            : this.Assessment.Update(value, privateComment, nowUtc);
+
+        this.PrepareMutation(nowUtc);
+        this.Assessment = nextAssessment;
+        this.CommitMutation(nowUtc);
+    }
+
+    public void DeleteAssessment(DateTime nowUtc)
+    {
+        this.EnsureMutable();
+        if (this.Assessment is null)
+        {
+            this.ValidateMutationTimestamp(nowUtc);
+            return;
+        }
+
+        this.PrepareMutation(nowUtc);
+        this.Assessment = null;
+        this.CommitMutation(nowUtc);
     }
 
     public void Update(
@@ -299,6 +337,25 @@ public sealed class RideOccurrence
             throw CreateValidationException(
                 RideOccurrenceErrorCodes.InvalidTimestampOrder,
                 "Ride occurrence timestamps are not chronologically consistent.");
+        }
+    }
+
+    private static void ValidateRestoredAssessment(
+        RideAssessment? assessment,
+        DateTime createdAtUtc,
+        DateTime updatedAtUtc)
+    {
+        if (assessment is null)
+        {
+            return;
+        }
+
+        if (assessment.CreatedAtUtc < createdAtUtc
+            || assessment.UpdatedAtUtc > updatedAtUtc)
+        {
+            throw CreateValidationException(
+                RideOccurrenceErrorCodes.InvalidTimestampOrder,
+                "The ride assessment timestamps must remain within the occurrence lifetime.");
         }
     }
 

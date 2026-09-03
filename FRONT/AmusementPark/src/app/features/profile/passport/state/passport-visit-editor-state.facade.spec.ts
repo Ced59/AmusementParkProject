@@ -30,10 +30,13 @@ describe('PassportVisitEditorStateFacade', () => {
   };
   let occurrencesPort: {
     list: ReturnType<typeof vi.fn>;
+    get: ReturnType<typeof vi.fn>;
     addBatch: ReturnType<typeof vi.fn>;
     update: ReturnType<typeof vi.fn>;
     delete: ReturnType<typeof vi.fn>;
     reorder: ReturnType<typeof vi.fn>;
+    upsertAssessment: ReturnType<typeof vi.fn>;
+    deleteAssessment: ReturnType<typeof vi.fn>;
   };
   let parksPort: { getParkById: ReturnType<typeof vi.fn> };
   let zonesPort: { getParkZonesByParkId: ReturnType<typeof vi.fn> };
@@ -48,10 +51,13 @@ describe('PassportVisitEditorStateFacade', () => {
     };
     occurrencesPort = {
       list: vi.fn().mockReturnValue(of({ items: [firstOccurrence, secondOccurrence], nextCursor: null })),
+      get: vi.fn(),
       addBatch: vi.fn(),
       update: vi.fn(),
       delete: vi.fn(),
-      reorder: vi.fn()
+      reorder: vi.fn(),
+      upsertAssessment: vi.fn(),
+      deleteAssessment: vi.fn()
     };
     parksPort = {
       getParkById: vi.fn().mockReturnValue(of({ id: 'park-1', name: 'Test Park', latitude: 1, longitude: 2 }))
@@ -394,6 +400,171 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(visitsPort.deleteParkAssessment).toHaveBeenCalledWith('visit-1', 2);
     expect(facade.visit()?.version).toBe(3);
     expect(facade.assessmentDraft()).toEqual({ value: null, privateComment: '' });
+  });
+
+  it('loads and saves the private assessment of one ride with the current occurrence version', () => {
+    const assessedOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      assessment: {
+        value: 3.5,
+        privateComment: 'Premier tour',
+        revision: 1,
+        createdAtUtc: '2026-09-03T10:00:00Z',
+        updatedAtUtc: '2026-09-03T10:00:00Z'
+      }
+    };
+    const updatedOccurrence: PassportRideOccurrence = {
+      ...assessedOccurrence,
+      version: 2,
+      target: null,
+      assessment: {
+        ...assessedOccurrence.assessment!,
+        value: 4.5,
+        privateComment: 'Meilleur tour',
+        revision: 2,
+        updatedAtUtc: '2026-09-03T11:00:00Z'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [assessedOccurrence], nextCursor: null }));
+    occurrencesPort.upsertAssessment.mockReturnValue(of(updatedOccurrence));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({
+      value: 3.5,
+      privateComment: 'Premier tour'
+    });
+    expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4.5, privateComment: ' Meilleur tour ' });
+    facade.saveRideAssessment(assessedOccurrence);
+
+    expect(occurrencesPort.upsertAssessment).toHaveBeenCalledWith('occurrence-1', {
+      value: 4.5,
+      privateComment: 'Meilleur tour',
+      expectedVersion: 1
+    });
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({
+      version: 2,
+      target: assessedOccurrence.target,
+      assessment: expect.objectContaining({ value: 4.5, privateComment: 'Meilleur tour' })
+    }));
+    expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
+  });
+
+  it('preserves a newer ride assessment draft when the save response arrives', () => {
+    const response: Subject<PassportRideOccurrence> = new Subject<PassportRideOccurrence>();
+    occurrencesPort.upsertAssessment.mockReturnValue(response);
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4, privateComment: 'Première saisie' });
+    facade.saveRideAssessment(firstOccurrence);
+
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 5, privateComment: 'Saisie plus récente' });
+    response.next({
+      ...firstOccurrence,
+      version: 2,
+      assessment: {
+        value: 4,
+        privateComment: 'Première saisie',
+        revision: 1,
+        createdAtUtc: '2026-09-03T10:00:00Z',
+        updatedAtUtc: '2026-09-03T10:00:00Z'
+      }
+    });
+
+    expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({
+      value: 5,
+      privateComment: 'Saisie plus récente'
+    });
+    expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(true);
+  });
+
+  it('reloads the current occurrence and preserves the draft after a ride assessment conflict', () => {
+    const currentOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      version: 2,
+      assessment: {
+        value: 3,
+        privateComment: 'État serveur',
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    occurrencesPort.upsertAssessment.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: { status: 409, title: 'Conflict', errorCode: 'ride-assessment.version-conflict' }
+    })));
+    occurrencesPort.get.mockReturnValue(of(currentOccurrence));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4.5, privateComment: 'Ma saisie' });
+
+    facade.saveRideAssessment(firstOccurrence);
+
+    expect(occurrencesPort.get).toHaveBeenCalledWith('visit-1', 'occurrence-1');
+    expect(facade.occurrences()[0].version).toBe(2);
+    expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({
+      value: 4.5,
+      privateComment: 'Ma saisie'
+    });
+    expect(facade.rideAssessmentErrorKeys()['occurrence-1'])
+      .toBe('passport.editor.rideAssessment.errors.conflict');
+  });
+
+  it('recognises a ride assessment committed before an ambiguous response failed', () => {
+    const committedOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      version: 2,
+      assessment: {
+        value: 4.5,
+        privateComment: 'Ma saisie',
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    occurrencesPort.upsertAssessment.mockReturnValue(
+      throwError(() => new HttpErrorResponse({ status: 502 }))
+    );
+    occurrencesPort.get.mockReturnValue(of(committedOccurrence));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4.5, privateComment: 'Ma saisie' });
+
+    facade.saveRideAssessment(firstOccurrence);
+
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({ version: 2 }));
+    expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
+    expect(facade.rideAssessmentErrorKeys()['occurrence-1']).toBeNull();
+  });
+
+  it('deletes a persisted ride assessment and adopts the returned occurrence version', () => {
+    const assessedOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      version: 2,
+      assessment: {
+        value: 4,
+        privateComment: null,
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [assessedOccurrence], nextCursor: null }));
+    occurrencesPort.deleteAssessment.mockReturnValue(of({
+      ...assessedOccurrence,
+      version: 3,
+      assessment: null
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.deleteRideAssessment(assessedOccurrence);
+
+    expect(occurrencesPort.deleteAssessment).toHaveBeenCalledWith('occurrence-1', 2);
+    expect(facade.occurrences()[0].version).toBe(3);
+    expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({ value: null, privateComment: '' });
   });
 
   it('does not let an older timeline reload overwrite a newer locale refresh', () => {

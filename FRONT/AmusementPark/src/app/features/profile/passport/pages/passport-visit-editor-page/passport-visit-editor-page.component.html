@@ -402,6 +402,96 @@
                     }
                   </div>
 
+                  <details class="passport-ride-assessment">
+                    <summary>
+                      <span>
+                        <i class="pi pi-star" aria-hidden="true"></i>
+                        {{ (row.occurrence.assessment
+                          ? 'passport.editor.rideAssessment.editTitle'
+                          : 'passport.editor.rideAssessment.addTitle') | translate }}
+                      </span>
+                      @if (row.occurrence.assessment; as assessment) {
+                        <strong>{{ assessmentValueLabel(assessment.value) }} / 5</strong>
+                      }
+                    </summary>
+
+                    @if (facade.rideAssessmentDrafts()[row.occurrence.id]; as assessmentDraft) {
+                      <div class="passport-ride-assessment__body">
+                        <p>{{ 'passport.editor.rideAssessment.description' | translate }}</p>
+
+                        <fieldset
+                          class="passport-ride-assessment__ratings"
+                          [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                          [attr.aria-describedby]="'ride-assessment-hint-' + row.occurrence.id">
+                          <legend>{{ 'passport.editor.rideAssessment.ratingLabel' | translate }}</legend>
+                          @for (value of assessmentValues; track value) {
+                            <label
+                              class="passport-ride-assessment__rating"
+                              [class.passport-ride-assessment__rating--selected]="assessmentDraft.value === value">
+                              <input
+                                type="radio"
+                                [name]="'ride-assessment-' + row.occurrence.id"
+                                [value]="value"
+                                [checked]="assessmentDraft.value === value"
+                                (change)="selectRideAssessmentValue(row.occurrence.id, value)" />
+                              <span>{{ assessmentValueLabel(value) }}</span>
+                            </label>
+                          }
+                        </fieldset>
+
+                        <p [id]="'ride-assessment-hint-' + row.occurrence.id" class="passport-ride-assessment__hint">
+                          <i class="pi pi-lock" aria-hidden="true"></i>
+                          {{ 'passport.editor.rideAssessment.privateHint' | translate }}
+                        </p>
+
+                        <label class="app-field passport-ride-assessment__comment">
+                          <span class="app-field__label">{{ 'passport.editor.rideAssessment.commentLabel' | translate }}</span>
+                          <textarea
+                            rows="3"
+                            maxlength="4000"
+                            [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                            [value]="assessmentDraft.privateComment"
+                            (input)="updateRideAssessmentComment(row.occurrence.id, $event)"></textarea>
+                          <small>{{ 'passport.editor.rideAssessment.commentHint' | translate }}</small>
+                        </label>
+
+                        @if (facade.rideAssessmentErrorKeys()[row.occurrence.id]; as rideAssessmentErrorKey) {
+                          <p class="passport-inline-message passport-inline-message--error" role="alert">
+                            <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+                            {{ rideAssessmentErrorKey | translate }}
+                          </p>
+                        }
+
+                        @if (rideAssessmentDeleteConfirmationId() === row.occurrence.id) {
+                          <div class="passport-ride-assessment__delete-confirmation">
+                            <span>{{ 'passport.editor.rideAssessment.deleteConfirmation' | translate }}</span>
+                            <button appUiButton="rose" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="confirmRideAssessmentDelete(row.occurrence)">
+                              {{ 'passport.editor.actions.confirmDelete' | translate }}
+                            </button>
+                            <button appUiButton="ghost" type="button" (click)="cancelRideAssessmentDelete()">
+                              {{ 'passport.editor.actions.cancel' | translate }}
+                            </button>
+                          </div>
+                        } @else {
+                          <div class="passport-ride-assessment__actions">
+                            <button appUiButton="primary" type="button" [disabled]="!facade.canSaveRideAssessment(row.occurrence)" (click)="saveRideAssessment(row.occurrence)">
+                              @if (isOccurrenceBusy(row.occurrence.id)) {
+                                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                              }
+                              <span>{{ 'passport.editor.rideAssessment.save' | translate }}</span>
+                            </button>
+                            @if (row.occurrence.assessment) {
+                              <button appUiButton="ghost" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="requestRideAssessmentDelete(row.occurrence.id)">
+                                <i class="pi pi-trash" aria-hidden="true"></i>
+                                <span>{{ 'passport.editor.rideAssessment.delete' | translate }}</span>
+                              </button>
+                            }
+                          </div>
+                        }
+                      </div>
+                    }
+                  </details>
+
                   <div class="passport-occurrence__order" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
                     <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
                       <i class="pi pi-angle-double-up" aria-hidden="true"></i>

@@ -103,6 +103,28 @@
           "save": "Nie udało się zapisać twoich wrażeń. Twój wpis pozostał dostępny."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Oceń ten przejazd",
+        "editTitle": "Zmień ocenę tego przejazdu",
+        "description": "Zapisz wrażenia z tego konkretnego przejazdu, niezależnie od pozostałych.",
+        "ratingLabel": "Ocena tego przejazdu",
+        "privateHint": "Ta obserwacja pozostaje prywatna i nigdy nie wpływa na oceny ani rankingi społeczności.",
+        "commentLabel": "Opcjonalny prywatny komentarz",
+        "commentHint": "Tylko Ty możesz go przeczytać. Maksymalnie 4000 znaków.",
+        "save": "Zapisz ocenę",
+        "delete": "Usuń ocenę",
+        "deleteConfirmation": "Trwale usunąć ocenę i komentarz do tego przejazdu?",
+        "saved": "Prywatna ocena tego przejazdu została zapisana.",
+        "deleted": "Prywatna ocena tego przejazdu została usunięta.",
+        "errors": {
+          "invalidValue": "Wybierz ocenę od 0,5 do 5, co pół punktu.",
+          "commentTooLong": "Prywatny komentarz nie może przekraczać 4000 znaków.",
+          "occurrenceNotFound": "Tego przejazdu nie ma już w Twojej wizycie.",
+          "conflict": "Ten przejazd został w międzyczasie zmieniony. Wczytano aktualny stan; sprawdź dane przed ponowną próbą.",
+          "recovery": "Nie udało się sprawdzić, czy zmiana została zapisana. Twoje dane są nadal dostępne; spróbuj ponownie za chwilę.",
+          "save": "Nie udało się zapisać oceny tego przejazdu. Twoje dane są nadal dostępne."
+        }
+      },
       "actions": {
         "back": "Wróć do profilu",
         "retry": "Spróbuj ponownie",

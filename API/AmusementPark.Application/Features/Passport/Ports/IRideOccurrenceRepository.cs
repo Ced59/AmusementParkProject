@@ -40,6 +40,11 @@ public interface IRideOccurrenceRepository
         string userId,
         CancellationToken cancellationToken);
 
+    Task<RideOccurrence?> GetOwnedByIdAsync(
+        RideOccurrenceId occurrenceId,
+        string userId,
+        CancellationToken cancellationToken);
+
     Task<RideOccurrencePage> ListOwnedByVisitAsync(
         RideOccurrenceListCriteria criteria,
         CancellationToken cancellationToken);

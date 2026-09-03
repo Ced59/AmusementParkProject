@@ -111,6 +111,28 @@
           "save": "Não foi possível guardar a tua impressão. Os teus dados continuam disponíveis."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Avaliar esta volta",
+        "editTitle": "Alterar a avaliação desta volta",
+        "description": "Guarda a tua impressão desta volta específica, independentemente das restantes.",
+        "ratingLabel": "Avaliação desta volta",
+        "privateHint": "Esta observação permanece privada e nunca altera as avaliações nem as classificações da comunidade.",
+        "commentLabel": "Comentário privado opcional",
+        "commentHint": "Só tu podes lê-lo. Máximo de 4.000 caracteres.",
+        "save": "Guardar avaliação",
+        "delete": "Eliminar avaliação",
+        "deleteConfirmation": "Eliminar definitivamente a avaliação e o comentário desta volta?",
+        "saved": "A avaliação privada desta volta foi guardada.",
+        "deleted": "A avaliação privada desta volta foi eliminada.",
+        "errors": {
+          "invalidValue": "Escolhe uma avaliação entre 0,5 e 5, em intervalos de meio ponto.",
+          "commentTooLong": "O comentário privado não pode exceder 4.000 caracteres.",
+          "occurrenceNotFound": "Esta volta já não faz parte da tua visita.",
+          "conflict": "Esta volta foi entretanto alterada. O estado atual foi recarregado; verifica os dados antes de tentares novamente.",
+          "recovery": "Não foi possível confirmar se a alteração foi guardada. Os teus dados continuam disponíveis; tenta novamente dentro de instantes.",
+          "save": "Não foi possível guardar a avaliação desta volta. Os teus dados continuam disponíveis."
+        }
+      },
       "actions": {
         "back": "Voltar ao perfil",
         "retry": "Tentar novamente",

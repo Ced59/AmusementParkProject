@@ -103,6 +103,28 @@
           "save": "Je indruk kon niet worden opgeslagen. Je invoer blijft beschikbaar."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Deze rit beoordelen",
+        "editTitle": "Beoordeling van deze rit wijzigen",
+        "description": "Bewaar je indruk van precies deze rit, los van je andere ritten.",
+        "ratingLabel": "Beoordeling van deze rit",
+        "privateHint": "Deze observatie blijft privé en verandert nooit beoordelingen of ranglijsten van de community.",
+        "commentLabel": "Optionele privéopmerking",
+        "commentHint": "Alleen jij kunt dit lezen. Maximaal 4.000 tekens.",
+        "save": "Beoordeling opslaan",
+        "delete": "Beoordeling verwijderen",
+        "deleteConfirmation": "De beoordeling en opmerking voor deze rit definitief verwijderen?",
+        "saved": "De privébeoordeling van deze rit is opgeslagen.",
+        "deleted": "De privébeoordeling van deze rit is verwijderd.",
+        "errors": {
+          "invalidValue": "Kies een beoordeling van 0,5 tot 5 in stappen van een half punt.",
+          "commentTooLong": "De privéopmerking mag niet langer zijn dan 4.000 tekens.",
+          "occurrenceNotFound": "Deze rit maakt niet langer deel uit van je bezoek.",
+          "conflict": "Deze rit is intussen gewijzigd. De huidige toestand is geladen; controleer je invoer voordat je het opnieuw probeert.",
+          "recovery": "We konden niet controleren of de wijziging is opgeslagen. Je invoer blijft beschikbaar; probeer het zo opnieuw.",
+          "save": "De beoordeling van deze rit kon niet worden opgeslagen. Je invoer blijft beschikbaar."
+        }
+      },
       "actions": {
         "back": "Terug naar profiel",
         "retry": "Opnieuw proberen",

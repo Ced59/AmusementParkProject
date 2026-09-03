@@ -79,6 +79,16 @@ internal static class PassportRideOccurrenceHttpMappers
             Version = result.Version,
             CreatedAtUtc = result.CreatedAtUtc,
             UpdatedAtUtc = result.UpdatedAtUtc,
+            Assessment = result.Assessment is null
+                ? null
+                : new PassportRideAssessmentDto
+                {
+                    Value = result.Assessment.Value,
+                    PrivateComment = result.Assessment.PrivateComment,
+                    Revision = result.Assessment.Revision,
+                    CreatedAtUtc = result.Assessment.CreatedAtUtc,
+                    UpdatedAtUtc = result.Assessment.UpdatedAtUtc,
+                },
             Target = result.Target is null
                 ? null
                 : new PassportRideOccurrenceTargetDto

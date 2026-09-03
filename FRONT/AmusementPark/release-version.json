@@ -1,6 +1,20 @@
 {
-  "version": "5.0.11",
+  "version": "5.0.12",
   "history": [
+    {
+      "version": "5.0.12",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Chaque tour d’attraction peut maintenant garder sa propre note privée.",
+        "en": "Each attraction ride can now keep its own private rating.",
+        "de": "Jede Attraktionsfahrt kann jetzt ihre eigene private Bewertung erhalten.",
+        "nl": "Elke attractierit kan nu een eigen privébeoordeling krijgen.",
+        "it": "Ogni giro su un’attrazione può ora avere una valutazione privata dedicata.",
+        "es": "Cada vuelta en una atracción puede tener ahora su propia valoración privada.",
+        "pl": "Każdy przejazd atrakcją może teraz mieć własną prywatną ocenę.",
+        "pt": "Cada volta numa atração pode agora ter a sua própria avaliação privada."
+      }
+    },
     {
       "version": "5.0.11",
       "releasedAt": "2026-09-03",

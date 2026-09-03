@@ -103,6 +103,28 @@
           "save": "Your experience could not be saved. Your entry is still available."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Rate this ride",
+        "editTitle": "Edit this ride rating",
+        "description": "Keep your impression of this specific ride, independently from your other rides.",
+        "ratingLabel": "Rating for this ride",
+        "privateHint": "This observation stays private and never changes community ratings or rankings.",
+        "commentLabel": "Optional private comment",
+        "commentHint": "Only you can read it. Maximum 4,000 characters.",
+        "save": "Save rating",
+        "delete": "Delete rating",
+        "deleteConfirmation": "Permanently delete the rating and comment for this ride?",
+        "saved": "The private rating for this ride was saved.",
+        "deleted": "The private rating for this ride was deleted.",
+        "errors": {
+          "invalidValue": "Choose a rating from 0.5 to 5 in half-point increments.",
+          "commentTooLong": "The private comment cannot exceed 4,000 characters.",
+          "occurrenceNotFound": "This ride is no longer part of your visit.",
+          "conflict": "This ride changed in the meantime. Its current state was reloaded; review your input before trying again.",
+          "recovery": "We could not verify whether the change was saved. Your input is still available; try again shortly.",
+          "save": "The rating for this ride could not be saved. Your input is still available."
+        }
+      },
       "actions": {
         "back": "Back to profile",
         "retry": "Try again",

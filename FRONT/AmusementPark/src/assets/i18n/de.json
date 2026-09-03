@@ -111,6 +111,28 @@
           "save": "Dein Eindruck konnte nicht gespeichert werden. Deine Eingabe bleibt erhalten."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Diese Fahrt bewerten",
+        "editTitle": "Bewertung dieser Fahrt ändern",
+        "description": "Halte deinen Eindruck von genau dieser Fahrt unabhängig von deinen anderen Fahrten fest.",
+        "ratingLabel": "Bewertung dieser Fahrt",
+        "privateHint": "Diese Beobachtung bleibt privat und verändert niemals Community-Bewertungen oder Ranglisten.",
+        "commentLabel": "Optionaler privater Kommentar",
+        "commentHint": "Nur du kannst ihn lesen. Maximal 4.000 Zeichen.",
+        "save": "Bewertung speichern",
+        "delete": "Bewertung löschen",
+        "deleteConfirmation": "Bewertung und Kommentar für diese Fahrt endgültig löschen?",
+        "saved": "Die private Bewertung dieser Fahrt wurde gespeichert.",
+        "deleted": "Die private Bewertung dieser Fahrt wurde gelöscht.",
+        "errors": {
+          "invalidValue": "Wähle eine Bewertung von 0,5 bis 5 in Halbpunkt-Schritten.",
+          "commentTooLong": "Der private Kommentar darf höchstens 4.000 Zeichen lang sein.",
+          "occurrenceNotFound": "Diese Fahrt gehört nicht mehr zu deinem Besuch.",
+          "conflict": "Diese Fahrt wurde zwischenzeitlich geändert. Der aktuelle Stand wurde geladen; prüfe deine Eingabe und versuche es erneut.",
+          "recovery": "Es konnte nicht geprüft werden, ob die Änderung gespeichert wurde. Deine Eingabe bleibt erhalten; versuche es gleich noch einmal.",
+          "save": "Die Bewertung dieser Fahrt konnte nicht gespeichert werden. Deine Eingabe bleibt erhalten."
+        }
+      },
       "actions": {
         "back": "Zurück zum Profil",
         "retry": "Erneut versuchen",

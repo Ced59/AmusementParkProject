@@ -121,6 +121,25 @@ public static class PassportApplicationErrors
             "La version de la visite doit être positive.");
     }
 
+    public static ApplicationError InvalidRideAssessment(string code, string message)
+    {
+        return ApplicationError.Validation(code, message);
+    }
+
+    public static ApplicationError InvalidRideAssessmentVersion()
+    {
+        return ApplicationError.Validation(
+            "ride-assessment.version-invalid",
+            "La version de l’occurrence doit être positive.");
+    }
+
+    public static ApplicationError RideAssessmentConcurrencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "ride-assessment.version-conflict",
+            "L’occurrence ou son évaluation a changé. Recharge le journal avant de réessayer.");
+    }
+
     public static ApplicationError VisitParkAssessmentConcurrencyConflict()
     {
         return ApplicationError.Conflict(

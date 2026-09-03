@@ -103,6 +103,28 @@
           "save": "Non è stato possibile salvare la tua impressione. I dati inseriti restano disponibili."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Valuta questo giro",
+        "editTitle": "Modifica la valutazione di questo giro",
+        "description": "Conserva le tue impressioni su questo giro specifico, indipendentemente dagli altri.",
+        "ratingLabel": "Valutazione di questo giro",
+        "privateHint": "Questa osservazione resta privata e non modifica mai le valutazioni o le classifiche della community.",
+        "commentLabel": "Commento privato facoltativo",
+        "commentHint": "Solo tu puoi leggerlo. Massimo 4.000 caratteri.",
+        "save": "Salva valutazione",
+        "delete": "Elimina valutazione",
+        "deleteConfirmation": "Eliminare definitivamente la valutazione e il commento di questo giro?",
+        "saved": "La valutazione privata di questo giro è stata salvata.",
+        "deleted": "La valutazione privata di questo giro è stata eliminata.",
+        "errors": {
+          "invalidValue": "Scegli una valutazione da 0,5 a 5 con incrementi di mezzo punto.",
+          "commentTooLong": "Il commento privato non può superare i 4.000 caratteri.",
+          "occurrenceNotFound": "Questo giro non fa più parte della tua visita.",
+          "conflict": "Questo giro è stato modificato nel frattempo. È stato caricato lo stato attuale; controlla i dati prima di riprovare.",
+          "recovery": "Non è stato possibile verificare se la modifica è stata salvata. I tuoi dati sono ancora disponibili; riprova tra poco.",
+          "save": "Non è stato possibile salvare la valutazione di questo giro. I tuoi dati sono ancora disponibili."
+        }
+      },
       "actions": {
         "back": "Torna al profilo",
         "retry": "Riprova",

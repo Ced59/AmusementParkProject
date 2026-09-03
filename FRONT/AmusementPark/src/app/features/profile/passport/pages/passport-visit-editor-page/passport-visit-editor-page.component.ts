@@ -61,6 +61,7 @@ export class PassportVisitEditorPageComponent {
   protected readonly zoneControl = new FormControl<string>('', { nonNullable: true });
   protected readonly deleteConfirmationId = signal<string | null>(null);
   protected readonly assessmentDeleteConfirmation = signal<boolean>(false);
+  protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
   protected readonly currentLanguage = signal<string>('en');
   protected readonly assessmentValues: readonly number[] = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
@@ -102,6 +103,7 @@ export class PassportVisitEditorPageComponent {
       this.visitId = visitId;
       this.deleteConfirmationId.set(null);
       this.assessmentDeleteConfirmation.set(false);
+      this.rideAssessmentDeleteConfirmationId.set(null);
       this.searchControl.setValue('', { emitEvent: false });
       this.zoneControl.setValue('', { emitEvent: false });
       this.facade.load(visitId, this.currentLanguage());
@@ -170,6 +172,32 @@ export class PassportVisitEditorPageComponent {
       minimumFractionDigits: value % 1 === 0 ? 0 : 1,
       maximumFractionDigits: 1
     }).format(value);
+  }
+
+  protected selectRideAssessmentValue(occurrenceId: string, value: number): void {
+    this.facade.updateRideAssessmentDraft(occurrenceId, { value });
+  }
+
+  protected updateRideAssessmentComment(occurrenceId: string, event: Event): void {
+    this.facade.updateRideAssessmentDraft(occurrenceId, { privateComment: this.eventValue(event) });
+  }
+
+  protected saveRideAssessment(occurrence: PassportRideOccurrence): void {
+    this.rideAssessmentDeleteConfirmationId.set(null);
+    this.facade.saveRideAssessment(occurrence);
+  }
+
+  protected requestRideAssessmentDelete(occurrenceId: string): void {
+    this.rideAssessmentDeleteConfirmationId.set(occurrenceId);
+  }
+
+  protected cancelRideAssessmentDelete(): void {
+    this.rideAssessmentDeleteConfirmationId.set(null);
+  }
+
+  protected confirmRideAssessmentDelete(occurrence: PassportRideOccurrence): void {
+    this.rideAssessmentDeleteConfirmationId.set(null);
+    this.facade.deleteRideAssessment(occurrence);
   }
 
   protected toggleAttraction(attraction: PassportVisitEditorAttraction): void {

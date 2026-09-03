@@ -7,11 +7,14 @@ import { catchError, forkJoin, Observable, of, take, throwError } from 'rxjs';
 import {
   CreatePassportRideOccurrenceBatchItem,
   CreatePassportRideOccurrencesBatchRequest,
+  PassportRideAssessment,
+  PassportRideAssessmentDraft,
   PassportRideOccurrence,
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
   PassportRideOccurrencePlacement,
-  ReorderPassportRideOccurrenceRequest
+  ReorderPassportRideOccurrenceRequest,
+  UpsertPassportRideAssessmentRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
 import {
   PassportVisit,
@@ -107,6 +110,8 @@ export class PassportVisitEditorStateFacade {
   private readonly selectedAttractionsSignal = signal<PassportAttractionSelectionDraft[]>([]);
   private readonly occurrencesSignal = signal<PassportRideOccurrence[]>([]);
   private readonly editDraftsSignal = signal<Readonly<Record<string, PassportOccurrenceEditDraft>>>({});
+  private readonly rideAssessmentDraftsSignal = signal<Readonly<Record<string, PassportRideAssessmentDraft>>>({});
+  private readonly rideAssessmentErrorKeysSignal = signal<Readonly<Record<string, string | null>>>({});
   private readonly nextTimelineCursorSignal = signal<string | null>(null);
   private readonly attractionNamesSignal = signal<Readonly<Record<string, string>>>({});
   private readonly loadingSignal = signal<boolean>(false);
@@ -124,6 +129,8 @@ export class PassportVisitEditorStateFacade {
   private readonly pendingMutations = new Map<string, PendingIdempotentMutation>();
   private readonly pendingDuplicateSubmissions = new Map<string, PendingDuplicateSubmission>();
   private readonly persistedEditFingerprints = new Map<string, string>();
+  private readonly persistedRideAssessmentFingerprints = new Map<string, string>();
+  private readonly rideAssessmentMutationGenerations = new Map<string, number>();
   private readonly pendingTimelineDraftSubmissions = new Map<string, string>();
   private pendingAddSubmission: PendingAddSubmission | null = null;
   private currentVisitId: string | null = null;
@@ -156,6 +163,10 @@ export class PassportVisitEditorStateFacade {
   readonly selectedAttractions: Signal<PassportAttractionSelectionDraft[]> = this.selectedAttractionsSignal.asReadonly();
   readonly occurrences: Signal<PassportRideOccurrence[]> = this.occurrencesSignal.asReadonly();
   readonly editDrafts: Signal<Readonly<Record<string, PassportOccurrenceEditDraft>>> = this.editDraftsSignal.asReadonly();
+  readonly rideAssessmentDrafts: Signal<Readonly<Record<string, PassportRideAssessmentDraft>>> =
+    this.rideAssessmentDraftsSignal.asReadonly();
+  readonly rideAssessmentErrorKeys: Signal<Readonly<Record<string, string | null>>> =
+    this.rideAssessmentErrorKeysSignal.asReadonly();
   readonly nextTimelineCursor: Signal<string | null> = this.nextTimelineCursorSignal.asReadonly();
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   readonly attractionsLoading: Signal<boolean> = this.attractionsLoadingSignal.asReadonly();
@@ -671,6 +682,153 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
+  updateRideAssessmentDraft(occurrenceId: string, patch: Partial<PassportRideAssessmentDraft>): void {
+    this.rideAssessmentDraftsSignal.update(
+      (current: Readonly<Record<string, PassportRideAssessmentDraft>>) => ({
+        ...current,
+        [occurrenceId]: {
+          ...(current[occurrenceId] ?? { value: null, privateComment: '' }),
+          ...patch
+        }
+      })
+    );
+    this.setRideAssessmentError(occurrenceId, null);
+  }
+
+  rideAssessmentHasChanges(occurrenceId: string): boolean {
+    const draft: PassportRideAssessmentDraft | undefined = this.rideAssessmentDraftsSignal()[occurrenceId];
+    if (!draft) {
+      return false;
+    }
+
+    return this.rideAssessmentDraftFingerprint(draft)
+      !== this.persistedRideAssessmentFingerprints.get(occurrenceId);
+  }
+
+  canSaveRideAssessment(occurrence: PassportRideOccurrence): boolean {
+    const draft: PassportRideAssessmentDraft | undefined = this.rideAssessmentDraftsSignal()[occurrence.id];
+    return draft?.value != null
+      && !this.isOccurrenceBusy(occurrence.id)
+      && this.rideAssessmentHasChanges(occurrence.id);
+  }
+
+  saveRideAssessment(occurrence: PassportRideOccurrence): void {
+    const visitId: string | null = this.currentVisitId;
+    const draft: PassportRideAssessmentDraft | undefined = this.rideAssessmentDraftsSignal()[occurrence.id];
+    if (!visitId || !draft || draft.value === null || !this.canSaveRideAssessment(occurrence)) {
+      return;
+    }
+
+    const request: UpsertPassportRideAssessmentRequest = {
+      value: draft.value,
+      privateComment: draft.privateComment.trim() || null,
+      expectedVersion: occurrence.version
+    };
+    const submittedFingerprint: string = this.rideAssessmentDraftFingerprint(draft);
+    const visitGeneration: number = this.visitInstanceGeneration;
+    const mutationGeneration: number = this.nextRideAssessmentMutationGeneration(occurrence.id);
+    this.setOccurrenceBusy(occurrence.id, true);
+    this.setRideAssessmentError(occurrence.id, null);
+    this.occurrencesApi.upsertAssessment(occurrence.id, request).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (updated: PassportRideOccurrence): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrence.id,
+          mutationGeneration)) {
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrence.id, false);
+        this.applyRideAssessmentMutationResult(updated, submittedFingerprint);
+        this.showSuccess('passport.editor.rideAssessment.saved');
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrence.id,
+          mutationGeneration)) {
+          return;
+        }
+
+        if (this.isAmbiguousMutationError(error) || this.isRideAssessmentVersionConflict(error)) {
+          this.reconcileRideAssessmentMutation(
+            visitId,
+            visitGeneration,
+            occurrence.id,
+            mutationGeneration,
+            submittedFingerprint,
+            'upsert',
+            error);
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrence.id, false);
+        this.setRideAssessmentError(occurrence.id, this.resolveRideAssessmentErrorKey(error));
+      }
+    });
+  }
+
+  deleteRideAssessment(occurrence: PassportRideOccurrence): void {
+    const visitId: string | null = this.currentVisitId;
+    if (!visitId || !occurrence.assessment || this.isOccurrenceBusy(occurrence.id)) {
+      return;
+    }
+
+    const submittedFingerprint: string = this.rideAssessmentDraftFingerprint(
+      this.rideAssessmentDraftsSignal()[occurrence.id] ?? { value: null, privateComment: '' });
+    const visitGeneration: number = this.visitInstanceGeneration;
+    const mutationGeneration: number = this.nextRideAssessmentMutationGeneration(occurrence.id);
+    this.setOccurrenceBusy(occurrence.id, true);
+    this.setRideAssessmentError(occurrence.id, null);
+    this.occurrencesApi.deleteAssessment(occurrence.id, occurrence.version).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (updated: PassportRideOccurrence): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrence.id,
+          mutationGeneration)) {
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrence.id, false);
+        this.applyRideAssessmentMutationResult(updated, submittedFingerprint);
+        this.showSuccess('passport.editor.rideAssessment.deleted');
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrence.id,
+          mutationGeneration)) {
+          return;
+        }
+
+        if (this.isAmbiguousMutationError(error) || this.isRideAssessmentVersionConflict(error)) {
+          this.reconcileRideAssessmentMutation(
+            visitId,
+            visitGeneration,
+            occurrence.id,
+            mutationGeneration,
+            submittedFingerprint,
+            'delete',
+            error);
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrence.id, false);
+        this.setRideAssessmentError(occurrence.id, this.resolveRideAssessmentErrorKey(error));
+      }
+    });
+  }
+
   private createDuplicateSubmission(
     occurrence: PassportRideOccurrence,
     operationName: string
@@ -1019,11 +1177,25 @@ export class PassportVisitEditorStateFacade {
   }
 
   private setOccurrences(occurrences: PassportRideOccurrence[]): void {
+    const currentOccurrences: Map<string, PassportRideOccurrence> = new Map<string, PassportRideOccurrence>(
+      this.occurrencesSignal().map((occurrence: PassportRideOccurrence) => [occurrence.id, occurrence])
+    );
+    const effectiveOccurrences: PassportRideOccurrence[] = occurrences.map(
+      (occurrence: PassportRideOccurrence): PassportRideOccurrence => {
+        const current: PassportRideOccurrence | undefined = currentOccurrences.get(occurrence.id);
+        return current && current.version > occurrence.version ? current : occurrence;
+      }
+    );
     const currentDrafts: Readonly<Record<string, PassportOccurrenceEditDraft>> = this.editDraftsSignal();
+    const currentAssessmentDrafts: Readonly<Record<string, PassportRideAssessmentDraft>> =
+      this.rideAssessmentDraftsSignal();
     const nextDrafts: Record<string, PassportOccurrenceEditDraft> = { ...currentDrafts };
+    const nextAssessmentDrafts: Record<string, PassportRideAssessmentDraft> = { ...currentAssessmentDrafts };
     const nextFingerprints: Map<string, string> = new Map<string, string>(this.persistedEditFingerprints);
+    const nextAssessmentFingerprints: Map<string, string> =
+      new Map<string, string>(this.persistedRideAssessmentFingerprints);
 
-    for (const occurrence of occurrences) {
+    for (const occurrence of effectiveOccurrences) {
       const persistedDraft: PassportOccurrenceEditDraft = mapOccurrenceToEditDraft(occurrence);
       const persistedFingerprint: string = JSON.stringify(persistedDraft);
       const currentDraft: PassportOccurrenceEditDraft | undefined = currentDrafts[occurrence.id];
@@ -1032,15 +1204,32 @@ export class PassportVisitEditorStateFacade {
           ? currentDraft
           : persistedDraft;
       nextFingerprints.set(occurrence.id, persistedFingerprint);
+
+      const persistedAssessmentDraft: PassportRideAssessmentDraft = this.mapRideAssessmentToDraft(
+        occurrence.assessment ?? null);
+      const persistedAssessmentFingerprint: string =
+        this.rideAssessmentDraftFingerprint(persistedAssessmentDraft);
+      const currentAssessmentDraft: PassportRideAssessmentDraft | undefined =
+        currentAssessmentDrafts[occurrence.id];
+      nextAssessmentDrafts[occurrence.id] = currentAssessmentDraft
+        && this.persistedRideAssessmentFingerprints.get(occurrence.id) === persistedAssessmentFingerprint
+          ? currentAssessmentDraft
+          : persistedAssessmentDraft;
+      nextAssessmentFingerprints.set(occurrence.id, persistedAssessmentFingerprint);
     }
 
     this.persistedEditFingerprints.clear();
     for (const [occurrenceId, fingerprint] of nextFingerprints) {
       this.persistedEditFingerprints.set(occurrenceId, fingerprint);
     }
+    this.persistedRideAssessmentFingerprints.clear();
+    for (const [occurrenceId, fingerprint] of nextAssessmentFingerprints) {
+      this.persistedRideAssessmentFingerprints.set(occurrenceId, fingerprint);
+    }
 
     this.editDraftsSignal.set(nextDrafts);
-    this.occurrencesSignal.set(occurrences);
+    this.rideAssessmentDraftsSignal.set(nextAssessmentDrafts);
+    this.occurrencesSignal.set(effectiveOccurrences);
   }
 
   private setTimelineOccurrences(occurrences: PassportRideOccurrence[]): void {
@@ -1073,11 +1262,25 @@ export class PassportVisitEditorStateFacade {
 
   private removeOccurrenceDraft(occurrenceId: string): void {
     this.persistedEditFingerprints.delete(occurrenceId);
+    this.persistedRideAssessmentFingerprints.delete(occurrenceId);
     this.editDraftsSignal.update((current: Readonly<Record<string, PassportOccurrenceEditDraft>>) => {
       const next: Record<string, PassportOccurrenceEditDraft> = { ...current };
       delete next[occurrenceId];
       return next;
     });
+    this.rideAssessmentDraftsSignal.update(
+      (current: Readonly<Record<string, PassportRideAssessmentDraft>>) => {
+        const next: Record<string, PassportRideAssessmentDraft> = { ...current };
+        delete next[occurrenceId];
+        return next;
+      }
+    );
+    this.rideAssessmentErrorKeysSignal.update((current: Readonly<Record<string, string | null>>) => {
+      const next: Record<string, string | null> = { ...current };
+      delete next[occurrenceId];
+      return next;
+    });
+    this.rideAssessmentMutationGenerations.delete(occurrenceId);
   }
 
   private invalidateTimelinePagination(): void {
@@ -1215,6 +1418,174 @@ export class PassportVisitEditorStateFacade {
 
       return next;
     });
+  }
+
+  private reconcileRideAssessmentMutation(
+    visitId: string,
+    visitGeneration: number,
+    occurrenceId: string,
+    mutationGeneration: number,
+    submittedFingerprint: string,
+    mutation: 'upsert' | 'delete',
+    originalError: unknown
+  ): void {
+    this.occurrencesApi.get(visitId, occurrenceId).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (currentOccurrence: PassportRideOccurrence): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrenceId,
+          mutationGeneration)) {
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrenceId, false);
+        const serverFingerprint: string = this.rideAssessmentFingerprint(currentOccurrence.assessment ?? null);
+        const mutationWasApplied: boolean = mutation === 'delete'
+          ? currentOccurrence.assessment == null
+          : serverFingerprint === submittedFingerprint;
+        const currentDraft: PassportRideAssessmentDraft | undefined =
+          this.rideAssessmentDraftsSignal()[occurrenceId];
+        const draftChangedDuringRequest: boolean = currentDraft != null
+          && this.rideAssessmentDraftFingerprint(currentDraft) !== submittedFingerprint;
+        this.replaceOccurrence(currentOccurrence);
+        if (!mutationWasApplied || draftChangedDuringRequest) {
+          this.restoreRideAssessmentDraft(occurrenceId, currentDraft);
+        }
+        if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
+          this.setRideAssessmentError(occurrenceId, null);
+          this.showSuccess(mutation === 'delete'
+            ? 'passport.editor.rideAssessment.deleted'
+            : 'passport.editor.rideAssessment.saved');
+          return;
+        }
+
+        this.setRideAssessmentError(occurrenceId, 'passport.editor.rideAssessment.errors.conflict');
+      },
+      error: (): void => {
+        if (!this.isCurrentRideAssessmentMutation(
+          visitId,
+          visitGeneration,
+          occurrenceId,
+          mutationGeneration)) {
+          return;
+        }
+
+        this.setOccurrenceBusy(occurrenceId, false);
+        this.setRideAssessmentError(occurrenceId, 'passport.editor.rideAssessment.errors.recovery');
+      }
+    });
+  }
+
+  private applyRideAssessmentMutationResult(
+    occurrence: PassportRideOccurrence,
+    submittedFingerprint: string
+  ): void {
+    const currentDraft: PassportRideAssessmentDraft | undefined =
+      this.rideAssessmentDraftsSignal()[occurrence.id];
+    const draftChangedDuringRequest: boolean = currentDraft != null
+      && this.rideAssessmentDraftFingerprint(currentDraft) !== submittedFingerprint;
+    this.replaceOccurrence(occurrence);
+    if (draftChangedDuringRequest) {
+      this.restoreRideAssessmentDraft(occurrence.id, currentDraft);
+    }
+    this.setRideAssessmentError(occurrence.id, null);
+  }
+
+  private replaceOccurrence(updated: PassportRideOccurrence): void {
+    const nextOccurrences: PassportRideOccurrence[] = this.occurrencesSignal().map(
+      (candidate: PassportRideOccurrence): PassportRideOccurrence => candidate.id === updated.id
+        ? { ...updated, target: updated.target ?? candidate.target }
+        : candidate
+    );
+    this.setOccurrences(nextOccurrences);
+  }
+
+  private restoreRideAssessmentDraft(
+    occurrenceId: string,
+    draft: PassportRideAssessmentDraft | undefined
+  ): void {
+    if (!draft) {
+      return;
+    }
+
+    this.rideAssessmentDraftsSignal.update(
+      (current: Readonly<Record<string, PassportRideAssessmentDraft>>) => ({
+        ...current,
+        [occurrenceId]: draft
+      })
+    );
+  }
+
+  private mapRideAssessmentToDraft(assessment: PassportRideAssessment | null): PassportRideAssessmentDraft {
+    return {
+      value: assessment?.value ?? null,
+      privateComment: assessment?.privateComment ?? ''
+    };
+  }
+
+  private rideAssessmentFingerprint(assessment: PassportRideAssessment | null): string {
+    return this.rideAssessmentDraftFingerprint(this.mapRideAssessmentToDraft(assessment));
+  }
+
+  private rideAssessmentDraftFingerprint(draft: PassportRideAssessmentDraft): string {
+    return JSON.stringify({
+      value: draft.value,
+      privateComment: draft.privateComment.trim() || null
+    });
+  }
+
+  private nextRideAssessmentMutationGeneration(occurrenceId: string): number {
+    const nextGeneration: number = (this.rideAssessmentMutationGenerations.get(occurrenceId) ?? 0) + 1;
+    this.rideAssessmentMutationGenerations.set(occurrenceId, nextGeneration);
+    return nextGeneration;
+  }
+
+  private isCurrentRideAssessmentMutation(
+    visitId: string,
+    visitGeneration: number,
+    occurrenceId: string,
+    mutationGeneration: number
+  ): boolean {
+    return this.isCurrentVisitInstance(visitId, visitGeneration)
+      && this.rideAssessmentMutationGenerations.get(occurrenceId) === mutationGeneration;
+  }
+
+  private isRideAssessmentVersionConflict(error: unknown): boolean {
+    return extractApiProblemDetails(error)?.errorCode === 'ride-assessment.version-conflict';
+  }
+
+  private resolveRideAssessmentErrorKey(error: unknown): string {
+    const errorCode: string | null | undefined = extractApiProblemDetails(error)?.errorCode;
+    if (errorCode === 'rating.invalid-value' || errorCode === 'rating.invalid-step') {
+      return 'passport.editor.rideAssessment.errors.invalidValue';
+    }
+
+    if (errorCode === 'ride-assessment.private-comment-too-long') {
+      return 'passport.editor.rideAssessment.errors.commentTooLong';
+    }
+
+    if (errorCode === 'ride-occurrence.not-found') {
+      return 'passport.editor.rideAssessment.errors.occurrenceNotFound';
+    }
+
+    if (this.isRideAssessmentVersionConflict(error)) {
+      return 'passport.editor.rideAssessment.errors.conflict';
+    }
+
+    return this.isAmbiguousMutationError(error)
+      ? 'passport.editor.rideAssessment.errors.recovery'
+      : 'passport.editor.rideAssessment.errors.save';
+  }
+
+  private setRideAssessmentError(occurrenceId: string, errorKey: string | null): void {
+    this.rideAssessmentErrorKeysSignal.update((current: Readonly<Record<string, string | null>>) => ({
+      ...current,
+      [occurrenceId]: errorKey
+    }));
   }
 
   private reconcileAssessmentMutation(
@@ -1389,7 +1760,11 @@ export class PassportVisitEditorStateFacade {
     this.attractionsSignal.set([]);
     this.selectedAttractionsSignal.set([]);
     this.persistedEditFingerprints.clear();
+    this.persistedRideAssessmentFingerprints.clear();
+    this.rideAssessmentMutationGenerations.clear();
     this.editDraftsSignal.set({});
+    this.rideAssessmentDraftsSignal.set({});
+    this.rideAssessmentErrorKeysSignal.set({});
     this.occurrencesSignal.set([]);
     this.nextTimelineCursorSignal.set(null);
     this.attractionNamesSignal.set({});

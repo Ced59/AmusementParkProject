@@ -103,6 +103,28 @@
           "save": "No se ha podido guardar tu impresión. Tu entrada sigue disponible."
         }
       },
+      "rideAssessment": {
+        "addTitle": "Valorar esta vuelta",
+        "editTitle": "Modificar la valoración de esta vuelta",
+        "description": "Guarda lo que sentiste en esta vuelta concreta, independientemente de las demás.",
+        "ratingLabel": "Valoración de esta vuelta",
+        "privateHint": "Esta observación sigue siendo privada y nunca modifica las valoraciones ni las clasificaciones de la comunidad.",
+        "commentLabel": "Comentario privado opcional",
+        "commentHint": "Solo tú puedes leerlo. Máximo 4.000 caracteres.",
+        "save": "Guardar valoración",
+        "delete": "Eliminar valoración",
+        "deleteConfirmation": "¿Eliminar definitivamente la valoración y el comentario de esta vuelta?",
+        "saved": "Se ha guardado la valoración privada de esta vuelta.",
+        "deleted": "Se ha eliminado la valoración privada de esta vuelta.",
+        "errors": {
+          "invalidValue": "Elige una valoración de 0,5 a 5 en incrementos de medio punto.",
+          "commentTooLong": "El comentario privado no puede superar los 4.000 caracteres.",
+          "occurrenceNotFound": "Esta vuelta ya no forma parte de tu visita.",
+          "conflict": "Esta vuelta ha cambiado mientras tanto. Se ha cargado su estado actual; revisa tus datos antes de volver a intentarlo.",
+          "recovery": "No se ha podido comprobar si se guardó el cambio. Tus datos siguen disponibles; inténtalo de nuevo en unos instantes.",
+          "save": "No se ha podido guardar la valoración de esta vuelta. Tus datos siguen disponibles."
+        }
+      },
       "actions": {
         "back": "Volver al perfil",
         "retry": "Volver a intentar",
