@@ -1,6 +1,20 @@
 {
-  "version": "5.0.1",
+  "version": "5.0.2",
   "history": [
+    {
+      "version": "5.0.2",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Le suivi de la qualité d’affichage sur mobile est renforcé.",
+        "en": "Mobile display quality checks have been strengthened.",
+        "de": "Die Qualitätskontrollen für die mobile Darstellung wurden verstärkt.",
+        "nl": "De kwaliteitscontroles voor mobiele weergave zijn aangescherpt.",
+        "it": "I controlli sulla qualità della visualizzazione mobile sono stati rafforzati.",
+        "es": "Se han reforzado los controles de calidad de la visualización móvil.",
+        "pl": "Wzmocniono kontrolę jakości wyświetlania na urządzeniach mobilnych.",
+        "pt": "Os controlos de qualidade da apresentação em dispositivos móveis foram reforçados."
+      }
+    },
     {
       "version": "5.0.1",
       "releasedAt": "2026-09-03",
