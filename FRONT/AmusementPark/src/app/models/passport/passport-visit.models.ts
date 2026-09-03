@@ -23,6 +23,20 @@ export interface CreatePassportVisitRequest {
   privateNote: string | null;
 }
 
+export interface PassportVisitParkAssessment {
+  value: number;
+  privateComment: string | null;
+  revision: number;
+  createdAtUtc: string;
+  updatedAtUtc: string;
+}
+
+export interface UpsertPassportVisitParkAssessmentRequest {
+  value: number;
+  privateComment: string | null;
+  expectedVersion: number;
+}
+
 export interface PassportVisit {
   id: string;
   parkId: string;
@@ -33,6 +47,7 @@ export interface PassportVisit {
   privacy: PassportVisitPrivacy;
   title: string | null;
   privateNote: string | null;
+  parkAssessment?: PassportVisitParkAssessment | null;
   version: number;
   createdAtUtc: string;
   updatedAtUtc: string;

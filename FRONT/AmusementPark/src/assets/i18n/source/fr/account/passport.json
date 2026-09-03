@@ -80,6 +80,29 @@
       "title": "Détaille ta visite",
       "private": "Privé",
       "loading": "Chargement de ta visite…",
+      "assessment": {
+        "title": "Ton ressenti sur ce parc",
+        "description": "Note cette visite précise de 0,5 à 5. Cette observation reste privée et ne modifie jamais la note ni le classement communautaires.",
+        "privateBadge": "Observation privée",
+        "ratingLabel": "Note du parc pour cette visite",
+        "commentLabel": "Commentaire privé facultatif",
+        "commentPlaceholder": "Ce qui a marqué cette visite…",
+        "commentHint": "Toi seul peux lire ce commentaire. 4 000 caractères maximum.",
+        "save": "Enregistrer mon ressenti",
+        "saving": "Enregistrement…",
+        "delete": "Supprimer mon ressenti",
+        "deleteConfirmation": "Supprimer définitivement la note et son commentaire pour cette visite ?",
+        "confirmDelete": "Confirmer la suppression",
+        "saved": "Ton ressenti sur cette visite a été enregistré.",
+        "deleted": "Ton ressenti sur cette visite a été supprimé.",
+        "errors": {
+          "invalidValue": "Choisis une note comprise entre 0,5 et 5, par demi-point.",
+          "commentTooLong": "Le commentaire privé ne peut pas dépasser 4 000 caractères.",
+          "conflict": "Cette visite a changé entre-temps. Son état actuel a été rechargé ; vérifie ta saisie avant de réessayer.",
+          "recovery": "Impossible de vérifier si la modification a été enregistrée. Ta saisie reste disponible ; réessaie dans un instant.",
+          "save": "Ton ressenti n’a pas pu être enregistré. Ta saisie reste disponible."
+        }
+      },
       "actions": {
         "back": "Retour au profil",
         "retry": "Réessayer",

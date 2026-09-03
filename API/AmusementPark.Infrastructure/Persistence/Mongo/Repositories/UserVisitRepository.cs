@@ -113,6 +113,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
         List<UserVisitDocument> documents = await this.collection
             .Find(UserVisitMongoDefinitions.BuildListFilter(criteria))
             .Sort(UserVisitMongoDefinitions.BuildNewestVisitSort())
+            .Project<UserVisitDocument>(UserVisitMongoDefinitions.BuildListProjection())
             .Limit(criteria.Limit + 1)
             .ToListAsync(cancellationToken);
 
@@ -150,6 +151,25 @@ public sealed class UserVisitRepository : IUserVisitRepository
                 document.UserId,
                 expectedVersion),
             BuildDomainUpdate(document),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    public async Task<bool> TryConfirmOwnedVersionAsync(
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+                visitId.Value,
+                userId,
+                expectedVersion),
+            Builders<UserVisitDocument>.Update.Set(
+                static document => document.Version,
+                expectedVersion),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
@@ -211,6 +231,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
         AddOptionalUpdate(definitions, updates, "timeZoneId", document.TimeZoneId);
         AddOptionalUpdate(definitions, updates, "title", document.Title);
         AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
+        AddOptionalUpdate(definitions, updates, "parkAssessment", document.ParkAssessment);
         AddOptionalUpdate(definitions, updates, "completedAtUtc", document.CompletedAtUtc);
         return updates.Combine(definitions);
     }

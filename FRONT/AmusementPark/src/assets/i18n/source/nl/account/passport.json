@@ -80,6 +80,29 @@
       "title": "Vul je bezoek aan",
       "private": "Privé",
       "loading": "Je bezoek wordt geladen…",
+      "assessment": {
+        "title": "Jouw indruk van dit park",
+        "description": "Beoordeel dit specifieke bezoek van 0,5 tot 5. Deze observatie blijft privé en verandert nooit de communityscore of ranglijsten.",
+        "privateBadge": "Privéobservatie",
+        "ratingLabel": "Parkbeoordeling voor dit bezoek",
+        "commentLabel": "Optionele privéopmerking",
+        "commentPlaceholder": "Wat dit bezoek bijzonder maakte…",
+        "commentHint": "Alleen jij kunt deze opmerking lezen. Maximaal 4.000 tekens.",
+        "save": "Mijn indruk opslaan",
+        "saving": "Opslaan…",
+        "delete": "Mijn indruk verwijderen",
+        "deleteConfirmation": "De beoordeling en opmerking voor dit bezoek definitief verwijderen?",
+        "confirmDelete": "Verwijderen bevestigen",
+        "saved": "Je indruk van dit bezoek is opgeslagen.",
+        "deleted": "Je indruk van dit bezoek is verwijderd.",
+        "errors": {
+          "invalidValue": "Kies een beoordeling van 0,5 tot 5 in stappen van een half punt.",
+          "commentTooLong": "De privéopmerking mag niet langer zijn dan 4.000 tekens.",
+          "conflict": "Dit bezoek is ondertussen gewijzigd. De huidige staat is opnieuw geladen; controleer je invoer voordat je het opnieuw probeert.",
+          "recovery": "We konden niet controleren of de wijziging is opgeslagen. Je invoer blijft beschikbaar; probeer het zo opnieuw.",
+          "save": "Je indruk kon niet worden opgeslagen. Je invoer blijft beschikbaar."
+        }
+      },
       "actions": {
         "back": "Terug naar profiel",
         "retry": "Opnieuw proberen",

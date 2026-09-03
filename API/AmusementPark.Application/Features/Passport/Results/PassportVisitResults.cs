@@ -10,6 +10,13 @@ public sealed record VisitDateResult(
     VisitDatePrecision Precision,
     bool IsApproximate);
 
+public sealed record VisitParkAssessmentResult(
+    double Value,
+    string? PrivateComment,
+    int Revision,
+    DateTime CreatedAtUtc,
+    DateTime UpdatedAtUtc);
+
 public sealed record VisitResult(
     string Id,
     string ParkId,
@@ -23,7 +30,8 @@ public sealed record VisitResult(
     long Version,
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
-    DateTime? CompletedAtUtc);
+    DateTime? CompletedAtUtc,
+    VisitParkAssessmentResult? ParkAssessment = null);
 
 public sealed record CreateVisitResult(
     VisitResult Visit,

@@ -7,7 +7,10 @@ import { PassportOperationIdService } from '@data-access/passport/passport-opera
 import { PassportRideOccurrencesApiService } from '@data-access/passport/passport-ride-occurrences-api.service';
 import { PassportVisitsApiService } from '@data-access/passport/passport-visits-api.service';
 
-export interface PassportVisitEditorVisitsPort extends Pick<PassportVisitsApiService, 'getVisit'> {
+export interface PassportVisitEditorVisitsPort extends Pick<
+  PassportVisitsApiService,
+  'getVisit' | 'upsertParkAssessment' | 'deleteParkAssessment'
+> {
 }
 
 export interface PassportVisitEditorOccurrencesPort extends Pick<

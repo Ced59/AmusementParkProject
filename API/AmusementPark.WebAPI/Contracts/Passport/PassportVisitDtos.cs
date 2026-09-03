@@ -62,6 +62,28 @@ public sealed class CreatePassportVisitRequestDto
     public string? PrivateNote { get; init; }
 }
 
+public sealed class UpsertPassportVisitParkAssessmentRequestDto
+{
+    public double Value { get; init; }
+
+    public string? PrivateComment { get; init; }
+
+    public long ExpectedVersion { get; init; }
+}
+
+public sealed class PassportVisitParkAssessmentDto
+{
+    public double Value { get; init; }
+
+    public string? PrivateComment { get; init; }
+
+    public int Revision { get; init; }
+
+    public DateTime CreatedAtUtc { get; init; }
+
+    public DateTime UpdatedAtUtc { get; init; }
+}
+
 public sealed class PassportVisitDto
 {
     public string Id { get; init; } = string.Empty;
@@ -81,6 +103,8 @@ public sealed class PassportVisitDto
     public string? Title { get; init; }
 
     public string? PrivateNote { get; init; }
+
+    public PassportVisitParkAssessmentDto? ParkAssessment { get; init; }
 
     public long Version { get; init; }
 

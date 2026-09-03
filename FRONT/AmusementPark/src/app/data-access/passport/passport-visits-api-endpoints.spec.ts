@@ -8,4 +8,9 @@ describe('PASSPORT_VISITS_API_ENDPOINTS', () => {
   it('encodes the visit identifier in the owner-scoped detail route', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.getById('visit/one')).toBe('me/passport/visits/visit%2Fone');
   });
+
+  it('keeps the park assessment nested under its owned visit', () => {
+    expect(PASSPORT_VISITS_API_ENDPOINTS.assessment('visit/one'))
+      .toBe('me/passport/visits/visit%2Fone/assessment');
+  });
 });

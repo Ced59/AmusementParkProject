@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
@@ -71,6 +72,38 @@ public sealed class UserVisitMongoMapperTests
         Assert.True(restored.Date.IsApproximate);
         Assert.Null(restored.TimeZoneId);
         Assert.Null(restored.CompletedAtUtc);
+    }
+
+    [Fact]
+    public void Mapper_ShouldRoundTripTheEmbeddedParkAssessment()
+    {
+        Visit visit = Visit.Create(
+            VisitId.Parse("visit-assessed"),
+            "user-1",
+            "park-1",
+            VisitDate.ForDay(2026, 8, 31),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            CreatedAtUtc);
+        visit.UpsertParkAssessment(
+            RatingValue.FromDouble(4.5d),
+            "  Une journée mémorable  ",
+            CreatedAtUtc.AddHours(4));
+
+        UserVisitDocument document = visit.ToDocument();
+        BsonDocument serialized = document.ToBsonDocument();
+        Visit restored = document.ToDomain();
+
+        BsonDocument assessment = serialized["parkAssessment"].AsBsonDocument;
+        Assert.Equal(9, assessment["valueHalfSteps"].AsInt32);
+        Assert.Equal("Une journée mémorable", assessment["privateComment"].AsString);
+        Assert.Equal(1, assessment["revision"].AsInt32);
+        Assert.NotNull(restored.ParkAssessment);
+        Assert.Equal(4.5d, restored.ParkAssessment.Value.DoubleValue);
+        Assert.Equal(1, restored.ParkAssessment.Revision);
+        Assert.Equal(CreatedAtUtc.AddHours(4), restored.ParkAssessment.UpdatedAtUtc);
     }
 
     [Fact]

@@ -1,5 +1,6 @@
 using System.Globalization;
 using AmusementPark.Core.Domain.Identifiers;
+using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Core.Domain.Visits;
 
@@ -28,7 +29,8 @@ public sealed class Visit
         long version,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        DateTime? completedAtUtc)
+        DateTime? completedAtUtc,
+        VisitParkAssessment? parkAssessment)
     {
         _ = id.Value;
         ArgumentNullException.ThrowIfNull(date);
@@ -37,6 +39,7 @@ public sealed class Visit
         ValidatePrivacy(privacy);
         ValidateVersion(version);
         ValidateRestoredTimestamps(status, createdAtUtc, updatedAtUtc, completedAtUtc);
+        ValidateRestoredAssessment(parkAssessment, createdAtUtc, updatedAtUtc);
 
         this.Id = id;
         this.UserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
@@ -52,6 +55,7 @@ public sealed class Visit
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.CompletedAtUtc = completedAtUtc;
+        this.ParkAssessment = parkAssessment;
     }
 
     public VisitId Id { get; }
@@ -82,6 +86,8 @@ public sealed class Visit
 
     public DateTime? CompletedAtUtc { get; private set; }
 
+    public VisitParkAssessment? ParkAssessment { get; private set; }
+
     public static Visit Create(
         VisitId id,
         string userId,
@@ -107,6 +113,7 @@ public sealed class Visit
             1,
             nowUtc,
             nowUtc,
+            null,
             null);
     }
 
@@ -124,7 +131,8 @@ public sealed class Visit
         long version,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        DateTime? completedAtUtc)
+        DateTime? completedAtUtc,
+        VisitParkAssessment? parkAssessment = null)
     {
         return new Visit(
             id,
@@ -140,7 +148,35 @@ public sealed class Visit
             version,
             createdAtUtc,
             updatedAtUtc,
-            completedAtUtc);
+            completedAtUtc,
+            parkAssessment);
+    }
+
+    public void UpsertParkAssessment(
+        RatingValue value,
+        string? privateComment,
+        DateTime nowUtc)
+    {
+        VisitParkAssessment nextAssessment = this.ParkAssessment is null
+            ? VisitParkAssessment.Create(value, privateComment, nowUtc)
+            : this.ParkAssessment.Update(value, privateComment, nowUtc);
+
+        this.PrepareMutation(nowUtc);
+        this.ParkAssessment = nextAssessment;
+        this.CommitMutation(nowUtc);
+    }
+
+    public void DeleteParkAssessment(DateTime nowUtc)
+    {
+        if (this.ParkAssessment is null)
+        {
+            this.ValidateMutationTimestamp(nowUtc);
+            return;
+        }
+
+        this.PrepareMutation(nowUtc);
+        this.ParkAssessment = null;
+        this.CommitMutation(nowUtc);
     }
 
     public void UpdateDraft(
@@ -333,6 +369,25 @@ public sealed class Visit
             throw CreateValidationException(
                 VisitErrorCodes.CompletedAtForbidden,
                 "A draft visit cannot have a completion timestamp.");
+        }
+    }
+
+    private static void ValidateRestoredAssessment(
+        VisitParkAssessment? parkAssessment,
+        DateTime createdAtUtc,
+        DateTime updatedAtUtc)
+    {
+        if (parkAssessment is null)
+        {
+            return;
+        }
+
+        if (parkAssessment.CreatedAtUtc < createdAtUtc
+            || parkAssessment.UpdatedAtUtc > updatedAtUtc)
+        {
+            throw CreateValidationException(
+                VisitErrorCodes.InvalidTimestampOrder,
+                "The park assessment timestamps must remain within the visit lifetime.");
         }
     }
 

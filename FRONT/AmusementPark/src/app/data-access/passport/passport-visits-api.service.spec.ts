@@ -37,6 +37,35 @@ describe('PassportVisitsApiService', () => {
       { transferCache: false }
     );
   });
+
+  it('upserts a temporal park assessment through the visit-scoped endpoint', () => {
+    const httpClient = {
+      put: vi.fn().mockReturnValue(of({}))
+    };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+    const request = { value: 4.5, privateComment: 'Belle journée', expectedVersion: 2 };
+
+    service.upsertParkAssessment('visit/one', request).subscribe();
+
+    expect(httpClient.put).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone/assessment`,
+      request
+    );
+  });
+
+  it('deletes a temporal park assessment with the parent version fence', () => {
+    const httpClient = {
+      delete: vi.fn().mockReturnValue(of({}))
+    };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+
+    service.deleteParkAssessment('visit/one', 3).subscribe();
+
+    expect(httpClient.delete).toHaveBeenCalledTimes(1);
+    const call: unknown[] = httpClient.delete.mock.calls[0];
+    expect(call[0]).toBe(`${environment.apiBaseUrl}me/passport/visits/visit%2Fone/assessment`);
+    expect((call[1] as { params: { get: (name: string) => string | null } }).params.get('expectedVersion')).toBe('3');
+  });
 });
 
 function createRequest(): CreatePassportVisitRequest {

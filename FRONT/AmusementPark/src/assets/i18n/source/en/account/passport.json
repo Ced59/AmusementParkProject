@@ -80,6 +80,29 @@
       "title": "Add details to your visit",
       "private": "Private",
       "loading": "Loading your visit…",
+      "assessment": {
+        "title": "How this park felt",
+        "description": "Rate this specific visit from 0.5 to 5. This observation stays private and never changes the community rating or rankings.",
+        "privateBadge": "Private observation",
+        "ratingLabel": "Park rating for this visit",
+        "commentLabel": "Optional private comment",
+        "commentPlaceholder": "What stood out during this visit…",
+        "commentHint": "Only you can read this comment. Maximum 4,000 characters.",
+        "save": "Save my experience",
+        "saving": "Saving…",
+        "delete": "Delete my experience",
+        "deleteConfirmation": "Permanently delete the rating and comment for this visit?",
+        "confirmDelete": "Confirm deletion",
+        "saved": "Your experience for this visit has been saved.",
+        "deleted": "Your experience for this visit has been deleted.",
+        "errors": {
+          "invalidValue": "Choose a rating from 0.5 to 5 in half-point steps.",
+          "commentTooLong": "The private comment cannot exceed 4,000 characters.",
+          "conflict": "This visit changed in the meantime. Its current state was reloaded; check your entry before trying again.",
+          "recovery": "We could not verify whether the change was saved. Your entry is still available; try again in a moment.",
+          "save": "Your experience could not be saved. Your entry is still available."
+        }
+      },
       "actions": {
         "back": "Back to profile",
         "retry": "Try again",

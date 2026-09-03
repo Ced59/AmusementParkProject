@@ -44,6 +44,10 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? PrivateNote { get; set; }
 
+    [BsonElement("parkAssessment")]
+    [BsonIgnoreIfNull]
+    public UserVisitParkAssessmentDocument? ParkAssessment { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 
@@ -62,6 +66,26 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public UserVisitCreationSnapshotDocument? CreationSnapshot { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserVisitParkAssessmentDocument
+{
+    [BsonElement("valueHalfSteps")]
+    public byte ValueHalfSteps { get; set; }
+
+    [BsonElement("privateComment")]
+    [BsonIgnoreIfNull]
+    public string? PrivateComment { get; set; }
+
+    [BsonElement("revision")]
+    public int Revision { get; set; }
+
+    [BsonElement("createdAtUtc")]
+    public DateTime CreatedAtUtc { get; set; }
+
+    [BsonElement("updatedAtUtc")]
+    public DateTime UpdatedAtUtc { get; set; }
 }
 
 [BsonIgnoreExtraElements]

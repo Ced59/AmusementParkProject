@@ -13,7 +13,11 @@ import {
   PassportRideOccurrencePlacement,
   ReorderPassportRideOccurrenceRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
-import { PassportVisit } from '@app/models/passport/passport-visit.models';
+import {
+  PassportVisit,
+  PassportVisitParkAssessment,
+  UpsertPassportVisitParkAssessmentRequest
+} from '@app/models/passport/passport-visit.models';
 import { ParkItem } from '@app/models/parks/park-item';
 import { Park } from '@app/models/parks/park';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -35,6 +39,7 @@ import {
   PassportOccurrenceEditDraft,
   PassportRideOccurrenceRow,
   PassportVisitEditorAttraction,
+  PassportVisitParkAssessmentDraft,
   PassportVisitEditorZone
 } from '../models/passport-visit-editor.models';
 import {
@@ -83,6 +88,13 @@ export class PassportVisitEditorStateFacade {
   private static readonly TimelinePageSize: number = 50;
 
   private readonly visitSignal = signal<PassportVisit | null>(null);
+  private readonly assessmentDraftSignal = signal<PassportVisitParkAssessmentDraft>({
+    value: null,
+    privateComment: ''
+  });
+  private readonly persistedAssessmentFingerprintSignal = signal<string>(this.assessmentFingerprint(null));
+  private readonly assessmentSavingSignal = signal<boolean>(false);
+  private readonly assessmentErrorKeySignal = signal<string | null>(null);
   private readonly parkNameSignal = signal<string>('');
   private readonly zonesSignal = signal<PassportVisitEditorZone[]>([]);
   private readonly attractionsSignal = signal<PassportVisitEditorAttraction[]>([]);
@@ -125,8 +137,18 @@ export class PassportVisitEditorStateFacade {
   private timelineGeneration: number = 0;
   private timelineReloadRequestGeneration: number = 0;
   private timelineReloadQueued: boolean = false;
+  private assessmentMutationGeneration: number = 0;
 
   readonly visit: Signal<PassportVisit | null> = this.visitSignal.asReadonly();
+  readonly assessmentDraft: Signal<PassportVisitParkAssessmentDraft> = this.assessmentDraftSignal.asReadonly();
+  readonly assessmentSaving: Signal<boolean> = this.assessmentSavingSignal.asReadonly();
+  readonly assessmentErrorKey: Signal<string | null> = this.assessmentErrorKeySignal.asReadonly();
+  readonly assessmentHasChanges = computed((): boolean =>
+    this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== this.persistedAssessmentFingerprintSignal());
+  readonly assessmentCanSave = computed((): boolean =>
+    this.assessmentDraftSignal().value !== null
+    && !this.assessmentSavingSignal()
+    && this.assessmentHasChanges());
   readonly parkName: Signal<string> = this.parkNameSignal.asReadonly();
   readonly zones: Signal<PassportVisitEditorZone[]> = this.zonesSignal.asReadonly();
   readonly attractions: Signal<PassportVisitEditorAttraction[]> = this.attractionsSignal.asReadonly();
@@ -538,6 +560,117 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
+  updateParkAssessmentDraft(patch: Partial<PassportVisitParkAssessmentDraft>): void {
+    this.assessmentDraftSignal.update((current: PassportVisitParkAssessmentDraft) => ({
+      ...current,
+      ...patch
+    }));
+    this.assessmentErrorKeySignal.set(null);
+  }
+
+  saveParkAssessment(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    const draft: PassportVisitParkAssessmentDraft = this.assessmentDraftSignal();
+    if (!visit || draft.value === null || !this.assessmentCanSave()) {
+      return;
+    }
+
+    const visitId: string = visit.id;
+    const visitGeneration: number = this.visitInstanceGeneration;
+    const mutationGeneration: number = ++this.assessmentMutationGeneration;
+    const request: UpsertPassportVisitParkAssessmentRequest = {
+      value: draft.value,
+      privateComment: draft.privateComment.trim() || null,
+      expectedVersion: visit.version
+    };
+    const submittedFingerprint: string = this.assessmentDraftFingerprint({
+      value: request.value,
+      privateComment: request.privateComment ?? ''
+    });
+    this.assessmentSavingSignal.set(true);
+    this.assessmentErrorKeySignal.set(null);
+    this.visitsApi.upsertParkAssessment(visitId, request).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (updatedVisit: PassportVisit): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        this.applyAssessmentMutationResult(updatedVisit, submittedFingerprint);
+        this.showSuccess('passport.editor.assessment.saved');
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        if (this.isAmbiguousMutationError(error) || this.isAssessmentVersionConflict(error)) {
+          this.reconcileAssessmentMutation(
+            visitId,
+            visitGeneration,
+            mutationGeneration,
+            submittedFingerprint,
+            'upsert',
+            error);
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        this.assessmentErrorKeySignal.set(this.resolveAssessmentErrorKey(error));
+      }
+    });
+  }
+
+  deleteParkAssessment(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit?.parkAssessment || this.assessmentSavingSignal()) {
+      return;
+    }
+
+    const visitId: string = visit.id;
+    const visitGeneration: number = this.visitInstanceGeneration;
+    const mutationGeneration: number = ++this.assessmentMutationGeneration;
+    const submittedFingerprint: string = this.assessmentDraftFingerprint(this.assessmentDraftSignal());
+    this.assessmentSavingSignal.set(true);
+    this.assessmentErrorKeySignal.set(null);
+    this.visitsApi.deleteParkAssessment(visitId, visit.version).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (updatedVisit: PassportVisit): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        this.applyAssessmentMutationResult(updatedVisit, submittedFingerprint);
+        this.showSuccess('passport.editor.assessment.deleted');
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        if (this.isAmbiguousMutationError(error) || this.isAssessmentVersionConflict(error)) {
+          this.reconcileAssessmentMutation(
+            visitId,
+            visitGeneration,
+            mutationGeneration,
+            submittedFingerprint,
+            'delete',
+            error);
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        this.assessmentErrorKeySignal.set(this.resolveAssessmentErrorKey(error));
+      }
+    });
+  }
+
   private createDuplicateSubmission(
     occurrence: PassportRideOccurrence,
     operationName: string
@@ -776,7 +909,7 @@ export class PassportVisitEditorStateFacade {
           return;
         }
 
-        this.visitSignal.set(visit);
+        this.applyLoadedVisit(visit);
         this.parkNameSignal.set(data.park?.name?.trim() || visit.parkId);
         this.zonesSignal.set(data.zones
           .map((zone: ParkZone): PassportVisitEditorZone | null => mapParkZoneToVisitEditorZone(zone, this.currentLanguage))
@@ -1084,6 +1217,137 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
+  private reconcileAssessmentMutation(
+    visitId: string,
+    visitGeneration: number,
+    mutationGeneration: number,
+    submittedFingerprint: string,
+    mutation: 'upsert' | 'delete',
+    originalError: unknown
+  ): void {
+    this.visitsApi.getVisit(visitId).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (currentVisit: PassportVisit): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        const serverFingerprint: string = this.assessmentFingerprint(currentVisit.parkAssessment ?? null);
+        const mutationWasApplied: boolean = mutation === 'delete'
+          ? currentVisit.parkAssessment == null
+          : serverFingerprint === submittedFingerprint;
+        const draftChangedDuringRequest: boolean =
+          this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== submittedFingerprint;
+        this.visitSignal.set(currentVisit);
+        this.persistedAssessmentFingerprintSignal.set(serverFingerprint);
+        if (mutationWasApplied && !draftChangedDuringRequest) {
+          this.syncAssessmentDraft(currentVisit.parkAssessment ?? null);
+        }
+        if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
+          this.assessmentErrorKeySignal.set(null);
+          this.showSuccess(mutation === 'delete'
+            ? 'passport.editor.assessment.deleted'
+            : 'passport.editor.assessment.saved');
+          return;
+        }
+
+        this.assessmentErrorKeySignal.set('passport.editor.assessment.errors.conflict');
+      },
+      error: (): void => {
+        if (!this.isCurrentAssessmentMutation(visitId, visitGeneration, mutationGeneration)) {
+          return;
+        }
+
+        this.assessmentSavingSignal.set(false);
+        this.assessmentErrorKeySignal.set('passport.editor.assessment.errors.recovery');
+      }
+    });
+  }
+
+  private applyLoadedVisit(visit: PassportVisit): void {
+    const currentVisit: PassportVisit | null = this.visitSignal();
+    if (currentVisit?.id === visit.id && visit.version < currentVisit.version) {
+      return;
+    }
+
+    const preserveDraft: boolean = currentVisit?.id === visit.id && this.assessmentHasChanges();
+    this.visitSignal.set(visit);
+    this.persistedAssessmentFingerprintSignal.set(this.assessmentFingerprint(visit.parkAssessment ?? null));
+    if (!preserveDraft) {
+      this.syncAssessmentDraft(visit.parkAssessment ?? null);
+    }
+  }
+
+  private applyAssessmentMutationResult(visit: PassportVisit, submittedFingerprint: string): void {
+    const draftChangedDuringRequest: boolean =
+      this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== submittedFingerprint;
+    this.visitSignal.set(visit);
+    this.persistedAssessmentFingerprintSignal.set(this.assessmentFingerprint(visit.parkAssessment ?? null));
+    if (!draftChangedDuringRequest) {
+      this.syncAssessmentDraft(visit.parkAssessment ?? null);
+    }
+  }
+
+  private syncAssessmentDraft(assessment: PassportVisitParkAssessment | null): void {
+    this.assessmentDraftSignal.set({
+      value: assessment?.value ?? null,
+      privateComment: assessment?.privateComment ?? ''
+    });
+  }
+
+  private assessmentFingerprint(assessment: PassportVisitParkAssessment | null): string {
+    return this.assessmentDraftFingerprint({
+      value: assessment?.value ?? null,
+      privateComment: assessment?.privateComment ?? ''
+    });
+  }
+
+  private assessmentDraftFingerprint(draft: PassportVisitParkAssessmentDraft): string {
+    return JSON.stringify({
+      value: draft.value,
+      privateComment: draft.privateComment.trim() || null
+    });
+  }
+
+  private isCurrentAssessmentMutation(
+    visitId: string,
+    visitGeneration: number,
+    mutationGeneration: number
+  ): boolean {
+    return this.isCurrentVisitInstance(visitId, visitGeneration)
+      && mutationGeneration === this.assessmentMutationGeneration;
+  }
+
+  private isAssessmentVersionConflict(error: unknown): boolean {
+    return extractApiProblemDetails(error)?.errorCode === 'visit-park-assessment.version-conflict';
+  }
+
+  private resolveAssessmentErrorKey(error: unknown): string {
+    const errorCode: string | null | undefined = extractApiProblemDetails(error)?.errorCode;
+    if (errorCode === 'rating.invalid-value' || errorCode === 'rating.invalid-step') {
+      return 'passport.editor.assessment.errors.invalidValue';
+    }
+
+    if (errorCode === 'visit-park-assessment.private-comment-too-long') {
+      return 'passport.editor.assessment.errors.commentTooLong';
+    }
+
+    if (errorCode === 'visit.not-found') {
+      return 'passport.editor.errors.visitNotFound';
+    }
+
+    if (this.isAssessmentVersionConflict(error)) {
+      return 'passport.editor.assessment.errors.conflict';
+    }
+
+    return this.isAmbiguousMutationError(error)
+      ? 'passport.editor.assessment.errors.recovery'
+      : 'passport.editor.assessment.errors.save';
+  }
+
   private isCurrentVisitInstance(visitId: string, visitGeneration: number): boolean {
     return visitId === this.currentVisitId && visitGeneration === this.visitInstanceGeneration;
   }
@@ -1116,6 +1380,10 @@ export class PassportVisitEditorStateFacade {
     this.currentAttractionSearch = '';
     this.currentZoneId = null;
     this.visitSignal.set(null);
+    this.assessmentDraftSignal.set({ value: null, privateComment: '' });
+    this.persistedAssessmentFingerprintSignal.set(this.assessmentFingerprint(null));
+    this.assessmentSavingSignal.set(false);
+    this.assessmentErrorKeySignal.set(null);
     this.parkNameSignal.set('');
     this.zonesSignal.set([]);
     this.attractionsSignal.set([]);
@@ -1145,5 +1413,6 @@ export class PassportVisitEditorStateFacade {
     this.timelineReloadRequestGeneration += 1;
     this.invalidateTimelinePagination();
     this.timelineReloadQueued = false;
+    this.assessmentMutationGeneration += 1;
   }
 }

@@ -60,7 +60,9 @@ export class PassportVisitEditorPageComponent {
   protected readonly searchControl = new FormControl<string>('', { nonNullable: true });
   protected readonly zoneControl = new FormControl<string>('', { nonNullable: true });
   protected readonly deleteConfirmationId = signal<string | null>(null);
+  protected readonly assessmentDeleteConfirmation = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly assessmentValues: readonly number[] = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
     { value: 'Completed', labelKey: 'passport.editor.status.completed' },
     { value: 'Attempted', labelKey: 'passport.editor.status.attempted' },
@@ -98,6 +100,8 @@ export class PassportVisitEditorPageComponent {
       }
 
       this.visitId = visitId;
+      this.deleteConfirmationId.set(null);
+      this.assessmentDeleteConfirmation.set(false);
       this.searchControl.setValue('', { emitEvent: false });
       this.zoneControl.setValue('', { emitEvent: false });
       this.facade.load(visitId, this.currentLanguage());
@@ -133,6 +137,39 @@ export class PassportVisitEditorPageComponent {
     this.searchControl.setValue('');
     this.zoneControl.setValue('');
     this.facade.applyAttractionFilters('', null);
+  }
+
+  protected selectAssessmentValue(value: number): void {
+    this.facade.updateParkAssessmentDraft({ value });
+  }
+
+  protected updateAssessmentComment(event: Event): void {
+    this.facade.updateParkAssessmentDraft({ privateComment: this.eventValue(event) });
+  }
+
+  protected saveAssessment(): void {
+    this.assessmentDeleteConfirmation.set(false);
+    this.facade.saveParkAssessment();
+  }
+
+  protected requestAssessmentDelete(): void {
+    this.assessmentDeleteConfirmation.set(true);
+  }
+
+  protected cancelAssessmentDelete(): void {
+    this.assessmentDeleteConfirmation.set(false);
+  }
+
+  protected confirmAssessmentDelete(): void {
+    this.assessmentDeleteConfirmation.set(false);
+    this.facade.deleteParkAssessment();
+  }
+
+  protected assessmentValueLabel(value: number): string {
+    return new Intl.NumberFormat(this.currentLanguage(), {
+      minimumFractionDigits: value % 1 === 0 ? 0 : 1,
+      maximumFractionDigits: 1
+    }).format(value);
   }
 
   protected toggleAttraction(attraction: PassportVisitEditorAttraction): void {

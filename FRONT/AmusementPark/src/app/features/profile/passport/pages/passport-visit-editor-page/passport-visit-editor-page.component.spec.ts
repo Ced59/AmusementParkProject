@@ -30,6 +30,36 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('@media (max-width: 340px)');
     expect(styles).toContain('min-height: 2.75rem');
     expect(styles).toContain('outline: 3px solid');
+    expect(styles).toContain('grid-template-columns: repeat(5, minmax(0, 1fr))');
+    expect(styles).toContain('.passport-assessment__actions');
+  });
+
+  it('forwards the selected park rating without deriving business rules in the component', () => {
+    const updateParkAssessmentDraft = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'updateParkAssessmentDraft'>;
+      selectAssessmentValue(value: number): void;
+    };
+    component.facade = { updateParkAssessmentDraft };
+
+    component.selectAssessmentValue(4.5);
+
+    expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ value: 4.5 });
+  });
+
+  it('forwards private assessment comments on input so newer text survives in-flight saves', () => {
+    const updateParkAssessmentDraft = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'updateParkAssessmentDraft'>;
+      updateAssessmentComment(event: Event): void;
+    };
+    component.facade = { updateParkAssessmentDraft };
+    const textarea: HTMLTextAreaElement = document.createElement('textarea');
+    textarea.value = 'Souvenir plus précis';
+
+    component.updateAssessmentComment({ target: textarea } as unknown as Event);
+
+    expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ privateComment: 'Souvenir plus précis' });
   });
 
   it('falls back to the translated unknown label for unsupported lifecycle statuses', () => {
@@ -126,9 +156,13 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     const controls = component as unknown as {
       searchControl: { setValue(value: string): void; value: string };
       zoneControl: { setValue(value: string): void; value: string };
+      deleteConfirmationId: WritableSignal<string | null>;
+      assessmentDeleteConfirmation: WritableSignal<boolean>;
     };
     controls.searchControl.setValue('ancienne recherche');
     controls.zoneControl.setValue('ancienne-zone');
+    controls.deleteConfirmationId.set('occurrence-1');
+    controls.assessmentDeleteConfirmation.set(true);
 
     languageParams.next(convertToParamMap({ lang: 'de' }));
     visitParams.next(convertToParamMap({ visitId: 'visit-2' }));
@@ -140,6 +174,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(facade.load).toHaveBeenNthCalledWith(2, 'visit-2', 'de');
     expect(controls.searchControl.value).toBe('');
     expect(controls.zoneControl.value).toBe('');
+    expect(controls.deleteConfirmationId()).toBeNull();
+    expect(controls.assessmentDeleteConfirmation()).toBe(false);
     expect((component as unknown as { currentLanguage: WritableSignal<string> }).currentLanguage()).toBe('de');
     expect(router.navigate).toHaveBeenCalledWith(['/', 'de', 'profile']);
     expect(facade.retryLoad).toHaveBeenCalledOnce();
