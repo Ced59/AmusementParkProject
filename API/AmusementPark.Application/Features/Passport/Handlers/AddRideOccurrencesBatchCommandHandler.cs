@@ -241,6 +241,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,
                 changes,
+                plan.Guards,
                 last,
                 true,
                 nowUtc,

@@ -193,6 +193,14 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfNull]
     public List<UserRideOccurrenceReorderAllocationDocument>? ReorderItems { get; set; }
 
+    [BsonElement("orderGuards")]
+    [BsonIgnoreIfNull]
+    public List<UserRideOccurrenceOrderGuardDocument>? OrderGuards { get; set; }
+
+    [BsonElement("orderGuardsValidated")]
+    [BsonIgnoreIfDefault]
+    public bool OrderGuardsValidated { get; set; }
+
     [BsonElement("reorderResultSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }
@@ -215,6 +223,20 @@ public sealed class UserRideOccurrenceCreationAllocationDocument
 
     [BsonElement("updatedAtUtc")]
     public DateTime UpdatedAtUtc { get; set; }
+
+    [BsonElement("creationSnapshot")]
+    public UserRideOccurrenceCreationSnapshotDocument CreationSnapshot { get; set; } =
+        new UserRideOccurrenceCreationSnapshotDocument();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceOrderGuardDocument
+{
+    [BsonElement("occurrenceId")]
+    public string OccurrenceId { get; set; } = string.Empty;
+
+    [BsonElement("sortPosition")]
+    public long SortPosition { get; set; }
 }
 
 [BsonIgnoreExtraElements]

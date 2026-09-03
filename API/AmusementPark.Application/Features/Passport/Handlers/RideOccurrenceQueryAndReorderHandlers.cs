@@ -195,6 +195,7 @@ public sealed class ReorderRideOccurrenceCommandHandler
             await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,
                 changes,
+                plan.Guards,
                 byId[scope.OccurrenceId],
                 plan.WasNormalized,
                 nowUtc,
@@ -206,6 +207,11 @@ public sealed class ReorderRideOccurrenceCommandHandler
     private static ApplicationResult<ReorderRideOccurrenceResult> ToApplicationResult(
         IdempotentRideOccurrenceReorderResult result)
     {
+        if (result.Status == IdempotentRideOccurrenceReorderStatus.IdempotencyConflict)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+        }
+
         if (result.Status == IdempotentRideOccurrenceReorderStatus.Conflict
             || result.Occurrence is null)
         {

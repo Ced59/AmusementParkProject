@@ -47,6 +47,9 @@ public sealed class RideOccurrenceOrderPlannerTests
         RideOccurrenceOrderPosition change = Assert.Single(plan.Changes);
         Assert.Equal("three", change.OccurrenceId.Value);
         Assert.Equal(1536, change.SortPosition);
+        Assert.Equal(
+            new[] { "one", "two", "three" },
+            plan.Guards.Select(static guard => guard.OccurrenceId.Value));
         Assert.False(plan.WasNormalized);
     }
 
@@ -111,6 +114,9 @@ public sealed class RideOccurrenceOrderPlannerTests
             RideOccurrencePlacement.First);
 
         Assert.Empty(plan.Changes);
+        Assert.Equal(
+            new[] { "one", "two" },
+            plan.Guards.Select(static guard => guard.OccurrenceId.Value));
         Assert.False(plan.WasNormalized);
     }
 

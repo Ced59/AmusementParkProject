@@ -12,8 +12,13 @@ public sealed record RideOccurrenceOrderPosition(
     RideOccurrenceId OccurrenceId,
     long SortPosition);
 
+public sealed record RideOccurrenceOrderGuard(
+    RideOccurrenceId OccurrenceId,
+    long SortPosition);
+
 public sealed record RideOccurrenceOrderPlan(
     IReadOnlyCollection<RideOccurrenceOrderPosition> Changes,
+    IReadOnlyCollection<RideOccurrenceOrderGuard> Guards,
     bool WasNormalized);
 
 /// <summary>
@@ -98,6 +103,7 @@ public static class RideOccurrenceOrderPlanner
         {
             return new RideOccurrenceOrderPlan(
                 Array.Empty<RideOccurrenceOrderPosition>(),
+                BuildGuards(original),
                 false);
         }
 
@@ -109,6 +115,7 @@ public static class RideOccurrenceOrderPlanner
                 {
                     new RideOccurrenceOrderPosition(movedOccurrenceId, directPosition.Value),
                 },
+                BuildGuards(original),
                 false);
         }
 
@@ -125,7 +132,10 @@ public static class RideOccurrenceOrderPlanner
             }
         }
 
-        return new RideOccurrenceOrderPlan(changes, true);
+        return new RideOccurrenceOrderPlan(
+            changes,
+            BuildGuards(original),
+            true);
     }
 
     public static RideOccurrenceOrderPlan PlanNormalization(
@@ -156,7 +166,10 @@ public static class RideOccurrenceOrderPlanner
             }
         }
 
-        return new RideOccurrenceOrderPlan(changes, true);
+        return new RideOccurrenceOrderPlan(
+            changes,
+            BuildGuards(ordered),
+            true);
     }
 
     private static int ResolveInsertionIndex(
@@ -224,6 +237,16 @@ public static class RideOccurrenceOrderPlanner
         return gap > 1
             ? midpoint
             : null;
+    }
+
+    private static IReadOnlyCollection<RideOccurrenceOrderGuard> BuildGuards(
+        IReadOnlyCollection<RideOccurrence> occurrences)
+    {
+        return occurrences
+            .Select(static occurrence => new RideOccurrenceOrderGuard(
+                occurrence.Id,
+                occurrence.SortPosition))
+            .ToArray();
     }
 
     private static void EnsureDistinctIds(IReadOnlyCollection<RideOccurrence> occurrences)

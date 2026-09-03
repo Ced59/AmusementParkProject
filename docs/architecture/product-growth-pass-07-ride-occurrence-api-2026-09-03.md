@@ -40,7 +40,7 @@ POST   /api/me/passport/visits/{visitId}/occurrences:reorder
 
 Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic. L'empreinte de création porte sur la requête normalisée et est recherchée avant la visite ou la cible mutable : un retry reste donc rejouable même si l'attraction a ensuite été masquée, déplacée ou supprimée.
 
-La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
+La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La réservation Mongo conserve le snapshot immuable complet de chaque occurrence : si une écriture non ordonnée n'en persiste qu'une partie, le retry recrée uniquement les lignes manquantes depuis cette réservation, sans relire une attraction qui aurait depuis changé ou disparu. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
 
 ## Cohérence de la cible et de la date
 
@@ -78,10 +78,14 @@ sequenceDiagram
     else nouvelle opération
       API->>API: calculer le milieu entre A et B
       alt espace disponible
-        API->>OP: réserver une mutation de C
+        API->>OP: réserver une mutation de C + snapshot d'ordre lu
       else gap <= 1 ou borne int64
         API->>API: renormaliser seulement cette visite
-        API->>OP: réserver le lot borné
+        API->>OP: réserver le lot borné + snapshot d'ordre lu
+      end
+      OP->>OCC: revalider tout l'ordre actif borné
+      alt ordre changé depuis le calcul
+        OP-->>API: 409 sans mutation
       end
       OP->>OCC: CAS sur chaque version attendue
       OCC-->>OP: écritures ou conflit
@@ -93,7 +97,9 @@ sequenceDiagram
     end
 ```
 
-Une opération Mongo conserve son empreinte, sa cible, les versions attendues, les positions précédentes et les snapshots de résultat. Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, y compris après une correction ultérieure qui a augmenté leur version, termine les lignes restantes puis rejoue le snapshot réservé. Si une version réellement concurrente bloque une ligne, les mutations déjà appliquées sont restaurées en ordre inverse par CAS. L'opération n'est marquée `conflict` qu'après ce rollback complet ; sinon elle reste `pending` et récupérable par la même clé. Une réutilisation de la clé avec un autre déplacement retourne `409`.
+Une opération Mongo conserve son empreinte, sa cible, les versions attendues, les positions précédentes, le snapshot borné de l'ordre lu et les snapshots de résultat. Après réservation exclusive d'une opération `pending`, l'infrastructure relit toute la visite active et exige exactement les mêmes identifiants et positions avant la première mutation. Un ajout, une suppression ou un déplacement concurrent rend donc le plan obsolète et retourne `409` sans l'appliquer. Le marqueur `orderGuardsValidated` rend cette barrière durable si le processus redémarre.
+
+Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, y compris après une correction ultérieure qui a augmenté leur version, termine les lignes restantes puis rejoue le snapshot réservé. Si une version réellement concurrente bloque une ligne, les mutations déjà appliquées sont restaurées en ordre inverse par CAS. L'opération n'est marquée `conflict` qu'après ce rollback complet ; sinon elle reste `pending` et récupérable par la même clé. Une réutilisation de la clé avec un autre déplacement retourne `ride-occurrence.idempotency-key-conflict`, distinct d'un conflit de version récupérable par rechargement.
 
 MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId, operationKind)` limité aux réordonnancements `pending` empêche deux renormalisations actives de se concurrencer pour une même visite. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
 
@@ -114,6 +120,14 @@ user-ride-occurrences:
 
 user-ride-occurrence-operations:
   operationKind: creation | reorder
+  items: [{
+    index: int32,
+    occurrenceId: string,
+    sortPosition: int64,
+    createdAtUtc: date,
+    updatedAtUtc: date,
+    creationSnapshot: occurrence immuable réservée
+  }]
   visitId?: string
   operationState?: pending | completed | conflict
   movedOccurrenceId?: string
@@ -125,6 +139,8 @@ user-ride-occurrence-operations:
     previousSortPosition: int64,
     resultSnapshot: occurrence initiale après déplacement
   }]
+  orderGuards?: [{ occurrenceId: string, sortPosition: int64 }]
+  orderGuardsValidated?: boolean
   reorderResultSnapshot?: occurrence déplacée renvoyée au client
 ```
 

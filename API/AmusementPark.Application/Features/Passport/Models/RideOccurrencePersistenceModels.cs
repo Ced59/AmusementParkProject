@@ -63,6 +63,7 @@ public enum IdempotentRideOccurrenceReorderStatus
     Applied = 1,
     Replayed = 2,
     Conflict = 3,
+    IdempotencyConflict = 4,
 }
 
 public sealed record IdempotentRideOccurrenceReorderResult(

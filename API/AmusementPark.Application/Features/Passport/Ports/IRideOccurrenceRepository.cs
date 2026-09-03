@@ -46,6 +46,7 @@ public interface IRideOccurrenceRepository
     Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
         RideOccurrenceReorderRequest request,
         IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
         RideOccurrence resultOccurrence,
         bool wasNormalized,
         DateTime operationAtUtc,

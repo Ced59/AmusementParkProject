@@ -263,6 +263,11 @@ public sealed class RideOccurrenceHandlersTests
                     changes.Count == 1
                     && changes.Single().Occurrence.Id == moved.Id
                     && changes.Single().Occurrence.SortPosition == 1536),
+                It.Is<IReadOnlyCollection<RideOccurrenceOrderGuard>>(guards =>
+                    guards.Count == 3
+                    && guards.Any(guard => guard.OccurrenceId == first.Id)
+                    && guards.Any(guard => guard.OccurrenceId == second.Id)
+                    && guards.Any(guard => guard.OccurrenceId == moved.Id)),
                 It.Is<RideOccurrence>(item => item.Id == moved.Id),
                 false,
                 NowUtc.AddMinutes(1),
@@ -291,6 +296,44 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal(1536, result.Value?.Occurrence.SortPosition);
         Assert.False(result.Value?.WasNormalized);
         occurrences.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Reorder_WhenKeyIsReusedForAnotherPayload_ShouldReportIdempotencyConflict()
+    {
+        Mock<IUserVisitRepository> visits =
+            new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.ResolveExistingReorderAsync(
+                It.IsAny<RideOccurrenceReorderRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync(new IdempotentRideOccurrenceReorderResult(
+                IdempotentRideOccurrenceReorderStatus.IdempotencyConflict,
+                null,
+                false));
+        ReorderRideOccurrenceCommandHandler handler = new ReorderRideOccurrenceCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            CreateClock());
+
+        ApplicationResult<ReorderRideOccurrenceResult> result = await handler.HandleAsync(
+            new ReorderRideOccurrenceCommand(
+                "owner-1",
+                "visit-1",
+                "request-1",
+                "occurrence-1",
+                1,
+                "occurrence-2",
+                RideOccurrencePlacement.Before));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "ride-occurrence.idempotency-key-conflict",
+            Assert.Single(result.Errors).Code);
+        occurrences.VerifyAll();
+        visits.VerifyNoOtherCalls();
     }
 
     [Fact]
