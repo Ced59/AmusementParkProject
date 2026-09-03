@@ -72,10 +72,67 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
             cancellationToken);
         if (result.MatchedCount != 1)
         {
-            return RideOccurrenceOrderGuardValidationStatus.Unavailable;
+            UserRideOccurrenceCreationOperationDocument? concurrent =
+                await this.LoadOperationAsync(operation, cancellationToken);
+            return concurrent?.OrderGuardsValidated == true
+                ? RideOccurrenceOrderGuardValidationStatus.Validated
+                : RideOccurrenceOrderGuardValidationStatus.Unavailable;
         }
 
         operation.OrderGuardsValidated = true;
+        return RideOccurrenceOrderGuardValidationStatus.Validated;
+    }
+
+    public async Task<RideOccurrenceOrderGuardValidationStatus>
+        EnsureAppendBaseValidatedAsync(
+            UserRideOccurrenceCreationOperationDocument operation,
+            CancellationToken cancellationToken)
+    {
+        if (operation.AppendBaseValidated)
+        {
+            return RideOccurrenceOrderGuardValidationStatus.Validated;
+        }
+
+        UserRideOccurrenceDocument? last = await this.collection
+            .Find(UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
+                operation.VisitId!,
+                operation.UserId))
+            .Sort(UserRideOccurrenceMongoDefinitions.BuildReverseVisitOrderSort())
+            .Limit(1)
+            .FirstOrDefaultAsync(cancellationToken);
+        bool matches = operation.AppendBaseWasEmpty
+            ? last is null
+            : last?.SortPosition == operation.AppendBaseSortPosition;
+        if (!matches)
+        {
+            return RideOccurrenceOrderGuardValidationStatus.Stale;
+        }
+
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Eq(static document => document.AppendBaseValidated, false);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update.Set(
+                static document => document.AppendBaseValidated,
+                true),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        if (result.MatchedCount != 1)
+        {
+            UserRideOccurrenceCreationOperationDocument? concurrent =
+                await this.LoadOperationAsync(operation, cancellationToken);
+            return concurrent?.AppendBaseValidated == true
+                ? RideOccurrenceOrderGuardValidationStatus.Validated
+                : RideOccurrenceOrderGuardValidationStatus.Unavailable;
+        }
+
+        operation.AppendBaseValidated = true;
         return RideOccurrenceOrderGuardValidationStatus.Validated;
     }
 
@@ -93,5 +150,16 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
                     guard.OccurrenceId,
                     out UserRideOccurrenceDocument? document)
                 && document.SortPosition == guard.SortPosition);
+    }
+
+    private async Task<UserRideOccurrenceCreationOperationDocument?> LoadOperationAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        return await this.operationCollection
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash))
+            .FirstOrDefaultAsync(cancellationToken);
     }
 }

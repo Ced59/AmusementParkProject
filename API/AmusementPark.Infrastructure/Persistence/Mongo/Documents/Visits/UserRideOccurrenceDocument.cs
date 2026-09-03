@@ -177,9 +177,34 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfNull]
     public string? OperationState { get; set; }
 
+    [BsonElement("appendBaseWasEmpty")]
+    [BsonIgnoreIfDefault]
+    public bool AppendBaseWasEmpty { get; set; }
+
+    [BsonElement("appendBaseSortPosition")]
+    [BsonIgnoreIfNull]
+    public long? AppendBaseSortPosition { get; set; }
+
+    [BsonElement("appendBaseValidated")]
+    [BsonIgnoreIfDefault]
+    public bool AppendBaseValidated { get; set; }
+
     [BsonElement("movedOccurrenceId")]
     [BsonIgnoreIfNull]
     public string? MovedOccurrenceId { get; set; }
+
+    [BsonElement("reorderExpectedVersion")]
+    [BsonIgnoreIfNull]
+    public long? ReorderExpectedVersion { get; set; }
+
+    [BsonElement("reorderAnchorOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? ReorderAnchorOccurrenceId { get; set; }
+
+    [BsonElement("reorderPlacement")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public RideOccurrencePlacement? ReorderPlacement { get; set; }
 
     [BsonElement("wasNormalized")]
     [BsonIgnoreIfDefault]

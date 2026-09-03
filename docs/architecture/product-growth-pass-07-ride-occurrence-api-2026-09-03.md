@@ -40,7 +40,7 @@ POST   /api/me/passport/visits/{visitId}/occurrences:reorder
 
 Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic. L'empreinte de création porte sur la requête normalisée et est recherchée avant la visite ou la cible mutable : un retry reste donc rejouable même si l'attraction a ensuite été masquée, déplacée ou supprimée.
 
-La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La réservation Mongo conserve le snapshot immuable complet de chaque occurrence : si une écriture non ordonnée n'en persiste qu'une partie, le retry recrée uniquement les lignes manquantes depuis cette réservation, sans relire une attraction qui aurait depuis changé ou disparu. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
+La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La réservation Mongo conserve le snapshot immuable complet de chaque occurrence : si une écriture non ordonnée n'en persiste qu'une partie, le retry recrée uniquement les lignes manquantes depuis cette réservation, sans relire une attraction qui aurait depuis changé ou disparu. La dernière position lue est revalidée après la réservation exclusive de la visite ; deux lots simultanés ne peuvent donc pas partager les mêmes positions. Un lot devenu obsolète est libéré avant toute écriture, puis recalculé automatiquement jusqu'à trois fois. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
 
 ## Cohérence de la cible et de la date
 
@@ -101,7 +101,7 @@ Une opération Mongo conserve son empreinte, sa cible, les versions attendues, l
 
 Si la réponse réseau est perdue après une écriture, le même retry reconnaît les lignes déjà appliquées grâce à `lastReorderOperationKeyHash`, y compris après une correction ultérieure qui a augmenté leur version, termine les lignes restantes puis rejoue le snapshot réservé. Si une version réellement concurrente bloque une ligne, les mutations déjà appliquées sont restaurées en ordre inverse par CAS. L'opération n'est marquée `conflict` qu'après ce rollback complet ; sinon elle reste `pending` et récupérable par la même clé. Une réutilisation de la clé avec un autre déplacement retourne `ride-occurrence.idempotency-key-conflict`, distinct d'un conflit de version récupérable par rechargement.
 
-MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId, operationKind)` limité aux réordonnancements `pending` empêche deux renormalisations actives de se concurrencer pour une même visite. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
+MongoDB autonome ne fournit pas de transaction multi-document : la renormalisation est donc une opération durable, bornée à 2 000 occurrences, reprise ligne par ligne et protégée par CAS avec compensation. Un index unique partiel `(userId, visitId)` sérialise toutes les mutations d'ordre `pending`, créations comprises. Si le processus s'arrête après une réservation, la mutation suivante reprend d'abord l'opération déjà réservée depuis ses snapshots : elle termine une création incomplète, reprend un déplacement ligne par ligne ou effectue sa compensation. L'ancien propriétaire et cette reprise peuvent coexister sans doubler les effets grâce aux marqueurs et aux CAS. La visite est libérée uniquement lorsque l'opération atteint `completed` ou `conflict`, ce qui évite à la fois un bail expirant trop tôt et un verrou abandonné définitivement. Aucune promesse de transaction Mongo inexistante n'est faite. Le chemin normal ne modifie qu'une occurrence ; la renormalisation n'arrive que lorsque le gap est épuisé.
 
 ## Mutations et concurrence
 
@@ -112,7 +112,7 @@ MongoDB autonome ne fournit pas de transaction multi-document : la renormalisati
 - seul `Completed` expose `CountsAsRide=true` ;
 - l'heure locale reste facultative et exige une visite au jour exact avec fuseau lorsqu'elle est fournie.
 
-## Schéma Mongo ajouté à PASS-06
+## Schéma Mongo étendu par PASS-07
 
 ```text
 user-ride-occurrences:
@@ -130,7 +130,13 @@ user-ride-occurrence-operations:
   }]
   visitId?: string
   operationState?: pending | completed | conflict
+  appendBaseWasEmpty?: boolean
+  appendBaseSortPosition?: int64
+  appendBaseValidated?: boolean
   movedOccurrenceId?: string
+  reorderExpectedVersion?: int64
+  reorderAnchorOccurrenceId?: string
+  reorderPlacement?: First | Last | Before | After
   wasNormalized?: boolean
   reorderItems?: [{
     index: int32,
@@ -144,7 +150,7 @@ user-ride-occurrence-operations:
   reorderResultSnapshot?: occurrence déplacée renvoyée au client
 ```
 
-La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations et déplacements ; l'index unique partiel des opérations `pending` sérialise en plus les réordonnancements d'une visite.
+La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations et déplacements ; l'index unique partiel `(userId, visitId)` couvre toute opération `pending`, quel que soit son type, pour sérialiser la timeline d'une visite.
 
 ## Responsive et suite
 
@@ -154,6 +160,6 @@ PASS-07 n'ajoute aucun DOM, style ou route Angular : il ne peut donc pas introdu
 
 - Core : 1 000 ajouts par lots, déplacement direct, no-op, gap épuisé, renormalisation et bornes `long` ;
 - Application : expansion du nombre, propriété, validation cible/parc/catégorie, confirmation historique, versions et replay avant les dépendances mutables ;
-- Infrastructure : empreintes stables, réservation du déplacement, CAS, marqueur de reprise et snapshots ;
+- Infrastructure : empreintes stables, réservation commune ajout/déplacement, revalidation de la base d'ajout, reprise coopérative d'une opération abandonnée, CAS, compensation et snapshots ;
 - WebAPI : propriétaire issu des claims, routes privées/no-store, en-têtes idempotents et curseurs invalides rejetés avant le handler ;
 - CI : build backend, tests, architecture et pipeline de déploiement avant fusion.

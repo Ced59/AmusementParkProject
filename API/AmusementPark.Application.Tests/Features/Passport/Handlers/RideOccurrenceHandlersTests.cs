@@ -49,9 +49,14 @@ public sealed class RideOccurrenceHandlersTests
         IReadOnlyList<RideOccurrence>? captured = null;
         occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
                 It.IsAny<IReadOnlyList<RideOccurrence>>(),
+                null,
                 "request-1",
                 CancellationToken.None))
-            .Callback((IReadOnlyList<RideOccurrence> items, string _, CancellationToken _) =>
+            .Callback((
+                IReadOnlyList<RideOccurrence> items,
+                long? _,
+                string _,
+                CancellationToken _) =>
                 captured = items)
             .ReturnsAsync(() => new IdempotentRideOccurrenceCreationResult(
                 IdempotentRideOccurrenceCreationStatus.Created,
@@ -73,6 +78,79 @@ public sealed class RideOccurrenceHandlersTests
             Assert.Equal(HistoricalConsistency.Verified, item.HistoricalConsistency);
             Assert.True(item.CountsAsRide);
         });
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddBatch_WhenAppendBaseChanges_ShouldReallocateTheWholeBatch()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                "item-1",
+                "park-1",
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        occurrences.SetupSequence(repository => repository.GetLastSortPositionAsync(
+                visit.Id,
+                "owner-1",
+                CancellationToken.None))
+            .ReturnsAsync((long?)null)
+            .ReturnsAsync(2048);
+        List<IReadOnlyList<long>> attemptedPositions = new List<IReadOnlyList<long>>();
+        int persistenceAttempt = 0;
+        occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
+                It.IsAny<IReadOnlyList<RideOccurrence>>(),
+                It.IsAny<long?>(),
+                "request-1",
+                CancellationToken.None))
+            .Callback((
+                IReadOnlyList<RideOccurrence> items,
+                long? _,
+                string _,
+                CancellationToken _) =>
+            {
+                persistenceAttempt++;
+                attemptedPositions.Add(items
+                    .Select(static item => item.SortPosition)
+                    .ToArray());
+            })
+            .ReturnsAsync((
+                IReadOnlyList<RideOccurrence> items,
+                long? _,
+                string _,
+                CancellationToken _) => persistenceAttempt == 1
+                ? new IdempotentRideOccurrenceCreationResult(
+                    IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict,
+                    Array.Empty<RideOccurrence>())
+                : new IdempotentRideOccurrenceCreationResult(
+                    IdempotentRideOccurrenceCreationStatus.Created,
+                    items));
+        AddRideOccurrencesBatchCommandHandler handler = new AddRideOccurrencesBatchCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            CreateClock());
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand(count: 2));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(2, persistenceAttempt);
+        Assert.Equal(new[] { 1024L, 2048L }, attemptedPositions[0]);
+        Assert.Equal(new[] { 3072L, 4096L }, attemptedPositions[1]);
         visits.VerifyAll();
         occurrences.VerifyAll();
         targets.VerifyAll();

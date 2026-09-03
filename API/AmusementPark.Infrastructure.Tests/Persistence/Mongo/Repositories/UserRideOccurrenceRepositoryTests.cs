@@ -7,6 +7,9 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Clusters;
+using MongoDB.Driver.Core.Connections;
+using MongoDB.Driver.Core.Servers;
 using Moq;
 using Xunit;
 
@@ -25,6 +28,8 @@ public sealed class UserRideOccurrenceRepositoryTests
         Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
             new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
                 MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceDocument>());
         IReadOnlyCollection<UserRideOccurrenceDocument>? inserted = null;
         operationCollection.Setup(value => value.InsertOneAsync(
                 It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
@@ -38,6 +43,9 @@ public sealed class UserRideOccurrenceRepositoryTests
                 Assert.Equal("user-1", document.UserId);
                 Assert.Equal(64, document.OperationKeyHash.Length);
                 Assert.Equal(64, document.PayloadHash.Length);
+                Assert.Equal("visit-1", document.VisitId);
+                Assert.Equal("pending", document.OperationState);
+                Assert.True(document.AppendBaseWasEmpty);
                 Assert.Equal(3, document.Items.Count);
                 Assert.All(document.Items, static item => Assert.NotNull(item.CreationSnapshot));
                 Assert.All(document.Items, static item =>
@@ -47,6 +55,17 @@ public sealed class UserRideOccurrenceRepositoryTests
                 });
             })
             .Returns(Task.CompletedTask);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(appendBaseCursor.Object);
         collection.Setup(value => value.InsertManyAsync(
                 It.IsAny<IEnumerable<UserRideOccurrenceDocument>>(),
                 It.IsAny<InsertManyOptions>(),
@@ -73,6 +92,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         IdempotentRideOccurrenceCreationResult result =
             await repository.CreateBatchIdempotentAsync(
                 occurrences,
+                null,
                 " request-1 ",
                 CancellationToken.None);
 
@@ -87,6 +107,63 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal(3, result.Occurrences.Count);
         collection.VerifyAll();
         operationCollection.VerifyAll();
+        appendBaseCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CreateBatchIdempotentAsync_WithAStaleAppendBase_ShouldReleaseForRetry()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 2048);
+        UserRideOccurrenceDocument concurrentLast = CreateOccurrence(
+                "concurrent-occurrence",
+                "item-2",
+                3072)
+            .ToDocument();
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> appendBaseCursor =
+            CreateAsyncCursor(new[] { concurrentLast });
+        UserRideOccurrenceCreationOperationDocument? reserved = null;
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument document,
+                InsertOneOptions _,
+                CancellationToken _) => reserved = document)
+            .Returns(Task.CompletedTask);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(appendBaseCursor.Object);
+        operationCollection.Setup(value => value.DeleteOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new DeleteResult.Acknowledged(1));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceCreationResult result =
+            await repository.CreateBatchIdempotentAsync(
+                new[] { occurrence },
+                1024,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict, result.Status);
+        Assert.NotNull(reserved);
+        Assert.Equal(1024, reserved.AppendBaseSortPosition);
+        Assert.False(reserved.AppendBaseWasEmpty);
+        Assert.False(reserved.AppendBaseValidated);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        appendBaseCursor.VerifyAll();
     }
 
     [Fact]
@@ -192,6 +269,11 @@ public sealed class UserRideOccurrenceRepositoryTests
                 UserId = "user-1",
                 OperationKeyHash = operationKeyHash,
                 PayloadHash = payloadHash,
+                OperationKind = "creation",
+                VisitId = "visit-1",
+                OperationState = "pending",
+                AppendBaseWasEmpty = true,
+                AppendBaseValidated = true,
                 Items = allocations,
             };
         UserRideOccurrenceDocument existing =
@@ -216,6 +298,12 @@ public sealed class UserRideOccurrenceRepositoryTests
                     UserRideOccurrenceCreationOperationDocument>>(),
                 CancellationToken.None))
             .ReturnsAsync(operationCursor.Object);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         collection.SetupSequence(value => value.FindAsync(
                 It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
                 It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
@@ -288,6 +376,10 @@ public sealed class UserRideOccurrenceRepositoryTests
                 UserId = "user-1",
                 OperationKeyHash = "operation-hash",
                 PayloadHash = payloadHash,
+                OperationKind = "creation",
+                VisitId = "visit-1",
+                OperationState = "pending",
+                AppendBaseWasEmpty = true,
                 Items = new List<UserRideOccurrenceCreationAllocationDocument>
                 {
                     new UserRideOccurrenceCreationAllocationDocument
@@ -335,6 +427,11 @@ public sealed class UserRideOccurrenceRepositoryTests
                 UserId = "user-1",
                 OperationKeyHash = "operation-hash",
                 PayloadHash = payloadHash,
+                OperationKind = "creation",
+                VisitId = "visit-1",
+                OperationState = "completed",
+                AppendBaseWasEmpty = true,
+                AppendBaseValidated = true,
                 Items = new List<UserRideOccurrenceCreationAllocationDocument>
                 {
                     new UserRideOccurrenceCreationAllocationDocument
@@ -426,6 +523,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         await Assert.ThrowsAsync<ArgumentException>(() =>
             repository.CreateBatchIdempotentAsync(
                 occurrences,
+                null,
                 "request-1",
                 CancellationToken.None));
     }
@@ -574,6 +672,141 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal(64, renderedUpdate["$set"]["lastReorderOperationKeyHash"].AsString.Length);
         collection.VerifyAll();
         operationCollection.VerifyAll();
+        guardCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReorderIdempotentAsync_WithAnotherPendingOperation_ShouldFinishItAndReleaseTheVisit()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence moved = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrence anchor = CreateOccurrence("occurrence-2", "item-2", 2048);
+        RideOccurrenceReorderRequest abandonedRequest = new RideOccurrenceReorderRequest(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            moved.Id,
+            1,
+            anchor.Id,
+            RideOccurrencePlacement.Before);
+        moved.MoveTo(1536, NowUtc.AddMinutes(1));
+        UserRideOccurrenceDocument movedSnapshot = moved.ToDocument();
+        string abandonedKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("abandoned-request");
+        UserRideOccurrenceCreationOperationDocument abandoned =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = abandonedKeyHash,
+                PayloadHash =
+                    UserRideOccurrenceCreationFingerprint.HashReorderPayload(abandonedRequest),
+                OperationKind = "reorder",
+                VisitId = "visit-1",
+                OperationState = "pending",
+                MovedOccurrenceId = moved.Id.Value,
+                ReorderExpectedVersion = 1,
+                ReorderAnchorOccurrenceId = anchor.Id.Value,
+                ReorderPlacement = RideOccurrencePlacement.Before,
+                OrderGuardsValidated = true,
+                OrderGuards = new List<UserRideOccurrenceOrderGuardDocument>
+                {
+                    new UserRideOccurrenceOrderGuardDocument
+                    {
+                        OccurrenceId = moved.Id.Value,
+                        SortPosition = 1024,
+                    },
+                    new UserRideOccurrenceOrderGuardDocument
+                    {
+                        OccurrenceId = anchor.Id.Value,
+                        SortPosition = 2048,
+                    },
+                },
+                ReorderItems = new List<UserRideOccurrenceReorderAllocationDocument>
+                {
+                    new UserRideOccurrenceReorderAllocationDocument
+                    {
+                        Index = 0,
+                        OccurrenceId = moved.Id.Value,
+                        ExpectedVersion = 1,
+                        PreviousSortPosition = 1024,
+                        ResultSnapshot = movedSnapshot.CreateCreationSnapshot(),
+                    },
+                },
+                ReorderResultSnapshot = movedSnapshot.CreateCreationSnapshot(),
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        RideOccurrenceReorderRequest retryRequest = abandonedRequest with
+        {
+            ExpectedVersion = 2,
+        };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> missingOwnCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> pendingCursor =
+            CreateAsyncCursor(new[] { abandoned });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> releasedCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        operationCollection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(missingOwnCursor.Object)
+            .ReturnsAsync(pendingCursor.Object)
+            .ReturnsAsync(releasedCursor.Object);
+        operationCollection.SetupSequence(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .ThrowsAsync(CreateDuplicateKeyException())
+            .Returns(Task.CompletedTask);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> guardCursor = CreateAsyncCursor(
+            new[] { moved.ToDocument(), anchor.ToDocument() });
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(guardCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceReorderResult result = await repository.ReorderIdempotentAsync(
+            retryRequest,
+            Array.Empty<RideOccurrenceVersionedChange>(),
+            new[]
+            {
+                new RideOccurrenceOrderGuard(moved.Id, 1536),
+                new RideOccurrenceOrderGuard(anchor.Id, 2048),
+            },
+            moved,
+            false,
+            NowUtc.AddMinutes(2),
+            "new-request",
+            CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceReorderStatus.Applied, result.Status);
+        Assert.Equal("completed", abandoned.OperationState);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        missingOwnCursor.VerifyAll();
+        pendingCursor.VerifyAll();
+        releasedCursor.VerifyAll();
         guardCursor.VerifyAll();
     }
 
@@ -789,6 +1022,29 @@ public sealed class UserRideOccurrenceRepositoryTests
             .Returns(() => secondBatch?.Invoke() ?? Array.Empty<TDocument>());
         cursor.Setup(value => value.Dispose());
         return cursor;
+    }
+
+    private static MongoWriteException CreateDuplicateKeyException()
+    {
+        ClusterId clusterId = new ClusterId();
+        ServerId serverId = new ServerId(
+            clusterId,
+            new System.Net.DnsEndPoint("localhost", 27017));
+        ConnectionId connectionId = new ConnectionId(serverId);
+        WriteError error = (WriteError)Activator.CreateInstance(
+            typeof(WriteError),
+            System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic,
+            null,
+            new object[]
+            {
+                ServerErrorCategory.DuplicateKey,
+                11000,
+                "duplicate key",
+                new BsonDocument(),
+            },
+            null)!;
+        return new MongoWriteException(connectionId, error, null, null);
     }
 
     private static RideOccurrence CreateOccurrence(

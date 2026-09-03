@@ -30,6 +30,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly UserRideOccurrenceReorderRecovery reorderRecovery;
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
+    private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
 
     public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -46,6 +47,11 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.collection,
             this.operationCollection);
         this.creationRecovery = new UserRideOccurrenceCreationRecovery(this.collection);
+        this.pendingOperationRecovery = new UserRideOccurrencePendingOperationRecovery(
+            this.collection,
+            this.operationCollection,
+            this.orderGuardValidator,
+            this.creationRecovery);
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(
@@ -67,6 +73,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             return null;
         }
 
+        if (!UserRideOccurrenceOperationValidator.CreationMatches(
+            operation,
+            payloadHash,
+            request.Items.Count))
+        {
+            return CreateConflictResult();
+        }
+
         List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
             request.UserId,
             operationKeyHash,
@@ -78,19 +92,61 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             request.Items.Count);
         if (resolution is not null)
         {
+            if (resolution.Status == IdempotentRideOccurrenceCreationStatus.Replayed
+                && !string.Equals(
+                    operation.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal))
+            {
+                await this.pendingOperationRecovery.SetStateAsync(
+                    operation,
+                    CompletedOperationState,
+                    cancellationToken);
+            }
+
             return resolution;
         }
 
-        return await this.creationRecovery.RecoverAsync(
-            operation,
-            existing,
-            payloadHash,
-            request.Items.Count,
-            cancellationToken);
+        RideOccurrenceOrderGuardValidationStatus validation =
+            await this.orderGuardValidator.EnsureAppendBaseValidatedAsync(
+                operation,
+                cancellationToken);
+        if (validation == RideOccurrenceOrderGuardValidationStatus.Stale)
+        {
+            bool deleted = await this.pendingOperationRecovery.DeleteUnvalidatedCreationAsync(
+                operation,
+                cancellationToken);
+            return deleted
+                ? null
+                : CreateCreationConcurrencyConflictResult();
+        }
+
+        if (validation != RideOccurrenceOrderGuardValidationStatus.Validated)
+        {
+            return CreateCreationConcurrencyConflictResult();
+        }
+
+        IdempotentRideOccurrenceCreationResult recovered =
+            await this.creationRecovery.RecoverAsync(
+                operation,
+                existing,
+                payloadHash,
+                request.Items.Count,
+                cancellationToken);
+        if (recovered.Status == IdempotentRideOccurrenceCreationStatus.Replayed)
+        {
+            await this.pendingOperationRecovery.SetStateAsync(
+                operation,
+                CompletedOperationState,
+                cancellationToken);
+        }
+
+        return recovered;
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         IReadOnlyList<RideOccurrence> occurrences,
+        long? expectedLastSortPosition,
         string clientOperationId,
         CancellationToken cancellationToken)
     {
@@ -98,16 +154,45 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(occurrences);
-        (UserRideOccurrenceCreationOperationDocument operation, bool isNewOperation) =
+        (UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)? reservation =
             await this.EnsureCreationOperationAsync(
                 occurrences,
                 scope.UserId,
+                scope.VisitId,
+                expectedLastSortPosition,
                 operationKeyHash,
                 payloadHash,
                 cancellationToken);
-        if (!OperationMatches(operation, payloadHash, occurrences.Count))
+        if (!reservation.HasValue)
+        {
+            return CreateCreationConcurrencyConflictResult();
+        }
+
+        UserRideOccurrenceCreationOperationDocument operation = reservation.Value.Operation;
+        bool isNewOperation = reservation.Value.IsNew;
+        if (!UserRideOccurrenceOperationValidator.CreationMatches(
+            operation,
+            payloadHash,
+            occurrences.Count))
         {
             return CreateConflictResult();
+        }
+
+        RideOccurrenceOrderGuardValidationStatus validation =
+            await this.orderGuardValidator.EnsureAppendBaseValidatedAsync(
+                operation,
+                cancellationToken);
+        if (validation == RideOccurrenceOrderGuardValidationStatus.Stale)
+        {
+            await this.pendingOperationRecovery.DeleteUnvalidatedCreationAsync(
+                operation,
+                cancellationToken);
+            return CreateCreationConcurrencyConflictResult();
+        }
+
+        if (validation != RideOccurrenceOrderGuardValidationStatus.Validated)
+        {
+            return CreateCreationConcurrencyConflictResult();
         }
 
         IReadOnlyList<UserRideOccurrenceCreationAllocationDocument> allocations =
@@ -132,6 +217,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             IReadOnlyCollection<RideOccurrence> created = documents
                 .Select(static document => document.CreationSnapshotToDomain())
                 .ToArray();
+            await this.pendingOperationRecovery.SetStateAsync(
+                operation,
+                CompletedOperationState,
+                cancellationToken);
             return new IdempotentRideOccurrenceCreationResult(
                 isNewOperation
                     ? IdempotentRideOccurrenceCreationStatus.Created
@@ -154,6 +243,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             if (resolution is null)
             {
                 throw;
+            }
+
+            if (resolution.Status == IdempotentRideOccurrenceCreationStatus.Replayed)
+            {
+                await this.pendingOperationRecovery.SetStateAsync(
+                    operation,
+                    CompletedOperationState,
+                    cancellationToken);
             }
 
             return resolution;
@@ -322,11 +419,46 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
             if (existing is null)
             {
-                return CreateReorderConflictResult(wasNormalized);
-            }
+                bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
+                    request.UserId,
+                    request.VisitId,
+                    this.ResumeReservedReorderAsync,
+                    cancellationToken);
+                if (!recovered)
+                {
+                    return CreateReorderConflictResult(wasNormalized);
+                }
 
-            operation = existing;
-            wasExisting = true;
+                try
+                {
+                    await this.operationCollection.InsertOneAsync(
+                        requested,
+                        cancellationToken: cancellationToken);
+                    operation = requested;
+                    wasExisting = false;
+                }
+                catch (MongoWriteException retryException)
+                    when (retryException.WriteError?.Category
+                        == ServerErrorCategory.DuplicateKey)
+                {
+                    existing = await this.LoadCreationOperationAsync(
+                        request.UserId,
+                        operationKeyHash,
+                        cancellationToken);
+                    if (existing is null)
+                    {
+                        return CreateReorderConflictResult(wasNormalized);
+                    }
+
+                    operation = existing;
+                    wasExisting = true;
+                }
+            }
+            else
+            {
+                operation = existing;
+                wasExisting = true;
+            }
         }
 
         return await this.ApplyReorderOperationAsync(
@@ -394,7 +526,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     {
         ArgumentNullException.ThrowIfNull(operation);
         ArgumentNullException.ThrowIfNull(existing);
-        if (!OperationMatches(operation, payloadHash, expectedCount))
+        if (!UserRideOccurrenceOperationValidator.CreationMatches(
+            operation,
+            payloadHash,
+            expectedCount))
         {
             return CreateConflictResult();
         }
@@ -469,6 +604,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             .FirstOrDefaultAsync(cancellationToken);
     }
 
+    private Task<IdempotentRideOccurrenceReorderResult> ResumeReservedReorderAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        RideOccurrenceReorderRequest request,
+        CancellationToken cancellationToken)
+    {
+        return this.ApplyReorderOperationAsync(
+            operation,
+            request,
+            operation.OperationKeyHash,
+            true,
+            cancellationToken);
+    }
+
     private async Task<IdempotentRideOccurrenceReorderResult> ApplyReorderOperationAsync(
         UserRideOccurrenceCreationOperationDocument operation,
         RideOccurrenceReorderRequest request,
@@ -478,7 +626,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     {
         string payloadHash =
             UserRideOccurrenceCreationFingerprint.HashReorderPayload(request);
-        if (!ReorderOperationMatches(operation, request, payloadHash))
+        if (!UserRideOccurrenceOperationValidator.ReorderMatches(
+            operation,
+            request,
+            payloadHash))
         {
             return CreateReorderIdempotencyConflictResult(operation.WasNormalized);
         }
@@ -505,7 +656,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
                 if (guardStatus == RideOccurrenceOrderGuardValidationStatus.Stale)
                 {
-                    await this.SetReorderOperationStateAsync(
+                    await this.pendingOperationRecovery.SetStateAsync(
                         operation,
                         ConflictOperationState,
                         cancellationToken);
@@ -561,7 +712,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
                 if (rolledBack)
                 {
-                    await this.SetReorderOperationStateAsync(
+                    await this.pendingOperationRecovery.SetStateAsync(
                         operation,
                         ConflictOperationState,
                         cancellationToken);
@@ -570,7 +721,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 return CreateReorderConflictResult(operation.WasNormalized);
             }
 
-            await this.SetReorderOperationStateAsync(
+            await this.pendingOperationRecovery.SetStateAsync(
                 operation,
                 CompletedOperationState,
                 cancellationToken);
@@ -588,28 +739,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             operation.WasNormalized);
     }
 
-    private async Task SetReorderOperationStateAsync(
-        UserRideOccurrenceCreationOperationDocument operation,
-        string state,
-        CancellationToken cancellationToken)
-    {
-        UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Update
-                .Set(static document => document.OperationState, state)
-                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
-        await this.operationCollection.UpdateOneAsync(
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash),
-            update,
-            new UpdateOptions { IsUpsert = false },
-            cancellationToken);
-    }
-
-    private async Task<(UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)>
+    private async Task<(UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)?>
         EnsureCreationOperationAsync(
             IReadOnlyList<RideOccurrence> occurrences,
             string userId,
+            VisitId visitId,
+            long? expectedLastSortPosition,
             string operationKeyHash,
             string payloadHash,
             CancellationToken cancellationToken)
@@ -618,6 +753,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             CreateCreationOperation(
                 occurrences,
                 userId,
+                expectedLastSortPosition,
                 operationKeyHash,
                 payloadHash);
         try
@@ -635,12 +771,38 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     userId,
                     operationKeyHash,
                     cancellationToken);
-            if (existing is null)
+            if (existing is not null)
             {
-                throw;
+                return (existing, false);
             }
 
-            return (existing, false);
+            bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
+                userId,
+                visitId,
+                this.ResumeReservedReorderAsync,
+                cancellationToken);
+            if (!recovered)
+            {
+                return null;
+            }
+
+            try
+            {
+                await this.operationCollection.InsertOneAsync(
+                    requested,
+                    cancellationToken: cancellationToken);
+                return (requested, true);
+            }
+            catch (MongoWriteException retryException)
+                when (retryException.WriteError?.Category
+                    == ServerErrorCategory.DuplicateKey)
+            {
+                existing = await this.LoadCreationOperationAsync(
+                    userId,
+                    operationKeyHash,
+                    cancellationToken);
+                return existing is null ? null : (existing, false);
+            }
         }
     }
 
@@ -685,6 +847,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private static UserRideOccurrenceCreationOperationDocument CreateCreationOperation(
         IReadOnlyList<RideOccurrence> occurrences,
         string userId,
+        long? expectedLastSortPosition,
         string operationKeyHash,
         string payloadHash)
     {
@@ -696,6 +859,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             OperationKeyHash = operationKeyHash,
             PayloadHash = payloadHash,
             OperationKind = CreationOperationKind,
+            VisitId = occurrences[0].VisitId.Value,
+            OperationState = PendingOperationState,
+            AppendBaseWasEmpty = !expectedLastSortPosition.HasValue,
+            AppendBaseSortPosition = expectedLastSortPosition,
             Items = occurrences
                 .Select((occurrence, index) =>
                 {
@@ -741,6 +908,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             VisitId = request.VisitId.Value,
             OperationState = PendingOperationState,
             MovedOccurrenceId = request.OccurrenceId.Value,
+            ReorderExpectedVersion = request.ExpectedVersion,
+            ReorderAnchorOccurrenceId = request.AnchorOccurrenceId?.Value,
+            ReorderPlacement = request.Placement,
             WasNormalized = wasNormalized,
             ReorderItems = changes
                 .Select((change, index) =>
@@ -767,82 +937,6 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             CreatedAt = operationAtUtc,
             UpdatedAt = operationAtUtc,
         };
-    }
-
-    private static bool OperationMatches(
-        UserRideOccurrenceCreationOperationDocument operation,
-        string payloadHash,
-        int expectedCount)
-    {
-        if (!string.Equals(operation.PayloadHash, payloadHash, StringComparison.Ordinal)
-            || operation.Items.Count != expectedCount)
-        {
-            return false;
-        }
-
-        int distinctIndexes = operation.Items
-            .Select(static item => item.Index)
-            .Distinct()
-            .Count();
-        int distinctIds = operation.Items
-            .Select(static item => item.OccurrenceId)
-            .Distinct(StringComparer.Ordinal)
-            .Count();
-        int distinctPositions = operation.Items
-            .Select(static item => item.SortPosition)
-            .Distinct()
-            .Count();
-        return distinctIndexes == expectedCount
-            && distinctIds == expectedCount
-            && distinctPositions == expectedCount
-            && operation.Items.All(item =>
-                item.Index is >= 0
-                && item.Index < expectedCount
-                && !string.IsNullOrWhiteSpace(item.OccurrenceId)
-                && item.CreatedAtUtc.Kind == DateTimeKind.Utc
-                && item.UpdatedAtUtc.Kind == DateTimeKind.Utc
-                && item.UpdatedAtUtc >= item.CreatedAtUtc
-                && item.CreationSnapshot is not null
-                && string.Equals(
-                    item.CreationSnapshot.VisitId,
-                    operation.Items[0].CreationSnapshot.VisitId,
-                    StringComparison.Ordinal)
-                && item.CreationSnapshot.SortPosition == item.SortPosition
-                && item.CreationSnapshot.CreatedAtUtc == item.CreatedAtUtc
-                && item.CreationSnapshot.UpdatedAtUtc == item.UpdatedAtUtc);
-    }
-
-    private static bool ReorderOperationMatches(
-        UserRideOccurrenceCreationOperationDocument operation,
-        RideOccurrenceReorderRequest request,
-        string payloadHash)
-    {
-        return string.Equals(operation.OperationKind, ReorderOperationKind, StringComparison.Ordinal)
-            && string.Equals(operation.PayloadHash, payloadHash, StringComparison.Ordinal)
-            && string.Equals(operation.VisitId, request.VisitId.Value, StringComparison.Ordinal)
-            && string.Equals(operation.UserId, request.UserId, StringComparison.Ordinal)
-            && string.Equals(
-                operation.MovedOccurrenceId,
-                request.OccurrenceId.Value,
-                StringComparison.Ordinal)
-            && operation.ReorderItems is not null
-            && operation.ReorderItems.Count <= RideOccurrenceOrderPlanner.MaximumReorderSize
-            && operation.ReorderItems.Select(static item => item.Index).Distinct().Count()
-                == operation.ReorderItems.Count
-            && operation.ReorderItems.Select(static item => item.OccurrenceId).Distinct(StringComparer.Ordinal).Count()
-                == operation.ReorderItems.Count
-            && operation.OrderGuards is not null
-            && operation.OrderGuards.Count is >= 1
-                and <= RideOccurrenceOrderPlanner.MaximumReorderSize
-            && operation.OrderGuards.All(
-                static guard => !string.IsNullOrWhiteSpace(guard.OccurrenceId))
-            && operation.OrderGuards.Select(static guard => guard.OccurrenceId)
-                .Distinct(StringComparer.Ordinal).Count() == operation.OrderGuards.Count
-            && operation.OrderGuards.Any(guard => string.Equals(
-                guard.OccurrenceId,
-                request.OccurrenceId.Value,
-                StringComparison.Ordinal))
-            && operation.ReorderResultSnapshot is not null;
     }
 
     private static UpdateDefinition<UserRideOccurrenceDocument> BuildReorderUpdate(
@@ -942,6 +1036,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             Array.Empty<RideOccurrence>());
     }
 
+    private static IdempotentRideOccurrenceCreationResult
+        CreateCreationConcurrencyConflictResult()
+    {
+        return new IdempotentRideOccurrenceCreationResult(
+            IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict,
+            Array.Empty<RideOccurrence>());
+    }
+
     private static BatchScope ValidateBatch(IReadOnlyList<RideOccurrence> occurrences)
     {
         ArgumentNullException.ThrowIfNull(occurrences);
@@ -981,7 +1083,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 nameof(occurrences));
         }
 
-        return new BatchScope(first.UserId);
+        return new BatchScope(first.UserId, first.VisitId);
     }
 
     private static bool ContainsOnlyDuplicateKeyErrors(
@@ -1021,5 +1123,5 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return new DateTime(ticks, DateTimeKind.Utc);
     }
 
-    private sealed record BatchScope(string UserId);
+    private sealed record BatchScope(string UserId, VisitId VisitId);
 }

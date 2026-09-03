@@ -143,7 +143,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
     }
 
     [Fact]
-    public void CreationOperationIndex_ShouldMakeOneBatchAllocationAtomicPerUserAndKey()
+    public void OperationIndexes_ShouldFenceKeysAndSerializeVisitOrderMutations()
     {
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument>[] indexes =
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes().ToArray();
@@ -162,21 +162,39 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
             },
             Render(index.Keys));
 
-        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> activeReorder =
+        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> activeMutation =
             indexes[1];
         Assert.Equal(
-            "idx_user_ride_occurrence_operations_active_reorder",
-            activeReorder.Options.Name);
-        Assert.True(activeReorder.Options.Unique);
-        Assert.NotNull(activeReorder.Options.PartialFilterExpression);
+            "idx_user_ride_occurrence_operations_active_order_mutation",
+            activeMutation.Options.Name);
+        Assert.True(activeMutation.Options.Unique);
+        Assert.NotNull(activeMutation.Options.PartialFilterExpression);
+        Assert.Equal(
+            new BsonDocument("operationState", "pending"),
+            Render(activeMutation.Options.PartialFilterExpression));
         Assert.Equal(
             new BsonDocument
             {
                 { "userId", 1 },
                 { "visitId", 1 },
-                { "operationKind", 1 },
             },
-            Render(activeReorder.Keys));
+            Render(activeMutation.Keys));
+    }
+
+    [Fact]
+    public void PendingVisitFilter_ShouldFindAnyOrderMutationForTheVisit()
+    {
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildPendingVisitFilter(
+                " user-1 ",
+                " visit-1 ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal("visit-1", rendered["visitId"].AsString);
+        Assert.Equal("pending", rendered["operationState"].AsString);
+        Assert.False(rendered.Contains("operationKind"));
     }
 
     [Fact]
@@ -246,5 +264,18 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return keys.Render(arguments);
+    }
+
+    private static BsonDocument Render(
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter)
+    {
+        IBsonSerializer<UserRideOccurrenceCreationOperationDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<
+                UserRideOccurrenceCreationOperationDocument>();
+        RenderArgs<UserRideOccurrenceCreationOperationDocument> arguments =
+            new RenderArgs<UserRideOccurrenceCreationOperationDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry);
+        return filter.Render(arguments);
     }
 }

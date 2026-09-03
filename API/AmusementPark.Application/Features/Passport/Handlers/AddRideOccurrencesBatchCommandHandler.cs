@@ -95,159 +95,77 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(targetError);
         }
 
-        DateTime nowUtc = this.clock.UtcNow;
-        IReadOnlyList<long>? positions = await this.AllocatePositionsAsync(
-            visitId,
-            userId,
-            expanded.Count,
+        return await this.CreateWithOrderRetryAsync(
+            visit,
+            expanded,
+            targets,
             operationId,
-            nowUtc,
             cancellationToken);
-        if (positions is null)
-        {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
-        }
-
-        List<RideOccurrence> occurrences;
-        try
-        {
-            occurrences = BuildOccurrences(visit, expanded, targets, positions, nowUtc);
-        }
-        catch (RideOccurrenceValidationException exception)
-        {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
-        }
-        catch (IdentifierValidationException exception)
-        {
-            return Failure(PassportApplicationErrors.InvalidIdentifier(
-                exception.ErrorCode,
-                exception.Message,
-                exception.ParamName));
-        }
-
-        IdempotentRideOccurrenceCreationResult created =
-            await this.occurrenceRepository.CreateBatchIdempotentAsync(
-                occurrences,
-                operationId,
-                cancellationToken);
-        return ToApplicationResult(created);
     }
 
-    private async Task<IReadOnlyList<long>?> AllocatePositionsAsync(
-        VisitId visitId,
-        string userId,
-        int count,
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>> CreateWithOrderRetryAsync(
+        Visit visit,
+        IReadOnlyList<RideOccurrenceCreationItem> items,
+        IReadOnlyDictionary<string, VisitTarget> targets,
         string operationId,
-        DateTime nowUtc,
         CancellationToken cancellationToken)
     {
-        long? currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
-            visitId,
-            userId,
-            cancellationToken);
-        try
+        const int maximumAttempts = 3;
+        for (int attempt = 0; attempt < maximumAttempts; attempt++)
         {
-            return RideOccurrenceOrderPlanner.AllocateAppend(currentMaximum, count);
-        }
-        catch (OverflowException)
-        {
-            bool normalized = await this.TryNormalizeForAppendAsync(
-                visitId,
-                userId,
-                operationId,
-                nowUtc,
+            long? currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
+                visit.Id,
+                visit.UserId,
                 cancellationToken);
-            if (!normalized)
-            {
-                return null;
-            }
-
-            currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
-                visitId,
-                userId,
-                cancellationToken);
+            IReadOnlyList<long> positions;
             try
             {
-                return RideOccurrenceOrderPlanner.AllocateAppend(currentMaximum, count);
+                positions = RideOccurrenceOrderPlanner.AllocateAppend(
+                    currentMaximum,
+                    items.Count);
             }
             catch (OverflowException)
             {
-                return null;
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+
+            List<RideOccurrence> occurrences;
+            try
+            {
+                occurrences = BuildOccurrences(
+                    visit,
+                    items,
+                    targets,
+                    positions,
+                    this.clock.UtcNow);
+            }
+            catch (RideOccurrenceValidationException exception)
+            {
+                return Failure(PassportApplicationErrors.InvalidRideOccurrence(
+                    exception.ErrorCode,
+                    exception.Message));
+            }
+            catch (IdentifierValidationException exception)
+            {
+                return Failure(PassportApplicationErrors.InvalidIdentifier(
+                    exception.ErrorCode,
+                    exception.Message,
+                    exception.ParamName));
+            }
+
+            IdempotentRideOccurrenceCreationResult created =
+                await this.occurrenceRepository.CreateBatchIdempotentAsync(
+                    occurrences,
+                    currentMaximum,
+                    operationId,
+                    cancellationToken);
+            if (created.Status != IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict)
+            {
+                return ToApplicationResult(created);
             }
         }
-    }
 
-    private async Task<bool> TryNormalizeForAppendAsync(
-        VisitId visitId,
-        string userId,
-        string clientOperationId,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyList<RideOccurrence> occurrences;
-        try
-        {
-            occurrences = await PassportRideOccurrenceHandlerSupport.LoadAllAsync(
-                this.occurrenceRepository,
-                visitId,
-                userId,
-                cancellationToken);
-        }
-        catch (InvalidOperationException)
-        {
-            return false;
-        }
-
-        if (occurrences.Count == 0)
-        {
-            return false;
-        }
-
-        RideOccurrenceOrderPlan plan =
-            RideOccurrenceOrderPlanner.PlanNormalization(occurrences);
-        Dictionary<RideOccurrenceId, RideOccurrence> byId = occurrences.ToDictionary(
-            static occurrence => occurrence.Id);
-        List<RideOccurrenceVersionedChange> changes = new List<RideOccurrenceVersionedChange>();
-        foreach (RideOccurrenceOrderPosition position in plan.Changes)
-        {
-            RideOccurrence occurrence = byId[position.OccurrenceId];
-            long expectedVersion = occurrence.Version;
-            long previousSortPosition = occurrence.SortPosition;
-            occurrence.MoveTo(position.SortPosition, nowUtc);
-            changes.Add(new RideOccurrenceVersionedChange(
-                occurrence,
-                expectedVersion,
-                previousSortPosition));
-        }
-
-        RideOccurrence last = occurrences
-            .OrderBy(static occurrence => occurrence.SortPosition)
-            .ThenBy(static occurrence => occurrence.CreatedAtUtc)
-            .ThenBy(static occurrence => occurrence.Id.Value, StringComparer.Ordinal)
-            .Last();
-        long expectedLastVersion = changes
-            .FirstOrDefault(change => change.Occurrence.Id == last.Id)
-            ?.ExpectedVersion ?? last.Version;
-        RideOccurrenceReorderRequest request = new RideOccurrenceReorderRequest(
-            visitId,
-            userId,
-            last.Id,
-            expectedLastVersion,
-            null,
-            RideOccurrencePlacement.Last);
-        IdempotentRideOccurrenceReorderResult result =
-            await this.occurrenceRepository.ReorderIdempotentAsync(
-                request,
-                changes,
-                plan.Guards,
-                last,
-                true,
-                nowUtc,
-                string.Concat("append-normalize:", clientOperationId),
-                cancellationToken);
-        return result.Status != IdempotentRideOccurrenceReorderStatus.Conflict;
+        return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
     }
 
     private static List<RideOccurrence> BuildOccurrences(
@@ -325,6 +243,11 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         if (result.Status == IdempotentRideOccurrenceCreationStatus.Conflict)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+        }
+
+        if (result.Status == IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
         CreateRideOccurrencesResult value = new CreateRideOccurrencesResult(
