@@ -163,10 +163,22 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
         string state,
         CancellationToken cancellationToken)
     {
+        UpdateDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> updates =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update;
+        List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>> definitions =
+            new List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>
+            {
+                updates.Set(static document => document.OperationState, state),
+                updates.Set(static document => document.UpdatedAt, operation.UpdatedAt),
+            };
+        if (string.Equals(state, ConflictOperationState, StringComparison.Ordinal))
+        {
+            definitions.Add(updates.Unset(
+                static document => document.PendingAuditEvents));
+        }
+
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Update
-                .Set(static document => document.OperationState, state)
-                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+            updates.Combine(definitions);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
                 operation.UserId,
@@ -177,6 +189,11 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
         if (result.MatchedCount == 1)
         {
             operation.OperationState = state;
+            if (string.Equals(state, ConflictOperationState, StringComparison.Ordinal))
+            {
+                operation.PendingAuditEvents = null;
+            }
+
             return true;
         }
 
