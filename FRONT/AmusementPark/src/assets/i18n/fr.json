@@ -7,6 +7,82 @@
     "languages": "Langues",
     "profile": "Profil"
   },
+  "passport": {
+    "profile": {
+      "kicker": "Passeport de visites",
+      "title": "Commence ton historique de parcs",
+      "description": "Enregistre une visite privée, même si tu ne te souviens que du mois ou de l’année.",
+      "action": "Ajouter une visite"
+    },
+    "quickCreate": {
+      "title": "Ajouter une visite",
+      "intro": "Crée d’abord une visite simple. Tu pourras détailler ce que tu as fait dans une prochaine étape.",
+      "privacy": "Cette visite et tes notes restent privées.",
+      "actions": {
+        "openForPark": "Ajouter une visite",
+        "done": "Terminer",
+        "addAnother": "Ajouter une autre visite",
+        "saving": "Enregistrement…",
+        "create": "Créer la visite",
+        "cancel": "Annuler"
+      },
+      "success": {
+        "title": "Visite enregistrée",
+        "description": "Ta visite à {{park}} est maintenant dans ton passeport privé.",
+        "toast": "La visite a été ajoutée à ton passeport."
+      },
+      "park": {
+        "title": "Choisis le parc",
+        "hint": "Recherche uniquement parmi les parcs visibles sur le site.",
+        "change": "Changer",
+        "searchLabel": "Nom du parc",
+        "searchPlaceholder": "Commence à saisir un nom…",
+        "searching": "Recherche des parcs…",
+        "results": "Résultats de recherche de parcs"
+      },
+      "date": {
+        "title": "Indique la date dont tu te souviens",
+        "hint": "Le passeport conserve exactement ton niveau de précision, sans inventer de jour.",
+        "today": "Utiliser aujourd’hui",
+        "precisionLabel": "Précision de la date",
+        "dayPrecision": "Jour exact",
+        "monthPrecision": "Mois",
+        "yearPrecision": "Année",
+        "day": "Jour",
+        "month": "Mois",
+        "year": "Année",
+        "approximate": "Date approximative",
+        "approximateHint": "Active cette option si cette période reste incertaine.",
+        "timeZone": "Fuseau horaire",
+        "timeZoneHint": "Facultatif. Indique un fuseau IANA, par exemple Europe/Paris, seulement si tu le connais."
+      },
+      "optional": {
+        "title": "Ajouter des détails facultatifs",
+        "visitTitle": "Titre de la visite",
+        "privateNote": "Note privée",
+        "privateNoteHint": "Toi seul peux lire cette note."
+      },
+      "validation": {
+        "parkRequired": "Choisis un parc.",
+        "yearInvalid": "Indique une année valide.",
+        "monthInvalid": "Indique un mois compris entre 1 et 12.",
+        "dayInvalid": "Ce jour n’existe pas dans le mois sélectionné.",
+        "timeZoneInvalid": "Le fuseau horaire est trop long.",
+        "titleTooLong": "Le titre ne peut pas dépasser 160 caractères.",
+        "noteTooLong": "La note privée ne peut pas dépasser 4 000 caractères."
+      },
+      "errors": {
+        "signInRequired": "Connecte-toi pour enregistrer cette visite. Ta saisie reste disponible.",
+        "generic": "La visite n’a pas pu être enregistrée. Réessaie sans perdre ta saisie.",
+        "parkSearch": "La recherche de parcs a échoué. Réessaie dans un instant.",
+        "parkNotFound": "Ce parc n’est plus disponible.",
+        "timeZone": "Le fuseau horaire n’est pas reconnu.",
+        "date": "La date de visite n’est pas valide.",
+        "retryConflict": "Cette tentative ne correspond plus à la saisie initiale. Vérifie les champs puis réessaie.",
+        "network": "La réponse du serveur n’est pas arrivée. Réessaie : la visite ne sera pas créée en double."
+      }
+    }
+  },
   "user-profile": {
     "title": "Profil de l'utilisateur",
     "name": "Nom",

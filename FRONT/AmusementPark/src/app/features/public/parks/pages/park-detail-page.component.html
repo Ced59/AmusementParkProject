@@ -13,5 +13,14 @@
   [heroImageSizes]="heroImageSizes"
   [heroImageSrcWidth]="heroImageSrcWidth"
   (backClicked)="goBack()"
-  (exploreClicked)="goToExplore()">
+  (exploreClicked)="goToExplore()"
+  (visitCreateClicked)="openVisitDialog()">
 </app-park-detail-view>
+
+@if (park(); as currentPark) {
+  <app-passport-visit-quick-create
+    [(visible)]="visitDialogVisible"
+    [fixedParkId]="currentPark.id"
+    [fixedParkName]="currentPark.name">
+  </app-passport-visit-quick-create>
+}

@@ -93,6 +93,11 @@
           </div>
 
           <div class="park-banner__actions">
+            <button appUiButton="primary" type="button" (click)="createVisit()">
+              <i class="pi pi-calendar-plus" aria-hidden="true"></i>
+              <span>{{ 'passport.quickCreate.actions.openForPark' | translate }}</span>
+            </button>
+
             <button appUiButton="ghost" type="button" (click)="goBack()">
               <i class="pi pi-arrow-left" aria-hidden="true"></i>
               <span>{{ 'parks.actions.backToList' | translate }}</span>

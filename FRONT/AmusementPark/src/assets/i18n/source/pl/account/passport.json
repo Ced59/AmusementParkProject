@@ -1,0 +1,78 @@
+{
+  "passport": {
+    "profile": {
+      "kicker": "Paszport wizyt",
+      "title": "Zacznij tworzyć historię parków",
+      "description": "Zapisz prywatną wizytę, nawet jeśli pamiętasz tylko miesiąc lub rok.",
+      "action": "Dodaj wizytę"
+    },
+    "quickCreate": {
+      "title": "Dodaj wizytę",
+      "intro": "Zacznij od prostej wizyty. Później uzupełnisz wszystko, z czego udało Ci się skorzystać.",
+      "privacy": "Ta wizyta i Twoje notatki pozostają prywatne.",
+      "actions": {
+        "openForPark": "Dodaj wizytę",
+        "done": "Gotowe",
+        "addAnother": "Dodaj kolejną wizytę",
+        "saving": "Zapisywanie…",
+        "create": "Utwórz wizytę",
+        "cancel": "Anuluj"
+      },
+      "success": {
+        "title": "Wizyta zapisana",
+        "description": "Twoja wizyta w {{park}} znajduje się teraz w prywatnym paszporcie.",
+        "toast": "Wizyta została dodana do Twojego paszportu."
+      },
+      "park": {
+        "title": "Wybierz park",
+        "hint": "Wyszukuj wśród parków widocznych w serwisie.",
+        "change": "Zmień",
+        "searchLabel": "Nazwa parku",
+        "searchPlaceholder": "Zacznij wpisywać nazwę…",
+        "searching": "Wyszukiwanie parków…",
+        "results": "Wyniki wyszukiwania parków"
+      },
+      "date": {
+        "title": "Podaj datę, którą pamiętasz",
+        "hint": "Paszport zachowuje dokładnie podany poziom precyzji i nie dopisuje dnia.",
+        "today": "Użyj dzisiejszej daty",
+        "precisionLabel": "Dokładność daty",
+        "dayPrecision": "Dokładny dzień",
+        "monthPrecision": "Miesiąc",
+        "yearPrecision": "Rok",
+        "day": "Dzień",
+        "month": "Miesiąc",
+        "year": "Rok",
+        "approximate": "Data przybliżona",
+        "approximateHint": "Włącz tę opcję, jeśli okres nadal jest niepewny.",
+        "timeZone": "Strefa czasowa",
+        "timeZoneHint": "Opcjonalne. Podaj strefę IANA, na przykład Europe/Paris, tylko jeśli ją znasz."
+      },
+      "optional": {
+        "title": "Dodaj opcjonalne szczegóły",
+        "visitTitle": "Tytuł wizyty",
+        "privateNote": "Prywatna notatka",
+        "privateNoteHint": "Tylko Ty możesz przeczytać tę notatkę."
+      },
+      "validation": {
+        "parkRequired": "Wybierz park.",
+        "yearInvalid": "Podaj prawidłowy rok.",
+        "monthInvalid": "Podaj miesiąc od 1 do 12.",
+        "dayInvalid": "Taki dzień nie istnieje w wybranym miesiącu.",
+        "timeZoneInvalid": "Nazwa strefy czasowej jest zbyt długa.",
+        "titleTooLong": "Tytuł nie może mieć więcej niż 160 znaków.",
+        "noteTooLong": "Prywatna notatka nie może mieć więcej niż 4000 znaków."
+      },
+      "errors": {
+        "signInRequired": "Zaloguj się, aby zapisać wizytę. Wprowadzone dane pozostaną dostępne.",
+        "generic": "Nie udało się zapisać wizyty. Spróbuj ponownie bez utraty danych.",
+        "parkSearch": "Wyszukiwanie parków nie powiodło się. Spróbuj ponownie za chwilę.",
+        "parkNotFound": "Ten park nie jest już dostępny.",
+        "timeZone": "Strefa czasowa nie została rozpoznana.",
+        "date": "Data wizyty jest nieprawidłowa.",
+        "retryConflict": "Ta próba nie odpowiada już pierwotnym danym. Sprawdź pola i spróbuj ponownie.",
+        "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: wizyta nie zostanie utworzona podwójnie."
+      }
+    }
+  }
+}

@@ -17,5 +17,9 @@
   (cancelIdentityClicked)="cancelIdentityEdition()"
   (logoutClicked)="logout()"
   (avatarDialogVisibleChange)="onAvatarUploadDialogVisibleChange($event)"
-  (avatarUploaded)="onAvatarUploaded($event)">
+  (avatarUploaded)="onAvatarUploaded($event)"
+  (passportVisitCreateClicked)="openPassportVisitDialog()">
 </app-profile-page-view>
+
+<app-passport-visit-quick-create [(visible)]="passportVisitDialogVisible">
+</app-passport-visit-quick-create>

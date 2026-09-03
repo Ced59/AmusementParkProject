@@ -20,6 +20,7 @@ import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { LanguagePreferenceService } from '@app/services/localization/language-preference.service';
+import { PassportVisitQuickCreateComponent } from '@features/profile/passport/components/passport-visit-quick-create/passport-visit-quick-create.component';
 
 @Component({
     selector: 'app-profile-page',
@@ -27,7 +28,7 @@ import { LanguagePreferenceService } from '@app/services/localization/language-p
     styleUrl: './profile-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ProfilePageStateFacade],
-    imports: [ProfilePageViewComponent]
+    imports: [ProfilePageViewComponent, PassportVisitQuickCreateComponent]
 })
 export class ProfilePageComponent implements OnInit {
   private static readonly MaximumPublicDisplayNameLength = 60;
@@ -47,6 +48,7 @@ export class ProfilePageComponent implements OnInit {
   protected readonly userOwnerType = ImageOwnerType.USER;
   protected currentUserId: string | null = null;
   protected initialTab: 'profile' | 'ratings' = 'profile';
+  protected passportVisitDialogVisible: boolean = false;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
@@ -221,6 +223,10 @@ export class ProfilePageComponent implements OnInit {
     this.sharedService.emitLoginStatusChange();
     const currentLang: string = this.router.url.split('/')[1] || 'en';
     this.router.navigate(['/', currentLang, 'home']);
+  }
+
+  openPassportVisitDialog(): void {
+    this.passportVisitDialogVisible = true;
   }
 
   updatePreferredMeasurementSystem(system: MeasurementSystem): void {

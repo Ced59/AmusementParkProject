@@ -7,6 +7,82 @@
     "languages": "Idiomas",
     "profile": "Perfil"
   },
+  "passport": {
+    "profile": {
+      "kicker": "Passaporte de visitas",
+      "title": "Começa o teu histórico de parques",
+      "description": "Guarda uma visita privada, mesmo que só te lembres do mês ou do ano.",
+      "action": "Adicionar uma visita"
+    },
+    "quickCreate": {
+      "title": "Adicionar uma visita",
+      "intro": "Começa com uma visita simples. Poderás acrescentar tudo o que fizeste mais tarde.",
+      "privacy": "Esta visita e as tuas notas permanecem privadas.",
+      "actions": {
+        "openForPark": "Adicionar uma visita",
+        "done": "Concluir",
+        "addAnother": "Adicionar outra visita",
+        "saving": "A guardar…",
+        "create": "Criar visita",
+        "cancel": "Cancelar"
+      },
+      "success": {
+        "title": "Visita guardada",
+        "description": "A tua visita a {{park}} está agora no teu passaporte privado.",
+        "toast": "A visita foi adicionada ao teu passaporte."
+      },
+      "park": {
+        "title": "Escolhe o parque",
+        "hint": "Pesquisa entre os parques visíveis no site.",
+        "change": "Alterar",
+        "searchLabel": "Nome do parque",
+        "searchPlaceholder": "Começa a escrever um nome…",
+        "searching": "A pesquisar parques…",
+        "results": "Resultados da pesquisa de parques"
+      },
+      "date": {
+        "title": "Indica a data de que te lembras",
+        "hint": "O passaporte conserva exatamente o teu nível de precisão sem inventar um dia.",
+        "today": "Usar hoje",
+        "precisionLabel": "Precisão da data",
+        "dayPrecision": "Dia exato",
+        "monthPrecision": "Mês",
+        "yearPrecision": "Ano",
+        "day": "Dia",
+        "month": "Mês",
+        "year": "Ano",
+        "approximate": "Data aproximada",
+        "approximateHint": "Ativa esta opção se o período ainda for incerto.",
+        "timeZone": "Fuso horário",
+        "timeZoneHint": "Opcional. Indica um fuso IANA, como Europe/Paris, apenas se o conheceres."
+      },
+      "optional": {
+        "title": "Adicionar detalhes opcionais",
+        "visitTitle": "Título da visita",
+        "privateNote": "Nota privada",
+        "privateNoteHint": "Só tu podes ler esta nota."
+      },
+      "validation": {
+        "parkRequired": "Escolhe um parque.",
+        "yearInvalid": "Indica um ano válido.",
+        "monthInvalid": "Indica um mês entre 1 e 12.",
+        "dayInvalid": "Esse dia não existe no mês selecionado.",
+        "timeZoneInvalid": "O fuso horário é demasiado longo.",
+        "titleTooLong": "O título não pode ultrapassar 160 caracteres.",
+        "noteTooLong": "A nota privada não pode ultrapassar 4 000 caracteres."
+      },
+      "errors": {
+        "signInRequired": "Inicia sessão para guardar esta visita. Os dados introduzidos permanecem disponíveis.",
+        "generic": "Não foi possível guardar a visita. Tenta novamente sem perder os dados introduzidos.",
+        "parkSearch": "A pesquisa de parques falhou. Tenta novamente dentro de instantes.",
+        "parkNotFound": "Este parque já não está disponível.",
+        "timeZone": "O fuso horário não é reconhecido.",
+        "date": "A data da visita não é válida.",
+        "retryConflict": "Esta tentativa já não corresponde aos dados iniciais. Verifica os campos e tenta novamente.",
+        "network": "A resposta do servidor não chegou. Tenta novamente: a visita não será criada duas vezes."
+      }
+    }
+  },
   "user-profile": {
     "title": "Perfil de utilizador",
     "name": "Apelido",
