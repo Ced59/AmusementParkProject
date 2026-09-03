@@ -18,7 +18,8 @@ public sealed class SystemPassportTimeZoneValidatorTests
     [Theory]
     [InlineData("")]
     [InlineData("Mars/Olympus")]
-    public void IsValid_WhenTimeZoneDoesNotExist_ShouldRejectIt(string timeZoneId)
+    [InlineData("Pacific Standard Time")]
+    public void IsValid_WhenTimeZoneIsNotAnExistingIanaIdentifier_ShouldRejectIt(string timeZoneId)
     {
         SystemPassportTimeZoneValidator validator = new SystemPassportTimeZoneValidator();
 

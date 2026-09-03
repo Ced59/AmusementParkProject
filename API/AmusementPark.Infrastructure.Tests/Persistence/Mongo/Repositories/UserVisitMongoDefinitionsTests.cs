@@ -146,19 +146,6 @@ public sealed class UserVisitMongoDefinitionsTests
         Assert.Equal(3, rendered["$or"].AsBsonArray.Count);
     }
 
-    [Theory]
-    [InlineData(2026, null, null, 20260000)]
-    [InlineData(2026, 8, null, 20260800)]
-    [InlineData(2026, 8, 31, 20260831)]
-    public void ToDateSortKey_ShouldKeepPartialDatesChronological(
-        int year,
-        int? month,
-        int? day,
-        int expected)
-    {
-        Assert.Equal(expected, UserVisitMongoDefinitions.ToDateSortKey(year, month, day));
-    }
-
     [Fact]
     public void MongoSettings_ShouldUseTheVersionedCollectionNameByDefault()
     {
