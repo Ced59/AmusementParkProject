@@ -103,7 +103,10 @@ The project must preserve its current architecture, SOLID principles, separation
 - Put orchestration in facades/services.
 - Keep mapping logic out of templates.
 - Reuse existing shared components where relevant.
-- Maintain responsive behavior, especially for admin screens.
+- Treat responsive behavior as a mandatory acceptance criterion for every UI change across public, account, authentication and administration screens, not as a follow-up polish step.
+- At every supported mobile viewport, the document must never overflow horizontally; text, media, tables, controls and navigation must remain inside the viewport and reflow without being clipped or compressed into unreadably narrow columns.
+- Fixed or sticky UI, including mobile navigation, must not hide actionable content. Long localized labels and dynamic values must wrap or reflow safely without forcing the page width.
+- Add or update focused responsive regression tests for layout changes and validate representative mobile, tablet and desktop breakpoints before merging.
 - Preserve route localization, SEO metadata, canonical URLs, hreflang, robots/noindex, Open Graph, and SSR behavior.
 - When creating a deep public page, update the visible public breadcrumb/navigation trail and the BreadcrumbList JSON-LD with contextual, localized labels and clickable parent links. Do not leave generic labels when entity names are available.
 - Public-facing copy must use a consistent informal tone in every supported language. In French, use tutoiement instead of vouvoiement for public, auth, account, SEO and sharing texts.
@@ -209,7 +212,7 @@ When reviewing a PR, focus on:
 - Unexpected file deletions.
 - Overly large or unfocused diffs.
 - Performance regressions on public pages.
-- Admin responsive layout regressions.
+- Responsive layout regressions on public, account, authentication or administration screens, especially horizontal viewport overflow, clipped content, unreadably compressed columns and content hidden by fixed navigation.
 
 ## Codex task style
 
