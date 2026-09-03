@@ -188,7 +188,7 @@ sequenceDiagram
     R->>S: acquitte le marqueur
 ```
 
-Le service exécute un premier lot au démarrage puis au maximum un lot de 50 opérations et un lot de 50 événements par minute. Il termine d'abord les créations, suppressions et réordonnancements dont l'état métier a été appliqué avant l'acquittement de leur opération idempotente. Une opération ainsi confirmée devient `completed` et ses preuves deviennent publiables ; une opération compensée ou terminée en conflit perd ses marqueurs, puisqu'aucune mutation nette ne doit être journalisée. Le scan d'événements intervient seulement ensuite.
+Le service exécute un premier lot au démarrage puis au maximum un lot de 50 opérations et un lot de 50 événements par minute. Pour chaque opération, l'orchestrateur Application recharge la visite propriétaire, exige son statut `Draft`, puis acquiert le même bail distribué que les mutations interactives. Sous cette barrière seulement, il termine les créations, suppressions et réordonnancements dont l'état métier a été appliqué avant l'acquittement de leur opération idempotente. Une opération ainsi confirmée devient `completed` et ses preuves deviennent publiables ; une opération compensée ou terminée en conflit perd ses marqueurs, puisqu'aucune mutation nette ne doit être journalisée. Le scan d'événements intervient seulement ensuite.
 
 Chaque recherche s'appuie directement sur l'index multikey partiel `pendingAuditEvents.eventId`. L'ordre des opérations est borné et déterministe ; l'ordre de publication des preuves est stabilisé en mémoire. Le worker ne parcourt donc pas les documents dépourvus de marqueur et traite les reprises séquentiellement pour préserver le budget du VPS.
 

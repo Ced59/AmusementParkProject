@@ -26,6 +26,10 @@ public sealed record RideOccurrenceAppendState(
     long? LastSortPosition,
     bool WasNormalizedForOperation);
 
+public sealed record PendingPassportMutationVisit(
+    string UserId,
+    VisitId VisitId);
+
 public sealed record RideOccurrenceCreationRequestItem(
     string ParkItemId,
     OccurrenceMoment Moment,

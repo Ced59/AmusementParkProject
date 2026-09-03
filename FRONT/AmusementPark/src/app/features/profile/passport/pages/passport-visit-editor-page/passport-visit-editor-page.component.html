@@ -156,7 +156,10 @@
       </section>
     }
 
-    @if (facade.visit()?.status === 'Draft') {
+    @if (shouldDisplayAssessment(
+      facade.visit()?.status,
+      facade.visit()?.parkAssessment != null
+    )) {
     <section class="passport-assessment" appUiSurface="panel" aria-labelledby="passport-assessment-title">
       <div class="passport-assessment__heading">
         <div class="passport-assessment__icon" aria-hidden="true">
@@ -179,13 +182,13 @@
           <label
             class="passport-assessment__rating"
             [class.passport-assessment__rating--selected]="facade.assessmentDraft().value === value"
-            [class.passport-assessment__rating--disabled]="facade.assessmentSaving()">
+            [class.passport-assessment__rating--disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'">
             <input
               type="radio"
               name="visitParkAssessment"
               [value]="value"
               [checked]="facade.assessmentDraft().value === value"
-              [disabled]="facade.assessmentSaving()"
+              [disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'"
               [attr.aria-label]="assessmentValueLabel(value)"
               (change)="selectAssessmentValue(value)" />
             <i class="pi pi-star" aria-hidden="true"></i>
@@ -201,6 +204,7 @@
           maxlength="4000"
           [value]="facade.assessmentDraft().privateComment"
           [disabled]="facade.assessmentSaving()"
+          [readOnly]="facade.visit()?.status !== 'Draft'"
           [placeholder]="'passport.editor.assessment.commentPlaceholder' | translate"
           (input)="updateAssessmentComment($event)"></textarea>
         <small>{{ 'passport.editor.assessment.commentHint' | translate }}</small>
@@ -212,6 +216,7 @@
         </p>
       }
 
+      @if (facade.visit()?.status === 'Draft') {
       <div class="passport-assessment__actions">
         <button
           appUiButton="primary"
@@ -245,6 +250,7 @@
           }
         }
       </div>
+      }
     </section>
     }
 
@@ -524,13 +530,19 @@
                     }
                   </div>
 
-                  <details class="passport-ride-assessment" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''">
+                  @if (shouldDisplayAssessment(
+                    facade.visit()?.status,
+                    row.occurrence.assessment != null
+                  )) {
+                  <details class="passport-ride-assessment">
                     <summary>
                       <span>
                         <i class="pi pi-star" aria-hidden="true"></i>
-                        {{ (row.occurrence.assessment
-                          ? 'passport.editor.rideAssessment.editTitle'
-                          : 'passport.editor.rideAssessment.addTitle') | translate }}
+                        {{ (facade.visit()?.status !== 'Draft'
+                          ? 'passport.editor.rideAssessment.ratingLabel'
+                          : row.occurrence.assessment
+                            ? 'passport.editor.rideAssessment.editTitle'
+                            : 'passport.editor.rideAssessment.addTitle') | translate }}
                       </span>
                       @if (row.occurrence.assessment; as assessment) {
                         <strong>{{ assessmentValueLabel(assessment.value) }} / 5</strong>
@@ -543,7 +555,7 @@
 
                         <fieldset
                           class="passport-ride-assessment__ratings"
-                          [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                          [disabled]="isOccurrenceBusy(row.occurrence.id) || facade.visit()?.status !== 'Draft'"
                           [attr.aria-describedby]="'ride-assessment-hint-' + row.occurrence.id">
                           <legend>{{ 'passport.editor.rideAssessment.ratingLabel' | translate }}</legend>
                           @for (value of assessmentValues; track value) {
@@ -572,6 +584,7 @@
                             rows="3"
                             maxlength="4000"
                             [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                            [readOnly]="facade.visit()?.status !== 'Draft'"
                             [value]="assessmentDraft.privateComment"
                             (input)="updateRideAssessmentComment(row.occurrence.id, $event)"></textarea>
                           <small>{{ 'passport.editor.rideAssessment.commentHint' | translate }}</small>
@@ -584,6 +597,7 @@
                           </p>
                         }
 
+                        @if (facade.visit()?.status === 'Draft') {
                         @if (rideAssessmentDeleteConfirmationId() === row.occurrence.id) {
                           <div class="passport-ride-assessment__delete-confirmation">
                             <span>{{ 'passport.editor.rideAssessment.deleteConfirmation' | translate }}</span>
@@ -610,9 +624,11 @@
                             }
                           </div>
                         }
+                        }
                       </div>
                     }
                   </details>
+                  }
 
                   <div class="passport-occurrence__order" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
                     <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">

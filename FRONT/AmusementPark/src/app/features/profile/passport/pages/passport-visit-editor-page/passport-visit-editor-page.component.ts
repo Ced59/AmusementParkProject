@@ -146,6 +146,13 @@ export class PassportVisitEditorPageComponent {
     return `passport.editor.visit.status.${status}`;
   }
 
+  protected shouldDisplayAssessment(
+    status: PassportVisitStatus | null | undefined,
+    hasAssessment: boolean
+  ): boolean {
+    return status === 'Draft' || hasAssessment;
+  }
+
   protected updateVisitPrecision(event: Event): void {
     this.facade.updateVisitMetadataDraft({
       precision: this.eventValue(event) as PassportVisitDatePrecision

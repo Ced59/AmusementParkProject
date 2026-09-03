@@ -73,6 +73,20 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ value: 4.5 });
   });
 
+  it('keeps saved assessments readable when the visit is no longer editable', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      shouldDisplayAssessment(
+        status: 'Draft' | 'Completed' | 'Archived' | null,
+        hasAssessment: boolean
+      ): boolean;
+    };
+
+    expect(component.shouldDisplayAssessment('Draft', false)).toBe(true);
+    expect(component.shouldDisplayAssessment('Completed', true)).toBe(true);
+    expect(component.shouldDisplayAssessment('Archived', true)).toBe(true);
+    expect(component.shouldDisplayAssessment('Completed', false)).toBe(false);
+  });
+
   it('forwards private assessment comments on input so newer text survives in-flight saves', () => {
     const updateParkAssessmentDraft = vi.fn();
     const component = Object.create(PassportVisitEditorPageComponent.prototype) as {

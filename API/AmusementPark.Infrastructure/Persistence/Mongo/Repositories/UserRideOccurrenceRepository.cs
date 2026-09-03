@@ -8,15 +8,13 @@ using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-public sealed class UserRideOccurrenceRepository :
-    IRideOccurrenceRepository,
-    IPassportPendingMutationReconciler
+public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 {
     public const int MaximumBatchSize = 100;
 
     public const int MaximumListSize = 250;
 
-    public const int MaximumPendingMutationReconciliationBatchSize = 50;
+    public const int MaximumPendingMutationScanSize = 50;
 
     private const string CreationOperationKind = "creation";
 
@@ -70,13 +68,14 @@ public sealed class UserRideOccurrenceRepository :
             this.deletionCoordinator);
     }
 
-    public async Task<int> ReconcileBatchAsync(
-        int maximumOperationCount,
+    public async Task<IReadOnlyCollection<PendingPassportMutationVisit>>
+        ListPendingAuditMutationVisitsAsync(
+        int maximumVisitCount,
         CancellationToken cancellationToken)
     {
-        if (maximumOperationCount is < 1 or > MaximumPendingMutationReconciliationBatchSize)
+        if (maximumVisitCount is < 1 or > MaximumPendingMutationScanSize)
         {
-            throw new ArgumentOutOfRangeException(nameof(maximumOperationCount));
+            throw new ArgumentOutOfRangeException(nameof(maximumVisitCount));
         }
 
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
@@ -87,9 +86,10 @@ public sealed class UserRideOccurrenceRepository :
         List<UserRideOccurrenceCreationOperationDocument> operations =
             await this.operationCollection
                 .Find(filter)
-                .Limit(maximumOperationCount)
+                .Limit(maximumVisitCount)
                 .ToListAsync(cancellationToken);
-        int reconciledCount = 0;
+        List<PendingPassportMutationVisit> candidates =
+            new List<PendingPassportMutationVisit>(operations.Count);
         foreach (UserRideOccurrenceCreationOperationDocument operation in operations
             .OrderBy(static document => document.UpdatedAt)
             .ThenBy(static document => document.Id, StringComparer.Ordinal))
@@ -109,18 +109,22 @@ public sealed class UserRideOccurrenceRepository :
                 continue;
             }
 
-            bool reconciled = await this.pendingOperationRecovery.TryCompleteVisitAsync(
-                operation.UserId,
-                visitId,
-                this.ResumeReservedReorderAsync,
-                cancellationToken);
-            if (reconciled)
-            {
-                reconciledCount++;
-            }
+            candidates.Add(new PendingPassportMutationVisit(operation.UserId, visitId));
         }
 
-        return reconciledCount;
+        return candidates;
+    }
+
+    public Task<bool> TryCompletePendingMutationAsync(
+        string userId,
+        VisitId visitId,
+        CancellationToken cancellationToken)
+    {
+        return this.pendingOperationRecovery.TryCompleteVisitAsync(
+            userId,
+            visitId,
+            this.ResumeReservedReorderAsync,
+            cancellationToken);
     }
 
     public async Task<RideOccurrenceCreationKeyReservationResult>

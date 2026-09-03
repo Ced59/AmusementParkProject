@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,8 +43,7 @@ internal sealed class PassportAuditReconciliationBackgroundService : BackgroundS
                     scope.ServiceProvider.GetRequiredService<
                         IPassportPendingMutationReconciler>();
                 _ = await pendingMutationReconciler.ReconcileBatchAsync(
-                    UserRideOccurrenceRepository
-                        .MaximumPendingMutationReconciliationBatchSize,
+                    PassportPendingMutationReconciler.MaximumBatchSize,
                     stoppingToken);
                 IPassportAuditReconciler reconciler =
                     scope.ServiceProvider.GetRequiredService<IPassportAuditReconciler>();

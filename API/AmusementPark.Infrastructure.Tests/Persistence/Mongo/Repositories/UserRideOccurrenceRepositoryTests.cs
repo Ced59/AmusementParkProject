@@ -2470,7 +2470,8 @@ public sealed class UserRideOccurrenceRepositoryTests
     [Theory]
     [InlineData(0)]
     [InlineData(51)]
-    public async Task ReconcileBatchAsync_WhenLimitIsOutsideBound_ShouldReject(int limit)
+    public async Task ListPendingAuditMutationVisitsAsync_WhenLimitIsOutsideBound_ShouldReject(
+        int limit)
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
             new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
@@ -2482,14 +2483,16 @@ public sealed class UserRideOccurrenceRepositoryTests
             operationCollection.Object);
 
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
-            repository.ReconcileBatchAsync(limit, CancellationToken.None));
+            repository.ListPendingAuditMutationVisitsAsync(
+                limit,
+                CancellationToken.None));
 
         collection.VerifyNoOtherCalls();
         operationCollection.VerifyNoOtherCalls();
     }
 
     [Fact]
-    public async Task ReconcileBatchAsync_WhenCreationWasApplied_ShouldCompletePendingOperation()
+    public async Task PendingMutationPorts_WhenCreationWasApplied_ShouldCompleteOperation()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
             new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
@@ -2572,11 +2575,19 @@ public sealed class UserRideOccurrenceRepositoryTests
             collection.Object,
             operationCollection.Object);
 
-        int reconciled = await repository.ReconcileBatchAsync(
+        IReadOnlyCollection<PendingPassportMutationVisit> candidates =
+            await repository.ListPendingAuditMutationVisitsAsync(
             50,
             CancellationToken.None);
+        PendingPassportMutationVisit candidate = Assert.Single(candidates);
+        bool reconciled = await repository.TryCompletePendingMutationAsync(
+            candidate.UserId,
+            candidate.VisitId,
+            CancellationToken.None);
 
-        Assert.Equal(1, reconciled);
+        Assert.True(reconciled);
+        Assert.Equal("user-1", candidate.UserId);
+        Assert.Equal("visit-1", candidate.VisitId.Value);
         Assert.Equal("completed", operation.OperationState);
         Assert.NotNull(stateUpdate);
         Assert.Equal("completed", Render(stateUpdate)["$set"]["operationState"].AsString);
