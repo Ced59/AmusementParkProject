@@ -21,6 +21,7 @@
       "actions": {
         "openForPark": "Dodaj wizytę",
         "done": "Gotowe",
+        "addAttractions": "Dodaj atrakcje",
         "addAnother": "Dodaj kolejną wizytę",
         "saving": "Zapisywanie…",
         "create": "Utwórz wizytę",
@@ -80,6 +81,156 @@
         "date": "Data wizyty jest nieprawidłowa.",
         "retryConflict": "Ta próba nie odpowiada już pierwotnym danym. Sprawdź pola i spróbuj ponownie.",
         "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: wizyta nie zostanie utworzona podwójnie."
+      }
+    },
+    "editor": {
+      "kicker": "Dziennik wizyty",
+      "title": "Uzupełnij swoją wizytę",
+      "private": "Prywatne",
+      "loading": "Wczytywanie wizyty…",
+      "actions": {
+        "back": "Wróć do profilu",
+        "retry": "Spróbuj ponownie",
+        "filter": "Szukaj",
+        "clear": "Wyczyść filtry",
+        "previous": "Poprzednia",
+        "next": "Następna",
+        "clearSelection": "Usuń wszystkie",
+        "retryAdd": "Sprawdź ostatnie dodawanie",
+        "adding": "Dodawanie…",
+        "addToTimeline": {
+          "one": "Dodaj {{count}} wpis",
+          "few": "Dodaj {{count}} wpisy",
+          "many": "Dodaj {{count}} wpisów",
+          "other": "Dodaj {{count}} wpisu"
+        },
+        "dismiss": "Zamknij komunikat",
+        "moveFirst": "Przenieś na początek",
+        "moveUp": "Przenieś o jedno miejsce wyżej",
+        "moveDown": "Przenieś o jedno miejsce niżej",
+        "moveLast": "Przenieś na koniec",
+        "edit": "Edytuj ten wpis",
+        "save": "Zapisz zmiany",
+        "duplicate": "Jeszcze jeden przejazd",
+        "retryDuplicate": "Sprawdź ten wpis",
+        "delete": "Usuń",
+        "confirmDelete": "Potwierdź",
+        "cancel": "Anuluj",
+        "loadMore": "Wczytaj więcej"
+      },
+      "selector": {
+        "title": "Wybierz atrakcje",
+        "description": "Wybierz jedną lub kilka atrakcji, również te zamknięte po Twojej wizycie.",
+        "searchLabel": "Nazwa atrakcji",
+        "searchPlaceholder": "Wyszukaj atrakcję…",
+        "zoneLabel": "Strefa parku",
+        "allZones": "Wszystkie strefy",
+        "loading": "Wczytywanie atrakcji…",
+        "empty": "Żadna atrakcja nie pasuje do tych filtrów.",
+        "results": "Atrakcje dostępne dla tej wizyty",
+        "historical": "historyczna",
+        "pagination": "Strony atrakcji",
+        "page": "Strona {{current}} z {{total}}"
+      },
+      "selection": {
+        "title": "Wpisy do dodania",
+        "attractionCount": {
+          "one": "{{count}} atrakcja",
+          "few": "{{count}} atrakcje",
+          "many": "{{count}} atrakcji",
+          "other": "{{count}} atrakcji"
+        },
+        "occurrenceCount": {
+          "one": "łącznie {{count}} wpis",
+          "few": "łącznie {{count}} wpisy",
+          "many": "łącznie {{count}} wpisów",
+          "other": "łącznie {{count}} wpisu"
+        },
+        "rideCount": {
+          "one": "{{count}} wpis",
+          "few": "{{count}} wpisy",
+          "many": "{{count}} wpisów",
+          "other": "{{count}} wpisu"
+        },
+        "pendingRecovery": "Wynik ostatniego dodawania jest niepewny. Ponów je przed wysłaniem nowszych zmian."
+      },
+      "fields": {
+        "status": "Rezultat",
+        "count": "Liczba przejazdów",
+        "time": "Czas lokalny",
+        "approximateTime": "Przybliżona godzina",
+        "privateNote": "Prywatna notatka",
+        "confirmHistoricalConflict": "Potwierdzam mimo znanej niezgodności dat",
+        "confirmHistoricalConflictHint": "Użyj tej opcji tylko wtedy, gdy masz pewność co do tego wspomnienia.",
+        "timeUnavailable": "Godzinę można dodać tylko do wizyty z dokładnym dniem i strefą czasową."
+      },
+      "status": {
+        "completed": "Zrealizowana",
+        "attempted": "Podjęta próba",
+        "missedClosed": "Pominięta z powodu zamknięcia",
+        "missedUnavailable": "Pominięta z powodu niedostępności",
+        "skippedByChoice": "Pominięta z wyboru"
+      },
+      "lifecycle": {
+        "Operating": "Działa",
+        "UnderConstruction": "W budowie",
+        "TemporarilyClosed": "Tymczasowo zamknięta",
+        "ClosedDefinitively": "Zamknięta na stałe",
+        "Removed": "Usunięta",
+        "Planned": "Planowana",
+        "Unknown": "Status nieznany"
+      },
+      "consistency": {
+        "verified": "Daty są zgodne",
+        "unverified": "Dat nie można zweryfikować",
+        "confirmedConflict": "Potwierdzona niezgodność dat"
+      },
+      "timeline": {
+        "title": "Twoja oś czasu",
+        "entryCount": {
+          "one": "Wczytano {{count}} wpis",
+          "few": "Wczytano {{count}} wpisy",
+          "many": "Wczytano {{count}} wpisów",
+          "other": "Wczytano {{count}} wpisu"
+        },
+        "completedCount": {
+          "one": "{{count}} zrealizowany przejazd",
+          "few": "{{count}} zrealizowane przejazdy",
+          "many": "{{count}} zrealizowanych przejazdów",
+          "other": "{{count}} zrealizowanego przejazdu"
+        },
+        "normalized": "Kolejność została przeliczona, aby pozostała niezawodna. Widoczna oś czasu została wczytana ponownie.",
+        "loading": "Odświeżanie osi czasu…",
+        "emptyTitle": "Nie ma jeszcze wpisów",
+        "emptyDescription": "Wybierz atrakcje i odtwórz ten dzień we własnym tempie.",
+        "unknownAttraction": "Niedostępna atrakcja historyczna",
+        "occurrenceNumber": "Wpis {{current}} z {{total}}",
+        "hasPrivateNote": "Prywatna notatka",
+        "orderActions": "Zmiana kolejności wpisu",
+        "deleteConfirmation": "Trwale usunąć ten wpis z wizyty?",
+        "pendingDuplicateRecovery": "Wynik dodania tego wpisu jest niepewny. Sprawdź go: to samo żądanie zostanie ponowione bez tworzenia duplikatu."
+      },
+      "errors": {
+        "visitNotFound": "Nie znaleziono tej wizyty albo nie należy już do Ciebie.",
+        "load": "Nie udało się wczytać wizyty. Spróbuj ponownie za chwilę.",
+        "attractions": "Nie udało się wczytać atrakcji.",
+        "timeline": "Nie udało się odświeżyć osi czasu.",
+        "operation": "Nie udało się zapisać zmiany. Wprowadzone dane pozostają dostępne.",
+        "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: operacja nie zostanie wykonana podwójnie.",
+        "batchTooLarge": "Jednocześnie możesz dodać maksymalnie 100 wpisów.",
+        "historicalConflict": "Znane daty nie pasują do tej wizyty. Potwierdź tylko wtedy, gdy masz pewność co do wspomnienia.",
+        "versionConflict": "Ten wpis został w międzyczasie zmieniony. Oś czasu została wczytana ponownie; sprawdź ją przed kolejną próbą.",
+        "idempotencyConflict": "Ta próba nie odpowiada już pierwotnej operacji. Sprawdź dane i spróbuj ponownie.",
+        "attractionUnavailable": "Ta atrakcja nie jest już dostępna w dzienniku.",
+        "noteTooLong": "Prywatna notatka nie może przekraczać 4000 znaków.",
+        "timeUnavailable": "Aby zapisać godzinę, wizyta musi mieć dokładny dzień i strefę czasową."
+      },
+      "messages": {
+        "added": "Wpisy zostały dodane do wizyty.",
+        "updated": "Wpis został zaktualizowany.",
+        "duplicated": "Dodano nowy wpis.",
+        "deleted": "Wpis został usunięty.",
+        "reordered": "Zmieniono kolejność osi czasu."
       }
     }
   },

@@ -22,4 +22,9 @@ export class PassportVisitsApiService {
 
     return this.http.post<PassportVisit>(url, request, { headers });
   }
+
+  getVisit(visitId: string): Observable<PassportVisit> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.getById(visitId)}`;
+    return this.http.get<PassportVisit>(url, { transferCache: false });
+  }
 }

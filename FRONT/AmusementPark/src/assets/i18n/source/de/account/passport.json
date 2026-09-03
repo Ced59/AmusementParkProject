@@ -13,6 +13,7 @@
       "actions": {
         "openForPark": "Besuch hinzufügen",
         "done": "Fertig",
+        "addAttractions": "Attraktionen hinzufügen",
         "addAnother": "Weiteren Besuch hinzufügen",
         "saving": "Wird gespeichert…",
         "create": "Besuch erstellen",
@@ -72,6 +73,126 @@
         "date": "Das Besuchsdatum ist ungültig.",
         "retryConflict": "Dieser Versuch entspricht nicht mehr der ursprünglichen Eingabe. Prüfe die Felder und versuche es erneut.",
         "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Der Besuch wird nicht doppelt erstellt."
+      }
+    },
+    "editor": {
+      "kicker": "Besuchsprotokoll",
+      "title": "Ergänze deinen Besuch",
+      "private": "Privat",
+      "loading": "Dein Besuch wird geladen…",
+      "actions": {
+        "back": "Zurück zum Profil",
+        "retry": "Erneut versuchen",
+        "filter": "Suchen",
+        "clear": "Filter löschen",
+        "previous": "Zurück",
+        "next": "Weiter",
+        "clearSelection": "Alle entfernen",
+        "retryAdd": "Letztes Hinzufügen prüfen",
+        "adding": "Wird hinzugefügt…",
+        "addToTimeline": { "one": "{{count}} Eintrag hinzufügen", "few": "{{count}} Einträge hinzufügen", "many": "{{count}} Einträge hinzufügen", "other": "{{count}} Einträge hinzufügen" },
+        "dismiss": "Hinweis schließen",
+        "moveFirst": "An den Anfang verschieben",
+        "moveUp": "Eine Stelle nach oben",
+        "moveDown": "Eine Stelle nach unten",
+        "moveLast": "Ans Ende verschieben",
+        "edit": "Diesen Eintrag bearbeiten",
+        "save": "Änderungen speichern",
+        "duplicate": "Noch einmal gefahren",
+        "retryDuplicate": "Diesen Eintrag prüfen",
+        "delete": "Löschen",
+        "confirmDelete": "Bestätigen",
+        "cancel": "Abbrechen",
+        "loadMore": "Weitere laden"
+      },
+      "selector": {
+        "title": "Attraktionen auswählen",
+        "description": "Wähle eine oder mehrere Attraktionen aus, auch solche, die seit deinem Besuch geschlossen wurden.",
+        "searchLabel": "Name der Attraktion",
+        "searchPlaceholder": "Attraktion suchen…",
+        "zoneLabel": "Parkbereich",
+        "allZones": "Alle Bereiche",
+        "loading": "Attraktionen werden geladen…",
+        "empty": "Keine Attraktion passt zu diesen Filtern.",
+        "results": "Für diesen Besuch verfügbare Attraktionen",
+        "historical": "historisch",
+        "pagination": "Attraktionsseiten",
+        "page": "Seite {{current}} von {{total}}"
+      },
+      "selection": {
+        "title": "Hinzuzufügende Einträge",
+        "attractionCount": { "one": "{{count}} Attraktion", "few": "{{count}} Attraktionen", "many": "{{count}} Attraktionen", "other": "{{count}} Attraktionen" },
+        "occurrenceCount": { "one": "insgesamt {{count}} Eintrag", "few": "insgesamt {{count}} Einträge", "many": "insgesamt {{count}} Einträge", "other": "insgesamt {{count}} Einträge" },
+        "rideCount": { "one": "{{count}} Eintrag", "few": "{{count}} Einträge", "many": "{{count}} Einträge", "other": "{{count}} Einträge" },
+        "pendingRecovery": "Das Ergebnis des letzten Hinzufügens ist unklar. Prüfe es erneut, bevor du deine neueren Änderungen sendest."
+      },
+      "fields": {
+        "status": "Ergebnis",
+        "count": "Anzahl der Fahrten",
+        "time": "Ortszeit",
+        "approximateTime": "Ungefähre Uhrzeit",
+        "privateNote": "Private Notiz",
+        "confirmHistoricalConflict": "Ich bestätige den Eintrag trotz eines bekannten Datumskonflikts",
+        "confirmHistoricalConflictHint": "Nutze dies nur, wenn du dir bei dieser Erinnerung sicher bist.",
+        "timeUnavailable": "Eine Uhrzeit ist nur bei einem Besuch mit genauem Tag und Zeitzone möglich."
+      },
+      "status": {
+        "completed": "Gefahren",
+        "attempted": "Versucht",
+        "missedClosed": "Wegen Schließung verpasst",
+        "missedUnavailable": "Wegen Ausfall verpasst",
+        "skippedByChoice": "Bewusst ausgelassen"
+      },
+      "lifecycle": {
+        "Operating": "In Betrieb",
+        "UnderConstruction": "Im Bau",
+        "TemporarilyClosed": "Vorübergehend geschlossen",
+        "ClosedDefinitively": "Dauerhaft geschlossen",
+        "Removed": "Entfernt",
+        "Planned": "Geplant",
+        "Unknown": "Status unbekannt"
+      },
+      "consistency": {
+        "verified": "Daten stimmen überein",
+        "unverified": "Daten nicht überprüfbar",
+        "confirmedConflict": "Datumskonflikt bestätigt"
+      },
+      "timeline": {
+        "title": "Deine Zeitleiste",
+        "entryCount": { "one": "{{count}} geladener Eintrag", "few": "{{count}} geladene Einträge", "many": "{{count}} geladene Einträge", "other": "{{count}} geladene Einträge" },
+        "completedCount": { "one": "{{count}} absolvierte Fahrt", "few": "{{count}} absolvierte Fahrten", "many": "{{count}} absolvierte Fahrten", "other": "{{count}} absolvierte Fahrten" },
+        "normalized": "Die Reihenfolge wurde für eine zuverlässige Speicherung neu berechnet. Die Anzeige wurde aktualisiert.",
+        "loading": "Zeitleiste wird aktualisiert…",
+        "emptyTitle": "Noch keine Einträge",
+        "emptyDescription": "Wähle Attraktionen aus und rekonstruiere diesen Tag in deinem Tempo.",
+        "unknownAttraction": "Nicht verfügbare historische Attraktion",
+        "occurrenceNumber": "Eintrag {{current}} von {{total}}",
+        "hasPrivateNote": "Private Notiz",
+        "orderActions": "Reihenfolge dieses Eintrags ändern",
+        "deleteConfirmation": "Diesen Eintrag dauerhaft aus deinem Besuch löschen?",
+        "pendingDuplicateRecovery": "Das Ergebnis dieses hinzugefügten Eintrags ist unklar. Prüfe es: Dieselbe Anfrage wird wiederholt, ohne einen doppelten Eintrag zu erzeugen."
+      },
+      "errors": {
+        "visitNotFound": "Dieser Besuch wurde nicht gefunden oder gehört dir nicht mehr.",
+        "load": "Dein Besuch konnte nicht geladen werden. Versuche es gleich noch einmal.",
+        "attractions": "Die Attraktionen konnten nicht geladen werden.",
+        "timeline": "Die Zeitleiste konnte nicht aktualisiert werden.",
+        "operation": "Die Änderung konnte nicht gespeichert werden. Deine Eingabe bleibt erhalten.",
+        "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Der Vorgang wird nicht doppelt ausgeführt.",
+        "batchTooLarge": "Du kannst höchstens 100 Einträge gleichzeitig hinzufügen.",
+        "historicalConflict": "Die bekannten Daten passen nicht zu diesem Besuch. Bestätige nur, wenn du dir sicher bist.",
+        "versionConflict": "Dieser Eintrag wurde inzwischen geändert. Die Zeitleiste wurde neu geladen; prüfe sie vor dem nächsten Versuch.",
+        "idempotencyConflict": "Dieser Versuch passt nicht mehr zum ursprünglichen Vorgang. Prüfe die Angaben und versuche es erneut.",
+        "attractionUnavailable": "Diese Attraktion ist für das Protokoll nicht mehr verfügbar.",
+        "noteTooLong": "Die private Notiz darf höchstens 4.000 Zeichen lang sein.",
+        "timeUnavailable": "Für eine Uhrzeit braucht dieser Besuch einen genauen Tag und eine Zeitzone."
+      },
+      "messages": {
+        "added": "Die Einträge wurden deinem Besuch hinzugefügt.",
+        "updated": "Der Eintrag wurde aktualisiert.",
+        "duplicated": "Ein neuer Eintrag wurde hinzugefügt.",
+        "deleted": "Der Eintrag wurde gelöscht.",
+        "reordered": "Die Zeitleiste wurde neu geordnet."
       }
     }
   }

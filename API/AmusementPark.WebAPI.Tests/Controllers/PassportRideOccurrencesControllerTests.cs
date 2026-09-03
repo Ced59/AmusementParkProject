@@ -191,6 +191,10 @@ public sealed class PassportRideOccurrencesControllerTests
         OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
         PassportRideOccurrenceDto body = Assert.IsType<PassportRideOccurrenceDto>(ok.Value);
         Assert.Equal("occurrence-1", body.Id);
+        Assert.Equal("Current ride name", body.Target?.Name);
+        Assert.Equal("Attraction", body.Target?.Category);
+        Assert.Equal("Operating", body.Target?.LifecycleStatus);
+        Assert.False(body.Target!.IsHistoricalSnapshot);
         get.VerifyAll();
     }
 
@@ -339,6 +343,11 @@ public sealed class PassportRideOccurrencesControllerTests
             true,
             1,
             NowUtc,
-            NowUtc);
+            NowUtc,
+            new RideOccurrenceTargetResult(
+                "Current ride name",
+                "Attraction",
+                "Operating",
+                false));
     }
 }

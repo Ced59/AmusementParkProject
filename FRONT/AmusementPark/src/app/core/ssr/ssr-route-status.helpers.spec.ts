@@ -87,6 +87,7 @@ describe('SSR route status helpers', () => {
 
   it('keeps known private client routes successful for the CSR shell', () => {
     expect(resolveSsrRouteStatusCode('/fr/profile')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/fr/profile/visits/visit-123')).toBe(200);
     expect(resolveSsrRouteStatusCode('/fr/reset-password')).toBe(200);
     expect(
       resolveSsrRouteStatusCode('/fr/admin/parks/edit/123/items/new'),
@@ -161,6 +162,7 @@ describe('SSR route status helpers', () => {
       ),
     ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBe(true);
+    expect(shouldApplyNoindexFollowHeader('/fr/profile/visits/visit-123')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBe(false);
     expect(shouldApplyNoindexFollowHeader('/fr/sitemap')).toBe(false);

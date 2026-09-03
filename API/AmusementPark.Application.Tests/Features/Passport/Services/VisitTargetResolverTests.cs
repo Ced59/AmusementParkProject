@@ -30,6 +30,7 @@ public sealed class VisitTargetResolverTests
                     {
                         OpeningDate = new DateTime(1998, 4, 1),
                         ClosingDate = new DateTime(2010, 9, 30),
+                        Status = "ClosedDefinitively",
                     },
                 },
             });
@@ -43,6 +44,7 @@ public sealed class VisitTargetResolverTests
         Assert.Equal("park-1", target.ParkId);
         Assert.Equal(new DateOnly(1998, 4, 1), target.OpeningDate);
         Assert.Equal(new DateOnly(2010, 9, 30), target.ClosingDate);
+        Assert.Equal("ClosedDefinitively", target.LifecycleStatus);
         repository.VerifyAll();
     }
 }

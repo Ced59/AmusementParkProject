@@ -13,6 +13,7 @@
       "actions": {
         "openForPark": "Bezoek toevoegen",
         "done": "Klaar",
+        "addAttractions": "Attracties toevoegen",
         "addAnother": "Nog een bezoek toevoegen",
         "saving": "Opslaan…",
         "create": "Bezoek aanmaken",
@@ -72,6 +73,126 @@
         "date": "De bezoekdatum is niet geldig.",
         "retryConflict": "Deze poging komt niet meer overeen met de oorspronkelijke invoer. Controleer de velden en probeer opnieuw.",
         "network": "De serverreactie is niet aangekomen. Probeer opnieuw: het bezoek wordt niet dubbel aangemaakt."
+      }
+    },
+    "editor": {
+      "kicker": "Bezoeklogboek",
+      "title": "Vul je bezoek aan",
+      "private": "Privé",
+      "loading": "Je bezoek wordt geladen…",
+      "actions": {
+        "back": "Terug naar profiel",
+        "retry": "Opnieuw proberen",
+        "filter": "Zoeken",
+        "clear": "Filters wissen",
+        "previous": "Vorige",
+        "next": "Volgende",
+        "clearSelection": "Alles verwijderen",
+        "retryAdd": "Vorige toevoeging controleren",
+        "adding": "Toevoegen…",
+        "addToTimeline": { "one": "{{count}} vermelding toevoegen", "few": "{{count}} vermeldingen toevoegen", "many": "{{count}} vermeldingen toevoegen", "other": "{{count}} vermeldingen toevoegen" },
+        "dismiss": "Melding sluiten",
+        "moveFirst": "Helemaal bovenaan zetten",
+        "moveUp": "Eén plaats omhoog",
+        "moveDown": "Eén plaats omlaag",
+        "moveLast": "Helemaal onderaan zetten",
+        "edit": "Deze vermelding bewerken",
+        "save": "Wijzigingen opslaan",
+        "duplicate": "Nog een keer gedaan",
+        "retryDuplicate": "Deze vermelding controleren",
+        "delete": "Verwijderen",
+        "confirmDelete": "Bevestigen",
+        "cancel": "Annuleren",
+        "loadMore": "Meer laden"
+      },
+      "selector": {
+        "title": "Kies attracties",
+        "description": "Selecteer één of meer attracties, ook attracties die sinds je bezoek zijn gesloten.",
+        "searchLabel": "Naam van de attractie",
+        "searchPlaceholder": "Zoek een attractie…",
+        "zoneLabel": "Parkzone",
+        "allZones": "Alle zones",
+        "loading": "Attracties worden geladen…",
+        "empty": "Geen attracties gevonden met deze filters.",
+        "results": "Attracties voor dit bezoek",
+        "historical": "historisch",
+        "pagination": "Attractiepagina’s",
+        "page": "Pagina {{current}} van {{total}}"
+      },
+      "selection": {
+        "title": "Vermeldingen om toe te voegen",
+        "attractionCount": { "one": "{{count}} attractie", "few": "{{count}} attracties", "many": "{{count}} attracties", "other": "{{count}} attracties" },
+        "occurrenceCount": { "one": "in totaal {{count}} vermelding", "few": "in totaal {{count}} vermeldingen", "many": "in totaal {{count}} vermeldingen", "other": "in totaal {{count}} vermeldingen" },
+        "rideCount": { "one": "{{count}} vermelding", "few": "{{count}} vermeldingen", "many": "{{count}} vermeldingen", "other": "{{count}} vermeldingen" },
+        "pendingRecovery": "Het resultaat van de laatste toevoeging is onzeker. Probeer die opnieuw voordat je je nieuwere wijzigingen verstuurt."
+      },
+      "fields": {
+        "status": "Resultaat",
+        "count": "Aantal ritten",
+        "time": "Lokale tijd",
+        "approximateTime": "Tijd bij benadering",
+        "privateNote": "Privénotitie",
+        "confirmHistoricalConflict": "Ik bevestig dit ondanks een bekend datumconflict",
+        "confirmHistoricalConflictHint": "Gebruik dit alleen als je zeker bent van deze herinnering.",
+        "timeUnavailable": "Je kunt alleen een tijd toevoegen aan een bezoek met een exacte dag en tijdzone."
+      },
+      "status": {
+        "completed": "Gedaan",
+        "attempted": "Geprobeerd",
+        "missedClosed": "Gemist omdat deze gesloten was",
+        "missedUnavailable": "Gemist omdat deze niet beschikbaar was",
+        "skippedByChoice": "Bewust overgeslagen"
+      },
+      "lifecycle": {
+        "Operating": "In gebruik",
+        "UnderConstruction": "In aanbouw",
+        "TemporarilyClosed": "Tijdelijk gesloten",
+        "ClosedDefinitively": "Definitief gesloten",
+        "Removed": "Verwijderd",
+        "Planned": "Gepland",
+        "Unknown": "Status onbekend"
+      },
+      "consistency": {
+        "verified": "Datums komen overeen",
+        "unverified": "Datums niet te controleren",
+        "confirmedConflict": "Datumconflict bevestigd"
+      },
+      "timeline": {
+        "title": "Je tijdlijn",
+        "entryCount": { "one": "{{count}} geladen vermelding", "few": "{{count}} geladen vermeldingen", "many": "{{count}} geladen vermeldingen", "other": "{{count}} geladen vermeldingen" },
+        "completedCount": { "one": "{{count}} uitgevoerde rit", "few": "{{count}} uitgevoerde ritten", "many": "{{count}} uitgevoerde ritten", "other": "{{count}} uitgevoerde ritten" },
+        "normalized": "De volgorde is opnieuw berekend om betrouwbaar te blijven. De tijdlijn is opnieuw geladen.",
+        "loading": "Tijdlijn wordt vernieuwd…",
+        "emptyTitle": "Nog geen vermeldingen",
+        "emptyDescription": "Selecteer attracties en bouw deze dag op je eigen tempo opnieuw op.",
+        "unknownAttraction": "Niet-beschikbare historische attractie",
+        "occurrenceNumber": "Vermelding {{current}} van {{total}}",
+        "hasPrivateNote": "Privénotitie",
+        "orderActions": "Volgorde van de vermelding wijzigen",
+        "deleteConfirmation": "Deze vermelding definitief uit je bezoek verwijderen?",
+        "pendingDuplicateRecovery": "Het resultaat van deze toegevoegde vermelding is onzeker. Controleer het: hetzelfde verzoek wordt opnieuw uitgevoerd zonder een dubbele vermelding te maken."
+      },
+      "errors": {
+        "visitNotFound": "Dit bezoek is niet gevonden of is niet meer van jou.",
+        "load": "Je bezoek kon niet worden geladen. Probeer het zo opnieuw.",
+        "attractions": "De attracties konden niet worden geladen.",
+        "timeline": "De tijdlijn kon niet worden vernieuwd.",
+        "operation": "De wijziging kon niet worden opgeslagen. Je invoer blijft bewaard.",
+        "network": "Het antwoord van de server is niet aangekomen. Probeer opnieuw: de bewerking wordt niet dubbel uitgevoerd.",
+        "batchTooLarge": "Je kunt maximaal 100 vermeldingen tegelijk toevoegen.",
+        "historicalConflict": "De bekende datums passen niet bij dit bezoek. Bevestig alleen als je zeker bent.",
+        "versionConflict": "Deze vermelding is intussen gewijzigd. De tijdlijn is opnieuw geladen; controleer die voordat je doorgaat.",
+        "idempotencyConflict": "Deze poging past niet meer bij de oorspronkelijke bewerking. Controleer de gegevens en probeer opnieuw.",
+        "attractionUnavailable": "Deze attractie is niet meer beschikbaar voor het logboek.",
+        "noteTooLong": "De privénotitie mag niet langer zijn dan 4.000 tekens.",
+        "timeUnavailable": "Dit bezoek heeft een exacte dag en tijdzone nodig om een tijd te kunnen opslaan."
+      },
+      "messages": {
+        "added": "De vermeldingen zijn aan je bezoek toegevoegd.",
+        "updated": "De vermelding is bijgewerkt.",
+        "duplicated": "Er is een nieuwe vermelding toegevoegd.",
+        "deleted": "De vermelding is verwijderd.",
+        "reordered": "De tijdlijn is opnieuw geordend."
       }
     }
   }

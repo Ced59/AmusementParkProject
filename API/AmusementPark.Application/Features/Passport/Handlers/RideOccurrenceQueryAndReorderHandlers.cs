@@ -14,10 +14,14 @@ public sealed class GetRideOccurrenceQueryHandler
     : IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>
 {
     private readonly IRideOccurrenceRepository occurrenceRepository;
+    private readonly IVisitTargetResolver targetResolver;
 
-    public GetRideOccurrenceQueryHandler(IRideOccurrenceRepository occurrenceRepository)
+    public GetRideOccurrenceQueryHandler(
+        IRideOccurrenceRepository occurrenceRepository,
+        IVisitTargetResolver targetResolver)
     {
         this.occurrenceRepository = occurrenceRepository;
+        this.targetResolver = targetResolver;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -39,11 +43,19 @@ public sealed class GetRideOccurrenceQueryHandler
             scope.VisitId,
             scope.UserId,
             cancellationToken);
-        return occurrence is null
-            ? ApplicationResult<RideOccurrenceResult>.Failure(
-                PassportApplicationErrors.RideOccurrenceNotFound())
-            : ApplicationResult<RideOccurrenceResult>.Success(
-                PassportRideOccurrenceResultFactory.Create(occurrence));
+        if (occurrence is null)
+        {
+            return ApplicationResult<RideOccurrenceResult>.Failure(
+                PassportApplicationErrors.RideOccurrenceNotFound());
+        }
+
+        IReadOnlyDictionary<string, VisitTarget> targets =
+            await this.targetResolver.ResolveAsync(
+                new[] { occurrence.ParkItemId },
+                cancellationToken);
+        targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
+        return ApplicationResult<RideOccurrenceResult>.Success(
+            PassportRideOccurrenceResultFactory.Create(occurrence, target));
     }
 }
 
@@ -52,13 +64,16 @@ public sealed class ListRideOccurrencesQueryHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
+    private readonly IVisitTargetResolver targetResolver;
 
     public ListRideOccurrencesQueryHandler(
         IUserVisitRepository visitRepository,
-        IRideOccurrenceRepository occurrenceRepository)
+        IRideOccurrenceRepository occurrenceRepository,
+        IVisitTargetResolver targetResolver)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
+        this.targetResolver = targetResolver;
     }
 
     public async Task<ApplicationResult<RideOccurrencePageResult>> HandleAsync(
@@ -91,9 +106,21 @@ public sealed class ListRideOccurrencesQueryHandler
         RideOccurrencePage page = await this.occurrenceRepository.ListOwnedByVisitAsync(
             new RideOccurrenceListCriteria(visitId, userId, query.Limit, query.After),
             cancellationToken);
+        IReadOnlyDictionary<string, VisitTarget> targets = page.Items.Count == 0
+            ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            : await this.targetResolver.ResolveAsync(
+                page.Items
+                    .Select(static occurrence => occurrence.ParkItemId)
+                    .Distinct(StringComparer.Ordinal)
+                    .ToArray(),
+                cancellationToken);
         return ApplicationResult<RideOccurrencePageResult>.Success(
             new RideOccurrencePageResult(
-                page.Items.Select(PassportRideOccurrenceResultFactory.Create).ToArray(),
+                page.Items.Select(occurrence =>
+                {
+                    targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
+                    return PassportRideOccurrenceResultFactory.Create(occurrence, target);
+                }).ToArray(),
                 page.NextCursor));
     }
 }

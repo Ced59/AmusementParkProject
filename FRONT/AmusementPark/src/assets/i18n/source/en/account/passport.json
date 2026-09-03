@@ -13,6 +13,7 @@
       "actions": {
         "openForPark": "Add a visit",
         "done": "Done",
+        "addAttractions": "Add attractions",
         "addAnother": "Add another visit",
         "saving": "Saving…",
         "create": "Create visit",
@@ -72,6 +73,126 @@
         "date": "The visit date is not valid.",
         "retryConflict": "This attempt no longer matches the original entry. Check the fields and try again.",
         "network": "The server response did not arrive. Try again: the visit will not be created twice."
+      }
+    },
+    "editor": {
+      "kicker": "Visit log",
+      "title": "Add details to your visit",
+      "private": "Private",
+      "loading": "Loading your visit…",
+      "actions": {
+        "back": "Back to profile",
+        "retry": "Try again",
+        "filter": "Search",
+        "clear": "Clear filters",
+        "previous": "Previous",
+        "next": "Next",
+        "clearSelection": "Remove all",
+        "retryAdd": "Check previous add",
+        "adding": "Adding…",
+        "addToTimeline": { "one": "Add {{count}} entry", "few": "Add {{count}} entries", "many": "Add {{count}} entries", "other": "Add {{count}} entries" },
+        "dismiss": "Dismiss message",
+        "moveFirst": "Move to first",
+        "moveUp": "Move up one place",
+        "moveDown": "Move down one place",
+        "moveLast": "Move to last",
+        "edit": "Edit this entry",
+        "save": "Save changes",
+        "duplicate": "Ride again",
+        "retryDuplicate": "Check this entry",
+        "delete": "Delete",
+        "confirmDelete": "Confirm",
+        "cancel": "Cancel",
+        "loadMore": "Load more"
+      },
+      "selector": {
+        "title": "Choose attractions",
+        "description": "Select one or more attractions, including ones that have closed since your visit.",
+        "searchLabel": "Attraction name",
+        "searchPlaceholder": "Search for an attraction…",
+        "zoneLabel": "Park area",
+        "allZones": "All areas",
+        "loading": "Loading attractions…",
+        "empty": "No attractions match these filters.",
+        "results": "Attractions available for this visit",
+        "historical": "historical",
+        "pagination": "Attraction pages",
+        "page": "Page {{current}} of {{total}}"
+      },
+      "selection": {
+        "title": "Entries to add",
+        "attractionCount": { "one": "{{count}} attraction", "few": "{{count}} attractions", "many": "{{count}} attractions", "other": "{{count}} attractions" },
+        "occurrenceCount": { "one": "{{count}} entry in total", "few": "{{count}} entries in total", "many": "{{count}} entries in total", "other": "{{count}} entries in total" },
+        "rideCount": { "one": "{{count}} entry", "few": "{{count}} entries", "many": "{{count}} entries", "other": "{{count}} entries" },
+        "pendingRecovery": "The last add result is uncertain. Retry it before sending your newer changes."
+      },
+      "fields": {
+        "status": "Outcome",
+        "count": "Number of rides",
+        "time": "Local time",
+        "approximateTime": "Approximate time",
+        "privateNote": "Private note",
+        "confirmHistoricalConflict": "I confirm despite a known date conflict",
+        "confirmHistoricalConflictHint": "Use this only when you are certain about this memory.",
+        "timeUnavailable": "A time can only be added to a visit with an exact day and a time zone."
+      },
+      "status": {
+        "completed": "Completed",
+        "attempted": "Attempted",
+        "missedClosed": "Missed because closed",
+        "missedUnavailable": "Missed because unavailable",
+        "skippedByChoice": "Skipped by choice"
+      },
+      "lifecycle": {
+        "Operating": "Operating",
+        "UnderConstruction": "Under construction",
+        "TemporarilyClosed": "Temporarily closed",
+        "ClosedDefinitively": "Permanently closed",
+        "Removed": "Removed",
+        "Planned": "Planned",
+        "Unknown": "Unknown status"
+      },
+      "consistency": {
+        "verified": "Dates match",
+        "unverified": "Dates cannot be verified",
+        "confirmedConflict": "Date conflict confirmed"
+      },
+      "timeline": {
+        "title": "Your timeline",
+        "entryCount": { "one": "{{count}} loaded entry", "few": "{{count}} loaded entries", "many": "{{count}} loaded entries", "other": "{{count}} loaded entries" },
+        "completedCount": { "one": "{{count}} completed ride", "few": "{{count}} completed rides", "many": "{{count}} completed rides", "other": "{{count}} completed rides" },
+        "normalized": "The order was recalculated to keep it reliable. The displayed timeline has been reloaded.",
+        "loading": "Refreshing the timeline…",
+        "emptyTitle": "No entries yet",
+        "emptyDescription": "Select attractions to rebuild this day at your own pace.",
+        "unknownAttraction": "Unavailable historical attraction",
+        "occurrenceNumber": "Entry {{current}} of {{total}}",
+        "hasPrivateNote": "Private note",
+        "orderActions": "Entry ordering actions",
+        "deleteConfirmation": "Permanently delete this entry from your visit?",
+        "pendingDuplicateRecovery": "The result of adding this entry is uncertain. Check it: the same request will be replayed without creating a duplicate."
+      },
+      "errors": {
+        "visitNotFound": "This visit cannot be found or no longer belongs to you.",
+        "load": "Your visit could not be loaded. Try again in a moment.",
+        "attractions": "The attractions could not be loaded.",
+        "timeline": "The timeline could not be refreshed.",
+        "operation": "The change could not be saved. Your input is still available.",
+        "network": "The server response did not arrive. Try again: the operation will not be duplicated.",
+        "batchTooLarge": "You can add up to 100 entries at a time.",
+        "historicalConflict": "The known dates do not match this visit. Confirm only if you are certain about your memory.",
+        "versionConflict": "This entry changed in the meantime. The timeline was reloaded; check it before trying again.",
+        "idempotencyConflict": "This attempt no longer matches the original operation. Check the data and try again.",
+        "attractionUnavailable": "This attraction is no longer available for the log.",
+        "noteTooLong": "The private note cannot exceed 4,000 characters.",
+        "timeUnavailable": "This visit needs an exact day and a time zone before it can accept a time."
+      },
+      "messages": {
+        "added": "The entries were added to your visit.",
+        "updated": "The entry was updated.",
+        "duplicated": "A new entry was added.",
+        "deleted": "The entry was deleted.",
+        "reordered": "The timeline was reordered."
       }
     }
   }

@@ -23,6 +23,20 @@ describe('PassportVisitsApiService', () => {
     expect(headers.get('Content-Type')).toBe('application/json');
     expect(headers.get('Idempotency-Key')).toBe('operation-123');
   });
+
+  it('loads a private visit without allowing HTTP transfer caching', () => {
+    const httpClient = {
+      get: vi.fn().mockReturnValue(of({}))
+    };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+
+    service.getVisit('visit/one').subscribe();
+
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone`,
+      { transferCache: false }
+    );
+  });
 });
 
 function createRequest(): CreatePassportVisitRequest {

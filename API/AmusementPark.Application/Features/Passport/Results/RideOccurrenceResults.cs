@@ -7,6 +7,12 @@ public sealed record RideOccurrenceMomentResult(
     TimeOnly? LocalTime,
     bool IsApproximate);
 
+public sealed record RideOccurrenceTargetResult(
+    string Name,
+    string? Category,
+    string? LifecycleStatus,
+    bool IsHistoricalSnapshot);
+
 public sealed record RideOccurrenceResult(
     string Id,
     string VisitId,
@@ -21,7 +27,8 @@ public sealed record RideOccurrenceResult(
     bool CountsAsRide,
     long Version,
     DateTime CreatedAtUtc,
-    DateTime UpdatedAtUtc);
+    DateTime UpdatedAtUtc,
+    RideOccurrenceTargetResult? Target = null);
 
 public sealed record CreateRideOccurrencesResult(
     IReadOnlyCollection<RideOccurrenceResult> Occurrences,

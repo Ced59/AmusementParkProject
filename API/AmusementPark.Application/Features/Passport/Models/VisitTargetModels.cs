@@ -8,4 +8,5 @@ public sealed record VisitTarget(
     string Name,
     ParkItemCategory Category,
     DateOnly? OpeningDate,
-    DateOnly? ClosingDate);
+    DateOnly? ClosingDate,
+    string? LifecycleStatus = null);

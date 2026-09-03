@@ -1,6 +1,20 @@
 {
-  "version": "5.0.9",
+  "version": "5.0.10",
   "history": [
+    {
+      "version": "5.0.10",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Journal privé des attractions et des passages pour chaque visite.",
+        "en": "Private attraction and ride log for every visit.",
+        "de": "Privates Attraktions- und Fahrtenprotokoll für jeden Besuch.",
+        "nl": "Privélogboek met attracties en ritten voor elk privébezoek.",
+        "it": "Diario privato di attrazioni e giri per ogni visita.",
+        "es": "Diario privado de atracciones y vueltas para cada visita.",
+        "pl": "Prywatny dziennik atrakcji i przejazdów dla każdej wizyty.",
+        "pt": "Diário privado de atrações e voltas para cada visita."
+      }
+    },
     {
       "version": "5.0.9",
       "releasedAt": "2026-09-03",

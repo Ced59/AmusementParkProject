@@ -3,7 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {authGuard} from "@core/guards/auth.guard";
 
-const routes: Routes = [
+export const PROFILE_ROUTES: Routes = [
+  {
+    path: 'visits/:visitId',
+    loadComponent: () => import('./passport/pages/passport-visit-editor-page/passport-visit-editor-page.component')
+      .then((module) => module.PassportVisitEditorPageComponent),
+    canActivate: [authGuard]
+  },
   {
     path: '',
     loadComponent: () => import('./pages/profile-page/profile-page.component').then(m => m.ProfilePageComponent),
@@ -12,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(PROFILE_ROUTES)],
   exports: [RouterModule]
 })
 export class ProfileRoutingModule { }
