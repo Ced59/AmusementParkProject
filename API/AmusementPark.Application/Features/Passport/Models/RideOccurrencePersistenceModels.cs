@@ -32,3 +32,27 @@ public enum IdempotentRideOccurrenceCreationStatus
 public sealed record IdempotentRideOccurrenceCreationResult(
     IdempotentRideOccurrenceCreationStatus Status,
     IReadOnlyCollection<RideOccurrence> Occurrences);
+
+public sealed record RideOccurrenceReorderRequest(
+    VisitId VisitId,
+    string UserId,
+    RideOccurrenceId OccurrenceId,
+    long ExpectedVersion,
+    RideOccurrenceId? AnchorOccurrenceId,
+    RideOccurrencePlacement Placement);
+
+public sealed record RideOccurrenceVersionedChange(
+    RideOccurrence Occurrence,
+    long ExpectedVersion);
+
+public enum IdempotentRideOccurrenceReorderStatus
+{
+    Applied = 1,
+    Replayed = 2,
+    Conflict = 3,
+}
+
+public sealed record IdempotentRideOccurrenceReorderResult(
+    IdempotentRideOccurrenceReorderStatus Status,
+    RideOccurrence? Occurrence,
+    bool WasNormalized);

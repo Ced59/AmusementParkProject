@@ -145,9 +145,10 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
     [Fact]
     public void CreationOperationIndex_ShouldMakeOneBatchAllocationAtomicPerUserAndKey()
     {
-        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> index =
-            Assert.Single(
-                UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes());
+        CreateIndexModel<UserRideOccurrenceCreationOperationDocument>[] indexes =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes().ToArray();
+        Assert.Equal(2, indexes.Length);
+        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> index = indexes[0];
 
         Assert.Equal(
             "idx_user_ride_occurrence_operations_user_key",
@@ -160,6 +161,22 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "operationKeyHash", 1 },
             },
             Render(index.Keys));
+
+        CreateIndexModel<UserRideOccurrenceCreationOperationDocument> activeReorder =
+            indexes[1];
+        Assert.Equal(
+            "idx_user_ride_occurrence_operations_active_reorder",
+            activeReorder.Options.Name);
+        Assert.True(activeReorder.Options.Unique);
+        Assert.NotNull(activeReorder.Options.PartialFilterExpression);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "userId", 1 },
+                { "visitId", 1 },
+                { "operationKind", 1 },
+            },
+            Render(activeReorder.Keys));
     }
 
     [Fact]

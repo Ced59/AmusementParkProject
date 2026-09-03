@@ -364,6 +364,82 @@ public sealed class UserRideOccurrenceRepositoryTests
         collection.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReorderIdempotentAsync_ShouldReserveApplyAndCompleteTheOperation()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        UserRideOccurrenceCreationOperationDocument? reserved = null;
+        UpdateDefinition<UserRideOccurrenceDocument>? occurrenceUpdate = null;
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument document,
+                InsertOneOptions _,
+                CancellationToken _) => reserved = document)
+            .Returns(Task.CompletedTask);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceDocument> _,
+                UpdateDefinition<UserRideOccurrenceDocument> update,
+                UpdateOptions _,
+                CancellationToken _) => occurrenceUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        occurrence.MoveTo(1536, NowUtc.AddMinutes(1));
+        RideOccurrenceReorderRequest request = new RideOccurrenceReorderRequest(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            occurrence.Id,
+            1,
+            RideOccurrenceId.Parse("occurrence-2"),
+            RideOccurrencePlacement.Before);
+
+        IdempotentRideOccurrenceReorderResult result =
+            await repository.ReorderIdempotentAsync(
+                request,
+                new[] { new RideOccurrenceVersionedChange(occurrence, 1) },
+                occurrence,
+                false,
+                NowUtc.AddMinutes(1),
+                "request-1",
+                CancellationToken.None);
+
+        Assert.Equal(IdempotentRideOccurrenceReorderStatus.Applied, result.Status);
+        Assert.Equal(1536, result.Occurrence?.SortPosition);
+        Assert.NotNull(reserved);
+        Assert.Equal("reorder", reserved.OperationKind);
+        Assert.Equal("completed", reserved.OperationState);
+        Assert.Equal("occurrence-1", reserved.MovedOccurrenceId);
+        Assert.Single(reserved.ReorderItems!);
+        Assert.Equal(64, reserved.OperationKeyHash.Length);
+        Assert.NotNull(occurrenceUpdate);
+        BsonDocument renderedUpdate = Render(occurrenceUpdate);
+        Assert.Equal(1536, renderedUpdate["$set"]["sortPosition"].AsInt64);
+        Assert.Equal(2, renderedUpdate["$set"]["version"].AsInt64);
+        Assert.Equal(64, renderedUpdate["$set"]["lastReorderOperationKeyHash"].AsString.Length);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+    }
+
     private static UserRideOccurrenceDocument CreateCreationDocument(
         RideOccurrence occurrence,
         string payloadHash,

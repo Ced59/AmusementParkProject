@@ -37,4 +37,18 @@ public interface IRideOccurrenceRepository
         RideOccurrence occurrence,
         long expectedVersion,
         CancellationToken cancellationToken);
+
+    Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(
+        RideOccurrenceReorderRequest request,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
+    Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        CancellationToken cancellationToken);
 }

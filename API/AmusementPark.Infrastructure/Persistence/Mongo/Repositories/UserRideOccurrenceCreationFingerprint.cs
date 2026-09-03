@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -26,13 +27,23 @@ internal static class UserRideOccurrenceCreationFingerprint
                 occurrence.Moment.IsApproximate,
                 occurrence.Status,
                 occurrence.Source,
-                occurrence.HistoricalConsistency,
-                occurrence.HistoricalTarget?.Name,
-                occurrence.HistoricalTarget?.Category,
                 occurrence.PrivateNote))
             .ToArray();
         string canonicalPayload = JsonSerializer.Serialize(items);
         return Hash(canonicalPayload);
+    }
+
+    public static string HashReorderPayload(RideOccurrenceReorderRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ReorderPayload payload = new ReorderPayload(
+            request.VisitId.Value,
+            request.UserId,
+            request.OccurrenceId.Value,
+            request.ExpectedVersion,
+            request.AnchorOccurrenceId?.Value,
+            request.Placement);
+        return Hash(JsonSerializer.Serialize(payload));
     }
 
     private static string Hash(string value)
@@ -50,8 +61,13 @@ internal static class UserRideOccurrenceCreationFingerprint
         bool IsApproximate,
         RideOccurrenceStatus Status,
         RideLogSource Source,
-        HistoricalConsistency HistoricalConsistency,
-        string? HistoricalTargetName,
-        string? HistoricalTargetCategory,
         string? PrivateNote);
+
+    private sealed record ReorderPayload(
+        string VisitId,
+        string UserId,
+        string OccurrenceId,
+        long ExpectedVersion,
+        string? AnchorOccurrenceId,
+        RideOccurrencePlacement Placement);
 }

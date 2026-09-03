@@ -75,6 +75,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? CreationSnapshot { get; set; }
+
+    [BsonElement("lastReorderOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? LastReorderOperationKeyHash { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -162,9 +166,36 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonElement("payloadHash")]
     public string PayloadHash { get; set; } = string.Empty;
 
+    [BsonElement("operationKind")]
+    public string OperationKind { get; set; } = "creation";
+
+    [BsonElement("visitId")]
+    [BsonIgnoreIfNull]
+    public string? VisitId { get; set; }
+
+    [BsonElement("operationState")]
+    [BsonIgnoreIfNull]
+    public string? OperationState { get; set; }
+
+    [BsonElement("movedOccurrenceId")]
+    [BsonIgnoreIfNull]
+    public string? MovedOccurrenceId { get; set; }
+
+    [BsonElement("wasNormalized")]
+    [BsonIgnoreIfDefault]
+    public bool WasNormalized { get; set; }
+
     [BsonElement("items")]
     public List<UserRideOccurrenceCreationAllocationDocument> Items { get; set; } =
         new List<UserRideOccurrenceCreationAllocationDocument>();
+
+    [BsonElement("reorderItems")]
+    [BsonIgnoreIfNull]
+    public List<UserRideOccurrenceReorderAllocationDocument>? ReorderItems { get; set; }
+
+    [BsonElement("reorderResultSnapshot")]
+    [BsonIgnoreIfNull]
+    public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -184,4 +215,21 @@ public sealed class UserRideOccurrenceCreationAllocationDocument
 
     [BsonElement("updatedAtUtc")]
     public DateTime UpdatedAtUtc { get; set; }
+}
+
+[BsonIgnoreExtraElements]
+public sealed class UserRideOccurrenceReorderAllocationDocument
+{
+    [BsonElement("index")]
+    public int Index { get; set; }
+
+    [BsonElement("occurrenceId")]
+    public string OccurrenceId { get; set; } = string.Empty;
+
+    [BsonElement("expectedVersion")]
+    public long ExpectedVersion { get; set; }
+
+    [BsonElement("resultSnapshot")]
+    public UserRideOccurrenceCreationSnapshotDocument ResultSnapshot { get; set; } =
+        new UserRideOccurrenceCreationSnapshotDocument();
 }

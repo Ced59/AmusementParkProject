@@ -1,6 +1,20 @@
 {
-  "version": "5.0.7",
+  "version": "5.0.8",
   "history": [
+    {
+      "version": "5.0.8",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Ajout fiable et ordonné des attractions à chaque visite privée.",
+        "en": "Reliable, ordered attraction entries for every private visit.",
+        "de": "Zuverlässige, geordnete Attraktionseinträge für jeden privaten Besuch.",
+        "nl": "Betrouwbare, geordende attractieregistratie voor elk privébezoek.",
+        "it": "Registrazione affidabile e ordinata delle attrazioni per ogni visita privata.",
+        "es": "Registro fiable y ordenado de atracciones para cada visita privada.",
+        "pl": "Niezawodne i uporządkowane zapisy atrakcji dla każdej prywatnej wizyty.",
+        "pt": "Registo fiável e ordenado de atrações para cada visita privada."
+      }
+    },
     {
       "version": "5.0.7",
       "releasedAt": "2026-09-03",
