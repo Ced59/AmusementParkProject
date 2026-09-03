@@ -40,6 +40,13 @@ public interface IRideOccurrenceRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task<bool> TryConfirmOwnedVersionAsync(
+        RideOccurrenceId occurrenceId,
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
     Task<bool> TryDeleteOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,

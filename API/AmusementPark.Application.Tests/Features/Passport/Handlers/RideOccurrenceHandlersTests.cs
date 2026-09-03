@@ -338,6 +338,61 @@ public sealed class RideOccurrenceHandlersTests
         targets.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task Update_WithNoChangedFields_ShouldStillFenceTheLoadedVersion()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        occurrences.Setup(repository => repository.TryConfirmOwnedVersionAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                occurrence.ParkItemId,
+                visit.ParkId,
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            CreateClock());
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpdateRideOccurrenceCommand(
+                visit.UserId,
+                visit.Id.Value,
+                occurrence.Id.Value,
+                1,
+                null,
+                false,
+                RideOccurrenceStatus.Completed,
+                null,
+                false));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("ride-occurrence.version-conflict", Assert.Single(result.Errors).Code);
+        Assert.Equal(1, occurrence.Version);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
     [Theory]
     [InlineData(0, RideOccurrenceStatus.Completed)]
     [InlineData(1, (RideOccurrenceStatus)0)]

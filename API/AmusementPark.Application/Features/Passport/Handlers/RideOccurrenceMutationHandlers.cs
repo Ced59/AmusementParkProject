@@ -119,7 +119,16 @@ public sealed class UpdateRideOccurrenceCommandHandler
 
         if (occurrence.Version == expectedVersion)
         {
-            return Success(occurrence);
+            bool versionIsCurrent =
+                await this.occurrenceRepository.TryConfirmOwnedVersionAsync(
+                    occurrence.Id,
+                    occurrence.VisitId,
+                    occurrence.UserId,
+                    expectedVersion,
+                    cancellationToken);
+            return versionIsCurrent
+                ? Success(occurrence)
+                : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
         bool updated = await this.occurrenceRepository.TryUpdateOwnedAsync(

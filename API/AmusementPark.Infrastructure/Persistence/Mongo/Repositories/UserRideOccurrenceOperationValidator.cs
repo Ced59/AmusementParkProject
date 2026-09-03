@@ -122,6 +122,8 @@ internal static class UserRideOccurrenceOperationValidator
             && string.Equals(
                 operation.ReorderResultSnapshot.VisitId,
                 request.VisitId.Value,
-                StringComparison.Ordinal);
+                StringComparison.Ordinal)
+            && (operation.ReorderItems.Count != 0
+                || operation.ReorderResultSnapshot.Version == request.ExpectedVersion);
     }
 }

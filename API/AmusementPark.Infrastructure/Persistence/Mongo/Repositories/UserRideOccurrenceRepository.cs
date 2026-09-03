@@ -31,6 +31,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
     private readonly UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator;
+    private readonly UserRideOccurrenceVersionFence versionFence;
     private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
 
     public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -51,6 +52,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
             this.collection,
             this.operationCollection);
+        this.versionFence = new UserRideOccurrenceVersionFence(this.collection);
         this.pendingOperationRecovery = new UserRideOccurrencePendingOperationRecovery(
             this.collection,
             this.operationCollection,
@@ -350,6 +352,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
+    }
+
+    public async Task<bool> TryConfirmOwnedVersionAsync(
+        RideOccurrenceId occurrenceId,
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return await this.versionFence.TryConfirmOwnedAsync(
+            occurrenceId,
+            visitId,
+            userId,
+            expectedVersion,
+            cancellationToken);
     }
 
     public async Task<bool> TryDeleteOwnedAsync(
@@ -702,6 +719,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 {
                     return CreateReorderConflictResult(operation.WasNormalized);
                 }
+            }
+
+            if (operation.ReorderItems!.Count == 0
+                && !await this.versionFence.TryApplyNoOpReorderAsync(
+                    request,
+                    operationKeyHash,
+                    cancellationToken))
+            {
+                await this.pendingOperationRecovery.SetStateAsync(
+                    operation,
+                    ConflictOperationState,
+                    cancellationToken);
+                return CreateReorderConflictResult(operation.WasNormalized);
             }
 
             List<UserRideOccurrenceReorderAllocationDocument> appliedAllocations =
