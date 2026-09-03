@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
@@ -144,6 +145,9 @@ public sealed class PassportVisitsControllerTests
         FromHeaderAttribute fromHeader = Assert.IsType<FromHeaderAttribute>(
             idempotencyHeader.GetCustomAttribute<FromHeaderAttribute>());
         Assert.Equal("Idempotency-Key", fromHeader.Name);
+        Assert.NotNull(idempotencyHeader.GetCustomAttribute<RequiredAttribute>());
+        NullabilityInfo nullability = new NullabilityInfoContext().Create(idempotencyHeader);
+        Assert.Equal(NullabilityState.NotNull, nullability.ReadState);
     }
 
     private static MethodInfo GetAction(string name)

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
@@ -44,7 +45,7 @@ public sealed class PassportVisitsController : ControllerBase
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
     public async Task<IActionResult> CreateAsync(
         [FromBody] CreatePassportVisitRequestDto request,
-        [FromHeader(Name = "Idempotency-Key")] string? idempotencyKey,
+        [FromHeader(Name = "Idempotency-Key"), Required] string idempotencyKey,
         CancellationToken cancellationToken = default)
     {
         string? userId = this.User.GetUserId();
@@ -57,7 +58,7 @@ public sealed class PassportVisitsController : ControllerBase
         }
 
         ApplicationResult<CreateVisitResult> result = await this.createHandler.HandleAsync(
-            request.ToApplication(userId, idempotencyKey ?? string.Empty),
+            request.ToApplication(userId, idempotencyKey),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
