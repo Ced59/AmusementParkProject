@@ -198,7 +198,7 @@ public sealed class UserVisitRepositoryTests
             "Ce texte ne doit pas être copié dans l'audit",
             NowUtc.AddMinutes(1));
         PassportAuditEvent auditEvent =
-            PassportAuditEventFactory.ParkAssessmentUpserted(visit, null);
+            PassportVisitAuditEventFactory.ParkAssessmentUpserted(visit, null);
 
         bool updated = await repository.TryUpdateOwnedAuditedAsync(
             visit,

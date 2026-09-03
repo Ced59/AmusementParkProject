@@ -219,7 +219,7 @@ public sealed class PassportAuditStoreTests
             "Titre privé",
             "Note privée",
             NowUtc);
-        return PassportAuditEventFactory.VisitCreated(visit, "operation-1");
+        return PassportVisitAuditEventFactory.VisitCreated(visit, "operation-1");
     }
 
     private sealed class TestLogger : ILogger<PassportAuditStore>

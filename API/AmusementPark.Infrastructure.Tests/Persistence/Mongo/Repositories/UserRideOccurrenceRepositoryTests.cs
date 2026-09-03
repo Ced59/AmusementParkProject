@@ -414,7 +414,7 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         IReadOnlyCollection<PassportAuditEvent> auditEvents = occurrences
             .Select(static occurrence =>
-                PassportAuditEventFactory.RideOccurrenceAdded(occurrence, "request-1"))
+                PassportRideAuditEventFactory.RideOccurrenceAdded(occurrence, "request-1"))
             .ToArray();
         IdempotentRideOccurrenceCreationResult result =
             await repository.CreateBatchIdempotentAuditedAsync(
