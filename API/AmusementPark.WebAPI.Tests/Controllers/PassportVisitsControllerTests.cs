@@ -90,6 +90,40 @@ public sealed class PassportVisitsControllerTests
     }
 
     [Fact]
+    public async Task ListAsync_ShouldOmitThePrivateAssessmentPayload()
+    {
+        VisitResult assessedVisit = CreateResult("visit-1") with
+        {
+            ParkAssessment = new VisitParkAssessmentResult(
+                4.5,
+                new string('x', 4000),
+                1,
+                NowUtc,
+                NowUtc),
+        };
+        Mock<IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>> list =
+            new Mock<IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>>(MockBehavior.Strict);
+        list.Setup(handler => handler.HandleAsync(
+                It.Is<ListUserVisitsQuery>(query => query.UserId == "owner-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitPageResult>.Success(
+                new VisitPageResult(new[] { assessedVisit }, null)));
+        PassportVisitsController controller = CreateController(listHandler: list.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.ListAsync(
+            new PassportVisitListRequestDto(),
+            CancellationToken.None);
+
+        PassportVisitPageDto page = Assert.IsType<PassportVisitPageDto>(
+            Assert.IsType<OkObjectResult>(result).Value);
+        PassportVisitDto item = Assert.Single(page.Items);
+        Assert.Equal("visit-1", item.Id);
+        Assert.Null(item.ParkAssessment);
+        list.VerifyAll();
+    }
+
+    [Fact]
     public async Task ListAsync_WhenCursorIsInvalid_ShouldReturnProblemDetailsWithoutCallingApplication()
     {
         Mock<IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>> list =

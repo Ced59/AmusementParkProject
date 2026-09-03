@@ -52,6 +52,16 @@ internal static class PassportVisitHttpMappers
 
     public static PassportVisitDto ToHttp(this VisitResult result)
     {
+        return ToHttp(result, includeParkAssessment: true);
+    }
+
+    private static PassportVisitDto ToListItemHttp(VisitResult result)
+    {
+        return ToHttp(result, includeParkAssessment: false);
+    }
+
+    private static PassportVisitDto ToHttp(VisitResult result, bool includeParkAssessment)
+    {
         return new PassportVisitDto
         {
             Id = result.Id,
@@ -71,7 +81,7 @@ internal static class PassportVisitHttpMappers
             Privacy = (PassportVisitPrivacyDto)result.Privacy,
             Title = result.Title,
             PrivateNote = result.PrivateNote,
-            ParkAssessment = result.ParkAssessment is null
+            ParkAssessment = !includeParkAssessment || result.ParkAssessment is null
                 ? null
                 : new PassportVisitParkAssessmentDto
                 {
@@ -92,7 +102,7 @@ internal static class PassportVisitHttpMappers
     {
         return new PassportVisitPageDto
         {
-            Items = result.Items.Select(static visit => visit.ToHttp()).ToList(),
+            Items = result.Items.Select(static visit => ToListItemHttp(visit)).ToList(),
             NextCursor = result.NextCursor is null
                 ? null
                 : PassportVisitCursorCodec.Encode(result.NextCursor),
