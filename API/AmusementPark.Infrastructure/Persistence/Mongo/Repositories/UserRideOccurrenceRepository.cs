@@ -180,6 +180,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         if (mutation.ContentFenceToken.HasValue
             && await this.LoadCreationOperationAsync(
                 mutation.UserId,
+                mutation.VisitId,
                 mutation.OperationKeyHash,
                 mutation.ContentFenceToken,
                 cancellationToken) is null)
@@ -205,6 +206,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         if (mutation.ContentFenceToken.HasValue
             && await this.LoadCreationOperationAsync(
                 mutation.UserId,
+                mutation.VisitId,
                 mutation.OperationKeyHash,
                 mutation.ContentFenceToken,
                 cancellationToken) is null)
@@ -234,6 +236,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? existing =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
                 request.ContentFenceToken,
                 cancellationToken);
@@ -296,9 +299,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     request.UserId,
+                    request.VisitId,
                     operationKeyHash,
                     request.ContentFenceToken,
                     cancellationToken);
+            if (existing is null)
+            {
+                return new RideOccurrenceCreationKeyReservationResult(
+                    RideOccurrenceCreationKeyReservationStatus.Conflict);
+            }
+
             return CreateCreationKeyReservationResult(
                 existing,
                 request,
@@ -319,6 +329,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
                 request.ContentFenceToken,
                 cancellationToken);
@@ -363,6 +374,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
         List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
             request.UserId,
+            request.VisitId,
             operationKeyHash,
             request.ContentFenceToken,
             cancellationToken);
@@ -587,6 +599,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         {
             List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
                 scope.UserId,
+                scope.VisitId,
                 operationKeyHash,
                 request.ContentFenceToken,
                 cancellationToken);
@@ -989,6 +1002,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
                 request.ContentFenceToken,
                 cancellationToken);
@@ -1112,6 +1126,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     request.UserId,
+                    request.VisitId,
                     operationKeyHash,
                     request.ContentFenceToken,
                     cancellationToken);
@@ -1142,6 +1157,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 {
                     existing = await this.LoadCreationOperationAsync(
                         request.UserId,
+                        request.VisitId,
                         operationKeyHash,
                         request.ContentFenceToken,
                         cancellationToken);
@@ -1301,6 +1317,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private async Task<List<UserRideOccurrenceDocument>> LoadCreationDocumentsAsync(
         string userId,
+        VisitId visitId,
         string operationKeyHash,
         long? contentFenceToken,
         CancellationToken cancellationToken)
@@ -1309,6 +1326,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         {
             await this.PromoteCreationDocumentsFenceAsync(
                 userId,
+                visitId,
                 operationKeyHash,
                 contentFenceToken.Value,
                 cancellationToken);
@@ -1318,7 +1336,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
                 UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
                     userId,
-                    operationKeyHash),
+                    operationKeyHash)
+                & Builders<UserRideOccurrenceDocument>.Filter.Eq(
+                    static document => document.VisitId,
+                    visitId.Value),
                 contentFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildCreationOperationSort())
             .ToListAsync(cancellationToken);
@@ -1326,16 +1347,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private async Task<UserRideOccurrenceCreationOperationDocument?> LoadCreationOperationAsync(
         string userId,
+        VisitId visitId,
         string operationKeyHash,
         long? contentFenceToken,
         CancellationToken cancellationToken)
     {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> visitOperation =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                userId,
+                operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value);
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.operationCollection
             .Find(UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
-                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                    userId,
-                    operationKeyHash),
+                visitOperation,
                 contentFenceToken))
             .FirstOrDefaultAsync(cancellationToken);
         if (operation is not null || !contentFenceToken.HasValue)
@@ -1345,9 +1372,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
         UserRideOccurrenceCreationOperationDocument? older =
             await this.operationCollection
-                .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                    userId,
-                    operationKeyHash))
+                .Find(visitOperation)
                 .FirstOrDefaultAsync(cancellationToken);
         if (older is null
             || older.ContentMutationFenceToken >= contentFenceToken.Value)
@@ -1357,11 +1382,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
         await this.PromoteCreationDocumentsFenceAsync(
             userId,
+            visitId,
             operationKeyHash,
             contentFenceToken.Value,
             cancellationToken);
-        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> olderFenceFilter =
             older.ContentMutationFenceToken.HasValue
                 ? filters.Eq(
@@ -1375,10 +1399,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         static document => document.ContentMutationFenceToken,
                         null));
         _ = await this.operationCollection.UpdateOneAsync(
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                userId,
-                operationKeyHash)
-            & olderFenceFilter,
+            visitOperation & olderFenceFilter,
             Builders<UserRideOccurrenceCreationOperationDocument>.Update.Set(
                 static document => document.ContentMutationFenceToken,
                 contentFenceToken.Value),
@@ -1386,20 +1407,20 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             cancellationToken);
         await this.PromoteCreationDocumentsFenceAsync(
             userId,
+            visitId,
             operationKeyHash,
             contentFenceToken.Value,
             cancellationToken);
         return await this.operationCollection
             .Find(UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
-                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                    userId,
-                    operationKeyHash),
+                visitOperation,
                 contentFenceToken))
             .FirstOrDefaultAsync(cancellationToken);
     }
 
     private async Task PromoteCreationDocumentsFenceAsync(
         string userId,
+        VisitId visitId,
         string operationKeyHash,
         long contentFenceToken,
         CancellationToken cancellationToken)
@@ -1420,6 +1441,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
                 userId,
                 operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value)
             & olderFence,
             Builders<UserRideOccurrenceDocument>.Update.Set(
                 static document => document.ContentMutationFenceToken,
@@ -1623,6 +1645,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? durable =
             await this.LoadCreationOperationAsync(
                 operation.UserId,
+                request.VisitId,
                 operationKeyHash,
                 operation.ContentMutationFenceToken,
                 cancellationToken);
@@ -1681,6 +1704,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? durable =
             await this.LoadCreationOperationAsync(
                 operation.UserId,
+                request.VisitId,
                 operationKeyHash,
                 operation.ContentMutationFenceToken,
                 cancellationToken);
@@ -1783,6 +1807,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     userId,
+                    visitId,
                     operationKeyHash,
                     contentFenceToken,
                     cancellationToken);
@@ -1851,6 +1876,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             {
                 existing = await this.LoadCreationOperationAsync(
                     userId,
+                    visitId,
                     operationKeyHash,
                     contentFenceToken,
                     cancellationToken);
@@ -1926,6 +1952,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? durable =
                 await this.LoadCreationOperationAsync(
                     requested.UserId,
+                    visitId,
                     requested.OperationKeyHash,
                     requested.ContentMutationFenceToken,
                     cancellationToken);

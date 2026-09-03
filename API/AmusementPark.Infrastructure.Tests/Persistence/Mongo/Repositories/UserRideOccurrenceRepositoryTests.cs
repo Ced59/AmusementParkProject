@@ -148,6 +148,69 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task ReserveBatchCreationKeyAsync_WhenKeyBelongsToAnotherVisit_ShouldNotPromoteIt()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrenceCreationRequest request = CreateRequest(
+            new[] { CreateOccurrence("occurrence-1", "item-1", 1024) }) with
+        {
+            VisitId = VisitId.Parse("visit-2"),
+            ContentFenceToken = 12,
+        };
+        RideOccurrenceCreationPreparation preparation = CreatePreparation();
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> currentCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> olderCursor =
+            CreateAsyncCursor(Array.Empty<UserRideOccurrenceCreationOperationDocument>());
+        List<FilterDefinition<UserRideOccurrenceCreationOperationDocument>> filters =
+            new List<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>();
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .ThrowsAsync(CreateDuplicateKeyException());
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter,
+                FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument> _,
+                CancellationToken _) => filters.Add(filter))
+            .ReturnsAsync(() => filters.Count == 1
+                ? currentCursor.Object
+                : olderCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        RideOccurrenceCreationKeyReservationResult result =
+            await repository.ReserveBatchCreationKeyAsync(
+                request,
+                preparation,
+                "request-1",
+                NowUtc,
+                CancellationToken.None);
+
+        Assert.Equal(RideOccurrenceCreationKeyReservationStatus.Conflict, result.Status);
+        Assert.Equal(2, filters.Count);
+        Assert.All(filters, filter => Assert.Contains(
+            "visit-2",
+            Render(filter).ToJson(),
+            StringComparison.Ordinal));
+        operationCollection.VerifyAll();
+        currentCursor.VerifyAll();
+        olderCursor.VerifyAll();
+        collection.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task CreateBatchIdempotentAsync_WithReservedKey_ShouldActivateTheSameOperation()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
