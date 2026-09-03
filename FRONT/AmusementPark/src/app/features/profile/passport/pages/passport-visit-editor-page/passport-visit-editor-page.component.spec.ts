@@ -156,9 +156,13 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     const controls = component as unknown as {
       searchControl: { setValue(value: string): void; value: string };
       zoneControl: { setValue(value: string): void; value: string };
+      deleteConfirmationId: WritableSignal<string | null>;
+      assessmentDeleteConfirmation: WritableSignal<boolean>;
     };
     controls.searchControl.setValue('ancienne recherche');
     controls.zoneControl.setValue('ancienne-zone');
+    controls.deleteConfirmationId.set('occurrence-1');
+    controls.assessmentDeleteConfirmation.set(true);
 
     languageParams.next(convertToParamMap({ lang: 'de' }));
     visitParams.next(convertToParamMap({ visitId: 'visit-2' }));
@@ -170,6 +174,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(facade.load).toHaveBeenNthCalledWith(2, 'visit-2', 'de');
     expect(controls.searchControl.value).toBe('');
     expect(controls.zoneControl.value).toBe('');
+    expect(controls.deleteConfirmationId()).toBeNull();
+    expect(controls.assessmentDeleteConfirmation()).toBe(false);
     expect((component as unknown as { currentLanguage: WritableSignal<string> }).currentLanguage()).toBe('de');
     expect(router.navigate).toHaveBeenCalledWith(['/', 'de', 'profile']);
     expect(facade.retryLoad).toHaveBeenCalledOnce();

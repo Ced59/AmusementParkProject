@@ -100,6 +100,8 @@ export class PassportVisitEditorPageComponent {
       }
 
       this.visitId = visitId;
+      this.deleteConfirmationId.set(null);
+      this.assessmentDeleteConfirmation.set(false);
       this.searchControl.setValue('', { emitEvent: false });
       this.zoneControl.setValue('', { emitEvent: false });
       this.facade.load(visitId, this.currentLanguage());

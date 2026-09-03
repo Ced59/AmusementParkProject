@@ -1268,7 +1268,12 @@ export class PassportVisitEditorStateFacade {
   }
 
   private applyLoadedVisit(visit: PassportVisit): void {
-    const preserveDraft: boolean = this.visitSignal()?.id === visit.id && this.assessmentHasChanges();
+    const currentVisit: PassportVisit | null = this.visitSignal();
+    if (currentVisit?.id === visit.id && visit.version < currentVisit.version) {
+      return;
+    }
+
+    const preserveDraft: boolean = currentVisit?.id === visit.id && this.assessmentHasChanges();
     this.visitSignal.set(visit);
     this.persistedAssessmentFingerprintSignal.set(this.assessmentFingerprint(visit.parkAssessment ?? null));
     if (!preserveDraft) {

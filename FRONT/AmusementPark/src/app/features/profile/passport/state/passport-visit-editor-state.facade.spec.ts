@@ -275,6 +275,37 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.assessmentHasChanges()).toBe(true);
   });
 
+  it('does not let a delayed locale refresh restore the assessment version saved meanwhile', () => {
+    const delayedGermanPark = new Subject<{ id: string; name: string; latitude: number; longitude: number }>();
+    const updatedVisit: PassportVisit = {
+      ...visit,
+      version: 2,
+      parkAssessment: {
+        value: 4.5,
+        privateComment: 'Belle journée',
+        revision: 1,
+        createdAtUtc: '2026-09-03T10:00:00Z',
+        updatedAtUtc: '2026-09-03T10:00:00Z'
+      }
+    };
+    parksPort.getParkById
+      .mockReturnValueOnce(of({ id: 'park-1', name: 'Parc initial', latitude: 1, longitude: 2 }))
+      .mockReturnValueOnce(delayedGermanPark);
+    visitsPort.upsertParkAssessment.mockReturnValue(of(updatedVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.changeLanguage('de');
+    facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Belle journée' });
+    facade.saveParkAssessment();
+    delayedGermanPark.next({ id: 'park-1', name: 'Deutscher Park', latitude: 1, longitude: 2 });
+    delayedGermanPark.complete();
+
+    expect(facade.visit()).toEqual(updatedVisit);
+    expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Belle journée' });
+    expect(facade.assessmentHasChanges()).toBe(false);
+  });
+
   it('reloads the parent version and preserves the draft after an assessment conflict', () => {
     const currentVisit: PassportVisit = {
       ...visit,
