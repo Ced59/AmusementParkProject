@@ -27,7 +27,8 @@ public sealed record RideOccurrenceCreationRequestItem(
     OccurrenceMoment Moment,
     RideOccurrenceStatus Status,
     RideLogSource Source,
-    string? PrivateNote);
+    string? PrivateNote,
+    bool ConfirmHistoricalConflict);
 
 public sealed record RideOccurrenceCreationRequest(
     VisitId VisitId,

@@ -20,8 +20,10 @@ public sealed class UserRideOccurrenceCreationFingerprintTests
             4096,
             NowUtc.AddMinutes(1));
 
-        string firstHash = UserRideOccurrenceCreationFingerprint.HashPayload(new[] { first });
-        string retryHash = UserRideOccurrenceCreationFingerprint.HashPayload(new[] { retry });
+        string firstHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+            CreateRequest(new[] { first }));
+        string retryHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+            CreateRequest(new[] { retry }));
 
         Assert.Equal(firstHash, retryHash);
         Assert.Equal(64, firstHash.Length);
@@ -34,11 +36,31 @@ public sealed class UserRideOccurrenceCreationFingerprintTests
         RideOccurrence second = CreateOccurrence("occurrence-2", "item-2", 2048, NowUtc);
 
         string ordered = UserRideOccurrenceCreationFingerprint.HashPayload(
-            new[] { first, second });
+            CreateRequest(new[] { first, second }));
         string reversed = UserRideOccurrenceCreationFingerprint.HashPayload(
-            new[] { second, first });
+            CreateRequest(new[] { second, first }));
 
         Assert.NotEqual(ordered, reversed);
+    }
+
+    [Fact]
+    public void HashPayload_ShouldIncludeHistoricalConflictConfirmation()
+    {
+        RideOccurrence occurrence = CreateOccurrence(
+            "occurrence-1",
+            "item-1",
+            1024,
+            NowUtc);
+        RideOccurrenceCreationRequest unconfirmed = CreateRequest(
+            new[] { occurrence },
+            false);
+        RideOccurrenceCreationRequest confirmed = CreateRequest(
+            new[] { occurrence },
+            true);
+
+        Assert.NotEqual(
+            UserRideOccurrenceCreationFingerprint.HashPayload(unconfirmed),
+            UserRideOccurrenceCreationFingerprint.HashPayload(confirmed));
     }
 
     [Fact]
@@ -77,8 +99,10 @@ public sealed class UserRideOccurrenceCreationFingerprintTests
             NowUtc.AddMinutes(1));
 
         Assert.Equal(
-            UserRideOccurrenceCreationFingerprint.HashPayload(new[] { verified }),
-            UserRideOccurrenceCreationFingerprint.HashPayload(new[] { unverified }));
+            UserRideOccurrenceCreationFingerprint.HashPayload(
+                CreateRequest(new[] { verified })),
+            UserRideOccurrenceCreationFingerprint.HashPayload(
+                CreateRequest(new[] { unverified })));
     }
 
     [Fact]
@@ -131,5 +155,22 @@ public sealed class UserRideOccurrenceCreationFingerprintTests
             null,
             null,
             nowUtc);
+    }
+
+    private static RideOccurrenceCreationRequest CreateRequest(
+        IReadOnlyList<RideOccurrence> occurrences,
+        bool confirmHistoricalConflict = false)
+    {
+        RideOccurrence first = occurrences[0];
+        return new RideOccurrenceCreationRequest(
+            first.VisitId,
+            first.UserId,
+            occurrences.Select(occurrence => new RideOccurrenceCreationRequestItem(
+                    occurrence.ParkItemId,
+                    occurrence.Moment,
+                    occurrence.Status,
+                    occurrence.Source,
+                    occurrence.PrivateNote,
+                    confirmHistoricalConflict)).ToArray());
     }
 }

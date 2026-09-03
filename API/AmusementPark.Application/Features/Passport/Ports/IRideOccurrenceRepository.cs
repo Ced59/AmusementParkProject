@@ -14,6 +14,7 @@ public interface IRideOccurrenceRepository
         CancellationToken cancellationToken);
 
     Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
+        RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
         string clientOperationId,

@@ -13,27 +13,6 @@ internal static class UserRideOccurrenceCreationFingerprint
         return Hash(clientOperationId);
     }
 
-    public static string HashPayload(IReadOnlyList<RideOccurrence> occurrences)
-    {
-        ArgumentNullException.ThrowIfNull(occurrences);
-        if (occurrences.Count == 0)
-        {
-            throw new ArgumentException("At least one occurrence is required.", nameof(occurrences));
-        }
-
-        RideOccurrence first = occurrences[0];
-        RideOccurrenceCreationRequest request = new RideOccurrenceCreationRequest(
-            first.VisitId,
-            first.UserId,
-            occurrences.Select(static occurrence => new RideOccurrenceCreationRequestItem(
-                occurrence.ParkItemId,
-                occurrence.Moment,
-                occurrence.Status,
-                occurrence.Source,
-                occurrence.PrivateNote)).ToArray());
-        return HashPayload(request);
-    }
-
     public static string HashPayload(RideOccurrenceCreationRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -46,7 +25,8 @@ internal static class UserRideOccurrenceCreationFingerprint
                 item.Moment.IsApproximate,
                 item.Status,
                 item.Source,
-                item.PrivateNote))
+                item.PrivateNote,
+                item.ConfirmHistoricalConflict))
             .ToArray();
         string canonicalPayload = JsonSerializer.Serialize(items);
         return Hash(canonicalPayload);
@@ -79,7 +59,8 @@ internal static class UserRideOccurrenceCreationFingerprint
         bool IsApproximate,
         RideOccurrenceStatus Status,
         RideLogSource Source,
-        string? PrivateNote);
+        string? PrivateNote,
+        bool ConfirmHistoricalConflict);
 
     private sealed record ReorderPayload(
         string VisitId,

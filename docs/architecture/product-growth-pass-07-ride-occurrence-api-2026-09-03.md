@@ -38,7 +38,7 @@ DELETE /api/me/passport/visits/{visitId}/occurrences/{occurrenceId}?expectedVers
 POST   /api/me/passport/visits/{visitId}/occurrences:reorder
 ```
 
-Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic. L'empreinte de création porte sur la requête normalisée et est recherchée avant la visite ou la cible mutable : un retry reste donc rejouable même si l'attraction a ensuite été masquée, déplacée ou supprimée.
+Les deux créations et le réordonnancement exigent `Idempotency-Key`. Une réponse rejouée conserve le même contrat et ajoute `Idempotency-Replayed: true`. Une renormalisation rare ajoute `Ride-Order-Normalized: true` pour le diagnostic. L'empreinte de création porte sur toute la requête normalisée, y compris la confirmation explicite d'un conflit historique, et est recherchée avant la visite ou la cible mutable : un retry strictement identique reste donc rejouable même si l'attraction a ensuite été masquée, déplacée ou supprimée, tandis qu'une même clé associée à un consentement ou un contenu différent produit un conflit d'idempotence.
 
 La création groupée accepte au plus 100 occurrences après expansion de `count`. « Cinq tours » produit donc cinq identités, cinq versions et cinq futures notes possibles. La réservation Mongo conserve le snapshot immuable complet de chaque occurrence : si une écriture non ordonnée n'en persiste qu'une partie, le retry recrée uniquement les lignes manquantes depuis cette réservation, sans relire une attraction qui aurait depuis changé ou disparu. La dernière position lue est revalidée après la réservation exclusive de la visite ; deux lots simultanés ne peuvent donc pas partager les mêmes positions. Un lot devenu obsolète est libéré avant toute écriture, puis recalculé automatiquement jusqu'à trois fois. La liste est bornée à 250 éléments par page et utilise le curseur stable `(SortPosition, CreatedAtUtc, Id)`.
 
@@ -165,6 +165,6 @@ PASS-07 n'ajoute aucun DOM, style ou route Angular : il ne peut donc pas introdu
 
 - Core : 1 000 ajouts par lots, déplacement direct, no-op, gap épuisé, renormalisation et bornes `long` ;
 - Application : expansion du nombre, propriété, validation cible/parc/catégorie, confirmation historique, versions et replay avant les dépendances mutables ;
-- Infrastructure : empreintes stables, réservation commune ajout/déplacement, revalidation de la base d'ajout, reprise coopérative d'une opération abandonnée, CAS, compensation et snapshots ;
+- Infrastructure : empreintes stables et sensibles au consentement historique, réservation commune ajout/déplacement, revalidation de la base d'ajout, reprise coopérative d'une opération abandonnée, CAS, compensation et snapshots ;
 - WebAPI : propriétaire issu des claims, routes privées/no-store, en-têtes idempotents et curseurs invalides rejetés avant le handler ;
 - CI : build backend, tests, architecture et pipeline de déploiement avant fusion.

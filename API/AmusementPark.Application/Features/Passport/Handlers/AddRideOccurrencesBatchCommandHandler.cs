@@ -61,7 +61,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 new OccurrenceMoment(item.LocalTime, item.IsApproximate),
                 item.Status,
                 RideLogSource.Manual,
-                NormalizePrivateNote(item.PrivateNote))).ToArray());
+                NormalizePrivateNote(item.PrivateNote),
+                item.ConfirmHistoricalConflict)).ToArray());
         IdempotentRideOccurrenceCreationResult? existing =
             await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
                 creationRequest,
@@ -99,6 +100,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             visit,
             expanded,
             targets,
+            creationRequest,
             operationId,
             cancellationToken);
     }
@@ -107,6 +109,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         Visit visit,
         IReadOnlyList<RideOccurrenceCreationItem> items,
         IReadOnlyDictionary<string, VisitTarget> targets,
+        RideOccurrenceCreationRequest creationRequest,
         string operationId,
         CancellationToken cancellationToken)
     {
@@ -155,6 +158,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
 
             IdempotentRideOccurrenceCreationResult created =
                 await this.occurrenceRepository.CreateBatchIdempotentAsync(
+                    creationRequest,
                     occurrences,
                     currentMaximum,
                     operationId,

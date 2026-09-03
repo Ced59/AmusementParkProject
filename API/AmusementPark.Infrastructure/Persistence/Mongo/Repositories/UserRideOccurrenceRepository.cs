@@ -150,15 +150,18 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
+        RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
         string clientOperationId,
         CancellationToken cancellationToken)
     {
+        ValidateCreationRequest(request);
         BatchScope scope = ValidateBatch(occurrences);
+        ValidateCreationRequestMatchesBatch(request, occurrences, scope);
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
-        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(occurrences);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
         (UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)? reservation =
             await this.EnsureCreationOperationAsync(
                 occurrences,
@@ -1040,6 +1043,38 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 || !Enum.IsDefined(item.Source)))
         {
             throw new ArgumentException("The ride occurrence creation request is invalid.", nameof(request));
+        }
+    }
+
+    private static void ValidateCreationRequestMatchesBatch(
+        RideOccurrenceCreationRequest request,
+        IReadOnlyList<RideOccurrence> occurrences,
+        BatchScope scope)
+    {
+        if (request.VisitId != scope.VisitId
+            || !string.Equals(request.UserId, scope.UserId, StringComparison.Ordinal)
+            || request.Items.Count != occurrences.Count)
+        {
+            throw new ArgumentException(
+                "The creation request does not match the occurrence batch.",
+                nameof(request));
+        }
+
+        for (int index = 0; index < occurrences.Count; index++)
+        {
+            RideOccurrenceCreationRequestItem item = request.Items[index];
+            RideOccurrence occurrence = occurrences[index];
+            if (!string.Equals(item.ParkItemId, occurrence.ParkItemId, StringComparison.Ordinal)
+                || item.Moment.LocalTime != occurrence.Moment.LocalTime
+                || item.Moment.IsApproximate != occurrence.Moment.IsApproximate
+                || item.Status != occurrence.Status
+                || item.Source != occurrence.Source
+                || !string.Equals(item.PrivateNote, occurrence.PrivateNote, StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    "The creation request does not match the occurrence batch.",
+                    nameof(request));
+            }
         }
     }
 

@@ -91,6 +91,7 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         IdempotentRideOccurrenceCreationResult result =
             await repository.CreateBatchIdempotentAsync(
+                CreateRequest(occurrences),
                 occurrences,
                 null,
                 " request-1 ",
@@ -151,6 +152,7 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         IdempotentRideOccurrenceCreationResult result =
             await repository.CreateBatchIdempotentAsync(
+                CreateRequest(new[] { occurrence }),
                 new[] { occurrence },
                 1024,
                 "request-1",
@@ -174,7 +176,8 @@ public sealed class UserRideOccurrenceRepositoryTests
             CreateOccurrence("occurrence-1", "item-1", 1024),
             CreateOccurrence("occurrence-2", "item-2", 2048),
         };
-        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(occurrences);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+            CreateRequest(occurrences));
         List<UserRideOccurrenceDocument> documents = occurrences
             .Select((occurrence, index) => CreateCreationDocument(
                 occurrence,
@@ -207,7 +210,8 @@ public sealed class UserRideOccurrenceRepositoryTests
             CreateOccurrence("occurrence-1", "item-1", 1024),
             CreateOccurrence("occurrence-2", "item-2", 2048),
         };
-        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(occurrences);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+            CreateRequest(occurrences));
         UserRideOccurrenceDocument first = CreateCreationDocument(
             occurrences[0],
             payloadHash,
@@ -244,7 +248,8 @@ public sealed class UserRideOccurrenceRepositoryTests
                 occurrence.Moment,
                 occurrence.Status,
                 occurrence.Source,
-                occurrence.PrivateNote)).ToArray());
+                occurrence.PrivateNote,
+                false)).ToArray());
         string operationKeyHash =
             UserRideOccurrenceCreationFingerprint.HashOperationKey("request-1");
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
@@ -339,6 +344,58 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task ResolveExistingBatchCreationAsync_WithChangedConfirmation_ShouldConflict()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrenceCreationRequest confirmed = CreateRequest(
+            new[] { occurrence },
+            confirmHistoricalConflict: true);
+        RideOccurrenceCreationRequest unconfirmed = CreateRequest(
+            new[] { occurrence },
+            confirmHistoricalConflict: false);
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+                    "request-1"),
+                PayloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(confirmed),
+                OperationKind = "creation",
+                VisitId = "visit-1",
+                OperationState = "completed",
+                AppendBaseWasEmpty = true,
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> operationCursor =
+            CreateAsyncCursor(new[] { operation });
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(operationCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceCreationResult? result =
+            await repository.ResolveExistingBatchCreationAsync(
+                unconfirmed,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(IdempotentRideOccurrenceCreationStatus.Conflict, result.Status);
+        Assert.Empty(result.Occurrences);
+        operationCollection.VerifyAll();
+        collection.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public void ResolveIdempotentBatchCreation_WithAnotherPayload_ShouldConflict()
     {
         RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
@@ -364,7 +421,7 @@ public sealed class UserRideOccurrenceRepositoryTests
     {
         RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
-            new[] { occurrence });
+            CreateRequest(new[] { occurrence }));
         UserRideOccurrenceDocument document = CreateCreationDocument(
             occurrence,
             payloadHash,
@@ -410,7 +467,7 @@ public sealed class UserRideOccurrenceRepositoryTests
     {
         RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
-            new[] { occurrence });
+            CreateRequest(new[] { occurrence }));
         UserRideOccurrenceDocument document = CreateCreationDocument(
             occurrence,
             payloadHash,
@@ -522,6 +579,7 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         await Assert.ThrowsAsync<ArgumentException>(() =>
             repository.CreateBatchIdempotentAsync(
+                CreateRequest(occurrences),
                 occurrences,
                 null,
                 "request-1",
@@ -1233,6 +1291,23 @@ public sealed class UserRideOccurrenceRepositoryTests
         long sortPosition)
     {
         return CreateOccurrence(id, parkItemId, sortPosition, NowUtc);
+    }
+
+    private static RideOccurrenceCreationRequest CreateRequest(
+        IReadOnlyList<RideOccurrence> occurrences,
+        bool confirmHistoricalConflict = false)
+    {
+        RideOccurrence first = occurrences[0];
+        return new RideOccurrenceCreationRequest(
+            first.VisitId,
+            first.UserId,
+            occurrences.Select(occurrence => new RideOccurrenceCreationRequestItem(
+                occurrence.ParkItemId,
+                occurrence.Moment,
+                occurrence.Status,
+                occurrence.Source,
+                occurrence.PrivateNote,
+                confirmHistoricalConflict)).ToArray());
     }
 
     private static RideOccurrence CreateOccurrence(
