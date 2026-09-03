@@ -113,6 +113,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
         List<UserVisitDocument> documents = await this.collection
             .Find(UserVisitMongoDefinitions.BuildListFilter(criteria))
             .Sort(UserVisitMongoDefinitions.BuildNewestVisitSort())
+            .Project<UserVisitDocument>(UserVisitMongoDefinitions.BuildListProjection())
             .Limit(criteria.Limit + 1)
             .ToListAsync(cancellationToken);
 

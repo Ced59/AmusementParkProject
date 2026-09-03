@@ -53,6 +53,12 @@ internal static class UserVisitMongoDefinitions
             .Ascending(static document => document.Id);
     }
 
+    public static ProjectionDefinition<UserVisitDocument> BuildListProjection()
+    {
+        return Builders<UserVisitDocument>.Projection
+            .Exclude(static document => document.ParkAssessment);
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildMissingDateSortKeyFilter()
     {
         return Builders<UserVisitDocument>.Filter.Exists(

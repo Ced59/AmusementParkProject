@@ -65,6 +65,18 @@ public sealed class UserVisitMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildListProjection_ShouldExcludeTheEmbeddedAssessment()
+    {
+        ProjectionDefinition<UserVisitDocument> projection =
+            UserVisitMongoDefinitions.BuildListProjection();
+
+        BsonDocument rendered = Render(projection);
+
+        Assert.Equal(0, rendered["parkAssessment"].AsInt32);
+        Assert.Single(rendered);
+    }
+
+    [Fact]
     public void DateSortKeyBackfill_ShouldTargetOnlyLegacyDocumentsAndUseDomainEquivalentOrder()
     {
         BsonDocument filter = Render(
@@ -201,6 +213,18 @@ public sealed class UserVisitMongoDefinitionsTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return sort.Render(arguments);
+    }
+
+    private static BsonDocument Render(
+        ProjectionDefinition<UserVisitDocument> projection)
+    {
+        IBsonSerializer<UserVisitDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserVisitDocument>();
+        RenderArgs<UserVisitDocument> arguments =
+            new RenderArgs<UserVisitDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry);
+        return projection.Render(arguments);
     }
 
     private static BsonArray Render(
