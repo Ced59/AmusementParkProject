@@ -14,14 +14,27 @@ public sealed class PassportAuditReconciliationBackgroundServiceTests
     {
         TaskCompletionSource<bool> reconciled = new TaskCompletionSource<bool>(
             TaskCreationOptions.RunContinuationsAsynchronously);
+        bool pendingMutationsWereReconciled = false;
+        Mock<IPassportPendingMutationReconciler> pendingMutationReconciler =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
+        pendingMutationReconciler.Setup(value => value.ReconcileBatchAsync(
+                50,
+                It.IsAny<CancellationToken>()))
+            .Callback(() => pendingMutationsWereReconciled = true)
+            .ReturnsAsync(1);
         Mock<IPassportAuditReconciler> reconciler =
             new Mock<IPassportAuditReconciler>(MockBehavior.Strict);
         reconciler.Setup(value => value.ReconcileBatchAsync(
                 50,
                 It.IsAny<CancellationToken>()))
-            .Callback(() => reconciled.TrySetResult(true))
+            .Callback(() =>
+            {
+                Assert.True(pendingMutationsWereReconciled);
+                reconciled.TrySetResult(true);
+            })
             .ReturnsAsync(3);
         ServiceCollection services = new ServiceCollection();
+        services.AddScoped(_ => pendingMutationReconciler.Object);
         services.AddScoped(_ => reconciler.Object);
         using ServiceProvider provider = services.BuildServiceProvider();
         PassportAuditReconciliationBackgroundService service =
@@ -35,6 +48,9 @@ public sealed class PassportAuditReconciliationBackgroundServiceTests
         await service.StopAsync(CancellationToken.None);
 
         reconciler.Verify(
+            value => value.ReconcileBatchAsync(50, It.IsAny<CancellationToken>()),
+            Times.Once);
+        pendingMutationReconciler.Verify(
             value => value.ReconcileBatchAsync(50, It.IsAny<CancellationToken>()),
             Times.Once);
     }

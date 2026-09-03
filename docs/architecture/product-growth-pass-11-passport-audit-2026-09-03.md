@@ -174,6 +174,10 @@ sequenceDiagram
     S->>S: mutation + marqueur atomiques
     A-xJ: indisponibilité ou arrêt du process
     Note over S: le marqueur reste présent
+    R->>S: termine les opérations métier restées pending
+    alt opération compensée ou en conflit
+        R->>S: retire ses marqueurs non publiables
+    end
     R->>S: scan indexé limité à 50 événements
     R->>J: insertion idempotente
     alt événement déjà inséré
@@ -184,7 +188,9 @@ sequenceDiagram
     R->>S: acquitte le marqueur
 ```
 
-Le service exécute un premier lot au démarrage puis au maximum un lot de 50 événements par minute. Chaque recherche s'appuie directement sur l'index multikey partiel `pendingAuditEvents.eventId`, sans tri Mongo non couvert, puis l'ordre de publication du lot borné est stabilisé en mémoire. Il ne parcourt donc pas les documents dépourvus de marqueur et traite les événements séquentiellement pour préserver le budget du VPS.
+Le service exécute un premier lot au démarrage puis au maximum un lot de 50 opérations et un lot de 50 événements par minute. Il termine d'abord les créations, suppressions et réordonnancements dont l'état métier a été appliqué avant l'acquittement de leur opération idempotente. Une opération ainsi confirmée devient `completed` et ses preuves deviennent publiables ; une opération compensée ou terminée en conflit perd ses marqueurs, puisqu'aucune mutation nette ne doit être journalisée. Le scan d'événements intervient seulement ensuite.
+
+Chaque recherche s'appuie directement sur l'index multikey partiel `pendingAuditEvents.eventId`. L'ordre des opérations est borné et déterministe ; l'ordre de publication des preuves est stabilisé en mémoire. Le worker ne parcourt donc pas les documents dépourvus de marqueur et traite les reprises séquentiellement pour préserver le budget du VPS.
 
 ### 4.3 Correction d'une visite depuis l'interface
 
@@ -225,7 +231,7 @@ sequenceDiagram
 | arrêt après la mutation | valide | marqueur durable repris |
 | journal indisponible | valide | marqueur conservé |
 | arrêt après insertion du journal | valide | doublon absorbé, marqueur acquitté à la reprise |
-| compensation d'un réordonnancement | restauré | opération non `completed`, donc aucune fausse preuve publiée |
+| compensation ou conflit d'un réordonnancement | restauré ou inchangé | marqueurs supprimés de l'opération terminale, donc aucune fausse preuve publiée |
 | contenu et changement de statut concurrents | une seule mutation franchit son write fence | preuve produite uniquement pour la mutation gagnante |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail récupérable après cinq minutes, marqueur d'audit repris séparément |
 
@@ -243,7 +249,7 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;
-- background service : lancement immédiat et taille de lot fixée à 50 ;
+- background service : lancement immédiat, reprise des opérations avant les preuves et tailles de lots fixées à 50 ;
 - non-régression : suites Passport Application et persistance Mongo existantes ;
 - frontend : mapper sans précision ou convention de journée inventée, saisie conservée après conflit, ports HTTP, réconciliation après réponse réseau perdue, template Angular compilé et tests Passport ciblés ;
 

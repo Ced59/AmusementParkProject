@@ -8,11 +8,15 @@ using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
+public sealed class UserRideOccurrenceRepository :
+    IRideOccurrenceRepository,
+    IPassportPendingMutationReconciler
 {
     public const int MaximumBatchSize = 100;
 
     public const int MaximumListSize = 250;
+
+    public const int MaximumPendingMutationReconciliationBatchSize = 50;
 
     private const string CreationOperationKind = "creation";
 
@@ -64,6 +68,59 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.orderGuardValidator,
             this.creationRecovery,
             this.deletionCoordinator);
+    }
+
+    public async Task<int> ReconcileBatchAsync(
+        int maximumOperationCount,
+        CancellationToken cancellationToken)
+    {
+        if (maximumOperationCount is < 1 or > MaximumPendingMutationReconciliationBatchSize)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumOperationCount));
+        }
+
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Exists(PassportAuditMongoDefinitions.PendingEventIdPath, true);
+        List<UserRideOccurrenceCreationOperationDocument> operations =
+            await this.operationCollection
+                .Find(filter)
+                .Limit(maximumOperationCount)
+                .ToListAsync(cancellationToken);
+        int reconciledCount = 0;
+        foreach (UserRideOccurrenceCreationOperationDocument operation in operations
+            .OrderBy(static document => document.UpdatedAt)
+            .ThenBy(static document => document.Id, StringComparer.Ordinal))
+        {
+            if (string.IsNullOrWhiteSpace(operation.VisitId))
+            {
+                continue;
+            }
+
+            VisitId visitId;
+            try
+            {
+                visitId = VisitId.Parse(operation.VisitId);
+            }
+            catch (ArgumentException)
+            {
+                continue;
+            }
+
+            bool reconciled = await this.pendingOperationRecovery.TryCompleteVisitAsync(
+                operation.UserId,
+                visitId,
+                this.ResumeReservedReorderAsync,
+                cancellationToken);
+            if (reconciled)
+            {
+                reconciledCount++;
+            }
+        }
+
+        return reconciledCount;
     }
 
     public async Task<RideOccurrenceCreationKeyReservationResult>

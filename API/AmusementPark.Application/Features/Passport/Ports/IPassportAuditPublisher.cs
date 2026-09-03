@@ -38,3 +38,14 @@ public interface IPassportAuditReconciler
         int maximumEventCount,
         CancellationToken cancellationToken);
 }
+
+/// <summary>
+/// Termine un lot borné de mutations du passeport dont l'état métier a pu être
+/// écrit avant l'acquittement de leur opération idempotente.
+/// </summary>
+public interface IPassportPendingMutationReconciler
+{
+    Task<int> ReconcileBatchAsync(
+        int maximumOperationCount,
+        CancellationToken cancellationToken);
+}

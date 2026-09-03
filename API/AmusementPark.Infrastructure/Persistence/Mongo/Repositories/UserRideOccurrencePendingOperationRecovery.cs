@@ -139,6 +139,8 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                     updates.Set(
                         static document => document.Items,
                         new List<UserRideOccurrenceCreationAllocationDocument>()),
+                    updates.Unset(
+                        static document => document.PendingAuditEvents),
                     updates.Set(
                         static document => document.UpdatedAt,
                         operation.UpdatedAt));
@@ -155,6 +157,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
                 operation.AppendBaseSortPosition = null;
                 operation.AppendBaseValidated = false;
                 operation.Items.Clear();
+                operation.PendingAuditEvents = null;
                 return true;
             }
 
@@ -173,9 +176,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         CancellationToken cancellationToken)
     {
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Update
-                .Set(static document => document.OperationState, state)
-                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+            BuildStateUpdate(state, operation.UpdatedAt);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
                 operation.UserId,
@@ -185,7 +186,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             cancellationToken);
         if (result.MatchedCount == 1)
         {
-            operation.OperationState = state;
+            ApplyStateTransition(operation, state);
             return true;
         }
 
@@ -206,9 +207,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.OrderGuardsValidated, false);
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Update
-                .Set(static document => document.OperationState, ConflictOperationState)
-                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+            BuildStateUpdate(ConflictOperationState, operation.UpdatedAt);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
             filter,
             update,
@@ -216,7 +215,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             cancellationToken);
         if (result.MatchedCount == 1)
         {
-            operation.OperationState = ConflictOperationState;
+            ApplyStateTransition(operation, ConflictOperationState);
             return true;
         }
 
@@ -301,9 +300,7 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         CancellationToken cancellationToken)
     {
         UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
-            Builders<UserRideOccurrenceCreationOperationDocument>.Update
-                .Set(static document => document.OperationState, targetState)
-                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+            BuildStateUpdate(targetState, operation.UpdatedAt);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
             filter,
             update,
@@ -311,11 +308,42 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
             cancellationToken);
         if (result.MatchedCount == 1)
         {
-            operation.OperationState = targetState;
+            ApplyStateTransition(operation, targetState);
             return true;
         }
 
         return false;
+    }
+
+    private static UpdateDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildStateUpdate(string state, DateTime updatedAtUtc)
+    {
+        UpdateDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> updates =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update;
+        List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>> definitions =
+            new List<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>
+            {
+                updates.Set(static document => document.OperationState, state),
+                updates.Set(static document => document.UpdatedAt, updatedAtUtc),
+            };
+        if (string.Equals(state, ConflictOperationState, StringComparison.Ordinal))
+        {
+            definitions.Add(updates.Unset(
+                static document => document.PendingAuditEvents));
+        }
+
+        return updates.Combine(definitions);
+    }
+
+    private static void ApplyStateTransition(
+        UserRideOccurrenceCreationOperationDocument operation,
+        string state)
+    {
+        operation.OperationState = state;
+        if (string.Equals(state, ConflictOperationState, StringComparison.Ordinal))
+        {
+            operation.PendingAuditEvents = null;
+        }
     }
 
     private async Task<bool> TryCompleteCreationAsync(

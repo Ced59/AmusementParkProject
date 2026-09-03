@@ -2467,6 +2467,126 @@ public sealed class UserRideOccurrenceRepositoryTests
         operationCursor.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(51)]
+    public async Task ReconcileBatchAsync_WhenLimitIsOutsideBound_ShouldReject(int limit)
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
+            repository.ReconcileBatchAsync(limit, CancellationToken.None));
+
+        collection.VerifyNoOtherCalls();
+        operationCollection.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenCreationWasApplied_ShouldCompletePendingOperation()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence occurrence = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrenceCreationRequest request = CreateRequest(new[] { occurrence });
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
+        string operationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("request-1");
+        UserRideOccurrenceDocument occurrenceDocument = CreateCreationDocument(
+            occurrence,
+            payloadHash,
+            0,
+            1);
+        occurrenceDocument.CreationOperationKeyHash = operationKeyHash;
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = operationKeyHash,
+                PayloadHash = payloadHash,
+                OperationKind = "creation",
+                OperationState = "pending",
+                VisitId = "visit-1",
+                AppendBaseWasEmpty = true,
+                AppendBaseValidated = true,
+                Items = new List<UserRideOccurrenceCreationAllocationDocument>
+                {
+                    new UserRideOccurrenceCreationAllocationDocument
+                    {
+                        Index = 0,
+                        OccurrenceId = occurrenceDocument.Id,
+                        SortPosition = occurrenceDocument.SortPosition,
+                        CreatedAtUtc = occurrenceDocument.CreatedAt,
+                        UpdatedAtUtc = occurrenceDocument.UpdatedAt,
+                        CreationSnapshot = occurrenceDocument.CreationSnapshot!,
+                    },
+                },
+                PendingAuditEvents = new List<PassportAuditEventDocument>
+                {
+                    new PassportAuditEventDocument { EventId = "audit-1" },
+                },
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> scanCursor =
+            CreateAsyncCursor(new[] { operation });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> pendingCursor =
+            CreateAsyncCursor(new[] { operation });
+        operationCollection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(scanCursor.Object)
+            .ReturnsAsync(pendingCursor.Object);
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> occurrenceCursor =
+            CreateAsyncCursor(new[] { occurrenceDocument });
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument,
+                    UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(occurrenceCursor.Object);
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument>? stateUpdate = null;
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceCreationOperationDocument> _,
+                UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update,
+                UpdateOptions _,
+                CancellationToken _) => stateUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        int reconciled = await repository.ReconcileBatchAsync(
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(1, reconciled);
+        Assert.Equal("completed", operation.OperationState);
+        Assert.NotNull(stateUpdate);
+        Assert.Equal("completed", Render(stateUpdate)["$set"]["operationState"].AsString);
+        operationCollection.VerifyAll();
+        collection.VerifyAll();
+        scanCursor.VerifyAll();
+        pendingCursor.VerifyAll();
+        occurrenceCursor.VerifyAll();
+    }
+
     [Fact]
     public async Task ReorderConflictTransition_ShouldRequirePendingUnvalidatedReservation()
     {

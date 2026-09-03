@@ -38,6 +38,13 @@ internal sealed class PassportAuditReconciliationBackgroundService : BackgroundS
             try
             {
                 using IServiceScope scope = this.serviceScopeFactory.CreateScope();
+                IPassportPendingMutationReconciler pendingMutationReconciler =
+                    scope.ServiceProvider.GetRequiredService<
+                        IPassportPendingMutationReconciler>();
+                _ = await pendingMutationReconciler.ReconcileBatchAsync(
+                    UserRideOccurrenceRepository
+                        .MaximumPendingMutationReconciliationBatchSize,
+                    stoppingToken);
                 IPassportAuditReconciler reconciler =
                     scope.ServiceProvider.GetRequiredService<IPassportAuditReconciler>();
                 _ = await reconciler.ReconcileBatchAsync(
