@@ -34,6 +34,15 @@ public interface IRideOccurrenceRepository
         string clientOperationId,
         CancellationToken cancellationToken);
 
+    Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAuditedAsync(
+        RideOccurrenceCreationRequest request,
+        IReadOnlyList<RideOccurrence> occurrences,
+        long? expectedLastSortPosition,
+        bool wasOrderNormalized,
+        string clientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
+        CancellationToken cancellationToken);
+
     Task<RideOccurrence?> GetOwnedAsync(
         RideOccurrenceId occurrenceId,
         VisitId visitId,
@@ -60,6 +69,12 @@ public interface IRideOccurrenceRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task<bool> TryUpdateOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken);
+
     Task<bool> TryConfirmOwnedVersionAsync(
         RideOccurrenceId occurrenceId,
         VisitId visitId,
@@ -70,6 +85,12 @@ public interface IRideOccurrenceRepository
     Task<bool> TryDeleteOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryDeleteOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
         CancellationToken cancellationToken);
 
     Task<IdempotentRideOccurrenceReorderResult?> ResolveExistingReorderAsync(
@@ -86,5 +107,17 @@ public interface IRideOccurrenceRepository
         DateTime operationAtUtc,
         string clientOperationId,
         string? relatedCreationClientOperationId,
+        CancellationToken cancellationToken);
+
+    Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAuditedAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
         CancellationToken cancellationToken);
 }

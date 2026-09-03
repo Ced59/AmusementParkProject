@@ -202,6 +202,7 @@ internal sealed class UserRideOccurrenceDeleteOperationCoordinator
             DeleteOccurrenceId = deletedOccurrence.Id,
             DeleteExpectedVersion = expectedVersion,
             DeleteAtUtc = deleteAtUtc,
+            PendingAuditEvents = deletedOccurrence.PendingAuditEvents,
             CreatedAt = deleteAtUtc,
             UpdatedAt = deleteAtUtc,
         };

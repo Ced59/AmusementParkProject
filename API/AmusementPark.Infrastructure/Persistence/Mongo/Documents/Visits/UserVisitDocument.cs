@@ -66,6 +66,10 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public UserVisitCreationSnapshotDocument? CreationSnapshot { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    [BsonIgnoreIfNull]
+    public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
 }
 
 [BsonIgnoreExtraElements]

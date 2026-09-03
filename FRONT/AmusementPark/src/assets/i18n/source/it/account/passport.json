@@ -80,6 +80,18 @@
       "title": "Completa la tua visita",
       "private": "Privato",
       "loading": "Caricamento della visita…",
+      "visit": {
+        "eyebrow": "Stato della visita", "title": "Correggi e organizza la tua visita",
+        "description": "Il controllo di versione evita di sovrascrivere modifiche più recenti e ogni correzione viene registrata senza copiare i tuoi testi privati.",
+        "locked": "Questa visita è in sola lettura. Riaprila esplicitamente prima di modificare dettagli, valutazioni o cronologia.",
+        "editTitle": "Modifica i dettagli della visita", "editHint": "Disponibile finché la visita è una bozza",
+        "status": { "Draft": "Bozza", "Completed": "Completata", "Archived": "Archiviata" },
+        "fields": { "precision": "Precisione della data", "dayPrecision": "Giorno esatto", "monthPrecision": "Mese", "yearPrecision": "Anno", "year": "Anno", "month": "Mese", "day": "Giorno", "approximate": "Data approssimativa", "timeZone": "Fuso orario", "timeZoneHint": "Identificatore IANA facoltativo, ad esempio Europe/Paris.", "visitTitle": "Titolo della visita", "privateNote": "Nota privata", "privateNoteHint": "Solo tu puoi leggere questa nota." },
+        "actions": { "save": "Salva i dettagli", "complete": "Segna come completata", "reopen": "Riapri per correggere", "restore": "Ripristina come bozza", "archive": "Archivia" },
+        "validation": { "yearInvalid": "Inserisci un anno valido.", "monthInvalid": "Inserisci un mese da 1 a 12.", "dayInvalid": "Quel giorno non esiste nel mese selezionato.", "timeZoneInvalid": "Il fuso orario non è valido.", "titleTooLong": "Il titolo non può superare 160 caratteri.", "noteTooLong": "La nota privata non può superare 4.000 caratteri." },
+        "errors": { "conflict": "La visita è cambiata nel frattempo. È stato ricaricato lo stato attuale; controlla i dati.", "recovery": "Non è stato possibile verificare la modifica. I dati restano disponibili; riprova.", "save": "Non è stato possibile aggiornare la visita.", "transition": "Questo cambio di stato non è possibile per la visita.", "saveBeforeStatus": "Salva prima i dettagli modificati." },
+        "messages": { "updated": "I dettagli della visita sono stati aggiornati.", "completed": "La visita è ora completata.", "reopened": "La visita è stata riaperta per la correzione.", "archived": "La visita è stata archiviata." }
+      },
       "assessment": {
         "title": "La tua impressione su questo parco",
         "description": "Valuta questa visita specifica da 0,5 a 5. Questa osservazione resta privata e non modifica mai la valutazione né le classifiche della comunità.",

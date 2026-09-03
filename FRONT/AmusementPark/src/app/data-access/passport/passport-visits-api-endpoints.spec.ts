@@ -13,4 +13,11 @@ describe('PASSPORT_VISITS_API_ENDPOINTS', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.assessment('visit/one'))
       .toBe('me/passport/visits/visit%2Fone/assessment');
   });
+
+  it('keeps visit corrections owner-scoped and encodes the identifier', () => {
+    expect(PASSPORT_VISITS_API_ENDPOINTS.update('visit/one')).toBe('me/passport/visits/visit%2Fone');
+    expect(PASSPORT_VISITS_API_ENDPOINTS.complete('visit/one')).toBe('me/passport/visits/visit%2Fone/complete');
+    expect(PASSPORT_VISITS_API_ENDPOINTS.reopen('visit/one')).toBe('me/passport/visits/visit%2Fone/reopen');
+    expect(PASSPORT_VISITS_API_ENDPOINTS.archive('visit/one')).toBe('me/passport/visits/visit%2Fone/archive');
+  });
 });

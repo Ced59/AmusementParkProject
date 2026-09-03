@@ -52,6 +52,58 @@ public sealed class VisitParkAssessmentCommandHandlersTests
         repository.VerifyAll();
     }
 
+    [Fact]
+    public async Task Upsert_WithAuditPublisher_ShouldPersistMarkerBeforePublishingEvidence()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> repository = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IPassportAuditPublisher> publisher =
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        PassportAuditEvent? capturedAuditEvent = null;
+        repository.Setup(value => value.GetOwnedAsync(
+                VisitId.Parse("visit-1"),
+                "user-1",
+                CancellationToken.None))
+            .ReturnsAsync(visit);
+        repository.Setup(value => value.TryUpdateOwnedAuditedAsync(
+                It.Is<Visit>(candidate => candidate.Version == 2),
+                1,
+                It.IsAny<PassportAuditEvent>(),
+                CancellationToken.None))
+            .Callback((
+                Visit _,
+                long _,
+                PassportAuditEvent auditEvent,
+                CancellationToken _) => capturedAuditEvent = auditEvent)
+            .ReturnsAsync(true);
+        publisher.Setup(value => value.TryPublishAsync(
+                It.Is<PassportAuditEvent>(auditEvent =>
+                    auditEvent == capturedAuditEvent
+                    && auditEvent.EventType
+                        == PassportAuditEventType.ParkAssessmentCreated
+                    && auditEvent.PrivateTextChanged),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        UpsertVisitParkAssessmentCommandHandler handler =
+            new UpsertVisitParkAssessmentCommandHandler(
+                repository.Object,
+                CreateClock(),
+                publisher.Object);
+
+        ApplicationResult<VisitResult> result = await handler.HandleAsync(
+            new UpsertVisitParkAssessmentCommand(
+                "user-1",
+                "visit-1",
+                4.5d,
+                "Preuve privée",
+                1));
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(capturedAuditEvent);
+        repository.VerifyAll();
+        publisher.VerifyAll();
+    }
+
     [Theory]
     [InlineData(0d)]
     [InlineData(5.5d)]

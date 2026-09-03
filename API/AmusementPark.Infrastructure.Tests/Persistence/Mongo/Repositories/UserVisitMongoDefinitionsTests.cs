@@ -98,7 +98,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(5, indexes.Length);
+        Assert.Equal(6, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -147,6 +147,11 @@ public sealed class UserVisitMongoDefinitionsTests
             });
         Assert.True(indexes[4].Options.Unique);
         Assert.NotNull(indexes[4].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[5],
+            "idx_user_visits_pending_audit",
+            new BsonDocument("pendingAuditEvents.eventId", 1));
+        Assert.NotNull(indexes[5].Options.PartialFilterExpression);
         Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

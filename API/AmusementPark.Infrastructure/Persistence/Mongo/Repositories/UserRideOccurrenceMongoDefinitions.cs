@@ -221,6 +221,8 @@ internal static class UserRideOccurrenceMongoDefinitions
                         static document => document.CreationOperationKeyHash,
                         true),
                 }),
+            PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserRideOccurrenceDocument>(
+                "idx_user_ride_occurrences_pending_audit"),
         };
     }
 

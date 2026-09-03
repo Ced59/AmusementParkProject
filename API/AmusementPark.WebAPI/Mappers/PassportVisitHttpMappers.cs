@@ -50,6 +50,28 @@ internal static class PassportVisitHttpMappers
             cursor);
     }
 
+    public static UpdateVisitMetadataCommand ToApplication(
+        this UpdatePassportVisitRequestDto request,
+        string userId,
+        string visitId)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(request.Date);
+        return new UpdateVisitMetadataCommand(
+            userId,
+            visitId,
+            request.Date.Year,
+            request.Date.Month,
+            request.Date.Day,
+            (VisitDatePrecision)request.Date.Precision,
+            request.Date.IsApproximate,
+            request.TimeZoneId,
+            (LocalServiceDayConvention)request.ServiceDayConvention,
+            request.Title,
+            request.PrivateNote,
+            request.ExpectedVersion);
+    }
+
     public static PassportVisitDto ToHttp(this VisitResult result)
     {
         return ToHttp(result, includeParkAssessment: true);

@@ -25,6 +25,10 @@ describe('PassportVisitEditorStateFacade', () => {
   const secondOccurrence: PassportRideOccurrence = createOccurrence('occurrence-2', 'ride-2', 2048);
   let visitsPort: {
     getVisit: ReturnType<typeof vi.fn>;
+    updateVisit: ReturnType<typeof vi.fn>;
+    completeVisit: ReturnType<typeof vi.fn>;
+    reopenVisit: ReturnType<typeof vi.fn>;
+    archiveVisit: ReturnType<typeof vi.fn>;
     upsertParkAssessment: ReturnType<typeof vi.fn>;
     deleteParkAssessment: ReturnType<typeof vi.fn>;
   };
@@ -46,6 +50,10 @@ describe('PassportVisitEditorStateFacade', () => {
   beforeEach(() => {
     visitsPort = {
       getVisit: vi.fn().mockReturnValue(of(visit)),
+      updateVisit: vi.fn(),
+      completeVisit: vi.fn(),
+      reopenVisit: vi.fn(),
+      archiveVisit: vi.fn(),
       upsertParkAssessment: vi.fn(),
       deleteParkAssessment: vi.fn()
     };
@@ -125,6 +133,56 @@ describe('PassportVisitEditorStateFacade', () => {
       { closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
       { closedFilter: 'all' }
     );
+  });
+
+  it('updates visit metadata through the port and refreshes the optimistic version', () => {
+    const updatedVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      title: 'Souvenir',
+      version: 2
+    };
+    visitsPort.updateVisit.mockReturnValue(of(updatedVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true,
+      title: ' Souvenir '
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(visitsPort.updateVisit).toHaveBeenCalledWith('visit-1', expect.objectContaining({
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      title: 'Souvenir',
+      expectedVersion: 1
+    }));
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataHasChanges()).toBe(false);
+  });
+
+  it('requires an explicit lifecycle transition and reconciles a lost completion response', () => {
+    const completedVisit: PassportVisit = {
+      ...visit,
+      status: 'Completed',
+      version: 2,
+      completedAtUtc: '2026-09-03T10:30:00Z'
+    };
+    visitsPort.completeVisit.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 0 })));
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(completedVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.completeVisit();
+
+    expect(visitsPort.completeVisit).toHaveBeenCalledWith('visit-1', 1);
+    expect(facade.visit()?.status).toBe('Completed');
+    expect(facade.canEditVisit()).toBe(false);
+    expect(facade.visitMutationErrorKey()).toBeNull();
   });
 
   it('refreshes localized data without losing pending selections or edit drafts', () => {

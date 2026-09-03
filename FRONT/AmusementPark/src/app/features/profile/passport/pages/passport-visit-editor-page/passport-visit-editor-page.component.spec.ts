@@ -34,6 +34,30 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__ratings');
+    expect(styles).toContain('.passport-visit__form');
+    expect(styles).toContain('.passport-visit__actions');
+    expect(styles).toContain('.passport-visit__details');
+  });
+
+  it('forwards visit date precision and numeric fields without owning validation rules', () => {
+    const updateVisitMetadataDraft = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'updateVisitMetadataDraft'>;
+      updateVisitPrecision(event: Event): void;
+      updateVisitYear(event: Event): void;
+    };
+    component.facade = { updateVisitMetadataDraft };
+    const precision: HTMLSelectElement = document.createElement('select');
+    precision.innerHTML = '<option value="Year">Year</option>';
+    precision.value = 'Year';
+    const year: HTMLInputElement = document.createElement('input');
+    year.value = '1998';
+
+    component.updateVisitPrecision({ target: precision } as unknown as Event);
+    component.updateVisitYear({ target: year } as unknown as Event);
+
+    expect(updateVisitMetadataDraft).toHaveBeenNthCalledWith(1, { precision: 'Year' });
+    expect(updateVisitMetadataDraft).toHaveBeenNthCalledWith(2, { year: 1998 });
   });
 
   it('forwards the selected park rating without deriving business rules in the component', () => {

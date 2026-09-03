@@ -99,7 +99,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
         CreateIndexModel<UserRideOccurrenceDocument>[] indexes =
             UserRideOccurrenceMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(6, indexes.Length);
+        Assert.Equal(7, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_ride_occurrences_visit_order",
@@ -155,6 +155,11 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
             });
         Assert.True(indexes[5].Options.Unique);
         Assert.NotNull(indexes[5].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[6],
+            "idx_user_ride_occurrences_pending_audit",
+            new BsonDocument("pendingAuditEvents.eventId", 1));
+        Assert.NotNull(indexes[6].Options.PartialFilterExpression);
         Assert.All(indexes.Take(5), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 
@@ -163,7 +168,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
     {
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument>[] indexes =
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes().ToArray();
-        Assert.Equal(3, indexes.Length);
+        Assert.Equal(4, indexes.Length);
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument> index = indexes[0];
 
         Assert.Equal(
@@ -217,6 +222,13 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "operationState", 1 },
             },
             Render(normalization.Keys));
+
+        Assert.Equal(
+            "idx_user_ride_occurrence_operations_pending_audit",
+            indexes[3].Options.Name);
+        Assert.Equal(
+            new BsonDocument("pendingAuditEvents.eventId", 1),
+            Render(indexes[3].Keys));
     }
 
     [Fact]

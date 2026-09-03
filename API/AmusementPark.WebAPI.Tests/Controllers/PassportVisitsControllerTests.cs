@@ -162,6 +162,58 @@ public sealed class PassportVisitsControllerTests
     }
 
     [Fact]
+    public async Task UpdateAsync_ShouldUseTheAuthenticatedOwnerAndReturnTheNewVersion()
+    {
+        Mock<ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>> update =
+            new Mock<ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict);
+        update.Setup(handler => handler.HandleAsync(
+                It.Is<UpdateVisitMetadataCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.VisitId == "visit-1"
+                    && command.ExpectedVersion == 1),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitResult>.Success(CreateResult("visit-1") with { Version = 2 }));
+        PassportVisitsController controller = CreateController(updateHandler: update.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.UpdateAsync(
+            "visit-1",
+            new UpdatePassportVisitRequestDto
+            {
+                Date = CreateRequest().Date,
+                TimeZoneId = "Europe/Paris",
+                ExpectedVersion = 1,
+            },
+            CancellationToken.None);
+
+        PassportVisitDto body = Assert.IsType<PassportVisitDto>(
+            Assert.IsType<OkObjectResult>(result).Value);
+        Assert.Equal(2, body.Version);
+        update.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CompleteAsync_ShouldUseTheAuthenticatedOwnerAndVersionFence()
+    {
+        Mock<ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>> complete =
+            new Mock<ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict);
+        complete.Setup(handler => handler.HandleAsync(
+                new CompleteVisitCommand("owner-1", "visit-1", 3),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitResult>.Success(CreateResult("visit-1") with { Version = 4 }));
+        PassportVisitsController controller = CreateController(completeHandler: complete.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.CompleteAsync(
+            "visit-1",
+            new MutatePassportVisitStatusRequestDto { ExpectedVersion = 3 },
+            CancellationToken.None);
+
+        Assert.IsType<OkObjectResult>(result);
+        complete.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_ShouldExposePrivateNoStoreAdditiveRoutes()
     {
         RouteAttribute route = Assert.IsType<RouteAttribute>(
@@ -186,6 +238,14 @@ public sealed class PassportVisitsControllerTests
             GetAction(nameof(PassportVisitsController.GetByIdAsync))
                 .GetCustomAttribute<HttpGetAttribute>());
         Assert.Equal("{visitId}", detail.Template);
+        Assert.Equal("{visitId}", Assert.IsType<HttpPatchAttribute>(
+            GetAction(nameof(PassportVisitsController.UpdateAsync)).GetCustomAttribute<HttpPatchAttribute>()).Template);
+        Assert.Equal("{visitId}/complete", Assert.IsType<HttpPostAttribute>(
+            GetAction(nameof(PassportVisitsController.CompleteAsync)).GetCustomAttribute<HttpPostAttribute>()).Template);
+        Assert.Equal("{visitId}/reopen", Assert.IsType<HttpPostAttribute>(
+            GetAction(nameof(PassportVisitsController.ReopenAsync)).GetCustomAttribute<HttpPostAttribute>()).Template);
+        Assert.Equal("{visitId}/archive", Assert.IsType<HttpPostAttribute>(
+            GetAction(nameof(PassportVisitsController.ArchiveAsync)).GetCustomAttribute<HttpPostAttribute>()).Template);
         ParameterInfo idempotencyHeader = GetAction(nameof(PassportVisitsController.CreateAsync))
             .GetParameters()
             .Single(parameter => parameter.Name == "idempotencyKey");
@@ -206,12 +266,20 @@ public sealed class PassportVisitsControllerTests
     private static PassportVisitsController CreateController(
         ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>? createHandler = null,
         IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>? listHandler = null,
-        IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>? getHandler = null)
+        IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>? getHandler = null,
+        ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>? updateHandler = null,
+        ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>? completeHandler = null,
+        ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>>? reopenHandler = null,
+        ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>? archiveHandler = null)
     {
         return new PassportVisitsController(
             createHandler ?? new Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>>(MockBehavior.Strict).Object,
             listHandler ?? new Mock<IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>>(MockBehavior.Strict).Object,
-            getHandler ?? new Mock<IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object);
+            getHandler ?? new Mock<IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
+            updateHandler ?? new Mock<ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
+            completeHandler ?? new Mock<ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
+            reopenHandler ?? new Mock<ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
+            archiveHandler ?? new Mock<ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object);
     }
 
     private static ControllerContext CreateControllerContext(string userId)

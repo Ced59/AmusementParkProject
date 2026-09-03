@@ -117,6 +117,9 @@ public sealed class MongoDbSettings
     public string UserRideOccurrenceOperationsCollectionName { get; set; } =
         "user-ride-occurrence-operations";
 
+    public string PassportAuditEventsCollectionName { get; set; } =
+        "passport-audit-events";
+
     public string CommentsCollectionName { get; set; } = "comments";
 
     public string CountriesCollectionName { get; set; } = "countries";

@@ -145,6 +145,55 @@ public sealed class RideAssessmentCommandHandlersTests
     }
 
     [Fact]
+    public async Task Upsert_WhenVisitIsCompleted_ShouldRequireAnExplicitReopen()
+    {
+        RideOccurrence occurrence = CreateOccurrence();
+        Visit completedVisit = Visit.Restore(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 3),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            VisitStatus.Completed,
+            VisitPrivacy.Private,
+            null,
+            null,
+            2,
+            NowUtc.AddHours(-2),
+            NowUtc.AddHours(-1),
+            NowUtc.AddHours(-1));
+        Mock<IRideOccurrenceRepository> occurrences = new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedByIdAsync(
+                occurrence.Id,
+                "user-1",
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        visits.Setup(repository => repository.GetOwnedAsync(
+                completedVisit.Id,
+                "user-1",
+                CancellationToken.None))
+            .ReturnsAsync(completedVisit);
+        Mock<IPassportAuditPublisher> audit = new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        UpsertRideAssessmentCommandHandler handler = new UpsertRideAssessmentCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            CreateClock(),
+            audit.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpsertRideAssessmentCommand("user-1", "occurrence-1", 4d, null, 1));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.not-editable", Assert.Single(result.Errors).Code);
+        Assert.Null(occurrence.Assessment);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        audit.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task Delete_WhenAssessmentIsAlreadyAbsent_ShouldConfirmTheParentVersion()
     {
         RideOccurrence occurrence = CreateOccurrence();

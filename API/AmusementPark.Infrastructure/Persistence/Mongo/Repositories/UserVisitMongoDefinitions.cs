@@ -190,6 +190,8 @@ internal static class UserVisitMongoDefinitions
                         static document => document.CreationOperationKeyHash,
                         true),
                 }),
+            PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
+                "idx_user_visits_pending_audit"),
         };
     }
 

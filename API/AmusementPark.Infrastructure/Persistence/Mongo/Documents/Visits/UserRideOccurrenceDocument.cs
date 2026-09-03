@@ -87,6 +87,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonElement("lastDeleteOperationKeyHash")]
     [BsonIgnoreIfNull]
     public string? LastDeleteOperationKeyHash { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    [BsonIgnoreIfNull]
+    public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
 }
 
 [BsonIgnoreExtraElements]
@@ -285,6 +289,10 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonElement("reorderResultSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    [BsonIgnoreIfNull]
+    public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
 }
 
 [BsonIgnoreExtraElements]

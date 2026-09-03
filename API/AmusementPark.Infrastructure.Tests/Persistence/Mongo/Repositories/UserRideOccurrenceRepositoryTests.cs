@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
@@ -361,6 +362,14 @@ public sealed class UserRideOccurrenceRepositoryTests
                 Assert.True(document.AppendBaseWasEmpty);
                 Assert.True(document.WasNormalized);
                 Assert.Equal(3, document.Items.Count);
+                Assert.Equal(3, document.PendingAuditEvents?.Count);
+                Assert.All(document.PendingAuditEvents!, static auditEvent =>
+                {
+                    Assert.Equal(
+                        PassportAuditEventType.RideOccurrenceAdded,
+                        auditEvent.EventType);
+                    Assert.False(auditEvent.ToBsonDocument().Contains("privateNote"));
+                });
                 Assert.All(document.Items, static item => Assert.NotNull(item.CreationSnapshot));
                 Assert.All(document.Items, static item =>
                 {
@@ -403,13 +412,18 @@ public sealed class UserRideOccurrenceRepositoryTests
             CreateOccurrence("occurrence-3", "item-2", 3072),
         };
 
+        IReadOnlyCollection<PassportAuditEvent> auditEvents = occurrences
+            .Select(static occurrence =>
+                PassportAuditEventFactory.RideOccurrenceAdded(occurrence, "request-1"))
+            .ToArray();
         IdempotentRideOccurrenceCreationResult result =
-            await repository.CreateBatchIdempotentAsync(
+            await repository.CreateBatchIdempotentAuditedAsync(
                 CreateRequest(occurrences),
                 occurrences,
                 null,
                 true,
                 " request-1 ",
+                auditEvents,
                 CancellationToken.None);
 
         Assert.NotNull(inserted);

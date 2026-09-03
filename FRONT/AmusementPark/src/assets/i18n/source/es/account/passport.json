@@ -80,6 +80,18 @@
       "title": "Completa tu visita",
       "private": "Privado",
       "loading": "Cargando tu visita…",
+      "visit": {
+        "eyebrow": "Estado de la visita", "title": "Corrige y organiza tu visita",
+        "description": "El versionado evita sobrescribir un cambio más reciente y cada corrección queda registrada sin copiar tus textos privados.",
+        "locked": "Esta visita es de solo lectura. Reábrela expresamente antes de modificar sus datos, valoraciones o cronología.",
+        "editTitle": "Editar los datos de la visita", "editHint": "Disponible mientras la visita sea un borrador",
+        "status": { "Draft": "Borrador", "Completed": "Completada", "Archived": "Archivada" },
+        "fields": { "precision": "Precisión de la fecha", "dayPrecision": "Día exacto", "monthPrecision": "Mes", "yearPrecision": "Año", "year": "Año", "month": "Mes", "day": "Día", "approximate": "Fecha aproximada", "timeZone": "Zona horaria", "timeZoneHint": "Identificador IANA opcional, por ejemplo Europe/Paris.", "visitTitle": "Título de la visita", "privateNote": "Nota privada", "privateNoteHint": "Solo tú puedes leer esta nota." },
+        "actions": { "save": "Guardar datos", "complete": "Marcar como completada", "reopen": "Reabrir para corregir", "restore": "Restaurar como borrador", "archive": "Archivar" },
+        "validation": { "yearInvalid": "Introduce un año válido.", "monthInvalid": "Introduce un mes del 1 al 12.", "dayInvalid": "Ese día no existe en el mes seleccionado.", "timeZoneInvalid": "La zona horaria no es válida.", "titleTooLong": "El título no puede superar los 160 caracteres.", "noteTooLong": "La nota privada no puede superar los 4.000 caracteres." },
+        "errors": { "conflict": "La visita cambió mientras tanto. Se ha recargado su estado actual; revisa los datos.", "recovery": "No se pudo comprobar el cambio. Tus datos se conservan; inténtalo de nuevo.", "save": "No se pudo actualizar la visita.", "transition": "Este cambio de estado no es posible para la visita.", "saveBeforeStatus": "Guarda primero los datos modificados." },
+        "messages": { "updated": "Los datos de la visita se han actualizado.", "completed": "La visita está completada.", "reopened": "La visita se ha reabierto para corregirla.", "archived": "La visita se ha archivado." }
+      },
       "assessment": {
         "title": "Tu impresión de este parque",
         "description": "Valora esta visita concreta de 0,5 a 5. Esta observación sigue siendo privada y nunca modifica la valoración ni las clasificaciones de la comunidad.",

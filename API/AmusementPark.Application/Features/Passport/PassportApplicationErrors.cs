@@ -83,6 +83,27 @@ public static class PassportApplicationErrors
             "La visite demandée est introuvable.");
     }
 
+    public static ApplicationError InvalidVisitVersion()
+    {
+        return ApplicationError.Validation(
+            "visit.version-invalid",
+            "La version de la visite doit être positive.");
+    }
+
+    public static ApplicationError VisitConcurrencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "visit.version-conflict",
+            "La visite a changé. Recharge-la avant de réessayer.");
+    }
+
+    public static ApplicationError VisitNotEditable()
+    {
+        return ApplicationError.Conflict(
+            "visit.not-editable",
+            "Rouvre la visite avant de modifier son contenu.");
+    }
+
     public static ApplicationError InvalidListLimit()
     {
         return ApplicationError.Validation(

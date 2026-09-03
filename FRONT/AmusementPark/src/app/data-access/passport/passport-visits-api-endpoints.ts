@@ -1,5 +1,9 @@
 export const PASSPORT_VISITS_API_ENDPOINTS = {
   create: 'me/passport/visits',
   getById: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}`,
+  update: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}`,
+  complete: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/complete`,
+  reopen: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/reopen`,
+  archive: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/archive`,
   assessment: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/assessment`
 };

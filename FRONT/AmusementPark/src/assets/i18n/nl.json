@@ -88,6 +88,62 @@
       "title": "Vul je bezoek aan",
       "private": "Privé",
       "loading": "Je bezoek wordt geladen…",
+      "visit": {
+        "eyebrow": "Bezoekstatus",
+        "title": "Corrigeer en organiseer je bezoek",
+        "description": "Versiebeheer voorkomt dat een recentere wijziging wordt overschreven en elke correctie wordt vastgelegd zonder je privéteksten te kopiëren.",
+        "locked": "Dit bezoek is alleen-lezen. Open het uitdrukkelijk opnieuw voordat je gegevens, beoordelingen of tijdlijn wijzigt.",
+        "editTitle": "Bezoekgegevens bewerken",
+        "editHint": "Beschikbaar zolang het bezoek een concept is",
+        "status": {
+          "Draft": "Concept",
+          "Completed": "Voltooid",
+          "Archived": "Gearchiveerd"
+        },
+        "fields": {
+          "precision": "Datumnauwkeurigheid",
+          "dayPrecision": "Exacte dag",
+          "monthPrecision": "Maand",
+          "yearPrecision": "Jaar",
+          "year": "Jaar",
+          "month": "Maand",
+          "day": "Dag",
+          "approximate": "Geschatte datum",
+          "timeZone": "Tijdzone",
+          "timeZoneHint": "Optionele IANA-code, bijvoorbeeld Europe/Paris.",
+          "visitTitle": "Bezoektitel",
+          "privateNote": "Privénotitie",
+          "privateNoteHint": "Alleen jij kunt deze notitie lezen."
+        },
+        "actions": {
+          "save": "Gegevens opslaan",
+          "complete": "Als voltooid markeren",
+          "reopen": "Heropenen om te corrigeren",
+          "restore": "Herstellen als concept",
+          "archive": "Archiveren"
+        },
+        "validation": {
+          "yearInvalid": "Voer een geldig jaar in.",
+          "monthInvalid": "Voer een maand van 1 tot 12 in.",
+          "dayInvalid": "Die dag bestaat niet in de gekozen maand.",
+          "timeZoneInvalid": "De tijdzone is ongeldig.",
+          "titleTooLong": "De titel mag niet langer zijn dan 160 tekens.",
+          "noteTooLong": "De privénotitie mag niet langer zijn dan 4.000 tekens."
+        },
+        "errors": {
+          "conflict": "Het bezoek is intussen gewijzigd. De huidige toestand is herladen; controleer je invoer.",
+          "recovery": "De wijziging kon niet worden gecontroleerd. Je invoer blijft bewaard; probeer opnieuw.",
+          "save": "Het bezoek kon niet worden bijgewerkt.",
+          "transition": "Deze statuswijziging is niet mogelijk voor het bezoek.",
+          "saveBeforeStatus": "Sla eerst de gewijzigde gegevens op."
+        },
+        "messages": {
+          "updated": "De bezoekgegevens zijn bijgewerkt.",
+          "completed": "Het bezoek is nu voltooid.",
+          "reopened": "Het bezoek is heropend voor correctie.",
+          "archived": "Het bezoek is gearchiveerd."
+        }
+      },
       "assessment": {
         "title": "Jouw indruk van dit park",
         "description": "Beoordeel dit specifieke bezoek van 0,5 tot 5. Deze observatie blijft privé en verandert nooit de communityscore of ranglijsten.",

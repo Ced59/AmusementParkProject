@@ -18,19 +18,38 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     private readonly IVisitTargetResolver targetResolver;
     private readonly RideOccurrenceAppendOrderNormalizer appendOrderNormalizer;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal AddRideOccurrencesBatchCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IVisitTargetResolver targetResolver,
+        RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
+        IPassportClock clock)
+        : this(
+            visitRepository,
+            occurrenceRepository,
+            targetResolver,
+            appendOrderNormalizer,
+            clock,
+            null!)
+    {
+    }
 
     public AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
         RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
         this.appendOrderNormalizer = appendOrderNormalizer;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<ApplicationResult<CreateRideOccurrencesResult>> HandleAsync(
@@ -116,6 +135,12 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         if (visit is null)
         {
             return Failure(PassportApplicationErrors.VisitNotFound());
+        }
+
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
         }
 
         IReadOnlyDictionary<string, VisitTarget> targets = await this.targetResolver.ResolveAsync(
@@ -270,16 +295,48 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                     exception.ParamName));
             }
 
-            IdempotentRideOccurrenceCreationResult created =
-                await this.occurrenceRepository.CreateBatchIdempotentAsync(
+            IReadOnlyCollection<PassportAuditEvent>? auditEvents =
+                this.auditPublisher is null
+                    ? null
+                    : occurrences
+                        .Select(occurrence => PassportRideAuditEventFactory.RideOccurrenceAdded(
+                            occurrence,
+                            operationId))
+                        .ToArray();
+            IdempotentRideOccurrenceCreationResult created = auditEvents is null
+                ? await this.occurrenceRepository.CreateBatchIdempotentAsync(
                     creationRequest,
                     occurrences,
                     currentMaximum,
                     wasOrderNormalized,
                     operationId,
+                    cancellationToken)
+                : await this.occurrenceRepository.CreateBatchIdempotentAuditedAsync(
+                    creationRequest,
+                    occurrences,
+                    currentMaximum,
+                    wasOrderNormalized,
+                    operationId,
+                    auditEvents,
                     cancellationToken);
             if (created.Status != IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict)
             {
+                if (created.Status is IdempotentRideOccurrenceCreationStatus.Created
+                    or IdempotentRideOccurrenceCreationStatus.Replayed)
+                {
+                    IReadOnlyCollection<PassportAuditEvent> persistedEvents =
+                        created.Occurrences
+                            .Select(occurrence =>
+                                PassportRideAuditEventFactory.RideOccurrenceAdded(
+                                    occurrence,
+                                    operationId))
+                            .ToArray();
+                    await PassportAuditDelivery.PublishAsync(
+                        this.auditPublisher,
+                        persistedEvents,
+                        cancellationToken);
+                }
+
                 return ToApplicationResult(created);
             }
         }

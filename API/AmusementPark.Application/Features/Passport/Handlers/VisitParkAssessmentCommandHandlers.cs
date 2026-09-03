@@ -14,13 +14,23 @@ public sealed class UpsertVisitParkAssessmentCommandHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal UpsertVisitParkAssessmentCommandHandler(
+        IUserVisitRepository visitRepository,
+        IPassportClock clock)
+        : this(visitRepository, clock, null!)
+    {
+    }
 
     public UpsertVisitParkAssessmentCommandHandler(
         IUserVisitRepository visitRepository,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<ApplicationResult<VisitResult>> HandleAsync(
@@ -59,12 +69,20 @@ public sealed class UpsertVisitParkAssessmentCommandHandler
             return Failure(PassportApplicationErrors.VisitNotFound());
         }
 
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
+        }
+
         if (visit.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
         }
 
         long expectedVersion = visit.Version;
+        VisitParkAssessmentAuditSnapshot? previousAssessment =
+            VisitParkAssessmentAuditSnapshot.Capture(visit);
         try
         {
             visit.UpsertParkAssessment(value, command.PrivateComment, this.clock.UtcNow);
@@ -82,13 +100,31 @@ public sealed class UpsertVisitParkAssessmentCommandHandler
                 exception.Message));
         }
 
-        bool updated = await this.visitRepository.TryUpdateOwnedAsync(
-            visit,
-            expectedVersion,
+        PassportAuditEvent? auditEvent = this.auditPublisher is null
+            ? null
+            : PassportVisitAuditEventFactory.ParkAssessmentUpserted(
+                visit,
+                previousAssessment);
+        bool updated = auditEvent is null
+            ? await this.visitRepository.TryUpdateOwnedAsync(
+                visit,
+                expectedVersion,
+                cancellationToken)
+            : await this.visitRepository.TryUpdateOwnedAuditedAsync(
+                visit,
+                expectedVersion,
+                auditEvent,
+                cancellationToken);
+        if (!updated)
+        {
+            return Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
+        }
+
+        await PassportAuditDelivery.PublishAsync(
+            this.auditPublisher,
+            auditEvent,
             cancellationToken);
-        return updated
-            ? Success(visit)
-            : Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
+        return Success(visit);
     }
 
     private static ApplicationResult<VisitResult> Success(Visit visit)
@@ -126,13 +162,23 @@ public sealed class DeleteVisitParkAssessmentCommandHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal DeleteVisitParkAssessmentCommandHandler(
+        IUserVisitRepository visitRepository,
+        IPassportClock clock)
+        : this(visitRepository, clock, null!)
+    {
+    }
 
     public DeleteVisitParkAssessmentCommandHandler(
         IUserVisitRepository visitRepository,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<ApplicationResult<VisitResult>> HandleAsync(
@@ -169,12 +215,20 @@ public sealed class DeleteVisitParkAssessmentCommandHandler
             return Failure(PassportApplicationErrors.VisitNotFound());
         }
 
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
+        }
+
         if (visit.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
         }
 
         long expectedVersion = visit.Version;
+        VisitParkAssessmentAuditSnapshot? previousAssessment =
+            VisitParkAssessmentAuditSnapshot.Capture(visit);
         try
         {
             visit.DeleteParkAssessment(this.clock.UtcNow);
@@ -198,13 +252,31 @@ public sealed class DeleteVisitParkAssessmentCommandHandler
                 : Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
         }
 
-        bool updated = await this.visitRepository.TryUpdateOwnedAsync(
-            visit,
-            expectedVersion,
+        PassportAuditEvent? auditEvent = this.auditPublisher is null
+            ? null
+            : PassportVisitAuditEventFactory.ParkAssessmentDeleted(
+                visit,
+                previousAssessment!);
+        bool updated = auditEvent is null
+            ? await this.visitRepository.TryUpdateOwnedAsync(
+                visit,
+                expectedVersion,
+                cancellationToken)
+            : await this.visitRepository.TryUpdateOwnedAuditedAsync(
+                visit,
+                expectedVersion,
+                auditEvent,
+                cancellationToken);
+        if (!updated)
+        {
+            return Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
+        }
+
+        await PassportAuditDelivery.PublishAsync(
+            this.auditPublisher,
+            auditEvent,
             cancellationToken);
-        return updated
-            ? Success(visit)
-            : Failure(PassportApplicationErrors.VisitParkAssessmentConcurrencyConflict());
+        return Success(visit);
     }
 
     private static ApplicationResult<VisitResult> Success(Visit visit)

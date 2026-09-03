@@ -23,6 +23,19 @@ export interface CreatePassportVisitRequest {
   privateNote: string | null;
 }
 
+export interface UpdatePassportVisitRequest {
+  date: PassportVisitDate;
+  timeZoneId: string | null;
+  serviceDayConvention: PassportLocalServiceDayConvention;
+  title: string | null;
+  privateNote: string | null;
+  expectedVersion: number;
+}
+
+export interface MutatePassportVisitStatusRequest {
+  expectedVersion: number;
+}
+
 export interface PassportVisitParkAssessment {
   value: number;
   privateComment: string | null;

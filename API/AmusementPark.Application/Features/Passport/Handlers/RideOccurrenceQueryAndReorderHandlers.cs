@@ -131,15 +131,26 @@ public sealed class ReorderRideOccurrenceCommandHandler
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal ReorderRideOccurrenceCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IPassportClock clock)
+        : this(visitRepository, occurrenceRepository, clock, null!)
+    {
+    }
 
     public ReorderRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<ApplicationResult<ReorderRideOccurrenceResult>> HandleAsync(
@@ -196,6 +207,12 @@ public sealed class ReorderRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.VisitNotFound());
         }
 
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
+        }
+
         IReadOnlyList<RideOccurrence> occurrences;
         try
         {
@@ -243,20 +260,30 @@ public sealed class ReorderRideOccurrenceCommandHandler
             static occurrence => occurrence.Id);
         DateTime nowUtc = this.clock.UtcNow;
         List<RideOccurrenceVersionedChange> changes = new List<RideOccurrenceVersionedChange>();
+        List<PassportAuditEvent> auditEvents = new List<PassportAuditEvent>();
         foreach (RideOccurrenceOrderPosition position in plan.Changes)
         {
             RideOccurrence occurrence = byId[position.OccurrenceId];
             long expectedVersion = occurrence.Version;
             long previousSortPosition = occurrence.SortPosition;
+            RideOccurrenceAuditSnapshot previous =
+                RideOccurrenceAuditSnapshot.Capture(occurrence);
             occurrence.MoveTo(position.SortPosition, nowUtc);
             changes.Add(new RideOccurrenceVersionedChange(
                 occurrence,
                 expectedVersion,
                 previousSortPosition));
+            if (this.auditPublisher is not null)
+            {
+                auditEvents.Add(PassportRideAuditEventFactory.RideOccurrenceChanged(
+                    occurrence,
+                    previous,
+                    operationId));
+            }
         }
 
-        IdempotentRideOccurrenceReorderResult result =
-            await this.occurrenceRepository.ReorderIdempotentAsync(
+        IdempotentRideOccurrenceReorderResult result = this.auditPublisher is null
+            ? await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,
                 changes,
                 plan.Guards,
@@ -265,7 +292,27 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 nowUtc,
                 operationId,
                 null,
+                cancellationToken)
+            : await this.occurrenceRepository.ReorderIdempotentAuditedAsync(
+                request,
+                changes,
+                plan.Guards,
+                byId[scope.OccurrenceId],
+                plan.WasNormalized,
+                nowUtc,
+                operationId,
+                null,
+                auditEvents,
                 cancellationToken);
+        if (result.Status is IdempotentRideOccurrenceReorderStatus.Applied
+            or IdempotentRideOccurrenceReorderStatus.Replayed)
+        {
+            await PassportAuditDelivery.PublishAsync(
+                this.auditPublisher,
+                auditEvents,
+                cancellationToken);
+        }
+
         return ToApplicationResult(result);
     }
 

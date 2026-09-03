@@ -40,4 +40,15 @@ public sealed partial class MongoDatabaseInitializer
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
+
+    private async Task InitializePassportAuditIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<PassportAuditJournalDocument> collection =
+            this.database.GetCollection<PassportAuditJournalDocument>(
+                this.settings.PassportAuditEventsCollectionName);
+        await collection.Indexes.CreateManyAsync(
+            PassportAuditMongoDefinitions.BuildJournalIndexes(),
+            cancellationToken);
+    }
 }

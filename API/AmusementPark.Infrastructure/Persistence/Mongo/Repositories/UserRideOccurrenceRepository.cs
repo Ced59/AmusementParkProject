@@ -265,7 +265,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return recovered;
     }
 
-    public async Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
+    public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
@@ -273,9 +273,50 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string clientOperationId,
         CancellationToken cancellationToken)
     {
+        return this.CreateBatchIdempotentCoreAsync(
+            request,
+            occurrences,
+            expectedLastSortPosition,
+            wasOrderNormalized,
+            clientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAuditedAsync(
+        RideOccurrenceCreationRequest request,
+        IReadOnlyList<RideOccurrence> occurrences,
+        long? expectedLastSortPosition,
+        bool wasOrderNormalized,
+        string clientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvents);
+        return this.CreateBatchIdempotentCoreAsync(
+            request,
+            occurrences,
+            expectedLastSortPosition,
+            wasOrderNormalized,
+            clientOperationId,
+            pendingAuditEvents,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceCreationResult>
+        CreateBatchIdempotentCoreAsync(
+            RideOccurrenceCreationRequest request,
+            IReadOnlyList<RideOccurrence> occurrences,
+            long? expectedLastSortPosition,
+            bool wasOrderNormalized,
+            string clientOperationId,
+            IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
+            CancellationToken cancellationToken)
+    {
         ValidateCreationRequest(request);
         BatchScope scope = ValidateBatch(occurrences);
         ValidateCreationRequestMatchesBatch(request, occurrences, scope);
+        ValidatePendingAuditEvents(occurrences, pendingAuditEvents);
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
@@ -288,6 +329,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 wasOrderNormalized,
                 operationKeyHash,
                 payloadHash,
+                pendingAuditEvents,
                 cancellationToken);
         if (!reservation.HasValue)
         {
@@ -470,9 +512,36 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             wasNormalized);
     }
 
-    public async Task<bool> TryUpdateOwnedAsync(
+    public Task<bool> TryUpdateOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            cancellationToken);
+    }
+
+    private async Task<bool> TryUpdateOwnedCoreAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
@@ -484,13 +553,18 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         UserRideOccurrenceDocument document = occurrence.ToDocument();
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(occurrence, pendingAuditEvent);
+        }
+
         UpdateResult result = await this.collection.UpdateOneAsync(
             UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
                 document.Id,
                 document.VisitId,
                 document.UserId,
                 expectedVersion),
-            BuildDomainUpdate(document),
+            BuildDomainUpdate(document, pendingAuditEvent),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
@@ -511,9 +585,36 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             cancellationToken);
     }
 
-    public async Task<bool> TryDeleteOwnedAsync(
+    public Task<bool> TryDeleteOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryDeleteOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            cancellationToken);
+    }
+
+    private async Task<bool> TryDeleteOwnedCoreAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
@@ -527,6 +628,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         UserRideOccurrenceDocument document = occurrence.ToDocument();
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(occurrence, pendingAuditEvent);
+            document.PendingAuditEvents = new List<PassportAuditEventDocument>
+            {
+                pendingAuditEvent.ToDocument(),
+            };
+        }
+
         return await this.deletionCoordinator.TryReserveAndApplyAsync(
             document,
             expectedVersion,
@@ -564,7 +674,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             cancellationToken);
     }
 
-    public async Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
+    public Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
         RideOccurrenceReorderRequest request,
         IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
         IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
@@ -575,8 +685,62 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string? relatedCreationClientOperationId,
         CancellationToken cancellationToken)
     {
+        return this.ReorderIdempotentCoreAsync(
+            request,
+            changes,
+            guards,
+            resultOccurrence,
+            wasNormalized,
+            operationAtUtc,
+            clientOperationId,
+            relatedCreationClientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAuditedAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvents);
+        return this.ReorderIdempotentCoreAsync(
+            request,
+            changes,
+            guards,
+            resultOccurrence,
+            wasNormalized,
+            operationAtUtc,
+            clientOperationId,
+            relatedCreationClientOperationId,
+            pendingAuditEvents,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentCoreAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
         ValidateReorderRequest(request);
         ValidateReorderChanges(request, changes, guards, resultOccurrence);
+        ValidatePendingAuditEvents(
+            changes.Select(static change => change.Occurrence).ToArray(),
+            pendingAuditEvents);
         if (operationAtUtc.Kind != DateTimeKind.Utc)
         {
             throw new ArgumentException("The operation timestamp must be UTC.", nameof(operationAtUtc));
@@ -599,7 +763,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             relatedCreationOperationKeyHash,
             operationAtUtc,
             operationKeyHash,
-            payloadHash);
+            payloadHash,
+            pendingAuditEvents);
         UserRideOccurrenceCreationOperationDocument operation;
         bool wasExisting;
         try
@@ -760,7 +925,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     internal static UpdateDefinition<UserRideOccurrenceDocument> BuildDomainUpdate(
-        UserRideOccurrenceDocument document)
+        UserRideOccurrenceDocument document,
+        PassportAuditEvent? pendingAuditEvent = null)
     {
         ArgumentNullException.ThrowIfNull(document);
 
@@ -783,6 +949,13 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
         AddOptionalUpdate(definitions, updates, "assessment", document.Assessment);
         AddOptionalUpdate(definitions, updates, "deletedAtUtc", document.DeletedAtUtc);
+        if (pendingAuditEvent is not null)
+        {
+            definitions.Add(updates.Push(
+                static item => item.PendingAuditEvents,
+                pendingAuditEvent.ToDocument()));
+        }
+
         return updates.Combine(definitions);
     }
 
@@ -1120,6 +1293,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             bool wasOrderNormalized,
             string operationKeyHash,
             string payloadHash,
+            IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
             CancellationToken cancellationToken)
     {
         UserRideOccurrenceCreationOperationDocument requested =
@@ -1129,7 +1303,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 expectedLastSortPosition,
                 wasOrderNormalized,
                 operationKeyHash,
-                payloadHash);
+                payloadHash,
+                pendingAuditEvents);
         try
         {
             await this.operationCollection.InsertOneAsync(
@@ -1360,6 +1535,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     static document => document.WasNormalized,
                     requested.WasNormalized),
                 updates.Set(static document => document.Items, requested.Items),
+                updates.Set(
+                    static document => document.PendingAuditEvents,
+                    requested.PendingAuditEvents),
                 updates.Set(static document => document.UpdatedAt, requested.UpdatedAt),
             };
         if (requested.AppendBaseSortPosition.HasValue)
@@ -1515,7 +1693,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         long? expectedLastSortPosition,
         bool wasOrderNormalized,
         string operationKeyHash,
-        string payloadHash)
+        string payloadHash,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents)
     {
         DateTime createdAtUtc = occurrences.Min(static occurrence => occurrence.CreatedAtUtc);
         return new UserRideOccurrenceCreationOperationDocument
@@ -1549,6 +1728,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     };
                 })
                 .ToList(),
+            PendingAuditEvents = pendingAuditEvents?
+                .Select(static auditEvent => auditEvent.ToDocument())
+                .ToList(),
             CreatedAt = createdAtUtc,
             UpdatedAt = createdAtUtc,
         };
@@ -1563,7 +1745,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string? relatedCreationOperationKeyHash,
         DateTime operationAtUtc,
         string operationKeyHash,
-        string payloadHash)
+        string payloadHash,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents)
     {
         UserRideOccurrenceDocument resultDocument = resultOccurrence.ToDocument();
         return new UserRideOccurrenceCreationOperationDocument
@@ -1605,6 +1788,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 })
                 .ToList(),
             ReorderResultSnapshot = resultDocument.CreateCreationSnapshot(),
+            PendingAuditEvents = pendingAuditEvents?
+                .Select(static auditEvent => auditEvent.ToDocument())
+                .ToList(),
             CreatedAt = operationAtUtc,
             UpdatedAt = operationAtUtc,
         };
@@ -1627,6 +1813,58 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             updates.Set(
                 static document => document.LastReorderOperationKeyHash,
                 operationKeyHash));
+    }
+
+    private static void ValidatePendingAuditEvents(
+        IReadOnlyCollection<RideOccurrence> occurrences,
+        IReadOnlyCollection<PassportAuditEvent>? auditEvents)
+    {
+        if (auditEvents is null)
+        {
+            return;
+        }
+
+        if (auditEvents.Count != occurrences.Count)
+        {
+            throw new ArgumentException(
+                "Each mutated occurrence must have exactly one pending audit event.",
+                nameof(auditEvents));
+        }
+
+        IReadOnlyDictionary<string, RideOccurrence> byId = occurrences.ToDictionary(
+            static occurrence => occurrence.Id.Value,
+            StringComparer.Ordinal);
+        foreach (PassportAuditEvent auditEvent in auditEvents)
+        {
+            if (!byId.TryGetValue(auditEvent.EntityId, out RideOccurrence? occurrence))
+            {
+                throw new ArgumentException(
+                    "A pending audit event does not match the occurrence batch.",
+                    nameof(auditEvents));
+            }
+
+            ValidatePendingAuditEvent(occurrence, auditEvent);
+        }
+    }
+
+    private static void ValidatePendingAuditEvent(
+        RideOccurrence occurrence,
+        PassportAuditEvent auditEvent)
+    {
+        if (!string.Equals(auditEvent.UserId, occurrence.UserId, StringComparison.Ordinal)
+            || !string.Equals(
+                auditEvent.VisitId,
+                occurrence.VisitId.Value,
+                StringComparison.Ordinal)
+            || !string.Equals(auditEvent.EntityId, occurrence.Id.Value, StringComparison.Ordinal)
+            || auditEvent.EntityType is not (
+                PassportAuditEntityType.RideOccurrence or PassportAuditEntityType.RideAssessment)
+            || auditEvent.EntityVersion != occurrence.Version)
+        {
+            throw new ArgumentException(
+                "The pending audit event does not match the ride occurrence mutation.",
+                nameof(auditEvent));
+        }
     }
 
     private static void ValidateReorderRequest(RideOccurrenceReorderRequest request)

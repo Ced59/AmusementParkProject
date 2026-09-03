@@ -21,17 +21,29 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
     private readonly IParkRepository parkRepository;
     private readonly IPassportClock clock;
     private readonly IPassportTimeZoneValidator timeZoneValidator;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal CreateVisitCommandHandler(
+        IUserVisitRepository visitRepository,
+        IParkRepository parkRepository,
+        IPassportClock clock,
+        IPassportTimeZoneValidator timeZoneValidator)
+        : this(visitRepository, parkRepository, clock, timeZoneValidator, null!)
+    {
+    }
 
     public CreateVisitCommandHandler(
         IUserVisitRepository visitRepository,
         IParkRepository parkRepository,
         IPassportClock clock,
-        IPassportTimeZoneValidator timeZoneValidator)
+        IPassportTimeZoneValidator timeZoneValidator,
+        IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.parkRepository = parkRepository;
         this.clock = clock;
         this.timeZoneValidator = timeZoneValidator;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<ApplicationResult<CreateVisitResult>> HandleAsync(
@@ -137,11 +149,33 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
                 PassportApplicationErrors.ParkNotFound());
         }
 
-        IdempotentVisitCreationResult creation =
-            await this.visitRepository.CreateIdempotentAsync(
+        PassportAuditEvent? auditEvent = this.auditPublisher is null
+            ? null
+            : PassportVisitAuditEventFactory.VisitCreated(visit, clientOperationId);
+        IdempotentVisitCreationResult creation = auditEvent is null
+            ? await this.visitRepository.CreateIdempotentAsync(
                 visit,
                 clientOperationId,
+                cancellationToken)
+            : await this.visitRepository.CreateIdempotentAuditedAsync(
+                visit,
+                clientOperationId,
+                auditEvent,
                 cancellationToken);
+        if (creation.Visit is not null
+            && creation.Status != IdempotentVisitCreationStatus.Conflict)
+        {
+            PassportAuditEvent? persistedEvent = this.auditPublisher is null
+                ? null
+                : PassportVisitAuditEventFactory.VisitCreated(
+                    creation.Visit,
+                    clientOperationId);
+            await PassportAuditDelivery.PublishAsync(
+                this.auditPublisher,
+                persistedEvent,
+                cancellationToken);
+        }
+
         return ToApplicationResult(creation);
     }
 

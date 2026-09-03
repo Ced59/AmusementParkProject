@@ -80,6 +80,18 @@
       "title": "Ergänze deinen Besuch",
       "private": "Privat",
       "loading": "Dein Besuch wird geladen…",
+      "visit": {
+        "eyebrow": "Besuchsstatus", "title": "Korrigiere und organisiere deinen Besuch",
+        "description": "Die Versionierung verhindert das Überschreiben neuerer Änderungen, und jede Korrektur wird protokolliert, ohne deine privaten Texte zu kopieren.",
+        "locked": "Dieser Besuch ist schreibgeschützt. Öffne ihn ausdrücklich erneut, bevor du Angaben, Bewertungen oder die Timeline änderst.",
+        "editTitle": "Besuchsangaben bearbeiten", "editHint": "Verfügbar, solange der Besuch ein Entwurf ist",
+        "status": { "Draft": "Entwurf", "Completed": "Abgeschlossen", "Archived": "Archiviert" },
+        "fields": { "precision": "Datumsgenauigkeit", "dayPrecision": "Genauer Tag", "monthPrecision": "Monat", "yearPrecision": "Jahr", "year": "Jahr", "month": "Monat", "day": "Tag", "approximate": "Ungefähres Datum", "timeZone": "Zeitzone", "timeZoneHint": "Optionale IANA-Kennung, zum Beispiel Europe/Paris.", "visitTitle": "Besuchstitel", "privateNote": "Private Notiz", "privateNoteHint": "Nur du kannst diese Notiz lesen." },
+        "actions": { "save": "Angaben speichern", "complete": "Als abgeschlossen markieren", "reopen": "Zum Korrigieren öffnen", "restore": "Als Entwurf wiederherstellen", "archive": "Archivieren" },
+        "validation": { "yearInvalid": "Gib ein gültiges Jahr ein.", "monthInvalid": "Gib einen Monat von 1 bis 12 ein.", "dayInvalid": "Dieser Tag existiert im gewählten Monat nicht.", "timeZoneInvalid": "Die Zeitzone ist ungültig.", "titleTooLong": "Der Titel darf höchstens 160 Zeichen lang sein.", "noteTooLong": "Die private Notiz darf höchstens 4.000 Zeichen lang sein." },
+        "errors": { "conflict": "Der Besuch wurde zwischenzeitlich geändert. Der aktuelle Stand wurde geladen; prüfe deine Eingabe.", "recovery": "Die Änderung konnte nicht geprüft werden. Deine Eingabe bleibt erhalten; versuche es erneut.", "save": "Der Besuch konnte nicht aktualisiert werden.", "transition": "Dieser Statuswechsel ist für den Besuch nicht möglich.", "saveBeforeStatus": "Speichere zuerst die geänderten Angaben." },
+        "messages": { "updated": "Die Besuchsangaben wurden aktualisiert.", "completed": "Der Besuch ist jetzt abgeschlossen.", "reopened": "Der Besuch wurde zur Korrektur geöffnet.", "archived": "Der Besuch wurde archiviert." }
+      },
       "assessment": {
         "title": "Dein Eindruck von diesem Park",
         "description": "Bewerte genau diesen Besuch von 0,5 bis 5. Diese Beobachtung bleibt privat und verändert weder die Community-Bewertung noch die Ranglisten.",
