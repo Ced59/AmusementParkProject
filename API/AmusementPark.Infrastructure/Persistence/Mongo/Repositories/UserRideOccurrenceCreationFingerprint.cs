@@ -1,0 +1,57 @@
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using AmusementPark.Core.Domain.Visits;
+
+namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+
+internal static class UserRideOccurrenceCreationFingerprint
+{
+    public static string HashOperationKey(string clientOperationId)
+    {
+        return Hash(clientOperationId);
+    }
+
+    public static string HashPayload(IReadOnlyList<RideOccurrence> occurrences)
+    {
+        ArgumentNullException.ThrowIfNull(occurrences);
+
+        IReadOnlyList<CreationItemPayload> items = occurrences
+            .Select(static occurrence => new CreationItemPayload(
+                occurrence.VisitId.Value,
+                occurrence.UserId,
+                occurrence.ParkId,
+                occurrence.ParkItemId,
+                occurrence.Moment.LocalTime,
+                occurrence.Moment.IsApproximate,
+                occurrence.Status,
+                occurrence.Source,
+                occurrence.HistoricalConsistency,
+                occurrence.HistoricalTarget?.Name,
+                occurrence.HistoricalTarget?.Category,
+                occurrence.PrivateNote))
+            .ToArray();
+        string canonicalPayload = JsonSerializer.Serialize(items);
+        return Hash(canonicalPayload);
+    }
+
+    private static string Hash(string value)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(value);
+        return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+    }
+
+    private sealed record CreationItemPayload(
+        string VisitId,
+        string UserId,
+        string ParkId,
+        string ParkItemId,
+        TimeOnly? LocalTime,
+        bool IsApproximate,
+        RideOccurrenceStatus Status,
+        RideLogSource Source,
+        HistoricalConsistency HistoricalConsistency,
+        string? HistoricalTargetName,
+        string? HistoricalTargetCategory,
+        string? PrivateNote);
+}

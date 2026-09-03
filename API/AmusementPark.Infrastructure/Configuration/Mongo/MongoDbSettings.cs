@@ -112,6 +112,11 @@ public sealed class MongoDbSettings
 
     public string UserVisitsCollectionName { get; set; } = "user-visits";
 
+    public string UserRideOccurrencesCollectionName { get; set; } = "user-ride-occurrences";
+
+    public string UserRideOccurrenceOperationsCollectionName { get; set; } =
+        "user-ride-occurrence-operations";
+
     public string CommentsCollectionName { get; set; } = "comments";
 
     public string CountriesCollectionName { get; set; } = "countries";

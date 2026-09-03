@@ -1,6 +1,20 @@
 {
-  "version": "5.0.6",
+  "version": "5.0.7",
   "history": [
+    {
+      "version": "5.0.7",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Préparation du journal privé des attractions pour chaque visite.",
+        "en": "Preparation of the private attraction log for each visit.",
+        "de": "Vorbereitung des privaten Attraktionsprotokolls für jeden Besuch.",
+        "nl": "Voorbereiding van het privé-attractielogboek voor elk bezoek.",
+        "it": "Preparazione del diario privato delle attrazioni per ogni visita.",
+        "es": "Preparación del diario privado de atracciones para cada visita.",
+        "pl": "Przygotowanie prywatnego dziennika atrakcji dla każdej wizyty.",
+        "pt": "Preparação do diário privado de atrações para cada visita."
+      }
+    },
     {
       "version": "5.0.6",
       "releasedAt": "2026-09-03",
