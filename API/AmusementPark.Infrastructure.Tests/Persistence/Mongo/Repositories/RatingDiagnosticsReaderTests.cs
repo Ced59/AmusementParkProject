@@ -35,8 +35,13 @@ public sealed class RatingDiagnosticsReaderTests
         BsonArray integrity = facet["integrity"].AsBsonArray;
         Assert.Equal("custom-rating-aggregates", integrity[3]["$lookup"]["from"].AsString);
         BsonArray distinctValues = facet["distinctValues"].AsBsonArray;
-        BsonArray sample = distinctValues[3]["$facet"]["sample"].AsBsonArray;
-        Assert.Equal(RatingDiagnosticsReader.DistinctValueSampleLimit, sample[0]["$limit"].AsInt32);
+        Assert.DoesNotContain("\"$facet\"", distinctValues.ToJson(), StringComparison.Ordinal);
+        BsonDocument distinctValuesSummary = distinctValues[2]["$group"].AsBsonDocument;
+        Assert.Equal(1, distinctValuesSummary["count"]["$sum"].AsInt32);
+        Assert.Equal(
+            RatingDiagnosticsReader.DistinctValueSampleLimit,
+            distinctValuesSummary["sample"]["$minN"]["n"].AsInt32);
+        Assert.Equal("$_id", distinctValuesSummary["sample"]["$minN"]["input"].AsString);
 
         BsonDocument distributionMatch = facet["targetDistribution"].AsBsonArray[0]["$match"].AsBsonDocument;
         Assert.True(distributionMatch["_diagnosticIsExactHalfStep"].AsBoolean);
