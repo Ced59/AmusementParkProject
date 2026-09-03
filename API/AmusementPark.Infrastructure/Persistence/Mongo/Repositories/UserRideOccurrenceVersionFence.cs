@@ -37,7 +37,7 @@ internal sealed class UserRideOccurrenceVersionFence
         return update.MatchedCount == 1;
     }
 
-    public async Task<bool> TryApplyNoOpReorderAsync(
+    public async Task<bool> TryApplyUnchangedReorderAsync(
         RideOccurrenceReorderRequest request,
         string operationKeyHash,
         CancellationToken cancellationToken)

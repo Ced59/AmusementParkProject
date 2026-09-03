@@ -868,20 +868,39 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
-    public async Task ReorderIdempotentAsync_WithStaleNoOpVersion_ShouldConflict()
+    public async Task ReorderIdempotentAsync_WhenNormalizationOmitsMovedOccurrence_ShouldFenceIt()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
             new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
         Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
             new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
                 MockBehavior.Strict);
-        RideOccurrence moved = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrence moved = CreateOccurrence("occurrence-1", "item-1", 3072);
+        RideOccurrence normalizedPrevious = CreateOccurrence(
+            "occurrence-2",
+            "item-2",
+            4000);
+        RideOccurrence normalizedAnchor = CreateOccurrence(
+            "occurrence-3",
+            "item-3",
+            4001);
         UserRideOccurrenceDocument concurrent = moved.ToDocument();
         concurrent.Status = RideOccurrenceStatus.Attempted;
         concurrent.Version = 2;
         concurrent.UpdatedAt = NowUtc.AddMinutes(1);
+        UserRideOccurrenceDocument previousBeforeNormalization =
+            normalizedPrevious.ToDocument();
+        UserRideOccurrenceDocument anchorBeforeNormalization =
+            normalizedAnchor.ToDocument();
+        normalizedPrevious.MoveTo(2048, NowUtc.AddMinutes(2));
+        normalizedAnchor.MoveTo(4096, NowUtc.AddMinutes(2));
         Mock<IAsyncCursor<UserRideOccurrenceDocument>> guardCursor =
-            CreateAsyncCursor(new[] { concurrent });
+            CreateAsyncCursor(new[]
+            {
+                concurrent,
+                previousBeforeNormalization,
+                anchorBeforeNormalization,
+            });
         Mock<IAsyncCursor<UserRideOccurrenceDocument>> currentCursor =
             CreateAsyncCursor(new[] { concurrent });
         UserRideOccurrenceCreationOperationDocument? reserved = null;
@@ -932,14 +951,29 @@ public sealed class UserRideOccurrenceRepositoryTests
             "user-1",
             moved.Id,
             1,
-            null,
-            RideOccurrencePlacement.Last);
+            normalizedAnchor.Id,
+            RideOccurrencePlacement.Before);
 
         IdempotentRideOccurrenceReorderResult result =
             await repository.ReorderIdempotentAsync(
                 request,
-                Array.Empty<RideOccurrenceVersionedChange>(),
-                new[] { new RideOccurrenceOrderGuard(moved.Id, 1024) },
+                new[]
+                {
+                    new RideOccurrenceVersionedChange(
+                        normalizedPrevious,
+                        1,
+                        4000),
+                    new RideOccurrenceVersionedChange(
+                        normalizedAnchor,
+                        1,
+                        4001),
+                },
+                new[]
+                {
+                    new RideOccurrenceOrderGuard(moved.Id, 3072),
+                    new RideOccurrenceOrderGuard(normalizedPrevious.Id, 4000),
+                    new RideOccurrenceOrderGuard(normalizedAnchor.Id, 4001),
+                },
                 moved,
                 false,
                 NowUtc.AddMinutes(2),
@@ -949,6 +983,12 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal(IdempotentRideOccurrenceReorderStatus.Conflict, result.Status);
         Assert.NotNull(reserved);
         Assert.Equal("conflict", reserved.OperationState);
+        Assert.DoesNotContain(
+            reserved.ReorderItems!,
+            item => string.Equals(
+                item.OccurrenceId,
+                moved.Id.Value,
+                StringComparison.Ordinal));
         Assert.NotNull(versionFence);
         Assert.Equal(1, Render(versionFence)["version"].AsInt64);
         Assert.NotNull(versionFenceUpdate);

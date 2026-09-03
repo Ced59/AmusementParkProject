@@ -123,7 +123,10 @@ internal static class UserRideOccurrenceOperationValidator
                 operation.ReorderResultSnapshot.VisitId,
                 request.VisitId.Value,
                 StringComparison.Ordinal)
-            && (operation.ReorderItems.Count != 0
+            && (operation.ReorderItems.Any(item => string.Equals(
+                    item.OccurrenceId,
+                    request.OccurrenceId.Value,
+                    StringComparison.Ordinal))
                 || operation.ReorderResultSnapshot.Version == request.ExpectedVersion);
     }
 }

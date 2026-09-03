@@ -721,8 +721,13 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 }
             }
 
-            if (operation.ReorderItems!.Count == 0
-                && !await this.versionFence.TryApplyNoOpReorderAsync(
+            bool movedOccurrenceHasAllocation = operation.ReorderItems!.Any(item =>
+                string.Equals(
+                    item.OccurrenceId,
+                    request.OccurrenceId.Value,
+                    StringComparison.Ordinal));
+            if (!movedOccurrenceHasAllocation
+                && !await this.versionFence.TryApplyUnchangedReorderAsync(
                     request,
                     operationKeyHash,
                     cancellationToken))
