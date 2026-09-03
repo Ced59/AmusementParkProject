@@ -5,6 +5,12 @@ using AmusementPark.Application.Features.Passport.Results;
 
 namespace AmusementPark.Application.Features.Passport.Queries;
 
+public sealed record GetRideOccurrenceQuery(
+    string UserId,
+    string VisitId,
+    string OccurrenceId)
+    : IQuery<ApplicationResult<RideOccurrenceResult>>;
+
 public sealed record ListRideOccurrencesQuery(
     string UserId,
     string VisitId,

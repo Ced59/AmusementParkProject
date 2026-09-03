@@ -29,6 +29,7 @@ public sealed class PassportRideOccurrencesController : ControllerBase
     private readonly ICommandHandler<UpdateRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>> updateHandler;
     private readonly ICommandHandler<DeleteRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>> deleteHandler;
     private readonly ICommandHandler<ReorderRideOccurrenceCommand, ApplicationResult<ReorderRideOccurrenceResult>> reorderHandler;
+    private readonly IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>> getHandler;
     private readonly IQueryHandler<ListRideOccurrencesQuery, ApplicationResult<RideOccurrencePageResult>> listHandler;
 
     public PassportRideOccurrencesController(
@@ -36,12 +37,14 @@ public sealed class PassportRideOccurrencesController : ControllerBase
         ICommandHandler<UpdateRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>> updateHandler,
         ICommandHandler<DeleteRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>> deleteHandler,
         ICommandHandler<ReorderRideOccurrenceCommand, ApplicationResult<ReorderRideOccurrenceResult>> reorderHandler,
+        IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>> getHandler,
         IQueryHandler<ListRideOccurrencesQuery, ApplicationResult<RideOccurrencePageResult>> listHandler)
     {
         this.addHandler = addHandler;
         this.updateHandler = updateHandler;
         this.deleteHandler = deleteHandler;
         this.reorderHandler = reorderHandler;
+        this.getHandler = getHandler;
         this.listHandler = listHandler;
     }
 
@@ -68,6 +71,7 @@ public sealed class PassportRideOccurrencesController : ControllerBase
         }
 
         SetReplayHeader(this.Response, result.Value.WasReplayed);
+        SetOrderNormalizedHeader(this.Response, result.Value.WasNormalized);
         RideOccurrenceResult occurrence = result.Value.Occurrences.Single();
         PassportRideOccurrenceDto response = occurrence.ToHttp();
         return this.Created(
@@ -98,9 +102,31 @@ public sealed class PassportRideOccurrencesController : ControllerBase
         }
 
         SetReplayHeader(this.Response, result.Value.WasReplayed);
+        SetOrderNormalizedHeader(this.Response, result.Value.WasNormalized);
         return this.StatusCode(
             StatusCodes.Status201Created,
             result.Value.Occurrences.Select(static occurrence => occurrence.ToHttp()).ToArray());
+    }
+
+    [HttpGet("occurrences/{occurrenceId}")]
+    [ProducesResponseType(typeof(PassportRideOccurrenceDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAsync(
+        [FromRoute] string visitId,
+        [FromRoute] string occurrenceId,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return UnauthorizedResult();
+        }
+
+        ApplicationResult<RideOccurrenceResult> result = await this.getHandler.HandleAsync(
+            new GetRideOccurrenceQuery(userId, visitId, occurrenceId),
+            cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
     }
 
     [HttpGet("occurrences")]
@@ -209,10 +235,7 @@ public sealed class PassportRideOccurrencesController : ControllerBase
         }
 
         SetReplayHeader(this.Response, result.Value.WasReplayed);
-        if (result.Value.WasNormalized)
-        {
-            this.Response.Headers["Ride-Order-Normalized"] = "true";
-        }
+        SetOrderNormalizedHeader(this.Response, result.Value.WasNormalized);
 
         return this.Ok(result.Value.Occurrence.ToHttp());
     }
@@ -238,6 +261,14 @@ public sealed class PassportRideOccurrencesController : ControllerBase
         if (wasReplayed)
         {
             response.Headers["Idempotency-Replayed"] = "true";
+        }
+    }
+
+    private static void SetOrderNormalizedHeader(HttpResponse response, bool wasNormalized)
+    {
+        if (wasNormalized)
+        {
+            response.Headers["Ride-Order-Normalized"] = "true";
         }
     }
 }

@@ -25,7 +25,8 @@ public sealed record RideOccurrenceResult(
 
 public sealed record CreateRideOccurrencesResult(
     IReadOnlyCollection<RideOccurrenceResult> Occurrences,
-    bool WasReplayed);
+    bool WasReplayed,
+    bool WasNormalized);
 
 public sealed record RideOccurrencePageResult(
     IReadOnlyCollection<RideOccurrenceResult> Items,

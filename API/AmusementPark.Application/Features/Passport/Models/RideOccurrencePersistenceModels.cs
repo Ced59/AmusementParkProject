@@ -45,7 +45,8 @@ public enum IdempotentRideOccurrenceCreationStatus
 
 public sealed record IdempotentRideOccurrenceCreationResult(
     IdempotentRideOccurrenceCreationStatus Status,
-    IReadOnlyCollection<RideOccurrence> Occurrences);
+    IReadOnlyCollection<RideOccurrence> Occurrences,
+    bool WasNormalized = false);
 
 public sealed record RideOccurrenceReorderRequest(
     VisitId VisitId,

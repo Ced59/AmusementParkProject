@@ -155,6 +155,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
+        bool wasOrderNormalized,
         string clientOperationId,
         CancellationToken cancellationToken)
     {
@@ -170,6 +171,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 scope.UserId,
                 scope.VisitId,
                 expectedLastSortPosition,
+                wasOrderNormalized,
                 operationKeyHash,
                 payloadHash,
                 cancellationToken);
@@ -235,7 +237,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 isNewOperation
                     ? IdempotentRideOccurrenceCreationStatus.Created
                     : IdempotentRideOccurrenceCreationStatus.Replayed,
-                created);
+                created,
+                operation.WasNormalized);
         }
         catch (MongoBulkWriteException<UserRideOccurrenceDocument> exception)
             when (ContainsOnlyDuplicateKeyErrors(exception))
@@ -603,7 +606,11 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             return CreateConflictResult();
         }
 
-        return ResolveIdempotentBatchCreation(existing, payloadHash, expectedCount);
+        IdempotentRideOccurrenceCreationResult? result =
+            ResolveIdempotentBatchCreation(existing, payloadHash, expectedCount);
+        return result is null
+            ? null
+            : result with { WasNormalized = operation.WasNormalized };
     }
 
     internal static UpdateDefinition<UserRideOccurrenceDocument> BuildDomainUpdate(
@@ -838,6 +845,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             string userId,
             VisitId visitId,
             long? expectedLastSortPosition,
+            bool wasOrderNormalized,
             string operationKeyHash,
             string payloadHash,
             CancellationToken cancellationToken)
@@ -847,6 +855,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 occurrences,
                 userId,
                 expectedLastSortPosition,
+                wasOrderNormalized,
                 operationKeyHash,
                 payloadHash);
         try
@@ -941,6 +950,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         IReadOnlyList<RideOccurrence> occurrences,
         string userId,
         long? expectedLastSortPosition,
+        bool wasOrderNormalized,
         string operationKeyHash,
         string payloadHash)
     {
@@ -956,6 +966,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             OperationState = PendingOperationState,
             AppendBaseWasEmpty = !expectedLastSortPosition.HasValue,
             AppendBaseSortPosition = expectedLastSortPosition,
+            WasNormalized = wasOrderNormalized,
             Items = occurrences
                 .Select((occurrence, index) =>
                 {

@@ -117,6 +117,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         CancellationToken cancellationToken)
     {
         const int maximumAttempts = 3;
+        bool wasOrderNormalized = false;
         for (int attempt = 0; attempt < maximumAttempts; attempt++)
         {
             long? currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
@@ -140,6 +141,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 {
                     continue;
                 }
+
+                wasOrderNormalized = true;
 
                 currentMaximum = await this.occurrenceRepository.GetLastSortPositionAsync(
                     visit.Id,
@@ -186,6 +189,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                     creationRequest,
                     occurrences,
                     currentMaximum,
+                    wasOrderNormalized,
                     operationId,
                     cancellationToken);
             if (created.Status != IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict)
@@ -281,7 +285,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
 
         CreateRideOccurrencesResult value = new CreateRideOccurrencesResult(
             result.Occurrences.Select(PassportRideOccurrenceResultFactory.Create).ToArray(),
-            result.Status == IdempotentRideOccurrenceCreationStatus.Replayed);
+            result.Status == IdempotentRideOccurrenceCreationStatus.Replayed,
+            result.WasNormalized);
         return ApplicationResult<CreateRideOccurrencesResult>.Success(value);
     }
 

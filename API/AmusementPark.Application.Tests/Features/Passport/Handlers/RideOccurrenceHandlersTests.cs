@@ -53,12 +53,14 @@ public sealed class RideOccurrenceHandlersTests
                     request.Items.All(static item => !item.ConfirmHistoricalConflict)),
                 It.IsAny<IReadOnlyList<RideOccurrence>>(),
                 null,
+                false,
                 "request-1",
                 CancellationToken.None))
             .Callback((
                 RideOccurrenceCreationRequest _,
                 IReadOnlyList<RideOccurrence> items,
                 long? _,
+                bool _,
                 string _,
                 CancellationToken _) =>
                 captured = items)
@@ -75,6 +77,7 @@ public sealed class RideOccurrenceHandlersTests
             CreateBatchCommand(count: 2));
 
         Assert.True(result.IsSuccess);
+        Assert.False(result.Value?.WasNormalized);
         Assert.Equal(2, result.Value?.Occurrences.Count);
         Assert.Equal(new[] { 1024L, 2048L }, captured?.Select(static item => item.SortPosition));
         Assert.All(captured!, static item =>
@@ -119,12 +122,14 @@ public sealed class RideOccurrenceHandlersTests
                 It.IsAny<RideOccurrenceCreationRequest>(),
                 It.IsAny<IReadOnlyList<RideOccurrence>>(),
                 It.IsAny<long?>(),
+                false,
                 "request-1",
                 CancellationToken.None))
             .Callback((
                 RideOccurrenceCreationRequest _,
                 IReadOnlyList<RideOccurrence> items,
                 long? _,
+                bool _,
                 string _,
                 CancellationToken _) =>
             {
@@ -137,6 +142,7 @@ public sealed class RideOccurrenceHandlersTests
                 RideOccurrenceCreationRequest _,
                 IReadOnlyList<RideOccurrence> items,
                 long? _,
+                bool _,
                 string _,
                 CancellationToken _) => persistenceAttempt == 1
                 ? new IdempotentRideOccurrenceCreationResult(
@@ -247,17 +253,20 @@ public sealed class RideOccurrenceHandlersTests
                 It.IsAny<RideOccurrenceCreationRequest>(),
                 It.IsAny<IReadOnlyList<RideOccurrence>>(),
                 2048,
+                true,
                 "request-1",
                 CancellationToken.None))
             .Callback((
                 RideOccurrenceCreationRequest _,
                 IReadOnlyList<RideOccurrence> items,
                 long? _,
+                bool _,
                 string _,
                 CancellationToken _) => created = items)
             .ReturnsAsync(() => new IdempotentRideOccurrenceCreationResult(
                 IdempotentRideOccurrenceCreationStatus.Created,
-                created!));
+                created!,
+                true));
         AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
             visits,
             occurrences,
@@ -269,6 +278,7 @@ public sealed class RideOccurrenceHandlersTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(3072, Assert.Single(created!).SortPosition);
+        Assert.True(result.Value?.WasNormalized);
         occurrences.VerifyAll();
         visits.VerifyAll();
         targets.VerifyAll();
@@ -382,12 +392,14 @@ public sealed class RideOccurrenceHandlersTests
                     Assert.Single(request.Items).ConfirmHistoricalConflict),
                 It.IsAny<IReadOnlyList<RideOccurrence>>(),
                 null,
+                false,
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((
                 RideOccurrenceCreationRequest _,
                 IReadOnlyList<RideOccurrence> created,
                 long? _,
+                bool _,
                 string _,
                 CancellationToken _) => new IdempotentRideOccurrenceCreationResult(
                     IdempotentRideOccurrenceCreationStatus.Created,
@@ -716,6 +728,56 @@ public sealed class RideOccurrenceHandlersTests
             Assert.Single(result.Errors).Code);
         occurrences.VerifyAll();
         visits.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Get_ShouldScopeTheOccurrenceToOwnerAndVisit()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
+            occurrences.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new GetRideOccurrenceQuery(
+                visit.UserId,
+                visit.Id.Value,
+                occurrence.Id.Value));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(occurrence.Id.Value, result.Value?.Id);
+        Assert.Equal(occurrence.PrivateNote, result.Value?.PrivateNote);
+        occurrences.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Get_WhenOccurrenceIsOutsideOwnerScope_ShouldReturnNotFound()
+    {
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                RideOccurrenceId.Parse("occurrence-1"),
+                VisitId.Parse("visit-1"),
+                "owner-1",
+                CancellationToken.None))
+            .ReturnsAsync((RideOccurrence?)null);
+        GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
+            occurrences.Object);
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new GetRideOccurrenceQuery("owner-1", "visit-1", "occurrence-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("ride-occurrence.not-found", Assert.Single(result.Errors).Code);
+        occurrences.VerifyAll();
     }
 
     [Fact]

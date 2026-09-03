@@ -46,6 +46,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 Assert.Equal("visit-1", document.VisitId);
                 Assert.Equal("pending", document.OperationState);
                 Assert.True(document.AppendBaseWasEmpty);
+                Assert.True(document.WasNormalized);
                 Assert.Equal(3, document.Items.Count);
                 Assert.All(document.Items, static item => Assert.NotNull(item.CreationSnapshot));
                 Assert.All(document.Items, static item =>
@@ -94,6 +95,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 CreateRequest(occurrences),
                 occurrences,
                 null,
+                true,
                 " request-1 ",
                 CancellationToken.None);
 
@@ -106,6 +108,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.All(inserted, static document => Assert.NotNull(document.CreationSnapshot));
         Assert.Equal(IdempotentRideOccurrenceCreationStatus.Created, result.Status);
         Assert.Equal(3, result.Occurrences.Count);
+        Assert.True(result.WasNormalized);
         collection.VerifyAll();
         operationCollection.VerifyAll();
         appendBaseCursor.VerifyAll();
@@ -155,6 +158,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 CreateRequest(new[] { occurrence }),
                 new[] { occurrence },
                 1024,
+                false,
                 "request-1",
                 CancellationToken.None);
 
@@ -489,6 +493,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 OperationState = "completed",
                 AppendBaseWasEmpty = true,
                 AppendBaseValidated = true,
+                WasNormalized = true,
                 Items = new List<UserRideOccurrenceCreationAllocationDocument>
                 {
                     new UserRideOccurrenceCreationAllocationDocument
@@ -512,6 +517,7 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         Assert.NotNull(result);
         Assert.Equal(IdempotentRideOccurrenceCreationStatus.Replayed, result.Status);
+        Assert.True(result.WasNormalized);
         RideOccurrence replayed = Assert.Single(result.Occurrences);
         Assert.Equal(1024, replayed.SortPosition);
         Assert.Equal(RideOccurrenceStatus.Completed, replayed.Status);
@@ -582,6 +588,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 CreateRequest(occurrences),
                 occurrences,
                 null,
+                false,
                 "request-1",
                 CancellationToken.None));
     }

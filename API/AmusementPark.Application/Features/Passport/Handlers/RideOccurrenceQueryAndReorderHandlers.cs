@@ -10,6 +10,43 @@ using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
 
+public sealed class GetRideOccurrenceQueryHandler
+    : IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>
+{
+    private readonly IRideOccurrenceRepository occurrenceRepository;
+
+    public GetRideOccurrenceQueryHandler(IRideOccurrenceRepository occurrenceRepository)
+    {
+        this.occurrenceRepository = occurrenceRepository;
+    }
+
+    public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
+        GetRideOccurrenceQuery query,
+        CancellationToken cancellationToken = default)
+    {
+        ParsedOccurrenceScope? scope = PassportRideOccurrenceHandlerSupport.ParseOccurrenceScope(
+            query.UserId,
+            query.VisitId,
+            query.OccurrenceId);
+        if (scope is null)
+        {
+            return ApplicationResult<RideOccurrenceResult>.Failure(
+                PassportApplicationErrors.RideOccurrenceNotFound());
+        }
+
+        RideOccurrence? occurrence = await this.occurrenceRepository.GetOwnedAsync(
+            scope.OccurrenceId,
+            scope.VisitId,
+            scope.UserId,
+            cancellationToken);
+        return occurrence is null
+            ? ApplicationResult<RideOccurrenceResult>.Failure(
+                PassportApplicationErrors.RideOccurrenceNotFound())
+            : ApplicationResult<RideOccurrenceResult>.Success(
+                PassportRideOccurrenceResultFactory.Create(occurrence));
+    }
+}
+
 public sealed class ListRideOccurrencesQueryHandler
     : IQueryHandler<ListRideOccurrencesQuery, ApplicationResult<RideOccurrencePageResult>>
 {

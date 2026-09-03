@@ -42,7 +42,8 @@ public sealed class PassportRideOccurrencesControllerTests
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(
                     new[] { CreateResult("occurrence-1") },
-                    false)));
+                    false,
+                    true)));
         PassportRideOccurrencesController controller = CreateController(add.Object);
         controller.ControllerContext = CreateControllerContext();
         controller.Request.PathBase = "/api";
@@ -64,6 +65,49 @@ public sealed class PassportRideOccurrencesControllerTests
             created.Value);
         Assert.Equal("occurrence-1", body.Id);
         Assert.Null(typeof(PassportRideOccurrenceDto).GetProperty("UserId"));
+        Assert.Equal("true", controller.Response.Headers["Ride-Order-Normalized"]);
+        add.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddBatchAsync_WhenNormalized_ShouldExposeOrderHeader()
+    {
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>> add =
+            new Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>>(MockBehavior.Strict);
+        add.Setup(handler => handler.HandleAsync(
+                It.IsAny<AddRideOccurrencesBatchCommand>(),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
+                new CreateRideOccurrencesResult(
+                    new[]
+                    {
+                        CreateResult("occurrence-1"),
+                        CreateResult("occurrence-2"),
+                    },
+                    false,
+                    true)));
+        PassportRideOccurrencesController controller = CreateController(add.Object);
+        controller.ControllerContext = CreateControllerContext();
+
+        IActionResult result = await controller.AddBatchAsync(
+            "visit-1",
+            new CreatePassportRideOccurrencesBatchRequestDto
+            {
+                Items = new List<CreatePassportRideOccurrenceBatchItemDto>
+                {
+                    new CreatePassportRideOccurrenceBatchItemDto
+                    {
+                        ParkItemId = "item-1",
+                        Count = 2,
+                    },
+                },
+            },
+            "request-1",
+            CancellationToken.None);
+
+        ObjectResult created = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status201Created, created.StatusCode);
+        Assert.Equal("true", controller.Response.Headers["Ride-Order-Normalized"]);
         add.VerifyAll();
     }
 
@@ -120,6 +164,34 @@ public sealed class PassportRideOccurrencesControllerTests
             "ride-occurrence.cursor.invalid",
             Assert.IsType<ProblemDetails>(problem.Value).Extensions["errorCode"]);
         list.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task GetAsync_ShouldReadTheOwnedOccurrenceAtTheCreatedLocation()
+    {
+        Mock<IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>> get =
+            new Mock<IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>>(MockBehavior.Strict);
+        get.Setup(handler => handler.HandleAsync(
+                It.Is<GetRideOccurrenceQuery>(query =>
+                    query.UserId == "owner-1"
+                    && query.VisitId == "visit-1"
+                    && query.OccurrenceId == "occurrence-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<RideOccurrenceResult>.Success(
+                CreateResult("occurrence-1")));
+        PassportRideOccurrencesController controller = CreateController(
+            getHandler: get.Object);
+        controller.ControllerContext = CreateControllerContext();
+
+        IActionResult result = await controller.GetAsync(
+            "visit-1",
+            "occurrence-1",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        PassportRideOccurrenceDto body = Assert.IsType<PassportRideOccurrenceDto>(ok.Value);
+        Assert.Equal("occurrence-1", body.Id);
+        get.VerifyAll();
     }
 
     [Fact]
@@ -196,6 +268,10 @@ public sealed class PassportRideOccurrencesControllerTests
             GetAction(nameof(PassportRideOccurrencesController.AddBatchAsync))
                 .GetCustomAttribute<HttpPostAttribute>()?.Template);
         Assert.Equal(
+            "occurrences/{occurrenceId}",
+            GetAction(nameof(PassportRideOccurrencesController.GetAsync))
+                .GetCustomAttribute<HttpGetAttribute>()?.Template);
+        Assert.Equal(
             "occurrences:reorder",
             GetAction(nameof(PassportRideOccurrencesController.ReorderAsync))
                 .GetCustomAttribute<HttpPostAttribute>()?.Template);
@@ -217,6 +293,7 @@ public sealed class PassportRideOccurrencesControllerTests
     private static PassportRideOccurrencesController CreateController(
         ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>? addHandler = null,
         ICommandHandler<ReorderRideOccurrenceCommand, ApplicationResult<ReorderRideOccurrenceResult>>? reorderHandler = null,
+        IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>? getHandler = null,
         IQueryHandler<ListRideOccurrencesQuery, ApplicationResult<RideOccurrencePageResult>>? listHandler = null)
     {
         return new PassportRideOccurrencesController(
@@ -224,6 +301,7 @@ public sealed class PassportRideOccurrencesControllerTests
             new Mock<ICommandHandler<UpdateRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>>>(MockBehavior.Strict).Object,
             new Mock<ICommandHandler<DeleteRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>>>(MockBehavior.Strict).Object,
             reorderHandler ?? new Mock<ICommandHandler<ReorderRideOccurrenceCommand, ApplicationResult<ReorderRideOccurrenceResult>>>(MockBehavior.Strict).Object,
+            getHandler ?? new Mock<IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>>(MockBehavior.Strict).Object,
             listHandler ?? new Mock<IQueryHandler<ListRideOccurrencesQuery, ApplicationResult<RideOccurrencePageResult>>>(MockBehavior.Strict).Object);
     }
 

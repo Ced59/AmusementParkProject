@@ -17,6 +17,7 @@ public interface IRideOccurrenceRepository
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
+        bool wasOrderNormalized,
         string clientOperationId,
         CancellationToken cancellationToken);
 
