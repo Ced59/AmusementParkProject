@@ -24,9 +24,38 @@ internal static class UserVisitMongoMapper
             Title = visit.Title,
             PrivateNote = visit.PrivateNote,
             Version = visit.Version,
-            CreatedAt = visit.CreatedAtUtc,
-            UpdatedAt = visit.UpdatedAtUtc,
-            CompletedAtUtc = visit.CompletedAtUtc,
+            CreatedAt = ToMongoPrecision(visit.CreatedAtUtc),
+            UpdatedAt = ToMongoPrecision(visit.UpdatedAtUtc),
+            CompletedAtUtc = ToMongoPrecision(visit.CompletedAtUtc),
+        };
+    }
+
+    public static UserVisitCreationSnapshotDocument CreateCreationSnapshot(
+        this UserVisitDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+
+        return new UserVisitCreationSnapshotDocument
+        {
+            ParkId = document.ParkId,
+            Date = new VisitDateDocument
+            {
+                Year = document.Date.Year,
+                Month = document.Date.Month,
+                Day = document.Date.Day,
+                Precision = document.Date.Precision,
+                IsApproximate = document.Date.IsApproximate,
+            },
+            TimeZoneId = document.TimeZoneId,
+            ServiceDayConvention = document.ServiceDayConvention,
+            Status = document.Status,
+            Privacy = document.Privacy,
+            Title = document.Title,
+            PrivateNote = document.PrivateNote,
+            Version = document.Version,
+            CreatedAtUtc = document.CreatedAt,
+            UpdatedAtUtc = document.UpdatedAt,
+            CompletedAtUtc = document.CompletedAtUtc,
         };
     }
 
@@ -52,6 +81,30 @@ internal static class UserVisitMongoMapper
             document.CompletedAtUtc);
     }
 
+    public static Visit CreationSnapshotToDomain(this UserVisitDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        UserVisitCreationSnapshotDocument snapshot = document.CreationSnapshot
+            ?? throw new InvalidOperationException(
+                "The idempotent visit creation snapshot is missing.");
+
+        return Visit.Restore(
+            VisitId.Parse(document.Id),
+            document.UserId,
+            snapshot.ParkId,
+            snapshot.Date.ToDomain(),
+            snapshot.TimeZoneId,
+            snapshot.ServiceDayConvention,
+            snapshot.Status,
+            snapshot.Privacy,
+            snapshot.Title,
+            snapshot.PrivateNote,
+            snapshot.Version,
+            snapshot.CreatedAtUtc,
+            snapshot.UpdatedAtUtc,
+            snapshot.CompletedAtUtc);
+    }
+
     private static VisitDateDocument ToDocument(this VisitDate date)
     {
         return new VisitDateDocument
@@ -72,5 +125,16 @@ internal static class UserVisitMongoMapper
             document.Day,
             document.Precision,
             document.IsApproximate);
+    }
+
+    private static DateTime ToMongoPrecision(DateTime value)
+    {
+        long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(ticks, DateTimeKind.Utc);
+    }
+
+    private static DateTime? ToMongoPrecision(DateTime? value)
+    {
+        return value.HasValue ? ToMongoPrecision(value.Value) : null;
     }
 }

@@ -86,16 +86,6 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
 
         string userId = command.UserId.Trim();
         string parkId = command.ParkId.Trim();
-        Park? park = await this.parkRepository.GetByIdAsync(
-            parkId,
-            includeHidden: true,
-            cancellationToken);
-        if (park is null)
-        {
-            return ApplicationResult<CreateVisitResult>.Failure(
-                PassportApplicationErrors.ParkNotFound());
-        }
-
         Visit visit;
         try
         {
@@ -118,11 +108,37 @@ public sealed class CreateVisitCommandHandler : ICommandHandler<CreateVisitComma
                     exception.Message));
         }
 
+        IdempotentVisitCreationResult? existingCreation =
+            await this.visitRepository.ResolveExistingCreationAsync(
+                visit,
+                clientOperationId,
+                cancellationToken);
+        if (existingCreation is not null)
+        {
+            return ToApplicationResult(existingCreation);
+        }
+
+        Park? park = await this.parkRepository.GetByIdAsync(
+            parkId,
+            includeHidden: true,
+            cancellationToken);
+        if (park is null)
+        {
+            return ApplicationResult<CreateVisitResult>.Failure(
+                PassportApplicationErrors.ParkNotFound());
+        }
+
         IdempotentVisitCreationResult creation =
             await this.visitRepository.CreateIdempotentAsync(
                 visit,
                 clientOperationId,
                 cancellationToken);
+        return ToApplicationResult(creation);
+    }
+
+    private static ApplicationResult<CreateVisitResult> ToApplicationResult(
+        IdempotentVisitCreationResult creation)
+    {
         if (creation.Status == IdempotentVisitCreationStatus.Conflict
             || creation.Visit is null)
         {

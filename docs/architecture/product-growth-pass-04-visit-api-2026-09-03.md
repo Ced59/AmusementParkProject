@@ -27,9 +27,10 @@ Le corps public ne contient jamais `userId`. Le contrôleur le lit dans le claim
 ```text
 claim propriétaire
   -> validation date partielle + fuseau IANA
-  -> vérification de l'existence du parc
-  -> création de l'agrégat Visit privé
-  -> insert Mongo avec hash(clé) + hash(payload normalisé)
+  -> création en mémoire de l'agrégat Visit privé
+  -> recherche d'un replay par hash(clé) + hash(payload normalisé)
+  -> si opération nouvelle, vérification de l'existence du parc
+  -> insert Mongo avec empreintes + snapshot de création immuable
 ```
 
 La collection possède l'index partiel unique suivant :
@@ -38,12 +39,14 @@ La collection possède l'index partiel unique suivant :
 { userId: 1, creationOperationKeyHash: 1 } UNIQUE
 ```
 
-- même propriétaire + même clé + même payload : la visite initiale est rejouée avec `201` et `Idempotency-Replayed: true` ;
+- même propriétaire + même clé + même payload : la représentation créée à l'origine est rejouée avec `201` et `Idempotency-Replayed: true`, même si la visite a ensuite changé ou si le parc a été supprimé ;
 - même propriétaire + même clé + payload différent : `409 visit.idempotency-key-conflict` ;
 - la clé brute n'est jamais persistée ;
 - la durée de rejouabilité est la durée de vie de la visite. Le futur workflow de suppression devra conserver un tombstone d'idempotence pendant sa période de rétention avant purge.
 
 Le hash du payload couvre le parc, la date complète ou partielle, son caractère approximatif, le fuseau, la convention de jour de service, le titre et la note privée. Il exclut l'identifiant généré et les timestamps.
+
+Le snapshot embarqué conserve les champs de la réponse `201` à la précision milliseconde de Mongo. Les futures mutations utilisent des mises à jour ciblées qui ne modifient ni les empreintes ni ce snapshot ; la lecture normale continue, elle, de restituer l'état courant de la visite.
 
 ## Liste cursorisée
 

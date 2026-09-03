@@ -23,6 +23,29 @@ public sealed class UserVisitRepository : IUserVisitRepository
             settings.UserVisitsCollectionName);
     }
 
+    public async Task<IdempotentVisitCreationResult?> ResolveExistingCreationAsync(
+        Visit requestedVisit,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(requestedVisit);
+        string normalizedOperationId = NormalizeRequired(
+            clientOperationId,
+            nameof(clientOperationId));
+        string operationKeyHash =
+            UserVisitCreationFingerprint.HashOperationKey(normalizedOperationId);
+        UserVisitDocument? existing = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildCreationOperationFilter(
+                requestedVisit.UserId,
+                operationKeyHash))
+            .FirstOrDefaultAsync(cancellationToken);
+        return existing is null
+            ? null
+            : ResolveIdempotentCreation(
+                existing,
+                UserVisitCreationFingerprint.HashPayload(requestedVisit));
+    }
+
     public async Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
         Visit visit,
         string clientOperationId,
@@ -36,6 +59,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
         document.CreationOperationKeyHash =
             UserVisitCreationFingerprint.HashOperationKey(normalizedOperationId);
         document.CreationPayloadHash = UserVisitCreationFingerprint.HashPayload(visit);
+        document.CreationSnapshot = document.CreateCreationSnapshot();
 
         try
         {
@@ -44,7 +68,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
                 cancellationToken: cancellationToken);
             return new IdempotentVisitCreationResult(
                 IdempotentVisitCreationStatus.Created,
-                document.ToDomain());
+                document.CreationSnapshotToDomain());
         }
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
@@ -159,7 +183,7 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return payloadMatches
             ? new IdempotentVisitCreationResult(
                 IdempotentVisitCreationStatus.Replayed,
-                existing.ToDomain())
+                existing.CreationSnapshotToDomain())
             : new IdempotentVisitCreationResult(
                 IdempotentVisitCreationStatus.Conflict,
                 null);

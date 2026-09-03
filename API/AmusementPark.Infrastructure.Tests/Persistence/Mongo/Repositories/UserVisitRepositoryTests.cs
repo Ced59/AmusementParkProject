@@ -33,7 +33,7 @@ public sealed class UserVisitRepositoryTests
                 CancellationToken _) => insertedDocument = document)
             .Returns(Task.CompletedTask);
         UserVisitRepository repository = CreateRepository(collection.Object);
-        Visit visit = CreateDraftVisit();
+        Visit visit = CreateDraftVisit(NowUtc.AddTicks(1234));
 
         IdempotentVisitCreationResult result = await repository.CreateIdempotentAsync(
             visit,
@@ -45,9 +45,12 @@ public sealed class UserVisitRepositoryTests
         Assert.Equal("user-1", insertedDocument.UserId);
         Assert.Equal(64, insertedDocument.CreationOperationKeyHash?.Length);
         Assert.Equal(64, insertedDocument.CreationPayloadHash?.Length);
+        Assert.NotNull(insertedDocument.CreationSnapshot);
+        Assert.Equal(NowUtc, insertedDocument.CreationSnapshot.CreatedAtUtc);
         Assert.Equal(IdempotentVisitCreationStatus.Created, result.Status);
         Assert.Equal(visit.Id, result.Visit?.Id);
         Assert.Equal(visit.Version, result.Visit?.Version);
+        Assert.Equal(NowUtc, result.Visit?.CreatedAtUtc);
         collection.VerifyAll();
     }
 
@@ -100,6 +103,7 @@ public sealed class UserVisitRepositoryTests
         Assert.Equal(2, renderedUpdate["$set"].AsBsonDocument["version"].AsInt64);
         Assert.False(renderedUpdate.ToString().Contains("creationOperationKeyHash", StringComparison.Ordinal));
         Assert.False(renderedUpdate.ToString().Contains("creationPayloadHash", StringComparison.Ordinal));
+        Assert.False(renderedUpdate.ToString().Contains("creationSnapshot", StringComparison.Ordinal));
         collection.VerifyAll();
     }
 
@@ -184,6 +188,12 @@ public sealed class UserVisitRepositoryTests
         Visit visit = CreateDraftVisit();
         UserVisitDocument document = visit.ToDocument();
         document.CreationPayloadHash = UserVisitCreationFingerprint.HashPayload(visit);
+        document.CreationSnapshot = document.CreateCreationSnapshot();
+        document.Title = "Titre modifié";
+        document.Status = VisitStatus.Completed;
+        document.Version = 2;
+        document.UpdatedAt = NowUtc.AddHours(2);
+        document.CompletedAtUtc = NowUtc.AddHours(2);
 
         IdempotentVisitCreationResult result = UserVisitRepository.ResolveIdempotentCreation(
             document,
@@ -191,6 +201,10 @@ public sealed class UserVisitRepositoryTests
 
         Assert.Equal(IdempotentVisitCreationStatus.Replayed, result.Status);
         Assert.Equal(visit.Id, result.Visit?.Id);
+        Assert.Equal("Titre", result.Visit?.Title);
+        Assert.Equal(VisitStatus.Draft, result.Visit?.Status);
+        Assert.Equal(1, result.Visit?.Version);
+        Assert.Equal(NowUtc, result.Visit?.UpdatedAtUtc);
     }
 
     [Fact]
@@ -218,7 +232,7 @@ public sealed class UserVisitRepositoryTests
             new MongoDbSettings { UserVisitsCollectionName = "user-visits" });
     }
 
-    private static Visit CreateDraftVisit()
+    private static Visit CreateDraftVisit(DateTime? createdAtUtc = null)
     {
         return Visit.Create(
             VisitId.Parse("visit-1"),
@@ -229,7 +243,7 @@ public sealed class UserVisitRepositoryTests
             LocalServiceDayConvention.VisitStartLocalDate,
             "Titre",
             "Note privée",
-            NowUtc);
+            createdAtUtc ?? NowUtc);
     }
 
     private static BsonDocument Render(

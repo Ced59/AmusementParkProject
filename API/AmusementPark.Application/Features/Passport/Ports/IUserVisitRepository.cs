@@ -8,6 +8,11 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IUserVisitRepository
 {
+    Task<IdempotentVisitCreationResult?> ResolveExistingCreationAsync(
+        Visit requestedVisit,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
     Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
         Visit visit,
         string clientOperationId,

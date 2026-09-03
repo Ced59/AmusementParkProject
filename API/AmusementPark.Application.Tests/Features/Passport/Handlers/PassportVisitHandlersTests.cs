@@ -30,6 +30,11 @@ public sealed class PassportVisitHandlersTests
         timeZones.Setup(validator => validator.IsValid("Europe/Paris"))
             .Returns(true);
         Visit? captured = null;
+        visits.Setup(repository => repository.ResolveExistingCreationAsync(
+                It.IsAny<Visit>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentVisitCreationResult?)null);
         visits.Setup(repository => repository.CreateIdempotentAsync(
                 It.IsAny<Visit>(),
                 "request-1",
@@ -59,13 +64,13 @@ public sealed class PassportVisitHandlersTests
     }
 
     [Fact]
-    public async Task CreateVisit_WhenTheSameOperationIsReplayed_ShouldExposeTheOriginalVisit()
+    public async Task CreateVisit_WhenTheSameOperationIsReplayedAfterParkDeletion_ShouldExposeTheOriginalVisit()
     {
         Visit existing = CreateVisit("existing-visit", "owner-1");
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
-        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
-        visits.Setup(repository => repository.CreateIdempotentAsync(
+        visits.Setup(repository => repository.ResolveExistingCreationAsync(
                 It.IsAny<Visit>(),
                 "request-1",
                 CancellationToken.None))
@@ -79,15 +84,17 @@ public sealed class PassportVisitHandlersTests
         Assert.True(result.IsSuccess);
         Assert.True(result.Value?.WasReplayed);
         Assert.Equal("existing-visit", result.Value?.Visit.Id);
+        visits.VerifyAll();
+        parks.VerifyNoOtherCalls();
     }
 
     [Fact]
     public async Task CreateVisit_WhenTheOperationPayloadDiffers_ShouldReturnAConflict()
     {
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
-        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
-        visits.Setup(repository => repository.CreateIdempotentAsync(
+        visits.Setup(repository => repository.ResolveExistingCreationAsync(
                 It.IsAny<Visit>(),
                 "request-1",
                 CancellationToken.None))
@@ -101,6 +108,8 @@ public sealed class PassportVisitHandlersTests
         Assert.False(result.IsSuccess);
         Assert.Equal(ApplicationErrorType.Conflict, Assert.Single(result.Errors).Type);
         Assert.Equal("visit.idempotency-key-conflict", Assert.Single(result.Errors).Code);
+        visits.VerifyAll();
+        parks.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -154,6 +163,11 @@ public sealed class PassportVisitHandlersTests
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IPassportTimeZoneValidator> timeZones = CreateTimeZoneValidator();
+        visits.Setup(repository => repository.ResolveExistingCreationAsync(
+                It.IsAny<Visit>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentVisitCreationResult?)null);
         parks.Setup(repository => repository.GetByIdAsync("park-1", true, CancellationToken.None))
             .ReturnsAsync((Park?)null);
         CreateVisitCommandHandler handler = CreateHandler(visits.Object, parks.Object, timeZones.Object);
@@ -163,7 +177,7 @@ public sealed class PassportVisitHandlersTests
         Assert.False(result.IsSuccess);
         Assert.Equal(ApplicationErrorType.NotFound, Assert.Single(result.Errors).Type);
         Assert.Equal("visit.park-not-found", Assert.Single(result.Errors).Code);
-        visits.VerifyNoOtherCalls();
+        visits.VerifyAll();
     }
 
     [Fact]
