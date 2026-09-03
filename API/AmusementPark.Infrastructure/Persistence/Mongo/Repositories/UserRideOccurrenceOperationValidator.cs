@@ -100,13 +100,9 @@ internal static class UserRideOccurrenceOperationValidator
                 && item.Index < operation.ReorderItems.Count
                 && !string.IsNullOrWhiteSpace(item.OccurrenceId)
                 && item.ExpectedVersion >= 1
-                && item.ResultSnapshot is not null
-                && string.Equals(
-                    item.ResultSnapshot.VisitId,
-                    request.VisitId.Value,
-                    StringComparison.Ordinal)
-                && item.ResultSnapshot.Version == item.ExpectedVersion + 1
-                && item.ResultSnapshot.SortPosition != item.PreviousSortPosition)
+                && item.ResultVersion == item.ExpectedVersion + 1
+                && item.ResultSortPosition != item.PreviousSortPosition
+                && item.ResultUpdatedAtUtc.Kind == DateTimeKind.Utc)
             && operation.OrderGuards is not null
             && operation.OrderGuards.Count is >= 1
                 and <= RideOccurrenceOrderPlanner.MaximumReorderSize

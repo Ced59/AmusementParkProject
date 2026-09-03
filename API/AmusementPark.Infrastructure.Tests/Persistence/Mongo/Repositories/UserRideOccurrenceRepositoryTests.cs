@@ -1154,7 +1154,9 @@ public sealed class UserRideOccurrenceRepositoryTests
                         OccurrenceId = moved.Id.Value,
                         ExpectedVersion = 1,
                         PreviousSortPosition = 1024,
-                        ResultSnapshot = movedSnapshot.CreateCreationSnapshot(),
+                        ResultSortPosition = movedSnapshot.SortPosition,
+                        ResultVersion = movedSnapshot.Version,
+                        ResultUpdatedAtUtc = movedSnapshot.UpdatedAt,
                     },
                 },
                 ReorderResultSnapshot = movedSnapshot.CreateCreationSnapshot(),
@@ -1327,12 +1329,9 @@ public sealed class UserRideOccurrenceRepositoryTests
             new UserRideOccurrenceReorderAllocationDocument
             {
                 PreviousSortPosition = 1024,
-                ResultSnapshot = new UserRideOccurrenceCreationSnapshotDocument
-                {
-                    SortPosition = 1536,
-                    Version = 2,
-                    UpdatedAtUtc = NowUtc.AddMinutes(1),
-                },
+                ResultSortPosition = 1536,
+                ResultVersion = 2,
+                ResultUpdatedAtUtc = NowUtc.AddMinutes(1),
             };
 
         bool wasApplied = UserRideOccurrenceReorderRecovery.AllocationWasApplied(
@@ -1341,6 +1340,71 @@ public sealed class UserRideOccurrenceRepositoryTests
             "operation-hash");
 
         Assert.True(wasApplied);
+    }
+
+    [Fact]
+    public void ReorderOperation_AtMaximumSize_ShouldKeepOnlyOneFullSnapshot()
+    {
+        string longNonAsciiNote = new string('\u754C', RideOccurrence.MaximumPrivateNoteLength);
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                Id = "operation-1",
+                UserId = "user-1",
+                OperationKeyHash = new string('a', 64),
+                PayloadHash = new string('b', 64),
+                OperationKind = "reorder",
+                VisitId = "visit-1",
+                OperationState = "pending",
+                MovedOccurrenceId = "occurrence-1",
+                ReorderItems = Enumerable.Range(
+                        0,
+                        RideOccurrenceOrderPlanner.MaximumReorderSize)
+                    .Select(index => new UserRideOccurrenceReorderAllocationDocument
+                    {
+                        Index = index,
+                        OccurrenceId = $"occurrence-{index}",
+                        ExpectedVersion = 1,
+                        PreviousSortPosition = index + 1,
+                        ResultSortPosition = index + 2,
+                        ResultVersion = 2,
+                        ResultUpdatedAtUtc = NowUtc,
+                    })
+                    .ToList(),
+                OrderGuards = Enumerable.Range(
+                        0,
+                        RideOccurrenceOrderPlanner.MaximumReorderSize)
+                    .Select(index => new UserRideOccurrenceOrderGuardDocument
+                    {
+                        OccurrenceId = $"occurrence-{index}",
+                        SortPosition = index + 1,
+                    })
+                    .ToList(),
+                ReorderResultSnapshot = new UserRideOccurrenceCreationSnapshotDocument
+                {
+                    VisitId = "visit-1",
+                    ParkId = "park-1",
+                    ParkItemId = "item-1",
+                    Moment = new RideOccurrenceMomentDocument(),
+                    Status = RideOccurrenceStatus.Completed,
+                    Source = RideLogSource.Manual,
+                    HistoricalConsistency = HistoricalConsistency.Verified,
+                    PrivateNote = longNonAsciiNote,
+                    Version = 1,
+                    CreatedAtUtc = NowUtc,
+                    UpdatedAtUtc = NowUtc,
+                },
+            };
+
+        BsonDocument serialized = operation.ToBsonDocument();
+        BsonArray allocations = serialized["reorderItems"].AsBsonArray;
+
+        Assert.Equal(RideOccurrenceOrderPlanner.MaximumReorderSize, allocations.Count);
+        Assert.DoesNotContain(
+            "resultSnapshot",
+            allocations[0].AsBsonDocument.Names);
+        Assert.DoesNotContain("privateNote", allocations[0].AsBsonDocument.Names);
+        Assert.True(serialized.ToBson().Length < 1_000_000);
     }
 
     [Fact]

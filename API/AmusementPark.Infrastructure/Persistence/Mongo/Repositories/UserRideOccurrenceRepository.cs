@@ -750,7 +750,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         request.VisitId.Value,
                         request.UserId,
                         allocation.ExpectedVersion),
-                    BuildReorderUpdate(allocation.ResultSnapshot, operationKeyHash),
+                    BuildReorderUpdate(allocation, operationKeyHash),
                     new UpdateOptions { IsUpsert = false },
                     cancellationToken);
                 if (update.MatchedCount == 1)
@@ -992,7 +992,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         OccurrenceId = change.Occurrence.Id.Value,
                         ExpectedVersion = change.ExpectedVersion,
                         PreviousSortPosition = change.PreviousSortPosition,
-                        ResultSnapshot = document.CreateCreationSnapshot(),
+                        ResultSortPosition = document.SortPosition,
+                        ResultVersion = document.Version,
+                        ResultUpdatedAtUtc = document.UpdatedAt,
                     };
                 })
                 .ToList(),
@@ -1010,15 +1012,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     private static UpdateDefinition<UserRideOccurrenceDocument> BuildReorderUpdate(
-        UserRideOccurrenceCreationSnapshotDocument snapshot,
+        UserRideOccurrenceReorderAllocationDocument allocation,
         string operationKeyHash)
     {
         UpdateDefinitionBuilder<UserRideOccurrenceDocument> updates =
             Builders<UserRideOccurrenceDocument>.Update;
         return updates.Combine(
-            updates.Set(static document => document.SortPosition, snapshot.SortPosition),
-            updates.Set(static document => document.Version, snapshot.Version),
-            updates.Set(static document => document.UpdatedAt, snapshot.UpdatedAtUtc),
+            updates.Set(
+                static document => document.SortPosition,
+                allocation.ResultSortPosition),
+            updates.Set(static document => document.Version, allocation.ResultVersion),
+            updates.Set(
+                static document => document.UpdatedAt,
+                allocation.ResultUpdatedAtUtc),
             updates.Set(
                 static document => document.LastReorderOperationKeyHash,
                 operationKeyHash));

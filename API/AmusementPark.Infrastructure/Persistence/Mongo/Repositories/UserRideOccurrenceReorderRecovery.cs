@@ -92,9 +92,9 @@ internal sealed class UserRideOccurrenceReorderRecovery
                 current.LastReorderOperationKeyHash,
                 operationKeyHash,
                 StringComparison.Ordinal)
-            && current.SortPosition == allocation.ResultSnapshot.SortPosition
-            && current.Version >= allocation.ResultSnapshot.Version
-            && current.UpdatedAt >= allocation.ResultSnapshot.UpdatedAtUtc;
+            && current.SortPosition == allocation.ResultSortPosition
+            && current.Version >= allocation.ResultVersion
+            && current.UpdatedAt >= allocation.ResultUpdatedAtUtc;
     }
 
     public static UpdateDefinition<UserRideOccurrenceDocument> BuildRollbackUpdate(

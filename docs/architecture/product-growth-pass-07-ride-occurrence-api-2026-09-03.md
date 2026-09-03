@@ -146,16 +146,18 @@ user-ride-occurrence-operations:
   reorderItems?: [{
     index: int32,
     occurrenceId: string,
-    expectedVersion: int64,
-    previousSortPosition: int64,
-    resultSnapshot: occurrence initiale après déplacement
+      expectedVersion: int64,
+      previousSortPosition: int64,
+      resultSortPosition: int64,
+      resultVersion: int64,
+      resultUpdatedAtUtc: date
   }]
   orderGuards?: [{ occurrenceId: string, sortPosition: int64 }]
   orderGuardsValidated?: boolean
   reorderResultSnapshot?: occurrence déplacée renvoyée au client
 ```
 
-La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations, déplacements et identifiants internes de suppression ; l'index unique partiel `(userId, visitId)` couvre toute opération `pending`, quel que soit son type, pour sérialiser la timeline d'une visite.
+La clé client brute n'est jamais stockée. L'index unique `(userId, operationKeyHash)` couvre créations, déplacements et identifiants internes de suppression ; l'index unique partiel `(userId, visitId)` couvre toute opération `pending`, quel que soit son type, pour sérialiser la timeline d'une visite. Chaque allocation de réordonnancement ne conserve que les trois champs nécessaires à son application et à sa compensation ; la note privée et les autres données complètes ne sont présentes qu'une fois dans `reorderResultSnapshot`. Même à la borne de 2 000 lignes avec une note UTF-8 maximale, le document de réservation testé reste inférieur à 1 Mo, très en dessous de la limite BSON de 16 Mio.
 
 ## Responsive et suite
 
@@ -165,6 +167,6 @@ PASS-07 n'ajoute aucun DOM, style ou route Angular : il ne peut donc pas introdu
 
 - Core : 1 000 ajouts par lots, déplacement direct, no-op, gap épuisé, renormalisation et bornes `long` ;
 - Application : expansion du nombre, propriété, validation cible/parc/catégorie, confirmation historique, versions et replay avant les dépendances mutables ;
-- Infrastructure : empreintes stables et sensibles au consentement historique, réservation commune ajout/déplacement, revalidation de la base d'ajout, reprise coopérative d'une opération abandonnée, CAS, compensation et snapshots ;
+- Infrastructure : empreintes stables et sensibles au consentement historique, réservation commune ajout/déplacement, revalidation de la base d'ajout, reprise coopérative d'une opération abandonnée, CAS, compensation, snapshots et taille BSON à la borne de 2 000 lignes ;
 - WebAPI : propriétaire issu des claims, routes privées/no-store, en-têtes idempotents et curseurs invalides rejetés avant le handler ;
 - CI : build backend, tests, architecture et pipeline de déploiement avant fusion.
