@@ -187,6 +187,25 @@
     width: min(100% - 1.5rem, var(--content-wide-max-width, 1320px));
   }
 
+  .rankings-hero__note--calculation {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rankings-hero__note--calculation > span,
+  .rankings-hero__note--calculation > a {
+    min-width: 0;
+  }
+
+  .rankings-hero__note--calculation > a {
+    grid-column: 2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
   .rankings-search {
     grid-template-columns: auto minmax(0, 1fr);
   }

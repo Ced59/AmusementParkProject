@@ -221,6 +221,25 @@ describe('RankingsPageComponent', () => {
     expect(headings[0]?.textContent?.trim()).toBe('Classements des visiteurs');
   });
 
+  it('stacks the calculation link below its explanation on mobile', () => {
+    const styles: string = (
+      RankingsPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+    const calculationCardRule: RegExp = new RegExp(
+      String.raw`\.rankings-hero__note--calculation[^,{]*\{[^}]*` +
+      String.raw`display:\s*grid[^}]*grid-template-columns:\s*auto minmax\(0,\s*1fr\)[^}]*` +
+      String.raw`box-sizing:\s*border-box[^}]*width:\s*100%[^}]*min-width:\s*0`,
+    );
+    const calculationLinkRule: RegExp = new RegExp(
+      String.raw`\.rankings-hero__note--calculation[^,{]*>[^,{]*a[^,{]*\{[^}]*` +
+      String.raw`grid-column:\s*2[^}]*white-space:\s*normal[^}]*overflow-wrap:\s*anywhere`,
+    );
+
+    expect(styles).toContain('@media (max-width: 760px)');
+    expect(styles).toMatch(calculationCardRule);
+    expect(styles).toMatch(calculationLinkRule);
+  });
+
   it('maps raw rating counts to every ranking level', () => {
     fixture.detectChanges();
 
