@@ -192,10 +192,41 @@ public sealed class UserVisitRepository : IUserVisitRepository
             cancellationToken);
     }
 
+    public Task<bool> TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        string contentMutationLeaseToken,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            pendingAuditEvent,
+            contentMutationLeaseToken,
+            cancellationToken);
+    }
+
+    private Task<bool> TryUpdateOwnedCoreAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            pendingAuditEvent,
+            null,
+            cancellationToken);
+    }
+
     private async Task<bool> TryUpdateOwnedCoreAsync(
         Visit visit,
         long expectedVersion,
         PassportAuditEvent? pendingAuditEvent,
+        string? contentMutationLeaseToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(visit);
@@ -212,12 +243,20 @@ public sealed class UserVisitRepository : IUserVisitRepository
             ValidatePendingAuditEvent(visit, pendingAuditEvent);
         }
 
+        FilterDefinition<UserVisitDocument> filter =
+            string.IsNullOrWhiteSpace(contentMutationLeaseToken)
+                ? UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
+                    document.Id,
+                    document.UserId,
+                    expectedVersion,
+                    document.UpdatedAt)
+                : UserVisitMongoDefinitions.BuildOwnedLeasedVersionFilter(
+                    document.Id,
+                    document.UserId,
+                    expectedVersion,
+                    contentMutationLeaseToken);
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
-                document.Id,
-                document.UserId,
-                expectedVersion,
-                document.UpdatedAt),
+            filter,
             BuildDomainUpdate(document, pendingAuditEvent),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);

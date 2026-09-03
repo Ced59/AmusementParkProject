@@ -66,6 +66,24 @@ public sealed class UserVisitMongoDefinitionsTests
             alternatives[1]["contentMutationLeaseExpiresAtUtc"]["$lte"].ToUniversalTime());
     }
 
+    [Fact]
+    public void BuildOwnedLeasedVersionFilter_ShouldRequireTheExactLeaseToken()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedLeasedVersionFilter(
+                "visit-1",
+                "user-1",
+                7,
+                " lease-1 ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(7, rendered["version"].AsInt64);
+        Assert.Equal("lease-1", rendered["contentMutationLeaseToken"].AsString);
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]

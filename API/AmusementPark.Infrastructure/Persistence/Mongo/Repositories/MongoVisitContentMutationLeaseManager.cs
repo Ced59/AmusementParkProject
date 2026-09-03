@@ -93,6 +93,8 @@ internal sealed class MongoVisitContentMutationLeaseManager :
             this.token = token;
         }
 
+        public string Token => this.token;
+
         public async ValueTask DisposeAsync()
         {
             if (Interlocked.Exchange(ref this.released, 1) != 0)

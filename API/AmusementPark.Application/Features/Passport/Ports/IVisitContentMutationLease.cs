@@ -7,6 +7,7 @@ namespace AmusementPark.Application.Features.Passport.Ports;
 /// </summary>
 public interface IVisitContentMutationLease : IAsyncDisposable
 {
+    string Token { get; }
 }
 
 public interface IVisitContentMutationLeaseManager

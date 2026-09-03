@@ -15,6 +15,7 @@ public sealed class UpdateVisitMetadataCommandHandler :
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository? occurrenceRepository;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
     private readonly IPassportClock clock;
     private readonly IPassportTimeZoneValidator timeZoneValidator;
     private readonly IPassportAuditPublisher auditPublisher;
@@ -27,6 +28,7 @@ public sealed class UpdateVisitMetadataCommandHandler :
         : this(
             visitRepository,
             null!,
+            null!,
             clock,
             timeZoneValidator,
             auditPublisher)
@@ -36,12 +38,14 @@ public sealed class UpdateVisitMetadataCommandHandler :
     public UpdateVisitMetadataCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager,
         IPassportClock clock,
         IPassportTimeZoneValidator timeZoneValidator,
         IPassportAuditPublisher auditPublisher)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
         this.clock = clock;
         this.timeZoneValidator = timeZoneValidator;
         this.auditPublisher = auditPublisher;
@@ -91,12 +95,30 @@ public sealed class UpdateVisitMetadataCommandHandler :
         }
 
         Visit visit = loaded.Value;
-        if (this.occurrenceRepository is not null
-            && TemporalIdentityChanged(
+        bool temporalIdentityChanged = TemporalIdentityChanged(
+            visit,
+            date,
+            timeZoneId,
+            command.ServiceDayConvention);
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (temporalIdentityChanged
+            && this.occurrenceRepository is not null
+            && this.contentMutationLeaseManager is not null)
+        {
+            contentMutationLease = await this.contentMutationLeaseManager.TryAcquireAsync(
                 visit,
-                date,
-                timeZoneId,
-                command.ServiceDayConvention))
+                this.clock.UtcNow,
+                cancellationToken);
+            if (contentMutationLease is null)
+            {
+                return ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.VisitConcurrencyConflict());
+            }
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        if (temporalIdentityChanged && this.occurrenceRepository is not null)
         {
             RideOccurrencePage firstOccurrencePage =
                 await this.occurrenceRepository.ListOwnedByVisitAsync(
@@ -145,11 +167,18 @@ public sealed class UpdateVisitMetadataCommandHandler :
         }
 
         PassportAuditEvent auditEvent = PassportVisitAuditEventFactory.VisitUpdated(visit, previous);
-        bool updated = await this.visitRepository.TryUpdateOwnedAuditedAsync(
-            visit,
-            command.ExpectedVersion,
-            auditEvent,
-            cancellationToken);
+        bool updated = contentMutationLease is null
+            ? await this.visitRepository.TryUpdateOwnedAuditedAsync(
+                visit,
+                command.ExpectedVersion,
+                auditEvent,
+                cancellationToken)
+            : await this.visitRepository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+                visit,
+                command.ExpectedVersion,
+                auditEvent,
+                contentMutationLease.Token,
+                cancellationToken);
         if (!updated)
         {
             return ApplicationResult<VisitResult>.Failure(

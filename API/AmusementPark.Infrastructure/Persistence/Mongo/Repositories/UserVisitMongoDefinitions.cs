@@ -67,6 +67,25 @@ internal static class UserVisitMongoDefinitions
                 filters.Lte(ContentMutationLeaseExpiresAtUtcPath, mutationAtUtc));
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildOwnedLeasedVersionFilter(
+        string visitId,
+        string userId,
+        long expectedVersion,
+        string contentMutationLeaseToken)
+    {
+        if (string.IsNullOrWhiteSpace(contentMutationLeaseToken))
+        {
+            throw new ArgumentException(
+                "The content mutation lease token is required.",
+                nameof(contentMutationLeaseToken));
+        }
+
+        return BuildOwnedVersionFilter(visitId, userId, expectedVersion)
+            & Builders<UserVisitDocument>.Filter.Eq(
+                ContentMutationLeaseTokenPath,
+                contentMutationLeaseToken.Trim());
+    }
+
     public static SortDefinition<UserVisitDocument> BuildNewestVisitSort()
     {
         return Builders<UserVisitDocument>.Sort

@@ -21,20 +21,47 @@ public sealed class VisitMutationCommandHandlersTests
     {
         Visit visit = CreateVisit(VisitStatus.Draft);
         Mock<IUserVisitRepository> visits = CreateOwnedRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.ListOwnedByVisitAsync(
+                It.Is<RideOccurrenceListCriteria>(criteria =>
+                    criteria.VisitId == visit.Id
+                    && criteria.UserId == visit.UserId
+                    && criteria.Limit == 1),
+                CancellationToken.None))
+            .ReturnsAsync(new RideOccurrencePage(Array.Empty<RideOccurrence>(), null));
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        lease.SetupGet(value => value.Token).Returns("lease-1");
+        lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        leases.Setup(manager => manager.TryAcquireAsync(
+                visit,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(lease.Object);
         Mock<IPassportAuditPublisher> audit = CreateAuditPublisher();
         PassportAuditEvent? capturedAudit = null;
-        visits.Setup(repository => repository.TryUpdateOwnedAuditedAsync(
+        visits.Setup(repository => repository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
                 visit,
                 1,
                 It.IsAny<PassportAuditEvent>(),
+                "lease-1",
                 CancellationToken.None))
-            .Callback((Visit _, long _, PassportAuditEvent auditEvent, CancellationToken _) =>
-                capturedAudit = auditEvent)
+            .Callback((
+                Visit _,
+                long _,
+                PassportAuditEvent auditEvent,
+                string _,
+                CancellationToken _) => capturedAudit = auditEvent)
             .ReturnsAsync(true);
         Mock<IPassportTimeZoneValidator> timeZones = new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         timeZones.Setup(validator => validator.IsValid("Europe/Paris")).Returns(true);
         UpdateVisitMetadataCommandHandler handler = new UpdateVisitMetadataCommandHandler(
             visits.Object,
+            occurrences.Object,
+            leases.Object,
             CreateClock().Object,
             timeZones.Object,
             audit.Object);
@@ -54,6 +81,10 @@ public sealed class VisitMutationCommandHandlersTests
         Assert.True(capturedAudit.PrivateTextChanged);
         Assert.Contains(PassportAuditChangedField.PrivateNote, capturedAudit.ChangedFields);
         visits.VerifyAll();
+        occurrences.VerifyAll();
+        leases.VerifyAll();
+        lease.VerifyGet(value => value.Token, Times.Once);
+        lease.Verify(value => value.DisposeAsync(), Times.Once);
         audit.VerifyAll();
     }
 
@@ -85,12 +116,23 @@ public sealed class VisitMutationCommandHandlersTests
             .ReturnsAsync(new RideOccurrencePage(new[] { occurrence }, null));
         Mock<IPassportAuditPublisher> audit =
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        leases.Setup(manager => manager.TryAcquireAsync(
+                visit,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(lease.Object);
         Mock<IPassportTimeZoneValidator> timeZones =
             new Mock<IPassportTimeZoneValidator>(MockBehavior.Strict);
         timeZones.Setup(validator => validator.IsValid("Europe/Paris")).Returns(true);
         UpdateVisitMetadataCommandHandler handler = new UpdateVisitMetadataCommandHandler(
             visits.Object,
             occurrences.Object,
+            leases.Object,
             CreateClock().Object,
             timeZones.Object,
             audit.Object);
@@ -106,6 +148,8 @@ public sealed class VisitMutationCommandHandlersTests
         Assert.Equal(VisitDate.ForDay(2026, 9, 3), visit.Date);
         visits.VerifyAll();
         occurrences.VerifyAll();
+        leases.VerifyAll();
+        lease.Verify(value => value.DisposeAsync(), Times.Once);
         audit.VerifyNoOtherCalls();
     }
 

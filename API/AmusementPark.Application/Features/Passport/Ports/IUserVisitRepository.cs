@@ -50,6 +50,13 @@ public interface IUserVisitRepository
         PassportAuditEvent pendingAuditEvent,
         CancellationToken cancellationToken);
 
+    Task<bool> TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        string contentMutationLeaseToken,
+        CancellationToken cancellationToken);
+
     Task<bool> TryDeleteOwnedAsync(
         VisitId visitId,
         string userId,

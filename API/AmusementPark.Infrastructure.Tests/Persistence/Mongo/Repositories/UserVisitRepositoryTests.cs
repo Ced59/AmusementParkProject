@@ -217,6 +217,61 @@ public sealed class UserVisitRepositoryTests
     }
 
     [Fact]
+    public async Task TryUpdateOwnedAuditedWithinContentMutationLeaseAsync_ShouldFenceByToken()
+    {
+        Mock<IMongoCollection<UserVisitDocument>> collection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        FilterDefinition<UserVisitDocument>? capturedFilter = null;
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> filter,
+                UpdateDefinition<UserVisitDocument> _,
+                UpdateOptions _,
+                CancellationToken _) => capturedFilter = filter)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserVisitRepository repository = CreateRepository(collection.Object);
+        Visit visit = CreateDraftVisit();
+        visit.UpdateDraft(
+            VisitDate.ForYear(2025),
+            visit.TimeZoneId,
+            visit.ServiceDayConvention,
+            visit.Title,
+            visit.PrivateNote,
+            NowUtc.AddMinutes(1));
+        PassportAuditEvent auditEvent =
+            PassportVisitAuditEventFactory.VisitUpdated(
+                visit,
+                new VisitAuditSnapshot(
+                    VisitDate.ForDay(2026, 9, 3),
+                    "Europe/Paris",
+                    LocalServiceDayConvention.VisitStartLocalDate,
+                    VisitStatus.Draft,
+                    "Titre",
+                    "Note privée"));
+
+        bool updated =
+            await repository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+                visit,
+                1,
+                auditEvent,
+                "lease-1",
+                CancellationToken.None);
+
+        Assert.True(updated);
+        Assert.NotNull(capturedFilter);
+        BsonDocument rendered = Render(capturedFilter);
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(1, rendered["version"].AsInt64);
+        Assert.Equal("lease-1", rendered["contentMutationLeaseToken"].AsString);
+        collection.VerifyAll();
+    }
+
+    [Fact]
     public async Task TryConfirmOwnedVersionAsync_ShouldFenceANoOpWithoutIncrementingVersion()
     {
         Mock<IMongoCollection<UserVisitDocument>> collection =
