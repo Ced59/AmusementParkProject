@@ -1,0 +1,78 @@
+{
+  "passport": {
+    "profile": {
+      "kicker": "Besuchspass",
+      "title": "Beginne deine Parkgeschichte",
+      "description": "Speichere einen privaten Besuch, auch wenn du nur noch Monat oder Jahr weißt.",
+      "action": "Besuch hinzufügen"
+    },
+    "quickCreate": {
+      "title": "Besuch hinzufügen",
+      "intro": "Beginne mit einem einfachen Besuch. Was du erlebt hast, kannst du später ergänzen.",
+      "privacy": "Dieser Besuch und deine Notizen bleiben privat.",
+      "actions": {
+        "openForPark": "Besuch hinzufügen",
+        "done": "Fertig",
+        "addAnother": "Weiteren Besuch hinzufügen",
+        "saving": "Wird gespeichert…",
+        "create": "Besuch erstellen",
+        "cancel": "Abbrechen"
+      },
+      "success": {
+        "title": "Besuch gespeichert",
+        "description": "Dein Besuch in {{park}} ist jetzt in deinem privaten Besuchspass.",
+        "toast": "Der Besuch wurde deinem Besuchspass hinzugefügt."
+      },
+      "park": {
+        "title": "Wähle den Park",
+        "hint": "Suche unter den Parks, die auf der Website sichtbar sind.",
+        "change": "Ändern",
+        "searchLabel": "Parkname",
+        "searchPlaceholder": "Beginne einen Namen einzugeben…",
+        "searching": "Parks werden gesucht…",
+        "results": "Ergebnisse der Parksuche"
+      },
+      "date": {
+        "title": "Gib das Datum an, an das du dich erinnerst",
+        "hint": "Der Besuchspass bewahrt genau deine Datumsgenauigkeit und erfindet keinen Tag.",
+        "today": "Heutiges Datum verwenden",
+        "precisionLabel": "Datumsgenauigkeit",
+        "dayPrecision": "Genauer Tag",
+        "monthPrecision": "Monat",
+        "yearPrecision": "Jahr",
+        "day": "Tag",
+        "month": "Monat",
+        "year": "Jahr",
+        "approximate": "Ungefähres Datum",
+        "approximateHint": "Aktiviere dies, wenn der Zeitraum noch unsicher ist.",
+        "timeZone": "Zeitzone",
+        "timeZoneHint": "Optional. Gib eine IANA-Zeitzone wie Europe/Paris nur an, wenn du sie kennst."
+      },
+      "optional": {
+        "title": "Optionale Details hinzufügen",
+        "visitTitle": "Titel des Besuchs",
+        "privateNote": "Private Notiz",
+        "privateNoteHint": "Nur du kannst diese Notiz lesen."
+      },
+      "validation": {
+        "parkRequired": "Wähle einen Park.",
+        "yearInvalid": "Gib ein gültiges Jahr ein.",
+        "monthInvalid": "Gib einen Monat zwischen 1 und 12 ein.",
+        "dayInvalid": "Diesen Tag gibt es im gewählten Monat nicht.",
+        "timeZoneInvalid": "Die Zeitzone ist zu lang.",
+        "titleTooLong": "Der Titel darf höchstens 160 Zeichen lang sein.",
+        "noteTooLong": "Die private Notiz darf höchstens 4.000 Zeichen lang sein."
+      },
+      "errors": {
+        "signInRequired": "Melde dich an, um diesen Besuch zu speichern. Deine Eingabe bleibt erhalten.",
+        "generic": "Der Besuch konnte nicht gespeichert werden. Versuche es erneut, ohne deine Eingabe zu verlieren.",
+        "parkSearch": "Die Parksuche ist fehlgeschlagen. Versuche es gleich noch einmal.",
+        "parkNotFound": "Dieser Park ist nicht mehr verfügbar.",
+        "timeZone": "Die Zeitzone wird nicht erkannt.",
+        "date": "Das Besuchsdatum ist ungültig.",
+        "retryConflict": "Dieser Versuch entspricht nicht mehr der ursprünglichen Eingabe. Prüfe die Felder und versuche es erneut.",
+        "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Der Besuch wird nicht doppelt erstellt."
+      }
+    }
+  }
+}

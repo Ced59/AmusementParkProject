@@ -67,6 +67,53 @@
   min-width: 0;
 }
 
+.profile-passport-entry {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-width: 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--c-gold) 38%, var(--app-border));
+  border-radius: var(--app-radius-lg);
+  background:
+    radial-gradient(circle at 8% 20%, color-mix(in srgb, var(--c-gold) 15%, transparent), transparent 38%),
+    var(--app-surface-2);
+}
+
+.profile-passport-entry__icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--c-gold) 18%, var(--app-surface));
+  color: var(--c-gold);
+  font-size: 1.35rem;
+}
+
+.profile-passport-entry__copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.3rem;
+}
+
+.profile-passport-entry__copy h2,
+.profile-passport-entry__copy p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.profile-passport-entry__copy h2 {
+  color: var(--app-heading);
+  font-size: 1.1rem;
+}
+
+.profile-passport-entry__copy p {
+  color: var(--app-text-muted);
+  line-height: 1.45;
+}
+
 .profile-navigation {
   position: sticky;
   top: calc(var(--topbar-height) + 1rem);
@@ -301,6 +348,17 @@
   .profile-actions--editing {
     justify-content: flex-start;
   }
+
+  .profile-passport-entry {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .profile-passport-entry > button {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 520px) {
@@ -318,5 +376,13 @@
 
   .profile-panel--ratings {
     padding: 0.85rem;
+  }
+
+  .profile-passport-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-passport-entry__icon {
+    display: none;
   }
 }

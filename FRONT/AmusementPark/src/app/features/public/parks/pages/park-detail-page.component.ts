@@ -11,6 +11,7 @@ import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
+import { PassportVisitQuickCreateComponent } from '@features/profile/passport/components/passport-visit-quick-create/passport-visit-quick-create.component';
 
 @Component({
   selector: 'app-park-detail-page',
@@ -18,7 +19,7 @@ import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } f
   styleUrls: ['./park-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ParkDetailStateFacade],
-  imports: [ParkDetailViewComponent]
+  imports: [ParkDetailViewComponent, PassportVisitQuickCreateComponent]
 })
 export class ParkDetailPageComponent implements OnInit {
   protected readonly heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
@@ -35,6 +36,7 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly summary = this.stateFacade.summary;
   protected readonly socialImageId = this.stateFacade.socialImageId;
   protected readonly currentLang = signal<string>('en');
+  protected visitDialogVisible: boolean = false;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly isBrowser: boolean = isPlatformBrowser(inject(PLATFORM_ID));
@@ -124,6 +126,10 @@ export class ParkDetailPageComponent implements OnInit {
     }
 
     this.router.navigate(exploreLink);
+  }
+
+  openVisitDialog(): void {
+    this.visitDialogVisible = true;
   }
 
   private preloadHeroImage(heroImageId: string | null): void {

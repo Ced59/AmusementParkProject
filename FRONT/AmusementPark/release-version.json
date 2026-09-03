@@ -1,6 +1,20 @@
 {
-  "version": "5.0.5",
+  "version": "5.0.6",
   "history": [
+    {
+      "version": "5.0.6",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Ajout rapide de visites privées depuis un parc ou le profil.",
+        "en": "Quick addition of private visits from a park or profile.",
+        "de": "Schnelles Hinzufügen privater Besuche über einen Park oder das Profil.",
+        "nl": "Snel privébezoeken toevoegen vanuit een park of het profiel.",
+        "it": "Aggiunta rapida di visite private da un parco o dal profilo.",
+        "es": "Incorporación rápida de visitas privadas desde un parque o el perfil.",
+        "pl": "Szybkie dodawanie prywatnych wizyt z poziomu parku lub profilu.",
+        "pt": "Adição rápida de visitas privadas a partir de um parque ou do perfil."
+      }
+    },
     {
       "version": "5.0.5",
       "releasedAt": "2026-09-03",

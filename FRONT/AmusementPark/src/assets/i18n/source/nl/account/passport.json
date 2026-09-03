@@ -1,0 +1,78 @@
+{
+  "passport": {
+    "profile": {
+      "kicker": "Bezoekpaspoort",
+      "title": "Begin je parkgeschiedenis",
+      "description": "Bewaar een privébezoek, ook als je alleen de maand of het jaar nog weet.",
+      "action": "Bezoek toevoegen"
+    },
+    "quickCreate": {
+      "title": "Bezoek toevoegen",
+      "intro": "Begin met een eenvoudig bezoek. Wat je hebt gedaan kun je later verder aanvullen.",
+      "privacy": "Dit bezoek en je notities blijven privé.",
+      "actions": {
+        "openForPark": "Bezoek toevoegen",
+        "done": "Klaar",
+        "addAnother": "Nog een bezoek toevoegen",
+        "saving": "Opslaan…",
+        "create": "Bezoek aanmaken",
+        "cancel": "Annuleren"
+      },
+      "success": {
+        "title": "Bezoek opgeslagen",
+        "description": "Je bezoek aan {{park}} staat nu in je privépaspoort.",
+        "toast": "Het bezoek is aan je paspoort toegevoegd."
+      },
+      "park": {
+        "title": "Kies het park",
+        "hint": "Zoek tussen de parken die op de site zichtbaar zijn.",
+        "change": "Wijzigen",
+        "searchLabel": "Naam van het park",
+        "searchPlaceholder": "Begin een naam te typen…",
+        "searching": "Parken zoeken…",
+        "results": "Resultaten van de parkzoekopdracht"
+      },
+      "date": {
+        "title": "Vul de datum in die je nog weet",
+        "hint": "Het paspoort bewaart precies jouw nauwkeurigheid en verzint geen dag.",
+        "today": "Vandaag gebruiken",
+        "precisionLabel": "Nauwkeurigheid van de datum",
+        "dayPrecision": "Exacte dag",
+        "monthPrecision": "Maand",
+        "yearPrecision": "Jaar",
+        "day": "Dag",
+        "month": "Maand",
+        "year": "Jaar",
+        "approximate": "Datum bij benadering",
+        "approximateHint": "Zet dit aan als de periode nog onzeker is.",
+        "timeZone": "Tijdzone",
+        "timeZoneHint": "Optioneel. Vul alleen een IANA-tijdzone, zoals Europe/Paris, in als je die weet."
+      },
+      "optional": {
+        "title": "Optionele details toevoegen",
+        "visitTitle": "Titel van het bezoek",
+        "privateNote": "Privénotitie",
+        "privateNoteHint": "Alleen jij kunt deze notitie lezen."
+      },
+      "validation": {
+        "parkRequired": "Kies een park.",
+        "yearInvalid": "Vul een geldig jaar in.",
+        "monthInvalid": "Vul een maand tussen 1 en 12 in.",
+        "dayInvalid": "Die dag bestaat niet in de gekozen maand.",
+        "timeZoneInvalid": "De tijdzone is te lang.",
+        "titleTooLong": "De titel mag niet langer zijn dan 160 tekens.",
+        "noteTooLong": "De privénotitie mag niet langer zijn dan 4.000 tekens."
+      },
+      "errors": {
+        "signInRequired": "Log in om dit bezoek op te slaan. Je invoer blijft beschikbaar.",
+        "generic": "Het bezoek kon niet worden opgeslagen. Probeer opnieuw zonder je invoer te verliezen.",
+        "parkSearch": "Het zoeken naar parken is mislukt. Probeer het zo nog eens.",
+        "parkNotFound": "Dit park is niet meer beschikbaar.",
+        "timeZone": "De tijdzone wordt niet herkend.",
+        "date": "De bezoekdatum is niet geldig.",
+        "retryConflict": "Deze poging komt niet meer overeen met de oorspronkelijke invoer. Controleer de velden en probeer opnieuw.",
+        "network": "De serverreactie is niet aangekomen. Probeer opnieuw: het bezoek wordt niet dubbel aangemaakt."
+      }
+    }
+  }
+}

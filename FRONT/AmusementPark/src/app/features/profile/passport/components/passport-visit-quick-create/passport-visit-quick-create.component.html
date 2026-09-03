@@ -1,0 +1,200 @@
+<app-ui-dialog
+  [visible]="visible"
+  [header]="'passport.quickCreate.title' | translate"
+  [modal]="true"
+  [dismissableMask]="!facade.saving()"
+  [closable]="!facade.saving()"
+  styleClass="passport-visit-dialog"
+  (visibleChange)="onDialogVisibleChange($event)">
+  @if (facade.createdVisit(); as createdVisit) {
+    <section class="passport-success" role="status">
+      <span class="passport-success__icon" aria-hidden="true"><i class="pi pi-check"></i></span>
+      <div>
+        <h2>{{ 'passport.quickCreate.success.title' | translate }}</h2>
+        <p>{{ 'passport.quickCreate.success.description' | translate:{ park: selectedParkName() || createdVisit.parkId } }}</p>
+        <p class="passport-private-note">
+          <i class="pi pi-lock" aria-hidden="true"></i>
+          <span>{{ 'passport.quickCreate.privacy' | translate }}</span>
+        </p>
+      </div>
+
+      <div class="passport-dialog-actions">
+        <button appUiButton="primary" type="button" (click)="close()">
+          <span>{{ 'passport.quickCreate.actions.done' | translate }}</span>
+        </button>
+        <button appUiButton="ghost" type="button" (click)="startAnotherVisit()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          <span>{{ 'passport.quickCreate.actions.addAnother' | translate }}</span>
+        </button>
+      </div>
+    </section>
+  } @else {
+    <form class="passport-visit-form" [formGroup]="form" (ngSubmit)="submit()">
+      <p class="passport-dialog-intro">{{ 'passport.quickCreate.intro' | translate }}</p>
+      <p class="passport-private-note">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        <span>{{ 'passport.quickCreate.privacy' | translate }}</span>
+      </p>
+
+      <section class="passport-form-section" aria-labelledby="passport-park-heading">
+        <div class="passport-section-heading">
+          <span aria-hidden="true">1</span>
+          <div>
+            <h2 id="passport-park-heading">{{ 'passport.quickCreate.park.title' | translate }}</h2>
+            <p>{{ 'passport.quickCreate.park.hint' | translate }}</p>
+          </div>
+        </div>
+
+        @if (selectedParkName(); as parkName) {
+          <div class="passport-selected-park">
+            <i class="pi pi-map-marker" aria-hidden="true"></i>
+            <strong>{{ parkName }}</strong>
+            @if (!fixedParkId) {
+              <button type="button" (click)="clearSelectedPark()">
+                {{ 'passport.quickCreate.park.change' | translate }}
+              </button>
+            }
+          </div>
+        } @else {
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.quickCreate.park.searchLabel' | translate }}</span>
+            <input
+              class="app-input"
+              type="search"
+              autocomplete="off"
+              [formControl]="parkSearchControl"
+              [placeholder]="'passport.quickCreate.park.searchPlaceholder' | translate" />
+          </label>
+
+          @if (facade.searching()) {
+            <p class="passport-search-status" role="status">
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              {{ 'passport.quickCreate.park.searching' | translate }}
+            </p>
+          }
+
+          @if (facade.parkOptions().length > 0) {
+            <div class="passport-park-results" role="listbox" [attr.aria-label]="'passport.quickCreate.park.results' | translate">
+              @for (option of facade.parkOptions(); track trackPark($index, option)) {
+                <button type="button" role="option" (click)="selectPark(option)">
+                  <i class="pi pi-map-marker" aria-hidden="true"></i>
+                  <span>
+                    <strong>{{ option.name }}</strong>
+                    @if (option.location) {
+                      <small>{{ option.location }}</small>
+                    }
+                  </span>
+                </button>
+              }
+            </div>
+          }
+
+          @if (facade.searchErrorKey(); as searchErrorKey) {
+            <p class="passport-inline-error" role="alert">{{ searchErrorKey | translate }}</p>
+          }
+        }
+      </section>
+
+      <section class="passport-form-section" aria-labelledby="passport-date-heading">
+        <div class="passport-section-heading">
+          <span aria-hidden="true">2</span>
+          <div>
+            <h2 id="passport-date-heading">{{ 'passport.quickCreate.date.title' | translate }}</h2>
+            <p>{{ 'passport.quickCreate.date.hint' | translate }}</p>
+          </div>
+        </div>
+
+        <button appUiButton="soft" type="button" class="passport-today-button" (click)="useToday()">
+          <i class="pi pi-calendar" aria-hidden="true"></i>
+          <span>{{ 'passport.quickCreate.date.today' | translate }}</span>
+        </button>
+
+        <fieldset class="passport-precision">
+          <legend>{{ 'passport.quickCreate.date.precisionLabel' | translate }}</legend>
+          <div>
+            <button type="button" [attr.aria-pressed]="form.controls.precision.value === 'Day'" (click)="setPrecision('Day')">
+              {{ 'passport.quickCreate.date.dayPrecision' | translate }}
+            </button>
+            <button type="button" [attr.aria-pressed]="form.controls.precision.value === 'Month'" (click)="setPrecision('Month')">
+              {{ 'passport.quickCreate.date.monthPrecision' | translate }}
+            </button>
+            <button type="button" [attr.aria-pressed]="form.controls.precision.value === 'Year'" (click)="setPrecision('Year')">
+              {{ 'passport.quickCreate.date.yearPrecision' | translate }}
+            </button>
+          </div>
+        </fieldset>
+
+        <div class="passport-date-fields">
+          @if (form.controls.precision.value === 'Day') {
+            <label class="app-field">
+              <span class="app-field__label">{{ 'passport.quickCreate.date.day' | translate }}</span>
+              <input class="app-input" type="number" inputmode="numeric" min="1" max="31" formControlName="day" />
+            </label>
+          }
+
+          @if (form.controls.precision.value !== 'Year') {
+            <label class="app-field">
+              <span class="app-field__label">{{ 'passport.quickCreate.date.month' | translate }}</span>
+              <input class="app-input" type="number" inputmode="numeric" min="1" max="12" formControlName="month" />
+            </label>
+          }
+
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.quickCreate.date.year' | translate }}</span>
+            <input class="app-input" type="number" inputmode="numeric" min="1" max="9999" formControlName="year" />
+          </label>
+        </div>
+
+        <label class="passport-check">
+          <input type="checkbox" formControlName="isApproximate" />
+          <span>
+            <strong>{{ 'passport.quickCreate.date.approximate' | translate }}</strong>
+            <small>{{ 'passport.quickCreate.date.approximateHint' | translate }}</small>
+          </span>
+        </label>
+
+        <label class="app-field">
+          <span class="app-field__label">{{ 'passport.quickCreate.date.timeZone' | translate }}</span>
+          <input class="app-input" type="text" autocomplete="off" maxlength="128" formControlName="timeZoneId" />
+          <small class="passport-field-hint">{{ 'passport.quickCreate.date.timeZoneHint' | translate }}</small>
+        </label>
+      </section>
+
+      <details class="passport-optional-details">
+        <summary>{{ 'passport.quickCreate.optional.title' | translate }}</summary>
+        <div class="passport-optional-details__body">
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.quickCreate.optional.visitTitle' | translate }}</span>
+            <input class="app-input" type="text" maxlength="160" formControlName="title" />
+          </label>
+          <label class="app-field">
+            <span class="app-field__label">{{ 'passport.quickCreate.optional.privateNote' | translate }}</span>
+            <textarea rows="4" maxlength="4000" formControlName="privateNote"></textarea>
+            <small class="passport-field-hint">{{ 'passport.quickCreate.optional.privateNoteHint' | translate }}</small>
+          </label>
+        </div>
+      </details>
+
+      @if (facade.errorKey(); as errorKey) {
+        <p class="passport-form-error" role="alert">
+          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+          <span>{{ errorKey | translate }}</span>
+        </p>
+      }
+
+      <div class="passport-dialog-actions">
+        <button appUiButton="primary" type="submit" [disabled]="facade.saving()">
+          @if (facade.saving()) {
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+          } @else {
+            <i class="pi pi-plus" aria-hidden="true"></i>
+          }
+          <span>{{ (facade.saving() ? 'passport.quickCreate.actions.saving' : 'passport.quickCreate.actions.create') | translate }}</span>
+        </button>
+        <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="close()">
+          {{ 'passport.quickCreate.actions.cancel' | translate }}
+        </button>
+      </div>
+    </form>
+  }
+</app-ui-dialog>

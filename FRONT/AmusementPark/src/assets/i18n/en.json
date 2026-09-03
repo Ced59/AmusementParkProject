@@ -7,6 +7,82 @@
     "languages": "Languages",
     "profile": "Profile"
   },
+  "passport": {
+    "profile": {
+      "kicker": "Visit passport",
+      "title": "Start your park history",
+      "description": "Save a private visit even if you only remember the month or year.",
+      "action": "Add a visit"
+    },
+    "quickCreate": {
+      "title": "Add a visit",
+      "intro": "Start with a simple visit. You can add everything you did in a later step.",
+      "privacy": "This visit and your notes remain private.",
+      "actions": {
+        "openForPark": "Add a visit",
+        "done": "Done",
+        "addAnother": "Add another visit",
+        "saving": "Saving…",
+        "create": "Create visit",
+        "cancel": "Cancel"
+      },
+      "success": {
+        "title": "Visit saved",
+        "description": "Your visit to {{park}} is now in your private passport.",
+        "toast": "The visit was added to your passport."
+      },
+      "park": {
+        "title": "Choose the park",
+        "hint": "Search among parks that are visible on the site.",
+        "change": "Change",
+        "searchLabel": "Park name",
+        "searchPlaceholder": "Start typing a name…",
+        "searching": "Searching for parks…",
+        "results": "Park search results"
+      },
+      "date": {
+        "title": "Enter the date you remember",
+        "hint": "The passport keeps your exact level of precision without inventing a day.",
+        "today": "Use today",
+        "precisionLabel": "Date precision",
+        "dayPrecision": "Exact day",
+        "monthPrecision": "Month",
+        "yearPrecision": "Year",
+        "day": "Day",
+        "month": "Month",
+        "year": "Year",
+        "approximate": "Approximate date",
+        "approximateHint": "Turn this on if the period is still uncertain.",
+        "timeZone": "Time zone",
+        "timeZoneHint": "Optional. Enter an IANA time zone, such as Europe/Paris, only if you know it."
+      },
+      "optional": {
+        "title": "Add optional details",
+        "visitTitle": "Visit title",
+        "privateNote": "Private note",
+        "privateNoteHint": "Only you can read this note."
+      },
+      "validation": {
+        "parkRequired": "Choose a park.",
+        "yearInvalid": "Enter a valid year.",
+        "monthInvalid": "Enter a month between 1 and 12.",
+        "dayInvalid": "That day does not exist in the selected month.",
+        "timeZoneInvalid": "The time zone is too long.",
+        "titleTooLong": "The title cannot exceed 160 characters.",
+        "noteTooLong": "The private note cannot exceed 4,000 characters."
+      },
+      "errors": {
+        "signInRequired": "Sign in to save this visit. Your entry remains available.",
+        "generic": "The visit could not be saved. Try again without losing your entry.",
+        "parkSearch": "The park search failed. Try again in a moment.",
+        "parkNotFound": "This park is no longer available.",
+        "timeZone": "The time zone is not recognised.",
+        "date": "The visit date is not valid.",
+        "retryConflict": "This attempt no longer matches the original entry. Check the fields and try again.",
+        "network": "The server response did not arrive. Try again: the visit will not be created twice."
+      }
+    }
+  },
   "user-profile": {
     "title": "User profile",
     "name": "Last name",

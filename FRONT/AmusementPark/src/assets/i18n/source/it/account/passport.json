@@ -1,0 +1,78 @@
+{
+  "passport": {
+    "profile": {
+      "kicker": "Passaporto delle visite",
+      "title": "Inizia la tua storia nei parchi",
+      "description": "Salva una visita privata anche se ricordi soltanto il mese o l’anno.",
+      "action": "Aggiungi una visita"
+    },
+    "quickCreate": {
+      "title": "Aggiungi una visita",
+      "intro": "Inizia con una visita semplice. Potrai aggiungere ciò che hai fatto in un secondo momento.",
+      "privacy": "Questa visita e le tue note rimangono private.",
+      "actions": {
+        "openForPark": "Aggiungi una visita",
+        "done": "Fine",
+        "addAnother": "Aggiungi un’altra visita",
+        "saving": "Salvataggio…",
+        "create": "Crea la visita",
+        "cancel": "Annulla"
+      },
+      "success": {
+        "title": "Visita salvata",
+        "description": "La tua visita a {{park}} è ora nel tuo passaporto privato.",
+        "toast": "La visita è stata aggiunta al tuo passaporto."
+      },
+      "park": {
+        "title": "Scegli il parco",
+        "hint": "Cerca tra i parchi visibili sul sito.",
+        "change": "Cambia",
+        "searchLabel": "Nome del parco",
+        "searchPlaceholder": "Inizia a digitare un nome…",
+        "searching": "Ricerca dei parchi…",
+        "results": "Risultati della ricerca dei parchi"
+      },
+      "date": {
+        "title": "Indica la data che ricordi",
+        "hint": "Il passaporto conserva esattamente il tuo livello di precisione senza inventare un giorno.",
+        "today": "Usa la data di oggi",
+        "precisionLabel": "Precisione della data",
+        "dayPrecision": "Giorno esatto",
+        "monthPrecision": "Mese",
+        "yearPrecision": "Anno",
+        "day": "Giorno",
+        "month": "Mese",
+        "year": "Anno",
+        "approximate": "Data approssimativa",
+        "approximateHint": "Attiva questa opzione se il periodo è ancora incerto.",
+        "timeZone": "Fuso orario",
+        "timeZoneHint": "Facoltativo. Indica un fuso IANA, come Europe/Paris, solo se lo conosci."
+      },
+      "optional": {
+        "title": "Aggiungi dettagli facoltativi",
+        "visitTitle": "Titolo della visita",
+        "privateNote": "Nota privata",
+        "privateNoteHint": "Solo tu puoi leggere questa nota."
+      },
+      "validation": {
+        "parkRequired": "Scegli un parco.",
+        "yearInvalid": "Inserisci un anno valido.",
+        "monthInvalid": "Inserisci un mese compreso tra 1 e 12.",
+        "dayInvalid": "Questo giorno non esiste nel mese selezionato.",
+        "timeZoneInvalid": "Il fuso orario è troppo lungo.",
+        "titleTooLong": "Il titolo non può superare 160 caratteri.",
+        "noteTooLong": "La nota privata non può superare 4.000 caratteri."
+      },
+      "errors": {
+        "signInRequired": "Accedi per salvare questa visita. I dati inseriti restano disponibili.",
+        "generic": "Non è stato possibile salvare la visita. Riprova senza perdere i dati inseriti.",
+        "parkSearch": "La ricerca dei parchi non è riuscita. Riprova tra poco.",
+        "parkNotFound": "Questo parco non è più disponibile.",
+        "timeZone": "Il fuso orario non è riconosciuto.",
+        "date": "La data della visita non è valida.",
+        "retryConflict": "Questo tentativo non corrisponde più ai dati iniziali. Controlla i campi e riprova.",
+        "network": "La risposta del server non è arrivata. Riprova: la visita non verrà creata due volte."
+      }
+    }
+  }
+}

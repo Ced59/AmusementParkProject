@@ -67,6 +67,7 @@ export class ProfilePageViewComponent {
   @Output() logoutClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() avatarDialogVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() avatarUploaded: EventEmitter<ImageDto> = new EventEmitter<ImageDto>();
+  @Output() passportVisitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
 
   editField(field: string): void {
     this.editFieldClicked.emit(field);
@@ -106,5 +107,9 @@ export class ProfilePageViewComponent {
 
   selectTab(tab: 'profile' | 'ratings'): void {
     this.activeTab.set(tab);
+  }
+
+  createPassportVisit(): void {
+    this.passportVisitCreateClicked.emit();
   }
 }

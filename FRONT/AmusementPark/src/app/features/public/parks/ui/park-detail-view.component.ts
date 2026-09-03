@@ -71,6 +71,7 @@ export class ParkDetailViewComponent {
   @Input() heroImageSrcWidth: number | null = 960;
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() visitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
 
   goBack(): void {
     this.backClicked.emit();
@@ -78,6 +79,10 @@ export class ParkDetailViewComponent {
 
   goToExplore(): void {
     this.exploreClicked.emit();
+  }
+
+  createVisit(): void {
+    this.visitCreateClicked.emit();
   }
 
   protected getContextualBlock(type: PublicContextualBlockType, currentPark: ParkDetailViewModel): PublicContextualBlockMarker {
