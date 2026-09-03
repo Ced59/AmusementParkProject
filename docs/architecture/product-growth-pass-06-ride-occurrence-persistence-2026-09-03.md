@@ -135,13 +135,15 @@ payloadHash: SHA-256
 items: [{
   index: int32,
   occurrenceId: string opaque,
-  sortPosition: int64
+  sortPosition: int64,
+  createdAtUtc: date UTC,
+  updatedAtUtc: date UTC
 }]
 createdAt: date UTC
 updatedAt: date UTC
 ```
 
-Ce marqueur léger réserve atomiquement les identifiants et positions d'un lot avant les insertions. Il évite qu'un MongoDB autonome mélange deux allocations concurrentes d'une même opération, même si une première réponse réseau est perdue après une insertion partielle. La clé brute du client n'est jamais persistée.
+Ce marqueur léger réserve atomiquement les identifiants, positions et timestamps à la précision Mongo d'un lot avant les insertions. Il évite qu'un MongoDB autonome mélange deux allocations concurrentes d'une même opération ou modifie le résultat initial lors d'une reprise tardive, même si une première réponse réseau est perdue après une insertion partielle. La clé brute du client n'est jamais persistée.
 
 ## Idempotence d'un lot
 
@@ -161,7 +163,7 @@ sequenceDiagram
       O-->>R: duplicate key
       R->>O: relire la réservation gagnante
       alt même empreinte
-        O-->>R: IDs et positions initiaux
+        O-->>R: IDs, positions et timestamps initiaux
       else payload différent
         R-->>A: Conflict
       end

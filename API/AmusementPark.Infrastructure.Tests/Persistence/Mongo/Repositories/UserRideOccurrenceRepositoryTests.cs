@@ -185,6 +185,8 @@ public sealed class UserRideOccurrenceRepositoryTests
                         Index = 0,
                         OccurrenceId = "another-occurrence",
                         SortPosition = 1024,
+                        CreatedAtUtc = NowUtc,
+                        UpdatedAtUtc = NowUtc,
                     },
                 },
             };
@@ -198,6 +200,40 @@ public sealed class UserRideOccurrenceRepositoryTests
 
         Assert.NotNull(result);
         Assert.Equal(IdempotentRideOccurrenceCreationStatus.Conflict, result.Status);
+    }
+
+    [Fact]
+    public void CreateCreationDocument_ShouldReuseTheReservedOriginalTimestamps()
+    {
+        RideOccurrence retryOccurrence = CreateOccurrence(
+            "retry-occurrence",
+            "item-1",
+            4096,
+            NowUtc.AddHours(2));
+        UserRideOccurrenceCreationAllocationDocument originalAllocation =
+            new UserRideOccurrenceCreationAllocationDocument
+            {
+                Index = 0,
+                OccurrenceId = "original-occurrence",
+                SortPosition = 1024,
+                CreatedAtUtc = NowUtc,
+                UpdatedAtUtc = NowUtc,
+            };
+
+        UserRideOccurrenceDocument document =
+            UserRideOccurrenceRepository.CreateCreationDocument(
+                retryOccurrence,
+                originalAllocation,
+                "operation-hash",
+                "payload-hash",
+                1);
+
+        Assert.Equal("original-occurrence", document.Id);
+        Assert.Equal(1024, document.SortPosition);
+        Assert.Equal(NowUtc, document.CreatedAt);
+        Assert.Equal(NowUtc, document.UpdatedAt);
+        Assert.Equal(NowUtc, document.CreationSnapshot?.CreatedAtUtc);
+        Assert.Equal(NowUtc, document.CreationSnapshot?.UpdatedAtUtc);
     }
 
     [Fact]
@@ -318,6 +354,15 @@ public sealed class UserRideOccurrenceRepositoryTests
         string parkItemId,
         long sortPosition)
     {
+        return CreateOccurrence(id, parkItemId, sortPosition, NowUtc);
+    }
+
+    private static RideOccurrence CreateOccurrence(
+        string id,
+        string parkItemId,
+        long sortPosition,
+        DateTime nowUtc)
+    {
         Visit visit = Visit.Create(
             VisitId.Parse("visit-1"),
             "user-1",
@@ -327,7 +372,7 @@ public sealed class UserRideOccurrenceRepositoryTests
             LocalServiceDayConvention.VisitStartLocalDate,
             null,
             null,
-            NowUtc);
+            nowUtc);
         return RideOccurrence.Create(
             RideOccurrenceId.Parse(id),
             visit,
@@ -339,7 +384,7 @@ public sealed class UserRideOccurrenceRepositoryTests
             HistoricalConsistency.Verified,
             null,
             null,
-            NowUtc);
+            nowUtc);
     }
 
     private static BsonDocument Render(

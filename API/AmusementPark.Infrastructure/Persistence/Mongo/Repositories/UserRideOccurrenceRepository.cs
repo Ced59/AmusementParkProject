@@ -289,7 +289,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 document.CreationOperationIndex.Value,
                 out UserRideOccurrenceCreationAllocationDocument? allocation)
             && string.Equals(document.Id, allocation.OccurrenceId, StringComparison.Ordinal)
-            && document.SortPosition == allocation.SortPosition);
+            && document.SortPosition == allocation.SortPosition
+            && document.CreatedAt == allocation.CreatedAtUtc
+            && document.UpdatedAt == allocation.UpdatedAtUtc);
         if (!allocationsMatch)
         {
             return CreateConflictResult();
@@ -386,7 +388,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
     }
 
-    private static UserRideOccurrenceDocument CreateCreationDocument(
+    internal static UserRideOccurrenceDocument CreateCreationDocument(
         RideOccurrence occurrence,
         UserRideOccurrenceCreationAllocationDocument allocation,
         string operationKeyHash,
@@ -396,6 +398,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceDocument document = occurrence.ToDocument();
         document.Id = allocation.OccurrenceId;
         document.SortPosition = allocation.SortPosition;
+        document.CreatedAt = allocation.CreatedAtUtc;
+        document.UpdatedAt = allocation.UpdatedAtUtc;
         document.CreationOperationKeyHash = operationKeyHash;
         document.CreationPayloadHash = payloadHash;
         document.CreationOperationIndex = allocation.Index;
@@ -424,6 +428,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         Index = index,
                         OccurrenceId = occurrence.Id.Value,
                         SortPosition = occurrence.SortPosition,
+                        CreatedAtUtc = ToMongoPrecision(occurrence.CreatedAtUtc),
+                        UpdatedAtUtc = ToMongoPrecision(occurrence.UpdatedAtUtc),
                     })
                 .ToList(),
             CreatedAt = createdAtUtc,
@@ -460,7 +466,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             && operation.Items.All(item =>
                 item.Index is >= 0
                 && item.Index < expectedCount
-                && !string.IsNullOrWhiteSpace(item.OccurrenceId));
+                && !string.IsNullOrWhiteSpace(item.OccurrenceId)
+                && item.CreatedAtUtc.Kind == DateTimeKind.Utc
+                && item.UpdatedAtUtc.Kind == DateTimeKind.Utc
+                && item.UpdatedAtUtc >= item.CreatedAtUtc);
     }
 
     private static IdempotentRideOccurrenceCreationResult CreateConflictResult()
@@ -491,7 +500,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             occurrence.VisitId == first.VisitId
             && string.Equals(occurrence.UserId, first.UserId, StringComparison.Ordinal)
             && string.Equals(occurrence.ParkId, first.ParkId, StringComparison.Ordinal)
-            && !occurrence.IsDeleted);
+            && !occurrence.IsDeleted
+            && occurrence.Version == 1
+            && occurrence.CreatedAtUtc == occurrence.UpdatedAtUtc);
         bool distinctIds = occurrences
             .Select(static occurrence => occurrence.Id)
             .Distinct()
@@ -539,6 +550,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         return normalizedValue;
+    }
+
+    private static DateTime ToMongoPrecision(DateTime value)
+    {
+        long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(ticks, DateTimeKind.Utc);
     }
 
     private sealed record BatchScope(string UserId);

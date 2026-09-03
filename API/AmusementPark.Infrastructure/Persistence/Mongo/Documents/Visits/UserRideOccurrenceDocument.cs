@@ -178,4 +178,10 @@ public sealed class UserRideOccurrenceCreationAllocationDocument
 
     [BsonElement("sortPosition")]
     public long SortPosition { get; set; }
+
+    [BsonElement("createdAtUtc")]
+    public DateTime CreatedAtUtc { get; set; }
+
+    [BsonElement("updatedAtUtc")]
+    public DateTime UpdatedAtUtc { get; set; }
 }
