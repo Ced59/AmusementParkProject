@@ -246,6 +246,10 @@ public sealed class UserRideOccurrenceCreationOperationDocument : MongoDocumentB
     [BsonIgnoreIfDefault]
     public bool OrderGuardsValidated { get; set; }
 
+    [BsonElement("reorderCompensationStarted")]
+    [BsonIgnoreIfDefault]
+    public bool ReorderCompensationStarted { get; set; }
+
     [BsonElement("reorderResultSnapshot")]
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? ReorderResultSnapshot { get; set; }

@@ -1339,6 +1339,153 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task ResolveExistingReorderAsync_WhenAnotherWorkerCompletedBeforeMismatch_ShouldReplay()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrence moved = CreateOccurrence("occurrence-1", "item-1", 1024);
+        RideOccurrence second = CreateOccurrence("occurrence-2", "item-2", 2048);
+        RideOccurrenceReorderRequest request = new RideOccurrenceReorderRequest(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            moved.Id,
+            1,
+            null,
+            RideOccurrencePlacement.First);
+        moved.MoveTo(1536, NowUtc.AddMinutes(1));
+        second.MoveTo(2560, NowUtc.AddMinutes(1));
+        UserRideOccurrenceDocument movedApplied = moved.ToDocument();
+        UserRideOccurrenceDocument secondApplied = second.ToDocument();
+        string operationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("request-1");
+        movedApplied.LastReorderOperationKeyHash = operationKeyHash;
+        secondApplied.LastReorderOperationKeyHash = operationKeyHash;
+        second.MoveTo(3072, NowUtc.AddMinutes(2));
+        UserRideOccurrenceDocument secondChangedAfterCompletion = second.ToDocument();
+        secondChangedAfterCompletion.LastReorderOperationKeyHash =
+            UserRideOccurrenceCreationFingerprint.HashOperationKey("newer-request");
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = request.UserId,
+                OperationKeyHash = operationKeyHash,
+                PayloadHash = UserRideOccurrenceCreationFingerprint.HashReorderPayload(request),
+                OperationKind = "reorder",
+                VisitId = request.VisitId.Value,
+                OperationState = "pending",
+                MovedOccurrenceId = moved.Id.Value,
+                ReorderExpectedVersion = 1,
+                ReorderPlacement = RideOccurrencePlacement.First,
+                OrderGuardsValidated = true,
+                OrderGuards = new List<UserRideOccurrenceOrderGuardDocument>
+                {
+                    new UserRideOccurrenceOrderGuardDocument
+                    {
+                        OccurrenceId = moved.Id.Value,
+                        SortPosition = 1024,
+                    },
+                    new UserRideOccurrenceOrderGuardDocument
+                    {
+                        OccurrenceId = second.Id.Value,
+                        SortPosition = 2048,
+                    },
+                },
+                ReorderItems = new List<UserRideOccurrenceReorderAllocationDocument>
+                {
+                    new UserRideOccurrenceReorderAllocationDocument
+                    {
+                        Index = 0,
+                        OccurrenceId = moved.Id.Value,
+                        ExpectedVersion = 1,
+                        PreviousSortPosition = 1024,
+                        ResultSortPosition = movedApplied.SortPosition,
+                        ResultVersion = movedApplied.Version,
+                        ResultUpdatedAtUtc = movedApplied.UpdatedAt,
+                    },
+                    new UserRideOccurrenceReorderAllocationDocument
+                    {
+                        Index = 1,
+                        OccurrenceId = second.Id.Value,
+                        ExpectedVersion = 1,
+                        PreviousSortPosition = 2048,
+                        ResultSortPosition = secondApplied.SortPosition,
+                        ResultVersion = secondApplied.Version,
+                        ResultUpdatedAtUtc = secondApplied.UpdatedAt,
+                    },
+                },
+                ReorderResultSnapshot = movedApplied.CreateCreationSnapshot(),
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        UserRideOccurrenceCreationOperationDocument completed =
+            BsonSerializer.Deserialize<UserRideOccurrenceCreationOperationDocument>(
+                operation.ToBsonDocument());
+        completed.OperationState = "completed";
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> pendingCursor =
+            CreateAsyncCursor(new[] { operation });
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> completedCursor =
+            CreateAsyncCursor(new[] { completed });
+        operationCollection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(pendingCursor.Object)
+            .ReturnsAsync(completedCursor.Object);
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> movedCursor =
+            CreateAsyncCursor(new[] { movedApplied });
+        Mock<IAsyncCursor<UserRideOccurrenceDocument>> changedCursor =
+            CreateAsyncCursor(new[] { secondChangedAfterCompletion });
+        collection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument,
+                    UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(movedCursor.Object)
+            .ReturnsAsync(changedCursor.Object);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        IdempotentRideOccurrenceReorderResult? result =
+            await repository.ResolveExistingReorderAsync(
+                request,
+                "request-1",
+                CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(IdempotentRideOccurrenceReorderStatus.Replayed, result.Status);
+        Assert.Equal(1536, result.Occurrence?.SortPosition);
+        collection.Verify(value => value.UpdateOneAsync(
+            It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<UpdateOptions>(),
+            CancellationToken.None), Times.Exactly(2));
+        operationCollection.Verify(
+            value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None),
+            Times.Never);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        pendingCursor.VerifyAll();
+        completedCursor.VerifyAll();
+        movedCursor.VerifyAll();
+        changedCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReorderIdempotentAsync_WithAnotherPendingOperation_ShouldFinishItAndReleaseTheVisit()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =

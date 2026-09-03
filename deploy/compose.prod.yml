@@ -234,10 +234,15 @@ services:
       Cors__AllowedHeaders__1: Content-Type
       Cors__AllowedHeaders__2: Accept-Language
       Cors__AllowedHeaders__3: X-Requested-With
+      Cors__AllowedHeaders__4: X-AmusementPark-Public-View-Mode
+      Cors__AllowedHeaders__5: Idempotency-Key
       Cors__ExposedHeaders__0: Retry-After
       Cors__ExposedHeaders__1: X-Rate-Limit-Limit
       Cors__ExposedHeaders__2: X-Rate-Limit-Remaining
       Cors__ExposedHeaders__3: X-Rate-Limit-Reset
+      Cors__ExposedHeaders__4: X-AmusementPark-Public-View-Mode-Applied
+      Cors__ExposedHeaders__5: Idempotency-Replayed
+      Cors__ExposedHeaders__6: Ride-Order-Normalized
       Cors__AllowCredentials: "true"
       Email__Mode: ${EMAIL_MODE:-Smtp}
       Email__Host: ${EMAIL_HOST:-}

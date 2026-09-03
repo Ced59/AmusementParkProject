@@ -725,6 +725,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             CompletedOperationState,
             StringComparison.Ordinal))
         {
+            if (operation.ReorderCompensationStarted)
+            {
+                return await this.CompensateReorderAsync(
+                    operation,
+                    request,
+                    operationKeyHash,
+                    cancellationToken);
+            }
+
             if (!operation.OrderGuardsValidated)
             {
                 RideOccurrenceOrderGuardValidationStatus guardStatus =
@@ -789,8 +798,6 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 return CreateReorderConflictResult(operation.WasNormalized);
             }
 
-            List<UserRideOccurrenceReorderAllocationDocument> appliedAllocations =
-                new List<UserRideOccurrenceReorderAllocationDocument>();
             foreach (UserRideOccurrenceReorderAllocationDocument allocation in
                 operation.ReorderItems!.OrderBy(static item => item.Index))
             {
@@ -805,7 +812,6 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     cancellationToken);
                 if (update.MatchedCount == 1)
                 {
-                    appliedAllocations.Add(allocation);
                     continue;
                 }
 
@@ -821,31 +827,27 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         allocation,
                         operationKeyHash))
                 {
-                    appliedAllocations.Add(allocation);
                     continue;
                 }
 
-                bool rolledBack = await this.reorderRecovery.TryRollbackAsync(
+                return await this.ResolveReorderWriteFailureAsync(
+                    operation,
                     request,
-                    appliedAllocations,
                     operationKeyHash,
                     cancellationToken);
-                if (rolledBack)
-                {
-                    await this.pendingOperationRecovery.SetStateAsync(
-                        operation,
-                        ConflictOperationState,
-                        cancellationToken);
-                }
-
-                return CreateReorderConflictResult(operation.WasNormalized);
             }
 
-            await this.pendingOperationRecovery.SetStateAsync(
+            bool completed = await this.pendingOperationRecovery.TryCompleteReorderAsync(
                 operation,
-                CompletedOperationState,
                 cancellationToken);
-            operation.OperationState = CompletedOperationState;
+            if (!completed)
+            {
+                return await this.ResolveReorderCompletionRaceAsync(
+                    operation,
+                    request,
+                    operationKeyHash,
+                    cancellationToken);
+            }
         }
 
         return wasExisting
@@ -856,6 +858,128 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     operation.MovedOccurrenceId!,
                     operation.UserId),
                 operation.WasNormalized);
+    }
+
+    private async Task<IdempotentRideOccurrenceReorderResult>
+        ResolveReorderWriteFailureAsync(
+            UserRideOccurrenceCreationOperationDocument operation,
+            RideOccurrenceReorderRequest request,
+            string operationKeyHash,
+            CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? durable =
+            await this.LoadCreationOperationAsync(
+                operation.UserId,
+                operationKeyHash,
+                cancellationToken);
+        if (durable is null)
+        {
+            return CreateReorderConflictResult(operation.WasNormalized);
+        }
+
+        if (string.Equals(
+            durable.OperationState,
+            CompletedOperationState,
+            StringComparison.Ordinal))
+        {
+            return CreateReorderReplayResult(durable);
+        }
+
+        if (!string.Equals(
+            durable.OperationState,
+            PendingOperationState,
+            StringComparison.Ordinal))
+        {
+            return CreateReorderConflictResult(durable.WasNormalized);
+        }
+
+        operation.ReorderCompensationStarted = durable.ReorderCompensationStarted;
+        if (!operation.ReorderCompensationStarted)
+        {
+            bool claimed = await this.pendingOperationRecovery
+                .TryBeginReorderCompensationAsync(
+                    operation,
+                    cancellationToken);
+            if (!claimed)
+            {
+                return await this.ResolveReorderCompletionRaceAsync(
+                    operation,
+                    request,
+                    operationKeyHash,
+                    cancellationToken);
+            }
+        }
+
+        return await this.CompensateReorderAsync(
+            operation,
+            request,
+            operationKeyHash,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceReorderResult>
+        ResolveReorderCompletionRaceAsync(
+            UserRideOccurrenceCreationOperationDocument operation,
+            RideOccurrenceReorderRequest request,
+            string operationKeyHash,
+            CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? durable =
+            await this.LoadCreationOperationAsync(
+                operation.UserId,
+                operationKeyHash,
+                cancellationToken);
+        if (durable is not null
+            && string.Equals(
+                durable.OperationState,
+                CompletedOperationState,
+                StringComparison.Ordinal))
+        {
+            return CreateReorderReplayResult(durable);
+        }
+
+        if (durable is not null
+            && string.Equals(
+                durable.OperationState,
+                PendingOperationState,
+                StringComparison.Ordinal)
+            && durable.ReorderCompensationStarted)
+        {
+            operation.ReorderCompensationStarted = true;
+            return await this.CompensateReorderAsync(
+                operation,
+                request,
+                operationKeyHash,
+                cancellationToken);
+        }
+
+        return CreateReorderConflictResult(
+            durable?.WasNormalized ?? operation.WasNormalized);
+    }
+
+    private async Task<IdempotentRideOccurrenceReorderResult> CompensateReorderAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        RideOccurrenceReorderRequest request,
+        string operationKeyHash,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyList<UserRideOccurrenceReorderAllocationDocument> allocations =
+            operation.ReorderItems!
+                .OrderBy(static item => item.Index)
+                .ToArray();
+        bool rolledBack = await this.reorderRecovery.TryRollbackAsync(
+            request,
+            allocations,
+            operationKeyHash,
+            cancellationToken);
+        if (rolledBack)
+        {
+            _ = await this.pendingOperationRecovery.TryFinishReorderCompensationAsync(
+                operation,
+                cancellationToken);
+        }
+
+        return CreateReorderConflictResult(operation.WasNormalized);
     }
 
     private async Task<(UserRideOccurrenceCreationOperationDocument Operation, bool IsNew)?>

@@ -175,6 +175,101 @@ internal sealed class UserRideOccurrencePendingOperationRecovery
         return false;
     }
 
+    public async Task<bool> TryBeginReorderCompensationAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
+            & filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Ne(static document => document.ReorderCompensationStarted, true);
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update
+                .Set(static document => document.ReorderCompensationStarted, true)
+                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            update,
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        if (result.MatchedCount == 1)
+        {
+            operation.ReorderCompensationStarted = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    public async Task<bool> TryCompleteReorderAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
+            & filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Ne(static document => document.ReorderCompensationStarted, true);
+        return await this.TryTransitionReorderStateAsync(
+            operation,
+            filter,
+            CompletedOperationState,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryFinishReorderCompensationAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                operation.UserId,
+                operation.OperationKeyHash)
+            & filters.Eq(static document => document.OperationKind, ReorderOperationKind)
+            & filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Eq(static document => document.ReorderCompensationStarted, true);
+        return await this.TryTransitionReorderStateAsync(
+            operation,
+            filter,
+            ConflictOperationState,
+            cancellationToken);
+    }
+
+    private async Task<bool> TryTransitionReorderStateAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter,
+        string targetState,
+        CancellationToken cancellationToken)
+    {
+        UpdateDefinition<UserRideOccurrenceCreationOperationDocument> update =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update
+                .Set(static document => document.OperationState, targetState)
+                .Set(static document => document.UpdatedAt, operation.UpdatedAt);
+        UpdateResult result = await this.operationCollection.UpdateOneAsync(
+            filter,
+            update,
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        if (result.MatchedCount == 1)
+        {
+            operation.OperationState = targetState;
+            return true;
+        }
+
+        return false;
+    }
+
     private async Task<bool> TryCompleteCreationAsync(
         UserRideOccurrenceCreationOperationDocument operation,
         CancellationToken cancellationToken)
