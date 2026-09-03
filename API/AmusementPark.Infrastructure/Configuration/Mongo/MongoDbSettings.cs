@@ -110,6 +110,8 @@ public sealed class MongoDbSettings
 
     public string UserRankingSharesCollectionName { get; set; } = "userRankingShares";
 
+    public string UserVisitsCollectionName { get; set; } = "user-visits";
+
     public string CommentsCollectionName { get; set; } = "comments";
 
     public string CountriesCollectionName { get; set; } = "countries";

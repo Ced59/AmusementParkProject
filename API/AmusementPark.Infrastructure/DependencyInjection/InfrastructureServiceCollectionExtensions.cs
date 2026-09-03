@@ -19,6 +19,7 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkPricing.Ports;
+using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -214,6 +215,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRankingSnapshotRepository, RankingSnapshotRepository>();
         services.AddScoped<IRatingRankingSourceRevisionRepository, RatingRankingSourceRevisionRepository>();
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
+        services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
