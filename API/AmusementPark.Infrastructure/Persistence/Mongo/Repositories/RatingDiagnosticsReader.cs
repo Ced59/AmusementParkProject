@@ -60,7 +60,7 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         BsonDocument duplicates = GetFirstFacetDocument(facets, "duplicates");
         BsonDocument distinctValues = GetFirstFacetDocument(facets, "distinctValues");
         IReadOnlyCollection<string> distinctValueSample = ReadDistinctValueSample(distinctValues);
-        long distinctValueCount = ReadNestedCount(distinctValues, "count");
+        long distinctValueCount = ReadInt64(distinctValues, "count");
 
         RatingAnomalySummaryResult anomalies = new RatingAnomalySummaryResult(
             ReadInt64(summary, "nonNumericValueCount"),
@@ -123,16 +123,14 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
                 "distinctValues": [
                   { "$match": { "_diagnosticIsNumericValue": true } },
                   { "$group": { "_id": "$_diagnosticNumericValue" } },
-                  { "$sort": { "_id": 1 } },
                   {
-                    "$facet": {
-                      "count": [ { "$count": "value" } ],
-                      "sample": [
-                        { "$limit": 25 },
-                        { "$project": { "_id": 0, "value": "$_id" } }
-                      ]
+                    "$group": {
+                      "_id": null,
+                      "count": { "$sum": 1 },
+                      "sample": { "$minN": { "input": "$_id", "n": 25 } }
                     }
-                  }
+                  },
+                  { "$project": { "_id": 0 } }
                 ],
                 "duplicates": [
                   { "$match": { "_diagnosticHasUser": true, "_diagnosticHasTarget": true } },
@@ -855,8 +853,8 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         }
 
         return sample.AsBsonArray
-            .Where(static item => item.IsBsonDocument && item.AsBsonDocument.Contains("value"))
-            .Select(static item => FormatNumericValue(item.AsBsonDocument["value"]))
+            .Where(static item => item.IsNumeric)
+            .Select(FormatNumericValue)
             .ToList();
     }
 
@@ -897,19 +895,6 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
 
         BsonValue first = value.AsBsonArray[0];
         return first.IsBsonDocument ? first.AsBsonDocument : new BsonDocument();
-    }
-
-    private static long ReadNestedCount(BsonDocument document, string name)
-    {
-        if (!document.TryGetValue(name, out BsonValue? value)
-            || !value.IsBsonArray
-            || value.AsBsonArray.Count == 0
-            || !value.AsBsonArray[0].IsBsonDocument)
-        {
-            return 0;
-        }
-
-        return ReadInt64(value.AsBsonArray[0].AsBsonDocument, "value");
     }
 
     private static long ReadInt64(BsonDocument document, string name)
