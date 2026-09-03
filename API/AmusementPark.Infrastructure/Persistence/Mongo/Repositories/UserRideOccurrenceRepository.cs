@@ -769,6 +769,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         List<UpdateDefinition<UserRideOccurrenceDocument>> definitions =
             new List<UpdateDefinition<UserRideOccurrenceDocument>>
             {
+                updates.Set(static item => item.SchemaVersion, document.SchemaVersion),
                 updates.Set(static item => item.SortPosition, document.SortPosition),
                 updates.Set(static item => item.Moment, document.Moment),
                 updates.Set(static item => item.Status, document.Status),

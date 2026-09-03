@@ -1354,6 +1354,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         BsonDocument assessedUpdate = Render(
             UserRideOccurrenceRepository.BuildDomainUpdate(occurrence.ToDocument()));
 
+        Assert.Equal(2, assessedUpdate["$set"]["schemaVersion"].AsInt32);
         Assert.Equal(2, assessedUpdate["$set"]["version"].AsInt64);
         Assert.Equal(9, assessedUpdate["$set"]["assessment"]["valueHalfSteps"].AsInt32);
 
@@ -1361,6 +1362,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         BsonDocument deletedUpdate = Render(
             UserRideOccurrenceRepository.BuildDomainUpdate(occurrence.ToDocument()));
 
+        Assert.Equal(2, deletedUpdate["$set"]["schemaVersion"].AsInt32);
         Assert.Equal(3, deletedUpdate["$set"]["version"].AsInt64);
         Assert.True(deletedUpdate["$unset"].AsBsonDocument.Contains("assessment"));
     }
