@@ -73,6 +73,17 @@ public sealed class UserRideOccurrenceCreationFingerprintTests
     }
 
     [Fact]
+    public void CreateReservationOperationKey_ShouldUseANonOverlappingHashedNamespace()
+    {
+        string key = UserRideOccurrenceCreationFingerprint
+            .CreateReservationOperationKey("secret-operation");
+
+        Assert.StartsWith("creation-key-reservation:", key, StringComparison.Ordinal);
+        Assert.Equal("creation-key-reservation:".Length + 64, key.Length);
+        Assert.DoesNotContain("secret-operation", key, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void HashPayload_ShouldIgnoreDerivedHistoricalConsistencyOnRetry()
     {
         RideOccurrence verified = CreateOccurrence("occurrence-1", "item-1", 1024, NowUtc);

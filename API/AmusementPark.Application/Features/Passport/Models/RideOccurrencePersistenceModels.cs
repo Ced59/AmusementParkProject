@@ -39,6 +39,13 @@ public sealed record RideOccurrenceCreationRequest(
     string UserId,
     IReadOnlyList<RideOccurrenceCreationRequestItem> Items);
 
+public enum RideOccurrenceCreationKeyReservationStatus
+{
+    Reserved = 1,
+    Replayed = 2,
+    Conflict = 3,
+}
+
 public enum IdempotentRideOccurrenceCreationStatus
 {
     Created = 1,

@@ -48,6 +48,7 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        SetupCreationKeyReservation(occurrences);
         IReadOnlyList<RideOccurrence>? captured = null;
         occurrences.Setup(repository => repository.CreateBatchIdempotentAsync(
                 It.Is<RideOccurrenceCreationRequest>(request =>
@@ -111,6 +112,7 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        SetupCreationKeyReservation(occurrences);
         occurrences.Setup(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 visit.UserId,
@@ -170,6 +172,7 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        SetupCreationKeyReservation(occurrences);
         occurrences.SetupSequence(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 "owner-1",
@@ -258,6 +261,7 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        SetupCreationKeyReservation(occurrences);
         occurrences.SetupSequence(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 visit.UserId,
@@ -388,6 +392,99 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
+    public async Task AddBatch_WhenCreationKeyReservationConflicts_ShouldStopBeforeReadingOrder()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                "item-1",
+                "park-1",
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        occurrences.Setup(repository => repository.ReserveBatchCreationKeyAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                NowUtc.AddMinutes(1),
+                CancellationToken.None))
+            .ReturnsAsync(RideOccurrenceCreationKeyReservationStatus.Conflict);
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
+            CreateClock());
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "ride-occurrence.idempotency-key-conflict",
+            Assert.Single(result.Errors).Code);
+        occurrences.VerifyAll();
+        occurrences.VerifyNoOtherCalls();
+        visits.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddBatch_WhenCreationKeyReservationIsAReplay_ShouldRecheckTheCreation()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+            new VisitTarget(
+                "item-1",
+                "park-1",
+                "Attraction",
+                ParkItemCategory.Attraction,
+                new DateOnly(2000, 1, 1),
+                null));
+        occurrences.SetupSequence(repository => repository.ResolveExistingBatchCreationAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                CancellationToken.None))
+            .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null)
+            .ReturnsAsync(new IdempotentRideOccurrenceCreationResult(
+                IdempotentRideOccurrenceCreationStatus.Replayed,
+                new[] { occurrence }));
+        occurrences.Setup(repository => repository.ReserveBatchCreationKeyAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                NowUtc.AddMinutes(1),
+                CancellationToken.None))
+            .ReturnsAsync(RideOccurrenceCreationKeyReservationStatus.Replayed);
+        AddRideOccurrencesBatchCommandHandler handler = CreateAddHandler(
+            visits,
+            occurrences,
+            targets,
+            CreateClock());
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
+            CreateBatchCommand());
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value?.WasReplayed);
+        Assert.Equal("occurrence-1", Assert.Single(result.Value!.Occurrences).Id);
+        occurrences.VerifyAll();
+        occurrences.VerifyNoOtherCalls();
+        visits.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
     public async Task AddBatch_WithCertainHistoricalConflict_ShouldRequireExplicitConfirmation()
     {
         Visit visit = CreateVisit();
@@ -445,6 +542,7 @@ public sealed class RideOccurrenceHandlersTests
                 "request-1",
                 CancellationToken.None))
             .ReturnsAsync((IdempotentRideOccurrenceCreationResult?)null);
+        SetupCreationKeyReservation(occurrences);
         occurrences.Setup(repository => repository.GetAppendStateAsync(
                 visit.Id,
                 visit.UserId,
@@ -918,6 +1016,17 @@ public sealed class RideOccurrenceHandlersTests
             targets.Object,
             new RideOccurrenceAppendOrderNormalizer(occurrences.Object, clock),
             clock);
+    }
+
+    private static void SetupCreationKeyReservation(
+        Mock<IRideOccurrenceRepository> occurrences)
+    {
+        occurrences.Setup(repository => repository.ReserveBatchCreationKeyAsync(
+                It.IsAny<RideOccurrenceCreationRequest>(),
+                "request-1",
+                NowUtc.AddMinutes(1),
+                CancellationToken.None))
+            .ReturnsAsync(RideOccurrenceCreationKeyReservationStatus.Reserved);
     }
 
     private static Mock<IVisitTargetResolver> CreateTargetResolver(VisitTarget target)

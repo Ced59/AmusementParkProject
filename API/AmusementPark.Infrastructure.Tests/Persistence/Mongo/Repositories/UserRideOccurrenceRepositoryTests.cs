@@ -21,6 +21,121 @@ public sealed class UserRideOccurrenceRepositoryTests
         new DateTime(2026, 9, 3, 8, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public async Task ReserveBatchCreationKeyAsync_ShouldPersistANamespacedPayloadClaim()
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrenceCreationRequest request = CreateRequest(
+            new[] { CreateOccurrence("occurrence-1", "item-1", 1024) });
+        UserRideOccurrenceCreationOperationDocument? captured = null;
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .Callback((
+                UserRideOccurrenceCreationOperationDocument document,
+                InsertOneOptions _,
+                CancellationToken _) => captured = document)
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        RideOccurrenceCreationKeyReservationStatus status =
+            await repository.ReserveBatchCreationKeyAsync(
+                request,
+                "request-1",
+                NowUtc,
+                CancellationToken.None);
+
+        Assert.Equal(RideOccurrenceCreationKeyReservationStatus.Reserved, status);
+        Assert.NotNull(captured);
+        Assert.StartsWith(
+            "creation-key-reservation:",
+            captured.OperationKeyHash,
+            StringComparison.Ordinal);
+        Assert.Equal("creation-key-reservation", captured.OperationKind);
+        Assert.Equal("completed", captured.OperationState);
+        Assert.Equal(request.VisitId.Value, captured.VisitId);
+        Assert.Equal(
+            UserRideOccurrenceCreationFingerprint.HashPayload(request),
+            captured.PayloadHash);
+        Assert.Empty(captured.Items);
+        operationCollection.VerifyAll();
+        collection.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData(true, RideOccurrenceCreationKeyReservationStatus.Replayed)]
+    [InlineData(false, RideOccurrenceCreationKeyReservationStatus.Conflict)]
+    public async Task ReserveBatchCreationKeyAsync_WithExistingClaim_ShouldCompareThePayload(
+        bool samePayload,
+        RideOccurrenceCreationKeyReservationStatus expectedStatus)
+    {
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        RideOccurrenceCreationRequest request = CreateRequest(
+            new[] { CreateOccurrence("occurrence-1", "item-1", 1024) });
+        RideOccurrenceCreationRequest different = request with
+        {
+            Items = request.Items
+                .Select(static item => item with
+                {
+                    Status = RideOccurrenceStatus.Attempted,
+                })
+                .ToArray(),
+        };
+        UserRideOccurrenceCreationOperationDocument existing =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = request.UserId,
+                OperationKeyHash = UserRideOccurrenceCreationFingerprint
+                    .CreateReservationOperationKey("request-1"),
+                PayloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(
+                    samePayload ? request : different),
+                OperationKind = "creation-key-reservation",
+                VisitId = request.VisitId.Value,
+                OperationState = "completed",
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> existingCursor =
+            CreateAsyncCursor(new[] { existing });
+        operationCollection.Setup(value => value.InsertOneAsync(
+                It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
+                It.IsAny<InsertOneOptions>(),
+                CancellationToken.None))
+            .ThrowsAsync(CreateDuplicateKeyException());
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(existingCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+
+        RideOccurrenceCreationKeyReservationStatus status =
+            await repository.ReserveBatchCreationKeyAsync(
+                request,
+                "request-1",
+                NowUtc,
+                CancellationToken.None);
+
+        Assert.Equal(expectedStatus, status);
+        operationCollection.VerifyAll();
+        existingCursor.VerifyAll();
+        collection.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task CreateBatchIdempotentAsync_ShouldInsertOneDocumentPerOccurrence()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =

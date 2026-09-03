@@ -99,6 +99,29 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(targetError);
         }
 
+        RideOccurrenceCreationKeyReservationStatus reservationStatus =
+            await this.occurrenceRepository.ReserveBatchCreationKeyAsync(
+                creationRequest,
+                operationId,
+                this.clock.UtcNow,
+                cancellationToken);
+        if (reservationStatus == RideOccurrenceCreationKeyReservationStatus.Conflict)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+        }
+
+        if (reservationStatus == RideOccurrenceCreationKeyReservationStatus.Replayed)
+        {
+            existing = await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
+                creationRequest,
+                operationId,
+                cancellationToken);
+            if (existing is not null)
+            {
+                return ToApplicationResult(existing);
+            }
+        }
+
         return await this.CreateWithOrderRetryAsync(
             visit,
             expanded,

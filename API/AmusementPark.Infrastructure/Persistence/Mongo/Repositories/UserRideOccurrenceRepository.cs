@@ -16,6 +16,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private const string CreationOperationKind = "creation";
 
+    private const string CreationKeyReservationOperationKind =
+        "creation-key-reservation";
+
     private const string ReorderOperationKind = "reorder";
 
     private const string PendingOperationState = "pending";
@@ -59,6 +62,78 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.orderGuardValidator,
             this.creationRecovery,
             this.deletionCoordinator);
+    }
+
+    public async Task<RideOccurrenceCreationKeyReservationStatus>
+        ReserveBatchCreationKeyAsync(
+            RideOccurrenceCreationRequest request,
+            string clientOperationId,
+            DateTime reservedAtUtc,
+            CancellationToken cancellationToken)
+    {
+        ValidateCreationRequest(request);
+        if (reservedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The creation key reservation timestamp must be UTC.",
+                nameof(reservedAtUtc));
+        }
+
+        string normalizedOperationId = NormalizeRequired(
+            clientOperationId,
+            nameof(clientOperationId));
+        string reservationOperationKey =
+            UserRideOccurrenceCreationFingerprint.CreateReservationOperationKey(
+                normalizedOperationId);
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
+        UserRideOccurrenceCreationOperationDocument reservation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = request.UserId,
+                OperationKeyHash = reservationOperationKey,
+                PayloadHash = payloadHash,
+                OperationKind = CreationKeyReservationOperationKind,
+                VisitId = request.VisitId.Value,
+                OperationState = CompletedOperationState,
+                CreatedAt = reservedAtUtc,
+                UpdatedAt = reservedAtUtc,
+            };
+        try
+        {
+            await this.operationCollection.InsertOneAsync(
+                reservation,
+                cancellationToken: cancellationToken);
+            return RideOccurrenceCreationKeyReservationStatus.Reserved;
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            UserRideOccurrenceCreationOperationDocument? existing =
+                await this.LoadCreationOperationAsync(
+                    request.UserId,
+                    reservationOperationKey,
+                    cancellationToken);
+            bool matches = existing is not null
+                && string.Equals(
+                    existing.OperationKind,
+                    CreationKeyReservationOperationKind,
+                    StringComparison.Ordinal)
+                && string.Equals(
+                    existing.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal)
+                && string.Equals(
+                    existing.VisitId,
+                    request.VisitId.Value,
+                    StringComparison.Ordinal)
+                && string.Equals(
+                    existing.PayloadHash,
+                    payloadHash,
+                    StringComparison.Ordinal);
+            return matches
+                ? RideOccurrenceCreationKeyReservationStatus.Replayed
+                : RideOccurrenceCreationKeyReservationStatus.Conflict;
+        }
     }
 
     public async Task<IdempotentRideOccurrenceCreationResult?> ResolveExistingBatchCreationAsync(

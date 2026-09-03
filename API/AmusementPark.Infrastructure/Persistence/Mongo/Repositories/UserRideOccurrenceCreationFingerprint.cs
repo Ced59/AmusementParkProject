@@ -8,9 +8,16 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserRideOccurrenceCreationFingerprint
 {
+    private const string CreationKeyReservationPrefix = "creation-key-reservation:";
+
     public static string HashOperationKey(string clientOperationId)
     {
         return Hash(clientOperationId);
+    }
+
+    public static string CreateReservationOperationKey(string clientOperationId)
+    {
+        return CreationKeyReservationPrefix + HashOperationKey(clientOperationId);
     }
 
     public static string HashPayload(RideOccurrenceCreationRequest request)
