@@ -35,7 +35,8 @@
         "review": "Review my rating",
         "dismiss": "Not now",
         "disable": "Disable these suggestions",
-        "enable": "Enable suggestions"
+        "enable": "Enable suggestions",
+        "retry": "Try again"
       },
       "error": "This suggestion action could not be saved. Try again in a moment."
     },

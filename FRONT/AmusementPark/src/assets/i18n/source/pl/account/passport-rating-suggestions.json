@@ -24,7 +24,8 @@
         "review": "Sprawdź moją ocenę",
         "dismiss": "Nie teraz",
         "disable": "Wyłącz sugestie",
-        "enable": "Włącz sugestie"
+        "enable": "Włącz sugestie",
+        "retry": "Spróbuj ponownie"
       },
       "error": "Nie udało się zapisać tej czynności. Spróbuj ponownie za chwilę."
     }

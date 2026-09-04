@@ -59,6 +59,33 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
     expect(facade.suggestions()).toEqual([]);
   });
 
+  it('retries the retained presentation batch without reloading cooled-down candidates', () => {
+    const presentation = {
+      isAvailable: true,
+      isEnabled: true,
+      presentedTargets: [{
+        targetType: 'ParkItem',
+        targetId: 'item-1',
+        presentedAtUtc: '2026-09-04T10:00:00Z'
+      }]
+    };
+    api.presentSuggestions
+      .mockReturnValueOnce(throwError(() => new Error('ambiguous timeout')))
+      .mockReturnValueOnce(of(presentation));
+    const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
+
+    facade.load('en');
+    facade.retry();
+
+    expect(api.getSuggestions).toHaveBeenCalledTimes(1);
+    expect(api.presentSuggestions).toHaveBeenCalledTimes(2);
+    expect(api.presentSuggestions).toHaveBeenLastCalledWith({
+      targets: [{ targetType: 'ParkItem', targetId: 'item-1' }]
+    });
+    expect(facade.blockingError()).toBe(false);
+    expect(facade.suggestions()).toHaveLength(1);
+  });
+
   it('records acceptance before handing control back to the rating editor', () => {
     const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
     const accepted = vi.fn();
@@ -131,6 +158,20 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
 
     expect(facade.error()).toBe(true);
     expect(facade.suggestions()).toEqual([]);
+  });
+
+  it('reloads candidates when retrying an initial query failure', () => {
+    api.getSuggestions
+      .mockReturnValueOnce(throwError(() => new Error('offline')))
+      .mockReturnValueOnce(of(createResponse()));
+    const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
+
+    facade.load('en');
+    facade.retry();
+
+    expect(api.getSuggestions).toHaveBeenCalledTimes(2);
+    expect(facade.blockingError()).toBe(false);
+    expect(facade.suggestions()).toHaveLength(1);
   });
 });
 

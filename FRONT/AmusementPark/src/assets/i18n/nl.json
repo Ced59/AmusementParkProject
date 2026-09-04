@@ -35,7 +35,8 @@
         "review": "Mijn beoordeling herzien",
         "dismiss": "Niet nu",
         "disable": "Suggesties uitschakelen",
-        "enable": "Suggesties inschakelen"
+        "enable": "Suggesties inschakelen",
+        "retry": "Opnieuw proberen"
       },
       "error": "Deze actie kon niet worden opgeslagen. Probeer het zo opnieuw."
     },

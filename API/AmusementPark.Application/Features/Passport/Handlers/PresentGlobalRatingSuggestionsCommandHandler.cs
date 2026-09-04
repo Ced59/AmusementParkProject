@@ -111,11 +111,20 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
             }
 
             statesByTarget.TryGetValue(target, out GlobalRatingSuggestionTargetState? state);
+            DateTime? currentPresentationAtUtc = state?.LastPresentedAtUtc is DateTime lastPresentedAtUtc
+                && this.policy.IsPresentationCurrent(
+                    lastPresentedAtUtc,
+                    state.IsAwaitingResolution,
+                    nowUtc)
+                    ? lastPresentedAtUtc
+                    : null;
             GlobalRatingSuggestionEvaluation? evaluation = this.policy.Evaluate(
                 source.CurrentGlobalRating,
                 source.CurrentGlobalRatingUpdatedAtUtc,
                 source.Observations,
-                new GlobalRatingSuggestionCadence(true, state?.LastPresentedAtUtc),
+                new GlobalRatingSuggestionCadence(
+                    true,
+                    currentPresentationAtUtc.HasValue ? null : state?.LastPresentedAtUtc),
                 nowUtc);
             if (evaluation is null)
             {
@@ -130,6 +139,15 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
                 cancellationToken);
             if (metadata?.CanReceiveVisitorRatings != true)
             {
+                continue;
+            }
+
+            if (currentPresentationAtUtc.HasValue)
+            {
+                presented.Add(new GlobalRatingSuggestionPresentedTargetResult(
+                    target.TargetType,
+                    target.TargetId,
+                    currentPresentationAtUtc.Value));
                 continue;
             }
 

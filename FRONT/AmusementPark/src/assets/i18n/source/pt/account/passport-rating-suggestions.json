@@ -24,7 +24,8 @@
         "review": "Rever a minha classificação",
         "dismiss": "Agora não",
         "disable": "Desativar sugestões",
-        "enable": "Ativar sugestões"
+        "enable": "Ativar sugestões",
+        "retry": "Tentar novamente"
       },
       "error": "Não foi possível guardar esta ação. Tenta novamente dentro de instantes."
     }

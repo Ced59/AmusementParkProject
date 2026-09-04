@@ -25,6 +25,8 @@ export class GlobalRatingSuggestionsStateFacade {
   private readonly errorSignal = signal<boolean>(false);
   private readonly blockingErrorSignal = signal<boolean>(false);
   private sourceSuggestions: GlobalRatingSuggestion[] = [];
+  private pendingPresentationSuggestions: GlobalRatingSuggestion[] = [];
+  private pendingPresentationTargets: GlobalRatingSuggestionPresentationTarget[] = [];
   private presentationVersions = new Map<string, string>();
   private language: string = 'en';
 
@@ -49,6 +51,8 @@ export class GlobalRatingSuggestionsStateFacade {
     this.errorSignal.set(false);
     this.blockingErrorSignal.set(false);
     this.sourceSuggestions = [];
+    this.pendingPresentationSuggestions = [];
+    this.pendingPresentationTargets = [];
     this.presentationVersions.clear();
     this.remap();
     this.api.getSuggestions().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -57,50 +61,20 @@ export class GlobalRatingSuggestionsStateFacade {
         this.enabledSignal.set(response.isEnabled);
         if (!response.isAvailable || !response.isEnabled || response.suggestions.length === 0) {
           this.sourceSuggestions = [];
+          this.pendingPresentationSuggestions = [];
+          this.pendingPresentationTargets = [];
           this.remap();
           this.loadingSignal.set(false);
           return;
         }
 
-        const targets: GlobalRatingSuggestionPresentationTarget[] = response.suggestions.map(
+        this.pendingPresentationSuggestions = response.suggestions;
+        this.pendingPresentationTargets = response.suggestions.map(
           (suggestion: GlobalRatingSuggestion): GlobalRatingSuggestionPresentationTarget => {
             return this.toTarget(suggestion);
           }
         );
-        this.api.presentSuggestions({ targets })
-          .pipe(takeUntilDestroyed(this.destroyRef))
-          .subscribe({
-            next: (presentation): void => {
-              const presentedTargets: GlobalRatingSuggestionPresentedTarget[] =
-                presentation.isAvailable && presentation.isEnabled
-                  ? presentation.presentedTargets
-                  : [];
-              this.presentationVersions = new Map<string, string>(presentedTargets.map(
-                (target: GlobalRatingSuggestionPresentedTarget): [string, string] => [
-                  `${target.targetType}:${target.targetId}`,
-                  target.presentedAtUtc
-                ]
-              ));
-              this.availableSignal.set(presentation.isAvailable);
-              this.enabledSignal.set(presentation.isEnabled);
-              this.sourceSuggestions = response.suggestions.filter(
-                (suggestion: GlobalRatingSuggestion): boolean => {
-                  const target: GlobalRatingSuggestionPresentationTarget = this.toTarget(suggestion);
-                  return this.presentationVersions.has(`${target.targetType}:${target.targetId}`);
-                }
-              );
-              this.remap();
-              this.loadingSignal.set(false);
-              this.blockingErrorSignal.set(false);
-            },
-            error: (): void => {
-              this.sourceSuggestions = [];
-              this.remap();
-              this.loadingSignal.set(false);
-              this.errorSignal.set(true);
-              this.blockingErrorSignal.set(true);
-            }
-          });
+        this.presentPendingSuggestions();
       },
       error: (): void => {
         this.loadingSignal.set(false);
@@ -108,6 +82,22 @@ export class GlobalRatingSuggestionsStateFacade {
         this.blockingErrorSignal.set(true);
       }
     });
+  }
+
+  retry(): void {
+    if (this.loadingSignal()) {
+      return;
+    }
+
+    if (this.pendingPresentationTargets.length === 0) {
+      this.load(this.language);
+      return;
+    }
+
+    this.loadingSignal.set(true);
+    this.errorSignal.set(false);
+    this.blockingErrorSignal.set(false);
+    this.presentPendingSuggestions();
   }
 
   changeLanguage(language: string): void {
@@ -148,6 +138,8 @@ export class GlobalRatingSuggestionsStateFacade {
         this.enabledSignal.set(preference.isEnabled);
         if (!preference.isEnabled) {
           this.sourceSuggestions = [];
+          this.pendingPresentationSuggestions = [];
+          this.pendingPresentationTargets = [];
           this.remap();
         }
         this.savingSignal.set(false);
@@ -162,12 +154,55 @@ export class GlobalRatingSuggestionsStateFacade {
     });
   }
 
+  private presentPendingSuggestions(): void {
+    const candidates: GlobalRatingSuggestion[] = [...this.pendingPresentationSuggestions];
+    const targets: GlobalRatingSuggestionPresentationTarget[] = [...this.pendingPresentationTargets];
+    this.api.presentSuggestions({ targets })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (presentation): void => {
+          const presentedTargets: GlobalRatingSuggestionPresentedTarget[] =
+            presentation.isAvailable && presentation.isEnabled
+              ? presentation.presentedTargets
+              : [];
+          this.presentationVersions = new Map<string, string>(presentedTargets.map(
+            (target: GlobalRatingSuggestionPresentedTarget): [string, string] => [
+              `${target.targetType}:${target.targetId}`,
+              target.presentedAtUtc
+            ]
+          ));
+          this.availableSignal.set(presentation.isAvailable);
+          this.enabledSignal.set(presentation.isEnabled);
+          this.sourceSuggestions = candidates.filter(
+            (suggestion: GlobalRatingSuggestion): boolean => {
+              const target: GlobalRatingSuggestionPresentationTarget = this.toTarget(suggestion);
+              return this.presentationVersions.has(`${target.targetType}:${target.targetId}`);
+            }
+          );
+          this.pendingPresentationSuggestions = [];
+          this.pendingPresentationTargets = [];
+          this.remap();
+          this.loadingSignal.set(false);
+          this.errorSignal.set(false);
+          this.blockingErrorSignal.set(false);
+        },
+        error: (): void => {
+          this.sourceSuggestions = [];
+          this.remap();
+          this.loadingSignal.set(false);
+          this.errorSignal.set(true);
+          this.blockingErrorSignal.set(true);
+        }
+      });
+  }
+
   private recordAndRemove(
     view: GlobalRatingSuggestionViewModel,
     interactionType: GlobalRatingSuggestionInteractionType
   ): void {
     this.savingSignal.set(true);
     this.errorSignal.set(false);
+    this.blockingErrorSignal.set(false);
     this.api.recordInteraction(this.toRequest(view, interactionType))
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

@@ -24,7 +24,8 @@
         "review": "Rivedi la mia valutazione",
         "dismiss": "Non ora",
         "disable": "Disattiva i suggerimenti",
-        "enable": "Attiva i suggerimenti"
+        "enable": "Attiva i suggerimenti",
+        "retry": "Riprova"
       },
       "error": "Non è stato possibile salvare questa azione. Riprova tra poco."
     }
