@@ -44,7 +44,47 @@
       "kicker": "Passaporto delle visite",
       "title": "Inizia la tua storia nei parchi",
       "description": "Salva una visita privata anche se ricordi soltanto il mese o l’anno.",
-      "action": "Aggiungi una visita"
+      "action": "Aggiungi una visita",
+      "openAction": "Vedi il mio passaporto"
+    },
+    "overview": {
+      "kicker": "Passaporto delle visite",
+      "title": "Tutte le tue visite in un unico posto",
+      "description": "Ritrova ogni parco salvato e apri una visita per aggiungere attrazioni, ricordi e le tue valutazioni private.",
+      "privacy": "Questo passaporto è privato e visibile soltanto a te.",
+      "actions": {
+        "addVisit": "Aggiungi una visita",
+        "addFirstVisit": "Aggiungi la mia prima visita",
+        "backToProfile": "Torna al profilo",
+        "openVisit": "Apri la visita",
+        "retry": "Riprova",
+        "loadMore": "Carica altre visite",
+        "loadingMore": "Caricamento…"
+      },
+      "loading": {
+        "title": "Apertura del passaporto",
+        "description": "Le tue visite private sono in fase di caricamento."
+      },
+      "errors": {
+        "title": "Non è stato possibile aprire il passaporto",
+        "load": "Non è stato possibile caricare le tue visite. Riprova tra poco.",
+        "loadMore": "Non è stato possibile caricare altre visite. Quelle già visualizzate restano disponibili."
+      },
+      "empty": {
+        "title": "Il tuo passaporto aspetta la prima visita",
+        "description": "Aggiungi un parco e la data che ricordi per iniziare la tua cronologia privata."
+      },
+      "list": {
+        "kicker": "Cronologia privata",
+        "title": "Tutte le tue visite",
+        "loadedCount": "{{count}} visite caricate",
+        "privateNote": "Nota privata salvata"
+      },
+      "status": {
+        "Draft": "Bozza",
+        "Completed": "Completata",
+        "Archived": "Archiviata"
+      }
     },
     "statistics": {
       "kicker": "Statistiche del passaporto",

@@ -28,4 +28,13 @@ describe('profile routes', () => {
     expect(editorRoute?.canActivate).toContain(authGuard);
     expect(PROFILE_ROUTES.indexOf(editorRoute as Route)).toBeLessThan(PROFILE_ROUTES.indexOf(rootRoute as Route));
   });
+
+  it('keeps the passport overview lazy and authenticated', () => {
+    const overviewRoute: Route | undefined = PROFILE_ROUTES.find(
+      (route: Route): boolean => route.path === 'passport'
+    );
+
+    expect(overviewRoute?.loadComponent).toBeDefined();
+    expect(overviewRoute?.canActivate).toContain(authGuard);
+  });
 });

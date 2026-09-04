@@ -6,7 +6,6 @@ import {
   PassportStatisticsSummary,
   PassportYearStatistics
 } from '@app/models/passport/passport-statistics.models';
-import { PassportVisitDate } from '@app/models/passport/passport-visit.models';
 import {
   PassportStatisticCardViewModel,
   PassportStatisticsTableRowViewModel,
@@ -15,6 +14,7 @@ import {
   PassportStatisticsTrendViewModel,
   PassportStatisticsViewModel
 } from '../models/passport-statistics-view.models';
+import { formatPassportVisitDate } from './passport-visit-date.mapper';
 
 const emptyValue: string = '—';
 const localizedParkItemCategories: ReadonlySet<string> = new Set<string>([
@@ -40,7 +40,7 @@ export function mapItemStatisticsView(
   const byVisit: PassportStatisticsTableRowViewModel[] = statistics.byVisit.map((row) => ({
     id: row.visitId,
     cells: [
-      { columnKey: 'date', value: formatVisitDate(row.date, language) },
+      { columnKey: 'date', value: formatPassportVisitDate(row.date, language) },
       { columnKey: 'rides', value: number.format(row.rideCount) },
       { columnKey: 'coverage', value: formatCoverage(row.ratingCoverage.ratedRideCount, row.ratingCoverage.totalRideCount, row.ratingCoverage.rate, number, percent) },
       { columnKey: 'average', value: formatDistributionAverage(row.historicalRatings, rating) }
@@ -61,7 +61,7 @@ export function mapItemStatisticsView(
   const timeline: PassportStatisticsTimelinePointViewModel[] = statistics.ratingTimeline.map((point) => ({
     id: point.rideOccurrenceId,
     visitId: point.visitId,
-    dateLabel: formatVisitDate(point.date, language),
+    dateLabel: formatPassportVisitDate(point.date, language),
     ratingLabel: `${rating.format(point.rating)} / 5`,
     positionLabel: number.format(point.sortPosition)
   }));
@@ -112,7 +112,7 @@ export function mapParkStatisticsView(
   const timeline: PassportStatisticsTimelinePointViewModel[] = statistics.assessmentTimeline.map((point) => ({
     id: point.visitId,
     visitId: point.visitId,
-    dateLabel: formatVisitDate(point.date, language),
+    dateLabel: formatPassportVisitDate(point.date, language),
     ratingLabel: `${rating.format(point.rating)} / 5`,
     positionLabel: null
   }));
@@ -441,25 +441,14 @@ function formatItemExperience(
   experience: PassportItemStatistics['firstExperience'],
   language: string
 ): string {
-  return experience ? formatVisitDate(experience.date, language) : emptyValue;
+  return experience ? formatPassportVisitDate(experience.date, language) : emptyValue;
 }
 
 function formatVisitExperience(
   experience: PassportStatisticsSummary['firstVisit'],
   language: string
 ): string {
-  return experience ? formatVisitDate(experience.date, language) : emptyValue;
-}
-
-function formatVisitDate(date: PassportVisitDate, language: string): string {
-  const value: Date = new Date(Date.UTC(date.year, (date.month ?? 1) - 1, date.day ?? 1));
-  const options: Intl.DateTimeFormatOptions = date.precision === 'Year'
-    ? { year: 'numeric', timeZone: 'UTC' }
-    : date.precision === 'Month'
-      ? { month: 'long', year: 'numeric', timeZone: 'UTC' }
-      : { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' };
-  const label: string = new Intl.DateTimeFormat(language, options).format(value);
-  return date.isApproximate ? `≈ ${label}` : label;
+  return experience ? formatPassportVisitDate(experience.date, language) : emptyValue;
 }
 
 function createNumberFormatter(language: string): Intl.NumberFormat {

@@ -44,7 +44,47 @@
       "kicker": "Passeport de visites",
       "title": "Commence ton historique de parcs",
       "description": "Enregistre une visite privée, même si tu ne te souviens que du mois ou de l’année.",
-      "action": "Ajouter une visite"
+      "action": "Ajouter une visite",
+      "openAction": "Voir mon passeport"
+    },
+    "overview": {
+      "kicker": "Passeport de visites",
+      "title": "Tes visites, enfin réunies",
+      "description": "Retrouve chaque parc enregistré et ouvre une visite pour compléter ses attractions, ses souvenirs et tes notes privées.",
+      "privacy": "Ce passeport est privé et visible uniquement par toi.",
+      "actions": {
+        "addVisit": "Ajouter une visite",
+        "addFirstVisit": "Ajouter ma première visite",
+        "backToProfile": "Retour au profil",
+        "openVisit": "Ouvrir la visite",
+        "retry": "Réessayer",
+        "loadMore": "Charger plus de visites",
+        "loadingMore": "Chargement…"
+      },
+      "loading": {
+        "title": "Ouverture de ton passeport",
+        "description": "Tes visites privées sont en cours de chargement."
+      },
+      "errors": {
+        "title": "Ton passeport ne s’est pas ouvert",
+        "load": "Tes visites n’ont pas pu être chargées. Réessaie dans un instant.",
+        "loadMore": "La suite de tes visites n’a pas pu être chargée. Les visites déjà affichées restent disponibles."
+      },
+      "empty": {
+        "title": "Ton passeport attend sa première visite",
+        "description": "Ajoute un parc et la date dont tu te souviens pour commencer ton historique privé."
+      },
+      "list": {
+        "kicker": "Historique privé",
+        "title": "Toutes tes visites",
+        "loadedCount": "{{count}} visites chargées",
+        "privateNote": "Note privée enregistrée"
+      },
+      "status": {
+        "Draft": "Brouillon",
+        "Completed": "Terminée",
+        "Archived": "Archivée"
+      }
     },
     "statistics": {
       "kicker": "Statistiques du passeport",

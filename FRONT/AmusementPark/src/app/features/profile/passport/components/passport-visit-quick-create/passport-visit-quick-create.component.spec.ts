@@ -10,13 +10,17 @@ import { PassportVisitQuickCreateComponent } from './passport-visit-quick-create
 @Component({
   template: `
     <main class="app-layout-main">
-      <app-passport-visit-quick-create [visible]="visible"></app-passport-visit-quick-create>
+      <app-passport-visit-quick-create
+        [visible]="visible"
+        (visitCreated)="createdVisit = $event">
+      </app-passport-visit-quick-create>
     </main>
   `,
   imports: [PassportVisitQuickCreateComponent]
 })
 class PassportVisitQuickCreateHostComponent {
   visible: boolean = true;
+  createdVisit: PassportVisit | null = null;
 }
 
 const fakeFacade = {
@@ -116,6 +120,46 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
     (dialog as unknown as { manageCreatedVisit(): void }).manageCreatedVisit();
 
     expect(router.navigate).toHaveBeenCalledWith(['/', 'fr', 'profile', 'visits', 'visit-1']);
+    fakeFacade.createdVisit.set(null);
+  });
+
+  it('notifies its host when a new visit has been created', async () => {
+    fakeFacade.createdVisit.set(null);
+    await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
+      providers: [{ provide: Router, useValue: { url: '/fr/profile', navigate: vi.fn() } }]
+    })
+      .overrideComponent(PassportVisitQuickCreateComponent, {
+        set: {
+          providers: [{ provide: PassportVisitQuickCreateStateFacade, useValue: fakeFacade }]
+        }
+      })
+      .compileComponents();
+    const fixture: ComponentFixture<PassportVisitQuickCreateHostComponent> = TestBed.createComponent(
+      PassportVisitQuickCreateHostComponent
+    );
+    fixture.detectChanges();
+    const createdVisit: PassportVisit = {
+      id: 'visit-2',
+      parkId: 'park-1',
+      date: { year: 2026, month: 9, day: 4, precision: 'Day', isApproximate: false },
+      timeZoneId: null,
+      serviceDayConvention: 'VisitStartLocalDate',
+      status: 'Draft',
+      privacy: 'Private',
+      title: null,
+      privateNote: null,
+      version: 1,
+      createdAtUtc: '2026-09-04T00:00:00Z',
+      updatedAtUtc: '2026-09-04T00:00:00Z',
+      completedAtUtc: null
+    };
+
+    fakeFacade.createdVisit.set(createdVisit);
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(fixture.componentInstance.createdVisit).toBe(createdVisit);
     fakeFacade.createdVisit.set(null);
   });
 });

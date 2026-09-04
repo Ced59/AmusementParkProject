@@ -98,10 +98,16 @@
                   <h2>{{ 'passport.profile.title' | translate }}</h2>
                   <p>{{ 'passport.profile.description' | translate }}</p>
                 </div>
-                <button appUiButton="primary" type="button" (click)="createPassportVisit()">
-                  <i class="pi pi-plus" aria-hidden="true"></i>
-                  <span>{{ 'passport.profile.action' | translate }}</span>
-                </button>
+                <div class="profile-passport-entry__actions">
+                  <button appUiButton="primary" type="button" (click)="openPassport()">
+                    <i class="pi pi-book" aria-hidden="true"></i>
+                    <span>{{ 'passport.profile.openAction' | translate }}</span>
+                  </button>
+                  <button appUiButton="soft" type="button" (click)="createPassportVisit()">
+                    <i class="pi pi-plus" aria-hidden="true"></i>
+                    <span>{{ 'passport.profile.action' | translate }}</span>
+                  </button>
+                </div>
               </section>
 
               <app-ui-section-header

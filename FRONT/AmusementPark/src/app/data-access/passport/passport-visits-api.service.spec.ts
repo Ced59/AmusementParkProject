@@ -38,6 +38,20 @@ describe('PassportVisitsApiService', () => {
     );
   });
 
+  it('loads a private cursor page without allowing HTTP transfer caching', () => {
+    const httpClient = {
+      get: vi.fn().mockReturnValue(of({ items: [], nextCursor: null }))
+    };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+
+    service.listVisits(20, 'next+page').subscribe();
+
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits?limit=20&cursor=next%2Bpage`,
+      { transferCache: false }
+    );
+  });
+
   it('upserts a temporal park assessment through the visit-scoped endpoint', () => {
     const httpClient = {
       put: vi.fn().mockReturnValue(of({}))

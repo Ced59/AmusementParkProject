@@ -53,6 +53,7 @@ export interface UpsertPassportVisitParkAssessmentRequest {
 export interface PassportVisit {
   id: string;
   parkId: string;
+  parkName?: string | null;
   date: PassportVisitDate;
   timeZoneId: string | null;
   serviceDayConvention: PassportLocalServiceDayConvention;
@@ -60,9 +61,15 @@ export interface PassportVisit {
   privacy: PassportVisitPrivacy;
   title: string | null;
   privateNote: string | null;
+  hasPrivateNote?: boolean;
   parkAssessment?: PassportVisitParkAssessment | null;
   version: number;
   createdAtUtc: string;
   updatedAtUtc: string;
   completedAtUtc: string | null;
+}
+
+export interface PassportVisitPage {
+  items: PassportVisit[];
+  nextCursor: string | null;
 }

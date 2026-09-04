@@ -1,0 +1,267 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.passport-overview {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.passport-overview__hero {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(1rem, 3vw, 2.25rem);
+  border-color: color-mix(in srgb, var(--c-gold) 34%, var(--app-border));
+  background:
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 34%),
+    radial-gradient(circle at 8% 100%, color-mix(in srgb, var(--app-primary) 12%, transparent), transparent 38%),
+    var(--app-surface);
+}
+
+.passport-overview__hero-copy,
+.passport-overview__content,
+.passport-overview__heading > div,
+.passport-visit-card,
+.passport-visit-card__copy {
+  min-width: 0;
+}
+
+.passport-overview__hero-copy {
+  display: grid;
+  max-width: 54rem;
+  gap: 0.65rem;
+}
+
+.passport-overview__hero h1,
+.passport-overview__hero p,
+.passport-overview__heading h2,
+.passport-visit-card h3,
+.passport-visit-card p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-overview__hero h1 {
+  color: var(--app-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.96;
+}
+
+.passport-overview__hero-copy > p {
+  max-width: 46rem;
+  color: var(--app-text-muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.passport-overview__privacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--c-gold) !important;
+  font-size: 0.9rem !important;
+  font-weight: 700;
+}
+
+.passport-overview__hero-actions {
+  display: grid;
+  min-width: min(100%, 14rem);
+  gap: 0.65rem;
+}
+
+.passport-overview__hero-actions button,
+.passport-overview__state button,
+.passport-overview__load-more button {
+  justify-content: center;
+}
+
+.passport-overview__state {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.passport-overview__state > i {
+  color: var(--app-primary);
+  font-size: 2rem;
+}
+
+.passport-overview__state h2,
+.passport-overview__state p {
+  max-width: 38rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-overview__state p {
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.passport-overview__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.passport-overview__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.passport-overview__heading > div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.passport-overview__heading h2 {
+  color: var(--app-heading);
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.passport-overview__heading > span {
+  color: var(--app-text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.passport-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+  gap: 1rem;
+}
+
+.passport-visit-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  border-color: color-mix(in srgb, var(--app-primary) 18%, var(--app-border));
+}
+
+.passport-visit-card__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  gap: 0.75rem;
+}
+
+.passport-visit-card__date {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--app-text-muted);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit-card__date i {
+  flex: 0 0 auto;
+  color: var(--c-gold);
+}
+
+.passport-visit-card__copy {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+}
+
+.passport-visit-card h3 {
+  color: var(--app-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+}
+
+.passport-visit-card p {
+  color: var(--app-text-muted);
+  line-height: 1.45;
+}
+
+.passport-visit-card small {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--app-text-muted);
+  font-weight: 600;
+}
+
+.passport-visit-card > button {
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.passport-overview__inline-error {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-danger) 45%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  color: var(--app-danger);
+  overflow-wrap: anywhere;
+}
+
+.passport-overview__load-more {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .passport-overview__hero {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .passport-overview__hero-actions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .passport-overview__hero-actions button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .passport-overview__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .passport-overview__heading {
+    display: grid;
+    align-items: start;
+  }
+
+  .passport-overview__heading > span {
+    white-space: normal;
+  }
+
+  .passport-visit-card__topline {
+    display: grid;
+    justify-items: start;
+  }
+
+  .passport-overview__state button,
+  .passport-overview__load-more,
+  .passport-overview__load-more button {
+    width: 100%;
+    min-width: 0;
+  }
+}

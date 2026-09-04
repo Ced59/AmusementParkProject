@@ -26,6 +26,12 @@ export const PROFILE_ROUTES: Routes = [
     data: { passportStatisticsScope: 'year' }
   },
   {
+    path: 'passport',
+    loadComponent: () => import('./passport/pages/passport-visits-overview-page/passport-visits-overview-page.component')
+      .then((module) => module.PassportVisitsOverviewPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'visits/:visitId',
     loadComponent: () => import('./passport/pages/passport-visit-editor-page/passport-visit-editor-page.component')
       .then((module) => module.PassportVisitEditorPageComponent),

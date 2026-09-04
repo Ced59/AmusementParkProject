@@ -229,6 +229,11 @@ export class ProfilePageComponent implements OnInit {
     this.passportVisitDialogVisible = true;
   }
 
+  openPassport(): void {
+    const currentLang: string = this.router.url.split('/')[1] || 'en';
+    void this.router.navigate(['/', currentLang, 'profile', 'passport']);
+  }
+
   updatePreferredMeasurementSystem(system: MeasurementSystem): void {
     const currentUser: UserDto | null = this.user();
 

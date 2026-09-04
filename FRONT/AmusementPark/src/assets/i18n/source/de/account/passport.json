@@ -4,7 +4,20 @@
       "kicker": "Besuchspass",
       "title": "Beginne deine Parkgeschichte",
       "description": "Speichere einen privaten Besuch, auch wenn du nur noch Monat oder Jahr weißt.",
-      "action": "Besuch hinzufügen"
+      "action": "Besuch hinzufügen",
+      "openAction": "Meinen Besuchspass ansehen"
+    },
+    "overview": {
+      "kicker": "Besuchspass",
+      "title": "Alle deine Besuche an einem Ort",
+      "description": "Finde jeden gespeicherten Park und öffne einen Besuch, um Attraktionen, Erinnerungen und deine privaten Bewertungen zu ergänzen.",
+      "privacy": "Dieser Besuchspass ist privat und nur für dich sichtbar.",
+      "actions": { "addVisit": "Besuch hinzufügen", "addFirstVisit": "Meinen ersten Besuch hinzufügen", "backToProfile": "Zurück zum Profil", "openVisit": "Besuch öffnen", "retry": "Erneut versuchen", "loadMore": "Weitere Besuche laden", "loadingMore": "Wird geladen…" },
+      "loading": { "title": "Dein Besuchspass wird geöffnet", "description": "Deine privaten Besuche werden geladen." },
+      "errors": { "title": "Dein Besuchspass konnte nicht geöffnet werden", "load": "Deine Besuche konnten nicht geladen werden. Versuche es gleich noch einmal.", "loadMore": "Weitere Besuche konnten nicht geladen werden. Die bereits angezeigten Besuche bleiben verfügbar." },
+      "empty": { "title": "Dein Besuchspass wartet auf den ersten Besuch", "description": "Füge einen Park und das Datum hinzu, an das du dich erinnerst, um deine private Geschichte zu beginnen." },
+      "list": { "kicker": "Private Geschichte", "title": "Alle deine Besuche", "loadedCount": "{{count}} Besuche geladen", "privateNote": "Private Notiz gespeichert" },
+      "status": { "Draft": "Entwurf", "Completed": "Abgeschlossen", "Archived": "Archiviert" }
     },
     "statistics": {
       "kicker": "Statistiken des Besuchspasses", "title": "Deine privaten Statistiken", "private": "Privat", "loading": "Deine Statistiken werden berechnet…", "navigationLabel": "Statistiken zu diesem Besuch ansehen", "summaryLabel": "Zusammenfassung deiner Statistiken",

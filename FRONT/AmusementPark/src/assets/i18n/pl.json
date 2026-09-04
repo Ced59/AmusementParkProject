@@ -44,7 +44,47 @@
       "kicker": "Paszport wizyt",
       "title": "Zacznij tworzyć historię parków",
       "description": "Zapisz prywatną wizytę, nawet jeśli pamiętasz tylko miesiąc lub rok.",
-      "action": "Dodaj wizytę"
+      "action": "Dodaj wizytę",
+      "openAction": "Zobacz mój paszport"
+    },
+    "overview": {
+      "kicker": "Paszport wizyt",
+      "title": "Wszystkie Twoje wizyty w jednym miejscu",
+      "description": "Znajdź każdy zapisany park i otwórz wizytę, aby dodać atrakcje, wspomnienia oraz prywatne oceny.",
+      "privacy": "Ten paszport jest prywatny i widoczny tylko dla Ciebie.",
+      "actions": {
+        "addVisit": "Dodaj wizytę",
+        "addFirstVisit": "Dodaj moją pierwszą wizytę",
+        "backToProfile": "Wróć do profilu",
+        "openVisit": "Otwórz wizytę",
+        "retry": "Spróbuj ponownie",
+        "loadMore": "Wczytaj więcej wizyt",
+        "loadingMore": "Wczytywanie…"
+      },
+      "loading": {
+        "title": "Otwieranie Twojego paszportu",
+        "description": "Trwa wczytywanie Twoich prywatnych wizyt."
+      },
+      "errors": {
+        "title": "Nie udało się otworzyć Twojego paszportu",
+        "load": "Nie udało się wczytać Twoich wizyt. Spróbuj ponownie za chwilę.",
+        "loadMore": "Nie udało się wczytać kolejnych wizyt. Wizyty już wyświetlone pozostają dostępne."
+      },
+      "empty": {
+        "title": "Twój paszport czeka na pierwszą wizytę",
+        "description": "Dodaj park i zapamiętaną datę, aby rozpocząć prywatną historię."
+      },
+      "list": {
+        "kicker": "Prywatna historia",
+        "title": "Wszystkie Twoje wizyty",
+        "loadedCount": "Wczytane wizyty: {{count}}",
+        "privateNote": "Zapisano prywatną notatkę"
+      },
+      "status": {
+        "Draft": "Wersja robocza",
+        "Completed": "Zakończona",
+        "Archived": "Zarchiwizowana"
+      }
     },
     "statistics": {
       "kicker": "Statystyki paszportu",

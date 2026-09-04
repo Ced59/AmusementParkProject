@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 import { ProfilePageComponent } from './profile-page.component';
 import { ProfilePageViewComponent } from './profile-page-view.component';
@@ -103,6 +104,27 @@ describe('ProfilePageComponent', () => {
 
     expect(ratingsComponent.displayName).toBe('User0001');
     expect(ratingsComponent.displayName).not.toBe('Private');
+  });
+
+  it('exposes a separate passport entry point and keeps visit creation available', () => {
+    fixture.detectChanges();
+    const stateFacade: ProfilePageStateFacade = fixture.debugElement.injector.get(ProfilePageStateFacade);
+    stateFacade.setUser(createUser());
+    fixture.detectChanges();
+    const actions: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
+      '.profile-passport-entry__actions button'
+    );
+
+    expect(actions).toHaveLength(2);
+  });
+
+  it('navigates from the profile to the localized passport overview', () => {
+    const router: Router = TestBed.inject(Router);
+    vi.spyOn(router, 'navigate').mockResolvedValue(true);
+
+    component.openPassport();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'passport']);
   });
 });
 

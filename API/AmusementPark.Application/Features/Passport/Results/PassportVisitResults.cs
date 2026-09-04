@@ -31,7 +31,8 @@ public sealed record VisitResult(
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
     DateTime? CompletedAtUtc,
-    VisitParkAssessmentResult? ParkAssessment = null);
+    VisitParkAssessmentResult? ParkAssessment = null,
+    string? ParkName = null);
 
 public sealed record CreateVisitResult(
     VisitResult Visit,

@@ -1,0 +1,126 @@
+<section class="passport-overview">
+  <header class="passport-overview__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="passport-overview__hero-copy">
+      <app-ui-kicker tone="gold" iconClass="pi pi-map-marker">
+        {{ 'passport.overview.kicker' | translate }}
+      </app-ui-kicker>
+      <h1>{{ 'passport.overview.title' | translate }}</h1>
+      <p>{{ 'passport.overview.description' | translate }}</p>
+      <p class="passport-overview__privacy">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.privacy' | translate }}</span>
+      </p>
+    </div>
+
+    <div class="passport-overview__hero-actions">
+      <button appUiButton="primary" type="button" (click)="openQuickCreate()">
+        <i class="pi pi-plus" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.actions.addVisit' | translate }}</span>
+      </button>
+      <button appUiButton="ghost" type="button" (click)="backToProfile()">
+        <i class="pi pi-arrow-left" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.actions.backToProfile' | translate }}</span>
+      </button>
+    </div>
+  </header>
+
+  @if (facade.loading()) {
+    <app-page-state
+      state="loading"
+      [loadingTitleKey]="'passport.overview.loading.title'"
+      [loadingMessageKey]="'passport.overview.loading.description'">
+    </app-page-state>
+  } @else if (facade.errorKey()) {
+    <section class="passport-overview__state" appUiSurface="panel" appUiSurfacePadding="spacious" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h2>{{ 'passport.overview.errors.title' | translate }}</h2>
+      <p>{{ facade.errorKey()! | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="facade.load()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.actions.retry' | translate }}</span>
+      </button>
+    </section>
+  } @else if (facade.isEmpty()) {
+    <section class="passport-overview__state" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <i class="pi pi-ticket" aria-hidden="true"></i>
+      <h2>{{ 'passport.overview.empty.title' | translate }}</h2>
+      <p>{{ 'passport.overview.empty.description' | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="openQuickCreate()">
+        <i class="pi pi-plus" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.actions.addFirstVisit' | translate }}</span>
+      </button>
+    </section>
+  } @else {
+    <section class="passport-overview__content" aria-labelledby="passport-visits-title">
+      <div class="passport-overview__heading">
+        <div>
+          <app-ui-kicker tone="sky" iconClass="pi pi-calendar">
+            {{ 'passport.overview.list.kicker' | translate }}
+          </app-ui-kicker>
+          <h2 id="passport-visits-title">{{ 'passport.overview.list.title' | translate }}</h2>
+        </div>
+        <span>{{ 'passport.overview.list.loadedCount' | translate:{ count: facade.visits().length } }}</span>
+      </div>
+
+      <div class="passport-overview__grid">
+        @for (visit of facade.visits(); track trackVisit($index, visit)) {
+          <article class="passport-visit-card" appUiSurface="panel" appUiSurfacePadding="spacious">
+            <div class="passport-visit-card__topline">
+              <span class="passport-visit-card__date">
+                <i class="pi pi-calendar" aria-hidden="true"></i>
+                {{ visit.dateLabel }}
+              </span>
+              <app-ui-chip [tone]="statusTone(visit.status)">
+                {{ visit.statusLabelKey | translate }}
+              </app-ui-chip>
+            </div>
+
+            <div class="passport-visit-card__copy">
+              <h3>{{ visit.parkName }}</h3>
+              @if (visit.title) {
+                <p>{{ visit.title }}</p>
+              }
+              @if (visit.hasPrivateNote) {
+                <small>
+                  <i class="pi pi-lock" aria-hidden="true"></i>
+                  {{ 'passport.overview.list.privateNote' | translate }}
+                </small>
+              }
+            </div>
+
+            <button appUiButton="soft" type="button" (click)="openVisit(visit.id)">
+              <span>{{ 'passport.overview.actions.openVisit' | translate }}</span>
+              <i class="pi pi-arrow-right" aria-hidden="true"></i>
+            </button>
+          </article>
+        }
+      </div>
+
+      @if (facade.loadMoreErrorKey()) {
+        <p class="passport-overview__inline-error" role="alert">
+          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+          <span>{{ facade.loadMoreErrorKey()! | translate }}</span>
+        </p>
+      }
+
+      @if (facade.hasMore()) {
+        <div class="passport-overview__load-more">
+          <button appUiButton="primary" type="button" [disabled]="facade.loadingMore()" (click)="facade.loadMore()">
+            @if (facade.loadingMore()) {
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            } @else {
+              <i class="pi pi-chevron-down" aria-hidden="true"></i>
+            }
+            <span>{{ (facade.loadingMore() ? 'passport.overview.actions.loadingMore' : 'passport.overview.actions.loadMore') | translate }}</span>
+          </button>
+        </div>
+      }
+    </section>
+  }
+</section>
+
+<app-passport-visit-quick-create
+  [visible]="quickCreateVisible()"
+  (visibleChange)="onQuickCreateVisibleChange($event)"
+  (visitCreated)="onVisitCreated()">
+</app-passport-visit-quick-create>

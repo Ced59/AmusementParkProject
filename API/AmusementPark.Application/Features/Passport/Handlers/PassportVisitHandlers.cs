@@ -258,10 +258,14 @@ public sealed class GetVisitQueryHandler : IQueryHandler<GetVisitQuery, Applicat
 public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>
 {
     private readonly IUserVisitRepository visitRepository;
+    private readonly IParkRepository parkRepository;
 
-    public ListUserVisitsQueryHandler(IUserVisitRepository visitRepository)
+    public ListUserVisitsQueryHandler(
+        IUserVisitRepository visitRepository,
+        IParkRepository parkRepository)
     {
         this.visitRepository = visitRepository;
+        this.parkRepository = parkRepository;
     }
 
     public async Task<ApplicationResult<VisitPageResult>> HandleAsync(
@@ -302,8 +306,26 @@ public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQue
                 query.Status,
                 query.After),
             cancellationToken);
+        string[] parkIds = page.Items
+            .Select(static visit => visit.ParkId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyCollection<Park> parks = parkIds.Length == 0
+            ? Array.Empty<Park>()
+            : await this.parkRepository.GetByIdsAsync(parkIds, cancellationToken);
+        IReadOnlyDictionary<string, string?> parkNames = parks
+            .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
+            .GroupBy(static park => park.Id!, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First().Name,
+                StringComparer.Ordinal);
         VisitPageResult result = new VisitPageResult(
-            page.Items.Select(PassportVisitResultFactory.Create).ToList(),
+            page.Items
+                .Select(visit => PassportVisitResultFactory.Create(
+                    visit,
+                    parkNames.GetValueOrDefault(visit.ParkId)))
+                .ToList(),
             page.NextCursor);
         return ApplicationResult<VisitPageResult>.Success(result);
     }

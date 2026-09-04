@@ -74,20 +74,21 @@ internal static class PassportVisitHttpMappers
 
     public static PassportVisitDto ToHttp(this VisitResult result)
     {
-        return ToHttp(result, includeParkAssessment: true);
+        return ToHttp(result, includePrivateDetails: true);
     }
 
     private static PassportVisitDto ToListItemHttp(VisitResult result)
     {
-        return ToHttp(result, includeParkAssessment: false);
+        return ToHttp(result, includePrivateDetails: false);
     }
 
-    private static PassportVisitDto ToHttp(VisitResult result, bool includeParkAssessment)
+    private static PassportVisitDto ToHttp(VisitResult result, bool includePrivateDetails)
     {
         return new PassportVisitDto
         {
             Id = result.Id,
             ParkId = result.ParkId,
+            ParkName = result.ParkName,
             Date = new PassportVisitDateDto
             {
                 Year = result.Date.Year,
@@ -102,8 +103,9 @@ internal static class PassportVisitHttpMappers
             Status = (PassportVisitStatusDto)result.Status,
             Privacy = (PassportVisitPrivacyDto)result.Privacy,
             Title = result.Title,
-            PrivateNote = result.PrivateNote,
-            ParkAssessment = !includeParkAssessment || result.ParkAssessment is null
+            PrivateNote = includePrivateDetails ? result.PrivateNote : null,
+            HasPrivateNote = !string.IsNullOrWhiteSpace(result.PrivateNote),
+            ParkAssessment = !includePrivateDetails || result.ParkAssessment is null
                 ? null
                 : new PassportVisitParkAssessmentDto
                 {
