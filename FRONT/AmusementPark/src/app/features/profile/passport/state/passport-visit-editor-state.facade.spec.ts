@@ -147,6 +147,40 @@ describe('PassportVisitEditorStateFacade', () => {
     );
   });
 
+  it('excludes hidden attractions from the user selector and its evaluation batch', () => {
+    attractionsPort.getParkItemsByParkIdPage.mockReturnValue(of({
+      items: [
+        {
+          id: 'ride-1',
+          parkId: 'park-1',
+          name: 'Grand Huit',
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: true
+        },
+        {
+          id: 'hidden-ride',
+          parkId: 'park-1',
+          name: 'Prototype masqué',
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: false
+        }
+      ],
+      pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 2, totalPages: 1 }
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+
+    facade.load('visit-1', 'fr');
+
+    expect(facade.attractions().map((attraction): string => attraction.id)).toEqual(['ride-1']);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledWith('visit-1', ['ride-1']);
+  });
+
   it('uses the domain evaluation to expose confirmation only for a certain date conflict', () => {
     occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
       parkItemId: 'ride-1',
@@ -313,6 +347,65 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.selectedAttractions()[0].historicalConsistency).toBe('ConfirmedConflict');
     expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
     expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
+  });
+
+  it('re-evaluates large multi-page selections in server-bounded batches', () => {
+    attractionsPort.getParkItemsByParkIdPage.mockImplementation((
+      _parkId: string,
+      page: number
+    ) => {
+      const firstIndex: number = ((page - 1) * 24) + 1;
+      const itemCount: number = page < 6 ? 24 : 4;
+      return of({
+        items: Array.from({ length: itemCount }, (_value, offset: number) => ({
+          id: `ride-${firstIndex + offset}`,
+          parkId: 'park-1',
+          name: `Attraction ${firstIndex + offset}`,
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: true
+        })),
+        pagination: { currentPage: page, itemsPerPage: 24, totalItems: 124, totalPages: 6 }
+      });
+    });
+    occurrencesPort.evaluateVisitTargets.mockImplementation((
+      _visitId: string,
+      parkItemIds: string[]
+    ) => of(parkItemIds.map((parkItemId: string) => ({
+      parkItemId,
+      historicalConsistency: 'Verified',
+      openingDate: '2020-01-01',
+      closingDate: null
+    }))));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    for (let page: number = 1; page <= 5; page += 1) {
+      const selectableCount: number = page < 5 ? 24 : 4;
+      for (const attraction of facade.attractions().slice(0, selectableCount)) {
+        facade.toggleAttraction(attraction);
+      }
+      facade.goToAttractionPage(page + 1);
+    }
+    expect(facade.selectedOccurrenceTotal()).toBe(100);
+    occurrencesPort.evaluateVisitTargets.mockClear();
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([100, 4]);
   });
 
   it('preserves submitted metadata when conflict reconciliation loads another version', () => {

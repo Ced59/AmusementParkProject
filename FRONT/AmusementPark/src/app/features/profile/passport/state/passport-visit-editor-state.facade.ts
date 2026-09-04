@@ -105,6 +105,8 @@ type PassportOccurrenceMove = 'first' | 'up' | 'down' | 'last';
 @Injectable()
 export class PassportVisitEditorStateFacade {
   private static readonly AttractionPageSize: number = 24;
+
+  private static readonly TargetEvaluationBatchSize: number = 100;
   private static readonly TimelinePageSize: number = 50;
 
   private readonly visitSignal = signal<PassportVisit | null>(null);
@@ -1460,20 +1462,42 @@ export class PassportVisitEditorStateFacade {
       },
       { closedFilter: 'all' }
     ).pipe(switchMap((result: PagedResult<ParkItem>): Observable<EvaluatedAttractionPage> => {
-      const parkItemIds: string[] = result.items
+      const visibleItems: ParkItem[] = result.items.filter(
+        (item: ParkItem): boolean => item.isVisible !== false
+      );
+      const parkItemIds: string[] = visibleItems
         .map((item: ParkItem): string => item.id?.trim() ?? '')
         .filter((id: string): boolean => id.length > 0);
       if (parkItemIds.length === 0) {
-        return of({ page: result, evaluations: [] });
+        return of({ page: { ...result, items: visibleItems }, evaluations: [] });
       }
 
-      return this.occurrencesApi.evaluateVisitTargets(visitId, parkItemIds).pipe(
+      return this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
         map((evaluations: PassportVisitRideTargetEvaluation[]): EvaluatedAttractionPage => ({
-          page: result,
+          page: { ...result, items: visibleItems },
           evaluations
         }))
       );
     }));
+  }
+
+  private evaluateVisitTargetsInBatches(
+    visitId: string,
+    parkItemIds: readonly string[]
+  ): Observable<PassportVisitRideTargetEvaluation[]> {
+    const batches: string[][] = [];
+    for (let index: number = 0; index < parkItemIds.length; index += PassportVisitEditorStateFacade.TargetEvaluationBatchSize) {
+      batches.push(parkItemIds.slice(index, index + PassportVisitEditorStateFacade.TargetEvaluationBatchSize));
+    }
+    if (batches.length === 0) {
+      return of([]);
+    }
+
+    return forkJoin(batches.map((batch: string[]): Observable<PassportVisitRideTargetEvaluation[]> =>
+      this.occurrencesApi.evaluateVisitTargets(visitId, batch)
+    )).pipe(map((results: PassportVisitRideTargetEvaluation[][]): PassportVisitRideTargetEvaluation[] =>
+      results.flat()
+    ));
   }
 
   private applyAttractionPage(result: EvaluatedAttractionPage): void {
@@ -2046,7 +2070,7 @@ export class PassportVisitEditorStateFacade {
     const attractionGeneration: number = ++this.attractionLoadGeneration;
     this.attractionsLoadingSignal.set(true);
     this.attractionErrorKeySignal.set(null);
-    this.occurrencesApi.evaluateVisitTargets(visitId, parkItemIds).pipe(
+    this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
       take(1),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
