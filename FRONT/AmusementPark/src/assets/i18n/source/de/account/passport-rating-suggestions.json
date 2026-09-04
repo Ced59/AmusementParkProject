@@ -24,7 +24,8 @@
         "review": "Bewertung prüfen",
         "dismiss": "Jetzt nicht",
         "disable": "Vorschläge deaktivieren",
-        "enable": "Vorschläge aktivieren"
+        "enable": "Vorschläge aktivieren",
+        "retry": "Erneut versuchen"
       },
       "error": "Diese Aktion konnte nicht gespeichert werden. Versuche es gleich noch einmal."
     }

@@ -24,7 +24,8 @@
         "review": "Revoir ma note",
         "dismiss": "Pas maintenant",
         "disable": "Désactiver ces suggestions",
-        "enable": "Activer les suggestions"
+        "enable": "Activer les suggestions",
+        "retry": "Réessayer"
       },
       "error": "Cette action n’a pas pu être enregistrée. Réessaie dans un instant."
     }

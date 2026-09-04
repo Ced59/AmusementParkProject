@@ -35,7 +35,8 @@
         "review": "Revisar mi valoración",
         "dismiss": "Ahora no",
         "disable": "Desactivar sugerencias",
-        "enable": "Activar sugerencias"
+        "enable": "Activar sugerencias",
+        "retry": "Volver a intentar"
       },
       "error": "No se ha podido guardar esta acción. Inténtalo de nuevo en un momento."
     },
