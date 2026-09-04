@@ -12,17 +12,18 @@ namespace AmusementPark.Application.Features.Passport.Services;
 
 public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 {
-    public const int SchemaVersion = 1;
+    public const int SchemaVersion = 2;
     public const int MaximumArtifactBytes = 64 * 1024 * 1024;
     private static readonly UTF8Encoding Utf8WithoutBom = new UTF8Encoding(false);
 
     public PassportExportArtifact Write(PassportExportWriteRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
+        PassportExportReferenceMap references = PassportExportReferenceMap.Create(request);
         byte[] content = request.Format switch
         {
-            PassportExportFormat.Json => WriteJson(request),
-            PassportExportFormat.Csv => WriteCsvArchive(request),
+            PassportExportFormat.Json => WriteJson(request, references),
+            PassportExportFormat.Csv => WriteCsvArchive(request, references),
             _ => throw new ArgumentOutOfRangeException(nameof(request)),
         };
         if (content.Length > MaximumArtifactBytes)
@@ -34,17 +35,20 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         string contentType = request.Format == PassportExportFormat.Json
             ? "application/json; charset=utf-8"
             : "application/zip";
-        string date = request.ExportedAtUtc.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
-        string shortId = request.ExportId[..Math.Min(8, request.ExportId.Length)];
+        string date = request.ExportedAtUtc.ToString(
+            "yyyyMMdd-HHmmss-fffffff",
+            CultureInfo.InvariantCulture);
         return new PassportExportArtifact(
-            $"amusement-park-passport-{date}-{shortId}.{extension}",
+            $"amusement-park-passport-{date}.{extension}",
             contentType,
             content,
             SchemaVersion,
             Convert.ToHexString(SHA256.HashData(content)).ToLowerInvariant());
     }
 
-    private static byte[] WriteJson(PassportExportWriteRequest request)
+    private static byte[] WriteJson(
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using SizeLimitedMemoryStream output = new SizeLimitedMemoryStream(MaximumArtifactBytes);
         using Utf8JsonWriter writer = new Utf8JsonWriter(output, new JsonWriterOptions
@@ -53,24 +57,38 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         });
         writer.WriteStartObject();
         WriteSchema(writer, request, "json");
+        writer.WriteStartArray("parks");
+        foreach (string parkId in ListParkIds(request))
+        {
+            WritePark(writer, parkId, request.Parks, references);
+        }
+
+        writer.WriteEndArray();
+        writer.WriteStartArray("parkItems");
+        foreach (RideOccurrence occurrence in ListParkItemExamples(request))
+        {
+            WriteParkItem(writer, occurrence, request.ParkItems, references);
+        }
+
+        writer.WriteEndArray();
         writer.WriteStartArray("visits");
         foreach (Visit visit in request.Visits)
         {
-            WriteVisit(writer, visit, request.Parks);
+            WriteVisit(writer, visit, request.Parks, references);
         }
 
         writer.WriteEndArray();
         writer.WriteStartArray("rideOccurrences");
         foreach (RideOccurrence occurrence in request.RideOccurrences)
         {
-            WriteOccurrence(writer, occurrence, request.Parks, request.ParkItems);
+            WriteOccurrence(writer, occurrence, request.Parks, request.ParkItems, references);
         }
 
         writer.WriteEndArray();
         writer.WriteStartArray("visitAssessments");
         foreach (Visit visit in request.Visits.Where(static visit => visit.ParkAssessment is not null))
         {
-            WriteVisitAssessment(writer, visit, request.Parks);
+            WriteVisitAssessment(writer, visit, request.Parks, references);
         }
 
         writer.WriteEndArray();
@@ -78,7 +96,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         foreach (RideOccurrence occurrence in request.RideOccurrences.Where(
                      static occurrence => occurrence.Assessment is not null))
         {
-            WriteRideAssessment(writer, occurrence, request.ParkItems);
+            WriteRideAssessment(writer, occurrence, request.ParkItems, references);
         }
 
         writer.WriteEndArray();
@@ -87,16 +105,20 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         return output.ToArray();
     }
 
-    private static byte[] WriteCsvArchive(PassportExportWriteRequest request)
+    private static byte[] WriteCsvArchive(
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using SizeLimitedMemoryStream output = new SizeLimitedMemoryStream(MaximumArtifactBytes);
         using (ZipArchive archive = new ZipArchive(output, ZipArchiveMode.Create, leaveOpen: true))
         {
             WriteSchemaEntry(archive, request);
-            WriteVisitsCsv(archive, request);
-            WriteOccurrencesCsv(archive, request);
-            WriteVisitAssessmentsCsv(archive, request);
-            WriteRideAssessmentsCsv(archive, request);
+            WriteParksCsv(archive, request, references);
+            WriteParkItemsCsv(archive, request, references);
+            WriteVisitsCsv(archive, request, references);
+            WriteOccurrencesCsv(archive, request, references);
+            WriteVisitAssessmentsCsv(archive, request, references);
+            WriteRideAssessmentsCsv(archive, request, references);
         }
 
         return output.ToArray();
@@ -108,7 +130,6 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteString("name", "amusement-park-passport");
         writer.WriteNumber("version", SchemaVersion);
         writer.WriteString("format", format);
-        writer.WriteString("exportId", request.ExportId);
         writer.WriteString("exportedAtUtc", FormatUtc(request.ExportedAtUtc));
         writer.WriteString("datePolicy", "local-calendar-values-with-declared-precision");
         writer.WriteString("ratingScale", "half-steps-1-to-10-equivalent-to-0.5-to-5");
@@ -123,6 +144,8 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteStartObject();
         WriteSchema(writer, request, "csv-zip");
         writer.WriteStartArray("files");
+        writer.WriteStringValue("parks.csv");
+        writer.WriteStringValue("park-items.csv");
         writer.WriteStringValue("visits.csv");
         writer.WriteStringValue("ride-occurrences.csv");
         writer.WriteStringValue("visit-assessments.csv");
@@ -134,15 +157,48 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteEndObject();
     }
 
+    private static void WritePark(
+        Utf8JsonWriter writer,
+        string parkId,
+        IReadOnlyDictionary<string, Park> parks,
+        PassportExportReferenceMap references)
+    {
+        ResolvePark(parks, parkId, out string parkName, out string parkStatus);
+        writer.WriteStartObject();
+        writer.WriteString("reference", references.Park(parkId));
+        writer.WriteString("name", parkName);
+        writer.WriteString("status", parkStatus);
+        writer.WriteEndObject();
+    }
+
+    private static void WriteParkItem(
+        Utf8JsonWriter writer,
+        RideOccurrence occurrence,
+        IReadOnlyDictionary<string, VisitTarget> parkItems,
+        PassportExportReferenceMap references)
+    {
+        ResolveParkItem(parkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
+        writer.WriteStartObject();
+        writer.WriteString(
+            "reference",
+            references.ParkItem(occurrence.ParkId, occurrence.ParkItemId));
+        writer.WriteString("parkReference", references.Park(occurrence.ParkId));
+        writer.WriteString("name", itemName);
+        writer.WriteString("category", itemCategory);
+        writer.WriteString("status", itemStatus);
+        writer.WriteEndObject();
+    }
+
     private static void WriteVisit(
         Utf8JsonWriter writer,
         Visit visit,
-        IReadOnlyDictionary<string, Park> parks)
+        IReadOnlyDictionary<string, Park> parks,
+        PassportExportReferenceMap references)
     {
         ResolvePark(parks, visit.ParkId, out string parkName, out string parkStatus);
         writer.WriteStartObject();
-        writer.WriteString("id", visit.Id.Value);
-        writer.WriteString("parkId", visit.ParkId);
+        writer.WriteString("reference", references.Visit(visit.Id));
+        writer.WriteString("parkReference", references.Park(visit.ParkId));
         writer.WriteString("parkName", parkName);
         writer.WriteString("parkStatus", parkStatus);
         writer.WriteNumber("year", visit.Date.Year);
@@ -167,17 +223,20 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         Utf8JsonWriter writer,
         RideOccurrence occurrence,
         IReadOnlyDictionary<string, Park> parks,
-        IReadOnlyDictionary<string, VisitTarget> parkItems)
+        IReadOnlyDictionary<string, VisitTarget> parkItems,
+        PassportExportReferenceMap references)
     {
         ResolvePark(parks, occurrence.ParkId, out string parkName, out string parkStatus);
         ResolveParkItem(parkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
         writer.WriteStartObject();
-        writer.WriteString("id", occurrence.Id.Value);
-        writer.WriteString("visitId", occurrence.VisitId.Value);
-        writer.WriteString("parkId", occurrence.ParkId);
+        writer.WriteString("reference", references.Occurrence(occurrence.Id));
+        writer.WriteString("visitReference", references.Visit(occurrence.VisitId));
+        writer.WriteString("parkReference", references.Park(occurrence.ParkId));
+        writer.WriteString(
+            "parkItemReference",
+            references.ParkItem(occurrence.ParkId, occurrence.ParkItemId));
         writer.WriteString("parkName", parkName);
         writer.WriteString("parkStatus", parkStatus);
-        writer.WriteString("parkItemId", occurrence.ParkItemId);
         writer.WriteString("parkItemName", itemName);
         writer.WriteString("parkItemCategory", itemCategory);
         writer.WriteString("parkItemStatus", itemStatus);
@@ -203,13 +262,13 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     private static void WriteVisitAssessment(
         Utf8JsonWriter writer,
         Visit visit,
-        IReadOnlyDictionary<string, Park> parks)
+        IReadOnlyDictionary<string, Park> parks,
+        PassportExportReferenceMap references)
     {
         VisitParkAssessment assessment = visit.ParkAssessment!;
         ResolvePark(parks, visit.ParkId, out string parkName, out string parkStatus);
         writer.WriteStartObject();
-        writer.WriteString("visitId", visit.Id.Value);
-        writer.WriteString("parkId", visit.ParkId);
+        writer.WriteString("visitReference", references.Visit(visit.Id));
         writer.WriteString("parkName", parkName);
         writer.WriteString("parkStatus", parkStatus);
         writer.WriteNumber("valueHalfSteps", assessment.Value.HalfSteps);
@@ -224,14 +283,14 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     private static void WriteRideAssessment(
         Utf8JsonWriter writer,
         RideOccurrence occurrence,
-        IReadOnlyDictionary<string, VisitTarget> parkItems)
+        IReadOnlyDictionary<string, VisitTarget> parkItems,
+        PassportExportReferenceMap references)
     {
         RideAssessment assessment = occurrence.Assessment!;
         ResolveParkItem(parkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
         writer.WriteStartObject();
-        writer.WriteString("rideOccurrenceId", occurrence.Id.Value);
-        writer.WriteString("visitId", occurrence.VisitId.Value);
-        writer.WriteString("parkItemId", occurrence.ParkItemId);
+        writer.WriteString("rideOccurrenceReference", references.Occurrence(occurrence.Id));
+        writer.WriteString("visitReference", references.Visit(occurrence.VisitId));
         writer.WriteString("parkItemName", itemName);
         writer.WriteString("parkItemCategory", itemCategory);
         writer.WriteString("parkItemStatus", itemStatus);
@@ -244,12 +303,58 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteEndObject();
     }
 
-    private static void WriteVisitsCsv(ZipArchive archive, PassportExportWriteRequest request)
+    private static void WriteParksCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
+    {
+        using StreamWriter writer = CreateCsvWriter(archive, "parks.csv");
+        WriteCsvRow(writer, new[] { "reference", "name", "status" });
+        foreach (string parkId in ListParkIds(request))
+        {
+            ResolvePark(request.Parks, parkId, out string parkName, out string parkStatus);
+            WriteCsvRow(writer, new[] { references.Park(parkId), parkName, parkStatus });
+        }
+    }
+
+    private static void WriteParkItemsCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
+    {
+        using StreamWriter writer = CreateCsvWriter(archive, "park-items.csv");
+        WriteCsvRow(writer, new[]
+        {
+            "reference", "parkReference", "name", "category", "status",
+        });
+        foreach (RideOccurrence occurrence in ListParkItemExamples(request))
+        {
+            ResolveParkItem(
+                request.ParkItems,
+                occurrence,
+                out string itemName,
+                out string itemCategory,
+                out string itemStatus);
+            WriteCsvRow(writer, new[]
+            {
+                references.ParkItem(occurrence.ParkId, occurrence.ParkItemId),
+                references.Park(occurrence.ParkId),
+                itemName,
+                itemCategory,
+                itemStatus,
+            });
+        }
+    }
+
+    private static void WriteVisitsCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using StreamWriter writer = CreateCsvWriter(archive, "visits.csv");
         WriteCsvRow(writer, new[]
         {
-            "id", "parkId", "parkName", "parkStatus", "year", "month", "day",
+            "reference", "parkReference", "parkName", "parkStatus", "year", "month", "day",
             "datePrecision", "dateIsApproximate", "timeZoneId", "serviceDayConvention",
             "status", "privacy", "title", "privateNote", "version", "createdAtUtc",
             "updatedAtUtc", "completedAtUtc",
@@ -259,7 +364,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             ResolvePark(request.Parks, visit.ParkId, out string parkName, out string parkStatus);
             WriteCsvRow(writer, new[]
             {
-                visit.Id.Value, visit.ParkId, parkName, parkStatus,
+                references.Visit(visit.Id), references.Park(visit.ParkId), parkName, parkStatus,
                 Integer(visit.Date.Year), NullableInteger(visit.Date.Month), NullableInteger(visit.Date.Day),
                 visit.Date.Precision.ToString(), Boolean(visit.Date.IsApproximate), visit.TimeZoneId,
                 visit.ServiceDayConvention.ToString(), visit.Status.ToString(), visit.Privacy.ToString(),
@@ -269,12 +374,15 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         }
     }
 
-    private static void WriteOccurrencesCsv(ZipArchive archive, PassportExportWriteRequest request)
+    private static void WriteOccurrencesCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using StreamWriter writer = CreateCsvWriter(archive, "ride-occurrences.csv");
         WriteCsvRow(writer, new[]
         {
-            "id", "visitId", "parkId", "parkName", "parkStatus", "parkItemId",
+            "reference", "visitReference", "parkReference", "parkItemReference", "parkName", "parkStatus",
             "parkItemName", "parkItemCategory", "parkItemStatus", "sortPosition", "localTime",
             "localTimeIsApproximate", "status", "source", "historicalConsistency",
             "historicalTargetName", "historicalTargetCategory", "privateNote", "version",
@@ -286,8 +394,10 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             ResolveParkItem(request.ParkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
             WriteCsvRow(writer, new[]
             {
-                occurrence.Id.Value, occurrence.VisitId.Value, occurrence.ParkId, parkName, parkStatus,
-                occurrence.ParkItemId, itemName, itemCategory, itemStatus, Integer(occurrence.SortPosition),
+                references.Occurrence(occurrence.Id), references.Visit(occurrence.VisitId),
+                references.Park(occurrence.ParkId),
+                references.ParkItem(occurrence.ParkId, occurrence.ParkItemId),
+                parkName, parkStatus, itemName, itemCategory, itemStatus, Integer(occurrence.SortPosition),
                 occurrence.Moment.LocalTime?.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture),
                 Boolean(occurrence.Moment.IsApproximate), occurrence.Status.ToString(), occurrence.Source.ToString(),
                 occurrence.HistoricalConsistency.ToString(), occurrence.HistoricalTarget?.Name,
@@ -298,12 +408,15 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         }
     }
 
-    private static void WriteVisitAssessmentsCsv(ZipArchive archive, PassportExportWriteRequest request)
+    private static void WriteVisitAssessmentsCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using StreamWriter writer = CreateCsvWriter(archive, "visit-assessments.csv");
         WriteCsvRow(writer, new[]
         {
-            "visitId", "parkId", "parkName", "parkStatus", "valueHalfSteps", "value",
+            "visitReference", "parkName", "parkStatus", "valueHalfSteps", "value",
             "privateComment", "revision", "createdAtUtc", "updatedAtUtc",
         });
         foreach (Visit visit in request.Visits.Where(static visit => visit.ParkAssessment is not null))
@@ -312,19 +425,22 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             ResolvePark(request.Parks, visit.ParkId, out string parkName, out string parkStatus);
             WriteCsvRow(writer, new[]
             {
-                visit.Id.Value, visit.ParkId, parkName, parkStatus, Integer(assessment.Value.HalfSteps),
+                references.Visit(visit.Id), parkName, parkStatus, Integer(assessment.Value.HalfSteps),
                 assessment.Value.ToString(), assessment.PrivateComment, Integer(assessment.Revision),
                 FormatUtc(assessment.CreatedAtUtc), FormatUtc(assessment.UpdatedAtUtc),
             });
         }
     }
 
-    private static void WriteRideAssessmentsCsv(ZipArchive archive, PassportExportWriteRequest request)
+    private static void WriteRideAssessmentsCsv(
+        ZipArchive archive,
+        PassportExportWriteRequest request,
+        PassportExportReferenceMap references)
     {
         using StreamWriter writer = CreateCsvWriter(archive, "ride-assessments.csv");
         WriteCsvRow(writer, new[]
         {
-            "rideOccurrenceId", "visitId", "parkItemId", "parkItemName", "parkItemCategory",
+            "rideOccurrenceReference", "visitReference", "parkItemName", "parkItemCategory",
             "parkItemStatus", "valueHalfSteps", "value", "privateComment", "revision",
             "createdAtUtc", "updatedAtUtc",
         });
@@ -335,8 +451,8 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             ResolveParkItem(request.ParkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
             WriteCsvRow(writer, new[]
             {
-                occurrence.Id.Value, occurrence.VisitId.Value, occurrence.ParkItemId, itemName, itemCategory,
-                itemStatus, Integer(assessment.Value.HalfSteps), assessment.Value.ToString(),
+                references.Occurrence(occurrence.Id), references.Visit(occurrence.VisitId), itemName,
+                itemCategory, itemStatus, Integer(assessment.Value.HalfSteps), assessment.Value.ToString(),
                 assessment.PrivateComment, Integer(assessment.Revision), FormatUtc(assessment.CreatedAtUtc),
                 FormatUtc(assessment.UpdatedAtUtc),
             });
@@ -350,6 +466,23 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         {
             NewLine = "\r\n",
         };
+    }
+
+    private static IReadOnlyCollection<string> ListParkIds(PassportExportWriteRequest request)
+    {
+        return request.Visits.Select(static visit => visit.ParkId)
+            .Concat(request.RideOccurrences.Select(static occurrence => occurrence.ParkId))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static IReadOnlyCollection<RideOccurrence> ListParkItemExamples(
+        PassportExportWriteRequest request)
+    {
+        return request.RideOccurrences
+            .GroupBy(static occurrence => (occurrence.ParkId, occurrence.ParkItemId))
+            .Select(static group => group.First())
+            .ToArray();
     }
 
     private static void WriteCsvRow(StreamWriter writer, IReadOnlyCollection<string?> values)
@@ -378,12 +511,12 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     {
         if (parks.TryGetValue(parkId, out Park? park))
         {
-            name = string.IsNullOrWhiteSpace(park.Name) ? parkId : park.Name.Trim();
+            name = string.IsNullOrWhiteSpace(park.Name) ? "Unavailable park" : park.Name.Trim();
             status = park.Status.ToString();
             return;
         }
 
-        name = parkId;
+        name = "Unavailable park";
         status = "Unavailable";
     }
 
@@ -394,7 +527,8 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         out string category,
         out string status)
     {
-        if (parkItems.TryGetValue(occurrence.ParkItemId, out VisitTarget? target))
+        if (parkItems.TryGetValue(occurrence.ParkItemId, out VisitTarget? target)
+            && string.Equals(target.ParkId, occurrence.ParkId, StringComparison.Ordinal))
         {
             name = target.Name;
             category = target.Category.ToString();
@@ -402,7 +536,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             return;
         }
 
-        name = occurrence.HistoricalTarget?.Name ?? occurrence.ParkItemId;
+        name = occurrence.HistoricalTarget?.Name ?? "Unavailable attraction";
         category = occurrence.HistoricalTarget?.Category ?? "Unknown";
         status = occurrence.HistoricalTarget is null ? "Unavailable" : "Historical";
     }

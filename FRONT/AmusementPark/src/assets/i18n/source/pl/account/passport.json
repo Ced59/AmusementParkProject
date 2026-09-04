@@ -22,7 +22,7 @@
     "exports": {
       "kicker": "Kopia twoich danych",
       "title": "Wyeksportuj swój paszport",
-      "description": "Pobierz wszystkie wizyty, przejazdy i prywatne oceny. Wersjonowany plik JSON jest przygotowany do przyszłego ponownego importu, a archiwum ZIP CSV zawiera cztery niezależne tabele.",
+      "description": "Pobierz wszystkie wizyty, przejazdy i prywatne oceny. Wersjonowany plik JSON jest przygotowany do przyszłego ponownego importu, a archiwum ZIP CSV zawiera sześć tabel połączonych odwołaniami właściwymi dla eksportu, bez wewnętrznych identyfikatorów.",
       "retention": "Plik pozostaje prywatny, wymaga zalogowania i wygasa godzinę po wygenerowaniu.",
       "actions": { "json": "Przygotuj JSON", "csv": "Przygotuj pliki CSV", "download": "Pobierz plik" },
       "status": { "generating": "Przygotowywanie eksportu…", "ready": "Twój eksport jest gotowy" },
