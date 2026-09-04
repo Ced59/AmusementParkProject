@@ -46,7 +46,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 
     private static byte[] WriteJson(PassportExportWriteRequest request)
     {
-        using MemoryStream output = new MemoryStream();
+        using SizeLimitedMemoryStream output = new SizeLimitedMemoryStream(MaximumArtifactBytes);
         using Utf8JsonWriter writer = new Utf8JsonWriter(output, new JsonWriterOptions
         {
             Indented = true,
@@ -89,7 +89,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 
     private static byte[] WriteCsvArchive(PassportExportWriteRequest request)
     {
-        using MemoryStream output = new MemoryStream();
+        using SizeLimitedMemoryStream output = new SizeLimitedMemoryStream(MaximumArtifactBytes);
         using (ZipArchive archive = new ZipArchive(output, ZipArchiveMode.Create, leaveOpen: true))
         {
             WriteSchemaEntry(archive, request);
@@ -130,6 +130,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteEndArray();
         writer.WriteString("encoding", "utf-8");
         writer.WriteString("delimiter", ",");
+        writer.WriteString("formulaNeutralization", "leading-apostrophe-for-=+-@-cells");
         writer.WriteEndObject();
     }
 
@@ -359,6 +360,11 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     private static string EscapeCsv(string? value)
     {
         string normalized = value ?? string.Empty;
+        if (normalized.Length > 0 && normalized[0] is '=' or '+' or '-' or '@')
+        {
+            normalized = $"'{normalized}";
+        }
+
         return normalized.IndexOfAny(new[] { ',', '"', '\r', '\n' }) < 0
             ? normalized
             : $"\"{normalized.Replace("\"", "\"\"", StringComparison.Ordinal)}\"";

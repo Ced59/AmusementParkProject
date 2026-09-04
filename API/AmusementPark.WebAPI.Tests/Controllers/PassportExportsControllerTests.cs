@@ -113,6 +113,10 @@ public sealed class PassportExportsControllerTests
         Assert.Equal(
             "{exportId}",
             Assert.IsType<HttpGetAttribute>(get.GetCustomAttribute<HttpGetAttribute>()).Template);
+        Assert.Equal(
+            RateLimitPolicyNames.PassportExportDownloads,
+            Assert.IsType<EnableRateLimitingAttribute>(
+                get.GetCustomAttribute<EnableRateLimitingAttribute>()).PolicyName);
     }
 
     [Fact]

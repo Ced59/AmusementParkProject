@@ -59,6 +59,14 @@ public sealed class CanonicalVisitExportWriterTests
         using StreamReader reader = new StreamReader(visitsEntry.Open(), Encoding.UTF8);
         string visitsCsv = reader.ReadToEnd();
         Assert.Contains("\"Souvenir, privé\"", visitsCsv, StringComparison.Ordinal);
+        Assert.Contains("'=1+1", visitsCsv, StringComparison.Ordinal);
+        ZipArchiveEntry schemaEntry = Assert.Single(
+            archive.Entries,
+            static entry => entry.FullName == "schema.json");
+        using JsonDocument schema = JsonDocument.Parse(schemaEntry.Open());
+        Assert.Equal(
+            "leading-apostrophe-for-=+-@-cells",
+            schema.RootElement.GetProperty("formulaNeutralization").GetString());
         Assert.EndsWith(".zip", artifact.FileName, StringComparison.Ordinal);
     }
 
@@ -71,7 +79,7 @@ public sealed class CanonicalVisitExportWriterTests
             VisitDate.ForDay(2026, 8, 31),
             "Europe/Paris",
             LocalServiceDayConvention.VisitStartLocalDate,
-            "Journée d’été",
+            "=1+1",
             "Souvenir, privé",
             NowUtc);
         visit.UpsertParkAssessment(RatingValue.FromHalfSteps(8), "Très belle journée", NowUtc);

@@ -17,4 +17,5 @@ public static class RateLimitPolicyNames
     public const string ParkDataEditorOperationStatus = "park-data-editor-operation-status";
     public const string RatingDiagnostics = "rating-diagnostics";
     public const string PassportExports = "passport-exports";
+    public const string PassportExportDownloads = "passport-export-downloads";
 }

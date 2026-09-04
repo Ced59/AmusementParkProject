@@ -71,6 +71,7 @@ public sealed class PassportExportsController : ControllerBase
     }
 
     [HttpGet("{exportId}")]
+    [EnableRateLimiting(RateLimitPolicyNames.PassportExportDownloads)]
     [ProducesResponseType(typeof(PassportExportDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
