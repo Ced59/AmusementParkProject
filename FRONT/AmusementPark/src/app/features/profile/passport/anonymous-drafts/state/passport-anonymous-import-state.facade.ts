@@ -450,7 +450,7 @@ export class PassportAnonymousImportStateFacade {
 
   private isDefinitiveClientRejection(error: unknown): boolean {
     return error instanceof HttpErrorResponse
-      && [400, 404, 413, 422].includes(error.status);
+      && [400, 404, 409, 413, 422].includes(error.status);
   }
 
   private async lockImportIntent(

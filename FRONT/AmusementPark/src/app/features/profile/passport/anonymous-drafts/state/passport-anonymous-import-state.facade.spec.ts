@@ -554,6 +554,33 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
   });
 
+  it('releases an untouched merge reservation when the selected visit is no longer editable', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const existing: PassportVisit = createVisit({ id: 'existing-1' });
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({
+        listVisits: () => of({ items: [existing], nextCursor: null }),
+        getVisit: () => of(existing)
+      }),
+      createOccurrencesPort({
+        importBatch: () => throwError(() => new HttpErrorResponse({ status: 409 }))
+      }),
+      createParkItemsPort()
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+    facade.setChoice(draft.id, 'Merge');
+    await facade.setTargetVisit(draft.id, existing.id);
+
+    await facade.importAll(true);
+
+    expect(compareAndSet).toHaveBeenCalledTimes(2);
+    expect(facade.previews()[0].draft.pendingImport).toBeNull();
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
+  });
+
   it('keeps the local reservation after an ambiguous network failure', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const compareAndSet = vi.fn(async (): Promise<boolean> => true);
