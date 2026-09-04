@@ -19,6 +19,22 @@
       "list": { "kicker": "Histórico privado", "title": "Todas as tuas visitas", "loadedCount": { "one": "1 visita carregada", "few": "{{count}} visitas carregadas", "many": "{{count}} visitas carregadas", "other": "{{count}} visitas carregadas" }, "privateNote": "Nota privada guardada" },
       "status": { "Draft": "Rascunho", "Completed": "Concluída", "Archived": "Arquivada" }
     },
+    "exports": {
+      "kicker": "Cópia dos teus dados",
+      "title": "Exporta o teu passaporte",
+      "description": "Transfere todas as visitas, registos de atrações e avaliações privadas. O JSON versionado está preparado para uma futura reimportação; o ZIP CSV contém quatro tabelas independentes.",
+      "retention": "O ficheiro permanece privado, requer a tua sessão e expira uma hora depois de ser gerado.",
+      "actions": { "json": "Preparar o JSON", "csv": "Preparar os CSV", "download": "Transferir o ficheiro" },
+      "status": { "generating": "A preparar a exportação…", "ready": "A tua exportação está pronta" },
+      "errors": {
+        "request": "Não foi possível iniciar a exportação. Tenta novamente dentro de instantes.",
+        "status": "Não foi possível verificar o estado. Inicia-a novamente se necessário.",
+        "download": "Não foi possível transferir o ficheiro ou este expirou.",
+        "failed": "Não foi possível gerar a exportação. Podes iniciá-la novamente.",
+        "tooLarge": "O teu passaporte é demasiado grande para esta exportação. Nenhum dado foi truncado.",
+        "expired": "Esta exportação expirou. Prepara uma nova para a transferir."
+      }
+    },
     "statistics": {
       "kicker": "Estatísticas do passaporte", "title": "As tuas estatísticas privadas", "private": "Privado", "loading": "A calcular as tuas estatísticas…", "navigationLabel": "Consultar as estatísticas desta visita", "summaryLabel": "Resumo das tuas estatísticas",
       "privacyNotice": "Estes números vêm apenas do teu passaporte privado. Nunca alteram as avaliações nem as classificações da comunidade.",

@@ -111,6 +111,14 @@ public sealed partial class MongoDatabaseInitializer
         await this.InitializePassportAuditIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(
+            this.settings.PassportExportsCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.PassportExportChunksCollectionName,
+            cancellationToken);
+        await this.InitializePassportExportIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(
             this.settings.GlobalRatingSuggestionStatesCollectionName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(

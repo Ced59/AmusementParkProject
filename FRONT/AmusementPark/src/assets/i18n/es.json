@@ -91,6 +91,29 @@
         "Archived": "Archivada"
       }
     },
+    "exports": {
+      "kicker": "Copia de tus datos",
+      "title": "Exporta tu pasaporte",
+      "description": "Descarga todas tus visitas, registros de atracciones y valoraciones privadas. El JSON versionado está preparado para una futura reimportación; el ZIP CSV contiene cuatro tablas independientes.",
+      "retention": "El archivo sigue siendo privado, requiere tu sesión y caduca una hora después de generarse.",
+      "actions": {
+        "json": "Preparar el JSON",
+        "csv": "Preparar los CSV",
+        "download": "Descargar el archivo"
+      },
+      "status": {
+        "generating": "Preparando la exportación…",
+        "ready": "Tu exportación está lista"
+      },
+      "errors": {
+        "request": "No se pudo iniciar la exportación. Inténtalo de nuevo en un momento.",
+        "status": "No se pudo comprobar el estado. Vuelve a iniciarla si es necesario.",
+        "download": "No se pudo descargar el archivo o ya ha caducado.",
+        "failed": "No se pudo generar la exportación. Puedes volver a iniciarla.",
+        "tooLarge": "Tu pasaporte es demasiado grande para esta exportación. No se ha truncado ningún dato.",
+        "expired": "Esta exportación ha caducado. Prepara una nueva para descargarla."
+      }
+    },
     "statistics": {
       "kicker": "Estadísticas del pasaporte",
       "title": "Tus estadísticas privadas",

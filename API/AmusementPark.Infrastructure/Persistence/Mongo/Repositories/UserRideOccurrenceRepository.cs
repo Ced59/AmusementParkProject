@@ -110,6 +110,23 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             : CreatePendingMutation(operation, visitId);
     }
 
+    public async Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        List<UserRideOccurrenceDocument> documents = await this.collection
+            .Find(Builders<UserRideOccurrenceDocument>.Filter.Eq(
+                static document => document.UserId,
+                normalizedUserId))
+            .Sort(Builders<UserRideOccurrenceDocument>.Sort
+                .Ascending(static document => document.VisitId)
+                .Ascending(static document => document.SortPosition)
+                .Ascending(static document => document.Id))
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<PendingPassportMutationVisit?> GetPendingMutationFencedAsync(
         string userId,
         VisitId visitId,

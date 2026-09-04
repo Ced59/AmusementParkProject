@@ -91,6 +91,29 @@
         "Archived": "Zarchiwizowana"
       }
     },
+    "exports": {
+      "kicker": "Kopia twoich danych",
+      "title": "Wyeksportuj swój paszport",
+      "description": "Pobierz wszystkie wizyty, przejazdy i prywatne oceny. Wersjonowany plik JSON jest przygotowany do przyszłego ponownego importu, a archiwum ZIP CSV zawiera cztery niezależne tabele.",
+      "retention": "Plik pozostaje prywatny, wymaga zalogowania i wygasa godzinę po wygenerowaniu.",
+      "actions": {
+        "json": "Przygotuj JSON",
+        "csv": "Przygotuj pliki CSV",
+        "download": "Pobierz plik"
+      },
+      "status": {
+        "generating": "Przygotowywanie eksportu…",
+        "ready": "Twój eksport jest gotowy"
+      },
+      "errors": {
+        "request": "Nie udało się uruchomić eksportu. Spróbuj ponownie za chwilę.",
+        "status": "Nie udało się sprawdzić stanu eksportu. W razie potrzeby uruchom go ponownie.",
+        "download": "Nie udało się pobrać pliku albo plik wygasł.",
+        "failed": "Nie udało się wygenerować eksportu. Możesz uruchomić go ponownie.",
+        "tooLarge": "Twój paszport jest zbyt duży dla tego eksportu. Żadne dane nie zostały ucięte.",
+        "expired": "Ten eksport wygasł. Przygotuj nowy, aby go pobrać."
+      }
+    },
     "statistics": {
       "kicker": "Statystyki paszportu",
       "title": "Twoje prywatne statystyki",

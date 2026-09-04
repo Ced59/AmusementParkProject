@@ -7,6 +7,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { LocalizedPluralPipe } from '@shared/pipes/localized-plural.pipe';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiPrimitiveTone, UiSurfaceDirective } from '@ui/primitives';
 import { PassportVisitQuickCreateComponent } from '../../components/passport-visit-quick-create/passport-visit-quick-create.component';
+import { PassportExportPanelComponent } from '../../components/passport-export-panel/passport-export-panel.component';
 import { PassportVisitOverviewItemViewModel } from '../../models/passport-visits-overview.models';
 import { PassportVisitsOverviewStateFacade } from '../../state/passport-visits-overview-state.facade';
 
@@ -21,6 +22,7 @@ import { PassportVisitsOverviewStateFacade } from '../../state/passport-visits-o
     LocalizedPluralPipe,
     PageStateComponent,
     PassportVisitQuickCreateComponent,
+    PassportExportPanelComponent,
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,

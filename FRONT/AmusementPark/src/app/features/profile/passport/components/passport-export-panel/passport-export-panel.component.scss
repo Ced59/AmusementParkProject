@@ -1,0 +1,125 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.passport-export {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  gap: clamp(1rem, 3vw, 2rem);
+  border-color: color-mix(in srgb, var(--c-sky) 24%, var(--app-border));
+}
+
+.passport-export__copy,
+.passport-export__actions,
+.passport-export__status,
+.passport-export__ready {
+  min-width: 0;
+}
+
+.passport-export__copy {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.passport-export h2,
+.passport-export p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-export h2 {
+  color: var(--app-heading);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.passport-export p,
+.passport-export small {
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.passport-export small {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+
+.passport-export small i {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: var(--c-gold);
+}
+
+.passport-export__actions {
+  display: grid;
+  width: min(100%, 17rem);
+  gap: 0.65rem;
+}
+
+.passport-export__actions button,
+.passport-export__ready button {
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+}
+
+.passport-export__status {
+  grid-column: 1 / -1;
+}
+
+.passport-export__ready {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.passport-export__ready button {
+  width: auto;
+}
+
+.passport-export__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  color: var(--app-danger) !important;
+}
+
+.passport-export__error i {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 760px) {
+  .passport-export {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .passport-export__actions {
+    width: 100%;
+  }
+
+  .passport-export__status {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .passport-export__ready {
+    display: grid;
+    justify-items: stretch;
+  }
+
+  .passport-export__ready button {
+    width: 100%;
+  }
+}

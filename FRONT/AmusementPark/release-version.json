@@ -1,6 +1,20 @@
 {
-  "version": "5.0.22",
+  "version": "5.0.23",
   "history": [
+    {
+      "version": "5.0.23",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tu peux maintenant exporter toutes les données de ton passeport en JSON ou CSV.",
+        "en": "You can now export all your passport data as JSON or CSV.",
+        "de": "Du kannst jetzt alle Daten deines Besuchspasses als JSON oder CSV exportieren.",
+        "nl": "Je kunt nu alle gegevens uit je paspoort exporteren als JSON of CSV.",
+        "it": "Ora puoi esportare tutti i dati del tuo passaporto in formato JSON o CSV.",
+        "es": "Ahora puedes exportar todos los datos de tu pasaporte en formato JSON o CSV.",
+        "pl": "Możesz teraz wyeksportować wszystkie dane ze swojego paszportu w formacie JSON lub CSV.",
+        "pt": "Agora podes exportar todos os dados do teu passaporte em JSON ou CSV."
+      }
+    },
     {
       "version": "5.0.22",
       "releasedAt": "2026-09-04",

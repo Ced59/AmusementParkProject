@@ -265,4 +265,25 @@ public static class PassportApplicationErrors
             "ride-occurrence.update-invalid",
             "Les données de correction de l’occurrence sont invalides.");
     }
+
+    public static ApplicationError InvalidExportFormat()
+    {
+        return ApplicationError.Validation(
+            "passport-export.format-invalid",
+            "Le format d’export demandé est invalide.");
+    }
+
+    public static ApplicationError ExportNotFound()
+    {
+        return ApplicationError.NotFound(
+            "passport-export.not-found",
+            "L’export demandé est introuvable.");
+    }
+
+    public static ApplicationError ExportNotReady()
+    {
+        return ApplicationError.Conflict(
+            "passport-export.not-ready",
+            "L’export n’est pas disponible ou a expiré.");
+    }
 }

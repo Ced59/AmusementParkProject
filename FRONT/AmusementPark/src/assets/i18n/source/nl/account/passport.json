@@ -19,6 +19,22 @@
       "list": { "kicker": "Privégeschiedenis", "title": "Al je bezoeken", "loadedCount": { "one": "1 bezoek geladen", "few": "{{count}} bezoeken geladen", "many": "{{count}} bezoeken geladen", "other": "{{count}} bezoeken geladen" }, "privateNote": "Privénotitie opgeslagen" },
       "status": { "Draft": "Concept", "Completed": "Voltooid", "Archived": "Gearchiveerd" }
     },
+    "exports": {
+      "kicker": "Kopie van je gegevens",
+      "title": "Exporteer je paspoort",
+      "description": "Download al je bezoeken, ritregistraties en privébeoordelingen. De JSON met versienummer is voorbereid op een latere herimport; het CSV-zipbestand bevat vier losse tabellen.",
+      "retention": "Het bestand blijft privé, vereist dat je bent aangemeld en verloopt één uur na het aanmaken.",
+      "actions": { "json": "JSON voorbereiden", "csv": "CSV-bestanden voorbereiden", "download": "Bestand downloaden" },
+      "status": { "generating": "Export wordt voorbereid…", "ready": "Je export staat klaar" },
+      "errors": {
+        "request": "De export kon niet worden gestart. Probeer het zo opnieuw.",
+        "status": "De exportstatus kon niet worden gecontroleerd. Start hem zo nodig opnieuw.",
+        "download": "Het bestand kon niet worden gedownload of is verlopen.",
+        "failed": "De export kon niet worden gemaakt. Je kunt hem opnieuw starten.",
+        "tooLarge": "Je paspoort is te groot voor deze export. Er zijn geen gegevens afgekapt.",
+        "expired": "Deze export is verlopen. Maak een nieuwe om hem te downloaden."
+      }
+    },
     "statistics": {
       "kicker": "Paspoortstatistieken", "title": "Je privestatistieken", "private": "Privé", "loading": "Je statistieken worden berekend…", "navigationLabel": "Statistieken van dit bezoek bekijken", "summaryLabel": "Samenvatting van je statistieken",
       "privacyNotice": "Deze cijfers komen uitsluitend uit je privépaspoort. Ze veranderen nooit beoordelingen of ranglijsten van de community.",

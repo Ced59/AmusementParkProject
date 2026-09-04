@@ -91,6 +91,29 @@
         "Archived": "Archived"
       }
     },
+    "exports": {
+      "kicker": "Your data copy",
+      "title": "Export your passport",
+      "description": "Download all your visits, ride entries and private ratings. The versioned JSON is ready for a future re-import; the CSV ZIP contains four independent tables.",
+      "retention": "The file stays private, requires your signed-in session and expires one hour after it is generated.",
+      "actions": {
+        "json": "Prepare JSON",
+        "csv": "Prepare CSV files",
+        "download": "Download file"
+      },
+      "status": {
+        "generating": "Preparing your export…",
+        "ready": "Your export is ready"
+      },
+      "errors": {
+        "request": "The export could not be started. Try again in a moment.",
+        "status": "The export status could not be checked. Start it again if needed.",
+        "download": "The file could not be downloaded or has expired.",
+        "failed": "The export could not be generated. You can start it again.",
+        "tooLarge": "Your passport is too large for this export. No data was truncated.",
+        "expired": "This export has expired. Prepare a new one to download it."
+      }
+    },
     "statistics": {
       "kicker": "Passport statistics",
       "title": "Your private statistics",

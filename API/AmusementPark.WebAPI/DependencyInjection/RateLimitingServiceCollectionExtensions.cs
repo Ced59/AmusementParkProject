@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Threading.RateLimiting;
 using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Configuration;
+using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,7 @@ public static class RateLimitingServiceCollectionExtensions
     private const int InternalSsrWindowSeconds = 1;
     private const int PublicReadPermitLimit = 120;
     private const int PublicReadWindowSeconds = 1;
+    private const int PassportExportDownloadConcurrency = 1;
 
     public static IServiceCollection AddApiRateLimiting(this IServiceCollection services, IConfiguration configuration)
     {
@@ -53,6 +55,12 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings socialShareEventSettings = configuration
             .GetSection("RateLimiting:SocialShare:Events")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 60);
+        FixedWindowRateLimitSettings passportExportSettings = configuration
+            .GetSection("RateLimiting:Passport:Exports")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
+        FixedWindowRateLimitSettings passportExportDownloadSettings = configuration
+            .GetSection("RateLimiting:Passport:ExportDownloads")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
 
         services.AddRateLimiter(options =>
         {
@@ -60,34 +68,50 @@ public static class RateLimitingServiceCollectionExtensions
             options.OnRejected = static (context, cancellationToken) =>
                 new ValueTask(WriteRateLimitRejectionAsync(context, cancellationToken));
 
-            options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
-            {
-                if (InternalSsrRateLimitClassifier.IsInternalSsrRequest(context))
+            PartitionedRateLimiter<HttpContext> requestLimiter =
+                PartitionedRateLimiter.Create<HttpContext, string>(context =>
                 {
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: "internal-ssr",
-                        factory: _ => new FixedWindowRateLimiterOptions
-                        {
-                            PermitLimit = InternalSsrPermitLimit,
-                            Window = TimeSpan.FromSeconds(InternalSsrWindowSeconds),
-                            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-                            QueueLimit = InternalSsrPermitLimit,
-                            AutoReplenishment = true,
-                        });
-                }
+                    if (InternalSsrRateLimitClassifier.IsInternalSsrRequest(context))
+                    {
+                        return RateLimitPartition.GetFixedWindowLimiter(
+                            partitionKey: "internal-ssr",
+                            factory: _ => new FixedWindowRateLimiterOptions
+                            {
+                                PermitLimit = InternalSsrPermitLimit,
+                                Window = TimeSpan.FromSeconds(InternalSsrWindowSeconds),
+                                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                                QueueLimit = InternalSsrPermitLimit,
+                                AutoReplenishment = true,
+                            });
+                    }
 
-                string remoteIpPartitionKey = GetRemoteIpPartitionKey(context);
-                if (IsSafeReadMethod(context.Request.Method))
-                {
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: $"public-read:{remoteIpPartitionKey}",
-                        factory: _ => CreateFixedWindowOptions(publicReadSettings));
-                }
+                    string remoteIpPartitionKey = GetRemoteIpPartitionKey(context);
+                    if (IsSafeReadMethod(context.Request.Method))
+                    {
+                        return RateLimitPartition.GetFixedWindowLimiter(
+                            partitionKey: $"public-read:{remoteIpPartitionKey}",
+                            factory: _ => CreateFixedWindowOptions(publicReadSettings));
+                    }
 
-                return RateLimitPartition.GetFixedWindowLimiter(
-                    partitionKey: $"general:{remoteIpPartitionKey}",
-                    factory: _ => CreateFixedWindowOptions(globalSettings));
-            });
+                    return RateLimitPartition.GetFixedWindowLimiter(
+                        partitionKey: $"general:{remoteIpPartitionKey}",
+                        factory: _ => CreateFixedWindowOptions(globalSettings));
+                });
+            PartitionedRateLimiter<HttpContext> passportDownloadConcurrencyLimiter =
+                PartitionedRateLimiter.Create<HttpContext, string>(context =>
+                    IsPassportExportDownload(context)
+                        ? RateLimitPartition.GetConcurrencyLimiter(
+                            partitionKey: "passport-export-download-global",
+                            factory: _ => new ConcurrencyLimiterOptions
+                            {
+                                PermitLimit = PassportExportDownloadConcurrency,
+                                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                                QueueLimit = 0,
+                            })
+                        : RateLimitPartition.GetNoLimiter<string>("non-passport-export-download"));
+            options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
+                requestLimiter,
+                passportDownloadConcurrencyLimiter);
 
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthLogin, authenticationSettings.Login);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthExternalLogin, authenticationSettings.ExternalLogin);
@@ -97,6 +121,16 @@ public static class RateLimitingServiceCollectionExtensions
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthPasswordReset, authenticationSettings.PasswordReset);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.ContactSubmission, contactSubmissionSettings);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.SocialShareEvents, socialShareEventSettings);
+            options.AddPolicy(RateLimitPolicyNames.PassportExports, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetAuthenticatedUserPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(passportExportSettings)));
+            options.AddPolicy(RateLimitPolicyNames.PassportExportDownloads, context =>
+                IsPassportExportDownload(context)
+                    ? RateLimitPartition.GetFixedWindowLimiter(
+                        partitionKey: GetAuthenticatedUserPartitionKey(context),
+                        factory: _ => CreateFixedWindowOptions(passportExportDownloadSettings))
+                    : RateLimitPartition.GetNoLimiter<string>("passport-export-status"));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -185,6 +219,23 @@ public static class RateLimitingServiceCollectionExtensions
 
         byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(authorizationHeader));
         return $"park-data-editor-status:{Convert.ToHexString(hash)}";
+    }
+
+    private static string GetAuthenticatedUserPartitionKey(HttpContext context)
+    {
+        string? userId = context.User.GetUserId();
+        return string.IsNullOrWhiteSpace(userId)
+            ? $"passport-export:{GetRemoteIpPartitionKey(context)}"
+            : $"passport-export:user:{userId}";
+    }
+
+    internal static bool IsPassportExportDownload(HttpContext context)
+    {
+        return context.Request.Path.StartsWithSegments("/me/passport/exports")
+            && bool.TryParse(
+                context.Request.Query["download"].ToString(),
+                out bool download)
+            && download;
     }
 
     private static bool IsSafeReadMethod(string method)

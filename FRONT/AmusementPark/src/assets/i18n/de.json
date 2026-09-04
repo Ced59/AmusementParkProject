@@ -91,6 +91,29 @@
         "Archived": "Archiviert"
       }
     },
+    "exports": {
+      "kicker": "Kopie deiner Daten",
+      "title": "Exportiere deinen Pass",
+      "description": "Lade alle Besuche, Fahrteinträge und privaten Bewertungen herunter. Das versionierte JSON ist für einen späteren Reimport vorbereitet; das CSV-ZIP enthält vier eigenständige Tabellen.",
+      "retention": "Die Datei bleibt privat, erfordert deine Anmeldung und läuft eine Stunde nach der Erstellung ab.",
+      "actions": {
+        "json": "JSON vorbereiten",
+        "csv": "CSV-Dateien vorbereiten",
+        "download": "Datei herunterladen"
+      },
+      "status": {
+        "generating": "Export wird vorbereitet…",
+        "ready": "Dein Export ist bereit"
+      },
+      "errors": {
+        "request": "Der Export konnte nicht gestartet werden. Versuche es gleich noch einmal.",
+        "status": "Der Exportstatus konnte nicht geprüft werden. Starte ihn bei Bedarf erneut.",
+        "download": "Die Datei konnte nicht heruntergeladen werden oder ist abgelaufen.",
+        "failed": "Der Export konnte nicht erstellt werden. Du kannst ihn erneut starten.",
+        "tooLarge": "Dein Pass ist für diesen Export zu groß. Es wurden keine Daten abgeschnitten.",
+        "expired": "Dieser Export ist abgelaufen. Erstelle einen neuen, um ihn herunterzuladen."
+      }
+    },
     "statistics": {
       "kicker": "Statistiken des Besuchspasses",
       "title": "Deine privaten Statistiken",
