@@ -1,0 +1,31 @@
+<section class="passport-rating-timeline" aria-labelledby="passport-rating-timeline-title">
+  <header>
+    <div>
+      <span class="passport-rating-timeline__icon" aria-hidden="true"><i class="pi pi-chart-line"></i></span>
+      <h2 id="passport-rating-timeline-title">{{ titleKey | translate }}</h2>
+    </div>
+    <p>{{ descriptionKey | translate }}</p>
+  </header>
+
+  @if (points.length === 0) {
+    <p class="passport-rating-timeline__empty">{{ 'passport.statistics.timeline.empty' | translate }}</p>
+  } @else {
+    <ol>
+      @for (point of points; track point.id) {
+        <li>
+          <span class="passport-rating-timeline__marker" aria-hidden="true"></span>
+          <div>
+            <strong>{{ point.ratingLabel }}</strong>
+            <span>{{ point.dateLabel }}</span>
+            @if (point.positionLabel) {
+              <small>{{ 'passport.statistics.timeline.position' | translate:{ position: point.positionLabel } }}</small>
+            }
+          </div>
+          <button appUiButton="ghost" type="button" (click)="visitSelected.emit(point.visitId)">
+            {{ 'passport.statistics.actions.openVisit' | translate }}
+          </button>
+        </li>
+      }
+    </ol>
+  }
+</section>

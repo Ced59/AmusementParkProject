@@ -1,6 +1,20 @@
 {
-  "version": "5.0.15",
+  "version": "5.0.16",
   "history": [
+    {
+      "version": "5.0.16",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Ton passeport affiche maintenant des chronologies et tableaux de statistiques accessibles.",
+        "en": "Your passport now displays accessible statistics timelines and tables.",
+        "de": "Dein Besuchspass zeigt jetzt zugängliche Zeitleisten und Tabellen mit Statistiken.",
+        "nl": "Je paspoort toont nu toegankelijke tijdlijnen en tabellen met statistieken.",
+        "it": "Il tuo passaporto mostra ora cronologie e tabelle statistiche accessibili.",
+        "es": "Tu pasaporte muestra ahora cronologías y tablas de estadísticas accesibles.",
+        "pl": "Twój paszport pokazuje teraz dostępne osie czasu i tabele ze statystykami.",
+        "pt": "O teu passaporte apresenta agora cronologias e tabelas de estatísticas acessíveis."
+      }
+    },
     {
       "version": "5.0.15",
       "releasedAt": "2026-09-04",

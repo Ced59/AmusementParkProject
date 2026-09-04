@@ -1,0 +1,119 @@
+:host,
+.passport-rating-timeline,
+.passport-rating-timeline header,
+.passport-rating-timeline header > div,
+.passport-rating-timeline ol,
+.passport-rating-timeline li,
+.passport-rating-timeline li > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.passport-rating-timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.passport-rating-timeline header {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.passport-rating-timeline header > div {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.passport-rating-timeline h2,
+.passport-rating-timeline p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-rating-timeline h2 {
+  color: var(--app-heading);
+}
+
+.passport-rating-timeline header p,
+.passport-rating-timeline__empty {
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.passport-rating-timeline__icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-sky) 15%, transparent);
+  color: var(--c-sky);
+}
+
+.passport-rating-timeline ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.passport-rating-timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.8rem 0;
+}
+
+.passport-rating-timeline li:not(:last-child)::after {
+  position: absolute;
+  top: 2rem;
+  bottom: -0.4rem;
+  left: 0.43rem;
+  width: 2px;
+  background: var(--app-border);
+  content: '';
+}
+
+.passport-rating-timeline__marker {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid var(--app-surface);
+  border-radius: 999px;
+  background: var(--app-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--app-primary) 35%, transparent);
+  z-index: 1;
+}
+
+.passport-rating-timeline li > div {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.passport-rating-timeline li strong {
+  color: var(--app-heading);
+  font-size: 1.05rem;
+}
+
+.passport-rating-timeline li span,
+.passport-rating-timeline li small {
+  color: var(--app-text-muted);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .passport-rating-timeline li {
+    grid-template-columns: 1rem minmax(0, 1fr);
+  }
+
+  .passport-rating-timeline li button {
+    grid-column: 2;
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+}

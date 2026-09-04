@@ -19,6 +19,16 @@
           {{ 'passport.editor.private' | translate }}
         </app-ui-chip>
       </div>
+      <nav class="passport-editor__statistics-actions" [attr.aria-label]="'passport.statistics.navigationLabel' | translate">
+        <button appUiButton="soft" type="button" (click)="openParkStatistics(visit.parkId)">
+          <i class="pi pi-building" aria-hidden="true"></i>
+          <span>{{ 'passport.statistics.actions.openPark' | translate }}</span>
+        </button>
+        <button appUiButton="soft" type="button" (click)="openYearStatistics(visit.date.year)">
+          <i class="pi pi-calendar" aria-hidden="true"></i>
+          <span>{{ 'passport.statistics.actions.openYear' | translate }}</span>
+        </button>
+      </nav>
     } @else {
       <h1>{{ 'passport.editor.title' | translate }}</h1>
     }
@@ -173,7 +183,6 @@
           {{ 'passport.editor.assessment.privateBadge' | translate }}
         </app-ui-chip>
       </div>
-
       <div
         class="passport-assessment__ratings"
         role="radiogroup"
@@ -536,6 +545,15 @@
                       <span><i class="pi pi-lock" aria-hidden="true"></i>{{ 'passport.editor.timeline.hasPrivateNote' | translate }}</span>
                     }
                   </div>
+
+                  <button
+                    appUiButton="ghost"
+                    type="button"
+                    class="passport-occurrence__statistics"
+                    (click)="openItemStatistics(row.occurrence.parkItemId)">
+                    <i class="pi pi-chart-line" aria-hidden="true"></i>
+                    <span>{{ 'passport.statistics.actions.openItem' | translate }}</span>
+                  </button>
 
                   @if (shouldDisplayReadOnlyOccurrenceNote(
                     facade.visit()?.status,

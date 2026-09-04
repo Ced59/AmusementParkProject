@@ -356,6 +356,19 @@
   margin-top: 0.45rem;
 }
 
+.passport-editor__statistics-actions {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.passport-occurrence__statistics {
+  width: fit-content;
+  max-width: 100%;
+}
+
 .passport-editor__workspace {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
@@ -1041,6 +1054,7 @@ textarea:focus-visible {
   }
 
   .passport-filters__actions,
+  .passport-editor__statistics-actions,
   .passport-visit__actions,
   .passport-assessment__actions,
   .passport-assessment__delete-confirmation,
@@ -1051,6 +1065,13 @@ textarea:focus-visible {
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
+  }
+
+  .passport-editor__statistics-actions button,
+  .passport-occurrence__statistics {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
   }
 
   .passport-filters__actions button,

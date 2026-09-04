@@ -128,6 +128,18 @@ export class PassportVisitEditorPageComponent {
     void this.router.navigate(['/', this.currentLanguage(), 'profile']);
   }
 
+  protected openParkStatistics(parkId: string): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'parks', parkId]);
+  }
+
+  protected openYearStatistics(year: number): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'years', year]);
+  }
+
+  protected openItemStatistics(parkItemId: string): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'items', parkItemId]);
+  }
+
   protected retryLoad(): void {
     this.facade.retryLoad();
   }

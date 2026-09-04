@@ -4,6 +4,20 @@ import { authGuard } from '@core/guards/auth.guard';
 import { PROFILE_ROUTES } from './profile-routing.module';
 
 describe('profile routes', () => {
+  it('keeps every statistics scope lazy and authenticated', () => {
+    const paths: string[] = [
+      'passport/items/:parkItemId',
+      'passport/parks/:parkId',
+      'passport/years/:year'
+    ];
+
+    paths.forEach((path: string): void => {
+      const route: Route | undefined = PROFILE_ROUTES.find((candidate: Route): boolean => candidate.path === path);
+      expect(route?.loadComponent).toBeDefined();
+      expect(route?.canActivate).toContain(authGuard);
+    });
+  });
+
   it('keeps the visit editor lazy, authenticated and ahead of the profile root', () => {
     const editorRoute: Route | undefined = PROFILE_ROUTES.find(
       (route: Route): boolean => route.path === 'visits/:visitId'

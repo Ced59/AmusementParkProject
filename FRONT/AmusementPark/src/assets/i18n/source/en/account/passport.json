@@ -6,6 +6,52 @@
       "description": "Save a private visit even if you only remember the month or year.",
       "action": "Add a visit"
     },
+    "statistics": {
+      "kicker": "Passport statistics",
+      "title": "Your private statistics",
+      "private": "Private",
+      "loading": "Calculating your statistics…",
+      "navigationLabel": "View statistics for this visit",
+      "summaryLabel": "Statistics summary",
+      "privacyNotice": "These figures only come from your private passport. They never change community ratings or rankings.",
+      "actions": {
+        "back": "Back to profile", "retry": "Try again", "openVisit": "Open visit", "openYear": "View year", "openPark": "View park", "openItem": "View statistics"
+      },
+      "errors": {
+        "invalidScope": "This statistics view is not valid.", "notFound": "These statistics could not be found or do not belong to you.", "load": "Your statistics could not be loaded. Try again in a moment."
+      },
+      "empty": { "title": "No statistics yet", "description": "Add visits and rides to your passport to build this summary." },
+      "item": {
+        "subtitle": "Your history for this attraction, ride by ride and visit by visit.", "timelineTitle": "How your ratings changed", "timelineDescription": "Each point is a raw rating saved for one specific ride.",
+        "byVisitTitle": "Summary by visit", "byVisitDescription": "Averages only group rides from the same visit.", "byYearTitle": "Summary by year", "byYearDescription": "Partial dates remain attached to the year you entered."
+      },
+      "park": {
+        "subtitle": "Your visits, rides and impressions at this park.", "timelineTitle": "How your park ratings changed", "timelineDescription": "This list contains the private park rating from each visit.",
+        "byYearTitle": "Park summary by year", "byYearDescription": "Every row keeps its visit and ride denominators.", "currentTopTitle": "Your current preferences", "currentTopDescription": "This ranking uses your current global ratings, separately from your ride history.",
+        "historicalTopTitle": "Your historical averages", "historicalTopDescription": "This ranking only uses the private ratings from your rides."
+      },
+      "year": { "subtitle": "Your year of visits, grouped without inventing extra date precision.", "byParkTitle": "Summary by park", "byParkDescription": "Each park opens its own detailed history." },
+      "cards": {
+        "parks": "Parks visited", "rides": "Completed rides", "visits": "Visits", "firstExperience": "First experience", "lastExperience": "Latest experience", "firstVisit": "First visit", "lastVisit": "Latest visit", "ratedRides": "Rated rides", "historicalAverage": "Historical average", "currentGlobalRating": "Current global rating", "globalDifference": "Global / history gap",
+        "approximateVisits": "Approximate visits", "completedRides": "Completed rides", "distinctItems": "Distinct attractions", "parkAverage": "Visit average", "rideAverage": "Ride average",
+        "coverageDetail": "{{rated}} rated out of {{total}}", "coveragePercentDetail": "{{rated}} out of {{total}} · {{percent}}", "repeatedDetail": "{{count}} attractions repeated", "communitySeparation": "Current preference, independent from visit observations",
+        "differenceDetail": "Current global rating minus historical average", "distributionDetail": "{{count}} ratings · median {{median}} · min {{minimum}} · max {{maximum}} · standard deviation {{deviation}}", "distributionCoverageDetail": "{{rated}} out of {{total}} · {{percent}} · median {{median}} · min {{minimum}} · max {{maximum}} · standard deviation {{deviation}}"
+      },
+      "trend": {
+        "title": "Cautious trend", "description": "The trend compares two separate windows without claiming to explain the cause.", "stable": "Your appreciation remains stable", "rising": "Your recent appreciation is higher", "falling": "Your recent appreciation is lower",
+        "detail": "First window: {{first}} ({{firstCount}} ratings) · latest: {{last}} ({{lastCount}} ratings) · gap {{delta}}", "insufficient": "At least three ratings across two visits are required for a trend. The raw points remain visible."
+      },
+      "timeline": { "empty": "No private rating is available for this timeline yet.", "position": "Position {{position}} in the visit" },
+      "tables": { "empty": "No data for this table." },
+      "columns": {
+        "date": "Date", "rides": "Rides", "coverage": "Coverage", "average": "Average", "year": "Year", "visits": "Visits", "target": "Target", "rating": "Rating", "ratings": "Ratings",
+        "parkAverage": "Park average", "rideAverage": "Ride average", "outcome": "Outcome", "count": "Count", "category": "Category", "distinct": "Distinct", "reference": "Historical / current / unknown references", "actions": "Actions"
+      },
+      "outcomes": {
+        "title": "Recorded outcomes", "description": "Completed rides remain separate from attempts and missed attractions.", "completed": "Completed", "attempted": "Attempted", "missedClosed": "Missed because closed", "missedUnavailable": "Missed because unavailable", "skippedByChoice": "Skipped by choice"
+      },
+      "categories": { "title": "Coverage by category", "description": "Historical references take priority; the current category is only an explicit fallback.", "unknown": "Unknown category" }
+    },
     "quickCreate": {
       "title": "Add a visit",
       "intro": "Start with a simple visit. You can add everything you did in a later step.",

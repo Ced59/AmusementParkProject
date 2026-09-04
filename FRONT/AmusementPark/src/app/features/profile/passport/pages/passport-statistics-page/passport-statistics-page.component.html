@@ -1,0 +1,100 @@
+<article class="passport-statistics-page">
+  <header class="passport-statistics-page__hero">
+    <button appUiButton="ghost" type="button" class="passport-statistics-page__back" (click)="goBack()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'passport.statistics.actions.back' | translate }}</span>
+    </button>
+
+    <app-ui-kicker tone="sky" iconClass="pi pi-chart-bar">
+      {{ 'passport.statistics.kicker' | translate }}
+    </app-ui-kicker>
+
+    @if (facade.viewModel(); as viewModel) {
+      <div class="passport-statistics-page__heading">
+        <div>
+          <h1>{{ viewModel.title }}</h1>
+          <p>{{ viewModel.subtitleKey | translate }}</p>
+        </div>
+        <app-ui-chip tone="primary" iconClass="pi pi-lock">
+          {{ 'passport.statistics.private' | translate }}
+        </app-ui-chip>
+      </div>
+    } @else {
+      <h1>{{ 'passport.statistics.title' | translate }}</h1>
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="passport-statistics-page__state" appUiSurface="panel" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ 'passport.statistics.loading' | translate }}</p>
+    </section>
+  } @else if (facade.errorKey(); as errorKey) {
+    <section class="passport-statistics-page__state passport-statistics-page__state--error" appUiSurface="panel" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <p>{{ errorKey | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="facade.retry()">
+        {{ 'passport.statistics.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.viewModel(); as viewModel) {
+    @if (viewModel.isEmpty) {
+      <section class="passport-statistics-page__state" appUiSurface="panel">
+        <i class="pi pi-chart-bar" aria-hidden="true"></i>
+        <h2>{{ 'passport.statistics.empty.title' | translate }}</h2>
+        <p>{{ 'passport.statistics.empty.description' | translate }}</p>
+      </section>
+    } @else {
+      <section class="passport-statistics-page__cards" [attr.aria-label]="'passport.statistics.summaryLabel' | translate">
+        @for (card of viewModel.cards; track card.id) {
+          <app-passport-stat-card [card]="card"></app-passport-stat-card>
+        }
+      </section>
+
+      @if (viewModel.scope.kind === 'item') {
+        <section class="passport-statistics-page__trend" appUiSurface="panel" aria-labelledby="passport-trend-title">
+          <div>
+            <span class="passport-statistics-page__section-icon" aria-hidden="true"><i class="pi pi-chart-line"></i></span>
+            <div>
+              <h2 id="passport-trend-title">{{ 'passport.statistics.trend.title' | translate }}</h2>
+              <p>{{ 'passport.statistics.trend.description' | translate }}</p>
+            </div>
+          </div>
+          @if (viewModel.trend; as trend) {
+            <p class="passport-statistics-page__trend-result" [attr.data-trend]="trend.kind">
+              <strong>{{ trend.labelKey | translate }}</strong>
+              <span>{{ 'passport.statistics.trend.detail' | translate:{ first: trend.firstAverageLabel, last: trend.lastAverageLabel, delta: trend.deltaLabel, firstCount: trend.firstCount, lastCount: trend.lastCount } }}</span>
+            </p>
+          } @else {
+            <p class="passport-statistics-page__notice" role="note">
+              <i class="pi pi-info-circle" aria-hidden="true"></i>
+              {{ 'passport.statistics.trend.insufficient' | translate }}
+            </p>
+          }
+        </section>
+      }
+
+      @if (viewModel.timelineTitleKey && viewModel.timelineDescriptionKey) {
+        <section class="passport-statistics-page__panel" appUiSurface="panel">
+          <app-passport-rating-timeline
+            [titleKey]="viewModel.timelineTitleKey"
+            [descriptionKey]="viewModel.timelineDescriptionKey"
+            [points]="viewModel.timeline"
+            (visitSelected)="openVisit($event)">
+          </app-passport-rating-timeline>
+        </section>
+      }
+
+      @for (table of viewModel.tables; track table.id) {
+        <section class="passport-statistics-page__panel" appUiSurface="panel">
+          <app-passport-table [table]="table" (navigationSelected)="navigate($event)"></app-passport-table>
+        </section>
+      }
+
+      <p class="passport-statistics-page__privacy" role="note">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        {{ 'passport.statistics.privacyNotice' | translate }}
+      </p>
+    }
+  }
+</article>

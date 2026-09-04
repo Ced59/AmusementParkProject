@@ -37,6 +37,29 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-visit__form');
     expect(styles).toContain('.passport-visit__actions');
     expect(styles).toContain('.passport-visit__details');
+    expect(styles).toContain('.passport-editor__statistics-actions');
+    expect(styles).toContain('.passport-occurrence__statistics');
+  });
+
+  it('opens park, year and attraction statistics inside the localized private profile', () => {
+    const navigate = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      currentLanguage: () => string;
+      router: Pick<Router, 'navigate'>;
+      openParkStatistics(parkId: string): void;
+      openYearStatistics(year: number): void;
+      openItemStatistics(parkItemId: string): void;
+    };
+    component.currentLanguage = () => 'fr';
+    component.router = { navigate } as Pick<Router, 'navigate'>;
+
+    component.openParkStatistics('park-1');
+    component.openYearStatistics(2025);
+    component.openItemStatistics('item-1');
+
+    expect(navigate).toHaveBeenNthCalledWith(1, ['/', 'fr', 'profile', 'passport', 'parks', 'park-1']);
+    expect(navigate).toHaveBeenNthCalledWith(2, ['/', 'fr', 'profile', 'passport', 'years', 2025]);
+    expect(navigate).toHaveBeenNthCalledWith(3, ['/', 'fr', 'profile', 'passport', 'items', 'item-1']);
   });
 
   it('forwards visit date precision and numeric fields without owning validation rules', () => {
