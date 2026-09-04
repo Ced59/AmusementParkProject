@@ -13,6 +13,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAuditReconciler
 {
     public const int MaximumReconciliationBatchSize = 50;
+    internal static readonly TimeSpan AuditMaintenanceLeaseDuration =
+        TimeSpan.FromMinutes(5);
 
     private readonly IMongoCollection<PassportAuditJournalDocument> auditCollection;
     private readonly IMongoCollection<UserVisitDocument> visitCollection;
@@ -64,49 +66,70 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 .GroupBy(static auditEvent => auditEvent.Id, StringComparer.Ordinal)
                 .Select(static group => group.First())
                 .ToArray();
-            IReadOnlyDictionary<string, PassportAuditEvent> durableEvents =
-                await this.LoadDurableEventsAsync(
-                distinctEvents.Select(static auditEvent => auditEvent.Id).ToArray(),
-                cancellationToken);
-            PassportAuditEvent[] publishableEvents = distinctEvents
-                .Where(auditEvent => durableEvents.ContainsKey(auditEvent.Id))
-                .Select(auditEvent => durableEvents[auditEvent.Id])
-                .ToArray();
-            if (publishableEvents.Length == 0)
+            foreach (PassportAuditEvent requestedEvent in distinctEvents)
             {
-                return true;
-            }
+                string leaseToken = Guid.NewGuid().ToString("N");
+                DateTime acquiredAtUtc = DateTime.UtcNow;
+                bool acquired = await this.TryAcquireAuditMaintenanceLeaseAsync(
+                    requestedEvent.VisitId,
+                    requestedEvent.UserId,
+                    leaseToken,
+                    acquiredAtUtc,
+                    cancellationToken);
+                if (!acquired)
+                {
+                    return false;
+                }
 
-            List<string> publishedEventIds = new List<string>(publishableEvents.Length);
-            foreach (PassportAuditEvent auditEvent in publishableEvents)
-            {
-                PassportAuditEventDocument eventDocument = auditEvent.ToDocument();
-                PassportAuditJournalDocument journalDocument =
-                    new PassportAuditJournalDocument
-                    {
-                        Id = auditEvent.Id,
-                        Event = eventDocument,
-                        CreatedAt = auditEvent.OccurredAtUtc,
-                        UpdatedAt = auditEvent.OccurredAtUtc,
-                    };
                 try
                 {
-                    await this.auditCollection.InsertOneAsync(
-                        journalDocument,
-                        cancellationToken: cancellationToken);
-                }
-                catch (MongoWriteException exception)
-                    when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-                {
-                    // Une reprise après insertion mais avant acquittement est attendue.
-                }
+                    IReadOnlyDictionary<string, PassportAuditEvent> durableEvents =
+                        await this.LoadDurableEventsAsync(
+                            new[] { requestedEvent.Id },
+                            cancellationToken);
+                    if (!durableEvents.TryGetValue(
+                        requestedEvent.Id,
+                        out PassportAuditEvent? auditEvent))
+                    {
+                        continue;
+                    }
 
-                publishedEventIds.Add(auditEvent.Id);
+                    PassportAuditEventDocument eventDocument = auditEvent.ToDocument();
+                    PassportAuditJournalDocument journalDocument =
+                        new PassportAuditJournalDocument
+                        {
+                            Id = auditEvent.Id,
+                            Event = eventDocument,
+                            CreatedAt = auditEvent.OccurredAtUtc,
+                            UpdatedAt = auditEvent.OccurredAtUtc,
+                        };
+                    try
+                    {
+                        await this.auditCollection.InsertOneAsync(
+                            journalDocument,
+                            cancellationToken: cancellationToken);
+                    }
+                    catch (MongoWriteException exception)
+                        when (exception.WriteError?.Category
+                            == ServerErrorCategory.DuplicateKey)
+                    {
+                        // Une reprise après insertion mais avant acquittement est attendue.
+                    }
+
+                    await this.AcknowledgeSourceMarkersAsync(
+                        new[] { auditEvent.Id },
+                        cancellationToken);
+                }
+                finally
+                {
+                    await this.ReleaseAuditMaintenanceLeaseAsync(
+                        requestedEvent.VisitId,
+                        requestedEvent.UserId,
+                        leaseToken,
+                        CancellationToken.None);
+                }
             }
 
-            await this.AcknowledgeSourceMarkersAsync(
-                publishedEventIds,
-                cancellationToken);
             return true;
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -120,6 +143,43 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 "Unable to publish a passport audit batch; unacknowledged source markers are retained.");
             return false;
         }
+    }
+
+    private async Task<bool> TryAcquireAuditMaintenanceLeaseAsync(
+        string visitId,
+        string userId,
+        string leaseToken,
+        DateTime acquiredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(visitId, userId)
+            & UserVisitMongoDefinitions.BuildAvailableAuditMaintenanceLeaseFilter(
+                acquiredAtUtc);
+        UpdateResult result = await this.visitCollection.UpdateOneAsync(
+            filter,
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseUpdate(
+                leaseToken,
+                acquiredAtUtc.Add(AuditMaintenanceLeaseDuration)),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    private async Task ReleaseAuditMaintenanceLeaseAsync(
+        string visitId,
+        string userId,
+        string leaseToken,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(visitId, userId)
+            & Builders<UserVisitDocument>.Filter.Eq(
+                UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath,
+                leaseToken);
+        await this.visitCollection.UpdateOneAsync(
+            filter,
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseRelease(),
+            cancellationToken: cancellationToken);
     }
 
     public async Task<int> ReconcileBatchAsync(

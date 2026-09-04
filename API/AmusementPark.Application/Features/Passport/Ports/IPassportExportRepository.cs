@@ -54,6 +54,7 @@ public interface IPassportExportRepository
 
     Task InvalidateOwnedAsync(
         string userId,
+        DateTime createdAtOrBeforeUtc,
         DateTime invalidatedAtUtc,
         CancellationToken cancellationToken);
 }

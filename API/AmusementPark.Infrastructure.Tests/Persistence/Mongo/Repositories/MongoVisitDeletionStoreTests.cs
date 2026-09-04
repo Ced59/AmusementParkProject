@@ -92,6 +92,38 @@ public sealed class MongoVisitDeletionStoreTests
     }
 
     [Fact]
+    public void AuditMaintenanceLease_ShouldBeDistributedAndRecoverable()
+    {
+        BsonDocument filter = Render(
+            UserVisitMongoDefinitions.BuildAvailableAuditMaintenanceLeaseFilter(
+                DeletedAtUtc));
+        BsonDocument update = Render(
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseUpdate(
+                "lease-1",
+                DeletedAtUtc.AddMinutes(5)));
+        BsonDocument release = Render(
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseRelease());
+
+        string renderedFilter = filter.ToJson();
+        Assert.Contains(
+            UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath,
+            renderedFilter);
+        Assert.Contains(
+            UserVisitMongoDefinitions.AuditMaintenanceLeaseExpiresAtUtcPath,
+            renderedFilter);
+        Assert.Equal(
+            "lease-1",
+            update["$set"][UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath]
+                .AsString);
+        Assert.Equal(
+            DeletedAtUtc.AddMinutes(5),
+            update["$set"][UserVisitMongoDefinitions.AuditMaintenanceLeaseExpiresAtUtcPath]
+                .ToUniversalTime());
+        Assert.True(release["$unset"].AsBsonDocument.Contains(
+            UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath));
+    }
+
+    [Fact]
     public void BuildTombstoneUpdate_ShouldPersistReplayAndPurgeEvidenceAndReleaseTheLease()
     {
         Visit visit = Visit.Create(

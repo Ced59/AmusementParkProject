@@ -101,6 +101,7 @@ public sealed class PassportAuditStoreTests
         SetupAcknowledgement(visitCollection);
         SetupAcknowledgement(occurrenceCollection);
         SetupAcknowledgement(operationCollection);
+        SetupMaintenanceLease(visitCollection);
         TestLogger logger = new TestLogger();
         PassportAuditStore store = CreateStore(
             auditCollection.Object,
@@ -159,6 +160,7 @@ public sealed class PassportAuditStoreTests
                     BsonDocument>>(),
                 CancellationToken.None))
             .ReturnsAsync(operationCursor.Object);
+        SetupMaintenanceLease(visitCollection);
         TestLogger logger = new TestLogger();
         PassportAuditStore store = CreateStore(
             auditCollection.Object,
@@ -177,6 +179,41 @@ public sealed class PassportAuditStoreTests
         visitCursor.VerifyAll();
         occurrenceCursor.VerifyAll();
         operationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryPublishAsync_WhenPurgeOwnsTheLease_ShouldNotLoadOrAppendTheEvent()
+    {
+        PassportAuditEvent auditEvent = CreateVisitAuditEvent();
+        Mock<IMongoCollection<PassportAuditJournalDocument>> auditCollection =
+            new Mock<IMongoCollection<PassportAuditJournalDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> occurrenceCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        visitCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        PassportAuditStore store = CreateStore(
+            auditCollection.Object,
+            visitCollection.Object,
+            occurrenceCollection.Object,
+            operationCollection.Object,
+            NullLogger<PassportAuditStore>.Instance);
+
+        bool published = await store.TryPublishAsync(auditEvent, CancellationToken.None);
+
+        Assert.False(published);
+        visitCollection.VerifyAll();
+        auditCollection.VerifyNoOtherCalls();
+        occurrenceCollection.VerifyNoOtherCalls();
+        operationCollection.VerifyNoOtherCalls();
     }
 
     private static PassportAuditStore CreateStore(
@@ -215,6 +252,18 @@ public sealed class PassportAuditStoreTests
                 It.IsAny<UpdateDefinition<TDocument>>(),
                 It.IsAny<UpdateOptions>(),
                 CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+    }
+
+    private static void SetupMaintenanceLease(
+        Mock<IMongoCollection<UserVisitDocument>> collection)
+    {
+        collection.SetupSequence(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null))
             .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
     }
 

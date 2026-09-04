@@ -11,6 +11,12 @@ internal static class UserVisitMongoDefinitions
     public const string PurgeScheduledForUtcPath = "purgeScheduledForUtc";
     public const string ExportInvalidationEnsuredAtUtcPath =
         "exportInvalidationEnsuredAtUtc";
+    public const string ExportInvalidationFenceAtUtcPath =
+        "exportInvalidationFenceAtUtc";
+    public const string ExportInvalidationClaimTokenPath =
+        "exportInvalidationClaimToken";
+    public const string ExportInvalidationClaimExpiresAtUtcPath =
+        "exportInvalidationClaimExpiresAtUtc";
     public const string PurgeJobEnsuredAtUtcPath = "purgeJobEnsuredAtUtc";
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
@@ -18,6 +24,38 @@ internal static class UserVisitMongoDefinitions
     public const string ContentMutationFenceStableTokenPath =
         "contentMutationFenceStableToken";
     public const string ContentMutationFenceReadyPath = "contentMutationFenceReady";
+    public const string AuditMaintenanceLeaseTokenPath =
+        "auditMaintenanceLeaseToken";
+    public const string AuditMaintenanceLeaseExpiresAtUtcPath =
+        "auditMaintenanceLeaseExpiresAtUtc";
+
+    public static FilterDefinition<UserVisitDocument> BuildAvailableAuditMaintenanceLeaseFilter(
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Or(
+            filters.Exists(AuditMaintenanceLeaseTokenPath, false),
+            filters.Eq(AuditMaintenanceLeaseTokenPath, BsonNull.Value),
+            filters.Exists(AuditMaintenanceLeaseExpiresAtUtcPath, false),
+            filters.Lte(AuditMaintenanceLeaseExpiresAtUtcPath, nowUtc));
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildAuditMaintenanceLeaseUpdate(
+        string token,
+        DateTime expiresAtUtc)
+    {
+        return Builders<UserVisitDocument>.Update
+            .Set(AuditMaintenanceLeaseTokenPath, token)
+            .Set(AuditMaintenanceLeaseExpiresAtUtcPath, expiresAtUtc);
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildAuditMaintenanceLeaseRelease()
+    {
+        return Builders<UserVisitDocument>.Update
+            .Unset(AuditMaintenanceLeaseTokenPath)
+            .Unset(AuditMaintenanceLeaseExpiresAtUtcPath);
+    }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnerFilter(string userId)
     {

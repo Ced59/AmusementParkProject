@@ -10,7 +10,7 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class PassportExportInvalidationTests
 {
     [Fact]
-    public void BuildInvalidationFilter_ShouldFenceEveryExistingUnexpiredExport()
+    public void BuildInvalidationFilter_ShouldFenceOnlyExportsCreatedBeforeTheClaim()
     {
         DateTime sourceChangedAtUtc =
             new DateTime(2026, 9, 5, 12, 0, 0, DateTimeKind.Utc);
@@ -18,10 +18,11 @@ public sealed class PassportExportInvalidationTests
         BsonDocument filter = Render(
             PassportExportRepository.BuildInvalidationFilter(
                 "owner-1",
+                sourceChangedAtUtc,
                 sourceChangedAtUtc));
 
         Assert.Equal("owner-1", filter["userId"].AsString);
-        Assert.False(filter.Contains("createdAt"));
+        Assert.Equal(sourceChangedAtUtc, filter["createdAt"]["$lte"].ToUniversalTime());
         Assert.Equal(sourceChangedAtUtc, filter["expiresAtUtc"]["$gt"].ToUniversalTime());
     }
 

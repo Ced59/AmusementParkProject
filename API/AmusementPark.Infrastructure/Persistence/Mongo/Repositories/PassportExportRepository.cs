@@ -319,9 +319,17 @@ public sealed class PassportExportRepository : IPassportExportRepository
 
     public async Task InvalidateOwnedAsync(
         string userId,
+        DateTime createdAtOrBeforeUtc,
         DateTime invalidatedAtUtc,
         CancellationToken cancellationToken)
     {
+        if (createdAtOrBeforeUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The export creation fence must be UTC.",
+                nameof(createdAtOrBeforeUtc));
+        }
+
         if (invalidatedAtUtc.Kind != DateTimeKind.Utc)
         {
             throw new ArgumentException("The invalidation timestamp must be UTC.", nameof(invalidatedAtUtc));
@@ -331,7 +339,10 @@ public sealed class PassportExportRepository : IPassportExportRepository
             ? throw new ArgumentException("A user identifier is required.", nameof(userId))
             : userId.Trim();
         FilterDefinition<PassportExportDocument> accessibleFilter =
-            BuildInvalidationFilter(normalizedUserId, invalidatedAtUtc);
+            BuildInvalidationFilter(
+                normalizedUserId,
+                createdAtOrBeforeUtc,
+                invalidatedAtUtc);
         List<string> exportIds = await this.exports.Find(accessibleFilter)
             .Project(static document => document.Id)
             .ToListAsync(cancellationToken);
@@ -365,11 +376,13 @@ public sealed class PassportExportRepository : IPassportExportRepository
 
     internal static FilterDefinition<PassportExportDocument> BuildInvalidationFilter(
         string userId,
+        DateTime createdAtOrBeforeUtc,
         DateTime invalidatedAtUtc)
     {
         FilterDefinitionBuilder<PassportExportDocument> filters =
             Builders<PassportExportDocument>.Filter;
         return filters.Eq(static document => document.UserId, userId)
+            & filters.Lte(static document => document.CreatedAt, createdAtOrBeforeUtc)
             & filters.Gt(static document => document.ExpiresAtUtc, invalidatedAtUtc);
     }
 

@@ -210,17 +210,32 @@ public sealed class DeleteVisitCommandHandler
     {
         if (!isExportInvalidationEnsured)
         {
-            DateTime invalidatedAtUtc = this.clock.UtcNow;
-            await this.exportRepository.InvalidateOwnedAsync(
-                userId,
-                invalidatedAtUtc,
-                cancellationToken);
-            _ = await this.deletionStore.MarkExportInvalidationEnsuredAsync(
-                visitId,
-                userId,
-                deletionVersion,
-                this.clock.UtcNow,
-                cancellationToken);
+            DateTime claimedAtUtc = this.clock.UtcNow;
+            VisitExportInvalidationClaim? claim =
+                await this.deletionStore.TryClaimExportInvalidationAsync(
+                    visitId,
+                    userId,
+                    deletionVersion,
+                    claimedAtUtc,
+                    claimedAtUtc.Add(
+                        VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                    cancellationToken);
+            if (claim is not null)
+            {
+                DateTime invalidatedAtUtc = this.clock.UtcNow;
+                await this.exportRepository.InvalidateOwnedAsync(
+                    userId,
+                    claim.FenceAtUtc,
+                    invalidatedAtUtc,
+                    cancellationToken);
+                _ = await this.deletionStore.CompleteExportInvalidationAsync(
+                    visitId,
+                    userId,
+                    deletionVersion,
+                    claim.Token,
+                    this.clock.UtcNow,
+                    cancellationToken);
+            }
         }
 
         await this.purgeScheduler.ScheduleAsync(

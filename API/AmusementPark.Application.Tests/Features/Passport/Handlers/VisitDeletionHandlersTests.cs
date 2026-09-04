@@ -75,16 +75,26 @@ public sealed class VisitDeletionHandlersTests
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
-        deletions.Setup(store => store.MarkExportInvalidationEnsuredAsync(
+        deletions.Setup(store => store.TryClaimExportInvalidationAsync(
                 visit.Id,
                 visit.UserId,
                 visit.Version + 1,
+                NowUtc,
+                NowUtc.Add(VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                CancellationToken.None))
+            .ReturnsAsync(new VisitExportInvalidationClaim("claim-1", NowUtc));
+        deletions.Setup(store => store.CompleteExportInvalidationAsync(
+                visit.Id,
+                visit.UserId,
+                visit.Version + 1,
+                "claim-1",
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
         Mock<IPassportExportRepository> exports = new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 visit.UserId,
+                NowUtc,
                 NowUtc,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -133,6 +143,7 @@ public sealed class VisitDeletionHandlersTests
         Assert.Equal(PassportAuditEventType.VisitDeleted, tombstone.AuditEvent.EventType);
         exports.Verify(repository => repository.InvalidateOwnedAsync(
             visit.UserId,
+            NowUtc,
             NowUtc,
             CancellationToken.None), Times.Once);
         lease.Verify(value => value.MarkMutationCompleted(), Times.Once);
@@ -246,6 +257,75 @@ public sealed class VisitDeletionHandlersTests
     }
 
     [Fact]
+    public async Task Delete_WhenAnotherRequestOwnsTheInvalidationClaim_ShouldNotInvalidateAgain()
+    {
+        Visit visit = CreateVisit();
+        VisitDeletionReceipt storedReceipt = new VisitDeletionReceipt(
+            visit.Id.Value,
+            NowUtc,
+            NowUtc.Add(VisitDeletionPolicy.Retention),
+            2,
+            false);
+        Mock<IVisitDeletionStore> deletions =
+            new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        deletions.Setup(store => store.GetReceiptAsync(
+                visit.Id,
+                visit.UserId,
+                "delete-1",
+                CancellationToken.None))
+            .ReturnsAsync(storedReceipt);
+        deletions.Setup(store => store.TryClaimExportInvalidationAsync(
+                visit.Id,
+                visit.UserId,
+                storedReceipt.DeletionVersion,
+                NowUtc,
+                NowUtc.Add(VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                CancellationToken.None))
+            .ReturnsAsync((VisitExportInvalidationClaim?)null);
+        deletions.Setup(store => store.MarkPurgeJobEnsuredAsync(
+                visit.Id,
+                visit.UserId,
+                storedReceipt.DeletionVersion,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IPassportExportRepository> exports =
+            new Mock<IPassportExportRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        DeleteVisitCommandHandler handler = new DeleteVisitCommandHandler(
+            new Mock<IUserVisitRepository>(MockBehavior.Strict).Object,
+            deletions.Object,
+            exports.Object,
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            new VisitPurgeScheduler(jobs.Object),
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
+            clock.Object);
+
+        ApplicationResult<VisitDeletionReceipt> result = await handler.HandleAsync(
+            new DeleteVisitCommand(
+                visit.UserId,
+                visit.Id.Value,
+                visit.Version,
+                2,
+                1,
+                "delete-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value?.WasReplayed);
+        exports.VerifyNoOtherCalls();
+        deletions.VerifyAll();
+        jobs.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task Delete_WhenTheTombstoneLosesTheRace_DoesNotInvalidateOrSchedule()
     {
         Visit visit = CreateVisit();
@@ -335,10 +415,19 @@ public sealed class VisitDeletionHandlersTests
                 It.IsAny<VisitDeletionTombstoneRequest>(),
                 CancellationToken.None))
             .ReturnsAsync(false);
-        deletions.Setup(store => store.MarkExportInvalidationEnsuredAsync(
+        deletions.Setup(store => store.TryClaimExportInvalidationAsync(
                 visit.Id,
                 visit.UserId,
                 concurrentReceipt.DeletionVersion,
+                NowUtc,
+                NowUtc.Add(VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                CancellationToken.None))
+            .ReturnsAsync(new VisitExportInvalidationClaim("claim-1", NowUtc));
+        deletions.Setup(store => store.CompleteExportInvalidationAsync(
+                visit.Id,
+                visit.UserId,
+                concurrentReceipt.DeletionVersion,
+                "claim-1",
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
@@ -353,7 +442,8 @@ public sealed class VisitDeletionHandlersTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 visit.UserId,
-                concurrentReceipt.DeletedAtUtc,
+                NowUtc,
+                NowUtc,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =

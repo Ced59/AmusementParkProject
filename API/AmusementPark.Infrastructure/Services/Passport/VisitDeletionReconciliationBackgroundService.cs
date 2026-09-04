@@ -75,17 +75,31 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
             {
                 if (!candidate.IsExportInvalidationEnsured)
                 {
-                    DateTime invalidatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-                    await exportRepository.InvalidateOwnedAsync(
-                        candidate.UserId,
-                        invalidatedAtUtc,
-                        cancellationToken);
-                    _ = await deletionStore.MarkExportInvalidationEnsuredAsync(
-                        candidate.VisitId,
-                        candidate.UserId,
-                        candidate.DeletionVersion,
-                        this.timeProvider.GetUtcNow().UtcDateTime,
-                        cancellationToken);
+                    DateTime claimedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                    VisitExportInvalidationClaim? claim =
+                        await deletionStore.TryClaimExportInvalidationAsync(
+                            candidate.VisitId,
+                            candidate.UserId,
+                            candidate.DeletionVersion,
+                            claimedAtUtc,
+                            claimedAtUtc.Add(
+                                VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                            cancellationToken);
+                    if (claim is not null)
+                    {
+                        await exportRepository.InvalidateOwnedAsync(
+                            candidate.UserId,
+                            claim.FenceAtUtc,
+                            this.timeProvider.GetUtcNow().UtcDateTime,
+                            cancellationToken);
+                        _ = await deletionStore.CompleteExportInvalidationAsync(
+                            candidate.VisitId,
+                            candidate.UserId,
+                            candidate.DeletionVersion,
+                            claim.Token,
+                            this.timeProvider.GetUtcNow().UtcDateTime,
+                            cancellationToken);
+                    }
                 }
 
                 if (!candidate.IsPurgeJobEnsured)

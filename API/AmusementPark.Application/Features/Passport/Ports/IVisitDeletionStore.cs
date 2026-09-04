@@ -25,10 +25,19 @@ public interface IVisitDeletionStore
             int maximumCount,
             CancellationToken cancellationToken);
 
-    Task<bool> MarkExportInvalidationEnsuredAsync(
+    Task<VisitExportInvalidationClaim?> TryClaimExportInvalidationAsync(
         VisitId visitId,
         string userId,
         long deletionVersion,
+        DateTime claimedAtUtc,
+        DateTime claimExpiresAtUtc,
+        CancellationToken cancellationToken);
+
+    Task<bool> CompleteExportInvalidationAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        string claimToken,
         DateTime ensuredAtUtc,
         CancellationToken cancellationToken);
 

@@ -20,6 +20,12 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         UserVisitMongoDefinitions.PurgeJobEnsuredAtUtcPath;
     internal const string ExportInvalidationEnsuredAtUtcPath =
         UserVisitMongoDefinitions.ExportInvalidationEnsuredAtUtcPath;
+    internal const string ExportInvalidationFenceAtUtcPath =
+        UserVisitMongoDefinitions.ExportInvalidationFenceAtUtcPath;
+    internal const string ExportInvalidationClaimTokenPath =
+        UserVisitMongoDefinitions.ExportInvalidationClaimTokenPath;
+    internal const string ExportInvalidationClaimExpiresAtUtcPath =
+        UserVisitMongoDefinitions.ExportInvalidationClaimExpiresAtUtcPath;
     private readonly IMongoCollection<UserVisitDocument> visits;
     private readonly IMongoCollection<BsonDocument> rawVisits;
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
@@ -168,20 +174,106 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             .ToArray();
     }
 
-    public Task<bool> MarkExportInvalidationEnsuredAsync(
+    public async Task<VisitExportInvalidationClaim?> TryClaimExportInvalidationAsync(
         VisitId visitId,
         string userId,
         long deletionVersion,
+        DateTime claimedAtUtc,
+        DateTime claimExpiresAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ValidateUtc(claimedAtUtc, nameof(claimedAtUtc));
+        ValidateUtc(claimExpiresAtUtc, nameof(claimExpiresAtUtc));
+        if (claimExpiresAtUtc <= claimedAtUtc)
+        {
+            throw new ArgumentOutOfRangeException(nameof(claimExpiresAtUtc));
+        }
+
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        string claimToken = Guid.NewGuid().ToString("N");
+        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
+        FilterDefinition<BsonDocument> baseFilter = BuildDeletionVersionFilter(
+                filters,
+                visitId,
+                normalizedUserId,
+                deletionVersion)
+            & BuildMissingTimestampFilter(
+                filters,
+                ExportInvalidationEnsuredAtUtcPath);
+        UpdateResult initialClaim = await this.rawVisits.UpdateOneAsync(
+            baseFilter
+                & BuildMissingTimestampFilter(
+                    filters,
+                    ExportInvalidationFenceAtUtcPath),
+            Builders<BsonDocument>.Update
+                .Set(ExportInvalidationFenceAtUtcPath, claimedAtUtc)
+                .Set(ExportInvalidationClaimTokenPath, claimToken)
+                .Set(ExportInvalidationClaimExpiresAtUtcPath, claimExpiresAtUtc),
+            cancellationToken: cancellationToken);
+        if (initialClaim.MatchedCount == 1)
+        {
+            return new VisitExportInvalidationClaim(claimToken, claimedAtUtc);
+        }
+
+        BsonDocument? recoveredClaim = await this.rawVisits.FindOneAndUpdateAsync(
+            baseFilter
+                & filters.Type(
+                    ExportInvalidationFenceAtUtcPath,
+                    BsonType.DateTime)
+                & filters.Or(
+                    filters.Exists(ExportInvalidationClaimTokenPath, false),
+                    filters.Eq(ExportInvalidationClaimTokenPath, BsonNull.Value),
+                    filters.Exists(ExportInvalidationClaimExpiresAtUtcPath, false),
+                    filters.Lte(
+                        ExportInvalidationClaimExpiresAtUtcPath,
+                        claimedAtUtc)),
+            Builders<BsonDocument>.Update
+                .Set(ExportInvalidationClaimTokenPath, claimToken)
+                .Set(ExportInvalidationClaimExpiresAtUtcPath, claimExpiresAtUtc),
+            new FindOneAndUpdateOptions<BsonDocument, BsonDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+                Projection = Builders<BsonDocument>.Projection
+                    .Include(ExportInvalidationFenceAtUtcPath),
+            },
+            cancellationToken);
+        return recoveredClaim is null
+            ? null
+            : new VisitExportInvalidationClaim(
+                claimToken,
+                recoveredClaim[ExportInvalidationFenceAtUtcPath].ToUniversalTime());
+    }
+
+    public async Task<bool> CompleteExportInvalidationAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        string claimToken,
         DateTime ensuredAtUtc,
         CancellationToken cancellationToken)
     {
-        return this.MarkDeletionSideEffectEnsuredAsync(
-            visitId,
-            userId,
-            deletionVersion,
-            ExportInvalidationEnsuredAtUtcPath,
-            ensuredAtUtc,
-            cancellationToken);
+        ValidateUtc(ensuredAtUtc, nameof(ensuredAtUtc));
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        string normalizedClaimToken = IdentifierRules.NormalizeRequired(
+            claimToken,
+            nameof(claimToken));
+        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
+        UpdateResult result = await this.rawVisits.UpdateOneAsync(
+            BuildDeletionVersionFilter(
+                filters,
+                visitId,
+                normalizedUserId,
+                deletionVersion)
+                & filters.Eq(
+                    ExportInvalidationClaimTokenPath,
+                    normalizedClaimToken),
+            Builders<BsonDocument>.Update
+                .Set(ExportInvalidationEnsuredAtUtcPath, ensuredAtUtc)
+                .Unset(ExportInvalidationClaimTokenPath)
+                .Unset(ExportInvalidationClaimExpiresAtUtcPath),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
     }
 
     public Task<bool> MarkPurgeJobEnsuredAsync(
@@ -237,55 +329,128 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             return new VisitDeletionPurgeResult(false, 0);
         }
 
-        if (hasTombstone
-            && await this.HasPendingAuditMarkersAsync(
+        string? auditMaintenanceLeaseToken = null;
+        if (hasTombstone)
+        {
+            auditMaintenanceLeaseToken = Guid.NewGuid().ToString("N");
+            bool leaseAcquired = await this.TryAcquireAuditMaintenanceLeaseAsync(
+                visitId,
+                normalizedUserId,
+                auditMaintenanceLeaseToken,
+                nowUtc,
+                cancellationToken);
+            if (!leaseAcquired)
+            {
+                return new VisitDeletionPurgeResult(false, 0);
+            }
+        }
+
+        try
+        {
+            if (hasTombstone
+                && await this.HasPendingAuditMarkersAsync(
+                    visitId.Value,
+                    normalizedUserId,
+                    cancellationToken))
+            {
+                return new VisitDeletionPurgeResult(false, 0);
+            }
+
+            int deletedCount = 0;
+            deletedCount += await DeleteBatchAsync(
+                this.operations,
+                BuildOperationPurgeFilter(visitId.Value, normalizedUserId),
+                maximumDocumentsPerCollection,
+                cancellationToken);
+            deletedCount += await DeleteBatchAsync(
+                this.occurrences,
+                BuildOccurrencePurgeFilter(visitId.Value, normalizedUserId),
+                maximumDocumentsPerCollection,
+                cancellationToken);
+            deletedCount += await DeleteBatchAsync(
+                this.auditEvents,
+                BuildAuditPurgeFilter(visitId.Value, normalizedUserId),
+                maximumDocumentsPerCollection,
+                cancellationToken);
+
+            bool hasRemainingChildren = await HasRemainingChildrenAsync(
                 visitId.Value,
                 normalizedUserId,
-                cancellationToken))
-        {
-            return new VisitDeletionPurgeResult(false, 0);
+                cancellationToken);
+            if (hasRemainingChildren)
+            {
+                return new VisitDeletionPurgeResult(false, deletedCount);
+            }
+
+            if (!hasTombstone)
+            {
+                return new VisitDeletionPurgeResult(true, deletedCount);
+            }
+
+            DeleteResult deletion = await this.visits.DeleteOneAsync(
+                BuildTombstoneFilter(visitId, normalizedUserId)
+                    & Builders<UserVisitDocument>.Filter.Lte(
+                        PurgeScheduledForUtcPath,
+                        nowUtc)
+                    & Builders<UserVisitDocument>.Filter.Eq(
+                        UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath,
+                        auditMaintenanceLeaseToken),
+                cancellationToken);
+            return new VisitDeletionPurgeResult(
+                deletion.DeletedCount == 1,
+                deletedCount + checked((int)deletion.DeletedCount));
         }
-
-        int deletedCount = 0;
-        deletedCount += await DeleteBatchAsync(
-            this.operations,
-            BuildOperationPurgeFilter(visitId.Value, normalizedUserId),
-            maximumDocumentsPerCollection,
-            cancellationToken);
-        deletedCount += await DeleteBatchAsync(
-            this.occurrences,
-            BuildOccurrencePurgeFilter(visitId.Value, normalizedUserId),
-            maximumDocumentsPerCollection,
-            cancellationToken);
-        deletedCount += await DeleteBatchAsync(
-            this.auditEvents,
-            BuildAuditPurgeFilter(visitId.Value, normalizedUserId),
-            maximumDocumentsPerCollection,
-            cancellationToken);
-
-        bool hasRemainingChildren = await HasRemainingChildrenAsync(
-            visitId.Value,
-            normalizedUserId,
-            cancellationToken);
-        if (hasRemainingChildren)
+        finally
         {
-            return new VisitDeletionPurgeResult(false, deletedCount);
+            if (auditMaintenanceLeaseToken is not null)
+            {
+                await this.ReleaseAuditMaintenanceLeaseAsync(
+                    visitId,
+                    normalizedUserId,
+                    auditMaintenanceLeaseToken,
+                    CancellationToken.None);
+            }
         }
+    }
 
-        if (!hasTombstone)
-        {
-            return new VisitDeletionPurgeResult(true, deletedCount);
-        }
+    private async Task<bool> TryAcquireAuditMaintenanceLeaseAsync(
+        VisitId visitId,
+        string userId,
+        string leaseToken,
+        DateTime acquiredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            BuildTombstoneFilter(visitId, userId)
+            & UserVisitMongoDefinitions.BuildAvailableAuditMaintenanceLeaseFilter(
+                acquiredAtUtc);
+        UpdateResult result = await this.visits.UpdateOneAsync(
+            filter,
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseUpdate(
+                leaseToken,
+                acquiredAtUtc.Add(
+                    PassportAuditStore.AuditMaintenanceLeaseDuration)),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
 
-        DeleteResult deletion = await this.visits.DeleteOneAsync(
-            BuildTombstoneFilter(visitId, normalizedUserId)
-                & Builders<UserVisitDocument>.Filter.Lte(
-                    PurgeScheduledForUtcPath,
-                    nowUtc),
-            cancellationToken);
-        return new VisitDeletionPurgeResult(
-            deletion.DeletedCount == 1,
-            deletedCount + checked((int)deletion.DeletedCount));
+    private async Task ReleaseAuditMaintenanceLeaseAsync(
+        VisitId visitId,
+        string userId,
+        string leaseToken,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(
+                visitId.Value,
+                userId)
+            & Builders<UserVisitDocument>.Filter.Eq(
+                UserVisitMongoDefinitions.AuditMaintenanceLeaseTokenPath,
+                leaseToken);
+        await this.visits.UpdateOneAsync(
+            filter,
+            UserVisitMongoDefinitions.BuildAuditMaintenanceLeaseRelease(),
+            cancellationToken: cancellationToken);
     }
 
     private async Task<bool> HasRemainingChildrenAsync(
@@ -494,14 +659,32 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
         FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
         UpdateResult result = await this.rawVisits.UpdateOneAsync(
-            filters.Eq("_id", visitId.Value)
-                & filters.Eq("userId", normalizedUserId)
-                & filters.Eq("version", deletionVersion)
-                & filters.Exists(DeletedAtUtcPath, true)
-                & filters.Exists(PurgeScheduledForUtcPath, true),
+            BuildDeletionVersionFilter(
+                filters,
+                visitId,
+                normalizedUserId,
+                deletionVersion),
             Builders<BsonDocument>.Update.Set(timestampPath, ensuredAtUtc),
             cancellationToken: cancellationToken);
         return result.MatchedCount == 1;
+    }
+
+    private static FilterDefinition<BsonDocument> BuildDeletionVersionFilter(
+        FilterDefinitionBuilder<BsonDocument> filters,
+        VisitId visitId,
+        string userId,
+        long deletionVersion)
+    {
+        if (deletionVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(deletionVersion));
+        }
+
+        return filters.Eq("_id", visitId.Value)
+            & filters.Eq("userId", userId)
+            & filters.Eq("version", deletionVersion)
+            & filters.Exists(DeletedAtUtcPath, true)
+            & filters.Exists(PurgeScheduledForUtcPath, true);
     }
 
     private static FilterDefinition<BsonDocument> BuildMissingTimestampFilter(

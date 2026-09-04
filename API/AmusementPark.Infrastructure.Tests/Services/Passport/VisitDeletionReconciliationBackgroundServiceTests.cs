@@ -32,10 +32,19 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
                 VisitDeletionReconciliationBackgroundService.BatchSize,
                 CancellationToken.None))
             .ReturnsAsync(new[] { candidate });
-        deletionStore.Setup(store => store.MarkExportInvalidationEnsuredAsync(
+        deletionStore.Setup(store => store.TryClaimExportInvalidationAsync(
                 candidate.VisitId,
                 candidate.UserId,
                 candidate.DeletionVersion,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                CancellationToken.None))
+            .ReturnsAsync(new VisitExportInvalidationClaim("claim-1", deletedAtUtc));
+        deletionStore.Setup(store => store.CompleteExportInvalidationAsync(
+                candidate.VisitId,
+                candidate.UserId,
+                candidate.DeletionVersion,
+                "claim-1",
                 It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .ReturnsAsync(true);
@@ -50,6 +59,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 candidate.UserId,
+                deletedAtUtc,
                 It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -99,10 +109,19 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
                 VisitDeletionReconciliationBackgroundService.BatchSize,
                 CancellationToken.None))
             .ReturnsAsync(new[] { candidate });
-        deletionStore.Setup(store => store.MarkExportInvalidationEnsuredAsync(
+        deletionStore.Setup(store => store.TryClaimExportInvalidationAsync(
                 candidate.VisitId,
                 candidate.UserId,
                 candidate.DeletionVersion,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                CancellationToken.None))
+            .ReturnsAsync(new VisitExportInvalidationClaim("claim-1", deletedAtUtc));
+        deletionStore.Setup(store => store.CompleteExportInvalidationAsync(
+                candidate.VisitId,
+                candidate.UserId,
+                candidate.DeletionVersion,
+                "claim-1",
                 It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .ReturnsAsync(true);
@@ -110,6 +129,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 candidate.UserId,
+                deletedAtUtc,
                 It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
