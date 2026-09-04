@@ -1,6 +1,20 @@
 {
-  "version": "5.0.20",
+  "version": "5.0.21",
   "history": [
+    {
+      "version": "5.0.21",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "La fiabilité interne du site bénéficie de nouveaux contrôles automatiques.",
+        "en": "New automated checks now strengthen the site's internal reliability.",
+        "de": "Neue automatische Prüfungen stärken jetzt die interne Zuverlässigkeit der Website.",
+        "nl": "Nieuwe automatische controles versterken nu de interne betrouwbaarheid van de site.",
+        "it": "Nuovi controlli automatici rafforzano ora l'affidabilità interna del sito.",
+        "es": "Nuevos controles automáticos refuerzan ahora la fiabilidad interna del sitio.",
+        "pl": "Nowe automatyczne kontrole zwiększają wewnętrzną niezawodność serwisu.",
+        "pt": "Novos controlos automáticos reforçam agora a fiabilidade interna do site."
+      }
+    },
     {
       "version": "5.0.20",
       "releasedAt": "2026-09-04",

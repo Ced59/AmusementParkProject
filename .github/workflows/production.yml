@@ -228,6 +228,13 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
+      - name: Enforce one class per file
+        env:
+          ONE_CLASS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || '' }}
+        run: |
+          npm run architecture:one-class-per-file:test
+          npm run architecture:one-class-per-file
+
       - name: Run frontend tests
         run: npm run test:ci
 

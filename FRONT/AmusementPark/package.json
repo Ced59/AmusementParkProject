@@ -22,6 +22,8 @@
     "build:ssr:local": "ng build --configuration local-production",
     "seo:ssr-smoke": "node tools/seo-ssr-smoke.mjs",
     "architecture:facade-ports": "node tools/architecture/check-facade-data-ports.mjs",
+    "architecture:one-class-per-file": "node tools/architecture/check-one-class-per-file.mjs",
+    "architecture:one-class-per-file:test": "node --test tools/architecture/one-class-per-file.test.mjs",
     "i18n:build": "node tools/i18n-build.mjs",
     "i18n:check": "node tools/i18n-build.mjs --check && node tools/i18n-check.mjs"
   },
