@@ -83,6 +83,10 @@
         "openPark": "Voir le parc",
         "openItem": "Voir les statistiques"
       },
+      "targets": {
+        "unavailableItem": "Attraction indisponible",
+        "unavailablePark": "Parc indisponible"
+      },
       "errors": {
         "invalidScope": "Cette vue statistique n’est pas valide.",
         "notFound": "Ces statistiques sont introuvables ou ne t’appartiennent pas.",

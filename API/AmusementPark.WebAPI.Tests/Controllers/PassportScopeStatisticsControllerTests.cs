@@ -48,8 +48,15 @@ public sealed class PassportScopeStatisticsControllerTests
                             4d),
                     },
                     Array.Empty<PassportYearBreakdownResult>(),
-                    Array.Empty<PassportCurrentItemRatingResult>(),
-                    Array.Empty<PassportHistoricalItemRatingResult>())));
+                    new[]
+                    {
+                        new PassportCurrentItemRatingResult(
+                            "item-1",
+                            5d,
+                            "Attraction test"),
+                    },
+                    Array.Empty<PassportHistoricalItemRatingResult>(),
+                    "Parc test")));
         PassportScopeStatisticsController controller = CreateController(
             parkHandler,
             yearHandler,
@@ -60,6 +67,8 @@ public sealed class PassportScopeStatisticsControllerTests
         PassportParkStatisticsDto body = Assert.IsType<PassportParkStatisticsDto>(
             Assert.IsType<OkObjectResult>(response).Value);
         Assert.Equal("park-1", body.ParkId);
+        Assert.Equal("Parc test", body.ParkName);
+        Assert.Equal("Attraction test", Assert.Single(body.CurrentTopItems).ParkItemName);
         Assert.Equal(1, body.Summary.VisitCount);
         Assert.Equal(4d, Assert.Single(body.AssessmentTimeline).Rating);
         Assert.Null(typeof(PassportParkStatisticsDto).GetProperty("UserId"));
@@ -86,7 +95,10 @@ public sealed class PassportScopeStatisticsControllerTests
                     CreateSummary(),
                     new[]
                     {
-                        new PassportParkBreakdownResult("park-1", CreateSummary()),
+                        new PassportParkBreakdownResult(
+                            "park-1",
+                            CreateSummary(),
+                            "Parc test"),
                     })));
         PassportScopeStatisticsController controller = CreateController(
             parkHandler,
@@ -99,6 +111,7 @@ public sealed class PassportScopeStatisticsControllerTests
             Assert.IsType<OkObjectResult>(response).Value);
         Assert.Equal(2025, body.Year);
         Assert.Equal("park-1", Assert.Single(body.ByPark).ParkId);
+        Assert.Equal("Parc test", Assert.Single(body.ByPark).ParkName);
         parkHandler.VerifyNoOtherCalls();
         yearHandler.VerifyAll();
     }

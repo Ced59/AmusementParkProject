@@ -31,12 +31,12 @@ const localizedParkItemCategories: ReadonlySet<string> = new Set<string>([
 
 export function mapItemStatisticsView(
   statistics: PassportItemStatistics,
-  targetName: string | null,
   language: string
 ): PassportStatisticsViewModel {
   const number: Intl.NumberFormat = createNumberFormatter(language);
   const rating: Intl.NumberFormat = createRatingFormatter(language);
   const percent: Intl.NumberFormat = createPercentFormatter(language);
+  const title: string | null = normalizeTargetName(statistics.parkItemName);
   const byVisit: PassportStatisticsTableRowViewModel[] = statistics.byVisit.map((row) => ({
     id: row.visitId,
     cells: [
@@ -68,7 +68,10 @@ export function mapItemStatisticsView(
 
   return {
     scope: { kind: 'item', targetId: statistics.parkItemId },
-    title: targetName?.trim() || statistics.parkItemId,
+    title: title ?? '',
+    titleKey: title === null
+      ? 'passport.statistics.targets.unavailableItem'
+      : null,
     subtitleKey: 'passport.statistics.item.subtitle',
     cards: [
       card('rides', 'pi pi-replay', 'passport.statistics.cards.rides', number.format(statistics.rideCount)),
@@ -103,12 +106,12 @@ export function mapItemStatisticsView(
 
 export function mapParkStatisticsView(
   statistics: PassportParkStatistics,
-  targetName: string | null,
   language: string
 ): PassportStatisticsViewModel {
   const number: Intl.NumberFormat = createNumberFormatter(language);
   const rating: Intl.NumberFormat = createRatingFormatter(language);
   const percent: Intl.NumberFormat = createPercentFormatter(language);
+  const title: string | null = normalizeTargetName(statistics.parkName);
   const timeline: PassportStatisticsTimelinePointViewModel[] = statistics.assessmentTimeline.map((point) => ({
     id: point.visitId,
     visitId: point.visitId,
@@ -126,7 +129,7 @@ export function mapParkStatisticsView(
   const currentTop: PassportStatisticsTableRowViewModel[] = statistics.currentTopItems.map((row) => ({
     id: row.parkItemId,
     cells: [
-      { columnKey: 'target', value: row.parkItemId },
+      targetCell(row.parkItemName, 'passport.statistics.targets.unavailableItem'),
       { columnKey: 'rating', value: `${rating.format(row.rating)} / 5` }
     ],
     navigation: { kind: 'item', targetId: row.parkItemId, labelKey: 'passport.statistics.actions.openItem' }
@@ -134,7 +137,7 @@ export function mapParkStatisticsView(
   const historicalTop: PassportStatisticsTableRowViewModel[] = statistics.historicalTopItems.map((row) => ({
     id: row.parkItemId,
     cells: [
-      { columnKey: 'target', value: row.parkItemId },
+      targetCell(row.parkItemName, 'passport.statistics.targets.unavailableItem'),
       { columnKey: 'ratings', value: number.format(row.ratingCount) },
       { columnKey: 'average', value: `${rating.format(row.average)} / 5` }
     ],
@@ -143,7 +146,10 @@ export function mapParkStatisticsView(
 
   return {
     scope: { kind: 'park', targetId: statistics.parkId },
-    title: targetName?.trim() || statistics.parkId,
+    title: title ?? '',
+    titleKey: title === null
+      ? 'passport.statistics.targets.unavailablePark'
+      : null,
     subtitleKey: 'passport.statistics.park.subtitle',
     cards: mapSummaryCards(statistics.summary, number, rating, percent, language, [
       card('currentRating', 'pi pi-star', 'passport.statistics.cards.currentGlobalRating', formatNullableRating(statistics.currentGlobalRating, rating), 'passport.statistics.cards.communitySeparation'),
@@ -174,7 +180,7 @@ export function mapYearStatisticsView(
   const byPark: PassportStatisticsTableRowViewModel[] = statistics.byPark.map((row) => ({
     id: row.parkId,
     cells: summaryCells(row.summary, number, rating, [
-      { columnKey: 'target', value: row.parkId }
+      targetCell(row.parkName, 'passport.statistics.targets.unavailablePark')
     ]),
     navigation: { kind: 'park', targetId: row.parkId, labelKey: 'passport.statistics.actions.openPark' }
   }));
@@ -182,6 +188,7 @@ export function mapYearStatisticsView(
   return {
     scope: { kind: 'year', targetId: String(statistics.year) },
     title: number.format(statistics.year),
+    titleKey: null,
     subtitleKey: 'passport.statistics.year.subtitle',
     cards: [
       card('parks', 'pi pi-map', 'passport.statistics.cards.parks', number.format(statistics.parkCount)),
@@ -198,6 +205,21 @@ export function mapYearStatisticsView(
     ],
     isEmpty: statistics.summary.visitCount === 0
   };
+}
+
+function targetCell(
+  targetName: string | null,
+  fallbackKey: string
+): PassportStatisticsTableRowViewModel['cells'][number] {
+  const normalizedName: string | null = normalizeTargetName(targetName);
+  return normalizedName === null
+    ? { columnKey: 'target', value: fallbackKey, translate: true }
+    : { columnKey: 'target', value: normalizedName };
+}
+
+function normalizeTargetName(targetName: string | null): string | null {
+  const normalizedName: string = targetName?.trim() ?? '';
+  return normalizedName.length === 0 ? null : normalizedName;
 }
 
 function mapSummaryCards(

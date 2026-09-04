@@ -7,9 +7,7 @@ import {
   PassportStatisticsSummary
 } from '@app/models/passport/passport-statistics.models';
 import {
-  PASSPORT_STATISTICS_API_PORT,
-  PASSPORT_STATISTICS_ITEMS_PORT,
-  PASSPORT_STATISTICS_PARKS_PORT
+  PASSPORT_STATISTICS_API_PORT
 } from './passport-statistics-state-data.ports';
 import { PassportStatisticsStateFacade } from './passport-statistics-state.facade';
 
@@ -19,14 +17,11 @@ describe('PassportStatisticsStateFacade', () => {
     getParkStatistics: ReturnType<typeof vi.fn>;
     getYearStatistics: ReturnType<typeof vi.fn>;
   };
-  let parksApi: { getParkById: ReturnType<typeof vi.fn> };
-  let itemsApi: { getParkItemById: ReturnType<typeof vi.fn> };
-
   beforeEach(() => {
     statisticsApi = {
       getItemStatistics: vi.fn().mockReturnValue(of(createItemStatistics())),
       getParkStatistics: vi.fn().mockReturnValue(of({
-        parkId: 'park-1', summary: createSummary(), currentGlobalRating: null,
+        parkId: 'park-1', parkName: 'Parc test', summary: createSummary(), currentGlobalRating: null,
         currentGlobalMinusHistoricalAverage: null, assessmentTimeline: [], byYear: [],
         currentTopItems: [], historicalTopItems: []
       })),
@@ -34,47 +29,39 @@ describe('PassportStatisticsStateFacade', () => {
         year: 2025, parkCount: 1, summary: createSummary(), byPark: []
       }))
     };
-    parksApi = {
-      getParkById: vi.fn().mockReturnValue(of({ id: 'park-1', name: 'Parc test', latitude: 0, longitude: 0 }))
-    };
-    itemsApi = {
-      getParkItemById: vi.fn().mockReturnValue(of({
-        id: 'item-1', parkId: 'park-1', name: 'Attraction test', category: 'Attraction',
-        type: 'RollerCoaster', latitude: null, longitude: null
-      }))
-    };
     TestBed.configureTestingModule({
       providers: [
         PassportStatisticsStateFacade,
-        { provide: PASSPORT_STATISTICS_API_PORT, useValue: statisticsApi },
-        { provide: PASSPORT_STATISTICS_PARKS_PORT, useValue: parksApi },
-        { provide: PASSPORT_STATISTICS_ITEMS_PORT, useValue: itemsApi }
+        { provide: PASSPORT_STATISTICS_API_PORT, useValue: statisticsApi }
       ]
     });
   });
 
-  it('loads item statistics through ports and maps the target label outside the component', () => {
+  it('loads item statistics once and maps the server-provided target label', () => {
     const facade: PassportStatisticsStateFacade = TestBed.inject(PassportStatisticsStateFacade);
 
     facade.load({ kind: 'item', targetId: 'item-1' }, 'fr');
 
     expect(statisticsApi.getItemStatistics).toHaveBeenCalledWith('item-1');
-    expect(itemsApi.getParkItemById).toHaveBeenCalledWith('item-1', { closedFilter: 'all' });
     expect(facade.viewModel()).toEqual(expect.objectContaining({ title: 'Attraction test' }));
     expect(facade.loading()).toBe(false);
   });
 
-  it('keeps statistics available when the optional public label cannot be resolved', () => {
-    itemsApi.getParkItemById.mockReturnValue(throwError(() => new Error('label unavailable')));
+  it('keeps statistics available without exposing the identifier when the target label is unavailable', () => {
+    statisticsApi.getItemStatistics.mockReturnValue(of({
+      ...createItemStatistics(),
+      parkItemName: null
+    }));
     const facade: PassportStatisticsStateFacade = TestBed.inject(PassportStatisticsStateFacade);
 
     facade.load({ kind: 'item', targetId: 'item-1' }, 'en');
 
-    expect(facade.viewModel()?.title).toBe('item-1');
+    expect(facade.viewModel()?.title).toBe('');
+    expect(facade.viewModel()?.titleKey).toBe('passport.statistics.targets.unavailableItem');
     expect(facade.errorKey()).toBeNull();
   });
 
-  it('loads park and year scopes with their dedicated ports', () => {
+  it('loads park and year scopes through the statistics port', () => {
     const facade: PassportStatisticsStateFacade = TestBed.inject(PassportStatisticsStateFacade);
 
     facade.load({ kind: 'park', targetId: 'park-1' }, 'fr');
@@ -82,7 +69,6 @@ describe('PassportStatisticsStateFacade', () => {
     facade.load({ kind: 'year', targetId: '2025' }, 'fr');
 
     expect(statisticsApi.getParkStatistics).toHaveBeenCalledWith('park-1');
-    expect(parksApi.getParkById).toHaveBeenCalledWith('park-1', { closedFilter: 'all' });
     expect(statisticsApi.getYearStatistics).toHaveBeenCalledWith(2025);
     expect(facade.viewModel()?.scope).toEqual({ kind: 'year', targetId: '2025' });
   });
@@ -112,7 +98,7 @@ describe('PassportStatisticsStateFacade', () => {
 
 function createItemStatistics(): PassportItemStatistics {
   return {
-    parkItemId: 'item-1', rideCount: 1, visitCount: 1,
+    parkItemId: 'item-1', parkItemName: 'Attraction test', rideCount: 1, visitCount: 1,
     ratingCoverage: { ratedRideCount: 1, totalRideCount: 1, rate: 1 },
     firstExperience: null, lastExperience: null,
     historicalRatings: { ratingCount: 1, average: 4.25, median: 4.25, minimum: 4.25, maximum: 4.25, populationStandardDeviation: 0 },

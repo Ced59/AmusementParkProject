@@ -130,6 +130,10 @@
         "openPark": "Park bekijken",
         "openItem": "Statistieken bekijken"
       },
+      "targets": {
+        "unavailableItem": "Niet-beschikbare attractie",
+        "unavailablePark": "Niet-beschikbaar park"
+      },
       "errors": {
         "invalidScope": "Deze statistiekweergave is ongeldig.",
         "notFound": "Deze statistieken zijn niet gevonden of horen niet bij jou.",

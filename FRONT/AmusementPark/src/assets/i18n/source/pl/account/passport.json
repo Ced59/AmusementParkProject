@@ -39,6 +39,7 @@
       "kicker": "Statystyki paszportu", "title": "Twoje prywatne statystyki", "private": "Prywatne", "loading": "Obliczanie statystyk…", "navigationLabel": "Zobacz statystyki tej wizyty", "summaryLabel": "Podsumowanie Twoich statystyk",
       "privacyNotice": "Te liczby pochodzą wyłącznie z Twojego prywatnego paszportu. Nigdy nie zmieniają ocen ani rankingów społeczności.",
       "actions": { "back": "Wróć do profilu", "retry": "Spróbuj ponownie", "openVisit": "Otwórz wizytę", "openYear": "Zobacz rok", "openPark": "Zobacz park", "openItem": "Zobacz statystyki" },
+      "targets": { "unavailableItem": "Niedostępna atrakcja", "unavailablePark": "Niedostępny park" },
       "errors": { "invalidScope": "Ten widok statystyk jest nieprawidłowy.", "notFound": "Nie znaleziono tych statystyk albo nie należą do Ciebie.", "load": "Nie udało się wczytać statystyk. Spróbuj ponownie za chwilę." },
       "empty": { "title": "Nie ma jeszcze statystyk", "description": "Dodaj wizyty i przejazdy do paszportu, aby utworzyć to podsumowanie." },
       "item": { "subtitle": "Twoja historia z tą atrakcją — przejazd po przejeździe i wizyta po wizycie.", "timelineTitle": "Zmiany Twoich ocen", "timelineDescription": "Każdy punkt to surowa ocena zapisana dla jednego konkretnego przejazdu.", "byVisitTitle": "Podsumowanie według wizyt", "byVisitDescription": "Średnie grupują wyłącznie przejazdy z tej samej wizyty.", "byYearTitle": "Podsumowanie według lat", "byYearDescription": "Niepełne daty pozostają przypisane do podanego roku." },

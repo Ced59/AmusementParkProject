@@ -32,7 +32,8 @@ public sealed record PassportItemStatisticsResult(
     IReadOnlyCollection<PassportItemVisitStatisticsResult> ByVisit,
     IReadOnlyCollection<PassportItemYearStatisticsResult> ByYear,
     IReadOnlyCollection<PassportItemRatingPointResult> RatingTimeline,
-    PassportRatingTrendResult? Trend);
+    PassportRatingTrendResult? Trend,
+    string? ParkItemName = null);
 
 public sealed record PassportItemVisitStatisticsResult(
     string VisitId,

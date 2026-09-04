@@ -46,6 +46,7 @@ public sealed class PassportStatisticsControllerTests
         PassportItemStatisticsDto body = Assert.IsType<PassportItemStatisticsDto>(
             Assert.IsType<OkObjectResult>(response).Value);
         Assert.Equal("item-1", body.ParkItemId);
+        Assert.Equal("Attraction test", body.ParkItemName);
         Assert.Equal(3, body.RideCount);
         Assert.Equal(2, body.VisitCount);
         Assert.Equal(2, body.RatingCoverage.RatedRideCount);
@@ -158,7 +159,8 @@ public sealed class PassportStatisticsControllerTests
                 1,
                 3d,
                 3d,
-                0d));
+                0d),
+            "Attraction test");
     }
 
     private static ControllerContext CreateControllerContext(bool authenticated)

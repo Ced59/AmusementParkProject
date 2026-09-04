@@ -1,6 +1,20 @@
 {
-  "version": "5.0.31",
+  "version": "5.0.32",
   "history": [
+    {
+      "version": "5.0.32",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les statistiques du passeport affichent maintenant des noms lisibles.",
+        "en": "Passport statistics now display readable names.",
+        "de": "Die Statistiken des Besuchspasses zeigen jetzt lesbare Namen an.",
+        "nl": "Paspoortstatistieken tonen nu leesbare namen.",
+        "it": "Le statistiche del passaporto mostrano ora nomi leggibili.",
+        "es": "Las estadísticas del pasaporte ahora muestran nombres legibles.",
+        "pl": "Statystyki paszportu wyświetlają teraz czytelne nazwy.",
+        "pt": "As estatísticas do passaporte apresentam agora nomes legíveis."
+      }
+    },
     {
       "version": "5.0.31",
       "releasedAt": "2026-09-05",

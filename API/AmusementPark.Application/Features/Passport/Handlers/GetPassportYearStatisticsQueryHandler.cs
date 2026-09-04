@@ -4,58 +4,12 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Identifiers;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
-
-public sealed class GetPassportParkStatisticsQueryHandler
-    : IQueryHandler<
-        GetPassportParkStatisticsQuery,
-        ApplicationResult<PassportParkStatisticsResult>>
-{
-    private readonly IPassportScopeStatisticsSourceReader sourceReader;
-
-    public GetPassportParkStatisticsQueryHandler(
-        IPassportScopeStatisticsSourceReader sourceReader)
-    {
-        this.sourceReader = sourceReader;
-    }
-
-    public async Task<ApplicationResult<PassportParkStatisticsResult>> HandleAsync(
-        GetPassportParkStatisticsQuery query,
-        CancellationToken cancellationToken = default)
-    {
-        string userId;
-        string parkId;
-        try
-        {
-            userId = IdentifierRules.NormalizeRequired(query.UserId, nameof(query.UserId));
-            parkId = IdentifierRules.NormalizeRequired(query.ParkId, nameof(query.ParkId));
-        }
-        catch (IdentifierValidationException exception)
-        {
-            return ApplicationResult<PassportParkStatisticsResult>.Failure(
-                PassportApplicationErrors.InvalidIdentifier(
-                    exception.ErrorCode,
-                    exception.Message,
-                    exception.ParamName));
-        }
-
-        PassportParkStatisticsSource source = await this.sourceReader.ReadParkAsync(
-            userId,
-            parkId,
-            cancellationToken);
-        PassportParkStatistics statistics = PassportScopeStatisticsCalculator.CalculatePark(
-            parkId,
-            source.Visits,
-            source.Rides,
-            source.CurrentGlobalRating,
-            source.CurrentItemRatings);
-        return ApplicationResult<PassportParkStatisticsResult>.Success(
-            PassportStatisticsResultFactory.CreatePark(statistics));
-    }
-}
 
 public sealed class GetPassportYearStatisticsQueryHandler
     : IQueryHandler<
@@ -63,11 +17,14 @@ public sealed class GetPassportYearStatisticsQueryHandler
         ApplicationResult<PassportYearStatisticsResult>>
 {
     private readonly IPassportScopeStatisticsSourceReader sourceReader;
+    private readonly IParkRepository parkRepository;
 
     public GetPassportYearStatisticsQueryHandler(
-        IPassportScopeStatisticsSourceReader sourceReader)
+        IPassportScopeStatisticsSourceReader sourceReader,
+        IParkRepository parkRepository)
     {
         this.sourceReader = sourceReader;
+        this.parkRepository = parkRepository;
     }
 
     public async Task<ApplicationResult<PassportYearStatisticsResult>> HandleAsync(
@@ -102,7 +59,22 @@ public sealed class GetPassportYearStatisticsQueryHandler
             query.Year,
             source.Visits,
             source.Rides);
+        string[] parkIds = statistics.ByPark
+            .Select(static item => item.ParkId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyCollection<Park> parks = parkIds.Length == 0
+            ? Array.Empty<Park>()
+            : await this.parkRepository.GetByIdsAsync(parkIds, cancellationToken);
+        IReadOnlyDictionary<string, string> parkNames = parks
+            .Where(static park => !string.IsNullOrWhiteSpace(park.Id)
+                && !string.IsNullOrWhiteSpace(park.Name))
+            .GroupBy(static park => park.Id, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First().Name!,
+                StringComparer.Ordinal);
         return ApplicationResult<PassportYearStatisticsResult>.Success(
-            PassportStatisticsResultFactory.CreateYear(statistics));
+            PassportStatisticsResultFactory.CreateYear(statistics, parkNames));
     }
 }

@@ -7,7 +7,8 @@ internal static class PassportStatisticsResultFactory
 {
     public static PassportItemStatisticsResult CreateItem(
         string parkItemId,
-        PassportItemStatistics statistics)
+        PassportItemStatistics statistics,
+        string? parkItemName = null)
     {
         ArgumentNullException.ThrowIfNull(statistics);
         return new PassportItemStatisticsResult(
@@ -55,10 +56,14 @@ internal static class PassportStatisticsResultFactory
                     statistics.Trend.LastWindowRatingCount,
                     statistics.Trend.FirstWindowAverage,
                     statistics.Trend.LastWindowAverage,
-                    statistics.Trend.Delta));
+                    statistics.Trend.Delta),
+            NormalizeName(parkItemName));
     }
 
-    public static PassportParkStatisticsResult CreatePark(PassportParkStatistics statistics)
+    public static PassportParkStatisticsResult CreatePark(
+        PassportParkStatistics statistics,
+        string? parkName = null,
+        IReadOnlyDictionary<string, string>? parkItemNames = null)
     {
         ArgumentNullException.ThrowIfNull(statistics);
         return new PassportParkStatisticsResult(
@@ -74,27 +79,48 @@ internal static class PassportStatisticsResultFactory
             statistics.ByYear.Select(static item => new PassportYearBreakdownResult(
                 item.Year,
                 ToResult(item.Summary))).ToArray(),
-            statistics.CurrentTopItems.Select(static item =>
+            statistics.CurrentTopItems.Select(item =>
                 new PassportCurrentItemRatingResult(
                     item.ParkItemId,
-                    item.Rating.DoubleValue)).ToArray(),
-            statistics.HistoricalTopItems.Select(static item =>
+                    item.Rating.DoubleValue,
+                    ResolveName(parkItemNames, item.ParkItemId))).ToArray(),
+            statistics.HistoricalTopItems.Select(item =>
                 new PassportHistoricalItemRatingResult(
                     item.ParkItemId,
                     item.RatingCount,
-                    item.Average)).ToArray());
+                    item.Average,
+                    ResolveName(parkItemNames, item.ParkItemId))).ToArray(),
+            NormalizeName(parkName));
     }
 
-    public static PassportYearStatisticsResult CreateYear(PassportYearStatistics statistics)
+    public static PassportYearStatisticsResult CreateYear(
+        PassportYearStatistics statistics,
+        IReadOnlyDictionary<string, string>? parkNames = null)
     {
         ArgumentNullException.ThrowIfNull(statistics);
         return new PassportYearStatisticsResult(
             statistics.Year,
             statistics.ParkCount,
             ToResult(statistics.Summary),
-            statistics.ByPark.Select(static item => new PassportParkBreakdownResult(
+            statistics.ByPark.Select(item => new PassportParkBreakdownResult(
                 item.ParkId,
-                ToResult(item.Summary))).ToArray());
+                ToResult(item.Summary),
+                ResolveName(parkNames, item.ParkId))).ToArray());
+    }
+
+    private static string? ResolveName(
+        IReadOnlyDictionary<string, string>? names,
+        string id)
+    {
+        return names is not null && names.TryGetValue(id, out string? name)
+            ? NormalizeName(name)
+            : null;
+    }
+
+    private static string? NormalizeName(string? name)
+    {
+        string normalizedName = name?.Trim() ?? string.Empty;
+        return normalizedName.Length == 0 ? null : normalizedName;
     }
 
     private static PassportItemExperienceResult? ToResult(

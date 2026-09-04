@@ -1,15 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, forkJoin, map, Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import {
   PassportItemStatistics,
   PassportParkStatistics,
   PassportYearStatistics
 } from '@app/models/passport/passport-statistics.models';
-import { Park } from '@app/models/parks/park';
-import { ParkItem } from '@app/models/parks/park-item';
 import {
   mapItemStatisticsView,
   mapParkStatisticsView,
@@ -21,16 +19,12 @@ import {
 } from '../models/passport-statistics-view.models';
 import {
   PASSPORT_STATISTICS_API_PORT,
-  PASSPORT_STATISTICS_ITEMS_PORT,
-  PASSPORT_STATISTICS_PARKS_PORT,
-  PassportStatisticsApiPort,
-  PassportStatisticsItemsPort,
-  PassportStatisticsParksPort
+  PassportStatisticsApiPort
 } from './passport-statistics-state-data.ports';
 
 type PassportStatisticsSource =
-  | { kind: 'item'; statistics: PassportItemStatistics; targetName: string | null }
-  | { kind: 'park'; statistics: PassportParkStatistics; targetName: string | null }
+  | { kind: 'item'; statistics: PassportItemStatistics }
+  | { kind: 'park'; statistics: PassportParkStatistics }
   | { kind: 'year'; statistics: PassportYearStatistics };
 
 @Injectable()
@@ -49,8 +43,6 @@ export class PassportStatisticsStateFacade {
 
   constructor(
     @Inject(PASSPORT_STATISTICS_API_PORT) private readonly statisticsApi: PassportStatisticsApiPort,
-    @Inject(PASSPORT_STATISTICS_PARKS_PORT) private readonly parksApi: PassportStatisticsParksPort,
-    @Inject(PASSPORT_STATISTICS_ITEMS_PORT) private readonly itemsApi: PassportStatisticsItemsPort,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -106,29 +98,19 @@ export class PassportStatisticsStateFacade {
 
   private loadSource(scope: PassportStatisticsRouteScope): Observable<PassportStatisticsSource> {
     if (scope.kind === 'item') {
-      return forkJoin({
-        statistics: this.statisticsApi.getItemStatistics(scope.targetId),
-        target: this.itemsApi.getParkItemById(scope.targetId, { closedFilter: 'all' }).pipe(
-          catchError(() => of<ParkItem | null>(null))
-        )
-      }).pipe(map(({ statistics, target }): PassportStatisticsSource => ({
-        kind: 'item',
-        statistics,
-        targetName: target?.name ?? null
-      })));
+      return this.statisticsApi.getItemStatistics(scope.targetId).pipe(
+        map((statistics: PassportItemStatistics): PassportStatisticsSource => ({
+          kind: 'item',
+          statistics
+        })));
     }
 
     if (scope.kind === 'park') {
-      return forkJoin({
-        statistics: this.statisticsApi.getParkStatistics(scope.targetId),
-        target: this.parksApi.getParkById(scope.targetId, { closedFilter: 'all' }).pipe(
-          catchError(() => of<Park | null>(null))
-        )
-      }).pipe(map(({ statistics, target }): PassportStatisticsSource => ({
-        kind: 'park',
-        statistics,
-        targetName: target?.name ?? null
-      })));
+      return this.statisticsApi.getParkStatistics(scope.targetId).pipe(
+        map((statistics: PassportParkStatistics): PassportStatisticsSource => ({
+          kind: 'park',
+          statistics
+        })));
     }
 
     return this.statisticsApi.getYearStatistics(Number(scope.targetId)).pipe(
@@ -138,11 +120,11 @@ export class PassportStatisticsStateFacade {
 
   private mapSource(source: PassportStatisticsSource, language: string): PassportStatisticsViewModel {
     if (source.kind === 'item') {
-      return mapItemStatisticsView(source.statistics, source.targetName, language);
+      return mapItemStatisticsView(source.statistics, language);
     }
 
     if (source.kind === 'park') {
-      return mapParkStatisticsView(source.statistics, source.targetName, language);
+      return mapParkStatisticsView(source.statistics, language);
     }
 
     return mapYearStatisticsView(source.statistics, language);

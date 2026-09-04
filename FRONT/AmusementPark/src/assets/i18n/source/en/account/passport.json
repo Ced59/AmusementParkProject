@@ -78,6 +78,7 @@
       "actions": {
         "back": "Back to profile", "retry": "Try again", "openVisit": "Open visit", "openYear": "View year", "openPark": "View park", "openItem": "View statistics"
       },
+      "targets": { "unavailableItem": "Unavailable attraction", "unavailablePark": "Unavailable park" },
       "errors": {
         "invalidScope": "This statistics view is not valid.", "notFound": "These statistics could not be found or do not belong to you.", "load": "Your statistics could not be loaded. Try again in a moment."
       },
