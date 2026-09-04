@@ -56,6 +56,38 @@ describe('PassportAnonymousDraftEditorStateFacade', () => {
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.editor.errors.save');
   });
 
+  it('rejects a stale-tab overwrite when the stored draft changed', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const save = vi.fn(async (): Promise<void> => undefined);
+    const compareAndSet = vi.fn(async (): Promise<boolean> => false);
+    const facade: PassportAnonymousDraftEditorStateFacade = createFacade(
+      draft,
+      save,
+      vi.fn(() => of(page([]))),
+      compareAndSet
+    );
+    await facade.load(draft.id);
+
+    const saved: boolean = await facade.addRide({
+      parkItemId: 'item-1',
+      attractionName: 'Attraction test',
+      status: 'Completed',
+      count: 1,
+      localTime: '',
+      isApproximate: false,
+      privateNote: '',
+      confirmHistoricalConflict: false
+    });
+
+    expect(saved).toBe(false);
+    expect(compareAndSet).toHaveBeenCalledWith(draft, expect.objectContaining({
+      rides: [expect.objectContaining({ parkItemId: 'item-1' })]
+    }));
+    expect(save).not.toHaveBeenCalled();
+    expect(facade.draft()).toEqual(draft);
+    expect(facade.errorKey()).toBe('passport.anonymousDrafts.editor.errors.save');
+  });
+
   it('omits local time when the visit has no exact day and time zone', async () => {
     const baseDraft: PassportAnonymousDraft = createDraft();
     const draft: PassportAnonymousDraft = {
@@ -155,14 +187,24 @@ describe('PassportAnonymousDraftEditorStateFacade', () => {
 function createFacade(
   draft: PassportAnonymousDraft,
   save: (value: PassportAnonymousDraft) => Promise<void>,
-  getParkItemsByParkIdPage: ReturnType<typeof vi.fn> = vi.fn(() => of(page([])))
+  getParkItemsByParkIdPage: ReturnType<typeof vi.fn> = vi.fn(() => of(page([]))),
+  compareAndSet: (
+    expectedDraft: PassportAnonymousDraft,
+    updatedDraft: PassportAnonymousDraft
+  ) => Promise<boolean> = async (
+    _expectedDraft: PassportAnonymousDraft,
+    updatedDraft: PassportAnonymousDraft
+  ): Promise<boolean> => {
+    await save(updatedDraft);
+    return true;
+  }
 ): PassportAnonymousDraftEditorStateFacade {
   const store: PassportAnonymousDraftStorePort = {
     isAvailable: (): boolean => true,
     list: async (): Promise<PassportAnonymousDraft[]> => [draft],
     get: async (): Promise<PassportAnonymousDraft | null> => draft,
     save,
-    compareAndSet: async (): Promise<boolean> => true,
+    compareAndSet,
     deleteIfUnchanged: async (): Promise<boolean> => true,
     delete: async (): Promise<void> => undefined,
     clear: async (): Promise<void> => undefined

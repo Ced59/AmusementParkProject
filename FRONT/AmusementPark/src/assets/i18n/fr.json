@@ -300,7 +300,7 @@
         "yearInvalid": "Indique une année valide.",
         "monthInvalid": "Indique un mois compris entre 1 et 12.",
         "dayInvalid": "Ce jour n’existe pas dans le mois sélectionné.",
-        "timeZoneInvalid": "Le fuseau horaire est trop long.",
+        "timeZoneInvalid": "Le fuseau horaire doit être un identifiant IANA valide de 128 caractères maximum.",
         "titleTooLong": "Le titre ne peut pas dépasser 160 caractères.",
         "noteTooLong": "La note privée ne peut pas dépasser 4 000 caractères."
       },

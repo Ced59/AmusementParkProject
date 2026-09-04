@@ -112,7 +112,7 @@
         "yearInvalid": "Vul een geldig jaar in.",
         "monthInvalid": "Vul een maand tussen 1 en 12 in.",
         "dayInvalid": "Die dag bestaat niet in de gekozen maand.",
-        "timeZoneInvalid": "De tijdzone is te lang.",
+        "timeZoneInvalid": "De tijdzone moet een geldige IANA-identificatie van maximaal 128 tekens zijn.",
         "titleTooLong": "De titel mag niet langer zijn dan 160 tekens.",
         "noteTooLong": "De privénotitie mag niet langer zijn dan 4.000 tekens."
       },

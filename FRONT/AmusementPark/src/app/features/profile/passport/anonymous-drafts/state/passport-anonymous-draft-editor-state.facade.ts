@@ -275,10 +275,21 @@ export class PassportAnonymousDraftEditorStateFacade {
   }
 
   private async persist(updatedDraft: PassportAnonymousDraft): Promise<boolean> {
+    const expectedDraft: PassportAnonymousDraft | null = this.draftSignal();
+    if (!expectedDraft || expectedDraft.id !== updatedDraft.id) {
+      this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.save');
+      return false;
+    }
+
     this.savingSignal.set(true);
     this.errorKeySignal.set(null);
     try {
-      await this.store.save(updatedDraft);
+      const persisted: boolean = await this.store.compareAndSet(expectedDraft, updatedDraft);
+      if (!persisted) {
+        this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.save');
+        return false;
+      }
+
       this.draftSignal.set(updatedDraft);
       return true;
     } catch {

@@ -112,7 +112,7 @@
         "yearInvalid": "Inserisci un anno valido.",
         "monthInvalid": "Inserisci un mese compreso tra 1 e 12.",
         "dayInvalid": "Questo giorno non esiste nel mese selezionato.",
-        "timeZoneInvalid": "Il fuso orario è troppo lungo.",
+        "timeZoneInvalid": "Il fuso orario deve essere un identificatore IANA valido di massimo 128 caratteri.",
         "titleTooLong": "Il titolo non può superare 160 caratteri.",
         "noteTooLong": "La nota privata non può superare 4.000 caratteri."
       },

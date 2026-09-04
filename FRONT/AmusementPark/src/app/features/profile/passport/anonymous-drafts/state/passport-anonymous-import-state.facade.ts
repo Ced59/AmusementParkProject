@@ -405,13 +405,15 @@ export class PassportAnonymousImportStateFacade {
           parkId,
           page,
           PassportAnonymousImportStateFacade.PageSize,
-          { closedFilter: 'all' },
+          { closedFilter: 'all', category: 'Attraction' },
           { closedFilter: 'all' }
         )
       );
       for (const parkItem of result.items) {
         const identifier: string = parkItem.id?.trim() ?? '';
-        if (identifier && parkItem.parkId === parkId) {
+        if (identifier
+          && parkItem.parkId === parkId
+          && parkItem.category === 'Attraction') {
           identifiers.add(identifier);
         }
       }

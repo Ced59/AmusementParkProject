@@ -300,7 +300,7 @@
         "yearInvalid": "Podaj prawidłowy rok.",
         "monthInvalid": "Podaj miesiąc od 1 do 12.",
         "dayInvalid": "Taki dzień nie istnieje w wybranym miesiącu.",
-        "timeZoneInvalid": "Nazwa strefy czasowej jest zbyt długa.",
+        "timeZoneInvalid": "Strefa czasowa musi być prawidłowym identyfikatorem IANA o długości do 128 znaków.",
         "titleTooLong": "Tytuł nie może mieć więcej niż 160 znaków.",
         "noteTooLong": "Prywatna notatka nie może mieć więcej niż 4000 znaków."
       },

@@ -123,7 +123,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.previews()).toEqual([]);
   });
 
-  it('rejects a deleted or moved ride target before creating the separate visit', async () => {
+  it('rejects a recategorized ride target before creating the separate visit', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const compareAndSet = vi.fn(async (): Promise<boolean> => true);
     const createVisitRequest = vi.fn(() => of(createVisit({ id: 'server-1' })));
@@ -131,10 +131,10 @@ describe('PassportAnonymousImportStateFacade', () => {
     const getParkItemsByParkIdPage = vi.fn(() => of<PagedResult<ParkItem>>({
       items: [{
         id: draft.rides[0].parkItemId,
-        parkId: 'another-park',
+        parkId: draft.visit.parkId,
         name: draft.rides[0].attractionName,
-        category: 'Attraction',
-        type: 'Attraction',
+        category: 'Restaurant',
+        type: 'Restaurant',
         latitude: null,
         longitude: null
       }],
@@ -155,7 +155,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       draft.visit.parkId,
       1,
       100,
-      { closedFilter: 'all' },
+      { closedFilter: 'all', category: 'Attraction' },
       { closedFilter: 'all' }
     );
     expect(compareAndSet).not.toHaveBeenCalled();

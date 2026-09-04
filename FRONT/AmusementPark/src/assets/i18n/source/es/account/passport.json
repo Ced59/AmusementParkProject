@@ -112,7 +112,7 @@
         "yearInvalid": "Indica un año válido.",
         "monthInvalid": "Indica un mes entre 1 y 12.",
         "dayInvalid": "Ese día no existe en el mes seleccionado.",
-        "timeZoneInvalid": "La zona horaria es demasiado larga.",
+        "timeZoneInvalid": "La zona horaria debe ser un identificador IANA válido de 128 caracteres como máximo.",
         "titleTooLong": "El título no puede superar los 160 caracteres.",
         "noteTooLong": "La nota privada no puede superar los 4.000 caracteres."
       },

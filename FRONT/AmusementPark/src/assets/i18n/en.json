@@ -300,7 +300,7 @@
         "yearInvalid": "Enter a valid year.",
         "monthInvalid": "Enter a month between 1 and 12.",
         "dayInvalid": "That day does not exist in the selected month.",
-        "timeZoneInvalid": "The time zone is too long.",
+        "timeZoneInvalid": "The time zone must be a valid IANA identifier no longer than 128 characters.",
         "titleTooLong": "The title cannot exceed 160 characters.",
         "noteTooLong": "The private note cannot exceed 4,000 characters."
       },
