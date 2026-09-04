@@ -1,0 +1,32 @@
+{
+  "passport": {
+    "ratingSuggestions": {
+      "kicker": "Een vriendelijke herinnering",
+      "title": "Wil je een algemene beoordeling herzien?",
+      "description": "Je nieuwste privé-ervaringen kunnen afwijken van een eerder gegeven algemene beoordeling.",
+      "loading": "Je recente ervaringen worden vergeleken…",
+      "empty": "Er hoeft momenteel geen totaalscore te worden herzien.",
+      "disabled": "Suggesties zijn uitgeschakeld. Je beoordelingen en privéwaarnemingen blijven ongewijzigd.",
+      "targetTypes": { "park": "Park", "item": "Attractie" },
+      "metrics": {
+        "current": "Algemene beoordeling",
+        "latest": "Laatste ervaring",
+        "recentAverage": "Recent gemiddelde",
+        "historicalMedian": "Historische mediaan"
+      },
+      "reasons": {
+        "lower": "Je {{count}} nieuwste waarnemingen zijn gemiddeld {{average}}, lager dan je algemene beoordeling.",
+        "higher": "Je {{count}} nieuwste waarnemingen zijn gemiddeld {{average}}, hoger dan je algemene beoordeling."
+      },
+      "noAutomaticUpdate": "Er verandert niets automatisch. Jij houdt controle over je algemene beoordeling.",
+      "frequency": "Voor dezelfde beoordeling verschijnt hoogstens één suggestie per 30 dagen.",
+      "actions": {
+        "review": "Mijn beoordeling herzien",
+        "dismiss": "Niet nu",
+        "disable": "Suggesties uitschakelen",
+        "enable": "Suggesties inschakelen"
+      },
+      "error": "Deze actie kon niet worden opgeslagen. Probeer het zo opnieuw."
+    }
+  }
+}

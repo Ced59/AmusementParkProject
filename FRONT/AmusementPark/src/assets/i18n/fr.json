@@ -8,6 +8,37 @@
     "profile": "Profil"
   },
   "passport": {
+    "ratingSuggestions": {
+      "kicker": "Un rappel en douceur",
+      "title": "Souhaites-tu revoir une note globale ?",
+      "description": "Tes dernières expériences privées peuvent différer d’une note globale définie auparavant.",
+      "loading": "Comparaison de tes expériences récentes…",
+      "empty": "Aucune note globale ne nécessite d’être revue pour le moment.",
+      "disabled": "Les suggestions sont désactivées. Tes notes et observations privées restent inchangées.",
+      "targetTypes": {
+        "park": "Parc",
+        "item": "Attraction"
+      },
+      "metrics": {
+        "current": "Note globale",
+        "latest": "Dernière expérience",
+        "recentAverage": "Moyenne récente",
+        "historicalMedian": "Médiane historique"
+      },
+      "reasons": {
+        "lower": "Tes {{count}} dernières nouvelles observations donnent {{average}} en moyenne, sous ta note globale actuelle.",
+        "higher": "Tes {{count}} dernières nouvelles observations donnent {{average}} en moyenne, au-dessus de ta note globale actuelle."
+      },
+      "noAutomaticUpdate": "Rien ne change automatiquement. Tu gardes le contrôle de ta note globale.",
+      "frequency": "Une même note ne déclenche au maximum qu’une suggestion tous les 30 jours.",
+      "actions": {
+        "review": "Revoir ma note",
+        "dismiss": "Pas maintenant",
+        "disable": "Désactiver ces suggestions",
+        "enable": "Activer les suggestions"
+      },
+      "error": "Cette action n’a pas pu être enregistrée. Réessaie dans un instant."
+    },
     "profile": {
       "kicker": "Passeport de visites",
       "title": "Commence ton historique de parcs",

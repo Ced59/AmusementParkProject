@@ -120,6 +120,15 @@ public sealed class MongoDbSettings
     public string PassportAuditEventsCollectionName { get; set; } =
         "passport-audit-events";
 
+    public string GlobalRatingSuggestionStatesCollectionName { get; set; } =
+        "global-rating-suggestion-states";
+
+    public string GlobalRatingSuggestionPreferencesCollectionName { get; set; } =
+        "global-rating-suggestion-preferences";
+
+    public string GlobalRatingSuggestionInteractionsCollectionName { get; set; } =
+        "global-rating-suggestion-interactions";
+
     public string CommentsCollectionName { get; set; } = "comments";
 
     public string CountriesCollectionName { get; set; } = "countries";

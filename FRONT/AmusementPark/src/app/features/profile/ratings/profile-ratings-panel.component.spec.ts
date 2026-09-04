@@ -14,6 +14,7 @@ import {
 } from '@app/models/ratings/rating.models';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
+import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
 import { PROFILE_RATINGS_PORT, ProfileRatingsPort } from './profile-ratings-state-data.ports';
 import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component';
 import { USER_RANKING_SHARE_PORT, UserRankingSharePort } from './user-ranking-share-state-data.ports';
@@ -286,6 +287,37 @@ describe('ProfileRatingsPanelComponent', () => {
       type: null,
       search: 'ride'
     });
+  });
+
+  it('opens the matching personal ranking without changing a suggested rating automatically', () => {
+    fixture.detectChanges();
+    const suggestion: GlobalRatingSuggestionViewModel = {
+      id: 'ParkItem:item-1',
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      targetName: 'Taron',
+      parkName: 'Phantasialand',
+      parkItemCategory: 'Attraction',
+      currentGlobalRatingLabel: '4.5',
+      latestObservationRatingLabel: '3',
+      recentAverageLabel: '3.25',
+      historicalMedianLabel: '4',
+      newObservationCount: 2,
+      recentObservationCount: 2,
+      reasonKey: 'passportRatingSuggestions.reasons.lower'
+    };
+
+    (fixture.componentInstance as unknown as {
+      reviewSuggestion(value: GlobalRatingSuggestionViewModel): void;
+    }).reviewSuggestion(suggestion);
+
+    expect(port.parkItemCalls.at(-1)).toEqual({
+      page: 1,
+      category: 'Attraction',
+      type: null,
+      search: 'Phantasialand'
+    });
+    expect(port.upsertCalls).toEqual([]);
   });
 
   it('publishes and revokes only the current user ranking from the profile', () => {

@@ -231,6 +231,20 @@ public static class PassportApplicationErrors
             "L’occurrence ou son ordre a changé. Recharge le journal avant de réessayer.");
     }
 
+    public static ApplicationError GlobalRatingSuggestionTargetNotFound()
+    {
+        return ApplicationError.NotFound(
+            "passport.rating-suggestion-target-not-found",
+            "La note globale associée à cette suggestion est introuvable.");
+    }
+
+    public static ApplicationError InvalidGlobalRatingSuggestionInteraction()
+    {
+        return ApplicationError.Validation(
+            "passport.rating-suggestion-interaction-invalid",
+            "L’interaction de suggestion demandée est invalide.");
+    }
+
     public static ApplicationError RideOccurrenceIdempotencyConflict()
     {
         return ApplicationError.Conflict(

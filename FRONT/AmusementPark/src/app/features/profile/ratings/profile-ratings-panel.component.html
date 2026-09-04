@@ -7,6 +7,10 @@
     subtitleKey="ratings.profile.subtitle">
   </app-ui-section-header>
 
+  <app-global-rating-suggestions
+    (reviewRequested)="reviewSuggestion($event)">
+  </app-global-rating-suggestions>
+
   <section class="profile-ranking-share" aria-labelledby="profile-ranking-share-title">
     <div class="profile-ranking-share__copy">
       <span class="profile-ranking-share__icon" aria-hidden="true">

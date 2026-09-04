@@ -1,0 +1,32 @@
+{
+  "passport": {
+    "ratingSuggestions": {
+      "kicker": "Un promemoria discreto",
+      "title": "Vuoi rivedere una valutazione globale?",
+      "description": "Le tue esperienze private più recenti possono differire da una valutazione globale precedente.",
+      "loading": "Confronto delle tue esperienze recenti…",
+      "empty": "Al momento non è necessario rivedere alcun voto complessivo.",
+      "disabled": "I suggerimenti sono disattivati. Le valutazioni e le osservazioni private restano invariate.",
+      "targetTypes": { "park": "Parco", "item": "Attrazione" },
+      "metrics": {
+        "current": "Valutazione globale",
+        "latest": "Ultima esperienza",
+        "recentAverage": "Media recente",
+        "historicalMedian": "Mediana storica"
+      },
+      "reasons": {
+        "lower": "Le tue {{count}} nuove osservazioni più recenti hanno una media di {{average}}, inferiore alla valutazione globale.",
+        "higher": "Le tue {{count}} nuove osservazioni più recenti hanno una media di {{average}}, superiore alla valutazione globale."
+      },
+      "noAutomaticUpdate": "Nulla cambia automaticamente. Mantieni il controllo della valutazione globale.",
+      "frequency": "Per la stessa valutazione compare al massimo un suggerimento ogni 30 giorni.",
+      "actions": {
+        "review": "Rivedi la mia valutazione",
+        "dismiss": "Non ora",
+        "disable": "Disattiva i suggerimenti",
+        "enable": "Attiva i suggerimenti"
+      },
+      "error": "Non è stato possibile salvare questa azione. Riprova tra poco."
+    }
+  }
+}

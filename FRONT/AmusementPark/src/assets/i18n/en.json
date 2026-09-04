@@ -8,6 +8,37 @@
     "profile": "Profile"
   },
   "passport": {
+    "ratingSuggestions": {
+      "kicker": "A gentle reminder",
+      "title": "Would you like to review a global rating?",
+      "description": "Your latest private experiences can differ from a global rating you set earlier.",
+      "loading": "Checking your recent experiences…",
+      "empty": "No global rating needs a review right now.",
+      "disabled": "Suggestions are disabled. Your ratings and private observations remain unchanged.",
+      "targetTypes": {
+        "park": "Park",
+        "item": "Attraction"
+      },
+      "metrics": {
+        "current": "Global rating",
+        "latest": "Latest experience",
+        "recentAverage": "Recent average",
+        "historicalMedian": "Historical median"
+      },
+      "reasons": {
+        "lower": "Your {{count}} latest new observations average {{average}}, below your current global rating.",
+        "higher": "Your {{count}} latest new observations average {{average}}, above your current global rating."
+      },
+      "noAutomaticUpdate": "Nothing changes automatically. You remain in control of your global rating.",
+      "frequency": "A suggestion is shown at most once every 30 days for the same rating.",
+      "actions": {
+        "review": "Review my rating",
+        "dismiss": "Not now",
+        "disable": "Disable these suggestions",
+        "enable": "Enable suggestions"
+      },
+      "error": "This suggestion action could not be saved. Try again in a moment."
+    },
     "profile": {
       "kicker": "Visit passport",
       "title": "Start your park history",

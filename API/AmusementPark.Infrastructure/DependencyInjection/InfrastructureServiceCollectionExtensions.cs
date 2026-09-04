@@ -222,6 +222,12 @@ public static class InfrastructureServiceCollectionExtensions
             PassportItemStatisticsSourceReader>();
         services.AddScoped<IPassportScopeStatisticsSourceReader,
             PassportScopeStatisticsSourceReader>();
+        services.AddScoped<IGlobalRatingSuggestionSourceReader,
+            GlobalRatingSuggestionSourceReader>();
+        services.AddScoped<IGlobalRatingSuggestionStateRepository,
+            GlobalRatingSuggestionStateRepository>();
+        services.AddSingleton<IGlobalRatingSuggestionFeatureGate,
+            ConfiguredGlobalRatingSuggestionFeatureGate>();
         services.AddScoped<PassportAuditStore>();
         services.AddScoped<IPassportAuditPublisher>(serviceProvider =>
             serviceProvider.GetRequiredService<PassportAuditStore>());
