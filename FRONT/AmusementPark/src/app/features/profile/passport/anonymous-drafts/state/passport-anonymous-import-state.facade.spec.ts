@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 
 import {
@@ -366,6 +367,46 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(importBatch).not.toHaveBeenCalled();
     expect(facade.report()).toMatchObject({ failedCount: 1 });
     expect(facade.previews()).toHaveLength(1);
+  });
+
+  it('releases the local reservation after a definitive validation rejection', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({
+        createVisit: () => throwError(() => new HttpErrorResponse({ status: 422 }))
+      }),
+      createOccurrencesPort()
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+
+    expect(compareAndSet).toHaveBeenCalledTimes(2);
+    expect(facade.previews()[0].draft.pendingImport).toBeNull();
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
+  });
+
+  it('keeps the local reservation after an ambiguous network failure', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({
+        createVisit: () => throwError(() => new HttpErrorResponse({ status: 0 }))
+      }),
+      createOccurrencesPort()
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+
+    expect(compareAndSet).toHaveBeenCalledTimes(1);
+    expect(facade.previews()[0].draft.pendingImport).toMatchObject({ choice: 'Separate' });
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(true);
   });
 });
 

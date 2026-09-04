@@ -246,6 +246,7 @@
       "actions": {
         "openForPark": "Add a visit",
         "done": "Done",
+        "viewLocalPassport": "View my local visits",
         "addAttractions": "Add attractions",
         "addAnother": "Add another visit",
         "saving": "Saving…",

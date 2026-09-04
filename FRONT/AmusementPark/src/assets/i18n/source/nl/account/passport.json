@@ -58,6 +58,7 @@
       "actions": {
         "openForPark": "Bezoek toevoegen",
         "done": "Klaar",
+        "viewLocalPassport": "Mijn lokale bezoeken bekijken",
         "addAttractions": "Attracties toevoegen",
         "addAnother": "Nog een bezoek toevoegen",
         "saving": "Opslaan…",

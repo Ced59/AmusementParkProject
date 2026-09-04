@@ -195,6 +195,16 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
       : ['/', currentLanguage, 'passport', 'local', localDraftId]);
   }
 
+  protected openLocalPassport(): void {
+    if (!this.facade.createdLocalDraftId()) {
+      return;
+    }
+
+    const currentLanguage: string = this.router.url.split('/')[1] || 'en';
+    this.close();
+    void this.router.navigate(['/', currentLanguage, 'passport', 'local']);
+  }
+
   protected trackPark(_index: number, option: PassportParkOption): string {
     return option.id;
   }

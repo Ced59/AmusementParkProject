@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable, Signal, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -314,21 +315,22 @@ export class PassportAnonymousImportStateFacade {
       return this.reportItem(preview, 'Ignored', null, 0, null);
     }
 
+    let reservation: PassportAnonymousDraft | null = null;
     try {
-      const lockedDraft: PassportAnonymousDraft = await this.lockImportIntent(preview);
+      reservation = await this.lockImportIntent(preview);
       const target: PassportVisit = preview.decision.choice === 'Separate'
-        ? await this.createVisit(lockedDraft)
+        ? await this.createVisit(reservation)
         : await this.prepareMergeTarget(preview);
-      const persistedDraft: PassportAnonymousDraft = await this.lockImportTarget(
-        lockedDraft,
+      reservation = await this.lockImportTarget(
+        reservation,
         target.id
       );
       const importedRideCount: number = await this.importRides(
-        persistedDraft,
+        reservation,
         target.id,
         preview.decision
       );
-      const localAcknowledged: boolean = await this.store.deleteIfUnchanged(persistedDraft);
+      const localAcknowledged: boolean = await this.store.deleteIfUnchanged(reservation);
       if (!localAcknowledged) {
         throw new Error('passport-anonymous-import.local-ack-mismatch');
       }
@@ -339,7 +341,8 @@ export class PassportAnonymousImportStateFacade {
         importedRideCount,
         null
       );
-    } catch {
+    } catch (error: unknown) {
+      await this.releasePreMutationReservationIfSafe(reservation, error);
       return this.reportItem(
         preview,
         'Failed',
@@ -348,6 +351,32 @@ export class PassportAnonymousImportStateFacade {
         'passport.anonymousDrafts.import.errors.itemFailed'
       );
     }
+  }
+
+  private async releasePreMutationReservationIfSafe(
+    reservation: PassportAnonymousDraft | null,
+    error: unknown
+  ): Promise<void> {
+    if (!reservation
+      || reservation.pendingImport?.targetVisitId
+      || !this.isDefinitiveClientRejection(error)) {
+      return;
+    }
+
+    const editableDraft: PassportAnonymousDraft = {
+      ...reservation,
+      pendingImport: null,
+      updatedAtUtc: new Date().toISOString()
+    };
+    const released: boolean = await this.store.compareAndSet(reservation, editableDraft);
+    if (released) {
+      this.updatePreviewDraft(editableDraft);
+    }
+  }
+
+  private isDefinitiveClientRejection(error: unknown): boolean {
+    return error instanceof HttpErrorResponse
+      && [400, 404, 413, 422].includes(error.status);
   }
 
   private async lockImportIntent(

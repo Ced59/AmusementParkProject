@@ -150,6 +150,32 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
     fakeFacade.createdLocalDraftId.set(null);
   });
 
+  it('keeps a visible route to the local passport when the anonymous flow is done', async () => {
+    const router = { url: '/fr/parks/parc-test', navigate: vi.fn().mockResolvedValue(true) };
+    fakeFacade.createdLocalDraftId.set('draft-1');
+    await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
+      providers: [{ provide: Router, useValue: router }]
+    })
+      .overrideComponent(PassportVisitQuickCreateComponent, {
+        set: {
+          providers: [{ provide: PassportVisitQuickCreateStateFacade, useValue: fakeFacade }]
+        }
+      })
+      .compileComponents();
+    const fixture: ComponentFixture<PassportVisitQuickCreateHostComponent> = TestBed.createComponent(
+      PassportVisitQuickCreateHostComponent
+    );
+    fixture.detectChanges();
+    const dialog: PassportVisitQuickCreateComponent = fixture.debugElement.children[0].children[0]
+      .componentInstance as PassportVisitQuickCreateComponent;
+
+    (dialog as unknown as { openLocalPassport(): void }).openLocalPassport();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'fr', 'passport', 'local']);
+    fakeFacade.createdLocalDraftId.set(null);
+  });
+
   it('notifies its host when a new visit has been created', async () => {
     fakeFacade.createdVisit.set(null);
     fakeFacade.createdLocalDraftId.set(null);
