@@ -69,6 +69,8 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetVisitQuery, ApplicationResult<VisitResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportItemStatisticsQuery, ApplicationResult<PassportItemStatisticsResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportParkStatisticsQuery, ApplicationResult<PassportParkStatisticsResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportYearStatisticsQuery, ApplicationResult<PassportYearStatisticsResult>>));
     }
 
     [Fact]

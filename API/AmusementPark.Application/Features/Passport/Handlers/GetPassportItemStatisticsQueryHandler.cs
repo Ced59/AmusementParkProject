@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Ratings;
@@ -61,47 +62,8 @@ public sealed class GetPassportItemStatisticsQueryHandler
         PassportItemStatistics statistics = PassportItemStatisticsCalculator.Calculate(
             await observationsTask,
             currentRating is null ? null : RatingValue.FromDouble(currentRating.Value));
-        PassportItemStatisticsResult result = new PassportItemStatisticsResult(
-            parkItemId,
-            statistics.RideCount,
-            statistics.VisitCount,
-            new PassportItemRatingCoverageResult(
-                statistics.RatedRideCount,
-                statistics.RideCount,
-                statistics.RatingCoverageRate),
-            ToResult(statistics.FirstExperience),
-            ToResult(statistics.LastExperience),
-            ToResult(statistics.Ratings),
-            statistics.CurrentGlobalRating?.DoubleValue,
-            statistics.CurrentGlobalMinusHistoricalAverage);
+        PassportItemStatisticsResult result =
+            PassportStatisticsResultFactory.CreateItem(parkItemId, statistics);
         return ApplicationResult<PassportItemStatisticsResult>.Success(result);
-    }
-
-    private static PassportItemExperienceResult? ToResult(PassportItemExperience? experience)
-    {
-        return experience is null
-            ? null
-            : new PassportItemExperienceResult(
-                experience.VisitId,
-                new VisitDateResult(
-                    experience.VisitDate.Year,
-                    experience.VisitDate.Month,
-                    experience.VisitDate.Day,
-                    experience.VisitDate.Precision,
-                    experience.VisitDate.IsApproximate));
-    }
-
-    private static PassportItemHistoricalRatingsResult? ToResult(
-        PassportItemRatingStatistics? ratings)
-    {
-        return ratings is null
-            ? null
-            : new PassportItemHistoricalRatingsResult(
-                ratings.RatingCount,
-                ratings.Average,
-                ratings.Median,
-                ratings.Minimum,
-                ratings.Maximum,
-                ratings.PopulationStandardDeviation);
     }
 }

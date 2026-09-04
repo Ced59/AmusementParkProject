@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Visits;
+
 namespace AmusementPark.Application.Features.Passport.Results;
 
 public sealed record PassportItemExperienceResult(
@@ -9,7 +11,7 @@ public sealed record PassportItemRatingCoverageResult(
     long TotalRideCount,
     double Rate);
 
-public sealed record PassportItemHistoricalRatingsResult(
+public sealed record PassportRatingDistributionResult(
     long RatingCount,
     double Average,
     double Median,
@@ -24,6 +26,39 @@ public sealed record PassportItemStatisticsResult(
     PassportItemRatingCoverageResult RatingCoverage,
     PassportItemExperienceResult? FirstExperience,
     PassportItemExperienceResult? LastExperience,
-    PassportItemHistoricalRatingsResult? HistoricalRatings,
+    PassportRatingDistributionResult? HistoricalRatings,
     double? CurrentGlobalRating,
-    double? CurrentGlobalMinusHistoricalAverage);
+    double? CurrentGlobalMinusHistoricalAverage,
+    IReadOnlyCollection<PassportItemVisitStatisticsResult> ByVisit,
+    IReadOnlyCollection<PassportItemYearStatisticsResult> ByYear,
+    IReadOnlyCollection<PassportItemRatingPointResult> RatingTimeline,
+    PassportRatingTrendResult? Trend);
+
+public sealed record PassportItemVisitStatisticsResult(
+    string VisitId,
+    VisitDateResult Date,
+    long RideCount,
+    PassportItemRatingCoverageResult RatingCoverage,
+    PassportRatingDistributionResult? HistoricalRatings);
+
+public sealed record PassportItemYearStatisticsResult(
+    int Year,
+    long RideCount,
+    long VisitCount,
+    PassportItemRatingCoverageResult RatingCoverage,
+    PassportRatingDistributionResult? HistoricalRatings);
+
+public sealed record PassportItemRatingPointResult(
+    string RideOccurrenceId,
+    string VisitId,
+    VisitDateResult Date,
+    long SortPosition,
+    double Rating);
+
+public sealed record PassportRatingTrendResult(
+    PassportRatingTrendKind Kind,
+    long FirstWindowRatingCount,
+    long LastWindowRatingCount,
+    double FirstWindowAverage,
+    double LastWindowAverage,
+    double Delta);

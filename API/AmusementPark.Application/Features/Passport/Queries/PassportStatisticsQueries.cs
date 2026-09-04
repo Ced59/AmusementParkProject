@@ -8,3 +8,13 @@ public sealed record GetPassportItemStatisticsQuery(
     string UserId,
     string ParkItemId)
     : IQuery<ApplicationResult<PassportItemStatisticsResult>>;
+
+public sealed record GetPassportParkStatisticsQuery(
+    string UserId,
+    string ParkId)
+    : IQuery<ApplicationResult<PassportParkStatisticsResult>>;
+
+public sealed record GetPassportYearStatisticsQuery(
+    string UserId,
+    int Year)
+    : IQuery<ApplicationResult<PassportYearStatisticsResult>>;

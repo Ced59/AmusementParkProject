@@ -90,6 +90,24 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterPassportScopeStatisticsSourceReader()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IPassportScopeStatisticsSourceReader));
+        Assert.Equal(
+            typeof(PassportScopeStatisticsSourceReader),
+            registration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
     public void AddInfrastructure_WhenCalled_ShouldRegisterPassportClockAndTimeZoneValidator()
     {
         ServiceCollection services = new ServiceCollection();

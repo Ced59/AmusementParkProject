@@ -1,6 +1,20 @@
 {
-  "version": "5.0.14",
+  "version": "5.0.15",
   "history": [
+    {
+      "version": "5.0.15",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Ton passeport regroupe maintenant tes statistiques par parc et par année.",
+        "en": "Your passport now groups your statistics by park and year.",
+        "de": "Dein Besuchspass fasst deine Statistiken jetzt nach Park und Jahr zusammen.",
+        "nl": "Je paspoort groepeert je statistieken nu per park en jaar.",
+        "it": "Il tuo passaporto raggruppa ora le statistiche per parco e anno.",
+        "es": "Tu pasaporte agrupa ahora tus estadísticas por parque y año.",
+        "pl": "Twój paszport grupuje teraz statystyki według parku i roku.",
+        "pt": "O teu passaporte agrupa agora as estatísticas por parque e por ano."
+      }
+    },
     {
       "version": "5.0.14",
       "releasedAt": "2026-09-04",

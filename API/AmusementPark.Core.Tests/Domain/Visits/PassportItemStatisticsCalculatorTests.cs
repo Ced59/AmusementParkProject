@@ -29,10 +29,10 @@ public sealed class PassportItemStatisticsCalculatorTests
     {
         PassportItemRideObservation[] observations =
         {
-            Create("visit-b", VisitDate.ForDay(2025, 7, 2), 10),
-            Create("visit-a", VisitDate.ForYear(2024, true), 2),
-            Create("visit-b", VisitDate.ForDay(2025, 7, 2), 7),
-            Create("visit-c", VisitDate.ForMonth(2026, 3), null),
+            Create("occ-b-2", "visit-b", VisitDate.ForDay(2025, 7, 2), 2048, 10),
+            Create("occ-a-1", "visit-a", VisitDate.ForYear(2024, true), 1024, 2),
+            Create("occ-b-1", "visit-b", VisitDate.ForDay(2025, 7, 2), 1024, 7),
+            Create("occ-c-1", "visit-c", VisitDate.ForMonth(2026, 3), 1024, null),
         };
 
         PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
@@ -49,7 +49,7 @@ public sealed class PassportItemStatisticsCalculatorTests
         Assert.Equal("visit-c", result.LastExperience?.VisitId);
         Assert.Equal(VisitDatePrecision.Month, result.LastExperience?.VisitDate.Precision);
 
-        PassportItemRatingStatistics ratings = Assert.IsType<PassportItemRatingStatistics>(result.Ratings);
+        PassportRatingStatistics ratings = Assert.IsType<PassportRatingStatistics>(result.Ratings);
         Assert.Equal(3, ratings.RatingCount);
         Assert.Equal(19, ratings.HalfStepSum);
         Assert.Equal(19d / 6d, ratings.Average, 12);
@@ -59,6 +59,22 @@ public sealed class PassportItemStatisticsCalculatorTests
         Assert.Equal(Math.Sqrt(32.666666666666664d / 3d) / 2d, ratings.PopulationStandardDeviation, 12);
         Assert.Equal(4.5d, result.CurrentGlobalRating?.DoubleValue);
         Assert.Equal(4.5d - (19d / 6d), result.CurrentGlobalMinusHistoricalAverage);
+        Assert.Equal(3, result.ByVisit.Count);
+        PassportItemVisitStatistics visitB = Assert.Single(
+            result.ByVisit,
+            static visit => visit.VisitId == "visit-b");
+        Assert.Equal(2, visitB.RideCount);
+        Assert.Equal(2, visitB.RatedRideCount);
+        Assert.Equal(4.25d, visitB.Ratings!.Average);
+        Assert.Equal(new[] { 2024, 2025, 2026 }, result.ByYear.Select(static year => year.Year));
+        Assert.Collection(
+            result.RatingTimeline,
+            point => Assert.Equal("occ-a-1", point.RideOccurrenceId),
+            point => Assert.Equal("occ-b-1", point.RideOccurrenceId),
+            point => Assert.Equal("occ-b-2", point.RideOccurrenceId));
+        Assert.Equal(PassportRatingTrendKind.Rising, result.Trend?.Kind);
+        Assert.Equal(1d, result.Trend?.FirstWindowAverage);
+        Assert.Equal(5d, result.Trend?.LastWindowAverage);
     }
 
     [Fact]
@@ -66,8 +82,8 @@ public sealed class PassportItemStatisticsCalculatorTests
     {
         PassportItemRideObservation[] observations =
         {
-            Create("visit-a", VisitDate.ForDay(2025, 1, 1), 7),
-            Create("visit-b", VisitDate.ForDay(2025, 1, 2), 8),
+            Create("occ-a", "visit-a", VisitDate.ForDay(2025, 1, 1), 1024, 7),
+            Create("occ-b", "visit-b", VisitDate.ForDay(2025, 1, 2), 1024, 8),
         };
 
         PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
@@ -84,9 +100,9 @@ public sealed class PassportItemStatisticsCalculatorTests
     {
         PassportItemRideObservation[] observations =
         {
-            Create("visit-day", VisitDate.ForDay(2025, 6, 15), null),
-            Create("visit-year", VisitDate.ForYear(2025), null),
-            Create("visit-month", VisitDate.ForMonth(2025, 6), null),
+            Create("occ-day", "visit-day", VisitDate.ForDay(2025, 6, 15), 1024, null),
+            Create("occ-year", "visit-year", VisitDate.ForYear(2025), 1024, null),
+            Create("occ-month", "visit-month", VisitDate.ForMonth(2025, 6), 1024, null),
         };
 
         PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
@@ -99,14 +115,41 @@ public sealed class PassportItemStatisticsCalculatorTests
         Assert.Equal(15, result.LastExperience?.VisitDate.Day);
     }
 
+    [Fact]
+    public void Calculate_WithTooFewRatingsOrOneVisit_ShouldNotInferATrend()
+    {
+        PassportItemStatistics tooFew = PassportItemStatisticsCalculator.Calculate(
+            new[]
+            {
+                Create("occ-a", "visit-a", VisitDate.ForYear(2024), 1024, 6),
+                Create("occ-b", "visit-b", VisitDate.ForYear(2025), 1024, 8),
+            },
+            null);
+        PassportItemStatistics oneVisit = PassportItemStatisticsCalculator.Calculate(
+            new[]
+            {
+                Create("occ-a", "visit-a", VisitDate.ForYear(2025), 1024, 6),
+                Create("occ-b", "visit-a", VisitDate.ForYear(2025), 2048, 8),
+                Create("occ-c", "visit-a", VisitDate.ForYear(2025), 3072, 10),
+            },
+            null);
+
+        Assert.Null(tooFew.Trend);
+        Assert.Null(oneVisit.Trend);
+    }
+
     private static PassportItemRideObservation Create(
+        string occurrenceId,
         string visitId,
         VisitDate visitDate,
+        long sortPosition,
         byte? ratingHalfSteps)
     {
         return new PassportItemRideObservation(
+            occurrenceId,
             visitId,
             visitDate,
+            sortPosition,
             ratingHalfSteps.HasValue
                 ? RatingValue.FromHalfSteps(ratingHalfSteps.Value)
                 : null);

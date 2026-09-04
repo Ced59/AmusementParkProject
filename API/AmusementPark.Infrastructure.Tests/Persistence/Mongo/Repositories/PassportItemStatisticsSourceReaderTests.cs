@@ -41,6 +41,7 @@ public sealed class PassportItemStatisticsSourceReaderTests
         Assert.Equal(
             new[] { "visit-1", "visit-2" },
             rendered["_id"]["$in"].AsBsonArray.Select(static value => value.AsString));
+        Assert.Equal(VisitStatus.Archived.ToString(), rendered["status"]["$ne"].AsString);
     }
 
     [Theory]
@@ -117,7 +118,9 @@ public sealed class PassportItemStatisticsSourceReaderTests
     {
         return new PassportItemOccurrenceStatisticsSourceDocument
         {
+            Id = string.Concat(visitId, "-", assessmentHalfSteps?.ToString() ?? "none", "-", fenceToken?.ToString() ?? "legacy"),
             VisitId = visitId,
+            SortPosition = 1024,
             AssessmentValueHalfSteps = assessmentHalfSteps,
             ContentMutationFenceToken = fenceToken,
         };
