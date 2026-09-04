@@ -19,7 +19,6 @@ public enum GlobalRatingSuggestionReasonDto
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum GlobalRatingSuggestionInteractionTypeDto
 {
-    Presented = 1,
     Accepted = 2,
     Dismissed = 3,
 }
@@ -68,4 +67,24 @@ public sealed class RecordGlobalRatingSuggestionInteractionRequest
     public GlobalRatingSuggestionTargetTypeDto TargetType { get; init; }
     public string TargetId { get; init; } = string.Empty;
     public GlobalRatingSuggestionInteractionTypeDto InteractionType { get; init; }
+}
+
+public sealed class GlobalRatingSuggestionPresentationTargetDto
+{
+    public GlobalRatingSuggestionTargetTypeDto TargetType { get; init; }
+    public string TargetId { get; init; } = string.Empty;
+}
+
+public sealed class PresentGlobalRatingSuggestionsRequest
+{
+    public IReadOnlyCollection<GlobalRatingSuggestionPresentationTargetDto> Targets { get; init; } =
+        Array.Empty<GlobalRatingSuggestionPresentationTargetDto>();
+}
+
+public sealed class GlobalRatingSuggestionPresentationDto
+{
+    public bool IsAvailable { get; init; }
+    public bool IsEnabled { get; init; }
+    public IReadOnlyCollection<GlobalRatingSuggestionPresentationTargetDto> PresentedTargets { get; init; } =
+        Array.Empty<GlobalRatingSuggestionPresentationTargetDto>();
 }

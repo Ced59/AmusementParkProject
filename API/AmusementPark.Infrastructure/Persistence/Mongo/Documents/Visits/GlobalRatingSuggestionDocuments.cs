@@ -34,6 +34,25 @@ public sealed class GlobalRatingSuggestionStateDocument : MongoDocumentBase
     [BsonElement("isAwaitingResolution")]
     [BsonIgnoreIfDefault]
     public bool IsAwaitingResolution { get; set; }
+
+    [BsonElement("pendingAnalyticsEvents")]
+    [BsonIgnoreIfDefault]
+    public List<GlobalRatingSuggestionPendingAnalyticsEventDocument> PendingAnalyticsEvents { get; set; } =
+        new List<GlobalRatingSuggestionPendingAnalyticsEventDocument>();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class GlobalRatingSuggestionPendingAnalyticsEventDocument
+{
+    [BsonElement("eventId")]
+    public string EventId { get; set; } = string.Empty;
+
+    [BsonElement("interactionType")]
+    [BsonRepresentation(BsonType.String)]
+    public GlobalRatingSuggestionInteractionType InteractionType { get; set; }
+
+    [BsonElement("occurredAtUtc")]
+    public DateTime OccurredAtUtc { get; set; }
 }
 
 [BsonIgnoreExtraElements]

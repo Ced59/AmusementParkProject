@@ -179,6 +179,26 @@ describe('RatingsApiService', () => {
     });
   });
 
+  it('loads an exact authenticated personal rating target by identifier', () => {
+    service.getMyParkItemRankings(
+      1,
+      10,
+      'Attraction',
+      null,
+      'Carousel',
+      'item-42',
+    ).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/me/rankings/park-items?page=1&size=10&category=Attraction&search=Carousel&targetId=item-42`,
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      data: [],
+      pagination: { page: 1, pageSize: 10, totalItems: 0, totalPages: 0 },
+    });
+  });
+
   it('changes only the authenticated user ranking visibility', () => {
     service.setMyShareVisibility(true).subscribe();
 

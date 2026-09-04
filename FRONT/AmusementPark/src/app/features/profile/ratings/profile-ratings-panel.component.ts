@@ -235,7 +235,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
     this.currentFilter.set(filter);
     this.selectedAttractionType.set(null);
     this.searchTerm.set(search);
-    this.stateFacade.load(1, filter.category, search);
+    this.stateFacade.load(1, filter.category, search, null, suggestion.targetId);
     setTimeout((): void => {
       this.elementRef.nativeElement.querySelector<HTMLElement>('.profile-ratings__results')
         ?.scrollIntoView({ behavior: 'smooth', block: 'start' });

@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.WebAPI.Authorization;
@@ -31,6 +32,9 @@ public sealed class PassportRatingSuggestionsController : ControllerBase
     private readonly ICommandHandler<
         RecordGlobalRatingSuggestionInteractionCommand,
         ApplicationResult<GlobalRatingSuggestionPreferenceResult>> interactionHandler;
+    private readonly ICommandHandler<
+        PresentGlobalRatingSuggestionsCommand,
+        ApplicationResult<GlobalRatingSuggestionPresentationResult>> presentationHandler;
 
     public PassportRatingSuggestionsController(
         IQueryHandler<
@@ -41,11 +45,43 @@ public sealed class PassportRatingSuggestionsController : ControllerBase
             ApplicationResult<GlobalRatingSuggestionPreferenceResult>> preferenceHandler,
         ICommandHandler<
             RecordGlobalRatingSuggestionInteractionCommand,
-            ApplicationResult<GlobalRatingSuggestionPreferenceResult>> interactionHandler)
+            ApplicationResult<GlobalRatingSuggestionPreferenceResult>> interactionHandler,
+        ICommandHandler<
+            PresentGlobalRatingSuggestionsCommand,
+            ApplicationResult<GlobalRatingSuggestionPresentationResult>> presentationHandler)
     {
         this.queryHandler = queryHandler;
         this.preferenceHandler = preferenceHandler;
         this.interactionHandler = interactionHandler;
+        this.presentationHandler = presentationHandler;
+    }
+
+    [HttpPost("presentations")]
+    [ProducesResponseType(typeof(GlobalRatingSuggestionPresentationDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> PresentAsync(
+        [FromBody] PresentGlobalRatingSuggestionsRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.UnauthorizedResult();
+        }
+
+        ApplicationResult<GlobalRatingSuggestionPresentationResult> result =
+            await this.presentationHandler.HandleAsync(
+                new PresentGlobalRatingSuggestionsCommand(
+                    userId,
+                    request.Targets.Select(static target =>
+                        new GlobalRatingSuggestionTargetKey(
+                            target.TargetType.ToDomain(),
+                            target.TargetId)).ToArray()),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
     }
 
     [HttpGet]

@@ -97,8 +97,16 @@ public sealed class GlobalRatingSuggestionPersistenceTests
     [Fact]
     public void Indexes_EnforcePerUserTargetsAndBoundInteractionRetention()
     {
+        IReadOnlyCollection<CreateIndexModel<GlobalRatingSuggestionStateDocument>> stateIndexes =
+            GlobalRatingSuggestionMongoDefinitions.BuildStateIndexes();
         CreateIndexModel<GlobalRatingSuggestionStateDocument> state = Assert.Single(
-            GlobalRatingSuggestionMongoDefinitions.BuildStateIndexes());
+            stateIndexes,
+            static index => index.Options.Name ==
+                "ratingSuggestionState_user_target_unique");
+        CreateIndexModel<GlobalRatingSuggestionStateDocument> outbox = Assert.Single(
+            stateIndexes,
+            static index => index.Options.Name ==
+                "ratingSuggestionState_pendingAnalytics");
         CreateIndexModel<GlobalRatingSuggestionPreferenceDocument> preference = Assert.Single(
             GlobalRatingSuggestionMongoDefinitions.BuildPreferenceIndexes());
         CreateIndexModel<GlobalRatingSuggestionInteractionDocument> ttl = Assert.Single(
@@ -109,6 +117,10 @@ public sealed class GlobalRatingSuggestionPersistenceTests
         Assert.Equal(
             new BsonDocument { { "userId", 1 }, { "targetType", 1 }, { "targetId", 1 } },
             Render(state.Keys));
+        Assert.True(outbox.Options.Sparse);
+        Assert.Equal(
+            new BsonDocument { { "pendingAnalyticsEvents.eventId", 1 } },
+            Render(outbox.Keys));
         Assert.True(preference.Options.Unique);
         Assert.Equal(TimeSpan.FromDays(400), ttl.Options.ExpireAfter);
     }
@@ -190,6 +202,7 @@ public sealed class GlobalRatingSuggestionPersistenceTests
     public async Task TerminalTransition_UsesExpectedPresentationAndAwaitingStateAsAtomicFence()
     {
         FilterDefinition<GlobalRatingSuggestionStateDocument>? capturedFilter = null;
+        UpdateDefinition<GlobalRatingSuggestionStateDocument>? capturedUpdate = null;
         Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>> states =
             new Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>>(MockBehavior.Strict);
         states.Setup(value => value.UpdateOneAsync(
@@ -199,20 +212,18 @@ public sealed class GlobalRatingSuggestionPersistenceTests
                 CancellationToken.None))
             .Callback((
                 FilterDefinition<GlobalRatingSuggestionStateDocument> filter,
-                UpdateDefinition<GlobalRatingSuggestionStateDocument> _,
-                UpdateOptions _,
-                CancellationToken _) => capturedFilter = filter)
+                UpdateDefinition<GlobalRatingSuggestionStateDocument> update,
+                UpdateOptions _options,
+                CancellationToken _cancellationToken) =>
+            {
+                capturedFilter = filter;
+                capturedUpdate = update;
+            })
             .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>> preferences =
             new Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>>(MockBehavior.Strict);
         Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>> interactions =
             new Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>>(MockBehavior.Strict);
-        interactions.Setup(value => value.InsertOneAsync(
-                It.Is<GlobalRatingSuggestionInteractionDocument>(static document =>
-                    document.InteractionType == GlobalRatingSuggestionInteractionType.Dismissed),
-                null,
-                CancellationToken.None))
-            .Returns(Task.CompletedTask);
         GlobalRatingSuggestionStateRepository repository =
             new GlobalRatingSuggestionStateRepository(
                 states.Object,
@@ -233,9 +244,84 @@ public sealed class GlobalRatingSuggestionPersistenceTests
         BsonDocument rendered = Render(capturedFilter);
         Assert.Equal(RatingUpdatedAtUtc, rendered["lastPresentedAtUtc"].ToUniversalTime());
         Assert.True(rendered["isAwaitingResolution"].AsBoolean);
+        Assert.NotNull(capturedUpdate);
+        BsonDocument renderedUpdate = Render(capturedUpdate);
+        BsonDocument pendingEvent = renderedUpdate["$push"]["pendingAnalyticsEvents"].AsBsonDocument;
+        Assert.Equal("Dismissed", pendingEvent["interactionType"].AsString);
+        Assert.Equal(
+            RatingUpdatedAtUtc.AddHours(1),
+            pendingEvent["occurredAtUtc"].ToUniversalTime());
+        states.VerifyAll();
+        interactions.VerifyNoOtherCalls();
+        preferences.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileBatch_PublishesPendingEventIdempotentlyBeforeRemovingIt()
+    {
+        GlobalRatingSuggestionStateDocument state = new GlobalRatingSuggestionStateDocument
+        {
+            Id = "state-1",
+            UserId = "owner-1",
+            TargetType = RatingTargetType.ParkItem,
+            TargetId = "item-1",
+            PendingAnalyticsEvents = new List<GlobalRatingSuggestionPendingAnalyticsEventDocument>
+            {
+                new GlobalRatingSuggestionPendingAnalyticsEventDocument
+                {
+                    EventId = "event-1",
+                    InteractionType = GlobalRatingSuggestionInteractionType.Accepted,
+                    OccurredAtUtc = RatingUpdatedAtUtc,
+                },
+            },
+        };
+        Mock<IAsyncCursor<GlobalRatingSuggestionStateDocument>> cursor =
+            new Mock<IAsyncCursor<GlobalRatingSuggestionStateDocument>>(MockBehavior.Strict);
+        cursor.SetupGet(value => value.Current).Returns(new[] { state });
+        cursor.SetupSequence(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(true)
+            .ReturnsAsync(false);
+        cursor.Setup(value => value.Dispose());
+        Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>> states =
+            new Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>>(MockBehavior.Strict);
+        states.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.IsAny<FindOptions<
+                    GlobalRatingSuggestionStateDocument,
+                    GlobalRatingSuggestionStateDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        states.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.IsAny<UpdateDefinition<GlobalRatingSuggestionStateDocument>>(),
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>> preferences =
+            new Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>> interactions =
+            new Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>>(MockBehavior.Strict);
+        interactions.Setup(value => value.InsertOneAsync(
+                It.Is<GlobalRatingSuggestionInteractionDocument>(document =>
+                    document.Id == "event-1"
+                    && document.InteractionType == GlobalRatingSuggestionInteractionType.Accepted
+                    && !string.IsNullOrWhiteSpace(document.UserCohortKey)),
+                null,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        GlobalRatingSuggestionStateRepository repository =
+            new GlobalRatingSuggestionStateRepository(
+                states.Object,
+                preferences.Object,
+                interactions.Object);
+
+        int reconciled = await repository.ReconcileBatchAsync(10, CancellationToken.None);
+
+        Assert.Equal(1, reconciled);
         states.VerifyAll();
         interactions.VerifyAll();
         preferences.VerifyNoOtherCalls();
+        cursor.VerifyAll();
     }
 
     private static GlobalRatingSuggestionRatingSourceDocument Rating(
@@ -294,5 +380,14 @@ public sealed class GlobalRatingSuggestionPersistenceTests
         return filter.Render(new RenderArgs<TDocument>(
             serializer,
             BsonSerializer.SerializerRegistry));
+    }
+
+    private static BsonDocument Render<TDocument>(UpdateDefinition<TDocument> update)
+    {
+        IBsonSerializer<TDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<TDocument>();
+        return update.Render(new RenderArgs<TDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry)).AsBsonDocument;
     }
 }

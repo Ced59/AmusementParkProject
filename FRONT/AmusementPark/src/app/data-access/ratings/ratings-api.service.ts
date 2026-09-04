@@ -103,8 +103,13 @@ export class RatingsApiService {
     return this.http.put<UserRankingShareSettings>(url, request, this.jsonHttpOptions);
   }
 
-  getMyParkRankings(page: number = 1, size: number = 10, search: string | null = null): Observable<UserParkRatingRankingsPage> {
-    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkRankings(page, size, search)}`;
+  getMyParkRankings(
+    page: number = 1,
+    size: number = 10,
+    search: string | null = null,
+    targetId: string | null = null
+  ): Observable<UserParkRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkRankings(page, size, search, targetId)}`;
     return this.http.get<PagedCollectionResponse<UserParkRatingRanking>>(url).pipe(
       map((response: PagedCollectionResponse<UserParkRatingRanking>) => unwrapPagedCollection<UserParkRatingRanking>(response))
     );
@@ -115,9 +120,10 @@ export class RatingsApiService {
     size: number,
     category: string,
     type: string | null = null,
-    search: string | null = null
+    search: string | null = null,
+    targetId: string | null = null
   ): Observable<UserParkItemRatingRankingsPage> {
-    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkItemRankings(page, size, category, type, search)}`;
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkItemRankings(page, size, category, type, search, targetId)}`;
     return this.http.get<PagedCollectionResponse<UserParkItemRatingRanking>>(url).pipe(
       map((response: PagedCollectionResponse<UserParkItemRatingRanking>) => unwrapPagedCollection<UserParkItemRatingRanking>(response))
     );

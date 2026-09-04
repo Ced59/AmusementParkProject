@@ -49,6 +49,23 @@ internal static class GlobalRatingSuggestionHttpMappers
         };
     }
 
+    public static GlobalRatingSuggestionPresentationDto ToHttp(
+        this GlobalRatingSuggestionPresentationResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return new GlobalRatingSuggestionPresentationDto
+        {
+            IsAvailable = result.IsAvailable,
+            IsEnabled = result.IsEnabled,
+            PresentedTargets = result.PresentedTargets.Select(static target =>
+                new GlobalRatingSuggestionPresentationTargetDto
+                {
+                    TargetType = (GlobalRatingSuggestionTargetTypeDto)target.TargetType,
+                    TargetId = target.TargetId,
+                }).ToArray(),
+        };
+    }
+
     public static RatingTargetType ToDomain(
         this GlobalRatingSuggestionTargetTypeDto targetType)
     {

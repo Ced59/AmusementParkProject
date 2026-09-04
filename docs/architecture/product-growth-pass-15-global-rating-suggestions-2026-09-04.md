@@ -46,7 +46,8 @@ ProfileRatingsPanelComponent
        └─ GlobalRatingSuggestionsStateFacade
             └─ GLOBAL_RATING_SUGGESTIONS_API_PORT
                  └─ GlobalRatingSuggestionsApiService
-                      └─ API privée /me/passport/rating-update-suggestions
+                      ├─ GET des candidats privés
+                      └─ POST batché des présentations
 
 WebAPI
   └─ handlers Application
@@ -62,26 +63,27 @@ La WebAPI extrait l'identité authentifiée et mappe les DTO. Les handlers norma
 ## Contrats privés
 
 - `GET /api/me/passport/rating-update-suggestions` : suggestions éligibles, préférence et paramètres publics de cadence ;
-- `POST /api/me/passport/rating-update-suggestions/interactions` : présentation, acceptation ou rejet explicite ;
+- `POST /api/me/passport/rating-update-suggestions/presentations` : revalidation et enregistrement en un lot borné de trois présentations au maximum ;
+- `POST /api/me/passport/rating-update-suggestions/interactions` : acceptation ou rejet explicite ;
 - `PUT /api/me/passport/rating-update-suggestions/preference` : activation ou désactivation par la personne.
 
-Les trois endpoints exigent un compte actif non bloqué, portent `no-store` et ne sont jamais transférés dans le cache SSR. Une interaction est rejetée si la note globale n'appartient plus à l'utilisateur.
+Les quatre endpoints exigent un compte actif non bloqué, portent `no-store` et ne sont jamais transférés dans le cache SSR. Une interaction est rejetée si la note globale n'appartient plus à l'utilisateur.
 
 ## Persistance et minimisation
 
 Trois collections bornent clairement les responsabilités :
 
-- `global-rating-suggestion-states` : une ligne unique par utilisateur, type de cible et cible, avec seulement les dates de présentation, acceptation et rejet ;
+- `global-rating-suggestion-states` : une ligne unique par utilisateur, type de cible et cible, avec les dates de présentation, acceptation et rejet ainsi que l'outbox analytique encore à publier ;
 - `global-rating-suggestion-preferences` : une préférence unique par utilisateur ;
 - `global-rating-suggestion-interactions` : événements analytiques conservés 400 jours au maximum.
 
-L'événement analytique ne contient ni identifiant de cible ni valeur de note. Il conserve seulement une clé de cohorte utilisateur hachée, le type de cible, l'action et sa date. Les index uniques empêchent les états dupliqués ; un index TTL purge automatiquement les événements analytiques. La transition Mongo compare atomiquement la dernière présentation attendue et l'état `isAwaitingResolution`, ce qui empêche deux requêtes concurrentes ou rejouées de produire deux événements.
+L'événement analytique ne contient ni identifiant de cible ni valeur de note. Il conserve seulement une clé de cohorte utilisateur hachée, le type de cible, l'action et sa date. Les index uniques empêchent les états dupliqués ; un index TTL purge automatiquement les événements analytiques. La transition Mongo compare atomiquement la dernière présentation attendue et l'état `isAwaitingResolution`, puis ajoute dans la même écriture un événement d'outbox doté d'un identifiant stable. Un worker borné publie ensuite cet événement dans la collection analytique et le retire de l'outbox. Si le processus s'interrompt entre les deux écritures, le même identifiant rend la reprise idempotente : aucune transition validée ne perd sa mesure et aucun rejeu ne la duplique.
 
 Les observations de parc proviennent des assessments embarqués dans les visites. Les observations d'attraction proviennent des assessments de rides non supprimés et ne sont lues que si leur fence de contenu correspond à la visite parente. Elles sont indexées une seule fois par parc et attraction avant l'évaluation des notes, afin de conserver une construction linéaire plutôt qu'un rescan par cible.
 
 ## Cadence et choix utilisateur
 
-La réception d'une suggestion visible demande l'enregistrement d'une présentation. Le serveur recalcule alors l'éligibilité et vérifie encore que la cible peut être notée avant d'ouvrir la fenêtre d'interaction. L'acceptation et le rejet sont deux actions distinctes. Une acceptation signifie uniquement « conduire vers l'éditeur existant » ; elle ne transporte aucune nouvelle valeur. Pour une attraction, le filtre recherche son nom exact afin de faire apparaître la note visée dès la première page. Une personne peut désactiver l'ensemble des suggestions et les réactiver depuis le même panneau.
+La réception d'une suggestion visible demande l'enregistrement d'une présentation. Angular conserve le panneau en chargement et n'affiche que les cartes dont le serveur a accusé la présentation : les boutons ne peuvent donc pas devancer l'ouverture de leur fenêtre d'interaction. Le serveur relit les observations privées une seule fois pour tout le lot, recalcule chaque éligibilité et vérifie encore que chaque cible peut être notée. L'acceptation et le rejet sont deux actions distinctes. Une acceptation signifie uniquement « conduire vers l'éditeur existant » ; elle ne transporte aucune nouvelle valeur. La catégorie renvoyée vient des métadonnées actuelles de l'item et la liste personnelle reçoit également son identifiant exact ; elle ne dépend donc ni d'une ancienne catégorie dénormalisée ni de la position d'un nom ambigu dans la pagination. Une personne peut désactiver l'ensemble des suggestions et les réactiver depuis le même panneau.
 
 Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut, appartient au domaine produit Passeport. Son comportement de repli est l'absence de toute suggestion, sans effet sur les notes ni sur le journal. Il sert de kill switch et doit être réévalué à la stabilisation PASS-20.
 
@@ -98,7 +100,7 @@ Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut
 ## Preuves automatisées
 
 - Core : seuil minimal, écart significatif, médiane, sens de la suggestion, cooldown, fenêtre d'interaction et désactivation ;
-- Application : orchestration, kill switch sans lecture des observations, résolution de cible, présentation revalidée, propriété et rejeu idempotent ;
-- Infrastructure : séparation parc/ride, indexation linéaire des observations, fence de contenu, rejet des données invalides, transitions atomiques, index uniques, TTL et absence de valeurs exactes dans l'analytics ;
-- WebAPI : identité authentifiée, mapping, route privée `no-store` et contrat d'interaction sans valeur de note ;
-- Angular : endpoints, port de façade, mapping localisé, présentation, acceptation, rejet, opt-out et contrat responsive.
+- Application : orchestration, kill switch sans lecture des observations, catégorie courante, présentation batchée avec une seule lecture privée, propriété, ciblage exact et rejeu idempotent ;
+- Infrastructure : séparation parc/ride, indexation linéaire des observations, fence de contenu, rejet des données invalides, transition et outbox atomiques, reprise idempotente, index uniques, TTL et absence de valeurs exactes dans l'analytics ;
+- WebAPI : identité authentifiée, mapping, routes privées `no-store`, lot borné et contrat d'interaction sans valeur de note ;
+- Angular : endpoints, port de façade, mapping localisé, attente de l'accusé de présentation, ciblage par identifiant, acceptation, rejet, opt-out et contrat responsive.

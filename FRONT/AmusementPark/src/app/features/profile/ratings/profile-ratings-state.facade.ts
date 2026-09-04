@@ -30,6 +30,7 @@ export class ProfileRatingsStateFacade {
   private readonly categorySignal = signal<string | null>(null);
   private readonly parkItemTypeSignal = signal<string | null>(null);
   private readonly searchSignal = signal<string | null>(null);
+  private readonly targetIdSignal = signal<string | null>(null);
   private readonly savingRatingIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
 
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -61,15 +62,23 @@ export class ProfileRatingsStateFacade {
     page: number = 1,
     category: string | null = null,
     search: string | null = null,
-    parkItemType: string | null = null
+    parkItemType: string | null = null,
+    targetId: string | null = null
   ): void {
     this.categorySignal.set(category);
     this.parkItemTypeSignal.set(category === 'Attraction' ? parkItemType : null);
     this.searchSignal.set(normalizeSearch(search));
+    this.targetIdSignal.set(normalizeSearch(targetId));
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
 
-    this.loadRankings(page, category, this.parkItemTypeSignal(), this.searchSignal()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.loadRankings(
+      page,
+      category,
+      this.parkItemTypeSignal(),
+      this.searchSignal(),
+      this.targetIdSignal()
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
         if (category) {
           this.parkRankingsSignal.set([]);
@@ -105,7 +114,8 @@ export class ProfileRatingsStateFacade {
       pagination.currentPage + 1,
       category,
       this.parkItemTypeSignal(),
-      this.searchSignal()
+      this.searchSignal(),
+      this.targetIdSignal()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
         if (category) {
@@ -151,7 +161,13 @@ export class ProfileRatingsStateFacade {
         }
 
         this.setRatingSaving(ratingId, false);
-        this.load(1, this.categorySignal(), this.searchSignal(), this.parkItemTypeSignal());
+        this.load(
+          1,
+          this.categorySignal(),
+          this.searchSignal(),
+          this.parkItemTypeSignal(),
+          this.targetIdSignal()
+        );
         this.toastMessageService.add(
           'success',
           this.translateService.instant('common.success'),
@@ -170,7 +186,8 @@ export class ProfileRatingsStateFacade {
     page: number,
     category: string | null,
     parkItemType: string | null,
-    search: string | null
+    search: string | null,
+    targetId: string | null
   ): Observable<UserParkRatingRankingsPage | UserParkItemRatingRankingsPage> {
     return category
       ? this.ratingsApiService.getMyParkItemRankings(
@@ -178,9 +195,15 @@ export class ProfileRatingsStateFacade {
         PROFILE_RATINGS_PAGE_SIZE,
         category,
         parkItemType,
-        search
+        search,
+        targetId
       )
-      : this.ratingsApiService.getMyParkRankings(page, PROFILE_RATINGS_PAGE_SIZE, search);
+      : this.ratingsApiService.getMyParkRankings(
+        page,
+        PROFILE_RATINGS_PAGE_SIZE,
+        search,
+        targetId
+      );
   }
 
   private findRating(ratingId: string): UserRatingListItem | null {

@@ -27,6 +27,7 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     category: string;
     type: string | null;
     search: string | null;
+    targetId: string | null;
   }> = [];
   readonly parkRankings: UserParkRatingRanking[] = [
     {
@@ -54,7 +55,12 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     }
   ];
 
-  getMyParkRankings(_page: number, _size: number, _search: string | null): Observable<UserParkRatingRankingsPage> {
+  getMyParkRankings(
+    _page: number,
+    _size: number,
+    _search: string | null,
+    _targetId: string | null
+  ): Observable<UserParkRatingRankingsPage> {
     return of({
       items: this.parkRankings,
       pagination: {
@@ -72,9 +78,10 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     _size: number,
     category: string,
     type: string | null,
-    search: string | null
+    search: string | null,
+    targetId: string | null
   ): Observable<UserParkItemRatingRankingsPage> {
-    this.parkItemCalls.push({ page, category, type, search });
+    this.parkItemCalls.push({ page, category, type, search, targetId });
     if (this.parkItemResponse) {
       return this.parkItemResponse;
     }
@@ -227,8 +234,8 @@ describe('ProfileRatingsPanelComponent', () => {
     quickFilterButtons[2]?.click();
 
     expect(port.parkItemCalls.slice(-2)).toEqual([
-      { page: 1, category: 'Attraction', type: 'RollerCoaster', search: null },
-      { page: 1, category: 'Attraction', type: 'FlatRide', search: null }
+      { page: 1, category: 'Attraction', type: 'RollerCoaster', search: null, targetId: null },
+      { page: 1, category: 'Attraction', type: 'FlatRide', search: null, targetId: null }
     ]);
   });
 
@@ -285,7 +292,8 @@ describe('ProfileRatingsPanelComponent', () => {
       page: 2,
       category: 'Attraction',
       type: null,
-      search: 'ride'
+      search: 'ride',
+      targetId: null
     });
   });
 
@@ -315,7 +323,8 @@ describe('ProfileRatingsPanelComponent', () => {
       page: 1,
       category: 'Attraction',
       type: null,
-      search: 'Taron'
+      search: 'Taron',
+      targetId: 'item-1'
     });
     expect(port.upsertCalls).toEqual([]);
   });

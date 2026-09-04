@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   GlobalRatingSuggestion,
   GlobalRatingSuggestionInteractionType,
+  GlobalRatingSuggestionPresentationTarget,
   RecordGlobalRatingSuggestionInteractionRequest
 } from '@app/models/passport/global-rating-suggestion.models';
 import { mapGlobalRatingSuggestionView } from '../mappers/global-rating-suggestion-view.mapper';
@@ -42,16 +43,55 @@ export class GlobalRatingSuggestionsStateFacade {
     this.language = language;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
+    this.sourceSuggestions = [];
+    this.remap();
     this.api.getSuggestions().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response): void => {
         this.availableSignal.set(response.isAvailable);
         this.enabledSignal.set(response.isEnabled);
-        this.sourceSuggestions = response.suggestions;
-        this.remap();
-        this.loadingSignal.set(false);
-        for (const suggestion of response.suggestions) {
-          this.recordSilently(suggestion, 'Presented');
+        if (!response.isAvailable || !response.isEnabled || response.suggestions.length === 0) {
+          this.sourceSuggestions = [];
+          this.remap();
+          this.loadingSignal.set(false);
+          return;
         }
+
+        const targets: GlobalRatingSuggestionPresentationTarget[] = response.suggestions.map(
+          (suggestion: GlobalRatingSuggestion): GlobalRatingSuggestionPresentationTarget => {
+            return this.toTarget(suggestion);
+          }
+        );
+        this.api.presentSuggestions({ targets })
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: (presentation): void => {
+              const presentedTargets: GlobalRatingSuggestionPresentationTarget[] =
+                presentation.isAvailable && presentation.isEnabled
+                  ? presentation.presentedTargets
+                  : [];
+              const acknowledgedTargets = new Set<string>(presentedTargets.map(
+                (target: GlobalRatingSuggestionPresentationTarget): string => {
+                  return `${target.targetType}:${target.targetId}`;
+                }
+              ));
+              this.availableSignal.set(presentation.isAvailable);
+              this.enabledSignal.set(presentation.isEnabled);
+              this.sourceSuggestions = response.suggestions.filter(
+                (suggestion: GlobalRatingSuggestion): boolean => {
+                  const target: GlobalRatingSuggestionPresentationTarget = this.toTarget(suggestion);
+                  return acknowledgedTargets.has(`${target.targetType}:${target.targetId}`);
+                }
+              );
+              this.remap();
+              this.loadingSignal.set(false);
+            },
+            error: (): void => {
+              this.sourceSuggestions = [];
+              this.remap();
+              this.loadingSignal.set(false);
+              this.errorSignal.set(true);
+            }
+          });
       },
       error: (): void => {
         this.loadingSignal.set(false);
@@ -128,18 +168,6 @@ export class GlobalRatingSuggestionsStateFacade {
       });
   }
 
-  private recordSilently(
-    suggestion: GlobalRatingSuggestion,
-    interactionType: GlobalRatingSuggestionInteractionType
-  ): void {
-    const targetType: 'Park' | 'ParkItem' = suggestion.targetType === 'Park' || suggestion.targetType === 1
-      ? 'Park'
-      : 'ParkItem';
-    this.api.recordInteraction({ targetType, targetId: suggestion.targetId, interactionType })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({ error: (): void => undefined });
-  }
-
   private toRequest(
     view: GlobalRatingSuggestionViewModel,
     interactionType: GlobalRatingSuggestionInteractionType
@@ -155,6 +183,13 @@ export class GlobalRatingSuggestionsStateFacade {
       return `${targetType}:${suggestion.targetId}` !== id;
     });
     this.remap();
+  }
+
+  private toTarget(suggestion: GlobalRatingSuggestion): GlobalRatingSuggestionPresentationTarget {
+    const targetType: 'Park' | 'ParkItem' = suggestion.targetType === 'Park' || suggestion.targetType === 1
+      ? 'Park'
+      : 'ParkItem';
+    return { targetType, targetId: suggestion.targetId };
   }
 
   private remap(): void {

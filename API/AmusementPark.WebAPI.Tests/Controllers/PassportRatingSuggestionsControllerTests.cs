@@ -3,6 +3,7 @@ using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Core.Domain.Ratings;
@@ -98,6 +99,49 @@ public sealed class PassportRatingSuggestionsControllerTests
     }
 
     [Fact]
+    public async Task PresentAsync_BatchesTargetsForTheAuthenticatedOwner()
+    {
+        HandlerMocks handlers = CreateHandlers();
+        handlers.Presentation.Setup(value => value.HandleAsync(
+                It.Is<PresentGlobalRatingSuggestionsCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.Targets.Count == 1
+                    && command.Targets.Single().TargetId == "item-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<GlobalRatingSuggestionPresentationResult>.Success(
+                new GlobalRatingSuggestionPresentationResult(
+                    true,
+                    true,
+                    new[]
+                    {
+                        new GlobalRatingSuggestionTargetKey(
+                            RatingTargetType.ParkItem,
+                            "item-1"),
+                    })));
+        PassportRatingSuggestionsController controller =
+            CreateController(handlers, authenticated: true);
+
+        IActionResult response = await controller.PresentAsync(
+            new PresentGlobalRatingSuggestionsRequest
+            {
+                Targets = new[]
+                {
+                    new GlobalRatingSuggestionPresentationTargetDto
+                    {
+                        TargetType = GlobalRatingSuggestionTargetTypeDto.ParkItem,
+                        TargetId = "item-1",
+                    },
+                },
+            });
+
+        GlobalRatingSuggestionPresentationDto body =
+            Assert.IsType<GlobalRatingSuggestionPresentationDto>(
+                Assert.IsType<OkObjectResult>(response).Value);
+        Assert.Equal("item-1", Assert.Single(body.PresentedTargets).TargetId);
+        handlers.Presentation.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_IsPrivateNoStoreAndKeepsTheRoadmapGetRoute()
     {
         RouteAttribute route = Assert.IsType<RouteAttribute>(
@@ -128,7 +172,10 @@ public sealed class PassportRatingSuggestionsControllerTests
                 ApplicationResult<GlobalRatingSuggestionPreferenceResult>>>(MockBehavior.Strict),
             new Mock<ICommandHandler<
                 RecordGlobalRatingSuggestionInteractionCommand,
-                ApplicationResult<GlobalRatingSuggestionPreferenceResult>>>(MockBehavior.Strict));
+                ApplicationResult<GlobalRatingSuggestionPreferenceResult>>>(MockBehavior.Strict),
+            new Mock<ICommandHandler<
+                PresentGlobalRatingSuggestionsCommand,
+                ApplicationResult<GlobalRatingSuggestionPresentationResult>>>(MockBehavior.Strict));
     }
 
     private static PassportRatingSuggestionsController CreateController(
@@ -143,7 +190,8 @@ public sealed class PassportRatingSuggestionsControllerTests
         return new PassportRatingSuggestionsController(
             handlers.Query.Object,
             handlers.Preference.Object,
-            handlers.Interaction.Object)
+            handlers.Interaction.Object,
+            handlers.Presentation.Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -164,5 +212,8 @@ public sealed class PassportRatingSuggestionsControllerTests
             ApplicationResult<GlobalRatingSuggestionPreferenceResult>>> Preference,
         Mock<ICommandHandler<
             RecordGlobalRatingSuggestionInteractionCommand,
-            ApplicationResult<GlobalRatingSuggestionPreferenceResult>>> Interaction);
+            ApplicationResult<GlobalRatingSuggestionPreferenceResult>>> Interaction,
+        Mock<ICommandHandler<
+            PresentGlobalRatingSuggestionsCommand,
+            ApplicationResult<GlobalRatingSuggestionPresentationResult>>> Presentation);
 }

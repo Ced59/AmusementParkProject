@@ -8,6 +8,7 @@ import { GlobalRatingSuggestionsStateFacade } from './global-rating-suggestions-
 describe('GlobalRatingSuggestionsStateFacade', () => {
   let api: {
     getSuggestions: ReturnType<typeof vi.fn>;
+    presentSuggestions: ReturnType<typeof vi.fn>;
     setEnabled: ReturnType<typeof vi.fn>;
     recordInteraction: ReturnType<typeof vi.fn>;
   };
@@ -15,6 +16,11 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
   beforeEach(() => {
     api = {
       getSuggestions: vi.fn().mockReturnValue(of(createResponse())),
+      presentSuggestions: vi.fn().mockReturnValue(of({
+        isAvailable: true,
+        isEnabled: true,
+        presentedTargets: [{ targetType: 'ParkItem', targetId: 'item-1' }]
+      })),
       setEnabled: vi.fn().mockReturnValue(of({ isAvailable: true, isEnabled: false })),
       recordInteraction: vi.fn().mockReturnValue(of({ isAvailable: true, isEnabled: true }))
     };
@@ -26,16 +32,27 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
     });
   });
 
-  it('loads, maps and records presentation without changing any rating', () => {
+  it('shows only suggestions whose batched presentation was acknowledged', () => {
     const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
 
     facade.load('fr');
 
     expect(facade.suggestions()[0].recentAverageLabel).toBe('3,25 / 5');
-    expect(api.recordInteraction).toHaveBeenCalledWith({
-      targetType: 'ParkItem', targetId: 'item-1', interactionType: 'Presented'
+    expect(api.presentSuggestions).toHaveBeenCalledWith({
+      targets: [{ targetType: 'ParkItem', targetId: 'item-1' }]
     });
     expect(api).not.toHaveProperty('upsertRating');
+  });
+
+  it('does not expose actions when presentation acknowledgement fails', () => {
+    api.presentSuggestions.mockReturnValue(throwError(() => new Error('offline')));
+    const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
+
+    facade.load('en');
+
+    expect(facade.error()).toBe(true);
+    expect(facade.loading()).toBe(false);
+    expect(facade.suggestions()).toEqual([]);
   });
 
   it('records acceptance before handing control back to the rating editor', () => {

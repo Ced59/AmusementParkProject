@@ -130,6 +130,56 @@ public sealed class GetUserParkItemRatingRankingsQueryHandlerTests
         ratingRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WithTargetId_ReturnsTheExactOwnedTargetDespiteAmbiguousSearch()
+    {
+        List<UserRatingListItemResult> sources = Enumerable.Range(1, 11)
+            .Select(index => CreateRating(
+                $"rating-{index}",
+                $"carousel-{index}",
+                "Carousel",
+                "park-1",
+                "Demo Park",
+                ParkItemType.FlatRide,
+                5d - (index * 0.1d)))
+            .ToList();
+        sources.Add(CreateRating(
+            "rating-12",
+            "carousel-12",
+            "Carousel",
+            "park-1",
+            "Demo Park",
+            ParkItemType.FlatRide,
+            3.8d) with
+        {
+            ParkItemCategory = ParkItemCategory.Restaurant,
+        });
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetUserRankingSourcesAsync(
+                "user-1",
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sources);
+        GetUserParkItemRatingRankingsQueryHandler handler =
+            new GetUserParkItemRatingRankingsQueryHandler(
+                ratingRepository.Object,
+                new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<UserParkItemRatingRankingResult>> result =
+            await handler.HandleAsync(new GetUserParkItemRatingRankingsQuery(
+                "user-1",
+                ParkItemCategory.Attraction,
+                new PagedQuery(1, 10),
+                "Carousel",
+                TargetId: "carousel-12"));
+
+        Assert.True(result.IsSuccess);
+        UserParkItemRatingRankingResult exactTarget = Assert.Single(result.Value!.Items);
+        Assert.Equal("carousel-12", exactTarget.Rating.TargetId);
+        ratingRepository.VerifyAll();
+    }
+
     private static UserRatingListItemResult CreateRating(
         string id,
         string targetId,

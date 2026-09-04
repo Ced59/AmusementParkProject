@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 
 import {
   GlobalRatingSuggestionPreference,
+  GlobalRatingSuggestionPresentation,
   GlobalRatingSuggestions,
+  PresentGlobalRatingSuggestionsRequest,
   RecordGlobalRatingSuggestionInteractionRequest
 } from '@app/models/passport/global-rating-suggestion.models';
 import { environment } from '../../../environments/environment';
@@ -26,6 +28,15 @@ export class GlobalRatingSuggestionsApiService {
     return this.http.put<GlobalRatingSuggestionPreference>(
       `${environment.apiBaseUrl}${GLOBAL_RATING_SUGGESTIONS_API_ENDPOINTS.preference}`,
       { isEnabled }
+    );
+  }
+
+  presentSuggestions(
+    request: PresentGlobalRatingSuggestionsRequest
+  ): Observable<GlobalRatingSuggestionPresentation> {
+    return this.http.post<GlobalRatingSuggestionPresentation>(
+      `${environment.apiBaseUrl}${GLOBAL_RATING_SUGGESTIONS_API_ENDPOINTS.presentations}`,
+      request
     );
   }
 

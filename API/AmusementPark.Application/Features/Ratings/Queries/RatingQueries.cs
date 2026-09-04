@@ -58,7 +58,8 @@ public sealed record GetUserParkRatingRankingsQuery(
     string UserId,
     PagedQuery Paging,
     string? ParkSearch = null,
-    bool PublicTargetsOnly = false) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
+    bool PublicTargetsOnly = false,
+    string? TargetId = null) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
 
 public sealed record GetUserParkItemRatingRankingsQuery(
     string UserId,
@@ -66,7 +67,8 @@ public sealed record GetUserParkItemRatingRankingsQuery(
     PagedQuery Paging,
     string? Search = null,
     ParkItemType? ParkItemType = null,
-    bool PublicTargetsOnly = false) : IQuery<ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>;
+    bool PublicTargetsOnly = false,
+    string? TargetId = null) : IQuery<ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>;
 
 public sealed record GetUserRankingShareSettingsQuery(
     string UserId) : IQuery<ApplicationResult<UserRankingShareSettingsResult>>;

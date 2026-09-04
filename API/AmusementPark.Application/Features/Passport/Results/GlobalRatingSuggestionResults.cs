@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
@@ -29,3 +30,8 @@ public sealed record GlobalRatingSuggestionsResult(
 public sealed record GlobalRatingSuggestionPreferenceResult(
     bool IsAvailable,
     bool IsEnabled);
+
+public sealed record GlobalRatingSuggestionPresentationResult(
+    bool IsAvailable,
+    bool IsEnabled,
+    IReadOnlyCollection<GlobalRatingSuggestionTargetKey> PresentedTargets);

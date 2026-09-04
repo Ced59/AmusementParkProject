@@ -17,3 +17,8 @@ public sealed record RecordGlobalRatingSuggestionInteractionCommand(
     string TargetId,
     GlobalRatingSuggestionInteractionType InteractionType)
     : ICommand<ApplicationResult<GlobalRatingSuggestionPreferenceResult>>;
+
+public sealed record PresentGlobalRatingSuggestionsCommand(
+    string UserId,
+    IReadOnlyCollection<GlobalRatingSuggestionTargetKey> Targets)
+    : ICommand<ApplicationResult<GlobalRatingSuggestionPresentationResult>>;

@@ -20,6 +20,14 @@ internal static class GlobalRatingSuggestionMongoDefinitions
                     Name = "ratingSuggestionState_user_target_unique",
                     Unique = true,
                 }),
+            new CreateIndexModel<GlobalRatingSuggestionStateDocument>(
+                Builders<GlobalRatingSuggestionStateDocument>.IndexKeys
+                    .Ascending("pendingAnalyticsEvents.eventId"),
+                new CreateIndexOptions
+                {
+                    Name = "ratingSuggestionState_pendingAnalytics",
+                    Sparse = true,
+                }),
         };
     }
 

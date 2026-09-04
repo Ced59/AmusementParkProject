@@ -22,10 +22,18 @@ export const RATINGS_API_ENDPOINTS = {
   getMyStats: 'ratings/me/stats',
   getMyShareSettings: 'ratings/me/share',
   setMyShareVisibility: 'ratings/me/share',
-  getMyParkRankings: (page: number, size: number, search: string | null = null) => {
+  getMyParkRankings: (
+    page: number,
+    size: number,
+    search: string | null = null,
+    targetId: string | null = null
+  ) => {
     const params: string[] = [`page=${page}`, `size=${size}`];
     if (search) {
       params.push(`search=${encodeURIComponent(search)}`);
+    }
+    if (targetId) {
+      params.push(`targetId=${encodeURIComponent(targetId)}`);
     }
 
     return `ratings/me/rankings/parks?${params.join('&')}`;
@@ -35,7 +43,8 @@ export const RATINGS_API_ENDPOINTS = {
     size: number,
     category: string,
     type: string | null = null,
-    search: string | null = null
+    search: string | null = null,
+    targetId: string | null = null
   ) => {
     const params: string[] = [
       `page=${page}`,
@@ -47,6 +56,9 @@ export const RATINGS_API_ENDPOINTS = {
     }
     if (search) {
       params.push(`search=${encodeURIComponent(search)}`);
+    }
+    if (targetId) {
+      params.push(`targetId=${encodeURIComponent(targetId)}`);
     }
 
     return `ratings/me/rankings/park-items?${params.join('&')}`;

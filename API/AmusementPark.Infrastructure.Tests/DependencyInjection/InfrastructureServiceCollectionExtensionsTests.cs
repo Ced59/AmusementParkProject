@@ -126,6 +126,17 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             static service => service.ServiceType
                 == typeof(IGlobalRatingSuggestionStateRepository));
         Assert.Equal(typeof(GlobalRatingSuggestionStateRepository), state.ImplementationType);
+        ServiceDescriptor outbox = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IGlobalRatingSuggestionAnalyticsOutboxReconciler));
+        Assert.Equal(typeof(GlobalRatingSuggestionStateRepository), outbox.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, outbox.Lifetime);
+        Assert.Contains(
+            services,
+            static service => service.ServiceType == typeof(IHostedService)
+                && service.ImplementationType ==
+                    typeof(GlobalRatingSuggestionAnalyticsOutboxBackgroundService));
         ServiceDescriptor gate = Assert.Single(
             services,
             static service => service.ServiceType

@@ -11,7 +11,8 @@ using MongoDB.Driver;
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class GlobalRatingSuggestionStateRepository
-    : IGlobalRatingSuggestionStateRepository
+    : IGlobalRatingSuggestionStateRepository,
+        IGlobalRatingSuggestionAnalyticsOutboxReconciler
 {
     private readonly IMongoCollection<GlobalRatingSuggestionStateDocument> states;
     private readonly IMongoCollection<GlobalRatingSuggestionPreferenceDocument> preferences;
@@ -151,13 +152,20 @@ public sealed class GlobalRatingSuggestionStateRepository
             expectedLastPresentedAtUtc);
         UpdateDefinitionBuilder<GlobalRatingSuggestionStateDocument> updates =
             Builders<GlobalRatingSuggestionStateDocument>.Update;
+        GlobalRatingSuggestionPendingAnalyticsEventDocument pendingAnalyticsEvent = new()
+        {
+            EventId = Guid.NewGuid().ToString("N"),
+            InteractionType = interactionType,
+            OccurredAtUtc = occurredAtUtc,
+        };
         UpdateDefinition<GlobalRatingSuggestionStateDocument> update = updates
             .SetOnInsert(static document => document.Id, Guid.NewGuid().ToString("N"))
             .SetOnInsert(static document => document.CreatedAt, occurredAtUtc)
             .Set(static document => document.UserId, normalizedUserId)
             .Set(static document => document.TargetType, targetType)
             .Set(static document => document.TargetId, normalizedTargetId)
-            .Set(static document => document.UpdatedAt, occurredAtUtc);
+            .Set(static document => document.UpdatedAt, occurredAtUtc)
+            .Push(static document => document.PendingAnalyticsEvents, pendingAnalyticsEvent);
         bool isPresentation = interactionType == GlobalRatingSuggestionInteractionType.Presented;
         if (isPresentation)
         {
@@ -212,19 +220,86 @@ public sealed class GlobalRatingSuggestionStateRepository
             return false;
         }
 
-        await this.interactions.InsertOneAsync(
-            new GlobalRatingSuggestionInteractionDocument
-            {
-                Id = Guid.NewGuid().ToString("N"),
-                UserCohortKey = HashUserId(normalizedUserId),
-                TargetType = targetType,
-                InteractionType = interactionType,
-                OccurredAtUtc = occurredAtUtc,
-                CreatedAt = occurredAtUtc,
-                UpdatedAt = occurredAtUtc,
-            },
-            cancellationToken: cancellationToken);
         return true;
+    }
+
+    public async Task<int> ReconcileBatchAsync(
+        int maximumEventCount,
+        CancellationToken cancellationToken)
+    {
+        if (maximumEventCount < 1 || maximumEventCount > 500)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumEventCount));
+        }
+
+        FilterDefinition<GlobalRatingSuggestionStateDocument> filter =
+            Builders<GlobalRatingSuggestionStateDocument>.Filter.Exists(
+                "pendingAnalyticsEvents.eventId",
+                true);
+        List<GlobalRatingSuggestionStateDocument> documents = await this.states
+            .Find(filter)
+            .Limit(maximumEventCount)
+            .ToListAsync(cancellationToken);
+        int reconciledCount = 0;
+        foreach (GlobalRatingSuggestionStateDocument document in documents)
+        {
+            foreach (GlobalRatingSuggestionPendingAnalyticsEventDocument pendingEvent
+                in document.PendingAnalyticsEvents)
+            {
+                if (reconciledCount == maximumEventCount)
+                {
+                    return reconciledCount;
+                }
+
+                await this.PublishPendingAnalyticsEventAsync(
+                    document,
+                    pendingEvent,
+                    cancellationToken);
+                reconciledCount++;
+            }
+        }
+
+        return reconciledCount;
+    }
+
+    private async Task PublishPendingAnalyticsEventAsync(
+        GlobalRatingSuggestionStateDocument state,
+        GlobalRatingSuggestionPendingAnalyticsEventDocument pendingEvent,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            await this.interactions.InsertOneAsync(
+                new GlobalRatingSuggestionInteractionDocument
+                {
+                    Id = pendingEvent.EventId,
+                    UserCohortKey = HashUserId(state.UserId),
+                    TargetType = state.TargetType,
+                    InteractionType = pendingEvent.InteractionType,
+                    OccurredAtUtc = pendingEvent.OccurredAtUtc,
+                    CreatedAt = pendingEvent.OccurredAtUtc,
+                    UpdatedAt = pendingEvent.OccurredAtUtc,
+                },
+                cancellationToken: cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // The stable outbox event id makes a retry safe after a lost acknowledgement.
+        }
+
+        FilterDefinition<GlobalRatingSuggestionStateDocument> stateFilter =
+            Builders<GlobalRatingSuggestionStateDocument>.Filter.Eq(
+                static document => document.Id,
+                state.Id);
+        UpdateDefinition<GlobalRatingSuggestionStateDocument> removePendingEvent =
+            Builders<GlobalRatingSuggestionStateDocument>.Update.PullFilter(
+                static document => document.PendingAnalyticsEvents,
+                candidate => candidate.EventId == pendingEvent.EventId);
+        await this.states.UpdateOneAsync(
+            stateFilter,
+            removePendingEvent,
+            cancellationToken: cancellationToken);
     }
 
     private static string HashUserId(string userId)

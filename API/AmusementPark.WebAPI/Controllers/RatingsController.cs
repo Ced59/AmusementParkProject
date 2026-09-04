@@ -167,6 +167,7 @@ public sealed class RatingsController : ControllerBase
     public async Task<IActionResult> GetMyParkRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,
         [FromQuery] string? search = null,
+        [FromQuery] string? targetId = null,
         CancellationToken cancellationToken = default)
     {
         string? userId = this.User.GetUserId();
@@ -177,7 +178,11 @@ public sealed class RatingsController : ControllerBase
 
         ApplicationResult<PagedResult<UserParkRatingRankingResult>> result =
             await this.getUserParkRatingRankingsQueryHandler.HandleAsync(
-                new GetUserParkRatingRankingsQuery(userId, pagination.ToApplication(), search),
+                new GetUserParkRatingRankingsQuery(
+                    userId,
+                    pagination.ToApplication(),
+                    search,
+                    TargetId: targetId),
                 cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -197,6 +202,7 @@ public sealed class RatingsController : ControllerBase
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
         [FromQuery] string? search = null,
+        [FromQuery] string? targetId = null,
         CancellationToken cancellationToken = default)
     {
         string? userId = this.User.GetUserId();
@@ -218,7 +224,8 @@ public sealed class RatingsController : ControllerBase
                     parsedCategory.Value,
                     pagination.ToApplication(),
                     search,
-                    type.ToParkItemTypeFilter()),
+                    type.ToParkItemTypeFilter(),
+                    TargetId: targetId),
                 cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

@@ -4,7 +4,7 @@ export type GlobalRatingSuggestionReason =
   | 'RecentExperiencesHigher'
   | 1
   | 2;
-export type GlobalRatingSuggestionInteractionType = 'Presented' | 'Accepted' | 'Dismissed';
+export type GlobalRatingSuggestionInteractionType = 'Accepted' | 'Dismissed';
 
 export interface GlobalRatingSuggestion {
   targetType: GlobalRatingSuggestionTargetType;
@@ -34,6 +34,21 @@ export interface GlobalRatingSuggestions {
 export interface GlobalRatingSuggestionPreference {
   isAvailable: boolean;
   isEnabled: boolean;
+}
+
+export interface GlobalRatingSuggestionPresentationTarget {
+  targetType: 'Park' | 'ParkItem';
+  targetId: string;
+}
+
+export interface GlobalRatingSuggestionPresentation {
+  isAvailable: boolean;
+  isEnabled: boolean;
+  presentedTargets: GlobalRatingSuggestionPresentationTarget[];
+}
+
+export interface PresentGlobalRatingSuggestionsRequest {
+  targets: GlobalRatingSuggestionPresentationTarget[];
 }
 
 export interface RecordGlobalRatingSuggestionInteractionRequest {

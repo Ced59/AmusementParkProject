@@ -197,9 +197,23 @@ public sealed class GetUserParkRatingRankingsQueryHandler
                 RankingSourceLimit,
                 cancellationToken);
         IReadOnlyCollection<UserParkRatingRankingResult> rankings = RatingRankingFactory.BuildUserParkRankings(sources);
-        PagedResult<UserParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
-            ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
-            : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
+        PagedResult<UserParkRatingRankingResult> result;
+        if (!string.IsNullOrWhiteSpace(query.TargetId))
+        {
+            IReadOnlyCollection<UserParkRatingRankingResult> exactTarget = rankings
+                .Where(ranking => string.Equals(
+                    ranking.ParkId,
+                    query.TargetId.Trim(),
+                    StringComparison.Ordinal))
+                .ToArray();
+            result = RatingRankingPaging.BuildPage(exactTarget, 1, query.Paging.PageSize);
+        }
+        else
+        {
+            result = string.IsNullOrWhiteSpace(query.ParkSearch)
+                ? RatingRankingPaging.BuildPage(rankings, query.Paging.Page, query.Paging.PageSize)
+                : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
+        }
 
         return ApplicationResult<PagedResult<UserParkRatingRankingResult>>.Success(result);
     }
@@ -284,19 +298,42 @@ public sealed class GetUserParkItemRatingRankingsQueryHandler
                 query.UserId.Trim(),
                 RankingSourceLimit,
                 cancellationToken);
-        IReadOnlyCollection<UserParkItemRatingRankingResult> rankings = RatingRankingFactory.BuildUserParkItemRankings(
-            sources,
-            query.ParkItemCategory,
-            query.ParkItemType);
-        IReadOnlyCollection<UserParkItemRatingRankingResult> filteredRankings = string.IsNullOrWhiteSpace(query.Search)
-            ? rankings
-            : rankings.Where(ranking =>
-                    ranking.Rating.TargetName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase)
-                    || (ranking.Rating.ParkName?.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase) ?? false))
-                .ToList();
+        IReadOnlyCollection<UserParkItemRatingRankingResult> rankings;
+        if (!string.IsNullOrWhiteSpace(query.TargetId))
+        {
+            rankings = sources
+                .Where(source => source.TargetType == RatingTargetType.ParkItem
+                    && string.Equals(
+                        source.TargetId,
+                        query.TargetId.Trim(),
+                        StringComparison.Ordinal))
+                .Select(static source => new UserParkItemRatingRankingResult(1, source))
+                .ToArray();
+        }
+        else
+        {
+            rankings = RatingRankingFactory.BuildUserParkItemRankings(
+                sources,
+                query.ParkItemCategory,
+                query.ParkItemType);
+        }
+        IReadOnlyCollection<UserParkItemRatingRankingResult> filteredRankings;
+        if (!string.IsNullOrWhiteSpace(query.TargetId))
+        {
+            filteredRankings = rankings;
+        }
+        else
+        {
+            filteredRankings = string.IsNullOrWhiteSpace(query.Search)
+                ? rankings
+                : rankings.Where(ranking =>
+                        ranking.Rating.TargetName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase)
+                        || (ranking.Rating.ParkName?.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase) ?? false))
+                    .ToList();
+        }
         PagedResult<UserParkItemRatingRankingResult> result = RatingRankingPaging.BuildPage(
             filteredRankings,
-            query.Paging.Page,
+            string.IsNullOrWhiteSpace(query.TargetId) ? query.Paging.Page : 1,
             query.Paging.PageSize);
 
         return ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>.Success(result);
