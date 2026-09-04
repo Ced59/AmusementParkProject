@@ -233,18 +233,30 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
     private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IRatingRepository ratingRepository;
+    private readonly IGlobalRatingSuggestionSourceReader sourceReader;
+    private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
     private readonly IPassportClock clock;
+    private readonly GlobalRatingSuggestionPolicy policy;
 
     public RecordGlobalRatingSuggestionInteractionCommandHandler(
         IGlobalRatingSuggestionStateRepository stateRepository,
         IGlobalRatingSuggestionFeatureGate featureGate,
         IRatingRepository ratingRepository,
-        IPassportClock clock)
+        IGlobalRatingSuggestionSourceReader sourceReader,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        IPassportClock clock,
+        GlobalRatingSuggestionPolicy policy)
     {
         this.stateRepository = stateRepository;
         this.featureGate = featureGate;
         this.ratingRepository = ratingRepository;
+        this.sourceReader = sourceReader;
+        this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
         this.clock = clock;
+        this.policy = policy;
     }
 
     public async Task<ApplicationResult<GlobalRatingSuggestionPreferenceResult>> HandleAsync(
@@ -298,14 +310,142 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
                 PassportApplicationErrors.GlobalRatingSuggestionTargetNotFound());
         }
 
-        await this.stateRepository.RecordInteractionAsync(
+        GlobalRatingSuggestionTargetKey key = new GlobalRatingSuggestionTargetKey(
+            command.TargetType,
+            targetId);
+        GlobalRatingSuggestionTargetState? state = await this.ReadStateAsync(
+            userId,
+            key,
+            cancellationToken);
+        if (command.InteractionType == GlobalRatingSuggestionInteractionType.Presented)
+        {
+            bool isEligible = await this.IsEligibleForPresentationAsync(
+                userId,
+                key,
+                state,
+                cancellationToken);
+            if (!isEligible)
+            {
+                return this.IsCurrentPresentation(state)
+                    ? Success()
+                    : InvalidInteraction();
+            }
+        }
+        else if (!this.IsCurrentPresentation(state))
+        {
+            return IsSameResolvedInteraction(state, command.InteractionType)
+                ? Success()
+                : InvalidInteraction();
+        }
+
+        bool recorded = await this.stateRepository.TryRecordInteractionAsync(
             userId,
             command.TargetType,
             targetId,
+            state?.LastPresentedAtUtc,
             command.InteractionType,
             this.clock.UtcNow,
             cancellationToken);
+        if (recorded)
+        {
+            return Success();
+        }
+
+        GlobalRatingSuggestionTargetState? refreshedState = await this.ReadStateAsync(
+            userId,
+            key,
+            cancellationToken);
+        bool isIdempotent = command.InteractionType == GlobalRatingSuggestionInteractionType.Presented
+            ? this.IsCurrentPresentation(refreshedState)
+            : IsSameResolvedInteraction(refreshedState, command.InteractionType);
+        return isIdempotent ? Success() : InvalidInteraction();
+    }
+
+    private async Task<GlobalRatingSuggestionTargetState?> ReadStateAsync(
+        string userId,
+        GlobalRatingSuggestionTargetKey key,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<GlobalRatingSuggestionTargetState> states =
+            await this.stateRepository.GetStatesAsync(
+                userId,
+                new[] { key },
+                cancellationToken);
+        return states.SingleOrDefault();
+    }
+
+    private async Task<bool> IsEligibleForPresentationAsync(
+        string userId,
+        GlobalRatingSuggestionTargetKey key,
+        GlobalRatingSuggestionTargetState? state,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
+            await this.sourceReader.ReadAsync(userId, cancellationToken);
+        GlobalRatingSuggestionSource? source = sources.SingleOrDefault(candidate =>
+            candidate.TargetType == key.TargetType
+            && string.Equals(candidate.TargetId, key.TargetId, StringComparison.Ordinal));
+        if (source is null)
+        {
+            return false;
+        }
+
+        GlobalRatingSuggestionEvaluation? evaluation = this.policy.Evaluate(
+            source.CurrentGlobalRating,
+            source.CurrentGlobalRatingUpdatedAtUtc,
+            source.Observations,
+            new GlobalRatingSuggestionCadence(true, state?.LastPresentedAtUtc),
+            this.clock.UtcNow);
+        if (evaluation is null)
+        {
+            return false;
+        }
+
+        RatingTargetMetadataResult? metadata = await RatingTargetMetadataResolver.ResolveAsync(
+            source.TargetType,
+            source.TargetId,
+            this.parkRepository,
+            this.parkItemRepository,
+            cancellationToken);
+        return metadata?.CanReceiveVisitorRatings == true;
+    }
+
+    private bool IsCurrentPresentation(GlobalRatingSuggestionTargetState? state)
+    {
+        return state is not null
+            && this.policy.IsPresentationCurrent(
+                state.LastPresentedAtUtc,
+                state.IsAwaitingResolution,
+                this.clock.UtcNow);
+    }
+
+    private static bool IsSameResolvedInteraction(
+        GlobalRatingSuggestionTargetState? state,
+        GlobalRatingSuggestionInteractionType interactionType)
+    {
+        if (state?.LastPresentedAtUtc is null || state.IsAwaitingResolution)
+        {
+            return false;
+        }
+
+        DateTime? resolvedAtUtc = interactionType switch
+        {
+            GlobalRatingSuggestionInteractionType.Accepted => state.LastAcceptedAtUtc,
+            GlobalRatingSuggestionInteractionType.Dismissed => state.LastDismissedAtUtc,
+            _ => null,
+        };
+        return resolvedAtUtc >= state.LastPresentedAtUtc;
+    }
+
+    private static ApplicationResult<GlobalRatingSuggestionPreferenceResult> Success()
+    {
         return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Success(
             new GlobalRatingSuggestionPreferenceResult(true, true));
+    }
+
+    private static ApplicationResult<GlobalRatingSuggestionPreferenceResult> InvalidInteraction()
+    {
+        return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Failure(
+            PassportApplicationErrors.InvalidGlobalRatingSuggestionInteraction());
     }
 }

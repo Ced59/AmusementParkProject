@@ -154,6 +154,10 @@ public sealed class GlobalRatingSuggestionSourceReader
         ArgumentNullException.ThrowIfNull(occurrences);
         Dictionary<string, GlobalRatingSuggestionVisitSourceDocument> visitsById =
             visits.ToDictionary(static visit => visit.Id, StringComparer.Ordinal);
+        IReadOnlyDictionary<string, GlobalRatingSuggestionObservation[]> parkObservationsByTarget =
+            BuildParkObservationIndex(visits);
+        IReadOnlyDictionary<string, GlobalRatingSuggestionObservation[]> rideObservationsByTarget =
+            BuildRideObservationIndex(occurrences, visitsById);
         List<GlobalRatingSuggestionSource> result =
             new List<GlobalRatingSuggestionSource>(ratings.Count);
         foreach (GlobalRatingSuggestionRatingSourceDocument rating in ratings)
@@ -166,38 +170,16 @@ public sealed class GlobalRatingSuggestionSourceReader
                 continue;
             }
 
-            IReadOnlyCollection<GlobalRatingSuggestionObservation> observations =
+            IReadOnlyDictionary<string, GlobalRatingSuggestionObservation[]> observationIndex =
                 rating.TargetType == RatingTargetType.Park
-                    ? visits
-                        .Where(visit => string.Equals(
-                            visit.ParkId,
-                            rating.TargetId,
-                            StringComparison.Ordinal))
-                        .Select(ToParkObservation)
-                        .Where(static observation => observation is not null)
-                        .Cast<GlobalRatingSuggestionObservation>()
-                        .ToArray()
-                    : occurrences
-                        .Where(occurrence => string.Equals(
-                                occurrence.ParkItemId,
-                                rating.TargetId,
-                                StringComparison.Ordinal)
-                            && visitsById.TryGetValue(
-                                occurrence.VisitId,
-                                out GlobalRatingSuggestionVisitSourceDocument? visit)
-                            && string.Equals(
-                                visit.ParkId,
-                                occurrence.ParkId,
-                                StringComparison.Ordinal)
-                            && PassportStatisticsContentFence.AllowsRead(
-                                visit.ContentMutationFenceToken,
-                                visit.ContentMutationFenceStableToken,
-                                visit.ContentMutationFenceReady,
-                                occurrence.ContentMutationFenceToken))
-                        .Select(ToRideObservation)
-                        .Where(static observation => observation is not null)
-                        .Cast<GlobalRatingSuggestionObservation>()
-                        .ToArray();
+                    ? parkObservationsByTarget
+                    : rideObservationsByTarget;
+            IReadOnlyCollection<GlobalRatingSuggestionObservation> observations =
+                observationIndex.TryGetValue(
+                    rating.TargetId,
+                    out GlobalRatingSuggestionObservation[]? indexedObservations)
+                    ? indexedObservations
+                    : Array.Empty<GlobalRatingSuggestionObservation>();
             result.Add(new GlobalRatingSuggestionSource(
                 rating.TargetType,
                 rating.TargetId,
@@ -210,6 +192,82 @@ public sealed class GlobalRatingSuggestionSourceReader
         }
 
         return result;
+    }
+
+    private static IReadOnlyDictionary<string, GlobalRatingSuggestionObservation[]>
+        BuildParkObservationIndex(
+            IReadOnlyCollection<GlobalRatingSuggestionVisitSourceDocument> visits)
+    {
+        Dictionary<string, List<GlobalRatingSuggestionObservation>> grouped =
+            new Dictionary<string, List<GlobalRatingSuggestionObservation>>(StringComparer.Ordinal);
+        foreach (GlobalRatingSuggestionVisitSourceDocument visit in visits)
+        {
+            GlobalRatingSuggestionObservation? observation = ToParkObservation(visit);
+            if (observation is null)
+            {
+                continue;
+            }
+
+            if (!grouped.TryGetValue(
+                    visit.ParkId,
+                    out List<GlobalRatingSuggestionObservation>? targetObservations))
+            {
+                targetObservations = new List<GlobalRatingSuggestionObservation>();
+                grouped.Add(visit.ParkId, targetObservations);
+            }
+
+            targetObservations.Add(observation);
+        }
+
+        return grouped.ToDictionary(
+            static pair => pair.Key,
+            static pair => pair.Value.ToArray(),
+            StringComparer.Ordinal);
+    }
+
+    private static IReadOnlyDictionary<string, GlobalRatingSuggestionObservation[]>
+        BuildRideObservationIndex(
+            IReadOnlyCollection<GlobalRatingSuggestionOccurrenceSourceDocument> occurrences,
+            IReadOnlyDictionary<string, GlobalRatingSuggestionVisitSourceDocument> visitsById)
+    {
+        Dictionary<string, List<GlobalRatingSuggestionObservation>> grouped =
+            new Dictionary<string, List<GlobalRatingSuggestionObservation>>(StringComparer.Ordinal);
+        foreach (GlobalRatingSuggestionOccurrenceSourceDocument occurrence in occurrences)
+        {
+            if (!visitsById.TryGetValue(
+                    occurrence.VisitId,
+                    out GlobalRatingSuggestionVisitSourceDocument? visit)
+                || !string.Equals(visit.ParkId, occurrence.ParkId, StringComparison.Ordinal)
+                || !PassportStatisticsContentFence.AllowsRead(
+                    visit.ContentMutationFenceToken,
+                    visit.ContentMutationFenceStableToken,
+                    visit.ContentMutationFenceReady,
+                    occurrence.ContentMutationFenceToken))
+            {
+                continue;
+            }
+
+            GlobalRatingSuggestionObservation? observation = ToRideObservation(occurrence);
+            if (observation is null)
+            {
+                continue;
+            }
+
+            if (!grouped.TryGetValue(
+                    occurrence.ParkItemId,
+                    out List<GlobalRatingSuggestionObservation>? targetObservations))
+            {
+                targetObservations = new List<GlobalRatingSuggestionObservation>();
+                grouped.Add(occurrence.ParkItemId, targetObservations);
+            }
+
+            targetObservations.Add(observation);
+        }
+
+        return grouped.ToDictionary(
+            static pair => pair.Key,
+            static pair => pair.Value.ToArray(),
+            StringComparer.Ordinal);
     }
 
     private static GlobalRatingSuggestionObservation? ToParkObservation(

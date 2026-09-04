@@ -45,6 +45,8 @@ public sealed class GlobalRatingSuggestionPolicy
 
     public static readonly TimeSpan PresentationCooldown = TimeSpan.FromDays(30);
 
+    public static readonly TimeSpan InteractionWindow = TimeSpan.FromDays(1);
+
     public GlobalRatingSuggestionEvaluation? Evaluate(
         RatingValue currentGlobalRating,
         DateTime currentGlobalRatingUpdatedAtUtc,
@@ -101,6 +103,22 @@ public sealed class GlobalRatingSuggestionPolicy
             recentAverage,
             CalculateMedian(ordered),
             recent[0].RecordedAtUtc);
+    }
+
+    public bool IsPresentationCurrent(
+        DateTime? lastPresentedAtUtc,
+        bool isAwaitingResolution,
+        DateTime nowUtc)
+    {
+        ValidateUtc(nowUtc, nameof(nowUtc));
+        if (!lastPresentedAtUtc.HasValue || !isAwaitingResolution)
+        {
+            return false;
+        }
+
+        ValidateUtc(lastPresentedAtUtc.Value, nameof(lastPresentedAtUtc));
+        return lastPresentedAtUtc.Value <= nowUtc
+            && nowUtc - lastPresentedAtUtc.Value <= InteractionWindow;
     }
 
     private static GlobalRatingSuggestionObservation ValidateObservation(

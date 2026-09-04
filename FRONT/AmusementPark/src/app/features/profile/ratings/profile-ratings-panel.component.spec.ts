@@ -315,7 +315,7 @@ describe('ProfileRatingsPanelComponent', () => {
       page: 1,
       category: 'Attraction',
       type: null,
-      search: 'Phantasialand'
+      search: 'Taron'
     });
     expect(port.upsertCalls).toEqual([]);
   });

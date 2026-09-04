@@ -122,6 +122,26 @@ public sealed class GlobalRatingSuggestionPolicyTests
         Assert.Equal("LastPresentedAtUtc", exception.ParamName);
     }
 
+    [Theory]
+    [InlineData(-1, true, true)]
+    [InlineData(-25, true, false)]
+    [InlineData(-1, false, false)]
+    [InlineData(1, true, false)]
+    public void IsPresentationCurrent_RequiresAnUnresolvedPastPresentationWithinOneDay(
+        int hourOffset,
+        bool isAwaitingResolution,
+        bool expected)
+    {
+        DateTime nowUtc = RatingUpdatedAtUtc.AddDays(4);
+
+        bool result = this.policy.IsPresentationCurrent(
+            nowUtc.AddHours(hourOffset),
+            isAwaitingResolution,
+            nowUtc);
+
+        Assert.Equal(expected, result);
+    }
+
     private static GlobalRatingSuggestionObservation Observation(double value, int dayOffset)
     {
         return new GlobalRatingSuggestionObservation(

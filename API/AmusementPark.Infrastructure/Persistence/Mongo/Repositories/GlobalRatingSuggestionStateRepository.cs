@@ -81,7 +81,10 @@ public sealed class GlobalRatingSuggestionStateRepository
             .Select(static document => new GlobalRatingSuggestionTargetState(
                 document.TargetType,
                 document.TargetId,
-                document.LastPresentedAtUtc))
+                document.LastPresentedAtUtc,
+                document.LastAcceptedAtUtc,
+                document.LastDismissedAtUtc,
+                document.IsAwaitingResolution))
             .ToArray();
     }
 
@@ -111,10 +114,11 @@ public sealed class GlobalRatingSuggestionStateRepository
             cancellationToken);
     }
 
-    public async Task RecordInteractionAsync(
+    public async Task<bool> TryRecordInteractionAsync(
         string userId,
         RatingTargetType targetType,
         string targetId,
+        DateTime? expectedLastPresentedAtUtc,
         GlobalRatingSuggestionInteractionType interactionType,
         DateTime occurredAtUtc,
         CancellationToken cancellationToken)
@@ -122,6 +126,16 @@ public sealed class GlobalRatingSuggestionStateRepository
         string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
         string normalizedTargetId = IdentifierRules.NormalizeRequired(targetId, nameof(targetId));
         ValidateUtc(occurredAtUtc, nameof(occurredAtUtc));
+        if (expectedLastPresentedAtUtc.HasValue)
+        {
+            ValidateUtc(expectedLastPresentedAtUtc.Value, nameof(expectedLastPresentedAtUtc));
+        }
+
+        if (!Enum.IsDefined(targetType) || !Enum.IsDefined(interactionType))
+        {
+            throw new ArgumentOutOfRangeException(nameof(interactionType));
+        }
+
         FilterDefinition<GlobalRatingSuggestionStateDocument> filter =
             Builders<GlobalRatingSuggestionStateDocument>.Filter.Eq(
                 static document => document.UserId,
@@ -132,6 +146,9 @@ public sealed class GlobalRatingSuggestionStateRepository
             & Builders<GlobalRatingSuggestionStateDocument>.Filter.Eq(
                 static document => document.TargetId,
                 normalizedTargetId);
+        filter &= Builders<GlobalRatingSuggestionStateDocument>.Filter.Eq(
+            static document => document.LastPresentedAtUtc,
+            expectedLastPresentedAtUtc);
         UpdateDefinitionBuilder<GlobalRatingSuggestionStateDocument> updates =
             Builders<GlobalRatingSuggestionStateDocument>.Update;
         UpdateDefinition<GlobalRatingSuggestionStateDocument> update = updates
@@ -140,8 +157,29 @@ public sealed class GlobalRatingSuggestionStateRepository
             .Set(static document => document.UserId, normalizedUserId)
             .Set(static document => document.TargetType, targetType)
             .Set(static document => document.TargetId, normalizedTargetId)
-            .Set(static document => document.LastPresentedAtUtc, occurredAtUtc)
             .Set(static document => document.UpdatedAt, occurredAtUtc);
+        bool isPresentation = interactionType == GlobalRatingSuggestionInteractionType.Presented;
+        if (isPresentation)
+        {
+            update = update
+                .Set(static document => document.LastPresentedAtUtc, occurredAtUtc)
+                .Set(static document => document.IsAwaitingResolution, true);
+        }
+        else
+        {
+            if (!expectedLastPresentedAtUtc.HasValue)
+            {
+                return false;
+            }
+
+            filter &= Builders<GlobalRatingSuggestionStateDocument>.Filter.Eq(
+                static document => document.IsAwaitingResolution,
+                true);
+            update = update.Set(
+                static document => document.IsAwaitingResolution,
+                false);
+        }
+
         if (interactionType == GlobalRatingSuggestionInteractionType.Accepted)
         {
             update = update.Set(static document => document.LastAcceptedAtUtc, occurredAtUtc);
@@ -151,11 +189,29 @@ public sealed class GlobalRatingSuggestionStateRepository
             update = update.Set(static document => document.LastDismissedAtUtc, occurredAtUtc);
         }
 
-        await this.states.UpdateOneAsync(
-            filter,
-            update,
-            new UpdateOptions { IsUpsert = true },
-            cancellationToken);
+        UpdateResult result;
+        try
+        {
+            result = await this.states.UpdateOneAsync(
+                filter,
+                update,
+                new UpdateOptions
+                {
+                    IsUpsert = isPresentation && !expectedLastPresentedAtUtc.HasValue,
+                },
+                cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            return false;
+        }
+
+        if (result.MatchedCount == 0 && result.UpsertedId is null)
+        {
+            return false;
+        }
+
         await this.interactions.InsertOneAsync(
             new GlobalRatingSuggestionInteractionDocument
             {
@@ -168,6 +224,7 @@ public sealed class GlobalRatingSuggestionStateRepository
                 UpdatedAt = occurredAtUtc,
             },
             cancellationToken: cancellationToken);
+        return true;
     }
 
     private static string HashUserId(string userId)

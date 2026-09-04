@@ -25,10 +25,11 @@ public interface IGlobalRatingSuggestionStateRepository
         DateTime updatedAtUtc,
         CancellationToken cancellationToken);
 
-    Task RecordInteractionAsync(
+    Task<bool> TryRecordInteractionAsync(
         string userId,
         RatingTargetType targetType,
         string targetId,
+        DateTime? expectedLastPresentedAtUtc,
         GlobalRatingSuggestionInteractionType interactionType,
         DateTime occurredAtUtc,
         CancellationToken cancellationToken);

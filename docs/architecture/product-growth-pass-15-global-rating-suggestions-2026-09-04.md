@@ -19,6 +19,8 @@ La suggestion est disponible dans le panneau « Mes notes » du profil. Elle aff
 - l'absence de présentation pour cette cible pendant les 30 derniers jours ;
 - l'activation de la préférence utilisateur et du kill switch serveur.
 
+Une présentation reste résoluble pendant 24 heures. Une acceptation ou un rejet sans présentation active est refusé ; rejouer exactement une transition déjà résolue réussit sans nouvel événement analytique.
+
 La médiane est calculée sur toutes les observations valides de la cible. La moyenne récente est calculée sur au plus trois observations nouvelles. Ces deux valeurs restent distinctes et sont nommées explicitement dans l'interface.
 
 ```text
@@ -73,13 +75,13 @@ Trois collections bornent clairement les responsabilités :
 - `global-rating-suggestion-preferences` : une préférence unique par utilisateur ;
 - `global-rating-suggestion-interactions` : événements analytiques conservés 400 jours au maximum.
 
-L'événement analytique ne contient ni identifiant de cible ni valeur de note. Il conserve seulement une clé de cohorte utilisateur hachée, le type de cible, l'action et sa date. Les index uniques empêchent les états dupliqués ; un index TTL purge automatiquement les événements analytiques.
+L'événement analytique ne contient ni identifiant de cible ni valeur de note. Il conserve seulement une clé de cohorte utilisateur hachée, le type de cible, l'action et sa date. Les index uniques empêchent les états dupliqués ; un index TTL purge automatiquement les événements analytiques. La transition Mongo compare atomiquement la dernière présentation attendue et l'état `isAwaitingResolution`, ce qui empêche deux requêtes concurrentes ou rejouées de produire deux événements.
 
-Les observations de parc proviennent des assessments embarqués dans les visites. Les observations d'attraction proviennent des assessments de rides non supprimés et ne sont lues que si leur fence de contenu correspond à la visite parente.
+Les observations de parc proviennent des assessments embarqués dans les visites. Les observations d'attraction proviennent des assessments de rides non supprimés et ne sont lues que si leur fence de contenu correspond à la visite parente. Elles sont indexées une seule fois par parc et attraction avant l'évaluation des notes, afin de conserver une construction linéaire plutôt qu'un rescan par cible.
 
 ## Cadence et choix utilisateur
 
-La réception d'une suggestion visible enregistre une présentation. L'acceptation et le rejet sont deux actions distinctes. Une acceptation signifie uniquement « conduire vers l'éditeur existant » ; elle ne transporte aucune nouvelle valeur. Une personne peut désactiver l'ensemble des suggestions et les réactiver depuis le même panneau.
+La réception d'une suggestion visible demande l'enregistrement d'une présentation. Le serveur recalcule alors l'éligibilité et vérifie encore que la cible peut être notée avant d'ouvrir la fenêtre d'interaction. L'acceptation et le rejet sont deux actions distinctes. Une acceptation signifie uniquement « conduire vers l'éditeur existant » ; elle ne transporte aucune nouvelle valeur. Pour une attraction, le filtre recherche son nom exact afin de faire apparaître la note visée dès la première page. Une personne peut désactiver l'ensemble des suggestions et les réactiver depuis le même panneau.
 
 Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut, appartient au domaine produit Passeport. Son comportement de repli est l'absence de toute suggestion, sans effet sur les notes ni sur le journal. Il sert de kill switch et doit être réévalué à la stabilisation PASS-20.
 
@@ -95,8 +97,8 @@ Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut
 
 ## Preuves automatisées
 
-- Core : seuil minimal, écart significatif, médiane, sens de la suggestion, cooldown et désactivation ;
-- Application : orchestration, kill switch sans lecture des observations, résolution de cible et vérification de propriété avant interaction ;
-- Infrastructure : séparation parc/ride, fence de contenu, rejet des données invalides, index uniques, TTL et absence de valeurs exactes dans l'analytics ;
+- Core : seuil minimal, écart significatif, médiane, sens de la suggestion, cooldown, fenêtre d'interaction et désactivation ;
+- Application : orchestration, kill switch sans lecture des observations, résolution de cible, présentation revalidée, propriété et rejeu idempotent ;
+- Infrastructure : séparation parc/ride, indexation linéaire des observations, fence de contenu, rejet des données invalides, transitions atomiques, index uniques, TTL et absence de valeurs exactes dans l'analytics ;
 - WebAPI : identité authentifiée, mapping, route privée `no-store` et contrat d'interaction sans valeur de note ;
 - Angular : endpoints, port de façade, mapping localisé, présentation, acceptation, rejet, opt-out et contrat responsive.

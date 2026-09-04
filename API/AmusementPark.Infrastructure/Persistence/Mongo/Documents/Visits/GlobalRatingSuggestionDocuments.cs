@@ -30,6 +30,10 @@ public sealed class GlobalRatingSuggestionStateDocument : MongoDocumentBase
     [BsonElement("lastDismissedAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? LastDismissedAtUtc { get; set; }
+
+    [BsonElement("isAwaitingResolution")]
+    [BsonIgnoreIfDefault]
+    public bool IsAwaitingResolution { get; set; }
 }
 
 [BsonIgnoreExtraElements]

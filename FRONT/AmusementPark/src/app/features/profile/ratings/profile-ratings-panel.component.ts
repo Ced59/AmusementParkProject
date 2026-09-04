@@ -231,9 +231,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
       : this.filters.find((candidate: ProfileRankingFilter): boolean => {
         return candidate.category === suggestion.parkItemCategory;
       }) ?? this.filters[this.filters.length - 1];
-    const search: string = suggestion.targetType === 'Park'
-      ? suggestion.targetName
-      : suggestion.parkName ?? '';
+    const search: string = suggestion.targetName;
     this.currentFilter.set(filter);
     this.selectedAttractionType.set(null);
     this.searchTerm.set(search);

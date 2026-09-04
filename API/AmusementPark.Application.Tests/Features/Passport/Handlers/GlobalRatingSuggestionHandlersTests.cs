@@ -88,20 +88,148 @@ public sealed class GlobalRatingSuggestionHandlersTests
     }
 
     [Fact]
-    public async Task Interaction_RecordsOnlyExplicitAcceptanceForAnOwnedRating()
+    public async Task Interaction_Presented_RevalidatesEligibilityBeforeRecording()
     {
         Mock<IGlobalRatingSuggestionStateRepository> states =
             new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
         states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
             .ReturnsAsync(true);
-        states.Setup(value => value.RecordInteractionAsync(
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<GlobalRatingSuggestionTargetState>());
+        states.Setup(value => value.TryRecordInteractionAsync(
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
+                null,
+                GlobalRatingSuggestionInteractionType.Presented,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetUserRatingAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(CreateOwnedRating());
+        Mock<IGlobalRatingSuggestionSourceReader> sources =
+            new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict);
+        sources.Setup(value => value.ReadAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(new[] { CreateSource() });
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Parc test", Status = ParkStatus.Operating });
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        RecordGlobalRatingSuggestionInteractionCommandHandler handler =
+            new RecordGlobalRatingSuggestionInteractionCommandHandler(
+                states.Object,
+                new FeatureGate(true),
+                ratings.Object,
+                sources.Object,
+                parks.Object,
+                items.Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                GlobalRatingSuggestionInteractionType.Presented));
+
+        Assert.True(result.IsSuccess);
+        states.VerifyAll();
+        ratings.VerifyAll();
+        sources.VerifyAll();
+        parks.VerifyAll();
+        items.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Interaction_PresentedForIneligibleTarget_IsRejectedWithoutAnalytics()
+    {
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<GlobalRatingSuggestionTargetState>());
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetUserRatingAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(CreateOwnedRating());
+        Mock<IGlobalRatingSuggestionSourceReader> sources =
+            new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict);
+        sources.Setup(value => value.ReadAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(Array.Empty<GlobalRatingSuggestionSource>());
+        RecordGlobalRatingSuggestionInteractionCommandHandler handler =
+            new RecordGlobalRatingSuggestionInteractionCommandHandler(
+                states.Object,
+                new FeatureGate(true),
+                ratings.Object,
+                sources.Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                GlobalRatingSuggestionInteractionType.Presented));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "passport.rating-suggestion-interaction-invalid",
+            Assert.Single(result.Errors).Code);
+        states.VerifyAll();
+        ratings.VerifyAll();
+        sources.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Interaction_RecordsOnlyExplicitAcceptanceForAnOwnedRating()
+    {
+        DateTime presentedAtUtc = NowUtc.AddHours(-1);
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new GlobalRatingSuggestionTargetState(
+                    RatingTargetType.Park,
+                    "park-1",
+                    presentedAtUtc,
+                    null,
+                    null,
+                    true),
+            });
+        states.Setup(value => value.TryRecordInteractionAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                presentedAtUtc,
                 GlobalRatingSuggestionInteractionType.Accepted,
                 NowUtc,
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings.Setup(value => value.GetUserRatingAsync(
                 "owner-1",
@@ -122,7 +250,11 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 states.Object,
                 new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc));
+                new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict).Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
             await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
@@ -155,7 +287,11 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 states.Object,
                 new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc));
+                new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict).Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
             await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
@@ -183,7 +319,11 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 states.Object,
                 new FeatureGate(false),
                 ratings.Object,
-                new TestClock(NowUtc));
+                new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict).Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
             await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
@@ -196,6 +336,111 @@ public sealed class GlobalRatingSuggestionHandlersTests
         Assert.False(result.Value!.IsAvailable);
         states.VerifyNoOtherCalls();
         ratings.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Interaction_WithoutCurrentPresentation_IsRejectedWithoutAnalytics()
+    {
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<GlobalRatingSuggestionTargetState>());
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetUserRatingAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(new UserRating
+            {
+                Id = "rating-1",
+                UserId = "owner-1",
+                TargetType = RatingTargetType.Park,
+                TargetId = "park-1",
+                ParkId = "park-1",
+                Value = 4.5d,
+            });
+        RecordGlobalRatingSuggestionInteractionCommandHandler handler =
+            new RecordGlobalRatingSuggestionInteractionCommandHandler(
+                states.Object,
+                new FeatureGate(true),
+                ratings.Object,
+                new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict).Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                GlobalRatingSuggestionInteractionType.Accepted));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "passport.rating-suggestion-interaction-invalid",
+            Assert.Single(result.Errors).Code);
+        states.VerifyAll();
+        ratings.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Interaction_ReplayedAcceptance_IsIdempotentWithoutDuplicateAnalytics()
+    {
+        DateTime presentedAtUtc = NowUtc.AddHours(-1);
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new GlobalRatingSuggestionTargetState(
+                    RatingTargetType.Park,
+                    "park-1",
+                    presentedAtUtc,
+                    NowUtc.AddMinutes(-30),
+                    null,
+                    false),
+            });
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetUserRatingAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(CreateOwnedRating());
+        RecordGlobalRatingSuggestionInteractionCommandHandler handler =
+            new RecordGlobalRatingSuggestionInteractionCommandHandler(
+                states.Object,
+                new FeatureGate(true),
+                ratings.Object,
+                new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict).Object,
+                new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                GlobalRatingSuggestionInteractionType.Accepted));
+
+        Assert.True(result.IsSuccess);
+        states.VerifyAll();
+        ratings.VerifyAll();
     }
 
     private static Mock<IGlobalRatingSuggestionStateRepository> CreateEnabledStates()
@@ -226,6 +471,19 @@ public sealed class GlobalRatingSuggestionHandlersTests
                     RatingValue.FromDouble(3.5d),
                     NowUtc.AddDays(-2)),
             });
+    }
+
+    private static UserRating CreateOwnedRating()
+    {
+        return new UserRating
+        {
+            Id = "rating-1",
+            UserId = "owner-1",
+            TargetType = RatingTargetType.Park,
+            TargetId = "park-1",
+            ParkId = "park-1",
+            Value = 4.5d,
+        };
     }
 
     private sealed class FeatureGate : IGlobalRatingSuggestionFeatureGate

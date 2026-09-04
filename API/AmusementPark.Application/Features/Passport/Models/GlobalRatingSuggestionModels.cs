@@ -20,7 +20,10 @@ public sealed record GlobalRatingSuggestionTargetKey(
 public sealed record GlobalRatingSuggestionTargetState(
     RatingTargetType TargetType,
     string TargetId,
-    DateTime? LastPresentedAtUtc);
+    DateTime? LastPresentedAtUtc,
+    DateTime? LastAcceptedAtUtc,
+    DateTime? LastDismissedAtUtc,
+    bool IsAwaitingResolution);
 
 public enum GlobalRatingSuggestionInteractionType
 {

@@ -8,6 +8,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using Moq;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
@@ -147,6 +148,94 @@ public sealed class GlobalRatingSuggestionPersistenceTests
         Assert.Equal(
             "global-rating-suggestion-interactions",
             settings.GlobalRatingSuggestionInteractionsCollectionName);
+    }
+
+    [Fact]
+    public async Task TerminalTransition_WhenPresentationWasAlreadyResolved_DoesNotWriteAnalytics()
+    {
+        Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>> states =
+            new Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>>(MockBehavior.Strict);
+        states.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.IsAny<UpdateDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.Is<UpdateOptions>(static options => !options.IsUpsert),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>> preferences =
+            new Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>> interactions =
+            new Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>>(MockBehavior.Strict);
+        GlobalRatingSuggestionStateRepository repository =
+            new GlobalRatingSuggestionStateRepository(
+                states.Object,
+                preferences.Object,
+                interactions.Object);
+
+        bool recorded = await repository.TryRecordInteractionAsync(
+            "owner-1",
+            RatingTargetType.Park,
+            "park-1",
+            RatingUpdatedAtUtc,
+            GlobalRatingSuggestionInteractionType.Accepted,
+            RatingUpdatedAtUtc.AddHours(1),
+            CancellationToken.None);
+
+        Assert.False(recorded);
+        states.VerifyAll();
+        interactions.VerifyNoOtherCalls();
+        preferences.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task TerminalTransition_UsesExpectedPresentationAndAwaitingStateAsAtomicFence()
+    {
+        FilterDefinition<GlobalRatingSuggestionStateDocument>? capturedFilter = null;
+        Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>> states =
+            new Mock<IMongoCollection<GlobalRatingSuggestionStateDocument>>(MockBehavior.Strict);
+        states.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.IsAny<UpdateDefinition<GlobalRatingSuggestionStateDocument>>(),
+                It.Is<UpdateOptions>(static options => !options.IsUpsert),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<GlobalRatingSuggestionStateDocument> filter,
+                UpdateDefinition<GlobalRatingSuggestionStateDocument> _,
+                UpdateOptions _,
+                CancellationToken _) => capturedFilter = filter)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>> preferences =
+            new Mock<IMongoCollection<GlobalRatingSuggestionPreferenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>> interactions =
+            new Mock<IMongoCollection<GlobalRatingSuggestionInteractionDocument>>(MockBehavior.Strict);
+        interactions.Setup(value => value.InsertOneAsync(
+                It.Is<GlobalRatingSuggestionInteractionDocument>(static document =>
+                    document.InteractionType == GlobalRatingSuggestionInteractionType.Dismissed),
+                null,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        GlobalRatingSuggestionStateRepository repository =
+            new GlobalRatingSuggestionStateRepository(
+                states.Object,
+                preferences.Object,
+                interactions.Object);
+
+        bool recorded = await repository.TryRecordInteractionAsync(
+            "owner-1",
+            RatingTargetType.ParkItem,
+            "item-1",
+            RatingUpdatedAtUtc,
+            GlobalRatingSuggestionInteractionType.Dismissed,
+            RatingUpdatedAtUtc.AddHours(1),
+            CancellationToken.None);
+
+        Assert.True(recorded);
+        Assert.NotNull(capturedFilter);
+        BsonDocument rendered = Render(capturedFilter);
+        Assert.Equal(RatingUpdatedAtUtc, rendered["lastPresentedAtUtc"].ToUniversalTime());
+        Assert.True(rendered["isAwaitingResolution"].AsBoolean);
+        states.VerifyAll();
+        interactions.VerifyAll();
+        preferences.VerifyNoOtherCalls();
     }
 
     private static GlobalRatingSuggestionRatingSourceDocument Rating(
