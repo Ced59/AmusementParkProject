@@ -26,11 +26,34 @@ public sealed class CanonicalVisitExportWriterTests
         using JsonDocument document = JsonDocument.Parse(artifact.Content);
         JsonElement root = document.RootElement;
         Assert.Equal(CanonicalVisitExportWriter.SchemaVersion, root.GetProperty("schema").GetProperty("version").GetInt32());
+        Assert.False(root.GetProperty("schema").TryGetProperty("exportId", out JsonElement _));
+        Assert.Equal("park-0001", root.GetProperty("parks")[0].GetProperty("reference").GetString());
+        Assert.Equal("Europa Park", root.GetProperty("parks")[0].GetProperty("name").GetString());
+        Assert.Equal("park-item-0001", root.GetProperty("parkItems")[0].GetProperty("reference").GetString());
+        Assert.Equal("park-0001", root.GetProperty("parkItems")[0].GetProperty("parkReference").GetString());
+        Assert.Equal("visit-0001", root.GetProperty("visits")[0].GetProperty("reference").GetString());
+        Assert.Equal("park-0001", root.GetProperty("visits")[0].GetProperty("parkReference").GetString());
         Assert.Equal("Europa Park", root.GetProperty("visits")[0].GetProperty("parkName").GetString());
+        Assert.Equal(
+            "occurrence-0001",
+            root.GetProperty("rideOccurrences")[0].GetProperty("reference").GetString());
+        Assert.Equal(
+            "visit-0001",
+            root.GetProperty("rideOccurrences")[0].GetProperty("visitReference").GetString());
+        Assert.Equal(
+            "park-item-0001",
+            root.GetProperty("rideOccurrences")[0].GetProperty("parkItemReference").GetString());
         Assert.Equal("Silver Star", root.GetProperty("rideOccurrences")[0].GetProperty("parkItemName").GetString());
         Assert.Equal(8, root.GetProperty("visitAssessments")[0].GetProperty("valueHalfSteps").GetInt32());
         Assert.Equal(9, root.GetProperty("rideAssessments")[0].GetProperty("valueHalfSteps").GetInt32());
+        string content = Encoding.UTF8.GetString(artifact.Content);
+        Assert.DoesNotContain("0123456789abcdef0123456789abcdef", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("01JTESTVISIT00000000000000", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("01JTESTOCCURRENCE0000000000", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
         Assert.EndsWith(".json", artifact.FileName, StringComparison.Ordinal);
+        Assert.DoesNotContain("01234567", artifact.FileName, StringComparison.Ordinal);
         Assert.Equal(64, artifact.ChecksumSha256.Length);
     }
 
@@ -48,6 +71,8 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Equal(
             new[]
             {
+                "park-items.csv",
+                "parks.csv",
                 "ride-assessments.csv",
                 "ride-occurrences.csv",
                 "schema.json",
@@ -67,7 +92,44 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Equal(
             "leading-apostrophe-for-=+-@-cells",
             schema.RootElement.GetProperty("formulaNeutralization").GetString());
+        Assert.False(schema.RootElement.GetProperty("schema").TryGetProperty("exportId", out JsonElement _));
+        StringBuilder exportedText = new StringBuilder();
+        foreach (ZipArchiveEntry entry in archive.Entries)
+        {
+            using StreamReader entryReader = new StreamReader(entry.Open(), Encoding.UTF8);
+            exportedText.Append(entryReader.ReadToEnd());
+        }
+
+        string content = exportedText.ToString();
+        Assert.Contains("visit-0001", content, StringComparison.Ordinal);
+        Assert.Contains("occurrence-0001", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("0123456789abcdef0123456789abcdef", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("01JTESTVISIT00000000000000", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("01JTESTOCCURRENCE0000000000", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
         Assert.EndsWith(".zip", artifact.FileName, StringComparison.Ordinal);
+        Assert.DoesNotContain("01234567", artifact.FileName, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Write_WhenCatalogDataIsUnavailable_ShouldNotFallBackToInternalIdentifiers()
+    {
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+        PassportExportWriteRequest source = CreateRequest(PassportExportFormat.Json);
+        PassportExportWriteRequest request = source with
+        {
+            Parks = new Dictionary<string, Park>(StringComparer.Ordinal),
+            ParkItems = new Dictionary<string, VisitTarget>(StringComparer.Ordinal),
+        };
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        string content = Encoding.UTF8.GetString(artifact.Content);
+        Assert.Contains("Unavailable park", content, StringComparison.Ordinal);
+        Assert.Contains("Unavailable attraction", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
     }
 
     private static PassportExportWriteRequest CreateRequest(PassportExportFormat format)

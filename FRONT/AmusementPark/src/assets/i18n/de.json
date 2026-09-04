@@ -94,7 +94,7 @@
     "exports": {
       "kicker": "Kopie deiner Daten",
       "title": "Exportiere deinen Pass",
-      "description": "Lade alle Besuche, Fahrteinträge und privaten Bewertungen herunter. Das versionierte JSON ist für einen späteren Reimport vorbereitet; das CSV-ZIP enthält vier eigenständige Tabellen.",
+      "description": "Lade alle Besuche, Fahrteinträge und privaten Bewertungen herunter. Das versionierte JSON ist für einen späteren Reimport vorbereitet; das CSV-ZIP enthält sechs über exporteigene Verweise verknüpfte Tabellen ohne interne Kennungen.",
       "retention": "Die Datei bleibt privat, erfordert deine Anmeldung und läuft eine Stunde nach der Erstellung ab.",
       "actions": {
         "json": "JSON vorbereiten",

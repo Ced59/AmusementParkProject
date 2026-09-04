@@ -1,6 +1,20 @@
 {
-  "version": "5.0.28",
+  "version": "5.0.29",
   "history": [
+    {
+      "version": "5.0.29",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tes exports de passeport utilisent maintenant des références lisibles sans identifiants internes.",
+        "en": "Your passport exports now use readable references without internal identifiers.",
+        "de": "Deine Besuchspass-Exporte verwenden jetzt lesbare Verweise ohne interne Kennungen.",
+        "nl": "Je paspoortexports gebruiken nu leesbare verwijzingen zonder interne identificaties.",
+        "it": "Le esportazioni del passaporto ora usano riferimenti leggibili senza identificativi interni.",
+        "es": "Las exportaciones de tu pasaporte ahora usan referencias legibles sin identificadores internos.",
+        "pl": "Eksporty paszportu używają teraz czytelnych odwołań bez wewnętrznych identyfikatorów.",
+        "pt": "As exportações do teu passaporte usam agora referências legíveis sem identificadores internos."
+      }
+    },
     {
       "version": "5.0.28",
       "releasedAt": "2026-09-04",

@@ -54,7 +54,7 @@
     "exports": {
       "kicker": "Your data copy",
       "title": "Export your passport",
-      "description": "Download all your visits, ride entries and private ratings. The versioned JSON is ready for a future re-import; the CSV ZIP contains four independent tables.",
+      "description": "Download all your visits, ride entries and private ratings. The versioned JSON is ready for a future re-import; the CSV ZIP contains six tables linked by export-only references, without internal identifiers.",
       "retention": "The file stays private, requires your signed-in session and expires one hour after it is generated.",
       "actions": { "json": "Prepare JSON", "csv": "Prepare CSV files", "download": "Download file" },
       "status": { "generating": "Preparing your export…", "ready": "Your export is ready" },

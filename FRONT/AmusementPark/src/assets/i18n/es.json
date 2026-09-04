@@ -94,7 +94,7 @@
     "exports": {
       "kicker": "Copia de tus datos",
       "title": "Exporta tu pasaporte",
-      "description": "Descarga todas tus visitas, registros de atracciones y valoraciones privadas. El JSON versionado está preparado para una futura reimportación; el ZIP CSV contiene cuatro tablas independientes.",
+      "description": "Descarga todas tus visitas, registros de atracciones y valoraciones privadas. El JSON versionado está preparado para una futura reimportación; el ZIP CSV contiene seis tablas enlazadas mediante referencias propias de la exportación, sin identificadores internos.",
       "retention": "El archivo sigue siendo privado, requiere tu sesión y caduca una hora después de generarse.",
       "actions": {
         "json": "Preparar el JSON",
