@@ -45,7 +45,9 @@ public sealed record PassportItemStatistics(
     double RatingCoverageRate,
     PassportItemExperience? FirstExperience,
     PassportItemExperience? LastExperience,
-    PassportItemRatingStatistics? Ratings);
+    PassportItemRatingStatistics? Ratings,
+    RatingValue? CurrentGlobalRating,
+    double? CurrentGlobalMinusHistoricalAverage);
 
 /// <summary>
 /// Calcule les statistiques d'un élément à partir des observations actives.
@@ -55,12 +57,22 @@ public sealed record PassportItemStatistics(
 public static class PassportItemStatisticsCalculator
 {
     public static PassportItemStatistics Calculate(
-        IReadOnlyCollection<PassportItemRideObservation> observations)
+        IReadOnlyCollection<PassportItemRideObservation> observations,
+        RatingValue? currentGlobalRating)
     {
         ArgumentNullException.ThrowIfNull(observations);
         if (observations.Count == 0)
         {
-            return new PassportItemStatistics(0, 0, 0, 0d, null, null, null);
+            return new PassportItemStatistics(
+                0,
+                0,
+                0,
+                0d,
+                null,
+                null,
+                null,
+                currentGlobalRating,
+                null);
         }
 
         PassportItemRideObservation[] orderedObservations = observations
@@ -74,6 +86,7 @@ public static class PassportItemStatisticsCalculator
             .ToArray();
         long rideCount = observations.Count;
         long ratedRideCount = ratingHalfSteps.LongLength;
+        PassportItemRatingStatistics? ratings = CalculateRatings(ratingHalfSteps);
 
         return new PassportItemStatistics(
             rideCount,
@@ -84,7 +97,11 @@ public static class PassportItemStatisticsCalculator
             ratedRideCount / (double)rideCount,
             ToExperience(orderedObservations[0]),
             ToExperience(orderedObservations[^1]),
-            CalculateRatings(ratingHalfSteps));
+            ratings,
+            currentGlobalRating,
+            currentGlobalRating.HasValue && ratings is not null
+                ? currentGlobalRating.Value.DoubleValue - ratings.Average
+                : null);
     }
 
     private static PassportItemExperience ToExperience(

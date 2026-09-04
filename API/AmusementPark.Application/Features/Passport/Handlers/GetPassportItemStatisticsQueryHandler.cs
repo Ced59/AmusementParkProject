@@ -57,9 +57,10 @@ public sealed class GetPassportItemStatisticsQueryHandler
             cancellationToken);
         await Task.WhenAll(observationsTask, currentRatingTask);
 
-        PassportItemStatistics statistics = PassportItemStatisticsCalculator.Calculate(
-            await observationsTask);
         UserRating? currentRating = await currentRatingTask;
+        PassportItemStatistics statistics = PassportItemStatisticsCalculator.Calculate(
+            await observationsTask,
+            currentRating is null ? null : RatingValue.FromDouble(currentRating.Value));
         PassportItemStatisticsResult result = new PassportItemStatisticsResult(
             parkItemId,
             statistics.RideCount,
@@ -71,10 +72,8 @@ public sealed class GetPassportItemStatisticsQueryHandler
             ToResult(statistics.FirstExperience),
             ToResult(statistics.LastExperience),
             ToResult(statistics.Ratings),
-            currentRating?.Value,
-            currentRating is not null && statistics.Ratings is not null
-                ? currentRating.Value - statistics.Ratings.Average
-                : null);
+            statistics.CurrentGlobalRating?.DoubleValue,
+            statistics.CurrentGlobalMinusHistoricalAverage);
         return ApplicationResult<PassportItemStatisticsResult>.Success(result);
     }
 

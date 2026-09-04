@@ -10,7 +10,8 @@ public sealed class PassportItemStatisticsCalculatorTests
     public void Calculate_WhenNoRideExists_ShouldReturnExplicitZeroDenominators()
     {
         PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
-            Array.Empty<PassportItemRideObservation>());
+            Array.Empty<PassportItemRideObservation>(),
+            RatingValue.FromHalfSteps(9));
 
         Assert.Equal(0, result.RideCount);
         Assert.Equal(0, result.VisitCount);
@@ -19,6 +20,8 @@ public sealed class PassportItemStatisticsCalculatorTests
         Assert.Null(result.FirstExperience);
         Assert.Null(result.LastExperience);
         Assert.Null(result.Ratings);
+        Assert.Equal(4.5d, result.CurrentGlobalRating?.DoubleValue);
+        Assert.Null(result.CurrentGlobalMinusHistoricalAverage);
     }
 
     [Fact]
@@ -32,7 +35,9 @@ public sealed class PassportItemStatisticsCalculatorTests
             Create("visit-c", VisitDate.ForMonth(2026, 3), null),
         };
 
-        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(observations);
+        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
+            observations,
+            RatingValue.FromHalfSteps(9));
 
         Assert.Equal(4, result.RideCount);
         Assert.Equal(3, result.VisitCount);
@@ -52,6 +57,8 @@ public sealed class PassportItemStatisticsCalculatorTests
         Assert.Equal(1d, ratings.Minimum);
         Assert.Equal(5d, ratings.Maximum);
         Assert.Equal(Math.Sqrt(32.666666666666664d / 3d) / 2d, ratings.PopulationStandardDeviation, 12);
+        Assert.Equal(4.5d, result.CurrentGlobalRating?.DoubleValue);
+        Assert.Equal(4.5d - (19d / 6d), result.CurrentGlobalMinusHistoricalAverage);
     }
 
     [Fact]
@@ -63,7 +70,9 @@ public sealed class PassportItemStatisticsCalculatorTests
             Create("visit-b", VisitDate.ForDay(2025, 1, 2), 8),
         };
 
-        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(observations);
+        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
+            observations,
+            null);
 
         Assert.Equal(3.75d, result.Ratings?.Median);
         Assert.Equal(3.75d, result.Ratings?.Average);
@@ -80,7 +89,9 @@ public sealed class PassportItemStatisticsCalculatorTests
             Create("visit-month", VisitDate.ForMonth(2025, 6), null),
         };
 
-        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(observations);
+        PassportItemStatistics result = PassportItemStatisticsCalculator.Calculate(
+            observations,
+            null);
 
         Assert.Equal(VisitDatePrecision.Year, result.FirstExperience?.VisitDate.Precision);
         Assert.Null(result.FirstExperience?.VisitDate.Month);
