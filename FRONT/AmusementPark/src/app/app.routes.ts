@@ -182,6 +182,8 @@ export const routes: Routes = [
           { path: 'rankings/methodology/:version', loadComponent: () => import('@features/public/ratings/pages/rating-methodology-page.component').then((m) => m.RatingMethodologyPageComponent) },
           { path: 'rankings/methodology', loadComponent: () => import('@features/public/ratings/pages/rating-methodology-page.component').then((m) => m.RatingMethodologyPageComponent) },
           { path: 'rankings', loadComponent: () => import('@features/public/ratings/pages/rankings-page.component').then((m) => m.RankingsPageComponent) },
+          { path: 'passport/local/:draftId', loadComponent: () => import('@features/profile/passport/anonymous-drafts/pages/passport-anonymous-draft-editor-page/passport-anonymous-draft-editor-page.component').then((m) => m.PassportAnonymousDraftEditorPageComponent) },
+          { path: 'passport/local', loadComponent: () => import('@features/profile/passport/anonymous-drafts/pages/passport-anonymous-drafts-page/passport-anonymous-drafts-page.component').then((m) => m.PassportAnonymousDraftsPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
           { path: 'contact', loadComponent: () => import('@features/public/contact/pages/contact-page.component').then((m) => m.ContactPageComponent) },
           { path: 'versions', loadComponent: () => import('@features/public/version-history/pages/version-history-page.component').then((m) => m.VersionHistoryPageComponent) },

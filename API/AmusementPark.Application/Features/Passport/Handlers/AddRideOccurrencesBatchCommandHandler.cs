@@ -72,7 +72,9 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         string? operationId = PassportRideOccurrenceHandlerSupport.NormalizeOperationId(
             command.ClientOperationId);
         IReadOnlyList<RideOccurrenceCreationItem>? expanded = Expand(command.Items);
-        if (operationId is null || expanded is null)
+        if (operationId is null
+            || expanded is null
+            || command.Source is not (RideLogSource.Manual or RideLogSource.Import))
         {
             return Failure(operationId is null
                 ? PassportApplicationErrors.InvalidIdempotencyKey()
@@ -82,11 +84,11 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         RideOccurrenceCreationRequest creationRequest = new RideOccurrenceCreationRequest(
             visitId,
             userId,
-            expanded.Select(static item => new RideOccurrenceCreationRequestItem(
+            expanded.Select(item => new RideOccurrenceCreationRequestItem(
                 item.ParkItemId.Trim(),
                 new OccurrenceMoment(item.LocalTime, item.IsApproximate),
                 item.Status,
-                RideLogSource.Manual,
+                command.Source,
                 NormalizePrivateNote(item.PrivateNote),
                 item.ConfirmHistoricalConflict)).ToArray());
         return await this.HandleWithContentMutationLeaseAsync(
@@ -441,7 +443,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 positions[index],
                 new OccurrenceMoment(item.LocalTime, item.IsApproximate),
                 item.Status,
-                RideLogSource.Manual,
+                creationRequest.Items[index].Source,
                 preparation.HistoricalConsistencies[index],
                 null,
                 item.PrivateNote,

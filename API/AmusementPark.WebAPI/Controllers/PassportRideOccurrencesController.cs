@@ -108,6 +108,35 @@ public sealed class PassportRideOccurrencesController : ControllerBase
             result.Value.Occurrences.Select(static occurrence => occurrence.ToHttp()).ToArray());
     }
 
+    [HttpPost("occurrences:import")]
+    [ProducesResponseType(typeof(IReadOnlyCollection<PassportRideOccurrenceDto>), StatusCodes.Status201Created)]
+    public async Task<IActionResult> ImportBatchAsync(
+        [FromRoute] string visitId,
+        [FromBody] CreatePassportRideOccurrencesBatchRequestDto request,
+        [FromHeader(Name = "Idempotency-Key"), Required] string idempotencyKey,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return UnauthorizedResult();
+        }
+
+        ApplicationResult<CreateRideOccurrencesResult> result = await this.addHandler.HandleAsync(
+            request.ToApplication(userId, visitId, idempotencyKey, RideLogSource.Import),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        SetReplayHeader(this.Response, result.Value.WasReplayed);
+        SetOrderNormalizedHeader(this.Response, result.Value.WasNormalized);
+        return this.StatusCode(
+            StatusCodes.Status201Created,
+            result.Value.Occurrences.Select(static occurrence => occurrence.ToHttp()).ToArray());
+    }
+
     [HttpGet("occurrences/{occurrenceId}")]
     [ProducesResponseType(typeof(PassportRideOccurrenceDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAsync(

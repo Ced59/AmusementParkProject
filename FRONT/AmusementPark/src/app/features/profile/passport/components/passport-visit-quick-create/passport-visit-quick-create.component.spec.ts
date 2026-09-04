@@ -30,6 +30,7 @@ const fakeFacade = {
   saving: signal(false),
   errorKey: signal<string | null>(null),
   createdVisit: signal<PassportVisit | null>(null),
+  createdLocalDraftId: signal<string | null>(null),
   searchParks: vi.fn(),
   createVisit: vi.fn(),
   clearCreationResult: vi.fn(),
@@ -123,8 +124,35 @@ describe('PassportVisitQuickCreateComponent responsive contract', () => {
     fakeFacade.createdVisit.set(null);
   });
 
+  it('opens the local draft editor when an anonymous visit was saved on the device', async () => {
+    const router = { url: '/fr/parks/parc-test', navigate: vi.fn().mockResolvedValue(true) };
+    fakeFacade.createdLocalDraftId.set('draft-1');
+    await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
+      providers: [{ provide: Router, useValue: router }]
+    })
+      .overrideComponent(PassportVisitQuickCreateComponent, {
+        set: {
+          providers: [{ provide: PassportVisitQuickCreateStateFacade, useValue: fakeFacade }]
+        }
+      })
+      .compileComponents();
+    const fixture: ComponentFixture<PassportVisitQuickCreateHostComponent> = TestBed.createComponent(
+      PassportVisitQuickCreateHostComponent
+    );
+    fixture.detectChanges();
+    const dialog: PassportVisitQuickCreateComponent = fixture.debugElement.children[0].children[0]
+      .componentInstance as PassportVisitQuickCreateComponent;
+
+    (dialog as unknown as { manageCreatedVisit(): void }).manageCreatedVisit();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'fr', 'passport', 'local', 'draft-1']);
+    fakeFacade.createdLocalDraftId.set(null);
+  });
+
   it('notifies its host when a new visit has been created', async () => {
     fakeFacade.createdVisit.set(null);
+    fakeFacade.createdLocalDraftId.set(null);
     await TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot(), PassportVisitQuickCreateHostComponent],
       providers: [{ provide: Router, useValue: { url: '/fr/profile', navigate: vi.fn() } }]

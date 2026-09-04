@@ -131,6 +131,12 @@
         "description": "Your visit to {{park}} is now in your private passport.",
         "toast": "The visit was added to your passport."
       },
+      "localSuccess": {
+        "title": "Visit saved on this device",
+        "description": "Your visit to {{park}} is stored locally. You can already add the attractions you remember.",
+        "deviceWarning": "This draft stays in this browser: it is neither synced nor backed up to your account.",
+        "toast": "The visit was saved on this device."
+      },
       "park": {
         "title": "Choose the park",
         "hint": "Search among parks that are visible on the site.",
@@ -173,6 +179,8 @@
       },
       "errors": {
         "signInRequired": "Sign in to save this visit. Your entry remains available.",
+        "localStorageUnavailable": "Secure browser storage is unavailable on this device.",
+        "localSave": "The visit could not be saved on this device. Check the available storage and try again.",
         "generic": "The visit could not be saved. Try again without losing your entry.",
         "parkSearch": "The park search failed. Try again in a moment.",
         "parkNotFound": "This park is no longer available.",
@@ -180,6 +188,151 @@
         "date": "The visit date is not valid.",
         "retryConflict": "This attempt no longer matches the original entry. Check the fields and try again.",
         "network": "The server response did not arrive. Try again: the visit will not be created twice."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Local passport",
+      "title": "Your visits on this device",
+      "description": "Start your history without an account. Nothing is sent until you request an import after signing in.",
+      "deviceWarning": "This data belongs only to this browser. Clearing browser data, using another device, or private browsing can make it unavailable.",
+      "actions": {
+        "export": "Export a copy",
+        "browseParks": "Find a park",
+        "clear": "Clear all",
+        "continue": "Continue this visit",
+        "deleteOne": "Delete",
+        "import": "Import into my passport",
+        "cancel": "Cancel",
+        "confirmClear": "Clear drafts"
+      },
+      "errors": {
+        "storageUnavailable": "Local storage is unavailable in this browser.",
+        "load": "Visits saved on this device could not be read.",
+        "delete": "This local visit could not be deleted.",
+        "clear": "Local visits could not be cleared.",
+        "export": "The local copy could not be prepared."
+      },
+      "loading": {
+        "title": "Reading your local visits",
+        "description": "The browser is opening the passport kept on this device."
+      },
+      "empty": {
+        "title": "No local visits",
+        "description": "Add a visit from a park page, even without signing in."
+      },
+      "list": {
+        "kicker": "Private draft",
+        "title": "Drafts to continue",
+        "rideCount": "{{count}} rides"
+      },
+      "clearDialog": {
+        "title": "Clear all local visits?",
+        "description": "This permanently deletes drafts from this browser. It does not affect visits already imported into your account."
+      },
+      "import": {
+        "title": "Keep these visits after signing in",
+        "description": "Sign in to compare and then import these drafts into your private passport.",
+        "loading": "Looking for local visits to import…",
+        "kicker": "Controlled import",
+        "detectedTitle": "Local visits were detected",
+        "detectedDescription": "{{visits}} visit(s) and {{rides}} ride(s) remain on this device until you confirm.",
+        "noUploadYet": "No data has been sent yet",
+        "rideCount": "{{count}} local rides",
+        "similarFound": "{{count}} similar visit(s)",
+        "choiceLegend": "What do you want to do with this visit?",
+        "choices": {
+          "separate": "Keep it separate",
+          "separateHint": "Creates a new visit without changing existing ones.",
+          "merge": "Merge it after comparison",
+          "mergeHint": "Adds rides to an existing draft that you choose.",
+          "ignore": "Ignore it for this import",
+          "ignoreHint": "It stays on this device and can be handled later."
+        },
+        "targetLabel": "Destination draft",
+        "targetPlaceholder": "Choose an editable visit",
+        "comparison": {
+          "local": "On this device",
+          "server": "In your account",
+          "title": "Title",
+          "note": "Private note",
+          "loadingRides": "Loading existing rides…"
+        },
+        "metadata": {
+          "legend": "Visit details",
+          "keepServer": "Keep the title and note already saved",
+          "useLocal": "Use the local visit's title and note"
+        },
+        "consent": "I allow these local visits to be compared with my private passport and then imported according to my choices.",
+        "compare": "Compare with my passport",
+        "comparing": "Comparing…",
+        "importing": "Importing…",
+        "submit": "Import selected visits",
+        "errors": {
+          "preview": "The comparison could not be prepared. No local data was sent.",
+          "invalidTarget": "Choose an existing editable draft for this merge.",
+          "comparison": "All rides from the selected visit could not be loaded.",
+          "consent": "Explicitly confirm the import before sending.",
+          "itemFailed": "This visit was not imported; its local draft was kept."
+        },
+        "report": {
+          "title": "Import report",
+          "summary": "{{imported}} created, {{merged}} merged, {{rides}} rides imported, {{failed}} failed.",
+          "outcomes": {
+            "Imported": "New visit imported",
+            "Merged": "Verified merge",
+            "Ignored": "Ignored and kept locally",
+            "Failed": "Failed and kept locally"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Draft on this device",
+        "rideCount": "{{count}} rides",
+        "localOnly": "Your changes stay in this browser and are not sent to any server.",
+        "actions": {
+          "back": "Back to local visits",
+          "delete": "Delete visit",
+          "confirmDelete": "Delete permanently"
+        },
+        "add": {
+          "kicker": "Visit memories",
+          "title": "Add attractions",
+          "description": "Find a park attraction and enter how many times you rode it.",
+          "searchLabel": "Attraction name",
+          "searchPlaceholder": "Search for an attraction…",
+          "search": "Search",
+          "historical": "Historical attraction",
+          "more": "Load more",
+          "status": "Outcome",
+          "count": "Number of rides",
+          "time": "Local time",
+          "approximate": "Approximate time",
+          "note": "Private note",
+          "confirmHistorical": "I confirm this attraction matches my memory despite its operating dates.",
+          "submit": "Add to visit"
+        },
+        "timeline": {
+          "kicker": "Local timeline",
+          "title": "Added attractions",
+          "empty": "No attraction has been added to this visit yet.",
+          "count": "{{count}} rides",
+          "moveUp": "Move this ride up",
+          "moveDown": "Move this ride down",
+          "remove": "Remove this ride"
+        },
+        "errors": {
+          "notFoundTitle": "Local visit not found",
+          "notFound": "This draft no longer exists in this browser.",
+          "load": "This local visit could not be loaded.",
+          "invalidRide": "Check the ride details and the limit of 2,000 rides per draft.",
+          "attractions": "The park attractions could not be loaded.",
+          "save": "The change could not be saved on this device.",
+          "delete": "This local visit could not be deleted."
+        },
+        "deleteDialog": {
+          "title": "Delete this local visit?",
+          "description": "The draft and all its rides will be permanently removed from this browser."
+        }
       }
     },
     "editor": {

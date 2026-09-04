@@ -6,11 +6,18 @@ import { Subject, catchError, debounceTime, distinctUntilChanged, map, of, switc
 
 import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
-import { ModalService } from '@app/services/modal/modal.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { PassportParkOption, PassportVisitQuickCreateDraft } from '../models/passport-visit-quick-create.models';
+import {
+  PASSPORT_ANONYMOUS_DRAFT_SCHEMA_VERSION,
+  PassportAnonymousDraft
+} from '../anonymous-drafts/models/passport-anonymous-draft.models';
+import {
+  PASSPORT_ANONYMOUS_DRAFT_STORE_PORT,
+  PassportAnonymousDraftStorePort
+} from '../anonymous-drafts/state/passport-anonymous-draft-store.ports';
 import {
   mapParkToPassportOption,
   mapPassportVisitQuickCreateDraft,
@@ -33,9 +40,12 @@ export class PassportVisitQuickCreateStateFacade {
   private readonly savingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly createdVisitSignal = signal<PassportVisit | null>(null);
+  private readonly createdLocalDraftIdSignal = signal<string | null>(null);
   private readonly searchTerms = new Subject<string>();
   private pendingFingerprint: string | null = null;
   private pendingIdempotencyKey: string | null = null;
+  private pendingDraftId: string | null = null;
+  private pendingRideOperationId: string | null = null;
 
   readonly parkOptions: Signal<PassportParkOption[]> = this.parkOptionsSignal.asReadonly();
   readonly searching: Signal<boolean> = this.searchingSignal.asReadonly();
@@ -43,13 +53,14 @@ export class PassportVisitQuickCreateStateFacade {
   readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   readonly createdVisit: Signal<PassportVisit | null> = this.createdVisitSignal.asReadonly();
+  readonly createdLocalDraftId: Signal<string | null> = this.createdLocalDraftIdSignal.asReadonly();
 
   constructor(
     @Inject(PASSPORT_VISIT_QUICK_CREATE_API_PORT) private readonly visitsApi: PassportVisitQuickCreateApiPort,
     @Inject(PASSPORT_VISIT_QUICK_CREATE_PARKS_PORT) private readonly parksApi: PassportVisitQuickCreateParksPort,
     @Inject(PASSPORT_VISIT_OPERATION_ID_PORT) private readonly operationIds: PassportVisitOperationIdPort,
+    @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT) private readonly anonymousDrafts: PassportAnonymousDraftStorePort,
     private readonly authService: AuthService,
-    private readonly modalService: ModalService,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef
@@ -61,7 +72,7 @@ export class PassportVisitQuickCreateStateFacade {
     this.searchTerms.next(term);
   }
 
-  createVisit(draft: PassportVisitQuickCreateDraft): void {
+  createVisit(draft: PassportVisitQuickCreateDraft, parkName: string | null = null): void {
     if (this.savingSignal()) {
       return;
     }
@@ -77,20 +88,20 @@ export class PassportVisitQuickCreateStateFacade {
     if (this.pendingFingerprint !== fingerprint || !this.pendingIdempotencyKey) {
       this.pendingFingerprint = fingerprint;
       this.pendingIdempotencyKey = this.operationIds.create();
+      this.pendingDraftId = this.operationIds.create();
+      this.pendingRideOperationId = this.operationIds.create();
     }
 
     const idempotencyKey: string = this.pendingIdempotencyKey;
     this.errorKeySignal.set(null);
     this.savingSignal.set(true);
 
-    this.authService.ensureValidAccessToken(true)
+    this.authService.ensureValidAccessToken(false)
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
           if (!token) {
-            this.savingSignal.set(false);
-            this.errorKeySignal.set('passport.quickCreate.errors.signInRequired');
-            this.modalService.openModal('loginModal');
+            void this.saveAnonymousDraft(request, parkName);
             return;
           }
 
@@ -105,9 +116,12 @@ export class PassportVisitQuickCreateStateFacade {
 
   clearCreationResult(): void {
     this.createdVisitSignal.set(null);
+    this.createdLocalDraftIdSignal.set(null);
     this.errorKeySignal.set(null);
     this.pendingFingerprint = null;
     this.pendingIdempotencyKey = null;
+    this.pendingDraftId = null;
+    this.pendingRideOperationId = null;
   }
 
   clearParkSearch(): void {
@@ -160,9 +174,12 @@ export class PassportVisitQuickCreateStateFacade {
           }
 
           this.createdVisitSignal.set(visit);
+          this.createdLocalDraftIdSignal.set(null);
           this.savingSignal.set(false);
           this.pendingFingerprint = null;
           this.pendingIdempotencyKey = null;
+          this.pendingDraftId = null;
+          this.pendingRideOperationId = null;
           this.messages.add(
             'success',
             this.translateService.instant('common.success'),
@@ -174,6 +191,52 @@ export class PassportVisitQuickCreateStateFacade {
           this.errorKeySignal.set(this.resolveErrorKey(error));
         }
       });
+  }
+
+  private async saveAnonymousDraft(
+    request: CreatePassportVisitRequest,
+    parkName: string | null
+  ): Promise<void> {
+    if (!this.anonymousDrafts.isAvailable()
+      || !this.pendingDraftId
+      || !this.pendingIdempotencyKey
+      || !this.pendingRideOperationId) {
+      this.savingSignal.set(false);
+      this.errorKeySignal.set('passport.quickCreate.errors.localStorageUnavailable');
+      return;
+    }
+
+    const nowUtc: string = new Date().toISOString();
+    const localDraft: PassportAnonymousDraft = {
+      schemaVersion: PASSPORT_ANONYMOUS_DRAFT_SCHEMA_VERSION,
+      id: this.pendingDraftId,
+      visitOperationId: this.pendingIdempotencyKey,
+      rideOperationId: this.pendingRideOperationId,
+      parkName: parkName?.trim() || request.parkId,
+      visit: request,
+      rides: [],
+      createdAtUtc: nowUtc,
+      updatedAtUtc: nowUtc
+    };
+
+    try {
+      await this.anonymousDrafts.save(localDraft);
+      this.createdVisitSignal.set(null);
+      this.createdLocalDraftIdSignal.set(localDraft.id);
+      this.savingSignal.set(false);
+      this.pendingFingerprint = null;
+      this.pendingIdempotencyKey = null;
+      this.pendingDraftId = null;
+      this.pendingRideOperationId = null;
+      this.messages.add(
+        'success',
+        this.translateService.instant('common.success'),
+        this.translateService.instant('passport.quickCreate.localSuccess.toast')
+      );
+    } catch {
+      this.savingSignal.set(false);
+      this.errorKeySignal.set('passport.quickCreate.errors.localSave');
+    }
   }
 
   private resolveErrorKey(error: unknown): string {

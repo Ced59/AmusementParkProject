@@ -6,6 +6,8 @@ export const PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS = {
   },
   addBatch: (visitId: string): string =>
     `me/passport/visits/${encodeURIComponent(visitId)}/occurrences:batch`,
+  importBatch: (visitId: string): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/occurrences:import`,
   update: (visitId: string, occurrenceId: string): string =>
     `me/passport/visits/${encodeURIComponent(visitId)}/occurrences/${encodeURIComponent(occurrenceId)}`,
   get: (visitId: string, occurrenceId: string): string =>

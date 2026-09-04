@@ -15,6 +15,14 @@ describe('PASSPORT_VISITS_API_ENDPOINTS', () => {
       .toBe('me/passport/visits?limit=20&cursor=next%2Bpage');
   });
 
+  it('encodes the optional park, year and status filters', () => {
+    expect(PASSPORT_VISITS_API_ENDPOINTS.list(100, null, {
+      parkId: 'park/one',
+      year: 2026,
+      status: 'Draft'
+    })).toBe('me/passport/visits?limit=100&parkId=park%2Fone&year=2026&status=Draft');
+  });
+
   it('keeps the park assessment nested under its owned visit', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.assessment('visit/one'))
       .toBe('me/passport/visits/visit%2Fone/assessment');

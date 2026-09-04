@@ -13,14 +13,16 @@ internal static class PassportRideOccurrenceHttpMappers
         this CreatePassportRideOccurrencesBatchRequestDto request,
         string userId,
         string visitId,
-        string clientOperationId)
+        string clientOperationId,
+        RideLogSource source = RideLogSource.Manual)
     {
         ArgumentNullException.ThrowIfNull(request);
         return new AddRideOccurrencesBatchCommand(
             userId,
             visitId,
             clientOperationId,
-            request.Items.Select(ToApplication).ToArray());
+            request.Items.Select(ToApplication).ToArray(),
+            source);
     }
 
     public static AddRideOccurrencesBatchCommand ToApplication(

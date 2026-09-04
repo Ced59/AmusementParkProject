@@ -44,6 +44,19 @@ export class PassportRideOccurrencesApiService {
       this.toMutationResult(response, response.body ?? [])));
   }
 
+  importBatch(
+    visitId: string,
+    request: CreatePassportRideOccurrencesBatchRequest,
+    idempotencyKey: string
+  ): Observable<PassportRideOccurrenceMutationResult> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.importBatch(visitId)}`;
+    return this.http.post<PassportRideOccurrence[]>(url, request, {
+      headers: this.idempotencyHeaders(idempotencyKey),
+      observe: 'response'
+    }).pipe(map((response: HttpResponse<PassportRideOccurrence[]>): PassportRideOccurrenceMutationResult =>
+      this.toMutationResult(response, response.body ?? [])));
+  }
+
   update(
     visitId: string,
     occurrenceId: string,

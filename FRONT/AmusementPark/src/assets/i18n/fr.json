@@ -257,6 +257,12 @@
         "description": "Ta visite à {{park}} est maintenant dans ton passeport privé.",
         "toast": "La visite a été ajoutée à ton passeport."
       },
+      "localSuccess": {
+        "title": "Visite gardée sur cet appareil",
+        "description": "Ta visite à {{park}} est enregistrée localement. Tu peux déjà ajouter les attractions dont tu te souviens.",
+        "deviceWarning": "Ce brouillon reste dans ce navigateur : il n’est ni synchronisé ni sauvegardé sur ton compte.",
+        "toast": "La visite a été gardée sur cet appareil."
+      },
       "park": {
         "title": "Choisis le parc",
         "hint": "Recherche uniquement parmi les parcs visibles sur le site.",
@@ -299,6 +305,8 @@
       },
       "errors": {
         "signInRequired": "Connecte-toi pour enregistrer cette visite. Ta saisie reste disponible.",
+        "localStorageUnavailable": "Le stockage local sécurisé par le navigateur n’est pas disponible sur cet appareil.",
+        "localSave": "La visite n’a pas pu être gardée sur cet appareil. Vérifie l’espace disponible puis réessaie.",
         "generic": "La visite n’a pas pu être enregistrée. Réessaie sans perdre ta saisie.",
         "parkSearch": "La recherche de parcs a échoué. Réessaie dans un instant.",
         "parkNotFound": "Ce parc n’est plus disponible.",
@@ -306,6 +314,151 @@
         "date": "La date de visite n’est pas valide.",
         "retryConflict": "Cette tentative ne correspond plus à la saisie initiale. Vérifie les champs puis réessaie.",
         "network": "La réponse du serveur n’est pas arrivée. Réessaie : la visite ne sera pas créée en double."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Passeport local",
+      "title": "Tes visites sur cet appareil",
+      "description": "Commence ton historique sans compte. Rien n’est envoyé tant que tu ne demandes pas l’import après connexion.",
+      "deviceWarning": "Ces données appartiennent uniquement à ce navigateur. Une suppression des données du navigateur, un autre appareil ou une navigation privée peuvent les rendre indisponibles.",
+      "actions": {
+        "export": "Exporter une copie",
+        "browseParks": "Trouver un parc",
+        "clear": "Tout effacer",
+        "continue": "Continuer la visite",
+        "deleteOne": "Supprimer",
+        "import": "Importer dans mon passeport",
+        "cancel": "Annuler",
+        "confirmClear": "Effacer les brouillons"
+      },
+      "errors": {
+        "storageUnavailable": "Le stockage local n’est pas disponible dans ce navigateur.",
+        "load": "Impossible de lire les visites gardées sur cet appareil.",
+        "delete": "Impossible de supprimer cette visite locale.",
+        "clear": "Impossible d’effacer les visites locales.",
+        "export": "Impossible de préparer la copie locale."
+      },
+      "loading": {
+        "title": "Lecture de tes visites locales",
+        "description": "Le navigateur ouvre le passeport gardé sur cet appareil."
+      },
+      "empty": {
+        "title": "Aucune visite locale",
+        "description": "Ajoute une visite depuis la fiche d’un parc, même sans être connecté."
+      },
+      "list": {
+        "kicker": "Brouillon privé",
+        "title": "Brouillons à reprendre",
+        "rideCount": "{{count}} passages"
+      },
+      "clearDialog": {
+        "title": "Effacer toutes les visites locales ?",
+        "description": "Cette action supprime définitivement les brouillons de ce navigateur. Elle ne touche pas aux visites déjà importées dans ton compte."
+      },
+      "import": {
+        "title": "Retrouver ces visites après connexion",
+        "description": "Connecte-toi pour comparer puis importer ces brouillons dans ton passeport privé.",
+        "loading": "Recherche de visites locales à importer…",
+        "kicker": "Import contrôlé",
+        "detectedTitle": "Des visites locales ont été détectées",
+        "detectedDescription": "{{visits}} visite(s) et {{rides}} passage(s) restent sur cet appareil jusqu’à ta confirmation.",
+        "noUploadYet": "Aucune donnée envoyée pour le moment",
+        "rideCount": "{{count}} passages locaux",
+        "similarFound": "{{count}} visite(s) similaire(s)",
+        "choiceLegend": "Que veux-tu faire de cette visite ?",
+        "choices": {
+          "separate": "La garder séparée",
+          "separateHint": "Crée une nouvelle visite sans toucher à celles qui existent déjà.",
+          "merge": "La fusionner après comparaison",
+          "mergeHint": "Ajoute les passages à un brouillon existant que tu choisis.",
+          "ignore": "L’ignorer pour cet import",
+          "ignoreHint": "Elle reste sur cet appareil et pourra être traitée plus tard."
+        },
+        "targetLabel": "Brouillon de destination",
+        "targetPlaceholder": "Choisis une visite modifiable",
+        "comparison": {
+          "local": "Sur cet appareil",
+          "server": "Dans ton compte",
+          "title": "Titre",
+          "note": "Note privée",
+          "loadingRides": "Chargement des passages existants…"
+        },
+        "metadata": {
+          "legend": "Informations de la visite",
+          "keepServer": "Conserver le titre et la note déjà enregistrés",
+          "useLocal": "Utiliser le titre et la note de la visite locale"
+        },
+        "consent": "J’autorise la comparaison de ces visites locales avec mon passeport privé, puis leur import selon mes choix.",
+        "compare": "Comparer avec mon passeport",
+        "comparing": "Comparaison en cours…",
+        "importing": "Import en cours…",
+        "submit": "Importer les visites choisies",
+        "errors": {
+          "preview": "Impossible de préparer la comparaison. Aucune donnée locale n’a été envoyée.",
+          "invalidTarget": "Choisis un brouillon existant et modifiable pour cette fusion.",
+          "comparison": "Impossible de charger tous les passages de la visite choisie.",
+          "consent": "Confirme explicitement l’import avant l’envoi.",
+          "itemFailed": "Cette visite n’a pas été importée ; son brouillon local est conservé."
+        },
+        "report": {
+          "title": "Rapport d’import",
+          "summary": "{{imported}} créée(s), {{merged}} fusionnée(s), {{rides}} passage(s) importé(s), {{failed}} échec(s).",
+          "outcomes": {
+            "Imported": "Nouvelle visite importée",
+            "Merged": "Fusion vérifiée",
+            "Ignored": "Ignorée et conservée localement",
+            "Failed": "Échec, conservée localement"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Brouillon sur cet appareil",
+        "rideCount": "{{count}} passages",
+        "localOnly": "Tes modifications restent dans ce navigateur et ne sont envoyées à aucun serveur.",
+        "actions": {
+          "back": "Retour aux visites locales",
+          "delete": "Supprimer la visite",
+          "confirmDelete": "Supprimer définitivement"
+        },
+        "add": {
+          "kicker": "Souvenirs de la visite",
+          "title": "Ajouter des attractions",
+          "description": "Recherche une attraction du parc puis indique combien de fois tu l’as faite.",
+          "searchLabel": "Nom de l’attraction",
+          "searchPlaceholder": "Rechercher une attraction…",
+          "search": "Rechercher",
+          "historical": "Attraction historique",
+          "more": "Charger la suite",
+          "status": "Résultat",
+          "count": "Nombre de passages",
+          "time": "Heure locale",
+          "approximate": "Heure approximative",
+          "note": "Note privée",
+          "confirmHistorical": "Je confirme que cette attraction correspond bien à mon souvenir malgré ses dates d’exploitation.",
+          "submit": "Ajouter à la visite"
+        },
+        "timeline": {
+          "kicker": "Chronologie locale",
+          "title": "Attractions ajoutées",
+          "empty": "Aucune attraction n’a encore été ajoutée à cette visite.",
+          "count": "{{count}} passages",
+          "moveUp": "Monter ce passage",
+          "moveDown": "Descendre ce passage",
+          "remove": "Retirer ce passage"
+        },
+        "errors": {
+          "notFoundTitle": "Visite locale introuvable",
+          "notFound": "Ce brouillon n’existe plus dans ce navigateur.",
+          "load": "Impossible de charger cette visite locale.",
+          "invalidRide": "Vérifie les informations du passage et la limite de 2 000 passages par brouillon.",
+          "attractions": "Impossible de charger les attractions du parc.",
+          "save": "Impossible d’enregistrer la modification sur cet appareil.",
+          "delete": "Impossible de supprimer cette visite locale."
+        },
+        "deleteDialog": {
+          "title": "Supprimer cette visite locale ?",
+          "description": "Le brouillon et tous ses passages disparaîtront définitivement de ce navigateur."
+        }
       }
     },
     "editor": {

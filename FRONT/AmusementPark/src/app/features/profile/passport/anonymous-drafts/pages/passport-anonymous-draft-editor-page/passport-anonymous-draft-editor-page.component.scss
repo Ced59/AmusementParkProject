@@ -1,0 +1,314 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.anonymous-editor,
+.anonymous-editor__hero > div,
+.anonymous-editor__workspace,
+.anonymous-editor__add,
+.anonymous-editor__timeline,
+.anonymous-editor__section-heading,
+.anonymous-editor__search,
+.anonymous-editor__ride-form,
+.anonymous-ride,
+.anonymous-ride__copy {
+  min-width: 0;
+}
+
+.anonymous-editor {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.anonymous-editor h1,
+.anonymous-editor h2,
+.anonymous-editor h3,
+.anonymous-editor p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.anonymous-editor__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem;
+  border-color: color-mix(in srgb, var(--c-gold) 35%, var(--app-border));
+}
+
+.anonymous-editor__hero > div:first-child,
+.anonymous-editor__section-heading {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.anonymous-editor__hero h1 {
+  color: var(--app-heading);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1;
+}
+
+.anonymous-editor__hero p,
+.anonymous-editor__section-heading p,
+.anonymous-editor__empty {
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.anonymous-editor__hero-actions {
+  display: grid;
+  min-width: 0;
+  gap: 0.6rem;
+}
+
+.anonymous-editor__hero-actions button {
+  min-width: 0;
+  justify-content: center;
+}
+
+.anonymous-editor__warning,
+.anonymous-editor__error {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 0.7rem;
+  overflow-wrap: anywhere;
+}
+
+.anonymous-editor__warning {
+  border-color: color-mix(in srgb, var(--c-gold) 35%, var(--app-border));
+}
+
+.anonymous-editor__warning i {
+  flex: 0 0 auto;
+  color: var(--c-gold);
+}
+
+.anonymous-editor__error {
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-danger) 45%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  color: var(--app-danger);
+}
+
+.anonymous-editor__workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.anonymous-editor__add,
+.anonymous-editor__timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.anonymous-editor__search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 0.65rem;
+}
+
+.anonymous-editor label {
+  display: grid;
+  min-width: 0;
+  gap: 0.35rem;
+  color: var(--app-text-muted);
+  font-weight: 700;
+}
+
+.anonymous-editor input,
+.anonymous-editor select,
+.anonymous-editor textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-raised);
+  color: var(--app-text);
+  font: inherit;
+}
+
+.anonymous-editor textarea {
+  resize: vertical;
+}
+
+.anonymous-editor__attractions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+  gap: 0.55rem;
+}
+
+.anonymous-attraction {
+  display: grid;
+  min-width: 0;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-raised);
+  color: var(--app-text);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.anonymous-attraction--selected {
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--app-primary) 20%, transparent);
+}
+
+.anonymous-attraction small {
+  color: var(--c-gold);
+}
+
+.anonymous-editor__ride-form {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 30%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 6%, var(--app-surface));
+}
+
+.anonymous-editor__fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+  gap: 0.65rem;
+}
+
+.anonymous-editor__check {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.anonymous-editor__check input {
+  width: auto;
+  margin-top: 0.2rem;
+}
+
+.anonymous-editor__check--warning {
+  color: var(--c-gold) !important;
+}
+
+.anonymous-editor__rides {
+  display: grid;
+  min-width: 0;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.anonymous-ride {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-raised);
+}
+
+.anonymous-ride__copy {
+  display: grid;
+  gap: 0.25rem;
+  overflow-wrap: anywhere;
+}
+
+.anonymous-ride__copy span,
+.anonymous-ride__copy small {
+  color: var(--app-text-muted);
+}
+
+.anonymous-ride__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.anonymous-ride__actions button {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--app-text);
+}
+
+.anonymous-editor__state {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.anonymous-editor__delete-dialog {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.anonymous-editor__delete-dialog > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .anonymous-editor__workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .anonymous-editor__hero,
+  .anonymous-editor__search,
+  .anonymous-ride {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .anonymous-editor__hero-actions,
+  .anonymous-editor__hero-actions button,
+  .anonymous-editor__search button {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .anonymous-editor__fields,
+  .anonymous-editor__attractions {
+    grid-template-columns: 1fr;
+  }
+
+  .anonymous-ride__actions {
+    justify-content: flex-start;
+  }
+
+  .anonymous-editor__delete-dialog > div {
+    display: grid;
+  }
+
+  .anonymous-editor__delete-dialog button {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+}

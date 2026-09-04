@@ -1,6 +1,20 @@
 {
-  "version": "5.0.25",
+  "version": "5.0.26",
   "history": [
+    {
+      "version": "5.0.26",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tu peux commencer ton passeport sans compte puis importer tes visites après connexion.",
+        "en": "You can start your passport without an account and import your visits after signing in.",
+        "de": "Du kannst deinen Besuchspass ohne Konto beginnen und deine Besuche nach der Anmeldung importieren.",
+        "nl": "Je kunt je paspoort zonder account beginnen en je bezoeken na het inloggen importeren.",
+        "it": "Puoi iniziare il tuo passaporto senza account e importare le visite dopo l’accesso.",
+        "es": "Puedes empezar tu pasaporte sin cuenta e importar tus visitas después de iniciar sesión.",
+        "pl": "Możesz zacząć tworzyć paszport bez konta i zaimportować wizyty po zalogowaniu.",
+        "pt": "Podes começar o teu passaporte sem conta e importar as visitas depois de iniciares sessão."
+      }
+    },
     {
       "version": "5.0.25",
       "releasedAt": "2026-09-04",

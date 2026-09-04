@@ -76,7 +76,7 @@ public sealed class RideOccurrenceHandlersTests
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
-            CreateBatchCommand(count: 2));
+            CreateBatchCommand(count: 2, source: RideLogSource.Import));
 
         Assert.True(result.IsSuccess);
         Assert.False(result.Value?.WasNormalized);
@@ -85,6 +85,7 @@ public sealed class RideOccurrenceHandlersTests
         Assert.All(captured!, static item =>
         {
             Assert.Equal(HistoricalConsistency.Verified, item.HistoricalConsistency);
+            Assert.Equal(RideLogSource.Import, item.Source);
             Assert.True(item.CountsAsRide);
         });
         visits.VerifyAll();
@@ -1345,7 +1346,8 @@ public sealed class RideOccurrenceHandlersTests
 
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(
         int count = 1,
-        bool confirmHistoricalConflict = false)
+        bool confirmHistoricalConflict = false,
+        RideLogSource source = RideLogSource.Manual)
     {
         return new AddRideOccurrencesBatchCommand(
             "owner-1",
@@ -1361,7 +1363,8 @@ public sealed class RideOccurrenceHandlersTests
                     null,
                     confirmHistoricalConflict,
                     count),
-            });
+            },
+            source);
     }
 
     private static Mock<IUserVisitRepository> CreateVisitRepository(Visit visit)

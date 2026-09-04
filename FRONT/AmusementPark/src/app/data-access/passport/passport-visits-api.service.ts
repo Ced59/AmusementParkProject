@@ -9,6 +9,7 @@ import {
   PassportVisit,
   PassportVisitDeletionPreview,
   PassportVisitDeletionReceipt,
+  PassportVisitListFilters,
   PassportVisitPage,
   UpdatePassportVisitRequest,
   UpsertPassportVisitParkAssessmentRequest
@@ -38,8 +39,12 @@ export class PassportVisitsApiService {
     return this.http.get<PassportVisit>(url, { transferCache: false });
   }
 
-  listVisits(limit: number, cursor: string | null = null): Observable<PassportVisitPage> {
-    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.list(limit, cursor)}`;
+  listVisits(
+    limit: number,
+    cursor: string | null = null,
+    filters: PassportVisitListFilters | null = null
+  ): Observable<PassportVisitPage> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.list(limit, cursor, filters)}`;
     return this.http.get<PassportVisitPage>(url, { transferCache: false });
   }
 

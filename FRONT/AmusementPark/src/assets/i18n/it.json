@@ -257,6 +257,12 @@
         "description": "La tua visita a {{park}} è ora nel tuo passaporto privato.",
         "toast": "La visita è stata aggiunta al tuo passaporto."
       },
+      "localSuccess": {
+        "title": "Visita salvata su questo dispositivo",
+        "description": "La tua visita a {{park}} è salvata localmente. Puoi già aggiungere le attrazioni che ricordi.",
+        "deviceWarning": "Questa bozza resta in questo browser: non viene sincronizzata né salvata nel tuo account.",
+        "toast": "La visita è stata salvata su questo dispositivo."
+      },
       "park": {
         "title": "Scegli il parco",
         "hint": "Cerca tra i parchi visibili sul sito.",
@@ -299,6 +305,8 @@
       },
       "errors": {
         "signInRequired": "Accedi per salvare questa visita. I dati inseriti restano disponibili.",
+        "localStorageUnavailable": "L’archiviazione sicura del browser non è disponibile su questo dispositivo.",
+        "localSave": "Non è stato possibile salvare la visita su questo dispositivo. Controlla lo spazio disponibile e riprova.",
         "generic": "Non è stato possibile salvare la visita. Riprova senza perdere i dati inseriti.",
         "parkSearch": "La ricerca dei parchi non è riuscita. Riprova tra poco.",
         "parkNotFound": "Questo parco non è più disponibile.",
@@ -306,6 +314,151 @@
         "date": "La data della visita non è valida.",
         "retryConflict": "Questo tentativo non corrisponde più ai dati iniziali. Controlla i campi e riprova.",
         "network": "La risposta del server non è arrivata. Riprova: la visita non verrà creata due volte."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Passaporto locale",
+      "title": "Le tue visite su questo dispositivo",
+      "description": "Inizia il tuo storico senza account. Nulla viene inviato finché non richiedi l’importazione dopo l’accesso.",
+      "deviceWarning": "Questi dati appartengono solo a questo browser. Cancellare i dati, usare un altro dispositivo o la navigazione privata può renderli indisponibili.",
+      "actions": {
+        "export": "Esporta una copia",
+        "browseParks": "Trova un parco",
+        "clear": "Cancella tutto",
+        "continue": "Continua la visita",
+        "deleteOne": "Elimina",
+        "import": "Importa nel mio passaporto",
+        "cancel": "Annulla",
+        "confirmClear": "Cancella le bozze"
+      },
+      "errors": {
+        "storageUnavailable": "L’archiviazione locale non è disponibile in questo browser.",
+        "load": "Non è stato possibile leggere le visite salvate su questo dispositivo.",
+        "delete": "Non è stato possibile eliminare questa visita locale.",
+        "clear": "Non è stato possibile cancellare le visite locali.",
+        "export": "Non è stato possibile preparare la copia locale."
+      },
+      "loading": {
+        "title": "Lettura delle visite locali",
+        "description": "Il browser sta aprendo il passaporto conservato su questo dispositivo."
+      },
+      "empty": {
+        "title": "Nessuna visita locale",
+        "description": "Aggiungi una visita dalla pagina di un parco, anche senza accedere."
+      },
+      "list": {
+        "kicker": "Bozza privata",
+        "title": "Bozze da continuare",
+        "rideCount": "{{count}} giri"
+      },
+      "clearDialog": {
+        "title": "Cancellare tutte le visite locali?",
+        "description": "Questa azione elimina definitivamente le bozze dal browser. Le visite già importate nel tuo account non vengono modificate."
+      },
+      "import": {
+        "title": "Conserva queste visite dopo l’accesso",
+        "description": "Accedi per confrontare e poi importare queste bozze nel tuo passaporto privato.",
+        "loading": "Ricerca delle visite locali da importare…",
+        "kicker": "Importazione controllata",
+        "detectedTitle": "Sono state trovate visite locali",
+        "detectedDescription": "{{visits}} visita/e e {{rides}} giro/i restano su questo dispositivo fino alla tua conferma.",
+        "noUploadYet": "Nessun dato ancora inviato",
+        "rideCount": "{{count}} giri locali",
+        "similarFound": "{{count}} visita/e simile/i",
+        "choiceLegend": "Cosa vuoi fare con questa visita?",
+        "choices": {
+          "separate": "Mantienila separata",
+          "separateHint": "Crea una nuova visita senza modificare quelle esistenti.",
+          "merge": "Uniscila dopo il confronto",
+          "mergeHint": "Aggiunge i giri a una bozza esistente scelta da te.",
+          "ignore": "Ignorala per questa importazione",
+          "ignoreHint": "Resta su questo dispositivo e potrà essere gestita più tardi."
+        },
+        "targetLabel": "Bozza di destinazione",
+        "targetPlaceholder": "Scegli una visita modificabile",
+        "comparison": {
+          "local": "Su questo dispositivo",
+          "server": "Nel tuo account",
+          "title": "Titolo",
+          "note": "Nota privata",
+          "loadingRides": "Caricamento dei giri esistenti…"
+        },
+        "metadata": {
+          "legend": "Dettagli della visita",
+          "keepServer": "Mantieni il titolo e la nota già salvati",
+          "useLocal": "Usa il titolo e la nota della visita locale"
+        },
+        "consent": "Autorizzo il confronto di queste visite locali con il mio passaporto privato e poi l’importazione secondo le mie scelte.",
+        "compare": "Confronta con il mio passaporto",
+        "comparing": "Confronto in corso…",
+        "importing": "Importazione in corso…",
+        "submit": "Importa le visite selezionate",
+        "errors": {
+          "preview": "Non è stato possibile preparare il confronto. Nessun dato locale è stato inviato.",
+          "invalidTarget": "Scegli una bozza esistente e modificabile per questa unione.",
+          "comparison": "Non è stato possibile caricare tutti i giri della visita scelta.",
+          "consent": "Conferma esplicitamente l’importazione prima dell’invio.",
+          "itemFailed": "Questa visita non è stata importata; la bozza locale è stata conservata."
+        },
+        "report": {
+          "title": "Resoconto dell’importazione",
+          "summary": "{{imported}} create, {{merged}} unite, {{rides}} giri importati, {{failed}} errori.",
+          "outcomes": {
+            "Imported": "Nuova visita importata",
+            "Merged": "Unione verificata",
+            "Ignored": "Ignorata e conservata localmente",
+            "Failed": "Errore, conservata localmente"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Bozza su questo dispositivo",
+        "rideCount": "{{count}} giri",
+        "localOnly": "Le modifiche restano in questo browser e non vengono inviate ad alcun server.",
+        "actions": {
+          "back": "Torna alle visite locali",
+          "delete": "Elimina la visita",
+          "confirmDelete": "Elimina definitivamente"
+        },
+        "add": {
+          "kicker": "Ricordi della visita",
+          "title": "Aggiungi attrazioni",
+          "description": "Cerca un’attrazione del parco e indica quante volte l’hai provata.",
+          "searchLabel": "Nome dell’attrazione",
+          "searchPlaceholder": "Cerca un’attrazione…",
+          "search": "Cerca",
+          "historical": "Attrazione storica",
+          "more": "Carica altro",
+          "status": "Risultato",
+          "count": "Numero di giri",
+          "time": "Ora locale",
+          "approximate": "Ora approssimativa",
+          "note": "Nota privata",
+          "confirmHistorical": "Confermo che questa attrazione corrisponde al mio ricordo nonostante le sue date di attività.",
+          "submit": "Aggiungi alla visita"
+        },
+        "timeline": {
+          "kicker": "Cronologia locale",
+          "title": "Attrazioni aggiunte",
+          "empty": "Nessuna attrazione è stata ancora aggiunta a questa visita.",
+          "count": "{{count}} giri",
+          "moveUp": "Sposta questo giro in alto",
+          "moveDown": "Sposta questo giro in basso",
+          "remove": "Rimuovi questo giro"
+        },
+        "errors": {
+          "notFoundTitle": "Visita locale non trovata",
+          "notFound": "Questa bozza non esiste più nel browser.",
+          "load": "Non è stato possibile caricare questa visita locale.",
+          "invalidRide": "Controlla i dati e il limite di 2.000 giri per bozza.",
+          "attractions": "Non è stato possibile caricare le attrazioni del parco.",
+          "save": "Non è stato possibile salvare la modifica su questo dispositivo.",
+          "delete": "Non è stato possibile eliminare questa visita locale."
+        },
+        "deleteDialog": {
+          "title": "Eliminare questa visita locale?",
+          "description": "La bozza e tutti i suoi giri verranno rimossi definitivamente da questo browser."
+        }
       }
     },
     "editor": {

@@ -36,6 +36,7 @@ public sealed class PassportRideOccurrencesControllerTests
                     command.UserId == "owner-1"
                     && command.VisitId == "visit-1"
                     && command.ClientOperationId == "request-1"
+                    && command.Source == RideLogSource.Manual
                     && command.Items.Single() != null
                     && command.Items.Single()!.Count == 1),
                 CancellationToken.None))
@@ -108,6 +109,43 @@ public sealed class PassportRideOccurrencesControllerTests
         ObjectResult created = Assert.IsType<ObjectResult>(result);
         Assert.Equal(StatusCodes.Status201Created, created.StatusCode);
         Assert.Equal("true", controller.Response.Headers["Ride-Order-Normalized"]);
+        add.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ImportBatchAsync_ShouldMarkTheApplicationCommandAsAnImport()
+    {
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>> add =
+            new Mock<ICommandHandler<AddRideOccurrencesBatchCommand, ApplicationResult<CreateRideOccurrencesResult>>>(MockBehavior.Strict);
+        add.Setup(handler => handler.HandleAsync(
+                It.Is<AddRideOccurrencesBatchCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.VisitId == "visit-1"
+                    && command.ClientOperationId == "import-1"
+                    && command.Source == RideLogSource.Import),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
+                new CreateRideOccurrencesResult(
+                    new[] { CreateResult("occurrence-1") },
+                    false,
+                    false)));
+        PassportRideOccurrencesController controller = CreateController(add.Object);
+        controller.ControllerContext = CreateControllerContext();
+
+        IActionResult result = await controller.ImportBatchAsync(
+            "visit-1",
+            new CreatePassportRideOccurrencesBatchRequestDto
+            {
+                Items = new List<CreatePassportRideOccurrenceBatchItemDto>
+                {
+                    new CreatePassportRideOccurrenceBatchItemDto { ParkItemId = "item-1" },
+                },
+            },
+            "import-1",
+            CancellationToken.None);
+
+        ObjectResult created = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status201Created, created.StatusCode);
         add.VerifyAll();
     }
 

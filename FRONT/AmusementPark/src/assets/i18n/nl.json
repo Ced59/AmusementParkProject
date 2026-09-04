@@ -257,6 +257,12 @@
         "description": "Je bezoek aan {{park}} staat nu in je privépaspoort.",
         "toast": "Het bezoek is aan je paspoort toegevoegd."
       },
+      "localSuccess": {
+        "title": "Bezoek opgeslagen op dit apparaat",
+        "description": "Je bezoek aan {{park}} is lokaal opgeslagen. Je kunt de attracties die je nog weet al toevoegen.",
+        "deviceWarning": "Dit concept blijft in deze browser en wordt niet gesynchroniseerd of in je account opgeslagen.",
+        "toast": "Het bezoek is op dit apparaat opgeslagen."
+      },
       "park": {
         "title": "Kies het park",
         "hint": "Zoek tussen de parken die op de site zichtbaar zijn.",
@@ -299,6 +305,8 @@
       },
       "errors": {
         "signInRequired": "Log in om dit bezoek op te slaan. Je invoer blijft beschikbaar.",
+        "localStorageUnavailable": "De beveiligde browseropslag is niet beschikbaar op dit apparaat.",
+        "localSave": "Het bezoek kon niet op dit apparaat worden opgeslagen. Controleer de vrije ruimte en probeer opnieuw.",
         "generic": "Het bezoek kon niet worden opgeslagen. Probeer opnieuw zonder je invoer te verliezen.",
         "parkSearch": "Het zoeken naar parken is mislukt. Probeer het zo nog eens.",
         "parkNotFound": "Dit park is niet meer beschikbaar.",
@@ -306,6 +314,151 @@
         "date": "De bezoekdatum is niet geldig.",
         "retryConflict": "Deze poging komt niet meer overeen met de oorspronkelijke invoer. Controleer de velden en probeer opnieuw.",
         "network": "De serverreactie is niet aangekomen. Probeer opnieuw: het bezoek wordt niet dubbel aangemaakt."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Lokaal paspoort",
+      "title": "Je bezoeken op dit apparaat",
+      "description": "Begin je geschiedenis zonder account. Er wordt niets verstuurd totdat je na het inloggen om import vraagt.",
+      "deviceWarning": "Deze gegevens horen alleen bij deze browser. Browsergegevens wissen, een ander apparaat of privénavigatie kan ze onbeschikbaar maken.",
+      "actions": {
+        "export": "Een kopie exporteren",
+        "browseParks": "Een park zoeken",
+        "clear": "Alles wissen",
+        "continue": "Bezoek voortzetten",
+        "deleteOne": "Verwijderen",
+        "import": "Importeren in mijn paspoort",
+        "cancel": "Annuleren",
+        "confirmClear": "Concepten wissen"
+      },
+      "errors": {
+        "storageUnavailable": "Lokale opslag is niet beschikbaar in deze browser.",
+        "load": "De bezoeken op dit apparaat konden niet worden gelezen.",
+        "delete": "Dit lokale bezoek kon niet worden verwijderd.",
+        "clear": "De lokale bezoeken konden niet worden gewist.",
+        "export": "De lokale kopie kon niet worden voorbereid."
+      },
+      "loading": {
+        "title": "Je lokale bezoeken worden gelezen",
+        "description": "De browser opent het paspoort dat op dit apparaat staat."
+      },
+      "empty": {
+        "title": "Geen lokale bezoeken",
+        "description": "Voeg een bezoek toe vanaf een parkpagina, ook zonder in te loggen."
+      },
+      "list": {
+        "kicker": "Privéconcept",
+        "title": "Concepten om voort te zetten",
+        "rideCount": "{{count}} ritten"
+      },
+      "clearDialog": {
+        "title": "Alle lokale bezoeken wissen?",
+        "description": "Dit verwijdert de concepten definitief uit deze browser. Bezoeken die al in je account staan, blijven behouden."
+      },
+      "import": {
+        "title": "Deze bezoeken bewaren na het inloggen",
+        "description": "Log in om deze concepten te vergelijken en daarna in je privépaspoort te importeren.",
+        "loading": "Lokale bezoeken voor import worden gezocht…",
+        "kicker": "Gecontroleerde import",
+        "detectedTitle": "Lokale bezoeken gevonden",
+        "detectedDescription": "{{visits}} bezoek(en) en {{rides}} rit(ten) blijven op dit apparaat tot je bevestigt.",
+        "noUploadYet": "Nog geen gegevens verstuurd",
+        "rideCount": "{{count}} lokale ritten",
+        "similarFound": "{{count}} vergelijkbare bezoek(en)",
+        "choiceLegend": "Wat wil je met dit bezoek doen?",
+        "choices": {
+          "separate": "Apart bewaren",
+          "separateHint": "Maakt een nieuw bezoek zonder bestaande bezoeken te wijzigen.",
+          "merge": "Na vergelijking samenvoegen",
+          "mergeHint": "Voegt de ritten toe aan een bestaand concept dat je kiest.",
+          "ignore": "Bij deze import negeren",
+          "ignoreHint": "Het blijft op dit apparaat en kan later worden verwerkt."
+        },
+        "targetLabel": "Doelconcept",
+        "targetPlaceholder": "Kies een bewerkbaar bezoek",
+        "comparison": {
+          "local": "Op dit apparaat",
+          "server": "In je account",
+          "title": "Titel",
+          "note": "Privénotitie",
+          "loadingRides": "Bestaande ritten worden geladen…"
+        },
+        "metadata": {
+          "legend": "Bezoekgegevens",
+          "keepServer": "De al opgeslagen titel en notitie behouden",
+          "useLocal": "De titel en notitie van het lokale bezoek gebruiken"
+        },
+        "consent": "Ik geef toestemming om deze lokale bezoeken met mijn privépaspoort te vergelijken en daarna volgens mijn keuzes te importeren.",
+        "compare": "Vergelijken met mijn paspoort",
+        "comparing": "Bezig met vergelijken…",
+        "importing": "Bezig met importeren…",
+        "submit": "Gekozen bezoeken importeren",
+        "errors": {
+          "preview": "De vergelijking kon niet worden voorbereid. Er zijn geen lokale gegevens verstuurd.",
+          "invalidTarget": "Kies voor deze samenvoeging een bestaand bewerkbaar concept.",
+          "comparison": "Niet alle ritten van het gekozen bezoek konden worden geladen.",
+          "consent": "Bevestig de import uitdrukkelijk voordat je gegevens verstuurt.",
+          "itemFailed": "Dit bezoek is niet geïmporteerd; het lokale concept is bewaard."
+        },
+        "report": {
+          "title": "Importrapport",
+          "summary": "{{imported}} aangemaakt, {{merged}} samengevoegd, {{rides}} ritten geïmporteerd, {{failed}} mislukt.",
+          "outcomes": {
+            "Imported": "Nieuw bezoek geïmporteerd",
+            "Merged": "Samenvoeging gecontroleerd",
+            "Ignored": "Genegeerd en lokaal bewaard",
+            "Failed": "Mislukt en lokaal bewaard"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Concept op dit apparaat",
+        "rideCount": "{{count}} ritten",
+        "localOnly": "Je wijzigingen blijven in deze browser en worden niet naar een server verstuurd.",
+        "actions": {
+          "back": "Terug naar lokale bezoeken",
+          "delete": "Bezoek verwijderen",
+          "confirmDelete": "Definitief verwijderen"
+        },
+        "add": {
+          "kicker": "Herinneringen aan het bezoek",
+          "title": "Attracties toevoegen",
+          "description": "Zoek een attractie in het park en geef aan hoe vaak je erin bent geweest.",
+          "searchLabel": "Naam van de attractie",
+          "searchPlaceholder": "Een attractie zoeken…",
+          "search": "Zoeken",
+          "historical": "Historische attractie",
+          "more": "Meer laden",
+          "status": "Resultaat",
+          "count": "Aantal ritten",
+          "time": "Lokale tijd",
+          "approximate": "Geschatte tijd",
+          "note": "Privénotitie",
+          "confirmHistorical": "Ik bevestig dat deze attractie bij mijn herinnering past, ondanks de openingsdata.",
+          "submit": "Aan bezoek toevoegen"
+        },
+        "timeline": {
+          "kicker": "Lokale tijdlijn",
+          "title": "Toegevoegde attracties",
+          "empty": "Er is nog geen attractie aan dit bezoek toegevoegd.",
+          "count": "{{count}} ritten",
+          "moveUp": "Deze rit omhoog verplaatsen",
+          "moveDown": "Deze rit omlaag verplaatsen",
+          "remove": "Deze rit verwijderen"
+        },
+        "errors": {
+          "notFoundTitle": "Lokaal bezoek niet gevonden",
+          "notFound": "Dit concept bestaat niet meer in deze browser.",
+          "load": "Dit lokale bezoek kon niet worden geladen.",
+          "invalidRide": "Controleer de ritgegevens en de limiet van 2.000 ritten per concept.",
+          "attractions": "De attracties van het park konden niet worden geladen.",
+          "save": "De wijziging kon niet op dit apparaat worden opgeslagen.",
+          "delete": "Dit lokale bezoek kon niet worden verwijderd."
+        },
+        "deleteDialog": {
+          "title": "Dit lokale bezoek verwijderen?",
+          "description": "Het concept en alle ritten worden definitief uit deze browser verwijderd."
+        }
       }
     },
     "editor": {

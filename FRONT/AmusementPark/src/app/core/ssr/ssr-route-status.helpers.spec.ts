@@ -88,6 +88,9 @@ describe('SSR route status helpers', () => {
   it('keeps known private client routes successful for the CSR shell', () => {
     expect(resolveSsrRouteStatusCode('/fr/profile')).toBe(200);
     expect(resolveSsrRouteStatusCode('/fr/profile/visits/visit-123')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/fr/passport/local')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/fr/passport/local/draft-123')).toBe(200);
+    expect(resolveXRobotsTagHeader('/fr/passport/local/draft-123')).toBe('noindex, follow');
     expect(resolveSsrRouteStatusCode('/fr/reset-password')).toBe(200);
     expect(
       resolveSsrRouteStatusCode('/fr/admin/parks/edit/123/items/new'),

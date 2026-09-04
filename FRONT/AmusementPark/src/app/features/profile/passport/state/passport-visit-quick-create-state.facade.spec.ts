@@ -4,11 +4,12 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
-import { ModalService } from '@app/services/modal/modal.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { PassportVisitQuickCreateDraft } from '../models/passport-visit-quick-create.models';
+import { PassportAnonymousDraft } from '../anonymous-drafts/models/passport-anonymous-draft.models';
+import { PassportAnonymousDraftStorePort } from '../anonymous-drafts/state/passport-anonymous-draft-store.ports';
 import {
   PassportVisitOperationIdPort,
   PassportVisitQuickCreateApiPort,
@@ -58,14 +59,6 @@ class FakeAuthService {
   }
 }
 
-class FakeModalService {
-  readonly opened: string[] = [];
-
-  openModal(id: string): void {
-    this.opened.push(id);
-  }
-}
-
 class FakeMessages {
   readonly details: string[] = [];
 
@@ -111,21 +104,31 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     facade.createVisit(createDraft());
     facade.createVisit(createDraft({ title: 'Changed' }));
 
-    expect(api.calls.map((call: { key: string }): string => call.key)).toEqual(['operation-1', 'operation-2']);
+    expect(api.calls.map((call: { key: string }): string => call.key)).toEqual(['operation-1', 'operation-4']);
   });
 
-  it('opens the login dialog without discarding the validated draft when authentication is missing', () => {
+  it('keeps the validated visit only in IndexedDB when authentication is missing', async () => {
     const api: FakeVisitApi = new FakeVisitApi();
     const auth: FakeAuthService = new FakeAuthService();
-    const modal: FakeModalService = new FakeModalService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
     auth.token = null;
-    const facade: PassportVisitQuickCreateStateFacade = createFacade(api, auth, modal);
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts)
+    );
 
-    facade.createVisit(createDraft());
+    facade.createVisit(createDraft(), 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.createdLocalDraftId()).toBe('operation-2');
+    });
 
     expect(api.calls).toHaveLength(0);
-    expect(modal.opened).toEqual(['loginModal']);
-    expect(facade.errorKey()).toBe('passport.quickCreate.errors.signInRequired');
+    expect(savedDrafts).toHaveLength(1);
+    expect(savedDrafts[0].parkName).toBe('Parc test');
+    expect(savedDrafts[0].visitOperationId).toBe('operation-1');
+    expect(savedDrafts[0].rideOperationId).toBe('operation-3');
+    expect(facade.errorKey()).toBeNull();
   });
 
   it('does not call the API for an invalid partial date', () => {
@@ -142,18 +145,50 @@ describe('PassportVisitQuickCreateStateFacade', () => {
 function createFacade(
   api: FakeVisitApi,
   auth: FakeAuthService = new FakeAuthService(),
-  modal: FakeModalService = new FakeModalService()
+  anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore()
 ): PassportVisitQuickCreateStateFacade {
   return new PassportVisitQuickCreateStateFacade(
     api,
     new FakeParksApi(),
     new FakeOperationIds(),
+    anonymousDrafts,
     auth as unknown as AuthService,
-    modal as unknown as ModalService,
     new FakeMessages() as unknown as ToastMessageService,
     new FakeTranslateService() as unknown as TranslateService,
     new FakeDestroyRef()
   );
+}
+
+function createDraftStore(
+  savedDrafts: PassportAnonymousDraft[] = []
+): PassportAnonymousDraftStorePort {
+  return {
+    isAvailable: (): boolean => true,
+    list: async (): Promise<PassportAnonymousDraft[]> => [...savedDrafts],
+    get: async (draftId: string): Promise<PassportAnonymousDraft | null> =>
+      savedDrafts.find((draft: PassportAnonymousDraft): boolean => draft.id === draftId) ?? null,
+    save: async (draft: PassportAnonymousDraft): Promise<void> => {
+      const existingIndex: number = savedDrafts.findIndex(
+        (candidate: PassportAnonymousDraft): boolean => candidate.id === draft.id
+      );
+      if (existingIndex >= 0) {
+        savedDrafts[existingIndex] = draft;
+      } else {
+        savedDrafts.push(draft);
+      }
+    },
+    delete: async (draftId: string): Promise<void> => {
+      const index: number = savedDrafts.findIndex(
+        (candidate: PassportAnonymousDraft): boolean => candidate.id === draftId
+      );
+      if (index >= 0) {
+        savedDrafts.splice(index, 1);
+      }
+    },
+    clear: async (): Promise<void> => {
+      savedDrafts.splice(0, savedDrafts.length);
+    }
+  };
 }
 
 function createDraft(overrides: Partial<PassportVisitQuickCreateDraft> = {}): PassportVisitQuickCreateDraft {

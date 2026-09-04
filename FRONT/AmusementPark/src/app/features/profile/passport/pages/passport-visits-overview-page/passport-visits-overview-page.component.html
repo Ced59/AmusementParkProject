@@ -24,6 +24,8 @@
     </div>
   </header>
 
+  <app-passport-anonymous-import-panel (passportChanged)="facade.load()"></app-passport-anonymous-import-panel>
+
   <app-passport-export-panel id="passport-export"></app-passport-export-panel>
 
   @if (facade.loading()) {

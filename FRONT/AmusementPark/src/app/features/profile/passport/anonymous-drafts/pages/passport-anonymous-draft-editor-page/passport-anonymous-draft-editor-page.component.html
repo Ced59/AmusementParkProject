@@ -1,0 +1,204 @@
+<section class="anonymous-editor">
+  @if (facade.loading()) {
+    <app-page-state
+      state="loading"
+      [loadingTitleKey]="'passport.anonymousDrafts.loading.title'"
+      [loadingMessageKey]="'passport.anonymousDrafts.loading.description'">
+    </app-page-state>
+  } @else if (!facade.draft()) {
+    <section class="anonymous-editor__state" appUiSurface="panel" appUiSurfacePadding="spacious" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h1>{{ 'passport.anonymousDrafts.editor.errors.notFoundTitle' | translate }}</h1>
+      <p>{{ (facade.errorKey() || 'passport.anonymousDrafts.editor.errors.notFound') | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="backToDrafts()">
+        {{ 'passport.anonymousDrafts.editor.actions.back' | translate }}
+      </button>
+    </section>
+  } @else if (facade.draft(); as draft) {
+    <header class="anonymous-editor__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+      <div>
+        <app-ui-kicker tone="gold" iconClass="pi pi-mobile">
+          {{ 'passport.anonymousDrafts.editor.kicker' | translate }}
+        </app-ui-kicker>
+        <h1>{{ draft.parkName }}</h1>
+        <p>
+          {{ draft.visit.date.day || '–' }}/{{ draft.visit.date.month || '–' }}/{{ draft.visit.date.year }}
+          · {{ 'passport.anonymousDrafts.editor.rideCount' | translate:{ count: facade.totalRideCount() } }}
+        </p>
+      </div>
+      <div class="anonymous-editor__hero-actions">
+        <button appUiButton="soft" type="button" (click)="backToDrafts()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'passport.anonymousDrafts.editor.actions.back' | translate }}</span>
+        </button>
+        <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="deleteConfirmationVisible.set(true)">
+          <i class="pi pi-trash" aria-hidden="true"></i>
+          <span>{{ 'passport.anonymousDrafts.editor.actions.delete' | translate }}</span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="anonymous-editor__warning" appUiSurface="panel" appUiSurfacePadding="compact">
+      <i class="pi pi-lock" aria-hidden="true"></i>
+      <p>{{ 'passport.anonymousDrafts.editor.localOnly' | translate }}</p>
+    </aside>
+
+    @if (facade.errorKey()) {
+      <p class="anonymous-editor__error" role="alert">{{ facade.errorKey()! | translate }}</p>
+    }
+
+    <section class="anonymous-editor__workspace">
+      <section class="anonymous-editor__add" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="anonymous-attractions-title">
+        <div class="anonymous-editor__section-heading">
+          <app-ui-kicker tone="sky" iconClass="pi pi-plus">
+            {{ 'passport.anonymousDrafts.editor.add.kicker' | translate }}
+          </app-ui-kicker>
+          <h2 id="anonymous-attractions-title">{{ 'passport.anonymousDrafts.editor.add.title' | translate }}</h2>
+          <p>{{ 'passport.anonymousDrafts.editor.add.description' | translate }}</p>
+        </div>
+
+        <form class="anonymous-editor__search" (ngSubmit)="search()">
+          <label>
+            <span>{{ 'passport.anonymousDrafts.editor.add.searchLabel' | translate }}</span>
+            <input type="search" [formControl]="attractionSearch" [placeholder]="'passport.anonymousDrafts.editor.add.searchPlaceholder' | translate" />
+          </label>
+          <button appUiButton="soft" type="submit" [disabled]="facade.attractionsLoading()">
+            <i class="pi pi-search" aria-hidden="true"></i>
+            <span>{{ 'passport.anonymousDrafts.editor.add.search' | translate }}</span>
+          </button>
+        </form>
+
+        @if (facade.attractionErrorKey()) {
+          <p class="anonymous-editor__error" role="alert">{{ facade.attractionErrorKey()! | translate }}</p>
+        }
+
+        <div class="anonymous-editor__attractions" role="list">
+          @for (attraction of facade.attractions(); track trackAttraction($index, attraction)) {
+            <button
+              type="button"
+              class="anonymous-attraction"
+              [class.anonymous-attraction--selected]="selectedAttraction()?.id === attraction.id"
+              (click)="selectAttraction(attraction)">
+              <span>{{ attraction.name }}</span>
+              @if (attraction.isHistorical) {
+                <small>{{ 'passport.anonymousDrafts.editor.add.historical' | translate }}</small>
+              }
+            </button>
+          }
+        </div>
+
+        @if (facade.hasMoreAttractions()) {
+          <button appUiButton="ghost" type="button" [disabled]="facade.attractionsLoading()" (click)="facade.loadMoreAttractions()">
+            {{ 'passport.anonymousDrafts.editor.add.more' | translate }}
+          </button>
+        }
+
+        @if (selectedAttraction(); as attraction) {
+          <form class="anonymous-editor__ride-form" [formGroup]="rideForm" (ngSubmit)="addRide()">
+            <h3>{{ attraction.name }}</h3>
+            <div class="anonymous-editor__fields">
+              <label>
+                <span>{{ 'passport.anonymousDrafts.editor.add.status' | translate }}</span>
+                <select formControlName="status">
+                  <option value="Completed">{{ 'passport.editor.status.completed' | translate }}</option>
+                  <option value="Attempted">{{ 'passport.editor.status.attempted' | translate }}</option>
+                  <option value="MissedClosed">{{ 'passport.editor.status.missedClosed' | translate }}</option>
+                  <option value="MissedUnavailable">{{ 'passport.editor.status.missedUnavailable' | translate }}</option>
+                  <option value="SkippedByChoice">{{ 'passport.editor.status.skippedByChoice' | translate }}</option>
+                </select>
+              </label>
+              <label>
+                <span>{{ 'passport.anonymousDrafts.editor.add.count' | translate }}</span>
+                <input type="number" min="1" max="100" inputmode="numeric" formControlName="count" />
+              </label>
+              <label>
+                <span>{{ 'passport.anonymousDrafts.editor.add.time' | translate }}</span>
+                <input type="time" formControlName="localTime" />
+              </label>
+            </div>
+            <label class="anonymous-editor__check">
+              <input type="checkbox" formControlName="isApproximate" />
+              <span>{{ 'passport.anonymousDrafts.editor.add.approximate' | translate }}</span>
+            </label>
+            <label>
+              <span>{{ 'passport.anonymousDrafts.editor.add.note' | translate }}</span>
+              <textarea rows="3" maxlength="2000" formControlName="privateNote"></textarea>
+            </label>
+            @if (attraction.isHistorical) {
+              <label class="anonymous-editor__check anonymous-editor__check--warning">
+                <input type="checkbox" formControlName="confirmHistoricalConflict" />
+                <span>{{ 'passport.anonymousDrafts.editor.add.confirmHistorical' | translate }}</span>
+              </label>
+            }
+            <button appUiButton="primary" type="submit" [disabled]="facade.saving() || (attraction.isHistorical && !rideForm.controls.confirmHistoricalConflict.value)">
+              <i class="pi pi-plus" aria-hidden="true"></i>
+              <span>{{ 'passport.anonymousDrafts.editor.add.submit' | translate }}</span>
+            </button>
+          </form>
+        }
+      </section>
+
+      <section class="anonymous-editor__timeline" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="anonymous-rides-title">
+        <div class="anonymous-editor__section-heading">
+          <app-ui-kicker tone="lime" iconClass="pi pi-list">
+            {{ 'passport.anonymousDrafts.editor.timeline.kicker' | translate }}
+          </app-ui-kicker>
+          <h2 id="anonymous-rides-title">{{ 'passport.anonymousDrafts.editor.timeline.title' | translate }}</h2>
+        </div>
+
+        @if (draft.rides.length === 0) {
+          <p class="anonymous-editor__empty">{{ 'passport.anonymousDrafts.editor.timeline.empty' | translate }}</p>
+        } @else {
+          <ol class="anonymous-editor__rides">
+            @for (ride of draft.rides; track trackRide($index, ride); let first = $first; let last = $last) {
+              <li class="anonymous-ride">
+                <div class="anonymous-ride__copy">
+                  <strong>{{ ride.attractionName }}</strong>
+                  <span>
+                    {{ 'passport.anonymousDrafts.editor.timeline.count' | translate:{ count: ride.count } }}
+                    @if (ride.moment.localTime) { · {{ ride.moment.localTime }} }
+                  </span>
+                  @if (ride.privateNote) {
+                    <small><i class="pi pi-lock" aria-hidden="true"></i> {{ ride.privateNote }}</small>
+                  }
+                </div>
+                <div class="anonymous-ride__actions">
+                  <button type="button" [disabled]="first || facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveUp' | translate" (click)="facade.moveRide(ride.id, -1)">
+                    <i class="pi pi-arrow-up" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" [disabled]="last || facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveDown' | translate" (click)="facade.moveRide(ride.id, 1)">
+                    <i class="pi pi-arrow-down" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" [disabled]="facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.remove' | translate" (click)="facade.removeRide(ride.id)">
+                    <i class="pi pi-trash" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </li>
+            }
+          </ol>
+        }
+      </section>
+    </section>
+  }
+</section>
+
+<app-ui-dialog
+  [visible]="deleteConfirmationVisible()"
+  [header]="'passport.anonymousDrafts.editor.deleteDialog.title' | translate"
+  [modal]="true"
+  [closable]="!facade.saving()"
+  [dismissableMask]="!facade.saving()"
+  styleClass="anonymous-draft-delete-dialog"
+  (visibleChange)="deleteConfirmationVisible.set($event)">
+  <div class="anonymous-editor__delete-dialog">
+    <p>{{ 'passport.anonymousDrafts.editor.deleteDialog.description' | translate }}</p>
+    <div>
+      <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="deleteConfirmationVisible.set(false)">
+        {{ 'passport.anonymousDrafts.actions.cancel' | translate }}
+      </button>
+      <button appUiButton="rose" type="button" [disabled]="facade.saving()" (click)="deleteDraft()">
+        {{ 'passport.anonymousDrafts.editor.actions.confirmDelete' | translate }}
+      </button>
+    </div>
+  </div>
+</app-ui-dialog>
