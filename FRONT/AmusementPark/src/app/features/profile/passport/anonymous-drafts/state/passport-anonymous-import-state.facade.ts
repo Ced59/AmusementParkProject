@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable, Signal, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
+import { ParkItem } from '@app/models/parks/park-item';
 import {
   CreatePassportRideOccurrenceBatchItem,
   PassportRideOccurrence,
@@ -32,10 +33,13 @@ import {
 } from './passport-anonymous-draft-store.ports';
 import {
   PASSPORT_ANONYMOUS_IMPORT_OCCURRENCES_PORT,
+  PASSPORT_ANONYMOUS_IMPORT_PARK_ITEMS_PORT,
   PASSPORT_ANONYMOUS_IMPORT_VISITS_PORT,
   PassportAnonymousImportOccurrencesPort,
+  PassportAnonymousImportParkItemsPort,
   PassportAnonymousImportVisitsPort
 } from './passport-anonymous-import-data.ports';
+import { PagedResult } from '@shared/models/contracts';
 
 @Injectable()
 export class PassportAnonymousImportStateFacade {
@@ -66,7 +70,9 @@ export class PassportAnonymousImportStateFacade {
     @Inject(PASSPORT_ANONYMOUS_IMPORT_VISITS_PORT)
     private readonly visitsApi: PassportAnonymousImportVisitsPort,
     @Inject(PASSPORT_ANONYMOUS_IMPORT_OCCURRENCES_PORT)
-    private readonly occurrencesApi: PassportAnonymousImportOccurrencesPort
+    private readonly occurrencesApi: PassportAnonymousImportOccurrencesPort,
+    @Inject(PASSPORT_ANONYMOUS_IMPORT_PARK_ITEMS_PORT)
+    private readonly parkItemsApi: PassportAnonymousImportParkItemsPort
   ) {
   }
 
@@ -260,8 +266,9 @@ export class PassportAnonymousImportStateFacade {
     this.errorKeySignal.set(null);
     this.reportSignal.set(null);
     const results: PassportAnonymousImportReportItem[] = [];
+    const validParkItemIdsByPark: Map<string, Set<string>> = new Map<string, Set<string>>();
     for (const preview of this.previewsSignal()) {
-      results.push(await this.importDraft(preview));
+      results.push(await this.importDraft(preview, validParkItemIdsByPark));
     }
 
     const report: PassportAnonymousImportReport = {
@@ -313,7 +320,8 @@ export class PassportAnonymousImportStateFacade {
   }
 
   private async importDraft(
-    preview: PassportAnonymousDraftPreview
+    preview: PassportAnonymousDraftPreview,
+    validParkItemIdsByPark: Map<string, Set<string>>
   ): Promise<PassportAnonymousImportReportItem> {
     if (preview.decision.choice === 'Ignore') {
       return this.reportItem(preview, 'Ignored', null, 0, null);
@@ -325,6 +333,7 @@ export class PassportAnonymousImportStateFacade {
       serverMutationAcknowledged = true;
     };
     try {
+      await this.validateDraftRideTargets(preview.draft, validParkItemIdsByPark);
       reservation = await this.lockImportIntent(preview);
       const target: PassportVisit = preview.decision.choice === 'Separate'
         ? await this.createVisit(reservation, acknowledgeServerMutation)
@@ -364,6 +373,55 @@ export class PassportAnonymousImportStateFacade {
         'passport.anonymousDrafts.import.errors.itemFailed'
       );
     }
+  }
+
+  private async validateDraftRideTargets(
+    draft: PassportAnonymousDraft,
+    validParkItemIdsByPark: Map<string, Set<string>>
+  ): Promise<void> {
+    if (draft.rides.length === 0) {
+      return;
+    }
+
+    let validParkItemIds: Set<string> | undefined = validParkItemIdsByPark.get(draft.visit.parkId);
+    if (!validParkItemIds) {
+      validParkItemIds = await this.loadValidParkItemIds(draft.visit.parkId);
+      validParkItemIdsByPark.set(draft.visit.parkId, validParkItemIds);
+    }
+
+    const hasInvalidTarget: boolean = draft.rides.some(
+      (ride: PassportAnonymousRideDraft): boolean => !validParkItemIds.has(ride.parkItemId.trim())
+    );
+    if (hasInvalidTarget) {
+      throw new Error('passport-anonymous-import.invalid-ride-target');
+    }
+  }
+
+  private async loadValidParkItemIds(parkId: string): Promise<Set<string>> {
+    const identifiers: Set<string> = new Set<string>();
+    for (let page: number = 1; page <= PassportAnonymousImportStateFacade.MaximumPages; page += 1) {
+      const result: PagedResult<ParkItem> = await firstValueFrom(
+        this.parkItemsApi.getParkItemsByParkIdPage(
+          parkId,
+          page,
+          PassportAnonymousImportStateFacade.PageSize,
+          { closedFilter: 'all' },
+          { closedFilter: 'all' }
+        )
+      );
+      for (const parkItem of result.items) {
+        const identifier: string = parkItem.id?.trim() ?? '';
+        if (identifier && parkItem.parkId === parkId) {
+          identifiers.add(identifier);
+        }
+      }
+
+      if (page >= result.pagination.totalPages) {
+        return identifiers;
+      }
+    }
+
+    throw new Error('passport-anonymous-import.park-items-too-large');
   }
 
   private async releasePreMutationReservationIfSafe(
