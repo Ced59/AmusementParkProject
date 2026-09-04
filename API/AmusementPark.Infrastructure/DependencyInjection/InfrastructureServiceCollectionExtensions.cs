@@ -218,6 +218,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
+        services.AddScoped<IPassportItemStatisticsSourceReader,
+            PassportItemStatisticsSourceReader>();
         services.AddScoped<PassportAuditStore>();
         services.AddScoped<IPassportAuditPublisher>(serviceProvider =>
             serviceProvider.GetRequiredService<PassportAuditStore>());
