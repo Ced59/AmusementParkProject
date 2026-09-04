@@ -1,0 +1,107 @@
+@if (facade.loading() || facade.error() || facade.available()) {
+  <section class="rating-suggestions" appUiSurface="panel" aria-labelledby="rating-suggestions-title">
+    <header class="rating-suggestions__header">
+      <span class="rating-suggestions__icon" aria-hidden="true">
+        <i class="pi pi-compass"></i>
+      </span>
+      <div>
+        <span class="rating-suggestions__kicker">{{ 'passport.ratingSuggestions.kicker' | translate }}</span>
+        <h3 id="rating-suggestions-title">{{ 'passport.ratingSuggestions.title' | translate }}</h3>
+        <p>{{ 'passport.ratingSuggestions.description' | translate }}</p>
+      </div>
+    </header>
+
+    @if (facade.blockingError()) {
+      <p class="rating-suggestions__error" role="alert">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        {{ 'passport.ratingSuggestions.error' | translate }}
+      </p>
+    } @else if (facade.loading()) {
+      <p class="rating-suggestions__status" role="status">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        {{ 'passport.ratingSuggestions.loading' | translate }}
+      </p>
+    } @else if (!facade.enabled()) {
+      <div class="rating-suggestions__preference">
+        <p>{{ 'passport.ratingSuggestions.disabled' | translate }}</p>
+        <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.setEnabled(true)">
+          {{ 'passport.ratingSuggestions.actions.enable' | translate }}
+        </button>
+      </div>
+    } @else {
+      @if (facade.suggestions().length > 0) {
+        <div class="rating-suggestions__list">
+          @for (suggestion of facade.suggestions(); track suggestion.id) {
+            <article class="rating-suggestion">
+              <div class="rating-suggestion__heading">
+                <div>
+                  <app-ui-chip tone="sky" [iconClass]="suggestion.targetType === 'Park' ? 'pi pi-map' : 'pi pi-bolt'">
+                    {{ (suggestion.targetType === 'Park' ? 'passport.ratingSuggestions.targetTypes.park' : 'passport.ratingSuggestions.targetTypes.item') | translate }}
+                  </app-ui-chip>
+                  <h4>{{ suggestion.targetName }}</h4>
+                </div>
+                <span class="rating-suggestion__current">
+                  <small>{{ 'passport.ratingSuggestions.metrics.current' | translate }}</small>
+                  <strong>{{ suggestion.currentGlobalRatingLabel }}</strong>
+                </span>
+              </div>
+
+              <p class="rating-suggestion__reason">
+                <i class="pi pi-info-circle" aria-hidden="true"></i>
+                <span>{{ suggestion.reasonKey | translate:{ count: suggestion.recentObservationCount, average: suggestion.recentAverageLabel } }}</span>
+              </p>
+
+              <dl class="rating-suggestion__metrics">
+                <div>
+                  <dt>{{ 'passport.ratingSuggestions.metrics.latest' | translate }}</dt>
+                  <dd>{{ suggestion.latestObservationRatingLabel }}</dd>
+                </div>
+                <div>
+                  <dt>{{ 'passport.ratingSuggestions.metrics.recentAverage' | translate }}</dt>
+                  <dd>{{ suggestion.recentAverageLabel }}</dd>
+                </div>
+                <div>
+                  <dt>{{ 'passport.ratingSuggestions.metrics.historicalMedian' | translate }}</dt>
+                  <dd>{{ suggestion.historicalMedianLabel }}</dd>
+                </div>
+              </dl>
+
+              <p class="rating-suggestion__safety">
+                <i class="pi pi-shield" aria-hidden="true"></i>
+                {{ 'passport.ratingSuggestions.noAutomaticUpdate' | translate }}
+              </p>
+
+              <div class="rating-suggestion__actions">
+                <button appUiButton="primary" type="button" [disabled]="facade.saving()" (click)="review(suggestion)">
+                  {{ 'passport.ratingSuggestions.actions.review' | translate }}
+                </button>
+                <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.dismiss(suggestion)">
+                  {{ 'passport.ratingSuggestions.actions.dismiss' | translate }}
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      } @else {
+        <p class="rating-suggestions__empty" role="status">
+          <i class="pi pi-check-circle" aria-hidden="true"></i>
+          {{ 'passport.ratingSuggestions.empty' | translate }}
+        </p>
+      }
+
+      <footer class="rating-suggestions__footer">
+        <p>{{ 'passport.ratingSuggestions.frequency' | translate }}</p>
+        <button type="button" [disabled]="facade.saving()" (click)="facade.setEnabled(false)">
+          {{ 'passport.ratingSuggestions.actions.disable' | translate }}
+        </button>
+      </footer>
+    }
+
+    @if (facade.error() && !facade.blockingError()) {
+      <p class="rating-suggestions__error" role="alert">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        {{ 'passport.ratingSuggestions.error' | translate }}
+      </p>
+    }
+  </section>
+}

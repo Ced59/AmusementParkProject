@@ -110,6 +110,17 @@ public sealed partial class MongoDatabaseInitializer
             cancellationToken);
         await this.InitializePassportAuditIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(
+            this.settings.GlobalRatingSuggestionStatesCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.GlobalRatingSuggestionPreferencesCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.GlobalRatingSuggestionInteractionsCollectionName,
+            cancellationToken);
+        await this.InitializeGlobalRatingSuggestionIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.RatingRankingSnapshotHeadersCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.RatingRankingSnapshotChunksCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.RatingRankingPublicationPointersCollectionName, cancellationToken);

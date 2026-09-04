@@ -14,6 +14,7 @@ import {
 } from '@app/models/ratings/rating.models';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
+import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
 import { PROFILE_RATINGS_PORT, ProfileRatingsPort } from './profile-ratings-state-data.ports';
 import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component';
 import { USER_RANKING_SHARE_PORT, UserRankingSharePort } from './user-ranking-share-state-data.ports';
@@ -26,6 +27,7 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     category: string;
     type: string | null;
     search: string | null;
+    targetId: string | null;
   }> = [];
   readonly parkRankings: UserParkRatingRanking[] = [
     {
@@ -53,7 +55,12 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     }
   ];
 
-  getMyParkRankings(_page: number, _size: number, _search: string | null): Observable<UserParkRatingRankingsPage> {
+  getMyParkRankings(
+    _page: number,
+    _size: number,
+    _search: string | null,
+    _targetId: string | null
+  ): Observable<UserParkRatingRankingsPage> {
     return of({
       items: this.parkRankings,
       pagination: {
@@ -71,9 +78,10 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
     _size: number,
     category: string,
     type: string | null,
-    search: string | null
+    search: string | null,
+    targetId: string | null
   ): Observable<UserParkItemRatingRankingsPage> {
-    this.parkItemCalls.push({ page, category, type, search });
+    this.parkItemCalls.push({ page, category, type, search, targetId });
     if (this.parkItemResponse) {
       return this.parkItemResponse;
     }
@@ -226,8 +234,8 @@ describe('ProfileRatingsPanelComponent', () => {
     quickFilterButtons[2]?.click();
 
     expect(port.parkItemCalls.slice(-2)).toEqual([
-      { page: 1, category: 'Attraction', type: 'RollerCoaster', search: null },
-      { page: 1, category: 'Attraction', type: 'FlatRide', search: null }
+      { page: 1, category: 'Attraction', type: 'RollerCoaster', search: null, targetId: null },
+      { page: 1, category: 'Attraction', type: 'FlatRide', search: null, targetId: null }
     ]);
   });
 
@@ -284,8 +292,42 @@ describe('ProfileRatingsPanelComponent', () => {
       page: 2,
       category: 'Attraction',
       type: null,
-      search: 'ride'
+      search: 'ride',
+      targetId: null
     });
+  });
+
+  it('opens the matching personal ranking without changing a suggested rating automatically', () => {
+    fixture.detectChanges();
+    const suggestion: GlobalRatingSuggestionViewModel = {
+      id: 'ParkItem:item-1',
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      presentedAtUtc: '2026-09-04T10:00:00Z',
+      targetName: 'Taron',
+      parkName: 'Phantasialand',
+      parkItemCategory: 'Attraction',
+      currentGlobalRatingLabel: '4.5',
+      latestObservationRatingLabel: '3',
+      recentAverageLabel: '3.25',
+      historicalMedianLabel: '4',
+      newObservationCount: 2,
+      recentObservationCount: 2,
+      reasonKey: 'passportRatingSuggestions.reasons.lower'
+    };
+
+    (fixture.componentInstance as unknown as {
+      reviewSuggestion(value: GlobalRatingSuggestionViewModel): void;
+    }).reviewSuggestion(suggestion);
+
+    expect(port.parkItemCalls.at(-1)).toEqual({
+      page: 1,
+      category: 'Attraction',
+      type: null,
+      search: 'Taron',
+      targetId: 'item-1'
+    });
+    expect(port.upsertCalls).toEqual([]);
   });
 
   it('publishes and revokes only the current user ranking from the profile', () => {

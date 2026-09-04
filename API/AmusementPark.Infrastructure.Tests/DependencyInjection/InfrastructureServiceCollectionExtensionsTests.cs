@@ -108,6 +108,46 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterGlobalRatingSuggestionPorts()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor source = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IGlobalRatingSuggestionSourceReader));
+        Assert.Equal(typeof(GlobalRatingSuggestionSourceReader), source.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, source.Lifetime);
+        ServiceDescriptor state = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IGlobalRatingSuggestionStateRepository));
+        Assert.Equal(typeof(GlobalRatingSuggestionStateRepository), state.ImplementationType);
+        ServiceDescriptor outbox = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IGlobalRatingSuggestionAnalyticsOutboxReconciler));
+        Assert.Equal(typeof(GlobalRatingSuggestionStateRepository), outbox.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, outbox.Lifetime);
+        Assert.Contains(
+            services,
+            static service => service.ServiceType == typeof(IHostedService)
+                && service.ImplementationType ==
+                    typeof(GlobalRatingSuggestionAnalyticsOutboxBackgroundService));
+        ServiceDescriptor gate = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IGlobalRatingSuggestionFeatureGate));
+        Assert.Equal(
+            typeof(ConfiguredGlobalRatingSuggestionFeatureGate),
+            gate.ImplementationType);
+        Assert.Equal(ServiceLifetime.Singleton, gate.Lifetime);
+    }
+
+    [Fact]
     public void AddInfrastructure_WhenCalled_ShouldRegisterPassportClockAndTimeZoneValidator()
     {
         ServiceCollection services = new ServiceCollection();

@@ -1,0 +1,32 @@
+{
+  "passport": {
+    "ratingSuggestions": {
+      "kicker": "Dyskretne przypomnienie",
+      "title": "Chcesz sprawdzić ocenę ogólną?",
+      "description": "Twoje najnowsze prywatne doświadczenia mogą różnić się od wcześniejszej oceny ogólnej.",
+      "loading": "Porównujemy Twoje ostatnie doświadczenia…",
+      "empty": "Obecnie żadna ocena ogólna nie wymaga ponownego sprawdzenia.",
+      "disabled": "Sugestie są wyłączone. Twoje oceny i prywatne obserwacje pozostają bez zmian.",
+      "targetTypes": { "park": "Park", "item": "Atrakcja" },
+      "metrics": {
+        "current": "Ocena ogólna",
+        "latest": "Ostatnie doświadczenie",
+        "recentAverage": "Ostatnia średnia",
+        "historicalMedian": "Mediana historyczna"
+      },
+      "reasons": {
+        "lower": "Średnia z {{count}} najnowszych obserwacji wynosi {{average}} i jest niższa od oceny ogólnej.",
+        "higher": "Średnia z {{count}} najnowszych obserwacji wynosi {{average}} i jest wyższa od oceny ogólnej."
+      },
+      "noAutomaticUpdate": "Nic nie zmienia się automatycznie. Zachowujesz kontrolę nad oceną ogólną.",
+      "frequency": "Dla tej samej oceny sugestia pojawia się najwyżej raz na 30 dni.",
+      "actions": {
+        "review": "Sprawdź moją ocenę",
+        "dismiss": "Nie teraz",
+        "disable": "Wyłącz sugestie",
+        "enable": "Włącz sugestie"
+      },
+      "error": "Nie udało się zapisać tej czynności. Spróbuj ponownie za chwilę."
+    }
+  }
+}

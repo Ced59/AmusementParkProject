@@ -27,6 +27,7 @@ using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AmusementPark.Application.DependencyInjection;
@@ -114,6 +115,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<RideOccurrenceAppendOrderNormalizer>();
         services.AddScoped<IPassportPendingMutationReconciler,
             PassportPendingMutationReconciler>();
+        services.AddSingleton<GlobalRatingSuggestionPolicy>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkOpeningHoursSitemapSectionProvider>();

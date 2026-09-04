@@ -1,0 +1,32 @@
+{
+  "passport": {
+    "ratingSuggestions": {
+      "kicker": "Eine sanfte Erinnerung",
+      "title": "Möchtest du eine Gesamtbewertung prüfen?",
+      "description": "Deine neuesten privaten Erlebnisse können von einer früheren Gesamtbewertung abweichen.",
+      "loading": "Deine letzten Erlebnisse werden verglichen…",
+      "empty": "Derzeit muss keine Gesamtnote überprüft werden.",
+      "disabled": "Vorschläge sind deaktiviert. Deine Bewertungen und privaten Beobachtungen bleiben unverändert.",
+      "targetTypes": { "park": "Park", "item": "Attraktion" },
+      "metrics": {
+        "current": "Gesamtbewertung",
+        "latest": "Letztes Erlebnis",
+        "recentAverage": "Aktueller Durchschnitt",
+        "historicalMedian": "Historischer Median"
+      },
+      "reasons": {
+        "lower": "Deine {{count}} neuesten Beobachtungen ergeben im Schnitt {{average}} und liegen unter deiner Gesamtbewertung.",
+        "higher": "Deine {{count}} neuesten Beobachtungen ergeben im Schnitt {{average}} und liegen über deiner Gesamtbewertung."
+      },
+      "noAutomaticUpdate": "Nichts wird automatisch geändert. Du behältst die Kontrolle über deine Gesamtbewertung.",
+      "frequency": "Für dieselbe Bewertung erscheint höchstens alle 30 Tage ein Vorschlag.",
+      "actions": {
+        "review": "Bewertung prüfen",
+        "dismiss": "Jetzt nicht",
+        "disable": "Vorschläge deaktivieren",
+        "enable": "Vorschläge aktivieren"
+      },
+      "error": "Diese Aktion konnte nicht gespeichert werden. Versuche es gleich noch einmal."
+    }
+  }
+}

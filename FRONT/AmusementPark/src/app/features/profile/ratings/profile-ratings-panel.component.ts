@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, Input, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,6 +34,8 @@ import { PaginationContract } from '@shared/models/contracts';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { GlobalRatingSuggestionsComponent } from '../passport/components/global-rating-suggestions/global-rating-suggestions.component';
+import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
 import { UserRankingShareStateFacade } from './user-ranking-share-state.facade';
 
@@ -63,7 +65,8 @@ interface ProfileAttractionQuickFilter {
     PublicSharePanelComponent,
     RouterLink,
     UiButtonDirective,
-    UiSectionHeaderComponent
+    UiSectionHeaderComponent,
+    GlobalRatingSuggestionsComponent
   ]
 })
 export class ProfileRatingsPanelComponent implements OnInit {
@@ -152,7 +155,8 @@ export class ProfileRatingsPanelComponent implements OnInit {
     private readonly stateFacade: ProfileRatingsStateFacade,
     private readonly shareStateFacade: UserRankingShareStateFacade,
     private readonly translationService: TranslationService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly elementRef: ElementRef<HTMLElement>
   ) {
   }
 
@@ -219,6 +223,23 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   protected updateRating(change: RatingTreeRatingChange | RatingRankingListRatingChange): void {
     this.stateFacade.updateRating(change.ratingId, change.value);
+  }
+
+  protected reviewSuggestion(suggestion: GlobalRatingSuggestionViewModel): void {
+    const filter: ProfileRankingFilter = suggestion.targetType === 'Park'
+      ? this.filters[0]
+      : this.filters.find((candidate: ProfileRankingFilter): boolean => {
+        return candidate.category === suggestion.parkItemCategory;
+      }) ?? this.filters[this.filters.length - 1];
+    const search: string = suggestion.targetName;
+    this.currentFilter.set(filter);
+    this.selectedAttractionType.set(null);
+    this.searchTerm.set(search);
+    this.stateFacade.load(1, filter.category, search, null, suggestion.targetId);
+    setTimeout((): void => {
+      this.elementRef.nativeElement.querySelector<HTMLElement>('.profile-ratings__results')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   protected setRankingPublic(isPublic: boolean): void {

@@ -5,8 +5,11 @@
 
 .profile-ratings {
   display: grid;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
   gap: clamp(1rem, 2vw, 1.4rem);
+  overflow-x: clip;
 }
 
 .profile-ranking-share {

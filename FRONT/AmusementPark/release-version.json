@@ -1,6 +1,20 @@
 {
-  "version": "5.0.16",
+  "version": "5.0.17",
   "history": [
+    {
+      "version": "5.0.17",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Ton passeport peut maintenant te suggérer de revoir une note globale, sans jamais la modifier automatiquement.",
+        "en": "Your passport can now suggest reviewing a global rating without ever changing it automatically.",
+        "de": "Dein Besuchspass kann dir jetzt vorschlagen, eine Gesamtbewertung zu prüfen, ohne sie jemals automatisch zu ändern.",
+        "nl": "Je paspoort kan nu voorstellen een algemene beoordeling te herzien, zonder die ooit automatisch te wijzigen.",
+        "it": "Il tuo passaporto può ora suggerirti di rivedere una valutazione globale, senza modificarla mai automaticamente.",
+        "es": "Tu pasaporte ahora puede sugerirte revisar una valoración global, sin cambiarla nunca automáticamente.",
+        "pl": "Twój paszport może teraz zasugerować sprawdzenie oceny ogólnej, nigdy nie zmieniając jej automatycznie.",
+        "pt": "O teu passaporte pode agora sugerir que revejas uma classificação global, sem nunca a alterar automaticamente."
+      }
+    },
     {
       "version": "5.0.16",
       "releasedAt": "2026-09-04",

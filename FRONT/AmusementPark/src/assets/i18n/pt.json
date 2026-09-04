@@ -8,6 +8,37 @@
     "profile": "Perfil"
   },
   "passport": {
+    "ratingSuggestions": {
+      "kicker": "Um lembrete discreto",
+      "title": "Queres rever uma classificação global?",
+      "description": "As tuas experiências privadas mais recentes podem diferir de uma classificação global anterior.",
+      "loading": "A comparar as tuas experiências recentes…",
+      "empty": "Neste momento, nenhuma avaliação global precisa de ser revista.",
+      "disabled": "As sugestões estão desativadas. As tuas classificações e observações privadas não mudam.",
+      "targetTypes": {
+        "park": "Parque",
+        "item": "Atração"
+      },
+      "metrics": {
+        "current": "Classificação global",
+        "latest": "Última experiência",
+        "recentAverage": "Média recente",
+        "historicalMedian": "Mediana histórica"
+      },
+      "reasons": {
+        "lower": "As tuas {{count}} observações novas mais recentes têm uma média de {{average}}, inferior à classificação global.",
+        "higher": "As tuas {{count}} observações novas mais recentes têm uma média de {{average}}, superior à classificação global."
+      },
+      "noAutomaticUpdate": "Nada muda automaticamente. Manténs o controlo da tua classificação global.",
+      "frequency": "Para a mesma classificação aparece, no máximo, uma sugestão a cada 30 dias.",
+      "actions": {
+        "review": "Rever a minha classificação",
+        "dismiss": "Agora não",
+        "disable": "Desativar sugestões",
+        "enable": "Ativar sugestões"
+      },
+      "error": "Não foi possível guardar esta ação. Tenta novamente dentro de instantes."
+    },
     "profile": {
       "kicker": "Passaporte de visitas",
       "title": "Começa o teu histórico de parques",

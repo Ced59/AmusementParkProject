@@ -51,4 +51,29 @@ public sealed partial class MongoDatabaseInitializer
             PassportAuditMongoDefinitions.BuildJournalIndexes(),
             cancellationToken);
     }
+
+    private async Task InitializeGlobalRatingSuggestionIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<GlobalRatingSuggestionStateDocument> states =
+            this.database.GetCollection<GlobalRatingSuggestionStateDocument>(
+                this.settings.GlobalRatingSuggestionStatesCollectionName);
+        await states.Indexes.CreateManyAsync(
+            GlobalRatingSuggestionMongoDefinitions.BuildStateIndexes(),
+            cancellationToken);
+
+        IMongoCollection<GlobalRatingSuggestionPreferenceDocument> preferences =
+            this.database.GetCollection<GlobalRatingSuggestionPreferenceDocument>(
+                this.settings.GlobalRatingSuggestionPreferencesCollectionName);
+        await preferences.Indexes.CreateManyAsync(
+            GlobalRatingSuggestionMongoDefinitions.BuildPreferenceIndexes(),
+            cancellationToken);
+
+        IMongoCollection<GlobalRatingSuggestionInteractionDocument> interactions =
+            this.database.GetCollection<GlobalRatingSuggestionInteractionDocument>(
+                this.settings.GlobalRatingSuggestionInteractionsCollectionName);
+        await interactions.Indexes.CreateManyAsync(
+            GlobalRatingSuggestionMongoDefinitions.BuildInteractionIndexes(),
+            cancellationToken);
+    }
 }
