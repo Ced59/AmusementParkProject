@@ -370,6 +370,26 @@
           "archived": "The visit was archived."
         }
       },
+      "deletion": {
+        "eyebrow": "Secure deletion",
+        "title": "Delete this visit",
+        "description": "This removes the whole visit, its ride entries and private ratings from your passport.",
+        "occurrences": "ride entries deleted",
+        "assessments": "ratings deleted",
+        "retention": "The visit disappears immediately; its batched purge is scheduled after a {{days}}-day retention period.",
+        "exportFirst": "Export my passport first",
+        "confirmation": "I understand that this visit and all its linked data will be deleted.",
+        "confirmAction": "Delete the visit permanently",
+        "openAction": "Prepare deletion",
+        "deleted": "The visit was removed from your passport and its purge is scheduled.",
+        "errors": {
+          "saveFirst": "Save or cancel your current changes first.",
+          "changed": "The visit changed. Review the new preview before confirming.",
+          "notFound": "This visit no longer exists or does not belong to you.",
+          "network": "The server response did not arrive. Try again: deletion will not be started twice.",
+          "generic": "Deletion could not be prepared. Try again shortly."
+        }
+      },
       "assessment": {
         "title": "How this park felt",
         "description": "Rate this specific visit from 0.5 to 5. This observation stays private and never changes the community rating or rankings.",

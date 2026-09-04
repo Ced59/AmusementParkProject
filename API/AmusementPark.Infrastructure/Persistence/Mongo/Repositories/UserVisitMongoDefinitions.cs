@@ -7,6 +7,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserVisitMongoDefinitions
 {
+    public const string DeletedAtUtcPath = "deletedAtUtc";
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
     public const string ContentMutationFenceTokenPath = "contentMutationFenceToken";
@@ -18,10 +19,20 @@ internal static class UserVisitMongoDefinitions
     {
         return Builders<UserVisitDocument>.Filter.Eq(
             static document => document.UserId,
-            NormalizeRequired(userId, nameof(userId)));
+            NormalizeRequired(userId, nameof(userId)))
+            & BuildNotDeletedFilter();
     }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnedVisitFilter(
+        string visitId,
+        string userId)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters = Builders<UserVisitDocument>.Filter;
+        return BuildOwnedAnyStateVisitFilter(visitId, userId)
+            & BuildNotDeletedFilter();
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedAnyStateVisitFilter(
         string visitId,
         string userId)
     {
@@ -32,6 +43,13 @@ internal static class UserVisitMongoDefinitions
             & filters.Eq(
                 static document => document.UserId,
                 NormalizeRequired(userId, nameof(userId)));
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildNotDeletedFilter()
+    {
+        return Builders<UserVisitDocument>.Filter.Eq<DateTime?>(
+            DeletedAtUtcPath,
+            null);
     }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnedVersionFilter(

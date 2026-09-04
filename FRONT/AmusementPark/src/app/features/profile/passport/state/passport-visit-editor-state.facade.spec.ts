@@ -29,6 +29,8 @@ describe('PassportVisitEditorStateFacade', () => {
     completeVisit: ReturnType<typeof vi.fn>;
     reopenVisit: ReturnType<typeof vi.fn>;
     archiveVisit: ReturnType<typeof vi.fn>;
+    getDeletionPreview: ReturnType<typeof vi.fn>;
+    deleteVisit: ReturnType<typeof vi.fn>;
     upsertParkAssessment: ReturnType<typeof vi.fn>;
     deleteParkAssessment: ReturnType<typeof vi.fn>;
   };
@@ -54,6 +56,8 @@ describe('PassportVisitEditorStateFacade', () => {
       completeVisit: vi.fn(),
       reopenVisit: vi.fn(),
       archiveVisit: vi.fn(),
+      getDeletionPreview: vi.fn(),
+      deleteVisit: vi.fn(),
       upsertParkAssessment: vi.fn(),
       deleteParkAssessment: vi.fn()
     };
@@ -132,6 +136,100 @@ describe('PassportVisitEditorStateFacade', () => {
       24,
       { closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
       { closedFilter: 'all' }
+    );
+  });
+
+  it('previews and deletes the whole visit with the confirmed server counts', () => {
+    visitsPort.getDeletionPreview.mockReturnValue(of({
+      visitId: 'visit-1',
+      expectedVersion: 1,
+      occurrenceCount: 2,
+      assessmentCount: 1,
+      retentionDays: 7
+    }));
+    visitsPort.deleteVisit.mockReturnValue(of({
+      visitId: 'visit-1',
+      deletedAtUtc: '2026-09-05T12:00:00Z',
+      purgeScheduledForUtc: '2026-09-12T12:00:00Z'
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.loadDeletionPreview();
+    facade.deleteVisit();
+
+    expect(visitsPort.getDeletionPreview).toHaveBeenCalledWith('visit-1');
+    expect(visitsPort.deleteVisit).toHaveBeenCalledWith(
+      'visit-1',
+      {
+        expectedVersion: 1,
+        confirmedOccurrenceCount: 2,
+        confirmedAssessmentCount: 1
+      },
+      'operation-stable'
+    );
+    expect(facade.deletedVisitId()).toBe('visit-1');
+  });
+
+  it('requires a fresh deletion preview when the visit impact changed', () => {
+    visitsPort.getDeletionPreview.mockReturnValue(of({
+      visitId: 'visit-1',
+      expectedVersion: 1,
+      occurrenceCount: 2,
+      assessmentCount: 1,
+      retentionDays: 7
+    }));
+    visitsPort.deleteVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.deletion-preview-changed'
+      }
+    })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.loadDeletionPreview();
+    facade.deleteVisit();
+
+    expect(facade.deletionPreview()).toBeNull();
+    expect(facade.deletionErrorKey()).toBe('passport.editor.deletion.errors.changed');
+  });
+
+  it('requires a fresh deletion preview and key when the visit version changed', () => {
+    visitsPort.getDeletionPreview.mockReturnValue(of({
+      visitId: 'visit-1',
+      expectedVersion: 1,
+      occurrenceCount: 2,
+      assessmentCount: 1,
+      retentionDays: 7
+    }));
+    visitsPort.deleteVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.version-conflict'
+      }
+    })));
+    operationIds.create
+      .mockReturnValueOnce('delete-stale')
+      .mockReturnValueOnce('delete-fresh');
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.loadDeletionPreview();
+    facade.deleteVisit();
+    facade.loadDeletionPreview();
+    facade.deleteVisit();
+
+    expect(facade.deletionPreview()).toBeNull();
+    expect(visitsPort.deleteVisit).toHaveBeenNthCalledWith(
+      2,
+      'visit-1',
+      expect.any(Object),
+      'delete-fresh'
     );
   });
 

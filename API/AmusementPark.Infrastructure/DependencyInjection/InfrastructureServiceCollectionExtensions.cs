@@ -220,6 +220,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
+        services.AddScoped<IVisitDeletionStore, MongoVisitDeletionStore>();
         services.AddScoped<IPassportItemStatisticsSourceReader,
             PassportItemStatisticsSourceReader>();
         services.AddScoped<IPassportScopeStatisticsSourceReader,

@@ -10,6 +10,7 @@ import { PassportVisitsApiService } from '@data-access/passport/passport-visits-
 export interface PassportVisitEditorVisitsPort extends Pick<
   PassportVisitsApiService,
   'getVisit' | 'updateVisit' | 'completeVisit' | 'reopenVisit' | 'archiveVisit'
+  | 'getDeletionPreview' | 'deleteVisit'
   | 'upsertParkAssessment' | 'deleteParkAssessment'
 > {
 }

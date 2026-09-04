@@ -137,6 +137,26 @@
         "errors": { "conflict": "Wizyta została w międzyczasie zmieniona. Wczytano bieżący stan; sprawdź dane.", "recovery": "Nie udało się sprawdzić zmiany. Dane pozostają zachowane; spróbuj ponownie.", "save": "Nie udało się zaktualizować wizyty.", "transition": "Ta zmiana stanu nie jest możliwa dla wizyty.", "temporalMetadataLocked": "Daty, strefy czasowej ani reguły dnia wizyty nie można zmienić, dopóki wizyta zawiera przejazdy.", "saveBeforeStatus": "Najpierw zapisz zmienione dane." },
         "messages": { "updated": "Dane wizyty zostały zaktualizowane.", "completed": "Wizyta jest teraz zakończona.", "reopened": "Wizyta została otwarta do poprawy.", "archived": "Wizyta została zarchiwizowana." }
       },
+      "deletion": {
+        "eyebrow": "Bezpieczne usuwanie",
+        "title": "Usuń tę wizytę",
+        "description": "Ta czynność usuwa z paszportu całą wizytę, przejazdy i prywatne oceny.",
+        "occurrences": "usuwane przejazdy",
+        "assessments": "usuwane oceny",
+        "retention": "Wizyta znika od razu, a jej usuwanie partiami jest zaplanowane po {{days}} dniach okresu przechowywania.",
+        "exportFirst": "Najpierw wyeksportuj mój paszport",
+        "confirmation": "Rozumiem, że ta wizyta i wszystkie powiązane dane zostaną usunięte.",
+        "confirmAction": "Usuń wizytę na stałe",
+        "openAction": "Przygotuj usunięcie",
+        "deleted": "Wizyta została usunięta z paszportu, a czyszczenie danych jest zaplanowane.",
+        "errors": {
+          "saveFirst": "Najpierw zapisz lub anuluj bieżące zmiany.",
+          "changed": "Wizyta uległa zmianie. Przed potwierdzeniem sprawdź nowe podsumowanie.",
+          "notFound": "Ta wizyta już nie istnieje albo nie należy do ciebie.",
+          "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: usuwanie nie zostanie uruchomione dwa razy.",
+          "generic": "Nie udało się przygotować usunięcia. Spróbuj ponownie za chwilę."
+        }
+      },
       "assessment": {
         "title": "Twoje wrażenia z tego parku",
         "description": "Oceń tę konkretną wizytę od 0,5 do 5. Ta obserwacja pozostaje prywatna i nigdy nie zmienia oceny ani rankingów społeczności.",

@@ -370,6 +370,26 @@
           "archived": "Het bezoek is gearchiveerd."
         }
       },
+      "deletion": {
+        "eyebrow": "Veilig verwijderen",
+        "title": "Dit bezoek verwijderen",
+        "description": "Hiermee verwijder je het hele bezoek, de ritten en privébeoordelingen uit je paspoort.",
+        "occurrences": "verwijderde ritten",
+        "assessments": "verwijderde beoordelingen",
+        "retention": "Het bezoek verdwijnt meteen; de verwijdering in batches staat gepland na een bewaartermijn van {{days}} dagen.",
+        "exportFirst": "Mijn paspoort eerst exporteren",
+        "confirmation": "Ik begrijp dat dit bezoek en alle gekoppelde gegevens worden verwijderd.",
+        "confirmAction": "Bezoek definitief verwijderen",
+        "openAction": "Verwijdering voorbereiden",
+        "deleted": "Het bezoek is uit je paspoort verwijderd en de definitieve wisactie is gepland.",
+        "errors": {
+          "saveFirst": "Sla eerst je huidige wijzigingen op of annuleer ze.",
+          "changed": "Het bezoek is gewijzigd. Controleer het nieuwe overzicht voordat je bevestigt.",
+          "notFound": "Dit bezoek bestaat niet meer of is niet van jou.",
+          "network": "Het antwoord van de server kwam niet aan. Probeer opnieuw: de verwijdering wordt niet dubbel gestart.",
+          "generic": "De verwijdering kon niet worden voorbereid. Probeer het zo opnieuw."
+        }
+      },
       "assessment": {
         "title": "Jouw indruk van dit park",
         "description": "Beoordeel dit specifieke bezoek van 0,5 tot 5. Deze observatie blijft privé en verandert nooit de communityscore of ranglijsten.",

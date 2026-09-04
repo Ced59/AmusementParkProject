@@ -23,7 +23,8 @@ internal static class PassportScopeStatisticsMongoDefinitions
             & filters.Eq(
                 static document => document.ParkId,
                 IdentifierRules.NormalizeRequired(parkId, nameof(parkId)))
-            & filters.Ne(static document => document.Status, VisitStatus.Archived);
+            & filters.Ne(static document => document.Status, VisitStatus.Archived)
+            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
     }
 
     public static FilterDefinition<UserVisitDocument> BuildYearVisitFilter(
@@ -36,7 +37,8 @@ internal static class PassportScopeStatisticsMongoDefinitions
                 static document => document.UserId,
                 IdentifierRules.NormalizeRequired(userId, nameof(userId)))
             & filters.Eq(static document => document.Date.Year, year)
-            & filters.Ne(static document => document.Status, VisitStatus.Archived);
+            & filters.Ne(static document => document.Status, VisitStatus.Archived)
+            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
     }
 
     public static FilterDefinition<UserRideOccurrenceDocument> BuildOccurrenceFilter(

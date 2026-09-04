@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -63,6 +63,7 @@ export class PassportVisitEditorPageComponent {
   protected readonly deleteConfirmationId = signal<string | null>(null);
   protected readonly assessmentDeleteConfirmation = signal<boolean>(false);
   protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
+  protected readonly visitDeletionConfirmed = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
   protected readonly assessmentValues: readonly number[] = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
@@ -91,6 +92,11 @@ export class PassportVisitEditorPageComponent {
     this.visitId = route.snapshot.paramMap.get('visitId')?.trim() ?? '';
 
     this.facade.load(this.visitId, initialLanguage);
+    effect((): void => {
+      if (this.facade.deletedVisitId()) {
+        void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport']);
+      }
+    });
 
     route.paramMap.pipe(
       skip(1),
@@ -134,6 +140,35 @@ export class PassportVisitEditorPageComponent {
 
   protected openYearStatistics(year: number): void {
     void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'years', year]);
+  }
+
+  protected openPassportExport(): void {
+    void this.router.navigate(
+      ['/', this.currentLanguage(), 'profile', 'passport'],
+      { fragment: 'passport-export' }
+    );
+  }
+
+  protected requestVisitDeletion(): void {
+    this.visitDeletionConfirmed.set(false);
+    this.facade.loadDeletionPreview();
+  }
+
+  protected updateVisitDeletionConfirmation(event: Event): void {
+    this.visitDeletionConfirmed.set(this.eventChecked(event));
+  }
+
+  protected cancelVisitDeletion(): void {
+    this.visitDeletionConfirmed.set(false);
+    this.facade.cancelVisitDeletion();
+  }
+
+  protected confirmVisitDeletion(): void {
+    if (!this.visitDeletionConfirmed()) {
+      return;
+    }
+
+    this.facade.deleteVisit();
   }
 
   protected openItemStatistics(parkItemId: string): void {

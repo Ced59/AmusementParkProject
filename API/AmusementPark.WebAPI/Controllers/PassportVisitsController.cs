@@ -34,6 +34,8 @@ public sealed class PassportVisitsController : ControllerBase
     private readonly ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>> completeHandler;
     private readonly ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>> reopenHandler;
     private readonly ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>> archiveHandler;
+    private readonly IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>> deletionPreviewHandler;
+    private readonly ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>> deleteHandler;
 
     public PassportVisitsController(
         ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>> createHandler,
@@ -42,7 +44,9 @@ public sealed class PassportVisitsController : ControllerBase
         ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>> updateHandler,
         ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>> completeHandler,
         ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>> reopenHandler,
-        ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>> archiveHandler)
+        ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>> archiveHandler,
+        IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>> deletionPreviewHandler,
+        ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>> deleteHandler)
     {
         this.createHandler = createHandler;
         this.listHandler = listHandler;
@@ -51,6 +55,8 @@ public sealed class PassportVisitsController : ControllerBase
         this.completeHandler = completeHandler;
         this.reopenHandler = reopenHandler;
         this.archiveHandler = archiveHandler;
+        this.deletionPreviewHandler = deletionPreviewHandler;
+        this.deleteHandler = deleteHandler;
     }
 
     [HttpPost]
@@ -221,6 +227,67 @@ public sealed class PassportVisitsController : ControllerBase
             request.ExpectedVersion,
             this.archiveHandler,
             cancellationToken);
+    }
+
+    [HttpGet("{visitId}/deletion-preview")]
+    [ProducesResponseType(typeof(PassportVisitDeletionPreviewDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetDeletionPreviewAsync(
+        [FromRoute] string visitId,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.ToProblemDetailsResult(
+                StatusCodes.Status401Unauthorized,
+                "Authentication is required.",
+                "auth.unauthorized");
+        }
+
+        ApplicationResult<VisitDeletionPreview> result =
+            await this.deletionPreviewHandler.HandleAsync(
+                new GetVisitDeletionPreviewQuery(userId, visitId),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
+    }
+
+    [HttpDelete("{visitId}")]
+    [ProducesResponseType(typeof(PassportVisitDeletionReceiptDto), StatusCodes.Status202Accepted)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> DeleteAsync(
+        [FromRoute] string visitId,
+        [FromBody] DeletePassportVisitRequestDto request,
+        [FromHeader(Name = "Idempotency-Key"), Required] string idempotencyKey,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.ToProblemDetailsResult(
+                StatusCodes.Status401Unauthorized,
+                "Authentication is required.",
+                "auth.unauthorized");
+        }
+
+        ApplicationResult<VisitDeletionReceipt> result = await this.deleteHandler.HandleAsync(
+            request.ToApplication(userId, visitId, idempotencyKey),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        if (result.Value.WasReplayed)
+        {
+            this.Response.Headers["Idempotency-Replayed"] = "true";
+        }
+
+        return this.Accepted(result.Value.ToHttp());
     }
 
     private async Task<IActionResult> ChangeStatusAsync<TCommand>(

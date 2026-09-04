@@ -76,7 +76,8 @@ public sealed class GlobalRatingSuggestionSourceReader
                         parkIds)
                     & Builders<UserVisitDocument>.Filter.Ne(
                         static document => document.Status,
-                        AmusementPark.Core.Domain.Visits.VisitStatus.Archived))
+                        AmusementPark.Core.Domain.Visits.VisitStatus.Archived)
+                    & UserVisitMongoDefinitions.BuildNotDeletedFilter())
                 .Project(static document => new GlobalRatingSuggestionVisitSourceDocument
                 {
                     Id = document.Id,

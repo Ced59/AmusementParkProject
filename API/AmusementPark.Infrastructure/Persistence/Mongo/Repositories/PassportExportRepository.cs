@@ -317,6 +317,55 @@ public sealed class PassportExportRepository : IPassportExportRepository
         return checked((int)result.ModifiedCount);
     }
 
+    public async Task InvalidateOwnedAsync(
+        string userId,
+        DateTime invalidatedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        if (invalidatedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The invalidation timestamp must be UTC.", nameof(invalidatedAtUtc));
+        }
+
+        string normalizedUserId = string.IsNullOrWhiteSpace(userId)
+            ? throw new ArgumentException("A user identifier is required.", nameof(userId))
+            : userId.Trim();
+        FilterDefinitionBuilder<PassportExportDocument> filters =
+            Builders<PassportExportDocument>.Filter;
+        FilterDefinition<PassportExportDocument> accessibleFilter =
+            filters.Eq(static document => document.UserId, normalizedUserId)
+            & filters.Gt(static document => document.ExpiresAtUtc, invalidatedAtUtc);
+        List<string> exportIds = await this.exports.Find(accessibleFilter)
+            .Project(static document => document.Id)
+            .ToListAsync(cancellationToken);
+        if (exportIds.Count == 0)
+        {
+            return;
+        }
+
+        UpdateDefinition<PassportExportDocument> update =
+            Builders<PassportExportDocument>.Update
+                .Set(static document => document.Status, PassportExportStatus.Failed)
+                .Set(static document => document.ErrorCode, "passport-export.data-changed")
+                .Set(static document => document.ExpiresAtUtc, invalidatedAtUtc)
+                .Set(static document => document.UpdatedAt, invalidatedAtUtc)
+                .Unset(static document => document.FileName)
+                .Unset(static document => document.ContentType)
+                .Unset(static document => document.SizeBytes)
+                .Unset(static document => document.ChunkCount)
+                .Unset(static document => document.GenerationId)
+                .Unset(static document => document.ChecksumSha256);
+        await this.exports.UpdateManyAsync(
+            accessibleFilter,
+            update,
+            cancellationToken: cancellationToken);
+        await this.chunks.DeleteManyAsync(
+            Builders<PassportExportChunkDocument>.Filter.In(
+                static document => document.ExportId,
+                exportIds),
+            cancellationToken);
+    }
+
     private static FilterDefinition<PassportExportDocument> BuildOwnedFilter(
         string exportId,
         string userId)

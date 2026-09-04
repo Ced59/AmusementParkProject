@@ -17,7 +17,10 @@ import {
   UpsertPassportRideAssessmentRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
 import {
+  DeletePassportVisitRequest,
   PassportVisit,
+  PassportVisitDeletionPreview,
+  PassportVisitDeletionReceipt,
   PassportVisitParkAssessment,
   PassportVisitStatus,
   UpdatePassportVisitRequest,
@@ -113,6 +116,11 @@ export class PassportVisitEditorStateFacade {
   private readonly persistedMetadataFingerprintSignal = signal<string>('');
   private readonly visitMutationSavingSignal = signal<boolean>(false);
   private readonly visitMutationErrorKeySignal = signal<string | null>(null);
+  private readonly deletionPreviewSignal = signal<PassportVisitDeletionPreview | null>(null);
+  private readonly deletionPreviewLoadingSignal = signal<boolean>(false);
+  private readonly deletionSubmittingSignal = signal<boolean>(false);
+  private readonly deletionErrorKeySignal = signal<string | null>(null);
+  private readonly deletedVisitIdSignal = signal<string | null>(null);
   private readonly assessmentDraftSignal = signal<PassportVisitParkAssessmentDraft>({
     value: null,
     privateComment: ''
@@ -173,6 +181,11 @@ export class PassportVisitEditorStateFacade {
   readonly metadataDraft: Signal<PassportVisitMetadataDraft> = this.metadataDraftSignal.asReadonly();
   readonly visitMutationSaving: Signal<boolean> = this.visitMutationSavingSignal.asReadonly();
   readonly visitMutationErrorKey: Signal<string | null> = this.visitMutationErrorKeySignal.asReadonly();
+  readonly deletionPreview: Signal<PassportVisitDeletionPreview | null> = this.deletionPreviewSignal.asReadonly();
+  readonly deletionPreviewLoading: Signal<boolean> = this.deletionPreviewLoadingSignal.asReadonly();
+  readonly deletionSubmitting: Signal<boolean> = this.deletionSubmittingSignal.asReadonly();
+  readonly deletionErrorKey: Signal<string | null> = this.deletionErrorKeySignal.asReadonly();
+  readonly deletedVisitId: Signal<string | null> = this.deletedVisitIdSignal.asReadonly();
   readonly canEditVisit = computed((): boolean =>
     this.visitSignal()?.status === 'Draft' && !this.visitMutationSavingSignal());
   readonly metadataHasChanges = computed((): boolean =>
@@ -683,6 +696,104 @@ export class PassportVisitEditorStateFacade {
 
   archiveVisit(): void {
     this.changeVisitStatus('Archived', 'passport.editor.visit.messages.archived');
+  }
+
+  loadDeletionPreview(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || this.deletionPreviewLoadingSignal() || this.deletionSubmittingSignal()) {
+      return;
+    }
+
+    if (this.hasUnsavedStatusTransitionChanges()) {
+      this.deletionErrorKeySignal.set('passport.editor.deletion.errors.saveFirst');
+      return;
+    }
+
+    const visitGeneration: number = this.visitInstanceGeneration;
+    this.deletionPreviewLoadingSignal.set(true);
+    this.deletionErrorKeySignal.set(null);
+    this.visitsApi.getDeletionPreview(visit.id).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (preview: PassportVisitDeletionPreview): void => {
+        if (!this.isCurrentVisitInstance(visit.id, visitGeneration)) {
+          return;
+        }
+
+        this.deletionPreviewLoadingSignal.set(false);
+        this.deletionPreviewSignal.set(preview);
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentVisitInstance(visit.id, visitGeneration)) {
+          return;
+        }
+
+        this.deletionPreviewLoadingSignal.set(false);
+        this.deletionErrorKeySignal.set(this.resolveDeletionErrorKey(error));
+      }
+    });
+  }
+
+  cancelVisitDeletion(): void {
+    if (this.deletionSubmittingSignal()) {
+      return;
+    }
+
+    this.deletionPreviewSignal.set(null);
+    this.deletionErrorKeySignal.set(null);
+    this.pendingMutations.delete('delete-visit');
+  }
+
+  deleteVisit(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    const preview: PassportVisitDeletionPreview | null = this.deletionPreviewSignal();
+    if (!visit
+      || !preview
+      || preview.visitId !== visit.id
+      || this.deletionSubmittingSignal()) {
+      return;
+    }
+
+    const request: DeletePassportVisitRequest = {
+      expectedVersion: preview.expectedVersion,
+      confirmedOccurrenceCount: preview.occurrenceCount,
+      confirmedAssessmentCount: preview.assessmentCount
+    };
+    const operationName: string = 'delete-visit';
+    const idempotencyKey: string = this.resolveIdempotencyKey(operationName, request);
+    const visitGeneration: number = this.visitInstanceGeneration;
+    this.deletionSubmittingSignal.set(true);
+    this.deletionErrorKeySignal.set(null);
+    this.visitsApi.deleteVisit(visit.id, request, idempotencyKey).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (receipt: PassportVisitDeletionReceipt): void => {
+        if (!this.isCurrentVisitInstance(visit.id, visitGeneration)) {
+          return;
+        }
+
+        this.deletionSubmittingSignal.set(false);
+        this.pendingMutations.delete(operationName);
+        this.deletedVisitIdSignal.set(receipt.visitId);
+        this.showSuccess('passport.editor.deletion.deleted');
+      },
+      error: (error: unknown): void => {
+        if (!this.isCurrentVisitInstance(visit.id, visitGeneration)) {
+          return;
+        }
+
+        this.deletionSubmittingSignal.set(false);
+        const errorCode: string | null | undefined = extractApiProblemDetails(error)?.errorCode;
+        if (errorCode === 'visit.deletion-preview-changed'
+          || errorCode === 'visit.version-conflict') {
+          this.deletionPreviewSignal.set(null);
+          this.pendingMutations.delete(operationName);
+        }
+        this.deletionErrorKeySignal.set(this.resolveDeletionErrorKey(error));
+      }
+    });
   }
 
   private changeVisitStatus(targetStatus: PassportVisitStatus, successKey: string): void {
@@ -1548,6 +1659,23 @@ export class PassportVisitEditorStateFacade {
     return 'passport.editor.errors.operation';
   }
 
+  private resolveDeletionErrorKey(error: unknown): string {
+    const errorCode: string | null | undefined = extractApiProblemDetails(error)?.errorCode;
+    if (errorCode === 'visit.deletion-preview-changed' || errorCode === 'visit.version-conflict') {
+      return 'passport.editor.deletion.errors.changed';
+    }
+
+    if (errorCode === 'visit.not-found') {
+      return 'passport.editor.deletion.errors.notFound';
+    }
+
+    if (error instanceof HttpErrorResponse && error.status === 0) {
+      return 'passport.editor.deletion.errors.network';
+    }
+
+    return 'passport.editor.deletion.errors.generic';
+  }
+
   private isAmbiguousMutationError(error: unknown): boolean {
     return error instanceof HttpErrorResponse
       && (error.status === 0 || error.status === 408 || error.status >= 500);
@@ -2116,6 +2244,11 @@ export class PassportVisitEditorStateFacade {
     this.persistedMetadataFingerprintSignal.set('');
     this.visitMutationSavingSignal.set(false);
     this.visitMutationErrorKeySignal.set(null);
+    this.deletionPreviewSignal.set(null);
+    this.deletionPreviewLoadingSignal.set(false);
+    this.deletionSubmittingSignal.set(false);
+    this.deletionErrorKeySignal.set(null);
+    this.deletedVisitIdSignal.set(null);
     this.assessmentDraftSignal.set({ value: null, privateComment: '' });
     this.persistedAssessmentFingerprintSignal.set(this.assessmentFingerprint(null));
     this.assessmentSavingSignal.set(false);

@@ -61,10 +61,4 @@ public interface IUserVisitRepository
         PassportAuditEvent pendingAuditEvent,
         string contentMutationLeaseToken,
         CancellationToken cancellationToken);
-
-    Task<bool> TryDeleteOwnedAsync(
-        VisitId visitId,
-        string userId,
-        long expectedVersion,
-        CancellationToken cancellationToken);
 }

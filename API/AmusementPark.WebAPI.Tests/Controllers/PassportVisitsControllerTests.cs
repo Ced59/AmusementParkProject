@@ -4,6 +4,7 @@ using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Core.Domain.Visits;
@@ -219,6 +220,71 @@ public sealed class PassportVisitsControllerTests
     }
 
     [Fact]
+    public async Task GetDeletionPreviewAsync_ShouldUseTheAuthenticatedOwner()
+    {
+        Mock<IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>>> handler =
+            new Mock<IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<GetVisitDeletionPreviewQuery>(query =>
+                    query.UserId == "owner-1" && query.VisitId == "visit-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitDeletionPreview>.Success(
+                new VisitDeletionPreview("visit-1", 3, 4, 2, 7)));
+        PassportVisitsController controller = CreateController(deletionPreviewHandler: handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.GetDeletionPreviewAsync(
+            "visit-1",
+            CancellationToken.None);
+
+        PassportVisitDeletionPreviewDto body = Assert.IsType<PassportVisitDeletionPreviewDto>(
+            Assert.IsType<OkObjectResult>(result).Value);
+        Assert.Equal(4, body.OccurrenceCount);
+        Assert.Equal(2, body.AssessmentCount);
+        handler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldForwardConfirmationAndIdempotencyKey()
+    {
+        Mock<ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>>> handler =
+            new Mock<ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<DeleteVisitCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.VisitId == "visit-1"
+                    && command.ExpectedVersion == 3
+                    && command.ConfirmedOccurrenceCount == 4
+                    && command.ConfirmedAssessmentCount == 2
+                    && command.ClientOperationId == "delete-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitDeletionReceipt>.Success(
+                new VisitDeletionReceipt(
+                    "visit-1",
+                    NowUtc,
+                    NowUtc.AddDays(7),
+                    false)));
+        PassportVisitsController controller = CreateController(deleteHandler: handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.DeleteAsync(
+            "visit-1",
+            new DeletePassportVisitRequestDto
+            {
+                ExpectedVersion = 3,
+                ConfirmedOccurrenceCount = 4,
+                ConfirmedAssessmentCount = 2,
+            },
+            "delete-1",
+            CancellationToken.None);
+
+        PassportVisitDeletionReceiptDto body = Assert.IsType<PassportVisitDeletionReceiptDto>(
+            Assert.IsType<AcceptedResult>(result).Value);
+        Assert.Equal("visit-1", body.VisitId);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_ShouldExposePrivateNoStoreAdditiveRoutes()
     {
         RouteAttribute route = Assert.IsType<RouteAttribute>(
@@ -251,6 +317,10 @@ public sealed class PassportVisitsControllerTests
             GetAction(nameof(PassportVisitsController.ReopenAsync)).GetCustomAttribute<HttpPostAttribute>()).Template);
         Assert.Equal("{visitId}/archive", Assert.IsType<HttpPostAttribute>(
             GetAction(nameof(PassportVisitsController.ArchiveAsync)).GetCustomAttribute<HttpPostAttribute>()).Template);
+        Assert.Equal("{visitId}/deletion-preview", Assert.IsType<HttpGetAttribute>(
+            GetAction(nameof(PassportVisitsController.GetDeletionPreviewAsync)).GetCustomAttribute<HttpGetAttribute>()).Template);
+        Assert.Equal("{visitId}", Assert.IsType<HttpDeleteAttribute>(
+            GetAction(nameof(PassportVisitsController.DeleteAsync)).GetCustomAttribute<HttpDeleteAttribute>()).Template);
         ParameterInfo idempotencyHeader = GetAction(nameof(PassportVisitsController.CreateAsync))
             .GetParameters()
             .Single(parameter => parameter.Name == "idempotencyKey");
@@ -275,7 +345,9 @@ public sealed class PassportVisitsControllerTests
         ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>? updateHandler = null,
         ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>? completeHandler = null,
         ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>>? reopenHandler = null,
-        ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>? archiveHandler = null)
+        ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>? archiveHandler = null,
+        IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>>? deletionPreviewHandler = null,
+        ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>>? deleteHandler = null)
     {
         return new PassportVisitsController(
             createHandler ?? new Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>>(MockBehavior.Strict).Object,
@@ -284,7 +356,9 @@ public sealed class PassportVisitsControllerTests
             updateHandler ?? new Mock<ICommandHandler<UpdateVisitMetadataCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
             completeHandler ?? new Mock<ICommandHandler<CompleteVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
             reopenHandler ?? new Mock<ICommandHandler<ReopenVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
-            archiveHandler ?? new Mock<ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object);
+            archiveHandler ?? new Mock<ICommandHandler<ArchiveVisitCommand, ApplicationResult<VisitResult>>>(MockBehavior.Strict).Object,
+            deletionPreviewHandler ?? new Mock<IQueryHandler<GetVisitDeletionPreviewQuery, ApplicationResult<VisitDeletionPreview>>>(MockBehavior.Strict).Object,
+            deleteHandler ?? new Mock<ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>>>(MockBehavior.Strict).Object);
     }
 
     private static ControllerContext CreateControllerContext(string userId)

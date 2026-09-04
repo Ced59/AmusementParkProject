@@ -9,5 +9,7 @@ export const PASSPORT_VISITS_API_ENDPOINTS = {
   complete: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/complete`,
   reopen: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/reopen`,
   archive: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/archive`,
+  deletionPreview: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/deletion-preview`,
+  delete: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}`,
   assessment: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/assessment`
 };

@@ -312,22 +312,6 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return result.MatchedCount == 1;
     }
 
-    public async Task<bool> TryDeleteOwnedAsync(
-        VisitId visitId,
-        string userId,
-        long expectedVersion,
-        CancellationToken cancellationToken)
-    {
-        DeleteResult result = await this.collection.DeleteOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
-                visitId.Value,
-                userId,
-                expectedVersion,
-                DateTime.UtcNow),
-            cancellationToken);
-        return result.DeletedCount == 1;
-    }
-
     internal static IdempotentVisitCreationResult ResolveIdempotentCreation(
         UserVisitDocument existing,
         string payloadHash)

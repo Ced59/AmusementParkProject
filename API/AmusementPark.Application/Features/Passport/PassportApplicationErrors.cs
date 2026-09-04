@@ -266,6 +266,20 @@ public static class PassportApplicationErrors
             "Les données de correction de l’occurrence sont invalides.");
     }
 
+    public static ApplicationError InvalidDeletionConfirmation()
+    {
+        return ApplicationError.Validation(
+            "visit.deletion-confirmation-invalid",
+            "La confirmation de suppression est invalide.");
+    }
+
+    public static ApplicationError DeletionPreviewChanged()
+    {
+        return ApplicationError.Conflict(
+            "visit.deletion-preview-changed",
+            "Le contenu de la visite a changé. Vérifie le nouvel aperçu avant de confirmer.");
+    }
+
     public static ApplicationError InvalidExportFormat()
     {
         return ApplicationError.Validation(

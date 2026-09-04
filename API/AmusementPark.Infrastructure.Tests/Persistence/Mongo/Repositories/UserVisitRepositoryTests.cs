@@ -311,36 +311,6 @@ public sealed class UserVisitRepositoryTests
     }
 
     [Fact]
-    public async Task TryDeleteOwnedAsync_ShouldRequireOwnerAndCurrentVersion()
-    {
-        Mock<IMongoCollection<UserVisitDocument>> collection =
-            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
-        FilterDefinition<UserVisitDocument>? capturedFilter = null;
-        collection.Setup(value => value.DeleteOneAsync(
-                It.IsAny<FilterDefinition<UserVisitDocument>>(),
-                CancellationToken.None))
-            .Callback((
-                FilterDefinition<UserVisitDocument> filter,
-                CancellationToken _) => capturedFilter = filter)
-            .ReturnsAsync(new DeleteResult.Acknowledged(1));
-        UserVisitRepository repository = CreateRepository(collection.Object);
-
-        bool deleted = await repository.TryDeleteOwnedAsync(
-            VisitId.Parse("visit-1"),
-            "user-1",
-            2,
-            CancellationToken.None);
-
-        Assert.True(deleted);
-        Assert.NotNull(capturedFilter);
-        BsonDocument rendered = Render(capturedFilter);
-        Assert.Equal("visit-1", rendered["_id"].AsString);
-        Assert.Equal("user-1", rendered["userId"].AsString);
-        Assert.Equal(2, rendered["version"].AsInt64);
-        collection.VerifyAll();
-    }
-
-    [Fact]
     public async Task ListOwnedAsync_ShouldRejectAnUnboundedRequestBeforeMongo()
     {
         Mock<IMongoCollection<UserVisitDocument>> collection =

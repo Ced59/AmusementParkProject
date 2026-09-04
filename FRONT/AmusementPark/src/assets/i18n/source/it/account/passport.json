@@ -137,6 +137,26 @@
         "errors": { "conflict": "La visita è cambiata nel frattempo. È stato ricaricato lo stato attuale; controlla i dati.", "recovery": "Non è stato possibile verificare la modifica. I dati restano disponibili; riprova.", "save": "Non è stato possibile aggiornare la visita.", "transition": "Questo cambio di stato non è possibile per la visita.", "temporalMetadataLocked": "La data, il fuso orario e la convenzione del giorno di visita non possono cambiare finché la visita contiene corse.", "saveBeforeStatus": "Salva prima i dettagli modificati." },
         "messages": { "updated": "I dettagli della visita sono stati aggiornati.", "completed": "La visita è ora completata.", "reopened": "La visita è stata riaperta per la correzione.", "archived": "La visita è stata archiviata." }
       },
+      "deletion": {
+        "eyebrow": "Eliminazione sicura",
+        "title": "Elimina questa visita",
+        "description": "Questa azione rimuove dal passaporto l’intera visita, i giri e le valutazioni private.",
+        "occurrences": "giri eliminati",
+        "assessments": "valutazioni eliminate",
+        "retention": "La visita scompare subito; l’eliminazione in lotti è pianificata dopo un periodo di conservazione di {{days}} giorni.",
+        "exportFirst": "Esporta prima il mio passaporto",
+        "confirmation": "Ho capito che questa visita e tutti i dati collegati verranno eliminati.",
+        "confirmAction": "Elimina definitivamente la visita",
+        "openAction": "Prepara l’eliminazione",
+        "deleted": "La visita è stata rimossa dal tuo passaporto e l’eliminazione è pianificata.",
+        "errors": {
+          "saveFirst": "Prima salva o annulla le modifiche in corso.",
+          "changed": "La visita è cambiata. Controlla il nuovo riepilogo prima di confermare.",
+          "notFound": "Questa visita non esiste più o non ti appartiene.",
+          "network": "La risposta del server non è arrivata. Riprova: l’eliminazione non verrà avviata due volte.",
+          "generic": "Non è stato possibile preparare l’eliminazione. Riprova tra poco."
+        }
+      },
       "assessment": {
         "title": "La tua impressione su questo parco",
         "description": "Valuta questa visita specifica da 0,5 a 5. Questa osservazione resta privata e non modifica mai la valutazione né le classifiche della comunità.",

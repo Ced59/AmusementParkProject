@@ -267,7 +267,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
         }
 
         FilterDefinition<UserVisitDocument>[] scopeFilters = uniqueScopes
-            .Select(scope => UserVisitMongoDefinitions.BuildOwnedVisitFilter(
+            .Select(scope => UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(
                 scope.VisitId,
                 scope.UserId))
             .ToArray();

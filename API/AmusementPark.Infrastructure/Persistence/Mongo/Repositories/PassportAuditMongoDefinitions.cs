@@ -20,6 +20,12 @@ internal static class PassportAuditMongoDefinitions
                 new CreateIndexOptions { Name = "idx_passport_audit_user_occurred" }),
             new CreateIndexModel<PassportAuditJournalDocument>(
                 Builders<PassportAuditJournalDocument>.IndexKeys
+                    .Ascending(static document => document.Event.UserId)
+                    .Ascending(static document => document.Event.VisitId)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions { Name = "idx_passport_audit_user_visit" }),
+            new CreateIndexModel<PassportAuditJournalDocument>(
+                Builders<PassportAuditJournalDocument>.IndexKeys
                     .Ascending(static document => document.Event.EntityType)
                     .Ascending(static document => document.Event.EntityId)
                     .Ascending(static document => document.Event.EntityVersion),

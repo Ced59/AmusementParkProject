@@ -27,6 +27,20 @@ public readonly record struct VisitId
         return new VisitId(IdentifierRules.NormalizeRequired(value, nameof(value)));
     }
 
+    public static bool TryParse(string? value, out VisitId visitId)
+    {
+        try
+        {
+            visitId = Parse(value);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            visitId = default;
+            return false;
+        }
+    }
+
     public override string ToString()
     {
         return this.Value;

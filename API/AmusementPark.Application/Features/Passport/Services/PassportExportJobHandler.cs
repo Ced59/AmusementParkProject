@@ -152,11 +152,17 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
                 passportExport.UserId,
                 sourceBudget,
                 cancellationToken);
-        IReadOnlyCollection<RideOccurrence> occurrences =
+        IReadOnlyCollection<RideOccurrence> loadedOccurrences =
             await this.occurrenceRepository.ListAllOwnedForExportAsync(
                 passportExport.UserId,
                 sourceBudget,
                 cancellationToken);
+        HashSet<string> activeVisitIds = visits
+            .Select(static visit => visit.Id.Value)
+            .ToHashSet(StringComparer.Ordinal);
+        IReadOnlyCollection<RideOccurrence> occurrences = loadedOccurrences
+            .Where(occurrence => activeVisitIds.Contains(occurrence.VisitId.Value))
+            .ToArray();
         string[] parkIds = visits.Select(static visit => visit.ParkId)
             .Concat(occurrences.Select(static occurrence => occurrence.ParkId))
             .Distinct(StringComparer.Ordinal)

@@ -73,3 +73,23 @@ export interface PassportVisitPage {
   items: PassportVisit[];
   nextCursor: string | null;
 }
+
+export interface PassportVisitDeletionPreview {
+  visitId: string;
+  expectedVersion: number;
+  occurrenceCount: number;
+  assessmentCount: number;
+  retentionDays: number;
+}
+
+export interface DeletePassportVisitRequest {
+  expectedVersion: number;
+  confirmedOccurrenceCount: number;
+  confirmedAssessmentCount: number;
+}
+
+export interface PassportVisitDeletionReceipt {
+  visitId: string;
+  deletedAtUtc: string;
+  purgeScheduledForUtc: string;
+}

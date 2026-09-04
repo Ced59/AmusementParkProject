@@ -163,6 +163,82 @@
             </button>
           }
         </div>
+
+        <section class="passport-visit-deletion" aria-labelledby="passport-visit-deletion-title">
+          <div class="passport-visit-deletion__heading">
+            <div>
+              <span class="passport-visit__eyebrow">{{ 'passport.editor.deletion.eyebrow' | translate }}</span>
+              <h3 id="passport-visit-deletion-title">{{ 'passport.editor.deletion.title' | translate }}</h3>
+              <p>{{ 'passport.editor.deletion.description' | translate }}</p>
+            </div>
+            <i class="pi pi-shield" aria-hidden="true"></i>
+          </div>
+
+          @if (facade.deletionErrorKey(); as deletionErrorKey) {
+            <p class="passport-inline-message passport-inline-message--error" role="alert">
+              <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+              {{ deletionErrorKey | translate }}
+            </p>
+          }
+
+          @if (facade.deletionPreview(); as deletionPreview) {
+            <div class="passport-visit-deletion__impact" role="status">
+              <div>
+                <strong>{{ deletionPreview.occurrenceCount }}</strong>
+                <span>{{ 'passport.editor.deletion.occurrences' | translate }}</span>
+              </div>
+              <div>
+                <strong>{{ deletionPreview.assessmentCount }}</strong>
+                <span>{{ 'passport.editor.deletion.assessments' | translate }}</span>
+              </div>
+            </div>
+            <p class="passport-visit-deletion__retention">
+              {{ 'passport.editor.deletion.retention' | translate:{ days: deletionPreview.retentionDays } }}
+            </p>
+            <button appUiButton="soft" type="button" (click)="openPassportExport()">
+              <i class="pi pi-download" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.deletion.exportFirst' | translate }}</span>
+            </button>
+            <label class="passport-check passport-visit-deletion__confirmation">
+              <input
+                type="checkbox"
+                [checked]="visitDeletionConfirmed()"
+                [disabled]="facade.deletionSubmitting()"
+                (change)="updateVisitDeletionConfirmation($event)" />
+              <span>{{ 'passport.editor.deletion.confirmation' | translate }}</span>
+            </label>
+            <div class="passport-visit-deletion__actions">
+              <button
+                appUiButton="rose"
+                type="button"
+                [disabled]="!visitDeletionConfirmed() || facade.deletionSubmitting()"
+                (click)="confirmVisitDeletion()">
+                @if (facade.deletionSubmitting()) {
+                  <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                } @else {
+                  <i class="pi pi-trash" aria-hidden="true"></i>
+                }
+                <span>{{ 'passport.editor.deletion.confirmAction' | translate }}</span>
+              </button>
+              <button appUiButton="ghost" type="button" [disabled]="facade.deletionSubmitting()" (click)="cancelVisitDeletion()">
+                {{ 'passport.editor.actions.cancel' | translate }}
+              </button>
+            </div>
+          } @else {
+            <button
+              appUiButton="ghost"
+              type="button"
+              [disabled]="facade.deletionPreviewLoading() || facade.deletionSubmitting()"
+              (click)="requestVisitDeletion()">
+              @if (facade.deletionPreviewLoading()) {
+                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              } @else {
+                <i class="pi pi-trash" aria-hidden="true"></i>
+              }
+              <span>{{ 'passport.editor.deletion.openAction' | translate }}</span>
+            </button>
+          }
+        </section>
       </section>
     }
 

@@ -370,6 +370,26 @@
           "archived": "La visita se ha archivado."
         }
       },
+      "deletion": {
+        "eyebrow": "Eliminación segura",
+        "title": "Eliminar esta visita",
+        "description": "Esta acción retira del pasaporte toda la visita, sus recorridos y valoraciones privadas.",
+        "occurrences": "recorridos eliminados",
+        "assessments": "valoraciones eliminadas",
+        "retention": "La visita desaparece de inmediato; su eliminación por lotes se programa tras un periodo de conservación de {{days}} días.",
+        "exportFirst": "Exportar antes mi pasaporte",
+        "confirmation": "Entiendo que esta visita y todos sus datos relacionados se eliminarán.",
+        "confirmAction": "Eliminar definitivamente la visita",
+        "openAction": "Preparar la eliminación",
+        "deleted": "La visita se ha retirado de tu pasaporte y su purga está programada.",
+        "errors": {
+          "saveFirst": "Guarda o cancela primero los cambios en curso.",
+          "changed": "La visita ha cambiado. Revisa el nuevo resumen antes de confirmar.",
+          "notFound": "Esta visita ya no existe o no te pertenece.",
+          "network": "No llegó la respuesta del servidor. Inténtalo de nuevo: la eliminación no se iniciará dos veces.",
+          "generic": "No se pudo preparar la eliminación. Inténtalo de nuevo en unos instantes."
+        }
+      },
       "assessment": {
         "title": "Tu impresión de este parque",
         "description": "Valora esta visita concreta de 0,5 a 5. Esta observación sigue siendo privada y nunca modifica la valoración ni las clasificaciones de la comunidad.",

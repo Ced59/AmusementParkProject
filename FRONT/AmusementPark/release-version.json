@@ -1,6 +1,20 @@
 {
-  "version": "5.0.24",
+  "version": "5.0.25",
   "history": [
+    {
+      "version": "5.0.25",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tu peux supprimer une visite et toutes ses données liées en toute sécurité.",
+        "en": "You can safely delete a visit and all its linked data.",
+        "de": "Du kannst einen Besuch und alle verknüpften Daten sicher löschen.",
+        "nl": "Je kunt een bezoek en alle gekoppelde gegevens veilig verwijderen.",
+        "it": "Puoi eliminare in sicurezza una visita e tutti i dati collegati.",
+        "es": "Puedes eliminar de forma segura una visita y todos sus datos relacionados.",
+        "pl": "Możesz bezpiecznie usunąć wizytę i wszystkie powiązane dane.",
+        "pt": "Podes eliminar em segurança uma visita e todos os dados associados."
+      }
+    },
     {
       "version": "5.0.24",
       "releasedAt": "2026-09-04",

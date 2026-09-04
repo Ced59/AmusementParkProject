@@ -37,6 +37,28 @@ public sealed class PassportExportJobHandlerTests
             null,
             null,
             nowUtc);
+        Visit deletedVisit = Visit.Create(
+            VisitId.Parse("visit-deleted"),
+            "user-1",
+            "park-deleted",
+            VisitDate.ForYear(2024),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            nowUtc);
+        RideOccurrence deletedVisitOccurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-deleted"),
+            deletedVisit,
+            "item-deleted",
+            RideOccurrence.SortPositionStep,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.Verified,
+            null,
+            null,
+            nowUtc);
         PassportExportArtifact artifact = new PassportExportArtifact(
             "passport.json",
             "application/json",
@@ -72,7 +94,7 @@ public sealed class PassportExportJobHandlerTests
                 It.Is<PassportExportSourceBudget>(budget =>
                     ReferenceEquals(budget, observedSourceBudget)),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<RideOccurrence>());
+            .ReturnsAsync(new[] { deletedVisitOccurrence });
         Park park = new Park { Id = "park-1", Name = "Test Park" };
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetByIdsAsync(
@@ -88,6 +110,7 @@ public sealed class PassportExportJobHandlerTests
         writer.Setup(value => value.Write(It.Is<PassportExportWriteRequest>(request =>
                 request.ExportId == exportId
                 && request.Visits.Count == 1
+                && request.RideOccurrences.Count == 0
                 && request.Parks["park-1"].Name == "Test Park")))
             .Returns(artifact);
         Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);

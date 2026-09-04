@@ -24,6 +24,22 @@ public sealed class UserVisitMongoDefinitionsTests
 
         Assert.Equal("visit-1", rendered["_id"].AsString);
         Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.True(rendered[UserVisitMongoDefinitions.DeletedAtUtcPath].IsBsonNull);
+    }
+
+    [Fact]
+    public void BuildOwnedAnyStateVisitFilter_ShouldAllowDeletionAuditAndPurgeToSeeATombstone()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(
+                "visit-1",
+                "user-1");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.False(rendered.Contains(UserVisitMongoDefinitions.DeletedAtUtcPath));
     }
 
     [Fact]

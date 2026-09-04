@@ -56,6 +56,24 @@ public sealed class VisitIdentifiersTests
     }
 
     [Fact]
+    public void TryParse_WhenValueIsValid_ShouldReturnTheNormalizedIdentifier()
+    {
+        bool parsed = VisitId.TryParse("  legacy-Visit:42  ", out VisitId visitId);
+
+        Assert.True(parsed);
+        Assert.Equal("legacy-Visit:42", visitId.Value);
+    }
+
+    [Fact]
+    public void TryParse_WhenValueIsInvalid_ShouldReturnFalseWithoutThrowing()
+    {
+        bool parsed = VisitId.TryParse(" ", out VisitId visitId);
+
+        Assert.False(parsed);
+        Assert.Equal(default, visitId);
+    }
+
+    [Fact]
     public void Value_WhenIdentifierIsUninitialized_ShouldRejectTheDefaultStruct()
     {
         VisitId identifier = default;
