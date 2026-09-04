@@ -66,13 +66,17 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 .GroupBy(static auditEvent => auditEvent.Id, StringComparer.Ordinal)
                 .Select(static group => group.First())
                 .ToArray();
-            foreach (PassportAuditEvent requestedEvent in distinctEvents)
+            IEnumerable<IGrouping<(string UserId, string VisitId), PassportAuditEvent>>
+                visitGroups = distinctEvents.GroupBy(static auditEvent =>
+                    (auditEvent.UserId, auditEvent.VisitId));
+            foreach (IGrouping<(string UserId, string VisitId), PassportAuditEvent> visitGroup
+                in visitGroups)
             {
                 string leaseToken = Guid.NewGuid().ToString("N");
                 DateTime acquiredAtUtc = DateTime.UtcNow;
                 bool acquired = await this.TryAcquireAuditMaintenanceLeaseAsync(
-                    requestedEvent.VisitId,
-                    requestedEvent.UserId,
+                    visitGroup.Key.VisitId,
+                    visitGroup.Key.UserId,
                     leaseToken,
                     acquiredAtUtc,
                     cancellationToken);
@@ -83,48 +87,48 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
 
                 try
                 {
+                    string[] requestedEventIds = visitGroup
+                        .Select(static auditEvent => auditEvent.Id)
+                        .ToArray();
                     IReadOnlyDictionary<string, PassportAuditEvent> durableEvents =
                         await this.LoadDurableEventsAsync(
-                            new[] { requestedEvent.Id },
+                            requestedEventIds,
                             cancellationToken);
-                    if (!durableEvents.TryGetValue(
-                        requestedEvent.Id,
-                        out PassportAuditEvent? auditEvent))
+                    PassportAuditEvent[] publishableEvents = requestedEventIds
+                        .Where(durableEvents.ContainsKey)
+                        .Select(eventId => durableEvents[eventId])
+                        .Where(auditEvent => string.Equals(
+                                auditEvent.UserId,
+                                visitGroup.Key.UserId,
+                                StringComparison.Ordinal)
+                            && string.Equals(
+                                auditEvent.VisitId,
+                                visitGroup.Key.VisitId,
+                                StringComparison.Ordinal))
+                        .ToArray();
+                    if (publishableEvents.Length == 0)
                     {
                         continue;
                     }
 
-                    PassportAuditEventDocument eventDocument = auditEvent.ToDocument();
-                    PassportAuditJournalDocument journalDocument =
-                        new PassportAuditJournalDocument
-                        {
-                            Id = auditEvent.Id,
-                            Event = eventDocument,
-                            CreatedAt = auditEvent.OccurredAtUtc,
-                            UpdatedAt = auditEvent.OccurredAtUtc,
-                        };
-                    try
-                    {
-                        await this.auditCollection.InsertOneAsync(
-                            journalDocument,
-                            cancellationToken: cancellationToken);
-                    }
-                    catch (MongoWriteException exception)
-                        when (exception.WriteError?.Category
-                            == ServerErrorCategory.DuplicateKey)
-                    {
-                        // Une reprise après insertion mais avant acquittement est attendue.
-                    }
+                    PassportAuditJournalDocument[] journalDocuments = publishableEvents
+                        .Select(ToJournalDocument)
+                        .ToArray();
+                    await this.InsertJournalDocumentsAsync(
+                        journalDocuments,
+                        cancellationToken);
 
                     await this.AcknowledgeSourceMarkersAsync(
-                        new[] { auditEvent.Id },
+                        publishableEvents
+                            .Select(static auditEvent => auditEvent.Id)
+                            .ToArray(),
                         cancellationToken);
                 }
                 finally
                 {
                     await this.ReleaseAuditMaintenanceLeaseAsync(
-                        requestedEvent.VisitId,
-                        requestedEvent.UserId,
+                        visitGroup.Key.VisitId,
+                        visitGroup.Key.UserId,
                         leaseToken,
                         CancellationToken.None);
                 }
@@ -143,6 +147,56 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                 "Unable to publish a passport audit batch; unacknowledged source markers are retained.");
             return false;
         }
+    }
+
+    private async Task InsertJournalDocumentsAsync(
+        IReadOnlyCollection<PassportAuditJournalDocument> documents,
+        CancellationToken cancellationToken)
+    {
+        if (documents.Count == 1)
+        {
+            try
+            {
+                await this.auditCollection.InsertOneAsync(
+                    documents.Single(),
+                    cancellationToken: cancellationToken);
+            }
+            catch (MongoWriteException exception)
+                when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+            {
+                // Une reprise après insertion mais avant acquittement est attendue.
+            }
+
+            return;
+        }
+
+        try
+        {
+            await this.auditCollection.InsertManyAsync(
+                documents,
+                new InsertManyOptions { IsOrdered = false },
+                cancellationToken);
+        }
+        catch (MongoBulkWriteException<PassportAuditJournalDocument> exception)
+            when (exception.WriteConcernError is null
+                && exception.WriteErrors.Count > 0
+                && exception.WriteErrors.All(static error =>
+                    error.Category == ServerErrorCategory.DuplicateKey))
+        {
+            // Un retry peut contenir plusieurs preuves déjà insérées.
+        }
+    }
+
+    private static PassportAuditJournalDocument ToJournalDocument(
+        PassportAuditEvent auditEvent)
+    {
+        return new PassportAuditJournalDocument
+        {
+            Id = auditEvent.Id,
+            Event = auditEvent.ToDocument(),
+            CreatedAt = auditEvent.OccurredAtUtc,
+            UpdatedAt = auditEvent.OccurredAtUtc,
+        };
     }
 
     private async Task<bool> TryAcquireAuditMaintenanceLeaseAsync(
