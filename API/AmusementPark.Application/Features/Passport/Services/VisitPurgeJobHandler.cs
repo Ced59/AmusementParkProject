@@ -10,14 +10,18 @@ namespace AmusementPark.Application.Features.Passport.Services;
 public sealed class VisitPurgeJobHandler : IDurableBackgroundJobHandler
 {
     private const int MaximumAttempts = 100;
+    private const int ContinuationAttemptThreshold = MaximumAttempts / 2;
     private readonly IVisitDeletionStore deletionStore;
+    private readonly VisitPurgeScheduler purgeScheduler;
     private readonly IPassportClock clock;
 
     public VisitPurgeJobHandler(
         IVisitDeletionStore deletionStore,
+        VisitPurgeScheduler purgeScheduler,
         IPassportClock clock)
     {
         this.deletionStore = deletionStore;
+        this.purgeScheduler = purgeScheduler;
         this.clock = clock;
     }
 
@@ -38,7 +42,9 @@ public sealed class VisitPurgeJobHandler : IDurableBackgroundJobHandler
     {
         VisitPurgeJobPayload? payload = Deserialize(context);
         if (payload is null
-            || !VisitId.TryParse(payload.VisitId, out VisitId visitId))
+            || !VisitId.TryParse(payload.VisitId, out VisitId visitId)
+            || payload.DeletionVersion < 1
+            || payload.Continuation < 0)
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 "passport-visit-purge.invalid-payload");
@@ -50,10 +56,19 @@ public sealed class VisitPurgeJobHandler : IDurableBackgroundJobHandler
             this.clock.UtcNow,
             VisitDeletionPolicy.PurgeBatchSize,
             cancellationToken);
-        return result.IsCompleted
-            ? DurableBackgroundJobHandlerResult.Success()
-            : DurableBackgroundJobHandlerResult.Retry(
-                "passport-visit-purge.remaining-documents");
+        if (result.IsCompleted)
+        {
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
+        if (context.AttemptCount >= ContinuationAttemptThreshold)
+        {
+            await this.purgeScheduler.ScheduleContinuationAsync(payload, cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
+        return DurableBackgroundJobHandlerResult.Retry(
+            "passport-visit-purge.remaining-documents");
     }
 
     private static VisitPurgeJobPayload? Deserialize(

@@ -168,6 +168,15 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             return new VisitDeletionPurgeResult(false, 0);
         }
 
+        if (hasTombstone
+            && await this.HasPendingAuditMarkersAsync(
+                visitId.Value,
+                normalizedUserId,
+                cancellationToken))
+        {
+            return new VisitDeletionPurgeResult(false, 0);
+        }
+
         int deletedCount = 0;
         deletedCount += await DeleteBatchAsync(
             this.operations,
@@ -231,6 +240,32 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         return await operationsRemain || await occurrencesRemain || await auditsRemain;
     }
 
+    private async Task<bool> HasPendingAuditMarkersAsync(
+        string visitId,
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        Task<bool> visitMarkerExists = this.visits.Find(
+                BuildVisitPendingAuditFilter(visitId, userId))
+            .Project(static document => document.Id)
+            .AnyAsync(cancellationToken);
+        Task<bool> occurrenceMarkerExists = this.occurrences.Find(
+                BuildOccurrencePendingAuditFilter(visitId, userId))
+            .Project(static document => document.Id)
+            .AnyAsync(cancellationToken);
+        Task<bool> operationMarkerExists = this.operations.Find(
+                BuildOperationPendingAuditFilter(visitId, userId))
+            .Project(static document => document.Id)
+            .AnyAsync(cancellationToken);
+        await Task.WhenAll(
+            visitMarkerExists,
+            occurrenceMarkerExists,
+            operationMarkerExists);
+        return await visitMarkerExists
+            || await occurrenceMarkerExists
+            || await operationMarkerExists;
+    }
+
     private static async Task<int> DeleteBatchAsync<TDocument>(
         IMongoCollection<TDocument> collection,
         FilterDefinition<TDocument> filter,
@@ -290,6 +325,34 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             Builders<PassportAuditJournalDocument>.Filter;
         return filters.Eq(static document => document.Event.VisitId, visitId)
             & filters.Eq(static document => document.Event.UserId, userId);
+    }
+
+    internal static FilterDefinition<UserVisitDocument> BuildVisitPendingAuditFilter(
+        string visitId,
+        string userId)
+    {
+        return UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(visitId, userId)
+            & Builders<UserVisitDocument>.Filter.Exists(
+                PassportAuditMongoDefinitions.PendingEventIdPath,
+                true);
+    }
+
+    internal static FilterDefinition<UserRideOccurrenceDocument>
+        BuildOccurrencePendingAuditFilter(string visitId, string userId)
+    {
+        return BuildOccurrencePurgeFilter(visitId, userId)
+            & Builders<UserRideOccurrenceDocument>.Filter.Exists(
+                PassportAuditMongoDefinitions.PendingEventIdPath,
+                true);
+    }
+
+    internal static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildOperationPendingAuditFilter(string visitId, string userId)
+    {
+        return BuildOperationPurgeFilter(visitId, userId)
+            & Builders<UserRideOccurrenceCreationOperationDocument>.Filter.Exists(
+                PassportAuditMongoDefinitions.PendingEventIdPath,
+                true);
     }
 
     internal static UpdateDefinition<UserVisitDocument> BuildTombstoneUpdate(

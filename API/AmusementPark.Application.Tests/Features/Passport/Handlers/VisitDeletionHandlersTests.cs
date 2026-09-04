@@ -82,7 +82,7 @@ public sealed class VisitDeletionHandlersTests
                 It.Is<EnqueueExactBackgroundJobRequest>(request =>
                     request.Kind == VisitPurgeJob.Kind
                     && request.Delay == VisitDeletionPolicy.Retention
-                    && request.IdempotencyKey.EndsWith(":2", StringComparison.Ordinal)),
+                    && request.IdempotencyKey.EndsWith(":2:0", StringComparison.Ordinal)),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         Mock<IPassportAuditPublisher> audits = new Mock<IPassportAuditPublisher>(MockBehavior.Strict);

@@ -50,6 +50,31 @@ public sealed class MongoVisitDeletionStoreTests
     }
 
     [Fact]
+    public void BuildPendingAuditFilters_ShouldFenceEveryDeletionSource()
+    {
+        BsonDocument visitFilter = Render(
+            MongoVisitDeletionStore.BuildVisitPendingAuditFilter("visit-1", "owner-1"));
+        BsonDocument occurrenceFilter = Render(
+            MongoVisitDeletionStore.BuildOccurrencePendingAuditFilter(
+                "visit-1",
+                "owner-1"));
+        BsonDocument operationFilter = Render(
+            MongoVisitDeletionStore.BuildOperationPendingAuditFilter(
+                "visit-1",
+                "owner-1"));
+
+        Assert.Equal("visit-1", visitFilter["_id"].AsString);
+        Assert.Equal("owner-1", visitFilter["userId"].AsString);
+        Assert.True(HasPendingAuditMarker(visitFilter));
+        Assert.Equal("visit-1", occurrenceFilter["visitId"].AsString);
+        Assert.Equal("owner-1", occurrenceFilter["userId"].AsString);
+        Assert.True(HasPendingAuditMarker(occurrenceFilter));
+        Assert.Equal("visit-1", operationFilter["visitId"].AsString);
+        Assert.Equal("owner-1", operationFilter["userId"].AsString);
+        Assert.True(HasPendingAuditMarker(operationFilter));
+    }
+
+    [Fact]
     public void BuildTombstoneUpdate_ShouldPersistReplayAndPurgeEvidenceAndReleaseTheLease()
     {
         Visit visit = Visit.Create(
@@ -106,5 +131,12 @@ public sealed class MongoVisitDeletionStoreTests
         RenderArgs<UserVisitDocument> arguments =
             new RenderArgs<UserVisitDocument>(serializer, BsonSerializer.SerializerRegistry);
         return update.Render(arguments).AsBsonDocument;
+    }
+
+    private static bool HasPendingAuditMarker(BsonDocument filter)
+    {
+        return filter[PassportAuditMongoDefinitions.PendingEventIdPath]
+            .AsBsonDocument["$exists"]
+            .AsBoolean;
     }
 }

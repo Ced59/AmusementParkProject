@@ -330,11 +330,8 @@ public sealed class PassportExportRepository : IPassportExportRepository
         string normalizedUserId = string.IsNullOrWhiteSpace(userId)
             ? throw new ArgumentException("A user identifier is required.", nameof(userId))
             : userId.Trim();
-        FilterDefinitionBuilder<PassportExportDocument> filters =
-            Builders<PassportExportDocument>.Filter;
         FilterDefinition<PassportExportDocument> accessibleFilter =
-            filters.Eq(static document => document.UserId, normalizedUserId)
-            & filters.Gt(static document => document.ExpiresAtUtc, invalidatedAtUtc);
+            BuildInvalidationFilter(normalizedUserId, invalidatedAtUtc);
         List<string> exportIds = await this.exports.Find(accessibleFilter)
             .Project(static document => document.Id)
             .ToListAsync(cancellationToken);
@@ -364,6 +361,17 @@ public sealed class PassportExportRepository : IPassportExportRepository
                 static document => document.ExportId,
                 exportIds),
             cancellationToken);
+    }
+
+    internal static FilterDefinition<PassportExportDocument> BuildInvalidationFilter(
+        string userId,
+        DateTime sourceChangedAtUtc)
+    {
+        FilterDefinitionBuilder<PassportExportDocument> filters =
+            Builders<PassportExportDocument>.Filter;
+        return filters.Eq(static document => document.UserId, userId)
+            & filters.Lte(static document => document.CreatedAt, sourceChangedAtUtc)
+            & filters.Gt(static document => document.ExpiresAtUtc, sourceChangedAtUtc);
     }
 
     private static FilterDefinition<PassportExportDocument> BuildOwnedFilter(

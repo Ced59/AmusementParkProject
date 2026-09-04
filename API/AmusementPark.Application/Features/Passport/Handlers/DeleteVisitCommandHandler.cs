@@ -96,11 +96,11 @@ public sealed class DeleteVisitCommandHandler
                 PassportApplicationErrors.VisitConcurrencyConflict());
         }
 
-        DateTime deletedAtUtc = this.clock.UtcNow;
+        DateTime leaseAcquiredAtUtc = this.clock.UtcNow;
         IVisitContentMutationLease? contentMutationLease = visit.Status == VisitStatus.Draft
             ? await this.contentMutationLeaseManager.TryAcquireAsync(
                 visit,
-                deletedAtUtc,
+                leaseAcquiredAtUtc,
                 cancellationToken)
             : null;
         if (visit.Status == VisitStatus.Draft && contentMutationLease is null)
@@ -130,7 +130,6 @@ public sealed class DeleteVisitCommandHandler
                     PassportApplicationErrors.DeletionPreviewChanged()));
         }
 
-        DateTime purgeScheduledForUtc = deletedAtUtc.Add(VisitDeletionPolicy.Retention);
         await this.purgeScheduler.ScheduleAsync(
             visit.Id,
             visit.UserId,
@@ -139,9 +138,11 @@ public sealed class DeleteVisitCommandHandler
             guardedCancellationToken);
         await this.exportRepository.InvalidateOwnedAsync(
             visit.UserId,
-            deletedAtUtc,
+            this.clock.UtcNow,
             guardedCancellationToken);
 
+        DateTime deletedAtUtc = this.clock.UtcNow;
+        DateTime purgeScheduledForUtc = deletedAtUtc.Add(VisitDeletionPolicy.Retention);
         PassportAuditEvent auditEvent = VisitDeletionAuditEventFactory.Create(
             visit,
             deletedAtUtc);
