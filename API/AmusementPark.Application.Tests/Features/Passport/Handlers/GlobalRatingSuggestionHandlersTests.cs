@@ -295,6 +295,72 @@ public sealed class GlobalRatingSuggestionHandlersTests
     }
 
     [Fact]
+    public async Task PresentationBatch_WhenCommittedResponseWasLost_ReplaysTheCurrentPresentation()
+    {
+        DateTime existingPresentationAtUtc = NowUtc.AddMinutes(-5);
+        Mock<IGlobalRatingSuggestionSourceReader> sources =
+            new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict);
+        sources.Setup(value => value.ReadAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(new[] { CreateSource() });
+        Mock<IGlobalRatingSuggestionStateRepository> states = CreateEnabledStates();
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new GlobalRatingSuggestionTargetState(
+                    RatingTargetType.Park,
+                    "park-1",
+                    existingPresentationAtUtc,
+                    null,
+                    null,
+                    true),
+            });
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                Name = "Park",
+                Status = ParkStatus.Operating,
+            });
+        PresentGlobalRatingSuggestionsCommandHandler handler =
+            new PresentGlobalRatingSuggestionsCommandHandler(
+                sources.Object,
+                states.Object,
+                new FeatureGate(true),
+                parks.Object,
+                new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPresentationResult> result =
+            await handler.HandleAsync(new PresentGlobalRatingSuggestionsCommand(
+                "owner-1",
+                new[]
+                {
+                    new GlobalRatingSuggestionTargetKey(RatingTargetType.Park, "park-1"),
+                }));
+
+        GlobalRatingSuggestionPresentedTargetResult presentedTarget =
+            Assert.Single(result.Value!.PresentedTargets);
+        Assert.Equal(existingPresentationAtUtc, presentedTarget.PresentedAtUtc);
+        states.VerifyAll();
+        states.Verify(value => value.TryRecordInteractionAsync(
+                It.IsAny<string>(),
+                It.IsAny<RatingTargetType>(),
+                It.IsAny<string>(),
+                It.IsAny<DateTime?>(),
+                It.IsAny<GlobalRatingSuggestionInteractionType>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        sources.VerifyAll();
+        parks.VerifyAll();
+    }
+
+    [Fact]
     public async Task Interaction_RecordsOnlyExplicitAcceptanceForAnOwnedRating()
     {
         DateTime presentedAtUtc = NowUtc.AddHours(-1);
