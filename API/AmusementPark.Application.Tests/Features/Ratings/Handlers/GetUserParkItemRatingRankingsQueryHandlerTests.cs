@@ -176,7 +176,9 @@ public sealed class GetUserParkItemRatingRankingsQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         UserParkItemRatingRankingResult exactTarget = Assert.Single(result.Value!.Items);
+        Assert.Equal(12, exactTarget.Rank);
         Assert.Equal("carousel-12", exactTarget.Rating.TargetId);
+        Assert.Equal(ParkItemCategory.Attraction, exactTarget.Rating.ParkItemCategory);
         ratingRepository.VerifyAll();
     }
 

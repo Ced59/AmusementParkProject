@@ -298,29 +298,30 @@ public sealed class GetUserParkItemRatingRankingsQueryHandler
                 query.UserId.Trim(),
                 RankingSourceLimit,
                 cancellationToken);
-        IReadOnlyCollection<UserParkItemRatingRankingResult> rankings;
-        if (!string.IsNullOrWhiteSpace(query.TargetId))
-        {
-            rankings = sources
-                .Where(source => source.TargetType == RatingTargetType.ParkItem
-                    && string.Equals(
-                        source.TargetId,
-                        query.TargetId.Trim(),
-                        StringComparison.Ordinal))
-                .Select(static source => new UserParkItemRatingRankingResult(1, source))
+        string? exactTargetId = string.IsNullOrWhiteSpace(query.TargetId)
+            ? null
+            : query.TargetId.Trim();
+        IReadOnlyCollection<UserRatingListItemResult> rankingSources = exactTargetId is null
+            ? sources
+            : sources.Select(source => source.TargetType == RatingTargetType.ParkItem
+                    && string.Equals(source.TargetId, exactTargetId, StringComparison.Ordinal)
+                ? source with { ParkItemCategory = query.ParkItemCategory }
+                : source)
                 .ToArray();
-        }
-        else
-        {
-            rankings = RatingRankingFactory.BuildUserParkItemRankings(
-                sources,
+        IReadOnlyCollection<UserParkItemRatingRankingResult> rankings =
+            RatingRankingFactory.BuildUserParkItemRankings(
+                rankingSources,
                 query.ParkItemCategory,
                 query.ParkItemType);
-        }
         IReadOnlyCollection<UserParkItemRatingRankingResult> filteredRankings;
-        if (!string.IsNullOrWhiteSpace(query.TargetId))
+        if (exactTargetId is not null)
         {
-            filteredRankings = rankings;
+            filteredRankings = rankings
+                .Where(ranking => string.Equals(
+                    ranking.Rating.TargetId,
+                    exactTargetId,
+                    StringComparison.Ordinal))
+                .ToArray();
         }
         else
         {
@@ -333,7 +334,7 @@ public sealed class GetUserParkItemRatingRankingsQueryHandler
         }
         PagedResult<UserParkItemRatingRankingResult> result = RatingRankingPaging.BuildPage(
             filteredRankings,
-            string.IsNullOrWhiteSpace(query.TargetId) ? query.Paging.Page : 1,
+            exactTargetId is null ? query.Paging.Page : 1,
             query.Paging.PageSize);
 
         return ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>.Success(result);

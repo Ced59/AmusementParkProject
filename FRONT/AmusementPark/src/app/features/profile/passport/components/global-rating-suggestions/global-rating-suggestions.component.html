@@ -1,4 +1,4 @@
-@if (facade.available()) {
+@if (facade.loading() || facade.error() || facade.available()) {
   <section class="rating-suggestions" appUiSurface="panel" aria-labelledby="rating-suggestions-title">
     <header class="rating-suggestions__header">
       <span class="rating-suggestions__icon" aria-hidden="true">
