@@ -237,7 +237,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         if (mutation.Kind == PendingPassportMutationKind.Creation
             && operation is not null)
         {
-            await this.creationRecovery.RemoveStaleAllocationsAsync(
+            await this.creationRecovery.RemoveRejectedAllocationsAsync(
                 operation,
                 cancellationToken);
         }

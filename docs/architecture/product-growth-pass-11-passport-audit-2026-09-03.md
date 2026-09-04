@@ -257,7 +257,7 @@ sequenceDiagram
 | même clé idempotente réutilisée sur une autre visite | recherche et promotion bornées par propriétaire, visite et clé ; la réservation en doublon devient un conflit | la première visite et ses preuves conservent leur fence |
 | arrêt pendant la promotion d'une nouvelle génération | seules les générations de l'intervalle sûr restent lisibles ; aucune nouvelle mutation n'obtient le bail | les preuves du même intervalle restent livrables ; la nouvelle acquisition incrémente et reprend depuis la dernière génération stable |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail non renouvelé et récupérable après cinq minutes, marqueur d'audit repris séparément |
-| création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée ; les allocations exactes restées sous une ancienne génération sont supprimées avant le rejet | opération exacte en conflit, marqueurs retirés |
+| création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée ; les allocations exactes restées sans fence, sous une ancienne génération ou déjà promues à la génération courante sont supprimées avant le rejet | opération exacte en conflit, marqueurs retirés |
 | arrêt après état métier mais avant acquittement, puis demande de clôture | opération exacte complétée ou compensée sous bail avant la clôture | preuve conservée si et seulement si la mutation métier est confirmée |
 | opération pendante héritée après clôture ou disparition de la visite | aucune reprise de contenu verrouillé | opération terminalisée, sans famine des lots suivants |
 

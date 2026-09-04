@@ -88,7 +88,7 @@ internal sealed class UserRideOccurrenceCreationRecovery
                 Array.Empty<RideOccurrence>());
     }
 
-    public async Task RemoveStaleAllocationsAsync(
+    public async Task RemoveRejectedAllocationsAsync(
         UserRideOccurrenceCreationOperationDocument operation,
         CancellationToken cancellationToken)
     {
@@ -102,10 +102,11 @@ internal sealed class UserRideOccurrenceCreationRecovery
         }
 
         _ = await this.collection.DeleteManyAsync(
-            BuildExactOlderAllocationFilter(
+            BuildExactAllocationFilter(
                 operation,
                 operation.PayloadHash,
-                operation.Items.Count),
+                operation.Items.Count,
+                includeCurrentFence: true),
             cancellationToken);
     }
 
@@ -117,10 +118,11 @@ internal sealed class UserRideOccurrenceCreationRecovery
     {
         long currentFenceToken = operation.ContentMutationFenceToken!.Value;
         _ = await this.collection.UpdateManyAsync(
-            BuildExactOlderAllocationFilter(
+            BuildExactAllocationFilter(
                 operation,
                 payloadHash,
-                expectedCount),
+                expectedCount,
+                includeCurrentFence: false),
             Builders<UserRideOccurrenceDocument>.Update.Set(
                 static document => document.ContentMutationFenceToken,
                 currentFenceToken),
@@ -129,24 +131,29 @@ internal sealed class UserRideOccurrenceCreationRecovery
     }
 
     private static FilterDefinition<UserRideOccurrenceDocument>
-        BuildExactOlderAllocationFilter(
+        BuildExactAllocationFilter(
             UserRideOccurrenceCreationOperationDocument operation,
             string payloadHash,
-            int expectedCount)
+            int expectedCount,
+            bool includeCurrentFence)
     {
         long currentFenceToken = operation.ContentMutationFenceToken!.Value;
         FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
             Builders<UserRideOccurrenceDocument>.Filter;
-        FilterDefinition<UserRideOccurrenceDocument> olderFence = filters.Or(
+        FilterDefinition<UserRideOccurrenceDocument> rejectedFence = filters.Or(
             filters.Exists(
                 static document => document.ContentMutationFenceToken,
                 false),
             filters.Eq(
                 static document => document.ContentMutationFenceToken,
                 null),
-            filters.Lt(
-                static document => document.ContentMutationFenceToken,
-                currentFenceToken));
+            includeCurrentFence
+                ? filters.Lte(
+                    static document => document.ContentMutationFenceToken,
+                    currentFenceToken)
+                : filters.Lt(
+                    static document => document.ContentMutationFenceToken,
+                    currentFenceToken));
         FilterDefinition<UserRideOccurrenceDocument> exactAllocation =
             UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
                 operation.UserId,
@@ -157,7 +164,7 @@ internal sealed class UserRideOccurrenceCreationRecovery
             & filters.In(
                 static document => document.Id,
                 operation.Items.Select(static item => item.OccurrenceId));
-        return exactAllocation & olderFence;
+        return exactAllocation & rejectedFence;
     }
 
     private async Task<List<UserRideOccurrenceDocument>> LoadCurrentDocumentsAsync(

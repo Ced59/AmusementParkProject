@@ -3010,7 +3010,7 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
-    public async Task RejectPendingCreation_ShouldRemoveOnlyItsOlderFenceAllocations()
+    public async Task RejectPendingCreation_ShouldRemoveItsAllocationsThroughCurrentFence()
     {
         UserRideOccurrenceDocument occurrenceDocument = CreateCreationDocument(
             CreateOccurrence("occurrence-1", "item-1", 1024),
@@ -3097,7 +3097,7 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Contains("operation-hash", filterJson, StringComparison.Ordinal);
         Assert.Contains("payload-hash", filterJson, StringComparison.Ordinal);
         Assert.Contains("occurrence-1", filterJson, StringComparison.Ordinal);
-        Assert.Contains("$lt", filterJson, StringComparison.Ordinal);
+        Assert.Contains("$lte", filterJson, StringComparison.Ordinal);
         Assert.Contains("9", filterJson, StringComparison.Ordinal);
         collection.VerifyAll();
         operationCollection.VerifyAll();
