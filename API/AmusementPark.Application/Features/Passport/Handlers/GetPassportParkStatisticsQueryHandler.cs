@@ -7,7 +7,6 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Identifiers;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
@@ -18,17 +17,17 @@ public sealed class GetPassportParkStatisticsQueryHandler
         ApplicationResult<PassportParkStatisticsResult>>
 {
     private readonly IPassportScopeStatisticsSourceReader sourceReader;
-    private readonly IParkRepository parkRepository;
-    private readonly IParkItemRepository parkItemRepository;
+    private readonly IParkNameReadRepository parkNameReadRepository;
+    private readonly IParkItemNameReadRepository parkItemNameReadRepository;
 
     public GetPassportParkStatisticsQueryHandler(
         IPassportScopeStatisticsSourceReader sourceReader,
-        IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkNameReadRepository parkNameReadRepository,
+        IParkItemNameReadRepository parkItemNameReadRepository)
     {
         this.sourceReader = sourceReader;
-        this.parkRepository = parkRepository;
-        this.parkItemRepository = parkItemRepository;
+        this.parkNameReadRepository = parkNameReadRepository;
+        this.parkItemNameReadRepository = parkItemNameReadRepository;
     }
 
     public async Task<ApplicationResult<PassportParkStatisticsResult>> HandleAsync(
@@ -70,25 +69,21 @@ public sealed class GetPassportParkStatisticsQueryHandler
             || statistics.CurrentGlobalRating.HasValue
             || statistics.CurrentTopItems.Count > 0
             || statistics.HistoricalTopItems.Count > 0;
-        Task<Park?> parkTask = hasPrivateEvidence
-            ? this.parkRepository.GetByIdAsync(parkId, true, cancellationToken)
-            : Task.FromResult<Park?>(null);
-        Task<IReadOnlyCollection<ParkItem>> parkItemsTask = parkItemIds.Length == 0
-            ? Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>())
-            : this.parkItemRepository.GetByIdsAsync(parkItemIds, cancellationToken);
-        await Task.WhenAll(parkTask, parkItemsTask);
-        IReadOnlyDictionary<string, string> parkItemNames = (await parkItemsTask)
-            .Where(static item => !string.IsNullOrWhiteSpace(item.Id)
-                && !string.IsNullOrWhiteSpace(item.Name))
-            .GroupBy(static item => item.Id, StringComparer.Ordinal)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.First().Name,
-                StringComparer.Ordinal);
+        Task<IReadOnlyDictionary<string, string?>> parkNamesTask = hasPrivateEvidence
+            ? this.parkNameReadRepository.GetNamesByIdsAsync(new[] { parkId }, cancellationToken)
+            : Task.FromResult<IReadOnlyDictionary<string, string?>>(
+                new Dictionary<string, string?>(StringComparer.Ordinal));
+        Task<IReadOnlyDictionary<string, string?>> parkItemNamesTask = parkItemIds.Length == 0
+            ? Task.FromResult<IReadOnlyDictionary<string, string?>>(
+                new Dictionary<string, string?>(StringComparer.Ordinal))
+            : this.parkItemNameReadRepository.GetNamesByIdsAsync(parkItemIds, cancellationToken);
+        await Task.WhenAll(parkNamesTask, parkItemNamesTask);
+        IReadOnlyDictionary<string, string?> parkNames = await parkNamesTask;
+        IReadOnlyDictionary<string, string?> parkItemNames = await parkItemNamesTask;
         return ApplicationResult<PassportParkStatisticsResult>.Success(
             PassportStatisticsResultFactory.CreatePark(
                 statistics,
-                (await parkTask)?.Name,
+                parkNames.GetValueOrDefault(parkId),
                 parkItemNames));
     }
 }

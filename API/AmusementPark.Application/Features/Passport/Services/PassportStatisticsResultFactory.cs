@@ -63,7 +63,7 @@ internal static class PassportStatisticsResultFactory
     public static PassportParkStatisticsResult CreatePark(
         PassportParkStatistics statistics,
         string? parkName = null,
-        IReadOnlyDictionary<string, string>? parkItemNames = null)
+        IReadOnlyDictionary<string, string?>? parkItemNames = null)
     {
         ArgumentNullException.ThrowIfNull(statistics);
         return new PassportParkStatisticsResult(
@@ -95,7 +95,7 @@ internal static class PassportStatisticsResultFactory
 
     public static PassportYearStatisticsResult CreateYear(
         PassportYearStatistics statistics,
-        IReadOnlyDictionary<string, string>? parkNames = null)
+        IReadOnlyDictionary<string, string?>? parkNames = null)
     {
         ArgumentNullException.ThrowIfNull(statistics);
         return new PassportYearStatisticsResult(
@@ -109,7 +109,7 @@ internal static class PassportStatisticsResultFactory
     }
 
     private static string? ResolveName(
-        IReadOnlyDictionary<string, string>? names,
+        IReadOnlyDictionary<string, string?>? names,
         string id)
     {
         return names is not null && names.TryGetValue(id, out string? name)

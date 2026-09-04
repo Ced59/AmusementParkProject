@@ -6,7 +6,6 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Identifiers;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
@@ -17,14 +16,14 @@ public sealed class GetPassportYearStatisticsQueryHandler
         ApplicationResult<PassportYearStatisticsResult>>
 {
     private readonly IPassportScopeStatisticsSourceReader sourceReader;
-    private readonly IParkRepository parkRepository;
+    private readonly IParkNameReadRepository parkNameReadRepository;
 
     public GetPassportYearStatisticsQueryHandler(
         IPassportScopeStatisticsSourceReader sourceReader,
-        IParkRepository parkRepository)
+        IParkNameReadRepository parkNameReadRepository)
     {
         this.sourceReader = sourceReader;
-        this.parkRepository = parkRepository;
+        this.parkNameReadRepository = parkNameReadRepository;
     }
 
     public async Task<ApplicationResult<PassportYearStatisticsResult>> HandleAsync(
@@ -63,17 +62,11 @@ public sealed class GetPassportYearStatisticsQueryHandler
             .Select(static item => item.ParkId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        IReadOnlyCollection<Park> parks = parkIds.Length == 0
-            ? Array.Empty<Park>()
-            : await this.parkRepository.GetByIdsAsync(parkIds, cancellationToken);
-        IReadOnlyDictionary<string, string> parkNames = parks
-            .Where(static park => !string.IsNullOrWhiteSpace(park.Id)
-                && !string.IsNullOrWhiteSpace(park.Name))
-            .GroupBy(static park => park.Id, StringComparer.Ordinal)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.First().Name!,
-                StringComparer.Ordinal);
+        IReadOnlyDictionary<string, string?> parkNames = parkIds.Length == 0
+            ? new Dictionary<string, string?>(StringComparer.Ordinal)
+            : await this.parkNameReadRepository.GetNamesByIdsAsync(
+                parkIds,
+                cancellationToken);
         return ApplicationResult<PassportYearStatisticsResult>.Success(
             PassportStatisticsResultFactory.CreateYear(statistics, parkNames));
     }
