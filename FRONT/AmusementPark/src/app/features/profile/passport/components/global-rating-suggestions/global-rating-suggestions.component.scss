@@ -219,6 +219,18 @@
   color: var(--c-rose);
 }
 
+.rating-suggestions__blocking-error {
+  display: grid;
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.rating-suggestions__blocking-error .rating-suggestions__error {
+  margin: 0;
+}
+
 @media (max-width: 1100px) {
   .rating-suggestions__list {
     grid-template-columns: 1fr;
@@ -247,6 +259,10 @@
 
   .rating-suggestion__actions > * {
     flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .rating-suggestions__blocking-error button {
     width: 100%;
   }
 }

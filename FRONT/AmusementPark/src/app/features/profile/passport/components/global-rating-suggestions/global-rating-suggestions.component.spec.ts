@@ -30,6 +30,7 @@ describe('GlobalRatingSuggestionsComponent', () => {
       error: signal(true),
       blockingError: signal(true),
       load: vi.fn(),
+      retry: vi.fn(),
       changeLanguage: vi.fn(),
       setEnabled: vi.fn(),
       dismiss: vi.fn(),
@@ -55,6 +56,11 @@ describe('GlobalRatingSuggestionsComponent', () => {
 
     expect(fixture.nativeElement.querySelector('.rating-suggestions')).not.toBeNull();
     expect(fixture.nativeElement.querySelector('[role="alert"]')).not.toBeNull();
+    const retryButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.rating-suggestions__blocking-error button'
+    );
+    retryButton.click();
+    expect(fakeFacade.retry).toHaveBeenCalledTimes(1);
     expect(fixture.nativeElement.querySelector('.rating-suggestions__empty')).toBeNull();
     expect(fixture.nativeElement.querySelector('.rating-suggestions__footer')).toBeNull();
   });
@@ -75,6 +81,7 @@ describe('GlobalRatingSuggestionsComponent', () => {
       error: signal(true),
       blockingError: signal(false),
       load: vi.fn(),
+      retry: vi.fn(),
       changeLanguage: vi.fn(),
       setEnabled: vi.fn(),
       dismiss: vi.fn(),
