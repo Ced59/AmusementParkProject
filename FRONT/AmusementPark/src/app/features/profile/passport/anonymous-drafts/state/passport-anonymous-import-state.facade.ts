@@ -328,7 +328,10 @@ export class PassportAnonymousImportStateFacade {
         target.id,
         preview.decision
       );
-      await this.store.delete(persistedDraft.id);
+      const localAcknowledged: boolean = await this.store.deleteIfUnchanged(persistedDraft);
+      if (!localAcknowledged) {
+        throw new Error('passport-anonymous-import.local-ack-mismatch');
+      }
       return this.reportItem(
         preview,
         preview.decision.choice === 'Separate' ? 'Imported' : 'Merged',
@@ -376,7 +379,11 @@ export class PassportAnonymousImportStateFacade {
       },
       updatedAtUtc: new Date().toISOString()
     };
-    await this.store.save(lockedDraft);
+    const claimed: boolean = await this.store.compareAndSet(preview.draft, lockedDraft);
+    if (!claimed) {
+      throw new Error('passport-anonymous-import.intent-already-claimed');
+    }
+
     this.updatePreviewDraft(lockedDraft);
     return lockedDraft;
   }
@@ -404,7 +411,11 @@ export class PassportAnonymousImportStateFacade {
       pendingImport: { ...pendingImport, targetVisitId: normalizedTargetVisitId },
       updatedAtUtc: new Date().toISOString()
     };
-    await this.store.save(lockedDraft);
+    const advanced: boolean = await this.store.compareAndSet(draft, lockedDraft);
+    if (!advanced) {
+      throw new Error('passport-anonymous-import.target-lock-conflict');
+    }
+
     this.updatePreviewDraft(lockedDraft);
     return lockedDraft;
   }

@@ -8,6 +8,11 @@ export interface PassportAnonymousDraftStorePort {
   list(): Promise<PassportAnonymousDraft[]>;
   get(draftId: string): Promise<PassportAnonymousDraft | null>;
   save(draft: PassportAnonymousDraft): Promise<void>;
+  compareAndSet(
+    expectedDraft: PassportAnonymousDraft,
+    updatedDraft: PassportAnonymousDraft
+  ): Promise<boolean>;
+  deleteIfUnchanged(expectedDraft: PassportAnonymousDraft): Promise<boolean>;
   delete(draftId: string): Promise<void>;
   clear(): Promise<void>;
 }

@@ -336,7 +336,8 @@
         "load": "Impossible de lire les visites gardées sur cet appareil.",
         "delete": "Impossible de supprimer cette visite locale.",
         "clear": "Impossible d’effacer les visites locales.",
-        "export": "Impossible de préparer la copie locale."
+        "export": "Impossible de préparer la copie locale.",
+        "importLocked": "Cette visite est en cours d’import. Termine ou reprends l’import depuis ton passeport avant de la modifier ou de la supprimer."
       },
       "loading": {
         "title": "Lecture de tes visites locales",
@@ -349,7 +350,8 @@
       "list": {
         "kicker": "Brouillon privé",
         "title": "Brouillons à reprendre",
-        "rideCount": "{{count}} passages"
+        "rideCount": "{{count}} passages",
+        "importLocked": "Import à reprendre"
       },
       "clearDialog": {
         "title": "Effacer toutes les visites locales ?",
@@ -415,6 +417,7 @@
         "kicker": "Brouillon sur cet appareil",
         "rideCount": "{{count}} passages",
         "localOnly": "Tes modifications restent dans ce navigateur et ne sont envoyées à aucun serveur.",
+        "importLocked": "L’import de cette visite a commencé. Le brouillon est protégé contre toute modification ou suppression jusqu’à la fin de la reprise.",
         "actions": {
           "back": "Retour aux visites locales",
           "delete": "Supprimer la visite",
@@ -453,7 +456,8 @@
           "invalidRide": "Vérifie les informations du passage et la limite de 2 000 passages par brouillon.",
           "attractions": "Impossible de charger les attractions du parc.",
           "save": "Impossible d’enregistrer la modification sur cet appareil.",
-          "delete": "Impossible de supprimer cette visite locale."
+          "delete": "Impossible de supprimer cette visite locale.",
+          "importLocked": "Cette visite est protégée pendant son import. Reprends l’import depuis ton passeport."
         },
         "deleteDialog": {
           "title": "Supprimer cette visite locale ?",

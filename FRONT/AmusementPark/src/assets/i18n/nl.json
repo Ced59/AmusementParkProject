@@ -336,7 +336,8 @@
         "load": "De bezoeken op dit apparaat konden niet worden gelezen.",
         "delete": "Dit lokale bezoek kon niet worden verwijderd.",
         "clear": "De lokale bezoeken konden niet worden gewist.",
-        "export": "De lokale kopie kon niet worden voorbereid."
+        "export": "De lokale kopie kon niet worden voorbereid.",
+        "importLocked": "Dit bezoek wordt geïmporteerd. Voltooi of hervat de import vanuit je paspoort voordat je het wijzigt of verwijdert."
       },
       "loading": {
         "title": "Je lokale bezoeken worden gelezen",
@@ -349,7 +350,8 @@
       "list": {
         "kicker": "Privéconcept",
         "title": "Concepten om voort te zetten",
-        "rideCount": "{{count}} ritten"
+        "rideCount": "{{count}} ritten",
+        "importLocked": "Import hervatten"
       },
       "clearDialog": {
         "title": "Alle lokale bezoeken wissen?",
@@ -415,6 +417,7 @@
         "kicker": "Concept op dit apparaat",
         "rideCount": "{{count}} ritten",
         "localOnly": "Je wijzigingen blijven in deze browser en worden niet naar een server verstuurd.",
+        "importLocked": "De import van dit bezoek is gestart. Het concept is beschermd tegen wijzigingen of verwijdering totdat het herstel is voltooid.",
         "actions": {
           "back": "Terug naar lokale bezoeken",
           "delete": "Bezoek verwijderen",
@@ -453,7 +456,8 @@
           "invalidRide": "Controleer de ritgegevens en de limiet van 2.000 ritten per concept.",
           "attractions": "De attracties van het park konden niet worden geladen.",
           "save": "De wijziging kon niet op dit apparaat worden opgeslagen.",
-          "delete": "Dit lokale bezoek kon niet worden verwijderd."
+          "delete": "Dit lokale bezoek kon niet worden verwijderd.",
+          "importLocked": "Dit bezoek is beschermd tijdens de import. Hervat de import vanuit je paspoort."
         },
         "deleteDialog": {
           "title": "Dit lokale bezoek verwijderen?",

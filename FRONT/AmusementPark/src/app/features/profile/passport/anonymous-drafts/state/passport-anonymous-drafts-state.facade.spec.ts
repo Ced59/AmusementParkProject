@@ -42,6 +42,30 @@ describe('PassportAnonymousDraftsStateFacade', () => {
     expect(store.list).not.toHaveBeenCalled();
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.errors.storageUnavailable');
   });
+
+  it('protects a draft with an unfinished import from deletion and bulk clearing', async () => {
+    const draft: PassportAnonymousDraft = {
+      ...createDraft(),
+      pendingImport: {
+        choice: 'Separate',
+        targetVisitId: 'server-1',
+        metadataChoice: 'KeepServer',
+        startedAtUtc: '2026-09-04T11:00:00.000Z'
+      }
+    };
+    const store: PassportAnonymousDraftStorePort = createStore([draft]);
+    const facade: PassportAnonymousDraftsStateFacade = new PassportAnonymousDraftsStateFacade(store, document);
+    await facade.load();
+
+    await facade.delete(draft.id);
+    await facade.clear();
+
+    expect(store.delete).not.toHaveBeenCalled();
+    expect(store.clear).not.toHaveBeenCalled();
+    expect(facade.hasLockedDrafts()).toBe(true);
+    expect(facade.drafts()).toEqual([draft]);
+    expect(facade.errorKey()).toBe('passport.anonymousDrafts.errors.importLocked');
+  });
 });
 
 function createStore(drafts: PassportAnonymousDraft[]): PassportAnonymousDraftStorePort {
@@ -50,6 +74,8 @@ function createStore(drafts: PassportAnonymousDraft[]): PassportAnonymousDraftSt
     list: vi.fn(async (): Promise<PassportAnonymousDraft[]> => drafts),
     get: vi.fn(async (): Promise<PassportAnonymousDraft | null> => null),
     save: vi.fn(async (): Promise<void> => undefined),
+    compareAndSet: vi.fn(async (): Promise<boolean> => true),
+    deleteIfUnchanged: vi.fn(async (): Promise<boolean> => true),
     delete: vi.fn(async (): Promise<void> => undefined),
     clear: vi.fn(async (): Promise<void> => undefined)
   };

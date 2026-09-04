@@ -224,7 +224,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       ]
     };
     const deleteDraft = vi.fn(async (): Promise<void> => undefined);
-    const saveDraft = vi.fn(async (): Promise<void> => undefined);
+    const compareAndSetDraft = vi.fn(async (): Promise<boolean> => true);
     const createVisitRequest = vi.fn(() => of(createVisit({ id: 'server-1' })));
     let importAttempt: number = 0;
     const importBatch = vi.fn((
@@ -245,7 +245,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       });
     });
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
-      createStore([draft], deleteDraft, saveDraft),
+      createStore([draft], deleteDraft, compareAndSetDraft),
       createVisitsPort({ createVisit: createVisitRequest }),
       createOccurrencesPort({ importBatch })
     );
@@ -268,7 +268,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(importBatch).toHaveBeenCalledTimes(4);
     expect(importBatch.mock.calls[0][2]).toBe(importBatch.mock.calls[2][2]);
     expect(importBatch.mock.calls[1][2]).toBe(importBatch.mock.calls[3][2]);
-    expect(saveDraft).toHaveBeenCalled();
+    expect(compareAndSetDraft).toHaveBeenCalledTimes(2);
     expect(deleteDraft).toHaveBeenCalledWith(draft.id);
     expect(facade.report()).toMatchObject({ importedVisitCount: 1, failedCount: 0 });
     expect(facade.previews()).toEqual([]);
@@ -316,18 +316,48 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(createVisitRequest).not.toHaveBeenCalled();
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.import.errors.consent');
   });
+
+  it('aborts before any server mutation when another tab atomically claims the draft', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const compareAndSet = vi.fn(async (): Promise<boolean> => false);
+    const createVisitRequest = vi.fn(() => of(createVisit()));
+    const importBatch = vi.fn();
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({ createVisit: createVisitRequest }),
+      createOccurrencesPort({ importBatch })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+
+    expect(compareAndSet).toHaveBeenCalledTimes(1);
+    expect(createVisitRequest).not.toHaveBeenCalled();
+    expect(importBatch).not.toHaveBeenCalled();
+    expect(facade.report()).toMatchObject({ failedCount: 1 });
+    expect(facade.previews()).toHaveLength(1);
+  });
 });
 
 function createStore(
   drafts: PassportAnonymousDraft[],
   deleteDraft: (draftId: string) => Promise<void> = async (): Promise<void> => undefined,
-  saveDraft: (draft: PassportAnonymousDraft) => Promise<void> = async (): Promise<void> => undefined
+  compareAndSetDraft: (
+    expectedDraft: PassportAnonymousDraft,
+    updatedDraft: PassportAnonymousDraft
+  ) => Promise<boolean> = async (): Promise<boolean> => true
 ): PassportAnonymousDraftStorePort {
   return {
     isAvailable: (): boolean => true,
     list: async (): Promise<PassportAnonymousDraft[]> => drafts,
     get: async (): Promise<PassportAnonymousDraft | null> => drafts[0] ?? null,
-    save: saveDraft,
+    save: async (): Promise<void> => undefined,
+    compareAndSet: compareAndSetDraft,
+    deleteIfUnchanged: async (draft: PassportAnonymousDraft): Promise<boolean> => {
+      await deleteDraft(draft.id);
+      return true;
+    },
     delete: deleteDraft,
     clear: async (): Promise<void> => undefined
   };

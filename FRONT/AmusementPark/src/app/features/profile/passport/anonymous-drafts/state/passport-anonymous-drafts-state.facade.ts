@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, Signal, signal } from '@angular/core';
+import { Inject, Injectable, Signal, computed, signal } from '@angular/core';
 
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import {
@@ -18,6 +18,8 @@ export class PassportAnonymousDraftsStateFacade {
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   readonly mutating: Signal<boolean> = this.mutatingSignal.asReadonly();
   readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
+  readonly hasLockedDrafts: Signal<boolean> = computed((): boolean =>
+    this.draftsSignal().some((draft: PassportAnonymousDraft): boolean => !!draft.pendingImport));
 
   constructor(
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT)
@@ -48,6 +50,14 @@ export class PassportAnonymousDraftsStateFacade {
       return;
     }
 
+    const draft: PassportAnonymousDraft | undefined = this.draftsSignal().find(
+      (candidate: PassportAnonymousDraft): boolean => candidate.id === draftId
+    );
+    if (draft?.pendingImport) {
+      this.errorKeySignal.set('passport.anonymousDrafts.errors.importLocked');
+      return;
+    }
+
     this.mutatingSignal.set(true);
     this.errorKeySignal.set(null);
     try {
@@ -62,7 +72,10 @@ export class PassportAnonymousDraftsStateFacade {
   }
 
   async clear(): Promise<void> {
-    if (this.mutatingSignal()) {
+    if (this.mutatingSignal() || this.hasLockedDrafts()) {
+      if (this.hasLockedDrafts()) {
+        this.errorKeySignal.set('passport.anonymousDrafts.errors.importLocked');
+      }
       return;
     }
 

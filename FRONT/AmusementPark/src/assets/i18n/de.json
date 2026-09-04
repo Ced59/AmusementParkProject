@@ -336,7 +336,8 @@
         "load": "Die auf diesem Gerät gespeicherten Besuche konnten nicht gelesen werden.",
         "delete": "Dieser lokale Besuch konnte nicht gelöscht werden.",
         "clear": "Die lokalen Besuche konnten nicht gelöscht werden.",
-        "export": "Die lokale Kopie konnte nicht erstellt werden."
+        "export": "Die lokale Kopie konnte nicht erstellt werden.",
+        "importLocked": "Dieser Besuch wird importiert. Schließe den Import in deinem Pass ab oder setze ihn dort fort, bevor du ihn änderst oder löschst."
       },
       "loading": {
         "title": "Lokale Besuche werden gelesen",
@@ -349,7 +350,8 @@
       "list": {
         "kicker": "Privater Entwurf",
         "title": "Entwürfe zum Fortsetzen",
-        "rideCount": "{{count}} Fahrten"
+        "rideCount": "{{count}} Fahrten",
+        "importLocked": "Import fortsetzen"
       },
       "clearDialog": {
         "title": "Alle lokalen Besuche löschen?",
@@ -415,6 +417,7 @@
         "kicker": "Entwurf auf diesem Gerät",
         "rideCount": "{{count}} Fahrten",
         "localOnly": "Deine Änderungen bleiben in diesem Browser und werden an keinen Server gesendet.",
+        "importLocked": "Der Import dieses Besuchs wurde gestartet. Der Entwurf ist bis zum Abschluss vor Änderungen und Löschen geschützt.",
         "actions": {
           "back": "Zurück zu lokalen Besuchen",
           "delete": "Besuch löschen",
@@ -453,7 +456,8 @@
           "invalidRide": "Prüfe die Angaben und die Grenze von 2.000 Fahrten pro Entwurf.",
           "attractions": "Die Attraktionen des Parks konnten nicht geladen werden.",
           "save": "Die Änderung konnte auf diesem Gerät nicht gespeichert werden.",
-          "delete": "Dieser lokale Besuch konnte nicht gelöscht werden."
+          "delete": "Dieser lokale Besuch konnte nicht gelöscht werden.",
+          "importLocked": "Dieser Besuch ist während des Imports geschützt. Setze den Import in deinem Pass fort."
         },
         "deleteDialog": {
           "title": "Diesen lokalen Besuch löschen?",

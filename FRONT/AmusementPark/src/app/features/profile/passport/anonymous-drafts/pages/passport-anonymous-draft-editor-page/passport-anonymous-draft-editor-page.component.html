@@ -31,7 +31,7 @@
           <i class="pi pi-arrow-left" aria-hidden="true"></i>
           <span>{{ 'passport.anonymousDrafts.editor.actions.back' | translate }}</span>
         </button>
-        <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="deleteConfirmationVisible.set(true)">
+        <button appUiButton="ghost" type="button" [disabled]="facade.saving() || facade.isImportLocked()" (click)="deleteConfirmationVisible.set(true)">
           <i class="pi pi-trash" aria-hidden="true"></i>
           <span>{{ 'passport.anonymousDrafts.editor.actions.delete' | translate }}</span>
         </button>
@@ -40,7 +40,7 @@
 
     <aside class="anonymous-editor__warning" appUiSurface="panel" appUiSurfacePadding="compact">
       <i class="pi pi-lock" aria-hidden="true"></i>
-      <p>{{ 'passport.anonymousDrafts.editor.localOnly' | translate }}</p>
+      <p>{{ (facade.isImportLocked() ? 'passport.anonymousDrafts.editor.importLocked' : 'passport.anonymousDrafts.editor.localOnly') | translate }}</p>
     </aside>
 
     @if (facade.errorKey()) {
@@ -48,6 +48,7 @@
     }
 
     <section class="anonymous-editor__workspace">
+      @if (!facade.isImportLocked()) {
       <section class="anonymous-editor__add" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="anonymous-attractions-title">
         <div class="anonymous-editor__section-heading">
           <app-ui-kicker tone="sky" iconClass="pi pi-plus">
@@ -146,6 +147,7 @@
           </form>
         }
       </section>
+      }
 
       <section class="anonymous-editor__timeline" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="anonymous-rides-title">
         <div class="anonymous-editor__section-heading">
@@ -172,13 +174,13 @@
                   }
                 </div>
                 <div class="anonymous-ride__actions">
-                  <button type="button" [disabled]="first || facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveUp' | translate" (click)="facade.moveRide(ride.id, -1)">
+                  <button type="button" [disabled]="first || facade.saving() || facade.isImportLocked()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveUp' | translate" (click)="facade.moveRide(ride.id, -1)">
                     <i class="pi pi-arrow-up" aria-hidden="true"></i>
                   </button>
-                  <button type="button" [disabled]="last || facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveDown' | translate" (click)="facade.moveRide(ride.id, 1)">
+                  <button type="button" [disabled]="last || facade.saving() || facade.isImportLocked()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.moveDown' | translate" (click)="facade.moveRide(ride.id, 1)">
                     <i class="pi pi-arrow-down" aria-hidden="true"></i>
                   </button>
-                  <button type="button" [disabled]="facade.saving()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.remove' | translate" (click)="facade.removeRide(ride.id)">
+                  <button type="button" [disabled]="facade.saving() || facade.isImportLocked()" [attr.aria-label]="'passport.anonymousDrafts.editor.timeline.remove' | translate" (click)="facade.removeRide(ride.id)">
                     <i class="pi pi-trash" aria-hidden="true"></i>
                   </button>
                 </div>

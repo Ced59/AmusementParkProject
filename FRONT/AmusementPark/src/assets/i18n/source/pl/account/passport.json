@@ -148,7 +148,8 @@
         "load": "Nie udało się odczytać wizyt zapisanych na tym urządzeniu.",
         "delete": "Nie udało się usunąć tej lokalnej wizyty.",
         "clear": "Nie udało się usunąć lokalnych wizyt.",
-        "export": "Nie udało się przygotować lokalnej kopii."
+        "export": "Nie udało się przygotować lokalnej kopii.",
+        "importLocked": "Ta wizyta jest importowana. Zakończ lub wznów import w paszporcie, zanim ją zmienisz albo usuniesz."
       },
       "loading": {
         "title": "Odczytywanie lokalnych wizyt",
@@ -161,7 +162,8 @@
       "list": {
         "kicker": "Prywatny szkic",
         "title": "Szkice do kontynuowania",
-        "rideCount": "Liczba przejazdów: {{count}}"
+        "rideCount": "Liczba przejazdów: {{count}}",
+        "importLocked": "Import do wznowienia"
       },
       "clearDialog": {
         "title": "Usunąć wszystkie lokalne wizyty?",
@@ -227,6 +229,7 @@
         "kicker": "Szkic na tym urządzeniu",
         "rideCount": "Liczba przejazdów: {{count}}",
         "localOnly": "Twoje zmiany pozostają w tej przeglądarce i nie są wysyłane na żaden serwer.",
+        "importLocked": "Import tej wizyty został rozpoczęty. Szkic jest chroniony przed zmianą i usunięciem do czasu zakończenia odzyskiwania.",
         "actions": {
           "back": "Wróć do lokalnych wizyt",
           "delete": "Usuń wizytę",
@@ -265,7 +268,8 @@
           "invalidRide": "Sprawdź dane i limit 2000 przejazdów na szkic.",
           "attractions": "Nie udało się wczytać atrakcji parku.",
           "save": "Nie udało się zapisać zmiany na tym urządzeniu.",
-          "delete": "Nie udało się usunąć lokalnej wizyty."
+          "delete": "Nie udało się usunąć lokalnej wizyty.",
+          "importLocked": "Ta wizyta jest chroniona podczas importu. Wznów import w paszporcie."
         },
         "deleteDialog": {
           "title": "Usunąć tę lokalną wizytę?",

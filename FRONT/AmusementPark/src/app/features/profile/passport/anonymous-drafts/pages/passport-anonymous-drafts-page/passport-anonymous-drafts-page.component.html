@@ -55,7 +55,7 @@
           </app-ui-kicker>
           <h2 id="local-passport-list-title">{{ 'passport.anonymousDrafts.list.title' | translate }}</h2>
         </div>
-        <button appUiButton="ghost" type="button" [disabled]="facade.mutating()" (click)="clearConfirmationVisible.set(true)">
+        <button appUiButton="ghost" type="button" [disabled]="facade.mutating() || facade.hasLockedDrafts()" (click)="clearConfirmationVisible.set(true)">
           <i class="pi pi-trash" aria-hidden="true"></i>
           <span>{{ 'passport.anonymousDrafts.actions.clear' | translate }}</span>
         </button>
@@ -76,12 +76,15 @@
                 <i class="pi pi-list" aria-hidden="true"></i>
                 {{ 'passport.anonymousDrafts.list.rideCount' | translate:{ count: facade.rideCount(draft) } }}
               </small>
+              @if (draft.pendingImport) {
+                <small><i class="pi pi-lock" aria-hidden="true"></i> {{ 'passport.anonymousDrafts.list.importLocked' | translate }}</small>
+              }
             </div>
             <div class="anonymous-draft-card__actions">
               <button appUiButton="primary" type="button" (click)="openDraft(draft.id)">
                 {{ 'passport.anonymousDrafts.actions.continue' | translate }}
               </button>
-              <button appUiButton="ghost" type="button" [disabled]="facade.mutating()" (click)="draftPendingDeletion.set(draft.id)">
+              <button appUiButton="ghost" type="button" [disabled]="facade.mutating() || !!draft.pendingImport" (click)="draftPendingDeletion.set(draft.id)">
                 {{ 'passport.anonymousDrafts.actions.deleteOne' | translate }}
               </button>
             </div>

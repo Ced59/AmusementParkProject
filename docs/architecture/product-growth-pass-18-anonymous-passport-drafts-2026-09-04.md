@@ -17,6 +17,7 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 7. L’import utilise les identifiants d’opération stables du brouillon. Les passages importés portent la source métier `Import`.
 8. Le brouillon local n’est supprimé qu’après vérification des accusés de réception de la visite et de tous ses passages. Un échec ou une réponse ambiguë conserve le brouillon pour une reprise idempotente.
 9. Dès la première mutation serveur, le brouillon mémorise la stratégie et la cible choisies. Une reprise reste verrouillée sur cette cible et réutilise les mêmes opérations de lot.
+10. Cette réservation est atomique dans IndexedDB : si deux onglets tentent le même import, un seul peut choisir la stratégie et l’autre s’arrête avant toute mutation serveur.
 
 ## Frontières d’architecture
 
@@ -40,6 +41,7 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 - La note privée complète et les passages du brouillon cible doivent être chargés avant que la fusion soit activée.
 - Une heure locale n’est conservée que pour une visite au jour exact disposant d’un fuseau horaire ; elle est normalisée au format API avant import.
 - Les lots de passages sont bornés à 100 et possèdent chacun une clé idempotente stable.
+- Dès qu’un import est réservé, les modifications, suppressions unitaires et purge globale sont bloquées jusque dans la transaction IndexedDB ; le brouillon reste exportable et récupérable.
 
 ## Responsive
 
@@ -55,6 +57,8 @@ Les largeurs de validation visuelle sont 320, 360, 390 et 768 pixels.
 - reprise d’une mise à jour ambiguë avant import des passages ;
 - conservation locale si un accusé serveur est incohérent ;
 - verrouillage d’une reprise partielle sur la visite et les clés de lot originales ;
+- exclusion atomique d’un second import concurrent avant toute mutation serveur ;
+- gel des modifications et suppressions d’un brouillon dont l’import doit être repris ;
 - refus d’une divergence sur le caractère approximatif de la date ;
 - chargement de la note privée complète avant fusion ;
 - source `Import` imposée par le contrôleur et propagée jusqu’au domaine ;

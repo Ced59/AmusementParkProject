@@ -45,25 +45,185 @@ export class IndexedDbPassportAnonymousDraftStoreService implements PassportAnon
       throw new Error('passport-anonymous-draft.invalid-schema');
     }
 
-    await this.execute<IDBValidKey>(
-      'readwrite',
-      (store: IDBObjectStore): IDBRequest<IDBValidKey> => store.put(draft)
-    );
+    await this.writeUnlockedDraft(draft);
+  }
+
+  async compareAndSet(
+    expectedDraft: PassportAnonymousDraft,
+    updatedDraft: PassportAnonymousDraft
+  ): Promise<boolean> {
+    if (!isSupportedPassportAnonymousDraft(expectedDraft)
+      || !isSupportedPassportAnonymousDraft(updatedDraft)
+      || expectedDraft.id !== updatedDraft.id) {
+      throw new Error('passport-anonymous-draft.invalid-comparison');
+    }
+
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<boolean>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+        'readwrite'
+      );
+      const store: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const readRequest: IDBRequest<PassportAnonymousDraft | undefined> = store.get(expectedDraft.id);
+      let matches: boolean = false;
+      readRequest.onsuccess = (): void => {
+        const currentDraft: PassportAnonymousDraft | undefined = readRequest.result;
+        matches = !!currentDraft
+          && isSupportedPassportAnonymousDraft(currentDraft)
+          && this.draftsAreEqual(currentDraft, expectedDraft);
+        if (matches) {
+          store.put(updatedDraft);
+        }
+      };
+      readRequest.onerror = (): void => reject(readRequest.error ?? new Error(
+        'passport-anonymous-draft.request-failed'
+      ));
+      transaction.oncomplete = (): void => resolve(matches);
+      transaction.onerror = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-failed'
+      ));
+      transaction.onabort = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-aborted'
+      ));
+    });
   }
 
   async delete(draftId: string): Promise<void> {
     const normalizedDraftId: string = this.requireIdentifier(draftId);
-    await this.execute<undefined>(
-      'readwrite',
-      (store: IDBObjectStore): IDBRequest<undefined> => store.delete(normalizedDraftId)
-    );
+    await this.deleteUnlockedDraft(normalizedDraftId);
+  }
+
+  async deleteIfUnchanged(expectedDraft: PassportAnonymousDraft): Promise<boolean> {
+    if (!isSupportedPassportAnonymousDraft(expectedDraft)) {
+      throw new Error('passport-anonymous-draft.invalid-comparison');
+    }
+
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<boolean>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+        'readwrite'
+      );
+      const store: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const readRequest: IDBRequest<PassportAnonymousDraft | undefined> = store.get(expectedDraft.id);
+      let canDelete: boolean = false;
+      readRequest.onsuccess = (): void => {
+        const currentDraft: PassportAnonymousDraft | undefined = readRequest.result;
+        canDelete = !currentDraft
+          || (isSupportedPassportAnonymousDraft(currentDraft)
+            && this.draftsAreEqual(currentDraft, expectedDraft));
+        if (currentDraft && canDelete) {
+          store.delete(expectedDraft.id);
+        }
+      };
+      readRequest.onerror = (): void => reject(readRequest.error ?? new Error(
+        'passport-anonymous-draft.request-failed'
+      ));
+      transaction.oncomplete = (): void => resolve(canDelete);
+      transaction.onerror = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-failed'
+      ));
+      transaction.onabort = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-aborted'
+      ));
+    });
   }
 
   async clear(): Promise<void> {
-    await this.execute<undefined>(
-      'readwrite',
-      (store: IDBObjectStore): IDBRequest<undefined> => store.clear()
-    );
+    await this.clearUnlockedDrafts();
+  }
+
+  private async writeUnlockedDraft(draft: PassportAnonymousDraft): Promise<void> {
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<void>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+        'readwrite'
+      );
+      const store: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const readRequest: IDBRequest<PassportAnonymousDraft | undefined> = store.get(draft.id);
+      readRequest.onsuccess = (): void => {
+        const currentDraft: PassportAnonymousDraft | undefined = readRequest.result;
+        if (currentDraft?.pendingImport) {
+          transaction.abort();
+          return;
+        }
+
+        store.put(draft);
+      };
+      this.resolveProtectedTransaction(transaction, resolve, reject);
+    });
+  }
+
+  private async deleteUnlockedDraft(draftId: string): Promise<void> {
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<void>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+        'readwrite'
+      );
+      const store: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const readRequest: IDBRequest<PassportAnonymousDraft | undefined> = store.get(draftId);
+      readRequest.onsuccess = (): void => {
+        if (readRequest.result?.pendingImport) {
+          transaction.abort();
+          return;
+        }
+
+        store.delete(draftId);
+      };
+      this.resolveProtectedTransaction(transaction, resolve, reject);
+    });
+  }
+
+  private async clearUnlockedDrafts(): Promise<void> {
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<void>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+        'readwrite'
+      );
+      const store: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const readRequest: IDBRequest<PassportAnonymousDraft[]> = store.getAll();
+      readRequest.onsuccess = (): void => {
+        if (readRequest.result.some((draft: PassportAnonymousDraft): boolean => !!draft.pendingImport)) {
+          transaction.abort();
+          return;
+        }
+
+        store.clear();
+      };
+      this.resolveProtectedTransaction(transaction, resolve, reject);
+    });
+  }
+
+  private resolveProtectedTransaction(
+    transaction: IDBTransaction,
+    resolve: () => void,
+    reject: (reason?: unknown) => void
+  ): void {
+    transaction.oncomplete = (): void => resolve();
+    transaction.onerror = (): void => reject(transaction.error ?? new Error(
+      'passport-anonymous-draft.transaction-failed'
+    ));
+    transaction.onabort = (): void => reject(new Error(
+      'passport-anonymous-draft.import-locked'
+    ));
+  }
+
+  private draftsAreEqual(left: PassportAnonymousDraft, right: PassportAnonymousDraft): boolean {
+    return JSON.stringify(left) === JSON.stringify(right);
   }
 
   private async execute<TResult>(

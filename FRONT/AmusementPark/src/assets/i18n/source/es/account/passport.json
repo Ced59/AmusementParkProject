@@ -148,7 +148,8 @@
         "load": "No se han podido leer las visitas guardadas en este dispositivo.",
         "delete": "No se ha podido eliminar esta visita local.",
         "clear": "No se han podido borrar las visitas locales.",
-        "export": "No se ha podido preparar la copia local."
+        "export": "No se ha podido preparar la copia local.",
+        "importLocked": "Esta visita se está importando. Termina o reanuda la importación desde tu pasaporte antes de modificarla o eliminarla."
       },
       "loading": {
         "title": "Leyendo tus visitas locales",
@@ -161,7 +162,8 @@
       "list": {
         "kicker": "Borrador privado",
         "title": "Borradores por continuar",
-        "rideCount": "{{count}} recorridos"
+        "rideCount": "{{count}} recorridos",
+        "importLocked": "Importación pendiente"
       },
       "clearDialog": {
         "title": "¿Borrar todas las visitas locales?",
@@ -227,6 +229,7 @@
         "kicker": "Borrador en este dispositivo",
         "rideCount": "{{count}} recorridos",
         "localOnly": "Tus cambios permanecen en este navegador y no se envían a ningún servidor.",
+        "importLocked": "La importación de esta visita ha comenzado. El borrador está protegido frente a cambios o eliminación hasta completar la reanudación.",
         "actions": {
           "back": "Volver a las visitas locales",
           "delete": "Eliminar visita",
@@ -265,7 +268,8 @@
           "invalidRide": "Comprueba los datos y el límite de 2.000 recorridos por borrador.",
           "attractions": "No se han podido cargar las atracciones del parque.",
           "save": "No se ha podido guardar el cambio en este dispositivo.",
-          "delete": "No se ha podido eliminar esta visita local."
+          "delete": "No se ha podido eliminar esta visita local.",
+          "importLocked": "Esta visita está protegida durante la importación. Reanúdala desde tu pasaporte."
         },
         "deleteDialog": {
           "title": "¿Eliminar esta visita local?",

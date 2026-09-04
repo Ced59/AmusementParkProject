@@ -47,6 +47,8 @@ export class PassportAnonymousDraftEditorStateFacade {
   readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
   readonly hasMoreAttractions: Signal<boolean> = this.hasMoreAttractionsSignal.asReadonly();
+  readonly isImportLocked: Signal<boolean> = computed((): boolean =>
+    !!this.draftSignal()?.pendingImport);
   readonly acceptsLocalTime: Signal<boolean> = computed((): boolean => {
     const draft: PassportAnonymousDraft | null = this.draftSignal();
     return draft?.visit.date.precision === 'Day' && !!draft.visit.timeZoneId?.trim();
@@ -72,7 +74,9 @@ export class PassportAnonymousDraftEditorStateFacade {
         return;
       }
 
-      this.loadAttractions(1, false);
+      if (!draft.pendingImport) {
+        this.loadAttractions(1, false);
+      }
     } catch {
       this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.load');
     } finally {
@@ -81,12 +85,18 @@ export class PassportAnonymousDraftEditorStateFacade {
   }
 
   searchAttractions(search: string): void {
+    if (this.isImportLocked()) {
+      return;
+    }
+
     this.attractionSearch = search.trim();
     this.loadAttractions(1, false);
   }
 
   loadMoreAttractions(): void {
-    if (!this.hasMoreAttractionsSignal() || this.attractionsLoadingSignal()) {
+    if (this.isImportLocked()
+      || !this.hasMoreAttractionsSignal()
+      || this.attractionsLoadingSignal()) {
       return;
     }
 
@@ -95,7 +105,10 @@ export class PassportAnonymousDraftEditorStateFacade {
 
   async addRide(selection: PassportAttractionSelectionDraft): Promise<boolean> {
     const draft: PassportAnonymousDraft | null = this.draftSignal();
-    if (!draft || this.savingSignal()) {
+    if (!draft || draft.pendingImport || this.savingSignal()) {
+      if (draft?.pendingImport) {
+        this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.importLocked');
+      }
       return false;
     }
 
@@ -141,7 +154,10 @@ export class PassportAnonymousDraftEditorStateFacade {
 
   removeRide(rideId: string): void {
     const draft: PassportAnonymousDraft | null = this.draftSignal();
-    if (!draft || this.savingSignal()) {
+    if (!draft || draft.pendingImport || this.savingSignal()) {
+      if (draft?.pendingImport) {
+        this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.importLocked');
+      }
       return;
     }
 
@@ -155,7 +171,10 @@ export class PassportAnonymousDraftEditorStateFacade {
 
   moveRide(rideId: string, direction: -1 | 1): void {
     const draft: PassportAnonymousDraft | null = this.draftSignal();
-    if (!draft || this.savingSignal()) {
+    if (!draft || draft.pendingImport || this.savingSignal()) {
+      if (draft?.pendingImport) {
+        this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.importLocked');
+      }
       return;
     }
 
@@ -178,8 +197,12 @@ export class PassportAnonymousDraftEditorStateFacade {
   }
 
   async deleteDraft(): Promise<boolean> {
-    const draftId: string = this.draftSignal()?.id ?? '';
-    if (!draftId || this.savingSignal()) {
+    const draft: PassportAnonymousDraft | null = this.draftSignal();
+    const draftId: string = draft?.id ?? '';
+    if (!draftId || draft?.pendingImport || this.savingSignal()) {
+      if (draft?.pendingImport) {
+        this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.importLocked');
+      }
       return false;
     }
 

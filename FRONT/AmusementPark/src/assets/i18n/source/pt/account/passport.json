@@ -148,7 +148,8 @@
         "load": "Não foi possível ler as visitas guardadas neste dispositivo.",
         "delete": "Não foi possível eliminar esta visita local.",
         "clear": "Não foi possível apagar as visitas locais.",
-        "export": "Não foi possível preparar a cópia local."
+        "export": "Não foi possível preparar a cópia local.",
+        "importLocked": "Esta visita está a ser importada. Termina ou retoma a importação no teu passaporte antes de a alterares ou eliminares."
       },
       "loading": {
         "title": "A ler as tuas visitas locais",
@@ -161,7 +162,8 @@
       "list": {
         "kicker": "Rascunho privado",
         "title": "Rascunhos para continuar",
-        "rideCount": "{{count}} voltas"
+        "rideCount": "{{count}} voltas",
+        "importLocked": "Importação por retomar"
       },
       "clearDialog": {
         "title": "Apagar todas as visitas locais?",
@@ -227,6 +229,7 @@
         "kicker": "Rascunho neste dispositivo",
         "rideCount": "{{count}} voltas",
         "localOnly": "As tuas alterações ficam neste navegador e não são enviadas para qualquer servidor.",
+        "importLocked": "A importação desta visita começou. O rascunho fica protegido contra alterações ou eliminação até a recuperação terminar.",
         "actions": {
           "back": "Voltar às visitas locais",
           "delete": "Eliminar visita",
@@ -265,7 +268,8 @@
           "invalidRide": "Verifica os dados e o limite de 2 000 voltas por rascunho.",
           "attractions": "Não foi possível carregar as atrações do parque.",
           "save": "Não foi possível guardar a alteração neste dispositivo.",
-          "delete": "Não foi possível eliminar esta visita local."
+          "delete": "Não foi possível eliminar esta visita local.",
+          "importLocked": "Esta visita está protegida durante a importação. Retoma a importação no teu passaporte."
         },
         "deleteDialog": {
           "title": "Eliminar esta visita local?",

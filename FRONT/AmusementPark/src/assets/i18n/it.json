@@ -336,7 +336,8 @@
         "load": "Non è stato possibile leggere le visite salvate su questo dispositivo.",
         "delete": "Non è stato possibile eliminare questa visita locale.",
         "clear": "Non è stato possibile cancellare le visite locali.",
-        "export": "Non è stato possibile preparare la copia locale."
+        "export": "Non è stato possibile preparare la copia locale.",
+        "importLocked": "Questa visita è in fase di importazione. Completa o riprendi l’importazione dal passaporto prima di modificarla o eliminarla."
       },
       "loading": {
         "title": "Lettura delle visite locali",
@@ -349,7 +350,8 @@
       "list": {
         "kicker": "Bozza privata",
         "title": "Bozze da continuare",
-        "rideCount": "{{count}} giri"
+        "rideCount": "{{count}} giri",
+        "importLocked": "Importazione da riprendere"
       },
       "clearDialog": {
         "title": "Cancellare tutte le visite locali?",
@@ -415,6 +417,7 @@
         "kicker": "Bozza su questo dispositivo",
         "rideCount": "{{count}} giri",
         "localOnly": "Le modifiche restano in questo browser e non vengono inviate ad alcun server.",
+        "importLocked": "L’importazione di questa visita è iniziata. La bozza è protetta da modifiche o eliminazione fino al completamento del recupero.",
         "actions": {
           "back": "Torna alle visite locali",
           "delete": "Elimina la visita",
@@ -453,7 +456,8 @@
           "invalidRide": "Controlla i dati e il limite di 2.000 giri per bozza.",
           "attractions": "Non è stato possibile caricare le attrazioni del parco.",
           "save": "Non è stato possibile salvare la modifica su questo dispositivo.",
-          "delete": "Non è stato possibile eliminare questa visita locale."
+          "delete": "Non è stato possibile eliminare questa visita locale.",
+          "importLocked": "Questa visita è protetta durante l’importazione. Riprendi l’importazione dal passaporto."
         },
         "deleteDialog": {
           "title": "Eliminare questa visita locale?",

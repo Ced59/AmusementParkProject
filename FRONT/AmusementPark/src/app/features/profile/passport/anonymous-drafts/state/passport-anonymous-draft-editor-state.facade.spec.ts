@@ -114,6 +114,42 @@ describe('PassportAnonymousDraftEditorStateFacade', () => {
     expect(getParkItemsByParkIdPage).toHaveBeenCalledTimes(3);
     expect(facade.attractions().map((item): string => item.id)).toEqual(['new-item']);
   });
+
+  it('freezes every mutation once an import intent has been recorded', async () => {
+    const baseDraft: PassportAnonymousDraft = createDraft();
+    const draft: PassportAnonymousDraft = {
+      ...baseDraft,
+      pendingImport: {
+        choice: 'Separate',
+        targetVisitId: 'server-1',
+        metadataChoice: 'KeepServer',
+        startedAtUtc: '2026-09-04T11:00:00.000Z'
+      }
+    };
+    const save = vi.fn(async (): Promise<void> => undefined);
+    const facade: PassportAnonymousDraftEditorStateFacade = createFacade(draft, save);
+    await facade.load(draft.id);
+
+    const added: boolean = await facade.addRide({
+      parkItemId: 'item-1',
+      attractionName: 'Attraction test',
+      status: 'Completed',
+      count: 1,
+      localTime: '',
+      isApproximate: false,
+      privateNote: '',
+      confirmHistoricalConflict: false
+    });
+    facade.removeRide('ride-1');
+    facade.moveRide('ride-1', 1);
+    const deleted: boolean = await facade.deleteDraft();
+
+    expect(facade.isImportLocked()).toBe(true);
+    expect(added).toBe(false);
+    expect(deleted).toBe(false);
+    expect(save).not.toHaveBeenCalled();
+    expect(facade.errorKey()).toBe('passport.anonymousDrafts.editor.errors.importLocked');
+  });
 });
 
 function createFacade(
@@ -126,6 +162,8 @@ function createFacade(
     list: async (): Promise<PassportAnonymousDraft[]> => [draft],
     get: async (): Promise<PassportAnonymousDraft | null> => draft,
     save,
+    compareAndSet: async (): Promise<boolean> => true,
+    deleteIfUnchanged: async (): Promise<boolean> => true,
     delete: async (): Promise<void> => undefined,
     clear: async (): Promise<void> => undefined
   };

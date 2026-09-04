@@ -210,7 +210,8 @@
         "load": "Visits saved on this device could not be read.",
         "delete": "This local visit could not be deleted.",
         "clear": "Local visits could not be cleared.",
-        "export": "The local copy could not be prepared."
+        "export": "The local copy could not be prepared.",
+        "importLocked": "This visit is being imported. Finish or resume the import from your passport before editing or deleting it."
       },
       "loading": {
         "title": "Reading your local visits",
@@ -223,7 +224,8 @@
       "list": {
         "kicker": "Private draft",
         "title": "Drafts to continue",
-        "rideCount": "{{count}} rides"
+        "rideCount": "{{count}} rides",
+        "importLocked": "Import to resume"
       },
       "clearDialog": {
         "title": "Clear all local visits?",
@@ -289,6 +291,7 @@
         "kicker": "Draft on this device",
         "rideCount": "{{count}} rides",
         "localOnly": "Your changes stay in this browser and are not sent to any server.",
+        "importLocked": "This visit import has started. The draft is protected from edits or deletion until recovery finishes.",
         "actions": {
           "back": "Back to local visits",
           "delete": "Delete visit",
@@ -327,7 +330,8 @@
           "invalidRide": "Check the ride details and the limit of 2,000 rides per draft.",
           "attractions": "The park attractions could not be loaded.",
           "save": "The change could not be saved on this device.",
-          "delete": "This local visit could not be deleted."
+          "delete": "This local visit could not be deleted.",
+          "importLocked": "This visit is protected during import. Resume the import from your passport."
         },
         "deleteDialog": {
           "title": "Delete this local visit?",

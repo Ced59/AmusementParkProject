@@ -177,6 +177,8 @@ function createDraftStore(
         savedDrafts.push(draft);
       }
     },
+    compareAndSet: async (): Promise<boolean> => true,
+    deleteIfUnchanged: async (): Promise<boolean> => true,
     delete: async (draftId: string): Promise<void> => {
       const index: number = savedDrafts.findIndex(
         (candidate: PassportAnonymousDraft): boolean => candidate.id === draftId
