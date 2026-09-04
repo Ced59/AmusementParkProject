@@ -104,15 +104,11 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                     continue;
                 }
 
-                bool canRecover = CanRecover(fencedCandidate, visit);
-                bool reconciled = canRecover
-                    ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
-                        fencedCandidate,
-                        guardedCancellationToken)
-                    : await this.occurrenceRepository.TryRejectPendingMutationAsync(
-                        fencedCandidate,
-                        this.clock.UtcNow,
-                        guardedCancellationToken);
+                bool reconciled = await this.TryReconcilePendingMutationAsync(
+                    fencedCandidate,
+                    visit,
+                    contentMutationLease.ContentFenceToken,
+                    guardedCancellationToken);
                 if (reconciled)
                 {
                     reconciledCount++;
@@ -167,14 +163,11 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                     return true;
                 }
 
-                bool reconciled = CanRecover(candidate, visit)
-                    ? await this.occurrenceRepository.TryCompletePendingMutationAsync(
-                        candidate,
-                        guardedCancellationToken)
-                    : await this.occurrenceRepository.TryRejectPendingMutationAsync(
-                        candidate,
-                        this.clock.UtcNow,
-                        guardedCancellationToken);
+                bool reconciled = await this.TryReconcilePendingMutationAsync(
+                    candidate,
+                    visit,
+                    contentMutationLease.ContentFenceToken,
+                    guardedCancellationToken);
                 if (!reconciled)
                 {
                     contentMutationLease.MarkMutationCompleted();
@@ -182,6 +175,53 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 }
             }
         }
+    }
+
+    private async Task<bool> TryReconcilePendingMutationAsync(
+        PendingPassportMutationVisit candidate,
+        Visit visit,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        if (!CanRecover(candidate, visit))
+        {
+            return await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                candidate,
+                this.clock.UtcNow,
+                cancellationToken);
+        }
+
+        if (await this.occurrenceRepository.TryCompletePendingMutationAsync(
+                candidate,
+                cancellationToken))
+        {
+            return true;
+        }
+
+        if (candidate.Kind != PendingPassportMutationKind.Creation)
+        {
+            return false;
+        }
+
+        if (await this.occurrenceRepository.TryRejectPendingMutationAsync(
+                candidate,
+                this.clock.UtcNow,
+                cancellationToken))
+        {
+            return true;
+        }
+
+        PendingPassportMutationVisit? remainingCandidate =
+            await this.occurrenceRepository.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                contentFenceToken,
+                cancellationToken);
+        return remainingCandidate is null
+            || !string.Equals(
+                remainingCandidate.OperationKeyHash,
+                candidate.OperationKeyHash,
+                StringComparison.Ordinal);
     }
 
     private static bool CanRecover(

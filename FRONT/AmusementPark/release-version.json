@@ -1,6 +1,20 @@
 {
-  "version": "5.0.26",
+  "version": "5.0.27",
   "history": [
+    {
+      "version": "5.0.27",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tu peux désormais terminer une visite même après une reprise de ses passages.",
+        "en": "You can now complete a visit even after its ride entries are recovered.",
+        "de": "Du kannst einen Besuch jetzt auch nach der Wiederherstellung seiner Fahrten abschließen.",
+        "nl": "Je kunt een bezoek nu ook afronden nadat ritten zijn hersteld.",
+        "it": "Ora puoi completare una visita anche dopo il recupero dei suoi giri.",
+        "es": "Ahora puedes completar una visita incluso después de recuperar sus recorridos.",
+        "pl": "Możesz teraz zakończyć wizytę także po odzyskaniu jej przejazdów.",
+        "pt": "Agora podes concluir uma visita mesmo após a recuperação das suas voltas."
+      }
+    },
     {
       "version": "5.0.26",
       "releasedAt": "2026-09-04",
