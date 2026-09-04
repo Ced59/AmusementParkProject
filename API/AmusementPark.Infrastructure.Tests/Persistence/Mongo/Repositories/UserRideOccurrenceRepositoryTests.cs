@@ -3010,6 +3010,109 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task RejectPendingReorder_WhenRollbackIsVerified_ShouldMarkConflict()
+    {
+        UserRideOccurrenceCreationOperationDocument operation =
+            CreatePendingReorderOperation();
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> operationCursor =
+            CreateAsyncCursor(new[] { operation });
+        Mock<IAsyncCursor<BsonDocument>> occurrenceCursor =
+            CreateAsyncCursor(Array.Empty<BsonDocument>());
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(operationCursor.Object);
+        collection.Setup(value => value.FindAsync<BsonDocument>(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, BsonDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(occurrenceCursor.Object);
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        PendingPassportMutationVisit mutation = new PendingPassportMutationVisit(
+            operation.UserId,
+            VisitId.Parse(operation.VisitId!),
+            operation.OperationKeyHash,
+            PendingPassportMutationKind.Reorder,
+            null);
+
+        bool rejected = await repository.TryRejectPendingMutationAsync(
+            mutation,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.True(rejected);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        occurrenceCursor.VerifyAll();
+        operationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RejectPendingReorder_WhenAnAllocationIsStillApplied_ShouldKeepItPending()
+    {
+        UserRideOccurrenceCreationOperationDocument operation =
+            CreatePendingReorderOperation();
+        UserRideOccurrenceDocument applied =
+            CreateOccurrence("occurrence-1", "item-1", 2048).ToDocument();
+        applied.LastReorderOperationKeyHash = operation.OperationKeyHash;
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> operationCursor =
+            CreateAsyncCursor(new[] { operation });
+        Mock<IAsyncCursor<BsonDocument>> occurrenceCursor =
+            CreateAsyncCursor(new[] { new BsonDocument("_id", applied.Id) });
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(operationCursor.Object);
+        collection.Setup(value => value.FindAsync<BsonDocument>(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceDocument, BsonDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(occurrenceCursor.Object);
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        PendingPassportMutationVisit mutation = new PendingPassportMutationVisit(
+            operation.UserId,
+            VisitId.Parse(operation.VisitId!),
+            operation.OperationKeyHash,
+            PendingPassportMutationKind.Reorder,
+            null);
+
+        bool rejected = await repository.TryRejectPendingMutationAsync(
+            mutation,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.False(rejected);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        occurrenceCursor.VerifyAll();
+        operationCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task RejectPendingCreation_ShouldRemoveItsAllocationsThroughCurrentFence()
     {
         UserRideOccurrenceDocument occurrenceDocument = CreateCreationDocument(
@@ -3163,6 +3266,21 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.False(rendered["orderGuardsValidated"].AsBoolean);
         collection.VerifyNoOtherCalls();
         operationCollection.VerifyAll();
+    }
+
+    private static UserRideOccurrenceCreationOperationDocument CreatePendingReorderOperation()
+    {
+        return new UserRideOccurrenceCreationOperationDocument
+        {
+            UserId = "user-1",
+            OperationKeyHash = "operation-hash",
+            PayloadHash = "payload-hash",
+            OperationKind = "reorder",
+            VisitId = "visit-1",
+            OperationState = "pending",
+            CreatedAt = NowUtc,
+            UpdatedAt = NowUtc,
+        };
     }
 
     private static UserRideOccurrenceDocument CreateCreationDocument(
