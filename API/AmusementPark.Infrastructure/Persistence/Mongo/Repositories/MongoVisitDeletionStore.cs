@@ -12,9 +12,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class MongoVisitDeletionStore : IVisitDeletionStore
 {
-    internal const string DeletedAtUtcPath = "deletedAtUtc";
-    internal const string PurgeScheduledForUtcPath = "purgeScheduledForUtc";
+    internal const string DeletedAtUtcPath = UserVisitMongoDefinitions.DeletedAtUtcPath;
+    internal const string PurgeScheduledForUtcPath =
+        UserVisitMongoDefinitions.PurgeScheduledForUtcPath;
     internal const string DeletionOperationKeyHashPath = "deletionOperationKeyHash";
+    internal const string PurgeJobEnsuredAtUtcPath =
+        UserVisitMongoDefinitions.PurgeJobEnsuredAtUtcPath;
     private readonly IMongoCollection<UserVisitDocument> visits;
     private readonly IMongoCollection<BsonDocument> rawVisits;
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
@@ -129,6 +132,59 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             update,
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    public async Task<IReadOnlyCollection<VisitDeletionPurgeCandidate>>
+        ListPendingPurgeSchedulingAsync(
+            int maximumCount,
+            CancellationToken cancellationToken)
+    {
+        if (maximumCount is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumCount));
+        }
+
+        List<BsonDocument> documents = await this.rawVisits
+            .Find(BuildPendingPurgeSchedulingFilter())
+            .Sort(Builders<BsonDocument>.Sort
+                .Ascending(PurgeScheduledForUtcPath)
+                .Ascending("_id"))
+            .Project(BuildPendingPurgeSchedulingProjection())
+            .Limit(maximumCount)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document =>
+            new VisitDeletionPurgeCandidate(
+                VisitId.Parse(document["_id"].AsString),
+                document["userId"].AsString,
+                document["version"].AsInt64,
+                document[PurgeScheduledForUtcPath].ToUniversalTime()))
+            .ToArray();
+    }
+
+    public async Task<bool> MarkPurgeJobEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ValidateUtc(ensuredAtUtc, nameof(ensuredAtUtc));
+        if (deletionVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(deletionVersion));
+        }
+
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
+        UpdateResult result = await this.rawVisits.UpdateOneAsync(
+            filters.Eq("_id", visitId.Value)
+                & filters.Eq("userId", normalizedUserId)
+                & filters.Eq("version", deletionVersion)
+                & filters.Exists(DeletedAtUtcPath, true)
+                & filters.Exists(PurgeScheduledForUtcPath, true),
+            Builders<BsonDocument>.Update.Set(PurgeJobEnsuredAtUtcPath, ensuredAtUtc),
+            cancellationToken: cancellationToken);
         return result.MatchedCount == 1;
     }
 
@@ -381,6 +437,27 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             .Include(DeletedAtUtcPath)
             .Include(PurgeScheduledForUtcPath)
             .Include("version");
+    }
+
+    internal static FilterDefinition<BsonDocument> BuildPendingPurgeSchedulingFilter()
+    {
+        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
+        return filters.Exists(DeletedAtUtcPath, true)
+            & filters.Exists(PurgeScheduledForUtcPath, true)
+            & filters.Gt("version", 0)
+            & filters.Or(
+                filters.Exists(PurgeJobEnsuredAtUtcPath, false),
+                filters.Eq(PurgeJobEnsuredAtUtcPath, BsonNull.Value));
+    }
+
+    private static ProjectionDefinition<BsonDocument>
+        BuildPendingPurgeSchedulingProjection()
+    {
+        return Builders<BsonDocument>.Projection
+            .Include("_id")
+            .Include("userId")
+            .Include("version")
+            .Include(PurgeScheduledForUtcPath);
     }
 
     private static void ValidateUtc(DateTime value, string parameterName)

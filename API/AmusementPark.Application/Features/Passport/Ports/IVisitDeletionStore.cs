@@ -20,6 +20,18 @@ public interface IVisitDeletionStore
         VisitDeletionTombstoneRequest request,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<VisitDeletionPurgeCandidate>>
+        ListPendingPurgeSchedulingAsync(
+            int maximumCount,
+            CancellationToken cancellationToken);
+
+    Task<bool> MarkPurgeJobEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken);
+
     Task<VisitDeletionPurgeResult> PurgeBatchAsync(
         VisitId visitId,
         string userId,

@@ -75,6 +75,20 @@ public sealed class MongoVisitDeletionStoreTests
     }
 
     [Fact]
+    public void BuildPendingPurgeSchedulingFilter_ShouldSelectOnlyUnensuredTombstones()
+    {
+        BsonDocument filter = Render(
+            MongoVisitDeletionStore.BuildPendingPurgeSchedulingFilter());
+
+        Assert.True(filter[MongoVisitDeletionStore.DeletedAtUtcPath]
+            .AsBsonDocument["$exists"].AsBoolean);
+        Assert.True(filter[MongoVisitDeletionStore.PurgeScheduledForUtcPath]
+            .AsBsonDocument["$exists"].AsBoolean);
+        Assert.Equal(0, filter["version"].AsBsonDocument["$gt"].AsInt32);
+        Assert.Equal(2, filter["$or"].AsBsonArray.Count);
+    }
+
+    [Fact]
     public void BuildTombstoneUpdate_ShouldPersistReplayAndPurgeEvidenceAndReleaseTheLease()
     {
         Visit visit = Visit.Create(

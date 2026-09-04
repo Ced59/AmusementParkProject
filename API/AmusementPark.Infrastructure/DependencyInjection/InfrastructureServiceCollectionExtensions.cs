@@ -242,6 +242,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IVisitContentMutationLeaseManager, MongoVisitContentMutationLeaseManager>();
         services.AddHostedService<PassportAuditReconciliationBackgroundService>();
         services.AddHostedService<PassportExportReconciliationBackgroundService>();
+        services.AddHostedService<VisitPurgeReconciliationBackgroundService>();
         services.AddSingleton<IPassportClock, SystemPassportClock>();
         services.AddSingleton<IPassportTimeZoneValidator, SystemPassportTimeZoneValidator>();
         services.AddSingleton<IPassportLocalDateResolver, SystemPassportLocalDateResolver>();

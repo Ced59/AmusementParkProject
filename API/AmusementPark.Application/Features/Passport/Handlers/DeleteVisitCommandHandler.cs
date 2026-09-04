@@ -64,11 +64,11 @@ public sealed class DeleteVisitCommandHandler
             cancellationToken);
         if (replay is not null)
         {
-            await this.purgeScheduler.ScheduleAsync(
+            await this.EnsurePurgeScheduledAsync(
                 visitId,
                 userId,
                 replay.DeletionVersion,
-                GetRemainingPurgeDelay(replay.PurgeScheduledForUtc, this.clock.UtcNow),
+                replay.PurgeScheduledForUtc,
                 cancellationToken);
             await this.exportRepository.InvalidateOwnedAsync(
                 userId,
@@ -161,11 +161,11 @@ public sealed class DeleteVisitCommandHandler
         }
         contentMutationLease?.MarkMutationCompleted();
 
-        await this.purgeScheduler.ScheduleAsync(
+        await this.EnsurePurgeScheduledAsync(
             visit.Id,
             visit.UserId,
             visit.Version + 1,
-            GetRemainingPurgeDelay(purgeScheduledForUtc, this.clock.UtcNow),
+            purgeScheduledForUtc,
             cancellationToken);
         await this.exportRepository.InvalidateOwnedAsync(
             visit.UserId,
@@ -183,6 +183,27 @@ public sealed class DeleteVisitCommandHandler
                 purgeScheduledForUtc,
                 visit.Version + 1,
                 false));
+    }
+
+    private async Task EnsurePurgeScheduledAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime purgeScheduledForUtc,
+        CancellationToken cancellationToken)
+    {
+        await this.purgeScheduler.ScheduleAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            GetRemainingPurgeDelay(purgeScheduledForUtc, this.clock.UtcNow),
+            cancellationToken);
+        _ = await this.deletionStore.MarkPurgeJobEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            this.clock.UtcNow,
+            cancellationToken);
     }
 
     private static TimeSpan GetRemainingPurgeDelay(

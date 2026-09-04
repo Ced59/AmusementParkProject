@@ -8,6 +8,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal static class UserVisitMongoDefinitions
 {
     public const string DeletedAtUtcPath = "deletedAtUtc";
+    public const string PurgeScheduledForUtcPath = "purgeScheduledForUtc";
+    public const string PurgeJobEnsuredAtUtcPath = "purgeJobEnsuredAtUtc";
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
     public const string ContentMutationFenceTokenPath = "contentMutationFenceToken";
@@ -255,6 +257,18 @@ internal static class UserVisitMongoDefinitions
                 }),
             PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
                 "idx_user_visits_pending_audit"),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(PurgeJobEnsuredAtUtcPath)
+                    .Ascending(PurgeScheduledForUtcPath)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserVisitDocument>
+                {
+                    Name = "idx_user_visits_pending_purge_schedule",
+                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Exists(
+                        DeletedAtUtcPath,
+                        true),
+                }),
         };
     }
 

@@ -68,6 +68,13 @@ public sealed class VisitDeletionHandlersTests
             .Callback<VisitDeletionTombstoneRequest, CancellationToken>(
                 (request, _) => tombstone = request)
             .ReturnsAsync(true);
+        deletions.Setup(store => store.MarkPurgeJobEnsuredAsync(
+                visit.Id,
+                visit.UserId,
+                visit.Version + 1,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IPassportExportRepository> exports = new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 visit.UserId,
@@ -183,6 +190,13 @@ public sealed class VisitDeletionHandlersTests
                 "delete-1",
                 CancellationToken.None))
             .ReturnsAsync(storedReceipt);
+        deletions.Setup(store => store.MarkPurgeJobEnsuredAsync(
+                visit.Id,
+                visit.UserId,
+                storedReceipt.DeletionVersion,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IPassportExportRepository> exports =
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
