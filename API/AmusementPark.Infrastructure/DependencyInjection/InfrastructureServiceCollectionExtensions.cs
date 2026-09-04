@@ -220,6 +220,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
         services.AddScoped<IPassportItemStatisticsSourceReader,
             PassportItemStatisticsSourceReader>();
+        services.AddScoped<IPassportScopeStatisticsSourceReader,
+            PassportScopeStatisticsSourceReader>();
         services.AddScoped<PassportAuditStore>();
         services.AddScoped<IPassportAuditPublisher>(serviceProvider =>
             serviceProvider.GetRequiredService<PassportAuditStore>());

@@ -97,7 +97,8 @@ public sealed class PassportItemStatisticsSourceReader
         return filters.Eq(
                 static document => document.UserId,
                 IdentifierRules.NormalizeRequired(userId, nameof(userId)))
-            & filters.In(static document => document.Id, visitIds);
+            & filters.In(static document => document.Id, visitIds)
+            & filters.Ne(static document => document.Status, VisitStatus.Archived);
     }
 
     internal static IReadOnlyCollection<PassportItemRideObservation> BuildObservations(
@@ -122,6 +123,7 @@ public sealed class PassportItemStatisticsSourceReader
                 ? RatingValue.FromHalfSteps(occurrence.AssessmentValueHalfSteps.Value)
                 : null;
             observations.Add(new PassportItemRideObservation(
+                occurrence.Id,
                 occurrence.VisitId,
                 new VisitDate(
                     visit.Date.Year,
@@ -129,6 +131,7 @@ public sealed class PassportItemStatisticsSourceReader
                     visit.Date.Day,
                     visit.Date.Precision,
                     visit.Date.IsApproximate),
+                occurrence.SortPosition,
                 assessment));
         }
 
@@ -140,26 +143,11 @@ public sealed class PassportItemStatisticsSourceReader
         long? occurrenceFenceToken)
     {
         ArgumentNullException.ThrowIfNull(visit);
-        if (!visit.ContentMutationFenceToken.HasValue)
-        {
-            return !occurrenceFenceToken.HasValue;
-        }
-
-        long currentFenceToken = visit.ContentMutationFenceToken.Value;
-        if (visit.ContentMutationFenceReady)
-        {
-            return occurrenceFenceToken == currentFenceToken;
-        }
-
-        if (visit.ContentMutationFenceStableToken.HasValue)
-        {
-            return occurrenceFenceToken >= visit.ContentMutationFenceStableToken.Value
-                && occurrenceFenceToken <= currentFenceToken;
-        }
-
-        return !occurrenceFenceToken.HasValue
-            || occurrenceFenceToken is >= 1
-                && occurrenceFenceToken <= currentFenceToken;
+        return PassportStatisticsContentFence.AllowsRead(
+            visit.ContentMutationFenceToken,
+            visit.ContentMutationFenceStableToken,
+            visit.ContentMutationFenceReady,
+            occurrenceFenceToken);
     }
 
     private static ProjectionDefinition<
@@ -169,7 +157,9 @@ public sealed class PassportItemStatisticsSourceReader
         return Builders<UserRideOccurrenceDocument>.Projection.Expression(
             static document => new PassportItemOccurrenceStatisticsSourceDocument
             {
+                Id = document.Id,
                 VisitId = document.VisitId,
+                SortPosition = document.SortPosition,
                 AssessmentValueHalfSteps = document.Assessment == null
                     ? null
                     : document.Assessment.ValueHalfSteps,
@@ -195,7 +185,11 @@ public sealed class PassportItemStatisticsSourceReader
 
 internal sealed class PassportItemOccurrenceStatisticsSourceDocument
 {
+    public string Id { get; init; } = string.Empty;
+
     public string VisitId { get; init; } = string.Empty;
+
+    public long SortPosition { get; init; }
 
     public byte? AssessmentValueHalfSteps { get; init; }
 

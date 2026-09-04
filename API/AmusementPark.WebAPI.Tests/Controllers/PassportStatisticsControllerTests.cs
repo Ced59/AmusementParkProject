@@ -57,6 +57,10 @@ public sealed class PassportStatisticsControllerTests
         Assert.Equal(0.5d, body.HistoricalRatings?.PopulationStandardDeviation);
         Assert.Equal(4.5d, body.CurrentGlobalRating);
         Assert.Equal(1d, body.CurrentGlobalMinusHistoricalAverage);
+        Assert.Equal("visit-1", Assert.Single(body.ByVisit).VisitId);
+        Assert.Equal(2024, Assert.Single(body.ByYear).Year);
+        Assert.Equal("occ-1", Assert.Single(body.RatingTimeline).RideOccurrenceId);
+        Assert.Equal(PassportRatingTrendKindDto.Stable, body.Trend?.Kind);
         Assert.Null(typeof(PassportItemStatisticsDto).GetProperty("UserId"));
         handler.VerifyAll();
     }
@@ -118,9 +122,43 @@ public sealed class PassportStatisticsControllerTests
             new PassportItemExperienceResult(
                 "visit-2",
                 new VisitDateResult(2025, 6, 1, VisitDatePrecision.Day, false)),
-            new PassportItemHistoricalRatingsResult(2, 3.5d, 3.5d, 3d, 4d, 0.5d),
+            new PassportRatingDistributionResult(2, 3.5d, 3.5d, 3d, 4d, 0.5d),
             4.5d,
-            1d);
+            1d,
+            new[]
+            {
+                new PassportItemVisitStatisticsResult(
+                    "visit-1",
+                    new VisitDateResult(2024, null, null, VisitDatePrecision.Year, true),
+                    1,
+                    new PassportItemRatingCoverageResult(1, 1, 1d),
+                    new PassportRatingDistributionResult(1, 3d, 3d, 3d, 3d, 0d)),
+            },
+            new[]
+            {
+                new PassportItemYearStatisticsResult(
+                    2024,
+                    1,
+                    1,
+                    new PassportItemRatingCoverageResult(1, 1, 1d),
+                    new PassportRatingDistributionResult(1, 3d, 3d, 3d, 3d, 0d)),
+            },
+            new[]
+            {
+                new PassportItemRatingPointResult(
+                    "occ-1",
+                    "visit-1",
+                    new VisitDateResult(2024, null, null, VisitDatePrecision.Year, true),
+                    1024,
+                    3d),
+            },
+            new PassportRatingTrendResult(
+                PassportRatingTrendKind.Stable,
+                1,
+                1,
+                3d,
+                3d,
+                0d));
     }
 
     private static ControllerContext CreateControllerContext(bool authenticated)
