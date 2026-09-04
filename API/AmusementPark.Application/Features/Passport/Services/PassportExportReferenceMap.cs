@@ -9,13 +9,14 @@ internal sealed class PassportExportReferenceMap
     private readonly IReadOnlyDictionary<string, string> visitReferences;
     private readonly IReadOnlyDictionary<string, string> occurrenceReferences;
     private readonly IReadOnlyDictionary<string, string> parkReferences;
-    private readonly IReadOnlyDictionary<string, string> parkItemReferences;
+    private readonly IReadOnlyDictionary<(string ParkId, string ParkItemId), string>
+        parkItemReferences;
 
     private PassportExportReferenceMap(
         IReadOnlyDictionary<string, string> visitReferences,
         IReadOnlyDictionary<string, string> occurrenceReferences,
         IReadOnlyDictionary<string, string> parkReferences,
-        IReadOnlyDictionary<string, string> parkItemReferences)
+        IReadOnlyDictionary<(string ParkId, string ParkItemId), string> parkItemReferences)
     {
         this.visitReferences = visitReferences;
         this.occurrenceReferences = occurrenceReferences;
@@ -55,11 +56,16 @@ internal sealed class PassportExportReferenceMap
             AddReference(parks, occurrence.ParkId, "park");
         }
 
-        Dictionary<string, string> parkItems =
-            new Dictionary<string, string>(StringComparer.Ordinal);
+        Dictionary<(string ParkId, string ParkItemId), string> parkItems =
+            new Dictionary<(string ParkId, string ParkItemId), string>();
         foreach (RideOccurrence occurrence in request.RideOccurrences)
         {
-            AddReference(parkItems, occurrence.ParkItemId, "park-item");
+            (string ParkId, string ParkItemId) target =
+                (occurrence.ParkId, occurrence.ParkItemId);
+            if (!parkItems.ContainsKey(target))
+            {
+                AddReference(parkItems, target, "park-item");
+            }
         }
 
         return new PassportExportReferenceMap(visits, occurrences, parks, parkItems);
@@ -80,9 +86,9 @@ internal sealed class PassportExportReferenceMap
         return this.parkReferences[parkId];
     }
 
-    public string ParkItem(string parkItemId)
+    public string ParkItem(string parkId, string parkItemId)
     {
-        return this.parkItemReferences[parkItemId];
+        return this.parkItemReferences[(parkId, parkItemId)];
     }
 
     private static void AddReference(
@@ -97,5 +103,14 @@ internal sealed class PassportExportReferenceMap
 
         string index = (references.Count + 1).ToString("D4", CultureInfo.InvariantCulture);
         references.Add(internalId, $"{prefix}-{index}");
+    }
+
+    private static void AddReference(
+        IDictionary<(string ParkId, string ParkItemId), string> references,
+        (string ParkId, string ParkItemId) internalTarget,
+        string prefix)
+    {
+        string index = (references.Count + 1).ToString("D4", CultureInfo.InvariantCulture);
+        references.Add(internalTarget, $"{prefix}-{index}");
     }
 }

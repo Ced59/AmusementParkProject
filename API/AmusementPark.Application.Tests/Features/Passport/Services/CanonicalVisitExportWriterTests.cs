@@ -133,6 +133,36 @@ public sealed class CanonicalVisitExportWriterTests
     }
 
     [Fact]
+    public void Write_WhenCatalogTargetMovedToAnotherPark_ShouldNotRewriteHistoricalParentage()
+    {
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+        PassportExportWriteRequest source = CreateRequest(PassportExportFormat.Json);
+        VisitTarget movedTarget = source.ParkItems["item-1"] with { ParkId = "park-2" };
+        PassportExportWriteRequest request = source with
+        {
+            ParkItems = new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            {
+                [movedTarget.ParkItemId] = movedTarget,
+            },
+        };
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        using JsonDocument document = JsonDocument.Parse(artifact.Content);
+        JsonElement root = document.RootElement;
+        Assert.Equal(
+            "park-0001",
+            root.GetProperty("parkItems")[0].GetProperty("parkReference").GetString());
+        Assert.Equal(
+            "Unavailable attraction",
+            root.GetProperty("parkItems")[0].GetProperty("name").GetString());
+        Assert.Equal(
+            "Unavailable attraction",
+            root.GetProperty("rideOccurrences")[0].GetProperty("parkItemName").GetString());
+        Assert.DoesNotContain("Silver Star", Encoding.UTF8.GetString(artifact.Content), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Write_WhenTwoExportsCompleteInTheSameSecond_ShouldKeepUniqueReadableFileNames()
     {
         CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();

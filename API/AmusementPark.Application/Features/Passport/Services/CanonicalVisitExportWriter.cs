@@ -179,7 +179,9 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
     {
         ResolveParkItem(parkItems, occurrence, out string itemName, out string itemCategory, out string itemStatus);
         writer.WriteStartObject();
-        writer.WriteString("reference", references.ParkItem(occurrence.ParkItemId));
+        writer.WriteString(
+            "reference",
+            references.ParkItem(occurrence.ParkId, occurrence.ParkItemId));
         writer.WriteString("parkReference", references.Park(occurrence.ParkId));
         writer.WriteString("name", itemName);
         writer.WriteString("category", itemCategory);
@@ -230,7 +232,9 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteString("reference", references.Occurrence(occurrence.Id));
         writer.WriteString("visitReference", references.Visit(occurrence.VisitId));
         writer.WriteString("parkReference", references.Park(occurrence.ParkId));
-        writer.WriteString("parkItemReference", references.ParkItem(occurrence.ParkItemId));
+        writer.WriteString(
+            "parkItemReference",
+            references.ParkItem(occurrence.ParkId, occurrence.ParkItemId));
         writer.WriteString("parkName", parkName);
         writer.WriteString("parkStatus", parkStatus);
         writer.WriteString("parkItemName", itemName);
@@ -333,7 +337,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
                 out string itemStatus);
             WriteCsvRow(writer, new[]
             {
-                references.ParkItem(occurrence.ParkItemId),
+                references.ParkItem(occurrence.ParkId, occurrence.ParkItemId),
                 references.Park(occurrence.ParkId),
                 itemName,
                 itemCategory,
@@ -391,7 +395,8 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             WriteCsvRow(writer, new[]
             {
                 references.Occurrence(occurrence.Id), references.Visit(occurrence.VisitId),
-                references.Park(occurrence.ParkId), references.ParkItem(occurrence.ParkItemId),
+                references.Park(occurrence.ParkId),
+                references.ParkItem(occurrence.ParkId, occurrence.ParkItemId),
                 parkName, parkStatus, itemName, itemCategory, itemStatus, Integer(occurrence.SortPosition),
                 occurrence.Moment.LocalTime?.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture),
                 Boolean(occurrence.Moment.IsApproximate), occurrence.Status.ToString(), occurrence.Source.ToString(),
@@ -475,7 +480,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         PassportExportWriteRequest request)
     {
         return request.RideOccurrences
-            .GroupBy(static occurrence => occurrence.ParkItemId, StringComparer.Ordinal)
+            .GroupBy(static occurrence => (occurrence.ParkId, occurrence.ParkItemId))
             .Select(static group => group.First())
             .ToArray();
     }
@@ -522,7 +527,8 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         out string category,
         out string status)
     {
-        if (parkItems.TryGetValue(occurrence.ParkItemId, out VisitTarget? target))
+        if (parkItems.TryGetValue(occurrence.ParkItemId, out VisitTarget? target)
+            && string.Equals(target.ParkId, occurrence.ParkId, StringComparison.Ordinal))
         {
             name = target.Name;
             category = target.Category.ToString();
