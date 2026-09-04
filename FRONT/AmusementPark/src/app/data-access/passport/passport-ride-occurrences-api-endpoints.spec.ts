@@ -14,6 +14,9 @@ describe('PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS', () => {
   });
 
   it('keeps the batch, delete and reorder routes owner-scoped', () => {
+    expect(PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.validateTargets).toBe(
+      'me/passport/ride-targets:validate'
+    );
     expect(PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.addBatch('visit-1')).toBe(
       'me/passport/visits/visit-1/occurrences:batch'
     );

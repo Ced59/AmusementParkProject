@@ -101,19 +101,14 @@ internal static class PassportRideOccurrenceHandlerSupport
         foreach (RideOccurrenceCreationItem item in items)
         {
             string parkItemId = item.ParkItemId.Trim();
-            if (!targets.TryGetValue(parkItemId, out VisitTarget? target))
+            ApplicationError? identityError = ValidateTargetIdentity(
+                visit.ParkId,
+                parkItemId,
+                targets,
+                out VisitTarget? target);
+            if (identityError is not null || target is null)
             {
-                return PassportApplicationErrors.VisitTargetNotFound();
-            }
-
-            if (!string.Equals(target.ParkId, visit.ParkId, StringComparison.Ordinal))
-            {
-                return PassportApplicationErrors.VisitTargetParkMismatch();
-            }
-
-            if (target.Category != ParkItemCategory.Attraction)
-            {
-                return PassportApplicationErrors.VisitTargetNotAttraction();
+                return identityError;
             }
 
             HistoricalConsistency consistency =
@@ -126,6 +121,30 @@ internal static class PassportRideOccurrenceHandlerSupport
             {
                 return PassportApplicationErrors.HistoricalConflictConfirmationRequired();
             }
+        }
+
+        return null;
+    }
+
+    public static ApplicationError? ValidateTargetIdentity(
+        string parkId,
+        string parkItemId,
+        IReadOnlyDictionary<string, VisitTarget> targets,
+        out VisitTarget? target)
+    {
+        if (!targets.TryGetValue(parkItemId, out target))
+        {
+            return PassportApplicationErrors.VisitTargetNotFound();
+        }
+
+        if (!string.Equals(target.ParkId, parkId, StringComparison.Ordinal))
+        {
+            return PassportApplicationErrors.VisitTargetParkMismatch();
+        }
+
+        if (target.Category != ParkItemCategory.Attraction)
+        {
+            return PassportApplicationErrors.VisitTargetNotAttraction();
         }
 
         return null;

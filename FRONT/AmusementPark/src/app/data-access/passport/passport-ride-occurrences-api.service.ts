@@ -21,6 +21,11 @@ export class PassportRideOccurrencesApiService {
   constructor(private readonly http: HttpClient) {
   }
 
+  validateTargets(parkId: string, parkItemIds: string[]): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.validateTargets}`;
+    return this.http.post<void>(url, { parkId, parkItemIds });
+  }
+
   list(visitId: string, cursor: string | null = null, limit: number = 50): Observable<PassportRideOccurrencePage> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.list(visitId, limit, cursor)}`;
     return this.http.get<PassportRideOccurrencePage>(url, { transferCache: false });

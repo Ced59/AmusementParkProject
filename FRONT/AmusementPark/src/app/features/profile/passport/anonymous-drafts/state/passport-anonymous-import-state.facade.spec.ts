@@ -5,14 +5,11 @@ import {
   CreatePassportRideOccurrencesBatchRequest,
   PassportRideOccurrence
 } from '@app/models/passport/passport-ride-occurrence.models';
-import { ParkItem } from '@app/models/parks/park-item';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
-import { PagedResult } from '@shared/models/contracts';
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import { PassportAnonymousDraftStorePort } from './passport-anonymous-draft-store.ports';
 import {
   PassportAnonymousImportOccurrencesPort,
-  PassportAnonymousImportParkItemsPort,
   PassportAnonymousImportVisitsPort
 } from './passport-anonymous-import-data.ports';
 import { PassportAnonymousImportStateFacade } from './passport-anonymous-import-state.facade';
@@ -31,8 +28,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       store,
       visits,
-      createOccurrencesPort(),
-      createParkItemsPort()
+      createOccurrencesPort()
     );
 
     await facade.load();
@@ -63,8 +59,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([firstDraft, secondDraft]),
       createVisitsPort({ listVisits }),
-      createOccurrencesPort(),
-      createParkItemsPort()
+      createOccurrencesPort()
     );
     await facade.load();
 
@@ -74,6 +69,46 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.comparisonPrepared()).toBe(false);
     expect(facade.comparisonDataShared()).toBe(true);
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.import.errors.preview');
+  });
+
+  it('releases a persisted merge lock when its visit is no longer an eligible draft', async () => {
+    const baseDraft: PassportAnonymousDraft = createDraft();
+    const lockedDraft: PassportAnonymousDraft = {
+      ...baseDraft,
+      pendingImport: {
+        choice: 'Merge',
+        targetVisitId: 'closed-visit',
+        metadataChoice: 'KeepServer',
+        startedAtUtc: '2026-09-04T10:01:00Z'
+      }
+    };
+    const completedVisit: PassportVisit = createVisit({
+      id: 'closed-visit',
+      status: 'Completed'
+    });
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([lockedDraft], undefined, compareAndSet),
+      createVisitsPort({
+        listVisits: () => of({ items: [completedVisit], nextCursor: null })
+      }),
+      createOccurrencesPort()
+    );
+    await facade.load();
+
+    await facade.prepareComparison(true);
+
+    expect(compareAndSet).toHaveBeenCalledWith(
+      lockedDraft,
+      expect.objectContaining({ pendingImport: null })
+    );
+    expect(facade.previews()[0].draft.pendingImport).toBeNull();
+    expect(facade.previews()[0].decision).toMatchObject({
+      choice: 'Separate',
+      targetVisitId: null
+    });
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
+    expect(facade.canImport()).toBe(true);
   });
 
   it('imports a separate visit idempotently and purges local data only after verified acknowledgements', async () => {
@@ -92,8 +127,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       store,
       createVisitsPort({ createVisit: createVisitRequest }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -128,35 +162,20 @@ describe('PassportAnonymousImportStateFacade', () => {
     const compareAndSet = vi.fn(async (): Promise<boolean> => true);
     const createVisitRequest = vi.fn(() => of(createVisit({ id: 'server-1' })));
     const importBatch = vi.fn();
-    const getParkItemsByParkIdPage = vi.fn(() => of<PagedResult<ParkItem>>({
-      items: [{
-        id: draft.rides[0].parkItemId,
-        parkId: draft.visit.parkId,
-        name: draft.rides[0].attractionName,
-        category: 'Restaurant',
-        type: 'Restaurant',
-        latitude: null,
-        longitude: null
-      }],
-      pagination: { currentPage: 1, totalPages: 1, totalItems: 1, itemsPerPage: 100 }
-    }));
+    const validateTargets = vi.fn(() => throwError(() => new HttpErrorResponse({ status: 422 })));
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft], undefined, compareAndSet),
       createVisitsPort({ createVisit: createVisitRequest }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort({ getParkItemsByParkIdPage })
+      createOccurrencesPort({ importBatch, validateTargets })
     );
     await facade.load();
     await facade.prepareComparison(true);
 
     await facade.importAll(true);
 
-    expect(getParkItemsByParkIdPage).toHaveBeenCalledWith(
+    expect(validateTargets).toHaveBeenCalledWith(
       draft.visit.parkId,
-      1,
-      100,
-      { closedFilter: 'all', category: 'Attraction' },
-      { closedFilter: 'all' }
+      [draft.rides[0].parkItemId]
     );
     expect(compareAndSet).not.toHaveBeenCalled();
     expect(createVisitRequest).not.toHaveBeenCalled();
@@ -191,8 +210,7 @@ describe('PassportAnonymousImportStateFacade', () => {
         updateVisit,
         getVisit
       }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -246,8 +264,7 @@ describe('PassportAnonymousImportStateFacade', () => {
           wasReplayed: false,
           wasOrderNormalized: false
         })
-      }),
-      createParkItemsPort()
+      })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -281,8 +298,7 @@ describe('PassportAnonymousImportStateFacade', () => {
         listVisits: vi.fn(() => of({ items: [listed], nextCursor: null })),
         getVisit
       }),
-      createOccurrencesPort({ list: () => of({ items: [], nextCursor: null }) }),
-      createParkItemsPort()
+      createOccurrencesPort({ list: () => of({ items: [], nextCursor: null }) })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -308,8 +324,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       }),
       createOccurrencesPort({
         list: () => throwError(() => new Error('comparison unavailable'))
-      }),
-      createParkItemsPort()
+      })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -334,8 +349,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft], deleteDraft),
       createVisitsPort(),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -364,8 +378,7 @@ describe('PassportAnonymousImportStateFacade', () => {
           wasReplayed: false,
           wasOrderNormalized: false
         })
-      }),
-      createParkItemsPort()
+      })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -410,8 +423,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft], deleteDraft, compareAndSetDraft),
       createVisitsPort({ createVisit: createVisitRequest }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -448,8 +460,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft], deleteDraft),
       createVisitsPort({ createVisit: () => of(changedDate) }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -469,8 +480,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft]),
       createVisitsPort({ createVisit: createVisitRequest, listVisits }),
-      createOccurrencesPort(),
-      createParkItemsPort()
+      createOccurrencesPort()
     );
     await facade.load();
 
@@ -491,8 +501,7 @@ describe('PassportAnonymousImportStateFacade', () => {
     const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
       createStore([draft], undefined, compareAndSet),
       createVisitsPort({ createVisit: createVisitRequest }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -514,8 +523,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       createVisitsPort({
         createVisit: () => throwError(() => new HttpErrorResponse({ status: 422 }))
       }),
-      createOccurrencesPort(),
-      createParkItemsPort()
+      createOccurrencesPort()
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -539,8 +547,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       }),
       createOccurrencesPort({
         importBatch: () => throwError(() => new HttpErrorResponse({ status: 404 }))
-      }),
-      createParkItemsPort()
+      })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -566,8 +573,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       }),
       createOccurrencesPort({
         importBatch: () => throwError(() => new HttpErrorResponse({ status: 409 }))
-      }),
-      createParkItemsPort()
+      })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -597,8 +603,7 @@ describe('PassportAnonymousImportStateFacade', () => {
         getVisit: () => of(existing),
         updateVisit: () => throwError(() => new HttpErrorResponse({ status: 409 }))
       }),
-      createOccurrencesPort({ importBatch }),
-      createParkItemsPort()
+      createOccurrencesPort({ importBatch })
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -622,8 +627,7 @@ describe('PassportAnonymousImportStateFacade', () => {
       createVisitsPort({
         createVisit: () => throwError(() => new HttpErrorResponse({ status: 0 }))
       }),
-      createOccurrencesPort(),
-      createParkItemsPort()
+      createOccurrencesPort()
     );
     await facade.load();
     await facade.prepareComparison(true);
@@ -675,6 +679,7 @@ function createOccurrencesPort(
   overrides: Partial<PassportAnonymousImportOccurrencesPort> = {}
 ): PassportAnonymousImportOccurrencesPort {
   return {
+    validateTargets: () => of(undefined),
     importBatch: () => of({
       occurrences: [
         createOccurrence('occurrence-1', 'server-1'),
@@ -684,32 +689,6 @@ function createOccurrencesPort(
       wasOrderNormalized: false
     }),
     list: () => of({ items: [], nextCursor: null }),
-    ...overrides
-  };
-}
-
-function createParkItemsPort(
-  overrides: Partial<PassportAnonymousImportParkItemsPort> = {}
-): PassportAnonymousImportParkItemsPort {
-  return {
-    getParkItemsByParkIdPage: (parkId: string): ReturnType<PassportAnonymousImportParkItemsPort['getParkItemsByParkIdPage']> =>
-      of<PagedResult<ParkItem>>({
-        items: [{
-          id: 'item-1',
-          parkId,
-          name: 'Attraction test',
-          category: 'Attraction',
-          type: 'Attraction',
-          latitude: null,
-          longitude: null
-        }],
-        pagination: {
-          currentPage: 1,
-          totalPages: 1,
-          totalItems: 1,
-          itemsPerPage: 100
-        }
-      }),
     ...overrides
   };
 }

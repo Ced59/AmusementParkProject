@@ -9,6 +9,20 @@ import { environment } from '../../../environments/environment';
 import { PassportRideOccurrencesApiService } from './passport-ride-occurrences-api.service';
 
 describe('PassportRideOccurrencesApiService', () => {
+  it('validates private ride targets through the passport scope', () => {
+    const httpClient = { post: vi.fn().mockReturnValue(of(undefined)) };
+    const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(
+      httpClient as unknown as HttpClient
+    );
+
+    service.validateTargets('park/one', ['ride-1', 'ride-2']).subscribe();
+
+    expect(httpClient.post).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/ride-targets:validate`,
+      { parkId: 'park/one', parkItemIds: ['ride-1', 'ride-2'] }
+    );
+  });
+
   it('loads private pages with transfer caching disabled', () => {
     const httpClient = { get: vi.fn().mockReturnValue(of({ items: [], nextCursor: null })) };
     const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(

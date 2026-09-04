@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable, Signal, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
-import { ParkItem } from '@app/models/parks/park-item';
 import {
   CreatePassportRideOccurrenceBatchItem,
   PassportRideOccurrence,
@@ -33,13 +32,10 @@ import {
 } from './passport-anonymous-draft-store.ports';
 import {
   PASSPORT_ANONYMOUS_IMPORT_OCCURRENCES_PORT,
-  PASSPORT_ANONYMOUS_IMPORT_PARK_ITEMS_PORT,
   PASSPORT_ANONYMOUS_IMPORT_VISITS_PORT,
   PassportAnonymousImportOccurrencesPort,
-  PassportAnonymousImportParkItemsPort,
   PassportAnonymousImportVisitsPort
 } from './passport-anonymous-import-data.ports';
-import { PagedResult } from '@shared/models/contracts';
 
 @Injectable()
 export class PassportAnonymousImportStateFacade {
@@ -70,9 +66,7 @@ export class PassportAnonymousImportStateFacade {
     @Inject(PASSPORT_ANONYMOUS_IMPORT_VISITS_PORT)
     private readonly visitsApi: PassportAnonymousImportVisitsPort,
     @Inject(PASSPORT_ANONYMOUS_IMPORT_OCCURRENCES_PORT)
-    private readonly occurrencesApi: PassportAnonymousImportOccurrencesPort,
-    @Inject(PASSPORT_ANONYMOUS_IMPORT_PARK_ITEMS_PORT)
-    private readonly parkItemsApi: PassportAnonymousImportParkItemsPort
+    private readonly occurrencesApi: PassportAnonymousImportOccurrencesPort
   ) {
   }
 
@@ -136,15 +130,23 @@ export class PassportAnonymousImportStateFacade {
       }
 
       this.previewsSignal.set(compared);
-      this.comparisonPreparedSignal.set(true);
       for (const preview of compared) {
         const lockedTargetId: string | null = preview.draft.pendingImport?.choice === 'Merge'
           ? preview.draft.pendingImport.targetVisitId
           : null;
         if (lockedTargetId) {
-          await this.setTargetVisit(preview.draft.id, lockedTargetId);
+          const targetStillEligible: boolean = preview.similarVisits.some(
+            (visit: PassportVisit): boolean =>
+              visit.id === lockedTargetId && visit.status === 'Draft'
+          );
+          if (targetStillEligible) {
+            await this.setTargetVisit(preview.draft.id, lockedTargetId);
+          } else {
+            await this.releaseUnavailableMergeReservation(preview);
+          }
         }
       }
+      this.comparisonPreparedSignal.set(true);
     } catch {
       this.errorKeySignal.set('passport.anonymousDrafts.import.errors.preview');
     } finally {
@@ -266,9 +268,8 @@ export class PassportAnonymousImportStateFacade {
     this.errorKeySignal.set(null);
     this.reportSignal.set(null);
     const results: PassportAnonymousImportReportItem[] = [];
-    const validParkItemIdsByPark: Map<string, Set<string>> = new Map<string, Set<string>>();
     for (const preview of this.previewsSignal()) {
-      results.push(await this.importDraft(preview, validParkItemIdsByPark));
+      results.push(await this.importDraft(preview));
     }
 
     const report: PassportAnonymousImportReport = {
@@ -320,8 +321,7 @@ export class PassportAnonymousImportStateFacade {
   }
 
   private async importDraft(
-    preview: PassportAnonymousDraftPreview,
-    validParkItemIdsByPark: Map<string, Set<string>>
+    preview: PassportAnonymousDraftPreview
   ): Promise<PassportAnonymousImportReportItem> {
     if (preview.decision.choice === 'Ignore') {
       return this.reportItem(preview, 'Ignored', null, 0, null);
@@ -333,7 +333,7 @@ export class PassportAnonymousImportStateFacade {
       serverMutationAcknowledged = true;
     };
     try {
-      await this.validateDraftRideTargets(preview.draft, validParkItemIdsByPark);
+      await this.validateDraftRideTargets(preview.draft);
       reservation = await this.lockImportIntent(preview);
       const target: PassportVisit = preview.decision.choice === 'Separate'
         ? await this.createVisit(reservation, acknowledgeServerMutation)
@@ -376,54 +376,45 @@ export class PassportAnonymousImportStateFacade {
   }
 
   private async validateDraftRideTargets(
-    draft: PassportAnonymousDraft,
-    validParkItemIdsByPark: Map<string, Set<string>>
+    draft: PassportAnonymousDraft
   ): Promise<void> {
     if (draft.rides.length === 0) {
       return;
     }
 
-    let validParkItemIds: Set<string> | undefined = validParkItemIdsByPark.get(draft.visit.parkId);
-    if (!validParkItemIds) {
-      validParkItemIds = await this.loadValidParkItemIds(draft.visit.parkId);
-      validParkItemIdsByPark.set(draft.visit.parkId, validParkItemIds);
-    }
-
-    const hasInvalidTarget: boolean = draft.rides.some(
-      (ride: PassportAnonymousRideDraft): boolean => !validParkItemIds.has(ride.parkItemId.trim())
+    const parkItemIds: string[] = Array.from(new Set<string>(
+      draft.rides.map((ride: PassportAnonymousRideDraft): string => ride.parkItemId.trim())
+    ));
+    await firstValueFrom(
+      this.occurrencesApi.validateTargets(draft.visit.parkId, parkItemIds)
     );
-    if (hasInvalidTarget) {
-      throw new Error('passport-anonymous-import.invalid-ride-target');
-    }
   }
 
-  private async loadValidParkItemIds(parkId: string): Promise<Set<string>> {
-    const identifiers: Set<string> = new Set<string>();
-    for (let page: number = 1; page <= PassportAnonymousImportStateFacade.MaximumPages; page += 1) {
-      const result: PagedResult<ParkItem> = await firstValueFrom(
-        this.parkItemsApi.getParkItemsByParkIdPage(
-          parkId,
-          page,
-          PassportAnonymousImportStateFacade.PageSize,
-          { closedFilter: 'all', category: 'Attraction' },
-          { closedFilter: 'all' }
-        )
-      );
-      for (const parkItem of result.items) {
-        const identifier: string = parkItem.id?.trim() ?? '';
-        if (identifier
-          && parkItem.parkId === parkId
-          && parkItem.category === 'Attraction') {
-          identifiers.add(identifier);
-        }
-      }
-
-      if (page >= result.pagination.totalPages) {
-        return identifiers;
-      }
+  private async releaseUnavailableMergeReservation(
+    preview: PassportAnonymousDraftPreview
+  ): Promise<void> {
+    const editableDraft: PassportAnonymousDraft = {
+      ...preview.draft,
+      pendingImport: null,
+      updatedAtUtc: new Date().toISOString()
+    };
+    const released: boolean = await this.store.compareAndSet(preview.draft, editableDraft);
+    if (!released) {
+      throw new Error('passport-anonymous-import.local-reservation-conflict');
     }
 
-    throw new Error('passport-anonymous-import.park-items-too-large');
+    this.updatePreview(preview.draft.id, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
+      ...current,
+      draft: editableDraft,
+      selectedTarget: null,
+      serverRides: null,
+      decision: {
+        draftId: editableDraft.id,
+        choice: 'Separate',
+        targetVisitId: null,
+        metadataChoice: 'KeepServer'
+      }
+    }));
   }
 
   private async releasePreMutationReservationIfSafe(
