@@ -7,21 +7,74 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserVisitMongoDefinitions
 {
+    public const string DeletedAtUtcPath = "deletedAtUtc";
+    public const string PurgeScheduledForUtcPath = "purgeScheduledForUtc";
+    public const string ExportInvalidationEnsuredAtUtcPath =
+        "exportInvalidationEnsuredAtUtc";
+    public const string ExportInvalidationFenceAtUtcPath =
+        "exportInvalidationFenceAtUtc";
+    public const string ExportInvalidationClaimTokenPath =
+        "exportInvalidationClaimToken";
+    public const string ExportInvalidationClaimExpiresAtUtcPath =
+        "exportInvalidationClaimExpiresAtUtc";
+    public const string PurgeJobEnsuredAtUtcPath = "purgeJobEnsuredAtUtc";
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
     public const string ContentMutationFenceTokenPath = "contentMutationFenceToken";
     public const string ContentMutationFenceStableTokenPath =
         "contentMutationFenceStableToken";
     public const string ContentMutationFenceReadyPath = "contentMutationFenceReady";
+    public const string AuditMaintenanceLeaseTokenPath =
+        "auditMaintenanceLeaseToken";
+    public const string AuditMaintenanceLeaseExpiresAtUtcPath =
+        "auditMaintenanceLeaseExpiresAtUtc";
+
+    public static FilterDefinition<UserVisitDocument> BuildAvailableAuditMaintenanceLeaseFilter(
+        DateTime nowUtc)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Or(
+            filters.Exists(AuditMaintenanceLeaseTokenPath, false),
+            filters.Eq(AuditMaintenanceLeaseTokenPath, BsonNull.Value),
+            filters.Exists(AuditMaintenanceLeaseExpiresAtUtcPath, false),
+            filters.Lte(AuditMaintenanceLeaseExpiresAtUtcPath, nowUtc));
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildAuditMaintenanceLeaseUpdate(
+        string token,
+        DateTime expiresAtUtc)
+    {
+        return Builders<UserVisitDocument>.Update
+            .Set(AuditMaintenanceLeaseTokenPath, token)
+            .Set(AuditMaintenanceLeaseExpiresAtUtcPath, expiresAtUtc);
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildAuditMaintenanceLeaseRelease()
+    {
+        return Builders<UserVisitDocument>.Update
+            .Unset(AuditMaintenanceLeaseTokenPath)
+            .Unset(AuditMaintenanceLeaseExpiresAtUtcPath);
+    }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnerFilter(string userId)
     {
         return Builders<UserVisitDocument>.Filter.Eq(
             static document => document.UserId,
-            NormalizeRequired(userId, nameof(userId)));
+            NormalizeRequired(userId, nameof(userId)))
+            & BuildNotDeletedFilter();
     }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnedVisitFilter(
+        string visitId,
+        string userId)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters = Builders<UserVisitDocument>.Filter;
+        return BuildOwnedAnyStateVisitFilter(visitId, userId)
+            & BuildNotDeletedFilter();
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedAnyStateVisitFilter(
         string visitId,
         string userId)
     {
@@ -32,6 +85,13 @@ internal static class UserVisitMongoDefinitions
             & filters.Eq(
                 static document => document.UserId,
                 NormalizeRequired(userId, nameof(userId)));
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildNotDeletedFilter()
+    {
+        return Builders<UserVisitDocument>.Filter.Eq<DateTime?>(
+            DeletedAtUtcPath,
+            null);
     }
 
     public static FilterDefinition<UserVisitDocument> BuildOwnedVersionFilter(
@@ -237,6 +297,30 @@ internal static class UserVisitMongoDefinitions
                 }),
             PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
                 "idx_user_visits_pending_audit"),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(PurgeJobEnsuredAtUtcPath)
+                    .Ascending(PurgeScheduledForUtcPath)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserVisitDocument>
+                {
+                    Name = "idx_user_visits_pending_purge_schedule",
+                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Exists(
+                        DeletedAtUtcPath,
+                        true),
+                }),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(ExportInvalidationEnsuredAtUtcPath)
+                    .Ascending(DeletedAtUtcPath)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserVisitDocument>
+                {
+                    Name = "idx_user_visits_pending_export_invalidation",
+                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Exists(
+                        DeletedAtUtcPath,
+                        true),
+                }),
         };
     }
 

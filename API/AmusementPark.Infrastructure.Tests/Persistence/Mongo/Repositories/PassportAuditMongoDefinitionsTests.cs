@@ -30,6 +30,14 @@ public sealed class PassportAuditMongoDefinitionsTests
                 { "_id", 1 },
             }));
         Assert.Contains(indexes, index =>
+            index.Options.Name == "idx_passport_audit_user_visit"
+            && Render(index.Keys).Equals(new BsonDocument
+            {
+                { "event.userId", 1 },
+                { "event.visitId", 1 },
+                { "_id", 1 },
+            }));
+        Assert.Contains(indexes, index =>
             index.Options.Name == "idx_passport_audit_entity_revision"
             && Render(index.Keys).Equals(new BsonDocument
             {

@@ -95,6 +95,26 @@ public sealed class GlobalRatingSuggestionPersistenceTests
     }
 
     [Fact]
+    public void OccurrenceFilter_RestrictsReadsToActiveVisits()
+    {
+        FilterDefinition<UserRideOccurrenceDocument> filter =
+            GlobalRatingSuggestionSourceReader.BuildOccurrenceFilter(
+                " owner-1 ",
+                new[] { "visit-active-1", "visit-active-2" },
+                new[] { "item-1" });
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("owner-1", rendered["userId"].AsString);
+        Assert.Equal(
+            new BsonArray { "visit-active-1", "visit-active-2" },
+            rendered["visitId"]["$in"].AsBsonArray);
+        Assert.Equal(
+            new BsonArray { "item-1" },
+            rendered["parkItemId"]["$in"].AsBsonArray);
+    }
+
+    [Fact]
     public void Indexes_EnforcePerUserTargetsAndBoundInteractionRetention()
     {
         IReadOnlyCollection<CreateIndexModel<GlobalRatingSuggestionStateDocument>> stateIndexes =

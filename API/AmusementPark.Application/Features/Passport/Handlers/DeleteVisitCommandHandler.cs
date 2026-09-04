@@ -1,0 +1,301 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Core.Domain.Visits;
+
+namespace AmusementPark.Application.Features.Passport.Handlers;
+
+public sealed class DeleteVisitCommandHandler
+    : ICommandHandler<DeleteVisitCommand, ApplicationResult<VisitDeletionReceipt>>
+{
+    private const int MaximumClientOperationIdLength = 128;
+    private readonly IUserVisitRepository visitRepository;
+    private readonly IVisitDeletionStore deletionStore;
+    private readonly IPassportExportRepository exportRepository;
+    private readonly IVisitContentMutationLeaseManager contentMutationLeaseManager;
+    private readonly IPassportPendingMutationReconciler pendingMutationReconciler;
+    private readonly IRideOccurrenceRepository occurrenceRepository;
+    private readonly VisitPurgeScheduler purgeScheduler;
+    private readonly IPassportAuditPublisher auditPublisher;
+    private readonly IPassportClock clock;
+
+    public DeleteVisitCommandHandler(
+        IUserVisitRepository visitRepository,
+        IVisitDeletionStore deletionStore,
+        IPassportExportRepository exportRepository,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager,
+        IPassportPendingMutationReconciler pendingMutationReconciler,
+        IRideOccurrenceRepository occurrenceRepository,
+        VisitPurgeScheduler purgeScheduler,
+        IPassportAuditPublisher auditPublisher,
+        IPassportClock clock)
+    {
+        this.visitRepository = visitRepository;
+        this.deletionStore = deletionStore;
+        this.exportRepository = exportRepository;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
+        this.pendingMutationReconciler = pendingMutationReconciler;
+        this.occurrenceRepository = occurrenceRepository;
+        this.purgeScheduler = purgeScheduler;
+        this.auditPublisher = auditPublisher;
+        this.clock = clock;
+    }
+
+    public async Task<ApplicationResult<VisitDeletionReceipt>> HandleAsync(
+        DeleteVisitCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(command.UserId)
+            || !VisitId.TryParse(command.VisitId, out VisitId visitId))
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitNotFound());
+        }
+
+        string? clientOperationId = NormalizeClientOperationId(command.ClientOperationId);
+        if (clientOperationId is null)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.InvalidIdempotencyKey());
+        }
+
+        string userId = command.UserId.Trim();
+        VisitDeletionReceipt? replay = await this.deletionStore.GetReceiptAsync(
+            visitId,
+            userId,
+            clientOperationId,
+            cancellationToken);
+        if (replay is not null)
+        {
+            await this.EnsureDeletionSideEffectsAsync(
+                visitId,
+                userId,
+                replay.DeletionVersion,
+                replay.PurgeScheduledForUtc,
+                replay.IsExportInvalidationEnsured,
+                cancellationToken);
+            return ApplicationResult<VisitDeletionReceipt>.Success(
+                replay with { WasReplayed = true });
+        }
+
+        if (command.ExpectedVersion < 1
+            || command.ConfirmedOccurrenceCount < 0
+            || command.ConfirmedAssessmentCount < 0)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.InvalidDeletionConfirmation());
+        }
+
+        Visit? visit = await this.visitRepository.GetOwnedAsync(
+            visitId,
+            userId,
+            cancellationToken);
+        if (visit is null)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitNotFound());
+        }
+
+        if (visit.Version != command.ExpectedVersion)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
+        if (visit.Status == VisitStatus.Draft
+            && !await this.pendingMutationReconciler
+                .ReconcileBeforeLifecycleTransitionAsync(
+                    visit,
+                    cancellationToken))
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
+        DateTime leaseAcquiredAtUtc = this.clock.UtcNow;
+        IVisitContentMutationLease? contentMutationLease = visit.Status == VisitStatus.Draft
+            ? await this.contentMutationLeaseManager.TryAcquireAsync(
+                visit,
+                leaseAcquiredAtUtc,
+                cancellationToken)
+            : null;
+        if (visit.Status == VisitStatus.Draft && contentMutationLease is null)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
+        if (contentMutationLease is not null
+            && await this.occurrenceRepository.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                contentMutationLease.ContentFenceToken,
+                guardedCancellationToken) is not null)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
+        VisitDeletionImpact impact = await this.deletionStore.GetImpactAsync(
+            visit.Id,
+            visit.UserId,
+            guardedCancellationToken);
+        long assessmentCount = impact.AssessmentCount
+            + (visit.ParkAssessment is null ? 0 : 1);
+        if (impact.OccurrenceCount != command.ConfirmedOccurrenceCount
+            || assessmentCount != command.ConfirmedAssessmentCount)
+        {
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitDeletionReceipt>.Failure(
+                    PassportApplicationErrors.DeletionPreviewChanged()));
+        }
+
+        DateTime deletedAtUtc = this.clock.UtcNow;
+        DateTime purgeScheduledForUtc = deletedAtUtc.Add(VisitDeletionPolicy.Retention);
+        PassportAuditEvent auditEvent = VisitDeletionAuditEventFactory.Create(
+            visit,
+            deletedAtUtc);
+        bool deleted = await this.deletionStore.TryTombstoneAsync(
+            new VisitDeletionTombstoneRequest(
+                visit.Id,
+                visit.UserId,
+                visit.Version,
+                clientOperationId,
+                deletedAtUtc,
+                purgeScheduledForUtc,
+                contentMutationLease?.Token,
+                auditEvent),
+            guardedCancellationToken);
+        if (!deleted)
+        {
+            VisitDeletionReceipt? concurrentReplay =
+                await this.deletionStore.GetReceiptAsync(
+                    visit.Id,
+                    visit.UserId,
+                    clientOperationId,
+                    cancellationToken);
+            if (concurrentReplay is not null)
+            {
+                contentMutationLease?.MarkMutationCompleted();
+                await this.EnsureDeletionSideEffectsAsync(
+                    visit.Id,
+                    visit.UserId,
+                    concurrentReplay.DeletionVersion,
+                    concurrentReplay.PurgeScheduledForUtc,
+                    concurrentReplay.IsExportInvalidationEnsured,
+                    cancellationToken);
+                return ApplicationResult<VisitDeletionReceipt>.Success(
+                    concurrentReplay with { WasReplayed = true });
+            }
+
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitDeletionReceipt>.Failure(
+                    PassportApplicationErrors.VisitConcurrencyConflict()));
+        }
+        contentMutationLease?.MarkMutationCompleted();
+
+        await this.EnsureDeletionSideEffectsAsync(
+            visit.Id,
+            visit.UserId,
+            visit.Version + 1,
+            purgeScheduledForUtc,
+            false,
+            cancellationToken);
+
+        await PassportAuditDelivery.PublishAsync(
+            this.auditPublisher,
+            auditEvent,
+            cancellationToken);
+        return ApplicationResult<VisitDeletionReceipt>.Success(
+            new VisitDeletionReceipt(
+                visit.Id.Value,
+                deletedAtUtc,
+                purgeScheduledForUtc,
+                visit.Version + 1,
+                false,
+                true));
+    }
+
+    private async Task EnsureDeletionSideEffectsAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime purgeScheduledForUtc,
+        bool isExportInvalidationEnsured,
+        CancellationToken cancellationToken)
+    {
+        if (!isExportInvalidationEnsured)
+        {
+            DateTime claimedAtUtc = this.clock.UtcNow;
+            VisitExportInvalidationClaim? claim =
+                await this.deletionStore.TryClaimExportInvalidationAsync(
+                    visitId,
+                    userId,
+                    deletionVersion,
+                    claimedAtUtc,
+                    claimedAtUtc.Add(
+                        VisitDeletionPolicy.ExportInvalidationClaimDuration),
+                    cancellationToken);
+            if (claim is not null)
+            {
+                DateTime invalidatedAtUtc = this.clock.UtcNow;
+                await this.exportRepository.InvalidateOwnedAsync(
+                    userId,
+                    claim.FenceAtUtc,
+                    invalidatedAtUtc,
+                    cancellationToken);
+                _ = await this.deletionStore.CompleteExportInvalidationAsync(
+                    visitId,
+                    userId,
+                    deletionVersion,
+                    claim.Token,
+                    this.clock.UtcNow,
+                    cancellationToken);
+            }
+        }
+
+        await this.purgeScheduler.ScheduleAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            GetRemainingPurgeDelay(purgeScheduledForUtc, this.clock.UtcNow),
+            cancellationToken);
+        _ = await this.deletionStore.MarkPurgeJobEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            this.clock.UtcNow,
+            cancellationToken);
+    }
+
+    private static TimeSpan GetRemainingPurgeDelay(
+        DateTime purgeScheduledForUtc,
+        DateTime nowUtc)
+    {
+        TimeSpan remaining = purgeScheduledForUtc - nowUtc;
+        return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
+    }
+
+    private static string? NormalizeClientOperationId(string? value)
+    {
+        string normalized = value?.Trim() ?? string.Empty;
+        if (normalized.Length is < 1 or > MaximumClientOperationIdLength
+            || normalized.Any(char.IsControl))
+        {
+            return null;
+        }
+
+        return normalized;
+    }
+}

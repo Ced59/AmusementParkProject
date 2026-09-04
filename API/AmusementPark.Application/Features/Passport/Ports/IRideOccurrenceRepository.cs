@@ -89,6 +89,7 @@ public interface IRideOccurrenceRepository
 
     Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
         string userId,
+        IReadOnlyCollection<VisitId> activeVisitIds,
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken);
 

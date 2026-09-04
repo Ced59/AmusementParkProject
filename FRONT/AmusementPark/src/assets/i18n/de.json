@@ -370,6 +370,26 @@
           "archived": "Der Besuch wurde archiviert."
         }
       },
+      "deletion": {
+        "eyebrow": "Sicheres Löschen",
+        "title": "Diesen Besuch löschen",
+        "description": "Damit werden der gesamte Besuch, seine Fahrten und privaten Bewertungen aus deinem Pass entfernt.",
+        "occurrences": "gelöschte Fahrten",
+        "assessments": "gelöschte Bewertungen",
+        "retention": "Der Besuch verschwindet sofort; die stapelweise Löschung ist nach einer Aufbewahrungsfrist von {{days}} Tagen geplant.",
+        "exportFirst": "Meinen Pass vorher exportieren",
+        "confirmation": "Ich verstehe, dass dieser Besuch und alle verknüpften Daten gelöscht werden.",
+        "confirmAction": "Besuch endgültig löschen",
+        "openAction": "Löschung vorbereiten",
+        "deleted": "Der Besuch wurde aus deinem Pass entfernt und seine Löschung ist geplant.",
+        "errors": {
+          "saveFirst": "Speichere oder verwirf zuerst deine aktuellen Änderungen.",
+          "changed": "Der Besuch wurde geändert. Prüfe vor der Bestätigung die neue Übersicht.",
+          "notFound": "Dieser Besuch existiert nicht mehr oder gehört dir nicht.",
+          "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Die Löschung wird nicht doppelt gestartet.",
+          "generic": "Die Löschung konnte nicht vorbereitet werden. Versuche es gleich noch einmal."
+        }
+      },
       "assessment": {
         "title": "Dein Eindruck von diesem Park",
         "description": "Bewerte genau diesen Besuch von 0,5 bis 5. Diese Beobachtung bleibt privat und verändert weder die Community-Bewertung noch die Ranglisten.",

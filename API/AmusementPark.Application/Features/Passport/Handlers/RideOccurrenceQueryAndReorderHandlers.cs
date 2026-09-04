@@ -13,13 +13,16 @@ namespace AmusementPark.Application.Features.Passport.Handlers;
 public sealed class GetRideOccurrenceQueryHandler
     : IQueryHandler<GetRideOccurrenceQuery, ApplicationResult<RideOccurrenceResult>>
 {
+    private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IVisitTargetResolver targetResolver;
 
     public GetRideOccurrenceQueryHandler(
+        IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver)
     {
+        this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
     }
@@ -33,6 +36,16 @@ public sealed class GetRideOccurrenceQueryHandler
             query.VisitId,
             query.OccurrenceId);
         if (scope is null)
+        {
+            return ApplicationResult<RideOccurrenceResult>.Failure(
+                PassportApplicationErrors.RideOccurrenceNotFound());
+        }
+
+        Visit? visit = await this.visitRepository.GetOwnedAsync(
+            scope.VisitId,
+            scope.UserId,
+            cancellationToken);
+        if (visit is null)
         {
             return ApplicationResult<RideOccurrenceResult>.Failure(
                 PassportApplicationErrors.RideOccurrenceNotFound());

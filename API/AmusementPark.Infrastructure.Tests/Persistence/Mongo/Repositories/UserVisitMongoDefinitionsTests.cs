@@ -24,6 +24,22 @@ public sealed class UserVisitMongoDefinitionsTests
 
         Assert.Equal("visit-1", rendered["_id"].AsString);
         Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.True(rendered[UserVisitMongoDefinitions.DeletedAtUtcPath].IsBsonNull);
+    }
+
+    [Fact]
+    public void BuildOwnedAnyStateVisitFilter_ShouldAllowDeletionAuditAndPurgeToSeeATombstone()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedAnyStateVisitFilter(
+                "visit-1",
+                "user-1");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.False(rendered.Contains(UserVisitMongoDefinitions.DeletedAtUtcPath));
     }
 
     [Fact]
@@ -140,7 +156,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(6, indexes.Length);
+        Assert.Equal(8, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -194,6 +210,26 @@ public sealed class UserVisitMongoDefinitionsTests
             "idx_user_visits_pending_audit",
             new BsonDocument("pendingAuditEvents.eventId", 1));
         Assert.NotNull(indexes[5].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[6],
+            "idx_user_visits_pending_purge_schedule",
+            new BsonDocument
+            {
+                { "purgeJobEnsuredAtUtc", 1 },
+                { "purgeScheduledForUtc", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[7],
+            "idx_user_visits_pending_export_invalidation",
+            new BsonDocument
+            {
+                { "exportInvalidationEnsuredAtUtc", 1 },
+                { "deletedAtUtc", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
         Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

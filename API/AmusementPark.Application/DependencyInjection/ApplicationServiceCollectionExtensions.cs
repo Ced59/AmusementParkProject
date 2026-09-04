@@ -115,6 +115,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();
         services.AddScoped<PassportExportScheduler>();
         services.AddDurableBackgroundJobHandler<PassportExportJobHandler>();
+        services.AddScoped<VisitPurgeScheduler>();
+        services.AddDurableBackgroundJobHandler<VisitPurgeJobHandler>();
         services.AddScoped<RideOccurrenceAppendOrderNormalizer>();
         services.AddScoped<IPassportPendingMutationReconciler,
             PassportPendingMutationReconciler>();

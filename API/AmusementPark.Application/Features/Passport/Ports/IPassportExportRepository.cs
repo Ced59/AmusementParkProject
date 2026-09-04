@@ -51,4 +51,10 @@ public interface IPassportExportRepository
         DateTime failedAtUtc,
         int maximumCount,
         CancellationToken cancellationToken);
+
+    Task InvalidateOwnedAsync(
+        string userId,
+        DateTime createdAtOrBeforeUtc,
+        DateTime invalidatedAtUtc,
+        CancellationToken cancellationToken);
 }

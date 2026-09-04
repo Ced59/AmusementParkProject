@@ -76,7 +76,8 @@ public sealed class GlobalRatingSuggestionSourceReader
                         parkIds)
                     & Builders<UserVisitDocument>.Filter.Ne(
                         static document => document.Status,
-                        AmusementPark.Core.Domain.Visits.VisitStatus.Archived))
+                        AmusementPark.Core.Domain.Visits.VisitStatus.Archived)
+                    & UserVisitMongoDefinitions.BuildNotDeletedFilter())
                 .Project(static document => new GlobalRatingSuggestionVisitSourceDocument
                 {
                     Id = document.Id,
@@ -98,25 +99,18 @@ public sealed class GlobalRatingSuggestionSourceReader
             .Select(static rating => rating.TargetId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
+        string[] activeVisitIds = visitSources
+            .Select(static visit => visit.Id)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
         List<GlobalRatingSuggestionOccurrenceSourceDocument> occurrenceSources =
-            parkItemIds.Length == 0
+            parkItemIds.Length == 0 || activeVisitIds.Length == 0
                 ? new List<GlobalRatingSuggestionOccurrenceSourceDocument>()
                 : await this.occurrences.Find(
-                        Builders<UserRideOccurrenceDocument>.Filter.Eq(
-                            static document => document.UserId,
-                            normalizedUserId)
-                        & Builders<UserRideOccurrenceDocument>.Filter.In(
-                            static document => document.ParkItemId,
-                            parkItemIds)
-                        & Builders<UserRideOccurrenceDocument>.Filter.Eq(
-                            static document => document.DeletedAtUtc,
-                            null)
-                        & Builders<UserRideOccurrenceDocument>.Filter.Ne(
-                            static document => document.CreationPendingCompletion,
-                            true)
-                        & Builders<UserRideOccurrenceDocument>.Filter.Ne(
-                            static document => document.Assessment,
-                            null))
+                        BuildOccurrenceFilter(
+                            normalizedUserId,
+                            activeVisitIds,
+                            parkItemIds))
                     .Project(static document => new GlobalRatingSuggestionOccurrenceSourceDocument
                     {
                         VisitId = document.VisitId,
@@ -142,6 +136,24 @@ public sealed class GlobalRatingSuggestionSourceReader
             Builders<UserRatingDocument>.Filter;
         return filters.Eq(static document => document.UserId, normalizedUserId)
             & filters.Ne(static document => document.IsMutationPlaceholder, true);
+    }
+
+    internal static FilterDefinition<UserRideOccurrenceDocument> BuildOccurrenceFilter(
+        string userId,
+        IReadOnlyCollection<string> activeVisitIds,
+        IReadOnlyCollection<string> parkItemIds)
+    {
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(activeVisitIds);
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        return filters.Eq(static document => document.UserId, normalizedUserId)
+            & filters.In(static document => document.VisitId, activeVisitIds)
+            & filters.In(static document => document.ParkItemId, parkItemIds)
+            & filters.Eq(static document => document.DeletedAtUtc, null)
+            & filters.Ne(static document => document.CreationPendingCompletion, true)
+            & filters.Ne(static document => document.Assessment, null);
     }
 
     internal static IReadOnlyCollection<GlobalRatingSuggestionSource> BuildSources(

@@ -152,16 +152,18 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
                 passportExport.UserId,
                 sourceBudget,
                 cancellationToken);
-        IReadOnlyCollection<RideOccurrence> occurrences =
+        IReadOnlyCollection<RideOccurrence> loadedOccurrences =
             await this.occurrenceRepository.ListAllOwnedForExportAsync(
                 passportExport.UserId,
+                visits.Select(static visit => visit.Id).ToArray(),
                 sourceBudget,
                 cancellationToken);
         string[] parkIds = visits.Select(static visit => visit.ParkId)
-            .Concat(occurrences.Select(static occurrence => occurrence.ParkId))
+            .Concat(loadedOccurrences.Select(static occurrence => occurrence.ParkId))
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        string[] parkItemIds = occurrences.Select(static occurrence => occurrence.ParkItemId)
+        string[] parkItemIds = loadedOccurrences
+            .Select(static occurrence => occurrence.ParkItemId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
         Task<IReadOnlyCollection<Park>> parksTask =
@@ -178,7 +180,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
             passportExport.Format,
             this.clock.UtcNow,
             visits,
-            occurrences,
+            loadedOccurrences,
             parks,
             await targetsTask);
     }

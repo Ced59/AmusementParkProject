@@ -220,6 +220,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
+        services.AddScoped<IVisitDeletionStore, MongoVisitDeletionStore>();
         services.AddScoped<IPassportItemStatisticsSourceReader,
             PassportItemStatisticsSourceReader>();
         services.AddScoped<IPassportScopeStatisticsSourceReader,
@@ -241,6 +242,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IVisitContentMutationLeaseManager, MongoVisitContentMutationLeaseManager>();
         services.AddHostedService<PassportAuditReconciliationBackgroundService>();
         services.AddHostedService<PassportExportReconciliationBackgroundService>();
+        services.AddHostedService<VisitDeletionReconciliationBackgroundService>();
         services.AddSingleton<IPassportClock, SystemPassportClock>();
         services.AddSingleton<IPassportTimeZoneValidator, SystemPassportTimeZoneValidator>();
         services.AddSingleton<IPassportLocalDateResolver, SystemPassportLocalDateResolver>();

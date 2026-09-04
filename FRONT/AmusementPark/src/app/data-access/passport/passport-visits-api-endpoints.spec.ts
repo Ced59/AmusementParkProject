@@ -26,4 +26,11 @@ describe('PASSPORT_VISITS_API_ENDPOINTS', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.reopen('visit/one')).toBe('me/passport/visits/visit%2Fone/reopen');
     expect(PASSPORT_VISITS_API_ENDPOINTS.archive('visit/one')).toBe('me/passport/visits/visit%2Fone/archive');
   });
+
+  it('keeps deletion preview and mutation scoped to the encoded visit', () => {
+    expect(PASSPORT_VISITS_API_ENDPOINTS.deletionPreview('visit/one'))
+      .toBe('me/passport/visits/visit%2Fone/deletion-preview');
+    expect(PASSPORT_VISITS_API_ENDPOINTS.delete('visit/one'))
+      .toBe('me/passport/visits/visit%2Fone');
+  });
 });

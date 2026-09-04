@@ -115,6 +115,35 @@ describe('PassportVisitsApiService', () => {
     expect(call[0]).toBe(`${environment.apiBaseUrl}me/passport/visits/visit%2Fone/assessment`);
     expect((call[1] as { params: { get: (name: string) => string | null } }).params.get('expectedVersion')).toBe('3');
   });
+
+  it('loads the deletion preview without transfer caching', () => {
+    const httpClient = { get: vi.fn().mockReturnValue(of({})) };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+
+    service.getDeletionPreview('visit/one').subscribe();
+
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone/deletion-preview`,
+      { transferCache: false }
+    );
+  });
+
+  it('deletes a visit with the confirmed impact and stable idempotency key', () => {
+    const httpClient = { delete: vi.fn().mockReturnValue(of({})) };
+    const service: PassportVisitsApiService = new PassportVisitsApiService(httpClient as unknown as HttpClient);
+    const request = {
+      expectedVersion: 3,
+      confirmedOccurrenceCount: 4,
+      confirmedAssessmentCount: 2
+    };
+
+    service.deleteVisit('visit/one', request, 'delete-1').subscribe();
+
+    const call: unknown[] = httpClient.delete.mock.calls[0];
+    expect(call[0]).toBe(`${environment.apiBaseUrl}me/passport/visits/visit%2Fone`);
+    expect((call[1] as { body: unknown }).body).toBe(request);
+    expect((call[1] as { headers: HttpHeaders }).headers.get('Idempotency-Key')).toBe('delete-1');
+  });
 });
 
 function createRequest(): CreatePassportVisitRequest {

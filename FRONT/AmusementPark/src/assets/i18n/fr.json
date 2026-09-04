@@ -370,6 +370,26 @@
           "archived": "La visite a été archivée."
         }
       },
+      "deletion": {
+        "eyebrow": "Suppression sécurisée",
+        "title": "Supprimer cette visite",
+        "description": "Cette action retire toute la visite, ses passages et ses notes privées de ton passeport.",
+        "occurrences": "passages supprimés",
+        "assessments": "notes supprimées",
+        "retention": "La visite disparaît immédiatement ; sa purge par lots est planifiée après un délai de {{days}} jours.",
+        "exportFirst": "Exporter mon passeport avant",
+        "confirmation": "Je comprends que cette visite et toutes ses données liées seront supprimées.",
+        "confirmAction": "Supprimer définitivement la visite",
+        "openAction": "Préparer la suppression",
+        "deleted": "La visite a été retirée de ton passeport et sa purge est planifiée.",
+        "errors": {
+          "saveFirst": "Enregistre ou annule d’abord tes modifications en cours.",
+          "changed": "La visite a changé. Vérifie le nouvel aperçu avant de confirmer.",
+          "notFound": "Cette visite n’existe plus ou ne t’appartient pas.",
+          "network": "La réponse du serveur n’est pas arrivée. Réessaie : la suppression ne sera pas lancée deux fois.",
+          "generic": "La suppression n’a pas pu être préparée. Réessaie dans un instant."
+        }
+      },
       "assessment": {
         "title": "Ton ressenti sur ce parc",
         "description": "Note cette visite précise de 0,5 à 5. Cette observation reste privée et ne modifie jamais la note ni le classement communautaires.",

@@ -1,4 +1,5 @@
 import { DestroyRef, WritableSignal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, ParamMap, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -39,6 +40,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-visit__details');
     expect(styles).toContain('.passport-editor__statistics-actions');
     expect(styles).toContain('.passport-occurrence__statistics');
+    expect(styles).toContain('.passport-visit-deletion__impact');
+    expect(styles).toContain('.passport-visit-deletion__actions');
   });
 
   it('opens park, year and attraction statistics inside the localized private profile', () => {
@@ -230,10 +233,14 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
       paramMap: visitParams.asObservable(),
       parent: parentRoute as ActivatedRoute
     };
-    const facade: Pick<PassportVisitEditorStateFacade, 'load' | 'changeLanguage' | 'retryLoad'> = {
+    const facade: Pick<
+      PassportVisitEditorStateFacade,
+      'load' | 'changeLanguage' | 'retryLoad' | 'deletedVisitId'
+    > = {
       load: vi.fn(),
       changeLanguage: vi.fn(),
-      retryLoad: vi.fn()
+      retryLoad: vi.fn(),
+      deletedVisitId: (() => null) as PassportVisitEditorStateFacade['deletedVisitId']
     };
     const router: Pick<Router, 'navigate'> = { navigate: vi.fn().mockResolvedValue(true) };
     const translationService: Pick<TranslationService, 'getCurrentLang'> = {
@@ -243,12 +250,14 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
       destroyed: false,
       onDestroy: vi.fn().mockReturnValue((): void => undefined)
     };
-    const component: PassportVisitEditorPageComponent = new PassportVisitEditorPageComponent(
-      facade as PassportVisitEditorStateFacade,
-      route as ActivatedRoute,
-      router as Router,
-      translationService as TranslationService,
-      destroyRef
+    const component: PassportVisitEditorPageComponent = TestBed.runInInjectionContext(
+      (): PassportVisitEditorPageComponent => new PassportVisitEditorPageComponent(
+        facade as PassportVisitEditorStateFacade,
+        route as ActivatedRoute,
+        router as Router,
+        translationService as TranslationService,
+        destroyRef
+      )
     );
     const controls = component as unknown as {
       searchControl: { setValue(value: string): void; value: string };

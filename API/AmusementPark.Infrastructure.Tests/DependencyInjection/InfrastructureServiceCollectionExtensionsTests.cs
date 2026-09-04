@@ -197,6 +197,11 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             static service => service.ServiceType == typeof(IHostedService)
                 && service.ImplementationType
                     == typeof(PassportAuditReconciliationBackgroundService));
+        Assert.Contains(
+            services,
+            static service => service.ServiceType == typeof(IHostedService)
+                && service.ImplementationType
+                    == typeof(VisitDeletionReconciliationBackgroundService));
     }
 
     [Fact]

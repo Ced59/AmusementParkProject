@@ -4,8 +4,11 @@ import { Observable } from 'rxjs';
 
 import {
   CreatePassportVisitRequest,
+  DeletePassportVisitRequest,
   MutatePassportVisitStatusRequest,
   PassportVisit,
+  PassportVisitDeletionPreview,
+  PassportVisitDeletionReceipt,
   PassportVisitPage,
   UpdatePassportVisitRequest,
   UpsertPassportVisitParkAssessmentRequest
@@ -55,6 +58,21 @@ export class PassportVisitsApiService {
 
   archiveVisit(visitId: string, expectedVersion: number): Observable<PassportVisit> {
     return this.mutateStatus(PASSPORT_VISITS_API_ENDPOINTS.archive(visitId), expectedVersion);
+  }
+
+  getDeletionPreview(visitId: string): Observable<PassportVisitDeletionPreview> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.deletionPreview(visitId)}`;
+    return this.http.get<PassportVisitDeletionPreview>(url, { transferCache: false });
+  }
+
+  deleteVisit(
+    visitId: string,
+    request: DeletePassportVisitRequest,
+    idempotencyKey: string
+  ): Observable<PassportVisitDeletionReceipt> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.delete(visitId)}`;
+    const headers: HttpHeaders = new HttpHeaders({ 'Idempotency-Key': idempotencyKey });
+    return this.http.delete<PassportVisitDeletionReceipt>(url, { body: request, headers });
   }
 
   upsertParkAssessment(

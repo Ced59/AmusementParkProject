@@ -137,6 +137,26 @@
         "errors": { "conflict": "A visita foi entretanto alterada. O estado atual foi recarregado; verifica os dados.", "recovery": "Não foi possível verificar a alteração. Os dados mantêm-se disponíveis; tenta novamente.", "save": "Não foi possível atualizar a visita.", "transition": "Esta mudança de estado não é possível para a visita.", "temporalMetadataLocked": "A data, o fuso horário e a convenção do dia da visita não podem mudar enquanto a visita tiver voltas registadas.", "saveBeforeStatus": "Guarda primeiro os dados alterados." },
         "messages": { "updated": "Os dados da visita foram atualizados.", "completed": "A visita está agora concluída.", "reopened": "A visita foi reaberta para correção.", "archived": "A visita foi arquivada." }
       },
+      "deletion": {
+        "eyebrow": "Eliminação segura",
+        "title": "Eliminar esta visita",
+        "description": "Esta ação remove do passaporte toda a visita, as voltas e as avaliações privadas.",
+        "occurrences": "voltas eliminadas",
+        "assessments": "avaliações eliminadas",
+        "retention": "A visita desaparece de imediato; a eliminação por lotes fica agendada após um período de conservação de {{days}} dias.",
+        "exportFirst": "Exportar primeiro o meu passaporte",
+        "confirmation": "Compreendo que esta visita e todos os dados associados serão eliminados.",
+        "confirmAction": "Eliminar definitivamente a visita",
+        "openAction": "Preparar a eliminação",
+        "deleted": "A visita foi removida do teu passaporte e a eliminação definitiva está programada.",
+        "errors": {
+          "saveFirst": "Guarda ou cancela primeiro as alterações em curso.",
+          "changed": "A visita foi alterada. Revê o novo resumo antes de confirmar.",
+          "notFound": "Esta visita já não existe ou não te pertence.",
+          "network": "A resposta do servidor não chegou. Tenta novamente: a eliminação não será iniciada duas vezes.",
+          "generic": "Não foi possível preparar a eliminação. Tenta novamente dentro de instantes."
+        }
+      },
       "assessment": {
         "title": "A tua impressão deste parque",
         "description": "Avalia esta visita específica de 0,5 a 5. Esta observação permanece privada e nunca altera a avaliação nem as classificações da comunidade.",

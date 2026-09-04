@@ -98,7 +98,8 @@ public sealed class PassportItemStatisticsSourceReader
                 static document => document.UserId,
                 IdentifierRules.NormalizeRequired(userId, nameof(userId)))
             & filters.In(static document => document.Id, visitIds)
-            & filters.Ne(static document => document.Status, VisitStatus.Archived);
+            & filters.Ne(static document => document.Status, VisitStatus.Archived)
+            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
     }
 
     internal static IReadOnlyCollection<PassportItemRideObservation> BuildObservations(

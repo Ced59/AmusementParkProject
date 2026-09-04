@@ -14,6 +14,11 @@
 .passport-visit__details,
 .passport-visit__form,
 .passport-visit__actions,
+.passport-visit-deletion,
+.passport-visit-deletion__heading,
+.passport-visit-deletion__heading > div,
+.passport-visit-deletion__impact,
+.passport-visit-deletion__actions,
 .passport-assessment,
 .passport-assessment__heading,
 .passport-assessment__heading > div,
@@ -34,6 +39,75 @@
 .passport-occurrence__actions,
 .passport-entry-form {
   min-width: 0;
+}
+
+.passport-visit-deletion {
+  display: grid;
+  gap: 0.85rem;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+  border: 1px solid color-mix(in srgb, var(--app-danger, #dc2626) 38%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-danger, #dc2626) 5%, var(--app-surface-2));
+  overflow: hidden;
+}
+
+.passport-visit-deletion__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.passport-visit-deletion__heading h3,
+.passport-visit-deletion__heading p,
+.passport-visit-deletion__retention {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit-deletion__heading h3 {
+  color: var(--app-heading);
+}
+
+.passport-visit-deletion__heading p,
+.passport-visit-deletion__retention {
+  color: var(--app-text-muted);
+  line-height: 1.45;
+}
+
+.passport-visit-deletion__heading > i {
+  color: var(--app-danger, #dc2626);
+  font-size: 1.35rem;
+}
+
+.passport-visit-deletion__impact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.passport-visit-deletion__impact > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.75rem;
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+}
+
+.passport-visit-deletion__impact strong {
+  color: var(--app-heading);
+  font-size: 1.3rem;
+}
+
+.passport-visit-deletion__impact span,
+.passport-visit-deletion__confirmation span {
+  overflow-wrap: anywhere;
+}
+
+.passport-visit-deletion__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
 .passport-visit {
@@ -1067,6 +1141,12 @@ textarea:focus-visible {
     width: 100%;
   }
 
+  .passport-visit-deletion__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
   .passport-editor__statistics-actions button,
   .passport-occurrence__statistics {
     width: 100%;
@@ -1082,10 +1162,16 @@ textarea:focus-visible {
   .passport-ride-assessment__delete-confirmation button,
   .passport-occurrence__actions > button,
   .passport-delete-confirmation button,
+  .passport-visit-deletion > button,
+  .passport-visit-deletion__actions button,
   .passport-selection__heading button {
     width: 100%;
     min-width: 0;
     justify-content: center;
+  }
+
+  .passport-visit-deletion__impact {
+    grid-template-columns: 1fr;
   }
 
   .passport-assessment__heading {

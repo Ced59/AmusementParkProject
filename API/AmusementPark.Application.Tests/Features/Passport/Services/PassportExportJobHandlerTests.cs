@@ -69,6 +69,8 @@ public sealed class PassportExportJobHandlerTests
         Mock<IRideOccurrenceRepository> occurrences = new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
         occurrences.Setup(repository => repository.ListAllOwnedForExportAsync(
                 "user-1",
+                It.Is<IReadOnlyCollection<VisitId>>(visitIds =>
+                    visitIds.SequenceEqual(new[] { visit.Id })),
                 It.Is<PassportExportSourceBudget>(budget =>
                     ReferenceEquals(budget, observedSourceBudget)),
                 It.IsAny<CancellationToken>()))
@@ -88,6 +90,7 @@ public sealed class PassportExportJobHandlerTests
         writer.Setup(value => value.Write(It.Is<PassportExportWriteRequest>(request =>
                 request.ExportId == exportId
                 && request.Visits.Count == 1
+                && request.RideOccurrences.Count == 0
                 && request.Parks["park-1"].Name == "Test Park")))
             .Returns(artifact);
         Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);

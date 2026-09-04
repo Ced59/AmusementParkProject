@@ -114,15 +114,20 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     public async Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
         string userId,
+        IReadOnlyCollection<VisitId> activeVisitIds,
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(activeVisitIds);
         ArgumentNullException.ThrowIfNull(sourceBudget);
         string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        if (activeVisitIds.Count == 0)
+        {
+            return Array.Empty<RideOccurrence>();
+        }
+
         using IAsyncCursor<UserRideOccurrenceDocument> cursor = await this.collection
-            .Find(Builders<UserRideOccurrenceDocument>.Filter.Eq(
-                static document => document.UserId,
-                normalizedUserId))
+            .Find(BuildExportFilter(normalizedUserId, activeVisitIds))
             .Sort(Builders<UserRideOccurrenceDocument>.Sort
                 .Ascending(static document => document.VisitId)
                 .Ascending(static document => document.SortPosition)
@@ -143,6 +148,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         return occurrences;
+    }
+
+    internal static FilterDefinition<UserRideOccurrenceDocument> BuildExportFilter(
+        string userId,
+        IReadOnlyCollection<VisitId> activeVisitIds)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        string[] visitIds = activeVisitIds
+            .Select(static visitId => visitId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        return filters.Eq(static document => document.UserId, userId)
+            & filters.In(static document => document.VisitId, visitIds)
+            & filters.Eq(static document => document.DeletedAtUtc, null)
+            & filters.Ne(static document => document.CreationPendingCompletion, true);
     }
 
     public async Task<PendingPassportMutationVisit?> GetPendingMutationFencedAsync(
