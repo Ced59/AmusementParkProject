@@ -156,7 +156,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(7, indexes.Length);
+        Assert.Equal(8, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -220,6 +220,16 @@ public sealed class UserVisitMongoDefinitionsTests
                 { "_id", 1 },
             });
         Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[7],
+            "idx_user_visits_pending_export_invalidation",
+            new BsonDocument
+            {
+                { "exportInvalidationEnsuredAtUtc", 1 },
+                { "deletedAtUtc", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
         Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

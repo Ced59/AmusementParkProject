@@ -18,6 +18,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     internal const string DeletionOperationKeyHashPath = "deletionOperationKeyHash";
     internal const string PurgeJobEnsuredAtUtcPath =
         UserVisitMongoDefinitions.PurgeJobEnsuredAtUtcPath;
+    internal const string ExportInvalidationEnsuredAtUtcPath =
+        UserVisitMongoDefinitions.ExportInvalidationEnsuredAtUtcPath;
     private readonly IMongoCollection<UserVisitDocument> visits;
     private readonly IMongoCollection<BsonDocument> rawVisits;
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
@@ -135,8 +137,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         return result.MatchedCount == 1;
     }
 
-    public async Task<IReadOnlyCollection<VisitDeletionPurgeCandidate>>
-        ListPendingPurgeSchedulingAsync(
+    public async Task<IReadOnlyCollection<VisitDeletionReconciliationCandidate>>
+        ListPendingDeletionReconciliationAsync(
             int maximumCount,
             CancellationToken cancellationToken)
     {
@@ -146,46 +148,55 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         }
 
         List<BsonDocument> documents = await this.rawVisits
-            .Find(BuildPendingPurgeSchedulingFilter())
+            .Find(BuildPendingDeletionReconciliationFilter())
             .Sort(Builders<BsonDocument>.Sort
                 .Ascending(PurgeScheduledForUtcPath)
                 .Ascending("_id"))
-            .Project(BuildPendingPurgeSchedulingProjection())
+            .Project(BuildPendingDeletionReconciliationProjection())
             .Limit(maximumCount)
             .ToListAsync(cancellationToken);
         return documents.Select(static document =>
-            new VisitDeletionPurgeCandidate(
+            new VisitDeletionReconciliationCandidate(
                 VisitId.Parse(document["_id"].AsString),
                 document["userId"].AsString,
                 document["version"].AsInt64,
-                document[PurgeScheduledForUtcPath].ToUniversalTime()))
+                document[DeletedAtUtcPath].ToUniversalTime(),
+                document[PurgeScheduledForUtcPath].ToUniversalTime(),
+                HasTimestamp(document, ExportInvalidationEnsuredAtUtcPath),
+                HasTimestamp(document, PurgeJobEnsuredAtUtcPath)))
             .ToArray();
     }
 
-    public async Task<bool> MarkPurgeJobEnsuredAsync(
+    public Task<bool> MarkExportInvalidationEnsuredAsync(
         VisitId visitId,
         string userId,
         long deletionVersion,
         DateTime ensuredAtUtc,
         CancellationToken cancellationToken)
     {
-        ValidateUtc(ensuredAtUtc, nameof(ensuredAtUtc));
-        if (deletionVersion < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(deletionVersion));
-        }
+        return this.MarkDeletionSideEffectEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            ExportInvalidationEnsuredAtUtcPath,
+            ensuredAtUtc,
+            cancellationToken);
+    }
 
-        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
-        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
-        UpdateResult result = await this.rawVisits.UpdateOneAsync(
-            filters.Eq("_id", visitId.Value)
-                & filters.Eq("userId", normalizedUserId)
-                & filters.Eq("version", deletionVersion)
-                & filters.Exists(DeletedAtUtcPath, true)
-                & filters.Exists(PurgeScheduledForUtcPath, true),
-            Builders<BsonDocument>.Update.Set(PurgeJobEnsuredAtUtcPath, ensuredAtUtc),
-            cancellationToken: cancellationToken);
-        return result.MatchedCount == 1;
+    public Task<bool> MarkPurgeJobEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.MarkDeletionSideEffectEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            PurgeJobEnsuredAtUtcPath,
+            ensuredAtUtc,
+            cancellationToken);
     }
 
     public async Task<VisitDeletionPurgeResult> PurgeBatchAsync(
@@ -439,25 +450,71 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             .Include("version");
     }
 
-    internal static FilterDefinition<BsonDocument> BuildPendingPurgeSchedulingFilter()
+    internal static FilterDefinition<BsonDocument>
+        BuildPendingDeletionReconciliationFilter()
     {
         FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
         return filters.Exists(DeletedAtUtcPath, true)
             & filters.Exists(PurgeScheduledForUtcPath, true)
             & filters.Gt("version", 0)
             & filters.Or(
-                filters.Exists(PurgeJobEnsuredAtUtcPath, false),
-                filters.Eq(PurgeJobEnsuredAtUtcPath, BsonNull.Value));
+                BuildMissingTimestampFilter(filters, ExportInvalidationEnsuredAtUtcPath),
+                BuildMissingTimestampFilter(filters, PurgeJobEnsuredAtUtcPath));
     }
 
     private static ProjectionDefinition<BsonDocument>
-        BuildPendingPurgeSchedulingProjection()
+        BuildPendingDeletionReconciliationProjection()
     {
         return Builders<BsonDocument>.Projection
             .Include("_id")
             .Include("userId")
             .Include("version")
-            .Include(PurgeScheduledForUtcPath);
+            .Include(DeletedAtUtcPath)
+            .Include(PurgeScheduledForUtcPath)
+            .Include(ExportInvalidationEnsuredAtUtcPath)
+            .Include(PurgeJobEnsuredAtUtcPath);
+    }
+
+    private async Task<bool> MarkDeletionSideEffectEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        string timestampPath,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ValidateUtc(ensuredAtUtc, nameof(ensuredAtUtc));
+        if (deletionVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(deletionVersion));
+        }
+
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
+        UpdateResult result = await this.rawVisits.UpdateOneAsync(
+            filters.Eq("_id", visitId.Value)
+                & filters.Eq("userId", normalizedUserId)
+                & filters.Eq("version", deletionVersion)
+                & filters.Exists(DeletedAtUtcPath, true)
+                & filters.Exists(PurgeScheduledForUtcPath, true),
+            Builders<BsonDocument>.Update.Set(timestampPath, ensuredAtUtc),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    private static FilterDefinition<BsonDocument> BuildMissingTimestampFilter(
+        FilterDefinitionBuilder<BsonDocument> filters,
+        string timestampPath)
+    {
+        return filters.Or(
+            filters.Exists(timestampPath, false),
+            filters.Eq(timestampPath, BsonNull.Value));
+    }
+
+    private static bool HasTimestamp(BsonDocument document, string path)
+    {
+        return document.TryGetValue(path, out BsonValue? value)
+            && value.IsBsonDateTime;
     }
 
     private static void ValidateUtc(DateTime value, string parameterName)

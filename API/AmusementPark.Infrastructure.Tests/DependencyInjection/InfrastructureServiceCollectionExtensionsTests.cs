@@ -201,7 +201,7 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             services,
             static service => service.ServiceType == typeof(IHostedService)
                 && service.ImplementationType
-                    == typeof(VisitPurgeReconciliationBackgroundService));
+                    == typeof(VisitDeletionReconciliationBackgroundService));
     }
 
     [Fact]

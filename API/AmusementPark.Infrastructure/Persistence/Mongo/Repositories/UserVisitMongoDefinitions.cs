@@ -9,6 +9,8 @@ internal static class UserVisitMongoDefinitions
 {
     public const string DeletedAtUtcPath = "deletedAtUtc";
     public const string PurgeScheduledForUtcPath = "purgeScheduledForUtc";
+    public const string ExportInvalidationEnsuredAtUtcPath =
+        "exportInvalidationEnsuredAtUtc";
     public const string PurgeJobEnsuredAtUtcPath = "purgeJobEnsuredAtUtc";
     public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
     public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
@@ -265,6 +267,18 @@ internal static class UserVisitMongoDefinitions
                 new CreateIndexOptions<UserVisitDocument>
                 {
                     Name = "idx_user_visits_pending_purge_schedule",
+                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Exists(
+                        DeletedAtUtcPath,
+                        true),
+                }),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(ExportInvalidationEnsuredAtUtcPath)
+                    .Ascending(DeletedAtUtcPath)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserVisitDocument>
+                {
+                    Name = "idx_user_visits_pending_export_invalidation",
                     PartialFilterExpression = Builders<UserVisitDocument>.Filter.Exists(
                         DeletedAtUtcPath,
                         true),

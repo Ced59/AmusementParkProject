@@ -64,15 +64,12 @@ public sealed class DeleteVisitCommandHandler
             cancellationToken);
         if (replay is not null)
         {
-            await this.EnsurePurgeScheduledAsync(
+            await this.EnsureDeletionSideEffectsAsync(
                 visitId,
                 userId,
                 replay.DeletionVersion,
-                replay.PurgeScheduledForUtc,
-                cancellationToken);
-            await this.exportRepository.InvalidateOwnedAsync(
-                userId,
                 replay.DeletedAtUtc,
+                replay.PurgeScheduledForUtc,
                 cancellationToken);
             return ApplicationResult<VisitDeletionReceipt>.Success(
                 replay with { WasReplayed = true });
@@ -161,15 +158,12 @@ public sealed class DeleteVisitCommandHandler
         }
         contentMutationLease?.MarkMutationCompleted();
 
-        await this.EnsurePurgeScheduledAsync(
+        await this.EnsureDeletionSideEffectsAsync(
             visit.Id,
             visit.UserId,
             visit.Version + 1,
-            purgeScheduledForUtc,
-            cancellationToken);
-        await this.exportRepository.InvalidateOwnedAsync(
-            visit.UserId,
             deletedAtUtc,
+            purgeScheduledForUtc,
             cancellationToken);
 
         await PassportAuditDelivery.PublishAsync(
@@ -185,13 +179,24 @@ public sealed class DeleteVisitCommandHandler
                 false));
     }
 
-    private async Task EnsurePurgeScheduledAsync(
+    private async Task EnsureDeletionSideEffectsAsync(
         VisitId visitId,
         string userId,
         long deletionVersion,
+        DateTime deletedAtUtc,
         DateTime purgeScheduledForUtc,
         CancellationToken cancellationToken)
     {
+        await this.exportRepository.InvalidateOwnedAsync(
+            userId,
+            deletedAtUtc,
+            cancellationToken);
+        _ = await this.deletionStore.MarkExportInvalidationEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            this.clock.UtcNow,
+            cancellationToken);
         await this.purgeScheduler.ScheduleAsync(
             visitId,
             userId,
