@@ -4,7 +4,20 @@
       "kicker": "Passaporte de visitas",
       "title": "Começa o teu histórico de parques",
       "description": "Guarda uma visita privada, mesmo que só te lembres do mês ou do ano.",
-      "action": "Adicionar uma visita"
+      "action": "Adicionar uma visita",
+      "openAction": "Ver o meu passaporte"
+    },
+    "overview": {
+      "kicker": "Passaporte de visitas",
+      "title": "Todas as tuas visitas num só lugar",
+      "description": "Encontra cada parque que guardaste e abre uma visita para adicionares atrações, memórias e as tuas avaliações privadas.",
+      "privacy": "Este passaporte é privado e apenas tu o podes ver.",
+      "actions": { "addVisit": "Adicionar uma visita", "addFirstVisit": "Adicionar a minha primeira visita", "backToProfile": "Voltar ao perfil", "openVisit": "Abrir a visita", "retry": "Tentar novamente", "loadMore": "Carregar mais visitas", "loadingMore": "A carregar…" },
+      "loading": { "title": "A abrir o teu passaporte", "description": "As tuas visitas privadas estão a ser carregadas." },
+      "errors": { "title": "Não foi possível abrir o teu passaporte", "load": "Não foi possível carregar as tuas visitas. Tenta novamente dentro de instantes.", "loadMore": "Não foi possível carregar mais visitas. As visitas já apresentadas continuam disponíveis." },
+      "empty": { "title": "O teu passaporte espera pela primeira visita", "description": "Adiciona um parque e a data de que te lembras para começares o teu histórico privado." },
+      "list": { "kicker": "Histórico privado", "title": "Todas as tuas visitas", "loadedCount": { "one": "1 visita carregada", "few": "{{count}} visitas carregadas", "many": "{{count}} visitas carregadas", "other": "{{count}} visitas carregadas" }, "privateNote": "Nota privada guardada" },
+      "status": { "Draft": "Rascunho", "Completed": "Concluída", "Archived": "Arquivada" }
     },
     "statistics": {
       "kicker": "Estatísticas do passaporte", "title": "As tuas estatísticas privadas", "private": "Privado", "loading": "A calcular as tuas estatísticas…", "navigationLabel": "Consultar as estatísticas desta visita", "summaryLabel": "Resumo das tuas estatísticas",

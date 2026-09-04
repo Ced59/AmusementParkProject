@@ -10,6 +10,7 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
+  effect,
   inject,
   signal
 } from '@angular/core';
@@ -18,7 +19,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PassportVisitDatePrecision } from '@app/models/passport/passport-visit.models';
+import { PassportVisit, PassportVisitDatePrecision } from '@app/models/passport/passport-visit.models';
 import { Dialog } from '@shared/ui/primitives/dialog';
 import { UiButtonDirective } from '@ui/primitives';
 import { PassportParkOption, PassportVisitQuickCreateDraft } from '../../models/passport-visit-quick-create.models';
@@ -49,6 +50,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
   @Input() fixedParkId: string | null = null;
   @Input() fixedParkName: string | null = null;
   @Output() visibleChange = new EventEmitter<boolean>();
+  @Output() visitCreated = new EventEmitter<PassportVisit>();
 
   protected readonly facade = inject(PassportVisitQuickCreateStateFacade);
   protected readonly selectedParkName = signal<string | null>(null);
@@ -70,8 +72,24 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
   private readonly renderer: Renderer2 = inject(Renderer2);
   private readonly router: Router = inject(Router);
   private modalLayerElement: HTMLElement | null = null;
+  private lastEmittedVisitId: string | null = null;
 
   constructor() {
+    effect((): void => {
+      const createdVisit: PassportVisit | null = this.facade.createdVisit();
+      if (!createdVisit) {
+        this.lastEmittedVisitId = null;
+        return;
+      }
+
+      if (createdVisit.id === this.lastEmittedVisitId) {
+        return;
+      }
+
+      this.lastEmittedVisitId = createdVisit.id;
+      this.visitCreated.emit(createdVisit);
+    });
+
     this.parkSearchControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((term: string): void => this.facade.searchParks(term));

@@ -104,6 +104,18 @@
   overflow-wrap: anywhere;
 }
 
+.profile-passport-entry__actions {
+  display: grid;
+  min-width: 0;
+  gap: 0.55rem;
+}
+
+.profile-passport-entry__actions button {
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+}
+
 .profile-passport-entry__copy h2 {
   color: var(--app-heading);
   font-size: 1.1rem;
@@ -353,11 +365,10 @@
     grid-template-columns: auto minmax(0, 1fr);
   }
 
-  .profile-passport-entry > button {
+  .profile-passport-entry__actions {
     grid-column: 1 / -1;
     width: 100%;
     min-width: 0;
-    justify-content: center;
   }
 }
 

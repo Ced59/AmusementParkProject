@@ -4,7 +4,20 @@
       "kicker": "Bezoekpaspoort",
       "title": "Begin je parkgeschiedenis",
       "description": "Bewaar een privébezoek, ook als je alleen de maand of het jaar nog weet.",
-      "action": "Bezoek toevoegen"
+      "action": "Bezoek toevoegen",
+      "openAction": "Mijn paspoort bekijken"
+    },
+    "overview": {
+      "kicker": "Bezoekpaspoort",
+      "title": "Al je bezoeken op één plek",
+      "description": "Vind elk park dat je hebt bewaard en open een bezoek om attracties, herinneringen en je privébeoordelingen toe te voegen.",
+      "privacy": "Dit paspoort is privé en alleen zichtbaar voor jou.",
+      "actions": { "addVisit": "Bezoek toevoegen", "addFirstVisit": "Mijn eerste bezoek toevoegen", "backToProfile": "Terug naar profiel", "openVisit": "Bezoek openen", "retry": "Opnieuw proberen", "loadMore": "Meer bezoeken laden", "loadingMore": "Laden…" },
+      "loading": { "title": "Je paspoort wordt geopend", "description": "Je privébezoeken worden geladen." },
+      "errors": { "title": "Je paspoort kon niet worden geopend", "load": "Je bezoeken konden niet worden geladen. Probeer het zo opnieuw.", "loadMore": "Meer bezoeken konden niet worden geladen. De bezoeken die al worden getoond, blijven beschikbaar." },
+      "empty": { "title": "Je paspoort wacht op het eerste bezoek", "description": "Voeg een park en de datum die je je herinnert toe om je privégeschiedenis te beginnen." },
+      "list": { "kicker": "Privégeschiedenis", "title": "Al je bezoeken", "loadedCount": { "one": "1 bezoek geladen", "few": "{{count}} bezoeken geladen", "many": "{{count}} bezoeken geladen", "other": "{{count}} bezoeken geladen" }, "privateNote": "Privénotitie opgeslagen" },
+      "status": { "Draft": "Concept", "Completed": "Voltooid", "Archived": "Gearchiveerd" }
     },
     "statistics": {
       "kicker": "Paspoortstatistieken", "title": "Je privestatistieken", "private": "Privé", "loading": "Je statistieken worden berekend…", "navigationLabel": "Statistieken van dit bezoek bekijken", "summaryLabel": "Samenvatting van je statistieken",

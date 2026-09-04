@@ -5,7 +5,7 @@ namespace AmusementPark.Application.Features.Passport.Services;
 
 internal static class PassportVisitResultFactory
 {
-    public static VisitResult Create(Visit visit)
+    public static VisitResult Create(Visit visit, string? parkName = null)
     {
         ArgumentNullException.ThrowIfNull(visit);
 
@@ -35,6 +35,7 @@ internal static class PassportVisitResultFactory
                     visit.ParkAssessment.PrivateComment,
                     visit.ParkAssessment.Revision,
                     visit.ParkAssessment.CreatedAtUtc,
-                    visit.ParkAssessment.UpdatedAtUtc));
+                    visit.ParkAssessment.UpdatedAtUtc),
+            parkName);
     }
 }

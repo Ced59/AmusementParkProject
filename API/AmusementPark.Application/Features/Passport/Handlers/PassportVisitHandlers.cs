@@ -258,10 +258,14 @@ public sealed class GetVisitQueryHandler : IQueryHandler<GetVisitQuery, Applicat
 public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>
 {
     private readonly IUserVisitRepository visitRepository;
+    private readonly IParkNameReadRepository parkNameReadRepository;
 
-    public ListUserVisitsQueryHandler(IUserVisitRepository visitRepository)
+    public ListUserVisitsQueryHandler(
+        IUserVisitRepository visitRepository,
+        IParkNameReadRepository parkNameReadRepository)
     {
         this.visitRepository = visitRepository;
+        this.parkNameReadRepository = parkNameReadRepository;
     }
 
     public async Task<ApplicationResult<VisitPageResult>> HandleAsync(
@@ -302,8 +306,19 @@ public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQue
                 query.Status,
                 query.After),
             cancellationToken);
+        string[] parkIds = page.Items
+            .Select(static visit => visit.ParkId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyDictionary<string, string?> parkNames = parkIds.Length == 0
+            ? new Dictionary<string, string?>(StringComparer.Ordinal)
+            : await this.parkNameReadRepository.GetNamesByIdsAsync(parkIds, cancellationToken);
         VisitPageResult result = new VisitPageResult(
-            page.Items.Select(PassportVisitResultFactory.Create).ToList(),
+            page.Items
+                .Select(visit => PassportVisitResultFactory.Create(
+                    visit,
+                    parkNames.GetValueOrDefault(visit.ParkId)))
+                .ToList(),
             page.NextCursor);
         return ApplicationResult<VisitPageResult>.Success(result);
     }

@@ -6,6 +6,7 @@ import {
   CreatePassportVisitRequest,
   MutatePassportVisitStatusRequest,
   PassportVisit,
+  PassportVisitPage,
   UpdatePassportVisitRequest,
   UpsertPassportVisitParkAssessmentRequest
 } from '@app/models/passport/passport-visit.models';
@@ -32,6 +33,11 @@ export class PassportVisitsApiService {
   getVisit(visitId: string): Observable<PassportVisit> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.getById(visitId)}`;
     return this.http.get<PassportVisit>(url, { transferCache: false });
+  }
+
+  listVisits(limit: number, cursor: string | null = null): Observable<PassportVisitPage> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_VISITS_API_ENDPOINTS.list(limit, cursor)}`;
+    return this.http.get<PassportVisitPage>(url, { transferCache: false });
   }
 
   updateVisit(visitId: string, request: UpdatePassportVisitRequest): Observable<PassportVisit> {

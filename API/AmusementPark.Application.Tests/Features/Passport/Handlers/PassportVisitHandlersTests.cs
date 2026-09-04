@@ -261,6 +261,7 @@ public sealed class PassportVisitHandlersTests
             visit.UpdatedAtUtc,
             visit.Id);
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IParkNameReadRepository> parkNames = new Mock<IParkNameReadRepository>(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedAsync(
                 It.Is<UserVisitListCriteria>(criteria =>
                     criteria.UserId == "owner-1"
@@ -271,7 +272,16 @@ public sealed class PassportVisitHandlersTests
                     && criteria.After == cursor),
                 CancellationToken.None))
             .ReturnsAsync(new UserVisitPage(new[] { visit }, cursor));
-        ListUserVisitsQueryHandler handler = new ListUserVisitsQueryHandler(visits.Object);
+        parkNames.Setup(repository => repository.GetNamesByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, string?>
+            {
+                ["park-1"] = "Parc test",
+            });
+        ListUserVisitsQueryHandler handler = new ListUserVisitsQueryHandler(
+            visits.Object,
+            parkNames.Object);
 
         ApplicationResult<VisitPageResult> result = await handler.HandleAsync(
             new ListUserVisitsQuery(
@@ -283,16 +293,22 @@ public sealed class PassportVisitHandlersTests
                 cursor));
 
         Assert.True(result.IsSuccess);
-        Assert.Equal("visit-1", Assert.Single(result.Value!.Items).Id);
+        VisitResult item = Assert.Single(result.Value!.Items);
+        Assert.Equal("visit-1", item.Id);
+        Assert.Equal("Parc test", item.ParkName);
         Assert.Equal(cursor, result.Value.NextCursor);
         visits.VerifyAll();
+        parkNames.VerifyAll();
     }
 
     [Fact]
     public async Task ListVisits_WhenLimitIsUnbounded_ShouldFailBeforePersistence()
     {
         Mock<IUserVisitRepository> visits = new Mock<IUserVisitRepository>(MockBehavior.Strict);
-        ListUserVisitsQueryHandler handler = new ListUserVisitsQueryHandler(visits.Object);
+        Mock<IParkNameReadRepository> parkNames = new Mock<IParkNameReadRepository>(MockBehavior.Strict);
+        ListUserVisitsQueryHandler handler = new ListUserVisitsQueryHandler(
+            visits.Object,
+            parkNames.Object);
 
         ApplicationResult<VisitPageResult> result = await handler.HandleAsync(
             new ListUserVisitsQuery("owner-1", UserVisitListCriteria.MaximumLimit + 1));
@@ -300,6 +316,7 @@ public sealed class PassportVisitHandlersTests
         Assert.False(result.IsSuccess);
         Assert.Equal("visit.list-limit-invalid", Assert.Single(result.Errors).Code);
         visits.VerifyNoOtherCalls();
+        parkNames.VerifyNoOtherCalls();
     }
 
     private static CreateVisitCommandHandler CreateHandler(

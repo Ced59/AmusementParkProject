@@ -44,7 +44,52 @@
       "kicker": "Pasaporte de visitas",
       "title": "Empieza tu historial de parques",
       "description": "Guarda una visita privada aunque solo recuerdes el mes o el año.",
-      "action": "Añadir una visita"
+      "action": "Añadir una visita",
+      "openAction": "Ver mi pasaporte"
+    },
+    "overview": {
+      "kicker": "Pasaporte de visitas",
+      "title": "Todas tus visitas en un solo lugar",
+      "description": "Encuentra cada parque que guardaste y abre una visita para añadir atracciones, recuerdos y tus valoraciones privadas.",
+      "privacy": "Este pasaporte es privado y solo tú puedes verlo.",
+      "actions": {
+        "addVisit": "Añadir una visita",
+        "addFirstVisit": "Añadir mi primera visita",
+        "backToProfile": "Volver al perfil",
+        "openVisit": "Abrir la visita",
+        "retry": "Reintentar",
+        "loadMore": "Cargar más visitas",
+        "loadingMore": "Cargando…"
+      },
+      "loading": {
+        "title": "Abriendo tu pasaporte",
+        "description": "Tus visitas privadas se están cargando."
+      },
+      "errors": {
+        "title": "No se ha podido abrir tu pasaporte",
+        "load": "No se han podido cargar tus visitas. Vuelve a intentarlo en un momento.",
+        "loadMore": "No se han podido cargar más visitas. Las visitas que ya se muestran siguen disponibles."
+      },
+      "empty": {
+        "title": "Tu pasaporte espera su primera visita",
+        "description": "Añade un parque y la fecha que recuerdes para empezar tu historial privado."
+      },
+      "list": {
+        "kicker": "Historial privado",
+        "title": "Todas tus visitas",
+        "loadedCount": {
+          "one": "1 visita cargada",
+          "few": "{{count}} visitas cargadas",
+          "many": "{{count}} visitas cargadas",
+          "other": "{{count}} visitas cargadas"
+        },
+        "privateNote": "Nota privada guardada"
+      },
+      "status": {
+        "Draft": "Borrador",
+        "Completed": "Completada",
+        "Archived": "Archivada"
+      }
     },
     "statistics": {
       "kicker": "Estadísticas del pasaporte",

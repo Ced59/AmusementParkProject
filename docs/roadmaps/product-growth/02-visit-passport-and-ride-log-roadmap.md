@@ -494,6 +494,8 @@ Depuis :
 - export et suppression ;
 - possibilité de commencer par une seule visite.
 
+État livré : le profil expose séparément l'ouverture du passeport et l'ajout rapide. La route privée `/:lang/profile/passport` liste les visites par curseur, ouvre leur détail et conserve un repli explicite pour un parc historique devenu indisponible. La projection de liste est légère et les noms de parcs sont hydratés en un seul lot, sans N+1.
+
 ## 7.2 Créer une visite depuis une fiche parc
 
 Flux court :
@@ -1221,7 +1223,7 @@ Chaque flag : propriétaire, valeur par défaut, date de retrait, comportement d
 | `PASS-02` | Core `Visit`, statuts, date, confidentialité | Tests purs complets |
 | `PASS-03` | Repository visites + indexes + tests Mongo | CRUD propriétaire fiable |
 | `PASS-04` | API création/liste/détail de visite | Contrat OpenAPI additif |
-| `PASS-05` | UI création rapide depuis parc et profil | Visite privée créée simplement |
+| `PASS-05` | UI création rapide depuis parc et profil | Visite privée créée et historique accessible |
 | `PASS-06` | Core/persistance `RideOccurrence` | N occurrences fiables et idempotentes |
 | `PASS-07` | API batch + réordonnancement | Double clic/retry sans doublon |
 | `PASS-08` | UI sélection multiple et timeline | Saisie rétrospective utilisable |

@@ -1,5 +1,9 @@
 export const PASSPORT_VISITS_API_ENDPOINTS = {
   create: 'me/passport/visits',
+  list: (limit: number, cursor: string | null): string => {
+    const cursorQuery: string = cursor ? `&cursor=${encodeURIComponent(cursor)}` : '';
+    return `me/passport/visits?limit=${limit}${cursorQuery}`;
+  },
   getById: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}`,
   update: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}`,
   complete: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/complete`,

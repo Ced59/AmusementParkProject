@@ -9,6 +9,12 @@ describe('PASSPORT_VISITS_API_ENDPOINTS', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.getById('visit/one')).toBe('me/passport/visits/visit%2Fone');
   });
 
+  it('encodes cursor pagination on the owner-scoped visit list', () => {
+    expect(PASSPORT_VISITS_API_ENDPOINTS.list(20, null)).toBe('me/passport/visits?limit=20');
+    expect(PASSPORT_VISITS_API_ENDPOINTS.list(20, 'next+page'))
+      .toBe('me/passport/visits?limit=20&cursor=next%2Bpage');
+  });
+
   it('keeps the park assessment nested under its owned visit', () => {
     expect(PASSPORT_VISITS_API_ENDPOINTS.assessment('visit/one'))
       .toBe('me/passport/visits/visit%2Fone/assessment');

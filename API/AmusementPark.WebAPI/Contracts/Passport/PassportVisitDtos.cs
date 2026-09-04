@@ -111,6 +111,8 @@ public sealed class PassportVisitDto
 
     public string ParkId { get; init; } = string.Empty;
 
+    public string? ParkName { get; init; }
+
     public PassportVisitDateDto Date { get; init; } = new PassportVisitDateDto();
 
     public string? TimeZoneId { get; init; }
@@ -124,6 +126,8 @@ public sealed class PassportVisitDto
     public string? Title { get; init; }
 
     public string? PrivateNote { get; init; }
+
+    public bool HasPrivateNote { get; init; }
 
     public PassportVisitParkAssessmentDto? ParkAssessment { get; init; }
 

@@ -94,6 +94,8 @@ public sealed class PassportVisitsControllerTests
     {
         VisitResult assessedVisit = CreateResult("visit-1") with
         {
+            ParkName = "Parc test",
+            PrivateNote = "Souvenir privé",
             ParkAssessment = new VisitParkAssessmentResult(
                 4.5,
                 new string('x', 4000),
@@ -119,6 +121,9 @@ public sealed class PassportVisitsControllerTests
             Assert.IsType<OkObjectResult>(result).Value);
         PassportVisitDto item = Assert.Single(page.Items);
         Assert.Equal("visit-1", item.Id);
+        Assert.Equal("Parc test", item.ParkName);
+        Assert.Null(item.PrivateNote);
+        Assert.True(item.HasPrivateNote);
         Assert.Null(item.ParkAssessment);
         list.VerifyAll();
     }

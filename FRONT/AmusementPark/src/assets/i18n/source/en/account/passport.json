@@ -4,7 +4,52 @@
       "kicker": "Visit passport",
       "title": "Start your park history",
       "description": "Save a private visit even if you only remember the month or year.",
-      "action": "Add a visit"
+      "action": "Add a visit",
+      "openAction": "View my passport"
+    },
+    "overview": {
+      "kicker": "Visit passport",
+      "title": "All your visits in one place",
+      "description": "Find every park you saved and open a visit to add attractions, memories and your private ratings.",
+      "privacy": "This passport is private and only visible to you.",
+      "actions": {
+        "addVisit": "Add a visit",
+        "addFirstVisit": "Add my first visit",
+        "backToProfile": "Back to profile",
+        "openVisit": "Open visit",
+        "retry": "Try again",
+        "loadMore": "Load more visits",
+        "loadingMore": "Loading…"
+      },
+      "loading": {
+        "title": "Opening your passport",
+        "description": "Your private visits are loading."
+      },
+      "errors": {
+        "title": "Your passport could not be opened",
+        "load": "Your visits could not be loaded. Try again in a moment.",
+        "loadMore": "More visits could not be loaded. The visits already shown remain available."
+      },
+      "empty": {
+        "title": "Your passport is waiting for its first visit",
+        "description": "Add a park and the date you remember to start your private history."
+      },
+      "list": {
+        "kicker": "Private history",
+        "title": "All your visits",
+        "loadedCount": {
+          "one": "1 visit loaded",
+          "few": "{{count}} visits loaded",
+          "many": "{{count}} visits loaded",
+          "other": "{{count}} visits loaded"
+        },
+        "privateNote": "Private note saved"
+      },
+      "status": {
+        "Draft": "Draft",
+        "Completed": "Completed",
+        "Archived": "Archived"
+      }
     },
     "statistics": {
       "kicker": "Passport statistics",
