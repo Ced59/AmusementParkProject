@@ -35,7 +35,9 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         string contentType = request.Format == PassportExportFormat.Json
             ? "application/json; charset=utf-8"
             : "application/zip";
-        string date = request.ExportedAtUtc.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture);
+        string date = request.ExportedAtUtc.ToString(
+            "yyyyMMdd-HHmmss-fffffff",
+            CultureInfo.InvariantCulture);
         return new PassportExportArtifact(
             $"amusement-park-passport-{date}.{extension}",
             contentType,

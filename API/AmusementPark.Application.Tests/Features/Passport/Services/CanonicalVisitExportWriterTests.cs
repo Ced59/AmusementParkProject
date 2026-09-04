@@ -132,6 +132,24 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void Write_WhenTwoExportsCompleteInTheSameSecond_ShouldKeepUniqueReadableFileNames()
+    {
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+        PassportExportWriteRequest firstRequest = CreateRequest(PassportExportFormat.Json);
+        PassportExportWriteRequest secondRequest = firstRequest with
+        {
+            ExportedAtUtc = firstRequest.ExportedAtUtc.AddTicks(1),
+        };
+
+        PassportExportArtifact first = writer.Write(firstRequest);
+        PassportExportArtifact second = writer.Write(secondRequest);
+
+        Assert.NotEqual(first.FileName, second.FileName);
+        Assert.DoesNotContain(firstRequest.ExportId, first.FileName, StringComparison.Ordinal);
+        Assert.DoesNotContain(secondRequest.ExportId, second.FileName, StringComparison.Ordinal);
+    }
+
     private static PassportExportWriteRequest CreateRequest(PassportExportFormat format)
     {
         Visit visit = Visit.Create(
