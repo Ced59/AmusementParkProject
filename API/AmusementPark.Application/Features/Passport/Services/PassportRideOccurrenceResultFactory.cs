@@ -8,9 +8,16 @@ internal static class PassportRideOccurrenceResultFactory
 {
     public static RideOccurrenceResult Create(
         RideOccurrence occurrence,
-        VisitTarget? target = null)
+        VisitTarget? target = null,
+        VisitDate? visitDate = null)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
+        HistoricalConsistency historicalConsistency = target is not null && visitDate is not null
+            ? RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
+                visitDate,
+                target.OpeningDate,
+                target.ClosingDate)
+            : occurrence.HistoricalConsistency;
         return new RideOccurrenceResult(
             occurrence.Id.Value,
             occurrence.VisitId.Value,
@@ -22,7 +29,7 @@ internal static class PassportRideOccurrenceResultFactory
                 occurrence.Moment.IsApproximate),
             occurrence.Status,
             occurrence.Source,
-            occurrence.HistoricalConsistency,
+            historicalConsistency,
             occurrence.PrivateNote,
             occurrence.CountsAsRide,
             occurrence.Version,

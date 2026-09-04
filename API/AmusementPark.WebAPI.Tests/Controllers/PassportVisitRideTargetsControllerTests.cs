@@ -74,7 +74,7 @@ public sealed class PassportVisitRideTargetsControllerTests
     {
         RouteAttribute? route = typeof(PassportVisitRideTargetsController)
             .GetCustomAttribute<RouteAttribute>();
-        Assert.Equal("me/passport/visits/{visitId}/ride-targets", route?.Template);
+        Assert.Equal("me/passport/visits/{visitId}/ride-targets:evaluate", route?.Template);
         AuthorizeAttribute authorize = Assert.Single(
             typeof(PassportVisitRideTargetsController).GetCustomAttributes<AuthorizeAttribute>(),
             static attribute => attribute.GetType() == typeof(AuthorizeAttribute));
@@ -87,7 +87,7 @@ public sealed class PassportVisitRideTargetsControllerTests
         HttpPostAttribute? post = typeof(PassportVisitRideTargetsController)
             .GetMethod(nameof(PassportVisitRideTargetsController.EvaluateAsync))
             ?.GetCustomAttribute<HttpPostAttribute>();
-        Assert.Equal(":evaluate", post?.Template);
+        Assert.Null(post?.Template);
     }
 
     private static ControllerContext CreateControllerContext()

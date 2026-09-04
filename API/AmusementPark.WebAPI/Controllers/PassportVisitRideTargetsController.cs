@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AmusementPark.WebAPI.Controllers;
 
 [ApiController]
-[Route("me/passport/visits/{visitId}/ride-targets")]
+[Route("me/passport/visits/{visitId}/ride-targets:evaluate")]
 [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
 [RequireActivatedUnblockedUser]
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
@@ -33,7 +33,7 @@ public sealed class PassportVisitRideTargetsController : ControllerBase
         this.evaluateHandler = evaluateHandler;
     }
 
-    [HttpPost(":evaluate")]
+    [HttpPost]
     [ProducesResponseType(
         typeof(IReadOnlyCollection<PassportVisitRideTargetEvaluationDto>),
         StatusCodes.Status200OK)]

@@ -68,7 +68,7 @@ public sealed class GetRideOccurrenceQueryHandler
                 cancellationToken);
         targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
         return ApplicationResult<RideOccurrenceResult>.Success(
-            PassportRideOccurrenceResultFactory.Create(occurrence, target));
+            PassportRideOccurrenceResultFactory.Create(occurrence, target, visit.Date));
     }
 }
 
@@ -132,7 +132,7 @@ public sealed class ListRideOccurrencesQueryHandler
                 page.Items.Select(occurrence =>
                 {
                     targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
-                    return PassportRideOccurrenceResultFactory.Create(occurrence, target);
+                    return PassportRideOccurrenceResultFactory.Create(occurrence, target, visit.Date);
                 }).ToArray(),
                 page.NextCursor));
     }

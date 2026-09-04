@@ -2028,6 +2028,7 @@ export class PassportVisitEditorStateFacade {
     }
     if (temporalMetadataChanged) {
       this.refreshLoadedTargetEvaluations(visit.id);
+      this.reloadTimeline();
     }
   }
 

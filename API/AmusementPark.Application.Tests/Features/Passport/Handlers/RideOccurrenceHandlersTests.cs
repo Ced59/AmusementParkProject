@@ -1322,8 +1322,8 @@ public sealed class RideOccurrenceHandlersTests
             visit.ParkId,
             "Batch-resolved ride",
             ParkItemCategory.Attraction,
-            null,
-            null,
+            new DateOnly(2000, 1, 1),
+            new DateOnly(2020, 12, 31),
             "ClosedDefinitively");
         Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
         ListRideOccurrencesQueryHandler handler = new ListRideOccurrencesQueryHandler(
@@ -1339,6 +1339,7 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal("occurrence-1", item.Id);
         Assert.Equal("Batch-resolved ride", item.Target?.Name);
         Assert.Equal("ClosedDefinitively", item.Target?.LifecycleStatus);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, item.HistoricalConsistency);
         visits.VerifyAll();
         occurrences.VerifyAll();
         targets.VerifyAll();

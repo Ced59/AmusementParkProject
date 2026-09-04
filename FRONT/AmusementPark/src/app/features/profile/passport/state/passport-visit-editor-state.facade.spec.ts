@@ -312,6 +312,7 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.metadataHasChanges()).toBe(false);
     expect(facade.selectedAttractions()[0].historicalConsistency).toBe('ConfirmedConflict');
     expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
   it('preserves submitted metadata when conflict reconciliation loads another version', () => {
