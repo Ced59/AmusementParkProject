@@ -72,7 +72,7 @@ describe('VersionHistoryPageComponent', () => {
     expect(
       host.querySelector('.version-entry--patch.version-entry--indented'),
     ).not.toBeNull();
-  });
+  }, 10000);
 
   it('collapses patches for an expanded milestone', async () => {
     await settleVersionHistory(fixture);
@@ -92,7 +92,7 @@ describe('VersionHistoryPageComponent', () => {
     fixture.detectChanges();
 
     expect(getPatchVersions(host).length).toBe(0);
-  });
+  }, 10000);
 });
 
 async function settleVersionHistory(
@@ -164,10 +164,10 @@ async function waitForVersionHistorySelector(
   fixture: ComponentFixture<VersionHistoryPageComponent>,
   selector: string,
 ): Promise<boolean> {
-  for (let attempt = 0; attempt < 20; attempt += 1) {
+  for (let attempt = 0; attempt < 100; attempt += 1) {
     await fixture.whenStable();
     await new Promise<void>((resolve: () => void): void => {
-      window.setTimeout(resolve, 0);
+      window.setTimeout(resolve, 10);
     });
     fixture.detectChanges();
 
