@@ -1,6 +1,20 @@
 {
-  "version": "5.0.19",
+  "version": "5.0.20",
   "history": [
+    {
+      "version": "5.0.20",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Les règles de qualité du projet ont été renforcées.",
+        "en": "The project's quality rules have been strengthened.",
+        "de": "Die Qualitätsregeln des Projekts wurden verschärft.",
+        "nl": "De kwaliteitsregels van het project zijn aangescherpt.",
+        "it": "Le regole di qualità del progetto sono state rafforzate.",
+        "es": "Se han reforzado las normas de calidad del proyecto.",
+        "pl": "Zasady jakości projektu zostały zaostrzone.",
+        "pt": "As regras de qualidade do projeto foram reforçadas."
+      }
+    },
     {
       "version": "5.0.19",
       "releasedAt": "2026-09-04",
