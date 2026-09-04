@@ -125,10 +125,27 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
         Visit visit,
         CancellationToken cancellationToken)
     {
+        await using IVisitContentMutationLease? contentMutationLease =
+            await this.TryAcquireReconciledLifecycleLeaseAsync(
+                visit,
+                cancellationToken);
+        if (contentMutationLease is null)
+        {
+            return false;
+        }
+
+        contentMutationLease.MarkMutationCompleted();
+        return true;
+    }
+
+    public async Task<IVisitContentMutationLease?> TryAcquireReconciledLifecycleLeaseAsync(
+        Visit visit,
+        CancellationToken cancellationToken)
+    {
         ArgumentNullException.ThrowIfNull(visit);
         if (visit.Status != VisitStatus.Draft)
         {
-            return false;
+            return null;
         }
 
         IVisitContentMutationLease? contentMutationLease =
@@ -138,10 +155,11 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 cancellationToken);
         if (contentMutationLease is null)
         {
-            return false;
+            return null;
         }
 
-        await using (contentMutationLease)
+        bool transferLeaseOwnership = false;
+        try
         {
             using CancellationTokenSource? leaseCancellationSource =
                 PassportLeaseCancellation.Link(
@@ -159,8 +177,8 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                         guardedCancellationToken);
                 if (candidate is null)
                 {
-                    contentMutationLease.MarkMutationCompleted();
-                    return true;
+                    transferLeaseOwnership = true;
+                    return contentMutationLease;
                 }
 
                 bool reconciled = await this.TryReconcilePendingMutationAsync(
@@ -171,8 +189,15 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 if (!reconciled)
                 {
                     contentMutationLease.MarkMutationCompleted();
-                    return false;
+                    return null;
                 }
+            }
+        }
+        finally
+        {
+            if (!transferLeaseOwnership)
+            {
+                await contentMutationLease.DisposeAsync();
             }
         }
     }

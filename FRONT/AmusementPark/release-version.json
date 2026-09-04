@@ -1,6 +1,20 @@
 {
-  "version": "5.0.27",
+  "version": "5.0.28",
   "history": [
+    {
+      "version": "5.0.28",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Tu peux terminer une visite sans conflit avec l’enregistrement de ses passages.",
+        "en": "You can complete a visit without conflicting with its ride entry updates.",
+        "de": "Du kannst einen Besuch abschließen, ohne dass seine Fahrteinträge einen Konflikt auslösen.",
+        "nl": "Je kunt een bezoek afronden zonder conflict met de verwerking van de ritten.",
+        "it": "Puoi completare una visita senza conflitti con l’aggiornamento dei suoi giri.",
+        "es": "Puedes completar una visita sin conflictos con la actualización de sus recorridos.",
+        "pl": "Możesz zakończyć wizytę bez konfliktu z aktualizacją jej przejazdów.",
+        "pt": "Podes concluir uma visita sem conflitos com a atualização das suas voltas."
+      }
+    },
     {
       "version": "5.0.27",
       "releasedAt": "2026-09-04",

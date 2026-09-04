@@ -416,16 +416,30 @@ internal static class VisitMutationCommandSupport
         }
 
         Visit visit = loaded.Value;
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (visit.Status == VisitStatus.Draft
+            && pendingMutationReconciler is not null)
+        {
+            contentMutationLease =
+                await pendingMutationReconciler.TryAcquireReconciledLifecycleLeaseAsync(
+                    visit,
+                    cancellationToken);
+        }
+
         if (visit.Status == VisitStatus.Draft
             && pendingMutationReconciler is not null
-            && !await pendingMutationReconciler.ReconcileBeforeLifecycleTransitionAsync(
-                visit,
-                cancellationToken))
+            && contentMutationLease is null)
         {
             return ApplicationResult<VisitResult>.Failure(
                 PassportApplicationErrors.VisitConcurrencyConflict());
         }
 
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
         VisitStatus previousStatus = visit.Status;
         try
         {
@@ -433,38 +447,58 @@ internal static class VisitMutationCommandSupport
         }
         catch (VisitValidationException exception)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.InvalidVisit(exception.ErrorCode, exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.InvalidVisit(
+                        exception.ErrorCode,
+                        exception.Message)));
         }
         catch (TimeZoneNotFoundException)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.InvalidTimeZone());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.InvalidTimeZone()));
         }
         catch (InvalidTimeZoneException)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.InvalidTimeZone());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.InvalidTimeZone()));
         }
 
         PassportAuditEvent auditEvent = PassportVisitAuditEventFactory.VisitStatusChanged(
             visit,
             previousStatus);
-        bool updated = await visitRepository.TryUpdateOwnedAuditedAsync(
-            visit,
-            expectedVersion,
-            auditEvent,
-            cancellationToken);
+        bool updated = contentMutationLease is null
+            ? await visitRepository.TryUpdateOwnedAuditedAsync(
+                visit,
+                expectedVersion,
+                auditEvent,
+                guardedCancellationToken)
+            : await visitRepository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+                visit,
+                expectedVersion,
+                auditEvent,
+                contentMutationLease.Token,
+                guardedCancellationToken);
         if (!updated)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.VisitConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.VisitConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             auditPublisher,
             auditEvent,
-            cancellationToken);
-        return ApplicationResult<VisitResult>.Success(PassportVisitResultFactory.Create(visit));
+            guardedCancellationToken);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ApplicationResult<VisitResult>.Success(
+                PassportVisitResultFactory.Create(visit)));
     }
 }
