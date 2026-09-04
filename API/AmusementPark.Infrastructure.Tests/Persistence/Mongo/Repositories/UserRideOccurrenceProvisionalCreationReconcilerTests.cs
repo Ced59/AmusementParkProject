@@ -6,6 +6,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Moq;
+using Moq.Language;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
@@ -136,6 +137,99 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         operationCollection.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenOccurrenceWasPromotedBeforeCompletedOperation_ShouldWait()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
+            document,
+            "completed",
+            8);
+        UserVisitDocument visit = CreateVisitDocument(
+            isFenceReady: false,
+            stableFenceToken: 8,
+            currentFenceToken: 9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        SetupCandidates(collection, document);
+        SetupOperation(operationCollection, operation);
+        SetupVisit(visitCollection, visit);
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                visitCollection.Object);
+
+        int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
+
+        Assert.Equal(0, count);
+        collection.VerifyAll();
+        collection.Verify(value => value.UpdateOneAsync(
+            It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<UpdateOptions>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        collection.Verify(value => value.DeleteOneAsync(
+            It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        operationCollection.VerifyAll();
+        visitCollection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenPromotionCompletedAfterOperationRead_ShouldReloadAndCommit()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument staleOperation = CreateOperation(
+            document,
+            "completed",
+            8);
+        UserRideOccurrenceCreationOperationDocument promotedOperation = CreateOperation(
+            document,
+            "completed",
+            9);
+        UserVisitDocument visit = CreateVisitDocument(
+            isFenceReady: true,
+            stableFenceToken: 9,
+            currentFenceToken: 9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        SetupCandidates(collection, document);
+        SetupOperationSequence(operationCollection, staleOperation, promotedOperation);
+        SetupVisit(visitCollection, visit);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                visitCollection.Object);
+
+        int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
+
+        Assert.Equal(1, count);
+        collection.VerifyAll();
+        collection.Verify(value => value.DeleteOneAsync(
+            It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        operationCollection.VerifyAll();
+        visitCollection.VerifyAll();
+    }
+
     private static UserRideOccurrenceDocument CreateProvisionalDocument(long fenceToken)
     {
         Visit visit = Visit.Create(
@@ -204,6 +298,21 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         };
     }
 
+    private static UserVisitDocument CreateVisitDocument(
+        bool isFenceReady,
+        long? stableFenceToken,
+        long currentFenceToken)
+    {
+        return new UserVisitDocument
+        {
+            Id = "visit-1",
+            UserId = "user-1",
+            ContentMutationFenceReady = isFenceReady,
+            ContentMutationFenceStableToken = stableFenceToken,
+            ContentMutationFenceToken = currentFenceToken,
+        };
+    }
+
     private static void SetupCandidates(
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection,
         UserRideOccurrenceDocument document)
@@ -228,6 +337,39 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
                 It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
                 It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
                     UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+    }
+
+    private static void SetupOperationSequence(
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> collection,
+        params UserRideOccurrenceCreationOperationDocument[] operations)
+    {
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>>[] cursors = operations
+            .Select(operation => CreateAsyncCursor(new[] { operation }))
+            .ToArray();
+        ISetupSequentialResult<Task<IAsyncCursor<
+            UserRideOccurrenceCreationOperationDocument>>> sequence = collection
+            .SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None));
+        foreach (Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> cursor in cursors)
+        {
+            sequence.ReturnsAsync(cursor.Object);
+        }
+    }
+
+    private static void SetupVisit(
+        Mock<IMongoCollection<UserVisitDocument>> collection,
+        UserVisitDocument visit)
+    {
+        Mock<IAsyncCursor<UserVisitDocument>> cursor = CreateAsyncCursor(
+            new[] { visit });
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOptions<UserVisitDocument, UserVisitDocument>>(),
                 CancellationToken.None))
             .ReturnsAsync(cursor.Object);
     }

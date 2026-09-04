@@ -8,15 +8,18 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
         operationCollection;
+    private readonly IMongoCollection<UserVisitDocument>? visitCollection;
 
     public UserRideOccurrenceProvisionalCreationReconciler(
         IMongoCollection<UserRideOccurrenceDocument> collection,
-        IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection)
+        IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection,
+        IMongoCollection<UserVisitDocument>? visitCollection = null)
     {
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(operationCollection);
         this.collection = collection;
         this.operationCollection = operationCollection;
+        this.visitCollection = visitCollection;
     }
 
     public async Task<int> ReconcileBatchAsync(
@@ -39,6 +42,19 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
         {
             UserRideOccurrenceCreationOperationDocument? operation =
                 await this.LoadOperationAsync(document, cancellationToken);
+            if (OperationFenceMayBePromoting(document, operation))
+            {
+                UserVisitDocument? visit = await this.LoadVisitAsync(
+                    document,
+                    cancellationToken);
+                if (IsInsideIncompletePromotion(document, operation!, visit))
+                {
+                    continue;
+                }
+
+                operation = await this.LoadOperationAsync(document, cancellationToken);
+            }
+
             ProvisionalCreationDisposition disposition = ResolveDisposition(
                 document,
                 operation);
@@ -97,6 +113,75 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                 & filters.Eq(static operation => operation.VisitId, document.VisitId))
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    private async Task<UserVisitDocument?> LoadVisitAsync(
+        UserRideOccurrenceDocument document,
+        CancellationToken cancellationToken)
+    {
+        if (this.visitCollection is null
+            || string.IsNullOrWhiteSpace(document.VisitId)
+            || string.IsNullOrWhiteSpace(document.UserId))
+        {
+            return null;
+        }
+
+        return await this.visitCollection
+            .Find(UserVisitMongoDefinitions.BuildOwnedVisitFilter(
+                document.VisitId,
+                document.UserId))
+            .Project<UserVisitDocument>(Builders<UserVisitDocument>.Projection
+                .Include(static visit => visit.Id)
+                .Include(static visit => visit.UserId)
+                .Include(static visit => visit.ContentMutationFenceToken)
+                .Include(static visit => visit.ContentMutationFenceStableToken)
+                .Include(static visit => visit.ContentMutationFenceReady))
+            .Limit(1)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    private static bool OperationFenceMayBePromoting(
+        UserRideOccurrenceDocument document,
+        UserRideOccurrenceCreationOperationDocument? operation)
+    {
+        return MatchesOperationAllocation(document, operation)
+            && operation!.OperationState is "completed" or "pending"
+            && document.ContentMutationFenceToken.HasValue
+            && (!operation.ContentMutationFenceToken.HasValue
+                || document.ContentMutationFenceToken.Value
+                    > operation.ContentMutationFenceToken.Value);
+    }
+
+    private static bool IsInsideIncompletePromotion(
+        UserRideOccurrenceDocument document,
+        UserRideOccurrenceCreationOperationDocument operation,
+        UserVisitDocument? visit)
+    {
+        return visit is not null
+            && !visit.ContentMutationFenceReady
+            && FenceBelongsToSafeInterval(
+                visit,
+                document.ContentMutationFenceToken)
+            && FenceBelongsToSafeInterval(
+                visit,
+                operation.ContentMutationFenceToken);
+    }
+
+    private static bool FenceBelongsToSafeInterval(
+        UserVisitDocument visit,
+        long? sourceFence)
+    {
+        if (!visit.ContentMutationFenceToken.HasValue)
+        {
+            return !sourceFence.HasValue;
+        }
+
+        return visit.ContentMutationFenceStableToken.HasValue
+            ? sourceFence >= visit.ContentMutationFenceStableToken
+                && sourceFence <= visit.ContentMutationFenceToken
+            : !sourceFence.HasValue
+                || sourceFence is >= 1
+                    && sourceFence <= visit.ContentMutationFenceToken;
     }
 
     private static ProvisionalCreationDisposition ResolveDisposition(

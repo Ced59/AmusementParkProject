@@ -81,7 +81,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         this.provisionalCreationReconciler =
             new UserRideOccurrenceProvisionalCreationReconciler(
                 this.collection,
-                this.operationCollection);
+                this.operationCollection,
+                this.visitCollection);
         this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
             this.collection,
             this.operationCollection);
