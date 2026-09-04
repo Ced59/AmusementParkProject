@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Threading.RateLimiting;
 using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Configuration;
+using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +54,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings socialShareEventSettings = configuration
             .GetSection("RateLimiting:SocialShare:Events")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 60);
+        FixedWindowRateLimitSettings passportExportSettings = configuration
+            .GetSection("RateLimiting:Passport:Exports")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
 
         services.AddRateLimiter(options =>
         {
@@ -97,6 +101,10 @@ public static class RateLimitingServiceCollectionExtensions
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthPasswordReset, authenticationSettings.PasswordReset);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.ContactSubmission, contactSubmissionSettings);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.SocialShareEvents, socialShareEventSettings);
+            options.AddPolicy(RateLimitPolicyNames.PassportExports, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetAuthenticatedUserPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(passportExportSettings)));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -185,6 +193,14 @@ public static class RateLimitingServiceCollectionExtensions
 
         byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(authorizationHeader));
         return $"park-data-editor-status:{Convert.ToHexString(hash)}";
+    }
+
+    private static string GetAuthenticatedUserPartitionKey(HttpContext context)
+    {
+        string? userId = context.User.GetUserId();
+        return string.IsNullOrWhiteSpace(userId)
+            ? $"passport-export:{GetRemoteIpPartitionKey(context)}"
+            : $"passport-export:user:{userId}";
     }
 
     private static bool IsSafeReadMethod(string method)

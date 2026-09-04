@@ -51,6 +51,22 @@
         "Archived": "Archivée"
       }
     },
+    "exports": {
+      "kicker": "Copie de tes données",
+      "title": "Exporte ton passeport",
+      "description": "Télécharge toutes tes visites, tes passages et tes notes privées. Le JSON est versionné pour une future réimportation ; le ZIP CSV contient quatre tableaux indépendants.",
+      "retention": "Le fichier reste privé, nécessite ta connexion et expire une heure après sa génération.",
+      "actions": { "json": "Préparer le JSON", "csv": "Préparer les CSV", "download": "Télécharger le fichier" },
+      "status": { "generating": "Préparation en cours…", "ready": "Ton export est prêt" },
+      "errors": {
+        "request": "L’export n’a pas pu démarrer. Réessaie dans un instant.",
+        "status": "Impossible de vérifier la préparation de l’export. Relance-le si nécessaire.",
+        "download": "Le fichier n’a pas pu être téléchargé ou a expiré.",
+        "failed": "La génération de l’export a échoué. Tu peux la relancer.",
+        "tooLarge": "Ton passeport est trop volumineux pour cet export. Aucune donnée n’a été tronquée.",
+        "expired": "Cet export a expiré. Prépare-en un nouveau pour le télécharger."
+      }
+    },
     "statistics": {
       "kicker": "Statistiques du passeport",
       "title": "Tes statistiques privées",

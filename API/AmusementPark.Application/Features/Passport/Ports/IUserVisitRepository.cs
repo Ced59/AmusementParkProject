@@ -33,6 +33,10 @@ public interface IUserVisitRepository
         UserVisitListCriteria criteria,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
+        string userId,
+        CancellationToken cancellationToken);
+
     Task<bool> TryConfirmOwnedVersionAsync(
         VisitId visitId,
         string userId,

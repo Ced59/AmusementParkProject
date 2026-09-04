@@ -112,6 +112,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
+        services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();
+        services.AddScoped<PassportExportScheduler>();
+        services.AddDurableBackgroundJobHandler<PassportExportJobHandler>();
         services.AddScoped<RideOccurrenceAppendOrderNormalizer>();
         services.AddScoped<IPassportPendingMutationReconciler,
             PassportPendingMutationReconciler>();

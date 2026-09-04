@@ -91,6 +91,29 @@
         "Archived": "Archiviata"
       }
     },
+    "exports": {
+      "kicker": "Copia dei tuoi dati",
+      "title": "Esporta il tuo passaporto",
+      "description": "Scarica tutte le visite, i passaggi e le valutazioni private. Il JSON versionato è predisposto per una futura reimportazione; lo ZIP CSV contiene quattro tabelle indipendenti.",
+      "retention": "Il file resta privato, richiede l’accesso al tuo account e scade un’ora dopo la generazione.",
+      "actions": {
+        "json": "Prepara il JSON",
+        "csv": "Prepara i CSV",
+        "download": "Scarica il file"
+      },
+      "status": {
+        "generating": "Preparazione dell’esportazione…",
+        "ready": "L’esportazione è pronta"
+      },
+      "errors": {
+        "request": "Non è stato possibile avviare l’esportazione. Riprova tra poco.",
+        "status": "Non è stato possibile verificarne lo stato. Se serve, avviala di nuovo.",
+        "download": "Non è stato possibile scaricare il file oppure è scaduto.",
+        "failed": "Non è stato possibile generare l’esportazione. Puoi avviarla di nuovo.",
+        "tooLarge": "Il tuo passaporto è troppo grande per questa esportazione. Nessun dato è stato troncato.",
+        "expired": "Questa esportazione è scaduta. Preparane una nuova per scaricarla."
+      }
+    },
     "statistics": {
       "kicker": "Statistiche del passaporto",
       "title": "Le tue statistiche private",

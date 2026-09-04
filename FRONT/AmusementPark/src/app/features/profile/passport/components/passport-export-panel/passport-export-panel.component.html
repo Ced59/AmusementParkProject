@@ -1,0 +1,53 @@
+<section class="passport-export" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="passport-export-title">
+  <div class="passport-export__copy">
+    <app-ui-kicker tone="sky" iconClass="pi pi-download">
+      {{ 'passport.exports.kicker' | translate }}
+    </app-ui-kicker>
+    <h2 id="passport-export-title">{{ 'passport.exports.title' | translate }}</h2>
+    <p>{{ 'passport.exports.description' | translate }}</p>
+    <small>
+      <i class="pi pi-lock" aria-hidden="true"></i>
+      <span>{{ 'passport.exports.retention' | translate }}</span>
+    </small>
+  </div>
+
+  <div class="passport-export__actions" aria-describedby="passport-export-title">
+    <button appUiButton="soft" type="button" [disabled]="facade.generating()" (click)="request('Json')">
+      <i class="pi pi-code" aria-hidden="true"></i>
+      <span>{{ 'passport.exports.actions.json' | translate }}</span>
+    </button>
+    <button appUiButton="soft" type="button" [disabled]="facade.generating()" (click)="request('Csv')">
+      <i class="pi pi-table" aria-hidden="true"></i>
+      <span>{{ 'passport.exports.actions.csv' | translate }}</span>
+    </button>
+  </div>
+
+  <div class="passport-export__status" aria-live="polite">
+    @if (facade.generating()) {
+      <app-ui-chip tone="sky">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        {{ 'passport.exports.status.generating' | translate }}
+      </app-ui-chip>
+    }
+
+    @if (facade.ready()) {
+      <div class="passport-export__ready">
+        <app-ui-chip tone="lime">
+          <i class="pi pi-check" aria-hidden="true"></i>
+          {{ 'passport.exports.status.ready' | translate }}
+        </app-ui-chip>
+        <button appUiButton="primary" type="button" [disabled]="facade.downloading()" (click)="facade.download()">
+          <i [class]="facade.downloading() ? 'pi pi-spin pi-spinner' : 'pi pi-download'" aria-hidden="true"></i>
+          <span>{{ 'passport.exports.actions.download' | translate }}</span>
+        </button>
+      </div>
+    }
+
+    @if (facade.errorKey()) {
+      <p class="passport-export__error" role="alert">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        <span>{{ facade.errorKey()! | translate }}</span>
+      </p>
+    }
+  </div>
+</section>

@@ -166,6 +166,17 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return new UserVisitPage(visits, nextCursor);
     }
 
+    public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        List<UserVisitDocument> documents = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildOwnerFilter(userId))
+            .Sort(UserVisitMongoDefinitions.BuildNewestVisitSort())
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public Task<bool> TryUpdateOwnedAsync(
         Visit visit,
         long expectedVersion,

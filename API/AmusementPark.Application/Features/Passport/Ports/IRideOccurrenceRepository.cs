@@ -87,6 +87,10 @@ public interface IRideOccurrenceRepository
         RideOccurrenceListCriteria criteria,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
+        string userId,
+        CancellationToken cancellationToken);
+
     Task<RideOccurrenceAppendState> GetAppendStateAsync(
         VisitId visitId,
         string userId,

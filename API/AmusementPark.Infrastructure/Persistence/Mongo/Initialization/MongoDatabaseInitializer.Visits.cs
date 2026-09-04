@@ -52,6 +52,24 @@ public sealed partial class MongoDatabaseInitializer
             cancellationToken);
     }
 
+    private async Task InitializePassportExportIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<PassportExportDocument> exports =
+            this.database.GetCollection<PassportExportDocument>(
+                this.settings.PassportExportsCollectionName);
+        await exports.Indexes.CreateManyAsync(
+            PassportExportMongoDefinitions.BuildExportIndexes(),
+            cancellationToken);
+
+        IMongoCollection<PassportExportChunkDocument> chunks =
+            this.database.GetCollection<PassportExportChunkDocument>(
+                this.settings.PassportExportChunksCollectionName);
+        await chunks.Indexes.CreateManyAsync(
+            PassportExportMongoDefinitions.BuildChunkIndexes(),
+            cancellationToken);
+    }
+
     private async Task InitializeGlobalRatingSuggestionIndexesAsync(
         CancellationToken cancellationToken)
     {
