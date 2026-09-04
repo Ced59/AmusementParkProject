@@ -45,6 +45,10 @@ public interface IPassportAuditReconciler
 /// </summary>
 public interface IPassportPendingMutationReconciler
 {
+    Task<IVisitContentMutationLease?> TryAcquireReconciledLifecycleLeaseAsync(
+        Visit visit,
+        CancellationToken cancellationToken);
+
     Task<bool> ReconcileBeforeLifecycleTransitionAsync(
         Visit visit,
         CancellationToken cancellationToken);

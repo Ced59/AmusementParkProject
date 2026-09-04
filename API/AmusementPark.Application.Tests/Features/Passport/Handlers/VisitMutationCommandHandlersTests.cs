@@ -167,17 +167,24 @@ public sealed class VisitMutationCommandHandlersTests
         Mock<IPassportAuditPublisher> audit = CreateAuditPublisher();
         Mock<IPassportPendingMutationReconciler> pendingMutations =
             new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
-        pendingMutations.Setup(reconciler => reconciler.ReconcileBeforeLifecycleTransitionAsync(
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        pendingMutations.Setup(reconciler => reconciler.TryAcquireReconciledLifecycleLeaseAsync(
                 visit,
                 CancellationToken.None))
-            .ReturnsAsync(true);
-        visits.Setup(repository => repository.TryUpdateOwnedAuditedAsync(
+            .ReturnsAsync(lease.Object);
+        lease.SetupGet(value => value.Token).Returns("lease-1");
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.Setup(value => value.MarkMutationCompleted());
+        lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
+        visits.Setup(repository => repository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
                 visit,
                 1,
                 It.Is<PassportAuditEvent>(auditEvent =>
                     auditEvent.EventType == PassportAuditEventType.VisitCompleted
                     && auditEvent.PreviousVisitStatus == VisitStatus.Draft
                     && auditEvent.NewVisitStatus == VisitStatus.Completed),
+                "lease-1",
                 CancellationToken.None))
             .ReturnsAsync(true);
         Mock<IPassportLocalDateResolver> localDate = new Mock<IPassportLocalDateResolver>(MockBehavior.Strict);
@@ -200,6 +207,7 @@ public sealed class VisitMutationCommandHandlersTests
         localDate.VerifyAll();
         audit.VerifyAll();
         pendingMutations.VerifyAll();
+        lease.VerifyAll();
     }
 
     [Fact]
@@ -211,10 +219,10 @@ public sealed class VisitMutationCommandHandlersTests
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
         Mock<IPassportPendingMutationReconciler> pendingMutations =
             new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
-        pendingMutations.Setup(reconciler => reconciler.ReconcileBeforeLifecycleTransitionAsync(
+        pendingMutations.Setup(reconciler => reconciler.TryAcquireReconciledLifecycleLeaseAsync(
                 visit,
                 CancellationToken.None))
-            .ReturnsAsync(false);
+            .ReturnsAsync((IVisitContentMutationLease?)null);
         Mock<IPassportLocalDateResolver> localDate =
             new Mock<IPassportLocalDateResolver>(MockBehavior.Strict);
         CompleteVisitCommandHandler handler = new CompleteVisitCommandHandler(

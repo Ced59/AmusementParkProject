@@ -13,6 +13,53 @@ public sealed class PassportPendingMutationReconcilerTests
         new DateTime(2026, 9, 3, 20, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public async Task TryAcquireReconciledLifecycleLeaseAsync_ShouldTransferTheActiveLeaseToTheCaller()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits =
+            new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLeaseManager> leases =
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict);
+        Mock<IVisitContentMutationLease> lease =
+            new Mock<IVisitContentMutationLease>(MockBehavior.Strict);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        leases.Setup(value => value.TryAcquireAsync(
+                visit,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(lease.Object);
+        occurrences.Setup(value => value.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                7,
+                CancellationToken.None))
+            .ReturnsAsync((PendingPassportMutationVisit?)null);
+        lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
+        lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
+            visits.Object,
+            occurrences.Object,
+            leases.Object,
+            clock.Object);
+
+        IVisitContentMutationLease? acquired =
+            await reconciler.TryAcquireReconciledLifecycleLeaseAsync(
+                visit,
+                CancellationToken.None);
+
+        Assert.Same(lease.Object, acquired);
+        lease.Verify(value => value.MarkMutationCompleted(), Times.Never);
+        lease.Verify(value => value.DisposeAsync(), Times.Never);
+        visits.VerifyNoOtherCalls();
+        occurrences.VerifyAll();
+        leases.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReconcileBeforeLifecycleTransitionAsync_ShouldSettleAllPendingOperationsUnderLease()
     {
         Visit visit = CreateVisit();
