@@ -14,6 +14,131 @@
       "description": "Guarda uma visita privada, mesmo que só te lembres do mês ou do ano.",
       "action": "Adicionar uma visita"
     },
+    "statistics": {
+      "kicker": "Estatísticas do passaporte",
+      "title": "As tuas estatísticas privadas",
+      "private": "Privado",
+      "loading": "A calcular as tuas estatísticas…",
+      "navigationLabel": "Consultar as estatísticas desta visita",
+      "summaryLabel": "Resumo das tuas estatísticas",
+      "privacyNotice": "Estes números vêm apenas do teu passaporte privado. Nunca alteram as avaliações nem as classificações da comunidade.",
+      "actions": {
+        "back": "Voltar ao perfil",
+        "retry": "Tentar novamente",
+        "openVisit": "Abrir a visita",
+        "openYear": "Ver o ano",
+        "openPark": "Ver o parque",
+        "openItem": "Ver estatísticas"
+      },
+      "errors": {
+        "invalidScope": "Esta vista de estatísticas não é válida.",
+        "notFound": "Estas estatísticas não foram encontradas ou não te pertencem.",
+        "load": "Não foi possível carregar as tuas estatísticas. Tenta novamente dentro de instantes."
+      },
+      "empty": {
+        "title": "Ainda não há estatísticas",
+        "description": "Adiciona visitas e voltas ao teu passaporte para criares este resumo."
+      },
+      "item": {
+        "subtitle": "O teu histórico nesta atração, volta a volta e visita a visita.",
+        "timelineTitle": "Evolução das tuas avaliações",
+        "timelineDescription": "Cada ponto é a avaliação original guardada para uma volta específica.",
+        "byVisitTitle": "Resumo por visita",
+        "byVisitDescription": "As médias agrupam apenas voltas da mesma visita.",
+        "byYearTitle": "Resumo por ano",
+        "byYearDescription": "As datas parciais mantêm-se associadas ao ano que introduziste."
+      },
+      "park": {
+        "subtitle": "As tuas visitas, voltas e impressões neste parque.",
+        "timelineTitle": "Evolução das tuas avaliações do parque",
+        "timelineDescription": "Esta lista apresenta a avaliação privada do parque em cada visita.",
+        "byYearTitle": "Resumo do parque por ano",
+        "byYearDescription": "Cada linha mantém o número de visitas e voltas.",
+        "currentTopTitle": "As tuas preferências atuais",
+        "currentTopDescription": "Esta classificação usa as tuas avaliações globais atuais, separadas do histórico de voltas.",
+        "historicalTopTitle": "As tuas médias históricas",
+        "historicalTopDescription": "Esta classificação usa apenas as avaliações privadas das tuas voltas."
+      },
+      "year": {
+        "subtitle": "O teu ano de visitas, agrupado sem inventar mais precisão nas datas.",
+        "byParkTitle": "Resumo por parque",
+        "byParkDescription": "Cada parque abre o seu próprio histórico detalhado."
+      },
+      "cards": {
+        "parks": "Parques visitados",
+        "rides": "Voltas concluídas",
+        "visits": "Visitas",
+        "firstExperience": "Primeira experiência",
+        "lastExperience": "Última experiência",
+        "firstVisit": "Primeira visita",
+        "lastVisit": "Última visita",
+        "ratedRides": "Voltas avaliadas",
+        "historicalAverage": "Média histórica",
+        "currentGlobalRating": "Avaliação global atual",
+        "globalDifference": "Diferença global / histórica",
+        "approximateVisits": "Visitas aproximadas",
+        "completedRides": "Voltas concluídas",
+        "distinctItems": "Atrações distintas",
+        "parkAverage": "Média das visitas",
+        "rideAverage": "Média das voltas",
+        "coverageDetail": "{{rated}} avaliadas em {{total}}",
+        "coveragePercentDetail": "{{rated}} em {{total}} · {{percent}}",
+        "repeatedDetail": "{{count}} atrações repetidas",
+        "communitySeparation": "Preferência atual, independente das observações das visitas",
+        "differenceDetail": "Avaliação global atual menos média histórica",
+        "distributionDetail": "{{count}} avaliações · mediana {{median}} · mín. {{minimum}} · máx. {{maximum}} · desvio-padrão {{deviation}}",
+        "distributionCoverageDetail": "{{rated}} em {{total}} · {{percent}} · mediana {{median}} · mín. {{minimum}} · máx. {{maximum}} · desvio-padrão {{deviation}}"
+      },
+      "trend": {
+        "title": "Tendência prudente",
+        "description": "A tendência compara dois períodos separados sem atribuir uma causa.",
+        "stable": "A tua apreciação mantém-se estável",
+        "rising": "A tua apreciação recente é mais elevada",
+        "falling": "A tua apreciação recente é mais baixa",
+        "detail": "Primeiro período: {{first}} ({{firstCount}} avaliações) · último: {{last}} ({{lastCount}} avaliações) · diferença {{delta}}",
+        "insufficient": "São necessárias pelo menos três avaliações distribuídas por duas visitas para mostrar uma tendência. Os pontos originais continuam visíveis."
+      },
+      "timeline": {
+        "empty": "Ainda não há avaliações privadas para esta cronologia.",
+        "position": "Posição {{position}} na visita"
+      },
+      "tables": {
+        "empty": "Não há dados para esta tabela."
+      },
+      "columns": {
+        "date": "Data",
+        "rides": "Voltas",
+        "coverage": "Cobertura",
+        "average": "Média",
+        "year": "Ano",
+        "visits": "Visitas",
+        "target": "Elemento",
+        "rating": "Avaliação",
+        "ratings": "Avaliações",
+        "parkAverage": "Média do parque",
+        "rideAverage": "Média das voltas",
+        "outcome": "Resultado",
+        "count": "Número",
+        "category": "Categoria",
+        "distinct": "Distintas",
+        "reference": "Referências históricas / atuais / desconhecidas",
+        "actions": "Ações"
+      },
+      "outcomes": {
+        "title": "Resultados registados",
+        "description": "As voltas concluídas mantêm-se separadas das tentativas e das atrações não realizadas.",
+        "completed": "Concluída",
+        "attempted": "Tentada",
+        "missedClosed": "Não realizada por estar fechada",
+        "missedUnavailable": "Não realizada por indisponibilidade",
+        "skippedByChoice": "Ignorada por escolha"
+      },
+      "categories": {
+        "title": "Cobertura por categoria",
+        "description": "As referências históricas têm prioridade; a categoria atual serve apenas como alternativa explícita.",
+        "unknown": "Categoria desconhecida"
+      }
+    },
     "quickCreate": {
       "title": "Adicionar uma visita",
       "intro": "Começa com uma visita simples. Poderás acrescentar tudo o que fizeste mais tarde.",

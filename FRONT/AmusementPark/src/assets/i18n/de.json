@@ -14,6 +14,131 @@
       "description": "Speichere einen privaten Besuch, auch wenn du nur noch Monat oder Jahr weißt.",
       "action": "Besuch hinzufügen"
     },
+    "statistics": {
+      "kicker": "Statistiken des Besuchspasses",
+      "title": "Deine privaten Statistiken",
+      "private": "Privat",
+      "loading": "Deine Statistiken werden berechnet…",
+      "navigationLabel": "Statistiken zu diesem Besuch ansehen",
+      "summaryLabel": "Zusammenfassung deiner Statistiken",
+      "privacyNotice": "Diese Zahlen stammen ausschließlich aus deinem privaten Besuchspass. Sie verändern niemals die Bewertungen oder Ranglisten der Community.",
+      "actions": {
+        "back": "Zurück zum Profil",
+        "retry": "Erneut versuchen",
+        "openVisit": "Besuch öffnen",
+        "openYear": "Jahr ansehen",
+        "openPark": "Park ansehen",
+        "openItem": "Statistiken ansehen"
+      },
+      "errors": {
+        "invalidScope": "Diese Statistikansicht ist ungültig.",
+        "notFound": "Diese Statistiken wurden nicht gefunden oder gehören dir nicht.",
+        "load": "Deine Statistiken konnten nicht geladen werden. Versuche es gleich noch einmal."
+      },
+      "empty": {
+        "title": "Noch keine Statistiken",
+        "description": "Füge deinem Besuchspass Besuche und Fahrten hinzu, um diese Übersicht zu erstellen."
+      },
+      "item": {
+        "subtitle": "Dein Verlauf für diese Attraktion, Fahrt für Fahrt und Besuch für Besuch.",
+        "timelineTitle": "Entwicklung deiner Bewertungen",
+        "timelineDescription": "Jeder Punkt ist eine unveränderte Bewertung einer bestimmten Fahrt.",
+        "byVisitTitle": "Übersicht nach Besuch",
+        "byVisitDescription": "Durchschnittswerte fassen nur Fahrten desselben Besuchs zusammen.",
+        "byYearTitle": "Übersicht nach Jahr",
+        "byYearDescription": "Unvollständige Daten bleiben dem von dir eingegebenen Jahr zugeordnet."
+      },
+      "park": {
+        "subtitle": "Deine Besuche, Fahrten und Eindrücke in diesem Park.",
+        "timelineTitle": "Entwicklung deiner Parkbewertungen",
+        "timelineDescription": "Diese Liste zeigt die private Parkbewertung jedes Besuchs.",
+        "byYearTitle": "Parkübersicht nach Jahr",
+        "byYearDescription": "Jede Zeile zeigt weiterhin die Anzahl der Besuche und Fahrten.",
+        "currentTopTitle": "Deine aktuellen Vorlieben",
+        "currentTopDescription": "Diese Rangliste verwendet deine aktuellen Gesamtbewertungen, getrennt von deinem Fahrtenverlauf.",
+        "historicalTopTitle": "Deine historischen Durchschnittswerte",
+        "historicalTopDescription": "Diese Rangliste verwendet nur die privaten Bewertungen deiner Fahrten."
+      },
+      "year": {
+        "subtitle": "Dein Besuchsjahr, ohne zusätzliche Datumsgenauigkeit zu erfinden.",
+        "byParkTitle": "Übersicht nach Park",
+        "byParkDescription": "Jeder Park führt zu seinem eigenen detaillierten Verlauf."
+      },
+      "cards": {
+        "parks": "Besuchte Parks",
+        "rides": "Abgeschlossene Fahrten",
+        "visits": "Besuche",
+        "firstExperience": "Erste Erfahrung",
+        "lastExperience": "Letzte Erfahrung",
+        "firstVisit": "Erster Besuch",
+        "lastVisit": "Letzter Besuch",
+        "ratedRides": "Bewertete Fahrten",
+        "historicalAverage": "Historischer Durchschnitt",
+        "currentGlobalRating": "Aktuelle Gesamtbewertung",
+        "globalDifference": "Abstand Gesamt / Verlauf",
+        "approximateVisits": "Ungefähre Besuche",
+        "completedRides": "Abgeschlossene Fahrten",
+        "distinctItems": "Verschiedene Attraktionen",
+        "parkAverage": "Besuchsdurchschnitt",
+        "rideAverage": "Fahrtendurchschnitt",
+        "coverageDetail": "{{rated}} von {{total}} bewertet",
+        "coveragePercentDetail": "{{rated}} von {{total}} · {{percent}}",
+        "repeatedDetail": "{{count}} Attraktionen wiederholt",
+        "communitySeparation": "Aktuelle Vorliebe, unabhängig von den Besuchsbeobachtungen",
+        "differenceDetail": "Aktuelle Gesamtbewertung minus historischer Durchschnitt",
+        "distributionDetail": "{{count}} Bewertungen · Median {{median}} · Min. {{minimum}} · Max. {{maximum}} · Standardabweichung {{deviation}}",
+        "distributionCoverageDetail": "{{rated}} von {{total}} · {{percent}} · Median {{median}} · Min. {{minimum}} · Max. {{maximum}} · Standardabweichung {{deviation}}"
+      },
+      "trend": {
+        "title": "Vorsichtiger Trend",
+        "description": "Der Trend vergleicht zwei getrennte Zeitfenster, ohne eine Ursache zu behaupten.",
+        "stable": "Deine Einschätzung bleibt stabil",
+        "rising": "Deine neuere Einschätzung ist höher",
+        "falling": "Deine neuere Einschätzung ist niedriger",
+        "detail": "Erstes Fenster: {{first}} ({{firstCount}} Bewertungen) · letztes: {{last}} ({{lastCount}} Bewertungen) · Abstand {{delta}}",
+        "insufficient": "Für einen Trend sind mindestens drei Bewertungen aus zwei Besuchen nötig. Die Rohpunkte bleiben sichtbar."
+      },
+      "timeline": {
+        "empty": "Für diesen Verlauf gibt es noch keine private Bewertung.",
+        "position": "Position {{position}} im Besuch"
+      },
+      "tables": {
+        "empty": "Keine Daten für diese Tabelle."
+      },
+      "columns": {
+        "date": "Datum",
+        "rides": "Fahrten",
+        "coverage": "Abdeckung",
+        "average": "Durchschnitt",
+        "year": "Jahr",
+        "visits": "Besuche",
+        "target": "Ziel",
+        "rating": "Bewertung",
+        "ratings": "Bewertungen",
+        "parkAverage": "Parkdurchschnitt",
+        "rideAverage": "Fahrtendurchschnitt",
+        "outcome": "Ergebnis",
+        "count": "Anzahl",
+        "category": "Kategorie",
+        "distinct": "Verschieden",
+        "reference": "Historische / aktuelle / unbekannte Referenzen",
+        "actions": "Aktionen"
+      },
+      "outcomes": {
+        "title": "Erfasste Ergebnisse",
+        "description": "Abgeschlossene Fahrten bleiben von Versuchen und verpassten Attraktionen getrennt.",
+        "completed": "Abgeschlossen",
+        "attempted": "Versucht",
+        "missedClosed": "Wegen Schließung verpasst",
+        "missedUnavailable": "Wegen Nichtverfügbarkeit verpasst",
+        "skippedByChoice": "Bewusst ausgelassen"
+      },
+      "categories": {
+        "title": "Abdeckung nach Kategorie",
+        "description": "Historische Referenzen haben Vorrang; die aktuelle Kategorie dient nur als ausdrücklicher Ersatz.",
+        "unknown": "Unbekannte Kategorie"
+      }
+    },
     "quickCreate": {
       "title": "Besuch hinzufügen",
       "intro": "Beginne mit einem einfachen Besuch. Was du erlebt hast, kannst du später ergänzen.",

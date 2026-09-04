@@ -1,0 +1,10 @@
+<article class="passport-stat-card">
+  <span class="passport-stat-card__icon" aria-hidden="true"><i [class]="card.iconClass"></i></span>
+  <div>
+    <span class="passport-stat-card__label">{{ card.labelKey | translate }}</span>
+    <strong>{{ card.value }}</strong>
+    @if (card.detailKey) {
+      <small>{{ card.detailKey | translate:card.detailParams }}</small>
+    }
+  </div>
+</article>

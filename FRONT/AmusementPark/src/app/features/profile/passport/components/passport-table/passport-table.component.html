@@ -1,0 +1,47 @@
+<section class="passport-table" [attr.aria-labelledby]="table.id + '-title'">
+  <header>
+    <h2 [id]="table.id + '-title'">{{ table.titleKey | translate }}</h2>
+    <p>{{ table.descriptionKey | translate }}</p>
+  </header>
+
+  @if (table.rows.length === 0) {
+    <p class="passport-table__empty">{{ table.emptyKey | translate }}</p>
+  } @else {
+    <div class="passport-table__viewport" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            @for (column of table.columns; track column.key) {
+              <th scope="col">{{ column.labelKey | translate }}</th>
+            }
+            @if (table.rows[0].navigation) {
+              <th scope="col"><span class="sr-only">{{ 'passport.statistics.columns.actions' | translate }}</span></th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of table.rows; track row.id) {
+            <tr>
+              @for (column of table.columns; track column.key) {
+                @if (cellFor(row.cells, column); as cell) {
+                  <td [attr.data-label]="column.labelKey | translate">
+                    {{ cell.translate ? (cell.value | translate) : cell.value }}
+                  </td>
+                } @else {
+                  <td [attr.data-label]="column.labelKey | translate">—</td>
+                }
+              }
+              @if (row.navigation; as navigation) {
+                <td class="passport-table__action" [attr.data-label]="'passport.statistics.columns.actions' | translate">
+                  <button appUiButton="ghost" type="button" (click)="navigationSelected.emit(navigation)">
+                    {{ navigation.labelKey | translate }}
+                  </button>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

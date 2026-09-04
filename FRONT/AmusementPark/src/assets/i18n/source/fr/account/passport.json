@@ -6,6 +6,111 @@
       "description": "Enregistre une visite privée, même si tu ne te souviens que du mois ou de l’année.",
       "action": "Ajouter une visite"
     },
+    "statistics": {
+      "kicker": "Statistiques du passeport",
+      "title": "Tes statistiques privées",
+      "private": "Privé",
+      "loading": "Calcul de tes statistiques…",
+      "navigationLabel": "Consulter les statistiques de cette visite",
+      "summaryLabel": "Résumé de tes statistiques",
+      "privacyNotice": "Ces chiffres viennent uniquement de ton passeport privé. Ils ne modifient jamais les notes ni les classements de la communauté.",
+      "actions": {
+        "back": "Retour au profil",
+        "retry": "Réessayer",
+        "openVisit": "Ouvrir la visite",
+        "openYear": "Voir l’année",
+        "openPark": "Voir le parc",
+        "openItem": "Voir les statistiques"
+      },
+      "errors": {
+        "invalidScope": "Cette vue statistique n’est pas valide.",
+        "notFound": "Ces statistiques sont introuvables ou ne t’appartiennent pas.",
+        "load": "Tes statistiques n’ont pas pu être chargées. Réessaie dans un instant."
+      },
+      "empty": {
+        "title": "Pas encore de statistique",
+        "description": "Ajoute des visites et des passages à ton passeport pour faire apparaître ce bilan."
+      },
+      "item": {
+        "subtitle": "Ton historique pour cette attraction, tour après tour et visite après visite.",
+        "timelineTitle": "Évolution de tes notes",
+        "timelineDescription": "Chaque point est une note brute enregistrée sur un passage précis.",
+        "byVisitTitle": "Bilan par visite",
+        "byVisitDescription": "Les moyennes regroupent uniquement les passages de la même visite.",
+        "byYearTitle": "Bilan par année",
+        "byYearDescription": "Les dates partielles restent rattachées à l’année que tu as saisie."
+      },
+      "park": {
+        "subtitle": "Tes visites, tes passages et tes ressentis dans ce parc.",
+        "timelineTitle": "Évolution de tes notes du parc",
+        "timelineDescription": "Cette liste reprend la note privée donnée à chaque visite.",
+        "byYearTitle": "Bilan du parc par année",
+        "byYearDescription": "Chaque ligne garde ses dénominateurs de visites et de passages.",
+        "currentTopTitle": "Tes préférences actuelles",
+        "currentTopDescription": "Ce classement reprend tes notes globales actuelles, séparées de ton historique de passages.",
+        "historicalTopTitle": "Tes moyennes historiques",
+        "historicalTopDescription": "Ce classement repose uniquement sur les notes privées de tes passages."
+      },
+      "year": {
+        "subtitle": "Ton année de visites, regroupée sans inventer de précision supplémentaire.",
+        "byParkTitle": "Bilan par parc",
+        "byParkDescription": "Chaque parc ouvre son propre historique détaillé."
+      },
+      "cards": {
+        "parks": "Parcs visités",
+        "rides": "Passages effectués",
+        "visits": "Visites",
+        "firstExperience": "Première expérience",
+        "lastExperience": "Dernière expérience",
+        "firstVisit": "Première visite",
+        "lastVisit": "Dernière visite",
+        "ratedRides": "Passages notés",
+        "historicalAverage": "Moyenne historique",
+        "currentGlobalRating": "Note globale actuelle",
+        "globalDifference": "Écart global / historique",
+        "approximateVisits": "Visites approximatives",
+        "completedRides": "Passages effectués",
+        "distinctItems": "Attractions distinctes",
+        "parkAverage": "Moyenne des visites",
+        "rideAverage": "Moyenne des passages",
+        "coverageDetail": "{{rated}} notés sur {{total}}",
+        "coveragePercentDetail": "{{rated}} sur {{total}} · {{percent}}",
+        "repeatedDetail": "{{count}} attractions refaites",
+        "communitySeparation": "Préférence actuelle, indépendante des observations de visite",
+        "differenceDetail": "Note globale actuelle moins moyenne historique",
+        "distributionDetail": "{{count}} notes · médiane {{median}} · min. {{minimum}} · max. {{maximum}} · écart-type {{deviation}}",
+        "distributionCoverageDetail": "{{rated}} sur {{total}} · {{percent}} · médiane {{median}} · min. {{minimum}} · max. {{maximum}} · écart-type {{deviation}}"
+      },
+      "trend": {
+        "title": "Tendance prudente",
+        "description": "La tendance compare deux fenêtres distinctes sans prétendre expliquer la cause.",
+        "stable": "Ton appréciation reste stable",
+        "rising": "Ton appréciation récente est plus élevée",
+        "falling": "Ton appréciation récente est plus basse",
+        "detail": "Première fenêtre : {{first}} ({{firstCount}} notes) · dernière : {{last}} ({{lastCount}} notes) · écart {{delta}}",
+        "insufficient": "Il faut au moins trois notes réparties sur deux visites pour afficher une tendance. Les points bruts restent visibles."
+      },
+      "timeline": {
+        "empty": "Aucune note privée n’est encore disponible pour cette chronologie.",
+        "position": "Position {{position}} dans la visite"
+      },
+      "tables": { "empty": "Aucune donnée pour ce tableau." },
+      "columns": {
+        "date": "Date", "rides": "Passages", "coverage": "Couverture", "average": "Moyenne", "year": "Année", "visits": "Visites",
+        "target": "Cible", "rating": "Note", "ratings": "Notes", "parkAverage": "Moyenne parc", "rideAverage": "Moyenne passages",
+        "outcome": "Résultat", "count": "Nombre", "category": "Catégorie", "distinct": "Distinctes", "reference": "Références hist. / actuelles / inconnues", "actions": "Actions"
+      },
+      "outcomes": {
+        "title": "Résultats enregistrés",
+        "description": "Les passages effectués restent séparés des tentatives et des attractions manquées.",
+        "completed": "Effectué", "attempted": "Tenté", "missedClosed": "Manqué car fermé", "missedUnavailable": "Manqué car indisponible", "skippedByChoice": "Passé volontairement"
+      },
+      "categories": {
+        "title": "Couverture par catégorie",
+        "description": "Les références historiques sont prioritaires ; la catégorie actuelle sert seulement de repli explicite.",
+        "unknown": "Catégorie inconnue"
+      }
+    },
     "quickCreate": {
       "title": "Ajouter une visite",
       "intro": "Crée d’abord une visite simple. Tu pourras détailler ce que tu as fait dans une prochaine étape.",
