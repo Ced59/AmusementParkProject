@@ -29,6 +29,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         Mock<IVisitDeletionStore> deletionStore =
             new Mock<IVisitDeletionStore>(MockBehavior.Strict);
         deletionStore.Setup(store => store.ListPendingDeletionReconciliationAsync(
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 VisitDeletionReconciliationBackgroundService.BatchSize,
                 CancellationToken.None))
             .ReturnsAsync(new[] { candidate });
@@ -65,10 +66,11 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
                     request.Kind == VisitPurgeJob.Kind
-                    && request.IdempotencyKey == "passport-visit-purge:visit-1:4:0"
+                    && request.NaturalKey == "passport-visit-purge:visit-1:4"
+                    && request.RequestedRevision == 0
                     && request.Delay > TimeSpan.FromHours(23)
                     && request.Delay <= TimeSpan.FromDays(1)),
                 CancellationToken.None))
@@ -106,6 +108,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         Mock<IVisitDeletionStore> deletionStore =
             new Mock<IVisitDeletionStore>(MockBehavior.Strict);
         deletionStore.Setup(store => store.ListPendingDeletionReconciliationAsync(
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 VisitDeletionReconciliationBackgroundService.BatchSize,
                 CancellationToken.None))
             .ReturnsAsync(new[] { candidate });
@@ -151,5 +154,61 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         deletionStore.VerifyAll();
         exports.VerifyAll();
         jobs.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenEnsuredPurgeIsDue_ShouldRecreateRunnableWork()
+    {
+        DateTime nowUtc = DateTime.UtcNow;
+        VisitDeletionReconciliationCandidate candidate =
+            new VisitDeletionReconciliationCandidate(
+                VisitId.Parse("visit-1"),
+                "owner-1",
+                4,
+                nowUtc.AddDays(-8),
+                nowUtc.AddDays(-1),
+                true,
+                true);
+        Mock<IVisitDeletionStore> deletionStore =
+            new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        deletionStore.Setup(store => store.ListPendingDeletionReconciliationAsync(
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                VisitDeletionReconciliationBackgroundService.BatchSize,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { candidate });
+        deletionStore.Setup(store => store.MarkPurgeJobEnsuredAsync(
+                candidate.VisitId,
+                candidate.UserId,
+                candidate.DeletionVersion,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IPassportExportRepository> exports =
+            new Mock<IPassportExportRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
+                    request.NaturalKey == "passport-visit-purge:visit-1:4"
+                    && request.RequestedRevision == 0
+                    && request.Delay == TimeSpan.Zero),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        ServiceCollection services = new ServiceCollection();
+        services.AddScoped(_ => deletionStore.Object);
+        services.AddScoped(_ => exports.Object);
+        services.AddScoped(_ => new VisitPurgeScheduler(jobs.Object));
+        using ServiceProvider provider = services.BuildServiceProvider();
+        VisitDeletionReconciliationBackgroundService service =
+            new VisitDeletionReconciliationBackgroundService(
+                provider.GetRequiredService<IServiceScopeFactory>(),
+                NullLogger<VisitDeletionReconciliationBackgroundService>.Instance,
+                TimeProvider.System);
+
+        await service.ReconcileAsync(CancellationToken.None);
+
+        deletionStore.VerifyAll();
+        exports.VerifyNoOtherCalls();
+        jobs.VerifyAll();
     }
 }

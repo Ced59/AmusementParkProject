@@ -146,17 +146,20 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
 
     public async Task<IReadOnlyCollection<VisitDeletionReconciliationCandidate>>
         ListPendingDeletionReconciliationAsync(
+            DateTime nowUtc,
             int maximumCount,
             CancellationToken cancellationToken)
     {
+        ValidateUtc(nowUtc, nameof(nowUtc));
         if (maximumCount is < 1 or > 100)
         {
             throw new ArgumentOutOfRangeException(nameof(maximumCount));
         }
 
         List<BsonDocument> documents = await this.rawVisits
-            .Find(BuildPendingDeletionReconciliationFilter())
+            .Find(BuildPendingDeletionReconciliationFilter(nowUtc))
             .Sort(Builders<BsonDocument>.Sort
+                .Ascending(PurgeJobEnsuredAtUtcPath)
                 .Ascending(PurgeScheduledForUtcPath)
                 .Ascending("_id"))
             .Project(BuildPendingDeletionReconciliationProjection())
@@ -618,15 +621,17 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     }
 
     internal static FilterDefinition<BsonDocument>
-        BuildPendingDeletionReconciliationFilter()
+        BuildPendingDeletionReconciliationFilter(DateTime nowUtc)
     {
+        ValidateUtc(nowUtc, nameof(nowUtc));
         FilterDefinitionBuilder<BsonDocument> filters = Builders<BsonDocument>.Filter;
         return filters.Exists(DeletedAtUtcPath, true)
             & filters.Exists(PurgeScheduledForUtcPath, true)
             & filters.Gt("version", 0)
             & filters.Or(
                 BuildMissingTimestampFilter(filters, ExportInvalidationEnsuredAtUtcPath),
-                BuildMissingTimestampFilter(filters, PurgeJobEnsuredAtUtcPath));
+                BuildMissingTimestampFilter(filters, PurgeJobEnsuredAtUtcPath),
+                filters.Lte(PurgeScheduledForUtcPath, nowUtc));
     }
 
     private static ProjectionDefinition<BsonDocument>

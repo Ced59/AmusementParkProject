@@ -66,6 +66,7 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
             scope.ServiceProvider.GetRequiredService<VisitPurgeScheduler>();
         IReadOnlyCollection<VisitDeletionReconciliationCandidate> candidates =
             await deletionStore.ListPendingDeletionReconciliationAsync(
+                this.timeProvider.GetUtcNow().UtcDateTime,
                 BatchSize,
                 cancellationToken);
         foreach (VisitDeletionReconciliationCandidate candidate in candidates)
@@ -102,9 +103,10 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
                     }
                 }
 
-                if (!candidate.IsPurgeJobEnsured)
+                DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                if (!candidate.IsPurgeJobEnsured
+                    || candidate.PurgeScheduledForUtc <= nowUtc)
                 {
-                    DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                     TimeSpan remainingDelay = candidate.PurgeScheduledForUtc - nowUtc;
                     await scheduler.ScheduleAsync(
                         candidate.VisitId,

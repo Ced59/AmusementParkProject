@@ -102,11 +102,12 @@ public sealed class VisitDeletionHandlersTests
         Mock<IVisitContentMutationLeaseManager> leaseManager =
             CreateLeaseManager(visit, lease.Object);
         Mock<IDurableBackgroundJobRepository> jobs = new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
                     request.Kind == VisitPurgeJob.Kind
                     && request.Delay == VisitDeletionPolicy.Retention
-                    && request.IdempotencyKey.EndsWith(":2:0", StringComparison.Ordinal)),
+                    && request.NaturalKey.EndsWith(":2", StringComparison.Ordinal)
+                    && request.RequestedRevision == 0),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         Mock<IPassportAuditPublisher> audits = new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
@@ -221,9 +222,10 @@ public sealed class VisitDeletionHandlersTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
-                    request.IdempotencyKey == "passport-visit-purge:visit-1:2:0"
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
+                    request.NaturalKey == "passport-visit-purge:visit-1:2"
+                    && request.RequestedRevision == 0
                     && request.Delay == VisitDeletionPolicy.Retention),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
@@ -293,8 +295,8 @@ public sealed class VisitDeletionHandlersTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.IsAny<CoalesceBackgroundJobRequest>(),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
@@ -448,10 +450,11 @@ public sealed class VisitDeletionHandlersTests
             .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
-                    request.IdempotencyKey
-                        == $"passport-visit-purge:{visit.Id.Value}:{concurrentReceipt.DeletionVersion}:0"
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
+                    request.NaturalKey
+                        == $"passport-visit-purge:{visit.Id.Value}:{concurrentReceipt.DeletionVersion}"
+                    && request.RequestedRevision == 0
                     && request.Delay == VisitDeletionPolicy.Retention),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);

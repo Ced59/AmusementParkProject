@@ -71,10 +71,11 @@ public sealed class VisitPurgeJobHandlerTests
             .ReturnsAsync(new VisitDeletionPurgeResult(false, 400));
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
-        jobs.Setup(repository => repository.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
                     request.Kind == VisitPurgeJob.Kind
-                    && request.IdempotencyKey == "passport-visit-purge:visit-1:2:4"
+                    && request.NaturalKey == "passport-visit-purge:visit-1:2"
+                    && request.RequestedRevision == 4
                     && request.Delay == null),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);

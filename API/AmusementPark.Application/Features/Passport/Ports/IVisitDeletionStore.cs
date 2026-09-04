@@ -22,6 +22,7 @@ public interface IVisitDeletionStore
 
     Task<IReadOnlyCollection<VisitDeletionReconciliationCandidate>>
         ListPendingDeletionReconciliationAsync(
+            DateTime nowUtc,
             int maximumCount,
             CancellationToken cancellationToken);
 

@@ -47,10 +47,11 @@ public sealed class VisitPurgeScheduler
         TimeSpan? delay,
         CancellationToken cancellationToken)
     {
-        return this.jobRepository.EnqueueExactAsync(
-            new EnqueueExactBackgroundJobRequest(
+        return this.jobRepository.CoalesceAsync(
+            new CoalesceBackgroundJobRequest(
                 VisitPurgeJob.Kind,
-                $"passport-visit-purge:{payload.VisitId}:{payload.DeletionVersion}:{payload.Continuation}",
+                $"passport-visit-purge:{payload.VisitId}:{payload.DeletionVersion}",
+                payload.Continuation,
                 VisitPurgeJob.PayloadVersion,
                 JsonSerializer.SerializeToElement(payload),
                 Delay: delay),

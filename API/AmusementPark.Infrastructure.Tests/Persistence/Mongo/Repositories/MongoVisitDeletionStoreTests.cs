@@ -78,17 +78,19 @@ public sealed class MongoVisitDeletionStoreTests
     public void BuildPendingDeletionReconciliationFilter_ShouldSelectUnensuredSideEffects()
     {
         BsonDocument filter = Render(
-            MongoVisitDeletionStore.BuildPendingDeletionReconciliationFilter());
+            MongoVisitDeletionStore.BuildPendingDeletionReconciliationFilter(
+                DeletedAtUtc));
 
         Assert.True(filter[MongoVisitDeletionStore.DeletedAtUtcPath]
             .AsBsonDocument["$exists"].AsBoolean);
         Assert.True(filter[MongoVisitDeletionStore.PurgeScheduledForUtcPath]
             .AsBsonDocument["$exists"].AsBoolean);
         Assert.Equal(0, filter["version"].AsBsonDocument["$gt"].AsInt32);
-        Assert.Equal(4, filter["$or"].AsBsonArray.Count);
+        Assert.Equal(5, filter["$or"].AsBsonArray.Count);
         string rendered = filter.ToJson();
         Assert.Contains(MongoVisitDeletionStore.ExportInvalidationEnsuredAtUtcPath, rendered);
         Assert.Contains(MongoVisitDeletionStore.PurgeJobEnsuredAtUtcPath, rendered);
+        Assert.Contains("$lte", rendered);
     }
 
     [Fact]
