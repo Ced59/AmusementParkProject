@@ -21,6 +21,7 @@ export class PassportVisitsOverviewStateFacade {
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly loadMoreErrorKeySignal = signal<string | null>(null);
   private readonly nextCursorSignal = signal<string | null>(null);
+  private requestGeneration = 0;
 
   public readonly visits: Signal<PassportVisitOverviewItemViewModel[]> = computed(() =>
     this.visitsSignal().map((visit: PassportVisit) =>
@@ -52,6 +53,7 @@ export class PassportVisitsOverviewStateFacade {
       return;
     }
 
+    const requestGeneration = ++this.requestGeneration;
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
     this.errorKeySignal.set(null);
@@ -61,11 +63,19 @@ export class PassportVisitsOverviewStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (page: PassportVisitPage): void => {
+          if (requestGeneration !== this.requestGeneration) {
+            return;
+          }
+
           this.visitsSignal.set(deduplicateVisits(page.items));
           this.nextCursorSignal.set(normalizeCursor(page.nextCursor));
           this.loadingSignal.set(false);
         },
         error: (error: unknown): void => {
+          if (requestGeneration !== this.requestGeneration) {
+            return;
+          }
+
           console.error('Error loading passport visits', error);
           this.visitsSignal.set([]);
           this.nextCursorSignal.set(null);
@@ -81,12 +91,17 @@ export class PassportVisitsOverviewStateFacade {
       return;
     }
 
+    const requestGeneration = this.requestGeneration;
     this.loadingMoreSignal.set(true);
     this.loadMoreErrorKeySignal.set(null);
     this.visitsApi.listVisits(PASSPORT_VISITS_OVERVIEW_PAGE_SIZE, cursor)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (page: PassportVisitPage): void => {
+          if (requestGeneration !== this.requestGeneration) {
+            return;
+          }
+
           this.visitsSignal.set(deduplicateVisits([
             ...this.visitsSignal(),
             ...page.items
@@ -95,6 +110,10 @@ export class PassportVisitsOverviewStateFacade {
           this.loadingMoreSignal.set(false);
         },
         error: (error: unknown): void => {
+          if (requestGeneration !== this.requestGeneration) {
+            return;
+          }
+
           console.error('Error loading more passport visits', error);
           this.loadMoreErrorKeySignal.set('passport.overview.errors.loadMore');
           this.loadingMoreSignal.set(false);

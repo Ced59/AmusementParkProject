@@ -62,6 +62,40 @@ describe('PassportVisitsOverviewStateFacade', () => {
 
     expect(facade.visits()[0].dateLabel).toBe('September 2026');
   });
+
+  it('ignores an in-flight pagination response after the visit list is refreshed', () => {
+    const stalePage = new Subject<PassportVisitPage>();
+    const calls: Array<{ limit: number; cursor: string | null }> = [];
+    const responses = [
+      of(page([createVisit()], 'old-cursor')),
+      stalePage,
+      of(page([createVisit({ id: 'new-visit' })], 'fresh-cursor')),
+      of(page([createVisit({ id: 'older-visit' })], null))
+    ];
+    const api: PassportVisitsOverviewApiPort = {
+      listVisits: (limit: number, cursor: string | null) => {
+        calls.push({ limit, cursor });
+        return responses.shift()!;
+      }
+    };
+    const facade: PassportVisitsOverviewStateFacade = createFacade(api);
+
+    facade.load();
+    facade.loadMore();
+    facade.load();
+    stalePage.next(page([createVisit({ id: 'stale-visit' })], null));
+    facade.loadMore();
+
+    expect(calls).toEqual([
+      { limit: 20, cursor: null },
+      { limit: 20, cursor: 'old-cursor' },
+      { limit: 20, cursor: null },
+      { limit: 20, cursor: 'fresh-cursor' }
+    ]);
+    expect(facade.visits().map((visit) => visit.id)).toEqual(['new-visit', 'older-visit']);
+    expect(facade.hasMore()).toBe(false);
+    expect(facade.loadMoreErrorKey()).toBeNull();
+  });
 });
 
 function createFacade(
