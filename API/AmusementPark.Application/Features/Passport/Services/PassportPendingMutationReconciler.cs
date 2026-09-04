@@ -108,6 +108,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                     fencedCandidate,
                     visit,
                     contentMutationLease.ContentFenceToken,
+                    false,
                     guardedCancellationToken);
                 if (reconciled)
                 {
@@ -185,6 +186,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                     candidate,
                     visit,
                     contentMutationLease.ContentFenceToken,
+                    true,
                     guardedCancellationToken);
                 if (!reconciled)
                 {
@@ -206,6 +208,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
         PendingPassportMutationVisit candidate,
         Visit visit,
         long contentFenceToken,
+        bool quarantineUnrecoverableMutation,
         CancellationToken cancellationToken)
     {
         if (!CanRecover(candidate, visit))
@@ -223,7 +226,8 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
             return true;
         }
 
-        if (candidate.Kind != PendingPassportMutationKind.Creation)
+        if (candidate.Kind != PendingPassportMutationKind.Creation
+            && !quarantineUnrecoverableMutation)
         {
             return false;
         }
