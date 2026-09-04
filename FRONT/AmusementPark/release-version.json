@@ -1,6 +1,20 @@
 {
-  "version": "5.0.13",
+  "version": "5.0.14",
   "history": [
+    {
+      "version": "5.0.14",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Ton passeport calcule maintenant tes statistiques pour chaque attraction.",
+        "en": "Your passport now calculates your statistics for each attraction.",
+        "de": "Dein Besuchspass berechnet jetzt deine Statistiken für jede Attraktion.",
+        "nl": "Je paspoort berekent nu je statistieken per attractie.",
+        "it": "Il tuo passaporto ora calcola le statistiche per ogni attrazione.",
+        "es": "Tu pasaporte ahora calcula tus estadísticas para cada atracción.",
+        "pl": "Twój paszport oblicza teraz statystyki dla każdej atrakcji.",
+        "pt": "O teu passaporte calcula agora as estatísticas de cada atração."
+      }
+    },
     {
       "version": "5.0.13",
       "releasedAt": "2026-09-03",

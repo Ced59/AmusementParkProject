@@ -29,7 +29,7 @@ public static class UseCaseCatalog
             ["TechnicalPages"] = new[] { "GetTechnicalPages", "GetTechnicalPageById", "GetTechnicalPageBySlug", "CreateTechnicalPage", "UpdateTechnicalPage", "UpsertTechnicalPagesJson" },
             ["History"] = new[] { "GetParkHistoryTimeline", "GetParkItemHistoryTimeline", "GetHistoryArticle", "GetHistoryEventsPage", "UpsertHistoryEvent", "DeleteHistoryEvent" },
             ["Comments"] = new[] { "CreateComment", "GetCommentSummary", "GetCommentThread" },
-            ["Passport"] = new[] { "CreateVisit", "ListUserVisits", "GetVisit" },
+            ["Passport"] = new[] { "CreateVisit", "ListUserVisits", "GetVisit", "GetPassportItemStatistics" },
             ["TechnicalStats"] = new[] { "GetTechnicalStats", "UpdateTechnicalStatsSettings" },
         };
 }
