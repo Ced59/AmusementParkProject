@@ -29,7 +29,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - For admin-only changes, keep release-version labels generic and avoid describing sensitive or precise back-office capabilities. Prefer wording such as "admin ergonomics improvements".
 - Do not mix unrelated backend, frontend, SEO, security, UI, deployment, and refactoring changes in one PR.
 - Respect the current architecture and naming conventions.
-- Every hand-written C# or TypeScript class must be declared in its own dedicated source file, and that file must not declare any other class. Name the file after the class and apply this rule to production code, tests, fixtures, helpers, private classes and nested classes; do not use partial classes to spread one class across several hand-written files. Generated code and vendored third-party code are the only exceptions.
+- Every hand-written C# or TypeScript class, including a C# reference record, must be declared in its own dedicated source file, and that file must not declare any other class. Name the file after the class and apply this rule to production code, tests, fixtures, helpers, private classes and nested classes; do not use partial classes to spread one class across several hand-written files. Generated code and vendored third-party code are the only exceptions.
 - Do not introduce shortcuts that bypass validation, authorization, domain rules, or application services.
 - Do not remove files unless the deletion is clearly justified and listed in the PR summary.
 - When extracting shared frontend components or services, use the shared implementation directly instead of keeping no-op wrappers around the old local abstraction.
