@@ -264,6 +264,32 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
   });
 
+  it('does not complete a visit while attractions are still selected for addition', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+
+    facade.completeVisit();
+
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.completeVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('does not archive a visit while one occurrence edit is unsaved', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateOccurrenceDraft('occurrence-1', { privateNote: 'Brouillon local' });
+
+    facade.archiveVisit();
+
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.archiveVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
   it('refreshes localized data without losing pending selections or edit drafts', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');

@@ -24,6 +24,10 @@ public interface IRideOccurrenceRepository
             int maximumVisitCount,
             CancellationToken cancellationToken);
 
+    Task<int> ReconcileProvisionalCreationAllocationsAsync(
+        int maximumDocumentCount,
+        CancellationToken cancellationToken);
+
     Task<bool> TryCompletePendingMutationAsync(
         PendingPassportMutationVisit mutation,
         CancellationToken cancellationToken);

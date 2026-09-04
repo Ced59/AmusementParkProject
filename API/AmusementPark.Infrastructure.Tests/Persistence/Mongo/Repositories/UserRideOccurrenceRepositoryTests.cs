@@ -545,7 +545,9 @@ public sealed class UserRideOccurrenceRepositoryTests
             .ReturnsAsync(appendBaseCursor.Object);
         collection.Setup(value => value.InsertManyAsync(
                 It.Is<IEnumerable<UserRideOccurrenceDocument>>(documents =>
-                    documents.All(document => document.ContentMutationFenceToken == 12)),
+                    documents.All(document =>
+                        document.ContentMutationFenceToken == 12
+                        && document.CreationPendingCompletion == true)),
                 It.IsAny<InsertManyOptions>(),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -626,7 +628,9 @@ public sealed class UserRideOccurrenceRepositoryTests
             .ReturnsAsync(appendBaseCursor.Object);
         collection.Setup(value => value.InsertManyAsync(
                 It.Is<IEnumerable<UserRideOccurrenceDocument>>(documents =>
-                    documents.All(document => document.ContentMutationFenceToken == 12)),
+                    documents.All(document =>
+                        document.ContentMutationFenceToken == 12
+                        && document.CreationPendingCompletion == true)),
                 It.IsAny<InsertManyOptions>(),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);

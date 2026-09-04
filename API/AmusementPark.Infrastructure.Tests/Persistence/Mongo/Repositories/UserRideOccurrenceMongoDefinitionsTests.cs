@@ -99,7 +99,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
         CreateIndexModel<UserRideOccurrenceDocument>[] indexes =
             UserRideOccurrenceMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(8, indexes.Length);
+        Assert.Equal(9, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_ride_occurrences_visit_order",
@@ -169,9 +169,19 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
         Assert.NotNull(indexes[6].Options.PartialFilterExpression);
         AssertIndex(
             indexes[7],
+            "idx_user_ride_occurrences_pending_creation_completion",
+            new BsonDocument
+            {
+                { "creationPendingCompletion", 1 },
+                { "createdAt", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[8],
             "idx_user_ride_occurrences_pending_audit",
             new BsonDocument("pendingAuditEvents.eventId", 1));
-        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
+        Assert.NotNull(indexes[8].Options.PartialFilterExpression);
         Assert.All(indexes.Take(6), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

@@ -47,7 +47,7 @@ Les mutations d'occurrence exigent aussi `IVisitContentMutationLeaseManager`. So
 
 Le bail porte en plus une génération persistante et monotone, `contentMutationFenceToken`. Chaque acquisition — première utilisation, succession normale ou reprise après expiration — incrémente cette génération et place temporairement `contentMutationFenceReady` à `false`. Chaque écriture d'occurrence et chaque transition d'opération exige ensuite la génération exacte obtenue avec le bail. `contentMutationFenceStableToken` mémorise la dernière génération entièrement publiée. Le nouveau détenteur ne promeut que les descendants compris entre cette génération stable et la nouvelle génération : une écriture très ancienne arrivée après sa barrière reste donc exclue. Il promeut les occurrences puis les opérations avant de publier la nouvelle génération avec un `updateOne` exigeant le token de bail exact, la génération exacte et une échéance encore valide. Il n'utilise la nouvelle génération que si cet acquittement réussit, puis avance la génération stable.
 
-Dès que la génération est déclarée prête, les lectures n'exposent que ses descendants et l'audit ignore toute génération obsolète. Pendant une promotion incomplète, les lectures et la reprise d'audit restent bornées à l'intervalle sûr entre la dernière génération stable et la génération en cours : une preuve déjà durable ne reste donc pas bloquée si le processus s'arrête avant l'acquittement final. La prochaine acquisition crée une autre génération et recommence la barrière avant toute mutation. Une création tardive n'est jamais publiée comme un faux succès et reste masquée jusqu'à ce que la reprise idempotente, interactive ou automatique, vérifie son opération exacte et l'adopte sous la génération courante. Cette barrière persistante protège même une écriture Mongo déjà envoyée qu'une simple annulation en mémoire ne pourrait plus arrêter.
+Dès que la génération est déclarée prête, les lectures n'exposent que ses descendants et l'audit ignore toute génération obsolète. Pendant une promotion incomplète, les lectures et la reprise d'audit restent bornées à l'intervalle sûr entre la dernière génération stable et la génération en cours : une preuve déjà durable ne reste donc pas bloquée si le processus s'arrête avant l'acquittement final. La prochaine acquisition crée une autre génération et recommence la barrière avant toute mutation. Une allocation de création clôturée conserve un marqueur provisoire indexé jusqu'au passage du réconciliateur : celui-ci retire le marqueur si l'opération exacte est `completed` sous le même fence, attend si elle est encore récupérable, et supprime seulement ce document exact dans les autres états. Une création tardive n'est donc jamais publiée comme un faux succès ; si elle arrive même après le rejet et la première purge, son propre marqueur la rend visible au prochain lot de nettoyage borné. Cette barrière persistante protège même une écriture Mongo déjà envoyée qu'une simple annulation en mémoire ne pourrait plus arrêter.
 
 Le détenteur renouvelle toutes les minutes son échéance de cinq minutes avec un filtre exigeant son token exact et une échéance non expirée. Un échec ou une perte de propriété annule le travail protégé encore en cours ; les filtres de génération refusent aussi toute écriture déjà envoyée qui arriverait après la reprise. Avant toute promotion ciblée d'une opération idempotente, le repository exige l'utilisateur et la visite d'origine : une même clé réutilisée sur une autre visite produit un conflit sans déplacer l'opération ni ses occurrences vers le fence numérique de cette seconde visite. Un bail réellement abandonné reste récupérable après cinq minutes.
 
@@ -87,6 +87,7 @@ erDiagram
       datetime deletedAtUtc
       array pendingAuditEvents
       long contentMutationFenceToken
+      bool creationPendingCompletion
     }
     RIDE_OPERATION {
       string _id
@@ -132,6 +133,7 @@ Les titres, notes privées, commentaires privés et heures locales ne sont jamai
 
 - index de timeline privée : `(event.userId, event.occurredAtUtc desc, _id)` ;
 - index de preuve par source : `(event.entityType, event.entityId, event.entityVersion)` ;
+- index partiel de finalisation des allocations : `(creationPendingCompletion, createdAt, _id)` ;
 - index partiel `pendingAuditEvents.eventId` sur les visites, occurrences et opérations.
 
 L'identifiant Mongo du journal est l'identifiant déterministe de l'événement. Une reprise après insertion réussie mais avant acquittement rencontre donc un doublon attendu, puis retire le marqueur sans ajouter une seconde preuve.
@@ -251,7 +253,7 @@ sequenceDiagram
 | compensation ou conflit d'un réordonnancement | restauré ou inchangé | marqueurs supprimés de l'opération terminale, donc aucune fausse preuve publiée |
 | contenu et changement de statut concurrents | l'opération de contenu est réglée sous bail avant la transition ; une seule mutation franchit ensuite son write fence | preuve produite uniquement pour chaque mutation effectivement validée |
 | opération longue avec bail de contenu | état protégé tant que le token exact est renouvelé | renouvellement chaque minute ; annulation du travail si la propriété est perdue |
-| écriture déjà envoyée lors de l'expiration du bail | filtre de génération refusé, ou insert ancien masqué puis adopté uniquement par l'opération exacte ; un doublon concurrent relance cette adoption | aucune preuve de succès tant que l'opération n'est pas clôturée sous la génération courante |
+| écriture déjà envoyée lors de l'expiration du bail | filtre de génération refusé, ou insert ancien masqué puis adopté uniquement par l'opération exacte ; toute allocation arrivée après un rejet reste marquée et est supprimée par le réconciliateur borné | aucune preuve de succès tant que l'opération n'est pas clôturée sous la génération courante |
 | même clé idempotente réutilisée sur une autre visite | recherche et promotion bornées par propriétaire, visite et clé ; la réservation en doublon devient un conflit | la première visite et ses preuves conservent leur fence |
 | arrêt pendant la promotion d'une nouvelle génération | seules les générations de l'intervalle sûr restent lisibles ; aucune nouvelle mutation n'obtient le bail | les preuves du même intervalle restent livrables ; la nouvelle acquisition incrémente et reprend depuis la dernière génération stable |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail non renouvelé et récupérable après cinq minutes, marqueur d'audit repris séparément |
@@ -269,7 +271,7 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
 - exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, nouvelle génération monotone à chaque détenteur, borne stable persistée, promotion uniquement ascendante dans l'intervalle sûr, indicateur `ready`, renouvellement périodique du token exact non expiré, annulation lors d'une perte du bail, refus d'une clôture de création après changement de génération, opération pendante réglée sous le même bail avant `Complete`/`Archive`, mutations de visite bloquées pendant un bail actif ;
 - cohérence temporelle : reprise idempotente sous bail, identité réservée comparée à la visite courante, contrôle d'absence et écriture sous le même token, refus des changements temporels d'une visite qui contient déjà des occurrences ;
-- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture, filtres exacts sur `contentMutationFenceToken`, lecture et audit limités à la génération prête ou à l'intervalle stable sûr pendant une promotion, suppression bornée aux allocations exactes d'une création rejetée restées sous une ancienne génération ;
+- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture, filtres exacts sur `contentMutationFenceToken`, lecture et audit limités à la génération prête ou à l'intervalle stable sûr pendant une promotion, index partiel des allocations provisoires et réconciliation bornée document par document ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;

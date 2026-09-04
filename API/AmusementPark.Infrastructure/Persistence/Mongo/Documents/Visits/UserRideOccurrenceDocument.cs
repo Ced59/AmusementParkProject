@@ -80,6 +80,10 @@ public sealed class UserRideOccurrenceDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public UserRideOccurrenceCreationSnapshotDocument? CreationSnapshot { get; set; }
 
+    [BsonElement("creationPendingCompletion")]
+    [BsonIgnoreIfNull]
+    public bool? CreationPendingCompletion { get; set; }
+
     [BsonElement("lastReorderOperationKeyHash")]
     [BsonIgnoreIfNull]
     public string? LastReorderOperationKeyHash { get; set; }

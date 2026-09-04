@@ -45,6 +45,11 @@ internal sealed class PassportAuditReconciliationBackgroundService : BackgroundS
                 _ = await pendingMutationReconciler.ReconcileBatchAsync(
                     PassportPendingMutationReconciler.MaximumBatchSize,
                     stoppingToken);
+                IRideOccurrenceRepository occurrenceRepository =
+                    scope.ServiceProvider.GetRequiredService<IRideOccurrenceRepository>();
+                _ = await occurrenceRepository.ReconcileProvisionalCreationAllocationsAsync(
+                    UserRideOccurrenceRepository.MaximumPendingMutationScanSize,
+                    stoppingToken);
                 IPassportAuditReconciler reconciler =
                     scope.ServiceProvider.GetRequiredService<IPassportAuditReconciler>();
                 _ = await reconciler.ReconcileBatchAsync(

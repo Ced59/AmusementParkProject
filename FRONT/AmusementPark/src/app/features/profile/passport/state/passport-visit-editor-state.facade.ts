@@ -193,8 +193,19 @@ export class PassportVisitEditorStateFacade {
     this.assessmentHasChanges()
     || this.occurrencesSignal().some(
       (occurrence: PassportRideOccurrence): boolean => this.rideAssessmentHasChanges(occurrence.id)));
+  readonly hasUnsavedOccurrenceChanges = computed((): boolean => {
+    const drafts: Readonly<Record<string, PassportOccurrenceEditDraft>> = this.editDraftsSignal();
+    return this.selectedAttractionsSignal().length > 0
+      || this.occurrencesSignal().some((occurrence: PassportRideOccurrence): boolean => {
+        const draft: PassportOccurrenceEditDraft | undefined = drafts[occurrence.id];
+        return Boolean(draft)
+          && JSON.stringify(draft) !== this.persistedEditFingerprints.get(occurrence.id);
+      });
+  });
   readonly hasUnsavedStatusTransitionChanges = computed((): boolean =>
-    this.metadataHasChanges() || this.hasUnsavedAssessmentChanges());
+    this.metadataHasChanges()
+    || this.hasUnsavedAssessmentChanges()
+    || this.hasUnsavedOccurrenceChanges());
   readonly parkName: Signal<string> = this.parkNameSignal.asReadonly();
   readonly zones: Signal<PassportVisitEditorZone[]> = this.zonesSignal.asReadonly();
   readonly attractions: Signal<PassportVisitEditorAttraction[]> = this.attractionsSignal.asReadonly();

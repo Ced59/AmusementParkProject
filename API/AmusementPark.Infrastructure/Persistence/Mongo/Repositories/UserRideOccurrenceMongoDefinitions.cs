@@ -244,6 +244,18 @@ internal static class UserRideOccurrenceMongoDefinitions
                         static document => document.CreationOperationKeyHash,
                         true),
                 }),
+            new CreateIndexModel<UserRideOccurrenceDocument>(
+                Builders<UserRideOccurrenceDocument>.IndexKeys
+                    .Ascending(static document => document.CreationPendingCompletion)
+                    .Ascending(static document => document.CreatedAt)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserRideOccurrenceDocument>
+                {
+                    Name = "idx_user_ride_occurrences_pending_creation_completion",
+                    PartialFilterExpression = Builders<UserRideOccurrenceDocument>.Filter.Eq(
+                        static document => document.CreationPendingCompletion,
+                        true),
+                }),
             PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserRideOccurrenceDocument>(
                 "idx_user_ride_occurrences_pending_audit"),
         };

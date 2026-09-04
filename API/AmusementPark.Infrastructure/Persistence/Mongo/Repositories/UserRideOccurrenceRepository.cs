@@ -40,6 +40,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly UserRideOccurrenceReorderRecovery reorderRecovery;
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
+    private readonly UserRideOccurrenceProvisionalCreationReconciler
+        provisionalCreationReconciler;
     private readonly UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator;
     private readonly UserRideOccurrenceVersionFence versionFence;
     private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
@@ -76,6 +78,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.collection,
             this.operationCollection);
         this.creationRecovery = new UserRideOccurrenceCreationRecovery(this.collection);
+        this.provisionalCreationReconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                this.collection,
+                this.operationCollection);
         this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
             this.collection,
             this.operationCollection);
@@ -170,6 +176,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         return candidates;
+    }
+
+    public Task<int> ReconcileProvisionalCreationAllocationsAsync(
+        int maximumDocumentCount,
+        CancellationToken cancellationToken)
+    {
+        return this.provisionalCreationReconciler.ReconcileBatchAsync(
+            maximumDocumentCount,
+            cancellationToken);
     }
 
     public async Task<bool> TryCompletePendingMutationAsync(
@@ -2169,6 +2184,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         document.CreationOperationIndex = allocation.Index;
         document.CreationOperationCount = operationCount;
         document.CreationSnapshot = allocation.CreationSnapshot;
+        document.CreationPendingCompletion = contentFenceToken.HasValue ? true : null;
         document.ContentMutationFenceToken = contentFenceToken;
         return document;
     }
