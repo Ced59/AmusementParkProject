@@ -320,11 +320,15 @@ export class PassportAnonymousImportStateFacade {
     }
 
     let reservation: PassportAnonymousDraft | null = null;
+    let serverMutationAcknowledged: boolean = false;
+    const acknowledgeServerMutation = (): void => {
+      serverMutationAcknowledged = true;
+    };
     try {
       reservation = await this.lockImportIntent(preview);
       const target: PassportVisit = preview.decision.choice === 'Separate'
-        ? await this.createVisit(reservation)
-        : await this.prepareMergeTarget(preview);
+        ? await this.createVisit(reservation, acknowledgeServerMutation)
+        : await this.prepareMergeTarget(preview, acknowledgeServerMutation);
       reservation = await this.lockImportTarget(
         reservation,
         target.id
@@ -332,7 +336,8 @@ export class PassportAnonymousImportStateFacade {
       const importedRideCount: number = await this.importRides(
         reservation,
         target.id,
-        preview.decision
+        preview.decision,
+        acknowledgeServerMutation
       );
       const localAcknowledged: boolean = await this.store.deleteIfUnchanged(reservation);
       if (!localAcknowledged) {
@@ -346,7 +351,11 @@ export class PassportAnonymousImportStateFacade {
         null
       );
     } catch (error: unknown) {
-      await this.releasePreMutationReservationIfSafe(reservation, error);
+      await this.releasePreMutationReservationIfSafe(
+        reservation,
+        error,
+        serverMutationAcknowledged
+      );
       return this.reportItem(
         preview,
         'Failed',
@@ -359,10 +368,11 @@ export class PassportAnonymousImportStateFacade {
 
   private async releasePreMutationReservationIfSafe(
     reservation: PassportAnonymousDraft | null,
-    error: unknown
+    error: unknown,
+    serverMutationAcknowledged: boolean
   ): Promise<void> {
     if (!reservation
-      || reservation.pendingImport?.targetVisitId
+      || serverMutationAcknowledged
       || !this.isDefinitiveClientRejection(error)) {
       return;
     }
@@ -453,10 +463,14 @@ export class PassportAnonymousImportStateFacade {
     return lockedDraft;
   }
 
-  private async createVisit(draft: PassportAnonymousDraft): Promise<PassportVisit> {
+  private async createVisit(
+    draft: PassportAnonymousDraft,
+    acknowledgeServerMutation: () => void
+  ): Promise<PassportVisit> {
     const created: PassportVisit = await firstValueFrom(
       this.visitsApi.createVisit(draft.visit, draft.visitOperationId)
     );
+    acknowledgeServerMutation();
     if (created.parkId !== draft.visit.parkId
       || !this.hasExactDate(created.date, draft.visit.date)
       || (draft.pendingImport?.targetVisitId
@@ -468,7 +482,8 @@ export class PassportAnonymousImportStateFacade {
   }
 
   private async prepareMergeTarget(
-    preview: PassportAnonymousDraftPreview
+    preview: PassportAnonymousDraftPreview,
+    acknowledgeServerMutation: () => void
   ): Promise<PassportVisit> {
     const selectedTarget: PassportVisit | null = preview.selectedTarget;
     if (!selectedTarget || selectedTarget.status !== 'Draft') {
@@ -480,9 +495,9 @@ export class PassportAnonymousImportStateFacade {
     }
 
     const request: UpdatePassportVisitRequest = {
-      date: preview.draft.visit.date,
-      timeZoneId: preview.draft.visit.timeZoneId,
-      serviceDayConvention: preview.draft.visit.serviceDayConvention,
+      date: selectedTarget.date,
+      timeZoneId: selectedTarget.timeZoneId,
+      serviceDayConvention: selectedTarget.serviceDayConvention,
       title: preview.draft.visit.title,
       privateNote: preview.draft.visit.privateNote,
       expectedVersion: selectedTarget.version
@@ -491,7 +506,8 @@ export class PassportAnonymousImportStateFacade {
       const updated: PassportVisit = await firstValueFrom(
         this.visitsApi.updateVisit(selectedTarget.id, request)
       );
-      if (!this.matchesMetadata(updated, preview.draft)) {
+      acknowledgeServerMutation();
+      if (!this.matchesMergeMetadata(updated, preview.draft, selectedTarget)) {
         throw new Error('passport-anonymous-import.metadata-ack-mismatch');
       }
 
@@ -500,10 +516,11 @@ export class PassportAnonymousImportStateFacade {
       const recovered: PassportVisit = await firstValueFrom(
         this.visitsApi.getVisit(selectedTarget.id)
       );
-      if (!this.matchesMetadata(recovered, preview.draft)) {
+      if (!this.matchesMergeMetadata(recovered, preview.draft, selectedTarget)) {
         throw new Error('passport-anonymous-import.metadata-conflict');
       }
 
+      acknowledgeServerMutation();
       return recovered;
     }
   }
@@ -511,7 +528,8 @@ export class PassportAnonymousImportStateFacade {
   private async importRides(
     draft: PassportAnonymousDraft,
     targetVisitId: string,
-    decision: PassportAnonymousImportDecision
+    decision: PassportAnonymousImportDecision,
+    acknowledgeServerMutation: () => void
   ): Promise<number> {
     const expectedCount: number = this.draftRideCount(draft);
     if (expectedCount === 0) {
@@ -544,6 +562,7 @@ export class PassportAnonymousImportStateFacade {
       const result: PassportRideOccurrenceMutationResult = await firstValueFrom(
         this.occurrencesApi.importBatch(targetVisitId, { items: chunk }, operationId)
       );
+      acknowledgeServerMutation();
       if (!this.matchesImportedChunk(
         result.occurrences,
         chunk,
@@ -679,11 +698,15 @@ export class PassportAnonymousImportStateFacade {
       && this.hasSameCalendarDate(visit.date, draft.visit.date);
   }
 
-  private matchesMetadata(visit: PassportVisit, draft: PassportAnonymousDraft): boolean {
+  private matchesMergeMetadata(
+    visit: PassportVisit,
+    draft: PassportAnonymousDraft,
+    selectedTarget: PassportVisit
+  ): boolean {
     return visit.parkId === draft.visit.parkId
-      && this.hasExactDate(visit.date, draft.visit.date)
-      && visit.timeZoneId === draft.visit.timeZoneId
-      && visit.serviceDayConvention === draft.visit.serviceDayConvention
+      && this.hasExactDate(visit.date, selectedTarget.date)
+      && visit.timeZoneId === selectedTarget.timeZoneId
+      && visit.serviceDayConvention === selectedTarget.serviceDayConvention
       && visit.title === draft.visit.title
       && visit.privateNote === draft.visit.privateNote;
   }

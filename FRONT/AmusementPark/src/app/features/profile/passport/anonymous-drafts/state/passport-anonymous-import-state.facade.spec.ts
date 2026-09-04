@@ -164,6 +164,59 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.report()).toMatchObject({ mergedVisitCount: 1, importedRideCount: 2 });
   });
 
+  it('changes only disclosed title and note metadata during a merge', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const existing: PassportVisit = createVisit({
+      id: 'existing-1',
+      date: { ...draft.visit.date, isApproximate: true },
+      timeZoneId: 'America/New_York',
+      serviceDayConvention: 'UserSelectedServiceDate',
+      title: 'Serveur',
+      privateNote: 'Note serveur'
+    });
+    const updated: PassportVisit = createVisit({
+      ...existing,
+      title: draft.visit.title,
+      privateNote: draft.visit.privateNote,
+      version: 2
+    });
+    const updateVisit = vi.fn(() => of(updated));
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft]),
+      createVisitsPort({
+        listVisits: () => of({ items: [existing], nextCursor: null }),
+        getVisit: () => of(existing),
+        updateVisit
+      }),
+      createOccurrencesPort({
+        importBatch: () => of({
+          occurrences: [
+            createOccurrence('occurrence-1', existing.id),
+            createOccurrence('occurrence-2', existing.id)
+          ],
+          wasReplayed: false,
+          wasOrderNormalized: false
+        })
+      })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+    facade.setChoice(draft.id, 'Merge');
+    await facade.setTargetVisit(draft.id, existing.id);
+    facade.setMetadataChoice(draft.id, 'UseLocal');
+
+    await facade.importAll(true);
+
+    expect(updateVisit).toHaveBeenCalledWith(existing.id, expect.objectContaining({
+      date: existing.date,
+      timeZoneId: existing.timeZoneId,
+      serviceDayConvention: existing.serviceDayConvention,
+      title: draft.visit.title,
+      privateNote: draft.visit.privateNote
+    }));
+    expect(facade.report()).toMatchObject({ mergedVisitCount: 1, failedCount: 0 });
+  });
+
   it('loads the complete private metadata before allowing a merge', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const listed: PassportVisit = createVisit({ id: 'existing-1', privateNote: null });
@@ -407,6 +460,32 @@ describe('PassportAnonymousImportStateFacade', () => {
     );
     await facade.load();
     await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+
+    expect(compareAndSet).toHaveBeenCalledTimes(2);
+    expect(facade.previews()[0].draft.pendingImport).toBeNull();
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
+  });
+
+  it('releases an untouched merge reservation when the selected visit disappeared', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const existing: PassportVisit = createVisit({ id: 'existing-1' });
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({
+        listVisits: () => of({ items: [existing], nextCursor: null }),
+        getVisit: () => of(existing)
+      }),
+      createOccurrencesPort({
+        importBatch: () => throwError(() => new HttpErrorResponse({ status: 404 }))
+      })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+    facade.setChoice(draft.id, 'Merge');
+    await facade.setTargetVisit(draft.id, existing.id);
 
     await facade.importAll(true);
 
