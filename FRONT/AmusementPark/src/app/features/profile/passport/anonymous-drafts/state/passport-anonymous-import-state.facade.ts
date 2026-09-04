@@ -115,7 +115,7 @@ export class PassportAnonymousImportStateFacade {
         compared.push({
           ...preview,
           similarVisits: candidates.filter(
-            (visit: PassportVisit): boolean => this.hasSameDate(
+            (visit: PassportVisit): boolean => this.hasSameCalendarDate(
               visit.date,
               preview.draft.visit.date
             )
@@ -153,25 +153,35 @@ export class PassportAnonymousImportStateFacade {
     this.errorKeySignal.set(null);
     const preview: PassportAnonymousDraftPreview | undefined = this.previewsSignal()
       .find((candidate: PassportAnonymousDraftPreview): boolean => candidate.draft.id === draftId);
-    const selectedTarget: PassportVisit | undefined = preview?.similarVisits.find(
+    const listedTarget: PassportVisit | undefined = preview?.similarVisits.find(
       (visit: PassportVisit): boolean => visit.id === visitId && visit.status === 'Draft'
     );
-    if (!preview || !selectedTarget) {
+    if (!preview || !listedTarget) {
       this.errorKeySignal.set('passport.anonymousDrafts.import.errors.invalidTarget');
       return;
     }
 
     this.updatePreview(draftId, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
       ...current,
-      selectedTarget,
+      selectedTarget: null,
       serverRides: null,
       decision: {
         ...current.decision,
         choice: 'Merge',
-        targetVisitId: selectedTarget.id
+        targetVisitId: listedTarget.id
       }
     }));
     try {
+      const selectedTarget: PassportVisit = await firstValueFrom(this.visitsApi.getVisit(listedTarget.id));
+      if (selectedTarget.id !== listedTarget.id
+        || !this.isValidMergeTarget(selectedTarget, preview.draft)) {
+        throw new Error('passport-anonymous-import.invalid-target');
+      }
+
+      this.updatePreview(draftId, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview =>
+        current.decision.targetVisitId === listedTarget.id
+          ? { ...current, selectedTarget, serverRides: null }
+          : current);
       const occurrences: PassportRideOccurrence[] = await this.loadAllOccurrences(selectedTarget.id);
       const serverRides: PassportAnonymousServerRidePreview[] = occurrences.map(
         (occurrence: PassportRideOccurrence): PassportAnonymousServerRidePreview => ({
@@ -182,12 +192,21 @@ export class PassportAnonymousImportStateFacade {
           privateNote: occurrence.privateNote
         })
       );
-      this.updatePreview(draftId, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
-        ...current,
-        serverRides
-      }));
+      this.updatePreview(draftId, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview =>
+        current.decision.targetVisitId === listedTarget.id
+          ? { ...current, serverRides }
+          : current);
     } catch {
-      this.errorKeySignal.set('passport.anonymousDrafts.import.errors.comparison');
+      const currentPreview: PassportAnonymousDraftPreview | undefined = this.previewsSignal()
+        .find((candidate: PassportAnonymousDraftPreview): boolean => candidate.draft.id === draftId);
+      if (currentPreview?.decision.targetVisitId === listedTarget.id) {
+        this.updatePreview(draftId, (current: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
+          ...current,
+          selectedTarget: null,
+          serverRides: null
+        }));
+        this.errorKeySignal.set('passport.anonymousDrafts.import.errors.comparison');
+      }
     }
   }
 
@@ -203,7 +222,9 @@ export class PassportAnonymousImportStateFacade {
       && this.previewsSignal().length > 0
       && this.previewsSignal().every((preview: PassportAnonymousDraftPreview): boolean =>
         preview.decision.choice !== 'Merge'
-        || (!!preview.selectedTarget && preview.selectedTarget.status === 'Draft'));
+        || (!!preview.selectedTarget
+          && preview.selectedTarget.status === 'Draft'
+          && preview.serverRides !== null));
   }
 
   async importAll(consent: boolean): Promise<void> {
@@ -308,7 +329,7 @@ export class PassportAnonymousImportStateFacade {
       this.visitsApi.createVisit(draft.visit, draft.visitOperationId)
     );
     if (created.parkId !== draft.visit.parkId
-      || !this.hasSameDate(created.date, draft.visit.date)) {
+      || !this.hasExactDate(created.date, draft.visit.date)) {
       throw new Error('passport-anonymous-import.visit-ack-mismatch');
     }
 
@@ -441,16 +462,28 @@ export class PassportAnonymousImportStateFacade {
     throw new Error('passport-anonymous-import.comparison-too-large');
   }
 
-  private hasSameDate(left: PassportVisitDate, right: PassportVisitDate): boolean {
+  private hasSameCalendarDate(left: PassportVisitDate, right: PassportVisitDate): boolean {
     return left.year === right.year
       && left.month === right.month
       && left.day === right.day
       && left.precision === right.precision;
   }
 
+  private hasExactDate(left: PassportVisitDate, right: PassportVisitDate): boolean {
+    return this.hasSameCalendarDate(left, right)
+      && left.isApproximate === right.isApproximate;
+  }
+
+  private isValidMergeTarget(visit: PassportVisit, draft: PassportAnonymousDraft): boolean {
+    return visit.id.trim().length > 0
+      && visit.parkId === draft.visit.parkId
+      && visit.status === 'Draft'
+      && this.hasSameCalendarDate(visit.date, draft.visit.date);
+  }
+
   private matchesMetadata(visit: PassportVisit, draft: PassportAnonymousDraft): boolean {
     return visit.parkId === draft.visit.parkId
-      && this.hasSameDate(visit.date, draft.visit.date)
+      && this.hasExactDate(visit.date, draft.visit.date)
       && visit.timeZoneId === draft.visit.timeZoneId
       && visit.serviceDayConvention === draft.visit.serviceDayConvention
       && visit.title === draft.visit.title
