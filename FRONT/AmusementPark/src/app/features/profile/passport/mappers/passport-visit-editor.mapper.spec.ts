@@ -99,6 +99,15 @@ describe('passport visit editor mapper', () => {
       confirmHistoricalConflict: true
     });
   });
+
+  it('does not silently confirm a newly detected historical conflict', () => {
+    const draft = mapOccurrenceToEditDraft({
+      ...createOccurrence(),
+      historicalConflictConfirmed: false
+    });
+
+    expect(draft.confirmHistoricalConflict).toBe(false);
+  });
 });
 
 function createOccurrence(): PassportRideOccurrence {
@@ -112,6 +121,7 @@ function createOccurrence(): PassportRideOccurrence {
     status: 'Attempted',
     source: 'Manual',
     historicalConsistency: 'ConfirmedConflict',
+    historicalConflictConfirmed: true,
     privateNote: 'memory',
     countsAsRide: false,
     version: 4,

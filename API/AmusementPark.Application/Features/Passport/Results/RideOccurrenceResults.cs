@@ -38,7 +38,8 @@ public sealed record RideOccurrenceResult(
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
     RideOccurrenceTargetResult? Target = null,
-    RideAssessmentResult? Assessment = null);
+    RideAssessmentResult? Assessment = null,
+    bool HistoricalConflictConfirmed = false);
 
 public sealed record CreateRideOccurrencesResult(
     IReadOnlyCollection<RideOccurrenceResult> Occurrences,

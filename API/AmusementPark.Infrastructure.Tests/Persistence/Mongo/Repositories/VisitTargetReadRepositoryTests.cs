@@ -9,6 +9,18 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class VisitTargetReadRepositoryTests
 {
+    [Theory]
+    [InlineData("open", "Operating")]
+    [InlineData("permanently closed", "ClosedDefinitively")]
+    [InlineData("  Removed  ", "Removed")]
+    [InlineData("  ", null)]
+    public void NormalizeLifecycleStatus_ShouldPreserveTheCanonicalRepositoryContract(
+        string source,
+        string? expected)
+    {
+        Assert.Equal(expected, VisitTargetReadRepository.NormalizeLifecycleStatus(source));
+    }
+
     [Fact]
     public void BuildProjection_ShouldOnlyReadFieldsRequiredByVisitRules()
     {

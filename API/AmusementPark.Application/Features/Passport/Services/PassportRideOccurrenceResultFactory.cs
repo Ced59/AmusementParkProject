@@ -43,7 +43,8 @@ internal static class PassportRideOccurrenceResultFactory
                     occurrence.Assessment.PrivateComment,
                     occurrence.Assessment.Revision,
                     occurrence.Assessment.CreatedAtUtc,
-                    occurrence.Assessment.UpdatedAtUtc));
+                    occurrence.Assessment.UpdatedAtUtc),
+            occurrence.HistoricalConsistency == HistoricalConsistency.ConfirmedConflict);
     }
 
     private static RideOccurrenceTargetResult? CreateTarget(

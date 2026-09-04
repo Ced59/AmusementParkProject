@@ -65,6 +65,7 @@ public sealed class PassportRideOccurrencesControllerTests
         PassportRideOccurrenceDto body = Assert.IsType<PassportRideOccurrenceDto>(
             created.Value);
         Assert.Equal("occurrence-1", body.Id);
+        Assert.False(body.HistoricalConflictConfirmed);
         Assert.Null(typeof(PassportRideOccurrenceDto).GetProperty("UserId"));
         Assert.Equal("true", controller.Response.Headers["Ride-Order-Normalized"]);
         add.VerifyAll();

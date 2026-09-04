@@ -1148,7 +1148,9 @@ export class PassportVisitEditorStateFacade {
       moment: occurrence.moment,
       status: occurrence.status,
       privateNote: occurrence.privateNote,
-      confirmHistoricalConflict: occurrence.historicalConsistency === 'ConfirmedConflict',
+      confirmHistoricalConflict: this.editDraftsSignal()[occurrence.id]?.confirmHistoricalConflict
+        ?? occurrence.historicalConflictConfirmed
+        ?? false,
       count: 1
     };
     const request: CreatePassportRideOccurrencesBatchRequest = { items: [item] };

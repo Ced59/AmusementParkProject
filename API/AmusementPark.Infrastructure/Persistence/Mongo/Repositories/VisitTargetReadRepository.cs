@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using MongoDB.Driver;
@@ -47,7 +48,7 @@ public sealed class VisitTargetReadRepository : IVisitTargetReadRepository
                 document.Category,
                 ToDateOnly(document.AttractionDetails?.OpeningDate),
                 ToDateOnly(document.AttractionDetails?.ClosingDate),
-                NormalizeOptional(document.AttractionDetails?.Status),
+                NormalizeLifecycleStatus(document.AttractionDetails?.Status),
                 document.IsVisible))
             .ToArray();
     }
@@ -70,9 +71,8 @@ public sealed class VisitTargetReadRepository : IVisitTargetReadRepository
         return value.HasValue ? DateOnly.FromDateTime(value.Value) : null;
     }
 
-    private static string? NormalizeOptional(string? value)
+    internal static string? NormalizeLifecycleStatus(string? value)
     {
-        string normalized = value?.Trim() ?? string.Empty;
-        return normalized.Length == 0 ? null : normalized;
+        return ParkItemStatusNormalizer.Normalize(value);
     }
 }

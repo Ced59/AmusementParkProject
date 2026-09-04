@@ -169,6 +169,8 @@ public sealed class PassportRideOccurrenceDto
 
     public PassportHistoricalConsistencyDto HistoricalConsistency { get; init; }
 
+    public bool HistoricalConflictConfirmed { get; init; }
+
     public string? PrivateNote { get; init; }
 
     public bool CountsAsRide { get; init; }

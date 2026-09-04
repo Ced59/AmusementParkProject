@@ -89,6 +89,7 @@ export interface PassportRideOccurrence {
   status: PassportRideOccurrenceStatus;
   source: PassportRideLogSource;
   historicalConsistency: PassportHistoricalConsistency;
+  historicalConflictConfirmed?: boolean;
   privateNote: string | null;
   countsAsRide: boolean;
   version: number;

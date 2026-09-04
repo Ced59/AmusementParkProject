@@ -1700,6 +1700,51 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.pendingDuplicateRecoveryIds().has(liveOccurrence.id)).toBe(false);
   });
 
+  it('requires an explicit draft confirmation before duplicating a newly detected conflict', () => {
+    const newlyConflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false,
+        openingDate: '2020-01-01',
+        closingDate: '2025-12-31'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [newlyConflictingOccurrence], nextCursor: null }));
+    occurrencesPort.addBatch.mockReturnValue(of({
+      occurrences: [newlyConflictingOccurrence],
+      wasReplayed: false,
+      wasOrderNormalized: false
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.duplicateOccurrence(newlyConflictingOccurrence);
+
+    expect(occurrencesPort.addBatch).toHaveBeenLastCalledWith(
+      'visit-1',
+      expect.objectContaining({
+        items: [expect.objectContaining({ confirmHistoricalConflict: false })]
+      }),
+      'operation-stable'
+    );
+
+    facade.updateOccurrenceDraft(newlyConflictingOccurrence.id, { confirmHistoricalConflict: true });
+    facade.duplicateOccurrence(newlyConflictingOccurrence);
+
+    expect(occurrencesPort.addBatch).toHaveBeenLastCalledWith(
+      'visit-1',
+      expect.objectContaining({
+        items: [expect.objectContaining({ confirmHistoricalConflict: true })]
+      }),
+      'operation-stable'
+    );
+  });
+
   it('discards a full reload started before a successful occurrence edit', () => {
     const liveOccurrence: PassportRideOccurrence = {
       ...firstOccurrence,

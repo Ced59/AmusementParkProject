@@ -76,6 +76,7 @@ internal static class PassportRideOccurrenceHttpMappers
             Source = (PassportRideLogSourceDto)result.Source,
             HistoricalConsistency =
                 (PassportHistoricalConsistencyDto)result.HistoricalConsistency,
+            HistoricalConflictConfirmed = result.HistoricalConflictConfirmed,
             PrivateNote = result.PrivateNote,
             CountsAsRide = result.CountsAsRide,
             Version = result.Version,

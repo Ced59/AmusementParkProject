@@ -1340,6 +1340,7 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal("Batch-resolved ride", item.Target?.Name);
         Assert.Equal("ClosedDefinitively", item.Target?.LifecycleStatus);
         Assert.Equal(HistoricalConsistency.ConfirmedConflict, item.HistoricalConsistency);
+        Assert.False(item.HistoricalConflictConfirmed);
         visits.VerifyAll();
         occurrences.VerifyAll();
         targets.VerifyAll();

@@ -86,7 +86,7 @@ export function mapOccurrenceToEditDraft(occurrence: PassportRideOccurrence): Pa
     localTime: normalizeTimeForInput(occurrence.moment.localTime),
     isApproximate: occurrence.moment.isApproximate,
     privateNote: occurrence.privateNote ?? '',
-    confirmHistoricalConflict: occurrence.historicalConsistency === 'ConfirmedConflict'
+    confirmHistoricalConflict: occurrence.historicalConflictConfirmed ?? false
   };
 }
 
