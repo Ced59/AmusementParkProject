@@ -16,6 +16,7 @@ public sealed class DeleteVisitCommandHandler
     private readonly IVisitDeletionStore deletionStore;
     private readonly IPassportExportRepository exportRepository;
     private readonly IVisitContentMutationLeaseManager contentMutationLeaseManager;
+    private readonly IPassportPendingMutationReconciler pendingMutationReconciler;
     private readonly VisitPurgeScheduler purgeScheduler;
     private readonly IPassportAuditPublisher auditPublisher;
     private readonly IPassportClock clock;
@@ -25,6 +26,7 @@ public sealed class DeleteVisitCommandHandler
         IVisitDeletionStore deletionStore,
         IPassportExportRepository exportRepository,
         IVisitContentMutationLeaseManager contentMutationLeaseManager,
+        IPassportPendingMutationReconciler pendingMutationReconciler,
         VisitPurgeScheduler purgeScheduler,
         IPassportAuditPublisher auditPublisher,
         IPassportClock clock)
@@ -33,6 +35,7 @@ public sealed class DeleteVisitCommandHandler
         this.deletionStore = deletionStore;
         this.exportRepository = exportRepository;
         this.contentMutationLeaseManager = contentMutationLeaseManager;
+        this.pendingMutationReconciler = pendingMutationReconciler;
         this.purgeScheduler = purgeScheduler;
         this.auditPublisher = auditPublisher;
         this.clock = clock;
@@ -94,6 +97,16 @@ public sealed class DeleteVisitCommandHandler
         }
 
         if (visit.Version != command.ExpectedVersion)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
+        if (visit.Status == VisitStatus.Draft
+            && !await this.pendingMutationReconciler
+                .ReconcileBeforeLifecycleTransitionAsync(
+                    visit,
+                    cancellationToken))
         {
             return ApplicationResult<VisitDeletionReceipt>.Failure(
                 PassportApplicationErrors.VisitConcurrencyConflict());

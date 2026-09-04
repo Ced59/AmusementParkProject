@@ -122,6 +122,7 @@ public sealed class VisitDeletionHandlersTests
             deletions.Object,
             exports.Object,
             leaseManager.Object,
+            CreatePendingMutationReconciler(visit).Object,
             new VisitPurgeScheduler(jobs.Object),
             audits.Object,
             clock.Object);
@@ -175,6 +176,7 @@ public sealed class VisitDeletionHandlersTests
                 CancellationToken.None))
             .ReturnsAsync(new VisitDeletionImpact(3, 1));
         DeleteVisitCommandHandler handler = CreateDeleteHandler(
+            visit,
             visits.Object,
             deletions.Object);
 
@@ -191,6 +193,52 @@ public sealed class VisitDeletionHandlersTests
         Assert.Equal("visit.deletion-preview-changed", Assert.Single(result.Errors).Code);
         visits.VerifyAll();
         deletions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Delete_WhenPendingMutationsCannotBeReconciled_ShouldNotCountOrTombstone()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IVisitDeletionStore> deletions =
+            new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        deletions.Setup(store => store.GetReceiptAsync(
+                visit.Id,
+                visit.UserId,
+                "delete-1",
+                CancellationToken.None))
+            .ReturnsAsync((VisitDeletionReceipt?)null);
+        Mock<IPassportPendingMutationReconciler> reconciler =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
+        reconciler.Setup(value => value.ReconcileBeforeLifecycleTransitionAsync(
+                visit,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        DeleteVisitCommandHandler handler = new DeleteVisitCommandHandler(
+            visits.Object,
+            deletions.Object,
+            new Mock<IPassportExportRepository>(MockBehavior.Strict).Object,
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            reconciler.Object,
+            new VisitPurgeScheduler(
+                new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object),
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
+            new Mock<IPassportClock>(MockBehavior.Strict).Object);
+
+        ApplicationResult<VisitDeletionReceipt> result = await handler.HandleAsync(
+            new DeleteVisitCommand(
+                visit.UserId,
+                visit.Id.Value,
+                visit.Version,
+                2,
+                1,
+                "delete-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.version-conflict", Assert.Single(result.Errors).Code);
+        visits.VerifyAll();
+        deletions.VerifyAll();
+        reconciler.VerifyAll();
     }
 
     [Fact]
@@ -236,6 +284,7 @@ public sealed class VisitDeletionHandlersTests
             deletions.Object,
             exports.Object,
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict).Object,
             new VisitPurgeScheduler(jobs.Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
             clock.Object);
@@ -306,6 +355,7 @@ public sealed class VisitDeletionHandlersTests
             deletions.Object,
             exports.Object,
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict).Object,
             new VisitPurgeScheduler(jobs.Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
             clock.Object);
@@ -358,6 +408,7 @@ public sealed class VisitDeletionHandlersTests
             deletions.Object,
             new Mock<IPassportExportRepository>(MockBehavior.Strict).Object,
             leaseManager.Object,
+            CreatePendingMutationReconciler(visit).Object,
             new VisitPurgeScheduler(
                 new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
@@ -465,6 +516,7 @@ public sealed class VisitDeletionHandlersTests
             deletions.Object,
             exports.Object,
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict).Object,
             new VisitPurgeScheduler(jobs.Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
             clock.Object);
@@ -489,10 +541,10 @@ public sealed class VisitDeletionHandlersTests
     }
 
     private static DeleteVisitCommandHandler CreateDeleteHandler(
+        Visit visit,
         IUserVisitRepository visits,
         IVisitDeletionStore deletions)
     {
-        Visit visit = CreateVisit();
         Mock<IVisitContentMutationLease> lease = CreateLease();
         Mock<IVisitContentMutationLeaseManager> leaseManager =
             CreateLeaseManager(visit, lease.Object);
@@ -503,6 +555,7 @@ public sealed class VisitDeletionHandlersTests
             deletions,
             new Mock<IPassportExportRepository>(MockBehavior.Strict).Object,
             leaseManager.Object,
+            CreatePendingMutationReconciler(visit).Object,
             new VisitPurgeScheduler(
                 new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
@@ -523,6 +576,18 @@ public sealed class VisitDeletionHandlersTests
                 CancellationToken.None))
             .ReturnsAsync(lease);
         return manager;
+    }
+
+    private static Mock<IPassportPendingMutationReconciler>
+        CreatePendingMutationReconciler(Visit visit)
+    {
+        Mock<IPassportPendingMutationReconciler> reconciler =
+            new Mock<IPassportPendingMutationReconciler>(MockBehavior.Strict);
+        reconciler.Setup(value => value.ReconcileBeforeLifecycleTransitionAsync(
+                visit,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        return reconciler;
     }
 
     private static Mock<IVisitContentMutationLease> CreateLease()
