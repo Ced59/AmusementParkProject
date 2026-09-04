@@ -83,6 +83,7 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             visitId.Value,
             document[DeletedAtUtcPath].ToUniversalTime(),
             document[PurgeScheduledForUtcPath].ToUniversalTime(),
+            document["version"].AsInt64,
             true);
     }
 
@@ -378,7 +379,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     {
         return Builders<BsonDocument>.Projection
             .Include(DeletedAtUtcPath)
-            .Include(PurgeScheduledForUtcPath);
+            .Include(PurgeScheduledForUtcPath)
+            .Include("version");
     }
 
     private static void ValidateUtc(DateTime value, string parameterName)

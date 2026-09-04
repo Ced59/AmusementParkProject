@@ -64,6 +64,12 @@ public sealed class DeleteVisitCommandHandler
             cancellationToken);
         if (replay is not null)
         {
+            await this.purgeScheduler.ScheduleAsync(
+                visitId,
+                userId,
+                replay.DeletionVersion,
+                GetRemainingPurgeDelay(replay.PurgeScheduledForUtc, this.clock.UtcNow),
+                cancellationToken);
             await this.exportRepository.InvalidateOwnedAsync(
                 userId,
                 replay.DeletedAtUtc,
@@ -130,17 +136,6 @@ public sealed class DeleteVisitCommandHandler
                     PassportApplicationErrors.DeletionPreviewChanged()));
         }
 
-        await this.purgeScheduler.ScheduleAsync(
-            visit.Id,
-            visit.UserId,
-            visit.Version + 1,
-            VisitDeletionPolicy.Retention,
-            guardedCancellationToken);
-        await this.exportRepository.InvalidateOwnedAsync(
-            visit.UserId,
-            this.clock.UtcNow,
-            guardedCancellationToken);
-
         DateTime deletedAtUtc = this.clock.UtcNow;
         DateTime purgeScheduledForUtc = deletedAtUtc.Add(VisitDeletionPolicy.Retention);
         PassportAuditEvent auditEvent = VisitDeletionAuditEventFactory.Create(
@@ -166,6 +161,12 @@ public sealed class DeleteVisitCommandHandler
         }
         contentMutationLease?.MarkMutationCompleted();
 
+        await this.purgeScheduler.ScheduleAsync(
+            visit.Id,
+            visit.UserId,
+            visit.Version + 1,
+            GetRemainingPurgeDelay(purgeScheduledForUtc, this.clock.UtcNow),
+            cancellationToken);
         await this.exportRepository.InvalidateOwnedAsync(
             visit.UserId,
             deletedAtUtc,
@@ -180,7 +181,16 @@ public sealed class DeleteVisitCommandHandler
                 visit.Id.Value,
                 deletedAtUtc,
                 purgeScheduledForUtc,
+                visit.Version + 1,
                 false));
+    }
+
+    private static TimeSpan GetRemainingPurgeDelay(
+        DateTime purgeScheduledForUtc,
+        DateTime nowUtc)
+    {
+        TimeSpan remaining = purgeScheduledForUtc - nowUtc;
+        return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
     }
 
     private static string? NormalizeClientOperationId(string? value)

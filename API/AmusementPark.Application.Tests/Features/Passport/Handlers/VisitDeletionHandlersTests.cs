@@ -119,7 +119,7 @@ public sealed class VisitDeletionHandlersTests
         exports.Verify(repository => repository.InvalidateOwnedAsync(
             visit.UserId,
             NowUtc,
-            CancellationToken.None), Times.Exactly(2));
+            CancellationToken.None), Times.Once);
         lease.Verify(value => value.MarkMutationCompleted(), Times.Once);
         lease.Verify(value => value.DisposeAsync(), Times.Once);
         leaseManager.VerifyAll();
@@ -174,6 +174,7 @@ public sealed class VisitDeletionHandlersTests
             visit.Id.Value,
             NowUtc,
             NowUtc.Add(VisitDeletionPolicy.Retention),
+            2,
             false);
         Mock<IVisitDeletionStore> deletions = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
         deletions.Setup(store => store.GetReceiptAsync(
@@ -189,15 +190,24 @@ public sealed class VisitDeletionHandlersTests
                 NowUtc,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.IdempotencyKey == "passport-visit-purge:visit-1:2:0"
+                    && request.Delay == VisitDeletionPolicy.Retention),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
         DeleteVisitCommandHandler handler = new DeleteVisitCommandHandler(
             new Mock<IUserVisitRepository>(MockBehavior.Strict).Object,
             deletions.Object,
             exports.Object,
             new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
-            new VisitPurgeScheduler(
-                new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object),
+            new VisitPurgeScheduler(jobs.Object),
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
-            new Mock<IPassportClock>(MockBehavior.Strict).Object);
+            clock.Object);
 
         ApplicationResult<VisitDeletionReceipt> result = await handler.HandleAsync(
             new DeleteVisitCommand(
@@ -213,6 +223,63 @@ public sealed class VisitDeletionHandlersTests
         Assert.Equal(storedReceipt.PurgeScheduledForUtc, result.Value?.PurgeScheduledForUtc);
         deletions.VerifyAll();
         exports.VerifyAll();
+        jobs.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Delete_WhenTheTombstoneLosesTheRace_DoesNotInvalidateOrSchedule()
+    {
+        Visit visit = CreateVisit();
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IVisitDeletionStore> deletions = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        deletions.Setup(store => store.GetReceiptAsync(
+                visit.Id,
+                visit.UserId,
+                "delete-1",
+                CancellationToken.None))
+            .ReturnsAsync((VisitDeletionReceipt?)null);
+        deletions.Setup(store => store.GetImpactAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(new VisitDeletionImpact(2, 1));
+        deletions.Setup(store => store.TryTombstoneAsync(
+                It.IsAny<VisitDeletionTombstoneRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        Mock<IVisitContentMutationLease> lease = CreateLease();
+        Mock<IVisitContentMutationLeaseManager> leaseManager =
+            CreateLeaseManager(visit, lease.Object);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        DeleteVisitCommandHandler handler = new DeleteVisitCommandHandler(
+            visits.Object,
+            deletions.Object,
+            new Mock<IPassportExportRepository>(MockBehavior.Strict).Object,
+            leaseManager.Object,
+            new VisitPurgeScheduler(
+                new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object),
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
+            clock.Object);
+
+        ApplicationResult<VisitDeletionReceipt> result = await handler.HandleAsync(
+            new DeleteVisitCommand(
+                visit.UserId,
+                visit.Id.Value,
+                visit.Version,
+                2,
+                1,
+                "delete-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("visit.version-conflict", Assert.Single(result.Errors).Code);
+        lease.Verify(value => value.MarkMutationCompleted(), Times.Once);
+        lease.Verify(value => value.DisposeAsync(), Times.Once);
+        visits.VerifyAll();
+        deletions.VerifyAll();
+        leaseManager.VerifyAll();
+        clock.VerifyAll();
     }
 
     private static DeleteVisitCommandHandler CreateDeleteHandler(

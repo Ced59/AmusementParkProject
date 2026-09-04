@@ -37,28 +37,6 @@ public sealed class PassportExportJobHandlerTests
             null,
             null,
             nowUtc);
-        Visit deletedVisit = Visit.Create(
-            VisitId.Parse("visit-deleted"),
-            "user-1",
-            "park-deleted",
-            VisitDate.ForYear(2024),
-            null,
-            LocalServiceDayConvention.VisitStartLocalDate,
-            null,
-            null,
-            nowUtc);
-        RideOccurrence deletedVisitOccurrence = RideOccurrence.Create(
-            RideOccurrenceId.Parse("occurrence-deleted"),
-            deletedVisit,
-            "item-deleted",
-            RideOccurrence.SortPositionStep,
-            new OccurrenceMoment(null, false),
-            RideOccurrenceStatus.Completed,
-            RideLogSource.Manual,
-            HistoricalConsistency.Verified,
-            null,
-            null,
-            nowUtc);
         PassportExportArtifact artifact = new PassportExportArtifact(
             "passport.json",
             "application/json",
@@ -91,10 +69,12 @@ public sealed class PassportExportJobHandlerTests
         Mock<IRideOccurrenceRepository> occurrences = new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
         occurrences.Setup(repository => repository.ListAllOwnedForExportAsync(
                 "user-1",
+                It.Is<IReadOnlyCollection<VisitId>>(visitIds =>
+                    visitIds.SequenceEqual(new[] { visit.Id })),
                 It.Is<PassportExportSourceBudget>(budget =>
                     ReferenceEquals(budget, observedSourceBudget)),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { deletedVisitOccurrence });
+            .ReturnsAsync(Array.Empty<RideOccurrence>());
         Park park = new Park { Id = "park-1", Name = "Test Park" };
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetByIdsAsync(

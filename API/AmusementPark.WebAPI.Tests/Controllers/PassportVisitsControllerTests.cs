@@ -263,6 +263,7 @@ public sealed class PassportVisitsControllerTests
                     "visit-1",
                     NowUtc,
                     NowUtc.AddDays(7),
+                    4,
                     false)));
         PassportVisitsController controller = CreateController(deleteHandler: handler.Object);
         controller.ControllerContext = CreateControllerContext("owner-1");
