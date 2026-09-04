@@ -21,6 +21,11 @@ export class PassportRideOccurrencesApiService {
   constructor(private readonly http: HttpClient) {
   }
 
+  validateTargets(parkId: string, parkItemIds: string[]): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.validateTargets}`;
+    return this.http.post<void>(url, { parkId, parkItemIds });
+  }
+
   list(visitId: string, cursor: string | null = null, limit: number = 50): Observable<PassportRideOccurrencePage> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.list(visitId, limit, cursor)}`;
     return this.http.get<PassportRideOccurrencePage>(url, { transferCache: false });
@@ -37,6 +42,19 @@ export class PassportRideOccurrencesApiService {
     idempotencyKey: string
   ): Observable<PassportRideOccurrenceMutationResult> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.addBatch(visitId)}`;
+    return this.http.post<PassportRideOccurrence[]>(url, request, {
+      headers: this.idempotencyHeaders(idempotencyKey),
+      observe: 'response'
+    }).pipe(map((response: HttpResponse<PassportRideOccurrence[]>): PassportRideOccurrenceMutationResult =>
+      this.toMutationResult(response, response.body ?? [])));
+  }
+
+  importBatch(
+    visitId: string,
+    request: CreatePassportRideOccurrencesBatchRequest,
+    idempotencyKey: string
+  ): Observable<PassportRideOccurrenceMutationResult> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.importBatch(visitId)}`;
     return this.http.post<PassportRideOccurrence[]>(url, request, {
       headers: this.idempotencyHeaders(idempotencyKey),
       observe: 'response'

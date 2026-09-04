@@ -1,0 +1,178 @@
+@if (facade.loading()) {
+  <section id="passport-anonymous-import" class="anonymous-import anonymous-import--loading" appUiSurface="panel" appUiSurfacePadding="spacious" aria-live="polite">
+    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+    <span>{{ 'passport.anonymousDrafts.import.loading' | translate }}</span>
+  </section>
+} @else if (facade.previews().length > 0 || facade.report() || facade.errorKey()) {
+  <section id="passport-anonymous-import" class="anonymous-import" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="anonymous-import-title">
+    <header class="anonymous-import__header">
+      <div>
+        <app-ui-kicker tone="gold" iconClass="pi pi-cloud-upload">
+          {{ 'passport.anonymousDrafts.import.kicker' | translate }}
+        </app-ui-kicker>
+        <h2 id="anonymous-import-title">{{ 'passport.anonymousDrafts.import.detectedTitle' | translate }}</h2>
+        <p>{{ 'passport.anonymousDrafts.import.detectedDescription' | translate:{ visits: facade.previews().length, rides: facade.totalRideCount() } }}</p>
+      </div>
+      <span class="anonymous-import__privacy">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        {{ (facade.comparisonDataShared()
+          ? 'passport.anonymousDrafts.import.comparisonShared'
+          : 'passport.anonymousDrafts.import.noUploadYet') | translate }}
+      </span>
+    </header>
+
+    @if (facade.errorKey()) {
+      <p class="anonymous-import__error" role="alert">{{ facade.errorKey()! | translate }}</p>
+    }
+
+    <div class="anonymous-import__drafts">
+      @for (preview of facade.previews(); track trackPreview($index, preview)) {
+        <article class="anonymous-import-card">
+          <div class="anonymous-import-card__heading">
+            <div>
+              <h3>{{ preview.draft.parkName }}</h3>
+              <p>
+                {{ preview.draft.visit.date.day || '–' }}/{{ preview.draft.visit.date.month || '–' }}/{{ preview.draft.visit.date.year }}
+                · {{ 'passport.anonymousDrafts.import.rideCount' | translate:{ count: facade.draftRideCount(preview.draft) } }}
+              </p>
+            </div>
+            @if (preview.similarVisits.length > 0) {
+              <span class="anonymous-import-card__conflict">
+                <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                {{ 'passport.anonymousDrafts.import.similarFound' | translate:{ count: preview.similarVisits.length } }}
+              </span>
+            }
+          </div>
+
+          @if (facade.comparisonPrepared()) {
+          <fieldset class="anonymous-import__choices">
+            <legend>{{ 'passport.anonymousDrafts.import.choiceLegend' | translate }}</legend>
+            <label>
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Separate" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Separate'" (change)="setChoice(preview.draft.id, 'Separate')" />
+              <span>
+                <strong>{{ 'passport.anonymousDrafts.import.choices.separate' | translate }}</strong>
+                <small>{{ 'passport.anonymousDrafts.import.choices.separateHint' | translate }}</small>
+              </span>
+            </label>
+            <label [class.anonymous-import__choice--disabled]="!hasMergeCandidate(preview) || facade.isImportLocked(preview)">
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Merge" [disabled]="!hasMergeCandidate(preview) || facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Merge'" (change)="setChoice(preview.draft.id, 'Merge')" />
+              <span>
+                <strong>{{ 'passport.anonymousDrafts.import.choices.merge' | translate }}</strong>
+                <small>{{ 'passport.anonymousDrafts.import.choices.mergeHint' | translate }}</small>
+              </span>
+            </label>
+            <label>
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Ignore" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Ignore'" (change)="setChoice(preview.draft.id, 'Ignore')" />
+              <span>
+                <strong>{{ 'passport.anonymousDrafts.import.choices.ignore' | translate }}</strong>
+                <small>{{ 'passport.anonymousDrafts.import.choices.ignoreHint' | translate }}</small>
+              </span>
+            </label>
+          </fieldset>
+
+          @if (preview.decision.choice === 'Merge') {
+            <section class="anonymous-import__merge">
+              <label>
+                <span>{{ 'passport.anonymousDrafts.import.targetLabel' | translate }}</span>
+                <select [value]="preview.decision.targetVisitId || ''" [disabled]="facade.isImportLocked(preview)" (change)="setTarget(preview.draft.id, $any($event.target).value)">
+                  <option value="">{{ 'passport.anonymousDrafts.import.targetPlaceholder' | translate }}</option>
+                  @for (candidate of preview.similarVisits; track candidate.id) {
+                    <option [value]="candidate.id" [disabled]="candidate.status !== 'Draft'">
+                      {{ candidate.title || candidate.parkName || candidate.parkId }} · {{ candidate.status }}
+                    </option>
+                  }
+                </select>
+              </label>
+
+              @if (preview.selectedTarget; as target) {
+                <div class="anonymous-import__comparison">
+                  <section>
+                    <h4>{{ 'passport.anonymousDrafts.import.comparison.local' | translate }}</h4>
+                    <p><strong>{{ 'passport.anonymousDrafts.import.comparison.title' | translate }}:</strong> {{ preview.draft.visit.title || '–' }}</p>
+                    <p><strong>{{ 'passport.anonymousDrafts.import.comparison.note' | translate }}:</strong> {{ preview.draft.visit.privateNote || '–' }}</p>
+                    <ul>
+                      @for (ride of preview.draft.rides; track trackLocalRide($index, ride)) {
+                        <li>
+                          <strong>{{ ride.attractionName }}</strong>
+                          <span>{{ ride.moment.localTime || '–' }} · ×{{ ride.count }}</span>
+                          @if (ride.privateNote) { <small>{{ ride.privateNote }}</small> }
+                        </li>
+                      }
+                    </ul>
+                  </section>
+                  <section>
+                    <h4>{{ 'passport.anonymousDrafts.import.comparison.server' | translate }}</h4>
+                    <p><strong>{{ 'passport.anonymousDrafts.import.comparison.title' | translate }}:</strong> {{ target.title || '–' }}</p>
+                    <p><strong>{{ 'passport.anonymousDrafts.import.comparison.note' | translate }}:</strong> {{ target.privateNote || '–' }}</p>
+                    @if (preview.serverRides === null) {
+                      <p>{{ 'passport.anonymousDrafts.import.comparison.loadingRides' | translate }}</p>
+                    } @else {
+                      <ul>
+                        @for (ride of preview.serverRides; track trackServerRide($index, ride)) {
+                          <li>
+                            <strong>{{ ride.attractionName }}</strong>
+                            <span>{{ ride.localTime || '–' }}</span>
+                            @if (ride.privateNote) { <small>{{ ride.privateNote }}</small> }
+                          </li>
+                        }
+                      </ul>
+                    }
+                  </section>
+                </div>
+
+                <fieldset class="anonymous-import__metadata">
+                  <legend>{{ 'passport.anonymousDrafts.import.metadata.legend' | translate }}</legend>
+                  <label>
+                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="KeepServer" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.metadataChoice === 'KeepServer'" (change)="setMetadataChoice(preview.draft.id, 'KeepServer')" />
+                    <span>{{ 'passport.anonymousDrafts.import.metadata.keepServer' | translate }}</span>
+                  </label>
+                  <label>
+                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="UseLocal" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.metadataChoice === 'UseLocal'" (change)="setMetadataChoice(preview.draft.id, 'UseLocal')" />
+                    <span>{{ 'passport.anonymousDrafts.import.metadata.useLocal' | translate }}</span>
+                  </label>
+                </fieldset>
+              }
+            </section>
+          }
+          }
+        </article>
+      }
+    </div>
+
+    @if (facade.previews().length > 0) {
+      <footer class="anonymous-import__footer">
+        <label class="anonymous-import__consent">
+          <input type="checkbox" [checked]="consent()" (change)="consent.set($any($event.target).checked)" />
+          <span>{{ 'passport.anonymousDrafts.import.consent' | translate }}</span>
+        </label>
+        @if (!facade.comparisonPrepared()) {
+          <button appUiButton="primary" type="button" [disabled]="!consent() || facade.comparing()" (click)="prepareComparison()">
+            @if (facade.comparing()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+            <span>{{ (facade.comparing() ? 'passport.anonymousDrafts.import.comparing' : 'passport.anonymousDrafts.import.compare') | translate }}</span>
+          </button>
+        } @else {
+          <button appUiButton="primary" type="button" [disabled]="!consent() || !facade.canImport() || facade.importing()" (click)="importDrafts()">
+            @if (facade.importing()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+            <span>{{ (facade.importing() ? 'passport.anonymousDrafts.import.importing' : 'passport.anonymousDrafts.import.submit') | translate }}</span>
+          </button>
+        }
+      </footer>
+    }
+
+    @if (facade.report(); as report) {
+      <section class="anonymous-import__report" aria-live="polite">
+        <h3>{{ 'passport.anonymousDrafts.import.report.title' | translate }}</h3>
+        <p>{{ 'passport.anonymousDrafts.import.report.summary' | translate:{ imported: report.importedVisitCount, merged: report.mergedVisitCount, rides: report.importedRideCount, failed: report.failedCount } }}</p>
+        <ul>
+          @for (item of report.items; track trackReport($index, item)) {
+            <li [class.anonymous-import__report-error]="item.outcome === 'Failed'">
+              <strong>{{ item.parkName }}</strong>
+              <span>{{ ('passport.anonymousDrafts.import.report.outcomes.' + item.outcome) | translate }}</span>
+              @if (item.errorKey) { <small>{{ item.errorKey | translate }}</small> }
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </section>
+}

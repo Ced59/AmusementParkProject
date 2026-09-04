@@ -50,6 +50,20 @@ describe('App routes', () => {
     expect(profileRoute?.data?.['accountLayout']).toBe('wide');
   });
 
+  it('exposes device-local passport pages without an authentication guard', () => {
+    const publicRoutes: Route[] = getPublicRoutes();
+    const expectedPaths: string[] = ['passport/local/:draftId', 'passport/local'];
+
+    for (const path of expectedPaths) {
+      const route: Route | undefined = publicRoutes.find(
+        (candidate: Route): boolean => candidate.path === path
+      );
+      expect(route, path).toBeDefined();
+      expect(route?.loadComponent, path).toBeDefined();
+      expect(route?.canActivate, path).toBeUndefined();
+    }
+  });
+
   it('redirects legacy video share routes to canonical video routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedRedirects: Record<string, string> = {

@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -37,15 +38,17 @@ export class AuthModalComponent implements AfterViewInit {
     private readonly authenticatedUserLanguageService: AuthenticatedUserLanguageService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly translationService: TranslationService,
-    private readonly translateService: TranslateService) {
+    private readonly translateService: TranslateService,
+    private readonly router: Router) {
   }
 
   async ngAfterViewInit(): Promise<void> {
     await this.renderGoogleButtonAsync();
   }
 
-  onLoginSuccess(): void {
+  async onLoginSuccess(): Promise<void> {
     this.closeModal.emit();
+    await this.restoreProtectedDestinationAsync();
   }
 
   private async renderGoogleButtonAsync(): Promise<void> {
@@ -75,10 +78,14 @@ export class AuthModalComponent implements AfterViewInit {
         this.measurementPreferenceService.getPreferredSystem()
       ));
       this.authService.setAuthenticatedSession(result);
-      await firstValueFrom(this.authenticatedUserLanguageService.syncPreferredLanguageFromCurrentUser());
+      const returnUrl: string | null = this.resolveProtectedDestination();
+      await firstValueFrom(
+        this.authenticatedUserLanguageService.syncPreferredLanguageFromCurrentUser(returnUrl)
+      );
       this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('auth.login.google_success', 'Google sign-in succeeded.'));
       this.sharedService.emitLoginStatusChange();
       this.closeModal.emit();
+      await this.restoreProtectedDestinationAsync(returnUrl);
     } catch (error: unknown) {
       const errorMessage: string = extractSafeDisplayErrorMessage(error, this.translate('common.unexpectedError', 'An unexpected error occurred.'));
       this.messageService.add('error', this.translate('common.error', 'Error'), errorMessage);
@@ -88,5 +95,22 @@ export class AuthModalComponent implements AfterViewInit {
   private translate(key: string, fallback: string): string {
     const translatedValue: string = this.translateService.instant(key);
     return translatedValue === key ? fallback : translatedValue;
+  }
+
+  private async restoreProtectedDestinationAsync(
+    destination: string | null = this.resolveProtectedDestination()
+  ): Promise<void> {
+    if (destination && this.router.url !== destination) {
+      await this.router.navigateByUrl(destination);
+    }
+  }
+
+  private resolveProtectedDestination(): string | null {
+    const candidate: unknown = this.router.parseUrl(this.router.url).queryParams['returnUrl'];
+    return typeof candidate === 'string'
+      && candidate.startsWith('/')
+      && !candidate.startsWith('//')
+      ? candidate
+      : null;
   }
 }

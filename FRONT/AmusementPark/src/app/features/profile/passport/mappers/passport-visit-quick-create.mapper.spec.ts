@@ -53,6 +53,15 @@ describe('passport visit quick-create mapper', () => {
     }));
   });
 
+  it('rejects an invalid time zone before an anonymous draft can be stored', () => {
+    const result = mapPassportVisitQuickCreateDraft(createDraft({
+      timeZoneId: 'Mars/Olympus_Mons'
+    }));
+
+    expect(result.request).toBeNull();
+    expect(result.errorKey).toBe('passport.quickCreate.validation.timeZoneInvalid');
+  });
+
   it('maps only parks with opaque identifiers and visitor-facing names', () => {
     const park: Park = {
       id: 'opaque/park',

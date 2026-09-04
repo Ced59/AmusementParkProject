@@ -25,7 +25,9 @@ export const authGuard: CanActivateFn = (_route, state): Observable<boolean | Ur
         modalService.openModal('loginModal');
       }
 
-      return router.createUrlTree(['/', lang, 'home']);
+      return router.createUrlTree(['/', lang, 'home'], {
+        queryParams: { returnUrl: state.url }
+      });
     })
   );
 };

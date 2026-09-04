@@ -246,6 +246,7 @@
       "actions": {
         "openForPark": "Dodaj wizytę",
         "done": "Gotowe",
+        "viewLocalPassport": "Zobacz moje lokalne wizyty",
         "addAttractions": "Dodaj atrakcje",
         "addAnother": "Dodaj kolejną wizytę",
         "saving": "Zapisywanie…",
@@ -256,6 +257,12 @@
         "title": "Wizyta zapisana",
         "description": "Twoja wizyta w {{park}} znajduje się teraz w prywatnym paszporcie.",
         "toast": "Wizyta została dodana do Twojego paszportu."
+      },
+      "localSuccess": {
+        "title": "Wizyta zapisana na tym urządzeniu",
+        "description": "Twoja wizyta w {{park}} jest zapisana lokalnie. Możesz już dodać atrakcje, które pamiętasz.",
+        "deviceWarning": "Ten szkic pozostaje w tej przeglądarce: nie jest synchronizowany ani zapisywany na Twoim koncie.",
+        "toast": "Wizyta została zapisana na tym urządzeniu."
       },
       "park": {
         "title": "Wybierz park",
@@ -293,12 +300,14 @@
         "yearInvalid": "Podaj prawidłowy rok.",
         "monthInvalid": "Podaj miesiąc od 1 do 12.",
         "dayInvalid": "Taki dzień nie istnieje w wybranym miesiącu.",
-        "timeZoneInvalid": "Nazwa strefy czasowej jest zbyt długa.",
+        "timeZoneInvalid": "Strefa czasowa musi być prawidłowym identyfikatorem IANA o długości do 128 znaków.",
         "titleTooLong": "Tytuł nie może mieć więcej niż 160 znaków.",
         "noteTooLong": "Prywatna notatka nie może mieć więcej niż 4000 znaków."
       },
       "errors": {
         "signInRequired": "Zaloguj się, aby zapisać wizytę. Wprowadzone dane pozostaną dostępne.",
+        "localStorageUnavailable": "Bezpieczna pamięć przeglądarki nie jest dostępna na tym urządzeniu.",
+        "localSave": "Nie udało się zapisać wizyty na tym urządzeniu. Sprawdź wolne miejsce i spróbuj ponownie.",
         "generic": "Nie udało się zapisać wizyty. Spróbuj ponownie bez utraty danych.",
         "parkSearch": "Wyszukiwanie parków nie powiodło się. Spróbuj ponownie za chwilę.",
         "parkNotFound": "Ten park nie jest już dostępny.",
@@ -306,6 +315,156 @@
         "date": "Data wizyty jest nieprawidłowa.",
         "retryConflict": "Ta próba nie odpowiada już pierwotnym danym. Sprawdź pola i spróbuj ponownie.",
         "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: wizyta nie zostanie utworzona podwójnie."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Lokalny paszport",
+      "title": "Twoje wizyty na tym urządzeniu",
+      "description": "Zacznij tworzyć historię bez konta. Nic nie zostanie wysłane, dopóki po zalogowaniu nie poprosisz o import.",
+      "deviceWarning": "Te dane należą tylko do tej przeglądarki. Usunięcie jej danych, inne urządzenie lub tryb prywatny mogą sprawić, że przestaną być dostępne.",
+      "actions": {
+        "export": "Eksportuj kopię",
+        "browseParks": "Znajdź park",
+        "clear": "Usuń wszystko",
+        "continue": "Kontynuuj wizytę",
+        "deleteOne": "Usuń",
+        "import": "Importuj do paszportu",
+        "cancel": "Anuluj",
+        "confirmClear": "Usuń szkice"
+      },
+      "errors": {
+        "storageUnavailable": "Pamięć lokalna nie jest dostępna w tej przeglądarce.",
+        "load": "Nie udało się odczytać wizyt zapisanych na tym urządzeniu.",
+        "delete": "Nie udało się usunąć tej lokalnej wizyty.",
+        "clear": "Nie udało się usunąć lokalnych wizyt.",
+        "export": "Nie udało się przygotować lokalnej kopii.",
+        "importLocked": "Ta wizyta jest importowana. Zakończ lub wznów import w paszporcie, zanim ją zmienisz albo usuniesz."
+      },
+      "loading": {
+        "title": "Odczytywanie lokalnych wizyt",
+        "description": "Przeglądarka otwiera paszport zapisany na tym urządzeniu."
+      },
+      "empty": {
+        "title": "Brak lokalnych wizyt",
+        "description": "Dodaj wizytę ze strony parku, nawet bez logowania."
+      },
+      "list": {
+        "kicker": "Prywatny szkic",
+        "title": "Szkice do kontynuowania",
+        "rideCount": "Liczba przejazdów: {{count}}",
+        "importLocked": "Import do wznowienia"
+      },
+      "clearDialog": {
+        "title": "Usunąć wszystkie lokalne wizyty?",
+        "description": "Ta czynność trwale usuwa szkice z tej przeglądarki. Nie wpływa na wizyty zaimportowane już na konto."
+      },
+      "import": {
+        "title": "Zachowaj te wizyty po zalogowaniu",
+        "description": "Zaloguj się, aby porównać szkice i zaimportować je do prywatnego paszportu.",
+        "loading": "Wyszukiwanie lokalnych wizyt do importu…",
+        "kicker": "Kontrolowany import",
+        "detectedTitle": "Wykryto lokalne wizyty",
+        "detectedDescription": "{{visits}} wizyt(y) i {{rides}} przejazdów pozostanie na urządzeniu do czasu potwierdzenia.",
+        "noUploadYet": "Nie wysłano jeszcze żadnych danych",
+        "comparisonShared": "Do porównania wysłano tylko park i rok; import jeszcze się nie rozpoczął",
+        "rideCount": "Lokalne przejazdy: {{count}}",
+        "similarFound": "Podobne wizyty: {{count}}",
+        "choiceLegend": "Co chcesz zrobić z tą wizytą?",
+        "choices": {
+          "separate": "Zachowaj osobno",
+          "separateHint": "Tworzy nową wizytę bez zmieniania istniejących.",
+          "merge": "Połącz po porównaniu",
+          "mergeHint": "Dodaje przejazdy do wybranego istniejącego szkicu.",
+          "ignore": "Pomiń w tym imporcie",
+          "ignoreHint": "Wizyta pozostanie na urządzeniu i można ją obsłużyć później."
+        },
+        "targetLabel": "Szkic docelowy",
+        "targetPlaceholder": "Wybierz wizytę, którą można edytować",
+        "comparison": {
+          "local": "Na tym urządzeniu",
+          "server": "Na Twoim koncie",
+          "title": "Tytuł",
+          "note": "Prywatna notatka",
+          "loadingRides": "Wczytywanie istniejących przejazdów…"
+        },
+        "metadata": {
+          "legend": "Dane wizyty",
+          "keepServer": "Zachowaj zapisany tytuł i notatkę",
+          "useLocal": "Użyj tytułu i notatki z lokalnej wizyty"
+        },
+        "consent": "Zezwalam na porównanie tych lokalnych wizyt z moim prywatnym paszportem, a następnie na import zgodnie z moimi wyborami.",
+        "compare": "Porównaj z moim paszportem",
+        "comparing": "Porównywanie…",
+        "importing": "Importowanie…",
+        "submit": "Importuj wybrane wizyty",
+        "errors": {
+          "preview": "Nie udało się ukończyć porównania. Szkice pozostają na tym urządzeniu, a import nie został rozpoczęty.",
+          "invalidTarget": "Wybierz istniejący edytowalny szkic do połączenia.",
+          "comparison": "Nie udało się wczytać wszystkich przejazdów wybranej wizyty.",
+          "consent": "Przed wysłaniem wyraźnie potwierdź import.",
+          "itemFailed": "Ta wizyta nie została zaimportowana; lokalny szkic zachowano."
+        },
+        "report": {
+          "title": "Raport importu",
+          "summary": "Utworzono: {{imported}}, połączono: {{merged}}, zaimportowano przejazdów: {{rides}}, błędy: {{failed}}.",
+          "outcomes": {
+            "Imported": "Zaimportowano nową wizytę",
+            "Merged": "Zweryfikowane połączenie",
+            "Ignored": "Pominięto i zachowano lokalnie",
+            "Failed": "Błąd, zachowano lokalnie"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Szkic na tym urządzeniu",
+        "rideCount": "Liczba przejazdów: {{count}}",
+        "localOnly": "Twoje zmiany pozostają w tej przeglądarce i nie są wysyłane na żaden serwer.",
+        "importLocked": "Import tej wizyty został rozpoczęty. Szkic jest chroniony przed zmianą i usunięciem do czasu zakończenia odzyskiwania.",
+        "actions": {
+          "back": "Wróć do lokalnych wizyt",
+          "delete": "Usuń wizytę",
+          "confirmDelete": "Usuń trwale"
+        },
+        "add": {
+          "kicker": "Wspomnienia z wizyty",
+          "title": "Dodaj atrakcje",
+          "description": "Znajdź atrakcję w parku i podaj liczbę przejazdów.",
+          "searchLabel": "Nazwa atrakcji",
+          "searchPlaceholder": "Wyszukaj atrakcję…",
+          "search": "Szukaj",
+          "historical": "Atrakcja historyczna",
+          "more": "Wczytaj więcej",
+          "status": "Wynik",
+          "count": "Liczba przejazdów",
+          "time": "Czas lokalny",
+          "approximate": "Przybliżona godzina",
+          "note": "Prywatna notatka",
+          "confirmHistorical": "Potwierdzam, że ta atrakcja odpowiada moim wspomnieniom mimo dat jej działania.",
+          "submit": "Dodaj do wizyty"
+        },
+        "timeline": {
+          "kicker": "Lokalna oś czasu",
+          "title": "Dodane atrakcje",
+          "empty": "Do tej wizyty nie dodano jeszcze żadnej atrakcji.",
+          "count": "Liczba przejazdów: {{count}}",
+          "moveUp": "Przenieś przejazd wyżej",
+          "moveDown": "Przenieś przejazd niżej",
+          "remove": "Usuń przejazd"
+        },
+        "errors": {
+          "notFoundTitle": "Nie znaleziono lokalnej wizyty",
+          "notFound": "Ten szkic nie istnieje już w tej przeglądarce.",
+          "load": "Nie udało się wczytać lokalnej wizyty.",
+          "invalidRide": "Sprawdź dane i limit 2000 przejazdów na szkic.",
+          "attractions": "Nie udało się wczytać atrakcji parku.",
+          "save": "Nie udało się zapisać zmiany na tym urządzeniu.",
+          "delete": "Nie udało się usunąć lokalnej wizyty.",
+          "importLocked": "Ta wizyta jest chroniona podczas importu. Wznów import w paszporcie."
+        },
+        "deleteDialog": {
+          "title": "Usunąć tę lokalną wizytę?",
+          "description": "Szkic i wszystkie przejazdy zostaną trwale usunięte z tej przeglądarki."
+        }
       }
     },
     "editor": {

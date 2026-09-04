@@ -76,6 +76,7 @@ function isSharedUserRankingRoute(path: string): boolean {
 
 function isKnownPrivateClientRoute(path: string): boolean {
   return /^\/[a-z]{2}\/admin(?:\/.*)?$/i.test(path)
+    || /^\/[a-z]{2}\/passport\/local(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/.*)?$/i.test(path);
 }
 

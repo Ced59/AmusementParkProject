@@ -53,6 +53,24 @@ describe('Server routes', () => {
     expect(serverRoutes.indexOf(nestedProfileRoute as ServerRoute)).toBeLessThan(fallbackIndex);
   });
 
+  it('keeps device-local passport routes client-rendered before the fallback', () => {
+    const expectedPaths: string[] = [
+      ':lang/passport/local',
+      ':lang/passport/local/:draftId'
+    ];
+    const fallbackIndex: number = serverRoutes.findIndex(
+      (route: ServerRoute): boolean => route.path === '**'
+    );
+
+    for (const path of expectedPaths) {
+      const route: ServerRoute | undefined = serverRoutes.find(
+        (candidate: ServerRoute): boolean => candidate.path === path
+      );
+      expect(route?.renderMode, path).toBe(RenderMode.Client);
+      expect(serverRoutes.indexOf(route as ServerRoute), path).toBeLessThan(fallbackIndex);
+    }
+  });
+
   it('server-renders current and historical rating methodology pages', () => {
     const expectedPaths: string[] = [
       ':lang/rankings/methodology',

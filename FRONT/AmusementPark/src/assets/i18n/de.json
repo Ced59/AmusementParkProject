@@ -246,6 +246,7 @@
       "actions": {
         "openForPark": "Besuch hinzufügen",
         "done": "Fertig",
+        "viewLocalPassport": "Meine lokalen Besuche ansehen",
         "addAttractions": "Attraktionen hinzufügen",
         "addAnother": "Weiteren Besuch hinzufügen",
         "saving": "Wird gespeichert…",
@@ -256,6 +257,12 @@
         "title": "Besuch gespeichert",
         "description": "Dein Besuch in {{park}} ist jetzt in deinem privaten Besuchspass.",
         "toast": "Der Besuch wurde deinem Besuchspass hinzugefügt."
+      },
+      "localSuccess": {
+        "title": "Besuch auf diesem Gerät gespeichert",
+        "description": "Dein Besuch in {{park}} ist lokal gespeichert. Du kannst bereits die Attraktionen hinzufügen, an die du dich erinnerst.",
+        "deviceWarning": "Dieser Entwurf bleibt in diesem Browser und wird weder synchronisiert noch in deinem Konto gesichert.",
+        "toast": "Der Besuch wurde auf diesem Gerät gespeichert."
       },
       "park": {
         "title": "Wähle den Park",
@@ -293,12 +300,14 @@
         "yearInvalid": "Gib ein gültiges Jahr ein.",
         "monthInvalid": "Gib einen Monat zwischen 1 und 12 ein.",
         "dayInvalid": "Diesen Tag gibt es im gewählten Monat nicht.",
-        "timeZoneInvalid": "Die Zeitzone ist zu lang.",
+        "timeZoneInvalid": "Die Zeitzone muss eine gültige IANA-Kennung mit höchstens 128 Zeichen sein.",
         "titleTooLong": "Der Titel darf höchstens 160 Zeichen lang sein.",
         "noteTooLong": "Die private Notiz darf höchstens 4.000 Zeichen lang sein."
       },
       "errors": {
         "signInRequired": "Melde dich an, um diesen Besuch zu speichern. Deine Eingabe bleibt erhalten.",
+        "localStorageUnavailable": "Der sichere Browserspeicher ist auf diesem Gerät nicht verfügbar.",
+        "localSave": "Der Besuch konnte auf diesem Gerät nicht gespeichert werden. Prüfe den freien Speicher und versuche es erneut.",
         "generic": "Der Besuch konnte nicht gespeichert werden. Versuche es erneut, ohne deine Eingabe zu verlieren.",
         "parkSearch": "Die Parksuche ist fehlgeschlagen. Versuche es gleich noch einmal.",
         "parkNotFound": "Dieser Park ist nicht mehr verfügbar.",
@@ -306,6 +315,156 @@
         "date": "Das Besuchsdatum ist ungültig.",
         "retryConflict": "Dieser Versuch entspricht nicht mehr der ursprünglichen Eingabe. Prüfe die Felder und versuche es erneut.",
         "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Der Besuch wird nicht doppelt erstellt."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Lokaler Besuchspass",
+      "title": "Deine Besuche auf diesem Gerät",
+      "description": "Beginne deinen Verlauf ohne Konto. Erst nach deiner Anmeldung und ausdrücklichen Bestätigung werden Daten importiert.",
+      "deviceWarning": "Diese Daten gehören nur zu diesem Browser. Gelöschte Browserdaten, ein anderes Gerät oder privates Surfen können sie unzugänglich machen.",
+      "actions": {
+        "export": "Kopie exportieren",
+        "browseParks": "Park suchen",
+        "clear": "Alles löschen",
+        "continue": "Besuch fortsetzen",
+        "deleteOne": "Löschen",
+        "import": "In meinen Besuchspass importieren",
+        "cancel": "Abbrechen",
+        "confirmClear": "Entwürfe löschen"
+      },
+      "errors": {
+        "storageUnavailable": "Der lokale Speicher ist in diesem Browser nicht verfügbar.",
+        "load": "Die auf diesem Gerät gespeicherten Besuche konnten nicht gelesen werden.",
+        "delete": "Dieser lokale Besuch konnte nicht gelöscht werden.",
+        "clear": "Die lokalen Besuche konnten nicht gelöscht werden.",
+        "export": "Die lokale Kopie konnte nicht erstellt werden.",
+        "importLocked": "Dieser Besuch wird importiert. Schließe den Import in deinem Pass ab oder setze ihn dort fort, bevor du ihn änderst oder löschst."
+      },
+      "loading": {
+        "title": "Lokale Besuche werden gelesen",
+        "description": "Der Browser öffnet den auf diesem Gerät gespeicherten Besuchspass."
+      },
+      "empty": {
+        "title": "Keine lokalen Besuche",
+        "description": "Füge auf einer Parkseite einen Besuch hinzu, auch ohne Anmeldung."
+      },
+      "list": {
+        "kicker": "Privater Entwurf",
+        "title": "Entwürfe zum Fortsetzen",
+        "rideCount": "{{count}} Fahrten",
+        "importLocked": "Import fortsetzen"
+      },
+      "clearDialog": {
+        "title": "Alle lokalen Besuche löschen?",
+        "description": "Dadurch werden die Entwürfe dauerhaft aus diesem Browser entfernt. Bereits in dein Konto importierte Besuche bleiben erhalten."
+      },
+      "import": {
+        "title": "Diese Besuche nach der Anmeldung behalten",
+        "description": "Melde dich an, um diese Entwürfe zu vergleichen und in deinen privaten Besuchspass zu importieren.",
+        "loading": "Lokale Besuche für den Import werden gesucht…",
+        "kicker": "Kontrollierter Import",
+        "detectedTitle": "Lokale Besuche wurden gefunden",
+        "detectedDescription": "{{visits}} Besuch(e) und {{rides}} Fahrt(en) bleiben bis zu deiner Bestätigung auf diesem Gerät.",
+        "noUploadYet": "Noch keine Daten gesendet",
+        "comparisonShared": "Für den Vergleich wurden nur Park und Jahr gesendet; der Import hat noch nicht begonnen",
+        "rideCount": "{{count}} lokale Fahrten",
+        "similarFound": "{{count}} ähnliche Besuche",
+        "choiceLegend": "Was möchtest du mit diesem Besuch tun?",
+        "choices": {
+          "separate": "Getrennt behalten",
+          "separateHint": "Erstellt einen neuen Besuch, ohne bestehende Besuche zu ändern.",
+          "merge": "Nach dem Vergleich zusammenführen",
+          "mergeHint": "Fügt die Fahrten einem von dir gewählten Entwurf hinzu.",
+          "ignore": "Bei diesem Import ignorieren",
+          "ignoreHint": "Der Besuch bleibt auf diesem Gerät und kann später bearbeitet werden."
+        },
+        "targetLabel": "Zielentwurf",
+        "targetPlaceholder": "Wähle einen bearbeitbaren Besuch",
+        "comparison": {
+          "local": "Auf diesem Gerät",
+          "server": "In deinem Konto",
+          "title": "Titel",
+          "note": "Private Notiz",
+          "loadingRides": "Vorhandene Fahrten werden geladen…"
+        },
+        "metadata": {
+          "legend": "Besuchsangaben",
+          "keepServer": "Gespeicherten Titel und gespeicherte Notiz behalten",
+          "useLocal": "Titel und Notiz des lokalen Besuchs verwenden"
+        },
+        "consent": "Ich erlaube den Vergleich dieser lokalen Besuche mit meinem privaten Besuchspass und danach den Import gemäß meiner Auswahl.",
+        "compare": "Mit meinem Besuchspass vergleichen",
+        "comparing": "Vergleich läuft…",
+        "importing": "Import läuft…",
+        "submit": "Ausgewählte Besuche importieren",
+        "errors": {
+          "preview": "Der Vergleich konnte nicht abgeschlossen werden. Deine Entwürfe bleiben auf diesem Gerät und der Import hat nicht begonnen.",
+          "invalidTarget": "Wähle für diese Zusammenführung einen vorhandenen bearbeitbaren Entwurf.",
+          "comparison": "Nicht alle Fahrten des gewählten Besuchs konnten geladen werden.",
+          "consent": "Bestätige den Import ausdrücklich, bevor Daten gesendet werden.",
+          "itemFailed": "Dieser Besuch wurde nicht importiert; der lokale Entwurf bleibt erhalten."
+        },
+        "report": {
+          "title": "Importbericht",
+          "summary": "{{imported}} erstellt, {{merged}} zusammengeführt, {{rides}} Fahrten importiert, {{failed}} fehlgeschlagen.",
+          "outcomes": {
+            "Imported": "Neuer Besuch importiert",
+            "Merged": "Zusammenführung bestätigt",
+            "Ignored": "Ignoriert und lokal behalten",
+            "Failed": "Fehlgeschlagen und lokal behalten"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Entwurf auf diesem Gerät",
+        "rideCount": "{{count}} Fahrten",
+        "localOnly": "Deine Änderungen bleiben in diesem Browser und werden an keinen Server gesendet.",
+        "importLocked": "Der Import dieses Besuchs wurde gestartet. Der Entwurf ist bis zum Abschluss vor Änderungen und Löschen geschützt.",
+        "actions": {
+          "back": "Zurück zu lokalen Besuchen",
+          "delete": "Besuch löschen",
+          "confirmDelete": "Dauerhaft löschen"
+        },
+        "add": {
+          "kicker": "Besuchserinnerungen",
+          "title": "Attraktionen hinzufügen",
+          "description": "Suche eine Attraktion des Parks und gib an, wie oft du sie gefahren bist.",
+          "searchLabel": "Name der Attraktion",
+          "searchPlaceholder": "Attraktion suchen…",
+          "search": "Suchen",
+          "historical": "Historische Attraktion",
+          "more": "Mehr laden",
+          "status": "Ergebnis",
+          "count": "Anzahl der Fahrten",
+          "time": "Ortszeit",
+          "approximate": "Ungefähre Uhrzeit",
+          "note": "Private Notiz",
+          "confirmHistorical": "Ich bestätige, dass diese Attraktion trotz ihrer Betriebsdaten zu meiner Erinnerung passt.",
+          "submit": "Zum Besuch hinzufügen"
+        },
+        "timeline": {
+          "kicker": "Lokaler Zeitverlauf",
+          "title": "Hinzugefügte Attraktionen",
+          "empty": "Zu diesem Besuch wurde noch keine Attraktion hinzugefügt.",
+          "count": "{{count}} Fahrten",
+          "moveUp": "Fahrt nach oben verschieben",
+          "moveDown": "Fahrt nach unten verschieben",
+          "remove": "Fahrt entfernen"
+        },
+        "errors": {
+          "notFoundTitle": "Lokaler Besuch nicht gefunden",
+          "notFound": "Dieser Entwurf ist in diesem Browser nicht mehr vorhanden.",
+          "load": "Dieser lokale Besuch konnte nicht geladen werden.",
+          "invalidRide": "Prüfe die Angaben und die Grenze von 2.000 Fahrten pro Entwurf.",
+          "attractions": "Die Attraktionen des Parks konnten nicht geladen werden.",
+          "save": "Die Änderung konnte auf diesem Gerät nicht gespeichert werden.",
+          "delete": "Dieser lokale Besuch konnte nicht gelöscht werden.",
+          "importLocked": "Dieser Besuch ist während des Imports geschützt. Setze den Import in deinem Pass fort."
+        },
+        "deleteDialog": {
+          "title": "Diesen lokalen Besuch löschen?",
+          "description": "Der Entwurf und alle seine Fahrten werden dauerhaft aus diesem Browser entfernt."
+        }
       }
     },
     "editor": {

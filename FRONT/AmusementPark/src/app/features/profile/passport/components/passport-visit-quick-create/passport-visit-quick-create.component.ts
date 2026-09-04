@@ -154,11 +154,12 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
 
   protected submit(): void {
     const draft: PassportVisitQuickCreateDraft = this.form.getRawValue();
-    this.facade.createVisit(draft);
+    this.facade.createVisit(draft, this.selectedParkName());
   }
 
   protected close(): void {
-    const shouldReset: boolean = this.facade.createdVisit() !== null;
+    const shouldReset: boolean = this.facade.createdVisit() !== null
+      || this.facade.createdLocalDraftId() !== null;
     this.visible = false;
     this.setModalLayerActive(false);
     this.visibleChange.emit(false);
@@ -171,7 +172,7 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
     this.visible = visible;
     this.setModalLayerActive(visible);
     this.visibleChange.emit(visible);
-    if (!visible && this.facade.createdVisit()) {
+    if (!visible && (this.facade.createdVisit() || this.facade.createdLocalDraftId())) {
       this.resetForm();
     }
   }
@@ -182,13 +183,26 @@ export class PassportVisitQuickCreateComponent implements OnChanges, OnDestroy {
 
   protected manageCreatedVisit(): void {
     const visitId: string = this.facade.createdVisit()?.id?.trim() ?? '';
-    if (!visitId) {
+    const localDraftId: string = this.facade.createdLocalDraftId()?.trim() ?? '';
+    if (!visitId && !localDraftId) {
       return;
     }
 
     const currentLanguage: string = this.router.url.split('/')[1] || 'en';
     this.close();
-    void this.router.navigate(['/', currentLanguage, 'profile', 'visits', visitId]);
+    void this.router.navigate(visitId
+      ? ['/', currentLanguage, 'profile', 'visits', visitId]
+      : ['/', currentLanguage, 'passport', 'local', localDraftId]);
+  }
+
+  protected openLocalPassport(): void {
+    if (!this.facade.createdLocalDraftId()) {
+      return;
+    }
+
+    const currentLanguage: string = this.router.url.split('/')[1] || 'en';
+    this.close();
+    void this.router.navigate(['/', currentLanguage, 'passport', 'local']);
   }
 
   protected trackPark(_index: number, option: PassportParkOption): string {

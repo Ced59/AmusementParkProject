@@ -32,7 +32,7 @@ export function mapPassportVisitQuickCreateDraft(
   }
 
   const timeZoneId: string | null = normalizeOptional(draft.timeZoneId);
-  if (timeZoneId && timeZoneId.length > 128) {
+  if (timeZoneId && (timeZoneId.length > 128 || !isValidTimeZoneId(timeZoneId))) {
     return invalid('passport.quickCreate.validation.timeZoneInvalid');
   }
 
@@ -89,6 +89,15 @@ function normalizeInteger(value: number | null): number | null {
 function normalizeOptional(value: string): string | null {
   const normalizedValue: string = value.trim();
   return normalizedValue.length > 0 ? normalizedValue : null;
+}
+
+function isValidTimeZoneId(value: string): boolean {
+  try {
+    new Intl.DateTimeFormat('en', { timeZone: value }).format(0);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function daysInMonth(year: number, month: number): number {

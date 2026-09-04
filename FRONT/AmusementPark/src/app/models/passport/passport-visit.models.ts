@@ -74,6 +74,12 @@ export interface PassportVisitPage {
   nextCursor: string | null;
 }
 
+export interface PassportVisitListFilters {
+  parkId?: string | null;
+  year?: number | null;
+  status?: PassportVisitStatus | null;
+}
+
 export interface PassportVisitDeletionPreview {
   visitId: string;
   expectedVersion: number;

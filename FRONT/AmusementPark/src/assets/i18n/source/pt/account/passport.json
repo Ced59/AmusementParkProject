@@ -58,6 +58,7 @@
       "actions": {
         "openForPark": "Adicionar uma visita",
         "done": "Concluir",
+        "viewLocalPassport": "Ver as minhas visitas locais",
         "addAttractions": "Adicionar atrações",
         "addAnother": "Adicionar outra visita",
         "saving": "A guardar…",
@@ -68,6 +69,12 @@
         "title": "Visita guardada",
         "description": "A tua visita a {{park}} está agora no teu passaporte privado.",
         "toast": "A visita foi adicionada ao teu passaporte."
+      },
+      "localSuccess": {
+        "title": "Visita guardada neste dispositivo",
+        "description": "A tua visita a {{park}} está guardada localmente. Já podes adicionar as atrações de que te lembras.",
+        "deviceWarning": "Este rascunho permanece neste navegador: não é sincronizado nem guardado na tua conta.",
+        "toast": "A visita foi guardada neste dispositivo."
       },
       "park": {
         "title": "Escolhe o parque",
@@ -105,12 +112,14 @@
         "yearInvalid": "Indica um ano válido.",
         "monthInvalid": "Indica um mês entre 1 e 12.",
         "dayInvalid": "Esse dia não existe no mês selecionado.",
-        "timeZoneInvalid": "O fuso horário é demasiado longo.",
+        "timeZoneInvalid": "O fuso horário deve ser um identificador IANA válido com um máximo de 128 caracteres.",
         "titleTooLong": "O título não pode ultrapassar 160 caracteres.",
         "noteTooLong": "A nota privada não pode ultrapassar 4 000 caracteres."
       },
       "errors": {
         "signInRequired": "Inicia sessão para guardar esta visita. Os dados introduzidos permanecem disponíveis.",
+        "localStorageUnavailable": "O armazenamento seguro do navegador não está disponível neste dispositivo.",
+        "localSave": "Não foi possível guardar a visita neste dispositivo. Verifica o espaço disponível e tenta novamente.",
         "generic": "Não foi possível guardar a visita. Tenta novamente sem perder os dados introduzidos.",
         "parkSearch": "A pesquisa de parques falhou. Tenta novamente dentro de instantes.",
         "parkNotFound": "Este parque já não está disponível.",
@@ -118,6 +127,156 @@
         "date": "A data da visita não é válida.",
         "retryConflict": "Esta tentativa já não corresponde aos dados iniciais. Verifica os campos e tenta novamente.",
         "network": "A resposta do servidor não chegou. Tenta novamente: a visita não será criada duas vezes."
+      }
+    },
+    "anonymousDrafts": {
+      "kicker": "Passaporte local",
+      "title": "As tuas visitas neste dispositivo",
+      "description": "Começa o teu histórico sem conta. Nada é enviado até pedires a importação depois de iniciares sessão.",
+      "deviceWarning": "Estes dados pertencem apenas a este navegador. Limpar os dados, usar outro dispositivo ou a navegação privada pode torná-los indisponíveis.",
+      "actions": {
+        "export": "Exportar uma cópia",
+        "browseParks": "Encontrar um parque",
+        "clear": "Apagar tudo",
+        "continue": "Continuar a visita",
+        "deleteOne": "Eliminar",
+        "import": "Importar para o meu passaporte",
+        "cancel": "Cancelar",
+        "confirmClear": "Apagar rascunhos"
+      },
+      "errors": {
+        "storageUnavailable": "O armazenamento local não está disponível neste navegador.",
+        "load": "Não foi possível ler as visitas guardadas neste dispositivo.",
+        "delete": "Não foi possível eliminar esta visita local.",
+        "clear": "Não foi possível apagar as visitas locais.",
+        "export": "Não foi possível preparar a cópia local.",
+        "importLocked": "Esta visita está a ser importada. Termina ou retoma a importação no teu passaporte antes de a alterares ou eliminares."
+      },
+      "loading": {
+        "title": "A ler as tuas visitas locais",
+        "description": "O navegador está a abrir o passaporte guardado neste dispositivo."
+      },
+      "empty": {
+        "title": "Sem visitas locais",
+        "description": "Adiciona uma visita a partir da página de um parque, mesmo sem iniciares sessão."
+      },
+      "list": {
+        "kicker": "Rascunho privado",
+        "title": "Rascunhos para continuar",
+        "rideCount": "{{count}} voltas",
+        "importLocked": "Importação por retomar"
+      },
+      "clearDialog": {
+        "title": "Apagar todas as visitas locais?",
+        "description": "Esta ação elimina definitivamente os rascunhos deste navegador. Não afeta as visitas já importadas para a tua conta."
+      },
+      "import": {
+        "title": "Manter estas visitas depois de iniciares sessão",
+        "description": "Inicia sessão para comparar e importar estes rascunhos para o teu passaporte privado.",
+        "loading": "A procurar visitas locais para importar…",
+        "kicker": "Importação controlada",
+        "detectedTitle": "Foram detetadas visitas locais",
+        "detectedDescription": "{{visits}} visita(s) e {{rides}} volta(s) permanecem neste dispositivo até confirmares.",
+        "noUploadYet": "Ainda não foram enviados dados",
+        "comparisonShared": "Apenas o parque e o ano foram enviados para comparação; a importação ainda não começou",
+        "rideCount": "{{count}} voltas locais",
+        "similarFound": "{{count}} visita(s) semelhante(s)",
+        "choiceLegend": "O que queres fazer com esta visita?",
+        "choices": {
+          "separate": "Mantê-la separada",
+          "separateHint": "Cria uma nova visita sem alterar as existentes.",
+          "merge": "Juntá-la depois da comparação",
+          "mergeHint": "Adiciona as voltas a um rascunho existente escolhido por ti.",
+          "ignore": "Ignorá-la nesta importação",
+          "ignoreHint": "Permanece neste dispositivo e pode ser tratada mais tarde."
+        },
+        "targetLabel": "Rascunho de destino",
+        "targetPlaceholder": "Escolhe uma visita editável",
+        "comparison": {
+          "local": "Neste dispositivo",
+          "server": "Na tua conta",
+          "title": "Título",
+          "note": "Nota privada",
+          "loadingRides": "A carregar as voltas existentes…"
+        },
+        "metadata": {
+          "legend": "Dados da visita",
+          "keepServer": "Manter o título e a nota já guardados",
+          "useLocal": "Usar o título e a nota da visita local"
+        },
+        "consent": "Autorizo a comparação destas visitas locais com o meu passaporte privado e depois a importação de acordo com as minhas escolhas.",
+        "compare": "Comparar com o meu passaporte",
+        "comparing": "A comparar…",
+        "importing": "A importar…",
+        "submit": "Importar as visitas escolhidas",
+        "errors": {
+          "preview": "Não foi possível concluir a comparação. Os teus rascunhos permanecem neste dispositivo e a importação não começou.",
+          "invalidTarget": "Escolhe um rascunho existente e editável para esta junção.",
+          "comparison": "Não foi possível carregar todas as voltas da visita escolhida.",
+          "consent": "Confirma explicitamente a importação antes do envio.",
+          "itemFailed": "Esta visita não foi importada; o rascunho local foi mantido."
+        },
+        "report": {
+          "title": "Relatório da importação",
+          "summary": "{{imported}} criadas, {{merged}} combinadas, {{rides}} voltas importadas, {{failed}} falhas.",
+          "outcomes": {
+            "Imported": "Nova visita importada",
+            "Merged": "Junção verificada",
+            "Ignored": "Ignorada e mantida localmente",
+            "Failed": "Falhou e foi mantida localmente"
+          }
+        }
+      },
+      "editor": {
+        "kicker": "Rascunho neste dispositivo",
+        "rideCount": "{{count}} voltas",
+        "localOnly": "As tuas alterações ficam neste navegador e não são enviadas para qualquer servidor.",
+        "importLocked": "A importação desta visita começou. O rascunho fica protegido contra alterações ou eliminação até a recuperação terminar.",
+        "actions": {
+          "back": "Voltar às visitas locais",
+          "delete": "Eliminar visita",
+          "confirmDelete": "Eliminar definitivamente"
+        },
+        "add": {
+          "kicker": "Memórias da visita",
+          "title": "Adicionar atrações",
+          "description": "Procura uma atração do parque e indica quantas vezes a experimentaste.",
+          "searchLabel": "Nome da atração",
+          "searchPlaceholder": "Procurar uma atração…",
+          "search": "Procurar",
+          "historical": "Atração histórica",
+          "more": "Carregar mais",
+          "status": "Resultado",
+          "count": "Número de voltas",
+          "time": "Hora local",
+          "approximate": "Hora aproximada",
+          "note": "Nota privada",
+          "confirmHistorical": "Confirmo que esta atração corresponde à minha memória, apesar das suas datas de funcionamento.",
+          "submit": "Adicionar à visita"
+        },
+        "timeline": {
+          "kicker": "Cronologia local",
+          "title": "Atrações adicionadas",
+          "empty": "Ainda não foi adicionada nenhuma atração a esta visita.",
+          "count": "{{count}} voltas",
+          "moveUp": "Mover esta volta para cima",
+          "moveDown": "Mover esta volta para baixo",
+          "remove": "Remover esta volta"
+        },
+        "errors": {
+          "notFoundTitle": "Visita local não encontrada",
+          "notFound": "Este rascunho já não existe neste navegador.",
+          "load": "Não foi possível carregar esta visita local.",
+          "invalidRide": "Verifica os dados e o limite de 2 000 voltas por rascunho.",
+          "attractions": "Não foi possível carregar as atrações do parque.",
+          "save": "Não foi possível guardar a alteração neste dispositivo.",
+          "delete": "Não foi possível eliminar esta visita local.",
+          "importLocked": "Esta visita está protegida durante a importação. Retoma a importação no teu passaporte."
+        },
+        "deleteDialog": {
+          "title": "Eliminar esta visita local?",
+          "description": "O rascunho e todas as suas voltas serão removidos definitivamente deste navegador."
+        }
       }
     },
     "editor": {

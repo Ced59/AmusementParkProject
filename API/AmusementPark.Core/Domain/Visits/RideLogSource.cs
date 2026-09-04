@@ -6,4 +6,5 @@ namespace AmusementPark.Core.Domain.Visits;
 public enum RideLogSource
 {
     Manual = 1,
+    Import = 2,
 }

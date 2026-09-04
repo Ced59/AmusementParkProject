@@ -50,13 +50,14 @@ describe('authGuard', () => {
     expect(modalService.openModal).not.toHaveBeenCalled();
   });
 
-  it('opens the login modal and redirects anonymous browser users to the localized home', async () => {
+  it('opens the login modal and preserves the protected destination on the localized home', async () => {
     authService.ensureValidAccessToken.mockReturnValue(of(null));
 
     const result: boolean | UrlTree = await runGuard('/fr/account');
 
     expect(result instanceof UrlTree).toBe(true);
-    expect(router.serializeUrl(result as UrlTree)).toBe('/fr/home');
+    expect(router.serializeUrl(result as UrlTree))
+      .toBe('/fr/home?returnUrl=%2Ffr%2Faccount');
     expect(modalService.openModal).toHaveBeenCalledTimes(1);
     expect(modalService.openModal).toHaveBeenCalledWith('loginModal');
   });
@@ -66,6 +67,7 @@ describe('authGuard', () => {
 
     const result: boolean | UrlTree = await runGuard('/unknown/account');
 
-    expect(router.serializeUrl(result as UrlTree)).toBe('/en/home');
+    expect(router.serializeUrl(result as UrlTree))
+      .toBe('/en/home?returnUrl=%2Funknown%2Faccount');
   });
 });
