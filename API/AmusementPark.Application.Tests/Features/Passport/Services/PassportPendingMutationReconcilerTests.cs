@@ -69,6 +69,7 @@ public sealed class PassportPendingMutationReconcilerTests
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        lease.Setup(value => value.MarkMutationCompleted());
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -143,6 +144,7 @@ public sealed class PassportPendingMutationReconcilerTests
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        lease.Setup(value => value.MarkMutationCompleted());
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -264,6 +266,7 @@ public sealed class PassportPendingMutationReconcilerTests
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(true);
+        lease.Setup(value => value.MarkMutationCompleted());
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,
@@ -341,6 +344,7 @@ public sealed class PassportPendingMutationReconcilerTests
             .ReturnsAsync(true);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        lease.Setup(value => value.MarkMutationCompleted());
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         PassportPendingMutationReconciler reconciler = new PassportPendingMutationReconciler(
             visits.Object,

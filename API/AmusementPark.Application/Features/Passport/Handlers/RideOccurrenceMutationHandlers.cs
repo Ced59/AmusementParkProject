@@ -153,9 +153,11 @@ public sealed class UpdateRideOccurrenceCommandHandler
         }
         catch (RideOccurrenceValidationException exception)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrence(
+                    exception.ErrorCode,
+                    exception.Message)));
         }
 
         if (occurrence.Version == expectedVersion)
@@ -166,9 +168,11 @@ public sealed class UpdateRideOccurrenceCommandHandler
                 expectedVersion,
                 contentMutationLease,
                 guardedCancellationToken);
-            return versionIsCurrent
-                ? Success(occurrence)
-                : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                versionIsCurrent
+                    ? Success(occurrence)
+                    : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
         PassportAuditEvent? auditEvent = this.auditPublisher is null
@@ -186,14 +190,18 @@ public sealed class UpdateRideOccurrenceCommandHandler
             guardedCancellationToken);
         if (!updated)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
             guardedCancellationToken);
-        return Success(occurrence);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            Success(occurrence));
     }
 
     private static ApplicationResult<RideOccurrenceResult> Success(
@@ -321,15 +329,19 @@ public sealed class DeleteRideOccurrenceCommandHandler
             guardedCancellationToken);
         if (!deleted)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
             guardedCancellationToken);
-        return ApplicationResult<RideOccurrenceResult>.Success(
-            PassportRideOccurrenceResultFactory.Create(occurrence));
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ApplicationResult<RideOccurrenceResult>.Success(
+                PassportRideOccurrenceResultFactory.Create(occurrence)));
     }
 
     private static ApplicationResult<RideOccurrenceResult> Failure(ApplicationError error)

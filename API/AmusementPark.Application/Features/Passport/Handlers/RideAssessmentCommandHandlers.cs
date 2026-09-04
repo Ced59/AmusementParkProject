@@ -117,15 +117,19 @@ public sealed class UpsertRideAssessmentCommandHandler
         }
         catch (RideAssessmentValidationException exception)
         {
-            return Failure(PassportApplicationErrors.InvalidRideAssessment(
-                exception.ErrorCode,
-                exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideAssessment(
+                    exception.ErrorCode,
+                    exception.Message)));
         }
         catch (RideOccurrenceValidationException exception)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrence(
+                    exception.ErrorCode,
+                    exception.Message)));
         }
 
         PassportAuditEvent? auditEvent = this.auditPublisher is null
@@ -142,14 +146,18 @@ public sealed class UpsertRideAssessmentCommandHandler
             guardedCancellationToken);
         if (!updated)
         {
-            return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
             guardedCancellationToken);
-        return Success(occurrence);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            Success(occurrence));
     }
 
     private static ParsedRideAssessmentScope? ParseScope(string? userId, string? occurrenceId)
@@ -314,9 +322,11 @@ public sealed class DeleteRideAssessmentCommandHandler
         }
         catch (RideOccurrenceValidationException exception)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrence(
+                    exception.ErrorCode,
+                    exception.Message)));
         }
 
         if (occurrence.Version == expectedVersion)
@@ -327,9 +337,11 @@ public sealed class DeleteRideAssessmentCommandHandler
                 expectedVersion,
                 contentMutationLease,
                 guardedCancellationToken);
-            return versionIsCurrent
-                ? Success(occurrence)
-                : Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                versionIsCurrent
+                    ? Success(occurrence)
+                    : Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict()));
         }
 
         PassportAuditEvent? auditEvent = this.auditPublisher is null
@@ -346,14 +358,18 @@ public sealed class DeleteRideAssessmentCommandHandler
             guardedCancellationToken);
         if (!updated)
         {
-            return Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideAssessmentConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
             guardedCancellationToken);
-        return Success(occurrence);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            Success(occurrence));
     }
 
     private static ApplicationResult<RideOccurrenceResult> Success(RideOccurrence occurrence)

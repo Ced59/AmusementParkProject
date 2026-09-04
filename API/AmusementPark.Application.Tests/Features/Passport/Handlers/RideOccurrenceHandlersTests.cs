@@ -638,6 +638,7 @@ public sealed class RideOccurrenceHandlersTests
             .ReturnsAsync(lease.Object);
         lease.SetupGet(value => value.LeaseLostToken).Returns(CancellationToken.None);
         lease.SetupGet(value => value.ContentFenceToken).Returns(7);
+        lease.Setup(value => value.MarkMutationCompleted());
         lease.Setup(value => value.DisposeAsync()).Returns(ValueTask.CompletedTask);
         AddRideOccurrencesBatchCommandHandler handler =
             new AddRideOccurrencesBatchCommandHandler(

@@ -235,7 +235,9 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 guardedCancellationToken);
         if (existing is not null)
         {
-            return ToApplicationResult(existing);
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ToApplicationResult(existing));
         }
 
         visit ??= await this.visitRepository.GetOwnedAsync(
@@ -244,13 +246,17 @@ public sealed class ReorderRideOccurrenceCommandHandler
             guardedCancellationToken);
         if (visit is null)
         {
-            return Failure(PassportApplicationErrors.VisitNotFound());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.VisitNotFound()));
         }
 
         ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
         if (editableError is not null)
         {
-            return Failure(editableError);
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(editableError));
         }
 
         IReadOnlyList<RideOccurrence> occurrences;
@@ -264,19 +270,25 @@ public sealed class ReorderRideOccurrenceCommandHandler
         }
         catch (InvalidOperationException)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder()));
         }
 
         RideOccurrence? moved = occurrences.FirstOrDefault(
             occurrence => occurrence.Id == scope.OccurrenceId);
         if (moved is null)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceNotFound()));
         }
 
         if (moved.Version != command.ExpectedVersion)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
         RideOccurrenceOrderPlan plan;
@@ -293,7 +305,9 @@ public sealed class ReorderRideOccurrenceCommandHandler
             or KeyNotFoundException
             or OverflowException)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder()));
         }
 
         Dictionary<RideOccurrenceId, RideOccurrence> byId = occurrences.ToDictionary(
@@ -353,7 +367,9 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 guardedCancellationToken);
         }
 
-        return ToApplicationResult(result);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ToApplicationResult(result));
     }
 
     private static ApplicationResult<ReorderRideOccurrenceResult> ToApplicationResult(

@@ -137,12 +137,16 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             contentMutationLease;
         using CancellationTokenSource? leaseCancellationSource =
             PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
-        return await this.HandleWithinContentMutationLeaseAsync(
-            RideOccurrenceFencedPersistence.Attach(creationRequest, contentMutationLease),
-            expanded,
-            operationId,
-            validatedVisit,
-            leaseCancellationSource?.Token ?? cancellationToken);
+        ApplicationResult<CreateRideOccurrencesResult> result =
+            await this.HandleWithinContentMutationLeaseAsync(
+                RideOccurrenceFencedPersistence.Attach(creationRequest, contentMutationLease),
+                expanded,
+                operationId,
+                validatedVisit,
+                leaseCancellationSource?.Token ?? cancellationToken);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            result);
     }
 
     private async Task<ApplicationResult<CreateRideOccurrencesResult>>

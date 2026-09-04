@@ -35,6 +35,7 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
             new List<UpdateDefinition<UserVisitDocument>>();
         FilterDefinition<UserVisitDocument>? acquireFilter = null;
         UpdateDefinition<UserVisitDocument>? acquireUpdate = null;
+        int acquisitionCount = 0;
         Mock<IMongoCollection<UserVisitDocument>> collection =
             new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
         collection.Setup(value => value.FindOneAndUpdateAsync(
@@ -51,13 +52,16 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
                 acquireFilter = filter;
                 acquireUpdate = update;
             })
-            .ReturnsAsync(new UserVisitDocument
-            {
-                Id = "visit-1",
-                UserId = "user-1",
-                ContentMutationFenceToken = 7,
-                ContentMutationFenceStableToken = 6,
-            });
+            .Returns(() => Task.FromResult<UserVisitDocument>(
+                Interlocked.Increment(ref acquisitionCount) == 1
+                    ? null!
+                    : new UserVisitDocument
+                    {
+                        Id = "visit-1",
+                        UserId = "user-1",
+                        ContentMutationFenceToken = 7,
+                        ContentMutationFenceStableToken = 6,
+                    }));
         collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
                 It.IsAny<UpdateDefinition<UserVisitDocument>>(),
@@ -84,21 +88,23 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
                 database.Object,
                 new MongoDbSettings());
 
-        IAsyncDisposable? lease = await manager.TryAcquireAsync(
+        IVisitContentMutationLease? lease = await manager.TryAcquireAsync(
             visit,
             NowUtc,
             CancellationToken.None);
         Assert.NotNull(lease);
+        lease.MarkMutationCompleted();
         await lease.DisposeAsync();
 
         Assert.Equal(2, filters.Count);
         Assert.NotNull(acquireFilter);
         Assert.NotNull(acquireUpdate);
         BsonDocument renderedAcquireFilter = Render(acquireFilter);
-        Assert.Equal("visit-1", renderedAcquireFilter["_id"].AsString);
-        Assert.Equal("user-1", renderedAcquireFilter["userId"].AsString);
-        Assert.Equal(1, renderedAcquireFilter["version"].AsInt64);
-        Assert.Equal("Draft", renderedAcquireFilter["status"].AsString);
+        string renderedAcquireFilterJson = renderedAcquireFilter.ToJson();
+        Assert.Contains("\"_id\" : \"visit-1\"", renderedAcquireFilterJson);
+        Assert.Contains("\"userId\" : \"user-1\"", renderedAcquireFilterJson);
+        Assert.Contains("\"version\"", renderedAcquireFilterJson);
+        Assert.Contains("\"status\" : \"Draft\"", renderedAcquireFilterJson);
         BsonDocument renderedAcquireUpdate = Render(acquireUpdate);
         string token = renderedAcquireUpdate["$set"]["contentMutationLeaseToken"].AsString;
         Assert.False(string.IsNullOrWhiteSpace(token));
@@ -122,7 +128,15 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
             "contentMutationLeaseToken"));
         Assert.True(releaseUpdate["$unset"].AsBsonDocument.Contains(
             "contentMutationLeaseExpiresAtUtc"));
+        Assert.False(releaseUpdate.Contains("$set"));
         database.VerifyAll();
+        collection.Verify(
+            value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<UserVisitDocument, UserVisitDocument>>(),
+                It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
         collection.Verify(
             value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
@@ -147,6 +161,7 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
             NowUtc.AddHours(-1));
         List<UpdateDefinition<UserVisitDocument>> acquisitionUpdates =
             new List<UpdateDefinition<UserVisitDocument>>();
+        int acquisitionCount = 0;
         Mock<IMongoCollection<UserVisitDocument>> visits =
             new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
         visits.Setup(value => value.FindOneAndUpdateAsync(
@@ -159,13 +174,16 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
                 UpdateDefinition<UserVisitDocument> update,
                 FindOneAndUpdateOptions<UserVisitDocument, UserVisitDocument> _,
                 CancellationToken _) => acquisitionUpdates.Add(update))
-            .ReturnsAsync(new UserVisitDocument
-                {
-                    Id = "visit-1",
-                    UserId = "user-1",
-                    ContentMutationFenceToken = 8,
-                    ContentMutationFenceStableToken = 7,
-                });
+            .Returns(() => Task.FromResult<UserVisitDocument>(
+                Interlocked.Increment(ref acquisitionCount) == 1
+                    ? null!
+                    : new UserVisitDocument
+                    {
+                        Id = "visit-1",
+                        UserId = "user-1",
+                        ContentMutationFenceToken = 8,
+                        ContentMutationFenceStableToken = 7,
+                    }));
         visits.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
                 It.IsAny<UpdateDefinition<UserVisitDocument>>(),
@@ -225,10 +243,11 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
 
         Assert.NotNull(lease);
         Assert.Equal(8, lease.ContentFenceToken);
-        Assert.Single(acquisitionUpdates);
+        Assert.Equal(2, acquisitionUpdates.Count);
+        Assert.False(Render(acquisitionUpdates[0]).Contains("$inc"));
         Assert.Equal(
             1,
-            Render(acquisitionUpdates[0])["$inc"]["contentMutationFenceToken"].AsInt64);
+            Render(acquisitionUpdates[1])["$inc"]["contentMutationFenceToken"].AsInt64);
         Assert.Single(occurrenceFilters);
         Assert.Single(operationFilters);
         Assert.Equal(
@@ -243,10 +262,151 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
         Assert.Equal(
             8,
             Render(operationFilters[0])["contentMutationFenceToken"]["$lt"].AsInt64);
+        lease.MarkMutationCompleted();
         await lease.DisposeAsync();
         visits.VerifyAll();
         occurrences.VerifyAll();
         operations.VerifyAll();
+        database.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryAcquireAsync_WhenFenceIsStable_ShouldReuseItWithoutRewritingHistory()
+    {
+        Visit visit = Visit.Create(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 3),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            NowUtc.AddHours(-1));
+        UpdateDefinition<UserVisitDocument>? acquisitionUpdate = null;
+        Mock<IMongoCollection<UserVisitDocument>> visits =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        visits.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<UserVisitDocument, UserVisitDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> _,
+                UpdateDefinition<UserVisitDocument> update,
+                FindOneAndUpdateOptions<UserVisitDocument, UserVisitDocument> _,
+                CancellationToken _) => acquisitionUpdate = update)
+            .ReturnsAsync(new UserVisitDocument
+            {
+                Id = "visit-1",
+                UserId = "user-1",
+                ContentMutationFenceToken = 7,
+                ContentMutationFenceStableToken = 7,
+                ContentMutationFenceReady = true,
+            });
+        visits.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> occurrences =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operations =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database.Setup(value => value.GetCollection<UserVisitDocument>("user-visits", null))
+            .Returns(visits.Object);
+        database.Setup(value => value.GetCollection<UserRideOccurrenceDocument>(
+                "user-ride-occurrences",
+                null))
+            .Returns(occurrences.Object);
+        database.Setup(value =>
+                value.GetCollection<UserRideOccurrenceCreationOperationDocument>(
+                    "user-ride-occurrence-operations",
+                    null))
+            .Returns(operations.Object);
+        MongoVisitContentMutationLeaseManager manager =
+            new MongoVisitContentMutationLeaseManager(database.Object, new MongoDbSettings());
+
+        IVisitContentMutationLease? lease = await manager.TryAcquireAsync(
+            visit,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.NotNull(lease);
+        Assert.Equal(7, lease.ContentFenceToken);
+        Assert.NotNull(acquisitionUpdate);
+        Assert.False(Render(acquisitionUpdate).Contains("$inc"));
+        lease.MarkMutationCompleted();
+        await lease.DisposeAsync();
+        visits.VerifyAll();
+        occurrences.VerifyNoOtherCalls();
+        operations.VerifyNoOtherCalls();
+        database.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DisposeAsync_WhenMutationWasNotCompleted_ShouldDirtyTheFence()
+    {
+        Visit visit = Visit.Create(
+            VisitId.Parse("visit-1"),
+            "user-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 3),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            NowUtc.AddHours(-1));
+        UpdateDefinition<UserVisitDocument>? releaseUpdate = null;
+        Mock<IMongoCollection<UserVisitDocument>> visits =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        visits.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<UserVisitDocument, UserVisitDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UserVisitDocument
+            {
+                Id = "visit-1",
+                UserId = "user-1",
+                ContentMutationFenceToken = 7,
+                ContentMutationFenceStableToken = 7,
+                ContentMutationFenceReady = true,
+            });
+        visits.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> _,
+                UpdateDefinition<UserVisitDocument> update,
+                UpdateOptions _,
+                CancellationToken _) => releaseUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database.Setup(value => value.GetCollection<UserVisitDocument>("user-visits", null))
+            .Returns(visits.Object);
+        SetupContentCollections(database);
+        MongoVisitContentMutationLeaseManager manager =
+            new MongoVisitContentMutationLeaseManager(database.Object, new MongoDbSettings());
+
+        IVisitContentMutationLease? lease = await manager.TryAcquireAsync(
+            visit,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.NotNull(lease);
+        await lease.DisposeAsync();
+        Assert.NotNull(releaseUpdate);
+        BsonDocument renderedRelease = Render(releaseUpdate);
+        Assert.False(renderedRelease["$set"]["contentMutationFenceReady"].AsBoolean);
+        Assert.True(renderedRelease["$unset"].AsBsonDocument.Contains(
+            "contentMutationLeaseToken"));
+        visits.VerifyAll();
         database.VerifyAll();
     }
 
@@ -287,7 +447,8 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
                 Id = "visit-1",
                 UserId = "user-1",
                 ContentMutationFenceToken = 7,
-                ContentMutationFenceStableToken = 6,
+                ContentMutationFenceStableToken = 7,
+                ContentMutationFenceReady = true,
             });
         collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
@@ -302,7 +463,7 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
             {
                 filters.Add(filter);
                 updates.Add(update);
-                if (filters.Count == 2)
+                if (filters.Count == 1)
                 {
                     renewalObserved.TrySetResult();
                 }
@@ -327,16 +488,18 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
             CancellationToken.None);
         Assert.NotNull(lease);
         await renewalObserved.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        lease.MarkMutationCompleted();
         await lease.DisposeAsync();
 
         Assert.True(filters.Count >= 2);
         Assert.NotNull(acquireUpdate);
         BsonDocument renderedAcquireUpdate = Render(acquireUpdate);
         string token = renderedAcquireUpdate["$set"]["contentMutationLeaseToken"].AsString;
-        BsonDocument renewalFilter = Render(filters[1]);
+        Assert.False(renderedAcquireUpdate.Contains("$inc"));
+        BsonDocument renewalFilter = Render(filters[0]);
         Assert.Equal(token, renewalFilter["contentMutationLeaseToken"].AsString);
         Assert.True(renewalFilter["contentMutationLeaseExpiresAtUtc"].AsBsonDocument.Contains("$gt"));
-        BsonDocument renewalUpdate = Render(updates[1]);
+        BsonDocument renewalUpdate = Render(updates[0]);
         Assert.True(renewalUpdate["$set"].AsBsonDocument.Contains(
             "contentMutationLeaseExpiresAtUtc"));
         BsonDocument releaseFilter = Render(filters[^1]);
@@ -369,14 +532,15 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
                 Id = "visit-1",
                 UserId = "user-1",
                 ContentMutationFenceToken = 7,
-                ContentMutationFenceStableToken = 6,
+                ContentMutationFenceStableToken = 7,
+                ContentMutationFenceReady = true,
             });
         collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserVisitDocument>>(),
                 It.IsAny<UpdateDefinition<UserVisitDocument>>(),
                 It.IsAny<UpdateOptions>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(() => Interlocked.Increment(ref updateCount) == 2
+            .ReturnsAsync(() => Interlocked.Increment(ref updateCount) == 1
                 ? new UpdateResult.Acknowledged(0, 0, null)
                 : new UpdateResult.Acknowledged(1, 1, null));
         Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);

@@ -2,6 +2,7 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -68,11 +69,21 @@ internal sealed class MongoVisitContentMutationLeaseManager :
         }
 
         string leaseToken = Guid.NewGuid().ToString("N");
-        UserVisitDocument? acquired = await this.TryAcquireFenceAsync(
+        UserVisitDocument? acquired = await this.TryAcquireStableFenceAsync(
             visit,
             acquiredAtUtc,
             leaseToken,
             cancellationToken);
+        bool requiresPromotion = acquired is null;
+        if (requiresPromotion)
+        {
+            acquired = await this.TryAcquireRecoveryFenceAsync(
+                visit,
+                acquiredAtUtc,
+                leaseToken,
+                cancellationToken);
+        }
+
         if (acquired?.ContentMutationFenceToken is null or < 1)
         {
             return null;
@@ -86,6 +97,11 @@ internal sealed class MongoVisitContentMutationLeaseManager :
             acquired.ContentMutationFenceToken.Value,
             this.timeProvider,
             this.renewalInterval);
+        if (!requiresPromotion)
+        {
+            return lease;
+        }
+
         try
         {
             await this.PromoteContentFenceAsync(
@@ -108,7 +124,54 @@ internal sealed class MongoVisitContentMutationLeaseManager :
         }
     }
 
-    private async Task<UserVisitDocument?> TryAcquireFenceAsync(
+    private async Task<UserVisitDocument?> TryAcquireStableFenceAsync(
+        Visit visit,
+        DateTime acquiredAtUtc,
+        string leaseToken,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        FilterDefinition<UserVisitDocument> stableFence =
+            filters.Exists(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath, false)
+            & filters.Eq(UserVisitMongoDefinitions.ContentMutationFenceReadyPath, true)
+            & filters.Gte(UserVisitMongoDefinitions.ContentMutationFenceTokenPath, 1L)
+            & filters.Gte(UserVisitMongoDefinitions.ContentMutationFenceStableTokenPath, 1L)
+            & new BsonDocumentFilterDefinition<UserVisitDocument>(
+                new BsonDocument(
+                    "$expr",
+                    new BsonDocument(
+                        "$eq",
+                        new BsonArray
+                        {
+                            $"${UserVisitMongoDefinitions.ContentMutationFenceTokenPath}",
+                            $"${UserVisitMongoDefinitions.ContentMutationFenceStableTokenPath}",
+                        })));
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+                visit.Id.Value,
+                visit.UserId,
+                visit.Version)
+            & filters.Eq(static document => document.Status, VisitStatus.Draft)
+            & stableFence;
+        UpdateDefinition<UserVisitDocument> update =
+            Builders<UserVisitDocument>.Update
+                .Set(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath, leaseToken)
+                .Set(
+                    UserVisitMongoDefinitions.ContentMutationLeaseExpiresAtUtcPath,
+                    acquiredAtUtc.Add(LeaseDuration));
+        return await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            new FindOneAndUpdateOptions<UserVisitDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+    }
+
+    private async Task<UserVisitDocument?> TryAcquireRecoveryFenceAsync(
         Visit visit,
         DateTime acquiredAtUtc,
         string leaseToken,
@@ -124,13 +187,35 @@ internal sealed class MongoVisitContentMutationLeaseManager :
             | filters.Lte(
                 UserVisitMongoDefinitions.ContentMutationLeaseExpiresAtUtcPath,
                 acquiredAtUtc);
+        FilterDefinition<UserVisitDocument> fenceRequiresRecovery =
+            filters.Exists(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath, true)
+            | filters.Ne(UserVisitMongoDefinitions.ContentMutationFenceReadyPath, true)
+            | filters.Exists(UserVisitMongoDefinitions.ContentMutationFenceTokenPath, false)
+            | filters.Lt(UserVisitMongoDefinitions.ContentMutationFenceTokenPath, 1L)
+            | filters.Exists(
+                UserVisitMongoDefinitions.ContentMutationFenceStableTokenPath,
+                false)
+            | filters.Lt(
+                UserVisitMongoDefinitions.ContentMutationFenceStableTokenPath,
+                1L)
+            | new BsonDocumentFilterDefinition<UserVisitDocument>(
+                new BsonDocument(
+                    "$expr",
+                    new BsonDocument(
+                        "$ne",
+                        new BsonArray
+                        {
+                            $"${UserVisitMongoDefinitions.ContentMutationFenceTokenPath}",
+                            $"${UserVisitMongoDefinitions.ContentMutationFenceStableTokenPath}",
+                        })));
         FilterDefinition<UserVisitDocument> filter =
             UserVisitMongoDefinitions.BuildOwnedVersionFilter(
                 visit.Id.Value,
                 visit.UserId,
                 visit.Version)
             & filters.Eq(static document => document.Status, VisitStatus.Draft)
-            & availableLease;
+            & availableLease
+            & fenceRequiresRecovery;
         UpdateDefinition<UserVisitDocument> update =
             Builders<UserVisitDocument>.Update
                 .Set(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath, leaseToken)
@@ -248,6 +333,7 @@ internal sealed class MongoVisitContentMutationLeaseManager :
         private readonly CancellationTokenSource leaseLostCancellation =
             new CancellationTokenSource();
         private readonly Task heartbeatTask;
+        private int mutationCompleted;
         private int released;
 
         public MongoVisitContentMutationLease(
@@ -274,6 +360,14 @@ internal sealed class MongoVisitContentMutationLeaseManager :
         public long ContentFenceToken => this.contentFenceToken;
 
         public CancellationToken LeaseLostToken => this.leaseLostCancellation.Token;
+
+        public void MarkMutationCompleted()
+        {
+            if (!this.leaseLostCancellation.IsCancellationRequested)
+            {
+                Volatile.Write(ref this.mutationCompleted, 1);
+            }
+        }
 
         public async Task<bool> TryCompletePromotionAsync()
         {
@@ -329,10 +423,17 @@ internal sealed class MongoVisitContentMutationLeaseManager :
                 & filters.Eq(
                     UserVisitMongoDefinitions.ContentMutationLeaseTokenPath,
                     this.token);
+            UpdateDefinitionBuilder<UserVisitDocument> updates =
+                Builders<UserVisitDocument>.Update;
             UpdateDefinition<UserVisitDocument> update =
-                Builders<UserVisitDocument>.Update
-                    .Unset(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath)
-                    .Unset(UserVisitMongoDefinitions.ContentMutationLeaseExpiresAtUtcPath);
+                Volatile.Read(ref this.mutationCompleted) == 1
+                    ? updates
+                        .Unset(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath)
+                        .Unset(UserVisitMongoDefinitions.ContentMutationLeaseExpiresAtUtcPath)
+                    : updates
+                        .Set(UserVisitMongoDefinitions.ContentMutationFenceReadyPath, false)
+                        .Unset(UserVisitMongoDefinitions.ContentMutationLeaseTokenPath)
+                        .Unset(UserVisitMongoDefinitions.ContentMutationLeaseExpiresAtUtcPath);
             _ = await this.collection.UpdateOneAsync(
                 filter,
                 update,

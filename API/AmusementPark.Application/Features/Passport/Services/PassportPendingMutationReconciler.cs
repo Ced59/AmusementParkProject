@@ -100,6 +100,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                         reconciledCount++;
                     }
 
+                    contentMutationLease.MarkMutationCompleted();
                     continue;
                 }
 
@@ -116,6 +117,8 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                 {
                     reconciledCount++;
                 }
+
+                contentMutationLease.MarkMutationCompleted();
             }
         }
 
@@ -160,6 +163,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                         guardedCancellationToken);
                 if (candidate is null)
                 {
+                    contentMutationLease.MarkMutationCompleted();
                     return true;
                 }
 
@@ -173,6 +177,7 @@ public sealed class PassportPendingMutationReconciler : IPassportPendingMutation
                         guardedCancellationToken);
                 if (!reconciled)
                 {
+                    contentMutationLease.MarkMutationCompleted();
                     return false;
                 }
             }

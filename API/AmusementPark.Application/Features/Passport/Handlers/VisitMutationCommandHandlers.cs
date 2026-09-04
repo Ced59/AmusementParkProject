@@ -133,8 +133,10 @@ public sealed class UpdateVisitMetadataCommandHandler :
                     guardedCancellationToken);
             if (firstOccurrencePage.Items.Count > 0)
             {
-                return ApplicationResult<VisitResult>.Failure(
-                    PassportApplicationErrors.VisitTemporalMetadataLocked());
+                return PassportContentMutationLeaseCompletion.Complete(
+                    contentMutationLease,
+                    ApplicationResult<VisitResult>.Failure(
+                        PassportApplicationErrors.VisitTemporalMetadataLocked()));
             }
         }
 
@@ -151,8 +153,12 @@ public sealed class UpdateVisitMetadataCommandHandler :
         }
         catch (VisitValidationException exception)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.InvalidVisit(exception.ErrorCode, exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.InvalidVisit(
+                        exception.ErrorCode,
+                        exception.Message)));
         }
         if (visit.Version == command.ExpectedVersion)
         {
@@ -163,11 +169,16 @@ public sealed class UpdateVisitMetadataCommandHandler :
                 guardedCancellationToken);
             if (!versionIsCurrent)
             {
-                return ApplicationResult<VisitResult>.Failure(
-                    PassportApplicationErrors.VisitConcurrencyConflict());
+                return PassportContentMutationLeaseCompletion.Complete(
+                    contentMutationLease,
+                    ApplicationResult<VisitResult>.Failure(
+                        PassportApplicationErrors.VisitConcurrencyConflict()));
             }
 
-            return ApplicationResult<VisitResult>.Success(PassportVisitResultFactory.Create(visit));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Success(
+                    PassportVisitResultFactory.Create(visit)));
         }
 
         PassportAuditEvent auditEvent = PassportVisitAuditEventFactory.VisitUpdated(visit, previous);
@@ -185,15 +196,20 @@ public sealed class UpdateVisitMetadataCommandHandler :
                 guardedCancellationToken);
         if (!updated)
         {
-            return ApplicationResult<VisitResult>.Failure(
-                PassportApplicationErrors.VisitConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ApplicationResult<VisitResult>.Failure(
+                    PassportApplicationErrors.VisitConcurrencyConflict()));
         }
 
         await PassportAuditDelivery.PublishAsync(
             this.auditPublisher,
             auditEvent,
             guardedCancellationToken);
-        return ApplicationResult<VisitResult>.Success(PassportVisitResultFactory.Create(visit));
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ApplicationResult<VisitResult>.Success(
+                PassportVisitResultFactory.Create(visit)));
     }
 
     private static bool TemporalIdentityChanged(
