@@ -195,18 +195,20 @@ export class PassportVisitEditorStateFacade {
     && this.canEditVisit()
     && !this.assessmentSavingSignal()
     && this.assessmentHasChanges());
-  readonly hasUnsavedAssessmentChanges = computed((): boolean =>
-    this.assessmentHasChanges()
-    || this.occurrencesSignal().some(
-      (occurrence: PassportRideOccurrence): boolean => this.rideAssessmentHasChanges(occurrence.id)));
+  readonly hasUnsavedAssessmentChanges = computed((): boolean => {
+    const drafts: Readonly<Record<string, PassportRideAssessmentDraft>> = this.rideAssessmentDraftsSignal();
+    return this.assessmentHasChanges()
+      || Object.entries(drafts).some(
+        ([occurrenceId, draft]: [string, PassportRideAssessmentDraft]): boolean =>
+          this.rideAssessmentDraftFingerprint(draft)
+            !== this.persistedRideAssessmentFingerprints.get(occurrenceId));
+  });
   readonly hasUnsavedOccurrenceChanges = computed((): boolean => {
     const drafts: Readonly<Record<string, PassportOccurrenceEditDraft>> = this.editDraftsSignal();
     return this.selectedAttractionsSignal().length > 0
-      || this.occurrencesSignal().some((occurrence: PassportRideOccurrence): boolean => {
-        const draft: PassportOccurrenceEditDraft | undefined = drafts[occurrence.id];
-        return Boolean(draft)
-          && JSON.stringify(draft) !== this.persistedEditFingerprints.get(occurrence.id);
-      });
+      || Object.entries(drafts).some(
+        ([occurrenceId, draft]: [string, PassportOccurrenceEditDraft]): boolean =>
+          JSON.stringify(draft) !== this.persistedEditFingerprints.get(occurrenceId));
   });
   readonly hasUnsavedStatusTransitionChanges = computed((): boolean =>
     this.metadataHasChanges()

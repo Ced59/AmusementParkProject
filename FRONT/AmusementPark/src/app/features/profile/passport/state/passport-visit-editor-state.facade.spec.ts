@@ -870,6 +870,38 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.editDrafts()['occurrence-2']).toEqual(expect.objectContaining({
       privateNote: 'Brouillon page 2'
     }));
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+
+    facade.completeVisit();
+
+    expect(visitsPort.completeVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('keeps a next-page assessment draft blocking archive after a first-page refresh', () => {
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: 'page-2' }))
+      .mockReturnValueOnce(of({ items: [secondOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: 'page-2' }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.loadMoreTimeline();
+    facade.updateRideAssessmentDraft('occurrence-2', {
+      value: 4.5,
+      privateComment: 'Brouillon page 2'
+    });
+
+    facade.reloadTimeline();
+
+    expect(facade.occurrences().map((occurrence: PassportRideOccurrence): string => occurrence.id)).toEqual([
+      'occurrence-1'
+    ]);
+    expect(facade.hasUnsavedAssessmentChanges()).toBe(true);
+
+    facade.archiveVisit();
+
+    expect(visitsPort.archiveVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
   });
 
   it('ignores an attraction filter response from the previously loaded visit', () => {
