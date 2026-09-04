@@ -48,12 +48,14 @@ public sealed record PassportParkAssessmentPointResult(
 
 public sealed record PassportCurrentItemRatingResult(
     string ParkItemId,
-    double Rating);
+    double Rating,
+    string? ParkItemName = null);
 
 public sealed record PassportHistoricalItemRatingResult(
     string ParkItemId,
     long RatingCount,
-    double Average);
+    double Average,
+    string? ParkItemName = null);
 
 public sealed record PassportYearBreakdownResult(
     int Year,
@@ -61,7 +63,8 @@ public sealed record PassportYearBreakdownResult(
 
 public sealed record PassportParkBreakdownResult(
     string ParkId,
-    PassportStatisticsSummaryResult Summary);
+    PassportStatisticsSummaryResult Summary,
+    string? ParkName = null);
 
 public sealed record PassportParkStatisticsResult(
     string ParkId,
@@ -71,7 +74,8 @@ public sealed record PassportParkStatisticsResult(
     IReadOnlyCollection<PassportParkAssessmentPointResult> AssessmentTimeline,
     IReadOnlyCollection<PassportYearBreakdownResult> ByYear,
     IReadOnlyCollection<PassportCurrentItemRatingResult> CurrentTopItems,
-    IReadOnlyCollection<PassportHistoricalItemRatingResult> HistoricalTopItems);
+    IReadOnlyCollection<PassportHistoricalItemRatingResult> HistoricalTopItems,
+    string? ParkName = null);
 
 public sealed record PassportYearStatisticsResult(
     int Year,

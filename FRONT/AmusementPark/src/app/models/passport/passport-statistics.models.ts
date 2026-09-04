@@ -103,6 +103,7 @@ export interface PassportRatingTrend {
 
 export interface PassportItemStatistics {
   parkItemId: string;
+  parkItemName: string | null;
   rideCount: number;
   visitCount: number;
   ratingCoverage: PassportItemRatingCoverage;
@@ -125,11 +126,13 @@ export interface PassportParkAssessmentPoint {
 
 export interface PassportCurrentItemRating {
   parkItemId: string;
+  parkItemName: string | null;
   rating: number;
 }
 
 export interface PassportHistoricalItemRating {
   parkItemId: string;
+  parkItemName: string | null;
   ratingCount: number;
   average: number;
 }
@@ -141,11 +144,13 @@ export interface PassportYearBreakdown {
 
 export interface PassportParkBreakdown {
   parkId: string;
+  parkName: string | null;
   summary: PassportStatisticsSummary;
 }
 
 export interface PassportParkStatistics {
   parkId: string;
+  parkName: string | null;
   summary: PassportStatisticsSummary;
   currentGlobalRating: number | null;
   currentGlobalMinusHistoricalAverage: number | null;

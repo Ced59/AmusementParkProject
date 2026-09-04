@@ -12,6 +12,7 @@ internal static class PassportStatisticsHttpMappers
         return new PassportItemStatisticsDto
         {
             ParkItemId = result.ParkItemId,
+            ParkItemName = result.ParkItemName,
             RideCount = result.RideCount,
             VisitCount = result.VisitCount,
             RatingCoverage = ToHttp(result.RatingCoverage),
@@ -67,6 +68,7 @@ internal static class PassportStatisticsHttpMappers
         return new PassportParkStatisticsDto
         {
             ParkId = result.ParkId,
+            ParkName = result.ParkName,
             Summary = ToHttp(result.Summary),
             CurrentGlobalRating = result.CurrentGlobalRating,
             CurrentGlobalMinusHistoricalAverage =
@@ -87,12 +89,14 @@ internal static class PassportStatisticsHttpMappers
                 new PassportCurrentItemRatingDto
                 {
                     ParkItemId = item.ParkItemId,
+                    ParkItemName = item.ParkItemName,
                     Rating = item.Rating,
                 }).ToArray(),
             HistoricalTopItems = result.HistoricalTopItems.Select(static item =>
                 new PassportHistoricalItemRatingDto
                 {
                     ParkItemId = item.ParkItemId,
+                    ParkItemName = item.ParkItemName,
                     RatingCount = item.RatingCount,
                     Average = item.Average,
                 }).ToArray(),
@@ -111,6 +115,7 @@ internal static class PassportStatisticsHttpMappers
             ByPark = result.ByPark.Select(static item => new PassportParkBreakdownDto
             {
                 ParkId = item.ParkId,
+                ParkName = item.ParkName,
                 Summary = ToHttp(item.Summary),
             }).ToArray(),
         };

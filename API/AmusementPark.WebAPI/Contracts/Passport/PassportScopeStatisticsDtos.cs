@@ -75,12 +75,14 @@ public sealed class PassportParkAssessmentPointDto
 public sealed class PassportCurrentItemRatingDto
 {
     public string ParkItemId { get; init; } = string.Empty;
+    public string? ParkItemName { get; init; }
     public double Rating { get; init; }
 }
 
 public sealed class PassportHistoricalItemRatingDto
 {
     public string ParkItemId { get; init; } = string.Empty;
+    public string? ParkItemName { get; init; }
     public long RatingCount { get; init; }
     public double Average { get; init; }
 }
@@ -95,6 +97,7 @@ public sealed class PassportYearBreakdownDto
 public sealed class PassportParkBreakdownDto
 {
     public string ParkId { get; init; } = string.Empty;
+    public string? ParkName { get; init; }
     public PassportStatisticsSummaryDto Summary { get; init; } =
         new PassportStatisticsSummaryDto();
 }
@@ -102,6 +105,7 @@ public sealed class PassportParkBreakdownDto
 public sealed class PassportParkStatisticsDto
 {
     public string ParkId { get; init; } = string.Empty;
+    public string? ParkName { get; init; }
     public PassportStatisticsSummaryDto Summary { get; init; } =
         new PassportStatisticsSummaryDto();
     public double? CurrentGlobalRating { get; init; }

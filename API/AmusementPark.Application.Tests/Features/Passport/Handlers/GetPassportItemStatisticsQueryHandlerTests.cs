@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Passport.Handlers;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
@@ -19,6 +20,8 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Mock<IPassportItemStatisticsSourceReader> sourceReader =
             new Mock<IPassportItemStatisticsSourceReader>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IParkItemNameReadRepository> parkItemNames =
+            new Mock<IParkItemNameReadRepository>(MockBehavior.Strict);
         sourceReader.Setup(reader => reader.ReadAsync(
                 "owner-1",
                 "item-1",
@@ -35,9 +38,17 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
                 "item-1",
                 CancellationToken.None))
             .ReturnsAsync(new UserRating { Value = 4.5d });
+        parkItemNames.Setup(repository => repository.GetNamesByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, string?>
+            {
+                ["item-1"] = "Attraction test",
+            });
         GetPassportItemStatisticsQueryHandler handler = new GetPassportItemStatisticsQueryHandler(
             sourceReader.Object,
-            ratings.Object);
+            ratings.Object,
+            parkItemNames.Object);
 
         ApplicationResult<PassportItemStatisticsResult> result = await handler.HandleAsync(
             new GetPassportItemStatisticsQuery(" owner-1 ", " item-1 "));
@@ -45,6 +56,7 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Assert.True(result.IsSuccess);
         PassportItemStatisticsResult value = Assert.IsType<PassportItemStatisticsResult>(result.Value);
         Assert.Equal("item-1", value.ParkItemId);
+        Assert.Equal("Attraction test", value.ParkItemName);
         Assert.Equal(3, value.RideCount);
         Assert.Equal(2, value.VisitCount);
         Assert.Equal(2, value.RatingCoverage.RatedRideCount);
@@ -62,6 +74,7 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Assert.Null(value.Trend);
         sourceReader.VerifyAll();
         ratings.VerifyAll();
+        parkItemNames.VerifyAll();
     }
 
     [Fact]
@@ -70,6 +83,8 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Mock<IPassportItemStatisticsSourceReader> sourceReader =
             new Mock<IPassportItemStatisticsSourceReader>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IParkItemNameReadRepository> parkItemNames =
+            new Mock<IParkItemNameReadRepository>(MockBehavior.Strict);
         sourceReader.Setup(reader => reader.ReadAsync(
                 "owner-1",
                 "item-1",
@@ -83,7 +98,8 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
             .ReturnsAsync((UserRating?)null);
         GetPassportItemStatisticsQueryHandler handler = new GetPassportItemStatisticsQueryHandler(
             sourceReader.Object,
-            ratings.Object);
+            ratings.Object,
+            parkItemNames.Object);
 
         ApplicationResult<PassportItemStatisticsResult> result = await handler.HandleAsync(
             new GetPassportItemStatisticsQuery("owner-1", "item-1"));
@@ -94,12 +110,14 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Assert.Null(result.Value?.HistoricalRatings);
         Assert.Null(result.Value?.CurrentGlobalRating);
         Assert.Null(result.Value?.CurrentGlobalMinusHistoricalAverage);
+        Assert.Null(result.Value?.ParkItemName);
         Assert.Empty(result.Value?.ByVisit ?? Array.Empty<PassportItemVisitStatisticsResult>());
         Assert.Empty(result.Value?.ByYear ?? Array.Empty<PassportItemYearStatisticsResult>());
         Assert.Empty(result.Value?.RatingTimeline ?? Array.Empty<PassportItemRatingPointResult>());
         Assert.Null(result.Value?.Trend);
         sourceReader.VerifyAll();
         ratings.VerifyAll();
+        parkItemNames.VerifyNoOtherCalls();
     }
 
     [Theory]
@@ -112,9 +130,12 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Mock<IPassportItemStatisticsSourceReader> sourceReader =
             new Mock<IPassportItemStatisticsSourceReader>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IParkItemNameReadRepository> parkItemNames =
+            new Mock<IParkItemNameReadRepository>(MockBehavior.Strict);
         GetPassportItemStatisticsQueryHandler handler = new GetPassportItemStatisticsQueryHandler(
             sourceReader.Object,
-            ratings.Object);
+            ratings.Object,
+            parkItemNames.Object);
 
         ApplicationResult<PassportItemStatisticsResult> result = await handler.HandleAsync(
             new GetPassportItemStatisticsQuery(userId, parkItemId));
@@ -123,6 +144,7 @@ public sealed class GetPassportItemStatisticsQueryHandlerTests
         Assert.Equal("identifier.required", Assert.Single(result.Errors).Code);
         sourceReader.VerifyNoOtherCalls();
         ratings.VerifyNoOtherCalls();
+        parkItemNames.VerifyNoOtherCalls();
     }
 
     private static PassportItemRideObservation CreateObservation(

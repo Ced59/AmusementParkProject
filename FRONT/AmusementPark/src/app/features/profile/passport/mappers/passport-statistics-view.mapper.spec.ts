@@ -14,7 +14,7 @@ describe('passport statistics view mapper', () => {
   it('maps raw item observations, cautious trend and explicit denominators without recalculating averages', () => {
     const statistics: PassportItemStatistics = createItemStatistics();
 
-    const view = mapItemStatisticsView(statistics, 'OzIris', 'fr');
+    const view = mapItemStatisticsView(statistics, 'fr');
 
     expect(view.title).toBe('OzIris');
     expect(view.cards.find((card) => card.id === 'rideCoverage')).toEqual(expect.objectContaining({
@@ -32,9 +32,14 @@ describe('passport statistics view mapper', () => {
   });
 
   it('keeps the trend absent when the API deliberately withholds it', () => {
-    const view = mapItemStatisticsView({ ...createItemStatistics(), trend: null }, null, 'en');
+    const view = mapItemStatisticsView({
+      ...createItemStatistics(),
+      parkItemName: null,
+      trend: null
+    }, 'en');
 
-    expect(view.title).toBe('item-1');
+    expect(view.title).toBe('');
+    expect(view.titleKey).toBe('passport.statistics.targets.unavailableItem');
     expect(view.trend).toBeNull();
     expect(view.timeline).toHaveLength(2);
   });
@@ -43,7 +48,7 @@ describe('passport statistics view mapper', () => {
     const view = mapItemStatisticsView({
       ...createItemStatistics(),
       trend: { ...createItemStatistics().trend!, kind: 2 }
-    }, 'OzIris', 'en');
+    }, 'en');
 
     expect(view.trend?.kind).toBe('falling');
   });
@@ -65,7 +70,7 @@ describe('passport statistics view mapper', () => {
       trend: null
     };
 
-    const view = mapItemStatisticsView(statistics, 'OzIris', 'fr');
+    const view = mapItemStatisticsView(statistics, 'fr');
 
     expect(view.isEmpty).toBe(false);
     expect(view.cards.find((card) => card.id === 'currentRating')?.value).toBe('4,5 / 5');
@@ -74,6 +79,7 @@ describe('passport statistics view mapper', () => {
   it('maps park timelines, outcomes, categories and both deliberately separate tops', () => {
     const statistics: PassportParkStatistics = {
       parkId: 'park-1',
+      parkName: 'Parc Astérix',
       summary: createSummary(),
       currentGlobalRating: 5,
       currentGlobalMinusHistoricalAverage: 0.75,
@@ -83,11 +89,11 @@ describe('passport statistics view mapper', () => {
         rating: 4
       }],
       byYear: [{ year: 2025, summary: createSummary() }],
-      currentTopItems: [{ parkItemId: 'item-current', rating: 5 }],
-      historicalTopItems: [{ parkItemId: 'item-history', ratingCount: 3, average: 4.5 }]
+      currentTopItems: [{ parkItemId: 'item-current', parkItemName: 'OzIris', rating: 5 }],
+      historicalTopItems: [{ parkItemId: 'item-history', parkItemName: 'Tonnerre 2 Zeus', ratingCount: 3, average: 4.5 }]
     };
 
-    const view = mapParkStatisticsView(statistics, 'Parc Astérix', 'fr');
+    const view = mapParkStatisticsView(statistics, 'fr');
 
     expect(view.timeline[0].dateLabel).toContain('août 2025');
     expect(view.tables.map((table) => table.id)).toEqual([
@@ -96,6 +102,8 @@ describe('passport statistics view mapper', () => {
     expect(view.tables[3].rows[0].navigation).toEqual(expect.objectContaining({
       kind: 'item', targetId: 'item-current'
     }));
+    expect(view.tables[3].rows[0].cells[0].value).toBe('OzIris');
+    expect(view.tables[4].rows[0].cells[0].value).toBe('Tonnerre 2 Zeus');
     expect(view.cards.find((card) => card.id === 'difference')?.value).toBe('+0,75');
     expect(view.tables[2].rows[0].cells[0]).toEqual({
       columnKey: 'category',
@@ -115,6 +123,7 @@ describe('passport statistics view mapper', () => {
     };
     const statistics: PassportParkStatistics = {
       parkId: 'park-1',
+      parkName: null,
       summary,
       currentGlobalRating: null,
       currentGlobalMinusHistoricalAverage: null,
@@ -124,7 +133,7 @@ describe('passport statistics view mapper', () => {
       historicalTopItems: []
     };
 
-    const categories = mapParkStatisticsView(statistics, null, 'fr').tables[2];
+    const categories = mapParkStatisticsView(statistics, 'fr').tables[2];
 
     expect(categories.rows.map((row) => row.cells[0])).toEqual([
       { columnKey: 'category', value: 'ratings.categories.Show', translate: true },
@@ -133,12 +142,50 @@ describe('passport statistics view mapper', () => {
     ]);
   });
 
+  it('uses translated neutral labels instead of technical identifiers when catalog names are unavailable', () => {
+    const statistics: PassportParkStatistics = {
+      parkId: '01d50831-1d2f-4928-aced-6616a2092248',
+      parkName: null,
+      summary: createSummary(),
+      currentGlobalRating: null,
+      currentGlobalMinusHistoricalAverage: null,
+      assessmentTimeline: [],
+      byYear: [],
+      currentTopItems: [{
+        parkItemId: '4a996381-4c44-454b-b129-f21a16a4e64c',
+        parkItemName: null,
+        rating: 5
+      }],
+      historicalTopItems: [{
+        parkItemId: '52f6bff7-f680-4537-a253-68b4b52c69ad',
+        parkItemName: null,
+        ratingCount: 2,
+        average: 4.5
+      }]
+    };
+
+    const view = mapParkStatisticsView(statistics, 'fr');
+
+    expect(view.title).toBe('');
+    expect(view.titleKey).toBe('passport.statistics.targets.unavailablePark');
+    expect(view.tables[3].rows[0].cells[0]).toEqual({
+      columnKey: 'target',
+      value: 'passport.statistics.targets.unavailableItem',
+      translate: true
+    });
+    expect(view.tables[4].rows[0].cells[0]).toEqual({
+      columnKey: 'target',
+      value: 'passport.statistics.targets.unavailableItem',
+      translate: true
+    });
+  });
+
   it('maps a yearly breakdown without manufacturing a graphical timeline', () => {
     const statistics: PassportYearStatistics = {
       year: 2025,
       parkCount: 2,
       summary: createSummary(),
-      byPark: [{ parkId: 'park-1', summary: createSummary() }]
+      byPark: [{ parkId: 'park-1', parkName: 'Parc test', summary: createSummary() }]
     };
 
     const view = mapYearStatisticsView(statistics, 'en');
@@ -149,12 +196,14 @@ describe('passport statistics view mapper', () => {
     expect(view.tables[0].rows[0].navigation).toEqual(expect.objectContaining({
       kind: 'park', targetId: 'park-1'
     }));
+    expect(view.tables[0].rows[0].cells[0].value).toBe('Parc test');
   });
 });
 
 function createItemStatistics(): PassportItemStatistics {
   return {
     parkItemId: 'item-1',
+    parkItemName: 'OzIris',
     rideCount: 3,
     visitCount: 2,
     ratingCoverage: { ratedRideCount: 2, totalRideCount: 3, rate: 2 / 3 },

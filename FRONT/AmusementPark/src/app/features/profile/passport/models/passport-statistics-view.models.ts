@@ -67,6 +67,7 @@ export interface PassportStatisticsTrendViewModel {
 export interface PassportStatisticsViewModel {
   scope: PassportStatisticsRouteScope;
   title: string;
+  titleKey: string | null;
   subtitleKey: string;
   cards: PassportStatisticCardViewModel[];
   timelineTitleKey: string | null;

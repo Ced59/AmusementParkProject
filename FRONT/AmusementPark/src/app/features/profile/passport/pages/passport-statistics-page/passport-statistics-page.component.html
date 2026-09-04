@@ -12,7 +12,7 @@
     @if (facade.viewModel(); as viewModel) {
       <div class="passport-statistics-page__heading">
         <div>
-          <h1>{{ viewModel.title }}</h1>
+          <h1>{{ viewModel.titleKey ? (viewModel.titleKey | translate) : viewModel.title }}</h1>
           <p>{{ viewModel.subtitleKey | translate }}</p>
         </div>
         <app-ui-chip tone="primary" iconClass="pi pi-lock">

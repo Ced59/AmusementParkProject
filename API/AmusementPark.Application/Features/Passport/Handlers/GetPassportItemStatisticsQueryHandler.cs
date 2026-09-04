@@ -1,5 +1,6 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
@@ -18,13 +19,16 @@ public sealed class GetPassportItemStatisticsQueryHandler
 {
     private readonly IPassportItemStatisticsSourceReader sourceReader;
     private readonly IRatingRepository ratingRepository;
+    private readonly IParkItemNameReadRepository parkItemNameReadRepository;
 
     public GetPassportItemStatisticsQueryHandler(
         IPassportItemStatisticsSourceReader sourceReader,
-        IRatingRepository ratingRepository)
+        IRatingRepository ratingRepository,
+        IParkItemNameReadRepository parkItemNameReadRepository)
     {
         this.sourceReader = sourceReader;
         this.ratingRepository = ratingRepository;
+        this.parkItemNameReadRepository = parkItemNameReadRepository;
     }
 
     public async Task<ApplicationResult<PassportItemStatisticsResult>> HandleAsync(
@@ -62,8 +66,17 @@ public sealed class GetPassportItemStatisticsQueryHandler
         PassportItemStatistics statistics = PassportItemStatisticsCalculator.Calculate(
             await observationsTask,
             currentRating is null ? null : RatingValue.FromDouble(currentRating.Value));
+        IReadOnlyDictionary<string, string?> parkItemNames =
+            statistics.RideCount > 0 || currentRating is not null
+                ? await this.parkItemNameReadRepository.GetNamesByIdsAsync(
+                    new[] { parkItemId },
+                    cancellationToken)
+                : new Dictionary<string, string?>(StringComparer.Ordinal);
         PassportItemStatisticsResult result =
-            PassportStatisticsResultFactory.CreateItem(parkItemId, statistics);
+            PassportStatisticsResultFactory.CreateItem(
+                parkItemId,
+                statistics,
+                parkItemNames.GetValueOrDefault(parkItemId));
         return ApplicationResult<PassportItemStatisticsResult>.Success(result);
     }
 }

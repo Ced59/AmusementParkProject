@@ -42,6 +42,8 @@ public sealed class PassportItemStatisticsDto
 {
     public string ParkItemId { get; init; } = string.Empty;
 
+    public string? ParkItemName { get; init; }
+
     public long RideCount { get; init; }
 
     public long VisitCount { get; init; }
