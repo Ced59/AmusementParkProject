@@ -69,11 +69,9 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(PassportApplicationErrors.VisitNotFound());
         }
 
-        string? operationId = PassportRideOccurrenceHandlerSupport.NormalizeOperationId(
-            command.ClientOperationId);
+        string? operationId = PassportRideOccurrenceHandlerSupport.NormalizeOperationId(command.ClientOperationId);
         IReadOnlyList<RideOccurrenceCreationItem>? expanded = Expand(command.Items);
-        if (operationId is null
-            || expanded is null
+        if (operationId is null || expanded is null
             || command.Source is not (RideLogSource.Manual or RideLogSource.Import))
         {
             return Failure(operationId is null
