@@ -16,7 +16,7 @@
       "loading": { "title": "A abrir o teu passaporte", "description": "As tuas visitas privadas estão a ser carregadas." },
       "errors": { "title": "Não foi possível abrir o teu passaporte", "load": "Não foi possível carregar as tuas visitas. Tenta novamente dentro de instantes.", "loadMore": "Não foi possível carregar mais visitas. As visitas já apresentadas continuam disponíveis." },
       "empty": { "title": "O teu passaporte espera pela primeira visita", "description": "Adiciona um parque e a data de que te lembras para começares o teu histórico privado." },
-      "list": { "kicker": "Histórico privado", "title": "Todas as tuas visitas", "loadedCount": "{{count}} visitas carregadas", "privateNote": "Nota privada guardada" },
+      "list": { "kicker": "Histórico privado", "title": "Todas as tuas visitas", "loadedCount": { "one": "1 visita carregada", "few": "{{count}} visitas carregadas", "many": "{{count}} visitas carregadas", "other": "{{count}} visitas carregadas" }, "privateNote": "Nota privada guardada" },
       "status": { "Draft": "Rascunho", "Completed": "Concluída", "Archived": "Arquivada" }
     },
     "statistics": {

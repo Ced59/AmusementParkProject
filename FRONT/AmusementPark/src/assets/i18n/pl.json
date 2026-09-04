@@ -77,7 +77,12 @@
       "list": {
         "kicker": "Prywatna historia",
         "title": "Wszystkie Twoje wizyty",
-        "loadedCount": "Wczytane wizyty: {{count}}",
+        "loadedCount": {
+          "one": "Wczytano 1 wizytę",
+          "few": "Wczytano {{count}} wizyty",
+          "many": "Wczytano {{count}} wizyt",
+          "other": "Wczytano {{count}} wizyty"
+        },
         "privateNote": "Zapisano prywatną notatkę"
       },
       "status": {

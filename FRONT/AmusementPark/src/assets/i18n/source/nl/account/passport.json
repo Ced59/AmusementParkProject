@@ -16,7 +16,7 @@
       "loading": { "title": "Je paspoort wordt geopend", "description": "Je privébezoeken worden geladen." },
       "errors": { "title": "Je paspoort kon niet worden geopend", "load": "Je bezoeken konden niet worden geladen. Probeer het zo opnieuw.", "loadMore": "Meer bezoeken konden niet worden geladen. De bezoeken die al worden getoond, blijven beschikbaar." },
       "empty": { "title": "Je paspoort wacht op het eerste bezoek", "description": "Voeg een park en de datum die je je herinnert toe om je privégeschiedenis te beginnen." },
-      "list": { "kicker": "Privégeschiedenis", "title": "Al je bezoeken", "loadedCount": "{{count}} bezoeken geladen", "privateNote": "Privénotitie opgeslagen" },
+      "list": { "kicker": "Privégeschiedenis", "title": "Al je bezoeken", "loadedCount": { "one": "1 bezoek geladen", "few": "{{count}} bezoeken geladen", "many": "{{count}} bezoeken geladen", "other": "{{count}} bezoeken geladen" }, "privateNote": "Privénotitie opgeslagen" },
       "status": { "Draft": "Concept", "Completed": "Voltooid", "Archived": "Gearchiveerd" }
     },
     "statistics": {

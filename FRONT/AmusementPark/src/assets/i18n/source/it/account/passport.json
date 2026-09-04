@@ -16,7 +16,7 @@
       "loading": { "title": "Apertura del passaporto", "description": "Le tue visite private sono in fase di caricamento." },
       "errors": { "title": "Non è stato possibile aprire il passaporto", "load": "Non è stato possibile caricare le tue visite. Riprova tra poco.", "loadMore": "Non è stato possibile caricare altre visite. Quelle già visualizzate restano disponibili." },
       "empty": { "title": "Il tuo passaporto aspetta la prima visita", "description": "Aggiungi un parco e la data che ricordi per iniziare la tua cronologia privata." },
-      "list": { "kicker": "Cronologia privata", "title": "Tutte le tue visite", "loadedCount": "{{count}} visite caricate", "privateNote": "Nota privata salvata" },
+      "list": { "kicker": "Cronologia privata", "title": "Tutte le tue visite", "loadedCount": { "one": "1 visita caricata", "few": "{{count}} visite caricate", "many": "{{count}} visite caricate", "other": "{{count}} visite caricate" }, "privateNote": "Nota privata salvata" },
       "status": { "Draft": "Bozza", "Completed": "Completata", "Archived": "Archiviata" }
     },
     "statistics": {

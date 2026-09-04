@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { LocalizedPluralPipe } from '@shared/pipes/localized-plural.pipe';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiPrimitiveTone, UiSurfaceDirective } from '@ui/primitives';
 import { PassportVisitQuickCreateComponent } from '../../components/passport-visit-quick-create/passport-visit-quick-create.component';
 import { PassportVisitOverviewItemViewModel } from '../../models/passport-visits-overview.models';
@@ -17,6 +18,7 @@ import { PassportVisitsOverviewStateFacade } from '../../state/passport-visits-o
   providers: [PassportVisitsOverviewStateFacade],
   imports: [
     TranslateModule,
+    LocalizedPluralPipe,
     PageStateComponent,
     PassportVisitQuickCreateComponent,
     UiButtonDirective,

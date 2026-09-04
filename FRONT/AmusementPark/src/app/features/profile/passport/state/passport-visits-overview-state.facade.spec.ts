@@ -96,6 +96,25 @@ describe('PassportVisitsOverviewStateFacade', () => {
     expect(facade.hasMore()).toBe(false);
     expect(facade.loadMoreErrorKey()).toBeNull();
   });
+
+  it('runs a refresh requested while the initial visit page is still loading', () => {
+    const initialPage = new Subject<PassportVisitPage>();
+    const responses = [
+      initialPage,
+      of(page([createVisit({ id: 'new-visit' })], null))
+    ];
+    const api: PassportVisitsOverviewApiPort = {
+      listVisits: () => responses.shift()!
+    };
+    const facade: PassportVisitsOverviewStateFacade = createFacade(api);
+
+    facade.load();
+    facade.load();
+    initialPage.next(page([createVisit({ id: 'stale-visit' })], null));
+
+    expect(facade.visits().map((visit) => visit.id)).toEqual(['new-visit']);
+    expect(facade.loading()).toBe(false);
+  });
 });
 
 function createFacade(

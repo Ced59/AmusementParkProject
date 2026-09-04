@@ -59,7 +59,7 @@
           </app-ui-kicker>
           <h2 id="passport-visits-title">{{ 'passport.overview.list.title' | translate }}</h2>
         </div>
-        <span>{{ 'passport.overview.list.loadedCount' | translate:{ count: facade.visits().length } }}</span>
+        <span>{{ 'passport.overview.list.loadedCount' | localizedPlural:facade.visits().length }}</span>
       </div>
 
       <div class="passport-overview__grid">

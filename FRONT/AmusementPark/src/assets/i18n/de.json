@@ -77,7 +77,12 @@
       "list": {
         "kicker": "Private Geschichte",
         "title": "Alle deine Besuche",
-        "loadedCount": "{{count}} Besuche geladen",
+        "loadedCount": {
+          "one": "1 Besuch geladen",
+          "few": "{{count}} Besuche geladen",
+          "many": "{{count}} Besuche geladen",
+          "other": "{{count}} Besuche geladen"
+        },
         "privateNote": "Private Notiz gespeichert"
       },
       "status": {

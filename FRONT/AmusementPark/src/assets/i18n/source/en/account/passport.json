@@ -37,7 +37,12 @@
       "list": {
         "kicker": "Private history",
         "title": "All your visits",
-        "loadedCount": "{{count}} visits loaded",
+        "loadedCount": {
+          "one": "1 visit loaded",
+          "few": "{{count}} visits loaded",
+          "many": "{{count}} visits loaded",
+          "other": "{{count}} visits loaded"
+        },
         "privateNote": "Private note saved"
       },
       "status": {

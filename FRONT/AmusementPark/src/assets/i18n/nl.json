@@ -77,7 +77,12 @@
       "list": {
         "kicker": "Privégeschiedenis",
         "title": "Al je bezoeken",
-        "loadedCount": "{{count}} bezoeken geladen",
+        "loadedCount": {
+          "one": "1 bezoek geladen",
+          "few": "{{count}} bezoeken geladen",
+          "many": "{{count}} bezoeken geladen",
+          "other": "{{count}} bezoeken geladen"
+        },
         "privateNote": "Privénotitie opgeslagen"
       },
       "status": {

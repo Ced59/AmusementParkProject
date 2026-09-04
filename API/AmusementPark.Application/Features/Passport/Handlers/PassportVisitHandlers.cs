@@ -258,14 +258,14 @@ public sealed class GetVisitQueryHandler : IQueryHandler<GetVisitQuery, Applicat
 public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>
 {
     private readonly IUserVisitRepository visitRepository;
-    private readonly IParkRepository parkRepository;
+    private readonly IParkNameReadRepository parkNameReadRepository;
 
     public ListUserVisitsQueryHandler(
         IUserVisitRepository visitRepository,
-        IParkRepository parkRepository)
+        IParkNameReadRepository parkNameReadRepository)
     {
         this.visitRepository = visitRepository;
-        this.parkRepository = parkRepository;
+        this.parkNameReadRepository = parkNameReadRepository;
     }
 
     public async Task<ApplicationResult<VisitPageResult>> HandleAsync(
@@ -310,16 +310,9 @@ public sealed class ListUserVisitsQueryHandler : IQueryHandler<ListUserVisitsQue
             .Select(static visit => visit.ParkId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        IReadOnlyCollection<Park> parks = parkIds.Length == 0
-            ? Array.Empty<Park>()
-            : await this.parkRepository.GetByIdsAsync(parkIds, cancellationToken);
-        IReadOnlyDictionary<string, string?> parkNames = parks
-            .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
-            .GroupBy(static park => park.Id!, StringComparer.Ordinal)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.First().Name,
-                StringComparer.Ordinal);
+        IReadOnlyDictionary<string, string?> parkNames = parkIds.Length == 0
+            ? new Dictionary<string, string?>(StringComparer.Ordinal)
+            : await this.parkNameReadRepository.GetNamesByIdsAsync(parkIds, cancellationToken);
         VisitPageResult result = new VisitPageResult(
             page.Items
                 .Select(visit => PassportVisitResultFactory.Create(

@@ -16,7 +16,7 @@
       "loading": { "title": "Otwieranie Twojego paszportu", "description": "Trwa wczytywanie Twoich prywatnych wizyt." },
       "errors": { "title": "Nie udało się otworzyć Twojego paszportu", "load": "Nie udało się wczytać Twoich wizyt. Spróbuj ponownie za chwilę.", "loadMore": "Nie udało się wczytać kolejnych wizyt. Wizyty już wyświetlone pozostają dostępne." },
       "empty": { "title": "Twój paszport czeka na pierwszą wizytę", "description": "Dodaj park i zapamiętaną datę, aby rozpocząć prywatną historię." },
-      "list": { "kicker": "Prywatna historia", "title": "Wszystkie Twoje wizyty", "loadedCount": "Wczytane wizyty: {{count}}", "privateNote": "Zapisano prywatną notatkę" },
+      "list": { "kicker": "Prywatna historia", "title": "Wszystkie Twoje wizyty", "loadedCount": { "one": "Wczytano 1 wizytę", "few": "Wczytano {{count}} wizyty", "many": "Wczytano {{count}} wizyt", "other": "Wczytano {{count}} wizyty" }, "privateNote": "Zapisano prywatną notatkę" },
       "status": { "Draft": "Wersja robocza", "Completed": "Zakończona", "Archived": "Zarchiwizowana" }
     },
     "statistics": {

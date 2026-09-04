@@ -22,6 +22,7 @@ export class PassportVisitsOverviewStateFacade {
   private readonly loadMoreErrorKeySignal = signal<string | null>(null);
   private readonly nextCursorSignal = signal<string | null>(null);
   private requestGeneration = 0;
+  private refreshQueued = false;
 
   public readonly visits: Signal<PassportVisitOverviewItemViewModel[]> = computed(() =>
     this.visitsSignal().map((visit: PassportVisit) =>
@@ -50,9 +51,11 @@ export class PassportVisitsOverviewStateFacade {
 
   public load(): void {
     if (this.loadingSignal()) {
+      this.refreshQueued = true;
       return;
     }
 
+    this.refreshQueued = false;
     const requestGeneration = ++this.requestGeneration;
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
@@ -70,6 +73,7 @@ export class PassportVisitsOverviewStateFacade {
           this.visitsSignal.set(deduplicateVisits(page.items));
           this.nextCursorSignal.set(normalizeCursor(page.nextCursor));
           this.loadingSignal.set(false);
+          this.runQueuedRefresh();
         },
         error: (error: unknown): void => {
           if (requestGeneration !== this.requestGeneration) {
@@ -81,6 +85,7 @@ export class PassportVisitsOverviewStateFacade {
           this.nextCursorSignal.set(null);
           this.errorKeySignal.set('passport.overview.errors.load');
           this.loadingSignal.set(false);
+          this.runQueuedRefresh();
         }
       });
   }
@@ -119,6 +124,15 @@ export class PassportVisitsOverviewStateFacade {
           this.loadingMoreSignal.set(false);
         }
       });
+  }
+
+  private runQueuedRefresh(): void {
+    if (!this.refreshQueued) {
+      return;
+    }
+
+    this.refreshQueued = false;
+    this.load();
   }
 }
 

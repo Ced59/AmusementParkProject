@@ -77,7 +77,12 @@
       "list": {
         "kicker": "Historique privé",
         "title": "Toutes tes visites",
-        "loadedCount": "{{count}} visites chargées",
+        "loadedCount": {
+          "one": "1 visite chargée",
+          "few": "{{count}} visites chargées",
+          "many": "{{count}} visites chargées",
+          "other": "{{count}} visites chargées"
+        },
         "privateNote": "Note privée enregistrée"
       },
       "status": {

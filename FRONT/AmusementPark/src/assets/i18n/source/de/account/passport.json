@@ -16,7 +16,7 @@
       "loading": { "title": "Dein Besuchspass wird geöffnet", "description": "Deine privaten Besuche werden geladen." },
       "errors": { "title": "Dein Besuchspass konnte nicht geöffnet werden", "load": "Deine Besuche konnten nicht geladen werden. Versuche es gleich noch einmal.", "loadMore": "Weitere Besuche konnten nicht geladen werden. Die bereits angezeigten Besuche bleiben verfügbar." },
       "empty": { "title": "Dein Besuchspass wartet auf den ersten Besuch", "description": "Füge einen Park und das Datum hinzu, an das du dich erinnerst, um deine private Geschichte zu beginnen." },
-      "list": { "kicker": "Private Geschichte", "title": "Alle deine Besuche", "loadedCount": "{{count}} Besuche geladen", "privateNote": "Private Notiz gespeichert" },
+      "list": { "kicker": "Private Geschichte", "title": "Alle deine Besuche", "loadedCount": { "one": "1 Besuch geladen", "few": "{{count}} Besuche geladen", "many": "{{count}} Besuche geladen", "other": "{{count}} Besuche geladen" }, "privateNote": "Private Notiz gespeichert" },
       "status": { "Draft": "Entwurf", "Completed": "Abgeschlossen", "Archived": "Archiviert" }
     },
     "statistics": {
