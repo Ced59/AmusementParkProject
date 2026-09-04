@@ -88,11 +88,51 @@ internal sealed class UserRideOccurrenceCreationRecovery
                 Array.Empty<RideOccurrence>());
     }
 
+    public async Task RemoveStaleAllocationsAsync(
+        UserRideOccurrenceCreationOperationDocument operation,
+        CancellationToken cancellationToken)
+    {
+        if (!operation.ContentMutationFenceToken.HasValue
+            || !UserRideOccurrenceOperationValidator.CreationMatches(
+                operation,
+                operation.PayloadHash,
+                operation.Items.Count))
+        {
+            return;
+        }
+
+        _ = await this.collection.DeleteManyAsync(
+            BuildExactOlderAllocationFilter(
+                operation,
+                operation.PayloadHash,
+                operation.Items.Count),
+            cancellationToken);
+    }
+
     private async Task AdoptLateDocumentsAsync(
         UserRideOccurrenceCreationOperationDocument operation,
         string payloadHash,
         int expectedCount,
         CancellationToken cancellationToken)
+    {
+        long currentFenceToken = operation.ContentMutationFenceToken!.Value;
+        _ = await this.collection.UpdateManyAsync(
+            BuildExactOlderAllocationFilter(
+                operation,
+                payloadHash,
+                expectedCount),
+            Builders<UserRideOccurrenceDocument>.Update.Set(
+                static document => document.ContentMutationFenceToken,
+                currentFenceToken),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+    }
+
+    private static FilterDefinition<UserRideOccurrenceDocument>
+        BuildExactOlderAllocationFilter(
+            UserRideOccurrenceCreationOperationDocument operation,
+            string payloadHash,
+            int expectedCount)
     {
         long currentFenceToken = operation.ContentMutationFenceToken!.Value;
         FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
@@ -117,13 +157,7 @@ internal sealed class UserRideOccurrenceCreationRecovery
             & filters.In(
                 static document => document.Id,
                 operation.Items.Select(static item => item.OccurrenceId));
-        _ = await this.collection.UpdateManyAsync(
-            exactAllocation & olderFence,
-            Builders<UserRideOccurrenceDocument>.Update.Set(
-                static document => document.ContentMutationFenceToken,
-                currentFenceToken),
-            new UpdateOptions { IsUpsert = false },
-            cancellationToken);
+        return exactAllocation & olderFence;
     }
 
     private async Task<List<UserRideOccurrenceDocument>> LoadCurrentDocumentsAsync(

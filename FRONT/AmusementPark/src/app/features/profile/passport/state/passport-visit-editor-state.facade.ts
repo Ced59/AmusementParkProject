@@ -189,6 +189,12 @@ export class PassportVisitEditorStateFacade {
     && this.canEditVisit()
     && !this.assessmentSavingSignal()
     && this.assessmentHasChanges());
+  readonly hasUnsavedAssessmentChanges = computed((): boolean =>
+    this.assessmentHasChanges()
+    || this.occurrencesSignal().some(
+      (occurrence: PassportRideOccurrence): boolean => this.rideAssessmentHasChanges(occurrence.id)));
+  readonly hasUnsavedStatusTransitionChanges = computed((): boolean =>
+    this.metadataHasChanges() || this.hasUnsavedAssessmentChanges());
   readonly parkName: Signal<string> = this.parkNameSignal.asReadonly();
   readonly zones: Signal<PassportVisitEditorZone[]> = this.zonesSignal.asReadonly();
   readonly attractions: Signal<PassportVisitEditorAttraction[]> = this.attractionsSignal.asReadonly();
@@ -660,7 +666,7 @@ export class PassportVisitEditorStateFacade {
       return;
     }
 
-    if (this.metadataHasChanges()) {
+    if (this.hasUnsavedStatusTransitionChanges()) {
       this.visitMutationErrorKeySignal.set('passport.editor.visit.errors.saveBeforeStatus');
       return;
     }

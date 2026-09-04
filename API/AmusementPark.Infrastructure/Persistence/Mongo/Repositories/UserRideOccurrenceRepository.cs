@@ -203,15 +203,27 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(mutation);
-        if (mutation.ContentFenceToken.HasValue
-            && await this.LoadCreationOperationAsync(
+        UserRideOccurrenceCreationOperationDocument? operation = null;
+        if (mutation.ContentFenceToken.HasValue)
+        {
+            operation = await this.LoadCreationOperationAsync(
                 mutation.UserId,
                 mutation.VisitId,
                 mutation.OperationKeyHash,
                 mutation.ContentFenceToken,
-                cancellationToken) is null)
+                cancellationToken);
+            if (operation is null)
+            {
+                return false;
+            }
+        }
+
+        if (mutation.Kind == PendingPassportMutationKind.Creation
+            && operation is not null)
         {
-            return false;
+            await this.creationRecovery.RemoveStaleAllocationsAsync(
+                operation,
+                cancellationToken);
         }
 
         return await this.pendingOperationRecovery.TrySetPendingConflictAsync(

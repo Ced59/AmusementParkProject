@@ -255,7 +255,7 @@ sequenceDiagram
 | même clé idempotente réutilisée sur une autre visite | recherche et promotion bornées par propriétaire, visite et clé ; la réservation en doublon devient un conflit | la première visite et ses preuves conservent leur fence |
 | arrêt pendant la promotion d'une nouvelle génération | seules les générations de l'intervalle sûr restent lisibles ; aucune nouvelle mutation n'obtient le bail | les preuves du même intervalle restent livrables ; la nouvelle acquisition incrémente et reprend depuis la dernière génération stable |
 | arrêt avec bail de contenu | état déjà écrit ou inchangé | bail non renouvelé et récupérable après cinq minutes, marqueur d'audit repris séparément |
-| création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée | opération exacte en conflit, marqueurs retirés |
+| création réservée puis identité temporelle modifiée | aucune occurrence ancienne n'est créée ; les allocations exactes restées sous une ancienne génération sont supprimées avant le rejet | opération exacte en conflit, marqueurs retirés |
 | arrêt après état métier mais avant acquittement, puis demande de clôture | opération exacte complétée ou compensée sous bail avant la clôture | preuve conservée si et seulement si la mutation métier est confirmée |
 | opération pendante héritée après clôture ou disparition de la visite | aucune reprise de contenu verrouillé | opération terminalisée, sans famine des lots suivants |
 
@@ -269,7 +269,7 @@ L'audit ne modifie ni les notes communautaires, ni les agrégats, ni les classem
 - corrections de visite : validation de date, fuseau, version, état, réouverture d'archive et date locale de complétion ;
 - exclusion distribuée : statut `Draft`, propriétaire et version exigés à l'acquisition, nouvelle génération monotone à chaque détenteur, borne stable persistée, promotion uniquement ascendante dans l'intervalle sûr, indicateur `ready`, renouvellement périodique du token exact non expiré, annulation lors d'une perte du bail, refus d'une clôture de création après changement de génération, opération pendante réglée sous le même bail avant `Complete`/`Archive`, mutations de visite bloquées pendant un bail actif ;
 - cohérence temporelle : reprise idempotente sous bail, identité réservée comparée à la visite courante, contrôle d'absence et écriture sous le même token, refus des changements temporels d'une visite qui contient déjà des occurrences ;
-- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture, filtres exacts sur `contentMutationFenceToken`, lecture et audit limités à la génération prête ou à l'intervalle stable sûr pendant une promotion ;
+- repositories Mongo : `version` et `$push pendingAuditEvents` dans la même écriture, filtres exacts sur `contentMutationFenceToken`, lecture et audit limités à la génération prête ou à l'intervalle stable sûr pendant une promotion, suppression bornée aux allocations exactes d'une création rejetée restées sous une ancienne génération ;
 - mapper : aller-retour des preuves minimisées sans `privateComment` ni `privateNote` ;
 - publisher : existence obligatoire d'un marqueur avant insertion, append puis acquittement ;
 - indexes : parcours privés et scan partiel des seuls marqueurs ;

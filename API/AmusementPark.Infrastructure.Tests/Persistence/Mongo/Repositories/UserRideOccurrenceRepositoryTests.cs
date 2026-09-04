@@ -3006,6 +3006,101 @@ public sealed class UserRideOccurrenceRepositoryTests
     }
 
     [Fact]
+    public async Task RejectPendingCreation_ShouldRemoveOnlyItsOlderFenceAllocations()
+    {
+        UserRideOccurrenceDocument occurrenceDocument = CreateCreationDocument(
+            CreateOccurrence("occurrence-1", "item-1", 1024),
+            "payload-hash",
+            0,
+            1);
+        occurrenceDocument.CreationOperationKeyHash = "operation-hash";
+        occurrenceDocument.ContentMutationFenceToken = 8;
+        UserRideOccurrenceCreationOperationDocument operation =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = "user-1",
+                OperationKeyHash = "operation-hash",
+                PayloadHash = "payload-hash",
+                OperationKind = "creation",
+                OperationState = "pending",
+                VisitId = "visit-1",
+                ContentMutationFenceToken = 9,
+                AppendBaseWasEmpty = true,
+                AppendBaseValidated = true,
+                Items = new List<UserRideOccurrenceCreationAllocationDocument>
+                {
+                    new UserRideOccurrenceCreationAllocationDocument
+                    {
+                        Index = 0,
+                        OccurrenceId = occurrenceDocument.Id,
+                        SortPosition = occurrenceDocument.SortPosition,
+                        CreatedAtUtc = occurrenceDocument.CreatedAt,
+                        UpdatedAtUtc = occurrenceDocument.UpdatedAt,
+                        CreationSnapshot = occurrenceDocument.CreationSnapshot!,
+                    },
+                },
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            };
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IAsyncCursor<UserRideOccurrenceCreationOperationDocument>> operationCursor =
+            CreateAsyncCursor(new[] { operation });
+        operationCollection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<FindOptions<UserRideOccurrenceCreationOperationDocument,
+                    UserRideOccurrenceCreationOperationDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(operationCursor.Object);
+        FilterDefinition<UserRideOccurrenceDocument>? deletionFilter = null;
+        collection.Setup(value => value.DeleteManyAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserRideOccurrenceDocument> filter,
+                CancellationToken _) => deletionFilter = filter)
+            .ReturnsAsync(Mock.Of<DeleteResult>());
+        operationCollection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceCreationOperationDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserRideOccurrenceRepository repository = CreateRepository(
+            collection.Object,
+            operationCollection.Object);
+        PendingPassportMutationVisit mutation = new PendingPassportMutationVisit(
+            "user-1",
+            VisitId.Parse("visit-1"),
+            "operation-hash",
+            PendingPassportMutationKind.Creation,
+            null,
+            9);
+
+        bool rejected = await repository.TryRejectPendingMutationAsync(
+            mutation,
+            NowUtc,
+            CancellationToken.None);
+
+        Assert.True(rejected);
+        Assert.NotNull(deletionFilter);
+        string filterJson = Render(deletionFilter).ToJson();
+        Assert.Contains("user-1", filterJson, StringComparison.Ordinal);
+        Assert.Contains("visit-1", filterJson, StringComparison.Ordinal);
+        Assert.Contains("operation-hash", filterJson, StringComparison.Ordinal);
+        Assert.Contains("payload-hash", filterJson, StringComparison.Ordinal);
+        Assert.Contains("occurrence-1", filterJson, StringComparison.Ordinal);
+        Assert.Contains("$lt", filterJson, StringComparison.Ordinal);
+        Assert.Contains("9", filterJson, StringComparison.Ordinal);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        operationCursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReorderConflictTransition_ShouldRequirePendingUnvalidatedReservation()
     {
         Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
