@@ -58,10 +58,11 @@ internal static class GlobalRatingSuggestionHttpMappers
             IsAvailable = result.IsAvailable,
             IsEnabled = result.IsEnabled,
             PresentedTargets = result.PresentedTargets.Select(static target =>
-                new GlobalRatingSuggestionPresentationTargetDto
+                new GlobalRatingSuggestionPresentedTargetDto
                 {
                     TargetType = (GlobalRatingSuggestionTargetTypeDto)target.TargetType,
                     TargetId = target.TargetId,
+                    PresentedAtUtc = target.PresentedAtUtc,
                 }).ToArray(),
         };
     }

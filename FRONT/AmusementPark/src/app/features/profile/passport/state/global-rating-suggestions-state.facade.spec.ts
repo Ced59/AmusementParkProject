@@ -19,7 +19,11 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
       presentSuggestions: vi.fn().mockReturnValue(of({
         isAvailable: true,
         isEnabled: true,
-        presentedTargets: [{ targetType: 'ParkItem', targetId: 'item-1' }]
+        presentedTargets: [{
+          targetType: 'ParkItem',
+          targetId: 'item-1',
+          presentedAtUtc: '2026-09-04T10:00:00Z'
+        }]
       })),
       setEnabled: vi.fn().mockReturnValue(of({ isAvailable: true, isEnabled: false })),
       recordInteraction: vi.fn().mockReturnValue(of({ isAvailable: true, isEnabled: true }))
@@ -63,7 +67,10 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
     facade.accept(facade.suggestions()[0], accepted);
 
     expect(api.recordInteraction).toHaveBeenLastCalledWith({
-      targetType: 'ParkItem', targetId: 'item-1', interactionType: 'Accepted'
+      targetType: 'ParkItem',
+      targetId: 'item-1',
+      interactionType: 'Accepted',
+      presentedAtUtc: '2026-09-04T10:00:00Z'
     });
     expect(accepted).toHaveBeenCalledTimes(1);
     expect(facade.suggestions()).toEqual([]);

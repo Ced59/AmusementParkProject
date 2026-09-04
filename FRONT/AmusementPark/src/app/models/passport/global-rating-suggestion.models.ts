@@ -41,10 +41,14 @@ export interface GlobalRatingSuggestionPresentationTarget {
   targetId: string;
 }
 
+export interface GlobalRatingSuggestionPresentedTarget extends GlobalRatingSuggestionPresentationTarget {
+  presentedAtUtc: string;
+}
+
 export interface GlobalRatingSuggestionPresentation {
   isAvailable: boolean;
   isEnabled: boolean;
-  presentedTargets: GlobalRatingSuggestionPresentationTarget[];
+  presentedTargets: GlobalRatingSuggestionPresentedTarget[];
 }
 
 export interface PresentGlobalRatingSuggestionsRequest {
@@ -55,4 +59,5 @@ export interface RecordGlobalRatingSuggestionInteractionRequest {
   targetType: 'Park' | 'ParkItem';
   targetId: string;
   interactionType: GlobalRatingSuggestionInteractionType;
+  presentedAtUtc: string;
 }

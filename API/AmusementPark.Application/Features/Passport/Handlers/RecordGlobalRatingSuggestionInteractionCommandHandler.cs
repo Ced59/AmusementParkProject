@@ -57,7 +57,9 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
 
         if (!Enum.IsDefined(command.TargetType)
             || !Enum.IsDefined(command.InteractionType)
-            || command.InteractionType == GlobalRatingSuggestionInteractionType.Presented)
+            || command.InteractionType == GlobalRatingSuggestionInteractionType.Presented
+            || command.PresentedAtUtc == default
+            || command.PresentedAtUtc.Kind != DateTimeKind.Utc)
         {
             return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Failure(
                 PassportApplicationErrors.InvalidGlobalRatingSuggestionInteraction());
@@ -94,9 +96,12 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
             userId,
             key,
             cancellationToken);
-        if (!this.IsCurrentPresentation(state))
+        if (!this.IsCurrentPresentation(state, command.PresentedAtUtc))
         {
-            return IsSameResolvedInteraction(state, command.InteractionType)
+            return IsSameResolvedInteraction(
+                state,
+                command.InteractionType,
+                command.PresentedAtUtc)
                 ? Success()
                 : InvalidInteraction();
         }
@@ -105,7 +110,7 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
             userId,
             command.TargetType,
             targetId,
-            state?.LastPresentedAtUtc,
+            command.PresentedAtUtc,
             command.InteractionType,
             this.clock.UtcNow,
             cancellationToken);
@@ -120,7 +125,8 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
             cancellationToken);
         bool isIdempotent = IsSameResolvedInteraction(
             refreshedState,
-            command.InteractionType);
+            command.InteractionType,
+            command.PresentedAtUtc);
         return isIdempotent ? Success() : InvalidInteraction();
     }
 
@@ -137,9 +143,12 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
         return states.SingleOrDefault();
     }
 
-    private bool IsCurrentPresentation(GlobalRatingSuggestionTargetState? state)
+    private bool IsCurrentPresentation(
+        GlobalRatingSuggestionTargetState? state,
+        DateTime presentedAtUtc)
     {
         return state is not null
+            && state.LastPresentedAtUtc == presentedAtUtc
             && this.policy.IsPresentationCurrent(
                 state.LastPresentedAtUtc,
                 state.IsAwaitingResolution,
@@ -148,9 +157,10 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
 
     private static bool IsSameResolvedInteraction(
         GlobalRatingSuggestionTargetState? state,
-        GlobalRatingSuggestionInteractionType interactionType)
+        GlobalRatingSuggestionInteractionType interactionType,
+        DateTime presentedAtUtc)
     {
-        if (state?.LastPresentedAtUtc is null || state.IsAwaitingResolution)
+        if (state?.LastPresentedAtUtc != presentedAtUtc || state.IsAwaitingResolution)
         {
             return false;
         }

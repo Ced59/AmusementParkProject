@@ -3,7 +3,8 @@ import { GlobalRatingSuggestionViewModel } from '../models/global-rating-suggest
 
 export function mapGlobalRatingSuggestionView(
   suggestion: GlobalRatingSuggestion,
-  language: string
+  language: string,
+  presentedAtUtc: string
 ): GlobalRatingSuggestionViewModel {
   const targetType: 'Park' | 'ParkItem' = suggestion.targetType === 'Park' || suggestion.targetType === 1
     ? 'Park'
@@ -17,6 +18,7 @@ export function mapGlobalRatingSuggestionView(
     id: `${targetType}:${suggestion.targetId}`,
     targetType,
     targetId: suggestion.targetId,
+    presentedAtUtc,
     targetName: suggestion.targetName,
     parkName: suggestion.parkName,
     parkItemCategory: suggestion.parkItemCategory,

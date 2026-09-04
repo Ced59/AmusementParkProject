@@ -67,12 +67,20 @@ public sealed class RecordGlobalRatingSuggestionInteractionRequest
     public GlobalRatingSuggestionTargetTypeDto TargetType { get; init; }
     public string TargetId { get; init; } = string.Empty;
     public GlobalRatingSuggestionInteractionTypeDto InteractionType { get; init; }
+    public DateTime PresentedAtUtc { get; init; }
 }
 
 public sealed class GlobalRatingSuggestionPresentationTargetDto
 {
     public GlobalRatingSuggestionTargetTypeDto TargetType { get; init; }
     public string TargetId { get; init; } = string.Empty;
+}
+
+public sealed class GlobalRatingSuggestionPresentedTargetDto
+{
+    public GlobalRatingSuggestionTargetTypeDto TargetType { get; init; }
+    public string TargetId { get; init; } = string.Empty;
+    public DateTime PresentedAtUtc { get; init; }
 }
 
 public sealed class PresentGlobalRatingSuggestionsRequest
@@ -85,6 +93,6 @@ public sealed class GlobalRatingSuggestionPresentationDto
 {
     public bool IsAvailable { get; init; }
     public bool IsEnabled { get; init; }
-    public IReadOnlyCollection<GlobalRatingSuggestionPresentationTargetDto> PresentedTargets { get; init; } =
-        Array.Empty<GlobalRatingSuggestionPresentationTargetDto>();
+    public IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetDto> PresentedTargets { get; init; } =
+        Array.Empty<GlobalRatingSuggestionPresentedTargetDto>();
 }

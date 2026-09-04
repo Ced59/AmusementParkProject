@@ -303,6 +303,7 @@ describe('ProfileRatingsPanelComponent', () => {
       id: 'ParkItem:item-1',
       targetType: 'ParkItem',
       targetId: 'item-1',
+      presentedAtUtc: '2026-09-04T10:00:00Z',
       targetName: 'Taron',
       parkName: 'Phantasialand',
       parkItemCategory: 'Attraction',

@@ -28,6 +28,7 @@ describe('GlobalRatingSuggestionsComponent', () => {
       loading: signal(false),
       saving: signal(false),
       error: signal(true),
+      blockingError: signal(true),
       load: vi.fn(),
       changeLanguage: vi.fn(),
       setEnabled: vi.fn(),
@@ -56,5 +57,48 @@ describe('GlobalRatingSuggestionsComponent', () => {
     expect(fixture.nativeElement.querySelector('[role="alert"]')).not.toBeNull();
     expect(fixture.nativeElement.querySelector('.rating-suggestions__empty')).toBeNull();
     expect(fixture.nativeElement.querySelector('.rating-suggestions__footer')).toBeNull();
+  });
+
+  it('keeps suggestion actions available after a recoverable interaction error', async () => {
+    const fakeFacade = {
+      suggestions: signal([{
+        id: 'ParkItem:item-1',
+        targetType: 'ParkItem',
+        targetId: 'item-1',
+        presentedAtUtc: '2026-09-04T10:00:00Z',
+        targetName: 'Taron'
+      }]),
+      available: signal(true),
+      enabled: signal(true),
+      loading: signal(false),
+      saving: signal(false),
+      error: signal(true),
+      blockingError: signal(false),
+      load: vi.fn(),
+      changeLanguage: vi.fn(),
+      setEnabled: vi.fn(),
+      dismiss: vi.fn(),
+      accept: vi.fn()
+    };
+    await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot(), GlobalRatingSuggestionsComponent],
+      providers: [{
+        provide: TranslationService,
+        useValue: { getCurrentLang: (): string => 'fr', languageChanged: EMPTY }
+      }]
+    })
+      .overrideComponent(GlobalRatingSuggestionsComponent, {
+        set: {
+          providers: [{ provide: GlobalRatingSuggestionsStateFacade, useValue: fakeFacade }]
+        }
+      })
+      .compileComponents();
+    const fixture: ComponentFixture<GlobalRatingSuggestionsComponent> =
+      TestBed.createComponent(GlobalRatingSuggestionsComponent);
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelectorAll('.rating-suggestion__actions button')).toHaveLength(2);
+    expect(fixture.nativeElement.querySelector('[role="alert"]')).not.toBeNull();
   });
 });

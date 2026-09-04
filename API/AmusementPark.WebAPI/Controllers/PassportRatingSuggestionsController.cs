@@ -148,7 +148,8 @@ public sealed class PassportRatingSuggestionsController : ControllerBase
                     userId,
                     request.TargetType.ToDomain(),
                     request.TargetId,
-                    request.InteractionType.ToDomain()),
+                    request.InteractionType.ToDomain(),
+                    request.PresentedAtUtc),
                 cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())

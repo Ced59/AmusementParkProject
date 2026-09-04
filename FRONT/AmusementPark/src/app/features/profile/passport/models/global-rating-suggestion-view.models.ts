@@ -2,6 +2,7 @@ export interface GlobalRatingSuggestionViewModel {
   id: string;
   targetType: 'Park' | 'ParkItem';
   targetId: string;
+  presentedAtUtc: string;
   targetName: string;
   parkName: string | null;
   parkItemCategory: string | null;

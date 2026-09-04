@@ -76,7 +76,8 @@ public sealed class PassportRatingSuggestionsControllerTests
                     && command.TargetType == RatingTargetType.ParkItem
                     && command.TargetId == "item-1"
                     && command.InteractionType ==
-                        AmusementPark.Application.Features.Passport.Models.GlobalRatingSuggestionInteractionType.Dismissed),
+                        AmusementPark.Application.Features.Passport.Models.GlobalRatingSuggestionInteractionType.Dismissed
+                    && command.PresentedAtUtc == new DateTime(2026, 9, 4, 10, 0, 0, DateTimeKind.Utc)),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Success(
                 new GlobalRatingSuggestionPreferenceResult(true, true)));
@@ -89,6 +90,7 @@ public sealed class PassportRatingSuggestionsControllerTests
                 TargetType = GlobalRatingSuggestionTargetTypeDto.ParkItem,
                 TargetId = "item-1",
                 InteractionType = GlobalRatingSuggestionInteractionTypeDto.Dismissed,
+                PresentedAtUtc = new DateTime(2026, 9, 4, 10, 0, 0, DateTimeKind.Utc),
             });
 
         Assert.IsType<GlobalRatingSuggestionPreferenceDto>(
@@ -114,9 +116,10 @@ public sealed class PassportRatingSuggestionsControllerTests
                     true,
                     new[]
                     {
-                        new GlobalRatingSuggestionTargetKey(
+                        new GlobalRatingSuggestionPresentedTargetResult(
                             RatingTargetType.ParkItem,
-                            "item-1"),
+                            "item-1",
+                            new DateTime(2026, 9, 4, 10, 0, 0, DateTimeKind.Utc)),
                     })));
         PassportRatingSuggestionsController controller =
             CreateController(handlers, authenticated: true);
@@ -138,6 +141,9 @@ public sealed class PassportRatingSuggestionsControllerTests
             Assert.IsType<GlobalRatingSuggestionPresentationDto>(
                 Assert.IsType<OkObjectResult>(response).Value);
         Assert.Equal("item-1", Assert.Single(body.PresentedTargets).TargetId);
+        Assert.Equal(
+            new DateTime(2026, 9, 4, 10, 0, 0, DateTimeKind.Utc),
+            Assert.Single(body.PresentedTargets).PresentedAtUtc);
         handlers.Presentation.VerifyAll();
     }
 

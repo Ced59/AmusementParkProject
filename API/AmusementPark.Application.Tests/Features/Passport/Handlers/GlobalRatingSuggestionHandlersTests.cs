@@ -176,7 +176,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Presented));
+                GlobalRatingSuggestionInteractionType.Presented,
+                NowUtc));
 
         Assert.False(result.IsSuccess);
         Assert.Equal(
@@ -352,7 +353,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Accepted));
+                GlobalRatingSuggestionInteractionType.Accepted,
+                presentedAtUtc));
 
         Assert.True(result.IsSuccess);
         ratings.VerifyAll();
@@ -386,7 +388,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Dismissed));
+                GlobalRatingSuggestionInteractionType.Dismissed,
+                NowUtc));
 
         Assert.False(result.IsSuccess);
         Assert.Equal(
@@ -415,7 +418,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Accepted));
+                GlobalRatingSuggestionInteractionType.Accepted,
+                NowUtc));
 
         Assert.True(result.IsSuccess);
         Assert.False(result.Value!.IsAvailable);
@@ -463,13 +467,77 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Accepted));
+                GlobalRatingSuggestionInteractionType.Accepted,
+                NowUtc));
 
         Assert.False(result.IsSuccess);
         Assert.Equal(
             "passport.rating-suggestion-interaction-invalid",
             Assert.Single(result.Errors).Code);
         states.VerifyAll();
+        ratings.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Interaction_FromAnOlderPresentation_CannotResolveTheCurrentPresentation()
+    {
+        DateTime oldPresentationAtUtc = NowUtc.AddDays(-31);
+        DateTime currentPresentationAtUtc = NowUtc.AddHours(-1);
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        states.Setup(value => value.GetStatesAsync(
+                "owner-1",
+                It.IsAny<IReadOnlyCollection<GlobalRatingSuggestionTargetKey>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new GlobalRatingSuggestionTargetState(
+                    RatingTargetType.Park,
+                    "park-1",
+                    currentPresentationAtUtc,
+                    null,
+                    null,
+                    true),
+            });
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetUserRatingAsync(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(CreateOwnedRating());
+        RecordGlobalRatingSuggestionInteractionCommandHandler handler =
+            new RecordGlobalRatingSuggestionInteractionCommandHandler(
+                states.Object,
+                new FeatureGate(true),
+                ratings.Object,
+                new TestClock(NowUtc),
+                new GlobalRatingSuggestionPolicy());
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new RecordGlobalRatingSuggestionInteractionCommand(
+                "owner-1",
+                RatingTargetType.Park,
+                "park-1",
+                GlobalRatingSuggestionInteractionType.Accepted,
+                oldPresentationAtUtc));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "passport.rating-suggestion-interaction-invalid",
+            Assert.Single(result.Errors).Code);
+        states.VerifyAll();
+        states.Verify(value => value.TryRecordInteractionAsync(
+                It.IsAny<string>(),
+                It.IsAny<RatingTargetType>(),
+                It.IsAny<string>(),
+                It.IsAny<DateTime?>(),
+                It.IsAny<GlobalRatingSuggestionInteractionType>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
         ratings.VerifyAll();
     }
 
@@ -515,7 +583,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 "owner-1",
                 RatingTargetType.Park,
                 "park-1",
-                GlobalRatingSuggestionInteractionType.Accepted));
+                GlobalRatingSuggestionInteractionType.Accepted,
+                presentedAtUtc));
 
         Assert.True(result.IsSuccess);
         states.VerifyAll();

@@ -75,13 +75,13 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
 
         if (!this.featureGate.IsEnabled)
         {
-            return Success(false, true, Array.Empty<GlobalRatingSuggestionTargetKey>());
+            return Success(false, true, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
         }
 
         bool isEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
         if (!isEnabled)
         {
-            return Success(true, false, Array.Empty<GlobalRatingSuggestionTargetKey>());
+            return Success(true, false, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
         }
 
         IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
@@ -99,8 +99,9 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
                     state.TargetType,
                     state.TargetId));
         DateTime nowUtc = this.clock.UtcNow;
-        List<GlobalRatingSuggestionTargetKey> presented =
-            new List<GlobalRatingSuggestionTargetKey>(targets.Length);
+        DateTime presentedAtUtc = TruncateToMilliseconds(nowUtc);
+        List<GlobalRatingSuggestionPresentedTargetResult> presented =
+            new List<GlobalRatingSuggestionPresentedTargetResult>(targets.Length);
 
         foreach (GlobalRatingSuggestionTargetKey target in targets)
         {
@@ -138,11 +139,14 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
                 target.TargetId,
                 state?.LastPresentedAtUtc,
                 GlobalRatingSuggestionInteractionType.Presented,
-                nowUtc,
+                presentedAtUtc,
                 cancellationToken);
             if (recorded)
             {
-                presented.Add(target);
+                presented.Add(new GlobalRatingSuggestionPresentedTargetResult(
+                    target.TargetType,
+                    target.TargetId,
+                    presentedAtUtc));
                 continue;
             }
 
@@ -153,13 +157,16 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
                     cancellationToken);
             GlobalRatingSuggestionTargetState? refreshedState =
                 refreshedStates.SingleOrDefault();
-            if (refreshedState is not null
+            if (refreshedState?.LastPresentedAtUtc is DateTime refreshedPresentedAtUtc
                 && this.policy.IsPresentationCurrent(
-                    refreshedState.LastPresentedAtUtc,
+                    refreshedPresentedAtUtc,
                     refreshedState.IsAwaitingResolution,
                     nowUtc))
             {
-                presented.Add(target);
+                presented.Add(new GlobalRatingSuggestionPresentedTargetResult(
+                    target.TargetType,
+                    target.TargetId,
+                    refreshedPresentedAtUtc));
             }
         }
 
@@ -179,9 +186,15 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     private static ApplicationResult<GlobalRatingSuggestionPresentationResult> Success(
         bool isAvailable,
         bool isEnabled,
-        IReadOnlyCollection<GlobalRatingSuggestionTargetKey> targets)
+        IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetResult> targets)
     {
         return ApplicationResult<GlobalRatingSuggestionPresentationResult>.Success(
             new GlobalRatingSuggestionPresentationResult(isAvailable, isEnabled, targets));
+    }
+
+    private static DateTime TruncateToMilliseconds(DateTime value)
+    {
+        long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(ticks, DateTimeKind.Utc);
     }
 }

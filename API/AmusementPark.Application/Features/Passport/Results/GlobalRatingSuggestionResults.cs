@@ -34,4 +34,9 @@ public sealed record GlobalRatingSuggestionPreferenceResult(
 public sealed record GlobalRatingSuggestionPresentationResult(
     bool IsAvailable,
     bool IsEnabled,
-    IReadOnlyCollection<GlobalRatingSuggestionTargetKey> PresentedTargets);
+    IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetResult> PresentedTargets);
+
+public sealed record GlobalRatingSuggestionPresentedTargetResult(
+    RatingTargetType TargetType,
+    string TargetId,
+    DateTime PresentedAtUtc);

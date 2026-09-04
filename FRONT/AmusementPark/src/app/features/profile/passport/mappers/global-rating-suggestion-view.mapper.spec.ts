@@ -3,11 +3,16 @@ import { mapGlobalRatingSuggestionView } from './global-rating-suggestion-view.m
 
 describe('mapGlobalRatingSuggestionView', () => {
   it('formats values for the active locale and maps numeric API enums', () => {
-    const view = mapGlobalRatingSuggestionView(createSuggestion(), 'fr');
+    const view = mapGlobalRatingSuggestionView(
+      createSuggestion(),
+      'fr',
+      '2026-09-04T07:00:00Z'
+    );
 
     expect(view).toEqual(expect.objectContaining({
       id: 'ParkItem:item-1',
       targetType: 'ParkItem',
+      presentedAtUtc: '2026-09-04T07:00:00Z',
       currentGlobalRatingLabel: '4,5 / 5',
       recentAverageLabel: '3,25 / 5',
       reasonKey: 'passport.ratingSuggestions.reasons.lower'
