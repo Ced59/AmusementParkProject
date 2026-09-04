@@ -210,7 +210,7 @@
         "importing": "Importazione in corso…",
         "submit": "Importa le visite selezionate",
         "errors": {
-          "preview": "Non è stato possibile preparare il confronto. Nessun dato locale è stato inviato.",
+          "preview": "Non è stato possibile completare il confronto. Le bozze restano su questo dispositivo e l’importazione non è iniziata.",
           "invalidTarget": "Scegli una bozza esistente e modificabile per questa unione.",
           "comparison": "Non è stato possibile caricare tutti i giri della visita scelta.",
           "consent": "Conferma esplicitamente l’importazione prima dell’invio.",

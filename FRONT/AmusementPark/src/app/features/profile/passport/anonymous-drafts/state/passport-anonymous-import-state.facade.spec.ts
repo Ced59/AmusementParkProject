@@ -45,6 +45,32 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(createVisitRequest).not.toHaveBeenCalled();
   });
 
+  it('keeps the disclosure visible when a later draft comparison fails', async () => {
+    const firstDraft: PassportAnonymousDraft = createDraft();
+    const secondDraft: PassportAnonymousDraft = {
+      ...createDraft(),
+      id: 'draft-2',
+      visitOperationId: 'visit-operation-2',
+      rideOperationId: 'ride-operation-2'
+    };
+    const listVisits = vi.fn()
+      .mockReturnValueOnce(of({ items: [], nextCursor: null }))
+      .mockReturnValueOnce(throwError(() => new Error('comparison unavailable')));
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([firstDraft, secondDraft]),
+      createVisitsPort({ listVisits }),
+      createOccurrencesPort()
+    );
+    await facade.load();
+
+    await facade.prepareComparison(true);
+
+    expect(listVisits).toHaveBeenCalledTimes(2);
+    expect(facade.comparisonPrepared()).toBe(false);
+    expect(facade.comparisonDataShared()).toBe(true);
+    expect(facade.errorKey()).toBe('passport.anonymousDrafts.import.errors.preview');
+  });
+
   it('imports a separate visit idempotently and purges local data only after verified acknowledgements', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const deleteDraft = vi.fn(async (): Promise<void> => undefined);

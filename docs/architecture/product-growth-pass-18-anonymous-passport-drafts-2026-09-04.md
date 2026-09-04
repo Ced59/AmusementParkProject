@@ -37,6 +37,7 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 - Les routes locales sont rendues côté client et marquées `noindex`; aucun contenu personnel n’entre dans le HTML SSR.
 - Les métadonnées navigateur de ces routes réutilisent la politique privée du compte et ne présentent jamais une fausse page introuvable.
 - La simple détection locale ne déclenche aucun appel contenant un parc, une date, une note ou un passage.
+- Dès la première tentative de comparaison, le message de divulgation reste visible même si une comparaison ultérieure échoue ; les erreurs ne prétendent jamais qu’aucune donnée n’a été envoyée.
 - Une même date et un même parc ne provoquent jamais une fusion automatique.
 - Seule une visite serveur en statut `Draft` peut recevoir une fusion.
 - La note privée complète et les passages du brouillon cible doivent être chargés avant que la fusion soit activée.

@@ -210,7 +210,7 @@
         "importing": "Importowanie…",
         "submit": "Importuj wybrane wizyty",
         "errors": {
-          "preview": "Nie udało się przygotować porównania. Nie wysłano żadnych lokalnych danych.",
+          "preview": "Nie udało się ukończyć porównania. Szkice pozostają na tym urządzeniu, a import nie został rozpoczęty.",
           "invalidTarget": "Wybierz istniejący edytowalny szkic do połączenia.",
           "comparison": "Nie udało się wczytać wszystkich przejazdów wybranej wizyty.",
           "consent": "Przed wysłaniem wyraźnie potwierdź import.",

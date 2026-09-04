@@ -210,7 +210,7 @@
         "importing": "A importar…",
         "submit": "Importar as visitas escolhidas",
         "errors": {
-          "preview": "Não foi possível preparar a comparação. Não foram enviados dados locais.",
+          "preview": "Não foi possível concluir a comparação. Os teus rascunhos permanecem neste dispositivo e a importação não começou.",
           "invalidTarget": "Escolhe um rascunho existente e editável para esta junção.",
           "comparison": "Não foi possível carregar todas as voltas da visita escolhida.",
           "consent": "Confirma explicitamente a importação antes do envio.",

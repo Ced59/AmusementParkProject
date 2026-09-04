@@ -47,6 +47,7 @@ export class PassportAnonymousImportStateFacade {
   private readonly importingSignal = signal<boolean>(false);
   private readonly comparingSignal = signal<boolean>(false);
   private readonly comparisonPreparedSignal = signal<boolean>(false);
+  private readonly comparisonDataSharedSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly reportSignal = signal<PassportAnonymousImportReport | null>(null);
 
@@ -55,6 +56,7 @@ export class PassportAnonymousImportStateFacade {
   readonly importing: Signal<boolean> = this.importingSignal.asReadonly();
   readonly comparing: Signal<boolean> = this.comparingSignal.asReadonly();
   readonly comparisonPrepared: Signal<boolean> = this.comparisonPreparedSignal.asReadonly();
+  readonly comparisonDataShared: Signal<boolean> = this.comparisonDataSharedSignal.asReadonly();
   readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   readonly report: Signal<PassportAnonymousImportReport | null> = this.reportSignal.asReadonly();
 
@@ -78,6 +80,7 @@ export class PassportAnonymousImportStateFacade {
     this.errorKeySignal.set(null);
     this.reportSignal.set(null);
     this.comparisonPreparedSignal.set(false);
+    this.comparisonDataSharedSignal.set(false);
     try {
       const drafts: PassportAnonymousDraft[] = await this.store.list();
       this.previewsSignal.set(drafts.map(
@@ -113,6 +116,7 @@ export class PassportAnonymousImportStateFacade {
     try {
       const compared: PassportAnonymousDraftPreview[] = [];
       for (const preview of this.previewsSignal()) {
+        this.comparisonDataSharedSignal.set(true);
         const candidates: PassportVisit[] = await this.loadVisitCandidates(preview.draft);
         compared.push({
           ...preview,

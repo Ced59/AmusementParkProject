@@ -398,7 +398,7 @@
         "importing": "Importando…",
         "submit": "Importar las visitas elegidas",
         "errors": {
-          "preview": "No se ha podido preparar la comparación. No se ha enviado ningún dato local.",
+          "preview": "No se ha podido completar la comparación. Tus borradores permanecen en este dispositivo y la importación no ha comenzado.",
           "invalidTarget": "Elige un borrador existente y editable para esta fusión.",
           "comparison": "No se han podido cargar todos los recorridos de la visita elegida.",
           "consent": "Confirma expresamente la importación antes de enviar los datos.",

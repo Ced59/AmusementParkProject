@@ -398,7 +398,7 @@
         "importing": "Import läuft…",
         "submit": "Ausgewählte Besuche importieren",
         "errors": {
-          "preview": "Der Vergleich konnte nicht vorbereitet werden. Es wurden keine lokalen Daten gesendet.",
+          "preview": "Der Vergleich konnte nicht abgeschlossen werden. Deine Entwürfe bleiben auf diesem Gerät und der Import hat nicht begonnen.",
           "invalidTarget": "Wähle für diese Zusammenführung einen vorhandenen bearbeitbaren Entwurf.",
           "comparison": "Nicht alle Fahrten des gewählten Besuchs konnten geladen werden.",
           "consent": "Bestätige den Import ausdrücklich, bevor Daten gesendet werden.",

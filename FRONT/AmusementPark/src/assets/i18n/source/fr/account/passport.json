@@ -331,7 +331,7 @@
         "importing": "Import en cours…",
         "submit": "Importer les visites choisies",
         "errors": {
-          "preview": "Impossible de préparer la comparaison. Aucune donnée locale n’a été envoyée.",
+          "preview": "Impossible de terminer la comparaison. Tes brouillons restent sur cet appareil et aucun import n’a commencé.",
           "invalidTarget": "Choisis un brouillon existant et modifiable pour cette fusion.",
           "comparison": "Impossible de charger tous les passages de la visite choisie.",
           "consent": "Confirme explicitement l’import avant l’envoi.",

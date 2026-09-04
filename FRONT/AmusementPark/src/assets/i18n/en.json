@@ -398,7 +398,7 @@
         "importing": "Importing…",
         "submit": "Import selected visits",
         "errors": {
-          "preview": "The comparison could not be prepared. No local data was sent.",
+          "preview": "The comparison could not be completed. Your drafts remain on this device and no import has started.",
           "invalidTarget": "Choose an existing editable draft for this merge.",
           "comparison": "All rides from the selected visit could not be loaded.",
           "consent": "Explicitly confirm the import before sending.",

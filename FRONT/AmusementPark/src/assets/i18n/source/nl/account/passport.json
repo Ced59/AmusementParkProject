@@ -210,7 +210,7 @@
         "importing": "Bezig met importeren…",
         "submit": "Gekozen bezoeken importeren",
         "errors": {
-          "preview": "De vergelijking kon niet worden voorbereid. Er zijn geen lokale gegevens verstuurd.",
+          "preview": "De vergelijking kon niet worden voltooid. Je concepten blijven op dit apparaat en de import is niet gestart.",
           "invalidTarget": "Kies voor deze samenvoeging een bestaand bewerkbaar concept.",
           "comparison": "Niet alle ritten van het gekozen bezoek konden worden geladen.",
           "consent": "Bevestig de import uitdrukkelijk voordat je gegevens verstuurt.",
