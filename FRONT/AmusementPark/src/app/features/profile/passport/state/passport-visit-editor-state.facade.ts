@@ -177,6 +177,12 @@ export class PassportVisitEditorStateFacade {
     this.visitSignal()?.status === 'Draft' && !this.visitMutationSavingSignal());
   readonly metadataHasChanges = computed((): boolean =>
     this.metadataDraftFingerprint(this.metadataDraftSignal()) !== this.persistedMetadataFingerprintSignal());
+  readonly temporalMetadataHasChanges = computed((): boolean => {
+    const visit: PassportVisit | null = this.visitSignal();
+    return visit !== null
+      && this.temporalMetadataDraftFingerprint(this.metadataDraftSignal())
+        !== this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(visit));
+  });
   readonly metadataCanSave = computed((): boolean =>
     this.canEditVisit() && this.metadataHasChanges());
   readonly assessmentDraft: Signal<PassportVisitParkAssessmentDraft> = this.assessmentDraftSignal.asReadonly();
@@ -231,6 +237,9 @@ export class PassportVisitEditorStateFacade {
   readonly pendingAddRecovery: Signal<boolean> = this.pendingAddRecoverySignal.asReadonly();
   readonly pendingDuplicateRecoveryIds: Signal<ReadonlySet<string>> =
     this.pendingDuplicateRecoveryIdsSignal.asReadonly();
+  readonly selectionCanSubmit = computed((): boolean =>
+    !this.addingSignal()
+    && (this.pendingAddRecoverySignal() || !this.temporalMetadataHasChanges()));
   readonly acceptsLocalTime = computed((): boolean => {
     const visit: PassportVisit | null = this.visitSignal();
     return visit?.date.precision === 'Day' && Boolean(visit.timeZoneId?.trim());
@@ -418,7 +427,10 @@ export class PassportVisitEditorStateFacade {
     const visitId: string | null = this.currentVisitId;
     const selections: PassportAttractionSelectionDraft[] = this.selectedAttractionsSignal();
     const pendingSubmission: PendingAddSubmission | null = this.pendingAddSubmission;
-    if (!visitId || (!pendingSubmission && selections.length === 0) || this.addingSignal()) {
+    if (!visitId
+      || (!pendingSubmission && selections.length === 0)
+      || this.addingSignal()
+      || (!pendingSubmission && this.temporalMetadataHasChanges())) {
       return;
     }
 
@@ -1896,6 +1908,31 @@ export class PassportVisitEditorStateFacade {
     return mapping.request
       ? this.metadataRequestFingerprint(mapping.request)
       : JSON.stringify(draft);
+  }
+
+  private temporalMetadataDraftFingerprint(draft: PassportVisitMetadataDraft): string {
+    const mapping: PassportVisitMetadataMappingResult = mapPassportVisitMetadataDraft(
+      { ...draft, title: '', privateNote: '' },
+      1);
+    if (mapping.request) {
+      return JSON.stringify({
+        year: mapping.request.date.year,
+        month: mapping.request.date.month,
+        day: mapping.request.date.day,
+        precision: mapping.request.date.precision,
+        timeZoneId: mapping.request.timeZoneId,
+        serviceDayConvention: mapping.request.serviceDayConvention
+      });
+    }
+
+    return JSON.stringify({
+      year: draft.year,
+      month: draft.month,
+      day: draft.day,
+      precision: draft.precision,
+      timeZoneId: draft.timeZoneId.trim(),
+      serviceDayConvention: draft.serviceDayConvention
+    });
   }
 
   private metadataRequestFingerprint(request: UpdatePassportVisitRequest): string {

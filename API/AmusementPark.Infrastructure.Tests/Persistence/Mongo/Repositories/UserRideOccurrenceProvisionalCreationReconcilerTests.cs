@@ -138,7 +138,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
     }
 
     [Fact]
-    public async Task ReconcileBatchAsync_WhenOccurrenceWasPromotedBeforeCompletedOperation_ShouldWait()
+    public async Task ReconcileBatchAsync_WhenOccurrenceWasPromotedBeforeCompletedOperation_ShouldCommitMarker()
     {
         UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
         UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
@@ -159,6 +159,12 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
         SetupVisit(visitCollection, visit);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         UserRideOccurrenceProvisionalCreationReconciler reconciler =
             new UserRideOccurrenceProvisionalCreationReconciler(
                 collection.Object,
@@ -167,13 +173,8 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
 
         int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
 
-        Assert.Equal(0, count);
+        Assert.Equal(1, count);
         collection.VerifyAll();
-        collection.Verify(value => value.UpdateOneAsync(
-            It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
-            It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
-            It.IsAny<UpdateOptions>(),
-            It.IsAny<CancellationToken>()), Times.Never);
         collection.Verify(value => value.DeleteOneAsync(
             It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
             It.IsAny<CancellationToken>()), Times.Never);

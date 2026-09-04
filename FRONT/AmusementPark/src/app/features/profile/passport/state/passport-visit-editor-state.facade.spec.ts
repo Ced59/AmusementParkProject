@@ -995,6 +995,21 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.normalizationNotice()).toBe(true);
   });
 
+  it('blocks a new occurrence add while temporal visit metadata is unsaved', () => {
+    occurrencesPort.list.mockReturnValue(of({ items: [], nextCursor: null }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateVisitMetadataDraft({ year: 2025 });
+
+    facade.addSelected();
+
+    expect(facade.temporalMetadataHasChanges()).toBe(true);
+    expect(facade.selectionCanSubmit()).toBe(false);
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+    expect(facade.selectedAttractions()).toHaveLength(1);
+  });
+
   it.each([0, 502, 504])('retries the original ambiguous add after HTTP %i even when the selection was edited', (status: number) => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     occurrencesPort.addBatch

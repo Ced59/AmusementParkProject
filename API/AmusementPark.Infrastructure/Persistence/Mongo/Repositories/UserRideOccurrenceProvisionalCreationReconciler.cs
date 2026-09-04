@@ -42,6 +42,7 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
         {
             UserRideOccurrenceCreationOperationDocument? operation =
                 await this.LoadOperationAsync(document, cancellationToken);
+            ProvisionalCreationDisposition? promotionDisposition = null;
             if (OperationFenceMayBePromoting(document, operation))
             {
                 UserVisitDocument? visit = await this.LoadVisitAsync(
@@ -49,15 +50,21 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                     cancellationToken);
                 if (IsInsideIncompletePromotion(document, operation!, visit))
                 {
-                    continue;
+                    promotionDisposition = string.Equals(
+                        operation!.OperationState,
+                        "pending",
+                        StringComparison.Ordinal)
+                        ? ProvisionalCreationDisposition.Wait
+                        : ProvisionalCreationDisposition.Commit;
                 }
-
-                operation = await this.LoadOperationAsync(document, cancellationToken);
+                else
+                {
+                    operation = await this.LoadOperationAsync(document, cancellationToken);
+                }
             }
 
-            ProvisionalCreationDisposition disposition = ResolveDisposition(
-                document,
-                operation);
+            ProvisionalCreationDisposition disposition = promotionDisposition
+                ?? ResolveDisposition(document, operation);
             if (disposition == ProvisionalCreationDisposition.Wait)
             {
                 continue;

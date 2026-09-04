@@ -380,6 +380,13 @@
               </p>
             }
 
+            @if (facade.temporalMetadataHasChanges() && !facade.pendingAddRecovery()) {
+              <p class="passport-inline-message" role="status">
+                <i class="pi pi-info-circle" aria-hidden="true"></i>
+                {{ 'passport.editor.visit.errors.saveBeforeStatus' | translate }}
+              </p>
+            }
+
             <div class="passport-selection__items">
               @for (selection of facade.selectedAttractions(); track trackSelection($index, selection)) {
                 <details class="passport-selection-card" open>
@@ -437,7 +444,7 @@
               </p>
             }
 
-            <button appUiButton="primary" type="button" class="passport-selection__submit" [disabled]="facade.adding()" (click)="facade.addSelected()">
+            <button appUiButton="primary" type="button" class="passport-selection__submit" [disabled]="!facade.selectionCanSubmit()" (click)="facade.addSelected()">
               @if (facade.adding()) {
                 <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
               } @else {
