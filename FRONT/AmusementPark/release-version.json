@@ -1,6 +1,20 @@
 {
-  "version": "5.0.17",
+  "version": "5.0.18",
   "history": [
+    {
+      "version": "5.0.18",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "La reprise des suggestions de notes est maintenant plus fiable en cas de connexion instable.",
+        "en": "Rating suggestions now recover more reliably when your connection is unstable.",
+        "de": "Bewertungsvorschläge lassen sich bei einer instabilen Verbindung jetzt zuverlässiger fortsetzen.",
+        "nl": "Beoordelingssuggesties worden nu betrouwbaarder hervat bij een instabiele verbinding.",
+        "it": "I suggerimenti di valutazione ora riprendono in modo più affidabile quando la connessione è instabile.",
+        "es": "Las sugerencias de valoración se recuperan ahora de forma más fiable cuando la conexión es inestable.",
+        "pl": "Sugestie ocen są teraz niezawodniej wznawiane przy niestabilnym połączeniu.",
+        "pt": "As sugestões de classificação são agora retomadas de forma mais fiável quando a ligação está instável."
+      }
+    },
     {
       "version": "5.0.17",
       "releasedAt": "2026-09-04",
