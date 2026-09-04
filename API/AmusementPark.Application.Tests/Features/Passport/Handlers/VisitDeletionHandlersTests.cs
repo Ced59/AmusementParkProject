@@ -306,7 +306,102 @@ public sealed class VisitDeletionHandlersTests
         lease.Verify(value => value.DisposeAsync(), Times.Once);
         visits.VerifyAll();
         deletions.VerifyAll();
+        deletions.Verify(store => store.GetReceiptAsync(
+            visit.Id,
+            visit.UserId,
+            "delete-1",
+            CancellationToken.None), Times.Exactly(2));
         leaseManager.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Delete_WhenAnIdenticalConcurrentRequestWins_ShouldReplayItsReceipt()
+    {
+        Visit visit = CreateVisit();
+        visit.Complete(new DateOnly(2026, 9, 5), NowUtc);
+        VisitDeletionReceipt concurrentReceipt = new VisitDeletionReceipt(
+            visit.Id.Value,
+            NowUtc,
+            NowUtc.Add(VisitDeletionPolicy.Retention),
+            visit.Version + 1,
+            false);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IVisitDeletionStore> deletions =
+            new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        deletions.SetupSequence(store => store.GetReceiptAsync(
+                visit.Id,
+                visit.UserId,
+                "delete-1",
+                CancellationToken.None))
+            .ReturnsAsync((VisitDeletionReceipt?)null)
+            .ReturnsAsync(concurrentReceipt);
+        deletions.Setup(store => store.GetImpactAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(new VisitDeletionImpact(2, 1));
+        deletions.Setup(store => store.TryTombstoneAsync(
+                It.IsAny<VisitDeletionTombstoneRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        deletions.Setup(store => store.MarkExportInvalidationEnsuredAsync(
+                visit.Id,
+                visit.UserId,
+                concurrentReceipt.DeletionVersion,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        deletions.Setup(store => store.MarkPurgeJobEnsuredAsync(
+                visit.Id,
+                visit.UserId,
+                concurrentReceipt.DeletionVersion,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IPassportExportRepository> exports =
+            new Mock<IPassportExportRepository>(MockBehavior.Strict);
+        exports.Setup(repository => repository.InvalidateOwnedAsync(
+                visit.UserId,
+                concurrentReceipt.DeletedAtUtc,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.IdempotencyKey
+                        == $"passport-visit-purge:{visit.Id.Value}:{concurrentReceipt.DeletionVersion}:0"
+                    && request.Delay == VisitDeletionPolicy.Retention),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        DeleteVisitCommandHandler handler = new DeleteVisitCommandHandler(
+            visits.Object,
+            deletions.Object,
+            exports.Object,
+            new Mock<IVisitContentMutationLeaseManager>(MockBehavior.Strict).Object,
+            new VisitPurgeScheduler(jobs.Object),
+            new Mock<IPassportAuditPublisher>(MockBehavior.Strict).Object,
+            clock.Object);
+
+        ApplicationResult<VisitDeletionReceipt> result = await handler.HandleAsync(
+            new DeleteVisitCommand(
+                visit.UserId,
+                visit.Id.Value,
+                visit.Version,
+                2,
+                1,
+                "delete-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value?.WasReplayed);
+        Assert.Equal(concurrentReceipt.DeletionVersion, result.Value?.DeletionVersion);
+        visits.VerifyAll();
+        deletions.VerifyAll();
+        exports.VerifyAll();
+        jobs.VerifyAll();
         clock.VerifyAll();
     }
 

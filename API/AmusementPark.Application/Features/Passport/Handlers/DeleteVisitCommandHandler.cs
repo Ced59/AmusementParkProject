@@ -151,6 +151,26 @@ public sealed class DeleteVisitCommandHandler
             guardedCancellationToken);
         if (!deleted)
         {
+            VisitDeletionReceipt? concurrentReplay =
+                await this.deletionStore.GetReceiptAsync(
+                    visit.Id,
+                    visit.UserId,
+                    clientOperationId,
+                    cancellationToken);
+            if (concurrentReplay is not null)
+            {
+                contentMutationLease?.MarkMutationCompleted();
+                await this.EnsureDeletionSideEffectsAsync(
+                    visit.Id,
+                    visit.UserId,
+                    concurrentReplay.DeletionVersion,
+                    concurrentReplay.DeletedAtUtc,
+                    concurrentReplay.PurgeScheduledForUtc,
+                    cancellationToken);
+                return ApplicationResult<VisitDeletionReceipt>.Success(
+                    concurrentReplay with { WasReplayed = true });
+            }
+
             return PassportContentMutationLeaseCompletion.Complete(
                 contentMutationLease,
                 ApplicationResult<VisitDeletionReceipt>.Failure(
