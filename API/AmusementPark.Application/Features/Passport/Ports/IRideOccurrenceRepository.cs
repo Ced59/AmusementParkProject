@@ -89,6 +89,7 @@ public interface IRideOccurrenceRepository
 
     Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
         string userId,
+        PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken);
 
     Task<RideOccurrenceAppendState> GetAppendStateAsync(

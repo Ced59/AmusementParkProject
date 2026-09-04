@@ -1,9 +1,11 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -112,10 +114,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     public async Task<IReadOnlyCollection<RideOccurrence>> ListAllOwnedForExportAsync(
         string userId,
+        PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(sourceBudget);
         string normalizedUserId = NormalizeRequired(userId, nameof(userId));
-        List<UserRideOccurrenceDocument> documents = await this.collection
+        using IAsyncCursor<UserRideOccurrenceDocument> cursor = await this.collection
             .Find(Builders<UserRideOccurrenceDocument>.Filter.Eq(
                 static document => document.UserId,
                 normalizedUserId))
@@ -123,8 +127,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 .Ascending(static document => document.VisitId)
                 .Ascending(static document => document.SortPosition)
                 .Ascending(static document => document.Id))
-            .ToListAsync(cancellationToken);
-        return documents.Select(static document => document.ToDomain()).ToArray();
+            .ToCursorAsync(cancellationToken);
+        List<RideOccurrence> occurrences = new List<RideOccurrence>();
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (UserRideOccurrenceDocument document in cursor.Current)
+            {
+                if (!sourceBudget.TryConsume(document.ToBson().LongLength))
+                {
+                    throw new PassportExportSizeLimitException();
+                }
+
+                occurrences.Add(document.ToDomain());
+            }
+        }
+
+        return occurrences;
     }
 
     public async Task<PendingPassportMutationVisit?> GetPendingMutationFencedAsync(

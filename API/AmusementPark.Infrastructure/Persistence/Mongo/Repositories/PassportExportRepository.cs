@@ -258,6 +258,65 @@ public sealed class PassportExportRepository : IPassportExportRepository
         return documents.Select(ToApplication).ToArray();
     }
 
+    public async Task<int> FailStaleProcessingAsync(
+        DateTime maximumUpdatedAtUtc,
+        DateTime minimumExpiresAtUtc,
+        string errorCode,
+        DateTime failedAtUtc,
+        int maximumCount,
+        CancellationToken cancellationToken)
+    {
+        if (maximumCount is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumCount));
+        }
+
+        string normalizedErrorCode = string.IsNullOrWhiteSpace(errorCode)
+            ? throw new ArgumentException("An error code is required.", nameof(errorCode))
+            : errorCode.Trim();
+        FilterDefinitionBuilder<PassportExportDocument> filters =
+            Builders<PassportExportDocument>.Filter;
+        FilterDefinition<PassportExportDocument> staleFilter =
+            filters.Eq(
+                static document => document.Status,
+                PassportExportStatus.Processing)
+            & filters.Lte(
+                static document => document.UpdatedAt,
+                maximumUpdatedAtUtc)
+            & filters.Gt(
+                static document => document.ExpiresAtUtc,
+                minimumExpiresAtUtc);
+        List<string> candidateIds = await this.exports
+            .Find(staleFilter)
+            .SortBy(static document => document.UpdatedAt)
+            .Project(static document => document.Id)
+            .Limit(maximumCount)
+            .ToListAsync(cancellationToken);
+        if (candidateIds.Count == 0)
+        {
+            return 0;
+        }
+
+        FilterDefinition<PassportExportDocument> updateFilter = staleFilter
+            & filters.In(static document => document.Id, candidateIds);
+        UpdateDefinition<PassportExportDocument> update =
+            Builders<PassportExportDocument>.Update
+                .Set(static document => document.Status, PassportExportStatus.Failed)
+                .Set(static document => document.ErrorCode, normalizedErrorCode)
+                .Set(static document => document.UpdatedAt, failedAtUtc)
+                .Unset(static document => document.FileName)
+                .Unset(static document => document.ContentType)
+                .Unset(static document => document.SizeBytes)
+                .Unset(static document => document.ChunkCount)
+                .Unset(static document => document.GenerationId)
+                .Unset(static document => document.ChecksumSha256);
+        UpdateResult result = await this.exports.UpdateManyAsync(
+            updateFilter,
+            update,
+            cancellationToken: cancellationToken);
+        return checked((int)result.ModifiedCount);
+    }
+
     private static FilterDefinition<PassportExportDocument> BuildOwnedFilter(
         string exportId,
         string userId)

@@ -1,9 +1,11 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -168,13 +170,29 @@ public sealed class UserVisitRepository : IUserVisitRepository
 
     public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
+        PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
-        List<UserVisitDocument> documents = await this.collection
+        ArgumentNullException.ThrowIfNull(sourceBudget);
+        using IAsyncCursor<UserVisitDocument> cursor = await this.collection
             .Find(UserVisitMongoDefinitions.BuildOwnerFilter(userId))
             .Sort(UserVisitMongoDefinitions.BuildNewestVisitSort())
-            .ToListAsync(cancellationToken);
-        return documents.Select(static document => document.ToDomain()).ToArray();
+            .ToCursorAsync(cancellationToken);
+        List<Visit> visits = new List<Visit>();
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (UserVisitDocument document in cursor.Current)
+            {
+                if (!sourceBudget.TryConsume(document.ToBson().LongLength))
+                {
+                    throw new PassportExportSizeLimitException();
+                }
+
+                visits.Add(document.ToDomain());
+            }
+        }
+
+        return visits;
     }
 
     public Task<bool> TryUpdateOwnedAsync(

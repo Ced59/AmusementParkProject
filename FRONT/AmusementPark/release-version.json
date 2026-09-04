@@ -1,6 +1,20 @@
 {
-  "version": "5.0.23",
+  "version": "5.0.24",
   "history": [
+    {
+      "version": "5.0.24",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "Les exports du passeport restent fiables même avec un historique très volumineux.",
+        "en": "Passport exports remain reliable even with a very large history.",
+        "de": "Pass-Exporte bleiben auch bei einem sehr umfangreichen Verlauf zuverlässig.",
+        "nl": "Paspoortexports blijven betrouwbaar, ook bij een zeer uitgebreide geschiedenis.",
+        "it": "Le esportazioni del passaporto restano affidabili anche con una cronologia molto ampia.",
+        "es": "Las exportaciones del pasaporte siguen siendo fiables incluso con un historial muy amplio.",
+        "pl": "Eksport paszportu pozostaje niezawodny nawet przy bardzo obszernej historii.",
+        "pt": "As exportações do passaporte mantêm-se fiáveis mesmo com um histórico muito extenso."
+      }
+    },
     {
       "version": "5.0.23",
       "releasedAt": "2026-09-04",
