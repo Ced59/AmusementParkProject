@@ -1,6 +1,20 @@
 {
-  "version": "5.0.21",
+  "version": "5.0.22",
   "history": [
+    {
+      "version": "5.0.22",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "La structure interne du système de notation a été clarifiée.",
+        "en": "The rating system's internal structure has been clarified.",
+        "de": "Die interne Struktur des Bewertungssystems wurde klarer gegliedert.",
+        "nl": "De interne structuur van het beoordelingssysteem is verduidelijkt.",
+        "it": "La struttura interna del sistema di valutazione è stata chiarita.",
+        "es": "Se ha aclarado la estructura interna del sistema de valoraciones.",
+        "pl": "Wewnętrzna struktura systemu ocen została uporządkowana.",
+        "pt": "A estrutura interna do sistema de classificações foi clarificada."
+      }
+    },
     {
       "version": "5.0.21",
       "releasedAt": "2026-09-04",
