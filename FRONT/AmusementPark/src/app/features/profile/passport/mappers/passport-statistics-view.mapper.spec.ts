@@ -48,6 +48,29 @@ describe('passport statistics view mapper', () => {
     expect(view.trend?.kind).toBe('falling');
   });
 
+  it('keeps a current global rating visible when the item has no passport history', () => {
+    const statistics: PassportItemStatistics = {
+      ...createItemStatistics(),
+      rideCount: 0,
+      visitCount: 0,
+      ratingCoverage: { ratedRideCount: 0, totalRideCount: 0, rate: 0 },
+      firstExperience: null,
+      lastExperience: null,
+      historicalRatings: null,
+      currentGlobalRating: 4.5,
+      currentGlobalMinusHistoricalAverage: null,
+      byVisit: [],
+      byYear: [],
+      ratingTimeline: [],
+      trend: null
+    };
+
+    const view = mapItemStatisticsView(statistics, 'OzIris', 'fr');
+
+    expect(view.isEmpty).toBe(false);
+    expect(view.cards.find((card) => card.id === 'currentRating')?.value).toBe('4,5 / 5');
+  });
+
   it('maps park timelines, outcomes, categories and both deliberately separate tops', () => {
     const statistics: PassportParkStatistics = {
       parkId: 'park-1',
@@ -74,6 +97,40 @@ describe('passport statistics view mapper', () => {
       kind: 'item', targetId: 'item-current'
     }));
     expect(view.cards.find((card) => card.id === 'difference')?.value).toBe('+0,75');
+    expect(view.tables[2].rows[0].cells[0]).toEqual({
+      columnKey: 'category',
+      value: 'ratings.categories.Attraction',
+      translate: true
+    });
+  });
+
+  it('keeps a safe literal fallback for unknown historical category values', () => {
+    const summary: PassportStatisticsSummary = {
+      ...createSummary(),
+      categoryCoverage: [
+        { ...createSummary().categoryCoverage[0], category: 'Show' },
+        { ...createSummary().categoryCoverage[0], category: 'LegacyCategory' },
+        { ...createSummary().categoryCoverage[0], category: null }
+      ]
+    };
+    const statistics: PassportParkStatistics = {
+      parkId: 'park-1',
+      summary,
+      currentGlobalRating: null,
+      currentGlobalMinusHistoricalAverage: null,
+      assessmentTimeline: [],
+      byYear: [],
+      currentTopItems: [],
+      historicalTopItems: []
+    };
+
+    const categories = mapParkStatisticsView(statistics, null, 'fr').tables[2];
+
+    expect(categories.rows.map((row) => row.cells[0])).toEqual([
+      { columnKey: 'category', value: 'ratings.categories.Show', translate: true },
+      { columnKey: 'category', value: 'LegacyCategory', translate: false },
+      { columnKey: 'category', value: 'passport.statistics.categories.unknown', translate: true }
+    ]);
   });
 
   it('maps a yearly breakdown without manufacturing a graphical timeline', () => {

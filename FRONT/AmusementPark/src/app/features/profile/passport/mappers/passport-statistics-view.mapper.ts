@@ -17,6 +17,17 @@ import {
 } from '../models/passport-statistics-view.models';
 
 const emptyValue: string = '—';
+const localizedParkItemCategories: ReadonlySet<string> = new Set<string>([
+  'Attraction',
+  'Restaurant',
+  'Hotel',
+  'Animal',
+  'Show',
+  'Shop',
+  'Service',
+  'Transport',
+  'Other'
+]);
 
 export function mapItemStatisticsView(
   statistics: PassportItemStatistics,
@@ -84,7 +95,9 @@ export function mapItemStatisticsView(
       table('item-by-visit', 'passport.statistics.item.byVisitTitle', 'passport.statistics.item.byVisitDescription', ['date', 'rides', 'coverage', 'average'], byVisit),
       table('item-by-year', 'passport.statistics.item.byYearTitle', 'passport.statistics.item.byYearDescription', ['year', 'visits', 'rides', 'coverage', 'average'], byYear)
     ],
-    isEmpty: statistics.rideCount === 0 && statistics.visitCount === 0
+    isEmpty: statistics.rideCount === 0
+      && statistics.visitCount === 0
+      && statistics.currentGlobalRating === null
   };
 }
 
@@ -273,22 +286,45 @@ function mapCategoryTable(
   number: Intl.NumberFormat,
   percent: Intl.NumberFormat
 ): PassportStatisticsTableViewModel {
-  const rows: PassportStatisticsTableRowViewModel[] = categories.map((category, index) => ({
-    id: `${category.category ?? 'unknown'}-${index}`,
-    cells: [
-      {
-        columnKey: 'category',
-        value: category.category || 'passport.statistics.categories.unknown',
-        translate: category.category == null
-      },
-      { columnKey: 'rides', value: number.format(category.completedRideCount) },
-      { columnKey: 'distinct', value: number.format(category.distinctItemCount) },
-      { columnKey: 'coverage', value: percent.format(category.completedRideRate) },
-      { columnKey: 'reference', value: `${number.format(category.historicalReferenceRideCount)} / ${number.format(category.currentReferenceRideCount)} / ${number.format(category.unknownReferenceRideCount)}` }
-    ],
-    navigation: null
-  }));
+  const rows: PassportStatisticsTableRowViewModel[] = categories.map((category, index) => {
+    const categoryCell: PassportStatisticsTableRowViewModel['cells'][number] = mapCategoryCell(category.category);
+    return {
+      id: `${category.category ?? 'unknown'}-${index}`,
+      cells: [
+        categoryCell,
+        { columnKey: 'rides', value: number.format(category.completedRideCount) },
+        { columnKey: 'distinct', value: number.format(category.distinctItemCount) },
+        { columnKey: 'coverage', value: percent.format(category.completedRideRate) },
+        { columnKey: 'reference', value: `${number.format(category.historicalReferenceRideCount)} / ${number.format(category.currentReferenceRideCount)} / ${number.format(category.unknownReferenceRideCount)}` }
+      ],
+      navigation: null
+    };
+  });
   return table('categories', 'passport.statistics.categories.title', 'passport.statistics.categories.description', ['category', 'rides', 'distinct', 'coverage', 'reference'], rows);
+}
+
+function mapCategoryCell(category: string | null): PassportStatisticsTableRowViewModel['cells'][number] {
+  if (category === null) {
+    return {
+      columnKey: 'category',
+      value: 'passport.statistics.categories.unknown',
+      translate: true
+    };
+  }
+
+  if (localizedParkItemCategories.has(category)) {
+    return {
+      columnKey: 'category',
+      value: `ratings.categories.${category}`,
+      translate: true
+    };
+  }
+
+  return {
+    columnKey: 'category',
+    value: category,
+    translate: false
+  };
 }
 
 function summaryCells(
