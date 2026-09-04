@@ -581,6 +581,39 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
   });
 
+  it('releases a merge reservation when a metadata update loses a definitive concurrency race', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const existing: PassportVisit = createVisit({
+      id: 'existing-1',
+      title: 'Titre serveur',
+      privateNote: 'Note serveur'
+    });
+    const compareAndSet = vi.fn(async (): Promise<boolean> => true);
+    const importBatch = vi.fn();
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], undefined, compareAndSet),
+      createVisitsPort({
+        listVisits: () => of({ items: [existing], nextCursor: null }),
+        getVisit: () => of(existing),
+        updateVisit: () => throwError(() => new HttpErrorResponse({ status: 409 }))
+      }),
+      createOccurrencesPort({ importBatch }),
+      createParkItemsPort()
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+    facade.setChoice(draft.id, 'Merge');
+    await facade.setTargetVisit(draft.id, existing.id);
+    facade.setMetadataChoice(draft.id, 'UseLocal');
+
+    await facade.importAll(true);
+
+    expect(importBatch).not.toHaveBeenCalled();
+    expect(compareAndSet).toHaveBeenCalledTimes(2);
+    expect(facade.previews()[0].draft.pendingImport).toBeNull();
+    expect(facade.isImportLocked(facade.previews()[0])).toBe(false);
+  });
+
   it('keeps the local reservation after an ambiguous network failure', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const compareAndSet = vi.fn(async (): Promise<boolean> => true);

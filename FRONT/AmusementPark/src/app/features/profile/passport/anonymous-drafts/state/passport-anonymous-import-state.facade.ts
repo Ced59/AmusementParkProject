@@ -572,11 +572,15 @@ export class PassportAnonymousImportStateFacade {
       }
 
       return updated;
-    } catch {
+    } catch (error: unknown) {
       const recovered: PassportVisit = await firstValueFrom(
         this.visitsApi.getVisit(selectedTarget.id)
       );
       if (!this.matchesMergeMetadata(recovered, preview.draft, selectedTarget)) {
+        if (this.isDefinitiveClientRejection(error)) {
+          throw error;
+        }
+
         throw new Error('passport-anonymous-import.metadata-conflict');
       }
 
