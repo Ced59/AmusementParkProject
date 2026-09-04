@@ -46,9 +46,11 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
                 ? Array.Empty<UserRideOccurrenceOrderGuardDocument>()
                 : operation.OrderGuards;
         List<UserRideOccurrenceDocument> current = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
-                request.VisitId.Value,
-                request.UserId))
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
+                    request.VisitId.Value,
+                    request.UserId),
+                operation.ContentMutationFenceToken))
             .Limit(RideOccurrenceOrderPlanner.MaximumReorderSize + 1)
             .ToListAsync(cancellationToken);
         if (!GuardsMatch(guards, current))
@@ -79,9 +81,11 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.OrderGuardsValidated, false);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
@@ -125,9 +129,11 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
         }
 
         UserRideOccurrenceDocument? last = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
-                operation.VisitId!,
-                operation.UserId))
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
+                    operation.VisitId!,
+                    operation.UserId),
+                operation.ContentMutationFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildReverseVisitOrderSort())
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
@@ -142,9 +148,11 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken)
             & filters.Eq(static document => document.OperationState, PendingOperationState)
             & filters.Eq(static document => document.AppendBaseValidated, false);
         UpdateResult result = await this.operationCollection.UpdateOneAsync(
@@ -188,9 +196,11 @@ internal sealed class UserRideOccurrenceOrderGuardValidator
         CancellationToken cancellationToken)
     {
         return await this.operationCollection
-            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash))
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+                    operation.UserId,
+                    operation.OperationKeyHash),
+                operation.ContentMutationFenceToken))
             .FirstOrDefaultAsync(cancellationToken);
     }
 }

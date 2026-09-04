@@ -8,6 +8,12 @@
 .passport-editor,
 .passport-editor__hero,
 .passport-editor__workspace,
+.passport-visit,
+.passport-visit__heading,
+.passport-visit__heading > div,
+.passport-visit__details,
+.passport-visit__form,
+.passport-visit__actions,
 .passport-assessment,
 .passport-assessment__heading,
 .passport-assessment__heading > div,
@@ -28,6 +34,127 @@
 .passport-occurrence__actions,
 .passport-entry-form {
   min-width: 0;
+}
+
+.passport-visit {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  gap: 1rem;
+  padding: clamp(0.9rem, 2.5vw, 1.3rem);
+  border-radius: var(--radius-xl);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.passport-visit__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.passport-visit__heading h2,
+.passport-visit__heading p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit__heading h2 {
+  color: var(--app-heading);
+}
+
+.passport-visit__heading p,
+.passport-visit__details small,
+.passport-visit__form small {
+  color: var(--app-text-muted);
+  line-height: 1.45;
+}
+
+.passport-visit__eyebrow {
+  color: var(--app-primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.passport-visit__locked {
+  display: flex;
+  min-width: 0;
+  gap: 0.55rem;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 8%, var(--app-surface-2));
+  color: var(--app-text-muted);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit__details {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-2);
+  overflow: hidden;
+}
+
+.passport-visit__details > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.85rem;
+  cursor: pointer;
+}
+
+.passport-visit__details > summary span {
+  display: flex;
+  min-width: 0;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--app-heading);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit__details > summary small {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.passport-visit__form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  padding: 0 0.85rem 0.85rem;
+}
+
+.passport-visit__form-wide {
+  grid-column: 1 / -1;
+}
+
+.passport-visit__form textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.passport-visit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.passport-editor__workspace--readonly {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+[inert] {
+  opacity: 0.72;
 }
 
 .passport-assessment {
@@ -558,6 +685,37 @@
   overflow-wrap: anywhere;
 }
 
+.passport-occurrence__private-note {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.4rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 18%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 5%, var(--app-surface));
+  box-sizing: border-box;
+}
+
+.passport-occurrence__private-note strong {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-heading);
+  overflow-wrap: anywhere;
+}
+
+.passport-occurrence__private-note p {
+  min-width: 0;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .passport-ride-assessment {
   width: 100%;
   max-width: 100%;
@@ -854,12 +1012,14 @@ textarea:focus-visible {
   }
 
   .passport-editor__hero,
+  .passport-visit,
   .passport-assessment,
   .passport-panel {
     border-radius: var(--app-radius-lg);
   }
 
   .passport-editor__heading,
+  .passport-visit__heading,
   .passport-selection__heading {
     align-items: flex-start;
     flex-direction: column;
@@ -867,6 +1027,7 @@ textarea:focus-visible {
 
   .passport-filters,
   .passport-attraction-grid,
+  .passport-visit__form,
   .passport-entry-form {
     grid-template-columns: 1fr;
   }
@@ -875,7 +1036,12 @@ textarea:focus-visible {
     grid-column: auto;
   }
 
+  .passport-visit__form-wide {
+    grid-column: auto;
+  }
+
   .passport-filters__actions,
+  .passport-visit__actions,
   .passport-assessment__actions,
   .passport-assessment__delete-confirmation,
   .passport-ride-assessment__actions,
@@ -888,6 +1054,7 @@ textarea:focus-visible {
   }
 
   .passport-filters__actions button,
+  .passport-visit__actions button,
   .passport-assessment__actions > button,
   .passport-assessment__delete-confirmation button,
   .passport-ride-assessment__actions button,
@@ -926,10 +1093,19 @@ textarea:focus-visible {
   .passport-ride-assessment > summary strong {
     justify-self: start;
   }
+
+  .passport-visit__details > summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .passport-visit__details > summary small {
+    text-align: left;
+  }
 }
 
 @media (max-width: 390px) {
   .passport-editor__hero,
+  .passport-visit,
   .passport-assessment,
   .passport-panel,
   .passport-occurrence article {

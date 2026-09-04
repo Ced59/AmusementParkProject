@@ -99,7 +99,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
         CreateIndexModel<UserRideOccurrenceDocument>[] indexes =
             UserRideOccurrenceMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(6, indexes.Length);
+        Assert.Equal(9, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_ride_occurrences_visit_order",
@@ -112,6 +112,18 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
             });
         AssertIndex(
             indexes[1],
+            "idx_user_ride_occurrences_visit_fenced_order",
+            new BsonDocument
+            {
+                { "visitId", 1 },
+                { "userId", 1 },
+                { "contentMutationFenceToken", 1 },
+                { "sortPosition", 1 },
+                { "createdAt", 1 },
+                { "_id", 1 },
+            });
+        AssertIndex(
+            indexes[2],
             "idx_user_ride_occurrences_user_item_visit",
             new BsonDocument
             {
@@ -120,7 +132,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "visitId", 1 },
             });
         AssertIndex(
-            indexes[2],
+            indexes[3],
             "idx_user_ride_occurrences_user_park_visit",
             new BsonDocument
             {
@@ -129,7 +141,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "visitId", 1 },
             });
         AssertIndex(
-            indexes[3],
+            indexes[4],
             "idx_user_ride_occurrences_visit_status",
             new BsonDocument
             {
@@ -137,7 +149,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "status", 1 },
             });
         AssertIndex(
-            indexes[4],
+            indexes[5],
             "idx_user_ride_occurrences_user_deleted",
             new BsonDocument
             {
@@ -145,7 +157,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "deletedAtUtc", 1 },
             });
         AssertIndex(
-            indexes[5],
+            indexes[6],
             "idx_user_ride_occurrences_user_creation_operation_item",
             new BsonDocument
             {
@@ -153,9 +165,24 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "creationOperationKeyHash", 1 },
                 { "creationOperationIndex", 1 },
             });
-        Assert.True(indexes[5].Options.Unique);
-        Assert.NotNull(indexes[5].Options.PartialFilterExpression);
-        Assert.All(indexes.Take(5), static index => Assert.NotEqual(true, index.Options.Unique));
+        Assert.True(indexes[6].Options.Unique);
+        Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[7],
+            "idx_user_ride_occurrences_pending_creation_completion",
+            new BsonDocument
+            {
+                { "creationPendingCompletion", 1 },
+                { "createdAt", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[8],
+            "idx_user_ride_occurrences_pending_audit",
+            new BsonDocument("pendingAuditEvents.eventId", 1));
+        Assert.NotNull(indexes[8].Options.PartialFilterExpression);
+        Assert.All(indexes.Take(6), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 
     [Fact]
@@ -163,7 +190,7 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
     {
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument>[] indexes =
             UserRideOccurrenceCreationOperationMongoDefinitions.BuildIndexes().ToArray();
-        Assert.Equal(3, indexes.Length);
+        Assert.Equal(5, indexes.Length);
         CreateIndexModel<UserRideOccurrenceCreationOperationDocument> index = indexes[0];
 
         Assert.Equal(
@@ -217,6 +244,26 @@ public sealed class UserRideOccurrenceMongoDefinitionsTests
                 { "operationState", 1 },
             },
             Render(normalization.Keys));
+
+        Assert.Equal(
+            "idx_user_ride_occurrence_operations_visit_fence_state",
+            indexes[3].Options.Name);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "userId", 1 },
+                { "visitId", 1 },
+                { "contentMutationFenceToken", 1 },
+                { "operationState", 1 },
+            },
+            Render(indexes[3].Keys));
+
+        Assert.Equal(
+            "idx_user_ride_occurrence_operations_pending_audit",
+            indexes[4].Options.Name);
+        Assert.Equal(
+            new BsonDocument("pendingAuditEvents.eventId", 1),
+            Render(indexes[4].Keys));
     }
 
     [Fact]

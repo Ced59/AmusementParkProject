@@ -11,18 +11,41 @@ public sealed class RideOccurrenceAppendOrderNormalizer
 {
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+
+    internal RideOccurrenceAppendOrderNormalizer(
+        IRideOccurrenceRepository occurrenceRepository,
+        IPassportClock clock)
+        : this(occurrenceRepository, clock, null!)
+    {
+    }
 
     public RideOccurrenceAppendOrderNormalizer(
         IRideOccurrenceRepository occurrenceRepository,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher)
     {
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
     }
 
     public async Task<bool> TryNormalizeAsync(
         Visit visit,
         string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return await this.TryNormalizeAsync(
+            visit,
+            clientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryNormalizeAsync(
+        Visit visit,
+        string clientOperationId,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
         IReadOnlyList<RideOccurrence> occurrences;
@@ -74,6 +97,7 @@ public sealed class RideOccurrenceAppendOrderNormalizer
         DateTime nowUtc = this.clock.UtcNow;
         List<RideOccurrenceVersionedChange> changes =
             new List<RideOccurrenceVersionedChange>();
+        List<PassportAuditEvent> auditEvents = new List<PassportAuditEvent>();
         try
         {
             foreach (RideOccurrenceOrderPosition position in plan.Changes)
@@ -81,11 +105,20 @@ public sealed class RideOccurrenceAppendOrderNormalizer
                 RideOccurrence occurrence = byId[position.OccurrenceId];
                 long expectedVersion = occurrence.Version;
                 long previousSortPosition = occurrence.SortPosition;
+                RideOccurrenceAuditSnapshot previous =
+                    RideOccurrenceAuditSnapshot.Capture(occurrence);
                 occurrence.MoveTo(position.SortPosition, nowUtc);
                 changes.Add(new RideOccurrenceVersionedChange(
                     occurrence,
                     expectedVersion,
                     previousSortPosition));
+                if (this.auditPublisher is not null)
+                {
+                    auditEvents.Add(PassportRideAuditEventFactory.RideOccurrenceChanged(
+                        occurrence,
+                        previous,
+                        normalizationOperationId));
+                }
             }
         }
         catch (RideOccurrenceValidationException)
@@ -99,9 +132,10 @@ public sealed class RideOccurrenceAppendOrderNormalizer
             first.Id,
             expectedFirstVersion,
             null,
-            RideOccurrencePlacement.First);
-        IdempotentRideOccurrenceReorderResult result =
-            await this.occurrenceRepository.ReorderIdempotentAsync(
+            RideOccurrencePlacement.First,
+            contentFenceToken);
+        IdempotentRideOccurrenceReorderResult result = this.auditPublisher is null
+            ? await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,
                 changes,
                 plan.Guards,
@@ -110,9 +144,29 @@ public sealed class RideOccurrenceAppendOrderNormalizer
                 nowUtc,
                 normalizationOperationId,
                 clientOperationId,
+                cancellationToken)
+            : await this.occurrenceRepository.ReorderIdempotentAuditedAsync(
+                request,
+                changes,
+                plan.Guards,
+                byId[first.Id],
+                true,
+                nowUtc,
+                normalizationOperationId,
+                clientOperationId,
+                auditEvents,
                 cancellationToken);
-        return result.Status is IdempotentRideOccurrenceReorderStatus.Applied
+        bool succeeded = result.Status is IdempotentRideOccurrenceReorderStatus.Applied
             or IdempotentRideOccurrenceReorderStatus.Replayed;
+        if (succeeded)
+        {
+            await PassportAuditDelivery.PublishAsync(
+                this.auditPublisher,
+                auditEvents,
+                cancellationToken);
+        }
+
+        return succeeded;
     }
 
     private static string BuildOperationId(

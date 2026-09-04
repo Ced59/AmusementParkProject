@@ -18,6 +18,12 @@ public interface IUserVisitRepository
         string clientOperationId,
         CancellationToken cancellationToken);
 
+    Task<IdempotentVisitCreationResult> CreateIdempotentAuditedAsync(
+        Visit visit,
+        string clientOperationId,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken);
+
     Task<Visit?> GetOwnedAsync(
         VisitId visitId,
         string userId,
@@ -36,6 +42,19 @@ public interface IUserVisitRepository
     Task<bool> TryUpdateOwnedAsync(
         Visit visit,
         long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryUpdateOwnedAuditedAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        string contentMutationLeaseToken,
         CancellationToken cancellationToken);
 
     Task<bool> TryDeleteOwnedAsync(

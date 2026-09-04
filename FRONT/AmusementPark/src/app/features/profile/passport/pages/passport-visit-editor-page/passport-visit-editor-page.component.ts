@@ -9,6 +9,7 @@ import {
   PassportRideOccurrence,
   PassportRideOccurrenceStatus
 } from '@app/models/passport/passport-ride-occurrence.models';
+import { PassportVisitDatePrecision, PassportVisitStatus } from '@app/models/passport/passport-visit.models';
 import { TranslationService } from '@app/services/translation.service';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import {
@@ -139,6 +140,58 @@ export class PassportVisitEditorPageComponent {
     this.searchControl.setValue('');
     this.zoneControl.setValue('');
     this.facade.applyAttractionFilters('', null);
+  }
+
+  protected visitStatusLabelKey(status: PassportVisitStatus): string {
+    return `passport.editor.visit.status.${status}`;
+  }
+
+  protected shouldDisplayAssessment(
+    status: PassportVisitStatus | null | undefined,
+    hasAssessment: boolean
+  ): boolean {
+    return status === 'Draft' || hasAssessment;
+  }
+
+  protected shouldDisplayReadOnlyOccurrenceNote(
+    status: PassportVisitStatus | null | undefined,
+    privateNote: string | null | undefined
+  ): boolean {
+    return status !== 'Draft' && status != null && Boolean(privateNote?.trim());
+  }
+
+  protected updateVisitPrecision(event: Event): void {
+    this.facade.updateVisitMetadataDraft({
+      precision: this.eventValue(event) as PassportVisitDatePrecision
+    });
+  }
+
+  protected updateVisitYear(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ year: this.eventNullableNumber(event) });
+  }
+
+  protected updateVisitMonth(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ month: this.eventNullableNumber(event) });
+  }
+
+  protected updateVisitDay(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ day: this.eventNullableNumber(event) });
+  }
+
+  protected updateVisitApproximate(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ isApproximate: this.eventChecked(event) });
+  }
+
+  protected updateVisitTimeZone(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ timeZoneId: this.eventValue(event) });
+  }
+
+  protected updateVisitTitle(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ title: this.eventValue(event) });
+  }
+
+  protected updateVisitPrivateNote(event: Event): void {
+    this.facade.updateVisitMetadataDraft({ privateNote: this.eventValue(event) });
   }
 
   protected selectAssessmentValue(value: number): void {
@@ -343,5 +396,10 @@ export class PassportVisitEditorPageComponent {
 
   private eventChecked(event: Event): boolean {
     return event.target instanceof HTMLInputElement && event.target.checked;
+  }
+
+  private eventNullableNumber(event: Event): number | null {
+    const value: string = this.eventValue(event);
+    return value.length > 0 ? Number(value) : null;
   }
 }

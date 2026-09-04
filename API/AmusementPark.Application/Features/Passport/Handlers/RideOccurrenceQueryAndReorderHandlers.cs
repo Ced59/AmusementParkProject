@@ -131,15 +131,29 @@ public sealed class ReorderRideOccurrenceCommandHandler
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
+
+    internal ReorderRideOccurrenceCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IPassportClock clock)
+        : this(visitRepository, occurrenceRepository, clock, null!, null!)
+    {
+    }
 
     public ReorderRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<ReorderRideOccurrenceResult>> HandleAsync(
@@ -177,23 +191,72 @@ public sealed class ReorderRideOccurrenceCommandHandler
             command.ExpectedVersion,
             anchorId,
             command.Placement);
+        Visit? visit = null;
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (this.contentMutationLeaseManager is not null)
+        {
+            visit = await this.visitRepository.GetOwnedAsync(
+                scope.VisitId,
+                scope.UserId,
+                cancellationToken);
+            if (visit is null)
+            {
+                return Failure(PassportApplicationErrors.VisitNotFound());
+            }
+
+            ApplicationError? currentEditableError =
+                PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+            if (currentEditableError is not null)
+            {
+                return Failure(currentEditableError);
+            }
+
+            contentMutationLease = await this.contentMutationLeaseManager.TryAcquireAsync(
+                visit,
+                this.clock.UtcNow,
+                cancellationToken);
+            if (contentMutationLease is null)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
+        request = RideOccurrenceFencedPersistence.Attach(request, contentMutationLease);
         IdempotentRideOccurrenceReorderResult? existing =
             await this.occurrenceRepository.ResolveExistingReorderAsync(
                 request,
                 operationId,
-                cancellationToken);
+                guardedCancellationToken);
         if (existing is not null)
         {
-            return ToApplicationResult(existing);
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                ToApplicationResult(existing));
         }
 
-        Visit? visit = await this.visitRepository.GetOwnedAsync(
+        visit ??= await this.visitRepository.GetOwnedAsync(
             scope.VisitId,
             scope.UserId,
-            cancellationToken);
+            guardedCancellationToken);
         if (visit is null)
         {
-            return Failure(PassportApplicationErrors.VisitNotFound());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.VisitNotFound()));
+        }
+
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(editableError));
         }
 
         IReadOnlyList<RideOccurrence> occurrences;
@@ -203,23 +266,29 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 this.occurrenceRepository,
                 scope.VisitId,
                 scope.UserId,
-                cancellationToken);
+                guardedCancellationToken);
         }
         catch (InvalidOperationException)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder()));
         }
 
         RideOccurrence? moved = occurrences.FirstOrDefault(
             occurrence => occurrence.Id == scope.OccurrenceId);
         if (moved is null)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceNotFound()));
         }
 
         if (moved.Version != command.ExpectedVersion)
         {
-            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
         RideOccurrenceOrderPlan plan;
@@ -236,27 +305,39 @@ public sealed class ReorderRideOccurrenceCommandHandler
             or KeyNotFoundException
             or OverflowException)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder());
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrenceReorder()));
         }
 
         Dictionary<RideOccurrenceId, RideOccurrence> byId = occurrences.ToDictionary(
             static occurrence => occurrence.Id);
         DateTime nowUtc = this.clock.UtcNow;
         List<RideOccurrenceVersionedChange> changes = new List<RideOccurrenceVersionedChange>();
+        List<PassportAuditEvent> auditEvents = new List<PassportAuditEvent>();
         foreach (RideOccurrenceOrderPosition position in plan.Changes)
         {
             RideOccurrence occurrence = byId[position.OccurrenceId];
             long expectedVersion = occurrence.Version;
             long previousSortPosition = occurrence.SortPosition;
+            RideOccurrenceAuditSnapshot previous =
+                RideOccurrenceAuditSnapshot.Capture(occurrence);
             occurrence.MoveTo(position.SortPosition, nowUtc);
             changes.Add(new RideOccurrenceVersionedChange(
                 occurrence,
                 expectedVersion,
                 previousSortPosition));
+            if (this.auditPublisher is not null)
+            {
+                auditEvents.Add(PassportRideAuditEventFactory.RideOccurrenceChanged(
+                    occurrence,
+                    previous,
+                    operationId));
+            }
         }
 
-        IdempotentRideOccurrenceReorderResult result =
-            await this.occurrenceRepository.ReorderIdempotentAsync(
+        IdempotentRideOccurrenceReorderResult result = this.auditPublisher is null
+            ? await this.occurrenceRepository.ReorderIdempotentAsync(
                 request,
                 changes,
                 plan.Guards,
@@ -265,8 +346,30 @@ public sealed class ReorderRideOccurrenceCommandHandler
                 nowUtc,
                 operationId,
                 null,
-                cancellationToken);
-        return ToApplicationResult(result);
+                guardedCancellationToken)
+            : await this.occurrenceRepository.ReorderIdempotentAuditedAsync(
+                request,
+                changes,
+                plan.Guards,
+                byId[scope.OccurrenceId],
+                plan.WasNormalized,
+                nowUtc,
+                operationId,
+                null,
+                auditEvents,
+                guardedCancellationToken);
+        if (result.Status is IdempotentRideOccurrenceReorderStatus.Applied
+            or IdempotentRideOccurrenceReorderStatus.Replayed)
+        {
+            await PassportAuditDelivery.PublishAsync(
+                this.auditPublisher,
+                auditEvents,
+                guardedCancellationToken);
+        }
+
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ToApplicationResult(result));
     }
 
     private static ApplicationResult<ReorderRideOccurrenceResult> ToApplicationResult(

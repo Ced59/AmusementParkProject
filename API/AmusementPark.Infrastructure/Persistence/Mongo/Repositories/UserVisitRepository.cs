@@ -46,9 +46,36 @@ public sealed class UserVisitRepository : IUserVisitRepository
                 UserVisitCreationFingerprint.HashPayload(requestedVisit));
     }
 
-    public async Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
+    public Task<IdempotentVisitCreationResult> CreateIdempotentAsync(
         Visit visit,
         string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.CreateIdempotentCoreAsync(
+            visit,
+            clientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public Task<IdempotentVisitCreationResult> CreateIdempotentAuditedAsync(
+        Visit visit,
+        string clientOperationId,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.CreateIdempotentCoreAsync(
+            visit,
+            clientOperationId,
+            pendingAuditEvent,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentVisitCreationResult> CreateIdempotentCoreAsync(
+        Visit visit,
+        string clientOperationId,
+        PassportAuditEvent? pendingAuditEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(visit);
@@ -60,6 +87,14 @@ public sealed class UserVisitRepository : IUserVisitRepository
             UserVisitCreationFingerprint.HashOperationKey(normalizedOperationId);
         document.CreationPayloadHash = UserVisitCreationFingerprint.HashPayload(visit);
         document.CreationSnapshot = document.CreateCreationSnapshot();
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(visit, pendingAuditEvent);
+            document.PendingAuditEvents = new List<PassportAuditEventDocument>
+            {
+                pendingAuditEvent.ToDocument(),
+            };
+        }
 
         try
         {
@@ -131,9 +166,67 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return new UserVisitPage(visits, nextCursor);
     }
 
-    public async Task<bool> TryUpdateOwnedAsync(
+    public Task<bool> TryUpdateOwnedAsync(
         Visit visit,
         long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedAuditedAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            pendingAuditEvent,
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        string contentMutationLeaseToken,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            pendingAuditEvent,
+            contentMutationLeaseToken,
+            cancellationToken);
+    }
+
+    private Task<bool> TryUpdateOwnedCoreAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            visit,
+            expectedVersion,
+            pendingAuditEvent,
+            null,
+            cancellationToken);
+    }
+
+    private async Task<bool> TryUpdateOwnedCoreAsync(
+        Visit visit,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
+        string? contentMutationLeaseToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(visit);
@@ -145,12 +238,26 @@ public sealed class UserVisitRepository : IUserVisitRepository
         }
 
         UserVisitDocument document = visit.ToDocument();
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(visit, pendingAuditEvent);
+        }
+
+        FilterDefinition<UserVisitDocument> filter =
+            string.IsNullOrWhiteSpace(contentMutationLeaseToken)
+                ? UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
+                    document.Id,
+                    document.UserId,
+                    expectedVersion,
+                    document.UpdatedAt)
+                : UserVisitMongoDefinitions.BuildOwnedLeasedVersionFilter(
+                    document.Id,
+                    document.UserId,
+                    expectedVersion,
+                    contentMutationLeaseToken);
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
-                document.Id,
-                document.UserId,
-                expectedVersion),
-            BuildDomainUpdate(document),
+            filter,
+            BuildDomainUpdate(document, pendingAuditEvent),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
@@ -163,10 +270,11 @@ public sealed class UserVisitRepository : IUserVisitRepository
         CancellationToken cancellationToken)
     {
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
                 visitId.Value,
                 userId,
-                expectedVersion),
+                expectedVersion,
+                DateTime.UtcNow),
             Builders<UserVisitDocument>.Update.Set(
                 static document => document.Version,
                 expectedVersion),
@@ -182,10 +290,11 @@ public sealed class UserVisitRepository : IUserVisitRepository
         CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(
-            UserVisitMongoDefinitions.BuildOwnedVersionFilter(
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
                 visitId.Value,
                 userId,
-                expectedVersion),
+                expectedVersion,
+                DateTime.UtcNow),
             cancellationToken);
         return result.DeletedCount == 1;
     }
@@ -210,7 +319,8 @@ public sealed class UserVisitRepository : IUserVisitRepository
     }
 
     internal static UpdateDefinition<UserVisitDocument> BuildDomainUpdate(
-        UserVisitDocument document)
+        UserVisitDocument document,
+        PassportAuditEvent? pendingAuditEvent = null)
     {
         ArgumentNullException.ThrowIfNull(document);
 
@@ -233,7 +343,31 @@ public sealed class UserVisitRepository : IUserVisitRepository
         AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
         AddOptionalUpdate(definitions, updates, "parkAssessment", document.ParkAssessment);
         AddOptionalUpdate(definitions, updates, "completedAtUtc", document.CompletedAtUtc);
+        if (pendingAuditEvent is not null)
+        {
+            definitions.Add(updates.Push(
+                static item => item.PendingAuditEvents,
+                pendingAuditEvent.ToDocument()));
+        }
+
         return updates.Combine(definitions);
+    }
+
+    private static void ValidatePendingAuditEvent(
+        Visit visit,
+        PassportAuditEvent auditEvent)
+    {
+        if (!string.Equals(auditEvent.UserId, visit.UserId, StringComparison.Ordinal)
+            || !string.Equals(auditEvent.VisitId, visit.Id.Value, StringComparison.Ordinal)
+            || !string.Equals(auditEvent.EntityId, visit.Id.Value, StringComparison.Ordinal)
+            || auditEvent.EntityType is not (
+                PassportAuditEntityType.Visit or PassportAuditEntityType.ParkAssessment)
+            || auditEvent.EntityVersion != visit.Version)
+        {
+            throw new ArgumentException(
+                "The pending audit event does not match the visit mutation.",
+                nameof(auditEvent));
+        }
     }
 
     private static void AddOptionalUpdate<TValue>(

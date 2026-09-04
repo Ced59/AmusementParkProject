@@ -14,12 +14,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     public const int MaximumListSize = 250;
 
+    public const int MaximumPendingMutationScanSize = 50;
+
     private const string CreationOperationKind = "creation";
 
     private const string CreationKeyReservationOperationKind =
         "creation-key-reservation";
 
     private const string ReorderOperationKind = "reorder";
+
+    private const string DeleteOperationKind = "delete";
 
     private const string PendingOperationState = "pending";
 
@@ -32,28 +36,53 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly IMongoCollection<UserRideOccurrenceDocument> collection;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
         operationCollection;
+    private readonly IMongoCollection<UserVisitDocument>? visitCollection;
     private readonly UserRideOccurrenceReorderRecovery reorderRecovery;
     private readonly UserRideOccurrenceOrderGuardValidator orderGuardValidator;
     private readonly UserRideOccurrenceCreationRecovery creationRecovery;
+    private readonly UserRideOccurrenceProvisionalCreationReconciler
+        provisionalCreationReconciler;
     private readonly UserRideOccurrenceDeleteOperationCoordinator deletionCoordinator;
     private readonly UserRideOccurrenceVersionFence versionFence;
     private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
 
     public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
+        : this(
+            GetCollection<UserRideOccurrenceDocument>(
+                database,
+                settings,
+                static value => value.UserRideOccurrencesCollectionName),
+            GetCollection<UserRideOccurrenceCreationOperationDocument>(
+                database,
+                settings,
+                static value => value.UserRideOccurrenceOperationsCollectionName),
+            GetCollection<UserVisitDocument>(
+                database,
+                settings,
+                static value => value.UserVisitsCollectionName))
     {
-        ArgumentNullException.ThrowIfNull(database);
-        ArgumentNullException.ThrowIfNull(settings);
+    }
 
-        this.collection = database.GetCollection<UserRideOccurrenceDocument>(
-            settings.UserRideOccurrencesCollectionName);
-        this.operationCollection =
-            database.GetCollection<UserRideOccurrenceCreationOperationDocument>(
-                settings.UserRideOccurrenceOperationsCollectionName);
+    internal UserRideOccurrenceRepository(
+        IMongoCollection<UserRideOccurrenceDocument> collection,
+        IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection,
+        IMongoCollection<UserVisitDocument>? visitCollection = null)
+    {
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(operationCollection);
+        this.collection = collection;
+        this.operationCollection = operationCollection;
+        this.visitCollection = visitCollection;
         this.reorderRecovery = new UserRideOccurrenceReorderRecovery(this.collection);
         this.orderGuardValidator = new UserRideOccurrenceOrderGuardValidator(
             this.collection,
             this.operationCollection);
         this.creationRecovery = new UserRideOccurrenceCreationRecovery(this.collection);
+        this.provisionalCreationReconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                this.collection,
+                this.operationCollection,
+                this.visitCollection);
         this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
             this.collection,
             this.operationCollection);
@@ -64,6 +93,162 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             this.orderGuardValidator,
             this.creationRecovery,
             this.deletionCoordinator);
+    }
+
+    public async Task<PendingPassportMutationVisit?> GetPendingMutationAsync(
+        string userId,
+        VisitId visitId,
+        CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? operation =
+            await this.operationCollection
+                .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                    .BuildPendingVisitFilter(userId, visitId.Value))
+                .FirstOrDefaultAsync(cancellationToken);
+        return operation is null
+            ? null
+            : CreatePendingMutation(operation, visitId);
+    }
+
+    public async Task<PendingPassportMutationVisit?> GetPendingMutationFencedAsync(
+        string userId,
+        VisitId visitId,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        UserRideOccurrenceCreationOperationDocument? operation =
+            await this.operationCollection
+                .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                    .BuildPendingVisitFilter(
+                        userId,
+                        visitId.Value,
+                        ValidateContentFence(contentFenceToken, nameof(contentFenceToken))))
+                .FirstOrDefaultAsync(cancellationToken);
+        if (operation is not null)
+        {
+            return CreatePendingMutation(operation, visitId);
+        }
+
+        return null;
+    }
+
+    public async Task<IReadOnlyCollection<PendingPassportMutationVisit>>
+        ListPendingAuditMutationVisitsAsync(
+        int maximumVisitCount,
+        CancellationToken cancellationToken)
+    {
+        if (maximumVisitCount is < 1 or > MaximumPendingMutationScanSize)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumVisitCount));
+        }
+
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            filters.Eq(static document => document.OperationState, PendingOperationState)
+            & filters.Exists(PassportAuditMongoDefinitions.PendingEventIdPath, true);
+        List<UserRideOccurrenceCreationOperationDocument> operations =
+            await this.operationCollection
+                .Find(filter)
+                .Limit(maximumVisitCount)
+                .ToListAsync(cancellationToken);
+        List<PendingPassportMutationVisit> candidates =
+            new List<PendingPassportMutationVisit>(operations.Count);
+        foreach (UserRideOccurrenceCreationOperationDocument operation in operations
+            .OrderBy(static document => document.UpdatedAt)
+            .ThenBy(static document => document.Id, StringComparer.Ordinal))
+        {
+            if (string.IsNullOrWhiteSpace(operation.VisitId))
+            {
+                continue;
+            }
+
+            VisitId visitId;
+            try
+            {
+                visitId = VisitId.Parse(operation.VisitId);
+            }
+            catch (ArgumentException)
+            {
+                continue;
+            }
+
+            candidates.Add(CreatePendingMutation(operation, visitId));
+        }
+
+        return candidates;
+    }
+
+    public Task<int> ReconcileProvisionalCreationAllocationsAsync(
+        int maximumDocumentCount,
+        CancellationToken cancellationToken)
+    {
+        return this.provisionalCreationReconciler.ReconcileBatchAsync(
+            maximumDocumentCount,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryCompletePendingMutationAsync(
+        PendingPassportMutationVisit mutation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(mutation);
+        if (mutation.ContentFenceToken.HasValue
+            && await this.LoadCreationOperationAsync(
+                mutation.UserId,
+                mutation.VisitId,
+                mutation.OperationKeyHash,
+                mutation.ContentFenceToken,
+                cancellationToken) is null)
+        {
+            return false;
+        }
+
+        return await this.pendingOperationRecovery.TryCompleteOperationAsync(
+            mutation.UserId,
+            mutation.VisitId,
+            mutation.OperationKeyHash,
+            mutation.ContentFenceToken,
+            this.ResumeReservedReorderAsync,
+            cancellationToken);
+    }
+
+    public async Task<bool> TryRejectPendingMutationAsync(
+        PendingPassportMutationVisit mutation,
+        DateTime rejectedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(mutation);
+        UserRideOccurrenceCreationOperationDocument? operation = null;
+        if (mutation.ContentFenceToken.HasValue)
+        {
+            operation = await this.LoadCreationOperationAsync(
+                mutation.UserId,
+                mutation.VisitId,
+                mutation.OperationKeyHash,
+                mutation.ContentFenceToken,
+                cancellationToken);
+            if (operation is null)
+            {
+                return false;
+            }
+        }
+
+        if (mutation.Kind == PendingPassportMutationKind.Creation
+            && operation is not null)
+        {
+            await this.creationRecovery.RemoveRejectedAllocationsAsync(
+                operation,
+                cancellationToken);
+        }
+
+        return await this.pendingOperationRecovery.TrySetPendingConflictAsync(
+            mutation.UserId,
+            mutation.VisitId,
+            mutation.OperationKeyHash,
+            mutation.ContentFenceToken,
+            rejectedAtUtc,
+            cancellationToken);
     }
 
     public async Task<RideOccurrenceCreationKeyReservationResult>
@@ -79,7 +264,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? existing =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
+                request.ContentFenceToken,
                 cancellationToken);
         return CreateCreationKeyReservationResult(
             existing,
@@ -119,6 +306,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 PayloadHash = payloadHash,
                 OperationKind = CreationKeyReservationOperationKind,
                 VisitId = request.VisitId.Value,
+                ContentMutationFenceToken = request.ContentFenceToken,
                 OperationState = ReservedOperationState,
                 CreationPreparation = CreatePreparationDocument(preparation),
                 CreatedAt = reservedAtUtc,
@@ -139,8 +327,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     request.UserId,
+                    request.VisitId,
                     operationKeyHash,
+                    request.ContentFenceToken,
                     cancellationToken);
+            if (existing is null)
+            {
+                return new RideOccurrenceCreationKeyReservationResult(
+                    RideOccurrenceCreationKeyReservationStatus.Conflict);
+            }
+
             return CreateCreationKeyReservationResult(
                 existing,
                 request,
@@ -161,7 +357,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
+                request.ContentFenceToken,
                 cancellationToken);
         if (operation is null)
         {
@@ -204,7 +402,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
         List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
             request.UserId,
+            request.VisitId,
             operationKeyHash,
+            request.ContentFenceToken,
             cancellationToken);
         IdempotentRideOccurrenceCreationResult? resolution = ResolveAgainstOperation(
             operation,
@@ -219,13 +419,20 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     CompletedOperationState,
                     StringComparison.Ordinal))
             {
-                await this.pendingOperationRecovery.SetStateAsync(
+                bool completed = await this.pendingOperationRecovery.SetStateAsync(
                     operation,
                     CompletedOperationState,
                     cancellationToken);
+                if (!completed)
+                {
+                    return CreateCreationConcurrencyConflictResult();
+                }
             }
 
-            return resolution;
+            return await this.EnsureCurrentCreationFenceAsync(
+                resolution,
+                request,
+                cancellationToken);
         }
 
         RideOccurrenceOrderGuardValidationStatus validation =
@@ -256,16 +463,23 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 cancellationToken);
         if (recovered.Status == IdempotentRideOccurrenceCreationStatus.Replayed)
         {
-            await this.pendingOperationRecovery.SetStateAsync(
+            bool completed = await this.pendingOperationRecovery.SetStateAsync(
                 operation,
                 CompletedOperationState,
                 cancellationToken);
+            if (!completed)
+            {
+                return CreateCreationConcurrencyConflictResult();
+            }
         }
 
-        return recovered;
+        return await this.EnsureCurrentCreationFenceAsync(
+            recovered,
+            request,
+            cancellationToken);
     }
 
-    public async Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
+    public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
         long? expectedLastSortPosition,
@@ -273,9 +487,50 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string clientOperationId,
         CancellationToken cancellationToken)
     {
+        return this.CreateBatchIdempotentCoreAsync(
+            request,
+            occurrences,
+            expectedLastSortPosition,
+            wasOrderNormalized,
+            clientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAuditedAsync(
+        RideOccurrenceCreationRequest request,
+        IReadOnlyList<RideOccurrence> occurrences,
+        long? expectedLastSortPosition,
+        bool wasOrderNormalized,
+        string clientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvents);
+        return this.CreateBatchIdempotentCoreAsync(
+            request,
+            occurrences,
+            expectedLastSortPosition,
+            wasOrderNormalized,
+            clientOperationId,
+            pendingAuditEvents,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceCreationResult>
+        CreateBatchIdempotentCoreAsync(
+            RideOccurrenceCreationRequest request,
+            IReadOnlyList<RideOccurrence> occurrences,
+            long? expectedLastSortPosition,
+            bool wasOrderNormalized,
+            string clientOperationId,
+            IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
+            CancellationToken cancellationToken)
+    {
         ValidateCreationRequest(request);
         BatchScope scope = ValidateBatch(occurrences);
         ValidateCreationRequestMatchesBatch(request, occurrences, scope);
+        ValidatePendingAuditEvents(occurrences, pendingAuditEvents);
         string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
         string payloadHash = UserRideOccurrenceCreationFingerprint.HashPayload(request);
@@ -284,10 +539,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 occurrences,
                 scope.UserId,
                 scope.VisitId,
+                request.ContentFenceToken,
                 expectedLastSortPosition,
                 wasOrderNormalized,
                 operationKeyHash,
                 payloadHash,
+                pendingAuditEvents,
                 cancellationToken);
         if (!reservation.HasValue)
         {
@@ -331,7 +588,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 allocations[index],
                 operationKeyHash,
                 payloadHash,
-                occurrences.Count))
+                occurrences.Count,
+                request.ContentFenceToken))
             .ToList();
 
         try
@@ -343,23 +601,35 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             IReadOnlyCollection<RideOccurrence> created = documents
                 .Select(static document => document.CreationSnapshotToDomain())
                 .ToArray();
-            await this.pendingOperationRecovery.SetStateAsync(
+            bool completed = await this.pendingOperationRecovery.SetStateAsync(
                 operation,
                 CompletedOperationState,
                 cancellationToken);
-            return new IdempotentRideOccurrenceCreationResult(
-                isNewOperation
-                    ? IdempotentRideOccurrenceCreationStatus.Created
-                    : IdempotentRideOccurrenceCreationStatus.Replayed,
-                created,
-                operation.WasNormalized);
+            if (!completed)
+            {
+                return CreateCreationConcurrencyConflictResult();
+            }
+
+            IdempotentRideOccurrenceCreationResult result =
+                new IdempotentRideOccurrenceCreationResult(
+                    isNewOperation
+                        ? IdempotentRideOccurrenceCreationStatus.Created
+                        : IdempotentRideOccurrenceCreationStatus.Replayed,
+                    created,
+                    operation.WasNormalized);
+            return await this.EnsureCurrentCreationFenceAsync(
+                result,
+                request,
+                cancellationToken);
         }
         catch (MongoBulkWriteException<UserRideOccurrenceDocument> exception)
             when (ContainsOnlyDuplicateKeyErrors(exception))
         {
             List<UserRideOccurrenceDocument> existing = await this.LoadCreationDocumentsAsync(
                 scope.UserId,
+                scope.VisitId,
                 operationKeyHash,
+                request.ContentFenceToken,
                 cancellationToken);
             IdempotentRideOccurrenceCreationResult? resolution =
                 ResolveAgainstOperation(
@@ -374,13 +644,20 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
             if (resolution.Status == IdempotentRideOccurrenceCreationStatus.Replayed)
             {
-                await this.pendingOperationRecovery.SetStateAsync(
+                bool completed = await this.pendingOperationRecovery.SetStateAsync(
                     operation,
                     CompletedOperationState,
                     cancellationToken);
+                if (!completed)
+                {
+                    return CreateCreationConcurrencyConflictResult();
+                }
             }
 
-            return resolution;
+            return await this.EnsureCurrentCreationFenceAsync(
+                resolution,
+                request,
+                cancellationToken);
         }
     }
 
@@ -390,11 +667,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string userId,
         CancellationToken cancellationToken)
     {
+        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+            visitId.Value,
+            userId,
+            cancellationToken);
+        if (!currentFence.VisitExists)
+        {
+            return null;
+        }
+
         UserRideOccurrenceDocument? document = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceFilter(
-                occurrenceId.Value,
-                visitId.Value,
-                userId))
+            .Find(WithCurrentContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceFilter(
+                    occurrenceId.Value,
+                    visitId.Value,
+                    userId),
+                currentFence))
             .FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();
     }
@@ -411,8 +699,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 $"The ride occurrence list size must be between 1 and {MaximumListSize}.");
         }
 
+        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+            criteria.VisitId.Value,
+            criteria.UserId,
+            cancellationToken);
+        if (!currentFence.VisitExists)
+        {
+            return new RideOccurrencePage(
+                Array.Empty<RideOccurrence>(),
+                null);
+        }
+
         List<UserRideOccurrenceDocument> documents = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildListFilter(criteria))
+            .Find(WithCurrentContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildListFilter(criteria),
+                currentFence))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildVisitOrderSort())
             .Limit(criteria.Limit + 1)
             .ToListAsync(cancellationToken);
@@ -440,7 +741,18 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 occurrenceId.Value,
                 userId))
             .FirstOrDefaultAsync(cancellationToken);
-        return document?.ToDomain();
+        if (document is null)
+        {
+            return null;
+        }
+
+        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+            document.VisitId,
+            userId,
+            cancellationToken);
+        return currentFence.VisitExists && currentFence.Matches(document.ContentMutationFenceToken)
+            ? document.ToDomain()
+            : null;
     }
 
     public async Task<RideOccurrenceAppendState> GetAppendStateAsync(
@@ -453,10 +765,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string relatedCreationOperationKeyHash =
             UserRideOccurrenceCreationFingerprint.HashOperationKey(
                 NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+            visitId.Value,
+            normalizedUserId,
+            cancellationToken);
+        if (!currentFence.VisitExists)
+        {
+            return new RideOccurrenceAppendState(null, false);
+        }
+
         UserRideOccurrenceDocument? lastOccurrence = await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
-                visitId.Value,
-                normalizedUserId))
+            .Find(WithCurrentContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildActiveVisitFilter(
+                    visitId.Value,
+                    normalizedUserId),
+                currentFence))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildReverseVisitOrderSort())
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
@@ -464,15 +787,76 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             normalizedUserId,
             visitId,
             relatedCreationOperationKeyHash,
+            currentFence.IsEnforced ? currentFence.Token : null,
             cancellationToken);
         return new RideOccurrenceAppendState(
             lastOccurrence?.SortPosition,
             wasNormalized);
     }
 
-    public async Task<bool> TryUpdateOwnedAsync(
+    public Task<bool> TryUpdateOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            ValidateContentFence(contentFenceToken, nameof(contentFenceToken)),
+            cancellationToken);
+    }
+
+    public Task<bool> TryUpdateOwnedAuditedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryUpdateOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            ValidateContentFence(contentFenceToken, nameof(contentFenceToken)),
+            cancellationToken);
+    }
+
+    private async Task<bool> TryUpdateOwnedCoreAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
@@ -484,13 +868,21 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         UserRideOccurrenceDocument document = occurrence.ToDocument();
+        document.ContentMutationFenceToken = contentFenceToken;
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(occurrence, pendingAuditEvent);
+        }
+
         UpdateResult result = await this.collection.UpdateOneAsync(
-            UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
-                document.Id,
-                document.VisitId,
-                document.UserId,
-                expectedVersion),
-            BuildDomainUpdate(document),
+            UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
+                    document.Id,
+                    document.VisitId,
+                    document.UserId,
+                    expectedVersion),
+                contentFenceToken),
+            BuildDomainUpdate(document, pendingAuditEvent),
             new UpdateOptions { IsUpsert = false },
             cancellationToken);
         return result.MatchedCount == 1;
@@ -508,12 +900,90 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             visitId,
             userId,
             expectedVersion,
+            null,
             cancellationToken);
     }
 
-    public async Task<bool> TryDeleteOwnedAsync(
+    public async Task<bool> TryConfirmOwnedVersionFencedAsync(
+        RideOccurrenceId occurrenceId,
+        VisitId visitId,
+        string userId,
+        long expectedVersion,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        return await this.versionFence.TryConfirmOwnedAsync(
+            occurrenceId,
+            visitId,
+            userId,
+            expectedVersion,
+            ValidateContentFence(contentFenceToken, nameof(contentFenceToken)),
+            cancellationToken);
+    }
+
+    public Task<bool> TryDeleteOwnedAsync(
         RideOccurrence occurrence,
         long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryDeleteOwnedAuditedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            null,
+            cancellationToken);
+    }
+
+    public Task<bool> TryDeleteOwnedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            null,
+            ValidateContentFence(contentFenceToken, nameof(contentFenceToken)),
+            cancellationToken);
+    }
+
+    public Task<bool> TryDeleteOwnedAuditedFencedAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent pendingAuditEvent,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvent);
+        return this.TryDeleteOwnedCoreAsync(
+            occurrence,
+            expectedVersion,
+            pendingAuditEvent,
+            ValidateContentFence(contentFenceToken, nameof(contentFenceToken)),
+            cancellationToken);
+    }
+
+    private async Task<bool> TryDeleteOwnedCoreAsync(
+        RideOccurrence occurrence,
+        long expectedVersion,
+        PassportAuditEvent? pendingAuditEvent,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
@@ -527,12 +997,23 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
 
         UserRideOccurrenceDocument document = occurrence.ToDocument();
+        document.ContentMutationFenceToken = contentFenceToken;
+        if (pendingAuditEvent is not null)
+        {
+            ValidatePendingAuditEvent(occurrence, pendingAuditEvent);
+            document.PendingAuditEvents = new List<PassportAuditEventDocument>
+            {
+                pendingAuditEvent.ToDocument(),
+            };
+        }
+
         return await this.deletionCoordinator.TryReserveAndApplyAsync(
             document,
             expectedVersion,
             recoveryCancellationToken => this.pendingOperationRecovery.TryCompleteVisitAsync(
                 document.UserId,
                 VisitId.Parse(document.VisitId),
+                document.ContentMutationFenceToken,
                 this.ResumeReservedReorderAsync,
                 recoveryCancellationToken),
             cancellationToken);
@@ -549,7 +1030,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? operation =
             await this.LoadCreationOperationAsync(
                 request.UserId,
+                request.VisitId,
                 operationKeyHash,
+                request.ContentFenceToken,
                 cancellationToken);
         if (operation is null)
         {
@@ -564,7 +1047,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             cancellationToken);
     }
 
-    public async Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
+    public Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAsync(
         RideOccurrenceReorderRequest request,
         IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
         IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
@@ -575,8 +1058,62 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string? relatedCreationClientOperationId,
         CancellationToken cancellationToken)
     {
+        return this.ReorderIdempotentCoreAsync(
+            request,
+            changes,
+            guards,
+            resultOccurrence,
+            wasNormalized,
+            operationAtUtc,
+            clientOperationId,
+            relatedCreationClientOperationId,
+            null,
+            cancellationToken);
+    }
+
+    public Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentAuditedAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
+        IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(pendingAuditEvents);
+        return this.ReorderIdempotentCoreAsync(
+            request,
+            changes,
+            guards,
+            resultOccurrence,
+            wasNormalized,
+            operationAtUtc,
+            clientOperationId,
+            relatedCreationClientOperationId,
+            pendingAuditEvents,
+            cancellationToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceReorderResult> ReorderIdempotentCoreAsync(
+        RideOccurrenceReorderRequest request,
+        IReadOnlyCollection<RideOccurrenceVersionedChange> changes,
+        IReadOnlyCollection<RideOccurrenceOrderGuard> guards,
+        RideOccurrence resultOccurrence,
+        bool wasNormalized,
+        DateTime operationAtUtc,
+        string clientOperationId,
+        string? relatedCreationClientOperationId,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
+        CancellationToken cancellationToken)
+    {
         ValidateReorderRequest(request);
         ValidateReorderChanges(request, changes, guards, resultOccurrence);
+        ValidatePendingAuditEvents(
+            changes.Select(static change => change.Occurrence).ToArray(),
+            pendingAuditEvents);
         if (operationAtUtc.Kind != DateTimeKind.Utc)
         {
             throw new ArgumentException("The operation timestamp must be UTC.", nameof(operationAtUtc));
@@ -599,7 +1136,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             relatedCreationOperationKeyHash,
             operationAtUtc,
             operationKeyHash,
-            payloadHash);
+            payloadHash,
+            pendingAuditEvents);
         UserRideOccurrenceCreationOperationDocument operation;
         bool wasExisting;
         try
@@ -616,13 +1154,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     request.UserId,
+                    request.VisitId,
                     operationKeyHash,
+                    request.ContentFenceToken,
                     cancellationToken);
             if (existing is null)
             {
                 bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
                     request.UserId,
                     request.VisitId,
+                    request.ContentFenceToken,
                     this.ResumeReservedReorderAsync,
                     cancellationToken);
                 if (!recovered)
@@ -644,7 +1185,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 {
                     existing = await this.LoadCreationOperationAsync(
                         request.UserId,
+                        request.VisitId,
                         operationKeyHash,
+                        request.ContentFenceToken,
                         cancellationToken);
                     if (existing is null)
                     {
@@ -760,7 +1303,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     internal static UpdateDefinition<UserRideOccurrenceDocument> BuildDomainUpdate(
-        UserRideOccurrenceDocument document)
+        UserRideOccurrenceDocument document,
+        PassportAuditEvent? pendingAuditEvent = null)
     {
         ArgumentNullException.ThrowIfNull(document);
 
@@ -783,32 +1327,155 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         AddOptionalUpdate(definitions, updates, "privateNote", document.PrivateNote);
         AddOptionalUpdate(definitions, updates, "assessment", document.Assessment);
         AddOptionalUpdate(definitions, updates, "deletedAtUtc", document.DeletedAtUtc);
+        if (document.ContentMutationFenceToken.HasValue)
+        {
+            definitions.Add(updates.Set(
+                static item => item.ContentMutationFenceToken,
+                document.ContentMutationFenceToken));
+        }
+        if (pendingAuditEvent is not null)
+        {
+            definitions.Add(updates.Push(
+                static item => item.PendingAuditEvents,
+                pendingAuditEvent.ToDocument()));
+        }
+
         return updates.Combine(definitions);
     }
 
     private async Task<List<UserRideOccurrenceDocument>> LoadCreationDocumentsAsync(
         string userId,
+        VisitId visitId,
         string operationKeyHash,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
-        return await this.collection
-            .Find(UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+        if (contentFenceToken.HasValue)
+        {
+            await this.PromoteCreationDocumentsFenceAsync(
                 userId,
-                operationKeyHash))
+                visitId,
+                operationKeyHash,
+                contentFenceToken.Value,
+                cancellationToken);
+        }
+
+        return await this.collection
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+                    userId,
+                    operationKeyHash)
+                & Builders<UserRideOccurrenceDocument>.Filter.Eq(
+                    static document => document.VisitId,
+                    visitId.Value),
+                contentFenceToken))
             .Sort(UserRideOccurrenceMongoDefinitions.BuildCreationOperationSort())
             .ToListAsync(cancellationToken);
     }
 
     private async Task<UserRideOccurrenceCreationOperationDocument?> LoadCreationOperationAsync(
         string userId,
+        VisitId visitId,
         string operationKeyHash,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
-        return await this.operationCollection
-            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> visitOperation =
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
                 userId,
-                operationKeyHash))
+                operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value);
+        UserRideOccurrenceCreationOperationDocument? operation =
+            await this.operationCollection
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                visitOperation,
+                contentFenceToken))
             .FirstOrDefaultAsync(cancellationToken);
+        if (operation is not null || !contentFenceToken.HasValue)
+        {
+            return operation;
+        }
+
+        UserRideOccurrenceCreationOperationDocument? older =
+            await this.operationCollection
+                .Find(visitOperation)
+                .FirstOrDefaultAsync(cancellationToken);
+        if (older is null
+            || older.ContentMutationFenceToken >= contentFenceToken.Value)
+        {
+            return null;
+        }
+
+        await this.PromoteCreationDocumentsFenceAsync(
+            userId,
+            visitId,
+            operationKeyHash,
+            contentFenceToken.Value,
+            cancellationToken);
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> olderFenceFilter =
+            older.ContentMutationFenceToken.HasValue
+                ? filters.Eq(
+                    static document => document.ContentMutationFenceToken,
+                    older.ContentMutationFenceToken.Value)
+                : filters.Or(
+                    filters.Exists(
+                        static document => document.ContentMutationFenceToken,
+                        false),
+                    filters.Eq(
+                        static document => document.ContentMutationFenceToken,
+                        null));
+        _ = await this.operationCollection.UpdateOneAsync(
+            visitOperation & olderFenceFilter,
+            Builders<UserRideOccurrenceCreationOperationDocument>.Update.Set(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken.Value),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
+        await this.PromoteCreationDocumentsFenceAsync(
+            userId,
+            visitId,
+            operationKeyHash,
+            contentFenceToken.Value,
+            cancellationToken);
+        return await this.operationCollection
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions.WithContentFence(
+                visitOperation,
+                contentFenceToken))
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    private async Task PromoteCreationDocumentsFenceAsync(
+        string userId,
+        VisitId visitId,
+        string operationKeyHash,
+        long contentFenceToken,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceDocument> olderFence = filters.Or(
+            filters.Exists(
+                static document => document.ContentMutationFenceToken,
+                false),
+            filters.Eq(
+                static document => document.ContentMutationFenceToken,
+                null),
+            filters.Lt(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken));
+        _ = await this.collection.UpdateManyAsync(
+            UserRideOccurrenceMongoDefinitions.BuildCreationOperationFilter(
+                userId,
+                operationKeyHash)
+            & filters.Eq(static document => document.VisitId, visitId.Value)
+            & olderFence,
+            Builders<UserRideOccurrenceDocument>.Update.Set(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken),
+            new UpdateOptions { IsUpsert = false },
+            cancellationToken);
     }
 
     private Task<IdempotentRideOccurrenceReorderResult> ResumeReservedReorderAsync(
@@ -931,12 +1598,17 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 operation.ReorderItems!.OrderBy(static item => item.Index))
             {
                 UpdateResult update = await this.collection.UpdateOneAsync(
-                    UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
-                        allocation.OccurrenceId,
-                        request.VisitId.Value,
-                        request.UserId,
-                        allocation.ExpectedVersion),
-                    BuildReorderUpdate(allocation, operationKeyHash),
+                    UserRideOccurrenceMongoDefinitions.WithContentFence(
+                        UserRideOccurrenceMongoDefinitions.BuildOwnedVersionFilter(
+                            allocation.OccurrenceId,
+                            request.VisitId.Value,
+                            request.UserId,
+                            allocation.ExpectedVersion),
+                        request.ContentFenceToken),
+                    BuildReorderUpdate(
+                        allocation,
+                        operationKeyHash,
+                        request.ContentFenceToken),
                     new UpdateOptions { IsUpsert = false },
                     cancellationToken);
                 if (update.MatchedCount == 1)
@@ -945,10 +1617,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 }
 
                 UserRideOccurrenceDocument? current = await this.collection
-                    .Find(UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceFilter(
-                        allocation.OccurrenceId,
-                        request.VisitId.Value,
-                        request.UserId))
+                    .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                        UserRideOccurrenceMongoDefinitions.BuildOwnedOccurrenceFilter(
+                            allocation.OccurrenceId,
+                            request.VisitId.Value,
+                            request.UserId),
+                        request.ContentFenceToken))
                     .FirstOrDefaultAsync(cancellationToken);
                 if (current is not null
                     && UserRideOccurrenceReorderRecovery.AllocationWasApplied(
@@ -999,7 +1673,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? durable =
             await this.LoadCreationOperationAsync(
                 operation.UserId,
+                request.VisitId,
                 operationKeyHash,
+                operation.ContentMutationFenceToken,
                 cancellationToken);
         if (durable is null)
         {
@@ -1056,7 +1732,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationOperationDocument? durable =
             await this.LoadCreationOperationAsync(
                 operation.UserId,
+                request.VisitId,
                 operationKeyHash,
+                operation.ContentMutationFenceToken,
                 cancellationToken);
         if (durable is not null
             && string.Equals(
@@ -1116,20 +1794,24 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             IReadOnlyList<RideOccurrence> occurrences,
             string userId,
             VisitId visitId,
+            long? contentFenceToken,
             long? expectedLastSortPosition,
             bool wasOrderNormalized,
             string operationKeyHash,
             string payloadHash,
+            IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents,
             CancellationToken cancellationToken)
     {
         UserRideOccurrenceCreationOperationDocument requested =
             CreateCreationOperation(
                 occurrences,
                 userId,
+                contentFenceToken,
                 expectedLastSortPosition,
                 wasOrderNormalized,
                 operationKeyHash,
-                payloadHash);
+                payloadHash,
+                pendingAuditEvents);
         try
         {
             await this.operationCollection.InsertOneAsync(
@@ -1153,7 +1835,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? existing =
                 await this.LoadCreationOperationAsync(
                     userId,
+                    visitId,
                     operationKeyHash,
+                    contentFenceToken,
                     cancellationToken);
             if (existing is not null)
             {
@@ -1182,6 +1866,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
                 userId,
                 visitId,
+                contentFenceToken,
                 this.ResumeReservedReorderAsync,
                 cancellationToken);
             if (!recovered)
@@ -1193,6 +1878,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 userId,
                 visitId,
                 operationKeyHash,
+                requested.ContentMutationFenceToken,
                 cancellationToken);
 
             try
@@ -1218,7 +1904,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             {
                 existing = await this.LoadCreationOperationAsync(
                     userId,
+                    visitId,
                     operationKeyHash,
+                    contentFenceToken,
                     cancellationToken);
                 if (existing is null)
                 {
@@ -1251,6 +1939,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 requested.UserId,
                 visitId,
                 requested.OperationKeyHash,
+                requested.ContentMutationFenceToken,
                 cancellationToken);
             try
             {
@@ -1277,6 +1966,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 bool recovered = await this.pendingOperationRecovery.TryCompleteVisitAsync(
                     requested.UserId,
                     visitId,
+                    requested.ContentMutationFenceToken,
                     this.ResumeReservedReorderAsync,
                     cancellationToken);
                 if (!recovered)
@@ -1290,7 +1980,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             UserRideOccurrenceCreationOperationDocument? durable =
                 await this.LoadCreationOperationAsync(
                     requested.UserId,
+                    visitId,
                     requested.OperationKeyHash,
+                    requested.ContentMutationFenceToken,
                     cancellationToken);
             if (durable is null)
             {
@@ -1324,9 +2016,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                reservation.UserId,
-                reservation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(reservation)
             & filters.Eq(
                 static document => document.OperationKind,
                 CreationKeyReservationOperationKind)
@@ -1360,6 +2050,12 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     static document => document.WasNormalized,
                     requested.WasNormalized),
                 updates.Set(static document => document.Items, requested.Items),
+                updates.Set(
+                    static document => document.PendingAuditEvents,
+                    requested.PendingAuditEvents),
+                updates.Set(
+                    static document => document.ContentMutationFenceToken,
+                    requested.ContentMutationFenceToken),
                 updates.Set(static document => document.UpdatedAt, requested.UpdatedAt),
             };
         if (requested.AppendBaseSortPosition.HasValue)
@@ -1400,6 +2096,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             operation.UserId,
             visitId,
             operation.OperationKeyHash,
+            operation.ContentMutationFenceToken,
             cancellationToken);
         if (!wasNormalized)
         {
@@ -1409,9 +2106,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
             Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
-            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(
-                operation.UserId,
-                operation.OperationKeyHash)
+            UserRideOccurrenceCreationOperationMongoDefinitions.BuildOperationFilter(operation)
             & filters.Eq(
                 static document => document.OperationKind,
                 CreationOperationKind);
@@ -1436,6 +2131,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string userId,
         VisitId visitId,
         string relatedCreationOperationKeyHash,
+        long? contentFenceToken,
         CancellationToken cancellationToken)
     {
         UserRideOccurrenceCreationOperationDocument? operation =
@@ -1444,7 +2140,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     .BuildCompletedCreationNormalizationFilter(
                         userId,
                         visitId.Value,
-                        relatedCreationOperationKeyHash))
+                        relatedCreationOperationKeyHash,
+                        contentFenceToken))
                 .Limit(1)
                 .FirstOrDefaultAsync(cancellationToken);
         return operation is not null
@@ -1476,7 +2173,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         UserRideOccurrenceCreationAllocationDocument allocation,
         string operationKeyHash,
         string payloadHash,
-        int operationCount)
+        int operationCount,
+        long? contentFenceToken = null)
     {
         RideOccurrence reservedOccurrence = allocation.CreationSnapshot.SnapshotToDomain(
             allocation.OccurrenceId,
@@ -1487,6 +2185,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         document.CreationOperationIndex = allocation.Index;
         document.CreationOperationCount = operationCount;
         document.CreationSnapshot = allocation.CreationSnapshot;
+        document.CreationPendingCompletion = contentFenceToken.HasValue ? true : null;
+        document.ContentMutationFenceToken = contentFenceToken;
         return document;
     }
 
@@ -1506,16 +2206,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             allocation,
             operation.OperationKeyHash,
             payloadHash,
-            operationCount);
+            operationCount,
+            operation.ContentMutationFenceToken);
     }
 
     private static UserRideOccurrenceCreationOperationDocument CreateCreationOperation(
         IReadOnlyList<RideOccurrence> occurrences,
         string userId,
+        long? contentFenceToken,
         long? expectedLastSortPosition,
         bool wasOrderNormalized,
         string operationKeyHash,
-        string payloadHash)
+        string payloadHash,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents)
     {
         DateTime createdAtUtc = occurrences.Min(static occurrence => occurrence.CreatedAtUtc);
         return new UserRideOccurrenceCreationOperationDocument
@@ -1526,6 +2229,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             PayloadHash = payloadHash,
             OperationKind = CreationOperationKind,
             VisitId = occurrences[0].VisitId.Value,
+            ContentMutationFenceToken = contentFenceToken,
             OperationState = PendingOperationState,
             AppendBaseWasEmpty = !expectedLastSortPosition.HasValue,
             AppendBaseSortPosition = expectedLastSortPosition,
@@ -1549,6 +2253,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     };
                 })
                 .ToList(),
+            PendingAuditEvents = pendingAuditEvents?
+                .Select(static auditEvent => auditEvent.ToDocument())
+                .ToList(),
             CreatedAt = createdAtUtc,
             UpdatedAt = createdAtUtc,
         };
@@ -1563,7 +2270,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string? relatedCreationOperationKeyHash,
         DateTime operationAtUtc,
         string operationKeyHash,
-        string payloadHash)
+        string payloadHash,
+        IReadOnlyCollection<PassportAuditEvent>? pendingAuditEvents)
     {
         UserRideOccurrenceDocument resultDocument = resultOccurrence.ToDocument();
         return new UserRideOccurrenceCreationOperationDocument
@@ -1574,6 +2282,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             PayloadHash = payloadHash,
             OperationKind = ReorderOperationKind,
             VisitId = request.VisitId.Value,
+            ContentMutationFenceToken = request.ContentFenceToken,
             OperationState = PendingOperationState,
             MovedOccurrenceId = request.OccurrenceId.Value,
             ReorderExpectedVersion = request.ExpectedVersion,
@@ -1605,6 +2314,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 })
                 .ToList(),
             ReorderResultSnapshot = resultDocument.CreateCreationSnapshot(),
+            PendingAuditEvents = pendingAuditEvents?
+                .Select(static auditEvent => auditEvent.ToDocument())
+                .ToList(),
             CreatedAt = operationAtUtc,
             UpdatedAt = operationAtUtc,
         };
@@ -1612,11 +2324,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private static UpdateDefinition<UserRideOccurrenceDocument> BuildReorderUpdate(
         UserRideOccurrenceReorderAllocationDocument allocation,
-        string operationKeyHash)
+        string operationKeyHash,
+        long? contentFenceToken)
     {
         UpdateDefinitionBuilder<UserRideOccurrenceDocument> updates =
             Builders<UserRideOccurrenceDocument>.Update;
-        return updates.Combine(
+        List<UpdateDefinition<UserRideOccurrenceDocument>> definitions =
+            new List<UpdateDefinition<UserRideOccurrenceDocument>>
+            {
             updates.Set(
                 static document => document.SortPosition,
                 allocation.ResultSortPosition),
@@ -1626,7 +2341,68 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 allocation.ResultUpdatedAtUtc),
             updates.Set(
                 static document => document.LastReorderOperationKeyHash,
-                operationKeyHash));
+                operationKeyHash),
+            };
+        if (contentFenceToken.HasValue)
+        {
+            definitions.Add(updates.Set(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken.Value));
+        }
+
+        return updates.Combine(definitions);
+    }
+
+    private static void ValidatePendingAuditEvents(
+        IReadOnlyCollection<RideOccurrence> occurrences,
+        IReadOnlyCollection<PassportAuditEvent>? auditEvents)
+    {
+        if (auditEvents is null)
+        {
+            return;
+        }
+
+        if (auditEvents.Count != occurrences.Count)
+        {
+            throw new ArgumentException(
+                "Each mutated occurrence must have exactly one pending audit event.",
+                nameof(auditEvents));
+        }
+
+        IReadOnlyDictionary<string, RideOccurrence> byId = occurrences.ToDictionary(
+            static occurrence => occurrence.Id.Value,
+            StringComparer.Ordinal);
+        foreach (PassportAuditEvent auditEvent in auditEvents)
+        {
+            if (!byId.TryGetValue(auditEvent.EntityId, out RideOccurrence? occurrence))
+            {
+                throw new ArgumentException(
+                    "A pending audit event does not match the occurrence batch.",
+                    nameof(auditEvents));
+            }
+
+            ValidatePendingAuditEvent(occurrence, auditEvent);
+        }
+    }
+
+    private static void ValidatePendingAuditEvent(
+        RideOccurrence occurrence,
+        PassportAuditEvent auditEvent)
+    {
+        if (!string.Equals(auditEvent.UserId, occurrence.UserId, StringComparison.Ordinal)
+            || !string.Equals(
+                auditEvent.VisitId,
+                occurrence.VisitId.Value,
+                StringComparison.Ordinal)
+            || !string.Equals(auditEvent.EntityId, occurrence.Id.Value, StringComparison.Ordinal)
+            || auditEvent.EntityType is not (
+                PassportAuditEntityType.RideOccurrence or PassportAuditEntityType.RideAssessment)
+            || auditEvent.EntityVersion != occurrence.Version)
+        {
+            throw new ArgumentException(
+                "The pending audit event does not match the ride occurrence mutation.",
+                nameof(auditEvent));
+        }
     }
 
     private static void ValidateReorderRequest(RideOccurrenceReorderRequest request)
@@ -1635,7 +2411,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         _ = request.VisitId.Value;
         _ = request.OccurrenceId.Value;
         _ = NormalizeRequired(request.UserId, nameof(request.UserId));
-        if (request.ExpectedVersion < 1 || !Enum.IsDefined(request.Placement))
+        if (request.ExpectedVersion < 1
+            || request.ContentFenceToken is <= 0
+            || !Enum.IsDefined(request.Placement))
         {
             throw new ArgumentOutOfRangeException(nameof(request));
         }
@@ -1801,6 +2579,35 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         };
     }
 
+    private static PendingPassportMutationVisit CreatePendingMutation(
+        UserRideOccurrenceCreationOperationDocument operation,
+        VisitId visitId)
+    {
+        PendingPassportMutationKind kind = operation.OperationKind switch
+        {
+            CreationOperationKind => PendingPassportMutationKind.Creation,
+            ReorderOperationKind => PendingPassportMutationKind.Reorder,
+            DeleteOperationKind => PendingPassportMutationKind.Delete,
+            _ => PendingPassportMutationKind.Unknown,
+        };
+        RideOccurrenceCreationPreparation? preparation = null;
+        if (kind == PendingPassportMutationKind.Creation)
+        {
+            _ = TryCreatePreparation(
+                operation.CreationPreparation,
+                operation.Items.Count,
+                out preparation);
+        }
+
+        return new PendingPassportMutationVisit(
+            operation.UserId,
+            visitId,
+            operation.OperationKeyHash,
+            kind,
+            preparation,
+            operation.ContentMutationFenceToken);
+    }
+
     private static bool TryCreatePreparation(
         UserRideOccurrenceCreationPreparationDocument? document,
         int expectedCount,
@@ -1871,6 +2678,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         _ = request.VisitId.Value;
         _ = NormalizeRequired(request.UserId, nameof(request.UserId));
         if (request.Items.Count is < 1 or > MaximumBatchSize
+            || request.ContentFenceToken is <= 0
             || request.Items.Any(item =>
                 item is null
                 || string.IsNullOrWhiteSpace(item.ParkItemId)
@@ -2020,6 +2828,114 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             : updates.Set(fieldName, value));
     }
 
+    private async Task<CurrentContentFence> LoadCurrentContentFenceAsync(
+        string visitId,
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        if (this.visitCollection is null)
+        {
+            return new CurrentContentFence(true, false, null);
+        }
+
+        UserVisitDocument? visit = await this.visitCollection
+            .Find(UserVisitMongoDefinitions.BuildOwnedVisitFilter(visitId, userId))
+            .FirstOrDefaultAsync(cancellationToken);
+        return visit is null
+            ? new CurrentContentFence(false, true, null)
+            : new CurrentContentFence(
+                true,
+                visit.ContentMutationFenceToken.HasValue
+                    && visit.ContentMutationFenceReady,
+                visit.ContentMutationFenceToken,
+                visit.ContentMutationFenceStableToken);
+    }
+
+    private async Task<IdempotentRideOccurrenceCreationResult>
+        EnsureCurrentCreationFenceAsync(
+            IdempotentRideOccurrenceCreationResult result,
+            RideOccurrenceCreationRequest request,
+            CancellationToken cancellationToken)
+    {
+        if (result.Status is not (
+                IdempotentRideOccurrenceCreationStatus.Created
+                or IdempotentRideOccurrenceCreationStatus.Replayed)
+            || !request.ContentFenceToken.HasValue
+            || this.visitCollection is null)
+        {
+            return result;
+        }
+
+        CurrentContentFence current = await this.LoadCurrentContentFenceAsync(
+            request.VisitId.Value,
+            request.UserId,
+            cancellationToken);
+        return current.VisitExists
+            && current.IsEnforced
+            && current.Token == request.ContentFenceToken
+                ? result
+                : CreateCreationConcurrencyConflictResult();
+    }
+
+    private static FilterDefinition<UserRideOccurrenceDocument> WithCurrentContentFence(
+        FilterDefinition<UserRideOccurrenceDocument> filter,
+        CurrentContentFence currentFence)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        if (!currentFence.Token.HasValue)
+        {
+            return filter & filters.Or(
+                filters.Exists(
+                    static document => document.ContentMutationFenceToken,
+                    false),
+                filters.Eq(
+                    static document => document.ContentMutationFenceToken,
+                    null));
+        }
+
+        if (currentFence.IsEnforced)
+        {
+            return filter & filters.Eq(
+                static document => document.ContentMutationFenceToken,
+                currentFence.Token.Value);
+        }
+
+        FilterDefinition<UserRideOccurrenceDocument> safeFence =
+            currentFence.StableToken.HasValue
+                ? filters.Gte(
+                        static document => document.ContentMutationFenceToken,
+                        currentFence.StableToken.Value)
+                    & filters.Lte(
+                        static document => document.ContentMutationFenceToken,
+                        currentFence.Token.Value)
+                : filters.Or(
+                filters.Exists(
+                    static document => document.ContentMutationFenceToken,
+                    false),
+                filters.Eq(
+                    static document => document.ContentMutationFenceToken,
+                    null),
+                filters.Gte(
+                        static document => document.ContentMutationFenceToken,
+                        1L)
+                    & filters.Lte(
+                        static document => document.ContentMutationFenceToken,
+                        currentFence.Token.Value));
+        return filter & safeFence;
+    }
+
+    private static IMongoCollection<TDocument> GetCollection<TDocument>(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        Func<MongoDbSettings, string> collectionName)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(collectionName);
+        return database.GetCollection<TDocument>(collectionName(settings));
+    }
+
     private static string NormalizeRequired(string? value, string parameterName)
     {
         string normalizedValue = value?.Trim() ?? string.Empty;
@@ -2031,6 +2947,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return normalizedValue;
     }
 
+    private static long ValidateContentFence(long value, string parameterName)
+    {
+        if (value < 1)
+        {
+            throw new ArgumentOutOfRangeException(parameterName);
+        }
+
+        return value;
+    }
+
     private static DateTime ToMongoPrecision(DateTime value)
     {
         long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
@@ -2038,4 +2964,28 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     private sealed record BatchScope(string UserId, VisitId VisitId);
+
+    private sealed record CurrentContentFence(
+        bool VisitExists,
+        bool IsEnforced,
+        long? Token,
+        long? StableToken = null)
+    {
+        public bool Matches(long? token)
+        {
+            if (!this.Token.HasValue)
+            {
+                return !token.HasValue;
+            }
+
+            if (this.IsEnforced)
+            {
+                return token == this.Token;
+            }
+
+            return this.StableToken.HasValue
+                ? token >= this.StableToken && token <= this.Token
+                : !token.HasValue || token is >= 1 && token <= this.Token;
+        }
+    }
 }

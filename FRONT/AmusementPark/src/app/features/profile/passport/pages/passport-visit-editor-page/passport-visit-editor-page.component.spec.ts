@@ -34,6 +34,30 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__ratings');
+    expect(styles).toContain('.passport-visit__form');
+    expect(styles).toContain('.passport-visit__actions');
+    expect(styles).toContain('.passport-visit__details');
+  });
+
+  it('forwards visit date precision and numeric fields without owning validation rules', () => {
+    const updateVisitMetadataDraft = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'updateVisitMetadataDraft'>;
+      updateVisitPrecision(event: Event): void;
+      updateVisitYear(event: Event): void;
+    };
+    component.facade = { updateVisitMetadataDraft };
+    const precision: HTMLSelectElement = document.createElement('select');
+    precision.innerHTML = '<option value="Year">Year</option>';
+    precision.value = 'Year';
+    const year: HTMLInputElement = document.createElement('input');
+    year.value = '1998';
+
+    component.updateVisitPrecision({ target: precision } as unknown as Event);
+    component.updateVisitYear({ target: year } as unknown as Event);
+
+    expect(updateVisitMetadataDraft).toHaveBeenNthCalledWith(1, { precision: 'Year' });
+    expect(updateVisitMetadataDraft).toHaveBeenNthCalledWith(2, { year: 1998 });
   });
 
   it('forwards the selected park rating without deriving business rules in the component', () => {
@@ -47,6 +71,34 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     component.selectAssessmentValue(4.5);
 
     expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ value: 4.5 });
+  });
+
+  it('keeps saved assessments readable when the visit is no longer editable', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      shouldDisplayAssessment(
+        status: 'Draft' | 'Completed' | 'Archived' | null,
+        hasAssessment: boolean
+      ): boolean;
+    };
+
+    expect(component.shouldDisplayAssessment('Draft', false)).toBe(true);
+    expect(component.shouldDisplayAssessment('Completed', true)).toBe(true);
+    expect(component.shouldDisplayAssessment('Archived', true)).toBe(true);
+    expect(component.shouldDisplayAssessment('Completed', false)).toBe(false);
+  });
+
+  it('keeps a saved occurrence note readable without reopening a locked visit', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      shouldDisplayReadOnlyOccurrenceNote(
+        status: 'Draft' | 'Completed' | 'Archived' | null,
+        privateNote: string | null
+      ): boolean;
+    };
+
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Completed', 'Tour nocturne')).toBe(true);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Archived', 'Souvenir')).toBe(true);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Draft', 'Encore modifiable')).toBe(false);
+    expect(component.shouldDisplayReadOnlyOccurrenceNote('Completed', '   ')).toBe(false);
   });
 
   it('forwards private assessment comments on input so newer text survives in-flight saves', () => {

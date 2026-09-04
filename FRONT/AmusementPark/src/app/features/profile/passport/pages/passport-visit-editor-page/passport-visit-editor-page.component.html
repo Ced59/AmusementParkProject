@@ -38,6 +38,128 @@
       </button>
     </section>
   } @else if (facade.visit()) {
+    @if (facade.visit(); as visit) {
+      <section class="passport-visit" appUiSurface="panel" aria-labelledby="passport-visit-title">
+        <div class="passport-visit__heading">
+          <div>
+            <span class="passport-visit__eyebrow">{{ 'passport.editor.visit.eyebrow' | translate }}</span>
+            <h2 id="passport-visit-title">{{ 'passport.editor.visit.title' | translate }}</h2>
+            <p>{{ 'passport.editor.visit.description' | translate }}</p>
+          </div>
+          <app-ui-chip [tone]="visit.status === 'Draft' ? 'gold' : visit.status === 'Completed' ? 'lime' : 'soft'">
+            {{ visitStatusLabelKey(visit.status) | translate }}
+          </app-ui-chip>
+        </div>
+
+        @if (visit.status !== 'Draft') {
+          <p class="passport-visit__locked" role="status">
+            <i class="pi pi-lock" aria-hidden="true"></i>
+            {{ 'passport.editor.visit.locked' | translate }}
+          </p>
+        }
+
+        <details class="passport-visit__details">
+          <summary>
+            <span><i class="pi pi-pencil" aria-hidden="true"></i>{{ 'passport.editor.visit.editTitle' | translate }}</span>
+            <small>{{ 'passport.editor.visit.editHint' | translate }}</small>
+          </summary>
+
+          <div class="passport-visit__form">
+            <label class="app-field">
+              <span class="app-field__label">{{ 'passport.editor.visit.fields.precision' | translate }}</span>
+              <select class="app-input" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().precision" (change)="updateVisitPrecision($event)">
+                <option value="Day">{{ 'passport.editor.visit.fields.dayPrecision' | translate }}</option>
+                <option value="Month">{{ 'passport.editor.visit.fields.monthPrecision' | translate }}</option>
+                <option value="Year">{{ 'passport.editor.visit.fields.yearPrecision' | translate }}</option>
+              </select>
+            </label>
+
+            <label class="app-field">
+              <span class="app-field__label">{{ 'passport.editor.visit.fields.year' | translate }}</span>
+              <input class="app-input" type="number" min="1" max="9999" inputmode="numeric" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().year ?? ''" (input)="updateVisitYear($event)" />
+            </label>
+
+            @if (facade.metadataDraft().precision !== 'Year') {
+              <label class="app-field">
+                <span class="app-field__label">{{ 'passport.editor.visit.fields.month' | translate }}</span>
+                <input class="app-input" type="number" min="1" max="12" inputmode="numeric" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().month ?? ''" (input)="updateVisitMonth($event)" />
+              </label>
+            }
+
+            @if (facade.metadataDraft().precision === 'Day') {
+              <label class="app-field">
+                <span class="app-field__label">{{ 'passport.editor.visit.fields.day' | translate }}</span>
+                <input class="app-input" type="number" min="1" max="31" inputmode="numeric" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().day ?? ''" (input)="updateVisitDay($event)" />
+              </label>
+            }
+
+            <label class="passport-check passport-visit__form-wide">
+              <input type="checkbox" [disabled]="!facade.canEditVisit()" [checked]="facade.metadataDraft().isApproximate" (change)="updateVisitApproximate($event)" />
+              <span>{{ 'passport.editor.visit.fields.approximate' | translate }}</span>
+            </label>
+
+            <label class="app-field passport-visit__form-wide">
+              <span class="app-field__label">{{ 'passport.editor.visit.fields.timeZone' | translate }}</span>
+              <input class="app-input" type="text" maxlength="128" autocomplete="off" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().timeZoneId" (input)="updateVisitTimeZone($event)" />
+              <small>{{ 'passport.editor.visit.fields.timeZoneHint' | translate }}</small>
+            </label>
+
+            <label class="app-field passport-visit__form-wide">
+              <span class="app-field__label">{{ 'passport.editor.visit.fields.visitTitle' | translate }}</span>
+              <input class="app-input" type="text" maxlength="160" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().title" (input)="updateVisitTitle($event)" />
+            </label>
+
+            <label class="app-field passport-visit__form-wide">
+              <span class="app-field__label">{{ 'passport.editor.visit.fields.privateNote' | translate }}</span>
+              <textarea rows="3" maxlength="4000" [disabled]="!facade.canEditVisit()" [value]="facade.metadataDraft().privateNote" (input)="updateVisitPrivateNote($event)"></textarea>
+              <small>{{ 'passport.editor.visit.fields.privateNoteHint' | translate }}</small>
+            </label>
+
+            <button appUiButton="primary" type="button" class="passport-visit__form-wide" [disabled]="!facade.metadataCanSave()" (click)="facade.saveVisitMetadata()">
+              @if (facade.visitMutationSaving()) {
+                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              } @else {
+                <i class="pi pi-check" aria-hidden="true"></i>
+              }
+              <span>{{ 'passport.editor.visit.actions.save' | translate }}</span>
+            </button>
+          </div>
+        </details>
+
+        @if (facade.visitMutationErrorKey(); as visitMutationErrorKey) {
+          <p class="passport-inline-message passport-inline-message--error" role="alert">
+            <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+            {{ visitMutationErrorKey | translate }}
+          </p>
+        }
+
+        <div class="passport-visit__actions">
+          @if (visit.status === 'Draft') {
+            <button appUiButton="primary" type="button" [disabled]="facade.visitMutationSaving() || facade.hasUnsavedStatusTransitionChanges()" (click)="facade.completeVisit()">
+              <i class="pi pi-check-circle" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.visit.actions.complete' | translate }}</span>
+            </button>
+          } @else {
+            <button appUiButton="primary" type="button" [disabled]="facade.visitMutationSaving()" (click)="facade.reopenVisit()">
+              <i class="pi pi-pencil" aria-hidden="true"></i>
+              <span>{{ (visit.status === 'Archived' ? 'passport.editor.visit.actions.restore' : 'passport.editor.visit.actions.reopen') | translate }}</span>
+            </button>
+          }
+
+          @if (visit.status !== 'Archived') {
+            <button appUiButton="ghost" type="button" [disabled]="facade.visitMutationSaving() || facade.hasUnsavedStatusTransitionChanges()" (click)="facade.archiveVisit()">
+              <i class="pi pi-folder" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.visit.actions.archive' | translate }}</span>
+            </button>
+          }
+        </div>
+      </section>
+    }
+
+    @if (shouldDisplayAssessment(
+      facade.visit()?.status,
+      facade.visit()?.parkAssessment != null
+    )) {
     <section class="passport-assessment" appUiSurface="panel" aria-labelledby="passport-assessment-title">
       <div class="passport-assessment__heading">
         <div class="passport-assessment__icon" aria-hidden="true">
@@ -60,13 +182,13 @@
           <label
             class="passport-assessment__rating"
             [class.passport-assessment__rating--selected]="facade.assessmentDraft().value === value"
-            [class.passport-assessment__rating--disabled]="facade.assessmentSaving()">
+            [class.passport-assessment__rating--disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'">
             <input
               type="radio"
               name="visitParkAssessment"
               [value]="value"
               [checked]="facade.assessmentDraft().value === value"
-              [disabled]="facade.assessmentSaving()"
+              [disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'"
               [attr.aria-label]="assessmentValueLabel(value)"
               (change)="selectAssessmentValue(value)" />
             <i class="pi pi-star" aria-hidden="true"></i>
@@ -82,6 +204,7 @@
           maxlength="4000"
           [value]="facade.assessmentDraft().privateComment"
           [disabled]="facade.assessmentSaving()"
+          [readOnly]="facade.visit()?.status !== 'Draft'"
           [placeholder]="'passport.editor.assessment.commentPlaceholder' | translate"
           (input)="updateAssessmentComment($event)"></textarea>
         <small>{{ 'passport.editor.assessment.commentHint' | translate }}</small>
@@ -93,6 +216,7 @@
         </p>
       }
 
+      @if (facade.visit()?.status === 'Draft') {
       <div class="passport-assessment__actions">
         <button
           appUiButton="primary"
@@ -126,9 +250,12 @@
           }
         }
       </div>
+      }
     </section>
+    }
 
-    <div class="passport-editor__workspace">
+    <div class="passport-editor__workspace" [class.passport-editor__workspace--readonly]="facade.visit()?.status !== 'Draft'">
+      @if (facade.visit()?.status === 'Draft') {
       <section class="passport-panel passport-selector" appUiSurface="panel" aria-labelledby="passport-selector-title">
         <div class="passport-panel__heading">
           <div>
@@ -253,6 +380,13 @@
               </p>
             }
 
+            @if (facade.temporalMetadataHasChanges() && !facade.pendingAddRecovery()) {
+              <p class="passport-inline-message" role="status">
+                <i class="pi pi-info-circle" aria-hidden="true"></i>
+                {{ 'passport.editor.visit.errors.saveBeforeStatus' | translate }}
+              </p>
+            }
+
             <div class="passport-selection__items">
               @for (selection of facade.selectedAttractions(); track trackSelection($index, selection)) {
                 <details class="passport-selection-card" open>
@@ -310,7 +444,7 @@
               </p>
             }
 
-            <button appUiButton="primary" type="button" class="passport-selection__submit" [disabled]="facade.adding()" (click)="facade.addSelected()">
+            <button appUiButton="primary" type="button" class="passport-selection__submit" [disabled]="!facade.selectionCanSubmit()" (click)="facade.addSelected()">
               @if (facade.adding()) {
                 <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
               } @else {
@@ -327,6 +461,7 @@
           </section>
         }
       </section>
+      }
 
       <section class="passport-panel passport-timeline" appUiSurface="panel" aria-labelledby="passport-timeline-title">
         <div class="passport-panel__heading passport-timeline__heading">
@@ -402,13 +537,32 @@
                     }
                   </div>
 
+                  @if (shouldDisplayReadOnlyOccurrenceNote(
+                    facade.visit()?.status,
+                    row.occurrence.privateNote
+                  )) {
+                    <div class="passport-occurrence__private-note" role="note">
+                      <strong>
+                        <i class="pi pi-lock" aria-hidden="true"></i>
+                        {{ 'passport.editor.fields.privateNote' | translate }}
+                      </strong>
+                      <p>{{ row.occurrence.privateNote }}</p>
+                    </div>
+                  }
+
+                  @if (shouldDisplayAssessment(
+                    facade.visit()?.status,
+                    row.occurrence.assessment != null
+                  )) {
                   <details class="passport-ride-assessment">
                     <summary>
                       <span>
                         <i class="pi pi-star" aria-hidden="true"></i>
-                        {{ (row.occurrence.assessment
-                          ? 'passport.editor.rideAssessment.editTitle'
-                          : 'passport.editor.rideAssessment.addTitle') | translate }}
+                        {{ (facade.visit()?.status !== 'Draft'
+                          ? 'passport.editor.rideAssessment.ratingLabel'
+                          : row.occurrence.assessment
+                            ? 'passport.editor.rideAssessment.editTitle'
+                            : 'passport.editor.rideAssessment.addTitle') | translate }}
                       </span>
                       @if (row.occurrence.assessment; as assessment) {
                         <strong>{{ assessmentValueLabel(assessment.value) }} / 5</strong>
@@ -421,7 +575,7 @@
 
                         <fieldset
                           class="passport-ride-assessment__ratings"
-                          [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                          [disabled]="isOccurrenceBusy(row.occurrence.id) || facade.visit()?.status !== 'Draft'"
                           [attr.aria-describedby]="'ride-assessment-hint-' + row.occurrence.id">
                           <legend>{{ 'passport.editor.rideAssessment.ratingLabel' | translate }}</legend>
                           @for (value of assessmentValues; track value) {
@@ -450,6 +604,7 @@
                             rows="3"
                             maxlength="4000"
                             [disabled]="isOccurrenceBusy(row.occurrence.id)"
+                            [readOnly]="facade.visit()?.status !== 'Draft'"
                             [value]="assessmentDraft.privateComment"
                             (input)="updateRideAssessmentComment(row.occurrence.id, $event)"></textarea>
                           <small>{{ 'passport.editor.rideAssessment.commentHint' | translate }}</small>
@@ -462,6 +617,7 @@
                           </p>
                         }
 
+                        @if (facade.visit()?.status === 'Draft') {
                         @if (rideAssessmentDeleteConfirmationId() === row.occurrence.id) {
                           <div class="passport-ride-assessment__delete-confirmation">
                             <span>{{ 'passport.editor.rideAssessment.deleteConfirmation' | translate }}</span>
@@ -488,11 +644,13 @@
                             }
                           </div>
                         }
+                        }
                       </div>
                     }
                   </details>
+                  }
 
-                  <div class="passport-occurrence__order" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
+                  <div class="passport-occurrence__order" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
                     <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
                       <i class="pi pi-angle-double-up" aria-hidden="true"></i>
                     </button>
@@ -507,7 +665,7 @@
                     </button>
                   </div>
 
-                  <div class="passport-occurrence__actions">
+                  <div class="passport-occurrence__actions" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''">
                     @if (row.occurrence.target?.category === 'Attraction' && row.occurrence.target?.isHistoricalSnapshot === false) {
                       <details>
                         <summary>{{ 'passport.editor.actions.edit' | translate }}</summary>

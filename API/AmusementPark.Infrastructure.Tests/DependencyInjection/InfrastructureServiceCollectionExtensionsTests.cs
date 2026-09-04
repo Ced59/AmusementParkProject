@@ -88,7 +88,39 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             services,
             static service => service.ServiceType == typeof(IPassportTimeZoneValidator));
         Assert.Equal(typeof(SystemPassportTimeZoneValidator), timeZones.ImplementationType);
+        ServiceDescriptor localDates = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IPassportLocalDateResolver));
+        Assert.Equal(typeof(SystemPassportLocalDateResolver), localDates.ImplementationType);
         Assert.Equal(ServiceLifetime.Singleton, timeZones.Lifetime);
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterPrivatePassportAuditServices()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor publisher = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IPassportAuditPublisher));
+        ServiceDescriptor reconciler = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IPassportAuditReconciler));
+        ServiceDescriptor contentMutationLeases = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IVisitContentMutationLeaseManager));
+        Assert.Equal(ServiceLifetime.Scoped, publisher.Lifetime);
+        Assert.Equal(ServiceLifetime.Scoped, reconciler.Lifetime);
+        Assert.Equal(typeof(MongoVisitContentMutationLeaseManager), contentMutationLeases.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, contentMutationLeases.Lifetime);
+        Assert.Contains(
+            services,
+            static service => service.ServiceType == typeof(IHostedService)
+                && service.ImplementationType
+                    == typeof(PassportAuditReconciliationBackgroundService));
     }
 
     [Fact]

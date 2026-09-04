@@ -62,6 +62,27 @@ public sealed class CreatePassportVisitRequestDto
     public string? PrivateNote { get; init; }
 }
 
+public sealed class UpdatePassportVisitRequestDto
+{
+    public PassportVisitDateDto Date { get; init; } = new PassportVisitDateDto();
+
+    public string? TimeZoneId { get; init; }
+
+    public PassportLocalServiceDayConventionDto ServiceDayConvention { get; init; } =
+        PassportLocalServiceDayConventionDto.VisitStartLocalDate;
+
+    public string? Title { get; init; }
+
+    public string? PrivateNote { get; init; }
+
+    public long ExpectedVersion { get; init; }
+}
+
+public sealed class MutatePassportVisitStatusRequestDto
+{
+    public long ExpectedVersion { get; init; }
+}
+
 public sealed class UpsertPassportVisitParkAssessmentRequestDto
 {
     public double Value { get; init; }

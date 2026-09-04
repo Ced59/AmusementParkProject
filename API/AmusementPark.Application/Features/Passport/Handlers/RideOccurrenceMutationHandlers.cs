@@ -17,17 +17,32 @@ public sealed class UpdateRideOccurrenceCommandHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IVisitTargetResolver targetResolver;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
+
+    internal UpdateRideOccurrenceCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IVisitTargetResolver targetResolver,
+        IPassportClock clock)
+        : this(visitRepository, occurrenceRepository, targetResolver, clock, null!, null!)
+    {
+    }
 
     public UpdateRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -64,6 +79,12 @@ public sealed class UpdateRideOccurrenceCommandHandler
                 : PassportApplicationErrors.VisitNotFound());
         }
 
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
+        }
+
         if (occurrence.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
@@ -98,7 +119,27 @@ public sealed class UpdateRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.HistoricalConflictConfirmationRequired());
         }
 
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
+
         long expectedVersion = occurrence.Version;
+        RideOccurrenceAuditSnapshot previous = RideOccurrenceAuditSnapshot.Capture(occurrence);
         try
         {
             occurrence.Update(
@@ -112,32 +153,55 @@ public sealed class UpdateRideOccurrenceCommandHandler
         }
         catch (RideOccurrenceValidationException exception)
         {
-            return Failure(PassportApplicationErrors.InvalidRideOccurrence(
-                exception.ErrorCode,
-                exception.Message));
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.InvalidRideOccurrence(
+                    exception.ErrorCode,
+                    exception.Message)));
         }
 
         if (occurrence.Version == expectedVersion)
         {
-            bool versionIsCurrent =
-                await this.occurrenceRepository.TryConfirmOwnedVersionAsync(
-                    occurrence.Id,
-                    occurrence.VisitId,
-                    occurrence.UserId,
-                    expectedVersion,
-                    cancellationToken);
-            return versionIsCurrent
-                ? Success(occurrence)
-                : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            bool versionIsCurrent = await RideOccurrenceFencedPersistence.TryConfirmAsync(
+                this.occurrenceRepository,
+                occurrence,
+                expectedVersion,
+                contentMutationLease,
+                guardedCancellationToken);
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                versionIsCurrent
+                    ? Success(occurrence)
+                    : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
         }
 
-        bool updated = await this.occurrenceRepository.TryUpdateOwnedAsync(
+        PassportAuditEvent? auditEvent = this.auditPublisher is null
+            ? null
+            : PassportRideAuditEventFactory.RideOccurrenceChanged(
+                occurrence,
+                previous,
+                $"{occurrence.Id.Value}:{occurrence.Version}:update");
+        bool updated = await RideOccurrenceFencedPersistence.TryUpdateAsync(
+            this.occurrenceRepository,
             occurrence,
             expectedVersion,
-            cancellationToken);
-        return updated
-            ? Success(occurrence)
-            : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
+        if (!updated)
+        {
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
+        }
+
+        await PassportAuditDelivery.PublishAsync(
+            this.auditPublisher,
+            auditEvent,
+            guardedCancellationToken);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            Success(occurrence));
     }
 
     private static ApplicationResult<RideOccurrenceResult> Success(
@@ -156,15 +220,31 @@ public sealed class UpdateRideOccurrenceCommandHandler
 public sealed class DeleteRideOccurrenceCommandHandler
     : ICommandHandler<DeleteRideOccurrenceCommand, ApplicationResult<RideOccurrenceResult>>
 {
+    private readonly IUserVisitRepository? visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
 
-    public DeleteRideOccurrenceCommandHandler(
+    internal DeleteRideOccurrenceCommandHandler(
         IRideOccurrenceRepository occurrenceRepository,
         IPassportClock clock)
+        : this(null!, occurrenceRepository, clock, null!, null!)
     {
+    }
+
+    public DeleteRideOccurrenceCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
+    {
+        this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<RideOccurrenceResult>> HandleAsync(
@@ -190,21 +270,78 @@ public sealed class DeleteRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceNotFound());
         }
 
+        Visit? visit = null;
+        if (this.visitRepository is not null)
+        {
+            visit = await this.visitRepository.GetOwnedAsync(
+                scope.VisitId,
+                scope.UserId,
+                cancellationToken);
+            if (visit is null)
+            {
+                return Failure(PassportApplicationErrors.VisitNotFound());
+            }
+
+            ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+            if (editableError is not null)
+            {
+                return Failure(editableError);
+            }
+        }
+
         if (occurrence.Version != command.ExpectedVersion)
         {
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
+        IVisitContentMutationLease? contentMutationLease =
+            this.contentMutationLeaseManager is null || visit is null
+                ? null
+                : await this.contentMutationLeaseManager.TryAcquireAsync(
+                    visit,
+                    this.clock.UtcNow,
+                    cancellationToken);
+        if (this.contentMutationLeaseManager is not null && contentMutationLease is null)
+        {
+            return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        CancellationToken guardedCancellationToken =
+            leaseCancellationSource?.Token ?? cancellationToken;
+
         long expectedVersion = occurrence.Version;
         occurrence.Delete(this.clock.UtcNow);
-        bool deleted = await this.occurrenceRepository.TryDeleteOwnedAsync(
+        PassportAuditEvent? auditEvent = this.auditPublisher is null
+            ? null
+            : PassportRideAuditEventFactory.RideOccurrenceDeleted(
+                occurrence,
+                $"{occurrence.Id.Value}:{occurrence.Version}:delete");
+        bool deleted = await RideOccurrenceFencedPersistence.TryDeleteAsync(
+            this.occurrenceRepository,
             occurrence,
             expectedVersion,
-            cancellationToken);
-        return deleted
-            ? ApplicationResult<RideOccurrenceResult>.Success(
-                PassportRideOccurrenceResultFactory.Create(occurrence))
-            : Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            auditEvent,
+            contentMutationLease,
+            guardedCancellationToken);
+        if (!deleted)
+        {
+            return PassportContentMutationLeaseCompletion.Complete(
+                contentMutationLease,
+                Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict()));
+        }
+
+        await PassportAuditDelivery.PublishAsync(
+            this.auditPublisher,
+            auditEvent,
+            guardedCancellationToken);
+        return PassportContentMutationLeaseCompletion.Complete(
+            contentMutationLease,
+            ApplicationResult<RideOccurrenceResult>.Success(
+                PassportRideOccurrenceResultFactory.Create(occurrence)));
     }
 
     private static ApplicationResult<RideOccurrenceResult> Failure(ApplicationError error)

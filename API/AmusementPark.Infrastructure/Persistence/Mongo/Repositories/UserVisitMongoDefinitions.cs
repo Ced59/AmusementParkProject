@@ -7,6 +7,13 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class UserVisitMongoDefinitions
 {
+    public const string ContentMutationLeaseTokenPath = "contentMutationLeaseToken";
+    public const string ContentMutationLeaseExpiresAtUtcPath = "contentMutationLeaseExpiresAtUtc";
+    public const string ContentMutationFenceTokenPath = "contentMutationFenceToken";
+    public const string ContentMutationFenceStableTokenPath =
+        "contentMutationFenceStableToken";
+    public const string ContentMutationFenceReadyPath = "contentMutationFenceReady";
+
     public static FilterDefinition<UserVisitDocument> BuildOwnerFilter(string userId)
     {
         return Builders<UserVisitDocument>.Filter.Eq(
@@ -43,6 +50,44 @@ internal static class UserVisitMongoDefinitions
             & Builders<UserVisitDocument>.Filter.Eq(
                 static document => document.Version,
                 expectedVersion);
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedMutableVersionFilter(
+        string visitId,
+        string userId,
+        long expectedVersion,
+        DateTime mutationAtUtc)
+    {
+        if (mutationAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The mutation timestamp must be UTC.", nameof(mutationAtUtc));
+        }
+
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildOwnedVersionFilter(visitId, userId, expectedVersion)
+            & filters.Or(
+                filters.Exists(ContentMutationLeaseTokenPath, false),
+                filters.Lte(ContentMutationLeaseExpiresAtUtcPath, mutationAtUtc));
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedLeasedVersionFilter(
+        string visitId,
+        string userId,
+        long expectedVersion,
+        string contentMutationLeaseToken)
+    {
+        if (string.IsNullOrWhiteSpace(contentMutationLeaseToken))
+        {
+            throw new ArgumentException(
+                "The content mutation lease token is required.",
+                nameof(contentMutationLeaseToken));
+        }
+
+        return BuildOwnedVersionFilter(visitId, userId, expectedVersion)
+            & Builders<UserVisitDocument>.Filter.Eq(
+                ContentMutationLeaseTokenPath,
+                contentMutationLeaseToken.Trim());
     }
 
     public static SortDefinition<UserVisitDocument> BuildNewestVisitSort()
@@ -190,6 +235,8 @@ internal static class UserVisitMongoDefinitions
                         static document => document.CreationOperationKeyHash,
                         true),
                 }),
+            PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
+                "idx_user_visits_pending_audit"),
         };
     }
 

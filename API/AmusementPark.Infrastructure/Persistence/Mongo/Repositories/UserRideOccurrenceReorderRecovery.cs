@@ -30,10 +30,12 @@ internal sealed class UserRideOccurrenceReorderRecovery
             for (int attempt = 0; attempt < MaximumRollbackAttempts && !restored; attempt++)
             {
                 UserRideOccurrenceDocument? current = await this.collection
-                    .Find(UserRideOccurrenceMongoDefinitions.BuildOwnedAnyStateFilter(
-                        allocation.OccurrenceId,
-                        request.VisitId.Value,
-                        request.UserId))
+                    .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                        UserRideOccurrenceMongoDefinitions.BuildOwnedAnyStateFilter(
+                            allocation.OccurrenceId,
+                            request.VisitId.Value,
+                            request.UserId),
+                        request.ContentFenceToken))
                     .FirstOrDefaultAsync(cancellationToken);
                 if (current is null)
                 {
@@ -60,13 +62,19 @@ internal sealed class UserRideOccurrenceReorderRecovery
                 }
 
                 UpdateResult result = await this.collection.UpdateOneAsync(
-                    UserRideOccurrenceMongoDefinitions.BuildOwnedAnyStateReorderVersionFilter(
-                        allocation.OccurrenceId,
-                        request.VisitId.Value,
-                        request.UserId,
-                        current.Version,
-                        operationKeyHash),
-                    BuildRollbackUpdate(current, allocation),
+                    UserRideOccurrenceMongoDefinitions.WithContentFence(
+                        UserRideOccurrenceMongoDefinitions
+                            .BuildOwnedAnyStateReorderVersionFilter(
+                                allocation.OccurrenceId,
+                                request.VisitId.Value,
+                                request.UserId,
+                                current.Version,
+                                operationKeyHash),
+                        request.ContentFenceToken),
+                    BuildRollbackUpdate(
+                        current,
+                        allocation,
+                        request.ContentFenceToken),
                     new UpdateOptions { IsUpsert = false },
                     cancellationToken);
                 restored = result.MatchedCount == 1;
@@ -99,7 +107,8 @@ internal sealed class UserRideOccurrenceReorderRecovery
 
     public static UpdateDefinition<UserRideOccurrenceDocument> BuildRollbackUpdate(
         UserRideOccurrenceDocument current,
-        UserRideOccurrenceReorderAllocationDocument allocation)
+        UserRideOccurrenceReorderAllocationDocument allocation,
+        long? contentFenceToken = null)
     {
         ArgumentNullException.ThrowIfNull(current);
         ArgumentNullException.ThrowIfNull(allocation);
@@ -112,12 +121,23 @@ internal sealed class UserRideOccurrenceReorderRecovery
 
         UpdateDefinitionBuilder<UserRideOccurrenceDocument> updates =
             Builders<UserRideOccurrenceDocument>.Update;
-        return updates.Combine(
+        List<UpdateDefinition<UserRideOccurrenceDocument>> definitions =
+            new List<UpdateDefinition<UserRideOccurrenceDocument>>
+            {
             updates.Set(
                 static document => document.SortPosition,
                 allocation.PreviousSortPosition),
             updates.Set(static document => document.Version, current.Version + 1),
             updates.Set(static document => document.UpdatedAt, current.UpdatedAt),
-            updates.Unset(static document => document.LastReorderOperationKeyHash));
+            updates.Unset(static document => document.LastReorderOperationKeyHash),
+            };
+        if (contentFenceToken.HasValue)
+        {
+            definitions.Add(updates.Set(
+                static document => document.ContentMutationFenceToken,
+                contentFenceToken));
+        }
+
+        return updates.Combine(definitions);
     }
 }

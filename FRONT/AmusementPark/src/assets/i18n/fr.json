@@ -88,6 +88,63 @@
       "title": "Détaille ta visite",
       "private": "Privé",
       "loading": "Chargement de ta visite…",
+      "visit": {
+        "eyebrow": "État de la visite",
+        "title": "Corrige et organise ta visite",
+        "description": "La version empêche d’écraser une modification plus récente et chaque correction est tracée sans recopier tes textes privés.",
+        "locked": "Cette visite est en lecture seule. Rouvre-la explicitement avant de modifier ses informations, ses notes ou sa timeline.",
+        "editTitle": "Modifier les informations de la visite",
+        "editHint": "Disponible quand la visite est en brouillon",
+        "status": {
+          "Draft": "Brouillon",
+          "Completed": "Terminée",
+          "Archived": "Archivée"
+        },
+        "fields": {
+          "precision": "Précision de la date",
+          "dayPrecision": "Jour exact",
+          "monthPrecision": "Mois",
+          "yearPrecision": "Année",
+          "year": "Année",
+          "month": "Mois",
+          "day": "Jour",
+          "approximate": "Date approximative",
+          "timeZone": "Fuseau horaire",
+          "timeZoneHint": "Facultatif, au format IANA, par exemple Europe/Paris.",
+          "visitTitle": "Titre de la visite",
+          "privateNote": "Note privée",
+          "privateNoteHint": "Toi seul peux lire cette note."
+        },
+        "actions": {
+          "save": "Enregistrer les informations",
+          "complete": "Marquer comme terminée",
+          "reopen": "Rouvrir pour corriger",
+          "restore": "Restaurer en brouillon",
+          "archive": "Archiver"
+        },
+        "validation": {
+          "yearInvalid": "Indique une année valide.",
+          "monthInvalid": "Indique un mois compris entre 1 et 12.",
+          "dayInvalid": "Ce jour n’existe pas dans le mois sélectionné.",
+          "timeZoneInvalid": "Le fuseau horaire n’est pas valide.",
+          "titleTooLong": "Le titre ne peut pas dépasser 160 caractères.",
+          "noteTooLong": "La note privée ne peut pas dépasser 4 000 caractères."
+        },
+        "errors": {
+          "conflict": "La visite a changé entre-temps. Son état actuel a été rechargé ; vérifie ta saisie.",
+          "recovery": "Impossible de vérifier la modification. Ta saisie reste disponible ; réessaie.",
+          "save": "La visite n’a pas pu être modifiée.",
+          "transition": "Ce changement d’état n’est pas possible pour cette visite.",
+          "temporalMetadataLocked": "La date, le fuseau et la convention de journée ne peuvent pas changer tant que la visite contient des passages.",
+          "saveBeforeStatus": "Enregistre d’abord les informations modifiées."
+        },
+        "messages": {
+          "updated": "Les informations de la visite ont été mises à jour.",
+          "completed": "La visite est maintenant terminée.",
+          "reopened": "La visite est rouverte pour correction.",
+          "archived": "La visite a été archivée."
+        }
+      },
       "assessment": {
         "title": "Ton ressenti sur ce parc",
         "description": "Note cette visite précise de 0,5 à 5. Cette observation reste privée et ne modifie jamais la note ni le classement communautaires.",

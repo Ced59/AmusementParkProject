@@ -131,4 +131,11 @@ internal static class PassportRideOccurrenceHandlerSupport
         return null;
     }
 
+    public static ApplicationError? ValidateEditable(Visit visit)
+    {
+        ArgumentNullException.ThrowIfNull(visit);
+        return visit.Status == VisitStatus.Draft
+            ? null
+            : PassportApplicationErrors.VisitNotEditable();
+    }
 }

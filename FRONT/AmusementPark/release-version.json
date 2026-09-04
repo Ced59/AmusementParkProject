@@ -1,6 +1,20 @@
 {
-  "version": "5.0.12",
+  "version": "5.0.13",
   "history": [
+    {
+      "version": "5.0.13",
+      "releasedAt": "2026-09-03",
+      "labels": {
+        "fr": "Les corrections du passeport privé disposent maintenant d’un historique fiable.",
+        "en": "Private passport corrections now have a reliable history.",
+        "de": "Korrekturen im privaten Besuchspass haben jetzt einen zuverlässigen Verlauf.",
+        "nl": "Correcties in het privépaspoort hebben nu een betrouwbare geschiedenis.",
+        "it": "Le correzioni del passaporto privato hanno ora una cronologia affidabile.",
+        "es": "Las correcciones del pasaporte privado cuentan ahora con un historial fiable.",
+        "pl": "Korekty w prywatnym paszporcie mają teraz wiarygodną historię.",
+        "pt": "As correções do passaporte privado têm agora um histórico fiável."
+      }
+    },
     {
       "version": "5.0.12",
       "releasedAt": "2026-09-03",

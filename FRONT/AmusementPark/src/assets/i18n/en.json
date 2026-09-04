@@ -88,6 +88,63 @@
       "title": "Add details to your visit",
       "private": "Private",
       "loading": "Loading your visit…",
+      "visit": {
+        "eyebrow": "Visit status",
+        "title": "Correct and organise your visit",
+        "description": "Versioning prevents a newer change from being overwritten, and every correction is recorded without copying your private text.",
+        "locked": "This visit is read-only. Reopen it explicitly before changing its details, ratings or timeline.",
+        "editTitle": "Edit visit details",
+        "editHint": "Available while the visit is a draft",
+        "status": {
+          "Draft": "Draft",
+          "Completed": "Completed",
+          "Archived": "Archived"
+        },
+        "fields": {
+          "precision": "Date precision",
+          "dayPrecision": "Exact day",
+          "monthPrecision": "Month",
+          "yearPrecision": "Year",
+          "year": "Year",
+          "month": "Month",
+          "day": "Day",
+          "approximate": "Approximate date",
+          "timeZone": "Time zone",
+          "timeZoneHint": "Optional IANA identifier, for example Europe/Paris.",
+          "visitTitle": "Visit title",
+          "privateNote": "Private note",
+          "privateNoteHint": "Only you can read this note."
+        },
+        "actions": {
+          "save": "Save details",
+          "complete": "Mark as completed",
+          "reopen": "Reopen to correct",
+          "restore": "Restore as draft",
+          "archive": "Archive"
+        },
+        "validation": {
+          "yearInvalid": "Enter a valid year.",
+          "monthInvalid": "Enter a month from 1 to 12.",
+          "dayInvalid": "That day does not exist in the selected month.",
+          "timeZoneInvalid": "The time zone is invalid.",
+          "titleTooLong": "The title cannot exceed 160 characters.",
+          "noteTooLong": "The private note cannot exceed 4,000 characters."
+        },
+        "errors": {
+          "conflict": "The visit changed in the meantime. Its current state was reloaded; check your input.",
+          "recovery": "The change could not be verified. Your input is preserved; try again.",
+          "save": "The visit could not be updated.",
+          "transition": "This status change is not possible for this visit.",
+          "temporalMetadataLocked": "The date, time zone and service-day convention cannot change while the visit contains rides.",
+          "saveBeforeStatus": "Save the changed details first."
+        },
+        "messages": {
+          "updated": "The visit details were updated.",
+          "completed": "The visit is now completed.",
+          "reopened": "The visit was reopened for correction.",
+          "archived": "The visit was archived."
+        }
+      },
       "assessment": {
         "title": "How this park felt",
         "description": "Rate this specific visit from 0.5 to 5. This observation stays private and never changes the community rating or rankings.",

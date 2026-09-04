@@ -18,19 +18,42 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     private readonly IVisitTargetResolver targetResolver;
     private readonly RideOccurrenceAppendOrderNormalizer appendOrderNormalizer;
     private readonly IPassportClock clock;
+    private readonly IPassportAuditPublisher? auditPublisher;
+    private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
+
+    internal AddRideOccurrencesBatchCommandHandler(
+        IUserVisitRepository visitRepository,
+        IRideOccurrenceRepository occurrenceRepository,
+        IVisitTargetResolver targetResolver,
+        RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
+        IPassportClock clock)
+        : this(
+            visitRepository,
+            occurrenceRepository,
+            targetResolver,
+            appendOrderNormalizer,
+            clock,
+            null!,
+            null!)
+    {
+    }
 
     public AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
         IVisitTargetResolver targetResolver,
         RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
-        IPassportClock clock)
+        IPassportClock clock,
+        IPassportAuditPublisher auditPublisher,
+        IVisitContentMutationLeaseManager contentMutationLeaseManager)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
         this.targetResolver = targetResolver;
         this.appendOrderNormalizer = appendOrderNormalizer;
         this.clock = clock;
+        this.auditPublisher = auditPublisher;
+        this.contentMutationLeaseManager = contentMutationLeaseManager;
     }
 
     public async Task<ApplicationResult<CreateRideOccurrencesResult>> HandleAsync(
@@ -66,6 +89,70 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 RideLogSource.Manual,
                 NormalizePrivateNote(item.PrivateNote),
                 item.ConfirmHistoricalConflict)).ToArray());
+        return await this.HandleWithContentMutationLeaseAsync(
+            creationRequest,
+            expanded,
+            operationId,
+            cancellationToken);
+    }
+
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        HandleWithContentMutationLeaseAsync(
+            RideOccurrenceCreationRequest creationRequest,
+            IReadOnlyList<RideOccurrenceCreationItem> expanded,
+            string operationId,
+            CancellationToken cancellationToken)
+    {
+        Visit? validatedVisit = null;
+        IVisitContentMutationLease? contentMutationLease = null;
+        if (this.contentMutationLeaseManager is not null)
+        {
+            validatedVisit = await this.visitRepository.GetOwnedAsync(
+                creationRequest.VisitId,
+                creationRequest.UserId,
+                cancellationToken);
+            if (validatedVisit is null)
+            {
+                return Failure(PassportApplicationErrors.VisitNotFound());
+            }
+
+            ApplicationError? editableError =
+                PassportRideOccurrenceHandlerSupport.ValidateEditable(validatedVisit);
+            if (editableError is not null)
+            {
+                return Failure(editableError);
+            }
+
+            contentMutationLease = await this.contentMutationLeaseManager.TryAcquireAsync(
+                validatedVisit,
+                this.clock.UtcNow,
+                cancellationToken);
+            if (contentMutationLease is null)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+        }
+
+        await using IVisitContentMutationLease? contentMutationLeaseScope =
+            contentMutationLease;
+        using CancellationTokenSource? leaseCancellationSource =
+            PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
+        return await this.HandleWithinContentMutationLeaseAsync(
+            RideOccurrenceFencedPersistence.Attach(creationRequest, contentMutationLease),
+            expanded,
+            operationId,
+            validatedVisit,
+            leaseCancellationSource?.Token ?? cancellationToken).CompleteAsync(contentMutationLease);
+    }
+
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        HandleWithinContentMutationLeaseAsync(
+            RideOccurrenceCreationRequest creationRequest,
+            IReadOnlyList<RideOccurrenceCreationItem> expanded,
+            string operationId,
+            Visit? validatedVisit,
+            CancellationToken cancellationToken)
+    {
         IdempotentRideOccurrenceCreationResult? existing =
             await this.occurrenceRepository.ResolveExistingBatchCreationAsync(
                 creationRequest,
@@ -101,6 +188,14 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
             }
 
+            if (validatedVisit is not null
+                && !RideOccurrenceCreationPreparationVisitGuard.Matches(
+                    reservation.Preparation,
+                    validatedVisit))
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
+            }
+
             return await this.CreateWithOrderRetryAsync(
                 reservation.Preparation,
                 expanded,
@@ -109,13 +204,19 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 cancellationToken);
         }
 
-        Visit? visit = await this.visitRepository.GetOwnedAsync(
-            visitId,
-            userId,
+        Visit? visit = validatedVisit ?? await this.visitRepository.GetOwnedAsync(
+            creationRequest.VisitId,
+            creationRequest.UserId,
             cancellationToken);
         if (visit is null)
         {
             return Failure(PassportApplicationErrors.VisitNotFound());
+        }
+
+        ApplicationError? editableError = PassportRideOccurrenceHandlerSupport.ValidateEditable(visit);
+        if (editableError is not null)
+        {
+            return Failure(editableError);
         }
 
         IReadOnlyDictionary<string, VisitTarget> targets = await this.targetResolver.ResolveAsync(
@@ -185,12 +286,13 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             : ToApplicationResult(existing);
     }
 
-    private async Task<ApplicationResult<CreateRideOccurrencesResult>> CreateWithOrderRetryAsync(
-        RideOccurrenceCreationPreparation preparation,
-        IReadOnlyList<RideOccurrenceCreationItem> items,
-        RideOccurrenceCreationRequest creationRequest,
-        string operationId,
-        CancellationToken cancellationToken)
+    private async Task<ApplicationResult<CreateRideOccurrencesResult>>
+        CreateWithOrderRetryAsync(
+            RideOccurrenceCreationPreparation preparation,
+            IReadOnlyList<RideOccurrenceCreationItem> items,
+            RideOccurrenceCreationRequest creationRequest,
+            string operationId,
+            CancellationToken cancellationToken)
     {
         const int maximumAttempts = 3;
         bool wasOrderNormalized = false;
@@ -219,6 +321,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                         preparation,
                         this.clock.UtcNow),
                     operationId,
+                    creationRequest.ContentFenceToken,
                     cancellationToken);
                 if (!normalized)
                 {
@@ -270,16 +373,48 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                     exception.ParamName));
             }
 
-            IdempotentRideOccurrenceCreationResult created =
-                await this.occurrenceRepository.CreateBatchIdempotentAsync(
+            IReadOnlyCollection<PassportAuditEvent>? auditEvents =
+                this.auditPublisher is null
+                    ? null
+                    : occurrences
+                        .Select(occurrence => PassportRideAuditEventFactory.RideOccurrenceAdded(
+                            occurrence,
+                            operationId))
+                        .ToArray();
+            IdempotentRideOccurrenceCreationResult created = auditEvents is null
+                ? await this.occurrenceRepository.CreateBatchIdempotentAsync(
                     creationRequest,
                     occurrences,
                     currentMaximum,
                     wasOrderNormalized,
                     operationId,
+                    cancellationToken)
+                : await this.occurrenceRepository.CreateBatchIdempotentAuditedAsync(
+                    creationRequest,
+                    occurrences,
+                    currentMaximum,
+                    wasOrderNormalized,
+                    operationId,
+                    auditEvents,
                     cancellationToken);
             if (created.Status != IdempotentRideOccurrenceCreationStatus.ConcurrencyConflict)
             {
+                if (created.Status is IdempotentRideOccurrenceCreationStatus.Created
+                    or IdempotentRideOccurrenceCreationStatus.Replayed)
+                {
+                    IReadOnlyCollection<PassportAuditEvent> persistedEvents =
+                        created.Occurrences
+                            .Select(occurrence =>
+                                PassportRideAuditEventFactory.RideOccurrenceAdded(
+                                    occurrence,
+                                    operationId))
+                            .ToArray();
+                    await PassportAuditDelivery.PublishAsync(
+                        this.auditPublisher,
+                        persistedEvents,
+                        cancellationToken);
+                }
+
                 return ToApplicationResult(created);
             }
         }

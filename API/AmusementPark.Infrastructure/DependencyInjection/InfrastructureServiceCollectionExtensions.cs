@@ -218,8 +218,16 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
+        services.AddScoped<PassportAuditStore>();
+        services.AddScoped<IPassportAuditPublisher>(serviceProvider =>
+            serviceProvider.GetRequiredService<PassportAuditStore>());
+        services.AddScoped<IPassportAuditReconciler>(serviceProvider =>
+            serviceProvider.GetRequiredService<PassportAuditStore>());
+        services.AddScoped<IVisitContentMutationLeaseManager, MongoVisitContentMutationLeaseManager>();
+        services.AddHostedService<PassportAuditReconciliationBackgroundService>();
         services.AddSingleton<IPassportClock, SystemPassportClock>();
         services.AddSingleton<IPassportTimeZoneValidator, SystemPassportTimeZoneValidator>();
+        services.AddSingleton<IPassportLocalDateResolver, SystemPassportLocalDateResolver>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();

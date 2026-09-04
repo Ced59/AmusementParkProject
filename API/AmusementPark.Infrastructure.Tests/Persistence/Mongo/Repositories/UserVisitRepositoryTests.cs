@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
@@ -170,6 +171,103 @@ public sealed class UserVisitRepositoryTests
         Assert.Equal(2, set["version"].AsInt64);
         Assert.Equal(9, set["parkAssessment"]["valueHalfSteps"].AsInt32);
         Assert.Equal(1, set["parkAssessment"]["revision"].AsInt32);
+        collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryUpdateOwnedAuditedAsync_ShouldAtomicallyPushAMinimizedMarker()
+    {
+        Mock<IMongoCollection<UserVisitDocument>> collection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        UpdateDefinition<UserVisitDocument>? capturedUpdate = null;
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> _,
+                UpdateDefinition<UserVisitDocument> update,
+                UpdateOptions _,
+                CancellationToken _) => capturedUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserVisitRepository repository = CreateRepository(collection.Object);
+        Visit visit = CreateDraftVisit();
+        visit.UpsertParkAssessment(
+            AmusementPark.Core.Domain.Ratings.RatingValue.FromDouble(4.5d),
+            "Ce texte ne doit pas être copié dans l'audit",
+            NowUtc.AddMinutes(1));
+        PassportAuditEvent auditEvent =
+            PassportVisitAuditEventFactory.ParkAssessmentUpserted(visit, null);
+
+        bool updated = await repository.TryUpdateOwnedAuditedAsync(
+            visit,
+            1,
+            auditEvent,
+            CancellationToken.None);
+
+        Assert.True(updated);
+        BsonDocument renderedUpdate = Render(capturedUpdate!);
+        BsonDocument marker = renderedUpdate["$push"]["pendingAuditEvents"].AsBsonDocument;
+        Assert.Equal(auditEvent.Id, marker["eventId"].AsString);
+        Assert.Equal(9, marker["newRatingHalfSteps"].AsInt32);
+        Assert.False(marker.ToString().Contains("Ce texte", StringComparison.Ordinal));
+        Assert.False(marker.Contains("privateComment"));
+        collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryUpdateOwnedAuditedWithinContentMutationLeaseAsync_ShouldFenceByToken()
+    {
+        Mock<IMongoCollection<UserVisitDocument>> collection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        FilterDefinition<UserVisitDocument>? capturedFilter = null;
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateDefinition<UserVisitDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<UserVisitDocument> filter,
+                UpdateDefinition<UserVisitDocument> _,
+                UpdateOptions _,
+                CancellationToken _) => capturedFilter = filter)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        UserVisitRepository repository = CreateRepository(collection.Object);
+        Visit visit = CreateDraftVisit();
+        visit.UpdateDraft(
+            VisitDate.ForYear(2025),
+            visit.TimeZoneId,
+            visit.ServiceDayConvention,
+            visit.Title,
+            visit.PrivateNote,
+            NowUtc.AddMinutes(1));
+        PassportAuditEvent auditEvent =
+            PassportVisitAuditEventFactory.VisitUpdated(
+                visit,
+                new VisitAuditSnapshot(
+                    VisitDate.ForDay(2026, 9, 3),
+                    "Europe/Paris",
+                    LocalServiceDayConvention.VisitStartLocalDate,
+                    VisitStatus.Draft,
+                    "Titre",
+                    "Note privée"));
+
+        bool updated =
+            await repository.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
+                visit,
+                1,
+                auditEvent,
+                "lease-1",
+                CancellationToken.None);
+
+        Assert.True(updated);
+        Assert.NotNull(capturedFilter);
+        BsonDocument rendered = Render(capturedFilter);
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(1, rendered["version"].AsInt64);
+        Assert.Equal("lease-1", rendered["contentMutationLeaseToken"].AsString);
         collection.VerifyAll();
     }
 

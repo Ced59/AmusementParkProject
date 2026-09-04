@@ -66,6 +66,30 @@ public sealed class UserVisitDocument : MongoDocumentBase
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public UserVisitCreationSnapshotDocument? CreationSnapshot { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    [BsonIgnoreIfNull]
+    public List<PassportAuditEventDocument>? PendingAuditEvents { get; set; }
+
+    [BsonElement("contentMutationLeaseToken")]
+    [BsonIgnoreIfNull]
+    public string? ContentMutationLeaseToken { get; set; }
+
+    [BsonElement("contentMutationLeaseExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? ContentMutationLeaseExpiresAtUtc { get; set; }
+
+    [BsonElement("contentMutationFenceToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceToken { get; set; }
+
+    [BsonElement("contentMutationFenceStableToken")]
+    [BsonIgnoreIfNull]
+    public long? ContentMutationFenceStableToken { get; set; }
+
+    [BsonElement("contentMutationFenceReady")]
+    [BsonIgnoreIfDefault]
+    public bool ContentMutationFenceReady { get; set; }
 }
 
 [BsonIgnoreExtraElements]

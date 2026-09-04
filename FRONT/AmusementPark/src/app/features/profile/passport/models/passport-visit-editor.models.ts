@@ -3,6 +3,10 @@ import {
   PassportRideOccurrence,
   PassportRideOccurrenceStatus
 } from '@app/models/passport/passport-ride-occurrence.models';
+import {
+  PassportLocalServiceDayConvention,
+  PassportVisitDatePrecision
+} from '@app/models/passport/passport-visit.models';
 
 export interface PassportVisitEditorAttraction {
   id: string;
@@ -20,6 +24,18 @@ export interface PassportVisitEditorZone {
 export interface PassportVisitParkAssessmentDraft {
   value: number | null;
   privateComment: string;
+}
+
+export interface PassportVisitMetadataDraft {
+  precision: PassportVisitDatePrecision;
+  year: number | null;
+  month: number | null;
+  day: number | null;
+  isApproximate: boolean;
+  timeZoneId: string;
+  serviceDayConvention: PassportLocalServiceDayConvention;
+  title: string;
+  privateNote: string;
 }
 
 export interface PassportAttractionSelectionDraft {

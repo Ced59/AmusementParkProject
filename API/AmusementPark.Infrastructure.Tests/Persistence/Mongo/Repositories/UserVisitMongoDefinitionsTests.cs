@@ -42,6 +42,48 @@ public sealed class UserVisitMongoDefinitionsTests
         Assert.Equal(7, rendered["version"].AsInt64);
     }
 
+    [Fact]
+    public void BuildOwnedMutableVersionFilter_ShouldRejectAnActiveContentLease()
+    {
+        DateTime mutationAtUtc = new DateTime(2026, 9, 3, 20, 0, 0, DateTimeKind.Utc);
+
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedMutableVersionFilter(
+                "visit-1",
+                "user-1",
+                7,
+                mutationAtUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(7, rendered["version"].AsInt64);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        Assert.False(alternatives[0]["contentMutationLeaseToken"]["$exists"].AsBoolean);
+        Assert.Equal(
+            mutationAtUtc,
+            alternatives[1]["contentMutationLeaseExpiresAtUtc"]["$lte"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void BuildOwnedLeasedVersionFilter_ShouldRequireTheExactLeaseToken()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedLeasedVersionFilter(
+                "visit-1",
+                "user-1",
+                7,
+                " lease-1 ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("visit-1", rendered["_id"].AsString);
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(7, rendered["version"].AsInt64);
+        Assert.Equal("lease-1", rendered["contentMutationLeaseToken"].AsString);
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
@@ -98,7 +140,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(5, indexes.Length);
+        Assert.Equal(6, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -147,6 +189,11 @@ public sealed class UserVisitMongoDefinitionsTests
             });
         Assert.True(indexes[4].Options.Unique);
         Assert.NotNull(indexes[4].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[5],
+            "idx_user_visits_pending_audit",
+            new BsonDocument("pendingAuditEvents.eventId", 1));
+        Assert.NotNull(indexes[5].Options.PartialFilterExpression);
         Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

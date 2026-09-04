@@ -25,6 +25,10 @@ describe('PassportVisitEditorStateFacade', () => {
   const secondOccurrence: PassportRideOccurrence = createOccurrence('occurrence-2', 'ride-2', 2048);
   let visitsPort: {
     getVisit: ReturnType<typeof vi.fn>;
+    updateVisit: ReturnType<typeof vi.fn>;
+    completeVisit: ReturnType<typeof vi.fn>;
+    reopenVisit: ReturnType<typeof vi.fn>;
+    archiveVisit: ReturnType<typeof vi.fn>;
     upsertParkAssessment: ReturnType<typeof vi.fn>;
     deleteParkAssessment: ReturnType<typeof vi.fn>;
   };
@@ -46,6 +50,10 @@ describe('PassportVisitEditorStateFacade', () => {
   beforeEach(() => {
     visitsPort = {
       getVisit: vi.fn().mockReturnValue(of(visit)),
+      updateVisit: vi.fn(),
+      completeVisit: vi.fn(),
+      reopenVisit: vi.fn(),
+      archiveVisit: vi.fn(),
       upsertParkAssessment: vi.fn(),
       deleteParkAssessment: vi.fn()
     };
@@ -125,6 +133,161 @@ describe('PassportVisitEditorStateFacade', () => {
       { closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
       { closedFilter: 'all' }
     );
+  });
+
+  it('updates visit metadata through the port and refreshes the optimistic version', () => {
+    const updatedVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      title: 'Souvenir',
+      version: 2
+    };
+    visitsPort.updateVisit.mockReturnValue(of(updatedVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true,
+      title: ' Souvenir '
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(visitsPort.updateVisit).toHaveBeenCalledWith('visit-1', expect.objectContaining({
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      title: 'Souvenir',
+      expectedVersion: 1
+    }));
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataHasChanges()).toBe(false);
+  });
+
+  it('preserves submitted metadata when conflict reconciliation loads another version', () => {
+    const concurrentVisit: PassportVisit = {
+      ...visit,
+      title: 'Version distante',
+      version: 2
+    };
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.version-conflict'
+      }
+    })));
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(concurrentVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Ma correction' });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataDraft().title).toBe('Ma correction');
+    expect(facade.metadataHasChanges()).toBe(true);
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.conflict');
+  });
+
+  it('explains why temporal metadata stays locked when the visit contains rides', () => {
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.temporal-metadata-locked'
+      }
+    })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ year: 2025 });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.metadataDraft().year).toBe(2025);
+    expect(facade.metadataHasChanges()).toBe(true);
+    expect(facade.visitMutationErrorKey())
+      .toBe('passport.editor.visit.errors.temporalMetadataLocked');
+  });
+
+  it('requires an explicit lifecycle transition and reconciles a lost completion response', () => {
+    const completedVisit: PassportVisit = {
+      ...visit,
+      status: 'Completed',
+      version: 2,
+      completedAtUtc: '2026-09-03T10:30:00Z'
+    };
+    visitsPort.completeVisit.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 0 })));
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(completedVisit));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.completeVisit();
+
+    expect(visitsPort.completeVisit).toHaveBeenCalledWith('visit-1', 1);
+    expect(facade.visit()?.status).toBe('Completed');
+    expect(facade.canEditVisit()).toBe(false);
+    expect(facade.visitMutationErrorKey()).toBeNull();
+  });
+
+  it('does not complete a visit while its park assessment draft is unsaved', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Brouillon local' });
+
+    facade.completeVisit();
+
+    expect(facade.hasUnsavedAssessmentChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.completeVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('does not archive a visit while one ride assessment draft is unsaved', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', {
+      value: 4,
+      privateComment: 'À conserver'
+    });
+
+    facade.archiveVisit();
+
+    expect(facade.hasUnsavedAssessmentChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.archiveVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('does not complete a visit while attractions are still selected for addition', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+
+    facade.completeVisit();
+
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.completeVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('does not archive a visit while one occurrence edit is unsaved', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateOccurrenceDraft('occurrence-1', { privateNote: 'Brouillon local' });
+
+    facade.archiveVisit();
+
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+    expect(facade.hasUnsavedStatusTransitionChanges()).toBe(true);
+    expect(visitsPort.archiveVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
   });
 
   it('refreshes localized data without losing pending selections or edit drafts', () => {
@@ -315,6 +478,59 @@ describe('PassportVisitEditorStateFacade', () => {
   it('reloads the parent version and preserves the draft after an assessment conflict', () => {
     const currentVisit: PassportVisit = {
       ...visit,
+      title: 'Version distante',
+      version: 2,
+      parkAssessment: {
+        value: 3,
+        privateComment: 'État serveur',
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(currentVisit));
+    visitsPort.upsertParkAssessment.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit-park-assessment.version-conflict'
+      }
+    })));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...currentVisit,
+      privateNote: 'Note locale',
+      version: 3
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Ma saisie' });
+
+    facade.saveParkAssessment();
+
+    expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
+    expect(facade.visit()?.version).toBe(2);
+    expect(facade.metadataDraft().title).toBe('Version distante');
+    expect(facade.metadataHasChanges()).toBe(false);
+    expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });
+    expect(facade.assessmentErrorKey()).toBe('passport.editor.assessment.errors.conflict');
+
+    facade.updateVisitMetadataDraft({ privateNote: 'Note locale' });
+    facade.saveVisitMetadata();
+
+    expect(visitsPort.updateVisit).toHaveBeenCalledWith('visit-1', expect.objectContaining({
+      title: 'Version distante',
+      privateNote: 'Note locale',
+      expectedVersion: 2
+    }));
+  });
+
+  it('preserves unsaved metadata when an assessment conflict refreshes the parent version', () => {
+    const currentVisit: PassportVisit = {
+      ...visit,
+      title: 'Version distante',
       version: 2,
       parkAssessment: {
         value: 3,
@@ -337,14 +553,14 @@ describe('PassportVisitEditorStateFacade', () => {
     })));
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Brouillon local' });
     facade.updateParkAssessmentDraft({ value: 4.5, privateComment: 'Ma saisie' });
 
     facade.saveParkAssessment();
 
-    expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
-    expect(facade.visit()?.version).toBe(2);
-    expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });
-    expect(facade.assessmentErrorKey()).toBe('passport.editor.assessment.errors.conflict');
+    expect(facade.visit()?.title).toBe('Version distante');
+    expect(facade.metadataDraft().title).toBe('Brouillon local');
+    expect(facade.metadataHasChanges()).toBe(true);
   });
 
   it('recognises an assessment that was committed before an ambiguous response failed', () => {
@@ -654,6 +870,38 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.editDrafts()['occurrence-2']).toEqual(expect.objectContaining({
       privateNote: 'Brouillon page 2'
     }));
+    expect(facade.hasUnsavedOccurrenceChanges()).toBe(true);
+
+    facade.completeVisit();
+
+    expect(visitsPort.completeVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
+  });
+
+  it('keeps a next-page assessment draft blocking archive after a first-page refresh', () => {
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: 'page-2' }))
+      .mockReturnValueOnce(of({ items: [secondOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: 'page-2' }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.loadMoreTimeline();
+    facade.updateRideAssessmentDraft('occurrence-2', {
+      value: 4.5,
+      privateComment: 'Brouillon page 2'
+    });
+
+    facade.reloadTimeline();
+
+    expect(facade.occurrences().map((occurrence: PassportRideOccurrence): string => occurrence.id)).toEqual([
+      'occurrence-1'
+    ]);
+    expect(facade.hasUnsavedAssessmentChanges()).toBe(true);
+
+    facade.archiveVisit();
+
+    expect(visitsPort.archiveVisit).not.toHaveBeenCalled();
+    expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.saveBeforeStatus');
   });
 
   it('ignores an attraction filter response from the previously loaded visit', () => {
@@ -777,6 +1025,21 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(operationIds.create).toHaveBeenCalledTimes(1);
     expect(facade.selectedAttractions()).toEqual([]);
     expect(facade.normalizationNotice()).toBe(true);
+  });
+
+  it('blocks a new occurrence add while temporal visit metadata is unsaved', () => {
+    occurrencesPort.list.mockReturnValue(of({ items: [], nextCursor: null }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateVisitMetadataDraft({ year: 2025 });
+
+    facade.addSelected();
+
+    expect(facade.temporalMetadataHasChanges()).toBe(true);
+    expect(facade.selectionCanSubmit()).toBe(false);
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+    expect(facade.selectedAttractions()).toHaveLength(1);
   });
 
   it.each([0, 502, 504])('retries the original ambiguous add after HTTP %i even when the selection was edited', (status: number) => {
