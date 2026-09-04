@@ -1237,8 +1237,148 @@ Chaque flag : propriétaire, valeur par défaut, date de retrait, comportement d
 | `PASS-16` | Export JSON/CSV | Données complètes et versionnées |
 | `PASS-17` | Suppression, purge et RGPD | Aucune donnée orpheline |
 | `PASS-18` | Brouillons IndexedDB, si validés | Import explicite et idempotent |
+| `PASS-18A` | Fiabilité et lisibilité du parcours de visite | Aucun faux avertissement, carré ambigu ou identifiant technique |
+| `PASS-18B` | Ajout d’un tour depuis une attraction | Une visite brouillon compatible est obligatoire et choisie explicitement |
+| `PASS-18C` | Tableau de bord global du passeport | Statistiques et graphiques accessibles depuis l’accueil du passeport |
+| `PASS-18D` | Expérience mobile et organisation moderne | Saisie rapide, tactile, accessible et sans dépassement de viewport |
 | `PASS-19` | Beta cohort et instrumentation | Gate `PASS-G` mesurable |
 | `PASS-20` | Nettoyage flags et documentation | Chemins stabilisés |
+
+### 25.1. Priorité de finalisation du passeport après `PASS-18`
+
+Ces quatre jalons sont prioritaires avant `PASS-19`. Ils transforment les fondations
+déjà livrées en parcours métier compréhensibles et réellement utilisables. Ils ne
+dupliquent pas le passeport public ni la comparaison entre membres : ces fonctions
+restent portées par `SHARE-08`, `SHARE-11` et `SHARE-12` après le gate `PASS-G`.
+
+Avant chacun de ces jalons :
+
+- repartir du dernier `master` déployé et vérifier les retours de la PR précédente ;
+- conserver les règles métier dans Core et l’orchestration dans Application ;
+- passer par les ports existants entre Angular et les API, sans logique métier dans
+  les composants ou les contrôleurs ;
+- respecter une classe par fichier et ne pas introduire de dépendance lourde ;
+- définir les états chargement, vide, succès, conflit, erreur et reprise ;
+- tester au minimum les largeurs 320, 360, 390 et 768 px, les textes longs dans les
+  huit langues, le zoom à 200 %, la navigation clavier et l’absence de défilement
+  horizontal ;
+- vérifier que la barre de navigation mobile ne masque ni contenu ni action ;
+- ajouter les tests unitaires, d’intégration et de contrat nécessaires avant la PR ;
+- mesurer les lectures MongoDB, la taille des réponses et l’impact SSR/VPS.
+
+#### `PASS-18A` — Fiabilité et lisibilité du parcours de visite
+
+But métier : une visite existante doit inspirer confiance. La personne comprend ce
+qu’elle modifie, ce qu’elle note et pourquoi une confirmation est éventuellement
+demandée.
+
+À faire avant de considérer le jalon terminé :
+
+- distinguer une vraie incompatibilité historique attraction/date d’un simple accès
+  depuis une visite déjà persistée ; l’existence de la visite ne doit jamais produire
+  à elle seule une confirmation d’incohérence ;
+- en cas de vraie incompatibilité, nommer l’attraction concernée, rappeler la date de
+  la visite et expliquer la conséquence du choix au lieu d’afficher un avertissement
+  générique ;
+- remplacer les contrôles de note rendus comme des carrés ambigus par un composant
+  partagé explicite : valeur courante, échelle, libellé accessible, état non noté et
+  action d’effacement ;
+- afficher la vignette principale de chaque attraction lorsqu’elle existe, avec un
+  repli visuel stable, un texte alternatif pertinent et un chargement différé ;
+- afficher les noms métier des parcs et attractions dans toutes les vues et tous les
+  téléchargements destinés à l’utilisateur ; aucune clé MongoDB, UUID, ULID ou clé
+  d’idempotence ne doit apparaître ;
+- couvrir les conflits de version réels sans boucle de faux conflit et conserver la
+  saisie non enregistrée lors d’un rechargement ;
+- vérifier les cartes, formulaires, messages et boutons sur mobile sans mot coupé
+  artificiellement ni dépassement du viewport.
+
+Critère de sortie : depuis une visite connue, la personne ajoute des passages, les
+identifie par leur nom et leur image, comprend chaque note et termine la visite sans
+avertissement ou conflit injustifié.
+
+#### `PASS-18B` — Ajouter un tour depuis la page d’une attraction
+
+But métier : enregistrer immédiatement un tour depuis l’endroit où l’attraction est
+consultée, tout en l’attachant obligatoirement à la bonne visite.
+
+À faire avant de considérer le jalon terminé :
+
+- afficher l’action uniquement pour une attraction rattachée à un parc et pour une
+  personne connectée ;
+- charger uniquement les visites appartenant à cette personne et au même parc ;
+- autoriser l’écriture uniquement dans une visite `Draft` ; le serveur revalide
+  propriétaire, parc, catégorie, statut et version sans faire confiance au client ;
+- s’il existe plusieurs brouillons, proposer un sélecteur explicite avec date, titre
+  et précision de date ; ne jamais choisir silencieusement une visite ;
+- s’il n’existe aucun brouillon, proposer soit de créer une visite, soit de rouvrir
+  consciemment une visite terminée compatible ; ne jamais créer un passage orphelin ;
+- réutiliser l’idempotence du ride log pour qu’un double appui ou une reprise réseau
+  ne duplique pas le tour ;
+- permettre le nombre de tours, l’heure facultative, le statut et la note sans
+  transformer la page attraction en éditeur complet ;
+- après succès, proposer un lien clair vers la visite concernée et mettre à jour les
+  statistiques privées sans toucher à la note communautaire globale.
+
+Critère de sortie : aucun tour ne peut exister sans visite compatible, et l’ajout
+depuis une attraction aboutit en quelques actions sur mobile avec une destination
+compréhensible.
+
+#### `PASS-18C` — Statistiques globales et graphiques du passeport
+
+But métier : donner une vision d’ensemble du vécu de la personne sans surcharger la
+liste des visites.
+
+À faire avant de considérer le jalon terminé :
+
+- créer une page dédiée, accessible par une action visible « Mes statistiques »
+  depuis l’accueil du passeport et non cachée dans une visite ;
+- fournir les indicateurs de synthèse utiles : visites, parcs distincts, passages,
+  attractions distinctes, répartition par statut et couverture des notes ;
+- ajouter des graphiques légers et pertinents : activité dans le temps, parcs les
+  plus visités, attractions les plus parcourues et évolution des notes personnelles ;
+- proposer des filtres année/parc avec une URL ou un état partageable dans la session,
+  sans exposer d’identifiant technique ;
+- afficher pour chaque graphique un titre, une unité, une légende, une explication
+  du dénominateur, un état données insuffisantes et un tableau accessible équivalent ;
+- calculer les agrégats côté serveur avec projections et pipelines bornés, sans N+1,
+  sans charger l’historique complet dans Angular et sans reconstruire les classements
+  communautaires ;
+- ne jamais présenter une moyenne vide comme zéro et ne pas extrapoler une tendance
+  lorsque le volume est insuffisant ;
+- rendre la page utilisable au clavier, au lecteur d’écran, avec mouvement réduit et
+  sur petits écrans sans graphique rogné.
+
+Critère de sortie : une personne trouve ses statistiques globales depuis le
+passeport, comprend chaque chiffre et peut obtenir la même information sans dépendre
+de la couleur ou du graphique.
+
+#### `PASS-18D` — Expérience mobile et organisation moderne
+
+But métier : rendre la saisie et l’organisation agréables pour un usage réel dans un
+parc, principalement tactile, sans sacrifier l’accessibilité.
+
+À faire avant de considérer le jalon terminé :
+
+- remplacer les longues listes brutes par une recherche immédiate, des filtres utiles,
+  des cartes visuelles et des actions `+`/`−` avec quantité explicite ;
+- conserver un résumé compact et éventuellement collant des passages à ajouter, mais
+  garantir qu’il ne recouvre jamais le dernier contenu ni la navigation mobile ;
+- utiliser le glisser-déposer uniquement pour ordonner des passages déjà choisis,
+  avec poignée tactile, retour visuel, zone d’annulation et restauration en cas
+  d’échec serveur ;
+- fournir exactement la même capacité par boutons monter/descendre et clavier, avec
+  annonces de position pour les technologies d’assistance ; le drag and drop ne doit
+  jamais être l’unique interaction ;
+- réutiliser les commandes batch et idempotentes existantes, avec mise à jour optimiste
+  bornée et rechargement ciblé en cas de conflit ;
+- vérifier les gestes tactiles, les zones d’appui, le clavier virtuel, les textes longs,
+  les safe areas et les orientations portrait/paysage ;
+- ne charger les images et données détaillées qu’à la demande pour respecter le budget
+  réseau et mémoire d’un téléphone courant.
+
+Critère de sortie : sélectionner, quantifier et réordonner des passages est rapide au
+toucher comme au clavier, sans perte de données, ambiguïté ni débordement visuel.
 
 ## 26. Beta et validation qualitative
 

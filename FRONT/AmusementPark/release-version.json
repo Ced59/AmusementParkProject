@@ -1,6 +1,20 @@
 {
-  "version": "5.0.29",
+  "version": "5.0.30",
   "history": [
+    {
+      "version": "5.0.30",
+      "releasedAt": "2026-09-04",
+      "labels": {
+        "fr": "La suite des améliorations du passeport est maintenant organisée par priorités.",
+        "en": "The next passport improvements are now organized by priority.",
+        "de": "Die nächsten Verbesserungen des Besuchspasses sind jetzt nach Priorität geordnet.",
+        "nl": "De volgende verbeteringen aan het paspoort zijn nu op prioriteit geordend.",
+        "it": "I prossimi miglioramenti del passaporto sono ora organizzati per priorità.",
+        "es": "Las próximas mejoras del pasaporte están ahora organizadas por prioridad.",
+        "pl": "Kolejne ulepszenia paszportu są teraz uporządkowane według priorytetów.",
+        "pt": "As próximas melhorias do passaporte estão agora organizadas por prioridade."
+      }
+    },
     {
       "version": "5.0.29",
       "releasedAt": "2026-09-04",
