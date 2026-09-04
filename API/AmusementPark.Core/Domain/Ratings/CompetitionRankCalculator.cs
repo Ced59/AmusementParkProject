@@ -1,9 +1,5 @@
 namespace AmusementPark.Core.Domain.Ratings;
 
-public sealed record CompetitionRankAssignment(
-    int Position,
-    int Rank);
-
 /// <summary>
 /// Attribue des rangs de compétition à une séquence de scores déjà ordonnée.
 /// Les ex æquo partagent le rang de leur premier score et le rang suivant

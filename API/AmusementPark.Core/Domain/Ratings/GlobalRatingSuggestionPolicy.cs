@@ -10,29 +10,6 @@ public enum GlobalRatingSuggestionReason
 }
 
 /// <summary>
-/// Observation privée datée utilisée par la politique de suggestion.
-/// </summary>
-public sealed record GlobalRatingSuggestionObservation(
-    RatingValue Value,
-    DateTime RecordedAtUtc);
-
-/// <summary>
-/// État de cadence propre à une cible. Il ne contient aucune valeur de note.
-/// </summary>
-public sealed record GlobalRatingSuggestionCadence(
-    bool IsEnabled,
-    DateTime? LastPresentedAtUtc);
-
-public sealed record GlobalRatingSuggestionEvaluation(
-    GlobalRatingSuggestionReason Reason,
-    int NewObservationCount,
-    int RecentObservationCount,
-    RatingValue LatestObservation,
-    double RecentAverage,
-    double HistoricalMedian,
-    DateTime LatestObservationAtUtc);
-
-/// <summary>
 /// Politique pure et déterministe. Elle ne modifie jamais la note globale.
 /// </summary>
 public sealed class GlobalRatingSuggestionPolicy

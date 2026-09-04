@@ -32,6 +32,18 @@ Répartition C# initiale :
 
 Parmi les 33 fichiers TypeScript multi-classes, 6 appartiennent au code de production et 27 aux tests. Le contrôle de nom porte au total sur 68 fichiers `.spec.ts` et 13 autres fichiers TypeScript non conformes.
 
+## État après le lot Core Notations
+
+Le premier lot déplace les 19 classes et records de référence qui étaient regroupés dans cinq fichiers du domaine Notations. Il ne modifie ni leur namespace, ni leur visibilité, ni leur comportement.
+
+Après ce lot, l'inventaire contient :
+
+- 323 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 356 au total ;
+- 499 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 508 fichiers non conformes distincts : 427 en C# et 81 en TypeScript ;
+- 15 fichiers non conformes dans `AmusementPark.Core`, contre 20 initialement.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
