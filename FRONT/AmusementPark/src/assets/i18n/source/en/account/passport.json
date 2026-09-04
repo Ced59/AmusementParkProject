@@ -239,6 +239,7 @@
         "detectedTitle": "Local visits were detected",
         "detectedDescription": "{{visits}} visit(s) and {{rides}} ride(s) remain on this device until you confirm.",
         "noUploadYet": "No data has been sent yet",
+        "comparisonShared": "Only the park and year were sent for comparison; import has not started",
         "rideCount": "{{count}} local rides",
         "similarFound": "{{count}} similar visit(s)",
         "choiceLegend": "What do you want to do with this visit?",

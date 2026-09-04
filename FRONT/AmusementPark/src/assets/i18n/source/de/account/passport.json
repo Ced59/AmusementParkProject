@@ -177,6 +177,7 @@
         "detectedTitle": "Lokale Besuche wurden gefunden",
         "detectedDescription": "{{visits}} Besuch(e) und {{rides}} Fahrt(en) bleiben bis zu deiner Bestätigung auf diesem Gerät.",
         "noUploadYet": "Noch keine Daten gesendet",
+        "comparisonShared": "Für den Vergleich wurden nur Park und Jahr gesendet; der Import hat noch nicht begonnen",
         "rideCount": "{{count}} lokale Fahrten",
         "similarFound": "{{count}} ähnliche Besuche",
         "choiceLegend": "Was möchtest du mit diesem Besuch tun?",

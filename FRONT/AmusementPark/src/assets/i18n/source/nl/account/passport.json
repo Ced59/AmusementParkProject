@@ -177,6 +177,7 @@
         "detectedTitle": "Lokale bezoeken gevonden",
         "detectedDescription": "{{visits}} bezoek(en) en {{rides}} rit(ten) blijven op dit apparaat tot je bevestigt.",
         "noUploadYet": "Nog geen gegevens verstuurd",
+        "comparisonShared": "Alleen het park en het jaar zijn voor de vergelijking verstuurd; de import is nog niet gestart",
         "rideCount": "{{count}} lokale ritten",
         "similarFound": "{{count}} vergelijkbare bezoek(en)",
         "choiceLegend": "Wat wil je met dit bezoek doen?",

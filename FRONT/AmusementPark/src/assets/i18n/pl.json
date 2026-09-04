@@ -365,6 +365,7 @@
         "detectedTitle": "Wykryto lokalne wizyty",
         "detectedDescription": "{{visits}} wizyt(y) i {{rides}} przejazdów pozostanie na urządzeniu do czasu potwierdzenia.",
         "noUploadYet": "Nie wysłano jeszcze żadnych danych",
+        "comparisonShared": "Do porównania wysłano tylko park i rok; import jeszcze się nie rozpoczął",
         "rideCount": "Lokalne przejazdy: {{count}}",
         "similarFound": "Podobne wizyty: {{count}}",
         "choiceLegend": "Co chcesz zrobić z tą wizytą?",

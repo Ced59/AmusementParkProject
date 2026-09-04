@@ -214,6 +214,35 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.previews()).toHaveLength(1);
   });
 
+  it('keeps the local draft when an acknowledged ride differs from the submitted payload', async () => {
+    const draft: PassportAnonymousDraft = createDraft();
+    const deleteDraft = vi.fn(async (): Promise<void> => undefined);
+    const changedOccurrence: PassportRideOccurrence = createOccurrence(
+      'occurrence-2',
+      'server-1',
+      { privateNote: 'Note différente' }
+    );
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], deleteDraft),
+      createVisitsPort(),
+      createOccurrencesPort({
+        importBatch: () => of({
+          occurrences: [createOccurrence('occurrence-1', 'server-1'), changedOccurrence],
+          wasReplayed: false,
+          wasOrderNormalized: false
+        })
+      })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+
+    expect(deleteDraft).not.toHaveBeenCalled();
+    expect(facade.report()).toMatchObject({ failedCount: 1 });
+    expect(facade.previews()).toHaveLength(1);
+  });
+
   it('locks a partial retry to the original visit and stable chunk operations', async () => {
     const baseDraft: PassportAnonymousDraft = createDraft();
     const draft: PassportAnonymousDraft = {
@@ -442,21 +471,26 @@ function createVisit(overrides: Partial<PassportVisit> = {}): PassportVisit {
   };
 }
 
-function createOccurrence(id: string, visitId: string): PassportRideOccurrence {
+function createOccurrence(
+  id: string,
+  visitId: string,
+  overrides: Partial<PassportRideOccurrence> = {}
+): PassportRideOccurrence {
   return {
     id,
     visitId,
     parkId: 'park-1',
     parkItemId: 'item-1',
     sortPosition: 1000,
-    moment: { localTime: '10:30', isApproximate: false },
+    moment: { localTime: '10:30:00', isApproximate: false },
     status: 'Completed',
     source: 'Import',
     historicalConsistency: 'Verified',
-    privateNote: null,
+    privateNote: 'Premier rang',
     countsAsRide: true,
     version: 1,
     createdAtUtc: '2026-09-04T10:00:00Z',
-    updatedAtUtc: '2026-09-04T10:00:00Z'
+    updatedAtUtc: '2026-09-04T10:00:00Z',
+    ...overrides
   };
 }

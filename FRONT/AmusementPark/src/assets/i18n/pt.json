@@ -365,6 +365,7 @@
         "detectedTitle": "Foram detetadas visitas locais",
         "detectedDescription": "{{visits}} visita(s) e {{rides}} volta(s) permanecem neste dispositivo até confirmares.",
         "noUploadYet": "Ainda não foram enviados dados",
+        "comparisonShared": "Apenas o parque e o ano foram enviados para comparação; a importação ainda não começou",
         "rideCount": "{{count}} voltas locais",
         "similarFound": "{{count}} visita(s) semelhante(s)",
         "choiceLegend": "O que queres fazer com esta visita?",

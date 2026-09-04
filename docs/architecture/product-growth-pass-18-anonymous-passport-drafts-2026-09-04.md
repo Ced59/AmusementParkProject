@@ -11,13 +11,14 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 1. La création rapide valide la visite comme pour un utilisateur connecté.
 2. Sans session, elle enregistre un brouillon versionné dans IndexedDB ; aucun détail de la visite n’est envoyé au serveur.
 3. L’utilisateur peut rouvrir le brouillon, rechercher les attractions publiques, ordonner ses passages, exporter une copie JSON ou purger manuellement les données locales.
-4. Après connexion, le passeport détecte uniquement en local le nombre de visites et de passages disponibles.
-5. Une case et une action distinctes autorisent la comparaison. C’est seulement à ce moment que le parc et l’année servent à rechercher les visites similaires du compte.
-6. Pour chaque visite, l’utilisateur choisit de la garder séparée, de la fusionner avec un brouillon serveur après aperçu, ou de l’ignorer.
-7. L’import utilise les identifiants d’opération stables du brouillon. Les passages importés portent la source métier `Import`.
-8. Le brouillon local n’est supprimé qu’après vérification des accusés de réception de la visite et de tous ses passages. Un échec ou une réponse ambiguë conserve le brouillon pour une reprise idempotente.
-9. Dès la première mutation serveur, le brouillon mémorise la stratégie et la cible choisies. Une reprise reste verrouillée sur cette cible et réutilise les mêmes opérations de lot.
-10. Cette réservation est atomique dans IndexedDB : si deux onglets tentent le même import, un seul peut choisir la stratégie et l’autre s’arrête avant toute mutation serveur.
+4. L’action d’import ouvre la connexion puis restaure automatiquement la destination Passeport, y compris son ancre, après authentification.
+5. Après connexion, le passeport détecte uniquement en local le nombre de visites et de passages disponibles.
+6. Une case et une action distinctes autorisent la comparaison. C’est seulement à ce moment que le parc et l’année servent à rechercher les visites similaires du compte.
+7. Pour chaque visite, l’utilisateur choisit de la garder séparée, de la fusionner avec un brouillon serveur après aperçu, ou de l’ignorer.
+8. L’import utilise les identifiants d’opération stables du brouillon. Les passages importés portent la source métier `Import`.
+9. Le brouillon local n’est supprimé qu’après vérification des accusés de réception de la visite et du contenu exact de tous ses passages. Un échec ou une réponse ambiguë conserve le brouillon pour une reprise idempotente.
+10. Dès la première mutation serveur, le brouillon mémorise la stratégie et la cible choisies. Une reprise reste verrouillée sur cette cible et réutilise les mêmes opérations de lot.
+11. Cette réservation est atomique dans IndexedDB : si deux onglets tentent le même import, un seul peut choisir la stratégie et l’autre s’arrête avant toute mutation serveur.
 
 ## Frontières d’architecture
 
@@ -57,6 +58,8 @@ Les largeurs de validation visuelle sont 320, 360, 390 et 768 pixels.
 - création séparée et suppression locale seulement après accusés vérifiés ;
 - reprise d’une mise à jour ambiguë avant import des passages ;
 - conservation locale si un accusé serveur est incohérent ;
+- conservation locale si le parc, l’attraction, l’heure, le statut, la note privée ou la source d’un passage accusé diffère du lot envoyé ;
+- retour sûr vers le Passeport après connexion, sans accepter de destination externe ;
 - verrouillage d’une reprise partielle sur la visite et les clés de lot originales ;
 - exclusion atomique d’un second import concurrent avant toute mutation serveur ;
 - gel des modifications et suppressions d’un brouillon dont l’import doit être repris ;

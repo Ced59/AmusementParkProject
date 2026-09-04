@@ -15,7 +15,9 @@
       </div>
       <span class="anonymous-import__privacy">
         <i class="pi pi-lock" aria-hidden="true"></i>
-        {{ 'passport.anonymousDrafts.import.noUploadYet' | translate }}
+        {{ (facade.comparisonPrepared()
+          ? 'passport.anonymousDrafts.import.comparisonShared'
+          : 'passport.anonymousDrafts.import.noUploadYet') | translate }}
       </span>
     </header>
 

@@ -511,14 +511,78 @@ export class PassportAnonymousImportStateFacade {
       const result: PassportRideOccurrenceMutationResult = await firstValueFrom(
         this.occurrencesApi.importBatch(targetVisitId, { items: chunk }, operationId)
       );
-      if (result.occurrences.length !== chunk.length
-        || result.occurrences.some((occurrence: PassportRideOccurrence): boolean =>
-          occurrence.visitId !== targetVisitId)) {
+      if (!this.matchesImportedChunk(
+        result.occurrences,
+        chunk,
+        targetVisitId,
+        draft.visit.parkId
+      )) {
         throw new Error('passport-anonymous-import.ride-ack-mismatch');
       }
     }
 
     return expectedCount;
+  }
+
+  private matchesImportedChunk(
+    occurrences: PassportRideOccurrence[],
+    items: CreatePassportRideOccurrenceBatchItem[],
+    targetVisitId: string,
+    parkId: string
+  ): boolean {
+    if (occurrences.length !== items.length) {
+      return false;
+    }
+
+    const expectedSignatures: Map<string, number> = new Map<string, number>();
+    for (const item of items) {
+      const signature: string = this.importedRideSignature(
+        item.parkItemId.trim(),
+        item.moment.localTime,
+        item.moment.isApproximate,
+        item.status,
+        item.privateNote
+      );
+      expectedSignatures.set(signature, (expectedSignatures.get(signature) ?? 0) + 1);
+    }
+
+    for (const occurrence of occurrences) {
+      if (occurrence.visitId !== targetVisitId
+        || occurrence.parkId !== parkId
+        || occurrence.source !== 'Import') {
+        return false;
+      }
+
+      const signature: string = this.importedRideSignature(
+        occurrence.parkItemId,
+        occurrence.moment.localTime,
+        occurrence.moment.isApproximate,
+        occurrence.status,
+        occurrence.privateNote
+      );
+      const remaining: number = expectedSignatures.get(signature) ?? 0;
+      if (remaining === 0) {
+        return false;
+      }
+
+      if (remaining === 1) {
+        expectedSignatures.delete(signature);
+      } else {
+        expectedSignatures.set(signature, remaining - 1);
+      }
+    }
+
+    return expectedSignatures.size === 0;
+  }
+
+  private importedRideSignature(
+    parkItemId: string,
+    localTime: string | null,
+    isApproximate: boolean,
+    status: string,
+    privateNote: string | null
+  ): string {
+    return JSON.stringify({ parkItemId, localTime, isApproximate, status, privateNote });
   }
 
   private async loadVisitCandidates(draft: PassportAnonymousDraft): Promise<PassportVisit[]> {
