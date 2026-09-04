@@ -5,4 +5,5 @@ public sealed record VisitDeletionReceipt(
     DateTime DeletedAtUtc,
     DateTime PurgeScheduledForUtc,
     long DeletionVersion,
-    bool WasReplayed);
+    bool WasReplayed,
+    bool IsExportInvalidationEnsured = false);

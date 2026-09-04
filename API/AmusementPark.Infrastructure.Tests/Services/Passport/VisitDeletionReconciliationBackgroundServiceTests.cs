@@ -50,7 +50,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 candidate.UserId,
-                deletedAtUtc,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =
@@ -110,7 +110,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
                 candidate.UserId,
-                deletedAtUtc,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =

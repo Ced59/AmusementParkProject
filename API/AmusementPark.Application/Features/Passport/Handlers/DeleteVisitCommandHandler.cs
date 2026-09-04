@@ -68,8 +68,8 @@ public sealed class DeleteVisitCommandHandler
                 visitId,
                 userId,
                 replay.DeletionVersion,
-                replay.DeletedAtUtc,
                 replay.PurgeScheduledForUtc,
+                replay.IsExportInvalidationEnsured,
                 cancellationToken);
             return ApplicationResult<VisitDeletionReceipt>.Success(
                 replay with { WasReplayed = true });
@@ -164,8 +164,8 @@ public sealed class DeleteVisitCommandHandler
                     visit.Id,
                     visit.UserId,
                     concurrentReplay.DeletionVersion,
-                    concurrentReplay.DeletedAtUtc,
                     concurrentReplay.PurgeScheduledForUtc,
+                    concurrentReplay.IsExportInvalidationEnsured,
                     cancellationToken);
                 return ApplicationResult<VisitDeletionReceipt>.Success(
                     concurrentReplay with { WasReplayed = true });
@@ -182,8 +182,8 @@ public sealed class DeleteVisitCommandHandler
             visit.Id,
             visit.UserId,
             visit.Version + 1,
-            deletedAtUtc,
             purgeScheduledForUtc,
+            false,
             cancellationToken);
 
         await PassportAuditDelivery.PublishAsync(
@@ -196,27 +196,33 @@ public sealed class DeleteVisitCommandHandler
                 deletedAtUtc,
                 purgeScheduledForUtc,
                 visit.Version + 1,
-                false));
+                false,
+                true));
     }
 
     private async Task EnsureDeletionSideEffectsAsync(
         VisitId visitId,
         string userId,
         long deletionVersion,
-        DateTime deletedAtUtc,
         DateTime purgeScheduledForUtc,
+        bool isExportInvalidationEnsured,
         CancellationToken cancellationToken)
     {
-        await this.exportRepository.InvalidateOwnedAsync(
-            userId,
-            deletedAtUtc,
-            cancellationToken);
-        _ = await this.deletionStore.MarkExportInvalidationEnsuredAsync(
-            visitId,
-            userId,
-            deletionVersion,
-            this.clock.UtcNow,
-            cancellationToken);
+        if (!isExportInvalidationEnsured)
+        {
+            DateTime invalidatedAtUtc = this.clock.UtcNow;
+            await this.exportRepository.InvalidateOwnedAsync(
+                userId,
+                invalidatedAtUtc,
+                cancellationToken);
+            _ = await this.deletionStore.MarkExportInvalidationEnsuredAsync(
+                visitId,
+                userId,
+                deletionVersion,
+                this.clock.UtcNow,
+                cancellationToken);
+        }
+
         await this.purgeScheduler.ScheduleAsync(
             visitId,
             userId,

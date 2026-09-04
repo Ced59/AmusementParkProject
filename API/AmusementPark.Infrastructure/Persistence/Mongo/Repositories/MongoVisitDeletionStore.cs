@@ -89,7 +89,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             document[DeletedAtUtcPath].ToUniversalTime(),
             document[PurgeScheduledForUtcPath].ToUniversalTime(),
             document["version"].AsInt64,
-            true);
+            true,
+            HasTimestamp(document, ExportInvalidationEnsuredAtUtcPath));
     }
 
     public async Task<bool> TryTombstoneAsync(
@@ -447,6 +448,7 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         return Builders<BsonDocument>.Projection
             .Include(DeletedAtUtcPath)
             .Include(PurgeScheduledForUtcPath)
+            .Include(ExportInvalidationEnsuredAtUtcPath)
             .Include("version");
     }
 

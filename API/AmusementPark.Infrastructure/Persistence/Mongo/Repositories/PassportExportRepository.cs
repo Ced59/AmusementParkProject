@@ -365,13 +365,12 @@ public sealed class PassportExportRepository : IPassportExportRepository
 
     internal static FilterDefinition<PassportExportDocument> BuildInvalidationFilter(
         string userId,
-        DateTime sourceChangedAtUtc)
+        DateTime invalidatedAtUtc)
     {
         FilterDefinitionBuilder<PassportExportDocument> filters =
             Builders<PassportExportDocument>.Filter;
         return filters.Eq(static document => document.UserId, userId)
-            & filters.Lte(static document => document.CreatedAt, sourceChangedAtUtc)
-            & filters.Gt(static document => document.ExpiresAtUtc, sourceChangedAtUtc);
+            & filters.Gt(static document => document.ExpiresAtUtc, invalidatedAtUtc);
     }
 
     private static FilterDefinition<PassportExportDocument> BuildOwnedFilter(

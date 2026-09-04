@@ -75,9 +75,10 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
             {
                 if (!candidate.IsExportInvalidationEnsured)
                 {
+                    DateTime invalidatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                     await exportRepository.InvalidateOwnedAsync(
                         candidate.UserId,
-                        candidate.DeletedAtUtc,
+                        invalidatedAtUtc,
                         cancellationToken);
                     _ = await deletionStore.MarkExportInvalidationEnsuredAsync(
                         candidate.VisitId,
