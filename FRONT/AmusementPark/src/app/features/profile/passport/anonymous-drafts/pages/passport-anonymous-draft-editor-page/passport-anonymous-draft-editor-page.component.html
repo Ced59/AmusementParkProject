@@ -134,13 +134,11 @@
               <span>{{ 'passport.anonymousDrafts.editor.add.note' | translate }}</span>
               <textarea rows="3" maxlength="2000" formControlName="privateNote"></textarea>
             </label>
-            @if (attraction.isHistorical) {
-              <label class="anonymous-editor__check anonymous-editor__check--warning">
-                <input type="checkbox" formControlName="confirmHistoricalConflict" />
-                <span>{{ 'passport.anonymousDrafts.editor.add.confirmHistorical' | translate }}</span>
-              </label>
-            }
-            <button appUiButton="primary" type="submit" [disabled]="facade.saving() || (attraction.isHistorical && !rideForm.controls.confirmHistoricalConflict.value)">
+            <label class="anonymous-editor__check anonymous-editor__check--warning">
+              <input type="checkbox" formControlName="confirmHistoricalConflict" />
+              <span>{{ 'passport.anonymousDrafts.editor.add.confirmHistorical' | translate }}</span>
+            </label>
+            <button appUiButton="primary" type="submit" [disabled]="facade.saving()">
               <i class="pi pi-plus" aria-hidden="true"></i>
               <span>{{ 'passport.anonymousDrafts.editor.add.submit' | translate }}</span>
             </button>

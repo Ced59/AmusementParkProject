@@ -40,6 +40,7 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 - Seule une visite serveur en statut `Draft` peut recevoir une fusion.
 - La note privée complète et les passages du brouillon cible doivent être chargés avant que la fusion soit activée.
 - Une heure locale n’est conservée que pour une visite au jour exact disposant d’un fuseau horaire ; elle est normalisée au format API avant import.
+- La confirmation d’une incohérence historique reste disponible pour chaque attraction : une attraction aujourd’hui ouverte peut ne pas l’avoir été à la date ancienne de la visite.
 - Les lots de passages sont bornés à 100 et possèdent chacun une clé idempotente stable.
 - Dès qu’un import est réservé, les modifications, suppressions unitaires et purge globale sont bloquées jusque dans la transaction IndexedDB ; le brouillon reste exportable et récupérable.
 
