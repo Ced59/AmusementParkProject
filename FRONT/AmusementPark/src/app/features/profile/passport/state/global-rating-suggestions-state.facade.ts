@@ -111,6 +111,7 @@ export class GlobalRatingSuggestionsStateFacade {
 
   accept(view: GlobalRatingSuggestionViewModel, accepted: () => void): void {
     this.savingSignal.set(true);
+    this.errorSignal.set(false);
     this.api.recordInteraction(this.toRequest(view, 'Accepted'))
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -154,6 +155,7 @@ export class GlobalRatingSuggestionsStateFacade {
     interactionType: GlobalRatingSuggestionInteractionType
   ): void {
     this.savingSignal.set(true);
+    this.errorSignal.set(false);
     this.api.recordInteraction(this.toRequest(view, interactionType))
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

@@ -69,6 +69,24 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
     expect(facade.suggestions()).toEqual([]);
   });
 
+  it('clears a previous acceptance error when a retry succeeds', () => {
+    api.recordInteraction
+      .mockReturnValueOnce(throwError(() => new Error('offline')))
+      .mockReturnValueOnce(of({ isAvailable: true, isEnabled: true }));
+    const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
+    const accepted = vi.fn();
+    facade.load('en');
+    const suggestion = facade.suggestions()[0];
+
+    facade.accept(suggestion, accepted);
+    expect(facade.error()).toBe(true);
+
+    facade.accept(suggestion, accepted);
+
+    expect(facade.error()).toBe(false);
+    expect(accepted).toHaveBeenCalledTimes(1);
+  });
+
   it('removes a dismissed suggestion and supports an explicit opt-out', () => {
     const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
     facade.load('en');
@@ -79,6 +97,23 @@ describe('GlobalRatingSuggestionsStateFacade', () => {
     facade.setEnabled(false);
     expect(api.setEnabled).toHaveBeenCalledWith(false);
     expect(facade.enabled()).toBe(false);
+  });
+
+  it('clears a previous dismissal error when a retry succeeds', () => {
+    api.recordInteraction
+      .mockReturnValueOnce(throwError(() => new Error('offline')))
+      .mockReturnValueOnce(of({ isAvailable: true, isEnabled: true }));
+    const facade = TestBed.inject(GlobalRatingSuggestionsStateFacade);
+    facade.load('en');
+    const suggestion = facade.suggestions()[0];
+
+    facade.dismiss(suggestion);
+    expect(facade.error()).toBe(true);
+
+    facade.dismiss(suggestion);
+
+    expect(facade.error()).toBe(false);
+    expect(facade.suggestions()).toEqual([]);
   });
 
   it('exposes a recoverable error without inventing a suggestion', () => {

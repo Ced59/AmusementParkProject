@@ -54,5 +54,7 @@ describe('GlobalRatingSuggestionsComponent', () => {
 
     expect(fixture.nativeElement.querySelector('.rating-suggestions')).not.toBeNull();
     expect(fixture.nativeElement.querySelector('[role="alert"]')).not.toBeNull();
+    expect(fixture.nativeElement.querySelector('.rating-suggestions__empty')).toBeNull();
+    expect(fixture.nativeElement.querySelector('.rating-suggestions__footer')).toBeNull();
   });
 });
