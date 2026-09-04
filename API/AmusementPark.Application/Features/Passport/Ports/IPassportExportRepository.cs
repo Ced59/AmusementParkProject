@@ -43,4 +43,12 @@ public interface IPassportExportRepository
         DateTime minimumExpiresAtUtc,
         int maximumCount,
         CancellationToken cancellationToken);
+
+    Task<int> FailStaleProcessingAsync(
+        DateTime maximumUpdatedAtUtc,
+        DateTime minimumExpiresAtUtc,
+        string errorCode,
+        DateTime failedAtUtc,
+        int maximumCount,
+        CancellationToken cancellationToken);
 }

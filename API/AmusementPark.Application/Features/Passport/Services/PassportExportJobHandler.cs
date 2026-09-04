@@ -145,18 +145,18 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
         PassportExport passportExport,
         CancellationToken cancellationToken)
     {
-        Task<IReadOnlyCollection<Visit>> visitsTask =
-            this.visitRepository.ListAllOwnedForExportAsync(
+        PassportExportSourceBudget sourceBudget = new PassportExportSourceBudget(
+            PassportExportJob.MaximumSourceBytes);
+        IReadOnlyCollection<Visit> visits =
+            await this.visitRepository.ListAllOwnedForExportAsync(
                 passportExport.UserId,
+                sourceBudget,
                 cancellationToken);
-        Task<IReadOnlyCollection<RideOccurrence>> occurrencesTask =
-            this.occurrenceRepository.ListAllOwnedForExportAsync(
+        IReadOnlyCollection<RideOccurrence> occurrences =
+            await this.occurrenceRepository.ListAllOwnedForExportAsync(
                 passportExport.UserId,
+                sourceBudget,
                 cancellationToken);
-        await Task.WhenAll(visitsTask, occurrencesTask);
-
-        IReadOnlyCollection<Visit> visits = await visitsTask;
-        IReadOnlyCollection<RideOccurrence> occurrences = await occurrencesTask;
         string[] parkIds = visits.Select(static visit => visit.ParkId)
             .Concat(occurrences.Select(static occurrence => occurrence.ParkId))
             .Distinct(StringComparer.Ordinal)

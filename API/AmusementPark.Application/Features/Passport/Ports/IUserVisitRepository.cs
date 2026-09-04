@@ -35,6 +35,7 @@ public interface IUserVisitRepository
 
     Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
+        PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken);
 
     Task<bool> TryConfirmOwnedVersionAsync(

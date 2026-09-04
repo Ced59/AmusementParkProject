@@ -11,6 +11,7 @@ public sealed class PassportExportReconciliationBackgroundService : BackgroundSe
 {
     internal static readonly TimeSpan PollInterval = TimeSpan.FromMinutes(1);
     internal static readonly TimeSpan MinimumPendingAge = TimeSpan.FromSeconds(30);
+    internal static readonly TimeSpan MaximumProcessingAge = TimeSpan.FromMinutes(12);
     private const int BatchSize = 20;
     private readonly IServiceScopeFactory scopeFactory;
     private readonly ILogger<PassportExportReconciliationBackgroundService> logger;
@@ -55,6 +56,13 @@ public sealed class PassportExportReconciliationBackgroundService : BackgroundSe
         PassportExportScheduler scheduler =
             scope.ServiceProvider.GetRequiredService<PassportExportScheduler>();
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        _ = await repository.FailStaleProcessingAsync(
+            nowUtc.Subtract(MaximumProcessingAge),
+            nowUtc,
+            PassportExportErrorCodes.TimedOut,
+            nowUtc,
+            BatchSize,
+            cancellationToken);
         IReadOnlyCollection<PassportExport> exports =
             await repository.ListPendingForReconciliationAsync(
                 nowUtc.Subtract(MinimumPendingAge),
