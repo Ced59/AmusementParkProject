@@ -47,7 +47,7 @@ export class SeoRoutePolicyService {
   }
 
   isAccountRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
+    return /^\/[a-z]{2}\/(?:profile|passport|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
   }
 
   isSharedUserRankingRoute(url: string): boolean {

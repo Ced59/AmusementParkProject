@@ -33,8 +33,26 @@ export function isSupportedPassportAnonymousDraft(value: unknown): value is Pass
       (total: number, ride: PassportAnonymousRideDraft): number => total + ride.count,
       0
     ) <= PASSPORT_ANONYMOUS_DRAFT_MAX_RIDE_COUNT
+    && isPendingImport(value['pendingImport'])
     && isIsoDate(value['createdAtUtc'])
     && isIsoDate(value['updatedAtUtc']);
+}
+
+function isPendingImport(value: unknown): boolean {
+  if (value === undefined || value === null) {
+    return true;
+  }
+
+  if (!isRecord(value)
+    || (value['choice'] !== 'Separate' && value['choice'] !== 'Merge')
+    || !isNullableBoundedString(value['targetVisitId'], 128)
+    || (value['metadataChoice'] !== 'KeepServer' && value['metadataChoice'] !== 'UseLocal')
+    || !isIsoDate(value['startedAtUtc'])) {
+    return false;
+  }
+
+  return value['choice'] === 'Separate'
+    || isBoundedRequiredString(value['targetVisitId'], 128);
 }
 
 function isVisit(value: unknown): value is CreatePassportVisitRequest {

@@ -14,6 +14,8 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isAdminRoute('/fr/admin/content')).toBe(true);
     expect(service.isAdminRoute('/fr/administration-guide')).toBe(false);
     expect(service.isAccountRoute('/en/reset-password/token')).toBe(true);
+    expect(service.isAccountRoute('/fr/passport/local')).toBe(true);
+    expect(service.isAccountRoute('/fr/passport/local/draft-1')).toBe(true);
     expect(service.isAccountRoute('/en/park/reset-password-land')).toBe(false);
   });
 

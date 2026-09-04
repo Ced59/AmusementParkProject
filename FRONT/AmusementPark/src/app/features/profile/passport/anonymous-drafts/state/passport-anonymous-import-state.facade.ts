@@ -13,6 +13,7 @@ import {
   PassportVisitPage,
   UpdatePassportVisitRequest
 } from '@app/models/passport/passport-visit.models';
+import { normalizeTimeForApi } from '../../mappers/passport-visit-editor.mapper';
 import {
   PassportAnonymousDraft,
   PassportAnonymousDraftPreview,
@@ -86,9 +87,9 @@ export class PassportAnonymousImportStateFacade {
           serverRides: null,
           decision: {
             draftId: draft.id,
-            choice: 'Separate',
-            targetVisitId: null,
-            metadataChoice: 'KeepServer'
+            choice: draft.pendingImport?.choice ?? 'Separate',
+            targetVisitId: draft.pendingImport?.targetVisitId ?? null,
+            metadataChoice: draft.pendingImport?.metadataChoice ?? 'KeepServer'
           }
         })));
     } catch {
@@ -125,6 +126,14 @@ export class PassportAnonymousImportStateFacade {
 
       this.previewsSignal.set(compared);
       this.comparisonPreparedSignal.set(true);
+      for (const preview of compared) {
+        const lockedTargetId: string | null = preview.draft.pendingImport?.choice === 'Merge'
+          ? preview.draft.pendingImport.targetVisitId
+          : null;
+        if (lockedTargetId) {
+          await this.setTargetVisit(preview.draft.id, lockedTargetId);
+        }
+      }
     } catch {
       this.errorKeySignal.set('passport.anonymousDrafts.import.errors.preview');
     } finally {
@@ -135,7 +144,7 @@ export class PassportAnonymousImportStateFacade {
   setChoice(draftId: string, choice: PassportAnonymousImportChoice): void {
     this.previewsSignal.update((previews: PassportAnonymousDraftPreview[]): PassportAnonymousDraftPreview[] =>
       previews.map((preview: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview =>
-        preview.draft.id === draftId
+        preview.draft.id === draftId && !preview.draft.pendingImport
           ? {
               ...preview,
               selectedTarget: choice === 'Merge' ? preview.selectedTarget : null,
@@ -156,7 +165,10 @@ export class PassportAnonymousImportStateFacade {
     const listedTarget: PassportVisit | undefined = preview?.similarVisits.find(
       (visit: PassportVisit): boolean => visit.id === visitId && visit.status === 'Draft'
     );
-    if (!preview || !listedTarget) {
+    if (!preview
+      || (preview.draft.pendingImport
+        && preview.draft.pendingImport.targetVisitId !== visitId)
+      || !listedTarget) {
       this.errorKeySignal.set('passport.anonymousDrafts.import.errors.invalidTarget');
       return;
     }
@@ -213,8 +225,14 @@ export class PassportAnonymousImportStateFacade {
   setMetadataChoice(draftId: string, choice: PassportAnonymousMetadataChoice): void {
     this.updatePreview(draftId, (preview: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
       ...preview,
-      decision: { ...preview.decision, metadataChoice: choice }
+      decision: preview.draft.pendingImport
+        ? preview.decision
+        : { ...preview.decision, metadataChoice: choice }
     }));
+  }
+
+  isImportLocked(preview: PassportAnonymousDraftPreview): boolean {
+    return preview.draft.pendingImport !== undefined && preview.draft.pendingImport !== null;
   }
 
   canImport(): boolean {
@@ -297,15 +315,20 @@ export class PassportAnonymousImportStateFacade {
     }
 
     try {
+      const lockedDraft: PassportAnonymousDraft = await this.lockImportIntent(preview);
       const target: PassportVisit = preview.decision.choice === 'Separate'
-        ? await this.createVisit(preview.draft)
+        ? await this.createVisit(lockedDraft)
         : await this.prepareMergeTarget(preview);
+      const persistedDraft: PassportAnonymousDraft = await this.lockImportTarget(
+        lockedDraft,
+        target.id
+      );
       const importedRideCount: number = await this.importRides(
-        preview.draft,
+        persistedDraft,
         target.id,
         preview.decision
       );
-      await this.store.delete(preview.draft.id);
+      await this.store.delete(persistedDraft.id);
       return this.reportItem(
         preview,
         preview.decision.choice === 'Separate' ? 'Imported' : 'Merged',
@@ -324,12 +347,76 @@ export class PassportAnonymousImportStateFacade {
     }
   }
 
+  private async lockImportIntent(
+    preview: PassportAnonymousDraftPreview
+  ): Promise<PassportAnonymousDraft> {
+    const existingIntent = preview.draft.pendingImport;
+    if (existingIntent) {
+      if (existingIntent.choice !== preview.decision.choice
+        || existingIntent.targetVisitId !== preview.decision.targetVisitId
+        || existingIntent.metadataChoice !== preview.decision.metadataChoice) {
+        throw new Error('passport-anonymous-import.intent-mismatch');
+      }
+
+      return preview.draft;
+    }
+
+    if (preview.decision.choice === 'Ignore'
+      || (preview.decision.choice === 'Merge' && !preview.decision.targetVisitId)) {
+      throw new Error('passport-anonymous-import.intent-invalid');
+    }
+
+    const lockedDraft: PassportAnonymousDraft = {
+      ...preview.draft,
+      pendingImport: {
+        choice: preview.decision.choice,
+        targetVisitId: preview.decision.targetVisitId,
+        metadataChoice: preview.decision.metadataChoice,
+        startedAtUtc: new Date().toISOString()
+      },
+      updatedAtUtc: new Date().toISOString()
+    };
+    await this.store.save(lockedDraft);
+    this.updatePreviewDraft(lockedDraft);
+    return lockedDraft;
+  }
+
+  private async lockImportTarget(
+    draft: PassportAnonymousDraft,
+    targetVisitId: string
+  ): Promise<PassportAnonymousDraft> {
+    const normalizedTargetVisitId: string = targetVisitId.trim();
+    const pendingImport = draft.pendingImport;
+    if (!normalizedTargetVisitId || !pendingImport) {
+      throw new Error('passport-anonymous-import.target-lock-invalid');
+    }
+
+    if (pendingImport.targetVisitId) {
+      if (pendingImport.targetVisitId !== normalizedTargetVisitId) {
+        throw new Error('passport-anonymous-import.target-lock-mismatch');
+      }
+
+      return draft;
+    }
+
+    const lockedDraft: PassportAnonymousDraft = {
+      ...draft,
+      pendingImport: { ...pendingImport, targetVisitId: normalizedTargetVisitId },
+      updatedAtUtc: new Date().toISOString()
+    };
+    await this.store.save(lockedDraft);
+    this.updatePreviewDraft(lockedDraft);
+    return lockedDraft;
+  }
+
   private async createVisit(draft: PassportAnonymousDraft): Promise<PassportVisit> {
     const created: PassportVisit = await firstValueFrom(
       this.visitsApi.createVisit(draft.visit, draft.visitOperationId)
     );
     if (created.parkId !== draft.visit.parkId
-      || !this.hasExactDate(created.date, draft.visit.date)) {
+      || !this.hasExactDate(created.date, draft.visit.date)
+      || (draft.pendingImport?.targetVisitId
+        && created.id !== draft.pendingImport.targetVisitId)) {
       throw new Error('passport-anonymous-import.visit-ack-mismatch');
     }
 
@@ -391,7 +478,10 @@ export class PassportAnonymousImportStateFacade {
       (ride: PassportAnonymousRideDraft): CreatePassportRideOccurrenceBatchItem[] =>
         Array.from({ length: ride.count }, (): CreatePassportRideOccurrenceBatchItem => ({
           parkItemId: ride.parkItemId,
-          moment: ride.moment,
+          moment: {
+            localTime: normalizeTimeForApi(ride.moment.localTime),
+            isApproximate: ride.moment.localTime !== null && ride.moment.isApproximate
+          },
           status: ride.status,
           privateNote: ride.privateNote,
           confirmHistoricalConflict: ride.confirmHistoricalConflict,
@@ -497,6 +587,21 @@ export class PassportAnonymousImportStateFacade {
     this.previewsSignal.update((previews: PassportAnonymousDraftPreview[]): PassportAnonymousDraftPreview[] =>
       previews.map((preview: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview =>
         preview.draft.id === draftId ? update(preview) : preview));
+  }
+
+  private updatePreviewDraft(draft: PassportAnonymousDraft): void {
+    this.updatePreview(draft.id, (preview: PassportAnonymousDraftPreview): PassportAnonymousDraftPreview => ({
+      ...preview,
+      draft,
+      decision: draft.pendingImport
+        ? {
+            draftId: draft.id,
+            choice: draft.pendingImport.choice,
+            targetVisitId: draft.pendingImport.targetVisitId,
+            metadataChoice: draft.pendingImport.metadataChoice
+          }
+        : preview.decision
+    }));
   }
 
   private reportItem(

@@ -17,6 +17,7 @@ export interface PassportAnonymousDraft {
   parkName: string;
   visit: CreatePassportVisitRequest;
   rides: PassportAnonymousRideDraft[];
+  pendingImport?: PassportAnonymousPendingImport | null;
   createdAtUtc: string;
   updatedAtUtc: string;
 }
@@ -24,6 +25,13 @@ export interface PassportAnonymousDraft {
 export type PassportAnonymousImportChoice = 'Separate' | 'Merge' | 'Ignore';
 
 export type PassportAnonymousMetadataChoice = 'KeepServer' | 'UseLocal';
+
+export interface PassportAnonymousPendingImport {
+  choice: Exclude<PassportAnonymousImportChoice, 'Ignore'>;
+  targetVisitId: string | null;
+  metadataChoice: PassportAnonymousMetadataChoice;
+  startedAtUtc: string;
+}
 
 export interface PassportAnonymousImportDecision {
   draftId: string;

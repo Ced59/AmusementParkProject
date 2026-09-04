@@ -16,6 +16,7 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 6. Pour chaque visite, l’utilisateur choisit de la garder séparée, de la fusionner avec un brouillon serveur après aperçu, ou de l’ignorer.
 7. L’import utilise les identifiants d’opération stables du brouillon. Les passages importés portent la source métier `Import`.
 8. Le brouillon local n’est supprimé qu’après vérification des accusés de réception de la visite et de tous ses passages. Un échec ou une réponse ambiguë conserve le brouillon pour une reprise idempotente.
+9. Dès la première mutation serveur, le brouillon mémorise la stratégie et la cible choisies. Une reprise reste verrouillée sur cette cible et réutilise les mêmes opérations de lot.
 
 ## Frontières d’architecture
 
@@ -32,9 +33,12 @@ Cette étape réduit la friction à la première utilisation sans affaiblir la c
 - Le schéma local est versionné et validé récursivement avant lecture ou écriture.
 - Un brouillon est borné à 2 000 passages développés afin de limiter la mémoire, les temps de traitement et le nombre d’appels.
 - Les routes locales sont rendues côté client et marquées `noindex`; aucun contenu personnel n’entre dans le HTML SSR.
+- Les métadonnées navigateur de ces routes réutilisent la politique privée du compte et ne présentent jamais une fausse page introuvable.
 - La simple détection locale ne déclenche aucun appel contenant un parc, une date, une note ou un passage.
 - Une même date et un même parc ne provoquent jamais une fusion automatique.
 - Seule une visite serveur en statut `Draft` peut recevoir une fusion.
+- La note privée complète et les passages du brouillon cible doivent être chargés avant que la fusion soit activée.
+- Une heure locale n’est conservée que pour une visite au jour exact disposant d’un fuseau horaire ; elle est normalisée au format API avant import.
 - Les lots de passages sont bornés à 100 et possèdent chacun une clé idempotente stable.
 
 ## Responsive
@@ -50,6 +54,9 @@ Les largeurs de validation visuelle sont 320, 360, 390 et 768 pixels.
 - création séparée et suppression locale seulement après accusés vérifiés ;
 - reprise d’une mise à jour ambiguë avant import des passages ;
 - conservation locale si un accusé serveur est incohérent ;
+- verrouillage d’une reprise partielle sur la visite et les clés de lot originales ;
+- refus d’une divergence sur le caractère approximatif de la date ;
+- chargement de la note privée complète avant fusion ;
 - source `Import` imposée par le contrôleur et propagée jusqu’au domaine ;
 - validation du schéma local et de sa borne de volume ;
 - dernière recherche d’attractions prioritaire en cas de réponses désordonnées ;

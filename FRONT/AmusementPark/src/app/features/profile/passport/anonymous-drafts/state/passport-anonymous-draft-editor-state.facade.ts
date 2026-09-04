@@ -1,4 +1,4 @@
-import { DestroyRef, Inject, Injectable, Signal, inject, signal } from '@angular/core';
+import { DestroyRef, Inject, Injectable, Signal, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { take } from 'rxjs';
 
@@ -47,6 +47,10 @@ export class PassportAnonymousDraftEditorStateFacade {
   readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
   readonly hasMoreAttractions: Signal<boolean> = this.hasMoreAttractionsSignal.asReadonly();
+  readonly acceptsLocalTime: Signal<boolean> = computed((): boolean => {
+    const draft: PassportAnonymousDraft | null = this.draftSignal();
+    return draft?.visit.date.precision === 'Day' && !!draft.visit.timeZoneId?.trim();
+  });
 
   constructor(
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT)
@@ -107,7 +111,9 @@ export class PassportAnonymousDraftEditorStateFacade {
       return false;
     }
 
-    const localTime: string | null = selection.localTime.trim() || null;
+    const localTime: string | null = this.acceptsLocalTime()
+      ? selection.localTime.trim() || null
+      : null;
     if (localTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(localTime)) {
       this.errorKeySignal.set('passport.anonymousDrafts.editor.errors.invalidRide');
       return false;
@@ -119,7 +125,7 @@ export class PassportAnonymousDraftEditorStateFacade {
       attractionName,
       moment: {
         localTime,
-        isApproximate: selection.isApproximate
+        isApproximate: localTime !== null && selection.isApproximate
       },
       status: selection.status,
       privateNote: selection.privateNote.trim() || null,

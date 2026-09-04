@@ -27,6 +27,27 @@ describe('isSupportedPassportAnonymousDraft', () => {
 
     expect(isSupportedPassportAnonymousDraft({ ...createDraft(), rides })).toBe(false);
   });
+
+  it('accepts a locked retry target and rejects an incomplete merge lock', () => {
+    expect(isSupportedPassportAnonymousDraft({
+      ...createDraft(),
+      pendingImport: {
+        choice: 'Merge',
+        targetVisitId: 'visit-1',
+        metadataChoice: 'KeepServer',
+        startedAtUtc: '2026-09-04T11:00:00.000Z'
+      }
+    })).toBe(true);
+    expect(isSupportedPassportAnonymousDraft({
+      ...createDraft(),
+      pendingImport: {
+        choice: 'Merge',
+        targetVisitId: null,
+        metadataChoice: 'KeepServer',
+        startedAtUtc: '2026-09-04T11:00:00.000Z'
+      }
+    })).toBe(false);
+  });
 });
 
 function createDraft(): PassportAnonymousDraft {

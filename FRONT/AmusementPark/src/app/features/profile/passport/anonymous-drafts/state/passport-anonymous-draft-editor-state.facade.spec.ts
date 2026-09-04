@@ -56,6 +56,40 @@ describe('PassportAnonymousDraftEditorStateFacade', () => {
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.editor.errors.save');
   });
 
+  it('omits local time when the visit has no exact day and time zone', async () => {
+    const baseDraft: PassportAnonymousDraft = createDraft();
+    const draft: PassportAnonymousDraft = {
+      ...baseDraft,
+      visit: {
+        ...baseDraft.visit,
+        date: { year: 2026, month: 9, day: null, precision: 'Month', isApproximate: true },
+        timeZoneId: null
+      }
+    };
+    const save = vi.fn(async (): Promise<void> => undefined);
+    const facade: PassportAnonymousDraftEditorStateFacade = createFacade(draft, save);
+    await facade.load(draft.id);
+
+    const saved: boolean = await facade.addRide({
+      parkItemId: 'item-1',
+      attractionName: 'Attraction test',
+      status: 'Completed',
+      count: 1,
+      localTime: '10:30',
+      isApproximate: true,
+      privateNote: '',
+      confirmHistoricalConflict: false
+    });
+
+    expect(saved).toBe(true);
+    expect(facade.acceptsLocalTime()).toBe(false);
+    expect(save).toHaveBeenCalledWith(expect.objectContaining({
+      rides: [expect.objectContaining({
+        moment: { localTime: null, isApproximate: false }
+      })]
+    }));
+  });
+
   it('keeps only the latest attraction search response', async () => {
     const oldResponse = new Subject<PagedResult<ParkItem>>();
     const latestResponse = new Subject<PagedResult<ParkItem>>();

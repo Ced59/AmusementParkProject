@@ -1,6 +1,9 @@
 import { of, throwError } from 'rxjs';
 
-import { PassportRideOccurrence } from '@app/models/passport/passport-ride-occurrence.models';
+import {
+  CreatePassportRideOccurrencesBatchRequest,
+  PassportRideOccurrence
+} from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import { PassportAnonymousDraftStorePort } from './passport-anonymous-draft-store.ports';
@@ -68,7 +71,13 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(importBatch).toHaveBeenCalledTimes(1);
     expect(importBatch).toHaveBeenCalledWith(
       'server-1',
-      expect.objectContaining({ items: expect.any(Array) }),
+      expect.objectContaining({
+        items: expect.arrayContaining([
+          expect.objectContaining({
+            moment: { localTime: '10:30:00', isApproximate: false }
+          })
+        ])
+      }),
       draft.rideOperationId
     );
     expect(deleteDraft).toHaveBeenCalledWith(draft.id);
@@ -205,6 +214,66 @@ describe('PassportAnonymousImportStateFacade', () => {
     expect(facade.previews()).toHaveLength(1);
   });
 
+  it('locks a partial retry to the original visit and stable chunk operations', async () => {
+    const baseDraft: PassportAnonymousDraft = createDraft();
+    const draft: PassportAnonymousDraft = {
+      ...baseDraft,
+      rides: [
+        { ...baseDraft.rides[0], count: 100 },
+        { ...baseDraft.rides[0], id: 'ride-2', count: 1 }
+      ]
+    };
+    const deleteDraft = vi.fn(async (): Promise<void> => undefined);
+    const saveDraft = vi.fn(async (): Promise<void> => undefined);
+    const createVisitRequest = vi.fn(() => of(createVisit({ id: 'server-1' })));
+    let importAttempt: number = 0;
+    const importBatch = vi.fn((
+      visitId: string,
+      request: CreatePassportRideOccurrencesBatchRequest,
+      _operationId: string
+    ) => {
+      importAttempt += 1;
+      if (importAttempt === 2) {
+        return throwError(() => new Error('second chunk unavailable'));
+      }
+
+      return of({
+        occurrences: request.items.map((_: unknown, index: number): PassportRideOccurrence =>
+          createOccurrence(`occurrence-${importAttempt}-${index}`, visitId)),
+        wasReplayed: importAttempt === 3,
+        wasOrderNormalized: false
+      });
+    });
+    const facade: PassportAnonymousImportStateFacade = new PassportAnonymousImportStateFacade(
+      createStore([draft], deleteDraft, saveDraft),
+      createVisitsPort({ createVisit: createVisitRequest }),
+      createOccurrencesPort({ importBatch })
+    );
+    await facade.load();
+    await facade.prepareComparison(true);
+
+    await facade.importAll(true);
+    facade.setChoice(draft.id, 'Ignore');
+
+    expect(facade.report()).toMatchObject({ failedCount: 1 });
+    expect(facade.previews()[0].draft.pendingImport).toMatchObject({
+      choice: 'Separate',
+      targetVisitId: 'server-1'
+    });
+    expect(facade.previews()[0].decision.choice).toBe('Separate');
+
+    await facade.importAll(true);
+
+    expect(createVisitRequest).toHaveBeenCalledTimes(2);
+    expect(importBatch).toHaveBeenCalledTimes(4);
+    expect(importBatch.mock.calls[0][2]).toBe(importBatch.mock.calls[2][2]);
+    expect(importBatch.mock.calls[1][2]).toBe(importBatch.mock.calls[3][2]);
+    expect(saveDraft).toHaveBeenCalled();
+    expect(deleteDraft).toHaveBeenCalledWith(draft.id);
+    expect(facade.report()).toMatchObject({ importedVisitCount: 1, failedCount: 0 });
+    expect(facade.previews()).toEqual([]);
+  });
+
   it('keeps the local draft when the visit acknowledgement changes the approximate-date flag', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const deleteDraft = vi.fn(async (): Promise<void> => undefined);
@@ -251,13 +320,14 @@ describe('PassportAnonymousImportStateFacade', () => {
 
 function createStore(
   drafts: PassportAnonymousDraft[],
-  deleteDraft: (draftId: string) => Promise<void> = async (): Promise<void> => undefined
+  deleteDraft: (draftId: string) => Promise<void> = async (): Promise<void> => undefined,
+  saveDraft: (draft: PassportAnonymousDraft) => Promise<void> = async (): Promise<void> => undefined
 ): PassportAnonymousDraftStorePort {
   return {
     isAvailable: (): boolean => true,
     list: async (): Promise<PassportAnonymousDraft[]> => drafts,
     get: async (): Promise<PassportAnonymousDraft | null> => drafts[0] ?? null,
-    save: async (): Promise<void> => undefined,
+    save: saveDraft,
     delete: deleteDraft,
     clear: async (): Promise<void> => undefined
   };

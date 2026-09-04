@@ -46,21 +46,21 @@
           <fieldset class="anonymous-import__choices">
             <legend>{{ 'passport.anonymousDrafts.import.choiceLegend' | translate }}</legend>
             <label>
-              <input type="radio" [name]="'choice-' + preview.draft.id" value="Separate" [checked]="preview.decision.choice === 'Separate'" (change)="setChoice(preview.draft.id, 'Separate')" />
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Separate" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Separate'" (change)="setChoice(preview.draft.id, 'Separate')" />
               <span>
                 <strong>{{ 'passport.anonymousDrafts.import.choices.separate' | translate }}</strong>
                 <small>{{ 'passport.anonymousDrafts.import.choices.separateHint' | translate }}</small>
               </span>
             </label>
-            <label [class.anonymous-import__choice--disabled]="!hasMergeCandidate(preview)">
-              <input type="radio" [name]="'choice-' + preview.draft.id" value="Merge" [disabled]="!hasMergeCandidate(preview)" [checked]="preview.decision.choice === 'Merge'" (change)="setChoice(preview.draft.id, 'Merge')" />
+            <label [class.anonymous-import__choice--disabled]="!hasMergeCandidate(preview) || facade.isImportLocked(preview)">
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Merge" [disabled]="!hasMergeCandidate(preview) || facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Merge'" (change)="setChoice(preview.draft.id, 'Merge')" />
               <span>
                 <strong>{{ 'passport.anonymousDrafts.import.choices.merge' | translate }}</strong>
                 <small>{{ 'passport.anonymousDrafts.import.choices.mergeHint' | translate }}</small>
               </span>
             </label>
             <label>
-              <input type="radio" [name]="'choice-' + preview.draft.id" value="Ignore" [checked]="preview.decision.choice === 'Ignore'" (change)="setChoice(preview.draft.id, 'Ignore')" />
+              <input type="radio" [name]="'choice-' + preview.draft.id" value="Ignore" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.choice === 'Ignore'" (change)="setChoice(preview.draft.id, 'Ignore')" />
               <span>
                 <strong>{{ 'passport.anonymousDrafts.import.choices.ignore' | translate }}</strong>
                 <small>{{ 'passport.anonymousDrafts.import.choices.ignoreHint' | translate }}</small>
@@ -72,7 +72,7 @@
             <section class="anonymous-import__merge">
               <label>
                 <span>{{ 'passport.anonymousDrafts.import.targetLabel' | translate }}</span>
-                <select [value]="preview.decision.targetVisitId || ''" (change)="setTarget(preview.draft.id, $any($event.target).value)">
+                <select [value]="preview.decision.targetVisitId || ''" [disabled]="facade.isImportLocked(preview)" (change)="setTarget(preview.draft.id, $any($event.target).value)">
                   <option value="">{{ 'passport.anonymousDrafts.import.targetPlaceholder' | translate }}</option>
                   @for (candidate of preview.similarVisits; track candidate.id) {
                     <option [value]="candidate.id" [disabled]="candidate.status !== 'Draft'">
@@ -121,11 +121,11 @@
                 <fieldset class="anonymous-import__metadata">
                   <legend>{{ 'passport.anonymousDrafts.import.metadata.legend' | translate }}</legend>
                   <label>
-                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="KeepServer" [checked]="preview.decision.metadataChoice === 'KeepServer'" (change)="setMetadataChoice(preview.draft.id, 'KeepServer')" />
+                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="KeepServer" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.metadataChoice === 'KeepServer'" (change)="setMetadataChoice(preview.draft.id, 'KeepServer')" />
                     <span>{{ 'passport.anonymousDrafts.import.metadata.keepServer' | translate }}</span>
                   </label>
                   <label>
-                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="UseLocal" [checked]="preview.decision.metadataChoice === 'UseLocal'" (change)="setMetadataChoice(preview.draft.id, 'UseLocal')" />
+                    <input type="radio" [name]="'metadata-' + preview.draft.id" value="UseLocal" [disabled]="facade.isImportLocked(preview)" [checked]="preview.decision.metadataChoice === 'UseLocal'" (change)="setMetadataChoice(preview.draft.id, 'UseLocal')" />
                     <span>{{ 'passport.anonymousDrafts.import.metadata.useLocal' | translate }}</span>
                   </label>
                 </fieldset>
