@@ -276,7 +276,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     {
         ArgumentNullException.ThrowIfNull(mutation);
         UserRideOccurrenceCreationOperationDocument? operation = null;
-        if (mutation.ContentFenceToken.HasValue)
+        if (mutation.ContentFenceToken.HasValue
+            || mutation.Kind == PendingPassportMutationKind.Reorder)
         {
             operation = await this.LoadCreationOperationAsync(
                 mutation.UserId,
@@ -288,6 +289,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             {
                 return false;
             }
+        }
+
+        if (mutation.Kind == PendingPassportMutationKind.Reorder
+            && await this.HasUnrevertedReorderAllocationAsync(
+                mutation,
+                cancellationToken))
+        {
+            return false;
         }
 
         if (mutation.Kind == PendingPassportMutationKind.Creation
@@ -305,6 +314,26 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             mutation.ContentFenceToken,
             rejectedAtUtc,
             cancellationToken);
+    }
+
+    private async Task<bool> HasUnrevertedReorderAllocationAsync(
+        PendingPassportMutationVisit mutation,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
+            Builders<UserRideOccurrenceDocument>.Filter;
+        FilterDefinition<UserRideOccurrenceDocument> filter =
+            filters.Eq(static document => document.UserId, mutation.UserId)
+            & filters.Eq(static document => document.VisitId, mutation.VisitId.Value)
+            & filters.Eq(
+                static document => document.LastReorderOperationKeyHash,
+                mutation.OperationKeyHash);
+        return await this.collection
+            .Find(UserRideOccurrenceMongoDefinitions.WithContentFence(
+                filter,
+                mutation.ContentFenceToken))
+            .Limit(1)
+            .AnyAsync(cancellationToken);
     }
 
     public async Task<RideOccurrenceCreationKeyReservationResult>

@@ -1,6 +1,20 @@
 {
-  "version": "5.0.30",
+  "version": "5.0.31",
   "history": [
+    {
+      "version": "5.0.31",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les visites bloquées peuvent de nouveau être terminées.",
+        "en": "Blocked visits can be completed again.",
+        "de": "Blockierte Besuche können wieder abgeschlossen werden.",
+        "nl": "Geblokkeerde bezoeken kunnen weer worden voltooid.",
+        "it": "Le visite bloccate possono essere nuovamente completate.",
+        "es": "Las visitas bloqueadas pueden volver a completarse.",
+        "pl": "Zablokowane wizyty można ponownie oznaczyć jako zakończone.",
+        "pt": "As visitas bloqueadas podem voltar a ser concluídas."
+      }
+    },
     {
       "version": "5.0.30",
       "releasedAt": "2026-09-04",
