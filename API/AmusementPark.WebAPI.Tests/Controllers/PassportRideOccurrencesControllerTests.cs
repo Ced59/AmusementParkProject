@@ -233,6 +233,8 @@ public sealed class PassportRideOccurrencesControllerTests
         Assert.Equal("Attraction", body.Target?.Category);
         Assert.Equal("Operating", body.Target?.LifecycleStatus);
         Assert.False(body.Target!.IsHistoricalSnapshot);
+        Assert.Equal(new DateOnly(2000, 1, 1), body.Target.OpeningDate);
+        Assert.Equal(new DateOnly(2025, 12, 31), body.Target.ClosingDate);
         get.VerifyAll();
     }
 
@@ -386,6 +388,8 @@ public sealed class PassportRideOccurrencesControllerTests
                 "Current ride name",
                 "Attraction",
                 "Operating",
-                false));
+                false,
+                new DateOnly(2000, 1, 1),
+                new DateOnly(2025, 12, 31)));
     }
 }

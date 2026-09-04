@@ -25,10 +25,18 @@ describe('passport visit editor mapper', () => {
       attractionDetails: { status: 'Removed' }
     };
 
-    expect(mapParkItemToVisitEditorAttraction(attraction)).toEqual(expect.objectContaining({
+    expect(mapParkItemToVisitEditorAttraction(attraction, {
+      parkItemId: 'ride-1',
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '1990-01-01',
+      closingDate: '2010-12-31'
+    })).toEqual(expect.objectContaining({
       id: 'ride-1',
       isHistorical: true,
-      lifecycleStatus: 'Removed'
+      lifecycleStatus: 'Removed',
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '1990-01-01',
+      closingDate: '2010-12-31'
     }));
     expect(mapParkItemToVisitEditorAttraction({ ...attraction, category: 'Restaurant' })).toBeNull();
     expect(mapParkZoneToVisitEditorZone({
@@ -45,7 +53,10 @@ describe('passport visit editor mapper', () => {
       name: 'Ride',
       zoneId: null,
       lifecycleStatus: 'Operating',
-      isHistorical: false
+      isHistorical: false,
+      historicalConsistency: 'Verified',
+      openingDate: '2020-01-01',
+      closingDate: null
     });
     const populated = {
       ...selection,

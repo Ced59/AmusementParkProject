@@ -414,8 +414,12 @@
         "time": "Czas lokalny",
         "approximateTime": "Przybliżona godzina",
         "privateNote": "Prywatna notatka",
+        "historicalConflictTitle": "{{attraction}} nie pasuje do daty tej wizyty",
+        "visitDateEvidence": "Data Twojej wizyty: {{date}}",
+        "openingDateEvidence": "Znana data otwarcia: {{date}}",
+        "closingDateEvidence": "Znana data zamknięcia: {{date}}",
         "confirmHistoricalConflict": "Potwierdzam mimo znanej niezgodności dat",
-        "confirmHistoricalConflictHint": "Użyj tej opcji tylko wtedy, gdy masz pewność co do tego wspomnienia.",
+        "confirmHistoricalConflictHint": "Potwierdź tylko wtedy, gdy masz pewność, że ten przejazd odbył się mimo tych dat.",
         "timeUnavailable": "Godzinę można dodać tylko do wizyty z dokładnym dniem i strefą czasową."
       },
       "status": {

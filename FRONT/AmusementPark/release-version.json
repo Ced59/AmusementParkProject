@@ -1,6 +1,20 @@
 {
-  "version": "5.0.32",
+  "version": "5.0.33",
   "history": [
+    {
+      "version": "5.0.33",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les confirmations de date du passeport sont maintenant précises et justifiées.",
+        "en": "Passport date confirmations are now precise and clearly explained.",
+        "de": "Datumsbestätigungen im Besuchspass sind jetzt präzise und klar erklärt.",
+        "nl": "Datumbevestigingen in het paspoort zijn nu precies en duidelijk uitgelegd.",
+        "it": "Le conferme delle date nel passaporto sono ora precise e ben spiegate.",
+        "es": "Las confirmaciones de fecha del pasaporte ahora son precisas y están bien explicadas.",
+        "pl": "Potwierdzenia dat w paszporcie są teraz precyzyjne i jasno wyjaśnione.",
+        "pt": "As confirmações de datas do passaporte são agora precisas e bem explicadas."
+      }
+    },
     {
       "version": "5.0.32",
       "releasedAt": "2026-09-05",

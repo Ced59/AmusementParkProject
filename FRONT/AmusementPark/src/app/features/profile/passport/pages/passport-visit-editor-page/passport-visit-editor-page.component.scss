@@ -694,6 +694,28 @@
   line-height: 1.4;
 }
 
+.passport-historical-conflict {
+  display: grid;
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.35rem;
+  padding: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-warning) 55%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-warning) 10%, var(--app-surface));
+  color: var(--app-text);
+  overflow-wrap: anywhere;
+}
+
+.passport-historical-conflict strong {
+  color: var(--app-heading);
+}
+
+.passport-historical-conflict span {
+  color: var(--app-text-muted);
+  line-height: 1.4;
+}
+
 .passport-selection__submit,
 .passport-timeline__more {
   width: 100%;

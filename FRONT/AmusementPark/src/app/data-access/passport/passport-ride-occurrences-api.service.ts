@@ -7,6 +7,7 @@ import {
   PassportRideOccurrence,
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
+  PassportVisitRideTargetEvaluation,
   ReorderPassportRideOccurrenceRequest,
   UpsertPassportRideAssessmentRequest,
   UpdatePassportRideOccurrenceRequest
@@ -24,6 +25,14 @@ export class PassportRideOccurrencesApiService {
   validateTargets(parkId: string, parkItemIds: string[]): Observable<void> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.validateTargets}`;
     return this.http.post<void>(url, { parkId, parkItemIds });
+  }
+
+  evaluateVisitTargets(
+    visitId: string,
+    parkItemIds: string[]
+  ): Observable<PassportVisitRideTargetEvaluation[]> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.evaluateVisitTargets(visitId)}`;
+    return this.http.post<PassportVisitRideTargetEvaluation[]>(url, { parkItemIds });
   }
 
   list(visitId: string, cursor: string | null = null, limit: number = 50): Observable<PassportRideOccurrencePage> {

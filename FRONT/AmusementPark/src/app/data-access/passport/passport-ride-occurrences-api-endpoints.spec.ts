@@ -36,4 +36,10 @@ describe('PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS', () => {
       'me/passport/occurrences/ride%2F1/assessment?expectedVersion=3'
     );
   });
+
+  it('encodes the visit scope for historical consistency evaluation', () => {
+    expect(PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.evaluateVisitTargets('visit/one')).toBe(
+      'me/passport/visits/visit%2Fone/ride-targets:evaluate'
+    );
+  });
 });

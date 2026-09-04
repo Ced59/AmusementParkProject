@@ -14,6 +14,9 @@ export interface PassportVisitEditorAttraction {
   zoneId: string | null;
   lifecycleStatus: string | null;
   isHistorical: boolean;
+  historicalConsistency: PassportHistoricalConsistency;
+  openingDate: string | null;
+  closingDate: string | null;
 }
 
 export interface PassportVisitEditorZone {
@@ -47,6 +50,9 @@ export interface PassportAttractionSelectionDraft {
   isApproximate: boolean;
   privateNote: string;
   confirmHistoricalConflict: boolean;
+  historicalConsistency?: PassportHistoricalConsistency;
+  openingDate?: string | null;
+  closingDate?: string | null;
 }
 
 export interface PassportOccurrenceEditDraft {

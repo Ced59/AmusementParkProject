@@ -414,8 +414,12 @@
         "time": "Ora locale",
         "approximateTime": "Ora approssimativa",
         "privateNote": "Nota privata",
+        "historicalConflictTitle": "{{attraction}} non corrisponde alla data di questa visita",
+        "visitDateEvidence": "Data della tua visita: {{date}}",
+        "openingDateEvidence": "Data di apertura nota: {{date}}",
+        "closingDateEvidence": "Data di chiusura nota: {{date}}",
         "confirmHistoricalConflict": "Confermo nonostante un conflitto di date noto",
-        "confirmHistoricalConflictHint": "Usa questa opzione solo se sei certo di questo ricordo.",
+        "confirmHistoricalConflictHint": "Conferma solo se sei certo che questo giro sia avvenuto nonostante queste date.",
         "timeUnavailable": "Puoi aggiungere un’ora solo a una visita con giorno esatto e fuso orario."
       },
       "status": {

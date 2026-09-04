@@ -1,17 +1,15 @@
-using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
-using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Passport.Services;
 
 public sealed class VisitTargetResolver : IVisitTargetResolver
 {
-    private readonly IParkItemRepository parkItemRepository;
+    private readonly IVisitTargetReadRepository targetReadRepository;
 
-    public VisitTargetResolver(IParkItemRepository parkItemRepository)
+    public VisitTargetResolver(IVisitTargetReadRepository targetReadRepository)
     {
-        this.parkItemRepository = parkItemRepository;
+        this.targetReadRepository = targetReadRepository;
     }
 
     public async Task<IReadOnlyDictionary<string, VisitTarget>> ResolveAsync(
@@ -19,31 +17,13 @@ public sealed class VisitTargetResolver : IVisitTargetResolver
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(parkItemIds);
-        IReadOnlyCollection<ParkItem> parkItems =
-            await this.parkItemRepository.GetByIdsAsync(
+        IReadOnlyCollection<VisitTarget> targets =
+            await this.targetReadRepository.GetByIdsAsync(
                 parkItemIds,
                 cancellationToken);
-        return parkItems.ToDictionary(
-            static parkItem => parkItem.Id,
-            static parkItem => new VisitTarget(
-                parkItem.Id,
-                parkItem.ParkId,
-                parkItem.Name,
-                parkItem.Category,
-                ToDateOnly(parkItem.AttractionDetails?.OpeningDate),
-                ToDateOnly(parkItem.AttractionDetails?.ClosingDate),
-                NormalizeOptional(parkItem.AttractionDetails?.Status)),
+        return targets.ToDictionary(
+            static target => target.ParkItemId,
+            static target => target,
             StringComparer.Ordinal);
-    }
-
-    private static DateOnly? ToDateOnly(DateTime? value)
-    {
-        return value.HasValue ? DateOnly.FromDateTime(value.Value) : null;
-    }
-
-    private static string? NormalizeOptional(string? value)
-    {
-        string normalized = value?.Trim() ?? string.Empty;
-        return normalized.Length == 0 ? null : normalized;
     }
 }

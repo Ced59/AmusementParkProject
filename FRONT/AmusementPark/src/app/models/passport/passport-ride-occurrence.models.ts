@@ -21,6 +21,15 @@ export interface PassportRideOccurrenceTarget {
   category: string | null;
   lifecycleStatus: string | null;
   isHistoricalSnapshot: boolean;
+  openingDate?: string | null;
+  closingDate?: string | null;
+}
+
+export interface PassportVisitRideTargetEvaluation {
+  parkItemId: string;
+  historicalConsistency: PassportHistoricalConsistency;
+  openingDate: string | null;
+  closingDate: string | null;
 }
 
 export interface PassportRideAssessment {

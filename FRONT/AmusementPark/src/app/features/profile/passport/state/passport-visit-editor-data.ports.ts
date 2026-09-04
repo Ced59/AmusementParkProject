@@ -17,7 +17,8 @@ export interface PassportVisitEditorVisitsPort extends Pick<
 
 export interface PassportVisitEditorOccurrencesPort extends Pick<
   PassportRideOccurrencesApiService,
-  'list' | 'get' | 'addBatch' | 'update' | 'delete' | 'reorder' | 'upsertAssessment' | 'deleteAssessment'
+  'list' | 'get' | 'evaluateVisitTargets' | 'addBatch' | 'update' | 'delete' | 'reorder'
+  | 'upsertAssessment' | 'deleteAssessment'
 > {
 }
 

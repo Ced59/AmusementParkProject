@@ -11,7 +11,9 @@ public sealed record RideOccurrenceTargetResult(
     string Name,
     string? Category,
     string? LifecycleStatus,
-    bool IsHistoricalSnapshot);
+    bool IsHistoricalSnapshot,
+    DateOnly? OpeningDate = null,
+    DateOnly? ClosingDate = null);
 
 public sealed record RideAssessmentResult(
     double Value,

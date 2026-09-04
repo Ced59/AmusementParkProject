@@ -50,7 +50,9 @@ internal static class PassportRideOccurrenceResultFactory
                 target.Name,
                 target.Category.ToString(),
                 target.LifecycleStatus,
-                false);
+                false,
+                target.OpeningDate,
+                target.ClosingDate);
         }
 
         return occurrence.HistoricalTarget is null

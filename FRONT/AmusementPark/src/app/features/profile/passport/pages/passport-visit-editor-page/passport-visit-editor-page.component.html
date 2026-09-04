@@ -510,13 +510,25 @@
                       <textarea rows="2" maxlength="4000" [value]="selection.privateNote" (input)="updateSelectionNote(selection.parkItemId, $event)"></textarea>
                     </label>
 
-                    <label class="passport-check passport-entry-form__wide">
-                      <input type="checkbox" [checked]="selection.confirmHistoricalConflict" (change)="updateSelectionHistoricalConfirmation(selection.parkItemId, $event)" />
-                      <span>
-                        <strong>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</strong>
-                        <small>{{ 'passport.editor.fields.confirmHistoricalConflictHint' | translate }}</small>
-                      </span>
-                    </label>
+                    @if (selection.historicalConsistency === 'ConfirmedConflict') {
+                      <div class="passport-historical-conflict passport-entry-form__wide" role="alert">
+                        <strong>{{ 'passport.editor.fields.historicalConflictTitle' | translate:{ attraction: selection.attractionName } }}</strong>
+                        <span>{{ 'passport.editor.fields.visitDateEvidence' | translate:{ date: visitDateLabel() } }}</span>
+                        @if (selection.openingDate) {
+                          <span>{{ 'passport.editor.fields.openingDateEvidence' | translate:{ date: historicalDateLabel(selection.openingDate) } }}</span>
+                        }
+                        @if (selection.closingDate) {
+                          <span>{{ 'passport.editor.fields.closingDateEvidence' | translate:{ date: historicalDateLabel(selection.closingDate) } }}</span>
+                        }
+                      </div>
+                      <label class="passport-check passport-entry-form__wide">
+                        <input type="checkbox" [checked]="selection.confirmHistoricalConflict" (change)="updateSelectionHistoricalConfirmation(selection.parkItemId, $event)" />
+                        <span>
+                          <strong>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</strong>
+                          <small>{{ 'passport.editor.fields.confirmHistoricalConflictHint' | translate }}</small>
+                        </span>
+                      </label>
+                    }
                   </div>
                 </details>
               }
@@ -790,10 +802,25 @@
                               <textarea rows="2" maxlength="4000" [value]="draft.privateNote" (input)="updateEditNote(row.occurrence.id, $event)"></textarea>
                             </label>
 
-                            <label class="passport-check passport-entry-form__wide">
-                              <input type="checkbox" [checked]="draft.confirmHistoricalConflict" (change)="updateEditHistoricalConfirmation(row.occurrence.id, $event)" />
-                              <span>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</span>
-                            </label>
+                            @if (row.historicalConsistency === 'ConfirmedConflict') {
+                              <div class="passport-historical-conflict passport-entry-form__wide" role="status">
+                                <strong>{{ 'passport.editor.fields.historicalConflictTitle' | translate:{ attraction: row.attractionName } }}</strong>
+                                <span>{{ 'passport.editor.fields.visitDateEvidence' | translate:{ date: visitDateLabel() } }}</span>
+                                @if (row.occurrence.target?.openingDate) {
+                                  <span>{{ 'passport.editor.fields.openingDateEvidence' | translate:{ date: historicalDateLabel(row.occurrence.target?.openingDate) } }}</span>
+                                }
+                                @if (row.occurrence.target?.closingDate) {
+                                  <span>{{ 'passport.editor.fields.closingDateEvidence' | translate:{ date: historicalDateLabel(row.occurrence.target?.closingDate) } }}</span>
+                                }
+                              </div>
+                              <label class="passport-check passport-entry-form__wide">
+                                <input type="checkbox" [checked]="draft.confirmHistoricalConflict" (change)="updateEditHistoricalConfirmation(row.occurrence.id, $event)" />
+                                <span>
+                                  <strong>{{ 'passport.editor.fields.confirmHistoricalConflict' | translate }}</strong>
+                                  <small>{{ 'passport.editor.fields.confirmHistoricalConflictHint' | translate }}</small>
+                                </span>
+                              </label>
+                            }
 
                             <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="saveOccurrence(row.occurrence)">
                               {{ 'passport.editor.actions.save' | translate }}

@@ -54,6 +54,10 @@ public sealed class PassportRideOccurrenceTargetDto
     public string? LifecycleStatus { get; init; }
 
     public bool IsHistoricalSnapshot { get; init; }
+
+    public DateOnly? OpeningDate { get; init; }
+
+    public DateOnly? ClosingDate { get; init; }
 }
 
 public sealed class CreatePassportRideOccurrenceRequestDto

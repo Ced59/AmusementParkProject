@@ -1,5 +1,5 @@
-using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -12,27 +12,22 @@ public sealed class VisitTargetResolverTests
     [Fact]
     public async Task ResolveAsync_ShouldMapHistoricalBoundsWithoutFilteringHiddenTargets()
     {
-        Mock<IParkItemRepository> repository =
-            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IVisitTargetReadRepository> repository =
+            new Mock<IVisitTargetReadRepository>(MockBehavior.Strict);
         repository.Setup(value => value.GetByIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == "item-1"),
                 CancellationToken.None))
             .ReturnsAsync(new[]
             {
-                new ParkItem
-                {
-                    Id = "item-1",
-                    ParkId = "park-1",
-                    Name = "Ancienne attraction",
-                    Category = ParkItemCategory.Attraction,
-                    IsVisible = false,
-                    AttractionDetails = new AttractionDetails
-                    {
-                        OpeningDate = new DateTime(1998, 4, 1),
-                        ClosingDate = new DateTime(2010, 9, 30),
-                        Status = "ClosedDefinitively",
-                    },
-                },
+                new VisitTarget(
+                    "item-1",
+                    "park-1",
+                    "Ancienne attraction",
+                    ParkItemCategory.Attraction,
+                    new DateOnly(1998, 4, 1),
+                    new DateOnly(2010, 9, 30),
+                    "ClosedDefinitively",
+                    false),
             });
         VisitTargetResolver resolver = new VisitTargetResolver(repository.Object);
 
@@ -45,6 +40,7 @@ public sealed class VisitTargetResolverTests
         Assert.Equal(new DateOnly(1998, 4, 1), target.OpeningDate);
         Assert.Equal(new DateOnly(2010, 9, 30), target.ClosingDate);
         Assert.Equal("ClosedDefinitively", target.LifecycleStatus);
+        Assert.False(target.IsVisible);
         repository.VerifyAll();
     }
 }
