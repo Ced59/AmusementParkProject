@@ -17,6 +17,7 @@ public sealed class DeleteVisitCommandHandler
     private readonly IPassportExportRepository exportRepository;
     private readonly IVisitContentMutationLeaseManager contentMutationLeaseManager;
     private readonly IPassportPendingMutationReconciler pendingMutationReconciler;
+    private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly VisitPurgeScheduler purgeScheduler;
     private readonly IPassportAuditPublisher auditPublisher;
     private readonly IPassportClock clock;
@@ -27,6 +28,7 @@ public sealed class DeleteVisitCommandHandler
         IPassportExportRepository exportRepository,
         IVisitContentMutationLeaseManager contentMutationLeaseManager,
         IPassportPendingMutationReconciler pendingMutationReconciler,
+        IRideOccurrenceRepository occurrenceRepository,
         VisitPurgeScheduler purgeScheduler,
         IPassportAuditPublisher auditPublisher,
         IPassportClock clock)
@@ -36,6 +38,7 @@ public sealed class DeleteVisitCommandHandler
         this.exportRepository = exportRepository;
         this.contentMutationLeaseManager = contentMutationLeaseManager;
         this.pendingMutationReconciler = pendingMutationReconciler;
+        this.occurrenceRepository = occurrenceRepository;
         this.purgeScheduler = purgeScheduler;
         this.auditPublisher = auditPublisher;
         this.clock = clock;
@@ -131,6 +134,17 @@ public sealed class DeleteVisitCommandHandler
             PassportLeaseCancellation.Link(contentMutationLease, cancellationToken);
         CancellationToken guardedCancellationToken =
             leaseCancellationSource?.Token ?? cancellationToken;
+        if (contentMutationLease is not null
+            && await this.occurrenceRepository.GetPendingMutationFencedAsync(
+                visit.UserId,
+                visit.Id,
+                contentMutationLease.ContentFenceToken,
+                guardedCancellationToken) is not null)
+        {
+            return ApplicationResult<VisitDeletionReceipt>.Failure(
+                PassportApplicationErrors.VisitConcurrencyConflict());
+        }
+
         VisitDeletionImpact impact = await this.deletionStore.GetImpactAsync(
             visit.Id,
             visit.UserId,
