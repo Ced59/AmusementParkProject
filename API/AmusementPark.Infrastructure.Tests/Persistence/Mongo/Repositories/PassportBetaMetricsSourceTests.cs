@@ -34,6 +34,13 @@ public sealed class PassportBetaMetricsSourceTests
                 && group["_id"] == "$userId");
         Assert.Equal(0, cohort[3]["$project"]["_id"].AsInt32);
         Assert.False(cohort[3]["$project"].AsBsonDocument.Contains("userId"));
+        BsonDocument summaryGroup = cohort[4]["$facet"]["summary"][0]["$group"].AsBsonDocument;
+        AssertMilestoneRangeCounter(
+            summaryGroup["usersWithCompletedVisit"],
+            "firstCompletedAt");
+        AssertMilestoneRangeCounter(
+            summaryGroup["usersWithSecondCompletedVisit"],
+            "secondCompletedAt");
     }
 
     [Fact]
@@ -109,5 +116,18 @@ public sealed class PassportBetaMetricsSourceTests
             ["_id"] = date,
             ["count"] = count,
         };
+    }
+
+    private static void AssertMilestoneRangeCounter(
+        BsonValue counter,
+        string fieldName)
+    {
+        BsonArray conditions = counter["$sum"]["$cond"][0]["$and"].AsBsonArray;
+        Assert.Equal($"${fieldName}", conditions[0]["$gte"][0].AsString);
+        Assert.Equal(FromUtc, conditions[0]["$gte"][1].ToUniversalTime());
+        Assert.Equal($"${fieldName}", conditions[1]["$lte"][0].AsString);
+        Assert.Equal(ToUtc, conditions[1]["$lte"][1].ToUniversalTime());
+        Assert.Equal(1, counter["$sum"]["$cond"][1].AsInt32);
+        Assert.Equal(0, counter["$sum"]["$cond"][2].AsInt32);
     }
 }

@@ -150,7 +150,6 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
             {
                 ["_id"] = "$userId",
                 ["completionDates"] = new BsonDocument("$push", "$completedAtUtc"),
-                ["completedVisitCount"] = new BsonDocument("$sum", 1),
             }),
             new BsonDocument("$project", new BsonDocument
             {
@@ -161,7 +160,6 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                 ["secondCompletedAt"] = new BsonDocument(
                     "$arrayElemAt",
                     new BsonArray { "$completionDates", 1 }),
-                ["completedVisitCount"] = 1,
             }),
             new BsonDocument("$facet", new BsonDocument
             {
@@ -170,19 +168,18 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                     new BsonDocument("$group", new BsonDocument
                     {
                         ["_id"] = BsonNull.Value,
-                        ["usersWithCompletedVisit"] = new BsonDocument("$sum", 1),
+                        ["usersWithCompletedVisit"] = new BsonDocument(
+                            "$sum",
+                            BuildMilestoneInRangeCounter(
+                                "firstCompletedAt",
+                                fromUtc,
+                                toUtc)),
                         ["usersWithSecondCompletedVisit"] = new BsonDocument(
                             "$sum",
-                            new BsonDocument(
-                                "$cond",
-                                new BsonArray
-                                {
-                                    new BsonDocument(
-                                        "$gte",
-                                        new BsonArray { "$completedVisitCount", 2 }),
-                                    1,
-                                    0,
-                                })),
+                            BuildMilestoneInRangeCounter(
+                                "secondCompletedAt",
+                                fromUtc,
+                                toUtc)),
                     }),
                 },
                 ["firstVisitDaily"] = BuildMilestoneDailyPipeline(
@@ -195,6 +192,31 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                     toUtc),
             }),
         };
+    }
+
+    private static BsonDocument BuildMilestoneInRangeCounter(
+        string fieldName,
+        DateTime fromUtc,
+        DateTime toUtc)
+    {
+        return new BsonDocument(
+            "$cond",
+            new BsonArray
+            {
+                new BsonDocument(
+                    "$and",
+                    new BsonArray
+                    {
+                        new BsonDocument(
+                            "$gte",
+                            new BsonArray { $"${fieldName}", fromUtc }),
+                        new BsonDocument(
+                            "$lte",
+                            new BsonArray { $"${fieldName}", toUtc }),
+                    }),
+                1,
+                0,
+            });
     }
 
     private static BsonArray BuildMilestoneDailyPipeline(
