@@ -20,6 +20,43 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 public sealed class PassportScopeStatisticsControllerTests
 {
     [Fact]
+    public async Task GetGlobalStatisticsAsync_ShouldUseAuthenticatedOwnerAndMapNames()
+    {
+        Mock<IQueryHandler<
+            GetPassportGlobalStatisticsQuery,
+            ApplicationResult<PassportGlobalStatisticsResult>>> globalHandler = CreateGlobalHandler();
+        globalHandler.Setup(value => value.HandleAsync(
+                new GetPassportGlobalStatisticsQuery("owner-1", 2025, "park-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<PassportGlobalStatisticsResult>.Success(
+                new PassportGlobalStatisticsResult(
+                    2025,
+                    "park-1",
+                    new[] { 2025 },
+                    new[] { new PassportGlobalFilterParkResult("park-1", "Parc test") },
+                    1,
+                    CreateSummary(),
+                    new[] { new PassportGlobalYearActivityResult(2025, 1, 0) },
+                    new[] { new PassportGlobalParkActivityResult("park-1", "Parc test", 1, 0) },
+                    Array.Empty<PassportGlobalItemActivityResult>(),
+                    Array.Empty<PassportGlobalRatingEvolutionResult>())));
+        PassportScopeStatisticsController controller = CreateController(
+            CreateParkHandler(),
+            CreateYearHandler(),
+            authenticated: true,
+            globalHandler: globalHandler);
+
+        IActionResult response = await controller.GetGlobalStatisticsAsync(2025, "park-1");
+
+        PassportGlobalStatisticsDto body = Assert.IsType<PassportGlobalStatisticsDto>(
+            Assert.IsType<OkObjectResult>(response).Value);
+        Assert.Equal("Parc test", Assert.Single(body.AvailableParks).ParkName);
+        Assert.Equal("Parc test", Assert.Single(body.TopParks).ParkName);
+        Assert.Null(typeof(PassportGlobalStatisticsDto).GetProperty("UserId"));
+        globalHandler.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetParkStatisticsAsync_ShouldUseAuthenticatedOwnerAndMapEvidence()
     {
         Mock<IQueryHandler<
@@ -156,6 +193,9 @@ public sealed class PassportScopeStatisticsControllerTests
                 .GetCustomAttribute<ResponseCacheAttribute>());
         Assert.True(cache.NoStore);
         Assert.Equal(
+            "stats",
+            GetRoute(nameof(PassportScopeStatisticsController.GetGlobalStatisticsAsync)));
+        Assert.Equal(
             "parks/{parkId}/stats",
             GetRoute(nameof(PassportScopeStatisticsController.GetParkStatisticsAsync)));
         Assert.Equal(
@@ -200,7 +240,10 @@ public sealed class PassportScopeStatisticsControllerTests
         Mock<IQueryHandler<
             GetPassportYearStatisticsQuery,
             ApplicationResult<PassportYearStatisticsResult>>> yearHandler,
-        bool authenticated)
+        bool authenticated,
+        Mock<IQueryHandler<
+            GetPassportGlobalStatisticsQuery,
+            ApplicationResult<PassportGlobalStatisticsResult>>>? globalHandler = null)
     {
         ClaimsIdentity identity = authenticated
             ? new ClaimsIdentity(
@@ -211,7 +254,14 @@ public sealed class PassportScopeStatisticsControllerTests
                 },
                 "Test")
             : new ClaimsIdentity();
-        return new PassportScopeStatisticsController(parkHandler.Object, yearHandler.Object)
+        Mock<IQueryHandler<
+            GetPassportGlobalStatisticsQuery,
+            ApplicationResult<PassportGlobalStatisticsResult>>> effectiveGlobalHandler =
+            globalHandler ?? CreateGlobalHandler();
+        return new PassportScopeStatisticsController(
+            effectiveGlobalHandler.Object,
+            parkHandler.Object,
+            yearHandler.Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -221,6 +271,15 @@ public sealed class PassportScopeStatisticsControllerTests
                 },
             },
         };
+    }
+
+    private static Mock<IQueryHandler<
+        GetPassportGlobalStatisticsQuery,
+        ApplicationResult<PassportGlobalStatisticsResult>>> CreateGlobalHandler()
+    {
+        return new Mock<IQueryHandler<
+            GetPassportGlobalStatisticsQuery,
+            ApplicationResult<PassportGlobalStatisticsResult>>>(MockBehavior.Strict);
     }
 
     private static Mock<IQueryHandler<

@@ -18,6 +18,12 @@ public sealed record PassportYearStatisticsSource(
 /// </summary>
 public interface IPassportScopeStatisticsSourceReader
 {
+    Task<PassportGlobalStatisticsSource> ReadGlobalAsync(
+        string userId,
+        int? year,
+        string? parkId,
+        CancellationToken cancellationToken);
+
     Task<PassportParkStatisticsSource> ReadParkAsync(
         string userId,
         string parkId,

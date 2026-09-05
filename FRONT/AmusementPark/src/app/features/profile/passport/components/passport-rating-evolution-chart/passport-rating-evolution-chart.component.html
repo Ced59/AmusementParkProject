@@ -1,0 +1,57 @@
+<section class="rating-chart" aria-labelledby="passport-rating-evolution-title">
+  <header>
+    <div>
+      <h2 id="passport-rating-evolution-title">{{ 'passport.globalStatistics.rating.title' | translate }}</h2>
+      <p>{{ 'passport.globalStatistics.rating.description' | translate }}</p>
+    </div>
+    <div class="rating-chart__legend" [attr.aria-label]="'passport.globalStatistics.charts.legend' | translate">
+      <span><i class="rating-chart__swatch rating-chart__swatch--park" aria-hidden="true"></i>{{ 'passport.globalStatistics.rating.park' | translate }}</span>
+      <span><i class="rating-chart__swatch rating-chart__swatch--ride" aria-hidden="true"></i>{{ 'passport.globalStatistics.rating.rides' | translate }}</span>
+    </div>
+  </header>
+  <p class="rating-chart__denominator" role="note">
+    <i class="pi pi-info-circle" aria-hidden="true"></i>
+    {{ 'passport.globalStatistics.rating.denominator' | translate }}
+  </p>
+
+  @if (!hasRatings()) {
+    <p class="rating-chart__empty">{{ 'passport.globalStatistics.rating.empty' | translate }}</p>
+  } @else {
+    <div class="rating-chart__visual" aria-hidden="true">
+      @for (point of points; track point.year) {
+        <div class="rating-chart__year">
+          <strong>{{ point.year }}</strong>
+          <div>
+            <span class="rating-chart__bar rating-chart__bar--park" [style.width.%]="width(point.parkAverage)"></span>
+            <span class="rating-chart__bar rating-chart__bar--ride" [style.width.%]="width(point.rideAverage)"></span>
+          </div>
+          <span>{{ point.parkAverage === null ? '—' : (point.parkAverage | number:'1.1-2') }}</span>
+          <span>{{ point.rideAverage === null ? '—' : (point.rideAverage | number:'1.1-2') }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="rating-chart__table-wrap">
+      <table>
+        <thead><tr>
+          <th scope="col">{{ 'passport.globalStatistics.charts.year' | translate }}</th>
+          <th scope="col">{{ 'passport.globalStatistics.rating.parkAverage' | translate }}</th>
+          <th scope="col">{{ 'passport.globalStatistics.rating.ratedVisits' | translate }}</th>
+          <th scope="col">{{ 'passport.globalStatistics.rating.rideAverage' | translate }}</th>
+          <th scope="col">{{ 'passport.globalStatistics.rating.ratedRides' | translate }}</th>
+        </tr></thead>
+        <tbody>
+          @for (point of points; track point.year) {
+            <tr>
+              <th scope="row">{{ point.year }}</th>
+              <td>{{ point.parkAverage === null ? '—' : (point.parkAverage | number:'1.1-2') }}</td>
+              <td>{{ point.ratedVisitCount }}</td>
+              <td>{{ point.rideAverage === null ? '—' : (point.rideAverage | number:'1.1-2') }}</td>
+              <td>{{ point.ratedRideCount }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

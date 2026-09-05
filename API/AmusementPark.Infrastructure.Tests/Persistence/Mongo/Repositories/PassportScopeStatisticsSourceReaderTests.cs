@@ -14,6 +14,17 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class PassportScopeStatisticsSourceReaderTests
 {
     [Fact]
+    public void BuildOwnerVisitFilter_ShouldStayOwnerBoundAndExcludeArchivedVisits()
+    {
+        BsonDocument rendered = Render(
+            PassportScopeStatisticsMongoDefinitions.BuildOwnerVisitFilter(" owner-1 "));
+
+        Assert.Equal("owner-1", rendered["userId"].AsString);
+        Assert.Equal(VisitStatus.Archived.ToString(), rendered["status"]["$ne"].AsString);
+        Assert.True(rendered["deletedAtUtc"].IsBsonNull);
+    }
+
+    [Fact]
     public void BuildParkVisitFilter_ShouldUseOwnerParkIndexAndExcludeArchivedVisits()
     {
         BsonDocument rendered = Render(

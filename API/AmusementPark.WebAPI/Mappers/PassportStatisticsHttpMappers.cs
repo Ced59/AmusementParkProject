@@ -5,6 +5,59 @@ namespace AmusementPark.WebAPI.Mappers;
 
 internal static class PassportStatisticsHttpMappers
 {
+    public static PassportGlobalStatisticsDto ToHttp(
+        this PassportGlobalStatisticsResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return new PassportGlobalStatisticsDto
+        {
+            SelectedYear = result.SelectedYear,
+            SelectedParkId = result.SelectedParkId,
+            AvailableYears = result.AvailableYears,
+            AvailableParks = result.AvailableParks.Select(static park =>
+                new PassportGlobalFilterParkDto
+                {
+                    ParkId = park.ParkId,
+                    ParkName = park.ParkName,
+                }).ToArray(),
+            ParkCount = result.ParkCount,
+            Summary = ToHttp(result.Summary),
+            ActivityByYear = result.ActivityByYear.Select(static item =>
+                new PassportGlobalYearActivityDto
+                {
+                    Year = item.Year,
+                    VisitCount = item.VisitCount,
+                    RecordedRideCount = item.RecordedRideCount,
+                }).ToArray(),
+            TopParks = result.TopParks.Select(static item =>
+                new PassportGlobalParkActivityDto
+                {
+                    ParkId = item.ParkId,
+                    ParkName = item.ParkName,
+                    VisitCount = item.VisitCount,
+                    RecordedRideCount = item.RecordedRideCount,
+                }).ToArray(),
+            TopItems = result.TopItems.Select(static item =>
+                new PassportGlobalItemActivityDto
+                {
+                    ParkItemId = item.ParkItemId,
+                    ParkItemName = item.ParkItemName,
+                    ParkId = item.ParkId,
+                    ParkName = item.ParkName,
+                    CompletedRideCount = item.CompletedRideCount,
+                }).ToArray(),
+            RatingEvolution = result.RatingEvolution.Select(static item =>
+                new PassportGlobalRatingEvolutionDto
+                {
+                    Year = item.Year,
+                    ParkAverage = item.ParkAverage,
+                    RatedVisitCount = item.RatedVisitCount,
+                    RideAverage = item.RideAverage,
+                    RatedRideCount = item.RatedRideCount,
+                }).ToArray(),
+        };
+    }
+
     public static PassportItemStatisticsDto ToHttp(
         this PassportItemStatisticsResult result)
     {

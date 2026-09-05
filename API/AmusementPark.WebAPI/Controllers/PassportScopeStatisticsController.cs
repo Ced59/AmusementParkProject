@@ -22,6 +22,9 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class PassportScopeStatisticsController : ControllerBase
 {
     private readonly IQueryHandler<
+        GetPassportGlobalStatisticsQuery,
+        ApplicationResult<PassportGlobalStatisticsResult>> globalStatisticsHandler;
+    private readonly IQueryHandler<
         GetPassportParkStatisticsQuery,
         ApplicationResult<PassportParkStatisticsResult>> parkStatisticsHandler;
     private readonly IQueryHandler<
@@ -30,14 +33,42 @@ public sealed class PassportScopeStatisticsController : ControllerBase
 
     public PassportScopeStatisticsController(
         IQueryHandler<
+            GetPassportGlobalStatisticsQuery,
+            ApplicationResult<PassportGlobalStatisticsResult>> globalStatisticsHandler,
+        IQueryHandler<
             GetPassportParkStatisticsQuery,
             ApplicationResult<PassportParkStatisticsResult>> parkStatisticsHandler,
         IQueryHandler<
             GetPassportYearStatisticsQuery,
             ApplicationResult<PassportYearStatisticsResult>> yearStatisticsHandler)
     {
+        this.globalStatisticsHandler = globalStatisticsHandler;
         this.parkStatisticsHandler = parkStatisticsHandler;
         this.yearStatisticsHandler = yearStatisticsHandler;
+    }
+
+    [HttpGet("stats")]
+    [ProducesResponseType(typeof(PassportGlobalStatisticsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> GetGlobalStatisticsAsync(
+        [FromQuery] int? year,
+        [FromQuery] string? parkId,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.UnauthorizedResult();
+        }
+
+        ApplicationResult<PassportGlobalStatisticsResult> result =
+            await this.globalStatisticsHandler.HandleAsync(
+                new GetPassportGlobalStatisticsQuery(userId, year, parkId),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
     }
 
     [HttpGet("parks/{parkId}/stats")]

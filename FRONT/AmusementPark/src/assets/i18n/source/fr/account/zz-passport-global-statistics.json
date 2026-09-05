@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "Mes statistiques" } },
+    "globalStatistics": {
+      "kicker": "Bilan du passeport", "title": "Tes statistiques globales", "description": "Explore tes visites et tes passages avec des repères clairs, sans mélanger ton historique privé aux classements de la communauté.",
+      "actions": { "back": "Retour au passeport", "retry": "Réessayer", "clearFilters": "Effacer les filtres" },
+      "loading": { "title": "Calcul de ton bilan", "description": "Tes statistiques privées sont en cours de préparation." },
+      "errors": { "title": "Le bilan ne s’est pas chargé", "invalidFilter": "Ce filtre n’est plus disponible. Efface-le pour retrouver tout ton passeport.", "load": "Tes statistiques n’ont pas pu être chargées. Réessaie dans un instant." },
+      "filters": { "title": "Affiner le bilan", "description": "Les filtres restent mémorisés uniquement dans cette session.", "year": "Année", "park": "Parc", "allYears": "Toutes les années", "allParks": "Tous les parcs" },
+      "unavailablePark": "Parc indisponible", "unavailableItem": "Attraction indisponible",
+      "empty": { "title": "Aucune donnée pour ce bilan", "description": "Ajoute une visite pour faire apparaître tes premières statistiques.", "filtered": "Aucune visite ne correspond à ces filtres. Essaie un autre parc ou une autre année." },
+      "cards": { "parkCoverage": "Visites notées", "rideCoverage": "Passages notés" },
+      "charts": { "legend": "Légende du graphique", "empty": "Pas encore assez de données pour ce graphique.", "target": "Repère", "year": "Année", "recordedRides": "Passages enregistrés", "outcomes": "Passages" },
+      "activity": { "title": "Ton activité au fil du temps", "description": "Compare le nombre de visites et de passages enregistrés chaque année.", "denominator": "Chaque visite appartient à l’année saisie, même lorsque sa date est approximative. Tous les résultats de passage sont comptés." },
+      "parks": { "title": "Tes parcs les plus visités", "description": "Les parcs sont ordonnés d’abord par nombre de visites, puis par nombre de passages.", "denominator": "Les visites archivées sont exclues. Les passages regroupent tous les résultats enregistrés dans les visites affichées." },
+      "items": { "title": "Tes attractions les plus parcourues", "description": "Retrouve les attractions sur lesquelles tu as effectué le plus de tours.", "denominator": "Seuls les passages marqués comme effectués entrent dans ce classement personnel." },
+      "outcomes": { "denominator": "Chaque passage enregistré appartient à une seule catégorie de résultat ; leur somme correspond au total affiché." },
+      "rating": { "title": "Évolution de tes notes", "description": "Les moyennes annuelles du parc et des passages restent séparées.", "park": "Visites", "rides": "Passages", "denominator": "Chaque moyenne utilise uniquement les notes brutes disponibles pour l’année. Une absence de note reste vide et n’est jamais remplacée par zéro.", "empty": "Il faut au moins une note de visite ou de passage pour afficher cette évolution.", "parkAverage": "Moyenne des visites / 5", "ratedVisits": "Visites notées", "rideAverage": "Moyenne des passages / 5", "ratedRides": "Passages notés" }
+    }
+  }
+}

@@ -260,7 +260,7 @@ public static class PassportScopeStatisticsCalculator
                 .ToArray());
     }
 
-    private static PassportStatisticsSummary CalculateSummary(
+    internal static PassportStatisticsSummary CalculateSummary(
         IReadOnlyCollection<PassportVisitStatisticsObservation> visits,
         IReadOnlyCollection<PassportRideStatisticsObservation> rides)
     {
@@ -395,7 +395,7 @@ public static class PassportScopeStatisticsCalculator
         }
     }
 
-    private static void EnsureRideVisitsExist(
+    internal static void EnsureRideVisitsExist(
         IEnumerable<PassportVisitStatisticsObservation> visits,
         IEnumerable<PassportRideStatisticsObservation> rides)
     {

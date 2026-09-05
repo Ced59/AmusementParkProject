@@ -11,6 +11,17 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class PassportScopeStatisticsMongoDefinitions
 {
+    public static FilterDefinition<UserVisitDocument> BuildOwnerVisitFilter(string userId)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                IdentifierRules.NormalizeRequired(userId, nameof(userId)))
+            & filters.Ne(static document => document.Status, VisitStatus.Archived)
+            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildParkVisitFilter(
         string userId,
         string parkId)

@@ -47,6 +47,47 @@ public sealed class PassportScopeStatisticsSourceReader
             ?? throw new ArgumentNullException(nameof(ratingCollection));
     }
 
+    public async Task<PassportGlobalStatisticsSource> ReadGlobalAsync(
+        string userId,
+        int? year,
+        string? parkId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        if (year.HasValue
+            && (year.Value < DateOnly.MinValue.Year || year.Value > DateOnly.MaxValue.Year))
+        {
+            throw new ArgumentOutOfRangeException(nameof(year));
+        }
+
+        string? normalizedParkId = parkId is null
+            ? null
+            : IdentifierRules.NormalizeRequired(parkId, nameof(parkId));
+        List<PassportScopeVisitSourceDocument> availableVisits = await this.visitCollection
+            .Find(PassportScopeStatisticsMongoDefinitions.BuildOwnerVisitFilter(normalizedUserId))
+            .Project(PassportScopeStatisticsMongoDefinitions.BuildVisitProjection())
+            .ToListAsync(cancellationToken);
+        PassportScopeVisitSourceDocument[] scopedVisits = availableVisits
+            .Where(visit => !year.HasValue || visit.Date.Year == year.Value)
+            .Where(visit => normalizedParkId is null || string.Equals(
+                visit.ParkId,
+                normalizedParkId,
+                StringComparison.Ordinal))
+            .ToArray();
+        PassportScopeRideSources rideSources = await this.ReadRideSourcesAsync(
+            normalizedUserId,
+            scopedVisits,
+            cancellationToken);
+
+        return new PassportGlobalStatisticsSource(
+            BuildVisitObservations(availableVisits),
+            BuildVisitObservations(scopedVisits),
+            BuildRideObservations(
+                rideSources.Occurrences,
+                scopedVisits.ToDictionary(static visit => visit.Id, StringComparer.Ordinal),
+                rideSources.CurrentCategories));
+    }
+
     public async Task<PassportParkStatisticsSource> ReadParkAsync(
         string userId,
         string parkId,

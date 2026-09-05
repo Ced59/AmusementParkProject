@@ -1,0 +1,51 @@
+:host,
+.passport-chart,
+.passport-chart > *,
+.passport-chart header,
+.passport-chart header > div,
+.passport-chart__visual,
+.passport-chart__visual-row,
+.passport-chart__label,
+.passport-chart__bars,
+.passport-chart__table-wrap {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.passport-chart { display: grid; gap: 1rem; }
+.passport-chart header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+h2, p { margin: 0; overflow-wrap: anywhere; }
+h2 { color: var(--app-heading); font-size: clamp(1.25rem, 3vw, 1.7rem); }
+header p, .passport-chart__denominator, .passport-chart__empty { margin-top: .3rem; color: var(--app-text-muted); line-height: 1.45; }
+.passport-chart__legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .45rem .8rem; color: var(--app-text-muted); font-size: .82rem; font-weight: 700; }
+.passport-chart__legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.passport-chart__swatch { width: .7rem; height: .7rem; flex: 0 0 auto; border-radius: 999px; }
+.passport-chart__swatch--primary, .passport-chart__bar--primary { background: var(--app-primary); }
+.passport-chart__swatch--secondary, .passport-chart__bar--secondary { background: var(--c-sky); }
+.passport-chart__denominator { display: flex; gap: .45rem; align-items: flex-start; padding: .7rem; border-radius: var(--app-radius-md); background: var(--app-surface-2); }
+.passport-chart__visual { display: grid; gap: .7rem; }
+.passport-chart__visual-row { display: grid; grid-template-columns: minmax(7rem, 1.1fr) minmax(8rem, 2fr) auto; align-items: center; gap: .7rem; }
+.passport-chart__label { display: grid; gap: .1rem; overflow-wrap: anywhere; }
+.passport-chart__label small, th small { display: block; color: var(--app-text-muted); font-weight: 500; }
+.passport-chart__bars { display: grid; gap: .3rem; }
+.passport-chart__bar { display: block; min-width: .18rem; height: .55rem; border-radius: 999px; transition: width .25s ease; }
+.passport-chart__values { display: grid; min-width: 2rem; text-align: right; color: var(--app-heading); }
+.passport-chart__values small { color: var(--c-sky); }
+.passport-chart__table-wrap { overflow-x: auto; border: 1px solid var(--app-border); border-radius: var(--app-radius-md); }
+table { width: 100%; min-width: 28rem; border-collapse: collapse; }
+th, td { padding: .65rem .75rem; border-bottom: 1px solid var(--app-border); text-align: left; overflow-wrap: anywhere; }
+td { font-variant-numeric: tabular-nums; }
+tbody tr:last-child > * { border-bottom: 0; }
+
+@media (max-width: 560px) {
+  .passport-chart header { flex-direction: column; }
+  .passport-chart__legend { justify-content: flex-start; }
+  .passport-chart__visual-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .passport-chart__bars { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .passport-chart__bar { transition: none; }
+}

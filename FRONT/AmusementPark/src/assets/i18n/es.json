@@ -59,7 +59,8 @@
         "openVisit": "Abrir la visita",
         "retry": "Reintentar",
         "loadMore": "Cargar más visitas",
-        "loadingMore": "Cargando…"
+        "loadingMore": "Cargando…",
+        "openStatistics": "Mis estadísticas"
       },
       "loading": {
         "title": "Abriendo tu pasaporte",
@@ -753,6 +754,82 @@
         "duplicated": "Se ha añadido un nuevo registro.",
         "deleted": "El registro se ha eliminado.",
         "reordered": "La cronología se ha reordenado."
+      }
+    },
+    "globalStatistics": {
+      "kicker": "Resumen del pasaporte",
+      "title": "Tus estadísticas globales",
+      "description": "Explora tus visitas y recorridos con referencias claras, sin mezclar tu historial privado con las clasificaciones de la comunidad.",
+      "actions": {
+        "back": "Volver al pasaporte",
+        "retry": "Reintentar",
+        "clearFilters": "Borrar filtros"
+      },
+      "loading": {
+        "title": "Calculando tu resumen",
+        "description": "Se están preparando tus estadísticas privadas."
+      },
+      "errors": {
+        "title": "No se pudo cargar el resumen",
+        "invalidFilter": "Este filtro ya no está disponible. Bórralo para ver todo tu pasaporte.",
+        "load": "No se pudieron cargar tus estadísticas. Inténtalo de nuevo en un momento."
+      },
+      "filters": {
+        "title": "Afinar el resumen",
+        "description": "Los filtros solo se recuerdan durante esta sesión.",
+        "year": "Año",
+        "park": "Parque",
+        "allYears": "Todos los años",
+        "allParks": "Todos los parques"
+      },
+      "unavailablePark": "Parque no disponible",
+      "unavailableItem": "Atracción no disponible",
+      "empty": {
+        "title": "No hay datos para este resumen",
+        "description": "Añade una visita para mostrar tus primeras estadísticas.",
+        "filtered": "Ninguna visita coincide con estos filtros. Prueba otro parque u otro año."
+      },
+      "cards": {
+        "parkCoverage": "Visitas valoradas",
+        "rideCoverage": "Recorridos valorados"
+      },
+      "charts": {
+        "legend": "Leyenda del gráfico",
+        "empty": "Todavía no hay datos suficientes para este gráfico.",
+        "target": "Referencia",
+        "year": "Año",
+        "recordedRides": "Recorridos registrados",
+        "outcomes": "Recorridos"
+      },
+      "activity": {
+        "title": "Tu actividad a lo largo del tiempo",
+        "description": "Compara las visitas y los recorridos registrados cada año.",
+        "denominator": "Cada visita pertenece al año indicado, aunque la fecha sea aproximada. Se cuentan todos los resultados de recorrido."
+      },
+      "parks": {
+        "title": "Tus parques más visitados",
+        "description": "Los parques se ordenan primero por visitas y después por recorridos.",
+        "denominator": "Se excluyen las visitas archivadas. Los recorridos incluyen todos los resultados de las visitas mostradas."
+      },
+      "items": {
+        "title": "Tus atracciones más recorridas",
+        "description": "Descubre en qué atracciones completaste más recorridos.",
+        "denominator": "Solo los recorridos marcados como realizados forman parte de esta clasificación personal."
+      },
+      "outcomes": {
+        "denominator": "Cada recorrido registrado pertenece a un único resultado; su suma coincide con el total mostrado."
+      },
+      "rating": {
+        "title": "Evolución de tus valoraciones",
+        "description": "Las medias anuales de visitas y recorridos permanecen separadas.",
+        "park": "Visitas",
+        "rides": "Recorridos",
+        "denominator": "Cada media solo usa las valoraciones brutas disponibles ese año. Una ausencia de valoración queda vacía y nunca se sustituye por cero.",
+        "empty": "Hace falta al menos una valoración de visita o recorrido para mostrar esta evolución.",
+        "parkAverage": "Media de visitas / 5",
+        "ratedVisits": "Visitas valoradas",
+        "rideAverage": "Media de recorridos / 5",
+        "ratedRides": "Recorridos valorados"
       }
     }
   },

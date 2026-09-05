@@ -1,5 +1,52 @@
 import { PassportVisitDate } from './passport-visit.models';
 
+export interface PassportGlobalFilterPark {
+  parkId: string;
+  parkName: string | null;
+}
+
+export interface PassportGlobalYearActivity {
+  year: number;
+  visitCount: number;
+  recordedRideCount: number;
+}
+
+export interface PassportGlobalParkActivity {
+  parkId: string;
+  parkName: string | null;
+  visitCount: number;
+  recordedRideCount: number;
+}
+
+export interface PassportGlobalItemActivity {
+  parkItemId: string;
+  parkItemName: string | null;
+  parkId: string;
+  parkName: string | null;
+  completedRideCount: number;
+}
+
+export interface PassportGlobalRatingEvolution {
+  year: number;
+  parkAverage: number | null;
+  ratedVisitCount: number;
+  rideAverage: number | null;
+  ratedRideCount: number;
+}
+
+export interface PassportGlobalStatistics {
+  selectedYear: number | null;
+  selectedParkId: string | null;
+  availableYears: number[];
+  availableParks: PassportGlobalFilterPark[];
+  parkCount: number;
+  summary: PassportStatisticsSummary;
+  activityByYear: PassportGlobalYearActivity[];
+  topParks: PassportGlobalParkActivity[];
+  topItems: PassportGlobalItemActivity[];
+  ratingEvolution: PassportGlobalRatingEvolution[];
+}
+
 export type PassportRatingTrendKind = 'Stable' | 'Rising' | 'Falling' | 0 | 1 | 2;
 
 export interface PassportRatingDistribution {

@@ -59,7 +59,8 @@
         "openVisit": "Apri la visita",
         "retry": "Riprova",
         "loadMore": "Carica altre visite",
-        "loadingMore": "Caricamento…"
+        "loadingMore": "Caricamento…",
+        "openStatistics": "Le mie statistiche"
       },
       "loading": {
         "title": "Apertura del passaporto",
@@ -753,6 +754,82 @@
         "duplicated": "È stata aggiunta una nuova voce.",
         "deleted": "La voce è stata eliminata.",
         "reordered": "La timeline è stata riordinata."
+      }
+    },
+    "globalStatistics": {
+      "kicker": "Riepilogo del passaporto",
+      "title": "Le tue statistiche globali",
+      "description": "Esplora visite e giri con riferimenti chiari, senza confondere la cronologia privata con le classifiche della community.",
+      "actions": {
+        "back": "Torna al passaporto",
+        "retry": "Riprova",
+        "clearFilters": "Cancella filtri"
+      },
+      "loading": {
+        "title": "Calcolo del riepilogo",
+        "description": "Stiamo preparando le tue statistiche private."
+      },
+      "errors": {
+        "title": "Impossibile caricare il riepilogo",
+        "invalidFilter": "Questo filtro non è più disponibile. Cancellalo per vedere tutto il passaporto.",
+        "load": "Impossibile caricare le statistiche. Riprova tra poco."
+      },
+      "filters": {
+        "title": "Affina il riepilogo",
+        "description": "I filtri restano memorizzati solo per questa sessione.",
+        "year": "Anno",
+        "park": "Parco",
+        "allYears": "Tutti gli anni",
+        "allParks": "Tutti i parchi"
+      },
+      "unavailablePark": "Parco non disponibile",
+      "unavailableItem": "Attrazione non disponibile",
+      "empty": {
+        "title": "Nessun dato per questo riepilogo",
+        "description": "Aggiungi una visita per vedere le prime statistiche.",
+        "filtered": "Nessuna visita corrisponde a questi filtri. Prova un altro parco o anno."
+      },
+      "cards": {
+        "parkCoverage": "Visite valutate",
+        "rideCoverage": "Giri valutati"
+      },
+      "charts": {
+        "legend": "Legenda del grafico",
+        "empty": "Non ci sono ancora dati sufficienti per questo grafico.",
+        "target": "Riferimento",
+        "year": "Anno",
+        "recordedRides": "Giri registrati",
+        "outcomes": "Giri"
+      },
+      "activity": {
+        "title": "La tua attività nel tempo",
+        "description": "Confronta visite e giri registrati ogni anno.",
+        "denominator": "Ogni visita appartiene all’anno inserito, anche con una data approssimativa. Vengono conteggiati tutti gli esiti dei giri."
+      },
+      "parks": {
+        "title": "I parchi che hai visitato di più",
+        "description": "I parchi sono ordinati prima per visite, poi per giri.",
+        "denominator": "Le visite archiviate sono escluse. I giri includono tutti gli esiti delle visite mostrate."
+      },
+      "items": {
+        "title": "Le attrazioni su cui hai fatto più giri",
+        "description": "Scopri le attrazioni su cui hai completato più giri.",
+        "denominator": "Solo i giri segnati come effettuati entrano in questa classifica personale."
+      },
+      "outcomes": {
+        "denominator": "Ogni giro registrato appartiene a un solo esito; la loro somma corrisponde al totale mostrato."
+      },
+      "rating": {
+        "title": "Evoluzione delle tue valutazioni",
+        "description": "Le medie annuali di visite e giri restano separate.",
+        "park": "Visite",
+        "rides": "Giri",
+        "denominator": "Ogni media usa solo le valutazioni grezze disponibili nell’anno. Una valutazione assente resta vuota e non viene mai sostituita da zero.",
+        "empty": "Serve almeno una valutazione di visita o giro per mostrare questa evoluzione.",
+        "parkAverage": "Media visite / 5",
+        "ratedVisits": "Visite valutate",
+        "rideAverage": "Media giri / 5",
+        "ratedRides": "Giri valutati"
       }
     }
   },
