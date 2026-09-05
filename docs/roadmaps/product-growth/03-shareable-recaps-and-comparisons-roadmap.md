@@ -2,7 +2,9 @@
 
 > Code programme : `SHARE`
 >
-> Dépendance préalable : socle technique `PASS` stabilisé par `PASS-20`.
+> Dépendances préalables : `PASS-20` livré et volet technique de `PASS-G` vérifié,
+> notamment l'ownership, l'idempotence, l'export/suppression, l'usage mobile et le
+> respect du budget du VPS.
 > Décision produit du 5 septembre 2026 : la validation communautaire terrain de
 > `PASS-G` devient un suivi qualitatif post-livraison non bloquant. `SHARE-02` et les
 > tranches suivantes peuvent avancer sans dépendre de visites ou de testeurs réels,
