@@ -1,6 +1,20 @@
 {
-  "version": "5.1.1",
+  "version": "5.1.2",
   "history": [
+    {
+      "version": "5.1.2",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La consultation des plans officiels est désormais plus fiable et plus légère.",
+        "en": "Viewing official maps is now more reliable and lightweight.",
+        "de": "Offizielle Parkpläne lassen sich jetzt zuverlässiger und ressourcenschonender ansehen.",
+        "nl": "Officiële parkplattegronden zijn nu betrouwbaarder en lichter te bekijken.",
+        "it": "La consultazione delle mappe ufficiali è ora più affidabile e leggera.",
+        "es": "La consulta de mapas oficiales es ahora más fiable y ligera.",
+        "pl": "Przeglądanie oficjalnych map jest teraz bardziej niezawodne i lżejsze.",
+        "pt": "A consulta dos mapas oficiais é agora mais fiável e leve."
+      }
+    },
     {
       "version": "5.1.1",
       "releasedAt": "2026-09-05",

@@ -1804,11 +1804,28 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.title).toBe('Plans officiels de Parc Demo — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toBe(
+      'Consulte les plans officiels de Parc Demo, classés par année.',
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
+  });
+
+  it('describes both interactive places and official maps when both are available', () => {
+    service.applyParkMapSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/map',
+      null,
+      null,
+      2,
+      true,
+    );
+
     expect(documentRef.title).toBe('Carte de Parc Demo — Amusement Parks');
     expect(readMetaContent('meta[name="description"]')).toBe(
       'Explore les lieux géolocalisés et les plans officiels disponibles de Parc Demo.',
     );
-    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
   });
 
   it('keeps parameterized park maps noindex even when they contain enough markers', () => {

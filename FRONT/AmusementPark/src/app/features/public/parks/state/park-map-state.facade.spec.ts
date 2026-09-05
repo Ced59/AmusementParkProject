@@ -214,6 +214,39 @@ describe('ParkMapStateFacade', () => {
     expect(context.facade.activeTab()).toBe('interactive');
   });
 
+  it('defers hidden official map downloads until the official tab is selected', () => {
+    vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:protected-map');
+    const context = configureFacade();
+    context.parksPort.mapItemsResponse$ = of({
+      ...createMapItems(createPark()),
+      items: [{
+        id: 'ride-1',
+        name: 'Ride',
+        category: 'Attraction',
+        type: 'RollerCoaster',
+        latitude: 50.7,
+        longitude: 4.5
+      }],
+      officialMaps: [{
+        id: 'map-2026',
+        year: 2026,
+        format: 'Pdf',
+        documentUrl: 'parks/park-1/official-maps/map-2026/file',
+        isVisible: false
+      }]
+    });
+
+    context.facade.loadParkMap('park-1');
+
+    expect(context.facade.activeTab()).toBe('interactive');
+    expect(context.parksPort.officialMapFileCalls).toHaveLength(0);
+
+    context.facade.selectTab('official');
+
+    expect(context.parksPort.officialMapFileCalls).toHaveLength(1);
+    expect(context.facade.visibleOfficialMaps()[0].displayDocumentUrl).toBe('blob:protected-map');
+  });
+
   it('does not override a manual interactive selection when the same park reloads', () => {
     const context = configureFacade();
     context.parksPort.mapItemsResponse$ = of({

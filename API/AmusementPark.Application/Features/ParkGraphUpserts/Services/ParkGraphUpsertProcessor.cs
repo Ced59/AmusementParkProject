@@ -260,7 +260,7 @@ public sealed partial class ParkGraphUpsertProcessor
             : ApplicationResult<ParkGraphUpsertResult>.Success(result);
         }
 
-        await this.PreflightOfficialMapsAsync(targetPark, parkPatch, result, cancellationToken);
+        await this.PreflightOfficialMapsAsync(root, targetPark, parkPatch, result, cancellationToken);
         if (result.Errors.Count > 0)
         {
             result.TargetParkId = targetPark.Id;
@@ -368,6 +368,7 @@ public sealed partial class ParkGraphUpsertProcessor
     }
 
     private async Task PreflightOfficialMapsAsync(
+        JsonElement root,
         Park park,
         JsonElement? parkPatch,
         ParkGraphUpsertResult result,
@@ -378,7 +379,17 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
-        Park candidate = ClonePark(park);
+        (Park Park, IReadOnlyDictionary<string, string> StorageLookupKeys) projection = await this.ProjectOfficialMapTargetAfterMergesAsync(
+            root,
+            park,
+            result,
+            cancellationToken);
+        if (result.Errors.Count > 0)
+        {
+            return;
+        }
+
+        Park candidate = ClonePark(projection.Park);
         ParkGraphUpsertResult preflightResult = new ParkGraphUpsertResult();
         ParkGraphOfficialMapUpsertPatcher.Patch(candidate, parkPatch, preflightResult);
         if (preflightResult.Errors.Count > 0)
@@ -397,6 +408,7 @@ public sealed partial class ParkGraphUpsertProcessor
         await this.ValidateOfficialMapStorageAsync(
             candidate,
             officialMapIds,
+            projection.StorageLookupKeys,
             result,
             cancellationToken);
     }
@@ -404,6 +416,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private async Task ValidateOfficialMapStorageAsync(
         Park park,
         IReadOnlyCollection<string> officialMapIds,
+        IReadOnlyDictionary<string, string> storageLookupKeys,
         ParkGraphUpsertResult result,
         CancellationToken cancellationToken)
     {
@@ -424,8 +437,11 @@ public sealed partial class ParkGraphUpsertProcessor
 
         foreach (ParkOfficialMap officialMap in storedMaps)
         {
+            string storageLookupKey = storageLookupKeys.TryGetValue(officialMap.StorageKey!, out string? projectedSourceKey)
+                ? projectedSourceKey
+                : officialMap.StorageKey!;
             ParkOfficialMapBinaryMetadata? metadata = await this.parkOfficialMapBinaryStorage.GetMetadataAsync(
-                officialMap.StorageKey!,
+                storageLookupKey,
                 cancellationToken);
             if (metadata is null)
             {

@@ -81,9 +81,11 @@ interface CommentsSeoCopy {
 interface ParkMapSeoCopy {
   titlePrefix: string;
   interactiveTitlePrefix: string;
+  officialTitlePrefix: string;
   parkFallback: string;
   description: (parkName: string, locationLabel: string) => string;
   interactiveDescription: (parkName: string, locationLabel: string) => string;
+  officialDescription: (parkName: string, locationLabel: string) => string;
 }
 
 interface ParkItemsSeoCopy {
@@ -644,58 +646,74 @@ const PARK_MAP_SEO_COPY: Record<string, ParkMapSeoCopy> = {
   en: {
     titlePrefix: 'Map of',
     interactiveTitlePrefix: 'Interactive map of',
+    officialTitlePrefix: 'Official maps of',
     parkFallback: 'this park',
     description: (parkName: string, locationLabel: string): string => `Explore geolocated places and available official maps for ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Browse the official maps of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}, organized by year.`
   },
   fr: {
     titlePrefix: 'Carte de',
     interactiveTitlePrefix: 'Carte interactive de',
+    officialTitlePrefix: 'Plans officiels de',
     parkFallback: 'ce parc',
     description: (parkName: string, locationLabel: string): string => `Explore les lieux géolocalisés et les plans officiels disponibles de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Consulte les plans officiels de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}, classés par année.`
   },
   es: {
     titlePrefix: 'Mapa de',
     interactiveTitlePrefix: 'Mapa interactivo de',
+    officialTitlePrefix: 'Mapas oficiales de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string): string => `Explora los lugares geolocalizados y los mapas oficiales disponibles de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Consulta los mapas oficiales de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}, organizados por año.`
   },
   de: {
     titlePrefix: 'Karte von',
     interactiveTitlePrefix: 'Interaktive Karte von',
+    officialTitlePrefix: 'Offizielle Parkpläne von',
     parkFallback: 'diesem Park',
     description: (parkName: string, locationLabel: string): string => `Entdecke geolokalisierte Orte und verfügbare offizielle Parkpläne von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Sieh dir die offiziellen Parkpläne von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''} nach Jahr an.`
   },
   it: {
     titlePrefix: 'Mappa di',
     interactiveTitlePrefix: 'Mappa interattiva di',
+    officialTitlePrefix: 'Mappe ufficiali di',
     parkFallback: 'questo parco',
     description: (parkName: string, locationLabel: string): string => `Esplora i luoghi geolocalizzati e le mappe ufficiali disponibili di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Consulta le mappe ufficiali di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}, organizzate per anno.`
   },
   nl: {
     titlePrefix: 'Kaart van',
     interactiveTitlePrefix: 'Interactieve kaart van',
+    officialTitlePrefix: 'Officiële parkplattegronden van',
     parkFallback: 'dit park',
     description: (parkName: string, locationLabel: string): string => `Verken de locaties en beschikbare officiële parkplattegronden van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Bekijk de officiële parkplattegronden van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}, gerangschikt per jaar.`
   },
   pl: {
     titlePrefix: 'Mapa',
     interactiveTitlePrefix: 'Interaktywna mapa',
+    officialTitlePrefix: 'Oficjalne mapy parku',
     parkFallback: 'tego parku',
     description: (parkName: string, locationLabel: string): string => `Przeglądaj geolokalizowane miejsca i dostępne oficjalne mapy parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Przeglądaj oficjalne mapy parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}, uporządkowane według roku.`
   },
   pt: {
     titlePrefix: 'Mapa de',
     interactiveTitlePrefix: 'Mapa interativo de',
+    officialTitlePrefix: 'Mapas oficiais de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string): string => `Explora os locais geolocalizados e os mapas oficiais disponíveis de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`,
-    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`,
+    officialDescription: (parkName: string, locationLabel: string): string => `Consulta os mapas oficiais de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}, organizados por ano.`
   }
 };
 
@@ -2258,10 +2276,17 @@ export class SeoService {
     const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
     const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
+    const hasInteractiveMarkers: boolean = markerCount > 0;
     const description: string = hasOfficialMaps
-      ? copy.description(parkName, locationLabel)
+      ? hasInteractiveMarkers
+        ? copy.description(parkName, locationLabel)
+        : copy.officialDescription(parkName, locationLabel)
       : copy.interactiveDescription(parkName, locationLabel);
-    const titlePrefix: string = hasOfficialMaps ? copy.titlePrefix : copy.interactiveTitlePrefix;
+    const titlePrefix: string = hasOfficialMaps
+      ? hasInteractiveMarkers
+        ? copy.titlePrefix
+        : copy.officialTitlePrefix
+      : copy.interactiveTitlePrefix;
     const isIndexable: boolean = !this.hasQueryString(url) && (hasOfficialMaps || isCollectionIndexable(markerCount));
 
     this.apply({
