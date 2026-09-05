@@ -1,6 +1,20 @@
 {
-  "version": "5.1.0",
+  "version": "5.1.1",
   "history": [
+    {
+      "version": "5.1.1",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les évolutions des notations reposent sur une structure interne plus claire et fiable.",
+        "en": "Rating improvements now rely on a clearer and more reliable internal structure.",
+        "de": "Verbesserungen an den Bewertungen basieren jetzt auf einer klareren und zuverlässigeren internen Struktur.",
+        "nl": "Verbeteringen aan beoordelingen steunen nu op een duidelijkere en betrouwbaardere interne structuur.",
+        "it": "I miglioramenti delle valutazioni si basano ora su una struttura interna più chiara e affidabile.",
+        "es": "Las mejoras de las valoraciones se apoyan ahora en una estructura interna más clara y fiable.",
+        "pl": "Ulepszenia ocen korzystają teraz z jaśniejszej i bardziej niezawodnej struktury wewnętrznej.",
+        "pt": "As melhorias das avaliações assentam agora numa estrutura interna mais clara e fiável."
+      }
+    },
     {
       "version": "5.1.0",
       "releasedAt": "2026-09-05",
