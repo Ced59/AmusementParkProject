@@ -1,6 +1,20 @@
 {
-  "version": "5.1.10",
+  "version": "5.1.11",
   "history": [
+    {
+      "version": "5.1.11",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La simulation des règles de classement repose désormais sur une structure plus fiable.",
+        "en": "Ranking rule simulations now rely on a more reliable structure.",
+        "de": "Simulationen von Ranglistenregeln basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "Simulaties van ranglijstregels steunen nu op een betrouwbaardere structuur.",
+        "it": "Le simulazioni delle regole di classifica si basano ora su una struttura più affidabile.",
+        "es": "Las simulaciones de reglas de clasificación se apoyan ahora en una estructura más fiable.",
+        "pl": "Symulacje zasad rankingu korzystają teraz z bardziej niezawodnej struktury.",
+        "pt": "As simulações das regras de classificação assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.10",
       "releasedAt": "2026-09-05",
