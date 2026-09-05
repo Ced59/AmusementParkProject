@@ -1,6 +1,20 @@
 {
-  "version": "5.1.2",
+  "version": "5.1.3",
   "history": [
+    {
+      "version": "5.1.3",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La présentation des notes s’appuie désormais sur des données mieux structurées.",
+        "en": "Rating displays now rely on better-structured data.",
+        "de": "Die Darstellung von Bewertungen basiert jetzt auf besser strukturierten Daten.",
+        "nl": "De weergave van beoordelingen steunt nu op beter gestructureerde gegevens.",
+        "it": "La visualizzazione delle valutazioni si basa ora su dati meglio strutturati.",
+        "es": "La presentación de las valoraciones se apoya ahora en datos mejor estructurados.",
+        "pl": "Prezentacja ocen korzysta teraz z lepiej uporządkowanych danych.",
+        "pt": "A apresentação das avaliações assenta agora em dados mais bem estruturados."
+      }
+    },
     {
       "version": "5.1.2",
       "releasedAt": "2026-09-05",
