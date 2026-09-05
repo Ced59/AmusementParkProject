@@ -12,12 +12,16 @@ internal static class PassportRideOccurrenceResultFactory
         VisitDate? visitDate = null)
     {
         ArgumentNullException.ThrowIfNull(occurrence);
-        HistoricalConsistency historicalConsistency = target is not null && visitDate is not null
-            ? RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
+        bool hasCurrentHistoricalEvidence = target is not null && visitDate is not null;
+        HistoricalConsistency historicalConsistency = occurrence.HistoricalConsistency;
+        if (target is not null && visitDate is not null)
+        {
+            historicalConsistency = RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
                 visitDate,
                 target.OpeningDate,
-                target.ClosingDate)
-            : occurrence.HistoricalConsistency;
+                target.ClosingDate);
+        }
+
         return new RideOccurrenceResult(
             occurrence.Id.Value,
             occurrence.VisitId.Value,
@@ -44,7 +48,8 @@ internal static class PassportRideOccurrenceResultFactory
                     occurrence.Assessment.Revision,
                     occurrence.Assessment.CreatedAtUtc,
                     occurrence.Assessment.UpdatedAtUtc),
-            occurrence.HistoricalConsistency == HistoricalConsistency.ConfirmedConflict);
+            !hasCurrentHistoricalEvidence
+                && occurrence.HistoricalConsistency == HistoricalConsistency.ConfirmedConflict);
     }
 
     private static RideOccurrenceTargetResult? CreateTarget(

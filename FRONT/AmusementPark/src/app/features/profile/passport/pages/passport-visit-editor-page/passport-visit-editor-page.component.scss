@@ -624,13 +624,15 @@
   gap: 0.65rem;
 }
 
-.passport-selection__validation-retry {
+.passport-selection__validation-retry,
+.passport-timeline__validation-retry {
   display: grid;
   min-width: 0;
   gap: 0.65rem;
 }
 
-.passport-selection__validation-retry button {
+.passport-selection__validation-retry button,
+.passport-timeline__validation-retry button {
   min-width: 0;
   justify-self: start;
 }
@@ -1203,7 +1205,8 @@ textarea:focus-visible {
     justify-content: center;
   }
 
-  .passport-selection__validation-retry button {
+  .passport-selection__validation-retry button,
+  .passport-timeline__validation-retry button {
     width: 100%;
     justify-self: stretch;
     justify-content: center;

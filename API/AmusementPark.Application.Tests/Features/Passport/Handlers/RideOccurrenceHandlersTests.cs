@@ -1346,6 +1346,42 @@ public sealed class RideOccurrenceHandlersTests
         targets.VerifyAll();
     }
 
+    [Fact]
+    public void ResultFactory_ShouldRequireFreshConfirmationWhenCurrentEvidenceIsResolved()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-confirmed"),
+            visit,
+            "item-confirmed",
+            1024,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.ConfirmedConflict,
+            null,
+            null,
+            NowUtc);
+        VisitTarget target = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Attraction confirmée auparavant",
+            ParkItemCategory.Attraction,
+            new DateOnly(2027, 1, 1),
+            null,
+            "Operating");
+
+        RideOccurrenceResult storedResult = PassportRideOccurrenceResultFactory.Create(occurrence);
+        RideOccurrenceResult refreshedResult = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            target,
+            visit.Date);
+
+        Assert.True(storedResult.HistoricalConflictConfirmed);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, refreshedResult.HistoricalConsistency);
+        Assert.False(refreshedResult.HistoricalConflictConfirmed);
+    }
+
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(
         int count = 1,
         bool confirmHistoricalConflict = false,

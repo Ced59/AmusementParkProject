@@ -609,6 +609,18 @@
           </p>
         }
 
+        @if (facade.timelineConsistencyStale() && !facade.timelineLoading()) {
+          <div class="passport-timeline__validation-retry">
+            <button
+              appUiButton="ghost"
+              type="button"
+              (click)="facade.reloadTimeline()">
+              <i class="pi pi-refresh" aria-hidden="true"></i>
+              <span>{{ 'passport.editor.actions.retry' | translate }}</span>
+            </button>
+          </div>
+        }
+
         @if (facade.timelineLoading()) {
           <p class="passport-inline-message" role="status">
             <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
@@ -842,14 +854,14 @@
                               </label>
                             }
 
-                            <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="saveOccurrence(row.occurrence)">
+                            <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="facade.timelineConsistencyStale() || isOccurrenceBusy(row.occurrence.id)" (click)="saveOccurrence(row.occurrence)">
                               {{ 'passport.editor.actions.save' | translate }}
                             </button>
                           </div>
                         }
                       </details>
 
-                      <button appUiButton="soft" type="button" [disabled]="isOccurrenceBusy(row.occurrence.id)" (click)="facade.duplicateOccurrence(row.occurrence)">
+                      <button appUiButton="soft" type="button" [disabled]="facade.timelineConsistencyStale() || isOccurrenceBusy(row.occurrence.id)" (click)="facade.duplicateOccurrence(row.occurrence)">
                         <i class="pi pi-copy" aria-hidden="true"></i>
                         <span>
                           {{ (facade.pendingDuplicateRecoveryIds().has(row.occurrence.id)

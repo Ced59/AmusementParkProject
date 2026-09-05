@@ -142,7 +142,7 @@ describe('PassportVisitEditorStateFacade', () => {
       'park-1',
       1,
       24,
-      { closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
+      { includeHidden: false, closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
       { closedFilter: 'all' }
     );
   });
@@ -450,6 +450,45 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.selectedAttractions()[0].historicalConsistency).toBe('ConfirmedConflict');
     expect(facade.selectionCanSubmit()).toBe(false);
     expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps timeline edits blocked until stale occurrence evidence can be reloaded', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false
+    };
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(throwError(() => new Error('temporary timeline failure')))
+      .mockReturnValueOnce(of({ items: [conflictingOccurrence], nextCursor: null }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.timelineConsistencyStale()).toBe(true);
+    facade.updateOccurrence(firstOccurrence, facade.editDrafts()[firstOccurrence.id]);
+    facade.duplicateOccurrence(firstOccurrence);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+
+    facade.reloadTimeline();
+
+    expect(facade.timelineConsistencyStale()).toBe(false);
+    expect(facade.occurrences()[0].historicalConsistency).toBe('ConfirmedConflict');
+    expect(facade.operationErrorKey()).toBeNull();
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(3);
   });
 
   it('preserves submitted metadata when conflict reconciliation loads another version', () => {

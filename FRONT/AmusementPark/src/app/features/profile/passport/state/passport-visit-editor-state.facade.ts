@@ -161,6 +161,7 @@ export class PassportVisitEditorStateFacade {
   private readonly loadErrorKeySignal = signal<string | null>(null);
   private readonly attractionErrorKeySignal = signal<string | null>(null);
   private readonly targetEvaluationsStaleSignal = signal<boolean>(false);
+  private readonly timelineConsistencyStaleSignal = signal<boolean>(false);
   private readonly operationErrorKeySignal = signal<string | null>(null);
   private readonly normalizationNoticeSignal = signal<boolean>(false);
   private readonly pendingAddRecoverySignal = signal<boolean>(false);
@@ -257,6 +258,7 @@ export class PassportVisitEditorStateFacade {
   readonly loadErrorKey: Signal<string | null> = this.loadErrorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
   readonly targetEvaluationsStale: Signal<boolean> = this.targetEvaluationsStaleSignal.asReadonly();
+  readonly timelineConsistencyStale: Signal<boolean> = this.timelineConsistencyStaleSignal.asReadonly();
   readonly operationErrorKey: Signal<string | null> = this.operationErrorKeySignal.asReadonly();
   readonly normalizationNotice: Signal<boolean> = this.normalizationNoticeSignal.asReadonly();
   readonly pendingAddRecovery: Signal<boolean> = this.pendingAddRecoverySignal.asReadonly();
@@ -552,6 +554,7 @@ export class PassportVisitEditorStateFacade {
       || !occurrence.target
       || occurrence.target.isHistoricalSnapshot
       || occurrence.target.category !== 'Attraction'
+      || this.timelineConsistencyStaleSignal()
       || this.isOccurrenceBusy(occurrence.id)) {
       return;
     }
@@ -631,6 +634,7 @@ export class PassportVisitEditorStateFacade {
       || (!pendingSubmission && (!occurrence.target
         || occurrence.target.isHistoricalSnapshot
         || occurrence.target.category !== 'Attraction'))
+      || this.timelineConsistencyStaleSignal()
       || this.isOccurrenceBusy(occurrence.id)) {
       return;
     }
@@ -1315,6 +1319,7 @@ export class PassportVisitEditorStateFacade {
     const visitGeneration: number = this.visitInstanceGeneration;
     const generation: number = this.timelineGeneration;
     const reloadRequestGeneration: number = ++this.timelineReloadRequestGeneration;
+    const resolvesStaleConsistency: boolean = this.timelineConsistencyStaleSignal();
     this.timelineLoadingSignal.set(true);
     this.occurrencesApi.list(visitId, null, PassportVisitEditorStateFacade.TimelinePageSize).pipe(
       take(1),
@@ -1330,6 +1335,10 @@ export class PassportVisitEditorStateFacade {
         if (generation === this.timelineGeneration) {
           this.setTimelineOccurrences(page.items);
           this.nextTimelineCursorSignal.set(page.nextCursor);
+          this.timelineConsistencyStaleSignal.set(false);
+          if (resolvesStaleConsistency) {
+            this.operationErrorKeySignal.set(null);
+          }
         }
         this.runQueuedTimelineReload();
       },
@@ -1470,6 +1479,7 @@ export class PassportVisitEditorStateFacade {
       page,
       PassportVisitEditorStateFacade.AttractionPageSize,
       {
+        includeHidden: false,
         closedFilter: 'all',
         category: 'Attraction',
         search: this.currentAttractionSearch || null,
@@ -1893,7 +1903,10 @@ export class PassportVisitEditorStateFacade {
           target: updated.target ?? candidate.target,
           historicalConsistency: updated.target == null
             ? candidate.historicalConsistency
-            : updated.historicalConsistency
+            : updated.historicalConsistency,
+          historicalConflictConfirmed: updated.target == null
+            ? candidate.historicalConflictConfirmed
+            : updated.historicalConflictConfirmed
         }
         : candidate
     );
@@ -2072,6 +2085,7 @@ export class PassportVisitEditorStateFacade {
       this.metadataDraftSignal.set(createPassportVisitMetadataDraft(visit));
     }
     if (temporalMetadataChanged) {
+      this.timelineConsistencyStaleSignal.set(true);
       this.refreshLoadedTargetEvaluations(visit.id);
       this.reloadTimeline();
     }
@@ -2434,6 +2448,7 @@ export class PassportVisitEditorStateFacade {
     this.loadErrorKeySignal.set(null);
     this.attractionErrorKeySignal.set(null);
     this.targetEvaluationsStaleSignal.set(false);
+    this.timelineConsistencyStaleSignal.set(false);
     this.operationErrorKeySignal.set(null);
     this.normalizationNoticeSignal.set(false);
     this.attractionsLoadingSignal.set(false);
