@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Models;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Core.Domain.Ratings;
 using Moq;
 using Xunit;
