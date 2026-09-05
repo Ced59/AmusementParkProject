@@ -1,6 +1,20 @@
 {
-  "version": "5.1.6",
+  "version": "5.1.7",
   "history": [
+    {
+      "version": "5.1.7",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "L’administration bénéficie d’améliorations d’ergonomie et de fiabilité.",
+        "en": "Administration benefits from usability and reliability improvements.",
+        "de": "Die Administration profitiert von Verbesserungen bei Bedienbarkeit und Zuverlässigkeit.",
+        "nl": "Het beheer profiteert van verbeteringen in gebruiksgemak en betrouwbaarheid.",
+        "it": "L’amministrazione beneficia di miglioramenti in termini di ergonomia e affidabilità.",
+        "es": "La administración incorpora mejoras de ergonomía y fiabilidad.",
+        "pl": "Panel administracyjny zyskał ulepszenia ergonomii i niezawodności.",
+        "pt": "A administração beneficia de melhorias de ergonomia e fiabilidade."
+      }
+    },
     {
       "version": "5.1.6",
       "releasedAt": "2026-09-05",
