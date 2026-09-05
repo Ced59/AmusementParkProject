@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Reisepass-Beta",
+      "kicker": "Produktvalidierung",
+      "title": "Steuerung der Reisepass-Beta",
+      "subtitle": "Ermittelt, ob der Reisepass zu einer nützlichen Gewohnheit wird, ohne Besuche oder persönliche Vorlieben offenzulegen.",
+      "loading": "Reisepass-Kennzahlen werden geladen...",
+      "loadError": "Die Reisepass-Kennzahlen konnten nicht geladen werden.",
+      "empty": "In diesem Zeitraum gab es keine Reisepass-Aktivität.",
+      "filters": {
+        "fromUtc": "Von",
+        "toUtc": "Bis"
+      },
+      "decision": {
+        "kicker": "Wiederkehrsignal",
+        "description": "Dieses quantitative Signal muss noch durch Beta-Interviews und Anwendungsszenarien bestätigt werden, bevor der Meilenstein freigegeben wird."
+      },
+      "signal": {
+        "NotObserved": "Keine Wiederkehr beobachtet",
+        "Emerging": "Wiederkehr zeichnet sich ab",
+        "Candidate": "Mögliches Signal"
+      },
+      "metrics": {
+        "ariaLabel": "Aggregierte Kennzahlen der Reisepass-Beta",
+        "created": "Erstellte Besuche",
+        "completed": "Abgeschlossene Besuche",
+        "firstUsers": "Mitglieder mit einem abgeschlossenen Besuch",
+        "returningUsers": "Mitglieder mit mindestens zwei abgeschlossenen Besuchen",
+        "northStar": "Wichtigste Produktkennzahl"
+      },
+      "chart": {
+        "title": "Tägliche Entwicklung",
+        "subtitle": "Die erste und zweite Nutzung werden aus tatsächlich abgeschlossenen Besuchen berechnet.",
+        "completed": "Abgeschlossene Besuche",
+        "second": "Zweiter abgeschlossener Besuch"
+      },
+      "table": {
+        "caption": "Tägliche Details zu abgeschlossenen Besuchen und Nutzungsmeilensteinen",
+        "date": "Datum",
+        "completed": "Abgeschlossen",
+        "first": "Erster Besuch",
+        "second": "Zweiter Besuch"
+      },
+      "privacy": {
+        "title": "Minimierte Daten",
+        "description": "Dieser Bildschirm erhält nur Summen. Keine Mitglieds-, Besuchs- oder Parkkennung, kein Besuchsdatum und keine Bewertung verlassen die Aggregation."
+      }
+    }
+  }
+}

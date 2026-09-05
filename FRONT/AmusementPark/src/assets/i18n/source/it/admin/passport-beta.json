@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Beta passaporto",
+      "kicker": "Validazione del prodotto",
+      "title": "Monitoraggio della beta del passaporto",
+      "subtitle": "Misura se il passaporto diventa un'abitudine utile senza esporre visite o preferenze personali.",
+      "loading": "Caricamento degli indicatori del passaporto...",
+      "loadError": "Impossibile caricare gli indicatori del passaporto.",
+      "empty": "Nessuna attività del passaporto in questo periodo.",
+      "filters": {
+        "fromUtc": "Dal",
+        "toUtc": "Al"
+      },
+      "decision": {
+        "kicker": "Segnale di ritorno",
+        "description": "Questo segnale quantitativo deve ancora essere confermato con interviste e scenari della beta prima di approvare la tappa."
+      },
+      "signal": {
+        "NotObserved": "Nessun ritorno osservato",
+        "Emerging": "Ritorno in crescita",
+        "Candidate": "Segnale candidato"
+      },
+      "metrics": {
+        "ariaLabel": "Indicatori aggregati della beta del passaporto",
+        "created": "Visite create",
+        "completed": "Visite completate",
+        "firstUsers": "Membri con una visita completata",
+        "returningUsers": "Membri con almeno due visite completate",
+        "northStar": "Indicatore di prodotto principale"
+      },
+      "chart": {
+        "title": "Andamento giornaliero",
+        "subtitle": "Il primo e il secondo utilizzo sono calcolati in base alle visite realmente completate.",
+        "completed": "Visite completate",
+        "second": "Seconda visita completata"
+      },
+      "table": {
+        "caption": "Dettaglio giornaliero delle visite completate e delle tappe di utilizzo",
+        "date": "Data",
+        "completed": "Completate",
+        "first": "Prima visita",
+        "second": "Seconda visita"
+      },
+      "privacy": {
+        "title": "Dati ridotti al minimo",
+        "description": "Questa schermata riceve solo totali. Nessun identificativo di membro, visita o parco, nessuna data di visita e nessuna valutazione escono dall'aggregazione."
+      }
+    }
+  }
+}

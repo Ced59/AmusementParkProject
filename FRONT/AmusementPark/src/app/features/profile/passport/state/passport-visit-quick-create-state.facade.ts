@@ -8,6 +8,11 @@ import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import { PassportProductSource } from '@core/analytics/passport-product-event.model';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { PassportParkOption, PassportVisitQuickCreateDraft } from '../models/passport-visit-quick-create.models';
 import {
@@ -43,9 +48,11 @@ export class PassportVisitQuickCreateStateFacade {
   private readonly createdLocalDraftIdSignal = signal<string | null>(null);
   private readonly searchTerms = new Subject<string>();
   private pendingFingerprint: string | null = null;
+  private pendingSource: PassportProductSource | null = null;
   private pendingIdempotencyKey: string | null = null;
   private pendingDraftId: string | null = null;
   private pendingRideOperationId: string | null = null;
+  private pendingCreationStartTracked = false;
 
   readonly parkOptions: Signal<PassportParkOption[]> = this.parkOptionsSignal.asReadonly();
   readonly searching: Signal<boolean> = this.searchingSignal.asReadonly();
@@ -60,6 +67,8 @@ export class PassportVisitQuickCreateStateFacade {
     @Inject(PASSPORT_VISIT_QUICK_CREATE_PARKS_PORT) private readonly parksApi: PassportVisitQuickCreateParksPort,
     @Inject(PASSPORT_VISIT_OPERATION_ID_PORT) private readonly operationIds: PassportVisitOperationIdPort,
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT) private readonly anonymousDrafts: PassportAnonymousDraftStorePort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly authService: AuthService,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,
@@ -85,14 +94,6 @@ export class PassportVisitQuickCreateStateFacade {
 
     const request: CreatePassportVisitRequest = mapping.request;
     const fingerprint: string = JSON.stringify(request);
-    if (this.pendingFingerprint !== fingerprint || !this.pendingIdempotencyKey) {
-      this.pendingFingerprint = fingerprint;
-      this.pendingIdempotencyKey = this.operationIds.create();
-      this.pendingDraftId = this.operationIds.create();
-      this.pendingRideOperationId = this.operationIds.create();
-    }
-
-    const idempotencyKey: string = this.pendingIdempotencyKey;
     this.errorKeySignal.set(null);
     this.savingSignal.set(true);
 
@@ -100,11 +101,15 @@ export class PassportVisitQuickCreateStateFacade {
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
+          const source: PassportProductSource = token ? 'authenticated' : 'anonymous-local';
+          const idempotencyKey: string = this.preparePendingCreationOperation(fingerprint, source);
           if (!token) {
+            this.trackCreationStartOnce(source, request);
             void this.saveAnonymousDraft(request, parkName);
             return;
           }
 
+          this.trackCreationStartOnce(source, request);
           this.sendCreateRequest(request, idempotencyKey);
         },
         error: (): void => {
@@ -119,9 +124,11 @@ export class PassportVisitQuickCreateStateFacade {
     this.createdLocalDraftIdSignal.set(null);
     this.errorKeySignal.set(null);
     this.pendingFingerprint = null;
+    this.pendingSource = null;
     this.pendingIdempotencyKey = null;
     this.pendingDraftId = null;
     this.pendingRideOperationId = null;
+    this.pendingCreationStartTracked = false;
   }
 
   clearParkSearch(): void {
@@ -177,9 +184,12 @@ export class PassportVisitQuickCreateStateFacade {
           this.createdLocalDraftIdSignal.set(null);
           this.savingSignal.set(false);
           this.pendingFingerprint = null;
+          this.pendingSource = null;
           this.pendingIdempotencyKey = null;
           this.pendingDraftId = null;
           this.pendingRideOperationId = null;
+          this.pendingCreationStartTracked = false;
+          this.trackCreation('visit_created', 'authenticated', request);
           this.messages.add(
             'success',
             this.translateService.instant('common.success'),
@@ -225,9 +235,13 @@ export class PassportVisitQuickCreateStateFacade {
       this.createdLocalDraftIdSignal.set(localDraft.id);
       this.savingSignal.set(false);
       this.pendingFingerprint = null;
+      this.pendingSource = null;
       this.pendingIdempotencyKey = null;
       this.pendingDraftId = null;
       this.pendingRideOperationId = null;
+      this.pendingCreationStartTracked = false;
+      this.trackCreation('visit_created', 'anonymous-local', request);
+      void this.trackSecondAnonymousVisitIfReached();
       this.messages.add(
         'success',
         this.translateService.instant('common.success'),
@@ -262,5 +276,61 @@ export class PassportVisitQuickCreateStateFacade {
     }
 
     return 'passport.quickCreate.errors.generic';
+  }
+
+  private trackCreation(
+    type: 'visit_creation_started' | 'visit_created',
+    source: PassportProductSource,
+    request: CreatePassportVisitRequest
+  ): void {
+    this.productAnalytics.track({
+      type,
+      source,
+      datePrecision: request.date.precision
+    });
+  }
+
+  private trackCreationStartOnce(
+    source: PassportProductSource,
+    request: CreatePassportVisitRequest
+  ): void {
+    if (this.pendingCreationStartTracked) {
+      return;
+    }
+
+    this.pendingCreationStartTracked = true;
+    this.trackCreation('visit_creation_started', source, request);
+  }
+
+  private preparePendingCreationOperation(
+    fingerprint: string,
+    source: PassportProductSource
+  ): string {
+    if (this.pendingFingerprint !== fingerprint
+      || this.pendingSource !== source
+      || !this.pendingIdempotencyKey) {
+      this.pendingFingerprint = fingerprint;
+      this.pendingSource = source;
+      this.pendingIdempotencyKey = this.operationIds.create();
+      this.pendingDraftId = this.operationIds.create();
+      this.pendingRideOperationId = this.operationIds.create();
+      this.pendingCreationStartTracked = false;
+    }
+
+    return this.pendingIdempotencyKey;
+  }
+
+  private async trackSecondAnonymousVisitIfReached(): Promise<void> {
+    try {
+      const wasClaimed: boolean = await this.anonymousDrafts.claimSecondVisitMilestone();
+      if (wasClaimed) {
+        this.productAnalytics.track({
+          type: 'second_visit_recorded',
+          source: 'anonymous-local'
+        });
+      }
+    } catch {
+      // Product analytics must never affect the locally persisted visit.
+    }
   }
 }

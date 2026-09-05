@@ -9,8 +9,10 @@ import type { PassportAnonymousDraftStorePort } from '@features/profile/passport
 @Injectable({ providedIn: 'root' })
 export class IndexedDbPassportAnonymousDraftStoreService implements PassportAnonymousDraftStorePort {
   private static readonly DatabaseName: string = 'amusement-park-passport';
-  private static readonly DatabaseVersion: number = 1;
+  private static readonly DatabaseVersion: number = 2;
   private static readonly DraftStoreName: string = 'anonymous-visit-drafts';
+  private static readonly MetadataStoreName: string = 'product-milestones';
+  private static readonly SecondVisitMilestoneKey: string = 'anonymous-second-visit-recorded';
 
   private databasePromise: Promise<IDBDatabase> | null = null;
 
@@ -46,6 +48,55 @@ export class IndexedDbPassportAnonymousDraftStoreService implements PassportAnon
     }
 
     await this.writeUnlockedDraft(draft);
+  }
+
+  async claimSecondVisitMilestone(): Promise<boolean> {
+    const database: IDBDatabase = await this.openDatabase();
+    return new Promise<boolean>((resolve, reject): void => {
+      const transaction: IDBTransaction = database.transaction(
+        [
+          IndexedDbPassportAnonymousDraftStoreService.DraftStoreName,
+          IndexedDbPassportAnonymousDraftStoreService.MetadataStoreName
+        ],
+        'readwrite'
+      );
+      const draftStore: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.DraftStoreName
+      );
+      const metadataStore: IDBObjectStore = transaction.objectStore(
+        IndexedDbPassportAnonymousDraftStoreService.MetadataStoreName
+      );
+      const markerRequest: IDBRequest<unknown> = metadataStore.get(
+        IndexedDbPassportAnonymousDraftStoreService.SecondVisitMilestoneKey
+      );
+      let claimed: boolean = false;
+
+      markerRequest.onsuccess = (): void => {
+        if (markerRequest.result !== undefined) {
+          return;
+        }
+
+        const countRequest: IDBRequest<number> = draftStore.count();
+        countRequest.onsuccess = (): void => {
+          if (countRequest.result < 2) {
+            return;
+          }
+
+          metadataStore.add(
+            true,
+            IndexedDbPassportAnonymousDraftStoreService.SecondVisitMilestoneKey
+          );
+          claimed = true;
+        };
+      };
+      transaction.oncomplete = (): void => resolve(claimed);
+      transaction.onerror = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-failed'
+      ));
+      transaction.onabort = (): void => reject(transaction.error ?? new Error(
+        'passport-anonymous-draft.transaction-aborted'
+      ));
+    });
   }
 
   async compareAndSet(
@@ -277,6 +328,13 @@ export class IndexedDbPassportAnonymousDraftStoreService implements PassportAnon
               { keyPath: 'id' }
             );
             store.createIndex('updatedAtUtc', 'updatedAtUtc');
+          }
+          if (!database.objectStoreNames.contains(
+            IndexedDbPassportAnonymousDraftStoreService.MetadataStoreName
+          )) {
+            database.createObjectStore(
+              IndexedDbPassportAnonymousDraftStoreService.MetadataStoreName
+            );
           }
         };
         request.onsuccess = (): void => {

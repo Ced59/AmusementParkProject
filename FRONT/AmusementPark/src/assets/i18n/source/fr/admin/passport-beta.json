@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Bêta passeport",
+      "kicker": "Validation métier",
+      "title": "Pilotage de la bêta passeport",
+      "subtitle": "Mesure si le passeport devient une habitude utile, sans exposer les visites ni les préférences personnelles.",
+      "loading": "Chargement des indicateurs du passeport...",
+      "loadError": "Impossible de charger les indicateurs du passeport.",
+      "empty": "Aucune activité passeport sur cette période.",
+      "filters": {
+        "fromUtc": "Du",
+        "toUtc": "Au"
+      },
+      "decision": {
+        "kicker": "Signal de retour",
+        "description": "Ce signal quantitatif doit encore être confirmé par les entretiens et les scénarios de la bêta avant de valider le jalon."
+      },
+      "signal": {
+        "NotObserved": "Aucun retour observé",
+        "Emerging": "Retour en émergence",
+        "Candidate": "Signal candidat"
+      },
+      "metrics": {
+        "ariaLabel": "Indicateurs agrégés de la bêta passeport",
+        "created": "Visites créées",
+        "completed": "Visites terminées",
+        "firstUsers": "Membres avec une visite terminée",
+        "returningUsers": "Membres avec au moins deux visites terminées",
+        "northStar": "Indicateur métier principal"
+      },
+      "chart": {
+        "title": "Progression quotidienne",
+        "subtitle": "Les premiers et deuxièmes usages sont calculés à partir des visites réellement terminées.",
+        "completed": "Visites terminées",
+        "second": "Deuxième visite terminée"
+      },
+      "table": {
+        "caption": "Détail quotidien des visites terminées et des étapes d'usage",
+        "date": "Date",
+        "completed": "Terminées",
+        "first": "Première visite",
+        "second": "Deuxième visite"
+      },
+      "privacy": {
+        "title": "Données minimisées",
+        "description": "Cet écran ne reçoit que des totaux. Aucun identifiant de membre, de visite ou de parc, aucune date de visite et aucune note n'en sortent."
+      }
+    }
+  }
+}

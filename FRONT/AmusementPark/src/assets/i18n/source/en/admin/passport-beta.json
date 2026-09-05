@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Passport beta",
+      "kicker": "Product validation",
+      "title": "Passport beta monitoring",
+      "subtitle": "Measure whether the passport becomes a useful habit without exposing visits or personal preferences.",
+      "loading": "Loading passport indicators...",
+      "loadError": "Unable to load passport indicators.",
+      "empty": "No passport activity during this period.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To"
+      },
+      "decision": {
+        "kicker": "Return signal",
+        "description": "This quantitative signal still needs confirmation through beta interviews and scenarios before the milestone can be approved."
+      },
+      "signal": {
+        "NotObserved": "No return observed",
+        "Emerging": "Return emerging",
+        "Candidate": "Candidate signal"
+      },
+      "metrics": {
+        "ariaLabel": "Aggregated passport beta indicators",
+        "created": "Visits created",
+        "completed": "Visits completed",
+        "firstUsers": "Members with one completed visit",
+        "returningUsers": "Members with at least two completed visits",
+        "northStar": "Primary product indicator"
+      },
+      "chart": {
+        "title": "Daily progress",
+        "subtitle": "First and second uses are calculated from visits that were actually completed.",
+        "completed": "Completed visits",
+        "second": "Second completed visit"
+      },
+      "table": {
+        "caption": "Daily details of completed visits and usage milestones",
+        "date": "Date",
+        "completed": "Completed",
+        "first": "First visit",
+        "second": "Second visit"
+      },
+      "privacy": {
+        "title": "Minimised data",
+        "description": "This screen receives totals only. No member, visit or park identifier, visit date or rating leaves the aggregation."
+      }
+    }
+  }
+}

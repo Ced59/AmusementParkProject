@@ -1,6 +1,20 @@
 {
-  "version": "5.0.38",
+  "version": "5.0.39",
   "history": [
+    {
+      "version": "5.0.39",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les outils de suivi qualité ont été améliorés.",
+        "en": "Quality monitoring tools have been improved.",
+        "de": "Die Werkzeuge zur Qualitätsüberwachung wurden verbessert.",
+        "nl": "De hulpmiddelen voor kwaliteitsbewaking zijn verbeterd.",
+        "it": "Gli strumenti di monitoraggio della qualità sono stati migliorati.",
+        "es": "Se han mejorado las herramientas de seguimiento de la calidad.",
+        "pl": "Ulepszono narzędzia monitorowania jakości.",
+        "pt": "As ferramentas de acompanhamento da qualidade foram melhoradas."
+      }
+    },
     {
       "version": "5.0.38",
       "releasedAt": "2026-09-05",

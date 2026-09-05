@@ -300,4 +300,11 @@ public static class PassportApplicationErrors
             "passport-export.not-ready",
             "L’export n’est pas disponible ou a expiré.");
     }
+
+    public static ApplicationError InvalidBetaMetricsDateRange()
+    {
+        return ApplicationError.Validation(
+            "passport-beta.date-range-invalid",
+            "La date de début doit précéder la date de fin.");
+    }
 }

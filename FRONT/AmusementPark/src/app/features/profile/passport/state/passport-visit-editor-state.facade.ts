@@ -32,6 +32,11 @@ import { Park } from '@app/models/parks/park';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import { passportRideCountBucket } from '@core/analytics/passport-product-event.model';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import {
@@ -322,6 +327,8 @@ export class PassportVisitEditorStateFacade {
     @Inject(PASSPORT_VISIT_EDITOR_ZONES_PORT) private readonly zonesApi: PassportVisitEditorZonesPort,
     @Inject(PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT) private readonly attractionsApi: PassportVisitEditorAttractionsPort,
     @Inject(PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT) private readonly operationIds: PassportVisitEditorOperationIdPort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef
@@ -574,6 +581,15 @@ export class PassportVisitEditorStateFacade {
             !submittedSelections.has(selection))
         );
         this.handleMutationSuccess(result);
+        const addedCount: number = request.items.reduce(
+          (total: number, item: CreatePassportRideOccurrenceBatchItem): number => total + item.count,
+          0
+        );
+        this.productAnalytics.track({
+          type: 'ride_occurrence_added',
+          source: 'authenticated',
+          countBucket: passportRideCountBucket(addedCount)
+        });
         this.showSuccess('passport.editor.messages.added');
       },
       error: (error: unknown): void => {
@@ -839,6 +855,10 @@ export class PassportVisitEditorStateFacade {
 
         this.deletionPreviewLoadingSignal.set(false);
         this.deletionPreviewSignal.set(preview);
+        this.productAnalytics.track({
+          type: 'passport_deletion_started',
+          source: 'authenticated'
+        });
       },
       error: (error: unknown): void => {
         if (!this.isCurrentVisitInstance(visit.id, visitGeneration)) {
@@ -893,6 +913,10 @@ export class PassportVisitEditorStateFacade {
         this.deletionSubmittingSignal.set(false);
         this.pendingMutations.delete(operationName);
         this.deletedVisitIdSignal.set(receipt.visitId);
+        this.productAnalytics.track({
+          type: 'passport_deletion_completed',
+          source: 'authenticated'
+        });
         this.showSuccess('passport.editor.deletion.deleted');
       },
       error: (error: unknown): void => {
@@ -959,6 +983,7 @@ export class PassportVisitEditorStateFacade {
 
         this.visitMutationSavingSignal.set(false);
         this.applyVisitMutationResult(updatedVisit, submittedFingerprint);
+        this.trackVisitStatusTransition(targetStatus);
         this.showSuccess(successKey);
       },
       error: (error: unknown): void => {
@@ -1024,6 +1049,7 @@ export class PassportVisitEditorStateFacade {
 
         this.assessmentSavingSignal.set(false);
         this.applyAssessmentMutationResult(updatedVisit, submittedFingerprint);
+        this.trackTemporalRatingAdded('park-visit');
         this.showSuccess('passport.editor.assessment.saved');
       },
       error: (error: unknown): void => {
@@ -1157,6 +1183,7 @@ export class PassportVisitEditorStateFacade {
 
         this.setOccurrenceBusy(occurrence.id, false);
         this.applyRideAssessmentMutationResult(updated, submittedFingerprint);
+        this.trackTemporalRatingAdded('ride-occurrence');
         this.showSuccess('passport.editor.rideAssessment.saved');
       },
       error: (error: unknown): void => {
@@ -2076,6 +2103,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.setRideAssessmentError(occurrenceId, null);
+          if (mutation === 'upsert') {
+            this.trackTemporalRatingAdded('ride-occurrence');
+          }
           this.showSuccess(mutation === 'delete'
             ? 'passport.editor.rideAssessment.deleted'
             : 'passport.editor.rideAssessment.saved');
@@ -2258,6 +2288,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.assessmentErrorKeySignal.set(null);
+          if (mutation === 'upsert') {
+            this.trackTemporalRatingAdded('park-visit');
+          }
           this.showSuccess(mutation === 'delete'
             ? 'passport.editor.assessment.deleted'
             : 'passport.editor.assessment.saved');
@@ -2460,6 +2493,7 @@ export class PassportVisitEditorStateFacade {
           : this.metadataVisitFingerprint(currentVisit) === submittedFingerprint;
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.applyVisitMutationResult(currentVisit, submittedFingerprint);
+          this.trackVisitStatusTransition(targetStatus);
           this.showSuccess(successKey);
           return;
         }
@@ -2475,6 +2509,25 @@ export class PassportVisitEditorStateFacade {
         this.visitMutationSavingSignal.set(false);
         this.visitMutationErrorKeySignal.set('passport.editor.visit.errors.recovery');
       }
+    });
+  }
+
+  private trackVisitStatusTransition(targetStatus: PassportVisitStatus | null): void {
+    if (targetStatus !== 'Completed' && targetStatus !== 'Draft') {
+      return;
+    }
+
+    this.productAnalytics.track({
+      type: targetStatus === 'Completed' ? 'visit_completed' : 'visit_reopened',
+      source: 'authenticated'
+    });
+  }
+
+  private trackTemporalRatingAdded(targetType: 'park-visit' | 'ride-occurrence'): void {
+    this.productAnalytics.track({
+      type: 'temporal_rating_added',
+      source: 'authenticated',
+      targetType
     });
   }
 

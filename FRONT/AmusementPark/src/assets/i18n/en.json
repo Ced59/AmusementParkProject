@@ -1051,6 +1051,7 @@
         "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow.",
         "history": "Manage timelines, sourced milestones and article content.",
         "ratingRankings": "Diagnose, simulate, and rebuild rating rankings.",
+        "passportBeta": "Check whether the passport becomes a recurring habit through aggregated indicators.",
         "standaloneAttractions": "Manage attractions that are not attached to a park.",
         "fieldMode": "Quickly complete photos and locations directly on site.",
         "technicalPages": "Manage technical pages and their localized content.",
@@ -2388,6 +2389,53 @@
       "noRun": {
         "title": "No run yet",
         "message": "Start a manual refresh or wait for the next scheduled execution."
+      }
+    },
+    "passportBeta": {
+      "navTitle": "Passport beta",
+      "kicker": "Product validation",
+      "title": "Passport beta monitoring",
+      "subtitle": "Measure whether the passport becomes a useful habit without exposing visits or personal preferences.",
+      "loading": "Loading passport indicators...",
+      "loadError": "Unable to load passport indicators.",
+      "empty": "No passport activity during this period.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To"
+      },
+      "decision": {
+        "kicker": "Return signal",
+        "description": "This quantitative signal still needs confirmation through beta interviews and scenarios before the milestone can be approved."
+      },
+      "signal": {
+        "NotObserved": "No return observed",
+        "Emerging": "Return emerging",
+        "Candidate": "Candidate signal"
+      },
+      "metrics": {
+        "ariaLabel": "Aggregated passport beta indicators",
+        "created": "Visits created",
+        "completed": "Visits completed",
+        "firstUsers": "Members with one completed visit",
+        "returningUsers": "Members with at least two completed visits",
+        "northStar": "Primary product indicator"
+      },
+      "chart": {
+        "title": "Daily progress",
+        "subtitle": "First and second uses are calculated from visits that were actually completed.",
+        "completed": "Completed visits",
+        "second": "Second completed visit"
+      },
+      "table": {
+        "caption": "Daily details of completed visits and usage milestones",
+        "date": "Date",
+        "completed": "Completed",
+        "first": "First visit",
+        "second": "Second visit"
+      },
+      "privacy": {
+        "title": "Minimised data",
+        "description": "This screen receives totals only. No member, visit or park identifier, visit date or rating leaves the aggregation."
       }
     },
     "publicViewToolbar": {
@@ -5376,7 +5424,7 @@
         "title": "Matomo audience measurement",
         "body1": "The website uses a self-hosted Matomo instance available at matomo.cedric-caudron.com with site ID 4.",
         "body2": "Matomo may measure visited pages, navigation sequences, traffic sources, device type and technical browser information.",
-        "body3": "No third-party advertising tracking is added by this integration. Profile-related journeys may be measured only after optional-cookie consent, without sending private profile content as analytics events."
+        "body3": "No third-party advertising tracking is added by this integration. After you consent to optional cookies, passport actions are measured through general categories only. No member, visit or park identifier, visit date, rating or private comment is sent to Matomo."
       },
       "cookies": {
         "title": "Cookies and local storage",

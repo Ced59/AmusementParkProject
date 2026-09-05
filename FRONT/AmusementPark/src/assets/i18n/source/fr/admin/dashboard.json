@@ -16,7 +16,8 @@
         "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
         "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow.",
         "history": "Gérer les timelines, les jalons sourcés et les articles historiques.",
-        "ratingRankings": "Diagnostiquer, simuler et reconstruire les classements de notes."
+        "ratingRankings": "Diagnostiquer, simuler et reconstruire les classements de notes.",
+        "passportBeta": "Vérifier si le passeport devient un usage régulier grâce à des indicateurs agrégés."
       }
     }
   }

@@ -40,7 +40,7 @@
         "title": "Pomiar oglądalności Matomo",
         "body1": "Strona korzysta z samodzielnie hostowanej instancji Matomo dostępnej pod adresem matomo.cedric-caudron.com z ID strony 4.",
         "body2": "Matomo może mierzyć odwiedzone strony, sekwencje nawigacji, źródła ruchu, typ urządzenia i techniczne informacje o przeglądarce.",
-        "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Ścieżki związane z profilem mogą być mierzone tylko po zgodzie na opcjonalne cookie, bez wysyłania prywatnej treści profilu jako zdarzeń analitycznych."
+          "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Po wyrażeniu zgody na opcjonalne pliki cookie działania w paszporcie są mierzone wyłącznie za pomocą ogólnych kategorii. Do Matomo nie trafiają identyfikatory członka, wizyty ani parku, daty wizyt, oceny ani prywatne komentarze."
       },
       "cookies": {
         "title": "Pliki cookie i pamięć lokalna",

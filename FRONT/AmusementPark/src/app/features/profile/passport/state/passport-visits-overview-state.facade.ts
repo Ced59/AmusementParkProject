@@ -3,6 +3,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { PassportVisit, PassportVisitPage } from '@app/models/passport/passport-visit.models';
 import { TranslationService } from '@app/services/translation.service';
+import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
 import { mapPassportVisitOverviewItem } from '../mappers/passport-visits-overview.mapper';
 import { PassportVisitOverviewItemViewModel } from '../models/passport-visits-overview.models';
 import {
@@ -23,6 +27,7 @@ export class PassportVisitsOverviewStateFacade {
   private readonly nextCursorSignal = signal<string | null>(null);
   private requestGeneration = 0;
   private refreshQueued = false;
+  private openedTracked = false;
 
   public readonly visits: Signal<PassportVisitOverviewItemViewModel[]> = computed(() =>
     this.visitsSignal().map((visit: PassportVisit) =>
@@ -40,6 +45,8 @@ export class PassportVisitsOverviewStateFacade {
   constructor(
     @Inject(PASSPORT_VISITS_OVERVIEW_API_PORT)
     private readonly visitsApi: PassportVisitsOverviewApiPort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef
   ) {
@@ -73,6 +80,10 @@ export class PassportVisitsOverviewStateFacade {
           this.visitsSignal.set(deduplicateVisits(page.items));
           this.nextCursorSignal.set(normalizeCursor(page.nextCursor));
           this.loadingSignal.set(false);
+          if (!this.openedTracked) {
+            this.openedTracked = true;
+            this.productAnalytics.track({ type: 'passport_opened', source: 'authenticated' });
+          }
           this.runQueuedRefresh();
         },
         error: (error: unknown): void => {

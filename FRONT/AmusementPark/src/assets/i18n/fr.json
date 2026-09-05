@@ -1051,6 +1051,7 @@
         "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow.",
         "history": "Gérer les timelines, les jalons sourcés et les articles historiques.",
         "ratingRankings": "Diagnostiquer, simuler et reconstruire les classements de notes.",
+        "passportBeta": "Vérifier si le passeport devient un usage régulier grâce à des indicateurs agrégés.",
         "standaloneAttractions": "Gérer les attractions qui ne dépendent d’aucun parc.",
         "fieldMode": "Compléter rapidement les photos et positions directement sur place.",
         "technicalPages": "Administrer les pages techniques et leurs contenus localisés.",
@@ -2388,6 +2389,53 @@
       "noRun": {
         "title": "Aucune exécution",
         "message": "Lance un rafraîchissement manuel ou attends la prochaine exécution planifiée."
+      }
+    },
+    "passportBeta": {
+      "navTitle": "Bêta passeport",
+      "kicker": "Validation métier",
+      "title": "Pilotage de la bêta passeport",
+      "subtitle": "Mesure si le passeport devient une habitude utile, sans exposer les visites ni les préférences personnelles.",
+      "loading": "Chargement des indicateurs du passeport...",
+      "loadError": "Impossible de charger les indicateurs du passeport.",
+      "empty": "Aucune activité passeport sur cette période.",
+      "filters": {
+        "fromUtc": "Du",
+        "toUtc": "Au"
+      },
+      "decision": {
+        "kicker": "Signal de retour",
+        "description": "Ce signal quantitatif doit encore être confirmé par les entretiens et les scénarios de la bêta avant de valider le jalon."
+      },
+      "signal": {
+        "NotObserved": "Aucun retour observé",
+        "Emerging": "Retour en émergence",
+        "Candidate": "Signal candidat"
+      },
+      "metrics": {
+        "ariaLabel": "Indicateurs agrégés de la bêta passeport",
+        "created": "Visites créées",
+        "completed": "Visites terminées",
+        "firstUsers": "Membres avec une visite terminée",
+        "returningUsers": "Membres avec au moins deux visites terminées",
+        "northStar": "Indicateur métier principal"
+      },
+      "chart": {
+        "title": "Progression quotidienne",
+        "subtitle": "Les premiers et deuxièmes usages sont calculés à partir des visites réellement terminées.",
+        "completed": "Visites terminées",
+        "second": "Deuxième visite terminée"
+      },
+      "table": {
+        "caption": "Détail quotidien des visites terminées et des étapes d'usage",
+        "date": "Date",
+        "completed": "Terminées",
+        "first": "Première visite",
+        "second": "Deuxième visite"
+      },
+      "privacy": {
+        "title": "Données minimisées",
+        "description": "Cet écran ne reçoit que des totaux. Aucun identifiant de membre, de visite ou de parc, aucune date de visite et aucune note n'en sortent."
       }
     },
     "publicViewToolbar": {
@@ -5376,7 +5424,7 @@
         "title": "Mesure d’audience Matomo",
         "body1": "Le site utilise une instance Matomo auto-hébergée accessible à l’adresse matomo.cedric-caudron.com, avec l’identifiant de site 4.",
         "body2": "Matomo peut mesurer les pages visitées, les enchaînements de navigation, les sources de trafic, le type d’appareil et des informations techniques de navigateur.",
-        "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Les parcours liés au profil peuvent être mesurés seulement après accord sur les cookies optionnels, sans envoyer le contenu privé du profil comme événement analytics."
+        "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Après ton accord sur les cookies optionnels, les actions du passeport sont mesurées uniquement par catégories générales. Aucun identifiant de membre, de visite ou de parc, aucune date de visite, aucune note et aucun commentaire privé ne sont envoyés à Matomo."
       },
       "cookies": {
         "title": "Cookies et stockage local",

@@ -1,4 +1,5 @@
 import { DestroyRef } from '@angular/core';
+import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
 import { Subject, of, throwError } from 'rxjs';
 
 import { PassportVisit, PassportVisitPage } from '@app/models/passport/passport-visit.models';
@@ -128,7 +129,8 @@ function createFacade(
   const destroyRef = {
     onDestroy: (): (() => void) => (): void => undefined
   } as unknown as DestroyRef;
-  return new PassportVisitsOverviewStateFacade(api, translationService, destroyRef);
+  const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+  return new PassportVisitsOverviewStateFacade(api, analytics, translationService, destroyRef);
 }
 
 function page(items: PassportVisit[], nextCursor: string | null): PassportVisitPage {

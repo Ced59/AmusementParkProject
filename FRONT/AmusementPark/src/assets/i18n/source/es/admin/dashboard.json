@@ -16,7 +16,8 @@
         "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
         "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow.",
         "history": "Gestionar cronologías, hitos documentados y artículos históricos.",
-        "ratingRankings": "Diagnosticar, simular y reconstruir clasificaciones de valoraciones."
+        "ratingRankings": "Diagnosticar, simular y reconstruir clasificaciones de valoraciones.",
+        "passportBeta": "Comprobar con indicadores agregados si el pasaporte se convierte en un hábito recurrente."
       }
     }
   }

@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Beta paszportu",
+      "kicker": "Walidacja produktu",
+      "title": "Monitorowanie wersji beta paszportu",
+      "subtitle": "Sprawdza, czy paszport staje się użytecznym nawykiem, bez ujawniania wizyt ani osobistych preferencji.",
+      "loading": "Ładowanie wskaźników paszportu...",
+      "loadError": "Nie udało się wczytać wskaźników paszportu.",
+      "empty": "Brak aktywności paszportu w tym okresie.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do"
+      },
+      "decision": {
+        "kicker": "Sygnał powrotu",
+        "description": "Ten sygnał ilościowy musi jeszcze zostać potwierdzony wywiadami i scenariuszami wersji beta, zanim etap zostanie zatwierdzony."
+      },
+      "signal": {
+        "NotObserved": "Nie odnotowano powrotu",
+        "Emerging": "Powrót zaczyna się pojawiać",
+        "Candidate": "Sygnał kandydujący"
+      },
+      "metrics": {
+        "ariaLabel": "Zagregowane wskaźniki wersji beta paszportu",
+        "created": "Utworzone wizyty",
+        "completed": "Zakończone wizyty",
+        "firstUsers": "Członkowie z jedną zakończoną wizytą",
+        "returningUsers": "Członkowie z co najmniej dwiema zakończonymi wizytami",
+        "northStar": "Główny wskaźnik produktu"
+      },
+      "chart": {
+        "title": "Dzienny postęp",
+        "subtitle": "Pierwsze i drugie użycie są obliczane na podstawie faktycznie zakończonych wizyt.",
+        "completed": "Zakończone wizyty",
+        "second": "Druga zakończona wizyta"
+      },
+      "table": {
+        "caption": "Dzienny wykaz zakończonych wizyt i etapów korzystania",
+        "date": "Data",
+        "completed": "Zakończone",
+        "first": "Pierwsza wizyta",
+        "second": "Druga wizyta"
+      },
+      "privacy": {
+        "title": "Minimalny zakres danych",
+        "description": "Ten ekran otrzymuje wyłącznie sumy. Z agregacji nie wychodzą identyfikatory członka, wizyty ani parku, daty wizyt ani oceny."
+      }
+    }
+  }
+}

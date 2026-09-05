@@ -4,6 +4,8 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
+import { PassportProductEvent } from '@core/analytics/passport-product-event.model';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -76,11 +78,21 @@ class FakeTranslateService {
 describe('PassportVisitQuickCreateStateFacade', () => {
   it('reuses the same idempotency key when a network response is lost and the same form is retried', () => {
     const api: FakeVisitApi = new FakeVisitApi();
+    const events: PassportProductEvent[] = [];
     api.responses = [
       throwError(() => new HttpErrorResponse({ status: 0 })),
       of(createVisit())
     ];
-    const facade: PassportVisitQuickCreateStateFacade = createFacade(api);
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      new FakeAuthService(),
+      createDraftStore(),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
     const draft: PassportVisitQuickCreateDraft = createDraft();
 
     facade.createVisit(draft);
@@ -91,6 +103,119 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     expect(api.calls[0].key).toBe('operation-1');
     expect(api.calls[1].key).toBe('operation-1');
     expect(facade.createdVisit()?.id).toBe('visit-1');
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
+  it('records one creation start when the same anonymous draft is retried locally', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
+    const baseStore: PassportAnonymousDraftStorePort = createDraftStore(savedDrafts);
+    let saveAttempt: number = 0;
+    const store: PassportAnonymousDraftStorePort = {
+      ...baseStore,
+      save: async (draft: PassportAnonymousDraft): Promise<void> => {
+        saveAttempt += 1;
+        if (saveAttempt === 1) {
+          throw new Error('IndexedDB temporarily unavailable');
+        }
+
+        await baseStore.save(draft);
+      }
+    };
+    auth.token = null;
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      store,
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+
+    facade.createVisit(createDraft(), 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.errorKey()).toBe('passport.quickCreate.errors.localSave');
+    });
+    facade.createVisit(createDraft(), 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.createdLocalDraftId()).toBe('operation-2');
+    });
+
+    expect(savedDrafts).toHaveLength(1);
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
+  it('starts a new operation when an authenticated retry falls back to a local draft', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
+    api.responses = [throwError(() => new HttpErrorResponse({ status: 0 }))];
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+    const draft: PassportVisitQuickCreateDraft = createDraft();
+
+    facade.createVisit(draft, 'Parc test');
+    expect(facade.errorKey()).toBe('passport.quickCreate.errors.network');
+    auth.token = null;
+    facade.createVisit(draft, 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.createdLocalDraftId()).toBe('operation-5');
+    });
+
+    expect(api.calls[0].key).toBe('operation-1');
+    expect(savedDrafts[0].visitOperationId).toBe('operation-4');
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
   });
 
   it('uses a new idempotency key when the payload changes after a failed attempt', () => {
@@ -111,11 +236,17 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     const api: FakeVisitApi = new FakeVisitApi();
     const auth: FakeAuthService = new FakeAuthService();
     const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
     auth.token = null;
     const facade: PassportVisitQuickCreateStateFacade = createFacade(
       api,
       auth,
-      createDraftStore(savedDrafts)
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
     );
 
     facade.createVisit(createDraft(), 'Parc test');
@@ -129,6 +260,54 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     expect(savedDrafts[0].visitOperationId).toBe('operation-1');
     expect(savedDrafts[0].rideOperationId).toBe('operation-3');
     expect(facade.errorKey()).toBeNull();
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
+  it('records the anonymous second-visit signal only once after the milestone is reached', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [createAnonymousDraft()];
+    const events: PassportProductEvent[] = [];
+    auth.token = null;
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+
+    facade.createVisit(createDraft({ parkId: 'park-2' }), 'Deuxième parc');
+
+    await vi.waitFor((): void => {
+      expect(events.some((event: PassportProductEvent): boolean =>
+        event.type === 'second_visit_recorded')).toBe(true);
+    });
+    expect(savedDrafts).toHaveLength(2);
+
+    savedDrafts.splice(0, 1);
+    facade.clearCreationResult();
+    facade.createVisit(createDraft({ parkId: 'park-3' }), 'Troisième parc');
+
+    await vi.waitFor((): void => {
+      expect(savedDrafts).toHaveLength(2);
+    });
+    expect(events.filter((event: PassportProductEvent): boolean =>
+      event.type === 'second_visit_recorded')).toHaveLength(1);
   });
 
   it('does not call the API for an invalid partial date', () => {
@@ -145,13 +324,15 @@ describe('PassportVisitQuickCreateStateFacade', () => {
 function createFacade(
   api: FakeVisitApi,
   auth: FakeAuthService = new FakeAuthService(),
-  anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore()
+  anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore(),
+  analytics: PassportProductAnalyticsPort = { track: vi.fn() }
 ): PassportVisitQuickCreateStateFacade {
   return new PassportVisitQuickCreateStateFacade(
     api,
     new FakeParksApi(),
     new FakeOperationIds(),
     anonymousDrafts,
+    analytics,
     auth as unknown as AuthService,
     new FakeMessages() as unknown as ToastMessageService,
     new FakeTranslateService() as unknown as TranslateService,
@@ -162,6 +343,7 @@ function createFacade(
 function createDraftStore(
   savedDrafts: PassportAnonymousDraft[] = []
 ): PassportAnonymousDraftStorePort {
+  let secondVisitMilestoneClaimed: boolean = false;
   return {
     isAvailable: (): boolean => true,
     list: async (): Promise<PassportAnonymousDraft[]> => [...savedDrafts],
@@ -176,6 +358,14 @@ function createDraftStore(
       } else {
         savedDrafts.push(draft);
       }
+    },
+    claimSecondVisitMilestone: async (): Promise<boolean> => {
+      if (secondVisitMilestoneClaimed || savedDrafts.length < 2) {
+        return false;
+      }
+
+      secondVisitMilestoneClaimed = true;
+      return true;
     },
     compareAndSet: async (): Promise<boolean> => true,
     deleteIfUnchanged: async (): Promise<boolean> => true,
@@ -205,6 +395,27 @@ function createDraft(overrides: Partial<PassportVisitQuickCreateDraft> = {}): Pa
     title: '',
     privateNote: '',
     ...overrides
+  };
+}
+
+function createAnonymousDraft(): PassportAnonymousDraft {
+  return {
+    schemaVersion: 1,
+    id: 'existing-draft',
+    visitOperationId: 'existing-visit-operation',
+    rideOperationId: 'existing-ride-operation',
+    parkName: 'Premier parc',
+    visit: {
+      parkId: 'park-1',
+      date: { year: 2026, month: 8, day: 1, precision: 'Day', isApproximate: false },
+      timeZoneId: 'Europe/Paris',
+      serviceDayConvention: 'VisitStartLocalDate',
+      title: null,
+      privateNote: null
+    },
+    rides: [],
+    createdAtUtc: '2026-08-01T10:00:00.000Z',
+    updatedAtUtc: '2026-08-01T10:00:00.000Z'
   };
 }
 

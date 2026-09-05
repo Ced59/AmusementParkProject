@@ -40,7 +40,7 @@
         "title": "Matomo audience measurement",
         "body1": "The website uses a self-hosted Matomo instance available at matomo.cedric-caudron.com with site ID 4.",
         "body2": "Matomo may measure visited pages, navigation sequences, traffic sources, device type and technical browser information.",
-        "body3": "No third-party advertising tracking is added by this integration. Profile-related journeys may be measured only after optional-cookie consent, without sending private profile content as analytics events."
+          "body3": "No third-party advertising tracking is added by this integration. After you consent to optional cookies, passport actions are measured through general categories only. No member, visit or park identifier, visit date, rating or private comment is sent to Matomo."
       },
       "cookies": {
         "title": "Cookies and local storage",

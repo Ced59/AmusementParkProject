@@ -4,6 +4,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { PassportGlobalStatistics } from '@app/models/passport/passport-statistics.models';
 import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import {
   PASSPORT_GLOBAL_STATISTICS_FILTER_STORE,
   PassportGlobalStatisticsFilter,
   PassportGlobalStatisticsFilterStorePort
@@ -21,6 +25,7 @@ export class PassportGlobalStatisticsStateFacade {
   private readonly errorKeySignal = signal<string | null>(null);
   private lastSuccessfulFilter: PassportGlobalStatisticsFilter = { year: null, parkId: null };
   private loadGeneration: number = 0;
+  private openedTracked: boolean = false;
 
   readonly statistics: Signal<PassportGlobalStatistics | null> = this.statisticsSignal.asReadonly();
   readonly filter: Signal<PassportGlobalStatisticsFilter> = this.filterSignal.asReadonly();
@@ -31,6 +36,8 @@ export class PassportGlobalStatisticsStateFacade {
     @Inject(PASSPORT_STATISTICS_API_PORT) private readonly statisticsApi: PassportStatisticsApiPort,
     @Inject(PASSPORT_GLOBAL_STATISTICS_FILTER_STORE)
     private readonly filterStore: PassportGlobalStatisticsFilterStorePort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -84,6 +91,14 @@ export class PassportGlobalStatisticsStateFacade {
           this.statisticsSignal.set(statistics);
           this.lastSuccessfulFilter = { ...filter };
           this.loadingSignal.set(false);
+          if (!this.openedTracked) {
+            this.openedTracked = true;
+            this.productAnalytics.track({
+              type: 'passport_statistics_opened',
+              source: 'authenticated',
+              scope: 'global'
+            });
+          }
         },
         error: (error: unknown): void => {
           if (generation !== this.loadGeneration) {

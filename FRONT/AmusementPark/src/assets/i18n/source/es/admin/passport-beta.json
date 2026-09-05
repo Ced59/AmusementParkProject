@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Beta del pasaporte",
+      "kicker": "Validación del producto",
+      "title": "Seguimiento de la beta del pasaporte",
+      "subtitle": "Mide si el pasaporte se convierte en un hábito útil sin exponer visitas ni preferencias personales.",
+      "loading": "Cargando los indicadores del pasaporte...",
+      "loadError": "No se han podido cargar los indicadores del pasaporte.",
+      "empty": "No hay actividad del pasaporte en este periodo.",
+      "filters": {
+        "fromUtc": "Desde",
+        "toUtc": "Hasta"
+      },
+      "decision": {
+        "kicker": "Señal de retorno",
+        "description": "Esta señal cuantitativa aún debe confirmarse mediante entrevistas y escenarios de la beta antes de validar el hito."
+      },
+      "signal": {
+        "NotObserved": "No se ha observado ningún retorno",
+        "Emerging": "El retorno empieza a aparecer",
+        "Candidate": "Señal candidata"
+      },
+      "metrics": {
+        "ariaLabel": "Indicadores agregados de la beta del pasaporte",
+        "created": "Visitas creadas",
+        "completed": "Visitas completadas",
+        "firstUsers": "Miembros con una visita completada",
+        "returningUsers": "Miembros con al menos dos visitas completadas",
+        "northStar": "Indicador principal del producto"
+      },
+      "chart": {
+        "title": "Progreso diario",
+        "subtitle": "El primer y segundo uso se calculan a partir de visitas realmente completadas.",
+        "completed": "Visitas completadas",
+        "second": "Segunda visita completada"
+      },
+      "table": {
+        "caption": "Detalle diario de las visitas completadas y de los hitos de uso",
+        "date": "Fecha",
+        "completed": "Completadas",
+        "first": "Primera visita",
+        "second": "Segunda visita"
+      },
+      "privacy": {
+        "title": "Datos minimizados",
+        "description": "Esta pantalla solo recibe totales. Ningún identificador de miembro, visita o parque, ninguna fecha de visita ni ninguna valoración salen de la agregación."
+      }
+    }
+  }
+}

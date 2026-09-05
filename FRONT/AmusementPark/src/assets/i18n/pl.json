@@ -1051,6 +1051,7 @@
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
         "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
         "ratingRankings": "Diagnozuj, symuluj i przebudowuj rankingi ocen.",
+        "passportBeta": "Za pomocą zagregowanych wskaźników sprawdzaj, czy paszport staje się regularnym nawykiem.",
         "standaloneAttractions": "Zarządzaj samodzielnymi atrakcjami, które nie są przypisane do parku.",
         "fieldMode": "Szybko uzupełniaj zdjęcia i lokalizacje bezpośrednio w terenie.",
         "technicalPages": "Zarządzaj stronami technicznymi i ich zlokalizowaną treścią.",
@@ -2388,6 +2389,53 @@
       "noRun": {
         "title": "Brak wykonania",
         "message": "Uruchom ręczne odświeżanie albo poczekaj na kolejne zaplanowane wykonanie."
+      }
+    },
+    "passportBeta": {
+      "navTitle": "Beta paszportu",
+      "kicker": "Walidacja produktu",
+      "title": "Monitorowanie wersji beta paszportu",
+      "subtitle": "Sprawdza, czy paszport staje się użytecznym nawykiem, bez ujawniania wizyt ani osobistych preferencji.",
+      "loading": "Ładowanie wskaźników paszportu...",
+      "loadError": "Nie udało się wczytać wskaźników paszportu.",
+      "empty": "Brak aktywności paszportu w tym okresie.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do"
+      },
+      "decision": {
+        "kicker": "Sygnał powrotu",
+        "description": "Ten sygnał ilościowy musi jeszcze zostać potwierdzony wywiadami i scenariuszami wersji beta, zanim etap zostanie zatwierdzony."
+      },
+      "signal": {
+        "NotObserved": "Nie odnotowano powrotu",
+        "Emerging": "Powrót zaczyna się pojawiać",
+        "Candidate": "Sygnał kandydujący"
+      },
+      "metrics": {
+        "ariaLabel": "Zagregowane wskaźniki wersji beta paszportu",
+        "created": "Utworzone wizyty",
+        "completed": "Zakończone wizyty",
+        "firstUsers": "Członkowie z jedną zakończoną wizytą",
+        "returningUsers": "Członkowie z co najmniej dwiema zakończonymi wizytami",
+        "northStar": "Główny wskaźnik produktu"
+      },
+      "chart": {
+        "title": "Dzienny postęp",
+        "subtitle": "Pierwsze i drugie użycie są obliczane na podstawie faktycznie zakończonych wizyt.",
+        "completed": "Zakończone wizyty",
+        "second": "Druga zakończona wizyta"
+      },
+      "table": {
+        "caption": "Dzienny wykaz zakończonych wizyt i etapów korzystania",
+        "date": "Data",
+        "completed": "Zakończone",
+        "first": "Pierwsza wizyta",
+        "second": "Druga wizyta"
+      },
+      "privacy": {
+        "title": "Minimalny zakres danych",
+        "description": "Ten ekran otrzymuje wyłącznie sumy. Z agregacji nie wychodzą identyfikatory członka, wizyty ani parku, daty wizyt ani oceny."
       }
     },
     "publicViewToolbar": {
@@ -5376,7 +5424,7 @@
         "title": "Pomiar oglądalności Matomo",
         "body1": "Strona korzysta z samodzielnie hostowanej instancji Matomo dostępnej pod adresem matomo.cedric-caudron.com z ID strony 4.",
         "body2": "Matomo może mierzyć odwiedzone strony, sekwencje nawigacji, źródła ruchu, typ urządzenia i techniczne informacje o przeglądarce.",
-        "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Ścieżki związane z profilem mogą być mierzone tylko po zgodzie na opcjonalne cookie, bez wysyłania prywatnej treści profilu jako zdarzeń analitycznych."
+        "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Po wyrażeniu zgody na opcjonalne pliki cookie działania w paszporcie są mierzone wyłącznie za pomocą ogólnych kategorii. Do Matomo nie trafiają identyfikatory członka, wizyty ani parku, daty wizyt, oceny ani prywatne komentarze."
       },
       "cookies": {
         "title": "Pliki cookie i pamięć lokalna",

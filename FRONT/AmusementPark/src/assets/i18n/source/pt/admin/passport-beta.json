@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Beta do passaporte",
+      "kicker": "Validação do produto",
+      "title": "Acompanhamento da beta do passaporte",
+      "subtitle": "Mede se o passaporte se torna um hábito útil sem expor visitas nem preferências pessoais.",
+      "loading": "A carregar os indicadores do passaporte...",
+      "loadError": "Não foi possível carregar os indicadores do passaporte.",
+      "empty": "Não houve atividade do passaporte neste período.",
+      "filters": {
+        "fromUtc": "De",
+        "toUtc": "Até"
+      },
+      "decision": {
+        "kicker": "Sinal de regresso",
+        "description": "Este sinal quantitativo ainda precisa de ser confirmado por entrevistas e cenários da beta antes da validação do marco."
+      },
+      "signal": {
+        "NotObserved": "Nenhum regresso observado",
+        "Emerging": "Regresso a surgir",
+        "Candidate": "Sinal candidato"
+      },
+      "metrics": {
+        "ariaLabel": "Indicadores agregados da beta do passaporte",
+        "created": "Visitas criadas",
+        "completed": "Visitas concluídas",
+        "firstUsers": "Membros com uma visita concluída",
+        "returningUsers": "Membros com pelo menos duas visitas concluídas",
+        "northStar": "Indicador principal do produto"
+      },
+      "chart": {
+        "title": "Evolução diária",
+        "subtitle": "A primeira e a segunda utilizações são calculadas a partir de visitas realmente concluídas.",
+        "completed": "Visitas concluídas",
+        "second": "Segunda visita concluída"
+      },
+      "table": {
+        "caption": "Detalhe diário das visitas concluídas e dos marcos de utilização",
+        "date": "Data",
+        "completed": "Concluídas",
+        "first": "Primeira visita",
+        "second": "Segunda visita"
+      },
+      "privacy": {
+        "title": "Dados minimizados",
+        "description": "Este ecrã recebe apenas totais. Nenhum identificador de membro, visita ou parque, nenhuma data de visita e nenhuma avaliação saem da agregação."
+      }
+    }
+  }
+}

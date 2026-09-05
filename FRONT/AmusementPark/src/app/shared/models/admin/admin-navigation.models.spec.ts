@@ -26,6 +26,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'park-weather',
       'contact-grievances',
       'social-share',
+      'passport-beta',
       'social-publications',
       'rating-rankings',
       'technical-stats'

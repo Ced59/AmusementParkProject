@@ -1403,6 +1403,20 @@ Questions :
 - les statistiques sont-elles crédibles et lisibles ?
 - quelles données refusent-ils de renseigner ?
 
+### 26.1. État de `PASS-19` au 5 septembre 2026
+
+La partie logicielle de la mesure est livrée : agrégats serveur sans identifiants,
+tableau de bord admin responsive, événements produit Matomo typés soumis au
+consentement, neutralisation des URLs privées et protocole de bêta reproductible.
+Les décisions, limites et preuves attendues sont détaillées dans
+`docs/architecture/product-growth-pass-19-passport-beta-measurement-2026-09-05.md`
+et `docs/product/passport-beta-validation-protocol.md`.
+
+La partie terrain reste volontairement ouverte : recruter la cohorte, exécuter les
+scénarios, recueillir les observations différées et confirmer que plusieurs testeurs
+terminent une deuxième visite sans assistance. Le signal quantitatif `Candidate` ne
+vaut jamais validation automatique de `PASS-G`.
+
 ## 27. Gate finale `PASS-G`
 
 La roadmap de partage ne commence que lorsque :

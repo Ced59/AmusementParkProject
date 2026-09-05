@@ -16,7 +16,8 @@
         "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
         "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten.",
         "history": "Timelines, belegte Meilensteine und historische Artikel verwalten.",
-        "ratingRankings": "Bewertungsranglisten prüfen, simulieren und neu erstellen."
+        "ratingRankings": "Bewertungsranglisten prüfen, simulieren und neu erstellen.",
+        "passportBeta": "Mit aggregierten Kennzahlen prüfen, ob der Reisepass regelmäßig genutzt wird."
       }
     }
   }
