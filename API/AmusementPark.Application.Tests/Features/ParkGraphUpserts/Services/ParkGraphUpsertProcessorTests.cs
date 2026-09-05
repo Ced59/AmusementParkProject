@@ -4392,6 +4392,7 @@ public sealed class ParkGraphUpsertProcessorTests
             .Callback<ParkGraphUpsertHistoryEntry, CancellationToken>((entry, _) => savedHistoryEntry = entry)
             .Returns(Task.CompletedTask);
         Mock<IParkOfficialMapBinaryStorage> officialMapStorage = new Mock<IParkOfficialMapBinaryStorage>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         ParkOfficialMapBinaryMetadata? storedMetadata = storedSize.HasValue && storedContentType is not null
             ? new ParkOfficialMapBinaryMetadata(storedSize.Value, storedContentType)
             : null;
@@ -4406,7 +4407,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkItemRepository>(MockBehavior.Strict),
             Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
-            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            manufacturerRepository.Object,
             Mock.Of<IImageRepository>(MockBehavior.Strict),
             Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
@@ -4417,6 +4418,18 @@ public sealed class ParkGraphUpsertProcessorTests
         using JsonDocument document = JsonDocument.Parse("""
         {
           "identity": { "parkId": "park-1" },
+          "references": {
+            "manufacturers": [
+              { "key": "maker", "name": "Must Not Be Created" }
+            ]
+          },
+          "merges": [
+            {
+              "entityType": "park",
+              "sourceId": "park-source",
+              "targetId": "park-1"
+            }
+          ],
           "park": {
             "officialMaps": [
               {
@@ -4451,9 +4464,14 @@ public sealed class ParkGraphUpsertProcessorTests
             It.IsAny<string>(),
             It.IsAny<Park>(),
             It.IsAny<CancellationToken>()), Times.Never);
+        manufacturerRepository.Verify(value => value.GetAllAsync(It.IsAny<CancellationToken>()), Times.Never);
+        manufacturerRepository.Verify(value => value.CreateAsync(
+            It.IsAny<AttractionManufacturer>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
         historyRepository.VerifyAll();
         officialMapStorage.VerifyAll();
+        manufacturerRepository.VerifyAll();
     }
 
     private sealed class FixedTimeProvider : TimeProvider

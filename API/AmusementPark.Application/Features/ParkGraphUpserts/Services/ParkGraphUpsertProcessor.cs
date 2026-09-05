@@ -260,6 +260,19 @@ public sealed partial class ParkGraphUpsertProcessor
             : ApplicationResult<ParkGraphUpsertResult>.Success(result);
         }
 
+        await this.PreflightOfficialMapsAsync(targetPark, parkPatch, result, cancellationToken);
+        if (result.Errors.Count > 0)
+        {
+            result.TargetParkId = targetPark.Id;
+            result.TargetParkName = targetPark.Name;
+            result.CanApply = false;
+            FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return apply
+                ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car les cartes officielles sont invalides."))
+                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
+
         await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
         ParkGraphUpsertMergeSummary mergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
         targetPark = await this.RefreshTargetParkAfterAppliedMergesAsync(targetPark, mergeSummary, apply, cancellationToken);
@@ -274,26 +287,8 @@ public sealed partial class ParkGraphUpsertProcessor
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
         bool wasPubliclyDiscoverable = targetPark.IsPubliclyDiscoverable();
 
-        int changeCountBeforeParkPatch = result.Changes.Count;
         ParkGraphUpsertChange parkChange = BuildEntityChange("Park", targetPark.Id, "park", targetPark.Name ?? "Parc", parkWillBeCreated ? "Created" : "Unchanged", parkWillBeCreated ? "createIfMissing" : "id");
         PatchPark(targetPark, parkPatch, identity, founderKeys, operatorKeys, parkChange, result, parkWillBeCreated);
-        if (result.Errors.Count == 0)
-        {
-            IReadOnlyCollection<string> patchedOfficialMapIds = result.Changes
-                .Skip(changeCountBeforeParkPatch)
-                .Where(static change => string.Equals(change.EntityType, "ParkOfficialMap", StringComparison.Ordinal))
-                .Select(static change => change.EntityId)
-                .Where(static id => !string.IsNullOrWhiteSpace(id))
-                .Select(static id => id!)
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .ToList();
-            await this.ValidateOfficialMapStorageAsync(
-                targetPark,
-                patchedOfficialMapIds,
-                result,
-                cancellationToken);
-        }
-
         if (parkChange.Fields.Count > 0 || parkWillBeCreated)
         {
             parkChange.ChangeType = parkWillBeCreated ? "Created" : "Updated";
@@ -370,6 +365,40 @@ public sealed partial class ParkGraphUpsertProcessor
         FinalizeCounts(result);
         await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
         return ApplicationResult<ParkGraphUpsertResult>.Success(result);
+    }
+
+    private async Task PreflightOfficialMapsAsync(
+        Park park,
+        JsonElement? parkPatch,
+        ParkGraphUpsertResult result,
+        CancellationToken cancellationToken)
+    {
+        if (!HasProperty(parkPatch, "officialMaps"))
+        {
+            return;
+        }
+
+        Park candidate = ClonePark(park);
+        ParkGraphUpsertResult preflightResult = new ParkGraphUpsertResult();
+        ParkGraphOfficialMapUpsertPatcher.Patch(candidate, parkPatch, preflightResult);
+        if (preflightResult.Errors.Count > 0)
+        {
+            result.Errors.AddRange(preflightResult.Errors);
+            return;
+        }
+
+        IReadOnlyCollection<string> officialMapIds = preflightResult.Changes
+            .Where(static change => string.Equals(change.EntityType, "ParkOfficialMap", StringComparison.Ordinal))
+            .Select(static change => change.EntityId)
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id!)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        await this.ValidateOfficialMapStorageAsync(
+            candidate,
+            officialMapIds,
+            result,
+            cancellationToken);
     }
 
     private async Task ValidateOfficialMapStorageAsync(

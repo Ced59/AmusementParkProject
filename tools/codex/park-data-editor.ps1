@@ -1073,7 +1073,7 @@ function Get-OfficialMapFileType {
 }
 
 function Invoke-MultipartOfficialMapUpload {
-    param([string]$Path, [string]$ContentType)
+    param([string]$Path, [string]$ContentType, [string]$FileName)
 
     Add-Type -AssemblyName System.Net.Http
     $token = Get-ParkDataEditorToken
@@ -1091,7 +1091,7 @@ function Invoke-MultipartOfficialMapUpload {
             $response = $null
             try {
                 $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::new($ContentType)
-                $multipart.Add($fileContent, 'File', [IO.Path]::GetFileName($Path))
+                $multipart.Add($fileContent, 'File', $FileName)
                 $multipart.Add([System.Net.Http.StringContent]::new($ParkId.Trim()), 'ParkId')
                 $multipart.Add([System.Net.Http.StringContent]::new($OfficialMapId.Trim()), 'OfficialMapId')
                 $response = $client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
@@ -1142,11 +1142,16 @@ function Import-ParkOfficialMap {
 
     $temporaryPath = $null
     $resolvedPath = $null
+    $preferredFileName = $null
     try {
         if ([string]::IsNullOrWhiteSpace($FilePath)) {
             $sourceExtension = [IO.Path]::GetExtension($sourceUri.AbsolutePath).ToLowerInvariant()
+            $sourceFileName = [Uri]::UnescapeDataString([IO.Path]::GetFileName($sourceUri.AbsolutePath))
             if ($sourceExtension -notin @('.pdf', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.kml', '.kmz', '.zip')) {
                 $sourceExtension = '.map'
+            }
+            else {
+                $preferredFileName = $sourceFileName
             }
             $temporaryPath = Join-Path ([IO.Path]::GetTempPath()) ("amusementpark-official-map-" + [Guid]::NewGuid().ToString('N') + $sourceExtension)
             & curl.exe --fail --location --max-redirs 5 --proto '=http,https' --proto-redir '=http,https' `
@@ -1159,6 +1164,7 @@ function Import-ParkOfficialMap {
         }
         else {
             $resolvedPath = Resolve-RequiredFile -Path $FilePath -ParameterName 'FilePath'
+            $preferredFileName = [IO.Path]::GetFileName($resolvedPath)
         }
 
         $fileInfo = Get-Item -LiteralPath $resolvedPath
@@ -1167,7 +1173,22 @@ function Import-ParkOfficialMap {
         }
 
         $fileType = Get-OfficialMapFileType -Path $resolvedPath
-        $upload = Invoke-MultipartOfficialMapUpload -Path $resolvedPath -ContentType $fileType.ContentType
+        $fileNameStem = if ([string]::IsNullOrWhiteSpace($preferredFileName)) {
+            $languageSuffix = if ([string]::IsNullOrWhiteSpace($LanguageCode)) { '' } else { "-$($LanguageCode.Trim().ToLowerInvariant())" }
+            "official-map-$OfficialMapYear$languageSuffix"
+        }
+        else {
+            [IO.Path]::GetFileNameWithoutExtension($preferredFileName)
+        }
+        $fileNameStem = [regex]::Replace($fileNameStem, '[^\p{L}\p{Nd}._-]+', '-').Trim('-').Trim('.')
+        if ([string]::IsNullOrWhiteSpace($fileNameStem)) {
+            $fileNameStem = "official-map-$OfficialMapYear"
+        }
+        $uploadFileName = "$fileNameStem.$($fileType.Extension)"
+        $upload = Invoke-MultipartOfficialMapUpload `
+            -Path $resolvedPath `
+            -ContentType $fileType.ContentType `
+            -FileName $uploadFileName
         return [PSCustomObject]@{
             ParkId = $ParkId.Trim()
             OfficialMap = [PSCustomObject]@{
