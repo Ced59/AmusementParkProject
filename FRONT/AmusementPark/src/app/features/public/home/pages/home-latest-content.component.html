@@ -1,0 +1,57 @@
+<div class="home-latest-content">
+  <section class="public-panel home-latest" appUiSurface="panel" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      kickerIconClass="pi pi-clock"
+      kickerLabelKey="home.latestParks.title"
+      titleKey="home.latestParks.title"
+      subtitleKey="home.latestParks.subtitle">
+      <a uiSectionActions appUiButton="ghost" [routerLink]="['/', currentLang(), 'parks']">
+        <span>{{ 'home.ctaBrowseParks' | translate }}</span>
+        <i class="pi pi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </app-ui-section-header>
+
+    <app-page-state
+      [state]="latestParksState().kind"
+      [messages]="{
+        loadingTitleKey: 'home.latestParks.loadingTitle',
+        loadingMessageKey: 'home.latestParks.loadingMessage',
+        errorTitleKey: 'home.latestParks.errorTitle',
+        errorMessageKey: 'home.latestParks.errorMessage',
+        emptyTitleKey: 'home.latestParks.emptyTitle',
+        emptyMessageKey: 'home.latestParks.emptyMessage'
+      }">
+      <div class="home-latest__grid">
+        @for (park of latestParks(); track park.id ?? park.name) {
+          <app-ui-featured-park-card [park]="park"></app-ui-featured-park-card>
+        }
+      </div>
+    </app-page-state>
+  </section>
+
+  <section class="public-panel home-latest" appUiSurface="panel" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      kickerIconClass="pi pi-book"
+      kickerLabelKey="home.latestArticles.title"
+      titleKey="home.latestArticles.title"
+      subtitleKey="home.latestArticles.subtitle">
+    </app-ui-section-header>
+
+    <app-page-state
+      [state]="latestArticlesState().kind"
+      [messages]="{
+        loadingTitleKey: 'home.latestArticles.loadingTitle',
+        loadingMessageKey: 'home.latestArticles.loadingMessage',
+        errorTitleKey: 'home.latestArticles.errorTitle',
+        errorMessageKey: 'home.latestArticles.errorMessage',
+        emptyTitleKey: 'home.latestArticles.emptyTitle',
+        emptyMessageKey: 'home.latestArticles.emptyMessage'
+      }">
+      <div class="home-latest__grid">
+        @for (article of latestArticles(); track article.id ?? article.title) {
+          <app-ui-article-card [article]="article"></app-ui-article-card>
+        }
+      </div>
+    </app-page-state>
+  </section>
+</div>

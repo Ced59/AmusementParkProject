@@ -68,47 +68,12 @@ public sealed class GetHomeFeaturedParksQueryHandler : IQueryHandler<GetHomeFeat
             .Take(normalizedLimit)
             .ToList();
 
-        IReadOnlyCollection<HomeFeaturedParkResult> results = await this.BuildResultsAsync(
+        IReadOnlyCollection<HomeFeaturedParkResult> results = await HomeParkCardResultBuilder.BuildAsync(
             normalizedSelection,
+            this.parkItemRepository,
             cancellationToken);
 
         return ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>.Success(results);
-    }
-
-    private async Task<IReadOnlyCollection<HomeFeaturedParkResult>> BuildResultsAsync(
-        IReadOnlyCollection<Park> parks,
-        CancellationToken cancellationToken)
-    {
-        List<string> parkIds = parks
-            .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
-            .Select(static park => park.Id.Trim())
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
-
-        IReadOnlyDictionary<string, IReadOnlyDictionary<ParkItemCategory, int>> countsByParkId =
-            await this.parkItemRepository.GetCountsByCategoryForParkIdsAsync(
-                parkIds,
-                includeHidden: false,
-                ClosedEntityFilter.OpenOnly,
-                cancellationToken);
-
-        List<HomeFeaturedParkResult> results = new List<HomeFeaturedParkResult>(parks.Count);
-
-        foreach (Park park in parks)
-        {
-            IReadOnlyDictionary<ParkItemCategory, int> countsByCategory =
-                !string.IsNullOrWhiteSpace(park.Id)
-                && countsByParkId.TryGetValue(park.Id, out IReadOnlyDictionary<ParkItemCategory, int>? counts)
-                    ? counts
-                    : new Dictionary<ParkItemCategory, int>();
-
-            results.Add(new HomeFeaturedParkResult(
-                park,
-                countsByCategory,
-                park.IsFeaturedOnHome));
-        }
-
-        return results;
     }
 
     private static List<string> NormalizeParkIds(IEnumerable<string>? parkIds)

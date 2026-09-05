@@ -1,6 +1,20 @@
 {
-  "version": "5.2.0",
+  "version": "5.2.1",
   "history": [
+    {
+      "version": "5.2.1",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La page d’accueil présente désormais les derniers parcs et articles.",
+        "en": "The home page now highlights the latest parks and articles.",
+        "de": "Die Startseite zeigt jetzt die neuesten Parks und Artikel.",
+        "nl": "De startpagina toont nu de nieuwste parken en artikelen.",
+        "it": "La home page ora presenta i parchi e gli articoli più recenti.",
+        "es": "La página de inicio ahora destaca los parques y artículos más recientes.",
+        "pl": "Strona główna prezentuje teraz najnowsze parki i artykuły.",
+        "pt": "A página inicial apresenta agora os parques e artigos mais recentes."
+      }
+    },
     {
       "version": "5.2.0",
       "releasedAt": "2026-09-05",

@@ -4053,6 +4053,27 @@
       "manualSelection": "Selection",
       "sponsored": "Sponsored"
     },
+    "latestParks": {
+      "title": "Latest parks added or updated",
+      "subtitle": "Discover the parks that have just joined the catalog or whose pages were recently updated.",
+      "loadingTitle": "Loading the latest parks",
+      "loadingMessage": "The latest parks are being loaded.",
+      "errorTitle": "Unable to load the latest parks",
+      "errorMessage": "The latest parks could not be loaded.",
+      "emptyTitle": "No recent park",
+      "emptyMessage": "No newly added or updated park is available right now."
+    },
+    "latestArticles": {
+      "title": "Latest articles",
+      "subtitle": "Read the latest stories and features published about parks and their attractions.",
+      "loadingTitle": "Loading the latest articles",
+      "loadingMessage": "The latest articles are being loaded.",
+      "errorTitle": "Unable to load the latest articles",
+      "errorMessage": "The latest articles could not be loaded.",
+      "emptyTitle": "No recent article",
+      "emptyMessage": "No published article is available right now.",
+      "discover": "Read article"
+    },
     "counts": {
       "attraction": {
         "one": "attraction",

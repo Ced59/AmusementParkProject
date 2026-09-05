@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.home-latest-content,
+.home-latest {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.home-latest-content {
+  gap: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.home-latest__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 960px) {
+  .home-latest__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .home-latest__grid {
+    display: flex;
+    gap: 0.9rem;
+    margin-inline: -0.15rem;
+    overflow-x: auto;
+    padding: 0.15rem 0.15rem 0.8rem;
+    scroll-padding-inline: 0.15rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
+  }
+
+  .home-latest__grid > app-ui-featured-park-card,
+  .home-latest__grid > app-ui-article-card {
+    flex: 0 0 min(84vw, 21rem);
+    scroll-snap-align: start;
+  }
+}

@@ -181,6 +181,30 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetLatestPublishedArticlesAsync(int limit, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true) &
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.IsMajor, true) &
+            Builders<HistoryEventDocument>.Filter.Ne(document => document.Article, null) &
+            Builders<HistoryEventDocument>.Filter.Eq("article.isPublished", true);
+
+        List<HistoryEventDocument> documents = await this.collection.Find(filter)
+            .SortByDescending(document => document.UpdatedAt)
+            .ThenByDescending(document => document.CreatedAt)
+            .ThenBy(document => document.Id)
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyCollection<HistoryEvent>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)
     {
         if (limit <= 0)

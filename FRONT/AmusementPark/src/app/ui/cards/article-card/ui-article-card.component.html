@@ -1,0 +1,47 @@
+@if (article; as currentArticle) {
+  <article class="ui-featured-park-card ui-article-card" [attr.data-tone]="currentArticle.tone" [attr.aria-label]="currentArticle.title">
+    <div class="ui-featured-park-card__visual ui-article-card__visual">
+      <div class="ui-featured-park-card__visual-bg" aria-hidden="true"></div>
+      <app-image-display
+        [imageId]="currentArticle.mainImageId"
+        [alt]="currentArticle.title"
+        imgClass="ui-article-card__image"
+        placeholderClass="ui-article-card__image-placeholder"
+        placeholderKind="generic"
+        sizes="(max-width: 680px) 84vw, (max-width: 960px) 50vw, 33vw"
+        [responsiveWidths]="[320, 480, 640, 800]"
+        loading="lazy">
+      </app-image-display>
+    </div>
+
+    <div class="ui-featured-park-card__body">
+      <div class="ui-featured-park-card__headline">
+        @if (currentArticle.contextLabel) {
+          <p class="ui-featured-park-card__location">
+            <i class="pi pi-book" aria-hidden="true"></i>
+            <span>{{ currentArticle.contextLabel }}</span>
+          </p>
+        }
+
+        <h3 class="ui-featured-park-card__name">{{ currentArticle.title }}</h3>
+      </div>
+
+      @if (currentArticle.description) {
+        <p class="ui-featured-park-card__description">{{ currentArticle.description }}</p>
+      }
+    </div>
+
+    @if (currentArticle.detailLink) {
+      <div class="ui-featured-park-card__footer">
+        <a
+          appUiButton="primary"
+          class="ui-featured-park-card__cta"
+          [routerLink]="currentArticle.detailLink"
+          [attr.aria-label]="('home.latestArticles.discover' | translate) + ' · ' + currentArticle.title">
+          <span>{{ 'home.latestArticles.discover' | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    }
+  </article>
+}

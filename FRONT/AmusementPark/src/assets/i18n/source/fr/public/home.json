@@ -43,6 +43,27 @@
       "manualSelection": "Sélection",
       "sponsored": "Sponsorisé"
     },
+    "latestParks": {
+      "title": "Derniers parcs ajoutés ou mis à jour",
+      "subtitle": "Découvre les parcs qui viennent de rejoindre le catalogue ou dont la fiche a récemment évolué.",
+      "loadingTitle": "Chargement des derniers parcs",
+      "loadingMessage": "Les derniers parcs sont en cours de chargement.",
+      "errorTitle": "Impossible de charger les derniers parcs",
+      "errorMessage": "Les derniers parcs n’ont pas pu être chargés.",
+      "emptyTitle": "Aucun parc récent",
+      "emptyMessage": "Aucun parc ajouté ou mis à jour n’est disponible pour le moment."
+    },
+    "latestArticles": {
+      "title": "Derniers articles",
+      "subtitle": "Retrouve les derniers récits et articles publiés autour des parcs et de leurs attractions.",
+      "loadingTitle": "Chargement des derniers articles",
+      "loadingMessage": "Les derniers articles sont en cours de chargement.",
+      "errorTitle": "Impossible de charger les derniers articles",
+      "errorMessage": "Les derniers articles n’ont pas pu être chargés.",
+      "emptyTitle": "Aucun article récent",
+      "emptyMessage": "Aucun article publié n’est disponible pour le moment.",
+      "discover": "Lire l’article"
+    },
     "counts": {
       "attraction": {
         "one": "attraction",

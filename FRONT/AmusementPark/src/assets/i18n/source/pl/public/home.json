@@ -43,6 +43,27 @@
       "manualSelection": "Wybór",
       "sponsored": "Sponsorowane"
     },
+    "latestParks": {
+      "title": "Ostatnio dodane lub zaktualizowane parki",
+      "subtitle": "Odkryj parki, które właśnie trafiły do katalogu, lub te, których strony niedawno zaktualizowano.",
+      "loadingTitle": "Ładowanie najnowszych parków",
+      "loadingMessage": "Najnowsze parki są wczytywane.",
+      "errorTitle": "Nie można wczytać najnowszych parków",
+      "errorMessage": "Nie udało się wczytać najnowszych parków.",
+      "emptyTitle": "Brak nowych parków",
+      "emptyMessage": "Obecnie nie ma żadnego niedawno dodanego lub zaktualizowanego parku."
+    },
+    "latestArticles": {
+      "title": "Najnowsze artykuły",
+      "subtitle": "Odkryj najnowsze historie i artykuły o parkach oraz ich atrakcjach.",
+      "loadingTitle": "Ładowanie najnowszych artykułów",
+      "loadingMessage": "Najnowsze artykuły są wczytywane.",
+      "errorTitle": "Nie można wczytać najnowszych artykułów",
+      "errorMessage": "Nie udało się wczytać najnowszych artykułów.",
+      "emptyTitle": "Brak nowych artykułów",
+      "emptyMessage": "Obecnie nie ma żadnego opublikowanego artykułu.",
+      "discover": "Przeczytaj artykuł"
+    },
     "counts": {
       "attraction": {
         "one": "atrakcja",

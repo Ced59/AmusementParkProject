@@ -200,6 +200,24 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<Park>> GetLatestVisibleAsync(int limit, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(Array.Empty<string>(), closedFilter);
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .SortByDescending(document => document.UpdatedAt)
+            .ThenByDescending(document => document.CreatedAt)
+            .ThenBy(document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<int> CountDistinctCountryCodesAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)

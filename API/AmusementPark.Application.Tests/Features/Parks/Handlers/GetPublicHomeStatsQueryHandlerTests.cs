@@ -167,6 +167,11 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             throw new NotImplementedException();
         }
 
+        public Task<IReadOnlyCollection<Park>> GetLatestVisibleAsync(int limit, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

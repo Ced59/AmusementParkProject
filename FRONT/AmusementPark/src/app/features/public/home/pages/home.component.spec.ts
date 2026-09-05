@@ -48,6 +48,8 @@ describe('HomeComponent', () => {
     expect(styles).toMatch(/@media \(max-width: 960px\)[\s\S]*\.home-hero__spotlight[\s\S]*padding-top: 0/);
     expect(styles).toMatch(/@media \(max-width: 960px\)[\s\S]*\.home-floating-stack[\s\S]*max-width: none/);
     expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-hero__title[\s\S]*font-size: clamp\(3\.2rem, 14vw, 4\.6rem\)/);
+    expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-featured__grid[\s\S]*display: flex[\s\S]*overflow-x: auto/);
+    expect(styles).toContain('scroll-snap-type: x mandatory');
     expect(styles).toMatch(/@media \(min-width: 961px\) and \(max-width: 1120px\)[\s\S]*\.home-hero__spotlight[\s\S]*padding-top: 0/);
     expect(styles).toMatch(/@media \(min-width: 961px\) and \(max-width: 1120px\)[\s\S]*\.home-floating-stack[\s\S]*max-width: none/);
   });
