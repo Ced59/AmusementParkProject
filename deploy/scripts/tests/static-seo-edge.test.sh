@@ -121,6 +121,24 @@ read_response() {
 
 start_edge true
 
+rendered_edge_configuration="$(docker exec "${container_name}" nginx -T -c /etc/nginx/amusementpark/edge.conf 2>&1)"
+official_map_upload_location="$(sed -n \
+  '\|location = /api/park-data-editor/official-map-files {|,/^    }/p' \
+  <<< "${rendered_edge_configuration}")"
+
+if ! grep -Fq 'client_max_body_size 26m;' <<< "${official_map_upload_location}"; then
+  echo 'The Nginx edge must accept a 25 MiB official-map file plus its multipart envelope.' >&2
+  exit 1
+fi
+if ! grep -Fq 'proxy_request_buffering off;' <<< "${official_map_upload_location}"; then
+  echo 'Official-map uploads must be streamed so unauthenticated request bodies are not buffered in edge tmpfs.' >&2
+  exit 1
+fi
+if [ "$(grep -Fc 'client_max_body_size 26m;' <<< "${rendered_edge_configuration}")" -ne 1 ]; then
+  echo 'The larger request-body allowance must remain scoped to the official-map upload route.' >&2
+  exit 1
+fi
+
 headers="$(read_response)"
 
 assert_header() {

@@ -1,6 +1,20 @@
 {
-  "version": "5.1.5",
+  "version": "5.1.6",
   "history": [
+    {
+      "version": "5.1.6",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "L’ergonomie de l’administration est améliorée.",
+        "en": "Administration ergonomics are improved.",
+        "de": "Die Benutzerfreundlichkeit der Verwaltung wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van het beheer is verbeterd.",
+        "it": "L’ergonomia dell’amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la ergonomía de la administración.",
+        "pl": "Ulepszono wygodę obsługi panelu administracyjnego.",
+        "pt": "A ergonomia da administração foi melhorada."
+      }
+    },
     {
       "version": "5.1.5",
       "releasedAt": "2026-09-05",

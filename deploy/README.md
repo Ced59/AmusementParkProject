@@ -23,6 +23,24 @@ Créer un Proxy Host :
 - Activer SSL + Force SSL + HTTP/2.
 - Vérifier que toute requête `http://` est redirigée en `https://` avant ouverture publique.
 
+Dans l'onglet **Advanced** du Proxy Host, ajouter :
+
+```nginx
+client_max_body_size 1m;
+
+location = /api/park-data-editor/official-map-files {
+  client_max_body_size 26m;
+  proxy_request_buffering off;
+  add_header Strict-Transport-Security $hsts_header always;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $http_connection;
+  proxy_http_version 1.1;
+  include conf.d/include/proxy.conf;
+}
+```
+
+La limite haute reste ainsi réservée à l'import des plans officiels : elle permet de transmettre un fichier de 25 Mio avec son enveloppe multipart, tandis que les autres routes restent limitées à 1 Mio sur ce Proxy Host. Le corps est transmis en flux pour que l'API puisse appliquer l'authentification et la limitation d'opérations sans que chaque proxy mette d'abord tout le fichier en tampon. L'API conserve sa validation stricte à 25 Mio pour le contenu du fichier.
+
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
 
 ## Verrouillage AllowedHosts

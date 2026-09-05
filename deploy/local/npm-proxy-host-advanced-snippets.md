@@ -5,13 +5,29 @@ Ils se collent dans l'onglet **Advanced** du Proxy Host NPM concerné.
 
 ## Proxy Host applicatif `amusement.localhost`
 
-Normalement aucun snippet n'est nécessaire. Le Proxy Host doit cibler :
+Le Proxy Host doit cibler :
 
 ```txt
 Scheme: http
 Forward Hostname / IP: front
 Forward Port: 4000
 Websockets Support: enabled
+```
+
+Avec ce snippet Advanced, afin que les imports de plans officiels acceptent réellement les fichiers jusqu'à 25 Mio avec leur enveloppe multipart :
+
+```nginx
+client_max_body_size 1m;
+
+location = /api/park-data-editor/official-map-files {
+  client_max_body_size 26m;
+  proxy_request_buffering off;
+  add_header Strict-Transport-Security $hsts_header always;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $http_connection;
+  proxy_http_version 1.1;
+  include conf.d/include/proxy.conf;
+}
 ```
 
 ## Matomo local
