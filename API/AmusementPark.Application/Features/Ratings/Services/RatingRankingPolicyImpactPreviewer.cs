@@ -315,11 +315,4 @@ public sealed class RatingRankingPolicyImpactPreviewer
         return this.timeProvider.GetUtcNow().UtcDateTime;
     }
 
-    private sealed record CurrentRankingSnapshot(
-        bool IsAvailable,
-        IReadOnlyDictionary<string, int> Ranks)
-    {
-        public static CurrentRankingSnapshot Unavailable { get; } =
-            new CurrentRankingSnapshot(false, new Dictionary<string, int>(StringComparer.Ordinal));
-    }
 }
