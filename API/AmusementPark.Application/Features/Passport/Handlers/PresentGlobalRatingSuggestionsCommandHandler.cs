@@ -73,7 +73,7 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
         bool isEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
         if (!isEnabled)
         {
-            return Success(true, false, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
+            return Success(false, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
         }
 
         IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
@@ -180,7 +180,7 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
             }
         }
 
-        return Success(true, true, presented);
+        return Success(true, presented);
     }
 
     private static GlobalRatingSuggestionTargetKey[] NormalizeTargets(
@@ -194,12 +194,11 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     }
 
     private static ApplicationResult<GlobalRatingSuggestionPresentationResult> Success(
-        bool isAvailable,
         bool isEnabled,
         IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetResult> targets)
     {
         return ApplicationResult<GlobalRatingSuggestionPresentationResult>.Success(
-            new GlobalRatingSuggestionPresentationResult(isAvailable, isEnabled, targets));
+            new GlobalRatingSuggestionPresentationResult(true, isEnabled, targets));
     }
 
     private static DateTime TruncateToMilliseconds(DateTime value)

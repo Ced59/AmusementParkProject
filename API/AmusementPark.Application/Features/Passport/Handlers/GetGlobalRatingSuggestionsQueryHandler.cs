@@ -68,7 +68,7 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
         if (!userEnabled)
         {
             return ApplicationResult<GlobalRatingSuggestionsResult>.Success(
-                CreateEmpty(true, false));
+                CreateEmpty(false));
         }
 
         IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
@@ -157,10 +157,10 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
                 suggestions));
     }
 
-    private static GlobalRatingSuggestionsResult CreateEmpty(bool isAvailable, bool userEnabled)
+    private static GlobalRatingSuggestionsResult CreateEmpty(bool userEnabled)
     {
         return new GlobalRatingSuggestionsResult(
-            isAvailable,
+            true,
             userEnabled,
             GlobalRatingSuggestionPolicy.MinimumNewObservationCount,
             (int)GlobalRatingSuggestionPolicy.PresentationCooldown.TotalDays,
