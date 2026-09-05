@@ -1,0 +1,86 @@
+{
+  "parkItems": {
+    "passportRide": {
+      "kicker": "Besuchspass",
+      "title": "Füge diese Fahrt einem Besuch hinzu",
+      "description": "Speichere deine Fahrt mit {{attraction}} in dem von dir gewählten Besuchsentwurf.",
+      "loading": "Deine Besuchsentwürfe werden geladen…",
+      "evaluating": "Die Datumsangaben werden geprüft…",
+      "unverified": "Die bekannten Betriebsdaten reichen nicht aus, um diese Fahrt zu prüfen. Du kannst sie trotzdem speichern.",
+      "empty": {
+        "title": "Kein Besuchsentwurf für diesen Park",
+        "description": "Erstelle einen Besuch für {{park}} oder öffne deinen Pass, um bewusst einen abgeschlossenen Besuch wieder zu öffnen. Ohne Besuch wird keine Fahrt erstellt."
+      },
+      "visit": {
+        "legend": "Welchem Besuch möchtest du diese Fahrt hinzufügen?",
+        "hint": "Es werden nur deine Besuchsentwürfe für diesen Park angeboten. Deine Auswahl ist immer ausdrücklich."
+      },
+      "fields": {
+        "count": "Anzahl der Fahrten",
+        "status": "Ergebnis der Fahrt",
+        "time": "Optionale Uhrzeit",
+        "approximateTime": "Ungefähre Uhrzeit",
+        "timeUnavailable": "Füge dem Besuch einen genauen Tag und eine Zeitzone hinzu, um eine Uhrzeit anzugeben.",
+        "rating": "Optionale private Bewertung dieser Fahrt",
+        "ratingHint": "Von 0,5 bis 5 in Halbpunkt-Schritten. Diese private Bewertung beeinflusst die Community-Rangliste nicht.",
+        "groupedRatingHint": "Füge mehrere Fahrten als einen Stapel hinzu und bewerte anschließend jeden Eintrag im Besuch."
+      },
+      "conflict": {
+        "title": "Die bekannten Daten stimmen nicht überein",
+        "description": "{{attraction}} scheint nicht mit dem Besuch am {{visitDate}} vereinbar zu sein. Bestätige dies nur, wenn deine Erinnerung stimmt.",
+        "knownDates": "Bekannte Eckdaten — Eröffnung: {{openingDate}}; Schließung: {{closingDate}}.",
+        "confirm": "Ich bestätige, dass ich diese Fahrt trotz der abweichenden Datumsangaben gemacht habe."
+      },
+      "actions": {
+        "open": "Fahrt hinzufügen",
+        "close": "Schließen",
+        "createVisit": "Besuch für diesen Park erstellen",
+        "manageVisits": "Meine Besuche ansehen oder öffnen",
+        "loadMore": "Weitere Besuche anzeigen",
+        "retry": "Erneut versuchen",
+        "decrease": "Eine Fahrt entfernen",
+        "increase": "Eine Fahrt hinzufügen",
+        "save": "In diesem Besuch speichern",
+        "saving": "Wird gespeichert…",
+        "openVisit": "Besuch öffnen",
+        "addAnother": "Weitere Fahrten hinzufügen",
+        "dismiss": "Meldung schließen"
+      },
+      "success": {
+        "ride": {
+          "one": "{{count}} Fahrt mit {{attraction}} wurde gespeichert.",
+          "few": "{{count}} Fahrten mit {{attraction}} wurden gespeichert.",
+          "many": "{{count}} Fahrten mit {{attraction}} wurden gespeichert.",
+          "other": "{{count}} Fahrten mit {{attraction}} wurden gespeichert."
+        },
+        "rideAndRating": {
+          "one": "{{count}} Fahrt und ihre private Bewertung wurden für {{attraction}} gespeichert.",
+          "few": "{{count}} Fahrten und ihre private Bewertung wurden für {{attraction}} gespeichert.",
+          "many": "{{count}} Fahrten und ihre private Bewertung wurden für {{attraction}} gespeichert.",
+          "other": "{{count}} Fahrten und ihre private Bewertung wurden für {{attraction}} gespeichert."
+        },
+        "ratingFailed": {
+          "one": "Die Fahrt wurde gespeichert, ihre optionale Bewertung jedoch nicht. Du kannst sie im Besuch ergänzen.",
+          "few": "Die {{count}} Fahrten wurden gespeichert, ihre optionale Bewertung jedoch nicht. Du kannst sie im Besuch ergänzen.",
+          "many": "Die {{count}} Fahrten wurden gespeichert, ihre optionale Bewertung jedoch nicht. Du kannst sie im Besuch ergänzen.",
+          "other": "Die {{count}} Fahrten wurden gespeichert, ihre optionale Bewertung jedoch nicht. Du kannst sie im Besuch ergänzen."
+        }
+      },
+      "errors": {
+        "loadTitle": "Deine Besuche konnten nicht geladen werden",
+        "loadVisits": "Deine Besuchsentwürfe für diesen Park konnten nicht geladen werden.",
+        "loadMoreVisits": "Weitere Besuche konnten nicht geladen werden. Versuche es erneut.",
+        "evaluate": "Diese Attraktion konnte für den gewählten Besuch nicht geprüft werden.",
+        "incomplete": "Wähle einen Besuch und warte die Prüfung ab, bevor du speicherst.",
+        "confirmConflict": "Bestätige die abweichenden Datumsangaben ausdrücklich, bevor du speicherst.",
+        "rating": "Wähle eine Bewertung von 0,5 bis 5 in Halbpunkt-Schritten oder lasse die Fahrt unbewertet.",
+        "multipleRating": "Die direkte Bewertung gilt für eine Fahrt. Speichere mehrere Fahrten als Stapel und bewerte die Einträge danach im Besuch.",
+        "invalid": "Prüfe Anzahl, Ergebnis und Uhrzeit der Fahrten.",
+        "response": "Der Server hat die erwartete Fahrt nicht zurückgegeben. Öffne den Besuch, bevor du es erneut versuchst.",
+        "visitNoLongerDraft": "Dieser Besuch ist kein Entwurf mehr. Wähle einen anderen oder öffne ihn über deinen Pass erneut.",
+        "network": "Die Serverantwort ist nicht angekommen. Versuche es erneut: Derselbe Vorgang erstellt kein Duplikat.",
+        "save": "Die Fahrt konnte in diesem Besuch nicht gespeichert werden."
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "parkItems": {
+    "passportRide": {
+      "kicker": "Passeport de visites",
+      "title": "Ajoute ce tour à une visite",
+      "description": "Enregistre ton passage sur {{attraction}} dans la visite brouillon de ton choix.",
+      "loading": "Chargement de tes visites brouillon…",
+      "evaluating": "Vérification de la cohérence des dates…",
+      "unverified": "Les dates d’exploitation connues ne suffisent pas pour vérifier ce passage. Tu peux tout de même l’enregistrer.",
+      "empty": {
+        "title": "Aucune visite brouillon dans ce parc",
+        "description": "Crée une visite pour {{park}}, ou ouvre ton passeport pour rouvrir consciemment une visite terminée. Aucun tour ne sera créé sans visite."
+      },
+      "visit": {
+        "legend": "Dans quelle visite ajouter ce tour ?",
+        "hint": "Seules tes visites brouillon de ce parc sont proposées. Le choix reste toujours explicite."
+      },
+      "fields": {
+        "count": "Nombre de tours",
+        "status": "Résultat du passage",
+        "time": "Heure facultative",
+        "approximateTime": "Heure approximative",
+        "timeUnavailable": "Ajoute un jour exact et un fuseau à la visite pour pouvoir indiquer une heure.",
+        "rating": "Note privée facultative de ce tour",
+        "ratingHint": "De 0,5 à 5, par demi-point. Cette note privée ne modifie pas le classement communautaire.",
+        "groupedRatingHint": "Pour plusieurs tours, ajoute-les en une seule fois puis note chaque passage depuis la visite."
+      },
+      "conflict": {
+        "title": "Les dates connues ne correspondent pas",
+        "description": "{{attraction}} paraît incompatible avec la visite du {{visitDate}}. Confirme seulement si ce souvenir est exact.",
+        "knownDates": "Repères connus — ouverture : {{openingDate}} ; fermeture : {{closingDate}}.",
+        "confirm": "Je confirme avoir effectué ce passage malgré cette incompatibilité de dates."
+      },
+      "actions": {
+        "open": "Ajouter un tour",
+        "close": "Fermer",
+        "createVisit": "Créer une visite dans ce parc",
+        "manageVisits": "Voir ou rouvrir mes visites",
+        "loadMore": "Afficher plus de visites",
+        "retry": "Réessayer",
+        "decrease": "Retirer un tour",
+        "increase": "Ajouter un tour",
+        "save": "Enregistrer dans cette visite",
+        "saving": "Enregistrement…",
+        "openVisit": "Ouvrir la visite",
+        "addAnother": "Ajouter d’autres tours",
+        "dismiss": "Fermer le message"
+      },
+      "success": {
+        "ride": {
+          "one": "{{count}} passage enregistré pour {{attraction}}.",
+          "few": "{{count}} passages enregistrés pour {{attraction}}.",
+          "many": "{{count}} passages enregistrés pour {{attraction}}.",
+          "other": "{{count}} passages enregistrés pour {{attraction}}."
+        },
+        "rideAndRating": {
+          "one": "{{count}} passage et sa note privée ont été enregistrés pour {{attraction}}.",
+          "few": "{{count}} passages et leur note privée ont été enregistrés pour {{attraction}}.",
+          "many": "{{count}} passages et leur note privée ont été enregistrés pour {{attraction}}.",
+          "other": "{{count}} passages et leur note privée ont été enregistrés pour {{attraction}}."
+        },
+        "ratingFailed": {
+          "one": "Le passage est enregistré, mais sa note facultative n’a pas pu l’être. Tu peux la reprendre dans la visite.",
+          "few": "Les {{count}} passages sont enregistrés, mais leur note facultative n’a pas pu l’être. Tu peux la reprendre dans la visite.",
+          "many": "Les {{count}} passages sont enregistrés, mais leur note facultative n’a pas pu l’être. Tu peux la reprendre dans la visite.",
+          "other": "Les {{count}} passages sont enregistrés, mais leur note facultative n’a pas pu l’être. Tu peux la reprendre dans la visite."
+        }
+      },
+      "errors": {
+        "loadTitle": "Tes visites ne se sont pas chargées",
+        "loadVisits": "Impossible de charger tes visites brouillon pour ce parc.",
+        "loadMoreVisits": "Impossible de charger les visites suivantes. Réessaie.",
+        "evaluate": "Impossible de vérifier cette attraction pour la visite choisie.",
+        "incomplete": "Choisis une visite et attends la vérification avant d’enregistrer.",
+        "confirmConflict": "Confirme explicitement l’incompatibilité de dates avant d’enregistrer.",
+        "rating": "Choisis une note de 0,5 à 5, par demi-point, ou laisse le tour non noté.",
+        "multipleRating": "La note directe concerne un seul tour. Pour plusieurs tours, enregistre le lot puis note les passages depuis la visite.",
+        "invalid": "Vérifie le nombre de tours, le résultat et l’heure indiqués.",
+        "response": "Le serveur n’a pas renvoyé le passage attendu. Ouvre la visite avant de réessayer.",
+        "visitNoLongerDraft": "Cette visite n’est plus en brouillon. Choisis-en une autre ou rouvre-la depuis ton passeport.",
+        "network": "La réponse du serveur n’est pas arrivée. Réessaie : la même opération ne créera pas de doublon.",
+        "save": "Le passage n’a pas pu être enregistré dans cette visite."
+      }
+    }
+  }
+}

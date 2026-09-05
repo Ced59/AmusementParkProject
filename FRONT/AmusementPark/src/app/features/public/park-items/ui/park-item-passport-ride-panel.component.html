@@ -1,0 +1,228 @@
+@if (facade.isAuthenticated()) {
+  <section class="passport-ride" appUiSurface="panel" appUiSurfacePadding="spacious" aria-labelledby="passport-ride-title">
+    <div class="passport-ride__intro">
+      <div>
+        <app-ui-kicker tone="lime" iconClass="pi pi-ticket">
+          {{ 'parkItems.passportRide.kicker' | translate }}
+        </app-ui-kicker>
+        <h2 id="passport-ride-title">{{ 'parkItems.passportRide.title' | translate }}</h2>
+        <p>{{ 'parkItems.passportRide.description' | translate:{ attraction: parkItemName } }}</p>
+      </div>
+
+      @if (!expanded()) {
+        <button appUiButton="primary" type="button" (click)="open()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          <span>{{ 'parkItems.passportRide.actions.open' | translate }}</span>
+        </button>
+      } @else {
+        <button appUiButton="ghost" type="button" (click)="close()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ 'parkItems.passportRide.actions.close' | translate }}</span>
+        </button>
+      }
+    </div>
+
+    @if (expanded()) {
+      <div class="passport-ride__editor">
+        @if (facade.loading()) {
+          <div class="passport-ride__state" role="status">
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            <span>{{ 'parkItems.passportRide.loading' | translate }}</span>
+          </div>
+        } @else if (facade.errorKey() && facade.visits().length === 0) {
+          <div class="passport-ride__state passport-ride__state--error" role="alert">
+            <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+            <div>
+              <h3>{{ 'parkItems.passportRide.errors.loadTitle' | translate }}</h3>
+              <p>{{ facade.errorKey()! | translate }}</p>
+            </div>
+            <button appUiButton="primary" type="button" (click)="facade.load()">
+              <i class="pi pi-refresh" aria-hidden="true"></i>
+              <span>{{ 'parkItems.passportRide.actions.retry' | translate }}</span>
+            </button>
+          </div>
+        } @else if (facade.isEmpty()) {
+          <div class="passport-ride__state passport-ride__state--empty">
+            <i class="pi pi-calendar-plus" aria-hidden="true"></i>
+            <div>
+              <h3>{{ 'parkItems.passportRide.empty.title' | translate }}</h3>
+              <p>{{ 'parkItems.passportRide.empty.description' | translate:{ park: parkName } }}</p>
+            </div>
+            <div class="passport-ride__state-actions">
+              <button appUiButton="primary" type="button" (click)="openQuickCreate()">
+                <i class="pi pi-plus" aria-hidden="true"></i>
+                <span>{{ 'parkItems.passportRide.actions.createVisit' | translate }}</span>
+              </button>
+              <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'passport']">
+                <i class="pi pi-book" aria-hidden="true"></i>
+                <span>{{ 'parkItems.passportRide.actions.manageVisits' | translate }}</span>
+              </a>
+            </div>
+          </div>
+        } @else {
+          <fieldset class="passport-ride__visits" [disabled]="facade.saving()">
+            <legend>{{ 'parkItems.passportRide.visit.legend' | translate }}</legend>
+            <p class="passport-ride__hint">{{ 'parkItems.passportRide.visit.hint' | translate }}</p>
+
+            <div class="passport-ride__visit-grid">
+              @for (visit of facade.visits(); track trackVisit($index, visit)) {
+                <label class="passport-ride__visit" [class.passport-ride__visit--selected]="isSelected(visit.id)">
+                  <input
+                    type="radio"
+                    name="passport-ride-visit"
+                    [value]="visit.id"
+                    [checked]="isSelected(visit.id)"
+                    (change)="selectVisit(visit.id)" />
+                  <span class="passport-ride__visit-copy">
+                    <strong>{{ visit.dateLabel }}</strong>
+                    @if (visit.title) {
+                      <small>{{ visit.title }}</small>
+                    }
+                  </span>
+                  <app-ui-chip tone="sky">{{ 'passport.overview.status.Draft' | translate }}</app-ui-chip>
+                </label>
+              }
+            </div>
+
+            @if (facade.hasMore()) {
+              <button appUiButton="ghost" type="button" [disabled]="facade.loadingMore()" (click)="facade.loadMore()">
+                <i [class]="facade.loadingMore() ? 'pi pi-spin pi-spinner' : 'pi pi-chevron-down'" aria-hidden="true"></i>
+                <span>{{ 'parkItems.passportRide.actions.loadMore' | translate }}</span>
+              </button>
+            }
+          </fieldset>
+
+          @if (facade.selectedVisit(); as selectedVisit) {
+            <form class="passport-ride__form" [formGroup]="form" (ngSubmit)="submit()">
+              @if (facade.evaluating()) {
+                <p class="passport-ride__inline-state" role="status">
+                  <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                  {{ 'parkItems.passportRide.evaluating' | translate }}
+                </p>
+              } @else if (facade.evaluation(); as evaluation) {
+                @if (evaluation.consistency === 'ConfirmedConflict') {
+                  <div class="passport-ride__conflict" role="alert">
+                    <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                    <div>
+                      <strong>{{ 'parkItems.passportRide.conflict.title' | translate }}</strong>
+                      <p>{{ 'parkItems.passportRide.conflict.description' | translate:{ attraction: parkItemName, visitDate: selectedVisit.dateLabel } }}</p>
+                      <p>
+                        {{ 'parkItems.passportRide.conflict.knownDates' | translate:{ openingDate: formatReferenceDate(evaluation.openingDate), closingDate: formatReferenceDate(evaluation.closingDate) } }}
+                      </p>
+                      <label class="passport-ride__checkbox">
+                        <input type="checkbox" formControlName="confirmHistoricalConflict" />
+                        <span>{{ 'parkItems.passportRide.conflict.confirm' | translate }}</span>
+                      </label>
+                    </div>
+                  </div>
+                } @else if (evaluation.consistency === 'Unverified') {
+                  <p class="passport-ride__notice">
+                    <i class="pi pi-info-circle" aria-hidden="true"></i>
+                    <span>{{ 'parkItems.passportRide.unverified' | translate }}</span>
+                  </p>
+                }
+
+                <div class="passport-ride__fields">
+                  <fieldset class="passport-ride__quantity">
+                    <legend>{{ 'parkItems.passportRide.fields.count' | translate }}</legend>
+                    <div>
+                      <button type="button" (click)="decreaseCount()" [disabled]="form.controls.count.value <= 1" [attr.aria-label]="'parkItems.passportRide.actions.decrease' | translate">−</button>
+                      <input type="number" min="1" max="100" inputmode="numeric" formControlName="count" (input)="onCountInput()" (blur)="normalizeCount()" />
+                      <button type="button" (click)="increaseCount()" [disabled]="form.controls.count.value >= 100" [attr.aria-label]="'parkItems.passportRide.actions.increase' | translate">+</button>
+                    </div>
+                  </fieldset>
+
+                  <label class="passport-ride__field">
+                    <span>{{ 'parkItems.passportRide.fields.status' | translate }}</span>
+                    <select formControlName="status">
+                      @for (status of statusOptions; track status.value) {
+                        <option [value]="status.value">{{ status.labelKey | translate }}</option>
+                      }
+                    </select>
+                  </label>
+
+                  @if (selectedVisit.acceptsLocalTime) {
+                    <div class="passport-ride__time">
+                      <label class="passport-ride__field">
+                        <span>{{ 'parkItems.passportRide.fields.time' | translate }}</span>
+                        <input type="time" formControlName="localTime" />
+                      </label>
+                      <label class="passport-ride__checkbox">
+                        <input type="checkbox" formControlName="isApproximate" [disabled]="!form.controls.localTime.value" />
+                        <span>{{ 'parkItems.passportRide.fields.approximateTime' | translate }}</span>
+                      </label>
+                    </div>
+                  } @else {
+                    <p class="passport-ride__time-unavailable">
+                      <i class="pi pi-clock" aria-hidden="true"></i>
+                      <span>{{ 'parkItems.passportRide.fields.timeUnavailable' | translate }}</span>
+                    </p>
+                  }
+                </div>
+
+                <app-rating-input
+                  [label]="'parkItems.passportRide.fields.rating' | translate"
+                  [value]="form.controls.rating.value"
+                  [disabled]="facade.saving() || form.controls.count.value > 1"
+                  [showClear]="true"
+                  [locale]="currentLanguage"
+                  [emptyLabel]="'passport.editor.ratingControl.unrated' | translate"
+                  [clearLabel]="'passport.editor.ratingControl.clear' | translate"
+                  [decreaseLabel]="'passport.editor.ratingControl.decrease' | translate"
+                  [increaseLabel]="'passport.editor.ratingControl.increase' | translate"
+                  [outOfLabel]="'passport.editor.ratingControl.outOf' | translate"
+                  [scaleHint]="(form.controls.count.value > 1 ? 'parkItems.passportRide.fields.groupedRatingHint' : 'parkItems.passportRide.fields.ratingHint') | translate"
+                  (valueChange)="updateRating($event)">
+                </app-rating-input>
+
+                <button
+                  class="passport-ride__submit"
+                  appUiButton="primary"
+                  type="submit"
+                  [disabled]="facade.saving() || facade.outcome() !== null || (evaluation.consistency === 'ConfirmedConflict' && !form.controls.confirmHistoricalConflict.value)">
+                  <i [class]="facade.saving() ? 'pi pi-spin pi-spinner' : 'pi pi-check'" aria-hidden="true"></i>
+                  <span>{{ (facade.saving() ? 'parkItems.passportRide.actions.saving' : 'parkItems.passportRide.actions.save') | translate }}</span>
+                </button>
+              }
+            </form>
+          }
+        }
+
+        @if (facade.errorKey() && facade.visits().length > 0) {
+          <div class="passport-ride__message passport-ride__message--error" role="alert">
+            <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+            <span>{{ facade.errorKey()! | translate }}</span>
+            <button type="button" (click)="facade.clearError()" [attr.aria-label]="'parkItems.passportRide.actions.dismiss' | translate">
+              <i class="pi pi-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        }
+
+        @if (facade.outcome(); as outcome) {
+          <div class="passport-ride__message passport-ride__message--success" role="status">
+            <i class="pi pi-check-circle" aria-hidden="true"></i>
+            <div>
+              <strong>{{ outcomeKey(outcome) | localizedPlural:facade.addedCount():{ attraction: parkItemName }:currentLanguage }}</strong>
+              <a appUiButton="soft" [routerLink]="['/', currentLanguage, 'profile', 'visits', facade.createdVisitId()]">
+                {{ 'parkItems.passportRide.actions.openVisit' | translate }}
+                <i class="pi pi-arrow-right" aria-hidden="true"></i>
+              </a>
+              <button appUiButton="ghost" type="button" (click)="startAnotherRide()">
+                <i class="pi pi-plus" aria-hidden="true"></i>
+                {{ 'parkItems.passportRide.actions.addAnother' | translate }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </section>
+
+  <app-passport-visit-quick-create
+    [visible]="quickCreateVisible()"
+    [fixedParkId]="parkId"
+    [fixedParkName]="parkName"
+    (visibleChange)="onQuickCreateVisibleChange($event)"
+    (visitCreated)="onVisitCreated($event)">
+  </app-passport-visit-quick-create>
+}

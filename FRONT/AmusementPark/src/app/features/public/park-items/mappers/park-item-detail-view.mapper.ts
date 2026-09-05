@@ -38,6 +38,7 @@ import { buildPhotos } from './park-item-detail-photos.mapper';
 import { resolveParkItemTypeIconClass, resolveParkItemTypeTone } from './park-item-detail-presentation.mapper';
 import { resolveParkItemRatingContextHintKey } from '@features/public/ratings/utils/rating-lifecycle.helpers';
 import { buildRelatedItems } from './park-item-detail-related.mapper';
+import { canLogParkItemRide } from './park-item-passport-ride.mapper';
 import {
   buildExperienceRows,
   buildPerformanceRows,
@@ -99,6 +100,7 @@ export function mapParkItemToDetailViewModel(
     typeLabelKey: getParkItemTypeTranslationKey(item.type),
     typeIconClass: resolveParkItemTypeIconClass(item.type),
     typeTone: resolveParkItemTypeTone(item.type, item.category),
+    canLogRide: canLogParkItemRide(item, park?.id),
     parkName: park?.name?.trim() ?? null,
     parkStatus: park?.status ?? 'Operating',
     homeLink: ['/', currentLanguage, 'home'],

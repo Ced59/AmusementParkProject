@@ -4383,6 +4383,88 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    },
+    "passportRide": {
+      "kicker": "Visit passport",
+      "title": "Add this ride to a visit",
+      "description": "Record your ride on {{attraction}} in the draft visit you choose.",
+      "loading": "Loading your draft visits…",
+      "evaluating": "Checking date consistency…",
+      "unverified": "The known operating dates are not enough to verify this ride. You can still record it.",
+      "empty": {
+        "title": "No draft visit for this park",
+        "description": "Create a visit for {{park}}, or open your passport to consciously reopen a completed visit. No ride will be created without a visit."
+      },
+      "visit": {
+        "legend": "Which visit should receive this ride?",
+        "hint": "Only your draft visits for this park are offered. Your choice is always explicit."
+      },
+      "fields": {
+        "count": "Number of rides",
+        "status": "Ride outcome",
+        "time": "Optional time",
+        "approximateTime": "Approximate time",
+        "timeUnavailable": "Add an exact day and a time zone to the visit before entering a time.",
+        "rating": "Optional private rating for this ride",
+        "ratingHint": "From 0.5 to 5 in half-point steps. This private rating does not affect community rankings.",
+        "groupedRatingHint": "For several rides, add them in one batch, then rate each entry from the visit."
+      },
+      "conflict": {
+        "title": "The known dates do not match",
+        "description": "{{attraction}} appears incompatible with the visit on {{visitDate}}. Confirm only if this memory is accurate.",
+        "knownDates": "Known references — opening: {{openingDate}}; closing: {{closingDate}}.",
+        "confirm": "I confirm that I took this ride despite the date mismatch."
+      },
+      "actions": {
+        "open": "Add a ride",
+        "close": "Close",
+        "createVisit": "Create a visit for this park",
+        "manageVisits": "View or reopen my visits",
+        "loadMore": "Show more visits",
+        "retry": "Try again",
+        "decrease": "Remove one ride",
+        "increase": "Add one ride",
+        "save": "Save to this visit",
+        "saving": "Saving…",
+        "openVisit": "Open the visit",
+        "addAnother": "Add more rides",
+        "dismiss": "Dismiss message"
+      },
+      "success": {
+        "ride": {
+          "one": "{{count}} ride recorded for {{attraction}}.",
+          "few": "{{count}} rides recorded for {{attraction}}.",
+          "many": "{{count}} rides recorded for {{attraction}}.",
+          "other": "{{count}} rides recorded for {{attraction}}."
+        },
+        "rideAndRating": {
+          "one": "{{count}} ride and its private rating were recorded for {{attraction}}.",
+          "few": "{{count}} rides and their private rating were recorded for {{attraction}}.",
+          "many": "{{count}} rides and their private rating were recorded for {{attraction}}.",
+          "other": "{{count}} rides and their private rating were recorded for {{attraction}}."
+        },
+        "ratingFailed": {
+          "one": "The ride was recorded, but its optional rating could not be saved. You can add it from the visit.",
+          "few": "The {{count}} rides were recorded, but their optional rating could not be saved. You can add it from the visit.",
+          "many": "The {{count}} rides were recorded, but their optional rating could not be saved. You can add it from the visit.",
+          "other": "The {{count}} rides were recorded, but their optional rating could not be saved. You can add it from the visit."
+        }
+      },
+      "errors": {
+        "loadTitle": "Your visits could not be loaded",
+        "loadVisits": "Your draft visits for this park could not be loaded.",
+        "loadMoreVisits": "The next visits could not be loaded. Try again.",
+        "evaluate": "This attraction could not be checked against the selected visit.",
+        "incomplete": "Choose a visit and wait for the check before saving.",
+        "confirmConflict": "Explicitly confirm the date mismatch before saving.",
+        "rating": "Choose a rating from 0.5 to 5 in half-point steps, or leave the ride unrated.",
+        "multipleRating": "The direct rating applies to one ride. For several rides, save the batch and then rate each entry from the visit.",
+        "invalid": "Check the ride count, outcome and time.",
+        "response": "The server did not return the expected ride. Open the visit before trying again.",
+        "visitNoLongerDraft": "This visit is no longer a draft. Choose another one or reopen it from your passport.",
+        "network": "The server response did not arrive. Try again: the same operation will not create a duplicate.",
+        "save": "The ride could not be saved to this visit."
+      }
     }
   },
   "parkOpeningHours": {

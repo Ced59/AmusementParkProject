@@ -21,6 +21,7 @@ import { CommentSummaryLinkComponent } from '@features/public/comments/ui/commen
 import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
 import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
+import { ParkItemPassportRidePanelComponent } from './park-item-passport-ride-panel.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -47,7 +48,8 @@ import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lif
     RatingStarsComponent,
     CommentSummaryLinkComponent,
     PublicContextualBlockDirective,
-    ParkLifecycleNoticeComponent
+    ParkLifecycleNoticeComponent,
+    ParkItemPassportRidePanelComponent
   ]
 })
 export class ParkItemDetailViewComponent {
