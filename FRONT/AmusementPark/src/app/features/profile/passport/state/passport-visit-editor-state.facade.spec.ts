@@ -10,6 +10,7 @@ import {
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { PASSPORT_PRODUCT_ANALYTICS_PORT } from '@core/analytics/passport-product-analytics.port';
 import { PagedResult } from '@shared/models/contracts';
 import {
   PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT,
@@ -51,6 +52,7 @@ describe('PassportVisitEditorStateFacade', () => {
   let zonesPort: { getParkZonesByParkId: ReturnType<typeof vi.fn> };
   let attractionsPort: { getParkItemsByParkIdPage: ReturnType<typeof vi.fn> };
   let operationIds: { create: ReturnType<typeof vi.fn> };
+  let analyticsTrack: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
     visitsPort = {
@@ -109,6 +111,7 @@ describe('PassportVisitEditorStateFacade', () => {
       }))
     };
     operationIds = { create: vi.fn().mockReturnValue('operation-stable') };
+    analyticsTrack = vi.fn();
 
     TestBed.configureTestingModule({
       providers: [
@@ -119,6 +122,7 @@ describe('PassportVisitEditorStateFacade', () => {
         { provide: PASSPORT_VISIT_EDITOR_ZONES_PORT, useValue: zonesPort },
         { provide: PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT, useValue: attractionsPort },
         { provide: PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT, useValue: operationIds },
+        { provide: PASSPORT_PRODUCT_ANALYTICS_PORT, useValue: { track: analyticsTrack } },
         { provide: ToastMessageService, useValue: { add: vi.fn() } },
         { provide: TranslateService, useValue: { instant: (key: string): string => key } }
       ]
@@ -738,6 +742,11 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.visit()?.status).toBe('Completed');
     expect(facade.canEditVisit()).toBe(false);
     expect(facade.visitMutationErrorKey()).toBeNull();
+    expect(analyticsTrack).toHaveBeenCalledTimes(1);
+    expect(analyticsTrack).toHaveBeenCalledWith({
+      type: 'visit_completed',
+      source: 'authenticated'
+    });
   });
 
   it('does not complete a visit while its park assessment draft is unsaved', () => {

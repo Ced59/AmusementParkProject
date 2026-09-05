@@ -160,6 +160,17 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                 ["secondCompletedAt"] = new BsonDocument(
                     "$arrayElemAt",
                     new BsonArray { "$completionDates", 1 }),
+                ["completedInRangeCount"] = new BsonDocument(
+                    "$size",
+                    new BsonDocument("$filter", new BsonDocument
+                    {
+                        ["input"] = "$completionDates",
+                        ["as"] = "completionDate",
+                        ["cond"] = BuildDateInRangeCondition(
+                            "$$completionDate",
+                            fromUtc,
+                            toUtc),
+                    })),
             }),
             new BsonDocument("$facet", new BsonDocument
             {
@@ -170,10 +181,9 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                         ["_id"] = BsonNull.Value,
                         ["usersWithCompletedVisit"] = new BsonDocument(
                             "$sum",
-                            BuildMilestoneInRangeCounter(
-                                "firstCompletedAt",
-                                fromUtc,
-                                toUtc)),
+                            BuildConditionCounter(new BsonDocument(
+                                "$gte",
+                                new BsonArray { "$completedInRangeCount", 1 }))),
                         ["usersWithSecondCompletedVisit"] = new BsonDocument(
                             "$sum",
                             BuildMilestoneInRangeCounter(
@@ -199,23 +209,39 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
         DateTime fromUtc,
         DateTime toUtc)
     {
+        return BuildConditionCounter(BuildDateInRangeCondition(
+            $"${fieldName}",
+            fromUtc,
+            toUtc));
+    }
+
+    private static BsonDocument BuildConditionCounter(BsonDocument condition)
+    {
         return new BsonDocument(
             "$cond",
             new BsonArray
             {
-                new BsonDocument(
-                    "$and",
-                    new BsonArray
-                    {
-                        new BsonDocument(
-                            "$gte",
-                            new BsonArray { $"${fieldName}", fromUtc }),
-                        new BsonDocument(
-                            "$lte",
-                            new BsonArray { $"${fieldName}", toUtc }),
-                    }),
+                condition,
                 1,
                 0,
+            });
+    }
+
+    private static BsonDocument BuildDateInRangeCondition(
+        string dateExpression,
+        DateTime fromUtc,
+        DateTime toUtc)
+    {
+        return new BsonDocument(
+            "$and",
+            new BsonArray
+            {
+                new BsonDocument(
+                    "$gte",
+                    new BsonArray { dateExpression, fromUtc }),
+                new BsonDocument(
+                    "$lte",
+                    new BsonArray { dateExpression, toUtc }),
             });
     }
 

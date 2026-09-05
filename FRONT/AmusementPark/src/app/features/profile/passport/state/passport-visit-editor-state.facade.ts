@@ -983,12 +983,7 @@ export class PassportVisitEditorStateFacade {
 
         this.visitMutationSavingSignal.set(false);
         this.applyVisitMutationResult(updatedVisit, submittedFingerprint);
-        if (targetStatus === 'Completed' || targetStatus === 'Draft') {
-          this.productAnalytics.track({
-            type: targetStatus === 'Completed' ? 'visit_completed' : 'visit_reopened',
-            source: 'authenticated'
-          });
-        }
+        this.trackVisitStatusTransition(targetStatus);
         this.showSuccess(successKey);
       },
       error: (error: unknown): void => {
@@ -2500,6 +2495,7 @@ export class PassportVisitEditorStateFacade {
           : this.metadataVisitFingerprint(currentVisit) === submittedFingerprint;
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.applyVisitMutationResult(currentVisit, submittedFingerprint);
+          this.trackVisitStatusTransition(targetStatus);
           this.showSuccess(successKey);
           return;
         }
@@ -2515,6 +2511,17 @@ export class PassportVisitEditorStateFacade {
         this.visitMutationSavingSignal.set(false);
         this.visitMutationErrorKeySignal.set('passport.editor.visit.errors.recovery');
       }
+    });
+  }
+
+  private trackVisitStatusTransition(targetStatus: PassportVisitStatus | null): void {
+    if (targetStatus !== 'Completed' && targetStatus !== 'Draft') {
+      return;
+    }
+
+    this.productAnalytics.track({
+      type: targetStatus === 'Completed' ? 'visit_completed' : 'visit_reopened',
+      source: 'authenticated'
     });
   }
 

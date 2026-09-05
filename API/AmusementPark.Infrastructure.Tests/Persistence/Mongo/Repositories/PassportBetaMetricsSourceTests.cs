@@ -34,10 +34,16 @@ public sealed class PassportBetaMetricsSourceTests
                 && group["_id"] == "$userId");
         Assert.Equal(0, cohort[3]["$project"]["_id"].AsInt32);
         Assert.False(cohort[3]["$project"].AsBsonDocument.Contains("userId"));
+        BsonDocument inRangeFilter = cohort[3]["$project"]
+            ["completedInRangeCount"]["$size"]["$filter"].AsBsonDocument;
+        Assert.Equal("$completionDates", inRangeFilter["input"].AsString);
+        Assert.Equal("completionDate", inRangeFilter["as"].AsString);
+        AssertDateRangeCondition(inRangeFilter["cond"], "$$completionDate");
         BsonDocument summaryGroup = cohort[4]["$facet"]["summary"][0]["$group"].AsBsonDocument;
-        AssertMilestoneRangeCounter(
-            summaryGroup["usersWithCompletedVisit"],
-            "firstCompletedAt");
+        BsonArray denominatorCondition = summaryGroup["usersWithCompletedVisit"]
+            ["$sum"]["$cond"][0]["$gte"].AsBsonArray;
+        Assert.Equal("$completedInRangeCount", denominatorCondition[0].AsString);
+        Assert.Equal(1, denominatorCondition[1].AsInt32);
         AssertMilestoneRangeCounter(
             summaryGroup["usersWithSecondCompletedVisit"],
             "secondCompletedAt");
@@ -122,12 +128,19 @@ public sealed class PassportBetaMetricsSourceTests
         BsonValue counter,
         string fieldName)
     {
-        BsonArray conditions = counter["$sum"]["$cond"][0]["$and"].AsBsonArray;
-        Assert.Equal($"${fieldName}", conditions[0]["$gte"][0].AsString);
-        Assert.Equal(FromUtc, conditions[0]["$gte"][1].ToUniversalTime());
-        Assert.Equal($"${fieldName}", conditions[1]["$lte"][0].AsString);
-        Assert.Equal(ToUtc, conditions[1]["$lte"][1].ToUniversalTime());
+        AssertDateRangeCondition(counter["$sum"]["$cond"][0], $"${fieldName}");
         Assert.Equal(1, counter["$sum"]["$cond"][1].AsInt32);
         Assert.Equal(0, counter["$sum"]["$cond"][2].AsInt32);
+    }
+
+    private static void AssertDateRangeCondition(
+        BsonValue condition,
+        string expectedDateExpression)
+    {
+        BsonArray conditions = condition["$and"].AsBsonArray;
+        Assert.Equal(expectedDateExpression, conditions[0]["$gte"][0].AsString);
+        Assert.Equal(FromUtc, conditions[0]["$gte"][1].ToUniversalTime());
+        Assert.Equal(expectedDateExpression, conditions[1]["$lte"][0].AsString);
+        Assert.Equal(ToUtc, conditions[1]["$lte"][1].ToUniversalTime());
     }
 }
