@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using Microsoft.Extensions.Logging.Abstractions;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -43,7 +44,7 @@ public sealed class ShareSourceRevisionRepositoryTests
                 CreatedAt = NowUtc,
                 UpdatedAt = NowUtc,
             });
-        ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
 
         ShareSourceMutationLease mutationLease = await repository.BeginMutationAsync(
             " personal-ranking:owner-1 ",
@@ -109,6 +110,104 @@ public sealed class ShareSourceRevisionRepositoryTests
             mutationLease.Token,
             update["$pull"].AsBsonDocument["mutationLeases"].AsBsonDocument["token"].AsString);
         collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CompleteMutationAsync_WhenRecoveredLeaseIsMissing_ShouldAdvanceRevisionAgain()
+    {
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.SetupSequence(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync((ShareSourceRevisionDocument)null!)
+            .ReturnsAsync(new ShareSourceRevisionDocument
+            {
+                ScopeKey = "personal-ranking:owner-1",
+                Revision = 8,
+                CreatedAt = NowUtc.AddDays(-1),
+                UpdatedAt = NowUtc,
+            });
+        ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+        ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
+            "personal-ranking:owner-1",
+            4.ToString("x32"));
+
+        ShareSourceRevision result = await repository.CompleteMutationAsync(
+            mutationLease,
+            sourceChanged: true,
+            CancellationToken.None);
+
+        Assert.Equal(8, result.Revision);
+        collection.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildHeartbeatUpdate_ShouldExtendTheMatchingLeaseWithSafetyMargin()
+    {
+        UpdateDefinition<ShareSourceRevisionDocument> heartbeat =
+            ShareSourceRevisionRepository.BuildHeartbeatUpdate(NowUtc);
+
+        BsonDocument update = Render(heartbeat);
+
+        BsonDocument set = update["$set"].AsBsonDocument;
+        Assert.Equal(
+            NowUtc.Add(ShareSourceRevisionRepository.MutationLeaseDuration),
+            set["mutationLeases.$.expiresAtUtc"].ToUniversalTime());
+        Assert.Equal(NowUtc, set["updatedAt"].ToUniversalTime());
+        Assert.True(
+            ShareSourceRevisionRepository.MutationHeartbeatInterval
+            < ShareSourceRevisionRepository.MutationLeaseDuration);
+    }
+
+    [Fact]
+    public async Task BeginMutationAsync_ShouldRenewLeaseWhileWriterRemainsActive()
+    {
+        TaskCompletionSource heartbeatObserved = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int updateCallCount = 0;
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .Callback(() =>
+            {
+                updateCallCount++;
+                if (updateCallCount == 2)
+                {
+                    heartbeatObserved.TrySetResult();
+                }
+            })
+            .ReturnsAsync(() => new UpdateResult.Acknowledged(1, 1, null));
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevisionDocument
+            {
+                ScopeKey = "personal-ranking:owner-1",
+                Revision = 0,
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            });
+        using ShareSourceRevisionRepository repository = new ShareSourceRevisionRepository(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<ShareSourceRevisionRepository>.Instance,
+            TimeSpan.FromMilliseconds(10));
+
+        await repository.BeginMutationAsync(
+            "personal-ranking:owner-1",
+            CancellationToken.None);
+        await heartbeatObserved.Task.WaitAsync(TimeSpan.FromSeconds(1));
+
+        Assert.True(updateCallCount >= 2);
     }
 
     [Fact]

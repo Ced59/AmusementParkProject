@@ -78,7 +78,7 @@ des périmètres change. Un dépassement 64 bits refuse l'aperçu.
 Chaque mutation protégée suit ce protocole :
 
 ```text
-réserver un lease de 5 minutes
+réserver un lease renouvelé chaque minute
         │
         ├── écrire la note, le profil ou le catalogue
         │
@@ -87,10 +87,13 @@ réserver un lease de 5 minutes
 
 L'aperçu lit les deux révisions et l'identité publique, construit uniquement le
 contenu autorisé, puis les relit. Il est rejeté si un lease est actif, si une
-révision a changé ou si le pseudonyme, l'avatar ou l'état du compte diffère. Après
-une interruption, un lease expiré est retiré atomiquement et la révision avance de façon
-conservatrice : cela peut demander un nouvel aperçu inutilement, mais ne peut pas
-publier silencieusement une donnée différente.
+révision a changé ou si le pseudonyme, l'avatar ou l'état du compte diffère. Pendant
+une écriture vivante, un heartbeat repousse l'expiration du lease avec cinq
+minutes de marge. Après une interruption réelle, le heartbeat s'arrête, le lease
+expiré est retiré atomiquement et la révision avance de façon conservatrice. Si une
+écriture exceptionnellement tardive se termine après cette récupération, sa
+finalisation avance une seconde fois la révision : un aperçu pris entre les deux ne
+peut donc jamais rester égal à la version finale.
 
 Les changements de notes, de pseudonyme, d'avatar, de rôle ou d'état du compte
 protègent la révision personnelle dans toutes leurs voies d'écriture. L'identité
@@ -100,6 +103,11 @@ Un échec de règlement après une écriture déjà validée est journalisé san
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
 attraction protègent la révision du catalogue.
+
+Les libellés de parc, catégories et types d'attraction sont reconstruits depuis le
+catalogue courant. Les copies techniques présentes dans les anciens documents de
+note ne servent jamais au contenu public et aucun identifiant interne ne remplace un
+libellé public manquant.
 
 ## Architecture
 
@@ -156,11 +164,13 @@ Les tests ciblés couvrent :
 - rejet d'un aperçu lorsque l'une des révisions change ;
 - réservation et règlement des leases personnels et catalogue ;
 - récupération prudente des leases expirés ;
+- renouvellement des leases actifs et nouvelle révision après une finalisation tardive ;
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;
 - conservation du succès métier lorsque le règlement d'un lease échoue ;
 - application du plafond après retrait des notes visant des contenus masqués ;
+- reconstruction des métadonnées publiques depuis le parc et l'attraction actuels ;
 - authentification, `no-store`, parsing strict des enums et DTO HTTP ;
 - enregistrement des ports MongoDB et du builder spécialisé.
 

@@ -527,7 +527,10 @@ public sealed class RatingRepository : IRatingRepository
                 .Limit(UserRatingSearchHardLimit)
                 .ToListAsync(cancellationToken);
 
-            IReadOnlyCollection<UserRatingListItemResult> enrichedRatings = await this.EnrichUserRatingsAsync(searchDocuments, cancellationToken);
+            IReadOnlyCollection<UserRatingListItemResult> enrichedRatings = await this.EnrichUserRatingsAsync(
+                searchDocuments,
+                hideTechnicalFallbacks: false,
+                cancellationToken);
             IReadOnlyCollection<UserRatingListItemResult> searchItems = BuildUserRatingSearchWindow(enrichedRatings, parkSearch.Trim(), pageSize);
             return new PagedResult<UserRatingListItemResult>(searchItems, 1, pageSize, searchItems.Count);
         }
@@ -540,11 +543,17 @@ public sealed class RatingRepository : IRatingRepository
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
 
-        IReadOnlyCollection<UserRatingListItemResult> items = await this.EnrichUserRatingsAsync(documents, cancellationToken);
+        IReadOnlyCollection<UserRatingListItemResult> items = await this.EnrichUserRatingsAsync(
+            documents,
+            hideTechnicalFallbacks: false,
+            cancellationToken);
         return new PagedResult<UserRatingListItemResult>(items, page, pageSize, totalItems);
     }
 
-    private async Task<IReadOnlyCollection<UserRatingListItemResult>> EnrichUserRatingsAsync(IReadOnlyCollection<UserRatingDocument> documents, CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<UserRatingListItemResult>> EnrichUserRatingsAsync(
+        IReadOnlyCollection<UserRatingDocument> documents,
+        bool hideTechnicalFallbacks,
+        CancellationToken cancellationToken)
     {
         List<string> parkTargetIds = documents
             .Where(static document => document.TargetType == RatingTargetType.Park)
@@ -573,20 +582,27 @@ public sealed class RatingRepository : IRatingRepository
                 document.TargetId,
                 aggregate,
                 targetCanReceiveVisitorRatings);
-            string? parkName = parks.TryGetValue(document.ParkId, out ParkDocument? park)
-                ? park.Name?.Trim() ?? park.Id
+            string currentParkId = ResolveCurrentParkId(document, parkItems);
+            string? parkName = parks.TryGetValue(currentParkId, out ParkDocument? park)
+                ? NormalizeOptionalLabel(park.Name)
                 : null;
-            string targetName = ResolveTargetName(document, parkName, parkItems);
+            string targetName = ResolveTargetName(
+                document,
+                parkName,
+                parkItems,
+                hideTechnicalFallbacks);
+            ParkItemCategory? currentCategory = ResolveCurrentParkItemCategory(document, parkItems);
+            ParkItemType? currentType = ResolveCurrentParkItemType(document, parkItems);
 
             return new UserRatingListItemResult(
                 document.Id,
                 document.TargetType,
                 document.TargetId,
                 targetName,
-                document.ParkId,
+                currentParkId,
                 parkName,
-                document.ParkItemCategory,
-                document.ParkItemType,
+                currentCategory,
+                currentType,
                 document.Value,
                 document.UpdatedAt,
                 summary);
@@ -625,18 +641,42 @@ public sealed class RatingRepository : IRatingRepository
             return new UserRatingStatsResult(0, 0d, 0d, 0d, Array.Empty<UserRatingStatBucketResult>(), Array.Empty<UserRatingStatBucketResult>(), Array.Empty<UserRatingStatBucketResult>());
         }
 
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems = await this.LoadParkItemsAsync(
+            documents
+                .Where(static document => document.TargetType == RatingTargetType.ParkItem)
+                .Select(static document => document.TargetId),
+            false,
+            cancellationToken);
         IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(
-            documents.Select(static document => document.ParkId),
+            documents.Select(document => ResolveCurrentParkId(document, parkItems)),
             visibleParkNamesOnly,
             cancellationToken);
-        List<UserRatingStatBucketResult> byPark = documents
-            .Where(static document => !string.IsNullOrWhiteSpace(document.ParkId))
-            .GroupBy(static document => document.ParkId, StringComparer.Ordinal)
-            .Select(group =>
+        List<UserRatingStatBucketResult> byPark = new List<UserRatingStatBucketResult>();
+        IEnumerable<IGrouping<string, UserRatingDocument>> parkGroups = documents
+            .Select(document => new
             {
-                string label = parkNames.TryGetValue(group.Key, out string? parkName) ? parkName : group.Key;
-                return new UserRatingStatBucketResult(group.Key, label, group.LongCount(), group.Average(static document => document.Value));
+                Document = document,
+                ParkId = ResolveCurrentParkId(document, parkItems),
             })
+            .Where(static item => !string.IsNullOrWhiteSpace(item.ParkId))
+            .GroupBy(static item => item.ParkId, static item => item.Document, StringComparer.Ordinal);
+        foreach (IGrouping<string, UserRatingDocument> group in parkGroups)
+        {
+            if (!parkNames.TryGetValue(group.Key, out string? parkName)
+                && visibleParkNamesOnly)
+            {
+                continue;
+            }
+
+            string label = parkName ?? group.Key;
+            byPark.Add(new UserRatingStatBucketResult(
+                group.Key,
+                label,
+                group.LongCount(),
+                group.Average(static document => document.Value)));
+        }
+
+        byPark = byPark
             .OrderByDescending(static bucket => bucket.Count)
             .ThenByDescending(static bucket => bucket.AverageRating)
             .Take(8)
@@ -650,8 +690,13 @@ public sealed class RatingRepository : IRatingRepository
             .ToList();
 
         List<UserRatingStatBucketResult> byParkItemCategory = documents
-            .Where(static document => document.ParkItemCategory.HasValue)
-            .GroupBy(static document => document.ParkItemCategory!.Value)
+            .Select(document => new
+            {
+                Document = document,
+                Category = ResolveCurrentParkItemCategory(document, parkItems),
+            })
+            .Where(static item => item.Category.HasValue)
+            .GroupBy(static item => item.Category!.Value, static item => item.Document)
             .Select(static group => new UserRatingStatBucketResult(group.Key.ToString(), group.Key.ToString(), group.LongCount(), group.Average(static document => document.Value)))
             .OrderByDescending(static bucket => bucket.Count)
             .ThenBy(static bucket => bucket.Key, StringComparer.Ordinal)
@@ -1199,7 +1244,10 @@ public sealed class RatingRepository : IRatingRepository
             .Limit(effectiveMaxItems)
             .ToListAsync(cancellationToken);
 
-        return await this.EnrichUserRatingsAsync(documents, cancellationToken);
+        return await this.EnrichUserRatingsAsync(
+            documents,
+            hideTechnicalFallbacks: false,
+            cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<UserRatingListItemResult>> GetVisibleUserRankingSourcesAsync(
@@ -1238,7 +1286,10 @@ public sealed class RatingRepository : IRatingRepository
             }
         }
 
-        return await this.EnrichUserRatingsAsync(visibleDocuments, cancellationToken);
+        return await this.EnrichUserRatingsAsync(
+            visibleDocuments,
+            hideTechnicalFallbacks: true,
+            cancellationToken);
     }
 
     private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(
@@ -1467,9 +1518,11 @@ public sealed class RatingRepository : IRatingRepository
     private async Task<IReadOnlyDictionary<string, string>> LoadParkNamesAsync(IEnumerable<string> parkIds, bool visibleOnly, CancellationToken cancellationToken)
     {
         Dictionary<string, ParkDocument> documents = await this.LoadParkDocumentsAsync(parkIds, visibleOnly, cancellationToken);
-        return documents.ToDictionary(
+        return documents
+            .Where(static pair => !string.IsNullOrWhiteSpace(pair.Value.Name))
+            .ToDictionary(
             static pair => pair.Key,
-            static pair => pair.Value.Name?.Trim() ?? pair.Key,
+            static pair => pair.Value.Name!.Trim(),
             StringComparer.Ordinal);
     }
 
@@ -1626,19 +1679,76 @@ public sealed class RatingRepository : IRatingRepository
             aggregateIntegrityIsValid: aggregate is null ? false : null);
     }
 
-    private static string ResolveTargetName(UserRatingDocument document, string? parkName, IReadOnlyDictionary<string, ParkItemDocument> parkItems)
+    internal static string ResolveCurrentParkId(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems)
     {
         if (document.TargetType == RatingTargetType.Park)
         {
-            return parkName ?? document.TargetId;
+            return document.TargetId.Trim();
+        }
+
+        if (parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            && !string.IsNullOrWhiteSpace(parkItem.ParkId))
+        {
+            return parkItem.ParkId.Trim();
+        }
+
+        return document.ParkId.Trim();
+    }
+
+    internal static ParkItemCategory? ResolveCurrentParkItemCategory(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems)
+    {
+        if (document.TargetType != RatingTargetType.ParkItem)
+        {
+            return null;
+        }
+
+        return parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            ? parkItem.Category
+            : document.ParkItemCategory;
+    }
+
+    internal static ParkItemType? ResolveCurrentParkItemType(
+        UserRatingDocument document,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems)
+    {
+        if (document.TargetType != RatingTargetType.ParkItem)
+        {
+            return null;
+        }
+
+        return parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem)
+            ? parkItem.Type
+            : document.ParkItemType;
+    }
+
+    internal static string ResolveTargetName(
+        UserRatingDocument document,
+        string? parkName,
+        IReadOnlyDictionary<string, ParkItemDocument> parkItems,
+        bool hideTechnicalFallbacks)
+    {
+        if (document.TargetType == RatingTargetType.Park)
+        {
+            return parkName ?? (hideTechnicalFallbacks ? string.Empty : document.TargetId);
         }
 
         if (parkItems.TryGetValue(document.TargetId, out ParkItemDocument? parkItem))
         {
-            return parkItem.Name.Trim();
+            return NormalizeOptionalLabel(parkItem.Name)
+                ?? (hideTechnicalFallbacks ? string.Empty : document.TargetId);
         }
 
-        return document.TargetId;
+        return hideTechnicalFallbacks ? string.Empty : document.TargetId;
+    }
+
+    private static string? NormalizeOptionalLabel(string? value)
+    {
+        string normalized = value?.Trim() ?? string.Empty;
+        return normalized.Length == 0 ? null : normalized;
     }
 
     private static FilterDefinition<UserRatingDocument> BuildUserTargetFilter(string userId, RatingTargetType targetType, string targetId)

@@ -1,35 +1,67 @@
+using System.Collections.Concurrent;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-public sealed class ShareSourceRevisionRepository : IShareSourceRevisionRepository
+public sealed class ShareSourceRevisionRepository : IShareSourceRevisionRepository, IDisposable
 {
     internal static readonly TimeSpan MutationLeaseDuration = TimeSpan.FromMinutes(5);
+    internal static readonly TimeSpan MutationHeartbeatInterval = TimeSpan.FromMinutes(1);
 
     private readonly IMongoCollection<ShareSourceRevisionDocument> collection;
     private readonly TimeProvider timeProvider;
+    private readonly ILogger<ShareSourceRevisionRepository> logger;
+    private readonly TimeSpan heartbeatInterval;
+    private readonly ConcurrentDictionary<string, CancellationTokenSource> heartbeatCancellations =
+        new ConcurrentDictionary<string, CancellationTokenSource>(StringComparer.Ordinal);
 
     public ShareSourceRevisionRepository(
         IMongoDatabase database,
-        MongoDbSettings settings)
+        MongoDbSettings settings,
+        ILogger<ShareSourceRevisionRepository> logger)
         : this(
             database.GetCollection<ShareSourceRevisionDocument>(
                 settings.ShareSourceRevisionsCollectionName),
-            TimeProvider.System)
+            TimeProvider.System,
+            logger,
+            MutationHeartbeatInterval)
     {
     }
 
     internal ShareSourceRevisionRepository(
         IMongoCollection<ShareSourceRevisionDocument> collection,
         TimeProvider timeProvider)
+        : this(
+            collection,
+            timeProvider,
+            NullLogger<ShareSourceRevisionRepository>.Instance,
+            MutationHeartbeatInterval)
+    {
+    }
+
+    internal ShareSourceRevisionRepository(
+        IMongoCollection<ShareSourceRevisionDocument> collection,
+        TimeProvider timeProvider,
+        ILogger<ShareSourceRevisionRepository> logger,
+        TimeSpan heartbeatInterval)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
+        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        if (heartbeatInterval <= TimeSpan.Zero
+            || heartbeatInterval >= MutationLeaseDuration)
+        {
+            throw new ArgumentOutOfRangeException(nameof(heartbeatInterval));
+        }
+
+        this.heartbeatInterval = heartbeatInterval;
     }
 
     public async Task<ShareSourceMutationLease> BeginMutationAsync(
@@ -93,6 +125,7 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             throw new InvalidOperationException("Unable to reserve the share source mutation.");
         }
 
+        this.StartHeartbeat(mutationLease);
         return mutationLease;
     }
 
@@ -102,6 +135,24 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(mutationLease);
+        try
+        {
+            return await this.CompleteMutationCoreAsync(
+                mutationLease,
+                sourceChanged,
+                cancellationToken);
+        }
+        finally
+        {
+            this.StopHeartbeat(mutationLease.Token);
+        }
+    }
+
+    private async Task<ShareSourceRevision> CompleteMutationCoreAsync(
+        ShareSourceMutationLease mutationLease,
+        bool sourceChanged,
+        CancellationToken cancellationToken)
+    {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         FilterDefinition<ShareSourceRevisionDocument> filter =
             ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
@@ -139,14 +190,37 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             return ToResult(document);
         }
 
+        if (sourceChanged)
+        {
+            UpdateDefinition<ShareSourceRevisionDocument> fallbackUpdate =
+                Builders<ShareSourceRevisionDocument>.Update
+                    .Inc(value => value.Revision, 1)
+                    .Set(value => value.UpdatedAt, nowUtc);
+            ShareSourceRevisionDocument? advancedDocument = await this.collection.FindOneAndUpdateAsync(
+                ShareSourceRevisionMongoDefinitions.BuildScopeFilter(mutationLease.ScopeKey)
+                    & Builders<ShareSourceRevisionDocument>.Filter.Lt(
+                        value => value.Revision,
+                        long.MaxValue),
+                fallbackUpdate,
+                new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+                {
+                    IsUpsert = false,
+                    ReturnDocument = ReturnDocument.After,
+                },
+                cancellationToken);
+            if (advancedDocument is not null)
+            {
+                return ToResult(advancedDocument);
+            }
+        }
+
         ShareSourceRevision current = await this.GetOrCreateAsync(
             mutationLease.ScopeKey,
             cancellationToken);
-        if (sourceChanged && current.Revision == long.MaxValue && !current.IsStable)
+        if (sourceChanged && current.Revision == long.MaxValue)
         {
             throw new InvalidOperationException("The share source revision cannot be incremented further.");
         }
-
         return current;
     }
 
@@ -211,6 +285,88 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
     private static string NormalizeScopeKey(string scopeKey)
     {
         return IdentifierRules.NormalizeRequired(scopeKey, nameof(scopeKey));
+    }
+
+    internal static UpdateDefinition<ShareSourceRevisionDocument> BuildHeartbeatUpdate(
+        DateTime heartbeatAtUtc)
+    {
+        return Builders<ShareSourceRevisionDocument>.Update
+            .Set("mutationLeases.$.expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
+            .Set(document => document.UpdatedAt, heartbeatAtUtc);
+    }
+
+    private void StartHeartbeat(ShareSourceMutationLease mutationLease)
+    {
+        CancellationTokenSource cancellation = new CancellationTokenSource();
+        if (!this.heartbeatCancellations.TryAdd(mutationLease.Token, cancellation))
+        {
+            cancellation.Dispose();
+            throw new InvalidOperationException("The share source mutation heartbeat is already active.");
+        }
+
+        _ = this.RunHeartbeatAsync(mutationLease, cancellation);
+    }
+
+    private void StopHeartbeat(string mutationToken)
+    {
+        if (this.heartbeatCancellations.TryRemove(
+                mutationToken,
+                out CancellationTokenSource? cancellation))
+        {
+            cancellation.Cancel();
+        }
+    }
+
+    private async Task RunHeartbeatAsync(
+        ShareSourceMutationLease mutationLease,
+        CancellationTokenSource cancellation)
+    {
+        try
+        {
+            while (true)
+            {
+                await Task.Delay(
+                    this.heartbeatInterval,
+                    this.timeProvider,
+                    cancellation.Token);
+                DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                UpdateResult result = await this.collection.UpdateOneAsync(
+                    ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+                        mutationLease.ScopeKey,
+                        mutationLease.Token),
+                    BuildHeartbeatUpdate(heartbeatAtUtc),
+                    cancellationToken: cancellation.Token);
+                if (result.MatchedCount == 0)
+                {
+                    return;
+                }
+            }
+        }
+        catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
+        {
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogError(
+                exception,
+                "Unable to renew the share source mutation lease for {ScopeKey}; completion will advance the revision conservatively.",
+                mutationLease.ScopeKey);
+        }
+        finally
+        {
+            this.heartbeatCancellations.TryRemove(mutationLease.Token, out _);
+            cancellation.Dispose();
+        }
+    }
+
+    public void Dispose()
+    {
+        foreach (CancellationTokenSource cancellation in this.heartbeatCancellations.Values)
+        {
+            cancellation.Cancel();
+        }
+
+        this.heartbeatCancellations.Clear();
     }
 
     private async Task RecoverExpiredLeasesAsync(
