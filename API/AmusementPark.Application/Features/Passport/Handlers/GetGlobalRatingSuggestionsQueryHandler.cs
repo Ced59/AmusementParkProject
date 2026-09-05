@@ -13,6 +13,9 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
 
+/// <summary>
+/// Builds the current user's explainable global-rating suggestions.
+/// </summary>
 public sealed class GetGlobalRatingSuggestionsQueryHandler
     : IQueryHandler<
         GetGlobalRatingSuggestionsQuery,
