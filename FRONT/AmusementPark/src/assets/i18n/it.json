@@ -4383,6 +4383,88 @@
       "backToPark": "Torna a {{name}}",
       "emptyTitle": "Nessun video pubblicato",
       "emptyMessage": "Non c’è ancora nessun video pubblicato per {{name}}."
+    },
+    "passportRide": {
+      "kicker": "Passaporto delle visite",
+      "title": "Aggiungi questo giro a una visita",
+      "description": "Registra il tuo giro su {{attraction}} nella visita in bozza che scegli.",
+      "loading": "Caricamento delle tue visite in bozza…",
+      "evaluating": "Verifica della coerenza delle date…",
+      "unverified": "Le date di attività note non bastano per verificare questo giro. Puoi comunque registrarlo.",
+      "empty": {
+        "title": "Nessuna visita in bozza per questo parco",
+        "description": "Crea una visita per {{park}} oppure apri il passaporto per riaprire consapevolmente una visita completata. Nessun giro verrà creato senza una visita."
+      },
+      "visit": {
+        "legend": "A quale visita vuoi aggiungere questo giro?",
+        "hint": "Sono proposte soltanto le tue visite in bozza per questo parco. La scelta resta sempre esplicita."
+      },
+      "fields": {
+        "count": "Numero di giri",
+        "status": "Esito del giro",
+        "time": "Ora facoltativa",
+        "approximateTime": "Ora approssimativa",
+        "timeUnavailable": "Aggiungi alla visita un giorno esatto e un fuso orario per poter indicare un’ora.",
+        "rating": "Valutazione privata facoltativa di questo giro",
+        "ratingHint": "Da 0,5 a 5, a intervalli di mezzo punto. Questa valutazione privata non modifica la classifica della community.",
+        "groupedRatingHint": "Per più giri, aggiungili in un unico lotto e valuta poi ogni passaggio dalla visita."
+      },
+      "conflict": {
+        "title": "Le date note non corrispondono",
+        "description": "{{attraction}} sembra incompatibile con la visita del {{visitDate}}. Conferma soltanto se il ricordo è corretto.",
+        "knownDates": "Riferimenti noti — apertura: {{openingDate}}; chiusura: {{closingDate}}.",
+        "confirm": "Confermo di aver effettuato questo giro nonostante l’incompatibilità delle date."
+      },
+      "actions": {
+        "open": "Aggiungi un giro",
+        "close": "Chiudi",
+        "createVisit": "Crea una visita in questo parco",
+        "manageVisits": "Vedi o riapri le mie visite",
+        "loadMore": "Mostra altre visite",
+        "retry": "Riprova",
+        "decrease": "Rimuovi un giro",
+        "increase": "Aggiungi un giro",
+        "save": "Salva in questa visita",
+        "saving": "Salvataggio…",
+        "openVisit": "Apri la visita",
+        "addAnother": "Aggiungi altri giri",
+        "dismiss": "Chiudi il messaggio"
+      },
+      "success": {
+        "ride": {
+          "one": "È stato registrato {{count}} giro su {{attraction}}.",
+          "few": "Sono stati registrati {{count}} giri su {{attraction}}.",
+          "many": "Sono stati registrati {{count}} giri su {{attraction}}.",
+          "other": "Sono stati registrati {{count}} giri su {{attraction}}."
+        },
+        "rideAndRating": {
+          "one": "È stato registrato {{count}} giro e la sua valutazione privata per {{attraction}}.",
+          "few": "Sono stati registrati {{count}} giri e la loro valutazione privata per {{attraction}}.",
+          "many": "Sono stati registrati {{count}} giri e la loro valutazione privata per {{attraction}}.",
+          "other": "Sono stati registrati {{count}} giri e la loro valutazione privata per {{attraction}}."
+        },
+        "ratingFailed": {
+          "one": "Il giro è registrato, ma non è stato possibile salvare la valutazione facoltativa. Puoi aggiungerla dalla visita.",
+          "few": "I {{count}} giri sono registrati, ma non è stato possibile salvare la valutazione facoltativa. Puoi aggiungerla dalla visita.",
+          "many": "I {{count}} giri sono registrati, ma non è stato possibile salvare la valutazione facoltativa. Puoi aggiungerla dalla visita.",
+          "other": "I {{count}} giri sono registrati, ma non è stato possibile salvare la valutazione facoltativa. Puoi aggiungerla dalla visita."
+        }
+      },
+      "errors": {
+        "loadTitle": "Non è stato possibile caricare le tue visite",
+        "loadVisits": "Impossibile caricare le tue visite in bozza per questo parco.",
+        "loadMoreVisits": "Impossibile caricare le visite successive. Riprova.",
+        "evaluate": "Impossibile verificare questa attrazione per la visita scelta.",
+        "incomplete": "Scegli una visita e attendi la verifica prima di salvare.",
+        "confirmConflict": "Conferma esplicitamente l’incompatibilità delle date prima di salvare.",
+        "rating": "Scegli una valutazione da 0,5 a 5, a intervalli di mezzo punto, oppure lascia il giro senza voto.",
+        "multipleRating": "La valutazione diretta riguarda un solo giro. Per più giri, salva il lotto e valuta poi ogni passaggio dalla visita.",
+        "invalid": "Controlla il numero di giri, l’esito e l’ora.",
+        "response": "Il server non ha restituito il giro previsto. Apri la visita prima di riprovare.",
+        "visitNoLongerDraft": "Questa visita non è più una bozza. Scegline un’altra o riaprila dal passaporto.",
+        "network": "La risposta del server non è arrivata. Riprova: la stessa operazione non creerà duplicati.",
+        "save": "Impossibile salvare il giro in questa visita."
+      }
     }
   },
   "parkOpeningHours": {

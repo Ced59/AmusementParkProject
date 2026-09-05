@@ -1,6 +1,20 @@
 {
-  "version": "5.0.35",
+  "version": "5.0.36",
   "history": [
+    {
+      "version": "5.0.36",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Un tour peut maintenant être ajouté au passeport depuis la fiche d’une attraction.",
+        "en": "A ride can now be added to the passport from an attraction page.",
+        "de": "Eine Fahrt kann jetzt direkt von einer Attraktionsseite zum Besuchspass hinzugefügt werden.",
+        "nl": "Een rit kan nu vanuit een attractiepagina aan het paspoort worden toegevoegd.",
+        "it": "Ora puoi aggiungere un giro al passaporto dalla pagina di un’attrazione.",
+        "es": "Ahora puedes añadir una vuelta al pasaporte desde la página de una atracción.",
+        "pl": "Przejazd można teraz dodać do paszportu ze strony atrakcji.",
+        "pt": "Agora podes adicionar uma volta ao passaporte a partir da página de uma atração."
+      }
+    },
     {
       "version": "5.0.35",
       "releasedAt": "2026-09-05",

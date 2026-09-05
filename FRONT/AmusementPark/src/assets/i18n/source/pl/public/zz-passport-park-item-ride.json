@@ -1,0 +1,86 @@
+{
+  "parkItems": {
+    "passportRide": {
+      "kicker": "Paszport wizyt",
+      "title": "Dodaj ten przejazd do wizyty",
+      "description": "Zapisz przejazd na {{attraction}} w wybranej roboczej wizycie.",
+      "loading": "Wczytywanie roboczych wizyt…",
+      "evaluating": "Sprawdzanie zgodności dat…",
+      "unverified": "Znane daty działania nie wystarczają do zweryfikowania tego przejazdu. Nadal możesz go zapisać.",
+      "empty": {
+        "title": "Brak roboczej wizyty w tym parku",
+        "description": "Utwórz wizytę w {{park}} albo otwórz paszport, aby świadomie ponownie otworzyć zakończoną wizytę. Bez wizyty nie powstanie żaden przejazd."
+      },
+      "visit": {
+        "legend": "Do której wizyty dodać ten przejazd?",
+        "hint": "Wyświetlamy tylko Twoje robocze wizyty w tym parku. Wybór jest zawsze jednoznaczny."
+      },
+      "fields": {
+        "count": "Liczba przejazdów",
+        "status": "Wynik przejazdu",
+        "time": "Opcjonalna godzina",
+        "approximateTime": "Przybliżona godzina",
+        "timeUnavailable": "Dodaj do wizyty dokładny dzień i strefę czasową, aby podać godzinę.",
+        "rating": "Opcjonalna prywatna ocena tego przejazdu",
+        "ratingHint": "Od 0,5 do 5, co pół punktu. Ta prywatna ocena nie wpływa na ranking społeczności.",
+        "groupedRatingHint": "Dodaj kilka przejazdów w jednej operacji, a potem oceń każdy wpis w wizycie."
+      },
+      "conflict": {
+        "title": "Znane daty nie są zgodne",
+        "description": "{{attraction}} wydaje się niezgodna z wizytą z {{visitDate}}. Potwierdź tylko wtedy, gdy to wspomnienie jest prawidłowe.",
+        "knownDates": "Znane daty — otwarcie: {{openingDate}}; zamknięcie: {{closingDate}}.",
+        "confirm": "Potwierdzam ten przejazd mimo niezgodności dat."
+      },
+      "actions": {
+        "open": "Dodaj przejazd",
+        "close": "Zamknij",
+        "createVisit": "Utwórz wizytę w tym parku",
+        "manageVisits": "Wyświetl lub otwórz moje wizyty",
+        "loadMore": "Pokaż więcej wizyt",
+        "retry": "Spróbuj ponownie",
+        "decrease": "Usuń jeden przejazd",
+        "increase": "Dodaj jeden przejazd",
+        "save": "Zapisz w tej wizycie",
+        "saving": "Zapisywanie…",
+        "openVisit": "Otwórz wizytę",
+        "addAnother": "Dodaj kolejne przejazdy",
+        "dismiss": "Zamknij komunikat"
+      },
+      "success": {
+        "ride": {
+          "one": "Zapisano {{count}} przejazd na {{attraction}}.",
+          "few": "Zapisano {{count}} przejazdy na {{attraction}}.",
+          "many": "Zapisano {{count}} przejazdów na {{attraction}}.",
+          "other": "Zapisano {{count}} przejazdu na {{attraction}}."
+        },
+        "rideAndRating": {
+          "one": "Zapisano {{count}} przejazd i jego prywatną ocenę dla {{attraction}}.",
+          "few": "Zapisano {{count}} przejazdy i ich prywatną ocenę dla {{attraction}}.",
+          "many": "Zapisano {{count}} przejazdów i ich prywatną ocenę dla {{attraction}}.",
+          "other": "Zapisano {{count}} przejazdu i jego prywatną ocenę dla {{attraction}}."
+        },
+        "ratingFailed": {
+          "one": "Przejazd zapisano, ale nie udało się zapisać opcjonalnej oceny. Możesz dodać ją w wizycie.",
+          "few": "Zapisano {{count}} przejazdy, ale nie udało się zapisać opcjonalnej oceny. Możesz dodać ją w wizycie.",
+          "many": "Zapisano {{count}} przejazdów, ale nie udało się zapisać opcjonalnej oceny. Możesz dodać ją w wizycie.",
+          "other": "Zapisano {{count}} przejazdu, ale nie udało się zapisać opcjonalnej oceny. Możesz dodać ją w wizycie."
+        }
+      },
+      "errors": {
+        "loadTitle": "Nie udało się wczytać Twoich wizyt",
+        "loadVisits": "Nie udało się wczytać roboczych wizyt w tym parku.",
+        "loadMoreVisits": "Nie udało się wczytać kolejnych wizyt. Spróbuj ponownie.",
+        "evaluate": "Nie udało się sprawdzić tej atrakcji dla wybranej wizyty.",
+        "incomplete": "Wybierz wizytę i poczekaj na zakończenie weryfikacji przed zapisem.",
+        "confirmConflict": "Przed zapisem wyraźnie potwierdź niezgodność dat.",
+        "rating": "Wybierz ocenę od 0,5 do 5 co pół punktu albo pozostaw przejazd bez oceny.",
+        "multipleRating": "Bezpośrednia ocena dotyczy jednego przejazdu. Zapisz kilka przejazdów razem, a potem oceń każdy wpis w wizycie.",
+        "invalid": "Sprawdź liczbę przejazdów, wynik i godzinę.",
+        "response": "Serwer nie zwrócił oczekiwanego przejazdu. Otwórz wizytę przed ponowną próbą.",
+        "visitNoLongerDraft": "Ta wizyta nie jest już robocza. Wybierz inną lub otwórz ją ponownie z paszportu.",
+        "network": "Odpowiedź serwera nie dotarła. Spróbuj ponownie: ta sama operacja nie utworzy duplikatu.",
+        "save": "Nie udało się zapisać przejazdu w tej wizycie."
+      }
+    }
+  }
+}

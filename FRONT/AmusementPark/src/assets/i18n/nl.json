@@ -4383,6 +4383,88 @@
       "backToPark": "Terug naar {{name}}",
       "emptyTitle": "Geen gepubliceerde video's",
       "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
+    },
+    "passportRide": {
+      "kicker": "Bezoekpaspoort",
+      "title": "Voeg deze rit aan een bezoek toe",
+      "description": "Registreer je rit in {{attraction}} in het conceptbezoek dat je kiest.",
+      "loading": "Je conceptbezoeken worden geladen…",
+      "evaluating": "De datums worden gecontroleerd…",
+      "unverified": "De bekende openingsdatums zijn niet voldoende om deze rit te controleren. Je kunt hem toch registreren.",
+      "empty": {
+        "title": "Geen conceptbezoek voor dit park",
+        "description": "Maak een bezoek voor {{park}} aan of open je paspoort om bewust een voltooid bezoek te heropenen. Zonder bezoek wordt geen rit aangemaakt."
+      },
+      "visit": {
+        "legend": "Aan welk bezoek wil je deze rit toevoegen?",
+        "hint": "Alleen jouw conceptbezoeken voor dit park worden aangeboden. Je keuze is altijd expliciet."
+      },
+      "fields": {
+        "count": "Aantal ritten",
+        "status": "Resultaat van de rit",
+        "time": "Optionele tijd",
+        "approximateTime": "Geschatte tijd",
+        "timeUnavailable": "Voeg een exacte dag en tijdzone aan het bezoek toe om een tijd te kunnen invoeren.",
+        "rating": "Optionele privébeoordeling van deze rit",
+        "ratingHint": "Van 0,5 tot 5 in stappen van een half punt. Deze privébeoordeling beïnvloedt de communityranglijst niet.",
+        "groupedRatingHint": "Voeg meerdere ritten in één batch toe en beoordeel daarna elk item vanuit het bezoek."
+      },
+      "conflict": {
+        "title": "De bekende datums komen niet overeen",
+        "description": "{{attraction}} lijkt niet te passen bij het bezoek op {{visitDate}}. Bevestig dit alleen als je herinnering klopt.",
+        "knownDates": "Bekende datums — opening: {{openingDate}}; sluiting: {{closingDate}}.",
+        "confirm": "Ik bevestig dat ik deze rit ondanks de afwijkende datums heb gemaakt."
+      },
+      "actions": {
+        "open": "Rit toevoegen",
+        "close": "Sluiten",
+        "createVisit": "Bezoek aan dit park maken",
+        "manageVisits": "Mijn bezoeken bekijken of heropenen",
+        "loadMore": "Meer bezoeken tonen",
+        "retry": "Opnieuw proberen",
+        "decrease": "Eén rit verwijderen",
+        "increase": "Eén rit toevoegen",
+        "save": "In dit bezoek opslaan",
+        "saving": "Opslaan…",
+        "openVisit": "Bezoek openen",
+        "addAnother": "Meer ritten toevoegen",
+        "dismiss": "Melding sluiten"
+      },
+      "success": {
+        "ride": {
+          "one": "{{count}} rit in {{attraction}} is geregistreerd.",
+          "few": "{{count}} ritten in {{attraction}} zijn geregistreerd.",
+          "many": "{{count}} ritten in {{attraction}} zijn geregistreerd.",
+          "other": "{{count}} ritten in {{attraction}} zijn geregistreerd."
+        },
+        "rideAndRating": {
+          "one": "{{count}} rit en de privébeoordeling zijn voor {{attraction}} geregistreerd.",
+          "few": "{{count}} ritten en hun privébeoordeling zijn voor {{attraction}} geregistreerd.",
+          "many": "{{count}} ritten en hun privébeoordeling zijn voor {{attraction}} geregistreerd.",
+          "other": "{{count}} ritten en hun privébeoordeling zijn voor {{attraction}} geregistreerd."
+        },
+        "ratingFailed": {
+          "one": "De rit is geregistreerd, maar de optionele beoordeling kon niet worden opgeslagen. Je kunt die in het bezoek toevoegen.",
+          "few": "De {{count}} ritten zijn geregistreerd, maar de optionele beoordeling kon niet worden opgeslagen. Je kunt die in het bezoek toevoegen.",
+          "many": "De {{count}} ritten zijn geregistreerd, maar de optionele beoordeling kon niet worden opgeslagen. Je kunt die in het bezoek toevoegen.",
+          "other": "De {{count}} ritten zijn geregistreerd, maar de optionele beoordeling kon niet worden opgeslagen. Je kunt die in het bezoek toevoegen."
+        }
+      },
+      "errors": {
+        "loadTitle": "Je bezoeken konden niet worden geladen",
+        "loadVisits": "Je conceptbezoeken voor dit park konden niet worden geladen.",
+        "loadMoreVisits": "De volgende bezoeken konden niet worden geladen. Probeer opnieuw.",
+        "evaluate": "Deze attractie kon niet voor het gekozen bezoek worden gecontroleerd.",
+        "incomplete": "Kies een bezoek en wacht op de controle voordat je opslaat.",
+        "confirmConflict": "Bevestig de afwijkende datums expliciet voordat je opslaat.",
+        "rating": "Kies een beoordeling van 0,5 tot 5 in stappen van een half punt, of laat de rit onbeoordeeld.",
+        "multipleRating": "De directe beoordeling geldt voor één rit. Sla meerdere ritten als batch op en beoordeel daarna elk item vanuit het bezoek.",
+        "invalid": "Controleer het aantal ritten, het resultaat en de tijd.",
+        "response": "De server stuurde de verwachte rit niet terug. Open het bezoek voordat je het opnieuw probeert.",
+        "visitNoLongerDraft": "Dit bezoek is geen concept meer. Kies een ander bezoek of heropen het vanuit je paspoort.",
+        "network": "De serverreactie is niet aangekomen. Probeer opnieuw: dezelfde bewerking maakt geen duplicaat.",
+        "save": "De rit kon niet in dit bezoek worden opgeslagen."
+      }
     }
   },
   "parkOpeningHours": {

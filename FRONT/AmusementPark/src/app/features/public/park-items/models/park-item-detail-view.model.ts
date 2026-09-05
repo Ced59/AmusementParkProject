@@ -85,6 +85,7 @@ export interface ParkItemDetailViewModel {
   typeLabelKey: string;
   typeIconClass: string;
   typeTone: string;
+  canLogRide: boolean;
   parkName: string | null;
   parkStatus: ParkStatus;
   homeLink: string[];

@@ -176,6 +176,15 @@
 
     <app-park-lifecycle-notice [status]="currentDetail.parkStatus" [parkName]="currentDetail.parkName"></app-park-lifecycle-notice>
 
+    <app-park-item-passport-ride-panel
+      *ngIf="currentDetail.canLogRide && currentDetail.id && currentDetail.parkId"
+      [parkItemId]="currentDetail.id"
+      [parkItemName]="currentDetail.name"
+      [parkId]="currentDetail.parkId"
+      [parkName]="currentDetail.parkName || ''"
+      [currentLanguage]="currentLang">
+    </app-park-item-passport-ride-panel>
+
     <section class="item-specs-grid" *ngIf="currentDetail.spotlightRows.length > 0">
       <article
         class="item-spec"

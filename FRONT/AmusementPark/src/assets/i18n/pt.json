@@ -4383,6 +4383,88 @@
       "backToPark": "Voltar a {{name}}",
       "emptyTitle": "Sem vídeos publicados",
       "emptyMessage": "Ainda não há nenhum vídeo publicado para {{name}}."
+    },
+    "passportRide": {
+      "kicker": "Passaporte de visitas",
+      "title": "Adiciona esta volta a uma visita",
+      "description": "Regista a tua volta em {{attraction}} na visita em rascunho que escolheres.",
+      "loading": "A carregar as tuas visitas em rascunho…",
+      "evaluating": "A verificar a coerência das datas…",
+      "unverified": "As datas de funcionamento conhecidas não são suficientes para verificar esta volta. Ainda assim, podes registá-la.",
+      "empty": {
+        "title": "Nenhuma visita em rascunho para este parque",
+        "description": "Cria uma visita para {{park}} ou abre o passaporte para reabrir conscientemente uma visita concluída. Nenhuma volta será criada sem uma visita."
+      },
+      "visit": {
+        "legend": "A que visita queres adicionar esta volta?",
+        "hint": "Só são apresentadas as tuas visitas em rascunho para este parque. A escolha é sempre explícita."
+      },
+      "fields": {
+        "count": "Número de voltas",
+        "status": "Resultado da volta",
+        "time": "Hora opcional",
+        "approximateTime": "Hora aproximada",
+        "timeUnavailable": "Adiciona um dia exato e um fuso horário à visita para poderes indicar uma hora.",
+        "rating": "Avaliação privada opcional desta volta",
+        "ratingHint": "De 0,5 a 5, em passos de meio ponto. Esta avaliação privada não altera a classificação da comunidade.",
+        "groupedRatingHint": "Para várias voltas, adiciona-as num único lote e avalia depois cada registo a partir da visita."
+      },
+      "conflict": {
+        "title": "As datas conhecidas não correspondem",
+        "description": "{{attraction}} parece incompatível com a visita de {{visitDate}}. Confirma apenas se esta memória estiver correta.",
+        "knownDates": "Referências conhecidas — abertura: {{openingDate}}; encerramento: {{closingDate}}.",
+        "confirm": "Confirmo que fiz esta volta apesar da incompatibilidade das datas."
+      },
+      "actions": {
+        "open": "Adicionar uma volta",
+        "close": "Fechar",
+        "createVisit": "Criar uma visita neste parque",
+        "manageVisits": "Ver ou reabrir as minhas visitas",
+        "loadMore": "Mostrar mais visitas",
+        "retry": "Tentar novamente",
+        "decrease": "Retirar uma volta",
+        "increase": "Adicionar uma volta",
+        "save": "Guardar nesta visita",
+        "saving": "A guardar…",
+        "openVisit": "Abrir a visita",
+        "addAnother": "Adicionar mais voltas",
+        "dismiss": "Fechar a mensagem"
+      },
+      "success": {
+        "ride": {
+          "one": "Foi registada {{count}} volta em {{attraction}}.",
+          "few": "Foram registadas {{count}} voltas em {{attraction}}.",
+          "many": "Foram registadas {{count}} voltas em {{attraction}}.",
+          "other": "Foram registadas {{count}} voltas em {{attraction}}."
+        },
+        "rideAndRating": {
+          "one": "Foi registada {{count}} volta e a respetiva avaliação privada em {{attraction}}.",
+          "few": "Foram registadas {{count}} voltas e a respetiva avaliação privada em {{attraction}}.",
+          "many": "Foram registadas {{count}} voltas e a respetiva avaliação privada em {{attraction}}.",
+          "other": "Foram registadas {{count}} voltas e a respetiva avaliação privada em {{attraction}}."
+        },
+        "ratingFailed": {
+          "one": "A volta foi registada, mas não foi possível guardar a avaliação opcional. Podes adicioná-la na visita.",
+          "few": "As {{count}} voltas foram registadas, mas não foi possível guardar a avaliação opcional. Podes adicioná-la na visita.",
+          "many": "As {{count}} voltas foram registadas, mas não foi possível guardar a avaliação opcional. Podes adicioná-la na visita.",
+          "other": "As {{count}} voltas foram registadas, mas não foi possível guardar a avaliação opcional. Podes adicioná-la na visita."
+        }
+      },
+      "errors": {
+        "loadTitle": "Não foi possível carregar as tuas visitas",
+        "loadVisits": "Não foi possível carregar as tuas visitas em rascunho para este parque.",
+        "loadMoreVisits": "Não foi possível carregar as visitas seguintes. Tenta novamente.",
+        "evaluate": "Não foi possível verificar esta atração para a visita escolhida.",
+        "incomplete": "Escolhe uma visita e aguarda a verificação antes de guardar.",
+        "confirmConflict": "Confirma explicitamente a incompatibilidade das datas antes de guardar.",
+        "rating": "Escolhe uma avaliação de 0,5 a 5, em passos de meio ponto, ou deixa a volta sem avaliação.",
+        "multipleRating": "A avaliação direta aplica-se a uma só volta. Para várias, guarda o lote e avalia depois cada registo a partir da visita.",
+        "invalid": "Verifica o número de voltas, o resultado e a hora.",
+        "response": "O servidor não devolveu a volta esperada. Abre a visita antes de tentares novamente.",
+        "visitNoLongerDraft": "Esta visita já não é um rascunho. Escolhe outra ou reabre-a a partir do passaporte.",
+        "network": "A resposta do servidor não chegou. Tenta novamente: a mesma operação não criará duplicados.",
+        "save": "Não foi possível guardar a volta nesta visita."
+      }
     }
   },
   "parkOpeningHours": {

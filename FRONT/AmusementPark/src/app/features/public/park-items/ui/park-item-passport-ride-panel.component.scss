@@ -1,0 +1,344 @@
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.passport-ride {
+  width: min(100% - clamp(1rem, 4vw, 3rem), 1180px);
+  max-width: 100%;
+  margin: clamp(1rem, 3vw, 2rem) auto;
+  overflow: hidden;
+}
+
+.passport-ride__intro,
+.passport-ride__state,
+.passport-ride__message {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.passport-ride__intro {
+  justify-content: space-between;
+}
+
+.passport-ride__intro > div,
+.passport-ride__message > div,
+.passport-ride__state > div,
+.passport-ride__visit-copy {
+  min-width: 0;
+}
+
+.passport-ride h2,
+.passport-ride h3,
+.passport-ride p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-ride h2 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.55rem, 5vw, 2.25rem);
+}
+
+.passport-ride__intro p,
+.passport-ride__hint,
+.passport-ride__state p {
+  margin-top: 0.45rem;
+  color: var(--text-color-secondary);
+}
+
+.passport-ride__editor {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--primary-color) 22%, transparent);
+}
+
+.passport-ride__state {
+  justify-content: center;
+  min-height: 5rem;
+  text-align: center;
+}
+
+.passport-ride__state--empty {
+  flex-direction: column;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px dashed color-mix(in srgb, var(--primary-color) 38%, transparent);
+  border-radius: 1rem;
+}
+
+.passport-ride__state--error {
+  flex-direction: column;
+  padding: clamp(1rem, 4vw, 2rem);
+  color: var(--pink-100, #fecdd3);
+  background: color-mix(in srgb, var(--pink-500, #ec4899) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pink-500, #ec4899) 45%, transparent);
+  border-radius: 1rem;
+}
+
+.passport-ride__state > .pi {
+  flex: 0 0 auto;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.passport-ride__state-actions,
+.passport-ride__message a,
+.passport-ride__message > div > button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.passport-ride__visits,
+.passport-ride__quantity {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.passport-ride__visits > legend,
+.passport-ride__quantity > legend,
+.passport-ride__field > span {
+  font-weight: 800;
+}
+
+.passport-ride__visit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 0.75rem;
+  margin: 0.85rem 0;
+}
+
+.passport-ride__visit {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--text-color-secondary) 28%, transparent);
+  border-radius: 0.9rem;
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.passport-ride__visit:hover,
+.passport-ride__visit--selected {
+  border-color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 9%, transparent);
+}
+
+.passport-ride__visit input,
+.passport-ride__checkbox input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--primary-color);
+}
+
+.passport-ride__visit-copy {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.passport-ride__visit-copy strong,
+.passport-ride__visit-copy small {
+  overflow-wrap: anywhere;
+}
+
+.passport-ride__visit-copy small {
+  color: var(--text-color-secondary);
+}
+
+.passport-ride__form {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.passport-ride__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  align-items: start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.passport-ride__field,
+.passport-ride__time {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.passport-ride__field input,
+.passport-ride__field select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.8rem;
+  color: inherit;
+  background: color-mix(in srgb, var(--surface-ground) 76%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-color-secondary) 30%, transparent);
+  border-radius: 0.7rem;
+}
+
+.passport-ride__quantity > div {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 5rem) 44px;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.passport-ride__quantity button,
+.passport-ride__quantity input,
+.passport-ride__message > button {
+  min-width: 44px;
+  min-height: 44px;
+  color: inherit;
+  background: color-mix(in srgb, var(--surface-ground) 76%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-color-secondary) 30%, transparent);
+  border-radius: 0.7rem;
+}
+
+.passport-ride__quantity input {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+
+.passport-ride__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.passport-ride__checkbox span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-ride__conflict,
+.passport-ride__notice,
+.passport-ride__time-unavailable,
+.passport-ride__inline-state,
+.passport-ride__message {
+  padding: 0.9rem;
+  border-radius: 0.85rem;
+}
+
+.passport-ride__conflict {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  color: var(--pink-100, #fecdd3);
+  background: color-mix(in srgb, var(--pink-500, #ec4899) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pink-500, #ec4899) 45%, transparent);
+}
+
+.passport-ride__conflict p,
+.passport-ride__conflict label {
+  margin-top: 0.5rem;
+}
+
+.passport-ride__notice,
+.passport-ride__time-unavailable,
+.passport-ride__inline-state {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-color-secondary);
+  background: color-mix(in srgb, var(--surface-ground) 65%, transparent);
+}
+
+.passport-ride__submit {
+  justify-self: start;
+}
+
+.passport-ride__message {
+  align-items: flex-start;
+}
+
+.passport-ride__message--error {
+  color: var(--pink-100);
+  background: color-mix(in srgb, var(--pink-500) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pink-500) 45%, transparent);
+}
+
+.passport-ride__message--success {
+  color: var(--green-100, #dcfce7);
+  background: color-mix(in srgb, var(--green-500, #22c55e) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--green-500, #22c55e) 42%, transparent);
+}
+
+.passport-ride__message > .pi {
+  margin-top: 0.25rem;
+}
+
+.passport-ride__message > div {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 0.75rem;
+}
+
+.passport-ride__message a {
+  justify-self: start;
+}
+
+.passport-ride__message > button {
+  flex: 0 0 44px;
+  padding: 0;
+}
+
+@media (max-width: 520px) {
+  .passport-ride {
+    width: calc(100% - 1rem);
+  }
+
+  .passport-ride__intro,
+  .passport-ride__state-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .passport-ride__intro > button,
+  .passport-ride__state-actions > *,
+  .passport-ride__submit,
+  .passport-ride__message a {
+    width: 100%;
+  }
+
+  .passport-ride__message > div > button {
+    width: 100%;
+  }
+
+  .passport-ride__visit {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .passport-ride__visit-grid,
+  .passport-ride__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .passport-ride__visit app-ui-chip {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .passport-ride__visit {
+    transition: none;
+  }
+}
