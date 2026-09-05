@@ -33,7 +33,14 @@ public sealed class GetPassportBetaMetricsQueryHandler
 
         DateTime generatedAtUtc = this.clock.UtcNow;
         DateTime toUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
-        DateTime fromUtc = NormalizeUtc(query.FromUtc) ?? toUtc.Subtract(DefaultRange);
+        DateTime? requestedFromUtc = NormalizeUtc(query.FromUtc);
+        if (!requestedFromUtc.HasValue && toUtc < DateTime.MinValue.Add(DefaultRange))
+        {
+            return ApplicationResult<PassportBetaMetricsResult>.Failure(
+                PassportApplicationErrors.InvalidBetaMetricsDateRange());
+        }
+
+        DateTime fromUtc = requestedFromUtc ?? toUtc.Subtract(DefaultRange);
         if (fromUtc > toUtc)
         {
             return ApplicationResult<PassportBetaMetricsResult>.Failure(

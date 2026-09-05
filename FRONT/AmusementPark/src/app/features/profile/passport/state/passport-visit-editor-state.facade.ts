@@ -1049,11 +1049,7 @@ export class PassportVisitEditorStateFacade {
 
         this.assessmentSavingSignal.set(false);
         this.applyAssessmentMutationResult(updatedVisit, submittedFingerprint);
-        this.productAnalytics.track({
-          type: 'temporal_rating_added',
-          source: 'authenticated',
-          targetType: 'park-visit'
-        });
+        this.trackTemporalRatingAdded('park-visit');
         this.showSuccess('passport.editor.assessment.saved');
       },
       error: (error: unknown): void => {
@@ -1187,11 +1183,7 @@ export class PassportVisitEditorStateFacade {
 
         this.setOccurrenceBusy(occurrence.id, false);
         this.applyRideAssessmentMutationResult(updated, submittedFingerprint);
-        this.productAnalytics.track({
-          type: 'temporal_rating_added',
-          source: 'authenticated',
-          targetType: 'ride-occurrence'
-        });
+        this.trackTemporalRatingAdded('ride-occurrence');
         this.showSuccess('passport.editor.rideAssessment.saved');
       },
       error: (error: unknown): void => {
@@ -2111,6 +2103,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.setRideAssessmentError(occurrenceId, null);
+          if (mutation === 'upsert') {
+            this.trackTemporalRatingAdded('ride-occurrence');
+          }
           this.showSuccess(mutation === 'delete'
             ? 'passport.editor.rideAssessment.deleted'
             : 'passport.editor.rideAssessment.saved');
@@ -2293,6 +2288,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.assessmentErrorKeySignal.set(null);
+          if (mutation === 'upsert') {
+            this.trackTemporalRatingAdded('park-visit');
+          }
           this.showSuccess(mutation === 'delete'
             ? 'passport.editor.assessment.deleted'
             : 'passport.editor.assessment.saved');
@@ -2522,6 +2520,14 @@ export class PassportVisitEditorStateFacade {
     this.productAnalytics.track({
       type: targetStatus === 'Completed' ? 'visit_completed' : 'visit_reopened',
       source: 'authenticated'
+    });
+  }
+
+  private trackTemporalRatingAdded(targetType: 'park-visit' | 'ride-occurrence'): void {
+    this.productAnalytics.track({
+      type: 'temporal_rating_added',
+      source: 'authenticated',
+      targetType
     });
   }
 

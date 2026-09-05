@@ -140,4 +140,24 @@ public sealed class GetPassportBetaMetricsQueryHandlerTests
         source.VerifyNoOtherCalls();
         clock.VerifyAll();
     }
+
+    [Fact]
+    public async Task HandleAsync_WithMinimumToDateAndNoFromDate_ShouldFailWithoutOverflow()
+    {
+        Mock<IPassportBetaMetricsSource> source =
+            new Mock<IPassportBetaMetricsSource>(MockBehavior.Strict);
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(NowUtc);
+        GetPassportBetaMetricsQueryHandler handler = new GetPassportBetaMetricsQueryHandler(
+            source.Object,
+            clock.Object);
+
+        ApplicationResult<PassportBetaMetricsResult> result = await handler.HandleAsync(
+            new GetPassportBetaMetricsQuery(null, DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("passport-beta.date-range-invalid", Assert.Single(result.Errors).Code);
+        source.VerifyNoOtherCalls();
+        clock.VerifyAll();
+    }
 }

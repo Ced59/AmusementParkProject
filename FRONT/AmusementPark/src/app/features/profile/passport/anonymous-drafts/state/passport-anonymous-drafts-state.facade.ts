@@ -71,10 +71,12 @@ export class PassportAnonymousDraftsStateFacade {
 
     this.mutatingSignal.set(true);
     this.errorKeySignal.set(null);
+    this.productAnalytics.track({ type: 'passport_deletion_started', source: 'anonymous-local' });
     try {
       await this.store.delete(draftId);
       this.draftsSignal.update((drafts: PassportAnonymousDraft[]): PassportAnonymousDraft[] =>
         drafts.filter((draft: PassportAnonymousDraft): boolean => draft.id !== draftId));
+      this.productAnalytics.track({ type: 'passport_deletion_completed', source: 'anonymous-local' });
     } catch {
       this.errorKeySignal.set('passport.anonymousDrafts.errors.delete');
     } finally {

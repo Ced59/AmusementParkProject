@@ -9,28 +9,41 @@ describe('PassportAnonymousDraftsStateFacade', () => {
   it('removes a draft from the visible list only after its local deletion succeeds', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
-    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
+    const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store, analytics);
 
     await facade.load();
+    vi.mocked(analytics.track).mockClear();
     await facade.delete(draft.id);
 
     expect(store.delete).toHaveBeenCalledWith(draft.id);
     expect(facade.drafts()).toEqual([]);
     expect(facade.errorKey()).toBeNull();
+    expect(vi.mocked(analytics.track).mock.calls).toEqual([
+      [{ type: 'passport_deletion_started', source: 'anonymous-local' }],
+      [{ type: 'passport_deletion_completed', source: 'anonymous-local' }]
+    ]);
   });
 
   it('keeps a draft visible when its local deletion fails', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
     vi.mocked(store.delete).mockRejectedValueOnce(new Error('IndexedDB unavailable'));
-    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
+    const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store, analytics);
 
     await facade.load();
+    vi.mocked(analytics.track).mockClear();
     await facade.delete(draft.id);
 
     expect(facade.drafts()).toEqual([draft]);
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.errors.delete');
     expect(facade.mutating()).toBe(false);
+    expect(analytics.track).toHaveBeenCalledTimes(1);
+    expect(analytics.track).toHaveBeenCalledWith({
+      type: 'passport_deletion_started',
+      source: 'anonymous-local'
+    });
   });
 
   it('reports unavailable browser storage without attempting to read it', async () => {
@@ -69,8 +82,10 @@ describe('PassportAnonymousDraftsStateFacade', () => {
   });
 });
 
-function createFacade(store: PassportAnonymousDraftStorePort): PassportAnonymousDraftsStateFacade {
-  const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+function createFacade(
+  store: PassportAnonymousDraftStorePort,
+  analytics: PassportProductAnalyticsPort = { track: vi.fn() }
+): PassportAnonymousDraftsStateFacade {
   return new PassportAnonymousDraftsStateFacade(store, analytics, document);
 }
 

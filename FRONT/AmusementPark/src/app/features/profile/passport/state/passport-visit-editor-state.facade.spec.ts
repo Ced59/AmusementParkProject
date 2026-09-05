@@ -1105,6 +1105,12 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.visit()).toEqual(committedVisit);
     expect(facade.assessmentHasChanges()).toBe(false);
     expect(facade.assessmentErrorKey()).toBeNull();
+    expect(analyticsTrack).toHaveBeenCalledTimes(1);
+    expect(analyticsTrack).toHaveBeenCalledWith({
+      type: 'temporal_rating_added',
+      source: 'authenticated',
+      targetType: 'park-visit'
+    });
   });
 
   it('deletes the persisted assessment and adopts the returned parent version', () => {
@@ -1303,6 +1309,12 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.occurrences()[0]).toEqual(expect.objectContaining({ version: 2 }));
     expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
     expect(facade.rideAssessmentErrorKeys()['occurrence-1']).toBeNull();
+    expect(analyticsTrack).toHaveBeenCalledTimes(1);
+    expect(analyticsTrack).toHaveBeenCalledWith({
+      type: 'temporal_rating_added',
+      source: 'authenticated',
+      targetType: 'ride-occurrence'
+    });
   });
 
   it('deletes a persisted ride assessment and adopts the returned occurrence version', () => {
