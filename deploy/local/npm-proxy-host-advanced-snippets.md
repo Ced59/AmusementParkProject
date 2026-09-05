@@ -5,13 +5,19 @@ Ils se collent dans l'onglet **Advanced** du Proxy Host NPM concerné.
 
 ## Proxy Host applicatif `amusement.localhost`
 
-Normalement aucun snippet n'est nécessaire. Le Proxy Host doit cibler :
+Le Proxy Host doit cibler :
 
 ```txt
 Scheme: http
 Forward Hostname / IP: front
 Forward Port: 4000
 Websockets Support: enabled
+```
+
+Avec ce snippet Advanced, afin que les imports de plans officiels acceptent réellement les fichiers jusqu'à 25 Mio avec leur enveloppe multipart :
+
+```nginx
+client_max_body_size 26m;
 ```
 
 ## Matomo local

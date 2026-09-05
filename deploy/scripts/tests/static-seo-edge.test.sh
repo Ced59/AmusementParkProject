@@ -121,6 +121,12 @@ read_response() {
 
 start_edge true
 
+if ! docker exec "${container_name}" nginx -T -c /etc/nginx/amusementpark/edge.conf 2>&1 \
+  | grep -Fq 'client_max_body_size 26m;'; then
+  echo 'The Nginx edge must accept a 25 MiB official-map file plus its multipart envelope.' >&2
+  exit 1
+fi
+
 headers="$(read_response)"
 
 assert_header() {

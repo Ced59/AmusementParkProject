@@ -23,6 +23,14 @@ Créer un Proxy Host :
 - Activer SSL + Force SSL + HTTP/2.
 - Vérifier que toute requête `http://` est redirigée en `https://` avant ouverture publique.
 
+Dans l'onglet **Advanced** du Proxy Host, ajouter :
+
+```nginx
+client_max_body_size 26m;
+```
+
+Cette marge permet de transmettre un fichier de plan officiel de 25 Mio avec son enveloppe multipart. L'API conserve sa validation stricte à 25 Mio pour le contenu du fichier.
+
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
 
 ## Verrouillage AllowedHosts
