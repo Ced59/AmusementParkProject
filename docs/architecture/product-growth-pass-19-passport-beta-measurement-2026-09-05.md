@@ -4,7 +4,11 @@
 
 Le passeport n'est pas validé parce que ses écrans existent. Il doit aider une personne à conserver son vécu puis lui donner envie de revenir spontanément. Le signal principal est donc le nombre de membres qui terminent au moins une deuxième visite.
 
-Cette mesure prépare la gate `PASS-G`. Elle ne la valide pas seule : des tests qualitatifs doivent encore montrer que les personnes comprennent les notes, préfèrent ce parcours à leur ancien outil et reviennent sans assistance.
+Cette mesure prépare le suivi `PASS-G`. Elle ne le valide pas seule : des tests qualitatifs doivent encore montrer que les personnes comprennent les notes, préfèrent ce parcours à leur ancien outil et reviennent sans assistance.
+
+> Avenant produit du 5 septembre 2026 : ces tests qualitatifs restent à mener et ne
+> seront jamais réputés réussis sans preuves. Leur disponibilité ne bloque cependant
+> plus l'implémentation ou le déploiement des roadmaps suivantes.
 
 ## Décision
 
@@ -77,7 +81,7 @@ La requête filtre d'abord les documents utiles à la période ou à la cohorte,
 
 ## Interface d'administration
 
-Le tableau de bord présente le signal de retour, quatre indicateurs, une évolution quotidienne et un tableau accessible équivalent au graphique. Il rappelle que le signal quantitatif n'est pas une validation automatique de `PASS-G`.
+Le tableau de bord présente le signal de retour, quatre indicateurs, une évolution quotidienne et un tableau accessible équivalent au graphique. Il rappelle que le signal quantitatif n'est pas une validation automatique du suivi qualitatif `PASS-G`.
 
 Les grilles passent de quatre à deux puis une colonne. Les champs, cartes et conteneurs ont `min-width: 0` et `max-width: 100%`; seuls le graphique et le tableau possèdent leur propre défilement horizontal contenu. Les contrats couvrent 320, 360, 390 et 768 pixels ainsi que le paysage de faible hauteur.
 
@@ -85,5 +89,6 @@ Les grilles passent de quatre à deux puis une colonne. Les champs, cartes et co
 
 - La cohorte anonyme ne peut pas être rapprochée entre appareils sans créer un identifiant de suivi contraire au choix de confidentialité. Matomo ne donne donc qu'une tendance volontaire pour ce parcours.
 - Le seuil technique `Candidate` évite de présenter un cas isolé comme une tendance, mais ne constitue pas une conclusion statistique.
-- Les entretiens, scénarios guidés, tests d'accessibilité terrain et relevés de charge restent obligatoires avant `PASS-G`.
+- Les entretiens, scénarios guidés et tests d'accessibilité terrain restent attendus pour conclure le suivi qualitatif `PASS-G`, sans bloquer les implémentations suivantes.
+- Les contrôles de charge compatibles avec le VPS restent, eux, une condition technique de chaque livraison concernée.
 - Si la requête atteint sa limite de temps ou pèse sur le VPS, le tableau de bord doit rester désactivable et l'agrégat devra être matérialisé par tâche de fond avant élargissement de la bêta.
