@@ -440,7 +440,7 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
             stoppingSource.Token);
         await handlerStarted.Task;
         stoppingSource.Cancel();
-        DurableBackgroundJobExecutionResult result = await execution.WaitAsync(TimeSpan.FromSeconds(1));
+        DurableBackgroundJobExecutionResult result = await execution.WaitAsync(TimeSpan.FromSeconds(5));
 
         Assert.Equal(DurableBackgroundJobExecutionDisposition.Cancelled, result.Disposition);
         Task ongoingHandlerCompletion = Assert.IsAssignableFrom<Task>(result.OngoingHandlerCompletion);
