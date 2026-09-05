@@ -21,6 +21,7 @@ client_max_body_size 1m;
 
 location = /api/park-data-editor/official-map-files {
   client_max_body_size 26m;
+  proxy_request_buffering off;
   add_header Strict-Transport-Security $hsts_header always;
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection $http_connection;
