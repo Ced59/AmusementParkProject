@@ -64,8 +64,13 @@ résultats. Aucun contrôleur ni composant Angular ne récupère de règle méti
 - contrôle architectural « une classe par fichier », avec suppression des deux
   doubles de test imbriqués dans le fichier modifié.
 
-## Limite assumée
+## Suivi qualitatif
 
 PASS-20 stabilise le logiciel ; il ne remplace pas la validation qualitative terrain
-de la gate `PASS-G`. Les entretiens, scénarios guidés et mesures de charge décrits par
-PASS-19 restent des preuves métier à collecter avant de déclarer cette gate validée.
+de `PASS-G`. Les entretiens et scénarios guidés décrits par PASS-19 restent des
+preuves métier à collecter avant de déclarer ce suivi validé.
+
+Décision produit du 5 septembre 2026 : cette collecte n'est plus une dépendance des
+roadmaps suivantes. Elle reste ouverte sans suspendre les implémentations et ne doit
+pas être confondue avec les contrôles techniques de charge, sécurité, confidentialité
+et architecture, qui demeurent obligatoires pour chaque livraison.

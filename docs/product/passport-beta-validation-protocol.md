@@ -4,7 +4,12 @@
 
 Vérifier que le passeport apporte plus de valeur qu'un tableur ou une note libre, que ses différents types de notes sont compris et qu'au moins quelques testeurs reviennent terminer une deuxième visite sans assistance.
 
-Le tableau admin donne des indices quantitatifs. Ce protocole recueille les preuves qualitatives indispensables à la gate `PASS-G`.
+Le tableau admin donne des indices quantitatifs. Ce protocole recueille les preuves qualitatives utiles au pilotage du produit après sa livraison.
+
+> Décision produit du 5 septembre 2026 : l'absence d'une cohorte disponible ne bloque
+> plus l'implémentation des roadmaps suivantes. Les observations terrain restent à
+> conduire et à consigner, mais elles ne doivent ni suspendre les travaux techniques
+> et métier, ni être déclarées acquises sans preuves réelles.
 
 ## Cohorte minimale
 
@@ -62,9 +67,9 @@ Consigner sans données privées :
 - deuxième visite terminée sans assistance : oui/non/non encore observable ;
 - décision : corriger, approfondir, accepter avec justification ou arrêter.
 
-## Critère de passage `PASS-G`
+## Critères de validation qualitative `PASS-G` — suivi non bloquant
 
-La gate peut être proposée seulement lorsque :
+La validation qualitative peut être proposée seulement lorsque :
 
 - toutes les garanties techniques de la roadmap PASS sont encore vérifiées ;
 - plusieurs testeurs ont terminé une seconde visite sans assistance ;
@@ -74,7 +79,10 @@ La gate peut être proposée seulement lorsque :
 - la requête d'agrégation et les écritures Matomo restent compatibles avec le VPS ;
 - les limites et résultats non conclusifs sont consignés.
 
-Le signal `Candidate` du tableau de bord n'autorise jamais à lui seul le passage de la gate.
+Le signal `Candidate` du tableau de bord n'autorise jamais à lui seul à déclarer la
+validation terrain acquise. Le développement, les migrations et les déploiements des
+roadmaps suivantes peuvent toutefois avancer dès lors que leurs propres garanties
+techniques, métier, de sécurité et de confidentialité sont vérifiées.
 
 ## Conditions d'arrêt ou de réduction
 

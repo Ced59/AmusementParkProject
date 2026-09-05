@@ -1249,7 +1249,7 @@ des métriques et un kill switch documentés.
 | `PASS-18B` | Ajout d’un tour depuis une attraction | Une visite brouillon compatible est obligatoire et choisie explicitement |
 | `PASS-18C` | Tableau de bord global du passeport | Statistiques et graphiques accessibles depuis l’accueil du passeport |
 | `PASS-18D` | Expérience mobile et organisation moderne | Saisie rapide, tactile, accessible et sans dépassement de viewport |
-| `PASS-19` | Beta cohort et instrumentation | Gate `PASS-G` mesurable |
+| `PASS-19` | Beta cohort et instrumentation | Suivi `PASS-G` mesurable et non bloquant |
 | `PASS-20` | Nettoyage flags et documentation | Chemins stabilisés |
 
 #### `PASS-20` — Stabilisation finale des chemins du passeport
@@ -1279,7 +1279,8 @@ suggestions, tout en respectant durablement la préférence de chaque personne.
 Ces quatre jalons sont prioritaires avant `PASS-19`. Ils transforment les fondations
 déjà livrées en parcours métier compréhensibles et réellement utilisables. Ils ne
 dupliquent pas le passeport public ni la comparaison entre membres : ces fonctions
-restent portées par `SHARE-08`, `SHARE-11` et `SHARE-12` après le gate `PASS-G`.
+restent portées par `SHARE-08`, `SHARE-11` et `SHARE-12` après stabilisation de
+`PASS-20`, sans dépendre de la disponibilité d'une cohorte terrain.
 
 Avant chacun de ces jalons :
 
@@ -1442,14 +1443,16 @@ Les décisions, limites et preuves attendues sont détaillées dans
 `docs/architecture/product-growth-pass-19-passport-beta-measurement-2026-09-05.md`
 et `docs/product/passport-beta-validation-protocol.md`.
 
-La partie terrain reste volontairement ouverte : recruter la cohorte, exécuter les
-scénarios, recueillir les observations différées et confirmer que plusieurs testeurs
-terminent une deuxième visite sans assistance. Le signal quantitatif `Candidate` ne
-vaut jamais validation automatique de `PASS-G`.
+La partie terrain reste volontairement ouverte et non bloquante : recruter la
+cohorte, exécuter les scénarios, recueillir les observations différées et confirmer
+que plusieurs testeurs terminent une deuxième visite sans assistance. Le signal
+quantitatif `Candidate` ne vaut jamais validation automatique de cette partie.
 
-## 27. Gate finale `PASS-G`
+## 27. `PASS-G` — socle technique et suivi terrain
 
-La roadmap de partage ne commence que lorsque :
+Décision produit du 5 septembre 2026 : la disponibilité de visites ou de testeurs
+réels ne constitue plus une dépendance d'implémentation. La roadmap de partage peut
+commencer lorsque le socle vérifiable suivant est assuré :
 
 - le modèle sépare physiquement et conceptuellement préférence globale et observations ;
 - chaque visite et occurrence appartient uniquement à son utilisateur ;
@@ -1462,6 +1465,10 @@ La roadmap de partage ne commence que lorsque :
 - une tendance n’est pas affichée sous le seuil ;
 - export et suppression sont complets ;
 - le Web est utilisable sur mobile sans constituer une application mobile ;
-- au moins quelques testeurs enregistrent une seconde visite sans assistance ;
 - les coûts de requête et de stockage restent compatibles avec le VPS ;
 - aucun libellé ne fait croire que la moyenne personnelle temporelle est une vérité communautaire.
+
+La confirmation par quelques testeurs d'une seconde visite sans assistance est
+transférée au suivi qualitatif post-livraison. Elle reste une preuve produit utile,
+mais son absence ne bloque ni une PR, ni une migration, ni un déploiement ultérieur.
+Elle ne peut jamais être présentée comme obtenue sans observations réelles.

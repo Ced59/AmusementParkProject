@@ -2,10 +2,11 @@
 
 > Code programme : `SHARE`
 >
-> Dépendance bloquante d'implémentation : gate `PASS-G` de la roadmap 02.
-> `SHARE-01`, strictement documentaire, est la seule exception autorisée afin de
-> figer les décisions avant persistance. `SHARE-02` et toutes les tranches de code
-> restent bloquées tant que `PASS-G` n'est pas formellement validée.
+> Dépendance préalable : socle technique `PASS` stabilisé par `PASS-20`.
+> Décision produit du 5 septembre 2026 : la validation communautaire terrain de
+> `PASS-G` devient un suivi qualitatif post-livraison non bloquant. `SHARE-02` et les
+> tranches suivantes peuvent avancer sans dépendre de visites ou de testeurs réels,
+> sous réserve de leurs propres gates techniques, métier, sécurité et confidentialité.
 >
 > Base réutilisable : le dépôt possède déjà des identifiants de partage, une visibilité révocable, une page publique de classement personnel, du SSR public et des aperçus sociaux.
 >
@@ -29,10 +30,10 @@ Une indisponibilité du worker ne doit jamais empêcher une révocation. Le comp
 L'ADR [`product-growth-share-01-publication-policy-2026-09-05.md`](../../architecture/product-growth-share-01-publication-policy-2026-09-05.md)
 fixe les types, la liste blanche de données, les états séparés de la visibilité, le
 snapshot entièrement figé en V1, les révisions 64 bits de périmètres complets, les
-jetons opaques et la révocation autoritative. Cette exception documentaire ne crée
-aucune publication, ne valide pas la partie terrain de `PASS-G` et n'autorise pas
-`SHARE-02` : toutes les tranches d'implémentation restent bloquées tant que cette
-gate n'est pas formellement franchie.
+jetons opaques et la révocation autoritative. Cette décision documentaire ne crée
+aucune publication et ne valide pas la partie terrain de `PASS-G`. Conformément à la
+décision produit du 5 septembre 2026, cette partie terrain ne bloque toutefois plus
+`SHARE-02` ni les tranches d'implémentation suivantes.
 
 ## 1. Vision produit
 

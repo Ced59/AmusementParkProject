@@ -2,7 +2,7 @@
 
 Date : 2026-09-05
 
-Statut : accepté pour conception, sans activation publique
+Statut : accepté pour implémentation progressive, sans publication créée par cet ADR
 
 Version : 5.0.44
 
@@ -19,11 +19,12 @@ Cette décision ne publie aucune donnée, ne crée aucune collection et ne néce
 aucune migration MongoDB. Elle fixe le contrat de confidentialité que les PR
 `SHARE-02` à `SHARE-10` devront respecter.
 
-La validation de cet ADR ne vaut pas validation de la gate terrain `PASS-G`.
-SHARE-01 est une exception documentaire destinée à lever les ambiguïtés avant
-persistance ; elle n'autorise pas SHARE-02 ni une autre tranche d'implémentation.
-Tant que cette gate reste ouverte, aucun code ni aucune route de publication issue
-de SHARE ne doit être activé en production.
+La validation de cet ADR ne vaut pas validation du suivi terrain `PASS-G`.
+
+> Avenant produit du 5 septembre 2026 : ce suivi terrain demeure à réaliser mais ne
+> bloque plus SHARE-02 ni les tranches suivantes. Chaque tranche conserve ses propres
+> conditions techniques, métier, de sécurité et de confidentialité avant activation
+> en production. Aucune preuve communautaire ne sera déclarée sans test réel.
 
 ## Contexte et existant réutilisable
 
