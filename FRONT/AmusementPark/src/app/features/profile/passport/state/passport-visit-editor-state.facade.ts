@@ -2036,6 +2036,9 @@ export class PassportVisitEditorStateFacade {
         const draftChangedDuringRequest: boolean =
           this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== submittedFingerprint;
         const preserveMetadataDraft: boolean = this.metadataHasChanges();
+        const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(
+          this.visitSignal(),
+          currentVisit);
         this.visitSignal.set(currentVisit);
         this.persistedMetadataFingerprintSignal.set(this.metadataVisitFingerprint(currentVisit));
         this.persistedAssessmentFingerprintSignal.set(serverFingerprint);
@@ -2044,6 +2047,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && !draftChangedDuringRequest) {
           this.syncAssessmentDraft(currentVisit.parkAssessment ?? null);
+        }
+        if (temporalMetadataChanged) {
+          this.refreshHistoricalEvidence(currentVisit.id);
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.assessmentErrorKeySignal.set(null);
@@ -2072,6 +2078,7 @@ export class PassportVisitEditorStateFacade {
       return;
     }
 
+    const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(currentVisit, visit);
     const preserveAssessmentDraft: boolean = currentVisit?.id === visit.id && this.assessmentHasChanges();
     const preserveMetadataDraft: boolean = currentVisit?.id === visit.id && this.metadataHasChanges();
     this.visitSignal.set(visit);
@@ -2083,13 +2090,14 @@ export class PassportVisitEditorStateFacade {
     if (!preserveAssessmentDraft) {
       this.syncAssessmentDraft(visit.parkAssessment ?? null);
     }
+    if (temporalMetadataChanged) {
+      this.refreshHistoricalEvidence(visit.id);
+    }
   }
 
   private applyVisitMutationResult(visit: PassportVisit, submittedFingerprint: string): void {
     const previousVisit: PassportVisit | null = this.visitSignal();
-    const temporalMetadataChanged: boolean = previousVisit !== null
-      && this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(previousVisit))
-        !== this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(visit));
+    const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(previousVisit, visit);
     const draftChangedDuringRequest: boolean =
       this.metadataDraftFingerprint(this.metadataDraftSignal()) !== submittedFingerprint;
     this.visitSignal.set(visit);
@@ -2099,10 +2107,20 @@ export class PassportVisitEditorStateFacade {
       this.metadataDraftSignal.set(createPassportVisitMetadataDraft(visit));
     }
     if (temporalMetadataChanged) {
-      this.timelineConsistencyStaleSignal.set(true);
-      this.refreshLoadedTargetEvaluations(visit.id);
-      this.reloadTimeline();
+      this.refreshHistoricalEvidence(visit.id);
     }
+  }
+
+  private hasTemporalMetadataChanged(previousVisit: PassportVisit | null, currentVisit: PassportVisit): boolean {
+    return previousVisit !== null
+      && this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(previousVisit))
+        !== this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(currentVisit));
+  }
+
+  private refreshHistoricalEvidence(visitId: string): void {
+    this.timelineConsistencyStaleSignal.set(true);
+    this.refreshLoadedTargetEvaluations(visitId);
+    this.reloadTimeline();
   }
 
   private refreshLoadedTargetEvaluations(visitId: string): void {

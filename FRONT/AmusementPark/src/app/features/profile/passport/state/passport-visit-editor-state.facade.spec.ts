@@ -581,6 +581,50 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.conflict');
   });
 
+  it('blocks timeline edits when reconciliation observes a temporal change from another tab', () => {
+    const liveOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
+    };
+    const concurrentVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(concurrentVisit));
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.version-conflict'
+      }
+    })));
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [liveOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(throwError(() => new Error('temporary timeline failure')));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Modification locale' });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(facade.timelineConsistencyStale()).toBe(true);
+    facade.updateOccurrence(liveOccurrence, facade.editDrafts()[liveOccurrence.id]);
+    facade.duplicateOccurrence(liveOccurrence);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
+  });
+
   it('explains why temporal metadata stays locked when the visit contains rides', () => {
     visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
       status: 409,
@@ -867,6 +911,7 @@ describe('PassportVisitEditorStateFacade', () => {
   it('reloads the parent version and preserves the draft after an assessment conflict', () => {
     const currentVisit: PassportVisit = {
       ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
       title: 'Version distante',
       version: 2,
       parkAssessment: {
@@ -901,6 +946,8 @@ describe('PassportVisitEditorStateFacade', () => {
 
     expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
     expect(facade.visit()?.version).toBe(2);
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
     expect(facade.metadataDraft().title).toBe('Version distante');
     expect(facade.metadataHasChanges()).toBe(false);
     expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });

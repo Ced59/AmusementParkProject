@@ -1382,6 +1382,38 @@ public sealed class RideOccurrenceHandlersTests
         Assert.False(refreshedResult.HistoricalConflictConfirmed);
     }
 
+    [Fact]
+    public void ResultFactory_ShouldNotExposeCurrentEvidenceForHiddenTarget()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-hidden",
+            1024,
+            new HistoricalTargetReference("Nom conservé dans la visite", "Attraction"));
+        VisitTarget hiddenTarget = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom courant masqué",
+            ParkItemCategory.Attraction,
+            new DateOnly(2027, 1, 1),
+            new DateOnly(2028, 12, 31),
+            "Operating",
+            false);
+
+        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            hiddenTarget,
+            visit.Date);
+
+        Assert.Equal(HistoricalConsistency.Verified, result.HistoricalConsistency);
+        RideOccurrenceTargetResult targetResult = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
+        Assert.True(targetResult.IsHistoricalSnapshot);
+        Assert.Equal("Nom conservé dans la visite", targetResult.Name);
+        Assert.Null(targetResult.OpeningDate);
+        Assert.Null(targetResult.ClosingDate);
+    }
+
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(
         int count = 1,
         bool confirmHistoricalConflict = false,
