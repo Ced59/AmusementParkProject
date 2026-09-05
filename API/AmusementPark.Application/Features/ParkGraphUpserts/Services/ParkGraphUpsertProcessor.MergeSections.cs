@@ -129,7 +129,11 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (ShouldTakeSourceSection(sections, "officialMaps"))
         {
-            AddChange(change, "officialMaps", DescribeOfficialMaps(target.OfficialMaps), DescribeOfficialMaps(source.OfficialMaps));
+            AddChange(
+                change,
+                "officialMaps",
+                ParkGraphOfficialMapUpsertPatcher.Describe(target.OfficialMaps),
+                ParkGraphOfficialMapUpsertPatcher.Describe(source.OfficialMaps));
             target.OfficialMaps = source.OfficialMaps.Select(static officialMap => CloneOfficialMap(officialMap)).ToList();
         }
     }

@@ -180,7 +180,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return null;
     }
-    private static ParkGraphUpsertChange BuildEntityChange(string entityType, string? entityId, string? entityKey, string displayName, string changeType, string matchedBy)
+    internal static ParkGraphUpsertChange BuildEntityChange(string entityType, string? entityId, string? entityKey, string displayName, string changeType, string matchedBy)
     {
         return new ParkGraphUpsertChange
         {

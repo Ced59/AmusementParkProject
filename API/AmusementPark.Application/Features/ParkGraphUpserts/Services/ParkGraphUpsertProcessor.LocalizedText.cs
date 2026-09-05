@@ -71,7 +71,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return values.Values.ToList();
     }
-    private static List<LocalizedText> PatchLocalizedTexts(IReadOnlyCollection<LocalizedText> current, JsonElement? array, bool replace, ParkGraphUpsertChange change, string fieldPrefix)
+    internal static List<LocalizedText> PatchLocalizedTexts(IReadOnlyCollection<LocalizedText> current, JsonElement? array, bool replace, ParkGraphUpsertChange change, string fieldPrefix)
     {
         List<LocalizedText> merged = MergeLocalizedTexts(current, array, replace);
         AddLocalizedTextChanges(change, fieldPrefix, current, merged);

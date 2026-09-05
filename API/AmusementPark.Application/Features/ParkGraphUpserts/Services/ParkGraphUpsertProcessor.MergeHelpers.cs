@@ -172,7 +172,7 @@ public sealed partial class ParkGraphUpsertProcessor
         return clone;
     }
 
-    private static ParkOfficialMap CloneOfficialMap(ParkOfficialMap value)
+    internal static ParkOfficialMap CloneOfficialMap(ParkOfficialMap value)
     {
         return new ParkOfficialMap
         {
