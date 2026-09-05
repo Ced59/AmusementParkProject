@@ -2,11 +2,6 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Models;
 
-public sealed record RatingPublishedRank(
-    int Rank,
-    RatingMethodologyVersion MethodologyVersion,
-    DateTime? GeneratedAtUtc);
-
 public sealed class RatingPublishedRankingSnapshot
 {
     private readonly IReadOnlyDictionary<string, RankingSnapshotEntry> entriesByTargetId;
