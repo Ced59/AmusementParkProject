@@ -24,6 +24,9 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('@media (max-width: 620px)');
     expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');
     expect(styles).toContain('grid-template-columns: 1fr');
+    expect(styles).toContain('.passport-selection-dock');
+    expect(styles).toContain('position: sticky');
+    expect(styles).toContain('bottom: calc(5.25rem + env(safe-area-inset-bottom))');
   });
 
   it('keeps 320px-class controls usable without swipe-only actions', () => {
@@ -44,6 +47,81 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-occurrence__statistics');
     expect(styles).toContain('.passport-visit-deletion__impact');
     expect(styles).toContain('.passport-visit-deletion__actions');
+    expect(styles).toContain('.passport-attraction__quantity');
+    expect(styles).toContain('.passport-selection-card__quantity');
+    expect(styles).toContain('touch-action: manipulation');
+    expect(styles).toContain('.passport-occurrence__drag-handle');
+    expect(styles).toContain('touch-action: none');
+    expect(styles).toContain('.passport-timeline__cancel-zone--active');
+    expect(styles).toContain('@media (max-height: 520px) and (orientation: landscape)');
+    expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
+  });
+
+  it('renders order symbols through widely available platform fonts', () => {
+    expect(styles).toContain('font-family:');
+    expect(styles).toContain('Arial');
+    expect(styles).toContain('Helvetica');
+  });
+
+  it('forwards visual quantity controls without owning selection rules', () => {
+    const changeSelectionCount = vi.fn();
+    const setAttractionCount = vi.fn();
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'changeSelectionCount' | 'setAttractionCount'>;
+      attractionCount(parkItemId: string): number;
+      incrementAttraction(attraction: { id: string }): void;
+      decrementAttraction(attraction: { id: string }): void;
+      incrementSelection(parkItemId: string): void;
+      decrementSelection(parkItemId: string): void;
+      selectionFor(parkItemId: string): { count: number } | null;
+    };
+    component.facade = { changeSelectionCount, setAttractionCount };
+    component.selectionFor = (): { count: number } => ({ count: 2 });
+    const attraction = { id: 'ride-1' };
+
+    component.incrementAttraction(attraction);
+    component.decrementAttraction(attraction);
+    component.incrementSelection('ride-1');
+    component.decrementSelection('ride-1');
+
+    expect(setAttractionCount).toHaveBeenNthCalledWith(1, attraction, 3);
+    expect(setAttractionCount).toHaveBeenNthCalledWith(2, attraction, 1);
+    expect(changeSelectionCount).toHaveBeenNthCalledWith(1, 'ride-1', 1);
+    expect(changeSelectionCount).toHaveBeenNthCalledWith(2, 'ride-1', -1);
+  });
+
+  it('forwards an internal drag and treats a drop outside the timeline as cancelled', () => {
+    const moveOccurrenceToIndex = vi.fn();
+    const announceCancelledReorder = vi.fn();
+    const timelineDragging = vi.fn();
+    const occurrence = { id: 'occurrence-1' };
+    const container = {};
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      facade: Pick<PassportVisitEditorStateFacade, 'moveOccurrenceToIndex' | 'announceCancelledReorder'>;
+      timelineDragging: { set(value: boolean): void };
+      reorderTimeline(event: unknown): void;
+    };
+    component.facade = { moveOccurrenceToIndex, announceCancelledReorder };
+    component.timelineDragging = { set: timelineDragging };
+
+    component.reorderTimeline({
+      isPointerOverContainer: true,
+      previousContainer: container,
+      container,
+      currentIndex: 2,
+      item: { data: occurrence }
+    });
+    component.reorderTimeline({
+      isPointerOverContainer: false,
+      previousContainer: {},
+      container,
+      currentIndex: 0,
+      item: { data: occurrence }
+    });
+
+    expect(moveOccurrenceToIndex).toHaveBeenCalledWith(occurrence, 2);
+    expect(announceCancelledReorder).toHaveBeenCalledOnce();
+    expect(timelineDragging).toHaveBeenCalledWith(false);
   });
 
   it('opens park, year and attraction statistics inside the localized private profile', () => {
@@ -252,11 +330,12 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     };
     const facade: Pick<
       PassportVisitEditorStateFacade,
-      'load' | 'changeLanguage' | 'retryLoad' | 'deletedVisitId'
+      'load' | 'changeLanguage' | 'retryLoad' | 'deletedVisitId' | 'applyAttractionFilters'
     > = {
       load: vi.fn(),
       changeLanguage: vi.fn(),
       retryLoad: vi.fn(),
+      applyAttractionFilters: vi.fn(),
       deletedVisitId: (() => null) as PassportVisitEditorStateFacade['deletedVisitId']
     };
     const router: Pick<Router, 'navigate'> = { navigate: vi.fn().mockResolvedValue(true) };
@@ -279,6 +358,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     const controls = component as unknown as {
       searchControl: { setValue(value: string): void; value: string };
       zoneControl: { setValue(value: string): void; value: string };
+      lifecycleControl: { setValue(value: string): void; value: string };
       deleteConfirmationId: WritableSignal<string | null>;
       assessmentDeleteConfirmation: WritableSignal<boolean>;
       rideAssessmentDeleteConfirmationId: WritableSignal<string | null>;
@@ -299,6 +379,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(facade.load).toHaveBeenNthCalledWith(2, 'visit-2', 'de');
     expect(controls.searchControl.value).toBe('');
     expect(controls.zoneControl.value).toBe('');
+    expect(controls.lifecycleControl.value).toBe('all');
     expect(controls.deleteConfirmationId()).toBeNull();
     expect(controls.assessmentDeleteConfirmation()).toBe(false);
     expect(controls.rideAssessmentDeleteConfirmationId()).toBeNull();

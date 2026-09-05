@@ -649,7 +649,15 @@
         "results": "Atracciones disponibles para esta visita",
         "historical": "histórica",
         "pagination": "Páginas de atracciones",
-        "page": "Página {{current}} de {{total}}"
+        "page": "Página {{current}} de {{total}}",
+        "lifecycleLabel": "Disponibilidad",
+        "allLifecycles": "Todas las atracciones",
+        "currentOnly": "Actualmente en funcionamiento",
+        "historicalOnly": "Atracciones históricas",
+        "instantSearchHint": "Los resultados se actualizan mientras escribes.",
+        "quantityLabel": "Recorridos seleccionados para {{attraction}}",
+        "decrease": "Quitar un recorrido de {{attraction}}",
+        "increase": "Añadir un recorrido de {{attraction}}"
       },
       "selection": {
         "title": "Registros que se añadirán",
@@ -671,7 +679,11 @@
           "many": "{{count}} registros",
           "other": "{{count}} registros"
         },
-        "pendingRecovery": "El resultado de la última incorporación es incierto. Reinténtala antes de enviar tus cambios más recientes."
+        "pendingRecovery": "El resultado de la última incorporación es incierto. Reinténtala antes de enviar tus cambios más recientes.",
+        "summaryLabel": "Resumen de los recorridos seleccionados",
+        "review": "Revisar los detalles",
+        "quickAdd": "Añadir ahora",
+        "customize": "Personalizar este recorrido"
       },
       "fields": {
         "status": "Resultado",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Nota privada",
         "orderActions": "Acciones para ordenar el registro",
         "deleteConfirmation": "¿Eliminar definitivamente este registro de tu visita?",
-        "pendingDuplicateRecovery": "El resultado de añadir este registro es incierto. Compruébalo: se repetirá la misma solicitud sin crear un duplicado."
+        "pendingDuplicateRecovery": "El resultado de añadir este registro es incierto. Compruébalo: se repetirá la misma solicitud sin crear un duplicado.",
+        "dragHandle": "Mantén pulsado y arrastra para mover",
+        "cancelDrop": "Suelta aquí para cancelar el movimiento",
+        "orderMoved": "{{attraction}} se ha movido a la posición {{position}} de {{total}}.",
+        "orderRestored": "No se pudo mover {{attraction}}. Se restauró la posición {{position}} de {{total}}.",
+        "orderCancelled": "Movimiento cancelado. El orden no ha cambiado."
       },
       "errors": {
         "visitNotFound": "No se encuentra esta visita o ya no te pertenece.",

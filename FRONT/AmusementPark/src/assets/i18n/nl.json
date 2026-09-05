@@ -649,7 +649,15 @@
         "results": "Attracties voor dit bezoek",
         "historical": "historisch",
         "pagination": "Attractiepagina’s",
-        "page": "Pagina {{current}} van {{total}}"
+        "page": "Pagina {{current}} van {{total}}",
+        "lifecycleLabel": "Beschikbaarheid",
+        "allLifecycles": "Alle attracties",
+        "currentOnly": "Momenteel in gebruik",
+        "historicalOnly": "Historische attracties",
+        "instantSearchHint": "De resultaten worden bijgewerkt terwijl je typt.",
+        "quantityLabel": "Geselecteerde ritten voor {{attraction}}",
+        "decrease": "Eén rit bij {{attraction}} verwijderen",
+        "increase": "Eén rit bij {{attraction}} toevoegen"
       },
       "selection": {
         "title": "Vermeldingen om toe te voegen",
@@ -671,7 +679,11 @@
           "many": "{{count}} vermeldingen",
           "other": "{{count}} vermeldingen"
         },
-        "pendingRecovery": "Het resultaat van de laatste toevoeging is onzeker. Probeer die opnieuw voordat je je nieuwere wijzigingen verstuurt."
+        "pendingRecovery": "Het resultaat van de laatste toevoeging is onzeker. Probeer die opnieuw voordat je je nieuwere wijzigingen verstuurt.",
+        "summaryLabel": "Overzicht van geselecteerde ritten",
+        "review": "Details controleren",
+        "quickAdd": "Nu toevoegen",
+        "customize": "Deze rit aanpassen"
       },
       "fields": {
         "status": "Resultaat",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Privénotitie",
         "orderActions": "Volgorde van de vermelding wijzigen",
         "deleteConfirmation": "Deze vermelding definitief uit je bezoek verwijderen?",
-        "pendingDuplicateRecovery": "Het resultaat van deze toegevoegde vermelding is onzeker. Controleer het: hetzelfde verzoek wordt opnieuw uitgevoerd zonder een dubbele vermelding te maken."
+        "pendingDuplicateRecovery": "Het resultaat van deze toegevoegde vermelding is onzeker. Controleer het: hetzelfde verzoek wordt opnieuw uitgevoerd zonder een dubbele vermelding te maken.",
+        "dragHandle": "Houd vast en sleep om te verplaatsen",
+        "cancelDrop": "Zet hier neer om de verplaatsing te annuleren",
+        "orderMoved": "{{attraction}} is verplaatst naar positie {{position}} van {{total}}.",
+        "orderRestored": "{{attraction}} kon niet worden verplaatst. Positie {{position}} van {{total}} is hersteld.",
+        "orderCancelled": "Verplaatsing geannuleerd. De volgorde is niet gewijzigd."
       },
       "errors": {
         "visitNotFound": "Dit bezoek is niet gevonden of is niet meer van jou.",

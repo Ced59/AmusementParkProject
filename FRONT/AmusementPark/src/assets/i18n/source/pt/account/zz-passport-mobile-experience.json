@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Disponibilidade",
+        "allLifecycles": "Todas as atrações",
+        "currentOnly": "Atualmente em funcionamento",
+        "historicalOnly": "Atrações históricas",
+        "instantSearchHint": "Os resultados são atualizados enquanto escreves.",
+        "quantityLabel": "Voltas selecionadas para {{attraction}}",
+        "decrease": "Retirar uma volta em {{attraction}}",
+        "increase": "Adicionar uma volta em {{attraction}}"
+      },
+      "selection": {
+        "summaryLabel": "Resumo das voltas selecionadas",
+        "review": "Rever os detalhes",
+        "quickAdd": "Adicionar agora",
+        "customize": "Personalizar esta volta"
+      },
+      "timeline": {
+        "dragHandle": "Mantém premido e arrasta para mover",
+        "cancelDrop": "Larga aqui para cancelar o movimento",
+        "orderMoved": "{{attraction}} foi movida para a posição {{position}} de {{total}}.",
+        "orderRestored": "Não foi possível mover {{attraction}}. A posição {{position}} de {{total}} foi reposta.",
+        "orderCancelled": "Movimento cancelado. A ordem não foi alterada."
+      }
+    }
+  }
+}

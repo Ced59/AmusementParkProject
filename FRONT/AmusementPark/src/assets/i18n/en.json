@@ -649,7 +649,15 @@
         "results": "Attractions available for this visit",
         "historical": "historical",
         "pagination": "Attraction pages",
-        "page": "Page {{current}} of {{total}}"
+        "page": "Page {{current}} of {{total}}",
+        "lifecycleLabel": "Availability",
+        "allLifecycles": "All attractions",
+        "currentOnly": "Currently operating",
+        "historicalOnly": "Historical attractions",
+        "instantSearchHint": "Results update as you type.",
+        "quantityLabel": "Selected ride entries for {{attraction}}",
+        "decrease": "Remove one ride entry for {{attraction}}",
+        "increase": "Add one ride entry for {{attraction}}"
       },
       "selection": {
         "title": "Entries to add",
@@ -671,7 +679,11 @@
           "many": "{{count}} entries",
           "other": "{{count}} entries"
         },
-        "pendingRecovery": "The last add result is uncertain. Retry it before sending your newer changes."
+        "pendingRecovery": "The last add result is uncertain. Retry it before sending your newer changes.",
+        "summaryLabel": "Selected ride entry summary",
+        "review": "Review details",
+        "quickAdd": "Add now",
+        "customize": "Customize this ride entry"
       },
       "fields": {
         "status": "Outcome",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Private note",
         "orderActions": "Entry ordering actions",
         "deleteConfirmation": "Permanently delete this entry from your visit?",
-        "pendingDuplicateRecovery": "The result of adding this entry is uncertain. Check it: the same request will be replayed without creating a duplicate."
+        "pendingDuplicateRecovery": "The result of adding this entry is uncertain. Check it: the same request will be replayed without creating a duplicate.",
+        "dragHandle": "Hold and drag to move",
+        "cancelDrop": "Drop here to cancel the move",
+        "orderMoved": "{{attraction}} moved to position {{position}} of {{total}}.",
+        "orderRestored": "Could not move {{attraction}}. Position {{position}} of {{total}} was restored.",
+        "orderCancelled": "Move cancelled. The order did not change."
       },
       "errors": {
         "visitNotFound": "This visit cannot be found or no longer belongs to you.",

@@ -649,7 +649,15 @@
         "results": "Atrações disponíveis para esta visita",
         "historical": "histórica",
         "pagination": "Páginas de atrações",
-        "page": "Página {{current}} de {{total}}"
+        "page": "Página {{current}} de {{total}}",
+        "lifecycleLabel": "Disponibilidade",
+        "allLifecycles": "Todas as atrações",
+        "currentOnly": "Atualmente em funcionamento",
+        "historicalOnly": "Atrações históricas",
+        "instantSearchHint": "Os resultados são atualizados enquanto escreves.",
+        "quantityLabel": "Voltas selecionadas para {{attraction}}",
+        "decrease": "Retirar uma volta em {{attraction}}",
+        "increase": "Adicionar uma volta em {{attraction}}"
       },
       "selection": {
         "title": "Registos a adicionar",
@@ -671,7 +679,11 @@
           "many": "{{count}} registos",
           "other": "{{count}} registos"
         },
-        "pendingRecovery": "O resultado da última adição é incerto. Repete-a antes de enviares as alterações mais recentes."
+        "pendingRecovery": "O resultado da última adição é incerto. Repete-a antes de enviares as alterações mais recentes.",
+        "summaryLabel": "Resumo das voltas selecionadas",
+        "review": "Rever os detalhes",
+        "quickAdd": "Adicionar agora",
+        "customize": "Personalizar esta volta"
       },
       "fields": {
         "status": "Resultado",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Nota privada",
         "orderActions": "Ações de ordenação do registo",
         "deleteConfirmation": "Eliminar definitivamente este registo da tua visita?",
-        "pendingDuplicateRecovery": "O resultado da adição deste registo é incerto. Verifica-o: o mesmo pedido será repetido sem criar um duplicado."
+        "pendingDuplicateRecovery": "O resultado da adição deste registo é incerto. Verifica-o: o mesmo pedido será repetido sem criar um duplicado.",
+        "dragHandle": "Mantém premido e arrasta para mover",
+        "cancelDrop": "Larga aqui para cancelar o movimento",
+        "orderMoved": "{{attraction}} foi movida para a posição {{position}} de {{total}}.",
+        "orderRestored": "Não foi possível mover {{attraction}}. A posição {{position}} de {{total}} foi reposta.",
+        "orderCancelled": "Movimento cancelado. A ordem não foi alterada."
       },
       "errors": {
         "visitNotFound": "Esta visita não foi encontrada ou já não te pertence.",

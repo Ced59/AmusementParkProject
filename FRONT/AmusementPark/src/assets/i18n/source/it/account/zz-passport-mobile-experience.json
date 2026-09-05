@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Disponibilità",
+        "allLifecycles": "Tutte le attrazioni",
+        "currentOnly": "Attualmente in funzione",
+        "historicalOnly": "Attrazioni storiche",
+        "instantSearchHint": "I risultati si aggiornano mentre scrivi.",
+        "quantityLabel": "Giri selezionati per {{attraction}}",
+        "decrease": "Rimuovi un giro per {{attraction}}",
+        "increase": "Aggiungi un giro per {{attraction}}"
+      },
+      "selection": {
+        "summaryLabel": "Riepilogo dei giri selezionati",
+        "review": "Controlla i dettagli",
+        "quickAdd": "Aggiungi ora",
+        "customize": "Personalizza questo giro"
+      },
+      "timeline": {
+        "dragHandle": "Tieni premuto e trascina per spostare",
+        "cancelDrop": "Rilascia qui per annullare lo spostamento",
+        "orderMoved": "{{attraction}} è stata spostata in posizione {{position}} di {{total}}.",
+        "orderRestored": "Impossibile spostare {{attraction}}. È stata ripristinata la posizione {{position}} di {{total}}.",
+        "orderCancelled": "Spostamento annullato. L’ordine non è cambiato."
+      }
+    }
+  }
+}

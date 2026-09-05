@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Disponibilidad",
+        "allLifecycles": "Todas las atracciones",
+        "currentOnly": "Actualmente en funcionamiento",
+        "historicalOnly": "Atracciones históricas",
+        "instantSearchHint": "Los resultados se actualizan mientras escribes.",
+        "quantityLabel": "Recorridos seleccionados para {{attraction}}",
+        "decrease": "Quitar un recorrido de {{attraction}}",
+        "increase": "Añadir un recorrido de {{attraction}}"
+      },
+      "selection": {
+        "summaryLabel": "Resumen de los recorridos seleccionados",
+        "review": "Revisar los detalles",
+        "quickAdd": "Añadir ahora",
+        "customize": "Personalizar este recorrido"
+      },
+      "timeline": {
+        "dragHandle": "Mantén pulsado y arrastra para mover",
+        "cancelDrop": "Suelta aquí para cancelar el movimiento",
+        "orderMoved": "{{attraction}} se ha movido a la posición {{position}} de {{total}}.",
+        "orderRestored": "No se pudo mover {{attraction}}. Se restauró la posición {{position}} de {{total}}.",
+        "orderCancelled": "Movimiento cancelado. El orden no ha cambiado."
+      }
+    }
+  }
+}

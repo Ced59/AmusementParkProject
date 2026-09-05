@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Dostępność",
+        "allLifecycles": "Wszystkie atrakcje",
+        "currentOnly": "Obecnie działające",
+        "historicalOnly": "Atrakcje historyczne",
+        "instantSearchHint": "Wyniki aktualizują się podczas pisania.",
+        "quantityLabel": "Wybrane przejazdy dla {{attraction}}",
+        "decrease": "Usuń jeden przejazd dla {{attraction}}",
+        "increase": "Dodaj jeden przejazd dla {{attraction}}"
+      },
+      "selection": {
+        "summaryLabel": "Podsumowanie wybranych przejazdów",
+        "review": "Sprawdź szczegóły",
+        "quickAdd": "Dodaj teraz",
+        "customize": "Dostosuj ten przejazd"
+      },
+      "timeline": {
+        "dragHandle": "Przytrzymaj i przeciągnij, aby przenieść",
+        "cancelDrop": "Upuść tutaj, aby anulować przenoszenie",
+        "orderMoved": "Atrakcja {{attraction}} została przeniesiona na pozycję {{position}} z {{total}}.",
+        "orderRestored": "Nie udało się przenieść atrakcji {{attraction}}. Przywrócono pozycję {{position}} z {{total}}.",
+        "orderCancelled": "Przenoszenie anulowane. Kolejność się nie zmieniła."
+      }
+    }
+  }
+}

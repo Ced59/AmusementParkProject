@@ -649,7 +649,15 @@
         "results": "Für diesen Besuch verfügbare Attraktionen",
         "historical": "historisch",
         "pagination": "Attraktionsseiten",
-        "page": "Seite {{current}} von {{total}}"
+        "page": "Seite {{current}} von {{total}}",
+        "lifecycleLabel": "Verfügbarkeit",
+        "allLifecycles": "Alle Attraktionen",
+        "currentOnly": "Derzeit in Betrieb",
+        "historicalOnly": "Historische Attraktionen",
+        "instantSearchHint": "Die Ergebnisse werden während deiner Eingabe aktualisiert.",
+        "quantityLabel": "Ausgewählte Fahrten für {{attraction}}",
+        "decrease": "Eine Fahrt bei {{attraction}} entfernen",
+        "increase": "Eine Fahrt bei {{attraction}} hinzufügen"
       },
       "selection": {
         "title": "Hinzuzufügende Einträge",
@@ -671,7 +679,11 @@
           "many": "{{count}} Einträge",
           "other": "{{count}} Einträge"
         },
-        "pendingRecovery": "Das Ergebnis des letzten Hinzufügens ist unklar. Prüfe es erneut, bevor du deine neueren Änderungen sendest."
+        "pendingRecovery": "Das Ergebnis des letzten Hinzufügens ist unklar. Prüfe es erneut, bevor du deine neueren Änderungen sendest.",
+        "summaryLabel": "Übersicht der ausgewählten Fahrten",
+        "review": "Details prüfen",
+        "quickAdd": "Jetzt hinzufügen",
+        "customize": "Diese Fahrt anpassen"
       },
       "fields": {
         "status": "Ergebnis",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Private Notiz",
         "orderActions": "Reihenfolge dieses Eintrags ändern",
         "deleteConfirmation": "Diesen Eintrag dauerhaft aus deinem Besuch löschen?",
-        "pendingDuplicateRecovery": "Das Ergebnis dieses hinzugefügten Eintrags ist unklar. Prüfe es: Dieselbe Anfrage wird wiederholt, ohne einen doppelten Eintrag zu erzeugen."
+        "pendingDuplicateRecovery": "Das Ergebnis dieses hinzugefügten Eintrags ist unklar. Prüfe es: Dieselbe Anfrage wird wiederholt, ohne einen doppelten Eintrag zu erzeugen.",
+        "dragHandle": "Gedrückt halten und zum Verschieben ziehen",
+        "cancelDrop": "Hier ablegen, um das Verschieben abzubrechen",
+        "orderMoved": "{{attraction}} wurde auf Position {{position}} von {{total}} verschoben.",
+        "orderRestored": "{{attraction}} konnte nicht verschoben werden. Position {{position}} von {{total}} wurde wiederhergestellt.",
+        "orderCancelled": "Verschieben abgebrochen. Die Reihenfolge wurde nicht geändert."
       },
       "errors": {
         "visitNotFound": "Dieser Besuch wurde nicht gefunden oder gehört dir nicht mehr.",

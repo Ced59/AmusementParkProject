@@ -210,6 +210,46 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.selectionCanSubmit()).toBe(true);
   });
 
+  it('applies search, zone and lifecycle filters to both attraction catalogue filters', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.applyAttractionFilters('ancienne', 'zone-1', 'closedOnly');
+
+    expect(attractionsPort.getParkItemsByParkIdPage).toHaveBeenLastCalledWith(
+      'park-1',
+      1,
+      24,
+      {
+        includeHidden: false,
+        closedFilter: 'closedOnly',
+        category: 'Attraction',
+        search: 'ancienne',
+        zoneId: 'zone-1'
+      },
+      { closedFilter: 'closedOnly' }
+    );
+  });
+
+  it('updates explicit attraction quantities and removes a selection at zero', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    const attraction = facade.attractions()[0];
+
+    facade.setAttractionCount(attraction, 3);
+
+    expect(facade.selectedAttractions()).toEqual([
+      expect.objectContaining({ parkItemId: 'ride-1', count: 3 })
+    ]);
+    expect(facade.selectedOccurrenceTotal()).toBe(3);
+
+    facade.changeSelectionCount('ride-1', 1);
+    expect(facade.selectedAttractions()[0].count).toBe(4);
+
+    facade.setAttractionCount(attraction, 0);
+    expect(facade.selectedAttractions()).toEqual([]);
+  });
+
   it('previews and deletes the whole visit with the confirmed server counts', () => {
     visitsPort.getDeletionPreview.mockReturnValue(of({
       visitId: 'visit-1',
@@ -1809,6 +1849,75 @@ describe('PassportVisitEditorStateFacade', () => {
       },
       'operation-stable'
     );
+  });
+
+  it('optimistically reorders a dragged occurrence and keeps the confirmed server order', () => {
+    const response: Subject<PassportRideOccurrenceMutationResult> =
+      new Subject<PassportRideOccurrenceMutationResult>();
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence, secondOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(of({ items: [secondOccurrence, firstOccurrence], nextCursor: null }));
+    occurrencesPort.reorder.mockReturnValue(response);
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.moveOccurrenceToIndex(firstOccurrence, 1);
+
+    expect(facade.occurrences().map((occurrence: PassportRideOccurrence): string => occurrence.id)).toEqual([
+      'occurrence-2',
+      'occurrence-1'
+    ]);
+    expect(facade.reorderingOccurrenceId()).toBe('occurrence-1');
+    expect(facade.orderAnnouncementKey()).toBe('passport.editor.timeline.orderMoved');
+    expect(occurrencesPort.reorder).toHaveBeenCalledWith(
+      'visit-1',
+      {
+        occurrenceId: 'occurrence-1',
+        expectedVersion: 1,
+        anchorOccurrenceId: 'occurrence-2',
+        placement: 'After'
+      },
+      'operation-stable'
+    );
+
+    response.next({ occurrences: [firstOccurrence], wasReplayed: false, wasOrderNormalized: false });
+    response.complete();
+
+    expect(facade.reorderingOccurrenceId()).toBeNull();
+    expect(facade.occurrences().map((occurrence: PassportRideOccurrence): string => occurrence.id)).toEqual([
+      'occurrence-2',
+      'occurrence-1'
+    ]);
+  });
+
+  it('restores the previous timeline when an optimistic reorder fails', () => {
+    occurrencesPort.reorder.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 500 })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.moveOccurrenceToIndex(firstOccurrence, 1);
+
+    expect(facade.reorderingOccurrenceId()).toBeNull();
+    expect(facade.occurrences().map((occurrence: PassportRideOccurrence): string => occurrence.id)).toEqual([
+      'occurrence-1',
+      'occurrence-2'
+    ]);
+    expect(facade.orderAnnouncementKey()).toBe('passport.editor.timeline.orderRestored');
+    expect(facade.orderAnnouncementParams()).toEqual({
+      attraction: 'Grand Huit',
+      position: 1,
+      total: 2
+    });
+  });
+
+  it('ignores an invalid drag target index without sending a reorder command', () => {
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.moveOccurrenceToIndex(firstOccurrence, Number.NaN);
+
+    expect(occurrencesPort.reorder).not.toHaveBeenCalled();
+    expect(facade.occurrences()).toEqual([firstOccurrence, secondOccurrence]);
   });
 
   it('preserves the timeline target projection when an update response only contains occurrence data', () => {

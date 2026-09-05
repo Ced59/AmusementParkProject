@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Availability",
+        "allLifecycles": "All attractions",
+        "currentOnly": "Currently operating",
+        "historicalOnly": "Historical attractions",
+        "instantSearchHint": "Results update as you type.",
+        "quantityLabel": "Selected ride entries for {{attraction}}",
+        "decrease": "Remove one ride entry for {{attraction}}",
+        "increase": "Add one ride entry for {{attraction}}"
+      },
+      "selection": {
+        "summaryLabel": "Selected ride entry summary",
+        "review": "Review details",
+        "quickAdd": "Add now",
+        "customize": "Customize this ride entry"
+      },
+      "timeline": {
+        "dragHandle": "Hold and drag to move",
+        "cancelDrop": "Drop here to cancel the move",
+        "orderMoved": "{{attraction}} moved to position {{position}} of {{total}}.",
+        "orderRestored": "Could not move {{attraction}}. Position {{position}} of {{total}} was restored.",
+        "orderCancelled": "Move cancelled. The order did not change."
+      }
+    }
+  }
+}

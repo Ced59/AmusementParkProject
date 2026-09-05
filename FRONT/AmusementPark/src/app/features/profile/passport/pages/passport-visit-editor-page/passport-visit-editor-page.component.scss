@@ -26,8 +26,12 @@
 .passport-assessment__delete-confirmation,
 .passport-panel,
 .passport-selection,
+.passport-selection-dock,
 .passport-selection__items,
+.passport-selection-card,
+.passport-selection-card__header,
 .passport-timeline__list,
+.passport-timeline__cancel-zone,
 .passport-occurrence,
 .passport-occurrence article,
 .passport-ride-assessment,
@@ -426,7 +430,7 @@
 
 .passport-filters {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 0.8fr));
   gap: 0.75rem;
   min-width: 0;
   padding: 0.85rem;
@@ -440,6 +444,25 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.passport-filters__hint {
+  display: inline-flex;
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0;
+  align-items: flex-start;
+  gap: 0.4rem;
+  color: var(--app-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.passport-filters__hint i {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  color: var(--app-primary);
 }
 
 .passport-filters .app-field,
@@ -477,7 +500,7 @@
 
 .passport-attraction {
   display: grid;
-  grid-template-columns: 3.75rem minmax(0, 1fr);
+  grid-template-columns: 3.75rem minmax(0, 1fr) auto;
   gap: 0.65rem;
   align-items: center;
   width: 100%;
@@ -489,11 +512,9 @@
   background: var(--app-surface);
   color: var(--app-text);
   text-align: left;
-  cursor: pointer;
 }
 
 .passport-attraction:hover,
-.passport-attraction:focus-visible,
 .passport-attraction--selected {
   border-color: var(--app-primary);
 }
@@ -502,8 +523,7 @@
   background: color-mix(in srgb, var(--app-primary) 10%, var(--app-surface));
 }
 
-.passport-attraction__media,
-.passport-attraction__check {
+.passport-attraction__media {
   grid-column: 1;
   grid-row: 1;
 }
@@ -529,34 +549,73 @@
   object-fit: cover;
 }
 
-.passport-attraction__check {
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  align-self: center;
-  justify-self: center;
-  place-items: center;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2));
-  color: var(--app-primary);
-}
-
-.passport-attraction__check--overlay {
-  z-index: 1;
-  width: 1.8rem;
-  height: 1.8rem;
-  align-self: end;
-  justify-self: end;
-  border: 2px solid var(--app-surface);
-  box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 24%);
-}
-
 .passport-attraction__body {
   display: grid;
   grid-column: 2;
   grid-row: 1;
   min-width: 0;
   gap: 0.2rem;
+}
+
+.passport-attraction__media--fallback {
+  display: grid;
+  place-items: center;
+  color: var(--app-primary);
+  font-size: 1.35rem;
+}
+
+.passport-attraction__quantity,
+.passport-selection-card__quantity {
+  display: grid;
+  grid-template-columns: repeat(3, 2.75rem);
+  min-width: 0;
+  align-items: center;
+  justify-content: end;
+  gap: 0.25rem;
+}
+
+.passport-attraction__quantity {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.passport-attraction__quantity button,
+.passport-selection-card__quantity button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: 999px;
+  background: var(--app-surface-2);
+  color: var(--app-primary);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.passport-attraction__quantity button:hover:not(:disabled),
+.passport-attraction__quantity button:focus-visible,
+.passport-selection-card__quantity button:hover:not(:disabled),
+.passport-selection-card__quantity button:focus-visible {
+  border-color: var(--app-primary);
+  background: color-mix(in srgb, var(--app-primary) 10%, var(--app-surface));
+}
+
+.passport-attraction__quantity button:disabled,
+.passport-selection-card__quantity button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.passport-attraction__quantity > strong,
+.passport-selection-card__quantity > strong {
+  min-width: 2.75rem;
+  color: var(--app-heading);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
 }
 
 .passport-attraction__body strong,
@@ -589,6 +648,43 @@
   gap: 0.85rem;
   padding-top: 1rem;
   border-top: 1px solid var(--app-border);
+}
+
+.passport-selection-dock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
+  border-radius: var(--app-radius-lg);
+  background: color-mix(in srgb, var(--app-primary) 7%, var(--app-surface));
+  box-sizing: border-box;
+}
+
+.passport-selection-dock > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.1rem;
+}
+
+.passport-selection-dock strong,
+.passport-selection-dock small,
+.passport-selection-dock a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-selection-dock small {
+  color: var(--app-text-muted);
+}
+
+.passport-selection-dock a {
+  color: var(--app-primary);
+  font-weight: 800;
 }
 
 .passport-selection__heading {
@@ -629,7 +725,7 @@
   background: var(--app-surface-2);
 }
 
-.passport-selection-card > summary,
+.passport-selection-card > details > summary,
 .passport-occurrence__actions > details > summary {
   min-height: 2.75rem;
   padding: 0.75rem;
@@ -639,17 +735,40 @@
   overflow-wrap: anywhere;
 }
 
-.passport-selection-card > summary {
+.passport-selection-card__header {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  padding: 0.75rem;
 }
 
-.passport-selection-card > summary small {
+.passport-selection-card__header > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.passport-selection-card__header strong,
+.passport-selection-card__header small {
+  overflow-wrap: anywhere;
+}
+
+.passport-selection-card__header small {
   color: var(--app-text-muted);
   font-weight: 600;
+}
+
+.passport-selection-card > details {
+  border-top: 1px solid var(--app-border);
+}
+
+.passport-selection-card > details > summary {
+  list-style-position: inside;
+}
+
+.passport-selection-card > details .passport-entry-form {
+  padding-top: 0;
 }
 
 .passport-entry-form {
@@ -737,6 +856,50 @@
   list-style: none;
 }
 
+.passport-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.passport-timeline__cancel-zone {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  max-height: 0;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0 0.85rem;
+  border: 0 dashed transparent;
+  border-radius: var(--app-radius-md);
+  color: var(--app-danger, #dc2626);
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 160ms ease, padding 160ms ease, border-width 160ms ease, opacity 160ms ease;
+}
+
+.passport-timeline__cancel-zone--active {
+  max-height: 5rem;
+  min-height: 4rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--app-danger, #dc2626) 58%, var(--app-border));
+  background: color-mix(in srgb, var(--app-danger, #dc2626) 8%, var(--app-surface));
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.passport-timeline__cancel-zone.cdk-drop-list-receiving {
+  background: color-mix(in srgb, var(--app-danger, #dc2626) 17%, var(--app-surface));
+}
+
 .passport-occurrence article {
   display: grid;
   gap: 0.75rem;
@@ -744,6 +907,49 @@
   border: 1px solid var(--app-border);
   border-radius: var(--app-radius-lg);
   background: var(--app-surface-2);
+}
+
+.passport-occurrence__drag-handle {
+  display: flex;
+  min-width: 0;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px dashed color-mix(in srgb, var(--app-primary) 35%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 5%, var(--app-surface));
+  color: var(--app-text-muted);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.passport-occurrence__drag-handle:active {
+  cursor: grabbing;
+}
+
+.passport-occurrence__drag-handle span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.passport-timeline__list.cdk-drop-list-dragging .passport-occurrence:not(.cdk-drag-placeholder) {
+  transition: transform 180ms ease;
+}
+
+.passport-occurrence.cdk-drag-placeholder {
+  opacity: 0.25;
+}
+
+.passport-occurrence.cdk-drag-preview article {
+  border-color: var(--app-primary);
+  border-radius: var(--app-radius-lg);
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 35%);
+}
+
+.passport-occurrence.cdk-drag-animating {
+  transition: transform 180ms ease;
 }
 
 .passport-occurrence__header {
@@ -934,6 +1140,13 @@
   color: var(--app-primary);
 }
 
+.passport-occurrence__order button > span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .passport-occurrence__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1084,6 +1297,21 @@ textarea:focus-visible {
     grid-column: auto;
   }
 
+  .passport-selection-dock {
+    position: sticky;
+    z-index: 4;
+    bottom: calc(5.25rem + env(safe-area-inset-bottom));
+    grid-template-columns: minmax(0, 1fr) auto;
+    box-shadow: 0 0.85rem 2rem rgb(0 0 0 / 30%);
+  }
+
+  .passport-selection-dock button {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
   .passport-visit__form-wide {
     grid-column: auto;
   }
@@ -1204,9 +1432,14 @@ textarea:focus-visible {
     justify-content: center;
   }
 
-  .passport-selection-card > summary {
+  .passport-selection-card__header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .passport-selection-card__quantity {
+    align-self: stretch;
+    justify-content: space-between;
   }
 }
 
@@ -1222,7 +1455,27 @@ textarea:focus-visible {
     height: 3.15rem;
   }
 
+  .passport-attraction__quantity {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
+  }
+
   .passport-occurrence__order {
     grid-template-columns: repeat(2, minmax(2.75rem, 1fr));
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .passport-selection-dock {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .passport-timeline__cancel-zone,
+  .passport-timeline__list.cdk-drop-list-dragging .passport-occurrence:not(.cdk-drag-placeholder),
+  .passport-occurrence.cdk-drag-animating {
+    transition: none;
   }
 }
