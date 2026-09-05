@@ -120,7 +120,7 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             {
                 PersonalRankingShareIdentityState previousIdentity =
                     PersonalRankingShareIdentityState.Capture(user);
-                user.AvatarUrl = BuildImageUrl(image.Id);
+                user.AvatarUrl = image.IsPublished ? BuildImageUrl(image.Id) : null;
                 ShareSourceMutationLease? mutationLease =
                     await shareSourceRevisionGuard.BeginIdentityMutationAsync(
                         user.Id,

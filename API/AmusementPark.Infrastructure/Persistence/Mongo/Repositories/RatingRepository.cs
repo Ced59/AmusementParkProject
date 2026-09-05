@@ -630,6 +630,20 @@ public sealed class RatingRepository : IRatingRepository
         return await this.BuildUserRatingStatsAsync(visibleDocuments, true, cancellationToken);
     }
 
+    public async Task<UserRatingStatsResult> GetVisibleUserRatingStatsAsync(
+        string userId,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        IReadOnlyCollection<UserRatingDocument> documents =
+            await this.GetBoundedVisibleUserRatingDocumentsAsync(
+                userId,
+                effectiveMaxItems,
+                cancellationToken);
+        return await this.BuildUserRatingStatsAsync(documents, true, cancellationToken);
+    }
+
     private async Task<UserRatingStatsResult> BuildUserRatingStatsAsync(
         IReadOnlyCollection<UserRatingDocument> documents,
         bool visibleParkNamesOnly,
@@ -1256,40 +1270,121 @@ public sealed class RatingRepository : IRatingRepository
         CancellationToken cancellationToken)
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
-        FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
-        List<UserRatingDocument> visibleDocuments = new List<UserRatingDocument>(effectiveMaxItems);
-        int scannedDocumentCount = 0;
-
-        while (visibleDocuments.Count < effectiveMaxItems)
-        {
-            List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
-                .SortByDescending(document => document.Value)
-                .ThenBy(document => document.TargetId)
-                .Skip(scannedDocumentCount)
-                .Limit(RankingCandidateHardLimit)
-                .ToListAsync(cancellationToken);
-            if (documents.Count == 0)
-            {
-                break;
-            }
-
-            IReadOnlyCollection<UserRatingDocument> visibleBatch =
-                await this.FilterVisibleUserRatingsAsync(
-                    documents,
-                    effectiveMaxItems - visibleDocuments.Count,
-                    cancellationToken);
-            visibleDocuments.AddRange(visibleBatch);
-            scannedDocumentCount = checked(scannedDocumentCount + documents.Count);
-            if (documents.Count < RankingCandidateHardLimit)
-            {
-                break;
-            }
-        }
+        IReadOnlyCollection<UserRatingDocument> visibleDocuments =
+            await this.GetBoundedVisibleUserRatingDocumentsAsync(
+                userId,
+                effectiveMaxItems,
+                cancellationToken);
 
         return await this.EnrichUserRatingsAsync(
             visibleDocuments,
             hideTechnicalFallbacks: true,
             cancellationToken);
+    }
+
+    private async Task<IReadOnlyCollection<UserRatingDocument>> GetBoundedVisibleUserRatingDocumentsAsync(
+        string userId,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        BsonDocument[] pipeline = BuildVisibleUserRatingPipeline(
+            userId,
+            this.parkItemsCollection.CollectionNamespace.CollectionName,
+            this.parksCollection.CollectionNamespace.CollectionName,
+            limit);
+        List<BsonDocument> documents = await this.userRatingsCollection
+            .Aggregate<BsonDocument>(
+                pipeline,
+                new AggregateOptions { AllowDiskUse = true },
+                cancellationToken)
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => BsonSerializer.Deserialize<UserRatingDocument>(document))
+            .ToArray();
+    }
+
+    internal static BsonDocument[] BuildVisibleUserRatingPipeline(
+        string userId,
+        string parkItemsCollectionName,
+        string parksCollectionName,
+        int limit)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parkItemsCollectionName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
+        ArgumentOutOfRangeException.ThrowIfLessThan(limit, 1);
+
+        BsonDocument parkItemEligibility = BuildCurrentParkItemRankingEligibilityMatch();
+        return new[]
+        {
+            new BsonDocument("$match", new BsonDocument
+            {
+                { "userId", userId.Trim() },
+                { "isMutationPlaceholder", new BsonDocument("$ne", true) },
+            }),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", parkItemsCollectionName },
+                { "localField", "targetId" },
+                { "foreignField", "_id" },
+                { "as", "rankingParkItem" },
+            }),
+            new BsonDocument("$unwind", new BsonDocument
+            {
+                { "path", "$rankingParkItem" },
+                { "preserveNullAndEmptyArrays", true },
+            }),
+            new BsonDocument("$addFields", new BsonDocument(
+                "currentParkId",
+                new BsonDocument("$cond", new BsonArray
+                {
+                    new BsonDocument("$eq", new BsonArray
+                    {
+                        "$targetType",
+                        RatingTargetType.Park.ToString(),
+                    }),
+                    "$targetId",
+                    "$rankingParkItem.parkId",
+                }))),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", parksCollectionName },
+                { "localField", "currentParkId" },
+                { "foreignField", "_id" },
+                { "as", "rankingParentPark" },
+            }),
+            new BsonDocument("$unwind", "$rankingParentPark"),
+            new BsonDocument("$match", new BsonDocument
+            {
+                { "rankingParentPark.isVisible", true },
+                { "rankingParentPark.status", ParkStatus.Operating.ToString() },
+                {
+                    "$or",
+                    new BsonArray
+                    {
+                        new BsonDocument("targetType", RatingTargetType.Park.ToString()),
+                        new BsonDocument("$and", new BsonArray
+                        {
+                            new BsonDocument("targetType", RatingTargetType.ParkItem.ToString()),
+                            new BsonDocument("rankingParkItem.isVisible", true),
+                            parkItemEligibility,
+                        }),
+                    }
+                },
+            }),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                { "value", -1 },
+                { "targetId", 1 },
+            }),
+            new BsonDocument("$limit", limit),
+            new BsonDocument("$project", new BsonDocument
+            {
+                { "rankingParkItem", 0 },
+                { "rankingParentPark", 0 },
+                { "currentParkId", 0 },
+            }),
+        };
     }
 
     private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(

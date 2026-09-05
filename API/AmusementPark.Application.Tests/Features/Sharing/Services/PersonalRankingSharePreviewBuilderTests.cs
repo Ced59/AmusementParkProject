@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Sharing.Models;
@@ -7,6 +8,7 @@ using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Core.Domain.Sharing;
@@ -26,20 +28,23 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(7);
         Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = CreateImageRepository(CreateAvatar());
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
+                1000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1000,
+                1001,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
             revisions.Object,
             ratings.Object,
-            users.Object);
+            users.Object,
+            images.Object);
         ShareContentPolicy policy = ShareContentPolicy.Create(
             SharePublicationType.PersonalRanking,
             ShareDatePrecision.Hidden,
@@ -61,7 +66,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         PersonalRankingSharePreviewResult preview = Assert.IsType<PersonalRankingSharePreviewResult>(
             result.Value.PersonalRanking);
         Assert.Equal("Camille", preview.DisplayName);
-        Assert.Equal("/avatars/public.webp", preview.AvatarUrl);
+        Assert.Equal("/images/avatar-1", preview.AvatarUrl);
         Assert.Equal("Parc Astérix", Assert.Single(preview.Statistics!.ByPark).Label);
         PersonalRankingSharePreviewItemResult item = Assert.Single(preview.Ratings);
         Assert.Equal("OzIris", item.TargetName);
@@ -75,6 +80,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         revisions.VerifyAll();
         ratings.VerifyAll();
         users.VerifyAll();
+        images.VerifyAll();
     }
 
     [Fact]
@@ -82,11 +88,13 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(0);
         Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
             revisions.Object,
             ratings.Object,
-            users.Object);
+            users.Object,
+            images.Object);
 
         ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
             "owner-1",
@@ -103,6 +111,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         ratings.VerifyNoOtherCalls();
         revisions.VerifyAll();
         users.VerifyAll();
+        images.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -120,20 +129,23 @@ public sealed class PersonalRankingSharePreviewBuilderTests
                 CancellationToken.None))
             .ReturnsAsync(new ShareSourceRevision(4, 0, NowUtc));
         Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
+                1000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1000,
+                1001,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
             revisions.Object,
             ratings.Object,
-            users.Object);
+            users.Object,
+            images.Object);
 
         ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
             "owner-1",
@@ -150,6 +162,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         revisions.VerifyAll();
         ratings.VerifyAll();
         users.VerifyAll();
+        images.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -165,10 +178,12 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             .ReturnsAsync(before)
             .ReturnsAsync(after);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> images = CreateImageRepository(CreateAvatar());
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
             revisions.Object,
             ratings.Object,
-            users.Object);
+            users.Object,
+            images.Object);
 
         ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
             "owner-1",
@@ -185,6 +200,37 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         ratings.VerifyNoOtherCalls();
         revisions.VerifyAll();
         users.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenCurrentAvatarIsUnpublished_ShouldNotExposeIt()
+    {
+        Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(2);
+        Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> images = CreateImageRepository(CreateAvatar(isPublished: false));
+        PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
+            revisions.Object,
+            ratings.Object,
+            users.Object,
+            images.Object);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            null,
+            ShareContentPolicy.Create(
+                SharePublicationType.PersonalRanking,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.Avatar }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Null(result.Value!.PersonalRanking!.AvatarUrl);
+        ratings.VerifyNoOtherCalls();
+        revisions.VerifyAll();
+        users.VerifyAll();
+        images.VerifyAll();
     }
 
     private static Mock<IShareSourceRevisionRepository> CreateStableRevisions(long revision)
@@ -204,11 +250,36 @@ public sealed class PersonalRankingSharePreviewBuilderTests
 
     private static Mock<IUserRepository> CreateUserRepository()
     {
-        User user = CreateUser("/avatars/public.webp");
+        User user = CreateUser("/images/avatar-1");
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
         users.Setup(value => value.GetByIdAsync("owner-1", CancellationToken.None))
             .ReturnsAsync(user);
         return users;
+    }
+
+    private static Mock<IImageRepository> CreateImageRepository(Image avatar)
+    {
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetCurrentByOwnerAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                CancellationToken.None))
+            .ReturnsAsync(avatar);
+        return images;
+    }
+
+    private static Image CreateAvatar(bool isPublished = true)
+    {
+        return new Image
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            Category = ImageCategory.Avatar,
+            IsCurrent = true,
+            IsPublished = isPublished,
+        };
     }
 
     private static User CreateUser(string avatarUrl)

@@ -16,12 +16,12 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class UpdateImagesBulkMetadataCommandHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenCategoryIsNotPatched_ShouldUseRepositoryBulkUpdate()
+    public async Task HandleAsync_WhenOnlyTagsArePatched_ShouldUseRepositoryBulkUpdate()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler = new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
 
-        ImageBulkMetadataUpdate metadata = new ImageBulkMetadataUpdate(IsPublished: false);
+        ImageBulkMetadataUpdate metadata = new ImageBulkMetadataUpdate(AddTagIds: new[] { "featured" });
         imageRepository
             .Setup(repository => repository.GetByIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1", "image-2" })),
@@ -51,6 +51,62 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
         Assert.Equal(2, result.Value.UpdatedCount);
         imageRepository.VerifyAll();
         updateImageMetadataCommandHandler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPublicationChanges_ShouldUseSingleImageMetadataFlow()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler =
+            new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
+        Image existing = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = true,
+        };
+        Image updated = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = false,
+        };
+        imageRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "avatar-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { existing });
+        updateImageMetadataCommandHandler
+            .Setup(handler => handler.HandleAsync(
+                It.Is<UpdateImageMetadataCommand>(command =>
+                    command.ImageId == "avatar-1"
+                    && command.Metadata.IsPublished == false
+                    && command.Metadata.Category == ImageCategory.Avatar
+                    && command.Metadata.OwnerType == ImageOwnerType.User
+                    && command.Metadata.OwnerId == "owner-1"
+                    && command.SuppressSeoNotification),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(updated));
+
+        UpdateImagesBulkMetadataCommandHandler handler = new UpdateImagesBulkMetadataCommandHandler(
+            imageRepository.Object,
+            updateImageMetadataCommandHandler.Object);
+
+        ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
+            new UpdateImagesBulkMetadataCommand(
+                new[] { "avatar-1" },
+                new ImageBulkMetadataUpdate(IsPublished: false)));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(1, result.Value!.UpdatedCount);
+        imageRepository.VerifyAll();
+        updateImageMetadataCommandHandler.VerifyAll();
     }
 
     [Fact]

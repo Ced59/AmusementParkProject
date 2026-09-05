@@ -151,7 +151,9 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             {
                 PersonalRankingShareIdentityState previousIdentity =
                     PersonalRankingShareIdentityState.Capture(user);
-                user.AvatarUrl = image.IsCurrent ? BuildImageUrl(image.Id) : null;
+                user.AvatarUrl = image.IsCurrent && image.IsPublished
+                    ? BuildImageUrl(image.Id)
+                    : null;
                 ShareSourceMutationLease? mutationLease =
                     await shareSourceRevisionGuard.BeginIdentityMutationAsync(
                         user.Id,

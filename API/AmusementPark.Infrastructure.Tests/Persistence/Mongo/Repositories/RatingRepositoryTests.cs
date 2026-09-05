@@ -354,6 +354,34 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
+    public void BuildVisibleUserRatingPipeline_ShouldFilterCurrentVisibilityBeforeBoundedLimit()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildVisibleUserRatingPipeline(
+            " owner-1 ",
+            "parkItems",
+            "parks",
+            1001);
+
+        BsonDocument ownerMatch = pipeline[0]["$match"].AsBsonDocument;
+        int currentEligibilityIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int sortIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$sort"));
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+        int projectionIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$project"));
+
+        Assert.Equal("owner-1", ownerMatch["userId"].AsString);
+        Assert.True(ownerMatch["isMutationPlaceholder"].AsBsonDocument.Contains("$ne"));
+        Assert.True(currentEligibilityIndex < sortIndex);
+        Assert.True(sortIndex < limitIndex);
+        Assert.True(limitIndex < projectionIndex);
+        Assert.Equal(1001, pipeline[limitIndex]["$limit"].AsInt32);
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$skip"));
+    }
+
+    [Fact]
     public void BuildParkItemRankingCandidatePipeline_WhenParkBatchIsProvided_ShouldFilterJoinedParkIds()
     {
         BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(

@@ -1,10 +1,12 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Users;
 
@@ -17,15 +19,18 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
     private readonly IShareSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRepository ratingRepository;
     private readonly IUserRepository userRepository;
+    private readonly IImageRepository imageRepository;
 
     public PersonalRankingSharePreviewBuilder(
         IShareSourceRevisionRepository sourceRevisionRepository,
         IRatingRepository ratingRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        IImageRepository imageRepository)
     {
         this.sourceRevisionRepository = sourceRevisionRepository;
         this.ratingRepository = ratingRepository;
         this.userRepository = userRepository;
+        this.imageRepository = imageRepository;
     }
 
     public SharePublicationType PublicationType => SharePublicationType.PersonalRanking;
@@ -63,15 +68,29 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         }
 
         bool includesRatings = contentPolicy.Includes(ShareContentField.GlobalRatings);
-        UserRatingStatsResult? sourceStatistics = includesRatings
-            ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(ownerUserId, cancellationToken)
+        bool includesAvatar = contentPolicy.Includes(ShareContentField.Avatar);
+        Image? avatarBefore = includesAvatar
+            ? await this.imageRepository.GetCurrentByOwnerAsync(
+                ImageOwnerType.User,
+                ownerUserId,
+                ImageCategory.Avatar,
+                cancellationToken)
             : null;
-        IReadOnlyCollection<UserRatingListItemResult> sourceRatings = includesRatings
-            ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+        UserRatingStatsResult? sourceStatistics = includesRatings
+            ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(
                 ownerUserId,
                 MaximumRatingCount,
                 cancellationToken)
+            : null;
+        IReadOnlyCollection<UserRatingListItemResult> sourceRatingCandidates = includesRatings
+            ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+                ownerUserId,
+                MaximumRatingCount + 1,
+                cancellationToken)
             : Array.Empty<UserRatingListItemResult>();
+        IReadOnlyCollection<UserRatingListItemResult> sourceRatings = sourceRatingCandidates
+            .Take(MaximumRatingCount)
+            .ToArray();
 
         ShareSourceRevision revisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
             sourceScopeKey,
@@ -80,11 +99,22 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
             PersonalRankingShareSourceScope.PublicCatalog,
             cancellationToken);
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
+        Image? avatarAfter = includesAvatar
+            ? await this.imageRepository.GetCurrentByOwnerAsync(
+                ImageOwnerType.User,
+                ownerUserId,
+                ImageCategory.Avatar,
+                cancellationToken)
+            : null;
         if (!revisionAfter.IsStable
             || !catalogRevisionAfter.IsStable
             || revisionAfter.Revision != revisionBefore.Revision
             || catalogRevisionAfter.Revision != catalogRevisionBefore.Revision
-            || !HasSamePublicIdentity(user, userAfter))
+            || !HasSamePublicIdentity(user, userAfter)
+            || !string.Equals(
+                ResolvePublicAvatarUrl(avatarBefore, ownerUserId),
+                ResolvePublicAvatarUrl(avatarAfter, ownerUserId),
+                StringComparison.Ordinal))
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -107,12 +137,12 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
             contentPolicy.Includes(ShareContentField.PublicDisplayName)
                 ? NormalizeOptional(user.ResolvePublicDisplayName()) ?? "User"
                 : null,
-            contentPolicy.Includes(ShareContentField.Avatar)
-                ? NormalizeOptional(user.AvatarUrl)
+            includesAvatar
+                ? ResolvePublicAvatarUrl(avatarAfter, ownerUserId)
                 : null,
             statistics,
             ratings,
-            sourceStatistics is not null && sourceStatistics.TotalRatings > ratings.Count);
+            sourceRatingCandidates.Count > MaximumRatingCount);
         long sourceVersion;
         try
         {
@@ -178,5 +208,21 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 NormalizeOptional(before.AvatarUrl),
                 NormalizeOptional(after.AvatarUrl),
                 StringComparison.Ordinal);
+    }
+
+    private static string? ResolvePublicAvatarUrl(Image? image, string ownerUserId)
+    {
+        if (image is null
+            || string.IsNullOrWhiteSpace(image.Id)
+            || !image.IsPublished
+            || !image.IsCurrent
+            || image.OwnerType != ImageOwnerType.User
+            || image.Category != ImageCategory.Avatar
+            || !string.Equals(image.OwnerId?.Trim(), ownerUserId, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        return $"/images/{image.Id}";
     }
 }

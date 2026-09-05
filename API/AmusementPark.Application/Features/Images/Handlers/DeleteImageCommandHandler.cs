@@ -155,7 +155,9 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
 
             PersonalRankingShareIdentityState previousIdentity =
                 PersonalRankingShareIdentityState.Capture(user);
-            user.AvatarUrl = replacementCurrent is null ? null : BuildImageUrl(replacementCurrent.Id);
+            user.AvatarUrl = replacementCurrent is not null && replacementCurrent.IsPublished
+                ? BuildImageUrl(replacementCurrent.Id)
+                : null;
             ShareSourceMutationLease? mutationLease =
                 await shareSourceRevisionGuard.BeginIdentityMutationAsync(
                     user.Id,

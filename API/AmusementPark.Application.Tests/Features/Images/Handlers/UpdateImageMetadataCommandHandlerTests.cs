@@ -7,10 +7,12 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Users;
 using Moq;
 using Xunit;
 
@@ -154,5 +156,99 @@ public sealed class UpdateImageMetadataCommandHandlerTests
         manufacturerRepository.VerifyNoOtherCalls();
         searchProjectionWriter.VerifyNoOtherCalls();
         userRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenCurrentAvatarBecomesPrivate_ShouldClearPublicAvatarUrl()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisionGuard =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        Image existing = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = true,
+        };
+        Image updated = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = false,
+        };
+        User user = new User
+        {
+            Id = "owner-1",
+            Email = "owner@example.com",
+            AvatarUrl = "/images/avatar-1",
+        };
+        imageRepository
+            .Setup(repository => repository.GetByIdAsync("avatar-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        imageRepository
+            .Setup(repository => repository.UpdateMetadataAsync(
+                "avatar-1",
+                It.Is<ImageMetadataUpdate>(metadata => metadata.IsPublished == false),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(updated);
+        imageRepository
+            .Setup(repository => repository.GetCurrentByOwnerAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(updated);
+        userRepository
+            .Setup(repository => repository.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(user);
+        revisionGuard
+            .Setup(guard => guard.BeginIdentityMutationAsync(
+                "owner-1",
+                It.Is<PersonalRankingShareIdentityState>(state => state.AvatarUrl == "/images/avatar-1"),
+                It.Is<PersonalRankingShareIdentityState>(state => state.AvatarUrl == null),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ShareSourceMutationLease?)null);
+        userRepository
+            .Setup(repository => repository.UpdateAsync(
+                "owner-1",
+                It.Is<User>(value => value.AvatarUrl == null),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(user);
+        revisionGuard
+            .Setup(guard => guard.CompleteMutationAsync(
+                null,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+
+        UpdateImageMetadataCommandHandler handler = new UpdateImageMetadataCommandHandler(
+            imageRepository.Object,
+            Mock.Of<IParkRepository>(),
+            Mock.Of<IAttractionManufacturerRepository>(),
+            Mock.Of<ISearchProjectionWriter>(),
+            userRepository.Object,
+            revisionGuard.Object);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new UpdateImageMetadataCommand("avatar-1", new ImageMetadataUpdate
+            {
+                Category = ImageCategory.Avatar,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "owner-1",
+                IsPublished = false,
+            }));
+
+        Assert.True(result.IsSuccess);
+        Assert.Null(user.AvatarUrl);
+        imageRepository.VerifyAll();
+        userRepository.VerifyAll();
+        revisionGuard.VerifyAll();
     }
 }

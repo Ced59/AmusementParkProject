@@ -56,8 +56,11 @@ son parc et de son propriétaire. Les commentaires privés, emails, positions,
 accompagnants et notes textuelles ne sont représentés dans aucun résultat ou DTO de
 cette tranche.
 
-La lecture est plafonnée à 1 000 notes visibles pour protéger le VPS. Le résultat
-signale explicitement une éventuelle troncature au lieu de prétendre être complet.
+La lecture et les statistiques sont plafonnées à 1 000 notes visibles pour protéger
+le VPS. MongoDB applique la visibilité courante avant le tri et la limite, sans
+matérialiser toutes les notes du compte en mémoire applicative. Une note visible
+supplémentaire sert uniquement à signaler explicitement la troncature au lieu de
+prétendre que le résultat est complet.
 
 ## Barrière de révision
 
@@ -97,8 +100,11 @@ peut donc jamais rester égal à la version finale.
 
 Les changements de notes, de pseudonyme, d'avatar, de rôle ou d'état du compte
 protègent la révision personnelle dans toutes leurs voies d'écriture. L'identité
-publique est également relue avant et après la construction : la révision prévient
-les aperçus périmés et la double lecture ferme la fenêtre d'une mutation concurrente.
+publique et l'image d'avatar courante sont également relues avant et après la
+construction : la révision prévient les aperçus périmés et la double lecture ferme
+la fenêtre d'une mutation concurrente. Un avatar n'est émis que si l'image courante
+est encore publiée, appartient bien au compte et reste dans la catégorie avatar ;
+une dépublication unitaire ou en masse met aussi à jour l'URL publique sous lease.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
@@ -123,7 +129,8 @@ Application
           │
           ├── IShareSourceRevisionRepository
           ├── IRatingRepository (cibles visibles seulement)
-          └── IUserRepository (identité publique choisie seulement)
+          ├── IUserRepository (identité publique choisie seulement)
+          └── IImageRepository (avatar courant publié seulement)
           ▲
 Infrastructure
   ShareSourceRevisionRepository ── share-source-revisions
@@ -168,8 +175,10 @@ Les tests ciblés couvrent :
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;
+- retrait d'un avatar dépublié, y compris par action de masse ;
 - conservation du succès métier lorsque le règlement d'un lease échoue ;
 - application du plafond après retrait des notes visant des contenus masqués ;
+- agrégation bornée après les jointures de visibilité exécutées par MongoDB ;
 - reconstruction des métadonnées publiques depuis le parc et l'attraction actuels ;
 - authentification, `no-store`, parsing strict des enums et DTO HTTP ;
 - enregistrement des ports MongoDB et du builder spécialisé.

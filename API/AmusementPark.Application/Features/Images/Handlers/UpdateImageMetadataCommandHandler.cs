@@ -238,7 +238,9 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
             Image? currentAvatar = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.User, normalizedOwnerId, ImageCategory.Avatar, cancellationToken);
             PersonalRankingShareIdentityState previousIdentity =
                 PersonalRankingShareIdentityState.Capture(user);
-            user.AvatarUrl = currentAvatar is null ? null : BuildImageUrl(currentAvatar.Id);
+            user.AvatarUrl = currentAvatar is not null && currentAvatar.IsPublished
+                ? BuildImageUrl(currentAvatar.Id)
+                : null;
             ShareSourceMutationLease? mutationLease =
                 await shareSourceRevisionGuard.BeginIdentityMutationAsync(
                     user.Id,

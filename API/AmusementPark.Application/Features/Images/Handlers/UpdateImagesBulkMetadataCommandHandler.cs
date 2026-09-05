@@ -67,7 +67,12 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
                 ImageApplicationErrors.CommentImageLifecycleManaged());
         }
 
-        int updatedCount = command.Metadata.Category.HasValue
+        bool requiresIndividualFlow = command.Metadata.Category.HasValue
+            || (command.Metadata.IsPublished.HasValue
+                && existingImages.Any(static image =>
+                    image.OwnerType == ImageOwnerType.User
+                    && image.Category == ImageCategory.Avatar));
+        int updatedCount = requiresIndividualFlow
             ? await this.UpdateOneByOneAsync(
                 imageIds,
                 existingImages,
