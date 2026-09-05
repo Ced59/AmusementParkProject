@@ -4381,10 +4381,20 @@ public sealed class ParkGraphUpsertProcessorTests
             CountryCode = "FR",
             IsVisible = true,
         };
+        Park mergeSourcePark = new Park
+        {
+            Id = "park-source",
+            Name = "Merge Source Park",
+            CountryCode = "BE",
+            IsVisible = true,
+        };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-source", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mergeSourcePark);
         Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
         ParkGraphUpsertHistoryEntry? savedHistoryEntry = null;
         historyRepository
@@ -4472,6 +4482,106 @@ public sealed class ParkGraphUpsertProcessorTests
         historyRepository.VerifyAll();
         officialMapStorage.VerifyAll();
         manufacturerRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenSelectedParkIsMergedIntoAnotherPark_ShouldPreflightOfficialMapsAgainstTheTarget()
+    {
+        Park sourcePark = new Park
+        {
+            Id = "park-source",
+            Name = "Source Park",
+            CountryCode = "BE",
+            IsVisible = true,
+            OfficialMaps = new List<ParkOfficialMap>
+            {
+                new ParkOfficialMap
+                {
+                    Id = "source-map",
+                    Year = 2026,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    DocumentUrl = "https://park.example/source-map.pdf",
+                    IsVisible = true,
+                },
+            },
+        };
+        Park targetPark = new Park
+        {
+            Id = "park-target",
+            Name = "Target Park",
+            CountryCode = "FR",
+            IsVisible = true,
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-source", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sourcePark);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-target", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(targetPark);
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        ParkGraphUpsertHistoryEntry? savedHistoryEntry = null;
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkGraphUpsertHistoryEntry, CancellationToken>((entry, _) => savedHistoryEntry = entry)
+            .Returns(Task.CompletedTask);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "identity": { "parkId": "park-source" },
+          "merges": [
+            {
+              "entityType": "park",
+              "sourceId": "park-source",
+              "targetId": "park-target"
+            }
+          ],
+          "park": {
+            "officialMaps": [
+              {
+                "id": "source-map",
+                "isVisible": false
+              }
+            ]
+          }
+        }
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            new ParkGraphUpsertRequest
+            {
+                TargetParkId = "park-source",
+                Document = document.RootElement.Clone(),
+                RawJson = document.RootElement.GetRawText(),
+            },
+            "user-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.NotNull(savedHistoryEntry);
+        Assert.Contains(savedHistoryEntry.Result.Errors, static error =>
+            error.Contains("documentUrl ou storageKey", StringComparison.Ordinal));
+        parkRepository.Verify(value => value.UpdateAsync(
+            It.IsAny<string>(),
+            It.IsAny<Park>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.Verify(value => value.DeleteAsync(
+            It.IsAny<string>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.VerifyAll();
+        historyRepository.VerifyAll();
     }
 
     private sealed class FixedTimeProvider : TimeProvider

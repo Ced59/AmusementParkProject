@@ -131,12 +131,6 @@ export class ParkMapStateFacade {
         if (!years.includes(this.selectedOfficialMapYearSignal() ?? Number.NaN)) {
           this.selectedOfficialMapYearSignal.set(years[0] ?? null);
         }
-        this.loadProtectedOfficialMapsForYear(
-          officialMaps,
-          this.selectedOfficialMapYearSignal(),
-          parkId
-        );
-
         const interactiveMap: ParkItemsMapViewModel = mapParkMapItemsToViewModel(
           data.mapItems,
           this.currentLanguageSignal()
@@ -146,6 +140,14 @@ export class ParkMapStateFacade {
           this.hasResolvedDefaultTab = true;
         } else if (officialMaps.length === 0 && this.activeTabSignal() === 'official') {
           this.activeTabSignal.set('interactive');
+        }
+
+        if (this.activeTabSignal() === 'official') {
+          this.loadProtectedOfficialMapsForYear(
+            officialMaps,
+            this.selectedOfficialMapYearSignal(),
+            parkId
+          );
         }
       },
       error: (error: unknown) => {
@@ -163,12 +165,21 @@ export class ParkMapStateFacade {
     }
 
     this.activeTabSignal.set(tab);
+    if (tab === 'official') {
+      this.loadProtectedOfficialMapsForYear(
+        this.officialMaps(),
+        this.selectedOfficialMapYearSignal(),
+        this.currentParkId
+      );
+    }
   }
 
   selectOfficialMapYear(year: number): void {
     if (this.officialMapYears().includes(year)) {
       this.selectedOfficialMapYearSignal.set(year);
-      this.loadProtectedOfficialMapsForYear(this.officialMaps(), year, this.currentParkId);
+      if (this.activeTabSignal() === 'official') {
+        this.loadProtectedOfficialMapsForYear(this.officialMaps(), year, this.currentParkId);
+      }
     }
   }
 
