@@ -1,0 +1,64 @@
+<fieldset class="app-rating-input" [disabled]="disabled">
+  <legend>{{ label }}</legend>
+
+  <div class="app-rating-input__summary" aria-live="polite">
+    @if (value === null) {
+      <strong class="app-rating-input__empty">{{ emptyLabel }}</strong>
+    } @else {
+      <strong class="app-rating-input__value">
+        <span>{{ formattedValue(value) }}</span>
+        <small>/ {{ formattedValue(maximum) }}</small>
+      </strong>
+    }
+
+    @if (showClear && value !== null && !disabled) {
+      <button type="button" class="app-rating-input__clear" (click)="clear()">
+        {{ clearLabel }}
+      </button>
+    }
+  </div>
+
+  <div class="app-rating-input__controls">
+    <button
+      type="button"
+      class="app-rating-input__step"
+      [disabled]="disabled || !canDecrease()"
+      [attr.aria-label]="decreaseLabel"
+      [title]="decreaseLabel"
+      (click)="decrease()">
+      <span aria-hidden="true">−</span>
+    </button>
+
+    <div class="app-rating-input__range-wrap">
+      <input
+        class="app-rating-input__range"
+        type="range"
+        [min]="minimum"
+        [max]="maximum"
+        [step]="step"
+        [value]="rangeValue()"
+        [class.app-rating-input__range--empty]="value === null"
+        [style.--rating-progress]="progressPercent() + '%'"
+        [attr.aria-label]="label"
+        [attr.aria-valuetext]="ariaValueText()"
+        [attr.aria-describedby]="describedBy"
+        (input)="selectRangeValue($event)" />
+      <div class="app-rating-input__bounds" aria-hidden="true">
+        <span>{{ formattedValue(minimum) }}</span>
+        <span>{{ formattedValue(maximum) }}</span>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="app-rating-input__step"
+      [disabled]="disabled || !canIncrease()"
+      [attr.aria-label]="increaseLabel"
+      [title]="increaseLabel"
+      (click)="increase()">
+      <span aria-hidden="true">+</span>
+    </button>
+  </div>
+
+  <small class="app-rating-input__hint">{{ scaleHint }}</small>
+</fieldset>

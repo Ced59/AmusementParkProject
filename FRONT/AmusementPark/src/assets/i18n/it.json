@@ -553,6 +553,14 @@
           "generic": "Non è stato possibile preparare l’eliminazione. Riprova tra poco."
         }
       },
+      "ratingControl": {
+        "unrated": "Non valutato",
+        "clear": "Cancella la selezione",
+        "decrease": "Diminuisci il voto",
+        "increase": "Aumenta il voto",
+        "outOf": "su",
+        "scaleHint": "Da 0,5 a 5, con incrementi di mezzo punto."
+      },
       "assessment": {
         "title": "La tua impressione su questo parco",
         "description": "Valuta questa visita specifica da 0,5 a 5. Questa osservazione resta privata e non modifica mai la valutazione né le classifiche della comunità.",

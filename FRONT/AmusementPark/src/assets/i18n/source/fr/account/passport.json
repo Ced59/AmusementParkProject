@@ -454,6 +454,14 @@
           "generic": "La suppression n’a pas pu être préparée. Réessaie dans un instant."
         }
       },
+      "ratingControl": {
+        "unrated": "Non noté",
+        "clear": "Effacer la sélection",
+        "decrease": "Diminuer la note",
+        "increase": "Augmenter la note",
+        "outOf": "sur",
+        "scaleHint": "De 0,5 à 5, par demi-point."
+      },
       "assessment": {
         "title": "Ton ressenti sur ce parc",
         "description": "Note cette visite précise de 0,5 à 5. Cette observation reste privée et ne modifie jamais la note ni le classement communautaires.",

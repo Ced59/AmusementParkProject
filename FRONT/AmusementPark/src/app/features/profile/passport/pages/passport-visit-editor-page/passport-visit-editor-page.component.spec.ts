@@ -31,10 +31,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('@media (max-width: 340px)');
     expect(styles).toContain('min-height: 2.75rem');
     expect(styles).toContain('outline: 3px solid');
-    expect(styles).toContain('grid-template-columns: repeat(5, minmax(0, 1fr))');
     expect(styles).toContain('.passport-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__actions');
-    expect(styles).toContain('.passport-ride-assessment__ratings');
     expect(styles).toContain('.passport-visit__form');
     expect(styles).toContain('.passport-visit__actions');
     expect(styles).toContain('.passport-visit__details');
@@ -90,13 +88,17 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     const updateParkAssessmentDraft = vi.fn();
     const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
       facade: Pick<PassportVisitEditorStateFacade, 'updateParkAssessmentDraft'>;
-      selectAssessmentValue(value: number): void;
+      selectAssessmentValue(value: number | null): void;
     };
     component.facade = { updateParkAssessmentDraft };
 
     component.selectAssessmentValue(4.5);
 
     expect(updateParkAssessmentDraft).toHaveBeenCalledWith({ value: 4.5 });
+
+    component.selectAssessmentValue(null);
+
+    expect(updateParkAssessmentDraft).toHaveBeenLastCalledWith({ value: null });
   });
 
   it('keeps saved assessments readable when the visit is no longer editable', () => {
@@ -146,7 +148,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     const updateRideAssessmentDraft = vi.fn();
     const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
       facade: Pick<PassportVisitEditorStateFacade, 'updateRideAssessmentDraft'>;
-      selectRideAssessmentValue(occurrenceId: string, value: number): void;
+      selectRideAssessmentValue(occurrenceId: string, value: number | null): void;
       updateRideAssessmentComment(occurrenceId: string, event: Event): void;
     };
     component.facade = { updateRideAssessmentDraft };

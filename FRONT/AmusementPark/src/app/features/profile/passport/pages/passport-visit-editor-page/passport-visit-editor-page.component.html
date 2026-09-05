@@ -259,28 +259,19 @@
           {{ 'passport.editor.assessment.privateBadge' | translate }}
         </app-ui-chip>
       </div>
-      <div
-        class="passport-assessment__ratings"
-        role="radiogroup"
-        [attr.aria-label]="'passport.editor.assessment.ratingLabel' | translate">
-        @for (value of assessmentValues; track value) {
-          <label
-            class="passport-assessment__rating"
-            [class.passport-assessment__rating--selected]="facade.assessmentDraft().value === value"
-            [class.passport-assessment__rating--disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'">
-            <input
-              type="radio"
-              name="visitParkAssessment"
-              [value]="value"
-              [checked]="facade.assessmentDraft().value === value"
-              [disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'"
-              [attr.aria-label]="assessmentValueLabel(value)"
-              (change)="selectAssessmentValue(value)" />
-            <i class="pi pi-star" aria-hidden="true"></i>
-            <span>{{ assessmentValueLabel(value) }}</span>
-          </label>
-        }
-      </div>
+      <app-rating-input
+        [label]="'passport.editor.assessment.ratingLabel' | translate"
+        [value]="facade.assessmentDraft().value"
+        [disabled]="facade.assessmentSaving() || facade.visit()?.status !== 'Draft'"
+        [showClear]="facade.visit()?.parkAssessment == null && facade.assessmentDraft().value !== null"
+        [locale]="currentLanguage()"
+        [emptyLabel]="'passport.editor.ratingControl.unrated' | translate"
+        [clearLabel]="'passport.editor.ratingControl.clear' | translate"
+        [decreaseLabel]="'passport.editor.ratingControl.decrease' | translate"
+        [increaseLabel]="'passport.editor.ratingControl.increase' | translate"
+        [outOfLabel]="'passport.editor.ratingControl.outOf' | translate"
+        [scaleHint]="'passport.editor.ratingControl.scaleHint' | translate"
+        (valueChange)="selectAssessmentValue($event)" />
 
       <label class="app-field passport-assessment__comment">
         <span class="app-field__label">{{ 'passport.editor.assessment.commentLabel' | translate }}</span>
@@ -711,25 +702,20 @@
                       <div class="passport-ride-assessment__body">
                         <p>{{ 'passport.editor.rideAssessment.description' | translate }}</p>
 
-                        <fieldset
-                          class="passport-ride-assessment__ratings"
+                        <app-rating-input
+                          [label]="'passport.editor.rideAssessment.ratingLabel' | translate"
+                          [value]="assessmentDraft.value"
                           [disabled]="isOccurrenceBusy(row.occurrence.id) || facade.visit()?.status !== 'Draft'"
-                          [attr.aria-describedby]="'ride-assessment-hint-' + row.occurrence.id">
-                          <legend>{{ 'passport.editor.rideAssessment.ratingLabel' | translate }}</legend>
-                          @for (value of assessmentValues; track value) {
-                            <label
-                              class="passport-ride-assessment__rating"
-                              [class.passport-ride-assessment__rating--selected]="assessmentDraft.value === value">
-                              <input
-                                type="radio"
-                                [name]="'ride-assessment-' + row.occurrence.id"
-                                [value]="value"
-                                [checked]="assessmentDraft.value === value"
-                                (change)="selectRideAssessmentValue(row.occurrence.id, value)" />
-                              <span>{{ assessmentValueLabel(value) }}</span>
-                            </label>
-                          }
-                        </fieldset>
+                          [showClear]="row.occurrence.assessment == null && assessmentDraft.value !== null"
+                          [locale]="currentLanguage()"
+                          [emptyLabel]="'passport.editor.ratingControl.unrated' | translate"
+                          [clearLabel]="'passport.editor.ratingControl.clear' | translate"
+                          [decreaseLabel]="'passport.editor.ratingControl.decrease' | translate"
+                          [increaseLabel]="'passport.editor.ratingControl.increase' | translate"
+                          [outOfLabel]="'passport.editor.ratingControl.outOf' | translate"
+                          [scaleHint]="'passport.editor.ratingControl.scaleHint' | translate"
+                          [describedBy]="'ride-assessment-hint-' + row.occurrence.id"
+                          (valueChange)="selectRideAssessmentValue(row.occurrence.id, $event)" />
 
                         <p [id]="'ride-assessment-hint-' + row.occurrence.id" class="passport-ride-assessment__hint">
                           <i class="pi pi-lock" aria-hidden="true"></i>
