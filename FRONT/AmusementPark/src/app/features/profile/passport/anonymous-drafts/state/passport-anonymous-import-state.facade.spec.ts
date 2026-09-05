@@ -653,6 +653,7 @@ function createStore(
     list: async (): Promise<PassportAnonymousDraft[]> => drafts,
     get: async (): Promise<PassportAnonymousDraft | null> => drafts[0] ?? null,
     save: async (): Promise<void> => undefined,
+    claimSecondVisitMilestone: async (): Promise<boolean> => false,
     compareAndSet: compareAndSetDraft,
     deleteIfUnchanged: async (draft: PassportAnonymousDraft): Promise<boolean> => {
       await deleteDraft(draft.id);

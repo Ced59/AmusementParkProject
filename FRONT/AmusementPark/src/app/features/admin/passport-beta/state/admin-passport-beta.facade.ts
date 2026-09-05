@@ -1,5 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subscription } from 'rxjs';
 
 import {
   PassportBetaDailyMetrics,
@@ -17,6 +18,7 @@ import {
 export class AdminPassportBetaFacade {
   private readonly screenStateStore = new SignalScreenStateStore<PassportBetaMetricsResult>();
   private requestGeneration = 0;
+  private metricsSubscription: Subscription | null = null;
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -52,7 +54,10 @@ export class AdminPassportBetaFacade {
     const previousData: PassportBetaMetricsResult | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.dataPort.getMetrics(query).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.metricsSubscription?.unsubscribe();
+    this.metricsSubscription = this.dataPort.getMetrics(query).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: (metrics: PassportBetaMetricsResult) => {
         if (requestGeneration !== this.requestGeneration) {
           return;

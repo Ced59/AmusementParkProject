@@ -290,8 +290,8 @@ export class PassportVisitQuickCreateStateFacade {
 
   private async trackSecondAnonymousVisitIfReached(): Promise<void> {
     try {
-      const drafts: PassportAnonymousDraft[] = await this.anonymousDrafts.list();
-      if (drafts.length === 2) {
+      const wasClaimed: boolean = await this.anonymousDrafts.claimSecondVisitMilestone();
+      if (wasClaimed) {
         this.productAnalytics.track({
           type: 'second_visit_recorded',
           source: 'anonymous-local'

@@ -151,7 +151,7 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     ]);
   });
 
-  it('records the anonymous second-visit signal only after a second local draft exists', async () => {
+  it('records the anonymous second-visit signal only once after the milestone is reached', async () => {
     const api: FakeVisitApi = new FakeVisitApi();
     const auth: FakeAuthService = new FakeAuthService();
     const savedDrafts: PassportAnonymousDraft[] = [createAnonymousDraft()];
@@ -175,6 +175,16 @@ describe('PassportVisitQuickCreateStateFacade', () => {
         event.type === 'second_visit_recorded')).toBe(true);
     });
     expect(savedDrafts).toHaveLength(2);
+
+    savedDrafts.splice(0, 1);
+    facade.clearCreationResult();
+    facade.createVisit(createDraft({ parkId: 'park-3' }), 'Troisième parc');
+
+    await vi.waitFor((): void => {
+      expect(savedDrafts).toHaveLength(2);
+    });
+    expect(events.filter((event: PassportProductEvent): boolean =>
+      event.type === 'second_visit_recorded')).toHaveLength(1);
   });
 
   it('does not call the API for an invalid partial date', () => {
@@ -210,6 +220,7 @@ function createFacade(
 function createDraftStore(
   savedDrafts: PassportAnonymousDraft[] = []
 ): PassportAnonymousDraftStorePort {
+  let secondVisitMilestoneClaimed: boolean = false;
   return {
     isAvailable: (): boolean => true,
     list: async (): Promise<PassportAnonymousDraft[]> => [...savedDrafts],
@@ -224,6 +235,14 @@ function createDraftStore(
       } else {
         savedDrafts.push(draft);
       }
+    },
+    claimSecondVisitMilestone: async (): Promise<boolean> => {
+      if (secondVisitMilestoneClaimed || savedDrafts.length < 2) {
+        return false;
+      }
+
+      secondVisitMilestoneClaimed = true;
+      return true;
     },
     compareAndSet: async (): Promise<boolean> => true,
     deleteIfUnchanged: async (): Promise<boolean> => true,

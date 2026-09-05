@@ -80,6 +80,7 @@ function createStore(drafts: PassportAnonymousDraft[]): PassportAnonymousDraftSt
     list: vi.fn(async (): Promise<PassportAnonymousDraft[]> => drafts),
     get: vi.fn(async (): Promise<PassportAnonymousDraft | null> => null),
     save: vi.fn(async (): Promise<void> => undefined),
+    claimSecondVisitMilestone: vi.fn(async (): Promise<boolean> => false),
     compareAndSet: vi.fn(async (): Promise<boolean> => true),
     deleteIfUnchanged: vi.fn(async (): Promise<boolean> => true),
     delete: vi.fn(async (): Promise<void> => undefined),

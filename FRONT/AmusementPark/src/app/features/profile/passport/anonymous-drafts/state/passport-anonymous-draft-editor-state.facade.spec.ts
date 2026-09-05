@@ -204,6 +204,7 @@ function createFacade(
     list: async (): Promise<PassportAnonymousDraft[]> => [draft],
     get: async (): Promise<PassportAnonymousDraft | null> => draft,
     save,
+    claimSecondVisitMilestone: async (): Promise<boolean> => false,
     compareAndSet,
     deleteIfUnchanged: async (): Promise<boolean> => true,
     delete: async (): Promise<void> => undefined,

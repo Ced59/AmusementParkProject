@@ -97,6 +97,7 @@ describe('AdminPassportBetaFacade', () => {
 
     facade.load({ fromUtc: '2026-08-01T00:00:00.000Z' });
     facade.load({ fromUtc: '2026-09-01T00:00:00.000Z' });
+    expect(firstResponse.observed).toBe(false);
     latestResponse.next(latestMetrics);
     firstResponse.next(metrics);
 

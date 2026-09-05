@@ -64,7 +64,7 @@ La requête filtre d'abord les documents utiles à la période ou à la cohorte,
 | `passport_deletion_started` | source uniquement | l'aperçu de suppression est disponible |
 | `passport_deletion_completed` | source uniquement | la suppression a abouti |
 
-`second_visit_recorded` n'est pas envoyé par le navigateur pour un compte connecté : le tableau de bord le déduit des visites terminées en base, afin d'éviter de confondre un clic avec un retour réel. Pour le parcours anonyme, il est émis lorsque le stockage local contient exactement un deuxième brouillon effectivement enregistré ; aucun contenu de ces brouillons n'est transmis.
+`second_visit_recorded` n'est pas envoyé par le navigateur pour un compte connecté : le tableau de bord le déduit des visites terminées en base, afin d'éviter de confondre un clic avec un retour réel. Pour le parcours anonyme, IndexedDB revendique atomiquement un jalon persistant dès qu'au moins deux brouillons sont effectivement enregistrés. Deux onglets ne peuvent pas revendiquer ce jalon ensemble et une suppression suivie d'une nouvelle création ne le réémet pas ; aucun contenu des brouillons n'est transmis.
 
 ## Confidentialité
 
