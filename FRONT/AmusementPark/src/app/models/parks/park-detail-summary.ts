@@ -11,6 +11,7 @@ export interface ParkDetailSummaryStats {
   totalItems: number;
   zoneCount: number;
   mappableItemsCount?: number;
+  officialMapsCount?: number;
   attractionCount: number;
   restaurantCount: number;
   showCount: number;

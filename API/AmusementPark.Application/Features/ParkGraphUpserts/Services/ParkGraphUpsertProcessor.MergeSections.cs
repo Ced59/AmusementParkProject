@@ -126,6 +126,12 @@ public sealed partial class ParkGraphUpsertProcessor
             target.FeaturedHomeOrder = source.FeaturedHomeOrder;
             target.IsFeaturedOnHomeSponsored = source.IsFeaturedOnHomeSponsored;
         }
+
+        if (ShouldTakeSourceSection(sections, "officialMaps"))
+        {
+            AddChange(change, "officialMaps", DescribeOfficialMaps(target.OfficialMaps), DescribeOfficialMaps(source.OfficialMaps));
+            target.OfficialMaps = source.OfficialMaps.Select(static officialMap => CloneOfficialMap(officialMap)).ToList();
+        }
     }
 
     private static void ApplyParkItemMergeSections(ParkItem source, ParkItem target, JsonElement? sections, ParkGraphUpsertChange change)

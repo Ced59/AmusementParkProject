@@ -124,7 +124,7 @@ Section principale : `openingHours`.
 ```json
 {
   "documentType": "AmusementParkParkGraphUpsert",
-  "schemaVersion": "2026-06-30",
+  "schemaVersion": "2026-09-05",
   "mode": "merge",
   "metadata": {
     "source": "codex-opening-hours",

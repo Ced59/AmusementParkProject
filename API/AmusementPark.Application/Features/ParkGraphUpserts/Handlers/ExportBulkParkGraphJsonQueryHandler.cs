@@ -28,6 +28,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
         ParkGraphExportSection.ParkAdministration,
         ParkGraphExportSection.ParkDescriptions,
         ParkGraphExportSection.ParkHomeFeature,
+        ParkGraphExportSection.OfficialMaps,
     };
 
     private readonly IParkRepository parkRepository;
@@ -64,7 +65,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
             {
                 writer.WriteStartObject();
                 writer.WriteString("documentType", "AmusementParkBulkParkGraphUpsert");
-                writer.WriteString("schemaVersion", "2026-07-03");
+                writer.WriteString("schemaVersion", "2026-09-05");
                 writer.WriteString("mode", "merge");
                 WriteSelection(writer, query.Request, parks.Count);
                 writer.WritePropertyName("parks");
@@ -308,7 +309,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
     {
         writer.WriteStartObject();
         writer.WriteString("documentType", "AmusementParkParkGraphUpsert");
-        writer.WriteString("schemaVersion", "2026-06-30");
+        writer.WriteString("schemaVersion", "2026-09-05");
         writer.WriteString("mode", "merge");
         WriteIdentity(writer, park);
 
@@ -400,6 +401,12 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
             writer.WriteBoolean("isFeaturedOnHome", park.IsFeaturedOnHome);
             WriteNullableInt32(writer, "featuredHomeOrder", park.FeaturedHomeOrder);
             writer.WriteBoolean("isFeaturedOnHomeSponsored", park.IsFeaturedOnHomeSponsored);
+        }
+
+        if (sections.Contains(ParkGraphExportSection.OfficialMaps))
+        {
+            writer.WritePropertyName("officialMaps");
+            JsonSerializer.Serialize(writer, ParkGraphOfficialMapExportMapper.Map(park.OfficialMaps), ExportJsonOptions);
         }
 
         writer.WriteEndObject();

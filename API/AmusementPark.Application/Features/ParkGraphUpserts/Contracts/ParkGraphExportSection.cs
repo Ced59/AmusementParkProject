@@ -8,6 +8,7 @@ public enum ParkGraphExportSection
     ParkAdministration,
     ParkDescriptions,
     ParkHomeFeature,
+    OfficialMaps,
     References,
     Zones,
     Items,

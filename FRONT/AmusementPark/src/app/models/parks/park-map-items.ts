@@ -7,6 +7,25 @@ export interface ParkMapItems {
   items: ParkMapItem[];
   unlocatedItems?: ParkMapUnlocatedItem[];
   zones: ParkMapZone[];
+  officialMaps?: ParkOfficialMap[];
+}
+
+export type ParkOfficialMapFormat = 'Image' | 'Pdf' | 'Other';
+
+export interface ParkOfficialMap {
+  id: string;
+  year: number;
+  format: ParkOfficialMapFormat;
+  documentUrl: string;
+  originalFileName?: string | null;
+  contentType?: string | null;
+  sizeInBytes?: number | null;
+  previewImageUrl?: string | null;
+  sourcePageUrl?: string | null;
+  languageCode?: string | null;
+  titles?: LocalizedItem<string>[];
+  alternativeTexts?: LocalizedItem<string>[];
+  lastVerifiedAtUtc?: string | null;
 }
 
 export interface ParkMapItem {

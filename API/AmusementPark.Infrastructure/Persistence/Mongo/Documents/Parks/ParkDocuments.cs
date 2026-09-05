@@ -260,6 +260,9 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
     [BsonElement("currentLogoImageId")]
     [BsonIgnoreIfNull]
     public string? CurrentLogoImageId { get; set; }
+
+    [BsonElement("officialMaps")]
+    public List<ParkOfficialMapDocument> OfficialMaps { get; set; } = new List<ParkOfficialMapDocument>();
 }
 
 /// <summary>

@@ -28,6 +28,11 @@ export class ParkMapPageComponent implements OnInit {
   protected readonly park = this.stateFacade.park;
   protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly map = this.stateFacade.map;
+  protected readonly officialMaps = this.stateFacade.officialMaps;
+  protected readonly visibleOfficialMaps = this.stateFacade.visibleOfficialMaps;
+  protected readonly officialMapYears = this.stateFacade.officialMapYears;
+  protected readonly selectedOfficialMapYear = this.stateFacade.selectedOfficialMapYear;
+  protected readonly activeTab = this.stateFacade.activeTab;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly itemsLink = signal<string[] | null>(null);
@@ -69,7 +74,8 @@ export class ParkMapPageComponent implements OnInit {
         this.router.url,
         this.parkImageId(),
         buildPublicRoutePath(buildPublicParkMapRouteCommands(routeTarget)),
-        currentMap.markers.length
+        currentMap.markers.length,
+        this.officialMaps().length > 0
       );
     });
   }
@@ -102,6 +108,16 @@ export class ParkMapPageComponent implements OnInit {
     if (this.currentParkId) {
       this.stateFacade.loadParkMap(this.currentParkId, closedFilter);
     }
+  }
+
+  onTabSelected(tabId: string): void {
+    if (tabId === 'interactive' || tabId === 'official') {
+      this.stateFacade.selectTab(tabId);
+    }
+  }
+
+  onOfficialMapYearSelected(value: number): void {
+    this.stateFacade.selectOfficialMapYear(value);
   }
 }
 

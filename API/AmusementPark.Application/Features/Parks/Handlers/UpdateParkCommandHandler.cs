@@ -56,6 +56,7 @@ public sealed class UpdateParkCommandHandler : ICommandHandler<UpdateParkCommand
             command.Park.Id = existing.Id;
             command.Park.CreatedAtUtc = existing.CreatedAtUtc;
             command.Park.CurrentLogoImageId = existing.CurrentLogoImageId;
+            command.Park.OfficialMaps = existing.OfficialMaps;
             if (command.PreserveExistingStatus)
             {
                 command.Park.Status = existing.Status;

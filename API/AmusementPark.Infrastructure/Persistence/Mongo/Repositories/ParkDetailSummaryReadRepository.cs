@@ -100,6 +100,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 TotalItems = totalItems,
                 ZoneCount = await zoneCountTask,
                 MappableItemsCount = await mappableItemsCountTask,
+                OfficialMapsCount = park.OfficialMaps.Count(officialMap => includeHidden || officialMap.IsPubliclyDisplayable()),
                 AttractionCount = GetCount(countsByCategory, ParkItemCategory.Attraction),
                 RestaurantCount = GetCount(countsByCategory, ParkItemCategory.Restaurant),
                 ShowCount = GetCount(countsByCategory, ParkItemCategory.Show),

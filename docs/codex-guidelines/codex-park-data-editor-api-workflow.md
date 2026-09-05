@@ -191,9 +191,9 @@ Pour une page parc, `PublishFacebook` appelé sans `Message` et sans `ImageId` u
   -OutputPath .\work\park-items-images.json
 ```
 
-- Sans `-Sections`, le client exporte toutes les sections.
+- Sans `-Sections`, le client exporte toutes les sections, y compris `OfficialMaps`.
 - Pendant les étapes 0 à 8, aucun appel complet à `ExportPark` n’est obligatoire. L’état local est construit depuis la recherche du parc, les éventuels exports ciblés strictement nécessaires et les réponses réussies des mutations.
-- Avant l’étape 9, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final. La liste complète inclut la section `Pricing`.
+- Avant l’étape 9, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final. La liste complète inclut les sections `OfficialMaps` et `Pricing`.
 - Avant ce jalon, un export avec `-Sections` est réservé à l’identification de l’existant ou à une incohérence précise, une réponse de mutation perdue, un ID indispensable ou une dépendance absente des résultats ; il ne devient jamais une routine de fin de lot.
 - Une coupure pendant le téléchargement est reprise dans la même exécution ; le client n’écrit le fichier final qu’après contrôle de la longueur et du document retourné.
 - Le client privilégie le `curl` système sous Windows et télécharge les exports volumineux par plages courtes dont chaque longueur est contrôlée avant assemblage. Chaque plage dispose d’un nombre de tentatives borné ; les fichiers `.partial` et `.chunk` sont supprimés après toute sortie normale, réussie ou en erreur. Une coupure de proxy ne doit donc produire ni attente indéfinie ni faux export final.
@@ -279,6 +279,8 @@ L’exécution utilise exclusivement le client officiel et un reçu dédié, non
 Après Apply, produire l’export ciblé nécessaire pour prouver l’absence de chaque ID et la conservation des entités attendues. Après une réponse perdue ou ambiguë, vérifier l’état global et l’historique puis réexécuter une Preview : ne jamais relancer directement `ApplyDeletion`.
 
 ## Étape 5 : parcours Codex obligatoire des images
+
+Les cartes officielles font aussi partie de l’étape 5, mais utilisent le flux documentaire `ImportOfficialMap` décrit dans `park-data-integration-steps/05-images-and-reference-enrichment.md`. Codex recherche l’édition courante puis le maximum de millésimes officiels réellement disponibles, contrôle le fichier, sa provenance et son année, et conserve le binaire dans MinIO sans le transformer en image éditoriale. Chaque réponse d’upload fournit les métadonnées à reporter dans `park.officialMaps`; la nouvelle édition reste `isVisible: false`. Un export ciblé peut demander `-Sections OfficialMaps` uniquement pour lever une ambiguïté précise ; l’export complet final l’inclut automatiquement.
 
 Pour les nouvelles images de parc, de parkItem ou d’attraction autonome, Codex utilise `ImportPhoto` et les surfaces `park-data-editor/images/*`. Les images distantes intégrées au JSON restent le mécanisme de ChatGPT ; elles ne justifient pas un retour de Codex vers l’administration.
 
@@ -377,7 +379,7 @@ Une grille vide ne constitue pas une suppression. La commande `Complète le parc
 
 ## Audit final
 
-Juste avant de commencer l’étape 9, Codex doit effectuer l’unique export complet obligatoire du parcours. À partir de cet état frais, il exécute le contrôle de complétude et vérifie les compteurs attendus, les propriétaires d’images, le logo courant, les tarifs, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 9 et ne conclut pas sur le seul score numérique.
+Juste avant de commencer l’étape 9, Codex doit effectuer l’unique export complet obligatoire du parcours. À partir de cet état frais, il exécute le contrôle de complétude et vérifie les compteurs attendus, les propriétaires d’images, le logo courant, les cartes officielles par année, les tarifs, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 9 et ne conclut pas sur le seul score numérique.
 
 Il compare aussi le corpus public après retrait des titres et noms d’entités : descriptions du parc, zones et items, textes historiques, sous-titres d’articles, descriptions, textes alternatifs et légendes d’images. Tout paragraphe de secours répété, conseil d’itinéraire ou traduction générique impose une reprise ciblée avant la conclusion.
 

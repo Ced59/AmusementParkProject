@@ -44,7 +44,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         IReadOnlyCollection<string>? itemIdsWithExplicitHistory = null;
         List<PublicHtmlSitemapNode> nodes = new List<PublicHtmlSitemapNode>();
 
-        if (publicItems.Any(ParksSitemapSectionProvider.HasPublicMapMarker))
+        if (publicItems.Any(ParksSitemapSectionProvider.HasPublicMapMarker) || park.HasPublicOfficialMaps())
         {
             nodes.Add(CreateLeaf($"park-map:{park.Id}", Label(language, "interactiveMap"), $"{parkPath}/map"));
         }

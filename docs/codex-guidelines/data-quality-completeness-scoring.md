@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-08-24-r5**
+Version : **2026-09-05-r1**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -30,6 +30,8 @@ Le score ne remplace pas la validation humaine. Il aide à décider, mais une en
 Une commande `Complète le parc <nom>` vise le niveau `Excellent` entre 95 et 100, sans bloqueur de publication. Pour un parc majeur, la cible opérationnelle est 100 % des critères applicables. Une valeur inférieure n’est acceptable en fin de parcours que si les données ou images restantes sont réellement introuvables, non applicables ou soumises à une décision humaine explicitement documentée.
 
 Le même degré de rigueur s’applique à chaque parc nouvellement complété. Le volume attendu reste proportionné à la taille, au statut et aux sources : un petit parc peut atteindre `Excellent` avec moins de contenus, mais pas avec des recherches omises, des textes génériques ou une couverture d’images laissée au hasard.
+
+Les cartes officielles annuelles font partie de l’audit éditorial de complétude : rechercher l’édition courante puis le maximum de millésimes officiels réellement disponibles, conserver leur provenance et documenter les lacunes. Leur absence ne modifie pas encore mécaniquement le score chiffré, afin de ne pas pénaliser les parcs qui ne publient aucune carte officielle ; une édition officielle connue mais volontairement omise reste néanmoins une lacune à signaler.
 
 Le score ne doit jamais être optimisé mécaniquement. Ne pas retirer un critère du dénominateur parce qu’il est difficile à compléter, ne pas omettre une attraction fermée connue et ne pas confondre `introuvable après recherche` avec `non recherché`.
 

@@ -166,9 +166,32 @@ public sealed partial class ParkGraphUpsertProcessor
             City = value.City,
             PostalCode = value.PostalCode,
             CurrentLogoImageId = value.CurrentLogoImageId,
+            OfficialMaps = value.OfficialMaps.Select(static officialMap => CloneOfficialMap(officialMap)).ToList(),
         };
         clone.SetPosition(value.Position);
         return clone;
+    }
+
+    private static ParkOfficialMap CloneOfficialMap(ParkOfficialMap value)
+    {
+        return new ParkOfficialMap
+        {
+            Id = value.Id,
+            Year = value.Year,
+            Format = value.Format,
+            DocumentUrl = value.DocumentUrl,
+            StorageKey = value.StorageKey,
+            OriginalFileName = value.OriginalFileName,
+            ContentType = value.ContentType,
+            SizeInBytes = value.SizeInBytes,
+            PreviewImageUrl = value.PreviewImageUrl,
+            SourcePageUrl = value.SourcePageUrl,
+            LanguageCode = value.LanguageCode,
+            Titles = CloneLocalizedTexts(value.Titles),
+            AlternativeTexts = CloneLocalizedTexts(value.AlternativeTexts),
+            IsVisible = value.IsVisible,
+            LastVerifiedAtUtc = value.LastVerifiedAtUtc,
+        };
     }
 
     private static ParkItem CloneParkItem(ParkItem value)

@@ -187,7 +187,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
             ["documentType"] = "AmusementParkParkGraphUpsert",
-            ["schemaVersion"] = "2026-06-30",
+            ["schemaVersion"] = "2026-09-05",
             ["mode"] = "merge",
             ["identity"] = MapIdentity(park),
         };
@@ -344,6 +344,11 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
             patch["isFeaturedOnHome"] = park.IsFeaturedOnHome;
             patch["featuredHomeOrder"] = park.FeaturedHomeOrder;
             patch["isFeaturedOnHomeSponsored"] = park.IsFeaturedOnHomeSponsored;
+        }
+
+        if (sections.Contains(ParkGraphExportSection.OfficialMaps))
+        {
+            patch["officialMaps"] = ParkGraphOfficialMapExportMapper.Map(park.OfficialMaps);
         }
 
         return patch;

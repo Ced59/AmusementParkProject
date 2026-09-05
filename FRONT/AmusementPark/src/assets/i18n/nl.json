@@ -5164,12 +5164,31 @@
     "mapPage": {
       "kicker": "Parkkaart",
       "title": "Kaart van {{name}}",
-      "subtitle": "Verken de geolokaliseerde attracties, restaurants, winkels en aandachtspunten van {{name}} op een aparte kaart.",
+      "subtitle": "Verken de locaties van {{name}} op de interactieve kaart of bekijk de beschikbare officiële parkplattegronden.",
       "loadingTitle": "Kaart laden",
       "loadingMessage": "De parkmarkeringen worden voorbereid.",
       "errorTitle": "Kaart niet beschikbaar",
       "errorMessage": "De kaart van dit park kan momenteel niet worden geladen.",
-      "backToPark": "Terug naar {{name}}"
+      "backToPark": "Terug naar {{name}}",
+      "tabs": {
+        "label": "Kaarttypen",
+        "interactive": "Interactieve kaart",
+        "official": "Officiële kaarten"
+      },
+      "official": {
+        "kicker": "Officiële edities",
+        "title": "Officiële kaarten van {{name}}",
+        "subtitle": "Bekijk de door het park gepubliceerde plattegronden per jaar. De nieuwste editie is standaard geselecteerd.",
+        "yearLabel": "Jaar",
+        "fallbackTitle": "Officiële kaart {{year}}",
+        "open": "Kaart bekijken",
+        "source": "Officiële bron",
+        "formats": {
+          "image": "Afbeelding",
+          "pdf": "PDF",
+          "other": "Bestand"
+        }
+      }
     },
     "zones": {
       "badge": "Parkzones",

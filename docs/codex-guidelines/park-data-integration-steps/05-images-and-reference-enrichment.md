@@ -1,6 +1,6 @@
 # Étape 5 — Images et enrichissement des références
 
-Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou constructeurs sans créer de doublons ni d’images non importables.
+Objectif : ajouter les images fiables, intégrer les éditions disponibles des cartes officielles et enrichir les fondateurs, exploitants ou constructeurs sans créer de doublons ni de fichiers non importables.
 
 ## Lire avant de commencer
 
@@ -193,6 +193,39 @@ Ne jamais écrire dans `altTexts`, `captions` ou `description` : URL source, mé
 
 Si une image est techniquement importable mais éditorialement fragile, ne pas l’ajouter : préférer une absence d’image à une image trompeuse, instable ou mal créditée.
 
+## Cartes officielles annuelles
+
+Une carte officielle est un plan publié par le parc ou son exploitant. Elle ne passe pas par `images[]` : elle appartient à `park.officialMaps`, peut être une image, un PDF ou un fichier cartographique, et possède son propre cycle de visibilité.
+
+### Contrat de recherche et de couverture
+
+1. Chercher d’abord la carte de l’année courante sur le site, l’application, la billetterie ou l’espace presse officiels.
+2. Rechercher ensuite toutes les éditions annuelles authentiques encore accessibles dans les pages officielles, leurs archives et les captures archivées de ces pages. L’objectif est d’intégrer le maximum de millésimes réellement trouvés, sans quota arbitraire.
+3. Une nouvelle mise en page dans la même année et la même langue remplace normalement le fichier de cette édition ; des variantes réellement distinctes peuvent coexister seulement si leur langue ou leur format diffère.
+4. Ne jamais déduire l’année depuis la date du téléchargement seul. Utiliser le millésime imprimé, le libellé officiel ou une page source datée sans ambiguïté ; sinon consigner la lacune.
+5. Refuser les cartes communautaires, les captures de services cartographiques, les scans sans provenance et tout fichier obtenu en contournant une authentification, un paywall ou une interdiction technique.
+
+Chaque édition conserve : `id`/`key` stable, `year`, `format`, `sourcePageUrl`, `languageCode` si pertinent, titres localisés, texte alternatif localisé pour une image, `lastVerifiedAtUtc` et soit une `documentUrl` HTTP(S) stable, soit les quatre métadonnées renvoyées par l’upload (`storageKey`, `originalFileName`, `contentType`, `sizeInBytes`). La clé MinIO renvoyée est unique et immuable : il faut toujours la recopier telle quelle, sans la deviner. Une édition nouvellement créée reste `isVisible: false` jusqu’à l’autorisation explicite de publication.
+
+Le triplet `year + languageCode + format` est unique pour un parc. L’upsert fusionne d’abord par `id`/`key`, puis par ce triplet. Il ne supprime jamais une ancienne édition par simple absence du JSON.
+
+### Parcours Codex et stockage MinIO
+
+Codex télécharge le fichier officiel localement, vérifie sa signature et l’envoie exclusivement avec `ImportOfficialMap`. Le stockage est dédié aux documents de carte dans MinIO : il ne crée pas une fausse entité image et n’applique ni recompression ni watermark. Les formats acceptés sont PDF, JPEG, PNG, WebP, GIF, KML, KMZ et ZIP, dans la limite de 25 Mo.
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action ImportOfficialMap `
+  -ParkId 'id-du-parc' `
+  -OfficialMapId 'map-2026-fr' `
+  -OfficialMapYear 2026 `
+  -LanguageCode 'fr' `
+  -SourceUrl 'https://parc.example/visite/plan-2026.pdf'
+```
+
+La commande appelle d’abord l’état global des opérations, télécharge le fichier officiel ou accepte `-FilePath` en complément de sa `SourceUrl`, téléverse le binaire, supprime tout temporaire et renvoie un objet `OfficialMap` prêt à incorporer dans un JSON borné. Ce fragment reste invisible ; compléter les titres et textes alternatifs avant Preview puis appliquer par la boucle normale. Une réponse d’upload ambiguë impose la consultation de l’état global et de l’historique avant toute nouvelle tentative.
+
+Exemple complet : `docs/upserts/official-park-maps-example.json`.
+
 ## Références à enrichir
 
 Enrichir seulement les références utiles :
@@ -237,6 +270,7 @@ Ne pas transformer ces enrichissements en étape autonome. Cette étape 5 est le
 Sections possibles :
 
 - `images`
+- `park.officialMaps`
 - `items` quand une image appartient à un parkItem
 - `references.founders`
 - `references.operators`
@@ -245,7 +279,7 @@ Sections possibles :
 ```json
 {
   "documentType": "AmusementParkParkGraphUpsert",
-  "schemaVersion": "2026-06-30",
+  "schemaVersion": "2026-09-05",
   "mode": "merge",
   "metadata": {
     "source": "codex-images-references",

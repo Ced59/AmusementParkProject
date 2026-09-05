@@ -216,7 +216,7 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
-    public async Task ParksProvider_WhenPublicParkHasLocatedPublicItem_ShouldReturnMapUrl()
+    public async Task ParksProvider_WhenPublicParkHasInteractiveOrOfficialMap_ShouldReturnMapUrl()
     {
         Park parkWithMapMarker = new Park
         {
@@ -234,6 +234,24 @@ public sealed class SitemapSectionProvidersTests
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
         parkWithoutMapMarker.SetPosition(48.86, 2.35);
+        Park parkWithOfficialMap = new Park
+        {
+            Id = "park-3",
+            Name = "Official Map Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            OfficialMaps = new List<ParkOfficialMap>
+            {
+                new ParkOfficialMap
+                {
+                    Id = "map-2026",
+                    Year = 2026,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    DocumentUrl = "https://park.example/map.pdf",
+                    IsVisible = true,
+                },
+            },
+        };
         ParkItem locatedItem = new ParkItem
         {
             Id = "item-1",
@@ -254,7 +272,7 @@ public sealed class SitemapSectionProvidersTests
         secondLocatedItem.SetPosition(48.88, 2.37);
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        SetupPublicSitemapParks(repository, new[] { parkWithMapMarker, parkWithoutMapMarker });
+        SetupPublicSitemapParks(repository, new[] { parkWithMapMarker, parkWithoutMapMarker, parkWithOfficialMap });
         SetupPublicSitemapItems(itemRepository, new[] { locatedItem, secondLocatedItem });
         ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
@@ -263,6 +281,7 @@ public sealed class SitemapSectionProvidersTests
 
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/map" && url.Priority == 0.78m);
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-2/no-map-park/map");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-3/official-map-park/map" && url.Priority == 0.78m);
         repository.VerifyAll();
         itemRepository.VerifyAll();
     }

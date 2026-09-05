@@ -46,6 +46,9 @@ internal static partial class EntityMongoMappers
             City = document.City,
             PostalCode = document.PostalCode,
             CurrentLogoImageId = document.CurrentLogoImageId,
+            OfficialMaps = (document.OfficialMaps ?? new List<ParkOfficialMapDocument>())
+                .Select(static officialMap => officialMap.ToDomain())
+                .ToList(),
         };
 
         CommonMongoMappers.ApplyPosition(entity, document.Latitude, document.Longitude);
@@ -82,12 +85,59 @@ internal static partial class EntityMongoMappers
             City = entity.City,
             PostalCode = entity.PostalCode,
             CurrentLogoImageId = entity.CurrentLogoImageId,
+            OfficialMaps = (entity.OfficialMaps ?? new List<ParkOfficialMap>())
+                .Select(static officialMap => officialMap.ToDocument())
+                .ToList(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };
 
         CommonMongoMappers.ApplyPosition(document, entity.Position);
         return document;
+    }
+
+    internal static ParkOfficialMap ToDomain(this ParkOfficialMapDocument document)
+    {
+        return new ParkOfficialMap
+        {
+            Id = document.Id,
+            Year = document.Year,
+            Format = document.Format,
+            DocumentUrl = document.DocumentUrl,
+            StorageKey = document.StorageKey,
+            OriginalFileName = document.OriginalFileName,
+            ContentType = document.ContentType,
+            SizeInBytes = document.SizeInBytes,
+            PreviewImageUrl = document.PreviewImageUrl,
+            SourcePageUrl = document.SourcePageUrl,
+            LanguageCode = document.LanguageCode,
+            Titles = CommonMongoMappers.ToDomain(document.Titles),
+            AlternativeTexts = CommonMongoMappers.ToDomain(document.AlternativeTexts),
+            IsVisible = document.IsVisible,
+            LastVerifiedAtUtc = document.LastVerifiedAtUtc,
+        };
+    }
+
+    private static ParkOfficialMapDocument ToDocument(this ParkOfficialMap entity)
+    {
+        return new ParkOfficialMapDocument
+        {
+            Id = entity.Id,
+            Year = entity.Year,
+            Format = entity.Format,
+            DocumentUrl = entity.DocumentUrl,
+            StorageKey = entity.StorageKey,
+            OriginalFileName = entity.OriginalFileName,
+            ContentType = entity.ContentType,
+            SizeInBytes = entity.SizeInBytes,
+            PreviewImageUrl = entity.PreviewImageUrl,
+            SourcePageUrl = entity.SourcePageUrl,
+            LanguageCode = entity.LanguageCode,
+            Titles = CommonMongoMappers.ToDocuments(entity.Titles),
+            AlternativeTexts = CommonMongoMappers.ToDocuments(entity.AlternativeTexts),
+            IsVisible = entity.IsVisible,
+            LastVerifiedAtUtc = entity.LastVerifiedAtUtc,
+        };
     }
 
     public static ParkZone ToDomain(this ParkZoneDocument document)

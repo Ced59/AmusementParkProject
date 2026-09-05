@@ -15,6 +15,8 @@ public sealed class ParkMapItemsResult
     public IReadOnlyCollection<ParkMapUnlocatedItemResult> UnlocatedItems { get; init; } = Array.Empty<ParkMapUnlocatedItemResult>();
 
     public IReadOnlyCollection<ParkMapZoneResult> Zones { get; init; } = Array.Empty<ParkMapZoneResult>();
+
+    public IReadOnlyCollection<ParkOfficialMap> OfficialMaps { get; init; } = Array.Empty<ParkOfficialMap>();
 }
 
 public sealed class ParkMapItemResult

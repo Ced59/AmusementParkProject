@@ -133,4 +133,59 @@ describe('ParkMapStateFacade', () => {
       { id: 'park-1', closedFilter: 'all' }
     ]);
   });
+
+  it('selects the newest official map year and falls back to official maps without markers', () => {
+    const context = configureFacade();
+    context.parksPort.mapItemsResponse$ = of({
+      ...createMapItems(createPark()),
+      officialMaps: [
+        { id: 'map-2024', year: 2024, format: 'Pdf', documentUrl: 'https://park.example/2024.pdf' },
+        { id: 'map-2026', year: 2026, format: 'Pdf', documentUrl: 'https://park.example/2026.pdf' }
+      ]
+    });
+
+    context.facade.loadParkMap('park-1');
+
+    expect(context.facade.activeTab()).toBe('official');
+    expect(context.facade.selectedOfficialMapYear()).toBe(2026);
+    expect(context.facade.visibleOfficialMaps().map(map => map.id)).toEqual(['map-2026']);
+  });
+
+  it('keeps the interactive map selected when a marker is displayable', () => {
+    const context = configureFacade();
+    context.parksPort.mapItemsResponse$ = of({
+      ...createMapItems(createPark()),
+      items: [{
+        id: 'ride-1',
+        name: 'Ride',
+        category: 'Attraction',
+        type: 'RollerCoaster',
+        latitude: 50.7,
+        longitude: 4.5
+      }],
+      officialMaps: [
+        { id: 'map-2026', year: 2026, format: 'Pdf', documentUrl: 'https://park.example/2026.pdf' }
+      ]
+    });
+
+    context.facade.loadParkMap('park-1');
+
+    expect(context.facade.activeTab()).toBe('interactive');
+  });
+
+  it('does not override a manual interactive selection when the same park reloads', () => {
+    const context = configureFacade();
+    context.parksPort.mapItemsResponse$ = of({
+      ...createMapItems(createPark()),
+      officialMaps: [
+        { id: 'map-2026', year: 2026, format: 'Pdf', documentUrl: 'https://park.example/2026.pdf' }
+      ]
+    });
+
+    context.facade.loadParkMap('park-1');
+    context.facade.selectTab('interactive');
+    context.facade.loadParkMap('park-1', 'all');
+
+    expect(context.facade.activeTab()).toBe('interactive');
+  });
 });

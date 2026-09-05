@@ -10,7 +10,7 @@ public sealed class ParkGraphExportDocument
 {
     public string DocumentType { get; init; } = "AmusementParkParkGraphUpsert";
 
-    public string SchemaVersion { get; init; } = "2026-06-30";
+    public string SchemaVersion { get; init; } = "2026-09-05";
 
     public string Mode { get; init; } = "merge";
 
@@ -106,6 +106,7 @@ public sealed class ParkGraphExportPark
     public double? Latitude { get; init; }
 
     public double? Longitude { get; init; }
+
 }
 
 public sealed class ParkGraphExportZone

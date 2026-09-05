@@ -92,7 +92,8 @@ public sealed record PublicSeoParkSnapshot(
     DateTime? OpeningDate = null,
     DateTime? ClosingDate = null,
     string? OpeningDateText = null,
-    string? ClosingDateText = null)
+    string? ClosingDateText = null,
+    bool HasPublicOfficialMaps = false)
 {
     public static PublicSeoParkSnapshot? FromPark(Park? park)
     {
@@ -111,7 +112,8 @@ public sealed record PublicSeoParkSnapshot(
             park.OpeningDate,
             park.ClosingDate,
             park.OpeningDateText,
-            park.ClosingDateText);
+            park.ClosingDateText,
+            park.HasPublicOfficialMaps());
     }
 
     public static IReadOnlyCollection<PublicSeoParkSnapshot> FromParks(IEnumerable<Park?> parks)

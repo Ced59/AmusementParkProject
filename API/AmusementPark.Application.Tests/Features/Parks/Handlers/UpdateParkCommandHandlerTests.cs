@@ -49,6 +49,31 @@ public sealed class UpdateParkCommandHandlerTests
         Assert.Equal(ParkStatus.Operating, savedPark!.Status);
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenLegacyEditorOmitsOfficialMaps_ShouldPreserveExistingMaps()
+    {
+        Park existingPark = CreatePark(ParkStatus.Operating);
+        existingPark.OfficialMaps.Add(new ParkOfficialMap
+        {
+            Id = "map-2026",
+            Year = 2026,
+            Format = ParkOfficialMapFormat.Pdf,
+            StorageKey = "official-maps/park-1/map-2026.pdf",
+            IsVisible = true,
+        });
+        Park requestedPark = CreatePark(ParkStatus.Operating);
+        Park? savedPark = null;
+        UpdateParkCommandHandler handler = CreateHandler(existingPark, park => savedPark = park);
+
+        ApplicationResult<Park> result = await handler.HandleAsync(
+            new UpdateParkCommand("park-1", requestedPark),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkOfficialMap officialMap = Assert.Single(savedPark!.OfficialMaps);
+        Assert.Equal("map-2026", officialMap.Id);
+    }
+
     private static UpdateParkCommandHandler CreateHandler(Park existingPark, Action<Park> captureSavedPark)
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

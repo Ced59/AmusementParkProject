@@ -2,9 +2,16 @@
   [state]="state()"
   [park]="park()"
   [map]="map()"
+  [officialMaps]="visibleOfficialMaps()"
+  [officialMapCount]="officialMaps().length"
+  [officialMapYears]="officialMapYears()"
+  [selectedOfficialMapYear]="selectedOfficialMapYear()"
+  [activeTab]="activeTab()"
   [detailLink]="detailLink()"
   [itemsLink]="itemsLink()"
   [selectedClosedFilter]="selectedClosedFilter()"
   [closedFilterOptions]="closedFilterOptions()"
-  (closedFilterChanged)="onClosedFilterChanged($event)">
+  (closedFilterChanged)="onClosedFilterChanged($event)"
+  (tabSelected)="onTabSelected($event)"
+  (officialMapYearSelected)="onOfficialMapYearSelected($event)">
 </app-park-map-view>

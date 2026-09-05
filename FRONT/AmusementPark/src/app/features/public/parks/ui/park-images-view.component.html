@@ -45,41 +45,20 @@
       <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
 
       @if (showItemTab) {
-        <div class="park-images-tabs" role="tablist" [attr.aria-label]="'parks.imagesPage.tabs.label' | translate">
-          <button
-            class="park-images-tabs__tab"
-            type="button"
-            role="tab"
-            id="park-images-tab-park"
-            aria-controls="park-images-panel"
-            [class.is-active]="activeTab === 'park'"
-            [attr.aria-selected]="activeTab === 'park'"
-            [attr.tabindex]="activeTab === 'park' ? 0 : -1"
-            (click)="selectTab('park')">
-            <span>{{ 'parks.imagesPage.tabs.park' | translate }}</span>
-            <strong>{{ parkTabImageCount }}</strong>
-          </button>
-
-          <button
-            class="park-images-tabs__tab"
-            type="button"
-            role="tab"
-            id="park-images-tab-items"
-            aria-controls="park-images-panel"
-            [class.is-active]="activeTab === 'items'"
-            [attr.aria-selected]="activeTab === 'items'"
-            [attr.tabindex]="activeTab === 'items' ? 0 : -1"
-            (click)="selectTab('items')">
-            <span>{{ 'parks.imagesPage.tabs.items' | translate }}</span>
-            <strong>{{ itemTabImageCount }}</strong>
-          </button>
-        </div>
+        <app-ui-segmented-tabs
+          [tabs]="tabsWithCounts()"
+          [activeTabId]="activeTab"
+          ariaLabelKey="parks.imagesPage.tabs.label"
+          idPrefix="park-images-tab"
+          panelId="park-images-panel"
+          (tabSelected)="selectTabById($event)">
+        </app-ui-segmented-tabs>
       }
 
       <div
         id="park-images-panel"
-        role="tabpanel"
-        [attr.aria-labelledby]="activeTab === 'items' ? 'park-images-tab-items' : 'park-images-tab-park'">
+        [attr.role]="showItemTab ? 'tabpanel' : null"
+        [attr.aria-labelledby]="showItemTab ? (activeTab === 'items' ? 'park-images-tab-items' : 'park-images-tab-park') : null">
       @if (itemImagesLoading && activeTab === 'items') {
         <section class="park-images-empty" appUiSurface="soft" appUiSurfacePadding="spacious">
           <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>

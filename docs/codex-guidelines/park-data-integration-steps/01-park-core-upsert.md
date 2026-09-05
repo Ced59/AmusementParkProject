@@ -102,7 +102,7 @@ Exemple de forme :
 ```json
 {
   "documentType": "AmusementParkParkGraphUpsert",
-  "schemaVersion": "2026-06-30",
+  "schemaVersion": "2026-09-05",
   "mode": "merge",
   "metadata": {
     "source": "codex-park-core",

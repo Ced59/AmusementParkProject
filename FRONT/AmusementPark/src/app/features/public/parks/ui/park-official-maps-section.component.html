@@ -1,0 +1,81 @@
+<section class="official-maps" appUiSurface="soft" appUiSurfacePadding="spacious" aria-labelledby="official-maps-title">
+  <header class="official-maps__header">
+    <div>
+      <app-ui-kicker tone="sky" iconClass="pi pi-file">
+        {{ 'parks.mapPage.official.kicker' | translate }}
+      </app-ui-kicker>
+      <h2 id="official-maps-title">{{ 'parks.mapPage.official.title' | translate:{ name: parkName } }}</h2>
+      <p>{{ 'parks.mapPage.official.subtitle' | translate }}</p>
+    </div>
+
+    @if (years.length > 1) {
+      <label class="official-maps__year">
+        <span>{{ 'parks.mapPage.official.yearLabel' | translate }}</span>
+        <select [value]="selectedYear" (change)="onYearChanged($event)">
+          @for (year of years; track year) {
+            <option [value]="year">{{ year }}</option>
+          }
+        </select>
+      </label>
+    }
+  </header>
+
+  <div class="official-maps__grid">
+    @for (map of maps; track map.id) {
+      <article class="official-map-card">
+        @if (map.isImage) {
+          <a class="official-map-card__preview" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
+            <img
+              [src]="map.documentUrl"
+              [alt]="map.alternativeText"
+              loading="lazy"
+              decoding="async">
+          </a>
+        } @else if (map.previewImageUrl) {
+          <a class="official-map-card__preview" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
+            <img
+              [src]="map.previewImageUrl"
+              [alt]="map.alternativeText || map.title || parkName"
+              loading="lazy"
+              decoding="async">
+          </a>
+        } @else {
+          <div class="official-map-card__placeholder" aria-hidden="true">
+            <i [class]="map.isPdf ? 'pi pi-file-pdf' : 'pi pi-file'"></i>
+            <strong>{{ map.year }}</strong>
+          </div>
+        }
+
+        <div class="official-map-card__content">
+          <div class="official-map-card__meta">
+            <span>{{ map.year }}</span>
+            <span>{{ formatLabelKey(map) | translate }}</span>
+            @if (map.languageCode) {
+              <span>{{ map.languageCode }}</span>
+            }
+            @if (map.fileSizeLabel) {
+              <span>{{ map.fileSizeLabel }}</span>
+            }
+          </div>
+          <h3>{{ map.title || ('parks.mapPage.official.fallbackTitle' | translate:{ year: map.year }) }}</h3>
+          @if (map.originalFileName) {
+            <p class="official-map-card__filename">{{ map.originalFileName }}</p>
+          }
+
+          <div class="official-map-card__actions">
+            <a appUiButton="primary" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+              <span>{{ 'parks.mapPage.official.open' | translate }}</span>
+            </a>
+            @if (map.sourcePageUrl) {
+              <a appUiButton="ghost" [href]="map.sourcePageUrl" target="_blank" rel="noopener noreferrer">
+                <i class="pi pi-verified" aria-hidden="true"></i>
+                <span>{{ 'parks.mapPage.official.source' | translate }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
