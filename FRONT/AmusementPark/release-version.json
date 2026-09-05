@@ -1,6 +1,20 @@
 {
-  "version": "5.1.3",
+  "version": "5.1.4",
   "history": [
+    {
+      "version": "5.1.4",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les parcours de consultation et de gestion des notes reposent sur une structure plus fiable.",
+        "en": "Rating viewing and management journeys now rely on a more reliable structure.",
+        "de": "Die Abläufe zum Anzeigen und Verwalten von Bewertungen basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "De routes voor het bekijken en beheren van beoordelingen steunen nu op een betrouwbaardere structuur.",
+        "it": "I percorsi di consultazione e gestione delle valutazioni si basano ora su una struttura più affidabile.",
+        "es": "Los recorridos de consulta y gestión de valoraciones se apoyan ahora en una estructura más fiable.",
+        "pl": "Procesy przeglądania ocen i zarządzania nimi korzystają teraz z bardziej niezawodnej struktury.",
+        "pt": "Os percursos de consulta e gestão das avaliações assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.3",
       "releasedAt": "2026-09-05",
