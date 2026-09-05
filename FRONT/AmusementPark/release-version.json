@@ -1,6 +1,20 @@
 {
-  "version": "5.0.40",
+  "version": "5.0.41",
   "history": [
+    {
+      "version": "5.0.41",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les visites terminées sont désormais plus simples et agréables à consulter.",
+        "en": "Completed visits are now simpler and more pleasant to review.",
+        "de": "Abgeschlossene Besuche lassen sich jetzt einfacher und angenehmer ansehen.",
+        "nl": "Afgeronde bezoeken zijn nu eenvoudiger en prettiger te bekijken.",
+        "it": "Ora le visite completate sono più semplici e piacevoli da consultare.",
+        "es": "Ahora las visitas completadas son más sencillas y agradables de consultar.",
+        "pl": "Ukończone wizyty można teraz przeglądać łatwiej i przyjemniej.",
+        "pt": "Agora, as visitas concluídas são mais simples e agradáveis de consultar."
+      }
+    },
     {
       "version": "5.0.40",
       "releasedAt": "2026-09-05",

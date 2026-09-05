@@ -43,6 +43,9 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-visit__form');
     expect(styles).toContain('.passport-visit__actions');
     expect(styles).toContain('.passport-visit__details');
+    expect(styles).toContain('.passport-readonly-assessment');
+    expect(styles).toContain('.passport-readonly-note');
+    expect(styles).toContain('white-space: pre-wrap');
     expect(styles).toContain('.passport-editor__statistics-actions');
     expect(styles).toContain('.passport-occurrence__statistics');
     expect(styles).toContain('.passport-visit-deletion__impact');
@@ -200,6 +203,19 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(component.shouldDisplayAssessment('Completed', true)).toBe(true);
     expect(component.shouldDisplayAssessment('Archived', true)).toBe(true);
     expect(component.shouldDisplayAssessment('Completed', false)).toBe(false);
+  });
+
+  it('renders editing controls only while the visit is a draft', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      shouldDisplayEditingControls(
+        status: 'Draft' | 'Completed' | 'Archived' | null
+      ): boolean;
+    };
+
+    expect(component.shouldDisplayEditingControls('Draft')).toBe(true);
+    expect(component.shouldDisplayEditingControls('Completed')).toBe(false);
+    expect(component.shouldDisplayEditingControls('Archived')).toBe(false);
+    expect(component.shouldDisplayEditingControls(null)).toBe(false);
   });
 
   it('keeps a saved occurrence note readable without reopening a locked visit', () => {

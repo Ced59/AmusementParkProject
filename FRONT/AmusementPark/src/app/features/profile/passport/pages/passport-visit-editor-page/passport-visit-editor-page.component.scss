@@ -24,6 +24,9 @@
 .passport-assessment__heading > div,
 .passport-assessment__actions,
 .passport-assessment__delete-confirmation,
+.passport-readonly-assessment,
+.passport-readonly-assessment__rating,
+.passport-readonly-note,
 .passport-panel,
 .passport-selection,
 .passport-selection-dock,
@@ -229,10 +232,6 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-[inert] {
-  opacity: 0.72;
-}
-
 .passport-assessment {
   display: grid;
   width: 100%;
@@ -306,6 +305,68 @@
 .passport-assessment__delete-confirmation span {
   max-width: 100%;
   overflow-wrap: anywhere;
+}
+
+.passport-readonly-assessment {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  gap: 0.7rem;
+  padding: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 24%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-primary) 5%, var(--app-surface));
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.passport-readonly-assessment__rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 0.8rem;
+  color: var(--app-heading);
+}
+
+.passport-readonly-assessment__rating span,
+.passport-readonly-note strong {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-heading);
+  overflow-wrap: anywhere;
+}
+
+.passport-readonly-assessment__rating span {
+  font-weight: 800;
+}
+
+.passport-readonly-assessment__rating i,
+.passport-readonly-assessment__rating strong,
+.passport-readonly-note i {
+  color: var(--app-primary);
+}
+
+.passport-readonly-note {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  gap: 0.35rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-2);
+  box-sizing: border-box;
+}
+
+.passport-readonly-note p {
+  min-width: 0;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .passport-editor {
