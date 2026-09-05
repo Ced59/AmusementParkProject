@@ -66,8 +66,18 @@
             <i class="pi pi-lock" aria-hidden="true"></i>
             {{ 'passport.editor.visit.locked' | translate }}
           </p>
+          @if (visit.privateNote) {
+            <div class="passport-readonly-note" role="note">
+              <strong>
+                <i class="pi pi-lock" aria-hidden="true"></i>
+                {{ 'passport.editor.visit.fields.privateNote' | translate }}
+              </strong>
+              <p>{{ visit.privateNote }}</p>
+            </div>
+          }
         }
 
+        @if (shouldDisplayEditingControls(visit.status)) {
         <details class="passport-visit__details">
           <summary>
             <span><i class="pi pi-pencil" aria-hidden="true"></i>{{ 'passport.editor.visit.editTitle' | translate }}</span>
@@ -135,6 +145,7 @@
             </button>
           </div>
         </details>
+        }
 
         @if (facade.visitMutationErrorKey(); as visitMutationErrorKey) {
           <p class="passport-inline-message passport-inline-message--error" role="alert">
@@ -259,6 +270,7 @@
           {{ 'passport.editor.assessment.privateBadge' | translate }}
         </app-ui-chip>
       </div>
+      @if (shouldDisplayEditingControls(facade.visit()?.status)) {
       <app-rating-input
         [label]="'passport.editor.assessment.ratingLabel' | translate"
         [value]="facade.assessmentDraft().value"
@@ -280,7 +292,6 @@
           maxlength="4000"
           [value]="facade.assessmentDraft().privateComment"
           [disabled]="facade.assessmentSaving()"
-          [readOnly]="facade.visit()?.status !== 'Draft'"
           [placeholder]="'passport.editor.assessment.commentPlaceholder' | translate"
           (input)="updateAssessmentComment($event)"></textarea>
         <small>{{ 'passport.editor.assessment.commentHint' | translate }}</small>
@@ -292,7 +303,6 @@
         </p>
       }
 
-      @if (facade.visit()?.status === 'Draft') {
       <div class="passport-assessment__actions">
         <button
           appUiButton="primary"
@@ -326,12 +336,31 @@
           }
         }
       </div>
+      } @else if (facade.visit()?.parkAssessment; as assessment) {
+        <div class="passport-readonly-assessment" role="group" [attr.aria-label]="'passport.editor.assessment.ratingLabel' | translate">
+          <div class="passport-readonly-assessment__rating">
+            <span>
+              <i class="pi pi-star-fill" aria-hidden="true"></i>
+              {{ 'passport.editor.assessment.ratingLabel' | translate }}
+            </span>
+            <strong>{{ assessmentValueLabel(assessment.value) }} / 5</strong>
+          </div>
+          @if (assessment.privateComment) {
+            <div class="passport-readonly-note" role="note">
+              <strong>
+                <i class="pi pi-lock" aria-hidden="true"></i>
+                {{ 'passport.editor.assessment.commentLabel' | translate }}
+              </strong>
+              <p>{{ assessment.privateComment }}</p>
+            </div>
+          }
+        </div>
       }
     </section>
     }
 
     <div class="passport-editor__workspace" [class.passport-editor__workspace--readonly]="facade.visit()?.status !== 'Draft'">
-      @if (facade.visit()?.status === 'Draft') {
+      @if (shouldDisplayEditingControls(facade.visit()?.status)) {
       <section class="passport-panel passport-selector" appUiSurface="panel" aria-labelledby="passport-selector-title">
         <div class="passport-panel__heading">
           <div>
@@ -750,7 +779,7 @@
                 (cdkDragStarted)="timelineDragging.set(true)"
                 (cdkDragEnded)="timelineDragging.set(false)">
                 <article>
-                  @if (facade.visit()?.status === 'Draft') {
+                  @if (shouldDisplayEditingControls(facade.visit()?.status)) {
                     <div cdkDragHandle class="passport-occurrence__drag-handle">
                       <i class="pi pi-bars" aria-hidden="true"></i>
                       <span>{{ 'passport.editor.timeline.dragHandle' | translate }}</span>
@@ -807,17 +836,12 @@
                     </div>
                   }
 
-                  @if (shouldDisplayAssessment(
-                    facade.visit()?.status,
-                    row.occurrence.assessment != null
-                  )) {
+                  @if (shouldDisplayEditingControls(facade.visit()?.status)) {
                   <details class="passport-ride-assessment">
                     <summary>
                       <span>
                         <i class="pi pi-star" aria-hidden="true"></i>
-                        {{ (facade.visit()?.status !== 'Draft'
-                          ? 'passport.editor.rideAssessment.ratingLabel'
-                          : row.occurrence.assessment
+                        {{ (row.occurrence.assessment
                             ? 'passport.editor.rideAssessment.editTitle'
                             : 'passport.editor.rideAssessment.addTitle') | translate }}
                       </span>
@@ -833,7 +857,7 @@
                         <app-rating-input
                           [label]="'passport.editor.rideAssessment.ratingLabel' | translate"
                           [value]="assessmentDraft.value"
-                          [disabled]="isOccurrenceBusy(row.occurrence.id) || facade.visit()?.status !== 'Draft'"
+                          [disabled]="isOccurrenceBusy(row.occurrence.id)"
                           [showClear]="row.occurrence.assessment == null && assessmentDraft.value !== null"
                           [locale]="currentLanguage()"
                           [emptyLabel]="'passport.editor.ratingControl.unrated' | translate"
@@ -856,7 +880,6 @@
                             rows="3"
                             maxlength="4000"
                             [disabled]="isOccurrenceBusy(row.occurrence.id)"
-                            [readOnly]="facade.visit()?.status !== 'Draft'"
                             [value]="assessmentDraft.privateComment"
                             (input)="updateRideAssessmentComment(row.occurrence.id, $event)"></textarea>
                           <small>{{ 'passport.editor.rideAssessment.commentHint' | translate }}</small>
@@ -869,7 +892,6 @@
                           </p>
                         }
 
-                        @if (facade.visit()?.status === 'Draft') {
                         @if (rideAssessmentDeleteConfirmationId() === row.occurrence.id) {
                           <div class="passport-ride-assessment__delete-confirmation">
                             <span>{{ 'passport.editor.rideAssessment.deleteConfirmation' | translate }}</span>
@@ -896,13 +918,32 @@
                             }
                           </div>
                         }
-                        }
                       </div>
                     }
                   </details>
+                  } @else if (row.occurrence.assessment; as assessment) {
+                    <div class="passport-readonly-assessment passport-readonly-assessment--ride" role="group" [attr.aria-label]="'passport.editor.rideAssessment.ratingLabel' | translate">
+                      <div class="passport-readonly-assessment__rating">
+                        <span>
+                          <i class="pi pi-star-fill" aria-hidden="true"></i>
+                          {{ 'passport.editor.rideAssessment.ratingLabel' | translate }}
+                        </span>
+                        <strong>{{ assessmentValueLabel(assessment.value) }} / 5</strong>
+                      </div>
+                      @if (assessment.privateComment) {
+                        <div class="passport-readonly-note" role="note">
+                          <strong>
+                            <i class="pi pi-lock" aria-hidden="true"></i>
+                            {{ 'passport.editor.rideAssessment.commentLabel' | translate }}
+                          </strong>
+                          <p>{{ assessment.privateComment }}</p>
+                        </div>
+                      }
+                    </div>
                   }
 
-                  <div class="passport-occurrence__order" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
+                  @if (shouldDisplayEditingControls(facade.visit()?.status)) {
+                  <div class="passport-occurrence__order" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
                     <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id) || facade.reorderingOccurrenceId() !== null" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
                       <span aria-hidden="true">↑↑</span>
                     </button>
@@ -917,7 +958,7 @@
                     </button>
                   </div>
 
-                  <div class="passport-occurrence__actions" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''">
+                  <div class="passport-occurrence__actions">
                     @if (row.occurrence.target?.category === 'Attraction' && row.occurrence.target?.isHistoricalSnapshot === false) {
                       <details>
                         <summary>{{ 'passport.editor.actions.edit' | translate }}</summary>
@@ -1008,6 +1049,7 @@
                       </button>
                     }
                   </div>
+                  }
                 </article>
               </li>
             }

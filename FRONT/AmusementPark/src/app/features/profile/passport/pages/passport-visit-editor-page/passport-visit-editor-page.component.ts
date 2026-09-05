@@ -231,6 +231,12 @@ export class PassportVisitEditorPageComponent {
     return status === 'Draft' || hasAssessment;
   }
 
+  protected shouldDisplayEditingControls(
+    status: PassportVisitStatus | null | undefined
+  ): boolean {
+    return status === 'Draft';
+  }
+
   protected shouldDisplayReadOnlyOccurrenceNote(
     status: PassportVisitStatus | null | undefined,
     privateNote: string | null | undefined
