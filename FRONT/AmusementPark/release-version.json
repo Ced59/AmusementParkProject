@@ -1,6 +1,20 @@
 {
-  "version": "5.0.34",
+  "version": "5.0.35",
   "history": [
+    {
+      "version": "5.0.35",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les attractions sont plus faciles à reconnaître lors de l’ajout de passages.",
+        "en": "Attractions are easier to recognize when adding ride entries.",
+        "de": "Attraktionen sind beim Hinzufügen von Fahrteinträgen leichter zu erkennen.",
+        "nl": "Attracties zijn makkelijker te herkennen wanneer je ritten toevoegt.",
+        "it": "Le attrazioni sono più facili da riconoscere quando aggiungi i giri.",
+        "es": "Las atracciones son más fáciles de reconocer al añadir recorridos.",
+        "pl": "Atrakcje łatwiej rozpoznać podczas dodawania przejazdów.",
+        "pt": "As atrações são mais fáceis de reconhecer ao adicionar voltas."
+      }
+    },
     {
       "version": "5.0.34",
       "releasedAt": "2026-09-05",

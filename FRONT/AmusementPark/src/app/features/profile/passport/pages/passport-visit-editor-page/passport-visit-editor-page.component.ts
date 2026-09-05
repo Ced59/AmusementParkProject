@@ -11,6 +11,7 @@ import {
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisitDatePrecision, PassportVisitStatus } from '@app/models/passport/passport-visit.models';
 import { TranslationService } from '@app/services/translation.service';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { RatingInputComponent } from '@shared/components/rating-input/rating-input.component';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import {
@@ -50,6 +51,7 @@ const supportedLifecycleStatuses: ReadonlySet<string> = new Set<string>([
   imports: [
     ReactiveFormsModule,
     TranslateModule,
+    ImageDisplayComponent,
     RatingInputComponent,
     LocalizedPluralPipe,
     UiButtonDirective,
@@ -67,6 +69,7 @@ export class PassportVisitEditorPageComponent {
   protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
   protected readonly visitDeletionConfirmed = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly attractionThumbnailWidths: readonly number[] = [96, 160];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
     { value: 'Completed', labelKey: 'passport.editor.status.completed' },
     { value: 'Attempted', labelKey: 'passport.editor.status.attempted' },

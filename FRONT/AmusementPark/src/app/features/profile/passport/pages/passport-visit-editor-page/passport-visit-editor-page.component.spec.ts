@@ -33,6 +33,10 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('outline: 3px solid');
     expect(styles).toContain('.passport-assessment__actions');
     expect(styles).toContain('.passport-ride-assessment__actions');
+    expect(styles).toContain('grid-template-columns: 3.75rem minmax(0, 1fr)');
+    expect(styles).toContain('.passport-attraction__media');
+    expect(styles).toContain('.passport-attraction__image');
+    expect(styles).toContain('object-fit: cover');
     expect(styles).toContain('.passport-visit__form');
     expect(styles).toContain('.passport-visit__actions');
     expect(styles).toContain('.passport-visit__details');

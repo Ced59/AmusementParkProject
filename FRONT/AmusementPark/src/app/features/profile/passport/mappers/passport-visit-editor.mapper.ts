@@ -30,6 +30,7 @@ export function mapParkItemToVisitEditorAttraction(
   return {
     id,
     name,
+    mainImageId: item.mainImageId?.trim() || null,
     zoneId: item.zoneId?.trim() || null,
     lifecycleStatus,
     isHistorical: lifecycleStatus !== null && historicalStatuses.has(lifecycleStatus),

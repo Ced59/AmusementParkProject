@@ -22,6 +22,7 @@ describe('passport visit editor mapper', () => {
       type: 'RollerCoaster',
       latitude: null,
       longitude: null,
+      mainImageId: ' image-main-1 ',
       attractionDetails: { status: 'Removed' }
     };
 
@@ -32,6 +33,7 @@ describe('passport visit editor mapper', () => {
       closingDate: '2010-12-31'
     })).toEqual(expect.objectContaining({
       id: 'ride-1',
+      mainImageId: 'image-main-1',
       isHistorical: true,
       lifecycleStatus: 'Removed',
       historicalConsistency: 'ConfirmedConflict',
@@ -51,6 +53,7 @@ describe('passport visit editor mapper', () => {
     const selection = createAttractionSelection({
       id: 'ride-1',
       name: 'Ride',
+      mainImageId: null,
       zoneId: null,
       lifecycleStatus: 'Operating',
       isHistorical: false,

@@ -477,12 +477,12 @@
 
 .passport-attraction {
   display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr);
+  grid-template-columns: 3.75rem minmax(0, 1fr);
   gap: 0.65rem;
   align-items: center;
   width: 100%;
   min-width: 0;
-  min-height: 3.5rem;
+  min-height: 5.15rem;
   padding: 0.7rem;
   border: 1px solid var(--app-border);
   border-radius: var(--app-radius-md);
@@ -502,18 +502,59 @@
   background: color-mix(in srgb, var(--app-primary) 10%, var(--app-surface));
 }
 
+.passport-attraction__media,
+.passport-attraction__check {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.passport-attraction__media {
+  display: block;
+  width: 3.75rem;
+  height: 3.75rem;
+  overflow: hidden;
+  border-radius: calc(var(--app-radius-md) - 0.2rem);
+  background: var(--app-surface-2);
+}
+
+.passport-attraction__media app-image-display {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep .passport-attraction__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .passport-attraction__check {
   display: grid;
   width: 2rem;
   height: 2rem;
+  align-self: center;
+  justify-self: center;
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2));
   color: var(--app-primary);
 }
 
+.passport-attraction__check--overlay {
+  z-index: 1;
+  width: 1.8rem;
+  height: 1.8rem;
+  align-self: end;
+  justify-self: end;
+  border: 2px solid var(--app-surface);
+  box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 24%);
+}
+
 .passport-attraction__body {
   display: grid;
+  grid-column: 2;
+  grid-row: 1;
   min-width: 0;
   gap: 0.2rem;
 }
@@ -1170,6 +1211,17 @@ textarea:focus-visible {
 }
 
 @media (max-width: 340px) {
+  .passport-attraction {
+    grid-template-columns: 3.15rem minmax(0, 1fr);
+    gap: 0.5rem;
+    padding-inline: 0.55rem;
+  }
+
+  .passport-attraction__media {
+    width: 3.15rem;
+    height: 3.15rem;
+  }
+
   .passport-occurrence__order {
     grid-template-columns: repeat(2, minmax(2.75rem, 1fr));
   }
