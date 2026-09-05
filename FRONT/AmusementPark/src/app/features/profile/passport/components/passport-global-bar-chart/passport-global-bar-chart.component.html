@@ -29,8 +29,10 @@
             @if (row.detail) { <small>{{ row.detail }}</small> }
           </div>
           <div class="passport-chart__bars">
-            <span class="passport-chart__bar passport-chart__bar--primary" [style.width.%]="width(row.primaryValue)"></span>
-            @if (row.secondaryValue !== undefined) {
+            @if (row.primaryValue > 0) {
+              <span class="passport-chart__bar passport-chart__bar--primary" [style.width.%]="width(row.primaryValue)"></span>
+            }
+            @if (row.secondaryValue !== undefined && row.secondaryValue > 0) {
               <span class="passport-chart__bar passport-chart__bar--secondary" [style.width.%]="width(row.secondaryValue)"></span>
             }
           </div>

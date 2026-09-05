@@ -31,8 +31,10 @@ public sealed class PassportGlobalStatisticsCalculatorTests
         Assert.Equal(1, result.Summary.RideOutcomes.MissedClosedCount);
         Assert.Equal(2, result.ActivityByYear.Count);
         Assert.Equal(2, result.ActivityByYear.Last().VisitCount);
+        Assert.Equal(2, result.ActivityByYear.Last().RecordedRideCount);
         Assert.Equal("park-a", result.TopParks.First().ParkId);
         Assert.Equal(2, result.TopParks.First().VisitCount);
+        Assert.Equal(2, result.TopParks.First().RecordedRideCount);
         Assert.Equal("item-a", Assert.Single(result.TopItems).ParkItemId);
         Assert.Equal(2, Assert.Single(result.TopItems).CompletedRideCount);
         Assert.Equal(4d, result.RatingEvolution.First().ParkAverage);

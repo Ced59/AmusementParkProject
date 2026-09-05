@@ -15,6 +15,15 @@ public static class PassportGlobalStatisticsCalculator
         PassportRideStatisticsObservation[] completedRides = rides
             .Where(static ride => ride.Status == RideOccurrenceStatus.Completed)
             .ToArray();
+        IReadOnlyDictionary<int, long> rideCountsByYear = rides
+            .GroupBy(static ride => ride.VisitDate.Year)
+            .ToDictionary(static group => group.Key, static group => group.LongCount());
+        IReadOnlyDictionary<string, long> rideCountsByPark = rides
+            .GroupBy(static ride => ride.ParkId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.LongCount(),
+                StringComparer.Ordinal);
 
         return new PassportGlobalStatistics(
             visits.Select(static visit => visit.ParkId)
@@ -26,16 +35,13 @@ public static class PassportGlobalStatisticsCalculator
                 .Select(group => new PassportGlobalYearActivity(
                     group.Key,
                     group.LongCount(),
-                    rides.LongCount(ride => ride.VisitDate.Year == group.Key)))
+                    rideCountsByYear.GetValueOrDefault(group.Key)))
                 .ToArray(),
             visits.GroupBy(static visit => visit.ParkId, StringComparer.Ordinal)
                 .Select(group => new PassportGlobalParkActivity(
                     group.Key,
                     group.LongCount(),
-                    rides.LongCount(ride => string.Equals(
-                        ride.ParkId,
-                        group.Key,
-                        StringComparison.Ordinal))))
+                    rideCountsByPark.GetValueOrDefault(group.Key)))
                 .OrderByDescending(static item => item.VisitCount)
                 .ThenByDescending(static item => item.RecordedRideCount)
                 .ThenBy(static item => item.ParkId, StringComparer.Ordinal)
