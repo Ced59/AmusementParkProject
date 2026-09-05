@@ -456,7 +456,13 @@ describe('PassportVisitEditorStateFacade', () => {
     const conflictingOccurrence: PassportRideOccurrence = {
       ...firstOccurrence,
       historicalConsistency: 'ConfirmedConflict',
-      historicalConflictConfirmed: false
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
     };
     visitsPort.updateVisit.mockReturnValue(of({
       ...visit,
@@ -489,6 +495,36 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.occurrences()[0].historicalConsistency).toBe('ConfirmedConflict');
     expect(facade.operationErrorKey()).toBeNull();
     expect(occurrencesPort.list).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps a conflicting occurrence save blocked until its fresh evidence is confirmed', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.update.mockReturnValue(of(conflictingOccurrence));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    const draft = facade.editDrafts()[conflictingOccurrence.id];
+
+    expect(facade.canUpdateOccurrence(conflictingOccurrence, draft)).toBe(false);
+    facade.updateOccurrence(conflictingOccurrence, draft);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+
+    facade.updateOccurrenceDraft(conflictingOccurrence.id, { confirmHistoricalConflict: true });
+    const confirmedDraft = facade.editDrafts()[conflictingOccurrence.id];
+    expect(facade.canUpdateOccurrence(conflictingOccurrence, confirmedDraft)).toBe(true);
+    facade.updateOccurrence(conflictingOccurrence, confirmedDraft);
+
+    expect(occurrencesPort.update).toHaveBeenCalledTimes(1);
   });
 
   it('preserves submitted metadata when conflict reconciliation loads another version', () => {

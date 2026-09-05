@@ -550,12 +550,7 @@ export class PassportVisitEditorStateFacade {
 
   updateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): void {
     const visitId: string | null = this.currentVisitId;
-    if (!visitId
-      || !occurrence.target
-      || occurrence.target.isHistoricalSnapshot
-      || occurrence.target.category !== 'Attraction'
-      || this.timelineConsistencyStaleSignal()
-      || this.isOccurrenceBusy(occurrence.id)) {
+    if (!visitId || !this.canUpdateOccurrence(occurrence, draft)) {
       return;
     }
 
@@ -607,6 +602,16 @@ export class PassportVisitEditorStateFacade {
         this.reloadTimeline();
       }
     });
+  }
+
+  canUpdateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): boolean {
+    return this.currentVisitId !== null
+      && occurrence.target != null
+      && !occurrence.target.isHistoricalSnapshot
+      && occurrence.target.category === 'Attraction'
+      && !this.timelineConsistencyStaleSignal()
+      && !this.isOccurrenceBusy(occurrence.id)
+      && (occurrence.historicalConsistency !== 'ConfirmedConflict' || draft.confirmHistoricalConflict);
   }
 
   updateOccurrenceDraft(occurrenceId: string, patch: Partial<PassportOccurrenceEditDraft>): void {

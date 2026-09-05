@@ -854,7 +854,7 @@
                               </label>
                             }
 
-                            <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="facade.timelineConsistencyStale() || isOccurrenceBusy(row.occurrence.id)" (click)="saveOccurrence(row.occurrence)">
+                            <button appUiButton="primary" type="button" class="passport-entry-form__wide" [disabled]="!facade.canUpdateOccurrence(row.occurrence, draft)" (click)="saveOccurrence(row.occurrence)">
                               {{ 'passport.editor.actions.save' | translate }}
                             </button>
                           </div>
