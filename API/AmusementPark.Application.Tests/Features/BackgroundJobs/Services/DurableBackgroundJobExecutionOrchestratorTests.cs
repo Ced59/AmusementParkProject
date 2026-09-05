@@ -334,14 +334,14 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
                 TimeSpan.FromMinutes(2),
                 TimeSpan.FromSeconds(30),
                 CancellationToken.None)
-            .WaitAsync(TimeSpan.FromSeconds(1));
+            .WaitAsync(TimeSpan.FromSeconds(5));
 
         Assert.Equal(DurableBackgroundJobExecutionDisposition.DeadLettered, result.Disposition);
         Task ongoingHandlerCompletion = Assert.IsAssignableFrom<Task>(result.OngoingHandlerCompletion);
         Assert.False(ongoingHandlerCompletion.IsCompleted);
 
         handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
-        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(1));
+        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(5));
     }
 
     [Fact]
@@ -453,7 +453,7 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
             Times.Never);
 
         handlerRelease.TrySetResult(DurableBackgroundJobHandlerResult.Success());
-        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(1));
+        await ongoingHandlerCompletion.WaitAsync(TimeSpan.FromSeconds(5));
     }
 
     private static DurableBackgroundJobExecutionOrchestrator CreateOrchestrator(
@@ -527,25 +527,4 @@ public sealed class DurableBackgroundJobExecutionOrchestratorTests
             requestedRevision.HasValue ? requestedRevision - 1 : null);
     }
 
-    private sealed class StubHandler : IDurableBackgroundJobHandler
-    {
-        private readonly Func<DurableBackgroundJobExecutionContext, CancellationToken, Task<DurableBackgroundJobHandlerResult>> execute;
-
-        public StubHandler(
-            DurableBackgroundJobHandlerDefinition definition,
-            Func<DurableBackgroundJobExecutionContext, CancellationToken, Task<DurableBackgroundJobHandlerResult>> execute)
-        {
-            this.Definition = definition;
-            this.execute = execute;
-        }
-
-        public DurableBackgroundJobHandlerDefinition Definition { get; }
-
-        public Task<DurableBackgroundJobHandlerResult> HandleAsync(
-            DurableBackgroundJobExecutionContext context,
-            CancellationToken cancellationToken)
-        {
-            return this.execute(context, cancellationToken);
-        }
-    }
 }

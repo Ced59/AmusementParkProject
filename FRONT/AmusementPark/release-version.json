@@ -1,6 +1,20 @@
 {
-  "version": "5.0.41",
+  "version": "5.0.42",
   "history": [
+    {
+      "version": "5.0.42",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La fiabilité des contrôles automatiques avant déploiement a été renforcée.",
+        "en": "Automated pre-deployment checks are now more reliable.",
+        "de": "Die automatischen Prüfungen vor der Bereitstellung sind jetzt zuverlässiger.",
+        "nl": "De automatische controles vóór implementatie zijn nu betrouwbaarder.",
+        "it": "I controlli automatici prima della distribuzione sono ora più affidabili.",
+        "es": "Las comprobaciones automáticas previas al despliegue son ahora más fiables.",
+        "pl": "Automatyczne kontrole przed wdrożeniem są teraz bardziej niezawodne.",
+        "pt": "As verificações automáticas antes da implementação são agora mais fiáveis."
+      }
+    },
     {
       "version": "5.0.41",
       "releasedAt": "2026-09-05",
