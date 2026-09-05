@@ -37,6 +37,20 @@ aucune publication et ne valide pas la partie terrain de `PASS-G`. Conformément
 décision produit du 5 septembre 2026, cette partie terrain ne bloque toutefois plus
 `SHARE-02` ni les tranches d'implémentation suivantes.
 
+### État de `SHARE-02` au 5 septembre 2026
+
+Le Core `SharePublication`, son identifiant typé et la liste blanche
+`ShareContentPolicy` sont livrés en version 5.2.0. Les cinq intentions partagent le
+même cycle de vie sans partager aveuglément leurs capacités de contenu. Les données
+privées interdites ne sont pas représentables dans la policy V1 et 52 tests ciblés
+couvrent la matrice de confidentialité, les transitions, les aperçus obsolètes, les
+conflits et la révocation. Les décisions et preuves sont détaillées dans
+[`product-growth-share-02-domain-model-2026-09-05.md`](../../architecture/product-growth-share-02-domain-model-2026-09-05.md).
+
+Cette tranche ne crée encore ni stockage MongoDB, ni endpoint, ni page publique.
+`SHARE-03` reste responsable des jetons cryptographiques et de la persistance
+autoritative.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :
