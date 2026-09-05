@@ -263,28 +263,3 @@ public sealed class UserParkItemRatingRankingDto
 
     public UserRatingListItemDto Rating { get; set; } = new UserRatingListItemDto();
 }
-
-public sealed class UserRankingShareVisibilityDto
-{
-    public bool IsPublic { get; set; }
-}
-
-public sealed class UserRankingShareSettingsDto
-{
-    public bool IsPublic { get; set; }
-
-    public string? ShareId { get; set; }
-
-    public DateTime? PublishedAtUtc { get; set; }
-}
-
-public sealed class SharedUserRankingProfileDto
-{
-    public string DisplayName { get; set; } = string.Empty;
-
-    public DateTime PublishedAtUtc { get; set; }
-
-    public bool IsOwner { get; set; }
-
-    public UserRatingStatsDto Stats { get; set; } = new UserRatingStatsDto();
-}
