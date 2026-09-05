@@ -6,10 +6,6 @@ using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Queries;
 
-public sealed record GetVisitQuery(
-    string UserId,
-    string VisitId) : IQuery<ApplicationResult<VisitResult>>;
-
 public sealed record ListUserVisitsQuery(
     string UserId,
     int Limit = UserVisitListCriteria.DefaultLimit,
