@@ -250,8 +250,4 @@ public sealed class RatingRankProvider : IRatingRankProvider
             && expected.GeneratedAtUtc == actual.GeneratedAtUtc
             && expected.BuildAttempt == actual.BuildAttempt;
     }
-
-    private sealed record PublishedSnapshotState(
-        long SourceRevision,
-        RankingPublicationPointer Pointer);
 }
