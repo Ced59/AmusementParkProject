@@ -5,6 +5,7 @@ import { of, Subject, throwError } from 'rxjs';
 import { PassportRideOccurrence } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { SharedService } from '@app/services/shared/shared.service';
 import { ParkItemPassportRideDraft } from '../models/park-item-passport-ride.models';
 import {
   ParkItemPassportRideOccurrencesPort,
@@ -14,6 +15,58 @@ import {
 import { ParkItemPassportRideStateFacade } from './park-item-passport-ride-state.facade';
 
 describe('ParkItemPassportRideStateFacade', () => {
+  it('updates the action visibility when authentication changes without navigation', () => {
+    const dependencies = createDependencies();
+    const loginStatus: Subject<void> = new Subject<void>();
+    dependencies.shared.getLoginStatusListener = vi.fn().mockReturnValue(loginStatus);
+    vi.mocked(dependencies.auth.isLoggedIn).mockReturnValue(false);
+    const facade: ParkItemPassportRideStateFacade = createFacade(dependencies);
+
+    expect(facade.isAuthenticated()).toBe(false);
+
+    vi.mocked(dependencies.auth.isLoggedIn).mockReturnValue(true);
+    loginStatus.next();
+
+    expect(facade.isAuthenticated()).toBe(true);
+  });
+
+  it('renews an expired access token before loading compatible visits', () => {
+    const dependencies = createDependencies();
+    const facade: ParkItemPassportRideStateFacade = createFacade(dependencies);
+    facade.configure({
+      parkItemId: 'ride-1',
+      parkItemName: 'Le Grand Huit',
+      parkId: 'park-1',
+      parkName: 'Parc test',
+      language: 'fr'
+    });
+    vi.mocked(dependencies.auth.isLoggedIn).mockReturnValue(false);
+
+    facade.load();
+
+    expect(dependencies.auth.ensureValidAccessToken).toHaveBeenCalledTimes(1);
+    expect(dependencies.visits.listVisits).toHaveBeenCalledWith(20, null, {
+      parkId: 'park-1',
+      status: 'Draft'
+    });
+    expect(facade.isAuthenticated()).toBe(true);
+  });
+
+  it('clears private visit data immediately after logout', () => {
+    const dependencies = createDependencies();
+    const loginStatus: Subject<void> = new Subject<void>();
+    dependencies.shared.getLoginStatusListener = vi.fn().mockReturnValue(loginStatus);
+    const facade: ParkItemPassportRideStateFacade = createFacade(dependencies);
+    configureAndLoad(facade);
+    expect(facade.visits()).toHaveLength(1);
+
+    vi.mocked(dependencies.auth.isLoggedIn).mockReturnValue(false);
+    loginStatus.next();
+
+    expect(facade.isAuthenticated()).toBe(false);
+    expect(facade.visits()).toEqual([]);
+  });
+
   it('loads only draft visits for the current park and requires an explicit selection', () => {
     const dependencies = createDependencies();
     dependencies.visits.listVisits = vi.fn().mockReturnValue(of({
@@ -175,6 +228,7 @@ interface Dependencies {
   occurrences: ParkItemPassportRideOccurrencesPort;
   operationIds: ParkItemPassportRideOperationIdPort;
   auth: AuthService;
+  shared: SharedService;
 }
 
 function createDependencies(): Dependencies {
@@ -200,8 +254,12 @@ function createDependencies(): Dependencies {
       create: vi.fn().mockReturnValue('operation-1')
     },
     auth: {
-      isLoggedIn: vi.fn().mockReturnValue(true)
-    } as unknown as AuthService
+      isLoggedIn: vi.fn().mockReturnValue(true),
+      ensureValidAccessToken: vi.fn().mockReturnValue(of('access-token'))
+    } as unknown as AuthService,
+    shared: {
+      getLoginStatusListener: vi.fn().mockReturnValue(new Subject<void>())
+    } as unknown as SharedService
   };
 }
 
@@ -214,6 +272,7 @@ function createFacade(dependencies: Dependencies): ParkItemPassportRideStateFaca
     dependencies.occurrences,
     dependencies.operationIds,
     dependencies.auth,
+    dependencies.shared,
     destroyRef);
 }
 

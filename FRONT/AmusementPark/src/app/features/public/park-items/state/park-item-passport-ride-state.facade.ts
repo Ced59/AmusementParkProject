@@ -11,6 +11,7 @@ import {
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisit, PassportVisitPage } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { SharedService } from '@app/services/shared/shared.service';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import {
   isParkItemRideRatingValid,
@@ -43,6 +44,7 @@ interface PendingRideSubmission {
 @Injectable()
 export class ParkItemPassportRideStateFacade {
   private readonly targetSignal = signal<ParkItemPassportRideTarget | null>(null);
+  private readonly authenticatedSignal = signal<boolean>(false);
   private readonly visitsSignal = signal<PassportVisit[]>([]);
   private readonly selectedVisitIdSignal = signal<string | null>(null);
   private readonly loadingSignal = signal<boolean>(false);
@@ -59,7 +61,7 @@ export class ParkItemPassportRideStateFacade {
   private selectionGeneration: number = 0;
   private pendingSubmission: PendingRideSubmission | null = null;
 
-  readonly isAuthenticated: Signal<boolean> = computed((): boolean => this.authService.isLoggedIn());
+  readonly isAuthenticated: Signal<boolean> = this.authenticatedSignal.asReadonly();
   readonly visits: Signal<ParkItemPassportRideVisitOption[]> = computed((): ParkItemPassportRideVisitOption[] => {
     const language: string = this.targetSignal()?.language ?? 'en';
     return this.visitsSignal()
@@ -92,11 +94,17 @@ export class ParkItemPassportRideStateFacade {
     @Inject(PARK_ITEM_PASSPORT_RIDE_OPERATION_ID_PORT)
     private readonly operationIds: ParkItemPassportRideOperationIdPort,
     private readonly authService: AuthService,
+    private readonly sharedService: SharedService,
     private readonly destroyRef: DestroyRef
   ) {
+    this.refreshAuthenticationState();
+    this.sharedService.getLoginStatusListener()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((): void => this.refreshAuthenticationState());
   }
 
   configure(target: ParkItemPassportRideTarget): void {
+    this.refreshAuthenticationState();
     const normalizedTarget: ParkItemPassportRideTarget | null = normalizeTarget(target);
     const previous: ParkItemPassportRideTarget | null = this.targetSignal();
     if (!normalizedTarget) {
@@ -114,7 +122,7 @@ export class ParkItemPassportRideStateFacade {
 
   load(): void {
     const target: ParkItemPassportRideTarget | null = this.targetSignal();
-    if (!target || !this.authService.isLoggedIn() || this.loadingSignal()) {
+    if (!target || this.loadingSignal()) {
       return;
     }
 
@@ -123,29 +131,20 @@ export class ParkItemPassportRideStateFacade {
     this.loadingMoreSignal.set(false);
     this.errorKeySignal.set(null);
     this.outcomeSignal.set(null);
-    this.visitsApi.listVisits(visitPageSize, null, { parkId: target.parkId, status: 'Draft' })
+    this.authService.ensureValidAccessToken()
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (page: PassportVisitPage): void => {
-          if (!this.isCurrentConfiguration(generation, target)) {
-            return;
-          }
-
-          this.visitsSignal.set(this.filterCompatibleVisits(page.items, target.parkId));
-          this.nextCursorSignal.set(normalizeCursor(page.nextCursor));
-          this.loadingSignal.set(false);
-        },
-        error: (error: unknown): void => {
-          if (!this.isCurrentConfiguration(generation, target)) {
-            return;
-          }
-
-          console.error('Error loading draft visits for park item ride logging', error);
-          this.visitsSignal.set([]);
-          this.nextCursorSignal.set(null);
-          this.loadingSignal.set(false);
-          this.errorKeySignal.set('parkItems.passportRide.errors.loadVisits');
+      .subscribe((accessToken: string | null): void => {
+        if (!this.isCurrentConfiguration(generation, target)) {
+          return;
         }
+
+        this.authenticatedSignal.set(accessToken !== null);
+        if (!accessToken) {
+          this.reset(target);
+          return;
+        }
+
+        this.loadDraftVisits(target, generation);
       });
   }
 
@@ -352,6 +351,42 @@ export class ParkItemPassportRideStateFacade {
 
   clearError(): void {
     this.errorKeySignal.set(null);
+  }
+
+  private loadDraftVisits(target: ParkItemPassportRideTarget, generation: number): void {
+    this.visitsApi.listVisits(visitPageSize, null, { parkId: target.parkId, status: 'Draft' })
+      .pipe(take(1), takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (page: PassportVisitPage): void => {
+          if (!this.isCurrentConfiguration(generation, target)) {
+            return;
+          }
+
+          this.visitsSignal.set(this.filterCompatibleVisits(page.items, target.parkId));
+          this.nextCursorSignal.set(normalizeCursor(page.nextCursor));
+          this.loadingSignal.set(false);
+        },
+        error: (error: unknown): void => {
+          if (!this.isCurrentConfiguration(generation, target)) {
+            return;
+          }
+
+          console.error('Error loading draft visits for park item ride logging', error);
+          this.visitsSignal.set([]);
+          this.nextCursorSignal.set(null);
+          this.loadingSignal.set(false);
+          this.errorKeySignal.set('parkItems.passportRide.errors.loadVisits');
+        }
+      });
+  }
+
+  private refreshAuthenticationState(): void {
+    const authenticated: boolean = this.authService.isLoggedIn();
+    if (this.authenticatedSignal() && !authenticated) {
+      this.reset(this.targetSignal());
+    }
+
+    this.authenticatedSignal.set(authenticated);
   }
 
   private saveAssessments(

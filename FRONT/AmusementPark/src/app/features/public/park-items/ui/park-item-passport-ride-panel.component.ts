@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, effect, signal, untracked } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -81,6 +81,12 @@ export class ParkItemPassportRidePanelComponent implements OnChanges {
 
   constructor(facade: ParkItemPassportRideStateFacade) {
     this.facade = facade;
+    effect((): void => {
+      const shouldReloadAfterAuthentication: boolean = this.expanded() && this.facade.isAuthenticated();
+      if (shouldReloadAfterAuthentication) {
+        untracked((): void => this.facade.load());
+      }
+    });
     effect((): void => {
       const selectedVisit: ParkItemPassportRideVisitOption | null = this.facade.selectedVisit();
       if (selectedVisit && !selectedVisit.acceptsLocalTime) {
