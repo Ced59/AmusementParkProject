@@ -1,6 +1,20 @@
 {
-  "version": "5.1.17",
+  "version": "5.1.18",
   "history": [
+    {
+      "version": "5.1.18",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Mise à jour de maintenance des classements.",
+        "en": "Rankings maintenance update.",
+        "de": "Wartungsupdate für Ranglisten.",
+        "nl": "Onderhoudsupdate voor ranglijsten.",
+        "it": "Aggiornamento di manutenzione delle classifiche.",
+        "es": "Actualización de mantenimiento de las clasificaciones.",
+        "pl": "Aktualizacja konserwacyjna rankingów.",
+        "pt": "Atualização de manutenção das classificações."
+      }
+    },
     {
       "version": "5.1.17",
       "releasedAt": "2026-09-05",

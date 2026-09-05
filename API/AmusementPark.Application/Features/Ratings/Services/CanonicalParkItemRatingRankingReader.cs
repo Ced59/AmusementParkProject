@@ -204,6 +204,4 @@ public sealed class CanonicalParkItemRatingRankingReader : ICanonicalParkItemRat
 
         return items;
     }
-
-    private sealed record ParkItemRankingMetadata(ParkItem Item, string ParkName);
 }
