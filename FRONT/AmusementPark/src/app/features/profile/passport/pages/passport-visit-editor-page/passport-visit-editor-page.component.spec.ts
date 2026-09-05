@@ -49,6 +49,8 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-visit-deletion__actions');
     expect(styles).toContain('.passport-attraction__quantity');
     expect(styles).toContain('.passport-selection-card__quantity');
+    expect(styles).toContain('container-type: inline-size');
+    expect(styles).toContain('@container passport-selector (max-width: 46rem)');
     expect(styles).toContain('touch-action: manipulation');
     expect(styles).toContain('.passport-occurrence__drag-handle');
     expect(styles).toContain('touch-action: none');

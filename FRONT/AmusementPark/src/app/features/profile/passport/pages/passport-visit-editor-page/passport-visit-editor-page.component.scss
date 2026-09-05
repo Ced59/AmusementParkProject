@@ -446,6 +446,11 @@
   gap: 0.55rem;
 }
 
+.passport-selector {
+  container-name: passport-selector;
+  container-type: inline-size;
+}
+
 .passport-filters__hint {
   display: inline-flex;
   grid-column: 1 / -1;
@@ -512,6 +517,12 @@
   background: var(--app-surface);
   color: var(--app-text);
   text-align: left;
+}
+
+@container passport-selector (max-width: 46rem) {
+  .passport-attraction-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .passport-attraction:hover,
