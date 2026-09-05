@@ -51,6 +51,7 @@ export class PassportVisitQuickCreateStateFacade {
   private pendingIdempotencyKey: string | null = null;
   private pendingDraftId: string | null = null;
   private pendingRideOperationId: string | null = null;
+  private pendingCreationStartTracked = false;
 
   readonly parkOptions: Signal<PassportParkOption[]> = this.parkOptionsSignal.asReadonly();
   readonly searching: Signal<boolean> = this.searchingSignal.asReadonly();
@@ -97,6 +98,7 @@ export class PassportVisitQuickCreateStateFacade {
       this.pendingIdempotencyKey = this.operationIds.create();
       this.pendingDraftId = this.operationIds.create();
       this.pendingRideOperationId = this.operationIds.create();
+      this.pendingCreationStartTracked = false;
     }
 
     const idempotencyKey: string = this.pendingIdempotencyKey;
@@ -108,12 +110,12 @@ export class PassportVisitQuickCreateStateFacade {
       .subscribe({
         next: (token: string | null): void => {
           if (!token) {
-            this.trackCreation('visit_creation_started', 'anonymous-local', request);
+            this.trackCreationStartOnce('anonymous-local', request);
             void this.saveAnonymousDraft(request, parkName);
             return;
           }
 
-          this.trackCreation('visit_creation_started', 'authenticated', request);
+          this.trackCreationStartOnce('authenticated', request);
           this.sendCreateRequest(request, idempotencyKey);
         },
         error: (): void => {
@@ -131,6 +133,7 @@ export class PassportVisitQuickCreateStateFacade {
     this.pendingIdempotencyKey = null;
     this.pendingDraftId = null;
     this.pendingRideOperationId = null;
+    this.pendingCreationStartTracked = false;
   }
 
   clearParkSearch(): void {
@@ -189,6 +192,7 @@ export class PassportVisitQuickCreateStateFacade {
           this.pendingIdempotencyKey = null;
           this.pendingDraftId = null;
           this.pendingRideOperationId = null;
+          this.pendingCreationStartTracked = false;
           this.trackCreation('visit_created', 'authenticated', request);
           this.messages.add(
             'success',
@@ -238,6 +242,7 @@ export class PassportVisitQuickCreateStateFacade {
       this.pendingIdempotencyKey = null;
       this.pendingDraftId = null;
       this.pendingRideOperationId = null;
+      this.pendingCreationStartTracked = false;
       this.trackCreation('visit_created', 'anonymous-local', request);
       void this.trackSecondAnonymousVisitIfReached();
       this.messages.add(
@@ -286,6 +291,18 @@ export class PassportVisitQuickCreateStateFacade {
       source,
       datePrecision: request.date.precision
     });
+  }
+
+  private trackCreationStartOnce(
+    source: PassportProductSource,
+    request: CreatePassportVisitRequest
+  ): void {
+    if (this.pendingCreationStartTracked) {
+      return;
+    }
+
+    this.pendingCreationStartTracked = true;
+    this.trackCreation('visit_creation_started', source, request);
   }
 
   private async trackSecondAnonymousVisitIfReached(): Promise<void> {

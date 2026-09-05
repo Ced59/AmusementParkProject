@@ -78,11 +78,21 @@ class FakeTranslateService {
 describe('PassportVisitQuickCreateStateFacade', () => {
   it('reuses the same idempotency key when a network response is lost and the same form is retried', () => {
     const api: FakeVisitApi = new FakeVisitApi();
+    const events: PassportProductEvent[] = [];
     api.responses = [
       throwError(() => new HttpErrorResponse({ status: 0 })),
       of(createVisit())
     ];
-    const facade: PassportVisitQuickCreateStateFacade = createFacade(api);
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      new FakeAuthService(),
+      createDraftStore(),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
     const draft: PassportVisitQuickCreateDraft = createDraft();
 
     facade.createVisit(draft);
@@ -93,6 +103,72 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     expect(api.calls[0].key).toBe('operation-1');
     expect(api.calls[1].key).toBe('operation-1');
     expect(facade.createdVisit()?.id).toBe('visit-1');
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
+  it('records one creation start when the same anonymous draft is retried locally', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
+    const baseStore: PassportAnonymousDraftStorePort = createDraftStore(savedDrafts);
+    let saveAttempt: number = 0;
+    const store: PassportAnonymousDraftStorePort = {
+      ...baseStore,
+      save: async (draft: PassportAnonymousDraft): Promise<void> => {
+        saveAttempt += 1;
+        if (saveAttempt === 1) {
+          throw new Error('IndexedDB temporarily unavailable');
+        }
+
+        await baseStore.save(draft);
+      }
+    };
+    auth.token = null;
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      store,
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+
+    facade.createVisit(createDraft(), 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.errorKey()).toBe('passport.quickCreate.errors.localSave');
+    });
+    facade.createVisit(createDraft(), 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.createdLocalDraftId()).toBe('operation-2');
+    });
+
+    expect(savedDrafts).toHaveLength(1);
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
   });
 
   it('uses a new idempotency key when the payload changes after a failed attempt', () => {
