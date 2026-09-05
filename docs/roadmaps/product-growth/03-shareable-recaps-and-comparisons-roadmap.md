@@ -150,12 +150,13 @@ public sealed class SharePublication
     public string OwnerUserId { get; }
     public SharePublicationType Type { get; }
     public string SourceScopeKey { get; }
-    public string? ShareToken { get; private set; }
+    public ShareToken? ShareToken { get; private set; }
     public SharePublicationStatus Status { get; private set; }
     public ShareVisibility Visibility { get; private set; }
     public ShareContentPolicy ContentPolicy { get; private set; }
     public long SourceVersion { get; private set; }
     public long PublicationVersion { get; private set; }
+    public long Version { get; private set; }
     public DateTime? PublishedAtUtc { get; private set; }
     public DateTime? RevokedAtUtc { get; private set; }
     public DateTime UpdatedAtUtc { get; private set; }
