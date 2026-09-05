@@ -4,8 +4,8 @@
       "selector": {
         "lifecycleLabel": "Disponibilità",
         "allLifecycles": "Tutte le attrazioni",
-        "currentOnly": "Attualmente in funzione",
-        "historicalOnly": "Attrazioni storiche",
+        "noRecordedClosure": "Senza chiusura registrata",
+        "closedOrRemoved": "Chiuse o rimosse",
         "instantSearchHint": "I risultati si aggiornano mentre scrivi.",
         "quantityLabel": "Giri selezionati per {{attraction}}",
         "decrease": "Rimuovi un giro per {{attraction}}",

@@ -4,8 +4,8 @@
       "selector": {
         "lifecycleLabel": "Dostępność",
         "allLifecycles": "Wszystkie atrakcje",
-        "currentOnly": "Obecnie działające",
-        "historicalOnly": "Atrakcje historyczne",
+        "noRecordedClosure": "Bez zarejestrowanego zamknięcia",
+        "closedOrRemoved": "Zamknięte lub usunięte",
         "instantSearchHint": "Wyniki aktualizują się podczas pisania.",
         "quantityLabel": "Wybrane przejazdy dla {{attraction}}",
         "decrease": "Usuń jeden przejazd dla {{attraction}}",

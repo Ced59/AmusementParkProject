@@ -1381,7 +1381,9 @@ export class PassportVisitEditorStateFacade {
     };
     const operationName: string = `reorder:${occurrence.id}`;
     const key: string = this.resolveIdempotencyKey(operationName, request);
-    const previousOccurrences: PassportRideOccurrence[] = [...occurrences];
+    const previousOccurrenceIds: string[] = occurrences.map(
+      (candidate: PassportRideOccurrence): string => candidate.id
+    );
     const optimisticOccurrences: PassportRideOccurrence[] = [...occurrences];
     const movedOccurrences: PassportRideOccurrence[] = optimisticOccurrences.splice(sourceIndex, 1);
     optimisticOccurrences.splice(targetIndex, 0, movedOccurrences[0]);
@@ -1412,12 +1414,15 @@ export class PassportVisitEditorStateFacade {
 
         this.setOccurrenceBusy(occurrence.id, false);
         this.reorderingOccurrenceIdSignal.set(null);
-        this.setOccurrences(previousOccurrences);
+        const restoredOrder: { position: number; total: number } = this.restoreOccurrenceOrder(
+          occurrence.id,
+          previousOccurrenceIds
+        );
         this.setOrderAnnouncement(
           'passport.editor.timeline.orderRestored',
           occurrence,
-          sourceIndex + 1,
-          previousOccurrences.length
+          restoredOrder.position,
+          restoredOrder.total
         );
         this.handleMutationError(error, operationName);
       }
@@ -1971,6 +1976,50 @@ export class PassportVisitEditorStateFacade {
       || this.translateService.instant('passport.editor.timeline.unknownAttraction');
     this.orderAnnouncementParamsSignal.set({ attraction: attractionName, position, total });
     this.orderAnnouncementKeySignal.set(key);
+  }
+
+  private restoreOccurrenceOrder(
+    occurrenceId: string,
+    previousOccurrenceIds: readonly string[]
+  ): { position: number; total: number } {
+    const currentOccurrences: PassportRideOccurrence[] = this.occurrencesSignal();
+    const currentIndex: number = currentOccurrences.findIndex(
+      (candidate: PassportRideOccurrence): boolean => candidate.id === occurrenceId
+    );
+    const previousIndex: number = previousOccurrenceIds.indexOf(occurrenceId);
+    if (currentIndex < 0 || previousIndex < 0) {
+      return { position: Math.max(1, currentIndex + 1), total: currentOccurrences.length };
+    }
+
+    const movedOccurrence: PassportRideOccurrence = currentOccurrences[currentIndex];
+    const remainingOccurrences: PassportRideOccurrence[] = currentOccurrences.filter(
+      (candidate: PassportRideOccurrence): boolean => candidate.id !== occurrenceId
+    );
+    const previousIdsBefore: string[] = previousOccurrenceIds.slice(0, previousIndex).reverse();
+    const survivingPreviousId: string | undefined = previousIdsBefore.find(
+      (candidateId: string): boolean => remainingOccurrences.some(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === candidateId
+      )
+    );
+    const previousIdsAfter: string[] = previousOccurrenceIds.slice(previousIndex + 1);
+    const survivingNextId: string | undefined = previousIdsAfter.find(
+      (candidateId: string): boolean => remainingOccurrences.some(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === candidateId
+      )
+    );
+    const targetIndex: number = survivingPreviousId
+      ? remainingOccurrences.findIndex(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === survivingPreviousId
+      ) + 1
+      : survivingNextId
+        ? remainingOccurrences.findIndex(
+          (candidate: PassportRideOccurrence): boolean => candidate.id === survivingNextId
+        )
+        : Math.min(previousIndex, remainingOccurrences.length);
+    const restoredOccurrences: PassportRideOccurrence[] = [...remainingOccurrences];
+    restoredOccurrences.splice(targetIndex, 0, movedOccurrence);
+    this.setOccurrences(restoredOccurrences);
+    return { position: targetIndex + 1, total: restoredOccurrences.length };
   }
 
   private isOccurrenceBusy(occurrenceId: string): boolean {

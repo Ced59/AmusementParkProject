@@ -4,8 +4,8 @@
       "selector": {
         "lifecycleLabel": "Verfügbarkeit",
         "allLifecycles": "Alle Attraktionen",
-        "currentOnly": "Derzeit in Betrieb",
-        "historicalOnly": "Historische Attraktionen",
+        "noRecordedClosure": "Ohne erfasste Schließung",
+        "closedOrRemoved": "Geschlossen oder entfernt",
         "instantSearchHint": "Die Ergebnisse werden während deiner Eingabe aktualisiert.",
         "quantityLabel": "Ausgewählte Fahrten für {{attraction}}",
         "decrease": "Eine Fahrt bei {{attraction}} entfernen",

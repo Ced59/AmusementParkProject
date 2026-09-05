@@ -366,8 +366,8 @@
             <span class="app-field__label">{{ 'passport.editor.selector.lifecycleLabel' | translate }}</span>
             <select class="app-input" [formControl]="lifecycleControl">
               <option value="all">{{ 'passport.editor.selector.allLifecycles' | translate }}</option>
-              <option value="openOnly">{{ 'passport.editor.selector.currentOnly' | translate }}</option>
-              <option value="closedOnly">{{ 'passport.editor.selector.historicalOnly' | translate }}</option>
+              <option value="openOnly">{{ 'passport.editor.selector.noRecordedClosure' | translate }}</option>
+              <option value="closedOnly">{{ 'passport.editor.selector.closedOrRemoved' | translate }}</option>
             </select>
           </label>
 
@@ -903,16 +903,16 @@
                   }
 
                   <div class="passport-occurrence__order" [attr.inert]="facade.visit()?.status === 'Draft' ? null : ''" [attr.aria-label]="'passport.editor.timeline.orderActions' | translate">
-                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
+                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id) || facade.reorderingOccurrenceId() !== null" [attr.aria-label]="'passport.editor.actions.moveFirst' | translate" (click)="facade.moveOccurrence(row.occurrence, 'first')">
                       <span aria-hidden="true">↑↑</span>
                     </button>
-                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveUp' | translate" (click)="facade.moveOccurrence(row.occurrence, 'up')">
+                    <button type="button" [disabled]="index === 0 || isOccurrenceBusy(row.occurrence.id) || facade.reorderingOccurrenceId() !== null" [attr.aria-label]="'passport.editor.actions.moveUp' | translate" (click)="facade.moveOccurrence(row.occurrence, 'up')">
                       <span aria-hidden="true">↑</span>
                     </button>
-                    <button type="button" [disabled]="index >= facade.occurrences().length - 1 || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveDown' | translate" (click)="facade.moveOccurrence(row.occurrence, 'down')">
+                    <button type="button" [disabled]="index >= facade.occurrences().length - 1 || isOccurrenceBusy(row.occurrence.id) || facade.reorderingOccurrenceId() !== null" [attr.aria-label]="'passport.editor.actions.moveDown' | translate" (click)="facade.moveOccurrence(row.occurrence, 'down')">
                       <span aria-hidden="true">↓</span>
                     </button>
-                    <button type="button" [disabled]="(index >= facade.occurrences().length - 1 && !facade.nextTimelineCursor()) || isOccurrenceBusy(row.occurrence.id)" [attr.aria-label]="'passport.editor.actions.moveLast' | translate" (click)="facade.moveOccurrence(row.occurrence, 'last')">
+                    <button type="button" [disabled]="(index >= facade.occurrences().length - 1 && !facade.nextTimelineCursor()) || isOccurrenceBusy(row.occurrence.id) || facade.reorderingOccurrenceId() !== null" [attr.aria-label]="'passport.editor.actions.moveLast' | translate" (click)="facade.moveOccurrence(row.occurrence, 'last')">
                       <span aria-hidden="true">↓↓</span>
                     </button>
                   </div>

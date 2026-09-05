@@ -1942,6 +1942,29 @@ describe('PassportVisitEditorStateFacade', () => {
     });
   });
 
+  it('does not resurrect a passage deleted while another reorder is pending', () => {
+    const reorderResponse: Subject<PassportRideOccurrenceMutationResult> =
+      new Subject<PassportRideOccurrenceMutationResult>();
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence, secondOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: null }));
+    occurrencesPort.reorder.mockReturnValue(reorderResponse);
+    occurrencesPort.delete.mockReturnValue(of(undefined));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.moveOccurrenceToIndex(firstOccurrence, 1);
+    facade.deleteOccurrence(secondOccurrence);
+    reorderResponse.error(new HttpErrorResponse({ status: 500 }));
+
+    expect(facade.occurrences()).toEqual([firstOccurrence]);
+    expect(facade.orderAnnouncementParams()).toEqual({
+      attraction: 'Grand Huit',
+      position: 1,
+      total: 1
+    });
+  });
+
   it('ignores an invalid drag target index without sending a reorder command', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');

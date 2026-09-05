@@ -4,8 +4,8 @@
       "selector": {
         "lifecycleLabel": "Disponibilité",
         "allLifecycles": "Toutes les attractions",
-        "currentOnly": "En activité",
-        "historicalOnly": "Attractions historiques",
+        "noRecordedClosure": "Sans fermeture enregistrée",
+        "closedOrRemoved": "Fermées ou retirées",
         "instantSearchHint": "Les résultats s’actualisent pendant ta saisie.",
         "quantityLabel": "Nombre de passages sélectionnés pour {{attraction}}",
         "decrease": "Retirer un passage pour {{attraction}}",

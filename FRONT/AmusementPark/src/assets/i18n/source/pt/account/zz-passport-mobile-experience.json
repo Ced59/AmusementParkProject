@@ -4,8 +4,8 @@
       "selector": {
         "lifecycleLabel": "Disponibilidade",
         "allLifecycles": "Todas as atrações",
-        "currentOnly": "Atualmente em funcionamento",
-        "historicalOnly": "Atrações históricas",
+        "noRecordedClosure": "Sem encerramento registado",
+        "closedOrRemoved": "Encerradas ou removidas",
         "instantSearchHint": "Os resultados são atualizados enquanto escreves.",
         "quantityLabel": "Voltas selecionadas para {{attraction}}",
         "decrease": "Retirar uma volta em {{attraction}}",
