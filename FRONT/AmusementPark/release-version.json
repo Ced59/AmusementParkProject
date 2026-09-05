@@ -1,6 +1,20 @@
 {
-  "version": "5.1.11",
+  "version": "5.1.12",
   "history": [
+    {
+      "version": "5.1.12",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La fiabilité interne des classements a été renforcée.",
+        "en": "The internal reliability of rankings has been strengthened.",
+        "de": "Die interne Zuverlässigkeit der Ranglisten wurde erhöht.",
+        "nl": "De interne betrouwbaarheid van ranglijsten is versterkt.",
+        "it": "L’affidabilità interna delle classifiche è stata rafforzata.",
+        "es": "Se ha reforzado la fiabilidad interna de las clasificaciones.",
+        "pl": "Wzmocniono wewnętrzną niezawodność rankingów.",
+        "pt": "A fiabilidade interna das classificações foi reforçada."
+      }
+    },
     {
       "version": "5.1.11",
       "releasedAt": "2026-09-05",
