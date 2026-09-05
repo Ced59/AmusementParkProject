@@ -1,6 +1,20 @@
 {
-  "version": "5.1.10",
+  "version": "5.1.11",
   "history": [
+    {
+      "version": "5.1.11",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "L’ergonomie et la fiabilité de l’administration ont été améliorées.",
+        "en": "Administration usability and reliability have been improved.",
+        "de": "Benutzerfreundlichkeit und Zuverlässigkeit der Administration wurden verbessert.",
+        "nl": "De gebruiksvriendelijkheid en betrouwbaarheid van het beheer zijn verbeterd.",
+        "it": "L’ergonomia e l’affidabilità dell’amministrazione sono state migliorate.",
+        "es": "Se han mejorado la ergonomía y la fiabilidad de la administración.",
+        "pl": "Ulepszono ergonomię i niezawodność panelu administracyjnego.",
+        "pt": "A ergonomia e a fiabilidade da administração foram melhoradas."
+      }
+    },
     {
       "version": "5.1.10",
       "releasedAt": "2026-09-05",
