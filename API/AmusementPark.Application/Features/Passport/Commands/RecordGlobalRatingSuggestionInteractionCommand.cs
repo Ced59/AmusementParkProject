@@ -6,11 +6,6 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Passport.Commands;
 
-public sealed record SetGlobalRatingSuggestionsEnabledCommand(
-    string UserId,
-    bool IsEnabled)
-    : ICommand<ApplicationResult<GlobalRatingSuggestionPreferenceResult>>;
-
 public sealed record RecordGlobalRatingSuggestionInteractionCommand(
     string UserId,
     RatingTargetType TargetType,
@@ -18,8 +13,3 @@ public sealed record RecordGlobalRatingSuggestionInteractionCommand(
     GlobalRatingSuggestionInteractionType InteractionType,
     DateTime PresentedAtUtc)
     : ICommand<ApplicationResult<GlobalRatingSuggestionPreferenceResult>>;
-
-public sealed record PresentGlobalRatingSuggestionsCommand(
-    string UserId,
-    IReadOnlyCollection<GlobalRatingSuggestionTargetKey> Targets)
-    : ICommand<ApplicationResult<GlobalRatingSuggestionPresentationResult>>;
