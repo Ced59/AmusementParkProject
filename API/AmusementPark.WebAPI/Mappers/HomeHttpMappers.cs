@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Home;
 using AmusementPark.WebAPI.Contracts.Parks;
@@ -41,6 +43,29 @@ internal static class HomeHttpMappers
                     Count = pair.Value,
                 })
                 .ToList(),
+        };
+    }
+
+    public static HomeLatestArticleDto ToHomeLatestHttp(this HistoryArticleResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        ArgumentNullException.ThrowIfNull(value.Event);
+
+        HistoryArticle? article = value.Event.Article;
+        Park? park = value.ContextPark ?? value.Park;
+
+        return new HomeLatestArticleDto
+        {
+            EventId = value.Event.Id,
+            EntityType = value.Event.EntityType.ToString(),
+            ParkId = park?.Id ?? value.Event.ContextParkId ?? value.Event.ParkId,
+            ParkName = park?.Name,
+            ParkItemId = value.ParkItem?.Id ?? value.Event.ParkItemId,
+            ParkItemName = value.ParkItem?.Name,
+            Slug = article?.Slug ?? value.Event.Slug,
+            Titles = (article?.Titles.Count > 0 ? article.Titles : value.Event.Titles).ToHttp(),
+            Summaries = (article?.Summaries.Count > 0 ? article.Summaries : value.Event.Summaries).ToHttp(),
+            MainImageId = article?.MainImageId ?? value.Event.MainImageId,
         };
     }
 

@@ -4053,6 +4053,27 @@
       "manualSelection": "Selectie",
       "sponsored": "Gesponsord"
     },
+    "latestParks": {
+      "title": "Laatst toegevoegde of bijgewerkte parken",
+      "subtitle": "Ontdek parken die net aan de catalogus zijn toegevoegd of waarvan de pagina onlangs is bijgewerkt.",
+      "loadingTitle": "Nieuwste parken laden",
+      "loadingMessage": "De nieuwste parken worden geladen.",
+      "errorTitle": "Nieuwste parken kunnen niet worden geladen",
+      "errorMessage": "De nieuwste parken konden niet worden geladen.",
+      "emptyTitle": "Geen recente parken",
+      "emptyMessage": "Er is momenteel geen onlangs toegevoegd of bijgewerkt park beschikbaar."
+    },
+    "latestArticles": {
+      "title": "Nieuwste artikelen",
+      "subtitle": "Ontdek de nieuwste verhalen en artikelen over parken en hun attracties.",
+      "loadingTitle": "Nieuwste artikelen laden",
+      "loadingMessage": "De nieuwste artikelen worden geladen.",
+      "errorTitle": "Nieuwste artikelen kunnen niet worden geladen",
+      "errorMessage": "De nieuwste artikelen konden niet worden geladen.",
+      "emptyTitle": "Geen recente artikelen",
+      "emptyMessage": "Er is momenteel geen gepubliceerd artikel beschikbaar.",
+      "discover": "Artikel lezen"
+    },
     "counts": {
       "attraction": {
         "one": "attractie",

@@ -38,4 +38,20 @@ describe('HomeApiService', () => {
     expect(request.request.method).toBe('GET');
     request.flush([]);
   });
+
+  it('requests the latest home content with the requested limits', () => {
+    service.getLatestParks(3).subscribe((parks) => {
+      expect(parks).toEqual([]);
+    });
+    service.getLatestArticles(3).subscribe((articles) => {
+      expect(articles).toEqual([]);
+    });
+
+    const parksRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/home-latest?limit=3`);
+    const articlesRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}history/articles/latest?limit=3`);
+    expect(parksRequest.request.method).toBe('GET');
+    expect(articlesRequest.request.method).toBe('GET');
+    parksRequest.flush([]);
+    articlesRequest.flush([]);
+  });
 });

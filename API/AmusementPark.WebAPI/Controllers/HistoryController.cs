@@ -11,6 +11,7 @@ using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.History;
+using AmusementPark.WebAPI.Contracts.Home;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.OutputCaching;
@@ -29,6 +30,7 @@ public sealed class HistoryController : ControllerBase
     private readonly IQueryHandler<GetParkHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> getParkTimelineHandler;
     private readonly IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> getParkItemTimelineHandler;
     private readonly IQueryHandler<GetHistoryArticleQuery, ApplicationResult<HistoryArticleResult>> getArticleHandler;
+    private readonly IQueryHandler<GetLatestHistoryArticlesQuery, ApplicationResult<IReadOnlyCollection<HistoryArticleResult>>> getLatestArticlesHandler;
     private readonly IQueryHandler<GetHistoryEventsPageQuery, ApplicationResult<PagedResult<HistoryTimelineEventResult>>> getAdminPageHandler;
     private readonly ICommandHandler<UpsertHistoryEventCommand, ApplicationResult<HistoryEvent>> upsertHandler;
     private readonly ICommandHandler<DeleteHistoryEventCommand, ApplicationResult> deleteHandler;
@@ -37,6 +39,7 @@ public sealed class HistoryController : ControllerBase
         IQueryHandler<GetParkHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> getParkTimelineHandler,
         IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>> getParkItemTimelineHandler,
         IQueryHandler<GetHistoryArticleQuery, ApplicationResult<HistoryArticleResult>> getArticleHandler,
+        IQueryHandler<GetLatestHistoryArticlesQuery, ApplicationResult<IReadOnlyCollection<HistoryArticleResult>>> getLatestArticlesHandler,
         IQueryHandler<GetHistoryEventsPageQuery, ApplicationResult<PagedResult<HistoryTimelineEventResult>>> getAdminPageHandler,
         ICommandHandler<UpsertHistoryEventCommand, ApplicationResult<HistoryEvent>> upsertHandler,
         ICommandHandler<DeleteHistoryEventCommand, ApplicationResult> deleteHandler)
@@ -44,6 +47,7 @@ public sealed class HistoryController : ControllerBase
         this.getParkTimelineHandler = getParkTimelineHandler;
         this.getParkItemTimelineHandler = getParkItemTimelineHandler;
         this.getArticleHandler = getArticleHandler;
+        this.getLatestArticlesHandler = getLatestArticlesHandler;
         this.getAdminPageHandler = getAdminPageHandler;
         this.upsertHandler = upsertHandler;
         this.deleteHandler = deleteHandler;
@@ -119,6 +123,25 @@ public sealed class HistoryController : ControllerBase
         }
 
         return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpGet("articles/latest")]
+    [AllowAnonymous]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [ProducesResponseType(typeof(IReadOnlyCollection<HomeLatestArticleDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetLatestArticlesAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<HistoryArticleResult>> result = await this.getLatestArticlesHandler.HandleAsync(
+            new GetLatestHistoryArticlesQuery(limit),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<HomeLatestArticleDto> response = result.Value.Select(static article => article.ToHomeLatestHttp()).ToList();
+        return this.Ok(response);
     }
 
     [HttpGet("/admin/history/events")]

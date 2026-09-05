@@ -484,6 +484,10 @@ body.light-mode .home-hero__title-line--outline {
   margin-top: 1rem;
 }
 
+.home-latest-deferred-placeholder {
+  min-height: 1px;
+}
+
 .home-hint-state {
   padding: 2rem 1.25rem;
 }
@@ -606,7 +610,20 @@ app-pagination {
   }
 
   .home-featured__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 0.9rem;
+    margin-inline: -0.15rem;
+    overflow-x: auto;
+    padding: 0.15rem 0.15rem 0.8rem;
+    scroll-padding-inline: 0.15rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
+  }
+
+  .home-featured__grid > app-ui-featured-park-card {
+    flex: 0 0 min(84vw, 21rem);
+    scroll-snap-align: start;
   }
 
   .home-command-center-shell {

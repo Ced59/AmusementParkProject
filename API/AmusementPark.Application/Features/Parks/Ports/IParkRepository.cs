@@ -76,6 +76,11 @@ public interface IParkRepository
     Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les parcs visibles les plus récemment créés ou mis à jour.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetLatestVisibleAsync(int limit, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Compte les pays réellement couverts par les parcs.
     /// </summary>
     Task<int> CountDistinctCountryCodesAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);

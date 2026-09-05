@@ -4053,6 +4053,27 @@
       "manualSelection": "Auswahl",
       "sponsored": "Gesponsert"
     },
+    "latestParks": {
+      "title": "Zuletzt hinzugefügte oder aktualisierte Parks",
+      "subtitle": "Entdecke Parks, die neu im Katalog sind oder deren Seiten kürzlich aktualisiert wurden.",
+      "loadingTitle": "Neueste Parks werden geladen",
+      "loadingMessage": "Die neuesten Parks werden gerade geladen.",
+      "errorTitle": "Neueste Parks können nicht geladen werden",
+      "errorMessage": "Die neuesten Parks konnten nicht geladen werden.",
+      "emptyTitle": "Keine neuen Parks",
+      "emptyMessage": "Derzeit ist kein neu hinzugefügter oder aktualisierter Park verfügbar."
+    },
+    "latestArticles": {
+      "title": "Neueste Artikel",
+      "subtitle": "Entdecke die neuesten Geschichten und Beiträge über Parks und ihre Attraktionen.",
+      "loadingTitle": "Neueste Artikel werden geladen",
+      "loadingMessage": "Die neuesten Artikel werden gerade geladen.",
+      "errorTitle": "Neueste Artikel können nicht geladen werden",
+      "errorMessage": "Die neuesten Artikel konnten nicht geladen werden.",
+      "emptyTitle": "Keine neuen Artikel",
+      "emptyMessage": "Derzeit ist kein veröffentlichter Artikel verfügbar.",
+      "discover": "Artikel lesen"
+    },
     "counts": {
       "attraction": {
         "one": "Attraktion",

@@ -55,6 +55,7 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler;
     private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
     private readonly IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler;
+    private readonly IQueryHandler<GetLatestHomeParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getLatestHomeParksQueryHandler;
     private readonly IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> getParkDataCompletenessScoreQueryHandler;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler;
     private readonly ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler;
@@ -74,6 +75,7 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler,
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
         IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler,
+        IQueryHandler<GetLatestHomeParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getLatestHomeParksQueryHandler,
         IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> getParkDataCompletenessScoreQueryHandler,
         ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler,
         ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler,
@@ -92,6 +94,7 @@ public sealed class ParksController : ControllerBase
         this.getVisibleParkMapPointsQueryHandler = getVisibleParkMapPointsQueryHandler;
         this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
         this.getHomeFeaturedParksQueryHandler = getHomeFeaturedParksQueryHandler;
+        this.getLatestHomeParksQueryHandler = getLatestHomeParksQueryHandler;
         this.getParkDataCompletenessScoreQueryHandler = getParkDataCompletenessScoreQueryHandler;
         this.updateParkCommandHandler = updateParkCommandHandler;
         this.updateParkVisibilityCommandHandler = updateParkVisibilityCommandHandler;
@@ -140,6 +143,25 @@ public sealed class ParksController : ControllerBase
     {
         ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>> result = await this.getHomeFeaturedParksQueryHandler.HandleAsync(
             new GetHomeFeaturedParksQuery(limit, excludeIds ?? Array.Empty<string>()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<HomeFeaturedParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        return this.Ok(response);
+    }
+
+    [HttpGet("home-latest")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetLatestHomeParksAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>> result = await this.getLatestHomeParksQueryHandler.HandleAsync(
+            new GetLatestHomeParksQuery(limit),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

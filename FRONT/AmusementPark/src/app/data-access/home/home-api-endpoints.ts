@@ -1,4 +1,6 @@
 export const HOME_API_ENDPOINTS = {
   getHomeStats: 'public-stats/home',
-  getFeaturedParks: 'parks/home-featured'
+  getFeaturedParks: 'parks/home-featured',
+  getLatestParks: 'parks/home-latest',
+  getLatestArticles: 'history/articles/latest'
 };

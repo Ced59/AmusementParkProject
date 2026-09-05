@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { HomeFeaturedParkModel } from '@app/models/home/home-featured-park.model';
+import { HomeLatestArticleModel } from '@app/models/home/home-latest-article.model';
 import { HOME_API_ENDPOINTS } from './home-api-endpoints';
 
 interface HomeHttpOptions {
@@ -34,5 +35,15 @@ export class HomeApiService {
     }
 
     return this.http.get<HomeFeaturedParkModel[]>(`${url}?${queryParts.join('&')}`, options);
+  }
+
+  getLatestParks(limit: number = 3, options: HomeHttpOptions = {}): Observable<HomeFeaturedParkModel[]> {
+    const url: string = `${environment.apiBaseUrl}${HOME_API_ENDPOINTS.getLatestParks}`;
+    return this.http.get<HomeFeaturedParkModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}`, options);
+  }
+
+  getLatestArticles(limit: number = 3, options: HomeHttpOptions = {}): Observable<HomeLatestArticleModel[]> {
+    const url: string = `${environment.apiBaseUrl}${HOME_API_ENDPOINTS.getLatestArticles}`;
+    return this.http.get<HomeLatestArticleModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}`, options);
   }
 }

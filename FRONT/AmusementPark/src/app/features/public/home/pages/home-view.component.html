@@ -309,6 +309,12 @@
     </app-page-state>
   </section>
 
+  @defer (on viewport; hydrate on viewport; prefetch on idle) {
+    <app-home-latest-content></app-home-latest-content>
+  } @placeholder {
+    <div class="home-latest-deferred-placeholder" aria-hidden="true"></div>
+  }
+
   <app-public-share-panel
     targetType="Home"
     titleKey="shareSocial.home.title"
