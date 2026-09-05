@@ -471,6 +471,12 @@ body.light-mode .home-hero__title-line--outline {
   gap: 1.15rem;
 }
 
+.home-results > app-page-state,
+.home-featured > app-page-state {
+  min-width: 0;
+  width: 100%;
+}
+
 .home-results__grid {
   display: grid;
   gap: 0.85rem;
