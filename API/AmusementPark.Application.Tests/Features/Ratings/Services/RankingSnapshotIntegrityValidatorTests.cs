@@ -14,7 +14,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     [Fact]
     public void Validate_WhenChunksMatchHeader_ShouldAcceptTheBuild()
     {
-        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 501);
+        RankingSnapshotIntegrityFixture fixture = this.CreateFixture(eligibleEntryCount: 501);
 
         RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
             fixture.Header,
@@ -28,7 +28,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     [Fact]
     public void Validate_WhenAChunkIsMissing_ShouldRejectTheBuild()
     {
-        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 501);
+        RankingSnapshotIntegrityFixture fixture = this.CreateFixture(eligibleEntryCount: 501);
 
         RankingSnapshotIntegrityResult result = this.CreateValidator().Validate(
             fixture.Header,
@@ -42,7 +42,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     [Fact]
     public void Validate_WhenChunkBelongsToAnEarlierBuildAttempt_ShouldRejectTheBuild()
     {
-        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
+        RankingSnapshotIntegrityFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
         RankingSnapshotHeader restartedHeader = CreateHeader(
             fixture.Header.Id,
             fixture.Header.TotalEntryCount,
@@ -63,7 +63,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     [Fact]
     public void Validate_WhenAChunkChecksumWasAltered_ShouldRejectTheBuild()
     {
-        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
+        RankingSnapshotIntegrityFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
         RankingSnapshotChunk original = Assert.Single(fixture.Chunks);
         RankingSnapshotChunk corrupted = new RankingSnapshotChunk(
             original.SnapshotId,
@@ -83,7 +83,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     [Fact]
     public void Validate_WhenOverallChecksumWasAltered_ShouldRejectTheBuild()
     {
-        SnapshotFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
+        RankingSnapshotIntegrityFixture fixture = this.CreateFixture(eligibleEntryCount: 3);
         RankingSnapshotHeader corruptedHeader = CreateHeader(
             fixture.Header.Id,
             fixture.Header.TotalEntryCount,
@@ -376,7 +376,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             this.checksumCalculator.CalculateChunk(new[] { twoPublicCategories }));
     }
 
-    private SnapshotFixture CreateFixture(int eligibleEntryCount)
+    private RankingSnapshotIntegrityFixture CreateFixture(int eligibleEntryCount)
     {
         RankingSnapshotId snapshotId = RankingSnapshotId.Parse("snapshot-1");
         List<RankingSnapshotEntry> entries = Enumerable.Range(1, eligibleEntryCount)
@@ -402,7 +402,7 @@ public sealed class RankingSnapshotIntegrityValidatorTests
             eligibleEntryCount,
             chunks.Count,
             checksum);
-        return new SnapshotFixture(header, chunks);
+        return new RankingSnapshotIntegrityFixture(header, chunks);
     }
 
     private RankingSnapshotChunk CreateChunk(
@@ -506,8 +506,4 @@ public sealed class RankingSnapshotIntegrityValidatorTests
     {
         return new RankingSnapshotIntegrityValidator(this.checksumCalculator);
     }
-
-    private sealed record SnapshotFixture(
-        RankingSnapshotHeader Header,
-        IReadOnlyCollection<RankingSnapshotChunk> Chunks);
 }
