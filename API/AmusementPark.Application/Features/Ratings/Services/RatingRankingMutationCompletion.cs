@@ -216,9 +216,3 @@ internal static class RatingRankingMutationCompletion
             && observed.CanReceiveVisitorRatings == authoritative.CanReceiveVisitorRatings;
     }
 }
-
-internal sealed record RatingRankingPreparedMutation(
-    RatingTargetMetadataResult? Metadata,
-    RatingRankingMutationPreparation Preparation,
-    RatingRankingMutationRecoveryTarget RecoveryTarget,
-    IReadOnlyCollection<ParkItemCategory> ProtectedCategories);
