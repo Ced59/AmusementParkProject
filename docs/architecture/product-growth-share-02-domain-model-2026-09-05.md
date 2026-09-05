@@ -62,13 +62,16 @@ NeedsReview / Private         Revoked / Private
 - une rotation remplace obligatoirement le jeton et change la version publique ;
 - une révocation retire immédiatement le jeton du modèle autoritatif ;
 - un objet révoqué est terminal ;
+- `PublicationVersion` distingue les révisions rendues publiques ;
+- `Version`, ajoutée avec la persistance de `SHARE-03`, clôture chaque mutation
+  MongoDB, y compris les changements d'un brouillon encore à la révision publique zéro ;
 - les versions attendues rendent les conflits explicites ;
 - les versions 64 bits ne reviennent jamais à zéro en cas de dépassement ;
 - toutes les dates techniques sont UTC et chronologiquement validées.
 
-La génération cryptographique et la validation canonique du jeton appartiennent à
-`SHARE-03` et à Infrastructure. `SHARE-02` exige seulement une valeur opaque non vide
-et ne dérive jamais un jeton d'un identifiant utilisateur ou métier.
+La génération cryptographique et la validation canonique du jeton ont été ajoutées
+par `SHARE-03` : le Core porte désormais un `ShareToken` canonique de 256 bits et
+Infrastructure le génère sans jamais le dériver d'un identifiant utilisateur ou métier.
 
 ## Architecture
 

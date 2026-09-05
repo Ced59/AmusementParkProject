@@ -1,6 +1,20 @@
 {
-  "version": "5.2.1",
+  "version": "5.2.2",
   "history": [
+    {
+      "version": "5.2.2",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les futurs partages peuvent être enregistrés et révoqués en toute sécurité.",
+        "en": "Future shares can be saved and revoked securely.",
+        "de": "Künftige Freigaben können sicher gespeichert und widerrufen werden.",
+        "nl": "Toekomstige deelpagina's kunnen veilig worden opgeslagen en ingetrokken.",
+        "it": "Le future condivisioni possono essere salvate e revocate in sicurezza.",
+        "es": "Los futuros contenidos compartidos pueden guardarse y revocarse de forma segura.",
+        "pl": "Przyszłe udostępnienia można bezpiecznie zapisywać i wycofywać.",
+        "pt": "As futuras partilhas podem ser guardadas e revogadas em segurança."
+      }
+    },
     {
       "version": "5.2.1",
       "releasedAt": "2026-09-05",

@@ -12,12 +12,13 @@ public sealed class SharePublication
         string ownerUserId,
         SharePublicationType type,
         string sourceScopeKey,
-        string? shareToken,
+        ShareToken? shareToken,
         SharePublicationStatus status,
         ShareVisibility visibility,
         ShareContentPolicy contentPolicy,
         long sourceVersion,
         long publicationVersion,
+        long version,
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
@@ -31,16 +32,22 @@ public sealed class SharePublication
         ValidatePolicyType(type, contentPolicy);
         ValidateSourceVersion(sourceVersion);
         ValidatePublicationVersion(publicationVersion);
+        ValidateVersion(version);
         ValidateTimestamps(createdAtUtc, updatedAtUtc, publishedAtUtc, revokedAtUtc);
 
         string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(ownerUserId, nameof(ownerUserId));
         string normalizedSourceScopeKey = IdentifierRules.NormalizeRequired(sourceScopeKey, nameof(sourceScopeKey));
-        string? normalizedShareToken = NormalizeOptionalIdentifier(shareToken, nameof(shareToken));
+        if (shareToken.HasValue)
+        {
+            _ = shareToken.Value.Value;
+        }
+
         ValidateRestoredState(
             status,
             visibility,
-            normalizedShareToken,
+            shareToken,
             publicationVersion,
+            version,
             publishedAtUtc,
             revokedAtUtc);
 
@@ -48,12 +55,13 @@ public sealed class SharePublication
         this.OwnerUserId = normalizedOwnerUserId;
         this.Type = type;
         this.SourceScopeKey = normalizedSourceScopeKey;
-        this.ShareToken = normalizedShareToken;
+        this.ShareToken = shareToken;
         this.Status = status;
         this.Visibility = visibility;
         this.ContentPolicy = contentPolicy;
         this.SourceVersion = sourceVersion;
         this.PublicationVersion = publicationVersion;
+        this.Version = version;
         this.PublishedAtUtc = publishedAtUtc;
         this.RevokedAtUtc = revokedAtUtc;
         this.CreatedAtUtc = createdAtUtc;
@@ -68,7 +76,7 @@ public sealed class SharePublication
 
     public string SourceScopeKey { get; }
 
-    public string? ShareToken { get; private set; }
+    public ShareToken? ShareToken { get; private set; }
 
     public SharePublicationStatus Status { get; private set; }
 
@@ -79,6 +87,8 @@ public sealed class SharePublication
     public long SourceVersion { get; private set; }
 
     public long PublicationVersion { get; private set; }
+
+    public long Version { get; private set; }
 
     public DateTime? PublishedAtUtc { get; private set; }
 
@@ -112,6 +122,7 @@ public sealed class SharePublication
             contentPolicy,
             sourceVersion,
             0,
+            0,
             null,
             null,
             nowUtc,
@@ -123,12 +134,13 @@ public sealed class SharePublication
         string ownerUserId,
         SharePublicationType type,
         string sourceScopeKey,
-        string? shareToken,
+        ShareToken? shareToken,
         SharePublicationStatus status,
         ShareVisibility visibility,
         ShareContentPolicy contentPolicy,
         long sourceVersion,
         long publicationVersion,
+        long version,
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
@@ -145,6 +157,7 @@ public sealed class SharePublication
             contentPolicy,
             sourceVersion,
             publicationVersion,
+            version,
             publishedAtUtc,
             revokedAtUtc,
             createdAtUtc,
@@ -168,16 +181,20 @@ public sealed class SharePublication
 
         if (this.Status == SharePublicationStatus.Published)
         {
-            this.IncrementPublicationVersion();
+            this.EnsurePublicationVersionCanIncrement();
         }
+
+        this.EnsureVersionCanIncrement();
 
         this.ContentPolicy = contentPolicy;
         if (this.Status == SharePublicationStatus.Published)
         {
+            this.PublicationVersion++;
             this.Status = SharePublicationStatus.NeedsReview;
             this.Visibility = ShareVisibility.Private;
         }
 
+        this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }
 
@@ -200,21 +217,25 @@ public sealed class SharePublication
 
         if (this.Status == SharePublicationStatus.Published)
         {
-            this.IncrementPublicationVersion();
+            this.EnsurePublicationVersionCanIncrement();
         }
+
+        this.EnsureVersionCanIncrement();
 
         this.SourceVersion = sourceVersion;
         if (this.Status == SharePublicationStatus.Published)
         {
+            this.PublicationVersion++;
             this.Status = SharePublicationStatus.NeedsReview;
             this.Visibility = ShareVisibility.Private;
         }
 
+        this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }
 
     public void Publish(
-        string shareToken,
+        ShareToken shareToken,
         ShareVisibility visibility,
         long approvedSourceVersion,
         ShareContentPolicy approvedContentPolicy,
@@ -254,9 +275,12 @@ public sealed class SharePublication
                 "The approved preview does not match the current content policy.");
         }
 
-        string normalizedShareToken = NormalizeRequiredToken(shareToken);
-        this.IncrementPublicationVersion();
-        this.ShareToken = normalizedShareToken;
+        _ = shareToken.Value;
+        this.EnsurePublicationVersionCanIncrement();
+        this.EnsureVersionCanIncrement();
+        this.PublicationVersion++;
+        this.Version++;
+        this.ShareToken = shareToken;
         this.Status = SharePublicationStatus.Published;
         this.Visibility = visibility;
         this.PublishedAtUtc = nowUtc;
@@ -265,7 +289,7 @@ public sealed class SharePublication
     }
 
     public void RotateToken(
-        string shareToken,
+        ShareToken shareToken,
         long expectedPublicationVersion,
         DateTime nowUtc)
     {
@@ -278,16 +302,19 @@ public sealed class SharePublication
 
         this.ValidateExpectedPublicationVersion(expectedPublicationVersion);
         this.ValidateMutationTimestamp(nowUtc);
-        string normalizedShareToken = NormalizeRequiredToken(shareToken);
-        if (string.Equals(this.ShareToken, normalizedShareToken, StringComparison.Ordinal))
+        _ = shareToken.Value;
+        if (this.ShareToken == shareToken)
         {
             throw CreateValidationException(
                 SharePublicationErrorCodes.ShareTokenUnchanged,
                 "A rotated share link must use a new token.");
         }
 
-        this.IncrementPublicationVersion();
-        this.ShareToken = normalizedShareToken;
+        this.EnsurePublicationVersionCanIncrement();
+        this.EnsureVersionCanIncrement();
+        this.PublicationVersion++;
+        this.Version++;
+        this.ShareToken = shareToken;
         this.UpdatedAtUtc = nowUtc;
     }
 
@@ -307,7 +334,10 @@ public sealed class SharePublication
             return;
         }
 
-        this.IncrementPublicationVersion();
+        this.EnsurePublicationVersionCanIncrement();
+        this.EnsureVersionCanIncrement();
+        this.PublicationVersion++;
+        this.Version++;
         this.Status = SharePublicationStatus.Revoked;
         this.Visibility = ShareVisibility.Private;
         this.ShareToken = null;
@@ -377,6 +407,16 @@ public sealed class SharePublication
         }
     }
 
+    private static void ValidateVersion(long version)
+    {
+        if (version < 0)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.InvalidVersion,
+                "The share publication persistence version cannot be negative.");
+        }
+    }
+
     private static void ValidateTimestamps(
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
@@ -412,35 +452,37 @@ public sealed class SharePublication
     private static void ValidateRestoredState(
         SharePublicationStatus status,
         ShareVisibility visibility,
-        string? shareToken,
+        ShareToken? shareToken,
         long publicationVersion,
+        long version,
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc)
     {
-        bool isValid = status switch
-        {
-            SharePublicationStatus.Draft => visibility == ShareVisibility.Private
-                && shareToken is null
-                && publicationVersion == 0
-                && !publishedAtUtc.HasValue
-                && !revokedAtUtc.HasValue,
-            SharePublicationStatus.Published => visibility is ShareVisibility.Unlisted or ShareVisibility.Public
-                && shareToken is not null
-                && publicationVersion > 0
-                && publishedAtUtc.HasValue
-                && !revokedAtUtc.HasValue,
-            SharePublicationStatus.NeedsReview => visibility == ShareVisibility.Private
-                && shareToken is not null
-                && publicationVersion > 0
-                && publishedAtUtc.HasValue
-                && !revokedAtUtc.HasValue,
-            SharePublicationStatus.Revoked => visibility == ShareVisibility.Private
-                && shareToken is null
-                && publicationVersion > 0
-                && publishedAtUtc.HasValue
-                && revokedAtUtc.HasValue,
-            _ => false,
-        };
+        bool isValid = publicationVersion <= version
+            && (status switch
+            {
+                SharePublicationStatus.Draft => visibility == ShareVisibility.Private
+                    && shareToken is null
+                    && publicationVersion == 0
+                    && !publishedAtUtc.HasValue
+                    && !revokedAtUtc.HasValue,
+                SharePublicationStatus.Published => visibility is ShareVisibility.Unlisted or ShareVisibility.Public
+                    && shareToken is not null
+                    && publicationVersion > 0
+                    && publishedAtUtc.HasValue
+                    && !revokedAtUtc.HasValue,
+                SharePublicationStatus.NeedsReview => visibility == ShareVisibility.Private
+                    && shareToken is not null
+                    && publicationVersion > 0
+                    && publishedAtUtc.HasValue
+                    && !revokedAtUtc.HasValue,
+                SharePublicationStatus.Revoked => visibility == ShareVisibility.Private
+                    && shareToken is null
+                    && publicationVersion > 0
+                    && publishedAtUtc.HasValue
+                    && revokedAtUtc.HasValue,
+                _ => false,
+            });
         if (!isValid)
         {
             throw CreateValidationException(
@@ -457,30 +499,6 @@ public sealed class SharePublication
                 SharePublicationErrorCodes.TimestampNotUtc,
                 "Share publication timestamps must be expressed in UTC.");
         }
-    }
-
-    private static string NormalizeRequiredToken(string? shareToken)
-    {
-        try
-        {
-            return IdentifierRules.NormalizeRequired(shareToken, nameof(shareToken));
-        }
-        catch (ArgumentException exception)
-        {
-            throw CreateValidationException(
-                SharePublicationErrorCodes.ShareTokenRequired,
-                exception.Message);
-        }
-    }
-
-    private static string? NormalizeOptionalIdentifier(string? value, string parameterName)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-        {
-            return null;
-        }
-
-        return IdentifierRules.NormalizeRequired(value, parameterName);
     }
 
     private static SharePublicationValidationException CreateValidationException(
@@ -521,7 +539,7 @@ public sealed class SharePublication
         }
     }
 
-    private void IncrementPublicationVersion()
+    private void EnsurePublicationVersionCanIncrement()
     {
         if (this.PublicationVersion == long.MaxValue)
         {
@@ -529,7 +547,15 @@ public sealed class SharePublication
                 SharePublicationErrorCodes.PublicationVersionOverflow,
                 "The share publication version cannot be incremented further.");
         }
+    }
 
-        this.PublicationVersion++;
+    private void EnsureVersionCanIncrement()
+    {
+        if (this.Version == long.MaxValue)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.VersionOverflow,
+                "The share publication persistence version cannot be incremented further.");
+        }
     }
 }

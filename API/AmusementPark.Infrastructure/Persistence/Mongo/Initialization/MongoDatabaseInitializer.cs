@@ -12,10 +12,12 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Videos;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
@@ -91,6 +93,14 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.RatingAggregatesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.UserRankingSharesCollectionName, cancellationToken);
         await this.InitializeRatingsIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.SharePublicationsCollectionName, cancellationToken);
+        IMongoCollection<SharePublicationDocument> sharePublicationsCollection =
+            this.database.GetCollection<SharePublicationDocument>(
+                this.settings.SharePublicationsCollectionName);
+        await sharePublicationsCollection.Indexes.CreateManyAsync(
+            SharePublicationMongoDefinitions.BuildIndexes(),
+            cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);
