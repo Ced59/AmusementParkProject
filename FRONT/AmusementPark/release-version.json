@@ -1,6 +1,20 @@
 {
-  "version": "5.0.44",
+  "version": "5.0.45",
   "history": [
+    {
+      "version": "5.0.45",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Le partage du classement repose sur une structure interne plus claire et fiable.",
+        "en": "Ranking sharing now relies on a clearer and more reliable internal structure.",
+        "de": "Das Teilen von Ranglisten basiert jetzt auf einer klareren und zuverlässigeren internen Struktur.",
+        "nl": "Het delen van ranglijsten steunt nu op een duidelijkere en betrouwbaardere interne structuur.",
+        "it": "La condivisione delle classifiche si basa ora su una struttura interna più chiara e affidabile.",
+        "es": "La publicación de clasificaciones se apoya ahora en una estructura interna más clara y fiable.",
+        "pl": "Udostępnianie rankingów korzysta teraz z jaśniejszej i bardziej niezawodnej struktury wewnętrznej.",
+        "pt": "A partilha de classificações assenta agora numa estrutura interna mais clara e fiável."
+      }
+    },
     {
       "version": "5.0.44",
       "releasedAt": "2026-09-05",

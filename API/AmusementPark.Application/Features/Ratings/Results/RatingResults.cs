@@ -250,28 +250,3 @@ public sealed record UserParkRatingRankingResult(
 public sealed record UserParkItemRatingRankingResult(
     int Rank,
     UserRatingListItemResult Rating);
-
-public sealed record UserRankingShareSettingsResult(
-    bool IsPublic,
-    string? ShareId,
-    DateTime? PublishedAtUtc);
-
-public sealed record SharedUserRankingProfileResult(
-    string OwnerUserId,
-    string DisplayName,
-    DateTime PublishedAtUtc,
-    UserRatingStatsResult Stats);
-
-public sealed record UserRankingSharePreviewItemResult(
-    int Rank,
-    string Name,
-    string? ParkName,
-    double Rating);
-
-public sealed record UserRankingSharePreviewResult(
-    string DisplayName,
-    IReadOnlyCollection<UserRankingSharePreviewItemResult> Items);
-
-public sealed record UserRankingSharePreviewFileResult(
-    byte[] Content,
-    string ContentType);

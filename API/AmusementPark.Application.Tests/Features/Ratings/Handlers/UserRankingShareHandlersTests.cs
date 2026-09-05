@@ -38,7 +38,7 @@ public sealed class UserRankingShareHandlersTests
         SetUserRankingShareVisibilityCommandHandler handler = new SetUserRankingShareVisibilityCommandHandler(
             repository.Object,
             idFactory.Object,
-            new FixedTimeProvider(Now));
+            new UserRankingShareFixedTimeProvider(Now));
 
         ApplicationResult<UserRankingShareSettingsResult> result = await handler.HandleAsync(
             new SetUserRankingShareVisibilityCommand(" owner-1 ", true));
@@ -69,7 +69,7 @@ public sealed class UserRankingShareHandlersTests
         SetUserRankingShareVisibilityCommandHandler handler = new SetUserRankingShareVisibilityCommandHandler(
             repository.Object,
             idFactory.Object,
-            new FixedTimeProvider(Now));
+            new UserRankingShareFixedTimeProvider(Now));
 
         ApplicationResult<UserRankingShareSettingsResult> result = await handler.HandleAsync(
             new SetUserRankingShareVisibilityCommand("owner-1", false));
@@ -216,18 +216,4 @@ public sealed class UserRankingShareHandlersTests
         userRepository.VerifyNoOtherCalls();
     }
 
-    private sealed class FixedTimeProvider : TimeProvider
-    {
-        private readonly DateTimeOffset now;
-
-        public FixedTimeProvider(DateTimeOffset now)
-        {
-            this.now = now;
-        }
-
-        public override DateTimeOffset GetUtcNow()
-        {
-            return this.now;
-        }
-    }
 }
