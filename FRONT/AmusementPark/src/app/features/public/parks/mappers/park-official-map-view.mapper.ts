@@ -10,13 +10,19 @@ export function mapParkOfficialMapsToViewModels(
   return (officialMaps ?? [])
     .filter((officialMap: ParkOfficialMap) => Number.isInteger(officialMap.year) && officialMap.year >= 1800)
     .map((officialMap: ParkOfficialMap) => {
+      const isStoredDocument: boolean = isInternalDocumentUrl(officialMap.documentUrl);
+      const documentUrl: string = resolveDocumentUrl(officialMap.documentUrl);
+      const isVisible: boolean = officialMap.isVisible !== false;
       const title: string = resolveLocalizedText(officialMap.titles, language, '').trim();
       const alternativeText: string = resolveLocalizedText(officialMap.alternativeTexts, language, title).trim();
       return {
         id: officialMap.id,
         year: officialMap.year,
         format: officialMap.format,
-        documentUrl: resolveDocumentUrl(officialMap.documentUrl),
+        documentUrl,
+        displayDocumentUrl: !isVisible && isStoredDocument ? null : documentUrl,
+        isVisible,
+        isStoredDocument,
         previewImageUrl: normalizeExternalUrl(officialMap.previewImageUrl),
         sourcePageUrl: normalizeExternalUrl(officialMap.sourcePageUrl),
         languageCode: normalizeOptionalText(officialMap.languageCode)?.toUpperCase() ?? null,
@@ -33,6 +39,11 @@ export function mapParkOfficialMapsToViewModels(
       right.year - left.year
       || (left.languageCode ?? '').localeCompare(right.languageCode ?? '')
       || left.id.localeCompare(right.id));
+}
+
+function isInternalDocumentUrl(value: string | null | undefined): boolean {
+  const normalized: string | null = normalizeOptionalText(value);
+  return !!normalized && !/^https?:\/\//i.test(normalized);
 }
 
 function resolveDocumentUrl(value: string | null | undefined): string {

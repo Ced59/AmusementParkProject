@@ -6,6 +6,8 @@ import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 
 import { PARK_MAP_PARKS_PORT, ParkMapHttpOptions, ParkMapParksPort } from './park-map-data.ports';
 import { ParkMapStateFacade } from './park-map-state.facade';
@@ -17,6 +19,7 @@ class FakeParksPort implements ParkMapParksPort {
   public mapItemsResponses$: Observable<ParkMapItems>[] = [];
   public readonly summaryCalls: Array<{ id: string; closedFilter?: ClosedEntityFilter }> = [];
   public readonly mapItemsCalls: Array<{ id: string; closedFilter?: ClosedEntityFilter }> = [];
+  public readonly officialMapFileCalls: Array<{ url: string; skipsAuthorization: boolean }> = [];
 
   getParkDetailSummary(id: string, options?: ParkMapHttpOptions): Observable<ParkDetailSummary> {
     this.summaryCalls.push({ id, closedFilter: options?.closedFilter });
@@ -26,6 +29,14 @@ class FakeParksPort implements ParkMapParksPort {
   getParkMapItems(id: string, options?: ParkMapHttpOptions): Observable<ParkMapItems> {
     this.mapItemsCalls.push({ id, closedFilter: options?.closedFilter });
     return this.mapItemsResponses$.shift() ?? this.mapItemsResponse$;
+  }
+
+  getParkOfficialMapFile(url: string, options?: AnonymousHttpOptions): Observable<Blob> {
+    this.officialMapFileCalls.push({
+      url,
+      skipsAuthorization: options?.context.get(SKIP_AUTHORIZATION_HEADER) ?? false
+    });
+    return of(new Blob(['map'], { type: 'application/pdf' }));
   }
 }
 
@@ -100,6 +111,11 @@ describe('ParkMapStateFacade', () => {
     TestBed.resetTestingModule();
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+    vi.restoreAllMocks();
+  });
+
   it('keeps the default closed filter for operating parks', () => {
     const context = configureFacade();
 
@@ -149,6 +165,31 @@ describe('ParkMapStateFacade', () => {
     expect(context.facade.activeTab()).toBe('official');
     expect(context.facade.selectedOfficialMapYear()).toBe(2026);
     expect(context.facade.visibleOfficialMaps().map(map => map.id)).toEqual(['map-2026']);
+  });
+
+  it('loads hidden stored maps through the HTTP port for admin preview', () => {
+    vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:protected-map');
+    vi.spyOn(URL, 'revokeObjectURL').mockImplementation((): void => {});
+    const context = configureFacade();
+    context.parksPort.mapItemsResponse$ = of({
+      ...createMapItems(createPark()),
+      officialMaps: [{
+        id: 'map-2026',
+        year: 2026,
+        format: 'Pdf',
+        documentUrl: 'parks/park-1/official-maps/map-2026/file',
+        isVisible: false
+      }]
+    });
+
+    context.facade.loadParkMap('park-1');
+
+    expect(context.parksPort.officialMapFileCalls).toHaveLength(1);
+    expect(context.parksPort.officialMapFileCalls[0].url).toContain(
+      'parks/park-1/official-maps/map-2026/file',
+    );
+    expect(context.parksPort.officialMapFileCalls[0].skipsAuthorization).toBe(true);
+    expect(context.facade.visibleOfficialMaps()[0].displayDocumentUrl).toBe('blob:protected-map');
   });
 
   it('keeps the interactive map selected when a marker is displayable', () => {

@@ -68,6 +68,7 @@ public sealed class ParksHttpMappersTests
 
         ParkOfficialMapDto officialMap = Assert.Single(dto.OfficialMaps);
         Assert.Equal("parks/park-one/official-maps/map-2026/file", officialMap.DocumentUrl);
+        Assert.True(officialMap.IsVisible);
         Assert.DoesNotContain("map-2026.pdf", officialMap.DocumentUrl);
     }
 

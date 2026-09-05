@@ -141,11 +141,13 @@
   }
 
   .official-maps__year,
-  .official-map-card__actions a {
+  .official-map-card__actions a,
+  .official-map-card__actions button {
     width: 100%;
   }
 
-  .official-map-card__actions a {
+  .official-map-card__actions a,
+  .official-map-card__actions button {
     justify-content: center;
   }
 }

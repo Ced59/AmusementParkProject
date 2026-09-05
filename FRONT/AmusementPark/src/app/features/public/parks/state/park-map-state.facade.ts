@@ -1,6 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { forkJoin, of } from 'rxjs';
+import { finalize, forkJoin, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
@@ -30,6 +30,8 @@ export class ParkMapStateFacade {
   private readonly selectedClosedFilterSignal = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
   private readonly activeTabSignal = signal<ParkMapPageTab>('interactive');
   private readonly selectedOfficialMapYearSignal = signal<number | null>(null);
+  private readonly protectedOfficialMapUrlsSignal = signal<Readonly<Record<string, string>>>({});
+  private readonly pendingProtectedOfficialMapIds = new Set<string>();
   private currentParkId: string | null = null;
   private hasResolvedDefaultTab: boolean = false;
 
@@ -48,10 +50,16 @@ export class ParkMapStateFacade {
     return mapParkMapItemsToViewModel(data.mapItems, this.currentLanguageSignal());
   });
   public readonly officialMaps: Signal<ParkOfficialMapViewModel[]> = computed(() => {
+    const protectedUrls: Readonly<Record<string, string>> = this.protectedOfficialMapUrlsSignal();
     return mapParkOfficialMapsToViewModels(
       this.screenStateStore.data()?.mapItems.officialMaps,
       this.currentLanguageSignal()
-    );
+    ).map((officialMap: ParkOfficialMapViewModel) => officialMap.isStoredDocument && !officialMap.isVisible
+      ? {
+          ...officialMap,
+          displayDocumentUrl: protectedUrls[officialMap.id] ?? null
+        }
+      : officialMap);
   });
   public readonly officialMapYears: Signal<number[]> = computed(() => {
     return Array.from(new Set(this.officialMaps().map((officialMap: ParkOfficialMapViewModel) => officialMap.year)))
@@ -69,6 +77,7 @@ export class ParkMapStateFacade {
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
+    this.destroyRef.onDestroy((): void => this.clearProtectedOfficialMapUrls());
   }
 
   setCurrentLanguage(language: string): void {
@@ -77,6 +86,7 @@ export class ParkMapStateFacade {
 
   loadParkMap(parkId: string, closedFilter: ClosedEntityFilter = DEFAULT_CLOSED_ENTITY_FILTER): void {
     if (parkId !== this.currentParkId) {
+      this.clearProtectedOfficialMapUrls();
       this.currentParkId = parkId;
       this.activeTabSignal.set('interactive');
       this.selectedOfficialMapYearSignal.set(null);
@@ -121,6 +131,11 @@ export class ParkMapStateFacade {
         if (!years.includes(this.selectedOfficialMapYearSignal() ?? Number.NaN)) {
           this.selectedOfficialMapYearSignal.set(years[0] ?? null);
         }
+        this.loadProtectedOfficialMapsForYear(
+          officialMaps,
+          this.selectedOfficialMapYearSignal(),
+          parkId
+        );
 
         const interactiveMap: ParkItemsMapViewModel = mapParkMapItemsToViewModel(
           data.mapItems,
@@ -153,6 +168,61 @@ export class ParkMapStateFacade {
   selectOfficialMapYear(year: number): void {
     if (this.officialMapYears().includes(year)) {
       this.selectedOfficialMapYearSignal.set(year);
+      this.loadProtectedOfficialMapsForYear(this.officialMaps(), year, this.currentParkId);
     }
+  }
+
+  private loadProtectedOfficialMapsForYear(
+    officialMaps: readonly ParkOfficialMapViewModel[],
+    year: number | null,
+    parkId: string | null
+  ): void {
+    if (year === null || !parkId || typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function') {
+      return;
+    }
+
+    for (const officialMap of officialMaps) {
+      if (officialMap.year !== year
+        || officialMap.isVisible
+        || !officialMap.isStoredDocument
+        || this.protectedOfficialMapUrlsSignal()[officialMap.id]
+        || this.pendingProtectedOfficialMapIds.has(officialMap.id)) {
+        continue;
+      }
+
+      this.pendingProtectedOfficialMapIds.add(officialMap.id);
+      this.parksPort.getParkOfficialMapFile(officialMap.documentUrl, anonymousHttpOptions()).pipe(
+        finalize((): void => {
+          this.pendingProtectedOfficialMapIds.delete(officialMap.id);
+        }),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe({
+        next: (content: Blob): void => {
+          if (this.currentParkId !== parkId) {
+            return;
+          }
+
+          const objectUrl: string = URL.createObjectURL(content);
+          this.protectedOfficialMapUrlsSignal.update((current: Readonly<Record<string, string>>) => ({
+            ...current,
+            [officialMap.id]: objectUrl
+          }));
+        },
+        error: (error: unknown): void => {
+          console.error('Error loading protected official park map', error);
+        }
+      });
+    }
+  }
+
+  private clearProtectedOfficialMapUrls(): void {
+    if (typeof URL !== 'undefined' && typeof URL.revokeObjectURL === 'function') {
+      Object.values(this.protectedOfficialMapUrlsSignal()).forEach((objectUrl: string): void => {
+        URL.revokeObjectURL(objectUrl);
+      });
+    }
+
+    this.protectedOfficialMapUrlsSignal.set({});
+    this.pendingProtectedOfficialMapIds.clear();
   }
 }

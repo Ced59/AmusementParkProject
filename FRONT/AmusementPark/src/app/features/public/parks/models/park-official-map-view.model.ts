@@ -7,6 +7,9 @@ export interface ParkOfficialMapViewModel {
   year: number;
   format: ParkOfficialMapFormat;
   documentUrl: string;
+  displayDocumentUrl: string | null;
+  isVisible: boolean;
+  isStoredDocument: boolean;
   previewImageUrl: string | null;
   sourcePageUrl: string | null;
   languageCode: string | null;

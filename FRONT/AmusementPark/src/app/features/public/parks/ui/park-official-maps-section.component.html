@@ -23,22 +23,32 @@
   <div class="official-maps__grid">
     @for (map of maps; track map.id) {
       <article class="official-map-card">
-        @if (map.isImage) {
-          <a class="official-map-card__preview" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
+        @if (map.isImage && map.displayDocumentUrl) {
+          <a class="official-map-card__preview" [href]="map.displayDocumentUrl" target="_blank" rel="noopener noreferrer">
             <img
-              [src]="map.documentUrl"
+              [src]="map.displayDocumentUrl"
               [alt]="map.alternativeText"
               loading="lazy"
               decoding="async">
           </a>
         } @else if (map.previewImageUrl) {
-          <a class="official-map-card__preview" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
-            <img
-              [src]="map.previewImageUrl"
-              [alt]="map.alternativeText || map.title || parkName"
-              loading="lazy"
-              decoding="async">
-          </a>
+          @if (map.displayDocumentUrl) {
+            <a class="official-map-card__preview" [href]="map.displayDocumentUrl" target="_blank" rel="noopener noreferrer">
+              <img
+                [src]="map.previewImageUrl"
+                [alt]="map.alternativeText || map.title || parkName"
+                loading="lazy"
+                decoding="async">
+            </a>
+          } @else {
+            <div class="official-map-card__preview">
+              <img
+                [src]="map.previewImageUrl"
+                [alt]="map.alternativeText || map.title || parkName"
+                loading="lazy"
+                decoding="async">
+            </div>
+          }
         } @else {
           <div class="official-map-card__placeholder" aria-hidden="true">
             <i [class]="map.isPdf ? 'pi pi-file-pdf' : 'pi pi-file'"></i>
@@ -63,10 +73,17 @@
           }
 
           <div class="official-map-card__actions">
-            <a appUiButton="primary" [href]="map.documentUrl" target="_blank" rel="noopener noreferrer">
-              <i class="pi pi-external-link" aria-hidden="true"></i>
-              <span>{{ 'parks.mapPage.official.open' | translate }}</span>
-            </a>
+            @if (map.displayDocumentUrl) {
+              <a appUiButton="primary" [href]="map.displayDocumentUrl" target="_blank" rel="noopener noreferrer">
+                <i class="pi pi-external-link" aria-hidden="true"></i>
+                <span>{{ 'parks.mapPage.official.open' | translate }}</span>
+              </a>
+            } @else {
+              <button appUiButton="primary" type="button" disabled aria-busy="true">
+                <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                <span>{{ 'parks.mapPage.official.open' | translate }}</span>
+              </button>
+            }
             @if (map.sourcePageUrl) {
               <a appUiButton="ghost" [href]="map.sourcePageUrl" target="_blank" rel="noopener noreferrer">
                 <i class="pi pi-verified" aria-hidden="true"></i>

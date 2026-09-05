@@ -12,6 +12,8 @@ public sealed class ParkOfficialMapDto
 
     public required string DocumentUrl { get; set; }
 
+    public bool IsVisible { get; set; }
+
     public string? OriginalFileName { get; set; }
 
     public string? ContentType { get; set; }

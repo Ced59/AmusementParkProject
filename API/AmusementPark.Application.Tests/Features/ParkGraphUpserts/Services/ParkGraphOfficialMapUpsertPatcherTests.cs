@@ -9,6 +9,19 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 public sealed class ParkGraphOfficialMapUpsertPatcherTests
 {
     [Fact]
+    public void Patch_WhenOfficialMapsIsNotAnArray_ShouldReportAnError()
+    {
+        Park park = new Park { Id = "park-1", Name = "Map Park" };
+        ParkGraphUpsertResult result = new ParkGraphUpsertResult();
+        using JsonDocument document = JsonDocument.Parse("""{ "officialMaps": { "year": 2026 } }""");
+
+        ParkGraphOfficialMapUpsertPatcher.Patch(park, document.RootElement, result);
+
+        Assert.Contains(result.Errors, static error => error.Contains("doit être un tableau JSON", StringComparison.Ordinal));
+        Assert.Empty(park.OfficialMaps);
+    }
+
+    [Fact]
     public void Patch_WhenOneEntryIsInvalid_ShouldNotApplyAnyOfficialMapFromTheBatch()
     {
         Park park = new Park

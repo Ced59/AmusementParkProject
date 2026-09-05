@@ -17,6 +17,7 @@ export interface ParkOfficialMap {
   year: number;
   format: ParkOfficialMapFormat;
   documentUrl: string;
+  isVisible?: boolean;
   originalFileName?: string | null;
   contentType?: string | null;
   sizeInBytes?: number | null;

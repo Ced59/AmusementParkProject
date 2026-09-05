@@ -72,6 +72,23 @@ describe('ParksApiService', () => {
     expect(result.length).toBe(1);
   });
 
+  it('loads an official map file as a non-transfer-cached blob', () => {
+    const url: string = `${environment.apiBaseUrl}parks/park-1/official-maps/map-2026/file`;
+    const content: Blob = new Blob(['map'], { type: 'application/pdf' });
+    let result: Blob | null = null;
+
+    service.getParkOfficialMapFile(url).subscribe((value: Blob): void => {
+      result = value;
+    });
+
+    const request = httpTestingController.expectOne(url);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.responseType).toBe('blob');
+    expect(request.request.transferCache).toBe(false);
+    request.flush(content);
+    expect(result).toEqual(content);
+  });
+
   it('shares in-flight park detail summary requests without persisting stale data', () => {
     const firstSummary: ParkDetailSummary = createParkDetailSummary('Park');
     const secondSummary: ParkDetailSummary =

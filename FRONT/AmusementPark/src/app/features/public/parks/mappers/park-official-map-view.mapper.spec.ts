@@ -17,6 +17,7 @@ describe('mapParkOfficialMapsToViewModels', () => {
         year: 2026,
         format: 'Pdf',
         documentUrl: 'parks/park-1/official-maps/map-2026/file',
+        isVisible: false,
         titles: [
           { languageCode: 'fr', value: 'Plan 2026' },
           { languageCode: 'en', value: '2026 map' }
@@ -27,6 +28,8 @@ describe('mapParkOfficialMapsToViewModels', () => {
     expect(result.map(map => map.year)).toEqual([2026, 2024]);
     expect(result[0].title).toBe('Plan 2026');
     expect(result[0].documentUrl).toBe(`${environment.apiBaseUrl}parks/park-1/official-maps/map-2026/file`);
+    expect(result[0].displayDocumentUrl).toBeNull();
+    expect(result[0].isStoredDocument).toBe(true);
   });
 
   it('ignores entries without a usable year or document URL', () => {

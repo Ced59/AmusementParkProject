@@ -14,6 +14,11 @@ internal static class ParkGraphOfficialMapUpsertPatcher
         JsonElement? patches = GetArray(parkPatch, "officialMaps");
         if (patches is null)
         {
+            if (HasProperty(parkPatch, "officialMaps"))
+            {
+                result.Errors.Add("park.officialMaps doit être un tableau JSON.");
+            }
+
             return;
         }
 

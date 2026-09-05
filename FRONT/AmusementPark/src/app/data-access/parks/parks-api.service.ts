@@ -94,6 +94,14 @@ export class ParksApiService {
     return this.http.get<Park>(url, options);
   }
 
+  getParkOfficialMapFile(url: string, options: ParksHttpOptions = {}): Observable<Blob> {
+    return this.http.get(url, {
+      ...options,
+      responseType: 'blob',
+      transferCache: false
+    });
+  }
+
   getParkDataCompletenessScore(id: string): Observable<DataCompletenessScore> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDataCompletenessScore(id)}`;
     return this.http.get<DataCompletenessScore>(url);

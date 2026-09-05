@@ -242,6 +242,7 @@ internal static class ParksHttpMappers
                 DocumentUrl = string.IsNullOrWhiteSpace(officialMap.StorageKey)
                     ? officialMap.DocumentUrl ?? string.Empty
                     : $"parks/{Uri.EscapeDataString(value.Park.Id)}/official-maps/{Uri.EscapeDataString(officialMap.Id)}/file",
+                IsVisible = officialMap.IsVisible,
                 OriginalFileName = officialMap.OriginalFileName,
                 ContentType = officialMap.ContentType,
                 SizeInBytes = officialMap.SizeInBytes,
