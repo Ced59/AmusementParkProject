@@ -4,14 +4,6 @@ using AmusementPark.Application.Features.Passport.Results;
 
 namespace AmusementPark.Application.Features.Passport.Commands;
 
-public sealed record UpsertRideAssessmentCommand(
-    string UserId,
-    string OccurrenceId,
-    double Value,
-    string? PrivateComment,
-    long ExpectedVersion)
-    : ICommand<ApplicationResult<RideOccurrenceResult>>;
-
 public sealed record DeleteRideAssessmentCommand(
     string UserId,
     string OccurrenceId,

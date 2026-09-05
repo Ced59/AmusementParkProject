@@ -18,18 +18,3 @@ public sealed record UpdateVisitMetadataCommand(
     string? Title,
     string? PrivateNote,
     long ExpectedVersion) : ICommand<ApplicationResult<VisitResult>>;
-
-public sealed record CompleteVisitCommand(
-    string UserId,
-    string VisitId,
-    long ExpectedVersion) : ICommand<ApplicationResult<VisitResult>>;
-
-public sealed record ReopenVisitCommand(
-    string UserId,
-    string VisitId,
-    long ExpectedVersion) : ICommand<ApplicationResult<VisitResult>>;
-
-public sealed record ArchiveVisitCommand(
-    string UserId,
-    string VisitId,
-    long ExpectedVersion) : ICommand<ApplicationResult<VisitResult>>;
