@@ -51,6 +51,24 @@ Cette tranche ne crée encore ni stockage MongoDB, ni endpoint, ni page publique
 `SHARE-03` reste responsable des jetons cryptographiques et de la persistance
 autoritative.
 
+### État de `SHARE-03` au 5 septembre 2026
+
+La persistance autoritative est livrée en version 5.2.2 dans une collection MongoDB
+dédiée. Les jetons publics portent 256 bits générés par CSPRNG, sont validés sous leur
+forme Base64 URL canonique et protégés par un index unique partiel. La révocation et
+la rotation s'écrivent par remplacement atomique borné au propriétaire et à une
+version de concurrence distincte de la version du rendu public.
+
+La résolution publique exige toujours le jeton complet et aucun contrat de liste
+publique n'existe. Les documents ne peuvent contenir que la policy en liste blanche
+et les métadonnées internes du cycle de vie ; les données privées interdites en sont
+physiquement absentes. L'architecture et les preuves sont détaillées dans
+[`product-growth-share-03-persistence-2026-09-05.md`](../../architecture/product-growth-share-03-persistence-2026-09-05.md).
+
+Le nouveau stockage n'est pas encore branché sur une route publique et l'ancien
+partage de classement reste seul actif jusqu'à sa migration de remplacement
+`SHARE-04A`. Il n'existe donc ni double écriture ni double moteur actif.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :
@@ -132,12 +150,13 @@ public sealed class SharePublication
     public string OwnerUserId { get; }
     public SharePublicationType Type { get; }
     public string SourceScopeKey { get; }
-    public string? ShareToken { get; private set; }
+    public ShareToken? ShareToken { get; private set; }
     public SharePublicationStatus Status { get; private set; }
     public ShareVisibility Visibility { get; private set; }
     public ShareContentPolicy ContentPolicy { get; private set; }
     public long SourceVersion { get; private set; }
     public long PublicationVersion { get; private set; }
+    public long Version { get; private set; }
     public DateTime? PublishedAtUtc { get; private set; }
     public DateTime? RevokedAtUtc { get; private set; }
     public DateTime UpdatedAtUtc { get; private set; }

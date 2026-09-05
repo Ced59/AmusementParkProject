@@ -17,9 +17,13 @@ public static class SharePublicationErrorCodes
 
     public const string InvalidPublicationVersion = "share-publication.invalid-publication-version";
 
+    public const string InvalidVersion = "share-publication.invalid-version";
+
     public const string PublicationVersionConflict = "share-publication.publication-version-conflict";
 
     public const string PublicationVersionOverflow = "share-publication.publication-version-overflow";
+
+    public const string VersionOverflow = "share-publication.version-overflow";
 
     public const string PreviewSourceVersionMismatch = "share-publication.preview-source-version-mismatch";
 

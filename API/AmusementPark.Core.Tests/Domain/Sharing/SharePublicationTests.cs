@@ -5,6 +5,12 @@ namespace AmusementPark.Core.Tests.Domain.Sharing;
 
 public sealed class SharePublicationTests
 {
+    private const string InitialShareTokenValue =
+        "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA";
+
+    private const string RotatedShareTokenValue =
+        "ISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0-P0A";
+
     private static readonly DateTime InitialUtc =
         new DateTime(2026, 9, 5, 20, 0, 0, DateTimeKind.Utc);
 
@@ -22,6 +28,7 @@ public sealed class SharePublicationTests
         Assert.Null(publication.ShareToken);
         Assert.Equal(4, publication.SourceVersion);
         Assert.Equal(0, publication.PublicationVersion);
+        Assert.Equal(0, publication.Version);
         Assert.False(publication.IsResolvable);
         Assert.Null(publication.PublishedAtUtc);
         Assert.Null(publication.RevokedAtUtc);
@@ -48,7 +55,7 @@ public sealed class SharePublicationTests
         DateTime publishedAtUtc = InitialUtc.AddMinutes(1);
 
         publication.Publish(
-            "  opaque-token  ",
+            InitialShareToken(),
             ShareVisibility.Unlisted,
             approvedSourceVersion: 4,
             approvedContentPolicy: publication.ContentPolicy,
@@ -57,7 +64,8 @@ public sealed class SharePublicationTests
 
         Assert.Equal(SharePublicationStatus.Published, publication.Status);
         Assert.Equal(ShareVisibility.Unlisted, publication.Visibility);
-        Assert.Equal("opaque-token", publication.ShareToken);
+        Assert.Equal(InitialShareTokenValue, publication.ShareToken?.Value);
+        Assert.Equal(1, publication.Version);
         Assert.Equal(1, publication.PublicationVersion);
         Assert.True(publication.IsResolvable);
         Assert.Equal(publishedAtUtc, publication.PublishedAtUtc);
@@ -82,7 +90,7 @@ public sealed class SharePublicationTests
 
         SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
             () => publication.Publish(
-                "opaque-token",
+                InitialShareToken(),
                 ShareVisibility.Unlisted,
                 sourceVersion,
                 approvedPolicy,
@@ -108,7 +116,7 @@ public sealed class SharePublicationTests
 
         SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
             () => publication.Publish(
-                "opaque-token",
+                InitialShareToken(),
                 ShareVisibility.Private,
                 4,
                 publication.ContentPolicy,
@@ -127,9 +135,10 @@ public sealed class SharePublicationTests
 
         Assert.Equal(SharePublicationStatus.NeedsReview, publication.Status);
         Assert.Equal(ShareVisibility.Private, publication.Visibility);
-        Assert.Equal("opaque-token", publication.ShareToken);
+        Assert.Equal(InitialShareTokenValue, publication.ShareToken?.Value);
         Assert.Equal(5, publication.SourceVersion);
         Assert.Equal(2, publication.PublicationVersion);
+        Assert.Equal(2, publication.Version);
         Assert.False(publication.IsResolvable);
     }
 
@@ -172,6 +181,7 @@ public sealed class SharePublicationTests
         Assert.Equal(SharePublicationStatus.NeedsReview, publication.Status);
         Assert.Equal(ShareVisibility.Private, publication.Visibility);
         Assert.Equal(2, publication.PublicationVersion);
+        Assert.Equal(2, publication.Version);
         Assert.False(publication.IsResolvable);
     }
 
@@ -202,7 +212,7 @@ public sealed class SharePublicationTests
         publication.MarkSourceChanged(5, InitialUtc.AddMinutes(2));
 
         publication.Publish(
-            "opaque-token",
+            InitialShareToken(),
             ShareVisibility.Public,
             approvedSourceVersion: 5,
             approvedContentPolicy: publication.ContentPolicy,
@@ -220,9 +230,10 @@ public sealed class SharePublicationTests
     {
         SharePublication publication = CreatePublishedPublication();
 
-        publication.RotateToken("new-token", 1, InitialUtc.AddMinutes(2));
+        publication.RotateToken(RotatedShareToken(), 1, InitialUtc.AddMinutes(2));
 
-        Assert.Equal("new-token", publication.ShareToken);
+        Assert.Equal(RotatedShareTokenValue, publication.ShareToken?.Value);
+        Assert.Equal(2, publication.Version);
         Assert.Equal(2, publication.PublicationVersion);
         Assert.True(publication.IsResolvable);
     }
@@ -233,7 +244,7 @@ public sealed class SharePublicationTests
         SharePublication publication = CreatePublishedPublication();
 
         SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
-            () => publication.RotateToken(" opaque-token ", 1, InitialUtc.AddMinutes(2)));
+            () => publication.RotateToken(InitialShareToken(), 1, InitialUtc.AddMinutes(2)));
 
         Assert.Equal(SharePublicationErrorCodes.ShareTokenUnchanged, exception.ErrorCode);
         Assert.Equal(1, publication.PublicationVersion);
@@ -283,12 +294,28 @@ public sealed class SharePublicationTests
         Assert.Equal(SharePublicationErrorCodes.InvalidTransition, exception.ErrorCode);
     }
 
+    [Fact]
+    public void ReplaceContentPolicy_WhenDraft_ShouldAdvanceOnlyThePersistenceVersion()
+    {
+        SharePublication publication = CreatePublication();
+        ShareContentPolicy nextPolicy = ShareContentPolicy.Create(
+            SharePublicationType.VisitRecap,
+            ShareDatePrecision.Year,
+            new[] { ShareContentField.RideCount });
+
+        publication.ReplaceContentPolicy(nextPolicy, 0, InitialUtc.AddMinutes(1));
+
+        Assert.Equal(0, publication.PublicationVersion);
+        Assert.Equal(1, publication.Version);
+        Assert.Equal(SharePublicationStatus.Draft, publication.Status);
+    }
+
     [Theory]
     [InlineData(SharePublicationStatus.Draft, ShareVisibility.Unlisted, null, 0, false, false)]
-    [InlineData(SharePublicationStatus.Published, ShareVisibility.Private, "token", 1, true, false)]
+    [InlineData(SharePublicationStatus.Published, ShareVisibility.Private, InitialShareTokenValue, 1, true, false)]
     [InlineData(SharePublicationStatus.Published, ShareVisibility.Unlisted, null, 1, true, false)]
     [InlineData(SharePublicationStatus.NeedsReview, ShareVisibility.Private, null, 1, true, false)]
-    [InlineData(SharePublicationStatus.Revoked, ShareVisibility.Private, "token", 2, true, true)]
+    [InlineData(SharePublicationStatus.Revoked, ShareVisibility.Private, InitialShareTokenValue, 2, true, true)]
     public void Restore_WhenLifecycleStateIsInconsistent_ShouldRejectIt(
         SharePublicationStatus status,
         ShareVisibility visibility,
@@ -316,7 +343,7 @@ public sealed class SharePublicationTests
         SharePublication publication = RestorePublication(
             SharePublicationStatus.Published,
             ShareVisibility.Public,
-            "token",
+            InitialShareTokenValue,
             3,
             InitialUtc.AddMinutes(1),
             null,
@@ -324,6 +351,44 @@ public sealed class SharePublicationTests
 
         Assert.True(publication.IsResolvable);
         Assert.Equal(3, publication.PublicationVersion);
+    }
+
+    [Fact]
+    public void Restore_WhenTokenIsUninitialized_ShouldRejectIt()
+    {
+        Assert.Throws<InvalidOperationException>(() => SharePublication.Restore(
+            SharePublicationId.Parse("publication-1"),
+            "user-1",
+            SharePublicationType.VisitRecap,
+            "visit:user-1:visit-1",
+            default(ShareToken),
+            SharePublicationStatus.Published,
+            ShareVisibility.Unlisted,
+            ShareContentPolicy.CreatePrivateDefault(SharePublicationType.VisitRecap),
+            4,
+            1,
+            1,
+            InitialUtc.AddMinutes(1),
+            null,
+            InitialUtc,
+            InitialUtc.AddMinutes(1)));
+    }
+
+    [Fact]
+    public void Restore_WhenPersistenceVersionTrailsPublicVersion_ShouldRejectIt()
+    {
+        SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
+            () => RestorePublication(
+                SharePublicationStatus.Published,
+                ShareVisibility.Unlisted,
+                InitialShareTokenValue,
+                2,
+                InitialUtc.AddMinutes(1),
+                null,
+                InitialUtc.AddMinutes(1),
+                1));
+
+        Assert.Equal(SharePublicationErrorCodes.InvalidRestoredState, exception.ErrorCode);
     }
 
     [Fact]
@@ -351,10 +416,10 @@ public sealed class SharePublicationTests
         SharePublication publication = CreatePublishedPublication();
 
         SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
-            () => publication.RotateToken("new-token", 1, InitialUtc));
+            () => publication.RotateToken(RotatedShareToken(), 1, InitialUtc));
 
         Assert.Equal(SharePublicationErrorCodes.InvalidTimestampOrder, exception.ErrorCode);
-        Assert.Equal("opaque-token", publication.ShareToken);
+        Assert.Equal(InitialShareTokenValue, publication.ShareToken?.Value);
         Assert.Equal(1, publication.PublicationVersion);
     }
 
@@ -364,7 +429,7 @@ public sealed class SharePublicationTests
         SharePublication publication = RestorePublication(
             SharePublicationStatus.Published,
             ShareVisibility.Unlisted,
-            "opaque-token",
+            InitialShareTokenValue,
             long.MaxValue,
             InitialUtc.AddMinutes(1),
             null,
@@ -377,6 +442,30 @@ public sealed class SharePublicationTests
         Assert.Equal(4, publication.SourceVersion);
         Assert.Equal(SharePublicationStatus.Published, publication.Status);
         Assert.True(publication.IsResolvable);
+    }
+
+    [Fact]
+    public void Mutation_WhenPersistenceVersionCannotAdvance_ShouldRejectWithoutPartialChanges()
+    {
+        SharePublication publication = RestorePublication(
+            SharePublicationStatus.Published,
+            ShareVisibility.Unlisted,
+            InitialShareTokenValue,
+            1,
+            InitialUtc.AddMinutes(1),
+            null,
+            InitialUtc.AddMinutes(1),
+            long.MaxValue);
+
+        SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
+            () => publication.RotateToken(
+                RotatedShareToken(),
+                1,
+                InitialUtc.AddMinutes(2)));
+
+        Assert.Equal(SharePublicationErrorCodes.VersionOverflow, exception.ErrorCode);
+        Assert.Equal(InitialShareTokenValue, publication.ShareToken?.Value);
+        Assert.Equal(1, publication.PublicationVersion);
     }
 
     private static SharePublication CreatePublication(
@@ -397,7 +486,7 @@ public sealed class SharePublicationTests
     {
         SharePublication publication = CreatePublication(policy);
         publication.Publish(
-            "opaque-token",
+            InitialShareToken(),
             ShareVisibility.Unlisted,
             4,
             publication.ContentPolicy,
@@ -413,22 +502,34 @@ public sealed class SharePublicationTests
         long publicationVersion,
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc,
-        DateTime updatedAtUtc)
+        DateTime updatedAtUtc,
+        long? version = null)
     {
         return SharePublication.Restore(
             SharePublicationId.Parse("publication-1"),
             "user-1",
             SharePublicationType.VisitRecap,
             "visit:user-1:visit-1",
-            shareToken,
+            shareToken is null ? null : ShareToken.Parse(shareToken),
             status,
             visibility,
             ShareContentPolicy.CreatePrivateDefault(SharePublicationType.VisitRecap),
             sourceVersion: 4,
             publicationVersion,
+            version: version ?? publicationVersion,
             publishedAtUtc,
             revokedAtUtc,
             InitialUtc,
             updatedAtUtc);
+    }
+
+    private static ShareToken InitialShareToken()
+    {
+        return ShareToken.Parse(InitialShareTokenValue);
+    }
+
+    private static ShareToken RotatedShareToken()
+    {
+        return ShareToken.Parse(RotatedShareTokenValue);
     }
 }

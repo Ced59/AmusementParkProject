@@ -98,6 +98,7 @@ SharePublication
 ├── ContentPolicy : choix explicites et version de schéma
 ├── SourceVersion : révision 64 bits monotone du périmètre complet
 ├── PublicationVersion : entier 64 bits monotone
+├── Version : clôture 64 bits de concurrence pour chaque mutation persistée
 └── dates techniques et métadonnées d'audit minimisées
 ```
 
