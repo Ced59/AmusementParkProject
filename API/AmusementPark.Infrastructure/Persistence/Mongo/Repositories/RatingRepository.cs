@@ -1209,15 +1209,34 @@ public sealed class RatingRepository : IRatingRepository
     {
         int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
         FilterDefinition<UserRatingDocument> filter = BuildPersistedUserRatingsForUserFilter(userId);
-        List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
-            .SortByDescending(document => document.Value)
-            .ThenBy(document => document.TargetId)
-            .Limit(RankingCandidateHardLimit)
-            .ToListAsync(cancellationToken);
-        IReadOnlyCollection<UserRatingDocument> visibleDocuments = await this.FilterVisibleUserRatingsAsync(
-            documents,
-            effectiveMaxItems,
-            cancellationToken);
+        List<UserRatingDocument> visibleDocuments = new List<UserRatingDocument>(effectiveMaxItems);
+        int scannedDocumentCount = 0;
+
+        while (visibleDocuments.Count < effectiveMaxItems)
+        {
+            List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
+                .SortByDescending(document => document.Value)
+                .ThenBy(document => document.TargetId)
+                .Skip(scannedDocumentCount)
+                .Limit(RankingCandidateHardLimit)
+                .ToListAsync(cancellationToken);
+            if (documents.Count == 0)
+            {
+                break;
+            }
+
+            IReadOnlyCollection<UserRatingDocument> visibleBatch =
+                await this.FilterVisibleUserRatingsAsync(
+                    documents,
+                    effectiveMaxItems - visibleDocuments.Count,
+                    cancellationToken);
+            visibleDocuments.AddRange(visibleBatch);
+            scannedDocumentCount = checked(scannedDocumentCount + documents.Count);
+            if (documents.Count < RankingCandidateHardLimit)
+            {
+                break;
+            }
+        }
 
         return await this.EnrichUserRatingsAsync(visibleDocuments, cancellationToken);
     }
