@@ -19,24 +19,3 @@ public sealed record GlobalRatingSuggestionResult(
     int RecentObservationCount,
     GlobalRatingSuggestionReason Reason,
     DateTime LatestObservationAtUtc);
-
-public sealed record GlobalRatingSuggestionsResult(
-    bool IsAvailable,
-    bool IsEnabled,
-    int MinimumNewObservationCount,
-    int CooldownDays,
-    IReadOnlyCollection<GlobalRatingSuggestionResult> Suggestions);
-
-public sealed record GlobalRatingSuggestionPreferenceResult(
-    bool IsAvailable,
-    bool IsEnabled);
-
-public sealed record GlobalRatingSuggestionPresentationResult(
-    bool IsAvailable,
-    bool IsEnabled,
-    IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetResult> PresentedTargets);
-
-public sealed record GlobalRatingSuggestionPresentedTargetResult(
-    RatingTargetType TargetType,
-    string TargetId,
-    DateTime PresentedAtUtc);
