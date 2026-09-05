@@ -395,7 +395,25 @@
                 [class.passport-attraction--selected]="facade.isSelected(attraction.id)"
                 [attr.aria-pressed]="facade.isSelected(attraction.id)"
                 (click)="toggleAttraction(attraction)">
-                <span class="passport-attraction__check" aria-hidden="true">
+                @if (attraction.mainImageId) {
+                  <span class="passport-attraction__media" aria-hidden="true">
+                    <app-image-display
+                      [imageId]="attraction.mainImageId"
+                      alt=""
+                      loading="lazy"
+                      fetchPriority="low"
+                      sizes="(max-width: 620px) 52px, 60px"
+                      [srcWidth]="160"
+                      [responsiveWidths]="attractionThumbnailWidths"
+                      imgClass="passport-attraction__image"
+                      placeholderClass="passport-attraction__image passport-attraction__image--placeholder"
+                      placeholderKind="parkItem" />
+                  </span>
+                }
+                <span
+                  class="passport-attraction__check"
+                  [class.passport-attraction__check--overlay]="attraction.mainImageId !== null"
+                  aria-hidden="true">
                   <i [class]="facade.isSelected(attraction.id) ? 'pi pi-check' : 'pi pi-plus'"></i>
                 </span>
                 <span class="passport-attraction__body">

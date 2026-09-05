@@ -11,6 +11,7 @@ import {
 export interface PassportVisitEditorAttraction {
   id: string;
   name: string;
+  mainImageId: string | null;
   zoneId: string | null;
   lifecycleStatus: string | null;
   isHistorical: boolean;
