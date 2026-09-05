@@ -268,6 +268,7 @@ export class PassportVisitEditorStateFacade {
   readonly selectionCanSubmit = computed((): boolean =>
     !this.addingSignal()
     && !this.attractionsLoadingSignal()
+    && !this.historicalEvidenceRecoverySignal()
     && !this.targetEvaluationsStaleSignal()
     && (this.pendingAddRecoverySignal() || !this.temporalMetadataHasChanges())
     && this.selectedAttractionsSignal().every(
@@ -473,6 +474,7 @@ export class PassportVisitEditorStateFacade {
     if (!visitId
       || (!pendingSubmission && selections.length === 0)
       || this.addingSignal()
+      || this.historicalEvidenceRecoverySignal()
       || this.targetEvaluationsStaleSignal()
       || (!pendingSubmission && this.temporalMetadataHasChanges())) {
       return;
