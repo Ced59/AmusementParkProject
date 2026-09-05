@@ -1596,7 +1596,7 @@ export class PassportVisitEditorStateFacade {
 
   private loadAttractionPage(page: number): void {
     const visit: PassportVisit | null = this.visitSignal();
-    if (!visit || this.attractionsLoadingSignal()) {
+    if (!visit) {
       return;
     }
 

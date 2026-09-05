@@ -53,6 +53,9 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-occurrence__drag-handle');
     expect(styles).toContain('touch-action: none');
     expect(styles).toContain('.passport-timeline__cancel-zone--active');
+    expect(styles).toContain('position: fixed');
+    expect(styles).toContain('min-height: 4rem');
+    expect(styles).toContain('pointer-events: none');
     expect(styles).toContain('@media (max-height: 520px) and (orientation: landscape)');
     expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
   });

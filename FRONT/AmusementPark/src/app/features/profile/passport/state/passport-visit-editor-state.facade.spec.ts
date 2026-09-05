@@ -8,7 +8,9 @@ import {
   PassportRideOccurrenceMutationResult
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
+import { ParkItem } from '@app/models/parks/park-item';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { PagedResult } from '@shared/models/contracts';
 import {
   PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT,
   PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT,
@@ -229,6 +231,36 @@ describe('PassportVisitEditorStateFacade', () => {
       },
       { closedFilter: 'closedOnly' }
     );
+  });
+
+  it('keeps only the latest filter results when requests overlap', () => {
+    const olderResult: Subject<PagedResult<ParkItem>> = new Subject<PagedResult<ParkItem>>();
+    const latestResult: Subject<PagedResult<ParkItem>> = new Subject<PagedResult<ParkItem>>();
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    attractionsPort.getParkItemsByParkIdPage
+      .mockReturnValueOnce(olderResult)
+      .mockReturnValueOnce(latestResult);
+
+    facade.applyAttractionFilters('ancien', null, 'all');
+    facade.applyAttractionFilters('récent', null, 'all');
+
+    latestResult.next({
+      items: [createParkItem('ride-latest', 'Résultat récent')],
+      pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+    });
+    latestResult.complete();
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Résultat récent']);
+
+    olderResult.next({
+      items: [createParkItem('ride-older', 'Ancien résultat')],
+      pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+    });
+    olderResult.complete();
+
+    expect(attractionsPort.getParkItemsByParkIdPage).toHaveBeenCalledTimes(3);
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Résultat récent']);
+    expect(facade.attractionsLoading()).toBe(false);
   });
 
   it('updates explicit attraction quantities and removes a selection at zero', () => {
@@ -2393,5 +2425,18 @@ function createOccurrence(id: string, parkItemId: string, sortPosition: number):
     version: 1,
     createdAtUtc: '2026-09-03T00:00:00Z',
     updatedAtUtc: '2026-09-03T00:00:00Z'
+  };
+}
+
+function createParkItem(id: string, name: string): ParkItem {
+  return {
+    id,
+    parkId: 'park-1',
+    name,
+    category: 'Attraction',
+    type: 'RollerCoaster',
+    latitude: null,
+    longitude: null,
+    attractionDetails: { status: 'Operating' }
   };
 }

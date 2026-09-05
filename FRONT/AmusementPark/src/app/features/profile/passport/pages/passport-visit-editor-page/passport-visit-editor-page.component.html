@@ -725,6 +725,7 @@
             #cancelDropList="cdkDropList"
             class="passport-timeline__cancel-zone"
             [class.passport-timeline__cancel-zone--active]="timelineDragging()"
+            [attr.aria-hidden]="timelineDragging() ? null : 'true'"
             [cdkDropListSortingDisabled]="true"
             (cdkDropListDropped)="cancelTimelineReorder()">
             <i class="pi pi-times-circle" aria-hidden="true"></i>
