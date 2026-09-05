@@ -1,6 +1,20 @@
 {
-  "version": "5.1.8",
+  "version": "5.1.9",
   "history": [
+    {
+      "version": "5.1.9",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La construction et la pagination des classements reposent désormais sur une structure plus fiable.",
+        "en": "Ranking construction and pagination now rely on a more reliable structure.",
+        "de": "Aufbau und Seitennavigation der Ranglisten basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "De opbouw en paginering van ranglijsten steunen nu op een betrouwbaardere structuur.",
+        "it": "La costruzione e la paginazione delle classifiche si basano ora su una struttura più affidabile.",
+        "es": "La construcción y la paginación de las clasificaciones se apoyan ahora en una estructura más fiable.",
+        "pl": "Tworzenie i stronicowanie rankingów korzysta teraz z bardziej niezawodnej struktury.",
+        "pt": "A construção e a paginação das classificações assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.8",
       "releasedAt": "2026-09-05",
