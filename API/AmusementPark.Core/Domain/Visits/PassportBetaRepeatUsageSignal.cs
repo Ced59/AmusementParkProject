@@ -1,4 +1,4 @@
-namespace AmusementPark.Application.Features.Passport.Models;
+namespace AmusementPark.Core.Domain.Visits;
 
 public enum PassportBetaRepeatUsageSignal
 {

@@ -4,13 +4,13 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
 
 public sealed class GetPassportBetaMetricsQueryHandler
     : IQueryHandler<GetPassportBetaMetricsQuery, ApplicationResult<PassportBetaMetricsResult>>
 {
-    private const int CandidateReturningUserCount = 3;
     private static readonly TimeSpan DefaultRange = TimeSpan.FromDays(30);
     private static readonly TimeSpan MaximumRange = TimeSpan.FromDays(180);
 
@@ -56,11 +56,8 @@ public sealed class GetPassportBetaMetricsQueryHandler
             fromUtc,
             toUtc,
             cancellationToken);
-        decimal repeatUsageRatePercent = snapshot.UsersWithCompletedVisit == 0
-            ? 0m
-            : snapshot.UsersWithSecondCompletedVisit * 100m
-                / snapshot.UsersWithCompletedVisit;
-        PassportBetaRepeatUsageSignal repeatUsageSignal = ResolveRepeatUsageSignal(
+        PassportBetaRepeatUsage repeatUsage = PassportBetaRepeatUsage.FromCounts(
+            snapshot.UsersWithCompletedVisit,
             snapshot.UsersWithSecondCompletedVisit);
 
         PassportBetaMetricsResult result = new PassportBetaMetricsResult(
@@ -71,9 +68,9 @@ public sealed class GetPassportBetaMetricsQueryHandler
             snapshot.CompletedVisits,
             snapshot.UsersWithCompletedVisit,
             snapshot.UsersWithSecondCompletedVisit,
-            repeatUsageRatePercent,
-            repeatUsageSignal,
-            true,
+            repeatUsage.RatePercent,
+            repeatUsage.Signal,
+            repeatUsage.RequiresQualitativeValidation,
             snapshot.Daily);
         return ApplicationResult<PassportBetaMetricsResult>.Success(result);
     }
@@ -90,15 +87,4 @@ public sealed class GetPassportBetaMetricsQueryHandler
             : value.Value.ToUniversalTime();
     }
 
-    private static PassportBetaRepeatUsageSignal ResolveRepeatUsageSignal(long returningUsers)
-    {
-        if (returningUsers <= 0)
-        {
-            return PassportBetaRepeatUsageSignal.NotObserved;
-        }
-
-        return returningUsers < CandidateReturningUserCount
-            ? PassportBetaRepeatUsageSignal.Emerging
-            : PassportBetaRepeatUsageSignal.Candidate;
-    }
 }

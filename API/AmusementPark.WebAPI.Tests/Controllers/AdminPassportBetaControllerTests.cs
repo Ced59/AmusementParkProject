@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.PassportBeta;
 using AmusementPark.WebAPI.Controllers;

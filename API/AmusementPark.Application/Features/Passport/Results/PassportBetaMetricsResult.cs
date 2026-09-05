@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Results;
 

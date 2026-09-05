@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Visits;
 using Moq;
 using Xunit;
 

@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.WebAPI.Contracts.PassportBeta;
 
 namespace AmusementPark.WebAPI.Mappers;
