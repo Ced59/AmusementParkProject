@@ -1,4 +1,3 @@
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Ratings.Services;
@@ -6,28 +5,6 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
-
-internal static class RatingRankingPaging
-{
-    public static PagedResult<T> BuildPage<T>(IReadOnlyCollection<T> rankings, int page, int pageSize)
-    {
-        IReadOnlyCollection<T> pageItems = rankings
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .ToList();
-
-        return new PagedResult<T>(pageItems, page, pageSize, rankings.Count);
-    }
-}
-
-internal sealed record ParkRankingSnapshotCandidate(
-    ParkRatingRankingResult Ranking,
-    RankingEvidence? Evidence,
-    ParkItemComponentEligibility? ItemComponent);
-
-internal sealed record ParkItemRankingSnapshotCandidate(
-    ParkItemRatingRankingResult Ranking,
-    RankingEvidence? Evidence);
 
 internal static class RatingRankingFactory
 {
