@@ -48,6 +48,7 @@ export class PassportVisitQuickCreateStateFacade {
   private readonly createdLocalDraftIdSignal = signal<string | null>(null);
   private readonly searchTerms = new Subject<string>();
   private pendingFingerprint: string | null = null;
+  private pendingSource: PassportProductSource | null = null;
   private pendingIdempotencyKey: string | null = null;
   private pendingDraftId: string | null = null;
   private pendingRideOperationId: string | null = null;
@@ -93,15 +94,6 @@ export class PassportVisitQuickCreateStateFacade {
 
     const request: CreatePassportVisitRequest = mapping.request;
     const fingerprint: string = JSON.stringify(request);
-    if (this.pendingFingerprint !== fingerprint || !this.pendingIdempotencyKey) {
-      this.pendingFingerprint = fingerprint;
-      this.pendingIdempotencyKey = this.operationIds.create();
-      this.pendingDraftId = this.operationIds.create();
-      this.pendingRideOperationId = this.operationIds.create();
-      this.pendingCreationStartTracked = false;
-    }
-
-    const idempotencyKey: string = this.pendingIdempotencyKey;
     this.errorKeySignal.set(null);
     this.savingSignal.set(true);
 
@@ -109,13 +101,15 @@ export class PassportVisitQuickCreateStateFacade {
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
+          const source: PassportProductSource = token ? 'authenticated' : 'anonymous-local';
+          const idempotencyKey: string = this.preparePendingCreationOperation(fingerprint, source);
           if (!token) {
-            this.trackCreationStartOnce('anonymous-local', request);
+            this.trackCreationStartOnce(source, request);
             void this.saveAnonymousDraft(request, parkName);
             return;
           }
 
-          this.trackCreationStartOnce('authenticated', request);
+          this.trackCreationStartOnce(source, request);
           this.sendCreateRequest(request, idempotencyKey);
         },
         error: (): void => {
@@ -130,6 +124,7 @@ export class PassportVisitQuickCreateStateFacade {
     this.createdLocalDraftIdSignal.set(null);
     this.errorKeySignal.set(null);
     this.pendingFingerprint = null;
+    this.pendingSource = null;
     this.pendingIdempotencyKey = null;
     this.pendingDraftId = null;
     this.pendingRideOperationId = null;
@@ -189,6 +184,7 @@ export class PassportVisitQuickCreateStateFacade {
           this.createdLocalDraftIdSignal.set(null);
           this.savingSignal.set(false);
           this.pendingFingerprint = null;
+          this.pendingSource = null;
           this.pendingIdempotencyKey = null;
           this.pendingDraftId = null;
           this.pendingRideOperationId = null;
@@ -239,6 +235,7 @@ export class PassportVisitQuickCreateStateFacade {
       this.createdLocalDraftIdSignal.set(localDraft.id);
       this.savingSignal.set(false);
       this.pendingFingerprint = null;
+      this.pendingSource = null;
       this.pendingIdempotencyKey = null;
       this.pendingDraftId = null;
       this.pendingRideOperationId = null;
@@ -303,6 +300,24 @@ export class PassportVisitQuickCreateStateFacade {
 
     this.pendingCreationStartTracked = true;
     this.trackCreation('visit_creation_started', source, request);
+  }
+
+  private preparePendingCreationOperation(
+    fingerprint: string,
+    source: PassportProductSource
+  ): string {
+    if (this.pendingFingerprint !== fingerprint
+      || this.pendingSource !== source
+      || !this.pendingIdempotencyKey) {
+      this.pendingFingerprint = fingerprint;
+      this.pendingSource = source;
+      this.pendingIdempotencyKey = this.operationIds.create();
+      this.pendingDraftId = this.operationIds.create();
+      this.pendingRideOperationId = this.operationIds.create();
+      this.pendingCreationStartTracked = false;
+    }
+
+    return this.pendingIdempotencyKey;
   }
 
   private async trackSecondAnonymousVisitIfReached(): Promise<void> {

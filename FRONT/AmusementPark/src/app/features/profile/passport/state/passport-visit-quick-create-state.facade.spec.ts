@@ -171,6 +171,53 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     ]);
   });
 
+  it('starts a new operation when an authenticated retry falls back to a local draft', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
+    api.responses = [throwError(() => new HttpErrorResponse({ status: 0 }))];
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+    const draft: PassportVisitQuickCreateDraft = createDraft();
+
+    facade.createVisit(draft, 'Parc test');
+    expect(facade.errorKey()).toBe('passport.quickCreate.errors.network');
+    auth.token = null;
+    facade.createVisit(draft, 'Parc test');
+    await vi.waitFor((): void => {
+      expect(facade.createdLocalDraftId()).toBe('operation-5');
+    });
+
+    expect(api.calls[0].key).toBe('operation-1');
+    expect(savedDrafts[0].visitOperationId).toBe('operation-4');
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'authenticated',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
   it('uses a new idempotency key when the payload changes after a failed attempt', () => {
     const api: FakeVisitApi = new FakeVisitApi();
     api.responses = [
