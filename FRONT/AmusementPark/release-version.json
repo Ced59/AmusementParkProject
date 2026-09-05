@@ -1,6 +1,20 @@
 {
-  "version": "5.1.4",
+  "version": "5.1.5",
   "history": [
+    {
+      "version": "5.1.5",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les explications des méthodes de notation reposent désormais sur une structure plus fiable.",
+        "en": "Rating methodology explanations now rely on a more reliable structure.",
+        "de": "Die Erläuterungen der Bewertungsmethoden basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "De uitleg van beoordelingsmethoden steunt nu op een betrouwbaardere structuur.",
+        "it": "Le spiegazioni dei metodi di valutazione si basano ora su una struttura più affidabile.",
+        "es": "Las explicaciones de los métodos de valoración se apoyan ahora en una estructura más fiable.",
+        "pl": "Objaśnienia metod oceniania korzystają teraz z bardziej niezawodnej struktury.",
+        "pt": "As explicações dos métodos de avaliação assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.4",
       "releasedAt": "2026-09-05",
