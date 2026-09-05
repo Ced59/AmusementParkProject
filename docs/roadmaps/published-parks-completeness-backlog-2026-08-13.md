@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **110 parcs** : 45 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **109 parcs** : 44 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,7 +17,7 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (45)
+## Priorité 1 — niveau `Publishable` (44)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
@@ -34,7 +34,6 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | 80 | `Publishable` | Adventure Park Geelong | AU | `Operating` | `Regional` | 70/88 | `082d938a-a518-4bf4-8542-c8d117afb9a3` |
 | 80 | `Publishable` | Adventureland | AE | `Operating` | `Regional` | 70/88 | `b40d9c62-ee62-459d-abb2-03714523c462` |
 | 80 | `Publishable` | Disneyland Paris - Disneyland Park | FR | `Operating` | `International` | 79/99 | `834a7b68-1c6c-42b4-893c-2c5082dbc603` |
-| 80 | `Publishable` | Energylandia | PL | `Operating` | `International` | 79/99 | `30ef201a-088e-4274-8168-1230b91194e9` |
 | 80 | `Publishable` | Loos Parc | FR | `Operating` | `Local` | 70/88 | `80b9ed92-b303-4000-a484-66872ee6412f` |
 | 80 | `Publishable` | Plopsaland Ardennes | BE | `Operating` | `National` | 79/99 | `b94c7d82-3178-4f56-876b-c944edb8ec1e` |
 | 81 | `Publishable` | Adventure Wonderland | GB | `Operating` | `Regional` | 72/89 | `5dac1a28-d311-4323-896d-616bcb28a893` |
