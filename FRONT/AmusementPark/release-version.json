@@ -5,14 +5,14 @@
       "version": "5.1.6",
       "releasedAt": "2026-09-05",
       "labels": {
-        "fr": "Les plans officiels peuvent désormais être importés de manière fiable jusqu’à 25 Mo.",
-        "en": "Official maps can now be reliably imported up to 25 MB.",
-        "de": "Offizielle Parkpläne können jetzt zuverlässig mit bis zu 25 MB importiert werden.",
-        "nl": "Officiële parkplattegronden kunnen nu betrouwbaar tot 25 MB worden geïmporteerd.",
-        "it": "Ora le mappe ufficiali possono essere importate in modo affidabile fino a 25 MB.",
-        "es": "Los mapas oficiales ya se pueden importar de forma fiable hasta 25 MB.",
-        "pl": "Oficjalne mapy można teraz niezawodnie importować w plikach do 25 MB.",
-        "pt": "Os mapas oficiais podem agora ser importados de forma fiável até 25 MB."
+        "fr": "L’ergonomie de l’administration est améliorée.",
+        "en": "Administration ergonomics are improved.",
+        "de": "Die Benutzerfreundlichkeit der Verwaltung wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van het beheer is verbeterd.",
+        "it": "L’ergonomia dell’amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la ergonomía de la administración.",
+        "pl": "Ulepszono wygodę obsługi panelu administracyjnego.",
+        "pt": "A ergonomia da administração foi melhorada."
       }
     },
     {
