@@ -70,7 +70,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         bool includesRatings = contentPolicy.Includes(ShareContentField.GlobalRatings);
         bool includesAvatar = contentPolicy.Includes(ShareContentField.Avatar);
         Image? avatarBefore = includesAvatar
-            ? await this.imageRepository.GetCurrentByOwnerAsync(
+            ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 ownerUserId,
                 ImageCategory.Avatar,
@@ -100,7 +100,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
             cancellationToken);
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         Image? avatarAfter = includesAvatar
-            ? await this.imageRepository.GetCurrentByOwnerAsync(
+            ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 ownerUserId,
                 ImageCategory.Avatar,

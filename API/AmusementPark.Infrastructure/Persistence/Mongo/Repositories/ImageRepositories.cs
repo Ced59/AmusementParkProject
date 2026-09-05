@@ -882,6 +882,22 @@ public sealed class ImageRepository : IImageRepository
         return image;
     }
 
+    public async Task<Image?> GetCurrentByOwnerAuthoritativeAsync(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.Eq(static document => document.OwnerId, ownerId) &
+                                                 BuildCategoryFilter(builder, category) &
+                                                 builder.Eq(static document => document.IsCurrent, true);
+        ImageDocument? document = await this.collection.Find(filter)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken)
     {
         DateTime nowUtc = DateTime.UtcNow;

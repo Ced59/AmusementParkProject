@@ -6,10 +6,12 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Users;
 using Moq;
 using Xunit;
 
@@ -17,6 +19,105 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 
 public sealed class ImportRemoteImageCommandHandlerTests
 {
+    [Fact]
+    public async Task HandleAsync_WhenPublishedAvatarBecomesCurrent_ShouldFenceBeforeImporting()
+    {
+        Image imported = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsPublished = true,
+        };
+        Image current = new Image
+        {
+            Id = "avatar-1",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = true,
+        };
+        User user = new User
+        {
+            Id = "owner-1",
+            Email = "owner@example.com",
+        };
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            "personal-ranking:owner-1");
+        bool leaseStarted = false;
+
+        Mock<IRemoteImageImporter> importer = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        importer.Setup(value => value.ImportAsync(
+                It.Is<RemoteImageImportRequest>(request => request.SetAsCurrent),
+                It.IsAny<CancellationToken>()))
+            .Callback(() => Assert.True(leaseStarted))
+            .ReturnsAsync(imported);
+
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.SetCurrentAsync(
+                "avatar-1",
+                ImageOwnerType.User,
+                "owner-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(current);
+        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(current);
+
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(user);
+        users.Setup(value => value.UpdateAsync(
+                "owner-1",
+                It.Is<User>(updated => updated.AvatarUrl == "/images/avatar-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginMutationAsync(
+                "owner-1",
+                It.IsAny<CancellationToken>()))
+            .Callback(() => leaseStarted = true)
+            .ReturnsAsync(lease);
+        revisions.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+
+        ImportRemoteImageCommandHandler handler = new ImportRemoteImageCommandHandler(
+            importer.Object,
+            images.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            users.Object,
+            revisions.Object);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new ImportRemoteImageCommand(new RemoteImageImportRequest
+            {
+                SourceUrl = "https://cdn.example.test/avatar.avif",
+                Category = ImageCategory.Avatar,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "owner-1",
+                SetAsCurrent = true,
+            }));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("/images/avatar-1", user.AvatarUrl);
+        importer.VerifyAll();
+        images.VerifyAll();
+        users.VerifyAll();
+        revisions.VerifyAll();
+    }
+
     [Fact]
     public async Task HandleAsync_WhenImportTargetsCommentLifecycle_ShouldRejectBeforeImporting()
     {

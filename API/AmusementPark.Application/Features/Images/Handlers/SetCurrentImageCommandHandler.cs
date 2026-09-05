@@ -73,20 +73,52 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotLinkedToOwner());
             }
 
-            Image? updated = await this.imageRepository.SetCurrentAsync(image.Id, image.OwnerType, image.OwnerId, cancellationToken);
-            if (updated is null)
+            IReadOnlyCollection<string> avatarOwnerUserIds =
+                UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    image,
+                    image.OwnerType,
+                    image.OwnerId,
+                    image.Category);
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
+                    this.shareSourceRevisionGuard,
+                    cancellationToken);
+            bool avatarSourceChanged = false;
+            Image? updated;
+            try
             {
-                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                updated = await this.imageRepository.SetCurrentAsync(
+                    image.Id,
+                    image.OwnerType,
+                    image.OwnerId,
+                    cancellationToken);
+                if (updated is null)
+                {
+                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
+                }
+
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    avatarOwnerUserIds,
+                    this.imageRepository,
+                    this.userRepository,
+                    cancellationToken);
+                await SynchronizeOwnerAsync(
+                    updated,
+                    this.parkRepository,
+                    this.attractionManufacturerRepository,
+                    this.searchProjectionWriter,
+                    cancellationToken);
+            }
+            finally
+            {
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
-            await SynchronizeOwnerAsync(
-                updated,
-                this.parkRepository,
-                this.attractionManufacturerRepository,
-                this.searchProjectionWriter,
-                this.userRepository,
-                this.shareSourceRevisionGuard,
-                cancellationToken);
             await PublicImageSeoUpdateNotification.NotifyAsync(
                 this.publicSeoUpdateNotifier,
                 new[] { image },
@@ -109,37 +141,8 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
-        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
-        if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
-        {
-            User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
-            if (user is not null)
-            {
-                PersonalRankingShareIdentityState previousIdentity =
-                    PersonalRankingShareIdentityState.Capture(user);
-                user.AvatarUrl = image.IsPublished ? BuildImageUrl(image.Id) : null;
-                ShareSourceMutationLease? mutationLease =
-                    await shareSourceRevisionGuard.BeginIdentityMutationAsync(
-                        user.Id,
-                        previousIdentity,
-                        PersonalRankingShareIdentityState.Capture(user),
-                        cancellationToken);
-                User? updatedUser = await userRepository.UpdateAsync(
-                    user.Id,
-                    user,
-                    cancellationToken);
-                await shareSourceRevisionGuard.CompleteMutationAsync(
-                    mutationLease,
-                    updatedUser is not null,
-                    CancellationToken.None);
-            }
-
-            return;
-        }
-
         if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
@@ -164,8 +167,4 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
         }
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }

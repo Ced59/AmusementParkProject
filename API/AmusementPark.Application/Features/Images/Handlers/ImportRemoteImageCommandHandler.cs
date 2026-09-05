@@ -92,30 +92,57 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 WithWatermark = ShouldApplyWatermark(command.Request.Category, command.Request.WithWatermark),
                 SetAsCurrent = command.Request.SetAsCurrent,
             };
-
-            Image? image = await this.remoteImageImporter.ImportAsync(importRequest, cancellationToken);
-            if (image is null)
-            {
-                return ApplicationResult<Image>.Failure(ImageApplicationErrors.RemoteImageImportFailed());
-            }
-
-            if (importRequest.SetAsCurrent && importRequest.OwnerId is not null)
-            {
-                Image? current = await this.imageRepository.SetCurrentAsync(image.Id, importRequest.OwnerType, importRequest.OwnerId, cancellationToken);
-                if (current is null)
-                {
-                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
-                }
-
-                image = current;
-                await SynchronizeOwnerAsync(
-                    image,
-                    this.parkRepository,
-                    this.attractionManufacturerRepository,
-                    this.searchProjectionWriter,
-                    this.userRepository,
+            IReadOnlyCollection<string> avatarOwnerUserIds = importRequest.SetAsCurrent
+                ? UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    null,
+                    importRequest.OwnerType,
+                    importRequest.OwnerId,
+                    importRequest.Category)
+                : Array.Empty<string>();
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            bool avatarSourceChanged = false;
+            Image? image;
+            try
+            {
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                image = await this.remoteImageImporter.ImportAsync(importRequest, cancellationToken);
+                if (image is null)
+                {
+                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.RemoteImageImportFailed());
+                }
+
+                if (importRequest.SetAsCurrent && importRequest.OwnerId is not null)
+                {
+                    Image? current = await this.imageRepository.SetCurrentAsync(image.Id, importRequest.OwnerType, importRequest.OwnerId, cancellationToken);
+                    if (current is null)
+                    {
+                        return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
+                    }
+
+                    image = current;
+                    await UserAvatarShareSourceMutation.SynchronizeAsync(
+                        avatarOwnerUserIds,
+                        this.imageRepository,
+                        this.userRepository,
+                        cancellationToken);
+                    await SynchronizeOwnerAsync(
+                        image,
+                        this.parkRepository,
+                        this.attractionManufacturerRepository,
+                        this.searchProjectionWriter,
+                        cancellationToken);
+                }
+            }
+            finally
+            {
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
             await PublicImageSeoUpdateNotification.NotifyAsync(
@@ -161,37 +188,8 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
-        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
-        if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
-        {
-            User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
-            if (user is not null)
-            {
-                PersonalRankingShareIdentityState previousIdentity =
-                    PersonalRankingShareIdentityState.Capture(user);
-                user.AvatarUrl = image.IsPublished ? BuildImageUrl(image.Id) : null;
-                ShareSourceMutationLease? mutationLease =
-                    await shareSourceRevisionGuard.BeginIdentityMutationAsync(
-                        user.Id,
-                        previousIdentity,
-                        PersonalRankingShareIdentityState.Capture(user),
-                        cancellationToken);
-                User? updatedUser = await userRepository.UpdateAsync(
-                    user.Id,
-                    user,
-                    cancellationToken);
-                await shareSourceRevisionGuard.CompleteMutationAsync(
-                    mutationLease,
-                    updatedUser is not null,
-                    CancellationToken.None);
-            }
-
-            return;
-        }
-
         if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
@@ -216,8 +214,4 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         }
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }

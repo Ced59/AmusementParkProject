@@ -27,6 +27,7 @@ public sealed class SetCurrentImageCommandHandlerTests
             OwnerType = ImageOwnerType.User,
             OwnerId = "owner-1",
             IsCurrent = true,
+            IsPublished = true,
         };
         User user = new User
         {
@@ -38,33 +39,36 @@ public sealed class SetCurrentImageCommandHandlerTests
         ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
             "personal-ranking:owner-1");
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        MockSequence sequence = new MockSequence();
         images.Setup(value => value.GetByIdAsync("avatar-new", It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
-        images.Setup(value => value.SetCurrentAsync(
+        revisions.InSequence(sequence).Setup(value => value.BeginMutationAsync(
+                "owner-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mutationLease);
+        images.InSequence(sequence).Setup(value => value.SetCurrentAsync(
                 "avatar-new",
                 ImageOwnerType.User,
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
-        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
-        users.Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+        users.InSequence(sequence).Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
-        users.Setup(value => value.UpdateAsync(
+        images.InSequence(sequence).Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(avatar);
+        users.InSequence(sequence).Setup(value => value.UpdateAsync(
                 "owner-1",
                 It.Is<User>(updated => updated.AvatarUrl == "/images/avatar-new"),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
-        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
-            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginIdentityMutationAsync(
-                "owner-1",
-                It.Is<PersonalRankingShareIdentityState>(state =>
-                    state.AvatarUrl == "/images/avatar-old"),
-                It.Is<PersonalRankingShareIdentityState>(state =>
-                    state.AvatarUrl == "/images/avatar-new"),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(mutationLease);
-        revisions.Setup(value => value.CompleteMutationAsync(
+        revisions.InSequence(sequence).Setup(value => value.CompleteMutationAsync(
                 mutationLease,
                 true,
                 CancellationToken.None))

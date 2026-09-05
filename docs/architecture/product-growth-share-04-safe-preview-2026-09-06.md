@@ -102,9 +102,19 @@ Les changements de notes, de pseudonyme, d'avatar, de rôle ou d'état du compte
 protègent la révision personnelle dans toutes leurs voies d'écriture. L'identité
 publique et l'image d'avatar courante sont également relues avant et après la
 construction : la révision prévient les aperçus périmés et la double lecture ferme
-la fenêtre d'une mutation concurrente. Un avatar n'est émis que si l'image courante
-est encore publiée, appartient bien au compte et reste dans la catégorie avatar ;
-une dépublication unitaire ou en masse met aussi à jour l'URL publique sous lease.
+la fenêtre d'une mutation concurrente. La relecture de l'image contourne
+explicitement le cache mémoire local : chaque instance consulte MongoDB afin qu'un
+déploiement sans interruption ne puisse pas réutiliser l'état périmé d'une autre
+instance. Un avatar n'est émis que si l'image courante est encore publiée, appartient
+bien au compte et reste dans la catégorie avatar.
+
+La création distante, la promotion, le rattachement, la modification de métadonnées
+et la suppression d'un avatar réservent le lease avant leur première écriture. Un
+transfert protège simultanément l'ancien et le nouveau propriétaire, puis recalcule
+leurs deux URL publiques depuis MongoDB avant de régler les leases. Une
+dépublication unitaire ou en masse utilise le même chemin et retire donc l'avatar
+public sans fenêtre incohérente. Toute réponse de mutation ambiguë est traitée
+prudemment comme un changement possible afin de faire avancer la révision.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
@@ -176,6 +186,9 @@ Les tests ciblés couvrent :
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;
 - retrait d'un avatar dépublié, y compris par action de masse ;
+- réservation du lease avant chaque écriture d'avatar concernée ;
+- invalidation et resynchronisation des deux comptes lors d'un transfert d'avatar ;
+- relecture MongoDB autoritaire de l'avatar courant sans cache local ;
 - conservation du succès métier lorsque le règlement d'un lease échoue ;
 - application du plafond après retrait des notes visant des contenus masqués ;
 - agrégation bornée après les jointures de visibilité exécutées par MongoDB ;

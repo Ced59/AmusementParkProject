@@ -260,7 +260,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     private static Mock<IImageRepository> CreateImageRepository(Image avatar)
     {
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.Setup(value => value.GetCurrentByOwnerAsync(
+        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-1",
                 ImageCategory.Avatar,

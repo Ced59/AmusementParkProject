@@ -79,33 +79,59 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             {
                 return ApplicationResult.Failure(ImageApplicationErrors.ImageReferencedByComment());
             }
-
-            if (!string.IsNullOrWhiteSpace(image.Path))
-            {
-                bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
-                    image.Path,
+            IReadOnlyCollection<string> avatarOwnerUserIds =
+                UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    image,
+                    ImageOwnerType.None,
+                    null,
+                    image.Category);
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
+                    this.shareSourceRevisionGuard,
                     cancellationToken);
-                if (!binaryDeleted)
+            bool avatarSourceChanged = false;
+            try
+            {
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                if (!string.IsNullOrWhiteSpace(image.Path))
+                {
+                    bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
+                        image.Path,
+                        cancellationToken);
+                    if (!binaryDeleted)
+                    {
+                        return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
+                    }
+                }
+
+                bool deleted = await this.imageRepository.DeleteAsync(image.Id, cancellationToken);
+                if (!deleted)
                 {
                     return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
                 }
-            }
 
-            bool deleted = await this.imageRepository.DeleteAsync(image.Id, cancellationToken);
-            if (!deleted)
+                await SynchronizeAfterDeletionAsync(
+                    image,
+                    this.imageRepository,
+                    this.parkRepository,
+                    this.attractionManufacturerRepository,
+                    this.searchProjectionWriter,
+                    cancellationToken);
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    avatarOwnerUserIds,
+                    this.imageRepository,
+                    this.userRepository,
+                    cancellationToken);
+            }
+            finally
             {
-                return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
-            await SynchronizeAfterDeletionAsync(
-                image,
-                this.imageRepository,
-                this.parkRepository,
-                this.attractionManufacturerRepository,
-                this.searchProjectionWriter,
-                this.userRepository,
-                this.shareSourceRevisionGuard,
-                cancellationToken);
             await PublicImageSeoUpdateNotification.NotifyAsync(
                 this.publicSeoUpdateNotifier,
                 new[] { image },
@@ -129,18 +155,10 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
-        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
-            User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
-            if (user is null)
-            {
-                return;
-            }
-
             IReadOnlyCollection<Image> remainingImages = await imageRepository.GetByOwnerAsync(ImageOwnerType.User, image.OwnerId, ImageCategory.Avatar, cancellationToken);
             Image? replacementCurrent = remainingImages.FirstOrDefault(static candidate => candidate.IsCurrent);
 
@@ -152,26 +170,6 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     replacementCurrent = await imageRepository.SetCurrentAsync(firstRemaining.Id, ImageOwnerType.User, image.OwnerId, cancellationToken);
                 }
             }
-
-            PersonalRankingShareIdentityState previousIdentity =
-                PersonalRankingShareIdentityState.Capture(user);
-            user.AvatarUrl = replacementCurrent is not null && replacementCurrent.IsPublished
-                ? BuildImageUrl(replacementCurrent.Id)
-                : null;
-            ShareSourceMutationLease? mutationLease =
-                await shareSourceRevisionGuard.BeginIdentityMutationAsync(
-                    user.Id,
-                    previousIdentity,
-                    PersonalRankingShareIdentityState.Capture(user),
-                    cancellationToken);
-            User? updatedUser = await userRepository.UpdateAsync(
-                user.Id,
-                user,
-                cancellationToken);
-            await shareSourceRevisionGuard.CompleteMutationAsync(
-                mutationLease,
-                updatedUser is not null,
-                CancellationToken.None);
             return;
         }
 
@@ -204,8 +202,4 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         }
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }

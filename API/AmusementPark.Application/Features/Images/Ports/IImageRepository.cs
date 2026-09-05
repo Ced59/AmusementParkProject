@@ -74,6 +74,7 @@ public interface IImageRepository
         CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);
     Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
+    Task<Image?> GetCurrentByOwnerAuthoritativeAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
     Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken);
     Task<Image?> CompleteCommentDraftUploadAsync(
         string imageId,

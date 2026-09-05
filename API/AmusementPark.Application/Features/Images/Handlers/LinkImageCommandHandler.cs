@@ -79,45 +79,73 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             }
 
             string? normalizedOwnerId = string.IsNullOrWhiteSpace(command.OwnerId) ? null : command.OwnerId.Trim();
-            Image? updated = command.SetAsCurrent
-                ? await this.imageRepository.SetCurrentAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken)
-                : await this.imageRepository.LinkAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken);
-
-            if (updated is null)
+            IReadOnlyCollection<string> avatarOwnerUserIds =
+                UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    image,
+                    command.OwnerType,
+                    normalizedOwnerId,
+                    image.Category);
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
+                    this.shareSourceRevisionGuard,
+                    cancellationToken);
+            bool avatarSourceChanged = false;
+            Image? updated;
+            try
             {
-                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorUpdatingImageLink());
-            }
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                updated = command.SetAsCurrent
+                    ? await this.imageRepository.SetCurrentAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken)
+                    : await this.imageRepository.LinkAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken);
 
-            if (command.Description is not null)
-            {
-                ImageMetadataUpdate metadata = new ImageMetadataUpdate
+                if (updated is null)
                 {
-                    Description = command.Description,
-                    GeoLocation = updated.GeoLocation == null ? null : new GeoPointValue(updated.GeoLocation.Latitude, updated.GeoLocation.Longitude),
-                    AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    TagIds = updated.TagIds.ToList(),
-                    Category = updated.Category,
-                    IsPublished = updated.IsPublished,
-                    SourceUrl = updated.SourceUrl,
-                };
-
-                Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(updated.Id, metadata, cancellationToken);
-                if (metadataUpdated is not null)
-                {
-                    updated = metadataUpdated;
+                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorUpdatingImageLink());
                 }
+
+                if (command.Description is not null)
+                {
+                    ImageMetadataUpdate metadata = new ImageMetadataUpdate
+                    {
+                        Description = command.Description,
+                        GeoLocation = updated.GeoLocation == null ? null : new GeoPointValue(updated.GeoLocation.Latitude, updated.GeoLocation.Longitude),
+                        AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        TagIds = updated.TagIds.ToList(),
+                        Category = updated.Category,
+                        IsPublished = updated.IsPublished,
+                        SourceUrl = updated.SourceUrl,
+                    };
+
+                    Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(updated.Id, metadata, cancellationToken);
+                    if (metadataUpdated is not null)
+                    {
+                        updated = metadataUpdated;
+                    }
+                }
+
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    avatarOwnerUserIds,
+                    this.imageRepository,
+                    this.userRepository,
+                    cancellationToken);
+                await SynchronizeOwnerAsync(
+                    updated,
+                    this.parkRepository,
+                    this.attractionManufacturerRepository,
+                    this.searchProjectionWriter,
+                    cancellationToken);
+            }
+            finally
+            {
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
-            await SynchronizeOwnerAsync(
-                updated,
-                this.parkRepository,
-                this.attractionManufacturerRepository,
-                this.searchProjectionWriter,
-                this.userRepository,
-                this.shareSourceRevisionGuard,
-                cancellationToken);
             await PublicImageSeoUpdateNotification.NotifyAsync(
                 this.publicSeoUpdateNotifier,
                 new[] { image },
@@ -140,39 +168,8 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
-        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
-        if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
-        {
-            User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
-            if (user is not null)
-            {
-                PersonalRankingShareIdentityState previousIdentity =
-                    PersonalRankingShareIdentityState.Capture(user);
-                user.AvatarUrl = image.IsCurrent && image.IsPublished
-                    ? BuildImageUrl(image.Id)
-                    : null;
-                ShareSourceMutationLease? mutationLease =
-                    await shareSourceRevisionGuard.BeginIdentityMutationAsync(
-                        user.Id,
-                        previousIdentity,
-                        PersonalRankingShareIdentityState.Capture(user),
-                        cancellationToken);
-                User? updatedUser = await userRepository.UpdateAsync(
-                    user.Id,
-                    user,
-                    cancellationToken);
-                await shareSourceRevisionGuard.CompleteMutationAsync(
-                    mutationLease,
-                    updatedUser is not null,
-                    CancellationToken.None);
-            }
-
-            return;
-        }
-
         if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
@@ -202,8 +199,4 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         }
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }
