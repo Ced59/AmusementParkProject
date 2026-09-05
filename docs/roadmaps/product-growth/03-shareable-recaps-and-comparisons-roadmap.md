@@ -2,7 +2,10 @@
 
 > Code programme : `SHARE`
 >
-> Dépendance bloquante : gate `PASS-G` de la roadmap 02.
+> Dépendance bloquante d'implémentation : gate `PASS-G` de la roadmap 02.
+> `SHARE-01`, strictement documentaire, est la seule exception autorisée afin de
+> figer les décisions avant persistance. `SHARE-02` et toutes les tranches de code
+> restent bloquées tant que `PASS-G` n'est pas formellement validée.
 >
 > Base réutilisable : le dépôt possède déjà des identifiants de partage, une visibilité révocable, une page publique de classement personnel, du SSR public et des aperçus sociaux.
 >
@@ -20,6 +23,16 @@
 - le cache public est versionné par publication et non seulement par URL.
 
 Une indisponibilité du worker ne doit jamais empêcher une révocation. Le comportement sûr est de refuser ou suspendre le partage jusqu’à cohérence, pas de continuer à servir un snapshot dont la politique est incertaine.
+
+### État de `SHARE-01` au 5 septembre 2026
+
+L'ADR [`product-growth-share-01-publication-policy-2026-09-05.md`](../../architecture/product-growth-share-01-publication-policy-2026-09-05.md)
+fixe les types, la liste blanche de données, les états séparés de la visibilité, le
+snapshot entièrement figé en V1, les révisions 64 bits de périmètres complets, les
+jetons opaques et la révocation autoritative. Cette exception documentaire ne crée
+aucune publication, ne valide pas la partie terrain de `PASS-G` et n'autorise pas
+`SHARE-02` : toutes les tranches d'implémentation restent bloquées tant que cette
+gate n'est pas formellement franchie.
 
 ## 1. Vision produit
 
@@ -49,7 +62,10 @@ La croissance provient de l’utilité et de l’expression personnelle, pas d�
 
 ## 2. Objectifs
 
-- Réutiliser l’infrastructure de partage existante sans mélanger les permissions des classements, visites et passeports.
+- Centraliser le cycle de vie des publications personnelles dans `SharePublication`
+  sans mélanger les politiques de contenu des classements, visites et passeports.
+- Migrer le partage de classement existant vers cette autorité unique, sans
+  adaptateur permanent ni double écriture.
 - Créer des politiques de visibilité par type d’objet.
 - Offrir un aperçu exact avant publication.
 - Masquer par défaut les dates précises et les commentaires privés.
@@ -80,10 +96,13 @@ La croissance provient de l’utilité et de l’expression personnelle, pas d�
 | `VisitRecap` | Une visite et ses statistiques choisies | Privé | `shareId` opaque | `noindex` par défaut |
 | `YearRecap` | Agrégats d’une année | Privé | `shareId` opaque | `noindex` par défaut |
 | `PassportProfile` | Vue publique durable du passeport | Privé | slug/share id | Opt-in séparé |
-| `PersonalRanking` | Fonction existante étendue | Privé | mécanisme existant | Selon politique existante |
+| `PersonalRanking` | Classement existant migré vers l'autorité commune | Privé | jeton existant conservé à la migration | `noindex` par défaut |
 | `ProfileComparison` | Intersection de deux profils consentants | Privé | jeton de comparaison | `noindex` |
 
-Chaque type possède sa propre entité de publication ou une union discriminée avec politique dédiée. Ne pas réutiliser un seul booléen `IsPublic` du compte entier.
+Tous les types utilisent l'agrégat discriminé commun `SharePublication`. Chaque
+type conserve toutefois sa policy et son constructeur de snapshot spécialisés ;
+aucune classe géante ne connaît tous les contenus. Ne pas réutiliser un seul
+booléen `IsPublic` du compte entier.
 
 ## 5. Modèle de publication
 
@@ -92,14 +111,16 @@ Chaque type possède sa propre entité de publication ou une union discriminée 
 ```csharp
 public sealed class SharePublication
 {
-    public Guid Id { get; }
-    public Guid OwnerUserId { get; }
+    public SharePublicationId Id { get; }
+    public string OwnerUserId { get; }
     public SharePublicationType Type { get; }
-    public string ShareId { get; private set; }
+    public string SourceScopeKey { get; }
+    public string? ShareToken { get; private set; }
+    public SharePublicationStatus Status { get; private set; }
     public ShareVisibility Visibility { get; private set; }
     public ShareContentPolicy ContentPolicy { get; private set; }
-    public int SourceVersion { get; private set; }
-    public int PublicationVersion { get; private set; }
+    public long SourceVersion { get; private set; }
+    public long PublicationVersion { get; private set; }
     public DateTime? PublishedAtUtc { get; private set; }
     public DateTime? RevokedAtUtc { get; private set; }
     public DateTime UpdatedAtUtc { get; private set; }
@@ -111,7 +132,9 @@ public sealed class SharePublication
 - `Private` ;
 - `Unlisted` : accessible par lien opaque ;
 - `Public` : accessible, partageable et éventuellement indexable si l’opt-in SEO est distinct ;
-- `Revoked`.
+
+Le cycle de vie est séparé : `Draft`, `Published`, `NeedsReview`, `Revoked`. Un
+objet révoqué ne redevient pas public par un simple changement de visibilité.
 
 ### 5.2 `ShareContentPolicy`
 
@@ -145,10 +168,10 @@ Deux stratégies :
 - reflète les corrections ;
 - mais une modification privée peut changer un partage sans aperçu.
 
-**Choix recommandé : hybride versionné.** La publication conserve un snapshot minimal des champs publics, lié à `SourceVersion`. Lorsqu’une visite change :
+**Choix recommandé : hybride versionné.** La publication conserve un snapshot minimal des champs publics, lié à la `SourceVersion` monotone du périmètre complet. Cette révision couvre tous les documents contributeurs, y compris les occurrences dont la version évolue sans modifier leur visite parente. Lorsqu'un contributeur change :
 
 - le partage passe à `NeedsReview` ;
-- l’ancienne version peut rester visible pendant une courte période ou être suspendue selon le type ;
+- l'ancienne version est suspendue en V1 afin de conserver une règle unique et sûre ;
 - le propriétaire voit les différences ;
 - il republie explicitement ;
 - aucune nouvelle donnée privée n’est ajoutée automatiquement.
@@ -597,6 +620,7 @@ Ne pas mesurer dans un outil tiers :
 | `SHARE-02` | Core `SharePublication` et policy | Tests de confidentialité exhaustifs |
 | `SHARE-03` | Persistance, ids opaques, révocation | Aucun lien énumérable |
 | `SHARE-04` | Preview API + DTO public | Champs privés absents par construction |
+| `SHARE-04A` | Migration de remplacement du partage de classement | Un seul moteur actif, routes et liens existants inchangés |
 | `SHARE-05` | Éditeur Web et résumé de confidentialité | Publication consciente |
 | `SHARE-06` | Récapitulatif de visite SSR | HTML public exact |
 | `SHARE-07` | Bilan annuel | Agrégats vérifiés |

@@ -1,6 +1,20 @@
 {
-  "version": "5.0.43",
+  "version": "5.0.44",
   "history": [
+    {
+      "version": "5.0.44",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les règles de confidentialité des futurs partages sont désormais clairement définies.",
+        "en": "Privacy rules for future sharing are now clearly defined.",
+        "de": "Die Datenschutzregeln für zukünftige Freigaben sind jetzt klar definiert.",
+        "nl": "De privacyregels voor toekomstige deelmogelijkheden zijn nu duidelijk vastgelegd.",
+        "it": "Le regole sulla privacy per le future condivisioni sono ora definite chiaramente.",
+        "es": "Las reglas de privacidad para las futuras publicaciones están ahora claramente definidas.",
+        "pl": "Zasady prywatności dotyczące przyszłego udostępniania są teraz jasno określone.",
+        "pt": "As regras de privacidade para futuras partilhas estão agora claramente definidas."
+      }
+    },
     {
       "version": "5.0.43",
       "releasedAt": "2026-09-05",
