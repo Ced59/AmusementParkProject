@@ -1,6 +1,20 @@
 {
-  "version": "5.1.33",
+  "version": "5.2.0",
   "history": [
+    {
+      "version": "5.2.0",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Le socle sécurisé des futurs partages est prêt.",
+        "en": "The secure foundation for future sharing is ready.",
+        "de": "Die sichere Grundlage für künftige Freigaben ist bereit.",
+        "nl": "De veilige basis voor toekomstig delen is gereed.",
+        "it": "La base sicura per le future condivisioni è pronta.",
+        "es": "La base segura para futuros contenidos compartidos está lista.",
+        "pl": "Bezpieczna podstawa przyszłego udostępniania jest gotowa.",
+        "pt": "A base segura para futuras partilhas está pronta."
+      }
+    },
     {
       "version": "5.1.33",
       "releasedAt": "2026-09-05",
