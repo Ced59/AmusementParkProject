@@ -6,6 +6,7 @@
 .home-latest {
   display: grid;
   gap: 1.15rem;
+  min-width: 0;
 }
 
 .home-latest-content {
@@ -17,6 +18,11 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin-top: 1rem;
+}
+
+.home-latest > app-page-state {
+  min-width: 0;
+  width: 100%;
 }
 
 @media (max-width: 960px) {

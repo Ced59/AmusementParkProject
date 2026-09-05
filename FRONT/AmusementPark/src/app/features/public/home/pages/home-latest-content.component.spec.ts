@@ -39,6 +39,8 @@ describe('HomeLatestContentComponent', () => {
     expect(styles).toMatch(/@media \(max-width: 680px\)[\s\S]*\.home-latest__grid[\s\S]*display: flex/);
     expect(styles).toMatch(/\.home-latest__grid[\s\S]*overflow-x: auto[\s\S]*scroll-snap-type: x mandatory/);
     expect(styles).toContain('flex: 0 0 min(84vw, 21rem)');
+    expect(styles).toMatch(/\.home-latest-content[^{]*,\s*\.home-latest[^{]*\{[^}]*min-width: 0/);
+    expect(styles).toMatch(/\.home-latest[^{]*>\s*app-page-state[^{]*\{[^}]*min-width: 0;[^}]*width: 100%/);
   });
 });
 

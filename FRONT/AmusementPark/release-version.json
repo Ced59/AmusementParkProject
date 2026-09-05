@@ -1,6 +1,20 @@
 {
-  "version": "5.2.2",
+  "version": "5.2.3",
   "history": [
+    {
+      "version": "5.2.3",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les cartes de la page d’accueil défilent correctement sur mobile.",
+        "en": "Home page cards now scroll correctly on mobile.",
+        "de": "Die Karten auf der Startseite lassen sich auf Mobilgeräten korrekt durchblättern.",
+        "nl": "De kaarten op de startpagina scrollen nu correct op mobiel.",
+        "it": "Le schede della home page ora scorrono correttamente sui dispositivi mobili.",
+        "es": "Las tarjetas de la página de inicio ahora se desplazan correctamente en móviles.",
+        "pl": "Karty na stronie głównej przewijają się teraz prawidłowo na urządzeniach mobilnych.",
+        "pt": "Os cartões da página inicial passam agora corretamente em dispositivos móveis."
+      }
+    },
     {
       "version": "5.2.2",
       "releasedAt": "2026-09-05",
