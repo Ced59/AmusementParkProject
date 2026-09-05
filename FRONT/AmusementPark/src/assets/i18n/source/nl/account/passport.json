@@ -414,8 +414,12 @@
         "time": "Lokale tijd",
         "approximateTime": "Tijd bij benadering",
         "privateNote": "Privénotitie",
+        "historicalConflictTitle": "{{attraction}} past niet bij de datum van dit bezoek",
+        "visitDateEvidence": "Datum van je bezoek: {{date}}",
+        "openingDateEvidence": "Bekende openingsdatum: {{date}}",
+        "closingDateEvidence": "Bekende sluitingsdatum: {{date}}",
         "confirmHistoricalConflict": "Ik bevestig dit ondanks een bekend datumconflict",
-        "confirmHistoricalConflictHint": "Gebruik dit alleen als je zeker bent van deze herinnering.",
+        "confirmHistoricalConflictHint": "Bevestig alleen als je zeker weet dat deze rit ondanks deze datums heeft plaatsgevonden.",
         "timeUnavailable": "Je kunt alleen een tijd toevoegen aan een bezoek met een exacte dag en tijdzone."
       },
       "status": {

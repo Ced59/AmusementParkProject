@@ -23,6 +23,7 @@ export interface ParkItemAdminListSort {
 }
 
 export interface ParkItemsByParkIdFilters {
+  includeHidden?: boolean | null;
   closedFilter?: ClosedEntityFilter | null;
   search?: string | null;
   category?: ParkItemCategory | null;
@@ -83,6 +84,9 @@ function buildParkItemsByParkIdQuery(filters: ParkItemsByParkIdFilters | null = 
   }
 
   const params: string[] = [];
+  if (filters.includeHidden !== null && filters.includeHidden !== undefined) {
+    params.push(`includeHidden=${filters.includeHidden}`);
+  }
   if (filters.closedFilter && filters.closedFilter !== DEFAULT_CLOSED_ENTITY_FILTER) {
     params.push(`closedFilter=${encodeURIComponent(filters.closedFilter)}`);
   }

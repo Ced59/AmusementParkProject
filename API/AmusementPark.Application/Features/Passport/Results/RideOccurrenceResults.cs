@@ -11,7 +11,9 @@ public sealed record RideOccurrenceTargetResult(
     string Name,
     string? Category,
     string? LifecycleStatus,
-    bool IsHistoricalSnapshot);
+    bool IsHistoricalSnapshot,
+    DateOnly? OpeningDate = null,
+    DateOnly? ClosingDate = null);
 
 public sealed record RideAssessmentResult(
     double Value,
@@ -36,7 +38,8 @@ public sealed record RideOccurrenceResult(
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
     RideOccurrenceTargetResult? Target = null,
-    RideAssessmentResult? Assessment = null);
+    RideAssessmentResult? Assessment = null,
+    bool HistoricalConflictConfirmed = false);
 
 public sealed record CreateRideOccurrencesResult(
     IReadOnlyCollection<RideOccurrenceResult> Occurrences,

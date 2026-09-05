@@ -76,6 +76,7 @@ internal static class PassportRideOccurrenceHttpMappers
             Source = (PassportRideLogSourceDto)result.Source,
             HistoricalConsistency =
                 (PassportHistoricalConsistencyDto)result.HistoricalConsistency,
+            HistoricalConflictConfirmed = result.HistoricalConflictConfirmed,
             PrivateNote = result.PrivateNote,
             CountsAsRide = result.CountsAsRide,
             Version = result.Version,
@@ -99,6 +100,8 @@ internal static class PassportRideOccurrenceHttpMappers
                     Category = result.Target.Category,
                     LifecycleStatus = result.Target.LifecycleStatus,
                     IsHistoricalSnapshot = result.Target.IsHistoricalSnapshot,
+                    OpeningDate = result.Target.OpeningDate,
+                    ClosingDate = result.Target.ClosingDate,
                 },
         };
     }

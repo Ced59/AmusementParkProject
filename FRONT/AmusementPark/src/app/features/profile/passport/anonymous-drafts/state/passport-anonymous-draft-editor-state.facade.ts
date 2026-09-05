@@ -253,7 +253,8 @@ export class PassportAnonymousDraftEditorStateFacade {
         }
 
         const mapped: PassportVisitEditorAttraction[] = result.items
-          .map(mapParkItemToVisitEditorAttraction)
+          .map((item: ParkItem): PassportVisitEditorAttraction | null =>
+            mapParkItemToVisitEditorAttraction(item))
           .filter((item: PassportVisitEditorAttraction | null): item is PassportVisitEditorAttraction =>
             item !== null);
         this.attractionsSignal.set(append

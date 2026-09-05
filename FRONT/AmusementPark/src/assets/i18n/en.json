@@ -670,8 +670,12 @@
         "time": "Local time",
         "approximateTime": "Approximate time",
         "privateNote": "Private note",
+        "historicalConflictTitle": "{{attraction}} does not match this visit date",
+        "visitDateEvidence": "Your visit date: {{date}}",
+        "openingDateEvidence": "Known opening date: {{date}}",
+        "closingDateEvidence": "Known closing date: {{date}}",
         "confirmHistoricalConflict": "I confirm despite a known date conflict",
-        "confirmHistoricalConflictHint": "Use this only when you are certain about this memory.",
+        "confirmHistoricalConflictHint": "Confirm only if you are certain this ride took place despite these dates.",
         "timeUnavailable": "A time can only be added to a visit with an exact day and a time zone."
       },
       "status": {

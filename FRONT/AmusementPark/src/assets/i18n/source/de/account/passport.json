@@ -414,8 +414,12 @@
         "time": "Ortszeit",
         "approximateTime": "Ungefähre Uhrzeit",
         "privateNote": "Private Notiz",
+        "historicalConflictTitle": "{{attraction}} passt nicht zum Datum dieses Besuchs",
+        "visitDateEvidence": "Datum deines Besuchs: {{date}}",
+        "openingDateEvidence": "Bekanntes Eröffnungsdatum: {{date}}",
+        "closingDateEvidence": "Bekanntes Schließungsdatum: {{date}}",
         "confirmHistoricalConflict": "Ich bestätige den Eintrag trotz eines bekannten Datumskonflikts",
-        "confirmHistoricalConflictHint": "Nutze dies nur, wenn du dir bei dieser Erinnerung sicher bist.",
+        "confirmHistoricalConflictHint": "Bestätige nur, wenn du sicher bist, dass diese Fahrt trotz dieser Daten stattgefunden hat.",
         "timeUnavailable": "Eine Uhrzeit ist nur bei einem Besuch mit genauem Tag und Zeitzone möglich."
       },
       "status": {

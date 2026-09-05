@@ -99,13 +99,14 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
         [FromQuery] string? zoneId = null,
+        [FromQuery] bool? includeHidden = null,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<PagedResult<ParkItemListResult>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
             new GetParkItemsByParkIdQuery(
                 parkId,
                 pagination.ToApplication(),
-                this.UserCanSeeNonVisible(),
+                ResolveIncludeHidden(this.UserCanSeeNonVisible(), includeHidden),
                 ParseClosedEntityFilter(closedFilter),
                 search,
                 ParseParkItemCategory(category),
@@ -120,6 +121,11 @@ public sealed class ParkItemsController : ControllerBase
 
         PagedResponseDto<ParkItemDto> response = result.Value.ToPagedResponse(static item => item.ToHttp());
         return this.Ok(response);
+    }
+
+    internal static bool ResolveIncludeHidden(bool userCanSeeNonVisible, bool? requestedIncludeHidden)
+    {
+        return userCanSeeNonVisible && requestedIncludeHidden != false;
     }
 
     [HttpGet]

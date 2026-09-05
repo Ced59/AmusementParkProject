@@ -37,6 +37,7 @@ describe('PassportVisitEditorStateFacade', () => {
   let occurrencesPort: {
     list: ReturnType<typeof vi.fn>;
     get: ReturnType<typeof vi.fn>;
+    evaluateVisitTargets: ReturnType<typeof vi.fn>;
     addBatch: ReturnType<typeof vi.fn>;
     update: ReturnType<typeof vi.fn>;
     delete: ReturnType<typeof vi.fn>;
@@ -64,6 +65,12 @@ describe('PassportVisitEditorStateFacade', () => {
     occurrencesPort = {
       list: vi.fn().mockReturnValue(of({ items: [firstOccurrence, secondOccurrence], nextCursor: null })),
       get: vi.fn(),
+      evaluateVisitTargets: vi.fn().mockReturnValue(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'Verified',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }])),
       addBatch: vi.fn(),
       update: vi.fn(),
       delete: vi.fn(),
@@ -130,13 +137,77 @@ describe('PassportVisitEditorStateFacade', () => {
       'occurrence-2'
     ]);
     expect(occurrencesPort.list).toHaveBeenCalledWith('visit-1', null, 50);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledWith('visit-1', ['ride-1']);
     expect(attractionsPort.getParkItemsByParkIdPage).toHaveBeenCalledWith(
       'park-1',
       1,
       24,
-      { closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
+      { includeHidden: false, closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
       { closedFilter: 'all' }
     );
+  });
+
+  it('excludes hidden attractions from the user selector and its evaluation batch', () => {
+    attractionsPort.getParkItemsByParkIdPage.mockReturnValue(of({
+      items: [
+        {
+          id: 'ride-1',
+          parkId: 'park-1',
+          name: 'Grand Huit',
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: true
+        },
+        {
+          id: 'hidden-ride',
+          parkId: 'park-1',
+          name: 'Prototype masqué',
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: false
+        }
+      ],
+      pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 2, totalPages: 1 }
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+
+    facade.load('visit-1', 'fr');
+
+    expect(facade.attractions().map((attraction): string => attraction.id)).toEqual(['ride-1']);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledWith('visit-1', ['ride-1']);
+  });
+
+  it('uses the domain evaluation to expose confirmation only for a certain date conflict', () => {
+    occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
+      parkItemId: 'ride-1',
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '1990-01-01',
+      closingDate: '2010-12-31'
+    }]));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+
+    expect(facade.attractions()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '1990-01-01',
+      closingDate: '2010-12-31'
+    }));
+    expect(facade.selectedAttractions()[0]).toEqual(expect.objectContaining({
+      attractionName: 'Grand Huit',
+      historicalConsistency: 'ConfirmedConflict',
+      confirmHistoricalConflict: false
+    }));
+    expect(facade.selectionCanSubmit()).toBe(false);
+
+    facade.updateSelection('ride-1', { confirmHistoricalConflict: true });
+
+    expect(facade.selectionCanSubmit()).toBe(true);
   });
 
   it('previews and deletes the whole visit with the confirmed server counts', () => {
@@ -241,8 +312,22 @@ describe('PassportVisitEditorStateFacade', () => {
       version: 2
     };
     visitsPort.updateVisit.mockReturnValue(of(updatedVisit));
+    occurrencesPort.evaluateVisitTargets
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'Verified',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }]))
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'ConfirmedConflict',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }]));
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
     facade.updateVisitMetadataDraft({
       precision: 'Year',
       year: 2025,
@@ -259,6 +344,212 @@ describe('PassportVisitEditorStateFacade', () => {
     }));
     expect(facade.visit()?.version).toBe(2);
     expect(facade.metadataHasChanges()).toBe(false);
+    expect(facade.selectedAttractions()[0].historicalConsistency).toBe('ConfirmedConflict');
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
+  });
+
+  it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
+      parkItemId: 'ride-1',
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '2026-01-01',
+      closingDate: null
+    }]));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateSelection('ride-1', { confirmHistoricalConflict: true });
+    expect(facade.selectionCanSubmit()).toBe(true);
+    facade.updateVisitMetadataDraft({ precision: 'Year', year: 2025, isApproximate: true });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.selectedAttractions()[0].confirmHistoricalConflict).toBe(false);
+    expect(facade.selectionCanSubmit()).toBe(false);
+  });
+
+  it('re-evaluates large multi-page selections in server-bounded batches', () => {
+    attractionsPort.getParkItemsByParkIdPage.mockImplementation((
+      _parkId: string,
+      page: number
+    ) => {
+      const firstIndex: number = ((page - 1) * 24) + 1;
+      const itemCount: number = page < 6 ? 24 : 4;
+      return of({
+        items: Array.from({ length: itemCount }, (_value, offset: number) => ({
+          id: `ride-${firstIndex + offset}`,
+          parkId: 'park-1',
+          name: `Attraction ${firstIndex + offset}`,
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          isVisible: true
+        })),
+        pagination: { currentPage: page, itemsPerPage: 24, totalItems: 124, totalPages: 6 }
+      });
+    });
+    occurrencesPort.evaluateVisitTargets.mockImplementation((
+      _visitId: string,
+      parkItemIds: string[]
+    ) => of(parkItemIds.map((parkItemId: string) => ({
+      parkItemId,
+      historicalConsistency: 'Verified',
+      openingDate: '2020-01-01',
+      closingDate: null
+    }))));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    for (let page: number = 1; page <= 5; page += 1) {
+      const selectableCount: number = page < 5 ? 24 : 4;
+      for (const attraction of facade.attractions().slice(0, selectableCount)) {
+        facade.toggleAttraction(attraction);
+      }
+      facade.goToAttractionPage(page + 1);
+    }
+    expect(facade.selectedOccurrenceTotal()).toBe(100);
+    occurrencesPort.evaluateVisitTargets.mockClear();
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([100, 4]);
+  });
+
+  it('keeps additions blocked until stale target evaluations can be retried', () => {
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    occurrencesPort.evaluateVisitTargets
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'Verified',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }]))
+      .mockReturnValueOnce(throwError(() => new Error('temporary evaluation failure')))
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'ConfirmedConflict',
+        openingDate: '2026-01-01',
+        closingDate: null
+      }]));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.targetEvaluationsStale()).toBe(true);
+    expect(facade.selectionCanSubmit()).toBe(false);
+    facade.addSelected();
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+
+    facade.retryTargetEvaluations();
+
+    expect(facade.targetEvaluationsStale()).toBe(false);
+    expect(facade.selectedAttractions()[0].historicalConsistency).toBe('ConfirmedConflict');
+    expect(facade.selectionCanSubmit()).toBe(false);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps timeline edits blocked until stale occurrence evidence can be reloaded', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
+    };
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [firstOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(throwError(() => new Error('temporary timeline failure')))
+      .mockReturnValueOnce(of({ items: [conflictingOccurrence], nextCursor: null }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.timelineConsistencyStale()).toBe(true);
+    facade.updateOccurrence(firstOccurrence, facade.editDrafts()[firstOccurrence.id]);
+    facade.duplicateOccurrence(firstOccurrence);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+
+    facade.reloadTimeline();
+
+    expect(facade.timelineConsistencyStale()).toBe(false);
+    expect(facade.occurrences()[0].historicalConsistency).toBe('ConfirmedConflict');
+    expect(facade.operationErrorKey()).toBeNull();
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps a conflicting occurrence save blocked until its fresh evidence is confirmed', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.update.mockReturnValue(of(conflictingOccurrence));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    const draft = facade.editDrafts()[conflictingOccurrence.id];
+
+    expect(facade.canUpdateOccurrence(conflictingOccurrence, draft)).toBe(false);
+    facade.updateOccurrence(conflictingOccurrence, draft);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+
+    facade.updateOccurrenceDraft(conflictingOccurrence.id, { confirmHistoricalConflict: true });
+    const confirmedDraft = facade.editDrafts()[conflictingOccurrence.id];
+    expect(facade.canUpdateOccurrence(conflictingOccurrence, confirmedDraft)).toBe(true);
+    facade.updateOccurrence(conflictingOccurrence, confirmedDraft);
+
+    expect(occurrencesPort.update).toHaveBeenCalledTimes(1);
   });
 
   it('preserves submitted metadata when conflict reconciliation loads another version', () => {
@@ -288,6 +579,50 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.metadataDraft().title).toBe('Ma correction');
     expect(facade.metadataHasChanges()).toBe(true);
     expect(facade.visitMutationErrorKey()).toBe('passport.editor.visit.errors.conflict');
+  });
+
+  it('blocks timeline edits when reconciliation observes a temporal change from another tab', () => {
+    const liveOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false
+      }
+    };
+    const concurrentVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(concurrentVisit));
+    visitsPort.updateVisit.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'visit.version-conflict'
+      }
+    })));
+    occurrencesPort.list
+      .mockReturnValueOnce(of({ items: [liveOccurrence], nextCursor: null }))
+      .mockReturnValueOnce(throwError(() => new Error('temporary timeline failure')));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateVisitMetadataDraft({ title: 'Modification locale' });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(facade.timelineConsistencyStale()).toBe(true);
+    facade.updateOccurrence(liveOccurrence, facade.editDrafts()[liveOccurrence.id]);
+    facade.duplicateOccurrence(liveOccurrence);
+    expect(occurrencesPort.update).not.toHaveBeenCalled();
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
   it('explains why temporal metadata stays locked when the visit contains rides', () => {
@@ -576,6 +911,7 @@ describe('PassportVisitEditorStateFacade', () => {
   it('reloads the parent version and preserves the draft after an assessment conflict', () => {
     const currentVisit: PassportVisit = {
       ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
       title: 'Version distante',
       version: 2,
       parkAssessment: {
@@ -610,6 +946,8 @@ describe('PassportVisitEditorStateFacade', () => {
 
     expect(visitsPort.getVisit).toHaveBeenCalledTimes(2);
     expect(facade.visit()?.version).toBe(2);
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
     expect(facade.metadataDraft().title).toBe('Version distante');
     expect(facade.metadataHasChanges()).toBe(false);
     expect(facade.assessmentDraft()).toEqual({ value: 4.5, privateComment: 'Ma saisie' });
@@ -765,6 +1103,39 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
   });
 
+  it('preserves the recalculated historical conflict after saving a ride assessment', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.upsertAssessment.mockReturnValue(of({
+      ...conflictingOccurrence,
+      version: 2,
+      target: null,
+      historicalConsistency: 'Verified',
+      assessment: {
+        value: 4.5,
+        privateComment: null,
+        revision: 1,
+        createdAtUtc: '2026-09-03T10:00:00Z',
+        updatedAtUtc: '2026-09-03T10:00:00Z'
+      }
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4.5 });
+
+    facade.saveRideAssessment(conflictingOccurrence);
+
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: conflictingOccurrence.target
+    }));
+  });
+
   it('preserves a newer ride assessment draft when the save response arrives', () => {
     const response: Subject<PassportRideOccurrence> = new Subject<PassportRideOccurrence>();
     occurrencesPort.upsertAssessment.mockReturnValue(response);
@@ -879,6 +1250,40 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.deleteAssessment).toHaveBeenCalledWith('occurrence-1', 2);
     expect(facade.occurrences()[0].version).toBe(3);
     expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({ value: null, privateComment: '' });
+  });
+
+  it('preserves the recalculated historical conflict after deleting a ride assessment', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      version: 2,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      assessment: {
+        value: 4,
+        privateComment: null,
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.deleteAssessment.mockReturnValue(of({
+      ...conflictingOccurrence,
+      version: 3,
+      target: null,
+      historicalConsistency: 'Verified',
+      assessment: null
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.deleteRideAssessment(conflictingOccurrence);
+
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: conflictingOccurrence.target
+    }));
   });
 
   it('does not let an older timeline reload overwrite a newer locale refresh', () => {
@@ -1123,6 +1528,53 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(operationIds.create).toHaveBeenCalledTimes(1);
     expect(facade.selectedAttractions()).toEqual([]);
     expect(facade.normalizationNotice()).toBe(true);
+  });
+
+  it('refreshes the visit and target evidence after a historical conflict rejection', () => {
+    const currentVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(currentVisit));
+    occurrencesPort.evaluateVisitTargets
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'Verified',
+        openingDate: '2000-01-01',
+        closingDate: null
+      }]))
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'ConfirmedConflict',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }]));
+    occurrencesPort.addBatch.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'ride-occurrence.historical-conflict-confirmation-required'
+      }
+    })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+
+    facade.addSelected();
+
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(facade.selectedAttractions()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '2020-01-01',
+      confirmHistoricalConflict: false
+    }));
+    expect(facade.selectionCanSubmit()).toBe(false);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
   it('blocks a new occurrence add while temporal visit metadata is unsaved', () => {
@@ -1551,6 +2003,46 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.addBatch.mock.calls[1][2]).toBe('duplicate-stable');
     expect(operationIds.create).toHaveBeenCalledTimes(1);
     expect(facade.pendingDuplicateRecoveryIds().has(liveOccurrence.id)).toBe(false);
+  });
+
+  it('requires an explicit draft confirmation before duplicating a newly detected conflict', () => {
+    const newlyConflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: {
+        name: 'Grand Huit',
+        category: 'Attraction',
+        lifecycleStatus: 'Operating',
+        isHistoricalSnapshot: false,
+        openingDate: '2020-01-01',
+        closingDate: '2025-12-31'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [newlyConflictingOccurrence], nextCursor: null }));
+    occurrencesPort.addBatch.mockReturnValue(of({
+      occurrences: [newlyConflictingOccurrence],
+      wasReplayed: false,
+      wasOrderNormalized: false
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    expect(facade.canDuplicateOccurrence(newlyConflictingOccurrence)).toBe(false);
+    facade.duplicateOccurrence(newlyConflictingOccurrence);
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
+
+    facade.updateOccurrenceDraft(newlyConflictingOccurrence.id, { confirmHistoricalConflict: true });
+    expect(facade.canDuplicateOccurrence(newlyConflictingOccurrence)).toBe(true);
+    facade.duplicateOccurrence(newlyConflictingOccurrence);
+
+    expect(occurrencesPort.addBatch).toHaveBeenLastCalledWith(
+      'visit-1',
+      expect.objectContaining({
+        items: [expect.objectContaining({ confirmHistoricalConflict: true })]
+      }),
+      'operation-stable'
+    );
   });
 
   it('discards a full reload started before a successful occurrence edit', () => {

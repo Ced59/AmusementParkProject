@@ -1322,8 +1322,8 @@ public sealed class RideOccurrenceHandlersTests
             visit.ParkId,
             "Batch-resolved ride",
             ParkItemCategory.Attraction,
-            null,
-            null,
+            new DateOnly(2000, 1, 1),
+            new DateOnly(2020, 12, 31),
             "ClosedDefinitively");
         Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
         ListRideOccurrencesQueryHandler handler = new ListRideOccurrencesQueryHandler(
@@ -1339,9 +1339,79 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal("occurrence-1", item.Id);
         Assert.Equal("Batch-resolved ride", item.Target?.Name);
         Assert.Equal("ClosedDefinitively", item.Target?.LifecycleStatus);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, item.HistoricalConsistency);
+        Assert.False(item.HistoricalConflictConfirmed);
         visits.VerifyAll();
         occurrences.VerifyAll();
         targets.VerifyAll();
+    }
+
+    [Fact]
+    public void ResultFactory_ShouldRequireFreshConfirmationWhenCurrentEvidenceIsResolved()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-confirmed"),
+            visit,
+            "item-confirmed",
+            1024,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.ConfirmedConflict,
+            null,
+            null,
+            NowUtc);
+        VisitTarget target = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Attraction confirmée auparavant",
+            ParkItemCategory.Attraction,
+            new DateOnly(2027, 1, 1),
+            null,
+            "Operating");
+
+        RideOccurrenceResult storedResult = PassportRideOccurrenceResultFactory.Create(occurrence);
+        RideOccurrenceResult refreshedResult = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            target,
+            visit.Date);
+
+        Assert.True(storedResult.HistoricalConflictConfirmed);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, refreshedResult.HistoricalConsistency);
+        Assert.False(refreshedResult.HistoricalConflictConfirmed);
+    }
+
+    [Fact]
+    public void ResultFactory_ShouldNotExposeCurrentEvidenceForHiddenTarget()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-hidden",
+            1024,
+            new HistoricalTargetReference("Nom conservé dans la visite", "Attraction"));
+        VisitTarget hiddenTarget = new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom courant masqué",
+            ParkItemCategory.Attraction,
+            new DateOnly(2027, 1, 1),
+            new DateOnly(2028, 12, 31),
+            "Operating",
+            false);
+
+        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            hiddenTarget,
+            visit.Date);
+
+        Assert.Equal(HistoricalConsistency.Verified, result.HistoricalConsistency);
+        RideOccurrenceTargetResult targetResult = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
+        Assert.True(targetResult.IsHistoricalSnapshot);
+        Assert.Equal("Nom conservé dans la visite", targetResult.Name);
+        Assert.Null(targetResult.OpeningDate);
+        Assert.Null(targetResult.ClosingDate);
     }
 
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(

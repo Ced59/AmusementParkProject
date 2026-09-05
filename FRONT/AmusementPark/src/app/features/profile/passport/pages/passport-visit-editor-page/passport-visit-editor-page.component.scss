@@ -624,6 +624,19 @@
   gap: 0.65rem;
 }
 
+.passport-selection__validation-retry,
+.passport-timeline__validation-retry {
+  display: grid;
+  min-width: 0;
+  gap: 0.65rem;
+}
+
+.passport-selection__validation-retry button,
+.passport-timeline__validation-retry button {
+  min-width: 0;
+  justify-self: start;
+}
+
 .passport-selection-card,
 .passport-occurrence__actions > details {
   min-width: 0;
@@ -690,6 +703,28 @@
 }
 
 .passport-check small {
+  color: var(--app-text-muted);
+  line-height: 1.4;
+}
+
+.passport-historical-conflict {
+  display: grid;
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.35rem;
+  padding: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-warning) 55%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-warning) 10%, var(--app-surface));
+  color: var(--app-text);
+  overflow-wrap: anywhere;
+}
+
+.passport-historical-conflict strong {
+  color: var(--app-heading);
+}
+
+.passport-historical-conflict span {
   color: var(--app-text-muted);
   line-height: 1.4;
 }
@@ -1167,6 +1202,13 @@ textarea:focus-visible {
   .passport-selection__heading button {
     width: 100%;
     min-width: 0;
+    justify-content: center;
+  }
+
+  .passport-selection__validation-retry button,
+  .passport-timeline__validation-retry button {
+    width: 100%;
+    justify-self: stretch;
     justify-content: center;
   }
 

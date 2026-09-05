@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { computed, DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { catchError, forkJoin, Observable, of, take, throwError } from 'rxjs';
+import { catchError, forkJoin, map, Observable, of, switchMap, take, throwError } from 'rxjs';
 
 import {
   CreatePassportRideOccurrenceBatchItem,
@@ -13,6 +13,7 @@ import {
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
   PassportRideOccurrencePlacement,
+  PassportVisitRideTargetEvaluation,
   ReorderPassportRideOccurrenceRequest,
   UpsertPassportRideAssessmentRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
@@ -74,8 +75,13 @@ import {
 interface InitialVisitEditorData {
   park: Park | null;
   zones: ParkZone[];
-  attractions: PagedResult<ParkItem> | null;
+  attractions: EvaluatedAttractionPage | null;
   occurrences: PassportRideOccurrencePage | null;
+}
+
+interface EvaluatedAttractionPage {
+  page: PagedResult<ParkItem>;
+  evaluations: PassportVisitRideTargetEvaluation[];
 }
 
 interface PendingIdempotentMutation {
@@ -99,6 +105,8 @@ type PassportOccurrenceMove = 'first' | 'up' | 'down' | 'last';
 @Injectable()
 export class PassportVisitEditorStateFacade {
   private static readonly AttractionPageSize: number = 24;
+
+  private static readonly TargetEvaluationBatchSize: number = 100;
   private static readonly TimelinePageSize: number = 50;
 
   private readonly visitSignal = signal<PassportVisit | null>(null);
@@ -152,6 +160,9 @@ export class PassportVisitEditorStateFacade {
   private readonly busyOccurrenceIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
   private readonly loadErrorKeySignal = signal<string | null>(null);
   private readonly attractionErrorKeySignal = signal<string | null>(null);
+  private readonly targetEvaluationsStaleSignal = signal<boolean>(false);
+  private readonly timelineConsistencyStaleSignal = signal<boolean>(false);
+  private readonly historicalEvidenceRecoverySignal = signal<boolean>(false);
   private readonly operationErrorKeySignal = signal<string | null>(null);
   private readonly normalizationNoticeSignal = signal<boolean>(false);
   private readonly pendingAddRecoverySignal = signal<boolean>(false);
@@ -247,6 +258,8 @@ export class PassportVisitEditorStateFacade {
   readonly busyOccurrenceIds: Signal<ReadonlySet<string>> = this.busyOccurrenceIdsSignal.asReadonly();
   readonly loadErrorKey: Signal<string | null> = this.loadErrorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
+  readonly targetEvaluationsStale: Signal<boolean> = this.targetEvaluationsStaleSignal.asReadonly();
+  readonly timelineConsistencyStale: Signal<boolean> = this.timelineConsistencyStaleSignal.asReadonly();
   readonly operationErrorKey: Signal<string | null> = this.operationErrorKeySignal.asReadonly();
   readonly normalizationNotice: Signal<boolean> = this.normalizationNoticeSignal.asReadonly();
   readonly pendingAddRecovery: Signal<boolean> = this.pendingAddRecoverySignal.asReadonly();
@@ -254,7 +267,14 @@ export class PassportVisitEditorStateFacade {
     this.pendingDuplicateRecoveryIdsSignal.asReadonly();
   readonly selectionCanSubmit = computed((): boolean =>
     !this.addingSignal()
-    && (this.pendingAddRecoverySignal() || !this.temporalMetadataHasChanges()));
+    && !this.attractionsLoadingSignal()
+    && !this.historicalEvidenceRecoverySignal()
+    && !this.targetEvaluationsStaleSignal()
+    && (this.pendingAddRecoverySignal() || !this.temporalMetadataHasChanges())
+    && this.selectedAttractionsSignal().every(
+      (selection: PassportAttractionSelectionDraft): boolean =>
+        selection.historicalConsistency !== 'ConfirmedConflict'
+        || selection.confirmHistoricalConflict));
   readonly acceptsLocalTime = computed((): boolean => {
     const visit: PassportVisit | null = this.visitSignal();
     return visit?.date.precision === 'Day' && Boolean(visit.timeZoneId?.trim());
@@ -356,6 +376,15 @@ export class PassportVisitEditorStateFacade {
     this.loadVisit(visitId, loadGeneration, 1);
   }
 
+  retryTargetEvaluations(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || this.attractionsLoadingSignal()) {
+      return;
+    }
+
+    this.refreshCurrentVisitAndHistoricalEvidence(visit.id);
+  }
+
   private loadVisit(visitId: string, loadGeneration: number, attractionPage: number): void {
     this.visitsApi.getVisit(visitId).pipe(
       take(1),
@@ -445,6 +474,8 @@ export class PassportVisitEditorStateFacade {
     if (!visitId
       || (!pendingSubmission && selections.length === 0)
       || this.addingSignal()
+      || this.historicalEvidenceRecoverySignal()
+      || this.targetEvaluationsStaleSignal()
       || (!pendingSubmission && this.temporalMetadataHasChanges())) {
       return;
     }
@@ -493,7 +524,10 @@ export class PassportVisitEditorStateFacade {
           this.pendingAddSubmission = null;
           this.pendingAddRecoverySignal.set(false);
         }
-        this.handleMutationError(error, 'add-selection');
+        const errorKey: string = this.handleMutationError(error, 'add-selection');
+        if (errorKey === 'passport.editor.errors.historicalConflict') {
+          this.refreshCurrentVisitAndHistoricalEvidence(visitId);
+        }
       }
     });
   }
@@ -522,11 +556,7 @@ export class PassportVisitEditorStateFacade {
 
   updateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): void {
     const visitId: string | null = this.currentVisitId;
-    if (!visitId
-      || !occurrence.target
-      || occurrence.target.isHistoricalSnapshot
-      || occurrence.target.category !== 'Attraction'
-      || this.isOccurrenceBusy(occurrence.id)) {
+    if (!visitId || !this.canUpdateOccurrence(occurrence, draft)) {
       return;
     }
 
@@ -580,6 +610,17 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
+  canUpdateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): boolean {
+    return this.currentVisitId !== null
+      && occurrence.target != null
+      && !occurrence.target.isHistoricalSnapshot
+      && occurrence.target.category === 'Attraction'
+      && !this.timelineConsistencyStaleSignal()
+      && !this.historicalEvidenceRecoverySignal()
+      && !this.isOccurrenceBusy(occurrence.id)
+      && (occurrence.historicalConsistency !== 'ConfirmedConflict' || draft.confirmHistoricalConflict);
+  }
+
   updateOccurrenceDraft(occurrenceId: string, patch: Partial<PassportOccurrenceEditDraft>): void {
     this.editDraftsSignal.update((current: Readonly<Record<string, PassportOccurrenceEditDraft>>) => ({
       ...current,
@@ -596,19 +637,30 @@ export class PassportVisitEditorStateFacade {
     }));
   }
 
+  canDuplicateOccurrence(occurrence: PassportRideOccurrence): boolean {
+    const hasPendingSubmission: boolean = this.pendingDuplicateSubmissions.has(occurrence.id);
+    const conflictConfirmed: boolean = this.editDraftsSignal()[occurrence.id]?.confirmHistoricalConflict
+      ?? occurrence.historicalConflictConfirmed
+      ?? false;
+    return this.currentVisitId !== null
+      && !this.timelineConsistencyStaleSignal()
+      && !this.historicalEvidenceRecoverySignal()
+      && !this.isOccurrenceBusy(occurrence.id)
+      && (hasPendingSubmission || (occurrence.target != null
+        && !occurrence.target.isHistoricalSnapshot
+        && occurrence.target.category === 'Attraction'
+        && (occurrence.historicalConsistency !== 'ConfirmedConflict' || conflictConfirmed)));
+  }
+
   duplicateOccurrence(occurrence: PassportRideOccurrence): void {
     const visitId: string | null = this.currentVisitId;
-    const operationName: string = `duplicate:${occurrence.id}`;
-    const pendingSubmission: PendingDuplicateSubmission | undefined =
-      this.pendingDuplicateSubmissions.get(occurrence.id);
-    if (!visitId
-      || (!pendingSubmission && (!occurrence.target
-        || occurrence.target.isHistoricalSnapshot
-        || occurrence.target.category !== 'Attraction'))
-      || this.isOccurrenceBusy(occurrence.id)) {
+    if (!visitId || !this.canDuplicateOccurrence(occurrence)) {
       return;
     }
 
+    const operationName: string = `duplicate:${occurrence.id}`;
+    const pendingSubmission: PendingDuplicateSubmission | undefined =
+      this.pendingDuplicateSubmissions.get(occurrence.id);
     const visitGeneration: number = this.visitInstanceGeneration;
     const submission: PendingDuplicateSubmission = pendingSubmission
       ?? this.createDuplicateSubmission(occurrence, operationName);
@@ -1135,7 +1187,9 @@ export class PassportVisitEditorStateFacade {
       moment: occurrence.moment,
       status: occurrence.status,
       privateNote: occurrence.privateNote,
-      confirmHistoricalConflict: occurrence.historicalConsistency === 'ConfirmedConflict',
+      confirmHistoricalConflict: this.editDraftsSignal()[occurrence.id]?.confirmHistoricalConflict
+        ?? occurrence.historicalConflictConfirmed
+        ?? false,
       count: 1
     };
     const request: CreatePassportRideOccurrencesBatchRequest = { items: [item] };
@@ -1287,6 +1341,7 @@ export class PassportVisitEditorStateFacade {
     const visitGeneration: number = this.visitInstanceGeneration;
     const generation: number = this.timelineGeneration;
     const reloadRequestGeneration: number = ++this.timelineReloadRequestGeneration;
+    const resolvesStaleConsistency: boolean = this.timelineConsistencyStaleSignal();
     this.timelineLoadingSignal.set(true);
     this.occurrencesApi.list(visitId, null, PassportVisitEditorStateFacade.TimelinePageSize).pipe(
       take(1),
@@ -1302,6 +1357,10 @@ export class PassportVisitEditorStateFacade {
         if (generation === this.timelineGeneration) {
           this.setTimelineOccurrences(page.items);
           this.nextTimelineCursorSignal.set(page.nextCursor);
+          this.timelineConsistencyStaleSignal.set(false);
+          if (resolvesStaleConsistency) {
+            this.operationErrorKeySignal.set(null);
+          }
         }
         this.runQueuedTimelineReload();
       },
@@ -1336,18 +1395,11 @@ export class PassportVisitEditorStateFacade {
       zones: this.zonesApi.getParkZonesByParkId(parkId).pipe(
         catchError(() => of<ParkZone[]>([]))
       ),
-      attractions: this.attractionsApi.getParkItemsByParkIdPage(
+      attractions: this.loadEvaluatedAttractionPage(
+        visit.id,
         parkId,
-        attractionPage,
-        PassportVisitEditorStateFacade.AttractionPageSize,
-        {
-          closedFilter: 'all',
-          category: 'Attraction',
-          search: this.currentAttractionSearch || null,
-          zoneId: this.currentZoneId
-        },
-        { closedFilter: 'all' }
-      ).pipe(catchError(() => of<PagedResult<ParkItem> | null>(null))),
+        attractionPage
+      ).pipe(catchError(() => of<EvaluatedAttractionPage | null>(null))),
       occurrences: this.occurrencesApi.list(
         visit.id,
         null,
@@ -1410,27 +1462,17 @@ export class PassportVisitEditorStateFacade {
   }
 
   private loadAttractionPage(page: number): void {
-    const parkId: string | undefined = this.visitSignal()?.parkId;
-    if (!parkId || this.attractionsLoadingSignal()) {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || this.attractionsLoadingSignal()) {
       return;
     }
 
     const attractionGeneration: number = ++this.attractionLoadGeneration;
     this.attractionsLoadingSignal.set(true);
     this.attractionErrorKeySignal.set(null);
-    this.attractionsApi.getParkItemsByParkIdPage(
-      parkId,
-      page,
-      PassportVisitEditorStateFacade.AttractionPageSize,
-      {
-        closedFilter: 'all',
-        category: 'Attraction',
-        search: this.currentAttractionSearch || null,
-        zoneId: this.currentZoneId
-      },
-      { closedFilter: 'all' }
-    ).pipe(take(1), takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (result: PagedResult<ParkItem>): void => {
+    this.loadEvaluatedAttractionPage(visit.id, visit.parkId, page)
+      .pipe(take(1), takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (result: EvaluatedAttractionPage): void => {
         if (attractionGeneration !== this.attractionLoadGeneration) {
           return;
         }
@@ -1449,12 +1491,78 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
-  private applyAttractionPage(result: PagedResult<ParkItem>): void {
-    const attractions: PassportVisitEditorAttraction[] = result.items
-      .map(mapParkItemToVisitEditorAttraction)
+  private loadEvaluatedAttractionPage(
+    visitId: string,
+    parkId: string,
+    page: number
+  ): Observable<EvaluatedAttractionPage> {
+    return this.attractionsApi.getParkItemsByParkIdPage(
+      parkId,
+      page,
+      PassportVisitEditorStateFacade.AttractionPageSize,
+      {
+        includeHidden: false,
+        closedFilter: 'all',
+        category: 'Attraction',
+        search: this.currentAttractionSearch || null,
+        zoneId: this.currentZoneId
+      },
+      { closedFilter: 'all' }
+    ).pipe(switchMap((result: PagedResult<ParkItem>): Observable<EvaluatedAttractionPage> => {
+      const visibleItems: ParkItem[] = result.items.filter(
+        (item: ParkItem): boolean => item.isVisible !== false
+      );
+      const parkItemIds: string[] = visibleItems
+        .map((item: ParkItem): string => item.id?.trim() ?? '')
+        .filter((id: string): boolean => id.length > 0);
+      if (parkItemIds.length === 0) {
+        return of({ page: { ...result, items: visibleItems }, evaluations: [] });
+      }
+
+      return this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
+        map((evaluations: PassportVisitRideTargetEvaluation[]): EvaluatedAttractionPage => ({
+          page: { ...result, items: visibleItems },
+          evaluations
+        }))
+      );
+    }));
+  }
+
+  private evaluateVisitTargetsInBatches(
+    visitId: string,
+    parkItemIds: readonly string[]
+  ): Observable<PassportVisitRideTargetEvaluation[]> {
+    const batches: string[][] = [];
+    for (let index: number = 0; index < parkItemIds.length; index += PassportVisitEditorStateFacade.TargetEvaluationBatchSize) {
+      batches.push(parkItemIds.slice(index, index + PassportVisitEditorStateFacade.TargetEvaluationBatchSize));
+    }
+    if (batches.length === 0) {
+      return of([]);
+    }
+
+    return forkJoin(batches.map((batch: string[]): Observable<PassportVisitRideTargetEvaluation[]> =>
+      this.occurrencesApi.evaluateVisitTargets(visitId, batch)
+    )).pipe(map((results: PassportVisitRideTargetEvaluation[][]): PassportVisitRideTargetEvaluation[] =>
+      results.flat()
+    ));
+  }
+
+  private applyAttractionPage(result: EvaluatedAttractionPage): void {
+    const evaluationsById: ReadonlyMap<string, PassportVisitRideTargetEvaluation> = new Map(
+      result.evaluations.map(
+        (evaluation: PassportVisitRideTargetEvaluation): [string, PassportVisitRideTargetEvaluation] =>
+          [evaluation.parkItemId, evaluation]
+      )
+    );
+    const attractions: PassportVisitEditorAttraction[] = result.page.items
+      .map((item: ParkItem): PassportVisitEditorAttraction | null =>
+        mapParkItemToVisitEditorAttraction(
+          item,
+          item.id ? evaluationsById.get(item.id) ?? null : null
+        ))
       .filter((item: PassportVisitEditorAttraction | null): item is PassportVisitEditorAttraction => item !== null);
     this.attractionsSignal.set(attractions);
-    this.attractionPaginationSignal.set(result.pagination);
+    this.attractionPaginationSignal.set(result.page.pagination);
     this.rememberAttractionNames(attractions);
   }
 
@@ -1602,7 +1710,7 @@ export class PassportVisitEditorStateFacade {
     this.reloadTimeline();
   }
 
-  private handleMutationError(error: unknown, operationName?: string): void {
+  private handleMutationError(error: unknown, operationName?: string): string {
     const errorKey: string = this.resolveErrorKey(error, 'operation');
     this.operationErrorKeySignal.set(errorKey);
     if (operationName && errorKey === 'passport.editor.errors.idempotencyConflict') {
@@ -1612,6 +1720,8 @@ export class PassportVisitEditorStateFacade {
     if (errorKey === 'passport.editor.errors.versionConflict') {
       this.reloadTimeline();
     }
+
+    return errorKey;
   }
 
   private resolveErrorKey(error: unknown, context: 'load' | 'timeline' | 'operation'): string {
@@ -1812,7 +1922,16 @@ export class PassportVisitEditorStateFacade {
   private replaceOccurrence(updated: PassportRideOccurrence): void {
     const nextOccurrences: PassportRideOccurrence[] = this.occurrencesSignal().map(
       (candidate: PassportRideOccurrence): PassportRideOccurrence => candidate.id === updated.id
-        ? { ...updated, target: updated.target ?? candidate.target }
+        ? {
+          ...updated,
+          target: updated.target ?? candidate.target,
+          historicalConsistency: updated.target == null
+            ? candidate.historicalConsistency
+            : updated.historicalConsistency,
+          historicalConflictConfirmed: updated.target == null
+            ? candidate.historicalConflictConfirmed
+            : updated.historicalConflictConfirmed
+        }
         : candidate
     );
     this.setOccurrences(nextOccurrences);
@@ -1927,6 +2046,9 @@ export class PassportVisitEditorStateFacade {
         const draftChangedDuringRequest: boolean =
           this.assessmentDraftFingerprint(this.assessmentDraftSignal()) !== submittedFingerprint;
         const preserveMetadataDraft: boolean = this.metadataHasChanges();
+        const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(
+          this.visitSignal(),
+          currentVisit);
         this.visitSignal.set(currentVisit);
         this.persistedMetadataFingerprintSignal.set(this.metadataVisitFingerprint(currentVisit));
         this.persistedAssessmentFingerprintSignal.set(serverFingerprint);
@@ -1935,6 +2057,9 @@ export class PassportVisitEditorStateFacade {
         }
         if (mutationWasApplied && !draftChangedDuringRequest) {
           this.syncAssessmentDraft(currentVisit.parkAssessment ?? null);
+        }
+        if (temporalMetadataChanged) {
+          this.refreshHistoricalEvidence(currentVisit.id);
         }
         if (mutationWasApplied && this.isAmbiguousMutationError(originalError)) {
           this.assessmentErrorKeySignal.set(null);
@@ -1957,12 +2082,13 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
-  private applyLoadedVisit(visit: PassportVisit): void {
+  private applyLoadedVisit(visit: PassportVisit): boolean {
     const currentVisit: PassportVisit | null = this.visitSignal();
     if (currentVisit?.id === visit.id && visit.version < currentVisit.version) {
-      return;
+      return false;
     }
 
+    const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(currentVisit, visit);
     const preserveAssessmentDraft: boolean = currentVisit?.id === visit.id && this.assessmentHasChanges();
     const preserveMetadataDraft: boolean = currentVisit?.id === visit.id && this.metadataHasChanges();
     this.visitSignal.set(visit);
@@ -1974,9 +2100,16 @@ export class PassportVisitEditorStateFacade {
     if (!preserveAssessmentDraft) {
       this.syncAssessmentDraft(visit.parkAssessment ?? null);
     }
+    if (temporalMetadataChanged) {
+      this.refreshHistoricalEvidence(visit.id);
+    }
+
+    return temporalMetadataChanged;
   }
 
   private applyVisitMutationResult(visit: PassportVisit, submittedFingerprint: string): void {
+    const previousVisit: PassportVisit | null = this.visitSignal();
+    const temporalMetadataChanged: boolean = this.hasTemporalMetadataChanged(previousVisit, visit);
     const draftChangedDuringRequest: boolean =
       this.metadataDraftFingerprint(this.metadataDraftSignal()) !== submittedFingerprint;
     this.visitSignal.set(visit);
@@ -1985,6 +2118,127 @@ export class PassportVisitEditorStateFacade {
     if (!draftChangedDuringRequest) {
       this.metadataDraftSignal.set(createPassportVisitMetadataDraft(visit));
     }
+    if (temporalMetadataChanged) {
+      this.refreshHistoricalEvidence(visit.id);
+    }
+  }
+
+  private hasTemporalMetadataChanged(previousVisit: PassportVisit | null, currentVisit: PassportVisit): boolean {
+    return previousVisit !== null
+      && this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(previousVisit))
+        !== this.temporalMetadataDraftFingerprint(createPassportVisitMetadataDraft(currentVisit));
+  }
+
+  private refreshHistoricalEvidence(visitId: string): void {
+    this.timelineConsistencyStaleSignal.set(true);
+    this.refreshLoadedTargetEvaluations(visitId);
+    this.reloadTimeline();
+  }
+
+  private refreshCurrentVisitAndHistoricalEvidence(visitId: string): void {
+    const visitGeneration: number = this.visitInstanceGeneration;
+    this.historicalEvidenceRecoverySignal.set(true);
+    this.targetEvaluationsStaleSignal.set(true);
+    this.timelineConsistencyStaleSignal.set(true);
+    this.attractionsLoadingSignal.set(true);
+    this.visitsApi.getVisit(visitId).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (currentVisit: PassportVisit): void => {
+        if (!this.isCurrentVisitInstance(visitId, visitGeneration)) {
+          return;
+        }
+
+        this.attractionsLoadingSignal.set(false);
+        this.historicalEvidenceRecoverySignal.set(false);
+        const temporalRefreshStarted: boolean = this.applyLoadedVisit(currentVisit);
+        if (!temporalRefreshStarted) {
+          this.refreshHistoricalEvidence(visitId);
+        }
+      },
+      error: (): void => {
+        if (!this.isCurrentVisitInstance(visitId, visitGeneration)) {
+          return;
+        }
+
+        this.attractionsLoadingSignal.set(false);
+        this.attractionErrorKeySignal.set('passport.editor.errors.attractions');
+      }
+    });
+  }
+
+  private refreshLoadedTargetEvaluations(visitId: string): void {
+    const parkItemIds: string[] = Array.from(new Set<string>([
+      ...this.attractionsSignal().map((attraction: PassportVisitEditorAttraction): string => attraction.id),
+      ...this.selectedAttractionsSignal().map(
+        (selection: PassportAttractionSelectionDraft): string => selection.parkItemId
+      )
+    ]));
+    if (parkItemIds.length === 0) {
+      this.targetEvaluationsStaleSignal.set(false);
+      return;
+    }
+
+    const attractionGeneration: number = ++this.attractionLoadGeneration;
+    this.targetEvaluationsStaleSignal.set(true);
+    this.attractionsLoadingSignal.set(true);
+    this.attractionErrorKeySignal.set(null);
+    this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
+      take(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (evaluations: PassportVisitRideTargetEvaluation[]): void => {
+        if (attractionGeneration !== this.attractionLoadGeneration) {
+          return;
+        }
+
+        this.attractionsLoadingSignal.set(false);
+        this.applyTargetEvaluations(evaluations);
+        this.targetEvaluationsStaleSignal.set(false);
+      },
+      error: (): void => {
+        if (attractionGeneration !== this.attractionLoadGeneration) {
+          return;
+        }
+
+        this.attractionsLoadingSignal.set(false);
+        this.attractionErrorKeySignal.set('passport.editor.errors.attractions');
+      }
+    });
+  }
+
+  private applyTargetEvaluations(evaluations: PassportVisitRideTargetEvaluation[]): void {
+    const evaluationsById: ReadonlyMap<string, PassportVisitRideTargetEvaluation> = new Map(
+      evaluations.map(
+        (evaluation: PassportVisitRideTargetEvaluation): [string, PassportVisitRideTargetEvaluation] =>
+          [evaluation.parkItemId, evaluation]
+      )
+    );
+    this.attractionsSignal.update((attractions: PassportVisitEditorAttraction[]) => attractions.map(
+      (attraction: PassportVisitEditorAttraction): PassportVisitEditorAttraction => {
+        const evaluation: PassportVisitRideTargetEvaluation | undefined = evaluationsById.get(attraction.id);
+        return evaluation ? {
+          ...attraction,
+          historicalConsistency: evaluation.historicalConsistency,
+          openingDate: evaluation.openingDate,
+          closingDate: evaluation.closingDate
+        } : attraction;
+      }
+    ));
+    this.selectedAttractionsSignal.update((selections: PassportAttractionSelectionDraft[]) => selections.map(
+      (selection: PassportAttractionSelectionDraft): PassportAttractionSelectionDraft => {
+        const evaluation: PassportVisitRideTargetEvaluation | undefined =
+          evaluationsById.get(selection.parkItemId);
+        return evaluation ? {
+          ...selection,
+          historicalConsistency: evaluation.historicalConsistency,
+          openingDate: evaluation.openingDate,
+          closingDate: evaluation.closingDate,
+          confirmHistoricalConflict: false
+        } : selection;
+      }
+    ));
   }
 
   private reconcileVisitMutation(
@@ -2268,6 +2522,9 @@ export class PassportVisitEditorStateFacade {
     this.attractionNamesSignal.set({});
     this.loadErrorKeySignal.set(null);
     this.attractionErrorKeySignal.set(null);
+    this.targetEvaluationsStaleSignal.set(false);
+    this.timelineConsistencyStaleSignal.set(false);
+    this.historicalEvidenceRecoverySignal.set(false);
     this.operationErrorKeySignal.set(null);
     this.normalizationNoticeSignal.set(false);
     this.attractionsLoadingSignal.set(false);

@@ -37,6 +37,20 @@ describe('PassportRideOccurrencesApiService', () => {
     );
   });
 
+  it('evaluates target dates inside the owned visit scope', () => {
+    const httpClient = { post: vi.fn().mockReturnValue(of([])) };
+    const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(
+      httpClient as unknown as HttpClient
+    );
+
+    service.evaluateVisitTargets('visit/one', ['ride-1', 'ride-2']).subscribe();
+
+    expect(httpClient.post).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone/ride-targets:evaluate`,
+      { parkItemIds: ['ride-1', 'ride-2'] }
+    );
+  });
+
   it('loads one private occurrence with transfer caching disabled for mutation recovery', () => {
     const httpClient = { get: vi.fn().mockReturnValue(of(createOccurrence())) };
     const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(

@@ -1,5 +1,7 @@
 export const PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS = {
   validateTargets: 'me/passport/ride-targets:validate',
+  evaluateVisitTargets: (visitId: string): string =>
+    `me/passport/visits/${encodeURIComponent(visitId)}/ride-targets:evaluate`,
   list: (visitId: string, limit: number, cursor: string | null = null): string => {
     const encodedVisitId: string = encodeURIComponent(visitId);
     const cursorQuery: string = cursor ? `&cursor=${encodeURIComponent(cursor)}` : '';

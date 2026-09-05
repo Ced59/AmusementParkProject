@@ -401,6 +401,22 @@ export class PassportVisitEditorPageComponent {
     return new Intl.DateTimeFormat(this.currentLanguage(), options).format(date);
   }
 
+  protected historicalDateLabel(value: string | null | undefined): string {
+    const normalizedValue: string = value?.trim() ?? '';
+    const match: RegExpMatchArray | null = normalizedValue.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) {
+      return normalizedValue;
+    }
+
+    const date: Date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+    return new Intl.DateTimeFormat(this.currentLanguage(), {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC'
+    }).format(date);
+  }
+
   protected lifecycleLabelKey(status: string | null): string {
     const normalizedStatus: string = status?.trim() ?? '';
     return supportedLifecycleStatuses.has(normalizedStatus)

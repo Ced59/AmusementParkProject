@@ -1,6 +1,7 @@
 import {
   CreatePassportRideOccurrenceBatchItem,
   PassportRideOccurrence,
+  PassportVisitRideTargetEvaluation,
   UpdatePassportRideOccurrenceRequest
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -15,7 +16,10 @@ import {
 
 const historicalStatuses: ReadonlySet<string> = new Set<string>(['ClosedDefinitively', 'Removed']);
 
-export function mapParkItemToVisitEditorAttraction(item: ParkItem): PassportVisitEditorAttraction | null {
+export function mapParkItemToVisitEditorAttraction(
+  item: ParkItem,
+  evaluation: PassportVisitRideTargetEvaluation | null = null
+): PassportVisitEditorAttraction | null {
   const id: string = item.id?.trim() ?? '';
   const name: string = item.name?.trim() ?? '';
   if (!id || !name || item.category !== 'Attraction') {
@@ -28,7 +32,10 @@ export function mapParkItemToVisitEditorAttraction(item: ParkItem): PassportVisi
     name,
     zoneId: item.zoneId?.trim() || null,
     lifecycleStatus,
-    isHistorical: lifecycleStatus !== null && historicalStatuses.has(lifecycleStatus)
+    isHistorical: lifecycleStatus !== null && historicalStatuses.has(lifecycleStatus),
+    historicalConsistency: evaluation?.historicalConsistency ?? 'Unverified',
+    openingDate: evaluation?.openingDate ?? null,
+    closingDate: evaluation?.closingDate ?? null
   };
 }
 
@@ -49,7 +56,10 @@ export function createAttractionSelection(
     localTime: '',
     isApproximate: false,
     privateNote: '',
-    confirmHistoricalConflict: false
+    confirmHistoricalConflict: false,
+    historicalConsistency: attraction.historicalConsistency,
+    openingDate: attraction.openingDate,
+    closingDate: attraction.closingDate
   };
 }
 
@@ -76,7 +86,7 @@ export function mapOccurrenceToEditDraft(occurrence: PassportRideOccurrence): Pa
     localTime: normalizeTimeForInput(occurrence.moment.localTime),
     isApproximate: occurrence.moment.isApproximate,
     privateNote: occurrence.privateNote ?? '',
-    confirmHistoricalConflict: occurrence.historicalConsistency === 'ConfirmedConflict'
+    confirmHistoricalConflict: occurrence.historicalConflictConfirmed ?? false
   };
 }
 

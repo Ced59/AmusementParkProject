@@ -172,6 +172,17 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(component.lifecycleLabelKey('  ')).toBe('passport.editor.lifecycle.Unknown');
   });
 
+  it('formats server-provided historical dates without a local timezone shift', () => {
+    const component = Object.create(PassportVisitEditorPageComponent.prototype) as {
+      currentLanguage: () => string;
+      historicalDateLabel(value: string | null | undefined): string;
+    };
+    component.currentLanguage = () => 'fr';
+
+    expect(component.historicalDateLabel('2010-12-31')).toBe('31 décembre 2010');
+    expect(component.historicalDateLabel(null)).toBe('');
+  });
+
   it('forwards count input immediately so an in-flight add cannot discard the latest value', () => {
     const updateSelection = vi.fn();
     const component = Object.create(PassportVisitEditorPageComponent.prototype) as {

@@ -670,8 +670,12 @@
         "time": "Heure locale",
         "approximateTime": "Heure approximative",
         "privateNote": "Note privée",
+        "historicalConflictTitle": "{{attraction}} ne correspond pas à la date de cette visite",
+        "visitDateEvidence": "Date de ta visite : {{date}}",
+        "openingDateEvidence": "Ouverture connue : {{date}}",
+        "closingDateEvidence": "Fermeture connue : {{date}}",
         "confirmHistoricalConflict": "Je confirme malgré une incohérence de dates connue",
-        "confirmHistoricalConflictHint": "À utiliser seulement si tu es certain de ce souvenir.",
+        "confirmHistoricalConflictHint": "Confirme uniquement si tu es certain que ce passage a bien eu lieu malgré ces dates.",
         "timeUnavailable": "Une heure ne peut être ajoutée que pour une visite datée au jour exact et associée à un fuseau horaire."
       },
       "status": {
