@@ -317,6 +317,14 @@
           "generic": "Nie udało się przygotować usunięcia. Spróbuj ponownie za chwilę."
         }
       },
+      "ratingControl": {
+        "unrated": "Brak oceny",
+        "clear": "Wyczyść wybór",
+        "decrease": "Zmniejsz ocenę",
+        "increase": "Zwiększ ocenę",
+        "outOf": "z",
+        "scaleHint": "Od 0,5 do 5, co pół punktu."
+      },
       "assessment": {
         "title": "Twoje wrażenia z tego parku",
         "description": "Oceń tę konkretną wizytę od 0,5 do 5. Ta obserwacja pozostaje prywatna i nigdy nie zmienia oceny ani rankingów społeczności.",

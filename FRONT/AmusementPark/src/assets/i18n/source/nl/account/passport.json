@@ -317,6 +317,14 @@
           "generic": "De verwijdering kon niet worden voorbereid. Probeer het zo opnieuw."
         }
       },
+      "ratingControl": {
+        "unrated": "Nog niet beoordeeld",
+        "clear": "Selectie wissen",
+        "decrease": "Beoordeling verlagen",
+        "increase": "Beoordeling verhogen",
+        "outOf": "van",
+        "scaleHint": "Van 0,5 tot 5, in stappen van een halve punt."
+      },
       "assessment": {
         "title": "Jouw indruk van dit park",
         "description": "Beoordeel dit specifieke bezoek van 0,5 tot 5. Deze observatie blijft privé en verandert nooit de communityscore of ranglijsten.",

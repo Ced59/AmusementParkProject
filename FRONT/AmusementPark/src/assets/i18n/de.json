@@ -553,6 +553,14 @@
           "generic": "Die Löschung konnte nicht vorbereitet werden. Versuche es gleich noch einmal."
         }
       },
+      "ratingControl": {
+        "unrated": "Noch nicht bewertet",
+        "clear": "Auswahl löschen",
+        "decrease": "Bewertung verringern",
+        "increase": "Bewertung erhöhen",
+        "outOf": "von",
+        "scaleHint": "Von 0,5 bis 5 in Halbpunktschritten."
+      },
       "assessment": {
         "title": "Dein Eindruck von diesem Park",
         "description": "Bewerte genau diesen Besuch von 0,5 bis 5. Diese Beobachtung bleibt privat und verändert weder die Community-Bewertung noch die Ranglisten.",

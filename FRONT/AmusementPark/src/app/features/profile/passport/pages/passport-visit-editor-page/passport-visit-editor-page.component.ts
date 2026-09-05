@@ -11,6 +11,7 @@ import {
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisitDatePrecision, PassportVisitStatus } from '@app/models/passport/passport-visit.models';
 import { TranslationService } from '@app/services/translation.service';
+import { RatingInputComponent } from '@shared/components/rating-input/rating-input.component';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import {
   findNearestLanguageActivatedRoute,
@@ -49,6 +50,7 @@ const supportedLifecycleStatuses: ReadonlySet<string> = new Set<string>([
   imports: [
     ReactiveFormsModule,
     TranslateModule,
+    RatingInputComponent,
     LocalizedPluralPipe,
     UiButtonDirective,
     UiChipComponent,
@@ -65,7 +67,6 @@ export class PassportVisitEditorPageComponent {
   protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
   protected readonly visitDeletionConfirmed = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
-  protected readonly assessmentValues: readonly number[] = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
     { value: 'Completed', labelKey: 'passport.editor.status.completed' },
     { value: 'Attempted', labelKey: 'passport.editor.status.attempted' },
@@ -241,7 +242,7 @@ export class PassportVisitEditorPageComponent {
     this.facade.updateVisitMetadataDraft({ privateNote: this.eventValue(event) });
   }
 
-  protected selectAssessmentValue(value: number): void {
+  protected selectAssessmentValue(value: number | null): void {
     this.facade.updateParkAssessmentDraft({ value });
   }
 
@@ -274,7 +275,7 @@ export class PassportVisitEditorPageComponent {
     }).format(value);
   }
 
-  protected selectRideAssessmentValue(occurrenceId: string, value: number): void {
+  protected selectRideAssessmentValue(occurrenceId: string, value: number | null): void {
     this.facade.updateRideAssessmentDraft(occurrenceId, { value });
   }
 

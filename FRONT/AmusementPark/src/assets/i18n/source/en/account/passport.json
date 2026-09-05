@@ -390,6 +390,14 @@
           "generic": "Deletion could not be prepared. Try again shortly."
         }
       },
+      "ratingControl": {
+        "unrated": "Not rated",
+        "clear": "Clear selection",
+        "decrease": "Decrease rating",
+        "increase": "Increase rating",
+        "outOf": "out of",
+        "scaleHint": "From 0.5 to 5, in half-point steps."
+      },
       "assessment": {
         "title": "How this park felt",
         "description": "Rate this specific visit from 0.5 to 5. This observation stays private and never changes the community rating or rankings.",

@@ -1,6 +1,20 @@
 {
-  "version": "5.0.33",
+  "version": "5.0.34",
   "history": [
+    {
+      "version": "5.0.34",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La saisie des notes du passeport est plus claire et adaptée au mobile.",
+        "en": "Passport ratings are clearer and easier to use on mobile.",
+        "de": "Bewertungen im Besuchspass sind jetzt klarer und mobil besser nutzbar.",
+        "nl": "Beoordelingen in het paspoort zijn nu duidelijker en mobielvriendelijker.",
+        "it": "Le valutazioni nel passaporto sono ora più chiare e adatte ai dispositivi mobili.",
+        "es": "Las valoraciones del pasaporte son ahora más claras y cómodas en móviles.",
+        "pl": "Oceny w paszporcie są teraz czytelniejsze i wygodniejsze na urządzeniach mobilnych.",
+        "pt": "As avaliações no passaporte estão agora mais claras e adaptadas ao telemóvel."
+      }
+    },
     {
       "version": "5.0.33",
       "releasedAt": "2026-09-05",

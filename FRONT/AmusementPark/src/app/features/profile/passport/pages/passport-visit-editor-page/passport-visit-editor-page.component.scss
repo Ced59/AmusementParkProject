@@ -22,7 +22,6 @@
 .passport-assessment,
 .passport-assessment__heading,
 .passport-assessment__heading > div,
-.passport-assessment__ratings,
 .passport-assessment__actions,
 .passport-assessment__delete-confirmation,
 .passport-panel,
@@ -33,7 +32,6 @@
 .passport-occurrence article,
 .passport-ride-assessment,
 .passport-ride-assessment__body,
-.passport-ride-assessment__ratings,
 .passport-ride-assessment__actions,
 .passport-ride-assessment__delete-confirmation,
 .passport-occurrence__actions,
@@ -273,61 +271,6 @@
   border-radius: 999px;
   background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2));
   color: var(--app-primary);
-}
-
-.passport-assessment__ratings {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: 0.45rem;
-  width: 100%;
-  max-width: 100%;
-}
-
-.passport-assessment__rating {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  min-height: 3.1rem;
-  place-items: center;
-  gap: 0.15rem;
-  padding: 0.4rem 0.2rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-md);
-  background: var(--app-surface-2);
-  color: var(--app-text-muted);
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.passport-assessment__rating input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.passport-assessment__rating:hover,
-.passport-assessment__rating:focus-within,
-.passport-assessment__rating--selected {
-  border-color: var(--app-primary);
-  color: var(--app-primary);
-}
-
-.passport-assessment__rating--selected {
-  background: color-mix(in srgb, var(--app-primary) 12%, var(--app-surface));
-}
-
-.passport-assessment__rating:focus-within {
-  outline: 3px solid color-mix(in srgb, var(--app-primary) 35%, transparent);
-  outline-offset: 2px;
-}
-
-.passport-assessment__rating--disabled {
-  cursor: wait;
-  opacity: 0.65;
 }
 
 .passport-assessment__comment {
@@ -891,61 +834,6 @@
   line-height: 1.45;
 }
 
-.passport-ride-assessment__ratings {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.4rem;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.passport-ride-assessment__ratings legend {
-  width: 100%;
-  margin-bottom: 0.45rem;
-  color: var(--app-heading);
-  font-weight: 800;
-  overflow-wrap: anywhere;
-}
-
-.passport-ride-assessment__rating {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  min-height: 2.75rem;
-  place-items: center;
-  border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-sm);
-  background: var(--app-surface-2);
-  color: var(--app-text-muted);
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.passport-ride-assessment__rating input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  opacity: 0;
-}
-
-.passport-ride-assessment__rating:hover,
-.passport-ride-assessment__rating:focus-within,
-.passport-ride-assessment__rating--selected {
-  border-color: var(--app-primary);
-  color: var(--app-primary);
-}
-
-.passport-ride-assessment__rating--selected {
-  background: color-mix(in srgb, var(--app-primary) 12%, var(--app-surface));
-}
-
-.passport-ride-assessment__rating:focus-within {
-  outline: 3px solid color-mix(in srgb, var(--app-primary) 35%, transparent);
-  outline-offset: 2px;
-}
-
 .passport-ride-assessment__hint {
   display: inline-flex;
   align-items: flex-start;
@@ -1123,9 +1011,6 @@ textarea:focus-visible {
     position: static;
   }
 
-  .passport-assessment__ratings {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 620px) {
@@ -1285,10 +1170,6 @@ textarea:focus-visible {
 }
 
 @media (max-width: 340px) {
-  .passport-ride-assessment__ratings {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .passport-occurrence__order {
     grid-template-columns: repeat(2, minmax(2.75rem, 1fr));
   }
