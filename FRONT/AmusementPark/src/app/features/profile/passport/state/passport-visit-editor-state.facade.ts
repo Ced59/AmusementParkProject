@@ -630,20 +630,29 @@ export class PassportVisitEditorStateFacade {
     }));
   }
 
+  canDuplicateOccurrence(occurrence: PassportRideOccurrence): boolean {
+    const hasPendingSubmission: boolean = this.pendingDuplicateSubmissions.has(occurrence.id);
+    const conflictConfirmed: boolean = this.editDraftsSignal()[occurrence.id]?.confirmHistoricalConflict
+      ?? occurrence.historicalConflictConfirmed
+      ?? false;
+    return this.currentVisitId !== null
+      && !this.timelineConsistencyStaleSignal()
+      && !this.isOccurrenceBusy(occurrence.id)
+      && (hasPendingSubmission || (occurrence.target != null
+        && !occurrence.target.isHistoricalSnapshot
+        && occurrence.target.category === 'Attraction'
+        && (occurrence.historicalConsistency !== 'ConfirmedConflict' || conflictConfirmed)));
+  }
+
   duplicateOccurrence(occurrence: PassportRideOccurrence): void {
     const visitId: string | null = this.currentVisitId;
-    const operationName: string = `duplicate:${occurrence.id}`;
-    const pendingSubmission: PendingDuplicateSubmission | undefined =
-      this.pendingDuplicateSubmissions.get(occurrence.id);
-    if (!visitId
-      || (!pendingSubmission && (!occurrence.target
-        || occurrence.target.isHistoricalSnapshot
-        || occurrence.target.category !== 'Attraction'))
-      || this.timelineConsistencyStaleSignal()
-      || this.isOccurrenceBusy(occurrence.id)) {
+    if (!visitId || !this.canDuplicateOccurrence(occurrence)) {
       return;
     }
 
+    const operationName: string = `duplicate:${occurrence.id}`;
+    const pendingSubmission: PendingDuplicateSubmission | undefined =
+      this.pendingDuplicateSubmissions.get(occurrence.id);
     const visitGeneration: number = this.visitInstanceGeneration;
     const submission: PendingDuplicateSubmission = pendingSubmission
       ?? this.createDuplicateSubmission(occurrence, operationName);
@@ -2163,9 +2172,7 @@ export class PassportVisitEditorStateFacade {
           historicalConsistency: evaluation.historicalConsistency,
           openingDate: evaluation.openingDate,
           closingDate: evaluation.closingDate,
-          confirmHistoricalConflict: evaluation.historicalConsistency === 'ConfirmedConflict'
-            ? selection.confirmHistoricalConflict
-            : false
+          confirmHistoricalConflict: false
         } : selection;
       }
     ));

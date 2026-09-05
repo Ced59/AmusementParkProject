@@ -349,6 +349,31 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
+  it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
+      parkItemId: 'ride-1',
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '2026-01-01',
+      closingDate: null
+    }]));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateSelection('ride-1', { confirmHistoricalConflict: true });
+    expect(facade.selectionCanSubmit()).toBe(true);
+    facade.updateVisitMetadataDraft({ precision: 'Year', year: 2025, isApproximate: true });
+
+    facade.saveVisitMetadata();
+
+    expect(facade.selectedAttractions()[0].confirmHistoricalConflict).toBe(false);
+    expect(facade.selectionCanSubmit()).toBe(false);
+  });
+
   it('re-evaluates large multi-page selections in server-bounded batches', () => {
     attractionsPort.getParkItemsByParkIdPage.mockImplementation((
       _parkId: string,
@@ -1909,17 +1934,12 @@ describe('PassportVisitEditorStateFacade', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
 
+    expect(facade.canDuplicateOccurrence(newlyConflictingOccurrence)).toBe(false);
     facade.duplicateOccurrence(newlyConflictingOccurrence);
-
-    expect(occurrencesPort.addBatch).toHaveBeenLastCalledWith(
-      'visit-1',
-      expect.objectContaining({
-        items: [expect.objectContaining({ confirmHistoricalConflict: false })]
-      }),
-      'operation-stable'
-    );
+    expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
 
     facade.updateOccurrenceDraft(newlyConflictingOccurrence.id, { confirmHistoricalConflict: true });
+    expect(facade.canDuplicateOccurrence(newlyConflictingOccurrence)).toBe(true);
     facade.duplicateOccurrence(newlyConflictingOccurrence);
 
     expect(occurrencesPort.addBatch).toHaveBeenLastCalledWith(

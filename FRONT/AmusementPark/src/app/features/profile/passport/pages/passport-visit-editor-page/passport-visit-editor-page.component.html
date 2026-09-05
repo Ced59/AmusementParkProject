@@ -861,7 +861,7 @@
                         }
                       </details>
 
-                      <button appUiButton="soft" type="button" [disabled]="facade.timelineConsistencyStale() || isOccurrenceBusy(row.occurrence.id)" (click)="facade.duplicateOccurrence(row.occurrence)">
+                      <button appUiButton="soft" type="button" [disabled]="!facade.canDuplicateOccurrence(row.occurrence)" (click)="facade.duplicateOccurrence(row.occurrence)">
                         <i class="pi pi-copy" aria-hidden="true"></i>
                         <span>
                           {{ (facade.pendingDuplicateRecoveryIds().has(row.occurrence.id)
