@@ -74,6 +74,13 @@ export class PassportGlobalStatisticsStateFacade {
           if (generation !== this.loadGeneration) {
             return;
           }
+
+          const availableFilter: PassportGlobalStatisticsFilter = this.keepAvailableFilter(filter, statistics);
+          if (availableFilter.year !== filter.year || availableFilter.parkId !== filter.parkId) {
+            this.updateFilter(availableFilter);
+            return;
+          }
+
           this.statisticsSignal.set(statistics);
           this.lastSuccessfulFilter = { ...filter };
           this.loadingSignal.set(false);
@@ -90,5 +97,20 @@ export class PassportGlobalStatisticsStateFacade {
             : 'passport.globalStatistics.errors.load');
         }
       });
+  }
+
+  private keepAvailableFilter(
+    filter: PassportGlobalStatisticsFilter,
+    statistics: PassportGlobalStatistics
+  ): PassportGlobalStatisticsFilter {
+    const year: number | null = filter.year !== null && statistics.availableYears.includes(filter.year)
+      ? filter.year
+      : null;
+    const parkId: string | null = filter.parkId !== null && statistics.availableParks.some(
+      (park): boolean => park.parkId === filter.parkId
+    )
+      ? filter.parkId
+      : null;
+    return { year, parkId };
   }
 }

@@ -22,8 +22,12 @@
         <div class="rating-chart__year">
           <strong>{{ point.year }}</strong>
           <div>
-            <span class="rating-chart__bar rating-chart__bar--park" [style.width.%]="width(point.parkAverage)"></span>
-            <span class="rating-chart__bar rating-chart__bar--ride" [style.width.%]="width(point.rideAverage)"></span>
+            @if (point.parkAverage !== null) {
+              <span class="rating-chart__bar rating-chart__bar--park" [style.width.%]="width(point.parkAverage)"></span>
+            }
+            @if (point.rideAverage !== null) {
+              <span class="rating-chart__bar rating-chart__bar--ride" [style.width.%]="width(point.rideAverage)"></span>
+            }
           </div>
           <span>{{ point.parkAverage === null ? '—' : (point.parkAverage | number:'1.1-2') }}</span>
           <span>{{ point.rideAverage === null ? '—' : (point.rideAverage | number:'1.1-2') }}</span>

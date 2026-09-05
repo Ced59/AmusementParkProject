@@ -63,6 +63,31 @@ describe('PassportGlobalStatisticsStateFacade', () => {
     expect(facade.errorKey()).toBe('passport.globalStatistics.errors.load');
     expect(store.write).toHaveBeenLastCalledWith(initialFilter);
   });
+
+  it('clears unavailable session filters before presenting their results', () => {
+    api.getGlobalStatistics
+      .mockReturnValueOnce(of({
+        ...createStatistics(),
+        availableYears: [2024],
+        availableParks: []
+      }))
+      .mockReturnValueOnce(of({
+        ...createStatistics(),
+        selectedYear: null,
+        selectedParkId: null,
+        availableYears: [2024],
+        availableParks: []
+      }));
+    const facade: PassportGlobalStatisticsStateFacade = TestBed.inject(PassportGlobalStatisticsStateFacade);
+
+    facade.load();
+
+    expect(api.getGlobalStatistics).toHaveBeenNthCalledWith(1, 2025, 'park-1');
+    expect(store.write).toHaveBeenCalledWith({ year: null, parkId: null });
+    expect(api.getGlobalStatistics).toHaveBeenNthCalledWith(2, null, null);
+    expect(facade.filter()).toEqual({ year: null, parkId: null });
+    expect(facade.statistics()?.selectedParkId).toBeNull();
+  });
 });
 
 function createStatistics(): PassportGlobalStatistics {
