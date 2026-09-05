@@ -649,7 +649,15 @@
         "results": "Atrakcje dostępne dla tej wizyty",
         "historical": "historyczna",
         "pagination": "Strony atrakcji",
-        "page": "Strona {{current}} z {{total}}"
+        "page": "Strona {{current}} z {{total}}",
+        "lifecycleLabel": "Dostępność",
+        "allLifecycles": "Wszystkie atrakcje",
+        "noRecordedClosure": "Bez zarejestrowanego zamknięcia",
+        "closedOrRemoved": "Zamknięte lub usunięte",
+        "instantSearchHint": "Wyniki aktualizują się podczas pisania.",
+        "quantityLabel": "Wybrane przejazdy dla {{attraction}}",
+        "decrease": "Usuń jeden przejazd dla {{attraction}}",
+        "increase": "Dodaj jeden przejazd dla {{attraction}}"
       },
       "selection": {
         "title": "Wpisy do dodania",
@@ -671,7 +679,11 @@
           "many": "{{count}} wpisów",
           "other": "{{count}} wpisu"
         },
-        "pendingRecovery": "Wynik ostatniego dodawania jest niepewny. Ponów je przed wysłaniem nowszych zmian."
+        "pendingRecovery": "Wynik ostatniego dodawania jest niepewny. Ponów je przed wysłaniem nowszych zmian.",
+        "summaryLabel": "Podsumowanie wybranych przejazdów",
+        "review": "Sprawdź szczegóły",
+        "quickAdd": "Dodaj teraz",
+        "customize": "Dostosuj ten przejazd"
       },
       "fields": {
         "status": "Rezultat",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Prywatna notatka",
         "orderActions": "Zmiana kolejności wpisu",
         "deleteConfirmation": "Trwale usunąć ten wpis z wizyty?",
-        "pendingDuplicateRecovery": "Wynik dodania tego wpisu jest niepewny. Sprawdź go: to samo żądanie zostanie ponowione bez tworzenia duplikatu."
+        "pendingDuplicateRecovery": "Wynik dodania tego wpisu jest niepewny. Sprawdź go: to samo żądanie zostanie ponowione bez tworzenia duplikatu.",
+        "dragHandle": "Przytrzymaj i przeciągnij, aby przenieść",
+        "cancelDrop": "Upuść tutaj, aby anulować przenoszenie",
+        "orderMoved": "Atrakcja {{attraction}} została przeniesiona na pozycję {{position}} z {{total}}.",
+        "orderRestored": "Nie udało się przenieść atrakcji {{attraction}}. Przywrócono pozycję {{position}} z {{total}}.",
+        "orderCancelled": "Przenoszenie anulowane. Kolejność się nie zmieniła."
       },
       "errors": {
         "visitNotFound": "Nie znaleziono tej wizyty albo nie należy już do Ciebie.",

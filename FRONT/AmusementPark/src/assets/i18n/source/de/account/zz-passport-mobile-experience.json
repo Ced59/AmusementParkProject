@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Verfügbarkeit",
+        "allLifecycles": "Alle Attraktionen",
+        "noRecordedClosure": "Ohne erfasste Schließung",
+        "closedOrRemoved": "Geschlossen oder entfernt",
+        "instantSearchHint": "Die Ergebnisse werden während deiner Eingabe aktualisiert.",
+        "quantityLabel": "Ausgewählte Fahrten für {{attraction}}",
+        "decrease": "Eine Fahrt bei {{attraction}} entfernen",
+        "increase": "Eine Fahrt bei {{attraction}} hinzufügen"
+      },
+      "selection": {
+        "summaryLabel": "Übersicht der ausgewählten Fahrten",
+        "review": "Details prüfen",
+        "quickAdd": "Jetzt hinzufügen",
+        "customize": "Diese Fahrt anpassen"
+      },
+      "timeline": {
+        "dragHandle": "Gedrückt halten und zum Verschieben ziehen",
+        "cancelDrop": "Hier ablegen, um das Verschieben abzubrechen",
+        "orderMoved": "{{attraction}} wurde auf Position {{position}} von {{total}} verschoben.",
+        "orderRestored": "{{attraction}} konnte nicht verschoben werden. Position {{position}} von {{total}} wurde wiederhergestellt.",
+        "orderCancelled": "Verschieben abgebrochen. Die Reihenfolge wurde nicht geändert."
+      }
+    }
+  }
+}

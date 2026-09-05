@@ -30,6 +30,7 @@ import {
 import { ParkItem } from '@app/models/parks/park-item';
 import { Park } from '@app/models/parks/park';
 import { ParkZone } from '@app/models/parks/park-zone';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
@@ -158,6 +159,9 @@ export class PassportVisitEditorStateFacade {
   private readonly timelineLoadingMoreSignal = signal<boolean>(false);
   private readonly addingSignal = signal<boolean>(false);
   private readonly busyOccurrenceIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
+  private readonly reorderingOccurrenceIdSignal = signal<string | null>(null);
+  private readonly orderAnnouncementKeySignal = signal<string | null>(null);
+  private readonly orderAnnouncementParamsSignal = signal<Readonly<Record<string, string | number>>>({});
   private readonly loadErrorKeySignal = signal<string | null>(null);
   private readonly attractionErrorKeySignal = signal<string | null>(null);
   private readonly targetEvaluationsStaleSignal = signal<boolean>(false);
@@ -178,6 +182,7 @@ export class PassportVisitEditorStateFacade {
   private currentLanguage: string = 'en';
   private currentAttractionSearch: string = '';
   private currentZoneId: string | null = null;
+  private currentAttractionClosedFilter: ClosedEntityFilter = 'all';
   private visitInstanceGeneration: number = 0;
   private editorLoadGeneration: number = 0;
   private attractionLoadGeneration: number = 0;
@@ -256,6 +261,10 @@ export class PassportVisitEditorStateFacade {
   readonly timelineLoadingMore: Signal<boolean> = this.timelineLoadingMoreSignal.asReadonly();
   readonly adding: Signal<boolean> = this.addingSignal.asReadonly();
   readonly busyOccurrenceIds: Signal<ReadonlySet<string>> = this.busyOccurrenceIdsSignal.asReadonly();
+  readonly reorderingOccurrenceId: Signal<string | null> = this.reorderingOccurrenceIdSignal.asReadonly();
+  readonly orderAnnouncementKey: Signal<string | null> = this.orderAnnouncementKeySignal.asReadonly();
+  readonly orderAnnouncementParams: Signal<Readonly<Record<string, string | number>>> =
+    this.orderAnnouncementParamsSignal.asReadonly();
   readonly loadErrorKey: Signal<string | null> = this.loadErrorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
   readonly targetEvaluationsStale: Signal<boolean> = this.targetEvaluationsStaleSignal.asReadonly();
@@ -408,9 +417,14 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
-  applyAttractionFilters(search: string, zoneId: string | null): void {
+  applyAttractionFilters(
+    search: string,
+    zoneId: string | null,
+    closedFilter: ClosedEntityFilter = 'all'
+  ): void {
     this.currentAttractionSearch = search.trim();
     this.currentZoneId = zoneId?.trim() || null;
+    this.currentAttractionClosedFilter = closedFilter;
     this.loadAttractionPage(1);
   }
 
@@ -438,6 +452,34 @@ export class PassportVisitEditorStateFacade {
     this.selectedAttractionsSignal.set([...selections, createAttractionSelection(attraction)]);
   }
 
+  setAttractionCount(attraction: PassportVisitEditorAttraction, count: number): void {
+    const selections: PassportAttractionSelectionDraft[] = this.selectedAttractionsSignal();
+    const existingIndex: number = selections.findIndex(
+      (selection: PassportAttractionSelectionDraft): boolean => selection.parkItemId === attraction.id
+    );
+    const integerCount: number = Number.isFinite(count) ? Math.trunc(count) : 0;
+    if (integerCount <= 0) {
+      if (existingIndex >= 0 && !this.pendingAddRecoverySignal()) {
+        this.selectedAttractionsSignal.set(selections.filter(
+          (selection: PassportAttractionSelectionDraft): boolean => selection.parkItemId !== attraction.id
+        ));
+      }
+      return;
+    }
+
+    const normalizedCount: number = normalizeCount(integerCount);
+    if (existingIndex >= 0) {
+      this.updateSelection(attraction.id, { count: normalizedCount });
+      return;
+    }
+
+    this.rememberAttractionNames([attraction]);
+    this.selectedAttractionsSignal.set([
+      ...selections,
+      { ...createAttractionSelection(attraction), count: normalizedCount }
+    ]);
+  }
+
   updateSelection(parkItemId: string, patch: PassportAttractionSelectionPatch): void {
     this.selectedAttractionsSignal.update((selections: PassportAttractionSelectionDraft[]) => selections.map(
       (selection: PassportAttractionSelectionDraft): PassportAttractionSelectionDraft =>
@@ -449,6 +491,28 @@ export class PassportVisitEditorStateFacade {
           }
           : selection
     ));
+  }
+
+  changeSelectionCount(parkItemId: string, delta: number): void {
+    const selections: PassportAttractionSelectionDraft[] = this.selectedAttractionsSignal();
+    const selection: PassportAttractionSelectionDraft | undefined = selections.find(
+      (candidate: PassportAttractionSelectionDraft): boolean => candidate.parkItemId === parkItemId
+    );
+    if (!selection || !Number.isFinite(delta)) {
+      return;
+    }
+
+    const nextCount: number = selection.count + Math.trunc(delta);
+    if (nextCount <= 0) {
+      if (!this.pendingAddRecoverySignal()) {
+        this.selectedAttractionsSignal.set(selections.filter(
+          (candidate: PassportAttractionSelectionDraft): boolean => candidate.parkItemId !== parkItemId
+        ));
+      }
+      return;
+    }
+
+    this.updateSelection(parkItemId, { count: nextCount });
   }
 
   clearSelection(): void {
@@ -1241,18 +1305,71 @@ export class PassportVisitEditorStateFacade {
   }
 
   moveOccurrence(occurrence: PassportRideOccurrence, move: PassportOccurrenceMove): void {
-    const visitId: string | null = this.currentVisitId;
     const occurrences: PassportRideOccurrence[] = this.occurrencesSignal();
     const index: number = occurrences.findIndex(
       (candidate: PassportRideOccurrence): boolean => candidate.id === occurrence.id
     );
-    if (!visitId || index < 0 || this.isOccurrenceBusy(occurrence.id)) {
+    if (index < 0 || this.reorderingOccurrenceIdSignal() !== null) {
       return;
     }
 
     const placementAndAnchor: { placement: PassportRideOccurrencePlacement; anchorOccurrenceId: string | null } | null =
       this.resolvePlacement(occurrences, index, move);
     if (!placementAndAnchor) {
+      return;
+    }
+
+    const targetIndex: number = move === 'first'
+      ? 0
+      : move === 'last'
+        ? occurrences.length - 1
+        : move === 'up'
+          ? index - 1
+          : index + 1;
+    this.submitOccurrenceReorder(occurrence, placementAndAnchor, targetIndex);
+  }
+
+  moveOccurrenceToIndex(occurrence: PassportRideOccurrence, targetIndex: number): void {
+    const occurrences: PassportRideOccurrence[] = this.occurrencesSignal();
+    if (occurrences.length === 0 || !Number.isFinite(targetIndex)) {
+      return;
+    }
+
+    const sourceIndex: number = occurrences.findIndex(
+      (candidate: PassportRideOccurrence): boolean => candidate.id === occurrence.id
+    );
+    const safeTargetIndex: number = Math.max(0, Math.min(occurrences.length - 1, Math.trunc(targetIndex)));
+    if (sourceIndex < 0 || sourceIndex === safeTargetIndex || this.reorderingOccurrenceIdSignal() !== null) {
+      return;
+    }
+
+    const anchor: PassportRideOccurrence = occurrences[safeTargetIndex];
+    this.submitOccurrenceReorder(
+      occurrence,
+      {
+        placement: safeTargetIndex < sourceIndex ? 'Before' : 'After',
+        anchorOccurrenceId: anchor.id
+      },
+      safeTargetIndex
+    );
+  }
+
+  announceCancelledReorder(): void {
+    this.orderAnnouncementKeySignal.set('passport.editor.timeline.orderCancelled');
+    this.orderAnnouncementParamsSignal.set({});
+  }
+
+  private submitOccurrenceReorder(
+    occurrence: PassportRideOccurrence,
+    placementAndAnchor: { placement: PassportRideOccurrencePlacement; anchorOccurrenceId: string | null },
+    targetIndex: number
+  ): void {
+    const visitId: string | null = this.currentVisitId;
+    const occurrences: PassportRideOccurrence[] = this.occurrencesSignal();
+    const sourceIndex: number = occurrences.findIndex(
+      (candidate: PassportRideOccurrence): boolean => candidate.id === occurrence.id
+    );
+    if (!visitId || sourceIndex < 0 || this.isOccurrenceBusy(occurrence.id)) {
       return;
     }
 
@@ -1264,7 +1381,16 @@ export class PassportVisitEditorStateFacade {
     };
     const operationName: string = `reorder:${occurrence.id}`;
     const key: string = this.resolveIdempotencyKey(operationName, request);
+    const previousOccurrenceIds: string[] = occurrences.map(
+      (candidate: PassportRideOccurrence): string => candidate.id
+    );
+    const optimisticOccurrences: PassportRideOccurrence[] = [...occurrences];
+    const movedOccurrences: PassportRideOccurrence[] = optimisticOccurrences.splice(sourceIndex, 1);
+    optimisticOccurrences.splice(targetIndex, 0, movedOccurrences[0]);
+    this.setOccurrences(optimisticOccurrences);
     this.setOccurrenceBusy(occurrence.id, true);
+    this.reorderingOccurrenceIdSignal.set(occurrence.id);
+    this.setOrderAnnouncement('passport.editor.timeline.orderMoved', occurrence, targetIndex + 1, occurrences.length);
     this.operationErrorKeySignal.set(null);
     this.occurrencesApi.reorder(visitId, request, key).pipe(
       take(1),
@@ -1276,6 +1402,7 @@ export class PassportVisitEditorStateFacade {
         }
 
         this.setOccurrenceBusy(occurrence.id, false);
+        this.reorderingOccurrenceIdSignal.set(null);
         this.pendingMutations.delete(operationName);
         this.handleMutationSuccess(result);
         this.showSuccess('passport.editor.messages.reordered');
@@ -1286,6 +1413,17 @@ export class PassportVisitEditorStateFacade {
         }
 
         this.setOccurrenceBusy(occurrence.id, false);
+        this.reorderingOccurrenceIdSignal.set(null);
+        const restoredOrder: { position: number; total: number } = this.restoreOccurrenceOrder(
+          occurrence.id,
+          previousOccurrenceIds
+        );
+        this.setOrderAnnouncement(
+          'passport.editor.timeline.orderRestored',
+          occurrence,
+          restoredOrder.position,
+          restoredOrder.total
+        );
         this.handleMutationError(error, operationName);
       }
     });
@@ -1463,7 +1601,7 @@ export class PassportVisitEditorStateFacade {
 
   private loadAttractionPage(page: number): void {
     const visit: PassportVisit | null = this.visitSignal();
-    if (!visit || this.attractionsLoadingSignal()) {
+    if (!visit) {
       return;
     }
 
@@ -1502,12 +1640,12 @@ export class PassportVisitEditorStateFacade {
       PassportVisitEditorStateFacade.AttractionPageSize,
       {
         includeHidden: false,
-        closedFilter: 'all',
+        closedFilter: this.currentAttractionClosedFilter,
         category: 'Attraction',
         search: this.currentAttractionSearch || null,
         zoneId: this.currentZoneId
       },
-      { closedFilter: 'all' }
+      { closedFilter: this.currentAttractionClosedFilter }
     ).pipe(switchMap((result: PagedResult<ParkItem>): Observable<EvaluatedAttractionPage> => {
       const visibleItems: ParkItem[] = result.items.filter(
         (item: ParkItem): boolean => item.isVisible !== false
@@ -1825,6 +1963,63 @@ export class PassportVisitEditorStateFacade {
     return index >= occurrences.length - 1
       ? null
       : { placement: 'After', anchorOccurrenceId: occurrences[index + 1].id };
+  }
+
+  private setOrderAnnouncement(
+    key: string,
+    occurrence: PassportRideOccurrence,
+    position: number,
+    total: number
+  ): void {
+    const attractionName: string = occurrence.target?.name?.trim()
+      || this.attractionNamesSignal()[occurrence.parkItemId]
+      || this.translateService.instant('passport.editor.timeline.unknownAttraction');
+    this.orderAnnouncementParamsSignal.set({ attraction: attractionName, position, total });
+    this.orderAnnouncementKeySignal.set(key);
+  }
+
+  private restoreOccurrenceOrder(
+    occurrenceId: string,
+    previousOccurrenceIds: readonly string[]
+  ): { position: number; total: number } {
+    const currentOccurrences: PassportRideOccurrence[] = this.occurrencesSignal();
+    const currentIndex: number = currentOccurrences.findIndex(
+      (candidate: PassportRideOccurrence): boolean => candidate.id === occurrenceId
+    );
+    const previousIndex: number = previousOccurrenceIds.indexOf(occurrenceId);
+    if (currentIndex < 0 || previousIndex < 0) {
+      return { position: Math.max(1, currentIndex + 1), total: currentOccurrences.length };
+    }
+
+    const movedOccurrence: PassportRideOccurrence = currentOccurrences[currentIndex];
+    const remainingOccurrences: PassportRideOccurrence[] = currentOccurrences.filter(
+      (candidate: PassportRideOccurrence): boolean => candidate.id !== occurrenceId
+    );
+    const previousIdsBefore: string[] = previousOccurrenceIds.slice(0, previousIndex).reverse();
+    const survivingPreviousId: string | undefined = previousIdsBefore.find(
+      (candidateId: string): boolean => remainingOccurrences.some(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === candidateId
+      )
+    );
+    const previousIdsAfter: string[] = previousOccurrenceIds.slice(previousIndex + 1);
+    const survivingNextId: string | undefined = previousIdsAfter.find(
+      (candidateId: string): boolean => remainingOccurrences.some(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === candidateId
+      )
+    );
+    const targetIndex: number = survivingPreviousId
+      ? remainingOccurrences.findIndex(
+        (candidate: PassportRideOccurrence): boolean => candidate.id === survivingPreviousId
+      ) + 1
+      : survivingNextId
+        ? remainingOccurrences.findIndex(
+          (candidate: PassportRideOccurrence): boolean => candidate.id === survivingNextId
+        )
+        : Math.min(previousIndex, remainingOccurrences.length);
+    const restoredOccurrences: PassportRideOccurrence[] = [...remainingOccurrences];
+    restoredOccurrences.splice(targetIndex, 0, movedOccurrence);
+    this.setOccurrences(restoredOccurrences);
+    return { position: targetIndex + 1, total: restoredOccurrences.length };
   }
 
   private isOccurrenceBusy(occurrenceId: string): boolean {
@@ -2483,6 +2678,7 @@ export class PassportVisitEditorStateFacade {
     this.currentLanguage = language.trim().toLowerCase() || 'en';
     this.currentAttractionSearch = '';
     this.currentZoneId = null;
+    this.currentAttractionClosedFilter = 'all';
     this.visitSignal.set(null);
     this.metadataDraftSignal.set({
       precision: 'Day',
@@ -2532,6 +2728,9 @@ export class PassportVisitEditorStateFacade {
     this.timelineLoadingMoreSignal.set(false);
     this.addingSignal.set(false);
     this.busyOccurrenceIdsSignal.set(new Set<string>());
+    this.reorderingOccurrenceIdSignal.set(null);
+    this.orderAnnouncementKeySignal.set(null);
+    this.orderAnnouncementParamsSignal.set({});
     this.pendingMutations.clear();
     this.pendingDuplicateSubmissions.clear();
     this.pendingTimelineDraftSubmissions.clear();

@@ -1,15 +1,17 @@
+import { CdkDrag, CdkDragDrop, CdkDragHandle, CdkDropList } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { skip } from 'rxjs';
+import { debounceTime, distinctUntilChanged, skip } from 'rxjs';
 
 import {
   PassportRideOccurrence,
   PassportRideOccurrenceStatus
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisitDatePrecision, PassportVisitStatus } from '@app/models/passport/passport-visit.models';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { RatingInputComponent } from '@shared/components/rating-input/rating-input.component';
@@ -51,6 +53,9 @@ const supportedLifecycleStatuses: ReadonlySet<string> = new Set<string>([
   imports: [
     ReactiveFormsModule,
     TranslateModule,
+    CdkDrag,
+    CdkDragHandle,
+    CdkDropList,
     ImageDisplayComponent,
     RatingInputComponent,
     LocalizedPluralPipe,
@@ -64,11 +69,13 @@ export class PassportVisitEditorPageComponent {
   protected readonly facade: PassportVisitEditorStateFacade;
   protected readonly searchControl = new FormControl<string>('', { nonNullable: true });
   protected readonly zoneControl = new FormControl<string>('', { nonNullable: true });
+  protected readonly lifecycleControl = new FormControl<ClosedEntityFilter>('all', { nonNullable: true });
   protected readonly deleteConfirmationId = signal<string | null>(null);
   protected readonly assessmentDeleteConfirmation = signal<boolean>(false);
   protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
   protected readonly visitDeletionConfirmed = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly timelineDragging = signal<boolean>(false);
   protected readonly attractionThumbnailWidths: readonly number[] = [96, 160];
   protected readonly statusOptions: readonly PassportStatusOption[] = [
     { value: 'Completed', labelKey: 'passport.editor.status.completed' },
@@ -96,6 +103,19 @@ export class PassportVisitEditorPageComponent {
     this.visitId = route.snapshot.paramMap.get('visitId')?.trim() ?? '';
 
     this.facade.load(this.visitId, initialLanguage);
+    this.searchControl.valueChanges.pipe(
+      debounceTime(250),
+      distinctUntilChanged(),
+      takeUntilDestroyed(destroyRef)
+    ).subscribe((): void => this.applyFilters());
+    this.zoneControl.valueChanges.pipe(
+      distinctUntilChanged(),
+      takeUntilDestroyed(destroyRef)
+    ).subscribe((): void => this.applyFilters());
+    this.lifecycleControl.valueChanges.pipe(
+      distinctUntilChanged(),
+      takeUntilDestroyed(destroyRef)
+    ).subscribe((): void => this.applyFilters());
     effect((): void => {
       if (this.facade.deletedVisitId()) {
         void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport']);
@@ -117,6 +137,8 @@ export class PassportVisitEditorPageComponent {
       this.rideAssessmentDeleteConfirmationId.set(null);
       this.searchControl.setValue('', { emitEvent: false });
       this.zoneControl.setValue('', { emitEvent: false });
+      this.lifecycleControl.setValue('all', { emitEvent: false });
+      this.timelineDragging.set(false);
       this.facade.load(visitId, this.currentLanguage());
     });
 
@@ -184,13 +206,18 @@ export class PassportVisitEditorPageComponent {
   }
 
   protected applyFilters(): void {
-    this.facade.applyAttractionFilters(this.searchControl.value, this.zoneControl.value || null);
+    this.facade.applyAttractionFilters(
+      this.searchControl.value,
+      this.zoneControl.value || null,
+      this.lifecycleControl.value
+    );
   }
 
   protected clearFilters(): void {
-    this.searchControl.setValue('');
-    this.zoneControl.setValue('');
-    this.facade.applyAttractionFilters('', null);
+    this.searchControl.setValue('', { emitEvent: false });
+    this.zoneControl.setValue('', { emitEvent: false });
+    this.lifecycleControl.setValue('all', { emitEvent: false });
+    this.facade.applyAttractionFilters('', null, 'all');
   }
 
   protected visitStatusLabelKey(status: PassportVisitStatus): string {
@@ -304,8 +331,40 @@ export class PassportVisitEditorPageComponent {
     this.facade.deleteRideAssessment(occurrence);
   }
 
-  protected toggleAttraction(attraction: PassportVisitEditorAttraction): void {
-    this.facade.toggleAttraction(attraction);
+  protected attractionCount(parkItemId: string): number {
+    return this.selectionFor(parkItemId)?.count ?? 0;
+  }
+
+  protected incrementAttraction(attraction: PassportVisitEditorAttraction): void {
+    this.facade.setAttractionCount(attraction, this.attractionCount(attraction.id) + 1);
+  }
+
+  protected decrementAttraction(attraction: PassportVisitEditorAttraction): void {
+    this.facade.setAttractionCount(attraction, this.attractionCount(attraction.id) - 1);
+  }
+
+  protected incrementSelection(parkItemId: string): void {
+    this.facade.changeSelectionCount(parkItemId, 1);
+  }
+
+  protected decrementSelection(parkItemId: string): void {
+    this.facade.changeSelectionCount(parkItemId, -1);
+  }
+
+  protected reorderTimeline(event: CdkDragDrop<PassportRideOccurrence[]>): void {
+    this.timelineDragging.set(false);
+    if (!event.isPointerOverContainer || event.previousContainer !== event.container) {
+      this.facade.announceCancelledReorder();
+      return;
+    }
+
+    const occurrence: PassportRideOccurrence = event.item.data as PassportRideOccurrence;
+    this.facade.moveOccurrenceToIndex(occurrence, event.currentIndex);
+  }
+
+  protected cancelTimelineReorder(): void {
+    this.timelineDragging.set(false);
+    this.facade.announceCancelledReorder();
   }
 
   protected selectionFor(parkItemId: string): PassportAttractionSelectionDraft | null {

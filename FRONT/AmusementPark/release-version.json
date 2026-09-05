@@ -1,6 +1,20 @@
 {
-  "version": "5.0.37",
+  "version": "5.0.38",
   "history": [
+    {
+      "version": "5.0.38",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Le passeport permet maintenant d’organiser ses passages plus rapidement sur mobile.",
+        "en": "The passport now makes it quicker to organize ride entries on mobile.",
+        "de": "Fahrten lassen sich im Besuchspass jetzt mobil schneller organisieren.",
+        "nl": "Ritten zijn nu sneller te organiseren in het paspoort op mobiel.",
+        "it": "Ora è più rapido organizzare i giri nel passaporto da mobile.",
+        "es": "Ahora es más rápido organizar los recorridos del pasaporte desde el móvil.",
+        "pl": "Przejazdy w paszporcie można teraz szybciej porządkować na urządzeniach mobilnych.",
+        "pt": "Agora é mais rápido organizar as voltas do passaporte no telemóvel."
+      }
+    },
     {
       "version": "5.0.37",
       "releasedAt": "2026-09-05",

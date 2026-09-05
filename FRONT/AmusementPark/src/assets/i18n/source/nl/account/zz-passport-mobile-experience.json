@@ -1,0 +1,29 @@
+{
+  "passport": {
+    "editor": {
+      "selector": {
+        "lifecycleLabel": "Beschikbaarheid",
+        "allLifecycles": "Alle attracties",
+        "noRecordedClosure": "Zonder geregistreerde sluiting",
+        "closedOrRemoved": "Gesloten of verwijderd",
+        "instantSearchHint": "De resultaten worden bijgewerkt terwijl je typt.",
+        "quantityLabel": "Geselecteerde ritten voor {{attraction}}",
+        "decrease": "Eén rit bij {{attraction}} verwijderen",
+        "increase": "Eén rit bij {{attraction}} toevoegen"
+      },
+      "selection": {
+        "summaryLabel": "Overzicht van geselecteerde ritten",
+        "review": "Details controleren",
+        "quickAdd": "Nu toevoegen",
+        "customize": "Deze rit aanpassen"
+      },
+      "timeline": {
+        "dragHandle": "Houd vast en sleep om te verplaatsen",
+        "cancelDrop": "Zet hier neer om de verplaatsing te annuleren",
+        "orderMoved": "{{attraction}} is verplaatst naar positie {{position}} van {{total}}.",
+        "orderRestored": "{{attraction}} kon niet worden verplaatst. Positie {{position}} van {{total}} is hersteld.",
+        "orderCancelled": "Verplaatsing geannuleerd. De volgorde is niet gewijzigd."
+      }
+    }
+  }
+}

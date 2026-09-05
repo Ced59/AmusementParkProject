@@ -649,7 +649,15 @@
         "results": "Attractions disponibles pour cette visite",
         "historical": "historique",
         "pagination": "Pages d’attractions",
-        "page": "Page {{current}} sur {{total}}"
+        "page": "Page {{current}} sur {{total}}",
+        "lifecycleLabel": "Disponibilité",
+        "allLifecycles": "Toutes les attractions",
+        "noRecordedClosure": "Sans fermeture enregistrée",
+        "closedOrRemoved": "Fermées ou retirées",
+        "instantSearchHint": "Les résultats s’actualisent pendant ta saisie.",
+        "quantityLabel": "Nombre de passages sélectionnés pour {{attraction}}",
+        "decrease": "Retirer un passage pour {{attraction}}",
+        "increase": "Ajouter un passage pour {{attraction}}"
       },
       "selection": {
         "title": "Passages à ajouter",
@@ -671,7 +679,11 @@
           "many": "{{count}} passages",
           "other": "{{count}} passages"
         },
-        "pendingRecovery": "Le résultat du dernier ajout est incertain. Réessaie pour le vérifier avant d’envoyer tes nouvelles modifications."
+        "pendingRecovery": "Le résultat du dernier ajout est incertain. Réessaie pour le vérifier avant d’envoyer tes nouvelles modifications.",
+        "summaryLabel": "Résumé des passages sélectionnés",
+        "review": "Vérifier les détails",
+        "quickAdd": "Ajouter maintenant",
+        "customize": "Personnaliser ce passage"
       },
       "fields": {
         "status": "Résultat",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Note privée",
         "orderActions": "Actions de classement du passage",
         "deleteConfirmation": "Supprimer définitivement ce passage de ta visite ?",
-        "pendingDuplicateRecovery": "Le résultat de ce passage ajouté est incertain. Vérifie-le : la même demande sera rejouée sans créer de doublon."
+        "pendingDuplicateRecovery": "Le résultat de ce passage ajouté est incertain. Vérifie-le : la même demande sera rejouée sans créer de doublon.",
+        "dragHandle": "Maintiens puis glisse pour déplacer",
+        "cancelDrop": "Dépose ici pour annuler le déplacement",
+        "orderMoved": "{{attraction}} déplacée en position {{position}} sur {{total}}.",
+        "orderRestored": "Le déplacement de {{attraction}} a échoué. Position {{position}} sur {{total}} restaurée.",
+        "orderCancelled": "Déplacement annulé. L’ordre n’a pas changé."
       },
       "errors": {
         "visitNotFound": "Cette visite est introuvable ou ne t’appartient plus.",

@@ -649,7 +649,15 @@
         "results": "Attrazioni disponibili per questa visita",
         "historical": "storica",
         "pagination": "Pagine delle attrazioni",
-        "page": "Pagina {{current}} di {{total}}"
+        "page": "Pagina {{current}} di {{total}}",
+        "lifecycleLabel": "Disponibilità",
+        "allLifecycles": "Tutte le attrazioni",
+        "noRecordedClosure": "Senza chiusura registrata",
+        "closedOrRemoved": "Chiuse o rimosse",
+        "instantSearchHint": "I risultati si aggiornano mentre scrivi.",
+        "quantityLabel": "Giri selezionati per {{attraction}}",
+        "decrease": "Rimuovi un giro per {{attraction}}",
+        "increase": "Aggiungi un giro per {{attraction}}"
       },
       "selection": {
         "title": "Voci da aggiungere",
@@ -671,7 +679,11 @@
           "many": "{{count}} voci",
           "other": "{{count}} voci"
         },
-        "pendingRecovery": "L’esito dell’ultimo inserimento è incerto. Riprova prima di inviare le modifiche più recenti."
+        "pendingRecovery": "L’esito dell’ultimo inserimento è incerto. Riprova prima di inviare le modifiche più recenti.",
+        "summaryLabel": "Riepilogo dei giri selezionati",
+        "review": "Controlla i dettagli",
+        "quickAdd": "Aggiungi ora",
+        "customize": "Personalizza questo giro"
       },
       "fields": {
         "status": "Esito",
@@ -731,7 +743,12 @@
         "hasPrivateNote": "Nota privata",
         "orderActions": "Azioni per ordinare la voce",
         "deleteConfirmation": "Eliminare definitivamente questa voce dalla visita?",
-        "pendingDuplicateRecovery": "L’esito dell’aggiunta di questa voce è incerto. Verificalo: verrà ripetuta la stessa richiesta senza creare un duplicato."
+        "pendingDuplicateRecovery": "L’esito dell’aggiunta di questa voce è incerto. Verificalo: verrà ripetuta la stessa richiesta senza creare un duplicato.",
+        "dragHandle": "Tieni premuto e trascina per spostare",
+        "cancelDrop": "Rilascia qui per annullare lo spostamento",
+        "orderMoved": "{{attraction}} è stata spostata in posizione {{position}} di {{total}}.",
+        "orderRestored": "Impossibile spostare {{attraction}}. È stata ripristinata la posizione {{position}} di {{total}}.",
+        "orderCancelled": "Spostamento annullato. L’ordine non è cambiato."
       },
       "errors": {
         "visitNotFound": "Questa visita non è stata trovata o non ti appartiene più.",
