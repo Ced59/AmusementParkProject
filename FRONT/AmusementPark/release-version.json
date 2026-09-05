@@ -1,6 +1,20 @@
 {
-  "version": "5.1.15",
+  "version": "5.1.16",
   "history": [
+    {
+      "version": "5.1.16",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les informations qui expliquent la méthode de notation reposent désormais sur une structure plus cohérente.",
+        "en": "Information explaining the rating methodology now relies on a more consistent structure.",
+        "de": "Die Erläuterungen zur Bewertungsmethode basieren jetzt auf einer einheitlicheren Struktur.",
+        "nl": "De uitleg over de beoordelingsmethode steunt nu op een consistentere structuur.",
+        "it": "Le informazioni che spiegano il metodo di valutazione si basano ora su una struttura più coerente.",
+        "es": "La información que explica el método de valoración se apoya ahora en una estructura más coherente.",
+        "pl": "Informacje wyjaśniające metodę oceniania korzystają teraz z bardziej spójnej struktury.",
+        "pt": "As informações que explicam o método de avaliação assentam agora numa estrutura mais coerente."
+      }
+    },
     {
       "version": "5.1.15",
       "releasedAt": "2026-09-05",
