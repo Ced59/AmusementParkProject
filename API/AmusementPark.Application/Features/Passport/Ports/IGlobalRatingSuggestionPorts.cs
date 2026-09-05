@@ -35,11 +35,6 @@ public interface IGlobalRatingSuggestionStateRepository
         CancellationToken cancellationToken);
 }
 
-public interface IGlobalRatingSuggestionFeatureGate
-{
-    bool IsEnabled { get; }
-}
-
 public interface IGlobalRatingSuggestionAnalyticsOutboxReconciler
 {
     Task<int> ReconcileBatchAsync(

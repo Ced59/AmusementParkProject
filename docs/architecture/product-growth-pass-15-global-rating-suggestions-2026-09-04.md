@@ -17,7 +17,7 @@ La suggestion est disponible dans le panneau « Mes notes » du profil. Elle aff
 - au moins deux observations créées ou corrigées après la dernière modification de cette note globale ;
 - un écart absolu d'au moins un point entre la note globale et la moyenne des trois observations nouvelles les plus récentes ;
 - l'absence de présentation pour cette cible pendant les 30 derniers jours ;
-- l'activation de la préférence utilisateur et du kill switch serveur.
+- l'activation de la préférence utilisateur.
 
 Une présentation reste résoluble pendant 24 heures. Le serveur renvoie son horodatage comme version opaque de la carte et toute acceptation ou tout rejet doit restituer exactement cette version. Une action issue d'une ancienne carte ne peut donc pas résoudre une présentation plus récente. Une interaction sans présentation active est refusée ; rejouer exactement une transition déjà résolue pour la même version réussit sans nouvel événement analytique.
 
@@ -31,7 +31,7 @@ note globale + timestamp
            │       ├── moyenne récente (3 max.)
            │       └── médiane historique
            │
-           └── cadence + préférences + kill switch
+           └── cadence + préférence personnelle
                    │
                    └── suggestion expliquée ou aucune suggestion
 ```
@@ -53,7 +53,6 @@ WebAPI
   └─ handlers Application
        ├─ IGlobalRatingSuggestionSourceReader
        ├─ IGlobalRatingSuggestionStateRepository
-       ├─ IGlobalRatingSuggestionFeatureGate
        ├─ IParkRepository / IParkItemRepository
        └─ GlobalRatingSuggestionPolicy (Core)
 ```
@@ -85,7 +84,7 @@ Les observations de parc proviennent des assessments embarqués dans les visites
 
 La réception d'une suggestion visible demande l'enregistrement d'une présentation. Angular conserve le panneau en chargement et n'affiche que les cartes dont le serveur a accusé la présentation : les boutons ne peuvent donc pas devancer l'ouverture de leur fenêtre d'interaction. Si la réponse à ce POST est perdue ou ambiguë, la façade conserve le lot candidat en mémoire et propose une reprise directe du même POST idempotent ; elle ne relance pas le GET qui masquerait déjà les cibles placées en cadence côté serveur. Chaque carte conserve uniquement la version de présentation émise par le serveur et la restitue lors de l'action. Le serveur relit les observations privées une seule fois pour tout le lot, recalcule chaque éligibilité et vérifie encore que chaque cible peut être notée. L'acceptation et le rejet sont deux actions distinctes. Une acceptation signifie uniquement « conduire vers l'éditeur existant » ; elle ne transporte aucune nouvelle valeur. La catégorie renvoyée vient des métadonnées actuelles de l'item et la liste personnelle reçoit également son identifiant exact ; elle ne dépend donc ni d'une ancienne catégorie dénormalisée ni de la position d'un nom ambigu dans la pagination. Une erreur d'acceptation ou de rejet reste récupérable dans l'interface : les cartes et leurs actions demeurent visibles afin de permettre un nouvel essai. Une personne peut désactiver l'ensemble des suggestions et les réactiver depuis le même panneau.
 
-Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut, appartient au domaine produit Passeport. Son comportement de repli est l'absence de toute suggestion, sans effet sur les notes ni sur le journal. Il sert de kill switch et doit être réévalué à la stabilisation PASS-20.
+Le flag serveur temporaire `Features:Passport:GlobalRatingSuggestions:Enabled` a été retiré lors de la stabilisation PASS-20. La disponibilité de la fonctionnalité ne dépend donc plus d'une configuration de déploiement susceptible de créer deux parcours différents. La préférence personnelle est conservée : une personne peut toujours désactiver ses suggestions, sans modifier ses notes ni son journal.
 
 ## Responsive et accessibilité
 
@@ -100,7 +99,7 @@ Le flag `Features:Passport:GlobalRatingSuggestions:Enabled`, activé par défaut
 ## Preuves automatisées
 
 - Core : seuil minimal, écart significatif, médiane, sens de la suggestion, cooldown, fenêtre d'interaction et désactivation ;
-- Application : orchestration, kill switch sans lecture des observations, catégorie courante, présentation batchée avec une seule lecture privée, propriété, ciblage exact, rejet d'une version de présentation périmée et rejeu idempotent de la même version ;
+- Application : orchestration, préférence désactivée sans lecture des observations, catégorie courante, présentation batchée avec une seule lecture privée, propriété, ciblage exact, rejet d'une version de présentation périmée et rejeu idempotent de la même version ;
 - Infrastructure : séparation parc/ride, indexation linéaire des observations, fence de contenu, rejet des données invalides, transition et outbox atomiques, reprise idempotente, index uniques, TTL et absence de valeurs exactes dans l'analytics ;
 - WebAPI : identité authentifiée, mapping, routes privées `no-store`, lot borné et contrat d'interaction sans valeur de note ;
 - Angular : endpoints, port de façade, mapping localisé, attente de l'accusé de présentation, reprise du même lot après réponse ambiguë, transmission de sa version serveur, ciblage par identifiant, acceptation, rejet récupérable sans disparition des actions, opt-out et contrat responsive.

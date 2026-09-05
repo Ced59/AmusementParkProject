@@ -13,16 +13,13 @@ public sealed class SetGlobalRatingSuggestionsEnabledCommandHandler
         ApplicationResult<GlobalRatingSuggestionPreferenceResult>>
 {
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IPassportClock clock;
 
     public SetGlobalRatingSuggestionsEnabledCommandHandler(
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IPassportClock clock)
     {
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.clock = clock;
     }
 
@@ -51,7 +48,7 @@ public sealed class SetGlobalRatingSuggestionsEnabledCommandHandler
             cancellationToken);
         return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Success(
             new GlobalRatingSuggestionPreferenceResult(
-                this.featureGate.IsEnabled,
+                true,
                 command.IsEnabled));
     }
 }

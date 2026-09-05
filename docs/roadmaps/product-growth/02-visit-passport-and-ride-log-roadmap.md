@@ -1206,6 +1206,8 @@ Ces nombres sont des cibles de cadrage à ajuster après baseline, pas des garan
 
 ## 24. Stratégie de feature flags
 
+Les flags suivants avaient été envisagés pendant le cadrage :
+
 - `passport:visits` ;
 - `passport:rideOccurrences` ;
 - `passport:temporalRatings` ;
@@ -1213,7 +1215,13 @@ Ces nombres sont des cibles de cadrage à ajuster après baseline, pas des garan
 - `passport:anonymousDrafts` ;
 - `passport:globalRatingSuggestions`.
 
-Chaque flag : propriétaire, valeur par défaut, date de retrait, comportement de repli, métriques et kill switch.
+L'audit PASS-20 confirme que les cinq premiers n'ont jamais été matérialisés : leurs
+fonctionnalités ont été livrées progressivement avec des contrats stables. Le seul
+flag réellement créé, `passport:globalRatingSuggestions`, a été retiré après la
+stabilisation de son parcours. La préférence personnelle d'activation reste une
+donnée métier et ne constitue pas un feature flag. Tout nouveau flag devra avoir un
+propriétaire, une valeur par défaut, une date de retrait, un comportement de repli,
+des métriques et un kill switch documentés.
 
 ## 25. Découpage recommandé en PR
 
@@ -1243,6 +1251,28 @@ Chaque flag : propriétaire, valeur par défaut, date de retrait, comportement d
 | `PASS-18D` | Expérience mobile et organisation moderne | Saisie rapide, tactile, accessible et sans dépassement de viewport |
 | `PASS-19` | Beta cohort et instrumentation | Gate `PASS-G` mesurable |
 | `PASS-20` | Nettoyage flags et documentation | Chemins stabilisés |
+
+#### `PASS-20` — Stabilisation finale des chemins du passeport
+
+But métier : éviter qu'une configuration technique de déploiement fasse disparaître
+une fonction déjà adoptée ou produise deux comportements différents entre
+environnements, sans retirer les choix laissés à la personne.
+
+À faire avant de considérer le jalon terminé :
+
+- inventorier les flags envisagés et ceux réellement matérialisés ;
+- retirer le flag temporaire des suggestions de note et son implémentation
+  Infrastructure ;
+- conserver l'opt-out individuel, sa persistance MongoDB et les contrats HTTP
+  additifs `isAvailable`/`isEnabled` ;
+- garantir qu'un opt-out évite encore toute lecture des observations privées ;
+- retirer la configuration devenue morte et les tests du chemin supprimé ;
+- mettre à jour les preuves d'architecture sans modifier le schéma MongoDB ;
+- vérifier qu'aucune nouvelle violation « une classe par fichier » n'est introduite
+  et résorber celle du test directement touché.
+
+Critère de sortie : le passeport possède un seul chemin serveur stable pour les
+suggestions, tout en respectant durablement la préférence de chaque personne.
 
 ### 25.1. Priorité de finalisation du passeport après `PASS-18`
 

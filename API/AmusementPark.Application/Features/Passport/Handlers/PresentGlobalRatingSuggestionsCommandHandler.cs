@@ -20,7 +20,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
 {
     private readonly IGlobalRatingSuggestionSourceReader sourceReader;
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IPassportClock clock;
@@ -29,7 +28,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     public PresentGlobalRatingSuggestionsCommandHandler(
         IGlobalRatingSuggestionSourceReader sourceReader,
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IPassportClock clock,
@@ -37,7 +35,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     {
         this.sourceReader = sourceReader;
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.clock = clock;
@@ -73,15 +70,10 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
                 PassportApplicationErrors.InvalidGlobalRatingSuggestionInteraction());
         }
 
-        if (!this.featureGate.IsEnabled)
-        {
-            return Success(false, true, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
-        }
-
         bool isEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
         if (!isEnabled)
         {
-            return Success(true, false, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
+            return Success(false, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
         }
 
         IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
@@ -188,7 +180,7 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
             }
         }
 
-        return Success(true, true, presented);
+        return Success(true, presented);
     }
 
     private static GlobalRatingSuggestionTargetKey[] NormalizeTargets(
@@ -202,12 +194,11 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     }
 
     private static ApplicationResult<GlobalRatingSuggestionPresentationResult> Success(
-        bool isAvailable,
         bool isEnabled,
         IReadOnlyCollection<GlobalRatingSuggestionPresentedTargetResult> targets)
     {
         return ApplicationResult<GlobalRatingSuggestionPresentationResult>.Success(
-            new GlobalRatingSuggestionPresentationResult(isAvailable, isEnabled, targets));
+            new GlobalRatingSuggestionPresentationResult(true, isEnabled, targets));
     }
 
     private static DateTime TruncateToMilliseconds(DateTime value)

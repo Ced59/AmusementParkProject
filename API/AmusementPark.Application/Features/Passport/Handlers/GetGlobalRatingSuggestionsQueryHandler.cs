@@ -13,6 +13,9 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
 
+/// <summary>
+/// Builds the current user's explainable global-rating suggestions.
+/// </summary>
 public sealed class GetGlobalRatingSuggestionsQueryHandler
     : IQueryHandler<
         GetGlobalRatingSuggestionsQuery,
@@ -22,7 +25,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
 
     private readonly IGlobalRatingSuggestionSourceReader sourceReader;
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IPassportClock clock;
@@ -31,7 +33,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
     public GetGlobalRatingSuggestionsQueryHandler(
         IGlobalRatingSuggestionSourceReader sourceReader,
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IPassportClock clock,
@@ -39,7 +40,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
     {
         this.sourceReader = sourceReader;
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.clock = clock;
@@ -64,17 +64,11 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
                     exception.ParamName));
         }
 
-        if (!this.featureGate.IsEnabled)
-        {
-            return ApplicationResult<GlobalRatingSuggestionsResult>.Success(
-                CreateEmpty(false, true));
-        }
-
         bool userEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
         if (!userEnabled)
         {
             return ApplicationResult<GlobalRatingSuggestionsResult>.Success(
-                CreateEmpty(true, false));
+                CreateEmpty(false));
         }
 
         IReadOnlyCollection<GlobalRatingSuggestionSource> sources =
@@ -163,10 +157,10 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
                 suggestions));
     }
 
-    private static GlobalRatingSuggestionsResult CreateEmpty(bool isAvailable, bool userEnabled)
+    private static GlobalRatingSuggestionsResult CreateEmpty(bool userEnabled)
     {
         return new GlobalRatingSuggestionsResult(
-            isAvailable,
+            true,
             userEnabled,
             GlobalRatingSuggestionPolicy.MinimumNewObservationCount,
             (int)GlobalRatingSuggestionPolicy.PresentationCooldown.TotalDays,

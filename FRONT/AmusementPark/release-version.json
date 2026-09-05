@@ -1,6 +1,20 @@
 {
-  "version": "5.0.42",
+  "version": "5.0.43",
   "history": [
+    {
+      "version": "5.0.43",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Le passeport suit désormais un parcours stabilisé tout en conservant tes préférences.",
+        "en": "The passport now follows a stable journey while preserving your preferences.",
+        "de": "Der Besuchspass folgt jetzt einem stabilen Ablauf und bewahrt deine Einstellungen.",
+        "nl": "Het paspoort volgt nu een stabiele route en behoudt je voorkeuren.",
+        "it": "Il passaporto segue ora un percorso stabile mantenendo le tue preferenze.",
+        "es": "El pasaporte sigue ahora un recorrido estable y conserva tus preferencias.",
+        "pl": "Paszport działa teraz w stabilnym trybie, zachowując Twoje ustawienia.",
+        "pt": "O passaporte segue agora um percurso estável e mantém as tuas preferências."
+      }
+    },
     {
       "version": "5.0.42",
       "releasedAt": "2026-09-05",

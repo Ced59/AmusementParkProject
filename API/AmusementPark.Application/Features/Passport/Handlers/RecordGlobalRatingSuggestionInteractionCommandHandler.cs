@@ -16,20 +16,17 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
         ApplicationResult<GlobalRatingSuggestionPreferenceResult>>
 {
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IRatingRepository ratingRepository;
     private readonly IPassportClock clock;
     private readonly GlobalRatingSuggestionPolicy policy;
 
     public RecordGlobalRatingSuggestionInteractionCommandHandler(
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IRatingRepository ratingRepository,
         IPassportClock clock,
         GlobalRatingSuggestionPolicy policy)
     {
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.ratingRepository = ratingRepository;
         this.clock = clock;
         this.policy = policy;
@@ -63,12 +60,6 @@ public sealed class RecordGlobalRatingSuggestionInteractionCommandHandler
         {
             return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Failure(
                 PassportApplicationErrors.InvalidGlobalRatingSuggestionInteraction());
-        }
-
-        if (!this.featureGate.IsEnabled)
-        {
-            return ApplicationResult<GlobalRatingSuggestionPreferenceResult>.Success(
-                new GlobalRatingSuggestionPreferenceResult(false, true));
         }
 
         bool isEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
