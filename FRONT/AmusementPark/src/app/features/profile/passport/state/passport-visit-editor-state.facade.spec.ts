@@ -1530,6 +1530,53 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.normalizationNotice()).toBe(true);
   });
 
+  it('refreshes the visit and target evidence after a historical conflict rejection', () => {
+    const currentVisit: PassportVisit = {
+      ...visit,
+      date: { year: 2010, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    };
+    visitsPort.getVisit
+      .mockReturnValueOnce(of(visit))
+      .mockReturnValueOnce(of(currentVisit));
+    occurrencesPort.evaluateVisitTargets
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'Verified',
+        openingDate: '2000-01-01',
+        closingDate: null
+      }]))
+      .mockReturnValueOnce(of([{
+        parkItemId: 'ride-1',
+        historicalConsistency: 'ConfirmedConflict',
+        openingDate: '2020-01-01',
+        closingDate: null
+      }]));
+    occurrencesPort.addBatch.mockReturnValue(throwError(() => new HttpErrorResponse({
+      status: 409,
+      error: {
+        status: 409,
+        title: 'Conflict',
+        errorCode: 'ride-occurrence.historical-conflict-confirmation-required'
+      }
+    })));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.toggleAttraction(facade.attractions()[0]);
+
+    facade.addSelected();
+
+    expect(facade.visit()?.date.year).toBe(2010);
+    expect(facade.selectedAttractions()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      openingDate: '2020-01-01',
+      confirmHistoricalConflict: false
+    }));
+    expect(facade.selectionCanSubmit()).toBe(false);
+    expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
+  });
+
   it('blocks a new occurrence add while temporal visit metadata is unsaved', () => {
     occurrencesPort.list.mockReturnValue(of({ items: [], nextCursor: null }));
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
