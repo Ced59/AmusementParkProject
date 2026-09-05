@@ -488,17 +488,4 @@ public sealed class RatingRankingRebuildScopeJobHandler : IDurableBackgroundJobH
             && pointer.HighestPublishedSourceRevision >= requestedRevision;
     }
 
-    private enum RevisionFenceDisposition
-    {
-        Current,
-        NewerRevisionExists,
-        RequestedRevisionUnavailable,
-        MutationPending,
-        DependencyChanged,
-    }
-
-    private sealed record RevisionFenceCheck(
-        RevisionFenceDisposition Disposition,
-        long? GlobalRevision,
-        bool CacheConverged);
 }
