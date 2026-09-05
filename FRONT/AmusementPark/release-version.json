@@ -1,6 +1,20 @@
 {
-  "version": "5.1.14",
+  "version": "5.1.15",
   "history": [
+    {
+      "version": "5.1.15",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "L’enregistrement et la suppression des notes reposent désormais sur une structure plus fiable.",
+        "en": "Saving and deleting ratings now rely on a more reliable structure.",
+        "de": "Das Speichern und Löschen von Bewertungen basiert jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "Het opslaan en verwijderen van beoordelingen steunt nu op een betrouwbaardere structuur.",
+        "it": "Il salvataggio e l’eliminazione delle valutazioni si basano ora su una struttura più affidabile.",
+        "es": "El guardado y la eliminación de valoraciones se apoyan ahora en una estructura más fiable.",
+        "pl": "Zapisywanie i usuwanie ocen korzysta teraz z bardziej niezawodnej struktury.",
+        "pt": "A gravação e a eliminação de avaliações assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.14",
       "releasedAt": "2026-09-05",
