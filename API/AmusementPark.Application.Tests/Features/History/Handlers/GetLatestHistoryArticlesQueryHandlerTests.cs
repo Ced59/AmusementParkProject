@@ -1,5 +1,5 @@
-using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
@@ -16,14 +16,14 @@ namespace AmusementPark.Application.Tests.Features.History.Handlers;
 public sealed class GetLatestHistoryArticlesQueryHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_FiltersArticlesWhosePublicContextIsHidden()
+    public async Task HandleAsync_FiltersHiddenContextsAndResolvesTheParkItemParentFallback()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         HistoryEvent hiddenArticle = CreateArticle("hidden-event", HistoryEntityType.Park, "hidden-park", null);
-        HistoryEvent publicArticle = CreateArticle("public-event", HistoryEntityType.ParkItem, "public-park", "public-item");
+        HistoryEvent publicArticle = CreateArticle("public-event", HistoryEntityType.ParkItem, null, "public-item");
         Park hiddenPark = new Park { Id = "hidden-park", Name = "Hidden park", IsVisible = false };
         Park publicPark = new Park
         {
@@ -42,13 +42,18 @@ public sealed class GetLatestHistoryArticlesQueryHandlerTests
         };
 
         historyRepository
-            .Setup(repository => repository.GetLatestPublishedArticlesAsync(30, It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetLatestPublishedArticlesAsync(0, 30, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { hiddenArticle, publicArticle });
         parkRepository
             .Setup(repository => repository.GetByIdsAsync(
-                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "hidden-park", "public-park" })),
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "hidden-park" })),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { hiddenPark, publicPark });
+            .ReturnsAsync(new[] { hiddenPark });
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "public-park" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicPark });
         parkItemRepository
             .Setup(repository => repository.GetByIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "public-item" })),
@@ -75,10 +80,67 @@ public sealed class GetLatestHistoryArticlesQueryHandlerTests
         imageRepository.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task HandleAsync_ScansAdditionalPagesUntilThePublicLimitIsSatisfied()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        List<HistoryEvent> hiddenArticles = Enumerable.Range(1, 30)
+            .Select(index => CreateArticle($"hidden-event-{index}", HistoryEntityType.Park, $"hidden-park-{index}", null))
+            .ToList();
+        List<Park> hiddenParks = Enumerable.Range(1, 30)
+            .Select(index => new Park { Id = $"hidden-park-{index}", IsVisible = false })
+            .ToList();
+        HistoryEvent publicArticle = CreateArticle("public-event", HistoryEntityType.Park, "public-park", null);
+        Park publicPark = new Park
+        {
+            Id = "public-park",
+            Name = "Public park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        historyRepository
+            .Setup(repository => repository.GetLatestPublishedArticlesAsync(0, 30, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(hiddenArticles);
+        historyRepository
+            .Setup(repository => repository.GetLatestPublishedArticlesAsync(30, 30, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicArticle });
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(hiddenArticles.Select(static article => article.ParkId))),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(hiddenParks);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "public-park" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicPark });
+
+        GetLatestHistoryArticlesQueryHandler handler = new GetLatestHistoryArticlesQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<IReadOnlyCollection<HistoryArticleResult>> result = await handler.HandleAsync(
+            new GetLatestHistoryArticlesQuery(3));
+
+        HistoryArticleResult article = Assert.Single(result.Value!);
+        Assert.True(result.IsSuccess);
+        Assert.Equal("public-event", article.Event.Id);
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
     private static HistoryEvent CreateArticle(
         string eventId,
         HistoryEntityType entityType,
-        string parkId,
+        string? parkId,
         string? parkItemId)
     {
         return new HistoryEvent
@@ -86,7 +148,7 @@ public sealed class GetLatestHistoryArticlesQueryHandlerTests
             Id = eventId,
             Key = eventId,
             EntityType = entityType,
-            OwnerId = parkItemId ?? parkId,
+            OwnerId = parkItemId ?? parkId ?? string.Empty,
             ParkId = parkId,
             ContextParkId = parkId,
             ParkItemId = parkItemId,

@@ -17,7 +17,7 @@ public sealed class GetLatestHistoryArticlesQueryHandler
     private const int DefaultLimit = 3;
     private const int MinimumLimit = 1;
     private const int MaximumLimit = 3;
-    private const int CandidateMultiplier = 10;
+    private const int CandidatePageSize = 30;
 
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
@@ -42,43 +42,124 @@ public sealed class GetLatestHistoryArticlesQueryHandler
     {
         int requestedLimit = query.Limit <= 0 ? DefaultLimit : query.Limit;
         int normalizedLimit = Math.Clamp(requestedLimit, MinimumLimit, MaximumLimit);
-        IReadOnlyCollection<HistoryEvent> candidates = await this.historyEventRepository.GetLatestPublishedArticlesAsync(
-            normalizedLimit * CandidateMultiplier,
-            cancellationToken);
-
-        HistoryTimelineHydration hydration = await HistoryTimelineHydration.LoadAsync(
-            candidates,
-            this.parkRepository,
-            this.parkItemRepository,
-            this.imageRepository,
-            includeImages: false,
-            cancellationToken);
         List<HistoryArticleResult> articles = new List<HistoryArticleResult>(normalizedLimit);
+        int offset = 0;
 
-        foreach (HistoryEvent historyEvent in candidates)
+        while (articles.Count < normalizedLimit)
         {
-            HistoryTimelineEventResult hydratedEvent = hydration.ToTimelineEvent(historyEvent);
-            Park? park = hydratedEvent.ContextPark;
-
-            if (!HistoryPublicVisibility.CanExposeTimelineEvent(hydratedEvent, park))
+            IReadOnlyCollection<HistoryEvent> candidateCollection = await this.historyEventRepository.GetLatestPublishedArticlesAsync(
+                offset,
+                CandidatePageSize,
+                cancellationToken);
+            List<HistoryEvent> candidates = candidateCollection.ToList();
+            if (candidates.Count == 0)
             {
-                continue;
+                break;
             }
 
-            articles.Add(new HistoryArticleResult
-            {
-                Event = historyEvent,
-                Park = historyEvent.EntityType == HistoryEntityType.Park ? park : null,
-                ParkItem = hydratedEvent.ParkItem,
-                ContextPark = hydratedEvent.ContextPark,
-            });
+            offset += candidates.Count;
+            HistoryTimelineHydration hydration = await HistoryTimelineHydration.LoadAsync(
+                candidates,
+                this.parkRepository,
+                this.parkItemRepository,
+                this.imageRepository,
+                includeImages: false,
+                cancellationToken);
+            List<HistoryTimelineEventResult> hydratedEvents = candidates
+                .Select(hydration.ToTimelineEvent)
+                .ToList();
+            IReadOnlyDictionary<string, Park> fallbackParksById = await this.LoadFallbackParksByIdAsync(
+                candidates,
+                hydratedEvents,
+                cancellationToken);
 
-            if (articles.Count == normalizedLimit)
+            for (int index = 0; index < candidates.Count; index++)
+            {
+                HistoryEvent historyEvent = candidates[index];
+                HistoryTimelineEventResult hydratedEvent = hydratedEvents[index];
+                Park? park = hydratedEvent.ContextPark ?? ResolveFallbackPark(
+                    historyEvent,
+                    hydratedEvent.ParkItem,
+                    fallbackParksById);
+
+                if (!HistoryPublicVisibility.CanExposeTimelineEvent(hydratedEvent, park))
+                {
+                    continue;
+                }
+
+                articles.Add(new HistoryArticleResult
+                {
+                    Event = historyEvent,
+                    Park = historyEvent.EntityType == HistoryEntityType.Park ? park : null,
+                    ParkItem = hydratedEvent.ParkItem,
+                    ContextPark = park,
+                });
+
+                if (articles.Count == normalizedLimit)
+                {
+                    break;
+                }
+            }
+
+            if (candidates.Count < CandidatePageSize)
             {
                 break;
             }
         }
 
         return ApplicationResult<IReadOnlyCollection<HistoryArticleResult>>.Success(articles);
+    }
+
+    private async Task<IReadOnlyDictionary<string, Park>> LoadFallbackParksByIdAsync(
+        IReadOnlyList<HistoryEvent> events,
+        IReadOnlyList<HistoryTimelineEventResult> hydratedEvents,
+        CancellationToken cancellationToken)
+    {
+        List<string> fallbackParkIds = new List<string>();
+
+        for (int index = 0; index < events.Count; index++)
+        {
+            if (hydratedEvents[index].ContextPark is not null)
+            {
+                continue;
+            }
+
+            string? fallbackParkId = ResolveFallbackParkId(events[index], hydratedEvents[index].ParkItem);
+            if (!string.IsNullOrWhiteSpace(fallbackParkId))
+            {
+                fallbackParkIds.Add(fallbackParkId.Trim());
+            }
+        }
+
+        List<string> distinctParkIds = fallbackParkIds
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        if (distinctParkIds.Count == 0)
+        {
+            return new Dictionary<string, Park>(StringComparer.Ordinal);
+        }
+
+        IReadOnlyCollection<Park> parks = await this.parkRepository.GetByIdsAsync(distinctParkIds, cancellationToken);
+        return parks
+            .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
+            .ToDictionary(static park => park.Id, StringComparer.Ordinal);
+    }
+
+    private static Park? ResolveFallbackPark(
+        HistoryEvent historyEvent,
+        ParkItem? parkItem,
+        IReadOnlyDictionary<string, Park> parksById)
+    {
+        string? parkId = ResolveFallbackParkId(historyEvent, parkItem);
+        return !string.IsNullOrWhiteSpace(parkId) && parksById.TryGetValue(parkId.Trim(), out Park? park)
+            ? park
+            : null;
+    }
+
+    private static string? ResolveFallbackParkId(HistoryEvent historyEvent, ParkItem? parkItem)
+    {
+        return historyEvent.EntityType == HistoryEntityType.Park
+            ? historyEvent.OwnerId
+            : parkItem?.ParkId;
     }
 }

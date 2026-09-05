@@ -25,7 +25,7 @@ public interface IHistoryEventRepository
 
     Task<IReadOnlyCollection<HistoryEvent>> GetPublicVisibleEventsAsync(int limit, CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<HistoryEvent>> GetLatestPublishedArticlesAsync(int limit, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<HistoryEvent>> GetLatestPublishedArticlesAsync(int offset, int limit, CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<HistoryEvent>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken);
 

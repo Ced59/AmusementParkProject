@@ -181,16 +181,20 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
-    public async Task<IReadOnlyCollection<HistoryEvent>> GetLatestPublishedArticlesAsync(int limit, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetLatestPublishedArticlesAsync(int offset, int limit, CancellationToken cancellationToken)
     {
         if (limit <= 0)
         {
             return Array.Empty<HistoryEvent>();
         }
 
+        int normalizedOffset = Math.Max(0, offset);
         FilterDefinition<HistoryEventDocument> filter =
             Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true) &
             Builders<HistoryEventDocument>.Filter.Eq(document => document.IsMajor, true) &
+            Builders<HistoryEventDocument>.Filter.In(
+                document => document.EntityType,
+                new[] { HistoryEntityType.Park, HistoryEntityType.ParkItem }) &
             Builders<HistoryEventDocument>.Filter.Ne(document => document.Article, null) &
             Builders<HistoryEventDocument>.Filter.Eq("article.isPublished", true);
 
@@ -199,6 +203,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .ThenByDescending(document => document.CreatedAt)
             .ThenBy(document => document.Id)
             .Project<HistoryEventDocument>(BuildTimelineProjection())
+            .Skip(normalizedOffset)
             .Limit(limit)
             .ToListAsync(cancellationToken);
 
