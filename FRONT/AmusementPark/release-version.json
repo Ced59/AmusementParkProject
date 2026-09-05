@@ -1,6 +1,20 @@
 {
-  "version": "5.1.22",
+  "version": "5.1.23",
   "history": [
+    {
+      "version": "5.1.23",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Mise à jour de maintenance générale.",
+        "en": "General maintenance update.",
+        "de": "Allgemeines Wartungsupdate.",
+        "nl": "Algemene onderhoudsupdate.",
+        "it": "Aggiornamento generale di manutenzione.",
+        "es": "Actualización general de mantenimiento.",
+        "pl": "Ogólna aktualizacja konserwacyjna.",
+        "pt": "Atualização geral de manutenção."
+      }
+    },
     {
       "version": "5.1.22",
       "releasedAt": "2026-09-05",
