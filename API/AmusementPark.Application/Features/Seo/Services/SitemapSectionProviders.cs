@@ -116,11 +116,11 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
-                if (mapItemsByParkId.TryGetValue(park.Id!, out List<ParkItem>? mapItems))
+                if (mapItemsByParkId.TryGetValue(park.Id!, out List<ParkItem>? mapItems) || park.HasPublicOfficialMaps())
                 {
                     DateTime? mapLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
                         park.UpdatedAtUtc,
-                        ParkItemListsSitemapSectionProvider.ResolveLatestParkItemUpdate(mapItems));
+                        ParkItemListsSitemapSectionProvider.ResolveLatestParkItemUpdate(mapItems ?? new List<ParkItem>()));
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/map", mapLastModifiedUtc, "weekly", 0.78m));
                 }
 

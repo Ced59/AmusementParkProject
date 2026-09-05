@@ -35,6 +35,8 @@ public sealed class ParkDetailSummaryStatsResult
 
     public int MappableItemsCount { get; init; }
 
+    public int OfficialMapsCount { get; init; }
+
     public int AttractionCount { get; init; }
 
     public int RestaurantCount { get; init; }

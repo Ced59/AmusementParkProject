@@ -25,20 +25,22 @@
           <p class="public-section-header__subtitle">{{ 'parks.mapPage.subtitle' | translate:{ name: currentPark.name } }}</p>
 
           <div class="park-subpage-hero__actions">
-            <label class="park-map-page__closed-filter">
-              <span>{{ 'parkItems.filters.closedStatus' | translate }}</span>
-              <select [value]="selectedClosedFilter" (change)="onClosedFilterSelectChanged($event)">
-                @for (option of closedFilterOptions; track option.value) {
-                  <option [value]="option.value">
-                    @if (option.labelKey) {
-                      {{ option.labelKey | translate }}
-                    } @else {
-                      {{ option.label ?? '' }}
-                    }
-                  </option>
-                }
-              </select>
-            </label>
+            @if (activeTab === 'interactive') {
+              <label class="park-map-page__closed-filter">
+                <span>{{ 'parkItems.filters.closedStatus' | translate }}</span>
+                <select [value]="selectedClosedFilter" (change)="onClosedFilterSelectChanged($event)">
+                  @for (option of closedFilterOptions; track option.value) {
+                    <option [value]="option.value">
+                      @if (option.labelKey) {
+                        {{ option.labelKey | translate }}
+                      } @else {
+                        {{ option.label ?? '' }}
+                      }
+                    </option>
+                  }
+                </select>
+              </label>
+            }
 
             @if (detailLink) {
               <a appUiButton="ghost" [routerLink]="detailLink">
@@ -59,9 +61,33 @@
 
       <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
 
-      @if (map) {
-        <app-park-items-map-section [map]="map"></app-park-items-map-section>
+      @if (officialMapCount > 0) {
+        <app-ui-segmented-tabs
+          [tabs]="mapTabs()"
+          [activeTabId]="activeTab"
+          ariaLabelKey="parks.mapPage.tabs.label"
+          idPrefix="park-map-tab"
+          panelId="park-map-panel"
+          (tabSelected)="tabSelected.emit($event)">
+        </app-ui-segmented-tabs>
       }
+
+      <div
+        id="park-map-panel"
+        [attr.role]="officialMapCount > 0 ? 'tabpanel' : null"
+        [attr.aria-labelledby]="officialMapCount > 0 ? (activeTab === 'official' ? 'park-map-tab-official' : 'park-map-tab-interactive') : null">
+        @if (activeTab === 'official' && officialMapCount > 0) {
+          <app-park-official-maps-section
+            [parkName]="currentPark.name ?? ''"
+            [maps]="officialMaps"
+            [years]="officialMapYears"
+            [selectedYear]="selectedOfficialMapYear"
+            (yearSelected)="officialMapYearSelected.emit($event)">
+          </app-park-official-maps-section>
+        } @else if (map) {
+          <app-park-items-map-section [map]="map"></app-park-items-map-section>
+        }
+      </div>
 
       <app-public-share-panel
         targetType="Park"

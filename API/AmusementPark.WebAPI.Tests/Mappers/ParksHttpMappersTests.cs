@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Parks;
@@ -39,6 +40,36 @@ public sealed class ParksHttpMappersTests
         }.ToMapPointHttp();
 
         Assert.Equal(ParkStatusDto.UnderConstruction, dto.Status);
+    }
+
+    [Fact]
+    public void ToHttp_WhenOfficialMapIsStored_ShouldExposePublicFileRouteWithoutStorageKey()
+    {
+        ParkMapItemsResult result = new ParkMapItemsResult
+        {
+            Park = new Park { Id = "park-one", Name = "Map Park", IsVisible = true },
+            OfficialMaps = new[]
+            {
+                new ParkOfficialMap
+                {
+                    Id = "map-2026",
+                    Year = 2026,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    StorageKey = "official-maps/park-one/map-2026.pdf",
+                    OriginalFileName = "plan.pdf",
+                    ContentType = "application/pdf",
+                    SizeInBytes = 1024,
+                    IsVisible = true,
+                },
+            },
+        };
+
+        ParkMapItemsDto dto = result.ToMapItemsHttp();
+
+        ParkOfficialMapDto officialMap = Assert.Single(dto.OfficialMaps);
+        Assert.Equal("parks/park-one/official-maps/map-2026/file", officialMap.DocumentUrl);
+        Assert.True(officialMap.IsVisible);
+        Assert.DoesNotContain("map-2026.pdf", officialMap.DocumentUrl);
     }
 
     [Fact]

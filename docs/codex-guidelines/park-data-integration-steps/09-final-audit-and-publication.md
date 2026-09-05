@@ -43,6 +43,7 @@ Produire les numérateurs, dénominateurs et identifiants manquants pour :
 - attractions définitivement fermées avec statut, période, description, image et jalon applicables ;
 - conditions d’accès recherchées pour chaque attraction concernée ;
 - tarifs actuels : devise, billets d’entrée, pass annuels et offres de parking, ou non-applicabilité/lacune sourcée ;
+- cartes officielles : nombre total, millésime le plus récent, années couvertes, formats, langues et lacunes après recherche des archives officielles ;
 - lacunes restantes avec familles de sources consultées et raison de l’absence.
 
 Le tableau est fondé sur le dernier export, pas sur les intentions des lots précédents. Tout écart inexpliqué déclenche une reprise ciblée de l’étape concernée.
@@ -211,6 +212,21 @@ Vérifier :
 - chaque jalon et article illustré par une image contextualisée quand elle est trouvable ;
 - aucune image secondaire ou historique n’a remplacé par défaut une meilleure image courante.
 - toutes les images importées pendant la commande de complétude restent en `isPublished: false` avant l’autorisation explicite.
+
+## Audit cartes officielles
+
+Vérifier séparément des images :
+
+- présence de l’édition actuelle lorsqu’elle est publiée officiellement, puis couverture maximale des anciens millésimes encore retrouvables ;
+- année prouvée par le document ou sa page officielle, sans déduction depuis une simple date de téléchargement ;
+- unicité de `year + languageCode + format` et stabilité de l’ID de chaque édition ;
+- `sourcePageUrl` officiel, `lastVerifiedAtUtc` renseigné et fichier stocké ou URL externe encore joignable ;
+- pour un fichier MinIO, cohérence de `storageKey`, `originalFileName`, `contentType` et `sizeInBytes`, puis ouverture anonyme réelle depuis la page publique ;
+- texte alternatif naturel et localisé pour chaque carte image visible ;
+- toutes les nouvelles éditions restent `isVisible: false` avant l’autorisation explicite ;
+- la page carte sélectionne le dernier millésime et bascule sur les cartes officielles lorsqu’aucun parkItem n’est géolocalisable.
+
+Une absence d’archive n’est acceptable qu’avec les familles de sources officielles et archivées consultées. Le nombre de cartes n’entre pas automatiquement dans le score historique de complétude : il reste un indicateur quantitatif et un bloqueur éditorial lorsqu’une édition actuelle manifestement disponible a été omise.
 
 ### Audit images utilisées dans les articles
 

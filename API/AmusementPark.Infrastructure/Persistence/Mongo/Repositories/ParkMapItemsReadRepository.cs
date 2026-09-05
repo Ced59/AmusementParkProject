@@ -56,6 +56,14 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
         return new ParkMapItemsResult
         {
             Park = parkDocument.ToDomain(),
+            OfficialMaps = (parkDocument.OfficialMaps ?? new List<ParkOfficialMapDocument>())
+                .Select(static document => document.ToDomain())
+                .Where(officialMap => includeHidden || officialMap.IsPubliclyDisplayable())
+                .OrderByDescending(static officialMap => officialMap.Year)
+                .ThenBy(static officialMap => officialMap.LanguageCode, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(static officialMap => officialMap.Format)
+                .ThenBy(static officialMap => officialMap.Id, StringComparer.Ordinal)
+                .ToList(),
             Zones = zoneDocuments.Select(static document => new ParkMapZoneResult
             {
                 Id = document.Id,

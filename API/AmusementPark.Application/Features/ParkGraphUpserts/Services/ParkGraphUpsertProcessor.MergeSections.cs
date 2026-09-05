@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
@@ -47,7 +48,12 @@ public sealed partial class ParkGraphUpsertProcessor
         }
     }
 
-    private static void ApplyParkMergeSections(Park source, Park target, JsonElement? sections, ParkGraphUpsertChange change)
+    private static void ApplyParkMergeSections(
+        Park source,
+        Park target,
+        JsonElement? sections,
+        ParkGraphUpsertChange change,
+        ParkGraphUpsertResult result)
     {
         if (ShouldTakeSourceSection(sections, "identity"))
         {
@@ -125,6 +131,42 @@ public sealed partial class ParkGraphUpsertProcessor
             target.IsFeaturedOnHome = source.IsFeaturedOnHome;
             target.FeaturedHomeOrder = source.FeaturedHomeOrder;
             target.IsFeaturedOnHomeSponsored = source.IsFeaturedOnHomeSponsored;
+        }
+
+        if (ShouldTakeSourceSection(sections, "officialMaps"))
+        {
+            int errorCountBeforeSection = result.Errors.Count;
+            List<ParkOfficialMap> officialMaps = new List<ParkOfficialMap>();
+            foreach (ParkOfficialMap sourceOfficialMap in source.OfficialMaps)
+            {
+                ParkOfficialMap officialMap = CloneOfficialMap(sourceOfficialMap);
+                if (!string.IsNullOrWhiteSpace(sourceOfficialMap.StorageKey))
+                {
+                    officialMap.StorageKey = ParkOfficialMapStorageKeys.ReassignToPark(
+                        sourceOfficialMap.StorageKey,
+                        source.Id,
+                        target.Id,
+                        sourceOfficialMap.Id);
+                    if (officialMap.StorageKey is null)
+                    {
+                        result.Errors.Add($"La carte officielle '{sourceOfficialMap.Id}' ne possède pas une clé de stockage valide pour le parc source '{source.Id}'.");
+                    }
+                }
+
+                officialMaps.Add(officialMap);
+            }
+
+            if (result.Errors.Count > errorCountBeforeSection)
+            {
+                return;
+            }
+
+            AddChange(
+                change,
+                "officialMaps",
+                ParkGraphOfficialMapUpsertPatcher.Describe(target.OfficialMaps),
+                ParkGraphOfficialMapUpsertPatcher.Describe(source.OfficialMaps));
+            target.OfficialMaps = officialMaps;
         }
     }
 

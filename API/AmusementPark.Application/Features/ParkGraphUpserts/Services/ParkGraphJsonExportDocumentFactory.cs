@@ -43,7 +43,7 @@ internal static class ParkGraphJsonExportDocumentFactory
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
             ["documentType"] = "AmusementParkParkGraphUpsert",
-            ["schemaVersion"] = "2026-06-30",
+            ["schemaVersion"] = "2026-09-05",
             ["mode"] = "merge",
             ["identity"] = MapIdentity(park),
         };
@@ -208,6 +208,11 @@ internal static class ParkGraphJsonExportDocumentFactory
             patch["isFeaturedOnHome"] = park.IsFeaturedOnHome;
             patch["featuredHomeOrder"] = park.FeaturedHomeOrder;
             patch["isFeaturedOnHomeSponsored"] = park.IsFeaturedOnHomeSponsored;
+        }
+
+        if (sections.Contains(ParkGraphExportSection.OfficialMaps))
+        {
+            patch["officialMaps"] = ParkGraphOfficialMapExportMapper.Map(park.OfficialMaps);
         }
 
         return patch;

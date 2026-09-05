@@ -103,6 +103,11 @@ public sealed class Park : GeolocatedEntityBase
     /// </summary>
     public string? CurrentLogoImageId { get; set; }
 
+    /// <summary>
+    /// Cartes officielles du parc, conservées par année et publiées individuellement.
+    /// </summary>
+    public List<ParkOfficialMap> OfficialMaps { get; set; } = new List<ParkOfficialMap>();
+
     public bool IsPubliclyDiscoverable()
     {
         return !string.IsNullOrWhiteSpace(this.Id)
@@ -110,6 +115,11 @@ public sealed class Park : GeolocatedEntityBase
             && this.IsVisible
             && this.Status.CanAppearInPublicDiscovery()
             && this.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
+    public bool HasPublicOfficialMaps()
+    {
+        return this.OfficialMaps.Any(static officialMap => officialMap.IsPubliclyDisplayable());
     }
 
     public DataCompletenessScore CalculateDataCompletenessScore(ParkDataCompletenessContext? context = null)

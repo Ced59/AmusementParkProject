@@ -180,7 +180,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
-                if (parkIdsWithMapMarkers.Contains(park.Id))
+                if (parkIdsWithMapMarkers.Contains(park.Id) || park.HasPublicOfficialMaps())
                 {
                     urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/map", park.UpdatedAtUtc));
                 }

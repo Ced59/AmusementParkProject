@@ -1,6 +1,20 @@
 {
-  "version": "5.0.45",
+  "version": "5.1.0",
   "history": [
+    {
+      "version": "5.1.0",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les plans officiels des parcs sont maintenant consultables par année depuis leur carte.",
+        "en": "Official park maps can now be viewed by year from each park map page.",
+        "de": "Offizielle Parkpläne können jetzt auf der Kartenseite jedes Parks nach Jahr angesehen werden.",
+        "nl": "Officiële parkplattegronden zijn nu per jaar te bekijken vanaf de kaartpagina van elk park.",
+        "it": "Le mappe ufficiali dei parchi sono ora consultabili per anno dalla pagina della mappa.",
+        "es": "Los mapas oficiales de los parques ya se pueden consultar por año desde la página del mapa.",
+        "pl": "Oficjalne mapy parków można teraz przeglądać według roku na stronie mapy każdego parku.",
+        "pt": "Os mapas oficiais dos parques podem agora ser consultados por ano na página do mapa de cada parque."
+      }
+    },
     {
       "version": "5.0.45",
       "releasedAt": "2026-09-05",

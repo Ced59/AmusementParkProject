@@ -41,6 +41,21 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             Type = ParkType.ThemePark,
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.Validated,
+            OfficialMaps = new List<ParkOfficialMap>
+            {
+                new ParkOfficialMap
+                {
+                    Id = "map-2026-fr",
+                    Year = 2026,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    StorageKey = "official-maps/park-1/map-2026-fr.pdf",
+                    OriginalFileName = "plan-2026.pdf",
+                    ContentType = "application/pdf",
+                    SizeInBytes = 2048,
+                    LanguageCode = "fr",
+                    IsVisible = false,
+                },
+            },
         };
         Park secondPark = new Park
         {
@@ -67,7 +82,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             {
                 SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
                 ParkIds = new[] { "park-1", "park-2" },
-                Sections = new[] { ParkGraphExportSection.ParkBasics },
+                Sections = new[] { ParkGraphExportSection.ParkBasics, ParkGraphExportSection.OfficialMaps },
             }),
             CancellationToken.None);
 
@@ -83,6 +98,10 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         Assert.Equal("First Park", parks[0].GetProperty("park").GetProperty("name").GetString());
         Assert.Equal("ThemePark", parks[0].GetProperty("park").GetProperty("type").GetString());
         Assert.Equal(JsonValueKind.Null, parks[0].GetProperty("park").GetProperty("websiteUrl").ValueKind);
+        JsonElement officialMap = parks[0].GetProperty("park").GetProperty("officialMaps")[0];
+        Assert.Equal("map-2026-fr", officialMap.GetProperty("key").GetString());
+        Assert.Equal("map-2026-fr", officialMap.GetProperty("id").GetString());
+        Assert.Equal("official-maps/park-1/map-2026-fr.pdf", officialMap.GetProperty("storageKey").GetString());
         Assert.Equal("park-2", parks[1].GetProperty("identity").GetProperty("parkId").GetString());
         Assert.Equal(2, root.GetProperty("selection").GetProperty("exportedParkCount").GetInt32());
         Assert.Equal("ParkBasics", root.GetProperty("selection").GetProperty("sections")[0].GetString());

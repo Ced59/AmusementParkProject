@@ -304,12 +304,23 @@
     "mapPage": {
       "kicker": "Mapa do parque",
       "title": "Mapa de {{name}}",
-      "subtitle": "Explora atrações, restaurantes, lojas e pontos de interesse geolocalizados de {{name}} num mapa dedicado.",
+      "subtitle": "Explora os locais de {{name}} no mapa interativo ou consulta os mapas oficiais disponíveis.",
       "loadingTitle": "A carregar mapa",
       "loadingMessage": "A preparar os marcadores do parque.",
       "errorTitle": "Mapa indisponível",
       "errorMessage": "Não é possível carregar o mapa deste parque neste momento.",
-      "backToPark": "Voltar a {{name}}"
+      "backToPark": "Voltar a {{name}}",
+      "tabs": { "label": "Tipos de mapa", "interactive": "Mapa interativo", "official": "Mapas oficiais" },
+      "official": {
+        "kicker": "Edições oficiais",
+        "title": "Mapas oficiais de {{name}}",
+        "subtitle": "Consulta os mapas publicados pelo parque, organizados por ano. A edição mais recente fica selecionada por predefinição.",
+        "yearLabel": "Ano",
+        "fallbackTitle": "Mapa oficial {{year}}",
+        "open": "Ver o mapa",
+        "source": "Fonte oficial",
+        "formats": { "image": "Imagem", "pdf": "PDF", "other": "Ficheiro" }
+      }
     },
     "zones": {
       "badge": "Zonas do parque",

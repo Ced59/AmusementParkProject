@@ -1757,7 +1757,7 @@ describe('SeoService', () => {
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
   });
 
-  it('applies indexable interactive map metadata to public park map pages', () => {
+  it('applies indexable map metadata to public park map pages', () => {
     service.applyParkMapSeo(
       buildPark({ name: 'Parc Demo' }),
       'fr',
@@ -1790,6 +1790,25 @@ describe('SeoService', () => {
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
 
+  });
+
+  it('keeps a park map page indexable when one official map is available', () => {
+    service.applyParkMapSeo(
+      buildPark({ name: 'Parc Demo' }),
+      'fr',
+      '/fr/park/park-1/parc-demo/map',
+      null,
+      null,
+      0,
+      true,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.title).toBe('Carte de Parc Demo — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toBe(
+      'Explore les lieux géolocalisés et les plans officiels disponibles de Parc Demo.',
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
   });
 
   it('keeps parameterized park maps noindex even when they contain enough markers', () => {

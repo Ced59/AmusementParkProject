@@ -5164,12 +5164,31 @@
     "mapPage": {
       "kicker": "Mapa parku",
       "title": "Mapa {{name}}",
-      "subtitle": "Przeglądaj geolokalizowane atrakcje, restauracje, sklepy i punkty zainteresowania {{name}} na dedykowanej mapie.",
+      "subtitle": "Przeglądaj miejsca w {{name}} na mapie interaktywnej lub zobacz dostępne oficjalne mapy parku.",
       "loadingTitle": "Ładowanie mapy",
       "loadingMessage": "Przygotowywanie znaczników parku.",
       "errorTitle": "Mapa niedostępna",
       "errorMessage": "Nie można teraz załadować mapy tego parku.",
-      "backToPark": "Wróć do {{name}}"
+      "backToPark": "Wróć do {{name}}",
+      "tabs": {
+        "label": "Rodzaje map",
+        "interactive": "Mapa interaktywna",
+        "official": "Oficjalne mapy"
+      },
+      "official": {
+        "kicker": "Oficjalne wydania",
+        "title": "Oficjalne mapy {{name}}",
+        "subtitle": "Przeglądaj plany opublikowane przez park, uporządkowane według roku. Domyślnie wybrane jest najnowsze wydanie.",
+        "yearLabel": "Rok",
+        "fallbackTitle": "Oficjalna mapa {{year}}",
+        "open": "Zobacz mapę",
+        "source": "Oficjalne źródło",
+        "formats": {
+          "image": "Obraz",
+          "pdf": "PDF",
+          "other": "Plik"
+        }
+      }
     },
     "zones": {
       "badge": "Strefy parku",

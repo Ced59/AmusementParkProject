@@ -1,6 +1,6 @@
 # AmusementPark — Enums JSON Park Graph Upsert
 
-Version : **2026-08-09-r2**
+Version : **2026-09-05-r1**
 
 Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert` et `standaloneAttractionGraph`.
 
@@ -20,6 +20,7 @@ Règles :
 | `park.audienceClassification` | `ParkAudienceClassification` | `International`, `National`, `Regional`, `Local` |
 | `park.status` | `ParkStatus` | `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively`, `Cancelled` |
 | `park.adminReviewStatus` | `AdminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
+| `park.officialMaps[].format` | `ParkOfficialMapFormat` | `Image`, `Pdf`, `Other` |
 
 `AdminReviewStatus.Ready` existe comme alias legacy de `Validated`, mais ne doit pas être utilisé dans les nouveaux JSON.
 

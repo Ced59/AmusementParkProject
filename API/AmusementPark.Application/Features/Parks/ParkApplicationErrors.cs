@@ -42,4 +42,32 @@ internal static class ParkApplicationErrors
     {
         return ApplicationError.Technical("park.update.failed", "Error while updating park");
     }
+
+    public static ApplicationError InvalidOfficialMapFile()
+    {
+        return ApplicationError.Validation(
+            "park.official-map.file-invalid",
+            "An official map file between 1 byte and 25 MB and a stable map identifier are required.");
+    }
+
+    public static ApplicationError UnsupportedOfficialMapFile()
+    {
+        return ApplicationError.Validation(
+            "park.official-map.file-unsupported",
+            "Supported official map files are PDF, JPEG, PNG, WebP, GIF, KML, KMZ and ZIP.");
+    }
+
+    public static ApplicationError OfficialMapFileStorageFailed()
+    {
+        return ApplicationError.Technical(
+            "park.official-map.file-storage-failed",
+            "The official map file could not be stored.");
+    }
+
+    public static ApplicationError OfficialMapFileNotFound()
+    {
+        return ApplicationError.NotFound(
+            "park.official-map.file-not-found",
+            "The requested official map file was not found.");
+    }
 }

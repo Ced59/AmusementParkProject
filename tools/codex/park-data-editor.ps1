@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -33,7 +33,7 @@ param(
 
     [string]$OutputPath,
 
-    [ValidateSet('ParkBasics', 'ParkAudience', 'ParkLocation', 'ParkAdministration', 'ParkDescriptions', 'ParkHomeFeature', 'References', 'Zones', 'Items', 'Images', 'OpeningHours', 'Pricing', 'History')]
+    [ValidateSet('ParkBasics', 'ParkAudience', 'ParkLocation', 'ParkAdministration', 'ParkDescriptions', 'ParkHomeFeature', 'OfficialMaps', 'References', 'Zones', 'Items', 'Images', 'OpeningHours', 'Pricing', 'History')]
     [string[]]$Sections = @(),
 
     [ValidateRange(30, 900)]
@@ -54,6 +54,15 @@ param(
     [string]$OwnerId,
 
     [string]$ImageId,
+
+    [string]$OfficialMapId,
+
+    [ValidateRange(1800, 2100)]
+    [int]$OfficialMapYear,
+
+    [string]$LanguageCode,
+
+    [string]$FilePath,
 
     [string]$PublicationId,
 
@@ -82,6 +91,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $script:MaximumImageBytes = 10 * 1024 * 1024
+$script:MaximumOfficialMapBytes = 25 * 1024 * 1024
 $script:CredentialDirectory = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'AmusementParkProject\Codex'
 $script:CredentialPath = Join-Path $script:CredentialDirectory 'park-data-editor-token.clixml'
 $script:AccountCredentialPath = Join-Path $script:CredentialDirectory 'park-data-editor-account.clixml'
@@ -636,6 +646,7 @@ function Export-ParkGraph {
             'ParkAdministration',
             'ParkDescriptions',
             'ParkHomeFeature',
+            'OfficialMaps',
             'References',
             'Zones',
             'Items',
@@ -1015,6 +1026,193 @@ function Import-ParkPhoto {
     }
 }
 
+function Get-OfficialMapFileType {
+    param([string]$Path)
+
+    $header = [byte[]]::new(4096)
+    $stream = [IO.File]::OpenRead($Path)
+    try {
+        $read = $stream.Read($header, 0, $header.Length)
+    }
+    finally {
+        $stream.Dispose()
+    }
+
+    if ($read -ge 5 -and [Text.Encoding]::ASCII.GetString($header, 0, 5) -eq '%PDF-') {
+        return [PSCustomObject]@{ Extension = 'pdf'; ContentType = 'application/pdf'; SuggestedFormat = 'Pdf' }
+    }
+    if ($read -ge 3 -and $header[0] -eq 0xFF -and $header[1] -eq 0xD8 -and $header[2] -eq 0xFF) {
+        return [PSCustomObject]@{ Extension = 'jpg'; ContentType = 'image/jpeg'; SuggestedFormat = 'Image' }
+    }
+    if ($read -ge 8 -and $header[0] -eq 0x89 -and $header[1] -eq 0x50 -and $header[2] -eq 0x4E -and $header[3] -eq 0x47) {
+        return [PSCustomObject]@{ Extension = 'png'; ContentType = 'image/png'; SuggestedFormat = 'Image' }
+    }
+    if ($read -ge 12 -and [Text.Encoding]::ASCII.GetString($header, 0, 4) -eq 'RIFF' -and [Text.Encoding]::ASCII.GetString($header, 8, 4) -eq 'WEBP') {
+        return [PSCustomObject]@{ Extension = 'webp'; ContentType = 'image/webp'; SuggestedFormat = 'Image' }
+    }
+    if ($read -ge 6) {
+        $gifSignature = [Text.Encoding]::ASCII.GetString($header, 0, 6)
+        if ($gifSignature -in @('GIF87a', 'GIF89a')) {
+            return [PSCustomObject]@{ Extension = 'gif'; ContentType = 'image/gif'; SuggestedFormat = 'Image' }
+        }
+    }
+
+    $extension = [IO.Path]::GetExtension($Path).TrimStart('.').ToLowerInvariant()
+    if ($extension -in @('zip', 'kmz') -and $read -ge 4 -and $header[0] -eq 0x50 -and $header[1] -eq 0x4B) {
+        $contentType = if ($extension -eq 'kmz') { 'application/vnd.google-earth.kmz' } else { 'application/zip' }
+        return [PSCustomObject]@{ Extension = $extension; ContentType = $contentType; SuggestedFormat = 'Other' }
+    }
+    if ($extension -eq 'kml' -and $read -gt 0) {
+        $textHeader = [Text.Encoding]::UTF8.GetString($header, 0, $read)
+        if ($textHeader.IndexOf('<kml', [StringComparison]::OrdinalIgnoreCase) -ge 0) {
+            return [PSCustomObject]@{ Extension = 'kml'; ContentType = 'application/vnd.google-earth.kml+xml'; SuggestedFormat = 'Other' }
+        }
+    }
+
+    throw 'The official map must be a PDF, JPEG, PNG, WebP, GIF, KML, KMZ or ZIP file.'
+}
+
+function Invoke-MultipartOfficialMapUpload {
+    param([string]$Path, [string]$ContentType, [string]$FileName)
+
+    Add-Type -AssemblyName System.Net.Http
+    $token = Get-ParkDataEditorToken
+    $client = [System.Net.Http.HttpClient]::new()
+    try {
+        $client.DefaultRequestHeaders.Authorization = [System.Net.Http.Headers.AuthenticationHeaderValue]::new('Bearer', $token)
+        $uri = (Get-NormalizedApiBaseUrl $ApiBaseUrl) + 'park-data-editor/official-map-files'
+        $deadlineUtc = [DateTime]::UtcNow.AddMinutes(10)
+        while ($true) {
+            Wait-ParkDataEditorAvailability | Out-Null
+            $retryAfterSeconds = 5
+            $multipart = [System.Net.Http.MultipartFormDataContent]::new()
+            $stream = [IO.File]::OpenRead($Path)
+            $fileContent = [System.Net.Http.StreamContent]::new($stream)
+            $response = $null
+            try {
+                $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::new($ContentType)
+                $multipart.Add($fileContent, 'File', $FileName)
+                $multipart.Add([System.Net.Http.StringContent]::new($ParkId.Trim()), 'ParkId')
+                $multipart.Add([System.Net.Http.StringContent]::new($OfficialMapId.Trim()), 'OfficialMapId')
+                $response = $client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
+                $responseBody = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+                if ($response.IsSuccessStatusCode) {
+                    return $responseBody | ConvertFrom-Json
+                }
+                if ([int]$response.StatusCode -ne 429 -or [DateTime]::UtcNow -ge $deadlineUtc) {
+                    throw "Official map upload failed with HTTP $([int]$response.StatusCode): $responseBody"
+                }
+                if ($null -ne $response.Headers.RetryAfter) {
+                    if ($null -ne $response.Headers.RetryAfter.Delta) {
+                        $retryAfterSeconds = [Math]::Max(5, [int][Math]::Ceiling($response.Headers.RetryAfter.Delta.TotalSeconds))
+                    }
+                    elseif ($null -ne $response.Headers.RetryAfter.Date) {
+                        $retryAfterSeconds = [Math]::Max(5, [int][Math]::Ceiling(($response.Headers.RetryAfter.Date.UtcDateTime - [DateTime]::UtcNow).TotalSeconds))
+                    }
+                }
+            }
+            finally {
+                if ($null -ne $response) {
+                    $response.Dispose()
+                }
+                $fileContent.Dispose()
+                $stream.Dispose()
+                $multipart.Dispose()
+            }
+
+            Start-Sleep -Seconds $retryAfterSeconds
+        }
+    }
+    finally {
+        $client.Dispose()
+    }
+}
+
+function Import-ParkOfficialMap {
+    if ([string]::IsNullOrWhiteSpace($ParkId) -or [string]::IsNullOrWhiteSpace($OfficialMapId) -or
+        $OfficialMapYear -lt 1800 -or [string]::IsNullOrWhiteSpace($SourceUrl)) {
+        throw 'ParkId, OfficialMapId, OfficialMapYear and SourceUrl are required for ImportOfficialMap.'
+    }
+
+    $sourceUri = [Uri]$SourceUrl
+    if (-not $sourceUri.IsAbsoluteUri -or $sourceUri.Scheme -notin @('http', 'https') -or
+        -not [string]::IsNullOrWhiteSpace($sourceUri.UserInfo)) {
+        throw 'SourceUrl must be an absolute public HTTP(S) URL without embedded credentials.'
+    }
+
+    $temporaryPath = $null
+    $resolvedPath = $null
+    $preferredFileName = $null
+    try {
+        if ([string]::IsNullOrWhiteSpace($FilePath)) {
+            $sourceExtension = [IO.Path]::GetExtension($sourceUri.AbsolutePath).ToLowerInvariant()
+            $sourceFileName = [Uri]::UnescapeDataString([IO.Path]::GetFileName($sourceUri.AbsolutePath))
+            if ($sourceExtension -notin @('.pdf', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.kml', '.kmz', '.zip')) {
+                $sourceExtension = '.map'
+            }
+            else {
+                $preferredFileName = $sourceFileName
+            }
+            $temporaryPath = Join-Path ([IO.Path]::GetTempPath()) ("amusementpark-official-map-" + [Guid]::NewGuid().ToString('N') + $sourceExtension)
+            & curl.exe --fail --location --max-redirs 5 --proto '=http,https' --proto-redir '=http,https' `
+                --connect-timeout 15 --max-time 120 --max-filesize $script:MaximumOfficialMapBytes `
+                --silent --show-error --output $temporaryPath -- $SourceUrl
+            if ($LASTEXITCODE -ne 0) {
+                throw "Official map download failed with curl exit code $LASTEXITCODE."
+            }
+            $resolvedPath = $temporaryPath
+        }
+        else {
+            $resolvedPath = Resolve-RequiredFile -Path $FilePath -ParameterName 'FilePath'
+            $preferredFileName = [IO.Path]::GetFileName($resolvedPath)
+        }
+
+        $fileInfo = Get-Item -LiteralPath $resolvedPath
+        if ($fileInfo.Length -le 0 -or $fileInfo.Length -gt $script:MaximumOfficialMapBytes) {
+            throw 'The official map file must be between 1 byte and 25 MB.'
+        }
+
+        $fileType = Get-OfficialMapFileType -Path $resolvedPath
+        $fileNameStem = if ([string]::IsNullOrWhiteSpace($preferredFileName)) {
+            $languageSuffix = if ([string]::IsNullOrWhiteSpace($LanguageCode)) { '' } else { "-$($LanguageCode.Trim().ToLowerInvariant())" }
+            "official-map-$OfficialMapYear$languageSuffix"
+        }
+        else {
+            [IO.Path]::GetFileNameWithoutExtension($preferredFileName)
+        }
+        $fileNameStem = [regex]::Replace($fileNameStem, '[^\p{L}\p{Nd}._-]+', '-').Trim('-').Trim('.')
+        if ([string]::IsNullOrWhiteSpace($fileNameStem)) {
+            $fileNameStem = "official-map-$OfficialMapYear"
+        }
+        $uploadFileName = "$fileNameStem.$($fileType.Extension)"
+        $upload = Invoke-MultipartOfficialMapUpload `
+            -Path $resolvedPath `
+            -ContentType $fileType.ContentType `
+            -FileName $uploadFileName
+        return [PSCustomObject]@{
+            ParkId = $ParkId.Trim()
+            OfficialMap = [PSCustomObject]@{
+                Key = $OfficialMapId.Trim()
+                Id = $OfficialMapId.Trim()
+                Year = $OfficialMapYear
+                Format = [string]$upload.suggestedFormat
+                StorageKey = [string]$upload.storageKey
+                OriginalFileName = [string]$upload.originalFileName
+                ContentType = [string]$upload.contentType
+                SizeInBytes = [long]$upload.sizeInBytes
+                SourcePageUrl = $SourceUrl.Trim()
+                LanguageCode = if ([string]::IsNullOrWhiteSpace($LanguageCode)) { $null } else { $LanguageCode.Trim().ToLowerInvariant() }
+                IsVisible = $false
+            }
+        }
+    }
+    finally {
+        if ($null -ne $temporaryPath -and (Test-Path -LiteralPath $temporaryPath -PathType Leaf)) {
+            Remove-Item -LiteralPath $temporaryPath -Force
+        }
+    }
+}
+
 $ApiBaseUrl = Get-NormalizedApiBaseUrl $ApiBaseUrl
 
 switch ($Action) {
@@ -1221,6 +1419,9 @@ switch ($Action) {
     }
     'ImportPhoto' {
         Import-ParkPhoto
+    }
+    'ImportOfficialMap' {
+        Import-ParkOfficialMap
     }
     'UpdatePhotoMetadata' {
         if ([string]::IsNullOrWhiteSpace($ImageId) -or [string]::IsNullOrWhiteSpace($MetadataJsonPath)) {

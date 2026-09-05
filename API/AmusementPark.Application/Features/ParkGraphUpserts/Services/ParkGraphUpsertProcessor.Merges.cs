@@ -206,7 +206,12 @@ public sealed partial class ParkGraphUpsertProcessor
         PublicSeoParkSnapshot? previousTargetPark = PublicSeoParkSnapshot.FromPark(target);
         Park merged = ClonePark(target);
         ParkGraphUpsertChange targetChange = BuildEntityChange("Park", target.Id, null, target.Name ?? target.Id, "Unchanged", $"merge:{source.Id}");
-        ApplyParkMergeSections(source, merged, sections, targetChange);
+        int errorCountBeforeSections = result.Errors.Count;
+        ApplyParkMergeSections(source, merged, sections, targetChange, result);
+        if (result.Errors.Count > errorCountBeforeSections)
+        {
+            return;
+        }
 
         IReadOnlyCollection<ParkZone> sourceZones = await this.parkZoneRepository.GetByParkIdAsync(source.Id, cancellationToken);
         IReadOnlyCollection<ParkItem> sourceItems = await this.parkItemRepository.GetByParkIdAsync(source.Id, true, cancellationToken);
@@ -223,6 +228,10 @@ public sealed partial class ParkGraphUpsertProcessor
         AddAttachmentCountChange(targetChange, "attachments.zonesMoved", sourceZones.Count);
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
         AddAttachmentCountChange(targetChange, "attachments.imagesMoved", sourceImages.Count);
+        int officialMapFileCount = ShouldTakeSourceSection(sections, "officialMaps")
+            ? source.OfficialMaps.Count(static officialMap => !string.IsNullOrWhiteSpace(officialMap.StorageKey))
+            : 0;
+        AddAttachmentCountChange(targetChange, "attachments.officialMapFilesCopied", officialMapFileCount);
         if (shouldMoveSourcePricing && sourcePricing is not null)
         {
             AddChange(targetChange, "attachments.pricingMoved", targetPricing?.ParkId, sourcePricing.ParkId);
@@ -244,6 +253,17 @@ public sealed partial class ParkGraphUpsertProcessor
         ParkGraphUpsertChange sourceChange = BuildDeletedMergeSourceChange("Park", source.Id, source.Name ?? source.Id, target.Id);
         if (apply)
         {
+            bool officialMapFilesCopied = await this.CopyOfficialMapFilesForMergeAsync(
+                source,
+                merged,
+                sections,
+                result,
+                cancellationToken);
+            if (!officialMapFilesCopied)
+            {
+                return;
+            }
+
             Park? updatedPark = targetChange.Fields.Count > 0
                 ? await this.parkRepository.UpdateAsync(merged.Id, merged, cancellationToken)
                 : merged;
@@ -320,6 +340,56 @@ public sealed partial class ParkGraphUpsertProcessor
         summary.ParkIdRemaps[source.Id] = merged.Id;
         result.Changes.Add(targetChange);
         result.Changes.Add(sourceChange);
+    }
+
+    private async Task<bool> CopyOfficialMapFilesForMergeAsync(
+        Park source,
+        Park merged,
+        JsonElement? sections,
+        ParkGraphUpsertResult result,
+        CancellationToken cancellationToken)
+    {
+        if (!ShouldTakeSourceSection(sections, "officialMaps"))
+        {
+            return true;
+        }
+
+        IReadOnlyCollection<ParkOfficialMap> storedMaps = source.OfficialMaps
+            .Where(static officialMap => !string.IsNullOrWhiteSpace(officialMap.StorageKey))
+            .ToList();
+        if (storedMaps.Count == 0)
+        {
+            return true;
+        }
+
+        if (this.parkOfficialMapBinaryStorage is null)
+        {
+            result.Errors.Add("La fusion des cartes officielles stockées est indisponible car le stockage de fichiers n'est pas configuré.");
+            return false;
+        }
+
+        foreach (ParkOfficialMap sourceMap in storedMaps)
+        {
+            ParkOfficialMap? targetMap = merged.OfficialMaps.FirstOrDefault(officialMap =>
+                string.Equals(officialMap.Id, sourceMap.Id, StringComparison.OrdinalIgnoreCase));
+            if (targetMap is null || string.IsNullOrWhiteSpace(targetMap.StorageKey))
+            {
+                result.Errors.Add($"La clé cible de la carte officielle '{sourceMap.Id}' n'a pas pu être préparée pour la fusion.");
+                return false;
+            }
+
+            bool copied = await this.parkOfficialMapBinaryStorage.CopyAsync(
+                sourceMap.StorageKey!,
+                targetMap.StorageKey,
+                cancellationToken);
+            if (!copied)
+            {
+                result.Errors.Add($"Le fichier de la carte officielle '{sourceMap.Id}' est introuvable dans le stockage et la fusion a été annulée.");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private async Task MergeParkItemAsync(

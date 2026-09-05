@@ -14,6 +14,7 @@ export interface ParkMapHttpOptions extends AnonymousHttpOptions {
 export interface ParkMapParksPort {
   getParkMapItems(id: string, options?: ParkMapHttpOptions): Observable<ParkMapItems>;
   getParkDetailSummary(id: string, options?: ParkMapHttpOptions): Observable<ParkDetailSummary>;
+  getParkOfficialMapFile(url: string, options?: AnonymousHttpOptions): Observable<Blob>;
 }
 
 export const PARK_MAP_PARKS_PORT = new InjectionToken<ParkMapParksPort>('PARK_MAP_PARKS_PORT', {

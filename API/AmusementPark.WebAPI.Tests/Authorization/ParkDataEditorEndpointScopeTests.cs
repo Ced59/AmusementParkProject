@@ -43,6 +43,17 @@ public sealed class ParkDataEditorEndpointScopeTests
     }
 
     [Fact]
+    public void ParkDataEditorOfficialMapsController_ShouldRequireDedicatedTokenAndExplicitMarker()
+    {
+        AuthorizeAttribute authorize = typeof(ParkDataEditorOfficialMapsController)
+            .GetCustomAttributes<AuthorizeAttribute>()
+            .Single(attribute => attribute.Policy == AuthorizationPolicyNames.ParkDataEditorToken);
+
+        Assert.Equal(AuthorizationPolicyNames.ParkDataEditorToken, authorize.Policy);
+        Assert.NotNull(typeof(ParkDataEditorOfficialMapsController).GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
+    }
+
+    [Fact]
     public void ParkDataEditorSocialPublicationsController_ShouldRequireAdminOrDedicatedTokenAndExplicitMarker()
     {
         AuthorizeAttribute authorize = typeof(ParkDataEditorSocialPublicationsController)

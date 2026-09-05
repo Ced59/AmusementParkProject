@@ -225,6 +225,22 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             ClosingDate = new DateTime(1991, 10, 20),
             OpeningDateText = "1987-05-20",
             ClosingDateText = "1991-10-20",
+            OfficialMaps = new List<ParkOfficialMap>
+            {
+                new ParkOfficialMap
+                {
+                    Id = "map-1991-fr",
+                    Year = 1991,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    StorageKey = "official-maps/park-1/map-1991-fr.pdf",
+                    OriginalFileName = "plan-1991.pdf",
+                    ContentType = "application/pdf",
+                    SizeInBytes = 4096,
+                    SourcePageUrl = "https://example.test/maps",
+                    LanguageCode = "fr",
+                    IsVisible = true,
+                },
+            },
         };
         park.SetPosition(48.85, 2.35);
 
@@ -501,7 +517,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         JsonElement root = document.RootElement;
 
         Assert.Equal("AmusementParkParkGraphUpsert", root.GetProperty("documentType").GetString());
-        Assert.Equal("2026-06-30", root.GetProperty("schemaVersion").GetString());
+        Assert.Equal("2026-09-05", root.GetProperty("schemaVersion").GetString());
         Assert.Equal("park-1", root.GetProperty("identity").GetProperty("parkId").GetString());
         Assert.Equal("Export Park", root.GetProperty("park").GetProperty("name").GetString());
         Assert.Equal("Validated", root.GetProperty("park").GetProperty("adminReviewStatus").GetString());
@@ -509,6 +525,10 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("1991-10-20T00:00:00", root.GetProperty("park").GetProperty("closingDate").GetString());
         Assert.Equal("1987-05-20", root.GetProperty("park").GetProperty("openingDateText").GetString());
         Assert.Equal("1991-10-20", root.GetProperty("park").GetProperty("closingDateText").GetString());
+        JsonElement officialMap = root.GetProperty("park").GetProperty("officialMaps")[0];
+        Assert.Equal("map-1991-fr", officialMap.GetProperty("key").GetString());
+        Assert.Equal("official-maps/park-1/map-1991-fr.pdf", officialMap.GetProperty("storageKey").GetString());
+        Assert.Equal(4096, officialMap.GetProperty("sizeInBytes").GetInt64());
         Assert.Equal("zone-1", root.GetProperty("zones")[0].GetProperty("key").GetString());
         Assert.Equal("DropTower", root.GetProperty("items")[0].GetProperty("type").GetString());
         Assert.Equal("zone-1", root.GetProperty("items")[0].GetProperty("zoneKey").GetString());

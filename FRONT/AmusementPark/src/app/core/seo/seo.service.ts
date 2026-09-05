@@ -80,8 +80,10 @@ interface CommentsSeoCopy {
 
 interface ParkMapSeoCopy {
   titlePrefix: string;
+  interactiveTitlePrefix: string;
   parkFallback: string;
   description: (parkName: string, locationLabel: string) => string;
+  interactiveDescription: (parkName: string, locationLabel: string) => string;
 }
 
 interface ParkItemsSeoCopy {
@@ -640,44 +642,60 @@ const PARK_ITEM_VIDEOS_SEO_COPY: Record<string, ParkItemVideosSeoCopy> = {
 
 const PARK_MAP_SEO_COPY: Record<string, ParkMapSeoCopy> = {
   en: {
-    titlePrefix: 'Interactive map of',
+    titlePrefix: 'Map of',
+    interactiveTitlePrefix: 'Interactive map of',
     parkFallback: 'this park',
-    description: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Explore geolocated places and available official maps for ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   fr: {
-    titlePrefix: 'Carte interactive de',
+    titlePrefix: 'Carte de',
+    interactiveTitlePrefix: 'Carte interactive de',
     parkFallback: 'ce parc',
-    description: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Explore les lieux géolocalisés et les plans officiels disponibles de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`
   },
   es: {
-    titlePrefix: 'Mapa interactivo de',
+    titlePrefix: 'Mapa de',
+    interactiveTitlePrefix: 'Mapa interactivo de',
     parkFallback: 'este parque',
-    description: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Explora los lugares geolocalizados y los mapas oficiales disponibles de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`
   },
   de: {
-    titlePrefix: 'Interaktive Karte von',
+    titlePrefix: 'Karte von',
+    interactiveTitlePrefix: 'Interaktive Karte von',
     parkFallback: 'diesem Park',
-    description: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Entdecke geolokalisierte Orte und verfügbare offizielle Parkpläne von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   it: {
-    titlePrefix: 'Mappa interattiva di',
+    titlePrefix: 'Mappa di',
+    interactiveTitlePrefix: 'Mappa interattiva di',
     parkFallback: 'questo parco',
-    description: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Esplora i luoghi geolocalizzati e le mappe ufficiali disponibili di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`
   },
   nl: {
-    titlePrefix: 'Interactieve kaart van',
+    titlePrefix: 'Kaart van',
+    interactiveTitlePrefix: 'Interactieve kaart van',
     parkFallback: 'dit park',
-    description: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Verken de locaties en beschikbare officiële parkplattegronden van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   pl: {
-    titlePrefix: 'Interaktywna mapa',
+    titlePrefix: 'Mapa',
+    interactiveTitlePrefix: 'Interaktywna mapa',
     parkFallback: 'tego parku',
-    description: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Przeglądaj geolokalizowane miejsca i dostępne oficjalne mapy parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`
   },
   pt: {
-    titlePrefix: 'Mapa interativo de',
+    titlePrefix: 'Mapa de',
+    interactiveTitlePrefix: 'Mapa interativo de',
     parkFallback: 'este parque',
-    description: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
+    description: (parkName: string, locationLabel: string): string => `Explora os locais geolocalizados e os mapas oficiais disponíveis de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`,
+    interactiveDescription: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
   }
 };
 
@@ -2231,7 +2249,8 @@ export class SeoService {
     url: string,
     parkImageId: string | null = null,
     canonicalPath: string | null = null,
-    markerCount: number = MINIMUM_INDEXABLE_COLLECTION_ENTRIES
+    markerCount: number = MINIMUM_INDEXABLE_COLLECTION_ENTRIES,
+    hasOfficialMaps: boolean = false
   ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkMapSeoCopy = PARK_MAP_SEO_COPY[normalizedLanguage] ?? PARK_MAP_SEO_COPY[SEO_DEFAULT_LANGUAGE];
@@ -2239,11 +2258,14 @@ export class SeoService {
     const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
     const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
-    const description: string = copy.description(parkName, locationLabel);
-    const isIndexable: boolean = !this.hasQueryString(url) && isCollectionIndexable(markerCount);
+    const description: string = hasOfficialMaps
+      ? copy.description(parkName, locationLabel)
+      : copy.interactiveDescription(parkName, locationLabel);
+    const titlePrefix: string = hasOfficialMaps ? copy.titlePrefix : copy.interactiveTitlePrefix;
+    const isIndexable: boolean = !this.hasQueryString(url) && (hasOfficialMaps || isCollectionIndexable(markerCount));
 
     this.apply({
-      title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
+      title: `${titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: isIndexable ? 'index,follow' : 'noindex,follow',

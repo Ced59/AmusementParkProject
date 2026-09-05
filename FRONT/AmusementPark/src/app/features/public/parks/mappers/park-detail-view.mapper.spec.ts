@@ -14,6 +14,7 @@ describe('mapParkToDetailViewModel lifecycle actions', () => {
   it('exposes the item map only when a public item is geolocated', () => {
     expect(mapParkToDetailViewModel(operatingPark, 'en', {}, { mappableItemsCount: 0 }).mapLink).toBeNull();
     expect(mapParkToDetailViewModel(operatingPark, 'en', {}, { mappableItemsCount: 1 }).mapLink).not.toBeNull();
+    expect(mapParkToDetailViewModel(operatingPark, 'en', {}, { mappableItemsCount: 0, officialMapsCount: 1 }).mapLink).not.toBeNull();
   });
 
   it('keeps visit planning actions for operating parks only', () => {

@@ -125,7 +125,7 @@ Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cib
 ```json
 {
   "documentType": "AmusementParkParkGraphUpsert",
-  "schemaVersion": "2026-06-30",
+  "schemaVersion": "2026-09-05",
   "mode": "merge",
   "metadata": {
     "source": "codex-park-data-integration",
@@ -142,7 +142,7 @@ Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cib
 }
 ```
 
-Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zones`, `items`, `images`, `openingHours`, `pricing`, `history`.
+Ajouter seulement les sections utiles à l’étape : `references`, `park` (dont `park.officialMaps`), `zones`, `items`, `images`, `openingHours`, `pricing`, `history`.
 
 Les textes localisés des upserts actuels utilisent les codes courts présents dans les exports : `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`. Si un export existant utilise une autre forme, garder la forme déjà présente.
 
@@ -259,9 +259,9 @@ Sortie attendue : plusieurs JSON upsert bornés par lot de descriptions.
 
 Lire `park-data-integration-steps/05-images-and-reference-enrichment.md`.
 
-Objectif : enrichir logos, images du parc, images d’items, biographies de fondateurs, descriptions d’exploitants et biographies de constructeurs, avec des sources d’image techniquement importables et éditorialement fiables.
+Objectif : enrichir logos, images du parc, images d’items, cartes officielles annuelles, biographies de fondateurs, descriptions d’exploitants et biographies de constructeurs, avec des sources techniquement importables et éditorialement fiables. Pour les cartes, rechercher le maximum d’éditions annuelles authentiques encore disponibles, sans plafond artificiel ni millésime inventé, en commençant par l’année courante.
 
-Sortie attendue : JSON upsert avec `images` et/ou `references`.
+Sortie attendue : JSON upsert avec `images`, `park.officialMaps` et/ou `references`.
 
 ### Étape 6 — Horaires et événements nommés
 
@@ -293,7 +293,7 @@ Sortie attendue : JSON upsert centré sur `history.events`, en plusieurs lots.
 
 Lire `park-data-integration-steps/09-final-audit-and-publication.md`.
 
-Objectif : vérifier cohérence, sources, localisations, références, images, statut de visibilité, SEO public et absence de données inventées.
+Objectif : vérifier cohérence, sources, localisations, références, images, cartes officielles et leurs millésimes, statut de visibilité, SEO public et absence de données inventées.
 
 Sortie attendue : checklist de corrections ou dernier JSON upsert ciblé.
 

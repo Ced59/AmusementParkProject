@@ -14,6 +14,8 @@ public sealed class ParkMapItemsDto
     public IReadOnlyCollection<ParkMapUnlocatedItemDto> UnlocatedItems { get; set; } = Array.Empty<ParkMapUnlocatedItemDto>();
 
     public IReadOnlyCollection<ParkMapZoneDto> Zones { get; set; } = Array.Empty<ParkMapZoneDto>();
+
+    public IReadOnlyCollection<ParkOfficialMapDto> OfficialMaps { get; set; } = Array.Empty<ParkOfficialMapDto>();
 }
 
 public sealed class ParkMapItemDto

@@ -173,7 +173,7 @@ public sealed partial class PublicSeoUrlResolver
     {
         AddParkDetailUrls(relativePaths, languages, park);
 
-        if (SeoPageValuePolicy.IsCollectionIndexable(currentPublicItems.Count(HasPublicMapMarker)))
+        if (park.HasPublicOfficialMaps || SeoPageValuePolicy.IsCollectionIndexable(currentPublicItems.Count(HasPublicMapMarker)))
         {
             AddParkMapUrls(relativePaths, languages, park);
         }
@@ -531,7 +531,7 @@ public sealed partial class PublicSeoUrlResolver
 
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
-        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}:{park.OpeningDateText}:{park.ClosingDateText}";
+        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}:{park.OpeningDateText}:{park.ClosingDateText}:{park.HasPublicOfficialMaps}";
     }
 
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)

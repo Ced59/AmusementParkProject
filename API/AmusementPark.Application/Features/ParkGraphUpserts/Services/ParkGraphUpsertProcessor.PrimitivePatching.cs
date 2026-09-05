@@ -25,7 +25,7 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
 public sealed partial class ParkGraphUpsertProcessor
 {
-    private static void PatchString(JsonElement? patch, string propertyName, string? current, Action<string?> assign, ParkGraphUpsertChange change, string? fieldName = null)
+    internal static void PatchString(JsonElement? patch, string propertyName, string? current, Action<string?> assign, ParkGraphUpsertChange change, string? fieldName = null)
     {
         if (!HasProperty(patch, propertyName))
         {
@@ -41,7 +41,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, fieldName ?? propertyName, current, next);
         assign(next);
     }
-    private static void PatchBool(JsonElement? patch, string propertyName, bool current, Action<bool> assign, ParkGraphUpsertChange change)
+    internal static void PatchBool(JsonElement? patch, string propertyName, bool current, Action<bool> assign, ParkGraphUpsertChange change)
     {
         if (!HasProperty(patch, propertyName))
         {
@@ -68,7 +68,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, fieldName, current, next);
         assign(next);
     }
-    private static void PatchInt(JsonElement? patch, string propertyName, int current, Action<int> assign, ParkGraphUpsertChange change)
+    internal static void PatchInt(JsonElement? patch, string propertyName, int current, Action<int> assign, ParkGraphUpsertChange change)
     {
         if (!HasProperty(patch, propertyName))
         {
@@ -84,7 +84,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, propertyName, current, next.Value);
         assign(next.Value);
     }
-    private static void PatchIntNullable(JsonElement? patch, string propertyName, int? current, Action<int?> assign, ParkGraphUpsertChange change, string? fieldName = null)
+    internal static void PatchIntNullable(JsonElement? patch, string propertyName, int? current, Action<int?> assign, ParkGraphUpsertChange change, string? fieldName = null)
     {
         if (!HasProperty(patch, propertyName))
         {
@@ -106,7 +106,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, fieldName, current, next);
         assign(next);
     }
-    private static void PatchDateNullable(JsonElement? patch, string propertyName, DateTime? current, Action<DateTime?> assign, ParkGraphUpsertChange change, string fieldName)
+    internal static void PatchDateNullable(JsonElement? patch, string propertyName, DateTime? current, Action<DateTime?> assign, ParkGraphUpsertChange change, string fieldName)
     {
         if (!HasProperty(patch, propertyName))
         {
@@ -213,7 +213,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return false;
     }
-    private static void PatchEnum<T>(JsonElement? patch, string propertyName, T current, Action<T> assign, ParkGraphUpsertChange change)
+    internal static void PatchEnum<T>(JsonElement? patch, string propertyName, T current, Action<T> assign, ParkGraphUpsertChange change)
         where T : struct, Enum
     {
         if (!HasProperty(patch, propertyName))

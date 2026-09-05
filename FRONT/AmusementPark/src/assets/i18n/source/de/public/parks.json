@@ -304,12 +304,23 @@
     "mapPage": {
       "kicker": "Parkkarte",
       "title": "Karte von {{name}}",
-      "subtitle": "Entdecke geolokalisierte Attraktionen, Restaurants, Shops und interessante Punkte von {{name}} auf einer eigenen Karte.",
+      "subtitle": "Entdecke die Orte von {{name}} auf der interaktiven Karte oder sieh dir die verfügbaren offiziellen Parkpläne an.",
       "loadingTitle": "Karte wird geladen",
       "loadingMessage": "Die Parkmarker werden vorbereitet.",
       "errorTitle": "Karte nicht verfügbar",
       "errorMessage": "Die Karte dieses Parks kann derzeit nicht geladen werden.",
-      "backToPark": "Zurück zu {{name}}"
+      "backToPark": "Zurück zu {{name}}",
+      "tabs": { "label": "Kartentypen", "interactive": "Interaktive Karte", "official": "Offizielle Karten" },
+      "official": {
+        "kicker": "Offizielle Ausgaben",
+        "title": "Offizielle Karten von {{name}}",
+        "subtitle": "Sieh dir die vom Park veröffentlichten Pläne nach Jahr geordnet an. Die neueste Ausgabe ist vorausgewählt.",
+        "yearLabel": "Jahr",
+        "fallbackTitle": "Offizielle Karte {{year}}",
+        "open": "Karte ansehen",
+        "source": "Offizielle Quelle",
+        "formats": { "image": "Bild", "pdf": "PDF", "other": "Datei" }
+      }
     },
     "zones": {
       "badge": "Parkbereiche",

@@ -39,7 +39,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return "none";
     }
-    private static bool HasProperty(JsonElement? element, string propertyName)
+    internal static bool HasProperty(JsonElement? element, string propertyName)
     {
         return element is not null && element.Value.ValueKind == JsonValueKind.Object && element.Value.TryGetProperty(propertyName, out _);
     }
@@ -61,7 +61,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return property;
     }
-    private static JsonElement? GetArray(JsonElement? element, string propertyName)
+    internal static JsonElement? GetArray(JsonElement? element, string propertyName)
     {
         if (element is null || element.Value.ValueKind != JsonValueKind.Object || !element.Value.TryGetProperty(propertyName, out JsonElement property) || property.ValueKind != JsonValueKind.Array)
         {
@@ -70,7 +70,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return property;
     }
-    private static string? ReadString(JsonElement? element, string propertyName)
+    internal static string? ReadString(JsonElement? element, string propertyName)
     {
         return NormalizeString(ReadStringAllowNull(element, propertyName));
     }
@@ -122,7 +122,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         return null;
     }
-    private static int? ReadInt(JsonElement? element, string propertyName)
+    internal static int? ReadInt(JsonElement? element, string propertyName)
     {
         if (element is null || element.Value.ValueKind != JsonValueKind.Object || !element.Value.TryGetProperty(propertyName, out JsonElement property))
         {
@@ -210,7 +210,7 @@ public sealed partial class ParkGraphUpsertProcessor
         T? value = ReadEnumNullable<T>(element, propertyName);
         return value ?? fallback;
     }
-    private static T? ReadEnumNullable<T>(JsonElement? element, string propertyName)
+    internal static T? ReadEnumNullable<T>(JsonElement? element, string propertyName)
         where T : struct, Enum
     {
         string? value = ReadString(element, propertyName);

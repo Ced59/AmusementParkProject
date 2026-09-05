@@ -54,6 +54,7 @@ using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCo
 using AmusementPark.Infrastructure.Services.Email;
 using AmusementPark.Infrastructure.Services.Comments;
 using AmusementPark.Infrastructure.Services.Images;
+using AmusementPark.Infrastructure.Services.Parks;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
 using AmusementPark.Infrastructure.Services.SocialPublishing;
@@ -188,6 +189,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkNameReadRepository, ParkNameReadRepository>();
         services.AddScoped<IParkDetailSummaryReadRepository, ParkDetailSummaryReadRepository>();
         services.AddScoped<IParkMapItemsReadRepository, ParkMapItemsReadRepository>();
+        services.AddScoped<IParkOfficialMapBinaryStorage, MinioParkOfficialMapBinaryStorage>();
         services.AddScoped<IParkZoneRepository, ParkZoneRepository>();
         services.AddScoped<IParkItemRepository, ParkItemRepository>();
         services.AddScoped<IParkItemNameReadRepository, ParkItemNameReadRepository>();

@@ -1,0 +1,79 @@
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-09-05",
+  "mode": "merge",
+  "metadata": {
+    "source": "codex-official-maps",
+    "targetParkId": "park-id",
+    "targetParkName": "Nom du parc",
+    "step": "05-official-maps",
+    "notes": "Deux éditions annuelles vérifiées ; les nouvelles cartes restent privées avant publication."
+  },
+  "identity": {
+    "parkId": "park-id",
+    "name": "Nom du parc"
+  },
+  "park": {
+    "officialMaps": [
+      {
+        "key": "map-2026-fr",
+        "id": "map-2026-fr",
+        "year": 2026,
+        "format": "Pdf",
+        "storageKey": "official-maps/park-id/map-2026-fr.0123456789abcdef0123456789abcdef.pdf",
+        "originalFileName": "plan-du-parc-2026.pdf",
+        "contentType": "application/pdf",
+        "sizeInBytes": 2457600,
+        "sourcePageUrl": "https://park.example/visit/maps",
+        "languageCode": "fr",
+        "titles": [
+          { "languageCode": "fr", "value": "Plan officiel 2026" },
+          { "languageCode": "en", "value": "Official 2026 map" },
+          { "languageCode": "de", "value": "Offizieller Parkplan 2026" },
+          { "languageCode": "nl", "value": "Officiële plattegrond 2026" },
+          { "languageCode": "it", "value": "Mappa ufficiale 2026" },
+          { "languageCode": "es", "value": "Mapa oficial 2026" },
+          { "languageCode": "pl", "value": "Oficjalna mapa 2026" },
+          { "languageCode": "pt", "value": "Mapa oficial 2026" }
+        ],
+        "alternativeTexts": [],
+        "isVisible": false,
+        "lastVerifiedAtUtc": "2026-09-05"
+      },
+      {
+        "key": "map-2025-international",
+        "id": "map-2025-international",
+        "year": 2025,
+        "format": "Image",
+        "storageKey": "official-maps/park-id/map-2025-international.fedcba9876543210fedcba9876543210.jpg",
+        "originalFileName": "official-map-2025.jpg",
+        "contentType": "image/jpeg",
+        "sizeInBytes": 3145728,
+        "sourcePageUrl": "https://park.example/visit/maps/archive-2025",
+        "languageCode": "und",
+        "titles": [
+          { "languageCode": "fr", "value": "Plan officiel 2025" },
+          { "languageCode": "en", "value": "Official 2025 map" },
+          { "languageCode": "de", "value": "Offizieller Parkplan 2025" },
+          { "languageCode": "nl", "value": "Officiële plattegrond 2025" },
+          { "languageCode": "it", "value": "Mappa ufficiale 2025" },
+          { "languageCode": "es", "value": "Mapa oficial 2025" },
+          { "languageCode": "pl", "value": "Oficjalna mapa 2025" },
+          { "languageCode": "pt", "value": "Mapa oficial 2025" }
+        ],
+        "alternativeTexts": [
+          { "languageCode": "fr", "value": "Plan illustré du parc et de ses principales zones en 2025." },
+          { "languageCode": "en", "value": "Illustrated map of the park and its main areas in 2025." },
+          { "languageCode": "de", "value": "Illustrierter Plan des Parks und seiner wichtigsten Bereiche im Jahr 2025." },
+          { "languageCode": "nl", "value": "Geïllustreerde plattegrond van het park en de belangrijkste zones in 2025." },
+          { "languageCode": "it", "value": "Mappa illustrata del parco e delle sue aree principali nel 2025." },
+          { "languageCode": "es", "value": "Mapa ilustrado del parque y de sus zonas principales en 2025." },
+          { "languageCode": "pl", "value": "Ilustrowana mapa parku i jego głównych stref w 2025 roku." },
+          { "languageCode": "pt", "value": "Mapa ilustrado do parque e das suas principais zonas em 2025." }
+        ],
+        "isVisible": false,
+        "lastVerifiedAtUtc": "2026-09-05"
+      }
+    ]
+  }
+}

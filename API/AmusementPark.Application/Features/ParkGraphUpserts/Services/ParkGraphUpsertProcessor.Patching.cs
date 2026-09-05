@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
@@ -113,6 +114,8 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             park.Descriptions = PatchLocalizedTexts(park.Descriptions, GetArray(patch, "descriptions"), false, change, "descriptions");
         }
+
+        ParkGraphOfficialMapUpsertPatcher.Patch(park, patch, result);
 
         bool hasLatitude = HasProperty(patch, "latitude");
         bool hasLongitude = HasProperty(patch, "longitude");
@@ -632,4 +635,5 @@ public sealed partial class ParkGraphUpsertProcessor
             entity.ClearPosition();
         }
     }
+
 }

@@ -182,6 +182,7 @@ internal static class ParksHttpMappers
                 TotalItems = value.Stats.TotalItems,
                 ZoneCount = value.Stats.ZoneCount,
                 MappableItemsCount = value.Stats.MappableItemsCount,
+                OfficialMapsCount = value.Stats.OfficialMapsCount,
                 AttractionCount = value.Stats.AttractionCount,
                 RestaurantCount = value.Stats.RestaurantCount,
                 ShowCount = value.Stats.ShowCount,
@@ -232,6 +233,25 @@ internal static class ParksHttpMappers
                 Id = zone.Id,
                 Name = zone.Name,
                 SortOrder = zone.SortOrder,
+            }).ToList(),
+            OfficialMaps = value.OfficialMaps.Select(officialMap => new ParkOfficialMapDto
+            {
+                Id = officialMap.Id,
+                Year = officialMap.Year,
+                Format = officialMap.Format.ToString(),
+                DocumentUrl = string.IsNullOrWhiteSpace(officialMap.StorageKey)
+                    ? officialMap.DocumentUrl ?? string.Empty
+                    : $"parks/{Uri.EscapeDataString(value.Park.Id)}/official-maps/{Uri.EscapeDataString(officialMap.Id)}/file",
+                IsVisible = officialMap.IsVisible,
+                OriginalFileName = officialMap.OriginalFileName,
+                ContentType = officialMap.ContentType,
+                SizeInBytes = officialMap.SizeInBytes,
+                PreviewImageUrl = officialMap.PreviewImageUrl,
+                SourcePageUrl = officialMap.SourcePageUrl,
+                LanguageCode = officialMap.LanguageCode,
+                Titles = officialMap.Titles.ToHttp(),
+                AlternativeTexts = officialMap.AlternativeTexts.ToHttp(),
+                LastVerifiedAtUtc = officialMap.LastVerifiedAtUtc,
             }).ToList(),
         };
     }

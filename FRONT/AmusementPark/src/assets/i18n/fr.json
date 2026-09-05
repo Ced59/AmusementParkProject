@@ -5164,12 +5164,31 @@
     "mapPage": {
       "kicker": "Carte du parc",
       "title": "Carte de {{name}}",
-      "subtitle": "Explore les attractions, restaurants, boutiques et points d’intérêt géolocalisés de {{name}} sur une carte dédiée.",
+      "subtitle": "Explore les lieux géolocalisés de {{name}} sur la carte interactive ou consulte les plans officiels disponibles.",
       "loadingTitle": "Chargement de la carte",
       "loadingMessage": "Préparation des marqueurs du parc.",
       "errorTitle": "Carte indisponible",
       "errorMessage": "Impossible de charger la carte de ce parc pour le moment.",
-      "backToPark": "Retour à {{name}}"
+      "backToPark": "Retour à {{name}}",
+      "tabs": {
+        "label": "Types de carte",
+        "interactive": "Carte interactive",
+        "official": "Cartes officielles"
+      },
+      "official": {
+        "kicker": "Éditions officielles",
+        "title": "Cartes officielles de {{name}}",
+        "subtitle": "Consulte les plans publiés par le parc, classés par année. L’édition la plus récente est sélectionnée par défaut.",
+        "yearLabel": "Année",
+        "fallbackTitle": "Carte officielle {{year}}",
+        "open": "Voir la carte",
+        "source": "Source officielle",
+        "formats": {
+          "image": "Image",
+          "pdf": "PDF",
+          "other": "Fichier"
+        }
+      }
     },
     "zones": {
       "badge": "Zones du parc",
