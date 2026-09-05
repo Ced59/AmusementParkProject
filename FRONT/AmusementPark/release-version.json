@@ -1,6 +1,20 @@
 {
-  "version": "5.1.7",
+  "version": "5.1.8",
   "history": [
+    {
+      "version": "5.1.8",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Les classements collectifs et personnels reposent désormais sur une structure plus fiable.",
+        "en": "Community and personal rankings now rely on a more reliable structure.",
+        "de": "Gemeinschaftliche und persönliche Ranglisten basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "Algemene en persoonlijke ranglijsten steunen nu op een betrouwbaardere structuur.",
+        "it": "Le classifiche collettive e personali si basano ora su una struttura più affidabile.",
+        "es": "Las clasificaciones colectivas y personales se apoyan ahora en una estructura más fiable.",
+        "pl": "Rankingi społecznościowe i osobiste korzystają teraz z bardziej niezawodnej struktury.",
+        "pt": "As classificações coletivas e pessoais assentam agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.7",
       "releasedAt": "2026-09-05",
