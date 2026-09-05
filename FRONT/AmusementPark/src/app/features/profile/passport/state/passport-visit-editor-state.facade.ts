@@ -1875,7 +1875,13 @@ export class PassportVisitEditorStateFacade {
   private replaceOccurrence(updated: PassportRideOccurrence): void {
     const nextOccurrences: PassportRideOccurrence[] = this.occurrencesSignal().map(
       (candidate: PassportRideOccurrence): PassportRideOccurrence => candidate.id === updated.id
-        ? { ...updated, target: updated.target ?? candidate.target }
+        ? {
+          ...updated,
+          target: updated.target ?? candidate.target,
+          historicalConsistency: updated.target == null
+            ? candidate.historicalConsistency
+            : updated.historicalConsistency
+        }
         : candidate
     );
     this.setOccurrences(nextOccurrences);

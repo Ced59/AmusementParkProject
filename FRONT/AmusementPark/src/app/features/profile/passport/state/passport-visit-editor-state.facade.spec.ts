@@ -912,6 +912,39 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.rideAssessmentHasChanges('occurrence-1')).toBe(false);
   });
 
+  it('preserves the recalculated historical conflict after saving a ride assessment', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.upsertAssessment.mockReturnValue(of({
+      ...conflictingOccurrence,
+      version: 2,
+      target: null,
+      historicalConsistency: 'Verified',
+      assessment: {
+        value: 4.5,
+        privateComment: null,
+        revision: 1,
+        createdAtUtc: '2026-09-03T10:00:00Z',
+        updatedAtUtc: '2026-09-03T10:00:00Z'
+      }
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.updateRideAssessmentDraft('occurrence-1', { value: 4.5 });
+
+    facade.saveRideAssessment(conflictingOccurrence);
+
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: conflictingOccurrence.target
+    }));
+  });
+
   it('preserves a newer ride assessment draft when the save response arrives', () => {
     const response: Subject<PassportRideOccurrence> = new Subject<PassportRideOccurrence>();
     occurrencesPort.upsertAssessment.mockReturnValue(response);
@@ -1026,6 +1059,40 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.deleteAssessment).toHaveBeenCalledWith('occurrence-1', 2);
     expect(facade.occurrences()[0].version).toBe(3);
     expect(facade.rideAssessmentDrafts()['occurrence-1']).toEqual({ value: null, privateComment: '' });
+  });
+
+  it('preserves the recalculated historical conflict after deleting a ride assessment', () => {
+    const conflictingOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      version: 2,
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      assessment: {
+        value: 4,
+        privateComment: null,
+        revision: 1,
+        createdAtUtc: '2026-09-03T09:00:00Z',
+        updatedAtUtc: '2026-09-03T09:00:00Z'
+      }
+    };
+    occurrencesPort.list.mockReturnValue(of({ items: [conflictingOccurrence], nextCursor: null }));
+    occurrencesPort.deleteAssessment.mockReturnValue(of({
+      ...conflictingOccurrence,
+      version: 3,
+      target: null,
+      historicalConsistency: 'Verified',
+      assessment: null
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    facade.deleteRideAssessment(conflictingOccurrence);
+
+    expect(facade.occurrences()[0]).toEqual(expect.objectContaining({
+      historicalConsistency: 'ConfirmedConflict',
+      historicalConflictConfirmed: false,
+      target: conflictingOccurrence.target
+    }));
   });
 
   it('does not let an older timeline reload overwrite a newer locale refresh', () => {
