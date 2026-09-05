@@ -38,6 +38,8 @@ Produire les numérateurs, dénominateurs et identifiants manquants pour :
 - parkItems fixes géolocalisés / parkItems fixes identifiés, avec la liste nominative et le motif de chaque exception non positionnable ;
 - logo officiel présent, courant et sans watermark ajouté ; une exception n'est recevable que pour un très petit parc, après recherche infructueuse documentée et acceptation explicite de la lacune ;
 - image principale du parc ;
+- photographies générales distinctes du parc : nombre / 5, hors logo et hors gros plans de parkItems ;
+- parkItems importants disposant d’au moins 3 photographies distinctes : nombre / total, avec le nombre d’images de chaque identifiant ;
 - jalons historiques avec sources et image contextualisée ;
 - articles avec sources joignables, localisations attendues et image contextualisée ;
 - attractions définitivement fermées avec statut, période, description, image et jalon applicables ;
@@ -206,6 +208,10 @@ Vérifier :
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.
 - logo officiel actuel distinct de la photo principale, marqué comme logo courant et contrôlé dans l’export ;
+- au moins cinq vraies photographies générales distinctes du parc, hors logo, qui montrent le site dans son ensemble ou plusieurs espaces identifiables, ou une exception précisément documentée après recherche ;
+- au moins trois photographies distinctes et fidèles pour chaque parkItem important, actuel ou historique, ou une exception précisément documentée après recherche ;
+- aucune vue générale n’est comptée à partir d’un gros plan d’attraction, d’une image générique, d’un plan, d’un rendu non photographique ou de fichiers quasi dupliqués ;
+- chaque exception aux seuils de cinq ou trois images indique le nombre atteint, les familles de sources vérifiées et la raison factuelle liée à la taille du parc ou à la documentation disponible ;
 - au moins une image fidèle par attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable ;
 - chaque fichier inspecté visuellement, sans watermark ou logo incrusté d’un site tiers ;
 - chaque absence d’image justifiée par une recherche réelle et non par un simple oubli ;

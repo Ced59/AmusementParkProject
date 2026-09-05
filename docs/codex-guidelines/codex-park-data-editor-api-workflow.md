@@ -290,6 +290,8 @@ Construire depuis l’export une ligne par propriétaire avec : identifiant, typ
 
 - logo officiel actuel ;
 - image principale du parc ;
+- au moins cinq photographies générales distinctes du parc, hors logo et hors gros plans de parkItems ;
+- chaque parkItem important avec un objectif d’au moins trois photographies distinctes et fidèles ;
 - chaque attraction actuelle ;
 - chaque attraction annoncée ou en construction ;
 - chaque attraction définitivement fermée ;
@@ -301,7 +303,8 @@ Construire depuis l’export une ligne par propriétaire avec : identifiant, typ
 2. Vérifier la page source, les conditions d’utilisation disponibles, l’auteur, les crédits et l’URL finale du fichier.
 3. Inspecter visuellement l’image elle-même avant l’import : sujet exact, époque compatible, cadrage utile, qualité suffisante, absence de watermark ou logo incrusté d’un site tiers.
 4. Accepter une photo non officielle lorsqu’elle montre sans ambiguïté la bonne entité, reste créditable et satisfait tous les contrôles. Refuser une image générique, un mauvais item, une miniature inutilisable ou un rendu présenté comme une photographie.
-5. Si aucune image acceptable n’est trouvée après recherche dans les familles de sources pertinentes, conserver une exception détaillée au lieu de forcer un visuel trompeur.
+5. Pour les cinq vues générales du parc et les trois images de chaque parkItem important, refuser les fichiers ou recadrages quasi identiques et vérifier que chaque image apporte une vue, une ambiance, une période ou un contexte complémentaire.
+6. Si le parc est trop petit ou si aucune image acceptable supplémentaire n’est trouvée après recherche dans les familles de sources pertinentes, conserver une exception détaillée avec le nombre atteint, les sources vérifiées et la raison factuelle au lieu de forcer un visuel trompeur.
 
 ### Téléchargement, upload et rattachement
 
@@ -361,7 +364,7 @@ Les catégories de compte, commentaire, vidéo, exploitant, constructeur et fond
 
 ### Audit après images
 
-Après les imports, actualiser le registre local : logo courant attendu, image principale du parc, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier les réponses pour éviter les doublons et les remplacements d’image courante inappropriés ; l’export complet frais préalable à l’étape 9 confirme ensuite ces résultats et porte le tableau annoncé.
+Après les imports, actualiser le registre local : logo courant attendu, image principale du parc, photographies générales distinctes du parc / 5, parkItems importants atteignant trois images / total avec leur nombre individuel, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier les réponses pour éviter les doublons, les fichiers quasi identiques et les remplacements d’image courante inappropriés ; l’export complet frais préalable à l’étape 9 confirme ensuite ces résultats et porte le tableau annoncé.
 
 Un warning de doublon d’image distante peut être non bloquant uniquement si l’état de référence prouve que la source est déjà liée au bon propriétaire et qu’aucune modification n’était attendue. Tous les autres warnings doivent être compris et corrigés avant de poursuivre.
 
