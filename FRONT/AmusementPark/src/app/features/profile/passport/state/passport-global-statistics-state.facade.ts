@@ -19,6 +19,7 @@ export class PassportGlobalStatisticsStateFacade {
   private readonly filterSignal = signal<PassportGlobalStatisticsFilter>({ year: null, parkId: null });
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
+  private lastSuccessfulFilter: PassportGlobalStatisticsFilter = { year: null, parkId: null };
   private loadGeneration: number = 0;
 
   readonly statistics: Signal<PassportGlobalStatistics | null> = this.statisticsSignal.asReadonly();
@@ -74,6 +75,7 @@ export class PassportGlobalStatisticsStateFacade {
             return;
           }
           this.statisticsSignal.set(statistics);
+          this.lastSuccessfulFilter = { ...filter };
           this.loadingSignal.set(false);
         },
         error: (error: unknown): void => {
@@ -81,6 +83,8 @@ export class PassportGlobalStatisticsStateFacade {
             return;
           }
           this.loadingSignal.set(false);
+          this.filterSignal.set({ ...this.lastSuccessfulFilter });
+          this.filterStore.write(this.lastSuccessfulFilter);
           this.errorKeySignal.set(error instanceof HttpErrorResponse && error.status === 400
             ? 'passport.globalStatistics.errors.invalidFilter'
             : 'passport.globalStatistics.errors.load');

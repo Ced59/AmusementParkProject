@@ -69,8 +69,7 @@ public sealed class GetPassportGlobalStatisticsQueryHandler
         PassportGlobalStatistics statistics = PassportGlobalStatisticsCalculator.Calculate(
             source.Visits,
             source.Rides);
-        string[] parkIds = source.AvailableVisits
-            .Select(static visit => visit.ParkId)
+        string[] parkIds = source.AvailableParkIds
             .Concat(statistics.TopItems.Select(static item => item.ParkId))
             .Distinct(StringComparer.Ordinal)
             .ToArray();
@@ -93,7 +92,8 @@ public sealed class GetPassportGlobalStatisticsQueryHandler
                 statistics,
                 query.Year,
                 parkId,
-                source.AvailableVisits,
+                source.AvailableYears,
+                source.AvailableParkIds,
                 await parkNamesTask,
                 await parkItemNamesTask));
     }

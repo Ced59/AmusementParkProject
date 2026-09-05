@@ -25,6 +25,20 @@ public sealed class PassportScopeStatisticsSourceReaderTests
     }
 
     [Fact]
+    public void BuildGlobalVisitFilter_ShouldApplyOptionalScopeInsideMongo()
+    {
+        BsonDocument rendered = Render(
+            PassportScopeStatisticsMongoDefinitions.BuildGlobalVisitFilter(
+                " owner-1 ",
+                2025,
+                " park-1 "));
+
+        Assert.Equal("owner-1", rendered["userId"].AsString);
+        Assert.Equal(2025, rendered["date.year"].AsInt32);
+        Assert.Equal("park-1", rendered["parkId"].AsString);
+    }
+
+    [Fact]
     public void BuildParkVisitFilter_ShouldUseOwnerParkIndexAndExcludeArchivedVisits()
     {
         BsonDocument rendered = Render(

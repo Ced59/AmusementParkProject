@@ -22,6 +22,27 @@ internal static class PassportScopeStatisticsMongoDefinitions
             & UserVisitMongoDefinitions.BuildNotDeletedFilter();
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildGlobalVisitFilter(
+        string userId,
+        int? year,
+        string? parkId)
+    {
+        FilterDefinition<UserVisitDocument> filter = BuildOwnerVisitFilter(userId);
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        if (year.HasValue)
+        {
+            filter &= filters.Eq(static document => document.Date.Year, year.Value);
+        }
+        if (parkId is not null)
+        {
+            filter &= filters.Eq(
+                static document => document.ParkId,
+                IdentifierRules.NormalizeRequired(parkId, nameof(parkId)));
+        }
+        return filter;
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildParkVisitFilter(
         string userId,
         string parkId)

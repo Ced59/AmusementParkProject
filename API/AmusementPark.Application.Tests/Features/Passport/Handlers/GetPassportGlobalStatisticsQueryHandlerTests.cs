@@ -41,7 +41,8 @@ public sealed class GetPassportGlobalStatisticsQueryHandlerTests
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(new PassportGlobalStatisticsSource(
-                new[] { visit },
+                new[] { 2025 },
+                new[] { "park-1" },
                 new[] { visit },
                 new[] { ride }));
         parkNames.Setup(value => value.GetNamesByIdsAsync(

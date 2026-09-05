@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { PassportGlobalStatistics } from '@app/models/passport/passport-statistics.models';
 import {
@@ -49,6 +49,19 @@ describe('PassportGlobalStatisticsStateFacade', () => {
     expect(store.write).toHaveBeenNthCalledWith(1, { year: null, parkId: 'park-1' });
     expect(store.write).toHaveBeenNthCalledWith(2, { year: null, parkId: null });
     expect(api.getGlobalStatistics).toHaveBeenLastCalledWith(null, null);
+  });
+
+  it('restores the last successful filter when a reload fails', () => {
+    const facade: PassportGlobalStatisticsStateFacade = TestBed.inject(PassportGlobalStatisticsStateFacade);
+    facade.load();
+    api.getGlobalStatistics.mockReturnValue(throwError(() => new Error('network')));
+
+    facade.selectYear(2024);
+
+    expect(facade.filter()).toEqual(initialFilter);
+    expect(facade.statistics()?.parkCount).toBe(1);
+    expect(facade.errorKey()).toBe('passport.globalStatistics.errors.load');
+    expect(store.write).toHaveBeenLastCalledWith(initialFilter);
   });
 });
 

@@ -9,23 +9,25 @@ internal static class PassportGlobalStatisticsResultFactory
         PassportGlobalStatistics statistics,
         int? selectedYear,
         string? selectedParkId,
-        IReadOnlyCollection<PassportVisitStatisticsObservation> availableVisits,
+        IReadOnlyCollection<int> availableYears,
+        IReadOnlyCollection<string> availableParkIds,
         IReadOnlyDictionary<string, string?> parkNames,
         IReadOnlyDictionary<string, string?> parkItemNames)
     {
         ArgumentNullException.ThrowIfNull(statistics);
-        ArgumentNullException.ThrowIfNull(availableVisits);
+        ArgumentNullException.ThrowIfNull(availableYears);
+        ArgumentNullException.ThrowIfNull(availableParkIds);
         ArgumentNullException.ThrowIfNull(parkNames);
         ArgumentNullException.ThrowIfNull(parkItemNames);
 
         return new PassportGlobalStatisticsResult(
             selectedYear,
             selectedParkId,
-            availableVisits.Select(static visit => visit.VisitDate.Year)
+            availableYears
                 .Distinct()
                 .OrderByDescending(static year => year)
                 .ToArray(),
-            availableVisits.Select(static visit => visit.ParkId)
+            availableParkIds
                 .Distinct(StringComparer.Ordinal)
                 .Select(parkId => new PassportGlobalFilterParkResult(
                     parkId,

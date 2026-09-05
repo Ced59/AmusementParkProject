@@ -63,29 +63,58 @@ public sealed class PassportScopeStatisticsSourceReader
         string? normalizedParkId = parkId is null
             ? null
             : IdentifierRules.NormalizeRequired(parkId, nameof(parkId));
-        List<PassportScopeVisitSourceDocument> availableVisits = await this.visitCollection
-            .Find(PassportScopeStatisticsMongoDefinitions.BuildOwnerVisitFilter(normalizedUserId))
+        FilterDefinition<UserVisitDocument> ownerFilter =
+            PassportScopeStatisticsMongoDefinitions.BuildOwnerVisitFilter(normalizedUserId);
+        Task<List<PassportScopeVisitSourceDocument>> visitsTask = this.visitCollection
+            .Find(PassportScopeStatisticsMongoDefinitions.BuildGlobalVisitFilter(
+                normalizedUserId,
+                year,
+                normalizedParkId))
             .Project(PassportScopeStatisticsMongoDefinitions.BuildVisitProjection())
             .ToListAsync(cancellationToken);
-        PassportScopeVisitSourceDocument[] scopedVisits = availableVisits
-            .Where(visit => !year.HasValue || visit.Date.Year == year.Value)
-            .Where(visit => normalizedParkId is null || string.Equals(
-                visit.ParkId,
-                normalizedParkId,
-                StringComparison.Ordinal))
-            .ToArray();
+        Task<IReadOnlyCollection<int>> availableYearsTask = this.ReadAvailableYearsAsync(
+            ownerFilter,
+            cancellationToken);
+        Task<IReadOnlyCollection<string>> availableParkIdsTask = this.ReadAvailableParkIdsAsync(
+            ownerFilter,
+            cancellationToken);
+        await Task.WhenAll(visitsTask, availableYearsTask, availableParkIdsTask);
+        List<PassportScopeVisitSourceDocument> scopedVisits = await visitsTask;
         PassportScopeRideSources rideSources = await this.ReadRideSourcesAsync(
             normalizedUserId,
             scopedVisits,
             cancellationToken);
 
         return new PassportGlobalStatisticsSource(
-            BuildVisitObservations(availableVisits),
+            await availableYearsTask,
+            await availableParkIdsTask,
             BuildVisitObservations(scopedVisits),
             BuildRideObservations(
                 rideSources.Occurrences,
                 scopedVisits.ToDictionary(static visit => visit.Id, StringComparer.Ordinal),
                 rideSources.CurrentCategories));
+    }
+
+    private async Task<IReadOnlyCollection<int>> ReadAvailableYearsAsync(
+        FilterDefinition<UserVisitDocument> ownerFilter,
+        CancellationToken cancellationToken)
+    {
+        IAsyncCursor<int> cursor = await this.visitCollection.DistinctAsync(
+            static document => document.Date.Year,
+            ownerFilter,
+            cancellationToken: cancellationToken);
+        return await cursor.ToListAsync(cancellationToken);
+    }
+
+    private async Task<IReadOnlyCollection<string>> ReadAvailableParkIdsAsync(
+        FilterDefinition<UserVisitDocument> ownerFilter,
+        CancellationToken cancellationToken)
+    {
+        IAsyncCursor<string> cursor = await this.visitCollection.DistinctAsync(
+            static document => document.ParkId,
+            ownerFilter,
+            cancellationToken: cancellationToken);
+        return await cursor.ToListAsync(cancellationToken);
     }
 
     public async Task<PassportParkStatisticsSource> ReadParkAsync(
