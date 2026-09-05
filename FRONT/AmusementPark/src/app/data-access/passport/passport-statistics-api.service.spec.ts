@@ -9,22 +9,28 @@ describe('PassportStatisticsApiService', () => {
     const httpClient: Pick<HttpClient, 'get'> = { get: vi.fn().mockReturnValue(of({})) };
     const service: PassportStatisticsApiService = new PassportStatisticsApiService(httpClient as HttpClient);
 
+    service.getGlobalStatistics(2026, 'park/one').subscribe();
     service.getItemStatistics('item/one').subscribe();
     service.getParkStatistics('park/one').subscribe();
     service.getYearStatistics(2026).subscribe();
 
     expect(httpClient.get).toHaveBeenNthCalledWith(
       1,
+      `${environment.apiBaseUrl}me/passport/stats`,
+      { params: { year: '2026', parkId: 'park/one' }, transferCache: false }
+    );
+    expect(httpClient.get).toHaveBeenNthCalledWith(
+      2,
       `${environment.apiBaseUrl}me/passport/items/item%2Fone/stats`,
       { transferCache: false }
     );
     expect(httpClient.get).toHaveBeenNthCalledWith(
-      2,
+      3,
       `${environment.apiBaseUrl}me/passport/parks/park%2Fone/stats`,
       { transferCache: false }
     );
     expect(httpClient.get).toHaveBeenNthCalledWith(
-      3,
+      4,
       `${environment.apiBaseUrl}me/passport/years/2026/stats`,
       { transferCache: false }
     );

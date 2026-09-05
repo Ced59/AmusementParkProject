@@ -6,6 +6,7 @@ import { PROFILE_ROUTES } from './profile-routing.module';
 describe('profile routes', () => {
   it('keeps every statistics scope lazy and authenticated', () => {
     const paths: string[] = [
+      'passport/statistics',
       'passport/items/:parkItemId',
       'passport/parks/:parkId',
       'passport/years/:year'

@@ -1,0 +1,29 @@
+:host, .rating-chart, .rating-chart > *, header, header > div, .rating-chart__visual, .rating-chart__year, .rating-chart__year > div, .rating-chart__table-wrap { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.rating-chart { display: grid; gap: 1rem; }
+header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+h2, p { margin: 0; overflow-wrap: anywhere; }
+h2 { color: var(--app-heading); font-size: clamp(1.25rem, 3vw, 1.7rem); }
+header p, .rating-chart__denominator, .rating-chart__empty { margin-top: .3rem; color: var(--app-text-muted); line-height: 1.45; }
+.rating-chart__legend { display: flex; flex-wrap: wrap; gap: .45rem .8rem; color: var(--app-text-muted); font-size: .82rem; font-weight: 700; }
+.rating-chart__legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.rating-chart__swatch { width: .7rem; height: .7rem; border-radius: 999px; }
+.rating-chart__swatch--park, .rating-chart__bar--park { background: var(--c-gold); }
+.rating-chart__swatch--ride, .rating-chart__bar--ride { background: var(--c-sky); }
+.rating-chart__denominator { display: flex; align-items: flex-start; gap: .45rem; padding: .7rem; border-radius: var(--app-radius-md); background: var(--app-surface-2); }
+.rating-chart__visual { display: grid; gap: .75rem; }
+.rating-chart__year { display: grid; grid-template-columns: 3.5rem minmax(8rem, 1fr) 3rem 3rem; align-items: center; gap: .55rem; }
+.rating-chart__year > div { display: grid; gap: .3rem; }
+.rating-chart__bar { display: block; min-width: .18rem; height: .55rem; border-radius: 999px; transition: width .25s ease; }
+.rating-chart__year > span { text-align: right; font-variant-numeric: tabular-nums; }
+.rating-chart__table-wrap { overflow-x: auto; border: 1px solid var(--app-border); border-radius: var(--app-radius-md); }
+table { width: 100%; min-width: 36rem; border-collapse: collapse; }
+th, td { padding: .65rem .75rem; border-bottom: 1px solid var(--app-border); text-align: left; overflow-wrap: anywhere; }
+tbody tr:last-child > * { border-bottom: 0; }
+
+@media (max-width: 480px) {
+  header { flex-direction: column; }
+  .rating-chart__year { grid-template-columns: 3.2rem minmax(0, 1fr); }
+  .rating-chart__year > span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { .rating-chart__bar { transition: none; } }

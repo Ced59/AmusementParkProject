@@ -108,7 +108,7 @@ internal static class PassportStatisticsResultFactory
                 ResolveName(parkNames, item.ParkId))).ToArray());
     }
 
-    private static string? ResolveName(
+    internal static string? ResolveName(
         IReadOnlyDictionary<string, string?>? names,
         string id)
     {
@@ -144,7 +144,7 @@ internal static class PassportStatisticsResultFactory
                 ToResult(experience.VisitDate));
     }
 
-    private static PassportStatisticsSummaryResult ToResult(
+    internal static PassportStatisticsSummaryResult ToResult(
         PassportStatisticsSummary summary)
     {
         return new PassportStatisticsSummaryResult(

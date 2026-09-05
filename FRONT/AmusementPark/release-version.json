@@ -1,6 +1,20 @@
 {
-  "version": "5.0.36",
+  "version": "5.0.37",
   "history": [
+    {
+      "version": "5.0.37",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Le passeport propose maintenant un bilan global illustré et filtrable.",
+        "en": "The passport now offers an illustrated, filterable global overview.",
+        "de": "Der Besuchspass bietet jetzt eine bebilderte, filterbare Gesamtübersicht.",
+        "nl": "Het paspoort biedt nu een geïllustreerd en filterbaar totaaloverzicht.",
+        "it": "Il passaporto offre ora un riepilogo globale illustrato e filtrabile.",
+        "es": "El pasaporte ofrece ahora un resumen global ilustrado y filtrable.",
+        "pl": "Paszport oferuje teraz obrazowe i filtrowalne podsumowanie ogólne.",
+        "pt": "O passaporte oferece agora um resumo global ilustrado e filtrável."
+      }
+    },
     {
       "version": "5.0.36",
       "releasedAt": "2026-09-05",

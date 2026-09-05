@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "As minhas estatísticas" } },
+    "globalStatistics": {
+      "kicker": "Resumo do passaporte", "title": "As tuas estatísticas globais", "description": "Explora visitas e voltas com referências claras, sem misturar o teu histórico privado com as classificações da comunidade.",
+      "actions": { "back": "Voltar ao passaporte", "retry": "Tentar novamente", "clearFilters": "Limpar filtros" },
+      "loading": { "title": "A calcular o teu resumo", "description": "As tuas estatísticas privadas estão a ser preparadas." },
+      "errors": { "title": "Não foi possível carregar o resumo", "invalidFilter": "Este filtro já não está disponível. Limpa-o para veres todo o passaporte.", "load": "Não foi possível carregar as tuas estatísticas. Tenta novamente dentro de instantes." },
+      "filters": { "title": "Ajustar o resumo", "description": "Os filtros são guardados apenas durante esta sessão.", "year": "Ano", "park": "Parque", "allYears": "Todos os anos", "allParks": "Todos os parques" },
+      "unavailablePark": "Parque indisponível", "unavailableItem": "Atração indisponível",
+      "empty": { "title": "Sem dados para este resumo", "description": "Adiciona uma visita para veres as primeiras estatísticas.", "filtered": "Nenhuma visita corresponde a estes filtros. Experimenta outro parque ou ano." },
+      "cards": { "parkCoverage": "Visitas avaliadas", "rideCoverage": "Voltas avaliadas" },
+      "charts": { "legend": "Legenda do gráfico", "empty": "Ainda não há dados suficientes para este gráfico.", "target": "Referência", "year": "Ano", "recordedRides": "Voltas registadas", "outcomes": "Voltas" },
+      "activity": { "title": "A tua atividade ao longo do tempo", "description": "Compara visitas e voltas registadas em cada ano.", "denominator": "Cada visita pertence ao ano indicado, mesmo com uma data aproximada. Todos os resultados das voltas são contados." },
+      "parks": { "title": "Os parques que mais visitaste", "description": "Os parques são ordenados primeiro por visitas e depois por voltas.", "denominator": "As visitas arquivadas são excluídas. As voltas incluem todos os resultados das visitas apresentadas." },
+      "items": { "title": "As atrações em que deste mais voltas", "description": "Descobre as atrações onde completaste mais voltas.", "denominator": "Só as voltas marcadas como efetuadas entram nesta classificação pessoal." },
+      "outcomes": { "denominator": "Cada volta registada pertence a um único resultado; a soma corresponde ao total apresentado." },
+      "rating": { "title": "Evolução das tuas avaliações", "description": "As médias anuais de visitas e voltas permanecem separadas.", "park": "Visitas", "rides": "Voltas", "denominator": "Cada média usa apenas as avaliações brutas disponíveis nesse ano. A ausência de avaliação fica vazia e nunca é substituída por zero.", "empty": "É necessária pelo menos uma avaliação de visita ou volta para mostrar esta evolução.", "parkAverage": "Média das visitas / 5", "ratedVisits": "Visitas avaliadas", "rideAverage": "Média das voltas / 5", "ratedRides": "Voltas avaliadas" }
+    }
+  }
+}

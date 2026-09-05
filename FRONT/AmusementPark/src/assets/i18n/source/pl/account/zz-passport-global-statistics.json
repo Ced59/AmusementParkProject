@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "Moje statystyki" } },
+    "globalStatistics": {
+      "kicker": "Podsumowanie paszportu", "title": "Twoje statystyki ogólne", "description": "Przeglądaj wizyty i przejazdy z czytelnymi punktami odniesienia, bez łączenia prywatnej historii z rankingami społeczności.",
+      "actions": { "back": "Wróć do paszportu", "retry": "Spróbuj ponownie", "clearFilters": "Wyczyść filtry" },
+      "loading": { "title": "Obliczamy podsumowanie", "description": "Przygotowujemy Twoje prywatne statystyki." },
+      "errors": { "title": "Nie udało się wczytać podsumowania", "invalidFilter": "Ten filtr nie jest już dostępny. Wyczyść go, aby zobaczyć cały paszport.", "load": "Nie udało się wczytać statystyk. Spróbuj ponownie za chwilę." },
+      "filters": { "title": "Doprecyzuj podsumowanie", "description": "Filtry są zapamiętywane tylko w tej sesji.", "year": "Rok", "park": "Park", "allYears": "Wszystkie lata", "allParks": "Wszystkie parki" },
+      "unavailablePark": "Niedostępny park", "unavailableItem": "Niedostępna atrakcja",
+      "empty": { "title": "Brak danych do tego podsumowania", "description": "Dodaj wizytę, aby zobaczyć pierwsze statystyki.", "filtered": "Żadna wizyta nie pasuje do tych filtrów. Wybierz inny park lub rok." },
+      "cards": { "parkCoverage": "Ocenione wizyty", "rideCoverage": "Ocenione przejazdy" },
+      "charts": { "legend": "Legenda wykresu", "empty": "Nie ma jeszcze wystarczających danych do tego wykresu.", "target": "Pozycja", "year": "Rok", "recordedRides": "Zarejestrowane przejazdy", "outcomes": "Przejazdy" },
+      "activity": { "title": "Twoja aktywność w czasie", "description": "Porównaj liczbę wizyt i przejazdów w kolejnych latach.", "denominator": "Każda wizyta należy do podanego roku, nawet przy przybliżonej dacie. Liczą się wszystkie wyniki przejazdów." },
+      "parks": { "title": "Najczęściej odwiedzane parki", "description": "Parki są uporządkowane najpierw według wizyt, a potem przejazdów.", "denominator": "Zarchiwizowane wizyty są wykluczone. Przejazdy obejmują wszystkie wyniki w pokazanych wizytach." },
+      "items": { "title": "Najczęściej odwiedzane atrakcje", "description": "Sprawdź, na których atrakcjach ukończyłeś najwięcej przejazdów.", "denominator": "W tym osobistym rankingu liczą się tylko przejazdy oznaczone jako ukończone." },
+      "outcomes": { "denominator": "Każdy przejazd ma jeden wynik; ich suma odpowiada wyświetlonej liczbie całkowitej." },
+      "rating": { "title": "Zmiany Twoich ocen", "description": "Roczne średnie wizyt i przejazdów pozostają rozdzielone.", "park": "Wizyty", "rides": "Przejazdy", "denominator": "Każda średnia korzysta wyłącznie z surowych ocen dostępnych w danym roku. Brak oceny pozostaje pusty i nigdy nie jest zastępowany zerem.", "empty": "Do pokazania zmian potrzebna jest co najmniej jedna ocena wizyty lub przejazdu.", "parkAverage": "Średnia wizyt / 5", "ratedVisits": "Ocenione wizyty", "rideAverage": "Średnia przejazdów / 5", "ratedRides": "Ocenione przejazdy" }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import {
+  PassportGlobalStatistics,
   PassportItemStatistics,
   PassportParkStatistics,
   PassportYearStatistics
@@ -13,6 +14,18 @@ import { PASSPORT_STATISTICS_API_ENDPOINTS } from './passport-statistics-api-end
 @Injectable({ providedIn: 'root' })
 export class PassportStatisticsApiService {
   constructor(private readonly http: HttpClient) {
+  }
+
+  getGlobalStatistics(year: number | null, parkId: string | null): Observable<PassportGlobalStatistics> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_STATISTICS_API_ENDPOINTS.global}`;
+    const params: Record<string, string> = {};
+    if (year !== null) {
+      params['year'] = String(year);
+    }
+    if (parkId) {
+      params['parkId'] = parkId;
+    }
+    return this.http.get<PassportGlobalStatistics>(url, { params, transferCache: false });
   }
 
   getItemStatistics(parkItemId: string): Observable<PassportItemStatistics> {

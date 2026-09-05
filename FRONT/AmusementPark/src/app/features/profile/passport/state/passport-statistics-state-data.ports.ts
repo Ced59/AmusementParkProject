@@ -4,7 +4,7 @@ import { PassportStatisticsApiService } from '@data-access/passport/passport-sta
 
 export interface PassportStatisticsApiPort extends Pick<
   PassportStatisticsApiService,
-  'getItemStatistics' | 'getParkStatistics' | 'getYearStatistics'
+  'getGlobalStatistics' | 'getItemStatistics' | 'getParkStatistics' | 'getYearStatistics'
 > {
 }
 

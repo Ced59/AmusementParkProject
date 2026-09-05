@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "My statistics" } },
+    "globalStatistics": {
+      "kicker": "Passport overview", "title": "Your global statistics", "description": "Explore your visits and rides with clear reference points, without mixing your private history with community rankings.",
+      "actions": { "back": "Back to passport", "retry": "Try again", "clearFilters": "Clear filters" },
+      "loading": { "title": "Building your overview", "description": "Your private statistics are being prepared." },
+      "errors": { "title": "The overview could not load", "invalidFilter": "This filter is no longer available. Clear it to see your whole passport.", "load": "Your statistics could not be loaded. Try again in a moment." },
+      "filters": { "title": "Refine the overview", "description": "Filters are remembered only for this session.", "year": "Year", "park": "Park", "allYears": "All years", "allParks": "All parks" },
+      "unavailablePark": "Unavailable park", "unavailableItem": "Unavailable attraction",
+      "empty": { "title": "No data for this overview", "description": "Add a visit to reveal your first statistics.", "filtered": "No visit matches these filters. Try another park or year." },
+      "cards": { "parkCoverage": "Rated visits", "rideCoverage": "Rated rides" },
+      "charts": { "legend": "Chart legend", "empty": "There is not enough data for this chart yet.", "target": "Reference", "year": "Year", "recordedRides": "Recorded rides", "outcomes": "Rides" },
+      "activity": { "title": "Your activity over time", "description": "Compare recorded visits and rides for each year.", "denominator": "Each visit belongs to its entered year, even when the date is approximate. Every ride outcome is counted." },
+      "parks": { "title": "Your most visited parks", "description": "Parks are ordered first by visit count, then by ride count.", "denominator": "Archived visits are excluded. Rides include every outcome recorded in the displayed visits." },
+      "items": { "title": "Your most ridden attractions", "description": "See the attractions on which you completed the most rides.", "denominator": "Only rides marked as completed are included in this personal ranking." },
+      "outcomes": { "denominator": "Each recorded ride belongs to one outcome category; their sum matches the displayed total." },
+      "rating": { "title": "How your ratings evolved", "description": "Yearly park and ride averages remain separate.", "park": "Visits", "rides": "Rides", "denominator": "Each average uses only raw ratings available for that year. Missing ratings remain empty and are never replaced with zero.", "empty": "At least one visit or ride rating is needed to show this evolution.", "parkAverage": "Visit average / 5", "ratedVisits": "Rated visits", "rideAverage": "Ride average / 5", "ratedRides": "Rated rides" }
+    }
+  }
+}

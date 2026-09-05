@@ -1,0 +1,71 @@
+<section class="passport-chart" [attr.aria-labelledby]="titleKey + '-title'">
+  <header>
+    <div>
+      <h2 [id]="titleKey + '-title'">{{ titleKey | translate }}</h2>
+      <p>{{ descriptionKey | translate }}</p>
+    </div>
+    <div class="passport-chart__legend" [attr.aria-label]="'passport.globalStatistics.charts.legend' | translate">
+      <span><i class="passport-chart__swatch passport-chart__swatch--primary" aria-hidden="true"></i>{{ primaryLegendKey | translate }}</span>
+      @if (secondaryLegendKey) {
+        <span><i class="passport-chart__swatch passport-chart__swatch--secondary" aria-hidden="true"></i>{{ secondaryLegendKey | translate }}</span>
+      }
+    </div>
+  </header>
+
+  @if (denominatorKey) {
+    <p class="passport-chart__denominator" role="note">
+      <i class="pi pi-info-circle" aria-hidden="true"></i>{{ denominatorKey | translate }}
+    </p>
+  }
+
+  @if (rows.length === 0) {
+    <p class="passport-chart__empty">{{ emptyKey | translate }}</p>
+  } @else {
+    <div class="passport-chart__visual" aria-hidden="true">
+      @for (row of rows; track row.id) {
+        <div class="passport-chart__visual-row">
+          <div class="passport-chart__label">
+            <strong>{{ row.label || (row.fallbackLabelKey! | translate) }}</strong>
+            @if (row.detail) { <small>{{ row.detail }}</small> }
+          </div>
+          <div class="passport-chart__bars">
+            @if (row.primaryValue > 0) {
+              <span class="passport-chart__bar passport-chart__bar--primary" [style.width.%]="width(row.primaryValue)"></span>
+            }
+            @if (row.secondaryValue !== undefined && row.secondaryValue > 0) {
+              <span class="passport-chart__bar passport-chart__bar--secondary" [style.width.%]="width(row.secondaryValue)"></span>
+            }
+          </div>
+          <span class="passport-chart__values">
+            <strong>{{ row.primaryValue }}</strong>
+            @if (row.secondaryValue !== undefined) { <small>{{ row.secondaryValue }}</small> }
+          </span>
+        </div>
+      }
+    </div>
+
+    <div class="passport-chart__table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{{ 'passport.globalStatistics.charts.target' | translate }}</th>
+            <th scope="col">{{ primaryLegendKey | translate }}</th>
+            @if (secondaryLegendKey) { <th scope="col">{{ secondaryLegendKey | translate }}</th> }
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows; track row.id) {
+            <tr>
+              <th scope="row">
+                {{ row.label || (row.fallbackLabelKey! | translate) }}
+                @if (row.detail) { <small>{{ row.detail }}</small> }
+              </th>
+              <td>{{ row.primaryValue }}</td>
+              @if (secondaryLegendKey) { <td>{{ row.secondaryValue ?? 0 }}</td> }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

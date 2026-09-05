@@ -1,0 +1,107 @@
+<article class="passport-global-statistics">
+  <header class="passport-global-statistics__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <button appUiButton="ghost" type="button" class="passport-global-statistics__back" (click)="backToPassport()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'passport.globalStatistics.actions.back' | translate }}</span>
+    </button>
+    <app-ui-kicker tone="sky" iconClass="pi pi-chart-bar">{{ 'passport.globalStatistics.kicker' | translate }}</app-ui-kicker>
+    <div class="passport-global-statistics__heading">
+      <div>
+        <h1>{{ 'passport.globalStatistics.title' | translate }}</h1>
+        <p>{{ 'passport.globalStatistics.description' | translate }}</p>
+      </div>
+      <app-ui-chip tone="primary" iconClass="pi pi-lock">{{ 'passport.statistics.private' | translate }}</app-ui-chip>
+    </div>
+  </header>
+
+  @if (facade.loading() && !facade.statistics()) {
+    <app-page-state state="loading" [loadingTitleKey]="'passport.globalStatistics.loading.title'" [loadingMessageKey]="'passport.globalStatistics.loading.description'"></app-page-state>
+  } @else if (facade.errorKey() && !facade.statistics()) {
+    <section class="passport-global-statistics__state" appUiSurface="panel" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h2>{{ 'passport.globalStatistics.errors.title' | translate }}</h2>
+      <p>{{ facade.errorKey()! | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="facade.retry()">{{ 'passport.globalStatistics.actions.retry' | translate }}</button>
+    </section>
+  } @else if (facade.statistics(); as statistics) {
+    <section class="passport-global-statistics__filters" appUiSurface="panel" aria-labelledby="passport-global-filters-title">
+      <div>
+        <h2 id="passport-global-filters-title">{{ 'passport.globalStatistics.filters.title' | translate }}</h2>
+        <p>{{ 'passport.globalStatistics.filters.description' | translate }}</p>
+      </div>
+      <label>
+        <span>{{ 'passport.globalStatistics.filters.year' | translate }}</span>
+        <select [value]="facade.filter().year ?? ''" (change)="onYearChange($any($event.target).value)">
+          <option value="">{{ 'passport.globalStatistics.filters.allYears' | translate }}</option>
+          @for (year of statistics.availableYears; track year) { <option [value]="year">{{ year }}</option> }
+        </select>
+      </label>
+      <label>
+        <span>{{ 'passport.globalStatistics.filters.park' | translate }}</span>
+        <select [value]="selectedParkIndex(statistics)" (change)="onParkChange($any($event.target).value, statistics.availableParks)">
+          <option value="">{{ 'passport.globalStatistics.filters.allParks' | translate }}</option>
+          @for (park of statistics.availableParks; track park.parkId; let index = $index) {
+            <option [value]="index">{{ park.parkName || ('passport.globalStatistics.unavailablePark' | translate) }}</option>
+          }
+        </select>
+      </label>
+      @if (hasFilters()) {
+        <button appUiButton="ghost" type="button" (click)="facade.clearFilters()">
+          <i class="pi pi-filter-slash" aria-hidden="true"></i>{{ 'passport.globalStatistics.actions.clearFilters' | translate }}
+        </button>
+      }
+      @if (facade.loading()) { <i class="pi pi-spin pi-spinner passport-global-statistics__filter-loading" aria-hidden="true"></i> }
+    </section>
+
+    @if (facade.errorKey()) {
+      <p class="passport-global-statistics__inline-error" role="alert">{{ facade.errorKey()! | translate }}</p>
+    }
+
+    @if (statistics.summary.visitCount === 0) {
+      <section class="passport-global-statistics__state" appUiSurface="panel">
+        <i class="pi pi-chart-bar" aria-hidden="true"></i>
+        <h2>{{ 'passport.globalStatistics.empty.title' | translate }}</h2>
+        <p>{{ (hasFilters() ? 'passport.globalStatistics.empty.filtered' : 'passport.globalStatistics.empty.description') | translate }}</p>
+      </section>
+    } @else {
+      <section class="passport-global-statistics__cards" [attr.aria-label]="'passport.statistics.summaryLabel' | translate">
+        <article appUiSurface="panel"><span>{{ 'passport.statistics.cards.visits' | translate }}</span><strong>{{ statistics.summary.visitCount }}</strong></article>
+        <article appUiSurface="panel"><span>{{ 'passport.statistics.cards.parks' | translate }}</span><strong>{{ statistics.parkCount }}</strong></article>
+        <article appUiSurface="panel"><span>{{ 'passport.globalStatistics.charts.recordedRides' | translate }}</span><strong>{{ statistics.summary.rideOutcomes.recordedOutcomeCount }}</strong></article>
+        <article appUiSurface="panel"><span>{{ 'passport.statistics.cards.distinctItems' | translate }}</span><strong>{{ statistics.summary.distinctCompletedItemCount }}</strong></article>
+        <article appUiSurface="panel"><span>{{ 'passport.globalStatistics.cards.parkCoverage' | translate }}</span><strong>{{ coveragePercent(statistics.summary.parkRatingCoverage.rate) }}</strong><small>{{ statistics.summary.parkRatingCoverage.ratedCount }} / {{ statistics.summary.parkRatingCoverage.totalCount }}</small></article>
+        <article appUiSurface="panel"><span>{{ 'passport.globalStatistics.cards.rideCoverage' | translate }}</span><strong>{{ coveragePercent(statistics.summary.rideRatingCoverage.rate) }}</strong><small>{{ statistics.summary.rideRatingCoverage.ratedCount }} / {{ statistics.summary.rideRatingCoverage.totalCount }}</small></article>
+      </section>
+
+      <section class="passport-global-statistics__panel" appUiSurface="panel">
+        <app-passport-global-bar-chart
+          [titleKey]="'passport.globalStatistics.activity.title'"
+          [descriptionKey]="'passport.globalStatistics.activity.description'"
+          [primaryLegendKey]="'passport.statistics.cards.visits'"
+          [secondaryLegendKey]="'passport.globalStatistics.charts.recordedRides'"
+          [denominatorKey]="'passport.globalStatistics.activity.denominator'"
+          [rows]="activityRows(statistics)">
+        </app-passport-global-bar-chart>
+      </section>
+
+      <div class="passport-global-statistics__grid">
+        <section class="passport-global-statistics__panel" appUiSurface="panel">
+          <app-passport-global-bar-chart [titleKey]="'passport.globalStatistics.parks.title'" [descriptionKey]="'passport.globalStatistics.parks.description'" [primaryLegendKey]="'passport.statistics.cards.visits'" [secondaryLegendKey]="'passport.globalStatistics.charts.recordedRides'" [denominatorKey]="'passport.globalStatistics.parks.denominator'" [rows]="parkRows(statistics)"></app-passport-global-bar-chart>
+        </section>
+        <section class="passport-global-statistics__panel" appUiSurface="panel">
+          <app-passport-global-bar-chart [titleKey]="'passport.globalStatistics.items.title'" [descriptionKey]="'passport.globalStatistics.items.description'" [primaryLegendKey]="'passport.statistics.cards.completedRides'" [denominatorKey]="'passport.globalStatistics.items.denominator'" [rows]="itemRows(statistics)"></app-passport-global-bar-chart>
+        </section>
+      </div>
+
+      <section class="passport-global-statistics__panel" appUiSurface="panel">
+        <app-passport-global-bar-chart [titleKey]="'passport.statistics.outcomes.title'" [descriptionKey]="'passport.statistics.outcomes.description'" [primaryLegendKey]="'passport.globalStatistics.charts.outcomes'" [denominatorKey]="'passport.globalStatistics.outcomes.denominator'" [rows]="outcomeRows(statistics)"></app-passport-global-bar-chart>
+      </section>
+
+      <section class="passport-global-statistics__panel" appUiSurface="panel">
+        <app-passport-rating-evolution-chart [points]="statistics.ratingEvolution"></app-passport-rating-evolution-chart>
+      </section>
+
+      <p class="passport-global-statistics__privacy" role="note"><i class="pi pi-shield" aria-hidden="true"></i>{{ 'passport.statistics.privacyNotice' | translate }}</p>
+    }
+  }
+</article>

@@ -13,6 +13,10 @@
     </div>
 
     <div class="passport-overview__hero-actions">
+      <button appUiButton="soft" type="button" (click)="openStatistics()">
+        <i class="pi pi-chart-bar" aria-hidden="true"></i>
+        <span>{{ 'passport.overview.actions.openStatistics' | translate }}</span>
+      </button>
       <button appUiButton="primary" type="button" (click)="openQuickCreate()">
         <i class="pi pi-plus" aria-hidden="true"></i>
         <span>{{ 'passport.overview.actions.addVisit' | translate }}</span>

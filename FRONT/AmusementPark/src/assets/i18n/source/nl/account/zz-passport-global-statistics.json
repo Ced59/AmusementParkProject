@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "Mijn statistieken" } },
+    "globalStatistics": {
+      "kicker": "Paspoortoverzicht", "title": "Jouw algemene statistieken", "description": "Verken je bezoeken en ritten met duidelijke cijfers, zonder je privéhistoriek te mengen met ranglijsten van de community.",
+      "actions": { "back": "Terug naar paspoort", "retry": "Opnieuw proberen", "clearFilters": "Filters wissen" },
+      "loading": { "title": "Je overzicht wordt berekend", "description": "Je privéstatistieken worden voorbereid." },
+      "errors": { "title": "Het overzicht kon niet laden", "invalidFilter": "Deze filter is niet meer beschikbaar. Wis hem om je hele paspoort te zien.", "load": "Je statistieken konden niet worden geladen. Probeer het zo opnieuw." },
+      "filters": { "title": "Overzicht verfijnen", "description": "Filters worden alleen tijdens deze sessie onthouden.", "year": "Jaar", "park": "Park", "allYears": "Alle jaren", "allParks": "Alle parken" },
+      "unavailablePark": "Niet beschikbaar park", "unavailableItem": "Niet beschikbare attractie",
+      "empty": { "title": "Geen gegevens voor dit overzicht", "description": "Voeg een bezoek toe om je eerste statistieken te tonen.", "filtered": "Geen bezoek past bij deze filters. Probeer een ander park of jaar." },
+      "cards": { "parkCoverage": "Beoordeelde bezoeken", "rideCoverage": "Beoordeelde ritten" },
+      "charts": { "legend": "Grafieklegenda", "empty": "Er zijn nog niet genoeg gegevens voor deze grafiek.", "target": "Referentie", "year": "Jaar", "recordedRides": "Geregistreerde ritten", "outcomes": "Ritten" },
+      "activity": { "title": "Jouw activiteit door de tijd", "description": "Vergelijk geregistreerde bezoeken en ritten per jaar.", "denominator": "Elk bezoek hoort bij het ingevoerde jaar, ook bij een geschatte datum. Alle ritresultaten tellen mee." },
+      "parks": { "title": "Jouw meest bezochte parken", "description": "Parken worden eerst op bezoeken en daarna op ritten gerangschikt.", "denominator": "Gearchiveerde bezoeken tellen niet mee. Ritten omvatten alle resultaten van de getoonde bezoeken." },
+      "items": { "title": "Jouw meest bereden attracties", "description": "Bekijk op welke attracties je de meeste ritten voltooide.", "denominator": "Alleen als voltooid gemarkeerde ritten tellen mee voor deze persoonlijke ranglijst." },
+      "outcomes": { "denominator": "Elke geregistreerde rit hoort bij één resultaat; de som ervan komt overeen met het getoonde totaal." },
+      "rating": { "title": "Ontwikkeling van je beoordelingen", "description": "Jaarlijkse gemiddelden voor bezoeken en ritten blijven gescheiden.", "park": "Bezoeken", "rides": "Ritten", "denominator": "Elk gemiddelde gebruikt alleen beschikbare ruwe beoordelingen van dat jaar. Ontbrekende beoordelingen blijven leeg en worden nooit door nul vervangen.", "empty": "Er is minstens één bezoek- of ritbeoordeling nodig om deze ontwikkeling te tonen.", "parkAverage": "Bezoeksgemiddelde / 5", "ratedVisits": "Beoordeelde bezoeken", "rideAverage": "Ritgemiddelde / 5", "ratedRides": "Beoordeelde ritten" }
+    }
+  }
+}

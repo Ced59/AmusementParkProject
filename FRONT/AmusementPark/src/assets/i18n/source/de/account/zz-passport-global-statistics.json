@@ -1,0 +1,21 @@
+{
+  "passport": {
+    "overview": { "actions": { "openStatistics": "Meine Statistiken" } },
+    "globalStatistics": {
+      "kicker": "Übersicht des Besuchspasses", "title": "Deine Gesamtstatistiken", "description": "Erkunde deine Besuche und Fahrten mit klaren Kennzahlen, ohne deine private Historie mit Community-Ranglisten zu vermischen.",
+      "actions": { "back": "Zurück zum Besuchspass", "retry": "Erneut versuchen", "clearFilters": "Filter löschen" },
+      "loading": { "title": "Deine Übersicht wird berechnet", "description": "Deine privaten Statistiken werden vorbereitet." },
+      "errors": { "title": "Die Übersicht konnte nicht geladen werden", "invalidFilter": "Dieser Filter ist nicht mehr verfügbar. Lösche ihn, um den ganzen Besuchspass zu sehen.", "load": "Deine Statistiken konnten nicht geladen werden. Versuche es gleich noch einmal." },
+      "filters": { "title": "Übersicht eingrenzen", "description": "Filter werden nur für diese Sitzung gespeichert.", "year": "Jahr", "park": "Park", "allYears": "Alle Jahre", "allParks": "Alle Parks" },
+      "unavailablePark": "Nicht verfügbarer Park", "unavailableItem": "Nicht verfügbare Attraktion",
+      "empty": { "title": "Keine Daten für diese Übersicht", "description": "Füge einen Besuch hinzu, um deine ersten Statistiken zu sehen.", "filtered": "Kein Besuch entspricht diesen Filtern. Probiere einen anderen Park oder ein anderes Jahr." },
+      "cards": { "parkCoverage": "Bewertete Besuche", "rideCoverage": "Bewertete Fahrten" },
+      "charts": { "legend": "Diagrammlegende", "empty": "Für dieses Diagramm gibt es noch nicht genug Daten.", "target": "Bezug", "year": "Jahr", "recordedRides": "Erfasste Fahrten", "outcomes": "Fahrten" },
+      "activity": { "title": "Deine Aktivität im Zeitverlauf", "description": "Vergleiche erfasste Besuche und Fahrten pro Jahr.", "denominator": "Jeder Besuch zählt zum eingegebenen Jahr, auch bei einem ungefähren Datum. Alle Fahrtergebnisse werden gezählt." },
+      "parks": { "title": "Deine meistbesuchten Parks", "description": "Sortiert wird zuerst nach Besuchen, dann nach Fahrten.", "denominator": "Archivierte Besuche sind ausgeschlossen. Fahrten umfassen alle Ergebnisse der angezeigten Besuche." },
+      "items": { "title": "Deine meistgefahrenen Attraktionen", "description": "Sieh, auf welchen Attraktionen du die meisten Fahrten abgeschlossen hast.", "denominator": "Nur als abgeschlossen markierte Fahrten zählen zu dieser persönlichen Rangliste." },
+      "outcomes": { "denominator": "Jede erfasste Fahrt gehört zu genau einem Ergebnis; ihre Summe entspricht der Gesamtzahl." },
+      "rating": { "title": "Entwicklung deiner Bewertungen", "description": "Jährliche Durchschnittswerte für Parks und Fahrten bleiben getrennt.", "park": "Besuche", "rides": "Fahrten", "denominator": "Jeder Durchschnitt verwendet nur vorhandene Rohbewertungen des Jahres. Fehlende Bewertungen bleiben leer und werden nie durch null ersetzt.", "empty": "Mindestens eine Besuchs- oder Fahrtbewertung ist für diese Entwicklung nötig.", "parkAverage": "Besuchsdurchschnitt / 5", "ratedVisits": "Bewertete Besuche", "rideAverage": "Fahrtdurchschnitt / 5", "ratedRides": "Bewertete Fahrten" }
+    }
+  }
+}

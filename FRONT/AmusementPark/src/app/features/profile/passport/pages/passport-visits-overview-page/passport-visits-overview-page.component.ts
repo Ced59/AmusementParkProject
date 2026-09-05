@@ -56,6 +56,10 @@ export class PassportVisitsOverviewPageComponent implements OnInit {
     void this.router.navigate(['/', this.currentLanguage(), 'profile']);
   }
 
+  protected openStatistics(): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'statistics']);
+  }
+
   protected openQuickCreate(): void {
     this.quickCreateVisible.set(true);
   }
