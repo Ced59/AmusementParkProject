@@ -26,6 +26,7 @@ public static class UseCaseCatalog
             ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
             ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
             ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetRatingMethodology", "ListRatingMethodologies", "GetCurrentRatingMethodology", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings", "GetParkItemRatingRankings", "GetUserParkRatingRankings", "GetUserParkItemRatingRankings", "GetUserRankingShareSettings", "SetUserRankingShareVisibility", "GetSharedUserRankingProfile", "GetSharedUserParkRatingRankings", "GetSharedUserParkItemRatingRankings", "GetSharedUserRankingPreview" },
+            ["Sharing"] = new[] { "PreviewSharePublication" },
             ["TechnicalPages"] = new[] { "GetTechnicalPages", "GetTechnicalPageById", "GetTechnicalPageBySlug", "CreateTechnicalPage", "UpdateTechnicalPage", "UpsertTechnicalPagesJson" },
             ["History"] = new[] { "GetParkHistoryTimeline", "GetParkItemHistoryTimeline", "GetHistoryArticle", "GetHistoryEventsPage", "UpsertHistoryEvent", "DeleteHistoryEvent" },
             ["Comments"] = new[] { "CreateComment", "GetCommentSummary", "GetCommentThread" },

@@ -1,6 +1,20 @@
 {
-  "version": "5.2.3",
+  "version": "5.2.4",
   "history": [
+    {
+      "version": "5.2.4",
+      "releasedAt": "2026-09-06",
+      "labels": {
+        "fr": "Les aperçus de partage protègent mieux tes informations personnelles.",
+        "en": "Share previews now protect your personal information more effectively.",
+        "de": "Freigabevorschauen schützen deine persönlichen Daten jetzt noch besser.",
+        "nl": "Deelvoorbeelden beschermen je persoonlijke gegevens nu nog beter.",
+        "it": "Le anteprime di condivisione proteggono meglio i tuoi dati personali.",
+        "es": "Las vistas previas al compartir protegen mejor tus datos personales.",
+        "pl": "Podglądy udostępniania lepiej chronią teraz Twoje dane osobowe.",
+        "pt": "As pré-visualizações de partilha protegem melhor os teus dados pessoais."
+      }
+    },
     {
       "version": "5.2.3",
       "releasedAt": "2026-09-05",

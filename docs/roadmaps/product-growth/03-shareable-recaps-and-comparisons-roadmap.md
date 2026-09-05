@@ -69,6 +69,28 @@ Le nouveau stockage n'est pas encore branché sur une route publique et l'ancien
 partage de classement reste seul actif jusqu'à sa migration de remplacement
 `SHARE-04A`. Il n'existe donc ni double écriture ni double moteur actif.
 
+### État de `SHARE-04` au 6 septembre 2026
+
+L'API privée d'aperçu et son premier constructeur spécialisé de classement personnel
+sont livrés en version 5.2.4. Le serveur applique la policy en liste blanche avant
+de lire les notes : un aperçu sans `GlobalRatings` ne charge aucune note et le DTO
+public ne contient ni identifiant utilisateur, ni identifiant de note, de parc ou
+d'attraction, ni commentaire privé, ni email.
+
+Deux révisions durables protègent l'aperçu : l'une suit les notes et le pseudonyme
+public du propriétaire, l'autre le catalogue public qui fournit les noms et la
+visibilité des cibles. L'identité publique est aussi relue après la construction
+pour couvrir l'avatar et l'état du compte quelle que soit leur voie d'écriture.
+Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
+révisions et l'identité restent stables. Un lease abandonné expire et avance
+prudemment la révision au lieu de laisser passer un contenu incertain. Les détails
+et preuves sont consignés dans
+[`product-growth-share-04-safe-preview-2026-09-06.md`](../../architecture/product-growth-share-04-safe-preview-2026-09-06.md).
+
+Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
+classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et
+conservera les liens existants sans faire cohabiter deux moteurs actifs.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

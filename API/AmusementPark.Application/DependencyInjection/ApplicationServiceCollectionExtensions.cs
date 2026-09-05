@@ -20,6 +20,8 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Services;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -110,6 +112,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IRatingRankingSourceChangeCoordinator>(provider =>
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
         services.AddScoped<UserRankingShareAccessResolver>();
+        services.AddScoped<ISharePublicationPreviewBuilder, PersonalRankingSharePreviewBuilder>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();

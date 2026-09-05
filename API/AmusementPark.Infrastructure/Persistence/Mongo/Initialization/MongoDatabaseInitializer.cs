@@ -102,6 +102,10 @@ public sealed partial class MongoDatabaseInitializer
             SharePublicationMongoDefinitions.BuildIndexes(),
             cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(
+            this.settings.ShareSourceRevisionsCollectionName,
+            cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);
 

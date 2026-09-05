@@ -17,6 +17,7 @@ public sealed class SharePublicationRegistrationTests
         MongoDbSettings settings = new MongoDbSettings();
 
         Assert.Equal("share-publications", settings.SharePublicationsCollectionName);
+        Assert.Equal("share-source-revisions", settings.ShareSourceRevisionsCollectionName);
     }
 
     [Fact]
@@ -32,6 +33,11 @@ public sealed class SharePublicationRegistrationTests
             static service => service.ServiceType == typeof(ISharePublicationRepository));
         Assert.Equal(typeof(SharePublicationRepository), repository.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, repository.Lifetime);
+        ServiceDescriptor sourceRevisionRepository = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IShareSourceRevisionRepository));
+        Assert.Equal(typeof(ShareSourceRevisionRepository), sourceRevisionRepository.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, sourceRevisionRepository.Lifetime);
         ServiceDescriptor tokenFactory = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IShareTokenFactory));
