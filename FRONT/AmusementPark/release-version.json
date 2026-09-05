@@ -1,6 +1,20 @@
 {
-  "version": "5.1.21",
+  "version": "5.1.22",
   "history": [
+    {
+      "version": "5.1.22",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "Amélioration du contraste en mode clair.",
+        "en": "Improved contrast in light mode.",
+        "de": "Verbesserter Kontrast im hellen Modus.",
+        "nl": "Verbeterd contrast in de lichte modus.",
+        "it": "Contrasto migliorato in modalità chiara.",
+        "es": "Contraste mejorado en el modo claro.",
+        "pl": "Lepszy kontrast w trybie jasnym.",
+        "pt": "Contraste melhorado no modo claro."
+      }
+    },
     {
       "version": "5.1.21",
       "releasedAt": "2026-09-05",

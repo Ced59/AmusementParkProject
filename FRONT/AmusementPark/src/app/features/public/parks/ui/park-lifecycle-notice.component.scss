@@ -4,27 +4,29 @@
 
 .park-lifecycle-notice {
   display: flex;
-  gap: 0.9rem;
+  gap: var(--space-3);
   align-items: flex-start;
-  padding: 1rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--color-warning, #f5b942) 45%, transparent);
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--color-warning, #f5b942) 10%, var(--surface-card, #17130f));
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid color-mix(in srgb, var(--app-warning) 45%, var(--app-border));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-warning) 10%, var(--app-surface));
+  color: var(--app-text);
 }
 
 .park-lifecycle-notice i {
   margin-top: 0.15rem;
-  color: var(--color-warning, #f5b942);
+  color: var(--app-warning);
   font-size: 1.2rem;
 }
 
 .park-lifecycle-notice strong {
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
+  color: var(--app-heading);
 }
 
 .park-lifecycle-notice p {
   margin: 0;
-  color: var(--text-color-secondary);
+  color: var(--app-text-muted);
   line-height: 1.55;
 }
