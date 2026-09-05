@@ -40,7 +40,7 @@
         "title": "Medição de audiência Matomo",
         "body1": "O site utiliza uma instância Matomo auto-hospedada acessível em matomo.cedric-caudron.com, com o ID de site 4.",
         "body2": "O Matomo pode medir páginas visitadas, sequências de navegação, fontes de tráfego, tipo de dispositivo e informações técnicas do navegador.",
-        "body3": "Esta integração não adiciona rastreamento publicitário de terceiros. Percursos ligados ao perfil podem ser medidos apenas após consentimento para cookies opcionais, sem enviar conteúdo privado do perfil como eventos analytics."
+          "body3": "Esta integração não adiciona rastreamento publicitário de terceiros. Depois de aceitares os cookies opcionais, as ações do passaporte são medidas apenas através de categorias gerais. Nenhum identificador de membro, visita ou parque, nenhuma data de visita, avaliação ou comentário privado é enviado para o Matomo."
       },
       "cookies": {
         "title": "Cookies e armazenamento local",

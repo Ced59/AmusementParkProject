@@ -156,7 +156,7 @@ public sealed class UserVisitMongoDefinitionsTests
         CreateIndexModel<UserVisitDocument>[] indexes =
             UserVisitMongoDefinitions.BuildIndexes().ToArray();
 
-        Assert.Equal(8, indexes.Length);
+        Assert.Equal(10, indexes.Length);
         AssertIndex(
             indexes[0],
             "idx_user_visits_user_date",
@@ -207,11 +207,25 @@ public sealed class UserVisitMongoDefinitionsTests
         Assert.NotNull(indexes[4].Options.PartialFilterExpression);
         AssertIndex(
             indexes[5],
-            "idx_user_visits_pending_audit",
-            new BsonDocument("pendingAuditEvents.eventId", 1));
-        Assert.NotNull(indexes[5].Options.PartialFilterExpression);
+            "idx_user_visits_beta_created",
+            new BsonDocument("createdAt", 1));
         AssertIndex(
             indexes[6],
+            "idx_user_visits_beta_completed_cohort",
+            new BsonDocument
+            {
+                { "completedAtUtc", 1 },
+                { "userId", 1 },
+                { "_id", 1 },
+            });
+        Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[7],
+            "idx_user_visits_pending_audit",
+            new BsonDocument("pendingAuditEvents.eventId", 1));
+        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
+        AssertIndex(
+            indexes[8],
             "idx_user_visits_pending_purge_schedule",
             new BsonDocument
             {
@@ -219,9 +233,9 @@ public sealed class UserVisitMongoDefinitionsTests
                 { "purgeScheduledForUtc", 1 },
                 { "_id", 1 },
             });
-        Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        Assert.NotNull(indexes[8].Options.PartialFilterExpression);
         AssertIndex(
-            indexes[7],
+            indexes[9],
             "idx_user_visits_pending_export_invalidation",
             new BsonDocument
             {
@@ -229,7 +243,7 @@ public sealed class UserVisitMongoDefinitionsTests
                 { "deletedAtUtc", 1 },
                 { "_id", 1 },
             });
-        Assert.NotNull(indexes[7].Options.PartialFilterExpression);
+        Assert.NotNull(indexes[9].Options.PartialFilterExpression);
         Assert.All(indexes.Take(4), static index => Assert.NotEqual(true, index.Options.Unique));
     }
 

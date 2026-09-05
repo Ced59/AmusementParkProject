@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
+import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import { PassportAnonymousDraftStorePort } from './passport-anonymous-draft-store.ports';
 import { PassportAnonymousDraftsStateFacade } from './passport-anonymous-drafts-state.facade';
@@ -8,7 +9,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
   it('removes a draft from the visible list only after its local deletion succeeds', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
-    const facade: PassportAnonymousDraftsStateFacade = new PassportAnonymousDraftsStateFacade(store, document);
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
 
     await facade.load();
     await facade.delete(draft.id);
@@ -22,7 +23,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
     vi.mocked(store.delete).mockRejectedValueOnce(new Error('IndexedDB unavailable'));
-    const facade: PassportAnonymousDraftsStateFacade = new PassportAnonymousDraftsStateFacade(store, document);
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
 
     await facade.load();
     await facade.delete(draft.id);
@@ -35,7 +36,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
   it('reports unavailable browser storage without attempting to read it', async () => {
     const store: PassportAnonymousDraftStorePort = createStore([]);
     vi.mocked(store.isAvailable).mockReturnValue(false);
-    const facade: PassportAnonymousDraftsStateFacade = new PassportAnonymousDraftsStateFacade(store, document);
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
 
     await facade.load();
 
@@ -54,7 +55,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
       }
     };
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
-    const facade: PassportAnonymousDraftsStateFacade = new PassportAnonymousDraftsStateFacade(store, document);
+    const facade: PassportAnonymousDraftsStateFacade = createFacade(store);
     await facade.load();
 
     await facade.delete(draft.id);
@@ -67,6 +68,11 @@ describe('PassportAnonymousDraftsStateFacade', () => {
     expect(facade.errorKey()).toBe('passport.anonymousDrafts.errors.importLocked');
   });
 });
+
+function createFacade(store: PassportAnonymousDraftStorePort): PassportAnonymousDraftsStateFacade {
+  const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+  return new PassportAnonymousDraftsStateFacade(store, analytics, document);
+}
 
 function createStore(drafts: PassportAnonymousDraft[]): PassportAnonymousDraftStorePort {
   return {

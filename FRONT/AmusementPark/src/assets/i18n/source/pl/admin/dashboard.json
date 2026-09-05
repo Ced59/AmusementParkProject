@@ -16,7 +16,8 @@
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
         "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
-        "ratingRankings": "Diagnozuj, symuluj i przebudowuj rankingi ocen."
+        "ratingRankings": "Diagnozuj, symuluj i przebudowuj rankingi ocen.",
+        "passportBeta": "Za pomocą zagregowanych wskaźników sprawdzaj, czy paszport staje się regularnym nawykiem."
       }
     }
   }

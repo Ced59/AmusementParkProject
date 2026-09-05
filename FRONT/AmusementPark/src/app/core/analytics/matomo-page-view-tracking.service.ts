@@ -5,6 +5,7 @@ import { filter } from 'rxjs/operators';
 
 import { CookieConsentService } from '@core/privacy/cookie-consent.service';
 import { environment } from '../../../environments/environment';
+import { sanitizeMatomoPageViewUrl } from './matomo-page-view-url';
 
 type MatomoQueueCommand = [string, ...unknown[]];
 
@@ -86,12 +87,14 @@ export class MatomoPageViewTrackingService {
 
     this.ensureTrackerLoaded();
 
-    const currentUrl: string = this.document.location.href;
+    const currentUrl: string = sanitizeMatomoPageViewUrl(this.document.location.href);
     if (currentUrl === this.lastTrackedUrl) {
       return;
     }
 
-    const pageTitle: string = this.document.title || 'AmusementPark';
+    const pageTitle: string = new URL(currentUrl).pathname.endsWith('/product/passport')
+      ? 'Passport'
+      : this.document.title || 'AmusementPark';
 
     this.trackWithHttpApi(currentUrl, pageTitle, this.lastTrackedUrl);
 

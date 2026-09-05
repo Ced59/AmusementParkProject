@@ -121,6 +121,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/social-share/pages/admin-social-share-stats/admin-social-share-stats.component').then((m) => m.AdminSocialShareStatsComponent)
           },
           {
+            path: 'passport-beta',
+            loadComponent: () => import('@features/admin/passport-beta/pages/admin-passport-beta/admin-passport-beta.component').then((m) => m.AdminPassportBetaComponent)
+          },
+          {
             path: 'social-publications',
             loadComponent: () => import('@features/admin/social-publishing/pages/admin-social-publishing/admin-social-publishing.component').then((m) => m.AdminSocialPublishingComponent)
           },

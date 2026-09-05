@@ -4,6 +4,8 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
+import { PassportProductEvent } from '@core/analytics/passport-product-event.model';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -111,11 +113,17 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     const api: FakeVisitApi = new FakeVisitApi();
     const auth: FakeAuthService = new FakeAuthService();
     const savedDrafts: PassportAnonymousDraft[] = [];
+    const events: PassportProductEvent[] = [];
     auth.token = null;
     const facade: PassportVisitQuickCreateStateFacade = createFacade(
       api,
       auth,
-      createDraftStore(savedDrafts)
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
     );
 
     facade.createVisit(createDraft(), 'Parc test');
@@ -129,6 +137,44 @@ describe('PassportVisitQuickCreateStateFacade', () => {
     expect(savedDrafts[0].visitOperationId).toBe('operation-1');
     expect(savedDrafts[0].rideOperationId).toBe('operation-3');
     expect(facade.errorKey()).toBeNull();
+    expect(events).toEqual([
+      {
+        type: 'visit_creation_started',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      },
+      {
+        type: 'visit_created',
+        source: 'anonymous-local',
+        datePrecision: 'Day'
+      }
+    ]);
+  });
+
+  it('records the anonymous second-visit signal only after a second local draft exists', async () => {
+    const api: FakeVisitApi = new FakeVisitApi();
+    const auth: FakeAuthService = new FakeAuthService();
+    const savedDrafts: PassportAnonymousDraft[] = [createAnonymousDraft()];
+    const events: PassportProductEvent[] = [];
+    auth.token = null;
+    const facade: PassportVisitQuickCreateStateFacade = createFacade(
+      api,
+      auth,
+      createDraftStore(savedDrafts),
+      {
+        track: (event: PassportProductEvent): void => {
+          events.push(event);
+        }
+      }
+    );
+
+    facade.createVisit(createDraft({ parkId: 'park-2' }), 'Deuxième parc');
+
+    await vi.waitFor((): void => {
+      expect(events.some((event: PassportProductEvent): boolean =>
+        event.type === 'second_visit_recorded')).toBe(true);
+    });
+    expect(savedDrafts).toHaveLength(2);
   });
 
   it('does not call the API for an invalid partial date', () => {
@@ -145,13 +191,15 @@ describe('PassportVisitQuickCreateStateFacade', () => {
 function createFacade(
   api: FakeVisitApi,
   auth: FakeAuthService = new FakeAuthService(),
-  anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore()
+  anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore(),
+  analytics: PassportProductAnalyticsPort = { track: vi.fn() }
 ): PassportVisitQuickCreateStateFacade {
   return new PassportVisitQuickCreateStateFacade(
     api,
     new FakeParksApi(),
     new FakeOperationIds(),
     anonymousDrafts,
+    analytics,
     auth as unknown as AuthService,
     new FakeMessages() as unknown as ToastMessageService,
     new FakeTranslateService() as unknown as TranslateService,
@@ -205,6 +253,27 @@ function createDraft(overrides: Partial<PassportVisitQuickCreateDraft> = {}): Pa
     title: '',
     privateNote: '',
     ...overrides
+  };
+}
+
+function createAnonymousDraft(): PassportAnonymousDraft {
+  return {
+    schemaVersion: 1,
+    id: 'existing-draft',
+    visitOperationId: 'existing-visit-operation',
+    rideOperationId: 'existing-ride-operation',
+    parkName: 'Premier parc',
+    visit: {
+      parkId: 'park-1',
+      date: { year: 2026, month: 8, day: 1, precision: 'Day', isApproximate: false },
+      timeZoneId: 'Europe/Paris',
+      serviceDayConvention: 'VisitStartLocalDate',
+      title: null,
+      privateNote: null
+    },
+    rides: [],
+    createdAtUtc: '2026-08-01T10:00:00.000Z',
+    updatedAtUtc: '2026-08-01T10:00:00.000Z'
   };
 }
 

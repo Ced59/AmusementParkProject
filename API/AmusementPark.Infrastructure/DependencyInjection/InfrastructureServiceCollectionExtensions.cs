@@ -227,6 +227,8 @@ public static class InfrastructureServiceCollectionExtensions
             PassportItemStatisticsSourceReader>();
         services.AddScoped<IPassportScopeStatisticsSourceReader,
             PassportScopeStatisticsSourceReader>();
+        services.AddScoped<IPassportBetaMetricsSource,
+            PassportBetaMetricsSource>();
         services.AddScoped<IGlobalRatingSuggestionSourceReader,
             GlobalRatingSuggestionSourceReader>();
         services.AddScoped<IGlobalRatingSuggestionStateRepository,

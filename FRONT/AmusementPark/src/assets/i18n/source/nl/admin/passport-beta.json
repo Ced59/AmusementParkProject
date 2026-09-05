@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "passportBeta": {
+      "navTitle": "Paspoortbèta",
+      "kicker": "Productvalidatie",
+      "title": "Opvolging van de paspoortbèta",
+      "subtitle": "Meet of het paspoort een nuttige gewoonte wordt zonder bezoeken of persoonlijke voorkeuren bloot te leggen.",
+      "loading": "Paspoortindicatoren laden...",
+      "loadError": "De paspoortindicatoren konden niet worden geladen.",
+      "empty": "Geen paspoortactiviteit in deze periode.",
+      "filters": {
+        "fromUtc": "Van",
+        "toUtc": "Tot"
+      },
+      "decision": {
+        "kicker": "Terugkeersignaal",
+        "description": "Dit kwantitatieve signaal moet nog worden bevestigd met bèta-interviews en gebruiksscenario's voordat de mijlpaal kan worden goedgekeurd."
+      },
+      "signal": {
+        "NotObserved": "Geen terugkeer waargenomen",
+        "Emerging": "Terugkeer in opkomst",
+        "Candidate": "Kandidaatsignaal"
+      },
+      "metrics": {
+        "ariaLabel": "Geaggregeerde indicatoren van de paspoortbèta",
+        "created": "Aangemaakte bezoeken",
+        "completed": "Voltooide bezoeken",
+        "firstUsers": "Leden met één voltooid bezoek",
+        "returningUsers": "Leden met minstens twee voltooide bezoeken",
+        "northStar": "Belangrijkste productindicator"
+      },
+      "chart": {
+        "title": "Dagelijkse voortgang",
+        "subtitle": "Het eerste en tweede gebruik worden berekend op basis van werkelijk voltooide bezoeken.",
+        "completed": "Voltooide bezoeken",
+        "second": "Tweede voltooide bezoek"
+      },
+      "table": {
+        "caption": "Dagelijkse details van voltooide bezoeken en gebruiksmijlpalen",
+        "date": "Datum",
+        "completed": "Voltooid",
+        "first": "Eerste bezoek",
+        "second": "Tweede bezoek"
+      },
+      "privacy": {
+        "title": "Minimale gegevens",
+        "description": "Dit scherm ontvangt alleen totalen. Geen lid-, bezoek- of park-ID, bezoekdatum of beoordeling verlaat de aggregatie."
+      }
+    }
+  }
+}

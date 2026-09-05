@@ -9,6 +9,10 @@ import {
   PassportYearStatistics
 } from '@app/models/passport/passport-statistics.models';
 import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import {
   mapItemStatisticsView,
   mapParkStatisticsView,
   mapYearStatisticsView
@@ -36,6 +40,7 @@ export class PassportStatisticsStateFacade {
   private currentLanguage: string = 'en';
   private currentSource: PassportStatisticsSource | null = null;
   private loadGeneration: number = 0;
+  private readonly trackedScopes = new Set<PassportStatisticsRouteScope['kind']>();
 
   readonly viewModel: Signal<PassportStatisticsViewModel | null> = this.viewModelSignal.asReadonly();
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -43,6 +48,8 @@ export class PassportStatisticsStateFacade {
 
   constructor(
     @Inject(PASSPORT_STATISTICS_API_PORT) private readonly statisticsApi: PassportStatisticsApiPort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -71,6 +78,14 @@ export class PassportStatisticsStateFacade {
         this.currentSource = source;
         this.viewModelSignal.set(this.mapSource(source, this.currentLanguage));
         this.loadingSignal.set(false);
+        if (!this.trackedScopes.has(scope.kind)) {
+          this.trackedScopes.add(scope.kind);
+          this.productAnalytics.track({
+            type: 'passport_statistics_opened',
+            source: 'authenticated',
+            scope: scope.kind
+          });
+        }
       },
       error: (error: unknown): void => {
         if (generation !== this.loadGeneration) {

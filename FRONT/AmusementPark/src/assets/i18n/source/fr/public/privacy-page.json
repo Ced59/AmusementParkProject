@@ -40,7 +40,7 @@
         "title": "Mesure d’audience Matomo",
         "body1": "Le site utilise une instance Matomo auto-hébergée accessible à l’adresse matomo.cedric-caudron.com, avec l’identifiant de site 4.",
         "body2": "Matomo peut mesurer les pages visitées, les enchaînements de navigation, les sources de trafic, le type d’appareil et des informations techniques de navigateur.",
-        "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Les parcours liés au profil peuvent être mesurés seulement après accord sur les cookies optionnels, sans envoyer le contenu privé du profil comme événement analytics."
+          "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Après ton accord sur les cookies optionnels, les actions du passeport sont mesurées uniquement par catégories générales. Aucun identifiant de membre, de visite ou de parc, aucune date de visite, aucune note et aucun commentaire privé ne sont envoyés à Matomo."
       },
       "cookies": {
         "title": "Cookies et stockage local",

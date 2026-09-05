@@ -9,6 +9,11 @@ import { mapParkItemToVisitEditorAttraction } from '../../mappers/passport-visit
 import { PassportOperationIdService } from '@data-access/passport/passport-operation-id.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import { passportRideCountBucket } from '@core/analytics/passport-product-event.model';
+import {
   PASSPORT_ANONYMOUS_DRAFT_MAX_RIDE_COUNT,
   PassportAnonymousDraft,
   PassportAnonymousRideDraft
@@ -59,6 +64,8 @@ export class PassportAnonymousDraftEditorStateFacade {
     private readonly store: PassportAnonymousDraftStorePort,
     @Inject(PASSPORT_ANONYMOUS_DRAFT_ATTRACTIONS_PORT)
     private readonly attractionsApi: PassportAnonymousDraftAttractionsPort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly operationIds: PassportOperationIdService
   ) {
   }
@@ -145,11 +152,20 @@ export class PassportAnonymousDraftEditorStateFacade {
       confirmHistoricalConflict: selection.confirmHistoricalConflict,
       count
     };
-    return await this.persist({
+    const persisted: boolean = await this.persist({
       ...draft,
       rides: [...draft.rides, ride],
       updatedAtUtc: new Date().toISOString()
     });
+    if (persisted) {
+      this.productAnalytics.track({
+        type: 'ride_occurrence_added',
+        source: 'anonymous-local',
+        countBucket: passportRideCountBucket(count)
+      });
+    }
+
+    return persisted;
   }
 
   removeRide(rideId: string): void {

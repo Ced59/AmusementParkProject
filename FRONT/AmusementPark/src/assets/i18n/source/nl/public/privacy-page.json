@@ -40,7 +40,7 @@
         "title": "Matomo-publieksmeting",
         "body1": "De website gebruikt een zelfgehoste Matomo-instantie op matomo.cedric-caudron.com met site-ID 4.",
         "body2": "Matomo kan bezochte pagina’s, navigatiereeksen, verkeersbronnen, apparaattype en technische browserinformatie meten.",
-        "body3": "Deze integratie voegt geen advertentietracking van derden toe. Profielgerelateerde routes kunnen alleen na toestemming voor optionele cookies worden gemeten, zonder privé-inhoud van het profiel als analytics-event te verzenden."
+          "body3": "Deze integratie voegt geen advertentietracking van derden toe. Nadat je toestemming hebt gegeven voor optionele cookies, worden paspoortacties alleen via algemene categorieën gemeten. Er worden geen lid-, bezoek- of park-ID, bezoekdatum, beoordeling of privéopmerking naar Matomo verzonden."
       },
       "cookies": {
         "title": "Cookies en lokale opslag",

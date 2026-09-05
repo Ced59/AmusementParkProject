@@ -8,6 +8,11 @@ import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import {
+  PASSPORT_PRODUCT_ANALYTICS_PORT,
+  PassportProductAnalyticsPort
+} from '@core/analytics/passport-product-analytics.port';
+import { PassportProductSource } from '@core/analytics/passport-product-event.model';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { PassportParkOption, PassportVisitQuickCreateDraft } from '../models/passport-visit-quick-create.models';
 import {
@@ -60,6 +65,8 @@ export class PassportVisitQuickCreateStateFacade {
     @Inject(PASSPORT_VISIT_QUICK_CREATE_PARKS_PORT) private readonly parksApi: PassportVisitQuickCreateParksPort,
     @Inject(PASSPORT_VISIT_OPERATION_ID_PORT) private readonly operationIds: PassportVisitOperationIdPort,
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT) private readonly anonymousDrafts: PassportAnonymousDraftStorePort,
+    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: PassportProductAnalyticsPort,
     private readonly authService: AuthService,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,
@@ -101,10 +108,12 @@ export class PassportVisitQuickCreateStateFacade {
       .subscribe({
         next: (token: string | null): void => {
           if (!token) {
+            this.trackCreation('visit_creation_started', 'anonymous-local', request);
             void this.saveAnonymousDraft(request, parkName);
             return;
           }
 
+          this.trackCreation('visit_creation_started', 'authenticated', request);
           this.sendCreateRequest(request, idempotencyKey);
         },
         error: (): void => {
@@ -180,6 +189,7 @@ export class PassportVisitQuickCreateStateFacade {
           this.pendingIdempotencyKey = null;
           this.pendingDraftId = null;
           this.pendingRideOperationId = null;
+          this.trackCreation('visit_created', 'authenticated', request);
           this.messages.add(
             'success',
             this.translateService.instant('common.success'),
@@ -228,6 +238,8 @@ export class PassportVisitQuickCreateStateFacade {
       this.pendingIdempotencyKey = null;
       this.pendingDraftId = null;
       this.pendingRideOperationId = null;
+      this.trackCreation('visit_created', 'anonymous-local', request);
+      void this.trackSecondAnonymousVisitIfReached();
       this.messages.add(
         'success',
         this.translateService.instant('common.success'),
@@ -262,5 +274,31 @@ export class PassportVisitQuickCreateStateFacade {
     }
 
     return 'passport.quickCreate.errors.generic';
+  }
+
+  private trackCreation(
+    type: 'visit_creation_started' | 'visit_created',
+    source: PassportProductSource,
+    request: CreatePassportVisitRequest
+  ): void {
+    this.productAnalytics.track({
+      type,
+      source,
+      datePrecision: request.date.precision
+    });
+  }
+
+  private async trackSecondAnonymousVisitIfReached(): Promise<void> {
+    try {
+      const drafts: PassportAnonymousDraft[] = await this.anonymousDrafts.list();
+      if (drafts.length === 2) {
+        this.productAnalytics.track({
+          type: 'second_visit_recorded',
+          source: 'anonymous-local'
+        });
+      }
+    } catch {
+      // Product analytics must never affect the locally persisted visit.
+    }
   }
 }

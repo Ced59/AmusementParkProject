@@ -1,0 +1,163 @@
+<app-ui-card styleClass="admin-list-card admin-passport-beta-card">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header admin-passport-beta-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.passportBeta.kicker' | translate }}</span>
+        <h2>{{ 'admin.passportBeta.title' | translate }}</h2>
+        <p>{{ 'admin.passportBeta.subtitle' | translate }}</p>
+      </div>
+
+      @if (metrics(); as currentMetrics) {
+        <app-ui-tag
+          [value]="signalLabel(currentMetrics.repeatUsageSignal) | translate"
+          [severity]="signalSeverity(currentMetrics.repeatUsageSignal)">
+        </app-ui-tag>
+      }
+    </div>
+  </ng-template>
+
+  <form class="admin-passport-beta-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.passportBeta.filters.fromUtc' | translate }}</span>
+      <input appUiInputText type="date" formControlName="fromUtc" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.passportBeta.filters.toUtc' | translate }}</span>
+      <input appUiInputText type="date" formControlName="toUtc" />
+    </label>
+
+    <div class="admin-passport-beta-filters__actions">
+      <button
+        appUiButton
+        type="submit"
+        icon="pi pi-search"
+        [label]="'actions.search' | translate">
+      </button>
+      <button
+        appUiButton
+        type="button"
+        class="p-button-secondary"
+        icon="pi pi-filter-slash"
+        [label]="'actions.reset' | translate"
+        (click)="resetFilters()">
+      </button>
+    </div>
+  </form>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.passportBeta.loading"
+    errorMessageKey="admin.passportBeta.loadError"
+    emptyMessageKey="admin.passportBeta.empty">
+    @if (metrics(); as currentMetrics) {
+      <section class="admin-passport-beta-decision" aria-labelledby="passport-beta-decision-title">
+        <div>
+          <span class="admin-passport-beta-decision__eyebrow">
+            {{ 'admin.passportBeta.decision.kicker' | translate }}
+          </span>
+          <h3 id="passport-beta-decision-title">
+            {{ signalLabel(currentMetrics.repeatUsageSignal) | translate }}
+          </h3>
+          <p>
+            {{ 'admin.passportBeta.decision.description' | translate }}
+          </p>
+        </div>
+        <strong>{{ repeatUsageRatePercent() | number:'1.0-1' }}&nbsp;%</strong>
+      </section>
+
+      <section class="admin-passport-beta-kpis" [attr.aria-label]="'admin.passportBeta.metrics.ariaLabel' | translate">
+        <article>
+          <span>{{ 'admin.passportBeta.metrics.created' | translate }}</span>
+          <strong>{{ createdVisits() | number }}</strong>
+        </article>
+        <article>
+          <span>{{ 'admin.passportBeta.metrics.completed' | translate }}</span>
+          <strong>{{ completedVisits() | number }}</strong>
+        </article>
+        <article>
+          <span>{{ 'admin.passportBeta.metrics.firstUsers' | translate }}</span>
+          <strong>{{ usersWithCompletedVisit() | number }}</strong>
+        </article>
+        <article class="admin-passport-beta-kpis__north-star">
+          <span>{{ 'admin.passportBeta.metrics.returningUsers' | translate }}</span>
+          <strong>{{ usersWithSecondCompletedVisit() | number }}</strong>
+          <small>{{ 'admin.passportBeta.metrics.northStar' | translate }}</small>
+        </article>
+      </section>
+
+      <section class="admin-passport-beta-chart" aria-labelledby="passport-beta-chart-title">
+        <div class="admin-passport-beta-section-head">
+          <div>
+            <h3 id="passport-beta-chart-title">{{ 'admin.passportBeta.chart.title' | translate }}</h3>
+            <p>{{ 'admin.passportBeta.chart.subtitle' | translate }}</p>
+          </div>
+          <span>
+            {{ currentMetrics.fromUtc | date:'yyyy-MM-dd':'UTC' }}
+            –
+            {{ currentMetrics.toUtc | date:'yyyy-MM-dd':'UTC' }}
+          </span>
+        </div>
+
+        <div class="admin-passport-beta-legend" aria-hidden="true">
+          <span class="admin-passport-beta-legend__completed">
+            {{ 'admin.passportBeta.chart.completed' | translate }}
+          </span>
+          <span class="admin-passport-beta-legend__second">
+            {{ 'admin.passportBeta.chart.second' | translate }}
+          </span>
+        </div>
+
+        <div class="admin-passport-beta-bars" aria-hidden="true">
+          @for (point of chartPoints(); track point.date) {
+            <div class="admin-passport-beta-bar">
+              <div class="admin-passport-beta-bar__plot">
+                <span
+                  class="admin-passport-beta-bar__fill admin-passport-beta-bar__fill--completed"
+                  [style.--bar-height]="point.completedHeightPercent + '%'">
+                </span>
+                <span
+                  class="admin-passport-beta-bar__fill admin-passport-beta-bar__fill--second"
+                  [style.--bar-height]="point.secondHeightPercent + '%'">
+                </span>
+              </div>
+              <span class="admin-passport-beta-bar__date">{{ point.date | date:'MM-dd':'UTC' }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="admin-passport-beta-table-wrap">
+          <table>
+            <caption>{{ 'admin.passportBeta.table.caption' | translate }}</caption>
+            <thead>
+              <tr>
+                <th scope="col">{{ 'admin.passportBeta.table.date' | translate }}</th>
+                <th scope="col">{{ 'admin.passportBeta.table.completed' | translate }}</th>
+                <th scope="col">{{ 'admin.passportBeta.table.first' | translate }}</th>
+                <th scope="col">{{ 'admin.passportBeta.table.second' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (point of daily(); track point.date) {
+                <tr>
+                  <th scope="row">{{ point.date | date:'yyyy-MM-dd':'UTC' }}</th>
+                  <td>{{ point.completedVisits | number }}</td>
+                  <td>{{ point.firstVisits | number }}</td>
+                  <td>{{ point.secondVisits | number }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="admin-passport-beta-privacy">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <div>
+          <h3>{{ 'admin.passportBeta.privacy.title' | translate }}</h3>
+          <p>{{ 'admin.passportBeta.privacy.description' | translate }}</p>
+        </div>
+      </aside>
+    }
+  </app-page-state>
+</app-ui-card>

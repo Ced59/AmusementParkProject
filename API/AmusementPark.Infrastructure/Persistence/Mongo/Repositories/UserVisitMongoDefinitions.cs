@@ -295,6 +295,22 @@ internal static class UserVisitMongoDefinitions
                         static document => document.CreationOperationKeyHash,
                         true),
                 }),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(static document => document.CreatedAt),
+                new CreateIndexOptions { Name = "idx_user_visits_beta_created" }),
+            new CreateIndexModel<UserVisitDocument>(
+                Builders<UserVisitDocument>.IndexKeys
+                    .Ascending(static document => document.CompletedAtUtc)
+                    .Ascending(static document => document.UserId)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions<UserVisitDocument>
+                {
+                    Name = "idx_user_visits_beta_completed_cohort",
+                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Ne(
+                        static document => document.CompletedAtUtc,
+                        null),
+                }),
             PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
                 "idx_user_visits_pending_audit"),
             new CreateIndexModel<UserVisitDocument>(

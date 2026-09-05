@@ -177,6 +177,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'passport-beta',
+    segments: ['passport-beta'],
+    iconClass: 'pi pi-chart-line',
+    titleKey: 'admin.passportBeta.navTitle',
+    descriptionKey: 'admin.dashboard.shortcuts.passportBeta',
+    exact: false
+  },
+  {
     id: 'social-publications',
     segments: ['social-publications'],
     iconClass: 'pi pi-send',

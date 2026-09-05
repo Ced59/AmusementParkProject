@@ -1051,6 +1051,7 @@
         "seoSitemaps": "Gerir índice sitemap, secções XML, estatísticas e IndexNow.",
         "history": "Gerir linhas do tempo, marcos documentados e artigos históricos.",
         "ratingRankings": "Diagnosticar, simular e reconstruir classificações de avaliações.",
+        "passportBeta": "Verificar, através de indicadores agregados, se o passaporte se torna um hábito recorrente.",
         "standaloneAttractions": "Gerir atrações autónomas que não estão associadas a um parque.",
         "fieldMode": "Completar rapidamente fotografias e localizações diretamente no terreno.",
         "technicalPages": "Gerir as páginas técnicas e os respetivos conteúdos localizados.",
@@ -2388,6 +2389,53 @@
       "noRun": {
         "title": "Sem execucao",
         "message": "Inicie uma atualizacao manual ou aguarde a proxima execucao programada."
+      }
+    },
+    "passportBeta": {
+      "navTitle": "Beta do passaporte",
+      "kicker": "Validação do produto",
+      "title": "Acompanhamento da beta do passaporte",
+      "subtitle": "Mede se o passaporte se torna um hábito útil sem expor visitas nem preferências pessoais.",
+      "loading": "A carregar os indicadores do passaporte...",
+      "loadError": "Não foi possível carregar os indicadores do passaporte.",
+      "empty": "Não houve atividade do passaporte neste período.",
+      "filters": {
+        "fromUtc": "De",
+        "toUtc": "Até"
+      },
+      "decision": {
+        "kicker": "Sinal de regresso",
+        "description": "Este sinal quantitativo ainda precisa de ser confirmado por entrevistas e cenários da beta antes da validação do marco."
+      },
+      "signal": {
+        "NotObserved": "Nenhum regresso observado",
+        "Emerging": "Regresso a surgir",
+        "Candidate": "Sinal candidato"
+      },
+      "metrics": {
+        "ariaLabel": "Indicadores agregados da beta do passaporte",
+        "created": "Visitas criadas",
+        "completed": "Visitas concluídas",
+        "firstUsers": "Membros com uma visita concluída",
+        "returningUsers": "Membros com pelo menos duas visitas concluídas",
+        "northStar": "Indicador principal do produto"
+      },
+      "chart": {
+        "title": "Evolução diária",
+        "subtitle": "A primeira e a segunda utilizações são calculadas a partir de visitas realmente concluídas.",
+        "completed": "Visitas concluídas",
+        "second": "Segunda visita concluída"
+      },
+      "table": {
+        "caption": "Detalhe diário das visitas concluídas e dos marcos de utilização",
+        "date": "Data",
+        "completed": "Concluídas",
+        "first": "Primeira visita",
+        "second": "Segunda visita"
+      },
+      "privacy": {
+        "title": "Dados minimizados",
+        "description": "Este ecrã recebe apenas totais. Nenhum identificador de membro, visita ou parque, nenhuma data de visita e nenhuma avaliação saem da agregação."
       }
     },
     "publicViewToolbar": {
@@ -5376,7 +5424,7 @@
         "title": "Medição de audiência Matomo",
         "body1": "O site utiliza uma instância Matomo auto-hospedada acessível em matomo.cedric-caudron.com, com o ID de site 4.",
         "body2": "O Matomo pode medir páginas visitadas, sequências de navegação, fontes de tráfego, tipo de dispositivo e informações técnicas do navegador.",
-        "body3": "Esta integração não adiciona rastreamento publicitário de terceiros. Percursos ligados ao perfil podem ser medidos apenas após consentimento para cookies opcionais, sem enviar conteúdo privado do perfil como eventos analytics."
+        "body3": "Esta integração não adiciona rastreamento publicitário de terceiros. Depois de aceitares os cookies opcionais, as ações do passaporte são medidas apenas através de categorias gerais. Nenhum identificador de membro, visita ou parque, nenhuma data de visita, avaliação ou comentário privado é enviado para o Matomo."
       },
       "cookies": {
         "title": "Cookies e armazenamento local",

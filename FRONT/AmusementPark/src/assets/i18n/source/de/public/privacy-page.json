@@ -40,7 +40,7 @@
         "title": "Matomo-Reichweitenmessung",
         "body1": "Die Website nutzt eine selbst gehostete Matomo-Instanz unter matomo.cedric-caudron.com mit der Site-ID 4.",
         "body2": "Matomo kann besuchte Seiten, Navigationsfolgen, Traffic-Quellen, Gerätetyp und technische Browserinformationen messen.",
-        "body3": "Durch diese Integration wird kein Drittanbieter-Werbetracking hinzugefügt. Profilbezogene Wege können nur nach Zustimmung zu optionalen Cookies gemessen werden, ohne private Profilinhalte als Analytics-Ereignisse zu senden."
+          "body3": "Durch diese Integration wird kein Drittanbieter-Werbetracking hinzugefügt. Nach deiner Zustimmung zu optionalen Cookies werden Reisepass-Aktionen nur über allgemeine Kategorien gemessen. Keine Mitglieds-, Besuchs- oder Parkkennung, kein Besuchsdatum, keine Bewertung und kein privater Kommentar werden an Matomo gesendet."
       },
       "cookies": {
         "title": "Cookies und lokaler Speicher",
