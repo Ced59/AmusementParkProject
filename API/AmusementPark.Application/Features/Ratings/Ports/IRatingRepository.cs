@@ -6,24 +6,6 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Ports;
 
-public sealed record RatingAggregateTarget(
-    RatingTargetType TargetType,
-    string TargetId,
-    string ParkId,
-    ParkItemCategory? ParkItemCategory,
-    ParkItemType? ParkItemType);
-
-public sealed record UserRatingMutationResult(
-    bool SourceChanged,
-    UserRating Rating,
-    RatingAggregate? Aggregate,
-    bool WasFencedOut = false);
-
-public sealed record UserRatingDeletionResult(
-    bool SourceChanged,
-    RatingAggregate? Aggregate,
-    bool WasFencedOut = false);
-
 public interface IRatingRepository
 {
     Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
