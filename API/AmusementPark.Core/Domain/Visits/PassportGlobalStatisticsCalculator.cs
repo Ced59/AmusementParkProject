@@ -63,20 +63,29 @@ public static class PassportGlobalStatisticsCalculator
         IReadOnlyCollection<PassportVisitStatisticsObservation> visits,
         IReadOnlyCollection<PassportRideStatisticsObservation> completedRides)
     {
+        IReadOnlyDictionary<int, double[]> parkRatingsByYear = visits
+            .Where(static visit => visit.ParkAssessment.HasValue)
+            .GroupBy(static visit => visit.VisitDate.Year)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.Select(
+                    static visit => visit.ParkAssessment!.Value.DoubleValue).ToArray());
+        IReadOnlyDictionary<int, double[]> rideRatingsByYear = completedRides
+            .Where(static ride => ride.Assessment.HasValue)
+            .GroupBy(static ride => ride.VisitDate.Year)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.Select(
+                    static ride => ride.Assessment!.Value.DoubleValue).ToArray());
+
         return visits.Select(static visit => visit.VisitDate.Year)
             .Concat(completedRides.Select(static ride => ride.VisitDate.Year))
             .Distinct()
             .OrderBy(static year => year)
             .Select(year =>
             {
-                double[] parkRatings = visits
-                    .Where(visit => visit.VisitDate.Year == year && visit.ParkAssessment.HasValue)
-                    .Select(static visit => visit.ParkAssessment!.Value.DoubleValue)
-                    .ToArray();
-                double[] rideRatings = completedRides
-                    .Where(ride => ride.VisitDate.Year == year && ride.Assessment.HasValue)
-                    .Select(static ride => ride.Assessment!.Value.DoubleValue)
-                    .ToArray();
+                double[] parkRatings = parkRatingsByYear.GetValueOrDefault(year) ?? Array.Empty<double>();
+                double[] rideRatings = rideRatingsByYear.GetValueOrDefault(year) ?? Array.Empty<double>();
                 return new PassportGlobalRatingEvolution(
                     year,
                     parkRatings.Length == 0 ? null : parkRatings.Average(),
