@@ -219,6 +219,11 @@ public sealed class UserVisitMongoDefinitionsTests
                 { "_id", 1 },
             });
         Assert.NotNull(indexes[6].Options.PartialFilterExpression);
+        Assert.Equal(
+            new BsonDocument(
+                "completedAtUtc",
+                new BsonDocument("$type", "date")),
+            Render(indexes[6].Options.PartialFilterExpression!));
         AssertIndex(
             indexes[7],
             "idx_user_visits_pending_audit",

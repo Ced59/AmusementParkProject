@@ -16,6 +16,7 @@ import {
 @Injectable()
 export class AdminPassportBetaFacade {
   private readonly screenStateStore = new SignalScreenStateStore<PassportBetaMetricsResult>();
+  private requestGeneration = 0;
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -47,12 +48,23 @@ export class AdminPassportBetaFacade {
   }
 
   load(query: PassportBetaMetricsQuery = {}): void {
+    const requestGeneration = ++this.requestGeneration;
     const previousData: PassportBetaMetricsResult | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     this.dataPort.getMetrics(query).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (metrics: PassportBetaMetricsResult) => this.screenStateStore.setReady(metrics),
+      next: (metrics: PassportBetaMetricsResult) => {
+        if (requestGeneration !== this.requestGeneration) {
+          return;
+        }
+
+        this.screenStateStore.setReady(metrics);
+      },
       error: (error: unknown) => {
+        if (requestGeneration !== this.requestGeneration) {
+          return;
+        }
+
         console.error('Error loading passport beta metrics', error);
         this.screenStateStore.setError('admin.passportBeta.loadError', previousData);
       }

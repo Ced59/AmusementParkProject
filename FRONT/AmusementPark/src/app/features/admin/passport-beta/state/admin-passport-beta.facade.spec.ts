@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 
 import {
   PassportBetaMetricsQuery,
@@ -81,5 +81,27 @@ describe('AdminPassportBetaFacade', () => {
 
     expect(facade.state().kind).toBe('error');
     expect(facade.usersWithCompletedVisit()).toBe(4);
+  });
+
+  it('ignores a superseded response that completes after the latest request', () => {
+    const firstResponse = new Subject<PassportBetaMetricsResult>();
+    const latestResponse = new Subject<PassportBetaMetricsResult>();
+    const latestMetrics: PassportBetaMetricsResult = {
+      ...metrics,
+      usersWithSecondCompletedVisit: 3,
+      repeatUsageRatePercent: 75
+    };
+    port.getMetrics
+      .mockReturnValueOnce(firstResponse)
+      .mockReturnValueOnce(latestResponse);
+
+    facade.load({ fromUtc: '2026-08-01T00:00:00.000Z' });
+    facade.load({ fromUtc: '2026-09-01T00:00:00.000Z' });
+    latestResponse.next(latestMetrics);
+    firstResponse.next(metrics);
+
+    expect(facade.state().kind).toBe('ready');
+    expect(facade.usersWithSecondCompletedVisit()).toBe(3);
+    expect(facade.repeatUsageRatePercent()).toBe(75);
   });
 });

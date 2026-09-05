@@ -307,9 +307,9 @@ internal static class UserVisitMongoDefinitions
                 new CreateIndexOptions<UserVisitDocument>
                 {
                     Name = "idx_user_visits_beta_completed_cohort",
-                    PartialFilterExpression = Builders<UserVisitDocument>.Filter.Ne(
-                        static document => document.CompletedAtUtc,
-                        null),
+                    PartialFilterExpression = new BsonDocument(
+                        "completedAtUtc",
+                        new BsonDocument("$type", "date")),
                 }),
             PassportAuditMongoDefinitions.BuildPendingMarkerIndex<UserVisitDocument>(
                 "idx_user_visits_pending_audit"),
