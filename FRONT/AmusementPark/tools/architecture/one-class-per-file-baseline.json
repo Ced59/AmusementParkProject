@@ -1,6 +1,5 @@
 [
   {"path":"API/AmusementPark.Application.Tests/Architecture/ApplicationSourceShapeTests.cs","classes":["ApplicationSourceShapeTests","SourceFileLineCount"],"filenameMismatches":["SourceFileLineCount"],"partialClasses":[]},
-  {"path":"API/AmusementPark.Application.Tests/Features/BackgroundJobs/Services/DurableBackgroundJobExecutionOrchestratorTests.cs","classes":["DurableBackgroundJobExecutionOrchestratorTests","StubHandler"],"filenameMismatches":["StubHandler"],"partialClasses":[]},
   {"path":"API/AmusementPark.Application.Tests/Features/BackgroundJobs/Services/DurableBackgroundJobHandlerRegistryTests.cs","classes":["DurableBackgroundJobHandlerRegistryTests","StubHandler"],"filenameMismatches":["StubHandler"],"partialClasses":[]},
   {"path":"API/AmusementPark.Application.Tests/Features/Comments/Handlers/CommentHandlersTests.cs","classes":["CommentHandlersTests","CreateCommentWithImageScenario"],"filenameMismatches":["CreateCommentWithImageScenario"],"partialClasses":[]},
   {"path":"API/AmusementPark.Application.Tests/Features/Comments/Handlers/CommentUpdatePersistenceRecoveryTests.cs","classes":["CommentUpdatePersistenceRecoveryTests","UpdateWithImageScenario"],"filenameMismatches":["UpdateWithImageScenario"],"partialClasses":[]},
