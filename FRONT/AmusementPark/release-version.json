@@ -1,6 +1,20 @@
 {
-  "version": "5.1.9",
+  "version": "5.1.10",
   "history": [
+    {
+      "version": "5.1.10",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La publication des rangs et des classements repose désormais sur une structure plus fiable.",
+        "en": "Published ranks and rankings now rely on a more reliable structure.",
+        "de": "Veröffentlichte Ränge und Ranglisten basieren jetzt auf einer zuverlässigeren Struktur.",
+        "nl": "Gepubliceerde posities en ranglijsten steunen nu op een betrouwbaardere structuur.",
+        "it": "La pubblicazione delle posizioni e delle classifiche si basa ora su una struttura più affidabile.",
+        "es": "La publicación de puestos y clasificaciones se apoya ahora en una estructura más fiable.",
+        "pl": "Publikowanie pozycji i rankingów korzysta teraz z bardziej niezawodnej struktury.",
+        "pt": "A publicação de posições e classificações assenta agora numa estrutura mais fiável."
+      }
+    },
     {
       "version": "5.1.9",
       "releasedAt": "2026-09-05",
