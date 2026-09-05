@@ -115,6 +115,21 @@ public sealed class PassportBetaMetricsSourceTests
         Assert.Null(typeof(PassportBetaMetricsSourceSnapshot).GetProperty("UserId"));
     }
 
+    [Fact]
+    public void MapSnapshot_OnMaximumDate_ShouldReturnTheFinalDayWithoutOverflow()
+    {
+        DateTime maximumUtc = DateTime.SpecifyKind(DateTime.MaxValue.Date, DateTimeKind.Utc);
+
+        PassportBetaMetricsSourceSnapshot result = PassportBetaMetricsSource.MapSnapshot(
+            new BsonDocument(),
+            maximumUtc,
+            maximumUtc);
+
+        Assert.Equal(
+            new PassportBetaDailyMetrics("9999-12-31", 0, 0, 0),
+            Assert.Single(result.Daily));
+    }
+
     private static BsonDocument Daily(string date, long count)
     {
         return new BsonDocument

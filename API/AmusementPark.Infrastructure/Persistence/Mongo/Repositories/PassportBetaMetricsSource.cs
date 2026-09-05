@@ -315,9 +315,9 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
         IReadOnlyDictionary<string, long> secondByDate)
     {
         List<PassportBetaDailyMetrics> result = new List<PassportBetaDailyMetrics>();
-        for (DateTime dayUtc = fromUtc.Date;
-            dayUtc <= toUtc.Date;
-            dayUtc = dayUtc.AddDays(1))
+        DateTime dayUtc = fromUtc.Date;
+        DateTime lastDayUtc = toUtc.Date;
+        while (dayUtc <= lastDayUtc)
         {
             string date = dayUtc.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             result.Add(new PassportBetaDailyMetrics(
@@ -325,6 +325,12 @@ public sealed class PassportBetaMetricsSource : IPassportBetaMetricsSource
                 completedByDate.GetValueOrDefault(date),
                 firstByDate.GetValueOrDefault(date),
                 secondByDate.GetValueOrDefault(date)));
+            if (dayUtc == lastDayUtc)
+            {
+                break;
+            }
+
+            dayUtc = dayUtc.AddDays(1);
         }
 
         return result;
