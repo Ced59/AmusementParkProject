@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -38,7 +39,8 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             Mock.Of<IParkRepository>(),
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
-            Mock.Of<IUserRepository>());
+            Mock.Of<IUserRepository>(),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(
             new UpdateImageMetadataCommand("comment-image", new ImageMetadataUpdate
@@ -127,7 +129,8 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             parkRepository.Object,
             manufacturerRepository.Object,
             searchProjectionWriter.Object,
-            userRepository.Object);
+            userRepository.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(new UpdateImageMetadataCommand(" image-1 ", new ImageMetadataUpdate
         {

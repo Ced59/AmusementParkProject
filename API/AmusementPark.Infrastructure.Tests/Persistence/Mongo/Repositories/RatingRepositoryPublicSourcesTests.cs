@@ -84,6 +84,43 @@ public sealed class RatingRepositoryPublicSourcesTests
         Assert.True(result);
     }
 
+    [Fact]
+    public void SelectPublicUserRatingSources_ShouldApplyLimitAfterHiddenRatingsAreRemoved()
+    {
+        UserRatingDocument hidden = CreateRating(RatingTargetType.Park, "park-hidden", "park-hidden");
+        UserRatingDocument firstVisible = CreateRating(RatingTargetType.Park, "park-visible-1", "park-visible-1");
+        UserRatingDocument secondVisible = CreateRating(RatingTargetType.Park, "park-visible-2", "park-visible-2");
+        Dictionary<string, ParkDocument> parks = new Dictionary<string, ParkDocument>
+        {
+            ["park-hidden"] = new ParkDocument
+            {
+                Id = "park-hidden",
+                IsVisible = false,
+                Status = ParkStatus.Operating,
+            },
+            ["park-visible-1"] = new ParkDocument
+            {
+                Id = "park-visible-1",
+                IsVisible = true,
+                Status = ParkStatus.Operating,
+            },
+            ["park-visible-2"] = new ParkDocument
+            {
+                Id = "park-visible-2",
+                IsVisible = true,
+                Status = ParkStatus.Operating,
+            },
+        };
+
+        IReadOnlyCollection<UserRatingDocument> result = RatingRepository.SelectPublicUserRatingSources(
+            new[] { hidden, firstVisible, secondVisible },
+            parks,
+            new Dictionary<string, ParkItemDocument>(),
+            2);
+
+        Assert.Equal(new[] { "park-visible-1", "park-visible-2" }, result.Select(static rating => rating.TargetId));
+    }
+
     private static UserRatingDocument CreateRating(
         RatingTargetType targetType,
         string targetId,

@@ -1212,10 +1212,11 @@ public sealed class RatingRepository : IRatingRepository
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
             .SortByDescending(document => document.Value)
             .ThenBy(document => document.TargetId)
-            .Limit(effectiveMaxItems)
+            .Limit(RankingCandidateHardLimit)
             .ToListAsync(cancellationToken);
         IReadOnlyCollection<UserRatingDocument> visibleDocuments = await this.FilterVisibleUserRatingsAsync(
             documents,
+            effectiveMaxItems,
             cancellationToken);
 
         return await this.EnrichUserRatingsAsync(visibleDocuments, cancellationToken);
@@ -1223,6 +1224,17 @@ public sealed class RatingRepository : IRatingRepository
 
     private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(
         IReadOnlyCollection<UserRatingDocument> documents,
+        CancellationToken cancellationToken)
+    {
+        return await this.FilterVisibleUserRatingsAsync(
+            documents,
+            documents.Count,
+            cancellationToken);
+    }
+
+    private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(
+        IReadOnlyCollection<UserRatingDocument> documents,
+        int maxItems,
         CancellationToken cancellationToken)
     {
         List<string> parkTargetIds = documents
@@ -1243,13 +1255,30 @@ public sealed class RatingRepository : IRatingRepository
                 .Select(static document => document.TargetId),
             true,
             cancellationToken);
-        List<UserRatingDocument> visibleRatings = new List<UserRatingDocument>();
+        return SelectPublicUserRatingSources(documents, visibleParks, visibleItems, maxItems);
+    }
+
+    internal static IReadOnlyCollection<UserRatingDocument> SelectPublicUserRatingSources(
+        IReadOnlyCollection<UserRatingDocument> documents,
+        IReadOnlyDictionary<string, ParkDocument> visibleParks,
+        IReadOnlyDictionary<string, ParkItemDocument> visibleItems,
+        int maxItems)
+    {
+        int effectiveMaxItems = Math.Max(maxItems, 1);
+        List<UserRatingDocument> visibleRatings = new List<UserRatingDocument>(
+            Math.Min(effectiveMaxItems, documents.Count));
 
         foreach (UserRatingDocument document in documents)
         {
-            if (IsPublicUserRatingSource(document, visibleParks, visibleItems))
+            if (!IsPublicUserRatingSource(document, visibleParks, visibleItems))
             {
-                visibleRatings.Add(document);
+                continue;
+            }
+
+            visibleRatings.Add(document);
+            if (visibleRatings.Count == effectiveMaxItems)
+            {
+                break;
             }
         }
 

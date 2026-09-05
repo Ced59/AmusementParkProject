@@ -113,6 +113,7 @@ public static class ApplicationServiceCollectionExtensions
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
         services.AddScoped<UserRankingShareAccessResolver>();
         services.AddScoped<ISharePublicationPreviewBuilder, PersonalRankingSharePreviewBuilder>();
+        services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();

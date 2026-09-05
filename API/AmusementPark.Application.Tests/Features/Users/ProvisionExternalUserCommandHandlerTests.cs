@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Application.Features.Users.Handlers;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
 using Moq;
@@ -118,7 +119,8 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             mocks.TokenService.Object,
             mocks.RefreshTokenFactory.Object,
             mocks.RefreshTokenRepository.Object,
-            mocks.AuthenticationSettings.Object);
+            mocks.AuthenticationSettings.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
     }
 
     private static void SetupAuthenticationFlow(

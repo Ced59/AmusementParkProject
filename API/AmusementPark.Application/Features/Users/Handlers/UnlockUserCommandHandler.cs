@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Users;
 
 namespace AmusementPark.Application.Features.Users.Handlers;
@@ -12,10 +14,14 @@ namespace AmusementPark.Application.Features.Users.Handlers;
 public sealed class UnlockUserCommandHandler : ICommandHandler<UnlockUserCommand, ApplicationResult<User>>
 {
     private readonly IUserRepository userRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
 
-    public UnlockUserCommandHandler(IUserRepository userRepository)
+    public UnlockUserCommandHandler(
+        IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard)
     {
         this.userRepository = userRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
     }
 
     public async Task<ApplicationResult<User>> HandleAsync(UnlockUserCommand command, CancellationToken cancellationToken = default)
@@ -26,7 +32,13 @@ public sealed class UnlockUserCommandHandler : ICommandHandler<UnlockUserCommand
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserNotExists());
         }
 
+        ShareSourceMutationLease mutationLease =
+            await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
         User? unlockedUser = await this.userRepository.UnlockAsync(command.UserId, cancellationToken);
+        await this.shareSourceRevisionGuard.CompleteMutationAsync(
+            mutationLease,
+            unlockedUser is not null,
+            CancellationToken.None);
         if (unlockedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.CannotUnlockUser());

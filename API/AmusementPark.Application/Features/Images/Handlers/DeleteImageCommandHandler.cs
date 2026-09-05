@@ -9,6 +9,8 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
@@ -27,6 +29,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
     private readonly ICommentRepository commentRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
     private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public DeleteImageCommandHandler(
@@ -37,6 +40,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
         ICommentRepository commentRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
@@ -46,6 +50,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
@@ -92,7 +97,15 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
             }
 
-            await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
+            await SynchronizeAfterDeletionAsync(
+                image,
+                this.imageRepository,
+                this.parkRepository,
+                this.attractionManufacturerRepository,
+                this.searchProjectionWriter,
+                this.userRepository,
+                this.shareSourceRevisionGuard,
+                cancellationToken);
             await PublicImageSeoUpdateNotification.NotifyAsync(
                 this.publicSeoUpdateNotifier,
                 new[] { image },
@@ -117,6 +130,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
@@ -139,8 +153,23 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 }
             }
 
+            PersonalRankingShareIdentityState previousIdentity =
+                PersonalRankingShareIdentityState.Capture(user);
             user.AvatarUrl = replacementCurrent is null ? null : BuildImageUrl(replacementCurrent.Id);
-            await userRepository.UpdateAsync(user.Id, user, cancellationToken);
+            ShareSourceMutationLease? mutationLease =
+                await shareSourceRevisionGuard.BeginIdentityMutationAsync(
+                    user.Id,
+                    previousIdentity,
+                    PersonalRankingShareIdentityState.Capture(user),
+                    cancellationToken);
+            User? updatedUser = await userRepository.UpdateAsync(
+                user.Id,
+                user,
+                cancellationToken);
+            await shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                updatedUser is not null,
+                CancellationToken.None);
             return;
         }
 

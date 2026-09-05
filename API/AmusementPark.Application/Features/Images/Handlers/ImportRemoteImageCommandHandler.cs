@@ -8,6 +8,8 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -23,6 +25,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
     private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public ImportRemoteImageCommandHandler(
@@ -32,6 +35,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.remoteImageImporter = remoteImageImporter;
@@ -40,6 +44,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
@@ -103,7 +108,14 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 }
 
                 image = current;
-                await SynchronizeOwnerAsync(image, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
+                await SynchronizeOwnerAsync(
+                    image,
+                    this.parkRepository,
+                    this.attractionManufacturerRepository,
+                    this.searchProjectionWriter,
+                    this.userRepository,
+                    this.shareSourceRevisionGuard,
+                    cancellationToken);
             }
 
             await PublicImageSeoUpdateNotification.NotifyAsync(
@@ -150,6 +162,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
@@ -157,8 +170,23 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
             if (user is not null)
             {
+                PersonalRankingShareIdentityState previousIdentity =
+                    PersonalRankingShareIdentityState.Capture(user);
                 user.AvatarUrl = BuildImageUrl(image.Id);
-                await userRepository.UpdateAsync(user.Id, user, cancellationToken);
+                ShareSourceMutationLease? mutationLease =
+                    await shareSourceRevisionGuard.BeginIdentityMutationAsync(
+                        user.Id,
+                        previousIdentity,
+                        PersonalRankingShareIdentityState.Capture(user),
+                        cancellationToken);
+                User? updatedUser = await userRepository.UpdateAsync(
+                    user.Id,
+                    user,
+                    cancellationToken);
+                await shareSourceRevisionGuard.CompleteMutationAsync(
+                    mutationLease,
+                    updatedUser is not null,
+                    CancellationToken.None);
             }
 
             return;

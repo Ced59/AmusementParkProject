@@ -65,7 +65,7 @@ Le contenu du classement dépend de deux périmètres monotones :
 
 ```text
 révision personnelle              révision du catalogue public
-notes + pseudonyme                 noms + visibilité + classement des cibles
+notes + identité publique          noms + visibilité + classement des cibles
              │                                  │
              └──────────┬───────────────────────┘
                         ▼
@@ -92,11 +92,14 @@ une interruption, un lease expiré est retiré atomiquement et la révision avan
 conservatrice : cela peut demander un nouvel aperçu inutilement, mais ne peut pas
 publier silencieusement une donnée différente.
 
-Les changements de notes et de pseudonyme public protègent la révision personnelle.
-L'avatar et l'état du compte sont relus avant et après la construction afin de
-détecter aussi leurs mutations, quelle que soit leur voie d'écriture. Les changements
-de nom, visibilité, catégorie ou rattachement d'un parc ou d'une attraction protègent
-la révision du catalogue.
+Les changements de notes, de pseudonyme, d'avatar, de rôle ou d'état du compte
+protègent la révision personnelle dans toutes leurs voies d'écriture. L'identité
+publique est également relue avant et après la construction : la révision prévient
+les aperçus périmés et la double lecture ferme la fenêtre d'une mutation concurrente.
+Un échec de règlement après une écriture déjà validée est journalisé sans transformer
+le succès métier en erreur ; le lease durable expirera alors prudemment. Les
+changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
+attraction protègent la révision du catalogue.
 
 ## Architecture
 
@@ -155,6 +158,9 @@ Les tests ciblés couvrent :
 - récupération prudente des leases expirés ;
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
+- protection des changements d'avatar et d'état du compte ;
+- conservation du succès métier lorsque le règlement d'un lease échoue ;
+- application du plafond après retrait des notes visant des contenus masqués ;
 - authentification, `no-store`, parsing strict des enums et DTO HTTP ;
 - enregistrement des ports MongoDB et du builder spécialisé.
 

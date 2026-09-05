@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -195,7 +196,8 @@ public sealed class ImportRemoteImageCommandHandlerTests
             parkRepository.Object,
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
-            userRepository.Object);
+            userRepository.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(new ImportRemoteImageCommand(new RemoteImageImportRequest
         {
@@ -224,6 +226,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
             Mock.Of<IParkRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
-            Mock.Of<IUserRepository>(MockBehavior.Strict));
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
     }
 }

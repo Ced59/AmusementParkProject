@@ -77,10 +77,10 @@ de lire les notes : un aperçu sans `GlobalRatings` ne charge aucune note et le 
 public ne contient ni identifiant utilisateur, ni identifiant de note, de parc ou
 d'attraction, ni commentaire privé, ni email.
 
-Deux révisions durables protègent l'aperçu : l'une suit les notes et le pseudonyme
-public du propriétaire, l'autre le catalogue public qui fournit les noms et la
-visibilité des cibles. L'identité publique est aussi relue après la construction
-pour couvrir l'avatar et l'état du compte quelle que soit leur voie d'écriture.
+Deux révisions durables protègent l'aperçu : l'une suit les notes et toute l'identité
+publique du propriétaire — pseudonyme, avatar, rôles et état du compte —, l'autre le
+catalogue public qui fournit les noms et la visibilité des cibles. L'identité publique
+est aussi relue après la construction pour fermer la fenêtre des mutations concurrentes.
 Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
 révisions et l'identité restent stables. Un lease abandonné expire et avance
 prudemment la révision au lieu de laisser passer un contenu incertain. Les détails

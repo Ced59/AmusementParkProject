@@ -3,6 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
 
@@ -20,6 +22,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
     private readonly IRefreshTokenFactory refreshTokenFactory;
     private readonly IRefreshTokenRepository refreshTokenRepository;
     private readonly IUserAuthenticationSettings authenticationSettings;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
 
     public ProvisionExternalUserCommandHandler(
         IUserRepository userRepository,
@@ -28,7 +31,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         ITokenService tokenService,
         IRefreshTokenFactory refreshTokenFactory,
         IRefreshTokenRepository refreshTokenRepository,
-        IUserAuthenticationSettings authenticationSettings)
+        IUserAuthenticationSettings authenticationSettings,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard)
     {
         this.userRepository = userRepository;
         this.externalIdentityVerifier = externalIdentityVerifier;
@@ -37,6 +41,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         this.refreshTokenFactory = refreshTokenFactory;
         this.refreshTokenRepository = refreshTokenRepository;
         this.authenticationSettings = authenticationSettings;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
     }
 
     public async Task<ApplicationResult<AuthenticatedUserResult>> HandleAsync(ProvisionExternalUserCommand command, CancellationToken cancellationToken = default)
@@ -168,6 +173,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
     private async Task<User?> PersistUserAsync(User user, VerifiedExternalIdentity identity, bool createIfMissing, CancellationToken cancellationToken)
     {
+        PersonalRankingShareIdentityState previousIdentity =
+            PersonalRankingShareIdentityState.Capture(user);
         await this.EnsurePublicIdentityAsync(user, cancellationToken);
 
         if (string.IsNullOrWhiteSpace(user.AvatarUrl) && !string.IsNullOrWhiteSpace(identity.PictureUrl))
@@ -186,7 +193,21 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             return await this.userRepository.CreateAsync(user, cancellationToken);
         }
 
-        return await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+        ShareSourceMutationLease? mutationLease =
+            await this.shareSourceRevisionGuard.BeginIdentityMutationAsync(
+                user.Id,
+                previousIdentity,
+                PersonalRankingShareIdentityState.Capture(user),
+                cancellationToken);
+        User? updatedUser = await this.userRepository.UpdateAsync(
+            user.Id,
+            user,
+            cancellationToken);
+        await this.shareSourceRevisionGuard.CompleteMutationAsync(
+            mutationLease,
+            updatedUser is not null,
+            CancellationToken.None);
+        return updatedUser;
     }
 
     private async Task<ApplicationResult<AuthenticatedUserResult>> SignInAsync(User user, VerifiedExternalIdentity identity, CancellationToken cancellationToken)
@@ -201,6 +222,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             return ApplicationResult<AuthenticatedUserResult>.Failure(UserApplicationErrors.UserNotActivated());
         }
 
+        PersonalRankingShareIdentityState previousIdentity =
+            PersonalRankingShareIdentityState.Capture(user);
         ApplyIdentityToUser(user, identity, false);
         await this.EnsurePublicIdentityAsync(user, cancellationToken);
 
@@ -217,7 +240,17 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         user.LastActivityUtc = user.LastLoginUtc;
         user.UpdatedAtUtc = user.LastLoginUtc;
 
+        ShareSourceMutationLease? mutationLease =
+            await this.shareSourceRevisionGuard.BeginIdentityMutationAsync(
+                user.Id,
+                previousIdentity,
+                PersonalRankingShareIdentityState.Capture(user),
+                cancellationToken);
         User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+        await this.shareSourceRevisionGuard.CompleteMutationAsync(
+            mutationLease,
+            updatedUser is not null,
+            CancellationToken.None);
         if (updatedUser is null)
         {
             return ApplicationResult<AuthenticatedUserResult>.Failure(UserApplicationErrors.UserUpdateFailed());

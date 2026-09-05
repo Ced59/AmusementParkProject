@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using Moq;
@@ -23,7 +24,8 @@ public sealed class ManagedCommentImageMutationHandlerTests
             Mock.Of<IParkRepository>(),
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
-            Mock.Of<IUserRepository>());
+            Mock.Of<IUserRepository>(),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(
             new LinkImageCommand(
@@ -56,7 +58,8 @@ public sealed class ManagedCommentImageMutationHandlerTests
             Mock.Of<IParkRepository>(),
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
-            Mock.Of<IUserRepository>());
+            Mock.Of<IUserRepository>(),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(
             new LinkImageCommand(
@@ -77,7 +80,8 @@ public sealed class ManagedCommentImageMutationHandlerTests
             Mock.Of<IParkRepository>(),
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
-            Mock.Of<IUserRepository>());
+            Mock.Of<IUserRepository>(),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult<Image> result = await handler.HandleAsync(
             new SetCurrentImageCommand(

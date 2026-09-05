@@ -1,0 +1,89 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Handlers;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Users;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Images.Handlers;
+
+public sealed class SetCurrentImageCommandHandlerTests
+{
+    [Fact]
+    public async Task HandleAsync_WhenUserAvatarChanges_ShouldFenceThePublicSourceRevision()
+    {
+        Image avatar = new Image
+        {
+            Id = "avatar-new",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+        };
+        User user = new User
+        {
+            Id = "owner-1",
+            PublicDisplayName = "Camille",
+            AvatarUrl = "/images/avatar-old",
+            IsActivated = true,
+        };
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            "personal-ranking:owner-1");
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdAsync("avatar-new", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(avatar);
+        images.Setup(value => value.SetCurrentAsync(
+                "avatar-new",
+                ImageOwnerType.User,
+                "owner-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(avatar);
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(user);
+        users.Setup(value => value.UpdateAsync(
+                "owner-1",
+                It.Is<User>(updated => updated.AvatarUrl == "/images/avatar-new"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginIdentityMutationAsync(
+                "owner-1",
+                It.Is<PersonalRankingShareIdentityState>(state =>
+                    state.AvatarUrl == "/images/avatar-old"),
+                It.Is<PersonalRankingShareIdentityState>(state =>
+                    state.AvatarUrl == "/images/avatar-new"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mutationLease);
+        revisions.Setup(value => value.CompleteMutationAsync(
+                mutationLease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        SetCurrentImageCommandHandler handler = new SetCurrentImageCommandHandler(
+            images.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            users.Object,
+            revisions.Object);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new SetCurrentImageCommand("avatar-new", ImageOwnerType.User, "owner-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("/images/avatar-new", user.AvatarUrl);
+        images.VerifyAll();
+        users.VerifyAll();
+        revisions.VerifyAll();
+    }
+}

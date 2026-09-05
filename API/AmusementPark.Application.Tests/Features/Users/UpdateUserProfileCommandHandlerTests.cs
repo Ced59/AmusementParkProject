@@ -5,9 +5,11 @@ using AmusementPark.Application.Features.Users.Handlers;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
 using Moq;
+using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
 
 namespace AmusementPark.Application.Tests.Features.Users;
@@ -197,7 +199,9 @@ public sealed class UpdateUserProfileCommandHandlerTests
             new Mock<IRefreshTokenFactory>(MockBehavior.Strict).Object,
             new Mock<ILocalAccountEmailService>(MockBehavior.Strict).Object,
             new Mock<IUserAuthenticationSettings>(MockBehavior.Strict).Object,
-            shareSourceRevisions ?? CreateShareSourceRevisionRepository());
+            new PersonalRankingShareSourceRevisionGuard(
+                shareSourceRevisions ?? CreateShareSourceRevisionRepository(),
+                NullLogger<PersonalRankingShareSourceRevisionGuard>.Instance));
     }
 
     private static IShareSourceRevisionRepository CreateShareSourceRevisionRepository()

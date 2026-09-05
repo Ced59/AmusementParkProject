@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Core.Domain.Images;
@@ -45,7 +46,8 @@ public sealed class DeleteImageCommandHandlerTests
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
             Mock.Of<IUserRepository>(),
-            comments.Object);
+            comments.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
 
         ApplicationResult result = await handler.HandleAsync(
             new DeleteImageCommand("image-1"),
