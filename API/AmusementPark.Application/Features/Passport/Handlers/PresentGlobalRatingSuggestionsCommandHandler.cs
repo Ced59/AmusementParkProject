@@ -20,7 +20,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
 {
     private readonly IGlobalRatingSuggestionSourceReader sourceReader;
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IPassportClock clock;
@@ -29,7 +28,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     public PresentGlobalRatingSuggestionsCommandHandler(
         IGlobalRatingSuggestionSourceReader sourceReader,
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IPassportClock clock,
@@ -37,7 +35,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
     {
         this.sourceReader = sourceReader;
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.clock = clock;
@@ -71,11 +68,6 @@ public sealed class PresentGlobalRatingSuggestionsCommandHandler
         {
             return ApplicationResult<GlobalRatingSuggestionPresentationResult>.Failure(
                 PassportApplicationErrors.InvalidGlobalRatingSuggestionInteraction());
-        }
-
-        if (!this.featureGate.IsEnabled)
-        {
-            return Success(false, true, Array.Empty<GlobalRatingSuggestionPresentedTargetResult>());
         }
 
         bool isEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);

@@ -40,10 +40,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
         GetGlobalRatingSuggestionsQueryHandler handler = new GetGlobalRatingSuggestionsQueryHandler(
             sources.Object,
             states.Object,
-            new FeatureGate(true),
             parks.Object,
             items.Object,
-            new TestClock(NowUtc),
+            CreateClock(NowUtc),
             new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionsResult> result = await handler.HandleAsync(
@@ -112,10 +111,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
         GetGlobalRatingSuggestionsQueryHandler handler = new GetGlobalRatingSuggestionsQueryHandler(
             sources.Object,
             states.Object,
-            new FeatureGate(true),
             parks.Object,
             items.Object,
-            new TestClock(NowUtc),
+            CreateClock(NowUtc),
             new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionsResult> result = await handler.HandleAsync(
@@ -132,29 +130,31 @@ public sealed class GlobalRatingSuggestionHandlersTests
     }
 
     [Fact]
-    public async Task Query_WhenKillSwitchIsOff_DoesNotReadPrivateObservations()
+    public async Task Query_WhenUserDisabledSuggestions_DoesNotReadPrivateObservations()
     {
         Mock<IGlobalRatingSuggestionSourceReader> sources =
             new Mock<IGlobalRatingSuggestionSourceReader>(MockBehavior.Strict);
         Mock<IGlobalRatingSuggestionStateRepository> states =
             new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(false);
         GetGlobalRatingSuggestionsQueryHandler handler = new GetGlobalRatingSuggestionsQueryHandler(
             sources.Object,
             states.Object,
-            new FeatureGate(false),
             new Mock<IParkRepository>(MockBehavior.Strict).Object,
             new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
-            new TestClock(NowUtc),
+            CreateClock(NowUtc),
             new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionsResult> result = await handler.HandleAsync(
             new GetGlobalRatingSuggestionsQuery("owner-1"));
 
         Assert.True(result.IsSuccess);
-        Assert.False(result.Value!.IsAvailable);
+        Assert.True(result.Value!.IsAvailable);
+        Assert.False(result.Value.IsEnabled);
         Assert.Empty(result.Value.Suggestions);
         sources.VerifyNoOtherCalls();
-        states.VerifyNoOtherCalls();
+        states.VerifyAll();
     }
 
     [Fact]
@@ -166,9 +166,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -230,10 +229,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
             new PresentGlobalRatingSuggestionsCommandHandler(
                 sources.Object,
                 states.Object,
-                new FeatureGate(true),
                 parks.Object,
                 new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPresentationResult> result =
@@ -274,10 +272,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
             new PresentGlobalRatingSuggestionsCommandHandler(
                 sources.Object,
                 states.Object,
-                new FeatureGate(true),
                 new Mock<IParkRepository>(MockBehavior.Strict).Object,
                 new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPresentationResult> result =
@@ -329,10 +326,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
             new PresentGlobalRatingSuggestionsCommandHandler(
                 sources.Object,
                 states.Object,
-                new FeatureGate(true),
                 parks.Object,
                 new Mock<IParkItemRepository>(MockBehavior.Strict).Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPresentationResult> result =
@@ -409,9 +405,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -444,9 +439,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -466,17 +460,18 @@ public sealed class GlobalRatingSuggestionHandlersTests
     }
 
     [Fact]
-    public async Task Interaction_WhenKillSwitchIsOff_DoesNotReadOrWritePrivateState()
+    public async Task Interaction_WhenUserDisabledSuggestions_DoesNotReadOrWritePrivateData()
     {
         Mock<IGlobalRatingSuggestionStateRepository> states =
             new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.IsEnabledAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(false);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(false),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -488,8 +483,9 @@ public sealed class GlobalRatingSuggestionHandlersTests
                 NowUtc));
 
         Assert.True(result.IsSuccess);
-        Assert.False(result.Value!.IsAvailable);
-        states.VerifyNoOtherCalls();
+        Assert.True(result.Value!.IsAvailable);
+        Assert.False(result.Value.IsEnabled);
+        states.VerifyAll();
         ratings.VerifyNoOtherCalls();
     }
 
@@ -523,9 +519,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -577,9 +572,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -639,9 +633,8 @@ public sealed class GlobalRatingSuggestionHandlersTests
         RecordGlobalRatingSuggestionInteractionCommandHandler handler =
             new RecordGlobalRatingSuggestionInteractionCommandHandler(
                 states.Object,
-                new FeatureGate(true),
                 ratings.Object,
-                new TestClock(NowUtc),
+                CreateClock(NowUtc),
                 new GlobalRatingSuggestionPolicy());
 
         ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
@@ -655,6 +648,33 @@ public sealed class GlobalRatingSuggestionHandlersTests
         Assert.True(result.IsSuccess);
         states.VerifyAll();
         ratings.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreferenceUpdate_PreservesTheUserChoiceOnTheStabilizedPath()
+    {
+        Mock<IGlobalRatingSuggestionStateRepository> states =
+            new Mock<IGlobalRatingSuggestionStateRepository>(MockBehavior.Strict);
+        states.Setup(value => value.SetEnabledAsync(
+                "owner-1",
+                false,
+                NowUtc,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        SetGlobalRatingSuggestionsEnabledCommandHandler handler =
+            new SetGlobalRatingSuggestionsEnabledCommandHandler(
+                states.Object,
+                CreateClock(NowUtc));
+
+        ApplicationResult<GlobalRatingSuggestionPreferenceResult> result =
+            await handler.HandleAsync(new SetGlobalRatingSuggestionsEnabledCommand(
+                "owner-1",
+                false));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsAvailable);
+        Assert.False(result.Value.IsEnabled);
+        states.VerifyAll();
     }
 
     private static Mock<IGlobalRatingSuggestionStateRepository> CreateEnabledStates()
@@ -700,23 +720,10 @@ public sealed class GlobalRatingSuggestionHandlersTests
         };
     }
 
-    private sealed class FeatureGate : IGlobalRatingSuggestionFeatureGate
+    private static IPassportClock CreateClock(DateTime utcNow)
     {
-        public FeatureGate(bool isEnabled)
-        {
-            this.IsEnabled = isEnabled;
-        }
-
-        public bool IsEnabled { get; }
-    }
-
-    private sealed class TestClock : IPassportClock
-    {
-        public TestClock(DateTime utcNow)
-        {
-            this.UtcNow = utcNow;
-        }
-
-        public DateTime UtcNow { get; }
+        Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
+        clock.SetupGet(value => value.UtcNow).Returns(utcNow);
+        return clock.Object;
     }
 }

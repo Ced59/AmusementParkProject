@@ -236,8 +236,6 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IGlobalRatingSuggestionAnalyticsOutboxReconciler,
             GlobalRatingSuggestionStateRepository>();
         services.AddHostedService<GlobalRatingSuggestionAnalyticsOutboxBackgroundService>();
-        services.AddSingleton<IGlobalRatingSuggestionFeatureGate,
-            ConfiguredGlobalRatingSuggestionFeatureGate>();
         services.AddScoped<PassportAuditStore>();
         services.AddScoped<IPassportAuditPublisher>(serviceProvider =>
             serviceProvider.GetRequiredService<PassportAuditStore>());

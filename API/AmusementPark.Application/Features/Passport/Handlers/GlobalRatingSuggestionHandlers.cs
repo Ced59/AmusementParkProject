@@ -22,7 +22,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
 
     private readonly IGlobalRatingSuggestionSourceReader sourceReader;
     private readonly IGlobalRatingSuggestionStateRepository stateRepository;
-    private readonly IGlobalRatingSuggestionFeatureGate featureGate;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IPassportClock clock;
@@ -31,7 +30,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
     public GetGlobalRatingSuggestionsQueryHandler(
         IGlobalRatingSuggestionSourceReader sourceReader,
         IGlobalRatingSuggestionStateRepository stateRepository,
-        IGlobalRatingSuggestionFeatureGate featureGate,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IPassportClock clock,
@@ -39,7 +37,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
     {
         this.sourceReader = sourceReader;
         this.stateRepository = stateRepository;
-        this.featureGate = featureGate;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.clock = clock;
@@ -62,12 +59,6 @@ public sealed class GetGlobalRatingSuggestionsQueryHandler
                     exception.ErrorCode,
                     exception.Message,
                     exception.ParamName));
-        }
-
-        if (!this.featureGate.IsEnabled)
-        {
-            return ApplicationResult<GlobalRatingSuggestionsResult>.Success(
-                CreateEmpty(false, true));
         }
 
         bool userEnabled = await this.stateRepository.IsEnabledAsync(userId, cancellationToken);
