@@ -11,7 +11,7 @@ using Xunit;
 
 namespace AmusementPark.Application.Tests.Features.Ratings.Services;
 
-public sealed class RatingRankingAdministrationServicesTests
+public sealed class RatingRankingAdministrationServiceTests
 {
     [Theory]
     [InlineData(false)]
