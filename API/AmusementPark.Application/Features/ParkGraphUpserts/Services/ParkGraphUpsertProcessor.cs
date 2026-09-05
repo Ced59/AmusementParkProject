@@ -16,6 +16,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
@@ -273,14 +274,42 @@ public sealed partial class ParkGraphUpsertProcessor
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
         bool wasPubliclyDiscoverable = targetPark.IsPubliclyDiscoverable();
 
+        int changeCountBeforeParkPatch = result.Changes.Count;
         ParkGraphUpsertChange parkChange = BuildEntityChange("Park", targetPark.Id, "park", targetPark.Name ?? "Parc", parkWillBeCreated ? "Created" : "Unchanged", parkWillBeCreated ? "createIfMissing" : "id");
         PatchPark(targetPark, parkPatch, identity, founderKeys, operatorKeys, parkChange, result, parkWillBeCreated);
+        if (result.Errors.Count == 0)
+        {
+            IReadOnlyCollection<string> patchedOfficialMapIds = result.Changes
+                .Skip(changeCountBeforeParkPatch)
+                .Where(static change => string.Equals(change.EntityType, "ParkOfficialMap", StringComparison.Ordinal))
+                .Select(static change => change.EntityId)
+                .Where(static id => !string.IsNullOrWhiteSpace(id))
+                .Select(static id => id!)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
+            await this.ValidateOfficialMapStorageAsync(
+                targetPark,
+                patchedOfficialMapIds,
+                result,
+                cancellationToken);
+        }
+
         if (parkChange.Fields.Count > 0 || parkWillBeCreated)
         {
             parkChange.ChangeType = parkWillBeCreated ? "Created" : "Updated";
         }
 
         result.Changes.Add(parkChange);
+
+        if (result.Errors.Count > 0)
+        {
+            result.CanApply = false;
+            FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return apply
+                ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car les données du parc sont invalides."))
+                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
 
         if (apply)
         {
@@ -341,6 +370,53 @@ public sealed partial class ParkGraphUpsertProcessor
         FinalizeCounts(result);
         await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
         return ApplicationResult<ParkGraphUpsertResult>.Success(result);
+    }
+
+    private async Task ValidateOfficialMapStorageAsync(
+        Park park,
+        IReadOnlyCollection<string> officialMapIds,
+        ParkGraphUpsertResult result,
+        CancellationToken cancellationToken)
+    {
+        List<ParkOfficialMap> storedMaps = park.OfficialMaps
+            .Where(officialMap => officialMapIds.Contains(officialMap.Id, StringComparer.OrdinalIgnoreCase)
+                && !string.IsNullOrWhiteSpace(officialMap.StorageKey))
+            .ToList();
+        if (storedMaps.Count == 0)
+        {
+            return;
+        }
+
+        if (this.parkOfficialMapBinaryStorage is null)
+        {
+            result.Errors.Add("La validation du stockage des cartes officielles n'est pas disponible dans ce contexte.");
+            return;
+        }
+
+        foreach (ParkOfficialMap officialMap in storedMaps)
+        {
+            ParkOfficialMapBinaryMetadata? metadata = await this.parkOfficialMapBinaryStorage.GetMetadataAsync(
+                officialMap.StorageKey!,
+                cancellationToken);
+            if (metadata is null)
+            {
+                result.Errors.Add($"Le fichier stocké de la carte officielle '{officialMap.Id}' est introuvable.");
+                continue;
+            }
+
+            if (officialMap.SizeInBytes != metadata.SizeInBytes)
+            {
+                result.Errors.Add($"sizeInBytes ne correspond pas au fichier stocké de la carte officielle '{officialMap.Id}'.");
+            }
+
+            if (!string.Equals(
+                officialMap.ContentType?.Trim(),
+                metadata.ContentType.Trim(),
+                StringComparison.OrdinalIgnoreCase))
+            {
+                result.Errors.Add($"contentType ne correspond pas au fichier stocké de la carte officielle '{officialMap.Id}'.");
+            }
+        }
     }
 
     private async Task ProcessReferencesAsync(

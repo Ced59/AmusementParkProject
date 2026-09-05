@@ -26,6 +26,7 @@ internal static class ParkGraphOfficialMapUpsertPatcher
         List<ParkOfficialMap> officialMaps = park.OfficialMaps
             .Select(static officialMap => CloneOfficialMap(officialMap))
             .ToList();
+        HashSet<string> processedIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         HashSet<string> processedIdentities = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (JsonElement patch in patches.Value.EnumerateArray())
@@ -100,6 +101,12 @@ internal static class ParkGraphOfficialMapUpsertPatcher
             }
 
             string identity = BuildOfficialMapIdentity(candidate);
+            string? requestedId = id ?? key;
+            if (!string.IsNullOrWhiteSpace(requestedId) && !processedIds.Add(requestedId))
+            {
+                validationErrors.Add($"L'identifiant de carte officielle '{requestedId}' est défini plusieurs fois dans le même lot.");
+            }
+
             if (!processedIdentities.Add(identity))
             {
                 validationErrors.Add($"La carte officielle '{identity}' est définie plusieurs fois dans le même lot.");

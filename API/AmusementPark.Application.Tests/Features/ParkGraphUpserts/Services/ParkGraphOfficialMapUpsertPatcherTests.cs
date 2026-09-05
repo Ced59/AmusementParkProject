@@ -55,4 +55,35 @@ public sealed class ParkGraphOfficialMapUpsertPatcherTests
         Assert.NotEmpty(result.Errors);
         Assert.Empty(park.OfficialMaps);
     }
+
+    [Fact]
+    public void Patch_WhenAnIdIsRepeatedWithDifferentIdentities_ShouldRejectTheBatch()
+    {
+        Park park = new Park { Id = "park-1", Name = "Map Park" };
+        ParkGraphUpsertResult result = new ParkGraphUpsertResult();
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "officialMaps": [
+            {
+              "id": "shared-map-id",
+              "year": 2025,
+              "format": "Pdf",
+              "documentUrl": "https://park.example/map-2025.pdf"
+            },
+            {
+              "id": "shared-map-id",
+              "year": 2026,
+              "format": "Pdf",
+              "documentUrl": "https://park.example/map-2026.pdf"
+            }
+          ]
+        }
+        """);
+
+        ParkGraphOfficialMapUpsertPatcher.Patch(park, document.RootElement, result);
+
+        Assert.Contains(result.Errors, static error => error.Contains("identifiant", StringComparison.Ordinal)
+            && error.Contains("plusieurs fois", StringComparison.Ordinal));
+        Assert.Empty(park.OfficialMaps);
+    }
 }

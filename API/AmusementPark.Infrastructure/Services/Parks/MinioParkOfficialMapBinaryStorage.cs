@@ -1,7 +1,9 @@
 using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
 using Minio;
+using Minio.DataModel;
 using Minio.DataModel.Args;
 
 namespace AmusementPark.Infrastructure.Services.Parks;
@@ -65,6 +67,29 @@ public sealed class MinioParkOfficialMapBinaryStorage : IParkOfficialMapBinarySt
         catch (Minio.Exceptions.ObjectNotFoundException)
         {
             return false;
+        }
+    }
+
+    public async Task<ParkOfficialMapBinaryMetadata?> GetMetadataAsync(
+        string storageKey,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(storageKey);
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(storageKey),
+                cancellationToken);
+
+            return new ParkOfficialMapBinaryMetadata(
+                objectStat.Size,
+                objectStat.ContentType ?? string.Empty);
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
         }
     }
 

@@ -16,6 +16,7 @@ using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkPricing.Ports;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
@@ -4301,6 +4302,12 @@ public sealed class ParkGraphUpsertProcessorTests
         historyRepository
             .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<IParkOfficialMapBinaryStorage> officialMapStorage = new Mock<IParkOfficialMapBinaryStorage>(MockBehavior.Strict);
+        officialMapStorage
+            .Setup(value => value.GetMetadataAsync(
+                "official-maps/park-1/map-2026-fr.pdf",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkOfficialMapBinaryMetadata(1234, "application/pdf"));
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
             Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
@@ -4313,7 +4320,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
             historyRepository.Object,
             Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
-            MeasurementConversionService.Instance);
+            MeasurementConversionService.Instance,
+            parkOfficialMapBinaryStorage: officialMapStorage.Object);
         using JsonDocument document = JsonDocument.Parse("""
         {
           "identity": { "parkId": "park-1" },
@@ -4354,6 +4362,98 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(result.Value.Changes, static change => change.EntityType == "ParkOfficialMap" && change.ChangeType == "Created");
         parkRepository.VerifyAll();
         historyRepository.VerifyAll();
+        officialMapStorage.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(null, null, "introuvable")]
+    [InlineData(42L, "application/pdf", "sizeInBytes")]
+    [InlineData(1234L, "application/zip", "contentType")]
+    public async Task ApplyAsync_WhenOfficialMapStoredFileMetadataIsInvalid_ShouldNotPersistTheMap(
+        long? storedSize,
+        string? storedContentType,
+        string expectedError)
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Map Park",
+            CountryCode = "FR",
+            IsVisible = true,
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        ParkGraphUpsertHistoryEntry? savedHistoryEntry = null;
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkGraphUpsertHistoryEntry, CancellationToken>((entry, _) => savedHistoryEntry = entry)
+            .Returns(Task.CompletedTask);
+        Mock<IParkOfficialMapBinaryStorage> officialMapStorage = new Mock<IParkOfficialMapBinaryStorage>(MockBehavior.Strict);
+        ParkOfficialMapBinaryMetadata? storedMetadata = storedSize.HasValue && storedContentType is not null
+            ? new ParkOfficialMapBinaryMetadata(storedSize.Value, storedContentType)
+            : null;
+        officialMapStorage
+            .Setup(value => value.GetMetadataAsync(
+                "official-maps/park-1/missing-map.pdf",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(storedMetadata);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance,
+            parkOfficialMapBinaryStorage: officialMapStorage.Object);
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "identity": { "parkId": "park-1" },
+          "park": {
+            "officialMaps": [
+              {
+                "id": "missing-map",
+                "year": 2026,
+                "format": "Pdf",
+                "storageKey": "official-maps/park-1/missing-map.pdf",
+                "originalFileName": "plan-2026.pdf",
+                "contentType": "application/pdf",
+                "sizeInBytes": 1234,
+                "isVisible": true
+              }
+            ]
+          }
+        }
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            new ParkGraphUpsertRequest
+            {
+                TargetParkId = "park-1",
+                Document = document.RootElement.Clone(),
+                RawJson = document.RootElement.GetRawText(),
+            },
+            "user-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.NotNull(savedHistoryEntry);
+        Assert.Contains(savedHistoryEntry.Result.Errors, error => error.Contains(expectedError, StringComparison.Ordinal));
+        parkRepository.Verify(value => value.UpdateAsync(
+            It.IsAny<string>(),
+            It.IsAny<Park>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.VerifyAll();
+        historyRepository.VerifyAll();
+        officialMapStorage.VerifyAll();
     }
 
     private sealed class FixedTimeProvider : TimeProvider

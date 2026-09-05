@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Features.Parks.Contracts;
 
 namespace AmusementPark.Application.Features.Parks.Ports;
 
@@ -14,6 +15,10 @@ public interface IParkOfficialMapBinaryStorage
         CancellationToken cancellationToken);
 
     Task<bool> ExistsAsync(string storageKey, CancellationToken cancellationToken);
+
+    Task<ParkOfficialMapBinaryMetadata?> GetMetadataAsync(
+        string storageKey,
+        CancellationToken cancellationToken);
 
     Task CopyToAsync(
         string storageKey,
