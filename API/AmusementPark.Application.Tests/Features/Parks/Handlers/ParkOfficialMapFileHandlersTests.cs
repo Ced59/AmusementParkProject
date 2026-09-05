@@ -94,7 +94,7 @@ public sealed class ParkOfficialMapFileHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park.official-map.file-not-found");
-        storage.Verify(value => value.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        storage.Verify(value => value.ExistsAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
     }
 
@@ -117,6 +117,7 @@ public sealed class ParkOfficialMapFileHandlersTests
                     StorageKey = storageKey,
                     OriginalFileName = "official-map-2026.pdf",
                     ContentType = "application/pdf",
+                    SizeInBytes = 3,
                     IsVisible = true,
                 },
             },
@@ -124,10 +125,13 @@ public sealed class ParkOfficialMapFileHandlersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository.Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
-        MemoryStream content = new MemoryStream(new byte[] { 1, 2, 3 });
+        byte[] content = new byte[] { 1, 2, 3 };
         Mock<IParkOfficialMapBinaryStorage> storage = new Mock<IParkOfficialMapBinaryStorage>(MockBehavior.Strict);
-        storage.Setup(value => value.GetAsync(storageKey, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(content);
+        storage.Setup(value => value.ExistsAsync(storageKey, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        storage.Setup(value => value.CopyToAsync(storageKey, It.IsAny<Stream>(), 0, null, It.IsAny<CancellationToken>()))
+            .Callback<string, Stream, long, long?, CancellationToken>((_, destination, _, _, _) => destination.Write(content))
+            .Returns(Task.CompletedTask);
         GetParkOfficialMapFileQueryHandler handler = new GetParkOfficialMapFileQueryHandler(
             parkRepository.Object,
             storage.Object);
@@ -136,10 +140,13 @@ public sealed class ParkOfficialMapFileHandlersTests
             new GetParkOfficialMapFileQuery("park-1", "map-2026"));
 
         Assert.True(result.IsSuccess);
-        Assert.Same(content, result.Value!.Content);
-        Assert.Equal("application/pdf", result.Value.ContentType);
+        Assert.Equal("application/pdf", result.Value!.ContentType);
         Assert.Equal("official-map-2026.pdf", result.Value.FileName);
+        Assert.Equal(3, result.Value.SizeInBytes);
         Assert.True(result.Value.DisplayInline);
+        await using MemoryStream destination = new MemoryStream();
+        await result.Value.CopyToAsync(destination, 0, null, CancellationToken.None);
+        Assert.Equal(content, destination.ToArray());
         storage.VerifyAll();
         parkRepository.VerifyAll();
     }

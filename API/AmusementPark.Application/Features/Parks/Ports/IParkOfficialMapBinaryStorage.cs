@@ -13,5 +13,17 @@ public interface IParkOfficialMapBinaryStorage
         string canonicalContentType,
         CancellationToken cancellationToken);
 
-    Task<Stream?> GetAsync(string storageKey, CancellationToken cancellationToken);
+    Task<bool> ExistsAsync(string storageKey, CancellationToken cancellationToken);
+
+    Task CopyToAsync(
+        string storageKey,
+        Stream destination,
+        long offset,
+        long? length,
+        CancellationToken cancellationToken);
+
+    Task<bool> CopyAsync(
+        string sourceStorageKey,
+        string targetStorageKey,
+        CancellationToken cancellationToken);
 }

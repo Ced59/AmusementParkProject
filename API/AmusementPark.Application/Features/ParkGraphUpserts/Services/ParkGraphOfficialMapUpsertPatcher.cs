@@ -17,6 +17,7 @@ internal static class ParkGraphOfficialMapUpsertPatcher
             return;
         }
 
+        int errorCountBeforePatch = result.Errors.Count;
         List<ParkOfficialMap> officialMaps = park.OfficialMaps
             .Select(static officialMap => CloneOfficialMap(officialMap))
             .ToList();
@@ -129,6 +130,11 @@ internal static class ParkGraphOfficialMapUpsertPatcher
 
             int existingIndex = officialMaps.FindIndex(officialMap => string.Equals(officialMap.Id, existing!.Id, StringComparison.OrdinalIgnoreCase));
             officialMaps[existingIndex] = candidate;
+        }
+
+        if (result.Errors.Count > errorCountBeforePatch)
+        {
+            return;
         }
 
         park.OfficialMaps = officialMaps

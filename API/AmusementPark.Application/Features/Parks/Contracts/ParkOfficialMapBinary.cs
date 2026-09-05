@@ -2,7 +2,7 @@ namespace AmusementPark.Application.Features.Parks.Contracts;
 
 public sealed class ParkOfficialMapBinary
 {
-    public required Stream Content { get; init; }
+    public required Func<Stream, long, long?, CancellationToken, Task> CopyToAsync { get; init; }
 
     public required string ContentType { get; init; }
 

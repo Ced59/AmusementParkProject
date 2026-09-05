@@ -52,6 +52,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder;
     private readonly IHistoryEventRepository? historyEventRepository;
     private readonly ISocialPublicationService? socialPublicationService;
+    private readonly IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -72,7 +73,8 @@ public sealed partial class ParkGraphUpsertProcessor
         IHistoryEventRepository? historyEventRepository = null,
         IStandaloneAttractionRepository? standaloneAttractionRepository = null,
         ISocialPublicationService? socialPublicationService = null,
-        IImageBinaryStorage? imageBinaryStorage = null)
+        IImageBinaryStorage? imageBinaryStorage = null,
+        IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -93,6 +95,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.standaloneAttractionRepository = standaloneAttractionRepository;
         this.socialPublicationService = socialPublicationService;
         this.imageBinaryStorage = imageBinaryStorage;
+        this.parkOfficialMapBinaryStorage = parkOfficialMapBinaryStorage;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)

@@ -206,7 +206,12 @@ public sealed partial class ParkGraphUpsertProcessor
         PublicSeoParkSnapshot? previousTargetPark = PublicSeoParkSnapshot.FromPark(target);
         Park merged = ClonePark(target);
         ParkGraphUpsertChange targetChange = BuildEntityChange("Park", target.Id, null, target.Name ?? target.Id, "Unchanged", $"merge:{source.Id}");
-        ApplyParkMergeSections(source, merged, sections, targetChange);
+        int errorCountBeforeSections = result.Errors.Count;
+        ApplyParkMergeSections(source, merged, sections, targetChange, result);
+        if (result.Errors.Count > errorCountBeforeSections)
+        {
+            return;
+        }
 
         IReadOnlyCollection<ParkZone> sourceZones = await this.parkZoneRepository.GetByParkIdAsync(source.Id, cancellationToken);
         IReadOnlyCollection<ParkItem> sourceItems = await this.parkItemRepository.GetByParkIdAsync(source.Id, true, cancellationToken);
@@ -223,6 +228,10 @@ public sealed partial class ParkGraphUpsertProcessor
         AddAttachmentCountChange(targetChange, "attachments.zonesMoved", sourceZones.Count);
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
         AddAttachmentCountChange(targetChange, "attachments.imagesMoved", sourceImages.Count);
+        int officialMapFileCount = ShouldTakeSourceSection(sections, "officialMaps")
+            ? source.OfficialMaps.Count(static officialMap => !string.IsNullOrWhiteSpace(officialMap.StorageKey))
+            : 0;
+        AddAttachmentCountChange(targetChange, "attachments.officialMapFilesCopied", officialMapFileCount);
         if (shouldMoveSourcePricing && sourcePricing is not null)
         {
             AddChange(targetChange, "attachments.pricingMoved", targetPricing?.ParkId, sourcePricing.ParkId);
@@ -244,6 +253,17 @@ public sealed partial class ParkGraphUpsertProcessor
         ParkGraphUpsertChange sourceChange = BuildDeletedMergeSourceChange("Park", source.Id, source.Name ?? source.Id, target.Id);
         if (apply)
         {
+            bool officialMapFilesCopied = await this.CopyOfficialMapFilesForMergeAsync(
+                source,
+                merged,
+                sections,
+                result,
+                cancellationToken);
+            if (!officialMapFilesCopied)
+            {
+                return;
+            }
+
             Park? updatedPark = targetChange.Fields.Count > 0
                 ? await this.parkRepository.UpdateAsync(merged.Id, merged, cancellationToken)
                 : merged;

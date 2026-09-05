@@ -49,6 +49,9 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(
             dependencyInjectionConstructor.GetParameters(),
             static parameter => parameter.ParameterType == typeof(IImageBinaryStorage));
+        Assert.Contains(
+            dependencyInjectionConstructor.GetParameters(),
+            static parameter => parameter.ParameterType == typeof(IParkOfficialMapBinaryStorage));
     }
 
     [Fact]
@@ -132,6 +135,20 @@ public sealed class ParkGraphUpsertProcessorTests
             Status = mergedStatus,
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.Validated,
+            OfficialMaps = new List<ParkOfficialMap>
+            {
+                new ParkOfficialMap
+                {
+                    Id = "map-2026",
+                    Year = 2026,
+                    Format = ParkOfficialMapFormat.Pdf,
+                    StorageKey = "official-maps/park-source/map-2026.0123456789abcdef0123456789abcdef.pdf",
+                    OriginalFileName = "map-2026.pdf",
+                    ContentType = "application/pdf",
+                    SizeInBytes = 1024,
+                    IsVisible = true,
+                },
+            },
         };
         Park targetPark = new Park
         {
@@ -236,6 +253,13 @@ public sealed class ParkGraphUpsertProcessorTests
         publicSeoUpdateNotifier
             .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<IParkOfficialMapBinaryStorage> officialMapStorage = new Mock<IParkOfficialMapBinaryStorage>(MockBehavior.Strict);
+        officialMapStorage
+            .Setup(value => value.CopyAsync(
+                "official-maps/park-source/map-2026.0123456789abcdef0123456789abcdef.pdf",
+                "official-maps/park-target/map-2026.0123456789abcdef0123456789abcdef.pdf",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
@@ -251,7 +275,8 @@ public sealed class ParkGraphUpsertProcessorTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             parkPricingRepository.Object,
-            Mock.Of<IImageBinaryStorage>(MockBehavior.Strict));
+            Mock.Of<IImageBinaryStorage>(MockBehavior.Strict),
+            parkOfficialMapBinaryStorage: officialMapStorage.Object);
 
         string rawJson = preferSourcePricing
             ? """
@@ -264,7 +289,8 @@ public sealed class ParkGraphUpsertProcessorTests
                     "targetId": "park-target",
                     "sections": {
                       "identity": "source",
-                      "pricing": "source"
+                      "pricing": "source",
+                      "officialMaps": "source"
                     }
                   }
                 ]
@@ -279,7 +305,8 @@ public sealed class ParkGraphUpsertProcessorTests
                     "sourceId": "park-source",
                     "targetId": "park-target",
                     "sections": {
-                      "identity": "source"
+                      "identity": "source",
+                      "officialMaps": "source"
                     }
                   }
                 ]
@@ -304,6 +331,10 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal(new[] { "Source Park", "Source Park" }, updatedParkNames);
         Assert.NotNull(persistedTargetPark);
         Assert.Equal("BE", persistedTargetPark.CountryCode);
+        ParkOfficialMap officialMap = Assert.Single(persistedTargetPark.OfficialMaps);
+        Assert.Equal(
+            "official-maps/park-target/map-2026.0123456789abcdef0123456789abcdef.pdf",
+            officialMap.StorageKey);
         if (expectedPricingMigration)
         {
             Assert.NotNull(migratedPricing);
@@ -329,6 +360,7 @@ public sealed class ParkGraphUpsertProcessorTests
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
         parkPricingRepository.VerifyAll();
+        officialMapStorage.VerifyAll();
     }
 
     [Fact]

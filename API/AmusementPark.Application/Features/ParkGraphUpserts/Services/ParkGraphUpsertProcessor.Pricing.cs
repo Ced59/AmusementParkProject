@@ -59,7 +59,8 @@ public sealed partial class ParkGraphUpsertProcessor
         ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
         IHistoryEventRepository? historyEventRepository = null,
         IStandaloneAttractionRepository? standaloneAttractionRepository = null,
-        ISocialPublicationService? socialPublicationService = null)
+        ISocialPublicationService? socialPublicationService = null,
+        IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null)
         : this(
             parkRepository,
             parkZoneRepository,
@@ -79,7 +80,8 @@ public sealed partial class ParkGraphUpsertProcessor
             historyEventRepository,
             standaloneAttractionRepository,
             socialPublicationService,
-            imageBinaryStorage)
+            imageBinaryStorage,
+            parkOfficialMapBinaryStorage)
     {
         this.parkPricingRepository = parkPricingRepository;
     }

@@ -38,8 +38,8 @@ public sealed class GetParkOfficialMapFileQueryHandler
             return ApplicationResult<ParkOfficialMapBinary>.Failure(ParkApplicationErrors.OfficialMapFileNotFound());
         }
 
-        Stream? content = await this.storage.GetAsync(officialMap.StorageKey, cancellationToken);
-        if (content is null)
+        bool exists = await this.storage.ExistsAsync(officialMap.StorageKey, cancellationToken);
+        if (!exists)
         {
             return ApplicationResult<ParkOfficialMapBinary>.Failure(ParkApplicationErrors.OfficialMapFileNotFound());
         }
@@ -47,7 +47,12 @@ public sealed class GetParkOfficialMapFileQueryHandler
         string contentType = officialMap.ContentType ?? "application/octet-stream";
         return ApplicationResult<ParkOfficialMapBinary>.Success(new ParkOfficialMapBinary
         {
-            Content = content,
+            CopyToAsync = (destination, offset, length, writeCancellationToken) => this.storage.CopyToAsync(
+                officialMap.StorageKey,
+                destination,
+                offset,
+                length,
+                writeCancellationToken),
             ContentType = contentType,
             FileName = string.IsNullOrWhiteSpace(officialMap.OriginalFileName)
                 ? $"official-map-{officialMap.Year}"

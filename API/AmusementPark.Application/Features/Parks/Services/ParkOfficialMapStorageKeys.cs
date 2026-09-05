@@ -25,4 +25,21 @@ public static class ParkOfficialMapStorageKeys
             && storageKey.Length > expectedPrefix.Length
             && !storageKey.AsSpan(expectedPrefix.Length).Contains('/');
     }
+
+    public static string? ReassignToPark(
+        string storageKey,
+        string sourceParkId,
+        string targetParkId,
+        string officialMapId)
+    {
+        if (!BelongsTo(storageKey, sourceParkId, officialMapId)
+            || string.IsNullOrWhiteSpace(targetParkId))
+        {
+            return null;
+        }
+
+        string sourceDirectory = $"official-maps/{Uri.EscapeDataString(sourceParkId.Trim())}/";
+        string targetDirectory = $"official-maps/{Uri.EscapeDataString(targetParkId.Trim())}/";
+        return targetDirectory + storageKey[sourceDirectory.Length..];
+    }
 }

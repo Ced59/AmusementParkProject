@@ -1765,10 +1765,10 @@ describe('SeoService', () => {
     );
 
     expect(documentRef.title).toBe(
-      'Carte de Parc Demo — Amusement Parks',
+      'Carte interactive de Parc Demo — Amusement Parks',
     );
     expect(readMetaContent('meta[name="description"]')).toBe(
-      'Explore les lieux géolocalisés et les plans officiels disponibles de Parc Demo.',
+      'Carte interactive de Parc Demo.',
     );
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
     expect(readCanonicalHref()).toBe(
@@ -1804,6 +1804,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.title).toBe('Carte de Parc Demo — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toBe(
+      'Explore les lieux géolocalisés et les plans officiels disponibles de Parc Demo.',
+    );
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
   });
 

@@ -49,7 +49,7 @@ public sealed class MinioParkOfficialMapBinaryStorage : IParkOfficialMapBinarySt
             cancellationToken);
     }
 
-    public async Task<Stream?> GetAsync(string storageKey, CancellationToken cancellationToken)
+    public async Task<bool> ExistsAsync(string storageKey, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(storageKey);
         try
@@ -60,19 +60,59 @@ public sealed class MinioParkOfficialMapBinaryStorage : IParkOfficialMapBinarySt
                     .WithObject(storageKey),
                 cancellationToken);
 
-            MemoryStream content = new MemoryStream();
-            await this.minioClient.GetObjectAsync(
-                new GetObjectArgs()
-                    .WithBucket(this.settings.Bucket)
-                    .WithObject(storageKey)
-                    .WithCallbackStream(source => source.CopyTo(content)),
-                cancellationToken);
-            content.Position = 0;
-            return content;
+            return true;
         }
         catch (Minio.Exceptions.ObjectNotFoundException)
         {
-            return null;
+            return false;
+        }
+    }
+
+    public async Task CopyToAsync(
+        string storageKey,
+        Stream destination,
+        long offset,
+        long? length,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(storageKey);
+        ArgumentNullException.ThrowIfNull(destination);
+
+        GetObjectArgs arguments = new GetObjectArgs()
+            .WithBucket(this.settings.Bucket)
+            .WithObject(storageKey)
+            .WithCallbackStream((source, callbackCancellationToken) =>
+                source.CopyToAsync(destination, callbackCancellationToken));
+        if (length.HasValue)
+        {
+            arguments = arguments.WithOffsetAndLength(offset, length.Value);
+        }
+
+        await this.minioClient.GetObjectAsync(arguments, cancellationToken);
+    }
+
+    public async Task<bool> CopyAsync(
+        string sourceStorageKey,
+        string targetStorageKey,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceStorageKey);
+        ArgumentException.ThrowIfNullOrWhiteSpace(targetStorageKey);
+        try
+        {
+            await this.minioClient.CopyObjectAsync(
+                new CopyObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(targetStorageKey)
+                    .WithCopyObjectSource(new CopySourceObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(sourceStorageKey)),
+                cancellationToken);
+            return true;
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return false;
         }
     }
 

@@ -10,7 +10,7 @@ Rassembler sur la page carte d’un parc deux lectures complémentaires : la car
 ## Lot 5.1.0
 
 - modèle embarqué `ParkOfficialMap`, versionné par année, langue et format ;
-- stockage MinIO dédié aux documents PDF, images, KML, KMZ et ZIP, sans détour par le catalogue ou le traitement des images ;
+- stockage MinIO dédié aux documents PDF, images, KML, KMZ et ZIP, sans détour par le catalogue ou le traitement des images, avec diffusion en flux et requêtes partielles ;
 - upload contrôlé `PARK_DATA_EDITOR`, métadonnées de provenance et publication privée par défaut ;
 - export, Preview et Apply des cartes dans tous les flux Park Graph Upsert, simples comme bulk ;
 - deux onglets publics accessibles et réutilisation du même composant visuel sur la galerie d’images ;
@@ -42,7 +42,6 @@ Indicateurs : nombre de millésimes par parc, année la plus ancienne, trous de 
 ### Phase C — Exploitation et durcissement
 
 - mesurer le poids et la fréquence de consultation des fichiers ;
-- passer à une diffusion directe ou en flux si la charge mémoire des gros documents devient significative ;
 - prévoir une politique de rétention pour les binaires orphelins uniquement avec un inventaire, un délai de sécurité et une autorisation de suppression explicite ;
 - étudier un écran d’administration dédié si le flux JSON contrôlé ne suffit plus aux éditeurs humains ;
 - réutiliser le contrat public dans les futures applications mobiles sans dupliquer les règles de millésime.
