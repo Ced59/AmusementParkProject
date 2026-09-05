@@ -160,6 +160,7 @@ export class PassportVisitEditorStateFacade {
   private readonly busyOccurrenceIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
   private readonly loadErrorKeySignal = signal<string | null>(null);
   private readonly attractionErrorKeySignal = signal<string | null>(null);
+  private readonly targetEvaluationsStaleSignal = signal<boolean>(false);
   private readonly operationErrorKeySignal = signal<string | null>(null);
   private readonly normalizationNoticeSignal = signal<boolean>(false);
   private readonly pendingAddRecoverySignal = signal<boolean>(false);
@@ -255,6 +256,7 @@ export class PassportVisitEditorStateFacade {
   readonly busyOccurrenceIds: Signal<ReadonlySet<string>> = this.busyOccurrenceIdsSignal.asReadonly();
   readonly loadErrorKey: Signal<string | null> = this.loadErrorKeySignal.asReadonly();
   readonly attractionErrorKey: Signal<string | null> = this.attractionErrorKeySignal.asReadonly();
+  readonly targetEvaluationsStale: Signal<boolean> = this.targetEvaluationsStaleSignal.asReadonly();
   readonly operationErrorKey: Signal<string | null> = this.operationErrorKeySignal.asReadonly();
   readonly normalizationNotice: Signal<boolean> = this.normalizationNoticeSignal.asReadonly();
   readonly pendingAddRecovery: Signal<boolean> = this.pendingAddRecoverySignal.asReadonly();
@@ -263,6 +265,7 @@ export class PassportVisitEditorStateFacade {
   readonly selectionCanSubmit = computed((): boolean =>
     !this.addingSignal()
     && !this.attractionsLoadingSignal()
+    && !this.targetEvaluationsStaleSignal()
     && (this.pendingAddRecoverySignal() || !this.temporalMetadataHasChanges())
     && this.selectedAttractionsSignal().every(
       (selection: PassportAttractionSelectionDraft): boolean =>
@@ -369,6 +372,15 @@ export class PassportVisitEditorStateFacade {
     this.loadVisit(visitId, loadGeneration, 1);
   }
 
+  retryTargetEvaluations(): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || this.attractionsLoadingSignal()) {
+      return;
+    }
+
+    this.refreshLoadedTargetEvaluations(visit.id);
+  }
+
   private loadVisit(visitId: string, loadGeneration: number, attractionPage: number): void {
     this.visitsApi.getVisit(visitId).pipe(
       take(1),
@@ -458,6 +470,7 @@ export class PassportVisitEditorStateFacade {
     if (!visitId
       || (!pendingSubmission && selections.length === 0)
       || this.addingSignal()
+      || this.targetEvaluationsStaleSignal()
       || (!pendingSubmission && this.temporalMetadataHasChanges())) {
       return;
     }
@@ -2072,10 +2085,12 @@ export class PassportVisitEditorStateFacade {
       )
     ]));
     if (parkItemIds.length === 0) {
+      this.targetEvaluationsStaleSignal.set(false);
       return;
     }
 
     const attractionGeneration: number = ++this.attractionLoadGeneration;
+    this.targetEvaluationsStaleSignal.set(true);
     this.attractionsLoadingSignal.set(true);
     this.attractionErrorKeySignal.set(null);
     this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
@@ -2089,6 +2104,7 @@ export class PassportVisitEditorStateFacade {
 
         this.attractionsLoadingSignal.set(false);
         this.applyTargetEvaluations(evaluations);
+        this.targetEvaluationsStaleSignal.set(false);
       },
       error: (): void => {
         if (attractionGeneration !== this.attractionLoadGeneration) {
@@ -2417,6 +2433,7 @@ export class PassportVisitEditorStateFacade {
     this.attractionNamesSignal.set({});
     this.loadErrorKeySignal.set(null);
     this.attractionErrorKeySignal.set(null);
+    this.targetEvaluationsStaleSignal.set(false);
     this.operationErrorKeySignal.set(null);
     this.normalizationNoticeSignal.set(false);
     this.attractionsLoadingSignal.set(false);

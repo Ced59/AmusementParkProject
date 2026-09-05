@@ -624,6 +624,17 @@
   gap: 0.65rem;
 }
 
+.passport-selection__validation-retry {
+  display: grid;
+  min-width: 0;
+  gap: 0.65rem;
+}
+
+.passport-selection__validation-retry button {
+  min-width: 0;
+  justify-self: start;
+}
+
 .passport-selection-card,
 .passport-occurrence__actions > details {
   min-width: 0;
@@ -1189,6 +1200,12 @@ textarea:focus-visible {
   .passport-selection__heading button {
     width: 100%;
     min-width: 0;
+    justify-content: center;
+  }
+
+  .passport-selection__validation-retry button {
+    width: 100%;
+    justify-self: stretch;
     justify-content: center;
   }
 

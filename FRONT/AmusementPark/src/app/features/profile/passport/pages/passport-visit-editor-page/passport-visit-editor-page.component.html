@@ -472,6 +472,26 @@
               </p>
             }
 
+            @if (facade.targetEvaluationsStale()) {
+              <div class="passport-selection__validation-retry">
+                <p class="passport-inline-message passport-inline-message--error" role="alert">
+                  {{ 'passport.editor.errors.attractions' | translate }}
+                </p>
+                <button
+                  appUiButton="ghost"
+                  type="button"
+                  [disabled]="facade.attractionsLoading()"
+                  (click)="facade.retryTargetEvaluations()">
+                  @if (facade.attractionsLoading()) {
+                    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                  } @else {
+                    <i class="pi pi-refresh" aria-hidden="true"></i>
+                  }
+                  <span>{{ 'passport.editor.actions.retry' | translate }}</span>
+                </button>
+              </div>
+            }
+
             <div class="passport-selection__items">
               @for (selection of facade.selectedAttractions(); track trackSelection($index, selection)) {
                 <details class="passport-selection-card" open>
