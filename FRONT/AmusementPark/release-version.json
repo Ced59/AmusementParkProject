@@ -1,6 +1,20 @@
 {
-  "version": "5.0.39",
+  "version": "5.0.40",
   "history": [
+    {
+      "version": "5.0.40",
+      "releasedAt": "2026-09-05",
+      "labels": {
+        "fr": "La fiabilité des vérifications avant mise en ligne a été améliorée.",
+        "en": "Pre-release verification reliability has been improved.",
+        "de": "Die Zuverlässigkeit der Prüfungen vor der Veröffentlichung wurde verbessert.",
+        "nl": "De betrouwbaarheid van controles vóór publicatie is verbeterd.",
+        "it": "È stata migliorata l’affidabilità dei controlli prima della pubblicazione.",
+        "es": "Se ha mejorado la fiabilidad de las comprobaciones previas a la publicación.",
+        "pl": "Zwiększono niezawodność kontroli przed publikacją.",
+        "pt": "A fiabilidade das verificações antes da publicação foi melhorada."
+      }
+    },
     {
       "version": "5.0.39",
       "releasedAt": "2026-09-05",
