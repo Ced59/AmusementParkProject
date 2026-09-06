@@ -1,0 +1,77 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Ratings;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.Core.Domain.Users;
+
+namespace AmusementPark.Application.Features.Sharing.Services;
+
+public sealed class SharePublicationAccessResolver : ISharePublicationAccessResolver
+{
+    private readonly ISharePublicationRepository sharePublicationRepository;
+    private readonly IUserRepository userRepository;
+
+    public SharePublicationAccessResolver(
+        ISharePublicationRepository sharePublicationRepository,
+        IUserRepository userRepository)
+    {
+        this.sharePublicationRepository = sharePublicationRepository
+            ?? throw new ArgumentNullException(nameof(sharePublicationRepository));
+        this.userRepository = userRepository
+            ?? throw new ArgumentNullException(nameof(userRepository));
+    }
+
+    public async Task<ApplicationResult<ResolvedSharePublicationResult>> ResolveAsync(
+        string shareId,
+        SharePublicationType expectedPublicationType,
+        CancellationToken cancellationToken)
+    {
+        if (!ShareToken.TryParse(shareId?.Trim(), out ShareToken shareToken))
+        {
+            return NotFound();
+        }
+
+        SharePublication? publication = await this.sharePublicationRepository.GetResolvableByTokenAsync(
+            shareToken,
+            cancellationToken);
+        if (publication is null
+            || publication.Type != expectedPublicationType
+            || publication.PublishedAtUtc is null)
+        {
+            return NotFound();
+        }
+
+        User? user = await this.userRepository.GetByIdAsync(
+            publication.OwnerUserId,
+            cancellationToken);
+        if (user is null || !user.IsActivated || user.IsBlocked)
+        {
+            return NotFound();
+        }
+
+        string displayName = publication.ContentPolicy.Includes(
+            ShareContentField.PublicDisplayName)
+            ? user.ResolvePublicDisplayName()?.Trim() ?? string.Empty
+            : string.Empty;
+        if (displayName.Length == 0)
+        {
+            displayName = "User";
+        }
+
+        return ApplicationResult<ResolvedSharePublicationResult>.Success(
+            new ResolvedSharePublicationResult(
+                user.Id,
+                displayName,
+                publication.Type,
+                publication.ContentPolicy,
+                publication.PublishedAtUtc.Value));
+    }
+
+    private static ApplicationResult<ResolvedSharePublicationResult> NotFound()
+    {
+        return ApplicationResult<ResolvedSharePublicationResult>.Failure(
+            RatingApplicationErrors.SharedRankingNotFound());
+    }
+}

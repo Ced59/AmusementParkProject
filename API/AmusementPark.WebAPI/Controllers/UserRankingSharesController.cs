@@ -2,10 +2,13 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Ratings;
@@ -24,16 +27,16 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("ratings")]
 public sealed class UserRankingSharesController : ControllerBase
 {
-    private readonly IQueryHandler<GetUserRankingShareSettingsQuery, ApplicationResult<UserRankingShareSettingsResult>> getSettingsHandler;
-    private readonly ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>> setVisibilityHandler;
+    private readonly IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>> getSettingsHandler;
+    private readonly ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>> setVisibilityHandler;
     private readonly IQueryHandler<GetSharedUserRankingProfileQuery, ApplicationResult<SharedUserRankingProfileResult>> getProfileHandler;
     private readonly IQueryHandler<GetSharedUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> getParkRankingsHandler;
     private readonly IQueryHandler<GetSharedUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> getParkItemRankingsHandler;
     private readonly IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>> getPreviewHandler;
 
     public UserRankingSharesController(
-        IQueryHandler<GetUserRankingShareSettingsQuery, ApplicationResult<UserRankingShareSettingsResult>> getSettingsHandler,
-        ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>> setVisibilityHandler,
+        IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>> getSettingsHandler,
+        ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>> setVisibilityHandler,
         IQueryHandler<GetSharedUserRankingProfileQuery, ApplicationResult<SharedUserRankingProfileResult>> getProfileHandler,
         IQueryHandler<GetSharedUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> getParkRankingsHandler,
         IQueryHandler<GetSharedUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> getParkItemRankingsHandler,
@@ -59,8 +62,10 @@ public sealed class UserRankingSharesController : ControllerBase
             return this.Unauthorized();
         }
 
-        ApplicationResult<UserRankingShareSettingsResult> result = await this.getSettingsHandler.HandleAsync(
-            new GetUserRankingShareSettingsQuery(userId),
+        ApplicationResult<SharePublicationSettingsResult> result = await this.getSettingsHandler.HandleAsync(
+            new GetSharePublicationSettingsQuery(
+                userId,
+                SharePublicationType.PersonalRanking),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())
@@ -82,8 +87,12 @@ public sealed class UserRankingSharesController : ControllerBase
             return this.Unauthorized();
         }
 
-        ApplicationResult<UserRankingShareSettingsResult> result = await this.setVisibilityHandler.HandleAsync(
-            new SetUserRankingShareVisibilityCommand(userId, request.IsPublic),
+        ApplicationResult<SharePublicationSettingsResult> result = await this.setVisibilityHandler.HandleAsync(
+            new SetSharePublicationVisibilityCommand(
+                userId,
+                SharePublicationType.PersonalRanking,
+                null,
+                request.IsPublic),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())

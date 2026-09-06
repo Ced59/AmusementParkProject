@@ -1,0 +1,68 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
+using AmusementPark.Core.Domain.Sharing;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Sharing.Services;
+
+public sealed class PersonalRankingSharePublicationSourceTests
+{
+    private static readonly DateTime Now = new DateTime(2026, 9, 6, 18, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public async Task GetCurrentSourceVersionAsync_ShouldCombineOwnerAndCatalogRevisions()
+    {
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.GetOrCreateAsync(
+                "personal-ranking:owner-1",
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(4, 0, Now));
+        revisions.Setup(value => value.GetOrCreateAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+        PersonalRankingSharePublicationSource source =
+            new PersonalRankingSharePublicationSource(revisions.Object);
+
+        ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
+            "personal-ranking:owner-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(7, result.Value);
+        ShareContentPolicy policy = source.CreateDefaultPolicy();
+        Assert.True(policy.Includes(ShareContentField.PublicDisplayName));
+        Assert.True(policy.Includes(ShareContentField.Avatar));
+        Assert.True(policy.Includes(ShareContentField.GlobalRatings));
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetCurrentSourceVersionAsync_WhenAMutationIsPending_ShouldRejectSnapshot()
+    {
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.GetOrCreateAsync(
+                "personal-ranking:owner-1",
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(4, 1, Now));
+        revisions.Setup(value => value.GetOrCreateAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+        PersonalRankingSharePublicationSource source =
+            new PersonalRankingSharePublicationSource(revisions.Object);
+
+        ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
+            "personal-ranking:owner-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "share-publication.source-changed");
+        revisions.VerifyAll();
+    }
+}

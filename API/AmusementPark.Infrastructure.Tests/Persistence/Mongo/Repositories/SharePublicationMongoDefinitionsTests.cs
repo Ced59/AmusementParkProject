@@ -78,6 +78,29 @@ public sealed class SharePublicationMongoDefinitionsTests
                 { "updatedAt", -1 },
             },
             Render(owner.Keys));
+        CreateIndexModel<SharePublicationDocument> activeOwnerSource = Assert.Single(
+            indexes,
+            static index => string.Equals(
+                index.Options.Name,
+                SharePublicationMongoDefinitions.ActiveOwnerSourceUniqueIndexName,
+                StringComparison.Ordinal));
+        CreateIndexOptions<SharePublicationDocument> activeOwnerSourceOptions =
+            Assert.IsType<CreateIndexOptions<SharePublicationDocument>>(
+                activeOwnerSource.Options);
+        Assert.True(activeOwnerSourceOptions.Unique);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "ownerUserId", 1 },
+                { "type", 1 },
+                { "sourceScopeKey", 1 },
+            },
+            Render(activeOwnerSource.Keys));
+        string activeFilter = Render(activeOwnerSourceOptions.PartialFilterExpression!).ToJson();
+        Assert.Contains("Draft", activeFilter, StringComparison.Ordinal);
+        Assert.Contains("Published", activeFilter, StringComparison.Ordinal);
+        Assert.Contains("NeedsReview", activeFilter, StringComparison.Ordinal);
+        Assert.DoesNotContain("Revoked", activeFilter, StringComparison.Ordinal);
         Assert.All(indexes, static index => Assert.Null(index.Options.ExpireAfter));
         Assert.DoesNotContain(
             indexes,

@@ -5,7 +5,9 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
-using AmusementPark.Application.Features.Ratings.Services;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
 
@@ -14,13 +16,13 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
 {
     private const int PreviewItemCount = 5;
 
-    private readonly UserRankingShareAccessResolver accessResolver;
+    private readonly ISharePublicationAccessResolver accessResolver;
     private readonly IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> parkRankingsHandler;
     private readonly IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> parkItemRankingsHandler;
     private readonly IUserRankingSharePreviewRenderer previewRenderer;
 
     public GetSharedUserRankingPreviewQueryHandler(
-        UserRankingShareAccessResolver accessResolver,
+        ISharePublicationAccessResolver accessResolver,
         IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> parkRankingsHandler,
         IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> parkItemRankingsHandler,
         IUserRankingSharePreviewRenderer previewRenderer)
@@ -35,8 +37,9 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
         GetSharedUserRankingPreviewQuery query,
         CancellationToken cancellationToken = default)
     {
-        ApplicationResult<UserRankingShareOwner> ownerResult = await this.accessResolver.ResolveAsync(
+        ApplicationResult<ResolvedSharePublicationResult> ownerResult = await this.accessResolver.ResolveAsync(
             query.ShareId,
+            SharePublicationType.PersonalRanking,
             cancellationToken);
         if (!ownerResult.IsSuccess || ownerResult.Value is null)
         {
@@ -44,8 +47,8 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
         }
 
         IReadOnlyCollection<UserRankingSharePreviewItemResult> items = query.ParkItemCategory.HasValue
-            ? await this.LoadParkItemPreviewAsync(ownerResult.Value.UserId, query, cancellationToken)
-            : await this.LoadParkPreviewAsync(ownerResult.Value.UserId, cancellationToken);
+            ? await this.LoadParkItemPreviewAsync(ownerResult.Value.OwnerUserId, query, cancellationToken)
+            : await this.LoadParkPreviewAsync(ownerResult.Value.OwnerUserId, cancellationToken);
         UserRankingSharePreviewResult preview = new UserRankingSharePreviewResult(
             ownerResult.Value.DisplayName,
             items);

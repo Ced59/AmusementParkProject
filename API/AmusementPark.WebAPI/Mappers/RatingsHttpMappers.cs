@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.WebAPI.Contracts.Ratings;
@@ -213,7 +214,7 @@ internal static class RatingsHttpMappers
         };
     }
 
-    public static UserRankingShareSettingsDto ToHttp(this UserRankingShareSettingsResult value)
+    public static UserRankingShareSettingsDto ToHttp(this SharePublicationSettingsResult value)
     {
         return new UserRankingShareSettingsDto
         {

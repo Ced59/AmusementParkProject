@@ -3,9 +3,12 @@ using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Ratings.Commands;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Ratings;
 using AmusementPark.WebAPI.Filters;
@@ -24,14 +27,18 @@ public sealed class UserRankingSharesControllerTests
     public async Task SetMyShareVisibilityAsync_ShouldAlwaysUseTheAuthenticatedOwnerIdentifier()
     {
         DateTime publishedAtUtc = new DateTime(2026, 8, 20, 18, 0, 0, DateTimeKind.Utc);
-        Mock<ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>>> handler =
-            new Mock<ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>>>(MockBehavior.Strict);
+        Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>> handler =
+            new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
         handler
             .Setup(candidate => candidate.HandleAsync(
-                It.Is<SetUserRankingShareVisibilityCommand>(command => command.UserId == "owner-1" && command.IsPublic),
+                It.Is<SetSharePublicationVisibilityCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.PublicationType == SharePublicationType.PersonalRanking
+                    && command.SourceId == null
+                    && command.IsPublic),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(ApplicationResult<UserRankingShareSettingsResult>.Success(
-                new UserRankingShareSettingsResult(true, "share-id", publishedAtUtc)));
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(
+                new SharePublicationSettingsResult(true, "share-id", publishedAtUtc)));
         UserRankingSharesController controller = CreateController(handler.Object);
         controller.ControllerContext = CreateControllerContext("owner-1");
 
@@ -48,8 +55,8 @@ public sealed class UserRankingSharesControllerTests
     [Fact]
     public async Task SetMyShareVisibilityAsync_WhenOwnerClaimIsMissing_ShouldReturnUnauthorized()
     {
-        Mock<ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>>> handler =
-            new Mock<ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>>>(MockBehavior.Strict);
+        Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>> handler =
+            new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
         UserRankingSharesController controller = CreateController(handler.Object);
         controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() };
 
@@ -105,10 +112,10 @@ public sealed class UserRankingSharesControllerTests
     }
 
     private static UserRankingSharesController CreateController(
-        ICommandHandler<SetUserRankingShareVisibilityCommand, ApplicationResult<UserRankingShareSettingsResult>> mutationHandler)
+        ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>> mutationHandler)
     {
         return new UserRankingSharesController(
-            new Mock<IQueryHandler<GetUserRankingShareSettingsQuery, ApplicationResult<UserRankingShareSettingsResult>>>(MockBehavior.Strict).Object,
+            new Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object,
             mutationHandler,
             new Mock<IQueryHandler<GetSharedUserRankingProfileQuery, ApplicationResult<SharedUserRankingProfileResult>>>(MockBehavior.Strict).Object,
             new Mock<IQueryHandler<GetSharedUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>>>(MockBehavior.Strict).Object,

@@ -17,6 +17,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttract
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Videos;
+using AmusementPark.Infrastructure.Persistence.Mongo.Migrations;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -35,19 +36,22 @@ public sealed partial class MongoDatabaseInitializer
     private readonly AdminSeedSettings adminSeedSettings;
     private readonly IHostEnvironment hostEnvironment;
     private readonly ILogger<MongoDatabaseInitializer> logger;
+    private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
 
     public MongoDatabaseInitializer(
         IMongoDatabase database,
         MongoDbSettings settings,
         AdminSeedSettings adminSeedSettings,
         IHostEnvironment hostEnvironment,
-        ILogger<MongoDatabaseInitializer> logger)
+        ILogger<MongoDatabaseInitializer> logger,
+        PersonalRankingShareReplacementMigration personalRankingShareMigration)
     {
         this.database = database;
         this.settings = settings;
         this.adminSeedSettings = adminSeedSettings;
         this.hostEnvironment = hostEnvironment;
         this.logger = logger;
+        this.personalRankingShareMigration = personalRankingShareMigration;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -91,7 +95,6 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.UserRatingsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.RatingAggregatesCollectionName, cancellationToken);
-        await this.EnsureCollectionExistsAsync(this.settings.UserRankingSharesCollectionName, cancellationToken);
         await this.InitializeRatingsIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.SharePublicationsCollectionName, cancellationToken);
@@ -105,6 +108,10 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(
             this.settings.ShareSourceRevisionsCollectionName,
             cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.SharePublicationMigrationsCollectionName,
+            cancellationToken);
+        await this.personalRankingShareMigration.ExecuteAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);

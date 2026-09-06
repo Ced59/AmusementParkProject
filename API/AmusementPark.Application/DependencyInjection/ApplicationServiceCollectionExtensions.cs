@@ -111,8 +111,9 @@ public static class ApplicationServiceCollectionExtensions
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
         services.AddScoped<IRatingRankingSourceChangeCoordinator>(provider =>
             provider.GetRequiredService<RatingRankingSourceRevisionGuard>());
-        services.AddScoped<UserRankingShareAccessResolver>();
+        services.AddScoped<ISharePublicationAccessResolver, SharePublicationAccessResolver>();
         services.AddScoped<ISharePublicationPreviewBuilder, PersonalRankingSharePreviewBuilder>();
+        services.AddScoped<ISharePublicationSourceDescriptor, PersonalRankingSharePublicationSource>();
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();

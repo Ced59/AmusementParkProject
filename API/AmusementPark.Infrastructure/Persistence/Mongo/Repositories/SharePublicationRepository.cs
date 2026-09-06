@@ -52,12 +52,27 @@ public sealed class SharePublicationRepository : ISharePublicationRepository
             sourceScopeKey,
             nameof(sourceScopeKey));
         SharePublicationDocument? document = await this.collection
-            .Find(SharePublicationMongoDefinitions.BuildOwnedSourceFilter(
+            .Find(SharePublicationMongoDefinitions.BuildActiveOwnedSourceFilter(
                 normalizedOwnerUserId,
                 publicationType,
                 normalizedSourceScopeKey))
             .SortByDescending(static item => item.UpdatedAt)
+            .ThenByDescending(static item => item.CreatedAt)
+            .ThenByDescending(static item => item.Id)
             .FirstOrDefaultAsync(cancellationToken);
+        if (document is null)
+        {
+            document = await this.collection
+                .Find(SharePublicationMongoDefinitions.BuildOwnedSourceFilter(
+                    normalizedOwnerUserId,
+                    publicationType,
+                    normalizedSourceScopeKey))
+                .SortByDescending(static item => item.UpdatedAt)
+                .ThenByDescending(static item => item.CreatedAt)
+                .ThenByDescending(static item => item.Id)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         return document?.ToDomain();
     }
 

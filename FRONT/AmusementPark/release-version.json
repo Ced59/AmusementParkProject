@@ -1,6 +1,20 @@
 {
-  "version": "5.2.5",
+  "version": "5.2.6",
   "history": [
+    {
+      "version": "5.2.6",
+      "releasedAt": "2026-09-06",
+      "labels": {
+        "fr": "Tes liens de classement restent accessibles avec une protection centralisée.",
+        "en": "Your ranking links remain accessible with centralized protection.",
+        "de": "Deine Ranglistenlinks bleiben mit zentralem Schutz erreichbar.",
+        "nl": "Je rangschikkingslinks blijven bereikbaar met centrale bescherming.",
+        "it": "I link alle tue classifiche restano accessibili con una protezione centralizzata.",
+        "es": "Tus enlaces de clasificaciones siguen accesibles con una protección centralizada.",
+        "pl": "Linki do Twoich rankingów pozostają dostępne dzięki scentralizowanej ochronie.",
+        "pt": "As ligações para as tuas classificações continuam acessíveis com proteção centralizada."
+      }
+    },
     {
       "version": "5.2.5",
       "releasedAt": "2026-09-06",

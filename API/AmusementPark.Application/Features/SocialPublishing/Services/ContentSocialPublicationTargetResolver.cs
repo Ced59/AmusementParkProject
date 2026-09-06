@@ -1,8 +1,10 @@
-using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Core.Domain.Parks;
-using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.TechnicalPages;
 
 namespace AmusementPark.Application.Features.SocialPublishing.Services;
@@ -10,14 +12,14 @@ namespace AmusementPark.Application.Features.SocialPublishing.Services;
 public sealed class ContentSocialPublicationTargetResolver
 {
     private readonly ITechnicalPageRepository technicalPageRepository;
-    private readonly IUserRankingShareRepository userRankingShareRepository;
+    private readonly ISharePublicationAccessResolver sharePublicationAccessResolver;
 
     public ContentSocialPublicationTargetResolver(
         ITechnicalPageRepository technicalPageRepository,
-        IUserRankingShareRepository userRankingShareRepository)
+        ISharePublicationAccessResolver sharePublicationAccessResolver)
     {
         this.technicalPageRepository = technicalPageRepository;
-        this.userRankingShareRepository = userRankingShareRepository;
+        this.sharePublicationAccessResolver = sharePublicationAccessResolver;
     }
 
     internal async Task<ResolvedSocialPublicationTarget?> ResolveAsync(
@@ -69,12 +71,12 @@ public sealed class ContentSocialPublicationTargetResolver
         string shareId,
         CancellationToken cancellationToken)
     {
-        UserRankingShare? share = await this.userRankingShareRepository.GetPublicByShareIdAsync(
+        ApplicationResult<ResolvedSharePublicationResult> result =
+            await this.sharePublicationAccessResolver.ResolveAsync(
             shareId,
+            SharePublicationType.PersonalRanking,
             cancellationToken);
-        if (share is null
-            || !share.IsPublic
-            || !string.Equals(share.ShareId, shareId, StringComparison.Ordinal))
+        if (!result.IsSuccess || result.Value is null)
         {
             return null;
         }
