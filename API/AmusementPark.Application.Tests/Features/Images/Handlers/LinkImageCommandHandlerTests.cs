@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -59,8 +60,13 @@ public sealed class LinkImageCommandHandlerTests
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images.Setup(value => value.GetByIdAsync("avatar-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
-        images.Setup(value => value.SetCurrentAsync(
+        images.Setup(value => value.SetCurrentIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-old"
+                    && guard.Category == ImageCategory.Avatar
+                    && guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-new",
                 It.IsAny<CancellationToken>()))

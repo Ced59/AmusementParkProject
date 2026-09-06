@@ -95,9 +95,24 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                ImageMutationPrecondition precondition = new ImageMutationPrecondition(
+                    image.OwnerType,
+                    image.OwnerId,
+                    image.Category,
+                    image.IsCurrent);
                 updated = command.SetAsCurrent
-                    ? await this.imageRepository.SetCurrentAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken)
-                    : await this.imageRepository.LinkAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken);
+                    ? await this.imageRepository.SetCurrentIfUnchangedAsync(
+                        image.Id,
+                        precondition,
+                        command.OwnerType,
+                        normalizedOwnerId ?? string.Empty,
+                        cancellationToken)
+                    : await this.imageRepository.LinkIfUnchangedAsync(
+                        image.Id,
+                        precondition,
+                        command.OwnerType,
+                        normalizedOwnerId ?? string.Empty,
+                        cancellationToken);
 
                 if (updated is null)
                 {

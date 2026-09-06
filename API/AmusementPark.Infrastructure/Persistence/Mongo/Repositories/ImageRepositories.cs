@@ -1035,6 +1035,37 @@ public sealed class ImageRepository : IImageRepository
         return document?.ToDomain();
     }
 
+    public async Task<Image?> LinkIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter = BuildMutationPreconditionFilter(
+            imageId,
+            precondition);
+        UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
+            .Set(static document => document.OwnerType, ownerType)
+            .Set(static document => document.OwnerId, ownerId)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
+        return document?.ToDomain();
+    }
+
     public async Task<Image?> ReserveCommentDraftAsync(
         string imageId,
         string draftOwnerId,
@@ -1756,9 +1787,109 @@ public sealed class ImageRepository : IImageRepository
         return document?.ToDomain();
     }
 
+    public async Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        DateTime nowUtc = DateTime.UtcNow;
+        FilterDefinition<ImageDocument> targetFilter = BuildMutationPreconditionFilter(
+            imageId,
+            precondition);
+        UpdateDefinition<ImageDocument> targetUpdate = Builders<ImageDocument>.Update
+            .Set(static document => document.OwnerType, ownerType)
+            .Set(static document => document.OwnerId, ownerId)
+            .Set(static document => document.IsCurrent, true)
+            .Set(static document => document.UpdatedAt, nowUtc);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            targetFilter,
+            targetUpdate,
+            options,
+            cancellationToken);
+        if (document is null)
+        {
+            return null;
+        }
+
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> otherOwnerImagesFilter =
+            BuildOwnerTypeFilter(builder, ownerType)
+            & builder.Eq(static candidate => candidate.OwnerId, ownerId)
+            & BuildCategoryFilter(builder, precondition.Category)
+            & builder.Ne(static candidate => candidate.Id, imageId);
+        await this.collection.UpdateManyAsync(
+            otherOwnerImagesFilter,
+            Builders<ImageDocument>.Update
+                .Set(static candidate => candidate.IsCurrent, false)
+                .Set(static candidate => candidate.UpdatedAt, nowUtc),
+            cancellationToken: cancellationToken);
+        InvalidateReadCache();
+        return document.ToDomain();
+    }
+
     public async Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken)
     {
         FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        UpdateDefinition<ImageDocument> update = BuildMetadataUpdate(metadata);
+
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        InvalidateReadCache();
+        return document?.ToDomain();
+    }
+
+    public async Task<Image?> UpdateMetadataIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageMetadataUpdate metadata,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter = BuildMutationPreconditionFilter(
+            imageId,
+            precondition);
+        UpdateDefinition<ImageDocument> update = BuildMetadataUpdate(metadata);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
+        return document?.ToDomain();
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildMutationPreconditionFilter(
+        string imageId,
+        ImageMutationPrecondition precondition)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, imageId)
+            & BuildOwnerTypeFilter(builder, precondition.OwnerType)
+            & builder.Eq(static document => document.OwnerId, precondition.OwnerId)
+            & BuildCategoryFilter(builder, precondition.Category)
+            & builder.Eq(static document => document.IsCurrent, precondition.IsCurrent);
+    }
+
+    private static UpdateDefinition<ImageDocument> BuildMetadataUpdate(
+        ImageMetadataUpdate metadata)
+    {
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.Description, metadata.Description)
             .Set(static document => document.GeoLocation, metadata.GeoLocation is null ? null : CommonMongoMappers.ToDocument(new GeoPoint(metadata.GeoLocation.Latitude, metadata.GeoLocation.Longitude)))
@@ -1783,14 +1914,7 @@ public sealed class ImageRepository : IImageRepository
             update = update.Set(static document => document.IsCurrent, metadata.IsCurrent.Value);
         }
 
-        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
-        {
-            ReturnDocument = ReturnDocument.After,
-        };
-
-        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
-        InvalidateReadCache();
-        return document?.ToDomain();
+        return update;
     }
 
     public async Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken)

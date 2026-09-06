@@ -105,7 +105,15 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
-                updated = await this.imageRepository.UpdateMetadataAsync(normalizedImageId, metadata, cancellationToken);
+                updated = await this.imageRepository.UpdateMetadataIfUnchangedAsync(
+                    normalizedImageId,
+                    new ImageMutationPrecondition(
+                        existing.OwnerType,
+                        existing.OwnerId,
+                        existing.Category,
+                        existing.IsCurrent),
+                    metadata,
+                    cancellationToken);
                 if (updated is null)
                 {
                     return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
@@ -126,7 +134,16 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
 
                 if (metadata.IsCurrent == true && updated.OwnerType != ImageOwnerType.None && !string.IsNullOrWhiteSpace(updated.OwnerId))
                 {
-                    Image? current = await this.imageRepository.SetCurrentAsync(updated.Id, updated.OwnerType, updated.OwnerId, cancellationToken);
+                    Image? current = await this.imageRepository.SetCurrentIfUnchangedAsync(
+                        updated.Id,
+                        new ImageMutationPrecondition(
+                            updated.OwnerType,
+                            updated.OwnerId,
+                            updated.Category,
+                            updated.IsCurrent),
+                        updated.OwnerType,
+                        updated.OwnerId,
+                        cancellationToken);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());

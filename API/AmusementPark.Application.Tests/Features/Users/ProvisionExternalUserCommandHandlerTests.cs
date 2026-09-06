@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Application.Features.Users.Handlers;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
@@ -14,6 +15,78 @@ namespace AmusementPark.Application.Tests.Features.Users;
 
 public sealed class ProvisionExternalUserCommandHandlerTests
 {
+    [Fact]
+    public async Task HandleAsync_WhenExternalAvatarIsImported_ShouldAcquireLeaseBeforeImport()
+    {
+        VerifiedExternalIdentity identity = CreateIdentity(
+            "external-user@example.com",
+            "provider-user-avatar",
+            "https://images.example.test/avatar.png");
+        User existingUser = new User
+        {
+            Id = "existing-user-id",
+            Email = identity.Email,
+            PublicDisplayName = "CoasterFan",
+            UsesAutomaticPublicDisplayName = false,
+            Roles = new List<Role> { Role.User },
+            IsActivated = true,
+            IsBlocked = false,
+            ExternalLogins = new List<ExternalLogin>
+            {
+                new ExternalLogin
+                {
+                    Provider = ExternalLoginProvider.Google,
+                    ProviderUserId = identity.ProviderUserId,
+                },
+            },
+        };
+        existingUser.AssignPublicAccountNumber(12);
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            "personal-ranking:existing-user-id");
+        bool leaseStarted = false;
+        ExternalUserHandlerMocks mocks = new ExternalUserHandlerMocks();
+        SetupAuthenticationFlow(mocks, identity);
+        mocks.UserRepository
+            .Setup(repository => repository.GetByExternalLoginAsync(
+                ExternalLoginProvider.Google,
+                identity.ProviderUserId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingUser);
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginMutationAsync(
+                "existing-user-id",
+                It.IsAny<CancellationToken>()))
+            .Callback(() => leaseStarted = true)
+            .ReturnsAsync(lease);
+        mocks.UserAvatarImporter
+            .Setup(importer => importer.DownloadAndSaveAsync(
+                identity.PictureUrl!,
+                "existing-user-id",
+                It.IsAny<CancellationToken>()))
+            .Callback(() => Assert.True(leaseStarted))
+            .ReturnsAsync("/images/avatar-1");
+        revisions.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        SetupSuccessfulSignIn(
+            mocks,
+            user => user.AvatarUrl == "/images/avatar-1");
+        ProvisionExternalUserCommandHandler handler = CreateHandler(
+            mocks,
+            revisions.Object);
+
+        ApplicationResult<AuthenticatedUserResult> result = await handler.HandleAsync(
+            CreateCommand());
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("/images/avatar-1", result.Value!.User.AvatarUrl);
+        mocks.VerifyAll();
+        revisions.VerifyAll();
+    }
+
     [Fact]
     public async Task HandleAsync_WhenCreatingExternalUser_ShouldAllocateAndKeepTheAutomaticPublicIdentity()
     {
@@ -110,7 +183,9 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         mocks.VerifyAll();
     }
 
-    private static ProvisionExternalUserCommandHandler CreateHandler(ExternalUserHandlerMocks mocks)
+    private static ProvisionExternalUserCommandHandler CreateHandler(
+        ExternalUserHandlerMocks mocks,
+        IPersonalRankingShareSourceRevisionGuard? shareSourceRevisionGuard = null)
     {
         return new ProvisionExternalUserCommandHandler(
             mocks.UserRepository.Object,
@@ -120,7 +195,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             mocks.RefreshTokenFactory.Object,
             mocks.RefreshTokenRepository.Object,
             mocks.AuthenticationSettings.Object,
-            Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
+            shareSourceRevisionGuard ?? Mock.Of<IPersonalRankingShareSourceRevisionGuard>());
     }
 
     private static void SetupAuthenticationFlow(
@@ -181,7 +256,10 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         });
     }
 
-    private static VerifiedExternalIdentity CreateIdentity(string email, string providerUserId)
+    private static VerifiedExternalIdentity CreateIdentity(
+        string email,
+        string providerUserId,
+        string? pictureUrl = null)
     {
         return new VerifiedExternalIdentity
         {
@@ -193,6 +271,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             DisplayName = "External user",
             GivenName = "External",
             FamilyName = "User",
+            PictureUrl = pictureUrl,
         };
     }
 

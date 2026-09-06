@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -49,8 +50,12 @@ public sealed class SetCurrentImageCommandHandlerTests
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);
-        images.InSequence(sequence).Setup(value => value.SetCurrentAsync(
+        images.InSequence(sequence).Setup(value => value.SetCurrentIfUnchangedAsync(
                 "avatar-new",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-1"
+                    && guard.Category == ImageCategory.Avatar),
                 ImageOwnerType.User,
                 "owner-1",
                 It.IsAny<CancellationToken>()))

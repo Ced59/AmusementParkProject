@@ -83,6 +83,12 @@ public interface IImageRepository
         DateTime observedCleanupRequestedAtUtc,
         CancellationToken cancellationToken);
     Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
+    Task<Image?> LinkIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken);
     Task<Image?> ReserveCommentDraftAsync(
         string imageId,
         string draftOwnerId,
@@ -155,7 +161,18 @@ public interface IImageRepository
         DateTime cleanupRequestedAtUtc,
         CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
+    Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken);
     Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken);
+    Task<Image?> UpdateMetadataIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageMetadataUpdate metadata,
+        CancellationToken cancellationToken);
     Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteClaimedCommentImageAsync(

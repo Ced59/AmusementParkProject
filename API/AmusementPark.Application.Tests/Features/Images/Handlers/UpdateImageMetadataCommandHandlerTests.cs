@@ -62,8 +62,13 @@ public sealed class UpdateImageMetadataCommandHandlerTests
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images.Setup(value => value.GetByIdAsync("avatar-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
-        images.Setup(value => value.UpdateMetadataAsync(
+        images.Setup(value => value.UpdateMetadataIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-old"
+                    && guard.Category == ImageCategory.Avatar
+                    && guard.IsCurrent),
                 It.Is<ImageMetadataUpdate>(metadata =>
                     metadata.OwnerId == "owner-new" && metadata.IsCurrent == true),
                 It.IsAny<CancellationToken>()))
@@ -73,8 +78,13 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                 Assert.True(nextLeaseStarted);
             })
             .ReturnsAsync(updated);
-        images.Setup(value => value.SetCurrentAsync(
+        images.Setup(value => value.SetCurrentIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-new"
+                    && guard.Category == ImageCategory.Avatar
+                    && guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-new",
                 It.IsAny<CancellationToken>()))
@@ -238,8 +248,9 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             .ReturnsAsync(existing);
 
         imageRepository
-            .Setup(repository => repository.UpdateMetadataAsync(
+            .Setup(repository => repository.UpdateMetadataIfUnchangedAsync(
                 "image-1",
+                It.IsAny<ImageMutationPrecondition>(),
                 It.Is<ImageMetadataUpdate>(metadata =>
                     metadata.Category == ImageCategory.Park &&
                     metadata.OwnerType == ImageOwnerType.Park &&
@@ -332,8 +343,13 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             .Setup(repository => repository.GetByIdAsync("avatar-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         imageRepository
-            .Setup(repository => repository.UpdateMetadataAsync(
+            .Setup(repository => repository.UpdateMetadataIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-1"
+                    && guard.Category == ImageCategory.Avatar
+                    && guard.IsCurrent),
                 It.Is<ImageMetadataUpdate>(metadata => metadata.IsPublished == false),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(updated);

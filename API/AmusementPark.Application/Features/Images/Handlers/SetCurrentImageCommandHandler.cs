@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
@@ -89,8 +90,13 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
-                updated = await this.imageRepository.SetCurrentAsync(
+                updated = await this.imageRepository.SetCurrentIfUnchangedAsync(
                     image.Id,
+                    new ImageMutationPrecondition(
+                        image.OwnerType,
+                        image.OwnerId,
+                        image.Category,
+                        image.IsCurrent),
                     image.OwnerType,
                     image.OwnerId,
                     cancellationToken);
