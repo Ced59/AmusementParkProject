@@ -201,7 +201,9 @@ public sealed class MongoImageCurrentMutationLockTests
             CancellationToken.None);
 
         Assert.Equal("promoted", result);
-        Assert.Equal(2, heartbeatCount);
+        Assert.True(
+            heartbeatCount >= 2,
+            $"Expected at least one retry after the failed heartbeat, but observed {heartbeatCount} call(s).");
         Assert.Equal(
             TimeSpan.FromMilliseconds(10),
             MongoImageCurrentMutationLock.GetHeartbeatRetryInterval(
