@@ -37,8 +37,10 @@ public sealed class SetCurrentImageCommandHandlerTests
             AvatarUrl = "/images/avatar-old",
             IsActivated = true,
         };
+        using CancellationTokenSource leaseCancellation = new CancellationTokenSource();
         ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
-            "personal-ranking:owner-1");
+            "personal-ranking:owner-1",
+            leaseCancellation.Token);
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
@@ -58,7 +60,8 @@ public sealed class SetCurrentImageCommandHandlerTests
                     && guard.Category == ImageCategory.Avatar),
                 ImageOwnerType.User,
                 "owner-1",
-                It.IsAny<CancellationToken>()))
+                It.Is<CancellationToken>(token => !token.CanBeCanceled),
+                It.Is<CancellationToken>(token => token.CanBeCanceled)))
             .ReturnsAsync(avatar);
         users.InSequence(sequence).Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);

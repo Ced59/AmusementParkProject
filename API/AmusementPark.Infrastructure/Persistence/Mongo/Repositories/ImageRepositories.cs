@@ -1833,12 +1833,29 @@ public sealed class ImageRepository : IImageRepository
             cancellationToken);
     }
 
-    public async Task<Image?> SetCurrentIfUnchangedAsync(
+    public Task<Image?> SetCurrentIfUnchangedAsync(
         string imageId,
         ImageMutationPrecondition precondition,
         ImageOwnerType ownerType,
         string ownerId,
         CancellationToken cancellationToken)
+    {
+        return this.SetCurrentIfUnchangedAsync(
+            imageId,
+            precondition,
+            ownerType,
+            ownerId,
+            cancellationToken,
+            CancellationToken.None);
+    }
+
+    public async Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken)
     {
         return await this.currentMutationLock.ExecuteAsync(
             ownerType,
@@ -1881,7 +1898,8 @@ public sealed class ImageRepository : IImageRepository
                     InvalidateReadCache();
                 }
             },
-            cancellationToken);
+            cancellationToken,
+            consistencyCancellationToken);
     }
 
     private async Task<ImageDocument?> ReserveImageForPromotionAsync(
@@ -1913,19 +1931,36 @@ public sealed class ImageRepository : IImageRepository
         ImageDocument reservation,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter =
-            BuildPromotionActivationFilter(reservation);
         UpdateDefinition<ImageDocument> update =
             BuildPromotionActivationUpdate(DateTime.UtcNow);
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
             ReturnDocument = ReturnDocument.After,
         };
-        return await this.collection.FindOneAndUpdateAsync(
-            filter,
-            update,
-            options,
-            cancellationToken);
+        bool outcomeIsAmbiguous = false;
+        while (true)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                FilterDefinition<ImageDocument> filter = outcomeIsAmbiguous
+                    ? BuildPromotionActivationReconciliationFilter(reservation)
+                    : BuildPromotionActivationFilter(reservation);
+                return await this.collection.FindOneAndUpdateAsync(
+                    filter,
+                    update,
+                    options,
+                    cancellationToken);
+            }
+            catch (Exception exception)
+                when (exception is MongoException or TimeoutException)
+            {
+                outcomeIsAmbiguous = true;
+                await Task.Delay(
+                    MongoImageCurrentMutationLock.RetryDelay,
+                    cancellationToken);
+            }
+        }
     }
 
     internal static UpdateDefinition<ImageDocument> BuildPromotionReservationUpdate(
@@ -1958,6 +1993,25 @@ public sealed class ImageRepository : IImageRepository
             & builder.Eq(
                 static document => document.CurrentPromotionToken,
                 promotionToken);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionActivationReconciliationFilter(
+        ImageDocument reservation)
+    {
+        ArgumentNullException.ThrowIfNull(reservation);
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> activatedTargetFilter =
+            builder.Eq(static document => document.Id, reservation.Id)
+            & BuildOwnerTypeFilter(builder, reservation.OwnerType)
+            & builder.Eq(static document => document.OwnerId, reservation.OwnerId)
+            & BuildCategoryFilter(builder, reservation.Category)
+            & builder.Eq(static document => document.IsCurrent, true)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                false);
+        return builder.Or(
+            BuildPromotionActivationFilter(reservation),
+            activatedTargetFilter);
     }
 
     internal static UpdateDefinition<ImageDocument> BuildPromotionActivationUpdate(

@@ -86,22 +86,43 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         this.heartbeatInterval = heartbeatInterval;
     }
 
-    public async Task<TResult> ExecuteAsync<TResult>(
+    public Task<TResult> ExecuteAsync<TResult>(
         ImageOwnerType ownerType,
         string ownerId,
         ImageCategory category,
         Func<CancellationToken, Task<TResult>> operation,
         CancellationToken cancellationToken)
     {
+        return this.ExecuteAsync(
+            ownerType,
+            ownerId,
+            category,
+            operation,
+            cancellationToken,
+            CancellationToken.None);
+    }
+
+    public async Task<TResult> ExecuteAsync<TResult>(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        Func<CancellationToken, Task<TResult>> operation,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken)
+    {
         ArgumentException.ThrowIfNullOrWhiteSpace(ownerId);
         ArgumentNullException.ThrowIfNull(operation);
 
         string scopeKey = BuildScopeKey(ownerType, ownerId, category);
         string leaseToken = Guid.NewGuid().ToString("N");
+        using CancellationTokenSource acquisitionCancellation =
+            CancellationTokenSource.CreateLinkedTokenSource(
+                cancellationToken,
+                consistencyCancellationToken);
         DateTime confirmedExpiresAtUtc = await this.AcquireAsync(
             scopeKey,
             leaseToken,
-            cancellationToken);
+            acquisitionCancellation.Token);
 
         using CancellationTokenSource heartbeatCancellation = new CancellationTokenSource();
         using CancellationTokenSource leaseLostCancellation = new CancellationTokenSource();
@@ -118,16 +139,23 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
             confirmedExpiresAtUtc,
             heartbeatLoopCancellation.Token,
             leaseLostCancellation);
+        using CancellationTokenSource operationCancellation =
+            CancellationTokenSource.CreateLinkedTokenSource(
+                leaseLostCancellation.Token,
+                consistencyCancellationToken);
         try
         {
             // Once the lock is held, finish or reconcile the short critical section even
-            // if the HTTP caller disconnects. Only proven lease loss may interrupt it.
-            TResult result = await operation(leaseLostCancellation.Token);
+            // if the HTTP caller disconnects. A proven image-lock loss or a separate
+            // consistency guard may still interrupt it.
+            TResult result = await operation(operationCancellation.Token);
             if (leaseLostCancellation.IsCancellationRequested)
             {
                 throw new InvalidOperationException(
                     "The current-image mutation lock was lost before completion.");
             }
+
+            consistencyCancellationToken.ThrowIfCancellationRequested();
 
             return result;
         }

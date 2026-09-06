@@ -66,6 +66,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             .Setup(importer => importer.DownloadAndSaveAsync(
                 identity.PictureUrl!,
                 "existing-user-id",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .Callback(() => Assert.True(leaseStarted))
             .ReturnsAsync("/images/avatar-1");
@@ -234,6 +235,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             .Setup(importer => importer.DownloadAndSaveAsync(
                 identity.PictureUrl!,
                 staleUser.Id,
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync("/images/avatar-1");
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =

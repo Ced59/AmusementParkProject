@@ -97,6 +97,7 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                     && guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-new",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(updated);
         images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(

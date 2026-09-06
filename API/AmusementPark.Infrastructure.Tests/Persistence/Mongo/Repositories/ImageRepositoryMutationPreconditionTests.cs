@@ -83,13 +83,15 @@ public sealed class ImageRepositoryMutationPreconditionTests
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<Func<CancellationToken, Task<Image?>>>(),
+                CancellationToken.None,
                 CancellationToken.None))
             .Returns(async (
                 ImageOwnerType _,
                 string _,
                 ImageCategory _,
                 Func<CancellationToken, Task<Image?>> operation,
-                CancellationToken cancellationToken) =>
+                CancellationToken cancellationToken,
+                CancellationToken _) =>
             {
                 lockActive = true;
                 try
@@ -196,13 +198,15 @@ public sealed class ImageRepositoryMutationPreconditionTests
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<Func<CancellationToken, Task<Image?>>>(),
+                CancellationToken.None,
                 CancellationToken.None))
             .Returns((
                 ImageOwnerType _,
                 string _,
                 ImageCategory _,
                 Func<CancellationToken, Task<Image?>> operation,
-                CancellationToken _) => operation(CancellationToken.None));
+                CancellationToken _,
+                CancellationToken __) => operation(CancellationToken.None));
         using MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
         ImageRepository repository = new ImageRepository(
             database.Object,
@@ -228,6 +232,100 @@ public sealed class ImageRepositoryMutationPreconditionTests
             It.IsAny<UpdateDefinition<ImageDocument>>(),
             It.IsAny<UpdateOptions>(),
             It.IsAny<CancellationToken>()), Times.Exactly(2));
+        collection.VerifyAll();
+        database.VerifyAll();
+        mutationLock.VerifyAll();
+    }
+
+    [Fact]
+    public async Task SetCurrentIfUnchangedAsync_WhenActivationTimesOut_ShouldRetryBeforeReleasingTheLock()
+    {
+        int targetWriteCount = 0;
+        ImageDocument reservedDocument = new ImageDocument
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            Category = ImageCategory.Avatar,
+            IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
+            UpdatedAt = DateTime.UtcNow,
+        };
+        ImageDocument updatedDocument = new ImageDocument
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            Category = ImageCategory.Avatar,
+            IsCurrent = true,
+        };
+        Mock<IMongoCollection<ImageDocument>> collection =
+            new Mock<IMongoCollection<ImageDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ImageDocument>>(),
+                It.IsAny<UpdateDefinition<ImageDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ImageDocument, ImageDocument>>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ImageDocument> _,
+                UpdateDefinition<ImageDocument> _,
+                FindOneAndUpdateOptions<ImageDocument, ImageDocument> _,
+                CancellationToken _) =>
+            {
+                int call = Interlocked.Increment(ref targetWriteCount);
+                return call switch
+                {
+                    1 => Task.FromResult(reservedDocument),
+                    2 => Task.FromException<ImageDocument>(
+                        new TimeoutException("Ambiguous activation timeout.")),
+                    _ => Task.FromResult(updatedDocument),
+                };
+            });
+        collection.Setup(value => value.UpdateManyAsync(
+                It.IsAny<FilterDefinition<ImageDocument>>(),
+                It.IsAny<UpdateDefinition<ImageDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database.Setup(value => value.GetCollection<ImageDocument>("images", null))
+            .Returns(collection.Object);
+        Mock<IImageCurrentMutationLock> mutationLock =
+            new Mock<IImageCurrentMutationLock>(MockBehavior.Strict);
+        mutationLock.Setup(value => value.ExecuteAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                It.IsAny<Func<CancellationToken, Task<Image?>>>(),
+                CancellationToken.None,
+                CancellationToken.None))
+            .Returns((
+                ImageOwnerType _,
+                string _,
+                ImageCategory _,
+                Func<CancellationToken, Task<Image?>> operation,
+                CancellationToken _,
+                CancellationToken __) => operation(CancellationToken.None));
+        using MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
+        ImageRepository repository = new ImageRepository(
+            database.Object,
+            new MongoDbSettings { ImagesCollectionName = "images" },
+            cache,
+            mutationLock.Object);
+
+        Image? result = await repository.SetCurrentIfUnchangedAsync(
+            "avatar-1",
+            new ImageMutationPrecondition(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                false),
+            ImageOwnerType.User,
+            "owner-1",
+            CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(3, targetWriteCount);
         collection.VerifyAll();
         database.VerifyAll();
         mutationLock.VerifyAll();
@@ -274,13 +372,15 @@ public sealed class ImageRepositoryMutationPreconditionTests
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<Func<CancellationToken, Task<Image?>>>(),
+                CancellationToken.None,
                 CancellationToken.None))
             .Returns((
                 ImageOwnerType _,
                 string _,
                 ImageCategory _,
                 Func<CancellationToken, Task<Image?>> operation,
-                CancellationToken _) => operation(leaseCancellation.Token));
+                CancellationToken _,
+                CancellationToken __) => operation(leaseCancellation.Token));
         using MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
         ImageRepository repository = new ImageRepository(
             database.Object,
@@ -466,6 +566,39 @@ public sealed class ImageRepositoryMutationPreconditionTests
         Assert.Equal("avatar-1", rendered["_id"].AsString);
         Assert.Equal("promotion-1", rendered["currentPromotionToken"].AsString);
         Assert.False(rendered.Contains("updatedAt"));
+    }
+
+    [Fact]
+    public void BuildPromotionActivationReconciliationFilter_ShouldAcceptTheAlreadyActivatedTarget()
+    {
+        ImageDocument reservation = new ImageDocument
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            Category = ImageCategory.Avatar,
+            IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
+            UpdatedAt = DateTime.UtcNow,
+        };
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = ImageRepository
+            .BuildPromotionActivationReconciliationFilter(reservation)
+            .Render(arguments);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        BsonDocument activatedTarget = alternatives[1].AsBsonDocument;
+
+        Assert.Equal("avatar-1", activatedTarget["_id"].AsString);
+        Assert.Equal("User", activatedTarget["ownerType"].AsString);
+        Assert.Equal("owner-1", activatedTarget["ownerId"].AsString);
+        Assert.Equal("Avatar", activatedTarget["category"].AsString);
+        Assert.True(activatedTarget["isCurrent"].AsBoolean);
+        Assert.False(activatedTarget["currentPromotionToken"]["$exists"].AsBoolean);
     }
 
     [Fact]

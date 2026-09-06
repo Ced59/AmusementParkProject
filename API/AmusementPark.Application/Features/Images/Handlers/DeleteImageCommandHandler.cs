@@ -95,6 +95,9 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
                     avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             try
             {
@@ -117,7 +120,9 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    mutationCancellation.Token);
+                    mutationCancellation.Token,
+                    cancellationToken,
+                    consistencyCancellation.Token);
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
                     avatarOwnerUserIds,
                     this.imageRepository,
@@ -161,7 +166,9 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        CancellationToken callerCancellationToken,
+        CancellationToken consistencyCancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
@@ -182,7 +189,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                             firstRemaining.IsCurrent),
                         ImageOwnerType.User,
                         image.OwnerId,
-                        cancellationToken);
+                        callerCancellationToken,
+                        consistencyCancellationToken);
                 }
             }
             return;

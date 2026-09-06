@@ -65,6 +65,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
                     && !guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-1",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(current);
         images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
@@ -290,6 +291,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
                     && !guard.IsCurrent),
                 ImageOwnerType.Park,
                 "park-1",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
 

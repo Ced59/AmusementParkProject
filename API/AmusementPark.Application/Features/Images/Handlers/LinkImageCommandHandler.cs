@@ -94,6 +94,9 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
                     avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? updated;
             try
@@ -110,7 +113,8 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                         precondition,
                         command.OwnerType,
                         normalizedOwnerId ?? string.Empty,
-                        mutationCancellation.Token)
+                        cancellationToken,
+                        consistencyCancellation.Token)
                     : await this.imageRepository.LinkIfUnchangedAsync(
                         image.Id,
                         precondition,

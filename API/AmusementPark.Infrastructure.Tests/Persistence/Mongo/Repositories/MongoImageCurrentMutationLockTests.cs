@@ -261,6 +261,56 @@ public sealed class MongoImageCurrentMutationLockTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenConsistencyGuardCancelsAfterAcquisition_ShouldCancelCriticalSection()
+    {
+        Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =
+            new Mock<IMongoCollection<ImageCurrentMutationLockDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument>>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ImageCurrentMutationLockDocument> _,
+                UpdateDefinition<ImageCurrentMutationLockDocument> update,
+                FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument> _,
+                CancellationToken _) => Task.FromResult(new ImageCurrentMutationLockDocument
+            {
+                ScopeKey = "User:7:owner-1:Avatar",
+                Token = Render(update)["$set"].AsBsonDocument["token"].AsString,
+            }));
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        MongoImageCurrentMutationLock mutationLock = new MongoImageCurrentMutationLock(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<MongoImageCurrentMutationLock>.Instance);
+        using CancellationTokenSource consistencyCancellation = new CancellationTokenSource();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
+            mutationLock.ExecuteAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                async operationCancellationToken =>
+                {
+                    consistencyCancellation.Cancel();
+                    await Task.Delay(
+                        Timeout.InfiniteTimeSpan,
+                        operationCancellationToken);
+                    return "stale-promotion";
+                },
+                CancellationToken.None,
+                consistencyCancellation.Token));
+
+        collection.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenLeaseCannotBeConfirmedBeforeDeadline_ShouldCancelPromotion()
     {
         Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =

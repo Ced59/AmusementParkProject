@@ -13,4 +13,12 @@ public interface IImageCurrentMutationLock
         ImageCategory category,
         Func<CancellationToken, Task<TResult>> operation,
         CancellationToken cancellationToken);
+
+    Task<TResult> ExecuteAsync<TResult>(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        Func<CancellationToken, Task<TResult>> operation,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken);
 }

@@ -69,6 +69,7 @@ public sealed class LinkImageCommandHandlerTests
                     && guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-new",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .Callback(() =>
             {

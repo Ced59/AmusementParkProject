@@ -191,6 +191,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
                 mutationLease);
+        using CancellationTokenSource consistencyCancellation =
+            ShareSourceMutationCancellation.CreateLeaseSource(mutationLease);
         bool sourceMutationAttempted = false;
         bool avatarImported = false;
         try
@@ -203,7 +205,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
-                    mutationCancellation.Token);
+                    cancellationToken,
+                    consistencyCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
@@ -271,6 +274,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
                 mutationLease);
+        using CancellationTokenSource consistencyCancellation =
+            ShareSourceMutationCancellation.CreateLeaseSource(mutationLease);
         bool sourceMutationAttempted = false;
         bool avatarImported = false;
         User? updatedUser;
@@ -285,7 +290,8 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
-                    mutationCancellation.Token);
+                    cancellationToken,
+                    consistencyCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;

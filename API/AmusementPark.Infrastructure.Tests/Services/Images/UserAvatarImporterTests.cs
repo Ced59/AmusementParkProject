@@ -74,6 +74,7 @@ public sealed class UserAvatarImporterTests
                     && !guard.IsCurrent),
                 ImageOwnerType.User,
                 "user-1",
+                It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Image
             {

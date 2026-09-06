@@ -164,14 +164,19 @@ que peut modifier une édition de légende ou de crédit ; une promotion plus r�
 retire les anciennes réservations avant d'activer sa propre cible. Tant que ce jeton
 existe, les mutations capables de déplacer, reclasser, supprimer ou changer l'état
 courant de la cible sont refusées par leur filtre MongoDB et peuvent être rejouées.
+L'activation finale est elle aussi rejouée sous le verrou après une réponse MongoDB
+ambiguë. Sa réconciliation accepte uniquement la réservation attendue ou la cible
+exacte déjà activée par cette même tentative : un timeout ne laisse donc pas
+durablement le périmètre sans image courante et ne peut pas valider une autre image.
 Après une réponse MongoDB ambiguë, une nouvelle promotion protégée du même périmètre
 peut reprendre la réservation de sa propre cible et remplacer son ancien jeton ; une
 image n'est donc pas bloquée durablement par une tentative interrompue.
-Une perte de bail
-peut donc laisser temporairement le périmètre
-sans image courante, mais jamais créer deux images courantes concurrentes ; une
-annulation du client après la première écriture ne laisse donc pas deux images
-courantes. Les actions de masse portent en plus la date de mise à jour observée :
+Le verrou distingue enfin l'annulation de transport de la perte d'une garantie de
+cohérence. Une déconnexion du client après la première écriture laisse finir la
+réconciliation sous verrou, tandis que la perte du lease de partage interrompt
+immédiatement la section critique. Une perte de bail peut donc laisser temporairement
+le périmètre sans image courante, mais jamais créer deux images courantes concurrentes.
+Les actions de masse portent en plus la date de mise à jour observée :
 elles ne peuvent pas réécrire une description ou des crédits modifiés entre-temps.
 Un lot d'import de parc ou d'attraction qui échoue après son envoi est considéré
 comme potentiellement appliqué : ses révisions de classement et de partage avancent
@@ -259,9 +264,12 @@ Les tests ciblés couvrent :
 - reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
 - annulation d'une promotion avant l'expiration de son dernier verrou confirmé ;
 - réconciliation de la rétrogradation avant promotion après un échec MongoDB ambigu ;
+- reprise idempotente de l'activation finale après un timeout MongoDB ambigu ;
 - annulation après rétrogradation sans activation tardive de la cible ;
 - reprise d'une réservation de cible restée ambiguë après une tentative interrompue ;
 - rejet d'une mutation de périmètre pendant une réservation de promotion ;
+- maintien de l'annulation métier du lease de partage dans le verrou d'image après
+  une déconnexion du client ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
 - incrément atomique de la révision après une vraie mutation ;

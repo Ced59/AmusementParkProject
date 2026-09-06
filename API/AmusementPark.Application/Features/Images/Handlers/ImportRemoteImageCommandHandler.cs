@@ -108,6 +108,9 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
                     avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? image;
             try
@@ -132,7 +135,8 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                             image.IsCurrent),
                         importRequest.OwnerType,
                         importRequest.OwnerId,
-                        mutationCancellation.Token);
+                        cancellationToken,
+                        consistencyCancellation.Token);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());

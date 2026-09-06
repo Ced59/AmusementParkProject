@@ -167,6 +167,13 @@ public interface IImageRepository
         ImageOwnerType ownerType,
         string ownerId,
         CancellationToken cancellationToken);
+    Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken);
     Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken);
     Task<Image?> UpdateMetadataIfUnchangedAsync(
         string imageId,

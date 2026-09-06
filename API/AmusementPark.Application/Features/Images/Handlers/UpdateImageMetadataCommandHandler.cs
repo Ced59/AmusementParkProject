@@ -110,6 +110,9 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
                     avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? updated;
             try
@@ -154,7 +157,8 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                             updated.IsCurrent),
                         updated.OwnerType,
                         updated.OwnerId,
-                        mutationCancellation.Token);
+                        cancellationToken,
+                        consistencyCancellation.Token);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());

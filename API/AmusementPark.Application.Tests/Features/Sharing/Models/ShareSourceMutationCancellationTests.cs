@@ -37,4 +37,19 @@ public sealed class ShareSourceMutationCancellationTests
 
         Assert.True(writerCancellation.IsCancellationRequested);
     }
+
+    [Fact]
+    public void CreateLeaseSource_WhenLeaseIsLost_ShouldCancelWithoutCallerToken()
+    {
+        using CancellationTokenSource leaseCancellation = new CancellationTokenSource();
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            "personal-ranking:owner-1",
+            leaseCancellation.Token);
+        using CancellationTokenSource consistencyCancellation =
+            ShareSourceMutationCancellation.CreateLeaseSource(mutationLease);
+
+        leaseCancellation.Cancel();
+
+        Assert.True(consistencyCancellation.IsCancellationRequested);
+    }
 }
