@@ -284,6 +284,8 @@ public sealed class ShareSourceRevisionRepositoryTests
     [Fact]
     public async Task BeginMutationAsync_WhenHeartbeatNoLongerOwnsLease_ShouldCancelWriterLease()
     {
+        TaskCompletionSource heartbeatObserved = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
         Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
             new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
         collection.Setup(value => value.UpdateOneAsync(
@@ -297,6 +299,7 @@ public sealed class ShareSourceRevisionRepositoryTests
                 It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
                 It.IsAny<UpdateOptions>(),
                 It.Is<CancellationToken>(token => token.CanBeCanceled)))
+            .Callback(() => heartbeatObserved.TrySetResult())
             .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
         collection.Setup(value => value.FindOneAndUpdateAsync(
                 It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
@@ -323,6 +326,7 @@ public sealed class ShareSourceRevisionRepositoryTests
             Timeout.InfiniteTimeSpan,
             mutationLease.LeaseCancellationToken);
 
+        await heartbeatObserved.Task.WaitAsync(TimeSpan.FromSeconds(5));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             () => leaseLossCancellation.WaitAsync(TimeSpan.FromSeconds(1)));
         collection.VerifyAll();
