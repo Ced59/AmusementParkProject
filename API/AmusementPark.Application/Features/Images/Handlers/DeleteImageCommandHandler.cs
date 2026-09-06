@@ -15,6 +15,7 @@ using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.Images.Handlers;
 
@@ -32,6 +33,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
     private readonly ICommentRepository commentRepository;
     private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
     private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
+    private readonly ILogger<DeleteImageCommandHandler>? logger;
 
     public DeleteImageCommandHandler(
         IImageRepository imageRepository,
@@ -42,7 +44,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IUserRepository userRepository,
         ICommentRepository commentRepository,
         IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
-        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
+        IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null,
+        ILogger<DeleteImageCommandHandler>? logger = null)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
@@ -53,6 +56,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         this.commentRepository = commentRepository;
         this.shareSourceRevisionGuard = shareSourceRevisionGuard;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
+        this.logger = logger;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteImageCommand command, CancellationToken cancellationToken = default)
@@ -130,9 +134,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     mutationCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(image.Path))
                 {
-                    _ = await this.imageBinaryStorage.DeleteAsync(
-                        image.Path,
-                        cancellationToken);
+                    await this.DeleteBinaryBestEffortAsync(image);
                 }
             }
             finally
@@ -157,6 +159,31 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         catch (Exception)
         {
             return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
+        }
+    }
+
+    private async Task DeleteBinaryBestEffortAsync(Image image)
+    {
+        try
+        {
+            bool deleted = await this.imageBinaryStorage.DeleteAsync(
+                image.Path!,
+                CancellationToken.None);
+            if (!deleted)
+            {
+                this.logger?.LogWarning(
+                    "Image metadata {ImageId} was deleted, but binary cleanup did not remove {ImagePath}.",
+                    image.Id,
+                    image.Path);
+            }
+        }
+        catch (Exception exception)
+        {
+            this.logger?.LogWarning(
+                exception,
+                "Image metadata {ImageId} was deleted, but binary cleanup failed for {ImagePath}.",
+                image.Id,
+                image.Path);
         }
     }
 
