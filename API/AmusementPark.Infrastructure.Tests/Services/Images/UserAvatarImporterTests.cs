@@ -15,8 +15,11 @@ public sealed class UserAvatarImporterTests
     private static readonly byte[] PngBytes = Convert.FromBase64String(
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=");
 
-    [Fact]
-    public async Task DownloadAndSaveAsync_ShouldPersistGoogleAvatarWithoutPrivateMetadata()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task DownloadAndSaveAsync_ShouldOnlyReturnAConfirmedPromotedAvatar(
+        bool promotionConfirmed)
     {
         HttpClient httpClient = new HttpClient(new AvatarHttpMessageHandler(PngBytes));
         Mock<IImageProcessingPipeline> imageProcessingPipeline =
@@ -64,6 +67,17 @@ public sealed class UserAvatarImporterTests
                 false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { "avatar/avatar-1.webp", "avatar/avatar-1.jpg" });
+        Image? promotedImage = promotionConfirmed
+            ? new Image
+            {
+                Id = "avatar-1",
+                Category = ImageCategory.Avatar,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "user-1",
+                Path = "avatar/avatar-1",
+                IsCurrent = true,
+            }
+            : null;
         imageRepository
             .Setup(repository => repository.SetCurrentIfUnchangedAsync(
                 "avatar-1",
@@ -76,15 +90,7 @@ public sealed class UserAvatarImporterTests
                 "user-1",
                 It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Image
-            {
-                Id = "avatar-1",
-                Category = ImageCategory.Avatar,
-                OwnerType = ImageOwnerType.User,
-                OwnerId = "user-1",
-                Path = "avatar/avatar-1",
-                IsCurrent = true,
-            });
+            .ReturnsAsync(promotedImage);
         UserAvatarImporter importer = new UserAvatarImporter(
             new StubHttpClientFactory(httpClient),
             imageProcessingPipeline.Object,
@@ -97,7 +103,7 @@ public sealed class UserAvatarImporterTests
             "user-1",
             CancellationToken.None);
 
-        Assert.Equal("/images/avatar-1", avatarUrl);
+        Assert.Equal(promotionConfirmed ? "/images/avatar-1" : string.Empty, avatarUrl);
         imageProcessingPipeline.VerifyAll();
         imageBinaryStorage.VerifyAll();
         imageRepository.VerifyAll();

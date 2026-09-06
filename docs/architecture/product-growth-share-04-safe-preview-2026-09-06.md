@@ -140,6 +140,12 @@ qui ne touche qu'à `avatarUrl` et `updatedAt` : une lecture concurrente ne peut
 pas rétablir d'anciens rôles, mots de passe ou états de blocage. Si l'import externe
 a créé l'image mais perd ensuite la comparaison de version du compte, une relecture
 autoritaire réaligne immédiatement `avatarUrl` sur l'image effectivement courante.
+L'import externe ne retourne une URL que si la nouvelle image est confirmée courante
+dans le périmètre avatar attendu. Si la promotion est refusée par une mutation
+concurrente, le compte conserve donc son avatar autoritaire. Si la promotion réussit
+mais que le remplacement versionné du compte retourne un conflit, un timeout, une
+exception MongoDB ou une annulation, la réconciliation autoritaire s'exécute avant
+de propager le résultat incertain, dans les deux chemins de connexion externe.
 Lorsqu'une image courante change de propriétaire sans demander explicitement une
 nouvelle promotion, elle est rétrogradée pendant le transfert ; elle ne peut ainsi
 pas devenir courante dans deux périmètres différents.
@@ -281,6 +287,9 @@ Les tests ciblés couvrent :
 - rétrogradation d'une image courante lorsqu'elle est transférée vers un autre compte ;
 - écriture partielle de l'avatar sans réécriture des rôles ni de l'état du compte ;
 - réconciliation autoritaire après un conflit de version suivant un import externe ;
+- absence d'URL importée lorsque la promotion de l'avatar n'est pas confirmée ;
+- réconciliation autoritaire après une réponse ambiguë de l'écriture du compte dans
+  les deux chemins de connexion externe ;
 - refus des remplacements de compte devenus obsolètes dans les flux profil et sécurité ;
 - refus atomique d'un transfert fondé sur un propriétaire devenu obsolète ;
 - réservation avant import d'un avatar fourni par une identité externe ;

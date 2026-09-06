@@ -263,6 +263,143 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         revisions.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task HandleAsync_WhenImportedAvatarUserWriteIsAmbiguous_ShouldReconcileInBothExistingUserPaths(
+        bool foundByProvider)
+    {
+        VerifiedExternalIdentity identity = CreateIdentity(
+            "external-user@example.com",
+            "provider-user-timeout",
+            "https://images.example.test/avatar.png");
+        DateTime expectedUpdatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            17,
+            0,
+            0,
+            DateTimeKind.Utc);
+        User staleUser = new User
+        {
+            Id = "existing-user-id",
+            Email = identity.Email,
+            UpdatedAtUtc = expectedUpdatedAtUtc,
+            PublicDisplayName = "CoasterFan",
+            UsesAutomaticPublicDisplayName = false,
+            Roles = new List<Role> { Role.User },
+            IsActivated = true,
+            IsBlocked = false,
+            ExternalLogins = foundByProvider
+                ? new List<ExternalLogin>
+                {
+                    new ExternalLogin
+                    {
+                        Provider = ExternalLoginProvider.Google,
+                        ProviderUserId = identity.ProviderUserId,
+                    },
+                }
+                : new List<ExternalLogin>(),
+        };
+        staleUser.AssignPublicAccountNumber(12);
+        User authoritativeUser = new User
+        {
+            Id = staleUser.Id,
+            Email = staleUser.Email,
+            UpdatedAtUtc = expectedUpdatedAtUtc.AddSeconds(1),
+            PublicDisplayName = staleUser.PublicDisplayName,
+            UsesAutomaticPublicDisplayName = false,
+            Roles = new List<Role> { Role.User },
+            IsActivated = true,
+            IsBlocked = false,
+        };
+        authoritativeUser.AssignPublicAccountNumber(12);
+        Image currentAvatar = new Image
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = staleUser.Id,
+            Category = ImageCategory.Avatar,
+            IsCurrent = true,
+            IsPublished = true,
+        };
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            "personal-ranking:existing-user-id");
+        ExternalUserHandlerMocks mocks = new ExternalUserHandlerMocks();
+        SetupAuthenticationFlow(mocks, identity);
+        mocks.UserRepository
+            .Setup(repository => repository.GetByExternalLoginAsync(
+                ExternalLoginProvider.Google,
+                identity.ProviderUserId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(foundByProvider ? staleUser : null);
+        if (!foundByProvider)
+        {
+            mocks.UserRepository
+                .Setup(repository => repository.GetByEmailAsync(
+                    identity.Email,
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(staleUser);
+        }
+
+        mocks.UserRepository
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
+                staleUser.Id,
+                It.Is<User>(user => user.AvatarUrl == "/images/avatar-1"),
+                expectedUpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException("MongoDB response was ambiguous."));
+        mocks.UserRepository
+            .Setup(repository => repository.GetByIdAsync(
+                staleUser.Id,
+                CancellationToken.None))
+            .ReturnsAsync(authoritativeUser);
+        mocks.UserRepository
+            .Setup(repository => repository.UpdateAvatarUrlAsync(
+                staleUser.Id,
+                "/images/avatar-1",
+                CancellationToken.None))
+            .Callback((string _, string? avatarUrl, CancellationToken _) =>
+                authoritativeUser.AvatarUrl = avatarUrl)
+            .ReturnsAsync(true);
+        mocks.ImageRepository
+            .Setup(repository => repository.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                staleUser.Id,
+                ImageCategory.Avatar,
+                CancellationToken.None))
+            .ReturnsAsync(currentAvatar);
+        mocks.UserAvatarImporter
+            .Setup(importer => importer.DownloadAndSaveAsync(
+                identity.PictureUrl!,
+                staleUser.Id,
+                It.IsAny<CancellationToken>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync("/images/avatar-1");
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginMutationAsync(
+                staleUser.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(lease);
+        revisions.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        ProvisionExternalUserCommandHandler handler = CreateHandler(
+            mocks,
+            revisions.Object);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => handler.HandleAsync(
+            CreateCommand()));
+
+        Assert.Equal("/images/avatar-1", authoritativeUser.AvatarUrl);
+        mocks.VerifyAll();
+        revisions.VerifyAll();
+    }
+
     [Fact]
     public async Task HandleAsync_WhenLegacyExternalUserHasCustomName_ShouldAllocateNumberWithoutReplacingName()
     {

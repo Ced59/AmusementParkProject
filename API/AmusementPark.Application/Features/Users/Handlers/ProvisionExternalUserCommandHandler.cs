@@ -225,19 +225,12 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             sourceMutationAttempted |= previousIdentity !=
                 PersonalRankingShareIdentityState.Capture(user);
-            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+            User? updatedUser = await this.UpdateIfUnchangedAndReconcileImportedAvatarAsync(
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
+                avatarImported,
                 mutationCancellation.Token);
-            if (updatedUser is null && avatarImported)
-            {
-                await UserAvatarShareSourceMutation.SynchronizeAsync(
-                    new[] { user.Id },
-                    this.imageRepository,
-                    this.userRepository,
-                    CancellationToken.None);
-            }
 
             return updatedUser;
         }
@@ -305,19 +298,12 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             sourceMutationAttempted |= previousIdentity !=
                 PersonalRankingShareIdentityState.Capture(user);
-            updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+            updatedUser = await this.UpdateIfUnchangedAndReconcileImportedAvatarAsync(
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
+                avatarImported,
                 mutationCancellation.Token);
-            if (updatedUser is null && avatarImported)
-            {
-                await UserAvatarShareSourceMutation.SynchronizeAsync(
-                    new[] { user.Id },
-                    this.imageRepository,
-                    this.userRepository,
-                    CancellationToken.None);
-            }
         }
         finally
         {
@@ -355,6 +341,38 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             RefreshToken = refreshToken,
             RefreshTokenExpiresAtUtc = refreshTokenExpiresAtUtc,
         });
+    }
+
+    private async Task<User?> UpdateIfUnchangedAndReconcileImportedAvatarAsync(
+        string userId,
+        User user,
+        DateTime expectedUpdatedAtUtc,
+        bool avatarImported,
+        CancellationToken cancellationToken)
+    {
+        User? updatedUser = null;
+        bool outcomeConfirmed = false;
+        try
+        {
+            updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                userId,
+                user,
+                expectedUpdatedAtUtc,
+                cancellationToken);
+            outcomeConfirmed = true;
+            return updatedUser;
+        }
+        finally
+        {
+            if (avatarImported && (!outcomeConfirmed || updatedUser is null))
+            {
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    new[] { userId },
+                    this.imageRepository,
+                    this.userRepository,
+                    CancellationToken.None);
+            }
+        }
     }
 
     private async Task EnsurePublicIdentityAsync(User user, CancellationToken cancellationToken)

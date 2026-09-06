@@ -204,7 +204,7 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 filePayload,
                 false,
                 mutationCancellationToken);
-            await this.imageRepository.SetCurrentIfUnchangedAsync(
+            Image? promotedImage = await this.imageRepository.SetCurrentIfUnchangedAsync(
                 image.Id,
                 new ImageMutationPrecondition(
                     image.OwnerType,
@@ -215,7 +215,21 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 userId,
                 cancellationToken,
                 consistencyCancellationToken);
-            return $"/images/{image.Id}";
+            if (promotedImage is null
+                || !promotedImage.IsCurrent
+                || !string.Equals(promotedImage.Id, image.Id, StringComparison.Ordinal)
+                || promotedImage.OwnerType != ImageOwnerType.User
+                || !string.Equals(promotedImage.OwnerId, userId, StringComparison.Ordinal)
+                || promotedImage.Category != ImageCategory.Avatar)
+            {
+                this.logger.LogWarning(
+                    "External avatar {ImageId} was stored for user {UserId}, but its promotion was not confirmed.",
+                    image.Id,
+                    userId);
+                return string.Empty;
+            }
+
+            return $"/images/{promotedImage.Id}";
         }
         catch (OperationCanceledException) when (mutationCancellationToken.IsCancellationRequested)
         {
