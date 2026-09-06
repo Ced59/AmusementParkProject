@@ -1025,7 +1025,7 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId);
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.OwnerType, ownerType)
             .Set(static document => document.OwnerId, ownerId)
@@ -2006,7 +2006,7 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId);
         UpdateDefinition<ImageDocument> update = BuildMetadataUpdate(metadata);
 
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
@@ -2051,7 +2051,7 @@ public sealed class ImageRepository : IImageRepository
         ImageMutationPrecondition precondition)
     {
         FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
-        FilterDefinition<ImageDocument> filter = builder.Eq(static document => document.Id, imageId)
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId)
             & BuildOwnerTypeFilter(builder, precondition.OwnerType)
             & builder.Eq(static document => document.OwnerId, precondition.OwnerId)
             & BuildCategoryFilter(builder, precondition.Category)
@@ -2061,6 +2061,16 @@ public sealed class ImageRepository : IImageRepository
                 static document => document.UpdatedAt,
                 precondition.UpdatedAtUtc.Value)
             : filter;
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildUnreservedImageFilter(
+        string imageId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, imageId)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                false);
     }
 
     private static UpdateDefinition<ImageDocument> BuildMetadataUpdate(
@@ -2116,7 +2126,9 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken)
     {
-        DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == imageId, cancellationToken: cancellationToken);
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildUnreservedImageFilter(imageId),
+            cancellationToken);
         if (result.DeletedCount > 0)
         {
             InvalidateReadCache();

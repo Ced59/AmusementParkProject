@@ -161,7 +161,10 @@ n'est libéré que par son propre jeton. La promotion rétrograde d'abord, sous 
 les autres images courantes de façon idempotente, puis vérifie encore son bail avant
 d'activer la cible. La réservation porte un jeton dédié, indépendant de l'horodatage
 que peut modifier une édition de légende ou de crédit ; une promotion plus récente
-retire les anciennes réservations avant d'activer sa propre cible. Une perte de bail
+retire les anciennes réservations avant d'activer sa propre cible. Tant que ce jeton
+existe, les mutations capables de déplacer, reclasser, supprimer ou changer l'état
+courant de la cible sont refusées par leur filtre MongoDB et peuvent être rejouées.
+Une perte de bail
 peut donc laisser temporairement le périmètre
 sans image courante, mais jamais créer deux images courantes concurrentes ; une
 annulation du client après la première écriture ne laisse donc pas deux images
@@ -254,6 +257,7 @@ Les tests ciblés couvrent :
 - annulation d'une promotion avant l'expiration de son dernier verrou confirmé ;
 - réconciliation de la rétrogradation avant promotion après un échec MongoDB ambigu ;
 - annulation après rétrogradation sans activation tardive de la cible ;
+- rejet d'une mutation de périmètre pendant une réservation de promotion ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
 - incrément atomique de la révision après une vraie mutation ;

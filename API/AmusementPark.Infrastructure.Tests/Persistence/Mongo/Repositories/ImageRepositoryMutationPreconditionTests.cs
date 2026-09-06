@@ -344,7 +344,24 @@ public sealed class ImageRepositoryMutationPreconditionTests
         Assert.Equal("owner-before", rendered["ownerId"].AsString);
         Assert.Equal("Avatar", rendered["category"].AsString);
         Assert.True(rendered["isCurrent"].AsBoolean);
+        Assert.False(rendered["currentPromotionToken"]["$exists"].AsBoolean);
         Assert.Equal(updatedAtUtc, rendered["updatedAt"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void BuildUnreservedImageFilter_ShouldRejectAnActivePromotionReservation()
+    {
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = ImageRepository.BuildUnreservedImageFilter("avatar-1")
+            .Render(arguments);
+
+        Assert.Equal("avatar-1", rendered["_id"].AsString);
+        Assert.False(rendered["currentPromotionToken"]["$exists"].AsBoolean);
     }
 
     [Fact]

@@ -104,7 +104,8 @@ images courantes, même si elle intervient juste avant l'expiration du bail. La 
 est d'abord réservée comme non courante avec la précondition observée, afin qu'une
 demande obsolète ne puisse pas rétrograder l'image légitime. Cette réservation utilise
 un jeton distinct des métadonnées éditoriales et toute promotion plus récente retire
-les anciens jetons avant son activation. Le verrou annule ensuite
+les anciens jetons avant son activation. Les changements de périmètre, d'état courant
+et les suppressions refusent toute cible encore réservée. Le verrou annule ensuite
 l'ancien écrivain avant la dernière expiration confirmée si MongoDB reste
 indisponible. Après cette
 première écriture, la rétrogradation des autres images est réconciliée de manière
