@@ -14,6 +14,7 @@ namespace AmusementPark.Infrastructure.Services.Ratings;
 
 public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRenderer, IDisposable
 {
+    private const string AnonymousDisplayName = "AMUSEMENT-PARKS.FUN";
     private const int ImageWidth = 1200;
     private const int ImageHeight = 630;
     private const int PreviewCacheSizeLimit = 128;
@@ -89,6 +90,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
         Font detailFont = this.fontFamily.CreateFont(20, FontStyle.Regular);
         Font scoreFont = this.fontFamily.CreateFont(27, FontStyle.Regular);
         IReadOnlyCollection<UserRankingSharePreviewItemResult> items = preview.Items.Take(5).ToList();
+        string displayName = ResolveDisplayName(preview.DisplayName);
 
         image.Mutate(context =>
         {
@@ -109,7 +111,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
             context.Fill(Color.ParseHex("FF7A00"), new RectangleF(58, 50, 10, 78));
             context.DrawText("AMUSEMENT-PARKS.FUN", brandFont, Color.ParseHex("F8FAFC"), new PointF(88, 48));
             context.DrawText(
-                FitText(preview.DisplayName, nameFont, 760),
+                FitText(displayName, nameFont, 760),
                 nameFont,
                 Color.ParseHex("FFFFFF"),
                 new PointF(58, 102));
@@ -162,7 +164,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
     private static string BuildCacheKey(UserRankingSharePreviewResult preview)
     {
         StringBuilder content = new StringBuilder();
-        AppendCacheValue(content, preview.DisplayName.Trim());
+        AppendCacheValue(content, ResolveDisplayName(preview.DisplayName));
         foreach (UserRankingSharePreviewItemResult item in preview.Items.Take(5))
         {
             AppendCacheValue(content, item.Rank.ToString(System.Globalization.CultureInfo.InvariantCulture));
@@ -173,6 +175,13 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
 
         byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(content.ToString()));
         return Convert.ToHexString(digest);
+    }
+
+    internal static string ResolveDisplayName(string? displayName)
+    {
+        return string.IsNullOrWhiteSpace(displayName)
+            ? AnonymousDisplayName
+            : displayName.Trim();
     }
 
     private static void AppendCacheValue(StringBuilder content, string value)
@@ -187,7 +196,7 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
         string normalizedValue = value?.Trim() ?? string.Empty;
         if (normalizedValue.Length == 0)
         {
-            return "AMUSEMENTPARK";
+            return AnonymousDisplayName;
         }
 
         if (TextMeasurer.MeasureSize(normalizedValue, new TextOptions(font)).Width <= maximumWidth)
