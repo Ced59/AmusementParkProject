@@ -79,7 +79,6 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         UserRatingStatsResult? sourceStatistics = includesRatings
             ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(
                 ownerUserId,
-                MaximumRatingCount,
                 cancellationToken)
             : null;
         IReadOnlyCollection<UserRatingListItemResult> sourceRatingCandidates = includesRatings

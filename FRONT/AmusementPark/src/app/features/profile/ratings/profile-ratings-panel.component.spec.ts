@@ -145,6 +145,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
   readonly visibilityCalls: boolean[] = [];
   readonly previewCalls: SharePublicationPreviewRequest[] = [];
   readonly publishCalls: SharePublicationPublishRequest[] = [];
+  previewResponse: Subject<SharePublicationPreview> | null = null;
   settings: UserRankingShareSettings = {
     isPublic: false,
     shareId: null,
@@ -173,7 +174,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
 
   preview(request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> {
     this.previewCalls.push(request);
-    return of({
+    const preview: SharePublicationPreview = {
       publicationType: 'PersonalRanking',
       sourceVersion: 12,
       approvalToken: 'approved-preview',
@@ -189,7 +190,8 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
         ratings: [],
         isTruncated: false
       }
-    });
+    };
+    return this.previewResponse ?? of(preview);
   }
 
   publish(request: SharePublicationPublishRequest): Observable<SharePublicationSettings> {
@@ -429,6 +431,51 @@ describe('ProfileRatingsPanelComponent', () => {
 
     expect(sharePort.visibilityCalls).toEqual([false]);
     expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
+  });
+
+  it('discards an in-flight preview when the privacy selection changes', () => {
+    const pendingPreview: Subject<SharePublicationPreview> = new Subject<SharePublicationPreview>();
+    sharePort.previewResponse = pendingPreview;
+    fixture.detectChanges();
+
+    const publishButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share__actions button',
+    );
+    publishButton.click();
+    fixture.detectChanges();
+
+    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share-editor__actions button:last-child',
+    );
+    previewButton.click();
+    fixture.detectChanges();
+
+    const nameCheckbox: HTMLInputElement = fixture.nativeElement.querySelector(
+      '.ranking-share-choice input',
+    );
+    nameCheckbox.click();
+    pendingPreview.next({
+      publicationType: 'PersonalRanking',
+      sourceVersion: 12,
+      approvalToken: 'stale-approved-preview',
+      contentPolicy: {
+        schemaVersion: 1,
+        datePrecision: 'Hidden',
+        includedFields: ['PublicDisplayName', 'GlobalRatings']
+      },
+      personalRanking: {
+        displayName: 'Camille',
+        avatarUrl: null,
+        statistics: createStats(),
+        ratings: [],
+        isTruncated: false
+      }
+    });
+    fixture.detectChanges();
+
+    expect(sharePort.previewCalls[0]?.includedFields).toEqual(['PublicDisplayName', 'GlobalRatings']);
+    expect(fixture.nativeElement.querySelector('.ranking-share-preview')).toBeNull();
+    expect(sharePort.publishCalls).toEqual([]);
   });
 });
 

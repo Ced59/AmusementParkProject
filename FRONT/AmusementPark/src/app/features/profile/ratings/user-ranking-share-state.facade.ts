@@ -77,23 +77,33 @@ export class UserRankingShareStateFacade {
       return;
     }
 
+    const requestedFields: ShareContentField[] = this.selectedFields();
     const request: SharePublicationPreviewRequest = {
       publicationType: 'PersonalRanking',
       sourceId: null,
       datePrecision: 'Hidden',
-      includedFields: this.selectedFields()
+      includedFields: requestedFields
     };
     this.previewingSignal.set(true);
     this.previewErrorSignal.set(false);
     this.previewSignal.set(null);
     this.sharePort.preview(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (preview: SharePublicationPreview): void => {
-        this.previewSignal.set(preview);
         this.previewingSignal.set(false);
+        if (!this.hasSameFields(requestedFields, this.selectedFields())
+          || !this.hasSameFields(requestedFields, preview.contentPolicy.includedFields)) {
+          return;
+        }
+
+        this.previewSignal.set(preview);
       },
       error: (error: unknown): void => {
         console.error('Error preparing user ranking share preview', error);
         this.previewingSignal.set(false);
+        if (!this.hasSameFields(requestedFields, this.selectedFields())) {
+          return;
+        }
+
         this.previewErrorSignal.set(true);
       }
     });
@@ -198,5 +208,11 @@ export class UserRankingShareStateFacade {
     }
 
     return fields;
+  }
+
+  private hasSameFields(left: readonly ShareContentField[], right: readonly ShareContentField[]): boolean {
+    return left.length === right.length && left.every((field: ShareContentField): boolean => {
+      return right.includes(field);
+    });
   }
 }

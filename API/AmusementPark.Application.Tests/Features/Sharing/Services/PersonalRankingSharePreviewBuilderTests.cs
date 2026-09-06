@@ -32,9 +32,8 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
-                1000,
                 CancellationToken.None))
-            .ReturnsAsync(CreateStatistics());
+            .ReturnsAsync(CreateStatistics(totalRatings: 1001));
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
                 1001,
@@ -67,7 +66,8 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             result.Value.PersonalRanking);
         Assert.Equal("Camille", preview.DisplayName);
         Assert.Equal("/images/avatar-1", preview.AvatarUrl);
-        Assert.Null(Assert.Single(preview.Statistics!.ByPark).Key);
+        Assert.Equal(1001, preview.Statistics!.TotalRatings);
+        Assert.Null(Assert.Single(preview.Statistics.ByPark).Key);
         Assert.Equal("Parc Astérix", Assert.Single(preview.Statistics.ByPark).Label);
         Assert.Equal("ParkItem", Assert.Single(preview.Statistics.ByTargetType).Key);
         Assert.Equal("Attraction", Assert.Single(preview.Statistics.ByParkItemCategory).Key);
@@ -136,7 +136,6 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
-                1000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
@@ -297,10 +296,10 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         };
     }
 
-    private static UserRatingStatsResult CreateStatistics()
+    private static UserRatingStatsResult CreateStatistics(long totalRatings = 1)
     {
         return new UserRatingStatsResult(
-            1,
+            totalRatings,
             4.5,
             4.5,
             4.5,
