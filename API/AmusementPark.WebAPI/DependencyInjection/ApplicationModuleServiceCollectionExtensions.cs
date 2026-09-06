@@ -62,6 +62,7 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.SocialPublishing.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Ratings.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Passport.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.Sharing.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Seo.", StringComparison.Ordinal);
         });
 

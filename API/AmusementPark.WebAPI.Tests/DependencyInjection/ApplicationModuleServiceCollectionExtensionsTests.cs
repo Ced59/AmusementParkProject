@@ -16,6 +16,8 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.ParkPricing.Commands;
 using AmusementPark.Application.Features.ParkPricing.Queries;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Results;
@@ -71,6 +73,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportItemStatisticsQuery, ApplicationResult<PassportItemStatisticsResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportParkStatisticsQuery, ApplicationResult<PassportParkStatisticsResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportYearStatisticsQuery, ApplicationResult<PassportYearStatisticsResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>));
     }
 
     [Fact]
