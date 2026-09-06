@@ -56,8 +56,13 @@ public sealed class ImportRemoteImageCommandHandlerTests
             .ReturnsAsync(imported);
 
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.Setup(value => value.SetCurrentAsync(
+        images.Setup(value => value.SetCurrentIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-1"
+                    && guard.Category == ImageCategory.Avatar
+                    && !guard.IsCurrent),
                 ImageOwnerType.User,
                 "owner-1",
                 It.IsAny<CancellationToken>()))
@@ -277,7 +282,16 @@ public sealed class ImportRemoteImageCommandHandlerTests
             .ReturnsAsync(importedImage);
 
         imageRepository
-            .Setup(repository => repository.SetCurrentAsync("image-1", ImageOwnerType.Park, "park-1", It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.SetCurrentIfUnchangedAsync(
+                "image-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.Park
+                    && guard.OwnerId == "park-1"
+                    && guard.Category == ImageCategory.Logo
+                    && !guard.IsCurrent),
+                ImageOwnerType.Park,
+                "park-1",
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
 
         parkRepository

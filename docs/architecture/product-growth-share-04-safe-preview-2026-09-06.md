@@ -115,12 +115,13 @@ leurs deux URL publiques depuis MongoDB avant de régler les leases. Une
 dépublication unitaire ou en masse utilise le même chemin et retire donc l'avatar
 public sans fenêtre incohérente. Toute réponse de mutation ambiguë est traitée
 prudemment comme un changement possible afin de faire avancer la révision.
-Les rattachements, promotions et changements de métadonnées portent en plus une
+Les rattachements, promotions, changements de métadonnées et suppressions portent en plus une
 précondition MongoDB atomique sur le propriétaire, la catégorie et l'état courant
 observés : si une autre requête a transféré l'image entre la lecture et l'écriture,
 la mutation devenue obsolète est refusée au lieu de modifier un propriétaire non
-protégé. L'import d'un avatar pendant une connexion externe réserve lui aussi le
-lease avant de télécharger ou de créer l'image.
+protégé. Les promotions qui suivent un import local ou distant réutilisent la même
+précondition. L'import d'un avatar pendant une connexion externe réserve lui aussi
+le lease avant de télécharger ou de créer l'image.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une

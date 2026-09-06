@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
@@ -91,21 +92,18 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.shareSourceRevisionGuard,
                     cancellationToken);
             bool avatarSourceChanged = false;
+            bool binaryDeleted = true;
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
-                if (!string.IsNullOrWhiteSpace(image.Path))
-                {
-                    bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
-                        image.Path,
-                        cancellationToken);
-                    if (!binaryDeleted)
-                    {
-                        return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
-                    }
-                }
-
-                bool deleted = await this.imageRepository.DeleteAsync(image.Id, cancellationToken);
+                bool deleted = await this.imageRepository.DeleteIfUnchangedAsync(
+                    image.Id,
+                    new ImageMutationPrecondition(
+                        image.OwnerType,
+                        image.OwnerId,
+                        image.Category,
+                        image.IsCurrent),
+                    cancellationToken);
                 if (!deleted)
                 {
                     return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
@@ -123,6 +121,12 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.imageRepository,
                     this.userRepository,
                     cancellationToken);
+                if (!string.IsNullOrWhiteSpace(image.Path))
+                {
+                    binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
+                        image.Path,
+                        cancellationToken);
+                }
             }
             finally
             {
@@ -137,7 +141,9 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 new[] { image },
                 Array.Empty<Image>(),
                 cancellationToken);
-            return ApplicationResult.Success();
+            return binaryDeleted
+                ? ApplicationResult.Success()
+                : ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
@@ -167,7 +173,16 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 Image? firstRemaining = remainingImages.FirstOrDefault();
                 if (firstRemaining is not null)
                 {
-                    replacementCurrent = await imageRepository.SetCurrentAsync(firstRemaining.Id, ImageOwnerType.User, image.OwnerId, cancellationToken);
+                    replacementCurrent = await imageRepository.SetCurrentIfUnchangedAsync(
+                        firstRemaining.Id,
+                        new ImageMutationPrecondition(
+                            firstRemaining.OwnerType,
+                            firstRemaining.OwnerId,
+                            firstRemaining.Category,
+                            firstRemaining.IsCurrent),
+                        ImageOwnerType.User,
+                        image.OwnerId,
+                        cancellationToken);
                 }
             }
             return;

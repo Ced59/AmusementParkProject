@@ -117,7 +117,16 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
 
                 if (importRequest.SetAsCurrent && importRequest.OwnerId is not null)
                 {
-                    Image? current = await this.imageRepository.SetCurrentAsync(image.Id, importRequest.OwnerType, importRequest.OwnerId, cancellationToken);
+                    Image? current = await this.imageRepository.SetCurrentIfUnchangedAsync(
+                        image.Id,
+                        new ImageMutationPrecondition(
+                            image.OwnerType,
+                            image.OwnerId,
+                            image.Category,
+                            image.IsCurrent),
+                        importRequest.OwnerType,
+                        importRequest.OwnerId,
+                        cancellationToken);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());

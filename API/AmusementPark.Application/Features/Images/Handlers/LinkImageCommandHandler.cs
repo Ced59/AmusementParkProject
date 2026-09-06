@@ -134,7 +134,15 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                         SourceUrl = updated.SourceUrl,
                     };
 
-                    Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(updated.Id, metadata, cancellationToken);
+                    Image? metadataUpdated = await this.imageRepository.UpdateMetadataIfUnchangedAsync(
+                        updated.Id,
+                        new ImageMutationPrecondition(
+                            updated.OwnerType,
+                            updated.OwnerId,
+                            updated.Category,
+                            updated.IsCurrent),
+                        metadata,
+                        cancellationToken);
                     if (metadataUpdated is not null)
                     {
                         updated = metadataUpdated;

@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Handlers;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -43,7 +44,14 @@ public sealed class DeleteImageCommandHandlerTests
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images.Setup(value => value.GetByIdAsync("avatar-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
-        images.Setup(value => value.DeleteAsync("avatar-1", It.IsAny<CancellationToken>()))
+        images.Setup(value => value.DeleteIfUnchangedAsync(
+                "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "owner-1"
+                    && guard.Category == ImageCategory.Avatar
+                    && guard.IsCurrent),
+                It.IsAny<CancellationToken>()))
             .Callback(() => Assert.True(leaseStarted))
             .ReturnsAsync(true);
         images.Setup(value => value.GetByOwnerAsync(
@@ -105,6 +113,55 @@ public sealed class DeleteImageCommandHandlerTests
         comments.VerifyAll();
         users.VerifyAll();
         revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenImageChangedAfterRead_ShouldKeepItsBinary()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Path = "parks/image-1.webp",
+            IsCurrent = true,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdAsync("image-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(image);
+        images.Setup(value => value.DeleteIfUnchangedAsync(
+                "image-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.Park
+                    && guard.OwnerId == "park-1"
+                    && guard.Category == ImageCategory.Park
+                    && guard.IsCurrent),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.IsImageReferencedAsync("image-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        DeleteImageCommandHandler handler = new DeleteImageCommandHandler(
+            images.Object,
+            storage.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            comments.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new DeleteImageCommand("image-1"),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        images.VerifyAll();
+        comments.VerifyAll();
+        storage.VerifyNoOtherCalls();
     }
 
     [Theory]

@@ -175,6 +175,10 @@ public interface IImageRepository
         CancellationToken cancellationToken);
     Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken);
+    Task<bool> DeleteIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        CancellationToken cancellationToken);
     Task<bool> DeleteClaimedCommentImageAsync(
         string imageId,
         ImageOwnerType ownerType,

@@ -173,7 +173,16 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 filePayload,
                 false,
                 cancellationToken);
-            await this.imageRepository.SetCurrentAsync(image.Id, ImageOwnerType.User, userId, cancellationToken);
+            await this.imageRepository.SetCurrentIfUnchangedAsync(
+                image.Id,
+                new ImageMutationPrecondition(
+                    image.OwnerType,
+                    image.OwnerId,
+                    image.Category,
+                    image.IsCurrent),
+                ImageOwnerType.User,
+                userId,
+                cancellationToken);
             return $"/images/{image.Id}";
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

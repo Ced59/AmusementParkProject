@@ -1949,6 +1949,22 @@ public sealed class ImageRepository : IImageRepository
         return result.DeletedCount > 0;
     }
 
+    public async Task<bool> DeleteIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildMutationPreconditionFilter(imageId, precondition),
+            cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
+        return result.DeletedCount > 0;
+    }
+
     public async Task<bool> DeleteClaimedCommentImageAsync(
         string imageId,
         ImageOwnerType ownerType,

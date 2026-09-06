@@ -65,8 +65,13 @@ public sealed class UserAvatarImporterTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { "avatar/avatar-1.webp", "avatar/avatar-1.jpg" });
         imageRepository
-            .Setup(repository => repository.SetCurrentAsync(
+            .Setup(repository => repository.SetCurrentIfUnchangedAsync(
                 "avatar-1",
+                It.Is<ImageMutationPrecondition>(guard =>
+                    guard.OwnerType == ImageOwnerType.User
+                    && guard.OwnerId == "user-1"
+                    && guard.Category == ImageCategory.Avatar
+                    && !guard.IsCurrent),
                 ImageOwnerType.User,
                 "user-1",
                 It.IsAny<CancellationToken>()))
