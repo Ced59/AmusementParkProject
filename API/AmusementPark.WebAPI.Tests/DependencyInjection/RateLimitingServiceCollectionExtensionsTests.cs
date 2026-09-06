@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.RateLimiting;
 using AmusementPark.WebAPI.DependencyInjection;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,31 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
         Assert.False(rejectedRead.IsAcquired);
         Assert.True(firstWrite.IsAcquired);
         Assert.False(rejectedWrite.IsAcquired);
+    }
+
+    [Fact]
+    public void GetSharePublicationPreviewPartitionKey_ShouldPreferAuthenticatedUser()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+        context.User = new ClaimsPrincipal(new ClaimsIdentity(
+            new[] { new Claim(ClaimTypes.NameIdentifier, "owner-1") },
+            "Test"));
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetSharePublicationPreviewPartitionKey(context);
+
+        Assert.Equal("share-publication-preview:user:owner-1", result);
+    }
+
+    [Fact]
+    public void GetSharePublicationPreviewPartitionKey_ShouldFallBackToRemoteIp()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetSharePublicationPreviewPartitionKey(context);
+
+        Assert.Equal("share-publication-preview:ip:203.0.113.10", result);
     }
 
     private static DefaultHttpContext CreateContext(string method)

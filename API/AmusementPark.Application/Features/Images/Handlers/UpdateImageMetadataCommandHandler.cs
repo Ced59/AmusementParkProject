@@ -117,7 +117,8 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         existing.OwnerType,
                         existing.OwnerId,
                         existing.Category,
-                        existing.IsCurrent),
+                        existing.IsCurrent,
+                        existing.UpdatedAtUtc),
                     metadata,
                     cancellationToken);
                 if (updated is null)
@@ -266,7 +267,9 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                 Normalize(expectedState.OwnerId),
                 StringComparison.Ordinal)
             && image.Category == expectedState.Category
-            && image.IsCurrent == expectedState.IsCurrent;
+            && image.IsCurrent == expectedState.IsCurrent
+            && (!expectedState.UpdatedAtUtc.HasValue
+                || image.UpdatedAtUtc == expectedState.UpdatedAtUtc.Value);
     }
 
     private static async Task SynchronizeOwnerScopeAsync(

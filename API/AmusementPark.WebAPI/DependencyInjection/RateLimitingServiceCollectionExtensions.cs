@@ -236,7 +236,7 @@ public static class RateLimitingServiceCollectionExtensions
             : $"passport-export:user:{userId}";
     }
 
-    private static string GetSharePublicationPreviewPartitionKey(HttpContext context)
+    internal static string GetSharePublicationPreviewPartitionKey(HttpContext context)
     {
         string? userId = context.User.GetUserId();
         return string.IsNullOrWhiteSpace(userId)

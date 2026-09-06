@@ -23,6 +23,14 @@ public sealed class UpdateImageMetadataCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenCurrentAvatarChangesOwner_ShouldFenceAndSynchronizeBothOwners()
     {
+        DateTime updatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            18,
+            0,
+            0,
+            DateTimeKind.Utc);
         Image existing = new Image
         {
             Id = "avatar-1",
@@ -31,6 +39,7 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             OwnerId = "owner-old",
             IsCurrent = true,
             IsPublished = true,
+            UpdatedAtUtc = updatedAtUtc,
         };
         Image updated = new Image
         {
@@ -68,7 +77,8 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                     guard.OwnerType == ImageOwnerType.User
                     && guard.OwnerId == "owner-old"
                     && guard.Category == ImageCategory.Avatar
-                    && guard.IsCurrent),
+                    && guard.IsCurrent
+                    && guard.UpdatedAtUtc == updatedAtUtc),
                 It.Is<ImageMetadataUpdate>(metadata =>
                     metadata.OwnerId == "owner-new" && metadata.IsCurrent == true),
                 It.IsAny<CancellationToken>()))
@@ -246,6 +256,65 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                     "park-1",
                     ImageCategory.Park,
                     false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.not-found");
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenExpectedTimestampChanged_ShouldRejectBeforeMutation()
+    {
+        DateTime currentUpdatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            18,
+            30,
+            0,
+            DateTimeKind.Utc);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "image-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = "image-1",
+                Category = ImageCategory.Park,
+                OwnerType = ImageOwnerType.Park,
+                OwnerId = "park-1",
+                IsCurrent = false,
+                IsPublished = true,
+                UpdatedAtUtc = currentUpdatedAtUtc,
+            });
+        UpdateImageMetadataCommandHandler handler = new UpdateImageMetadataCommandHandler(
+            imageRepository.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict));
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new UpdateImageMetadataCommand(
+                "image-1",
+                new ImageMetadataUpdate
+                {
+                    Category = ImageCategory.Park,
+                    OwnerType = ImageOwnerType.Park,
+                    OwnerId = "park-1",
+                    IsPublished = false,
+                },
+                SuppressSeoNotification: true,
+                ExpectedState: new ImageMutationPrecondition(
+                    ImageOwnerType.Park,
+                    "park-1",
+                    ImageCategory.Park,
+                    false,
+                    currentUpdatedAtUtc.AddSeconds(-1))));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(
