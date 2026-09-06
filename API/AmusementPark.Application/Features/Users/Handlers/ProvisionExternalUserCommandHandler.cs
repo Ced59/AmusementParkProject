@@ -3,6 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
+using AmusementPark.Application.Features.Images;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Ports;
@@ -16,6 +18,7 @@ namespace AmusementPark.Application.Features.Users.Handlers;
 public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<ProvisionExternalUserCommand, ApplicationResult<AuthenticatedUserResult>>
 {
     private readonly IUserRepository userRepository;
+    private readonly IImageRepository imageRepository;
     private readonly IExternalIdentityVerifier externalIdentityVerifier;
     private readonly IUserAvatarImporter userAvatarImporter;
     private readonly ITokenService tokenService;
@@ -26,6 +29,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
     public ProvisionExternalUserCommandHandler(
         IUserRepository userRepository,
+        IImageRepository imageRepository,
         IExternalIdentityVerifier externalIdentityVerifier,
         IUserAvatarImporter userAvatarImporter,
         ITokenService tokenService,
@@ -35,6 +39,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard)
     {
         this.userRepository = userRepository;
+        this.imageRepository = imageRepository;
         this.externalIdentityVerifier = externalIdentityVerifier;
         this.userAvatarImporter = userAvatarImporter;
         this.tokenService = tokenService;
@@ -183,6 +188,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                     cancellationToken)
                 : null;
         bool sourceMutationAttempted = false;
+        bool avatarImported = false;
         try
         {
             await this.EnsurePublicIdentityAsync(user, cancellationToken);
@@ -197,6 +203,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
+                    avatarImported = true;
                 }
             }
 
@@ -209,11 +216,21 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             sourceMutationAttempted |= previousIdentity !=
                 PersonalRankingShareIdentityState.Capture(user);
-            return await this.userRepository.UpdateIfUnchangedAsync(
+            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
                 cancellationToken);
+            if (updatedUser is null && avatarImported)
+            {
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    new[] { user.Id },
+                    this.imageRepository,
+                    this.userRepository,
+                    CancellationToken.None);
+            }
+
+            return updatedUser;
         }
         finally
         {
@@ -245,6 +262,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 cancellationToken)
             : null;
         bool sourceMutationAttempted = false;
+        bool avatarImported = false;
         User? updatedUser;
         try
         {
@@ -261,6 +279,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
+                    avatarImported = true;
                 }
             }
 
@@ -275,6 +294,14 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 user,
                 expectedUpdatedAtUtc,
                 cancellationToken);
+            if (updatedUser is null && avatarImported)
+            {
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    new[] { user.Id },
+                    this.imageRepository,
+                    this.userRepository,
+                    CancellationToken.None);
+            }
         }
         finally
         {

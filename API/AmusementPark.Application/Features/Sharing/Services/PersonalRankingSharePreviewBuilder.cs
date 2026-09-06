@@ -172,17 +172,19 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
             source.AverageRating,
             source.HighestRating,
             source.LowestRating,
-            ToPublicBuckets(source.ByPark),
-            ToPublicBuckets(source.ByTargetType),
-            ToPublicBuckets(source.ByParkItemCategory));
+            ToPublicBuckets(source.ByPark, includeStableKey: false),
+            ToPublicBuckets(source.ByTargetType, includeStableKey: true),
+            ToPublicBuckets(source.ByParkItemCategory, includeStableKey: true));
     }
 
     private static IReadOnlyCollection<PersonalRankingShareStatBucketResult> ToPublicBuckets(
-        IEnumerable<UserRatingStatBucketResult> source)
+        IEnumerable<UserRatingStatBucketResult> source,
+        bool includeStableKey)
     {
         return source
             .Where(static bucket => !string.IsNullOrWhiteSpace(bucket.Label))
-            .Select(static bucket => new PersonalRankingShareStatBucketResult(
+            .Select(bucket => new PersonalRankingShareStatBucketResult(
+                includeStableKey ? NormalizeOptional(bucket.Key) : null,
                 bucket.Label.Trim(),
                 bucket.Count,
                 bucket.AverageRating))

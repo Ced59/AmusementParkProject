@@ -88,6 +88,12 @@ la révision. Les métadonnées des notes publiques sont toujours relues depuis 
 catalogue courant, sans repli sur un identifiant technique. Les détails et preuves
 sont consignés dans
 [`product-growth-share-04-safe-preview-2026-09-06.md`](../../architecture/product-growth-share-04-safe-preview-2026-09-06.md).
+La génération est limitée par compte, les catégories exposent des clés fonctionnelles
+traduisibles sans divulguer les identifiants de parc, et les synchronisations d'avatar
+ne peuvent plus réécrire d'autres champs du compte. Un transfert d'image courante la
+rétrograde tant qu'elle n'est pas explicitement promue dans son nouveau périmètre ;
+un import externe ayant gagné côté image mais perdu côté compte est réconcilié depuis
+l'état MongoDB autoritaire.
 
 Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
 classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et

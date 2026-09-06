@@ -74,11 +74,11 @@ public sealed class DeleteImageCommandHandlerTests
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
         users.Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
-        users.Setup(value => value.UpdateAsync(
+        users.Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-1",
-                It.Is<User>(updated => updated.AvatarUrl == null),
+                null,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .ReturnsAsync(true);
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
@@ -108,7 +108,6 @@ public sealed class DeleteImageCommandHandlerTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
-        Assert.Null(user.AvatarUrl);
         images.VerifyAll();
         comments.VerifyAll();
         users.VerifyAll();

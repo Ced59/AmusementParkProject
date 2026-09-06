@@ -81,12 +81,11 @@ internal static class UserAvatarShareSourceMutation
                 continue;
             }
 
-            user.AvatarUrl = avatarUrl;
-            User? updatedUser = await userRepository.UpdateAsync(
+            bool updated = await userRepository.UpdateAvatarUrlAsync(
                 user.Id,
-                user,
+                avatarUrl,
                 cancellationToken);
-            if (updatedUser is null)
+            if (!updated)
             {
                 throw new InvalidOperationException("Unable to synchronize the public user avatar.");
             }

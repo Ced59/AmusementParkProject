@@ -61,6 +61,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings passportExportDownloadSettings = configuration
             .GetSection("RateLimiting:Passport:ExportDownloads")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
+        FixedWindowRateLimitSettings sharePublicationPreviewSettings = configuration
+            .GetSection("RateLimiting:Sharing:Previews")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(6, 60);
 
         services.AddRateLimiter(options =>
         {
@@ -131,6 +134,10 @@ public static class RateLimitingServiceCollectionExtensions
                         partitionKey: GetAuthenticatedUserPartitionKey(context),
                         factory: _ => CreateFixedWindowOptions(passportExportDownloadSettings))
                     : RateLimitPartition.GetNoLimiter<string>("passport-export-status"));
+            options.AddPolicy(RateLimitPolicyNames.SharePublicationPreviews, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetSharePublicationPreviewPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(sharePublicationPreviewSettings)));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -227,6 +234,14 @@ public static class RateLimitingServiceCollectionExtensions
         return string.IsNullOrWhiteSpace(userId)
             ? $"passport-export:{GetRemoteIpPartitionKey(context)}"
             : $"passport-export:user:{userId}";
+    }
+
+    private static string GetSharePublicationPreviewPartitionKey(HttpContext context)
+    {
+        string? userId = context.User.GetUserId();
+        return string.IsNullOrWhiteSpace(userId)
+            ? $"share-publication-preview:{GetRemoteIpPartitionKey(context)}"
+            : $"share-publication-preview:user:{userId}";
     }
 
     internal static bool IsPassportExportDownload(HttpContext context)

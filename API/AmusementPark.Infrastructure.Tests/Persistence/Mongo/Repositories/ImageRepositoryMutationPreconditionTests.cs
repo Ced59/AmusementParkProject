@@ -121,4 +121,61 @@ public sealed class ImageRepositoryMutationPreconditionTests
         Assert.Equal("Avatar", rendered["category"].AsString);
         Assert.True(rendered["isCurrent"].AsBoolean);
     }
+
+    [Fact]
+    public void BuildSafeLinkUpdate_WhenOwnerChanges_ShouldDemoteTheTransferredImage()
+    {
+        DateTime updatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            16,
+            45,
+            0,
+            DateTimeKind.Utc);
+        UpdateDefinition<ImageDocument> update = ImageRepository.BuildSafeLinkUpdate(
+            new ImageMutationPrecondition(
+                ImageOwnerType.User,
+                "owner-before",
+                ImageCategory.Avatar,
+                true),
+            ImageOwnerType.User,
+            "owner-after",
+            updatedAtUtc);
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = update.Render(arguments).AsBsonDocument["$set"].AsBsonDocument;
+
+        Assert.Equal("User", rendered["ownerType"].AsString);
+        Assert.Equal("owner-after", rendered["ownerId"].AsString);
+        Assert.False(rendered["isCurrent"].AsBoolean);
+        Assert.Equal(updatedAtUtc, rendered["updatedAt"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void BuildSafeLinkUpdate_WhenOwnerIsUnchanged_ShouldPreserveCurrentState()
+    {
+        UpdateDefinition<ImageDocument> update = ImageRepository.BuildSafeLinkUpdate(
+            new ImageMutationPrecondition(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                true),
+            ImageOwnerType.User,
+            "owner-1",
+            DateTime.UtcNow);
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = update.Render(arguments).AsBsonDocument["$set"].AsBsonDocument;
+
+        Assert.True(rendered["isCurrent"].AsBoolean);
+    }
 }

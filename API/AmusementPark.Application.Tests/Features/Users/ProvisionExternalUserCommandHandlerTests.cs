@@ -4,9 +4,11 @@ using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Application.Features.Users.Handlers;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Users;
 using Moq;
 using Xunit;
@@ -138,6 +140,128 @@ public sealed class ProvisionExternalUserCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenAvatarImportWinsButUserCompareAndSwapLoses_ShouldReconcileAvatar()
+    {
+        VerifiedExternalIdentity identity = CreateIdentity(
+            "external-user@example.com",
+            "provider-user-conflict",
+            "https://images.example.test/avatar.png");
+        DateTime expectedUpdatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            16,
+            0,
+            0,
+            DateTimeKind.Utc);
+        User staleUser = new User
+        {
+            Id = "existing-user-id",
+            Email = identity.Email,
+            UpdatedAtUtc = expectedUpdatedAtUtc,
+            PublicDisplayName = "CoasterFan",
+            UsesAutomaticPublicDisplayName = false,
+            Roles = new List<Role> { Role.User },
+            IsActivated = true,
+            IsBlocked = false,
+            ExternalLogins = new List<ExternalLogin>
+            {
+                new ExternalLogin
+                {
+                    Provider = ExternalLoginProvider.Google,
+                    ProviderUserId = identity.ProviderUserId,
+                },
+            },
+        };
+        staleUser.AssignPublicAccountNumber(12);
+        User currentUser = new User
+        {
+            Id = staleUser.Id,
+            Email = staleUser.Email,
+            UpdatedAtUtc = expectedUpdatedAtUtc.AddSeconds(1),
+            PublicDisplayName = staleUser.PublicDisplayName,
+            UsesAutomaticPublicDisplayName = false,
+            Roles = new List<Role> { Role.User, Role.Admin },
+            IsActivated = true,
+            IsBlocked = false,
+        };
+        currentUser.AssignPublicAccountNumber(12);
+        Image currentAvatar = new Image
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = staleUser.Id,
+            Category = ImageCategory.Avatar,
+            IsCurrent = true,
+            IsPublished = true,
+        };
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            "personal-ranking:existing-user-id");
+        ExternalUserHandlerMocks mocks = new ExternalUserHandlerMocks();
+        SetupAuthenticationFlow(mocks, identity);
+        mocks.UserRepository
+            .Setup(repository => repository.GetByExternalLoginAsync(
+                ExternalLoginProvider.Google,
+                identity.ProviderUserId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(staleUser);
+        mocks.UserRepository
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
+                staleUser.Id,
+                It.Is<User>(user => user.AvatarUrl == "/images/avatar-1"),
+                expectedUpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((User?)null);
+        mocks.UserRepository
+            .Setup(repository => repository.GetByIdAsync(
+                staleUser.Id,
+                CancellationToken.None))
+            .ReturnsAsync(currentUser);
+        mocks.UserRepository
+            .Setup(repository => repository.UpdateAvatarUrlAsync(
+                staleUser.Id,
+                "/images/avatar-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        mocks.ImageRepository
+            .Setup(repository => repository.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                staleUser.Id,
+                ImageCategory.Avatar,
+                CancellationToken.None))
+            .ReturnsAsync(currentAvatar);
+        mocks.UserAvatarImporter
+            .Setup(importer => importer.DownloadAndSaveAsync(
+                identity.PictureUrl!,
+                staleUser.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync("/images/avatar-1");
+        Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
+            new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginMutationAsync(
+                staleUser.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(lease);
+        revisions.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        ProvisionExternalUserCommandHandler handler = CreateHandler(
+            mocks,
+            revisions.Object);
+
+        ApplicationResult<AuthenticatedUserResult> result = await handler.HandleAsync(
+            CreateCommand());
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "user.update.failed");
+        Assert.Contains(Role.Admin, currentUser.Roles);
+        mocks.VerifyAll();
+        revisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenLegacyExternalUserHasCustomName_ShouldAllocateNumberWithoutReplacingName()
     {
         VerifiedExternalIdentity identity = CreateIdentity("legacy-user@example.com", "provider-user-legacy");
@@ -195,6 +319,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
     {
         return new ProvisionExternalUserCommandHandler(
             mocks.UserRepository.Object,
+            mocks.ImageRepository.Object,
             mocks.ExternalIdentityVerifier.Object,
             mocks.UserAvatarImporter.Object,
             mocks.TokenService.Object,
@@ -287,6 +412,9 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         public Mock<IUserRepository> UserRepository { get; } =
             new Mock<IUserRepository>(MockBehavior.Strict);
 
+        public Mock<IImageRepository> ImageRepository { get; } =
+            new Mock<IImageRepository>(MockBehavior.Strict);
+
         public Mock<IExternalIdentityVerifier> ExternalIdentityVerifier { get; } =
             new Mock<IExternalIdentityVerifier>(MockBehavior.Strict);
 
@@ -308,6 +436,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         public void VerifyAll()
         {
             UserRepository.VerifyAll();
+            ImageRepository.VerifyAll();
             ExternalIdentityVerifier.VerifyAll();
             UserAvatarImporter.VerifyAll();
             TokenService.VerifyAll();

@@ -107,16 +107,16 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             .ReturnsAsync(previousOwner);
         users.Setup(value => value.GetByIdAsync("owner-new", It.IsAny<CancellationToken>()))
             .ReturnsAsync(nextOwner);
-        users.Setup(value => value.UpdateAsync(
+        users.Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-old",
-                It.Is<User>(user => user.AvatarUrl == null),
+                null,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User user, CancellationToken _) => user);
-        users.Setup(value => value.UpdateAsync(
+            .ReturnsAsync(true);
+        users.Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-new",
-                It.Is<User>(user => user.AvatarUrl == "/images/avatar-1"),
+                "/images/avatar-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User user, CancellationToken _) => user);
+            .ReturnsAsync(true);
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
@@ -160,8 +160,6 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             }));
 
         Assert.True(result.IsSuccess);
-        Assert.Null(previousOwner.AvatarUrl);
-        Assert.Equal("/images/avatar-1", nextOwner.AvatarUrl);
         images.VerifyAll();
         users.VerifyAll();
         revisions.VerifyAll();
@@ -418,11 +416,11 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);
         userRepository
-            .Setup(repository => repository.UpdateAsync(
+            .Setup(repository => repository.UpdateAvatarUrlAsync(
                 "owner-1",
-                It.Is<User>(value => value.AvatarUrl == null),
+                null,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(user);
+            .ReturnsAsync(true);
         revisionGuard
             .Setup(guard => guard.CompleteMutationAsync(
                 mutationLease,
@@ -448,7 +446,6 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             }));
 
         Assert.True(result.IsSuccess);
-        Assert.Null(user.AvatarUrl);
         imageRepository.VerifyAll();
         userRepository.VerifyAll();
         revisionGuard.VerifyAll();

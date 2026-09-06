@@ -1051,10 +1051,11 @@ public sealed class ImageRepository : IImageRepository
         FilterDefinition<ImageDocument> filter = BuildMutationPreconditionFilter(
             imageId,
             precondition);
-        UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
-            .Set(static document => document.OwnerType, ownerType)
-            .Set(static document => document.OwnerId, ownerId)
-            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+        UpdateDefinition<ImageDocument> update = BuildSafeLinkUpdate(
+            precondition,
+            ownerType,
+            ownerId,
+            DateTime.UtcNow);
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
             ReturnDocument = ReturnDocument.After,
@@ -1070,6 +1071,24 @@ public sealed class ImageRepository : IImageRepository
         }
 
         return document?.ToDomain();
+    }
+
+    internal static UpdateDefinition<ImageDocument> BuildSafeLinkUpdate(
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        DateTime updatedAtUtc)
+    {
+        bool ownerScopeIsUnchanged = precondition.OwnerType == ownerType
+            && string.Equals(
+                precondition.OwnerId?.Trim(),
+                ownerId.Trim(),
+                StringComparison.Ordinal);
+        return Builders<ImageDocument>.Update
+            .Set(static document => document.OwnerType, ownerType)
+            .Set(static document => document.OwnerId, ownerId)
+            .Set(static document => document.IsCurrent, ownerScopeIsUnchanged && precondition.IsCurrent)
+            .Set(static document => document.UpdatedAt, updatedAtUtc);
     }
 
     public async Task<Image?> ReserveCommentDraftAsync(

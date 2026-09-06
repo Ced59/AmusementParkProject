@@ -9,9 +9,11 @@ using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Filters;
+using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
@@ -104,7 +106,7 @@ public sealed class SharePublicationsControllerTests
     }
 
     [Fact]
-    public void PreviewEndpoint_ShouldRequireAnActivatedAccountAndDisableCaching()
+    public void PreviewEndpoint_ShouldRequireAnActivatedAccountDisableCachingAndApplyTargetedRateLimit()
     {
         MethodInfo action = typeof(SharePublicationsController).GetMethod(
             nameof(SharePublicationsController.PreviewAsync))
@@ -119,6 +121,9 @@ public sealed class SharePublicationsControllerTests
             action.GetCustomAttribute<ResponseCacheAttribute>());
         Assert.True(cache.NoStore);
         Assert.Equal(ResponseCacheLocation.None, cache.Location);
+        EnableRateLimitingAttribute rateLimit = Assert.IsType<EnableRateLimitingAttribute>(
+            action.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(RateLimitPolicyNames.SharePublicationPreviews, rateLimit.PolicyName);
     }
 
     private static ControllerContext CreateControllerContext(string userId)

@@ -94,16 +94,16 @@ public sealed class LinkImageCommandHandlerTests
             .ReturnsAsync(previousOwner);
         users.Setup(value => value.GetByIdAsync("owner-new", It.IsAny<CancellationToken>()))
             .ReturnsAsync(nextOwner);
-        users.Setup(value => value.UpdateAsync(
+        users.Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-old",
-                It.Is<User>(user => user.AvatarUrl == null),
+                null,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User user, CancellationToken _) => user);
-        users.Setup(value => value.UpdateAsync(
+            .ReturnsAsync(true);
+        users.Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-new",
-                It.Is<User>(user => user.AvatarUrl == "/images/avatar-1"),
+                "/images/avatar-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User user, CancellationToken _) => user);
+            .ReturnsAsync(true);
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
@@ -143,8 +143,6 @@ public sealed class LinkImageCommandHandlerTests
                 "owner-new"));
 
         Assert.True(result.IsSuccess);
-        Assert.Null(previousOwner.AvatarUrl);
-        Assert.Equal("/images/avatar-1", nextOwner.AvatarUrl);
         images.VerifyAll();
         users.VerifyAll();
         revisions.VerifyAll();

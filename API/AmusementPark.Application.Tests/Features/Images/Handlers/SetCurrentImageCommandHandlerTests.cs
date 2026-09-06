@@ -68,11 +68,11 @@ public sealed class SetCurrentImageCommandHandlerTests
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
-        users.InSequence(sequence).Setup(value => value.UpdateAsync(
+        users.InSequence(sequence).Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-1",
-                It.Is<User>(updated => updated.AvatarUrl == "/images/avatar-new"),
+                "/images/avatar-new",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .ReturnsAsync(true);
         revisions.InSequence(sequence).Setup(value => value.CompleteMutationAsync(
                 mutationLease,
                 true,
@@ -90,7 +90,6 @@ public sealed class SetCurrentImageCommandHandlerTests
             new SetCurrentImageCommand("avatar-new", ImageOwnerType.User, "owner-1"));
 
         Assert.True(result.IsSuccess);
-        Assert.Equal("/images/avatar-new", user.AvatarUrl);
         images.VerifyAll();
         users.VerifyAll();
         revisions.VerifyAll();

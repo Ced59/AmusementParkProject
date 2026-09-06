@@ -210,6 +210,32 @@ public sealed class UserRepository : IUserRepository
                 expectedUpdatedAtUtc));
     }
 
+    public async Task<bool> UpdateAvatarUrlAsync(
+        string userId,
+        string? avatarUrl,
+        CancellationToken cancellationToken)
+    {
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            Builders<UserDocument>.Filter.Eq(static existing => existing.Id, userId),
+            BuildAvatarUrlUpdate(avatarUrl, DateTime.UtcNow),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    internal static UpdateDefinition<UserDocument> BuildAvatarUrlUpdate(
+        string? avatarUrl,
+        DateTime updatedAtUtc)
+    {
+        string normalizedAvatarUrl = avatarUrl?.Trim() ?? string.Empty;
+        UpdateDefinitionBuilder<UserDocument> updates = Builders<UserDocument>.Update;
+        UpdateDefinition<UserDocument> avatarUpdate = normalizedAvatarUrl.Length == 0
+            ? updates.Unset(static existing => existing.AvatarUrl)
+            : updates.Set(static existing => existing.AvatarUrl, normalizedAvatarUrl);
+        return updates.Combine(
+            avatarUpdate,
+            updates.Set(static existing => existing.UpdatedAt, updatedAtUtc));
+    }
+
     public async Task<User?> UpdatePreferredLanguageAsync(
         string userId,
         string preferredLanguage,

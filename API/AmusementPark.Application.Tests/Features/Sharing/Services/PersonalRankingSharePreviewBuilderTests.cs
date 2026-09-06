@@ -67,7 +67,10 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             result.Value.PersonalRanking);
         Assert.Equal("Camille", preview.DisplayName);
         Assert.Equal("/images/avatar-1", preview.AvatarUrl);
-        Assert.Equal("Parc Astérix", Assert.Single(preview.Statistics!.ByPark).Label);
+        Assert.Null(Assert.Single(preview.Statistics!.ByPark).Key);
+        Assert.Equal("Parc Astérix", Assert.Single(preview.Statistics.ByPark).Label);
+        Assert.Equal("ParkItem", Assert.Single(preview.Statistics.ByTargetType).Key);
+        Assert.Equal("Attraction", Assert.Single(preview.Statistics.ByParkItemCategory).Key);
         PersonalRankingSharePreviewItemResult item = Assert.Single(preview.Ratings);
         Assert.Equal("OzIris", item.TargetName);
         Assert.Equal("Parc Astérix", item.ParkName);

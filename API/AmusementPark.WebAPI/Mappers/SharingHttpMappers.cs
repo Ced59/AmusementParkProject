@@ -92,6 +92,7 @@ public static class SharingHttpMappers
     {
         return new PersonalRankingShareStatBucketDto
         {
+            Key = value.Key,
             Label = value.Label,
             Count = value.Count,
             AverageRating = value.AverageRating,

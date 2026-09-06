@@ -21,6 +21,7 @@ sans faire transiter les données privées vers le contrat public.
 POST /me/shares/preview
 Authorization: compte activé et non bloqué
 Cache-Control: no-store
+Limite ciblée : 6 aperçus par minute et par compte
 
 {
   "publicationType": "PersonalRanking",
@@ -51,7 +52,9 @@ autorise :
 | `GlobalRatings` | notes dont la cible est publique | libellés, catégories et valeurs |
 
 Les agrégats par parc conservent leur libellé humain mais abandonnent leur clé
-interne. Chaque note publique abandonne l'identifiant de la note, de sa cible, de
+interne. Les agrégats par type et catégorie conservent une clé fonctionnelle stable
+afin que l'interface puisse traduire leur libellé sans dépendre du texte produit par
+le serveur. Chaque note publique abandonne l'identifiant de la note, de sa cible, de
 son parc et de son propriétaire. Les commentaires privés, emails, positions,
 accompagnants et notes textuelles ne sont représentés dans aucun résultat ou DTO de
 cette tranche.
@@ -61,6 +64,9 @@ le VPS. MongoDB applique la visibilité courante avant le tri et la limite, sans
 matérialiser toutes les notes du compte en mémoire applicative. Une note visible
 supplémentaire sert uniquement à signaler explicitement la troncature au lieu de
 prétendre que le résultat est complet.
+L'endpoint coûteux possède en plus une limite dédiée par compte, cumulée à la
+protection globale par adresse IP. Un même utilisateur ne peut donc pas multiplier
+les agrégations en changeant simplement de connexion réseau.
 
 ## Barrière de révision
 
@@ -122,6 +128,14 @@ et l'écriture, la mutation devenue obsolète est refusée au lieu de modifier u
 propriétaire non protégé. Les promotions qui suivent un import local ou distant
 réutilisent la même précondition. L'import d'un avatar pendant une connexion externe
 réserve lui aussi le lease avant de télécharger ou de créer l'image.
+La resynchronisation du chemin public d'avatar utilise une écriture MongoDB partielle
+qui ne touche qu'à `avatarUrl` et `updatedAt` : une lecture concurrente ne peut donc
+pas rétablir d'anciens rôles, mots de passe ou états de blocage. Si l'import externe
+a créé l'image mais perd ensuite la comparaison de version du compte, une relecture
+autoritaire réaligne immédiatement `avatarUrl` sur l'image effectivement courante.
+Lorsqu'une image courante change de propriétaire sans demander explicitement une
+nouvelle promotion, elle est rétrogradée pendant le transfert ; elle ne peut ainsi
+pas devenir courante dans deux périmètres différents.
 Les promotions d'image sont en outre sérialisées par un verrou MongoDB distribué
 sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
 promouvoir simultanément deux images du même périmètre et se rétrograder l'une
@@ -208,6 +222,9 @@ Les tests ciblés couvrent :
 - retrait d'un avatar dépublié, y compris par action de masse ;
 - réservation du lease avant chaque écriture d'avatar concernée ;
 - invalidation et resynchronisation des deux comptes lors d'un transfert d'avatar ;
+- rétrogradation d'une image courante lorsqu'elle est transférée vers un autre compte ;
+- écriture partielle de l'avatar sans réécriture des rôles ni de l'état du compte ;
+- réconciliation autoritaire après un conflit de version suivant un import externe ;
 - refus atomique d'un transfert fondé sur un propriétaire devenu obsolète ;
 - réservation avant import d'un avatar fourni par une identité externe ;
 - relecture MongoDB autoritaire de l'avatar courant sans cache local ;
@@ -216,6 +233,8 @@ Les tests ciblés couvrent :
 - agrégation bornée après les jointures de visibilité exécutées par MongoDB ;
 - reconstruction des métadonnées publiques depuis le parc et l'attraction actuels ;
 - authentification, `no-store`, parsing strict des enums et DTO HTTP ;
+- limite ciblée par compte sur la génération des aperçus ;
+- clés fonctionnelles stables pour les types et catégories, sans clé technique de parc ;
 - enregistrement des ports MongoDB et du builder spécialisé.
 
 ## Limites et suite

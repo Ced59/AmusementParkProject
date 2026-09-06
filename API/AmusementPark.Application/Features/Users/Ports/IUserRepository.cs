@@ -26,6 +26,10 @@ public interface IUserRepository
         User user,
         DateTime expectedUpdatedAtUtc,
         CancellationToken cancellationToken);
+    Task<bool> UpdateAvatarUrlAsync(
+        string userId,
+        string? avatarUrl,
+        CancellationToken cancellationToken);
     Task<User?> UpdatePreferredLanguageAsync(string userId, string preferredLanguage, CancellationToken cancellationToken);
     Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken);
     Task UpdateLastActivityAsync(string userId, CancellationToken cancellationToken);
