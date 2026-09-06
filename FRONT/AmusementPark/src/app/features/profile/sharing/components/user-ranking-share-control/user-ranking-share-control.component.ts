@@ -98,4 +98,18 @@ export class UserRankingShareControlComponent implements OnInit {
       }).format(rating)
       : '–';
   }
+
+  protected previewSampleCount(preview: PersonalRankingSharePreview): number {
+    return Math.min(preview.ratings.length, 3);
+  }
+
+  protected previewTotalCount(preview: PersonalRankingSharePreview): number {
+    const statisticsTotal: number = Number(preview.statistics?.totalRatings ?? 0);
+    return Math.max(statisticsTotal, preview.ratings.length);
+  }
+
+  protected previewHasAdditionalRatings(preview: PersonalRankingSharePreview): boolean {
+    return preview.isTruncated
+      || this.previewTotalCount(preview) > this.previewSampleCount(preview);
+  }
 }

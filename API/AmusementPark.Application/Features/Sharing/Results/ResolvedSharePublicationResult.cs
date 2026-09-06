@@ -7,4 +7,7 @@ public sealed record ResolvedSharePublicationResult(
     string DisplayName,
     SharePublicationType PublicationType,
     ShareContentPolicy ContentPolicy,
-    DateTime PublishedAtUtc);
+    DateTime PublishedAtUtc,
+    string SourceScopeKey,
+    long SourceVersion,
+    long PublicationVersion);

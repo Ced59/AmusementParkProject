@@ -157,6 +157,14 @@ replie en une colonne, borne ses contenus et empile ses actions sur mobile. Des 
 ciblés couvrent le partage anonyme, l'obsolescence de l'aperçu, la politique minimale,
 les contrats HTTP, l'orchestration Angular et le responsive.
 
+La voie HTTP historique ne peut désormais que révoquer un partage : toute nouvelle
+publication exige l'approbation d'un aperçu. Chaque lecture publique contrôle la
+publication et sa source avant puis après la construction du contenu ; une évolution
+concurrente rend donc la réponse indisponible plutôt que de diffuser des données non
+approuvées. Le profil présente également comme privé un lien devenu obsolète. Enfin,
+l'aperçu annonce le nombre de notes montrées et le nombre total qui sera publié afin
+qu'un échantillon de trois lignes ne puisse pas être confondu avec le contenu complet.
+
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
 

@@ -37,12 +37,26 @@ public sealed class GetSharedUserParkRatingRankingsQueryHandler
             return ApplicationResult<PagedResult<UserParkRatingRankingResult>>.Failure(ownerResult.Errors);
         }
 
-        return await this.rankingsHandler.HandleAsync(
-            new GetUserParkRatingRankingsQuery(
-                ownerResult.Value.OwnerUserId,
-                query.Paging,
-                query.ParkSearch,
-                PublicTargetsOnly: true),
+        ApplicationResult<PagedResult<UserParkRatingRankingResult>> rankingsResult =
+            await this.rankingsHandler.HandleAsync(
+                new GetUserParkRatingRankingsQuery(
+                    ownerResult.Value.OwnerUserId,
+                    query.Paging,
+                    query.ParkSearch,
+                    PublicTargetsOnly: true),
+                cancellationToken);
+        if (!rankingsResult.IsSuccess)
+        {
+            return rankingsResult;
+        }
+
+        ApplicationResult<bool> revalidation = await this.accessResolver.RevalidateAsync(
+            query.ShareId,
+            ownerResult.Value,
             cancellationToken);
+        return revalidation.IsSuccess
+            ? rankingsResult
+            : ApplicationResult<PagedResult<UserParkRatingRankingResult>>.Failure(
+                revalidation.Errors);
     }
 }

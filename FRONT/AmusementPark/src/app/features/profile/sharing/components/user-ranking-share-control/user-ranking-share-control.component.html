@@ -92,6 +92,15 @@
               }
             </ol>
           }
+          @if (previewHasAdditionalRatings(currentPreview)) {
+            <p class="ranking-share-preview__sample-notice">
+              <i class="pi pi-list" aria-hidden="true"></i>
+              {{ 'ratings.share.editor.sampleNotice' | translate:{
+                shown: previewSampleCount(currentPreview),
+                total: previewTotalCount(currentPreview)
+              } }}
+            </p>
+          }
           <p><i class="pi pi-shield" aria-hidden="true"></i>{{ 'ratings.share.editor.exactPreview' | translate }}</p>
         </section>
       }

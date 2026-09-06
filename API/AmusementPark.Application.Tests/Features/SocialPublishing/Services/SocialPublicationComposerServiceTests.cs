@@ -563,7 +563,10 @@ public sealed class SocialPublicationComposerServiceTests
                     "Coaster Fan",
                     SharePublicationType.PersonalRanking,
                     ShareContentPolicy.CreatePrivateDefault(SharePublicationType.PersonalRanking),
-                    nowUtc)));
+                    nowUtc,
+                    "personal-ranking:user-1",
+                    0,
+                    1)));
         SocialPublicationComposerService service = CreateService(
             new Mock<IParkRepository>(MockBehavior.Strict),
             new Mock<IImageRepository>(MockBehavior.Strict),

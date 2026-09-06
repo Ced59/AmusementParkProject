@@ -292,6 +292,11 @@
   font-size: 0.8rem;
 }
 
+.ranking-share-preview > .ranking-share-preview__sample-notice {
+  color: var(--c-sky);
+  font-weight: 800;
+}
+
 .ranking-share-editor__actions {
   justify-content: flex-end;
 }

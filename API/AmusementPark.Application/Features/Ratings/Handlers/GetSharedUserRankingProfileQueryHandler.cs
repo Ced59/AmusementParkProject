@@ -39,6 +39,15 @@ public sealed class GetSharedUserRankingProfileQueryHandler
         UserRatingStatsResult stats = await this.ratingRepository.GetVisibleUserRatingStatsAsync(
             ownerResult.Value.OwnerUserId,
             cancellationToken);
+        ApplicationResult<bool> revalidation = await this.accessResolver.RevalidateAsync(
+            query.ShareId,
+            ownerResult.Value,
+            cancellationToken);
+        if (!revalidation.IsSuccess)
+        {
+            return ApplicationResult<SharedUserRankingProfileResult>.Failure(revalidation.Errors);
+        }
+
         return ApplicationResult<SharedUserRankingProfileResult>.Success(
             new SharedUserRankingProfileResult(
                 ownerResult.Value.OwnerUserId,

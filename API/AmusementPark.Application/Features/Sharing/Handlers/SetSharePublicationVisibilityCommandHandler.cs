@@ -15,19 +15,16 @@ public sealed class SetSharePublicationVisibilityCommandHandler
 
     private readonly ISharePublicationRepository repository;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
-    private readonly SharePublicationPublisher publisher;
     private readonly TimeProvider timeProvider;
 
     public SetSharePublicationVisibilityCommandHandler(
         ISharePublicationRepository repository,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
-        SharePublicationPublisher publisher,
         TimeProvider? timeProvider = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         ArgumentNullException.ThrowIfNull(sources);
         this.sources = sources.ToDictionary(static source => source.PublicationType);
-        this.publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -58,35 +55,16 @@ public sealed class SetSharePublicationVisibilityCommandHandler
             return ApplicationResult<SharePublicationSettingsResult>.Failure(scopeResult.Errors);
         }
 
-        return command.IsPublic
-            ? await this.PublishDefaultAsync(ownerUserId, source, scopeResult.Value, cancellationToken)
-            : await this.RevokeAsync(
-                ownerUserId,
-                command.PublicationType,
-                scopeResult.Value,
-                cancellationToken);
-    }
-
-    private async Task<ApplicationResult<SharePublicationSettingsResult>> PublishDefaultAsync(
-        string ownerUserId,
-        ISharePublicationSourceDescriptor source,
-        string sourceScopeKey,
-        CancellationToken cancellationToken)
-    {
-        ApplicationResult<long> versionResult = await source.GetCurrentSourceVersionAsync(
-            sourceScopeKey,
-            cancellationToken);
-        if (!versionResult.IsSuccess)
+        if (command.IsPublic)
         {
-            return ApplicationResult<SharePublicationSettingsResult>.Failure(versionResult.Errors);
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.PreviewApprovalRequired());
         }
 
-        return await this.publisher.PublishAsync(
+        return await this.RevokeAsync(
             ownerUserId,
-            source.PublicationType,
-            sourceScopeKey,
-            versionResult.Value,
-            source.CreateDefaultPolicy(),
+            command.PublicationType,
+            scopeResult.Value,
             cancellationToken);
     }
 

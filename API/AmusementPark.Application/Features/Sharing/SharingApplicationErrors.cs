@@ -67,6 +67,13 @@ public static class SharingApplicationErrors
             "Les données ont changé depuis l’aperçu. Vérifie le nouvel aperçu avant de publier.");
     }
 
+    public static ApplicationError PreviewApprovalRequired()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.preview-required",
+            "Vérifie et approuve l’aperçu exact avant de publier.");
+    }
+
     public static ApplicationError RequiredPublicContentMissing()
     {
         return ApplicationError.Validation(

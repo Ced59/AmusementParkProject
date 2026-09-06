@@ -393,6 +393,7 @@ describe('ProfileRatingsPanelComponent', () => {
     fixture.detectChanges();
 
     expect(sharePort.previewCalls[0]?.includedFields).toEqual(['GlobalRatings']);
+    expect(fixture.nativeElement.querySelector('.ranking-share-preview__sample-notice')).not.toBeNull();
     const confirmButton: HTMLButtonElement = fixture.nativeElement.querySelector(
       '.ranking-share-editor__actions button:last-child',
     );
