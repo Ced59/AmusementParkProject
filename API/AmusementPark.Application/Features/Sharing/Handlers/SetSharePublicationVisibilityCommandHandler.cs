@@ -14,20 +14,20 @@ public sealed class SetSharePublicationVisibilityCommandHandler
     private const int MaximumWriteAttempts = 5;
 
     private readonly ISharePublicationRepository repository;
-    private readonly IShareTokenFactory tokenFactory;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
+    private readonly SharePublicationPublisher publisher;
     private readonly TimeProvider timeProvider;
 
     public SetSharePublicationVisibilityCommandHandler(
         ISharePublicationRepository repository,
-        IShareTokenFactory tokenFactory,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
+        SharePublicationPublisher publisher,
         TimeProvider? timeProvider = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        this.tokenFactory = tokenFactory ?? throw new ArgumentNullException(nameof(tokenFactory));
         ArgumentNullException.ThrowIfNull(sources);
         this.sources = sources.ToDictionary(static source => source.PublicationType);
+        this.publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -59,7 +59,7 @@ public sealed class SetSharePublicationVisibilityCommandHandler
         }
 
         return command.IsPublic
-            ? await this.PublishAsync(ownerUserId, source, scopeResult.Value, cancellationToken)
+            ? await this.PublishDefaultAsync(ownerUserId, source, scopeResult.Value, cancellationToken)
             : await this.RevokeAsync(
                 ownerUserId,
                 command.PublicationType,
@@ -67,7 +67,7 @@ public sealed class SetSharePublicationVisibilityCommandHandler
                 cancellationToken);
     }
 
-    private async Task<ApplicationResult<SharePublicationSettingsResult>> PublishAsync(
+    private async Task<ApplicationResult<SharePublicationSettingsResult>> PublishDefaultAsync(
         string ownerUserId,
         ISharePublicationSourceDescriptor source,
         string sourceScopeKey,
@@ -81,135 +81,13 @@ public sealed class SetSharePublicationVisibilityCommandHandler
             return ApplicationResult<SharePublicationSettingsResult>.Failure(versionResult.Errors);
         }
 
-        ShareContentPolicy defaultPolicy = source.CreateDefaultPolicy();
-        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
-        {
-            DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-            SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
-                ownerUserId,
-                source.PublicationType,
-                sourceScopeKey,
-                cancellationToken);
-            if (publication?.IsResolvable == true)
-            {
-                return Success(publication);
-            }
-
-            if (publication is null || publication.Status == SharePublicationStatus.Revoked)
-            {
-                SharePublication created = SharePublication.Create(
-                    SharePublicationId.New(),
-                    ownerUserId,
-                    source.PublicationType,
-                    sourceScopeKey,
-                    defaultPolicy,
-                    versionResult.Value,
-                    nowUtc);
-                created.Publish(
-                    this.tokenFactory.Generate(),
-                    ShareVisibility.Unlisted,
-                    versionResult.Value,
-                    defaultPolicy,
-                    0,
-                    nowUtc);
-                SharePublicationWriteOutcome createOutcome = await this.repository.CreateAsync(
-                    created,
-                    cancellationToken);
-                if (createOutcome == SharePublicationWriteOutcome.Success)
-                {
-                    return Success(created);
-                }
-
-                continue;
-            }
-
-            SharePublicationWriteOutcome preparationOutcome = await this.PrepareExistingAsync(
-                publication,
-                defaultPolicy,
-                versionResult.Value,
-                nowUtc,
-                cancellationToken);
-            if (preparationOutcome != SharePublicationWriteOutcome.Success)
-            {
-                continue;
-            }
-
-            publication = await this.repository.GetOwnedAsync(
-                publication.Id,
-                ownerUserId,
-                cancellationToken);
-            if (publication is null)
-            {
-                continue;
-            }
-
-            long expectedVersion = publication.Version;
-            ShareToken token = publication.ShareToken ?? this.tokenFactory.Generate();
-            publication.Publish(
-                token,
-                ShareVisibility.Unlisted,
-                publication.SourceVersion,
-                publication.ContentPolicy,
-                publication.PublicationVersion,
-                this.timeProvider.GetUtcNow().UtcDateTime);
-            SharePublicationWriteOutcome publishOutcome = await this.repository.ReplaceAsync(
-                publication,
-                expectedVersion,
-                cancellationToken);
-            if (publishOutcome == SharePublicationWriteOutcome.Success)
-            {
-                return Success(publication);
-            }
-        }
-
-        return ApplicationResult<SharePublicationSettingsResult>.Failure(
-            SharingApplicationErrors.PublicationChangedConcurrently());
-    }
-
-    private async Task<SharePublicationWriteOutcome> PrepareExistingAsync(
-        SharePublication publication,
-        ShareContentPolicy policy,
-        long sourceVersion,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        if (publication.SourceVersion != sourceVersion)
-        {
-            long expectedVersion = publication.Version;
-            publication.MarkSourceChanged(sourceVersion, nowUtc);
-            SharePublicationWriteOutcome sourceOutcome = await this.repository.ReplaceAsync(
-                publication,
-                expectedVersion,
-                cancellationToken);
-            if (sourceOutcome != SharePublicationWriteOutcome.Success)
-            {
-                return sourceOutcome;
-            }
-        }
-
-        if (!publication.ContentPolicy.HasSameSelectionAs(policy))
-        {
-            SharePublication? current = await this.repository.GetOwnedAsync(
-                publication.Id,
-                publication.OwnerUserId,
-                cancellationToken);
-            if (current is null)
-            {
-                return SharePublicationWriteOutcome.Conflict;
-            }
-
-            long expectedVersion = current.Version;
-            current.ReplaceContentPolicy(
-                policy,
-                current.PublicationVersion,
-                this.timeProvider.GetUtcNow().UtcDateTime);
-            return await this.repository.ReplaceAsync(
-                current,
-                expectedVersion,
-                cancellationToken);
-        }
-
-        return SharePublicationWriteOutcome.Success;
+        return await this.publisher.PublishAsync(
+            ownerUserId,
+            source.PublicationType,
+            sourceScopeKey,
+            versionResult.Value,
+            source.CreateDefaultPolicy(),
+            cancellationToken);
     }
 
     private async Task<ApplicationResult<SharePublicationSettingsResult>> RevokeAsync(

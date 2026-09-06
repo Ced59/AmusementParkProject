@@ -221,6 +221,11 @@ internal static class RatingsHttpMappers
             IsPublic = value.IsPublic,
             ShareId = value.ShareId,
             PublishedAtUtc = value.PublishedAtUtc,
+            PolicySchemaVersion = value.PolicySchemaVersion,
+            DatePrecision = value.DatePrecision?.ToString(),
+            IncludedFields = value.IncludedFields
+                .Select(static field => field.ToString())
+                .ToList(),
         };
     }
 

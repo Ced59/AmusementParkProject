@@ -3,6 +3,7 @@ using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.WebAPI.Configuration;
@@ -10,6 +11,7 @@ using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.RateLimiting;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -135,6 +137,52 @@ public sealed class SharePublicationsControllerTests
     }
 
     [Fact]
+    public async Task PublishAsync_ShouldForwardOnlyTheAuthenticatedApprovedPreview()
+    {
+        SharePublicationSettingsResult settings = new SharePublicationSettingsResult(
+            true,
+            "opaque-share-id",
+            new DateTime(2026, 9, 7, 8, 0, 0, DateTimeKind.Utc),
+            1,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.GlobalRatings });
+        Mock<ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>> publishHandler =
+            new Mock<ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
+        publishHandler.Setup(value => value.HandleAsync(
+                It.Is<PublishSharePublicationCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.ApprovedSourceVersion == 12
+                    && command.ApprovedPolicySchemaVersion == 1
+                    && command.ApprovedIncludedFields.SequenceEqual(
+                        new[] { ShareContentField.GlobalRatings })),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(settings));
+        SharePublicationsController controller = CreateController(
+            Mock.Of<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict),
+            true,
+            publishHandler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.PublishAsync(
+            new PublishSharePublicationRequestDto
+            {
+                PublicationType = "PersonalRanking",
+                ApprovedSourceVersion = 12,
+                ApprovedPolicySchemaVersion = 1,
+                ApprovedDatePrecision = "Hidden",
+                ApprovedIncludedFields = new List<string> { "GlobalRatings" },
+            },
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SharePublicationSettingsDto response = Assert.IsType<SharePublicationSettingsDto>(ok.Value);
+        Assert.True(response.IsPublic);
+        Assert.Equal("opaque-share-id", response.ShareId);
+        Assert.Equal(new[] { "GlobalRatings" }, response.IncludedFields);
+        publishHandler.VerifyAll();
+    }
+
+    [Fact]
     public void PreviewEndpoint_ShouldRequireAnActivatedAccountDisableCachingAndApplyTargetedRateLimit()
     {
         MethodInfo action = typeof(SharePublicationsController).GetMethod(
@@ -146,6 +194,28 @@ public sealed class SharePublicationsControllerTests
             static attribute => attribute.GetType() == typeof(AuthorizeAttribute));
         Assert.False(string.IsNullOrWhiteSpace(authorize.Roles));
         Assert.NotNull(action.GetCustomAttribute<RequireActivatedUnblockedUserAttribute>());
+        ResponseCacheAttribute cache = Assert.IsType<ResponseCacheAttribute>(
+            action.GetCustomAttribute<ResponseCacheAttribute>());
+        Assert.True(cache.NoStore);
+        Assert.Equal(ResponseCacheLocation.None, cache.Location);
+        EnableRateLimitingAttribute rateLimit = Assert.IsType<EnableRateLimitingAttribute>(
+            action.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(RateLimitPolicyNames.SharePublicationPreviews, rateLimit.PolicyName);
+    }
+
+    [Fact]
+    public void PublishEndpoint_ShouldRequireConsentSecurityAndInvalidatePublicData()
+    {
+        MethodInfo action = typeof(SharePublicationsController).GetMethod(
+            nameof(SharePublicationsController.PublishAsync))
+            ?? throw new InvalidOperationException("Publish action not found.");
+
+        AuthorizeAttribute authorize = Assert.Single(
+            action.GetCustomAttributes<AuthorizeAttribute>(),
+            static attribute => attribute.GetType() == typeof(AuthorizeAttribute));
+        Assert.False(string.IsNullOrWhiteSpace(authorize.Roles));
+        Assert.NotNull(action.GetCustomAttribute<RequireActivatedUnblockedUserAttribute>());
+        Assert.NotNull(action.GetCustomAttribute<InvalidatesPublicCacheAttribute>());
         ResponseCacheAttribute cache = Assert.IsType<ResponseCacheAttribute>(
             action.GetCustomAttribute<ResponseCacheAttribute>());
         Assert.True(cache.NoStore);
@@ -175,10 +245,12 @@ public sealed class SharePublicationsControllerTests
 
     private static SharePublicationsController CreateController(
         IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> handler,
-        bool enabled = true)
+        bool enabled = true,
+        ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? publishHandler = null)
     {
         return new SharePublicationsController(
             handler,
+            publishHandler ?? Mock.Of<ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
             Options.Create(new SharePublicationRolloutSettings { Enabled = enabled }));
     }
 }

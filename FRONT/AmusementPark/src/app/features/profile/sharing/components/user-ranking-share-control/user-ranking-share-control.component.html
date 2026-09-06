@@ -1,0 +1,155 @@
+<section class="ranking-share" aria-labelledby="ranking-share-title">
+  <div class="ranking-share__heading">
+    <span class="ranking-share__icon" aria-hidden="true"><i class="pi pi-share-alt"></i></span>
+    <div>
+      <span class="ranking-share__kicker">{{ 'ratings.share.manage.kicker' | translate }}</span>
+      <h3 id="ranking-share-title">{{ 'ratings.share.manage.title' | translate }}</h3>
+      <p>{{ ((settings()?.isPublic ? 'ratings.share.manage.publicDescription' : 'ratings.share.manage.privateDescription') | translate) }}</p>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="ranking-share__status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'ratings.share.manage.loading' | translate }}</span>
+    </div>
+  } @else if (error()) {
+    <div class="ranking-share__status ranking-share__status--error" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <span>{{ 'ratings.share.manage.error' | translate }}</span>
+    </div>
+  } @else if (editorOpen()) {
+    <section class="ranking-share-editor" aria-labelledby="ranking-share-editor-title">
+      <header class="ranking-share-editor__header">
+        <span class="ranking-share-editor__step">{{ 'ratings.share.editor.step' | translate }}</span>
+        <h4 id="ranking-share-editor-title">{{ 'ratings.share.editor.title' | translate }}</h4>
+        <p>{{ 'ratings.share.editor.intro' | translate }}</p>
+      </header>
+
+      <div class="ranking-share-editor__choices">
+        <div class="ranking-share-choice ranking-share-choice--required">
+          <span class="ranking-share-choice__check" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span>
+            <strong>{{ 'ratings.share.editor.ratingsTitle' | translate }}</strong>
+            <small>{{ 'ratings.share.editor.ratingsDescription' | translate }}</small>
+          </span>
+          <span class="ranking-share-choice__badge">{{ 'ratings.share.editor.required' | translate }}</span>
+        </div>
+
+        <label class="ranking-share-choice">
+          <input type="checkbox" [checked]="includeDisplayName()" (change)="toggleDisplayName($event)">
+          <span class="ranking-share-choice__check" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span>
+            <strong>{{ 'ratings.share.editor.nameTitle' | translate }}</strong>
+            <small>{{ 'ratings.share.editor.nameDescription' | translate }}</small>
+          </span>
+        </label>
+      </div>
+
+      <div class="ranking-share-privacy">
+        <article class="ranking-share-privacy__visible">
+          <span><i class="pi pi-eye" aria-hidden="true"></i>{{ 'ratings.share.editor.visibleTitle' | translate }}</span>
+          <ul>
+            <li>{{ 'ratings.share.editor.visibleRatings' | translate }}</li>
+            <li>{{ (includeDisplayName() ? 'ratings.share.editor.visibleName' : 'ratings.share.editor.visibleAnonymous') | translate }}</li>
+          </ul>
+        </article>
+        <article>
+          <span><i class="pi pi-lock" aria-hidden="true"></i>{{ 'ratings.share.editor.privateTitle' | translate }}</span>
+          <ul>
+            <li>{{ 'ratings.share.editor.privateVisits' | translate }}</li>
+            <li>{{ 'ratings.share.editor.privateIdentity' | translate }}</li>
+          </ul>
+        </article>
+      </div>
+
+      @if (previewError()) {
+        <p class="ranking-share-editor__error" role="alert">
+          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+          {{ 'ratings.share.editor.previewError' | translate }}
+        </p>
+      }
+
+      @if (personalRankingPreview(); as currentPreview) {
+        <section class="ranking-share-preview" aria-labelledby="ranking-share-preview-title">
+          <span class="ranking-share-preview__eyebrow">{{ 'ratings.share.editor.previewLabel' | translate }}</span>
+          <h5 id="ranking-share-preview-title">
+            {{ currentPreview.displayName || ('ratings.share.editor.anonymousProfile' | translate) }}
+          </h5>
+          @if (currentPreview.statistics; as statistics) {
+            <div class="ranking-share-preview__stats">
+              <span><strong>{{ statistics.totalRatings }}</strong>{{ 'ratings.share.editor.ratingsCount' | translate }}</span>
+              <span><strong>{{ formatRating(statistics.averageRating) }}</strong>{{ 'ratings.share.editor.averageRating' | translate }}</span>
+            </div>
+          }
+          @if (currentPreview.ratings.length > 0) {
+            <ol class="ranking-share-preview__items">
+              @for (rating of currentPreview.ratings.slice(0, 3); track rating.targetType + ':' + rating.targetName) {
+                <li>
+                  <span>{{ rating.targetName }}</span>
+                  <strong>{{ formatRating(rating.rating) }} / 5</strong>
+                </li>
+              }
+            </ol>
+          }
+          <p><i class="pi pi-shield" aria-hidden="true"></i>{{ 'ratings.share.editor.exactPreview' | translate }}</p>
+        </section>
+      }
+
+      <div class="ranking-share-editor__actions">
+        <button appUiButton="ghost" type="button" [disabled]="previewing() || saving()" (click)="closeEditor()">
+          {{ 'ratings.share.editor.cancel' | translate }}
+        </button>
+        @if (preview()) {
+          <button appUiButton="primary" type="button" [disabled]="!canPublishPreview()" (click)="publishPreview()">
+            <i class="pi pi-check-circle" aria-hidden="true"></i>
+            {{ (saving() ? 'ratings.share.editor.publishing' : 'ratings.share.editor.confirm') | translate }}
+          </button>
+        } @else {
+          <button appUiButton="primary" type="button" [disabled]="previewing()" (click)="preparePreview()">
+            <i [class]="previewing() ? 'pi pi-spin pi-spinner' : 'pi pi-eye'" aria-hidden="true"></i>
+            {{ (previewing() ? 'ratings.share.editor.preparing' : 'ratings.share.editor.previewAction') | translate }}
+          </button>
+        }
+      </div>
+    </section>
+  } @else if (settings()?.isPublic && sharedRankingPath(); as publicPath) {
+    <div class="ranking-share__actions">
+      <a appUiButton="primary" [routerLink]="publicPath">
+        <i class="pi pi-external-link" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.manage.open' | translate }}</span>
+      </a>
+      <button appUiButton="ghost" type="button" (click)="openEditor()">
+        <i class="pi pi-sliders-h" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.editor.edit' | translate }}</span>
+      </button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="makePrivate()">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.manage.makePrivate' | translate }}</span>
+      </button>
+    </div>
+
+    <p class="ranking-share__privacy">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      {{ 'ratings.share.manage.privacyNote' | translate }}
+    </p>
+
+    <app-public-share-panel
+      targetType="UserRanking"
+      [targetId]="settings()?.shareId || null"
+      [targetTitle]="('ratings.share.social.title' | translate:{ name: displayName || 'Amusement Parks' })"
+      [shareUrlOverride]="publicPath"
+      titleKey="ratings.share.social.title"
+      descriptionKey="ratings.share.social.description"
+      textKey="ratings.share.social.text"
+      [textParams]="{ name: displayName || 'Amusement Parks' }">
+    </app-public-share-panel>
+  } @else {
+    <div class="ranking-share__actions">
+      <button appUiButton="primary" type="button" (click)="openEditor()">
+        <i class="pi pi-globe" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.editor.start' | translate }}</span>
+      </button>
+    </div>
+  }
+</section>

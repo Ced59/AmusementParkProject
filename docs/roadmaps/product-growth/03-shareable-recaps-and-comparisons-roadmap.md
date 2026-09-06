@@ -139,6 +139,27 @@ Les détails et preuves sont consignés dans
 Cette tranche ne modifie pas encore l'interface. `SHARE-05` ajoute ensuite l'éditeur
 de contenu public et le résumé de confidentialité avant confirmation.
 
+### État de `SHARE-05` au 7 septembre 2026
+
+L'éditeur Web du classement personnel est livré en version 5.2.7 comme première
+interface du moteur central. Un membre choisit s'il affiche son nom public ou partage
+anonymement, tandis que les notes globales restent le contenu indispensable d'un
+classement. Avant toute publication, l'API construit un aperçu versionné et
+l'interface distingue explicitement ce qui sera visible de ce qui restera privé :
+visites, dates, commentaires privés, email, identifiant technique et avatar.
+
+La confirmation renvoie la version et la policy exactes de cet aperçu. Le serveur
+refuse la publication si la source a évolué entre-temps et exige un nouvel aperçu ;
+il enregistre ensuite la sélection dans `SharePublication`. L'ancien bouton direct
+ne pilote donc plus la mise en ligne depuis le profil. La révocation et les liens
+historiques restent compatibles avec le moteur central migré. Le composant dédié se
+replie en une colonne, borne ses contenus et empile ses actions sur mobile. Des tests
+ciblés couvrent le partage anonyme, l'obsolescence de l'aperçu, la politique minimale,
+les contrats HTTP, l'orchestration Angular et le responsive.
+
+Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
+applique ensuite le même consentement au récapitulatif public d'une visite.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

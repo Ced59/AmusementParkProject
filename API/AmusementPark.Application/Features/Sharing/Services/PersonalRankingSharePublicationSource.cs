@@ -42,6 +42,16 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
             });
     }
 
+    public ApplicationResult<bool> ValidatePolicyForPublication(ShareContentPolicy contentPolicy)
+    {
+        ArgumentNullException.ThrowIfNull(contentPolicy);
+        return contentPolicy.PublicationType == this.PublicationType
+            && contentPolicy.Includes(ShareContentField.GlobalRatings)
+            ? ApplicationResult<bool>.Success(true)
+            : ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.RequiredPublicContentMissing());
+    }
+
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
         CancellationToken cancellationToken)

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, Input, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
@@ -9,8 +8,7 @@ import {
   UserParkRatingRankingCategory,
   UserRatingListItem,
   UserRatingStatBucket,
-  UserRatingStats,
-  UserRankingShareSettings
+  UserRatingStats
 } from '@app/models/ratings/rating.models';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
@@ -33,11 +31,10 @@ import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/displa
 import { PaginationContract } from '@shared/models/contracts';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
-import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { GlobalRatingSuggestionsComponent } from '../passport/components/global-rating-suggestions/global-rating-suggestions.component';
 import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
+import { UserRankingShareControlComponent } from '../sharing/components/user-ranking-share-control/user-ranking-share-control.component';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
-import { UserRankingShareStateFacade } from './user-ranking-share-state.facade';
 
 interface ProfileRankingFilter {
   key: string;
@@ -56,14 +53,13 @@ interface ProfileAttractionQuickFilter {
   templateUrl: './profile-ratings-panel.component.html',
   styleUrls: ['./profile-ratings-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ProfileRatingsStateFacade, UserRankingShareStateFacade],
+  providers: [ProfileRatingsStateFacade],
   imports: [
     RatingTreeComponent,
     RatingRankingListComponent,
     TranslateModule,
     LocalizedPluralPipe,
-    PublicSharePanelComponent,
-    RouterLink,
+    UserRankingShareControlComponent,
     UiButtonDirective,
     UiSectionHeaderComponent,
     GlobalRatingSuggestionsComponent
@@ -105,16 +101,6 @@ export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly pagination: Signal<PaginationContract | null> = this.stateFacade.pagination;
   protected readonly isEmpty: Signal<boolean> = this.stateFacade.isEmpty;
   protected readonly savingRatingIds: Signal<ReadonlySet<string>> = this.stateFacade.savingRatingIds;
-  protected readonly shareSettings: Signal<UserRankingShareSettings | null> = this.shareStateFacade.settings;
-  protected readonly shareLoading: Signal<boolean> = this.shareStateFacade.loading;
-  protected readonly shareSaving: Signal<boolean> = this.shareStateFacade.saving;
-  protected readonly shareError: Signal<boolean> = this.shareStateFacade.error;
-  protected readonly sharedRankingPath: Signal<string | null> = computed(() => {
-    const shareId: string = this.shareSettings()?.shareId?.trim() ?? '';
-    return shareId.length > 0
-      ? `/${this.currentLang()}/rankings/shared/${encodeURIComponent(shareId)}`
-      : null;
-  });
   protected readonly isParkItemRanking: Signal<boolean> = computed(() => this.currentFilter().category !== null);
   protected readonly currentRankingLabelKey: Signal<string> = computed(() => {
     const attractionType: ParkItemType | null = this.selectedAttractionType();
@@ -153,7 +139,6 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   constructor(
     private readonly stateFacade: ProfileRatingsStateFacade,
-    private readonly shareStateFacade: UserRankingShareStateFacade,
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef,
     private readonly elementRef: ElementRef<HTMLElement>
@@ -163,7 +148,6 @@ export class ProfileRatingsPanelComponent implements OnInit {
   ngOnInit(): void {
     this.currentLang.set(this.translationService.getCurrentLang() || 'en');
     this.stateFacade.load();
-    this.shareStateFacade.load();
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string): void => {
       this.currentLang.set(lang);
@@ -240,10 +224,6 @@ export class ProfileRatingsPanelComponent implements OnInit {
       this.elementRef.nativeElement.querySelector<HTMLElement>('.profile-ratings__results')
         ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  }
-
-  protected setRankingPublic(isPublic: boolean): void {
-    this.shareStateFacade.setPublic(isPublic);
   }
 
   protected formatRating(value: number | null | undefined): string {

@@ -1,6 +1,6 @@
-namespace AmusementPark.WebAPI.Contracts.Ratings;
+namespace AmusementPark.WebAPI.Contracts.Sharing;
 
-public sealed class UserRankingShareSettingsDto
+public sealed class SharePublicationSettingsDto
 {
     public bool IsPublic { get; set; }
 

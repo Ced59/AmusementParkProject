@@ -59,4 +59,18 @@ public static class SharingApplicationErrors
             "share-publication.concurrent-modification",
             "Le partage a été modifié simultanément. Réessaie.");
     }
+
+    public static ApplicationError ApprovedPreviewExpired()
+    {
+        return ApplicationError.Conflict(
+            "share-publication.preview-expired",
+            "Les données ont changé depuis l’aperçu. Vérifie le nouvel aperçu avant de publier.");
+    }
+
+    public static ApplicationError RequiredPublicContentMissing()
+    {
+        return ApplicationError.Validation(
+            "share-publication.required-content-missing",
+            "La sélection ne contient pas les informations indispensables à ce partage.");
+    }
 }

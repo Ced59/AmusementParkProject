@@ -114,6 +114,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISharePublicationAccessResolver, SharePublicationAccessResolver>();
         services.AddScoped<ISharePublicationPreviewBuilder, PersonalRankingSharePreviewBuilder>();
         services.AddScoped<ISharePublicationSourceDescriptor, PersonalRankingSharePublicationSource>();
+        services.AddScoped<SharePublicationPublisher>();
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();

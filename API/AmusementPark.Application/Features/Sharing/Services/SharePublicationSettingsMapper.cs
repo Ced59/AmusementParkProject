@@ -11,6 +11,9 @@ internal static class SharePublicationSettingsMapper
         return new SharePublicationSettingsResult(
             isPublic,
             isPublic ? publication!.ShareToken!.Value.Value : null,
-            isPublic ? publication!.PublishedAtUtc : null);
+            isPublic ? publication!.PublishedAtUtc : null,
+            publication?.ContentPolicy.SchemaVersion,
+            publication?.ContentPolicy.DatePrecision,
+            publication?.ContentPolicy.IncludedFields ?? Array.Empty<ShareContentField>());
     }
 }

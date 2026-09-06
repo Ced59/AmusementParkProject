@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Sharing.Handlers;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Sharing;
 using Moq;
 using Xunit;
@@ -41,8 +42,11 @@ public sealed class SharePublicationLifecycleHandlersTests
         ISharePublicationSourceDescriptor source = CreateSourceDescriptor(7);
         SetSharePublicationVisibilityCommandHandler handler = new SetSharePublicationVisibilityCommandHandler(
             repository.Object,
-            tokenFactory.Object,
             new[] { source },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
             new SharePublicationFixedTimeProvider(Now));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -82,8 +86,11 @@ public sealed class SharePublicationLifecycleHandlersTests
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
         SetSharePublicationVisibilityCommandHandler handler = new SetSharePublicationVisibilityCommandHandler(
             repository.Object,
-            Mock.Of<IShareTokenFactory>(MockBehavior.Strict),
             new[] { CreateSourceDescriptor(7) },
+            new SharePublicationPublisher(
+                repository.Object,
+                Mock.Of<IShareTokenFactory>(MockBehavior.Strict),
+                new SharePublicationFixedTimeProvider(Now)),
             new SharePublicationFixedTimeProvider(Now));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -126,8 +133,11 @@ public sealed class SharePublicationLifecycleHandlersTests
         SetSharePublicationVisibilityCommandHandler handler =
             new SetSharePublicationVisibilityCommandHandler(
                 repository.Object,
-                tokenFactory.Object,
                 new[] { CreateSourceDescriptor(7) },
+                new SharePublicationPublisher(
+                    repository.Object,
+                    tokenFactory.Object,
+                    new SharePublicationFixedTimeProvider(Now)),
                 new SharePublicationFixedTimeProvider(Now));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(

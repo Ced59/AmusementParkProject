@@ -136,7 +136,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         PersonalRankingSharePreviewResult personalRanking = new PersonalRankingSharePreviewResult(
             contentPolicy.Includes(ShareContentField.PublicDisplayName)
                 ? NormalizeOptional(user.ResolvePublicDisplayName()) ?? "User"
-                : null,
+                : "User",
             includesAvatar
                 ? ResolvePublicAvatarUrl(avatarAfter, ownerUserId)
                 : null,

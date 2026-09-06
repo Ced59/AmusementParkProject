@@ -102,6 +102,9 @@ export interface UserRankingShareSettings {
   isPublic: boolean;
   shareId?: string | null;
   publishedAtUtc?: string | null;
+  policySchemaVersion?: number | null;
+  datePrecision?: string | null;
+  includedFields?: string[];
 }
 
 export interface UserRankingShareVisibilityRequest {

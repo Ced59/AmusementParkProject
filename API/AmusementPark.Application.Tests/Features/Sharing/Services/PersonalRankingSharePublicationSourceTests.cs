@@ -65,4 +65,22 @@ public sealed class PersonalRankingSharePublicationSourceTests
         Assert.Contains(result.Errors, static error => error.Code == "share-publication.source-changed");
         revisions.VerifyAll();
     }
+
+    [Fact]
+    public void ValidatePolicyForPublication_ShouldRequireGlobalRatings()
+    {
+        PersonalRankingSharePublicationSource source = new PersonalRankingSharePublicationSource(
+            Mock.Of<IShareSourceRevisionRepository>());
+        ShareContentPolicy identityOnlyPolicy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.PublicDisplayName });
+
+        ApplicationResult<bool> result = source.ValidatePolicyForPublication(identityOnlyPolicy);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "share-publication.required-content-missing");
+    }
 }

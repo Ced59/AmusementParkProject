@@ -12,15 +12,19 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
 {
     private readonly ISharePublicationRepository sharePublicationRepository;
     private readonly IUserRepository userRepository;
+    private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
 
     public SharePublicationAccessResolver(
         ISharePublicationRepository sharePublicationRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        IEnumerable<ISharePublicationSourceDescriptor> sources)
     {
         this.sharePublicationRepository = sharePublicationRepository
             ?? throw new ArgumentNullException(nameof(sharePublicationRepository));
         this.userRepository = userRepository
             ?? throw new ArgumentNullException(nameof(userRepository));
+        ArgumentNullException.ThrowIfNull(sources);
+        this.sources = sources.ToDictionary(static source => source.PublicationType);
     }
 
     public async Task<ApplicationResult<ResolvedSharePublicationResult>> ResolveAsync(
@@ -39,6 +43,12 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         if (publication is null
             || publication.Type != expectedPublicationType
             || publication.PublishedAtUtc is null)
+        {
+            return NotFound();
+        }
+
+        if (!this.sources.TryGetValue(publication.Type, out ISharePublicationSourceDescriptor? source)
+            || !source.ValidatePolicyForPublication(publication.ContentPolicy).IsSuccess)
         {
             return NotFound();
         }

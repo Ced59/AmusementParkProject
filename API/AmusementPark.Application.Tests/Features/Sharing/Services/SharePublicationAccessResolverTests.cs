@@ -55,7 +55,8 @@ public sealed class SharePublicationAccessResolverTests
             .ReturnsAsync(user);
         SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
             publications.Object,
-            users.Object);
+            users.Object,
+            CreateSources());
 
         ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
             TokenValue,
@@ -75,7 +76,8 @@ public sealed class SharePublicationAccessResolverTests
     {
         SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
             Mock.Of<ISharePublicationRepository>(MockBehavior.Strict),
-            Mock.Of<IUserRepository>(MockBehavior.Strict));
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            CreateSources());
 
         ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
             "technical-id",
@@ -108,7 +110,8 @@ public sealed class SharePublicationAccessResolverTests
             .ReturnsAsync(user);
         SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
             publications.Object,
-            users.Object);
+            users.Object,
+            CreateSources());
 
         ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
             TokenValue,
@@ -119,6 +122,49 @@ public sealed class SharePublicationAccessResolverTests
         Assert.Contains(result.Errors, static error => error.Code == "rating.shared-ranking.not-found");
         publications.VerifyAll();
         users.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_WhenPersistedPolicyCannotRepresentARanking_ShouldExposeNothing()
+    {
+        SharePublication publication = SharePublication.Restore(
+            SharePublicationId.Parse("publication-1"),
+            "owner-1",
+            SharePublicationType.PersonalRanking,
+            "personal-ranking:owner-1",
+            ShareToken.Parse(TokenValue),
+            SharePublicationStatus.Published,
+            ShareVisibility.Unlisted,
+            ShareContentPolicy.Create(
+                SharePublicationType.PersonalRanking,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.PublicDisplayName }),
+            0,
+            1,
+            1,
+            Now,
+            null,
+            Now,
+            Now);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetResolvableByTokenAsync(
+                ShareToken.Parse(TokenValue),
+                CancellationToken.None))
+            .ReturnsAsync(publication);
+        SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
+            publications.Object,
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            CreateSources());
+
+        ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
+            TokenValue,
+            SharePublicationType.PersonalRanking,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.shared-ranking.not-found");
+        publications.VerifyAll();
     }
 
     private static SharePublication CreatePublishedPublication()
@@ -142,5 +188,13 @@ public sealed class SharePublicationAccessResolverTests
             null,
             Now,
             Now);
+    }
+
+    private static IReadOnlyCollection<ISharePublicationSourceDescriptor> CreateSources()
+    {
+        return new[]
+        {
+            new PersonalRankingSharePublicationSource(Mock.Of<IShareSourceRevisionRepository>()),
+        };
     }
 }

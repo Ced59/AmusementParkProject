@@ -1,6 +1,20 @@
 {
-  "version": "5.2.6",
+  "version": "5.2.7",
   "history": [
+    {
+      "version": "5.2.7",
+      "releasedAt": "2026-09-07",
+      "labels": {
+        "fr": "Tu peux vérifier précisément ton classement avant de le partager.",
+        "en": "You can now review your ranking precisely before sharing it.",
+        "de": "Du kannst deine Rangliste jetzt vor dem Teilen genau prüfen.",
+        "nl": "Je kunt je ranglijst nu precies controleren voordat je die deelt.",
+        "it": "Ora puoi controllare con precisione la tua classifica prima di condividerla.",
+        "es": "Ahora puedes revisar con precisión tu clasificación antes de compartirla.",
+        "pl": "Możesz teraz dokładnie sprawdzić swój ranking przed udostępnieniem.",
+        "pt": "Agora podes verificar com precisão a tua classificação antes de a partilhares."
+      }
+    },
     {
       "version": "5.2.6",
       "releasedAt": "2026-09-06",

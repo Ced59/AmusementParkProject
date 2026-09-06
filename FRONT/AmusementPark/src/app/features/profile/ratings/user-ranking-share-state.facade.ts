@@ -1,8 +1,15 @@
-import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
+import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
 
 import { UserRankingShareSettings } from '@app/models/ratings/rating.models';
+import {
+  ShareContentField,
+  SharePublicationPreview,
+  SharePublicationPreviewRequest,
+  SharePublicationPublishRequest,
+  SharePublicationSettings
+} from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { USER_RANKING_SHARE_PORT, UserRankingSharePort } from './user-ranking-share-state-data.ports';
 
@@ -12,11 +19,24 @@ export class UserRankingShareStateFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly savingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
+  private readonly editorOpenSignal = signal<boolean>(false);
+  private readonly includeDisplayNameSignal = signal<boolean>(true);
+  private readonly previewSignal = signal<SharePublicationPreview | null>(null);
+  private readonly previewingSignal = signal<boolean>(false);
+  private readonly previewErrorSignal = signal<boolean>(false);
 
   public readonly settings: Signal<UserRankingShareSettings | null> = this.settingsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   public readonly error: Signal<boolean> = this.errorSignal.asReadonly();
+  public readonly editorOpen: Signal<boolean> = this.editorOpenSignal.asReadonly();
+  public readonly includeDisplayName: Signal<boolean> = this.includeDisplayNameSignal.asReadonly();
+  public readonly preview: Signal<SharePublicationPreview | null> = this.previewSignal.asReadonly();
+  public readonly previewing: Signal<boolean> = this.previewingSignal.asReadonly();
+  public readonly previewError: Signal<boolean> = this.previewErrorSignal.asReadonly();
+  public readonly canPublishPreview: Signal<boolean> = computed(() => {
+    return this.previewSignal() !== null && !this.savingSignal() && !this.previewingSignal();
+  });
 
   constructor(
     @Inject(USER_RANKING_SHARE_PORT) private readonly sharePort: UserRankingSharePort,
@@ -24,6 +44,101 @@ export class UserRankingShareStateFacade {
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef
   ) {
+  }
+
+  openEditor(): void {
+    const savedFields: readonly string[] = this.settingsSignal()?.includedFields ?? [];
+    this.includeDisplayNameSignal.set(
+      savedFields.length === 0 || savedFields.includes('PublicDisplayName')
+    );
+    this.previewSignal.set(null);
+    this.previewErrorSignal.set(false);
+    this.editorOpenSignal.set(true);
+  }
+
+  closeEditor(): void {
+    if (this.savingSignal() || this.previewingSignal()) {
+      return;
+    }
+
+    this.editorOpenSignal.set(false);
+    this.previewSignal.set(null);
+    this.previewErrorSignal.set(false);
+  }
+
+  setDisplayNameIncluded(included: boolean): void {
+    this.includeDisplayNameSignal.set(included);
+    this.previewSignal.set(null);
+    this.previewErrorSignal.set(false);
+  }
+
+  preparePreview(): void {
+    if (this.previewingSignal() || this.savingSignal()) {
+      return;
+    }
+
+    const request: SharePublicationPreviewRequest = {
+      publicationType: 'PersonalRanking',
+      sourceId: null,
+      datePrecision: 'Hidden',
+      includedFields: this.selectedFields()
+    };
+    this.previewingSignal.set(true);
+    this.previewErrorSignal.set(false);
+    this.previewSignal.set(null);
+    this.sharePort.preview(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (preview: SharePublicationPreview): void => {
+        this.previewSignal.set(preview);
+        this.previewingSignal.set(false);
+      },
+      error: (error: unknown): void => {
+        console.error('Error preparing user ranking share preview', error);
+        this.previewingSignal.set(false);
+        this.previewErrorSignal.set(true);
+      }
+    });
+  }
+
+  publishApprovedPreview(): void {
+    const preview: SharePublicationPreview | null = this.previewSignal();
+    if (!preview || this.savingSignal() || this.previewingSignal()) {
+      return;
+    }
+
+    const request: SharePublicationPublishRequest = {
+      publicationType: preview.publicationType,
+      sourceId: null,
+      approvedSourceVersion: preview.sourceVersion,
+      approvedPolicySchemaVersion: preview.contentPolicy.schemaVersion,
+      approvedDatePrecision: preview.contentPolicy.datePrecision,
+      approvedIncludedFields: preview.contentPolicy.includedFields
+    };
+    this.savingSignal.set(true);
+    this.previewErrorSignal.set(false);
+    this.sharePort.publish(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (settings: SharePublicationSettings): void => {
+        this.settingsSignal.set(settings);
+        this.savingSignal.set(false);
+        this.editorOpenSignal.set(false);
+        this.previewSignal.set(null);
+        this.toastMessageService.add(
+          'success',
+          this.translateService.instant('common.success'),
+          this.translateService.instant('ratings.share.manage.publishedToast')
+        );
+      },
+      error: (error: unknown): void => {
+        console.error('Error publishing approved user ranking share', error);
+        this.savingSignal.set(false);
+        this.previewSignal.set(null);
+        this.previewErrorSignal.set(true);
+        this.toastMessageService.add(
+          'error',
+          this.translateService.instant('common.error'),
+          this.translateService.instant('ratings.share.editor.publishError')
+        );
+      }
+    });
   }
 
   load(): void {
@@ -73,5 +188,14 @@ export class UserRankingShareStateFacade {
         );
       }
     });
+  }
+
+  private selectedFields(): ShareContentField[] {
+    const fields: ShareContentField[] = ['GlobalRatings'];
+    if (this.includeDisplayNameSignal()) {
+      fields.unshift('PublicDisplayName');
+    }
+
+    return fields;
   }
 }
