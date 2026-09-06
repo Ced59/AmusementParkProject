@@ -150,7 +150,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                             updated.Category,
                             updated.IsCurrent),
                         metadata,
-                        mutationCancellation.Token);
+                        consistencyCancellation.Token);
                     if (metadataUpdated is not null)
                     {
                         updated = metadataUpdated;
@@ -161,13 +161,13 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
                 await SynchronizeOwnerAsync(
                     updated,
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
             }
             finally
             {

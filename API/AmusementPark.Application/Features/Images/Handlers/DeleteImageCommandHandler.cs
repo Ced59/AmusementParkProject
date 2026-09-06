@@ -124,14 +124,12 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    mutationCancellation.Token,
-                    cancellationToken,
                     consistencyCancellation.Token);
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(image.Path))
                 {
                     await this.DeleteBinaryBestEffortAsync(image);
@@ -193,13 +191,15 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        CancellationToken cancellationToken,
-        CancellationToken callerCancellationToken,
         CancellationToken consistencyCancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
-            IReadOnlyCollection<Image> remainingImages = await imageRepository.GetByOwnerAsync(ImageOwnerType.User, image.OwnerId, ImageCategory.Avatar, cancellationToken);
+            IReadOnlyCollection<Image> remainingImages = await imageRepository.GetByOwnerAsync(
+                ImageOwnerType.User,
+                image.OwnerId,
+                ImageCategory.Avatar,
+                consistencyCancellationToken);
             Image? replacementCurrent = remainingImages.FirstOrDefault(static candidate => candidate.IsCurrent);
 
             if (replacementCurrent is null)
@@ -216,7 +216,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                             firstRemaining.IsCurrent),
                         ImageOwnerType.User,
                         image.OwnerId,
-                        callerCancellationToken,
+                        consistencyCancellationToken,
                         consistencyCancellationToken);
                 }
             }
@@ -225,30 +225,49 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
 
         if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
-            Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
+            Park? park = await parkRepository.GetByIdAsync(
+                image.OwnerId,
+                true,
+                consistencyCancellationToken);
             if (park is null)
             {
                 return;
             }
 
-            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.Logo, cancellationToken);
+            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(
+                ImageOwnerType.Park,
+                image.OwnerId,
+                ImageCategory.Logo,
+                consistencyCancellationToken);
             park.CurrentLogoImageId = currentLogo?.Id;
-            await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
+            await parkRepository.UpdateAsync(park.Id, park, consistencyCancellationToken);
             return;
         }
 
         if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
-            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(
+                image.OwnerId,
+                consistencyCancellationToken);
             if (manufacturer is null)
             {
                 return;
             }
 
-            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Logo, cancellationToken);
+            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(
+                ImageOwnerType.AttractionManufacturer,
+                image.OwnerId,
+                ImageCategory.Logo,
+                consistencyCancellationToken);
             manufacturer.CurrentLogoImageId = currentLogo?.Id;
-            await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
-            await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
+            await attractionManufacturerRepository.UpdateAsync(
+                manufacturer.Id,
+                manufacturer,
+                consistencyCancellationToken);
+            await searchProjectionWriter.UpsertAsync(
+                SearchProjectionResourceTypes.Manufacturers,
+                manufacturer.Id,
+                consistencyCancellationToken);
         }
     }
 

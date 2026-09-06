@@ -147,13 +147,13 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                         avatarOwnerUserIds,
                         this.imageRepository,
                         this.userRepository,
-                        mutationCancellation.Token);
+                        consistencyCancellation.Token);
                     await SynchronizeOwnerAsync(
                         image,
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        mutationCancellation.Token);
+                        consistencyCancellation.Token);
                 }
             }
             finally

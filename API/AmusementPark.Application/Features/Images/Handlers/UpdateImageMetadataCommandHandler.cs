@@ -143,7 +143,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        mutationCancellation.Token);
+                        consistencyCancellation.Token);
                 }
 
                 if (metadata.IsCurrent == true && updated.OwnerType != ImageOwnerType.None && !string.IsNullOrWhiteSpace(updated.OwnerId))
@@ -157,7 +157,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                             updated.IsCurrent),
                         updated.OwnerType,
                         updated.OwnerId,
-                        cancellationToken,
+                        consistencyCancellation.Token,
                         consistencyCancellation.Token);
                     if (current is null)
                     {
@@ -177,14 +177,14 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        mutationCancellation.Token);
+                        consistencyCancellation.Token);
                 }
 
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
             }
             finally
             {
