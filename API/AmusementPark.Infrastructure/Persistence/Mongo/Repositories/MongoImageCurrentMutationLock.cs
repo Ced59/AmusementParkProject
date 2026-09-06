@@ -20,6 +20,7 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
     private readonly IMongoCollection<ImageCurrentMutationLockDocument> collection;
     private readonly TimeProvider timeProvider;
     private readonly ILogger<MongoImageCurrentMutationLock> logger;
+    private readonly TimeSpan heartbeatInterval;
 
     public MongoImageCurrentMutationLock(
         IMongoDatabase database,
@@ -37,10 +38,25 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         IMongoCollection<ImageCurrentMutationLockDocument> collection,
         TimeProvider timeProvider,
         ILogger<MongoImageCurrentMutationLock> logger)
+        : this(collection, timeProvider, logger, HeartbeatInterval)
+    {
+    }
+
+    internal MongoImageCurrentMutationLock(
+        IMongoCollection<ImageCurrentMutationLockDocument> collection,
+        TimeProvider timeProvider,
+        ILogger<MongoImageCurrentMutationLock> logger,
+        TimeSpan heartbeatInterval)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        if (heartbeatInterval <= TimeSpan.Zero || heartbeatInterval >= LeaseDuration)
+        {
+            throw new ArgumentOutOfRangeException(nameof(heartbeatInterval));
+        }
+
+        this.heartbeatInterval = heartbeatInterval;
     }
 
     public async Task<TResult> ExecuteAsync<TResult>(
@@ -190,32 +206,56 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         {
             while (true)
             {
-                await Task.Delay(HeartbeatInterval, this.timeProvider, cancellationToken);
-                DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-                UpdateResult result = await this.collection.UpdateOneAsync(
-                    BuildOwnedLeaseFilter(scopeKey, leaseToken),
-                    Builders<ImageCurrentMutationLockDocument>.Update
-                        .Set(static document => document.ExpiresAtUtc, nowUtc.Add(LeaseDuration))
-                        .Set(static document => document.UpdatedAtUtc, nowUtc),
-                    cancellationToken: cancellationToken);
-                if (result.MatchedCount == 0)
+                await Task.Delay(this.heartbeatInterval, this.timeProvider, cancellationToken);
+                bool renewed = false;
+                while (!renewed)
                 {
-                    leaseLostCancellation.Cancel();
-                    return;
+                    try
+                    {
+                        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                        UpdateResult result = await this.collection.UpdateOneAsync(
+                            BuildOwnedLeaseFilter(scopeKey, leaseToken),
+                            Builders<ImageCurrentMutationLockDocument>.Update
+                                .Set(static document => document.ExpiresAtUtc, nowUtc.Add(LeaseDuration))
+                                .Set(static document => document.UpdatedAtUtc, nowUtc),
+                            cancellationToken: cancellationToken);
+                        if (result.MatchedCount == 0)
+                        {
+                            leaseLostCancellation.Cancel();
+                            return;
+                        }
+
+                        renewed = true;
+                    }
+                    catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                    {
+                        return;
+                    }
+                    catch (Exception exception)
+                    {
+                        this.logger.LogWarning(
+                            exception,
+                            "Unable to renew current-image mutation lock {ScopeKey}; renewal will be retried.",
+                            scopeKey);
+                        await Task.Delay(
+                            GetHeartbeatRetryInterval(this.heartbeatInterval),
+                            this.timeProvider,
+                            cancellationToken);
+                    }
                 }
             }
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
         }
-        catch (Exception exception)
-        {
-            this.logger.LogError(
-                exception,
-                "Unable to renew current-image mutation lock {ScopeKey}.",
-                scopeKey);
-            leaseLostCancellation.Cancel();
-        }
+    }
+
+    internal static TimeSpan GetHeartbeatRetryInterval(TimeSpan heartbeatInterval)
+    {
+        TimeSpan maximumRetryInterval = TimeSpan.FromSeconds(5);
+        return heartbeatInterval < maximumRetryInterval
+            ? heartbeatInterval
+            : maximumRetryInterval;
     }
 
     private async Task ReleaseSafelyAsync(string scopeKey, string leaseToken)

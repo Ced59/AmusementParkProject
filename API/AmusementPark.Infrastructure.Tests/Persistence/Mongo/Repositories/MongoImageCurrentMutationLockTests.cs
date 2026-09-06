@@ -131,6 +131,88 @@ public sealed class MongoImageCurrentMutationLockTests
             candidate => candidate.AsBsonDocument.Contains("expiresAtUtc"));
     }
 
+    [Fact]
+    public async Task ExecuteAsync_WhenHeartbeatFailsOnce_ShouldRetryWithoutCancellingThePromotion()
+    {
+        TaskCompletionSource retryObserved = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int heartbeatCount = 0;
+        Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =
+            new Mock<IMongoCollection<ImageCurrentMutationLockDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument>>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ImageCurrentMutationLockDocument> _,
+                UpdateDefinition<ImageCurrentMutationLockDocument> update,
+                FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument> _,
+                CancellationToken _) => Task.FromResult(new ImageCurrentMutationLockDocument
+            {
+                ScopeKey = "User:7:owner-1:Avatar",
+                Token = Render(update)["$set"].AsBsonDocument["token"].AsString,
+            }));
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ImageCurrentMutationLockDocument> _,
+                UpdateDefinition<ImageCurrentMutationLockDocument> update,
+                UpdateOptions _,
+                CancellationToken _) =>
+            {
+                BsonDocument rendered = Render(update);
+                bool isRelease = rendered["$set"].AsBsonDocument.Contains("token");
+                if (isRelease)
+                {
+                    return Task.FromResult<UpdateResult>(
+                        new UpdateResult.Acknowledged(1, 1, null));
+                }
+
+                int call = Interlocked.Increment(ref heartbeatCount);
+                if (call == 1)
+                {
+                    return Task.FromException<UpdateResult>(
+                        new TimeoutException("Transient MongoDB timeout."));
+                }
+
+                retryObserved.TrySetResult();
+                return Task.FromResult<UpdateResult>(
+                    new UpdateResult.Acknowledged(1, 1, null));
+            });
+        MongoImageCurrentMutationLock mutationLock = new MongoImageCurrentMutationLock(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<MongoImageCurrentMutationLock>.Instance,
+            TimeSpan.FromMilliseconds(10));
+
+        string result = await mutationLock.ExecuteAsync(
+            ImageOwnerType.User,
+            "owner-1",
+            ImageCategory.Avatar,
+            async cancellationToken =>
+            {
+                await retryObserved.Task.WaitAsync(cancellationToken);
+                return "promoted";
+            },
+            CancellationToken.None);
+
+        Assert.Equal("promoted", result);
+        Assert.Equal(2, heartbeatCount);
+        Assert.Equal(
+            TimeSpan.FromMilliseconds(10),
+            MongoImageCurrentMutationLock.GetHeartbeatRetryInterval(
+                TimeSpan.FromMilliseconds(10)));
+        Assert.Equal(
+            TimeSpan.FromSeconds(5),
+            MongoImageCurrentMutationLock.GetHeartbeatRetryInterval(
+                MongoImageCurrentMutationLock.HeartbeatInterval));
+        collection.VerifyAll();
+    }
+
     private static BsonDocument Render(
         FilterDefinition<ImageCurrentMutationLockDocument> filter)
     {

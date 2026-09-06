@@ -145,8 +145,9 @@ lieu d'être remplacée ; l'ancienne opération non protégée a été retirée 
 Les promotions d'image sont en outre sérialisées par un verrou MongoDB distribué
 sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
 promouvoir simultanément deux images du même périmètre et se rétrograder l'une
-l'autre. Le verrou est renouvelé pendant l'opération, expire après un abandon et
-n'est libéré que par son propre jeton.
+l'autre. Le verrou est renouvelé pendant l'opération, reprend son renouvellement
+après une erreur MongoDB transitoire, expire après un abandon et n'est libéré que
+par son propre jeton.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
@@ -223,6 +224,7 @@ Les tests ciblés couvrent :
 - récupération prudente des leases expirés ;
 - renouvellement des leases actifs et nouvelle révision après une finalisation tardive ;
 - reprise du heartbeat après une erreur MongoDB transitoire ;
+- reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;
