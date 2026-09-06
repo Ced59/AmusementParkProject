@@ -37,6 +37,7 @@ public sealed class SetCurrentImageCommandHandlerTests
             AvatarUrl = "/images/avatar-old",
             IsActivated = true,
         };
+        using CancellationTokenSource callerCancellation = new CancellationTokenSource();
         using CancellationTokenSource leaseCancellation = new CancellationTokenSource();
         ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
             "personal-ranking:owner-1",
@@ -60,21 +61,27 @@ public sealed class SetCurrentImageCommandHandlerTests
                     && guard.Category == ImageCategory.Avatar),
                 ImageOwnerType.User,
                 "owner-1",
-                It.Is<CancellationToken>(token => !token.CanBeCanceled),
+                It.Is<CancellationToken>(token => token.CanBeCanceled),
                 It.Is<CancellationToken>(token => token.CanBeCanceled)))
+            .Callback(() => callerCancellation.Cancel())
             .ReturnsAsync(avatar);
-        users.InSequence(sequence).Setup(value => value.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
+        users.InSequence(sequence).Setup(value => value.GetByIdAsync(
+                "owner-1",
+                It.Is<CancellationToken>(token =>
+                    token.CanBeCanceled && !token.IsCancellationRequested)))
             .ReturnsAsync(user);
         images.InSequence(sequence).Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-1",
                 ImageCategory.Avatar,
-                It.IsAny<CancellationToken>()))
+                It.Is<CancellationToken>(token =>
+                    token.CanBeCanceled && !token.IsCancellationRequested)))
             .ReturnsAsync(avatar);
         users.InSequence(sequence).Setup(value => value.UpdateAvatarUrlAsync(
                 "owner-1",
                 "/images/avatar-new",
-                It.IsAny<CancellationToken>()))
+                It.Is<CancellationToken>(token =>
+                    token.CanBeCanceled && !token.IsCancellationRequested)))
             .ReturnsAsync(true);
         revisions.InSequence(sequence).Setup(value => value.CompleteMutationAsync(
                 mutationLease,
@@ -90,7 +97,8 @@ public sealed class SetCurrentImageCommandHandlerTests
             revisions.Object);
 
         ApplicationResult<Image> result = await handler.HandleAsync(
-            new SetCurrentImageCommand("avatar-new", ImageOwnerType.User, "owner-1"));
+            new SetCurrentImageCommand("avatar-new", ImageOwnerType.User, "owner-1"),
+            callerCancellation.Token);
 
         Assert.True(result.IsSuccess);
         images.VerifyAll();

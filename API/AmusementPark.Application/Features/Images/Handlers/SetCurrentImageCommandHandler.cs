@@ -117,13 +117,13 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
                 await SynchronizeOwnerAsync(
                     updated,
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    mutationCancellation.Token);
+                    consistencyCancellation.Token);
             }
             finally
             {

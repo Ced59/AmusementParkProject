@@ -182,6 +182,9 @@ cohérence. Une déconnexion du client après la première écriture laisse fini
 réconciliation sous verrou, tandis que la perte du lease de partage interrompt
 immédiatement la section critique. Une perte de bail peut donc laisser temporairement
 le périmètre sans image courante, mais jamais créer deux images courantes concurrentes.
+Après une promotion validée, la synchronisation de l'avatar utilisateur et des
+références de logo utilise elle aussi la garantie de cohérence plutôt que le jeton
+HTTP : une déconnexion ne peut pas laisser le propriétaire sur l'ancienne image.
 Les actions de masse portent en plus la date de mise à jour observée :
 elles ne peuvent pas réécrire une description ou des crédits modifiés entre-temps.
 Un lot d'import de parc ou d'attraction qui échoue après son envoi est considéré
@@ -276,6 +279,7 @@ Les tests ciblés couvrent :
 - rejet d'une mutation de périmètre pendant une réservation de promotion ;
 - maintien de l'annulation métier du lease de partage dans le verrou d'image après
   une déconnexion du client ;
+- synchronisation du propriétaire après promotion malgré l'annulation du client ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
 - incrément atomique de la révision après une vraie mutation ;
