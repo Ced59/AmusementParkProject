@@ -34,8 +34,27 @@ public sealed class PreviewSharePublicationQueryHandlerTests
                     && policy.Includes(ShareContentField.GlobalRatings)),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<SharePublicationPreviewResult>.Success(preview));
+        Mock<ISharePublicationSourceDescriptor> source =
+            new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
+        source.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.PersonalRanking);
+        source.Setup(value => value.ResolveSourceScopeKey("owner-1", null))
+            .Returns(ApplicationResult<string>.Success("personal-ranking:owner-1"));
+        Mock<ISharePublicationPreviewApprovalProtector> approvalProtector =
+            new Mock<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict);
+        approvalProtector.Setup(value => value.CreateToken(
+                "owner-1",
+                SharePublicationType.PersonalRanking,
+                "personal-ranking:owner-1",
+                4,
+                It.Is<ShareContentPolicy>(policy =>
+                    policy.Includes(ShareContentField.GlobalRatings))))
+            .Returns("approved-preview");
         PreviewSharePublicationQueryHandler handler =
-            new PreviewSharePublicationQueryHandler(new[] { builder.Object });
+            new PreviewSharePublicationQueryHandler(
+                new[] { builder.Object },
+                new[] { source.Object },
+                approvalProtector.Object);
 
         ApplicationResult<SharePublicationPreviewResult> result = await handler.HandleAsync(
             new PreviewSharePublicationQuery(
@@ -47,8 +66,10 @@ public sealed class PreviewSharePublicationQueryHandlerTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
-        Assert.Same(preview, result.Value);
+        Assert.Equal("approved-preview", result.Value!.ApprovalToken);
         builder.VerifyAll();
+        source.VerifyAll();
+        approvalProtector.VerifyAll();
     }
 
     [Fact]
@@ -59,7 +80,10 @@ public sealed class PreviewSharePublicationQueryHandlerTests
         builder.SetupGet(value => value.PublicationType)
             .Returns(SharePublicationType.PersonalRanking);
         PreviewSharePublicationQueryHandler handler =
-            new PreviewSharePublicationQueryHandler(new[] { builder.Object });
+            new PreviewSharePublicationQueryHandler(
+                new[] { builder.Object },
+                Array.Empty<ISharePublicationSourceDescriptor>(),
+                Mock.Of<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict));
 
         ApplicationResult<SharePublicationPreviewResult> result = await handler.HandleAsync(
             new PreviewSharePublicationQuery(
@@ -84,7 +108,10 @@ public sealed class PreviewSharePublicationQueryHandlerTests
     public async Task HandleAsync_WhenTypeHasNoBuilder_ShouldReturnAControlledRuleViolation()
     {
         PreviewSharePublicationQueryHandler handler =
-            new PreviewSharePublicationQueryHandler(Array.Empty<ISharePublicationPreviewBuilder>());
+            new PreviewSharePublicationQueryHandler(
+                Array.Empty<ISharePublicationPreviewBuilder>(),
+                Array.Empty<ISharePublicationSourceDescriptor>(),
+                Mock.Of<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict));
 
         ApplicationResult<SharePublicationPreviewResult> result = await handler.HandleAsync(
             new PreviewSharePublicationQuery(

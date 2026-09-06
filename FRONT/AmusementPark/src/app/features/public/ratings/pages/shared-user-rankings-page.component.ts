@@ -241,6 +241,11 @@ export class SharedUserRankingsPageComponent implements OnInit {
       : '-';
   }
 
+  protected publicDisplayName(profile: SharedUserRankingProfile): string {
+    return profile.displayName?.trim()
+      || (this.translateService.instant('ratings.share.editor.anonymousProfile') as string);
+  }
+
   private updateRankingRoute(): void {
     void this.router.navigate([], {
       relativeTo: this.route,
@@ -259,7 +264,7 @@ export class SharedUserRankingsPageComponent implements OnInit {
   }
 
   private applySeo(profile: SharedUserRankingProfile): void {
-    const params: Record<string, string> = { name: profile.displayName };
+    const params: Record<string, string> = { name: this.publicDisplayName(profile) };
     const title: string = this.translateService.instant('ratings.share.public.seoTitle', params);
     const description: string = this.translateService.instant('ratings.share.public.seoDescription', params);
     const imageAlt: string = this.translateService.instant('ratings.share.public.imageAlt', params);

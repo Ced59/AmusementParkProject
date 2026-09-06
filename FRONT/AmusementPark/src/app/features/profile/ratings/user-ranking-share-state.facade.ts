@@ -111,7 +111,8 @@ export class UserRankingShareStateFacade {
       approvedSourceVersion: preview.sourceVersion,
       approvedPolicySchemaVersion: preview.contentPolicy.schemaVersion,
       approvedDatePrecision: preview.contentPolicy.datePrecision,
-      approvedIncludedFields: preview.contentPolicy.includedFields
+      approvedIncludedFields: preview.contentPolicy.includedFields,
+      approvalToken: preview.approvalToken
     };
     this.savingSignal.set(true);
     this.previewErrorSignal.set(false);

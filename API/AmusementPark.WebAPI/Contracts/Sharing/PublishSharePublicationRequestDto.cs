@@ -13,4 +13,6 @@ public sealed class PublishSharePublicationRequestDto
     public string ApprovedDatePrecision { get; set; } = string.Empty;
 
     public List<string> ApprovedIncludedFields { get; set; } = new();
+
+    public string ApprovalToken { get; set; } = string.Empty;
 }

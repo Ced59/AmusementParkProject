@@ -11,12 +11,20 @@ public sealed class PreviewSharePublicationQueryHandler
     : IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>
 {
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationPreviewBuilder> builders;
+    private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
+    private readonly ISharePublicationPreviewApprovalProtector approvalProtector;
 
     public PreviewSharePublicationQueryHandler(
-        IEnumerable<ISharePublicationPreviewBuilder> builders)
+        IEnumerable<ISharePublicationPreviewBuilder> builders,
+        IEnumerable<ISharePublicationSourceDescriptor> sources,
+        ISharePublicationPreviewApprovalProtector approvalProtector)
     {
         ArgumentNullException.ThrowIfNull(builders);
+        ArgumentNullException.ThrowIfNull(sources);
         this.builders = builders.ToDictionary(static builder => builder.PublicationType);
+        this.sources = sources.ToDictionary(static source => source.PublicationType);
+        this.approvalProtector = approvalProtector
+            ?? throw new ArgumentNullException(nameof(approvalProtector));
     }
 
     public async Task<ApplicationResult<SharePublicationPreviewResult>> HandleAsync(
@@ -49,16 +57,48 @@ public sealed class PreviewSharePublicationQueryHandler
                 SharingApplicationErrors.InvalidContentPolicy(exception.ErrorCode));
         }
 
-        if (!this.builders.TryGetValue(query.PublicationType, out ISharePublicationPreviewBuilder? builder))
+        if (!this.builders.TryGetValue(query.PublicationType, out ISharePublicationPreviewBuilder? builder)
+            || !this.sources.TryGetValue(
+                query.PublicationType,
+                out ISharePublicationSourceDescriptor? source))
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.PreviewTypeNotAvailable());
         }
 
-        return await builder.BuildAsync(
-            query.OwnerUserId.Trim(),
+        string ownerUserId = query.OwnerUserId.Trim();
+        ApplicationResult<string> scopeResult = source.ResolveSourceScopeKey(
+            ownerUserId,
+            query.SourceId);
+        if (!scopeResult.IsSuccess || scopeResult.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(scopeResult.Errors);
+        }
+
+        ApplicationResult<SharePublicationPreviewResult> previewResult = await builder.BuildAsync(
+            ownerUserId,
             query.SourceId,
             contentPolicy,
             cancellationToken);
+        if (!previewResult.IsSuccess || previewResult.Value is null)
+        {
+            return previewResult;
+        }
+
+        string approvalToken = this.approvalProtector.CreateToken(
+            ownerUserId,
+            query.PublicationType,
+            scopeResult.Value,
+            previewResult.Value.SourceVersion,
+            contentPolicy);
+        return ApplicationResult<SharePublicationPreviewResult>.Success(
+            previewResult.Value with
+            {
+                PublicationType = query.PublicationType,
+                PolicySchemaVersion = contentPolicy.SchemaVersion,
+                DatePrecision = contentPolicy.DatePrecision,
+                IncludedFields = contentPolicy.IncludedFields,
+                ApprovalToken = approvalToken,
+            });
     }
 }

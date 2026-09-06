@@ -2,7 +2,7 @@ namespace AmusementPark.WebAPI.Contracts.Ratings;
 
 public sealed class SharedUserRankingProfileDto
 {
-    public string DisplayName { get; set; } = string.Empty;
+    public string? DisplayName { get; set; }
 
     public DateTime PublishedAtUtc { get; set; }
 

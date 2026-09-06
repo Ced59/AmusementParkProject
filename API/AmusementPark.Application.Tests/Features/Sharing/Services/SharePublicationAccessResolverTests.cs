@@ -126,6 +126,41 @@ public sealed class SharePublicationAccessResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_WhenDisplayNameWasNotApproved_ShouldReturnAnAnonymousIdentity()
+    {
+        SharePublication publication = CreatePublishedPublication(includesDisplayName: false);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetResolvableByTokenAsync(
+                ShareToken.Parse(TokenValue),
+                CancellationToken.None))
+            .ReturnsAsync(publication);
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(new User
+            {
+                Id = "owner-1",
+                PublicDisplayName = "Hidden owner",
+                IsActivated = true,
+                IsBlocked = false,
+            });
+        SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
+            publications.Object,
+            users.Object,
+            CreateSources());
+
+        ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
+            TokenValue,
+            SharePublicationType.PersonalRanking,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Null(result.Value!.DisplayName);
+        publications.VerifyAll();
+        users.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenPersistedPolicyCannotRepresentARanking_ShouldExposeNothing()
     {
         SharePublication publication = SharePublication.Restore(
@@ -193,7 +228,7 @@ public sealed class SharePublicationAccessResolverTests
         publications.VerifyAll();
     }
 
-    private static SharePublication CreatePublishedPublication()
+    private static SharePublication CreatePublishedPublication(bool includesDisplayName = true)
     {
         return SharePublication.Restore(
             SharePublicationId.Parse("publication-1"),
@@ -206,7 +241,9 @@ public sealed class SharePublicationAccessResolverTests
             ShareContentPolicy.Create(
                 SharePublicationType.PersonalRanking,
                 ShareDatePrecision.Hidden,
-                new[] { ShareContentField.PublicDisplayName, ShareContentField.GlobalRatings }),
+                includesDisplayName
+                    ? new[] { ShareContentField.PublicDisplayName, ShareContentField.GlobalRatings }
+                    : new[] { ShareContentField.GlobalRatings }),
             0,
             1,
             1,

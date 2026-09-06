@@ -176,6 +176,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
     return of({
       publicationType: 'PersonalRanking',
       sourceVersion: 12,
+      approvalToken: 'approved-preview',
       contentPolicy: {
         schemaVersion: 1,
         datePrecision: 'Hidden',
@@ -406,7 +407,8 @@ describe('ProfileRatingsPanelComponent', () => {
       approvedSourceVersion: 12,
       approvedPolicySchemaVersion: 1,
       approvedDatePrecision: 'Hidden',
-      approvedIncludedFields: ['GlobalRatings']
+      approvedIncludedFields: ['GlobalRatings'],
+      approvalToken: 'approved-preview'
     });
     const sharedLink: HTMLAnchorElement | null = fixture.nativeElement.querySelector(
       '.ranking-share__actions a',

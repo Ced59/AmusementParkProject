@@ -37,6 +37,7 @@ describe('SharePublicationsApiService', () => {
     request.flush({
       publicationType: 'PersonalRanking',
       sourceVersion: 12,
+      approvalToken: 'approved-preview',
       contentPolicy: { schemaVersion: 1, datePrecision: 'Hidden', includedFields: ['GlobalRatings'] },
       personalRanking: { displayName: 'User', avatarUrl: null, statistics: null, ratings: [], isTruncated: false }
     });
@@ -49,7 +50,8 @@ describe('SharePublicationsApiService', () => {
       approvedSourceVersion: 12,
       approvedPolicySchemaVersion: 1,
       approvedDatePrecision: 'Hidden',
-      approvedIncludedFields: ['GlobalRatings']
+      approvedIncludedFields: ['GlobalRatings'],
+      approvalToken: 'approved-preview'
     };
 
     service.publish(requestBody).subscribe();

@@ -13,14 +13,18 @@ public sealed class PublishSharePublicationCommandHandler
 {
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
     private readonly SharePublicationPublisher publisher;
+    private readonly ISharePublicationPreviewApprovalProtector approvalProtector;
 
     public PublishSharePublicationCommandHandler(
         IEnumerable<ISharePublicationSourceDescriptor> sources,
-        SharePublicationPublisher publisher)
+        SharePublicationPublisher publisher,
+        ISharePublicationPreviewApprovalProtector approvalProtector)
     {
         ArgumentNullException.ThrowIfNull(sources);
         this.sources = sources.ToDictionary(static source => source.PublicationType);
         this.publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+        this.approvalProtector = approvalProtector
+            ?? throw new ArgumentNullException(nameof(approvalProtector));
     }
 
     public async Task<ApplicationResult<SharePublicationSettingsResult>> HandleAsync(
@@ -69,6 +73,18 @@ public sealed class PublishSharePublicationCommandHandler
         if (!policyResult.IsSuccess)
         {
             return ApplicationResult<SharePublicationSettingsResult>.Failure(policyResult.Errors);
+        }
+
+        if (!this.approvalProtector.IsValid(
+                command.ApprovalToken,
+                ownerUserId,
+                command.PublicationType,
+                scopeResult.Value,
+                command.ApprovedSourceVersion,
+                contentPolicy))
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.PreviewApprovalInvalid());
         }
 
         ApplicationResult<long> versionResult = await source.GetCurrentSourceVersionAsync(

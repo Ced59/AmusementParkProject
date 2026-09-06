@@ -16,7 +16,8 @@ public static class SharingHttpMappers
         command = null;
         if (!TryParseDefined(request.PublicationType, out SharePublicationType publicationType)
             || !TryParseDefined(request.ApprovedDatePrecision, out ShareDatePrecision datePrecision)
-            || request.ApprovedSourceVersion < 0)
+            || request.ApprovedSourceVersion < 0
+            || string.IsNullOrWhiteSpace(request.ApprovalToken))
         {
             return false;
         }
@@ -39,7 +40,8 @@ public static class SharingHttpMappers
             request.ApprovedSourceVersion,
             request.ApprovedPolicySchemaVersion,
             datePrecision,
-            includedFields.Distinct().ToArray());
+            includedFields.Distinct().ToArray(),
+            request.ApprovalToken.Trim());
         return true;
     }
 
@@ -81,6 +83,7 @@ public static class SharingHttpMappers
         {
             PublicationType = value.PublicationType.ToString(),
             SourceVersion = value.SourceVersion,
+            ApprovalToken = value.ApprovalToken,
             ContentPolicy = new ShareContentPolicyPreviewDto
             {
                 SchemaVersion = value.PolicySchemaVersion,

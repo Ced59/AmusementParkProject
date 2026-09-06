@@ -12,5 +12,6 @@ public sealed record PublishSharePublicationCommand(
     long ApprovedSourceVersion,
     int ApprovedPolicySchemaVersion,
     ShareDatePrecision ApprovedDatePrecision,
-    IReadOnlyCollection<ShareContentField> ApprovedIncludedFields)
+    IReadOnlyCollection<ShareContentField> ApprovedIncludedFields,
+    string ApprovalToken)
     : ICommand<ApplicationResult<SharePublicationSettingsResult>>;

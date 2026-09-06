@@ -21,8 +21,8 @@
           <i class="pi pi-trophy" aria-hidden="true"></i>
           {{ 'ratings.share.public.kicker' | translate }}
         </span>
-        <h1>{{ 'ratings.share.public.title' | translate:{ name: currentProfile.displayName } }}</h1>
-        <p>{{ 'ratings.share.public.subtitle' | translate:{ name: currentProfile.displayName } }}</p>
+        <h1>{{ 'ratings.share.public.title' | translate:{ name: publicDisplayName(currentProfile) } }}</h1>
+        <p>{{ 'ratings.share.public.subtitle' | translate:{ name: publicDisplayName(currentProfile) } }}</p>
       </div>
 
       <div class="shared-user-rankings__summary" [attr.aria-label]="'ratings.share.public.summaryLabel' | translate">
@@ -152,11 +152,11 @@
       <app-public-share-panel
         targetType="UserRanking"
         [targetId]="shareId()"
-        [targetTitle]="('ratings.share.social.title' | translate:{ name: currentProfile.displayName })"
+        [targetTitle]="('ratings.share.social.title' | translate:{ name: publicDisplayName(currentProfile) })"
         titleKey="ratings.share.social.title"
         descriptionKey="ratings.share.social.description"
         textKey="ratings.share.social.text"
-        [textParams]="{ name: currentProfile.displayName }">
+        [textParams]="{ name: publicDisplayName(currentProfile) }">
       </app-public-share-panel>
 
       <aside class="shared-user-rankings__cta">

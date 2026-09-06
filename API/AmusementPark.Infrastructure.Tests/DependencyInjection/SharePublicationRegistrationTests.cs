@@ -55,5 +55,13 @@ public sealed class SharePublicationRegistrationTests
             static service => service.ServiceType == typeof(IShareTokenFactory));
         Assert.Equal(typeof(CryptographicShareTokenFactory), tokenFactory.ImplementationType);
         Assert.Equal(ServiceLifetime.Singleton, tokenFactory.Lifetime);
+        ServiceDescriptor approvalProtector = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(ISharePublicationPreviewApprovalProtector));
+        Assert.Equal(
+            typeof(HmacSharePublicationPreviewApprovalProtector),
+            approvalProtector.ImplementationType);
+        Assert.Equal(ServiceLifetime.Singleton, approvalProtector.Lifetime);
     }
 }

@@ -164,6 +164,10 @@ concurrente rend donc la réponse indisponible plutôt que de diffuser des donn�
 approuvées. Le profil présente également comme privé un lien devenu obsolète. Enfin,
 l'aperçu annonce le nombre de notes montrées et le nombre total qui sera publié afin
 qu'un échantillon de trois lignes ne puisse pas être confondu avec le contenu complet.
+Une preuve d'approbation opaque et signée lie désormais le membre, la source, sa version
+et la sélection exacte affichée : modifier un champ après l'aperçu invalide la
+publication. L'absence de nom public reste une valeur sémantiquement anonyme jusqu'à la
+couche de présentation, qui fournit le libellé adapté à la langue de la page.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.

@@ -38,7 +38,8 @@ public sealed class SharePublicationsControllerTests
                 null,
                 null,
                 Array.Empty<PersonalRankingSharePreviewItemResult>(),
-                false));
+                false),
+            "approved-preview");
         Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>> handler =
             new Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(
@@ -64,6 +65,7 @@ public sealed class SharePublicationsControllerTests
         SharePublicationPreviewDto response = Assert.IsType<SharePublicationPreviewDto>(ok.Value);
         Assert.Equal("PersonalRanking", response.PublicationType);
         Assert.Equal(8, response.SourceVersion);
+        Assert.Equal("approved-preview", response.ApprovalToken);
         Assert.DoesNotContain(
             response.ContentPolicy.IncludedFields,
             static field => field.Contains("Private", StringComparison.OrdinalIgnoreCase));
@@ -152,6 +154,7 @@ public sealed class SharePublicationsControllerTests
                 It.Is<PublishSharePublicationCommand>(command =>
                     command.UserId == "owner-1"
                     && command.ApprovedSourceVersion == 12
+                    && command.ApprovalToken == "approved-preview"
                     && command.ApprovedPolicySchemaVersion == 1
                     && command.ApprovedIncludedFields.SequenceEqual(
                         new[] { ShareContentField.GlobalRatings })),
@@ -171,6 +174,7 @@ public sealed class SharePublicationsControllerTests
                 ApprovedPolicySchemaVersion = 1,
                 ApprovedDatePrecision = "Hidden",
                 ApprovedIncludedFields = new List<string> { "GlobalRatings" },
+                ApprovalToken = "approved-preview",
             },
             CancellationToken.None);
 

@@ -51,6 +51,7 @@ export interface PersonalRankingShareStatistics {
 export interface SharePublicationPreview {
   publicationType: string;
   sourceVersion: number;
+  approvalToken: string;
   contentPolicy: ShareContentPolicyPreview;
   personalRanking?: PersonalRankingSharePreview | null;
 }
@@ -69,6 +70,7 @@ export interface SharePublicationPublishRequest {
   approvedPolicySchemaVersion: number;
   approvedDatePrecision: string;
   approvedIncludedFields: ShareContentField[];
+  approvalToken: string;
 }
 
 export interface SharePublicationSettings {

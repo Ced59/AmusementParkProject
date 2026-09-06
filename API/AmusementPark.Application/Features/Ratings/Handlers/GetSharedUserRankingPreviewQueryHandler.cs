@@ -60,7 +60,7 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
         }
 
         UserRankingSharePreviewResult preview = new UserRankingSharePreviewResult(
-            ownerResult.Value.DisplayName,
+            ownerResult.Value.DisplayName ?? string.Empty,
             items);
         byte[] content = await this.previewRenderer.RenderPngAsync(preview, cancellationToken);
         return ApplicationResult<UserRankingSharePreviewFileResult>.Success(

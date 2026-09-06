@@ -71,14 +71,11 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             return NotFound();
         }
 
-        string displayName = publication.ContentPolicy.Includes(
+        string? displayName = publication.ContentPolicy.Includes(
             ShareContentField.PublicDisplayName)
-            ? user.ResolvePublicDisplayName()?.Trim() ?? string.Empty
-            : string.Empty;
-        if (displayName.Length == 0)
-        {
-            displayName = "User";
-        }
+            ? user.ResolvePublicDisplayName()?.Trim()
+            : null;
+        displayName = string.IsNullOrWhiteSpace(displayName) ? null : displayName;
 
         ResolvedSharePublicationResult resolvedPublication = new ResolvedSharePublicationResult(
             user.Id,

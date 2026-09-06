@@ -74,6 +74,13 @@ public static class SharingApplicationErrors
             "Vérifie et approuve l’aperçu exact avant de publier.");
     }
 
+    public static ApplicationError PreviewApprovalInvalid()
+    {
+        return ApplicationError.Conflict(
+            "share-publication.preview-approval-invalid",
+            "L’approbation ne correspond pas à l’aperçu affiché. Prépare un nouvel aperçu.");
+    }
+
     public static ApplicationError RequiredPublicContentMissing()
     {
         return ApplicationError.Validation(
