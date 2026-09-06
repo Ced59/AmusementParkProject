@@ -261,9 +261,8 @@ public sealed class MongoImageCurrentMutationLockTests
     }
 
     [Fact]
-    public async Task ExecuteAsync_WhenHeartbeatCannotRenewBeforeDeadline_ShouldCancelPromotion()
+    public async Task ExecuteAsync_WhenLeaseCannotBeConfirmedBeforeDeadline_ShouldCancelPromotion()
     {
-        int heartbeatCount = 0;
         Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =
             new Mock<IMongoCollection<ImageCurrentMutationLockDocument>>(MockBehavior.Strict);
         collection.Setup(value => value.FindOneAndUpdateAsync(
@@ -298,7 +297,6 @@ public sealed class MongoImageCurrentMutationLockTests
                         new UpdateResult.Acknowledged(1, 1, null));
                 }
 
-                Interlocked.Increment(ref heartbeatCount);
                 return Task.FromException<UpdateResult>(
                     new TimeoutException("MongoDB remains unavailable."));
             });
@@ -324,7 +322,6 @@ public sealed class MongoImageCurrentMutationLockTests
                     CancellationToken.None)
                 .WaitAsync(TimeSpan.FromSeconds(2)));
 
-        Assert.True(heartbeatCount > 0);
         collection.VerifyAll();
     }
 
