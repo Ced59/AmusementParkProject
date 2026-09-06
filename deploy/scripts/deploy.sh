@@ -332,6 +332,9 @@ prepare_personal_ranking_cutover() {
   fi
 
   echo "Freezing legacy personal ranking share writes before zero-downtime cutover..."
+  # Arm rollback before collMod: MongoDB may apply the validator even if the
+  # client loses the command response and exits with an error.
+  personal_ranking_cutover_started=true
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -340,7 +343,6 @@ prepare_personal_ranking_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/freeze-legacy-ranking-shares-5.2.6.js
-  personal_ranking_cutover_started=true
 }
 
 run_legacy_enum_migrations() {
