@@ -281,7 +281,7 @@ Inspiré de l'étape 5.
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
 | Logo officiel courant, distinct de la photo principale | 1 | Parc publiable, sauf absence après recherche documentée |
-| Galerie d’au moins cinq photographies générales distinctes et fiables, dont une principale, hors logo et hors gros plans de parkItems | 1 | Parc publiable, sauf exception après recherche documentée |
+| Au moins une photographie générale publiée, fiable et représentative, hors logo et hors gros plan de parkItem | 1 | Parc publiable |
 | Image de chaque attraction actuelle, annoncée ou en construction | 2 | Si attraction présente et image trouvable |
 | Image contextualisée de chaque attraction définitivement fermée, jalon et article | 2 | Si contenu présent et image trouvable |
 | Propriétaires d'images résolus | 1 | Si images présentes |
@@ -289,7 +289,9 @@ Inspiré de l'étape 5.
 | Images inspectées, sans watermark tiers ni tromperie éditoriale | 1 | Images publiques |
 | Médias originaux, vidéos ou galeries reliés quand disponibles | 1 | Bonus applicable si médias existent |
 
-Une absence d'image peut être acceptable seulement après une recherche réelle et documentée. Elle ne doit jamais être remplacée par une image générique ou attribuée à la mauvaise attraction. La norme vise en outre trois photographies distinctes et fidèles pour chaque parkItem important, actuel ou historique. Une source secondaire est autorisée après vérification visuelle si le sujet est certain, l’image est créditable et aucun watermark tiers n’est présent. Tout écart aux cinq vues générales ou aux trois images d’un parkItem important indique le nombre atteint, les familles de sources vérifiées et la raison factuelle ; la petite taille du parc ou une documentation réellement insuffisante peut justifier l’exception, jamais l’absence de recherche.
+Le point chiffré ci-dessus reflète le calcul applicatif actuel, qui vérifie la présence d’au moins une image générale publiée. Indépendamment de ce point, la norme éditoriale exige de viser cinq photographies générales distinctes et fiables ainsi que trois photographies distinctes et fidèles pour chaque parkItem important, actuel ou historique. Cette exigence reste un contrôle manuel de l’étape 9 et ne modifie pas, à elle seule, le score numérique tant que le calcul du Core ne porte pas ces seuils et leurs exceptions documentées.
+
+Une absence d'image peut être acceptable seulement après une recherche réelle et documentée. Elle ne doit jamais être remplacée par une image générique ou attribuée à la mauvaise attraction. Une source secondaire est autorisée après vérification visuelle si le sujet est certain, l’image est créditable et aucun watermark tiers n’est présent. Tout écart aux cinq vues générales ou aux trois images d’un parkItem important indique le nombre atteint, les familles de sources vérifiées et la raison factuelle ; la petite taille du parc ou une documentation réellement insuffisante peut justifier l’exception, jamais l’absence de recherche.
 
 ### 8. Horaires et calendrier — 8 points
 
@@ -457,12 +459,14 @@ Pour un parc majeur, un parkItem publiable réduit à `1 h2 / 1 p` ou nettement 
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
-| Galerie d’au moins trois photographies distinctes et fidèles pour un item important, ou image représentative pour les autres items | 2 | Item visible, si photos disponibles |
+| Au moins une image publiée, fidèle et représentative | 2 | Item visible, si photo disponible |
 | Propriétaire d'image résolu | 1 | Si image présente |
 | Alt texts et crédits localisés | 1 | Image publique |
 | Image non trompeuse, non générique, sans watermark non autorisé | 2 | Image publique |
 | Vidéo, galerie ou média original relié si disponible | 1 | Bonus applicable |
 | Image historique contextualisée si item fermé | 1 | Item historique avec image |
+
+Le point chiffré reprend le calcul applicatif actuel fondé sur `HasRepresentativeImage`. La cible de trois images pour un parkItem important constitue un contrôle éditorial supplémentaire de l’étape 9 ; elle ne vaut pas retrait automatique de ces deux points tant que le Core ne modélise pas le seuil et son exception documentée.
 
 `Photo disponible` signifie qu’une recherche effective a été menée. Une absence non recherchée reste `missing`, pas `notApplicable`. Pour un parkItem important, une couverture inférieure à trois images exige une exception documentée avec le nombre atteint, les familles de sources vérifiées et la raison factuelle ; des fichiers ou recadrages quasi identiques ne comptent pas comme des vues distinctes.
 
