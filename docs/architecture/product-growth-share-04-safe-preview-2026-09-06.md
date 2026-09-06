@@ -164,6 +164,9 @@ sans image courante, mais jamais créer deux images courantes concurrentes ; une
 annulation du client après la première écriture ne laisse donc pas deux images
 courantes. Les actions de masse portent en plus la date de mise à jour observée :
 elles ne peuvent pas réécrire une description ou des crédits modifiés entre-temps.
+Un lot d'import de parc ou d'attraction qui échoue après son envoi est considéré
+comme potentiellement appliqué : ses révisions de classement et de partage avancent
+prudemment afin qu'aucun aperçu ne conserve un ancien nom ou une ancienne visibilité.
 Enfin, une suppression MongoDB déjà validée reste annoncée comme réussie si le
 nettoyage binaire secondaire échoue, puisque répéter la commande ne restaurerait
 pas l'enregistrement supprimé.

@@ -110,7 +110,9 @@ idempotente sous le verrou. Les actions de masse refusent aussi d'écraser des
 métadonnées concurrentes grâce à leur date observée. Les écritures de profil à
 réponse ambiguë font avancer prudemment la révision et la protection IP s'exécute
 avant l'authentification, tandis que le plafond propre à l'aperçu s'applique ensuite
-au compte identifié.
+au compte identifié. Un lot d'import de catalogue ayant échoué après son envoi fait
+également avancer les révisions de façon conservatrice, car certaines écritures non
+ordonnées peuvent déjà avoir été appliquées.
 
 Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
 classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et
