@@ -211,6 +211,74 @@ public sealed class ShareSourceRevisionRepositoryTests
     }
 
     [Fact]
+    public async Task BeginMutationAsync_WhenHeartbeatFailsOnce_ShouldRetryWhileWriterRemainsActive()
+    {
+        TaskCompletionSource retryObserved = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int updateCallCount = 0;
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ShareSourceRevisionDocument> _,
+                UpdateDefinition<ShareSourceRevisionDocument> _,
+                UpdateOptions _,
+                CancellationToken _) =>
+            {
+                int call = Interlocked.Increment(ref updateCallCount);
+                if (call == 2)
+                {
+                    return Task.FromException<UpdateResult>(
+                        new TimeoutException("Transient MongoDB timeout."));
+                }
+
+                if (call == 3)
+                {
+                    retryObserved.TrySetResult();
+                }
+
+                return Task.FromResult<UpdateResult>(
+                    new UpdateResult.Acknowledged(1, 1, null));
+            });
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevisionDocument
+            {
+                ScopeKey = "personal-ranking:owner-1",
+                Revision = 0,
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            });
+        using ShareSourceRevisionRepository repository = new ShareSourceRevisionRepository(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<ShareSourceRevisionRepository>.Instance,
+            TimeSpan.FromMilliseconds(10));
+
+        await repository.BeginMutationAsync(
+            "personal-ranking:owner-1",
+            CancellationToken.None);
+        await retryObserved.Task.WaitAsync(TimeSpan.FromSeconds(1));
+
+        Assert.True(updateCallCount >= 3);
+        Assert.Equal(
+            TimeSpan.FromMilliseconds(10),
+            ShareSourceRevisionRepository.GetHeartbeatRetryInterval(
+                TimeSpan.FromMilliseconds(10)));
+        Assert.Equal(
+            TimeSpan.FromSeconds(5),
+            ShareSourceRevisionRepository.GetHeartbeatRetryInterval(
+                ShareSourceRevisionRepository.MutationHeartbeatInterval));
+    }
+
+    [Fact]
     public async Task GetOrCreateAsync_ShouldRecoverExpiredLeasesConservativelyBeforeReading()
     {
         Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =

@@ -29,11 +29,12 @@ public sealed class UpdateUserProfileCommandHandlerTests
                 "NewName",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((User?)null);
-        userRepository.Setup(value => value.UpdateAsync(
+        userRepository.Setup(value => value.UpdateIfUnchangedAsync(
                 "user-1",
                 user,
+                user.UpdatedAtUtc,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .ReturnsAsync((string _, User updated, DateTime _, CancellationToken _) => updated);
         ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
             "personal-ranking:user-1",
             4.ToString("x32"));
@@ -62,6 +63,52 @@ public sealed class UpdateUserProfileCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenProfilePersistenceFails_ShouldReleasePersonalShareSourceLease()
+    {
+        User user = CreateUser("user-1", "OldName");
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
+        Mock<IUserRepository> userRepository =
+            new Mock<IUserRepository>(MockBehavior.Strict);
+        userRepository.Setup(value => value.GetByIdAsync(
+                "user-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(user);
+        userRepository.Setup(value => value.GetByPublicDisplayNameAsync(
+                "NewName",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((User?)null);
+        userRepository.Setup(value => value.UpdateIfUnchangedAsync(
+                "user-1",
+                user,
+                expectedUpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException("MongoDB timeout."));
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            "personal-ranking:user-1");
+        Mock<IShareSourceRevisionRepository> shareRevisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                mutationLease.ScopeKey,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mutationLease);
+        shareRevisions.Setup(value => value.CompleteMutationAsync(
+                mutationLease,
+                false,
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(1, 0, DateTime.UtcNow));
+        UpdateUserProfileCommandHandler handler = CreateHandler(
+            userRepository,
+            shareRevisions.Object);
+
+        ApplicationResult<User> result = await handler.HandleAsync(
+            new UpdateUserProfileCommand("user-1", CreateUpdate("NewName")));
+
+        Assert.False(result.IsSuccess);
+        userRepository.VerifyAll();
+        shareRevisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenPublicDisplayNameIsAvailable_ShouldPersistIt()
     {
         User user = CreateUser("user-1", null);
@@ -76,8 +123,12 @@ public sealed class UpdateUserProfileCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((User?)null);
         userRepository
-            .Setup(repository => repository.UpdateAsync("user-1", user, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
+                "user-1",
+                user,
+                user.UpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, User updated, DateTime _, CancellationToken _) => updated);
         UpdateUserProfileCommandHandler handler = CreateHandler(userRepository);
 
         ApplicationResult<User> result = await handler.HandleAsync(new UpdateUserProfileCommand(
@@ -147,8 +198,12 @@ public sealed class UpdateUserProfileCommandHandlerTests
             .Setup(repository => repository.GetByIdAsync("user-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
         userRepository
-            .Setup(repository => repository.UpdateAsync("user-1", user, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
+                "user-1",
+                user,
+                user.UpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, User updated, DateTime _, CancellationToken _) => updated);
         UpdateUserProfileCommandHandler handler = CreateHandler(userRepository);
 
         ApplicationResult<User> result = await handler.HandleAsync(new UpdateUserProfileCommand(
@@ -176,8 +231,12 @@ public sealed class UpdateUserProfileCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
         userRepository
-            .Setup(repository => repository.UpdateAsync("user-1", user, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User updated, CancellationToken _) => updated);
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
+                "user-1",
+                user,
+                user.UpdatedAtUtc,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, User updated, DateTime _, CancellationToken _) => updated);
         UpdateUserProfileCommandHandler handler = CreateHandler(userRepository);
 
         ApplicationResult<User> result = await handler.HandleAsync(new UpdateUserProfileCommand(

@@ -103,6 +103,8 @@ expiré est retiré atomiquement et la révision avance de façon conservatrice.
 écriture exceptionnellement tardive se termine après cette récupération, sa
 finalisation avance une seconde fois la révision : un aperçu pris entre les deux ne
 peut donc jamais rester égal à la version finale.
+Une erreur MongoDB transitoire pendant le renouvellement n'arrête pas le heartbeat :
+il réessaie toutes les cinq secondes au maximum tant que l'écriture détient son lease.
 
 Les changements de notes, de pseudonyme, d'avatar, de rôle ou d'état du compte
 protègent la révision personnelle dans toutes leurs voies d'écriture. L'identité
@@ -136,6 +138,10 @@ autoritaire réaligne immédiatement `avatarUrl` sur l'image effectivement coura
 Lorsqu'une image courante change de propriétaire sans demander explicitement une
 nouvelle promotion, elle est rétrogradée pendant le transfert ; elle ne peut ainsi
 pas devenir courante dans deux périmètres différents.
+Les autres remplacements complets d'un compte — profil, confirmation d'email et
+flux de réinitialisation du mot de passe — exigent désormais la date de mise à jour
+lue initialement. Une écriture concurrente fait échouer la comparaison atomique au
+lieu d'être remplacée ; l'ancienne opération non protégée a été retirée du port.
 Les promotions d'image sont en outre sérialisées par un verrou MongoDB distribué
 sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
 promouvoir simultanément deux images du même périmètre et se rétrograder l'une
@@ -216,6 +222,7 @@ Les tests ciblés couvrent :
 - réservation et règlement des leases personnels et catalogue ;
 - récupération prudente des leases expirés ;
 - renouvellement des leases actifs et nouvelle révision après une finalisation tardive ;
+- reprise du heartbeat après une erreur MongoDB transitoire ;
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;
@@ -225,6 +232,7 @@ Les tests ciblés couvrent :
 - rétrogradation d'une image courante lorsqu'elle est transférée vers un autre compte ;
 - écriture partielle de l'avatar sans réécriture des rôles ni de l'état du compte ;
 - réconciliation autoritaire après un conflit de version suivant un import externe ;
+- refus des remplacements de compte devenus obsolètes dans les flux profil et sécurité ;
 - refus atomique d'un transfert fondé sur un propriétaire devenu obsolète ;
 - réservation avant import d'un avatar fourni par une identité externe ;
 - relecture MongoDB autoritaire de l'avatar courant sans cache local ;

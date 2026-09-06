@@ -329,34 +329,59 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                     this.heartbeatInterval,
                     this.timeProvider,
                     cancellation.Token);
-                DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-                UpdateResult result = await this.collection.UpdateOneAsync(
-                    ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
-                        mutationLease.ScopeKey,
-                        mutationLease.Token),
-                    BuildHeartbeatUpdate(heartbeatAtUtc),
-                    cancellationToken: cancellation.Token);
-                if (result.MatchedCount == 0)
+                bool renewed = false;
+                while (!renewed)
                 {
-                    return;
+                    try
+                    {
+                        DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                        UpdateResult result = await this.collection.UpdateOneAsync(
+                            ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+                                mutationLease.ScopeKey,
+                                mutationLease.Token),
+                            BuildHeartbeatUpdate(heartbeatAtUtc),
+                            cancellationToken: cancellation.Token);
+                        if (result.MatchedCount == 0)
+                        {
+                            return;
+                        }
+
+                        renewed = true;
+                    }
+                    catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
+                    {
+                        return;
+                    }
+                    catch (Exception exception)
+                    {
+                        this.logger.LogWarning(
+                            exception,
+                            "Unable to renew the share source mutation lease for {ScopeKey}; renewal will be retried.",
+                            mutationLease.ScopeKey);
+                        await Task.Delay(
+                            GetHeartbeatRetryInterval(this.heartbeatInterval),
+                            this.timeProvider,
+                            cancellation.Token);
+                    }
                 }
             }
         }
         catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
         {
         }
-        catch (Exception exception)
-        {
-            this.logger.LogError(
-                exception,
-                "Unable to renew the share source mutation lease for {ScopeKey}; completion will advance the revision conservatively.",
-                mutationLease.ScopeKey);
-        }
         finally
         {
             this.heartbeatCancellations.TryRemove(mutationLease.Token, out _);
             cancellation.Dispose();
         }
+    }
+
+    internal static TimeSpan GetHeartbeatRetryInterval(TimeSpan heartbeatInterval)
+    {
+        TimeSpan maximumRetryInterval = TimeSpan.FromSeconds(5);
+        return heartbeatInterval < maximumRetryInterval
+            ? heartbeatInterval
+            : maximumRetryInterval;
     }
 
     public void Dispose()

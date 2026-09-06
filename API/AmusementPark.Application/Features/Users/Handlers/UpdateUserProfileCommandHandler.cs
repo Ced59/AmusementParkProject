@@ -66,6 +66,7 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserNotExists());
         }
 
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         PersonalRankingShareIdentityState previousShareIdentity =
             PersonalRankingShareIdentityState.Capture(user);
 
@@ -154,29 +155,20 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
                 previousShareIdentity,
                 currentShareIdentity,
                 cancellationToken);
+        bool shareSourceChanged = false;
         try
         {
-            User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                user.Id,
+                user,
+                expectedUpdatedAtUtc,
+                cancellationToken);
             if (updatedUser is null)
             {
-                if (shareMutationLease is not null)
-                {
-                    await this.shareSourceRevisionGuard.CompleteMutationAsync(
-                        shareMutationLease,
-                        sourceChanged: false,
-                        CancellationToken.None);
-                }
-
                 return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
             }
 
-            if (shareMutationLease is not null)
-            {
-                await this.shareSourceRevisionGuard.CompleteMutationAsync(
-                    shareMutationLease,
-                    sourceChanged: true,
-                    CancellationToken.None);
-            }
+            shareSourceChanged = shareMutationLease is not null;
 
             if (!string.IsNullOrWhiteSpace(confirmationToken))
             {
@@ -192,6 +184,13 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         catch (Exception)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                shareMutationLease,
+                shareSourceChanged,
+                CancellationToken.None);
         }
     }
 }

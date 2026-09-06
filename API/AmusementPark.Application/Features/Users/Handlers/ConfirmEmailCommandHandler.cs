@@ -54,17 +54,29 @@ public sealed class ConfirmEmailCommandHandler : ICommandHandler<ConfirmEmailCom
 
         ShareSourceMutationLease mutationLease =
             await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         user.IsActivated = true;
         user.UpdatedAtUtc = DateTime.UtcNow;
         user.EmailConfirmationTokenHash = null;
         user.EmailConfirmationTokenExpiresAtUtc = null;
         user.EmailConfirmationSentAtUtc = null;
 
-        User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
-        await this.shareSourceRevisionGuard.CompleteMutationAsync(
-            mutationLease,
-            updatedUser is not null,
-            CancellationToken.None);
+        User? updatedUser = null;
+        try
+        {
+            updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                user.Id,
+                user,
+                expectedUpdatedAtUtc,
+                cancellationToken);
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                updatedUser is not null,
+                CancellationToken.None);
+        }
         if (updatedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());

@@ -93,7 +93,9 @@ traduisibles sans divulguer les identifiants de parc, et les synchronisations d'
 ne peuvent plus réécrire d'autres champs du compte. Un transfert d'image courante la
 rétrograde tant qu'elle n'est pas explicitement promue dans son nouveau périmètre ;
 un import externe ayant gagné côté image mais perdu côté compte est réconcilié depuis
-l'état MongoDB autoritaire.
+l'état MongoDB autoritaire. Les remplacements complets de compte exigent une version
+inchangée et le heartbeat reprend après une panne MongoDB transitoire au lieu
+d'abandonner silencieusement la protection d'une écriture longue.
 
 Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
 classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et

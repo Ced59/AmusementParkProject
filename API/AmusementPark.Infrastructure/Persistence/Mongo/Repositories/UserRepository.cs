@@ -155,25 +155,6 @@ public sealed class UserRepository : IUserRepository
         return document.ToDomain();
     }
 
-    public async Task<User?> UpdateAsync(string userId, User user, CancellationToken cancellationToken)
-    {
-        UserDocument document = user.ToDocument();
-        document.Id = userId;
-        document.UpdatedAt = DateTime.UtcNow;
-
-        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            existing => existing.Id == userId,
-            document,
-            cancellationToken: cancellationToken);
-
-        if (result.MatchedCount == 0)
-        {
-            return null;
-        }
-
-        return document.ToDomain();
-    }
-
     public async Task<User?> UpdateIfUnchangedAsync(
         string userId,
         User user,
