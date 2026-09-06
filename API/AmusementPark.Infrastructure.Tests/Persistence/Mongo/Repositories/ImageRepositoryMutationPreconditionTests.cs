@@ -365,6 +365,51 @@ public sealed class ImageRepositoryMutationPreconditionTests
     }
 
     [Fact]
+    public void BuildPromotionReservationFilter_ShouldAllowReclaimingTheDestinationReservation()
+    {
+        DateTime updatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            20,
+            0,
+            0,
+            DateTimeKind.Utc);
+        FilterDefinition<ImageDocument> filter =
+            ImageRepository.BuildPromotionReservationFilter(
+                "avatar-1",
+                new ImageMutationPrecondition(
+                    ImageOwnerType.Park,
+                    "park-before",
+                    ImageCategory.Avatar,
+                    true,
+                    updatedAtUtc),
+                ImageOwnerType.User,
+                "owner-1");
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = filter.Render(arguments);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        BsonDocument expectedState = alternatives[0].AsBsonDocument;
+        BsonDocument staleReservation = alternatives[1].AsBsonDocument;
+
+        Assert.Equal("park-before", expectedState["ownerId"].AsString);
+        Assert.False(expectedState["currentPromotionToken"]["$exists"].AsBoolean);
+        Assert.Equal(updatedAtUtc, expectedState["updatedAt"].ToUniversalTime());
+        Assert.Equal("avatar-1", staleReservation["_id"].AsString);
+        Assert.Equal("User", staleReservation["ownerType"].AsString);
+        Assert.Equal("owner-1", staleReservation["ownerId"].AsString);
+        Assert.Equal("Avatar", staleReservation["category"].AsString);
+        Assert.False(staleReservation["isCurrent"].AsBoolean);
+        Assert.True(staleReservation["currentPromotionToken"]["$exists"].AsBoolean);
+        Assert.False(staleReservation.Contains("updatedAt"));
+    }
+
+    [Fact]
     public void BuildPromotionReservationUpdate_ShouldKeepTheTargetNonCurrent()
     {
         DateTime updatedAtUtc = new DateTime(

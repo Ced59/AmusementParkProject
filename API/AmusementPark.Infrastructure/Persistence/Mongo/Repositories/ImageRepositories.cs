@@ -1791,15 +1791,18 @@ public sealed class ImageRepository : IImageRepository
             {
                 try
                 {
+                    ImageMutationPrecondition precondition = new ImageMutationPrecondition(
+                        currentDocument.OwnerType,
+                        currentDocument.OwnerId,
+                        currentDocument.Category,
+                        currentDocument.IsCurrent,
+                        currentDocument.UpdatedAt);
                     FilterDefinition<ImageDocument> reservationFilter =
-                        BuildMutationPreconditionFilter(
+                        BuildPromotionReservationFilter(
                             imageId,
-                            new ImageMutationPrecondition(
-                                currentDocument.OwnerType,
-                                currentDocument.OwnerId,
-                                currentDocument.Category,
-                                currentDocument.IsCurrent,
-                                currentDocument.UpdatedAt));
+                            precondition,
+                            ownerType,
+                            ownerId);
                     ImageDocument? reservation = await this.ReserveImageForPromotionAsync(
                         reservationFilter,
                         ownerType,
@@ -1846,7 +1849,11 @@ public sealed class ImageRepository : IImageRepository
                 try
                 {
                     FilterDefinition<ImageDocument> reservationFilter =
-                        BuildMutationPreconditionFilter(imageId, precondition);
+                        BuildPromotionReservationFilter(
+                            imageId,
+                            precondition,
+                            ownerType,
+                            ownerId);
                     ImageDocument? reservation = await this.ReserveImageForPromotionAsync(
                         reservationFilter,
                         ownerType,
@@ -2061,6 +2068,27 @@ public sealed class ImageRepository : IImageRepository
                 static document => document.UpdatedAt,
                 precondition.UpdatedAtUtc.Value)
             : filter;
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionReservationFilter(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType destinationOwnerType,
+        string destinationOwnerId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> staleReservationFilter =
+            builder.Eq(static document => document.Id, imageId)
+            & BuildOwnerTypeFilter(builder, destinationOwnerType)
+            & builder.Eq(static document => document.OwnerId, destinationOwnerId)
+            & BuildCategoryFilter(builder, precondition.Category)
+            & builder.Eq(static document => document.IsCurrent, false)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                true);
+        return builder.Or(
+            BuildMutationPreconditionFilter(imageId, precondition),
+            staleReservationFilter);
     }
 
     internal static FilterDefinition<ImageDocument> BuildUnreservedImageFilter(

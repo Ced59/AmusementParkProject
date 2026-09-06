@@ -164,6 +164,9 @@ que peut modifier une édition de légende ou de crédit ; une promotion plus r�
 retire les anciennes réservations avant d'activer sa propre cible. Tant que ce jeton
 existe, les mutations capables de déplacer, reclasser, supprimer ou changer l'état
 courant de la cible sont refusées par leur filtre MongoDB et peuvent être rejouées.
+Après une réponse MongoDB ambiguë, une nouvelle promotion protégée du même périmètre
+peut reprendre la réservation de sa propre cible et remplacer son ancien jeton ; une
+image n'est donc pas bloquée durablement par une tentative interrompue.
 Une perte de bail
 peut donc laisser temporairement le périmètre
 sans image courante, mais jamais créer deux images courantes concurrentes ; une
@@ -257,6 +260,7 @@ Les tests ciblés couvrent :
 - annulation d'une promotion avant l'expiration de son dernier verrou confirmé ;
 - réconciliation de la rétrogradation avant promotion après un échec MongoDB ambigu ;
 - annulation après rétrogradation sans activation tardive de la cible ;
+- reprise d'une réservation de cible restée ambiguë après une tentative interrompue ;
 - rejet d'une mutation de périmètre pendant une réservation de promotion ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
