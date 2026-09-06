@@ -1884,8 +1884,13 @@ public sealed class ImageRepository : IImageRepository
         CancellationToken cancellationToken)
     {
         DateTime nowUtc = DateTime.UtcNow;
+        string promotionToken = Guid.NewGuid().ToString("N");
         UpdateDefinition<ImageDocument> update =
-            BuildPromotionReservationUpdate(ownerType, ownerId, nowUtc);
+            BuildPromotionReservationUpdate(
+                ownerType,
+                ownerId,
+                promotionToken,
+                nowUtc);
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
             ReturnDocument = ReturnDocument.After,
@@ -1901,14 +1906,8 @@ public sealed class ImageRepository : IImageRepository
         ImageDocument reservation,
         CancellationToken cancellationToken)
     {
-        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
         FilterDefinition<ImageDocument> filter =
-            builder.Eq(static document => document.Id, reservation.Id)
-            & BuildOwnerTypeFilter(builder, reservation.OwnerType)
-            & builder.Eq(static document => document.OwnerId, reservation.OwnerId)
-            & BuildCategoryFilter(builder, reservation.Category)
-            & builder.Eq(static document => document.IsCurrent, false)
-            & builder.Eq(static document => document.UpdatedAt, reservation.UpdatedAt);
+            BuildPromotionActivationFilter(reservation);
         UpdateDefinition<ImageDocument> update =
             BuildPromotionActivationUpdate(DateTime.UtcNow);
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
@@ -1925,13 +1924,33 @@ public sealed class ImageRepository : IImageRepository
     internal static UpdateDefinition<ImageDocument> BuildPromotionReservationUpdate(
         ImageOwnerType ownerType,
         string ownerId,
+        string promotionToken,
         DateTime updatedAtUtc)
     {
         return Builders<ImageDocument>.Update
             .Set(static document => document.OwnerType, ownerType)
             .Set(static document => document.OwnerId, ownerId)
             .Set(static document => document.IsCurrent, false)
+            .Set(static document => document.CurrentPromotionToken, promotionToken)
             .Set(static document => document.UpdatedAt, updatedAtUtc);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionActivationFilter(
+        ImageDocument reservation)
+    {
+        ArgumentNullException.ThrowIfNull(reservation);
+        string promotionToken = reservation.CurrentPromotionToken
+            ?? throw new InvalidOperationException(
+                "A current-image promotion reservation must carry its token.");
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, reservation.Id)
+            & BuildOwnerTypeFilter(builder, reservation.OwnerType)
+            & builder.Eq(static document => document.OwnerId, reservation.OwnerId)
+            & BuildCategoryFilter(builder, reservation.Category)
+            & builder.Eq(static document => document.IsCurrent, false)
+            & builder.Eq(
+                static document => document.CurrentPromotionToken,
+                promotionToken);
     }
 
     internal static UpdateDefinition<ImageDocument> BuildPromotionActivationUpdate(
@@ -1939,6 +1958,7 @@ public sealed class ImageRepository : IImageRepository
     {
         return Builders<ImageDocument>.Update
             .Set(static document => document.IsCurrent, true)
+            .Unset(static document => document.CurrentPromotionToken)
             .Set(static document => document.UpdatedAt, updatedAtUtc);
     }
 
@@ -1954,10 +1974,14 @@ public sealed class ImageRepository : IImageRepository
             BuildOwnerTypeFilter(builder, ownerType)
             & builder.Eq(static candidate => candidate.OwnerId, ownerId)
             & BuildCategoryFilter(builder, category)
-            & builder.Eq(static candidate => candidate.IsCurrent, true)
+            & builder.Or(
+                builder.Eq(static candidate => candidate.IsCurrent, true),
+                builder.Exists(
+                    static candidate => candidate.CurrentPromotionToken))
             & builder.Ne(static candidate => candidate.Id, promotedImageId);
         UpdateDefinition<ImageDocument> demotion = Builders<ImageDocument>.Update
             .Set(static candidate => candidate.IsCurrent, false)
+            .Unset(static candidate => candidate.CurrentPromotionToken)
             .Set(static candidate => candidate.UpdatedAt, DateTime.UtcNow);
         while (true)
         {

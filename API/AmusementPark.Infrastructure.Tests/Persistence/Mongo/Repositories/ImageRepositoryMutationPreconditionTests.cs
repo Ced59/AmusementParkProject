@@ -28,6 +28,7 @@ public sealed class ImageRepositoryMutationPreconditionTests
             OwnerId = "owner-1",
             Category = ImageCategory.Avatar,
             IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
             UpdatedAt = DateTime.UtcNow,
         };
         ImageDocument updatedDocument = new ImageDocument
@@ -138,6 +139,7 @@ public sealed class ImageRepositoryMutationPreconditionTests
             OwnerId = "owner-1",
             Category = ImageCategory.Avatar,
             IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
             UpdatedAt = DateTime.UtcNow,
         };
         ImageDocument updatedDocument = new ImageDocument
@@ -243,6 +245,7 @@ public sealed class ImageRepositoryMutationPreconditionTests
             OwnerId = "owner-1",
             Category = ImageCategory.Avatar,
             IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
             UpdatedAt = DateTime.UtcNow,
         };
         Mock<IMongoCollection<ImageDocument>> collection =
@@ -359,6 +362,7 @@ public sealed class ImageRepositoryMutationPreconditionTests
             ImageRepository.BuildPromotionReservationUpdate(
                 ImageOwnerType.User,
                 "owner-1",
+                "promotion-1",
                 updatedAtUtc);
         IBsonSerializer<ImageDocument> serializer =
             BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
@@ -371,7 +375,35 @@ public sealed class ImageRepositoryMutationPreconditionTests
         Assert.Equal("User", rendered["ownerType"].AsString);
         Assert.Equal("owner-1", rendered["ownerId"].AsString);
         Assert.False(rendered["isCurrent"].AsBoolean);
+        Assert.Equal("promotion-1", rendered["currentPromotionToken"].AsString);
         Assert.Equal(updatedAtUtc, rendered["updatedAt"].ToUniversalTime());
+    }
+
+    [Fact]
+    public void BuildPromotionActivationFilter_ShouldUseTheReservationTokenInsteadOfMutableMetadataTimestamp()
+    {
+        ImageDocument reservation = new ImageDocument
+        {
+            Id = "avatar-1",
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            Category = ImageCategory.Avatar,
+            IsCurrent = false,
+            CurrentPromotionToken = "promotion-1",
+            UpdatedAt = DateTime.UtcNow,
+        };
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments = new RenderArgs<ImageDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry);
+
+        BsonDocument rendered = ImageRepository.BuildPromotionActivationFilter(reservation)
+            .Render(arguments);
+
+        Assert.Equal("avatar-1", rendered["_id"].AsString);
+        Assert.Equal("promotion-1", rendered["currentPromotionToken"].AsString);
+        Assert.False(rendered.Contains("updatedAt"));
     }
 
     [Fact]
@@ -396,6 +428,9 @@ public sealed class ImageRepositoryMutationPreconditionTests
         BsonDocument rendered = update.Render(arguments).AsBsonDocument["$set"].AsBsonDocument;
 
         Assert.True(rendered["isCurrent"].AsBoolean);
+        Assert.True(
+            update.Render(arguments).AsBsonDocument["$unset"].AsBsonDocument
+                .Contains("currentPromotionToken"));
         Assert.Equal(updatedAtUtc, rendered["updatedAt"].ToUniversalTime());
     }
 

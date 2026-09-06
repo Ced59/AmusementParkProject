@@ -102,7 +102,9 @@ distribué de promotion d'image applique la même reprise et rétrograde les aut
 images avant d'activer la cible ; une annulation ne peut donc pas laisser plusieurs
 images courantes, même si elle intervient juste avant l'expiration du bail. La cible
 est d'abord réservée comme non courante avec la précondition observée, afin qu'une
-demande obsolète ne puisse pas rétrograder l'image légitime. Le verrou annule ensuite
+demande obsolète ne puisse pas rétrograder l'image légitime. Cette réservation utilise
+un jeton distinct des métadonnées éditoriales et toute promotion plus récente retire
+les anciens jetons avant son activation. Le verrou annule ensuite
 l'ancien écrivain avant la dernière expiration confirmée si MongoDB reste
 indisponible. Après cette
 première écriture, la rétrogradation des autres images est réconciliée de manière

@@ -63,6 +63,10 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonElement("isCurrent")]
     public bool IsCurrent { get; set; }
 
+    [BsonElement("currentPromotionToken")]
+    [BsonIgnoreIfNull]
+    public string? CurrentPromotionToken { get; set; }
+
     [BsonElement("originalFileName")]
     [BsonIgnoreIfNull]
     public string? OriginalFileName { get; set; }

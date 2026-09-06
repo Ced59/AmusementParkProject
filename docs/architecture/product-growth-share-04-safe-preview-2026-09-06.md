@@ -159,7 +159,10 @@ dernière expiration confirmée si MongoDB reste indisponible ; une ancienne pro
 ne peut donc pas reprendre après qu'une autre instance a acquis le verrou. Celui-ci
 n'est libéré que par son propre jeton. La promotion rétrograde d'abord, sous le verrou,
 les autres images courantes de façon idempotente, puis vérifie encore son bail avant
-d'activer la cible. Une perte de bail peut donc laisser temporairement le périmètre
+d'activer la cible. La réservation porte un jeton dédié, indépendant de l'horodatage
+que peut modifier une édition de légende ou de crédit ; une promotion plus récente
+retire les anciennes réservations avant d'activer sa propre cible. Une perte de bail
+peut donc laisser temporairement le périmètre
 sans image courante, mais jamais créer deux images courantes concurrentes ; une
 annulation du client après la première écriture ne laisse donc pas deux images
 courantes. Les actions de masse portent en plus la date de mise à jour observée :
