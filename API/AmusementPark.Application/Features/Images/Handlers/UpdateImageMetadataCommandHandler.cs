@@ -69,6 +69,12 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (command.ExpectedState is not null
+                && !MatchesExpectedState(existing, command.ExpectedState))
+            {
+                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
+            }
+
             ImageMetadataUpdate metadata = BuildNormalizedMetadata(command.Metadata, existing);
             if (ManagedCommentImageMutationGuard.IsManagedScope(existing)
                 || ManagedCommentImageMutationGuard.IsManagedScope(
@@ -248,6 +254,19 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         return existing.Category != metadata.Category ||
                existing.OwnerType != metadata.OwnerType ||
                !string.Equals(Normalize(existing.OwnerId), Normalize(metadata.OwnerId), StringComparison.Ordinal);
+    }
+
+    private static bool MatchesExpectedState(
+        Image image,
+        ImageMutationPrecondition expectedState)
+    {
+        return image.OwnerType == expectedState.OwnerType
+            && string.Equals(
+                Normalize(image.OwnerId),
+                Normalize(expectedState.OwnerId),
+                StringComparison.Ordinal)
+            && image.Category == expectedState.Category
+            && image.IsCurrent == expectedState.IsCurrent;
     }
 
     private static async Task SynchronizeOwnerScopeAsync(

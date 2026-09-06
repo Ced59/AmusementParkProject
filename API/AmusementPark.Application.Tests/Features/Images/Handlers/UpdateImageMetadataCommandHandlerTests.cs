@@ -208,6 +208,55 @@ public sealed class UpdateImageMetadataCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenExpectedScopeChanged_ShouldRejectBeforeMutation()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "image-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = "image-1",
+                Category = ImageCategory.Avatar,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "owner-1",
+                IsCurrent = true,
+                IsPublished = true,
+            });
+        UpdateImageMetadataCommandHandler handler = new UpdateImageMetadataCommandHandler(
+            imageRepository.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict));
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new UpdateImageMetadataCommand(
+                "image-1",
+                new ImageMetadataUpdate
+                {
+                    Category = ImageCategory.Park,
+                    OwnerType = ImageOwnerType.Park,
+                    OwnerId = "park-1",
+                    IsPublished = false,
+                },
+                SuppressSeoNotification: true,
+                ExpectedState: new ImageMutationPrecondition(
+                    ImageOwnerType.Park,
+                    "park-1",
+                    ImageCategory.Park,
+                    false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.not-found");
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenCurrentParkLogoLeavesLogoCategory_ShouldClearParkCurrentLogo()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);

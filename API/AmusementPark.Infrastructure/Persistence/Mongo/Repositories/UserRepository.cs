@@ -174,6 +174,42 @@ public sealed class UserRepository : IUserRepository
         return document.ToDomain();
     }
 
+    public async Task<User?> UpdateIfUnchangedAsync(
+        string userId,
+        User user,
+        DateTime expectedUpdatedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        UserDocument document = user.ToDocument();
+        document.Id = userId;
+        document.UpdatedAt = DateTime.UtcNow;
+        FilterDefinition<UserDocument> filter = BuildUnchangedFilter(
+            userId,
+            expectedUpdatedAtUtc);
+
+        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+            filter,
+            document,
+            cancellationToken: cancellationToken);
+        if (result.MatchedCount == 0)
+        {
+            return null;
+        }
+
+        return document.ToDomain();
+    }
+
+    internal static FilterDefinition<UserDocument> BuildUnchangedFilter(
+        string userId,
+        DateTime expectedUpdatedAtUtc)
+    {
+        return Builders<UserDocument>.Filter.And(
+            Builders<UserDocument>.Filter.Eq(static existing => existing.Id, userId),
+            Builders<UserDocument>.Filter.Eq(
+                static existing => existing.UpdatedAt,
+                expectedUpdatedAtUtc));
+    }
+
     public async Task<User?> UpdatePreferredLanguageAsync(
         string userId,
         string preferredLanguage,

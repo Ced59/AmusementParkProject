@@ -54,43 +54,48 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenPublicationChanges_ShouldUseSingleImageMetadataFlow()
+    public async Task HandleAsync_WhenNonAvatarPublicationChanges_ShouldUsePreconditionedSingleImageFlow()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler =
             new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
         Image existing = new Image
         {
-            Id = "avatar-1",
-            Category = ImageCategory.Avatar,
-            OwnerType = ImageOwnerType.User,
-            OwnerId = "owner-1",
-            IsCurrent = true,
+            Id = "park-image-1",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            IsCurrent = false,
             IsPublished = true,
         };
         Image updated = new Image
         {
-            Id = "avatar-1",
-            Category = ImageCategory.Avatar,
-            OwnerType = ImageOwnerType.User,
-            OwnerId = "owner-1",
-            IsCurrent = true,
+            Id = "park-image-1",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            IsCurrent = false,
             IsPublished = false,
         };
         imageRepository
             .Setup(repository => repository.GetByIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "avatar-1" })),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-image-1" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { existing });
         updateImageMetadataCommandHandler
             .Setup(handler => handler.HandleAsync(
                 It.Is<UpdateImageMetadataCommand>(command =>
-                    command.ImageId == "avatar-1"
+                    command.ImageId == "park-image-1"
                     && command.Metadata.IsPublished == false
-                    && command.Metadata.Category == ImageCategory.Avatar
-                    && command.Metadata.OwnerType == ImageOwnerType.User
-                    && command.Metadata.OwnerId == "owner-1"
-                    && command.SuppressSeoNotification),
+                    && command.Metadata.Category == ImageCategory.Park
+                    && command.Metadata.OwnerType == ImageOwnerType.Park
+                    && command.Metadata.OwnerId == "park-1"
+                    && command.SuppressSeoNotification
+                    && command.ExpectedState == new ImageMutationPrecondition(
+                        ImageOwnerType.Park,
+                        "park-1",
+                        ImageCategory.Park,
+                        false)),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<Image>.Success(updated));
 
@@ -100,7 +105,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateImagesBulkMetadataCommand(
-                new[] { "avatar-1" },
+                new[] { "park-image-1" },
                 new ImageBulkMetadataUpdate(IsPublished: false)));
 
         Assert.True(result.IsSuccess);
@@ -150,6 +155,11 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
                     command.Metadata.IsCurrent == null &&
                     command.Metadata.IsPublished == false &&
                     command.SuppressSeoNotification &&
+                    command.ExpectedState == new ImageMutationPrecondition(
+                        ImageOwnerType.Park,
+                        "park-1",
+                        ImageCategory.Logo,
+                        true) &&
                     command.Metadata.SourceUrl == "https://cdn.example.test/logo.png" &&
                     command.Metadata.TagIds.OrderBy(static tagId => tagId).SequenceEqual(new[] { "add", "keep" })),
                 It.IsAny<CancellationToken>()))

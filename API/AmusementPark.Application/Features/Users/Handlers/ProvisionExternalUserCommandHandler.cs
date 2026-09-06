@@ -173,6 +173,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
     private async Task<User?> PersistUserAsync(User user, VerifiedExternalIdentity identity, bool createIfMissing, CancellationToken cancellationToken)
     {
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         PersonalRankingShareIdentityState previousIdentity =
             PersonalRankingShareIdentityState.Capture(user);
         ShareSourceMutationLease? mutationLease = !createIfMissing
@@ -208,9 +209,10 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             sourceMutationAttempted |= previousIdentity !=
                 PersonalRankingShareIdentityState.Capture(user);
-            return await this.userRepository.UpdateAsync(
+            return await this.userRepository.UpdateIfUnchangedAsync(
                 user.Id,
                 user,
+                expectedUpdatedAtUtc,
                 cancellationToken);
         }
         finally
@@ -234,6 +236,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             return ApplicationResult<AuthenticatedUserResult>.Failure(UserApplicationErrors.UserNotActivated());
         }
 
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         PersonalRankingShareIdentityState previousIdentity =
             PersonalRankingShareIdentityState.Capture(user);
         ShareSourceMutationLease? mutationLease = CanChangePublicIdentity(user, identity)
@@ -267,9 +270,10 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             sourceMutationAttempted |= previousIdentity !=
                 PersonalRankingShareIdentityState.Capture(user);
-            updatedUser = await this.userRepository.UpdateAsync(
+            updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
                 user.Id,
                 user,
+                expectedUpdatedAtUtc,
                 cancellationToken);
         }
         finally

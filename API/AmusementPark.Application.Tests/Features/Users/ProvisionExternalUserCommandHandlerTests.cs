@@ -26,6 +26,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         {
             Id = "existing-user-id",
             Email = identity.Email,
+            UpdatedAtUtc = new DateTime(2026, 9, 6, 14, 0, 0, DateTimeKind.Utc),
             PublicDisplayName = "CoasterFan",
             UsesAutomaticPublicDisplayName = false,
             Roles = new List<Role> { Role.User },
@@ -83,6 +84,11 @@ public sealed class ProvisionExternalUserCommandHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal("/images/avatar-1", result.Value!.User.AvatarUrl);
+        mocks.UserRepository.Verify(repository => repository.UpdateIfUnchangedAsync(
+            "existing-user-id",
+            It.IsAny<User>(),
+            new DateTime(2026, 9, 6, 14, 0, 0, DateTimeKind.Utc),
+            It.IsAny<CancellationToken>()));
         mocks.VerifyAll();
         revisions.VerifyAll();
     }
@@ -219,11 +225,12 @@ public sealed class ProvisionExternalUserCommandHandlerTests
         Func<User, bool> updatedUserPredicate)
     {
         mocks.UserRepository
-            .Setup(repository => repository.UpdateAsync(
+            .Setup(repository => repository.UpdateIfUnchangedAsync(
                 It.IsAny<string>(),
                 It.Is<User>(user => updatedUserPredicate(user)),
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, User user, CancellationToken _) => user);
+            .ReturnsAsync((string _, User user, DateTime _, CancellationToken _) => user);
         mocks.TokenService
             .Setup(service => service.GenerateUserToken(It.Is<User>(user => updatedUserPredicate(user))))
             .Returns("access-token");
