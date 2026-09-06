@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.DependencyInjection;
@@ -17,6 +18,10 @@ public sealed class SharePublicationRegistrationTests
         MongoDbSettings settings = new MongoDbSettings();
 
         Assert.Equal("share-publications", settings.SharePublicationsCollectionName);
+        Assert.Equal("share-source-revisions", settings.ShareSourceRevisionsCollectionName);
+        Assert.Equal(
+            "image-current-mutation-locks",
+            settings.ImageCurrentMutationLocksCollectionName);
     }
 
     [Fact]
@@ -32,6 +37,16 @@ public sealed class SharePublicationRegistrationTests
             static service => service.ServiceType == typeof(ISharePublicationRepository));
         Assert.Equal(typeof(SharePublicationRepository), repository.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, repository.Lifetime);
+        ServiceDescriptor sourceRevisionRepository = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IShareSourceRevisionRepository));
+        Assert.Equal(typeof(ShareSourceRevisionRepository), sourceRevisionRepository.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, sourceRevisionRepository.Lifetime);
+        ServiceDescriptor imageCurrentMutationLock = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IImageCurrentMutationLock));
+        Assert.Equal(typeof(MongoImageCurrentMutationLock), imageCurrentMutationLock.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, imageCurrentMutationLock.Lifetime);
         ServiceDescriptor tokenFactory = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IShareTokenFactory));

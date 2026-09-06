@@ -57,6 +57,7 @@ public sealed class ResetPasswordCommandHandler : ICommandHandler<ResetPasswordC
             return ApplicationResult.Failure(UserApplicationErrors.PasswordResetTokenExpired());
         }
 
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         user.HashedPassword = this.passwordHasher.HashPassword(command.Request.NewPassword);
         user.UpdatedAtUtc = DateTime.UtcNow;
         user.LastActivityUtc = DateTime.UtcNow;
@@ -64,7 +65,11 @@ public sealed class ResetPasswordCommandHandler : ICommandHandler<ResetPasswordC
         user.PasswordResetTokenExpiresAtUtc = null;
         user.PasswordResetSentAtUtc = null;
 
-        User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+        User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+            user.Id,
+            user,
+            expectedUpdatedAtUtc,
+            cancellationToken);
         if (updatedUser is null)
         {
             return ApplicationResult.Failure(UserApplicationErrors.PasswordResetFailed());

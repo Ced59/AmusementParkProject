@@ -155,23 +155,66 @@ public sealed class UserRepository : IUserRepository
         return document.ToDomain();
     }
 
-    public async Task<User?> UpdateAsync(string userId, User user, CancellationToken cancellationToken)
+    public async Task<User?> UpdateIfUnchangedAsync(
+        string userId,
+        User user,
+        DateTime expectedUpdatedAtUtc,
+        CancellationToken cancellationToken)
     {
         UserDocument document = user.ToDocument();
         document.Id = userId;
         document.UpdatedAt = DateTime.UtcNow;
+        FilterDefinition<UserDocument> filter = BuildUnchangedFilter(
+            userId,
+            expectedUpdatedAtUtc);
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            existing => existing.Id == userId,
+            filter,
             document,
             cancellationToken: cancellationToken);
-
         if (result.MatchedCount == 0)
         {
             return null;
         }
 
         return document.ToDomain();
+    }
+
+    internal static FilterDefinition<UserDocument> BuildUnchangedFilter(
+        string userId,
+        DateTime expectedUpdatedAtUtc)
+    {
+        return Builders<UserDocument>.Filter.And(
+            Builders<UserDocument>.Filter.Eq(static existing => existing.Id, userId),
+            Builders<UserDocument>.Filter.Eq(
+                static existing => existing.UpdatedAt,
+                expectedUpdatedAtUtc));
+    }
+
+    public async Task<bool> UpdateAvatarUrlAsync(
+        string userId,
+        string? avatarUrl,
+        CancellationToken cancellationToken)
+    {
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            Builders<UserDocument>.Filter.Eq(static existing => existing.Id, userId),
+            BuildAvatarUrlUpdate(avatarUrl, DateTime.UtcNow),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
+    internal static UpdateDefinition<UserDocument> BuildAvatarUrlUpdate(
+        string? avatarUrl,
+        DateTime updatedAtUtc)
+    {
+        string normalizedAvatarUrl = avatarUrl?.Trim() ?? string.Empty;
+        UpdateDefinitionBuilder<UserDocument> updates = Builders<UserDocument>.Update;
+        UpdateDefinition<UserDocument> avatarUpdate = normalizedAvatarUrl.Length == 0
+            ? updates.Unset(static existing => existing.AvatarUrl)
+            : updates.Set(static existing => existing.AvatarUrl, normalizedAvatarUrl);
+        return updates.Combine(
+            avatarUpdate,
+            updates.Set(static existing => existing.UpdatedAt, updatedAtUtc));
     }
 
     public async Task<User?> UpdatePreferredLanguageAsync(

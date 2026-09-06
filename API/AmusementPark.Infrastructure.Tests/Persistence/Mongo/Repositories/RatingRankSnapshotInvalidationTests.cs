@@ -302,6 +302,26 @@ public sealed class RatingRankSnapshotInvalidationTests
         Assert.False(result);
     }
 
+    [Fact]
+    public async Task CompleteAmbiguousRankingMutationAsync_ShouldConservativelyAdvanceSourceRevisions()
+    {
+        RatingRankingMutationPreparation preparation = new RatingRankingMutationPreparation(
+            Array.Empty<RatingRankingMutationLease>());
+        Mock<IRatingRankingSourceChangeCoordinator> coordinator =
+            new Mock<IRatingRankingSourceChangeCoordinator>(MockBehavior.Strict);
+        coordinator.Setup(value => value.CompleteMutationAsync(
+                preparation,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+
+        await CaptainCoasterDataSourceProvider.CompleteAmbiguousRankingMutationAsync(
+            coordinator.Object,
+            preparation);
+
+        coordinator.VerifyAll();
+    }
+
     private static Mock<IMongoDatabase> CreateDatabase<TDocument>(
         string collectionName,
         IMongoCollection<TDocument> collection)

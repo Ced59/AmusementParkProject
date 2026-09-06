@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Users;
 
 namespace AmusementPark.Application.Features.Users.Handlers;
@@ -12,10 +14,14 @@ namespace AmusementPark.Application.Features.Users.Handlers;
 public sealed class LockUserCommandHandler : ICommandHandler<LockUserCommand, ApplicationResult<User>>
 {
     private readonly IUserRepository userRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
 
-    public LockUserCommandHandler(IUserRepository userRepository)
+    public LockUserCommandHandler(
+        IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard)
     {
         this.userRepository = userRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
     }
 
     public async Task<ApplicationResult<User>> HandleAsync(LockUserCommand command, CancellationToken cancellationToken = default)
@@ -26,7 +32,28 @@ public sealed class LockUserCommandHandler : ICommandHandler<LockUserCommand, Ap
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserNotExists());
         }
 
-        User? lockedUser = await this.userRepository.LockAsync(command.UserId, cancellationToken);
+        ShareSourceMutationLease mutationLease =
+            await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
+        bool sourceMutationAttempted = false;
+        User? lockedUser;
+        try
+        {
+            sourceMutationAttempted = true;
+            lockedUser = await this.userRepository.LockAsync(
+                command.UserId,
+                mutationCancellation.Token);
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                sourceMutationAttempted,
+                CancellationToken.None);
+        }
         if (lockedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.CannotLockUser());

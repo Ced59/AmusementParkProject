@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Application.Ports;
 
@@ -16,17 +18,20 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
     private readonly IRefreshTokenFactory refreshTokenFactory;
     private readonly ILocalAccountEmailService localAccountEmailService;
     private readonly IUserAuthenticationSettings authenticationSettings;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
 
     public UpdateUserProfileCommandHandler(
         IUserRepository userRepository,
         IRefreshTokenFactory refreshTokenFactory,
         ILocalAccountEmailService localAccountEmailService,
-        IUserAuthenticationSettings authenticationSettings)
+        IUserAuthenticationSettings authenticationSettings,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard)
     {
         this.userRepository = userRepository;
         this.refreshTokenFactory = refreshTokenFactory;
         this.localAccountEmailService = localAccountEmailService;
         this.authenticationSettings = authenticationSettings;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
     }
 
     public async Task<ApplicationResult<User>> HandleAsync(UpdateUserProfileCommand command, CancellationToken cancellationToken = default)
@@ -60,6 +65,10 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserNotExists());
         }
+
+        DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
+        PersonalRankingShareIdentityState previousShareIdentity =
+            PersonalRankingShareIdentityState.Capture(user);
 
         if (user.PublicAccountNumber <= 0)
         {
@@ -138,9 +147,27 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         user.LastActivityUtc = DateTime.UtcNow;
         user.UpdatedAtUtc = DateTime.UtcNow;
 
+        PersonalRankingShareIdentityState currentShareIdentity =
+            PersonalRankingShareIdentityState.Capture(user);
+        ShareSourceMutationLease? shareMutationLease =
+            await this.shareSourceRevisionGuard.BeginIdentityMutationAsync(
+                user.Id,
+                previousShareIdentity,
+                currentShareIdentity,
+                cancellationToken);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                shareMutationLease);
+        bool shareSourceChanged = false;
         try
         {
-            User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+            shareSourceChanged = shareMutationLease is not null;
+            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                user.Id,
+                user,
+                expectedUpdatedAtUtc,
+                mutationCancellation.Token);
             if (updatedUser is null)
             {
                 return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
@@ -160,6 +187,13 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         catch (Exception)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                shareMutationLease,
+                shareSourceChanged,
+                CancellationToken.None);
         }
     }
 }

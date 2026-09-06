@@ -42,7 +42,23 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
         this.logger = logger;
     }
 
-    public async Task<string> DownloadAndSaveAsync(string imageUrl, string userId, CancellationToken cancellationToken)
+    public Task<string> DownloadAndSaveAsync(
+        string imageUrl,
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        return this.DownloadAndSaveAsync(
+            imageUrl,
+            userId,
+            cancellationToken,
+            CancellationToken.None);
+    }
+
+    public async Task<string> DownloadAndSaveAsync(
+        string imageUrl,
+        string userId,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken)
     {
         if (string.IsNullOrWhiteSpace(imageUrl) || string.IsNullOrWhiteSpace(userId))
         {
@@ -55,10 +71,18 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             return string.Empty;
         }
 
+        using CancellationTokenSource mutationCancellation =
+            CancellationTokenSource.CreateLinkedTokenSource(
+                cancellationToken,
+                consistencyCancellationToken);
+        CancellationToken mutationCancellationToken = mutationCancellation.Token;
         try
         {
             HttpClient httpClient = this.httpClientFactory.CreateClient();
-            using HttpResponseMessage response = await httpClient.GetAsync(imageUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            using HttpResponseMessage response = await httpClient.GetAsync(
+                imageUri,
+                HttpCompletionOption.ResponseHeadersRead,
+                mutationCancellationToken);
             if (!response.IsSuccessStatusCode)
             {
                 this.logger.LogWarning("External avatar download failed for user {UserId} with status {StatusCode}.", userId, response.StatusCode);
@@ -79,11 +103,12 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 return string.Empty;
             }
 
-            await using Stream remoteStream = await response.Content.ReadAsStreamAsync(cancellationToken);
+            await using Stream remoteStream = await response.Content.ReadAsStreamAsync(
+                mutationCancellationToken);
             await using MemoryStream bufferedStream = new MemoryStream();
             byte[] buffer = new byte[81920];
             int bytesRead;
-            while ((bytesRead = await remoteStream.ReadAsync(buffer, cancellationToken)) > 0)
+            while ((bytesRead = await remoteStream.ReadAsync(buffer, mutationCancellationToken)) > 0)
             {
                 if (bufferedStream.Length + bytesRead > MaximumAvatarFileSizeInBytes)
                 {
@@ -91,7 +116,9 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                     return string.Empty;
                 }
 
-                await bufferedStream.WriteAsync(buffer.AsMemory(0, bytesRead), cancellationToken);
+                await bufferedStream.WriteAsync(
+                    buffer.AsMemory(0, bytesRead),
+                    mutationCancellationToken);
             }
 
             bufferedStream.Position = 0;
@@ -119,7 +146,9 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 OwnerId = userId,
             };
 
-            ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(baseRequest, cancellationToken);
+            ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(
+                baseRequest,
+                mutationCancellationToken);
             if (metadata is null
                 || string.IsNullOrWhiteSpace(metadata.DetectedContentType)
                 || !AllowedAvatarContentTypes.Contains(metadata.DetectedContentType)
@@ -157,7 +186,9 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 ExifMetadata = null,
             };
 
-            Image image = await this.imageRepository.CreateAsync(request, cancellationToken);
+            Image image = await this.imageRepository.CreateAsync(
+                request,
+                mutationCancellationToken);
             if (string.IsNullOrWhiteSpace(image.Path))
             {
                 return string.Empty;
@@ -172,11 +203,35 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 image.Path,
                 filePayload,
                 false,
-                cancellationToken);
-            await this.imageRepository.SetCurrentAsync(image.Id, ImageOwnerType.User, userId, cancellationToken);
-            return $"/images/{image.Id}";
+                mutationCancellationToken);
+            Image? promotedImage = await this.imageRepository.SetCurrentIfUnchangedAsync(
+                image.Id,
+                new ImageMutationPrecondition(
+                    image.OwnerType,
+                    image.OwnerId,
+                    image.Category,
+                    image.IsCurrent),
+                ImageOwnerType.User,
+                userId,
+                cancellationToken,
+                consistencyCancellationToken);
+            if (promotedImage is null
+                || !promotedImage.IsCurrent
+                || !string.Equals(promotedImage.Id, image.Id, StringComparison.Ordinal)
+                || promotedImage.OwnerType != ImageOwnerType.User
+                || !string.Equals(promotedImage.OwnerId, userId, StringComparison.Ordinal)
+                || promotedImage.Category != ImageCategory.Avatar)
+            {
+                this.logger.LogWarning(
+                    "External avatar {ImageId} was stored for user {UserId}, but its promotion was not confirmed.",
+                    image.Id,
+                    userId);
+                return string.Empty;
+            }
+
+            return $"/images/{promotedImage.Id}";
         }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        catch (OperationCanceledException) when (mutationCancellationToken.IsCancellationRequested)
         {
             throw;
         }

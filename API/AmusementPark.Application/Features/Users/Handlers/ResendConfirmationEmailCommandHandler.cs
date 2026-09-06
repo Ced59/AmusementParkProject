@@ -40,6 +40,7 @@ public sealed class ResendConfirmationEmailCommandHandler : ICommandHandler<Rese
         User? user = await this.userRepository.GetByEmailAsync(normalizedEmail!, cancellationToken);
         if (user is not null && !user.IsActivated)
         {
+            DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
             DateTime now = DateTime.UtcNow;
             string confirmationToken = this.refreshTokenFactory.Generate();
             user.EmailConfirmationTokenHash = this.refreshTokenFactory.ComputeHash(confirmationToken);
@@ -47,7 +48,11 @@ public sealed class ResendConfirmationEmailCommandHandler : ICommandHandler<Rese
             user.EmailConfirmationSentAtUtc = now;
             user.UpdatedAtUtc = now;
 
-            User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                user.Id,
+                user,
+                expectedUpdatedAtUtc,
+                cancellationToken);
             if (updatedUser is null)
             {
                 return ApplicationResult.Failure(UserApplicationErrors.ConfirmationEmailResendFailed());

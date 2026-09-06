@@ -84,6 +84,89 @@ public sealed class RatingRepositoryPublicSourcesTests
         Assert.True(result);
     }
 
+    [Fact]
+    public void SelectPublicUserRatingSources_ShouldApplyLimitAfterHiddenRatingsAreRemoved()
+    {
+        UserRatingDocument hidden = CreateRating(RatingTargetType.Park, "park-hidden", "park-hidden");
+        UserRatingDocument firstVisible = CreateRating(RatingTargetType.Park, "park-visible-1", "park-visible-1");
+        UserRatingDocument secondVisible = CreateRating(RatingTargetType.Park, "park-visible-2", "park-visible-2");
+        Dictionary<string, ParkDocument> parks = new Dictionary<string, ParkDocument>
+        {
+            ["park-hidden"] = new ParkDocument
+            {
+                Id = "park-hidden",
+                IsVisible = false,
+                Status = ParkStatus.Operating,
+            },
+            ["park-visible-1"] = new ParkDocument
+            {
+                Id = "park-visible-1",
+                IsVisible = true,
+                Status = ParkStatus.Operating,
+            },
+            ["park-visible-2"] = new ParkDocument
+            {
+                Id = "park-visible-2",
+                IsVisible = true,
+                Status = ParkStatus.Operating,
+            },
+        };
+
+        IReadOnlyCollection<UserRatingDocument> result = RatingRepository.SelectPublicUserRatingSources(
+            new[] { hidden, firstVisible, secondVisible },
+            parks,
+            new Dictionary<string, ParkItemDocument>(),
+            2);
+
+        Assert.Equal(new[] { "park-visible-1", "park-visible-2" }, result.Select(static rating => rating.TargetId));
+    }
+
+    [Fact]
+    public void CurrentMetadataResolvers_ShouldIgnoreCachedRatingMetadataAfterItemChanges()
+    {
+        UserRatingDocument rating = CreateRating(
+            RatingTargetType.ParkItem,
+            "item-1",
+            "park-old");
+        rating.ParkItemCategory = ParkItemCategory.Attraction;
+        rating.ParkItemType = ParkItemType.RollerCoaster;
+        Dictionary<string, ParkItemDocument> items = new Dictionary<string, ParkItemDocument>
+        {
+            ["item-1"] = new ParkItemDocument
+            {
+                Id = "item-1",
+                ParkId = "park-current",
+                Category = ParkItemCategory.Restaurant,
+                Type = ParkItemType.Restaurant,
+            },
+        };
+
+        string parkId = RatingRepository.ResolveCurrentParkId(rating, items);
+        ParkItemCategory? category = RatingRepository.ResolveCurrentParkItemCategory(rating, items);
+        ParkItemType? type = RatingRepository.ResolveCurrentParkItemType(rating, items);
+
+        Assert.Equal("park-current", parkId);
+        Assert.Equal(ParkItemCategory.Restaurant, category);
+        Assert.Equal(ParkItemType.Restaurant, type);
+    }
+
+    [Fact]
+    public void ResolveTargetName_WhenPublicMetadataIsMissing_ShouldNotExposeTargetId()
+    {
+        UserRatingDocument rating = CreateRating(
+            RatingTargetType.ParkItem,
+            "technical-item-id",
+            "technical-park-id");
+
+        string result = RatingRepository.ResolveTargetName(
+            rating,
+            null,
+            new Dictionary<string, ParkItemDocument>(),
+            hideTechnicalFallbacks: true);
+
+        Assert.Empty(result);
+    }
+
     private static UserRatingDocument CreateRating(
         RatingTargetType targetType,
         string targetId,

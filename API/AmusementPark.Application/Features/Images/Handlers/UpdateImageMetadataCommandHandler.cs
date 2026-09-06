@@ -8,6 +8,8 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -25,6 +27,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
     private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public UpdateImageMetadataCommandHandler(
@@ -33,6 +36,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
@@ -40,6 +44,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
@@ -64,6 +69,12 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (command.ExpectedState is not null
+                && !MatchesExpectedState(existing, command.ExpectedState))
+            {
+                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
+            }
+
             ImageMetadataUpdate metadata = BuildNormalizedMetadata(command.Metadata, existing);
             if (ManagedCommentImageMutationGuard.IsManagedScope(existing)
                 || ManagedCommentImageMutationGuard.IsManagedScope(
@@ -84,32 +95,103 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
             {
                 metadata = CloneMetadata(metadata, false);
             }
-
-            Image? updated = await this.imageRepository.UpdateMetadataAsync(normalizedImageId, metadata, cancellationToken);
-            if (updated is null)
+            IReadOnlyCollection<string> avatarOwnerUserIds =
+                UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    existing,
+                    metadata.OwnerType ?? existing.OwnerType,
+                    metadata.OwnerId,
+                    metadata.Category);
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
+                    this.shareSourceRevisionGuard,
+                    cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
+            bool avatarSourceChanged = false;
+            Image? updated;
+            try
             {
-                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
-            }
-
-            if (scopeChanged && existing.IsCurrent)
-            {
-                await SynchronizeOwnerScopeAsync(existing.OwnerType, existing.OwnerId, existing.Category, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
-            }
-
-            if (metadata.IsCurrent == true && updated.OwnerType != ImageOwnerType.None && !string.IsNullOrWhiteSpace(updated.OwnerId))
-            {
-                Image? current = await this.imageRepository.SetCurrentAsync(updated.Id, updated.OwnerType, updated.OwnerId, cancellationToken);
-                if (current is null)
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                updated = await this.imageRepository.UpdateMetadataIfUnchangedAsync(
+                    normalizedImageId,
+                    new ImageMutationPrecondition(
+                        existing.OwnerType,
+                        existing.OwnerId,
+                        existing.Category,
+                        existing.IsCurrent,
+                        existing.UpdatedAtUtc),
+                    metadata,
+                    mutationCancellation.Token);
+                if (updated is null)
                 {
-                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
+                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
                 }
 
-                updated = current;
-            }
+                if (scopeChanged && existing.IsCurrent)
+                {
+                    await SynchronizeOwnerScopeAsync(
+                        existing.OwnerType,
+                        existing.OwnerId,
+                        existing.Category,
+                        this.imageRepository,
+                        this.parkRepository,
+                        this.attractionManufacturerRepository,
+                        this.searchProjectionWriter,
+                        consistencyCancellation.Token);
+                }
 
-            if ((updated.IsCurrent || metadata.IsCurrent.HasValue || scopeChanged) && updated.OwnerType != ImageOwnerType.None)
+                if (metadata.IsCurrent == true && updated.OwnerType != ImageOwnerType.None && !string.IsNullOrWhiteSpace(updated.OwnerId))
+                {
+                    Image? current = await this.imageRepository.SetCurrentIfUnchangedAsync(
+                        updated.Id,
+                        new ImageMutationPrecondition(
+                            updated.OwnerType,
+                            updated.OwnerId,
+                            updated.Category,
+                            updated.IsCurrent),
+                        updated.OwnerType,
+                        updated.OwnerId,
+                        consistencyCancellation.Token,
+                        consistencyCancellation.Token);
+                    if (current is null)
+                    {
+                        return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
+                    }
+
+                    updated = current;
+                }
+
+                if ((updated.IsCurrent || metadata.IsCurrent.HasValue || scopeChanged) && updated.OwnerType != ImageOwnerType.None)
+                {
+                    await SynchronizeOwnerScopeAsync(
+                        updated.OwnerType,
+                        updated.OwnerId,
+                        updated.Category,
+                        this.imageRepository,
+                        this.parkRepository,
+                        this.attractionManufacturerRepository,
+                        this.searchProjectionWriter,
+                        consistencyCancellation.Token);
+                }
+
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    avatarOwnerUserIds,
+                    this.imageRepository,
+                    this.userRepository,
+                    consistencyCancellation.Token);
+            }
+            finally
             {
-                await SynchronizeOwnerScopeAsync(updated.OwnerType, updated.OwnerId, updated.Category, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
             if (!command.SuppressSeoNotification)
@@ -183,6 +265,21 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                !string.Equals(Normalize(existing.OwnerId), Normalize(metadata.OwnerId), StringComparison.Ordinal);
     }
 
+    private static bool MatchesExpectedState(
+        Image image,
+        ImageMutationPrecondition expectedState)
+    {
+        return image.OwnerType == expectedState.OwnerType
+            && string.Equals(
+                Normalize(image.OwnerId),
+                Normalize(expectedState.OwnerId),
+                StringComparison.Ordinal)
+            && image.Category == expectedState.Category
+            && image.IsCurrent == expectedState.IsCurrent
+            && (!expectedState.UpdatedAtUtc.HasValue
+                || image.UpdatedAtUtc == expectedState.UpdatedAtUtc.Value);
+    }
+
     private static async Task SynchronizeOwnerScopeAsync(
         ImageOwnerType ownerType,
         string? ownerId,
@@ -191,7 +288,6 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
         CancellationToken cancellationToken)
     {
         if (ownerType == ImageOwnerType.None || string.IsNullOrWhiteSpace(ownerId))
@@ -200,20 +296,6 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         }
 
         string normalizedOwnerId = ownerId.Trim();
-
-        if (ownerType == ImageOwnerType.User && category == ImageCategory.Avatar)
-        {
-            User? user = await userRepository.GetByIdAsync(normalizedOwnerId, cancellationToken);
-            if (user is null)
-            {
-                return;
-            }
-
-            Image? currentAvatar = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.User, normalizedOwnerId, ImageCategory.Avatar, cancellationToken);
-            user.AvatarUrl = currentAvatar is null ? null : BuildImageUrl(currentAvatar.Id);
-            await userRepository.UpdateAsync(user.Id, user, cancellationToken);
-            return;
-        }
 
         if (ownerType == ImageOwnerType.Park && category == ImageCategory.Logo)
         {
@@ -250,8 +332,4 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
         return string.IsNullOrWhiteSpace(trimmed) ? null : trimmed;
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }

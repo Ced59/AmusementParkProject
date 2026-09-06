@@ -200,6 +200,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IAttractionAccessConditionTypeDefinitionRepository, AttractionAccessConditionTypeDefinitionRepository>();
         services.AddScoped<ISearchReadRepository, SearchReadRepository>();
         services.AddScoped<IImageRepository, ImageRepository>();
+        services.AddScoped<IImageCurrentMutationLock, MongoImageCurrentMutationLock>();
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
         services.AddScoped<IImageVariantGenerationLease, MongoImageVariantGenerationLease>();
@@ -224,6 +225,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRatingRankingSourceRevisionRepository, RatingRankingSourceRevisionRepository>();
         services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddScoped<ISharePublicationRepository, SharePublicationRepository>();
+        services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();

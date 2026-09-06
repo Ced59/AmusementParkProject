@@ -74,6 +74,7 @@ public interface IImageRepository
         CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);
     Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
+    Task<Image?> GetCurrentByOwnerAuthoritativeAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
     Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken);
     Task<Image?> CompleteCommentDraftUploadAsync(
         string imageId,
@@ -82,6 +83,12 @@ public interface IImageRepository
         DateTime observedCleanupRequestedAtUtc,
         CancellationToken cancellationToken);
     Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
+    Task<Image?> LinkIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken);
     Task<Image?> ReserveCommentDraftAsync(
         string imageId,
         string draftOwnerId,
@@ -154,9 +161,31 @@ public interface IImageRepository
         DateTime cleanupRequestedAtUtc,
         CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
+    Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken);
+    Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken);
     Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken);
+    Task<Image?> UpdateMetadataIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageMetadataUpdate metadata,
+        CancellationToken cancellationToken);
     Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken);
+    Task<bool> DeleteIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        CancellationToken cancellationToken);
     Task<bool> DeleteClaimedCommentImageAsync(
         string imageId,
         ImageOwnerType ownerType,

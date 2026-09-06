@@ -84,6 +84,8 @@ public sealed class MongoDbSettings
 
     public string ImagesCollectionName { get; set; } = "images";
 
+    public string ImageCurrentMutationLocksCollectionName { get; set; } = "image-current-mutation-locks";
+
     public string ImageTagsCollectionName { get; set; } = "imageTags";
 
     public string VideosCollectionName { get; set; } = "videos";
@@ -111,6 +113,8 @@ public sealed class MongoDbSettings
     public string UserRankingSharesCollectionName { get; set; } = "userRankingShares";
 
     public string SharePublicationsCollectionName { get; set; } = "share-publications";
+
+    public string ShareSourceRevisionsCollectionName { get; set; } = "share-source-revisions";
 
     public string UserVisitsCollectionName { get; set; } = "user-visits";
 

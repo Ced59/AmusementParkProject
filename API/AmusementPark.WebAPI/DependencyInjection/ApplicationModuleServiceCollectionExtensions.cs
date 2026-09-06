@@ -19,6 +19,8 @@ public static class ApplicationModuleServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(configuration);
 
         services.Configure<SeoSettings>(configuration.GetSection(SeoSettings.SectionName));
+        services.Configure<SharePublicationRolloutSettings>(
+            configuration.GetSection(SharePublicationRolloutSettings.SectionName));
         services.AddScoped<IPublicSeoContextProvider, SeoPublicContextProvider>();
         services.AddApplication();
         services.AddApplicationHandlers(static type =>
@@ -60,6 +62,7 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.SocialPublishing.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Ratings.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Passport.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.Sharing.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Seo.", StringComparison.Ordinal);
         });
 

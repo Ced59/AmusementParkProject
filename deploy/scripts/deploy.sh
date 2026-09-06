@@ -254,6 +254,7 @@ start_deploy_candidate() {
   if [ "${service_name}" = "api" ]; then
     compose run -d --no-deps --name "${container_name}" \
       -e DurableBackgroundJobs__Worker__Enabled=false \
+      -e Sharing__SharePublicationPreview__Enabled=false \
       "${service_name}" >/dev/null
   else
     compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null

@@ -26,11 +26,17 @@ public sealed class ImageRepository : IImageRepository
     private static long cacheVersion;
     private readonly IMongoCollection<ImageDocument> collection;
     private readonly IMemoryCache cache;
+    private readonly IImageCurrentMutationLock currentMutationLock;
 
-    public ImageRepository(IMongoDatabase database, MongoDbSettings settings, IMemoryCache cache)
+    public ImageRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IMemoryCache cache,
+        IImageCurrentMutationLock currentMutationLock)
     {
         this.collection = database.GetCollection<ImageDocument>(settings.ImagesCollectionName);
         this.cache = cache;
+        this.currentMutationLock = currentMutationLock;
     }
 
     public async Task<IReadOnlyCollection<Image>> GetAllAsync(CancellationToken cancellationToken)
@@ -882,6 +888,22 @@ public sealed class ImageRepository : IImageRepository
         return image;
     }
 
+    public async Task<Image?> GetCurrentByOwnerAuthoritativeAsync(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.Eq(static document => document.OwnerId, ownerId) &
+                                                 BuildCategoryFilter(builder, category) &
+                                                 builder.Eq(static document => document.IsCurrent, true);
+        ImageDocument? document = await this.collection.Find(filter)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken)
     {
         DateTime nowUtc = DateTime.UtcNow;
@@ -1003,7 +1025,7 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId);
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.OwnerType, ownerType)
             .Set(static document => document.OwnerId, ownerId)
@@ -1017,6 +1039,56 @@ public sealed class ImageRepository : IImageRepository
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         InvalidateReadCache();
         return document?.ToDomain();
+    }
+
+    public async Task<Image?> LinkIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter = BuildMutationPreconditionFilter(
+            imageId,
+            precondition);
+        UpdateDefinition<ImageDocument> update = BuildSafeLinkUpdate(
+            precondition,
+            ownerType,
+            ownerId,
+            DateTime.UtcNow);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
+        return document?.ToDomain();
+    }
+
+    internal static UpdateDefinition<ImageDocument> BuildSafeLinkUpdate(
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        DateTime updatedAtUtc)
+    {
+        bool ownerScopeIsUnchanged = precondition.OwnerType == ownerType
+            && string.Equals(
+                precondition.OwnerId?.Trim(),
+                ownerId.Trim(),
+                StringComparison.Ordinal);
+        return Builders<ImageDocument>.Update
+            .Set(static document => document.OwnerType, ownerType)
+            .Set(static document => document.OwnerId, ownerId)
+            .Set(static document => document.IsCurrent, ownerScopeIsUnchanged && precondition.IsCurrent)
+            .Set(static document => document.UpdatedAt, updatedAtUtc);
     }
 
     public async Task<Image?> ReserveCommentDraftAsync(
@@ -1711,38 +1783,381 @@ public sealed class ImageRepository : IImageRepository
             return null;
         }
 
-        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
-        FilterDefinition<ImageDocument> ownerFilter = BuildOwnerTypeFilter(builder, ownerType) &
-                                                     builder.Eq(static document => document.OwnerId, ownerId) &
-                                                     BuildCategoryFilter(builder, currentDocument.Category);
+        return await this.currentMutationLock.ExecuteAsync(
+            ownerType,
+            ownerId,
+            currentDocument.Category,
+            async operationCancellationToken =>
+            {
+                try
+                {
+                    ImageMutationPrecondition precondition = new ImageMutationPrecondition(
+                        currentDocument.OwnerType,
+                        currentDocument.OwnerId,
+                        currentDocument.Category,
+                        currentDocument.IsCurrent,
+                        currentDocument.UpdatedAt);
+                    FilterDefinition<ImageDocument> reservationFilter =
+                        BuildPromotionReservationFilter(
+                            imageId,
+                            precondition,
+                            ownerType,
+                            ownerId);
+                    ImageDocument? reservation = await this.ReserveImageForPromotionAsync(
+                        reservationFilter,
+                        ownerType,
+                        ownerId,
+                        operationCancellationToken);
+                    if (reservation is null)
+                    {
+                        return null;
+                    }
 
-        await this.collection.UpdateManyAsync(
-            ownerFilter,
-            Builders<ImageDocument>.Update
-                .Set(static document => document.IsCurrent, false)
-                .Set(static document => document.UpdatedAt, DateTime.UtcNow),
-            cancellationToken: cancellationToken);
+                    await this.DemoteOtherCurrentImagesBeforePromotionAsync(
+                        ownerType,
+                        ownerId,
+                        currentDocument.Category,
+                        imageId,
+                        operationCancellationToken);
+                    operationCancellationToken.ThrowIfCancellationRequested();
+                    ImageDocument? document = await this.ActivateReservedImageAsync(
+                        reservation,
+                        operationCancellationToken);
+                    return document?.ToDomain();
+                }
+                finally
+                {
+                    InvalidateReadCache();
+                }
+            },
+            cancellationToken);
+    }
 
-        FilterDefinition<ImageDocument> targetFilter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
-        UpdateDefinition<ImageDocument> targetUpdate = Builders<ImageDocument>.Update
+    public Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        return this.SetCurrentIfUnchangedAsync(
+            imageId,
+            precondition,
+            ownerType,
+            ownerId,
+            cancellationToken,
+            CancellationToken.None);
+    }
+
+    public async Task<Image?> SetCurrentIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken,
+        CancellationToken consistencyCancellationToken)
+    {
+        return await this.currentMutationLock.ExecuteAsync(
+            ownerType,
+            ownerId,
+            precondition.Category,
+            async operationCancellationToken =>
+            {
+                try
+                {
+                    FilterDefinition<ImageDocument> reservationFilter =
+                        BuildPromotionReservationFilter(
+                            imageId,
+                            precondition,
+                            ownerType,
+                            ownerId);
+                    ImageDocument? reservation = await this.ReserveImageForPromotionAsync(
+                        reservationFilter,
+                        ownerType,
+                        ownerId,
+                        operationCancellationToken);
+                    if (reservation is null)
+                    {
+                        return null;
+                    }
+
+                    await this.DemoteOtherCurrentImagesBeforePromotionAsync(
+                        ownerType,
+                        ownerId,
+                        precondition.Category,
+                        imageId,
+                        operationCancellationToken);
+                    operationCancellationToken.ThrowIfCancellationRequested();
+                    ImageDocument? document = await this.ActivateReservedImageAsync(
+                        reservation,
+                        operationCancellationToken);
+                    return document?.ToDomain();
+                }
+                finally
+                {
+                    InvalidateReadCache();
+                }
+            },
+            cancellationToken,
+            consistencyCancellationToken);
+    }
+
+    private async Task<ImageDocument?> ReserveImageForPromotionAsync(
+        FilterDefinition<ImageDocument> filter,
+        ImageOwnerType ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        DateTime nowUtc = DateTime.UtcNow;
+        string promotionToken = Guid.NewGuid().ToString("N");
+        UpdateDefinition<ImageDocument> update =
+            BuildPromotionReservationUpdate(
+                ownerType,
+                ownerId,
+                promotionToken,
+                nowUtc);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        return await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+    }
+
+    private async Task<ImageDocument?> ActivateReservedImageAsync(
+        ImageDocument reservation,
+        CancellationToken cancellationToken)
+    {
+        UpdateDefinition<ImageDocument> update =
+            BuildPromotionActivationUpdate(DateTime.UtcNow);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        bool outcomeIsAmbiguous = false;
+        while (true)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                FilterDefinition<ImageDocument> filter = outcomeIsAmbiguous
+                    ? BuildPromotionActivationReconciliationFilter(reservation)
+                    : BuildPromotionActivationFilter(reservation);
+                return await this.collection.FindOneAndUpdateAsync(
+                    filter,
+                    update,
+                    options,
+                    cancellationToken);
+            }
+            catch (Exception exception)
+                when (exception is MongoException or TimeoutException)
+            {
+                outcomeIsAmbiguous = true;
+                await Task.Delay(
+                    MongoImageCurrentMutationLock.RetryDelay,
+                    cancellationToken);
+            }
+        }
+    }
+
+    internal static UpdateDefinition<ImageDocument> BuildPromotionReservationUpdate(
+        ImageOwnerType ownerType,
+        string ownerId,
+        string promotionToken,
+        DateTime updatedAtUtc)
+    {
+        return Builders<ImageDocument>.Update
             .Set(static document => document.OwnerType, ownerType)
             .Set(static document => document.OwnerId, ownerId)
+            .Set(static document => document.IsCurrent, false)
+            .Set(static document => document.CurrentPromotionToken, promotionToken)
+            .Set(static document => document.UpdatedAt, updatedAtUtc);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionActivationFilter(
+        ImageDocument reservation)
+    {
+        ArgumentNullException.ThrowIfNull(reservation);
+        string promotionToken = reservation.CurrentPromotionToken
+            ?? throw new InvalidOperationException(
+                "A current-image promotion reservation must carry its token.");
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, reservation.Id)
+            & BuildOwnerTypeFilter(builder, reservation.OwnerType)
+            & builder.Eq(static document => document.OwnerId, reservation.OwnerId)
+            & BuildCategoryFilter(builder, reservation.Category)
+            & builder.Eq(static document => document.IsCurrent, false)
+            & builder.Eq(
+                static document => document.CurrentPromotionToken,
+                promotionToken);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionActivationReconciliationFilter(
+        ImageDocument reservation)
+    {
+        ArgumentNullException.ThrowIfNull(reservation);
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> activatedTargetFilter =
+            builder.Eq(static document => document.Id, reservation.Id)
+            & BuildOwnerTypeFilter(builder, reservation.OwnerType)
+            & builder.Eq(static document => document.OwnerId, reservation.OwnerId)
+            & BuildCategoryFilter(builder, reservation.Category)
+            & builder.Eq(static document => document.IsCurrent, true)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                false);
+        return builder.Or(
+            BuildPromotionActivationFilter(reservation),
+            activatedTargetFilter);
+    }
+
+    internal static UpdateDefinition<ImageDocument> BuildPromotionActivationUpdate(
+        DateTime updatedAtUtc)
+    {
+        return Builders<ImageDocument>.Update
             .Set(static document => document.IsCurrent, true)
-            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+            .Unset(static document => document.CurrentPromotionToken)
+            .Set(static document => document.UpdatedAt, updatedAtUtc);
+    }
+
+    private async Task DemoteOtherCurrentImagesBeforePromotionAsync(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        string promotedImageId,
+        CancellationToken leaseCancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> otherOwnerImagesFilter =
+            BuildOwnerTypeFilter(builder, ownerType)
+            & builder.Eq(static candidate => candidate.OwnerId, ownerId)
+            & BuildCategoryFilter(builder, category)
+            & builder.Or(
+                builder.Eq(static candidate => candidate.IsCurrent, true),
+                builder.Exists(
+                    static candidate => candidate.CurrentPromotionToken))
+            & builder.Ne(static candidate => candidate.Id, promotedImageId);
+        UpdateDefinition<ImageDocument> demotion = Builders<ImageDocument>.Update
+            .Set(static candidate => candidate.IsCurrent, false)
+            .Unset(static candidate => candidate.CurrentPromotionToken)
+            .Set(static candidate => candidate.UpdatedAt, DateTime.UtcNow);
+        while (true)
+        {
+            leaseCancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                await this.collection.UpdateManyAsync(
+                    otherOwnerImagesFilter,
+                    demotion,
+                    cancellationToken: leaseCancellationToken);
+                return;
+            }
+            catch (Exception exception)
+                when (exception is MongoException or TimeoutException)
+            {
+                await Task.Delay(
+                    MongoImageCurrentMutationLock.RetryDelay,
+                    leaseCancellationToken);
+            }
+        }
+    }
+
+    public async Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId);
+        UpdateDefinition<ImageDocument> update = BuildMetadataUpdate(metadata);
 
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
             ReturnDocument = ReturnDocument.After,
         };
 
-        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(targetFilter, targetUpdate, options, cancellationToken);
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         InvalidateReadCache();
         return document?.ToDomain();
     }
 
-    public async Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken)
+    public async Task<Image?> UpdateMetadataIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageMetadataUpdate metadata,
+        CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        FilterDefinition<ImageDocument> filter = BuildMutationPreconditionFilter(
+            imageId,
+            precondition);
+        UpdateDefinition<ImageDocument> update = BuildMetadataUpdate(metadata);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
+        return document?.ToDomain();
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildMutationPreconditionFilter(
+        string imageId,
+        ImageMutationPrecondition precondition)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildUnreservedImageFilter(imageId)
+            & BuildOwnerTypeFilter(builder, precondition.OwnerType)
+            & builder.Eq(static document => document.OwnerId, precondition.OwnerId)
+            & BuildCategoryFilter(builder, precondition.Category)
+            & builder.Eq(static document => document.IsCurrent, precondition.IsCurrent);
+        return precondition.UpdatedAtUtc.HasValue
+            ? filter & builder.Eq(
+                static document => document.UpdatedAt,
+                precondition.UpdatedAtUtc.Value)
+            : filter;
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildPromotionReservationFilter(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        ImageOwnerType destinationOwnerType,
+        string destinationOwnerId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> staleReservationFilter =
+            builder.Eq(static document => document.Id, imageId)
+            & BuildOwnerTypeFilter(builder, destinationOwnerType)
+            & builder.Eq(static document => document.OwnerId, destinationOwnerId)
+            & BuildCategoryFilter(builder, precondition.Category)
+            & builder.Eq(static document => document.IsCurrent, false)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                true);
+        return builder.Or(
+            BuildMutationPreconditionFilter(imageId, precondition),
+            staleReservationFilter);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildUnreservedImageFilter(
+        string imageId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, imageId)
+            & builder.Exists(
+                static document => document.CurrentPromotionToken,
+                false);
+    }
+
+    private static UpdateDefinition<ImageDocument> BuildMetadataUpdate(
+        ImageMetadataUpdate metadata)
+    {
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.Description, metadata.Description)
             .Set(static document => document.GeoLocation, metadata.GeoLocation is null ? null : CommonMongoMappers.ToDocument(new GeoPoint(metadata.GeoLocation.Latitude, metadata.GeoLocation.Longitude)))
@@ -1767,14 +2182,7 @@ public sealed class ImageRepository : IImageRepository
             update = update.Set(static document => document.IsCurrent, metadata.IsCurrent.Value);
         }
 
-        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
-        {
-            ReturnDocument = ReturnDocument.After,
-        };
-
-        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
-        InvalidateReadCache();
-        return document?.ToDomain();
+        return update;
     }
 
     public async Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken)
@@ -1800,7 +2208,25 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken)
     {
-        DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == imageId, cancellationToken: cancellationToken);
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildUnreservedImageFilter(imageId),
+            cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
+        return result.DeletedCount > 0;
+    }
+
+    public async Task<bool> DeleteIfUnchangedAsync(
+        string imageId,
+        ImageMutationPrecondition precondition,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildMutationPreconditionFilter(imageId, precondition),
+            cancellationToken);
         if (result.DeletedCount > 0)
         {
             InvalidateReadCache();

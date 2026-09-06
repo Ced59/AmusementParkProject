@@ -1,5 +1,7 @@
 using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.Ratings.Models;
+using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
@@ -118,15 +120,30 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                     previousParks,
                     currentParks,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    rankingPreparation.ShareSourceMutationLeases);
             IReadOnlyCollection<WriteModel<ParkDocument>> writes = pending.Values
                 .Select(document => BuildFencedParkReplacement(
                     document,
                     previousById.GetValueOrDefault(document.Id)))
                 .ToArray();
-            BulkWriteResult<ParkDocument> result = await ExecuteInsertAwareBulkWriteAsync(
-                this.localParksCollection,
-                writes,
-                cancellationToken);
+            BulkWriteResult<ParkDocument> result;
+            try
+            {
+                result = await ExecuteInsertAwareBulkWriteAsync(
+                    this.localParksCollection,
+                    writes,
+                    mutationCancellation.Token);
+            }
+            catch
+            {
+                await CompleteAmbiguousRankingMutationAsync(
+                    this.rankingSourceChangeCoordinator,
+                    rankingPreparation);
+                throw;
+            }
             bool sourceChanged = HasSourceChanges(result);
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
@@ -174,15 +191,30 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                     previousItems,
                     currentItems,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    rankingPreparation.ShareSourceMutationLeases);
             IReadOnlyCollection<WriteModel<ParkItemDocument>> writes = pending.Values
                 .Select(document => BuildFencedParkItemReplacement(
                     document,
                     previousById.GetValueOrDefault(document.Id)))
                 .ToArray();
-            BulkWriteResult<ParkItemDocument> result = await ExecuteInsertAwareBulkWriteAsync(
-                this.localParkItemsCollection,
-                writes,
-                cancellationToken);
+            BulkWriteResult<ParkItemDocument> result;
+            try
+            {
+                result = await ExecuteInsertAwareBulkWriteAsync(
+                    this.localParkItemsCollection,
+                    writes,
+                    mutationCancellation.Token);
+            }
+            catch
+            {
+                await CompleteAmbiguousRankingMutationAsync(
+                    this.rankingSourceChangeCoordinator,
+                    rankingPreparation);
+                throw;
+            }
             bool sourceChanged = HasSourceChanges(result);
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
@@ -201,6 +233,18 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
             cancellationToken.ThrowIfCancellationRequested();
         }
+    }
+
+    internal static async Task CompleteAmbiguousRankingMutationAsync(
+        IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator,
+        RatingRankingMutationPreparation rankingPreparation)
+    {
+        ArgumentNullException.ThrowIfNull(rankingSourceChangeCoordinator);
+        ArgumentNullException.ThrowIfNull(rankingPreparation);
+        await rankingSourceChangeCoordinator.CompleteMutationAsync(
+            rankingPreparation,
+            sourceChanged: true,
+            CancellationToken.None);
     }
 
     internal static WriteModel<ParkDocument> BuildFencedParkReplacement(

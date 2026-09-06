@@ -45,6 +45,7 @@ public sealed class ForgotPasswordCommandHandler : ICommandHandler<ForgotPasswor
         User? user = await this.userRepository.GetByEmailAsync(normalizedEmail!, cancellationToken);
         if (user is not null && user.IsActivated && !string.IsNullOrWhiteSpace(user.HashedPassword))
         {
+            DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
             DateTime now = DateTime.UtcNow;
             string resetToken = this.refreshTokenFactory.Generate();
             user.PasswordResetTokenHash = this.refreshTokenFactory.ComputeHash(resetToken);
@@ -52,7 +53,11 @@ public sealed class ForgotPasswordCommandHandler : ICommandHandler<ForgotPasswor
             user.PasswordResetSentAtUtc = now;
             user.UpdatedAtUtc = now;
 
-            User? updatedUser = await this.userRepository.UpdateAsync(user.Id, user, cancellationToken);
+            User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
+                user.Id,
+                user,
+                expectedUpdatedAtUtc,
+                cancellationToken);
             if (updatedUser is null)
             {
                 return ApplicationResult.Failure(UserApplicationErrors.PasswordResetEmailSendFailed());

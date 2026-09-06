@@ -20,7 +20,15 @@ public interface IUserRepository
     Task<PagedResult<User>> GetPageAsync(int page, int pageSize, CancellationToken cancellationToken);
     Task<long> AllocatePublicAccountNumberAsync(CancellationToken cancellationToken);
     Task<User> CreateAsync(User user, CancellationToken cancellationToken);
-    Task<User?> UpdateAsync(string userId, User user, CancellationToken cancellationToken);
+    Task<User?> UpdateIfUnchangedAsync(
+        string userId,
+        User user,
+        DateTime expectedUpdatedAtUtc,
+        CancellationToken cancellationToken);
+    Task<bool> UpdateAvatarUrlAsync(
+        string userId,
+        string? avatarUrl,
+        CancellationToken cancellationToken);
     Task<User?> UpdatePreferredLanguageAsync(string userId, string preferredLanguage, CancellationToken cancellationToken);
     Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken);
     Task UpdateLastActivityAsync(string userId, CancellationToken cancellationToken);

@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
@@ -377,7 +378,8 @@ public sealed class ImageRepositoryCommentReuseProtocolTests
         return new ImageRepository(
             database.Object,
             new MongoDbSettings { ImagesCollectionName = "images" },
-            cache);
+            cache,
+            Mock.Of<IImageCurrentMutationLock>());
     }
 
     private static UpdateResult CreateSuccessfulUpdateResult()

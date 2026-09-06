@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Ratings.Services;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
@@ -100,6 +101,11 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
                 RatingApplicationErrors.TargetChangedConcurrently());
         }
 
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                preparedMutation.Preparation.ShareSourceMutationLeases);
+
         metadata = preparedMutation.Metadata;
         if (metadata is null)
         {
@@ -145,7 +151,7 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
                 rating,
                 aggregateTarget,
                 preparedMutation.RecoveryTarget.MutationToken,
-                cancellationToken);
+                mutationCancellation.Token);
         if (mutation.WasFencedOut)
         {
             await RatingRankingMutationCompletion.AbortAsync(

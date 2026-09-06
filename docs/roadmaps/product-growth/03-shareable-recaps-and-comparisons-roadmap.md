@@ -69,6 +69,58 @@ Le nouveau stockage n'est pas encore branché sur une route publique et l'ancien
 partage de classement reste seul actif jusqu'à sa migration de remplacement
 `SHARE-04A`. Il n'existe donc ni double écriture ni double moteur actif.
 
+### État de `SHARE-04` au 6 septembre 2026
+
+L'API privée d'aperçu et son premier constructeur spécialisé de classement personnel
+sont livrés en version 5.2.4. Le serveur applique la policy en liste blanche avant
+de lire les notes : un aperçu sans `GlobalRatings` ne charge aucune note et le DTO
+public ne contient ni identifiant utilisateur, ni identifiant de note, de parc ou
+d'attraction, ni commentaire privé, ni email.
+
+Deux révisions durables protègent l'aperçu : l'une suit les notes et toute l'identité
+publique du propriétaire — pseudonyme, avatar, rôles et état du compte —, l'autre le
+catalogue public qui fournit les noms et la visibilité des cibles. L'identité publique
+est aussi relue après la construction pour fermer la fenêtre des mutations concurrentes.
+Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
+révisions et l'identité restent stables. Un heartbeat distingue les écritures longues
+des écritures abandonnées. La perte confirmée du lease annule l'écrivain et son délai
+local expire avant le lease serveur : aucune écriture suspendue ne peut reprendre
+après récupération. Une finalisation ambiguë avance encore la révision. Les
+métadonnées des notes publiques sont toujours relues depuis le
+catalogue courant, sans repli sur un identifiant technique. Les détails et preuves
+sont consignés dans
+[`product-growth-share-04-safe-preview-2026-09-06.md`](../../architecture/product-growth-share-04-safe-preview-2026-09-06.md).
+La génération est limitée par compte, les catégories exposent des clés fonctionnelles
+traduisibles sans divulguer les identifiants de parc, et les synchronisations d'avatar
+ne peuvent plus réécrire d'autres champs du compte. Un transfert d'image courante la
+rétrograde tant qu'elle n'est pas explicitement promue dans son nouveau périmètre ;
+un import externe ayant gagné côté image mais perdu côté compte est réconcilié depuis
+l'état MongoDB autoritaire. Les remplacements complets de compte exigent une version
+inchangée et le heartbeat reprend après une panne MongoDB transitoire au lieu
+d'abandonner silencieusement la protection d'une écriture longue. Le verrou
+distribué de promotion d'image applique la même reprise et rétrograde les autres
+images avant d'activer la cible ; une annulation ne peut donc pas laisser plusieurs
+images courantes, même si elle intervient juste avant l'expiration du bail. La cible
+est d'abord réservée comme non courante avec la précondition observée, afin qu'une
+demande obsolète ne puisse pas rétrograder l'image légitime. Cette réservation utilise
+un jeton distinct des métadonnées éditoriales et toute promotion plus récente retire
+les anciens jetons avant son activation. Les changements de périmètre, d'état courant
+et les suppressions refusent toute cible encore réservée. Le verrou annule ensuite
+l'ancien écrivain avant la dernière expiration confirmée si MongoDB reste
+indisponible. Après cette
+première écriture, la rétrogradation des autres images est réconciliée de manière
+idempotente sous le verrou. Les actions de masse refusent aussi d'écraser des
+métadonnées concurrentes grâce à leur date observée. Les écritures de profil à
+réponse ambiguë font avancer prudemment la révision et la protection IP s'exécute
+avant l'authentification, tandis que le plafond propre à l'aperçu s'applique ensuite
+au compte identifié. Un lot d'import de catalogue ayant échoué après son envoi fait
+également avancer les révisions de façon conservatrice, car certaines écritures non
+ordonnées peuvent déjà avoir été appliquées.
+
+Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
+classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et
+conservera les liens existants sans faire cohabiter deux moteurs actifs.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

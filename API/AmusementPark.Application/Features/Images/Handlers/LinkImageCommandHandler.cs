@@ -9,6 +9,8 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -26,6 +28,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard;
     private readonly IPublicSeoUpdateNotifier? publicSeoUpdateNotifier;
 
     public LinkImageCommandHandler(
@@ -34,6 +37,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
+        IPersonalRankingShareSourceRevisionGuard shareSourceRevisionGuard,
         IPublicSeoUpdateNotifier? publicSeoUpdateNotifier = null)
     {
         this.imageRepository = imageRepository;
@@ -41,6 +45,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.shareSourceRevisionGuard = shareSourceRevisionGuard;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
@@ -74,38 +79,104 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             }
 
             string? normalizedOwnerId = string.IsNullOrWhiteSpace(command.OwnerId) ? null : command.OwnerId.Trim();
-            Image? updated = command.SetAsCurrent
-                ? await this.imageRepository.SetCurrentAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken)
-                : await this.imageRepository.LinkAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken);
-
-            if (updated is null)
+            IReadOnlyCollection<string> avatarOwnerUserIds =
+                UserAvatarShareSourceMutation.ResolveImpactedOwnerUserIds(
+                    image,
+                    command.OwnerType,
+                    normalizedOwnerId,
+                    image.Category);
+            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+                await UserAvatarShareSourceMutation.BeginAsync(
+                    avatarOwnerUserIds,
+                    this.shareSourceRevisionGuard,
+                    cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
+            using CancellationTokenSource consistencyCancellation =
+                ShareSourceMutationCancellation.CreateLeaseSource(
+                    avatarMutationLeases.Values);
+            bool avatarSourceChanged = false;
+            Image? updated;
+            try
             {
-                return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorUpdatingImageLink());
-            }
+                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
+                ImageMutationPrecondition precondition = new ImageMutationPrecondition(
+                    image.OwnerType,
+                    image.OwnerId,
+                    image.Category,
+                    image.IsCurrent);
+                updated = command.SetAsCurrent
+                    ? await this.imageRepository.SetCurrentIfUnchangedAsync(
+                        image.Id,
+                        precondition,
+                        command.OwnerType,
+                        normalizedOwnerId ?? string.Empty,
+                        cancellationToken,
+                        consistencyCancellation.Token)
+                    : await this.imageRepository.LinkIfUnchangedAsync(
+                        image.Id,
+                        precondition,
+                        command.OwnerType,
+                        normalizedOwnerId ?? string.Empty,
+                        mutationCancellation.Token);
 
-            if (command.Description is not null)
-            {
-                ImageMetadataUpdate metadata = new ImageMetadataUpdate
+                if (updated is null)
                 {
-                    Description = command.Description,
-                    GeoLocation = updated.GeoLocation == null ? null : new GeoPointValue(updated.GeoLocation.Latitude, updated.GeoLocation.Longitude),
-                    AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
-                    TagIds = updated.TagIds.ToList(),
-                    Category = updated.Category,
-                    IsPublished = updated.IsPublished,
-                    SourceUrl = updated.SourceUrl,
-                };
-
-                Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(updated.Id, metadata, cancellationToken);
-                if (metadataUpdated is not null)
-                {
-                    updated = metadataUpdated;
+                    return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorUpdatingImageLink());
                 }
+
+                if (command.Description is not null)
+                {
+                    ImageMetadataUpdate metadata = new ImageMetadataUpdate
+                    {
+                        Description = command.Description,
+                        GeoLocation = updated.GeoLocation == null ? null : new GeoPointValue(updated.GeoLocation.Latitude, updated.GeoLocation.Longitude),
+                        AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                        TagIds = updated.TagIds.ToList(),
+                        Category = updated.Category,
+                        IsPublished = updated.IsPublished,
+                        SourceUrl = updated.SourceUrl,
+                    };
+
+                    Image? metadataUpdated = await this.imageRepository.UpdateMetadataIfUnchangedAsync(
+                        updated.Id,
+                        new ImageMutationPrecondition(
+                            updated.OwnerType,
+                            updated.OwnerId,
+                            updated.Category,
+                            updated.IsCurrent),
+                        metadata,
+                        consistencyCancellation.Token);
+                    if (metadataUpdated is not null)
+                    {
+                        updated = metadataUpdated;
+                    }
+                }
+
+                await UserAvatarShareSourceMutation.SynchronizeAsync(
+                    avatarOwnerUserIds,
+                    this.imageRepository,
+                    this.userRepository,
+                    consistencyCancellation.Token);
+                await SynchronizeOwnerAsync(
+                    updated,
+                    this.parkRepository,
+                    this.attractionManufacturerRepository,
+                    this.searchProjectionWriter,
+                    consistencyCancellation.Token);
+            }
+            finally
+            {
+                await UserAvatarShareSourceMutation.CompleteAsync(
+                    avatarMutationLeases,
+                    avatarSourceChanged,
+                    this.shareSourceRevisionGuard);
             }
 
-            await SynchronizeOwnerAsync(updated, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             await PublicImageSeoUpdateNotification.NotifyAsync(
                 this.publicSeoUpdateNotifier,
                 new[] { image },
@@ -128,21 +199,8 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository,
         CancellationToken cancellationToken)
     {
-        if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
-        {
-            User? user = await userRepository.GetByIdAsync(image.OwnerId, cancellationToken);
-            if (user is not null)
-            {
-                user.AvatarUrl = image.IsCurrent ? BuildImageUrl(image.Id) : null;
-                await userRepository.UpdateAsync(user.Id, user, cancellationToken);
-            }
-
-            return;
-        }
-
         if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
@@ -172,8 +230,4 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         }
     }
 
-    private static string BuildImageUrl(string imageId)
-    {
-        return $"/images/{imageId}";
-    }
 }

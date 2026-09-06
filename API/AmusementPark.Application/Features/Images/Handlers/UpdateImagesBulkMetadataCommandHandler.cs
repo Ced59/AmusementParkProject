@@ -67,7 +67,9 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
                 ImageApplicationErrors.CommentImageLifecycleManaged());
         }
 
-        int updatedCount = command.Metadata.Category.HasValue
+        bool requiresIndividualFlow = command.Metadata.Category.HasValue
+            || command.Metadata.IsPublished.HasValue;
+        int updatedCount = requiresIndividualFlow
             ? await this.UpdateOneByOneAsync(
                 imageIds,
                 existingImages,
@@ -111,7 +113,16 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
 
             ImageMetadataUpdate update = BuildMetadataUpdate(existing, metadata);
             ApplicationResult<Image> result = await this.updateImageMetadataCommandHandler.HandleAsync(
-                new UpdateImageMetadataCommand(existing.Id, update, SuppressSeoNotification: true),
+                new UpdateImageMetadataCommand(
+                    existing.Id,
+                    update,
+                    SuppressSeoNotification: true,
+                    ExpectedState: new ImageMutationPrecondition(
+                        existing.OwnerType,
+                        existing.OwnerId,
+                        existing.Category,
+                        existing.IsCurrent,
+                        existing.UpdatedAtUtc)),
                 cancellationToken);
 
             if (!result.IsSuccess)
