@@ -98,8 +98,11 @@ un import externe ayant gagné côté image mais perdu côté compte est réconc
 l'état MongoDB autoritaire. Les remplacements complets de compte exigent une version
 inchangée et le heartbeat reprend après une panne MongoDB transitoire au lieu
 d'abandonner silencieusement la protection d'une écriture longue. Le verrou
-distribué de promotion d'image applique la même reprise avant d'annuler une
-opération qui pourrait avoir déjà effectué sa première écriture, mais annule
+distribué de promotion d'image applique la même reprise et rétrograde les autres
+images avant d'activer la cible ; une annulation ne peut donc pas laisser plusieurs
+images courantes, même si elle intervient juste avant l'expiration du bail. La cible
+est d'abord réservée comme non courante avec la précondition observée, afin qu'une
+demande obsolète ne puisse pas rétrograder l'image légitime. Le verrou annule ensuite
 l'ancien écrivain avant la dernière expiration confirmée si MongoDB reste
 indisponible. Après cette
 première écriture, la rétrogradation des autres images est réconciliée de manière

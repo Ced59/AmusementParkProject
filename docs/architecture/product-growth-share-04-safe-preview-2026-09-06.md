@@ -157,8 +157,10 @@ l'autre. Le verrou est renouvelé pendant l'opération et reprend son renouvelle
 après une erreur MongoDB transitoire. Son opération protégée est annulée avant la
 dernière expiration confirmée si MongoDB reste indisponible ; une ancienne promotion
 ne peut donc pas reprendre après qu'une autre instance a acquis le verrou. Celui-ci
-n'est libéré que par son propre jeton. Une promotion devenue partiellement validée réessaie sous ce
-verrou la rétrogradation idempotente des autres images avant de répondre ; une
+n'est libéré que par son propre jeton. La promotion rétrograde d'abord, sous le verrou,
+les autres images courantes de façon idempotente, puis vérifie encore son bail avant
+d'activer la cible. Une perte de bail peut donc laisser temporairement le périmètre
+sans image courante, mais jamais créer deux images courantes concurrentes ; une
 annulation du client après la première écriture ne laisse donc pas deux images
 courantes. Les actions de masse portent en plus la date de mise à jour observée :
 elles ne peuvent pas réécrire une description ou des crédits modifiés entre-temps.
@@ -244,7 +246,8 @@ Les tests ciblés couvrent :
 - annulation de l'écrivain avant récupération ou dès la perte confirmée de son lease ;
 - reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
 - annulation d'une promotion avant l'expiration de son dernier verrou confirmé ;
-- réconciliation d'une promotion après un échec MongoDB ambigu ;
+- réconciliation de la rétrogradation avant promotion après un échec MongoDB ambigu ;
+- annulation après rétrogradation sans activation tardive de la cible ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
 - incrément atomique de la révision après une vraie mutation ;
