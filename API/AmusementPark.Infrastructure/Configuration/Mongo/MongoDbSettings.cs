@@ -84,6 +84,8 @@ public sealed class MongoDbSettings
 
     public string ImagesCollectionName { get; set; } = "images";
 
+    public string ImageCurrentMutationLocksCollectionName { get; set; } = "image-current-mutation-locks";
+
     public string ImageTagsCollectionName { get; set; } = "imageTags";
 
     public string VideosCollectionName { get; set; } = "videos";

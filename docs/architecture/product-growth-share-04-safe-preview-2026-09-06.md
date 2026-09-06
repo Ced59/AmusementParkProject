@@ -122,6 +122,11 @@ et l'écriture, la mutation devenue obsolète est refusée au lieu de modifier u
 propriétaire non protégé. Les promotions qui suivent un import local ou distant
 réutilisent la même précondition. L'import d'un avatar pendant une connexion externe
 réserve lui aussi le lease avant de télécharger ou de créer l'image.
+Les promotions d'image sont en outre sérialisées par un verrou MongoDB distribué
+sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
+promouvoir simultanément deux images du même périmètre et se rétrograder l'une
+l'autre. Le verrou est renouvelé pendant l'opération, expire après un abandon et
+n'est libéré que par son propre jeton.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
@@ -154,7 +159,8 @@ Application
           ├── IShareSourceRevisionRepository
           ├── IRatingRepository (cibles visibles seulement)
           ├── IUserRepository (identité publique choisie seulement)
-          └── IImageRepository (avatar courant publié seulement)
+          ├── IImageRepository (avatar courant publié seulement)
+          └── IImageCurrentMutationLock (promotion sérialisée par périmètre)
           ▲
 Infrastructure
   ShareSourceRevisionRepository ── share-source-revisions

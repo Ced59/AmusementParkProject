@@ -200,6 +200,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IAttractionAccessConditionTypeDefinitionRepository, AttractionAccessConditionTypeDefinitionRepository>();
         services.AddScoped<ISearchReadRepository, SearchReadRepository>();
         services.AddScoped<IImageRepository, ImageRepository>();
+        services.AddScoped<IImageCurrentMutationLock, MongoImageCurrentMutationLock>();
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
         services.AddScoped<IImageVariantGenerationLease, MongoImageVariantGenerationLease>();
