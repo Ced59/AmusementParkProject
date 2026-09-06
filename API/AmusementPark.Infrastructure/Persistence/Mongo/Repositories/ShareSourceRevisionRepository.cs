@@ -14,6 +14,8 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
 {
     internal static readonly TimeSpan MutationLeaseDuration = TimeSpan.FromMinutes(5);
     internal static readonly TimeSpan MutationHeartbeatInterval = TimeSpan.FromMinutes(1);
+    internal static readonly TimeSpan WriterLeaseCancellationDelay =
+        MutationLeaseDuration - MutationHeartbeatInterval;
 
     private readonly IMongoCollection<ShareSourceRevisionDocument> collection;
     private readonly TimeProvider timeProvider;
@@ -72,7 +74,8 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         await this.RecoverExpiredLeasesAsync(normalizedScopeKey, nowUtc, cancellationToken);
 
-        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(normalizedScopeKey);
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            normalizedScopeKey);
         ShareSourceMutationLeaseDocument leaseDocument = new ShareSourceMutationLeaseDocument
         {
             Token = mutationLease.Token,
@@ -119,13 +122,21 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                 options,
                 cancellationToken);
         }
-
         if (document is null)
         {
             throw new InvalidOperationException("Unable to reserve the share source mutation.");
         }
 
-        this.StartHeartbeat(mutationLease);
+        CancellationTokenSource leaseCancellation = new CancellationTokenSource();
+        leaseCancellation.CancelAfter(WriterLeaseCancellationDelay);
+        mutationLease = new ShareSourceMutationLease(
+            mutationLease.ScopeKey,
+            mutationLease.Token,
+            leaseCancellation.Token);
+        this.StartHeartbeat(
+            mutationLease,
+            leaseCancellation,
+            leaseDocument.ExpiresAtUtc);
         return mutationLease;
     }
 
@@ -295,16 +306,23 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             .Set(document => document.UpdatedAt, heartbeatAtUtc);
     }
 
-    private void StartHeartbeat(ShareSourceMutationLease mutationLease)
+    private void StartHeartbeat(
+        ShareSourceMutationLease mutationLease,
+        CancellationTokenSource leaseCancellation,
+        DateTime confirmedExpiresAtUtc)
     {
-        CancellationTokenSource cancellation = new CancellationTokenSource();
-        if (!this.heartbeatCancellations.TryAdd(mutationLease.Token, cancellation))
+        if (!this.heartbeatCancellations.TryAdd(
+                mutationLease.Token,
+                leaseCancellation))
         {
-            cancellation.Dispose();
+            leaseCancellation.Dispose();
             throw new InvalidOperationException("The share source mutation heartbeat is already active.");
         }
 
-        _ = this.RunHeartbeatAsync(mutationLease, cancellation);
+        _ = this.RunHeartbeatAsync(
+            mutationLease,
+            leaseCancellation,
+            confirmedExpiresAtUtc);
     }
 
     private void StopHeartbeat(string mutationToken)
@@ -319,7 +337,8 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
 
     private async Task RunHeartbeatAsync(
         ShareSourceMutationLease mutationLease,
-        CancellationTokenSource cancellation)
+        CancellationTokenSource cancellation,
+        DateTime confirmedExpiresAtUtc)
     {
         try
         {
@@ -332,6 +351,12 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                 bool renewed = false;
                 while (!renewed)
                 {
+                    if (this.timeProvider.GetUtcNow().UtcDateTime >= confirmedExpiresAtUtc)
+                    {
+                        cancellation.Cancel();
+                        return;
+                    }
+
                     try
                     {
                         DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -343,9 +368,12 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                             cancellationToken: cancellation.Token);
                         if (result.MatchedCount == 0)
                         {
+                            cancellation.Cancel();
                             return;
                         }
 
+                        confirmedExpiresAtUtc = heartbeatAtUtc.Add(MutationLeaseDuration);
+                        cancellation.CancelAfter(WriterLeaseCancellationDelay);
                         renewed = true;
                     }
                     catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
@@ -358,8 +386,16 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                             exception,
                             "Unable to renew the share source mutation lease for {ScopeKey}; renewal will be retried.",
                             mutationLease.ScopeKey);
+                        TimeSpan retryInterval = GetHeartbeatRetryInterval(this.heartbeatInterval);
+                        DateTime retryAtUtc = this.timeProvider.GetUtcNow().UtcDateTime.Add(retryInterval);
+                        if (retryAtUtc >= confirmedExpiresAtUtc)
+                        {
+                            cancellation.Cancel();
+                            return;
+                        }
+
                         await Task.Delay(
-                            GetHeartbeatRetryInterval(this.heartbeatInterval),
+                            retryInterval,
                             this.timeProvider,
                             cancellation.Token);
                     }

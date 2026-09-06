@@ -90,6 +90,10 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? updated;
             try
@@ -106,13 +110,13 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                         precondition,
                         command.OwnerType,
                         normalizedOwnerId ?? string.Empty,
-                        cancellationToken)
+                        mutationCancellation.Token)
                     : await this.imageRepository.LinkIfUnchangedAsync(
                         image.Id,
                         precondition,
                         command.OwnerType,
                         normalizedOwnerId ?? string.Empty,
-                        cancellationToken);
+                        mutationCancellation.Token);
 
                 if (updated is null)
                 {
@@ -142,7 +146,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                             updated.Category,
                             updated.IsCurrent),
                         metadata,
-                        cancellationToken);
+                        mutationCancellation.Token);
                     if (metadataUpdated is not null)
                     {
                         updated = metadataUpdated;
@@ -153,13 +157,13 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 await SynchronizeOwnerAsync(
                     updated,
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    cancellationToken);
+                    mutationCancellation.Token);
             }
             finally
             {

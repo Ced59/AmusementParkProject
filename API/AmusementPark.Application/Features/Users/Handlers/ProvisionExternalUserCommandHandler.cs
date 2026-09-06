@@ -187,11 +187,15 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                     user.Id,
                     cancellationToken)
                 : null;
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
         bool sourceMutationAttempted = false;
         bool avatarImported = false;
         try
         {
-            await this.EnsurePublicIdentityAsync(user, cancellationToken);
+            await this.EnsurePublicIdentityAsync(user, mutationCancellation.Token);
 
             if (ShouldImportAvatar(user, identity))
             {
@@ -199,7 +203,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
@@ -211,7 +215,9 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             if (createIfMissing)
             {
-                return await this.userRepository.CreateAsync(user, cancellationToken);
+                return await this.userRepository.CreateAsync(
+                    user,
+                    mutationCancellation.Token);
             }
 
             sourceMutationAttempted |= previousIdentity !=
@@ -220,7 +226,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
-                cancellationToken);
+                mutationCancellation.Token);
             if (updatedUser is null && avatarImported)
             {
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
@@ -261,13 +267,17 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 user.Id,
                 cancellationToken)
             : null;
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
         bool sourceMutationAttempted = false;
         bool avatarImported = false;
         User? updatedUser;
         try
         {
             ApplyIdentityToUser(user, identity, false);
-            await this.EnsurePublicIdentityAsync(user, cancellationToken);
+            await this.EnsurePublicIdentityAsync(user, mutationCancellation.Token);
 
             if (ShouldImportAvatar(user, identity))
             {
@@ -275,7 +285,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
@@ -293,7 +303,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
-                cancellationToken);
+                mutationCancellation.Token);
             if (updatedUser is null && avatarImported)
             {
                 await UserAvatarShareSourceMutation.SynchronizeAsync(

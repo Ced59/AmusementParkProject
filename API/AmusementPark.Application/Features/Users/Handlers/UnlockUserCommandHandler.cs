@@ -34,11 +34,24 @@ public sealed class UnlockUserCommandHandler : ICommandHandler<UnlockUserCommand
 
         ShareSourceMutationLease mutationLease =
             await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
-        User? unlockedUser = await this.userRepository.UnlockAsync(command.UserId, cancellationToken);
-        await this.shareSourceRevisionGuard.CompleteMutationAsync(
-            mutationLease,
-            unlockedUser is not null,
-            CancellationToken.None);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
+        User? unlockedUser = null;
+        try
+        {
+            unlockedUser = await this.userRepository.UnlockAsync(
+                command.UserId,
+                mutationCancellation.Token);
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                unlockedUser is not null,
+                CancellationToken.None);
+        }
         if (unlockedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.CannotUnlockUser());

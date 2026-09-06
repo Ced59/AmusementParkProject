@@ -160,6 +160,9 @@ public sealed class ShareSourceRevisionRepositoryTests
         Assert.True(
             ShareSourceRevisionRepository.MutationHeartbeatInterval
             < ShareSourceRevisionRepository.MutationLeaseDuration);
+        Assert.True(
+            ShareSourceRevisionRepository.WriterLeaseCancellationDelay
+            < ShareSourceRevisionRepository.MutationLeaseDuration);
     }
 
     [Fact]
@@ -276,6 +279,53 @@ public sealed class ShareSourceRevisionRepositoryTests
             TimeSpan.FromSeconds(5),
             ShareSourceRevisionRepository.GetHeartbeatRetryInterval(
                 ShareSourceRevisionRepository.MutationHeartbeatInterval));
+    }
+
+    [Fact]
+    public async Task BeginMutationAsync_WhenHeartbeatNoLongerOwnsLease_ShouldCancelWriterLease()
+    {
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.Is<CancellationToken>(token => token.CanBeCanceled)))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevisionDocument
+            {
+                ScopeKey = "personal-ranking:owner-1",
+                Revision = 0,
+                CreatedAt = NowUtc,
+                UpdatedAt = NowUtc,
+            });
+        using ShareSourceRevisionRepository repository = new ShareSourceRevisionRepository(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<ShareSourceRevisionRepository>.Instance,
+            TimeSpan.FromMilliseconds(10));
+
+        ShareSourceMutationLease mutationLease = await repository.BeginMutationAsync(
+            "personal-ranking:owner-1",
+            CancellationToken.None);
+        Task leaseLossCancellation = Task.Delay(
+            Timeout.InfiniteTimeSpan,
+            mutationLease.LeaseCancellationToken);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => leaseLossCancellation.WaitAsync(TimeSpan.FromSeconds(1)));
+        collection.VerifyAll();
     }
 
     [Fact]

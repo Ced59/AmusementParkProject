@@ -155,6 +155,10 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
                 previousShareIdentity,
                 currentShareIdentity,
                 cancellationToken);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                shareMutationLease);
         bool shareSourceChanged = false;
         try
         {
@@ -162,7 +166,7 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
-                cancellationToken);
+                mutationCancellation.Token);
             if (updatedUser is null)
             {
                 return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());

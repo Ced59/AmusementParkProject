@@ -54,6 +54,10 @@ public sealed class ConfirmEmailCommandHandler : ICommandHandler<ConfirmEmailCom
 
         ShareSourceMutationLease mutationLease =
             await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
         DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         user.IsActivated = true;
         user.UpdatedAtUtc = DateTime.UtcNow;
@@ -68,7 +72,7 @@ public sealed class ConfirmEmailCommandHandler : ICommandHandler<ConfirmEmailCom
                 user.Id,
                 user,
                 expectedUpdatedAtUtc,
-                cancellationToken);
+                mutationCancellation.Token);
         }
         finally
         {

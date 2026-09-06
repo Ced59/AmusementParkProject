@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
@@ -558,11 +559,17 @@ public sealed class ParkItemRepository : IParkItemRepository
                 Array.Empty<ParkItem>(),
                 new[] { parkItem },
                 cancellationToken);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                rankingPreparation.ShareSourceMutationLeases);
         ParkItemDocument document = parkItem.ToDocument();
         document.CreatedAt = DateTime.UtcNow;
         document.UpdatedAt = document.CreatedAt;
 
-        await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        await this.collection.InsertOneAsync(
+            document,
+            cancellationToken: mutationCancellation.Token);
 
         this.ratingRankSnapshotCache.Invalidate();
         await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
@@ -591,11 +598,15 @@ public sealed class ParkItemRepository : IParkItemRepository
                     new[] { existing.ToDomain() },
                     new[] { document.ToDomain() },
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    rankingPreparation.ShareSourceMutationLeases);
 
             ReplaceOneResult result = await this.collection.ReplaceOneAsync(
                 BuildObservedRankingStateFilter(existing),
                 document,
-                cancellationToken: cancellationToken);
+                cancellationToken: mutationCancellation.Token);
 
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
@@ -629,9 +640,13 @@ public sealed class ParkItemRepository : IParkItemRepository
                     new[] { existing.ToDomain() },
                     Array.Empty<ParkItem>(),
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    rankingPreparation.ShareSourceMutationLeases);
             DeleteResult result = await this.collection.DeleteOneAsync(
                 BuildObservedRankingStateFilter(existing),
-                cancellationToken: cancellationToken);
+                cancellationToken: mutationCancellation.Token);
             bool deleted = result.DeletedCount > 0;
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(
                 rankingPreparation,
@@ -847,13 +862,17 @@ public sealed class ParkItemRepository : IParkItemRepository
                     previousItems,
                     currentItems,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    rankingPreparation.ShareSourceMutationLeases);
             FilterDefinition<ParkItemDocument> observedStatesFilter =
                 Builders<ParkItemDocument>.Filter.Or(
                     previousDocuments.Select(BuildObservedRankingStateFilter));
             UpdateResult result = await this.collection.UpdateManyAsync(
                 observedStatesFilter,
                 update,
-                cancellationToken: cancellationToken);
+                cancellationToken: mutationCancellation.Token);
             bool batchSourceChanged = result.ModifiedCount > 0;
             rankingSourceChanged |= batchSourceChanged;
             await this.rankingSourceChangeCoordinator.CompleteMutationAsync(

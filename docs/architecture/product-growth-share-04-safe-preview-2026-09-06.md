@@ -98,11 +98,13 @@ L'aperçu lit les deux révisions et l'identité publique, construit uniquement 
 contenu autorisé, puis les relit. Il est rejeté si un lease est actif, si une
 révision a changé ou si le pseudonyme, l'avatar ou l'état du compte diffère. Pendant
 une écriture vivante, un heartbeat repousse l'expiration du lease avec cinq
-minutes de marge. Après une interruption réelle, le heartbeat s'arrête, le lease
-expiré est retiré atomiquement et la révision avance de façon conservatrice. Si une
-écriture exceptionnellement tardive se termine après cette récupération, sa
-finalisation avance une seconde fois la révision : un aperçu pris entre les deux ne
-peut donc jamais rester égal à la version finale.
+minutes de marge. Le jeton d'annulation transmis à chaque écriture protégée expire
+une minute avant le lease serveur et est aussi annulé dès qu'un heartbeat confirme
+que le lease n'appartient plus à l'écrivain. Une écriture suspendue par une longue
+indisponibilité MongoDB ne peut donc pas reprendre après que l'aperçu a récupéré son
+lease. Après une interruption réelle, le lease expiré est retiré atomiquement et la
+révision avance de façon conservatrice. Si une écriture avait déjà été validée mais
+avait reçu une réponse ambiguë, sa finalisation avance encore la révision.
 Une erreur MongoDB transitoire pendant le renouvellement n'arrête pas le heartbeat :
 il réessaie toutes les cinq secondes au maximum tant que l'écriture détient son lease.
 
@@ -231,6 +233,7 @@ Les tests ciblés couvrent :
 - récupération prudente des leases expirés ;
 - renouvellement des leases actifs et nouvelle révision après une finalisation tardive ;
 - reprise du heartbeat après une erreur MongoDB transitoire ;
+- annulation de l'écrivain avant récupération ou dès la perte confirmée de son lease ;
 - reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
 - réconciliation d'une promotion après un échec MongoDB ambigu ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;

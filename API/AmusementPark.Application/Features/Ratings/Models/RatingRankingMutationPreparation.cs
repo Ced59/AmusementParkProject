@@ -16,6 +16,14 @@ public sealed class RatingRankingMutationPreparation
             .ToArray());
         this.PersonalRankingShareMutationLease = personalRankingShareMutationLease;
         this.PersonalRankingCatalogMutationLease = personalRankingCatalogMutationLease;
+        this.ShareSourceMutationLeases = Array.AsReadOnly(new[]
+            {
+                personalRankingShareMutationLease,
+                personalRankingCatalogMutationLease,
+            }
+            .Where(static lease => lease is not null)
+            .Select(static lease => lease!)
+            .ToArray());
     }
 
     public IReadOnlyCollection<RatingRankingMutationLease> MutationLeases { get; }
@@ -23,4 +31,6 @@ public sealed class RatingRankingMutationPreparation
     public ShareSourceMutationLease? PersonalRankingShareMutationLease { get; }
 
     public ShareSourceMutationLease? PersonalRankingCatalogMutationLease { get; }
+
+    public IReadOnlyCollection<ShareSourceMutationLease> ShareSourceMutationLeases { get; }
 }

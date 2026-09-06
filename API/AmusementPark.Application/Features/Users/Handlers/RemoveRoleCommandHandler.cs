@@ -39,14 +39,25 @@ public sealed class RemoveRoleCommandHandler : ICommandHandler<RemoveRoleCommand
 
         ShareSourceMutationLease mutationLease =
             await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
-        User? updatedUser = await this.userRepository.RemoveRoleAsync(
-            command.UserId,
-            command.Role,
-            cancellationToken);
-        await this.shareSourceRevisionGuard.CompleteMutationAsync(
-            mutationLease,
-            updatedUser is not null,
-            CancellationToken.None);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
+        User? updatedUser = null;
+        try
+        {
+            updatedUser = await this.userRepository.RemoveRoleAsync(
+                command.UserId,
+                command.Role,
+                mutationCancellation.Token);
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                updatedUser is not null,
+                CancellationToken.None);
+        }
         if (updatedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.RemoveRoleFailed());

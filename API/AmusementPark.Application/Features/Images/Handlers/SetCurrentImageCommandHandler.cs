@@ -85,6 +85,10 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? updated;
             try
@@ -99,7 +103,7 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                         image.IsCurrent),
                     image.OwnerType,
                     image.OwnerId,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (updated is null)
                 {
                     return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
@@ -109,13 +113,13 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 await SynchronizeOwnerAsync(
                     updated,
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    cancellationToken);
+                    mutationCancellation.Token);
             }
             finally
             {

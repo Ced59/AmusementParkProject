@@ -106,6 +106,10 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? updated;
             try
@@ -120,7 +124,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         existing.IsCurrent,
                         existing.UpdatedAtUtc),
                     metadata,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (updated is null)
                 {
                     return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
@@ -136,7 +140,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        cancellationToken);
+                        mutationCancellation.Token);
                 }
 
                 if (metadata.IsCurrent == true && updated.OwnerType != ImageOwnerType.None && !string.IsNullOrWhiteSpace(updated.OwnerId))
@@ -150,7 +154,7 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                             updated.IsCurrent),
                         updated.OwnerType,
                         updated.OwnerId,
-                        cancellationToken);
+                        mutationCancellation.Token);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
@@ -169,14 +173,14 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        cancellationToken);
+                        mutationCancellation.Token);
                 }
 
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    cancellationToken);
+                    mutationCancellation.Token);
             }
             finally
             {

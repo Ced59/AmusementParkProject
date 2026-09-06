@@ -83,8 +83,10 @@ catalogue public qui fournit les noms et la visibilité des cibles. L'identité 
 est aussi relue après la construction pour fermer la fenêtre des mutations concurrentes.
 Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
 révisions et l'identité restent stables. Un heartbeat distingue les écritures longues
-des écritures abandonnées ; une finalisation arrivée après récupération avance encore
-la révision. Les métadonnées des notes publiques sont toujours relues depuis le
+des écritures abandonnées. La perte confirmée du lease annule l'écrivain et son délai
+local expire avant le lease serveur : aucune écriture suspendue ne peut reprendre
+après récupération. Une finalisation ambiguë avance encore la révision. Les
+métadonnées des notes publiques sont toujours relues depuis le
 catalogue courant, sans repli sur un identifiant technique. Les détails et preuves
 sont consignés dans
 [`product-growth-share-04-safe-preview-2026-09-06.md`](../../architecture/product-growth-share-04-safe-preview-2026-09-06.md).

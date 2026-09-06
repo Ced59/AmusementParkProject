@@ -48,7 +48,7 @@ public sealed class ConfirmEmailCommandHandlerTests
                 user.Id,
                 It.Is<User>(value => value.IsActivated),
                 expectedUpdatedAtUtc,
-                CancellationToken.None))
+                It.Is<CancellationToken>(token => token.CanBeCanceled)))
             .ReturnsAsync((User?)null);
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);

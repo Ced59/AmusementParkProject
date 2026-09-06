@@ -104,12 +104,18 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             Image? image;
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
-                image = await this.remoteImageImporter.ImportAsync(importRequest, cancellationToken);
+                image = await this.remoteImageImporter.ImportAsync(
+                    importRequest,
+                    mutationCancellation.Token);
                 if (image is null)
                 {
                     return ApplicationResult<Image>.Failure(ImageApplicationErrors.RemoteImageImportFailed());
@@ -126,7 +132,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                             image.IsCurrent),
                         importRequest.OwnerType,
                         importRequest.OwnerId,
-                        cancellationToken);
+                        mutationCancellation.Token);
                     if (current is null)
                     {
                         return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
@@ -137,13 +143,13 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                         avatarOwnerUserIds,
                         this.imageRepository,
                         this.userRepository,
-                        cancellationToken);
+                        mutationCancellation.Token);
                     await SynchronizeOwnerAsync(
                         image,
                         this.parkRepository,
                         this.attractionManufacturerRepository,
                         this.searchProjectionWriter,
-                        cancellationToken);
+                        mutationCancellation.Token);
                 }
             }
             finally

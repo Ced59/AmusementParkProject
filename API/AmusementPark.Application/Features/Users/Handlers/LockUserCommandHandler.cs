@@ -34,11 +34,24 @@ public sealed class LockUserCommandHandler : ICommandHandler<LockUserCommand, Ap
 
         ShareSourceMutationLease mutationLease =
             await this.shareSourceRevisionGuard.BeginMutationAsync(user.Id, cancellationToken);
-        User? lockedUser = await this.userRepository.LockAsync(command.UserId, cancellationToken);
-        await this.shareSourceRevisionGuard.CompleteMutationAsync(
-            mutationLease,
-            lockedUser is not null,
-            CancellationToken.None);
+        using CancellationTokenSource mutationCancellation =
+            ShareSourceMutationCancellation.CreateLinkedSource(
+                cancellationToken,
+                mutationLease);
+        User? lockedUser = null;
+        try
+        {
+            lockedUser = await this.userRepository.LockAsync(
+                command.UserId,
+                mutationCancellation.Token);
+        }
+        finally
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutationLease,
+                lockedUser is not null,
+                CancellationToken.None);
+        }
         if (lockedUser is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.CannotLockUser());

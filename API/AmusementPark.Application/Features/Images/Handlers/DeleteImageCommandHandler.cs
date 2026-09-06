@@ -91,6 +91,10 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
                     cancellationToken);
+            using CancellationTokenSource mutationCancellation =
+                ShareSourceMutationCancellation.CreateLinkedSource(
+                    cancellationToken,
+                    avatarMutationLeases.Values);
             bool avatarSourceChanged = false;
             try
             {
@@ -102,7 +106,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                         image.OwnerId,
                         image.Category,
                         image.IsCurrent),
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (!deleted)
                 {
                     return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
@@ -113,12 +117,12 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.parkRepository,
                     this.attractionManufacturerRepository,
                     this.searchProjectionWriter,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 await UserAvatarShareSourceMutation.SynchronizeAsync(
                     avatarOwnerUserIds,
                     this.imageRepository,
                     this.userRepository,
-                    cancellationToken);
+                    mutationCancellation.Token);
                 if (!string.IsNullOrWhiteSpace(image.Path))
                 {
                     _ = await this.imageBinaryStorage.DeleteAsync(
