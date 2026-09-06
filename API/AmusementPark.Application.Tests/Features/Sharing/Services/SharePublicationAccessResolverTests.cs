@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
@@ -167,6 +168,31 @@ public sealed class SharePublicationAccessResolverTests
         publications.VerifyAll();
     }
 
+    [Fact]
+    public async Task ResolveAsync_WhenPublishedSourceVersionHasChanged_ShouldExposeNothing()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetResolvableByTokenAsync(
+                ShareToken.Parse(TokenValue),
+                CancellationToken.None))
+            .ReturnsAsync(publication);
+        SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
+            publications.Object,
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            CreateSources(ownerRevision: 1));
+
+        ApplicationResult<ResolvedSharePublicationResult> result = await resolver.ResolveAsync(
+            TokenValue,
+            SharePublicationType.PersonalRanking,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.shared-ranking.not-found");
+        publications.VerifyAll();
+    }
+
     private static SharePublication CreatePublishedPublication()
     {
         return SharePublication.Restore(
@@ -190,11 +216,22 @@ public sealed class SharePublicationAccessResolverTests
             Now);
     }
 
-    private static IReadOnlyCollection<ISharePublicationSourceDescriptor> CreateSources()
+    private static IReadOnlyCollection<ISharePublicationSourceDescriptor> CreateSources(
+        long ownerRevision = 0)
     {
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.GetOrCreateAsync(
+                "personal-ranking:owner-1",
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(ownerRevision, 0, Now));
+        revisions.Setup(value => value.GetOrCreateAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(new ShareSourceRevision(0, 0, Now));
         return new[]
         {
-            new PersonalRankingSharePublicationSource(Mock.Of<IShareSourceRevisionRepository>()),
+            new PersonalRankingSharePublicationSource(revisions.Object),
         };
     }
 }

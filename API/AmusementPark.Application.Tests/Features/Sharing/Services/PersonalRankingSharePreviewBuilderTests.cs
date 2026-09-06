@@ -107,7 +107,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
 
         Assert.True(result.IsSuccess);
         PersonalRankingSharePreviewResult preview = result.Value!.PersonalRanking!;
-        Assert.Equal("User", preview.DisplayName);
+        Assert.Null(preview.DisplayName);
         Assert.Null(preview.AvatarUrl);
         Assert.Null(preview.Statistics);
         Assert.Empty(preview.Ratings);

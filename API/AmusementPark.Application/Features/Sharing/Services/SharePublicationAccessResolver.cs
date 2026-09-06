@@ -53,6 +53,15 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             return NotFound();
         }
 
+        ApplicationResult<long> sourceVersionResult = await source.GetCurrentSourceVersionAsync(
+            publication.SourceScopeKey,
+            cancellationToken);
+        if (!sourceVersionResult.IsSuccess
+            || sourceVersionResult.Value != publication.SourceVersion)
+        {
+            return NotFound();
+        }
+
         User? user = await this.userRepository.GetByIdAsync(
             publication.OwnerUserId,
             cancellationToken);

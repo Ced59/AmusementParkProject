@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Observable, of, Subject } from 'rxjs';
 
 import {
@@ -20,6 +21,7 @@ import {
   SharePublicationSettings
 } from '@app/models/sharing/share-publication.models';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
 import { PROFILE_RATINGS_PORT, ProfileRatingsPort } from './profile-ratings-state-data.ports';
 import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component';
@@ -180,7 +182,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
         includedFields: request.includedFields
       },
       personalRanking: {
-        displayName: request.includedFields.includes('PublicDisplayName') ? 'Camille' : 'User',
+        displayName: request.includedFields.includes('PublicDisplayName') ? 'Camille' : null,
         avatarUrl: null,
         statistics: createStats(),
         ratings: [],
@@ -409,7 +411,11 @@ describe('ProfileRatingsPanelComponent', () => {
       '.ranking-share__actions a',
     );
     expect(sharedLink?.getAttribute('href')).toBe('/en/rankings/shared/opaque-share-id');
-    expect(fixture.nativeElement.querySelector('app-public-share-panel')).not.toBeNull();
+    const sharePanel: PublicSharePanelComponent = fixture.debugElement
+      .query(By.directive(PublicSharePanelComponent))
+      .componentInstance as PublicSharePanelComponent;
+    expect(sharePanel.targetTitle).not.toContain('Camille');
+    expect(sharePanel.textParams['name']).not.toBe('Camille');
 
     const actionButtons: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
       '.ranking-share__actions button',

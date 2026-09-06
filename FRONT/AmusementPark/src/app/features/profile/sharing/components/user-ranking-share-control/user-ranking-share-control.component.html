@@ -137,12 +137,12 @@
     <app-public-share-panel
       targetType="UserRanking"
       [targetId]="settings()?.shareId || null"
-      [targetTitle]="('ratings.share.social.title' | translate:{ name: displayName || 'Amusement Parks' })"
+      [targetTitle]="('ratings.share.social.title' | translate:{ name: sharedDisplayName() })"
       [shareUrlOverride]="publicPath"
       titleKey="ratings.share.social.title"
       descriptionKey="ratings.share.social.description"
       textKey="ratings.share.social.text"
-      [textParams]="{ name: displayName || 'Amusement Parks' }">
+      [textParams]="{ name: sharedDisplayName() }">
     </app-public-share-panel>
   } @else {
     <div class="ranking-share__actions">

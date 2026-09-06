@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Signal, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { UserRankingShareSettings } from '@app/models/ratings/rating.models';
 import { PersonalRankingSharePreview, SharePublicationPreview } from '@app/models/sharing/share-publication.models';
@@ -43,10 +43,22 @@ export class UserRankingShareControlComponent implements OnInit {
       ? `/${this.currentLangSignal()}/rankings/shared/${encodeURIComponent(shareId)}`
       : null;
   });
+  protected readonly sharedDisplayName: Signal<string> = computed(() => {
+    this.currentLangSignal();
+    const includedFields: readonly string[] = this.settings()?.includedFields ?? [];
+    if (includedFields.includes('PublicDisplayName')) {
+      return this.displayName.trim() || 'Amusement Parks';
+    }
+
+    return this.translateService.instant('ratings.share.editor.anonymousProfile') as string;
+  });
 
   private readonly currentLangSignal = signal<string>('en');
 
-  constructor(private readonly stateFacade: UserRankingShareStateFacade) {
+  constructor(
+    private readonly stateFacade: UserRankingShareStateFacade,
+    private readonly translateService: TranslateService
+  ) {
   }
 
   ngOnInit(): void {
