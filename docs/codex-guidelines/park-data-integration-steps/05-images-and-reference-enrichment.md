@@ -52,7 +52,8 @@ Les propriétaires importables par JSON upsert sont :
 Rechercher systématiquement, quand l’entité est applicable :
 
 - le logo officiel actuel du parc, distinct de toute photo principale ;
-- au moins une image représentative du parc ;
+- au moins cinq photographies générales distinctes du parc, hors logo, montrant réellement le site dans son ensemble ou plusieurs de ses espaces identifiables ;
+- au moins trois photographies distinctes et fidèles de chaque parkItem important, actuel ou historique, avec des vues ou contextes complémentaires ;
 - au moins une image fidèle de chaque attraction actuelle ;
 - au moins une image fidèle de chaque attraction annoncée ou en construction, en distinguant chantier, rendu officiel et attraction ouverte ;
 - au moins une image historique contextualisée de chaque attraction définitivement fermée ;
@@ -60,6 +61,10 @@ Rechercher systématiquement, quand l’entité est applicable :
 - les images utiles des références importantes quand une source adaptée existe.
 
 Une même image peut illustrer plusieurs contenus seulement si elle reste réellement pertinente dans chacun de ces contextes. Ne pas réutiliser mécaniquement une vue générale du parc pour masquer l’absence d’une photo de l’attraction, du jalon ou de l’article concerné.
+
+Le logo ne compte jamais parmi les cinq vues générales. Un gros plan d’attraction, une image générique, un plan, un rendu non photographique ou un visuel promotionnel qui ne permet pas d’identifier le parc comme lieu ne compte pas non plus. Les trois images d’un parkItem important ne peuvent pas être trois fichiers ou recadrages quasi identiques : elles doivent apporter des vues, ambiances, périodes ou contextes réellement complémentaires. L’importance d’un parkItem est établie par sa place dans l’offre actuelle, sa notoriété, son rôle dans l’identité du parc ou sa portée historique, jamais pour optimiser mécaniquement un compteur.
+
+Les minima de cinq et trois images sont la norme lorsque des sources adaptées existent. Une source secondaire est autorisée si le sujet est identifié sans ambiguïté, l’image est créditable, techniquement importable, inspectée visuellement et dépourvue de watermark tiers. Pour un parc trop petit ou une entité insuffisamment documentée, une exception est possible seulement après recherche dans les sources officielles, presse, archives, fonds de contributeurs et sources spécialisées pertinentes. Le registre doit alors indiquer le nombre atteint, les familles de sources vérifiées et la raison factuelle de l’écart. Ne jamais compléter un quota avec une image générique, trompeuse, mal attribuée ou quasi dupliquée.
 
 L’absence d’image est acceptable uniquement après une recherche réelle dans les sources officielles, espaces presse, archives, presse, fonds photographiques et sources spécialisées adaptées. Consigner le propriétaire, les familles de sources vérifiées et la raison de l’échec dans le registre des lacunes. Ne jamais compenser avec une image générique, une mauvaise attraction ou un rendu présenté comme une photographie.
 
@@ -393,6 +398,8 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
 - Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant. L'exception rarissime d'un très petit parc suit la procédure documentée ci-dessus et reste un bloqueur tant que la lacune exacte n'a pas été explicitement acceptée.
+- Le parc possède au moins cinq vraies photographies générales distinctes, hors logo, ou une exception documentée précise le nombre atteint, les recherches menées et la raison factuelle de l’écart.
+- Chaque parkItem important possède au moins trois photographies distinctes et fidèles, ou une exception documentée précise le nombre atteint, les recherches menées et la raison factuelle de l’écart.
 - Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 9 n’a pas été donnée.
 - Chaque attraction actuelle, annoncée, en construction ou définitivement fermée a au moins une image fidèle, ou une exception de recherche précisément documentée.
 - Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.
@@ -411,6 +418,8 @@ Calculer provisoirement la couverture depuis le registre consolidé, puis confir
 
 - logo officiel : présent et courant / absent ;
 - image principale du parc : présente / absente ;
+- photographies générales distinctes du parc : nombre / 5, hors logo et hors gros plans de parkItems ;
+- parkItems importants disposant d’au moins 3 photographies distinctes / total, avec le nombre d’images par identifiant ;
 - attractions actuelles avec image / total ;
 - attractions annoncées ou en construction avec image / total ;
 - attractions définitivement fermées avec image / total ;

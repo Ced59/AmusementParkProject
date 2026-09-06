@@ -1,6 +1,20 @@
 {
-  "version": "5.2.4",
+  "version": "5.2.5",
   "history": [
+    {
+      "version": "5.2.5",
+      "releasedAt": "2026-09-06",
+      "labels": {
+        "fr": "Les fiches de parcs gagnent des images mieux sélectionnées et plus complètes.",
+        "en": "Park pages now feature better-selected and more complete imagery.",
+        "de": "Parkseiten bieten jetzt besser ausgewählte und vollständigere Bilder.",
+        "nl": "Parkpagina's bieden nu beter geselecteerde en completere beelden.",
+        "it": "Le schede dei parchi offrono ora immagini meglio selezionate e più complete.",
+        "es": "Las fichas de los parques ofrecen ahora imágenes mejor seleccionadas y más completas.",
+        "pl": "Karty parków zawierają teraz lepiej dobrane i pełniejsze zestawy zdjęć.",
+        "pt": "As páginas dos parques apresentam agora imagens mais bem selecionadas e completas."
+      }
+    },
     {
       "version": "5.2.4",
       "releasedAt": "2026-09-06",
