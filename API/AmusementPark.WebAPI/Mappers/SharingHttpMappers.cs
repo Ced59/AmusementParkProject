@@ -116,7 +116,22 @@ public static class SharingHttpMappers
     private static bool TryParseDefined<TEnum>(string? value, out TEnum parsed)
         where TEnum : struct, Enum
     {
-        return Enum.TryParse(value?.Trim(), ignoreCase: true, out parsed)
-            && Enum.IsDefined(parsed);
+        parsed = default;
+        string? normalized = value?.Trim();
+        if (string.IsNullOrWhiteSpace(normalized)
+            || !Enum.TryParse(normalized, ignoreCase: true, out TEnum candidate))
+        {
+            return false;
+        }
+
+        string? canonicalName = Enum.GetName(candidate);
+        if (canonicalName is null
+            || !string.Equals(canonicalName, normalized, StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        parsed = candidate;
+        return true;
     }
 }

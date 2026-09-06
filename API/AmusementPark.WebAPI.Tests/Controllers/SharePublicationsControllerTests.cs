@@ -88,6 +88,35 @@ public sealed class SharePublicationsControllerTests
         handler.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData("4", "Hidden", "GlobalRatings")]
+    [InlineData("PersonalRanking", "0", "GlobalRatings")]
+    [InlineData("PersonalRanking", "Hidden", "5")]
+    [InlineData("VisitRecap, YearRecap", "Hidden", "GlobalRatings")]
+    [InlineData("PersonalRanking", "Hidden", "PublicDisplayName, Avatar")]
+    public async Task PreviewAsync_WhenEnumIsNotAnExplicitName_ShouldReturnBadRequestWithoutCallingApplication(
+        string publicationType,
+        string datePrecision,
+        string includedField)
+    {
+        Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>> handler =
+            new Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict);
+        SharePublicationsController controller = CreateController(handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.PreviewAsync(
+            new SharePublicationPreviewRequestDto
+            {
+                PublicationType = publicationType,
+                DatePrecision = datePrecision,
+                IncludedFields = new List<string> { includedField },
+            },
+            CancellationToken.None);
+
+        Assert.IsType<BadRequestResult>(result);
+        handler.VerifyNoOtherCalls();
+    }
+
     [Fact]
     public async Task PreviewAsync_WhenRollingCandidateIsNotCompatible_ShouldReturnServiceUnavailable()
     {
