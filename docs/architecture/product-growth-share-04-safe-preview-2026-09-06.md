@@ -115,17 +115,24 @@ leurs deux URL publiques depuis MongoDB avant de régler les leases. Une
 dépublication unitaire ou en masse utilise le même chemin et retire donc l'avatar
 public sans fenêtre incohérente. Toute réponse de mutation ambiguë est traitée
 prudemment comme un changement possible afin de faire avancer la révision.
-Les rattachements, promotions, changements de métadonnées et suppressions portent en plus une
-précondition MongoDB atomique sur le propriétaire, la catégorie et l'état courant
-observés : si une autre requête a transféré l'image entre la lecture et l'écriture,
-la mutation devenue obsolète est refusée au lieu de modifier un propriétaire non
-protégé. Les promotions qui suivent un import local ou distant réutilisent la même
-précondition. L'import d'un avatar pendant une connexion externe réserve lui aussi
-le lease avant de télécharger ou de créer l'image.
+Les rattachements, promotions, changements de métadonnées et suppressions portent
+en plus une précondition MongoDB atomique sur le propriétaire, la catégorie et
+l'état courant observés : si une autre requête a transféré l'image entre la lecture
+et l'écriture, la mutation devenue obsolète est refusée au lieu de modifier un
+propriétaire non protégé. Les promotions qui suivent un import local ou distant
+réutilisent la même précondition. L'import d'un avatar pendant une connexion externe
+réserve lui aussi le lease avant de télécharger ou de créer l'image.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
 attraction protègent la révision du catalogue.
+
+Pendant un déploiement sans interruption, le candidat API dessert les routes
+existantes mais répond `503` sur le nouvel aperçu. L'ancienne API ne connaît pas
+encore cette route. L'aperçu ne devient donc disponible qu'avec l'instance API
+canonique mise à niveau, après l'arrêt de tous les anciens processus d'écriture ;
+le candidat est ensuite retiré. Cette barrière évite de mélanger un aperçu versionné avec une
+écriture exécutée par une ancienne instance qui ne connaît pas encore les leases.
 
 Les libellés de parc, catégories et types d'attraction sont reconstruits depuis le
 catalogue courant. Les copies techniques présentes dans les anciens documents de

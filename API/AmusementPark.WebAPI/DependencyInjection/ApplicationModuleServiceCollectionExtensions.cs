@@ -19,6 +19,8 @@ public static class ApplicationModuleServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(configuration);
 
         services.Configure<SeoSettings>(configuration.GetSection(SeoSettings.SectionName));
+        services.Configure<SharePublicationRolloutSettings>(
+            configuration.GetSection(SharePublicationRolloutSettings.SectionName));
         services.AddScoped<IPublicSeoContextProvider, SeoPublicContextProvider>();
         services.AddApplication();
         services.AddApplicationHandlers(static type =>

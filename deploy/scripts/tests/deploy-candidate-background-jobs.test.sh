@@ -15,4 +15,9 @@ if ! grep -Fq -- '-e DurableBackgroundJobs__Worker__Enabled=false' <<< "${candid
   exit 1
 fi
 
+if ! grep -Fq -- '-e Sharing__SharePublicationPreview__Enabled=false' <<< "${candidate_function}"; then
+  echo 'The API deployment candidate must disable share previews until legacy writers are gone.' >&2
+  exit 1
+fi
+
 echo 'Deployment candidate background job isolation tests passed.'

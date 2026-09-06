@@ -5,12 +5,14 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
@@ -42,10 +44,8 @@ public sealed class SharePublicationsControllerTests
                     && query.IncludedFields.SequenceEqual(new[] { ShareContentField.GlobalRatings })),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<SharePublicationPreviewResult>.Success(preview));
-        SharePublicationsController controller = new SharePublicationsController(handler.Object)
-        {
-            ControllerContext = CreateControllerContext("owner-1"),
-        };
+        SharePublicationsController controller = CreateController(handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
 
         IActionResult result = await controller.PreviewAsync(
             new SharePublicationPreviewRequestDto
@@ -71,10 +71,8 @@ public sealed class SharePublicationsControllerTests
     {
         Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>> handler =
             new Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict);
-        SharePublicationsController controller = new SharePublicationsController(handler.Object)
-        {
-            ControllerContext = CreateControllerContext("owner-1"),
-        };
+        SharePublicationsController controller = CreateController(handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
 
         IActionResult result = await controller.PreviewAsync(
             new SharePublicationPreviewRequestDto
@@ -85,6 +83,23 @@ public sealed class SharePublicationsControllerTests
             CancellationToken.None);
 
         Assert.IsType<BadRequestResult>(result);
+        handler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenRollingCandidateIsNotCompatible_ShouldReturnServiceUnavailable()
+    {
+        Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>> handler =
+            new Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict);
+        SharePublicationsController controller = CreateController(handler.Object, false);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.PreviewAsync(
+            new SharePublicationPreviewRequestDto(),
+            CancellationToken.None);
+
+        StatusCodeResult unavailable = Assert.IsType<StatusCodeResult>(result);
+        Assert.Equal(StatusCodes.Status503ServiceUnavailable, unavailable.StatusCode);
         handler.VerifyNoOtherCalls();
     }
 
@@ -122,5 +137,14 @@ public sealed class SharePublicationsControllerTests
                 User = new ClaimsPrincipal(identity),
             },
         };
+    }
+
+    private static SharePublicationsController CreateController(
+        IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> handler,
+        bool enabled = true)
+    {
+        return new SharePublicationsController(
+            handler,
+            Options.Create(new SharePublicationRolloutSettings { Enabled = enabled }));
     }
 }
