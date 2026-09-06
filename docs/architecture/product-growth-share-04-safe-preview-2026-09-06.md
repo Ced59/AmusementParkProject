@@ -65,8 +65,11 @@ matérialiser toutes les notes du compte en mémoire applicative. Une note visib
 supplémentaire sert uniquement à signaler explicitement la troncature au lieu de
 prétendre que le résultat est complet.
 L'endpoint coûteux possède en plus une limite dédiée par compte, cumulée à la
-protection globale par adresse IP. Un même utilisateur ne peut donc pas multiplier
-les agrégations en changeant simplement de connexion réseau.
+protection globale par adresse IP. Cette première barrière s'exécute avant l'analyse
+du jeton d'authentification ; la limite par compte s'applique ensuite, une fois
+l'identité établie. Un même utilisateur ne peut donc pas multiplier les agrégations
+en changeant simplement de connexion réseau et un faux jeton coûteux ne contourne
+pas la protection du VPS.
 
 ## Barrière de révision
 
@@ -143,13 +146,18 @@ pas devenir courante dans deux périmètres différents.
 Les autres remplacements complets d'un compte — profil, confirmation d'email et
 flux de réinitialisation du mot de passe — exigent désormais la date de mise à jour
 lue initialement. Une écriture concurrente fait échouer la comparaison atomique au
-lieu d'être remplacée ; l'ancienne opération non protégée a été retirée du port.
+lieu d'être remplacée ; l'ancienne opération non protégée a été retirée du port. Dès
+qu'une écriture susceptible de changer l'identité publique est envoyée à MongoDB,
+sa finalisation avance prudemment la révision, même si la réponse est un timeout ou
+un résultat de comparaison négatif.
 Les promotions d'image sont en outre sérialisées par un verrou MongoDB distribué
 sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
 promouvoir simultanément deux images du même périmètre et se rétrograder l'une
-l'autre. Le verrou est renouvelé pendant l'opération, reprend son renouvellement
-après une erreur MongoDB transitoire, expire après un abandon et n'est libéré que
-par son propre jeton. Une promotion devenue partiellement validée réessaie sous ce
+l'autre. Le verrou est renouvelé pendant l'opération et reprend son renouvellement
+après une erreur MongoDB transitoire. Son opération protégée est annulée avant la
+dernière expiration confirmée si MongoDB reste indisponible ; une ancienne promotion
+ne peut donc pas reprendre après qu'une autre instance a acquis le verrou. Celui-ci
+n'est libéré que par son propre jeton. Une promotion devenue partiellement validée réessaie sous ce
 verrou la rétrogradation idempotente des autres images avant de répondre ; une
 annulation du client après la première écriture ne laisse donc pas deux images
 courantes. Les actions de masse portent en plus la date de mise à jour observée :
@@ -235,6 +243,7 @@ Les tests ciblés couvrent :
 - reprise du heartbeat après une erreur MongoDB transitoire ;
 - annulation de l'écrivain avant récupération ou dès la perte confirmée de son lease ;
 - reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
+- annulation d'une promotion avant l'expiration de son dernier verrou confirmé ;
 - réconciliation d'une promotion après un échec MongoDB ambigu ;
 - rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
 - succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
@@ -257,6 +266,7 @@ Les tests ciblés couvrent :
 - reconstruction des métadonnées publiques depuis le parc et l'attraction actuels ;
 - authentification, `no-store`, parsing strict des enums et DTO HTTP ;
 - limite ciblée par compte sur la génération des aperçus ;
+- barrière IP avant authentification puis limite dédiée après authentification ;
 - clés fonctionnelles stables pour les types et catégories, sans clé technique de parc ;
 - enregistrement des ports MongoDB et du builder spécialisé.
 

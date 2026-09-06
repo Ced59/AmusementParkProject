@@ -63,7 +63,7 @@ public sealed class UpdateUserProfileCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenProfilePersistenceFails_ShouldReleasePersonalShareSourceLease()
+    public async Task HandleAsync_WhenProfilePersistenceFails_ShouldAdvancePersonalShareSourceRevisionConservatively()
     {
         User user = CreateUser("user-1", "OldName");
         DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
@@ -93,7 +93,7 @@ public sealed class UpdateUserProfileCommandHandlerTests
             .ReturnsAsync(mutationLease);
         shareRevisions.Setup(value => value.CompleteMutationAsync(
                 mutationLease,
-                false,
+                true,
                 CancellationToken.None))
             .ReturnsAsync(new ShareSourceRevision(1, 0, DateTime.UtcNow));
         UpdateUserProfileCommandHandler handler = CreateHandler(

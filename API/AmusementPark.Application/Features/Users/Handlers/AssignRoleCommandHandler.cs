@@ -43,9 +43,11 @@ public sealed class AssignRoleCommandHandler : ICommandHandler<AssignRoleCommand
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
                 mutationLease);
-        User? updatedUser = null;
+        bool sourceMutationAttempted = false;
+        User? updatedUser;
         try
         {
+            sourceMutationAttempted = true;
             updatedUser = await this.userRepository.AssignRoleAsync(
                 command.UserId,
                 command.Role,
@@ -55,7 +57,7 @@ public sealed class AssignRoleCommandHandler : ICommandHandler<AssignRoleCommand
         {
             await this.shareSourceRevisionGuard.CompleteMutationAsync(
                 mutationLease,
-                updatedUser is not null,
+                sourceMutationAttempted,
                 CancellationToken.None);
         }
         if (updatedUser is null)

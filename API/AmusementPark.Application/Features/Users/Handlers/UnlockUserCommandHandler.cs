@@ -38,9 +38,11 @@ public sealed class UnlockUserCommandHandler : ICommandHandler<UnlockUserCommand
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
                 mutationLease);
-        User? unlockedUser = null;
+        bool sourceMutationAttempted = false;
+        User? unlockedUser;
         try
         {
+            sourceMutationAttempted = true;
             unlockedUser = await this.userRepository.UnlockAsync(
                 command.UserId,
                 mutationCancellation.Token);
@@ -49,7 +51,7 @@ public sealed class UnlockUserCommandHandler : ICommandHandler<UnlockUserCommand
         {
             await this.shareSourceRevisionGuard.CompleteMutationAsync(
                 mutationLease,
-                unlockedUser is not null,
+                sourceMutationAttempted,
                 CancellationToken.None);
         }
         if (unlockedUser is null)

@@ -99,10 +99,15 @@ l'état MongoDB autoritaire. Les remplacements complets de compte exigent une ve
 inchangée et le heartbeat reprend après une panne MongoDB transitoire au lieu
 d'abandonner silencieusement la protection d'une écriture longue. Le verrou
 distribué de promotion d'image applique la même reprise avant d'annuler une
-opération qui pourrait avoir déjà effectué sa première écriture. Après cette
+opération qui pourrait avoir déjà effectué sa première écriture, mais annule
+l'ancien écrivain avant la dernière expiration confirmée si MongoDB reste
+indisponible. Après cette
 première écriture, la rétrogradation des autres images est réconciliée de manière
 idempotente sous le verrou. Les actions de masse refusent aussi d'écraser des
-métadonnées concurrentes grâce à leur date observée.
+métadonnées concurrentes grâce à leur date observée. Les écritures de profil à
+réponse ambiguë font avancer prudemment la révision et la protection IP s'exécute
+avant l'authentification, tandis que le plafond propre à l'aperçu s'applique ensuite
+au compte identifié.
 
 Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
 classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et

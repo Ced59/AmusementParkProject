@@ -65,9 +65,11 @@ public sealed class ConfirmEmailCommandHandler : ICommandHandler<ConfirmEmailCom
         user.EmailConfirmationTokenExpiresAtUtc = null;
         user.EmailConfirmationSentAtUtc = null;
 
-        User? updatedUser = null;
+        bool sourceMutationAttempted = false;
+        User? updatedUser;
         try
         {
+            sourceMutationAttempted = true;
             updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
                 user.Id,
                 user,
@@ -78,7 +80,7 @@ public sealed class ConfirmEmailCommandHandler : ICommandHandler<ConfirmEmailCom
         {
             await this.shareSourceRevisionGuard.CompleteMutationAsync(
                 mutationLease,
-                updatedUser is not null,
+                sourceMutationAttempted,
                 CancellationToken.None);
         }
         if (updatedUser is null)

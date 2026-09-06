@@ -14,7 +14,7 @@ namespace AmusementPark.Application.Tests.Features.Users;
 public sealed class ConfirmEmailCommandHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenAccountChangesConcurrently_ShouldReleaseLeaseWithoutReplacingIt()
+    public async Task HandleAsync_WhenAccountChangesConcurrently_ShouldAdvanceLeaseConservatively()
     {
         DateTime expectedUpdatedAtUtc = new DateTime(
             2026,
@@ -58,7 +58,7 @@ public sealed class ConfirmEmailCommandHandlerTests
             .ReturnsAsync(lease);
         revisions.Setup(guard => guard.CompleteMutationAsync(
                 lease,
-                false,
+                true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         ConfirmEmailCommandHandler handler = new ConfirmEmailCommandHandler(

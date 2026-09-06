@@ -162,6 +162,7 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         bool shareSourceChanged = false;
         try
         {
+            shareSourceChanged = shareMutationLease is not null;
             User? updatedUser = await this.userRepository.UpdateIfUnchangedAsync(
                 user.Id,
                 user,
@@ -171,8 +172,6 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
             {
                 return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
             }
-
-            shareSourceChanged = shareMutationLease is not null;
 
             if (!string.IsNullOrWhiteSpace(confirmationToken))
             {

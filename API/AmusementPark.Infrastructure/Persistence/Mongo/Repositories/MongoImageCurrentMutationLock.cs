@@ -20,6 +20,7 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
     private readonly IMongoCollection<ImageCurrentMutationLockDocument> collection;
     private readonly TimeProvider timeProvider;
     private readonly ILogger<MongoImageCurrentMutationLock> logger;
+    private readonly TimeSpan leaseDuration;
     private readonly TimeSpan heartbeatInterval;
 
     public MongoImageCurrentMutationLock(
@@ -38,7 +39,12 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         IMongoCollection<ImageCurrentMutationLockDocument> collection,
         TimeProvider timeProvider,
         ILogger<MongoImageCurrentMutationLock> logger)
-        : this(collection, timeProvider, logger, HeartbeatInterval)
+        : this(
+            collection,
+            timeProvider,
+            logger,
+            LeaseDuration,
+            HeartbeatInterval)
     {
     }
 
@@ -47,15 +53,36 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         TimeProvider timeProvider,
         ILogger<MongoImageCurrentMutationLock> logger,
         TimeSpan heartbeatInterval)
+        : this(
+            collection,
+            timeProvider,
+            logger,
+            LeaseDuration,
+            heartbeatInterval)
+    {
+    }
+
+    internal MongoImageCurrentMutationLock(
+        IMongoCollection<ImageCurrentMutationLockDocument> collection,
+        TimeProvider timeProvider,
+        ILogger<MongoImageCurrentMutationLock> logger,
+        TimeSpan leaseDuration,
+        TimeSpan heartbeatInterval)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        if (heartbeatInterval <= TimeSpan.Zero || heartbeatInterval >= LeaseDuration)
+        if (leaseDuration <= TimeSpan.Zero)
+        {
+            throw new ArgumentOutOfRangeException(nameof(leaseDuration));
+        }
+
+        if (heartbeatInterval <= TimeSpan.Zero || heartbeatInterval >= leaseDuration)
         {
             throw new ArgumentOutOfRangeException(nameof(heartbeatInterval));
         }
 
+        this.leaseDuration = leaseDuration;
         this.heartbeatInterval = heartbeatInterval;
     }
 
@@ -71,14 +98,25 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
 
         string scopeKey = BuildScopeKey(ownerType, ownerId, category);
         string leaseToken = Guid.NewGuid().ToString("N");
-        await this.AcquireAsync(scopeKey, leaseToken, cancellationToken);
+        DateTime confirmedExpiresAtUtc = await this.AcquireAsync(
+            scopeKey,
+            leaseToken,
+            cancellationToken);
 
         using CancellationTokenSource heartbeatCancellation = new CancellationTokenSource();
         using CancellationTokenSource leaseLostCancellation = new CancellationTokenSource();
+        using CancellationTokenSource heartbeatLoopCancellation =
+            CancellationTokenSource.CreateLinkedTokenSource(
+                heartbeatCancellation.Token,
+                leaseLostCancellation.Token);
+        this.ScheduleLeaseLossCancellation(
+            leaseLostCancellation,
+            confirmedExpiresAtUtc);
         Task heartbeat = this.MaintainLeaseAsync(
             scopeKey,
             leaseToken,
-            heartbeatCancellation.Token,
+            confirmedExpiresAtUtc,
+            heartbeatLoopCancellation.Token,
             leaseLostCancellation);
         try
         {
@@ -132,7 +170,7 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
             & builder.Eq(static document => document.Token, leaseToken);
     }
 
-    private async Task AcquireAsync(
+    private async Task<DateTime> AcquireAsync(
         string scopeKey,
         string leaseToken,
         CancellationToken cancellationToken)
@@ -141,9 +179,14 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         while (true)
         {
             DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-            if (await this.TryAcquireAsync(scopeKey, leaseToken, nowUtc, cancellationToken))
+            DateTime? expiresAtUtc = await this.TryAcquireAsync(
+                scopeKey,
+                leaseToken,
+                nowUtc,
+                cancellationToken);
+            if (expiresAtUtc.HasValue)
             {
-                return;
+                return expiresAtUtc.Value;
             }
 
             if (nowUtc >= deadlineUtc)
@@ -156,17 +199,18 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         }
     }
 
-    private async Task<bool> TryAcquireAsync(
+    private async Task<DateTime?> TryAcquireAsync(
         string scopeKey,
         string leaseToken,
         DateTime nowUtc,
         CancellationToken cancellationToken)
     {
+        DateTime expiresAtUtc = nowUtc.Add(this.leaseDuration);
         UpdateDefinition<ImageCurrentMutationLockDocument> update =
             Builders<ImageCurrentMutationLockDocument>.Update
                 .SetOnInsert(static document => document.ScopeKey, scopeKey)
                 .Set(static document => document.Token, leaseToken)
-                .Set(static document => document.ExpiresAtUtc, nowUtc.Add(LeaseDuration))
+                .Set(static document => document.ExpiresAtUtc, expiresAtUtc)
                 .Set(static document => document.UpdatedAtUtc, nowUtc);
         try
         {
@@ -181,22 +225,25 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
                     },
                     cancellationToken);
             return document is not null
-                && string.Equals(document.Token, leaseToken, StringComparison.Ordinal);
+                && string.Equals(document.Token, leaseToken, StringComparison.Ordinal)
+                    ? expiresAtUtc
+                    : null;
         }
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
         {
-            return false;
+            return null;
         }
         catch (MongoCommandException exception) when (exception.Code == 11000)
         {
-            return false;
+            return null;
         }
     }
 
     private async Task MaintainLeaseAsync(
         string scopeKey,
         string leaseToken,
+        DateTime confirmedExpiresAtUtc,
         CancellationToken cancellationToken,
         CancellationTokenSource leaseLostCancellation)
     {
@@ -208,13 +255,21 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
                 bool renewed = false;
                 while (!renewed)
                 {
+                    DateTime writerDeadlineUtc = confirmedExpiresAtUtc.Subtract(
+                        this.heartbeatInterval);
+                    if (this.timeProvider.GetUtcNow().UtcDateTime >= writerDeadlineUtc)
+                    {
+                        leaseLostCancellation.Cancel();
+                        return;
+                    }
+
                     try
                     {
                         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                         UpdateResult result = await this.collection.UpdateOneAsync(
                             BuildOwnedLeaseFilter(scopeKey, leaseToken),
                             Builders<ImageCurrentMutationLockDocument>.Update
-                                .Set(static document => document.ExpiresAtUtc, nowUtc.Add(LeaseDuration))
+                                .Set(static document => document.ExpiresAtUtc, nowUtc.Add(this.leaseDuration))
                                 .Set(static document => document.UpdatedAtUtc, nowUtc),
                             cancellationToken: cancellationToken);
                         if (result.MatchedCount == 0)
@@ -223,6 +278,10 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
                             return;
                         }
 
+                        confirmedExpiresAtUtc = nowUtc.Add(this.leaseDuration);
+                        this.ScheduleLeaseLossCancellation(
+                            leaseLostCancellation,
+                            confirmedExpiresAtUtc);
                         renewed = true;
                     }
                     catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -235,8 +294,18 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
                             exception,
                             "Unable to renew current-image mutation lock {ScopeKey}; renewal will be retried.",
                             scopeKey);
+                        TimeSpan retryInterval = GetHeartbeatRetryInterval(
+                            this.heartbeatInterval);
+                        DateTime retryAtUtc = this.timeProvider.GetUtcNow().UtcDateTime.Add(
+                            retryInterval);
+                        if (retryAtUtc >= writerDeadlineUtc)
+                        {
+                            leaseLostCancellation.Cancel();
+                            return;
+                        }
+
                         await Task.Delay(
-                            GetHeartbeatRetryInterval(this.heartbeatInterval),
+                            retryInterval,
                             this.timeProvider,
                             cancellationToken);
                     }
@@ -246,6 +315,22 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
         }
+    }
+
+    private void ScheduleLeaseLossCancellation(
+        CancellationTokenSource leaseLostCancellation,
+        DateTime confirmedExpiresAtUtc)
+    {
+        DateTime writerDeadlineUtc = confirmedExpiresAtUtc.Subtract(
+            this.heartbeatInterval);
+        TimeSpan remaining = writerDeadlineUtc - this.timeProvider.GetUtcNow().UtcDateTime;
+        if (remaining <= TimeSpan.Zero)
+        {
+            leaseLostCancellation.Cancel();
+            return;
+        }
+
+        leaseLostCancellation.CancelAfter(remaining);
     }
 
     internal static TimeSpan GetHeartbeatRetryInterval(TimeSpan heartbeatInterval)

@@ -3,11 +3,10 @@ using System.Net;
 using System.Security.Claims;
 using System.Threading.RateLimiting;
 using AmusementPark.WebAPI.DependencyInjection;
+using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.DependencyInjection;
@@ -15,7 +14,7 @@ namespace AmusementPark.WebAPI.Tests.DependencyInjection;
 public sealed class RateLimitingServiceCollectionExtensionsTests
 {
     [Fact]
-    public void AddApiRateLimiting_ShouldKeepPublicReadsSeparateFromTheGeneralQuota()
+    public void CreatePreAuthenticationIpLimiter_ShouldKeepPublicReadsSeparateFromTheGeneralQuota()
     {
         IConfiguration configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>
@@ -26,15 +25,9 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
                 ["RateLimiting:PublicReads:WindowSeconds"] = "60",
             })
             .Build();
-        ServiceCollection services = new ServiceCollection();
-        services.AddApiRateLimiting(configuration);
-
-        using ServiceProvider serviceProvider = services.BuildServiceProvider();
-        RateLimiterOptions options = serviceProvider
-            .GetRequiredService<IOptions<RateLimiterOptions>>()
-            .Value;
-        PartitionedRateLimiter<HttpContext> limiter = Assert.IsAssignableFrom<PartitionedRateLimiter<HttpContext>>(
-            options.GlobalLimiter);
+        using PartitionedRateLimiter<HttpContext> limiter =
+            RateLimitingServiceCollectionExtensions.CreatePreAuthenticationIpLimiter(
+                configuration);
 
         using RateLimitLease firstRead = limiter.AttemptAcquire(CreateContext(HttpMethods.Get));
         using RateLimitLease secondRead = limiter.AttemptAcquire(CreateContext(HttpMethods.Head));
@@ -47,6 +40,20 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
         Assert.False(rejectedRead.IsAcquired);
         Assert.True(firstWrite.IsAcquired);
         Assert.False(rejectedWrite.IsAcquired);
+    }
+
+    [Fact]
+    public void AddApiRateLimiting_ShouldRegisterPreAuthenticationIpMiddleware()
+    {
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        ServiceCollection services = new ServiceCollection();
+        services.AddSingleton(configuration);
+        services.AddApiRateLimiting(configuration);
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        Assert.NotNull(
+            serviceProvider.GetRequiredService<PreAuthenticationIpRateLimitingMiddleware>());
     }
 
     [Fact]

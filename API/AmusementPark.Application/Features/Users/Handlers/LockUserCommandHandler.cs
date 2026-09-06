@@ -38,9 +38,11 @@ public sealed class LockUserCommandHandler : ICommandHandler<LockUserCommand, Ap
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
                 mutationLease);
-        User? lockedUser = null;
+        bool sourceMutationAttempted = false;
+        User? lockedUser;
         try
         {
+            sourceMutationAttempted = true;
             lockedUser = await this.userRepository.LockAsync(
                 command.UserId,
                 mutationCancellation.Token);
@@ -49,7 +51,7 @@ public sealed class LockUserCommandHandler : ICommandHandler<LockUserCommand, Ap
         {
             await this.shareSourceRevisionGuard.CompleteMutationAsync(
                 mutationLease,
-                lockedUser is not null,
+                sourceMutationAttempted,
                 CancellationToken.None);
         }
         if (lockedUser is null)

@@ -38,17 +38,12 @@ public static class RateLimitingServiceCollectionExtensions
 
         services.AddHttpContextAccessor();
         services.AddSingleton<IAvatarUploadAttemptLimiter, AvatarUploadAttemptLimiter>();
+        services.AddSingleton<PreAuthenticationIpRateLimitingMiddleware>();
 
         AuthenticationRateLimitingSettings authenticationSettings = configuration
             .GetSection(AuthenticationRateLimitingSettings.ConfigurationSectionName)
             .Get<AuthenticationRateLimitingSettings>() ?? new AuthenticationRateLimitingSettings();
 
-        FixedWindowRateLimitSettings globalSettings = GetGlobalRateLimitSettings(configuration);
-        FixedWindowRateLimitSettings publicReadSettings = configuration
-            .GetSection("RateLimiting:PublicReads")
-            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(
-                PublicReadPermitLimit,
-                PublicReadWindowSeconds);
         FixedWindowRateLimitSettings contactSubmissionSettings = configuration
             .GetSection("RateLimiting:Contact:Submission")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 900);
@@ -69,37 +64,10 @@ public static class RateLimitingServiceCollectionExtensions
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
             options.OnRejected = static (context, cancellationToken) =>
-                new ValueTask(WriteRateLimitRejectionAsync(context, cancellationToken));
-
-            PartitionedRateLimiter<HttpContext> requestLimiter =
-                PartitionedRateLimiter.Create<HttpContext, string>(context =>
-                {
-                    if (InternalSsrRateLimitClassifier.IsInternalSsrRequest(context))
-                    {
-                        return RateLimitPartition.GetFixedWindowLimiter(
-                            partitionKey: "internal-ssr",
-                            factory: _ => new FixedWindowRateLimiterOptions
-                            {
-                                PermitLimit = InternalSsrPermitLimit,
-                                Window = TimeSpan.FromSeconds(InternalSsrWindowSeconds),
-                                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-                                QueueLimit = InternalSsrPermitLimit,
-                                AutoReplenishment = true,
-                            });
-                    }
-
-                    string remoteIpPartitionKey = GetRemoteIpPartitionKey(context);
-                    if (IsSafeReadMethod(context.Request.Method))
-                    {
-                        return RateLimitPartition.GetFixedWindowLimiter(
-                            partitionKey: $"public-read:{remoteIpPartitionKey}",
-                            factory: _ => CreateFixedWindowOptions(publicReadSettings));
-                    }
-
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: $"general:{remoteIpPartitionKey}",
-                        factory: _ => CreateFixedWindowOptions(globalSettings));
-                });
+                new ValueTask(WriteRateLimitRejectionAsync(
+                    context.HttpContext,
+                    context.Lease,
+                    cancellationToken));
             PartitionedRateLimiter<HttpContext> passportDownloadConcurrencyLimiter =
                 PartitionedRateLimiter.Create<HttpContext, string>(context =>
                     IsPassportExportDownload(context)
@@ -112,9 +80,7 @@ public static class RateLimitingServiceCollectionExtensions
                                 QueueLimit = 0,
                             })
                         : RateLimitPartition.GetNoLimiter<string>("non-passport-export-download"));
-            options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
-                requestLimiter,
-                passportDownloadConcurrencyLimiter);
+            options.GlobalLimiter = passportDownloadConcurrencyLimiter;
 
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthLogin, authenticationSettings.Login);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthExternalLogin, authenticationSettings.ExternalLogin);
@@ -162,7 +128,7 @@ public static class RateLimitingServiceCollectionExtensions
     public static IApplicationBuilder UseApiRateLimiting(this IApplicationBuilder app)
     {
         ArgumentNullException.ThrowIfNull(app);
-        return app;
+        return app.UseMiddleware<PreAuthenticationIpRateLimitingMiddleware>();
     }
 
     public static IApplicationBuilder UseApiAuthenticationRateLimiting(this IApplicationBuilder app)
@@ -171,21 +137,64 @@ public static class RateLimitingServiceCollectionExtensions
         return app.UseRateLimiter();
     }
 
-    private static Task WriteRateLimitRejectionAsync(OnRejectedContext context, CancellationToken cancellationToken)
+    internal static Task WriteRateLimitRejectionAsync(
+        HttpContext context,
+        RateLimitLease lease,
+        CancellationToken cancellationToken)
     {
-        if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out TimeSpan retryAfter))
+        if (lease.TryGetMetadata(MetadataName.RetryAfter, out TimeSpan retryAfter))
         {
-            context.HttpContext.Response.Headers["Retry-After"] = Math.Ceiling(retryAfter.TotalSeconds).ToString("0", CultureInfo.InvariantCulture);
+            context.Response.Headers["Retry-After"] = Math.Ceiling(retryAfter.TotalSeconds).ToString("0", CultureInfo.InvariantCulture);
         }
 
         ProblemDetails problemDetails = ApiProblemDetailsFactory.Create(
-            context.HttpContext,
+            context,
             StatusCodes.Status429TooManyRequests,
             ApiProblemDetailsFactory.GetDefaultTitle(StatusCodes.Status429TooManyRequests),
             ApiProblemDetailsFactory.GetDefaultDetail(StatusCodes.Status429TooManyRequests),
             "rate-limit.exceeded");
 
-        return ApiProblemDetailsFactory.WriteAsync(context.HttpContext, problemDetails, cancellationToken);
+        return ApiProblemDetailsFactory.WriteAsync(context, problemDetails, cancellationToken);
+    }
+
+    internal static PartitionedRateLimiter<HttpContext> CreatePreAuthenticationIpLimiter(
+        IConfiguration configuration)
+    {
+        FixedWindowRateLimitSettings globalSettings = GetGlobalRateLimitSettings(configuration);
+        FixedWindowRateLimitSettings publicReadSettings = configuration
+            .GetSection("RateLimiting:PublicReads")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(
+                PublicReadPermitLimit,
+                PublicReadWindowSeconds);
+
+        return PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        {
+            if (InternalSsrRateLimitClassifier.IsInternalSsrRequest(context))
+            {
+                return RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: "internal-ssr",
+                    factory: _ => new FixedWindowRateLimiterOptions
+                    {
+                        PermitLimit = InternalSsrPermitLimit,
+                        Window = TimeSpan.FromSeconds(InternalSsrWindowSeconds),
+                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                        QueueLimit = InternalSsrPermitLimit,
+                        AutoReplenishment = true,
+                    });
+            }
+
+            string remoteIpPartitionKey = GetRemoteIpPartitionKey(context);
+            if (IsSafeReadMethod(context.Request.Method))
+            {
+                return RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: $"public-read:{remoteIpPartitionKey}",
+                    factory: _ => CreateFixedWindowOptions(publicReadSettings));
+            }
+
+            return RateLimitPartition.GetFixedWindowLimiter(
+                partitionKey: $"general:{remoteIpPartitionKey}",
+                factory: _ => CreateFixedWindowOptions(globalSettings));
+        });
     }
 
     private static void AddFixedWindowIpPolicy(RateLimiterOptions options, string policyName, FixedWindowRateLimitSettings settings)
