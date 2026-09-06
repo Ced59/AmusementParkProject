@@ -163,6 +163,55 @@ public sealed class DeleteImageCommandHandlerTests
         storage.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenBinaryCleanupFailsAfterMetadataDeletion_ShouldReportCommittedDeletion()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.None,
+            Path = "parks/image-1.webp",
+            IsCurrent = false,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdAsync("image-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(image);
+        images.Setup(value => value.DeleteIfUnchangedAsync(
+                "image-1",
+                It.IsAny<ImageMutationPrecondition>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage.Setup(value => value.DeleteAsync(
+                "parks/image-1.webp",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.IsImageReferencedAsync(
+                "image-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        DeleteImageCommandHandler handler = new DeleteImageCommandHandler(
+            images.Object,
+            storage.Object,
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IUserRepository>(MockBehavior.Strict),
+            comments.Object,
+            Mock.Of<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new DeleteImageCommand("image-1"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        images.VerifyAll();
+        storage.VerifyAll();
+        comments.VerifyAll();
+    }
+
     [Theory]
     [InlineData(ImageOwnerType.Comment, false)]
     [InlineData(ImageOwnerType.CommentDraft, false)]

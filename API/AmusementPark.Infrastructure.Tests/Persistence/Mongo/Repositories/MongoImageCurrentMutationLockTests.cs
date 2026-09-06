@@ -213,6 +213,53 @@ public sealed class MongoImageCurrentMutationLockTests
         collection.VerifyAll();
     }
 
+    [Fact]
+    public async Task ExecuteAsync_WhenCallerCancelsAfterAcquisition_ShouldFinishCriticalSection()
+    {
+        Mock<IMongoCollection<ImageCurrentMutationLockDocument>> collection =
+            new Mock<IMongoCollection<ImageCurrentMutationLockDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument>>(),
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                FilterDefinition<ImageCurrentMutationLockDocument> _,
+                UpdateDefinition<ImageCurrentMutationLockDocument> update,
+                FindOneAndUpdateOptions<ImageCurrentMutationLockDocument, ImageCurrentMutationLockDocument> _,
+                CancellationToken _) => Task.FromResult(new ImageCurrentMutationLockDocument
+            {
+                ScopeKey = "User:7:owner-1:Avatar",
+                Token = Render(update)["$set"].AsBsonDocument["token"].AsString,
+            }));
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateDefinition<ImageCurrentMutationLockDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        MongoImageCurrentMutationLock mutationLock = new MongoImageCurrentMutationLock(
+            collection.Object,
+            TimeProvider.System,
+            NullLogger<MongoImageCurrentMutationLock>.Instance);
+        using CancellationTokenSource callerCancellation = new CancellationTokenSource();
+
+        string result = await mutationLock.ExecuteAsync(
+            ImageOwnerType.User,
+            "owner-1",
+            ImageCategory.Avatar,
+            operationCancellationToken =>
+            {
+                callerCancellation.Cancel();
+                Assert.False(operationCancellationToken.IsCancellationRequested);
+                return Task.FromResult("reconciled");
+            },
+            callerCancellation.Token);
+
+        Assert.Equal("reconciled", result);
+        collection.VerifyAll();
+    }
+
     private static BsonDocument Render(
         FilterDefinition<ImageCurrentMutationLockDocument> filter)
     {

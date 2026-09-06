@@ -6,4 +6,5 @@ public sealed record ImageMutationPrecondition(
     ImageOwnerType OwnerType,
     string? OwnerId,
     ImageCategory Category,
-    bool IsCurrent);
+    bool IsCurrent,
+    DateTime? UpdatedAtUtc = null);

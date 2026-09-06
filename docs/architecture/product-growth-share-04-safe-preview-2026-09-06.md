@@ -147,7 +147,14 @@ sur le triplet propriétaire/catégorie. Deux instances API ne peuvent donc pas
 promouvoir simultanément deux images du même périmètre et se rétrograder l'une
 l'autre. Le verrou est renouvelé pendant l'opération, reprend son renouvellement
 après une erreur MongoDB transitoire, expire après un abandon et n'est libéré que
-par son propre jeton.
+par son propre jeton. Une promotion devenue partiellement validée réessaie sous ce
+verrou la rétrogradation idempotente des autres images avant de répondre ; une
+annulation du client après la première écriture ne laisse donc pas deux images
+courantes. Les actions de masse portent en plus la date de mise à jour observée :
+elles ne peuvent pas réécrire une description ou des crédits modifiés entre-temps.
+Enfin, une suppression MongoDB déjà validée reste annoncée comme réussie si le
+nettoyage binaire secondaire échoue, puisque répéter la commande ne restaurerait
+pas l'enregistrement supprimé.
 Un échec de règlement après une écriture déjà validée est journalisé sans transformer
 le succès métier en erreur ; le lease durable expirera alors prudemment. Les
 changements de nom, visibilité, catégorie ou rattachement d'un parc ou d'une
@@ -225,6 +232,9 @@ Les tests ciblés couvrent :
 - renouvellement des leases actifs et nouvelle révision après une finalisation tardive ;
 - reprise du heartbeat après une erreur MongoDB transitoire ;
 - reprise du heartbeat du verrou de promotion d'image sans annuler l'écriture ;
+- réconciliation d'une promotion après un échec MongoDB ambigu ;
+- rejet d'une action de masse fondée sur des métadonnées devenues obsolètes ;
+- succès cohérent après une suppression MongoDB malgré l'échec du nettoyage binaire ;
 - incrément atomique de la révision après une vraie mutation ;
 - protection du changement de pseudonyme public ;
 - protection des changements d'avatar et d'état du compte ;

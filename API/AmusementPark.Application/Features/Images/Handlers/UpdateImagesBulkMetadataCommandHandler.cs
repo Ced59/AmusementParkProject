@@ -121,7 +121,8 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
                         existing.OwnerType,
                         existing.OwnerId,
                         existing.Category,
-                        existing.IsCurrent)),
+                        existing.IsCurrent,
+                        existing.UpdatedAtUtc)),
                 cancellationToken);
 
             if (!result.IsSuccess)

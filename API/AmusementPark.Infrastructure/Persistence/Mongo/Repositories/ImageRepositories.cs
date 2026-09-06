@@ -1789,18 +1789,6 @@ public sealed class ImageRepository : IImageRepository
             currentDocument.Category,
             async operationCancellationToken =>
             {
-                FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
-                FilterDefinition<ImageDocument> ownerFilter = BuildOwnerTypeFilter(builder, ownerType) &
-                                                             builder.Eq(static document => document.OwnerId, ownerId) &
-                                                             BuildCategoryFilter(builder, currentDocument.Category);
-
-                await this.collection.UpdateManyAsync(
-                    ownerFilter,
-                    Builders<ImageDocument>.Update
-                        .Set(static document => document.IsCurrent, false)
-                        .Set(static document => document.UpdatedAt, DateTime.UtcNow),
-                    cancellationToken: operationCancellationToken);
-
                 FilterDefinition<ImageDocument> targetFilter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
                 UpdateDefinition<ImageDocument> targetUpdate = Builders<ImageDocument>.Update
                     .Set(static document => document.OwnerType, ownerType)
@@ -1818,8 +1806,19 @@ public sealed class ImageRepository : IImageRepository
                     targetUpdate,
                     options,
                     operationCancellationToken);
+                if (document is null)
+                {
+                    return null;
+                }
+
+                await this.DemoteOtherCurrentImagesAfterPromotionAsync(
+                    ownerType,
+                    ownerId,
+                    currentDocument.Category,
+                    imageId,
+                    operationCancellationToken);
                 InvalidateReadCache();
-                return document?.ToDomain();
+                return document.ToDomain();
             },
             cancellationToken);
     }
@@ -1860,22 +1859,54 @@ public sealed class ImageRepository : IImageRepository
                     return null;
                 }
 
-                FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
-                FilterDefinition<ImageDocument> otherOwnerImagesFilter =
-                    BuildOwnerTypeFilter(builder, ownerType)
-                    & builder.Eq(static candidate => candidate.OwnerId, ownerId)
-                    & BuildCategoryFilter(builder, precondition.Category)
-                    & builder.Ne(static candidate => candidate.Id, imageId);
-                await this.collection.UpdateManyAsync(
-                    otherOwnerImagesFilter,
-                    Builders<ImageDocument>.Update
-                        .Set(static candidate => candidate.IsCurrent, false)
-                        .Set(static candidate => candidate.UpdatedAt, nowUtc),
-                    cancellationToken: operationCancellationToken);
+                await this.DemoteOtherCurrentImagesAfterPromotionAsync(
+                    ownerType,
+                    ownerId,
+                    precondition.Category,
+                    imageId,
+                    operationCancellationToken);
                 InvalidateReadCache();
                 return document.ToDomain();
             },
             cancellationToken);
+    }
+
+    private async Task DemoteOtherCurrentImagesAfterPromotionAsync(
+        ImageOwnerType ownerType,
+        string ownerId,
+        ImageCategory category,
+        string promotedImageId,
+        CancellationToken leaseCancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> otherOwnerImagesFilter =
+            BuildOwnerTypeFilter(builder, ownerType)
+            & builder.Eq(static candidate => candidate.OwnerId, ownerId)
+            & BuildCategoryFilter(builder, category)
+            & builder.Eq(static candidate => candidate.IsCurrent, true)
+            & builder.Ne(static candidate => candidate.Id, promotedImageId);
+        UpdateDefinition<ImageDocument> demotion = Builders<ImageDocument>.Update
+            .Set(static candidate => candidate.IsCurrent, false)
+            .Set(static candidate => candidate.UpdatedAt, DateTime.UtcNow);
+        while (true)
+        {
+            leaseCancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                await this.collection.UpdateManyAsync(
+                    otherOwnerImagesFilter,
+                    demotion,
+                    cancellationToken: leaseCancellationToken);
+                return;
+            }
+            catch (Exception exception)
+                when (exception is MongoException or TimeoutException)
+            {
+                await Task.Delay(
+                    MongoImageCurrentMutationLock.RetryDelay,
+                    leaseCancellationToken);
+            }
+        }
     }
 
     public async Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken)
@@ -1925,11 +1956,16 @@ public sealed class ImageRepository : IImageRepository
         ImageMutationPrecondition precondition)
     {
         FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
-        return builder.Eq(static document => document.Id, imageId)
+        FilterDefinition<ImageDocument> filter = builder.Eq(static document => document.Id, imageId)
             & BuildOwnerTypeFilter(builder, precondition.OwnerType)
             & builder.Eq(static document => document.OwnerId, precondition.OwnerId)
             & BuildCategoryFilter(builder, precondition.Category)
             & builder.Eq(static document => document.IsCurrent, precondition.IsCurrent);
+        return precondition.UpdatedAtUtc.HasValue
+            ? filter & builder.Eq(
+                static document => document.UpdatedAt,
+                precondition.UpdatedAtUtc.Value)
+            : filter;
     }
 
     private static UpdateDefinition<ImageDocument> BuildMetadataUpdate(

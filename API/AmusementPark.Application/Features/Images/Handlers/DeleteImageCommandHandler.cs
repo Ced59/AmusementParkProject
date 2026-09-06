@@ -92,7 +92,6 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     this.shareSourceRevisionGuard,
                     cancellationToken);
             bool avatarSourceChanged = false;
-            bool binaryDeleted = true;
             try
             {
                 avatarSourceChanged = avatarOwnerUserIds.Count > 0;
@@ -108,7 +107,6 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 {
                     return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
                 }
-
                 await SynchronizeAfterDeletionAsync(
                     image,
                     this.imageRepository,
@@ -123,7 +121,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     cancellationToken);
                 if (!string.IsNullOrWhiteSpace(image.Path))
                 {
-                    binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
+                    _ = await this.imageBinaryStorage.DeleteAsync(
                         image.Path,
                         cancellationToken);
                 }
@@ -141,9 +139,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 new[] { image },
                 Array.Empty<Image>(),
                 cancellationToken);
-            return binaryDeleted
-                ? ApplicationResult.Success()
-                : ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
+            return ApplicationResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {

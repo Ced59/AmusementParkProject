@@ -75,10 +75,6 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
 
         using CancellationTokenSource heartbeatCancellation = new CancellationTokenSource();
         using CancellationTokenSource leaseLostCancellation = new CancellationTokenSource();
-        using CancellationTokenSource operationCancellation =
-            CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationToken,
-                leaseLostCancellation.Token);
         Task heartbeat = this.MaintainLeaseAsync(
             scopeKey,
             leaseToken,
@@ -86,7 +82,9 @@ public sealed class MongoImageCurrentMutationLock : IImageCurrentMutationLock
             leaseLostCancellation);
         try
         {
-            TResult result = await operation(operationCancellation.Token);
+            // Once the lock is held, finish or reconcile the short critical section even
+            // if the HTTP caller disconnects. Only proven lease loss may interrupt it.
+            TResult result = await operation(leaseLostCancellation.Token);
             if (leaseLostCancellation.IsCancellationRequested)
             {
                 throw new InvalidOperationException(

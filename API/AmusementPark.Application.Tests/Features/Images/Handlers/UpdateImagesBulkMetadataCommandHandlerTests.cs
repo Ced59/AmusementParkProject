@@ -56,6 +56,14 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenNonAvatarPublicationChanges_ShouldUsePreconditionedSingleImageFlow()
     {
+        DateTime updatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            17,
+            30,
+            0,
+            DateTimeKind.Utc);
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler =
             new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
@@ -67,6 +75,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
             OwnerId = "park-1",
             IsCurrent = false,
             IsPublished = true,
+            UpdatedAtUtc = updatedAtUtc,
         };
         Image updated = new Image
         {
@@ -95,7 +104,8 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
                         ImageOwnerType.Park,
                         "park-1",
                         ImageCategory.Park,
-                        false)),
+                        false,
+                        updatedAtUtc)),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<Image>.Success(updated));
 
@@ -117,6 +127,14 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenCategoryIsPatched_ShouldUseSingleImageMetadataFlow()
     {
+        DateTime updatedAtUtc = new DateTime(
+            2026,
+            9,
+            6,
+            17,
+            30,
+            0,
+            DateTimeKind.Utc);
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateImageMetadataCommandHandler = new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
         Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
@@ -132,6 +150,7 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
             IsCurrent = true,
             IsPublished = true,
             SourceUrl = "https://cdn.example.test/logo.png",
+            UpdatedAtUtc = updatedAtUtc,
         };
         Image updated = new Image
         {
@@ -159,7 +178,8 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
                         ImageOwnerType.Park,
                         "park-1",
                         ImageCategory.Logo,
-                        true) &&
+                        true,
+                        updatedAtUtc) &&
                     command.Metadata.SourceUrl == "https://cdn.example.test/logo.png" &&
                     command.Metadata.TagIds.OrderBy(static tagId => tagId).SequenceEqual(new[] { "add", "keep" })),
                 It.IsAny<CancellationToken>()))
