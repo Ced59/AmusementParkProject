@@ -52,4 +52,11 @@ public static class SharingApplicationErrors
             "share-publication.source-version-unavailable",
             "La version des données partageables ne peut pas être calculée.");
     }
+
+    public static ApplicationError PublicationChangedConcurrently()
+    {
+        return ApplicationError.Conflict(
+            "share-publication.concurrent-modification",
+            "Le partage a été modifié simultanément. Réessaie.");
+    }
 }

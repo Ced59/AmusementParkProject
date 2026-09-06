@@ -117,9 +117,27 @@ au compte identifié. Un lot d'import de catalogue ayant échoué après son env
 également avancer les révisions de façon conservatrice, car certaines écritures non
 ordonnées peuvent déjà avoir été appliquées.
 
-Cette tranche ne publie encore aucun lien et ne remplace pas l'ancien partage de
-classement. La migration de remplacement `SHARE-04A` reste la prochaine étape et
-conservera les liens existants sans faire cohabiter deux moteurs actifs.
+Cette tranche ne publie encore aucun nouveau type de lien. Le remplacement du
+partage de classement est traité par `SHARE-04A`.
+
+### État de `SHARE-04A` au 6 septembre 2026
+
+Le partage de classement existant est centralisé en version 5.2.6 sans changer ses
+routes ni les jetons déjà distribués. Les réglages, la publication, la révocation,
+la résolution publique et l'éligibilité aux publications sociales utilisent
+directement `SharePublication`. L'ancien agrégat, son repository, sa factory et ses
+handlers sont supprimés : aucune lecture de repli ni double écriture ne subsiste.
+
+Avant readiness, un migrateur MongoDB idempotent sous lease conserve les jetons,
+vérifie les collisions, les totaux et un échantillon déterministe. Le déploiement
+zéro-coupure gèle physiquement l'ancien stockage avant le candidat ; un échec avant
+la bascule canonique déclenche la migration inverse des mutations centrales puis le
+dégel. Après succès, l'ancienne collection reste un backup gelé et n'est plus relue.
+Les détails et preuves sont consignés dans
+[`product-growth-share-04a-ranking-cutover-2026-09-06.md`](../../architecture/product-growth-share-04a-ranking-cutover-2026-09-06.md).
+
+Cette tranche ne modifie pas encore l'interface. `SHARE-05` ajoute ensuite l'éditeur
+de contenu public et le résumé de confidentialité avant confirmation.
 
 ## 1. Vision produit
 

@@ -18,6 +18,9 @@ public sealed class SharePublicationRegistrationTests
         MongoDbSettings settings = new MongoDbSettings();
 
         Assert.Equal("share-publications", settings.SharePublicationsCollectionName);
+        Assert.Equal(
+            "share-publication-migrations",
+            settings.SharePublicationMigrationsCollectionName);
         Assert.Equal("share-source-revisions", settings.ShareSourceRevisionsCollectionName);
         Assert.Equal(
             "image-current-mutation-locks",

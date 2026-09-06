@@ -11,7 +11,8 @@ internal static class SharePublicationMongoDefinitions
 
     public const string OwnerLifecycleIndexName = "idx_share_publication_owner_type_updated";
 
-    public const string OwnerSourceIndexName = "idx_share_publication_source_owner";
+    public const string ActiveOwnerSourceUniqueIndexName =
+        "idx_share_publication_active_owner_source_unique";
 
     public static FilterDefinition<SharePublicationDocument> BuildOwnedFilter(
         string publicationId,
@@ -39,6 +40,22 @@ internal static class SharePublicationMongoDefinitions
             & Builders<SharePublicationDocument>.Filter.Eq(
                 static document => document.SourceScopeKey,
                 sourceScopeKey);
+    }
+
+    public static FilterDefinition<SharePublicationDocument> BuildActiveOwnedSourceFilter(
+        string ownerUserId,
+        SharePublicationType publicationType,
+        string sourceScopeKey)
+    {
+        return BuildOwnedSourceFilter(ownerUserId, publicationType, sourceScopeKey)
+            & Builders<SharePublicationDocument>.Filter.In(
+                static document => document.Status,
+                new[]
+                {
+                    SharePublicationStatus.Draft,
+                    SharePublicationStatus.Published,
+                    SharePublicationStatus.NeedsReview,
+                });
     }
 
     public static FilterDefinition<SharePublicationDocument> BuildResolvableTokenFilter(
@@ -88,12 +105,29 @@ internal static class SharePublicationMongoDefinitions
                     .Ascending(static document => document.Type)
                     .Descending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = OwnerLifecycleIndexName });
+        CreateIndexOptions<SharePublicationDocument> activeOwnerSourceOptions =
+            new CreateIndexOptions<SharePublicationDocument>
+            {
+                Name = ActiveOwnerSourceUniqueIndexName,
+                Unique = true,
+                PartialFilterExpression = new BsonDocument(
+                    "status",
+                    new BsonDocument(
+                        "$in",
+                        new BsonArray
+                        {
+                            nameof(SharePublicationStatus.Draft),
+                            nameof(SharePublicationStatus.Published),
+                            nameof(SharePublicationStatus.NeedsReview),
+                        })),
+            };
         CreateIndexModel<SharePublicationDocument> ownerSource =
             new CreateIndexModel<SharePublicationDocument>(
                 Builders<SharePublicationDocument>.IndexKeys
-                    .Ascending(static document => document.SourceScopeKey)
-                    .Ascending(static document => document.OwnerUserId),
-                new CreateIndexOptions { Name = OwnerSourceIndexName });
+                    .Ascending(static document => document.OwnerUserId)
+                    .Ascending(static document => document.Type)
+                    .Ascending(static document => document.SourceScopeKey),
+                activeOwnerSourceOptions);
         return new[] { token, ownerLifecycle, ownerSource };
     }
 }

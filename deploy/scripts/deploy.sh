@@ -26,6 +26,7 @@ deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
 deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
 continuous_warmup_service_name="amusementpark-ssr-warmup.service"
+personal_ranking_cutover_started=false
 
 compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
@@ -291,7 +292,58 @@ cleanup_deploy_candidates() {
   done
 }
 
-trap cleanup_deploy_candidates EXIT
+rollback_incomplete_personal_ranking_cutover() {
+  if [ "${personal_ranking_cutover_started}" != "true" ]; then
+    return 0
+  fi
+
+  echo "Deployment did not complete; restoring the legacy personal ranking share authority..." >&2
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/rollback-ranking-shares-5.2.6.js
+}
+
+cleanup_deployment_attempt() {
+  cleanup_deploy_candidates
+  rollback_incomplete_personal_ranking_cutover
+}
+
+trap cleanup_deployment_attempt EXIT
+
+prepare_personal_ranking_cutover() {
+  local migration_completed=""
+  migration_completed="$(compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --eval 'const state=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark").getCollection("share-publication-migrations").findOne({_id:"share-04a-personal-ranking-v1"}); print(state && state.completedAtUtc ? "true" : "false");' \
+    | tail -n 1)"
+  if [ "${migration_completed}" = "true" ]; then
+    echo "Personal ranking share cutover is already complete."
+    return 0
+  fi
+
+  echo "Freezing legacy personal ranking share writes before zero-downtime cutover..."
+  # Arm rollback before collMod: MongoDB may apply the validator even if the
+  # client loses the command response and exits with an error.
+  personal_ranking_cutover_started=true
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/freeze-legacy-ranking-shares-5.2.6.js
+}
 
 run_legacy_enum_migrations() {
   local migration_script="./scripts/migrate-legacy-enums-1.10.0.js"
@@ -445,6 +497,10 @@ fi
 echo "Pulling production images..."
 compose pull
 
+if compose ps --services --filter status=running | grep -qx 'mongodb'; then
+  prepare_personal_ranking_cutover
+fi
+
 rolling_deploy=false
 if [ "${deploy_zero_downtime_enabled}" = "true" ] && service_is_healthy api && service_is_healthy front; then
   rolling_deploy=true
@@ -476,6 +532,13 @@ if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d; then
   exit 1
 fi
 
+if [ "${rolling_deploy}" = "true" ]; then
+  # The healthy API candidate has already committed the central cutover. From
+  # this point onward canonical services may run the new code, so storage must
+  # stay central even if a later, unrelated deployment check fails.
+  personal_ranking_cutover_started=false
+fi
+
 compose ps
 
 wait_for_service_healthy mongodb 180
@@ -493,6 +556,10 @@ else
 fi
 
 wait_for_service_healthy api 180
+if [ "${rolling_deploy}" != "true" ]; then
+  # On the standard startup path the canonical API itself performs migration.
+  personal_ranking_cutover_started=false
+fi
 wait_for_service_healthy front 180
 wait_for_service_healthy edge 180
 reload_edge_configuration

@@ -223,7 +223,6 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRatingDiagnosticsReader, RatingDiagnosticsReader>();
         services.AddScoped<IRankingSnapshotRepository, RankingSnapshotRepository>();
         services.AddScoped<IRatingRankingSourceRevisionRepository, RatingRankingSourceRevisionRepository>();
-        services.AddScoped<IUserRankingShareRepository, UserRankingShareRepository>();
         services.AddScoped<ISharePublicationRepository, SharePublicationRepository>();
         services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
@@ -297,7 +296,6 @@ public static class InfrastructureServiceCollectionExtensions
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
-        services.AddSingleton<IUserRankingShareIdFactory, UserRankingShareIdFactory>();
         services.AddSingleton<IShareTokenFactory, CryptographicShareTokenFactory>();
         services.AddSingleton<IUserRankingSharePreviewRenderer, UserRankingSharePreviewRenderer>();
         services.AddSingleton<IParkDataEditorTokenProtector, ParkDataEditorTokenProtector>();

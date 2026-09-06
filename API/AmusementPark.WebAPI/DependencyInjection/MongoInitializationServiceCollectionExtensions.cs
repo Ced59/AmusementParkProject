@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
+using AmusementPark.Infrastructure.Persistence.Mongo.Migrations;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ public static class MongoInitializationServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
 
         services.AddScoped<MongoDatabaseInitializer>();
+        services.AddScoped<PersonalRankingShareReplacementMigration>();
         services.AddScoped<MongoSearchProjectionInitializer>();
 
         return services;

@@ -3,18 +3,20 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
-using AmusementPark.Application.Features.Ratings.Services;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
 
 public sealed class GetSharedUserParkItemRatingRankingsQueryHandler
     : IQueryHandler<GetSharedUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>
 {
-    private readonly UserRankingShareAccessResolver accessResolver;
+    private readonly ISharePublicationAccessResolver accessResolver;
     private readonly IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> rankingsHandler;
 
     public GetSharedUserParkItemRatingRankingsQueryHandler(
-        UserRankingShareAccessResolver accessResolver,
+        ISharePublicationAccessResolver accessResolver,
         IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> rankingsHandler)
     {
         this.accessResolver = accessResolver;
@@ -25,8 +27,9 @@ public sealed class GetSharedUserParkItemRatingRankingsQueryHandler
         GetSharedUserParkItemRatingRankingsQuery query,
         CancellationToken cancellationToken = default)
     {
-        ApplicationResult<UserRankingShareOwner> ownerResult = await this.accessResolver.ResolveAsync(
+        ApplicationResult<ResolvedSharePublicationResult> ownerResult = await this.accessResolver.ResolveAsync(
             query.ShareId,
+            SharePublicationType.PersonalRanking,
             cancellationToken);
         if (!ownerResult.IsSuccess || ownerResult.Value is null)
         {
@@ -35,7 +38,7 @@ public sealed class GetSharedUserParkItemRatingRankingsQueryHandler
 
         return await this.rankingsHandler.HandleAsync(
             new GetUserParkItemRatingRankingsQuery(
-                ownerResult.Value.UserId,
+                ownerResult.Value.OwnerUserId,
                 query.ParkItemCategory,
                 query.Paging,
                 query.Search,

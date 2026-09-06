@@ -13,6 +13,8 @@ using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
@@ -25,6 +27,7 @@ using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.Core.Domain.TechnicalPages;
 using AmusementPark.Core.Domain.Videos;
@@ -548,16 +551,19 @@ public sealed class SocialPublicationComposerServiceTests
     public async Task ResolveDraftAsync_ForSharedRankings_ShouldRequirePublicShare()
     {
         DateTime nowUtc = new DateTime(2026, 8, 24, 8, 0, 0, DateTimeKind.Utc);
-        Mock<IUserRankingShareRepository> rankingShares = new Mock<IUserRankingShareRepository>(MockBehavior.Strict);
-        rankingShares.Setup(repository => repository.GetPublicByShareIdAsync("share-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(UserRankingShare.Restore(
-                "ranking-share-1",
-                "user-1",
-                true,
+        Mock<ISharePublicationAccessResolver> rankingShares =
+            new Mock<ISharePublicationAccessResolver>(MockBehavior.Strict);
+        rankingShares.Setup(repository => repository.ResolveAsync(
                 "share-1",
-                nowUtc,
-                nowUtc,
-                nowUtc));
+                SharePublicationType.PersonalRanking,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<ResolvedSharePublicationResult>.Success(
+                new ResolvedSharePublicationResult(
+                    "user-1",
+                    "Coaster Fan",
+                    SharePublicationType.PersonalRanking,
+                    ShareContentPolicy.CreatePrivateDefault(SharePublicationType.PersonalRanking),
+                    nowUtc)));
         SocialPublicationComposerService service = CreateService(
             new Mock<IParkRepository>(MockBehavior.Strict),
             new Mock<IImageRepository>(MockBehavior.Strict),
@@ -859,7 +865,7 @@ public sealed class SocialPublicationComposerServiceTests
         Mock<IParkFounderRepository>? founders = null,
         Mock<IAttractionManufacturerRepository>? manufacturers = null,
         Mock<ITechnicalPageRepository>? technicalPages = null,
-        Mock<IUserRankingShareRepository>? rankingShares = null,
+        Mock<ISharePublicationAccessResolver>? rankingShares = null,
         Mock<IQueryHandler<GetStandaloneAttractionHistoryTimelineQuery, ApplicationResult<StandaloneAttractionHistoryTimelineResult>>>? standaloneHistoryTimeline = null,
         Mock<IQueryHandler<GetParkItemHistoryTimelineQuery, ApplicationResult<HistoryTimelineResult>>>? parkItemHistoryTimeline = null)
     {
@@ -883,7 +889,7 @@ public sealed class SocialPublicationComposerServiceTests
             manufacturers?.Object ?? Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict));
         ContentSocialPublicationTargetResolver contentTargetResolver = new ContentSocialPublicationTargetResolver(
             technicalPages?.Object ?? Mock.Of<ITechnicalPageRepository>(MockBehavior.Strict),
-            rankingShares?.Object ?? Mock.Of<IUserRankingShareRepository>(MockBehavior.Strict));
+            rankingShares?.Object ?? Mock.Of<ISharePublicationAccessResolver>(MockBehavior.Strict));
         SocialPublicationTargetResolver targetResolver = new SocialPublicationTargetResolver(
             seoContext.Object,
             parkTargetResolver,
