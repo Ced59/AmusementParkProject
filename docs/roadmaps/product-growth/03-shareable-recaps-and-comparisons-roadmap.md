@@ -181,6 +181,13 @@ interdit l'exposition. La publication recontrôle enfin ce snapshot après son �
 avant d'annoncer le succès : une mutation concurrente impose donc un nouvel aperçu
 au lieu de créer un lien immédiatement obsolète.
 
+Si l'écrivain retardé termine après l'expiration de son bail, la génération avancée
+projetée par les lectures est persistée atomiquement, même lorsqu'il déclare finalement
+n'avoir rien modifié. La version ne peut donc jamais revenir en arrière puis réactiver
+un ancien partage. Les budgets de limitation des aperçus et des confirmations sont
+également séparés : comparer plusieurs choix de confidentialité ne peut pas consommer
+la capacité réservée à leur confirmation.
+
 La preuve d'approbation lie également l'identifiant et la version de la publication
 existante. Une révocation ou un changement de confidentialité survenu après l'aperçu
 invalide donc celui-ci : la dernière décision du membre reste toujours prioritaire.

@@ -123,6 +123,7 @@ public sealed class ShareSourceRevisionRepositoryTests
                 It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
                 CancellationToken.None))
             .ReturnsAsync((ShareSourceRevisionDocument)null!)
+            .ReturnsAsync((ShareSourceRevisionDocument)null!)
             .ReturnsAsync(new ShareSourceRevisionDocument
             {
                 ScopeKey = "personal-ranking:owner-1",
@@ -372,6 +373,75 @@ public sealed class ShareSourceRevisionRepositoryTests
         Assert.Equal(1, update["$inc"].AsBsonDocument["revision"].AsInt64);
         Assert.True(update.Contains("$pull"));
         collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CompleteMutationAsync_WhenUnchangedLeaseExpired_ShouldPersistProjectedGeneration()
+    {
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        List<FilterDefinition<ShareSourceRevisionDocument>> filters =
+            new List<FilterDefinition<ShareSourceRevisionDocument>>();
+        List<UpdateDefinition<ShareSourceRevisionDocument>> updates =
+            new List<UpdateDefinition<ShareSourceRevisionDocument>>();
+        int callCount = 0;
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<ShareSourceRevisionDocument> filter,
+                UpdateDefinition<ShareSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                filters.Add(filter);
+                updates.Add(update);
+            })
+            .Returns((
+                FilterDefinition<ShareSourceRevisionDocument> _,
+                UpdateDefinition<ShareSourceRevisionDocument> _,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                callCount++;
+                ShareSourceRevisionDocument? document = callCount == 1
+                    ? null
+                    : new ShareSourceRevisionDocument
+                    {
+                        ScopeKey = "personal-ranking:owner-1",
+                        Revision = 5,
+                        CreatedAt = NowUtc.AddDays(-1),
+                        UpdatedAt = NowUtc,
+                    };
+                return Task.FromResult(document!);
+            });
+        ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+        ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
+            "personal-ranking:owner-1",
+            5.ToString("x32"));
+
+        ShareSourceRevision result = await repository.CompleteMutationAsync(
+            mutationLease,
+            sourceChanged: false,
+            CancellationToken.None);
+
+        Assert.Equal(5, result.Revision);
+        Assert.True(result.IsStable);
+        Assert.Equal(2, filters.Count);
+        Assert.Contains("$gt", Render(filters[0]).ToJson());
+        Assert.Contains("$lte", Render(filters[1]).ToJson());
+        BsonDocument recoveryUpdate = Render(updates[1]);
+        Assert.Equal(1, recoveryUpdate["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.Equal(
+            mutationLease.Token,
+            recoveryUpdate["$pull"].AsBsonDocument["mutationLeases"].AsBsonDocument["token"].AsString);
+        collection.Verify(value => value.FindOneAndUpdateAsync(
+            It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+            It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+            It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+            CancellationToken.None), Times.Exactly(2));
     }
 
     [Fact]

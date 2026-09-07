@@ -78,7 +78,7 @@ public sealed class SharePublicationsController : ControllerBase
     [HttpPost("publish")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
-    [EnableRateLimiting(RateLimitPolicyNames.SharePublicationPreviews)]
+    [EnableRateLimiting(RateLimitPolicyNames.SharePublicationConfirmations)]
     [InvalidatesPublicCache(PublicCacheScope.Data)]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(SharePublicationSettingsDto), StatusCodes.Status200OK)]

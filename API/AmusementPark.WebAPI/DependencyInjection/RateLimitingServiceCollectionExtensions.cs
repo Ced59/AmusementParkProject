@@ -59,6 +59,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings sharePublicationPreviewSettings = configuration
             .GetSection("RateLimiting:Sharing:Previews")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(6, 60);
+        FixedWindowRateLimitSettings sharePublicationConfirmationSettings = configuration
+            .GetSection("RateLimiting:Sharing:Confirmations")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(6, 60);
 
         services.AddRateLimiter(options =>
         {
@@ -104,6 +107,10 @@ public static class RateLimitingServiceCollectionExtensions
                 RateLimitPartition.GetFixedWindowLimiter(
                     partitionKey: GetSharePublicationPreviewPartitionKey(context),
                     factory: _ => CreateFixedWindowOptions(sharePublicationPreviewSettings)));
+            options.AddPolicy(RateLimitPolicyNames.SharePublicationConfirmations, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetSharePublicationConfirmationPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(sharePublicationConfirmationSettings)));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -251,6 +258,14 @@ public static class RateLimitingServiceCollectionExtensions
         return string.IsNullOrWhiteSpace(userId)
             ? $"share-publication-preview:{GetRemoteIpPartitionKey(context)}"
             : $"share-publication-preview:user:{userId}";
+    }
+
+    internal static string GetSharePublicationConfirmationPartitionKey(HttpContext context)
+    {
+        string? userId = context.User.GetUserId();
+        return string.IsNullOrWhiteSpace(userId)
+            ? $"share-publication-confirmation:{GetRemoteIpPartitionKey(context)}"
+            : $"share-publication-confirmation:user:{userId}";
     }
 
     internal static bool IsPassportExportDownload(HttpContext context)

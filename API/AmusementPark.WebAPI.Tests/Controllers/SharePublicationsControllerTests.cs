@@ -226,7 +226,7 @@ public sealed class SharePublicationsControllerTests
         Assert.Equal(ResponseCacheLocation.None, cache.Location);
         EnableRateLimitingAttribute rateLimit = Assert.IsType<EnableRateLimitingAttribute>(
             action.GetCustomAttribute<EnableRateLimitingAttribute>());
-        Assert.Equal(RateLimitPolicyNames.SharePublicationPreviews, rateLimit.PolicyName);
+        Assert.Equal(RateLimitPolicyNames.SharePublicationConfirmations, rateLimit.PolicyName);
     }
 
     private static ControllerContext CreateControllerContext(string userId)

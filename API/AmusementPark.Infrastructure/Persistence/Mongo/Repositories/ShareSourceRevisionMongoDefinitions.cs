@@ -22,6 +22,31 @@ internal static class ShareSourceRevisionMongoDefinitions
                 lease => lease.Token == token);
     }
 
+    public static FilterDefinition<ShareSourceRevisionDocument> BuildActiveLeaseFilter(
+        string scopeKey,
+        string token,
+        DateTime nowUtc)
+    {
+        return BuildScopeFilter(scopeKey)
+            & Builders<ShareSourceRevisionDocument>.Filter.ElemMatch(
+                document => document.MutationLeases,
+                lease => lease.Token == token && lease.ExpiresAtUtc > nowUtc);
+    }
+
+    public static FilterDefinition<ShareSourceRevisionDocument> BuildExpiredLeaseFilter(
+        string scopeKey,
+        string token,
+        DateTime nowUtc)
+    {
+        return BuildScopeFilter(scopeKey)
+            & Builders<ShareSourceRevisionDocument>.Filter.Lt(
+                document => document.Revision,
+                long.MaxValue)
+            & Builders<ShareSourceRevisionDocument>.Filter.ElemMatch(
+                document => document.MutationLeases,
+                lease => lease.Token == token && lease.ExpiresAtUtc <= nowUtc);
+    }
+
     public static FilterDefinition<ShareSourceRevisionDocument> BuildExpiredLeaseFilter(
         string scopeKey,
         DateTime nowUtc)

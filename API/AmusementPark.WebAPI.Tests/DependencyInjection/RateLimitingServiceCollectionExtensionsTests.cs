@@ -81,6 +81,24 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
         Assert.Equal("share-publication-preview:ip:203.0.113.10", result);
     }
 
+    [Fact]
+    public void GetSharePublicationConfirmationPartitionKey_ShouldUseASeparateUserBudget()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+        context.User = new ClaimsPrincipal(new ClaimsIdentity(
+            new[] { new Claim(ClaimTypes.NameIdentifier, "owner-1") },
+            "Test"));
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetSharePublicationConfirmationPartitionKey(context);
+
+        Assert.Equal("share-publication-confirmation:user:owner-1", result);
+        Assert.NotEqual(
+            RateLimitingServiceCollectionExtensions
+                .GetSharePublicationPreviewPartitionKey(context),
+            result);
+    }
+
     private static DefaultHttpContext CreateContext(string method)
     {
         DefaultHttpContext context = new DefaultHttpContext();

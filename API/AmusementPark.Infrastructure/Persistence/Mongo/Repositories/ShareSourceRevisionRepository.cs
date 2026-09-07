@@ -166,9 +166,10 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
     {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         FilterDefinition<ShareSourceRevisionDocument> filter =
-            ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+            ShareSourceRevisionMongoDefinitions.BuildActiveLeaseFilter(
                 mutationLease.ScopeKey,
-                mutationLease.Token);
+                mutationLease.Token,
+                nowUtc);
         if (sourceChanged)
         {
             filter &= Builders<ShareSourceRevisionDocument>.Filter.Lt(
@@ -199,6 +200,16 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         if (document is not null)
         {
             return ToResult(document);
+        }
+
+        ShareSourceRevisionDocument? recoveredDocument =
+            await this.RecoverExpiredLeaseAsync(
+                mutationLease,
+                nowUtc,
+                cancellationToken);
+        if (recoveredDocument is not null)
+        {
+            return ToResult(recoveredDocument);
         }
 
         if (sourceChanged)
@@ -233,6 +244,32 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             throw new InvalidOperationException("The share source revision cannot be incremented further.");
         }
         return current;
+    }
+
+    private async Task<ShareSourceRevisionDocument?> RecoverExpiredLeaseAsync(
+        ShareSourceMutationLease mutationLease,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        UpdateDefinition<ShareSourceRevisionDocument> update =
+            Builders<ShareSourceRevisionDocument>.Update
+                .PullFilter(
+                    document => document.MutationLeases,
+                    lease => lease.Token == mutationLease.Token)
+                .Inc(document => document.Revision, 1)
+                .Set(document => document.UpdatedAt, nowUtc);
+        return await this.collection.FindOneAndUpdateAsync(
+            ShareSourceRevisionMongoDefinitions.BuildExpiredLeaseFilter(
+                mutationLease.ScopeKey,
+                mutationLease.Token,
+                nowUtc),
+            update,
+            new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
     }
 
     public async Task<ShareSourceRevision> GetOrCreateAsync(
