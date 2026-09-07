@@ -82,13 +82,14 @@ public sealed class SharePublicationPublisher
                 continue;
             }
 
-            SharePublicationWriteOutcome preparationOutcome = await this.PrepareExistingAsync(
+            (SharePublicationWriteOutcome Outcome, long PreparedVersion) preparation =
+                await this.PrepareExistingAsync(
                 publication,
                 contentPolicy,
                 sourceVersion,
                 nowUtc,
                 cancellationToken);
-            if (preparationOutcome != SharePublicationWriteOutcome.Success)
+            if (preparation.Outcome != SharePublicationWriteOutcome.Success)
             {
                 continue;
             }
@@ -97,7 +98,7 @@ public sealed class SharePublicationPublisher
                 publication.Id,
                 ownerUserId,
                 cancellationToken);
-            if (publication is null)
+            if (publication is null || publication.Version != preparation.PreparedVersion)
             {
                 continue;
             }
@@ -153,7 +154,7 @@ public sealed class SharePublicationPublisher
             cancellationToken);
     }
 
-    private async Task<SharePublicationWriteOutcome> PrepareExistingAsync(
+    private async Task<(SharePublicationWriteOutcome Outcome, long PreparedVersion)> PrepareExistingAsync(
         SharePublication publication,
         ShareContentPolicy policy,
         long sourceVersion,
@@ -170,9 +171,11 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (sourceOutcome != SharePublicationWriteOutcome.Success)
             {
-                return sourceOutcome;
+                return (sourceOutcome, publication.Version);
             }
         }
+
+        long preparedVersion = publication.Version;
 
         if (!publication.ContentPolicy.HasSameSelectionAs(policy))
         {
@@ -180,9 +183,9 @@ public sealed class SharePublicationPublisher
                 publication.Id,
                 publication.OwnerUserId,
                 cancellationToken);
-            if (current is null)
+            if (current is null || current.Version != preparedVersion)
             {
-                return SharePublicationWriteOutcome.Conflict;
+                return (SharePublicationWriteOutcome.Conflict, preparedVersion);
             }
 
             long expectedVersion = current.Version;
@@ -190,13 +193,14 @@ public sealed class SharePublicationPublisher
                 policy,
                 current.PublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
-            return await this.repository.ReplaceAsync(
+            SharePublicationWriteOutcome policyOutcome = await this.repository.ReplaceAsync(
                 current,
                 expectedVersion,
                 cancellationToken);
+            return (policyOutcome, current.Version);
         }
 
-        return SharePublicationWriteOutcome.Success;
+        return (SharePublicationWriteOutcome.Success, preparedVersion);
     }
 
     private static ApplicationResult<SharePublicationCommitResult> Success(
