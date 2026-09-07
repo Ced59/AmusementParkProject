@@ -208,12 +208,19 @@ le restitue pas réellement, et une migration idempotente retire ce champ des po
 de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre de tableau,
 sans dépendre d'un opérateur positionnel non lié par le filtre serveur. Si une nouvelle
 publication a déjà été écrite mais que le dernier contrôle détecte une source momentanément
-instable, cette écriture exacte est révoquée avant d'annoncer l'échec ; une décision plus récente
-reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué. La préparation
-d'une republication transporte elle aussi sa version exacte entre chaque écriture afin qu'une
-révocation concurrente produise un aperçu expiré, jamais une erreur serveur. Enfin, le contrôle
-de dépassement des 5 000 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun
-aperçu ne charge un historique complet uniquement pour détecter la troncature.
+instable, la publication reste préparée dans un état privé et l'API exige un nouvel aperçu : le
+lien public n'est créé qu'après ce dernier contrôle, ce qui évite toute compensation pour les
+changements déjà observables.
+Une décision concurrente reste prioritaire grâce au contrôle de version exact répété avant
+l'écriture publique atomique. Un second contrôle immédiatement après cette écriture ferme la
+fenêtre où une mutation pourrait commencer pendant la publication : le lien exact est alors
+révoqué et l'échec de source reste renvoyé, même si la persistance de cette révocation ne peut pas
+être confirmée après les reprises bornées. Dans ce dernier cas, le résolveur public reste fermé
+sur la source instable ou sur sa nouvelle version. Toute republication après révision reçoit en
+plus un nouveau jeton : une révocation non confirmée ne peut donc jamais réactiver une URL déjà
+distribuée. Enfin, le contrôle de dépassement des 5 000
+notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun aperçu ne charge un historique
+complet uniquement pour détecter la troncature.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
