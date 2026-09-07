@@ -1,6 +1,20 @@
 {
-  "version": "5.2.9",
+  "version": "5.2.10",
   "history": [
+    {
+      "version": "5.2.10",
+      "releasedAt": "2026-09-07",
+      "labels": {
+        "fr": "Dix fiches de parcs gagnent des informations plus complètes et plus fiables.",
+        "en": "Ten park pages now offer more complete and reliable information.",
+        "de": "Zehn Parkseiten bieten jetzt vollständigere und verlässlichere Informationen.",
+        "nl": "Tien parkpagina's bieden nu completere en betrouwbaardere informatie.",
+        "it": "Dieci schede di parchi offrono ora informazioni più complete e affidabili.",
+        "es": "Diez fichas de parques ofrecen ahora información más completa y fiable.",
+        "pl": "Dziesięć stron parków zawiera teraz pełniejsze i bardziej wiarygodne informacje.",
+        "pt": "Dez páginas de parques oferecem agora informações mais completas e fiáveis."
+      }
+    },
     {
       "version": "5.2.9",
       "releasedAt": "2026-09-07",
