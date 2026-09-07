@@ -37,6 +37,7 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
         string ownerUserId,
         string sourceId,
         bool includeMissedItems,
+        IReadOnlyCollection<string>? preferredParkItemIds,
         CancellationToken cancellationToken)
     {
         string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
@@ -94,7 +95,12 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
             includesRatings: false,
             out bool _);
         int totalCount = candidates.Count;
+        HashSet<string> preferredIds = (preferredParkItemIds ?? Array.Empty<string>())
+            .Select(static value => value?.Trim() ?? string.Empty)
+            .Where(static value => value.Length > 0)
+            .ToHashSet(StringComparer.Ordinal);
         VisitRecapShareItemResult[] boundedCandidates = candidates
+            .OrderByDescending(candidate => preferredIds.Contains(candidate.ParkItemId))
             .Take(VisitRecapShareInputNormalizer.MaximumSelectedItemCount)
             .ToArray();
         return ApplicationResult<VisitRecapShareCandidatesResult>.Success(

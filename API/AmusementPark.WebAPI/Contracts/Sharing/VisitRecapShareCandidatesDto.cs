@@ -7,4 +7,10 @@ public sealed class VisitRecapShareCandidatesDto
     public int TotalEligibleItemCount { get; set; }
 
     public bool IsTruncated { get; set; }
+
+    public List<string>? SavedSelectedParkItemIds { get; set; }
+
+    public string? SavedPublicCaption { get; set; }
+
+    public bool HasSavedSnapshot { get; set; }
 }

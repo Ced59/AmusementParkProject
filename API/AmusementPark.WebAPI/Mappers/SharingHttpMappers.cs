@@ -209,6 +209,9 @@ public static class SharingHttpMappers
             Items = value.Items.Select(static item => item.ToHttp()).ToList(),
             TotalEligibleItemCount = value.TotalEligibleItemCount,
             IsTruncated = value.IsTruncated,
+            SavedSelectedParkItemIds = value.SavedSelectedParkItemIds?.ToList(),
+            SavedPublicCaption = value.SavedPublicCaption,
+            HasSavedSnapshot = value.HasSavedSnapshot,
         };
     }
 

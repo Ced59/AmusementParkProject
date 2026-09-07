@@ -11,6 +11,7 @@ public interface IVisitRecapSharePreviewBuilder : ISharePublicationPreviewBuilde
         string ownerUserId,
         string sourceId,
         bool includeMissedItems,
+        IReadOnlyCollection<string>? preferredParkItemIds,
         CancellationToken cancellationToken);
 
     Task<ApplicationResult<SharePublicationPreviewResult>> BuildAsync(

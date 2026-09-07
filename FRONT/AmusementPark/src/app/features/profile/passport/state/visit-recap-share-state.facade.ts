@@ -40,6 +40,7 @@ export class VisitRecapShareStateFacade {
   private mutationGeneration: number = 0;
   private candidatesGeneration: number = 0;
   private currentVisitId: string = '';
+  private editorStateHydrated: boolean = false;
 
   public readonly settings: Signal<SharePublicationSettings | null> = this.settingsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -81,6 +82,8 @@ export class VisitRecapShareStateFacade {
 
   load(visitId: string): void {
     this.currentVisitId = visitId.trim();
+    this.candidatesGeneration++;
+    this.candidatesLoadingSignal.set(false);
     const generation: number = ++this.loadGeneration;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
@@ -108,8 +111,9 @@ export class VisitRecapShareStateFacade {
   openEditor(sourceDatePrecision: string): void {
     const settings: SharePublicationSettings | null = this.settingsSignal();
     const fields: readonly ShareContentField[] = settings?.includedFields ?? [];
+    const hasSavedPolicy: boolean = settings?.policySchemaVersion != null;
     this.datePrecisionSignal.set(this.clampDatePrecision(settings?.datePrecision ?? sourceDatePrecision, sourceDatePrecision));
-    this.includeRideCountSignal.set(fields.length === 0 || fields.includes('RideCount'));
+    this.includeRideCountSignal.set(!hasSavedPolicy || fields.includes('RideCount'));
     this.includeRatingsSignal.set(fields.includes('TemporalRatings'));
     this.includeMissedItemsSignal.set(fields.includes('MissedItems'));
     this.includeCaptionSignal.set(fields.includes('PublicCaption'));
@@ -120,6 +124,7 @@ export class VisitRecapShareStateFacade {
     this.previewSignal.set(null);
     this.errorSignal.set(false);
     this.editorOpenSignal.set(true);
+    this.editorStateHydrated = false;
     this.loadCandidates();
   }
 
@@ -378,9 +383,19 @@ export class VisitRecapShareStateFacade {
         this.candidatesLoadingSignal.set(false);
         this.candidateItemsSignal.set(result.items);
         this.candidateTotalSignal.set(result.totalEligibleItemCount);
-        this.selectedParkItemIdsSignal.set(result.isTruncated
-          ? result.items.map((item: VisitRecapShareItem): string => item.parkItemId)
-          : null);
+        if (!this.editorStateHydrated) {
+          this.publicCaptionSignal.set(result.savedPublicCaption?.slice(0, 500) ?? '');
+          this.selectedParkItemIdsSignal.set(result.hasSavedSnapshot
+            ? [...(result.savedSelectedParkItemIds ?? [])]
+            : result.isTruncated
+              ? result.items.map((item: VisitRecapShareItem): string => item.parkItemId)
+              : null);
+          this.editorStateHydrated = true;
+        } else if (result.isTruncated && this.selectedParkItemIdsSignal() === null) {
+          this.selectedParkItemIdsSignal.set(
+            result.items.map((item: VisitRecapShareItem): string => item.parkItemId)
+          );
+        }
       },
       error: (error: unknown): void => {
         if (generation !== this.candidatesGeneration) {

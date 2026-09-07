@@ -94,6 +94,9 @@ export interface VisitRecapShareCandidates {
   items: VisitRecapShareItem[];
   totalEligibleItemCount: number;
   isTruncated: boolean;
+  savedSelectedParkItemIds?: string[] | null;
+  savedPublicCaption?: string | null;
+  hasSavedSnapshot: boolean;
 }
 
 export interface VisitRecapShareDate {

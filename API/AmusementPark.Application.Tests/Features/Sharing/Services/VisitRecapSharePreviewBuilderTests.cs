@@ -361,6 +361,7 @@ public sealed class VisitRecapSharePreviewBuilderTests
                 "owner-1",
                 "visit-1",
                 includeMissedItems: false,
+                preferredParkItemIds: null,
                 CancellationToken.None);
 
         Assert.True(result.IsSuccess);

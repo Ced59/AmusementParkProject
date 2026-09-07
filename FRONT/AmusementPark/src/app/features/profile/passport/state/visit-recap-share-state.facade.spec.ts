@@ -35,7 +35,8 @@ describe('VisitRecapShareStateFacade', () => {
         isMissed: false
       }],
       totalEligibleItemCount: 1,
-      isTruncated: false
+      isTruncated: false,
+      hasSavedSnapshot: false
     };
     publishResponse = of({
       isPublic: true,
@@ -77,7 +78,8 @@ describe('VisitRecapShareStateFacade', () => {
         isMissed: false
       })),
       totalEligibleItemCount: 101,
-      isTruncated: true
+      isTruncated: true,
+      hasSavedSnapshot: false
     };
 
     facade.load('visit-1');
@@ -87,6 +89,47 @@ describe('VisitRecapShareStateFacade', () => {
     expect(facade.candidatesTruncated()).toBe(true);
     expect(facade.candidateItems()).toHaveLength(100);
     expect(previewRequests[0].visitRecap?.selectedParkItemIds).toHaveLength(100);
+  });
+
+  it('preserves an explicitly empty published policy when reopening the editor', () => {
+    settings = {
+      isPublic: true,
+      policySchemaVersion: 1,
+      datePrecision: 'Hidden',
+      includedFields: []
+    };
+
+    facade.load('visit-1');
+    facade.openEditor('Day');
+
+    expect(facade.includeRideCount()).toBe(false);
+  });
+
+  it('hydrates the saved caption and explicit item subset from the owned snapshot', () => {
+    settings = {
+      isPublic: true,
+      policySchemaVersion: 1,
+      datePrecision: 'Month',
+      includedFields: ['RideCount', 'PublicCaption']
+    };
+    candidates = {
+      items: [
+        { parkItemId: 'item-a', name: 'Le Galion', isMissed: false },
+        { parkItemId: 'item-b', name: 'La Roue', isMissed: false }
+      ],
+      totalEligibleItemCount: 2,
+      isTruncated: false,
+      savedSelectedParkItemIds: ['item-b'],
+      savedPublicCaption: 'Souvenir déjà public',
+      hasSavedSnapshot: true
+    };
+
+    facade.load('visit-1');
+    facade.openEditor('Day');
+
+    expect(facade.publicCaption()).toBe('Souvenir déjà public');
+    expect(facade.isItemSelected('item-a')).toBe(false);
+    expect(facade.isItemSelected('item-b')).toBe(true);
   });
 
   it('keeps the approved caption and selection immutable while publication is pending', () => {

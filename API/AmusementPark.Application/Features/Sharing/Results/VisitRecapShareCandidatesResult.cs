@@ -3,4 +3,7 @@ namespace AmusementPark.Application.Features.Sharing.Results;
 public sealed record VisitRecapShareCandidatesResult(
     IReadOnlyCollection<VisitRecapShareItemResult> Items,
     int TotalEligibleItemCount,
-    bool IsTruncated);
+    bool IsTruncated,
+    IReadOnlyCollection<string>? SavedSelectedParkItemIds = null,
+    string? SavedPublicCaption = null,
+    bool HasSavedSnapshot = false);
