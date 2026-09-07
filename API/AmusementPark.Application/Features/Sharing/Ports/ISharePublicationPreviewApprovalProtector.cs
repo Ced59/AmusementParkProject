@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Sharing.Ports;
@@ -12,6 +13,7 @@ public interface ISharePublicationPreviewApprovalProtector
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState publicationState,
         ShareContentPolicy contentPolicy);
 
     bool IsValid(
@@ -20,5 +22,6 @@ public interface ISharePublicationPreviewApprovalProtector
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState publicationState,
         ShareContentPolicy contentPolicy);
 }

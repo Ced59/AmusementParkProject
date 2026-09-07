@@ -181,6 +181,14 @@ interdit l'exposition. La publication recontrôle enfin ce snapshot après son �
 avant d'annoncer le succès : une mutation concurrente impose donc un nouvel aperçu
 au lieu de créer un lien immédiatement obsolète.
 
+La preuve d'approbation lie également l'identifiant et la version de la publication
+existante. Une révocation ou un changement de confidentialité survenu après l'aperçu
+invalide donc celui-ci : la dernière décision du membre reste toujours prioritaire.
+Ce contrôle est répété juste avant l'écriture pour fermer la fenêtre de concurrence.
+Une indisponibilité transitoire du dernier contrôle de source, après une écriture déjà
+confirmée, ne transforme pas ce succès en faux échec ; la résolution publique continue
+dans tous les cas à refuser une source dont la version ne peut pas être vérifiée.
+
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
 

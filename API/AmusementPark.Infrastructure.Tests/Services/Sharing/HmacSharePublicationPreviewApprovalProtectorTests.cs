@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Services.Sharing;
@@ -23,6 +24,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtectorTests
             SharePublicationType.PersonalRanking,
             ScopeKey,
             12,
+            new SharePublicationApprovalState(null, null),
             anonymousPolicy);
         ShareContentPolicy namedPolicy = ShareContentPolicy.Create(
             SharePublicationType.PersonalRanking,
@@ -39,6 +41,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtectorTests
             SharePublicationType.PersonalRanking,
             ScopeKey,
             12,
+            new SharePublicationApprovalState(null, null),
             namedPolicy);
 
         Assert.False(isValid);
@@ -57,6 +60,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtectorTests
             SharePublicationType.PersonalRanking,
             ScopeKey,
             12,
+            new SharePublicationApprovalState("publication-1", 3),
             policy);
 
         bool isValid = protector.IsValid(
@@ -65,9 +69,38 @@ public sealed class HmacSharePublicationPreviewApprovalProtectorTests
             SharePublicationType.PersonalRanking,
             ScopeKey,
             12,
+            new SharePublicationApprovalState("publication-1", 3),
             policy);
 
         Assert.True(isValid);
+    }
+
+    [Fact]
+    public void IsValid_WhenPublicationChangedAfterPreview_ShouldRejectTheApproval()
+    {
+        HmacSharePublicationPreviewApprovalProtector protector = CreateProtector();
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.GlobalRatings });
+        string token = protector.CreateToken(
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            12,
+            new SharePublicationApprovalState("publication-1", 3),
+            policy);
+
+        bool isValid = protector.IsValid(
+            token,
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            12,
+            new SharePublicationApprovalState("publication-1", 4),
+            policy);
+
+        Assert.False(isValid);
     }
 
     private static HmacSharePublicationPreviewApprovalProtector CreateProtector()

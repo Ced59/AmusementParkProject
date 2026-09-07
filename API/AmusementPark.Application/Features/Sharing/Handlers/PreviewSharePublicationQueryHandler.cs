@@ -1,5 +1,6 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -12,17 +13,20 @@ public sealed class PreviewSharePublicationQueryHandler
 {
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationPreviewBuilder> builders;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
+    private readonly ISharePublicationRepository repository;
     private readonly ISharePublicationPreviewApprovalProtector approvalProtector;
 
     public PreviewSharePublicationQueryHandler(
         IEnumerable<ISharePublicationPreviewBuilder> builders,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
+        ISharePublicationRepository repository,
         ISharePublicationPreviewApprovalProtector approvalProtector)
     {
         ArgumentNullException.ThrowIfNull(builders);
         ArgumentNullException.ThrowIfNull(sources);
         this.builders = builders.ToDictionary(static builder => builder.PublicationType);
         this.sources = sources.ToDictionary(static source => source.PublicationType);
+        this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.approvalProtector = approvalProtector
             ?? throw new ArgumentNullException(nameof(approvalProtector));
     }
@@ -75,6 +79,14 @@ public sealed class PreviewSharePublicationQueryHandler
             return ApplicationResult<SharePublicationPreviewResult>.Failure(scopeResult.Errors);
         }
 
+        SharePublication? publicationBefore = await this.repository.GetOwnedBySourceAsync(
+            ownerUserId,
+            query.PublicationType,
+            scopeResult.Value,
+            cancellationToken);
+        SharePublicationApprovalState publicationState =
+            SharePublicationApprovalState.From(publicationBefore);
+
         ApplicationResult<SharePublicationPreviewResult> previewResult = await builder.BuildAsync(
             ownerUserId,
             query.SourceId,
@@ -85,11 +97,23 @@ public sealed class PreviewSharePublicationQueryHandler
             return previewResult;
         }
 
+        SharePublication? publicationAfter = await this.repository.GetOwnedBySourceAsync(
+            ownerUserId,
+            query.PublicationType,
+            scopeResult.Value,
+            cancellationToken);
+        if (!publicationState.Matches(publicationAfter))
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.PublicationChangedConcurrently());
+        }
+
         string approvalToken = this.approvalProtector.CreateToken(
             ownerUserId,
             query.PublicationType,
             scopeResult.Value,
             previewResult.Value.SourceVersion,
+            publicationState,
             contentPolicy);
         return ApplicationResult<SharePublicationPreviewResult>.Success(
             previewResult.Value with

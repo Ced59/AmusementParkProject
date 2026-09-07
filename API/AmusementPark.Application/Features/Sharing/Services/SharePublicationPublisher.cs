@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
@@ -28,6 +29,7 @@ public sealed class SharePublicationPublisher
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState approvedPublicationState,
         ShareContentPolicy contentPolicy,
         CancellationToken cancellationToken)
     {
@@ -39,6 +41,12 @@ public sealed class SharePublicationPublisher
                 publicationType,
                 sourceScopeKey,
                 cancellationToken);
+            if (!approvedPublicationState.Matches(publication))
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.ApprovedPreviewExpired());
+            }
+
             if (publication?.IsResolvable == true
                 && publication.SourceVersion == sourceVersion
                 && publication.ContentPolicy.HasSameSelectionAs(contentPolicy))

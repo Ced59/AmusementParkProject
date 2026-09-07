@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Configuration.Authentication;
@@ -10,7 +11,7 @@ namespace AmusementPark.Infrastructure.Services.Sharing;
 public sealed class HmacSharePublicationPreviewApprovalProtector
     : ISharePublicationPreviewApprovalProtector
 {
-    private const string SigningPurpose = "AmusementPark.SharePublicationPreviewApproval.v1";
+    private const string SigningPurpose = "AmusementPark.SharePublicationPreviewApproval.v2";
     private readonly byte[] signingKey;
 
     public HmacSharePublicationPreviewApprovalProtector(JwtSettings settings)
@@ -31,6 +32,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState publicationState,
         ShareContentPolicy contentPolicy)
     {
         byte[] digest = this.ComputeDigest(
@@ -38,6 +40,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
             publicationType,
             sourceScopeKey,
             sourceVersion,
+            publicationState,
             contentPolicy);
         return Convert.ToBase64String(digest)
             .TrimEnd('=')
@@ -51,6 +54,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState publicationState,
         ShareContentPolicy contentPolicy)
     {
         if (!TryDecode(approvalToken, out byte[] suppliedDigest))
@@ -63,6 +67,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
             publicationType,
             sourceScopeKey,
             sourceVersion,
+            publicationState,
             contentPolicy);
         return suppliedDigest.Length == expectedDigest.Length
             && CryptographicOperations.FixedTimeEquals(suppliedDigest, expectedDigest);
@@ -73,6 +78,7 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
+        SharePublicationApprovalState publicationState,
         ShareContentPolicy contentPolicy)
     {
         ArgumentNullException.ThrowIfNull(contentPolicy);
@@ -81,6 +87,11 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         Append(canonical, publicationType.ToString());
         Append(canonical, sourceScopeKey?.Trim() ?? string.Empty);
         Append(canonical, sourceVersion.ToString(CultureInfo.InvariantCulture));
+        Append(canonical, publicationState.PublicationId ?? string.Empty);
+        Append(
+            canonical,
+            publicationState.PersistenceVersion?.ToString(CultureInfo.InvariantCulture)
+                ?? string.Empty);
         Append(canonical, contentPolicy.SchemaVersion.ToString(CultureInfo.InvariantCulture));
         Append(canonical, contentPolicy.DatePrecision.ToString());
         foreach (ShareContentField field in contentPolicy.IncludedFields)

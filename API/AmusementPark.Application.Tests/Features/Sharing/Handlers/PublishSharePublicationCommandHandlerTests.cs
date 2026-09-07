@@ -1,6 +1,8 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing;
 using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Handlers;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
@@ -46,6 +48,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
                 repository.Object,
                 tokenFactory.Object,
                 new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
             CreateApprovalProtector(isValid: true));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -71,11 +74,18 @@ public sealed class PublishSharePublicationCommandHandlerTests
     public async Task PublishApprovedPreview_WhenSourceChanged_ShouldRequireANewPreview()
     {
         Mock<ISharePublicationRepository> repository = new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
         Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
         ISharePublicationSourceDescriptor source = CreateSourceDescriptor(13);
         PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
             new[] { source },
             new SharePublicationPublisher(repository.Object, tokenFactory.Object),
+            repository.Object,
             CreateApprovalProtector(isValid: true));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -92,7 +102,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, error => error.Code == "share-publication.preview-expired");
-        repository.VerifyNoOtherCalls();
+        repository.VerifyAll();
         tokenFactory.VerifyNoOtherCalls();
     }
 
@@ -120,6 +130,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
                 repository.Object,
                 tokenFactory.Object,
                 new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
             CreateApprovalProtector(isValid: true));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -141,6 +152,109 @@ public sealed class PublishSharePublicationCommandHandlerTests
     }
 
     [Fact]
+    public async Task PublishApprovedPreview_WhenFinalSourceReadFails_ShouldReturnCommittedPublication()
+    {
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        repository.Setup(value => value.CreateAsync(
+                It.IsAny<SharePublication>(),
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(TokenValue));
+        ISharePublicationSourceDescriptor source = CreateSourceDescriptor(
+            12,
+            finalReadFails: true);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { source },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                ShareContentPolicy.CurrentSchemaVersion,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings },
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsPublic);
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishApprovedPreview_WhenPublicationChangesAfterApprovalValidation_ShouldExpire()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.GlobalRatings });
+        SharePublication concurrentPublication = SharePublication.Create(
+            SharePublicationId.Parse("publication-2"),
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            policy,
+            12,
+            Now);
+        concurrentPublication.Publish(
+            ShareToken.Parse(TokenValue),
+            ShareVisibility.Unlisted,
+            12,
+            policy,
+            0,
+            Now);
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.SetupSequence(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null)
+            .ReturnsAsync(concurrentPublication);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { CreateSourceDescriptor(12) },
+            new SharePublicationPublisher(repository.Object, tokenFactory.Object),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                ShareContentPolicy.CurrentSchemaVersion,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings },
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "share-publication.preview-expired");
+        repository.VerifyAll();
+        tokenFactory.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task PublishApprovedPreview_WithoutRankingContent_ShouldRejectThePolicy()
     {
         Mock<ISharePublicationRepository> repository = new Mock<ISharePublicationRepository>(MockBehavior.Strict);
@@ -149,6 +263,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
             new[] { source },
             new SharePublicationPublisher(repository.Object, tokenFactory.Object),
+            repository.Object,
             Mock.Of<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -174,12 +289,19 @@ public sealed class PublishSharePublicationCommandHandlerTests
     {
         Mock<ISharePublicationRepository> repository =
             new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
         Mock<IShareTokenFactory> tokenFactory =
             new Mock<IShareTokenFactory>(MockBehavior.Strict);
         ISharePublicationSourceDescriptor source = CreateSourceDescriptor(12);
         PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
             new[] { source },
             new SharePublicationPublisher(repository.Object, tokenFactory.Object),
+            repository.Object,
             CreateApprovalProtector(isValid: false));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
@@ -201,13 +323,14 @@ public sealed class PublishSharePublicationCommandHandlerTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, error =>
             error.Code == "share-publication.preview-approval-invalid");
-        repository.VerifyNoOtherCalls();
+        repository.VerifyAll();
         tokenFactory.VerifyNoOtherCalls();
     }
 
     private static ISharePublicationSourceDescriptor CreateSourceDescriptor(
         long sourceVersion,
-        long? persistedSourceVersion = null)
+        long? persistedSourceVersion = null,
+        bool finalReadFails = false)
     {
         PersonalRankingSharePublicationSource realSource = new PersonalRankingSharePublicationSource(
             Mock.Of<IShareSourceRevisionRepository>());
@@ -219,7 +342,16 @@ public sealed class PublishSharePublicationCommandHandlerTests
             .Returns(ApplicationResult<string>.Success(ScopeKey));
         source.Setup(value => value.ValidatePolicyForPublication(It.IsAny<ShareContentPolicy>()))
             .Returns((ShareContentPolicy policy) => realSource.ValidatePolicyForPublication(policy));
-        if (persistedSourceVersion.HasValue)
+        if (finalReadFails)
+        {
+            source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
+                    ScopeKey,
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
+                .ReturnsAsync(ApplicationResult<long>.Failure(
+                    SharingApplicationErrors.SourceVersionUnavailable()));
+        }
+        else if (persistedSourceVersion.HasValue)
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
@@ -248,6 +380,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
                 SharePublicationType.PersonalRanking,
                 ScopeKey,
                 12,
+                It.IsAny<SharePublicationApprovalState>(),
                 It.IsAny<ShareContentPolicy>()))
             .Returns(isValid);
         return approvalProtector.Object;
