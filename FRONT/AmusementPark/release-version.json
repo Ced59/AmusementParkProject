@@ -1,6 +1,20 @@
 {
-  "version": "5.2.7",
+  "version": "5.2.8",
   "history": [
+    {
+      "version": "5.2.8",
+      "releasedAt": "2026-09-07",
+      "labels": {
+        "fr": "Tes partages restent cohérents pendant les mises à jour simultanées.",
+        "en": "Your shares stay consistent during simultaneous updates.",
+        "de": "Deine Freigaben bleiben bei gleichzeitigen Änderungen konsistent.",
+        "nl": "Je gedeelde inhoud blijft consistent tijdens gelijktijdige updates.",
+        "it": "Le tue condivisioni restano coerenti durante gli aggiornamenti simultanei.",
+        "es": "Tus contenidos compartidos siguen siendo coherentes durante las actualizaciones simultáneas.",
+        "pl": "Udostępnione treści pozostają spójne podczas jednoczesnych aktualizacji.",
+        "pt": "As tuas partilhas mantêm-se coerentes durante atualizações simultâneas."
+      }
+    },
     {
       "version": "5.2.7",
       "releasedAt": "2026-09-07",
