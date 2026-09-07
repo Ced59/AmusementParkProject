@@ -167,7 +167,8 @@ qu'un échantillon de trois lignes ne puisse pas être confondu avec le contenu 
 Le volume public est plafonné aux 5 000 meilleures notes visibles : au-delà, l'aperçu
 le signale clairement et ses statistiques portent exactement sur ces 5 000 notes.
 Les endpoints publics emploient par ailleurs une projection dédiée qui exclut les
-dates de notation, l'identifiant privé de la note et ses métadonnées techniques.
+dates de notation, l'identifiant privé de la note, les clés statistiques internes et
+les métadonnées techniques.
 Une preuve d'approbation opaque et signée lie désormais le membre, la source, sa version
 et la sélection exacte affichée : modifier un champ après l'aperçu invalide la
 publication. L'absence de nom public reste une valeur sémantiquement anonyme jusqu'à la

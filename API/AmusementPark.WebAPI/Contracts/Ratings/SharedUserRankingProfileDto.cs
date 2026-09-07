@@ -8,5 +8,5 @@ public sealed class SharedUserRankingProfileDto
 
     public bool IsOwner { get; set; }
 
-    public UserRatingStatsDto Stats { get; set; } = new UserRatingStatsDto();
+    public SharedUserRatingStatsDto Stats { get; set; } = new SharedUserRatingStatsDto();
 }

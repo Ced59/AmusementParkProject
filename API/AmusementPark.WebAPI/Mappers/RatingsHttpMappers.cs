@@ -263,7 +263,7 @@ internal static class RatingsHttpMappers
             PublishedAtUtc = value.PublishedAtUtc,
             IsOwner = !string.IsNullOrWhiteSpace(currentUserId)
                 && string.Equals(value.OwnerUserId, currentUserId, StringComparison.Ordinal),
-            Stats = value.Stats.ToHttp(),
+            Stats = value.Stats.ToSharedHttp(),
         };
     }
 
@@ -326,6 +326,17 @@ internal static class RatingsHttpMappers
             ParkItemCategory = value.ParkItemCategory.ToString(),
             AverageRating = value.AverageRating,
             Items = value.Items.Select(static item => item.ToHttp()).ToList(),
+        };
+    }
+
+    private static SharedUserRatingStatsDto ToSharedHttp(this UserRatingStatsResult value)
+    {
+        return new SharedUserRatingStatsDto
+        {
+            TotalRatings = value.TotalRatings,
+            AverageRating = value.AverageRating,
+            HighestRating = value.HighestRating,
+            LowestRating = value.LowestRating,
         };
     }
 

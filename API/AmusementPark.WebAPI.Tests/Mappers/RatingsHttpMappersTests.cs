@@ -241,4 +241,30 @@ public sealed class RatingsHttpMappersTests
         Assert.Null(typeof(SharedUserRatingListItemDto).GetProperty("UpdatedAtUtc"));
         Assert.Null(typeof(SharedUserRatingListItemDto).GetProperty("Summary"));
     }
+
+    [Fact]
+    public void ToHttp_WhenSharedProfileIsMapped_ShouldExcludePrivateStatisticKeys()
+    {
+        UserRatingStatsResult stats = new UserRatingStatsResult(
+            2,
+            4.25d,
+            4.5d,
+            4d,
+            new[] { new UserRatingStatBucketResult("technical-park-id", "Demo Park", 2, 4.25d) },
+            Array.Empty<UserRatingStatBucketResult>(),
+            Array.Empty<UserRatingStatBucketResult>());
+        SharedUserRankingProfileResult profile = new SharedUserRankingProfileResult(
+            "private-owner-id",
+            "Camille",
+            new DateTime(2026, 9, 7, 0, 0, 0, DateTimeKind.Utc),
+            stats);
+
+        SharedUserRankingProfileDto dto = profile.ToHttp(null);
+
+        Assert.Equal(2, dto.Stats.TotalRatings);
+        Assert.Equal(4.25d, dto.Stats.AverageRating);
+        Assert.Null(typeof(SharedUserRatingStatsDto).GetProperty("ByPark"));
+        Assert.Null(typeof(SharedUserRatingStatsDto).GetProperty("ByTargetType"));
+        Assert.Null(typeof(SharedUserRatingStatsDto).GetProperty("ByParkItemCategory"));
+    }
 }

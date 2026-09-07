@@ -115,7 +115,14 @@ export interface SharedUserRankingProfile {
   displayName?: string | null;
   publishedAtUtc: string;
   isOwner: boolean;
-  stats: UserRatingStats;
+  stats: SharedUserRatingStats;
+}
+
+export interface SharedUserRatingStats {
+  totalRatings: number;
+  averageRating: number;
+  highestRating: number;
+  lowestRating: number;
 }
 
 export interface ParkRatingRankingItem {
