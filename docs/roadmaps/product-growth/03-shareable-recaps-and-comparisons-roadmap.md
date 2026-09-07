@@ -213,7 +213,11 @@ reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas
 d'une republication transporte elle aussi sa version exacte entre chaque écriture afin qu'une
 révocation concurrente produise un aperçu expiré, jamais une erreur serveur. Enfin, le contrôle
 de dépassement des 5 000 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun
-aperçu ne charge un historique complet uniquement pour détecter la troncature.
+aperçu ne charge un historique complet uniquement pour détecter la troncature. Une révocation
+compensatoire relit et retente l'état exact après une erreur de persistance potentiellement ambiguë.
+Si cet état reste impossible à réconcilier après le budget borné, l'API conserve le succès de
+l'écriture confirmée plutôt que d'annoncer un faux échec ; la résolution publique reste néanmoins
+fermée tant que la source est instable ou que sa version ne correspond plus.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
