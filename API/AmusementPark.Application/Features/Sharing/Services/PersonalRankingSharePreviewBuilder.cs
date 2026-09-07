@@ -81,19 +81,20 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 ImageCategory.Avatar,
                 cancellationToken)
             : null;
-        UserRatingStatsResult? completeSourceStatistics = includesRatings
-            ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(
+        long visibleRatingCount = includesRatings
+            ? await this.ratingRepository.GetVisibleUserRatingCountUpToAsync(
                 ownerUserId,
+                UserRatingRankingLimits.MaximumPublishedSourceCount + 1,
                 cancellationToken)
-            : null;
-        bool isPublicationTruncated = completeSourceStatistics?.TotalRatings
+            : 0;
+        bool isPublicationTruncated = visibleRatingCount
             > UserRatingRankingLimits.MaximumPublishedSourceCount;
-        UserRatingStatsResult? sourceStatistics = isPublicationTruncated
+        UserRatingStatsResult? sourceStatistics = includesRatings
             ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(
                 ownerUserId,
                 UserRatingRankingLimits.MaximumPublishedSourceCount,
                 cancellationToken)
-            : completeSourceStatistics;
+            : null;
         IReadOnlyCollection<UserRatingListItemResult> sourceRatingCandidates = includesRatings
             ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
                 ownerUserId,

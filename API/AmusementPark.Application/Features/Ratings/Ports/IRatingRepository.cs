@@ -54,6 +54,11 @@ public interface IRatingRepository
         int maxItems,
         CancellationToken cancellationToken);
 
+    Task<long> GetVisibleUserRatingCountUpToAsync(
+        string userId,
+        int maxItems,
+        CancellationToken cancellationToken);
+
     Task<RatingRankingSourceBatch> GetVisibleRankingSourcesAsync(
         ParkItemCategory? parkItemCategory,
         int maxItems,

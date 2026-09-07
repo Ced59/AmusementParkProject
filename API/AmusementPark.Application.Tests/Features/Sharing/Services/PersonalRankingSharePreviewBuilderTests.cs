@@ -30,8 +30,14 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = CreateImageRepository(CreateAvatar());
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
+                "owner-1",
+                5001,
+                CancellationToken.None))
+            .ReturnsAsync(1001);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
+                5000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics(totalRatings: 1001));
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
@@ -131,8 +137,14 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
+                "owner-1",
+                5001,
+                CancellationToken.None))
+            .ReturnsAsync(1);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
+                5000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
@@ -250,10 +262,11 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
-        ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
                 "owner-1",
+                5001,
                 CancellationToken.None))
-            .ReturnsAsync(CreateStatistics(totalRatings: 5001));
+            .ReturnsAsync(5001);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
                 5000,

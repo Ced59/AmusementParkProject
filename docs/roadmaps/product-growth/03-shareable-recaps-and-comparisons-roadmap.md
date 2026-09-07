@@ -209,7 +209,11 @@ de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre d
 sans dépendre d'un opérateur positionnel non lié par le filtre serveur. Si une nouvelle
 publication a déjà été écrite mais que le dernier contrôle détecte une source momentanément
 instable, cette écriture exacte est révoquée avant d'annoncer l'échec ; une décision plus récente
-reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué.
+reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué. La préparation
+d'une republication transporte elle aussi sa version exacte entre chaque écriture afin qu'une
+révocation concurrente produise un aperçu expiré, jamais une erreur serveur. Enfin, le contrôle
+de dépassement des 5 000 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun
+aperçu ne charge un historique complet uniquement pour détecter la troncature.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
