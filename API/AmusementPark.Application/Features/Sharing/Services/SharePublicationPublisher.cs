@@ -126,32 +126,50 @@ public sealed class SharePublicationPublisher
             SharingApplicationErrors.PublicationChangedConcurrently());
     }
 
-    public async Task RevokeIfUnchangedAsync(
+    public async Task<bool> RevokeIfUnchangedAsync(
         string ownerUserId,
         SharePublicationType publicationType,
         string sourceScopeKey,
         SharePublicationApprovalState committedState,
         CancellationToken cancellationToken)
     {
-        SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
-            ownerUserId,
-            publicationType,
-            sourceScopeKey,
-            cancellationToken);
-        if (!committedState.Matches(publication)
-            || publication?.Status != SharePublicationStatus.Published)
+        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
         {
-            return;
+            cancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
+                    ownerUserId,
+                    publicationType,
+                    sourceScopeKey,
+                    cancellationToken);
+                if (!committedState.Matches(publication)
+                    || publication?.Status != SharePublicationStatus.Published)
+                {
+                    return true;
+                }
+
+                long expectedVersion = publication.Version;
+                publication.Revoke(
+                    publication.PublicationVersion,
+                    this.timeProvider.GetUtcNow().UtcDateTime);
+                SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
+                    publication,
+                    expectedVersion,
+                    cancellationToken);
+                if (outcome == SharePublicationWriteOutcome.Success)
+                {
+                    return true;
+                }
+            }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+                // A write failure can be ambiguous. The next attempt rereads the exact
+                // committed state before deciding whether another revoke is still needed.
+            }
         }
 
-        long expectedVersion = publication.Version;
-        publication.Revoke(
-            publication.PublicationVersion,
-            this.timeProvider.GetUtcNow().UtcDateTime);
-        await this.repository.ReplaceAsync(
-            publication,
-            expectedVersion,
-            cancellationToken);
+        return false;
     }
 
     private async Task<(SharePublicationWriteOutcome Outcome, long PreparedVersion)> PrepareExistingAsync(

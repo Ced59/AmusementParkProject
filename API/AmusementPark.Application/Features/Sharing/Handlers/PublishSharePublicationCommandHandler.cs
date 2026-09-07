@@ -139,12 +139,17 @@ public sealed class PublishSharePublicationCommandHandler
             {
                 if (commit.WasWritten)
                 {
-                    await this.publisher.RevokeIfUnchangedAsync(
+                    bool compensationCompleted = await this.publisher.RevokeIfUnchangedAsync(
                         ownerUserId,
                         command.PublicationType,
                         scopeResult.Value,
                         commit.PublicationState,
                         cancellationToken);
+                    if (!compensationCompleted)
+                    {
+                        return ApplicationResult<SharePublicationSettingsResult>.Success(
+                            commit.Settings);
+                    }
                 }
 
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(

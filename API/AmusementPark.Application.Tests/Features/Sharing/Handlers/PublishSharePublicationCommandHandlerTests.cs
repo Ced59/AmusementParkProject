@@ -319,6 +319,133 @@ public sealed class PublishSharePublicationCommandHandlerTests
     }
 
     [Fact]
+    public async Task PublishApprovedPreview_WhenCompensatingRevokeFailsTransiently_ShouldReconcileAndRetry()
+    {
+        SharePublication? committedPublication = null;
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(() => committedPublication is null
+                ? null
+                : ClonePublication(committedPublication));
+        repository.Setup(value => value.CreateAsync(
+                It.IsAny<SharePublication>(),
+                CancellationToken.None))
+            .Callback((SharePublication publication, CancellationToken _) =>
+                committedPublication = publication)
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        repository.SetupSequence(value => value.ReplaceAsync(
+                It.Is<SharePublication>(publication =>
+                    publication.Status == SharePublicationStatus.Revoked),
+                1,
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Transient storage failure."))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(TokenValue));
+        ISharePublicationSourceDescriptor source = CreateSourceDescriptor(
+            12,
+            finalReadUnstable: true);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { source },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                ShareContentPolicy.CurrentSchemaVersion,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings },
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error =>
+            error.Code == SharingApplicationErrors.SourceChangedCode);
+        repository.Verify(value => value.ReplaceAsync(
+            It.IsAny<SharePublication>(),
+            1,
+            CancellationToken.None), Times.Exactly(2));
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishApprovedPreview_WhenCompensatingRevokeCannotBeReconciled_ShouldReportCommittedSuccess()
+    {
+        SharePublication? committedPublication = null;
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(() => committedPublication is null
+                ? null
+                : ClonePublication(committedPublication));
+        repository.Setup(value => value.CreateAsync(
+                It.IsAny<SharePublication>(),
+                CancellationToken.None))
+            .Callback((SharePublication publication, CancellationToken _) =>
+                committedPublication = publication)
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        repository.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(publication =>
+                    publication.Status == SharePublicationStatus.Revoked),
+                1,
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Persistent storage failure."));
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(TokenValue));
+        ISharePublicationSourceDescriptor source = CreateSourceDescriptor(
+            12,
+            finalReadUnstable: true);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { source },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                ShareContentPolicy.CurrentSchemaVersion,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings },
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsPublic);
+        Assert.Equal(SharePublicationStatus.Published, committedPublication!.Status);
+        repository.Verify(value => value.ReplaceAsync(
+            It.IsAny<SharePublication>(),
+            1,
+            CancellationToken.None), Times.Exactly(5));
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
+    }
+
+    [Fact]
     public async Task PublishApprovedPreview_WhenPublicationChangesAfterApprovalValidation_ShouldExpire()
     {
         ShareContentPolicy policy = ShareContentPolicy.Create(
@@ -598,6 +725,26 @@ public sealed class PublishSharePublicationCommandHandlerTests
             Now);
         publication.MarkSourceChanged(12, Now);
         return publication;
+    }
+
+    private static SharePublication ClonePublication(SharePublication source)
+    {
+        return SharePublication.Restore(
+            source.Id,
+            source.OwnerUserId,
+            source.Type,
+            source.SourceScopeKey,
+            source.ShareToken,
+            source.Status,
+            source.Visibility,
+            source.ContentPolicy,
+            source.SourceVersion,
+            source.PublicationVersion,
+            source.Version,
+            source.PublishedAtUtc,
+            source.RevokedAtUtc,
+            source.CreatedAtUtc,
+            source.UpdatedAtUtc);
     }
 
     private static ISharePublicationPreviewApprovalProtector CreateApprovalProtector(bool isValid)
