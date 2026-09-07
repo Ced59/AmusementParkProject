@@ -54,6 +54,7 @@ export interface SharePublicationPreview {
   approvalToken: string;
   contentPolicy: ShareContentPolicyPreview;
   personalRanking?: PersonalRankingSharePreview | null;
+  visitRecap?: VisitRecapSharePreview | null;
 }
 
 export interface SharePublicationPreviewRequest {
@@ -61,6 +62,7 @@ export interface SharePublicationPreviewRequest {
   sourceId?: string | null;
   datePrecision: string;
   includedFields: ShareContentField[];
+  visitRecap?: VisitRecapShareInput | null;
 }
 
 export interface SharePublicationPublishRequest {
@@ -71,6 +73,7 @@ export interface SharePublicationPublishRequest {
   approvedDatePrecision: string;
   approvedIncludedFields: ShareContentField[];
   approvalToken: string;
+  visitRecap?: VisitRecapShareInput | null;
 }
 
 export interface SharePublicationSettings {
@@ -80,4 +83,88 @@ export interface SharePublicationSettings {
   policySchemaVersion?: number | null;
   datePrecision?: string | null;
   includedFields: ShareContentField[];
+}
+
+export interface VisitRecapShareInput {
+  selectedParkItemIds?: string[] | null;
+  publicCaption?: string | null;
+}
+
+export interface VisitRecapShareCandidates {
+  items: VisitRecapShareItem[];
+  totalEligibleItemCount: number;
+  isTruncated: boolean;
+  savedSelectedParkItemIds?: string[] | null;
+  savedPublicCaption?: string | null;
+  hasSavedSnapshot: boolean;
+}
+
+export interface VisitRecapShareDate {
+  year: number;
+  month?: number | null;
+  day?: number | null;
+  precision: string;
+  isApproximate: boolean;
+}
+
+export interface VisitRecapShareItem {
+  parkItemId: string;
+  name: string;
+  category?: string | null;
+  rideCount?: number | null;
+  averageRating?: number | null;
+  isMissed: boolean;
+}
+
+export interface VisitRecapShareHighlight {
+  name: string;
+  rideCount?: number | null;
+  rating?: number | null;
+}
+
+export interface VisitRecapSharePreview {
+  parkId: string;
+  parkName?: string | null;
+  date?: VisitRecapShareDate | null;
+  distinctItemCount?: number | null;
+  totalRideCount?: number | null;
+  categories: string[];
+  parkRating?: number | null;
+  topRatedItem?: VisitRecapShareHighlight | null;
+  mostRepeatedItem?: VisitRecapShareHighlight | null;
+  items: VisitRecapShareItem[];
+  publicCaption?: string | null;
+  hasHiddenDate: boolean;
+  hasIncompleteRatings: boolean;
+  hasIncompleteItems: boolean;
+}
+
+export interface SharedVisitRecapItem {
+  name: string;
+  category?: string | null;
+  rideCount?: number | null;
+  averageRating?: number | null;
+  isMissed: boolean;
+}
+
+export interface SharedVisitRecapContent {
+  parkId: string;
+  parkName?: string | null;
+  date?: VisitRecapShareDate | null;
+  distinctItemCount?: number | null;
+  totalRideCount?: number | null;
+  categories: string[];
+  parkRating?: number | null;
+  topRatedItem?: VisitRecapShareHighlight | null;
+  mostRepeatedItem?: VisitRecapShareHighlight | null;
+  items: SharedVisitRecapItem[];
+  publicCaption?: string | null;
+  hasHiddenDate: boolean;
+  hasIncompleteRatings: boolean;
+  hasIncompleteItems: boolean;
+}
+
+export interface SharedVisitRecap {
+  publishedAtUtc: string;
+  visitRecap: SharedVisitRecapContent;
 }

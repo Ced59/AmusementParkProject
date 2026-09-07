@@ -1,8 +1,11 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Identifiers;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
@@ -31,6 +34,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument> operations;
     private readonly IMongoCollection<PassportAuditJournalDocument> auditEvents;
+    private readonly IMongoCollection<SharePublicationDocument> sharePublications;
+    private readonly IMongoCollection<VisitRecapShareSnapshotDocument> shareSnapshots;
 
     public MongoVisitDeletionStore(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -44,6 +49,10 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             settings.UserRideOccurrenceOperationsCollectionName);
         this.auditEvents = database.GetCollection<PassportAuditJournalDocument>(
             settings.PassportAuditEventsCollectionName);
+        this.sharePublications = database.GetCollection<SharePublicationDocument>(
+            settings.SharePublicationsCollectionName);
+        this.shareSnapshots = database.GetCollection<VisitRecapShareSnapshotDocument>(
+            settings.SharePublicationSnapshotsCollectionName);
     }
 
     public async Task<VisitDeletionImpact> GetImpactAsync(
@@ -376,6 +385,36 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
                 maximumDocumentsPerCollection,
                 cancellationToken);
 
+            List<string> sharePublicationIds = await this.sharePublications
+                .Find(BuildSharePublicationPurgeFilter(visitId.Value, normalizedUserId))
+                .Project(static document => document.Id)
+                .Limit(maximumDocumentsPerCollection)
+                .ToListAsync(cancellationToken);
+            if (sharePublicationIds.Count > 0)
+            {
+                FilterDefinition<VisitRecapShareSnapshotDocument> snapshotFilter =
+                    BuildShareSnapshotPurgeFilter(sharePublicationIds);
+                deletedCount += await DeleteBatchAsync(
+                    this.shareSnapshots,
+                    snapshotFilter,
+                    maximumDocumentsPerCollection,
+                    cancellationToken);
+                bool snapshotsRemain = await this.shareSnapshots.Find(snapshotFilter)
+                    .Project(static document => document.Id)
+                    .AnyAsync(cancellationToken);
+                if (snapshotsRemain)
+                {
+                    return new VisitDeletionPurgeResult(false, deletedCount);
+                }
+
+                DeleteResult publicationDeletion = await this.sharePublications.DeleteManyAsync(
+                    Builders<SharePublicationDocument>.Filter.In(
+                        static document => document.Id,
+                        sharePublicationIds),
+                    cancellationToken);
+                deletedCount += checked((int)publicationDeletion.DeletedCount);
+            }
+
             bool hasRemainingChildren = await HasRemainingChildrenAsync(
                 visitId.Value,
                 normalizedUserId,
@@ -473,8 +512,19 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
                 BuildAuditPurgeFilter(visitId, userId))
             .Project(static document => document.Id)
             .AnyAsync(cancellationToken);
-        await Task.WhenAll(operationsRemain, occurrencesRemain, auditsRemain);
-        return await operationsRemain || await occurrencesRemain || await auditsRemain;
+        Task<bool> sharePublicationsRemain = this.sharePublications.Find(
+                BuildSharePublicationPurgeFilter(visitId, userId))
+            .Project(static document => document.Id)
+            .AnyAsync(cancellationToken);
+        await Task.WhenAll(
+            operationsRemain,
+            occurrencesRemain,
+            auditsRemain,
+            sharePublicationsRemain);
+        return await operationsRemain
+            || await occurrencesRemain
+            || await auditsRemain
+            || await sharePublicationsRemain;
     }
 
     private async Task<bool> HasPendingAuditMarkersAsync(
@@ -562,6 +612,27 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             Builders<PassportAuditJournalDocument>.Filter;
         return filters.Eq(static document => document.Event.VisitId, visitId)
             & filters.Eq(static document => document.Event.UserId, userId);
+    }
+
+    internal static FilterDefinition<SharePublicationDocument>
+        BuildSharePublicationPurgeFilter(string visitId, string userId)
+    {
+        FilterDefinitionBuilder<SharePublicationDocument> filters =
+            Builders<SharePublicationDocument>.Filter;
+        return filters.Eq(static document => document.OwnerUserId, userId)
+            & filters.Eq(static document => document.Type, SharePublicationType.VisitRecap)
+            & filters.Eq(
+                static document => document.SourceScopeKey,
+                VisitRecapShareSourceScope.Create(userId, visitId));
+    }
+
+    internal static FilterDefinition<VisitRecapShareSnapshotDocument>
+        BuildShareSnapshotPurgeFilter(IReadOnlyCollection<string> publicationIds)
+    {
+        ArgumentNullException.ThrowIfNull(publicationIds);
+        return Builders<VisitRecapShareSnapshotDocument>.Filter.In(
+            static document => document.PublicationId,
+            publicationIds);
     }
 
     internal static FilterDefinition<UserVisitDocument> BuildVisitPendingAuditFilter(

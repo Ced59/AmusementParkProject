@@ -27,6 +27,7 @@ import {
   PassportOccurrenceEditDraft,
   PassportVisitEditorAttraction
 } from '../../models/passport-visit-editor.models';
+import { VisitRecapShareControlComponent } from '../../components/visit-recap-share-control/visit-recap-share-control.component';
 import { PassportVisitEditorStateFacade } from '../../state/passport-visit-editor-state.facade';
 
 interface PassportStatusOption {
@@ -59,6 +60,7 @@ const supportedLifecycleStatuses: ReadonlySet<string> = new Set<string>([
     ImageDisplayComponent,
     RatingInputComponent,
     LocalizedPluralPipe,
+    VisitRecapShareControlComponent,
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,

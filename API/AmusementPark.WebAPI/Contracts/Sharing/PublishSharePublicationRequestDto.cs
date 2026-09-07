@@ -15,4 +15,6 @@ public sealed class PublishSharePublicationRequestDto
     public List<string> ApprovedIncludedFields { get; set; } = new();
 
     public string ApprovalToken { get; set; } = string.Empty;
+
+    public VisitRecapShareInputDto? VisitRecap { get; set; }
 }

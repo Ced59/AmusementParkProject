@@ -114,6 +114,17 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISharePublicationAccessResolver, SharePublicationAccessResolver>();
         services.AddScoped<ISharePublicationPreviewBuilder, PersonalRankingSharePreviewBuilder>();
         services.AddScoped<ISharePublicationSourceDescriptor, PersonalRankingSharePublicationSource>();
+        services.AddScoped<VisitRecapSharePublicationSource>();
+        services.AddScoped<ISharePublicationSourceDescriptor>(provider =>
+            provider.GetRequiredService<VisitRecapSharePublicationSource>());
+        services.AddScoped<IVisitRecapShareSourceVersionProvider>(provider =>
+            provider.GetRequiredService<VisitRecapSharePublicationSource>());
+        services.AddScoped<VisitRecapSharePreviewBuilder>();
+        services.AddScoped<IVisitRecapSharePreviewBuilder>(provider =>
+            provider.GetRequiredService<VisitRecapSharePreviewBuilder>());
+        services.AddScoped<ISharePublicationPreviewBuilder>(provider =>
+            provider.GetRequiredService<VisitRecapSharePreviewBuilder>());
+        services.AddScoped<ISharePublicationSnapshotWriter, VisitRecapShareSnapshotWriter>();
         services.AddScoped<SharePublicationPublisher>();
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();

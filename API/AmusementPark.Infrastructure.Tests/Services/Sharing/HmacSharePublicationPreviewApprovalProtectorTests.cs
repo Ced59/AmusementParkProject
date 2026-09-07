@@ -103,6 +103,36 @@ public sealed class HmacSharePublicationPreviewApprovalProtectorTests
         Assert.False(isValid);
     }
 
+    [Fact]
+    public void IsValid_WhenVisitSelectionChangedAfterPreview_ShouldRejectTheApproval()
+    {
+        HmacSharePublicationPreviewApprovalProtector protector = CreateProtector();
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.VisitRecap,
+            ShareDatePrecision.Month,
+            new[] { ShareContentField.RideCount });
+        string token = protector.CreateToken(
+            OwnerId,
+            SharePublicationType.VisitRecap,
+            "visit-recap:scope",
+            12,
+            new SharePublicationApprovalState(null, null),
+            policy,
+            "selection-a");
+
+        bool isValid = protector.IsValid(
+            token,
+            OwnerId,
+            SharePublicationType.VisitRecap,
+            "visit-recap:scope",
+            12,
+            new SharePublicationApprovalState(null, null),
+            policy,
+            "selection-b");
+
+        Assert.False(isValid);
+    }
+
     private static HmacSharePublicationPreviewApprovalProtector CreateProtector()
     {
         return new HmacSharePublicationPreviewApprovalProtector(new JwtSettings

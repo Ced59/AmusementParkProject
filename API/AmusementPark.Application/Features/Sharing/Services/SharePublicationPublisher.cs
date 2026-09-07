@@ -13,15 +13,19 @@ public sealed class SharePublicationPublisher
     private readonly ISharePublicationRepository repository;
     private readonly IShareTokenFactory tokenFactory;
     private readonly TimeProvider timeProvider;
+    private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSnapshotWriter> snapshotWriters;
 
     public SharePublicationPublisher(
         ISharePublicationRepository repository,
         IShareTokenFactory tokenFactory,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.tokenFactory = tokenFactory ?? throw new ArgumentNullException(nameof(tokenFactory));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.snapshotWriters = (snapshotWriters ?? Array.Empty<ISharePublicationSnapshotWriter>())
+            .ToDictionary(static writer => writer.PublicationType);
     }
 
     public async Task<ApplicationResult<SharePublicationSettingsResult>> PublishAsync(
@@ -32,7 +36,10 @@ public sealed class SharePublicationPublisher
         SharePublicationApprovalState approvedPublicationState,
         ShareContentPolicy contentPolicy,
         ISharePublicationSourceDescriptor source,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        string contentFingerprint = "",
+        VisitRecapShareInput? visitRecap = null,
+        string? sourceId = null)
     {
         ArgumentNullException.ThrowIfNull(source);
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -49,7 +56,14 @@ public sealed class SharePublicationPublisher
 
         bool alreadyPublished = publication?.IsResolvable == true
             && publication.SourceVersion == sourceVersion
-            && publication.ContentPolicy.HasSameSelectionAs(contentPolicy);
+            && publication.ContentPolicy.HasSameSelectionAs(contentPolicy)
+            && string.Equals(
+                publication.ContentFingerprint,
+                contentFingerprint,
+                StringComparison.Ordinal);
+        this.snapshotWriters.TryGetValue(
+            publicationType,
+            out ISharePublicationSnapshotWriter? snapshotWriter);
         if (!alreadyPublished)
         {
             if (publication is null || publication.Status == SharePublicationStatus.Revoked)
@@ -61,7 +75,8 @@ public sealed class SharePublicationPublisher
                     sourceScopeKey,
                     contentPolicy,
                     sourceVersion,
-                    nowUtc);
+                    nowUtc,
+                    contentFingerprint);
                 SharePublicationWriteOutcome createOutcome = await this.repository.CreateAsync(
                     publication,
                     cancellationToken);
@@ -77,6 +92,7 @@ public sealed class SharePublicationPublisher
                     await this.PrepareExistingAsync(
                         publication,
                         contentPolicy,
+                        contentFingerprint,
                         sourceVersion,
                         nowUtc,
                         cancellationToken);
@@ -115,7 +131,14 @@ public sealed class SharePublicationPublisher
 
         if (alreadyPublished)
         {
-            return Success(publication!);
+            ApplicationResult<bool> cleanupResult = await DeleteSupersededSnapshotsAsync(
+                snapshotWriter,
+                publication!,
+                cancellationToken);
+            return cleanupResult.IsSuccess
+                ? Success(publication!)
+                : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    cleanupResult.Errors);
         }
 
         SharePublicationApprovalState preparedState = SharePublicationApprovalState.From(publication);
@@ -137,6 +160,33 @@ public sealed class SharePublicationPublisher
             }
 
             long expectedVersion = publication!.Version;
+            if (snapshotWriter is not null)
+            {
+                if (string.IsNullOrWhiteSpace(sourceId))
+                {
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        SharingApplicationErrors.InvalidSource());
+                }
+
+                ApplicationResult<bool> snapshotResult = await snapshotWriter.WriteAsync(
+                    new SharePublicationSnapshotWriteRequest(
+                        publication.Id,
+                        checked(publication.PublicationVersion + 1),
+                        publication.Version,
+                        ownerUserId,
+                        sourceId.Trim(),
+                        sourceVersion,
+                        contentPolicy,
+                        contentFingerprint,
+                        visitRecap),
+                    cancellationToken);
+                if (!snapshotResult.IsSuccess)
+                {
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        snapshotResult.Errors);
+                }
+            }
+
             ShareToken token = publication.Status == SharePublicationStatus.NeedsReview
                 ? this.tokenFactory.Generate()
                 : publication.ShareToken ?? this.tokenFactory.Generate();
@@ -146,19 +196,34 @@ public sealed class SharePublicationPublisher
                 sourceVersion,
                 contentPolicy,
                 publication.PublicationVersion,
-                this.timeProvider.GetUtcNow().UtcDateTime);
+                this.timeProvider.GetUtcNow().UtcDateTime,
+                contentFingerprint);
             SharePublicationWriteOutcome publishOutcome = await this.repository.ReplaceAsync(
                 publication,
                 expectedVersion,
                 cancellationToken);
             if (publishOutcome == SharePublicationWriteOutcome.Success)
             {
-                return await this.ConfirmPublishedSourceAsync(
+                ApplicationResult<SharePublicationSettingsResult> confirmation =
+                    await this.ConfirmPublishedSourceAsync(
                     publication,
                     source,
                     sourceScopeKey,
                     sourceVersion,
                     cancellationToken);
+                if (!confirmation.IsSuccess)
+                {
+                    return confirmation;
+                }
+
+                ApplicationResult<bool> cleanupResult = await DeleteSupersededSnapshotsAsync(
+                    snapshotWriter,
+                    publication,
+                    cancellationToken);
+                return cleanupResult.IsSuccess
+                    ? confirmation
+                    : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        cleanupResult.Errors);
             }
 
             if (publishOutcome != SharePublicationWriteOutcome.TokenCollision)
@@ -250,6 +315,7 @@ public sealed class SharePublicationPublisher
     private async Task<(SharePublicationWriteOutcome Outcome, long PreparedVersion)> PrepareExistingAsync(
         SharePublication publication,
         ShareContentPolicy policy,
+        string contentFingerprint,
         long sourceVersion,
         DateTime nowUtc,
         CancellationToken cancellationToken)
@@ -270,7 +336,11 @@ public sealed class SharePublicationPublisher
 
         long preparedVersion = publication.Version;
 
-        if (!publication.ContentPolicy.HasSameSelectionAs(policy))
+        if (!publication.ContentPolicy.HasSameSelectionAs(policy)
+            || !string.Equals(
+                publication.ContentFingerprint,
+                contentFingerprint,
+                StringComparison.Ordinal))
         {
             SharePublication? current = await this.repository.GetOwnedAsync(
                 publication.Id,
@@ -284,6 +354,10 @@ public sealed class SharePublicationPublisher
             long expectedVersion = current.Version;
             current.ReplaceContentPolicy(
                 policy,
+                current.PublicationVersion,
+                this.timeProvider.GetUtcNow().UtcDateTime);
+            current.ReplaceContentFingerprint(
+                contentFingerprint,
                 current.PublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
             SharePublicationWriteOutcome policyOutcome = await this.repository.ReplaceAsync(
@@ -301,5 +375,18 @@ public sealed class SharePublicationPublisher
     {
         return ApplicationResult<SharePublicationSettingsResult>.Success(
             SharePublicationSettingsMapper.ToResult(publication));
+    }
+
+    private static Task<ApplicationResult<bool>> DeleteSupersededSnapshotsAsync(
+        ISharePublicationSnapshotWriter? snapshotWriter,
+        SharePublication publication,
+        CancellationToken cancellationToken)
+    {
+        return snapshotWriter is null
+            ? Task.FromResult(ApplicationResult<bool>.Success(true))
+            : snapshotWriter.DeleteSupersededAsync(
+                publication.Id,
+                publication.PublicationVersion,
+                cancellationToken);
     }
 }

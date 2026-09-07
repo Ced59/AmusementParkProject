@@ -1,7 +1,9 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -40,6 +42,13 @@ public sealed class MongoVisitDeletionStoreTests
             MongoVisitDeletionStore.BuildOccurrencePurgeFilter("visit-1", "owner-1"));
         BsonDocument auditFilter = Render(
             MongoVisitDeletionStore.BuildAuditPurgeFilter("visit-1", "owner-1"));
+        BsonDocument publicationFilter = Render(
+            MongoVisitDeletionStore.BuildSharePublicationPurgeFilter(
+                "visit-1",
+                "owner-1"));
+        BsonDocument snapshotFilter = Render(
+            MongoVisitDeletionStore.BuildShareSnapshotPurgeFilter(
+                new[] { "publication-1" }));
 
         Assert.Equal("visit-1", operationFilter["visitId"].AsString);
         Assert.Equal("owner-1", operationFilter["userId"].AsString);
@@ -47,6 +56,14 @@ public sealed class MongoVisitDeletionStoreTests
         Assert.Equal("owner-1", occurrenceFilter["userId"].AsString);
         Assert.Equal("visit-1", auditFilter["event.visitId"].AsString);
         Assert.Equal("owner-1", auditFilter["event.userId"].AsString);
+        Assert.Equal(
+            VisitRecapShareSourceScope.Create("owner-1", "visit-1"),
+            publicationFilter["sourceScopeKey"].AsString);
+        Assert.Equal("owner-1", publicationFilter["ownerUserId"].AsString);
+        Assert.Equal("VisitRecap", publicationFilter["type"].AsString);
+        Assert.Equal(
+            "publication-1",
+            snapshotFilter["publicationId"].AsBsonDocument["$in"].AsBsonArray[0].AsString);
     }
 
     [Fact]

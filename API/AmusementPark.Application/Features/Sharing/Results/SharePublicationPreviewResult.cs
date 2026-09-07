@@ -9,4 +9,6 @@ public sealed record SharePublicationPreviewResult(
     ShareDatePrecision DatePrecision,
     IReadOnlyCollection<ShareContentField> IncludedFields,
     PersonalRankingSharePreviewResult? PersonalRanking,
-    string ApprovalToken = "");
+    string ApprovalToken = "",
+    VisitRecapSharePreviewResult? VisitRecap = null,
+    string ContentFingerprint = "");

@@ -901,6 +901,101 @@
       "ratings": "Mi ranking"
     }
   },
+  "visitRecapShare": {
+    "manage": {
+      "kicker": "Un recuerdo para compartir",
+      "title": "Cuenta la historia de esta visita",
+      "publicDescription": "Tu resumen solo es público para quienes tengan el enlace.",
+      "privateDescription": "Crea una tarjeta pública sin revelar notas ni comentarios privados.",
+      "loading": "Cargando las opciones para compartir...",
+      "open": "Ver el resumen",
+      "edit": "Editar el contenido compartido",
+      "revoke": "Hacer privado",
+      "start": "Crear el resumen"
+    },
+    "editor": {
+      "step": "Taller para compartir",
+      "title": "Elige exactamente qué será visible",
+      "intro": "Cada cambio requiere una nueva vista previa antes de publicar.",
+      "privacyTitle": "Tus textos privados siguen siendo privados",
+      "privacyDescription": "La nota privada de la visita y los comentarios privados de las atracciones nunca se copian. El texto público inferior es independiente.",
+      "dateLabel": "Precisión de la fecha",
+      "dateHint": "No puedes mostrar una fecha más precisa que la registrada.",
+      "ridesTitle": "Contadores de viajes",
+      "ridesDescription": "Muestra el número de viajes y atracciones descubiertas.",
+      "ratingsTitle": "Valoraciones de esta visita",
+      "ratingsDescription": "Muestra la valoración del parque y los promedios de los viajes seleccionados.",
+      "missedTitle": "Deseos pendientes",
+      "missedDescription": "Incluye las atracciones perdidas o cerradas que registraste.",
+      "captionTitle": "Texto público",
+      "captionDescription": "Añade un recuerdo breve escrito solo para esta publicación.",
+      "captionLabel": "Tu recuerdo público",
+      "captionPlaceholder": "El momento que quieres contar...",
+      "captionHint": "Este texto será público y nunca procede de tus comentarios privados.",
+      "itemsTitle": "Recuerdos que quieres mostrar",
+      "itemsDescription": "Desmarca lo que no quieras mostrar y vuelve a generar la vista previa.",
+      "itemsLimit": "Esta visita contiene {{total}} recuerdos que se pueden compartir. Se han seleccionado los primeros {{visible}} para respetar el límite; todavía puedes quitar algunos.",
+      "error": "No se pudo preparar o guardar esta publicación. Revisa tus elecciones e inténtalo de nuevo.",
+      "cancel": "Cancelar",
+      "publishing": "Publicando...",
+      "publish": "Publicar este resumen",
+      "preparing": "Preparando...",
+      "preview": "Vista previa exacta"
+    },
+    "date": {
+      "Hidden": "Ocultar fecha",
+      "Year": "Solo el año",
+      "Month": "Mes y año",
+      "Day": "Fecha completa"
+    },
+    "preview": {
+      "kicker": "Vista previa pública exacta",
+      "unknownPark": "Visita al parque",
+      "unknownCategory": "Categoría no indicada",
+      "rides": "viajes realizados",
+      "discovered": "atracciones descubiertas",
+      "parkRating": "valoración del parque",
+      "missed": "Deseo pendiente",
+      "rideCount": "{{count}} viaje(s)",
+      "limits": "Parte de la información está oculta o incompleta, tal como se solicitó.",
+      "exact": "Esto es exactamente lo que se fijará y publicará."
+    },
+    "toast": {
+      "published": "El resumen público de la visita está listo.",
+      "publishError": "No se pudo publicar el resumen.",
+      "revoked": "El enlace público de esta visita ya está desactivado.",
+      "revokeError": "No se pudo hacer privada la publicación."
+    },
+    "social": {
+      "title": "Un recuerdo del parque para compartir",
+      "description": "Envía esta tarjeta a familiares y amigos.",
+      "text": "Descubre este recuerdo de una visita al parque."
+    },
+    "public": {
+      "seoTitle": "Recuerdo de una visita a {{park}}",
+      "seoDescription": "Descubre el resumen compartido de una visita a {{park}}.",
+      "breadcrumbLabel": "Ruta de navegación",
+      "breadcrumbHome": "Inicio",
+      "breadcrumbRecap": "Recuerdo de la visita",
+      "notFoundTitle": "Este recuerdo ya no está disponible",
+      "notFoundDescription": "Es posible que su propietario haya desactivado el enlace o sustituido la publicación.",
+      "createMine": "Crear mi propio pasaporte",
+      "errorTitle": "No se puede cargar el recuerdo",
+      "errorDescription": "Un error temporal impide abrir este resumen.",
+      "kicker": "Diario de visita compartido",
+      "hiddenDate": "Fecha mantenida en privado",
+      "summaryLabel": "Resumen de la visita",
+      "favorite": "Favorito de la visita",
+      "mostRepeated": "Más repetido",
+      "memoryTrail": "El recorrido de un vistazo",
+      "itemsTitle": "Recuerdos elegidos",
+      "limits": "El propietario ocultó deliberadamente parte de la información o no estaba disponible.",
+      "openPark": "Descubrir el parque",
+      "ctaTitle": "¿Qué parques has vivido?",
+      "ctaDescription": "Empieza gratis un borrador local, incluso sin crear una cuenta.",
+      "loading": "Abriendo el recuerdo..."
+    }
+  },
   "admin": {
     "auditLogs": {
       "title": "Registro de auditoría",

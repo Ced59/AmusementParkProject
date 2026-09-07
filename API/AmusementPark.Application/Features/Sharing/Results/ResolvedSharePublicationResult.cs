@@ -10,4 +10,6 @@ public sealed record ResolvedSharePublicationResult(
     DateTime PublishedAtUtc,
     string SourceScopeKey,
     long SourceVersion,
-    long PublicationVersion);
+    long PublicationVersion,
+    string PublicationId = "",
+    string ContentFingerprint = "");

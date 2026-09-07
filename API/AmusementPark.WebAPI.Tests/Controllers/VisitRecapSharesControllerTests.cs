@@ -1,0 +1,199 @@
+using System.Reflection;
+using System.Security.Claims;
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.WebAPI.Controllers;
+using AmusementPark.WebAPI.Contracts.Sharing;
+using AmusementPark.WebAPI.Filters;
+using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.RateLimiting;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.WebAPI.Tests.Controllers;
+
+public sealed class VisitRecapSharesControllerTests
+{
+    [Fact]
+    public async Task GetAsync_ShouldUseTheAuthenticatedOwnerAndRequestedVisit()
+    {
+        Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>> queryHandler =
+            new Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
+        queryHandler.Setup(value => value.HandleAsync(
+                It.Is<GetSharePublicationSettingsQuery>(query =>
+                    query.UserId == "owner-1"
+                    && query.PublicationType == SharePublicationType.VisitRecap
+                    && query.SourceId == "visit-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(
+                new SharePublicationSettingsResult(
+                    false,
+                    null,
+                    null,
+                    null,
+                    null,
+                    Array.Empty<ShareContentField>())));
+        VisitRecapSharesController controller = CreateController(queryHandler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.GetAsync("visit-1", CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SharePublicationSettingsDto response = Assert.IsType<SharePublicationSettingsDto>(ok.Value);
+        Assert.False(response.IsPublic);
+        queryHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RevokeAsync_ShouldRevokeOnlyTheAuthenticatedOwnersVisitShare()
+    {
+        Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>> commandHandler =
+            new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
+        commandHandler.Setup(value => value.HandleAsync(
+                It.Is<SetSharePublicationVisibilityCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.PublicationType == SharePublicationType.VisitRecap
+                    && command.SourceId == "visit-1"
+                    && !command.IsPublic),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(
+                new SharePublicationSettingsResult(
+                    false,
+                    null,
+                    null,
+                    1,
+                    ShareDatePrecision.Month,
+                    new[] { ShareContentField.RideCount })));
+        VisitRecapSharesController controller = CreateController(commandHandler: commandHandler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.RevokeAsync("visit-1", CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SharePublicationSettingsDto response = Assert.IsType<SharePublicationSettingsDto>(ok.Value);
+        Assert.False(response.IsPublic);
+        commandHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetCandidatesAsync_ShouldReturnOnlyTheAuthenticatedVisitsCandidates()
+    {
+        Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>> handler =
+            new Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<GetVisitRecapShareCandidatesQuery>(query =>
+                    query.OwnerUserId == "owner-1"
+                    && query.VisitId == "visit-1"
+                    && query.IncludeMissedItems),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitRecapShareCandidatesResult>.Success(
+                new VisitRecapShareCandidatesResult(
+                    new[]
+                    {
+                        new VisitRecapShareItemResult(
+                            "item-1",
+                            "Le Galion",
+                            "Attraction",
+                            null,
+                            null,
+                            false),
+                    },
+                    101,
+                    true)));
+        VisitRecapSharesController controller = CreateController(
+            candidatesHandler: handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.GetCandidatesAsync(
+            "visit-1",
+            includeMissedItems: true,
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        VisitRecapShareCandidatesDto response =
+            Assert.IsType<VisitRecapShareCandidatesDto>(ok.Value);
+        Assert.Equal(101, response.TotalEligibleItemCount);
+        Assert.True(response.IsTruncated);
+        Assert.Equal("Le Galion", Assert.Single(response.Items).Name);
+        handler.VerifyAll();
+    }
+
+    [Fact]
+    public void Endpoints_ShouldRemainAuthenticatedNoStoreAndInvalidateOnRevoke()
+    {
+        Type controller = typeof(VisitRecapSharesController);
+        AuthorizeAttribute authorize = Assert.Single(
+            controller.GetCustomAttributes<AuthorizeAttribute>(),
+            static attribute => !string.IsNullOrWhiteSpace(attribute.Roles));
+        Assert.False(string.IsNullOrWhiteSpace(authorize.Roles));
+        Assert.NotNull(controller.GetCustomAttribute<RequireActivatedUnblockedUserAttribute>());
+
+        MethodInfo get = GetAction(nameof(VisitRecapSharesController.GetAsync));
+        ResponseCacheAttribute getCache = Assert.IsType<ResponseCacheAttribute>(
+            get.GetCustomAttribute<ResponseCacheAttribute>());
+        Assert.True(getCache.NoStore);
+
+        MethodInfo candidates = GetAction(nameof(VisitRecapSharesController.GetCandidatesAsync));
+        ResponseCacheAttribute candidatesCache = Assert.IsType<ResponseCacheAttribute>(
+            candidates.GetCustomAttribute<ResponseCacheAttribute>());
+        Assert.True(candidatesCache.NoStore);
+        EnableRateLimitingAttribute candidatesRateLimit =
+            Assert.IsType<EnableRateLimitingAttribute>(
+                candidates.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(
+            RateLimitPolicyNames.SharePublicationPreviews,
+            candidatesRateLimit.PolicyName);
+
+        MethodInfo revoke = GetAction(nameof(VisitRecapSharesController.RevokeAsync));
+        Assert.NotNull(revoke.GetCustomAttribute<InvalidatesPublicCacheAttribute>());
+        ResponseCacheAttribute revokeCache = Assert.IsType<ResponseCacheAttribute>(
+            revoke.GetCustomAttribute<ResponseCacheAttribute>());
+        Assert.True(revokeCache.NoStore);
+    }
+
+    private static MethodInfo GetAction(string name)
+    {
+        return typeof(VisitRecapSharesController).GetMethod(name)
+            ?? throw new InvalidOperationException($"Action {name} was not found.");
+    }
+
+    private static ControllerContext CreateControllerContext(string userId)
+    {
+        ClaimsIdentity identity = new ClaimsIdentity(
+            new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, userId),
+                new Claim(ClaimTypes.Role, "USER"),
+            },
+            "Test");
+        return new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(identity),
+            },
+        };
+    }
+
+    private static VisitRecapSharesController CreateController(
+        IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>? queryHandler = null,
+        IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>? candidatesHandler = null,
+        ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>? commandHandler = null)
+    {
+        return new VisitRecapSharesController(
+            queryHandler
+                ?? new Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object,
+            candidatesHandler
+                ?? new Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>>(MockBehavior.Strict).Object,
+            commandHandler
+                ?? new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object);
+    }
+}

@@ -33,7 +33,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState publicationState,
-        ShareContentPolicy contentPolicy)
+        ShareContentPolicy contentPolicy,
+        string contentFingerprint = "")
     {
         byte[] digest = this.ComputeDigest(
             ownerUserId,
@@ -41,7 +42,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
             sourceScopeKey,
             sourceVersion,
             publicationState,
-            contentPolicy);
+            contentPolicy,
+            contentFingerprint);
         return Convert.ToBase64String(digest)
             .TrimEnd('=')
             .Replace('+', '-')
@@ -55,7 +57,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState publicationState,
-        ShareContentPolicy contentPolicy)
+        ShareContentPolicy contentPolicy,
+        string contentFingerprint = "")
     {
         if (!TryDecode(approvalToken, out byte[] suppliedDigest))
         {
@@ -68,7 +71,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
             sourceScopeKey,
             sourceVersion,
             publicationState,
-            contentPolicy);
+            contentPolicy,
+            contentFingerprint);
         return suppliedDigest.Length == expectedDigest.Length
             && CryptographicOperations.FixedTimeEquals(suppliedDigest, expectedDigest);
     }
@@ -79,7 +83,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState publicationState,
-        ShareContentPolicy contentPolicy)
+        ShareContentPolicy contentPolicy,
+        string contentFingerprint)
     {
         ArgumentNullException.ThrowIfNull(contentPolicy);
         StringBuilder canonical = new StringBuilder();
@@ -98,6 +103,8 @@ public sealed class HmacSharePublicationPreviewApprovalProtector
         {
             Append(canonical, field.ToString());
         }
+
+        Append(canonical, contentFingerprint?.Trim() ?? string.Empty);
 
         using HMACSHA256 hmac = new HMACSHA256(this.signingKey);
         return hmac.ComputeHash(Encoding.UTF8.GetBytes(canonical.ToString()));

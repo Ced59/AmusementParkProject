@@ -107,6 +107,15 @@ public sealed partial class MongoDatabaseInitializer
         await sharePublicationsCollection.Indexes.CreateManyAsync(
             SharePublicationMongoDefinitions.BuildIndexes(),
             cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.SharePublicationSnapshotsCollectionName,
+            cancellationToken);
+        IMongoCollection<VisitRecapShareSnapshotDocument> shareSnapshotsCollection =
+            this.database.GetCollection<VisitRecapShareSnapshotDocument>(
+                this.settings.SharePublicationSnapshotsCollectionName);
+        await shareSnapshotsCollection.Indexes.CreateManyAsync(
+            VisitRecapShareSnapshotMongoDefinitions.BuildIndexes(),
+            cancellationToken);
 
         await this.EnsureCollectionExistsAsync(
             this.settings.ShareSourceRevisionsCollectionName,

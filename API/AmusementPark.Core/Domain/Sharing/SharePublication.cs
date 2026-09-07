@@ -7,6 +7,8 @@ namespace AmusementPark.Core.Domain.Sharing;
 /// </summary>
 public sealed class SharePublication
 {
+    public const int MaximumContentFingerprintLength = 128;
+
     private SharePublication(
         SharePublicationId id,
         string ownerUserId,
@@ -16,6 +18,7 @@ public sealed class SharePublication
         SharePublicationStatus status,
         ShareVisibility visibility,
         ShareContentPolicy contentPolicy,
+        string contentFingerprint,
         long sourceVersion,
         long publicationVersion,
         long version,
@@ -30,6 +33,7 @@ public sealed class SharePublication
         ValidateVisibility(visibility);
         ArgumentNullException.ThrowIfNull(contentPolicy);
         ValidatePolicyType(type, contentPolicy);
+        string normalizedContentFingerprint = NormalizeContentFingerprint(contentFingerprint);
         ValidateSourceVersion(sourceVersion);
         ValidatePublicationVersion(publicationVersion);
         ValidateVersion(version);
@@ -59,6 +63,7 @@ public sealed class SharePublication
         this.Status = status;
         this.Visibility = visibility;
         this.ContentPolicy = contentPolicy;
+        this.ContentFingerprint = normalizedContentFingerprint;
         this.SourceVersion = sourceVersion;
         this.PublicationVersion = publicationVersion;
         this.Version = version;
@@ -83,6 +88,12 @@ public sealed class SharePublication
     public ShareVisibility Visibility { get; private set; }
 
     public ShareContentPolicy ContentPolicy { get; private set; }
+
+    /// <summary>
+    /// Empreinte opaque de la sélection spécialisée approuvée (éléments choisis, texte public, etc.).
+    /// Elle ne contient jamais le contenu public ni une donnée privée en clair.
+    /// </summary>
+    public string ContentFingerprint { get; private set; }
 
     public long SourceVersion { get; private set; }
 
@@ -109,7 +120,8 @@ public sealed class SharePublication
         string sourceScopeKey,
         ShareContentPolicy contentPolicy,
         long sourceVersion,
-        DateTime nowUtc)
+        DateTime nowUtc,
+        string contentFingerprint = "")
     {
         return new SharePublication(
             id,
@@ -120,6 +132,7 @@ public sealed class SharePublication
             SharePublicationStatus.Draft,
             ShareVisibility.Private,
             contentPolicy,
+            contentFingerprint,
             sourceVersion,
             0,
             0,
@@ -144,7 +157,8 @@ public sealed class SharePublication
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
-        DateTime updatedAtUtc)
+        DateTime updatedAtUtc,
+        string contentFingerprint = "")
     {
         return new SharePublication(
             id,
@@ -155,6 +169,7 @@ public sealed class SharePublication
             status,
             visibility,
             contentPolicy,
+            contentFingerprint,
             sourceVersion,
             publicationVersion,
             version,
@@ -234,13 +249,49 @@ public sealed class SharePublication
         this.UpdatedAtUtc = nowUtc;
     }
 
+    public void ReplaceContentFingerprint(
+        string contentFingerprint,
+        long expectedPublicationVersion,
+        DateTime nowUtc)
+    {
+        this.EnsureNotRevoked();
+        string normalizedContentFingerprint = NormalizeContentFingerprint(contentFingerprint);
+        this.ValidateExpectedPublicationVersion(expectedPublicationVersion);
+        this.ValidateMutationTimestamp(nowUtc);
+        if (string.Equals(
+                this.ContentFingerprint,
+                normalizedContentFingerprint,
+                StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        if (this.Status == SharePublicationStatus.Published)
+        {
+            this.EnsurePublicationVersionCanIncrement();
+        }
+
+        this.EnsureVersionCanIncrement();
+        this.ContentFingerprint = normalizedContentFingerprint;
+        if (this.Status == SharePublicationStatus.Published)
+        {
+            this.PublicationVersion++;
+            this.Status = SharePublicationStatus.NeedsReview;
+            this.Visibility = ShareVisibility.Private;
+        }
+
+        this.Version++;
+        this.UpdatedAtUtc = nowUtc;
+    }
+
     public void Publish(
         ShareToken shareToken,
         ShareVisibility visibility,
         long approvedSourceVersion,
         ShareContentPolicy approvedContentPolicy,
         long expectedPublicationVersion,
-        DateTime nowUtc)
+        DateTime nowUtc,
+        string approvedContentFingerprint = "")
     {
         if (this.Status is not SharePublicationStatus.Draft and not SharePublicationStatus.NeedsReview)
         {
@@ -273,6 +324,16 @@ public sealed class SharePublication
             throw CreateValidationException(
                 SharePublicationErrorCodes.PreviewPolicyMismatch,
                 "The approved preview does not match the current content policy.");
+        }
+
+        if (!string.Equals(
+                this.ContentFingerprint,
+                NormalizeContentFingerprint(approvedContentFingerprint),
+                StringComparison.Ordinal))
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.PreviewPolicyMismatch,
+                "The approved preview does not match the current content selection.");
         }
 
         _ = shareToken.Value;
@@ -395,6 +456,19 @@ public sealed class SharePublication
                 SharePublicationErrorCodes.InvalidSourceVersion,
                 "The share source version cannot be negative.");
         }
+    }
+
+    private static string NormalizeContentFingerprint(string? contentFingerprint)
+    {
+        string normalized = contentFingerprint?.Trim() ?? string.Empty;
+        if (normalized.Length > MaximumContentFingerprintLength)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.PreviewPolicyMismatch,
+                "The share content fingerprint is too long.");
+        }
+
+        return normalized;
     }
 
     private static void ValidatePublicationVersion(long publicationVersion)

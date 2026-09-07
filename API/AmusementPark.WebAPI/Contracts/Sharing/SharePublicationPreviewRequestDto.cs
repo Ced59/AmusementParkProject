@@ -9,4 +9,6 @@ public sealed class SharePublicationPreviewRequestDto
     public string DatePrecision { get; set; } = string.Empty;
 
     public List<string> IncludedFields { get; set; } = new();
+
+    public VisitRecapShareInputDto? VisitRecap { get; set; }
 }

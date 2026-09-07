@@ -85,6 +85,13 @@ describe('SSR route status helpers', () => {
     ).toBe('noindex, nofollow, noarchive');
   });
 
+  it('keeps public visit recap links valid but excludes them from indexing and archiving', () => {
+    const url: string = '/fr/passport/shared/visits/opaque-token';
+
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, nofollow, noarchive');
+  });
+
   it('keeps known private client routes successful for the CSR shell', () => {
     expect(resolveSsrRouteStatusCode('/fr/profile')).toBe(200);
     expect(resolveSsrRouteStatusCode('/fr/profile/visits/visit-123')).toBe(200);

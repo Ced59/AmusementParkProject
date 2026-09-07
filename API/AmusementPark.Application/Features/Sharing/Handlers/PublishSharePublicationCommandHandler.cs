@@ -87,6 +87,27 @@ public sealed class PublishSharePublicationCommandHandler
         SharePublicationApprovalState publicationState =
             SharePublicationApprovalState.From(currentPublication);
 
+        string contentFingerprint = string.Empty;
+        VisitRecapShareInput? normalizedVisitRecap = null;
+        if (command.PublicationType == SharePublicationType.VisitRecap)
+        {
+            ApplicationResult<VisitRecapShareInput> inputResult =
+                VisitRecapShareInputNormalizer.Normalize(command.VisitRecap, contentPolicy);
+            if (!inputResult.IsSuccess || inputResult.Value is null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(inputResult.Errors);
+            }
+
+            normalizedVisitRecap = inputResult.Value;
+            contentFingerprint = VisitRecapShareInputNormalizer.CreateFingerprint(
+                normalizedVisitRecap);
+        }
+        else if (command.VisitRecap is not null)
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.InvalidSource());
+        }
+
         if (!this.approvalProtector.IsValid(
                 command.ApprovalToken,
                 ownerUserId,
@@ -94,7 +115,8 @@ public sealed class PublishSharePublicationCommandHandler
                 scopeResult.Value,
                 command.ApprovedSourceVersion,
                 publicationState,
-                contentPolicy))
+                contentPolicy,
+                contentFingerprint))
         {
             return ApplicationResult<SharePublicationSettingsResult>.Failure(
                 SharingApplicationErrors.PreviewApprovalInvalid());
@@ -122,6 +144,9 @@ public sealed class PublishSharePublicationCommandHandler
             publicationState,
             contentPolicy,
             source,
-            cancellationToken);
+            cancellationToken,
+            contentFingerprint,
+            normalizedVisitRecap,
+            command.SourceId);
     }
 }

@@ -901,6 +901,101 @@
       "ratings": "O meu ranking"
     }
   },
+  "visitRecapShare": {
+    "manage": {
+      "kicker": "Uma memória para partilhar",
+      "title": "Conta a história desta visita",
+      "publicDescription": "O teu resumo só é público para quem tiver a ligação.",
+      "privateDescription": "Cria um cartão público sem revelar notas nem comentários privados.",
+      "loading": "A carregar opções de partilha...",
+      "open": "Ver o resumo",
+      "edit": "Editar a partilha",
+      "revoke": "Tornar privado",
+      "start": "Criar o resumo"
+    },
+    "editor": {
+      "step": "Ateliê de partilha",
+      "title": "Escolhe exatamente o que ficará visível",
+      "intro": "Cada alteração exige uma nova pré-visualização antes da publicação.",
+      "privacyTitle": "Os teus textos privados continuam privados",
+      "privacyDescription": "A nota privada da visita e os comentários privados das voltas nunca são copiados. A legenda pública abaixo é um texto separado.",
+      "dateLabel": "Precisão da data",
+      "dateHint": "Não podes mostrar uma data mais precisa do que a que registaste.",
+      "ridesTitle": "Contadores de voltas",
+      "ridesDescription": "Mostra o número de voltas e atrações descobertas.",
+      "ratingsTitle": "Avaliações desta visita",
+      "ratingsDescription": "Mostra a avaliação do parque e as médias das voltas selecionadas.",
+      "missedTitle": "Desejos por cumprir",
+      "missedDescription": "Inclui atrações perdidas ou fechadas que registaste.",
+      "captionTitle": "Legenda pública",
+      "captionDescription": "Adiciona uma memória curta escrita apenas para esta partilha.",
+      "captionLabel": "A tua memória pública",
+      "captionPlaceholder": "O momento que queres contar...",
+      "captionHint": "Este texto será público e nunca vem dos teus comentários privados.",
+      "itemsTitle": "Memórias a mostrar",
+      "itemsDescription": "Desmarca o que não queres mostrar e volta a pré-visualizar.",
+      "itemsLimit": "Esta visita contém {{total}} memórias que podem ser partilhadas. As primeiras {{visible}} estão selecionadas para respeitar o limite; ainda podes retirar algumas.",
+      "error": "Não foi possível preparar ou guardar esta partilha. Verifica as escolhas e tenta novamente.",
+      "cancel": "Cancelar",
+      "publishing": "A publicar...",
+      "publish": "Publicar este resumo",
+      "preparing": "A preparar...",
+      "preview": "Pré-visualizar exatamente"
+    },
+    "date": {
+      "Hidden": "Ocultar data",
+      "Year": "Apenas o ano",
+      "Month": "Mês e ano",
+      "Day": "Data completa"
+    },
+    "preview": {
+      "kicker": "Pré-visualização pública exata",
+      "unknownPark": "Visita ao parque",
+      "unknownCategory": "Categoria não indicada",
+      "rides": "voltas realizadas",
+      "discovered": "atrações descobertas",
+      "parkRating": "avaliação do parque",
+      "missed": "Desejo por cumprir",
+      "rideCount": "{{count}} volta(s)",
+      "limits": "Algumas informações estão ocultas ou incompletas, conforme pedido.",
+      "exact": "Isto é exatamente o que será fixado e publicado."
+    },
+    "toast": {
+      "published": "O resumo público da visita está pronto.",
+      "publishError": "Não foi possível publicar o resumo.",
+      "revoked": "A ligação pública desta visita está agora desativada.",
+      "revokeError": "Não foi possível tornar a partilha privada."
+    },
+    "social": {
+      "title": "Uma memória do parque para partilhar",
+      "description": "Envia este cartão de memória a familiares e amigos.",
+      "text": "Descobre esta memória de uma visita ao parque."
+    },
+    "public": {
+      "seoTitle": "Memória de uma visita a {{park}}",
+      "seoDescription": "Descobre o resumo partilhado de uma visita a {{park}}.",
+      "breadcrumbLabel": "Caminho de navegação",
+      "breadcrumbHome": "Início",
+      "breadcrumbRecap": "Memória da visita",
+      "notFoundTitle": "Esta memória já não está disponível",
+      "notFoundDescription": "O proprietário pode ter desativado a ligação ou substituído a partilha.",
+      "createMine": "Criar o meu próprio passaporte",
+      "errorTitle": "Não é possível carregar a memória",
+      "errorDescription": "Um erro temporário impede a abertura deste resumo.",
+      "kicker": "Diário de visita partilhado",
+      "hiddenDate": "Data mantida privada",
+      "summaryLabel": "Resumo da visita",
+      "favorite": "Favorito da visita",
+      "mostRepeated": "Mais repetido",
+      "memoryTrail": "O percurso num relance",
+      "itemsTitle": "Memórias escolhidas",
+      "limits": "O proprietário ocultou deliberadamente algumas informações ou estas não estavam disponíveis.",
+      "openPark": "Descobrir o parque",
+      "ctaTitle": "Que parques já viveste?",
+      "ctaDescription": "Começa gratuitamente um rascunho local, mesmo sem criar uma conta.",
+      "loading": "A abrir a memória..."
+    }
+  },
   "admin": {
     "auditLogs": {
       "title": "Registo de auditoria",

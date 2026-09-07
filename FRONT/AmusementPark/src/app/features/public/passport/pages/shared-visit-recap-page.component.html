@@ -1,0 +1,142 @@
+<main class="shared-visit public-page">
+  @if (notFound()) {
+    <section class="shared-visit__state" role="status">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      <h1>{{ 'visitRecapShare.public.notFoundTitle' | translate }}</h1>
+      <p>{{ 'visitRecapShare.public.notFoundDescription' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'visitRecapShare.public.createMine' | translate }}</a>
+    </section>
+  } @else if (error()) {
+    <section class="shared-visit__state" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h1>{{ 'visitRecapShare.public.errorTitle' | translate }}</h1>
+      <p>{{ 'visitRecapShare.public.errorDescription' | translate }}</p>
+    </section>
+  } @else if (result(); as shared) {
+    <nav class="shared-visit__breadcrumb" [attr.aria-label]="'visitRecapShare.public.breadcrumbLabel' | translate">
+      <a [routerLink]="['/', currentLang(), 'home']">{{ 'visitRecapShare.public.breadcrumbHome' | translate }}</a>
+      <i class="pi pi-angle-right" aria-hidden="true"></i>
+      @if (parkRoute(); as parkLink) {
+        <a [routerLink]="parkLink">{{ shared.visitRecap.parkName || ('visitRecapShare.preview.unknownPark' | translate) }}</a>
+        <i class="pi pi-angle-right" aria-hidden="true"></i>
+      }
+      <span aria-current="page">{{ 'visitRecapShare.public.breadcrumbRecap' | translate }}</span>
+    </nav>
+
+    <article class="shared-visit__story">
+      <header class="shared-visit__hero">
+        <div>
+          <span class="shared-visit__kicker"><i class="pi pi-ticket" aria-hidden="true"></i>{{ 'visitRecapShare.public.kicker' | translate }}</span>
+          <h1>{{ shared.visitRecap.parkName || ('visitRecapShare.preview.unknownPark' | translate) }}</h1>
+          @if (shared.visitRecap.date) {
+            <p>{{ formatDate(shared.visitRecap) }}</p>
+          } @else {
+            <p>{{ 'visitRecapShare.public.hiddenDate' | translate }}</p>
+          }
+        </div>
+        <span class="shared-visit__stamp" aria-hidden="true"><i class="pi pi-map-marker"></i></span>
+      </header>
+
+      @if (shared.visitRecap.publicCaption) {
+        <blockquote class="shared-visit__caption">
+          <i class="pi pi-quote-left" aria-hidden="true"></i>
+          <p>{{ shared.visitRecap.publicCaption }}</p>
+        </blockquote>
+      }
+
+      @if (shared.visitRecap.totalRideCount != null || shared.visitRecap.parkRating != null) {
+        <section class="shared-visit__scoreboard" [attr.aria-label]="'visitRecapShare.public.summaryLabel' | translate">
+          @if (shared.visitRecap.totalRideCount != null) {
+            <article><i class="pi pi-replay" aria-hidden="true"></i><strong>{{ shared.visitRecap.totalRideCount }}</strong><span>{{ 'visitRecapShare.preview.rides' | translate }}</span></article>
+            <article><i class="pi pi-compass" aria-hidden="true"></i><strong>{{ shared.visitRecap.distinctItemCount }}</strong><span>{{ 'visitRecapShare.preview.discovered' | translate }}</span></article>
+          }
+          @if (shared.visitRecap.parkRating != null) {
+            <article><i class="pi pi-star-fill" aria-hidden="true"></i><strong>{{ formatRating(shared.visitRecap.parkRating) }} / 5</strong><span>{{ 'visitRecapShare.preview.parkRating' | translate }}</span></article>
+          }
+        </section>
+      }
+
+      @if (shared.visitRecap.topRatedItem || shared.visitRecap.mostRepeatedItem) {
+        <section class="shared-visit__highlights">
+          @if (shared.visitRecap.topRatedItem; as item) {
+            <article>
+              <span><i class="pi pi-star-fill" aria-hidden="true"></i>{{ 'visitRecapShare.public.favorite' | translate }}</span>
+              <h2>{{ item.name }}</h2>
+              <strong>{{ formatRating(item.rating) }} / 5</strong>
+            </article>
+          }
+          @if (shared.visitRecap.mostRepeatedItem; as item) {
+            <article>
+              <span><i class="pi pi-bolt" aria-hidden="true"></i>{{ 'visitRecapShare.public.mostRepeated' | translate }}</span>
+              <h2>{{ item.name }}</h2>
+              <strong>{{ 'visitRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}</strong>
+            </article>
+          }
+        </section>
+      }
+
+      @if (shared.visitRecap.items.length > 0) {
+        <section class="shared-visit__timeline" aria-labelledby="shared-visit-items-title">
+          <header>
+            <span class="shared-visit__kicker">{{ 'visitRecapShare.public.memoryTrail' | translate }}</span>
+            <h2 id="shared-visit-items-title">{{ 'visitRecapShare.public.itemsTitle' | translate }}</h2>
+          </header>
+          <ol>
+            @for (item of shared.visitRecap.items; track item.name + ':' + position; let position = $index) {
+              <li [class.shared-visit__timeline-item--missed]="item.isMissed">
+                <span class="shared-visit__timeline-number">{{ position + 1 }}</span>
+                <div>
+                  <span>{{ itemCategoryKey(item) | translate }}</span>
+                  <h3>{{ item.name }}</h3>
+                  <p>
+                    @if (item.isMissed) {
+                      {{ 'visitRecapShare.preview.missed' | translate }}
+                    } @else if (item.rideCount != null) {
+                      {{ 'visitRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}
+                    }
+                  </p>
+                </div>
+                @if (item.averageRating != null) {
+                  <strong class="shared-visit__timeline-rating">{{ formatRating(item.averageRating) }} / 5</strong>
+                }
+              </li>
+            }
+          </ol>
+        </section>
+      }
+
+      @if (shared.visitRecap.hasHiddenDate || shared.visitRecap.hasIncompleteRatings || shared.visitRecap.hasIncompleteItems) {
+        <p class="shared-visit__limits"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'visitRecapShare.public.limits' | translate }}</p>
+      }
+
+      @if (parkRoute(); as parkLink) {
+        <a class="shared-visit__park-link" appUiButton="ghost" [routerLink]="parkLink"><i class="pi pi-map" aria-hidden="true"></i>{{ 'visitRecapShare.public.openPark' | translate }}</a>
+      }
+    </article>
+
+    <section class="shared-visit__footer-grid">
+      <app-public-share-panel
+        targetType="Page"
+        [targetId]="shareId()"
+        [targetTitle]="'visitRecapShare.social.title' | translate"
+        titleKey="visitRecapShare.social.title"
+        descriptionKey="visitRecapShare.social.description"
+        textKey="visitRecapShare.social.text">
+      </app-public-share-panel>
+
+      <aside class="shared-visit__cta">
+        <span aria-hidden="true"><i class="pi pi-passport"></i></span>
+        <div>
+          <h2>{{ 'visitRecapShare.public.ctaTitle' | translate }}</h2>
+          <p>{{ 'visitRecapShare.public.ctaDescription' | translate }}</p>
+          <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'visitRecapShare.public.createMine' | translate }}</a>
+        </div>
+      </aside>
+    </section>
+  } @else {
+    <section class="shared-visit__state" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ 'visitRecapShare.public.loading' | translate }}</p>
+    </section>
+  }
+</main>

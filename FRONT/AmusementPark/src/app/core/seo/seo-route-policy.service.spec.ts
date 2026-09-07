@@ -80,4 +80,11 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isSharedUserRankingRoute('/fr/rankings/shared')).toBe(false);
     expect(service.isSharedUserRankingRoute('/fr/rankings')).toBe(false);
   });
+
+  it('recognizes shared visit recaps as public noindex pages instead of account pages', (): void => {
+    expect(service.isSharedVisitRecapRoute('/fr/passport/shared/visits/opaque-token')).toBe(true);
+    expect(service.isSharedVisitRecapRoute('/fr/passport/shared/visits/opaque-token?from=copy')).toBe(true);
+    expect(service.isSharedVisitRecapRoute('/fr/passport/shared/visits')).toBe(false);
+    expect(service.isAccountRoute('/fr/passport/shared/visits/opaque-token')).toBe(false);
+  });
 });
