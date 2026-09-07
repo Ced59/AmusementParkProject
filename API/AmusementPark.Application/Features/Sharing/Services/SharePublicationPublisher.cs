@@ -151,7 +151,12 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (publishOutcome == SharePublicationWriteOutcome.Success)
             {
-                return Success(publication);
+                return await this.ConfirmPublishedSourceAsync(
+                    publication,
+                    source,
+                    sourceScopeKey,
+                    sourceVersion,
+                    cancellationToken);
             }
 
             if (publishOutcome != SharePublicationWriteOutcome.TokenCollision)
@@ -163,6 +168,81 @@ public sealed class SharePublicationPublisher
 
         return ApplicationResult<SharePublicationSettingsResult>.Failure(
             SharingApplicationErrors.PublicationChangedConcurrently());
+    }
+
+    private async Task<ApplicationResult<SharePublicationSettingsResult>> ConfirmPublishedSourceAsync(
+        SharePublication publication,
+        ISharePublicationSourceDescriptor source,
+        string sourceScopeKey,
+        long sourceVersion,
+        CancellationToken cancellationToken)
+    {
+        ApplicationResult<long> persistedSourceVersion = await source.GetCurrentSourceVersionAsync(
+            sourceScopeKey,
+            cancellationToken);
+        if (persistedSourceVersion.IsSuccess
+            && persistedSourceVersion.Value == sourceVersion)
+        {
+            return Success(publication);
+        }
+
+        SharePublicationApprovalState committedState = SharePublicationApprovalState.From(publication);
+        await this.RevokeIfUnchangedAsync(
+            publication.OwnerUserId,
+            publication.Type,
+            publication.SourceScopeKey,
+            committedState,
+            cancellationToken);
+
+        return persistedSourceVersion.IsSuccess
+            ? ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.ApprovedPreviewExpired())
+            : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                persistedSourceVersion.Errors);
+    }
+
+    private async Task RevokeIfUnchangedAsync(
+        string ownerUserId,
+        SharePublicationType publicationType,
+        string sourceScopeKey,
+        SharePublicationApprovalState committedState,
+        CancellationToken cancellationToken)
+    {
+        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            try
+            {
+                SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
+                    ownerUserId,
+                    publicationType,
+                    sourceScopeKey,
+                    cancellationToken);
+                if (!committedState.Matches(publication)
+                    || publication?.Status != SharePublicationStatus.Published)
+                {
+                    return;
+                }
+
+                long expectedVersion = publication.Version;
+                publication.Revoke(
+                    publication.PublicationVersion,
+                    this.timeProvider.GetUtcNow().UtcDateTime);
+                SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
+                    publication,
+                    expectedVersion,
+                    cancellationToken);
+                if (outcome == SharePublicationWriteOutcome.Success)
+                {
+                    return;
+                }
+            }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+                // The response remains a source-change failure. A later retry rereads the exact
+                // committed state, while public resolution stays closed on the unstable source.
+            }
+        }
     }
 
     private async Task<(SharePublicationWriteOutcome Outcome, long PreparedVersion)> PrepareExistingAsync(
