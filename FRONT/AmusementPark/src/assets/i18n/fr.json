@@ -901,6 +901,100 @@
       "ratings": "Mon classement"
     }
   },
+  "visitRecapShare": {
+    "manage": {
+      "kicker": "Souvenir à partager",
+      "title": "Raconte cette visite",
+      "publicDescription": "Ton récapitulatif est public uniquement pour les personnes qui possèdent son lien.",
+      "privateDescription": "Compose une carte-souvenir publique sans dévoiler tes notes ni tes commentaires privés.",
+      "loading": "Chargement du partage...",
+      "open": "Voir le récapitulatif",
+      "edit": "Modifier le partage",
+      "revoke": "Rendre privé",
+      "start": "Créer le récapitulatif"
+    },
+    "editor": {
+      "step": "Atelier de partage",
+      "title": "Choisis exactement ce qui sera visible",
+      "intro": "Chaque modification exige une nouvelle prévisualisation avant publication.",
+      "privacyTitle": "Tes écrits privés restent privés",
+      "privacyDescription": "La note privée de la visite et les commentaires privés des tours ne sont jamais repris. La légende publique ci-dessous est un texte séparé.",
+      "dateLabel": "Précision de la date",
+      "dateHint": "Tu ne peux pas afficher une date plus précise que celle enregistrée.",
+      "ridesTitle": "Compteurs de tours",
+      "ridesDescription": "Affiche le nombre de tours et d’attractions découvertes.",
+      "ratingsTitle": "Notes de cette visite",
+      "ratingsDescription": "Affiche la note du parc et les moyennes des tours sélectionnés.",
+      "missedTitle": "Envies manquées",
+      "missedDescription": "Inclut les attractions manquées ou fermées que tu as enregistrées.",
+      "captionTitle": "Légende publique",
+      "captionDescription": "Ajoute un court souvenir écrit uniquement pour ce partage.",
+      "captionLabel": "Ton souvenir public",
+      "captionPlaceholder": "Le moment que tu veux raconter...",
+      "captionHint": "Ce texte sera public. Il ne provient jamais de tes commentaires privés.",
+      "itemsTitle": "Souvenirs à montrer",
+      "itemsDescription": "Décoche ce que tu ne veux pas faire apparaître, puis prévisualise à nouveau.",
+      "error": "Impossible de préparer ou d’enregistrer ce partage. Réessaie après avoir vérifié tes choix.",
+      "cancel": "Annuler",
+      "publishing": "Publication...",
+      "publish": "Publier ce récapitulatif",
+      "preparing": "Préparation...",
+      "preview": "Prévisualiser exactement"
+    },
+    "date": {
+      "Hidden": "Date masquée",
+      "Year": "Année seulement",
+      "Month": "Mois et année",
+      "Day": "Date complète"
+    },
+    "preview": {
+      "kicker": "Aperçu public exact",
+      "unknownPark": "Visite de parc",
+      "unknownCategory": "Catégorie non indiquée",
+      "rides": "tours effectués",
+      "discovered": "attractions découvertes",
+      "parkRating": "note du parc",
+      "missed": "Envie manquée",
+      "rideCount": "{{count}} tour(s)",
+      "limits": "Certaines informations sont masquées ou incomplètes, comme demandé.",
+      "exact": "C’est exactement ce qui sera figé et publié."
+    },
+    "toast": {
+      "published": "Le récapitulatif public de la visite est prêt.",
+      "publishError": "Le récapitulatif n’a pas pu être publié.",
+      "revoked": "Le lien public de cette visite est désormais désactivé.",
+      "revokeError": "Le partage n’a pas pu être rendu privé."
+    },
+    "social": {
+      "title": "Un souvenir de parc à partager",
+      "description": "Envoie cette carte-souvenir à tes proches.",
+      "text": "Découvre ce souvenir de visite de parc."
+    },
+    "public": {
+      "seoTitle": "Souvenir de visite à {{park}}",
+      "seoDescription": "Découvre un récapitulatif de visite partagé à {{park}}.",
+      "breadcrumbLabel": "Fil d’Ariane",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbRecap": "Souvenir de visite",
+      "notFoundTitle": "Ce souvenir n’est plus disponible",
+      "notFoundDescription": "Son propriétaire a peut-être désactivé le lien ou remplacé le partage.",
+      "createMine": "Créer mon propre passeport",
+      "errorTitle": "Le souvenir ne peut pas être chargé",
+      "errorDescription": "Une erreur temporaire empêche l’ouverture de ce récapitulatif.",
+      "kicker": "Journal de visite partagé",
+      "hiddenDate": "Date gardée privée",
+      "summaryLabel": "Résumé de la visite",
+      "favorite": "Coup de cœur de la visite",
+      "mostRepeated": "Le plus refait",
+      "memoryTrail": "Le parcours en un regard",
+      "itemsTitle": "Les souvenirs choisis",
+      "limits": "Le propriétaire a volontairement masqué certaines informations ou elles n’étaient pas disponibles.",
+      "openPark": "Découvrir le parc",
+      "ctaTitle": "Et toi, quels parcs as-tu vécus ?",
+      "ctaDescription": "Commence gratuitement un brouillon local, même sans créer de compte.",
+      "loading": "Ouverture du souvenir..."
+    }
+  },
   "admin": {
     "auditLogs": {
       "title": "Journal d’audit",
@@ -6094,100 +6188,6 @@
       "major": "Majeure",
       "minor": "Palier",
       "patch": "Mise à jour"
-    }
-  },
-  "visitRecapShare": {
-    "manage": {
-      "kicker": "Souvenir à partager",
-      "title": "Raconte cette visite",
-      "publicDescription": "Ton récapitulatif est public uniquement pour les personnes qui possèdent son lien.",
-      "privateDescription": "Compose une carte-souvenir publique sans dévoiler tes notes ni tes commentaires privés.",
-      "loading": "Chargement du partage...",
-      "open": "Voir le récapitulatif",
-      "edit": "Modifier le partage",
-      "revoke": "Rendre privé",
-      "start": "Créer le récapitulatif"
-    },
-    "editor": {
-      "step": "Atelier de partage",
-      "title": "Choisis exactement ce qui sera visible",
-      "intro": "Chaque modification exige une nouvelle prévisualisation avant publication.",
-      "privacyTitle": "Tes écrits privés restent privés",
-      "privacyDescription": "La note privée de la visite et les commentaires privés des tours ne sont jamais repris. La légende publique ci-dessous est un texte séparé.",
-      "dateLabel": "Précision de la date",
-      "dateHint": "Tu ne peux pas afficher une date plus précise que celle enregistrée.",
-      "ridesTitle": "Compteurs de tours",
-      "ridesDescription": "Affiche le nombre de tours et d’attractions découvertes.",
-      "ratingsTitle": "Notes de cette visite",
-      "ratingsDescription": "Affiche la note du parc et les moyennes des tours sélectionnés.",
-      "missedTitle": "Envies manquées",
-      "missedDescription": "Inclut les attractions manquées ou fermées que tu as enregistrées.",
-      "captionTitle": "Légende publique",
-      "captionDescription": "Ajoute un court souvenir écrit uniquement pour ce partage.",
-      "captionLabel": "Ton souvenir public",
-      "captionPlaceholder": "Le moment que tu veux raconter...",
-      "captionHint": "Ce texte sera public. Il ne provient jamais de tes commentaires privés.",
-      "itemsTitle": "Souvenirs à montrer",
-      "itemsDescription": "Décoche ce que tu ne veux pas faire apparaître, puis prévisualise à nouveau.",
-      "error": "Impossible de préparer ou d’enregistrer ce partage. Réessaie après avoir vérifié tes choix.",
-      "cancel": "Annuler",
-      "publishing": "Publication...",
-      "publish": "Publier ce récapitulatif",
-      "preparing": "Préparation...",
-      "preview": "Prévisualiser exactement"
-    },
-    "date": {
-      "Hidden": "Date masquée",
-      "Year": "Année seulement",
-      "Month": "Mois et année",
-      "Day": "Date complète"
-    },
-    "preview": {
-      "kicker": "Aperçu public exact",
-      "unknownPark": "Visite de parc",
-      "unknownCategory": "Catégorie non indiquée",
-      "rides": "tours effectués",
-      "discovered": "attractions découvertes",
-      "parkRating": "note du parc",
-      "missed": "Envie manquée",
-      "rideCount": "{{count}} tour(s)",
-      "limits": "Certaines informations sont masquées ou incomplètes, comme demandé.",
-      "exact": "C’est exactement ce qui sera figé et publié."
-    },
-    "toast": {
-      "published": "Le récapitulatif public de la visite est prêt.",
-      "publishError": "Le récapitulatif n’a pas pu être publié.",
-      "revoked": "Le lien public de cette visite est désormais désactivé.",
-      "revokeError": "Le partage n’a pas pu être rendu privé."
-    },
-    "social": {
-      "title": "Un souvenir de parc à partager",
-      "description": "Envoie cette carte-souvenir à tes proches.",
-      "text": "Découvre ce souvenir de visite de parc."
-    },
-    "public": {
-      "seoTitle": "Souvenir de visite à {{park}}",
-      "seoDescription": "Découvre un récapitulatif de visite partagé à {{park}}.",
-      "breadcrumbLabel": "Fil d’Ariane",
-      "breadcrumbHome": "Accueil",
-      "breadcrumbRecap": "Souvenir de visite",
-      "notFoundTitle": "Ce souvenir n’est plus disponible",
-      "notFoundDescription": "Son propriétaire a peut-être désactivé le lien ou remplacé le partage.",
-      "createMine": "Créer mon propre passeport",
-      "errorTitle": "Le souvenir ne peut pas être chargé",
-      "errorDescription": "Une erreur temporaire empêche l’ouverture de ce récapitulatif.",
-      "kicker": "Journal de visite partagé",
-      "hiddenDate": "Date gardée privée",
-      "summaryLabel": "Résumé de la visite",
-      "favorite": "Coup de cœur de la visite",
-      "mostRepeated": "Le plus refait",
-      "memoryTrail": "Le parcours en un regard",
-      "itemsTitle": "Les souvenirs choisis",
-      "limits": "Le propriétaire a volontairement masqué certaines informations ou elles n’étaient pas disponibles.",
-      "openPark": "Découvrir le parc",
-      "ctaTitle": "Et toi, quels parcs as-tu vécus ?",
-      "ctaDescription": "Commence gratuitement un brouillon local, même sans créer de compte.",
-      "loading": "Ouverture du souvenir..."
     }
   },
   "parkPricingCredits": {

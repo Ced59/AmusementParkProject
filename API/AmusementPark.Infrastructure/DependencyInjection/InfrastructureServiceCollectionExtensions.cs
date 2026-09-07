@@ -227,6 +227,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IVisitRecapShareSnapshotRepository,
             VisitRecapShareSnapshotRepository>();
         services.AddScoped<IVisitRecapSourceReader, VisitRecapSourceReader>();
+        services.AddScoped<IVisitRecapPublicParkReader, VisitRecapPublicParkReader>();
         services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();
         services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();

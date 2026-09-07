@@ -1,5 +1,4 @@
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
@@ -15,20 +14,20 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
 {
     private readonly IVisitRecapSourceReader sourceReader;
     private readonly IVisitRecapShareSourceVersionProvider sourceVersionProvider;
-    private readonly IParkNameReadRepository parkNameReadRepository;
+    private readonly IVisitRecapPublicParkReader publicParkReader;
     private readonly IVisitTargetResolver targetResolver;
 
     public VisitRecapSharePreviewBuilder(
         IVisitRecapSourceReader sourceReader,
         IVisitRecapShareSourceVersionProvider sourceVersionProvider,
-        IParkNameReadRepository parkNameReadRepository,
+        IVisitRecapPublicParkReader publicParkReader,
         IVisitTargetResolver targetResolver)
     {
         this.sourceReader = sourceReader ?? throw new ArgumentNullException(nameof(sourceReader));
         this.sourceVersionProvider = sourceVersionProvider
             ?? throw new ArgumentNullException(nameof(sourceVersionProvider));
-        this.parkNameReadRepository = parkNameReadRepository
-            ?? throw new ArgumentNullException(nameof(parkNameReadRepository));
+        this.publicParkReader = publicParkReader
+            ?? throw new ArgumentNullException(nameof(publicParkReader));
         this.targetResolver = targetResolver ?? throw new ArgumentNullException(nameof(targetResolver));
     }
 
@@ -108,10 +107,14 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
         IReadOnlyDictionary<string, VisitTarget> targets = parkItemIds.Length == 0
             ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
             : await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
-        IReadOnlyDictionary<string, string?> parkNames =
-            await this.parkNameReadRepository.GetNamesByIdsAsync(
-                new[] { source.ParkId },
-                cancellationToken);
+        string? parkName = await this.publicParkReader.GetVisibleNameAsync(
+            source.ParkId,
+            cancellationToken);
+        if (parkName is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
 
         ApplicationResult<long> versionAfter =
             await this.sourceVersionProvider.GetOwnedSourceVersionAsync(
@@ -126,12 +129,22 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
         }
 
         VisitRecapShareInput normalizedInput = normalizedInputResult.Value;
-        IReadOnlySet<string> eligibleIds = ResolveEligibleIds(source, contentPolicy);
+        IReadOnlySet<string> eligibleIds = ResolveEligibleIds(
+            source,
+            contentPolicy,
+            targets);
         if (normalizedInput.SelectedParkItemIds is not null
             && normalizedInput.SelectedParkItemIds.Any(id => !eligibleIds.Contains(id)))
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.InvalidVisitRecapSelection());
+        }
+
+        if (normalizedInput.SelectedParkItemIds is null
+            && eligibleIds.Count > VisitRecapShareInputNormalizer.MaximumSelectedItemCount)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.VisitRecapTooLarge());
         }
 
         IReadOnlySet<string> selectedIds = normalizedInput.SelectedParkItemIds is null
@@ -146,6 +159,11 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
             includesRideCounts,
             includesRatings,
             out bool hasIncompleteItems);
+        hasIncompleteItems = hasIncompleteItems
+            || source.Occurrences.Any(occurrence =>
+                (occurrence.Status == RideOccurrenceStatus.Completed
+                    || contentPolicy.Includes(ShareContentField.MissedItems))
+                && !CanExposeTarget(source.ParkId, occurrence, targets));
         VisitRecapShareHighlightResult? topRatedItem = includesRatings
             ? items
                 .Where(static item => item.AverageRating.HasValue)
@@ -169,19 +187,19 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
                 .FirstOrDefault()
             : null;
         VisitRecapSourceOccurrence[] completedOccurrences = source.Occurrences
-            .Where(static occurrence => occurrence.Status == RideOccurrenceStatus.Completed)
+            .Where(occurrence => occurrence.Status == RideOccurrenceStatus.Completed
+                && eligibleIds.Contains(occurrence.ParkItemId))
             .ToArray();
-        string[] categories = completedOccurrences
-            .Select(occurrence => ResolveCategory(occurrence, targets))
-            .Where(static category => category.HasValue)
-            .Select(static category => category!.Value.ToString())
+        string[] categories = items
+            .Select(static item => item.Category)
+            .Where(static category => category is not null)
+            .Select(static category => category!)
             .Distinct(StringComparer.Ordinal)
             .OrderBy(static category => category, StringComparer.Ordinal)
             .ToArray();
-        parkNames.TryGetValue(source.ParkId, out string? parkName);
         VisitRecapSharePreviewResult visitRecap = new VisitRecapSharePreviewResult(
             source.ParkId,
-            NormalizeOptional(parkName),
+            parkName,
             BuildPublicDate(source.Date, contentPolicy.DatePrecision),
             includesRideCounts
                 ? completedOccurrences.Select(static occurrence => occurrence.ParkItemId)
@@ -216,12 +234,14 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
 
     private static IReadOnlySet<string> ResolveEligibleIds(
         VisitRecapSourceData source,
-        ShareContentPolicy contentPolicy)
+        ShareContentPolicy contentPolicy,
+        IReadOnlyDictionary<string, VisitTarget> targets)
     {
         bool includesMissedItems = contentPolicy.Includes(ShareContentField.MissedItems);
         return source.Occurrences
             .Where(occurrence => occurrence.Status == RideOccurrenceStatus.Completed
                 || includesMissedItems)
+            .Where(occurrence => CanExposeTarget(source.ParkId, occurrence, targets))
             .Select(static occurrence => occurrence.ParkItemId)
             .ToHashSet(StringComparer.Ordinal);
     }
@@ -242,6 +262,12 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
         {
             VisitRecapSourceOccurrence first = group.First();
             targets.TryGetValue(group.Key, out VisitTarget? target);
+            if (!CanExposeTarget(source.ParkId, first, targets))
+            {
+                hasIncompleteItems = true;
+                continue;
+            }
+
             string? name = NormalizeOptional(target?.Name) ?? NormalizeOptional(first.HistoricalName);
             if (name is null)
             {
@@ -272,13 +298,18 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
             .ToList();
     }
 
-    private static ParkItemCategory? ResolveCategory(
+    private static bool CanExposeTarget(
+        string sourceParkId,
         VisitRecapSourceOccurrence occurrence,
         IReadOnlyDictionary<string, VisitTarget> targets)
     {
-        return targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target)
-            ? target.Category
-            : occurrence.HistoricalCategory;
+        if (!targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target))
+        {
+            return NormalizeOptional(occurrence.HistoricalName) is not null;
+        }
+
+        return target.IsVisible
+            && string.Equals(target.ParkId, sourceParkId, StringComparison.Ordinal);
     }
 
     private static bool CanExposeDate(VisitDate sourceDate, ShareDatePrecision precision)

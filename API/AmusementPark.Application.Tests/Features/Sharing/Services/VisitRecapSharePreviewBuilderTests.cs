@@ -1,6 +1,5 @@
 using System.Text.Json;
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
@@ -71,15 +70,12 @@ public sealed class VisitRecapSharePreviewBuilderTests
                     0,
                     new DateTime(2026, 9, 7, 0, 0, 0, DateTimeKind.Utc)),
             });
-        Mock<IParkNameReadRepository> parks =
-            new Mock<IParkNameReadRepository>(MockBehavior.Strict);
-        parks.Setup(value => value.GetNamesByIdsAsync(
-                It.IsAny<IReadOnlyCollection<string>>(),
+        Mock<IVisitRecapPublicParkReader> parks =
+            new Mock<IVisitRecapPublicParkReader>(MockBehavior.Strict);
+        parks.Setup(value => value.GetVisibleNameAsync(
+                "park-technical-id",
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, string?>(StringComparer.Ordinal)
-            {
-                ["park-technical-id"] = "Denain Évasion",
-            });
+            .ReturnsAsync("Denain Évasion");
         Mock<IVisitTargetResolver> targets =
             new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         targets.Setup(value => value.ResolveAsync(
@@ -194,7 +190,7 @@ public sealed class VisitRecapSharePreviewBuilderTests
         VisitRecapSharePreviewBuilder builder = new VisitRecapSharePreviewBuilder(
             sourceReader.Object,
             publicationSource,
-            Mock.Of<IParkNameReadRepository>(MockBehavior.Strict),
+            Mock.Of<IVisitRecapPublicParkReader>(MockBehavior.Strict),
             Mock.Of<IVisitTargetResolver>(MockBehavior.Strict));
 
         ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
@@ -212,5 +208,163 @@ public sealed class VisitRecapSharePreviewBuilderTests
             error.Code == "share-publication.visit-recap-selection-invalid");
         sourceReader.VerifyAll();
         revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenParkIsHidden_ShouldRejectThePublicRecap()
+    {
+        VisitRecapSourceData source = new VisitRecapSourceData(
+            "park-hidden",
+            VisitDate.ForDay(2026, 7, 26),
+            null,
+            new VisitRecapSourceRevision(4, true),
+            Array.Empty<VisitRecapSourceOccurrence>());
+        VisitRecapSharePreviewBuilder builder = CreateStableBuilder(
+            source,
+            null,
+            new Dictionary<string, VisitTarget>());
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            "visit-1",
+            ShareContentPolicy.Create(
+                SharePublicationType.VisitRecap,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.RideCount }),
+            null,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-publication.source-unavailable");
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenCurrentItemIsHidden_ShouldNeverExposeItsCatalogMetadata()
+    {
+        VisitRecapSourceData source = new VisitRecapSourceData(
+            "park-1",
+            VisitDate.ForDay(2026, 7, 26),
+            null,
+            new VisitRecapSourceRevision(4, true),
+            new[]
+            {
+                new VisitRecapSourceOccurrence(
+                    "item-hidden",
+                    RideOccurrenceStatus.Completed,
+                    "Ancien nom",
+                    ParkItemCategory.Attraction,
+                    null),
+            });
+        VisitTarget hiddenTarget = new VisitTarget(
+            "item-hidden",
+            "park-1",
+            "Métadonnée courante masquée",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            IsVisible: false);
+        VisitRecapSharePreviewBuilder builder = CreateStableBuilder(
+            source,
+            "Parc public",
+            new Dictionary<string, VisitTarget>
+            {
+                [hiddenTarget.ParkItemId] = hiddenTarget,
+            });
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            "visit-1",
+            ShareContentPolicy.Create(
+                SharePublicationType.VisitRecap,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.RideCount }),
+            null,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        VisitRecapSharePreviewResult recap = Assert.IsType<VisitRecapSharePreviewResult>(
+            result.Value!.VisitRecap);
+        Assert.Empty(recap.Items);
+        Assert.Equal(0, recap.TotalRideCount);
+        Assert.True(recap.HasIncompleteItems);
+        Assert.DoesNotContain(
+            "Métadonnée courante masquée",
+            JsonSerializer.Serialize(recap),
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenImplicitSelectionExceedsTheItemCap_ShouldRejectIt()
+    {
+        VisitRecapSourceOccurrence[] occurrences = Enumerable.Range(
+                1,
+                VisitRecapShareInputNormalizer.MaximumSelectedItemCount + 1)
+            .Select(index => new VisitRecapSourceOccurrence(
+                $"item-{index}",
+                RideOccurrenceStatus.Completed,
+                $"Attraction {index}",
+                ParkItemCategory.Attraction,
+                null))
+            .ToArray();
+        VisitRecapSourceData source = new VisitRecapSourceData(
+            "park-1",
+            VisitDate.ForDay(2026, 7, 26),
+            null,
+            new VisitRecapSourceRevision(4, true),
+            occurrences);
+        VisitRecapSharePreviewBuilder builder = CreateStableBuilder(
+            source,
+            "Parc public",
+            new Dictionary<string, VisitTarget>());
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            "visit-1",
+            ShareContentPolicy.Create(
+                SharePublicationType.VisitRecap,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.RideCount }),
+            null,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-publication.visit-recap-too-large");
+    }
+
+    private static VisitRecapSharePreviewBuilder CreateStableBuilder(
+        VisitRecapSourceData source,
+        string? publicParkName,
+        IReadOnlyDictionary<string, VisitTarget> targets)
+    {
+        Mock<IVisitRecapSourceReader> sourceReader = new Mock<IVisitRecapSourceReader>();
+        sourceReader.Setup(value => value.GetOwnedCompletedAsync(
+                "owner-1",
+                "visit-1",
+                CancellationToken.None))
+            .ReturnsAsync(source);
+        Mock<IVisitRecapShareSourceVersionProvider> versions =
+            new Mock<IVisitRecapShareSourceVersionProvider>();
+        versions.Setup(value => value.GetOwnedSourceVersionAsync(
+                "owner-1",
+                "visit-1",
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<long>.Success(source.Revision.Version));
+        Mock<IVisitRecapPublicParkReader> parks = new Mock<IVisitRecapPublicParkReader>();
+        parks.Setup(value => value.GetVisibleNameAsync(
+                source.ParkId,
+                CancellationToken.None))
+            .ReturnsAsync(publicParkName);
+        Mock<IVisitTargetResolver> targetResolver = new Mock<IVisitTargetResolver>();
+        targetResolver.Setup(value => value.ResolveAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(targets);
+        return new VisitRecapSharePreviewBuilder(
+            sourceReader.Object,
+            versions.Object,
+            parks.Object,
+            targetResolver.Object);
     }
 }
