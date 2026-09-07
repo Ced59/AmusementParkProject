@@ -68,6 +68,9 @@ public sealed class SharePublicationAccessResolverTests
         Assert.Equal("owner-1", result.Value!.OwnerUserId);
         Assert.Equal("Coaster Fan", result.Value.DisplayName);
         Assert.Equal(Now, result.Value.PublishedAtUtc);
+        publications.Verify(value => value.GetResolvableByTokenAsync(
+            ShareToken.Parse(TokenValue),
+            CancellationToken.None), Times.Once);
         publications.VerifyAll();
         users.VerifyAll();
     }

@@ -553,20 +553,26 @@ public sealed class SocialPublicationComposerServiceTests
         DateTime nowUtc = new DateTime(2026, 8, 24, 8, 0, 0, DateTimeKind.Utc);
         Mock<ISharePublicationAccessResolver> rankingShares =
             new Mock<ISharePublicationAccessResolver>(MockBehavior.Strict);
+        ResolvedSharePublicationResult resolvedPublication = new ResolvedSharePublicationResult(
+            "user-1",
+            "Coaster Fan",
+            SharePublicationType.PersonalRanking,
+            ShareContentPolicy.CreatePrivateDefault(SharePublicationType.PersonalRanking),
+            nowUtc,
+            "personal-ranking:user-1",
+            0,
+            1);
         rankingShares.Setup(repository => repository.ResolveAsync(
                 "share-1",
                 SharePublicationType.PersonalRanking,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<ResolvedSharePublicationResult>.Success(
-                new ResolvedSharePublicationResult(
-                    "user-1",
-                    "Coaster Fan",
-                    SharePublicationType.PersonalRanking,
-                    ShareContentPolicy.CreatePrivateDefault(SharePublicationType.PersonalRanking),
-                    nowUtc,
-                    "personal-ranking:user-1",
-                    0,
-                    1)));
+                resolvedPublication));
+        rankingShares.Setup(repository => repository.RevalidateAsync(
+                "share-1",
+                resolvedPublication,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<bool>.Success(true));
         SocialPublicationComposerService service = CreateService(
             new Mock<IParkRepository>(MockBehavior.Strict),
             new Mock<IImageRepository>(MockBehavior.Strict),

@@ -146,6 +146,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
   readonly previewCalls: SharePublicationPreviewRequest[] = [];
   readonly publishCalls: SharePublicationPublishRequest[] = [];
   previewResponse: Subject<SharePublicationPreview> | null = null;
+  publishResponse: Subject<SharePublicationSettings> | null = null;
   settings: UserRankingShareSettings = {
     isPublic: false,
     shareId: null,
@@ -204,7 +205,7 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
       datePrecision: request.approvedDatePrecision,
       includedFields: request.approvedIncludedFields
     };
-    return of(this.settings as SharePublicationSettings);
+    return this.publishResponse ?? of(this.settings as SharePublicationSettings);
   }
 }
 
@@ -476,6 +477,35 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(sharePort.previewCalls[0]?.includedFields).toEqual(['PublicDisplayName', 'GlobalRatings']);
     expect(fixture.nativeElement.querySelector('.ranking-share-preview')).toBeNull();
     expect(sharePort.publishCalls).toEqual([]);
+  });
+
+  it('locks privacy choices while publishing an approved preview', () => {
+    sharePort.publishResponse = new Subject<SharePublicationSettings>();
+    fixture.detectChanges();
+
+    const publishButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share__actions button',
+    );
+    publishButton.click();
+    fixture.detectChanges();
+
+    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share-editor__actions button:last-child',
+    );
+    previewButton.click();
+    fixture.detectChanges();
+
+    const confirmButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share-editor__actions button:last-child',
+    );
+    confirmButton.click();
+    fixture.detectChanges();
+
+    const nameCheckbox: HTMLInputElement = fixture.nativeElement.querySelector(
+      '.ranking-share-choice input',
+    );
+    expect(nameCheckbox.disabled).toBe(true);
+    expect(sharePort.publishCalls).toHaveLength(1);
   });
 });
 

@@ -86,13 +86,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             publication.SourceScopeKey,
             publication.SourceVersion,
             publication.PublicationVersion);
-        ApplicationResult<bool> revalidation = await this.RevalidateAsync(
-            normalizedShareId,
-            resolvedPublication,
-            cancellationToken);
-        return revalidation.IsSuccess
-            ? ApplicationResult<ResolvedSharePublicationResult>.Success(resolvedPublication)
-            : NotFound();
+        return ApplicationResult<ResolvedSharePublicationResult>.Success(resolvedPublication);
     }
 
     public async Task<ApplicationResult<bool>> RevalidateAsync(

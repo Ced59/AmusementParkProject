@@ -67,6 +67,10 @@ export class UserRankingShareStateFacade {
   }
 
   setDisplayNameIncluded(included: boolean): void {
+    if (this.savingSignal()) {
+      return;
+    }
+
     this.includeDisplayNameSignal.set(included);
     this.previewSignal.set(null);
     this.previewErrorSignal.set(false);

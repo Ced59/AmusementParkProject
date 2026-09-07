@@ -37,7 +37,11 @@
         </div>
 
         <label class="ranking-share-choice">
-          <input type="checkbox" [checked]="includeDisplayName()" (change)="toggleDisplayName($event)">
+          <input
+            type="checkbox"
+            [checked]="includeDisplayName()"
+            [disabled]="saving()"
+            (change)="toggleDisplayName($event)">
           <span class="ranking-share-choice__check" aria-hidden="true"><i class="pi pi-check"></i></span>
           <span>
             <strong>{{ 'ratings.share.editor.nameTitle' | translate }}</strong>
