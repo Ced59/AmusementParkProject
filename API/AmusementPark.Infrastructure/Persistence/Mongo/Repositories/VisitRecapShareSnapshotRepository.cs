@@ -73,6 +73,32 @@ public sealed class VisitRecapShareSnapshotRepository : IVisitRecapShareSnapshot
         return document?.ToDomain();
     }
 
+    public async Task<bool> DeleteSupersededAsync(
+        SharePublicationId publicationId,
+        long publishedVersion,
+        CancellationToken cancellationToken)
+    {
+        DeleteResult deletion = await this.collection.DeleteManyAsync(
+            BuildSupersededFilter(publicationId, publishedVersion),
+            cancellationToken);
+        return deletion.IsAcknowledged;
+    }
+
+    internal static FilterDefinition<VisitRecapShareSnapshotDocument> BuildSupersededFilter(
+        SharePublicationId publicationId,
+        long publishedVersion)
+    {
+        if (publishedVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(publishedVersion));
+        }
+
+        FilterDefinitionBuilder<VisitRecapShareSnapshotDocument> filters =
+            Builders<VisitRecapShareSnapshotDocument>.Filter;
+        return filters.Eq(static value => value.PublicationId, publicationId.Value)
+            & filters.Lt(static value => value.PublicationVersion, publishedVersion);
+    }
+
     private static FilterDefinition<VisitRecapShareSnapshotDocument> BuildFilter(
         SharePublicationId publicationId,
         long publicationVersion)

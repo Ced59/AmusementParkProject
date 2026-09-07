@@ -67,6 +67,11 @@ public sealed class SharePublicationPublisherVisitSnapshotTests
                 CancellationToken.None))
             .Callback(() => snapshotWasWritten = true)
             .ReturnsAsync(ApplicationResult<bool>.Success(true));
+        snapshots.Setup(value => value.DeleteSupersededAsync(
+                It.IsAny<SharePublicationId>(),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<bool>.Success(true));
         SharePublicationPublisher publisher = new SharePublicationPublisher(
             repository.Object,
             tokens.Object,

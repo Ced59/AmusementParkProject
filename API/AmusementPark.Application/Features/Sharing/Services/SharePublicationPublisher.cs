@@ -61,6 +61,9 @@ public sealed class SharePublicationPublisher
                 publication.ContentFingerprint,
                 contentFingerprint,
                 StringComparison.Ordinal);
+        this.snapshotWriters.TryGetValue(
+            publicationType,
+            out ISharePublicationSnapshotWriter? snapshotWriter);
         if (!alreadyPublished)
         {
             if (publication is null || publication.Status == SharePublicationStatus.Revoked)
@@ -128,7 +131,14 @@ public sealed class SharePublicationPublisher
 
         if (alreadyPublished)
         {
-            return Success(publication!);
+            ApplicationResult<bool> cleanupResult = await DeleteSupersededSnapshotsAsync(
+                snapshotWriter,
+                publication!,
+                cancellationToken);
+            return cleanupResult.IsSuccess
+                ? Success(publication!)
+                : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    cleanupResult.Errors);
         }
 
         SharePublicationApprovalState preparedState = SharePublicationApprovalState.From(publication);
@@ -150,9 +160,7 @@ public sealed class SharePublicationPublisher
             }
 
             long expectedVersion = publication!.Version;
-            if (this.snapshotWriters.TryGetValue(
-                    publicationType,
-                    out ISharePublicationSnapshotWriter? snapshotWriter))
+            if (snapshotWriter is not null)
             {
                 if (string.IsNullOrWhiteSpace(sourceId))
                 {
@@ -196,12 +204,26 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (publishOutcome == SharePublicationWriteOutcome.Success)
             {
-                return await this.ConfirmPublishedSourceAsync(
+                ApplicationResult<SharePublicationSettingsResult> confirmation =
+                    await this.ConfirmPublishedSourceAsync(
                     publication,
                     source,
                     sourceScopeKey,
                     sourceVersion,
                     cancellationToken);
+                if (!confirmation.IsSuccess)
+                {
+                    return confirmation;
+                }
+
+                ApplicationResult<bool> cleanupResult = await DeleteSupersededSnapshotsAsync(
+                    snapshotWriter,
+                    publication,
+                    cancellationToken);
+                return cleanupResult.IsSuccess
+                    ? confirmation
+                    : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        cleanupResult.Errors);
             }
 
             if (publishOutcome != SharePublicationWriteOutcome.TokenCollision)
@@ -353,5 +375,18 @@ public sealed class SharePublicationPublisher
     {
         return ApplicationResult<SharePublicationSettingsResult>.Success(
             SharePublicationSettingsMapper.ToResult(publication));
+    }
+
+    private static Task<ApplicationResult<bool>> DeleteSupersededSnapshotsAsync(
+        ISharePublicationSnapshotWriter? snapshotWriter,
+        SharePublication publication,
+        CancellationToken cancellationToken)
+    {
+        return snapshotWriter is null
+            ? Task.FromResult(ApplicationResult<bool>.Success(true))
+            : snapshotWriter.DeleteSupersededAsync(
+                publication.Id,
+                publication.PublicationVersion,
+                cancellationToken);
     }
 }

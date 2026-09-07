@@ -10,9 +10,11 @@ using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Moq;
 using Xunit;
 
@@ -143,6 +145,12 @@ public sealed class VisitRecapSharesControllerTests
         ResponseCacheAttribute candidatesCache = Assert.IsType<ResponseCacheAttribute>(
             candidates.GetCustomAttribute<ResponseCacheAttribute>());
         Assert.True(candidatesCache.NoStore);
+        EnableRateLimitingAttribute candidatesRateLimit =
+            Assert.IsType<EnableRateLimitingAttribute>(
+                candidates.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(
+            RateLimitPolicyNames.SharePublicationPreviews,
+            candidatesRateLimit.PolicyName);
 
         MethodInfo revoke = GetAction(nameof(VisitRecapSharesController.RevokeAsync));
         Assert.NotNull(revoke.GetCustomAttribute<InvalidatesPublicCacheAttribute>());

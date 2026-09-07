@@ -13,4 +13,9 @@ public interface IVisitRecapShareSnapshotRepository
         SharePublicationId publicationId,
         long publicationVersion,
         CancellationToken cancellationToken);
+
+    Task<bool> DeleteSupersededAsync(
+        SharePublicationId publicationId,
+        long publishedVersion,
+        CancellationToken cancellationToken);
 }

@@ -11,4 +11,9 @@ public interface ISharePublicationSnapshotWriter
     Task<ApplicationResult<bool>> WriteAsync(
         SharePublicationSnapshotWriteRequest request,
         CancellationToken cancellationToken);
+
+    Task<ApplicationResult<bool>> DeleteSupersededAsync(
+        SharePublicationId publicationId,
+        long publishedVersion,
+        CancellationToken cancellationToken);
 }

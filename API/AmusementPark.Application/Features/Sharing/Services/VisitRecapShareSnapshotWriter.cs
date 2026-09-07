@@ -71,4 +71,19 @@ public sealed class VisitRecapShareSnapshotWriter : ISharePublicationSnapshotWri
             : ApplicationResult<bool>.Failure(
                 SharingApplicationErrors.PublicationChangedConcurrently());
     }
+
+    public async Task<ApplicationResult<bool>> DeleteSupersededAsync(
+        SharePublicationId publicationId,
+        long publishedVersion,
+        CancellationToken cancellationToken)
+    {
+        bool deleted = await this.snapshotRepository.DeleteSupersededAsync(
+            publicationId,
+            publishedVersion,
+            cancellationToken);
+        return deleted
+            ? ApplicationResult<bool>.Success(true)
+            : ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.PublicationChangedConcurrently());
+    }
 }

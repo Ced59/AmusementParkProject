@@ -10,10 +10,12 @@ using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -38,6 +40,7 @@ public sealed class VisitRecapSharesController : ControllerBase
     }
 
     [HttpGet("candidates")]
+    [EnableRateLimiting(RateLimitPolicyNames.SharePublicationPreviews)]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [ProducesResponseType(typeof(VisitRecapShareCandidatesDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCandidatesAsync(
