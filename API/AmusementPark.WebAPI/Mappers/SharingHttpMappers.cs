@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
@@ -7,6 +8,43 @@ namespace AmusementPark.WebAPI.Mappers;
 
 public static class SharingHttpMappers
 {
+    public static bool TryToApplication(
+        this PublishSharePublicationRequestDto request,
+        string ownerUserId,
+        out PublishSharePublicationCommand? command)
+    {
+        command = null;
+        if (!TryParseDefined(request.PublicationType, out SharePublicationType publicationType)
+            || !TryParseDefined(request.ApprovedDatePrecision, out ShareDatePrecision datePrecision)
+            || request.ApprovedSourceVersion < 0
+            || string.IsNullOrWhiteSpace(request.ApprovalToken))
+        {
+            return false;
+        }
+
+        List<ShareContentField> includedFields = new List<ShareContentField>();
+        foreach (string fieldValue in request.ApprovedIncludedFields ?? new List<string>())
+        {
+            if (!TryParseDefined(fieldValue, out ShareContentField field))
+            {
+                return false;
+            }
+
+            includedFields.Add(field);
+        }
+
+        command = new PublishSharePublicationCommand(
+            ownerUserId,
+            publicationType,
+            string.IsNullOrWhiteSpace(request.SourceId) ? null : request.SourceId.Trim(),
+            request.ApprovedSourceVersion,
+            request.ApprovedPolicySchemaVersion,
+            datePrecision,
+            includedFields.Distinct().ToArray(),
+            request.ApprovalToken.Trim());
+        return true;
+    }
+
     public static bool TryToApplication(
         this SharePublicationPreviewRequestDto request,
         string ownerUserId,
@@ -45,6 +83,7 @@ public static class SharingHttpMappers
         {
             PublicationType = value.PublicationType.ToString(),
             SourceVersion = value.SourceVersion,
+            ApprovalToken = value.ApprovalToken,
             ContentPolicy = new ShareContentPolicyPreviewDto
             {
                 SchemaVersion = value.PolicySchemaVersion,
@@ -54,6 +93,21 @@ public static class SharingHttpMappers
                     .ToList(),
             },
             PersonalRanking = value.PersonalRanking?.ToHttp(),
+        };
+    }
+
+    public static SharePublicationSettingsDto ToSharingHttp(this SharePublicationSettingsResult value)
+    {
+        return new SharePublicationSettingsDto
+        {
+            IsPublic = value.IsPublic,
+            ShareId = value.ShareId,
+            PublishedAtUtc = value.PublishedAtUtc,
+            PolicySchemaVersion = value.PolicySchemaVersion,
+            DatePrecision = value.DatePrecision?.ToString(),
+            IncludedFields = value.IncludedFields
+                .Select(static field => field.ToString())
+                .ToList(),
         };
     }
 

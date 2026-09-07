@@ -10,4 +10,9 @@ public interface ISharePublicationAccessResolver
         string shareId,
         SharePublicationType expectedPublicationType,
         CancellationToken cancellationToken);
+
+    Task<ApplicationResult<bool>> RevalidateAsync(
+        string shareId,
+        ResolvedSharePublicationResult resolvedPublication,
+        CancellationToken cancellationToken);
 }

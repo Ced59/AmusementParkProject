@@ -139,6 +139,85 @@ Les détails et preuves sont consignés dans
 Cette tranche ne modifie pas encore l'interface. `SHARE-05` ajoute ensuite l'éditeur
 de contenu public et le résumé de confidentialité avant confirmation.
 
+### État de `SHARE-05` au 7 septembre 2026
+
+L'éditeur Web du classement personnel est livré en version 5.2.7 comme première
+interface du moteur central. Un membre choisit s'il affiche son nom public ou partage
+anonymement, tandis que les notes globales restent le contenu indispensable d'un
+classement. Avant toute publication, l'API construit un aperçu versionné et
+l'interface distingue explicitement ce qui sera visible de ce qui restera privé :
+visites, dates, commentaires privés, email, identifiant technique et avatar.
+
+La confirmation renvoie la version et la policy exactes de cet aperçu. Le serveur
+refuse la publication si la source a évolué entre-temps et exige un nouvel aperçu ;
+il enregistre ensuite la sélection dans `SharePublication`. L'ancien bouton direct
+ne pilote donc plus la mise en ligne depuis le profil. La révocation et les liens
+historiques restent compatibles avec le moteur central migré. Le composant dédié se
+replie en une colonne, borne ses contenus et empile ses actions sur mobile. Des tests
+ciblés couvrent le partage anonyme, l'obsolescence de l'aperçu, la politique minimale,
+les contrats HTTP, l'orchestration Angular et le responsive.
+
+La voie HTTP historique ne peut désormais que révoquer un partage : toute nouvelle
+publication exige l'approbation d'un aperçu. Chaque lecture publique contrôle la
+publication et sa source avant puis après la construction du contenu ; une évolution
+concurrente rend donc la réponse indisponible plutôt que de diffuser des données non
+approuvées. Le profil présente également comme privé un lien devenu obsolète. Enfin,
+l'aperçu annonce le nombre de notes montrées et le nombre total qui sera publié afin
+qu'un échantillon de trois lignes ne puisse pas être confondu avec le contenu complet.
+Le volume public est plafonné aux 5 000 meilleures notes visibles : au-delà, l'aperçu
+le signale clairement et ses statistiques portent exactement sur ces 5 000 notes.
+Les endpoints publics emploient par ailleurs une projection dédiée qui exclut les
+dates de notation, l'identifiant privé de la note, les clés statistiques internes et
+les métadonnées techniques.
+Une preuve d'approbation opaque et signée lie désormais le membre, la source, sa version
+et la sélection exacte affichée : modifier un champ après l'aperçu invalide la
+publication. L'absence de nom public reste une valeur sémantiquement anonyme jusqu'à la
+couche de présentation, qui fournit le libellé adapté à la langue de la page.
+
+Les contrôles de version du classement lisent les révisions membre et catalogue en
+un seul snapshot MongoDB, sans upsert sur le chemin public. Un bail expiré est
+interprété conservativement comme une révision avancée, tandis qu'un bail actif
+interdit l'exposition. La publication recontrôle enfin ce snapshot après son écriture
+avant d'annoncer le succès : une mutation concurrente impose donc un nouvel aperçu
+au lieu de créer un lien immédiatement obsolète.
+
+Si l'écrivain retardé termine après l'expiration de son bail, la génération avancée
+projetée par les lectures est persistée atomiquement, même lorsqu'il déclare finalement
+n'avoir rien modifié. La version ne peut donc jamais revenir en arrière puis réactiver
+un ancien partage. Les battements de vie vérifient en outre l'expiration avec l'horloge
+du serveur MongoDB au moment atomique de l'écriture : une requête réseau retardée ne
+peut pas ressusciter un bail expiré. Les budgets de limitation des aperçus et des
+confirmations sont également séparés : comparer plusieurs choix de confidentialité
+ne peut pas consommer
+la capacité réservée à leur confirmation.
+
+La preuve d'approbation lie également l'identifiant et la version de la publication
+existante. Une révocation ou un changement de confidentialité survenu après l'aperçu
+invalide donc celui-ci : la dernière décision du membre reste toujours prioritaire.
+Ce contrôle est répété juste avant l'écriture pour fermer la fenêtre de concurrence.
+Une indisponibilité transitoire du dernier contrôle de source, après une écriture déjà
+confirmée, ne transforme pas ce succès en faux échec ; la résolution publique continue
+dans tous les cas à refuser une source dont la version ne peut pas être vérifiée. Une
+mutation effectivement détectée comme active reste distinguée de cette panne technique
+et empêche d'annoncer le partage comme prêt. Après une modification de note réussie,
+le profil invalide ses aperçus en cours et recharge aussitôt l'état public du classement,
+sans attendre un rechargement complet de la page. Une réponse de publication plus ancienne
+que cette modification est également ignorée. Le classement ne propose actuellement que le
+nom public facultatif et les notes globales : l'avatar est refusé tant que la page publique ne
+le restitue pas réellement, et une migration idempotente retire ce champ des politiques issues
+de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre de tableau,
+sans dépendre d'un opérateur positionnel non lié par le filtre serveur. Si une nouvelle
+publication a déjà été écrite mais que le dernier contrôle détecte une source momentanément
+instable, cette écriture exacte est révoquée avant d'annoncer l'échec ; une décision plus récente
+reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué. La préparation
+d'une republication transporte elle aussi sa version exacte entre chaque écriture afin qu'une
+révocation concurrente produise un aperçu expiré, jamais une erreur serveur. Enfin, le contrôle
+de dépassement des 5 000 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun
+aperçu ne charge un historique complet uniquement pour détecter la troncature.
+
+Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
+applique ensuite le même consentement au récapitulatif public d'une visite.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

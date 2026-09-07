@@ -32,6 +32,7 @@ export class ProfileRatingsStateFacade {
   private readonly searchSignal = signal<string | null>(null);
   private readonly targetIdSignal = signal<string | null>(null);
   private readonly savingRatingIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
+  private readonly ratingMutationRevisionSignal = signal<number>(0);
 
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
@@ -40,6 +41,7 @@ export class ProfileRatingsStateFacade {
   public readonly stats: Signal<UserRatingStats | null> = this.statsSignal.asReadonly();
   public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly savingRatingIds: Signal<ReadonlySet<string>> = this.savingRatingIdsSignal.asReadonly();
+  public readonly ratingMutationRevision: Signal<number> = this.ratingMutationRevisionSignal.asReadonly();
   public readonly hasMore: Signal<boolean> = computed(() => {
     const pagination: PaginationContract | null = this.paginationSignal();
     return Boolean(pagination && pagination.currentPage < pagination.totalPages);
@@ -161,6 +163,7 @@ export class ProfileRatingsStateFacade {
         }
 
         this.setRatingSaving(ratingId, false);
+        this.ratingMutationRevisionSignal.update((revision: number): number => revision + 1);
         this.load(
           1,
           this.categorySignal(),

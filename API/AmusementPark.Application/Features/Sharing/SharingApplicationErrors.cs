@@ -4,6 +4,8 @@ namespace AmusementPark.Application.Features.Sharing;
 
 public static class SharingApplicationErrors
 {
+    public const string SourceChangedCode = "share-publication.source-changed";
+
     public static ApplicationError InvalidPublicationType()
     {
         return ApplicationError.Validation(
@@ -42,7 +44,7 @@ public static class SharingApplicationErrors
     public static ApplicationError SourceChangedDuringPreview()
     {
         return ApplicationError.Conflict(
-            "share-publication.source-changed",
+            SourceChangedCode,
             "Les données ont changé pendant la préparation de l’aperçu. Réessaie.");
     }
 
@@ -58,5 +60,40 @@ public static class SharingApplicationErrors
         return ApplicationError.Conflict(
             "share-publication.concurrent-modification",
             "Le partage a été modifié simultanément. Réessaie.");
+    }
+
+    public static ApplicationError ApprovedPreviewExpired()
+    {
+        return ApplicationError.Conflict(
+            "share-publication.preview-expired",
+            "Les données ont changé depuis l’aperçu. Vérifie le nouvel aperçu avant de publier.");
+    }
+
+    public static ApplicationError PreviewApprovalRequired()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.preview-required",
+            "Vérifie et approuve l’aperçu exact avant de publier.");
+    }
+
+    public static ApplicationError PreviewApprovalInvalid()
+    {
+        return ApplicationError.Conflict(
+            "share-publication.preview-approval-invalid",
+            "L’approbation ne correspond pas à l’aperçu affiché. Prépare un nouvel aperçu.");
+    }
+
+    public static ApplicationError RequiredPublicContentMissing()
+    {
+        return ApplicationError.Validation(
+            "share-publication.required-content-missing",
+            "La sélection ne contient pas les informations indispensables à ce partage.");
+    }
+
+    public static ApplicationError PublicContentNotSupported()
+    {
+        return ApplicationError.Validation(
+            "share-publication.content-not-supported",
+            "Une information sélectionnée n’est pas encore disponible sur cette page publique.");
     }
 }

@@ -14,6 +14,8 @@ public interface ISharePublicationSourceDescriptor
 
     ShareContentPolicy CreateDefaultPolicy();
 
+    ApplicationResult<bool> ValidatePolicyForPublication(ShareContentPolicy contentPolicy);
+
     Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
         CancellationToken cancellationToken);

@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Sharing.Models;
@@ -14,8 +15,6 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 
 public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPreviewBuilder
 {
-    private const int MaximumRatingCount = 1000;
-
     private readonly IShareSourceRevisionRepository sourceRevisionRepository;
     private readonly IRatingRepository ratingRepository;
     private readonly IUserRepository userRepository;
@@ -48,12 +47,18 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         }
 
         string sourceScopeKey = PersonalRankingShareSourceScope.Create(ownerUserId);
-        ShareSourceRevision revisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
+        string[] revisionScopeKeys =
+        {
             sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
             PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
+        };
+        IReadOnlyDictionary<string, ShareSourceRevision> revisionsBefore =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                revisionScopeKeys,
+                cancellationToken);
+        ShareSourceRevision revisionBefore = revisionsBefore[sourceScopeKey];
+        ShareSourceRevision catalogRevisionBefore =
+            revisionsBefore[PersonalRankingShareSourceScope.PublicCatalog];
         if (!revisionBefore.IsStable || !catalogRevisionBefore.IsStable)
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
@@ -76,28 +81,34 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 ImageCategory.Avatar,
                 cancellationToken)
             : null;
+        long visibleRatingCount = includesRatings
+            ? await this.ratingRepository.GetVisibleUserRatingCountUpToAsync(
+                ownerUserId,
+                UserRatingRankingLimits.MaximumPublishedSourceCount + 1,
+                cancellationToken)
+            : 0;
+        bool isPublicationTruncated = visibleRatingCount
+            > UserRatingRankingLimits.MaximumPublishedSourceCount;
         UserRatingStatsResult? sourceStatistics = includesRatings
             ? await this.ratingRepository.GetVisibleUserRatingStatsAsync(
                 ownerUserId,
-                MaximumRatingCount,
+                UserRatingRankingLimits.MaximumPublishedSourceCount,
                 cancellationToken)
             : null;
         IReadOnlyCollection<UserRatingListItemResult> sourceRatingCandidates = includesRatings
             ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
                 ownerUserId,
-                MaximumRatingCount + 1,
+                UserRatingRankingLimits.PreviewSampleCount,
                 cancellationToken)
             : Array.Empty<UserRatingListItemResult>();
-        IReadOnlyCollection<UserRatingListItemResult> sourceRatings = sourceRatingCandidates
-            .Take(MaximumRatingCount)
-            .ToArray();
 
-        ShareSourceRevision revisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
+        IReadOnlyDictionary<string, ShareSourceRevision> revisionsAfter =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                revisionScopeKeys,
+                cancellationToken);
+        ShareSourceRevision revisionAfter = revisionsAfter[sourceScopeKey];
+        ShareSourceRevision catalogRevisionAfter =
+            revisionsAfter[PersonalRankingShareSourceScope.PublicCatalog];
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         Image? avatarAfter = includesAvatar
             ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(
@@ -123,7 +134,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         PersonalRankingShareStatisticsResult? statistics = sourceStatistics is null
             ? null
             : ToPublicStatistics(sourceStatistics);
-        IReadOnlyCollection<PersonalRankingSharePreviewItemResult> ratings = sourceRatings
+        IReadOnlyCollection<PersonalRankingSharePreviewItemResult> ratings = sourceRatingCandidates
             .Where(static rating => !string.IsNullOrWhiteSpace(rating.TargetName))
             .Select(static rating => new PersonalRankingSharePreviewItemResult(
                 rating.TargetType,
@@ -142,7 +153,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 : null,
             statistics,
             ratings,
-            sourceRatingCandidates.Count > MaximumRatingCount);
+            isPublicationTruncated);
         long sourceVersion;
         try
         {

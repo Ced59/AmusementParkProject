@@ -30,14 +30,19 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = CreateImageRepository(CreateAvatar());
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
+                "owner-1",
+                5001,
+                CancellationToken.None))
+            .ReturnsAsync(1001);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
-                1000,
+                5000,
                 CancellationToken.None))
-            .ReturnsAsync(CreateStatistics());
+            .ReturnsAsync(CreateStatistics(totalRatings: 1001));
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1001,
+                3,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
@@ -67,13 +72,15 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             result.Value.PersonalRanking);
         Assert.Equal("Camille", preview.DisplayName);
         Assert.Equal("/images/avatar-1", preview.AvatarUrl);
-        Assert.Null(Assert.Single(preview.Statistics!.ByPark).Key);
+        Assert.Equal(1001, preview.Statistics!.TotalRatings);
+        Assert.Null(Assert.Single(preview.Statistics.ByPark).Key);
         Assert.Equal("Parc Astérix", Assert.Single(preview.Statistics.ByPark).Label);
         Assert.Equal("ParkItem", Assert.Single(preview.Statistics.ByTargetType).Key);
         Assert.Equal("Attraction", Assert.Single(preview.Statistics.ByParkItemCategory).Key);
         PersonalRankingSharePreviewItemResult item = Assert.Single(preview.Ratings);
         Assert.Equal("OzIris", item.TargetName);
         Assert.Equal("Parc Astérix", item.ParkName);
+        Assert.False(preview.IsTruncated);
 
         string serialized = JsonSerializer.Serialize(result.Value);
         Assert.DoesNotContain("private-rating-id", serialized, StringComparison.Ordinal);
@@ -122,26 +129,27 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.SetupSequence(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.SetupSequence(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(2, 0, NowUtc))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, NowUtc.AddSeconds(1)));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 0, NowUtc));
+            .ReturnsAsync(CreateRevisionSnapshot(2, 4))
+            .ReturnsAsync(CreateRevisionSnapshot(3, 4));
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
+                "owner-1",
+                5001,
+                CancellationToken.None))
+            .ReturnsAsync(1);
         ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
-                1000,
+                5000,
                 CancellationToken.None))
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1001,
+                3,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
@@ -240,15 +248,71 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(revision, 0, NowUtc));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(0, 0, NowUtc));
+            .ReturnsAsync(CreateRevisionSnapshot(revision, 0));
         return revisions;
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenPublicationLimitIsExceeded_ShouldPreviewOnlyPublishedStatistics()
+    {
+        Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(7);
+        Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingCountUpToAsync(
+                "owner-1",
+                5001,
+                CancellationToken.None))
+            .ReturnsAsync(5001);
+        ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
+                "owner-1",
+                5000,
+                CancellationToken.None))
+            .ReturnsAsync(CreateStatistics(totalRatings: 5000));
+        ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
+                "owner-1",
+                3,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { CreateRating() });
+        PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
+            revisions.Object,
+            ratings.Object,
+            users.Object,
+            images.Object);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            null,
+            ShareContentPolicy.Create(
+                SharePublicationType.PersonalRanking,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PersonalRankingSharePreviewResult preview = result.Value!.PersonalRanking!;
+        Assert.Equal(5000, preview.Statistics!.TotalRatings);
+        Assert.True(preview.IsTruncated);
+        Assert.Single(preview.Ratings);
+        revisions.VerifyAll();
+        ratings.VerifyAll();
+        users.VerifyAll();
+        images.VerifyNoOtherCalls();
+    }
+
+    private static IReadOnlyDictionary<string, ShareSourceRevision> CreateRevisionSnapshot(
+        long ownerRevision,
+        long catalogRevision)
+    {
+        return new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+        {
+            ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, NowUtc),
+            [PersonalRankingShareSourceScope.PublicCatalog] =
+                new ShareSourceRevision(catalogRevision, 0, NowUtc),
+        };
     }
 
     private static Mock<IUserRepository> CreateUserRepository()
@@ -297,10 +361,10 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         };
     }
 
-    private static UserRatingStatsResult CreateStatistics()
+    private static UserRatingStatsResult CreateStatistics(long totalRatings = 1)
     {
         return new UserRatingStatsResult(
-            1,
+            totalRatings,
             4.5,
             4.5,
             4.5,

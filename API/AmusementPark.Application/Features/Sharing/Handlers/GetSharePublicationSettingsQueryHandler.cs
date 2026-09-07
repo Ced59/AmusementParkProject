@@ -54,7 +54,17 @@ public sealed class GetSharePublicationSettingsQueryHandler
             query.PublicationType,
             scopeResult.Value,
             cancellationToken);
+        bool isSourceCurrent = true;
+        if (publication?.IsResolvable == true)
+        {
+            ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
+                scopeResult.Value,
+                cancellationToken);
+            isSourceCurrent = currentVersion.IsSuccess
+                && currentVersion.Value == publication.SourceVersion;
+        }
+
         return ApplicationResult<SharePublicationSettingsResult>.Success(
-            SharePublicationSettingsMapper.ToResult(publication));
+            SharePublicationSettingsMapper.ToResult(publication, isSourceCurrent));
     }
 }

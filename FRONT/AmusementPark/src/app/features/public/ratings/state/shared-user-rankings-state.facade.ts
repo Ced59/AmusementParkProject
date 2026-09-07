@@ -3,11 +3,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 
 import {
-  SharedUserRankingProfile,
-  UserParkItemRatingRanking,
-  UserParkItemRatingRankingsPage,
-  UserParkRatingRanking,
-  UserParkRatingRankingsPage
+  SharedUserParkItemRatingRanking,
+  SharedUserParkItemRatingRankingsPage,
+  SharedUserParkRatingRanking,
+  SharedUserParkRatingRankingsPage,
+  SharedUserRankingProfile
 } from '@app/models/ratings/rating.models';
 import { PaginationContract } from '@shared/models/contracts';
 import { SHARED_USER_RANKINGS_PORT, SharedUserRankingsPort } from './shared-user-rankings-state-data.ports';
@@ -17,8 +17,8 @@ const SHARED_RANKINGS_PAGE_SIZE = 10;
 @Injectable()
 export class SharedUserRankingsStateFacade {
   private readonly profileSignal = signal<SharedUserRankingProfile | null>(null);
-  private readonly parkRankingsSignal = signal<UserParkRatingRanking[]>([]);
-  private readonly parkItemRankingsSignal = signal<UserParkItemRatingRanking[]>([]);
+  private readonly parkRankingsSignal = signal<SharedUserParkRatingRanking[]>([]);
+  private readonly parkItemRankingsSignal = signal<SharedUserParkItemRatingRanking[]>([]);
   private readonly paginationSignal = signal<PaginationContract | null>(null);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly loadingMoreSignal = signal<boolean>(false);
@@ -31,8 +31,8 @@ export class SharedUserRankingsStateFacade {
   private rankingRequestSequence: number = 0;
 
   public readonly profile: Signal<SharedUserRankingProfile | null> = this.profileSignal.asReadonly();
-  public readonly parkRankings: Signal<UserParkRatingRanking[]> = this.parkRankingsSignal.asReadonly();
-  public readonly parkItemRankings: Signal<UserParkItemRatingRanking[]> = this.parkItemRankingsSignal.asReadonly();
+  public readonly parkRankings: Signal<SharedUserParkRatingRanking[]> = this.parkRankingsSignal.asReadonly();
+  public readonly parkItemRankings: Signal<SharedUserParkItemRatingRanking[]> = this.parkItemRankingsSignal.asReadonly();
   public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
@@ -100,7 +100,7 @@ export class SharedUserRankingsStateFacade {
       this.searchSignal(),
       this.typeSignal()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (page: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
+      next: (page: SharedUserParkRatingRankingsPage | SharedUserParkItemRatingRankingsPage): void => {
         if (requestSequence !== this.rankingRequestSequence) {
           return;
         }
@@ -108,12 +108,12 @@ export class SharedUserRankingsStateFacade {
         if (requestedCategory) {
           this.parkItemRankingsSignal.set([
             ...this.parkItemRankingsSignal(),
-            ...(page.items as UserParkItemRatingRanking[])
+            ...(page.items as SharedUserParkItemRatingRanking[])
           ]);
         } else {
           this.parkRankingsSignal.set([
             ...this.parkRankingsSignal(),
-            ...(page.items as UserParkRatingRanking[])
+            ...(page.items as SharedUserParkRatingRanking[])
           ]);
         }
         this.paginationSignal.set(page.pagination);
@@ -140,16 +140,16 @@ export class SharedUserRankingsStateFacade {
     this.requestRankings(page, category, search, this.typeSignal())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
+        next: (result: SharedUserParkRatingRankingsPage | SharedUserParkItemRatingRankingsPage): void => {
           if (requestSequence !== this.rankingRequestSequence) {
             return;
           }
 
           if (category) {
             this.parkRankingsSignal.set([]);
-            this.parkItemRankingsSignal.set(result.items as UserParkItemRatingRanking[]);
+            this.parkItemRankingsSignal.set(result.items as SharedUserParkItemRatingRanking[]);
           } else {
-            this.parkRankingsSignal.set(result.items as UserParkRatingRanking[]);
+            this.parkRankingsSignal.set(result.items as SharedUserParkRatingRanking[]);
             this.parkItemRankingsSignal.set([]);
           }
           this.paginationSignal.set(result.pagination);
@@ -175,7 +175,7 @@ export class SharedUserRankingsStateFacade {
     category: string | null,
     search: string | null,
     type: string | null
-  ): Observable<UserParkRatingRankingsPage | UserParkItemRatingRankingsPage> {
+  ): Observable<SharedUserParkRatingRankingsPage | SharedUserParkItemRatingRankingsPage> {
     const shareId: string = this.shareIdSignal();
     return category
       ? this.ratingsPort.getSharedParkItemRankings(

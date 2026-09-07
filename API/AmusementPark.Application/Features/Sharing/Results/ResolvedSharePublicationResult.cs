@@ -4,7 +4,10 @@ namespace AmusementPark.Application.Features.Sharing.Results;
 
 public sealed record ResolvedSharePublicationResult(
     string OwnerUserId,
-    string DisplayName,
+    string? DisplayName,
     SharePublicationType PublicationType,
     ShareContentPolicy ContentPolicy,
-    DateTime PublishedAtUtc);
+    DateTime PublishedAtUtc,
+    string SourceScopeKey,
+    long SourceVersion,
+    long PublicationVersion);

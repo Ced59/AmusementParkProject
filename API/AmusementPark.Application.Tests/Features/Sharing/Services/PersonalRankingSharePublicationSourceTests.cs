@@ -17,14 +17,17 @@ public sealed class PersonalRankingSharePublicationSourceTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.Is<IReadOnlyCollection<string>>(keys =>
+                    keys.Count == 2
+                    && keys.Contains("personal-ranking:owner-1")
+                    && keys.Contains(PersonalRankingShareSourceScope.PublicCatalog)),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 0, Now));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 0, Now),
+                [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
+            });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 
@@ -36,7 +39,7 @@ public sealed class PersonalRankingSharePublicationSourceTests
         Assert.Equal(7, result.Value);
         ShareContentPolicy policy = source.CreateDefaultPolicy();
         Assert.True(policy.Includes(ShareContentField.PublicDisplayName));
-        Assert.True(policy.Includes(ShareContentField.Avatar));
+        Assert.False(policy.Includes(ShareContentField.Avatar));
         Assert.True(policy.Includes(ShareContentField.GlobalRatings));
         revisions.VerifyAll();
     }
@@ -46,14 +49,14 @@ public sealed class PersonalRankingSharePublicationSourceTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 1, Now));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 1, Now),
+                [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
+            });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 
@@ -64,5 +67,45 @@ public sealed class PersonalRankingSharePublicationSourceTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "share-publication.source-changed");
         revisions.VerifyAll();
+    }
+
+    [Fact]
+    public void ValidatePolicyForPublication_ShouldRequireGlobalRatings()
+    {
+        PersonalRankingSharePublicationSource source = new PersonalRankingSharePublicationSource(
+            Mock.Of<IShareSourceRevisionRepository>());
+        ShareContentPolicy identityOnlyPolicy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.PublicDisplayName });
+
+        ApplicationResult<bool> result = source.ValidatePolicyForPublication(identityOnlyPolicy);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "share-publication.required-content-missing");
+    }
+
+    [Fact]
+    public void ValidatePolicyForPublication_WhenAvatarIsSelected_ShouldRejectUnsupportedContent()
+    {
+        PersonalRankingSharePublicationSource source = new PersonalRankingSharePublicationSource(
+            Mock.Of<IShareSourceRevisionRepository>());
+        ShareContentPolicy avatarPolicy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[]
+            {
+                ShareContentField.Avatar,
+                ShareContentField.GlobalRatings,
+            });
+
+        ApplicationResult<bool> result = source.ValidatePolicyForPublication(avatarPolicy);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "share-publication.content-not-supported");
     }
 }

@@ -81,10 +81,15 @@ public sealed class ContentSocialPublicationTargetResolver
             return null;
         }
 
-        return BuildTarget(
+        ResolvedSocialPublicationTarget target = BuildTarget(
             normalizedUrl,
             "Les classements partagés d’un membre",
             "A member’s shared rankings");
+        ApplicationResult<bool> revalidation = await this.sharePublicationAccessResolver.RevalidateAsync(
+            shareId,
+            result.Value,
+            cancellationToken);
+        return revalidation.IsSuccess ? target : null;
     }
 
     private static ResolvedSocialPublicationTarget BuildTarget(

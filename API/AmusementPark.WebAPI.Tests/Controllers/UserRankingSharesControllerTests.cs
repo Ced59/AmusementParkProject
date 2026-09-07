@@ -38,7 +38,18 @@ public sealed class UserRankingSharesControllerTests
                     && command.IsPublic),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(
-                new SharePublicationSettingsResult(true, "share-id", publishedAtUtc)));
+                new SharePublicationSettingsResult(
+                    true,
+                    "share-id",
+                    publishedAtUtc,
+                    1,
+                    ShareDatePrecision.Hidden,
+                    new[]
+                    {
+                        ShareContentField.PublicDisplayName,
+                        ShareContentField.Avatar,
+                        ShareContentField.GlobalRatings,
+                    })));
         UserRankingSharesController controller = CreateController(handler.Object);
         controller.ControllerContext = CreateControllerContext("owner-1");
 

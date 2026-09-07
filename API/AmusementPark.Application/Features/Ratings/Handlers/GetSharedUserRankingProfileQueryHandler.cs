@@ -1,5 +1,6 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -38,7 +39,17 @@ public sealed class GetSharedUserRankingProfileQueryHandler
 
         UserRatingStatsResult stats = await this.ratingRepository.GetVisibleUserRatingStatsAsync(
             ownerResult.Value.OwnerUserId,
+            UserRatingRankingLimits.MaximumPublishedSourceCount,
             cancellationToken);
+        ApplicationResult<bool> revalidation = await this.accessResolver.RevalidateAsync(
+            query.ShareId,
+            ownerResult.Value,
+            cancellationToken);
+        if (!revalidation.IsSuccess)
+        {
+            return ApplicationResult<SharedUserRankingProfileResult>.Failure(revalidation.Errors);
+        }
+
         return ApplicationResult<SharedUserRankingProfileResult>.Success(
             new SharedUserRankingProfileResult(
                 ownerResult.Value.OwnerUserId,

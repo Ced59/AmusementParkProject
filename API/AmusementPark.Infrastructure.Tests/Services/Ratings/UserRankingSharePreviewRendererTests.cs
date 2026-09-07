@@ -7,6 +7,15 @@ namespace AmusementPark.Infrastructure.Tests.Services.Ratings;
 
 public sealed class UserRankingSharePreviewRendererTests
 {
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void ResolveDisplayName_WhenIdentityIsPrivate_ShouldUseTheBrand(string? displayName)
+    {
+        Assert.Equal("AMUSEMENT-PARKS.FUN", UserRankingSharePreviewRenderer.ResolveDisplayName(displayName));
+    }
+
     [Fact]
     public async Task RenderPngAsync_ShouldCreateAValidSocialImageWithTheTopFiveItems()
     {

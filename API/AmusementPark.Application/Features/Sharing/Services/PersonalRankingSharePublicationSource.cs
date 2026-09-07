@@ -37,33 +37,44 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
             new[]
             {
                 ShareContentField.PublicDisplayName,
-                ShareContentField.Avatar,
                 ShareContentField.GlobalRatings,
             });
+    }
+
+    public ApplicationResult<bool> ValidatePolicyForPublication(ShareContentPolicy contentPolicy)
+    {
+        ArgumentNullException.ThrowIfNull(contentPolicy);
+        if (contentPolicy.PublicationType != this.PublicationType
+            || !contentPolicy.Includes(ShareContentField.GlobalRatings))
+        {
+            return ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.RequiredPublicContentMissing());
+        }
+
+        bool includesUnsupportedContent = contentPolicy.IncludedFields.Any(
+            static field => field is not ShareContentField.PublicDisplayName
+                and not ShareContentField.GlobalRatings);
+        return includesUnsupportedContent
+            ? ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.PublicContentNotSupported())
+            : ApplicationResult<bool>.Success(true);
     }
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
         CancellationToken cancellationToken)
     {
-        ShareSourceRevision ownerRevisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
-            sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
-            PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
-        ShareSourceRevision ownerRevisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
-        if (!ownerRevisionBefore.IsStable
-            || !catalogRevisionBefore.IsStable
-            || !ownerRevisionAfter.IsStable
-            || !catalogRevisionAfter.IsStable
-            || ownerRevisionBefore.Revision != ownerRevisionAfter.Revision
-            || catalogRevisionBefore.Revision != catalogRevisionAfter.Revision)
+        IReadOnlyDictionary<string, ShareSourceRevision> revisions =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                new[]
+                {
+                    sourceScopeKey,
+                    PersonalRankingShareSourceScope.PublicCatalog,
+                },
+                cancellationToken);
+        ShareSourceRevision ownerRevision = revisions[sourceScopeKey];
+        ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
+        if (!ownerRevision.IsStable || !catalogRevision.IsStable)
         {
             return ApplicationResult<long>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -72,7 +83,7 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
         try
         {
             return ApplicationResult<long>.Success(
-                checked(ownerRevisionAfter.Revision + catalogRevisionAfter.Revision));
+                checked(ownerRevision.Revision + catalogRevision.Revision));
         }
         catch (OverflowException)
         {

@@ -8,4 +8,5 @@ public sealed record SharePublicationPreviewResult(
     int PolicySchemaVersion,
     ShareDatePrecision DatePrecision,
     IReadOnlyCollection<ShareContentField> IncludedFields,
-    PersonalRankingSharePreviewResult? PersonalRanking);
+    PersonalRankingSharePreviewResult? PersonalRanking,
+    string ApprovalToken = "");

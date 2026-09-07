@@ -644,6 +644,26 @@ public sealed class RatingRepository : IRatingRepository
         return await this.BuildUserRatingStatsAsync(documents, true, cancellationToken);
     }
 
+    public async Task<long> GetVisibleUserRatingCountUpToAsync(
+        string userId,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit + 1);
+        BsonDocument[] pipeline = BuildVisibleUserRatingCountPipeline(
+            userId,
+            this.parkItemsCollection.CollectionNamespace.CollectionName,
+            this.parksCollection.CollectionNamespace.CollectionName,
+            effectiveMaxItems);
+        BsonDocument? result = await this.userRatingsCollection
+            .Aggregate<BsonDocument>(
+                pipeline,
+                new AggregateOptions { AllowDiskUse = true },
+                cancellationToken)
+            .FirstOrDefaultAsync(cancellationToken);
+        return result?.GetValue("count", 0).ToInt64() ?? 0;
+    }
+
     private async Task<UserRatingStatsResult> BuildUserRatingStatsAsync(
         IReadOnlyCollection<UserRatingDocument> documents,
         bool visibleParkNamesOnly,
@@ -1385,6 +1405,22 @@ public sealed class RatingRepository : IRatingRepository
                 { "currentParkId", 0 },
             }),
         };
+    }
+
+    internal static BsonDocument[] BuildVisibleUserRatingCountPipeline(
+        string userId,
+        string parkItemsCollectionName,
+        string parksCollectionName,
+        int limit)
+    {
+        return BuildVisibleUserRatingPipeline(
+                userId,
+                parkItemsCollectionName,
+                parksCollectionName,
+                limit)
+            .Where(static stage => !stage.Contains("$sort") && !stage.Contains("$project"))
+            .Append(new BsonDocument("$count", "count"))
+            .ToArray();
     }
 
     private async Task<IReadOnlyCollection<UserRatingDocument>> FilterVisibleUserRatingsAsync(

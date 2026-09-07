@@ -297,6 +297,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
         services.AddSingleton<IShareTokenFactory, CryptographicShareTokenFactory>();
+        services.AddSingleton<ISharePublicationPreviewApprovalProtector,
+            HmacSharePublicationPreviewApprovalProtector>();
         services.AddSingleton<IUserRankingSharePreviewRenderer, UserRankingSharePreviewRenderer>();
         services.AddSingleton<IParkDataEditorTokenProtector, ParkDataEditorTokenProtector>();
         services.AddScoped<ITokenService, JwtTokenService>();

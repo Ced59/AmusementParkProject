@@ -382,6 +382,30 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
+    public void BuildVisibleUserRatingCountPipeline_ShouldBoundTheProbeAfterVisibilityFiltering()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildVisibleUserRatingCountPipeline(
+            " owner-1 ",
+            "parkItems",
+            "parks",
+            5001);
+
+        int currentEligibilityIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("rankingParentPark.status"))
+            .index;
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+        int countIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$count"));
+
+        Assert.True(currentEligibilityIndex < limitIndex);
+        Assert.True(limitIndex < countIndex);
+        Assert.Equal(5001, pipeline[limitIndex]["$limit"].AsInt32);
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$sort"));
+        Assert.DoesNotContain(pipeline, static stage => stage.Contains("$project"));
+    }
+
+    [Fact]
     public void BuildParkItemRankingCandidatePipeline_WhenParkBatchIsProvided_ShouldFilterJoinedParkIds()
     {
         BsonDocument[] pipeline = RatingRepository.BuildParkItemRankingCandidatePipeline(

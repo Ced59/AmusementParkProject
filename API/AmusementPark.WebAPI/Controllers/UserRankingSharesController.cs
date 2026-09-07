@@ -119,7 +119,7 @@ public sealed class UserRankingSharesController : ControllerBase
     [HttpGet("shared/{shareId}/parks")]
     [AllowAnonymous]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-    [ProducesResponseType(typeof(PagedResponseDto<UserParkRatingRankingDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResponseDto<SharedUserParkRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSharedParkRankingsAsync(
         [FromRoute] string shareId,
         [FromQuery] PaginationRequestDto pagination,
@@ -130,14 +130,14 @@ public sealed class UserRankingSharesController : ControllerBase
             new GetSharedUserParkRatingRankingsQuery(shareId, pagination.ToApplication(), search),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()))
+            ? this.Ok(result.Value.ToPagedResponse(static item => item.ToSharedHttp()))
             : this.ToActionResult(result);
     }
 
     [HttpGet("shared/{shareId}/park-items")]
     [AllowAnonymous]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-    [ProducesResponseType(typeof(PagedResponseDto<UserParkItemRatingRankingDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResponseDto<SharedUserParkItemRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSharedParkItemRankingsAsync(
         [FromRoute] string shareId,
         [FromQuery] PaginationRequestDto pagination,
@@ -161,7 +161,7 @@ public sealed class UserRankingSharesController : ControllerBase
                 type.ToParkItemTypeFilter()),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()))
+            ? this.Ok(result.Value.ToPagedResponse(static item => item.ToSharedHttp()))
             : this.ToActionResult(result);
     }
 

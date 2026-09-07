@@ -49,8 +49,18 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
         IReadOnlyCollection<UserRankingSharePreviewItemResult> items = query.ParkItemCategory.HasValue
             ? await this.LoadParkItemPreviewAsync(ownerResult.Value.OwnerUserId, query, cancellationToken)
             : await this.LoadParkPreviewAsync(ownerResult.Value.OwnerUserId, cancellationToken);
+        ApplicationResult<bool> revalidation = await this.accessResolver.RevalidateAsync(
+            query.ShareId,
+            ownerResult.Value,
+            cancellationToken);
+        if (!revalidation.IsSuccess)
+        {
+            return ApplicationResult<UserRankingSharePreviewFileResult>.Failure(
+                revalidation.Errors);
+        }
+
         UserRankingSharePreviewResult preview = new UserRankingSharePreviewResult(
-            ownerResult.Value.DisplayName,
+            ownerResult.Value.DisplayName ?? string.Empty,
             items);
         byte[] content = await this.previewRenderer.RenderPngAsync(preview, cancellationToken);
         return ApplicationResult<UserRankingSharePreviewFileResult>.Success(

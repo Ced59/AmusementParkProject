@@ -6,6 +6,7 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -166,7 +167,7 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
     {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         FilterDefinition<ShareSourceRevisionDocument> filter =
-            ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+            ShareSourceRevisionMongoDefinitions.BuildActiveLeaseFilter(
                 mutationLease.ScopeKey,
                 mutationLease.Token);
         if (sourceChanged)
@@ -201,6 +202,16 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             return ToResult(document);
         }
 
+        ShareSourceRevisionDocument? recoveredDocument =
+            await this.RecoverExpiredLeaseAsync(
+                mutationLease,
+                nowUtc,
+                cancellationToken);
+        if (recoveredDocument is not null)
+        {
+            return ToResult(recoveredDocument);
+        }
+
         if (sourceChanged)
         {
             UpdateDefinition<ShareSourceRevisionDocument> fallbackUpdate =
@@ -233,6 +244,31 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
             throw new InvalidOperationException("The share source revision cannot be incremented further.");
         }
         return current;
+    }
+
+    private async Task<ShareSourceRevisionDocument?> RecoverExpiredLeaseAsync(
+        ShareSourceMutationLease mutationLease,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        UpdateDefinition<ShareSourceRevisionDocument> update =
+            Builders<ShareSourceRevisionDocument>.Update
+                .PullFilter(
+                    document => document.MutationLeases,
+                    lease => lease.Token == mutationLease.Token)
+                .Inc(document => document.Revision, 1)
+                .Set(document => document.UpdatedAt, nowUtc);
+        return await this.collection.FindOneAndUpdateAsync(
+            ShareSourceRevisionMongoDefinitions.BuildExpiredLeaseFilter(
+                mutationLease.ScopeKey,
+                mutationLease.Token),
+            update,
+            new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
     }
 
     public async Task<ShareSourceRevision> GetOrCreateAsync(
@@ -293,6 +329,46 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return ToResult(document);
     }
 
+    public async Task<IReadOnlyDictionary<string, ShareSourceRevision>> GetSnapshotAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scopeKeys);
+        string[] normalizedScopeKeys = scopeKeys
+            .Select(NormalizeScopeKey)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        Dictionary<string, ShareSourceRevision> snapshot =
+            new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal);
+        if (normalizedScopeKeys.Length == 0)
+        {
+            return snapshot;
+        }
+
+        FilterDefinition<ShareSourceRevisionDocument> filter =
+            Builders<ShareSourceRevisionDocument>.Filter.In(
+                document => document.ScopeKey,
+                normalizedScopeKeys);
+        using IAsyncCursor<ShareSourceRevisionDocument> cursor = await this.collection.FindAsync(
+            filter,
+            cancellationToken: cancellationToken);
+        List<ShareSourceRevisionDocument> documents = await cursor.ToListAsync(cancellationToken);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        foreach (ShareSourceRevisionDocument document in documents)
+        {
+            snapshot[document.ScopeKey] = ToSnapshotResult(document, nowUtc);
+        }
+
+        foreach (string normalizedScopeKey in normalizedScopeKeys)
+        {
+            snapshot.TryAdd(
+                normalizedScopeKey,
+                new ShareSourceRevision(0, 0, DateTime.UnixEpoch));
+        }
+
+        return snapshot;
+    }
+
     private static string NormalizeScopeKey(string scopeKey)
     {
         return IdentifierRules.NormalizeRequired(scopeKey, nameof(scopeKey));
@@ -302,8 +378,25 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         DateTime heartbeatAtUtc)
     {
         return Builders<ShareSourceRevisionDocument>.Update
-            .Set("mutationLeases.$.expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
+            .Set("mutationLeases.$[lease].expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
             .Set(document => document.UpdatedAt, heartbeatAtUtc);
+    }
+
+    internal static BsonDocument BuildHeartbeatArrayFilter(string mutationToken)
+    {
+        return new BsonDocument("lease.token", NormalizeScopeKey(mutationToken));
+    }
+
+    private static UpdateOptions BuildHeartbeatUpdateOptions(string mutationToken)
+    {
+        return new UpdateOptions
+        {
+            ArrayFilters = new ArrayFilterDefinition[]
+            {
+                new BsonDocumentArrayFilterDefinition<ShareSourceMutationLeaseDocument>(
+                    BuildHeartbeatArrayFilter(mutationToken)),
+            },
+        };
     }
 
     private void StartHeartbeat(
@@ -361,11 +454,12 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                     {
                         DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                         UpdateResult result = await this.collection.UpdateOneAsync(
-                            ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+                            ShareSourceRevisionMongoDefinitions.BuildActiveLeaseFilter(
                                 mutationLease.ScopeKey,
                                 mutationLease.Token),
                             BuildHeartbeatUpdate(heartbeatAtUtc),
-                            cancellationToken: cancellation.Token);
+                            BuildHeartbeatUpdateOptions(mutationLease.Token),
+                            cancellation.Token);
                         if (result.MatchedCount == 0)
                         {
                             cancellation.Cancel();
@@ -453,6 +547,35 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return new ShareSourceRevision(
             document.Revision,
             document.MutationLeases.Count,
+            document.UpdatedAt);
+    }
+
+    private static ShareSourceRevision ToSnapshotResult(
+        ShareSourceRevisionDocument document,
+        DateTime nowUtc)
+    {
+        int activeMutationCount = document.MutationLeases.Count(
+            lease => lease.ExpiresAtUtc > nowUtc);
+        bool hasExpiredMutation = activeMutationCount < document.MutationLeases.Count;
+        if (!hasExpiredMutation)
+        {
+            return new ShareSourceRevision(
+                document.Revision,
+                activeMutationCount,
+                document.UpdatedAt);
+        }
+
+        if (document.Revision == long.MaxValue)
+        {
+            return new ShareSourceRevision(
+                document.Revision,
+                Math.Max(1, activeMutationCount),
+                document.UpdatedAt);
+        }
+
+        return new ShareSourceRevision(
+            document.Revision + 1,
+            activeMutationCount,
             document.UpdatedAt);
     }
 }

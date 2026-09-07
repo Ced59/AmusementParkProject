@@ -26,22 +26,20 @@ import { SharedUserRankingsPageComponent } from './shared-user-rankings-page.com
 
 class FakeSharedRankingsPagePort implements SharedUserRankingsPort {
   readonly itemCalls: Array<{ category: string; type: string | null }> = [];
+  profile: SharedUserRankingProfile = {
+    displayName: 'Camille',
+    publishedAtUtc: '2026-08-20T18:00:00Z',
+    isOwner: false,
+    stats: {
+      totalRatings: 2,
+      averageRating: 4.5,
+      highestRating: 5,
+      lowestRating: 4
+    },
+  };
 
   getSharedProfile(_shareId: string): Observable<SharedUserRankingProfile> {
-    return of({
-      displayName: 'Camille',
-      publishedAtUtc: '2026-08-20T18:00:00Z',
-      isOwner: false,
-      stats: {
-        totalRatings: 2,
-        averageRating: 4.5,
-        highestRating: 5,
-        lowestRating: 4,
-        byPark: [],
-        byTargetType: [],
-        byParkItemCategory: [],
-      },
-    });
+    return of(this.profile);
   }
 
   getSharedParkRankings(
@@ -156,6 +154,20 @@ describe('SharedUserRankingsPageComponent', () => {
     );
     accountButton?.click();
     expect(openModal).toHaveBeenCalledWith('loginModal');
+  });
+
+  it('localizes the semantic anonymous identity instead of exposing an English fallback', () => {
+    port.profile = { ...port.profile, displayName: null };
+    fixture = TestBed.createComponent(SharedUserRankingsPageComponent);
+    fixture.detectChanges();
+
+    const component = fixture.componentInstance as unknown as {
+      publicDisplayName(profile: SharedUserRankingProfile): string;
+    };
+    expect(component.publicDisplayName(port.profile)).toBe(
+      'ratings.share.editor.anonymousProfile',
+    );
+    expect(component.publicDisplayName(port.profile)).not.toBe('User');
   });
 
   it('links a signed-in visitor to their own ranking without editing the shared one', () => {

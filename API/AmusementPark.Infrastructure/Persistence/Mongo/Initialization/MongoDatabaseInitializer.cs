@@ -37,6 +37,7 @@ public sealed partial class MongoDatabaseInitializer
     private readonly IHostEnvironment hostEnvironment;
     private readonly ILogger<MongoDatabaseInitializer> logger;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
+    private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
 
     public MongoDatabaseInitializer(
         IMongoDatabase database,
@@ -44,7 +45,8 @@ public sealed partial class MongoDatabaseInitializer
         AdminSeedSettings adminSeedSettings,
         IHostEnvironment hostEnvironment,
         ILogger<MongoDatabaseInitializer> logger,
-        PersonalRankingShareReplacementMigration personalRankingShareMigration)
+        PersonalRankingShareReplacementMigration personalRankingShareMigration,
+        PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration)
     {
         this.database = database;
         this.settings = settings;
@@ -52,6 +54,7 @@ public sealed partial class MongoDatabaseInitializer
         this.hostEnvironment = hostEnvironment;
         this.logger = logger;
         this.personalRankingShareMigration = personalRankingShareMigration;
+        this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -112,6 +115,7 @@ public sealed partial class MongoDatabaseInitializer
             this.settings.SharePublicationMigrationsCollectionName,
             cancellationToken);
         await this.personalRankingShareMigration.ExecuteAsync(cancellationToken);
+        await this.personalRankingShareAvatarPolicyMigration.ExecuteAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);

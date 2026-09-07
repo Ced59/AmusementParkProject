@@ -123,6 +123,7 @@ public sealed class ShareSourceRevisionRepositoryTests
                 It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
                 CancellationToken.None))
             .ReturnsAsync((ShareSourceRevisionDocument)null!)
+            .ReturnsAsync((ShareSourceRevisionDocument)null!)
             .ReturnsAsync(new ShareSourceRevisionDocument
             {
                 ScopeKey = "personal-ranking:owner-1",
@@ -155,8 +156,11 @@ public sealed class ShareSourceRevisionRepositoryTests
         BsonDocument set = update["$set"].AsBsonDocument;
         Assert.Equal(
             NowUtc.Add(ShareSourceRevisionRepository.MutationLeaseDuration),
-            set["mutationLeases.$.expiresAtUtc"].ToUniversalTime());
+            set["mutationLeases.$[lease].expiresAtUtc"].ToUniversalTime());
         Assert.Equal(NowUtc, set["updatedAt"].ToUniversalTime());
+        BsonDocument arrayFilter = ShareSourceRevisionRepository.BuildHeartbeatArrayFilter(
+            "lease-token");
+        Assert.Equal("lease-token", arrayFilter["lease.token"].AsString);
         Assert.True(
             ShareSourceRevisionRepository.MutationHeartbeatInterval
             < ShareSourceRevisionRepository.MutationLeaseDuration);
@@ -372,6 +376,150 @@ public sealed class ShareSourceRevisionRepositoryTests
         Assert.Equal(1, update["$inc"].AsBsonDocument["revision"].AsInt64);
         Assert.True(update.Contains("$pull"));
         collection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CompleteMutationAsync_WhenUnchangedLeaseExpired_ShouldPersistProjectedGeneration()
+    {
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        List<FilterDefinition<ShareSourceRevisionDocument>> filters =
+            new List<FilterDefinition<ShareSourceRevisionDocument>>();
+        List<UpdateDefinition<ShareSourceRevisionDocument>> updates =
+            new List<UpdateDefinition<ShareSourceRevisionDocument>>();
+        int callCount = 0;
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<ShareSourceRevisionDocument> filter,
+                UpdateDefinition<ShareSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                filters.Add(filter);
+                updates.Add(update);
+            })
+            .Returns((
+                FilterDefinition<ShareSourceRevisionDocument> _,
+                UpdateDefinition<ShareSourceRevisionDocument> _,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> _,
+                CancellationToken _) =>
+            {
+                callCount++;
+                ShareSourceRevisionDocument? document = callCount == 1
+                    ? null
+                    : new ShareSourceRevisionDocument
+                    {
+                        ScopeKey = "personal-ranking:owner-1",
+                        Revision = 5,
+                        CreatedAt = NowUtc.AddDays(-1),
+                        UpdatedAt = NowUtc,
+                    };
+                return Task.FromResult(document!);
+            });
+        ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+        ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
+            "personal-ranking:owner-1",
+            5.ToString("x32"));
+
+        ShareSourceRevision result = await repository.CompleteMutationAsync(
+            mutationLease,
+            sourceChanged: false,
+            CancellationToken.None);
+
+        Assert.Equal(5, result.Revision);
+        Assert.True(result.IsStable);
+        Assert.Equal(2, filters.Count);
+        string activeFilter = Render(filters[0]).ToJson();
+        string expiredFilter = Render(filters[1]).ToJson();
+        Assert.Contains("$gt", activeFilter);
+        Assert.Contains("$$NOW", activeFilter);
+        Assert.Contains("$lte", expiredFilter);
+        Assert.Contains("$$NOW", expiredFilter);
+        BsonDocument recoveryUpdate = Render(updates[1]);
+        Assert.Equal(1, recoveryUpdate["$inc"].AsBsonDocument["revision"].AsInt64);
+        Assert.Equal(
+            mutationLease.Token,
+            recoveryUpdate["$pull"].AsBsonDocument["mutationLeases"].AsBsonDocument["token"].AsString);
+        collection.Verify(value => value.FindOneAndUpdateAsync(
+            It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+            It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+            It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+            CancellationToken.None), Times.Exactly(2));
+    }
+
+    [Fact]
+    public async Task GetSnapshotAsync_ShouldBatchReadWithoutWritesAndProjectExpiredLeases()
+    {
+        ShareSourceRevisionDocument ownerDocument = new ShareSourceRevisionDocument
+        {
+            ScopeKey = "personal-ranking:owner-1",
+            Revision = 4,
+            MutationLeases = new List<ShareSourceMutationLeaseDocument>
+            {
+                new ShareSourceMutationLeaseDocument
+                {
+                    Token = "expired",
+                    ExpiresAtUtc = NowUtc.AddSeconds(-1),
+                },
+            },
+            CreatedAt = NowUtc.AddDays(-1),
+            UpdatedAt = NowUtc.AddMinutes(-5),
+        };
+        ShareSourceRevisionDocument catalogDocument = new ShareSourceRevisionDocument
+        {
+            ScopeKey = "personal-ranking:public-catalog",
+            Revision = 2,
+            MutationLeases = new List<ShareSourceMutationLeaseDocument>
+            {
+                new ShareSourceMutationLeaseDocument
+                {
+                    Token = "active",
+                    ExpiresAtUtc = NowUtc.AddMinutes(1),
+                },
+            },
+            CreatedAt = NowUtc.AddDays(-1),
+            UpdatedAt = NowUtc,
+        };
+        Mock<IAsyncCursor<ShareSourceRevisionDocument>> cursor =
+            new Mock<IAsyncCursor<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        cursor.SetupGet(value => value.Current).Returns(new[] { ownerDocument, catalogDocument });
+        cursor.SetupSequence(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(true)
+            .ReturnsAsync(false);
+        cursor.Setup(value => value.Dispose());
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOptions<
+                    ShareSourceRevisionDocument,
+                    ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        IReadOnlyDictionary<string, ShareSourceRevision> snapshot =
+            await repository.GetSnapshotAsync(
+                new[]
+                {
+                    "personal-ranking:owner-1",
+                    "personal-ranking:public-catalog",
+                    "personal-ranking:missing",
+                },
+                CancellationToken.None);
+
+        Assert.Equal(5, snapshot["personal-ranking:owner-1"].Revision);
+        Assert.True(snapshot["personal-ranking:owner-1"].IsStable);
+        Assert.Equal(2, snapshot["personal-ranking:public-catalog"].Revision);
+        Assert.False(snapshot["personal-ranking:public-catalog"].IsStable);
+        Assert.Equal(0, snapshot["personal-ranking:missing"].Revision);
+        Assert.True(snapshot["personal-ranking:missing"].IsStable);
+        collection.VerifyAll();
+        cursor.VerifyAll();
     }
 
     [Fact]

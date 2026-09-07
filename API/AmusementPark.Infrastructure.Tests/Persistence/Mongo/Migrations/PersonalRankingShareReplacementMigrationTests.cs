@@ -30,6 +30,7 @@ public sealed class PersonalRankingShareReplacementMigrationTests
         Assert.Equal(PublishedAtUtc, publication.PublishedAtUtc);
         Assert.Equal(7, publication.SourceVersion);
         Assert.True(publication.ContentPolicy.Includes(ShareContentField.GlobalRatings));
+        Assert.False(publication.ContentPolicy.Includes(ShareContentField.Avatar));
     }
 
     [Fact]
@@ -103,7 +104,6 @@ public sealed class PersonalRankingShareReplacementMigrationTests
             new[]
             {
                 ShareContentField.PublicDisplayName,
-                ShareContentField.Avatar,
                 ShareContentField.GlobalRatings,
             });
     }
