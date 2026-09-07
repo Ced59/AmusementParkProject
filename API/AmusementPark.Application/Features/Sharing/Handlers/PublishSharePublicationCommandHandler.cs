@@ -101,12 +101,30 @@ public sealed class PublishSharePublicationCommandHandler
                 SharingApplicationErrors.ApprovedPreviewExpired());
         }
 
-        return await this.publisher.PublishAsync(
+        ApplicationResult<SharePublicationSettingsResult> publishResult = await this.publisher.PublishAsync(
             ownerUserId,
             command.PublicationType,
             scopeResult.Value,
             versionResult.Value,
             contentPolicy,
             cancellationToken);
+        if (!publishResult.IsSuccess)
+        {
+            return publishResult;
+        }
+
+        ApplicationResult<long> persistedVersionResult = await source.GetCurrentSourceVersionAsync(
+            scopeResult.Value,
+            cancellationToken);
+        if (!persistedVersionResult.IsSuccess)
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                persistedVersionResult.Errors);
+        }
+
+        return persistedVersionResult.Value == command.ApprovedSourceVersion
+            ? publishResult
+            : ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.ApprovedPreviewExpired());
     }
 }

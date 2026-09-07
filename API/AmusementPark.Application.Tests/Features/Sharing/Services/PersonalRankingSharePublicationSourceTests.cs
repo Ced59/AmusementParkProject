@@ -17,14 +17,17 @@ public sealed class PersonalRankingSharePublicationSourceTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.Is<IReadOnlyCollection<string>>(keys =>
+                    keys.Count == 2
+                    && keys.Contains("personal-ranking:owner-1")
+                    && keys.Contains(PersonalRankingShareSourceScope.PublicCatalog)),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 0, Now));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 0, Now),
+                [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
+            });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 
@@ -46,14 +49,14 @@ public sealed class PersonalRankingSharePublicationSourceTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 1, Now));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, Now));
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 1, Now),
+                [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
+            });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 

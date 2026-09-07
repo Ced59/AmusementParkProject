@@ -48,12 +48,18 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         }
 
         string sourceScopeKey = PersonalRankingShareSourceScope.Create(ownerUserId);
-        ShareSourceRevision revisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
+        string[] revisionScopeKeys =
+        {
             sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionBefore = await this.sourceRevisionRepository.GetOrCreateAsync(
             PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
+        };
+        IReadOnlyDictionary<string, ShareSourceRevision> revisionsBefore =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                revisionScopeKeys,
+                cancellationToken);
+        ShareSourceRevision revisionBefore = revisionsBefore[sourceScopeKey];
+        ShareSourceRevision catalogRevisionBefore =
+            revisionsBefore[PersonalRankingShareSourceScope.PublicCatalog];
         if (!revisionBefore.IsStable || !catalogRevisionBefore.IsStable)
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
@@ -91,12 +97,13 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
             .Take(MaximumRatingCount)
             .ToArray();
 
-        ShareSourceRevision revisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            sourceScopeKey,
-            cancellationToken);
-        ShareSourceRevision catalogRevisionAfter = await this.sourceRevisionRepository.GetOrCreateAsync(
-            PersonalRankingShareSourceScope.PublicCatalog,
-            cancellationToken);
+        IReadOnlyDictionary<string, ShareSourceRevision> revisionsAfter =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                revisionScopeKeys,
+                cancellationToken);
+        ShareSourceRevision revisionAfter = revisionsAfter[sourceScopeKey];
+        ShareSourceRevision catalogRevisionAfter =
+            revisionsAfter[PersonalRankingShareSourceScope.PublicCatalog];
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         Image? avatarAfter = includesAvatar
             ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(

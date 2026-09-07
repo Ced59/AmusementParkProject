@@ -169,6 +169,13 @@ et la sélection exacte affichée : modifier un champ après l'aperçu invalide 
 publication. L'absence de nom public reste une valeur sémantiquement anonyme jusqu'à la
 couche de présentation, qui fournit le libellé adapté à la langue de la page.
 
+Les contrôles de version du classement lisent les révisions membre et catalogue en
+un seul snapshot MongoDB, sans upsert sur le chemin public. Un bail expiré est
+interprété conservativement comme une révision avancée, tandis qu'un bail actif
+interdit l'exposition. La publication recontrôle enfin ce snapshot après son écriture
+avant d'annoncer le succès : une mutation concurrente impose donc un nouvel aperçu
+au lieu de créer un lien immédiatement obsolète.
+
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
 

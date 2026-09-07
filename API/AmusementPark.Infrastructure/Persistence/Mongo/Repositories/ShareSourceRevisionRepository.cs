@@ -293,6 +293,46 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return ToResult(document);
     }
 
+    public async Task<IReadOnlyDictionary<string, ShareSourceRevision>> GetSnapshotAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scopeKeys);
+        string[] normalizedScopeKeys = scopeKeys
+            .Select(NormalizeScopeKey)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        Dictionary<string, ShareSourceRevision> snapshot =
+            new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal);
+        if (normalizedScopeKeys.Length == 0)
+        {
+            return snapshot;
+        }
+
+        FilterDefinition<ShareSourceRevisionDocument> filter =
+            Builders<ShareSourceRevisionDocument>.Filter.In(
+                document => document.ScopeKey,
+                normalizedScopeKeys);
+        using IAsyncCursor<ShareSourceRevisionDocument> cursor = await this.collection.FindAsync(
+            filter,
+            cancellationToken: cancellationToken);
+        List<ShareSourceRevisionDocument> documents = await cursor.ToListAsync(cancellationToken);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        foreach (ShareSourceRevisionDocument document in documents)
+        {
+            snapshot[document.ScopeKey] = ToSnapshotResult(document, nowUtc);
+        }
+
+        foreach (string normalizedScopeKey in normalizedScopeKeys)
+        {
+            snapshot.TryAdd(
+                normalizedScopeKey,
+                new ShareSourceRevision(0, 0, DateTime.UnixEpoch));
+        }
+
+        return snapshot;
+    }
+
     private static string NormalizeScopeKey(string scopeKey)
     {
         return IdentifierRules.NormalizeRequired(scopeKey, nameof(scopeKey));
@@ -453,6 +493,35 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return new ShareSourceRevision(
             document.Revision,
             document.MutationLeases.Count,
+            document.UpdatedAt);
+    }
+
+    private static ShareSourceRevision ToSnapshotResult(
+        ShareSourceRevisionDocument document,
+        DateTime nowUtc)
+    {
+        int activeMutationCount = document.MutationLeases.Count(
+            lease => lease.ExpiresAtUtc > nowUtc);
+        bool hasExpiredMutation = activeMutationCount < document.MutationLeases.Count;
+        if (!hasExpiredMutation)
+        {
+            return new ShareSourceRevision(
+                document.Revision,
+                activeMutationCount,
+                document.UpdatedAt);
+        }
+
+        if (document.Revision == long.MaxValue)
+        {
+            return new ShareSourceRevision(
+                document.Revision,
+                Math.Max(1, activeMutationCount),
+                document.UpdatedAt);
+        }
+
+        return new ShareSourceRevision(
+            document.Revision + 1,
+            activeMutationCount,
             document.UpdatedAt);
     }
 }

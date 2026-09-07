@@ -375,6 +375,77 @@ public sealed class ShareSourceRevisionRepositoryTests
     }
 
     [Fact]
+    public async Task GetSnapshotAsync_ShouldBatchReadWithoutWritesAndProjectExpiredLeases()
+    {
+        ShareSourceRevisionDocument ownerDocument = new ShareSourceRevisionDocument
+        {
+            ScopeKey = "personal-ranking:owner-1",
+            Revision = 4,
+            MutationLeases = new List<ShareSourceMutationLeaseDocument>
+            {
+                new ShareSourceMutationLeaseDocument
+                {
+                    Token = "expired",
+                    ExpiresAtUtc = NowUtc.AddSeconds(-1),
+                },
+            },
+            CreatedAt = NowUtc.AddDays(-1),
+            UpdatedAt = NowUtc.AddMinutes(-5),
+        };
+        ShareSourceRevisionDocument catalogDocument = new ShareSourceRevisionDocument
+        {
+            ScopeKey = "personal-ranking:public-catalog",
+            Revision = 2,
+            MutationLeases = new List<ShareSourceMutationLeaseDocument>
+            {
+                new ShareSourceMutationLeaseDocument
+                {
+                    Token = "active",
+                    ExpiresAtUtc = NowUtc.AddMinutes(1),
+                },
+            },
+            CreatedAt = NowUtc.AddDays(-1),
+            UpdatedAt = NowUtc,
+        };
+        Mock<IAsyncCursor<ShareSourceRevisionDocument>> cursor =
+            new Mock<IAsyncCursor<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        cursor.SetupGet(value => value.Current).Returns(new[] { ownerDocument, catalogDocument });
+        cursor.SetupSequence(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(true)
+            .ReturnsAsync(false);
+        cursor.Setup(value => value.Dispose());
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOptions<
+                    ShareSourceRevisionDocument,
+                    ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        IReadOnlyDictionary<string, ShareSourceRevision> snapshot =
+            await repository.GetSnapshotAsync(
+                new[]
+                {
+                    "personal-ranking:owner-1",
+                    "personal-ranking:public-catalog",
+                    "personal-ranking:missing",
+                },
+                CancellationToken.None);
+
+        Assert.Equal(5, snapshot["personal-ranking:owner-1"].Revision);
+        Assert.True(snapshot["personal-ranking:owner-1"].IsStable);
+        Assert.Equal(2, snapshot["personal-ranking:public-catalog"].Revision);
+        Assert.False(snapshot["personal-ranking:public-catalog"].IsStable);
+        Assert.Equal(0, snapshot["personal-ranking:missing"].Revision);
+        Assert.True(snapshot["personal-ranking:missing"].IsStable);
+        collection.VerifyAll();
+        cursor.VerifyAll();
+    }
+
+    [Fact]
     public void SourceRevisionDocument_ShouldContainNoPublicOrPrivateProfilePayload()
     {
         ShareSourceRevisionDocument document = new ShareSourceRevisionDocument

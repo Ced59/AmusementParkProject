@@ -16,4 +16,8 @@ public interface IShareSourceRevisionRepository
     Task<ShareSourceRevision> GetOrCreateAsync(
         string scopeKey,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<string, ShareSourceRevision>> GetSnapshotAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken);
 }

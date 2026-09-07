@@ -97,6 +97,50 @@ public sealed class PublishSharePublicationCommandHandlerTests
     }
 
     [Fact]
+    public async Task PublishApprovedPreview_WhenSourceChangesDuringWrite_ShouldNotReportSuccess()
+    {
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        repository.Setup(value => value.CreateAsync(
+                It.IsAny<SharePublication>(),
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(TokenValue));
+        ISharePublicationSourceDescriptor source = CreateSourceDescriptor(12, 13);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { source },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                ShareContentPolicy.CurrentSchemaVersion,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings },
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "share-publication.preview-expired");
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
+    }
+
+    [Fact]
     public async Task PublishApprovedPreview_WithoutRankingContent_ShouldRejectThePolicy()
     {
         Mock<ISharePublicationRepository> repository = new Mock<ISharePublicationRepository>(MockBehavior.Strict);
@@ -161,7 +205,9 @@ public sealed class PublishSharePublicationCommandHandlerTests
         tokenFactory.VerifyNoOtherCalls();
     }
 
-    private static ISharePublicationSourceDescriptor CreateSourceDescriptor(long sourceVersion)
+    private static ISharePublicationSourceDescriptor CreateSourceDescriptor(
+        long sourceVersion,
+        long? persistedSourceVersion = null)
     {
         PersonalRankingSharePublicationSource realSource = new PersonalRankingSharePublicationSource(
             Mock.Of<IShareSourceRevisionRepository>());
@@ -173,8 +219,22 @@ public sealed class PublishSharePublicationCommandHandlerTests
             .Returns(ApplicationResult<string>.Success(ScopeKey));
         source.Setup(value => value.ValidatePolicyForPublication(It.IsAny<ShareContentPolicy>()))
             .Returns((ShareContentPolicy policy) => realSource.ValidatePolicyForPublication(policy));
-        source.Setup(value => value.GetCurrentSourceVersionAsync(ScopeKey, CancellationToken.None))
-            .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
+        if (persistedSourceVersion.HasValue)
+        {
+            source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
+                    ScopeKey,
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
+                .ReturnsAsync(ApplicationResult<long>.Success(persistedSourceVersion.Value));
+        }
+        else
+        {
+            source.Setup(value => value.GetCurrentSourceVersionAsync(
+                    ScopeKey,
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
+        }
+
         return source.Object;
     }
 

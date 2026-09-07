@@ -122,15 +122,11 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.SetupSequence(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.SetupSequence(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(2, 0, NowUtc))
-            .ReturnsAsync(new ShareSourceRevision(3, 0, NowUtc.AddSeconds(1)));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(4, 0, NowUtc));
+            .ReturnsAsync(CreateRevisionSnapshot(2, 4))
+            .ReturnsAsync(CreateRevisionSnapshot(3, 4));
         Mock<IUserRepository> users = CreateUserRepository();
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
@@ -239,15 +235,23 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(revision, 0, NowUtc));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(0, 0, NowUtc));
+            .ReturnsAsync(CreateRevisionSnapshot(revision, 0));
         return revisions;
+    }
+
+    private static IReadOnlyDictionary<string, ShareSourceRevision> CreateRevisionSnapshot(
+        long ownerRevision,
+        long catalogRevision)
+    {
+        return new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+        {
+            ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, NowUtc),
+            [PersonalRankingShareSourceScope.PublicCatalog] =
+                new ShareSourceRevision(catalogRevision, 0, NowUtc),
+        };
     }
 
     private static Mock<IUserRepository> CreateUserRepository()

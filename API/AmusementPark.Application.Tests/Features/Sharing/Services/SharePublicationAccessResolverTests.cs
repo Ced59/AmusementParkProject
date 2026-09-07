@@ -261,14 +261,14 @@ public sealed class SharePublicationAccessResolverTests
     {
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(
-                "personal-ranking:owner-1",
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(ownerRevision, 0, Now));
-        revisions.Setup(value => value.GetOrCreateAsync(
-                PersonalRankingShareSourceScope.PublicCatalog,
-                CancellationToken.None))
-            .ReturnsAsync(new ShareSourceRevision(0, 0, Now));
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, Now),
+                [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(0, 0, Now),
+            });
         return new[]
         {
             new PersonalRankingSharePublicationSource(revisions.Object),
