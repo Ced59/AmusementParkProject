@@ -32,6 +32,7 @@
       "captionHint": "Este texto será público y nunca procede de tus comentarios privados.",
       "itemsTitle": "Recuerdos que quieres mostrar",
       "itemsDescription": "Desmarca lo que no quieras mostrar y vuelve a generar la vista previa.",
+      "itemsLimit": "Esta visita contiene {{total}} recuerdos que se pueden compartir. Se han seleccionado los primeros {{visible}} para respetar el límite; todavía puedes quitar algunos.",
       "error": "No se pudo preparar o guardar esta publicación. Revisa tus elecciones e inténtalo de nuevo.",
       "cancel": "Cancelar",
       "publishing": "Publicando...",

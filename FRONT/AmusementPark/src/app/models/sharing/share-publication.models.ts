@@ -90,6 +90,12 @@ export interface VisitRecapShareInput {
   publicCaption?: string | null;
 }
 
+export interface VisitRecapShareCandidates {
+  items: VisitRecapShareItem[];
+  totalEligibleItemCount: number;
+  isTruncated: boolean;
+}
+
 export interface VisitRecapShareDate {
   year: number;
   month?: number | null;

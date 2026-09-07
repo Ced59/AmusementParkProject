@@ -934,6 +934,7 @@
       "captionHint": "Ce texte sera public. Il ne provient jamais de tes commentaires privés.",
       "itemsTitle": "Souvenirs à montrer",
       "itemsDescription": "Décoche ce que tu ne veux pas faire apparaître, puis prévisualise à nouveau.",
+      "itemsLimit": "Cette visite contient {{total}} souvenirs partageables. Les {{visible}} premiers sont sélectionnés afin de respecter la limite ; tu peux encore en retirer.",
       "error": "Impossible de préparer ou d’enregistrer ce partage. Réessaie après avoir vérifié tes choix.",
       "cancel": "Annuler",
       "publishing": "Publication...",

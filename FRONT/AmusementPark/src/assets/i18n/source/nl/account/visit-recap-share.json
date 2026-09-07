@@ -32,6 +32,7 @@
       "captionHint": "Deze tekst wordt openbaar en komt nooit uit je privéreacties.",
       "itemsTitle": "Herinneringen om te tonen",
       "itemsDescription": "Vink uit wat je niet wilt tonen en bekijk daarna opnieuw de voorvertoning.",
+      "itemsLimit": "Dit bezoek bevat {{total}} deelbare herinneringen. De eerste {{visible}} zijn geselecteerd om binnen de limiet te blijven; je kunt er nog verwijderen.",
       "error": "Dit deelbericht kon niet worden voorbereid of opgeslagen. Controleer je keuzes en probeer opnieuw.",
       "cancel": "Annuleren",
       "publishing": "Publiceren...",

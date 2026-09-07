@@ -88,6 +88,16 @@ describe('SharePublicationsApiService', () => {
     revokeRequest.flush({ isPublic: false, includedFields: [] });
   });
 
+  it('loads a bounded candidate list before previewing a visit recap', () => {
+    service.getVisitCandidates('visit/with spaces', true).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fwith%20spaces/share/candidates?includeMissedItems=true`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ items: [], totalEligibleItemCount: 0, isTruncated: false });
+  });
+
   it('loads an anonymous visit recap only from its opaque share link', () => {
     service.getSharedVisit('opaque/token').subscribe();
 

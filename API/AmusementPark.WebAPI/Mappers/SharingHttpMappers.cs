@@ -201,6 +201,17 @@ public static class SharingHttpMappers
         };
     }
 
+    public static VisitRecapShareCandidatesDto ToHttp(
+        this VisitRecapShareCandidatesResult value)
+    {
+        return new VisitRecapShareCandidatesDto
+        {
+            Items = value.Items.Select(static item => item.ToHttp()).ToList(),
+            TotalEligibleItemCount = value.TotalEligibleItemCount,
+            IsTruncated = value.IsTruncated,
+        };
+    }
+
     public static SharedVisitRecapContentDto ToPublicHttp(this VisitRecapSharePreviewResult value)
     {
         return new SharedVisitRecapContentDto

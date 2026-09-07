@@ -33,6 +33,77 @@ public sealed class VisitRecapSharePreviewBuilder : IVisitRecapSharePreviewBuild
 
     public SharePublicationType PublicationType => SharePublicationType.VisitRecap;
 
+    public async Task<ApplicationResult<VisitRecapShareCandidatesResult>> GetCandidatesAsync(
+        string ownerUserId,
+        string sourceId,
+        bool includeMissedItems,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
+        string normalizedSource = sourceId?.Trim() ?? string.Empty;
+        VisitRecapSourceData? source = await this.sourceReader.GetOwnedCompletedAsync(
+            normalizedOwner,
+            normalizedSource,
+            cancellationToken);
+        if (source is null)
+        {
+            return ApplicationResult<VisitRecapShareCandidatesResult>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
+
+        if (!source.IsComplete)
+        {
+            return ApplicationResult<VisitRecapShareCandidatesResult>.Failure(
+                SharingApplicationErrors.VisitRecapTooLarge());
+        }
+
+        if (!source.Revision.IsStable)
+        {
+            return ApplicationResult<VisitRecapShareCandidatesResult>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
+        string? parkName = await this.publicParkReader.GetVisibleNameAsync(
+            source.ParkId,
+            cancellationToken);
+        if (parkName is null)
+        {
+            return ApplicationResult<VisitRecapShareCandidatesResult>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
+
+        string[] parkItemIds = source.Occurrences
+            .Select(static occurrence => occurrence.ParkItemId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyDictionary<string, VisitTarget> targets = parkItemIds.Length == 0
+            ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            : await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
+        ShareContentPolicy candidatePolicy = ShareContentPolicy.Create(
+            SharePublicationType.VisitRecap,
+            ShareDatePrecision.Hidden,
+            includeMissedItems
+                ? new[] { ShareContentField.MissedItems }
+                : Array.Empty<ShareContentField>());
+        IReadOnlySet<string> eligibleIds = ResolveEligibleIds(source, candidatePolicy, targets);
+        List<VisitRecapShareItemResult> candidates = BuildItems(
+            source,
+            targets,
+            eligibleIds,
+            includesRideCounts: false,
+            includesRatings: false,
+            out bool _);
+        int totalCount = candidates.Count;
+        VisitRecapShareItemResult[] boundedCandidates = candidates
+            .Take(VisitRecapShareInputNormalizer.MaximumSelectedItemCount)
+            .ToArray();
+        return ApplicationResult<VisitRecapShareCandidatesResult>.Success(
+            new VisitRecapShareCandidatesResult(
+                boundedCandidates,
+                totalCount,
+                totalCount > boundedCandidates.Length));
+    }
+
     public Task<ApplicationResult<SharePublicationPreviewResult>> BuildAsync(
         string ownerUserId,
         string? sourceId,

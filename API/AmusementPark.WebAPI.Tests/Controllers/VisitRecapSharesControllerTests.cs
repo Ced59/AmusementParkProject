@@ -82,6 +82,49 @@ public sealed class VisitRecapSharesControllerTests
     }
 
     [Fact]
+    public async Task GetCandidatesAsync_ShouldReturnOnlyTheAuthenticatedVisitsCandidates()
+    {
+        Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>> handler =
+            new Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<GetVisitRecapShareCandidatesQuery>(query =>
+                    query.OwnerUserId == "owner-1"
+                    && query.VisitId == "visit-1"
+                    && query.IncludeMissedItems),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<VisitRecapShareCandidatesResult>.Success(
+                new VisitRecapShareCandidatesResult(
+                    new[]
+                    {
+                        new VisitRecapShareItemResult(
+                            "item-1",
+                            "Le Galion",
+                            "Attraction",
+                            null,
+                            null,
+                            false),
+                    },
+                    101,
+                    true)));
+        VisitRecapSharesController controller = CreateController(
+            candidatesHandler: handler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.GetCandidatesAsync(
+            "visit-1",
+            includeMissedItems: true,
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        VisitRecapShareCandidatesDto response =
+            Assert.IsType<VisitRecapShareCandidatesDto>(ok.Value);
+        Assert.Equal(101, response.TotalEligibleItemCount);
+        Assert.True(response.IsTruncated);
+        Assert.Equal("Le Galion", Assert.Single(response.Items).Name);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public void Endpoints_ShouldRemainAuthenticatedNoStoreAndInvalidateOnRevoke()
     {
         Type controller = typeof(VisitRecapSharesController);
@@ -95,6 +138,11 @@ public sealed class VisitRecapSharesControllerTests
         ResponseCacheAttribute getCache = Assert.IsType<ResponseCacheAttribute>(
             get.GetCustomAttribute<ResponseCacheAttribute>());
         Assert.True(getCache.NoStore);
+
+        MethodInfo candidates = GetAction(nameof(VisitRecapSharesController.GetCandidatesAsync));
+        ResponseCacheAttribute candidatesCache = Assert.IsType<ResponseCacheAttribute>(
+            candidates.GetCustomAttribute<ResponseCacheAttribute>());
+        Assert.True(candidatesCache.NoStore);
 
         MethodInfo revoke = GetAction(nameof(VisitRecapSharesController.RevokeAsync));
         Assert.NotNull(revoke.GetCustomAttribute<InvalidatesPublicCacheAttribute>());
@@ -129,11 +177,14 @@ public sealed class VisitRecapSharesControllerTests
 
     private static VisitRecapSharesController CreateController(
         IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>? queryHandler = null,
+        IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>? candidatesHandler = null,
         ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>? commandHandler = null)
     {
         return new VisitRecapSharesController(
             queryHandler
                 ?? new Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object,
+            candidatesHandler
+                ?? new Mock<IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>>>(MockBehavior.Strict).Object,
             commandHandler
                 ?? new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object);
     }

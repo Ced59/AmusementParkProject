@@ -32,6 +32,7 @@
       "captionHint": "Ten tekst będzie publiczny i nigdy nie pochodzi z prywatnych komentarzy.",
       "itemsTitle": "Wspomnienia do pokazania",
       "itemsDescription": "Odznacz to, czego nie chcesz pokazywać, a następnie ponownie otwórz podgląd.",
+      "itemsLimit": "Ta wizyta zawiera {{total}} wspomnień możliwych do udostępnienia. Pierwsze {{visible}} wybrano, aby zachować limit; nadal możesz część usunąć.",
       "error": "Nie udało się przygotować lub zapisać udostępnienia. Sprawdź wybór i spróbuj ponownie.",
       "cancel": "Anuluj",
       "publishing": "Publikowanie...",

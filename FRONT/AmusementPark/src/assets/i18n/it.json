@@ -934,6 +934,7 @@
       "captionHint": "Questo testo sarà pubblico e non proviene mai dai commenti privati.",
       "itemsTitle": "Ricordi da mostrare",
       "itemsDescription": "Deseleziona ciò che non vuoi mostrare, poi genera di nuovo l’anteprima.",
+      "itemsLimit": "Questa visita contiene {{total}} ricordi condivisibili. I primi {{visible}} sono selezionati per rispettare il limite; puoi ancora rimuoverne alcuni.",
       "error": "Impossibile preparare o salvare la condivisione. Controlla le scelte e riprova.",
       "cancel": "Annulla",
       "publishing": "Pubblicazione...",

@@ -24,14 +24,43 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class VisitRecapSharesController : ControllerBase
 {
     private readonly IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>> getSettingsHandler;
+    private readonly IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>> getCandidatesHandler;
     private readonly ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>> setVisibilityHandler;
 
     public VisitRecapSharesController(
         IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>> getSettingsHandler,
+        IQueryHandler<GetVisitRecapShareCandidatesQuery, ApplicationResult<VisitRecapShareCandidatesResult>> getCandidatesHandler,
         ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>> setVisibilityHandler)
     {
         this.getSettingsHandler = getSettingsHandler;
+        this.getCandidatesHandler = getCandidatesHandler;
         this.setVisibilityHandler = setVisibilityHandler;
+    }
+
+    [HttpGet("candidates")]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(typeof(VisitRecapShareCandidatesDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetCandidatesAsync(
+        [FromRoute] string visitId,
+        [FromQuery] bool includeMissedItems = false,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ApplicationResult<VisitRecapShareCandidatesResult> result =
+            await this.getCandidatesHandler.HandleAsync(
+                new GetVisitRecapShareCandidatesQuery(
+                    userId,
+                    visitId,
+                    includeMissedItems),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
     }
 
     [HttpGet]

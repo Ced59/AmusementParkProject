@@ -32,6 +32,7 @@ export class VisitRecapShareControlComponent implements OnChanges {
   protected readonly loading: Signal<boolean> = this.facade.loading;
   protected readonly saving: Signal<boolean> = this.facade.saving;
   protected readonly previewing: Signal<boolean> = this.facade.previewing;
+  protected readonly candidatesLoading: Signal<boolean> = this.facade.candidatesLoading;
   protected readonly error: Signal<boolean> = this.facade.error;
   protected readonly editorOpen: Signal<boolean> = this.facade.editorOpen;
   protected readonly datePrecision: Signal<string> = this.facade.datePrecision;
@@ -41,6 +42,8 @@ export class VisitRecapShareControlComponent implements OnChanges {
   protected readonly includeCaption: Signal<boolean> = this.facade.includeCaption;
   protected readonly publicCaption: Signal<string> = this.facade.publicCaption;
   protected readonly candidateItems: Signal<VisitRecapShareItem[]> = this.facade.candidateItems;
+  protected readonly candidateTotal: Signal<number> = this.facade.candidateTotal;
+  protected readonly candidatesTruncated: Signal<boolean> = this.facade.candidatesTruncated;
   protected readonly recap: Signal<VisitRecapSharePreview | null> = this.facade.visitRecap;
   protected readonly canPublish: Signal<boolean> = this.facade.canPublish;
   protected readonly publicPath: Signal<string | null> = computed(() => {

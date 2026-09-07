@@ -32,6 +32,7 @@
       "captionHint": "This text will be public. It never comes from your private comments.",
       "itemsTitle": "Memories to show",
       "itemsDescription": "Untick anything you do not want to show, then preview again.",
+      "itemsLimit": "This visit contains {{total}} shareable memories. The first {{visible}} are selected to stay within the limit; you can still remove some.",
       "error": "This share could not be prepared or saved. Check your choices and try again.",
       "cancel": "Cancel",
       "publishing": "Publishing...",

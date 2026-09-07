@@ -333,6 +333,43 @@ public sealed class VisitRecapSharePreviewBuilderTests
             error.Code == "share-publication.visit-recap-too-large");
     }
 
+    [Fact]
+    public async Task GetCandidatesAsync_WhenVisitExceedsPublicationCap_ShouldReturnABoundedChoice()
+    {
+        VisitRecapSourceOccurrence[] occurrences = Enumerable.Range(
+                1,
+                VisitRecapShareInputNormalizer.MaximumSelectedItemCount + 1)
+            .Select(index => new VisitRecapSourceOccurrence(
+                $"item-{index:000}",
+                RideOccurrenceStatus.Completed,
+                $"Attraction {index:000}",
+                ParkItemCategory.Attraction,
+                null))
+            .ToArray();
+        VisitRecapSharePreviewBuilder builder = CreateStableBuilder(
+            new VisitRecapSourceData(
+                "park-1",
+                VisitDate.ForDay(2026, 7, 26),
+                null,
+                new VisitRecapSourceRevision(4, true),
+                occurrences),
+            "Parc public",
+            new Dictionary<string, VisitTarget>());
+
+        ApplicationResult<VisitRecapShareCandidatesResult> result =
+            await builder.GetCandidatesAsync(
+                "owner-1",
+                "visit-1",
+                includeMissedItems: false,
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(101, result.Value!.TotalEligibleItemCount);
+        Assert.True(result.Value.IsTruncated);
+        Assert.Equal(100, result.Value.Items.Count);
+        Assert.All(result.Value.Items, static item => Assert.False(item.IsMissed));
+    }
+
     private static VisitRecapSharePreviewBuilder CreateStableBuilder(
         VisitRecapSourceData source,
         string? publicParkName,

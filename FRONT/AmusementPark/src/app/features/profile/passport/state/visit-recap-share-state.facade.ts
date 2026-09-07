@@ -9,6 +9,7 @@ import {
   SharePublicationPublishRequest,
   SharePublicationSettings,
   VisitRecapShareInput,
+  VisitRecapShareCandidates,
   VisitRecapShareItem,
   VisitRecapSharePreview
 } from '@app/models/sharing/share-publication.models';
@@ -21,6 +22,7 @@ export class VisitRecapShareStateFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly savingSignal = signal<boolean>(false);
   private readonly previewingSignal = signal<boolean>(false);
+  private readonly candidatesLoadingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
   private readonly editorOpenSignal = signal<boolean>(false);
   private readonly datePrecisionSignal = signal<string>('Hidden');
@@ -32,14 +34,18 @@ export class VisitRecapShareStateFacade {
   private readonly selectedParkItemIdsSignal = signal<string[] | null>(null);
   private readonly previewSignal = signal<SharePublicationPreview | null>(null);
   private readonly candidateItemsSignal = signal<VisitRecapShareItem[]>([]);
+  private readonly candidateTotalSignal = signal<number>(0);
   private loadGeneration: number = 0;
   private previewGeneration: number = 0;
   private mutationGeneration: number = 0;
+  private candidatesGeneration: number = 0;
+  private currentVisitId: string = '';
 
   public readonly settings: Signal<SharePublicationSettings | null> = this.settingsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   public readonly previewing: Signal<boolean> = this.previewingSignal.asReadonly();
+  public readonly candidatesLoading: Signal<boolean> = this.candidatesLoadingSignal.asReadonly();
   public readonly error: Signal<boolean> = this.errorSignal.asReadonly();
   public readonly editorOpen: Signal<boolean> = this.editorOpenSignal.asReadonly();
   public readonly datePrecision: Signal<string> = this.datePrecisionSignal.asReadonly();
@@ -51,11 +57,18 @@ export class VisitRecapShareStateFacade {
   public readonly selectedParkItemIds: Signal<string[] | null> = this.selectedParkItemIdsSignal.asReadonly();
   public readonly preview: Signal<SharePublicationPreview | null> = this.previewSignal.asReadonly();
   public readonly candidateItems: Signal<VisitRecapShareItem[]> = this.candidateItemsSignal.asReadonly();
+  public readonly candidateTotal: Signal<number> = this.candidateTotalSignal.asReadonly();
+  public readonly candidatesTruncated: Signal<boolean> = computed(() => {
+    return this.candidateTotalSignal() > this.candidateItemsSignal().length;
+  });
   public readonly visitRecap: Signal<VisitRecapSharePreview | null> = computed(() => {
     return this.previewSignal()?.visitRecap ?? null;
   });
   public readonly canPublish: Signal<boolean> = computed(() => {
-    return this.previewSignal() !== null && !this.savingSignal() && !this.previewingSignal();
+    return this.previewSignal() !== null
+      && !this.savingSignal()
+      && !this.previewingSignal()
+      && !this.candidatesLoadingSignal();
   });
 
   constructor(
@@ -67,6 +80,7 @@ export class VisitRecapShareStateFacade {
   }
 
   load(visitId: string): void {
+    this.currentVisitId = visitId.trim();
     const generation: number = ++this.loadGeneration;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
@@ -102,13 +116,15 @@ export class VisitRecapShareStateFacade {
     this.publicCaptionSignal.set('');
     this.selectedParkItemIdsSignal.set(null);
     this.candidateItemsSignal.set([]);
+    this.candidateTotalSignal.set(0);
     this.previewSignal.set(null);
     this.errorSignal.set(false);
     this.editorOpenSignal.set(true);
+    this.loadCandidates();
   }
 
   closeEditor(): void {
-    if (this.savingSignal() || this.previewingSignal()) {
+    if (this.savingSignal() || this.previewingSignal() || this.candidatesLoadingSignal()) {
       return;
     }
 
@@ -117,37 +133,66 @@ export class VisitRecapShareStateFacade {
   }
 
   setDatePrecision(value: string): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.datePrecisionSignal.set(value);
     this.invalidatePreview();
   }
 
   setRideCountIncluded(value: boolean): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.includeRideCountSignal.set(value);
     this.invalidatePreview();
   }
 
   setRatingsIncluded(value: boolean): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.includeRatingsSignal.set(value);
     this.invalidatePreview();
   }
 
   setMissedItemsIncluded(value: boolean): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.includeMissedItemsSignal.set(value);
     this.selectedParkItemIdsSignal.set(null);
     this.invalidatePreview();
+    this.loadCandidates();
   }
 
   setCaptionIncluded(value: boolean): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.includeCaptionSignal.set(value);
     this.invalidatePreview();
   }
 
   setPublicCaption(value: string): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     this.publicCaptionSignal.set(value.slice(0, 500));
     this.invalidatePreview();
   }
 
   toggleItem(parkItemId: string, selected: boolean): void {
+    if (this.isEditingLocked()) {
+      return;
+    }
+
     const currentIds: string[] = this.selectedParkItemIdsSignal()
       ?? this.candidateItemsSignal().map((item: VisitRecapShareItem): string => item.parkItemId)
       ?? [];
@@ -164,7 +209,7 @@ export class VisitRecapShareStateFacade {
   }
 
   preparePreview(visitId: string): void {
-    if (this.previewingSignal() || this.savingSignal()) {
+    if (this.previewingSignal() || this.savingSignal() || this.candidatesLoadingSignal()) {
       return;
     }
 
@@ -314,6 +359,43 @@ export class VisitRecapShareStateFacade {
     this.errorSignal.set(false);
   }
 
+  private loadCandidates(): void {
+    const visitId: string = this.currentVisitId;
+    if (!visitId) {
+      return;
+    }
+
+    const generation: number = ++this.candidatesGeneration;
+    this.candidatesLoadingSignal.set(true);
+    this.sharePort.getCandidates(visitId, this.includeMissedItemsSignal()).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (result: VisitRecapShareCandidates): void => {
+        if (generation !== this.candidatesGeneration) {
+          return;
+        }
+
+        this.candidatesLoadingSignal.set(false);
+        this.candidateItemsSignal.set(result.items);
+        this.candidateTotalSignal.set(result.totalEligibleItemCount);
+        this.selectedParkItemIdsSignal.set(result.isTruncated
+          ? result.items.map((item: VisitRecapShareItem): string => item.parkItemId)
+          : null);
+      },
+      error: (error: unknown): void => {
+        if (generation !== this.candidatesGeneration) {
+          return;
+        }
+
+        console.error('Error loading visit recap share candidates', error);
+        this.candidatesLoadingSignal.set(false);
+        this.candidateItemsSignal.set([]);
+        this.candidateTotalSignal.set(0);
+        this.errorSignal.set(true);
+      }
+    });
+  }
+
   private mergeCandidateItems(items: VisitRecapShareItem[]): void {
     const merged: Map<string, VisitRecapShareItem> = new Map(
       this.candidateItemsSignal().map((item: VisitRecapShareItem): [string, VisitRecapShareItem] => [item.parkItemId, item])
@@ -330,6 +412,12 @@ export class VisitRecapShareStateFacade {
     const sourceIndex: number = values.indexOf(sourcePrecision);
     const savedIndex: number = values.indexOf(savedPrecision);
     return savedIndex >= 0 && savedIndex <= sourceIndex ? savedPrecision : sourcePrecision;
+  }
+
+  private isEditingLocked(): boolean {
+    return this.savingSignal()
+      || this.previewingSignal()
+      || this.candidatesLoadingSignal();
   }
 
   private toast(severity: 'success' | 'error', messageKey: string): void {

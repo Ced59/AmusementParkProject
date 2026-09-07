@@ -32,6 +32,7 @@
       "captionHint": "Este texto será público e nunca vem dos teus comentários privados.",
       "itemsTitle": "Memórias a mostrar",
       "itemsDescription": "Desmarca o que não queres mostrar e volta a pré-visualizar.",
+      "itemsLimit": "Esta visita contém {{total}} memórias que podem ser partilhadas. As primeiras {{visible}} estão selecionadas para respeitar o limite; ainda podes retirar algumas.",
       "error": "Não foi possível preparar ou guardar esta partilha. Verifica as escolhas e tenta novamente.",
       "cancel": "Cancelar",
       "publishing": "A publicar...",

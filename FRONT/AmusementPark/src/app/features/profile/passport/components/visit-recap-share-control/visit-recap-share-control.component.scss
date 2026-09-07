@@ -196,6 +196,19 @@
   font-weight: 900;
 }
 
+.visit-share-editor__selection-limit {
+  display: flex;
+  min-width: 0;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.65rem 0 0;
+  padding: 0.65rem;
+  border-radius: var(--app-radius-sm);
+  color: var(--app-text);
+  background: color-mix(in srgb, var(--c-gold) 10%, var(--app-surface-2));
+  overflow-wrap: anywhere;
+}
+
 .visit-share-editor__items > div {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -31,7 +31,7 @@
 
       <label class="visit-share-editor__date">
         <span>{{ 'visitRecapShare.editor.dateLabel' | translate }}</span>
-        <select [value]="datePrecision()" [disabled]="saving() || previewing()" (change)="updateDatePrecision($event)">
+        <select [value]="datePrecision()" [disabled]="saving() || previewing() || candidatesLoading()" (change)="updateDatePrecision($event)">
           @for (precision of datePrecisionOptions(); track precision) {
             <option [value]="precision">{{ ('visitRecapShare.date.' + precision) | translate }}</option>
           }
@@ -41,22 +41,22 @@
 
       <div class="visit-share-editor__choices">
         <label class="visit-share-choice">
-          <input type="checkbox" [checked]="includeRideCount()" [disabled]="saving() || previewing()" (change)="toggleRideCount($event)">
+          <input type="checkbox" [checked]="includeRideCount()" [disabled]="saving() || previewing() || candidatesLoading()" (change)="toggleRideCount($event)">
           <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
           <span><strong>{{ 'visitRecapShare.editor.ridesTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.ridesDescription' | translate }}</small></span>
         </label>
         <label class="visit-share-choice">
-          <input type="checkbox" [checked]="includeRatings()" [disabled]="saving() || previewing()" (change)="toggleRatings($event)">
+          <input type="checkbox" [checked]="includeRatings()" [disabled]="saving() || previewing() || candidatesLoading()" (change)="toggleRatings($event)">
           <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
           <span><strong>{{ 'visitRecapShare.editor.ratingsTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.ratingsDescription' | translate }}</small></span>
         </label>
         <label class="visit-share-choice">
-          <input type="checkbox" [checked]="includeMissedItems()" [disabled]="saving() || previewing()" (change)="toggleMissedItems($event)">
+          <input type="checkbox" [checked]="includeMissedItems()" [disabled]="saving() || previewing() || candidatesLoading()" (change)="toggleMissedItems($event)">
           <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
           <span><strong>{{ 'visitRecapShare.editor.missedTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.missedDescription' | translate }}</small></span>
         </label>
         <label class="visit-share-choice">
-          <input type="checkbox" [checked]="includeCaption()" [disabled]="saving() || previewing()" (change)="toggleCaption($event)">
+          <input type="checkbox" [checked]="includeCaption()" [disabled]="saving() || previewing() || candidatesLoading()" (change)="toggleCaption($event)">
           <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
           <span><strong>{{ 'visitRecapShare.editor.captionTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.captionDescription' | translate }}</small></span>
         </label>
@@ -65,7 +65,7 @@
       @if (includeCaption()) {
         <label class="visit-share-editor__caption">
           <span>{{ 'visitRecapShare.editor.captionLabel' | translate }}</span>
-          <textarea maxlength="500" rows="3" [value]="publicCaption()" (input)="updateCaption($event)" [placeholder]="'visitRecapShare.editor.captionPlaceholder' | translate"></textarea>
+          <textarea maxlength="500" rows="3" [disabled]="saving() || previewing() || candidatesLoading()" [value]="publicCaption()" (input)="updateCaption($event)" [placeholder]="'visitRecapShare.editor.captionPlaceholder' | translate"></textarea>
           <small>{{ publicCaption().length }} / 500 · {{ 'visitRecapShare.editor.captionHint' | translate }}</small>
         </label>
       }
@@ -74,10 +74,16 @@
         <fieldset class="visit-share-editor__items">
           <legend>{{ 'visitRecapShare.editor.itemsTitle' | translate }}</legend>
           <p>{{ 'visitRecapShare.editor.itemsDescription' | translate }}</p>
+          @if (candidatesTruncated()) {
+            <p class="visit-share-editor__selection-limit" role="status">
+              <i class="pi pi-info-circle" aria-hidden="true"></i>
+              {{ 'visitRecapShare.editor.itemsLimit' | translate:{ visible: candidateItems().length, total: candidateTotal() } }}
+            </p>
+          }
           <div>
             @for (item of candidateItems(); track item.parkItemId) {
               <label>
-                <input type="checkbox" [checked]="facade.isItemSelected(item.parkItemId)" (change)="toggleItem(item.parkItemId, $event)">
+                <input type="checkbox" [disabled]="saving() || previewing() || candidatesLoading()" [checked]="facade.isItemSelected(item.parkItemId)" (change)="toggleItem(item.parkItemId, $event)">
                 <span>
                   <strong>{{ item.name }}</strong>
                   <small>{{ itemCategoryKey(item) | translate }}</small>
@@ -144,7 +150,7 @@
       }
 
       <div class="visit-share-editor__actions">
-        <button appUiButton="ghost" type="button" [disabled]="saving() || previewing()" (click)="closeEditor()">
+        <button appUiButton="ghost" type="button" [disabled]="saving() || previewing() || candidatesLoading()" (click)="closeEditor()">
           {{ 'visitRecapShare.editor.cancel' | translate }}
         </button>
         @if (recap()) {
@@ -153,7 +159,7 @@
             {{ (saving() ? 'visitRecapShare.editor.publishing' : 'visitRecapShare.editor.publish') | translate }}
           </button>
         } @else {
-          <button appUiButton="primary" type="button" [disabled]="previewing() || saving()" (click)="preparePreview()">
+          <button appUiButton="primary" type="button" [disabled]="previewing() || saving() || candidatesLoading()" (click)="preparePreview()">
             <i [class]="previewing() ? 'pi pi-spin pi-spinner' : 'pi pi-eye'" aria-hidden="true"></i>
             {{ (previewing() ? 'visitRecapShare.editor.preparing' : 'visitRecapShare.editor.preview') | translate }}
           </button>

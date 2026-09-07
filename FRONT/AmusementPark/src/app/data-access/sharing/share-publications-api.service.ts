@@ -7,7 +7,8 @@ import {
   SharePublicationPreviewRequest,
   SharePublicationPublishRequest,
   SharePublicationSettings,
-  SharedVisitRecap
+  SharedVisitRecap,
+  VisitRecapShareCandidates
 } from '@app/models/sharing/share-publication.models';
 import { environment } from '../../../environments/environment';
 import { SHARE_PUBLICATIONS_API_ENDPOINTS } from './share-publications-api-endpoints';
@@ -38,6 +39,17 @@ export class SharePublicationsApiService {
   getVisitSettings(visitId: string): Observable<SharePublicationSettings> {
     const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.visitSettings(visitId);
     return this.http.get<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  getVisitCandidates(
+    visitId: string,
+    includeMissedItems: boolean
+  ): Observable<VisitRecapShareCandidates> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.visitCandidates(
+      visitId,
+      includeMissedItems
+    );
+    return this.http.get<VisitRecapShareCandidates>(`${environment.apiBaseUrl}${endpoint}`);
   }
 
   revokeVisit(visitId: string): Observable<SharePublicationSettings> {

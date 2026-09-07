@@ -7,6 +7,12 @@ namespace AmusementPark.Application.Features.Sharing.Ports;
 
 public interface IVisitRecapSharePreviewBuilder : ISharePublicationPreviewBuilder
 {
+    Task<ApplicationResult<VisitRecapShareCandidatesResult>> GetCandidatesAsync(
+        string ownerUserId,
+        string sourceId,
+        bool includeMissedItems,
+        CancellationToken cancellationToken);
+
     Task<ApplicationResult<SharePublicationPreviewResult>> BuildAsync(
         string ownerUserId,
         string sourceId,

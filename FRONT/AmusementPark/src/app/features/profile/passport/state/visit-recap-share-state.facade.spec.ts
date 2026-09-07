@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 import {
   SharePublicationPreview,
   SharePublicationPreviewRequest,
   SharePublicationPublishRequest,
-  SharePublicationSettings
+  SharePublicationSettings,
+  VisitRecapShareCandidates
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,27 +18,43 @@ describe('VisitRecapShareStateFacade', () => {
   let previewRequests: SharePublicationPreviewRequest[];
   let publishRequests: SharePublicationPublishRequest[];
   let settings: SharePublicationSettings;
+  let candidates: VisitRecapShareCandidates;
+  let publishResponse: Observable<SharePublicationSettings>;
 
   beforeEach(() => {
     previewRequests = [];
     publishRequests = [];
     settings = { isPublic: false, includedFields: [] };
+    candidates = {
+      items: [{
+        parkItemId: 'item-a',
+        name: 'Le Galion',
+        category: 'Attraction',
+        rideCount: null,
+        averageRating: null,
+        isMissed: false
+      }],
+      totalEligibleItemCount: 1,
+      isTruncated: false
+    };
+    publishResponse = of({
+      isPublic: true,
+      shareId: 'opaque-share-id',
+      publishedAtUtc: '2026-09-07T08:00:00Z',
+      policySchemaVersion: 1,
+      datePrecision: 'Month',
+      includedFields: ['RideCount']
+    });
     const port: VisitRecapSharePort = {
       getSettings: (_visitId: string): Observable<SharePublicationSettings> => of(settings),
+      getCandidates: (_visitId: string, _includeMissedItems: boolean): Observable<VisitRecapShareCandidates> => of(candidates),
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> => {
         previewRequests.push(request);
         return of(createPreview(request));
       },
       publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => {
         publishRequests.push(request);
-        return of({
-          isPublic: true,
-          shareId: 'opaque-share-id',
-          publishedAtUtc: '2026-09-07T08:00:00Z',
-          policySchemaVersion: 1,
-          datePrecision: request.approvedDatePrecision,
-          includedFields: request.approvedIncludedFields
-        });
+        return publishResponse;
       },
       revoke: (_visitId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
@@ -50,6 +67,45 @@ describe('VisitRecapShareStateFacade', () => {
       ]
     });
     facade = TestBed.inject(VisitRecapShareStateFacade);
+  });
+
+  it('preselects a bounded explicit subset when the visit has more than 100 candidates', () => {
+    candidates = {
+      items: Array.from({ length: 100 }, (_value: unknown, index: number) => ({
+        parkItemId: `item-${index + 1}`,
+        name: `Attraction ${index + 1}`,
+        isMissed: false
+      })),
+      totalEligibleItemCount: 101,
+      isTruncated: true
+    };
+
+    facade.load('visit-1');
+    facade.openEditor('Day');
+    facade.preparePreview('visit-1');
+
+    expect(facade.candidatesTruncated()).toBe(true);
+    expect(facade.candidateItems()).toHaveLength(100);
+    expect(previewRequests[0].visitRecap?.selectedParkItemIds).toHaveLength(100);
+  });
+
+  it('keeps the approved caption and selection immutable while publication is pending', () => {
+    const pendingPublish: Subject<SharePublicationSettings> = new Subject<SharePublicationSettings>();
+    publishResponse = pendingPublish.asObservable();
+    facade.load('visit-1');
+    facade.openEditor('Day');
+    facade.setCaptionIncluded(true);
+    facade.setPublicCaption('Souvenir approuvé');
+    facade.preparePreview('visit-1');
+
+    facade.publish('visit-1');
+    facade.setPublicCaption('Texte différent');
+    facade.toggleItem('item-a', false);
+
+    expect(facade.saving()).toBe(true);
+    expect(facade.publicCaption()).toBe('Souvenir approuvé');
+    expect(facade.isItemSelected('item-a')).toBe(true);
+    expect(publishRequests[0].visitRecap?.publicCaption).toBe('Souvenir approuvé');
   });
 
   it('requires a new exact preview after every privacy or item-selection change', () => {

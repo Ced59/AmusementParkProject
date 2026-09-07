@@ -32,6 +32,7 @@
       "captionHint": "Dieser Text wird öffentlich und stammt nie aus deinen privaten Kommentaren.",
       "itemsTitle": "Erinnerungen zum Anzeigen",
       "itemsDescription": "Entferne alles, was nicht erscheinen soll, und öffne danach erneut die Vorschau.",
+      "itemsLimit": "Dieser Besuch enthält {{total}} teilbare Erinnerungen. Die ersten {{visible}} sind ausgewählt, damit die Grenze eingehalten wird; du kannst weitere entfernen.",
       "error": "Die Freigabe konnte nicht vorbereitet oder gespeichert werden. Prüfe deine Auswahl und versuche es erneut.",
       "cancel": "Abbrechen",
       "publishing": "Wird veröffentlicht...",
