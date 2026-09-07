@@ -147,10 +147,7 @@ function createProfile(): SharedUserRankingProfile {
       totalRatings: 2,
       averageRating: 4.5,
       highestRating: 5,
-      lowestRating: 4,
-      byPark: [],
-      byTargetType: [],
-      byParkItemCategory: [],
+      lowestRating: 4
     },
   };
 }
