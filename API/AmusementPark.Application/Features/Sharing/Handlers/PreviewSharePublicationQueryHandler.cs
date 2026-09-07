@@ -93,11 +93,37 @@ public sealed class PreviewSharePublicationQueryHandler
         SharePublicationApprovalState publicationState =
             SharePublicationApprovalState.From(publicationBefore);
 
-        ApplicationResult<SharePublicationPreviewResult> previewResult = await builder.BuildAsync(
-            ownerUserId,
-            query.SourceId,
-            contentPolicy,
-            cancellationToken);
+        ApplicationResult<SharePublicationPreviewResult> previewResult;
+        if (query.PublicationType == SharePublicationType.VisitRecap)
+        {
+            if (builder is not IVisitRecapSharePreviewBuilder visitRecapBuilder
+                || string.IsNullOrWhiteSpace(query.SourceId))
+            {
+                return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                    SharingApplicationErrors.PreviewTypeNotAvailable());
+            }
+
+            previewResult = await visitRecapBuilder.BuildAsync(
+                ownerUserId,
+                query.SourceId.Trim(),
+                contentPolicy,
+                query.VisitRecap,
+                cancellationToken);
+        }
+        else
+        {
+            if (query.VisitRecap is not null)
+            {
+                return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                    SharingApplicationErrors.InvalidSource());
+            }
+
+            previewResult = await builder.BuildAsync(
+                ownerUserId,
+                query.SourceId,
+                contentPolicy,
+                cancellationToken);
+        }
         if (!previewResult.IsSuccess || previewResult.Value is null)
         {
             return previewResult;
@@ -120,7 +146,8 @@ public sealed class PreviewSharePublicationQueryHandler
             scopeResult.Value,
             previewResult.Value.SourceVersion,
             publicationState,
-            contentPolicy);
+            contentPolicy,
+            previewResult.Value.ContentFingerprint);
         return ApplicationResult<SharePublicationPreviewResult>.Success(
             previewResult.Value with
             {

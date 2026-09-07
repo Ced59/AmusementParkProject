@@ -47,11 +47,19 @@ export class SeoRoutePolicyService {
   }
 
   isAccountRoute(url: string): boolean {
+    if (this.isSharedVisitRecapRoute(url)) {
+      return false;
+    }
+
     return /^\/[a-z]{2}\/(?:profile|passport|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
   }
 
   isSharedUserRankingRoute(url: string): boolean {
     return /^\/[a-z]{2}\/rankings\/shared\/[^/]+\/?$/i.test(this.normalizePath(url));
+  }
+
+  isSharedVisitRecapRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/passport\/shared\/visits\/[^/]+\/?$/i.test(this.normalizePath(url));
   }
 
   isFilteredPublicParkRoute(url: string): boolean {

@@ -37,6 +37,14 @@ describe('Server routes', () => {
     expect(sharedRankingRoute?.renderMode).toBe(RenderMode.Server);
   });
 
+  it('server-renders shared visit recaps while local drafts stay client-rendered', () => {
+    const sharedVisitRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/passport/shared/visits/:shareId'
+    );
+
+    expect(sharedVisitRoute?.renderMode).toBe(RenderMode.Server);
+  });
+
   it('keeps every nested private profile route client-rendered before the fallback', () => {
     const profileRoute: ServerRoute | undefined = serverRoutes.find(
       (route: ServerRoute): boolean => route.path === ':lang/profile'

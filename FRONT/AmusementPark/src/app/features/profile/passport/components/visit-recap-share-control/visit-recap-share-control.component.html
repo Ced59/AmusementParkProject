@@ -1,0 +1,184 @@
+<section class="visit-share" aria-labelledby="visit-share-title">
+  <header class="visit-share__heading">
+    <span class="visit-share__icon" aria-hidden="true"><i class="pi pi-send"></i></span>
+    <div>
+      <span class="visit-share__kicker">{{ 'visitRecapShare.manage.kicker' | translate }}</span>
+      <h2 id="visit-share-title">{{ 'visitRecapShare.manage.title' | translate }}</h2>
+      <p>{{ (settings()?.isPublic ? 'visitRecapShare.manage.publicDescription' : 'visitRecapShare.manage.privateDescription') | translate }}</p>
+    </div>
+  </header>
+
+  @if (loading()) {
+    <p class="visit-share__status" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      {{ 'visitRecapShare.manage.loading' | translate }}
+    </p>
+  } @else if (editorOpen()) {
+    <section class="visit-share-editor" aria-labelledby="visit-share-editor-title">
+      <header>
+        <span class="visit-share__kicker">{{ 'visitRecapShare.editor.step' | translate }}</span>
+        <h3 id="visit-share-editor-title">{{ 'visitRecapShare.editor.title' | translate }}</h3>
+        <p>{{ 'visitRecapShare.editor.intro' | translate }}</p>
+      </header>
+
+      <div class="visit-share-editor__privacy" role="note">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <div>
+          <strong>{{ 'visitRecapShare.editor.privacyTitle' | translate }}</strong>
+          <p>{{ 'visitRecapShare.editor.privacyDescription' | translate }}</p>
+        </div>
+      </div>
+
+      <label class="visit-share-editor__date">
+        <span>{{ 'visitRecapShare.editor.dateLabel' | translate }}</span>
+        <select [value]="datePrecision()" [disabled]="saving() || previewing()" (change)="updateDatePrecision($event)">
+          @for (precision of datePrecisionOptions(); track precision) {
+            <option [value]="precision">{{ ('visitRecapShare.date.' + precision) | translate }}</option>
+          }
+        </select>
+        <small>{{ 'visitRecapShare.editor.dateHint' | translate }}</small>
+      </label>
+
+      <div class="visit-share-editor__choices">
+        <label class="visit-share-choice">
+          <input type="checkbox" [checked]="includeRideCount()" [disabled]="saving() || previewing()" (change)="toggleRideCount($event)">
+          <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'visitRecapShare.editor.ridesTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.ridesDescription' | translate }}</small></span>
+        </label>
+        <label class="visit-share-choice">
+          <input type="checkbox" [checked]="includeRatings()" [disabled]="saving() || previewing()" (change)="toggleRatings($event)">
+          <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'visitRecapShare.editor.ratingsTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.ratingsDescription' | translate }}</small></span>
+        </label>
+        <label class="visit-share-choice">
+          <input type="checkbox" [checked]="includeMissedItems()" [disabled]="saving() || previewing()" (change)="toggleMissedItems($event)">
+          <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'visitRecapShare.editor.missedTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.missedDescription' | translate }}</small></span>
+        </label>
+        <label class="visit-share-choice">
+          <input type="checkbox" [checked]="includeCaption()" [disabled]="saving() || previewing()" (change)="toggleCaption($event)">
+          <span class="visit-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'visitRecapShare.editor.captionTitle' | translate }}</strong><small>{{ 'visitRecapShare.editor.captionDescription' | translate }}</small></span>
+        </label>
+      </div>
+
+      @if (includeCaption()) {
+        <label class="visit-share-editor__caption">
+          <span>{{ 'visitRecapShare.editor.captionLabel' | translate }}</span>
+          <textarea maxlength="500" rows="3" [value]="publicCaption()" (input)="updateCaption($event)" [placeholder]="'visitRecapShare.editor.captionPlaceholder' | translate"></textarea>
+          <small>{{ publicCaption().length }} / 500 · {{ 'visitRecapShare.editor.captionHint' | translate }}</small>
+        </label>
+      }
+
+      @if (candidateItems().length > 0) {
+        <fieldset class="visit-share-editor__items">
+          <legend>{{ 'visitRecapShare.editor.itemsTitle' | translate }}</legend>
+          <p>{{ 'visitRecapShare.editor.itemsDescription' | translate }}</p>
+          <div>
+            @for (item of candidateItems(); track item.parkItemId) {
+              <label>
+                <input type="checkbox" [checked]="facade.isItemSelected(item.parkItemId)" (change)="toggleItem(item.parkItemId, $event)">
+                <span>
+                  <strong>{{ item.name }}</strong>
+                  <small>{{ itemCategoryKey(item) | translate }}</small>
+                </span>
+              </label>
+            }
+          </div>
+        </fieldset>
+      }
+
+      @if (error()) {
+        <p class="visit-share__status visit-share__status--error" role="alert">
+          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+          {{ 'visitRecapShare.editor.error' | translate }}
+        </p>
+      }
+
+      @if (recap(); as currentRecap) {
+        <section class="visit-share-preview" aria-labelledby="visit-share-preview-title">
+          <span class="visit-share__kicker">{{ 'visitRecapShare.preview.kicker' | translate }}</span>
+          <h3 id="visit-share-preview-title">{{ currentRecap.parkName || ('visitRecapShare.preview.unknownPark' | translate) }}</h3>
+          @if (currentRecap.date) {
+            <p class="visit-share-preview__date">{{ formatPublicDate(currentRecap) }}</p>
+          }
+          @if (currentRecap.publicCaption) {
+            <blockquote>{{ currentRecap.publicCaption }}</blockquote>
+          }
+          <div class="visit-share-preview__facts">
+            @if (currentRecap.totalRideCount != null) {
+              <span><strong>{{ currentRecap.totalRideCount }}</strong>{{ 'visitRecapShare.preview.rides' | translate }}</span>
+              <span><strong>{{ currentRecap.distinctItemCount }}</strong>{{ 'visitRecapShare.preview.discovered' | translate }}</span>
+            }
+            @if (currentRecap.parkRating != null) {
+              <span><strong>{{ formatRating(currentRecap.parkRating) }} / 5</strong>{{ 'visitRecapShare.preview.parkRating' | translate }}</span>
+            }
+          </div>
+          @if (currentRecap.items.length > 0) {
+            <ul class="visit-share-preview__items">
+              @for (item of currentRecap.items; track item.parkItemId) {
+                <li>
+                  <span><strong>{{ item.name }}</strong><small>{{ itemCategoryKey(item) | translate }}</small></span>
+                  <span class="visit-share-preview__item-facts">
+                    @if (item.isMissed) {
+                      <small>{{ 'visitRecapShare.preview.missed' | translate }}</small>
+                    } @else if (item.rideCount != null) {
+                      <small>{{ 'visitRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}</small>
+                    }
+                    @if (item.averageRating != null) {
+                      <strong>{{ formatRating(item.averageRating) }} / 5</strong>
+                    }
+                  </span>
+                </li>
+              }
+            </ul>
+          }
+          @if (currentRecap.hasHiddenDate || currentRecap.hasIncompleteRatings || currentRecap.hasIncompleteItems) {
+            <p class="visit-share-preview__limits">
+              <i class="pi pi-info-circle" aria-hidden="true"></i>
+              {{ 'visitRecapShare.preview.limits' | translate }}
+            </p>
+          }
+          <p class="visit-share-preview__proof"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'visitRecapShare.preview.exact' | translate }}</p>
+        </section>
+      }
+
+      <div class="visit-share-editor__actions">
+        <button appUiButton="ghost" type="button" [disabled]="saving() || previewing()" (click)="closeEditor()">
+          {{ 'visitRecapShare.editor.cancel' | translate }}
+        </button>
+        @if (recap()) {
+          <button appUiButton="primary" type="button" [disabled]="!canPublish()" (click)="publish()">
+            <i [class]="saving() ? 'pi pi-spin pi-spinner' : 'pi pi-globe'" aria-hidden="true"></i>
+            {{ (saving() ? 'visitRecapShare.editor.publishing' : 'visitRecapShare.editor.publish') | translate }}
+          </button>
+        } @else {
+          <button appUiButton="primary" type="button" [disabled]="previewing() || saving()" (click)="preparePreview()">
+            <i [class]="previewing() ? 'pi pi-spin pi-spinner' : 'pi pi-eye'" aria-hidden="true"></i>
+            {{ (previewing() ? 'visitRecapShare.editor.preparing' : 'visitRecapShare.editor.preview') | translate }}
+          </button>
+        }
+      </div>
+    </section>
+  } @else if (settings()?.isPublic && publicPath(); as path) {
+    <div class="visit-share__actions">
+      <a appUiButton="primary" [routerLink]="path"><i class="pi pi-external-link" aria-hidden="true"></i>{{ 'visitRecapShare.manage.open' | translate }}</a>
+      <button appUiButton="ghost" type="button" (click)="openEditor()"><i class="pi pi-sliders-h" aria-hidden="true"></i>{{ 'visitRecapShare.manage.edit' | translate }}</button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="revoke()"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'visitRecapShare.manage.revoke' | translate }}</button>
+    </div>
+    <app-public-share-panel
+      targetType="Page"
+      [targetId]="settings()?.shareId || null"
+      [targetTitle]="'visitRecapShare.social.title' | translate"
+      [shareUrlOverride]="path"
+      titleKey="visitRecapShare.social.title"
+      descriptionKey="visitRecapShare.social.description"
+      textKey="visitRecapShare.social.text">
+    </app-public-share-panel>
+  } @else {
+    <button appUiButton="primary" type="button" (click)="openEditor()">
+      <i class="pi pi-wand" aria-hidden="true"></i>
+      {{ 'visitRecapShare.manage.start' | translate }}
+    </button>
+  }
+</section>

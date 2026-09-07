@@ -23,6 +23,7 @@ internal static class SharePublicationMongoMapper
                 DatePrecision = publication.ContentPolicy.DatePrecision,
                 IncludedFields = publication.ContentPolicy.IncludedFields.ToList(),
             },
+            ContentFingerprint = publication.ContentFingerprint,
             SourceVersion = publication.SourceVersion,
             PublicationVersion = publication.PublicationVersion,
             Version = publication.Version,
@@ -56,6 +57,7 @@ internal static class SharePublicationMongoMapper
             document.PublishedAtUtc,
             document.RevokedAtUtc,
             document.CreatedAt,
-            document.UpdatedAt);
+            document.UpdatedAt,
+            document.ContentFingerprint);
     }
 }

@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
@@ -41,7 +42,8 @@ public static class SharingHttpMappers
             request.ApprovedPolicySchemaVersion,
             datePrecision,
             includedFields.Distinct().ToArray(),
-            request.ApprovalToken.Trim());
+            request.ApprovalToken.Trim(),
+            request.VisitRecap?.ToApplication());
         return true;
     }
 
@@ -73,7 +75,8 @@ public static class SharingHttpMappers
             publicationType,
             string.IsNullOrWhiteSpace(request.SourceId) ? null : request.SourceId.Trim(),
             datePrecision,
-            includedFields.Distinct().ToArray());
+            includedFields.Distinct().ToArray(),
+            request.VisitRecap?.ToApplication());
         return true;
     }
 
@@ -93,6 +96,7 @@ public static class SharingHttpMappers
                     .ToList(),
             },
             PersonalRanking = value.PersonalRanking?.ToHttp(),
+            VisitRecap = value.VisitRecap?.ToHttp(),
         };
     }
 
@@ -164,6 +168,107 @@ public static class SharingHttpMappers
             ParkItemCategory = value.ParkItemCategory?.ToString(),
             ParkItemType = value.ParkItemType?.ToString(),
             Rating = value.Rating,
+        };
+    }
+
+    public static VisitRecapSharePreviewDto ToHttp(this VisitRecapSharePreviewResult value)
+    {
+        return new VisitRecapSharePreviewDto
+        {
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            Date = value.Date is null
+                ? null
+                : new VisitRecapShareDateDto
+                {
+                    Year = value.Date.Year,
+                    Month = value.Date.Month,
+                    Day = value.Date.Day,
+                    Precision = value.Date.Precision.ToString(),
+                    IsApproximate = value.Date.IsApproximate,
+                },
+            DistinctItemCount = value.DistinctItemCount,
+            TotalRideCount = value.TotalRideCount,
+            Categories = value.Categories.ToList(),
+            ParkRating = value.ParkRating,
+            TopRatedItem = value.TopRatedItem?.ToHttp(),
+            MostRepeatedItem = value.MostRepeatedItem?.ToHttp(),
+            Items = value.Items.Select(static item => item.ToHttp()).ToList(),
+            PublicCaption = value.PublicCaption,
+            HasHiddenDate = value.HasHiddenDate,
+            HasIncompleteRatings = value.HasIncompleteRatings,
+            HasIncompleteItems = value.HasIncompleteItems,
+        };
+    }
+
+    public static SharedVisitRecapContentDto ToPublicHttp(this VisitRecapSharePreviewResult value)
+    {
+        return new SharedVisitRecapContentDto
+        {
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            Date = value.Date is null
+                ? null
+                : new VisitRecapShareDateDto
+                {
+                    Year = value.Date.Year,
+                    Month = value.Date.Month,
+                    Day = value.Date.Day,
+                    Precision = value.Date.Precision.ToString(),
+                    IsApproximate = value.Date.IsApproximate,
+                },
+            DistinctItemCount = value.DistinctItemCount,
+            TotalRideCount = value.TotalRideCount,
+            Categories = value.Categories.ToList(),
+            ParkRating = value.ParkRating,
+            TopRatedItem = value.TopRatedItem?.ToHttp(),
+            MostRepeatedItem = value.MostRepeatedItem?.ToHttp(),
+            Items = value.Items.Select(static item => item.ToPublicHttp()).ToList(),
+            PublicCaption = value.PublicCaption,
+            HasHiddenDate = value.HasHiddenDate,
+            HasIncompleteRatings = value.HasIncompleteRatings,
+            HasIncompleteItems = value.HasIncompleteItems,
+        };
+    }
+
+    private static VisitRecapShareInput ToApplication(this VisitRecapShareInputDto value)
+    {
+        return new VisitRecapShareInput(value.SelectedParkItemIds, value.PublicCaption);
+    }
+
+    private static VisitRecapShareHighlightDto ToHttp(
+        this VisitRecapShareHighlightResult value)
+    {
+        return new VisitRecapShareHighlightDto
+        {
+            Name = value.Name,
+            RideCount = value.RideCount,
+            Rating = value.Rating,
+        };
+    }
+
+    private static VisitRecapShareItemDto ToHttp(this VisitRecapShareItemResult value)
+    {
+        return new VisitRecapShareItemDto
+        {
+            ParkItemId = value.ParkItemId,
+            Name = value.Name,
+            Category = value.Category,
+            RideCount = value.RideCount,
+            AverageRating = value.AverageRating,
+            IsMissed = value.IsMissed,
+        };
+    }
+
+    private static SharedVisitRecapItemDto ToPublicHttp(this VisitRecapShareItemResult value)
+    {
+        return new SharedVisitRecapItemDto
+        {
+            Name = value.Name,
+            Category = value.Category,
+            RideCount = value.RideCount,
+            AverageRating = value.AverageRating,
+            IsMissed = value.IsMissed,
         };
     }
 

@@ -1,6 +1,20 @@
 {
-  "version": "5.2.8",
+  "version": "5.2.9",
   "history": [
+    {
+      "version": "5.2.9",
+      "releasedAt": "2026-09-07",
+      "labels": {
+        "fr": "Tu peux créer et partager une carte-souvenir d’une visite terminée.",
+        "en": "You can create and share a memory card from a completed visit.",
+        "de": "Du kannst eine Erinnerungskarte zu einem abgeschlossenen Besuch erstellen und teilen.",
+        "nl": "Je kunt een herinneringskaart van een afgerond bezoek maken en delen.",
+        "it": "Puoi creare e condividere una cartolina ricordo di una visita completata.",
+        "es": "Puedes crear y compartir una tarjeta de recuerdo de una visita terminada.",
+        "pl": "Możesz utworzyć i udostępnić kartę wspomnień z zakończonej wizyty.",
+        "pt": "Podes criar e partilhar um cartão de memória de uma visita concluída."
+      }
+    },
     {
       "version": "5.2.8",
       "releasedAt": "2026-09-07",

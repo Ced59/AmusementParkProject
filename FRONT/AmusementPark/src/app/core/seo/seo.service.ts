@@ -1872,7 +1872,7 @@ export class SeoService {
       return;
     }
 
-    if (this.routePolicy.isSharedUserRankingRoute(url)) {
+    if (this.routePolicy.isSharedUserRankingRoute(url) || this.routePolicy.isSharedVisitRecapRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -1937,6 +1937,24 @@ export class SeoService {
       imageUrl: absoluteImageUrl,
       imageAlt: normalizeSeoText(imageAlt, title),
       jsonLd: []
+    });
+  }
+
+  applySharedVisitRecapSeo(
+    title: string,
+    description: string,
+    url: string,
+    imageAlt: string,
+    breadcrumbs: unknown[]
+  ): void {
+    this.apply({
+      title: truncateSeoText(normalizeSeoText(title, SITE_NAME), 70),
+      description: truncateSeoText(normalizeSeoText(description, title), 170),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'noindex,nofollow,noarchive',
+      alternates: [],
+      imageAlt: normalizeSeoText(imageAlt, title),
+      jsonLd: breadcrumbs
     });
   }
 

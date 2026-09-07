@@ -225,6 +225,36 @@ complet uniquement pour détecter la troncature.
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
 
+### État de `SHARE-06` au 7 septembre 2026
+
+Le récapitulatif partageable d'une visite terminée est implémenté en version 5.2.9.
+Depuis le journal de visite, le membre ouvre un atelier qui choisit séparément la
+précision de date, les compteurs de tours, les notes de cette visite, les éléments
+manqués, les attractions visibles et une légende publique facultative. Toute
+modification invalide l'aperçu précédent : la confirmation ne peut publier que la
+sélection exacte que le serveur vient de reconstruire.
+
+La note privée de visite et les commentaires privés de passages ne font pas partie
+de la projection de lecture et ne peuvent donc pas être copiés implicitement. La
+légende est un champ public distinct, vide par défaut et limité. La source associe la
+version de la visite à la révision du catalogue public ; une visite en brouillon, une
+écriture instable ou une donnée ayant changé depuis l'aperçu bloque la publication.
+
+Chaque confirmation fige un snapshot minimal dans une collection MongoDB dédiée,
+lié à l'identifiant interne de publication, à sa version publique, à la policy et à
+une empreinte de la sélection. La page anonyme résout uniquement le jeton opaque,
+revalide la source avant et après la lecture du snapshot, puis rend le parc, la date
+autorisée, les compteurs, les notes et les attractions choisies. Une révocation coupe
+immédiatement le lien. Le HTML est rendu côté serveur, marqué
+`noindex,nofollow,noarchive` et servi avec `Referrer-Policy: no-referrer`.
+
+L'interface publique prend la forme d'une carte-souvenir et d'un parcours plutôt que
+d'un écran administratif. Elle propose un lien contextuel vers le parc et une entrée
+vers le brouillon local du passeport, utilisable sans compte. L'atelier privé et la
+page publique bornent toutes leurs grilles, textes et actions et se replient à
+680, 620, 520 et 390 px afin de rester utilisables dès 320 px. `SHARE-07` peut
+maintenant construire le bilan annuel sur le même consentement et les mêmes preuves.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

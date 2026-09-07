@@ -35,7 +35,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         string normalizedShareId = shareId?.Trim() ?? string.Empty;
         if (!ShareToken.TryParse(normalizedShareId, out ShareToken shareToken))
         {
-            return NotFound();
+            return NotFound(expectedPublicationType);
         }
 
         SharePublication? publication = await this.sharePublicationRepository.GetResolvableByTokenAsync(
@@ -45,13 +45,13 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             || publication.Type != expectedPublicationType
             || publication.PublishedAtUtc is null)
         {
-            return NotFound();
+            return NotFound(expectedPublicationType);
         }
 
         if (!this.sources.TryGetValue(publication.Type, out ISharePublicationSourceDescriptor? source)
             || !source.ValidatePolicyForPublication(publication.ContentPolicy).IsSuccess)
         {
-            return NotFound();
+            return NotFound(expectedPublicationType);
         }
 
         ApplicationResult<long> sourceVersionResult = await source.GetCurrentSourceVersionAsync(
@@ -60,7 +60,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         if (!sourceVersionResult.IsSuccess
             || sourceVersionResult.Value != publication.SourceVersion)
         {
-            return NotFound();
+            return NotFound(expectedPublicationType);
         }
 
         User? user = await this.userRepository.GetByIdAsync(
@@ -68,7 +68,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             cancellationToken);
         if (user is null || !user.IsActivated || user.IsBlocked)
         {
-            return NotFound();
+            return NotFound(expectedPublicationType);
         }
 
         string? displayName = publication.ContentPolicy.Includes(
@@ -85,7 +85,9 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
             publication.PublishedAtUtc.Value,
             publication.SourceScopeKey,
             publication.SourceVersion,
-            publication.PublicationVersion);
+            publication.PublicationVersion,
+            publication.Id.Value,
+            publication.ContentFingerprint);
         return ApplicationResult<ResolvedSharePublicationResult>.Success(resolvedPublication);
     }
 
@@ -98,7 +100,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         string normalizedShareId = shareId?.Trim() ?? string.Empty;
         if (!ShareToken.TryParse(normalizedShareId, out ShareToken shareToken))
         {
-            return RevalidationFailed();
+            return RevalidationFailed(resolvedPublication.PublicationType);
         }
 
         SharePublication? currentPublication = await this.sharePublicationRepository.GetResolvableByTokenAsync(
@@ -116,6 +118,10 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
                 StringComparison.Ordinal)
             || currentPublication.SourceVersion != resolvedPublication.SourceVersion
             || currentPublication.PublicationVersion != resolvedPublication.PublicationVersion
+            || !string.Equals(
+                currentPublication.ContentFingerprint,
+                resolvedPublication.ContentFingerprint,
+                StringComparison.Ordinal)
             || currentPublication.PublishedAtUtc != resolvedPublication.PublishedAtUtc
             || !currentPublication.ContentPolicy.HasSameSelectionAs(
                 resolvedPublication.ContentPolicy)
@@ -123,7 +129,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
                 currentPublication.Type,
                 out ISharePublicationSourceDescriptor? source))
         {
-            return RevalidationFailed();
+            return RevalidationFailed(resolvedPublication.PublicationType);
         }
 
         ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
@@ -132,18 +138,28 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         return currentVersion.IsSuccess
             && currentVersion.Value == currentPublication.SourceVersion
             ? ApplicationResult<bool>.Success(true)
-            : RevalidationFailed();
+            : RevalidationFailed(resolvedPublication.PublicationType);
     }
 
-    private static ApplicationResult<ResolvedSharePublicationResult> NotFound()
+    private static ApplicationResult<ResolvedSharePublicationResult> NotFound(
+        SharePublicationType publicationType)
     {
         return ApplicationResult<ResolvedSharePublicationResult>.Failure(
-            RatingApplicationErrors.SharedRankingNotFound());
+            NotFoundError(publicationType));
     }
 
-    private static ApplicationResult<bool> RevalidationFailed()
+    private static ApplicationResult<bool> RevalidationFailed(
+        SharePublicationType publicationType)
     {
         return ApplicationResult<bool>.Failure(
-            RatingApplicationErrors.SharedRankingNotFound());
+            NotFoundError(publicationType));
+    }
+
+    private static ApplicationError NotFoundError(
+        SharePublicationType publicationType)
+    {
+        return publicationType == SharePublicationType.PersonalRanking
+            ? RatingApplicationErrors.SharedRankingNotFound()
+            : SharingApplicationErrors.SharedPublicationNotFound();
     }
 }

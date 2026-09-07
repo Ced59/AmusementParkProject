@@ -33,6 +33,10 @@ public sealed class SharePublicationDocument : MongoDocumentBase
     [BsonElement("contentPolicy")]
     public ShareContentPolicyDocument ContentPolicy { get; set; } = new ShareContentPolicyDocument();
 
+    [BsonElement("contentFingerprint")]
+    [BsonIgnoreIfDefault]
+    public string ContentFingerprint { get; set; } = string.Empty;
+
     [BsonElement("sourceVersion")]
     public long SourceVersion { get; set; }
 

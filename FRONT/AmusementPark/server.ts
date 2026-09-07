@@ -36,6 +36,7 @@ import {
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
 import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-shared-user-rankings-ssr-route-policy';
+import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared-visit-recap-ssr-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -1921,7 +1922,8 @@ function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): C
   if (
     (req.method === 'GET' || req.method === 'HEAD')
     && acceptsHtml(req)
-    && isPublicSharedUserRankingSsrRoute(getPathOnly(req.originalUrl))
+    && (isPublicSharedUserRankingSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl)))
   ) {
     return {
       shouldRender: true,
@@ -3368,10 +3370,15 @@ function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): v
   res.redirect(308, `https://${host}${req.originalUrl}`);
 }
 
-function applySecurityHeaders(_req: Request, res: Response, next: NextFunction): void {
+function applySecurityHeaders(req: Request, res: Response, next: NextFunction): void {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader(
+    'Referrer-Policy',
+    isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))
+      ? 'no-referrer'
+      : 'strict-origin-when-cross-origin'
+  );
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(self)');
 
   if (cspEnabled) {

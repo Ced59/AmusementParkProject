@@ -96,4 +96,32 @@ public static class SharingApplicationErrors
             "share-publication.content-not-supported",
             "Une information sélectionnée n’est pas encore disponible sur cette page publique.");
     }
+
+    public static ApplicationError InvalidVisitRecapSelection()
+    {
+        return ApplicationError.Validation(
+            "share-publication.visit-recap-selection-invalid",
+            "La sélection du récapitulatif de visite est invalide.");
+    }
+
+    public static ApplicationError VisitRecapTooLarge()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.visit-recap-too-large",
+            "Cette visite contient trop d’entrées pour produire un partage fiable.");
+    }
+
+    public static ApplicationError SnapshotUnavailable()
+    {
+        return ApplicationError.NotFound(
+            "share-publication.snapshot-unavailable",
+            "Ce partage n’est plus disponible.");
+    }
+
+    public static ApplicationError SharedPublicationNotFound()
+    {
+        return ApplicationError.NotFound(
+            "share-publication.not-found",
+            "Ce partage est introuvable ou n’est plus public.");
+    }
 }

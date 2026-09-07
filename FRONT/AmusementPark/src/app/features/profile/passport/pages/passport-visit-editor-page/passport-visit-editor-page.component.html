@@ -359,6 +359,14 @@
     </section>
     }
 
+    @if (facade.visit()?.status === 'Completed') {
+      <app-visit-recap-share-control
+        [visitId]="facade.visit()!.id"
+        [sourceDatePrecision]="facade.visit()!.date.precision"
+        [currentLang]="currentLanguage()">
+      </app-visit-recap-share-control>
+    }
+
     <div class="passport-editor__workspace" [class.passport-editor__workspace--readonly]="facade.visit()?.status !== 'Draft'">
       @if (shouldDisplayEditingControls(facade.visit()?.status)) {
       <section class="passport-panel passport-selector" appUiSurface="panel" aria-labelledby="passport-selector-title">

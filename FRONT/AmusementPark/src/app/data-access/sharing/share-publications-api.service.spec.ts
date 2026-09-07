@@ -69,4 +69,43 @@ describe('SharePublicationsApiService', () => {
       includedFields: ['GlobalRatings']
     });
   });
+
+  it('loads and revokes the share settings for one owned visit', () => {
+    service.getVisitSettings('visit/with spaces').subscribe();
+
+    const readRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fwith%20spaces/share`
+    );
+    expect(readRequest.request.method).toBe('GET');
+    readRequest.flush({ isPublic: false, includedFields: [] });
+
+    service.revokeVisit('visit/with spaces').subscribe();
+
+    const revokeRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fwith%20spaces/share`
+    );
+    expect(revokeRequest.request.method).toBe('DELETE');
+    revokeRequest.flush({ isPublic: false, includedFields: [] });
+  });
+
+  it('loads an anonymous visit recap only from its opaque share link', () => {
+    service.getSharedVisit('opaque/token').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}passport/shared/visits/opaque%2Ftoken`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      publishedAtUtc: '2026-09-07T08:00:00Z',
+      visitRecap: {
+        parkId: 'park-1',
+        parkName: 'Denain Évasion',
+        categories: [],
+        items: [],
+        hasHiddenDate: true,
+        hasIncompleteRatings: false,
+        hasIncompleteItems: false
+      }
+    });
+  });
 });

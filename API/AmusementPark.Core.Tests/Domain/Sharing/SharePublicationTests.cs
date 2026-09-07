@@ -468,6 +468,74 @@ public sealed class SharePublicationTests
         Assert.Equal(1, publication.PublicationVersion);
     }
 
+    [Fact]
+    public void ReplaceContentFingerprint_WhenPublished_ShouldSuspendTheOldSelection()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.VisitRecap,
+            ShareDatePrecision.Month,
+            new[] { ShareContentField.RideCount });
+        SharePublication publication = SharePublication.Create(
+            SharePublicationId.Parse("publication-1"),
+            "user-1",
+            SharePublicationType.VisitRecap,
+            "visit:user-1:visit-1",
+            policy,
+            4,
+            InitialUtc,
+            "selection-a");
+        publication.Publish(
+            InitialShareToken(),
+            ShareVisibility.Unlisted,
+            4,
+            policy,
+            0,
+            InitialUtc.AddMinutes(1),
+            "selection-a");
+
+        publication.ReplaceContentFingerprint(
+            "selection-b",
+            1,
+            InitialUtc.AddMinutes(2));
+
+        Assert.Equal("selection-b", publication.ContentFingerprint);
+        Assert.Equal(SharePublicationStatus.NeedsReview, publication.Status);
+        Assert.Equal(ShareVisibility.Private, publication.Visibility);
+        Assert.Equal(2, publication.PublicationVersion);
+        Assert.False(publication.IsResolvable);
+    }
+
+    [Fact]
+    public void Publish_WhenApprovedSelectionFingerprintDiffers_ShouldRejectWithoutPublishing()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.CreatePrivateDefault(
+            SharePublicationType.VisitRecap);
+        SharePublication publication = SharePublication.Create(
+            SharePublicationId.Parse("publication-1"),
+            "user-1",
+            SharePublicationType.VisitRecap,
+            "visit:user-1:visit-1",
+            policy,
+            4,
+            InitialUtc,
+            "selection-a");
+
+        SharePublicationValidationException exception = Assert.Throws<SharePublicationValidationException>(
+            () => publication.Publish(
+                InitialShareToken(),
+                ShareVisibility.Unlisted,
+                4,
+                policy,
+                0,
+                InitialUtc.AddMinutes(1),
+                "selection-b"));
+
+        Assert.Equal(SharePublicationErrorCodes.PreviewPolicyMismatch, exception.ErrorCode);
+        Assert.Equal(SharePublicationStatus.Draft, publication.Status);
+        Assert.Equal(0, publication.PublicationVersion);
+        Assert.Null(publication.ShareToken);
+    }
+
     private static SharePublication CreatePublication(
         ShareContentPolicy? policy = null,
         long sourceVersion = 4)

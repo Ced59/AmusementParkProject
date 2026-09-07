@@ -6096,6 +6096,100 @@
       "patch": "Update"
     }
   },
+  "visitRecapShare": {
+    "manage": {
+      "kicker": "A memory to share",
+      "title": "Tell the story of this visit",
+      "publicDescription": "Your recap is public only to people who have its link.",
+      "privateDescription": "Create a public memory card without revealing your private notes or comments.",
+      "loading": "Loading sharing settings...",
+      "open": "View recap",
+      "edit": "Edit sharing",
+      "revoke": "Make private",
+      "start": "Create the recap"
+    },
+    "editor": {
+      "step": "Sharing workshop",
+      "title": "Choose exactly what will be visible",
+      "intro": "Every change requires a new preview before publishing.",
+      "privacyTitle": "Your private writing stays private",
+      "privacyDescription": "The visit’s private note and private ride comments are never copied. The public caption below is a separate text.",
+      "dateLabel": "Date precision",
+      "dateHint": "You cannot show a date more precise than the one you recorded.",
+      "ridesTitle": "Ride counters",
+      "ridesDescription": "Show the number of rides and attractions discovered.",
+      "ratingsTitle": "Ratings from this visit",
+      "ratingsDescription": "Show the park rating and averages for the selected rides.",
+      "missedTitle": "Missed wishes",
+      "missedDescription": "Include missed or closed attractions you recorded.",
+      "captionTitle": "Public caption",
+      "captionDescription": "Add a short memory written only for this share.",
+      "captionLabel": "Your public memory",
+      "captionPlaceholder": "The moment you want to tell...",
+      "captionHint": "This text will be public. It never comes from your private comments.",
+      "itemsTitle": "Memories to show",
+      "itemsDescription": "Untick anything you do not want to show, then preview again.",
+      "error": "This share could not be prepared or saved. Check your choices and try again.",
+      "cancel": "Cancel",
+      "publishing": "Publishing...",
+      "publish": "Publish this recap",
+      "preparing": "Preparing...",
+      "preview": "Preview exactly"
+    },
+    "date": {
+      "Hidden": "Hide date",
+      "Year": "Year only",
+      "Month": "Month and year",
+      "Day": "Full date"
+    },
+    "preview": {
+      "kicker": "Exact public preview",
+      "unknownPark": "Park visit",
+      "unknownCategory": "Category not provided",
+      "rides": "rides completed",
+      "discovered": "attractions discovered",
+      "parkRating": "park rating",
+      "missed": "Missed wish",
+      "rideCount": "{{count}} ride(s)",
+      "limits": "Some information is hidden or incomplete, as requested.",
+      "exact": "This is exactly what will be frozen and published."
+    },
+    "toast": {
+      "published": "The public visit recap is ready.",
+      "publishError": "The recap could not be published.",
+      "revoked": "This visit’s public link is now disabled.",
+      "revokeError": "The share could not be made private."
+    },
+    "social": {
+      "title": "A park memory to share",
+      "description": "Send this memory card to friends and family.",
+      "text": "Discover this park visit memory."
+    },
+    "public": {
+      "seoTitle": "A visit memory from {{park}}",
+      "seoDescription": "Discover a shared visit recap from {{park}}.",
+      "breadcrumbLabel": "Breadcrumb",
+      "breadcrumbHome": "Home",
+      "breadcrumbRecap": "Visit memory",
+      "notFoundTitle": "This memory is no longer available",
+      "notFoundDescription": "Its owner may have disabled the link or replaced the share.",
+      "createMine": "Create my own passport",
+      "errorTitle": "The memory cannot be loaded",
+      "errorDescription": "A temporary error is preventing this recap from opening.",
+      "kicker": "Shared visit journal",
+      "hiddenDate": "Date kept private",
+      "summaryLabel": "Visit summary",
+      "favorite": "Visit favourite",
+      "mostRepeated": "Most repeated",
+      "memoryTrail": "The route at a glance",
+      "itemsTitle": "Chosen memories",
+      "limits": "The owner intentionally hid some information, or it was not available.",
+      "openPark": "Discover the park",
+      "ctaTitle": "Which parks have you experienced?",
+      "ctaDescription": "Start a free local draft, even without creating an account.",
+      "loading": "Opening the memory..."
+    }
+  },
   "parkPricingCredits": {
     "title": "Tokens and credits",
     "subtitle": "Prepaid bundles used to access attractions",

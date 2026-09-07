@@ -11,4 +11,6 @@ public sealed class SharePublicationPreviewDto
     public ShareContentPolicyPreviewDto ContentPolicy { get; set; } = new ShareContentPolicyPreviewDto();
 
     public PersonalRankingSharePreviewDto? PersonalRanking { get; set; }
+
+    public VisitRecapSharePreviewDto? VisitRecap { get; set; }
 }

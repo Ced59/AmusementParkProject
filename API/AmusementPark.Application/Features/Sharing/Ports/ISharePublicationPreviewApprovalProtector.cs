@@ -14,7 +14,8 @@ public interface ISharePublicationPreviewApprovalProtector
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState publicationState,
-        ShareContentPolicy contentPolicy);
+        ShareContentPolicy contentPolicy,
+        string contentFingerprint = "");
 
     bool IsValid(
         string approvalToken,
@@ -23,5 +24,6 @@ public interface ISharePublicationPreviewApprovalProtector
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState publicationState,
-        ShareContentPolicy contentPolicy);
+        ShareContentPolicy contentPolicy,
+        string contentFingerprint = "");
 }
