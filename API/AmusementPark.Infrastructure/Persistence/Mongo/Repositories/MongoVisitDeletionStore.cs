@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
@@ -620,7 +621,9 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             Builders<SharePublicationDocument>.Filter;
         return filters.Eq(static document => document.OwnerUserId, userId)
             & filters.Eq(static document => document.Type, SharePublicationType.VisitRecap)
-            & filters.Eq(static document => document.SourceScopeKey, visitId);
+            & filters.Eq(
+                static document => document.SourceScopeKey,
+                VisitRecapShareSourceScope.Create(userId, visitId));
     }
 
     internal static FilterDefinition<VisitRecapShareSnapshotDocument>

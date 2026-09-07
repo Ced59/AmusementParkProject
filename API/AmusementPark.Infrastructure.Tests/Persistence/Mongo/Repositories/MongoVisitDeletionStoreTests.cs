@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
@@ -55,7 +56,9 @@ public sealed class MongoVisitDeletionStoreTests
         Assert.Equal("owner-1", occurrenceFilter["userId"].AsString);
         Assert.Equal("visit-1", auditFilter["event.visitId"].AsString);
         Assert.Equal("owner-1", auditFilter["event.userId"].AsString);
-        Assert.Equal("visit-1", publicationFilter["sourceScopeKey"].AsString);
+        Assert.Equal(
+            VisitRecapShareSourceScope.Create("owner-1", "visit-1"),
+            publicationFilter["sourceScopeKey"].AsString);
         Assert.Equal("owner-1", publicationFilter["ownerUserId"].AsString);
         Assert.Equal("VisitRecap", publicationFilter["type"].AsString);
         Assert.Equal(
