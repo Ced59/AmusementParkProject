@@ -216,7 +216,9 @@ l'écriture publique atomique. Un second contrôle immédiatement après cette �
 fenêtre où une mutation pourrait commencer pendant la publication : le lien exact est alors
 révoqué et l'échec de source reste renvoyé, même si la persistance de cette révocation ne peut pas
 être confirmée après les reprises bornées. Dans ce dernier cas, le résolveur public reste fermé
-sur la source instable ou sur sa nouvelle version. Enfin, le contrôle de dépassement des 5 000
+sur la source instable ou sur sa nouvelle version. Toute republication après révision reçoit en
+plus un nouveau jeton : une révocation non confirmée ne peut donc jamais réactiver une URL déjà
+distribuée. Enfin, le contrôle de dépassement des 5 000
 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun aperçu ne charge un historique
 complet uniquement pour détecter la troncature.
 

@@ -137,7 +137,9 @@ public sealed class SharePublicationPublisher
             }
 
             long expectedVersion = publication!.Version;
-            ShareToken token = publication.ShareToken ?? this.tokenFactory.Generate();
+            ShareToken token = publication.Status == SharePublicationStatus.NeedsReview
+                ? this.tokenFactory.Generate()
+                : publication.ShareToken ?? this.tokenFactory.Generate();
             publication.Publish(
                 token,
                 ShareVisibility.Unlisted,
