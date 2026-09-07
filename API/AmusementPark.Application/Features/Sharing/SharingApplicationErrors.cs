@@ -4,6 +4,8 @@ namespace AmusementPark.Application.Features.Sharing;
 
 public static class SharingApplicationErrors
 {
+    public const string SourceChangedCode = "share-publication.source-changed";
+
     public static ApplicationError InvalidPublicationType()
     {
         return ApplicationError.Validation(
@@ -42,7 +44,7 @@ public static class SharingApplicationErrors
     public static ApplicationError SourceChangedDuringPreview()
     {
         return ApplicationError.Conflict(
-            "share-publication.source-changed",
+            SourceChangedCode,
             "Les données ont changé pendant la préparation de l’aperçu. Réessaie.");
     }
 

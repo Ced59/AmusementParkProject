@@ -147,6 +147,8 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
   readonly publishCalls: SharePublicationPublishRequest[] = [];
   previewResponse: Subject<SharePublicationPreview> | null = null;
   publishResponse: Subject<SharePublicationSettings> | null = null;
+  settingsCalls: number = 0;
+  refreshedSettings: UserRankingShareSettings | null = null;
   settings: UserRankingShareSettings = {
     isPublic: false,
     shareId: null,
@@ -154,7 +156,10 @@ class FakeUserRankingSharePort implements UserRankingSharePort {
   };
 
   getMyShareSettings(): Observable<UserRankingShareSettings> {
-    return of(this.settings);
+    this.settingsCalls++;
+    return of(this.settingsCalls > 1 && this.refreshedSettings
+      ? this.refreshedSettings
+      : this.settings);
   }
 
   setMyShareVisibility(isPublic: boolean): Observable<UserRankingShareSettings> {
@@ -251,6 +256,31 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(port.upsertCalls).toEqual([
       { targetType: 'ParkItem', targetId: 'item-1', value: 3 }
     ]);
+  });
+
+  it('refreshes and hides an invalidated public share after a rating edit', () => {
+    sharePort.settings = {
+      isPublic: true,
+      shareId: 'opaque-share-id',
+      publishedAtUtc: '2026-09-07T08:00:00Z',
+      includedFields: ['GlobalRatings']
+    };
+    sharePort.refreshedSettings = {
+      isPublic: false,
+      shareId: null,
+      publishedAtUtc: null,
+      includedFields: ['GlobalRatings']
+    };
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-public-share-panel')).not.toBeNull();
+
+    const buttons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rating-tree__items .rating-tree__star-hit--right');
+    buttons[2]?.click();
+    fixture.detectChanges();
+
+    expect(sharePort.settingsCalls).toBe(2);
+    expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
   });
 
   it('shows a flat attraction ranking with its place and parent park', () => {

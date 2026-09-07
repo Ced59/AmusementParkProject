@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, Input, OnInit, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, Input, OnInit, Signal, computed, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -35,6 +35,7 @@ import { GlobalRatingSuggestionsComponent } from '../passport/components/global-
 import { GlobalRatingSuggestionViewModel } from '../passport/models/global-rating-suggestion-view.models';
 import { UserRankingShareControlComponent } from '../sharing/components/user-ranking-share-control/user-ranking-share-control.component';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
+import { UserRankingShareStateFacade } from './user-ranking-share-state.facade';
 
 interface ProfileRankingFilter {
   key: string;
@@ -53,7 +54,7 @@ interface ProfileAttractionQuickFilter {
   templateUrl: './profile-ratings-panel.component.html',
   styleUrls: ['./profile-ratings-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ProfileRatingsStateFacade],
+  providers: [ProfileRatingsStateFacade, UserRankingShareStateFacade],
   imports: [
     RatingTreeComponent,
     RatingRankingListComponent,
@@ -139,10 +140,16 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   constructor(
     private readonly stateFacade: ProfileRatingsStateFacade,
+    private readonly shareStateFacade: UserRankingShareStateFacade,
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef,
     private readonly elementRef: ElementRef<HTMLElement>
   ) {
+    effect((): void => {
+      if (this.stateFacade.ratingMutationRevision() > 0) {
+        this.shareStateFacade.refreshAfterSourceChange();
+      }
+    });
   }
 
   ngOnInit(): void {

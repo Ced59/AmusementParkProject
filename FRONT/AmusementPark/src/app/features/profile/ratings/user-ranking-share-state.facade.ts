@@ -24,6 +24,8 @@ export class UserRankingShareStateFacade {
   private readonly previewSignal = signal<SharePublicationPreview | null>(null);
   private readonly previewingSignal = signal<boolean>(false);
   private readonly previewErrorSignal = signal<boolean>(false);
+  private settingsRequestGeneration: number = 0;
+  private previewRequestGeneration: number = 0;
 
   public readonly settings: Signal<UserRankingShareSettings | null> = this.settingsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -88,11 +90,16 @@ export class UserRankingShareStateFacade {
       datePrecision: 'Hidden',
       includedFields: requestedFields
     };
+    const requestGeneration: number = ++this.previewRequestGeneration;
     this.previewingSignal.set(true);
     this.previewErrorSignal.set(false);
     this.previewSignal.set(null);
     this.sharePort.preview(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (preview: SharePublicationPreview): void => {
+        if (requestGeneration !== this.previewRequestGeneration) {
+          return;
+        }
+
         this.previewingSignal.set(false);
         if (!this.hasSameFields(requestedFields, this.selectedFields())
           || !this.hasSameFields(requestedFields, preview.contentPolicy.includedFields)) {
@@ -102,6 +109,10 @@ export class UserRankingShareStateFacade {
         this.previewSignal.set(preview);
       },
       error: (error: unknown): void => {
+        if (requestGeneration !== this.previewRequestGeneration) {
+          return;
+        }
+
         console.error('Error preparing user ranking share preview', error);
         this.previewingSignal.set(false);
         if (!this.hasSameFields(requestedFields, this.selectedFields())) {
@@ -157,15 +168,24 @@ export class UserRankingShareStateFacade {
   }
 
   load(): void {
+    const requestGeneration: number = ++this.settingsRequestGeneration;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
 
     this.sharePort.getMyShareSettings().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: UserRankingShareSettings): void => {
+        if (requestGeneration !== this.settingsRequestGeneration) {
+          return;
+        }
+
         this.settingsSignal.set(settings);
         this.loadingSignal.set(false);
       },
       error: (error: unknown): void => {
+        if (requestGeneration !== this.settingsRequestGeneration) {
+          return;
+        }
+
         console.error('Error loading user ranking share settings', error);
         this.loadingSignal.set(false);
         this.errorSignal.set(true);
@@ -203,6 +223,15 @@ export class UserRankingShareStateFacade {
         );
       }
     });
+  }
+
+  refreshAfterSourceChange(): void {
+    this.previewRequestGeneration++;
+    this.editorOpenSignal.set(false);
+    this.previewSignal.set(null);
+    this.previewingSignal.set(false);
+    this.previewErrorSignal.set(false);
+    this.load();
   }
 
   private selectedFields(): ShareContentField[] {

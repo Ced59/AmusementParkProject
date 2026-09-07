@@ -194,7 +194,11 @@ invalide donc celui-ci : la dernière décision du membre reste toujours priorit
 Ce contrôle est répété juste avant l'écriture pour fermer la fenêtre de concurrence.
 Une indisponibilité transitoire du dernier contrôle de source, après une écriture déjà
 confirmée, ne transforme pas ce succès en faux échec ; la résolution publique continue
-dans tous les cas à refuser une source dont la version ne peut pas être vérifiée.
+dans tous les cas à refuser une source dont la version ne peut pas être vérifiée. Une
+mutation effectivement détectée comme active reste distinguée de cette panne technique
+et empêche d'annoncer le partage comme prêt. Après une modification de note réussie,
+le profil invalide ses aperçus en cours et recharge aussitôt l'état public du classement,
+sans attendre un rechargement complet de la page.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.

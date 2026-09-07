@@ -13,7 +13,6 @@ import { UserRankingShareStateFacade } from '../../../ratings/user-ranking-share
   templateUrl: './user-ranking-share-control.component.html',
   styleUrl: './user-ranking-share-control.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [UserRankingShareStateFacade],
   imports: [PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class UserRankingShareControlComponent implements OnInit {

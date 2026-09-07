@@ -132,6 +132,13 @@ public sealed class PublishSharePublicationCommandHandler
             cancellationToken);
         if (!persistedVersionResult.IsSuccess)
         {
+            if (persistedVersionResult.Errors.Any(
+                    error => error.Code == SharingApplicationErrors.SourceChangedCode))
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    persistedVersionResult.Errors);
+            }
+
             return publishResult;
         }
 
