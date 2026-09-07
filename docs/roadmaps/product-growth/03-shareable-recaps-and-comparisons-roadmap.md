@@ -184,8 +184,11 @@ au lieu de créer un lien immédiatement obsolète.
 Si l'écrivain retardé termine après l'expiration de son bail, la génération avancée
 projetée par les lectures est persistée atomiquement, même lorsqu'il déclare finalement
 n'avoir rien modifié. La version ne peut donc jamais revenir en arrière puis réactiver
-un ancien partage. Les budgets de limitation des aperçus et des confirmations sont
-également séparés : comparer plusieurs choix de confidentialité ne peut pas consommer
+un ancien partage. Les battements de vie vérifient en outre l'expiration avec l'horloge
+du serveur MongoDB au moment atomique de l'écriture : une requête réseau retardée ne
+peut pas ressusciter un bail expiré. Les budgets de limitation des aperçus et des
+confirmations sont également séparés : comparer plusieurs choix de confidentialité
+ne peut pas consommer
 la capacité réservée à leur confirmation.
 
 La preuve d'approbation lie également l'identifiant et la version de la publication

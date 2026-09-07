@@ -430,8 +430,12 @@ public sealed class ShareSourceRevisionRepositoryTests
         Assert.Equal(5, result.Revision);
         Assert.True(result.IsStable);
         Assert.Equal(2, filters.Count);
-        Assert.Contains("$gt", Render(filters[0]).ToJson());
-        Assert.Contains("$lte", Render(filters[1]).ToJson());
+        string activeFilter = Render(filters[0]).ToJson();
+        string expiredFilter = Render(filters[1]).ToJson();
+        Assert.Contains("$gt", activeFilter);
+        Assert.Contains("$$NOW", activeFilter);
+        Assert.Contains("$lte", expiredFilter);
+        Assert.Contains("$$NOW", expiredFilter);
         BsonDocument recoveryUpdate = Render(updates[1]);
         Assert.Equal(1, recoveryUpdate["$inc"].AsBsonDocument["revision"].AsInt64);
         Assert.Equal(

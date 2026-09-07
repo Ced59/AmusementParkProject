@@ -168,8 +168,7 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         FilterDefinition<ShareSourceRevisionDocument> filter =
             ShareSourceRevisionMongoDefinitions.BuildActiveLeaseFilter(
                 mutationLease.ScopeKey,
-                mutationLease.Token,
-                nowUtc);
+                mutationLease.Token);
         if (sourceChanged)
         {
             filter &= Builders<ShareSourceRevisionDocument>.Filter.Lt(
@@ -261,8 +260,7 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return await this.collection.FindOneAndUpdateAsync(
             ShareSourceRevisionMongoDefinitions.BuildExpiredLeaseFilter(
                 mutationLease.ScopeKey,
-                mutationLease.Token,
-                nowUtc),
+                mutationLease.Token),
             update,
             new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
             {
@@ -438,7 +436,7 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                     {
                         DateTime heartbeatAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                         UpdateResult result = await this.collection.UpdateOneAsync(
-                            ShareSourceRevisionMongoDefinitions.BuildLeaseFilter(
+                            ShareSourceRevisionMongoDefinitions.BuildActiveLeaseFilter(
                                 mutationLease.ScopeKey,
                                 mutationLease.Token),
                             BuildHeartbeatUpdate(heartbeatAtUtc),
