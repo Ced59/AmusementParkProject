@@ -114,54 +114,14 @@ public sealed class PublishSharePublicationCommandHandler
                 SharingApplicationErrors.ApprovedPreviewExpired());
         }
 
-        ApplicationResult<SharePublicationCommitResult> commitResult = await this.publisher.PublishAsync(
+        return await this.publisher.PublishAsync(
             ownerUserId,
             command.PublicationType,
             scopeResult.Value,
             versionResult.Value,
             publicationState,
             contentPolicy,
+            source,
             cancellationToken);
-        if (!commitResult.IsSuccess || commitResult.Value is null)
-        {
-            return ApplicationResult<SharePublicationSettingsResult>.Failure(commitResult.Errors);
-        }
-
-        SharePublicationCommitResult commit = commitResult.Value;
-
-        ApplicationResult<long> persistedVersionResult = await source.GetCurrentSourceVersionAsync(
-            scopeResult.Value,
-            cancellationToken);
-        if (!persistedVersionResult.IsSuccess)
-        {
-            if (persistedVersionResult.Errors.Any(
-                    error => error.Code == SharingApplicationErrors.SourceChangedCode))
-            {
-                if (commit.WasWritten)
-                {
-                    bool compensationCompleted = await this.publisher.RevokeIfUnchangedAsync(
-                        ownerUserId,
-                        command.PublicationType,
-                        scopeResult.Value,
-                        commit.PublicationState,
-                        cancellationToken);
-                    if (!compensationCompleted)
-                    {
-                        return ApplicationResult<SharePublicationSettingsResult>.Success(
-                            commit.Settings);
-                    }
-                }
-
-                return ApplicationResult<SharePublicationSettingsResult>.Failure(
-                    persistedVersionResult.Errors);
-            }
-
-            return ApplicationResult<SharePublicationSettingsResult>.Success(commit.Settings);
-        }
-
-        return persistedVersionResult.Value == command.ApprovedSourceVersion
-            ? ApplicationResult<SharePublicationSettingsResult>.Success(commit.Settings)
-            : ApplicationResult<SharePublicationSettingsResult>.Failure(
-                SharingApplicationErrors.ApprovedPreviewExpired());
     }
 }

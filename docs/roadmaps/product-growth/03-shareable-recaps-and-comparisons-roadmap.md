@@ -208,16 +208,12 @@ le restitue pas réellement, et une migration idempotente retire ce champ des po
 de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre de tableau,
 sans dépendre d'un opérateur positionnel non lié par le filtre serveur. Si une nouvelle
 publication a déjà été écrite mais que le dernier contrôle détecte une source momentanément
-instable, cette écriture exacte est révoquée avant d'annoncer l'échec ; une décision plus récente
-reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué. La préparation
-d'une republication transporte elle aussi sa version exacte entre chaque écriture afin qu'une
-révocation concurrente produise un aperçu expiré, jamais une erreur serveur. Enfin, le contrôle
-de dépassement des 5 000 notes publiques repose sur un comptage MongoDB borné à 5 001 : aucun
-aperçu ne charge un historique complet uniquement pour détecter la troncature. Une révocation
-compensatoire relit et retente l'état exact après une erreur de persistance potentiellement ambiguë.
-Si cet état reste impossible à réconcilier après le budget borné, l'API conserve le succès de
-l'écriture confirmée plutôt que d'annoncer un faux échec ; la résolution publique reste néanmoins
-fermée tant que la source est instable ou que sa version ne correspond plus.
+instable, la publication reste préparée dans un état privé et l'API exige un nouvel aperçu : le
+lien public n'est créé qu'après ce dernier contrôle, sans révocation compensatoire ni état ambigu.
+Une décision concurrente reste prioritaire grâce au contrôle de version exact répété avant
+l'écriture publique atomique. Enfin, le contrôle de dépassement des 5 000 notes publiques repose
+sur un comptage MongoDB borné à 5 001 : aucun aperçu ne charge un historique complet uniquement
+pour détecter la troncature.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.

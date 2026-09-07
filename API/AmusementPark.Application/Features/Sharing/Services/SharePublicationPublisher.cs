@@ -24,39 +24,37 @@ public sealed class SharePublicationPublisher
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public async Task<ApplicationResult<SharePublicationCommitResult>> PublishAsync(
+    public async Task<ApplicationResult<SharePublicationSettingsResult>> PublishAsync(
         string ownerUserId,
         SharePublicationType publicationType,
         string sourceScopeKey,
         long sourceVersion,
         SharePublicationApprovalState approvedPublicationState,
         ShareContentPolicy contentPolicy,
+        ISharePublicationSourceDescriptor source,
         CancellationToken cancellationToken)
     {
-        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
+        ArgumentNullException.ThrowIfNull(source);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
+            ownerUserId,
+            publicationType,
+            sourceScopeKey,
+            cancellationToken);
+        if (!approvedPublicationState.Matches(publication))
         {
-            DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-            SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
-                ownerUserId,
-                publicationType,
-                sourceScopeKey,
-                cancellationToken);
-            if (!approvedPublicationState.Matches(publication))
-            {
-                return ApplicationResult<SharePublicationCommitResult>.Failure(
-                    SharingApplicationErrors.ApprovedPreviewExpired());
-            }
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.ApprovedPreviewExpired());
+        }
 
-            if (publication?.IsResolvable == true
-                && publication.SourceVersion == sourceVersion
-                && publication.ContentPolicy.HasSameSelectionAs(contentPolicy))
-            {
-                return Success(publication, wasWritten: false);
-            }
-
+        bool alreadyPublished = publication?.IsResolvable == true
+            && publication.SourceVersion == sourceVersion
+            && publication.ContentPolicy.HasSameSelectionAs(contentPolicy);
+        if (!alreadyPublished)
+        {
             if (publication is null || publication.Status == SharePublicationStatus.Revoked)
             {
-                SharePublication created = SharePublication.Create(
+                publication = SharePublication.Create(
                     SharePublicationId.New(),
                     ownerUserId,
                     publicationType,
@@ -64,52 +62,87 @@ public sealed class SharePublicationPublisher
                     contentPolicy,
                     sourceVersion,
                     nowUtc);
-                created.Publish(
-                    this.tokenFactory.Generate(),
-                    ShareVisibility.Unlisted,
-                    sourceVersion,
-                    contentPolicy,
-                    0,
-                    nowUtc);
                 SharePublicationWriteOutcome createOutcome = await this.repository.CreateAsync(
-                    created,
+                    publication,
                     cancellationToken);
-                if (createOutcome == SharePublicationWriteOutcome.Success)
+                if (createOutcome != SharePublicationWriteOutcome.Success)
                 {
-                    return Success(created, wasWritten: true);
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        SharingApplicationErrors.PublicationChangedConcurrently());
+                }
+            }
+            else
+            {
+                (SharePublicationWriteOutcome Outcome, long PreparedVersion) preparation =
+                    await this.PrepareExistingAsync(
+                        publication,
+                        contentPolicy,
+                        sourceVersion,
+                        nowUtc,
+                        cancellationToken);
+                if (preparation.Outcome != SharePublicationWriteOutcome.Success)
+                {
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        SharingApplicationErrors.PublicationChangedConcurrently());
                 }
 
-                continue;
+                publication = await this.repository.GetOwnedAsync(
+                    publication.Id,
+                    ownerUserId,
+                    cancellationToken);
+                if (publication is null || publication.Version != preparation.PreparedVersion)
+                {
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        SharingApplicationErrors.ApprovedPreviewExpired());
+                }
             }
+        }
 
-            (SharePublicationWriteOutcome Outcome, long PreparedVersion) preparation =
-                await this.PrepareExistingAsync(
-                publication,
-                contentPolicy,
-                sourceVersion,
-                nowUtc,
-                cancellationToken);
-            if (preparation.Outcome != SharePublicationWriteOutcome.Success)
+        ApplicationResult<long> finalSourceVersion = await source.GetCurrentSourceVersionAsync(
+            sourceScopeKey,
+            cancellationToken);
+        if (!finalSourceVersion.IsSuccess)
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                finalSourceVersion.Errors);
+        }
+
+        if (finalSourceVersion.Value != sourceVersion)
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.ApprovedPreviewExpired());
+        }
+
+        if (alreadyPublished)
+        {
+            return Success(publication!);
+        }
+
+        SharePublicationApprovalState preparedState = SharePublicationApprovalState.From(publication);
+        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
+        {
+            if (attempt > 0)
             {
-                continue;
+                publication = await this.repository.GetOwnedBySourceAsync(
+                    ownerUserId,
+                    publicationType,
+                    sourceScopeKey,
+                    cancellationToken);
             }
 
-            publication = await this.repository.GetOwnedAsync(
-                publication.Id,
-                ownerUserId,
-                cancellationToken);
-            if (publication is null || publication.Version != preparation.PreparedVersion)
+            if (!preparedState.Matches(publication))
             {
-                continue;
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.ApprovedPreviewExpired());
             }
 
-            long expectedVersion = publication.Version;
+            long expectedVersion = publication!.Version;
             ShareToken token = publication.ShareToken ?? this.tokenFactory.Generate();
             publication.Publish(
                 token,
                 ShareVisibility.Unlisted,
-                publication.SourceVersion,
-                publication.ContentPolicy,
+                sourceVersion,
+                contentPolicy,
                 publication.PublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
             SharePublicationWriteOutcome publishOutcome = await this.repository.ReplaceAsync(
@@ -118,58 +151,18 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (publishOutcome == SharePublicationWriteOutcome.Success)
             {
-                return Success(publication, wasWritten: true);
+                return Success(publication);
+            }
+
+            if (publishOutcome != SharePublicationWriteOutcome.TokenCollision)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.PublicationChangedConcurrently());
             }
         }
 
-        return ApplicationResult<SharePublicationCommitResult>.Failure(
+        return ApplicationResult<SharePublicationSettingsResult>.Failure(
             SharingApplicationErrors.PublicationChangedConcurrently());
-    }
-
-    public async Task<bool> RevokeIfUnchangedAsync(
-        string ownerUserId,
-        SharePublicationType publicationType,
-        string sourceScopeKey,
-        SharePublicationApprovalState committedState,
-        CancellationToken cancellationToken)
-    {
-        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            try
-            {
-                SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
-                    ownerUserId,
-                    publicationType,
-                    sourceScopeKey,
-                    cancellationToken);
-                if (!committedState.Matches(publication)
-                    || publication?.Status != SharePublicationStatus.Published)
-                {
-                    return true;
-                }
-
-                long expectedVersion = publication.Version;
-                publication.Revoke(
-                    publication.PublicationVersion,
-                    this.timeProvider.GetUtcNow().UtcDateTime);
-                SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
-                    publication,
-                    expectedVersion,
-                    cancellationToken);
-                if (outcome == SharePublicationWriteOutcome.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception exception) when (exception is not OperationCanceledException)
-            {
-                // A write failure can be ambiguous. The next attempt rereads the exact
-                // committed state before deciding whether another revoke is still needed.
-            }
-        }
-
-        return false;
     }
 
     private async Task<(SharePublicationWriteOutcome Outcome, long PreparedVersion)> PrepareExistingAsync(
@@ -221,14 +214,10 @@ public sealed class SharePublicationPublisher
         return (SharePublicationWriteOutcome.Success, preparedVersion);
     }
 
-    private static ApplicationResult<SharePublicationCommitResult> Success(
-        SharePublication publication,
-        bool wasWritten)
+    private static ApplicationResult<SharePublicationSettingsResult> Success(
+        SharePublication publication)
     {
-        SharePublicationCommitResult result = new SharePublicationCommitResult(
-            SharePublicationSettingsMapper.ToResult(publication),
-            SharePublicationApprovalState.From(publication),
-            wasWritten);
-        return ApplicationResult<SharePublicationCommitResult>.Success(result);
+        return ApplicationResult<SharePublicationSettingsResult>.Success(
+            SharePublicationSettingsMapper.ToResult(publication));
     }
 }
