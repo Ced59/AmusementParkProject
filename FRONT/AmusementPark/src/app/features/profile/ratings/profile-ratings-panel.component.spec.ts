@@ -283,6 +283,50 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
   });
 
+  it('discards a publish response completed after a rating edit', () => {
+    const pendingPublish: Subject<SharePublicationSettings> =
+      new Subject<SharePublicationSettings>();
+    sharePort.publishResponse = pendingPublish;
+    sharePort.refreshedSettings = {
+      isPublic: false,
+      shareId: null,
+      publishedAtUtc: null,
+      includedFields: ['GlobalRatings']
+    };
+    fixture.detectChanges();
+
+    const openButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share__actions button',
+    );
+    openButton.click();
+    fixture.detectChanges();
+    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share-editor__actions button:last-child',
+    );
+    previewButton.click();
+    fixture.detectChanges();
+    const confirmButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.ranking-share-editor__actions button:last-child',
+    );
+    confirmButton.click();
+    fixture.detectChanges();
+
+    const ratingButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rating-tree__items .rating-tree__star-hit--right');
+    ratingButtons[2]?.click();
+    fixture.detectChanges();
+    pendingPublish.next({
+      isPublic: true,
+      shareId: 'stale-share-id',
+      publishedAtUtc: '2026-09-07T08:00:00Z',
+      includedFields: ['GlobalRatings']
+    });
+    fixture.detectChanges();
+
+    expect(sharePort.settingsCalls).toBe(2);
+    expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
+  });
+
   it('shows a flat attraction ranking with its place and parent park', () => {
     fixture.detectChanges();
 

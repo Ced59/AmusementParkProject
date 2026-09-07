@@ -39,7 +39,7 @@ public sealed class PersonalRankingSharePublicationSourceTests
         Assert.Equal(7, result.Value);
         ShareContentPolicy policy = source.CreateDefaultPolicy();
         Assert.True(policy.Includes(ShareContentField.PublicDisplayName));
-        Assert.True(policy.Includes(ShareContentField.Avatar));
+        Assert.False(policy.Includes(ShareContentField.Avatar));
         Assert.True(policy.Includes(ShareContentField.GlobalRatings));
         revisions.VerifyAll();
     }
@@ -85,5 +85,27 @@ public sealed class PersonalRankingSharePublicationSourceTests
         Assert.Contains(
             result.Errors,
             static error => error.Code == "share-publication.required-content-missing");
+    }
+
+    [Fact]
+    public void ValidatePolicyForPublication_WhenAvatarIsSelected_ShouldRejectUnsupportedContent()
+    {
+        PersonalRankingSharePublicationSource source = new PersonalRankingSharePublicationSource(
+            Mock.Of<IShareSourceRevisionRepository>());
+        ShareContentPolicy avatarPolicy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[]
+            {
+                ShareContentField.Avatar,
+                ShareContentField.GlobalRatings,
+            });
+
+        ApplicationResult<bool> result = source.ValidatePolicyForPublication(avatarPolicy);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "share-publication.content-not-supported");
     }
 }

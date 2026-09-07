@@ -26,6 +26,7 @@ export class UserRankingShareStateFacade {
   private readonly previewErrorSignal = signal<boolean>(false);
   private settingsRequestGeneration: number = 0;
   private previewRequestGeneration: number = 0;
+  private publishRequestGeneration: number = 0;
 
   public readonly settings: Signal<UserRankingShareSettings | null> = this.settingsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -139,10 +140,15 @@ export class UserRankingShareStateFacade {
       approvedIncludedFields: preview.contentPolicy.includedFields,
       approvalToken: preview.approvalToken
     };
+    const requestGeneration: number = ++this.publishRequestGeneration;
     this.savingSignal.set(true);
     this.previewErrorSignal.set(false);
     this.sharePort.publish(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
+        if (requestGeneration !== this.publishRequestGeneration) {
+          return;
+        }
+
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
         this.editorOpenSignal.set(false);
@@ -154,6 +160,10 @@ export class UserRankingShareStateFacade {
         );
       },
       error: (error: unknown): void => {
+        if (requestGeneration !== this.publishRequestGeneration) {
+          return;
+        }
+
         console.error('Error publishing approved user ranking share', error);
         this.savingSignal.set(false);
         this.previewSignal.set(null);
@@ -227,9 +237,11 @@ export class UserRankingShareStateFacade {
 
   refreshAfterSourceChange(): void {
     this.previewRequestGeneration++;
+    this.publishRequestGeneration++;
     this.editorOpenSignal.set(false);
     this.previewSignal.set(null);
     this.previewingSignal.set(false);
+    this.savingSignal.set(false);
     this.previewErrorSignal.set(false);
     this.load();
   }

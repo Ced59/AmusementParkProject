@@ -20,6 +20,7 @@ public static class MongoInitializationServiceCollectionExtensions
 
         services.AddScoped<MongoDatabaseInitializer>();
         services.AddScoped<PersonalRankingShareReplacementMigration>();
+        services.AddScoped<PersonalRankingShareAvatarPolicyMigration>();
         services.AddScoped<MongoSearchProjectionInitializer>();
 
         return services;

@@ -70,6 +70,12 @@ public sealed class PreviewSharePublicationQueryHandler
                 SharingApplicationErrors.PreviewTypeNotAvailable());
         }
 
+        ApplicationResult<bool> policyValidation = source.ValidatePolicyForPublication(contentPolicy);
+        if (!policyValidation.IsSuccess)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(policyValidation.Errors);
+        }
+
         string ownerUserId = query.OwnerUserId.Trim();
         ApplicationResult<string> scopeResult = source.ResolveSourceScopeKey(
             ownerUserId,

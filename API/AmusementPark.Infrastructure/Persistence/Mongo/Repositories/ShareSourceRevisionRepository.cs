@@ -6,6 +6,7 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -377,8 +378,25 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         DateTime heartbeatAtUtc)
     {
         return Builders<ShareSourceRevisionDocument>.Update
-            .Set("mutationLeases.$.expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
+            .Set("mutationLeases.$[lease].expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
             .Set(document => document.UpdatedAt, heartbeatAtUtc);
+    }
+
+    internal static BsonDocument BuildHeartbeatArrayFilter(string mutationToken)
+    {
+        return new BsonDocument("lease.token", NormalizeScopeKey(mutationToken));
+    }
+
+    private static UpdateOptions BuildHeartbeatUpdateOptions(string mutationToken)
+    {
+        return new UpdateOptions
+        {
+            ArrayFilters = new ArrayFilterDefinition[]
+            {
+                new BsonDocumentArrayFilterDefinition<ShareSourceMutationLeaseDocument>(
+                    BuildHeartbeatArrayFilter(mutationToken)),
+            },
+        };
     }
 
     private void StartHeartbeat(
@@ -440,7 +458,8 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
                                 mutationLease.ScopeKey,
                                 mutationLease.Token),
                             BuildHeartbeatUpdate(heartbeatAtUtc),
-                            cancellationToken: cancellation.Token);
+                            BuildHeartbeatUpdateOptions(mutationLease.Token),
+                            cancellation.Token);
                         if (result.MatchedCount == 0)
                         {
                             cancellation.Cancel();

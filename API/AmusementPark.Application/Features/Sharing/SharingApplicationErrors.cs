@@ -89,4 +89,11 @@ public static class SharingApplicationErrors
             "share-publication.required-content-missing",
             "La sélection ne contient pas les informations indispensables à ce partage.");
     }
+
+    public static ApplicationError PublicContentNotSupported()
+    {
+        return ApplicationError.Validation(
+            "share-publication.content-not-supported",
+            "Une information sélectionnée n’est pas encore disponible sur cette page publique.");
+    }
 }

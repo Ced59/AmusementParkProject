@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing;
 using AmusementPark.Application.Features.Sharing.Handlers;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
@@ -39,6 +40,8 @@ public sealed class PreviewSharePublicationQueryHandlerTests
             new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
         source.SetupGet(value => value.PublicationType)
             .Returns(SharePublicationType.PersonalRanking);
+        source.Setup(value => value.ValidatePolicyForPublication(It.IsAny<ShareContentPolicy>()))
+            .Returns(ApplicationResult<bool>.Success(true));
         source.Setup(value => value.ResolveSourceScopeKey("owner-1", null))
             .Returns(ApplicationResult<string>.Success("personal-ranking:owner-1"));
         Mock<ISharePublicationPreviewApprovalProtector> approvalProtector =
@@ -156,6 +159,8 @@ public sealed class PreviewSharePublicationQueryHandlerTests
             new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
         source.SetupGet(value => value.PublicationType)
             .Returns(SharePublicationType.PersonalRanking);
+        source.Setup(value => value.ValidatePolicyForPublication(It.IsAny<ShareContentPolicy>()))
+            .Returns(ApplicationResult<bool>.Success(true));
         source.Setup(value => value.ResolveSourceScopeKey("owner-1", null))
             .Returns(ApplicationResult<string>.Success("personal-ranking:owner-1"));
         SharePublication changedPublication = SharePublication.Create(
@@ -223,5 +228,50 @@ public sealed class PreviewSharePublicationQueryHandlerTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error =>
             error.Code == "share-publication.preview-type-not-available");
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSourceRejectsPolicy_ShouldNotReadOrApproveTheSource()
+    {
+        Mock<ISharePublicationPreviewBuilder> builder =
+            new Mock<ISharePublicationPreviewBuilder>(MockBehavior.Strict);
+        builder.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.PersonalRanking);
+        Mock<ISharePublicationSourceDescriptor> source =
+            new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
+        source.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.PersonalRanking);
+        source.Setup(value => value.ValidatePolicyForPublication(
+                It.Is<ShareContentPolicy>(policy => policy.Includes(ShareContentField.Avatar))))
+            .Returns(ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.PublicContentNotSupported()));
+        PreviewSharePublicationQueryHandler handler = new PreviewSharePublicationQueryHandler(
+            new[] { builder.Object },
+            new[] { source.Object },
+            Mock.Of<ISharePublicationRepository>(MockBehavior.Strict),
+            Mock.Of<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict));
+
+        ApplicationResult<SharePublicationPreviewResult> result = await handler.HandleAsync(
+            new PreviewSharePublicationQuery(
+                "owner-1",
+                SharePublicationType.PersonalRanking,
+                null,
+                ShareDatePrecision.Hidden,
+                new[]
+                {
+                    ShareContentField.Avatar,
+                    ShareContentField.GlobalRatings,
+                }),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-publication.content-not-supported");
+        builder.Verify(value => value.BuildAsync(
+            It.IsAny<string>(),
+            It.IsAny<string?>(),
+            It.IsAny<ShareContentPolicy>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        source.VerifyAll();
     }
 }

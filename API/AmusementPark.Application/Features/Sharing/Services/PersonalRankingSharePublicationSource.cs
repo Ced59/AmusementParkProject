@@ -37,7 +37,6 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
             new[]
             {
                 ShareContentField.PublicDisplayName,
-                ShareContentField.Avatar,
                 ShareContentField.GlobalRatings,
             });
     }
@@ -45,11 +44,20 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
     public ApplicationResult<bool> ValidatePolicyForPublication(ShareContentPolicy contentPolicy)
     {
         ArgumentNullException.ThrowIfNull(contentPolicy);
-        return contentPolicy.PublicationType == this.PublicationType
-            && contentPolicy.Includes(ShareContentField.GlobalRatings)
-            ? ApplicationResult<bool>.Success(true)
-            : ApplicationResult<bool>.Failure(
+        if (contentPolicy.PublicationType != this.PublicationType
+            || !contentPolicy.Includes(ShareContentField.GlobalRatings))
+        {
+            return ApplicationResult<bool>.Failure(
                 SharingApplicationErrors.RequiredPublicContentMissing());
+        }
+
+        bool includesUnsupportedContent = contentPolicy.IncludedFields.Any(
+            static field => field is not ShareContentField.PublicDisplayName
+                and not ShareContentField.GlobalRatings);
+        return includesUnsupportedContent
+            ? ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.PublicContentNotSupported())
+            : ApplicationResult<bool>.Success(true);
     }
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(

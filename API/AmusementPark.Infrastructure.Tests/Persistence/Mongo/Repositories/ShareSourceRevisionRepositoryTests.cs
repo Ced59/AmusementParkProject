@@ -156,8 +156,11 @@ public sealed class ShareSourceRevisionRepositoryTests
         BsonDocument set = update["$set"].AsBsonDocument;
         Assert.Equal(
             NowUtc.Add(ShareSourceRevisionRepository.MutationLeaseDuration),
-            set["mutationLeases.$.expiresAtUtc"].ToUniversalTime());
+            set["mutationLeases.$[lease].expiresAtUtc"].ToUniversalTime());
         Assert.Equal(NowUtc, set["updatedAt"].ToUniversalTime());
+        BsonDocument arrayFilter = ShareSourceRevisionRepository.BuildHeartbeatArrayFilter(
+            "lease-token");
+        Assert.Equal("lease-token", arrayFilter["lease.token"].AsString);
         Assert.True(
             ShareSourceRevisionRepository.MutationHeartbeatInterval
             < ShareSourceRevisionRepository.MutationLeaseDuration);

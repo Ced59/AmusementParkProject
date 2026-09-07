@@ -201,7 +201,12 @@ dans tous les cas à refuser une source dont la version ne peut pas être vérif
 mutation effectivement détectée comme active reste distinguée de cette panne technique
 et empêche d'annoncer le partage comme prêt. Après une modification de note réussie,
 le profil invalide ses aperçus en cours et recharge aussitôt l'état public du classement,
-sans attendre un rechargement complet de la page.
+sans attendre un rechargement complet de la page. Une réponse de publication plus ancienne
+que cette modification est également ignorée. Le classement ne propose actuellement que le
+nom public facultatif et les notes globales : l'avatar est refusé tant que la page publique ne
+le restitue pas réellement, et une migration idempotente retire ce champ des politiques issues
+de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre de tableau,
+sans dépendre d'un opérateur positionnel non lié par le filtre serveur.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.
