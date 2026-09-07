@@ -217,6 +217,7 @@
         "averageRating": "personal average",
         "exactPreview": "Only the data categories listed above will be published.",
         "sampleNotice": "Preview: {{shown}} of {{total}} ratings. The public page will include all {{total}} ratings.",
+        "limitNotice": "Publication is limited to the {{published}} highest visible ratings to keep the page fast. The others remain private.",
         "cancel": "Cancel",
         "publishing": "Publishing...",
         "confirm": "Confirm and create link",

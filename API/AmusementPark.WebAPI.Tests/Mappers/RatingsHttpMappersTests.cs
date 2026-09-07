@@ -208,4 +208,37 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal("ratings-2026-01", dto.MethodologyVersion);
         Assert.Equal(new DateTime(2026, 9, 1, 9, 0, 0, DateTimeKind.Utc), dto.GeneratedAtUtc);
     }
+
+    [Fact]
+    public void ToSharedHttp_WhenPersonalRatingIsMapped_ShouldExcludePrivateMetadata()
+    {
+        UserRatingListItemResult rating = new UserRatingListItemResult(
+            "private-rating-id",
+            RatingTargetType.ParkItem,
+            "item-1",
+            "Talocan",
+            "park-1",
+            "Phantasialand",
+            ParkItemCategory.Attraction,
+            ParkItemType.FlatRide,
+            4.5d,
+            new DateTime(2026, 9, 7, 0, 0, 0, DateTimeKind.Utc),
+            new RatingSummaryResult(
+                RatingTargetType.ParkItem,
+                "item-1",
+                1,
+                4.5d,
+                4.5d));
+        UserParkItemRatingRankingResult result = new UserParkItemRatingRankingResult(1, rating);
+
+        SharedUserParkItemRatingRankingDto dto = result.ToSharedHttp();
+
+        Assert.Equal(1, dto.Rank);
+        Assert.Equal("item-1", dto.Rating.TargetId);
+        Assert.Equal("Talocan", dto.Rating.TargetName);
+        Assert.Equal(4.5d, dto.Rating.Value);
+        Assert.Null(typeof(SharedUserRatingListItemDto).GetProperty("Id"));
+        Assert.Null(typeof(SharedUserRatingListItemDto).GetProperty("UpdatedAtUtc"));
+        Assert.Null(typeof(SharedUserRatingListItemDto).GetProperty("Summary"));
+    }
 }

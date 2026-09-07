@@ -203,6 +203,7 @@
         "averageRating": "persoonlijk gemiddelde",
         "exactPreview": "Alleen de hierboven vermelde gegevenscategorieën worden gepubliceerd.",
         "sampleNotice": "Voorbeeld: {{shown}} van {{total}} beoordelingen. De openbare pagina bevat alle {{total}} beoordelingen.",
+        "limitNotice": "De publicatie is beperkt tot de {{published}} hoogste zichtbare beoordelingen, zodat de pagina snel blijft. De overige blijven privé.",
         "cancel": "Annuleren",
         "publishing": "Publiceren...",
         "confirm": "Bevestigen en link maken",

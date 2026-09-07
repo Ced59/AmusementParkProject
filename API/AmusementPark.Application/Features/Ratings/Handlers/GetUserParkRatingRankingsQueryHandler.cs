@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Ratings.Models;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -11,8 +12,6 @@ namespace AmusementPark.Application.Features.Ratings.Handlers;
 public sealed class GetUserParkRatingRankingsQueryHandler
     : IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>>
 {
-    private const int RankingSourceLimit = 5000;
-
     private readonly IRatingRepository ratingRepository;
     private readonly PagedQueryValidator pagedQueryValidator;
 
@@ -43,11 +42,11 @@ public sealed class GetUserParkRatingRankingsQueryHandler
         IReadOnlyCollection<UserRatingListItemResult> sources = query.PublicTargetsOnly
             ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
                 query.UserId.Trim(),
-                RankingSourceLimit,
+                UserRatingRankingLimits.MaximumPublishedSourceCount,
                 cancellationToken)
             : await this.ratingRepository.GetUserRankingSourcesAsync(
                 query.UserId.Trim(),
-                RankingSourceLimit,
+                UserRatingRankingLimits.MaximumPublishedSourceCount,
                 cancellationToken);
         IReadOnlyCollection<UserParkRatingRankingResult> rankings = RatingRankingFactory.BuildUserParkRankings(sources);
         PagedResult<UserParkRatingRankingResult> result;

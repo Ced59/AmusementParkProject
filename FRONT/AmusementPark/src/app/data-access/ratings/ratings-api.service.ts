@@ -5,12 +5,17 @@ import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { RatingMethodology } from '@app/models/ratings/rating-methodology.models';
 import {
-  RatingRankingsPage,
-  ParkRatingRanking,
   ParkItemRatingRanking,
   ParkItemRatingRankingsPage,
+  ParkRatingRanking,
+  RatingRankingsPage,
   RatingSummary,
   RatingTargetType,
+  SharedUserParkItemRatingRanking,
+  SharedUserParkItemRatingRankingsPage,
+  SharedUserParkRatingRanking,
+  SharedUserParkRatingRankingsPage,
+  SharedUserRankingProfile,
   UserRating,
   UserRatingListItem,
   UserRatingStats,
@@ -21,8 +26,7 @@ import {
   UserParkRatingRanking,
   UserParkRatingRankingsPage,
   UserRankingShareSettings,
-  UserRankingShareVisibilityRequest,
-  SharedUserRankingProfile
+  UserRankingShareVisibilityRequest
 } from '@app/models/ratings/rating.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { RATINGS_API_ENDPOINTS } from './ratings-api-endpoints';
@@ -164,10 +168,10 @@ export class RatingsApiService {
     size: number = 10,
     search: string | null = null,
     options: RatingsHttpOptions = {}
-  ): Observable<UserParkRatingRankingsPage> {
+  ): Observable<SharedUserParkRatingRankingsPage> {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getSharedParkRankings(shareId, page, size, search)}`;
-    return this.http.get<PagedCollectionResponse<UserParkRatingRanking>>(url, options).pipe(
-      map((response: PagedCollectionResponse<UserParkRatingRanking>) => unwrapPagedCollection<UserParkRatingRanking>(response))
+    return this.http.get<PagedCollectionResponse<SharedUserParkRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<SharedUserParkRatingRanking>) => unwrapPagedCollection<SharedUserParkRatingRanking>(response))
     );
   }
 
@@ -179,10 +183,10 @@ export class RatingsApiService {
     type: string | null = null,
     search: string | null = null,
     options: RatingsHttpOptions = {}
-  ): Observable<UserParkItemRatingRankingsPage> {
+  ): Observable<SharedUserParkItemRatingRankingsPage> {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getSharedParkItemRankings(shareId, page, size, category, type, search)}`;
-    return this.http.get<PagedCollectionResponse<UserParkItemRatingRanking>>(url, options).pipe(
-      map((response: PagedCollectionResponse<UserParkItemRatingRanking>) => unwrapPagedCollection<UserParkItemRatingRanking>(response))
+    return this.http.get<PagedCollectionResponse<SharedUserParkItemRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<SharedUserParkItemRatingRanking>) => unwrapPagedCollection<SharedUserParkItemRatingRanking>(response))
     );
   }
 }

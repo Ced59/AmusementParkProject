@@ -36,7 +36,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             .ReturnsAsync(CreateStatistics(totalRatings: 1001));
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1001,
+                3,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
@@ -74,6 +74,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         PersonalRankingSharePreviewItemResult item = Assert.Single(preview.Ratings);
         Assert.Equal("OzIris", item.TargetName);
         Assert.Equal("Parc Astérix", item.ParkName);
+        Assert.False(preview.IsTruncated);
 
         string serialized = JsonSerializer.Serialize(result.Value);
         Assert.DoesNotContain("private-rating-id", serialized, StringComparison.Ordinal);
@@ -136,7 +137,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
             .ReturnsAsync(CreateStatistics());
         ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
                 "owner-1",
-                1001,
+                3,
                 CancellationToken.None))
             .ReturnsAsync(new[] { CreateRating() });
         PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
@@ -240,6 +241,53 @@ public sealed class PersonalRankingSharePreviewBuilderTests
                 CancellationToken.None))
             .ReturnsAsync(CreateRevisionSnapshot(revision, 0));
         return revisions;
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenPublicationLimitIsExceeded_ShouldPreviewOnlyPublishedStatistics()
+    {
+        Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(7);
+        Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
+                "owner-1",
+                CancellationToken.None))
+            .ReturnsAsync(CreateStatistics(totalRatings: 5001));
+        ratings.Setup(value => value.GetVisibleUserRatingStatsAsync(
+                "owner-1",
+                5000,
+                CancellationToken.None))
+            .ReturnsAsync(CreateStatistics(totalRatings: 5000));
+        ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
+                "owner-1",
+                3,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { CreateRating() });
+        PersonalRankingSharePreviewBuilder builder = new PersonalRankingSharePreviewBuilder(
+            revisions.Object,
+            ratings.Object,
+            users.Object,
+            images.Object);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-1",
+            null,
+            ShareContentPolicy.Create(
+                SharePublicationType.PersonalRanking,
+                ShareDatePrecision.Hidden,
+                new[] { ShareContentField.GlobalRatings }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PersonalRankingSharePreviewResult preview = result.Value!.PersonalRanking!;
+        Assert.Equal(5000, preview.Statistics!.TotalRatings);
+        Assert.True(preview.IsTruncated);
+        Assert.Single(preview.Ratings);
+        revisions.VerifyAll();
+        ratings.VerifyAll();
+        users.VerifyAll();
+        images.VerifyNoOtherCalls();
     }
 
     private static IReadOnlyDictionary<string, ShareSourceRevision> CreateRevisionSnapshot(

@@ -164,6 +164,10 @@ concurrente rend donc la réponse indisponible plutôt que de diffuser des donn�
 approuvées. Le profil présente également comme privé un lien devenu obsolète. Enfin,
 l'aperçu annonce le nombre de notes montrées et le nombre total qui sera publié afin
 qu'un échantillon de trois lignes ne puisse pas être confondu avec le contenu complet.
+Le volume public est plafonné aux 5 000 meilleures notes visibles : au-delà, l'aperçu
+le signale clairement et ses statistiques portent exactement sur ces 5 000 notes.
+Les endpoints publics emploient par ailleurs une projection dédiée qui exclut les
+dates de notation, l'identifiant privé de la note et ses métadonnées techniques.
 Une preuve d'approbation opaque et signée lie désormais le membre, la source, sa version
 et la sélection exacte affichée : modifier un champ après l'aperçu invalide la
 publication. L'absence de nom public reste une valeur sémantiquement anonyme jusqu'à la

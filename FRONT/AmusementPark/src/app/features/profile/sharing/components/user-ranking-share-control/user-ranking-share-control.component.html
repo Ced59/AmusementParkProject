@@ -105,6 +105,14 @@
               } }}
             </p>
           }
+          @if (currentPreview.isTruncated) {
+            <p class="ranking-share-preview__sample-notice ranking-share-preview__sample-notice--limit">
+              <i class="pi pi-info-circle" aria-hidden="true"></i>
+              {{ 'ratings.share.editor.limitNotice' | translate:{
+                published: previewTotalCount(currentPreview)
+              } }}
+            </p>
+          }
           <p><i class="pi pi-shield" aria-hidden="true"></i>{{ 'ratings.share.editor.exactPreview' | translate }}</p>
         </section>
       }

@@ -203,6 +203,7 @@
         "averageRating": "średnia osobista",
         "exactPreview": "Zostaną opublikowane wyłącznie wymienione wyżej kategorie danych.",
         "sampleNotice": "Podgląd: {{shown}} z {{total}} ocen. Strona publiczna będzie zawierać wszystkie {{total}} ocen.",
+        "limitNotice": "Publikacja jest ograniczona do {{published}} najwyższych widocznych ocen, aby strona działała szybko. Pozostałe oceny pozostają prywatne.",
         "cancel": "Anuluj",
         "publishing": "Publikowanie...",
         "confirm": "Potwierdź i utwórz link",

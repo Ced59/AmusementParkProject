@@ -214,6 +214,30 @@ internal static class RatingsHttpMappers
         };
     }
 
+    public static SharedUserParkRatingRankingDto ToSharedHttp(this UserParkRatingRankingResult value)
+    {
+        return new SharedUserParkRatingRankingDto
+        {
+            Rank = value.Rank,
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            ParkRating = value.ParkRating?.ToSharedHttp(),
+            Categories = value.Categories.Select(static category => category.ToSharedHttp()).ToList(),
+        };
+    }
+
+    public static SharedUserParkItemRatingRankingDto ToSharedHttp(
+        this UserParkItemRatingRankingResult value)
+    {
+        return new SharedUserParkItemRatingRankingDto
+        {
+            Rank = value.Rank,
+            Rating = value.Rating.ToSharedHttp(),
+        };
+    }
+
     public static UserRankingShareSettingsDto ToHttp(this SharePublicationSettingsResult value)
     {
         return new UserRankingShareSettingsDto
@@ -302,6 +326,32 @@ internal static class RatingsHttpMappers
             ParkItemCategory = value.ParkItemCategory.ToString(),
             AverageRating = value.AverageRating,
             Items = value.Items.Select(static item => item.ToHttp()).ToList(),
+        };
+    }
+
+    private static SharedUserParkRatingRankingCategoryDto ToSharedHttp(
+        this UserParkRatingRankingCategoryResult value)
+    {
+        return new SharedUserParkRatingRankingCategoryDto
+        {
+            ParkItemCategory = value.ParkItemCategory.ToString(),
+            AverageRating = value.AverageRating,
+            Items = value.Items.Select(static item => item.ToSharedHttp()).ToList(),
+        };
+    }
+
+    private static SharedUserRatingListItemDto ToSharedHttp(this UserRatingListItemResult value)
+    {
+        return new SharedUserRatingListItemDto
+        {
+            TargetType = value.TargetType.ToString(),
+            TargetId = value.TargetId,
+            TargetName = value.TargetName,
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            ParkItemCategory = value.ParkItemCategory?.ToString(),
+            ParkItemType = value.ParkItemType?.ToString(),
+            Value = value.Value,
         };
     }
 }

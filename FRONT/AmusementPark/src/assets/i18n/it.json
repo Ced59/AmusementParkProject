@@ -5880,6 +5880,7 @@
         "averageRating": "media personale",
         "exactPreview": "Verranno pubblicate solo le categorie di dati elencate qui sopra.",
         "sampleNotice": "Anteprima: {{shown}} valutazioni su {{total}}. La pagina pubblica includerà tutte le {{total}} valutazioni.",
+        "limitNotice": "La pubblicazione è limitata alle {{published}} valutazioni visibili più alte per mantenere veloce la pagina. Le altre restano private.",
         "cancel": "Annulla",
         "publishing": "Pubblicazione...",
         "confirm": "Conferma e crea il link",

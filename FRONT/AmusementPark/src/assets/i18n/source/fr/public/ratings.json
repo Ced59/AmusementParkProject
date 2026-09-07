@@ -217,6 +217,7 @@
         "averageRating": "moyenne personnelle",
         "exactPreview": "Seules les catégories de données annoncées ci-dessus seront publiées.",
         "sampleNotice": "Aperçu : {{shown}} notes sur {{total}}. La page publique contiendra les {{total}} notes.",
+        "limitNotice": "La publication est limitée aux {{published}} notes visibles les mieux notées afin de garder la page rapide. Les autres restent privées.",
         "cancel": "Annuler",
         "publishing": "Publication...",
         "confirm": "Confirmer et créer le lien",

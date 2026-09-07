@@ -43,6 +43,7 @@ public sealed class GetSharedUserRankingProfileQueryHandlerTests
         ratings.InSequence(sequence)
             .Setup(value => value.GetVisibleUserRatingStatsAsync(
                 "owner-1",
+                5000,
                 CancellationToken.None))
             .ReturnsAsync(new UserRatingStatsResult(
                 1,

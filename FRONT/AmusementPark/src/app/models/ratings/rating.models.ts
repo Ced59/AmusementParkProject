@@ -195,8 +195,42 @@ export interface UserParkItemRatingRanking {
   rating: UserRatingListItem;
 }
 
+export interface SharedUserRatingListItem {
+  targetType: RatingTargetType;
+  targetId: string;
+  targetName: string;
+  parkId: string;
+  parkName?: string | null;
+  parkItemCategory?: string | null;
+  parkItemType?: string | null;
+  value: number;
+}
+
+export interface SharedUserParkRatingRankingCategory {
+  parkItemCategory: string;
+  averageRating: number;
+  items: SharedUserRatingListItem[];
+}
+
+export interface SharedUserParkRatingRanking {
+  rank: number;
+  parkId: string;
+  parkName: string;
+  ratingCount: number;
+  averageRating: number;
+  parkRating?: SharedUserRatingListItem | null;
+  categories: SharedUserParkRatingRankingCategory[];
+}
+
+export interface SharedUserParkItemRatingRanking {
+  rank: number;
+  rating: SharedUserRatingListItem;
+}
+
 export type UserRatingsPage = PagedResult<UserRatingListItem>;
 export type RatingRankingsPage = PagedResult<ParkRatingRanking>;
 export type ParkItemRatingRankingsPage = PagedResult<ParkItemRatingRanking>;
 export type UserParkRatingRankingsPage = PagedResult<UserParkRatingRanking>;
 export type UserParkItemRatingRankingsPage = PagedResult<UserParkItemRatingRanking>;
+export type SharedUserParkRatingRankingsPage = PagedResult<SharedUserParkRatingRanking>;
+export type SharedUserParkItemRatingRankingsPage = PagedResult<SharedUserParkItemRatingRanking>;

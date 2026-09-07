@@ -109,7 +109,6 @@ export class UserRankingShareControlComponent implements OnInit {
   }
 
   protected previewHasAdditionalRatings(preview: PersonalRankingSharePreview): boolean {
-    return preview.isTruncated
-      || this.previewTotalCount(preview) > this.previewSampleCount(preview);
+    return this.previewTotalCount(preview) > this.previewSampleCount(preview);
   }
 }

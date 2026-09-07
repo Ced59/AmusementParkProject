@@ -5880,6 +5880,7 @@
         "averageRating": "persönlicher Durchschnitt",
         "exactPreview": "Nur die oben genannten Datenkategorien werden veröffentlicht.",
         "sampleNotice": "Vorschau: {{shown}} von {{total}} Bewertungen. Auf der öffentlichen Seite werden alle {{total}} Bewertungen angezeigt.",
+        "limitNotice": "Die Veröffentlichung ist auf die {{published}} höchsten sichtbaren Bewertungen begrenzt, damit die Seite schnell bleibt. Die übrigen bleiben privat.",
         "cancel": "Abbrechen",
         "publishing": "Wird veröffentlicht...",
         "confirm": "Bestätigen und Link erstellen",

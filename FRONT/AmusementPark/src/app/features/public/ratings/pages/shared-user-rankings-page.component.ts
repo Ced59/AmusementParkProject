@@ -4,11 +4,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
-  SharedUserRankingProfile,
-  UserParkItemRatingRanking,
-  UserParkRatingRanking,
-  UserParkRatingRankingCategory,
-  UserRatingListItem
+  SharedUserParkItemRatingRanking,
+  SharedUserParkRatingRanking,
+  SharedUserParkRatingRankingCategory,
+  SharedUserRatingListItem,
+  SharedUserRankingProfile
 } from '@app/models/ratings/rating.models';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
@@ -111,14 +111,14 @@ export class SharedUserRankingsPageComponent implements OnInit {
   });
   protected readonly ratingParks: Signal<RatingTreePark[]> = computed(() => {
     return this.stateFacade.parkRankings().map(
-      (ranking: UserParkRatingRanking): RatingTreePark => this.mapParkRanking(ranking)
+      (ranking: SharedUserParkRatingRanking): RatingTreePark => this.mapParkRanking(ranking)
     );
   });
   protected readonly rankedParkItems: Signal<RatingRankingListItem[]> = computed(() => {
-    return this.stateFacade.parkItemRankings().map((ranking: UserParkItemRatingRanking): RatingRankingListItem => {
-      const rating: UserRatingListItem = ranking.rating;
+    return this.stateFacade.parkItemRankings().map((ranking: SharedUserParkItemRatingRanking): RatingRankingListItem => {
+      const rating: SharedUserRatingListItem = ranking.rating;
       return {
-        id: rating.id,
+        id: `${rating.targetType}:${rating.targetId}`,
         rank: ranking.rank,
         name: rating.targetName,
         score: rating.value,
@@ -286,9 +286,9 @@ export class SharedUserRankingsPageComponent implements OnInit {
     return `ratings/shared/${encodeURIComponent(this.shareId())}/preview.png${query ? `?${query}` : ''}`;
   }
 
-  private mapParkRanking(ranking: UserParkRatingRanking): RatingTreePark {
-    const itemRatings: UserRatingListItem[] = ranking.categories.flatMap(
-      (category: UserParkRatingRankingCategory): UserRatingListItem[] => category.items
+  private mapParkRanking(ranking: SharedUserParkRatingRanking): RatingTreePark {
+    const itemRatings: SharedUserRatingListItem[] = ranking.categories.flatMap(
+      (category: SharedUserParkRatingRankingCategory): SharedUserRatingListItem[] => category.items
     );
     return {
       id: ranking.parkId,
@@ -298,12 +298,12 @@ export class SharedUserRankingsPageComponent implements OnInit {
       ratingCount: ranking.ratingCount,
       route: this.parkRoute(ranking.parkId, ranking.parkName),
       metrics: this.buildMetrics(ranking.parkRating ?? null, itemRatings),
-      sections: ranking.categories.map((category: UserParkRatingRankingCategory): RatingTreeSection => ({
+      sections: ranking.categories.map((category: SharedUserParkRatingRankingCategory): RatingTreeSection => ({
         id: category.parkItemCategory,
         titleKey: `ratings.categories.${category.parkItemCategory}`,
         score: category.averageRating,
-        items: category.items.map((rating: UserRatingListItem) => ({
-          id: rating.id,
+        items: category.items.map((rating: SharedUserRatingListItem) => ({
+          id: `${rating.targetType}:${rating.targetId}`,
           name: rating.targetName,
           score: rating.value,
           route: this.targetRoute(rating)
@@ -312,14 +312,14 @@ export class SharedUserRankingsPageComponent implements OnInit {
     };
   }
 
-  private buildMetrics(parkRating: UserRatingListItem | null, itemRatings: UserRatingListItem[]): RatingTreeMetric[] {
+  private buildMetrics(parkRating: SharedUserRatingListItem | null, itemRatings: SharedUserRatingListItem[]): RatingTreeMetric[] {
     return [
       { labelKey: 'ratings.rankings.parkSignal', value: parkRating?.value ?? 0 },
       { labelKey: 'ratings.rankings.itemsSignal', value: this.averageRating(itemRatings) }
     ];
   }
 
-  private targetRoute(rating: UserRatingListItem): string[] | null {
+  private targetRoute(rating: SharedUserRatingListItem): string[] | null {
     if (rating.targetType === 'Park') {
       return this.parkRoute(rating.parkId, rating.targetName);
     }
@@ -337,9 +337,9 @@ export class SharedUserRankingsPageComponent implements OnInit {
     return buildPublicParkRouteCommands({ language: this.currentLang(), parkId, parkName });
   }
 
-  private averageRating(ratings: UserRatingListItem[]): number {
+  private averageRating(ratings: SharedUserRatingListItem[]): number {
     return ratings.length > 0
-      ? ratings.reduce((sum: number, rating: UserRatingListItem): number => sum + rating.value, 0) / ratings.length
+      ? ratings.reduce((sum: number, rating: SharedUserRatingListItem): number => sum + rating.value, 0) / ratings.length
       : 0;
   }
 }
