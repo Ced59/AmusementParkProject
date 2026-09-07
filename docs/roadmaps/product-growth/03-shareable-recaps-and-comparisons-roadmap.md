@@ -206,7 +206,10 @@ que cette modification est également ignorée. Le classement ne propose actuell
 nom public facultatif et les notes globales : l'avatar est refusé tant que la page publique ne
 le restitue pas réellement, et une migration idempotente retire ce champ des politiques issues
 de l'ancien partage. Le heartbeat MongoDB cible enfin le bail exact par filtre de tableau,
-sans dépendre d'un opérateur positionnel non lié par le filtre serveur.
+sans dépendre d'un opérateur positionnel non lié par le filtre serveur. Si une nouvelle
+publication a déjà été écrite mais que le dernier contrôle détecte une source momentanément
+instable, cette écriture exacte est révoquée avant d'annoncer l'échec ; une décision plus récente
+reste prioritaire et un lien déjà public qui n'a pas été réécrit n'est pas révoqué.
 
 Cette tranche ne crée pas encore de nouveau type de page publique. `SHARE-06`
 applique ensuite le même consentement au récapitulatif public d'une visite.

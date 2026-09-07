@@ -24,7 +24,7 @@ public sealed class SharePublicationPublisher
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public async Task<ApplicationResult<SharePublicationSettingsResult>> PublishAsync(
+    public async Task<ApplicationResult<SharePublicationCommitResult>> PublishAsync(
         string ownerUserId,
         SharePublicationType publicationType,
         string sourceScopeKey,
@@ -43,7 +43,7 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (!approvedPublicationState.Matches(publication))
             {
-                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                return ApplicationResult<SharePublicationCommitResult>.Failure(
                     SharingApplicationErrors.ApprovedPreviewExpired());
             }
 
@@ -51,7 +51,7 @@ public sealed class SharePublicationPublisher
                 && publication.SourceVersion == sourceVersion
                 && publication.ContentPolicy.HasSameSelectionAs(contentPolicy))
             {
-                return Success(publication);
+                return Success(publication, wasWritten: false);
             }
 
             if (publication is null || publication.Status == SharePublicationStatus.Revoked)
@@ -76,7 +76,7 @@ public sealed class SharePublicationPublisher
                     cancellationToken);
                 if (createOutcome == SharePublicationWriteOutcome.Success)
                 {
-                    return Success(created);
+                    return Success(created, wasWritten: true);
                 }
 
                 continue;
@@ -117,12 +117,40 @@ public sealed class SharePublicationPublisher
                 cancellationToken);
             if (publishOutcome == SharePublicationWriteOutcome.Success)
             {
-                return Success(publication);
+                return Success(publication, wasWritten: true);
             }
         }
 
-        return ApplicationResult<SharePublicationSettingsResult>.Failure(
+        return ApplicationResult<SharePublicationCommitResult>.Failure(
             SharingApplicationErrors.PublicationChangedConcurrently());
+    }
+
+    public async Task RevokeIfUnchangedAsync(
+        string ownerUserId,
+        SharePublicationType publicationType,
+        string sourceScopeKey,
+        SharePublicationApprovalState committedState,
+        CancellationToken cancellationToken)
+    {
+        SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
+            ownerUserId,
+            publicationType,
+            sourceScopeKey,
+            cancellationToken);
+        if (!committedState.Matches(publication)
+            || publication?.Status != SharePublicationStatus.Published)
+        {
+            return;
+        }
+
+        long expectedVersion = publication.Version;
+        publication.Revoke(
+            publication.PublicationVersion,
+            this.timeProvider.GetUtcNow().UtcDateTime);
+        await this.repository.ReplaceAsync(
+            publication,
+            expectedVersion,
+            cancellationToken);
     }
 
     private async Task<SharePublicationWriteOutcome> PrepareExistingAsync(
@@ -171,10 +199,14 @@ public sealed class SharePublicationPublisher
         return SharePublicationWriteOutcome.Success;
     }
 
-    private static ApplicationResult<SharePublicationSettingsResult> Success(
-        SharePublication publication)
+    private static ApplicationResult<SharePublicationCommitResult> Success(
+        SharePublication publication,
+        bool wasWritten)
     {
-        return ApplicationResult<SharePublicationSettingsResult>.Success(
-            SharePublicationSettingsMapper.ToResult(publication));
+        SharePublicationCommitResult result = new SharePublicationCommitResult(
+            SharePublicationSettingsMapper.ToResult(publication),
+            SharePublicationApprovalState.From(publication),
+            wasWritten);
+        return ApplicationResult<SharePublicationCommitResult>.Success(result);
     }
 }

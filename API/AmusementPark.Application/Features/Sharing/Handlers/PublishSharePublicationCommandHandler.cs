@@ -114,7 +114,7 @@ public sealed class PublishSharePublicationCommandHandler
                 SharingApplicationErrors.ApprovedPreviewExpired());
         }
 
-        ApplicationResult<SharePublicationSettingsResult> publishResult = await this.publisher.PublishAsync(
+        ApplicationResult<SharePublicationCommitResult> commitResult = await this.publisher.PublishAsync(
             ownerUserId,
             command.PublicationType,
             scopeResult.Value,
@@ -122,10 +122,12 @@ public sealed class PublishSharePublicationCommandHandler
             publicationState,
             contentPolicy,
             cancellationToken);
-        if (!publishResult.IsSuccess)
+        if (!commitResult.IsSuccess || commitResult.Value is null)
         {
-            return publishResult;
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(commitResult.Errors);
         }
+
+        SharePublicationCommitResult commit = commitResult.Value;
 
         ApplicationResult<long> persistedVersionResult = await source.GetCurrentSourceVersionAsync(
             scopeResult.Value,
@@ -135,15 +137,25 @@ public sealed class PublishSharePublicationCommandHandler
             if (persistedVersionResult.Errors.Any(
                     error => error.Code == SharingApplicationErrors.SourceChangedCode))
             {
+                if (commit.WasWritten)
+                {
+                    await this.publisher.RevokeIfUnchangedAsync(
+                        ownerUserId,
+                        command.PublicationType,
+                        scopeResult.Value,
+                        commit.PublicationState,
+                        cancellationToken);
+                }
+
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(
                     persistedVersionResult.Errors);
             }
 
-            return publishResult;
+            return ApplicationResult<SharePublicationSettingsResult>.Success(commit.Settings);
         }
 
         return persistedVersionResult.Value == command.ApprovedSourceVersion
-            ? publishResult
+            ? ApplicationResult<SharePublicationSettingsResult>.Success(commit.Settings)
             : ApplicationResult<SharePublicationSettingsResult>.Failure(
                 SharingApplicationErrors.ApprovedPreviewExpired());
     }
