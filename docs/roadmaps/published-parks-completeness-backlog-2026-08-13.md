@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 49 parcs atteignent le niveau `Excellent` : 47 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **69 parcs** : 4 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- 50 parcs atteignent le niveau `Excellent` : 48 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **68 parcs** : 3 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,13 +17,12 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (4)
+## Priorité 1 — niveau `Publishable` (3)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 84 | `Publishable` | Al Watan Park | SA | `Operating` | `Regional` | 74/88 | `a6096874-82df-4580-9b7d-7d5cf654b3db` |
 | 84 | `Publishable` | Areál Mladé Buky | CZ | `Operating` | `Regional` | 74/88 | `4cac6f4e-a5d5-4d38-95f2-53d6547fec6c` |
-| 84 | `Publishable` | Au Paradis des Enfants | FR | `Operating` | `Regional` | 77/92 | `b3e11451-5350-4d53-b6c4-3d586a338683` |
 | 84 | `Publishable` | DraculaLand | RO | `Planned` | `International` | 74/88 | `f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059` |
 
 ## Priorité 2 — niveau `Good` (63)
