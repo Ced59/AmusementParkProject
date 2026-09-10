@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **71 parcs** : 6 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **70 parcs** : 5 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,11 +17,10 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (6)
+## Priorité 1 — niveau `Publishable` (5)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 84 | `Publishable` | Aktur Park | TR | `Operating` | `Regional` | 78/93 | `22c4b03b-9cc3-4b04-b611-adf3fb5b54f0` |
 | 84 | `Publishable` | Al Watan Park | SA | `Operating` | `Regional` | 74/88 | `a6096874-82df-4580-9b7d-7d5cf654b3db` |
 | 84 | `Publishable` | Amrapali FunLand | IN | `Operating` | `Regional` | 77/92 | `dbb5b642-3dba-486c-abc7-1d0e79a86e43` |
 | 84 | `Publishable` | Areál Mladé Buky | CZ | `Operating` | `Regional` | 74/88 | `4cac6f4e-a5d5-4d38-95f2-53d6547fec6c` |
