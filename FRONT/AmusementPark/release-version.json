@@ -1,6 +1,20 @@
 {
-  "version": "5.2.11",
+  "version": "5.2.12",
   "history": [
+    {
+      "version": "5.2.12",
+      "releasedAt": "2026-09-10",
+      "labels": {
+        "fr": "Dix autres fiches de parcs gagnent des informations, des images et des repères plus complets.",
+        "en": "Ten more park pages now offer fuller information, imagery and map markers.",
+        "de": "Zehn weitere Parkseiten bieten jetzt vollständigere Informationen, Bilder und Kartenmarkierungen.",
+        "nl": "Tien extra parkpagina's bieden nu completere informatie, beelden en kaartmarkeringen.",
+        "it": "Altre dieci schede di parchi offrono ora informazioni, immagini e riferimenti sulla mappa più completi.",
+        "es": "Diez fichas de parques más ofrecen ahora información, imágenes y referencias cartográficas más completas.",
+        "pl": "Kolejnych dziesięć stron parków zawiera teraz pełniejsze informacje, zdjęcia i oznaczenia na mapie.",
+        "pt": "Mais dez páginas de parques oferecem agora informações, imagens e referências no mapa mais completas."
+      }
+    },
     {
       "version": "5.2.11",
       "releasedAt": "2026-09-08",

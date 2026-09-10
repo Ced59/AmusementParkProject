@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **81 parcs** : 16 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **71 parcs** : 6 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,20 +17,10 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (16)
+## Priorité 1 — niveau `Publishable` (6)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 83 | `Publishable` | Adventureland Long Island | US | `Operating` | `Regional` | 74/89 | `b8559645-f5d2-4f07-bc80-880c8827a141` |
-| 83 | `Publishable` | Altai Amusement Park | CN | `Operating` | `Local` | 77/93 | `b4490b5f-5ddd-4f16-b9b7-abc8af6cba5d` |
-| 83 | `Publishable` | Awka Wonderland | NG | `Operating` | `Regional` | 73/88 | `f3d1d172-bca9-46cd-9c9a-18491fc0af74` |
-| 83 | `Publishable` | Cita-Parc | FR | `Operating` | `Regional` | 73/88 | `1d4ec4ab-5f19-4b1b-b4cf-8e240dce3304` |
-| 83 | `Publishable` | Labadee | HT | `Operating` | `International` | 91/109 | `6f64d243-7b8f-4495-a731-9faa76c0bb62` |
-| 83 | `Publishable` | Parc Saint Paul | FR | `Operating` | `Regional` | 74/89 | `6190c433-c7b4-4914-af6f-6c2646af08c5` |
-| 83 | `Publishable` | Six Flags America | US | `ClosedDefinitively` | `—` | 84/101 | `3018a662-0271-4561-ba4f-30b563b8ae92` |
-| 84 | `Publishable` | Adventure Island | GB | `Operating` | `Regional` | 74/88 | `c4075654-4107-40f1-b65a-2d80f3fba553` |
-| 84 | `Publishable` | Adventure Park Cimone | IT | `Operating` | `Regional` | 74/88 | `c35a6e21-a08e-40bc-955c-9de2ac1fcd26` |
-| 84 | `Publishable` | Adventurer's Park Family Entertainment Center | US | `Operating` | `Local` | 75/89 | `6e3e55c1-683c-4ad9-acd8-f9cfaae2354f` |
 | 84 | `Publishable` | Aktur Park | TR | `Operating` | `Regional` | 78/93 | `22c4b03b-9cc3-4b04-b611-adf3fb5b54f0` |
 | 84 | `Publishable` | Al Watan Park | SA | `Operating` | `Regional` | 74/88 | `a6096874-82df-4580-9b7d-7d5cf654b3db` |
 | 84 | `Publishable` | Amrapali FunLand | IN | `Operating` | `Regional` | 77/92 | `dbb5b642-3dba-486c-abc7-1d0e79a86e43` |
