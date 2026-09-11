@@ -82,13 +82,23 @@ export class PassportProfileShareStateFacade {
           }
           this.settingsSignal.set(result.settings);
           this.selectionSignal.set(result.selection);
+          const availableYears: Set<number> = new Set(result.selection.years.map((candidate) => candidate.year));
+          const availableParkIds: Set<string> = new Set(result.selection.parks.map((candidate) => candidate.parkId));
+          const availableRatingKeys: Set<string> = new Set(
+            result.selection.ratings.map((candidate) => candidate.selectionKey)
+          );
           this.selectedYearsSignal.set(
-            result.selection.savedSelectedYears ?? result.selection.years.map((candidate) => candidate.year)
+            (result.selection.savedSelectedYears ?? [...availableYears])
+              .filter((year) => availableYears.has(year))
           );
           this.selectedParkIdsSignal.set(
-            result.selection.savedSelectedParkIds ?? result.selection.parks.map((candidate) => candidate.parkId)
+            (result.selection.savedSelectedParkIds ?? [...availableParkIds])
+              .filter((parkId) => availableParkIds.has(parkId))
           );
-          this.selectedRatingKeysSignal.set(result.selection.savedSelectedRatingKeys ?? []);
+          this.selectedRatingKeysSignal.set(
+            (result.selection.savedSelectedRatingKeys ?? [])
+              .filter((selectionKey) => availableRatingKeys.has(selectionKey))
+          );
           this.publicCaptionSignal.set(result.selection.savedPublicCaption ?? '');
           this.visibilitySignal.set(result.selection.savedVisibility ?? 'Unlisted');
           this.allowsComparisonsSignal.set(result.selection.savedAllowsComparisons);
@@ -108,7 +118,13 @@ export class PassportProfileShareStateFacade {
   public toggleYear(year: number): void { this.toggleNumber(this.selectedYearsSignal, year); }
   public togglePark(parkId: string): void { this.toggleString(this.selectedParkIdsSignal, parkId); }
   public toggleRating(selectionKey: string): void { this.toggleString(this.selectedRatingKeysSignal, selectionKey); }
-  public toggleField(field: ShareContentField): void { this.toggleString(this.includedFieldsSignal, field); }
+  public toggleField(field: ShareContentField): void {
+    const wasIncluded: boolean = this.includedFieldsSignal().includes(field);
+    this.toggleString(this.includedFieldsSignal, field);
+    if (field === 'GlobalRatings' && wasIncluded) {
+      this.selectedRatingKeysSignal.set([]);
+    }
+  }
 
   public setPublicCaption(value: string): void {
     this.publicCaptionSignal.set(value.slice(0, 500));
@@ -228,7 +244,9 @@ export class PassportProfileShareStateFacade {
     return {
       selectedYears: this.selectedYearsSignal(),
       selectedParkIds: this.selectedParkIdsSignal(),
-      selectedRatingKeys: this.selectedRatingKeysSignal(),
+      selectedRatingKeys: this.includedFieldsSignal().includes('GlobalRatings')
+        ? this.selectedRatingKeysSignal()
+        : [],
       publicCaption: this.includedFieldsSignal().includes('PublicCaption')
         ? this.publicCaptionSignal().trim() || null
         : null,

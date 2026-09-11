@@ -70,6 +70,54 @@ describe('PassportProfileShareStateFacade', () => {
     expect(publishRequests[0].passportProfile).toEqual(previewRequests[0].passportProfile);
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
   });
+
+  it('filters obsolete saved choices and clears hidden ranking choices', () => {
+    const previewRequests: SharePublicationPreviewRequest[] = [];
+    const selection: PassportProfileShareSelection = {
+      years: [{ year: 2026, visitCount: 2 }],
+      parks: [{ parkId: 'park-current', name: 'Parc actuel', countryCode: 'FR', visitCount: 2 }],
+      ratings: [{ selectionKey: 'rating-current', name: 'Attraction actuelle', parkName: 'Parc actuel', rating: 4.5 }],
+      savedSelectedYears: [2025, 2026],
+      savedSelectedParkIds: ['park-hidden', 'park-current'],
+      savedSelectedRatingKeys: ['rating-hidden', 'rating-current'],
+      savedVisibility: 'Unlisted',
+      savedAllowsComparisons: false,
+      hasSavedSnapshot: true
+    };
+    const port: PassportProfileSharePort = {
+      getSettings: (): Observable<SharePublicationSettings> => of({
+        isPublic: true,
+        policySchemaVersion: 1,
+        includedFields: ['GlobalRatings']
+      }),
+      getSelection: (): Observable<PassportProfileShareSelection> => of(selection),
+      preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> => {
+        previewRequests.push(request);
+        return of(createPreview(request));
+      },
+      publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+    };
+    TestBed.configureTestingModule({ providers: [
+      PassportProfileShareStateFacade,
+      { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
+      { provide: ToastMessageService, useValue: { add: vi.fn() } },
+      { provide: TranslateService, useValue: { instant: (key: string): string => key } }
+    ] });
+    const facade: PassportProfileShareStateFacade = TestBed.inject(PassportProfileShareStateFacade);
+
+    facade.load();
+
+    expect(facade.selectedYears()).toEqual([2026]);
+    expect(facade.selectedParkIds()).toEqual(['park-current']);
+    expect(facade.selectedRatingKeys()).toEqual(['rating-current']);
+
+    facade.toggleField('GlobalRatings');
+    facade.previewPublication();
+
+    expect(facade.selectedRatingKeys()).toEqual([]);
+    expect(previewRequests[0].passportProfile?.selectedRatingKeys).toEqual([]);
+  });
 });
 
 function createPreview(request: SharePublicationPreviewRequest): SharePublicationPreview {

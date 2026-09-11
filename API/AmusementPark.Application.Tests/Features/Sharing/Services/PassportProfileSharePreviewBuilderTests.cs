@@ -84,7 +84,9 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.Equal(1, profile.TotalRideCount);
         Assert.Equal("Parc public", Assert.Single(profile.Parks).Name);
         Assert.Equal("Attraction publique", Assert.Single(profile.PersonalRanking).Name);
-        Assert.Equal("Attraction fermée", Assert.Single(profile.MissedItems).Name);
+        PassportProfileShareMissedItemResult missed = Assert.Single(profile.MissedItems);
+        Assert.Equal("Attraction fermée", missed.Name);
+        Assert.Equal("MissedClosure", missed.Status);
         Assert.True(profile.AllowsComparisons);
         Assert.True(profile.HasIncompleteCatalog);
         Assert.False(profile.IsEmpty);

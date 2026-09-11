@@ -420,12 +420,19 @@ public sealed class PassportProfileSharePreviewBuilder
             .Where(static group => group.Key.Name is not null)
             .Select(group => new PassportProfileShareMissedItemResult(
                 group.Key.Name!,
-                group.Key.Status.ToString(),
+                ToPublicMissedStatus(group.Key.Status),
                 group.LongCount()))
             .OrderByDescending(static item => item.OccurrenceCount)
             .ThenBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .Take(5)
             .ToArray();
+    }
+
+    private static string ToPublicMissedStatus(RideOccurrenceStatus status)
+    {
+        return status == RideOccurrenceStatus.MissedClosed
+            ? "MissedClosure"
+            : "MissedOther";
     }
 
     private static bool CanExposeTarget(
