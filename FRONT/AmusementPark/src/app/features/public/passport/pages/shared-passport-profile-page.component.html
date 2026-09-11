@@ -8,7 +8,7 @@
 
     <article class="shared-passport__story">
       <header class="shared-passport__hero">
-        @if (shared.passportProfile.avatarUrl) { <img [src]="shared.passportProfile.avatarUrl" width="112" height="112" [alt]="shared.passportProfile.displayName || ''"> } @else { <span class="shared-passport__avatar" aria-hidden="true"><i class="pi pi-user"></i></span> }
+        @if (avatarUrl(); as resolvedAvatarUrl) { <img [src]="resolvedAvatarUrl" width="112" height="112" [alt]="shared.passportProfile.displayName || ''"> } @else { <span class="shared-passport__avatar" aria-hidden="true"><i class="pi pi-user"></i></span> }
         <div><span class="shared-passport__kicker"><i class="pi pi-passport" aria-hidden="true"></i>{{ 'passportProfileShare.public.kicker' | translate }}</span><h1>{{ shared.passportProfile.displayName || ('passportProfileShare.public.anonymous' | translate) }}</h1><p>{{ 'passportProfileShare.public.subtitle' | translate }}</p></div>
       </header>
 

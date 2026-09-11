@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
@@ -27,6 +28,9 @@ export class SharedPassportProfilePageComponent implements OnInit {
   protected readonly result: Signal<SharedPassportProfile | null> = this.facade.profile;
   protected readonly notFound: Signal<boolean> = this.facade.notFound;
   protected readonly error: Signal<boolean> = this.facade.error;
+  protected readonly avatarUrl: Signal<string | null> = computed((): string | null =>
+    this.imagesApiService.resolveImageUrl(this.result()?.passportProfile.avatarUrl)
+  );
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -37,6 +41,7 @@ export class SharedPassportProfilePageComponent implements OnInit {
     private readonly seoService: SeoService,
     private readonly canonicalUrlService: CanonicalUrlService,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly destroyRef: DestroyRef
   ) {
     effect((): void => {

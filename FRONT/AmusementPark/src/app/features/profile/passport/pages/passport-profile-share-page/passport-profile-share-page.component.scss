@@ -3,7 +3,7 @@
 .passport-share__hero, .passport-share__editor, .passport-share__preview { display: grid; gap: 1rem; min-width: 0; }
 h1, h2, p { margin: 0; overflow-wrap: anywhere; }
 h1 { font-size: clamp(2.15rem, 8vw, 4.5rem); line-height: .95; text-transform: uppercase; }
-.passport-share__promise, .passport-share__live, .passport-share__proof { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.passport-share__promise, .passport-share__live, .passport-share__notice, .passport-share__proof { display: flex; align-items: center; gap: .75rem; min-width: 0; }
 .passport-share__live { justify-content: space-between; flex-wrap: wrap; }
 .passport-share__live div { display: grid; gap: .15rem; }
 .passport-share__section-heading { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .8rem; align-items: start; margin-top: .5rem; }
@@ -34,6 +34,7 @@ textarea { box-sizing: border-box; width: 100%; max-width: 100%; resize: vertica
 .passport-share__preview-block li { display: grid; gap: .2rem; min-width: 0; padding: .8rem; border-radius: .9rem; background: color-mix(in srgb, #000 12%, transparent); overflow-wrap: anywhere; }
 .passport-share__preview-block li span { opacity: .76; }
 .passport-share__quote { font-size: 1.15rem; font-style: italic; }
+.passport-share__notice { padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--c-sky) 8%, transparent); }
 .passport-share__error { display: flex; align-items: flex-start; gap: .55rem; color: var(--color-danger, #ff4f87); }
 .passport-share__revoke { justify-self: start; }
 @media (max-width: 420px) {

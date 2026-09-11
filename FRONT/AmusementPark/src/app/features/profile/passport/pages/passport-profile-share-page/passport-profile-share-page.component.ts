@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Signal, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -8,6 +8,7 @@ import {
   ShareVisibility
 } from '@app/models/sharing/share-publication.models';
 import { TranslationService } from '@app/services/translation.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PassportProfileShareStateFacade } from '../../state/passport-profile-share-state.facade';
@@ -21,11 +22,15 @@ import { PassportProfileShareStateFacade } from '../../state/passport-profile-sh
   imports: [TranslateModule, PageStateComponent, UiButtonDirective, UiKickerComponent, UiSurfaceDirective]
 })
 export class PassportProfileSharePageComponent implements OnInit {
-  protected readonly facade = inject(PassportProfileShareStateFacade);
-  protected readonly preview: Signal<PassportProfileSharePreview | null> = this.facade.preview;
-
   private readonly router = inject(Router);
   private readonly translationService = inject(TranslationService);
+  private readonly imagesApiService = inject(ImagesApiService);
+
+  protected readonly facade = inject(PassportProfileShareStateFacade);
+  protected readonly preview: Signal<PassportProfileSharePreview | null> = this.facade.preview;
+  protected readonly previewAvatarUrl: Signal<string | null> = computed((): string | null =>
+    this.imagesApiService.resolveImageUrl(this.preview()?.avatarUrl)
+  );
 
   public ngOnInit(): void {
     this.facade.load();
