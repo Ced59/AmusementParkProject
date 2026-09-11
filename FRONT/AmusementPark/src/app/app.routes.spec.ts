@@ -178,6 +178,20 @@ describe('App routes', () => {
     expect(publicRoutes[sharedRouteIndex]?.loadComponent).toBeDefined();
   });
 
+  it('exposes shared year recaps as a dedicated public route before local passport drafts', () => {
+    const publicRoutes: Route[] = getPublicRoutes();
+    const sharedRouteIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'passport/shared/years/:shareId'
+    );
+    const localDraftIndex: number = publicRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'passport/local/:draftId'
+    );
+
+    expect(sharedRouteIndex).toBeGreaterThanOrEqual(0);
+    expect(sharedRouteIndex).toBeLessThan(localDraftIndex);
+    expect(publicRoutes[sharedRouteIndex]?.loadComponent).toBeDefined();
+  });
+
   it('exposes current and historical rating methodology pages before the rankings collection', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const currentIndex: number = publicRoutes.findIndex(
