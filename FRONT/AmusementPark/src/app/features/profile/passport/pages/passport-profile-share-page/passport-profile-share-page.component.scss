@@ -22,6 +22,10 @@ textarea { box-sizing: border-box; width: 100%; max-width: 100%; resize: vertica
 .passport-share__metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: .75rem; }
 .passport-share__metrics article { display: grid; gap: .2rem; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, #000 14%, transparent); }
 .passport-share__metrics strong { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+.passport-share__ratings { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem; min-width: 0; }
+.passport-share__ratings article { display: grid; gap: .2rem; min-width: 0; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, #000 14%, transparent); overflow-wrap: anywhere; }
+.passport-share__ratings strong { font-size: clamp(1.35rem, 5vw, 2rem); }
+.passport-share__ratings small { opacity: .72; }
 .passport-share__preview-identity { display: flex; align-items: center; gap: .85rem; min-width: 0; }
 .passport-share__preview-avatar { flex: 0 0 auto; max-width: 4.5rem; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
 .passport-share__preview-block { display: grid; gap: .65rem; min-width: 0; }

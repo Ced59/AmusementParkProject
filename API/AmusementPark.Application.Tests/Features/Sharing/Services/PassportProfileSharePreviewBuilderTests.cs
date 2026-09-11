@@ -153,6 +153,57 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.True(result.Value.PassportProfile.IsEmpty);
     }
 
+    [Fact]
+    public async Task BuildAsync_ShouldGateTheYearBreakdownWithGeographicStatistics()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+        PassportProfileShareInput input = new PassportProfileShareInput(
+            new[] { 2026 },
+            new[] { "park-public-id" },
+            Array.Empty<string>(),
+            null,
+            ShareVisibility.Unlisted,
+            false);
+
+        ApplicationResult<SharePublicationPreviewResult> geographicResult =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.GeographicStatistics }),
+                input,
+                CancellationToken.None);
+        ApplicationResult<SharePublicationPreviewResult> activityResult =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.RideCount }),
+                input,
+                CancellationToken.None);
+
+        PassportProfileShareYearResult year = Assert.Single(
+            geographicResult.Value!.PassportProfile!.Years);
+        Assert.Equal(2026, year.Year);
+        Assert.Null(year.CompletedRideCount);
+        Assert.Empty(activityResult.Value!.PassportProfile!.Years);
+        Assert.Equal(1, activityResult.Value.PassportProfile.VisitCount);
+    }
+
     private static PassportProfileSharePreviewBuilder CreateBuilderWithoutOptionalContent(
         PassportProfileSourceData source)
     {

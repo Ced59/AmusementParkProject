@@ -299,7 +299,7 @@ public sealed class PassportProfileSharePreviewBuilder
                 statistics.Summary.RideOutcomes.CompletedRideCount,
                 statistics.Summary.RideRatings?.Average) : null,
             includesGeography ? BuildCountries(visits, publicParks) : Array.Empty<PassportProfileShareCountryResult>(),
-            includesActivity || includesTemporalRatings
+            includesGeography
                 ? BuildYears(visits, rides, includesActivity)
                 : Array.Empty<PassportProfileShareYearResult>(),
             includesGeography

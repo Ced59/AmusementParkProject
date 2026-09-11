@@ -6,6 +6,7 @@ describe('PassportProfileSharePageComponent responsive contract', () => {
     expect(styles).toContain('overflow-x: clip');
     expect(styles).toContain('minmax(0, 1fr)');
     expect(styles).toContain('minmax(min(100%, 15rem), 1fr)');
+    expect(styles).toContain('minmax(min(100%, 12rem), 1fr)');
     expect(styles).toContain('overflow-wrap: anywhere');
     expect(styles).toContain('@media (max-width: 420px)');
   });

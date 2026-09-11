@@ -76,11 +76,20 @@ public sealed class PassportProfileSharePublicationSource
             return ApplicationResult<long>.Failure(SharingApplicationErrors.SourceUnavailable());
         }
 
-        ApplicationResult<PassportProfileShareSourceRevision> revision =
-            await this.GetOwnedSourceVersionAsync(ownerUserId, cancellationToken);
-        return revision.IsSuccess && revision.Value is not null
-            ? ApplicationResult<long>.Success(revision.Value.Version)
-            : ApplicationResult<long>.Failure(revision.Errors);
+        string identityScope = PersonalRankingShareSourceScope.Create(ownerUserId);
+        IReadOnlyDictionary<string, ShareSourceRevision> revisions =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                new[]
+                {
+                    sourceScopeKey,
+                    identityScope,
+                    PersonalRankingShareSourceScope.PublicCatalog,
+                },
+                cancellationToken);
+        ShareSourceRevision passportRevision = revisions[sourceScopeKey];
+        ShareSourceRevision identityRevision = revisions[identityScope];
+        ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
+        return CreateVersion(passportRevision, identityRevision, catalogRevision);
     }
 
     public async Task<ApplicationResult<PassportProfileShareSourceRevision>> GetOwnedSourceVersionAsync(
@@ -118,18 +127,42 @@ public sealed class PassportProfileSharePublicationSource
                 SharingApplicationErrors.SourceChangedDuringPreview());
         }
 
+        ApplicationResult<long> versionResult = CreateVersion(
+            passportRevision,
+            identityRevision,
+            catalogRevision);
+        return versionResult.IsSuccess
+            ? ApplicationResult<PassportProfileShareSourceRevision>.Success(
+                new PassportProfileShareSourceRevision(
+                    versionResult.Value,
+                    source.SourceFingerprint))
+            : ApplicationResult<PassportProfileShareSourceRevision>.Failure(
+                versionResult.Errors);
+    }
+
+    private static ApplicationResult<long> CreateVersion(
+        ShareSourceRevision passportRevision,
+        ShareSourceRevision identityRevision,
+        ShareSourceRevision catalogRevision)
+    {
+        if (!passportRevision.IsStable
+            || !identityRevision.IsStable
+            || !catalogRevision.IsStable)
+        {
+            return ApplicationResult<long>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
         try
         {
-            long version = checked(
+            return ApplicationResult<long>.Success(checked(
                 passportRevision.Revision
                 + identityRevision.Revision
-                + catalogRevision.Revision);
-            return ApplicationResult<PassportProfileShareSourceRevision>.Success(
-                new PassportProfileShareSourceRevision(version, source.SourceFingerprint));
+                + catalogRevision.Revision));
         }
         catch (OverflowException)
         {
-            return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
+            return ApplicationResult<long>.Failure(
                 SharingApplicationErrors.SourceVersionUnavailable());
         }
     }

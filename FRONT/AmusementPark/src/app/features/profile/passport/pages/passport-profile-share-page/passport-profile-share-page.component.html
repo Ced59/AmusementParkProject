@@ -105,6 +105,12 @@
           @if (passport.totalRideCount != null) { <article><strong>{{ passport.totalRideCount }}</strong><span>{{ 'passportProfileShare.preview.rides' | translate }}</span></article> }
           @if (passport.distinctItemCount != null) { <article><strong>{{ passport.distinctItemCount }}</strong><span>{{ 'passportProfileShare.preview.attractions' | translate }}</span></article> }
         </div>
+        @if (passport.visitRatings || passport.rideRatings) {
+          <div class="passport-share__ratings">
+            @if (passport.visitRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.visitRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+            @if (passport.rideRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.rideRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+          </div>
+        }
         @if (passport.countries.length > 0) {
           <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.countries' | translate }}</h3><ul>@for (country of passport.countries; track country.countryCode) { <li><strong>{{ countryName(country.countryCode) }}</strong><span>{{ 'passportProfileShare.public.countryDetail' | translate:{ parks: country.parkCount, visits: country.visitCount } }}</span></li> }</ul></section>
         }
