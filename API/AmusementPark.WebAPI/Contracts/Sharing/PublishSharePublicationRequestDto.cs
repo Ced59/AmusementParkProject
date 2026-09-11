@@ -17,4 +17,6 @@ public sealed class PublishSharePublicationRequestDto
     public string ApprovalToken { get; set; } = string.Empty;
 
     public VisitRecapShareInputDto? VisitRecap { get; set; }
+
+    public YearRecapShareInputDto? YearRecap { get; set; }
 }

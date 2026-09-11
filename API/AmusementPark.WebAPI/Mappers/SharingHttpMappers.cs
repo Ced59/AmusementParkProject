@@ -43,7 +43,8 @@ public static class SharingHttpMappers
             datePrecision,
             includedFields.Distinct().ToArray(),
             request.ApprovalToken.Trim(),
-            request.VisitRecap?.ToApplication());
+            request.VisitRecap?.ToApplication(),
+            request.YearRecap?.ToApplication());
         return true;
     }
 
@@ -76,7 +77,8 @@ public static class SharingHttpMappers
             string.IsNullOrWhiteSpace(request.SourceId) ? null : request.SourceId.Trim(),
             datePrecision,
             includedFields.Distinct().ToArray(),
-            request.VisitRecap?.ToApplication());
+            request.VisitRecap?.ToApplication(),
+            request.YearRecap?.ToApplication());
         return true;
     }
 
@@ -97,6 +99,7 @@ public static class SharingHttpMappers
             },
             PersonalRanking = value.PersonalRanking?.ToHttp(),
             VisitRecap = value.VisitRecap?.ToHttp(),
+            YearRecap = value.YearRecap?.ToHttp(),
         };
     }
 
@@ -248,6 +251,85 @@ public static class SharingHttpMappers
     private static VisitRecapShareInput ToApplication(this VisitRecapShareInputDto value)
     {
         return new VisitRecapShareInput(value.SelectedParkItemIds, value.PublicCaption);
+    }
+
+    private static YearRecapShareInput ToApplication(this YearRecapShareInputDto value)
+    {
+        return new YearRecapShareInput(value.PublicCaption);
+    }
+
+    public static YearRecapSharePreviewDto ToHttp(this YearRecapSharePreviewResult value)
+    {
+        return new YearRecapSharePreviewDto
+        {
+            Year = value.Year,
+            ParkCount = value.ParkCount,
+            VisitCount = value.VisitCount,
+            ApproximateVisitCount = value.ApproximateVisitCount,
+            ApproximateVisitRate = value.ApproximateVisitRate,
+            TotalRideCount = value.TotalRideCount,
+            DistinctItemCount = value.DistinctItemCount,
+            MissedItemCount = value.MissedItemCount,
+            Categories = value.Categories.ToList(),
+            ParkRatings = value.ParkRatings?.ToHttp(),
+            RideRatings = value.RideRatings?.ToHttp(),
+            MostVisitedParks = value.MostVisitedParks.Select(static item => item.ToHttp()).ToList(),
+            MostRepeatedItem = value.MostRepeatedItem?.ToHttp(),
+            TopRatedItem = value.TopRatedItem?.ToHttp(),
+            RatingEvolution = value.RatingEvolution?.ToHttp(),
+            NowClosedItems = value.NowClosedItems.Select(static item => item.ToHttp()).ToList(),
+            PublicCaption = value.PublicCaption,
+            HasIncompleteCatalog = value.HasIncompleteCatalog,
+            CalculationVersion = value.CalculationVersion,
+            IsEmpty = value.IsEmpty,
+        };
+    }
+
+    private static YearRecapShareRatingSummaryDto ToHttp(
+        this YearRecapShareRatingSummaryResult value)
+    {
+        return new YearRecapShareRatingSummaryDto
+        {
+            RatedCount = value.RatedCount,
+            EligibleCount = value.EligibleCount,
+            Average = value.Average,
+        };
+    }
+
+    private static YearRecapShareParkDto ToHttp(this YearRecapShareParkResult value)
+    {
+        return new YearRecapShareParkDto
+        {
+            Name = value.Name,
+            VisitCount = value.VisitCount,
+            CompletedRideCount = value.CompletedRideCount,
+        };
+    }
+
+    private static YearRecapShareHighlightDto ToHttp(this YearRecapShareHighlightResult value)
+    {
+        return new YearRecapShareHighlightDto
+        {
+            Name = value.Name,
+            RideCount = value.RideCount,
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            IsNowClosed = value.IsNowClosed,
+        };
+    }
+
+    private static YearRecapShareTrendDto ToHttp(this YearRecapShareTrendResult value)
+    {
+        return new YearRecapShareTrendDto
+        {
+            Name = value.Name,
+            Kind = value.Kind,
+            FirstWindowRatingCount = value.FirstWindowRatingCount,
+            LastWindowRatingCount = value.LastWindowRatingCount,
+            FirstWindowAverage = value.FirstWindowAverage,
+            LastWindowAverage = value.LastWindowAverage,
+            Delta = value.Delta,
+        };
     }
 
     private static VisitRecapShareHighlightDto ToHttp(

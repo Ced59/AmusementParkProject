@@ -15,7 +15,9 @@ export function shouldApplyNoindexFollowHeader(url: string): boolean {
 export function resolveXRobotsTagHeader(url: string): string | null {
   const path: string = normalizeSsrPath(url);
 
-  if (isSharedUserRankingRoute(path) || isSharedVisitRecapRoute(path)) {
+  if (isSharedUserRankingRoute(path)
+      || isSharedVisitRecapRoute(path)
+      || isSharedYearRecapRoute(path)) {
     return 'noindex, nofollow, noarchive';
   }
 
@@ -57,6 +59,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || isSharedUserRankingRoute(path)
     || isSharedVisitRecapRoute(path)
+    || isSharedYearRecapRoute(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
@@ -77,6 +80,10 @@ function isSharedUserRankingRoute(path: string): boolean {
 
 function isSharedVisitRecapRoute(path: string): boolean {
   return /^\/[a-z]{2}\/passport\/shared\/visits\/[^/]+\/?$/i.test(path);
+}
+
+function isSharedYearRecapRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/passport\/shared\/years\/[^/]+\/?$/i.test(path);
 }
 
 function isKnownPrivateClientRoute(path: string): boolean {

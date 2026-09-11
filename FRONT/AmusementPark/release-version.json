@@ -1,6 +1,20 @@
 {
-  "version": "5.2.13",
+  "version": "5.2.14",
   "history": [
+    {
+      "version": "5.2.14",
+      "releasedAt": "2026-09-11",
+      "labels": {
+        "fr": "Tu peux choisir et partager le bilan de ton année de visites.",
+        "en": "You can choose and share a recap of your year of visits.",
+        "de": "Du kannst einen Rückblick auf dein Besuchsjahr auswählen und teilen.",
+        "nl": "Je kunt een overzicht van je bezoekjaar kiezen en delen.",
+        "it": "Puoi scegliere e condividere il riepilogo del tuo anno di visite.",
+        "es": "Puedes elegir y compartir el resumen de tu año de visitas.",
+        "pl": "Możesz wybrać i udostępnić podsumowanie roku swoich wizyt.",
+        "pt": "Podes escolher e partilhar o resumo do teu ano de visitas."
+      }
+    },
     {
       "version": "5.2.13",
       "releasedAt": "2026-09-11",

@@ -39,7 +39,8 @@ public sealed class SharePublicationPublisher
         CancellationToken cancellationToken,
         string contentFingerprint = "",
         VisitRecapShareInput? visitRecap = null,
-        string? sourceId = null)
+        string? sourceId = null,
+        YearRecapShareInput? yearRecap = null)
     {
         ArgumentNullException.ThrowIfNull(source);
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -178,7 +179,8 @@ public sealed class SharePublicationPublisher
                         sourceVersion,
                         contentPolicy,
                         contentFingerprint,
-                        visitRecap),
+                        visitRecap,
+                        yearRecap),
                     cancellationToken);
                 if (!snapshotResult.IsSuccess)
                 {

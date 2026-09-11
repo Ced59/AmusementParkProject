@@ -1,0 +1,96 @@
+<main class="shared-year public-page">
+  @if (notFound()) {
+    <section class="shared-year__state" role="status">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      <h1>{{ 'yearRecapShare.public.notFoundTitle' | translate }}</h1>
+      <p>{{ 'yearRecapShare.public.notFoundDescription' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'yearRecapShare.public.createMine' | translate }}</a>
+    </section>
+  } @else if (error()) {
+    <section class="shared-year__state" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h1>{{ 'yearRecapShare.public.errorTitle' | translate }}</h1>
+      <p>{{ 'yearRecapShare.public.errorDescription' | translate }}</p>
+    </section>
+  } @else if (result(); as shared) {
+    <nav class="shared-year__breadcrumb" [attr.aria-label]="'yearRecapShare.public.breadcrumbLabel' | translate">
+      <a [routerLink]="['/', currentLang(), 'home']">{{ 'yearRecapShare.public.breadcrumbHome' | translate }}</a>
+      <i class="pi pi-angle-right" aria-hidden="true"></i>
+      <span aria-current="page">{{ 'yearRecapShare.public.breadcrumbRecap' | translate:{ year: shared.yearRecap.year } }}</span>
+    </nav>
+
+    <article class="shared-year__story">
+      <header class="shared-year__hero">
+        <div>
+          <span class="shared-year__kicker"><i class="pi pi-sparkles" aria-hidden="true"></i>{{ 'yearRecapShare.public.kicker' | translate }}</span>
+          <h1>{{ shared.yearRecap.year }}</h1>
+          <p>{{ 'yearRecapShare.public.subtitle' | translate }}</p>
+        </div>
+        <span class="shared-year__seal" aria-hidden="true"><i class="pi pi-passport"></i></span>
+      </header>
+
+      @if (shared.yearRecap.publicCaption) {
+        <blockquote><i class="pi pi-quote-left" aria-hidden="true"></i><p>{{ shared.yearRecap.publicCaption }}</p></blockquote>
+      }
+
+      <section class="shared-year__scoreboard" [attr.aria-label]="'yearRecapShare.public.summaryLabel' | translate">
+        <article><i class="pi pi-calendar" aria-hidden="true"></i><strong>{{ shared.yearRecap.visitCount }}</strong><span>{{ 'yearRecapShare.preview.visits' | translate }}</span></article>
+        @if (shared.yearRecap.parkCount != null) { <article><i class="pi pi-map-marker" aria-hidden="true"></i><strong>{{ shared.yearRecap.parkCount }}</strong><span>{{ 'yearRecapShare.preview.parks' | translate }}</span></article> }
+        @if (shared.yearRecap.totalRideCount != null) { <article><i class="pi pi-replay" aria-hidden="true"></i><strong>{{ shared.yearRecap.totalRideCount }}</strong><span>{{ 'yearRecapShare.preview.rides' | translate }}</span></article> }
+        @if (shared.yearRecap.distinctItemCount != null) { <article><i class="pi pi-compass" aria-hidden="true"></i><strong>{{ shared.yearRecap.distinctItemCount }}</strong><span>{{ 'yearRecapShare.preview.distinctItems' | translate }}</span></article> }
+        @if (shared.yearRecap.missedItemCount != null) { <article><i class="pi pi-times-circle" aria-hidden="true"></i><strong>{{ shared.yearRecap.missedItemCount }}</strong><span>{{ 'yearRecapShare.preview.missedItems' | translate }}</span></article> }
+      </section>
+
+      @if (shared.yearRecap.parkRatings || shared.yearRecap.rideRatings) {
+        <section class="shared-year__ratings">
+          @if (shared.yearRecap.parkRatings; as ratings) { <article><span>{{ 'yearRecapShare.public.parkRatingsTitle' | translate }}</span><strong>{{ formatRating(ratings.average) }} / 5</strong><p>{{ 'yearRecapShare.public.ratingDenominator' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</p></article> }
+          @if (shared.yearRecap.rideRatings; as ratings) { <article><span>{{ 'yearRecapShare.public.rideRatingsTitle' | translate }}</span><strong>{{ formatRating(ratings.average) }} / 5</strong><p>{{ 'yearRecapShare.public.ratingDenominator' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</p></article> }
+        </section>
+      }
+
+      @if (shared.yearRecap.mostRepeatedItem || shared.yearRecap.topRatedItem) {
+        <section class="shared-year__highlights">
+          @if (shared.yearRecap.mostRepeatedItem; as item) { <article><span>{{ 'yearRecapShare.preview.mostRepeated' | translate }}</span><h2>{{ item.name }}</h2><strong>{{ 'yearRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}</strong></article> }
+          @if (shared.yearRecap.topRatedItem; as item) { <article><span>{{ 'yearRecapShare.preview.topRated' | translate }}</span><h2>{{ item.name }}</h2><strong>{{ formatRating(item.averageRating) }} / 5</strong><p>{{ 'yearRecapShare.public.ratingDenominator' | translate:{ rated: item.ratingCount, total: item.rideCount } }}</p></article> }
+        </section>
+      }
+
+      @if (shared.yearRecap.mostVisitedParks.length > 0) {
+        <section class="shared-year__parks">
+          <span class="shared-year__kicker">{{ 'yearRecapShare.preview.topParks' | translate }}</span>
+          <ol>@for (park of shared.yearRecap.mostVisitedParks; track park.name) { <li><span class="shared-year__rank">{{ $index + 1 }}</span><div><h2>{{ park.name }}</h2><p>{{ (park.completedRideCount != null ? 'yearRecapShare.preview.parkDetail' : 'yearRecapShare.preview.parkVisits') | translate:{ visits: park.visitCount, rides: park.completedRideCount } }}</p></div></li> }</ol>
+        </section>
+      }
+
+      @if (shared.yearRecap.categories.length > 0) {
+        <section class="shared-year__categories" [attr.aria-label]="'yearRecapShare.preview.categories' | translate">@for (category of shared.yearRecap.categories; track category) { <span>{{ categoryKey(category) | translate }}</span> }</section>
+      }
+
+      @if (shared.yearRecap.ratingEvolution; as trend) {
+        <section class="shared-year__trend">
+          <i class="pi pi-chart-line" aria-hidden="true"></i>
+          <div><span>{{ 'yearRecapShare.public.evolutionTitle' | translate }}</span><h2>{{ trend.name }}</h2><p>{{ 'yearRecapShare.public.evolutionDetail' | translate:{ first: formatRating(trend.firstWindowAverage), firstCount: trend.firstWindowRatingCount, last: formatRating(trend.lastWindowAverage), lastCount: trend.lastWindowRatingCount } }}</p></div>
+        </section>
+      }
+
+      @if (shared.yearRecap.nowClosedItems.length > 0) {
+        <section class="shared-year__closed"><i class="pi pi-history" aria-hidden="true"></i><div><h2>{{ 'yearRecapShare.public.closedTitle' | translate }}</h2><p>{{ 'yearRecapShare.public.closedDescription' | translate }}</p><ul>@for (item of shared.yearRecap.nowClosedItems; track item.name) { <li>{{ item.name }}</li> }</ul></div></section>
+      }
+
+      @if (shared.yearRecap.approximateVisitCount > 0) {
+        <p class="shared-year__notice"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'yearRecapShare.preview.approximate' | translate:{ count: shared.yearRecap.approximateVisitCount, total: shared.yearRecap.visitCount, rate: formatPercent(shared.yearRecap.approximateVisitRate) } }}</p>
+      }
+      @if (shared.yearRecap.hasIncompleteCatalog) {
+        <p class="shared-year__notice"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'yearRecapShare.preview.incompleteCatalog' | translate }}</p>
+      }
+      <p class="shared-year__proof"><i class="pi pi-verified" aria-hidden="true"></i>{{ 'yearRecapShare.public.proof' | translate:{ version: shared.yearRecap.calculationVersion } }}</p>
+    </article>
+
+    <section class="shared-year__footer">
+      <app-public-share-panel targetType="Page" [targetId]="shareId()" [targetTitle]="'yearRecapShare.social.title' | translate:{ year: shared.yearRecap.year }" titleKey="yearRecapShare.social.title" descriptionKey="yearRecapShare.social.description" textKey="yearRecapShare.social.text"></app-public-share-panel>
+      <aside><span aria-hidden="true"><i class="pi pi-passport"></i></span><div><h2>{{ 'yearRecapShare.public.ctaTitle' | translate }}</h2><p>{{ 'yearRecapShare.public.ctaDescription' | translate }}</p><a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'yearRecapShare.public.createMine' | translate }}</a></div></aside>
+    </section>
+  } @else {
+    <section class="shared-year__state" role="status"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i><p>{{ 'yearRecapShare.public.loading' | translate }}</p></section>
+  }
+</main>

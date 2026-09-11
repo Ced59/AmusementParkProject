@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Sharing.Handlers;
@@ -97,7 +98,8 @@ public sealed class PreviewSharePublicationQueryHandler
         if (query.PublicationType == SharePublicationType.VisitRecap)
         {
             if (builder is not IVisitRecapSharePreviewBuilder visitRecapBuilder
-                || string.IsNullOrWhiteSpace(query.SourceId))
+                || string.IsNullOrWhiteSpace(query.SourceId)
+                || query.YearRecap is not null)
             {
                 return ApplicationResult<SharePublicationPreviewResult>.Failure(
                     SharingApplicationErrors.PreviewTypeNotAvailable());
@@ -110,9 +112,28 @@ public sealed class PreviewSharePublicationQueryHandler
                 query.VisitRecap,
                 cancellationToken);
         }
+        else if (query.PublicationType == SharePublicationType.YearRecap)
+        {
+            if (builder is not IYearRecapSharePreviewBuilder yearRecapBuilder
+                || !YearRecapSharePublicationSource.TryParseYear(
+                    query.SourceId,
+                    out int year)
+                || query.VisitRecap is not null)
+            {
+                return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                    SharingApplicationErrors.PreviewTypeNotAvailable());
+            }
+
+            previewResult = await yearRecapBuilder.BuildAsync(
+                ownerUserId,
+                year,
+                contentPolicy,
+                query.YearRecap,
+                cancellationToken);
+        }
         else
         {
-            if (query.VisitRecap is not null)
+            if (query.VisitRecap is not null || query.YearRecap is not null)
             {
                 return ApplicationResult<SharePublicationPreviewResult>.Failure(
                     SharingApplicationErrors.InvalidSource());

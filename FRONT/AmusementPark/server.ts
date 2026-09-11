@@ -37,6 +37,7 @@ import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
 import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-shared-user-rankings-ssr-route-policy';
 import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared-visit-recap-ssr-route-policy';
+import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -1923,7 +1924,8 @@ function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): C
     (req.method === 'GET' || req.method === 'HEAD')
     && acceptsHtml(req)
     && (isPublicSharedUserRankingSsrRoute(getPathOnly(req.originalUrl))
-      || isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl)))
+      || isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl)))
   ) {
     return {
       shouldRender: true,
@@ -3376,6 +3378,7 @@ function applySecurityHeaders(req: Request, res: Response, next: NextFunction): 
   res.setHeader(
     'Referrer-Policy',
     isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl))
       ? 'no-referrer'
       : 'strict-origin-when-cross-origin'
   );

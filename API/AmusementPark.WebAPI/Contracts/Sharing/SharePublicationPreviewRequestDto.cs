@@ -11,4 +11,6 @@ public sealed class SharePublicationPreviewRequestDto
     public List<string> IncludedFields { get; set; } = new();
 
     public VisitRecapShareInputDto? VisitRecap { get; set; }
+
+    public YearRecapShareInputDto? YearRecap { get; set; }
 }

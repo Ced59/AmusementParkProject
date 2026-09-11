@@ -11,6 +11,10 @@ public sealed class ShareSourceRevisionDocument
     [BsonElement("revision")]
     public long Revision { get; set; }
 
+    [BsonElement("sourceFingerprint")]
+    [BsonIgnoreIfNull]
+    public string? SourceFingerprint { get; set; }
+
     [BsonElement("mutationLeases")]
     public List<ShareSourceMutationLeaseDocument> MutationLeases { get; set; } = new();
 

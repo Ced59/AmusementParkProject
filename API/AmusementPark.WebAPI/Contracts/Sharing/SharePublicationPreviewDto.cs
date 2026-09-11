@@ -13,4 +13,6 @@ public sealed class SharePublicationPreviewDto
     public PersonalRankingSharePreviewDto? PersonalRanking { get; set; }
 
     public VisitRecapSharePreviewDto? VisitRecap { get; set; }
+
+    public YearRecapSharePreviewDto? YearRecap { get; set; }
 }

@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Sharing;
 using Moq;
 using Xunit;
@@ -124,6 +125,113 @@ public sealed class PreviewSharePublicationQueryHandlerTests
             It.IsAny<string?>(),
             It.IsAny<ShareContentPolicy>(),
             It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task HandleAsync_ForYearRecap_ShouldDelegateTheExactYearAndPublicCaption()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.YearRecap,
+            ShareDatePrecision.Year,
+            new[] { ShareContentField.PublicCaption });
+        YearRecapShareInput input = new YearRecapShareInput("Mon année");
+        SharePublicationPreviewResult preview = new SharePublicationPreviewResult(
+            SharePublicationType.YearRecap,
+            8,
+            policy.SchemaVersion,
+            policy.DatePrecision,
+            policy.IncludedFields,
+            null,
+            YearRecap: new YearRecapSharePreviewResult(
+                2026,
+                null,
+                1,
+                0,
+                0,
+                null,
+                null,
+                null,
+                Array.Empty<string>(),
+                null,
+                null,
+                Array.Empty<YearRecapShareParkResult>(),
+                null,
+                null,
+                null,
+                Array.Empty<YearRecapShareHighlightResult>(),
+                input.PublicCaption,
+                false,
+                "year-recap-v1",
+                false),
+            ContentFingerprint: "caption-fingerprint");
+        Mock<IYearRecapSharePreviewBuilder> builder =
+            new Mock<IYearRecapSharePreviewBuilder>(MockBehavior.Strict);
+        builder.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.YearRecap);
+        builder.Setup(value => value.BuildAsync(
+                "owner-1",
+                2026,
+                It.Is<ShareContentPolicy>(value => value.HasSameSelectionAs(policy)),
+                input,
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationPreviewResult>.Success(preview));
+        Mock<ISharePublicationSourceDescriptor> source =
+            new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
+        source.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.YearRecap);
+        source.Setup(value => value.ValidatePolicyForPublication(
+                It.Is<ShareContentPolicy>(value => value.HasSameSelectionAs(policy))))
+            .Returns(ApplicationResult<bool>.Success(true));
+        string scope = YearRecapShareSourceScope.Create("owner-1", 2026);
+        source.Setup(value => value.ResolveSourceScopeKey("owner-1", "2026"))
+            .Returns(ApplicationResult<string>.Success(scope));
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                "owner-1",
+                SharePublicationType.YearRecap,
+                scope,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        Mock<ISharePublicationPreviewApprovalProtector> approvalProtector =
+            new Mock<ISharePublicationPreviewApprovalProtector>(MockBehavior.Strict);
+        approvalProtector.Setup(value => value.CreateToken(
+                "owner-1",
+                SharePublicationType.YearRecap,
+                scope,
+                8,
+                It.IsAny<SharePublicationApprovalState>(),
+                It.Is<ShareContentPolicy>(value => value.HasSameSelectionAs(policy)),
+                "caption-fingerprint"))
+            .Returns("approval");
+        PreviewSharePublicationQueryHandler handler =
+            new PreviewSharePublicationQueryHandler(
+                new ISharePublicationPreviewBuilder[] { builder.Object },
+                new[] { source.Object },
+                repository.Object,
+                approvalProtector.Object);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await handler.HandleAsync(
+            new PreviewSharePublicationQuery(
+                "owner-1",
+                SharePublicationType.YearRecap,
+                "2026",
+                policy.DatePrecision,
+                policy.IncludedFields,
+                null,
+                input),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("approval", result.Value!.ApprovalToken);
+        builder.VerifyAll();
+        source.VerifyAll();
+        repository.Verify(value => value.GetOwnedBySourceAsync(
+            "owner-1",
+            SharePublicationType.YearRecap,
+            scope,
+            CancellationToken.None), Times.Exactly(2));
+        approvalProtector.VerifyAll();
     }
 
     [Fact]

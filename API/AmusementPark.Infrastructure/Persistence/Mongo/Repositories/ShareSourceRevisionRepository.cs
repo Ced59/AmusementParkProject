@@ -329,6 +329,81 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return ToResult(document);
     }
 
+    public async Task<ShareSourceRevision> ReconcileFingerprintAsync(
+        string scopeKey,
+        string sourceFingerprint,
+        CancellationToken cancellationToken)
+    {
+        string normalizedScopeKey = NormalizeScopeKey(scopeKey);
+        string normalizedFingerprint = IdentifierRules.NormalizeRequired(
+            sourceFingerprint,
+            nameof(sourceFingerprint));
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        ShareSourceRevisionDocument? existing = await this.GetDocumentAsync(
+            normalizedScopeKey,
+            cancellationToken);
+        if (existing is not null
+            && string.Equals(
+                existing.SourceFingerprint,
+                normalizedFingerprint,
+                StringComparison.Ordinal))
+        {
+            return ToSnapshotResult(existing, nowUtc);
+        }
+
+        if (existing is not null)
+        {
+            await this.RecoverExpiredLeasesAsync(
+                normalizedScopeKey,
+                nowUtc,
+                cancellationToken);
+        }
+
+        UpdateDefinition<ShareSourceRevisionDocument> update =
+            BuildFingerprintReconciliationUpdate(normalizedFingerprint, nowUtc);
+        FindOneAndUpdateOptions<ShareSourceRevisionDocument> options =
+            new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+            {
+                IsUpsert = true,
+                ReturnDocument = ReturnDocument.After,
+            };
+        ShareSourceRevisionDocument? document;
+        try
+        {
+            document = await this.collection.FindOneAndUpdateAsync(
+                ShareSourceRevisionMongoDefinitions.BuildScopeFilter(normalizedScopeKey),
+                update,
+                options,
+                cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            options.IsUpsert = false;
+            document = await this.collection.FindOneAndUpdateAsync(
+                ShareSourceRevisionMongoDefinitions.BuildScopeFilter(normalizedScopeKey),
+                update,
+                options,
+                cancellationToken);
+        }
+        catch (MongoCommandException exception) when (exception.Code == 11000)
+        {
+            options.IsUpsert = false;
+            document = await this.collection.FindOneAndUpdateAsync(
+                ShareSourceRevisionMongoDefinitions.BuildScopeFilter(normalizedScopeKey),
+                update,
+                options,
+                cancellationToken);
+        }
+
+        if (document is null)
+        {
+            throw new InvalidOperationException("Unable to reconcile the share source fingerprint.");
+        }
+
+        return ToResult(document);
+    }
+
     public async Task<IReadOnlyDictionary<string, ShareSourceRevision>> GetSnapshotAsync(
         IReadOnlyCollection<string> scopeKeys,
         CancellationToken cancellationToken)
@@ -374,12 +449,90 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return IdentifierRules.NormalizeRequired(scopeKey, nameof(scopeKey));
     }
 
+    private async Task<ShareSourceRevisionDocument?> GetDocumentAsync(
+        string scopeKey,
+        CancellationToken cancellationToken)
+    {
+        FindOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> options =
+            new FindOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>
+            {
+                Limit = 1,
+            };
+        using IAsyncCursor<ShareSourceRevisionDocument> cursor =
+            await this.collection.FindAsync(
+                ShareSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
+                options,
+                cancellationToken);
+        return await cursor.FirstOrDefaultAsync(cancellationToken);
+    }
+
     internal static UpdateDefinition<ShareSourceRevisionDocument> BuildHeartbeatUpdate(
         DateTime heartbeatAtUtc)
     {
         return Builders<ShareSourceRevisionDocument>.Update
             .Set("mutationLeases.$[lease].expiresAtUtc", heartbeatAtUtc.Add(MutationLeaseDuration))
             .Set(document => document.UpdatedAt, heartbeatAtUtc);
+    }
+
+    internal static UpdateDefinition<ShareSourceRevisionDocument>
+        BuildFingerprintReconciliationUpdate(
+            string sourceFingerprint,
+            DateTime updatedAtUtc)
+    {
+        string normalizedFingerprint = IdentifierRules.NormalizeRequired(
+            sourceFingerprint,
+            nameof(sourceFingerprint));
+        BsonDocument currentFingerprint = new BsonDocument(
+            "$ifNull",
+            new BsonArray { "$sourceFingerprint", BsonNull.Value });
+        BsonDocument fingerprintMatches = new BsonDocument(
+            "$eq",
+            new BsonArray { currentFingerprint, normalizedFingerprint });
+        BsonDocument currentRevision = new BsonDocument(
+            "$ifNull",
+            new BsonArray { "$revision", 0L });
+        BsonDocument reconciledRevision = new BsonDocument(
+            "$cond",
+            new BsonArray
+            {
+                fingerprintMatches,
+                currentRevision,
+                new BsonDocument("$add", new BsonArray { currentRevision, 1L }),
+            });
+        BsonDocument reconciledUpdatedAt = new BsonDocument(
+            "$cond",
+            new BsonArray
+            {
+                fingerprintMatches,
+                new BsonDocument(
+                    "$ifNull",
+                    new BsonArray { "$updatedAt", updatedAtUtc }),
+                updatedAtUtc,
+            });
+        return new PipelineUpdateDefinition<ShareSourceRevisionDocument>(
+            new[]
+            {
+                new BsonDocument(
+                    "$set",
+                    new BsonDocument
+                    {
+                        { "revision", reconciledRevision },
+                        { "sourceFingerprint", normalizedFingerprint },
+                        {
+                            "mutationLeases",
+                            new BsonDocument(
+                                "$ifNull",
+                                new BsonArray { "$mutationLeases", new BsonArray() })
+                        },
+                        {
+                            "createdAt",
+                            new BsonDocument(
+                                "$ifNull",
+                                new BsonArray { "$createdAt", updatedAtUtc })
+                        },
+                        { "updatedAt", reconciledUpdatedAt },
+                    }),
+            });
     }
 
     internal static BsonDocument BuildHeartbeatArrayFilter(string mutationToken)
