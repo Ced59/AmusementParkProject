@@ -310,7 +310,13 @@ ainsi que `Referrer-Policy: no-referrer`. Son récit rassemble les compteurs cho
 les pays, la chronologie annuelle, les parcs, les moyennes et le classement public,
 sans écran administratif. L'atelier privé et la page publique bornent toutes leurs
 grilles et leurs textes, se replient en une colonne et restent contenus dès 320 px.
-`SHARE-09` peut maintenant produire des images sociales à partir de ce snapshot,
+Les écritures de visite, de passage et la suppression complète d'une visite sont
+entourées par la révision agrégée du passeport lorsqu'un partage existe. Une
+lecture anonyme ne recharge jamais l'historique privé : elle consulte trois
+révisions bornées et refuse le lien pendant une écriture ou après une modification,
+jusqu'à un nouvel aperçu explicitement approuvé. Les passeports qui n'ont jamais
+préparé de partage ne créent aucune révision supplémentaire. `SHARE-09` peut
+maintenant produire des images sociales à partir de ce snapshot,
 sans relire le passeport privé.
 
 ## 1. Vision produit

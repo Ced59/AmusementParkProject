@@ -67,6 +67,52 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         this.heartbeatInterval = heartbeatInterval;
     }
 
+    public async Task<ShareSourceMutationLease?> TryBeginMutationAsync(
+        string scopeKey,
+        CancellationToken cancellationToken)
+    {
+        string normalizedScopeKey = NormalizeScopeKey(scopeKey);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        await this.RecoverExpiredLeasesAsync(normalizedScopeKey, nowUtc, cancellationToken);
+
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            normalizedScopeKey);
+        ShareSourceMutationLeaseDocument leaseDocument = new ShareSourceMutationLeaseDocument
+        {
+            Token = mutationLease.Token,
+            ExpiresAtUtc = nowUtc.Add(MutationLeaseDuration),
+        };
+        UpdateDefinition<ShareSourceRevisionDocument> update =
+            Builders<ShareSourceRevisionDocument>.Update
+                .Set(document => document.UpdatedAt, nowUtc)
+                .Push(document => document.MutationLeases, leaseDocument);
+        ShareSourceRevisionDocument? document = await this.collection.FindOneAndUpdateAsync(
+            ShareSourceRevisionMongoDefinitions.BuildScopeFilter(normalizedScopeKey),
+            update,
+            new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (document is null)
+        {
+            return null;
+        }
+
+        CancellationTokenSource leaseCancellation = new CancellationTokenSource();
+        leaseCancellation.CancelAfter(WriterLeaseCancellationDelay);
+        mutationLease = new ShareSourceMutationLease(
+            mutationLease.ScopeKey,
+            mutationLease.Token,
+            leaseCancellation.Token);
+        this.StartHeartbeat(
+            mutationLease,
+            leaseCancellation,
+            leaseDocument.ExpiresAtUtc);
+        return mutationLease;
+    }
+
     public async Task<ShareSourceMutationLease> BeginMutationAsync(
         string scopeKey,
         CancellationToken cancellationToken)

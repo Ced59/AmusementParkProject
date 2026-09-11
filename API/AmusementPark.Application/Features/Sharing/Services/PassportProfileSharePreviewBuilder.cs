@@ -231,9 +231,11 @@ public sealed class PassportProfileSharePreviewBuilder
         HashSet<string> visitIds = visits
             .Select(static visit => visit.VisitId)
             .ToHashSet(StringComparer.Ordinal);
-        PassportRideStatisticsObservation[] rides = source.Rides
-            .Where(ride => visitIds.Contains(ride.VisitId)
-                && CanExposeTarget(ride, source.HistoricalItemNames, targets))
+        PassportRideStatisticsObservation[] selectedScopeRides = source.Rides
+            .Where(ride => visitIds.Contains(ride.VisitId))
+            .ToArray();
+        PassportRideStatisticsObservation[] rides = selectedScopeRides
+            .Where(ride => CanExposeTarget(ride, source.HistoricalItemNames, targets))
             .ToArray();
         PassportGlobalStatistics statistics = PassportGlobalStatisticsCalculator.Calculate(visits, rides);
         bool includesActivity = policy.Includes(ShareContentField.RideCount);
@@ -278,7 +280,7 @@ public sealed class PassportProfileSharePreviewBuilder
             : Array.Empty<PassportProfileShareRatingResult>();
         PassportProfileSharePreviewResult result = new PassportProfileSharePreviewResult(
             policy.Includes(ShareContentField.PublicDisplayName)
-                ? NormalizeOptional(user.ResolvePublicDisplayName()) ?? "User"
+                ? NormalizeOptional(user.ResolvePublicDisplayName())
                 : null,
             policy.Includes(ShareContentField.Avatar)
                 ? ResolvePublicAvatarUrl(avatar, user.Id)
@@ -309,10 +311,10 @@ public sealed class PassportProfileSharePreviewBuilder
             includesMissed
                 ? BuildMissedItems(rides, source.HistoricalItemNames, targets)
                 : Array.Empty<PassportProfileShareMissedItemResult>(),
-            source.Visits.Any(visit => !publicParks.ContainsKey(visit.ParkId))
-                || source.Rides.Any(ride => publicParks.ContainsKey(ride.ParkId)
-                    && !CanExposeTarget(ride, source.HistoricalItemNames, targets))
-                || ratingCandidates.Count > PassportProfileShareInputNormalizer.MaximumSelectedRatings,
+            selectedScopeRides.Any(ride => !CanExposeTarget(
+                ride,
+                source.HistoricalItemNames,
+                targets)),
             PassportProfileShareVersion.CalculationVersion,
             visits.Length == 0 && ranking.Length == 0);
         return ApplicationResult<PassportProfileSharePreviewResult>.Success(result);

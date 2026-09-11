@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 import {
   PassportProfileShareSelection,
@@ -117,6 +117,42 @@ describe('PassportProfileShareStateFacade', () => {
 
     expect(facade.selectedRatingKeys()).toEqual([]);
     expect(previewRequests[0].passportProfile?.selectedRatingKeys).toEqual([]);
+  });
+
+  it('settles an in-flight publication when the editor invalidates its preview', () => {
+    const publishResponse: Subject<SharePublicationSettings> = new Subject<SharePublicationSettings>();
+    const selection: PassportProfileShareSelection = {
+      years: [{ year: 2026, visitCount: 1 }],
+      parks: [{ parkId: 'park-1', name: 'Parc', countryCode: 'FR', visitCount: 1 }],
+      ratings: [],
+      savedVisibility: 'Unlisted',
+      savedAllowsComparisons: false,
+      hasSavedSnapshot: false
+    };
+    const port: PassportProfileSharePort = {
+      getSettings: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] }),
+      getSelection: (): Observable<PassportProfileShareSelection> => of(selection),
+      preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> =>
+        of(createPreview(request)),
+      publish: (): Observable<SharePublicationSettings> => publishResponse,
+      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+    };
+    TestBed.configureTestingModule({ providers: [
+      PassportProfileShareStateFacade,
+      { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
+      { provide: ToastMessageService, useValue: { add: vi.fn() } },
+      { provide: TranslateService, useValue: { instant: (key: string): string => key } }
+    ] });
+    const facade: PassportProfileShareStateFacade = TestBed.inject(PassportProfileShareStateFacade);
+
+    facade.load();
+    facade.previewPublication();
+    facade.publish();
+    facade.setVisibility('Public');
+    publishResponse.next({ isPublic: true, shareId: 'published', includedFields: [] });
+
+    expect(facade.saving()).toBe(false);
+    expect(facade.settings()?.shareId).toBe('published');
   });
 });
 

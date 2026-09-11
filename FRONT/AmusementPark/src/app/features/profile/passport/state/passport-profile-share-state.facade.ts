@@ -34,6 +34,7 @@ export class PassportProfileShareStateFacade {
   private readonly savingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
   private requestGeneration: number = 0;
+  private mutationGeneration: number = 0;
 
   public readonly selection: Signal<PassportProfileShareSelection | null> = this.selectionSignal.asReadonly();
   public readonly settings: Signal<SharePublicationSettings | null> = this.settingsSignal.asReadonly();
@@ -172,7 +173,7 @@ export class PassportProfileShareStateFacade {
     if (!preview || !this.canPublish()) {
       return;
     }
-    const generation: number = ++this.requestGeneration;
+    const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
     const request: SharePublicationPublishRequest = {
       publicationType: preview.publicationType,
@@ -186,7 +187,7 @@ export class PassportProfileShareStateFacade {
     };
     this.port.publish(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
-        if (generation !== this.requestGeneration) {
+        if (generation !== this.mutationGeneration) {
           return;
         }
         this.settingsSignal.set(settings);
@@ -195,7 +196,7 @@ export class PassportProfileShareStateFacade {
         this.toast('success', 'passportProfileShare.toast.published');
       },
       error: (): void => {
-        if (generation !== this.requestGeneration) {
+        if (generation !== this.mutationGeneration) {
           return;
         }
         this.savingSignal.set(false);
@@ -209,11 +210,11 @@ export class PassportProfileShareStateFacade {
     if (this.savingSignal()) {
       return;
     }
-    const generation: number = ++this.requestGeneration;
+    const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
     this.port.revoke().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
-        if (generation !== this.requestGeneration) {
+        if (generation !== this.mutationGeneration) {
           return;
         }
         this.settingsSignal.set(settings);
@@ -221,7 +222,7 @@ export class PassportProfileShareStateFacade {
         this.toast('success', 'passportProfileShare.toast.revoked');
       },
       error: (): void => {
-        if (generation !== this.requestGeneration) {
+        if (generation !== this.mutationGeneration) {
           return;
         }
         this.savingSignal.set(false);

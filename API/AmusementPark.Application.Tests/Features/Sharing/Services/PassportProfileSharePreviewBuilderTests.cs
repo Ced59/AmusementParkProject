@@ -88,7 +88,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.Equal("Attraction fermée", missed.Name);
         Assert.Equal("MissedClosure", missed.Status);
         Assert.True(profile.AllowsComparisons);
-        Assert.True(profile.HasIncompleteCatalog);
+        Assert.False(profile.HasIncompleteCatalog);
         Assert.False(profile.IsEmpty);
 
         string serialized = JsonSerializer.Serialize(profile);
@@ -204,8 +204,51 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.Equal(1, activityResult.Value.PassportProfile.VisitCount);
     }
 
+    [Fact]
+    public async Task BuildAsync_WhenPublicNameIsMissing_ShouldPreserveTheLocalizedFallback()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+        PassportProfileSharePreviewBuilder builder =
+            CreateBuilderWithoutOptionalContent(source, null);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-technical-id",
+            ShareContentPolicy.Create(
+                SharePublicationType.PassportProfile,
+                ShareDatePrecision.Year,
+                new[]
+                {
+                    ShareContentField.PublicDisplayName,
+                    ShareContentField.GeographicStatistics,
+                }),
+            new PassportProfileShareInput(
+                new[] { 2026 },
+                new[] { "park-public-id" },
+                Array.Empty<string>(),
+                null,
+                ShareVisibility.Unlisted,
+                false),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Null(result.Value!.PassportProfile!.DisplayName);
+    }
+
     private static PassportProfileSharePreviewBuilder CreateBuilderWithoutOptionalContent(
-        PassportProfileSourceData source)
+        PassportProfileSourceData source,
+        string? publicDisplayName = "Camille")
     {
         Mock<IPassportProfileSourceReader> sourceReader =
             new Mock<IPassportProfileSourceReader>();
@@ -226,7 +269,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
             CreateParkRepository().Object,
             Mock.Of<IVisitTargetResolver>(MockBehavior.Strict),
             Mock.Of<IRatingRepository>(MockBehavior.Strict),
-            CreateUserRepository().Object,
+            CreateUserRepository(publicDisplayName).Object,
             Mock.Of<IImageRepository>(MockBehavior.Strict));
     }
 
@@ -370,7 +413,8 @@ public sealed class PassportProfileSharePreviewBuilderTests
         return ratings;
     }
 
-    private static Mock<IUserRepository> CreateUserRepository()
+    private static Mock<IUserRepository> CreateUserRepository(
+        string? publicDisplayName = "Camille")
     {
         Mock<IUserRepository> users = new Mock<IUserRepository>();
         users.Setup(value => value.GetByIdAsync(
@@ -381,7 +425,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 Id = "owner-technical-id",
                 Email = "private@example.com",
                 IsActivated = true,
-                PublicDisplayName = "Camille",
+                PublicDisplayName = publicDisplayName,
                 AvatarUrl = "/private/avatar-reference",
             });
         return users;

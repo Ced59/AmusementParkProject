@@ -23,6 +23,7 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
@@ -235,10 +236,22 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IPassportProfileSourceReader, PassportProfileSourceReader>();
         services.AddScoped<IVisitRecapPublicParkReader, VisitRecapPublicParkReader>();
         services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
-        services.AddScoped<IUserVisitRepository, UserVisitRepository>();
-        services.AddScoped<IRideOccurrenceRepository, UserRideOccurrenceRepository>();
+        services.AddScoped<UserVisitRepository>();
+        services.AddScoped<IUserVisitRepository>(provider =>
+            new PassportProfileRevisionUserVisitRepository(
+                provider.GetRequiredService<UserVisitRepository>(),
+                provider.GetRequiredService<IPassportProfileShareSourceRevisionGuard>()));
+        services.AddScoped<UserRideOccurrenceRepository>();
+        services.AddScoped<IRideOccurrenceRepository>(provider =>
+            new PassportProfileRevisionRideOccurrenceRepository(
+                provider.GetRequiredService<UserRideOccurrenceRepository>(),
+                provider.GetRequiredService<IPassportProfileShareSourceRevisionGuard>()));
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
-        services.AddScoped<IVisitDeletionStore, MongoVisitDeletionStore>();
+        services.AddScoped<MongoVisitDeletionStore>();
+        services.AddScoped<IVisitDeletionStore>(provider =>
+            new PassportProfileRevisionVisitDeletionStore(
+                provider.GetRequiredService<MongoVisitDeletionStore>(),
+                provider.GetRequiredService<IPassportProfileShareSourceRevisionGuard>()));
         services.AddScoped<IPassportItemStatisticsSourceReader,
             PassportItemStatisticsSourceReader>();
         services.AddScoped<IPassportScopeStatisticsSourceReader,

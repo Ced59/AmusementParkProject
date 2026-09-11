@@ -4,6 +4,10 @@ namespace AmusementPark.Application.Features.Sharing.Ports;
 
 public interface IShareSourceRevisionRepository
 {
+    Task<ShareSourceMutationLease?> TryBeginMutationAsync(
+        string scopeKey,
+        CancellationToken cancellationToken);
+
     Task<ShareSourceMutationLease> BeginMutationAsync(
         string scopeKey,
         CancellationToken cancellationToken);
