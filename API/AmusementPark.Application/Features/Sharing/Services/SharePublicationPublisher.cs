@@ -40,7 +40,8 @@ public sealed class SharePublicationPublisher
         string contentFingerprint = "",
         VisitRecapShareInput? visitRecap = null,
         string? sourceId = null,
-        YearRecapShareInput? yearRecap = null)
+        YearRecapShareInput? yearRecap = null,
+        PassportProfileShareInput? passportProfile = null)
     {
         ArgumentNullException.ThrowIfNull(source);
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -163,24 +164,19 @@ public sealed class SharePublicationPublisher
             long expectedVersion = publication!.Version;
             if (snapshotWriter is not null)
             {
-                if (string.IsNullOrWhiteSpace(sourceId))
-                {
-                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
-                        SharingApplicationErrors.InvalidSource());
-                }
-
                 ApplicationResult<bool> snapshotResult = await snapshotWriter.WriteAsync(
                     new SharePublicationSnapshotWriteRequest(
                         publication.Id,
                         checked(publication.PublicationVersion + 1),
                         publication.Version,
                         ownerUserId,
-                        sourceId.Trim(),
+                        string.IsNullOrWhiteSpace(sourceId) ? null : sourceId.Trim(),
                         sourceVersion,
                         contentPolicy,
                         contentFingerprint,
                         visitRecap,
-                        yearRecap),
+                        yearRecap,
+                        passportProfile),
                     cancellationToken);
                 if (!snapshotResult.IsSuccess)
                 {
@@ -194,7 +190,7 @@ public sealed class SharePublicationPublisher
                 : publication.ShareToken ?? this.tokenFactory.Generate();
             publication.Publish(
                 token,
-                ShareVisibility.Unlisted,
+                passportProfile?.Visibility ?? ShareVisibility.Unlisted,
                 sourceVersion,
                 contentPolicy,
                 publication.PublicationVersion,

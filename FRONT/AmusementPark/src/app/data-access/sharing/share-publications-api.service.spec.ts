@@ -118,4 +118,28 @@ describe('SharePublicationsApiService', () => {
       }
     });
   });
+
+  it('loads, revokes and publicly resolves the selected passport profile', () => {
+    service.getPassportProfileSelection().subscribe();
+    const selection = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share/selection`);
+    expect(selection.request.method).toBe('GET');
+    selection.flush({ years: [], parks: [], ratings: [], savedVisibility: 'Unlisted', savedAllowsComparisons: false, hasSavedSnapshot: false });
+
+    service.getPassportProfileSettings().subscribe();
+    const settings = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share`);
+    expect(settings.request.method).toBe('GET');
+    settings.flush({ isPublic: false, includedFields: [] });
+
+    service.revokePassportProfile().subscribe();
+    const revoke = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share`);
+    expect(revoke.request.method).toBe('DELETE');
+    revoke.flush({ isPublic: false, includedFields: [] });
+
+    service.getSharedPassportProfile('opaque/token').subscribe();
+    const publicProfile = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}passport/shared/profiles/opaque%2Ftoken`
+    );
+    expect(publicProfile.request.method).toBe('GET');
+    publicProfile.flush({ publishedAtUtc: '2026-09-12T00:00:00Z', passportProfile: {} });
+  });
 });

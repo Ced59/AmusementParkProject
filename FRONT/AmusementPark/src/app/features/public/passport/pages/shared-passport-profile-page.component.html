@@ -1,0 +1,50 @@
+<main class="shared-passport public-page">
+  @if (notFound()) {
+    <section class="shared-passport__state" role="status"><i class="pi pi-link" aria-hidden="true"></i><h1>{{ 'passportProfileShare.public.notFoundTitle' | translate }}</h1><p>{{ 'passportProfileShare.public.notFoundDescription' | translate }}</p><a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'passportProfileShare.public.createMine' | translate }}</a></section>
+  } @else if (error()) {
+    <section class="shared-passport__state" role="alert"><i class="pi pi-exclamation-circle" aria-hidden="true"></i><h1>{{ 'passportProfileShare.public.errorTitle' | translate }}</h1><p>{{ 'passportProfileShare.public.errorDescription' | translate }}</p></section>
+  } @else if (result(); as shared) {
+    <nav class="shared-passport__breadcrumb" [attr.aria-label]="'passportProfileShare.public.breadcrumbLabel' | translate"><a [routerLink]="['/', currentLang(), 'home']">{{ 'passportProfileShare.public.home' | translate }}</a><i class="pi pi-angle-right" aria-hidden="true"></i><span aria-current="page">{{ 'passportProfileShare.public.breadcrumb' | translate:{ name: shared.passportProfile.displayName || ('passportProfileShare.public.anonymous' | translate) } }}</span></nav>
+
+    <article class="shared-passport__story">
+      <header class="shared-passport__hero">
+        @if (shared.passportProfile.avatarUrl) { <img [src]="shared.passportProfile.avatarUrl" width="112" height="112" [alt]="shared.passportProfile.displayName || ''"> } @else { <span class="shared-passport__avatar" aria-hidden="true"><i class="pi pi-user"></i></span> }
+        <div><span class="shared-passport__kicker"><i class="pi pi-passport" aria-hidden="true"></i>{{ 'passportProfileShare.public.kicker' | translate }}</span><h1>{{ shared.passportProfile.displayName || ('passportProfileShare.public.anonymous' | translate) }}</h1><p>{{ 'passportProfileShare.public.subtitle' | translate }}</p></div>
+      </header>
+
+      @if (shared.passportProfile.publicCaption) { <blockquote><i class="pi pi-quote-left" aria-hidden="true"></i><p>{{ shared.passportProfile.publicCaption }}</p></blockquote> }
+
+      <section class="shared-passport__metrics" [attr.aria-label]="'passportProfileShare.public.summary' | translate">
+        @if (shared.passportProfile.parkCount != null) { <article><i class="pi pi-map-marker" aria-hidden="true"></i><strong>{{ shared.passportProfile.parkCount }}</strong><span>{{ 'passportProfileShare.preview.parks' | translate }}</span></article> }
+        @if (shared.passportProfile.visitCount != null) { <article><i class="pi pi-calendar" aria-hidden="true"></i><strong>{{ shared.passportProfile.visitCount }}</strong><span>{{ 'passportProfileShare.preview.visits' | translate }}</span></article> }
+        @if (shared.passportProfile.totalRideCount != null) { <article><i class="pi pi-replay" aria-hidden="true"></i><strong>{{ shared.passportProfile.totalRideCount }}</strong><span>{{ 'passportProfileShare.preview.rides' | translate }}</span></article> }
+        @if (shared.passportProfile.distinctItemCount != null) { <article><i class="pi pi-compass" aria-hidden="true"></i><strong>{{ shared.passportProfile.distinctItemCount }}</strong><span>{{ 'passportProfileShare.preview.attractions' | translate }}</span></article> }
+      </section>
+
+      @if (shared.passportProfile.visitRatings || shared.passportProfile.rideRatings) {
+        <section class="shared-passport__ratings">
+          @if (shared.passportProfile.visitRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.visitRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+          @if (shared.passportProfile.rideRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.rideRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+        </section>
+      }
+
+      @if (shared.passportProfile.countries.length > 0) { <section><span class="shared-passport__kicker">{{ 'passportProfileShare.public.countries' | translate }}</span><div class="shared-passport__countries">@for (country of shared.passportProfile.countries; track country.countryCode) { <article><strong>{{ countryName(country.countryCode) }}</strong><span>{{ 'passportProfileShare.public.countryDetail' | translate:{ parks: country.parkCount, visits: country.visitCount } }}</span></article> }</div></section> }
+
+      @if (shared.passportProfile.years.length > 0) { <section><span class="shared-passport__kicker">{{ 'passportProfileShare.public.years' | translate }}</span><div class="shared-passport__timeline">@for (year of shared.passportProfile.years; track year.year) { <article><strong>{{ year.year }}</strong><span>{{ (year.completedRideCount != null ? 'passportProfileShare.public.yearDetail' : 'passportProfileShare.public.yearVisits') | translate:{ parks: year.parkCount, visits: year.visitCount, rides: year.completedRideCount } }}</span></article> }</div></section> }
+
+      @if (shared.passportProfile.parks.length > 0) { <section><span class="shared-passport__kicker">{{ 'passportProfileShare.public.parks' | translate }}</span><ol class="shared-passport__parks">@for (park of shared.passportProfile.parks; track park.name) { <li><span class="shared-passport__rank">{{ $index + 1 }}</span><div><h2>{{ park.name }}</h2><p>{{ (park.completedRideCount != null ? 'passportProfileShare.public.parkDetail' : 'passportProfileShare.public.parkVisits') | translate:{ country: park.countryCode ? countryName(park.countryCode) : '—', first: park.firstVisitYear, last: park.lastVisitYear, visits: park.visitCount, rides: park.completedRideCount } }}</p></div>@if (park.visitRatings?.average != null) { <strong>{{ formatRating(park.visitRatings?.average) }}/5</strong> }</li> }</ol></section> }
+
+      @if (shared.passportProfile.personalRanking.length > 0) { <section><span class="shared-passport__kicker">{{ 'passportProfileShare.public.ranking' | translate }}</span><ol class="shared-passport__ranking">@for (rating of shared.passportProfile.personalRanking; track rating.name + rating.targetType) { <li><span>{{ $index + 1 }}</span><div><h2>{{ rating.name }}</h2><p>{{ rating.parkName || ('passportProfileShare.noPark' | translate) }}</p></div><strong>{{ formatRating(rating.rating) }}/5</strong></li> }</ol></section> }
+
+      @if (shared.passportProfile.missedItems.length > 0) { <section><span class="shared-passport__kicker">{{ 'passportProfileShare.public.missed' | translate }}</span><div class="shared-passport__missed">@for (item of shared.passportProfile.missedItems; track item.name + item.status) { <span>{{ item.name }} · {{ ('passportProfileShare.public.status.' + item.status) | translate }}</span> }</div></section> }
+
+      @if (shared.passportProfile.allowsComparisons) { <p class="shared-passport__comparison"><i class="pi pi-users" aria-hidden="true"></i>{{ 'passportProfileShare.public.comparisonReady' | translate }}</p> }
+      @if (shared.passportProfile.hasIncompleteCatalog) { <p class="shared-passport__notice"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'passportProfileShare.public.incompleteCatalog' | translate }}</p> }
+      <p class="shared-passport__proof"><i class="pi pi-verified" aria-hidden="true"></i>{{ 'passportProfileShare.preview.proof' | translate:{ version: shared.passportProfile.calculationVersion } }}</p>
+    </article>
+
+    <section class="shared-passport__footer"><app-public-share-panel targetType="Page" [targetId]="shareId()" [targetTitle]="'passportProfileShare.public.socialTitle' | translate:{ name: shared.passportProfile.displayName || ('passportProfileShare.public.anonymous' | translate) }" titleKey="passportProfileShare.public.socialTitle" descriptionKey="passportProfileShare.public.socialDescription" textKey="passportProfileShare.public.socialText"></app-public-share-panel><aside><i class="pi pi-passport" aria-hidden="true"></i><div><h2>{{ 'passportProfileShare.public.ctaTitle' | translate }}</h2><p>{{ 'passportProfileShare.public.ctaDescription' | translate }}</p><a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'passportProfileShare.public.createMine' | translate }}</a></div></aside></section>
+  } @else {
+    <section class="shared-passport__state" role="status"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i><p>{{ 'passportProfileShare.loading' | translate }}</p></section>
+  }
+</main>

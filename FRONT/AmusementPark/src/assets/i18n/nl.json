@@ -8,6 +8,52 @@
     "profile": "Profiel"
   },
   "passport": {
+    "overview": {
+      "actions": {
+        "sharePassport": "Mijn paspoort delen",
+        "addVisit": "Bezoek toevoegen",
+        "addFirstVisit": "Mijn eerste bezoek toevoegen",
+        "backToProfile": "Terug naar profiel",
+        "openVisit": "Bezoek openen",
+        "retry": "Opnieuw proberen",
+        "loadMore": "Meer bezoeken laden",
+        "loadingMore": "Laden…",
+        "openStatistics": "Mijn statistieken"
+      },
+      "kicker": "Bezoekpaspoort",
+      "title": "Al je bezoeken op één plek",
+      "description": "Vind elk park dat je hebt bewaard en open een bezoek om attracties, herinneringen en je privébeoordelingen toe te voegen.",
+      "privacy": "Dit paspoort is privé en alleen zichtbaar voor jou.",
+      "loading": {
+        "title": "Je paspoort wordt geopend",
+        "description": "Je privébezoeken worden geladen."
+      },
+      "errors": {
+        "title": "Je paspoort kon niet worden geopend",
+        "load": "Je bezoeken konden niet worden geladen. Probeer het zo opnieuw.",
+        "loadMore": "Meer bezoeken konden niet worden geladen. De bezoeken die al worden getoond, blijven beschikbaar."
+      },
+      "empty": {
+        "title": "Je paspoort wacht op het eerste bezoek",
+        "description": "Voeg een park en de datum die je je herinnert toe om je privégeschiedenis te beginnen."
+      },
+      "list": {
+        "kicker": "Privégeschiedenis",
+        "title": "Al je bezoeken",
+        "loadedCount": {
+          "one": "1 bezoek geladen",
+          "few": "{{count}} bezoeken geladen",
+          "many": "{{count}} bezoeken geladen",
+          "other": "{{count}} bezoeken geladen"
+        },
+        "privateNote": "Privénotitie opgeslagen"
+      },
+      "status": {
+        "Draft": "Concept",
+        "Completed": "Voltooid",
+        "Archived": "Gearchiveerd"
+      }
+    },
     "ratingSuggestions": {
       "kicker": "Een vriendelijke herinnering",
       "title": "Wil je een algemene beoordeling herzien?",
@@ -46,51 +92,6 @@
       "description": "Bewaar een privébezoek, ook als je alleen de maand of het jaar nog weet.",
       "action": "Bezoek toevoegen",
       "openAction": "Mijn paspoort bekijken"
-    },
-    "overview": {
-      "kicker": "Bezoekpaspoort",
-      "title": "Al je bezoeken op één plek",
-      "description": "Vind elk park dat je hebt bewaard en open een bezoek om attracties, herinneringen en je privébeoordelingen toe te voegen.",
-      "privacy": "Dit paspoort is privé en alleen zichtbaar voor jou.",
-      "actions": {
-        "addVisit": "Bezoek toevoegen",
-        "addFirstVisit": "Mijn eerste bezoek toevoegen",
-        "backToProfile": "Terug naar profiel",
-        "openVisit": "Bezoek openen",
-        "retry": "Opnieuw proberen",
-        "loadMore": "Meer bezoeken laden",
-        "loadingMore": "Laden…",
-        "openStatistics": "Mijn statistieken"
-      },
-      "loading": {
-        "title": "Je paspoort wordt geopend",
-        "description": "Je privébezoeken worden geladen."
-      },
-      "errors": {
-        "title": "Je paspoort kon niet worden geopend",
-        "load": "Je bezoeken konden niet worden geladen. Probeer het zo opnieuw.",
-        "loadMore": "Meer bezoeken konden niet worden geladen. De bezoeken die al worden getoond, blijven beschikbaar."
-      },
-      "empty": {
-        "title": "Je paspoort wacht op het eerste bezoek",
-        "description": "Voeg een park en de datum die je je herinnert toe om je privégeschiedenis te beginnen."
-      },
-      "list": {
-        "kicker": "Privégeschiedenis",
-        "title": "Al je bezoeken",
-        "loadedCount": {
-          "one": "1 bezoek geladen",
-          "few": "{{count}} bezoeken geladen",
-          "many": "{{count}} bezoeken geladen",
-          "other": "{{count}} bezoeken geladen"
-        },
-        "privateNote": "Privénotitie opgeslagen"
-      },
-      "status": {
-        "Draft": "Concept",
-        "Completed": "Voltooid",
-        "Archived": "Gearchiveerd"
-      }
     },
     "exports": {
       "kicker": "Kopie van je gegevens",
@@ -848,6 +849,111 @@
         "rideAverage": "Ritgemiddelde / 5",
         "ratedRides": "Beoordeelde ritten"
       }
+    }
+  },
+  "passportProfileShare": {
+    "kicker": "Een openbaar paspoort onder jouw controle",
+    "title": "Kies welk verhaal je vertelt",
+    "description": "Stel een openbare versie van je paspoort samen zonder privégegevens bloot te geven.",
+    "privacyPromise": "Privéreacties, exacte datums en technische identificatoren worden nooit gepubliceerd.",
+    "loading": "Je openbare paspoort voorbereiden",
+    "loadingDescription": "We verzamelen alleen de onderdelen die jij kunt kiezen.",
+    "error": "De deelinstellingen konden niet worden geopend",
+    "errorDescription": "Probeer het over een ogenblik opnieuw.",
+    "live": "Paspoort wordt momenteel gedeeld",
+    "years": "Zichtbare jaren",
+    "parks": "Zichtbare parken",
+    "visitCount": "Bezoeken: {{count}}",
+    "ranking": "Selectie uit je ranglijst",
+    "includeRanking": "De beoordelingen tonen die ik hieronder selecteer",
+    "noPark": "Geen park gekoppeld",
+    "caption": "Je openbare bericht",
+    "allowComparisons": "Uitnodigingen toestaan om dit paspoort met een ander openbaar paspoort te vergelijken",
+    "steps": {
+      "scopeTitle": "Baken je verhaal af",
+      "scopeDescription": "Selecteer de jaren en parken die mogen verschijnen.",
+      "contentTitle": "Kies het detailniveau",
+      "contentDescription": "Elke informatie kan afzonderlijk worden uitgeschakeld.",
+      "accessTitle": "Bepaal wie het kan vinden",
+      "accessDescription": "Een niet-vermelde link is niet vindbaar op de site; een openbaar paspoort kan later ontdekt worden."
+    },
+    "fields": {
+      "PublicDisplayName": "Openbare naam",
+      "Avatar": "Openbare avatar",
+      "RideCount": "Aantal ritten en attracties",
+      "TemporalRatings": "Gemiddelden uit bezoeken",
+      "GeographicStatistics": "Parken, landen en jaren",
+      "MissedItems": "Gemiste attracties",
+      "PublicCaption": "Openbaar bericht"
+    },
+    "visibility": {
+      "Public": "Openbaar",
+      "Unlisted": "Niet vermeld",
+      "unlistedDescription": "Alleen toegankelijk voor mensen met de link.",
+      "publicDescription": "Bedoeld om vindbaar te zijn in toekomstige openbare functies."
+    },
+    "actions": {
+      "back": "Terug naar paspoort",
+      "open": "Openbare pagina bekijken",
+      "preview": "Precies bekijken wat openbaar wordt",
+      "publish": "Deze selectie publiceren",
+      "revoke": "Openbare link uitschakelen"
+    },
+    "preview": {
+      "kicker": "Betrouwbaar voorbeeld",
+      "anonymous": "Pretparkliefhebber",
+      "parks": "parken",
+      "visits": "bezoeken",
+      "rides": "gemaakte ritten",
+      "attractions": "verschillende attracties",
+      "proof": "Controleerbare berekening: versie {{version}}"
+    },
+    "toast": {
+      "published": "Je openbare paspoort is bijgewerkt.",
+      "publishError": "Publiceren is mislukt. Maak het voorbeeld opnieuw en probeer nogmaals.",
+      "revoked": "De openbare link is uitgeschakeld.",
+      "revokeError": "De link kon niet worden uitgeschakeld."
+    },
+    "public": {
+      "anonymous": "Pretparkliefhebber",
+      "notFoundTitle": "Dit paspoort is niet meer beschikbaar",
+      "notFoundDescription": "De eigenaar heeft de link mogelijk uitgeschakeld of vervangen.",
+      "createMine": "Mijn paspoort maken",
+      "errorTitle": "Het paspoort kon niet worden geopend",
+      "errorDescription": "Probeer het over een ogenblik opnieuw.",
+      "breadcrumbLabel": "Broodkruimelpad",
+      "home": "Home",
+      "breadcrumb": "Paspoort van {{name}}",
+      "kicker": "Bezoekpaspoort",
+      "subtitle": "Een parkverhaal dat door de eigenaar is gekozen en gedeeld.",
+      "summary": "Samenvatting van het paspoort",
+      "visitRating": "Gemiddelde van bezoeken",
+      "rideRating": "Gemiddelde van ritten",
+      "ratedCount": "{{rated}} beoordelingen van {{total}} ervaringen",
+      "countries": "Verkende landen",
+      "countryDetail": "{{parks}} parken · {{visits}} bezoeken",
+      "years": "Door de jaren heen",
+      "yearVisits": "{{parks}} parken · {{visits}} bezoeken",
+      "yearDetail": "{{parks}} parken · {{visits}} bezoeken · {{rides}} ritten",
+      "parks": "Bezochte parken",
+      "parkVisits": "{{country}} · van {{first}} tot {{last}} · {{visits}} bezoeken",
+      "parkDetail": "{{country}} · van {{first}} tot {{last}} · {{visits}} bezoeken · {{rides}} ritten",
+      "ranking": "Selectie uit de persoonlijke ranglijst",
+      "missed": "Gemiste kansen",
+      "comparisonReady": "Dit lid accepteert uitnodigingen om twee openbare paspoorten te vergelijken.",
+      "incompleteCatalog": "Sommige oudere onderdelen zijn niet meer openbaar en zijn weggelaten.",
+      "status": {
+        "MissedClosure": "gesloten",
+        "MissedOther": "gemist",
+        "Completed": "gedaan"
+      },
+      "ctaTitle": "Ook jouw verhaal verdient een paspoort",
+      "ctaDescription": "Begin zonder account en bewaar je herinneringen wanneer je wilt.",
+      "socialTitle": "Paspoort van {{name}}",
+      "socialDescription": "Ontdek een persoonlijk parkverhaal.",
+      "socialText": "Hier is een bezoekpaspoort dat op Amusement Parks is gedeeld.",
+      "seoTitle": "Parkpaspoort van {{name}}",
+      "seoDescription": "Ontdek de parken, bezoeken en herinneringen die {{name}} heeft gekozen om te delen."
     }
   },
   "user-profile": {

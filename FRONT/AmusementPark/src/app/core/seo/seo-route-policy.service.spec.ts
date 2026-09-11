@@ -94,4 +94,11 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isSharedYearRecapRoute('/fr/passport/shared/years')).toBe(false);
     expect(service.isAccountRoute('/fr/passport/shared/years/opaque-token')).toBe(false);
   });
+
+  it('recognizes shared passport profiles as public noindex pages instead of account pages', (): void => {
+    expect(service.isSharedPassportProfileRoute('/fr/passport/shared/profiles/opaque-token')).toBe(true);
+    expect(service.isSharedPassportProfileRoute('/fr/passport/shared/profiles/opaque-token?from=copy')).toBe(true);
+    expect(service.isSharedPassportProfileRoute('/fr/passport/shared/profiles')).toBe(false);
+    expect(service.isAccountRoute('/fr/passport/shared/profiles/opaque-token')).toBe(false);
+  });
 });

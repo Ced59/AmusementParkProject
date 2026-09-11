@@ -34,6 +34,13 @@ public static class SharingHttpMappers
             includedFields.Add(field);
         }
 
+        PassportProfileShareInput? passportProfile = null;
+        if (request.PassportProfile is not null
+            && !TryToApplication(request.PassportProfile, out passportProfile))
+        {
+            return false;
+        }
+
         command = new PublishSharePublicationCommand(
             ownerUserId,
             publicationType,
@@ -44,7 +51,8 @@ public static class SharingHttpMappers
             includedFields.Distinct().ToArray(),
             request.ApprovalToken.Trim(),
             request.VisitRecap?.ToApplication(),
-            request.YearRecap?.ToApplication());
+            request.YearRecap?.ToApplication(),
+            passportProfile);
         return true;
     }
 
@@ -71,6 +79,13 @@ public static class SharingHttpMappers
             includedFields.Add(field);
         }
 
+        PassportProfileShareInput? passportProfile = null;
+        if (request.PassportProfile is not null
+            && !TryToApplication(request.PassportProfile, out passportProfile))
+        {
+            return false;
+        }
+
         query = new PreviewSharePublicationQuery(
             ownerUserId,
             publicationType,
@@ -78,7 +93,8 @@ public static class SharingHttpMappers
             datePrecision,
             includedFields.Distinct().ToArray(),
             request.VisitRecap?.ToApplication(),
-            request.YearRecap?.ToApplication());
+            request.YearRecap?.ToApplication(),
+            passportProfile);
         return true;
     }
 
@@ -100,6 +116,7 @@ public static class SharingHttpMappers
             PersonalRanking = value.PersonalRanking?.ToHttp(),
             VisitRecap = value.VisitRecap?.ToHttp(),
             YearRecap = value.YearRecap?.ToHttp(),
+            PassportProfile = value.PassportProfile?.ToHttp(),
         };
     }
 
@@ -115,6 +132,7 @@ public static class SharingHttpMappers
             IncludedFields = value.IncludedFields
                 .Select(static field => field.ToString())
                 .ToList(),
+            Visibility = value.Visibility?.ToString(),
         };
     }
 
@@ -256,6 +274,131 @@ public static class SharingHttpMappers
     private static YearRecapShareInput ToApplication(this YearRecapShareInputDto value)
     {
         return new YearRecapShareInput(value.PublicCaption);
+    }
+
+    private static bool TryToApplication(
+        PassportProfileShareInputDto value,
+        out PassportProfileShareInput? input)
+    {
+        input = null;
+        if (!TryParseDefined(value.Visibility, out ShareVisibility visibility)
+            || visibility is not ShareVisibility.Unlisted and not ShareVisibility.Public)
+        {
+            return false;
+        }
+
+        input = new PassportProfileShareInput(
+            value.SelectedYears,
+            value.SelectedParkIds,
+            value.SelectedRatingKeys,
+            value.PublicCaption,
+            visibility,
+            value.AllowsComparisons);
+        return true;
+    }
+
+    public static PassportProfileShareSelectionDto ToHttp(
+        this PassportProfileShareSelectionResult value)
+    {
+        return new PassportProfileShareSelectionDto
+        {
+            Years = value.Years.Select(static item => new PassportProfileShareYearCandidateDto
+            {
+                Year = item.Year,
+                VisitCount = item.VisitCount,
+            }).ToList(),
+            Parks = value.Parks.Select(static item => new PassportProfileShareParkCandidateDto
+            {
+                ParkId = item.ParkId,
+                Name = item.Name,
+                CountryCode = item.CountryCode,
+                VisitCount = item.VisitCount,
+            }).ToList(),
+            Ratings = value.Ratings.Select(static item => new PassportProfileShareRatingCandidateDto
+            {
+                SelectionKey = item.SelectionKey,
+                Name = item.Name,
+                ParkName = item.ParkName,
+                Rating = item.Rating,
+            }).ToList(),
+            SavedSelectedYears = value.SavedSelectedYears?.ToList(),
+            SavedSelectedParkIds = value.SavedSelectedParkIds?.ToList(),
+            SavedSelectedRatingKeys = value.SavedSelectedRatingKeys?.ToList(),
+            SavedPublicCaption = value.SavedPublicCaption,
+            SavedVisibility = value.SavedVisibility.ToString(),
+            SavedAllowsComparisons = value.SavedAllowsComparisons,
+            HasSavedSnapshot = value.HasSavedSnapshot,
+        };
+    }
+
+    public static PassportProfileSharePreviewDto ToHttp(
+        this PassportProfileSharePreviewResult value)
+    {
+        return new PassportProfileSharePreviewDto
+        {
+            DisplayName = value.DisplayName,
+            AvatarUrl = value.AvatarUrl,
+            PublicCaption = value.PublicCaption,
+            Visibility = value.Visibility.ToString(),
+            AllowsComparisons = value.AllowsComparisons,
+            ParkCount = value.ParkCount,
+            VisitCount = value.VisitCount,
+            TotalRideCount = value.TotalRideCount,
+            DistinctItemCount = value.DistinctItemCount,
+            VisitRatings = value.VisitRatings?.ToHttp(),
+            RideRatings = value.RideRatings?.ToHttp(),
+            Countries = value.Countries.Select(static item => new PassportProfileShareCountryDto
+            {
+                CountryCode = item.CountryCode,
+                ParkCount = item.ParkCount,
+                VisitCount = item.VisitCount,
+            }).ToList(),
+            Years = value.Years.Select(static item => new PassportProfileShareYearDto
+            {
+                Year = item.Year,
+                VisitCount = item.VisitCount,
+                ParkCount = item.ParkCount,
+                CompletedRideCount = item.CompletedRideCount,
+            }).ToList(),
+            Parks = value.Parks.Select(static item => new PassportProfileShareParkDto
+            {
+                Name = item.Name,
+                CountryCode = item.CountryCode,
+                VisitCount = item.VisitCount,
+                FirstVisitYear = item.FirstVisitYear,
+                LastVisitYear = item.LastVisitYear,
+                CompletedRideCount = item.CompletedRideCount,
+                VisitRatings = item.VisitRatings?.ToHttp(),
+            }).ToList(),
+            PersonalRanking = value.PersonalRanking.Select(static item => new PassportProfileShareRatingDto
+            {
+                TargetType = item.TargetType,
+                Name = item.Name,
+                ParkName = item.ParkName,
+                Category = item.Category,
+                Rating = item.Rating,
+            }).ToList(),
+            MissedItems = value.MissedItems.Select(static item => new PassportProfileShareMissedItemDto
+            {
+                Name = item.Name,
+                Status = item.Status,
+                OccurrenceCount = item.OccurrenceCount,
+            }).ToList(),
+            HasIncompleteCatalog = value.HasIncompleteCatalog,
+            CalculationVersion = value.CalculationVersion,
+            IsEmpty = value.IsEmpty,
+        };
+    }
+
+    private static PassportProfileShareRatingSummaryDto ToHttp(
+        this PassportProfileShareRatingSummaryResult value)
+    {
+        return new PassportProfileShareRatingSummaryDto
+        {
+            RatedCount = value.RatedCount,
+            EligibleCount = value.EligibleCount,
+            Average = value.Average,
+        };
     }
 
     public static YearRecapSharePreviewDto ToHttp(this YearRecapSharePreviewResult value)

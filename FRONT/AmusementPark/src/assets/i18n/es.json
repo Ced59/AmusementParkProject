@@ -8,6 +8,52 @@
     "profile": "Perfil"
   },
   "passport": {
+    "overview": {
+      "actions": {
+        "sharePassport": "Compartir mi pasaporte",
+        "addVisit": "Añadir una visita",
+        "addFirstVisit": "Añadir mi primera visita",
+        "backToProfile": "Volver al perfil",
+        "openVisit": "Abrir la visita",
+        "retry": "Reintentar",
+        "loadMore": "Cargar más visitas",
+        "loadingMore": "Cargando…",
+        "openStatistics": "Mis estadísticas"
+      },
+      "kicker": "Pasaporte de visitas",
+      "title": "Todas tus visitas en un solo lugar",
+      "description": "Encuentra cada parque que guardaste y abre una visita para añadir atracciones, recuerdos y tus valoraciones privadas.",
+      "privacy": "Este pasaporte es privado y solo tú puedes verlo.",
+      "loading": {
+        "title": "Abriendo tu pasaporte",
+        "description": "Tus visitas privadas se están cargando."
+      },
+      "errors": {
+        "title": "No se ha podido abrir tu pasaporte",
+        "load": "No se han podido cargar tus visitas. Vuelve a intentarlo en un momento.",
+        "loadMore": "No se han podido cargar más visitas. Las visitas que ya se muestran siguen disponibles."
+      },
+      "empty": {
+        "title": "Tu pasaporte espera su primera visita",
+        "description": "Añade un parque y la fecha que recuerdes para empezar tu historial privado."
+      },
+      "list": {
+        "kicker": "Historial privado",
+        "title": "Todas tus visitas",
+        "loadedCount": {
+          "one": "1 visita cargada",
+          "few": "{{count}} visitas cargadas",
+          "many": "{{count}} visitas cargadas",
+          "other": "{{count}} visitas cargadas"
+        },
+        "privateNote": "Nota privada guardada"
+      },
+      "status": {
+        "Draft": "Borrador",
+        "Completed": "Completada",
+        "Archived": "Archivada"
+      }
+    },
     "ratingSuggestions": {
       "kicker": "Un recordatorio discreto",
       "title": "¿Quieres revisar una valoración global?",
@@ -46,51 +92,6 @@
       "description": "Guarda una visita privada aunque solo recuerdes el mes o el año.",
       "action": "Añadir una visita",
       "openAction": "Ver mi pasaporte"
-    },
-    "overview": {
-      "kicker": "Pasaporte de visitas",
-      "title": "Todas tus visitas en un solo lugar",
-      "description": "Encuentra cada parque que guardaste y abre una visita para añadir atracciones, recuerdos y tus valoraciones privadas.",
-      "privacy": "Este pasaporte es privado y solo tú puedes verlo.",
-      "actions": {
-        "addVisit": "Añadir una visita",
-        "addFirstVisit": "Añadir mi primera visita",
-        "backToProfile": "Volver al perfil",
-        "openVisit": "Abrir la visita",
-        "retry": "Reintentar",
-        "loadMore": "Cargar más visitas",
-        "loadingMore": "Cargando…",
-        "openStatistics": "Mis estadísticas"
-      },
-      "loading": {
-        "title": "Abriendo tu pasaporte",
-        "description": "Tus visitas privadas se están cargando."
-      },
-      "errors": {
-        "title": "No se ha podido abrir tu pasaporte",
-        "load": "No se han podido cargar tus visitas. Vuelve a intentarlo en un momento.",
-        "loadMore": "No se han podido cargar más visitas. Las visitas que ya se muestran siguen disponibles."
-      },
-      "empty": {
-        "title": "Tu pasaporte espera su primera visita",
-        "description": "Añade un parque y la fecha que recuerdes para empezar tu historial privado."
-      },
-      "list": {
-        "kicker": "Historial privado",
-        "title": "Todas tus visitas",
-        "loadedCount": {
-          "one": "1 visita cargada",
-          "few": "{{count}} visitas cargadas",
-          "many": "{{count}} visitas cargadas",
-          "other": "{{count}} visitas cargadas"
-        },
-        "privateNote": "Nota privada guardada"
-      },
-      "status": {
-        "Draft": "Borrador",
-        "Completed": "Completada",
-        "Archived": "Archivada"
-      }
     },
     "exports": {
       "kicker": "Copia de tus datos",
@@ -848,6 +849,111 @@
         "rideAverage": "Media de recorridos / 5",
         "ratedRides": "Recorridos valorados"
       }
+    }
+  },
+  "passportProfileShare": {
+    "kicker": "Un pasaporte público bajo tu control",
+    "title": "Elige la historia que compartes",
+    "description": "Compón una versión pública de tu pasaporte sin exponer datos privados.",
+    "privacyPromise": "Los comentarios privados, las fechas exactas y los identificadores técnicos nunca se publican.",
+    "loading": "Preparando tu pasaporte público",
+    "loadingDescription": "Solo reunimos los elementos que puedes elegir.",
+    "error": "No se han podido abrir los ajustes",
+    "errorDescription": "Vuelve a intentarlo en unos instantes.",
+    "live": "Pasaporte compartido actualmente",
+    "years": "Años visibles",
+    "parks": "Parques visibles",
+    "visitCount": "Visitas: {{count}}",
+    "ranking": "Selección de tu clasificación",
+    "includeRanking": "Mostrar las notas que seleccione abajo",
+    "noPark": "Sin parque asociado",
+    "caption": "Tu mensaje público",
+    "allowComparisons": "Permitir invitaciones para comparar este pasaporte con otro pasaporte público",
+    "steps": {
+      "scopeTitle": "Delimita tu historia",
+      "scopeDescription": "Selecciona los años y parques que pueden aparecer.",
+      "contentTitle": "Elige el nivel de detalle",
+      "contentDescription": "Cada dato puede desactivarse por separado.",
+      "accessTitle": "Decide quién puede encontrarlo",
+      "accessDescription": "Un enlace no listado no se descubre en el sitio; un pasaporte público podrá descubrirse."
+    },
+    "fields": {
+      "PublicDisplayName": "Nombre público",
+      "Avatar": "Avatar público",
+      "RideCount": "Número de vueltas y atracciones",
+      "TemporalRatings": "Medias de las visitas",
+      "GeographicStatistics": "Parques, países y años",
+      "MissedItems": "Atracciones perdidas",
+      "PublicCaption": "Mensaje público"
+    },
+    "visibility": {
+      "Public": "Público",
+      "Unlisted": "No listado",
+      "unlistedDescription": "Solo pueden acceder quienes tengan el enlace.",
+      "publicDescription": "Preparado para descubrirse en futuras funciones públicas."
+    },
+    "actions": {
+      "back": "Volver al pasaporte",
+      "open": "Ver la página pública",
+      "preview": "Ver exactamente qué será público",
+      "publish": "Publicar esta selección",
+      "revoke": "Desactivar el enlace público"
+    },
+    "preview": {
+      "kicker": "Vista previa fiel",
+      "anonymous": "Amante de los parques",
+      "parks": "parques",
+      "visits": "visitas",
+      "rides": "vueltas realizadas",
+      "attractions": "atracciones diferentes",
+      "proof": "Cálculo verificable: versión {{version}}"
+    },
+    "toast": {
+      "published": "Tu pasaporte público está actualizado.",
+      "publishError": "La publicación no se ha completado. Vuelve a crear la vista previa e inténtalo de nuevo.",
+      "revoked": "El enlace público está desactivado.",
+      "revokeError": "No se ha podido desactivar el enlace."
+    },
+    "public": {
+      "anonymous": "Amante de los parques",
+      "notFoundTitle": "Este pasaporte ya no está disponible",
+      "notFoundDescription": "Es posible que su propietario haya desactivado o sustituido el enlace.",
+      "createMine": "Crear mi pasaporte",
+      "errorTitle": "No se ha podido abrir el pasaporte",
+      "errorDescription": "Vuelve a intentarlo en unos instantes.",
+      "breadcrumbLabel": "Migas de pan",
+      "home": "Inicio",
+      "breadcrumb": "Pasaporte de {{name}}",
+      "kicker": "Pasaporte de visitas",
+      "subtitle": "Una historia de parques elegida y compartida por su propietario.",
+      "summary": "Resumen del pasaporte",
+      "visitRating": "Media de las visitas",
+      "rideRating": "Media de las vueltas",
+      "ratedCount": "{{rated}} notas de {{total}} experiencias",
+      "countries": "Países explorados",
+      "countryDetail": "{{parks}} parques · {{visits}} visitas",
+      "years": "A lo largo de los años",
+      "yearVisits": "{{parks}} parques · {{visits}} visitas",
+      "yearDetail": "{{parks}} parques · {{visits}} visitas · {{rides}} vueltas",
+      "parks": "Parques visitados",
+      "parkVisits": "{{country}} · de {{first}} a {{last}} · {{visits}} visitas",
+      "parkDetail": "{{country}} · de {{first}} a {{last}} · {{visits}} visitas · {{rides}} vueltas",
+      "ranking": "Selección de la clasificación personal",
+      "missed": "Ocasiones perdidas",
+      "comparisonReady": "Este miembro acepta invitaciones para comparar dos pasaportes públicos.",
+      "incompleteCatalog": "Algunos elementos antiguos ya no son públicos y se han excluido.",
+      "status": {
+        "MissedClosure": "cerrada",
+        "MissedOther": "perdida",
+        "Completed": "realizada"
+      },
+      "ctaTitle": "Tu historia también merece un pasaporte",
+      "ctaDescription": "Empieza sin cuenta y conserva tus recuerdos cuando quieras.",
+      "socialTitle": "El pasaporte de {{name}}",
+      "socialDescription": "Descubre una historia personal de parques.",
+      "socialText": "Aquí tienes un pasaporte de visitas compartido en Amusement Parks.",
+      "seoTitle": "Pasaporte de parques de {{name}}",
+      "seoDescription": "Descubre los parques, visitas y recuerdos que {{name}} ha elegido compartir."
     }
   },
   "user-profile": {

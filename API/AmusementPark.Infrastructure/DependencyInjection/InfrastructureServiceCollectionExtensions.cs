@@ -228,8 +228,11 @@ public static class InfrastructureServiceCollectionExtensions
             VisitRecapShareSnapshotRepository>();
         services.AddScoped<IYearRecapShareSnapshotRepository,
             YearRecapShareSnapshotRepository>();
+        services.AddScoped<IPassportProfileShareSnapshotRepository,
+            PassportProfileShareSnapshotRepository>();
         services.AddScoped<IVisitRecapSourceReader, VisitRecapSourceReader>();
         services.AddScoped<IYearRecapSourceReader, YearRecapSourceReader>();
+        services.AddScoped<IPassportProfileSourceReader, PassportProfileSourceReader>();
         services.AddScoped<IVisitRecapPublicParkReader, VisitRecapPublicParkReader>();
         services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
         services.AddScoped<IUserVisitRepository, UserVisitRepository>();

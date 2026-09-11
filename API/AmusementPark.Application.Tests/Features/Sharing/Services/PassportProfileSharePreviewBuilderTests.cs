@@ -1,0 +1,356 @@
+using System.Text.Json;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Sharing.Services;
+using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Domain.Visits;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Sharing.Services;
+
+public sealed class PassportProfileSharePreviewBuilderTests
+{
+    private static readonly DateTime NowUtc =
+        new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public async Task BuildAsync_ShouldExposeOnlyTheSelectedPublicStoryWithoutTechnicalIds()
+    {
+        PassportProfileSourceData source = CreateSource();
+        Mock<IPassportProfileSourceReader> sourceReader =
+            new Mock<IPassportProfileSourceReader>(MockBehavior.Strict);
+        sourceReader.Setup(value => value.ReadOwnedCompletedPassportAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(source);
+        Mock<IPassportProfileShareSourceVersionProvider> versions =
+            new Mock<IPassportProfileShareSourceVersionProvider>(MockBehavior.Strict);
+        versions.Setup(value => value.GetOwnedSourceVersionAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
+                new PassportProfileShareSourceRevision(12, source.SourceFingerprint)));
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IVisitTargetResolver> targets = CreateTargetResolver();
+        Mock<IRatingRepository> ratings = CreateRatingRepository();
+        Mock<IUserRepository> users = CreateUserRepository();
+        Mock<IImageRepository> images = CreateImageRepository();
+        PassportProfileSharePreviewBuilder builder = new PassportProfileSharePreviewBuilder(
+            sourceReader.Object,
+            versions.Object,
+            parks.Object,
+            targets.Object,
+            ratings.Object,
+            users.Object,
+            images.Object);
+        ShareContentPolicy policy = CreateFullPolicy();
+        string selectedRating = PassportProfileRatingSelectionKey.Create(
+            RatingTargetType.ParkItem,
+            "item-technical-id");
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-technical-id",
+            policy,
+            new PassportProfileShareInput(
+                new[] { 2026 },
+                new[] { "park-public-id" },
+                new[] { selectedRating },
+                "Mon année la plus intense.",
+                ShareVisibility.Public,
+                true),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PassportProfileSharePreviewResult profile = Assert.IsType<PassportProfileSharePreviewResult>(
+            result.Value!.PassportProfile);
+        Assert.Equal("Camille", profile.DisplayName);
+        Assert.Equal("/images/avatar-public-id", profile.AvatarUrl);
+        Assert.Equal(1, profile.ParkCount);
+        Assert.Equal(1, profile.VisitCount);
+        Assert.Equal(1, profile.TotalRideCount);
+        Assert.Equal("Parc public", Assert.Single(profile.Parks).Name);
+        Assert.Equal("Attraction publique", Assert.Single(profile.PersonalRanking).Name);
+        Assert.Equal("Attraction fermée", Assert.Single(profile.MissedItems).Name);
+        Assert.True(profile.AllowsComparisons);
+        Assert.True(profile.HasIncompleteCatalog);
+        Assert.False(profile.IsEmpty);
+
+        string serialized = JsonSerializer.Serialize(profile);
+        Assert.DoesNotContain("owner-technical-id", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-public-id", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("visit-public-id", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("item-technical-id", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("rating-private-id", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("2026-06-14", serialized, StringComparison.Ordinal);
+        sourceReader.VerifyAll();
+        versions.Verify(value => value.GetOwnedSourceVersionAsync(
+            "owner-technical-id",
+            CancellationToken.None), Times.Exactly(2));
+        parks.VerifyAll();
+        targets.VerifyAll();
+        ratings.VerifyAll();
+        users.Verify(value => value.GetByIdAsync(
+            "owner-technical-id",
+            CancellationToken.None), Times.Exactly(2));
+        images.Verify(value => value.GetCurrentByOwnerAuthoritativeAsync(
+            ImageOwnerType.User,
+            "owner-technical-id",
+            ImageCategory.Avatar,
+            CancellationToken.None), Times.Exactly(2));
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenAValidParkIsDeselected_ShouldNotReportCatalogLoss()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+        PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-technical-id",
+            ShareContentPolicy.Create(
+                SharePublicationType.PassportProfile,
+                ShareDatePrecision.Year,
+                new[] { ShareContentField.GeographicStatistics }),
+            new PassportProfileShareInput(
+                new[] { 2026 },
+                Array.Empty<string>(),
+                Array.Empty<string>(),
+                null,
+                ShareVisibility.Unlisted,
+                false),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value!.PassportProfile!.HasIncompleteCatalog);
+        Assert.True(result.Value.PassportProfile.IsEmpty);
+    }
+
+    private static PassportProfileSharePreviewBuilder CreateBuilderWithoutOptionalContent(
+        PassportProfileSourceData source)
+    {
+        Mock<IPassportProfileSourceReader> sourceReader =
+            new Mock<IPassportProfileSourceReader>();
+        sourceReader.Setup(value => value.ReadOwnedCompletedPassportAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(source);
+        Mock<IPassportProfileShareSourceVersionProvider> versions =
+            new Mock<IPassportProfileShareSourceVersionProvider>();
+        versions.Setup(value => value.GetOwnedSourceVersionAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
+                new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));
+        return new PassportProfileSharePreviewBuilder(
+            sourceReader.Object,
+            versions.Object,
+            CreateParkRepository().Object,
+            Mock.Of<IVisitTargetResolver>(MockBehavior.Strict),
+            Mock.Of<IRatingRepository>(MockBehavior.Strict),
+            CreateUserRepository().Object,
+            Mock.Of<IImageRepository>(MockBehavior.Strict));
+    }
+
+    private static PassportProfileSourceData CreateSource()
+    {
+        return new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    RatingValue.FromDouble(4.5)),
+                new PassportVisitStatisticsObservation(
+                    "visit-hidden-id",
+                    "park-hidden-id",
+                    VisitDate.ForDay(2025, 7, 1),
+                    RatingValue.FromDouble(2)),
+            },
+            new[]
+            {
+                CreateRide("ride-completed-id", "item-technical-id", RideOccurrenceStatus.Completed, 4.5),
+                CreateRide("ride-missed-id", "item-closed-id", RideOccurrenceStatus.MissedClosed, null),
+            },
+            new Dictionary<string, string?>(StringComparer.Ordinal)
+            {
+                ["item-closed-id"] = "Attraction fermée",
+            },
+            "stable-fingerprint",
+            true);
+    }
+
+    private static PassportRideStatisticsObservation CreateRide(
+        string occurrenceId,
+        string itemId,
+        RideOccurrenceStatus status,
+        double? rating)
+    {
+        return new PassportRideStatisticsObservation(
+            occurrenceId,
+            "visit-public-id",
+            "park-public-id",
+            itemId,
+            VisitDate.ForDay(2026, 6, 14),
+            status,
+            rating.HasValue ? RatingValue.FromDouble(rating.Value) : null,
+            ParkItemCategory.Attraction.ToString(),
+            ParkItemCategory.Attraction.ToString());
+    }
+
+    private static ShareContentPolicy CreateFullPolicy()
+    {
+        return ShareContentPolicy.Create(
+            SharePublicationType.PassportProfile,
+            ShareDatePrecision.Year,
+            new[]
+            {
+                ShareContentField.PublicDisplayName,
+                ShareContentField.Avatar,
+                ShareContentField.RideCount,
+                ShareContentField.TemporalRatings,
+                ShareContentField.GlobalRatings,
+                ShareContentField.PublicCaption,
+                ShareContentField.GeographicStatistics,
+                ShareContentField.MissedItems,
+            });
+    }
+
+    private static Mock<IParkRepository> CreateParkRepository()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdsAsync(
+                It.IsAny<IEnumerable<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-public-id",
+                    Name = "Parc public",
+                    CountryCode = "FR",
+                    IsVisible = true,
+                },
+                new Park
+                {
+                    Id = "park-hidden-id",
+                    Name = "Parc privé",
+                    CountryCode = "BE",
+                    IsVisible = false,
+                },
+            });
+        return parks;
+    }
+
+    private static Mock<IVisitTargetResolver> CreateTargetResolver()
+    {
+        Mock<IVisitTargetResolver> targets = new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        targets.Setup(value => value.ResolveAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            {
+                ["item-technical-id"] = new VisitTarget(
+                    "item-technical-id",
+                    "park-public-id",
+                    "Attraction publique",
+                    ParkItemCategory.Attraction,
+                    null,
+                    null),
+            });
+        return targets;
+    }
+
+    private static Mock<IRatingRepository> CreateRatingRepository()
+    {
+        Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
+                "owner-technical-id",
+                101,
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new UserRatingListItemResult(
+                    "rating-private-id",
+                    RatingTargetType.ParkItem,
+                    "item-technical-id",
+                    "Attraction publique",
+                    "park-public-id",
+                    "Parc public",
+                    ParkItemCategory.Attraction,
+                    ParkItemType.RollerCoaster,
+                    4.5,
+                    NowUtc,
+                    new RatingSummaryResult(
+                        RatingTargetType.ParkItem,
+                        "item-technical-id",
+                        10,
+                        4.2,
+                        4.1)),
+            });
+        return ratings;
+    }
+
+    private static Mock<IUserRepository> CreateUserRepository()
+    {
+        Mock<IUserRepository> users = new Mock<IUserRepository>();
+        users.Setup(value => value.GetByIdAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(new User
+            {
+                Id = "owner-technical-id",
+                Email = "private@example.com",
+                IsActivated = true,
+                PublicDisplayName = "Camille",
+                AvatarUrl = "/private/avatar-reference",
+            });
+        return users;
+    }
+
+    private static Mock<IImageRepository> CreateImageRepository()
+    {
+        Mock<IImageRepository> images = new Mock<IImageRepository>();
+        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                "owner-technical-id",
+                ImageCategory.Avatar,
+                CancellationToken.None))
+            .ReturnsAsync(new Image
+            {
+                Id = "avatar-public-id",
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "owner-technical-id",
+                Category = ImageCategory.Avatar,
+                IsCurrent = true,
+                IsPublished = true,
+            });
+        return images;
+    }
+}

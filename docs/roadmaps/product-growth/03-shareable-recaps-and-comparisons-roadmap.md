@@ -287,6 +287,32 @@ une colonne sous 760, 620 et 520 px et réduisent leurs marges à 360 px afin de
 utilisables dès 320 px. `SHARE-08` peut maintenant rendre le passeport public avec
 une sélection plus granulaire sur la même autorité de consentement.
 
+### État de `SHARE-08` au 12 septembre 2026
+
+Le passeport public sélectionnable est implémenté en version 5.2.15 sur l'autorité
+unique `SharePublication`, sans adaptateur ni second système de partage. Depuis son
+passeport, le membre choisit les années, les parcs, les notes de son classement,
+son nom public, son avatar, ses compteurs, ses moyennes, ses pays, ses occasions
+manquées et une légende publique. Il décide également si le lien est public ou non
+répertorié et s'il accepte de futures invitations de comparaison.
+
+L'aperçu serveur est la seule source autorisée pour publier. Il ne retient que les
+visites terminées et les passages actifs rattachés à des parcs et lieux encore
+publics. Les commentaires privés, dates plus précises que l'année, identifiants de
+visite, de parc, d'attraction et d'utilisateur sont absents du contrat public. La
+sélection technique reste privée dans le snapshot MongoDB afin de restaurer les
+choix du propriétaire. Une empreinte lie données, visibilité, consentement de
+comparaison, légende et sélection : toute modification impose un nouvel aperçu.
+
+La page anonyme résout uniquement le jeton opaque, revalide la publication avant et
+après lecture, refuse les liens révoqués et applique `noindex,nofollow,noarchive`
+ainsi que `Referrer-Policy: no-referrer`. Son récit rassemble les compteurs choisis,
+les pays, la chronologie annuelle, les parcs, les moyennes et le classement public,
+sans écran administratif. L'atelier privé et la page publique bornent toutes leurs
+grilles et leurs textes, se replient en une colonne et restent contenus dès 320 px.
+`SHARE-09` peut maintenant produire des images sociales à partir de ce snapshot,
+sans relire le passeport privé.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

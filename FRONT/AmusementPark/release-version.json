@@ -1,6 +1,20 @@
 {
-  "version": "5.2.14",
+  "version": "5.2.15",
   "history": [
+    {
+      "version": "5.2.15",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Tu peux choisir précisément ce que ton passeport public raconte.",
+        "en": "You can choose exactly what your public passport shares.",
+        "de": "Du kannst genau bestimmen, was dein öffentlicher Pass zeigt.",
+        "nl": "Je kunt precies kiezen wat je openbare paspoort deelt.",
+        "it": "Puoi scegliere con precisione cosa mostra il tuo passaporto pubblico.",
+        "es": "Puedes elegir con precisión qué muestra tu pasaporte público.",
+        "pl": "Możesz dokładnie wybrać, co pokazuje Twój publiczny paszport.",
+        "pt": "Podes escolher exatamente o que o teu passaporte público mostra."
+      }
+    },
     {
       "version": "5.2.14",
       "releasedAt": "2026-09-11",

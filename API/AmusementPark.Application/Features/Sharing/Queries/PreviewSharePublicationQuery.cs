@@ -13,5 +13,6 @@ public sealed record PreviewSharePublicationQuery(
     ShareDatePrecision DatePrecision,
     IReadOnlyCollection<ShareContentField> IncludedFields,
     VisitRecapShareInput? VisitRecap = null,
-    YearRecapShareInput? YearRecap = null)
+    YearRecapShareInput? YearRecap = null,
+    PassportProfileShareInput? PassportProfile = null)
     : IQuery<ApplicationResult<SharePublicationPreviewResult>>;

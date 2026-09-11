@@ -47,7 +47,9 @@ export class SeoRoutePolicyService {
   }
 
   isAccountRoute(url: string): boolean {
-    if (this.isSharedVisitRecapRoute(url) || this.isSharedYearRecapRoute(url)) {
+    if (this.isSharedVisitRecapRoute(url)
+        || this.isSharedYearRecapRoute(url)
+        || this.isSharedPassportProfileRoute(url)) {
       return false;
     }
 
@@ -64,6 +66,10 @@ export class SeoRoutePolicyService {
 
   isSharedYearRecapRoute(url: string): boolean {
     return /^\/[a-z]{2}\/passport\/shared\/years\/[^/]+\/?$/i.test(this.normalizePath(url));
+  }
+
+  isSharedPassportProfileRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/passport\/shared\/profiles\/[^/]+\/?$/i.test(this.normalizePath(url));
   }
 
   isFilteredPublicParkRoute(url: string): boolean {

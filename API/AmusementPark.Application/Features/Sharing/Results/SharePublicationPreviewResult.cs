@@ -12,4 +12,5 @@ public sealed record SharePublicationPreviewResult(
     string ApprovalToken = "",
     VisitRecapSharePreviewResult? VisitRecap = null,
     string ContentFingerprint = "",
-    YearRecapSharePreviewResult? YearRecap = null);
+    YearRecapSharePreviewResult? YearRecap = null,
+    PassportProfileSharePreviewResult? PassportProfile = null);

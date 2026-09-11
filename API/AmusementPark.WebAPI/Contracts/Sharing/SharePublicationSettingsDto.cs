@@ -13,4 +13,6 @@ public sealed class SharePublicationSettingsDto
     public string? DatePrecision { get; set; }
 
     public List<string> IncludedFields { get; set; } = new();
+
+    public string? Visibility { get; set; }
 }

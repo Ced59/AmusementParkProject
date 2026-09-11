@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import {
+  PassportProfileShareSelection,
   SharePublicationPreview,
   SharePublicationPreviewRequest,
   SharePublicationPublishRequest,
   SharePublicationSettings,
+  SharedPassportProfile,
   SharedVisitRecap,
   SharedYearRecap,
   VisitRecapShareCandidates,
@@ -82,5 +84,28 @@ export class SharePublicationsApiService {
   getSharedYear(shareId: string): Observable<SharedYearRecap> {
     const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.sharedYear(shareId);
     return this.http.get<SharedYearRecap>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  getPassportProfileSettings(): Observable<SharePublicationSettings> {
+    return this.http.get<SharePublicationSettings>(
+      `${environment.apiBaseUrl}${SHARE_PUBLICATIONS_API_ENDPOINTS.passportProfileSettings}`
+    );
+  }
+
+  getPassportProfileSelection(): Observable<PassportProfileShareSelection> {
+    return this.http.get<PassportProfileShareSelection>(
+      `${environment.apiBaseUrl}${SHARE_PUBLICATIONS_API_ENDPOINTS.passportProfileSelection}`
+    );
+  }
+
+  revokePassportProfile(): Observable<SharePublicationSettings> {
+    return this.http.delete<SharePublicationSettings>(
+      `${environment.apiBaseUrl}${SHARE_PUBLICATIONS_API_ENDPOINTS.passportProfileSettings}`
+    );
+  }
+
+  getSharedPassportProfile(shareId: string): Observable<SharedPassportProfile> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.sharedPassportProfile(shareId);
+    return this.http.get<SharedPassportProfile>(`${environment.apiBaseUrl}${endpoint}`);
   }
 }

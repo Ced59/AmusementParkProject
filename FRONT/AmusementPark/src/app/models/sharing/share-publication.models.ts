@@ -56,6 +56,7 @@ export interface SharePublicationPreview {
   personalRanking?: PersonalRankingSharePreview | null;
   visitRecap?: VisitRecapSharePreview | null;
   yearRecap?: YearRecapSharePreview | null;
+  passportProfile?: PassportProfileSharePreview | null;
 }
 
 export interface SharePublicationPreviewRequest {
@@ -65,6 +66,7 @@ export interface SharePublicationPreviewRequest {
   includedFields: ShareContentField[];
   visitRecap?: VisitRecapShareInput | null;
   yearRecap?: YearRecapShareInput | null;
+  passportProfile?: PassportProfileShareInput | null;
 }
 
 export interface SharePublicationPublishRequest {
@@ -77,6 +79,7 @@ export interface SharePublicationPublishRequest {
   approvalToken: string;
   visitRecap?: VisitRecapShareInput | null;
   yearRecap?: YearRecapShareInput | null;
+  passportProfile?: PassportProfileShareInput | null;
 }
 
 export interface SharePublicationSettings {
@@ -86,6 +89,120 @@ export interface SharePublicationSettings {
   policySchemaVersion?: number | null;
   datePrecision?: string | null;
   includedFields: ShareContentField[];
+  visibility?: ShareVisibility | null;
+}
+
+export type ShareVisibility = 'Public' | 'Unlisted';
+
+export interface PassportProfileShareInput {
+  selectedYears: number[];
+  selectedParkIds: string[];
+  selectedRatingKeys: string[];
+  publicCaption?: string | null;
+  visibility: ShareVisibility;
+  allowsComparisons: boolean;
+}
+
+export interface PassportProfileShareYearCandidate {
+  year: number;
+  visitCount: number;
+}
+
+export interface PassportProfileShareParkCandidate {
+  parkId: string;
+  name: string;
+  countryCode?: string | null;
+  visitCount: number;
+}
+
+export interface PassportProfileShareRatingCandidate {
+  selectionKey: string;
+  name: string;
+  parkName?: string | null;
+  rating: number;
+}
+
+export interface PassportProfileShareSelection {
+  years: PassportProfileShareYearCandidate[];
+  parks: PassportProfileShareParkCandidate[];
+  ratings: PassportProfileShareRatingCandidate[];
+  savedSelectedYears?: number[] | null;
+  savedSelectedParkIds?: string[] | null;
+  savedSelectedRatingKeys?: string[] | null;
+  savedPublicCaption?: string | null;
+  savedVisibility: ShareVisibility;
+  savedAllowsComparisons: boolean;
+  hasSavedSnapshot: boolean;
+}
+
+export interface PassportProfileShareRatingSummary {
+  ratedCount: number;
+  eligibleCount: number;
+  average?: number | null;
+}
+
+export interface PassportProfileShareCountry {
+  countryCode: string;
+  parkCount: number;
+  visitCount: number;
+}
+
+export interface PassportProfileShareYear {
+  year: number;
+  visitCount: number;
+  parkCount: number;
+  completedRideCount?: number | null;
+}
+
+export interface PassportProfileSharePark {
+  name: string;
+  countryCode?: string | null;
+  visitCount: number;
+  firstVisitYear: number;
+  lastVisitYear: number;
+  completedRideCount?: number | null;
+  visitRatings?: PassportProfileShareRatingSummary | null;
+}
+
+export interface PassportProfileShareRating {
+  targetType: string;
+  name: string;
+  parkName?: string | null;
+  category?: string | null;
+  rating: number;
+}
+
+export interface PassportProfileShareMissedItem {
+  name: string;
+  status: string;
+  occurrenceCount: number;
+}
+
+export interface PassportProfileSharePreview {
+  displayName?: string | null;
+  avatarUrl?: string | null;
+  publicCaption?: string | null;
+  visibility: ShareVisibility;
+  allowsComparisons: boolean;
+  parkCount?: number | null;
+  visitCount?: number | null;
+  totalRideCount?: number | null;
+  distinctItemCount?: number | null;
+  visitRatings?: PassportProfileShareRatingSummary | null;
+  rideRatings?: PassportProfileShareRatingSummary | null;
+  countries: PassportProfileShareCountry[];
+  years: PassportProfileShareYear[];
+  parks: PassportProfileSharePark[];
+  personalRanking: PassportProfileShareRating[];
+  missedItems: PassportProfileShareMissedItem[];
+  hasIncompleteCatalog: boolean;
+  calculationVersion: string;
+  isEmpty: boolean;
+}
+
+export interface SharedPassportProfile {
+  publishedAtUtc: string;
+  passportProfile: PassportProfileSharePreview;
 }
 
 export interface VisitRecapShareInput {

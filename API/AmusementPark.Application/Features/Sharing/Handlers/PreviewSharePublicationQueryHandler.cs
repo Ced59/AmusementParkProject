@@ -99,7 +99,8 @@ public sealed class PreviewSharePublicationQueryHandler
         {
             if (builder is not IVisitRecapSharePreviewBuilder visitRecapBuilder
                 || string.IsNullOrWhiteSpace(query.SourceId)
-                || query.YearRecap is not null)
+                || query.YearRecap is not null
+                || query.PassportProfile is not null)
             {
                 return ApplicationResult<SharePublicationPreviewResult>.Failure(
                     SharingApplicationErrors.PreviewTypeNotAvailable());
@@ -118,7 +119,8 @@ public sealed class PreviewSharePublicationQueryHandler
                 || !YearRecapSharePublicationSource.TryParseYear(
                     query.SourceId,
                     out int year)
-                || query.VisitRecap is not null)
+                || query.VisitRecap is not null
+                || query.PassportProfile is not null)
             {
                 return ApplicationResult<SharePublicationPreviewResult>.Failure(
                     SharingApplicationErrors.PreviewTypeNotAvailable());
@@ -131,9 +133,28 @@ public sealed class PreviewSharePublicationQueryHandler
                 query.YearRecap,
                 cancellationToken);
         }
+        else if (query.PublicationType == SharePublicationType.PassportProfile)
+        {
+            if (builder is not IPassportProfileSharePreviewBuilder passportProfileBuilder
+                || !string.IsNullOrWhiteSpace(query.SourceId)
+                || query.VisitRecap is not null
+                || query.YearRecap is not null)
+            {
+                return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                    SharingApplicationErrors.PreviewTypeNotAvailable());
+            }
+
+            previewResult = await passportProfileBuilder.BuildAsync(
+                ownerUserId,
+                contentPolicy,
+                query.PassportProfile,
+                cancellationToken);
+        }
         else
         {
-            if (query.VisitRecap is not null || query.YearRecap is not null)
+            if (query.VisitRecap is not null
+                || query.YearRecap is not null
+                || query.PassportProfile is not null)
             {
                 return ApplicationResult<SharePublicationPreviewResult>.Failure(
                     SharingApplicationErrors.InvalidSource());

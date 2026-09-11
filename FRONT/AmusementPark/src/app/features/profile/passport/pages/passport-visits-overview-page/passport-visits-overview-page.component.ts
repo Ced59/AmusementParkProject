@@ -60,6 +60,10 @@ export class PassportVisitsOverviewPageComponent implements OnInit {
     void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'statistics']);
   }
 
+  protected openSharing(): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport', 'share']);
+  }
+
   protected openQuickCreate(): void {
     this.quickCreateVisible.set(true);
   }

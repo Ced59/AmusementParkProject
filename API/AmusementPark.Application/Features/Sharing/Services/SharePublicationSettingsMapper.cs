@@ -16,6 +16,7 @@ internal static class SharePublicationSettingsMapper
             isPublic ? publication!.PublishedAtUtc : null,
             publication?.ContentPolicy.SchemaVersion,
             publication?.ContentPolicy.DatePrecision,
-            publication?.ContentPolicy.IncludedFields ?? Array.Empty<ShareContentField>());
+            publication?.ContentPolicy.IncludedFields ?? Array.Empty<ShareContentField>(),
+            publication?.Visibility);
     }
 }
