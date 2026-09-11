@@ -1,6 +1,20 @@
 {
-  "version": "5.2.12",
+  "version": "5.2.13",
   "history": [
+    {
+      "version": "5.2.13",
+      "releasedAt": "2026-09-11",
+      "labels": {
+        "fr": "La navigation et les pages publiques gagnent en sécurité.",
+        "en": "Navigation and public pages are now more secure.",
+        "de": "Navigation und öffentliche Seiten sind jetzt besser geschützt.",
+        "nl": "Navigatie en openbare pagina's zijn nu beter beveiligd.",
+        "it": "La navigazione e le pagine pubbliche sono ora più sicure.",
+        "es": "La navegación y las páginas públicas son ahora más seguras.",
+        "pl": "Nawigacja i strony publiczne są teraz lepiej zabezpieczone.",
+        "pt": "A navegação e as páginas públicas estão agora mais seguras."
+      }
+    },
     {
       "version": "5.2.12",
       "releasedAt": "2026-09-10",
