@@ -1,0 +1,134 @@
+<section class="year-share" aria-labelledby="year-share-title">
+  <header class="year-share__heading">
+    <span class="year-share__icon" aria-hidden="true"><i class="pi pi-sparkles"></i></span>
+    <div>
+      <span class="year-share__kicker">{{ 'yearRecapShare.manage.kicker' | translate }}</span>
+      <h2 id="year-share-title">{{ 'yearRecapShare.manage.title' | translate:{ year: year } }}</h2>
+      <p>{{ (settings()?.isPublic ? 'yearRecapShare.manage.publicDescription' : 'yearRecapShare.manage.privateDescription') | translate }}</p>
+    </div>
+  </header>
+
+  @if (loading()) {
+    <p class="year-share__status" role="status"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i>{{ 'yearRecapShare.manage.loading' | translate }}</p>
+  } @else if (editorOpen()) {
+    <section class="year-share-editor" aria-labelledby="year-share-editor-title">
+      <header>
+        <span class="year-share__kicker">{{ 'yearRecapShare.editor.step' | translate }}</span>
+        <h3 id="year-share-editor-title">{{ 'yearRecapShare.editor.title' | translate }}</h3>
+        <p>{{ 'yearRecapShare.editor.intro' | translate }}</p>
+      </header>
+
+      <div class="year-share-editor__privacy" role="note">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <p>{{ 'yearRecapShare.editor.privacy' | translate }}</p>
+      </div>
+
+      <div class="year-share-editor__choices">
+        <label class="year-share-choice">
+          <input type="checkbox" [checked]="includeGeography()" [disabled]="saving() || previewing()" (change)="facade.setGeographyIncluded(eventChecked($event))">
+          <span class="year-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'yearRecapShare.editor.parksTitle' | translate }}</strong><small>{{ 'yearRecapShare.editor.parksDescription' | translate }}</small></span>
+        </label>
+        <label class="year-share-choice">
+          <input type="checkbox" [checked]="includeRideCount()" [disabled]="saving() || previewing()" (change)="facade.setRideCountIncluded(eventChecked($event))">
+          <span class="year-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'yearRecapShare.editor.ridesTitle' | translate }}</strong><small>{{ 'yearRecapShare.editor.ridesDescription' | translate }}</small></span>
+        </label>
+        <label class="year-share-choice">
+          <input type="checkbox" [checked]="includeRatings()" [disabled]="saving() || previewing()" (change)="facade.setRatingsIncluded(eventChecked($event))">
+          <span class="year-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'yearRecapShare.editor.ratingsTitle' | translate }}</strong><small>{{ 'yearRecapShare.editor.ratingsDescription' | translate }}</small></span>
+        </label>
+        <label class="year-share-choice">
+          <input type="checkbox" [checked]="includeMissedItems()" [disabled]="saving() || previewing()" (change)="facade.setMissedItemsIncluded(eventChecked($event))">
+          <span class="year-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'yearRecapShare.editor.missedTitle' | translate }}</strong><small>{{ 'yearRecapShare.editor.missedDescription' | translate }}</small></span>
+        </label>
+        <label class="year-share-choice">
+          <input type="checkbox" [checked]="includeCaption()" [disabled]="saving() || previewing()" (change)="facade.setCaptionIncluded(eventChecked($event))">
+          <span class="year-share-choice__marker" aria-hidden="true"><i class="pi pi-check"></i></span>
+          <span><strong>{{ 'yearRecapShare.editor.captionTitle' | translate }}</strong><small>{{ 'yearRecapShare.editor.captionDescription' | translate }}</small></span>
+        </label>
+      </div>
+
+      @if (includeCaption()) {
+        <label class="year-share-editor__caption">
+          <span>{{ 'yearRecapShare.editor.captionLabel' | translate }}</span>
+          <textarea maxlength="500" rows="3" [value]="publicCaption()" [disabled]="saving() || previewing()" (input)="updateCaption($event)" [placeholder]="'yearRecapShare.editor.captionPlaceholder' | translate"></textarea>
+          <small>{{ publicCaption().length }} / 500</small>
+        </label>
+      }
+
+      @if (error()) {
+        <p class="year-share__status year-share__status--error" role="alert"><i class="pi pi-exclamation-circle" aria-hidden="true"></i>{{ 'yearRecapShare.editor.error' | translate }}</p>
+      }
+
+      @if (recap(); as currentRecap) {
+        <section class="year-recap-card" aria-labelledby="year-recap-preview-title">
+          <header>
+            <span>{{ 'yearRecapShare.preview.kicker' | translate }}</span>
+            <strong id="year-recap-preview-title">{{ currentRecap.year }}</strong>
+          </header>
+          @if (currentRecap.isEmpty) {
+            <div class="year-recap-card__empty">
+              <i class="pi pi-calendar" aria-hidden="true"></i>
+              <div><h4>{{ 'yearRecapShare.preview.emptyTitle' | translate }}</h4><p>{{ 'yearRecapShare.preview.emptyDescription' | translate }}</p></div>
+            </div>
+          } @else {
+            @if (currentRecap.publicCaption) { <blockquote>{{ currentRecap.publicCaption }}</blockquote> }
+            <div class="year-recap-card__facts">
+              <span><strong>{{ currentRecap.visitCount }}</strong>{{ 'yearRecapShare.preview.visits' | translate }}</span>
+              @if (currentRecap.parkCount != null) { <span><strong>{{ currentRecap.parkCount }}</strong>{{ 'yearRecapShare.preview.parks' | translate }}</span> }
+              @if (currentRecap.totalRideCount != null) { <span><strong>{{ currentRecap.totalRideCount }}</strong>{{ 'yearRecapShare.preview.rides' | translate }}</span> }
+              @if (currentRecap.distinctItemCount != null) { <span><strong>{{ currentRecap.distinctItemCount }}</strong>{{ 'yearRecapShare.preview.distinctItems' | translate }}</span> }
+              @if (currentRecap.missedItemCount != null) { <span><strong>{{ currentRecap.missedItemCount }}</strong>{{ 'yearRecapShare.preview.missedItems' | translate }}</span> }
+            </div>
+            @if (currentRecap.parkRatings; as ratings) {
+              <p class="year-recap-card__proof"><i class="pi pi-star" aria-hidden="true"></i>{{ 'yearRecapShare.preview.parkRating' | translate:{ average: formatRating(ratings.average), rated: ratings.ratedCount, total: ratings.eligibleCount } }}</p>
+            }
+            @if (currentRecap.rideRatings; as ratings) {
+              <p class="year-recap-card__proof"><i class="pi pi-chart-line" aria-hidden="true"></i>{{ 'yearRecapShare.preview.rideRating' | translate:{ average: formatRating(ratings.average), rated: ratings.ratedCount, total: ratings.eligibleCount } }}</p>
+            }
+            @if (currentRecap.mostVisitedParks.length > 0) {
+              <div class="year-recap-card__list"><h4>{{ 'yearRecapShare.preview.topParks' | translate }}</h4><ol>@for (park of currentRecap.mostVisitedParks; track park.name) { <li><strong>{{ park.name }}</strong><span>{{ (park.completedRideCount != null ? 'yearRecapShare.preview.parkDetail' : 'yearRecapShare.preview.parkVisits') | translate:{ visits: park.visitCount, rides: park.completedRideCount } }}</span></li> }</ol></div>
+            }
+            <div class="year-recap-card__highlights">
+              @if (currentRecap.mostRepeatedItem; as item) { <article><span>{{ 'yearRecapShare.preview.mostRepeated' | translate }}</span><strong>{{ item.name }}</strong><small>{{ 'yearRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}</small></article> }
+              @if (currentRecap.topRatedItem; as item) { <article><span>{{ 'yearRecapShare.preview.topRated' | translate }}</span><strong>{{ item.name }}</strong><small>{{ 'yearRecapShare.preview.ratingDetail' | translate:{ rating: formatRating(item.averageRating), count: item.ratingCount } }}</small></article> }
+            </div>
+            @if (currentRecap.categories.length > 0) {
+              <div class="year-recap-card__categories" [attr.aria-label]="'yearRecapShare.preview.categories' | translate">@for (category of currentRecap.categories; track category) { <span>{{ categoryKey(category) | translate }}</span> }</div>
+            }
+            @if (currentRecap.ratingEvolution; as trend) {
+              <div class="year-recap-card__trend"><i class="pi pi-chart-line" aria-hidden="true"></i><div><span>{{ 'yearRecapShare.public.evolutionTitle' | translate }}</span><strong>{{ trend.name }}</strong><p>{{ 'yearRecapShare.public.evolutionDetail' | translate:{ first: formatRating(trend.firstWindowAverage), firstCount: trend.firstWindowRatingCount, last: formatRating(trend.lastWindowAverage), lastCount: trend.lastWindowRatingCount } }}</p></div></div>
+            }
+            @if (currentRecap.nowClosedItems.length > 0) {
+              <div class="year-recap-card__list"><h4>{{ 'yearRecapShare.public.closedTitle' | translate }}</h4><ol>@for (item of currentRecap.nowClosedItems; track item.name) { <li><strong>{{ item.name }}</strong><span>{{ 'yearRecapShare.preview.rideCount' | translate:{ count: item.rideCount } }}</span></li> }</ol></div>
+            }
+            @if (currentRecap.approximateVisitCount > 0) { <p class="year-recap-card__notice"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'yearRecapShare.preview.approximate' | translate:{ count: currentRecap.approximateVisitCount, total: currentRecap.visitCount, rate: formatPercent(currentRecap.approximateVisitRate) } }}</p> }
+            @if (currentRecap.hasIncompleteCatalog) { <p class="year-recap-card__notice"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'yearRecapShare.preview.incompleteCatalog' | translate }}</p> }
+            <p class="year-recap-card__version"><i class="pi pi-verified" aria-hidden="true"></i>{{ 'yearRecapShare.preview.exact' | translate:{ version: currentRecap.calculationVersion } }}</p>
+          }
+        </section>
+      }
+
+      <div class="year-share-editor__actions">
+        <button appUiButton="ghost" type="button" [disabled]="saving() || previewing()" (click)="facade.closeEditor()">{{ 'yearRecapShare.editor.cancel' | translate }}</button>
+        @if (recap()) {
+          <button appUiButton="primary" type="button" [disabled]="!canPublish()" (click)="facade.publish(year)"><i [class]="saving() ? 'pi pi-spin pi-spinner' : 'pi pi-globe'" aria-hidden="true"></i>{{ (saving() ? 'yearRecapShare.editor.publishing' : 'yearRecapShare.editor.publish') | translate }}</button>
+        } @else {
+          <button appUiButton="primary" type="button" [disabled]="saving() || previewing()" (click)="facade.preparePreview(year)"><i [class]="previewing() ? 'pi pi-spin pi-spinner' : 'pi pi-eye'" aria-hidden="true"></i>{{ (previewing() ? 'yearRecapShare.editor.preparing' : 'yearRecapShare.editor.preview') | translate }}</button>
+        }
+      </div>
+    </section>
+  } @else if (settings()?.isPublic && publicPath(); as path) {
+    <div class="year-share__actions">
+      <a appUiButton="primary" [routerLink]="path"><i class="pi pi-external-link" aria-hidden="true"></i>{{ 'yearRecapShare.manage.open' | translate }}</a>
+      <button appUiButton="ghost" type="button" (click)="facade.openEditor()"><i class="pi pi-sliders-h" aria-hidden="true"></i>{{ 'yearRecapShare.manage.edit' | translate }}</button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="facade.revoke(year)"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'yearRecapShare.manage.revoke' | translate }}</button>
+    </div>
+    <app-public-share-panel targetType="Page" [targetId]="settings()?.shareId || null" [targetTitle]="'yearRecapShare.social.title' | translate:{ year: year }" [shareUrlOverride]="path" titleKey="yearRecapShare.social.title" descriptionKey="yearRecapShare.social.description" textKey="yearRecapShare.social.text"></app-public-share-panel>
+  } @else {
+    <button appUiButton="primary" type="button" (click)="facade.openEditor()"><i class="pi pi-sparkles" aria-hidden="true"></i>{{ 'yearRecapShare.manage.start' | translate }}</button>
+  }
+</section>

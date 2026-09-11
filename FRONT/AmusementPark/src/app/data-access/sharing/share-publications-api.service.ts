@@ -8,7 +8,9 @@ import {
   SharePublicationPublishRequest,
   SharePublicationSettings,
   SharedVisitRecap,
-  VisitRecapShareCandidates
+  SharedYearRecap,
+  VisitRecapShareCandidates,
+  YearRecapShareSelection
 } from '@app/models/sharing/share-publication.models';
 import { environment } from '../../../environments/environment';
 import { SHARE_PUBLICATIONS_API_ENDPOINTS } from './share-publications-api-endpoints';
@@ -60,5 +62,25 @@ export class SharePublicationsApiService {
   getSharedVisit(shareId: string): Observable<SharedVisitRecap> {
     const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.sharedVisit(shareId);
     return this.http.get<SharedVisitRecap>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  getYearSettings(year: number): Observable<SharePublicationSettings> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.yearSettings(year);
+    return this.http.get<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  getYearSelection(year: number): Observable<YearRecapShareSelection> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.yearSelection(year);
+    return this.http.get<YearRecapShareSelection>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  revokeYear(year: number): Observable<SharePublicationSettings> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.yearSettings(year);
+    return this.http.delete<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
+  getSharedYear(shareId: string): Observable<SharedYearRecap> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.sharedYear(shareId);
+    return this.http.get<SharedYearRecap>(`${environment.apiBaseUrl}${endpoint}`);
   }
 }

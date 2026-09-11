@@ -89,8 +89,15 @@ public sealed class PublishSharePublicationCommandHandler
 
         string contentFingerprint = string.Empty;
         VisitRecapShareInput? normalizedVisitRecap = null;
+        YearRecapShareInput? normalizedYearRecap = null;
         if (command.PublicationType == SharePublicationType.VisitRecap)
         {
+            if (command.YearRecap is not null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.InvalidSource());
+            }
+
             ApplicationResult<VisitRecapShareInput> inputResult =
                 VisitRecapShareInputNormalizer.Normalize(command.VisitRecap, contentPolicy);
             if (!inputResult.IsSuccess || inputResult.Value is null)
@@ -102,7 +109,26 @@ public sealed class PublishSharePublicationCommandHandler
             contentFingerprint = VisitRecapShareInputNormalizer.CreateFingerprint(
                 normalizedVisitRecap);
         }
-        else if (command.VisitRecap is not null)
+        else if (command.PublicationType == SharePublicationType.YearRecap)
+        {
+            if (command.VisitRecap is not null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.InvalidSource());
+            }
+
+            ApplicationResult<YearRecapShareInput> inputResult =
+                YearRecapShareInputNormalizer.Normalize(command.YearRecap, contentPolicy);
+            if (!inputResult.IsSuccess || inputResult.Value is null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(inputResult.Errors);
+            }
+
+            normalizedYearRecap = inputResult.Value;
+            contentFingerprint = YearRecapShareInputNormalizer.CreateFingerprint(
+                normalizedYearRecap);
+        }
+        else if (command.VisitRecap is not null || command.YearRecap is not null)
         {
             return ApplicationResult<SharePublicationSettingsResult>.Failure(
                 SharingApplicationErrors.InvalidSource());
@@ -147,6 +173,7 @@ public sealed class PublishSharePublicationCommandHandler
             cancellationToken,
             contentFingerprint,
             normalizedVisitRecap,
-            command.SourceId);
+            command.SourceId,
+            normalizedYearRecap);
     }
 }

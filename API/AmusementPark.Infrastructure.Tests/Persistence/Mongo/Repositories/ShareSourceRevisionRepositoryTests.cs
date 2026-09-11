@@ -379,6 +379,120 @@ public sealed class ShareSourceRevisionRepositoryTests
     }
 
     [Fact]
+    public async Task ReconcileFingerprintAsync_ShouldAtomicallyAdvanceOnlyWhenContentDiffers()
+    {
+        Mock<IAsyncCursor<ShareSourceRevisionDocument>> cursor =
+            new Mock<IAsyncCursor<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        cursor.SetupGet(value => value.Current).Returns(new[]
+        {
+            new ShareSourceRevisionDocument
+            {
+                ScopeKey = "year-recap:b3duZXItMQ:2026",
+                Revision = 2,
+                SourceFingerprint = "FINGERPRINT-A",
+                CreatedAt = NowUtc.AddDays(-1),
+                UpdatedAt = NowUtc.AddMinutes(-1),
+            },
+        });
+        cursor.SetupSequence(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(true)
+            .ReturnsAsync(false);
+        cursor.Setup(value => value.Dispose());
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        UpdateDefinition<ShareSourceRevisionDocument>? capturedUpdate = null;
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<ShareSourceRevisionDocument> _,
+                UpdateDefinition<ShareSourceRevisionDocument> update,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> _,
+                CancellationToken _) => capturedUpdate = update)
+            .ReturnsAsync(new ShareSourceRevisionDocument
+            {
+                ScopeKey = "year-recap:b3duZXItMQ:2026",
+                Revision = 3,
+                SourceFingerprint = "FINGERPRINT-B",
+                CreatedAt = NowUtc.AddDays(-1),
+                UpdatedAt = NowUtc,
+            });
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        ShareSourceRevision result = await repository.ReconcileFingerprintAsync(
+            " year-recap:b3duZXItMQ:2026 ",
+            " FINGERPRINT-B ",
+            CancellationToken.None);
+
+        Assert.Equal(3, result.Revision);
+        Assert.NotNull(capturedUpdate);
+        IBsonSerializer<ShareSourceRevisionDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ShareSourceRevisionDocument>();
+        BsonArray pipeline = capturedUpdate.Render(
+                new RenderArgs<ShareSourceRevisionDocument>(
+                    serializer,
+                    BsonSerializer.SerializerRegistry))
+            .AsBsonArray;
+        BsonDocument set = pipeline[0]["$set"].AsBsonDocument;
+        Assert.Equal("FINGERPRINT-B", set["sourceFingerprint"].AsString);
+        Assert.Equal("$cond", set["revision"].AsBsonDocument.GetElement(0).Name);
+        Assert.Equal("$cond", set["updatedAt"].AsBsonDocument.GetElement(0).Name);
+        collection.VerifyAll();
+        cursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileFingerprintAsync_WhenFingerprintMatches_ShouldRemainReadOnly()
+    {
+        ShareSourceRevisionDocument existing = new ShareSourceRevisionDocument
+        {
+            ScopeKey = "year-recap:b3duZXItMQ:2026",
+            Revision = 3,
+            SourceFingerprint = "FINGERPRINT-B",
+            CreatedAt = NowUtc.AddDays(-1),
+            UpdatedAt = NowUtc.AddMinutes(-1),
+        };
+        Mock<IAsyncCursor<ShareSourceRevisionDocument>> cursor =
+            new Mock<IAsyncCursor<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        cursor.SetupGet(value => value.Current).Returns(new[] { existing });
+        cursor.SetupSequence(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(true)
+            .ReturnsAsync(false);
+        cursor.Setup(value => value.Dispose());
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        ShareSourceRevision result = await repository.ReconcileFingerprintAsync(
+            existing.ScopeKey,
+            existing.SourceFingerprint!,
+            CancellationToken.None);
+
+        Assert.Equal(3, result.Revision);
+        Assert.True(result.IsStable);
+        collection.VerifyAll();
+        cursor.VerifyAll();
+    }
+
+    [Fact]
     public async Task CompleteMutationAsync_WhenUnchangedLeaseExpired_ShouldPersistProjectedGeneration()
     {
         Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =

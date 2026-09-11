@@ -255,6 +255,38 @@ page publique bornent toutes leurs grilles, textes et actions et se replient à
 680, 620, 520 et 390 px afin de rester utilisables dès 320 px. `SHARE-07` peut
 maintenant construire le bilan annuel sur le même consentement et les mêmes preuves.
 
+### État de `SHARE-07` au 11 septembre 2026
+
+Le bilan annuel partageable est implémenté en version 5.2.14 sur le moteur central
+de publication. Depuis les statistiques d'une année, le membre choisit séparément
+les parcs visités, les compteurs de tours, les notes temporelles, les envies
+manquées et une légende publique. L'atelier restaure les choix et la légende du
+dernier snapshot, y compris après une révocation, puis exige un nouvel aperçu exact
+avant chaque publication.
+
+Le calcul ne retient que les visites terminées de l'année et les passages actifs qui
+leur appartiennent. Les brouillons, archives logiques, écritures en cours, parcs
+masqués et lieux masqués restent hors du contenu public. Les moyennes affichent leur
+dénominateur ; une évolution exige au moins trois notes réparties sur deux visites.
+Les dates approximatives sont quantifiées, les attractions aujourd'hui fermées sont
+signalées comme souvenirs historiques et une année vide ne peut pas être publiée.
+
+Le snapshot MongoDB dédié ne contient ni commentaire privé, ni identifiant de parc,
+d'attraction ou de visite dans son contenu public. Il est lié à la version de la
+source, de la publication, de la policy et à l'empreinte de la légende approuvée.
+L'empreinte des données annuelles est réconciliée dans une révision durable et
+strictement croissante : un aller-retour des données ne peut pas réactiver un ancien
+snapshot. Une lecture publique dont l'empreinte est inchangée reste en lecture seule.
+La page anonyme résout uniquement un jeton opaque, revalide la source et rend un HTML
+SSR localisé, `noindex` et sans référent. La révocation coupe immédiatement le lien.
+
+L'interface présente une histoire annuelle avec compteurs, parcs les plus visités, attractions
+marquantes, catégories, évolution vérifiable et souvenirs fermés plutôt qu'un tableau
+administratif. Les composants bornent leurs grilles, textes et actions, passent en
+une colonne sous 760, 620 et 520 px et réduisent leurs marges à 360 px afin de rester
+utilisables dès 320 px. `SHARE-08` peut maintenant rendre le passeport public avec
+une sélection plus granulaire sur la même autorité de consentement.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

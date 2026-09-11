@@ -11,4 +11,5 @@ public sealed record SharePublicationPreviewResult(
     PersonalRankingSharePreviewResult? PersonalRanking,
     string ApprovalToken = "",
     VisitRecapSharePreviewResult? VisitRecap = null,
-    string ContentFingerprint = "");
+    string ContentFingerprint = "",
+    YearRecapSharePreviewResult? YearRecap = null);

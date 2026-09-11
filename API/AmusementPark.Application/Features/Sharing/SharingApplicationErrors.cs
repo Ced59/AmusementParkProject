@@ -111,6 +111,20 @@ public static class SharingApplicationErrors
             "Cette visite contient trop d’entrées pour produire un partage fiable.");
     }
 
+    public static ApplicationError InvalidYearRecapSelection()
+    {
+        return ApplicationError.Validation(
+            "share-publication.year-recap-selection-invalid",
+            "La sélection du bilan annuel est invalide.");
+    }
+
+    public static ApplicationError EmptyYearRecap()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.year-recap-empty",
+            "Cette année ne contient aucune visite terminée à partager.");
+    }
+
     public static ApplicationError SnapshotUnavailable()
     {
         return ApplicationError.NotFound(

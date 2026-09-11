@@ -24,15 +24,46 @@ public sealed class VisitRecapPublicParkReader : IVisitRecapPublicParkReader
             return null;
         }
 
+        IReadOnlyDictionary<string, string> names = await this.GetVisibleNamesAsync(
+            new[] { normalizedParkId },
+            cancellationToken);
+        return names.TryGetValue(normalizedParkId, out string? name) ? name : null;
+    }
+
+    public async Task<IReadOnlyDictionary<string, string>> GetVisibleNamesAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string[] normalizedParkIds = parkIds
+            .Select(static value => value?.Trim() ?? string.Empty)
+            .Where(static value => value.Length > 0)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
+        {
+            return new Dictionary<string, string>(StringComparer.Ordinal);
+        }
+
         FilterDefinitionBuilder<ParkDocument> filters = Builders<ParkDocument>.Filter;
-        ParkDocument? park = await this.collection
-            .Find(filters.Eq(static value => value.Id, normalizedParkId)
+        List<ParkDocument> parks = await this.collection
+            .Find(filters.In(static value => value.Id, normalizedParkIds)
                 & filters.Eq(static value => value.IsVisible, true))
             .Project<ParkDocument>(Builders<ParkDocument>.Projection
                 .Include(static value => value.Id)
                 .Include(static value => value.Name))
-            .FirstOrDefaultAsync(cancellationToken);
-        string name = park?.Name?.Trim() ?? string.Empty;
-        return name.Length == 0 ? null : name;
+            .ToListAsync(cancellationToken);
+        return parks
+            .Select(static park => new
+            {
+                park.Id,
+                Name = park.Name?.Trim() ?? string.Empty,
+            })
+            .Where(static park => park.Id.Length > 0 && park.Name.Length > 0)
+            .GroupBy(static park => park.Id, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First().Name,
+                StringComparer.Ordinal);
     }
 }

@@ -14,6 +14,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
 import { PassportRatingTimelineComponent } from '../../components/passport-rating-timeline/passport-rating-timeline.component';
 import { PassportStatCardComponent } from '../../components/passport-stat-card/passport-stat-card.component';
 import { PassportTableComponent } from '../../components/passport-table/passport-table.component';
+import { YearRecapShareControlComponent } from '../../components/year-recap-share-control/year-recap-share-control.component';
 import {
   PassportStatisticsNavigationViewModel,
   PassportStatisticsRouteScope,
@@ -35,7 +36,8 @@ import { PassportStatisticsStateFacade } from '../../state/passport-statistics-s
     UiSurfaceDirective,
     PassportRatingTimelineComponent,
     PassportStatCardComponent,
-    PassportTableComponent
+    PassportTableComponent,
+    YearRecapShareControlComponent
   ]
 })
 export class PassportStatisticsPageComponent {
@@ -104,6 +106,11 @@ export class PassportStatisticsPageComponent {
         ? 'parks'
         : 'years';
     void this.router.navigate([...base, 'passport', segment, navigation.targetId]);
+  }
+
+  protected parseYear(value: string): number {
+    const year: number = Number(value);
+    return Number.isInteger(year) ? year : 0;
   }
 
   private resolveScope(data: Data, params: ParamMap): PassportStatisticsRouteScope {

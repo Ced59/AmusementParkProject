@@ -55,6 +55,7 @@ export interface SharePublicationPreview {
   contentPolicy: ShareContentPolicyPreview;
   personalRanking?: PersonalRankingSharePreview | null;
   visitRecap?: VisitRecapSharePreview | null;
+  yearRecap?: YearRecapSharePreview | null;
 }
 
 export interface SharePublicationPreviewRequest {
@@ -63,6 +64,7 @@ export interface SharePublicationPreviewRequest {
   datePrecision: string;
   includedFields: ShareContentField[];
   visitRecap?: VisitRecapShareInput | null;
+  yearRecap?: YearRecapShareInput | null;
 }
 
 export interface SharePublicationPublishRequest {
@@ -74,6 +76,7 @@ export interface SharePublicationPublishRequest {
   approvedIncludedFields: ShareContentField[];
   approvalToken: string;
   visitRecap?: VisitRecapShareInput | null;
+  yearRecap?: YearRecapShareInput | null;
 }
 
 export interface SharePublicationSettings {
@@ -167,4 +170,71 @@ export interface SharedVisitRecapContent {
 export interface SharedVisitRecap {
   publishedAtUtc: string;
   visitRecap: SharedVisitRecapContent;
+}
+
+export interface YearRecapShareInput {
+  publicCaption?: string | null;
+}
+
+export interface YearRecapShareSelection {
+  savedPublicCaption?: string | null;
+  hasSavedSnapshot: boolean;
+}
+
+export interface YearRecapShareRatingSummary {
+  ratedCount: number;
+  eligibleCount: number;
+  average?: number | null;
+}
+
+export interface YearRecapSharePark {
+  name: string;
+  visitCount: number;
+  completedRideCount?: number | null;
+}
+
+export interface YearRecapShareHighlight {
+  name: string;
+  rideCount: number;
+  ratingCount: number;
+  averageRating?: number | null;
+  isNowClosed: boolean;
+}
+
+export interface YearRecapShareTrend {
+  name: string;
+  kind: string;
+  firstWindowRatingCount: number;
+  lastWindowRatingCount: number;
+  firstWindowAverage: number;
+  lastWindowAverage: number;
+  delta: number;
+}
+
+export interface YearRecapSharePreview {
+  year: number;
+  parkCount?: number | null;
+  visitCount: number;
+  approximateVisitCount: number;
+  approximateVisitRate: number;
+  totalRideCount?: number | null;
+  distinctItemCount?: number | null;
+  missedItemCount?: number | null;
+  categories: string[];
+  parkRatings?: YearRecapShareRatingSummary | null;
+  rideRatings?: YearRecapShareRatingSummary | null;
+  mostVisitedParks: YearRecapSharePark[];
+  mostRepeatedItem?: YearRecapShareHighlight | null;
+  topRatedItem?: YearRecapShareHighlight | null;
+  ratingEvolution?: YearRecapShareTrend | null;
+  nowClosedItems: YearRecapShareHighlight[];
+  publicCaption?: string | null;
+  hasIncompleteCatalog: boolean;
+  calculationVersion: string;
+  isEmpty: boolean;
+}
+
+export interface SharedYearRecap {
+  publishedAtUtc: string;
+  yearRecap: YearRecapSharePreview;
 }

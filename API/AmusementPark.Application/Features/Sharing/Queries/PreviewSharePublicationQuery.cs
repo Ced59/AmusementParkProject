@@ -12,5 +12,6 @@ public sealed record PreviewSharePublicationQuery(
     string? SourceId,
     ShareDatePrecision DatePrecision,
     IReadOnlyCollection<ShareContentField> IncludedFields,
-    VisitRecapShareInput? VisitRecap = null)
+    VisitRecapShareInput? VisitRecap = null,
+    YearRecapShareInput? YearRecap = null)
     : IQuery<ApplicationResult<SharePublicationPreviewResult>>;

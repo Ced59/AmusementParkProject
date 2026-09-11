@@ -1,0 +1,347 @@
+:host,
+.year-share,
+.year-share > *,
+.year-share-editor,
+.year-recap-card {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.year-share {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  overflow-x: clip;
+  border: 1px solid color-mix(in srgb, var(--c-gold) 45%, var(--app-border));
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at 95% 0%, color-mix(in srgb, var(--c-gold) 18%, transparent), transparent 42%), var(--app-surface);
+}
+
+.year-share__heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+}
+
+.year-share__icon {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--c-gold);
+  background: color-mix(in srgb, var(--c-gold) 14%, var(--app-surface-2));
+}
+
+.year-share__kicker,
+.year-recap-card > header span {
+  color: var(--c-gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.year-share h2,
+.year-share h3,
+.year-share h4,
+.year-share p,
+.year-share blockquote {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.year-share__heading p,
+.year-share-editor > header p {
+  margin-top: 0.3rem;
+  color: var(--app-text-muted);
+}
+
+.year-share__status,
+.year-share__actions,
+.year-share-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.year-share__status--error {
+  color: var(--c-rose);
+}
+
+.year-share-editor {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(0.8rem, 2.5vw, 1.2rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
+  background: color-mix(in srgb, var(--app-surface-2) 90%, transparent);
+}
+
+.year-share-editor__privacy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: var(--app-radius-sm);
+  color: var(--c-lime);
+  background: color-mix(in srgb, var(--c-lime) 9%, var(--app-surface));
+}
+
+.year-share-editor__privacy p {
+  color: var(--app-text-muted);
+}
+
+.year-share-editor__choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.year-share-choice {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+  cursor: pointer;
+}
+
+.year-share-choice input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.year-share-choice__marker {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: 50%;
+  color: transparent;
+}
+
+.year-share-choice input:checked + .year-share-choice__marker {
+  border-color: var(--c-lime);
+  color: var(--c-lime);
+  background: color-mix(in srgb, var(--c-lime) 14%, var(--app-surface));
+}
+
+.year-share-choice:focus-within {
+  outline: 2px solid var(--app-primary);
+  outline-offset: 2px;
+}
+
+.year-share-choice strong,
+.year-share-choice small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.year-share-choice small {
+  margin-top: 0.15rem;
+  color: var(--app-text-muted);
+}
+
+.year-share-editor__caption {
+  display: grid;
+  min-width: 0;
+  gap: 0.35rem;
+  font-weight: 800;
+}
+
+.year-share-editor__caption textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+  color: var(--app-text);
+  font: inherit;
+}
+
+.year-share-editor__caption small {
+  color: var(--app-text-muted);
+}
+
+.year-recap-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: clamp(0.9rem, 3vw, 1.4rem);
+  overflow-x: clip;
+  border: 1px solid color-mix(in srgb, var(--c-gold) 50%, var(--app-border));
+  border-radius: var(--app-radius-lg);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--c-gold) 11%, var(--app-surface)), var(--app-surface));
+}
+
+.year-recap-card > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+}
+
+.year-recap-card > header strong {
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 5.5rem);
+  line-height: 0.85;
+}
+
+.year-recap-card blockquote {
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--app-primary);
+}
+
+.year-recap-card__facts,
+.year-recap-card__highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
+  gap: 0.55rem;
+}
+
+.year-recap-card__facts span,
+.year-recap-card__highlights article {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+  padding: 0.75rem;
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-2);
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+}
+
+.year-recap-card__facts strong {
+  color: var(--app-heading);
+  font-size: 1.5rem;
+}
+
+.year-recap-card__highlights strong,
+.year-recap-card__list strong {
+  overflow-wrap: anywhere;
+  color: var(--app-heading);
+}
+
+.year-recap-card__list ol {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.year-recap-card__list li {
+  padding-left: 0.3rem;
+}
+
+.year-recap-card__list li span {
+  display: block;
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.year-recap-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 0.4rem;
+}
+
+.year-recap-card__categories span {
+  max-width: 100%;
+  padding: 0.3rem 0.55rem;
+  overflow-wrap: anywhere;
+  border-radius: 999px;
+  background: var(--app-surface-2);
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+}
+
+.year-recap-card__proof,
+.year-recap-card__notice,
+.year-recap-card__version,
+.year-recap-card__empty,
+.year-recap-card__trend {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: start;
+  min-width: 0;
+  padding: 0.7rem;
+  border-radius: var(--app-radius-sm);
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--c-sky) 7%, var(--app-surface-2));
+}
+
+.year-recap-card__trend span,
+.year-recap-card__trend strong,
+.year-recap-card__trend p {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.year-recap-card__trend strong {
+  margin: 0.1rem 0;
+  color: var(--app-heading);
+}
+
+.year-recap-card__version {
+  font-size: 0.78rem;
+}
+
+.year-share-editor__actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 620px) {
+  .year-share-editor__choices {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .year-share {
+    padding: 0.8rem;
+    border-radius: var(--app-radius-lg);
+  }
+
+  .year-share__heading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .year-share__actions,
+  .year-share-editor__actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .year-share__actions > *,
+  .year-share-editor__actions > * {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 360px) {
+  .year-share,
+  .year-share-editor,
+  .year-recap-card {
+    padding-inline: 0.65rem;
+  }
+}

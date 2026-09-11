@@ -12,4 +12,5 @@ public sealed record SharePublicationSnapshotWriteRequest(
     long SourceVersion,
     ShareContentPolicy ContentPolicy,
     string ContentFingerprint,
-    VisitRecapShareInput? VisitRecap);
+    VisitRecapShareInput? VisitRecap = null,
+    YearRecapShareInput? YearRecap = null);

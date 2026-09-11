@@ -38,6 +38,12 @@
       </button>
     </section>
   } @else if (facade.viewModel(); as viewModel) {
+    @if (viewModel.scope.kind === 'year') {
+      <app-year-recap-share-control
+        [year]="parseYear(viewModel.scope.targetId)"
+        [currentLang]="currentLanguage()">
+      </app-year-recap-share-control>
+    }
     @if (viewModel.isEmpty) {
       <section class="passport-statistics-page__state" appUiSurface="panel">
         <i class="pi pi-chart-bar" aria-hidden="true"></i>
