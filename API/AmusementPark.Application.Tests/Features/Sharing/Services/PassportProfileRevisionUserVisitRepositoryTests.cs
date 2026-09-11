@@ -50,4 +50,40 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
         inner.VerifyAll();
         guard.VerifyAll();
     }
+
+    [Fact]
+    public async Task TryUpdateOwnedAsync_WhenWriteOutcomeIsAmbiguous_ShouldAdvanceThePassportScope()
+    {
+        Visit visit = Visit.Create(
+            VisitId.New(),
+            "owner-1",
+            "park-1",
+            new VisitDate(2026, 9, 12, VisitDatePrecision.Day, false),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc));
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.Create(visit.UserId));
+        Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> guard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        guard.Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
+            .ReturnsAsync(lease);
+        inner.Setup(value => value.TryUpdateOwnedAsync(visit, 1, It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException());
+        guard.Setup(value => value.CompleteMutationAsync(lease, true, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        PassportProfileRevisionUserVisitRepository repository =
+            new PassportProfileRevisionUserVisitRepository(inner.Object, guard.Object);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => repository.TryUpdateOwnedAsync(
+            visit,
+            1,
+            CancellationToken.None));
+
+        inner.VerifyAll();
+        guard.VerifyAll();
+    }
 }

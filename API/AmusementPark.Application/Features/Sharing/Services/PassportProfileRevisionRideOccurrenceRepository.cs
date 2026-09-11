@@ -475,7 +475,7 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         {
             await this.revisionGuard.CompleteMutationAsync(
                 mutationLease,
-                false,
+                true,
                 CancellationToken.None);
             throw;
         }

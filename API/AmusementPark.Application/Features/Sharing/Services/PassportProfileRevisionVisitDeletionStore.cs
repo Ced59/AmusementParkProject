@@ -70,7 +70,7 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
         {
             await this.revisionGuard.CompleteMutationAsync(
                 mutationLease,
-                false,
+                true,
                 CancellationToken.None);
             throw;
         }

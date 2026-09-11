@@ -171,7 +171,7 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         {
             await this.revisionGuard.CompleteMutationAsync(
                 mutationLease,
-                false,
+                true,
                 CancellationToken.None);
             throw;
         }

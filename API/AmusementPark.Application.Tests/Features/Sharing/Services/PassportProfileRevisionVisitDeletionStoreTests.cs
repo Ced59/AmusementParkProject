@@ -59,4 +59,49 @@ public sealed class PassportProfileRevisionVisitDeletionStoreTests
         inner.VerifyAll();
         guard.VerifyAll();
     }
+
+    [Fact]
+    public async Task TryTombstoneAsync_WhenWriteOutcomeIsAmbiguous_ShouldAdvanceThePassportScope()
+    {
+        DateTime nowUtc = new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc);
+        Visit visit = Visit.Create(
+            VisitId.New(),
+            "owner-1",
+            "park-1",
+            new VisitDate(2026, 9, 12, VisitDatePrecision.Day, false),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            nowUtc);
+        VisitDeletionTombstoneRequest request = new VisitDeletionTombstoneRequest(
+            visit.Id,
+            visit.UserId,
+            visit.Version,
+            "operation-1",
+            nowUtc,
+            nowUtc.AddDays(30),
+            null,
+            VisitDeletionAuditEventFactory.Create(visit, nowUtc));
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.Create(visit.UserId));
+        Mock<IVisitDeletionStore> inner = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> guard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        guard.Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
+            .ReturnsAsync(lease);
+        inner.Setup(value => value.TryTombstoneAsync(request, It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException());
+        guard.Setup(value => value.CompleteMutationAsync(lease, true, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        PassportProfileRevisionVisitDeletionStore store =
+            new PassportProfileRevisionVisitDeletionStore(inner.Object, guard.Object);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => store.TryTombstoneAsync(
+            request,
+            CancellationToken.None));
+
+        inner.VerifyAll();
+        guard.VerifyAll();
+    }
 }
