@@ -1,6 +1,20 @@
 {
-  "version": "5.2.25",
+  "version": "5.2.26",
   "history": [
+    {
+      "version": "5.2.26",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle d’enregistrement du passeport gagne en clarté.",
+        "en": "The passport storage foundation is now clearer.",
+        "de": "Die Speichergrundlage des Passes ist jetzt klarer.",
+        "nl": "De opslagbasis van het paspoort is nu duidelijker.",
+        "it": "La base di salvataggio del passaporto è ora più chiara.",
+        "es": "La base de almacenamiento del pasaporte es ahora más clara.",
+        "pl": "Podstawa zapisu paszportu jest teraz czytelniejsza.",
+        "pt": "A base de armazenamento do passaporte está agora mais clara."
+      }
+    },
     {
       "version": "5.2.25",
       "releasedAt": "2026-09-12",
