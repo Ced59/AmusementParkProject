@@ -6,10 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.SocialPublishing.Services;
 
-public sealed record SocialPublicationRecovery(
-    bool IsRecovered,
-    SocialPublication? Publication);
-
 public sealed class SocialPublicationReconciler
 {
     private readonly ISocialPublicationRepository repository;
