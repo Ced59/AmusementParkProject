@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -108,6 +109,7 @@ public sealed class GetParksPageQueryHandlerTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
         List<Park> parks = new List<Park>
         {
             CreatePark("park-a", "Alpha"),
@@ -164,6 +166,16 @@ public sealed class GetParksPageQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.Ordinal));
+        openingHoursRepository
+            .Setup(repository => repository.GetPublicTextByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkOpeningHoursSchedule>());
+        pricingRepository
+            .Setup(repository => repository.GetPublicTextByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<AmusementPark.Core.Domain.Parks.ParkPricing>());
         parkItemRepository
             .Setup(repository => repository.GetCountsByCategoryForParkIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
@@ -182,7 +194,11 @@ public sealed class GetParksPageQueryHandlerTests
             parkItemRepository.Object,
             openingHoursRepository.Object,
             new ParkOpeningHoursAdminStatusResolver(),
-            new PagedQueryValidator());
+            new PagedQueryValidator(),
+            null,
+            null,
+            null,
+            pricingRepository.Object);
 
         ApplicationResult<PagedResult<ParkListResult>> result = await handler.HandleAsync(
             new GetParksPageQuery(
@@ -201,6 +217,7 @@ public sealed class GetParksPageQueryHandlerTests
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
+        pricingRepository.VerifyAll();
     }
 
     private static Park CreatePark(string id, string name)

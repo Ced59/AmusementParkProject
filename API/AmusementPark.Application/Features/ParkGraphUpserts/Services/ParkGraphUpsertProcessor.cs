@@ -123,6 +123,18 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         JsonElement root = request.Document;
+        IReadOnlyCollection<string> encodedTextErrors = ParkGraphUpsertTextEncodingValidator.FindErrors(root);
+        if (encodedTextErrors.Count > 0)
+        {
+            result.Errors.AddRange(encodedTextErrors);
+            result.CanApply = false;
+            FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return apply
+                ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car il contient des caractères publics encodés en entités HTML."))
+                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
+
         string mode = ReadString(root, "mode") ?? "merge";
         result.Mode = mode;
         if (request.ReplaceCollections)

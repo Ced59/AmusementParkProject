@@ -34,6 +34,16 @@ Une traduction issue d’un moteur, d’une API, d’un navigateur ou d’un aut
 
 La validation personnelle de Codex couvre au minimum : sens et faits inchangés, naturel de chaque phrase, vocabulaire propre au parc, accords et ponctuation, absence de calque du français ou de l’anglais, cohérence des noms officiels et parité de tous les blocs. Si Codex ne peut pas garantir cette qualité dans une langue, le lot reste incomplet et n’est pas appliqué.
 
+### Encodage des caractères publics
+
+Écrire directement en Unicode tout caractère qui doit être lu par le visiteur, dans les huit langues et dans chaque famille de texte : descriptions, noms localisés, titres, sous-titres, résumés, paragraphes, libellés, raisons, conditions, textes d’images et cartes officielles. Une apostrophe typographique doit donc être `’`, jamais `&rsquo;` ou `&#8217;` ; un caractère accentué doit être littéral, jamais une entité telle que `&eacute;`.
+
+Dans un champ de texte brut, aucune entité HTML nommée ou numérique n’est admise. Dans un champ HTML riche, conserver les balises prévues mais écrire aussi la ponctuation et les lettres en Unicode ; seules `&amp;`, `&lt;` et `&gt;` peuvent rester encodées lorsqu’elles sont nécessaires pour représenter littéralement ces signes sans altérer le balisage.
+
+Les textes des blocs d’articles historiques sont des champs de texte brut, car l’interface les affiche par interpolation : ils suivent donc la règle « zéro entité ». Les séquences doublement encodées telles que `&amp;rsquo;`, `&amp;#8217;` ou `&amp;amp;` sont toujours interdites, y compris dans le HTML riche.
+
+Avant chaque `Preview`, analyser le JSON brut, avant tout décodage ou retrait des balises, avec le motif `&(?:#[0-9]+|#x[0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);`, puis rechercher aussi les références masquées derrière `&amp;`. Toute occurrence doit être relue : zéro entité est attendu dans les champs de texte brut et, dans le HTML riche, toute occurrence autre qu’un échappement structurel simple parmi les trois autorisés bloque le lot. Ne jamais considérer un affichage correct dans un autre composant ou un contrôle effectué après `HtmlDecode` comme une preuve de conformité.
+
 ## Découpage anti-saturation
 
 Ordre recommandé :

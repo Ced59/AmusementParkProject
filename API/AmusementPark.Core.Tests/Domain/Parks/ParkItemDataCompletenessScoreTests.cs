@@ -80,6 +80,54 @@ public sealed class ParkItemDataCompletenessScoreTests
         Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenNameContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.Name = "Rock &amp; Roll Coaster";
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenAccessConditionContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.AttractionDetails!.AccessConditions[0].Description =
+            new List<LocalizedText> { new("en", "Guests must transfer from the wheelchair &amp; board independently.") };
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenDisplayedTechnicalTextContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.AttractionDetails!.Model = "Rock &amp; Roll model";
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenStructuredModelContainsMetric_ShouldNotExposeEditorialTextBlocker()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.AttractionDetails!.Model = "SLC 689m Standard";
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.NotEqual("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
     private static ParkItem CreateMechanicalAttraction()
     {
         ParkItem item = new ParkItem

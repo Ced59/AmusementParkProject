@@ -129,7 +129,21 @@ public sealed class ParkItem : GeolocatedEntityBase
     {
         ParkItemDataCompletenessContext scoreContext = context ?? new ParkItemDataCompletenessContext();
         DataCompletenessScoreBuilder score = new DataCompletenessScoreBuilder();
-        bool hasForbiddenPublicText = this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenPublicText(description.Value))
+        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Name)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Subtype)
+            || this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenRichPublicText(description.Value))
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.Model)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.Status)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.MaterialType)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.SeatingType)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.LaunchType)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.RestraintType)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.OpeningDateText)
+            || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.ClosingDateText)
+            || this.AttractionDetails?.AccessConditions.Any(static condition =>
+                condition.CustomTypeLabel.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
+                || condition.Label.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
+                || condition.Description.Any(static description => DataCompletenessScoringRules.HasForbiddenPlainPublicText(description.Value))) == true
             || !scoreContext.HasNoForbiddenPublicText;
 
         score.AddPublicationBlocker(

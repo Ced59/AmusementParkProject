@@ -18,6 +18,11 @@ public interface IParkOperatorRepository
     Task<ParkOperator?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les park operators par identifiants.
+    /// </summary>
+    Task<IReadOnlyCollection<ParkOperator>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Crée un park operator.
     /// </summary>
     Task<ParkOperator> CreateAsync(ParkOperator entity, CancellationToken cancellationToken);

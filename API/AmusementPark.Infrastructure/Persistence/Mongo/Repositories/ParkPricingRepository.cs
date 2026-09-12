@@ -52,6 +52,62 @@ public sealed class ParkPricingRepository : IParkPricingRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<ParkPricingEntity>> GetPublicTextByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkPricingEntity>();
+        }
+
+        FilterDefinition<ParkPricingDocument> filter = Builders<ParkPricingDocument>.Filter.In(
+            static document => document.ParkId,
+            normalizedParkIds);
+        ProjectionDefinition<ParkPricingDocument> projection = Builders<ParkPricingDocument>.Projection
+            .Include(static document => document.ParkId)
+            .Include(static document => document.Notes)
+            .Include("admissionOffers.labels")
+            .Include("admissionOffers.conditions")
+            .Include("admissionOffers.validFrom")
+            .Include("admissionOffers.validTo")
+            .Include("annualPasses.names")
+            .Include("annualPasses.conditions")
+            .Include("annualPasses.validFrom")
+            .Include("annualPasses.validTo")
+            .Include("parkingOffers.labels")
+            .Include("parkingOffers.conditions")
+            .Include("parkingOffers.validFrom")
+            .Include("parkingOffers.validTo")
+            .Include("creditOffers.labels")
+            .Include("creditOffers.conditions")
+            .Include("creditOffers.validFrom")
+            .Include("creditOffers.validTo")
+            .Include("historicalSnapshots.year")
+            .Include("historicalSnapshots.notes")
+            .Include("historicalSnapshots.admissionOffers.labels")
+            .Include("historicalSnapshots.admissionOffers.conditions")
+            .Include("historicalSnapshots.annualPasses.names")
+            .Include("historicalSnapshots.annualPasses.conditions")
+            .Include("historicalSnapshots.parkingOffers.labels")
+            .Include("historicalSnapshots.parkingOffers.conditions")
+            .Include("historicalSnapshots.creditOffers.labels")
+            .Include("historicalSnapshots.creditOffers.conditions");
+        List<ParkPricingDocument> documents = await this.collection
+            .Find(filter)
+            .Project<ParkPricingDocument>(projection)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken)
     {
         DateTime now = DateTime.UtcNow;

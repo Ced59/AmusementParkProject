@@ -30,6 +30,43 @@ public sealed class ParkDataCompletenessScoreTests
     }
 
     [Theory]
+    [InlineData("<p>L&rsquo;ancien parc ferme pour rénovation.</p>")]
+    [InlineData("L&#8217;État annonce une reconstruction complète.")]
+    [InlineData("Un caf&eacute; borde la place principale.")]
+    [InlineData("Un espace&nbsp;ombragé près du lac.")]
+    public void HasForbiddenPublicText_WhenDisplayCharacterIsStoredAsHtmlEntity_ShouldReject(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("<p>L’ancien parc ferme pour rénovation.</p>")]
+    [InlineData("Rock &amp; Roll Plaza")]
+    [InlineData("<p>Le panneau indique 2 &lt; 3 et 4 &gt; 3.</p>")]
+    public void HasForbiddenPublicText_WhenUnicodeOrStructuralHtmlEscapingIsUsed_ShouldNotRejectEncoding(string value)
+    {
+        Assert.False(DataCompletenessScoringRules.HasForbiddenRichPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("Rock &amp; Roll Plaza")]
+    [InlineData("2 &lt; 3")]
+    [InlineData("4 &gt; 3")]
+    public void HasForbiddenPlainPublicText_WhenStructuralEntityIsUsed_ShouldReject(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("<p>L&amp;rsquo;ancien parc.</p>")]
+    [InlineData("<p>L&amp;#8217;ancien parc.</p>")]
+    [InlineData("<p>Rock &amp;amp; Roll.</p>")]
+    public void HasForbiddenRichPublicText_WhenDisplayEntityIsDoubleEncoded_ShouldReject(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenRichPublicText(value));
+    }
+
+    [Theory]
     [InlineData("fr", "appartient à l’univers de et à l’identité du parc parisien")]
     [InlineData("en", "belongs to the world of and to the identity of the Paris park")]
     [InlineData("de", "gehört zur Welt von und zur Identität des Pariser Parks")]
@@ -297,6 +334,71 @@ public sealed class ParkDataCompletenessScoreTests
         park.Descriptions[0] = new LocalizedText(
             "fr",
             "<p>La page publique de l'exploitant montre les groupes, tandis qu'une visite indépendante a confirmé l'inventaire actuel. Ces sources décrivent un parc actif.</p>");
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenNameContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.Name = "Rock &amp; Roll Park";
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenVisibleOfficialMapTitleContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.OfficialMaps.Add(new ParkOfficialMap
+        {
+            Id = "official-map-1",
+            Year = 2026,
+            Format = ParkOfficialMapFormat.Pdf,
+            StorageKey = "parks/reference/official-map.pdf",
+            IsVisible = true,
+            Titles = new List<LocalizedText> { new("en", "Rock &amp; Roll map") },
+        });
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenVisibleOfficialMapFileNameContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.OfficialMaps.Add(new ParkOfficialMap
+        {
+            Id = "official-map-1",
+            Year = 2026,
+            Format = ParkOfficialMapFormat.Pdf,
+            StorageKey = "parks/reference/official-map.pdf",
+            OriginalFileName = "Plan &amp; guide.pdf",
+            IsVisible = true,
+        });
+
+        DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenPublicDateTextContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
+    {
+        Park park = CreatePublishablePark();
+        park.OpeningDate = null;
+        park.OpeningDateText = "Spring &amp; summer 1992";
 
         DataCompletenessScore score = park.CalculateDataCompletenessScore(CreateRichParkContext());
 
