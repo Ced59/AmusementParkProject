@@ -1,6 +1,20 @@
 {
-  "version": "5.2.18",
+  "version": "5.2.19",
   "history": [
+    {
+      "version": "5.2.19",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des horaires de parc gagne en clarté et en fiabilité.",
+        "en": "The park opening-hours foundation is now clearer and more reliable.",
+        "de": "Die Grundlage der Parköffnungszeiten ist jetzt klarer und zuverlässiger.",
+        "nl": "De basis van de openingstijden is nu duidelijker en betrouwbaarder.",
+        "it": "La base degli orari dei parchi è ora più chiara e affidabile.",
+        "es": "La base de los horarios de los parques es ahora más clara y fiable.",
+        "pl": "Podstawa godzin otwarcia parków jest teraz czytelniejsza i bardziej niezawodna.",
+        "pt": "A base dos horários dos parques está agora mais clara e fiável."
+      }
+    },
     {
       "version": "5.2.18",
       "releasedAt": "2026-09-12",
