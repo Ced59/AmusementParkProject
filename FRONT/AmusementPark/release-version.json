@@ -1,6 +1,20 @@
 {
-  "version": "5.2.21",
+  "version": "5.2.22",
   "history": [
+    {
+      "version": "5.2.22",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des statistiques du passeport gagne en fiabilité.",
+        "en": "The passport statistics foundation is now more reliable.",
+        "de": "Die Grundlage der Passstatistiken ist jetzt zuverlässiger.",
+        "nl": "De basis van de paspoortstatistieken is nu betrouwbaarder.",
+        "it": "La base delle statistiche del passaporto è ora più affidabile.",
+        "es": "La base de las estadísticas del pasaporte es ahora más fiable.",
+        "pl": "Podstawa statystyk paszportu jest teraz bardziej niezawodna.",
+        "pt": "A base das estatísticas do passaporte está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.21",
       "releasedAt": "2026-09-12",
