@@ -1,6 +1,20 @@
 {
-  "version": "5.2.26",
+  "version": "5.2.27",
   "history": [
+    {
+      "version": "5.2.27",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Ton passeport gagne en fiabilité.",
+        "en": "Your passport is now more reliable.",
+        "de": "Dein Pass ist jetzt zuverlässiger.",
+        "nl": "Je paspoort is nu betrouwbaarder.",
+        "it": "Il tuo passaporto è ora più affidabile.",
+        "es": "Tu pasaporte es ahora más fiable.",
+        "pl": "Twój paszport jest teraz bardziej niezawodny.",
+        "pt": "O teu passaporte está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.26",
       "releasedAt": "2026-09-12",
