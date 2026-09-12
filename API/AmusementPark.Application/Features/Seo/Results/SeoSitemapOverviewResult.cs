@@ -22,12 +22,3 @@ public sealed class SeoSitemapOverviewResult
 
     public string IndexNowKeyFileUrl { get; init; } = string.Empty;
 }
-
-public sealed class SitemapDocumentResult
-{
-    public string Content { get; init; } = string.Empty;
-
-    public string ContentType { get; init; } = "application/xml";
-
-    public bool WasGeneratedOnDemand { get; init; }
-}

@@ -11,12 +11,3 @@ public sealed record GenerateSitemapCommand(
     string? TriggeredByUserId,
     string? TriggeredByUserEmail)
     : ICommand<ApplicationResult<SitemapGenerationResult>>;
-
-public sealed record UpdateSeoSitemapSettingsCommand(
-    bool IsIndexNowEnabled,
-    bool SubmitToIndexNowAfterManualGeneration,
-    bool SubmitToIndexNowAfterAutomaticGeneration,
-    string? IndexNowKey,
-    string? IndexNowKeyLocation,
-    IReadOnlyCollection<string> IndexNowEndpoints)
-    : ICommand<ApplicationResult<SeoSitemapSettings>>;
