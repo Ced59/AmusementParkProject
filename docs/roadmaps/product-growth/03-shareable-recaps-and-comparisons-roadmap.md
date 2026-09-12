@@ -77,9 +77,12 @@ de lire les notes : un aperçu sans `GlobalRatings` ne charge aucune note et le 
 public ne contient ni identifiant utilisateur, ni identifiant de note, de parc ou
 d'attraction, ni commentaire privé, ni email.
 
-Deux révisions durables protègent l'aperçu : l'une suit les notes et toute l'identité
-publique du propriétaire — pseudonyme, avatar, rôles et état du compte —, l'autre le
-catalogue public qui fournit les noms et la visibilité des cibles. L'identité publique
+Trois révisions durables protègent l'aperçu : l'une suit les notes, une autre
+l'identité publique du propriétaire — pseudonyme, avatar, rôles et état du compte —,
+et la dernière le catalogue public qui fournit les noms et la visibilité des cibles.
+Cette séparation remplace directement l'ancien scope combiné : sa valeur historique
+reste la base des notes et le nouveau scope d'identité démarre à zéro, sans double
+système ni invalidation des liens existants. L'identité publique
 est aussi relue après la construction pour fermer la fenêtre des mutations concurrentes.
 Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
 révisions et l'identité restent stables. Un heartbeat distingue les écritures longues
@@ -312,8 +315,10 @@ sans écran administratif. L'atelier privé et la page publique bornent toutes l
 grilles et leurs textes, se replient en une colonne et restent contenus dès 320 px.
 Les écritures de visite, de passage et la suppression complète d'une visite sont
 entourées par la révision agrégée du passeport lorsqu'un partage existe. Une
-lecture anonyme ne recharge jamais l'historique privé : elle consulte trois
-révisions bornées et refuse le lien pendant une écriture ou après une modification,
+lecture anonyme ne recharge jamais l'historique privé : elle consulte quatre
+révisions bornées (passeport, identité, notes et catalogue). La révision des notes
+n'entre dans la version que lorsque des notes sont effectivement publiées. Le lien
+est refusé pendant une écriture pertinente ou après une modification,
 jusqu'à un nouvel aperçu explicitement approuvé. Les passeports qui n'ont jamais
 préparé de partage ne créent aucune révision supplémentaire. `SHARE-09` peut
 maintenant produire des images sociales à partir de ce snapshot,
