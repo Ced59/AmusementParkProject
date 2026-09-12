@@ -153,6 +153,21 @@ Après ce lot, l'inventaire contient :
 - 450 fichiers non conformes distincts : 369 en C# et 81 en TypeScript ;
 - 1 fichier non conforme dans `AmusementPark.Core`, contre 2 avant ce lot.
 
+## État après le lot Core Météo
+
+Le lot Météo sépare l'instantané quotidien, l'exécution d'actualisation et son
+détail par parc. Les propriétés, statuts, compteurs et types de données restent
+identiques ; aucune prévision, observation, orchestration ou représentation
+MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 268 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 301 au total ;
+- 440 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 449 fichiers non conformes distincts : 368 en C# et 81 en TypeScript ;
+- aucun fichier non conforme dans `AmusementPark.Core`, contre 15 au début de la résorption Core.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

@@ -1,6 +1,20 @@
 {
-  "version": "5.2.23",
+  "version": "5.2.24",
   "history": [
+    {
+      "version": "5.2.24",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des informations météo gagne en clarté.",
+        "en": "The weather information foundation is now clearer.",
+        "de": "Die Grundlage der Wetterinformationen ist jetzt klarer.",
+        "nl": "De basis van de weersinformatie is nu duidelijker.",
+        "it": "La base delle informazioni meteo è ora più chiara.",
+        "es": "La base de la información meteorológica es ahora más clara.",
+        "pl": "Podstawa informacji pogodowych jest teraz czytelniejsza.",
+        "pt": "A base das informações meteorológicas está agora mais clara."
+      }
+    },
     {
       "version": "5.2.23",
       "releasedAt": "2026-09-12",
