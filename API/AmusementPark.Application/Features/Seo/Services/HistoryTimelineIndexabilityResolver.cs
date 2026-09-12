@@ -93,8 +93,3 @@ internal static class HistoryTimelineIndexabilityResolver
         counts[id] = counts.GetValueOrDefault(id) + 1;
     }
 }
-
-internal sealed record HistoryTimelineIndexability(
-    HashSet<string> ParkIds,
-    HashSet<string> ParkItemIds,
-    HashSet<string> StandaloneAttractionIds);
