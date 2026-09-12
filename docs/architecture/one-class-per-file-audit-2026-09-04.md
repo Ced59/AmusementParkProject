@@ -219,6 +219,23 @@ Après ce lot, l'inventaire contient :
 - 148 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - 6 fichiers non conformes dans le périmètre Application du passeport.
 
+## État après le lot Application Parcours de visite du passeport
+
+Ce lot sépare les gestionnaires de création et de consultation des visites, de
+modification des informations, de passage entre brouillon, terminé et archivé,
+ainsi que d'ajout ou suppression de la note du parc. Les dépendances, validations,
+versions attendues, baux de mutation et résultats restent identiques. Aucun
+comportement utilisateur, contrat HTTP ni document MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 257 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 290 au total ;
+- 428 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 437 fichiers non conformes distincts : 356 en C# et 81 en TypeScript ;
+- 145 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- 3 fichiers non conformes dans le périmètre Application du passeport.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
