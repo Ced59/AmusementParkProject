@@ -1,6 +1,20 @@
 {
-  "version": "5.2.28",
+  "version": "5.2.29",
   "history": [
+    {
+      "version": "5.2.29",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le suivi de tes tours d’attraction gagne en fiabilité.",
+        "en": "Tracking your attraction rides is now more reliable.",
+        "de": "Die Erfassung deiner Attraktionsfahrten ist jetzt zuverlässiger.",
+        "nl": "Het bijhouden van je attractieritten is nu betrouwbaarder.",
+        "it": "Il monitoraggio dei tuoi giri sulle attrazioni è ora più affidabile.",
+        "es": "El seguimiento de tus recorridos en atracciones es ahora más fiable.",
+        "pl": "Śledzenie Twoich przejazdów na atrakcjach jest teraz bardziej niezawodne.",
+        "pt": "O registo das tuas voltas nas atrações está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.28",
       "releasedAt": "2026-09-12",
