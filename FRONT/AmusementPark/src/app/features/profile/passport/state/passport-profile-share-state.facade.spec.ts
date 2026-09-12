@@ -192,6 +192,13 @@ describe('PassportProfileShareStateFacade', () => {
     facade.load();
 
     expect(facade.selectedParkIds()).toEqual(['park-1', 'park-2']);
+
+    facade.togglePark('park-3');
+    expect(facade.selectedParkIds()).toEqual(['park-1', 'park-2']);
+
+    facade.togglePark('park-1');
+    facade.togglePark('park-3');
+    expect(facade.selectedParkIds()).toEqual(['park-2', 'park-3']);
   });
 });
 

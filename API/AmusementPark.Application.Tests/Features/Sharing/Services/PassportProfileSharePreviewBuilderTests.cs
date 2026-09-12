@@ -116,7 +116,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
     }
 
     [Fact]
-    public async Task BuildAsync_WhenAValidParkIsDeselected_ShouldNotReportCatalogLoss()
+    public async Task BuildAsync_WhenNoVisitMatchesTheSelection_ShouldRejectThePreview()
     {
         PassportProfileSourceData source = new PassportProfileSourceData(
             new[]
@@ -148,9 +148,52 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 false),
             CancellationToken.None);
 
-        Assert.True(result.IsSuccess);
-        Assert.False(result.Value!.PassportProfile!.HasIncompleteCatalog);
-        Assert.True(result.Value.PassportProfile.IsEmpty);
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error =>
+            error.Code == "share-publication.passport-profile-selection-invalid");
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenYearAndParkExistButNeverTogether_ShouldRejectThePreview()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-first-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2025, 6, 14),
+                    null),
+                new PassportVisitStatisticsObservation(
+                    "visit-second-id",
+                    "park-second-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+
+        ApplicationResult<SharePublicationPreviewResult> result =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.GeographicStatistics }),
+                new PassportProfileShareInput(
+                    new[] { 2025 },
+                    new[] { "park-second-id" },
+                    Array.Empty<string>(),
+                    null,
+                    ShareVisibility.Unlisted,
+                    false),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error =>
+            error.Code == "share-publication.passport-profile-selection-invalid");
     }
 
     [Fact]
@@ -441,6 +484,13 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     Name = "Parc privé",
                     CountryCode = "BE",
                     IsVisible = false,
+                },
+                new Park
+                {
+                    Id = "park-second-id",
+                    Name = "Second parc public",
+                    CountryCode = "DE",
+                    IsVisible = true,
                 },
             });
         return parks;

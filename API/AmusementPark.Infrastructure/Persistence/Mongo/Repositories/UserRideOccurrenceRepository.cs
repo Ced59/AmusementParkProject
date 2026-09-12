@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
@@ -48,7 +49,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     private readonly UserRideOccurrenceVersionFence versionFence;
     private readonly UserRideOccurrencePendingOperationRecovery pendingOperationRecovery;
 
-    public UserRideOccurrenceRepository(IMongoDatabase database, MongoDbSettings settings)
+    public UserRideOccurrenceRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IPassportProfileShareSourceRevisionGuard revisionGuard)
         : this(
             GetCollection<UserRideOccurrenceDocument>(
                 database,
@@ -61,14 +65,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             GetCollection<UserVisitDocument>(
                 database,
                 settings,
-                static value => value.UserVisitsCollectionName))
+                static value => value.UserVisitsCollectionName),
+            revisionGuard)
     {
     }
 
     internal UserRideOccurrenceRepository(
         IMongoCollection<UserRideOccurrenceDocument> collection,
         IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection,
-        IMongoCollection<UserVisitDocument>? visitCollection = null)
+        IMongoCollection<UserVisitDocument>? visitCollection = null,
+        IPassportProfileShareSourceRevisionGuard? revisionGuard = null)
     {
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(operationCollection);
@@ -84,7 +90,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             new UserRideOccurrenceProvisionalCreationReconciler(
                 this.collection,
                 this.operationCollection,
-                this.visitCollection);
+                this.visitCollection,
+                revisionGuard);
         this.deletionCoordinator = new UserRideOccurrenceDeleteOperationCoordinator(
             this.collection,
             this.operationCollection);

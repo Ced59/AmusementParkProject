@@ -1,3 +1,6 @@
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
@@ -63,6 +66,103 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             "creationPendingCompletion"));
         collection.VerifyAll();
         operationCollection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenMarkerBecomesPublic_ShouldAdvanceGuardedSource()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
+            document,
+            "completed",
+            9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.Create(document.UserId));
+        SetupCandidates(collection, document);
+        SetupOperation(operationCollection, operation);
+        revisionGuard.Setup(value => value.TryBeginMutationAsync(
+                document.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(lease);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        revisionGuard.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                revisionGuard: revisionGuard.Object);
+
+        int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
+
+        Assert.Equal(1, count);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        revisionGuard.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenWriteOutcomeIsAmbiguous_ShouldAdvanceGuardedSource()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
+            document,
+            "completed",
+            9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.Create(document.UserId));
+        SetupCandidates(collection, document);
+        SetupOperation(operationCollection, operation);
+        revisionGuard.Setup(value => value.TryBeginMutationAsync(
+                document.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(lease);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException());
+        revisionGuard.Setup(value => value.CompleteMutationAsync(
+                lease,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                revisionGuard: revisionGuard.Object);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => reconciler.ReconcileBatchAsync(
+            50,
+            CancellationToken.None));
+
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        revisionGuard.VerifyAll();
     }
 
     [Fact]

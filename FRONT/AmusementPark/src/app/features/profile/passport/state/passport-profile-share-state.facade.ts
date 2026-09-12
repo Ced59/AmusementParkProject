@@ -118,7 +118,15 @@ export class PassportProfileShareStateFacade {
   }
 
   public toggleYear(year: number): void { this.toggleNumber(this.selectedYearsSignal, year); }
-  public togglePark(parkId: string): void { this.toggleString(this.selectedParkIdsSignal, parkId); }
+  public togglePark(parkId: string): void {
+    const selectedParkIds: string[] = this.selectedParkIdsSignal();
+    if (!selectedParkIds.includes(parkId)
+        && selectedParkIds.length >= (this.selectionSignal()?.maximumSelectedParks ?? 0)) {
+      return;
+    }
+
+    this.toggleString(this.selectedParkIdsSignal, parkId);
+  }
   public toggleRating(selectionKey: string): void { this.toggleString(this.selectedRatingKeysSignal, selectionKey); }
   public toggleField(field: ShareContentField): void {
     const wasIncluded: boolean = this.includedFieldsSignal().includes(field);

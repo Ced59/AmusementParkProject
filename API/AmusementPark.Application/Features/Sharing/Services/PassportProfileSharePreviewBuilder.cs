@@ -229,6 +229,12 @@ public sealed class PassportProfileSharePreviewBuilder
                 && selectedParkIds.Contains(visit.ParkId)
                 && publicParks.ContainsKey(visit.ParkId))
             .ToArray();
+        if (visits.Length == 0)
+        {
+            return ApplicationResult<PassportProfileSharePreviewResult>.Failure(
+                SharingApplicationErrors.InvalidPassportProfileSelection());
+        }
+
         HashSet<string> visitIds = visits
             .Select(static visit => visit.VisitId)
             .ToHashSet(StringComparer.Ordinal);
@@ -238,7 +244,9 @@ public sealed class PassportProfileSharePreviewBuilder
         PassportRideStatisticsObservation[] rides = selectedScopeRides
             .Where(ride => CanExposeTarget(ride, source.HistoricalItemNames, targets))
             .ToArray();
-        PassportGlobalStatistics statistics = PassportGlobalStatisticsCalculator.Calculate(visits, rides);
+        PassportProfileStatistics statistics = PassportProfileStatisticsCalculator.Calculate(
+            visits,
+            rides);
         bool includesActivity = policy.Includes(ShareContentField.RideCount);
         bool includesTemporalRatings = policy.Includes(ShareContentField.TemporalRatings);
         bool includesGeography = policy.Includes(ShareContentField.GeographicStatistics);
@@ -308,10 +316,14 @@ public sealed class PassportProfileSharePreviewBuilder
             ? BuildCountries(visits, publicParks)
             : Array.Empty<PassportProfileShareCountryResult>();
         PassportProfileShareYearResult[] years = includesGeography
-            ? BuildYears(visits, rides, includesActivity)
+            ? BuildYears(statistics.Years, includesActivity)
             : Array.Empty<PassportProfileShareYearResult>();
         PassportProfileShareParkResult[] parks = includesGeography
-            ? BuildParks(visits, rides, publicParks, includesActivity, includesTemporalRatings)
+            ? BuildParks(
+                statistics.Parks,
+                publicParks,
+                includesActivity,
+                includesTemporalRatings)
             : Array.Empty<PassportProfileShareParkResult>();
         PassportProfileShareMissedItemResult[] missedItems = includesMissed
             ? BuildMissedItems(rides, source.HistoricalItemNames, targets)
@@ -382,61 +394,36 @@ public sealed class PassportProfileSharePreviewBuilder
     }
 
     private static PassportProfileShareYearResult[] BuildYears(
-        IEnumerable<PassportVisitStatisticsObservation> visits,
-        IEnumerable<PassportRideStatisticsObservation> rides,
+        IEnumerable<PassportProfileYearStatistics> years,
         bool includesActivity)
     {
-        IReadOnlyDictionary<int, long> completedRidesByYear = rides
-            .Where(static ride => ride.Status == RideOccurrenceStatus.Completed)
-            .GroupBy(static ride => ride.VisitDate.Year)
-            .ToDictionary(static group => group.Key, static group => group.LongCount());
-        return visits.GroupBy(static visit => visit.VisitDate.Year)
-            .OrderByDescending(static group => group.Key)
-            .Select(group => new PassportProfileShareYearResult(
-                group.Key,
-                group.LongCount(),
-                group.Select(static visit => visit.ParkId).Distinct(StringComparer.Ordinal).LongCount(),
-                includesActivity ? completedRidesByYear.GetValueOrDefault(group.Key) : null))
+        return years.Select(year => new PassportProfileShareYearResult(
+                year.Year,
+                year.VisitCount,
+                year.ParkCount,
+                includesActivity ? year.CompletedRideCount : null))
             .ToArray();
     }
 
     private static PassportProfileShareParkResult[] BuildParks(
-        IEnumerable<PassportVisitStatisticsObservation> visits,
-        IEnumerable<PassportRideStatisticsObservation> rides,
+        IEnumerable<PassportProfileParkStatistics> parkStatistics,
         IReadOnlyDictionary<string, Park> parks,
         bool includesActivity,
         bool includesRatings)
     {
-        IReadOnlyDictionary<string, long> completedRidesByPark = rides
-            .Where(static ride => ride.Status == RideOccurrenceStatus.Completed)
-            .GroupBy(static ride => ride.ParkId, StringComparer.Ordinal)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.LongCount(),
-                StringComparer.Ordinal);
-        return visits.GroupBy(static visit => visit.ParkId, StringComparer.Ordinal)
-            .Select(group =>
-            {
-                PassportVisitStatisticsObservation[] values = group.ToArray();
-                double[] ratings = values
-                    .Where(static visit => visit.ParkAssessment.HasValue)
-                    .Select(static visit => visit.ParkAssessment!.Value.DoubleValue)
-                    .ToArray();
-                Park park = parks[group.Key];
-                return new PassportProfileShareParkResult(
-                    park.Name!.Trim(),
-                    NormalizeCountryCode(park.CountryCode),
-                    values.LongLength,
-                    values.Min(static visit => visit.VisitDate.Year),
-                    values.Max(static visit => visit.VisitDate.Year),
-                    includesActivity ? completedRidesByPark.GetValueOrDefault(group.Key) : null,
-                    includesRatings
-                        ? new PassportProfileShareRatingSummaryResult(
-                            ratings.LongLength,
-                            values.LongLength,
-                            ratings.Length == 0 ? null : ratings.Average())
-                        : null);
-            })
+        return parkStatistics.Select(statistics => new PassportProfileShareParkResult(
+                parks[statistics.ParkId].Name!.Trim(),
+                NormalizeCountryCode(parks[statistics.ParkId].CountryCode),
+                statistics.VisitCount,
+                statistics.FirstVisitYear,
+                statistics.LastVisitYear,
+                includesActivity ? statistics.CompletedRideCount : null,
+                includesRatings
+                    ? new PassportProfileShareRatingSummaryResult(
+                        statistics.RatedVisitCount,
+                        statistics.VisitCount,
+                        statistics.AverageVisitRating)
+                    : null))
             .OrderByDescending(static park => park.VisitCount)
             .ThenBy(static park => park.Name, StringComparer.OrdinalIgnoreCase)
             .ToArray();
