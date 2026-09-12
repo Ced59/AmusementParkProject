@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Comments.Results;
 
 namespace AmusementPark.Application.Features.Comments.Commands;
 
-public sealed record CreateCommentCommand(
-    string AuthorUserId,
-    CommentWriteModel Model) : ICommand<ApplicationResult<CommentResult>>;
+public sealed record UpdateCommentCommand(
+    string ActorUserId,
+    string CommentId,
+    CommentEditModel Model) : ICommand<ApplicationResult<CommentResult>>;

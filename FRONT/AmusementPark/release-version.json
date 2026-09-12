@@ -1,6 +1,20 @@
 {
-  "version": "5.2.30",
+  "version": "5.2.31",
   "history": [
+    {
+      "version": "5.2.31",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les échanges autour des parcs gagnent en fiabilité.",
+        "en": "Conversations about parks are now more reliable.",
+        "de": "Der Austausch über Parks ist jetzt zuverlässiger.",
+        "nl": "Gesprekken over parken zijn nu betrouwbaarder.",
+        "it": "Le conversazioni sui parchi sono ora più affidabili.",
+        "es": "Las conversaciones sobre parques son ahora más fiables.",
+        "pl": "Rozmowy o parkach są teraz bardziej niezawodne.",
+        "pt": "As conversas sobre parques estão agora mais fiáveis."
+      }
+    },
     {
       "version": "5.2.30",
       "releasedAt": "2026-09-12",
