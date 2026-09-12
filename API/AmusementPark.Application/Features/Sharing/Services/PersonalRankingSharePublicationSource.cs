@@ -61,30 +61,41 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
     }
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
-        string sourceScopeKey,
-        ShareContentPolicy contentPolicy,
+        SharePublicationSourceVersionRequest request,
         CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(contentPolicy);
-        if (!PersonalRankingShareSourceScope.TryParse(sourceScopeKey, out string ownerUserId))
+        ArgumentNullException.ThrowIfNull(request);
+        if (!PersonalRankingShareSourceScope.TryParse(
+                request.SourceScopeKey,
+                out string ownerUserId))
         {
             return ApplicationResult<long>.Failure(SharingApplicationErrors.SourceUnavailable());
         }
 
-        string identityScopeKey = PublicIdentityShareSourceScope.Create(ownerUserId);
+        string identityScopeKey = PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId);
+        List<string> scopeKeys = new List<string>
+        {
+            request.SourceScopeKey,
+            PersonalRankingShareSourceScope.PublicCatalog,
+        };
+        if (request.ContentPolicy.Includes(ShareContentField.PublicDisplayName))
+        {
+            scopeKeys.Add(identityScopeKey);
+        }
+
         IReadOnlyDictionary<string, ShareSourceRevision> revisions =
             await this.sourceRevisionRepository.GetSnapshotAsync(
-                new[]
-                {
-                    sourceScopeKey,
-                    identityScopeKey,
-                    PersonalRankingShareSourceScope.PublicCatalog,
-                },
+                scopeKeys,
                 cancellationToken);
-        ShareSourceRevision ownerRevision = revisions[sourceScopeKey];
-        ShareSourceRevision identityRevision = revisions[identityScopeKey];
+        ShareSourceRevision ownerRevision = revisions[request.SourceScopeKey];
+        ShareSourceRevision? identityRevision = request.ContentPolicy.Includes(
+                ShareContentField.PublicDisplayName)
+            ? revisions[identityScopeKey]
+            : null;
         ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
-        if (!ownerRevision.IsStable || !identityRevision.IsStable || !catalogRevision.IsStable)
+        if (!ownerRevision.IsStable
+            || identityRevision?.IsStable == false
+            || !catalogRevision.IsStable)
         {
             return ApplicationResult<long>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -95,7 +106,7 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
             return ApplicationResult<long>.Success(
                 checked(
                     ownerRevision.Revision
-                    + identityRevision.Revision
+                    + (identityRevision?.Revision ?? 0)
                     + catalogRevision.Revision));
         }
         catch (OverflowException)

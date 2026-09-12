@@ -86,7 +86,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .Callback(() => leaseStarted = true)

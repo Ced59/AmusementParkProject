@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Users.Ports;
@@ -55,8 +56,11 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         }
 
         ApplicationResult<long> sourceVersionResult = await source.GetCurrentSourceVersionAsync(
-            publication.SourceScopeKey,
-            publication.ContentPolicy,
+            new SharePublicationSourceVersionRequest(
+                publication.SourceScopeKey,
+                publication.ContentPolicy,
+                publication.Id,
+                publication.PublicationVersion),
             cancellationToken);
         if (!sourceVersionResult.IsSuccess
             || sourceVersionResult.Value != publication.SourceVersion)
@@ -134,11 +138,24 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
         }
 
         ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
-            currentPublication.SourceScopeKey,
-            currentPublication.ContentPolicy,
+            new SharePublicationSourceVersionRequest(
+                currentPublication.SourceScopeKey,
+                currentPublication.ContentPolicy,
+                currentPublication.Id,
+                currentPublication.PublicationVersion),
             cancellationToken);
-        return currentVersion.IsSuccess
-            && currentVersion.Value == currentPublication.SourceVersion
+        if (!currentVersion.IsSuccess
+            || currentVersion.Value != currentPublication.SourceVersion)
+        {
+            return RevalidationFailed(resolvedPublication.PublicationType);
+        }
+
+        User? currentOwner = await this.userRepository.GetByIdAsync(
+            currentPublication.OwnerUserId,
+            cancellationToken);
+        return currentOwner is not null
+            && currentOwner.IsActivated
+            && !currentOwner.IsBlocked
             ? ApplicationResult<bool>.Success(true)
             : RevalidationFailed(resolvedPublication.PublicationType);
     }

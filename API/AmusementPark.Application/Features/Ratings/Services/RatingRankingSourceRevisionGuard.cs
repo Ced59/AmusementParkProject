@@ -64,6 +64,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             affectedScopes,
             recoveryTarget,
             includePersonalRankingCatalog: false,
+            Array.Empty<string>(),
             cancellationToken);
     }
 
@@ -79,6 +80,7 @@ public sealed class RatingRankingSourceRevisionGuard :
         bool affectsAllRankingSources = false;
         bool affectsParkRankingSources = false;
         bool affectsPersonalRankingCatalog = false;
+        HashSet<string> affectedPublicCatalogScopes = new HashSet<string>(StringComparer.Ordinal);
         foreach (string parkId in previousById.Keys
                      .Concat(currentById.Keys)
                      .Distinct(StringComparer.Ordinal))
@@ -88,6 +90,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             if (AffectsPublicShareCatalog(previous, current))
             {
                 affectsPersonalRankingCatalog = true;
+                affectedPublicCatalogScopes.Add(PublicCatalogShareSourceScope.CreatePark(parkId));
             }
 
             bool previousIncluded = IsParkIncluded(previous);
@@ -96,7 +99,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             {
                 affectsAllRankingSources = true;
                 affectsPersonalRankingCatalog = true;
-                break;
+                continue;
             }
 
             if (!previousIncluded || !currentIncluded)
@@ -119,6 +122,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             affectedScopes,
             null,
             includePersonalRankingCatalog: affectsPersonalRankingCatalog,
+            affectedPublicCatalogScopes,
             cancellationToken);
     }
 
@@ -134,6 +138,7 @@ public sealed class RatingRankingSourceRevisionGuard :
         HashSet<ParkItemCategory> affectedCategories = new HashSet<ParkItemCategory>();
         bool affectsParkRankingSources = false;
         bool affectsPersonalRankingCatalog = false;
+        HashSet<string> affectedPublicCatalogScopes = new HashSet<string>(StringComparer.Ordinal);
         foreach (string itemId in previousById.Keys
                      .Concat(currentById.Keys)
                      .Distinct(StringComparer.Ordinal))
@@ -143,6 +148,8 @@ public sealed class RatingRankingSourceRevisionGuard :
             if (AffectsPublicShareCatalog(previous, current))
             {
                 affectsPersonalRankingCatalog = true;
+                AddPublicCatalogParkScope(affectedPublicCatalogScopes, previous?.ParkId);
+                AddPublicCatalogParkScope(affectedPublicCatalogScopes, current?.ParkId);
             }
 
             bool previousIncluded = IsParkItemIncluded(previous);
@@ -203,6 +210,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             affectedScopes,
             null,
             includePersonalRankingCatalog: affectsPersonalRankingCatalog,
+            affectedPublicCatalogScopes,
             cancellationToken);
     }
 
@@ -210,11 +218,14 @@ public sealed class RatingRankingSourceRevisionGuard :
         IReadOnlyCollection<RankingScopeDefinition> affectedScopes,
         RatingRankingMutationRecoveryTarget? recoveryTarget,
         bool includePersonalRankingCatalog,
+        IReadOnlyCollection<string> publicCatalogScopes,
         CancellationToken cancellationToken)
     {
         List<RatingRankingMutationLease> mutationLeases = new List<RatingRankingMutationLease>();
         ShareSourceMutationLease? personalRankingShareMutationLease = null;
         ShareSourceMutationLease? personalRankingCatalogMutationLease = null;
+        List<ShareSourceMutationLease> publicCatalogMutationLeases =
+            new List<ShareSourceMutationLease>();
         try
         {
             foreach (RankingScopeDefinition scope in affectedScopes
@@ -247,6 +258,16 @@ public sealed class RatingRankingSourceRevisionGuard :
                         PersonalRankingShareSourceScope.PublicCatalog,
                         cancellationToken);
             }
+
+            foreach (string publicCatalogScope in publicCatalogScopes
+                         .Distinct(StringComparer.Ordinal)
+                         .OrderBy(static scope => scope, StringComparer.Ordinal))
+            {
+                publicCatalogMutationLeases.Add(
+                    await this.shareSourceRevisionRepository.BeginMutationAsync(
+                        publicCatalogScope,
+                        cancellationToken));
+            }
         }
         catch
         {
@@ -254,7 +275,8 @@ public sealed class RatingRankingSourceRevisionGuard :
                 new RatingRankingMutationPreparation(
                     mutationLeases,
                     personalRankingShareMutationLease,
-                    personalRankingCatalogMutationLease),
+                    personalRankingCatalogMutationLease,
+                    publicCatalogMutationLeases),
                 sourceChanged: false,
                 CancellationToken.None);
             throw;
@@ -263,7 +285,8 @@ public sealed class RatingRankingSourceRevisionGuard :
         return new RatingRankingMutationPreparation(
             mutationLeases,
             personalRankingShareMutationLease,
-            personalRankingCatalogMutationLease);
+            personalRankingCatalogMutationLease,
+            publicCatalogMutationLeases);
     }
 
     private static IReadOnlyDictionary<string, Park> IndexParks(
@@ -349,6 +372,14 @@ public sealed class RatingRankingSourceRevisionGuard :
         return normalized.Length == 0 ? null : normalized;
     }
 
+    private static void AddPublicCatalogParkScope(ISet<string> scopes, string? parkId)
+    {
+        if (!string.IsNullOrWhiteSpace(parkId))
+        {
+            scopes.Add(PublicCatalogShareSourceScope.CreatePark(parkId));
+        }
+    }
+
     public async Task CompleteMutationAsync(
         RatingRankingMutationPreparation preparation,
         bool sourceChanged,
@@ -431,6 +462,24 @@ public sealed class RatingRankingSourceRevisionGuard :
                 this.logger.LogError(
                     exception,
                     "Unable to settle the personal ranking public catalog mutation; its lease will expire conservatively.");
+            }
+        }
+
+        foreach (ShareSourceMutationLease mutationLease in preparation.PublicCatalogMutationLeases)
+        {
+            try
+            {
+                await this.shareSourceRevisionRepository.CompleteMutationAsync(
+                    mutationLease,
+                    personalRankingSourceChanged,
+                    cancellationToken);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to settle a park-scoped public catalog mutation for {ScopeKey}; its lease will expire conservatively.",
+                    mutationLease.ScopeKey);
             }
         }
 

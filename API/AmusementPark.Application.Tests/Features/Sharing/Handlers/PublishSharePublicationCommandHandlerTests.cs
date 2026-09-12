@@ -701,8 +701,8 @@ public sealed class PublishSharePublicationCommandHandlerTests
         if (postPublishReadUnstable)
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
-                    ScopeKey,
-                    It.IsAny<ShareContentPolicy>(),
+                    It.Is<SharePublicationSourceVersionRequest>(request =>
+                        request.SourceScopeKey == ScopeKey),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
@@ -712,8 +712,8 @@ public sealed class PublishSharePublicationCommandHandlerTests
         else if (finalReadFails)
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
-                    ScopeKey,
-                    It.IsAny<ShareContentPolicy>(),
+                    It.Is<SharePublicationSourceVersionRequest>(request =>
+                        request.SourceScopeKey == ScopeKey),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Failure(
@@ -722,8 +722,8 @@ public sealed class PublishSharePublicationCommandHandlerTests
         else if (finalReadUnstable)
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
-                    ScopeKey,
-                    It.IsAny<ShareContentPolicy>(),
+                    It.Is<SharePublicationSourceVersionRequest>(request =>
+                        request.SourceScopeKey == ScopeKey),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Failure(
@@ -732,8 +732,8 @@ public sealed class PublishSharePublicationCommandHandlerTests
         else if (persistedSourceVersion.HasValue)
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
-                    ScopeKey,
-                    It.IsAny<ShareContentPolicy>(),
+                    It.Is<SharePublicationSourceVersionRequest>(request =>
+                        request.SourceScopeKey == ScopeKey),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Success(persistedSourceVersion.Value));
@@ -741,8 +741,8 @@ public sealed class PublishSharePublicationCommandHandlerTests
         else
         {
             source.Setup(value => value.GetCurrentSourceVersionAsync(
-                    ScopeKey,
-                    It.IsAny<ShareContentPolicy>(),
+                    It.Is<SharePublicationSourceVersionRequest>(request =>
+                        request.SourceScopeKey == ScopeKey),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
         }

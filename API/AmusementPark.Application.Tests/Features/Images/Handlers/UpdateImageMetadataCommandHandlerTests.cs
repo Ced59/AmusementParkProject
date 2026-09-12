@@ -131,12 +131,12 @@ public sealed class UpdateImageMetadataCommandHandlerTests
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-old",
                 It.IsAny<CancellationToken>()))
             .Callback(() => previousLeaseStarted = true)
             .ReturnsAsync(previousLease);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-new",
                 It.IsAny<CancellationToken>()))
             .Callback(() => nextLeaseStarted = true)
@@ -481,7 +481,7 @@ public sealed class UpdateImageMetadataCommandHandlerTests
             .Setup(repository => repository.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
         revisionGuard
-            .Setup(guard => guard.BeginMutationAsync(
+            .Setup(guard => guard.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);

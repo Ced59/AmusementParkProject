@@ -117,8 +117,12 @@ public sealed class SharePublicationPublisher
         }
 
         ApplicationResult<long> finalSourceVersion = await source.GetCurrentSourceVersionAsync(
-            sourceScopeKey,
-            contentPolicy,
+            new SharePublicationSourceVersionRequest(
+                sourceScopeKey,
+                contentPolicy,
+                publication?.Id,
+                publication?.PublicationVersion,
+                passportProfile?.SelectedParkIds),
             cancellationToken);
         if (!finalSourceVersion.IsSuccess)
         {
@@ -210,6 +214,7 @@ public sealed class SharePublicationPublisher
                     sourceScopeKey,
                     sourceVersion,
                     contentPolicy,
+                    passportProfile,
                     cancellationToken);
                 if (!confirmation.IsSuccess)
                 {
@@ -243,11 +248,16 @@ public sealed class SharePublicationPublisher
         string sourceScopeKey,
         long sourceVersion,
         ShareContentPolicy contentPolicy,
+        PassportProfileShareInput? passportProfile,
         CancellationToken cancellationToken)
     {
         ApplicationResult<long> persistedSourceVersion = await source.GetCurrentSourceVersionAsync(
-            sourceScopeKey,
-            contentPolicy,
+            new SharePublicationSourceVersionRequest(
+                sourceScopeKey,
+                contentPolicy,
+                publication.Id,
+                publication.PublicationVersion,
+                passportProfile?.SelectedParkIds),
             cancellationToken);
         if (persistedSourceVersion.IsSuccess
             && persistedSourceVersion.Value == sourceVersion)

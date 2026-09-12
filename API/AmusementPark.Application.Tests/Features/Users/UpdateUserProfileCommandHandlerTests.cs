@@ -36,12 +36,12 @@ public sealed class UpdateUserProfileCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((string _, User updated, DateTime _, CancellationToken _) => updated);
         ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
-            "public-identity:user-1",
+            PublicIdentityShareSourceScope.CreateDisplayName("user-1"),
             4.ToString("x32"));
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(
-                "public-identity:user-1",
+                PublicIdentityShareSourceScope.CreateDisplayName("user-1"),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);
         shareRevisions.Setup(value => value.CompleteMutationAsync(
@@ -84,7 +84,7 @@ public sealed class UpdateUserProfileCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TimeoutException("MongoDB timeout."));
         ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
-            "public-identity:user-1");
+            PublicIdentityShareSourceScope.CreateDisplayName("user-1"));
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(

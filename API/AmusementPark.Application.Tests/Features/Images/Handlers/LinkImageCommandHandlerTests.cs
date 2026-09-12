@@ -108,12 +108,12 @@ public sealed class LinkImageCommandHandlerTests
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-old",
                 It.IsAny<CancellationToken>()))
             .Callback(() => previousLeaseStarted = true)
             .ReturnsAsync(previousLease);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-new",
                 It.IsAny<CancellationToken>()))
             .Callback(() => nextLeaseStarted = true)

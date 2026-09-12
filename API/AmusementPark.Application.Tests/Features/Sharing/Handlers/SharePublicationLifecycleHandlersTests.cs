@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Handlers;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -146,8 +147,8 @@ public sealed class SharePublicationLifecycleHandlersTests
         source.Setup(value => value.CreateDefaultPolicy())
             .Returns(CreatePolicy());
         source.Setup(value => value.GetCurrentSourceVersionAsync(
-                ScopeKey,
-                It.IsAny<ShareContentPolicy>(),
+                It.Is<SharePublicationSourceVersionRequest>(request =>
+                    request.SourceScopeKey == ScopeKey),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
         return source.Object;

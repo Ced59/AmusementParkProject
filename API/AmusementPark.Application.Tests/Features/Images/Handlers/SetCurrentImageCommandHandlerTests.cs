@@ -49,7 +49,7 @@ public sealed class SetCurrentImageCommandHandlerTests
         MockSequence sequence = new MockSequence();
         images.Setup(value => value.GetByIdAsync("avatar-new", It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
-        revisions.InSequence(sequence).Setup(value => value.BeginMutationAsync(
+        revisions.InSequence(sequence).Setup(value => value.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);

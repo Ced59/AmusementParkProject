@@ -64,7 +64,7 @@
           @if (hasField('GlobalRatings')) {
             <div class="passport-share__choices">
               @for (rating of selection.ratings; track rating.selectionKey) {
-                <label><input type="checkbox" [checked]="hasRating(rating.selectionKey)" (change)="facade.toggleRating(rating.selectionKey)"><span><strong>{{ rating.name }}</strong><small>{{ rating.parkName || ('passportProfileShare.noPark' | translate) }} · {{ formatRating(rating.rating) }}/5</small></span></label>
+                <label><input type="checkbox" [checked]="hasRating(rating.selectionKey)" [disabled]="!facade.canSelectRating(rating.selectionKey)" (change)="facade.toggleRating(rating.selectionKey)"><span><strong>{{ rating.name }}</strong><small>{{ rating.parkName || ('passportProfileShare.noPark' | translate) }} · {{ formatRating(rating.rating) }}/5</small></span></label>
               }
             </div>
           }

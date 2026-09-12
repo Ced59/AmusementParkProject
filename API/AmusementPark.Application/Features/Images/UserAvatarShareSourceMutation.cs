@@ -40,7 +40,7 @@ internal static class UserAvatarShareSourceMutation
         {
             foreach (string ownerUserId in ownerUserIds)
             {
-                leases[ownerUserId] = await revisionGuard.BeginMutationAsync(
+                leases[ownerUserId] = await revisionGuard.BeginAvatarMutationAsync(
                     ownerUserId,
                     cancellationToken);
             }

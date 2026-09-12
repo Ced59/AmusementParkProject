@@ -26,7 +26,13 @@ public sealed class PersonalRankingShareSourceRevisionGuard
     {
         ArgumentNullException.ThrowIfNull(before);
         ArgumentNullException.ThrowIfNull(after);
-        return before == after
+        bool publicDisplayStateChanged = !string.Equals(
+                before.DisplayName,
+                after.DisplayName,
+                StringComparison.Ordinal)
+            || before.IsActivated != after.IsActivated
+            || before.IsBlocked != after.IsBlocked;
+        return !publicDisplayStateChanged
             ? null
             : await this.BeginMutationAsync(ownerUserId, cancellationToken);
     }
@@ -36,7 +42,16 @@ public sealed class PersonalRankingShareSourceRevisionGuard
         CancellationToken cancellationToken)
     {
         return await this.sourceRevisionRepository.BeginMutationAsync(
-            PublicIdentityShareSourceScope.Create(ownerUserId),
+            PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId),
+            cancellationToken);
+    }
+
+    public async Task<ShareSourceMutationLease> BeginAvatarMutationAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken)
+    {
+        return await this.sourceRevisionRepository.BeginMutationAsync(
+            PublicIdentityShareSourceScope.CreateAvatar(ownerUserId),
             cancellationToken);
     }
 

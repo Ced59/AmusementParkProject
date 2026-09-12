@@ -231,6 +231,51 @@ public sealed class SharePublicationAccessResolverTests
         publications.VerifyAll();
     }
 
+    [Fact]
+    public async Task RevalidateAsync_WhenOwnerWasBlockedAfterResolution_ShouldExposeNothing()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetResolvableByTokenAsync(
+                ShareToken.Parse(TokenValue),
+                CancellationToken.None))
+            .ReturnsAsync(publication);
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(new User
+            {
+                Id = "owner-1",
+                IsActivated = true,
+                IsBlocked = true,
+            });
+        SharePublicationAccessResolver resolver = new SharePublicationAccessResolver(
+            publications.Object,
+            users.Object,
+            CreateSources());
+        ResolvedSharePublicationResult resolvedPublication = new ResolvedSharePublicationResult(
+            "owner-1",
+            "Coaster Fan",
+            publication.Type,
+            publication.ContentPolicy,
+            publication.PublishedAtUtc!.Value,
+            publication.SourceScopeKey,
+            publication.SourceVersion,
+            publication.PublicationVersion,
+            publication.Id.Value,
+            publication.ContentFingerprint);
+
+        ApplicationResult<bool> result = await resolver.RevalidateAsync(
+            TokenValue,
+            resolvedPublication,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.shared-ranking.not-found");
+        publications.VerifyAll();
+        users.VerifyAll();
+    }
+
     private static SharePublication CreatePublishedPublication(bool includesDisplayName = true)
     {
         return SharePublication.Restore(
@@ -267,7 +312,7 @@ public sealed class SharePublicationAccessResolverTests
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, Now),
-                [PublicIdentityShareSourceScope.Create("owner-1")] =
+                [PublicIdentityShareSourceScope.CreateDisplayName("owner-1")] =
                     new ShareSourceRevision(0, 0, Now),
                 [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(0, 0, Now),
             });

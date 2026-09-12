@@ -173,8 +173,12 @@ public sealed class PublishSharePublicationCommandHandler
         }
 
         ApplicationResult<long> versionResult = await source.GetCurrentSourceVersionAsync(
-            scopeResult.Value,
-            contentPolicy,
+            new SharePublicationSourceVersionRequest(
+                scopeResult.Value,
+                contentPolicy,
+                currentPublication?.Id,
+                currentPublication?.PublicationVersion,
+                normalizedPassportProfile?.SelectedParkIds),
             cancellationToken);
         if (!versionResult.IsSuccess)
         {

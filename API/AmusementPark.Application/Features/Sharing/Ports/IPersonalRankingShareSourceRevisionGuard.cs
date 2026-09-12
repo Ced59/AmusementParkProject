@@ -14,6 +14,10 @@ public interface IPersonalRankingShareSourceRevisionGuard
         string ownerUserId,
         CancellationToken cancellationToken);
 
+    Task<ShareSourceMutationLease> BeginAvatarMutationAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken);
+
     Task CompleteMutationAsync(
         ShareSourceMutationLease? mutationLease,
         bool sourceChanged,

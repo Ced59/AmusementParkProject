@@ -49,8 +49,8 @@ public sealed class SharePublicationPublisherYearSnapshotTests
         Mock<ISharePublicationSourceDescriptor> source =
             new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
         source.Setup(value => value.GetCurrentSourceVersionAsync(
-                "year-scope",
-                It.IsAny<ShareContentPolicy>(),
+                It.Is<SharePublicationSourceVersionRequest>(request =>
+                    request.SourceScopeKey == "year-scope"),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<long>.Success(12));
         Mock<ISharePublicationSnapshotWriter> snapshots =
@@ -100,8 +100,8 @@ public sealed class SharePublicationPublisherYearSnapshotTests
         repository.VerifyAll();
         tokens.VerifyAll();
         source.Verify(value => value.GetCurrentSourceVersionAsync(
-            "year-scope",
-            It.IsAny<ShareContentPolicy>(),
+            It.Is<SharePublicationSourceVersionRequest>(request =>
+                request.SourceScopeKey == "year-scope"),
             CancellationToken.None), Times.Exactly(2));
         source.VerifyAll();
         snapshots.VerifyAll();

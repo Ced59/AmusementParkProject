@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Sharing.Ports;
 
@@ -8,19 +9,22 @@ public interface IPassportProfileShareSourceVersionProvider
     Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
         PrepareOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
-            bool includeRatings,
+            ShareContentPolicy contentPolicy,
+            IReadOnlyCollection<string> selectedParkIds,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
         GetOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
-            bool includeRatings,
+            ShareContentPolicy contentPolicy,
+            IReadOnlyCollection<string> selectedParkIds,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevision>> ReconcileOwnedSourceVersionAsync(
         string ownerUserId,
         string sourceFingerprint,
         PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
-        bool includeRatings,
+        ShareContentPolicy contentPolicy,
+        IReadOnlyCollection<string> selectedParkIds,
         CancellationToken cancellationToken);
 }

@@ -6,6 +6,7 @@ import { forkJoin } from 'rxjs';
 import {
   PassportProfileShareInput,
   PassportProfileSharePreview,
+  PassportProfileShareRatingCandidate,
   PassportProfileShareSelection,
   ShareContentField,
   SharePublicationPreview,
@@ -150,7 +151,18 @@ export class PassportProfileShareStateFacade {
 
     this.toggleString(this.selectedParkIdsSignal, parkId);
   }
-  public toggleRating(selectionKey: string): void { this.toggleString(this.selectedRatingKeysSignal, selectionKey); }
+  public toggleRating(selectionKey: string): void {
+    if (!this.canSelectRating(selectionKey)) {
+      return;
+    }
+
+    this.toggleString(this.selectedRatingKeysSignal, selectionKey);
+  }
+  public canSelectRating(selectionKey: string): boolean {
+    const candidate: PassportProfileShareRatingCandidate | undefined =
+      this.selectionSignal()?.ratings.find((rating) => rating.selectionKey === selectionKey);
+    return candidate != null && this.selectedParkIdsSignal().includes(candidate.parkId);
+  }
   public toggleField(field: ShareContentField): void {
     const wasIncluded: boolean = this.includedFieldsSignal().includes(field);
     this.toggleString(this.includedFieldsSignal, field);

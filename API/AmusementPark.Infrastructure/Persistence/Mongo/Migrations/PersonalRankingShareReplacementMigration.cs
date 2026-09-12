@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
@@ -324,8 +325,7 @@ public sealed class PersonalRankingShareReplacementMigration
         }
 
         ApplicationResult<long> versionResult = await this.sourceDescriptor.GetCurrentSourceVersionAsync(
-            scopeResult.Value,
-            policy,
+            new SharePublicationSourceVersionRequest(scopeResult.Value, policy),
             cancellationToken);
         if (!versionResult.IsSuccess)
         {
@@ -449,8 +449,7 @@ public sealed class PersonalRankingShareReplacementMigration
             }
 
             ApplicationResult<long> versionResult = await this.sourceDescriptor.GetCurrentSourceVersionAsync(
-                scopeResult.Value,
-                policy,
+                new SharePublicationSourceVersionRequest(scopeResult.Value, policy),
                 cancellationToken);
             if (!versionResult.IsSuccess)
             {

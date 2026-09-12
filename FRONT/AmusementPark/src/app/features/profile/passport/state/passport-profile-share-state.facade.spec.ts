@@ -263,6 +263,11 @@ describe('PassportProfileShareStateFacade', () => {
 
     expect(facade.selectedParkIds()).toEqual(['park-2']);
     expect(facade.selectedRatingKeys()).toEqual(['rating-2']);
+
+    facade.toggleRating('rating-1');
+
+    expect(facade.canSelectRating('rating-1')).toBe(false);
+    expect(facade.selectedRatingKeys()).toEqual(['rating-2']);
   });
 });
 

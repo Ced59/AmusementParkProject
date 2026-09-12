@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Sharing.Ports;
@@ -17,7 +18,6 @@ public interface ISharePublicationSourceDescriptor
     ApplicationResult<bool> ValidatePolicyForPublication(ShareContentPolicy contentPolicy);
 
     Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
-        string sourceScopeKey,
-        ShareContentPolicy contentPolicy,
+        SharePublicationSourceVersionRequest request,
         CancellationToken cancellationToken);
 }
