@@ -254,6 +254,9 @@ export class PassportProfileShareStateFacade {
     if (this.savingSignal()) {
       return;
     }
+    this.requestGeneration++;
+    this.previewSignal.set(null);
+    this.previewingSignal.set(false);
     const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
     this.port.revoke().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({

@@ -223,6 +223,8 @@ public sealed class RatingRankingSourceRevisionGuard :
     {
         List<RatingRankingMutationLease> mutationLeases = new List<RatingRankingMutationLease>();
         ShareSourceMutationLease? personalRankingShareMutationLease = null;
+        List<ShareSourceMutationLease> personalRatingShareMutationLeases =
+            new List<ShareSourceMutationLease>();
         ShareSourceMutationLease? personalRankingCatalogMutationLease = null;
         List<ShareSourceMutationLease> publicCatalogMutationLeases =
             new List<ShareSourceMutationLease>();
@@ -249,6 +251,14 @@ public sealed class RatingRankingSourceRevisionGuard :
                     await this.shareSourceRevisionRepository.BeginMutationAsync(
                         PersonalRankingShareSourceScope.Create(recoveryTarget.UserId),
                         cancellationToken);
+                personalRatingShareMutationLeases.Add(
+                    await this.shareSourceRevisionRepository.BeginMutationAsync(
+                        PersonalRankingShareSourceScope.CreateRating(
+                            recoveryTarget.UserId,
+                            PassportProfileRatingSelectionKey.Create(
+                                recoveryTarget.TargetType,
+                                recoveryTarget.TargetId)),
+                        cancellationToken));
             }
 
             if (includePersonalRankingCatalog)
@@ -276,7 +286,8 @@ public sealed class RatingRankingSourceRevisionGuard :
                     mutationLeases,
                     personalRankingShareMutationLease,
                     personalRankingCatalogMutationLease,
-                    publicCatalogMutationLeases),
+                    publicCatalogMutationLeases,
+                    personalRatingShareMutationLeases),
                 sourceChanged: false,
                 CancellationToken.None);
             throw;
@@ -286,7 +297,8 @@ public sealed class RatingRankingSourceRevisionGuard :
             mutationLeases,
             personalRankingShareMutationLease,
             personalRankingCatalogMutationLease,
-            publicCatalogMutationLeases);
+            publicCatalogMutationLeases,
+            personalRatingShareMutationLeases);
     }
 
     private static IReadOnlyDictionary<string, Park> IndexParks(
@@ -445,6 +457,25 @@ public sealed class RatingRankingSourceRevisionGuard :
                 this.logger.LogError(
                     exception,
                     "Unable to settle the personal ranking share source mutation; its lease will expire conservatively.");
+            }
+        }
+
+        foreach (ShareSourceMutationLease mutationLease in
+                 preparation.PersonalRatingShareMutationLeases)
+        {
+            try
+            {
+                await this.shareSourceRevisionRepository.CompleteMutationAsync(
+                    mutationLease,
+                    personalRankingSourceChanged,
+                    cancellationToken);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(
+                    exception,
+                    "Unable to settle a selected passport rating mutation for {ScopeKey}; its lease will expire conservatively.",
+                    mutationLease.ScopeKey);
             }
         }
 

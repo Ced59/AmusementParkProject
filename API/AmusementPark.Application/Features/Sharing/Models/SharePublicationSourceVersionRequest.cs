@@ -7,4 +7,4 @@ public sealed record SharePublicationSourceVersionRequest(
     ShareContentPolicy ContentPolicy,
     SharePublicationId? PublicationId = null,
     long? PublicationVersion = null,
-    IReadOnlyCollection<string>? SelectedParkIds = null);
+    PassportProfileShareInput? PassportProfile = null);

@@ -65,7 +65,8 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             new DateOnly(2026, 9, 12),
             new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.Create(visit.UserId));
+            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
@@ -77,13 +78,19 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
                 CancellationToken.None))
             .ReturnsAsync(visit);
         guard.InSequence(sequence)
-            .Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
-            .ReturnsAsync(lease);
+            .Setup(value => value.TryBeginMutationAsync(
+                visit.UserId,
+                It.Is<IReadOnlyCollection<(string ParkId, int Year)>>(segments =>
+                    segments.Count == 1
+                    && segments.First().ParkId == "park-1"
+                    && segments.First().Year == 2026),
+                CancellationToken.None))
+            .ReturnsAsync(leases);
         inner.InSequence(sequence)
             .Setup(value => value.TryUpdateOwnedAsync(visit, 1, It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         guard.InSequence(sequence)
-            .Setup(value => value.CompleteMutationAsync(lease, true, CancellationToken.None))
+            .Setup(value => value.CompleteMutationAsync(leases, true, CancellationToken.None))
             .Returns(Task.CompletedTask);
         PassportProfileRevisionUserVisitRepository repository =
             new PassportProfileRevisionUserVisitRepository(inner.Object, guard.Object);
@@ -115,7 +122,8 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             new DateOnly(2026, 9, 12),
             new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.Create(visit.UserId));
+            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
@@ -124,11 +132,14 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
                 visit.UserId,
                 CancellationToken.None))
             .ReturnsAsync(visit);
-        guard.Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
-            .ReturnsAsync(lease);
+        guard.Setup(value => value.TryBeginMutationAsync(
+                visit.UserId,
+                It.IsAny<IReadOnlyCollection<(string ParkId, int Year)>>(),
+                CancellationToken.None))
+            .ReturnsAsync(leases);
         inner.Setup(value => value.TryUpdateOwnedAsync(visit, 1, It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TimeoutException());
-        guard.Setup(value => value.CompleteMutationAsync(lease, true, CancellationToken.None))
+        guard.Setup(value => value.CompleteMutationAsync(leases, true, CancellationToken.None))
             .Returns(Task.CompletedTask);
         PassportProfileRevisionUserVisitRepository repository =
             new PassportProfileRevisionUserVisitRepository(inner.Object, guard.Object);

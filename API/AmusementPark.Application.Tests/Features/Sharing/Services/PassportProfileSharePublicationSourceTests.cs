@@ -17,7 +17,11 @@ public sealed class PassportProfileSharePublicationSourceTests
     [Fact]
     public async Task GetCurrentSourceVersionAsync_ShouldReadOnlySelectedDependencies()
     {
-        string passportScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string sourceScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         Mock<IShareSourceRevisionRepository> revisions =
@@ -38,9 +42,9 @@ public sealed class PassportProfileSharePublicationSourceTests
 
         ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
             new SharePublicationSourceVersionRequest(
-                passportScope,
+                sourceScope,
                 CreatePolicy(ShareContentField.PublicDisplayName),
-                SelectedParkIds: new[] { ParkId }),
+                PassportProfile: CreateInput()),
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
@@ -51,10 +55,15 @@ public sealed class PassportProfileSharePublicationSourceTests
     [Fact]
     public async Task PrepareOwnedSourceRevisionSnapshotAsync_ShouldArmPassportAndReadOptionalScopes()
     {
-        string passportScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(OwnerUserId);
-        string ratingsScope = PersonalRankingShareSourceScope.Create(OwnerUserId);
+        string ratingsScope = PersonalRankingShareSourceScope.CreateRating(
+            OwnerUserId,
+            "Park:rating-1");
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         ShareContentPolicy policy = CreatePolicy(
             ShareContentField.PublicDisplayName,
@@ -86,7 +95,7 @@ public sealed class PassportProfileSharePublicationSourceTests
             await source.PrepareOwnedSourceRevisionSnapshotAsync(
                 OwnerUserId,
                 policy,
-                new[] { ParkId },
+                CreateInput("Park:rating-1"),
                 CancellationToken.None);
 
         Assert.True(result.IsSuccess);
@@ -101,7 +110,10 @@ public sealed class PassportProfileSharePublicationSourceTests
     [Fact]
     public async Task ReconcileOwnedSourceVersionAsync_ShouldRejectAConcurrentSelectedParkChange()
     {
-        string passportScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         ShareContentPolicy policy = CreatePolicy(ShareContentField.PublicDisplayName);
@@ -116,17 +128,12 @@ public sealed class PassportProfileSharePublicationSourceTests
             });
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.ReconcileFingerprintAsync(
-                passportScope,
-                "source-fingerprint",
-                CancellationToken.None))
-            .ReturnsAsync(Revision(5));
         revisions.Setup(value => value.GetSnapshotAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
-                [passportScope] = Revision(5),
+                [passportScope] = Revision(4),
                 [displayNameScope] = Revision(7),
                 [catalogScope] = Revision(4),
             });
@@ -138,7 +145,7 @@ public sealed class PassportProfileSharePublicationSourceTests
                 "source-fingerprint",
                 expected,
                 policy,
-                new[] { ParkId },
+                CreateInput(),
                 CancellationToken.None);
 
         Assert.False(result.IsSuccess);
@@ -150,10 +157,16 @@ public sealed class PassportProfileSharePublicationSourceTests
     [Fact]
     public async Task GetCurrentSourceVersionAsync_ShouldIncludeOnlyPublishedIdentityAndRatings()
     {
-        string passportScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string sourceScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(OwnerUserId);
-        string ratingsScope = PersonalRankingShareSourceScope.Create(OwnerUserId);
+        string ratingsScope = PersonalRankingShareSourceScope.CreateRating(
+            OwnerUserId,
+            "Park:rating-1");
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         Dictionary<string, ShareSourceRevision> available = new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
         {
@@ -163,32 +176,43 @@ public sealed class PassportProfileSharePublicationSourceTests
             [ratingsScope] = Revision(11),
             [catalogScope] = Revision(3),
         };
+        List<IReadOnlyCollection<string>> requestedScopes =
+            new List<IReadOnlyCollection<string>>();
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.GetSnapshotAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
             .ReturnsAsync((IReadOnlyCollection<string> scopes, CancellationToken _) =>
-                scopes.ToDictionary(scope => scope, scope => available[scope], StringComparer.Ordinal));
+            {
+                requestedScopes.Add(scopes.ToArray());
+                return scopes.ToDictionary(
+                    scope => scope,
+                    scope => available[scope],
+                    StringComparer.Ordinal);
+            });
         PassportProfileSharePublicationSource source = CreateSource(revisions.Object);
 
         ApplicationResult<long> geographyOnly = await source.GetCurrentSourceVersionAsync(
-            Request(passportScope, CreatePolicy(ShareContentField.GeographicStatistics)),
+            Request(sourceScope, CreatePolicy(ShareContentField.GeographicStatistics)),
             CancellationToken.None);
         ApplicationResult<long> withName = await source.GetCurrentSourceVersionAsync(
-            Request(passportScope, CreatePolicy(ShareContentField.PublicDisplayName)),
+            Request(sourceScope, CreatePolicy(ShareContentField.PublicDisplayName)),
             CancellationToken.None);
         ApplicationResult<long> withAvatar = await source.GetCurrentSourceVersionAsync(
-            Request(passportScope, CreatePolicy(ShareContentField.Avatar)),
+            Request(sourceScope, CreatePolicy(ShareContentField.Avatar)),
             CancellationToken.None);
         ApplicationResult<long> withRatings = await source.GetCurrentSourceVersionAsync(
-            Request(passportScope, CreatePolicy(ShareContentField.GlobalRatings)),
+            Request(sourceScope, CreatePolicy(ShareContentField.GlobalRatings)),
             CancellationToken.None);
 
         Assert.Equal(7, geographyOnly.Value);
         Assert.Equal(14, withName.Value);
         Assert.Equal(16, withAvatar.Value);
         Assert.Equal(18, withRatings.Value);
+        IReadOnlyCollection<string> ratingRequest = requestedScopes[3];
+        Assert.Contains(ratingsScope, ratingRequest);
+        Assert.DoesNotContain(PersonalRankingShareSourceScope.Create(OwnerUserId), ratingRequest);
         revisions.VerifyAll();
     }
 
@@ -196,7 +220,11 @@ public sealed class PassportProfileSharePublicationSourceTests
     public async Task GetCurrentSourceVersionAsync_ShouldResolveSelectedParksFromPublishedSnapshot()
     {
         SharePublicationId publicationId = SharePublicationId.New();
-        string passportScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string sourceScope = PassportProfileShareSourceScope.Create(OwnerUserId);
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         ShareContentPolicy policy = CreatePolicy(ShareContentField.GeographicStatistics);
         PassportProfileShareInput selection = new PassportProfileShareInput(
@@ -240,7 +268,7 @@ public sealed class PassportProfileSharePublicationSourceTests
 
         ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
             new SharePublicationSourceVersionRequest(
-                passportScope,
+                sourceScope,
                 policy,
                 publicationId,
                 2),
@@ -267,7 +295,20 @@ public sealed class PassportProfileSharePublicationSourceTests
         return new SharePublicationSourceVersionRequest(
             sourceScopeKey,
             policy,
-            SelectedParkIds: new[] { ParkId });
+            PassportProfile: policy.Includes(ShareContentField.GlobalRatings)
+                ? CreateInput("Park:rating-1")
+                : CreateInput());
+    }
+
+    private static PassportProfileShareInput CreateInput(params string[] ratingKeys)
+    {
+        return new PassportProfileShareInput(
+            new[] { 2026 },
+            new[] { ParkId },
+            ratingKeys,
+            null,
+            ShareVisibility.Unlisted,
+            false);
     }
 
     private static ShareContentPolicy CreatePolicy(params ShareContentField[] fields)

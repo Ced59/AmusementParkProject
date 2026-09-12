@@ -51,15 +51,25 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
             return await this.inner.TryTombstoneAsync(request, cancellationToken);
         }
 
-        ShareSourceMutationLease? mutationLease =
+        IReadOnlyCollection<(string ParkId, int Year)> segments =
+            request.AuditEvent.PreviousVisitDate is not null
+                ? new[]
+                {
+                    (request.AuditEvent.ParkId, request.AuditEvent.PreviousVisitDate.Year),
+                }
+                : Array.Empty<(string ParkId, int Year)>();
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases =
             await this.revisionGuard.TryBeginMutationAsync(
                 request.UserId,
+                segments,
                 cancellationToken);
-        using CancellationTokenSource? linkedCancellation = mutationLease is null
+        CancellationToken[] leaseCancellationTokens = mutationLeases
+            .Select(static lease => lease.LeaseCancellationToken)
+            .Prepend(cancellationToken)
+            .ToArray();
+        using CancellationTokenSource? linkedCancellation = mutationLeases.Count == 0
             ? null
-            : CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationToken,
-                mutationLease.LeaseCancellationToken);
+            : CancellationTokenSource.CreateLinkedTokenSource(leaseCancellationTokens);
         CancellationToken guardedCancellationToken =
             linkedCancellation?.Token ?? cancellationToken;
         try
@@ -68,7 +78,7 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
                 request,
                 guardedCancellationToken);
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 deleted,
                 CancellationToken.None);
             return deleted;
@@ -76,7 +86,7 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
         catch
         {
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 true,
                 CancellationToken.None);
             throw;

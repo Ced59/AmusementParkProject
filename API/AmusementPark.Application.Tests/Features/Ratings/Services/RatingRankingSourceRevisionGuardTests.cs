@@ -27,12 +27,22 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease shareLease = new ShareSourceMutationLease(
             "personal-ranking:user-1",
             8.ToString("x32"));
+        string selectedRatingScope = PersonalRankingShareSourceScope.CreateRating(
+            "user-1",
+            PassportProfileRatingSelectionKey.Create(RatingTargetType.Park, "park-1"));
+        ShareSourceMutationLease selectedRatingLease = new ShareSourceMutationLease(
+            selectedRatingScope,
+            10.ToString("x32"));
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(
                 "personal-ranking:user-1",
                 CancellationToken.None))
             .ReturnsAsync(shareLease);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                selectedRatingScope,
+                CancellationToken.None))
+            .ReturnsAsync(selectedRatingLease);
         RatingRankingSourceRevisionGuard guard = CreateGuard(
             revisions.Object,
             shareSourceRevisions: shareRevisions.Object);
@@ -44,6 +54,9 @@ public sealed class RatingRankingSourceRevisionGuardTests
             CancellationToken.None);
 
         Assert.Same(shareLease, preparation.PersonalRankingShareMutationLease);
+        Assert.Same(
+            selectedRatingLease,
+            Assert.Single(preparation.PersonalRatingShareMutationLeases));
         revisions.VerifyAll();
         shareRevisions.VerifyAll();
     }

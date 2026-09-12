@@ -43,8 +43,9 @@ public sealed class PassportProfileSharePreviewBuilderTests
         versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
                 It.IsAny<ShareContentPolicy>(),
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                    new[] { "park-public-id" })),
+                It.Is<PassportProfileShareInput>(input =>
+                    input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                    && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -52,8 +53,9 @@ public sealed class PassportProfileSharePreviewBuilderTests
         versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
                 It.IsAny<ShareContentPolicy>(),
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                    new[] { "park-public-id" })),
+                It.Is<PassportProfileShareInput>(input =>
+                    input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                    && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -63,8 +65,9 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 source.SourceFingerprint,
                 revisionSnapshot,
                 It.IsAny<ShareContentPolicy>(),
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                    new[] { "park-public-id" })),
+                It.Is<PassportProfileShareInput>(input =>
+                    input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                    && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(12, source.SourceFingerprint)));
@@ -130,22 +133,25 @@ public sealed class PassportProfileSharePreviewBuilderTests
         versions.Verify(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
             "owner-technical-id",
             It.IsAny<ShareContentPolicy>(),
-            It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                new[] { "park-public-id" })),
+            It.Is<PassportProfileShareInput>(input =>
+                input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.GetOwnedSourceRevisionSnapshotAsync(
             "owner-technical-id",
             It.IsAny<ShareContentPolicy>(),
-            It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                new[] { "park-public-id" })),
+            It.Is<PassportProfileShareInput>(input =>
+                input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.ReconcileOwnedSourceVersionAsync(
             "owner-technical-id",
             source.SourceFingerprint,
             revisionSnapshot,
             It.IsAny<ShareContentPolicy>(),
-            It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
-                new[] { "park-public-id" })),
+            It.Is<PassportProfileShareInput>(input =>
+                input.SelectedParkIds!.SequenceEqual(new[] { "park-public-id" })
+                && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
             CancellationToken.None), Times.Once);
         parks.VerifyAll();
         targets.VerifyAll();
@@ -473,7 +479,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
         versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
                 It.IsAny<ShareContentPolicy>(),
-                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<PassportProfileShareInput>(),
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -481,7 +487,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
         versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
                 It.IsAny<ShareContentPolicy>(),
-                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<PassportProfileShareInput>(),
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -491,7 +497,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 source.SourceFingerprint,
                 revisionSnapshot,
                 It.IsAny<ShareContentPolicy>(),
-                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<PassportProfileShareInput>(),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));

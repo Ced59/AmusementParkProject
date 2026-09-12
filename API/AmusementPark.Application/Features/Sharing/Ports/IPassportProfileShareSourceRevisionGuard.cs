@@ -4,12 +4,13 @@ namespace AmusementPark.Application.Features.Sharing.Ports;
 
 public interface IPassportProfileShareSourceRevisionGuard
 {
-    Task<ShareSourceMutationLease?> TryBeginMutationAsync(
+    Task<IReadOnlyCollection<ShareSourceMutationLease>> TryBeginMutationAsync(
         string ownerUserId,
+        IReadOnlyCollection<(string ParkId, int Year)> segments,
         CancellationToken cancellationToken);
 
     Task CompleteMutationAsync(
-        ShareSourceMutationLease? mutationLease,
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases,
         bool sourceChanged,
         CancellationToken cancellationToken);
 }

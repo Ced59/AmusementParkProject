@@ -80,7 +80,7 @@ public sealed class PassportProfileSharePreviewBuilder
             await this.sourceVersionProvider.PrepareOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
                 contentPolicy,
-                normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+                normalizedInput,
                 cancellationToken);
         if (!revisionBefore.IsSuccess || revisionBefore.Value is null)
         {
@@ -171,7 +171,7 @@ public sealed class PassportProfileSharePreviewBuilder
             await this.sourceVersionProvider.GetOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
                 contentPolicy,
-                normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+                normalizedInput,
                 cancellationToken);
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         Image? avatarAfter = contentPolicy.Includes(ShareContentField.Avatar)
@@ -201,7 +201,7 @@ public sealed class PassportProfileSharePreviewBuilder
                 source.SourceFingerprint,
                 revisionAfter.Value,
                 contentPolicy,
-                normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+                normalizedInput,
                 cancellationToken);
         if (!versionAfter.IsSuccess || versionAfter.Value is null)
         {

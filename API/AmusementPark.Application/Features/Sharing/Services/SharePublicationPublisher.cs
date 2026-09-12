@@ -122,7 +122,7 @@ public sealed class SharePublicationPublisher
                 contentPolicy,
                 publication?.Id,
                 publication?.PublicationVersion,
-                passportProfile?.SelectedParkIds),
+                passportProfile),
             cancellationToken);
         if (!finalSourceVersion.IsSuccess)
         {
@@ -257,7 +257,7 @@ public sealed class SharePublicationPublisher
                 contentPolicy,
                 publication.Id,
                 publication.PublicationVersion,
-                passportProfile?.SelectedParkIds),
+                passportProfile),
             cancellationToken);
         if (persistedSourceVersion.IsSuccess
             && persistedSourceVersion.Value == sourceVersion)

@@ -37,9 +37,9 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
     {
         return this.ExecuteMutationAsync(
             visit.UserId,
+            ResolveSegments(visit),
             token => this.inner.CreateIdempotentAsync(visit, clientOperationId, token),
             static result => result.Status == IdempotentVisitCreationStatus.Created,
-            PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(visit.Status),
             cancellationToken);
     }
 
@@ -51,13 +51,13 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
     {
         return this.ExecuteMutationAsync(
             visit.UserId,
+            ResolveSegments(visit),
             token => this.inner.CreateIdempotentAuditedAsync(
                 visit,
                 clientOperationId,
                 pendingAuditEvent,
                 token),
             static result => result.Status == IdempotentVisitCreationStatus.Created,
-            PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(visit.Status),
             cancellationToken);
     }
 
@@ -102,14 +102,15 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         long expectedVersion,
         CancellationToken cancellationToken)
     {
-        bool canChangeSource = await this.CanUpdateCompletedProjectionAsync(
+        IReadOnlyCollection<(string ParkId, int Year)> segments =
+            await this.ResolveUpdateSegmentsAsync(
             visit,
             cancellationToken);
         return await this.ExecuteMutationAsync(
             visit.UserId,
+            segments,
             token => this.inner.TryUpdateOwnedAsync(visit, expectedVersion, token),
             static updated => updated,
-            canChangeSource,
             cancellationToken);
     }
 
@@ -119,18 +120,19 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         PassportAuditEvent pendingAuditEvent,
         CancellationToken cancellationToken)
     {
-        bool canChangeSource = await this.CanUpdateCompletedProjectionAsync(
+        IReadOnlyCollection<(string ParkId, int Year)> segments =
+            await this.ResolveUpdateSegmentsAsync(
             visit,
             cancellationToken);
         return await this.ExecuteMutationAsync(
             visit.UserId,
+            segments,
             token => this.inner.TryUpdateOwnedAuditedAsync(
                 visit,
                 expectedVersion,
                 pendingAuditEvent,
                 token),
             static updated => updated,
-            canChangeSource,
             cancellationToken);
     }
 
@@ -141,11 +143,13 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         string contentMutationLeaseToken,
         CancellationToken cancellationToken)
     {
-        bool canChangeSource = await this.CanUpdateCompletedProjectionAsync(
+        IReadOnlyCollection<(string ParkId, int Year)> segments =
+            await this.ResolveUpdateSegmentsAsync(
             visit,
             cancellationToken);
         return await this.ExecuteMutationAsync(
             visit.UserId,
+            segments,
             token => this.inner.TryUpdateOwnedAuditedWithinContentMutationLeaseAsync(
                 visit,
                 expectedVersion,
@@ -153,11 +157,10 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
                 contentMutationLeaseToken,
                 token),
             static updated => updated,
-            canChangeSource,
             cancellationToken);
     }
 
-    private async Task<bool> CanUpdateCompletedProjectionAsync(
+    private async Task<IReadOnlyCollection<(string ParkId, int Year)>> ResolveUpdateSegmentsAsync(
         Visit visit,
         CancellationToken cancellationToken)
     {
@@ -165,37 +168,40 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
             visit.Id,
             visit.UserId,
             cancellationToken);
-        return PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(
-            previous?.Status,
-            visit.Status);
+        return ResolveSegments(previous, visit);
     }
 
     private async Task<TResult> ExecuteMutationAsync<TResult>(
         string ownerUserId,
+        IReadOnlyCollection<(string ParkId, int Year)> segments,
         Func<CancellationToken, Task<TResult>> mutation,
         Func<TResult, bool> sourceChanged,
-        bool canChangeSource,
         CancellationToken cancellationToken)
     {
-        if (!canChangeSource)
+        if (segments.Count == 0)
         {
             return await mutation(cancellationToken);
         }
 
-        ShareSourceMutationLease? mutationLease =
-            await this.revisionGuard.TryBeginMutationAsync(ownerUserId, cancellationToken);
-        using CancellationTokenSource? linkedCancellation = mutationLease is null
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases =
+            await this.revisionGuard.TryBeginMutationAsync(
+                ownerUserId,
+                segments,
+                cancellationToken);
+        CancellationToken[] leaseCancellationTokens = mutationLeases
+            .Select(static lease => lease.LeaseCancellationToken)
+            .Prepend(cancellationToken)
+            .ToArray();
+        using CancellationTokenSource? linkedCancellation = mutationLeases.Count == 0
             ? null
-            : CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationToken,
-                mutationLease.LeaseCancellationToken);
+            : CancellationTokenSource.CreateLinkedTokenSource(leaseCancellationTokens);
         CancellationToken guardedCancellationToken =
             linkedCancellation?.Token ?? cancellationToken;
         try
         {
             TResult result = await mutation(guardedCancellationToken);
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 sourceChanged(result),
                 CancellationToken.None);
             return result;
@@ -203,10 +209,22 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         catch
         {
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 true,
                 CancellationToken.None);
             throw;
         }
+    }
+
+    private static IReadOnlyCollection<(string ParkId, int Year)> ResolveSegments(
+        params Visit?[] visits)
+    {
+        return visits
+            .Where(static visit => visit is not null
+                && PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(
+                    visit.Status))
+            .Select(static visit => (visit!.ParkId, visit.Date.Year))
+            .Distinct()
+            .ToArray();
     }
 }

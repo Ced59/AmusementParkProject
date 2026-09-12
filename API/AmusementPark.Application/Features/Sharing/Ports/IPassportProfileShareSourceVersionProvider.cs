@@ -10,14 +10,14 @@ public interface IPassportProfileShareSourceVersionProvider
         PrepareOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
             ShareContentPolicy contentPolicy,
-            IReadOnlyCollection<string> selectedParkIds,
+            PassportProfileShareInput input,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
         GetOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
             ShareContentPolicy contentPolicy,
-            IReadOnlyCollection<string> selectedParkIds,
+            PassportProfileShareInput input,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevision>> ReconcileOwnedSourceVersionAsync(
@@ -25,6 +25,6 @@ public interface IPassportProfileShareSourceVersionProvider
         string sourceFingerprint,
         PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
         ShareContentPolicy contentPolicy,
-        IReadOnlyCollection<string> selectedParkIds,
+        PassportProfileShareInput input,
         CancellationToken cancellationToken);
 }

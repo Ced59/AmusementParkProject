@@ -178,7 +178,7 @@ public sealed class PublishSharePublicationCommandHandler
                 contentPolicy,
                 currentPublication?.Id,
                 currentPublication?.PublicationVersion,
-                normalizedPassportProfile?.SelectedParkIds),
+                normalizedPassportProfile),
             cancellationToken);
         if (!versionResult.IsSuccess)
         {

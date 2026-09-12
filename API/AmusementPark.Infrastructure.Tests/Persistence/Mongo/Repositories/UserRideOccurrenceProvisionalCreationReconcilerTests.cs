@@ -99,7 +99,8 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.Create(document.UserId));
+            PassportProfileShareSourceScope.CreateSegment(document.UserId, 2026, "park-1"));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
         SetupVisit(visitCollection, CreateVisitDocument(
@@ -109,8 +110,12 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             VisitStatus.Completed));
         revisionGuard.Setup(value => value.TryBeginMutationAsync(
                 document.UserId,
+                It.Is<IReadOnlyCollection<(string ParkId, int Year)>>(segments =>
+                    segments.Count == 1
+                    && segments.First().ParkId == "park-1"
+                    && segments.First().Year == 2026),
                 CancellationToken.None))
-            .ReturnsAsync(lease);
+            .ReturnsAsync(leases);
         collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
                 It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
@@ -118,7 +123,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
         revisionGuard.Setup(value => value.CompleteMutationAsync(
-                lease,
+                leases,
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -155,7 +160,8 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.Create(document.UserId));
+            PassportProfileShareSourceScope.CreateSegment(document.UserId, 2026, "park-1"));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
         SetupVisit(visitCollection, CreateVisitDocument(
@@ -165,8 +171,9 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             VisitStatus.Completed));
         revisionGuard.Setup(value => value.TryBeginMutationAsync(
                 document.UserId,
+                It.IsAny<IReadOnlyCollection<(string ParkId, int Year)>>(),
                 CancellationToken.None))
-            .ReturnsAsync(lease);
+            .ReturnsAsync(leases);
         collection.Setup(value => value.UpdateOneAsync(
                 It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
                 It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
@@ -174,7 +181,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new TimeoutException());
         revisionGuard.Setup(value => value.CompleteMutationAsync(
-                lease,
+                leases,
                 true,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
@@ -438,6 +445,8 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         {
             Id = "visit-1",
             UserId = "user-1",
+            ParkId = "park-1",
+            Date = new VisitDateDocument { Year = 2026 },
             ContentMutationFenceReady = isFenceReady,
             ContentMutationFenceStableToken = stableFenceToken,
             ContentMutationFenceToken = currentFenceToken,

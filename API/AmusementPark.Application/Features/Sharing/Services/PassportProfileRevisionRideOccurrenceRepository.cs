@@ -472,38 +472,45 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
                 visit.Status);
         return await this.ExecuteMutationAsync(
             ownerUserId,
+            canChangeSource
+                ? new[] { (visit!.ParkId, visit.Date.Year) }
+                : Array.Empty<(string ParkId, int Year)>(),
             mutation,
             sourceChanged,
-            canChangeSource,
             cancellationToken);
     }
 
     private async Task<TResult> ExecuteMutationAsync<TResult>(
         string ownerUserId,
+        IReadOnlyCollection<(string ParkId, int Year)> segments,
         Func<CancellationToken, Task<TResult>> mutation,
         Func<TResult, bool> sourceChanged,
-        bool canChangeSource,
         CancellationToken cancellationToken)
     {
-        if (!canChangeSource)
+        if (segments.Count == 0)
         {
             return await mutation(cancellationToken);
         }
 
-        ShareSourceMutationLease? mutationLease =
-            await this.revisionGuard.TryBeginMutationAsync(ownerUserId, cancellationToken);
-        using CancellationTokenSource? linkedCancellation = mutationLease is null
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases =
+            await this.revisionGuard.TryBeginMutationAsync(
+                ownerUserId,
+                segments,
+                cancellationToken);
+        CancellationToken[] leaseCancellationTokens = mutationLeases
+            .Select(static lease => lease.LeaseCancellationToken)
+            .Prepend(cancellationToken)
+            .ToArray();
+        using CancellationTokenSource? linkedCancellation = mutationLeases.Count == 0
             ? null
-            : CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationToken,
-                mutationLease.LeaseCancellationToken);
+            : CancellationTokenSource.CreateLinkedTokenSource(leaseCancellationTokens);
         CancellationToken guardedCancellationToken =
             linkedCancellation?.Token ?? cancellationToken;
         try
         {
             TResult result = await mutation(guardedCancellationToken);
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 sourceChanged(result),
                 CancellationToken.None);
             return result;
@@ -511,7 +518,7 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         catch
         {
             await this.revisionGuard.CompleteMutationAsync(
-                mutationLease,
+                mutationLeases,
                 true,
                 CancellationToken.None);
             throw;

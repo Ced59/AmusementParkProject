@@ -76,13 +76,13 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                 continue;
             }
 
-            bool canChangeSource = disposition == ProvisionalCreationDisposition.Commit
-                && (await this.LoadVisitAsync(document, cancellationToken))?.Status
-                    == VisitStatus.Completed;
+            UserVisitDocument? sourceVisit = disposition == ProvisionalCreationDisposition.Commit
+                ? await this.LoadVisitAsync(document, cancellationToken)
+                : null;
             bool sourceChanged = await this.ApplyDispositionGuardedAsync(
                 document,
                 disposition,
-                canChangeSource,
+                sourceVisit,
                 cancellationToken);
             if (sourceChanged)
             {
@@ -96,10 +96,10 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
     private async Task<bool> ApplyDispositionGuardedAsync(
         UserRideOccurrenceDocument document,
         ProvisionalCreationDisposition disposition,
-        bool canChangeSource,
+        UserVisitDocument? sourceVisit,
         CancellationToken cancellationToken)
     {
-        if (!canChangeSource)
+        if (sourceVisit?.Status != VisitStatus.Completed)
         {
             return await this.ApplyDispositionAsync(
                 document,
@@ -107,16 +107,19 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                 cancellationToken);
         }
 
-        ShareSourceMutationLease? mutationLease = this.revisionGuard is null
-            ? null
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases = this.revisionGuard is null
+            ? Array.Empty<ShareSourceMutationLease>()
             : await this.revisionGuard.TryBeginMutationAsync(
                 document.UserId,
+                new[] { (sourceVisit.ParkId, sourceVisit.Date.Year) },
                 cancellationToken);
-        using CancellationTokenSource? linkedCancellation = mutationLease is null
+        CancellationToken[] leaseCancellationTokens = mutationLeases
+            .Select(static lease => lease.LeaseCancellationToken)
+            .Prepend(cancellationToken)
+            .ToArray();
+        using CancellationTokenSource? linkedCancellation = mutationLeases.Count == 0
             ? null
-            : CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationToken,
-                mutationLease.LeaseCancellationToken);
+            : CancellationTokenSource.CreateLinkedTokenSource(leaseCancellationTokens);
         CancellationToken guardedCancellationToken =
             linkedCancellation?.Token ?? cancellationToken;
         try
@@ -128,7 +131,7 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
             if (this.revisionGuard is not null)
             {
                 await this.revisionGuard.CompleteMutationAsync(
-                    mutationLease,
+                    mutationLeases,
                     sourceChanged,
                     CancellationToken.None);
             }
@@ -140,7 +143,7 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
             if (this.revisionGuard is not null)
             {
                 await this.revisionGuard.CompleteMutationAsync(
-                    mutationLease,
+                    mutationLeases,
                     true,
                     CancellationToken.None);
             }
@@ -220,6 +223,8 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
         return Builders<UserVisitDocument>.Projection
             .Include(static visit => visit.Id)
             .Include(static visit => visit.UserId)
+            .Include(static visit => visit.ParkId)
+            .Include(static visit => visit.Date)
             .Include(static visit => visit.Status)
             .Include(static visit => visit.ContentMutationFenceToken)
             .Include(static visit => visit.ContentMutationFenceStableToken)

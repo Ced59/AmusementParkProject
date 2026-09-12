@@ -81,17 +81,17 @@ public sealed class PassportProfileSharePublicationSource
             return ApplicationResult<long>.Failure(SharingApplicationErrors.SourceUnavailable());
         }
 
-        ApplicationResult<IReadOnlyCollection<string>> selectedParkIdsResult =
-            await this.ResolveSelectedParkIdsAsync(request, cancellationToken);
-        if (!selectedParkIdsResult.IsSuccess || selectedParkIdsResult.Value is null)
+        ApplicationResult<PassportProfileShareInput> selectionResult =
+            await this.ResolveSelectionAsync(request, cancellationToken);
+        if (!selectionResult.IsSuccess || selectionResult.Value is null)
         {
-            return ApplicationResult<long>.Failure(selectedParkIdsResult.Errors);
+            return ApplicationResult<long>.Failure(selectionResult.Errors);
         }
 
         PassportProfileShareSourceRevisionSnapshot snapshot = await this.ReadSnapshotAsync(
             ownerUserId,
             request.ContentPolicy,
-            selectedParkIdsResult.Value,
+            selectionResult.Value,
             cancellationToken);
         return CreateVersion(snapshot, request.ContentPolicy);
     }
@@ -100,7 +100,7 @@ public sealed class PassportProfileSharePublicationSource
         PrepareOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
             ShareContentPolicy contentPolicy,
-            IReadOnlyCollection<string> selectedParkIds,
+            PassportProfileShareInput input,
             CancellationToken cancellationToken)
     {
         string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
@@ -110,13 +110,18 @@ public sealed class PassportProfileSharePublicationSource
                 SharingApplicationErrors.SourceUnavailable());
         }
 
-        await this.sourceRevisionRepository.GetOrCreateAsync(
-            PassportProfileShareSourceScope.Create(normalizedOwnerUserId),
-            cancellationToken);
+        string[] passportScopes = ResolvePassportScopes(normalizedOwnerUserId, input);
+        foreach (string passportScope in passportScopes)
+        {
+            await this.sourceRevisionRepository.GetOrCreateAsync(
+                passportScope,
+                cancellationToken);
+        }
+
         return await this.GetOwnedSourceRevisionSnapshotAsync(
             normalizedOwnerUserId,
             contentPolicy,
-            selectedParkIds,
+            input,
             cancellationToken);
     }
 
@@ -124,13 +129,17 @@ public sealed class PassportProfileSharePublicationSource
         GetOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
             ShareContentPolicy contentPolicy,
-            IReadOnlyCollection<string> selectedParkIds,
+            PassportProfileShareInput input,
             CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(contentPolicy);
         string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
-        string[] normalizedParkIds = NormalizeSelectedParkIds(selectedParkIds);
-        if (normalizedOwnerUserId.Length == 0 || normalizedParkIds.Length == 0)
+        ApplicationResult<PassportProfileShareInput> normalizedResult =
+            PassportProfileShareInputNormalizer.Normalize(input, contentPolicy);
+        if (normalizedOwnerUserId.Length == 0
+            || !normalizedResult.IsSuccess
+            || normalizedResult.Value is null
+            || !HasSelection(normalizedResult.Value))
         {
             return ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Failure(
                 SharingApplicationErrors.SourceUnavailable());
@@ -139,7 +148,7 @@ public sealed class PassportProfileSharePublicationSource
         PassportProfileShareSourceRevisionSnapshot snapshot = await this.ReadSnapshotAsync(
             normalizedOwnerUserId,
             contentPolicy,
-            normalizedParkIds,
+            normalizedResult.Value,
             cancellationToken);
         return snapshot.IsStableFor(contentPolicy)
             ? ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(snapshot)
@@ -151,46 +160,34 @@ public sealed class PassportProfileSharePublicationSource
         ReconcileOwnedSourceVersionAsync(
             string ownerUserId,
             string sourceFingerprint,
-            PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
-            ShareContentPolicy contentPolicy,
-            IReadOnlyCollection<string> selectedParkIds,
+        PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
+        ShareContentPolicy contentPolicy,
+        PassportProfileShareInput input,
             CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(expectedSnapshot);
         ArgumentNullException.ThrowIfNull(contentPolicy);
         string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
-        string[] normalizedParkIds = NormalizeSelectedParkIds(selectedParkIds);
+        ApplicationResult<PassportProfileShareInput> normalizedResult =
+            PassportProfileShareInputNormalizer.Normalize(input, contentPolicy);
         if (normalizedOwnerUserId.Length == 0
-            || normalizedParkIds.Length == 0
+            || !normalizedResult.IsSuccess
+            || normalizedResult.Value is null
+            || !HasSelection(normalizedResult.Value)
             || !expectedSnapshot.IsStableFor(contentPolicy))
         {
             return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
         }
 
-        ShareSourceRevision passportRevision =
-            await this.sourceRevisionRepository.ReconcileFingerprintAsync(
-                PassportProfileShareSourceScope.Create(normalizedOwnerUserId),
-                sourceFingerprint,
-                cancellationToken);
+        _ = sourceFingerprint;
         PassportProfileShareSourceRevisionSnapshot snapshotAfter = await this.ReadSnapshotAsync(
             normalizedOwnerUserId,
             contentPolicy,
-            normalizedParkIds,
+            normalizedResult.Value,
             cancellationToken);
-        bool passportRevisionIsExpected =
-            passportRevision.Revision == expectedSnapshot.Passport.Revision
-            || (expectedSnapshot.Passport.Revision < long.MaxValue
-                && passportRevision.Revision == expectedSnapshot.Passport.Revision + 1);
-        PassportProfileShareSourceRevisionSnapshot comparableExpected = expectedSnapshot with
-        {
-            Passport = snapshotAfter.Passport,
-        };
-        if (!passportRevision.IsStable
-            || !snapshotAfter.IsStableFor(contentPolicy)
-            || !passportRevisionIsExpected
-            || snapshotAfter.Passport.Revision != passportRevision.Revision
-            || !comparableExpected.HasSameRevisionsAs(snapshotAfter, contentPolicy))
+        if (!snapshotAfter.IsStableFor(contentPolicy)
+            || !expectedSnapshot.HasSameRevisionsAs(snapshotAfter, contentPolicy))
         {
             return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -206,24 +203,29 @@ public sealed class PassportProfileSharePublicationSource
                 versionResult.Errors);
     }
 
-    private async Task<ApplicationResult<IReadOnlyCollection<string>>> ResolveSelectedParkIdsAsync(
+    private async Task<ApplicationResult<PassportProfileShareInput>> ResolveSelectionAsync(
         SharePublicationSourceVersionRequest request,
         CancellationToken cancellationToken)
     {
-        if (request.SelectedParkIds is not null)
+        if (request.PassportProfile is not null)
         {
-            string[] selectedParkIds = NormalizeSelectedParkIds(request.SelectedParkIds);
-            return selectedParkIds.Length == 0
-                ? ApplicationResult<IReadOnlyCollection<string>>.Failure(
-                    SharingApplicationErrors.SourceUnavailable())
-                : ApplicationResult<IReadOnlyCollection<string>>.Success(selectedParkIds);
+            ApplicationResult<PassportProfileShareInput> normalized =
+                PassportProfileShareInputNormalizer.Normalize(
+                    request.PassportProfile,
+                    request.ContentPolicy);
+            return normalized.IsSuccess
+                && normalized.Value is not null
+                && HasSelection(normalized.Value)
+                    ? normalized
+                    : ApplicationResult<PassportProfileShareInput>.Failure(
+                        SharingApplicationErrors.SourceUnavailable());
         }
 
         if (request.PublicationId is null
             || !request.PublicationVersion.HasValue
             || request.PublicationVersion.Value <= 0)
         {
-            return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+            return ApplicationResult<PassportProfileShareInput>.Failure(
                 SharingApplicationErrors.SourceUnavailable());
         }
 
@@ -231,28 +233,39 @@ public sealed class PassportProfileSharePublicationSource
             request.PublicationId.Value,
             request.PublicationVersion.Value,
             cancellationToken);
-        string[] persistedParkIds = NormalizeSelectedParkIds(
-            snapshot?.Selection.SelectedParkIds ?? Array.Empty<string>());
-        return persistedParkIds.Length == 0
-            ? ApplicationResult<IReadOnlyCollection<string>>.Failure(
-                SharingApplicationErrors.SourceUnavailable())
-            : ApplicationResult<IReadOnlyCollection<string>>.Success(persistedParkIds);
+        ApplicationResult<PassportProfileShareInput> persisted =
+            PassportProfileShareInputNormalizer.Normalize(
+                snapshot?.Selection,
+                request.ContentPolicy);
+        return persisted.IsSuccess
+            && persisted.Value is not null
+            && HasSelection(persisted.Value)
+                ? persisted
+                : ApplicationResult<PassportProfileShareInput>.Failure(
+                    SharingApplicationErrors.SourceUnavailable());
     }
 
     private async Task<PassportProfileShareSourceRevisionSnapshot> ReadSnapshotAsync(
         string ownerUserId,
         ShareContentPolicy contentPolicy,
-        IReadOnlyCollection<string> selectedParkIds,
+        PassportProfileShareInput input,
         CancellationToken cancellationToken)
     {
-        string passportScope = PassportProfileShareSourceScope.Create(ownerUserId);
+        string[] passportScopes = ResolvePassportScopes(ownerUserId, input);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(ownerUserId);
-        string ratingsScope = PersonalRankingShareSourceScope.Create(ownerUserId);
-        string[] catalogScopes = NormalizeSelectedParkIds(selectedParkIds)
+        string[] ratingsScopes = contentPolicy.Includes(ShareContentField.GlobalRatings)
+            ? NormalizeSelectedRatingKeys(input.SelectedRatingKeys)
+                .Select(selectionKey => PersonalRankingShareSourceScope.CreateRating(
+                    ownerUserId,
+                    selectionKey))
+                .ToArray()
+            : Array.Empty<string>();
+        string[] catalogScopes = NormalizeSelectedParkIds(
+                input.SelectedParkIds ?? Array.Empty<string>())
             .Select(PublicCatalogShareSourceScope.CreatePark)
             .ToArray();
-        List<string> scopes = new List<string> { passportScope };
+        List<string> scopes = new List<string>(passportScopes);
         if (contentPolicy.Includes(ShareContentField.PublicDisplayName))
         {
             scopes.Add(displayNameScope);
@@ -263,11 +276,7 @@ public sealed class PassportProfileSharePublicationSource
             scopes.Add(avatarScope);
         }
 
-        if (contentPolicy.Includes(ShareContentField.GlobalRatings))
-        {
-            scopes.Add(ratingsScope);
-        }
-
+        scopes.AddRange(ratingsScopes);
         scopes.AddRange(catalogScopes);
         IReadOnlyDictionary<string, ShareSourceRevision> revisions =
             await this.sourceRevisionRepository.GetSnapshotAsync(scopes, cancellationToken);
@@ -276,10 +285,10 @@ public sealed class PassportProfileSharePublicationSource
             scope => revisions[scope],
             StringComparer.Ordinal);
         return new PassportProfileShareSourceRevisionSnapshot(
-            revisions[passportScope],
+            AggregateRevisions(passportScopes.Select(scope => revisions[scope])),
             ResolveOptionalRevision(revisions, displayNameScope),
             ResolveOptionalRevision(revisions, avatarScope),
-            ResolveOptionalRevision(revisions, ratingsScope),
+            AggregateRevisions(ratingsScopes.Select(scope => revisions[scope])),
             catalog);
     }
 
@@ -337,5 +346,52 @@ public sealed class PassportProfileSharePublicationSource
             .OrderBy(static parkId => parkId, StringComparer.Ordinal)
             .Take(PassportProfileShareInputNormalizer.MaximumSelectedParks)
             .ToArray();
+    }
+
+    private static string[] NormalizeSelectedRatingKeys(IEnumerable<string>? selectedRatingKeys)
+    {
+        return (selectedRatingKeys ?? Array.Empty<string>())
+            .Select(static selectionKey => selectionKey?.Trim() ?? string.Empty)
+            .Where(static selectionKey => selectionKey.Length > 0)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static selectionKey => selectionKey, StringComparer.Ordinal)
+            .Take(PassportProfileShareInputNormalizer.MaximumSelectedRatings)
+            .ToArray();
+    }
+
+    private static string[] ResolvePassportScopes(
+        string ownerUserId,
+        PassportProfileShareInput input)
+    {
+        int[] years = (input.SelectedYears ?? Array.Empty<int>())
+            .Distinct()
+            .OrderBy(static year => year)
+            .ToArray();
+        string[] parkIds = NormalizeSelectedParkIds(
+            input.SelectedParkIds ?? Array.Empty<string>());
+        return years
+            .SelectMany(year => parkIds.Select(parkId =>
+                PassportProfileShareSourceScope.CreateSegment(ownerUserId, year, parkId)))
+            .OrderBy(static scope => scope, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static ShareSourceRevision AggregateRevisions(
+        IEnumerable<ShareSourceRevision> source)
+    {
+        ShareSourceRevision[] revisions = source.ToArray();
+        return revisions.Length == 0
+            ? new ShareSourceRevision(0, 0, DateTime.UnixEpoch)
+            : new ShareSourceRevision(
+                revisions.Aggregate(
+                    0L,
+                    static (total, revision) => checked(total + revision.Revision)),
+                revisions.Sum(static revision => revision.PendingMutationCount),
+                revisions.Max(static revision => revision.UpdatedAtUtc));
+    }
+
+    private static bool HasSelection(PassportProfileShareInput input)
+    {
+        return input.SelectedYears?.Count > 0 && input.SelectedParkIds?.Count > 0;
     }
 }

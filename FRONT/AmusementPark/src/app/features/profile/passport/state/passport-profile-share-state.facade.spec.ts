@@ -167,6 +167,60 @@ describe('PassportProfileShareStateFacade', () => {
     expect(facade.settings()?.shareId).toBe('published');
   });
 
+  it('ignores a preview response that arrives after revocation starts', () => {
+    const previewResponse: Subject<SharePublicationPreview> = new Subject<SharePublicationPreview>();
+    const selection: PassportProfileShareSelection = {
+      years: [{ year: 2026, visitCount: 1 }],
+      parks: [{ parkId: 'park-1', name: 'Parc', countryCode: 'FR', visitCount: 1 }],
+      ratings: [],
+      maximumSelectedYears: 100,
+      maximumSelectedParks: 250,
+      savedVisibility: 'Unlisted',
+      savedAllowsComparisons: false,
+      hasSavedSnapshot: true
+    };
+    const port: PassportProfileSharePort = {
+      getSettings: (): Observable<SharePublicationSettings> => of({
+        isPublic: true,
+        shareId: 'published',
+        includedFields: []
+      }),
+      getSelection: (): Observable<PassportProfileShareSelection> => of(selection),
+      preview: (): Observable<SharePublicationPreview> => previewResponse,
+      publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+    };
+    TestBed.configureTestingModule({ providers: [
+      PassportProfileShareStateFacade,
+      { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
+      { provide: ToastMessageService, useValue: { add: vi.fn() } },
+      { provide: TranslateService, useValue: { instant: (key: string): string => key } }
+    ] });
+    const facade: PassportProfileShareStateFacade = TestBed.inject(PassportProfileShareStateFacade);
+
+    facade.load();
+    facade.previewPublication();
+    facade.revoke();
+    previewResponse.next(createPreview({
+      publicationType: 'PassportProfile',
+      sourceId: null,
+      datePrecision: 'Year',
+      includedFields: [],
+      passportProfile: {
+        selectedYears: [2026],
+        selectedParkIds: ['park-1'],
+        selectedRatingKeys: [],
+        publicCaption: null,
+        visibility: 'Unlisted',
+        allowsComparisons: false
+      }
+    }));
+
+    expect(facade.preview()).toBeNull();
+    expect(facade.previewing()).toBe(false);
+    expect(facade.settings()?.isPublic).toBe(false);
+  });
+
   it('bounds new default year and park selections to the server contract', () => {
     const parks = Array.from({ length: 4 }, (_, index) => ({
       parkId: `park-${index + 1}`,

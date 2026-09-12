@@ -10,10 +10,13 @@ namespace AmusementPark.Application.Tests.Features.Sharing.Services;
 public sealed class PassportProfileShareSourceRevisionGuardTests
 {
     [Fact]
-    public async Task TryBeginMutationAsync_ShouldUseThePassportProfileScope()
+    public async Task TryBeginMutationAsync_ShouldUseTheSelectedPassportSegmentScope()
     {
         const string ownerUserId = "owner-1";
-        string scopeKey = PassportProfileShareSourceScope.Create(ownerUserId);
+        string scopeKey = PassportProfileShareSourceScope.CreateSegment(
+            ownerUserId,
+            2026,
+            "park-1");
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(scopeKey);
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
@@ -24,11 +27,12 @@ public sealed class PassportProfileShareSourceRevisionGuardTests
                 revisions.Object,
                 NullLogger<PassportProfileShareSourceRevisionGuard>.Instance);
 
-        ShareSourceMutationLease? result = await guard.TryBeginMutationAsync(
+        IReadOnlyCollection<ShareSourceMutationLease> result = await guard.TryBeginMutationAsync(
             ownerUserId,
+            new[] { ("park-1", 2026) },
             CancellationToken.None);
 
-        Assert.Same(lease, result);
+        Assert.Same(lease, Assert.Single(result));
         revisions.VerifyAll();
     }
 }
