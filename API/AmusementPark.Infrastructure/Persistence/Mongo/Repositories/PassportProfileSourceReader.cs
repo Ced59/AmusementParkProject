@@ -59,7 +59,6 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
             return new PassportProfileSourceData(
                 Array.Empty<PassportVisitStatisticsObservation>(),
                 Array.Empty<PassportRideStatisticsObservation>(),
-                new Dictionary<string, string?>(StringComparer.Ordinal),
                 ComputeFingerprint(visitDocuments, Array.Empty<YearRecapRideSourceDocument>()),
                 true);
         }
@@ -105,19 +104,12 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
                     ? RatingValue.FromHalfSteps(occurrence.AssessmentValueHalfSteps.Value)
                     : null,
                 occurrence.HistoricalCategory,
-                null))
+                null,
+                occurrence.HistoricalName))
             .ToArray();
-        IReadOnlyDictionary<string, string?> historicalNames = occurrenceDocuments
-            .GroupBy(static value => value.ParkItemId, StringComparer.Ordinal)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.Select(static value => NormalizeOptional(value.HistoricalName))
-                    .FirstOrDefault(static value => value is not null),
-                StringComparer.Ordinal);
         return new PassportProfileSourceData(
             visitObservations,
             rideObservations,
-            historicalNames,
             ComputeFingerprint(visitDocuments, occurrenceDocuments),
             isStable);
     }
@@ -263,9 +255,4 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
             date.IsApproximate);
     }
 
-    private static string? NormalizeOptional(string? value)
-    {
-        string normalized = value?.Trim() ?? string.Empty;
-        return normalized.Length == 0 ? null : normalized;
-    }
 }

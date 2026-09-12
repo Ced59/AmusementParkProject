@@ -268,8 +268,16 @@ public sealed class PassportProfileSharePreviewBuilder
         PassportRideStatisticsObservation[] selectedScopeRides = source.Rides
             .Where(ride => visitIds.Contains(ride.VisitId))
             .ToArray();
+        IReadOnlyDictionary<string, string?> historicalNames = selectedScopeRides
+            .Where(static ride => !string.IsNullOrWhiteSpace(ride.HistoricalName))
+            .OrderBy(static ride => ride.RideOccurrenceId, StringComparer.Ordinal)
+            .GroupBy(static ride => ride.ParkItemId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First().HistoricalName,
+                StringComparer.Ordinal);
         PassportRideStatisticsObservation[] rides = selectedScopeRides
-            .Where(ride => CanExposeTarget(ride, source.HistoricalItemNames, targets))
+            .Where(ride => CanExposeTarget(ride, historicalNames, targets))
             .ToArray();
         PassportProfileStatistics statistics = PassportProfileStatisticsCalculator.Calculate(
             visits,
@@ -353,7 +361,7 @@ public sealed class PassportProfileSharePreviewBuilder
                 includesTemporalRatings)
             : Array.Empty<PassportProfileShareParkResult>();
         PassportProfileShareMissedItemResult[] missedItems = includesMissed
-            ? BuildMissedItems(rides, source.HistoricalItemNames, targets, includesActivity)
+            ? BuildMissedItems(rides, historicalNames, targets, includesActivity)
             : Array.Empty<PassportProfileShareMissedItemResult>();
         bool isEmpty = displayName is null
             && avatarUrl is null
@@ -387,7 +395,7 @@ public sealed class PassportProfileSharePreviewBuilder
             exposesRideDerivedContent
                 && selectedScopeRides.Any(ride => !CanExposeTarget(
                     ride,
-                    source.HistoricalItemNames,
+                    historicalNames,
                     targets)),
             PassportProfileShareVersion.CalculationVersion,
             isEmpty);

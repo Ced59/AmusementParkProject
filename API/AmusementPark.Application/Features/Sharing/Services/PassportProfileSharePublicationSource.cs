@@ -111,12 +111,9 @@ public sealed class PassportProfileSharePublicationSource
         }
 
         string[] passportScopes = ResolvePassportScopes(normalizedOwnerUserId, input);
-        foreach (string passportScope in passportScopes)
-        {
-            await this.sourceRevisionRepository.GetOrCreateAsync(
-                passportScope,
-                cancellationToken);
-        }
+        await this.sourceRevisionRepository.EnsureCreatedAsync(
+            passportScopes,
+            cancellationToken);
 
         return await this.GetOwnedSourceRevisionSnapshotAsync(
             normalizedOwnerUserId,
@@ -261,10 +258,11 @@ public sealed class PassportProfileSharePublicationSource
                     selectionKey))
                 .ToArray()
             : Array.Empty<string>();
-        string[] catalogScopes = NormalizeSelectedParkIds(
-                input.SelectedParkIds ?? Array.Empty<string>())
-            .Select(PublicCatalogShareSourceScope.CreatePark)
-            .ToArray();
+        string[] catalogScopes = RequiresCatalog(contentPolicy)
+            ? NormalizeSelectedParkIds(input.SelectedParkIds ?? Array.Empty<string>())
+                .Select(PublicCatalogShareSourceScope.CreatePark)
+                .ToArray()
+            : Array.Empty<string>();
         List<string> scopes = new List<string>(passportScopes);
         if (contentPolicy.Includes(ShareContentField.PublicDisplayName))
         {
@@ -393,5 +391,14 @@ public sealed class PassportProfileSharePublicationSource
     private static bool HasSelection(PassportProfileShareInput input)
     {
         return input.SelectedYears?.Count > 0 && input.SelectedParkIds?.Count > 0;
+    }
+
+    private static bool RequiresCatalog(ShareContentPolicy contentPolicy)
+    {
+        return contentPolicy.Includes(ShareContentField.RideCount)
+            || contentPolicy.Includes(ShareContentField.TemporalRatings)
+            || contentPolicy.Includes(ShareContentField.GlobalRatings)
+            || contentPolicy.Includes(ShareContentField.GeographicStatistics)
+            || contentPolicy.Includes(ShareContentField.MissedItems);
     }
 }

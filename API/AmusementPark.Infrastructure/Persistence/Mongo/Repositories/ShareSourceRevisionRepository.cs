@@ -375,6 +375,59 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         return ToResult(document);
     }
 
+    public async Task EnsureCreatedAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scopeKeys);
+        string[] normalizedScopeKeys = scopeKeys
+            .Select(NormalizeScopeKey)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedScopeKeys.Length == 0)
+        {
+            return;
+        }
+
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        WriteModel<ShareSourceRevisionDocument>[] writes = normalizedScopeKeys
+            .Select(scopeKey =>
+            {
+                UpdateDefinition<ShareSourceRevisionDocument> update =
+                    Builders<ShareSourceRevisionDocument>.Update
+                        .SetOnInsert(document => document.ScopeKey, scopeKey)
+                        .SetOnInsert(document => document.Revision, 0)
+                        .SetOnInsert(
+                            document => document.MutationLeases,
+                            new List<ShareSourceMutationLeaseDocument>())
+                        .SetOnInsert(document => document.CreatedAt, nowUtc)
+                        .SetOnInsert(document => document.UpdatedAt, nowUtc);
+                return (WriteModel<ShareSourceRevisionDocument>)
+                    new UpdateOneModel<ShareSourceRevisionDocument>(
+                        ShareSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
+                        update)
+                    {
+                        IsUpsert = true,
+                    };
+            })
+            .ToArray();
+
+        try
+        {
+            await this.collection.BulkWriteAsync(
+                writes,
+                new BulkWriteOptions { IsOrdered = false },
+                cancellationToken);
+        }
+        catch (MongoBulkWriteException<ShareSourceRevisionDocument> exception)
+            when (exception.WriteErrors.Count > 0
+                && exception.WriteConcernError is null
+                && exception.WriteErrors.All(static error => error.Code == 11000))
+        {
+            // A concurrent initializer created the same scopes. The desired state is reached.
+        }
+    }
+
     public async Task<ShareSourceRevision> ReconcileFingerprintAsync(
         string scopeKey,
         string sourceFingerprint,

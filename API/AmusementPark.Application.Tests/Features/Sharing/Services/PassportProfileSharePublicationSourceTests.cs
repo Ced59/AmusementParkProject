@@ -43,7 +43,9 @@ public sealed class PassportProfileSharePublicationSourceTests
         ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
             new SharePublicationSourceVersionRequest(
                 sourceScope,
-                CreatePolicy(ShareContentField.PublicDisplayName),
+                CreatePolicy(
+                    ShareContentField.PublicDisplayName,
+                    ShareContentField.GeographicStatistics),
                 PassportProfile: CreateInput()),
             CancellationToken.None);
 
@@ -71,8 +73,11 @@ public sealed class PassportProfileSharePublicationSourceTests
             ShareContentField.GlobalRatings);
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.GetOrCreateAsync(passportScope, CancellationToken.None))
-            .ReturnsAsync(Revision(4));
+        revisions.Setup(value => value.EnsureCreatedAsync(
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.SequenceEqual(
+                    new[] { passportScope })),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         revisions.Setup(value => value.GetSnapshotAsync(
                 It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 5
                     && scopes.Contains(passportScope)
@@ -116,7 +121,9 @@ public sealed class PassportProfileSharePublicationSourceTests
             ParkId);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
-        ShareContentPolicy policy = CreatePolicy(ShareContentField.PublicDisplayName);
+        ShareContentPolicy policy = CreatePolicy(
+            ShareContentField.PublicDisplayName,
+            ShareContentField.GeographicStatistics);
         PassportProfileShareSourceRevisionSnapshot expected = new PassportProfileShareSourceRevisionSnapshot(
             Revision(4),
             Revision(7),
@@ -207,12 +214,57 @@ public sealed class PassportProfileSharePublicationSourceTests
             CancellationToken.None);
 
         Assert.Equal(7, geographyOnly.Value);
-        Assert.Equal(14, withName.Value);
-        Assert.Equal(16, withAvatar.Value);
+        Assert.Equal(11, withName.Value);
+        Assert.Equal(13, withAvatar.Value);
         Assert.Equal(18, withRatings.Value);
+        Assert.DoesNotContain(catalogScope, requestedScopes[1]);
+        Assert.DoesNotContain(catalogScope, requestedScopes[2]);
         IReadOnlyCollection<string> ratingRequest = requestedScopes[3];
         Assert.Contains(ratingsScope, ratingRequest);
         Assert.DoesNotContain(PersonalRankingShareSourceScope.Create(OwnerUserId), ratingRequest);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareOwnedSourceRevisionSnapshotAsync_ShouldBatchTheMaximumScopeMatrix()
+    {
+        int[] years = Enumerable.Range(1900, 100).ToArray();
+        string[] parkIds = Enumerable.Range(1, 250)
+            .Select(static index => $"park-{index}")
+            .ToArray();
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.EnsureCreatedAsync(
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 25_000),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync((IReadOnlyCollection<string> scopes, CancellationToken _) =>
+                scopes.ToDictionary(
+                    static scope => scope,
+                    static _ => Revision(0),
+                    StringComparer.Ordinal));
+        PassportProfileSharePublicationSource source = CreateSource(revisions.Object);
+
+        ApplicationResult<PassportProfileShareSourceRevisionSnapshot> result =
+            await source.PrepareOwnedSourceRevisionSnapshotAsync(
+                OwnerUserId,
+                CreatePolicy(ShareContentField.PublicDisplayName),
+                new PassportProfileShareInput(
+                    years,
+                    parkIds,
+                    Array.Empty<string>(),
+                    null,
+                    ShareVisibility.Unlisted,
+                    false),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        revisions.Verify(value => value.EnsureCreatedAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            CancellationToken.None), Times.Once);
         revisions.VerifyAll();
     }
 

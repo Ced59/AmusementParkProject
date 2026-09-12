@@ -21,6 +21,10 @@ public interface IShareSourceRevisionRepository
         string scopeKey,
         CancellationToken cancellationToken);
 
+    Task EnsureCreatedAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken);
+
     Task<ShareSourceRevision> ReconcileFingerprintAsync(
         string scopeKey,
         string sourceFingerprint,

@@ -179,7 +179,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     null),
             },
             Array.Empty<PassportRideStatisticsObservation>(),
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
         PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
@@ -222,7 +221,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     null),
             },
             Array.Empty<PassportRideStatisticsObservation>(),
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
 
@@ -263,7 +261,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
             {
                 CreateRide("ride-hidden-id", "item-hidden-id", RideOccurrenceStatus.Completed, null),
             },
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
         PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
@@ -301,12 +298,18 @@ public sealed class PassportProfileSharePreviewBuilderTests
             },
             new[]
             {
-                CreateRide("ride-missed-first", "item-missed-id", RideOccurrenceStatus.MissedClosed, null),
-                CreateRide("ride-missed-second", "item-missed-id", RideOccurrenceStatus.MissedClosed, null),
-            },
-            new Dictionary<string, string?>(StringComparer.Ordinal)
-            {
-                ["item-missed-id"] = "Attraction manquée",
+                CreateRide(
+                    "ride-missed-first",
+                    "item-missed-id",
+                    RideOccurrenceStatus.MissedClosed,
+                    null,
+                    "Attraction manquée"),
+                CreateRide(
+                    "ride-missed-second",
+                    "item-missed-id",
+                    RideOccurrenceStatus.MissedClosed,
+                    null,
+                    "Attraction manquée"),
             },
             "stable-fingerprint",
             true);
@@ -334,6 +337,73 @@ public sealed class PassportProfileSharePreviewBuilderTests
     }
 
     [Fact]
+    public async Task BuildAsync_ShouldUseTheHistoricalNameFromTheSelectedVisitsOnly()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-selected",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+                new PassportVisitStatisticsObservation(
+                    "visit-excluded",
+                    "park-public-id",
+                    VisitDate.ForDay(2025, 6, 14),
+                    null),
+            },
+            new[]
+            {
+                new PassportRideStatisticsObservation(
+                    "ride-selected",
+                    "visit-selected",
+                    "park-public-id",
+                    "item-hidden-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    RideOccurrenceStatus.MissedClosed,
+                    null,
+                    ParkItemCategory.Attraction.ToString(),
+                    null,
+                    "Nom pendant l’année sélectionnée"),
+                new PassportRideStatisticsObservation(
+                    "ride-excluded",
+                    "visit-excluded",
+                    "park-public-id",
+                    "item-hidden-id",
+                    VisitDate.ForDay(2025, 6, 14),
+                    RideOccurrenceStatus.MissedClosed,
+                    null,
+                    ParkItemCategory.Attraction.ToString(),
+                    null,
+                    "Nom provenant d’une année exclue"),
+            },
+            "stable-fingerprint",
+            true);
+
+        ApplicationResult<SharePublicationPreviewResult> result =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.MissedItems }),
+                new PassportProfileShareInput(
+                    new[] { 2026 },
+                    new[] { "park-public-id" },
+                    Array.Empty<string>(),
+                    null,
+                    ShareVisibility.Unlisted,
+                    false),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(
+            "Nom pendant l’année sélectionnée",
+            Assert.Single(result.Value!.PassportProfile!.MissedItems).Name);
+    }
+
+    [Fact]
     public async Task BuildAsync_ShouldGateTheYearBreakdownWithGeographicStatistics()
     {
         PassportProfileSourceData source = new PassportProfileSourceData(
@@ -346,7 +416,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     null),
             },
             Array.Empty<PassportRideStatisticsObservation>(),
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
         PassportProfileShareInput input = new PassportProfileShareInput(
@@ -397,7 +466,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     null),
             },
             Array.Empty<PassportRideStatisticsObservation>(),
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
         PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
@@ -434,7 +502,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     null),
             },
             Array.Empty<PassportRideStatisticsObservation>(),
-            new Dictionary<string, string?>(),
             "stable-fingerprint",
             true);
         PassportProfileSharePreviewBuilder builder =
@@ -552,7 +619,12 @@ public sealed class PassportProfileSharePreviewBuilderTests
             new[]
             {
                 CreateRide("ride-completed-id", "item-technical-id", RideOccurrenceStatus.Completed, 4.5),
-                CreateRide("ride-missed-id", "item-closed-id", RideOccurrenceStatus.MissedClosed, null),
+                CreateRide(
+                    "ride-missed-id",
+                    "item-closed-id",
+                    RideOccurrenceStatus.MissedClosed,
+                    null,
+                    "Attraction fermée"),
                 new PassportRideStatisticsObservation(
                     "ride-outside-scope-id",
                     "visit-hidden-id",
@@ -564,10 +636,6 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     ParkItemCategory.Attraction.ToString(),
                     ParkItemCategory.Attraction.ToString()),
             },
-            new Dictionary<string, string?>(StringComparer.Ordinal)
-            {
-                ["item-closed-id"] = "Attraction fermée",
-            },
             "stable-fingerprint",
             true);
     }
@@ -576,7 +644,8 @@ public sealed class PassportProfileSharePreviewBuilderTests
         string occurrenceId,
         string itemId,
         RideOccurrenceStatus status,
-        double? rating)
+        double? rating,
+        string? historicalName = null)
     {
         return new PassportRideStatisticsObservation(
             occurrenceId,
@@ -587,7 +656,8 @@ public sealed class PassportProfileSharePreviewBuilderTests
             status,
             rating.HasValue ? RatingValue.FromDouble(rating.Value) : null,
             ParkItemCategory.Attraction.ToString(),
-            ParkItemCategory.Attraction.ToString());
+            ParkItemCategory.Attraction.ToString(),
+            historicalName);
     }
 
     private static ShareContentPolicy CreateFullPolicy()
