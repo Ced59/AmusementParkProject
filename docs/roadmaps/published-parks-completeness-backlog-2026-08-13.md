@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous et les retraits validés, le backlog actif contient **71 parcs** : 6 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- 57 parcs atteignent le niveau `Excellent` : 55 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **61 parcs** : 0 au niveau `Publishable`, 59 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,26 +17,16 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (6)
+## Priorité 1 — niveau `Publishable` (0)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 84 | `Publishable` | Aktur Park | TR | `Operating` | `Regional` | 78/93 | `22c4b03b-9cc3-4b04-b611-adf3fb5b54f0` |
-| 84 | `Publishable` | Al Watan Park | SA | `Operating` | `Regional` | 74/88 | `a6096874-82df-4580-9b7d-7d5cf654b3db` |
-| 84 | `Publishable` | Amrapali FunLand | IN | `Operating` | `Regional` | 77/92 | `dbb5b642-3dba-486c-abc7-1d0e79a86e43` |
-| 84 | `Publishable` | Areál Mladé Buky | CZ | `Operating` | `Regional` | 74/88 | `4cac6f4e-a5d5-4d38-95f2-53d6547fec6c` |
-| 84 | `Publishable` | Au Paradis des Enfants | FR | `Operating` | `Regional` | 77/92 | `b3e11451-5350-4d53-b6c4-3d586a338683` |
-| 84 | `Publishable` | DraculaLand | RO | `Planned` | `International` | 74/88 | `f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059` |
 
-## Priorité 2 — niveau `Good` (63)
+## Priorité 2 — niveau `Good` (59)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 85 | `Good` | Aerie's Resort & Winery | US | `Operating` | `Regional` | 76/89 | `65cc98ef-326e-4c5a-ab08-2324a54cddaa` |
-| 85 | `Good` | Al Qasba | AE | `Operating` | `Regional` | 78/92 | `9f860a3e-f26f-403e-9e51-f8a18476e245` |
-| 85 | `Good` | Al Shaab Village | AE | `Operating` | `Regional` | 82/97 | `ee6a99a6-f2da-4dd4-9fd1-e1771aec3068` |
-| 85 | `Good` | Alley Cats Hurst | US | `Operating` | `Local` | 75/88 | `0bdcd31a-631b-4762-97df-8a8bcf6d904a` |
-| 85 | `Good` | Alton Towers | GB | `Operating` | `International` | 88/104 | `ee5582f9-0de4-4906-923c-5e564df16c2a` |
 | 85 | `Good` | Ankara Luna Park | TR | `Operating` | `Regional` | 79/93 | `aad0075b-6449-41a5-a271-d624c8a98f0e` |
 | 85 | `Good` | Apapa Amusement Park | NG | `Operating` | `Regional` | 78/92 | `7243568b-164a-4faf-a647-9194593e8a96` |
 | 85 | `Good` | Plopsaland Belgium | BE | `Operating` | `International` | 85/100 | `969feca2-c2f5-4d78-b14a-b720bd766d2b` |
@@ -108,3 +98,12 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Parc | Décision | Score courant | Lacunes acceptées | Publication Facebook |
 | --- | --- | ---: | --- | --- |
 | Al-Qidah Park (`3212fabf-2a98-4af0-9111-917461fccbb5`) | Exception utilisateur du 2026-08-13 à 17:26 Europe/Paris, après audit complet sans bloqueur | 94 (95/101) | Constructeur des attractions mécaniques et conditions d’accès non établis par les sources disponibles | `Published` — [publication](https://www.facebook.com/1285475681307050/posts/122109939327424431) |
+| DraculaLand (`f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059`) | Exception utilisateur du 2026-09-11 à 22:48 Europe/Paris, après audit complet sans bloqueur ; souplesse explicitement accordée pour un projet encore non construit | 93 (85/91) | Coordonnée générale encore approximative ; aucune localisation interne fiable pour les quarante parkItems annoncés ; conditions d’accès et constructeurs non publiés ; calendrier 2027–2028 provisoire ; une seule attraction possède une image individuelle exacte, tandis que les cinq vues générales sont des rendus conceptuels officiels | `Published` — [publication](https://www.facebook.com/1285475681307050/posts/122116820649424431) |
+
+## Projets publiés à surveiller périodiquement
+
+Cette liste conserve les projets publiés dont les données doivent être réexaminées après les prochaines annonces officielles. Une revue trimestrielle est indicative ; une annonce de chantier, un nouveau dossier investisseur, un plan révisé, une date d’ouverture consolidée ou la publication de règles d’accès déclenche une vérification anticipée. Le contrôle repasse par le workflow `PARK_DATA_EDITOR` et ne remplace pas un nouvel audit avant toute modification publique.
+
+| Projet | Dernier audit | Prochaine revue indicative | Points à vérifier |
+| --- | --- | --- | --- |
+| DraculaLand (`f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059`) | 2026-09-11 — score publié 93 (85/91), sans bloqueur | Décembre 2026, ou dès une nouvelle annonce officielle | Emplacement exact et périmètre du chantier ; coordonnées des parkItems ; constructeurs et modèles ; conditions d’accès ; calendrier d’ouverture ; évolutions du masterplan et de l’inventaire annoncé ; remplacement progressif des rendus par des photographies de chantier puis du site réel |
