@@ -107,6 +107,21 @@ Après ce lot, l'inventaire contient :
 - 455 fichiers non conformes distincts : 374 en C# et 81 en TypeScript ;
 - 6 fichiers non conformes dans `AmusementPark.Core`, contre 8 avant ce lot.
 
+## État après le lot Core Pages techniques
+
+Le lot Pages techniques sépare la page, ses alias, ses blocs de contenu, listes,
+tableaux, cellules, métriques et liens. Les namespaces, propriétés, valeurs par
+défaut et relations entre modèles restent identiques ; aucun contenu, contrat
+HTTP, format MongoDB ou comportement SEO ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 273 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 306 au total ;
+- 445 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 454 fichiers non conformes distincts : 373 en C# et 81 en TypeScript ;
+- 5 fichiers non conformes dans `AmusementPark.Core`, contre 6 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

@@ -1,6 +1,20 @@
 {
-  "version": "5.2.20",
+  "version": "5.2.21",
   "history": [
+    {
+      "version": "5.2.21",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des explications techniques gagne en clarté.",
+        "en": "The technical explanations foundation is now clearer.",
+        "de": "Die Grundlage der technischen Erklärungen ist jetzt klarer.",
+        "nl": "De basis van de technische uitleg is nu duidelijker.",
+        "it": "La base delle spiegazioni tecniche è ora più chiara.",
+        "es": "La base de las explicaciones técnicas es ahora más clara.",
+        "pl": "Podstawa objaśnień technicznych jest teraz czytelniejsza.",
+        "pt": "A base das explicações técnicas está agora mais clara."
+      }
+    },
     {
       "version": "5.2.20",
       "releasedAt": "2026-09-12",
