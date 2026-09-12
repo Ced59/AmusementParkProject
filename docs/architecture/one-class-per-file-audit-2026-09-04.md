@@ -483,6 +483,22 @@ Après ce lot, l’inventaire contient :
 - 88 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier multi-classe dans le périmètre de la notification des mises à jour SEO.
 
+## État après le lot Application Écriture XML des sitemaps
+
+Ce lot sépare le générateur des documents XML et son flux texte imposant
+l’encodage UTF-8. La normalisation des URL, l’ordre des entrées, les dates, les
+priorités, la déclaration XML et l’encodage restent identiques. Aucun écran,
+contrat HTTP, fichier de sitemap produit ni document MongoDB ne change.
+
+Après ce lot, l’inventaire contient :
+
+- 208 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 241 au total ;
+- 371 fichiers présentant encore au moins une incompatibilité de nom ;
+- 100 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 379 fichiers non conformes distincts : 298 en C# et 81 en TypeScript ;
+- 87 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier multi-classe dans le périmètre de l’écriture XML des sitemaps.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
