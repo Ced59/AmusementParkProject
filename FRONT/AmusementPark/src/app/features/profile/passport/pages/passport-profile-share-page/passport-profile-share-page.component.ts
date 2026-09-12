@@ -29,7 +29,7 @@ export class PassportProfileSharePageComponent implements OnInit {
   protected readonly facade = inject(PassportProfileShareStateFacade);
   protected readonly preview: Signal<PassportProfileSharePreview | null> = this.facade.preview;
   protected readonly previewAvatarUrl: Signal<string | null> = computed((): string | null =>
-    this.imagesApiService.resolveImageUrl(this.preview()?.avatarUrl)
+    this.imagesApiService.resolveImageUrl(this.preview()?.avatarUrl, { width: 144 })
   );
 
   public ngOnInit(): void {

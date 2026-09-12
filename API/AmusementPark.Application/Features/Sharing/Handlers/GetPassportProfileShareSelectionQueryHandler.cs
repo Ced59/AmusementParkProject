@@ -91,8 +91,9 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
             .ThenBy(static park => park.Name, StringComparer.OrdinalIgnoreCase)
             .ToArray();
         IReadOnlyCollection<UserRatingListItemResult> ratingSources =
-            await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+            await this.ratingRepository.GetVisibleUserRankingSourcesForParksAsync(
                 ownerUserId,
+                publicParks.Keys.ToArray(),
                 PassportProfileShareInputNormalizer.MaximumSelectedRatings,
                 cancellationToken);
         PassportProfileShareRatingCandidateResult[] ratings = ratingSources

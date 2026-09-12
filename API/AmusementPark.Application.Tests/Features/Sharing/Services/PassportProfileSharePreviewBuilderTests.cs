@@ -423,8 +423,10 @@ public sealed class PassportProfileSharePreviewBuilderTests
     private static Mock<IRatingRepository> CreateRatingRepository()
     {
         Mock<IRatingRepository> ratings = new Mock<IRatingRepository>(MockBehavior.Strict);
-        ratings.Setup(value => value.GetVisibleUserRankingSourcesAsync(
+        ratings.Setup(value => value.GetVisibleUserRankingSourcesForParksAsync(
                 "owner-technical-id",
+                It.Is<IReadOnlyCollection<string>>(parkIds =>
+                    parkIds.SequenceEqual(new[] { "park-public-id" })),
                 101,
                 CancellationToken.None))
             .ReturnsAsync(new[]

@@ -120,8 +120,9 @@ public sealed class PassportProfileSharePreviewBuilder
             : await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
         IReadOnlyCollection<UserRatingListItemResult> ratingCandidates =
             contentPolicy.Includes(ShareContentField.GlobalRatings)
-                ? await this.ratingRepository.GetVisibleUserRankingSourcesAsync(
+                ? await this.ratingRepository.GetVisibleUserRankingSourcesForParksAsync(
                     ownerUserId,
+                    normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
                     PassportProfileShareInputNormalizer.MaximumSelectedRatings + 1,
                     cancellationToken)
                 : Array.Empty<UserRatingListItemResult>();
@@ -245,6 +246,7 @@ public sealed class PassportProfileSharePreviewBuilder
         bool includesMissed = policy.Includes(ShareContentField.MissedItems);
 
         Dictionary<string, UserRatingListItemResult> ratingsByKey = ratingCandidates
+            .Where(rating => selectedParkIds.Contains(rating.ParkId))
             .Take(PassportProfileShareInputNormalizer.MaximumSelectedRatings)
             .GroupBy(
                 static rating => PassportProfileRatingSelectionKey.Create(

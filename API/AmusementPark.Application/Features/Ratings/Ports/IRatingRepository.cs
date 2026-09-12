@@ -92,4 +92,10 @@ public interface IRatingRepository
         string userId,
         int maxItems,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<UserRatingListItemResult>> GetVisibleUserRankingSourcesForParksAsync(
+        string userId,
+        IReadOnlyCollection<string> parkIds,
+        int maxItems,
+        CancellationToken cancellationToken);
 }

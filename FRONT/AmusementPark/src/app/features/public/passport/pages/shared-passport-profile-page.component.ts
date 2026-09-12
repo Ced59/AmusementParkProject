@@ -29,7 +29,7 @@ export class SharedPassportProfilePageComponent implements OnInit {
   protected readonly notFound: Signal<boolean> = this.facade.notFound;
   protected readonly error: Signal<boolean> = this.facade.error;
   protected readonly avatarUrl: Signal<string | null> = computed((): string | null =>
-    this.imagesApiService.resolveImageUrl(this.result()?.passportProfile.avatarUrl)
+    this.imagesApiService.resolveImageUrl(this.result()?.passportProfile.avatarUrl, { width: 224 })
   );
 
   constructor(
