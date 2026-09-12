@@ -61,6 +61,22 @@ intermédiaires, l'inventaire contient :
 - 462 fichiers non conformes distincts : 381 en C# et 81 en TypeScript ;
 - 13 fichiers non conformes dans `AmusementPark.Core`, contre 15 avant ce lot.
 
+## État après le lot Core Qualité des données de parc
+
+Le lot Qualité des données de parc sépare les modèles de score, les contextes de
+calcul, le constructeur interne, les règles de complétude et les signaux de
+publication. Les namespaces, propriétés, valeurs par défaut et règles de calcul
+restent identiques ; aucun contrat HTTP, format MongoDB ou résultat de score ne
+change.
+
+Après ce lot, l'inventaire contient :
+
+- 279 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 312 au total ;
+- 451 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 460 fichiers non conformes distincts : 379 en C# et 81 en TypeScript ;
+- 11 fichiers non conformes dans `AmusementPark.Core`, contre 13 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

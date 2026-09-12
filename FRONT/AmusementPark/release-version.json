@@ -1,6 +1,20 @@
 {
-  "version": "5.2.17",
+  "version": "5.2.18",
   "history": [
+    {
+      "version": "5.2.18",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "La qualité des fiches de parc repose sur un socle plus clair.",
+        "en": "Park data quality now rests on a clearer foundation.",
+        "de": "Die Qualität der Parkdaten basiert jetzt auf einer klareren Grundlage.",
+        "nl": "De kwaliteit van parkgegevens rust nu op een duidelijkere basis.",
+        "it": "La qualità dei dati dei parchi poggia ora su una base più chiara.",
+        "es": "La calidad de los datos de los parques se apoya ahora en una base más clara.",
+        "pl": "Jakość danych parków opiera się teraz na czytelniejszej podstawie.",
+        "pt": "A qualidade dos dados dos parques assenta agora numa base mais clara."
+      }
+    },
     {
       "version": "5.2.17",
       "releasedAt": "2026-09-12",
