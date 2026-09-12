@@ -698,6 +698,4 @@ public static class AutomaticHistoryEventFactory
             ? historyEvent.ParkId
             : historyEvent.ContextParkId;
     }
-
-    private sealed record HistoryDateParts(int Year, int? Month, int? Day, HistoryDatePrecision Precision);
 }
