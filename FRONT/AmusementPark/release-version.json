@@ -1,6 +1,20 @@
 {
-  "version": "5.2.38",
+  "version": "5.2.39",
   "history": [
+    {
+      "version": "5.2.39",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "L’administration gagne en fiabilité.",
+        "en": "Administration is now more reliable.",
+        "de": "Die Verwaltung ist jetzt zuverlässiger.",
+        "nl": "Het beheer is nu betrouwbaarder.",
+        "it": "L’amministrazione è ora più affidabile.",
+        "es": "La administración es ahora más fiable.",
+        "pl": "Administracja jest teraz bardziej niezawodna.",
+        "pt": "A administração está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.38",
       "releasedAt": "2026-09-12",
