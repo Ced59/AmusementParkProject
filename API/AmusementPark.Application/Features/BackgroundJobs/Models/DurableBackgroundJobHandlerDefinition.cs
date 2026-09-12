@@ -2,30 +2,6 @@ using System.Text.Json;
 
 namespace AmusementPark.Application.Features.BackgroundJobs.Models;
 
-public enum DurableBackgroundJobWorkload
-{
-    Light,
-    Heavy,
-}
-
-public enum DurableBackgroundJobHandlerOutcome
-{
-    Succeeded,
-    Retry,
-    DeadLetter,
-}
-
-public enum DurableBackgroundJobExecutionDisposition
-{
-    Completed,
-    RetryScheduled,
-    DeadLettered,
-    RevisionReplayQueued,
-    Cancelled,
-    LeaseLost,
-    TransitionFailed,
-}
-
 public sealed class DurableBackgroundJobHandlerDefinition
 {
     private const int MaximumKindLength = 200;
@@ -124,76 +100,4 @@ public sealed class DurableBackgroundJobHandlerDefinition
     {
         return this.SupportedPayloadVersions.Contains(payloadVersion);
     }
-}
-
-public sealed record DurableBackgroundJobExecutionContext(
-    string JobId,
-    int PayloadVersion,
-    JsonElement Payload,
-    long? RequestedRevision,
-    int AttemptCount,
-    string? CorrelationId);
-
-public sealed record DurableBackgroundJobHandlerResult
-{
-    private const int MaximumErrorCodeLength = 200;
-
-    private DurableBackgroundJobHandlerResult(DurableBackgroundJobHandlerOutcome outcome, string? errorCode)
-    {
-        this.Outcome = outcome;
-        this.ErrorCode = errorCode;
-    }
-
-    public DurableBackgroundJobHandlerOutcome Outcome { get; }
-
-    public string? ErrorCode { get; }
-
-    public static DurableBackgroundJobHandlerResult Success()
-    {
-        return new DurableBackgroundJobHandlerResult(DurableBackgroundJobHandlerOutcome.Succeeded, null);
-    }
-
-    public static DurableBackgroundJobHandlerResult Retry(string errorCode)
-    {
-        return new DurableBackgroundJobHandlerResult(
-            DurableBackgroundJobHandlerOutcome.Retry,
-            NormalizeErrorCode(errorCode));
-    }
-
-    public static DurableBackgroundJobHandlerResult DeadLetter(string errorCode)
-    {
-        return new DurableBackgroundJobHandlerResult(
-            DurableBackgroundJobHandlerOutcome.DeadLetter,
-            NormalizeErrorCode(errorCode));
-    }
-
-    private static string NormalizeErrorCode(string errorCode)
-    {
-        string normalized = errorCode?.Trim() ?? string.Empty;
-        if (normalized.Length == 0 || normalized.Length > MaximumErrorCodeLength)
-        {
-            throw new ArgumentException(
-                $"The error code must contain between 1 and {MaximumErrorCodeLength} characters.",
-                nameof(errorCode));
-        }
-
-        return normalized;
-    }
-}
-
-public sealed record DurableBackgroundJobExecutionResult(
-    DurableBackgroundJobExecutionDisposition Disposition,
-    DurableBackgroundJobStatus? PersistedStatus = null,
-    string? ErrorCode = null,
-    Task? OngoingHandlerCompletion = null);
-
-public static class DurableBackgroundJobErrorCodes
-{
-    public const string UnknownKind = "background-job.unknown-kind";
-    public const string UnsupportedPayloadVersion = "background-job.unsupported-payload-version";
-    public const string InvalidHandlerResult = "background-job.invalid-handler-result";
-    public const string HandlerCancelled = "background-job.handler-cancelled";
-    public const string HandlerTimeout = "background-job.handler-timeout";
-    public const string AttemptBudgetExhausted = "background-job.attempt-budget-exhausted";
-    public const string UnhandledException = "background-job.unhandled-exception";
 }
