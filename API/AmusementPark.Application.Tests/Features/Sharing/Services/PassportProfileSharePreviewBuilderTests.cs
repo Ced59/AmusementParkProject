@@ -154,6 +154,46 @@ public sealed class PassportProfileSharePreviewBuilderTests
     }
 
     [Fact]
+    public async Task BuildAsync_WhenRideFieldsArePrivate_ShouldNotReportCatalogLoss()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            new[]
+            {
+                CreateRide("ride-hidden-id", "item-hidden-id", RideOccurrenceStatus.Completed, null),
+            },
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+        PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-technical-id",
+            ShareContentPolicy.Create(
+                SharePublicationType.PassportProfile,
+                ShareDatePrecision.Year,
+                new[] { ShareContentField.GeographicStatistics }),
+            new PassportProfileShareInput(
+                new[] { 2026 },
+                new[] { "park-public-id" },
+                Array.Empty<string>(),
+                null,
+                ShareVisibility.Unlisted,
+                false),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value!.PassportProfile!.HasIncompleteCatalog);
+    }
+
+    [Fact]
     public async Task BuildAsync_ShouldGateTheYearBreakdownWithGeographicStatistics()
     {
         PassportProfileSourceData source = new PassportProfileSourceData(
@@ -300,11 +340,16 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));
+        Mock<IVisitTargetResolver> targets = new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        targets.Setup(value => value.ResolveAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal));
         return new PassportProfileSharePreviewBuilder(
             sourceReader.Object,
             versions.Object,
             CreateParkRepository().Object,
-            Mock.Of<IVisitTargetResolver>(MockBehavior.Strict),
+            targets.Object,
             Mock.Of<IRatingRepository>(MockBehavior.Strict),
             CreateUserRepository(publicDisplayName).Object,
             Mock.Of<IImageRepository>(MockBehavior.Strict));

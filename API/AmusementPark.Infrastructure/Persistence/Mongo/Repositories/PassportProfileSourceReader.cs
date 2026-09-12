@@ -29,6 +29,20 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
             settings.UserRideOccurrencesCollectionName);
     }
 
+    public async Task<IReadOnlyCollection<PassportVisitStatisticsObservation>> ReadOwnedCompletedVisitsAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOwner = IdentifierRules.NormalizeRequired(
+            ownerUserId,
+            nameof(ownerUserId));
+        List<YearRecapVisitSourceDocument> visitDocuments = await this.visits
+            .Find(BuildOwnedCompletedVisitFilter(normalizedOwner))
+            .Project(BuildVisitProjection())
+            .ToListAsync(cancellationToken);
+        return ToVisitObservations(visitDocuments);
+    }
+
     public async Task<PassportProfileSourceData> ReadOwnedCompletedPassportAsync(
         string ownerUserId,
         CancellationToken cancellationToken)
@@ -36,15 +50,8 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
         string normalizedOwner = IdentifierRules.NormalizeRequired(
             ownerUserId,
             nameof(ownerUserId));
-        FilterDefinitionBuilder<UserVisitDocument> visitFilters =
-            Builders<UserVisitDocument>.Filter;
-        FilterDefinition<UserVisitDocument> visitFilter = visitFilters.Eq(
-                static value => value.UserId,
-                normalizedOwner)
-            & visitFilters.Eq(static value => value.Status, VisitStatus.Completed)
-            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
         List<YearRecapVisitSourceDocument> visitDocuments = await this.visits
-            .Find(visitFilter)
+            .Find(BuildOwnedCompletedVisitFilter(normalizedOwner))
             .Project(BuildVisitProjection())
             .ToListAsync(cancellationToken);
         if (visitDocuments.Count == 0)
@@ -83,15 +90,8 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
                     visit.ContentMutationFenceStableToken,
                     visit.ContentMutationFenceReady,
                     occurrence.ContentMutationFenceToken));
-        PassportVisitStatisticsObservation[] visitObservations = visitDocuments
-            .Select(static value => new PassportVisitStatisticsObservation(
-                value.Id,
-                value.ParkId,
-                ToVisitDate(value.Date),
-                value.ParkAssessmentValueHalfSteps.HasValue
-                    ? RatingValue.FromHalfSteps(value.ParkAssessmentValueHalfSteps.Value)
-                    : null))
-            .ToArray();
+        IReadOnlyCollection<PassportVisitStatisticsObservation> visitObservations =
+            ToVisitObservations(visitDocuments);
         PassportRideStatisticsObservation[] rideObservations = occurrenceDocuments
             .Where(occurrence => visitsById.ContainsKey(occurrence.VisitId))
             .Select(occurrence => new PassportRideStatisticsObservation(
@@ -120,6 +120,29 @@ public sealed class PassportProfileSourceReader : IPassportProfileSourceReader
             historicalNames,
             ComputeFingerprint(visitDocuments, occurrenceDocuments),
             isStable);
+    }
+
+    private static FilterDefinition<UserVisitDocument> BuildOwnedCompletedVisitFilter(
+        string ownerUserId)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters = Builders<UserVisitDocument>.Filter;
+        return filters.Eq(static value => value.UserId, ownerUserId)
+            & filters.Eq(static value => value.Status, VisitStatus.Completed)
+            & UserVisitMongoDefinitions.BuildNotDeletedFilter();
+    }
+
+    private static IReadOnlyCollection<PassportVisitStatisticsObservation> ToVisitObservations(
+        IReadOnlyCollection<YearRecapVisitSourceDocument> visits)
+    {
+        return visits
+            .Select(static value => new PassportVisitStatisticsObservation(
+                value.Id,
+                value.ParkId,
+                ToVisitDate(value.Date),
+                value.ParkAssessmentValueHalfSteps.HasValue
+                    ? RatingValue.FromHalfSteps(value.ParkAssessmentValueHalfSteps.Value)
+                    : null))
+            .ToArray();
     }
 
     private static ProjectionDefinition<UserVisitDocument, YearRecapVisitSourceDocument>

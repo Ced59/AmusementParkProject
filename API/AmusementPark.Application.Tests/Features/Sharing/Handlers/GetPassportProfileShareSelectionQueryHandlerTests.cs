@@ -3,7 +3,6 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Features.Sharing.Handlers;
-using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -23,20 +22,15 @@ public sealed class GetPassportProfileShareSelectionQueryHandlerTests
     public async Task HandleAsync_ShouldFilterVisitedPublicParksBeforeRatingLimit()
     {
         Mock<IPassportProfileSourceReader> sourceReader = new Mock<IPassportProfileSourceReader>(MockBehavior.Strict);
-        sourceReader.Setup(value => value.ReadOwnedCompletedPassportAsync("owner-1", CancellationToken.None))
-            .ReturnsAsync(new PassportProfileSourceData(
-                new[]
-                {
-                    new PassportVisitStatisticsObservation(
-                        "visit-1",
-                        "park-visited",
-                        VisitDate.ForDay(2026, 8, 12),
-                        null),
-                },
-                Array.Empty<PassportRideStatisticsObservation>(),
-                new Dictionary<string, string?>(),
-                "source-fingerprint",
-                true));
+        sourceReader.Setup(value => value.ReadOwnedCompletedVisitsAsync("owner-1", CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-1",
+                    "park-visited",
+                    VisitDate.ForDay(2026, 8, 12),
+                    null),
+            });
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         parks.Setup(value => value.GetByIdsAsync(
                 It.Is<IEnumerable<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-visited" })),
@@ -94,6 +88,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandlerTests
         Assert.True(result.IsSuccess);
         PassportProfileShareRatingCandidateResult rating = Assert.Single(result.Value!.Ratings);
         Assert.Equal("Parc visité", rating.Name);
+        Assert.Equal(250, result.Value.MaximumSelectedParks);
         ratings.VerifyAll();
     }
 }

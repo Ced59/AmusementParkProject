@@ -244,6 +244,9 @@ public sealed class PassportProfileSharePreviewBuilder
         bool includesGeography = policy.Includes(ShareContentField.GeographicStatistics);
         bool includesRanking = policy.Includes(ShareContentField.GlobalRatings);
         bool includesMissed = policy.Includes(ShareContentField.MissedItems);
+        bool exposesRideDerivedContent = includesActivity
+            || includesTemporalRatings
+            || includesMissed;
 
         Dictionary<string, UserRatingListItemResult> ratingsByKey = ratingCandidates
             .Where(rating => selectedParkIds.Contains(rating.ParkId))
@@ -342,10 +345,11 @@ public sealed class PassportProfileSharePreviewBuilder
             parks,
             ranking,
             missedItems,
-            selectedScopeRides.Any(ride => !CanExposeTarget(
-                ride,
-                source.HistoricalItemNames,
-                targets)),
+            exposesRideDerivedContent
+                && selectedScopeRides.Any(ride => !CanExposeTarget(
+                    ride,
+                    source.HistoricalItemNames,
+                    targets)),
             PassportProfileShareVersion.CalculationVersion,
             isEmpty);
         return ApplicationResult<PassportProfileSharePreviewResult>.Success(result);

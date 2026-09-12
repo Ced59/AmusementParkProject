@@ -11,6 +11,7 @@ using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Sharing.Handlers;
 
@@ -52,10 +53,11 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
                 SharingApplicationErrors.InvalidSource());
         }
 
-        PassportProfileSourceData source = await this.sourceReader.ReadOwnedCompletedPassportAsync(
+        IReadOnlyCollection<PassportVisitStatisticsObservation> visits =
+            await this.sourceReader.ReadOwnedCompletedVisitsAsync(
             ownerUserId,
             cancellationToken);
-        string[] parkIds = source.Visits
+        string[] parkIds = visits
             .Select(static visit => visit.ParkId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
@@ -71,7 +73,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
                 static group => group.Key,
                 static group => group.First(),
                 StringComparer.Ordinal);
-        PassportProfileShareYearCandidateResult[] years = source.Visits
+        PassportProfileShareYearCandidateResult[] years = visits
             .Where(visit => publicParks.ContainsKey(visit.ParkId))
             .GroupBy(static visit => visit.VisitDate.Year)
             .OrderByDescending(static group => group.Key)
@@ -79,7 +81,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
                 group.Key,
                 group.LongCount()))
             .ToArray();
-        PassportProfileShareParkCandidateResult[] parkResults = source.Visits
+        PassportProfileShareParkCandidateResult[] parkResults = visits
             .Where(visit => publicParks.ContainsKey(visit.ParkId))
             .GroupBy(static visit => visit.ParkId, StringComparer.Ordinal)
             .Select(group => new PassportProfileShareParkCandidateResult(
@@ -132,6 +134,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
                 years,
                 parkResults,
                 ratings,
+                PassportProfileShareInputNormalizer.MaximumSelectedParks,
                 saved?.SelectedYears,
                 saved?.SelectedParkIds,
                 saved?.SelectedRatingKeys,

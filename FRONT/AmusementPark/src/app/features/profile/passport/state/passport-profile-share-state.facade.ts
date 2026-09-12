@@ -93,7 +93,8 @@ export class PassportProfileShareStateFacade {
               .filter((year) => availableYears.has(year))
           );
           this.selectedParkIdsSignal.set(
-            (result.selection.savedSelectedParkIds ?? [...availableParkIds])
+            (result.selection.savedSelectedParkIds
+              ?? [...availableParkIds].slice(0, result.selection.maximumSelectedParks))
               .filter((parkId) => availableParkIds.has(parkId))
           );
           this.selectedRatingKeysSignal.set(
