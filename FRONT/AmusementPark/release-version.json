@@ -1,6 +1,20 @@
 {
-  "version": "5.2.31",
+  "version": "5.2.32",
   "history": [
+    {
+      "version": "5.2.32",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "La fraîcheur des pages publiques gagne en fiabilité.",
+        "en": "Public page freshness is now more reliable.",
+        "de": "Die Aktualität öffentlicher Seiten ist jetzt zuverlässiger.",
+        "nl": "De actualiteit van openbare pagina’s is nu betrouwbaarder.",
+        "it": "L’aggiornamento delle pagine pubbliche è ora più affidabile.",
+        "es": "La actualización de las páginas públicas es ahora más fiable.",
+        "pl": "Aktualność stron publicznych jest teraz bardziej niezawodna.",
+        "pt": "A atualização das páginas públicas está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.31",
       "releasedAt": "2026-09-12",
