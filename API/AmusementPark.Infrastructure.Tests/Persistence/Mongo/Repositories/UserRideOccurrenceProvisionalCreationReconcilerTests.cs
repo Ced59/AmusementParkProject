@@ -81,12 +81,19 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
             new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
                 MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
             PassportProfileShareSourceScope.Create(document.UserId));
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
+        SetupVisit(visitCollection, CreateVisitDocument(
+            isFenceReady: true,
+            stableFenceToken: 9,
+            currentFenceToken: 9,
+            VisitStatus.Completed));
         revisionGuard.Setup(value => value.TryBeginMutationAsync(
                 document.UserId,
                 CancellationToken.None))
@@ -106,6 +113,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             new UserRideOccurrenceProvisionalCreationReconciler(
                 collection.Object,
                 operationCollection.Object,
+                visitCollection.Object,
                 revisionGuard: revisionGuard.Object);
 
         int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
@@ -129,12 +137,19 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
             new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
                 MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
             PassportProfileShareSourceScope.Create(document.UserId));
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
+        SetupVisit(visitCollection, CreateVisitDocument(
+            isFenceReady: true,
+            stableFenceToken: 9,
+            currentFenceToken: 9,
+            VisitStatus.Completed));
         revisionGuard.Setup(value => value.TryBeginMutationAsync(
                 document.UserId,
                 CancellationToken.None))
@@ -154,6 +169,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             new UserRideOccurrenceProvisionalCreationReconciler(
                 collection.Object,
                 operationCollection.Object,
+                visitCollection.Object,
                 revisionGuard: revisionGuard.Object);
 
         await Assert.ThrowsAsync<TimeoutException>(() => reconciler.ReconcileBatchAsync(
@@ -402,7 +418,8 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
     private static UserVisitDocument CreateVisitDocument(
         bool isFenceReady,
         long? stableFenceToken,
-        long currentFenceToken)
+        long currentFenceToken,
+        VisitStatus status = VisitStatus.Draft)
     {
         return new UserVisitDocument
         {
@@ -411,6 +428,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             ContentMutationFenceReady = isFenceReady,
             ContentMutationFenceStableToken = stableFenceToken,
             ContentMutationFenceToken = currentFenceToken,
+            Status = status,
         };
     }
 

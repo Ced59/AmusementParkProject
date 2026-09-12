@@ -434,27 +434,28 @@ public sealed class PassportProfileSharePreviewBuilder
         IReadOnlyDictionary<string, string?> historicalNames,
         IReadOnlyDictionary<string, VisitTarget> targets)
     {
-        return rides.Where(static ride => ride.Status != RideOccurrenceStatus.Completed)
-            .GroupBy(
-                ride => new
-                {
-                    Name = ResolveName(ride.ParkItemId, historicalNames, targets),
-                    ride.Status,
-                })
-            .Where(static group => group.Key.Name is not null)
-            .Select(group => new PassportProfileShareMissedItemResult(
-                group.Key.Name!,
-                ToPublicMissedStatus(group.Key.Status),
-                group.LongCount()))
-            .OrderByDescending(static item => item.OccurrenceCount)
-            .ThenBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
-            .Take(5)
+        PassportProfileMissedItemObservation[] observations = rides
+            .Select(ride => new
+            {
+                Name = ResolveName(ride.ParkItemId, historicalNames, targets),
+                ride.Status,
+            })
+            .Where(static value => value.Name is not null)
+            .Select(static value => new PassportProfileMissedItemObservation(
+                value.Name!,
+                value.Status))
+            .ToArray();
+        return PassportProfileStatisticsCalculator.CalculateMissedItems(observations)
+            .Select(static item => new PassportProfileShareMissedItemResult(
+                item.Name,
+                ToPublicMissedStatus(item.Status),
+                item.OccurrenceCount))
             .ToArray();
     }
 
-    private static string ToPublicMissedStatus(RideOccurrenceStatus status)
+    private static string ToPublicMissedStatus(PassportProfileMissedItemStatus status)
     {
-        return status == RideOccurrenceStatus.MissedClosed
+        return status == PassportProfileMissedItemStatus.MissedClosure
             ? "MissedClosure"
             : "MissedOther";
     }

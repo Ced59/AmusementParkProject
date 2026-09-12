@@ -13,6 +13,46 @@ namespace AmusementPark.Application.Tests.Features.Sharing.Services;
 public sealed class PassportProfileRevisionVisitDeletionStoreTests
 {
     [Fact]
+    public async Task TryTombstoneAsync_WhenVisitIsDraft_ShouldNotTouchThePublicRevision()
+    {
+        DateTime nowUtc = new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc);
+        Visit visit = Visit.Create(
+            VisitId.New(),
+            "owner-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 12),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            nowUtc);
+        VisitDeletionTombstoneRequest request = new VisitDeletionTombstoneRequest(
+            visit.Id,
+            visit.UserId,
+            visit.Version,
+            "operation-1",
+            nowUtc,
+            nowUtc.AddDays(30),
+            null,
+            VisitDeletionAuditEventFactory.Create(visit, nowUtc));
+        Mock<IVisitDeletionStore> inner = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> guard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        inner.Setup(value => value.TryTombstoneAsync(
+                request,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        PassportProfileRevisionVisitDeletionStore store =
+            new PassportProfileRevisionVisitDeletionStore(inner.Object, guard.Object);
+
+        bool deleted = await store.TryTombstoneAsync(request, CancellationToken.None);
+
+        Assert.True(deleted);
+        inner.VerifyAll();
+        guard.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task TryTombstoneAsync_ShouldAdvanceThePassportScopeAfterDeletion()
     {
         DateTime nowUtc = new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc);
@@ -26,6 +66,7 @@ public sealed class PassportProfileRevisionVisitDeletionStoreTests
             null,
             null,
             nowUtc);
+        visit.Complete(new DateOnly(2026, 9, 12), nowUtc.AddMinutes(1));
         VisitDeletionTombstoneRequest request = new VisitDeletionTombstoneRequest(
             visit.Id,
             visit.UserId,
@@ -74,6 +115,7 @@ public sealed class PassportProfileRevisionVisitDeletionStoreTests
             null,
             null,
             nowUtc);
+        visit.Complete(new DateOnly(2026, 9, 12), nowUtc.AddMinutes(1));
         VisitDeletionTombstoneRequest request = new VisitDeletionTombstoneRequest(
             visit.Id,
             visit.UserId,

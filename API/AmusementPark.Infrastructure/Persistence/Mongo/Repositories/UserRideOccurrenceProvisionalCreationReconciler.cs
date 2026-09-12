@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using MongoDB.Driver;
 
@@ -75,9 +76,13 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                 continue;
             }
 
+            bool canChangeSource = disposition == ProvisionalCreationDisposition.Commit
+                && (await this.LoadVisitAsync(document, cancellationToken))?.Status
+                    == VisitStatus.Completed;
             bool sourceChanged = await this.ApplyDispositionGuardedAsync(
                 document,
                 disposition,
+                canChangeSource,
                 cancellationToken);
             if (sourceChanged)
             {
@@ -91,8 +96,17 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
     private async Task<bool> ApplyDispositionGuardedAsync(
         UserRideOccurrenceDocument document,
         ProvisionalCreationDisposition disposition,
+        bool canChangeSource,
         CancellationToken cancellationToken)
     {
+        if (!canChangeSource)
+        {
+            return await this.ApplyDispositionAsync(
+                document,
+                disposition,
+                cancellationToken);
+        }
+
         ShareSourceMutationLease? mutationLease = this.revisionGuard is null
             ? null
             : await this.revisionGuard.TryBeginMutationAsync(

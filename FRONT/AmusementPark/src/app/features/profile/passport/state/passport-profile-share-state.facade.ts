@@ -227,6 +227,7 @@ export class PassportProfileShareStateFacade {
           return;
         }
         this.settingsSignal.set(settings);
+        this.previewSignal.set(null);
         this.savingSignal.set(false);
         this.toast('success', 'passportProfileShare.toast.revoked');
       },

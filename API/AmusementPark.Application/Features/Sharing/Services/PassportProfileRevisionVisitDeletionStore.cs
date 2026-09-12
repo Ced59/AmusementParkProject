@@ -44,6 +44,13 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
         VisitDeletionTombstoneRequest request,
         CancellationToken cancellationToken)
     {
+        if (!request.AuditEvent.PreviousVisitStatus.HasValue
+            || !PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(
+                request.AuditEvent.PreviousVisitStatus.Value))
+        {
+            return await this.inner.TryTombstoneAsync(request, cancellationToken);
+        }
+
         ShareSourceMutationLease? mutationLease =
             await this.revisionGuard.TryBeginMutationAsync(
                 request.UserId,

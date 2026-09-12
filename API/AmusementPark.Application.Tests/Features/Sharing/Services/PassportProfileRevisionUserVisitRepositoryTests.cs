@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
@@ -11,7 +12,44 @@ namespace AmusementPark.Application.Tests.Features.Sharing.Services;
 public sealed class PassportProfileRevisionUserVisitRepositoryTests
 {
     [Fact]
-    public async Task TryUpdateOwnedAsync_ShouldAdvanceThePassportScopeAfterAWrite()
+    public async Task CreateIdempotentAsync_WhenVisitIsDraft_ShouldNotTouchThePublicRevision()
+    {
+        Visit visit = Visit.Create(
+            VisitId.New(),
+            "owner-1",
+            "park-1",
+            VisitDate.ForDay(2026, 9, 12),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc));
+        IdempotentVisitCreationResult creation = new IdempotentVisitCreationResult(
+            IdempotentVisitCreationStatus.Created,
+            visit);
+        Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> guard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        inner.Setup(value => value.CreateIdempotentAsync(
+                visit,
+                "operation-1",
+                CancellationToken.None))
+            .ReturnsAsync(creation);
+        PassportProfileRevisionUserVisitRepository repository =
+            new PassportProfileRevisionUserVisitRepository(inner.Object, guard.Object);
+
+        IdempotentVisitCreationResult result = await repository.CreateIdempotentAsync(
+            visit,
+            "operation-1",
+            CancellationToken.None);
+
+        Assert.Same(creation, result);
+        inner.VerifyAll();
+        guard.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task TryUpdateOwnedAsync_WhenVisitIsCompleted_ShouldAdvanceThePassportScope()
     {
         Visit visit = Visit.Create(
             VisitId.New(),
@@ -23,12 +61,21 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             null,
             null,
             new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc));
+        visit.Complete(
+            new DateOnly(2026, 9, 12),
+            new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
             PassportProfileShareSourceScope.Create(visit.UserId));
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         MockSequence sequence = new MockSequence();
+        inner.InSequence(sequence)
+            .Setup(value => value.GetOwnedAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(visit);
         guard.InSequence(sequence)
             .Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
             .ReturnsAsync(lease);
@@ -64,11 +111,19 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             null,
             null,
             new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc));
+        visit.Complete(
+            new DateOnly(2026, 9, 12),
+            new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
             PassportProfileShareSourceScope.Create(visit.UserId));
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        inner.Setup(value => value.GetOwnedAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(visit);
         guard.Setup(value => value.TryBeginMutationAsync(visit.UserId, CancellationToken.None))
             .ReturnsAsync(lease);
         inner.Setup(value => value.TryUpdateOwnedAsync(visit, 1, It.IsAny<CancellationToken>()))
@@ -85,5 +140,44 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
 
         inner.VerifyAll();
         guard.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TryUpdateOwnedAsync_WhenVisitRemainsDraft_ShouldNotTouchThePublicRevision()
+    {
+        Visit visit = Visit.Create(
+            VisitId.New(),
+            "owner-1",
+            "park-1",
+            new VisitDate(2026, 9, 12, VisitDatePrecision.Day, false),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            new DateTime(2026, 9, 12, 10, 0, 0, DateTimeKind.Utc));
+        Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> guard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        inner.Setup(value => value.GetOwnedAsync(
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(visit);
+        inner.Setup(value => value.TryUpdateOwnedAsync(
+                visit,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        PassportProfileRevisionUserVisitRepository repository =
+            new PassportProfileRevisionUserVisitRepository(inner.Object, guard.Object);
+
+        bool updated = await repository.TryUpdateOwnedAsync(
+            visit,
+            1,
+            CancellationToken.None);
+
+        Assert.True(updated);
+        inner.VerifyAll();
+        guard.VerifyNoOtherCalls();
     }
 }

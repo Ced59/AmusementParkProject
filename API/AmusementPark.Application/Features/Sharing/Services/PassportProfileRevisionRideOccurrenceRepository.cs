@@ -10,13 +10,17 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
     : IRideOccurrenceRepository
 {
     private readonly IRideOccurrenceRepository inner;
+    private readonly IUserVisitRepository visitRepository;
     private readonly IPassportProfileShareSourceRevisionGuard revisionGuard;
 
     public PassportProfileRevisionRideOccurrenceRepository(
         IRideOccurrenceRepository inner,
+        IUserVisitRepository visitRepository,
         IPassportProfileShareSourceRevisionGuard revisionGuard)
     {
         this.inner = inner ?? throw new ArgumentNullException(nameof(inner));
+        this.visitRepository = visitRepository
+            ?? throw new ArgumentNullException(nameof(visitRepository));
         this.revisionGuard = revisionGuard ?? throw new ArgumentNullException(nameof(revisionGuard));
     }
 
@@ -124,8 +128,9 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         string clientOperationId,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteMutationAsync(
+        return this.ExecuteVisitMutationAsync(
             request.UserId,
+            request.VisitId,
             token => this.inner.CreateBatchIdempotentAsync(
                 request,
                 occurrences,
@@ -146,8 +151,9 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteMutationAsync(
+        return this.ExecuteVisitMutationAsync(
             request.UserId,
+            request.VisitId,
             token => this.inner.CreateBatchIdempotentAuditedAsync(
                 request,
                 occurrences,
@@ -390,8 +396,9 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         string? relatedCreationClientOperationId,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteMutationAsync(
+        return this.ExecuteVisitMutationAsync(
             request.UserId,
+            request.VisitId,
             token => this.inner.ReorderIdempotentAsync(
                 request,
                 changes,
@@ -418,8 +425,9 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         IReadOnlyCollection<PassportAuditEvent> pendingAuditEvents,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteMutationAsync(
+        return this.ExecuteVisitMutationAsync(
             request.UserId,
+            request.VisitId,
             token => this.inner.ReorderIdempotentAuditedAsync(
                 request,
                 changes,
@@ -440,10 +448,33 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         Func<CancellationToken, Task<bool>> mutation,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteMutationAsync(
+        return this.ExecuteVisitMutationAsync(
             occurrence.UserId,
+            occurrence.VisitId,
             mutation,
             static updated => updated,
+            cancellationToken);
+    }
+
+    private async Task<TResult> ExecuteVisitMutationAsync<TResult>(
+        string ownerUserId,
+        VisitId visitId,
+        Func<CancellationToken, Task<TResult>> mutation,
+        Func<TResult, bool> sourceChanged,
+        CancellationToken cancellationToken)
+    {
+        Visit? visit = await this.visitRepository.GetOwnedAsync(
+            visitId,
+            ownerUserId,
+            cancellationToken);
+        bool canChangeSource = visit is not null
+            && PassportProfileSourceMutationPolicy.CanChangeCompletedVisitProjection(
+                visit.Status);
+        return await this.ExecuteMutationAsync(
+            ownerUserId,
+            mutation,
+            sourceChanged,
+            canChangeSource,
             cancellationToken);
     }
 
@@ -451,8 +482,14 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
         string ownerUserId,
         Func<CancellationToken, Task<TResult>> mutation,
         Func<TResult, bool> sourceChanged,
+        bool canChangeSource,
         CancellationToken cancellationToken)
     {
+        if (!canChangeSource)
+        {
+            return await mutation(cancellationToken);
+        }
+
         ShareSourceMutationLease? mutationLease =
             await this.revisionGuard.TryBeginMutationAsync(ownerUserId, cancellationToken);
         using CancellationTokenSource? linkedCancellation = mutationLease is null

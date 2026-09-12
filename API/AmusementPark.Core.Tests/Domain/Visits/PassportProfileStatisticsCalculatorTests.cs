@@ -56,6 +56,42 @@ public sealed class PassportProfileStatisticsCalculatorTests
         Assert.Equal(4d, park1.AverageVisitRating);
     }
 
+    [Fact]
+    public void CalculateMissedItems_ShouldMergeStatusesPublishedAsMissedOther()
+    {
+        PassportProfileMissedItemObservation[] observations =
+        {
+            new PassportProfileMissedItemObservation(
+                "Attraction test",
+                RideOccurrenceStatus.Attempted),
+            new PassportProfileMissedItemObservation(
+                "Attraction test",
+                RideOccurrenceStatus.MissedUnavailable),
+            new PassportProfileMissedItemObservation(
+                "Attraction test",
+                RideOccurrenceStatus.SkippedByChoice),
+            new PassportProfileMissedItemObservation(
+                "Attraction test",
+                RideOccurrenceStatus.MissedClosed),
+        };
+
+        IReadOnlyCollection<PassportProfileMissedItemStatistics> result =
+            PassportProfileStatisticsCalculator.CalculateMissedItems(observations);
+
+        Assert.Collection(
+            result,
+            item =>
+            {
+                Assert.Equal(PassportProfileMissedItemStatus.MissedOther, item.Status);
+                Assert.Equal(3, item.OccurrenceCount);
+            },
+            item =>
+            {
+                Assert.Equal(PassportProfileMissedItemStatus.MissedClosure, item.Status);
+                Assert.Equal(1, item.OccurrenceCount);
+            });
+    }
+
     private static PassportRideStatisticsObservation CreateRide(
         string rideId,
         string visitId,

@@ -70,6 +70,12 @@ describe('PassportProfileShareStateFacade', () => {
     expect(publishRequests[0].approvalToken).toBe('approved-preview');
     expect(publishRequests[0].passportProfile).toEqual(previewRequests[0].passportProfile);
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
+
+    facade.previewPublication();
+    expect(facade.canPublish()).toBe(true);
+    facade.revoke();
+
+    expect(facade.canPublish()).toBe(false);
   });
 
   it('filters obsolete saved choices and clears hidden ranking choices', () => {

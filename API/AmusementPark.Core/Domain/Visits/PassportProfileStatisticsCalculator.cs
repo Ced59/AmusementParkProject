@@ -2,6 +2,8 @@ namespace AmusementPark.Core.Domain.Visits;
 
 public static class PassportProfileStatisticsCalculator
 {
+    public const int MissedItemLimit = 5;
+
     public static PassportProfileStatistics Calculate(
         IReadOnlyCollection<PassportVisitStatisticsObservation> visits,
         IReadOnlyCollection<PassportRideStatisticsObservation> rides)
@@ -58,5 +60,32 @@ public static class PassportProfileStatisticsCalculator
                 .OrderByDescending(static park => park.VisitCount)
                 .ThenBy(static park => park.ParkId, StringComparer.Ordinal)
                 .ToArray());
+    }
+
+    public static IReadOnlyCollection<PassportProfileMissedItemStatistics>
+        CalculateMissedItems(
+            IReadOnlyCollection<PassportProfileMissedItemObservation> observations)
+    {
+        ArgumentNullException.ThrowIfNull(observations);
+        return observations
+            .Where(static observation => observation.Status != RideOccurrenceStatus.Completed)
+            .Select(static observation => (
+                observation.Name,
+                Status: observation.Status == RideOccurrenceStatus.MissedClosed
+                    ? PassportProfileMissedItemStatus.MissedClosure
+                    : PassportProfileMissedItemStatus.MissedOther))
+            .GroupBy(static observation => new
+            {
+                observation.Name,
+                observation.Status,
+            })
+            .Select(static group => new PassportProfileMissedItemStatistics(
+                group.Key.Name,
+                group.Key.Status,
+                group.LongCount()))
+            .OrderByDescending(static item => item.OccurrenceCount)
+            .ThenBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
+            .Take(MissedItemLimit)
+            .ToArray();
     }
 }

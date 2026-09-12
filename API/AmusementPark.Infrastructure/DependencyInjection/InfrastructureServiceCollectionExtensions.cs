@@ -245,6 +245,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IRideOccurrenceRepository>(provider =>
             new PassportProfileRevisionRideOccurrenceRepository(
                 provider.GetRequiredService<UserRideOccurrenceRepository>(),
+                provider.GetRequiredService<UserVisitRepository>(),
                 provider.GetRequiredService<IPassportProfileShareSourceRevisionGuard>()));
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
         services.AddScoped<MongoVisitDeletionStore>();
