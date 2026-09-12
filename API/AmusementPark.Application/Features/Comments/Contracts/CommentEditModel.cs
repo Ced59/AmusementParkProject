@@ -3,8 +3,7 @@ using AmusementPark.Core.Domain.Comments;
 
 namespace AmusementPark.Application.Features.Comments.Contracts;
 
-public sealed record CommentWriteModel(
-    CommentTargetType TargetType,
-    string TargetId,
+public sealed record CommentEditModel(
     IReadOnlyCollection<LocalizedTextValue> Bodies,
-    bool IsOfficial);
+    bool IsOfficial,
+    long? ExpectedRevision = null);
