@@ -1,6 +1,20 @@
 {
-  "version": "5.2.26",
+  "version": "5.2.27",
   "history": [
+    {
+      "version": "5.2.27",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les preuves de modification du passeport reposent sur un socle plus clair.",
+        "en": "Passport change proofs now rest on a clearer foundation.",
+        "de": "Nachweise für Passänderungen basieren jetzt auf einer klareren Grundlage.",
+        "nl": "Bewijzen van paspoortwijzigingen hebben nu een duidelijkere basis.",
+        "it": "Le prove delle modifiche al passaporto poggiano ora su una base più chiara.",
+        "es": "Las pruebas de cambios del pasaporte se apoyan ahora en una base más clara.",
+        "pl": "Dowody zmian w paszporcie opierają się teraz na czytelniejszej podstawie.",
+        "pt": "As provas de alterações do passaporte assentam agora numa base mais clara."
+      }
+    },
     {
       "version": "5.2.26",
       "releasedAt": "2026-09-12",
