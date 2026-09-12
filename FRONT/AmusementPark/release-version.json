@@ -1,6 +1,20 @@
 {
-  "version": "5.2.34",
+  "version": "5.2.35",
   "history": [
+    {
+      "version": "5.2.35",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les horaires des parcs gagnent en fiabilité.",
+        "en": "Park opening hours are now more reliable.",
+        "de": "Die Öffnungszeiten der Parks sind jetzt zuverlässiger.",
+        "nl": "De openingstijden van parken zijn nu betrouwbaarder.",
+        "it": "Gli orari di apertura dei parchi sono ora più affidabili.",
+        "es": "Los horarios de apertura de los parques son ahora más fiables.",
+        "pl": "Godziny otwarcia parków są teraz bardziej niezawodne.",
+        "pt": "Os horários de abertura dos parques estão agora mais fiáveis."
+      }
+    },
     {
       "version": "5.2.34",
       "releasedAt": "2026-09-12",
