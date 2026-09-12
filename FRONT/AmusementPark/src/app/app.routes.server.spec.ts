@@ -53,6 +53,14 @@ describe('Server routes', () => {
     expect(sharedYearRoute?.renderMode).toBe(RenderMode.Server);
   });
 
+  it('server-renders shared passport profiles', () => {
+    const sharedProfileRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/passport/shared/profiles/:shareId'
+    );
+
+    expect(sharedProfileRoute?.renderMode).toBe(RenderMode.Server);
+  });
+
   it('keeps every nested private profile route client-rendered before the fallback', () => {
     const profileRoute: ServerRoute | undefined = serverRoutes.find(
       (route: ServerRoute): boolean => route.path === ':lang/profile'

@@ -20,7 +20,7 @@ public static class VisitDeletionAuditEventFactory
             new[] { PassportAuditChangedField.DeletedAtUtc },
             null,
             null,
-            null,
+            visit.Date,
             null,
             visit.Status,
             null,

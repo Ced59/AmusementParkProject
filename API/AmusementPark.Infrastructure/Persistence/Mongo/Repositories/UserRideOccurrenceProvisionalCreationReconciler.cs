@@ -1,3 +1,6 @@
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using MongoDB.Driver;
 
@@ -9,17 +12,20 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument>
         operationCollection;
     private readonly IMongoCollection<UserVisitDocument>? visitCollection;
+    private readonly IPassportProfileShareSourceRevisionGuard? revisionGuard;
 
     public UserRideOccurrenceProvisionalCreationReconciler(
         IMongoCollection<UserRideOccurrenceDocument> collection,
         IMongoCollection<UserRideOccurrenceCreationOperationDocument> operationCollection,
-        IMongoCollection<UserVisitDocument>? visitCollection = null)
+        IMongoCollection<UserVisitDocument>? visitCollection = null,
+        IPassportProfileShareSourceRevisionGuard? revisionGuard = null)
     {
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(operationCollection);
         this.collection = collection;
         this.operationCollection = operationCollection;
         this.visitCollection = visitCollection;
+        this.revisionGuard = revisionGuard;
     }
 
     public async Task<int> ReconcileBatchAsync(
@@ -70,34 +76,104 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
                 continue;
             }
 
-            FilterDefinition<UserRideOccurrenceDocument> exactDocument =
-                BuildExactPendingDocumentFilter(document);
-            if (disposition == ProvisionalCreationDisposition.Commit)
-            {
-                UpdateResult result = await this.collection.UpdateOneAsync(
-                    exactDocument,
-                    Builders<UserRideOccurrenceDocument>.Update.Unset(
-                        static value => value.CreationPendingCompletion),
-                    new UpdateOptions { IsUpsert = false },
-                    cancellationToken);
-                if (result.ModifiedCount == 1)
-                {
-                    reconciledCount++;
-                }
-
-                continue;
-            }
-
-            DeleteResult deletion = await this.collection.DeleteOneAsync(
-                exactDocument,
+            UserVisitDocument? sourceVisit = disposition == ProvisionalCreationDisposition.Commit
+                ? await this.LoadVisitAsync(document, cancellationToken)
+                : null;
+            bool sourceChanged = await this.ApplyDispositionGuardedAsync(
+                document,
+                disposition,
+                sourceVisit,
                 cancellationToken);
-            if (deletion.DeletedCount == 1)
+            if (sourceChanged)
             {
                 reconciledCount++;
             }
         }
 
         return reconciledCount;
+    }
+
+    private async Task<bool> ApplyDispositionGuardedAsync(
+        UserRideOccurrenceDocument document,
+        ProvisionalCreationDisposition disposition,
+        UserVisitDocument? sourceVisit,
+        CancellationToken cancellationToken)
+    {
+        if (sourceVisit?.Status != VisitStatus.Completed)
+        {
+            return await this.ApplyDispositionAsync(
+                document,
+                disposition,
+                cancellationToken);
+        }
+
+        IReadOnlyCollection<ShareSourceMutationLease> mutationLeases = this.revisionGuard is null
+            ? Array.Empty<ShareSourceMutationLease>()
+            : await this.revisionGuard.TryBeginMutationAsync(
+                document.UserId,
+                new[] { (sourceVisit.ParkId, sourceVisit.Date.Year) },
+                cancellationToken);
+        CancellationToken[] leaseCancellationTokens = mutationLeases
+            .Select(static lease => lease.LeaseCancellationToken)
+            .Prepend(cancellationToken)
+            .ToArray();
+        using CancellationTokenSource? linkedCancellation = mutationLeases.Count == 0
+            ? null
+            : CancellationTokenSource.CreateLinkedTokenSource(leaseCancellationTokens);
+        CancellationToken guardedCancellationToken =
+            linkedCancellation?.Token ?? cancellationToken;
+        try
+        {
+            bool sourceChanged = await this.ApplyDispositionAsync(
+                document,
+                disposition,
+                guardedCancellationToken);
+            if (this.revisionGuard is not null)
+            {
+                await this.revisionGuard.CompleteMutationAsync(
+                    mutationLeases,
+                    sourceChanged,
+                    CancellationToken.None);
+            }
+
+            return sourceChanged;
+        }
+        catch
+        {
+            if (this.revisionGuard is not null)
+            {
+                await this.revisionGuard.CompleteMutationAsync(
+                    mutationLeases,
+                    true,
+                    CancellationToken.None);
+            }
+
+            throw;
+        }
+    }
+
+    private async Task<bool> ApplyDispositionAsync(
+        UserRideOccurrenceDocument document,
+        ProvisionalCreationDisposition disposition,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserRideOccurrenceDocument> exactDocument =
+            BuildExactPendingDocumentFilter(document);
+        if (disposition == ProvisionalCreationDisposition.Commit)
+        {
+            UpdateResult result = await this.collection.UpdateOneAsync(
+                exactDocument,
+                Builders<UserRideOccurrenceDocument>.Update.Unset(
+                    static value => value.CreationPendingCompletion),
+                new UpdateOptions { IsUpsert = false },
+                cancellationToken);
+            return result.ModifiedCount == 1;
+        }
+
+        DeleteResult deletion = await this.collection.DeleteOneAsync(
+            exactDocument,
+            cancellationToken);
+        return deletion.DeletedCount == 1;
     }
 
     private async Task<UserRideOccurrenceCreationOperationDocument?> LoadOperationAsync(
@@ -137,14 +213,22 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
             .Find(UserVisitMongoDefinitions.BuildOwnedVisitFilter(
                 document.VisitId,
                 document.UserId))
-            .Project<UserVisitDocument>(Builders<UserVisitDocument>.Projection
-                .Include(static visit => visit.Id)
-                .Include(static visit => visit.UserId)
-                .Include(static visit => visit.ContentMutationFenceToken)
-                .Include(static visit => visit.ContentMutationFenceStableToken)
-                .Include(static visit => visit.ContentMutationFenceReady))
+            .Project<UserVisitDocument>(BuildVisitProjection())
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    internal static ProjectionDefinition<UserVisitDocument> BuildVisitProjection()
+    {
+        return Builders<UserVisitDocument>.Projection
+            .Include(static visit => visit.Id)
+            .Include(static visit => visit.UserId)
+            .Include(static visit => visit.ParkId)
+            .Include(static visit => visit.Date)
+            .Include(static visit => visit.Status)
+            .Include(static visit => visit.ContentMutationFenceToken)
+            .Include(static visit => visit.ContentMutationFenceStableToken)
+            .Include(static visit => visit.ContentMutationFenceReady);
     }
 
     private static bool OperationFenceMayBePromoting(

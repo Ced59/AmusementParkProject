@@ -1,3 +1,6 @@
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
@@ -15,6 +18,19 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
 {
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 4, 0, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public void BuildVisitProjection_ShouldIncludeTheStatusUsedByTheShareGuard()
+    {
+        ProjectionDefinition<UserVisitDocument> projection =
+            UserRideOccurrenceProvisionalCreationReconciler.BuildVisitProjection();
+        IBsonSerializer<UserVisitDocument> serializer =
+            BsonSerializer.LookupSerializer<UserVisitDocument>();
+        BsonDocument rendered = projection.Render(
+            new RenderArgs<UserVisitDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(1, rendered["status"].AsInt32);
+    }
 
     [Fact]
     public async Task ReconcileBatchAsync_WhenExactOperationCompletedCurrentFence_ShouldCommitMarker()
@@ -63,6 +79,126 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
             "creationPendingCompletion"));
         collection.VerifyAll();
         operationCollection.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenMarkerBecomesPublic_ShouldAdvanceGuardedSource()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
+            document,
+            "completed",
+            9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.CreateCoordination(document.UserId));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
+        SetupCandidates(collection, document);
+        SetupOperation(operationCollection, operation);
+        SetupVisit(visitCollection, CreateVisitDocument(
+            isFenceReady: true,
+            stableFenceToken: 9,
+            currentFenceToken: 9,
+            VisitStatus.Completed));
+        revisionGuard.Setup(value => value.TryBeginMutationAsync(
+                document.UserId,
+                It.Is<IReadOnlyCollection<(string ParkId, int Year)>>(segments =>
+                    segments.Count == 1
+                    && segments.First().ParkId == "park-1"
+                    && segments.First().Year == 2026),
+                CancellationToken.None))
+            .ReturnsAsync(leases);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        revisionGuard.Setup(value => value.CompleteMutationAsync(
+                leases,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                visitCollection.Object,
+                revisionGuard: revisionGuard.Object);
+
+        int count = await reconciler.ReconcileBatchAsync(50, CancellationToken.None);
+
+        Assert.Equal(1, count);
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        revisionGuard.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileBatchAsync_WhenWriteOutcomeIsAmbiguous_ShouldAdvanceGuardedSource()
+    {
+        UserRideOccurrenceDocument document = CreateProvisionalDocument(9);
+        UserRideOccurrenceCreationOperationDocument operation = CreateOperation(
+            document,
+            "completed",
+            9);
+        Mock<IMongoCollection<UserRideOccurrenceDocument>> collection =
+            new Mock<IMongoCollection<UserRideOccurrenceDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>> operationCollection =
+            new Mock<IMongoCollection<UserRideOccurrenceCreationOperationDocument>>(
+                MockBehavior.Strict);
+        Mock<IMongoCollection<UserVisitDocument>> visitCollection =
+            new Mock<IMongoCollection<UserVisitDocument>>(MockBehavior.Strict);
+        Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
+            new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
+        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
+            PassportProfileShareSourceScope.CreateCoordination(document.UserId));
+        IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
+        SetupCandidates(collection, document);
+        SetupOperation(operationCollection, operation);
+        SetupVisit(visitCollection, CreateVisitDocument(
+            isFenceReady: true,
+            stableFenceToken: 9,
+            currentFenceToken: 9,
+            VisitStatus.Completed));
+        revisionGuard.Setup(value => value.TryBeginMutationAsync(
+                document.UserId,
+                It.IsAny<IReadOnlyCollection<(string ParkId, int Year)>>(),
+                CancellationToken.None))
+            .ReturnsAsync(leases);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateDefinition<UserRideOccurrenceDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TimeoutException());
+        revisionGuard.Setup(value => value.CompleteMutationAsync(
+                leases,
+                true,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UserRideOccurrenceProvisionalCreationReconciler reconciler =
+            new UserRideOccurrenceProvisionalCreationReconciler(
+                collection.Object,
+                operationCollection.Object,
+                visitCollection.Object,
+                revisionGuard: revisionGuard.Object);
+
+        await Assert.ThrowsAsync<TimeoutException>(() => reconciler.ReconcileBatchAsync(
+            50,
+            CancellationToken.None));
+
+        collection.VerifyAll();
+        operationCollection.VerifyAll();
+        revisionGuard.VerifyAll();
     }
 
     [Fact]
@@ -302,15 +438,19 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
     private static UserVisitDocument CreateVisitDocument(
         bool isFenceReady,
         long? stableFenceToken,
-        long currentFenceToken)
+        long currentFenceToken,
+        VisitStatus status = VisitStatus.Draft)
     {
         return new UserVisitDocument
         {
             Id = "visit-1",
             UserId = "user-1",
+            ParkId = "park-1",
+            Date = new VisitDateDocument { Year = 2026 },
             ContentMutationFenceReady = isFenceReady,
             ContentMutationFenceStableToken = stableFenceToken,
             ContentMutationFenceToken = currentFenceToken,
+            Status = status,
         };
     }
 

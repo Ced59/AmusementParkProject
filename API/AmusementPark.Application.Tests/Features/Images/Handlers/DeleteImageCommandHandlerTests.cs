@@ -60,11 +60,13 @@ public sealed class DeleteImageCommandHandlerTests
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Image>());
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(avatar)
+            .ReturnsAsync((Image?)null)
             .ReturnsAsync((Image?)null);
 
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
@@ -82,7 +84,7 @@ public sealed class DeleteImageCommandHandlerTests
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .Callback(() => leaseStarted = true)

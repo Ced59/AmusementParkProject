@@ -640,6 +640,7 @@ public sealed class RatingRepository : IRatingRepository
             await this.GetBoundedVisibleUserRatingDocumentsAsync(
                 userId,
                 effectiveMaxItems,
+                null,
                 cancellationToken);
         return await this.BuildUserRatingStatsAsync(documents, true, cancellationToken);
     }
@@ -1294,6 +1295,37 @@ public sealed class RatingRepository : IRatingRepository
             await this.GetBoundedVisibleUserRatingDocumentsAsync(
                 userId,
                 effectiveMaxItems,
+                null,
+                cancellationToken);
+
+        return await this.EnrichUserRatingsAsync(
+            visibleDocuments,
+            hideTechnicalFallbacks: true,
+            cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<UserRatingListItemResult>> GetVisibleUserRankingSourcesForParksAsync(
+        string userId,
+        IReadOnlyCollection<string> parkIds,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
+        {
+            return Array.Empty<UserRatingListItemResult>();
+        }
+
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        IReadOnlyCollection<UserRatingDocument> visibleDocuments =
+            await this.GetBoundedVisibleUserRatingDocumentsAsync(
+                userId,
+                effectiveMaxItems,
+                normalizedParkIds,
                 cancellationToken);
 
         return await this.EnrichUserRatingsAsync(
@@ -1305,13 +1337,15 @@ public sealed class RatingRepository : IRatingRepository
     private async Task<IReadOnlyCollection<UserRatingDocument>> GetBoundedVisibleUserRatingDocumentsAsync(
         string userId,
         int limit,
+        IReadOnlyCollection<string>? parkIds,
         CancellationToken cancellationToken)
     {
         BsonDocument[] pipeline = BuildVisibleUserRatingPipeline(
             userId,
             this.parkItemsCollection.CollectionNamespace.CollectionName,
             this.parksCollection.CollectionNamespace.CollectionName,
-            limit);
+            limit,
+            parkIds);
         List<BsonDocument> documents = await this.userRatingsCollection
             .Aggregate<BsonDocument>(
                 pipeline,
@@ -1327,15 +1361,22 @@ public sealed class RatingRepository : IRatingRepository
         string userId,
         string parkItemsCollectionName,
         string parksCollectionName,
-        int limit)
+        int limit,
+        IReadOnlyCollection<string>? parkIds = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(userId);
         ArgumentException.ThrowIfNullOrWhiteSpace(parkItemsCollectionName);
         ArgumentException.ThrowIfNullOrWhiteSpace(parksCollectionName);
         ArgumentOutOfRangeException.ThrowIfLessThan(limit, 1);
 
+        string[] normalizedParkIds = parkIds?
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray()
+            ?? Array.Empty<string>();
         BsonDocument parkItemEligibility = BuildCurrentParkItemRankingEligibilityMatch();
-        return new[]
+        List<BsonDocument> pipeline = new List<BsonDocument>
         {
             new BsonDocument("$match", new BsonDocument
             {
@@ -1405,6 +1446,20 @@ public sealed class RatingRepository : IRatingRepository
                 { "currentParkId", 0 },
             }),
         };
+        if (parkIds is not null)
+        {
+            int parkScopeInsertionIndex = pipeline.FindIndex(
+                static stage => stage.Contains("$addFields")) + 1;
+            pipeline.Insert(
+                parkScopeInsertionIndex,
+                new BsonDocument(
+                    "$match",
+                    new BsonDocument(
+                        "currentParkId",
+                        new BsonDocument("$in", new BsonArray(normalizedParkIds)))));
+        }
+
+        return pipeline.ToArray();
     }
 
     internal static BsonDocument[] BuildVisibleUserRatingCountPipeline(

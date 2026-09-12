@@ -71,11 +71,12 @@ public sealed class VisitRecapSharePublicationSource
     }
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
-        string sourceScopeKey,
+        SharePublicationSourceVersionRequest request,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(request);
         if (!VisitRecapShareSourceScope.TryParse(
-                sourceScopeKey,
+                request.SourceScopeKey,
                 out string ownerUserId,
                 out string visitId))
         {

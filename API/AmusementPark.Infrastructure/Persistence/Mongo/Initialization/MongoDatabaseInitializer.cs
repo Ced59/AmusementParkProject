@@ -121,6 +121,16 @@ public sealed partial class MongoDatabaseInitializer
             this.settings.ShareSourceRevisionsCollectionName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.PassportProfileShareScopeRegistrationsCollectionName,
+            cancellationToken);
+        IMongoCollection<PassportProfileShareScopeRegistrationDocument>
+            passportProfileShareScopeRegistrationsCollection =
+                this.database.GetCollection<PassportProfileShareScopeRegistrationDocument>(
+                    this.settings.PassportProfileShareScopeRegistrationsCollectionName);
+        await passportProfileShareScopeRegistrationsCollection.Indexes.CreateManyAsync(
+            PassportProfileShareScopeRegistrationMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.SharePublicationMigrationsCollectionName,
             cancellationToken);
         await this.personalRankingShareMigration.ExecuteAsync(cancellationToken);

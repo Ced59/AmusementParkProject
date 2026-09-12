@@ -382,6 +382,33 @@ public sealed class RatingRepositoryTests
     }
 
     [Fact]
+    public void BuildVisibleUserRatingPipeline_ShouldFilterPassportParksBeforeBoundedLimit()
+    {
+        BsonDocument[] pipeline = RatingRepository.BuildVisibleUserRatingPipeline(
+            "owner-1",
+            "parkItems",
+            "parks",
+            100,
+            new[] { " park-2 ", "park-1", "park-2" });
+
+        int parkScopeIndex = pipeline
+            .Select(static (stage, index) => (stage, index))
+            .Single(value => value.stage.Contains("$match")
+                && value.stage["$match"].AsBsonDocument.Contains("currentParkId"))
+            .index;
+        int limitIndex = Array.FindIndex(pipeline, static stage => stage.Contains("$limit"));
+        BsonArray allowedParkIds = pipeline[parkScopeIndex]["$match"]
+            .AsBsonDocument["currentParkId"]
+            .AsBsonDocument["$in"]
+            .AsBsonArray;
+
+        Assert.Equal(
+            new[] { "park-2", "park-1" },
+            allowedParkIds.Select(static value => value.AsString));
+        Assert.True(parkScopeIndex < limitIndex);
+    }
+
+    [Fact]
     public void BuildVisibleUserRatingCountPipeline_ShouldBoundTheProbeAfterVisibilityFiltering()
     {
         BsonDocument[] pipeline = RatingRepository.BuildVisibleUserRatingCountPipeline(

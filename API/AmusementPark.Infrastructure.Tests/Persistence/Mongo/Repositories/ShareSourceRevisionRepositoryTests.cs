@@ -16,6 +16,42 @@ public sealed class ShareSourceRevisionRepositoryTests
         new DateTime(2026, 9, 5, 22, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public async Task TryBeginMutationAsync_WhenScopeDoesNotExist_ShouldNotCreateIt()
+    {
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateOptions>(),
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(0, 0, null));
+        FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>?
+            capturedOptions = null;
+        collection.Setup(value => value.FindOneAndUpdateAsync(
+                It.IsAny<FilterDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
+                It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<ShareSourceRevisionDocument> _,
+                UpdateDefinition<ShareSourceRevisionDocument> _,
+                FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument> options,
+                CancellationToken _) => capturedOptions = options)
+            .ReturnsAsync((ShareSourceRevisionDocument)null!);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        ShareSourceMutationLease? result = await repository.TryBeginMutationAsync(
+            "passport-profile:owner-1",
+            CancellationToken.None);
+
+        Assert.Null(result);
+        Assert.NotNull(capturedOptions);
+        Assert.False(capturedOptions.IsUpsert);
+        collection.VerifyAll();
+    }
+
+    [Fact]
     public async Task BeginMutationAsync_ShouldPersistAnExpiringLeaseWithoutAdvancingRevision()
     {
         Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
@@ -563,6 +599,45 @@ public sealed class ShareSourceRevisionRepositoryTests
             It.IsAny<UpdateDefinition<ShareSourceRevisionDocument>>(),
             It.IsAny<FindOneAndUpdateOptions<ShareSourceRevisionDocument, ShareSourceRevisionDocument>>(),
             CancellationToken.None), Times.Exactly(2));
+    }
+
+    [Fact]
+    public async Task EnsureCreatedAsync_ShouldUseOneUnorderedBulkUpsert()
+    {
+        IReadOnlyCollection<WriteModel<ShareSourceRevisionDocument>>? capturedWrites = null;
+        BulkWriteOptions? capturedOptions = null;
+        Mock<IMongoCollection<ShareSourceRevisionDocument>> collection =
+            new Mock<IMongoCollection<ShareSourceRevisionDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.BulkWriteAsync(
+                It.IsAny<IEnumerable<WriteModel<ShareSourceRevisionDocument>>>(),
+                It.IsAny<BulkWriteOptions>(),
+                CancellationToken.None))
+            .Callback((
+                IEnumerable<WriteModel<ShareSourceRevisionDocument>> writes,
+                BulkWriteOptions options,
+                CancellationToken _) =>
+            {
+                capturedWrites = writes.ToArray();
+                capturedOptions = options;
+            })
+            .ReturnsAsync((BulkWriteResult<ShareSourceRevisionDocument>)null!);
+        using ShareSourceRevisionRepository repository = CreateRepository(collection.Object);
+
+        await repository.EnsureCreatedAsync(
+            new[] { "passport-profile:one", "passport-profile:two", "passport-profile:one" },
+            CancellationToken.None);
+
+        Assert.NotNull(capturedWrites);
+        Assert.Equal(2, capturedWrites.Count);
+        Assert.All(capturedWrites, write =>
+        {
+            UpdateOneModel<ShareSourceRevisionDocument> update =
+                Assert.IsType<UpdateOneModel<ShareSourceRevisionDocument>>(write);
+            Assert.True(update.IsUpsert);
+        });
+        Assert.NotNull(capturedOptions);
+        Assert.False(capturedOptions.IsOrdered);
+        collection.VerifyAll();
     }
 
     [Fact]

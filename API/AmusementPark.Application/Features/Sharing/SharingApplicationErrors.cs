@@ -125,6 +125,20 @@ public static class SharingApplicationErrors
             "Cette année ne contient aucune visite terminée à partager.");
     }
 
+    public static ApplicationError InvalidPassportProfileSelection()
+    {
+        return ApplicationError.Validation(
+            "share-publication.passport-profile-selection-invalid",
+            "La sélection du passeport public est invalide.");
+    }
+
+    public static ApplicationError EmptyPassportProfile()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.passport-profile-empty",
+            "Ce passeport ne contient aucune donnée publique à partager.");
+    }
+
     public static ApplicationError SnapshotUnavailable()
     {
         return ApplicationError.NotFound(

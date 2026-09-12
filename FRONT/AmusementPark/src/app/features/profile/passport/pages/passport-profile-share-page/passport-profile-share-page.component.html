@@ -1,0 +1,144 @@
+<main class="passport-share">
+  <header class="passport-share__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <button appUiButton="ghost" type="button" (click)="backToPassport()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'passportProfileShare.actions.back' | translate }}</span>
+    </button>
+    <app-ui-kicker tone="gold" iconClass="pi pi-globe">{{ 'passportProfileShare.kicker' | translate }}</app-ui-kicker>
+    <h1>{{ 'passportProfileShare.title' | translate }}</h1>
+    <p>{{ 'passportProfileShare.description' | translate }}</p>
+    <div class="passport-share__promise" role="note">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <span>{{ 'passportProfileShare.privacyPromise' | translate }}</span>
+    </div>
+  </header>
+
+  @if (facade.loading()) {
+    <app-page-state state="loading" [loadingTitleKey]="'passportProfileShare.loading'" [loadingMessageKey]="'passportProfileShare.loadingDescription'"></app-page-state>
+  } @else if (facade.error() && !facade.selection()) {
+    <app-page-state state="error" [errorTitleKey]="'passportProfileShare.error'" [errorMessageKey]="'passportProfileShare.errorDescription'"></app-page-state>
+  } @else if (facade.selection(); as selection) {
+    @if (facade.settings()?.isPublic) {
+      <section class="passport-share__live" appUiSurface="panel" appUiSurfacePadding="regular">
+        <div><span>{{ 'passportProfileShare.live' | translate }}</span><strong>{{ ('passportProfileShare.visibility.' + (facade.settings()?.visibility || 'Unlisted')) | translate }}</strong></div>
+        <button appUiButton="soft" type="button" (click)="openPublicPassport()">{{ 'passportProfileShare.actions.open' | translate }}</button>
+      </section>
+    }
+
+    <section class="passport-share__editor" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="passport-share__section-heading">
+        <span>1</span><div><h2>{{ 'passportProfileShare.steps.scopeTitle' | translate }}</h2><p>{{ 'passportProfileShare.steps.scopeDescription' | translate }}</p></div>
+      </div>
+
+      <fieldset>
+        <legend>{{ 'passportProfileShare.years' | translate }}</legend>
+        <div class="passport-share__choices passport-share__choices--compact">
+          @for (year of selection.years; track year.year) {
+            <label><input type="checkbox" [checked]="hasYear(year.year)" (change)="facade.toggleYear(year.year)"><span><strong>{{ year.year }}</strong><small>{{ 'passportProfileShare.visitCount' | translate:{ count: year.visitCount } }}</small></span></label>
+          }
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ 'passportProfileShare.parks' | translate }}</legend>
+        <div class="passport-share__choices">
+          @for (park of selection.parks; track park.parkId) {
+            <label><input type="checkbox" [checked]="hasPark(park.parkId)" (change)="facade.togglePark(park.parkId)"><span><strong>{{ park.name }}</strong><small>{{ park.countryCode || '—' }} · {{ 'passportProfileShare.visitCount' | translate:{ count: park.visitCount } }}</small></span></label>
+          }
+        </div>
+      </fieldset>
+
+      <div class="passport-share__section-heading">
+        <span>2</span><div><h2>{{ 'passportProfileShare.steps.contentTitle' | translate }}</h2><p>{{ 'passportProfileShare.steps.contentDescription' | translate }}</p></div>
+      </div>
+      <div class="passport-share__choices">
+        @for (field of ['PublicDisplayName', 'Avatar', 'RideCount', 'TemporalRatings', 'GeographicStatistics', 'MissedItems', 'PublicCaption']; track field) {
+          <label><input type="checkbox" [checked]="hasField($any(field))" (change)="facade.toggleField($any(field))"><span><strong>{{ ('passportProfileShare.fields.' + field) | translate }}</strong></span></label>
+        }
+      </div>
+
+      @if (hasField('GlobalRatings') || selection.ratings.length > 0) {
+        <fieldset>
+          <legend>{{ 'passportProfileShare.ranking' | translate }}</legend>
+          <label class="passport-share__master-choice"><input type="checkbox" [checked]="hasField('GlobalRatings')" (change)="facade.toggleField('GlobalRatings')"><span>{{ 'passportProfileShare.includeRanking' | translate }}</span></label>
+          @if (hasField('GlobalRatings')) {
+            <div class="passport-share__choices">
+              @for (rating of selection.ratings; track rating.selectionKey) {
+                <label><input type="checkbox" [checked]="hasRating(rating.selectionKey)" [disabled]="!facade.canSelectRating(rating.selectionKey)" (change)="facade.toggleRating(rating.selectionKey)"><span><strong>{{ rating.name }}</strong><small>{{ rating.parkName || ('passportProfileShare.noPark' | translate) }} · {{ formatRating(rating.rating) }}/5</small></span></label>
+              }
+            </div>
+          }
+        </fieldset>
+      }
+
+      @if (hasField('PublicCaption')) {
+        <label class="passport-share__caption"><span>{{ 'passportProfileShare.caption' | translate }}</span><textarea maxlength="500" rows="4" [value]="facade.publicCaption()" (input)="facade.setPublicCaption($any($event.target).value)"></textarea><small>{{ facade.publicCaption().length }}/500</small></label>
+      }
+
+      <div class="passport-share__section-heading">
+        <span>3</span><div><h2>{{ 'passportProfileShare.steps.accessTitle' | translate }}</h2><p>{{ 'passportProfileShare.steps.accessDescription' | translate }}</p></div>
+      </div>
+      <div class="passport-share__visibility">
+        <label><input type="radio" name="visibility" value="Unlisted" [checked]="facade.visibility() === 'Unlisted'" (change)="setVisibility('Unlisted')"><span><strong>{{ 'passportProfileShare.visibility.Unlisted' | translate }}</strong><small>{{ 'passportProfileShare.visibility.unlistedDescription' | translate }}</small></span></label>
+        <label><input type="radio" name="visibility" value="Public" [checked]="facade.visibility() === 'Public'" (change)="setVisibility('Public')"><span><strong>{{ 'passportProfileShare.visibility.Public' | translate }}</strong><small>{{ 'passportProfileShare.visibility.publicDescription' | translate }}</small></span></label>
+      </div>
+      <label class="passport-share__master-choice"><input type="checkbox" [checked]="facade.allowsComparisons()" (change)="facade.setAllowsComparisons($any($event.target).checked)"><span>{{ 'passportProfileShare.allowComparisons' | translate }}</span></label>
+
+      <button appUiButton="primary" type="button" [disabled]="!facade.canPreview()" (click)="facade.previewPublication()">
+        @if (facade.previewing()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+        <span>{{ 'passportProfileShare.actions.preview' | translate }}</span>
+      </button>
+      @if (facade.error()) { <p class="passport-share__error" role="alert"><i class="pi pi-exclamation-circle" aria-hidden="true"></i>{{ 'passportProfileShare.errorDescription' | translate }}</p> }
+    </section>
+
+    @if (preview(); as passport) {
+      <section class="passport-share__preview" appUiSurface="hero" appUiSurfacePadding="spacious" aria-labelledby="passport-share-preview-title">
+        <app-ui-kicker tone="lime" iconClass="pi pi-eye">{{ 'passportProfileShare.preview.kicker' | translate }}</app-ui-kicker>
+        <div class="passport-share__preview-identity">
+          @if (previewAvatarUrl(); as resolvedAvatarUrl) { <img class="passport-share__preview-avatar" [src]="resolvedAvatarUrl" width="72" height="72" [alt]="passport.displayName || ''"> }
+          <h2 id="passport-share-preview-title">{{ passport.displayName || ('passportProfileShare.preview.anonymous' | translate) }}</h2>
+        </div>
+        @if (passport.publicCaption) { <p class="passport-share__quote">“{{ passport.publicCaption }}”</p> }
+        <div class="passport-share__metrics">
+          @if (passport.parkCount != null) { <article><strong>{{ passport.parkCount }}</strong><span>{{ 'passportProfileShare.preview.parks' | translate }}</span></article> }
+          @if (passport.visitCount != null) { <article><strong>{{ passport.visitCount }}</strong><span>{{ 'passportProfileShare.preview.visits' | translate }}</span></article> }
+          @if (passport.totalRideCount != null) { <article><strong>{{ passport.totalRideCount }}</strong><span>{{ 'passportProfileShare.preview.rides' | translate }}</span></article> }
+          @if (passport.distinctItemCount != null) { <article><strong>{{ passport.distinctItemCount }}</strong><span>{{ 'passportProfileShare.preview.attractions' | translate }}</span></article> }
+        </div>
+        @if (passport.visitRatings || passport.rideRatings) {
+          <div class="passport-share__ratings">
+            @if (passport.visitRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.visitRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+            @if (passport.rideRatings; as ratings) { <article><span>{{ 'passportProfileShare.public.rideRating' | translate }}</span><strong>{{ formatRating(ratings.average) }}/5</strong><small>{{ 'passportProfileShare.public.ratedCount' | translate:{ rated: ratings.ratedCount, total: ratings.eligibleCount } }}</small></article> }
+          </div>
+        }
+        @if (passport.countries.length > 0) {
+          <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.countries' | translate }}</h3><ul>@for (country of passport.countries; track country.countryCode) { <li><strong>{{ countryName(country.countryCode) }}</strong><span>{{ 'passportProfileShare.public.countryDetail' | translate:{ parks: country.parkCount, visits: country.visitCount } }}</span></li> }</ul></section>
+        }
+        @if (passport.years.length > 0) {
+          <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.years' | translate }}</h3><ul>@for (year of passport.years; track year.year) { <li><strong>{{ year.year }}</strong><span>{{ (year.completedRideCount != null ? 'passportProfileShare.public.yearDetail' : 'passportProfileShare.public.yearVisits') | translate:{ parks: year.parkCount, visits: year.visitCount, rides: year.completedRideCount } }}</span></li> }</ul></section>
+        }
+        @if (passport.parks.length > 0) {
+          <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.parks' | translate }}</h3><ul>@for (park of passport.parks; track park.name) { <li><strong>{{ park.name }}</strong><span>{{ (park.completedRideCount != null ? 'passportProfileShare.public.parkDetail' : 'passportProfileShare.public.parkVisits') | translate:{ country: park.countryCode ? countryName(park.countryCode) : '—', first: park.firstVisitYear, last: park.lastVisitYear, visits: park.visitCount, rides: park.completedRideCount } }}</span>@if (park.visitRatings?.average != null) { <span>{{ 'passportProfileShare.public.visitRating' | translate }} : {{ formatRating(park.visitRatings?.average) }}/5</span> }</li> }</ul></section>
+        }
+        @if (passport.personalRanking.length > 0) {
+          <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.ranking' | translate }}</h3><ol>@for (rating of passport.personalRanking; track rating.name + rating.targetType) { <li><strong>{{ rating.name }}</strong><span>{{ rating.parkName || ('passportProfileShare.noPark' | translate) }} · {{ formatRating(rating.rating) }}/5</span></li> }</ol></section>
+        }
+        @if (passport.missedItems.length > 0) {
+          <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.missed' | translate }}</h3><ul>@for (item of passport.missedItems; track item.name + item.status) { <li><strong>{{ item.name }}</strong><span>{{ ('passportProfileShare.public.status.' + item.status) | translate }}</span></li> }</ul></section>
+        }
+        @if (passport.allowsComparisons) {
+          <p class="passport-share__comparison"><i class="pi pi-users" aria-hidden="true"></i>{{ 'passportProfileShare.public.comparisonReady' | translate }}</p>
+        }
+        @if (passport.hasIncompleteCatalog) {
+          <p class="passport-share__notice"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'passportProfileShare.public.incompleteCatalog' | translate }}</p>
+        }
+        <p class="passport-share__proof"><i class="pi pi-verified" aria-hidden="true"></i>{{ 'passportProfileShare.preview.proof' | translate:{ version: passport.calculationVersion } }}</p>
+        <button appUiButton="primary" type="button" [disabled]="!facade.canPublish()" (click)="facade.publish()">{{ 'passportProfileShare.actions.publish' | translate }}</button>
+      </section>
+    }
+
+    @if (facade.settings()?.isPublic) {
+      <button class="passport-share__revoke" appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.revoke()">{{ 'passportProfileShare.actions.revoke' | translate }}</button>
+    }
+  }
+</main>

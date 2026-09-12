@@ -1,5 +1,6 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -58,7 +59,11 @@ public sealed class GetSharePublicationSettingsQueryHandler
         if (publication?.IsResolvable == true)
         {
             ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
-                scopeResult.Value,
+                new SharePublicationSourceVersionRequest(
+                    scopeResult.Value,
+                    publication.ContentPolicy,
+                    publication.Id,
+                    publication.PublicationVersion),
                 cancellationToken);
             isSourceCurrent = currentVersion.IsSuccess
                 && currentVersion.Value == publication.SourceVersion;

@@ -100,17 +100,21 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                 It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(updated);
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-old",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing)
+            .ReturnsAsync((Image?)null)
             .ReturnsAsync((Image?)null);
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-new",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null)
+            .ReturnsAsync(updated)
             .ReturnsAsync(updated);
 
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
@@ -131,12 +135,12 @@ public sealed class UpdateImageMetadataCommandHandlerTests
 
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-old",
                 It.IsAny<CancellationToken>()))
             .Callback(() => previousLeaseStarted = true)
             .ReturnsAsync(previousLease);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "owner-new",
                 It.IsAny<CancellationToken>()))
             .Callback(() => nextLeaseStarted = true)
@@ -471,17 +475,19 @@ public sealed class UpdateImageMetadataCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(updated);
         imageRepository
-            .Setup(repository => repository.GetCurrentByOwnerAuthoritativeAsync(
+            .SetupSequence(repository => repository.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing)
+            .ReturnsAsync(updated)
             .ReturnsAsync(updated);
         userRepository
             .Setup(repository => repository.GetByIdAsync("owner-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
         revisionGuard
-            .Setup(guard => guard.BeginMutationAsync(
+            .Setup(guard => guard.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(mutationLease);

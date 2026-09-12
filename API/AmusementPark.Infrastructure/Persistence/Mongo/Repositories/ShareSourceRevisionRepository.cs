@@ -67,6 +67,52 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         this.heartbeatInterval = heartbeatInterval;
     }
 
+    public async Task<ShareSourceMutationLease?> TryBeginMutationAsync(
+        string scopeKey,
+        CancellationToken cancellationToken)
+    {
+        string normalizedScopeKey = NormalizeScopeKey(scopeKey);
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        await this.RecoverExpiredLeasesAsync(normalizedScopeKey, nowUtc, cancellationToken);
+
+        ShareSourceMutationLease mutationLease = ShareSourceMutationLease.Create(
+            normalizedScopeKey);
+        ShareSourceMutationLeaseDocument leaseDocument = new ShareSourceMutationLeaseDocument
+        {
+            Token = mutationLease.Token,
+            ExpiresAtUtc = nowUtc.Add(MutationLeaseDuration),
+        };
+        UpdateDefinition<ShareSourceRevisionDocument> update =
+            Builders<ShareSourceRevisionDocument>.Update
+                .Set(document => document.UpdatedAt, nowUtc)
+                .Push(document => document.MutationLeases, leaseDocument);
+        ShareSourceRevisionDocument? document = await this.collection.FindOneAndUpdateAsync(
+            ShareSourceRevisionMongoDefinitions.BuildScopeFilter(normalizedScopeKey),
+            update,
+            new FindOneAndUpdateOptions<ShareSourceRevisionDocument>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (document is null)
+        {
+            return null;
+        }
+
+        CancellationTokenSource leaseCancellation = new CancellationTokenSource();
+        leaseCancellation.CancelAfter(WriterLeaseCancellationDelay);
+        mutationLease = new ShareSourceMutationLease(
+            mutationLease.ScopeKey,
+            mutationLease.Token,
+            leaseCancellation.Token);
+        this.StartHeartbeat(
+            mutationLease,
+            leaseCancellation,
+            leaseDocument.ExpiresAtUtc);
+        return mutationLease;
+    }
+
     public async Task<ShareSourceMutationLease> BeginMutationAsync(
         string scopeKey,
         CancellationToken cancellationToken)
@@ -327,6 +373,59 @@ public sealed class ShareSourceRevisionRepository : IShareSourceRevisionReposito
         }
 
         return ToResult(document);
+    }
+
+    public async Task EnsureCreatedAsync(
+        IReadOnlyCollection<string> scopeKeys,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scopeKeys);
+        string[] normalizedScopeKeys = scopeKeys
+            .Select(NormalizeScopeKey)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedScopeKeys.Length == 0)
+        {
+            return;
+        }
+
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        WriteModel<ShareSourceRevisionDocument>[] writes = normalizedScopeKeys
+            .Select(scopeKey =>
+            {
+                UpdateDefinition<ShareSourceRevisionDocument> update =
+                    Builders<ShareSourceRevisionDocument>.Update
+                        .SetOnInsert(document => document.ScopeKey, scopeKey)
+                        .SetOnInsert(document => document.Revision, 0)
+                        .SetOnInsert(
+                            document => document.MutationLeases,
+                            new List<ShareSourceMutationLeaseDocument>())
+                        .SetOnInsert(document => document.CreatedAt, nowUtc)
+                        .SetOnInsert(document => document.UpdatedAt, nowUtc);
+                return (WriteModel<ShareSourceRevisionDocument>)
+                    new UpdateOneModel<ShareSourceRevisionDocument>(
+                        ShareSourceRevisionMongoDefinitions.BuildScopeFilter(scopeKey),
+                        update)
+                    {
+                        IsUpsert = true,
+                    };
+            })
+            .ToArray();
+
+        try
+        {
+            await this.collection.BulkWriteAsync(
+                writes,
+                new BulkWriteOptions { IsOrdered = false },
+                cancellationToken);
+        }
+        catch (MongoBulkWriteException<ShareSourceRevisionDocument> exception)
+            when (exception.WriteErrors.Count > 0
+                && exception.WriteConcernError is null
+                && exception.WriteErrors.All(static error => error.Code == 11000))
+        {
+            // A concurrent initializer created the same scopes. The desired state is reached.
+        }
     }
 
     public async Task<ShareSourceRevision> ReconcileFingerprintAsync(

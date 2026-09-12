@@ -13,4 +13,6 @@ public sealed class SharePublicationPreviewRequestDto
     public VisitRecapShareInputDto? VisitRecap { get; set; }
 
     public YearRecapShareInputDto? YearRecap { get; set; }
+
+    public PassportProfileShareInputDto? PassportProfile { get; set; }
 }

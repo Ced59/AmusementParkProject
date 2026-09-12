@@ -177,7 +177,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
     }
 
     [Fact]
-    public async Task BuildAsync_WhenPublicIdentityChangesDuringRead_ShouldDiscardThePreview()
+    public async Task BuildAsync_WhenUnusedStoredAvatarUrlChangesDuringRead_ShouldKeepThePreview()
     {
         Mock<IShareSourceRevisionRepository> revisions = CreateStableRevisions(2);
         User before = CreateUser("/avatars/old.webp");
@@ -205,9 +205,7 @@ public sealed class PersonalRankingSharePreviewBuilderTests
                 new[] { ShareContentField.Avatar }),
             CancellationToken.None);
 
-        Assert.False(result.IsSuccess);
-        Assert.Contains(result.Errors, static error =>
-            error.Code == "share-publication.source-changed");
+        Assert.True(result.IsSuccess);
         ratings.VerifyNoOtherCalls();
         revisions.VerifyAll();
         users.VerifyAll();
@@ -310,6 +308,8 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         return new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
         {
             ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, NowUtc),
+            [PublicIdentityShareSourceScope.CreateDisplayName("owner-1")] =
+                new ShareSourceRevision(0, 0, NowUtc),
             [PersonalRankingShareSourceScope.PublicCatalog] =
                 new ShareSourceRevision(catalogRevision, 0, NowUtc),
         };

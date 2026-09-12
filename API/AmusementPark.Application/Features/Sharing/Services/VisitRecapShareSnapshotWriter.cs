@@ -31,6 +31,11 @@ public sealed class VisitRecapShareSnapshotWriter : ISharePublicationSnapshotWri
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
+        if (string.IsNullOrWhiteSpace(request.SourceId))
+        {
+            return ApplicationResult<bool>.Failure(SharingApplicationErrors.InvalidSource());
+        }
+
         ApplicationResult<SharePublicationPreviewResult> previewResult =
             await this.previewBuilder.BuildAsync(
                 request.OwnerUserId,

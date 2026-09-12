@@ -5,6 +5,12 @@ import {authGuard} from "@core/guards/auth.guard";
 
 export const PROFILE_ROUTES: Routes = [
   {
+    path: 'passport/share',
+    loadComponent: () => import('./passport/pages/passport-profile-share-page/passport-profile-share-page.component')
+      .then((module) => module.PassportProfileSharePageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'passport/statistics',
     loadComponent: () => import('./passport/pages/passport-global-statistics-page/passport-global-statistics-page.component')
       .then((module) => module.PassportGlobalStatisticsPageComponent),

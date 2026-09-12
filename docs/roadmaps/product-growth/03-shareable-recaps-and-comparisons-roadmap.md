@@ -77,10 +77,14 @@ de lire les notes : un aperçu sans `GlobalRatings` ne charge aucune note et le 
 public ne contient ni identifiant utilisateur, ni identifiant de note, de parc ou
 d'attraction, ni commentaire privé, ni email.
 
-Deux révisions durables protègent l'aperçu : l'une suit les notes et toute l'identité
-publique du propriétaire — pseudonyme, avatar, rôles et état du compte —, l'autre le
-catalogue public qui fournit les noms et la visibilité des cibles. L'identité publique
-est aussi relue après la construction pour fermer la fenêtre des mutations concurrentes.
+Trois révisions durables protègent l'aperçu par défaut : l'une suit les notes, une
+autre le nom public du propriétaire lorsqu'il est exposé, et la dernière le catalogue
+public qui fournit les noms et la visibilité des cibles. Le classement personnel ne
+publie pas l'avatar. Cette séparation remplace directement l'ancien scope combiné :
+sa valeur historique reste la base des notes et le nouveau scope du nom public démarre
+à zéro, sans double système ni invalidation des liens existants. L'identité et
+l'éligibilité du compte sont aussi relues après la construction pour fermer la fenêtre
+des mutations concurrentes.
 Chaque mutation suivie réserve d'abord un lease ; l'aperçu n'est accepté que si les
 révisions et l'identité restent stables. Un heartbeat distingue les écritures longues
 des écritures abandonnées. La perte confirmée du lease annule l'écrivain et son délai
@@ -286,6 +290,42 @@ administratif. Les composants bornent leurs grilles, textes et actions, passent 
 une colonne sous 760, 620 et 520 px et réduisent leurs marges à 360 px afin de rester
 utilisables dès 320 px. `SHARE-08` peut maintenant rendre le passeport public avec
 une sélection plus granulaire sur la même autorité de consentement.
+
+### État de `SHARE-08` au 12 septembre 2026
+
+Le passeport public sélectionnable est implémenté en version 5.2.15 sur l'autorité
+unique `SharePublication`, sans adaptateur ni second système de partage. Depuis son
+passeport, le membre choisit les années, les parcs, les notes de son classement,
+son nom public, son avatar, ses compteurs, ses moyennes, ses pays, ses occasions
+manquées et une légende publique. Il décide également si le lien est public ou non
+répertorié et s'il accepte de futures invitations de comparaison.
+
+L'aperçu serveur est la seule source autorisée pour publier. Il ne retient que les
+visites terminées et les passages actifs rattachés à des parcs et lieux encore
+publics. Les commentaires privés, dates plus précises que l'année, identifiants de
+visite, de parc, d'attraction et d'utilisateur sont absents du contrat public. La
+sélection technique reste privée dans le snapshot MongoDB afin de restaurer les
+choix du propriétaire. Une empreinte lie données, visibilité, consentement de
+comparaison, légende et sélection : toute modification impose un nouvel aperçu.
+
+La page anonyme résout uniquement le jeton opaque, revalide la publication avant et
+après lecture, refuse les liens révoqués et applique `noindex,nofollow,noarchive`
+ainsi que `Referrer-Policy: no-referrer`. Son récit rassemble les compteurs choisis,
+les pays, la chronologie annuelle, les parcs, les moyennes et le classement public,
+sans écran administratif. L'atelier privé et la page publique bornent toutes leurs
+grilles et leurs textes, se replient en une colonne et restent contenus dès 320 px.
+Les écritures de visite, de passage et la suppression complète d'une visite sont
+entourées par la révision agrégée du passeport lorsqu'un partage existe. Une
+lecture anonyme ne recharge jamais l'historique privé : elle consulte la révision du
+passeport, seulement les révisions des champs d'identité choisis, la révision des
+notes uniquement lorsqu'elles sont publiées et un scope de catalogue pour chaque parc
+sélectionné. Une modification d'avatar, de nom, de note ou d'un autre parc ne suspend
+donc pas un lien qui n'expose pas cette donnée. Le lien
+est refusé pendant une écriture pertinente ou après une modification,
+jusqu'à un nouvel aperçu explicitement approuvé. Les passeports qui n'ont jamais
+préparé de partage ne créent aucune révision supplémentaire. `SHARE-09` peut
+maintenant produire des images sociales à partir de ce snapshot,
+sans relire le passeport privé.
 
 ## 1. Vision produit
 

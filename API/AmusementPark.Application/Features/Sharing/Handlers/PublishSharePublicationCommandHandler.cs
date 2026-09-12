@@ -90,9 +90,10 @@ public sealed class PublishSharePublicationCommandHandler
         string contentFingerprint = string.Empty;
         VisitRecapShareInput? normalizedVisitRecap = null;
         YearRecapShareInput? normalizedYearRecap = null;
+        PassportProfileShareInput? normalizedPassportProfile = null;
         if (command.PublicationType == SharePublicationType.VisitRecap)
         {
-            if (command.YearRecap is not null)
+            if (command.YearRecap is not null || command.PassportProfile is not null)
             {
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(
                     SharingApplicationErrors.InvalidSource());
@@ -111,7 +112,7 @@ public sealed class PublishSharePublicationCommandHandler
         }
         else if (command.PublicationType == SharePublicationType.YearRecap)
         {
-            if (command.VisitRecap is not null)
+            if (command.VisitRecap is not null || command.PassportProfile is not null)
             {
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(
                     SharingApplicationErrors.InvalidSource());
@@ -128,7 +129,30 @@ public sealed class PublishSharePublicationCommandHandler
             contentFingerprint = YearRecapShareInputNormalizer.CreateFingerprint(
                 normalizedYearRecap);
         }
-        else if (command.VisitRecap is not null || command.YearRecap is not null)
+        else if (command.PublicationType == SharePublicationType.PassportProfile)
+        {
+            if (command.VisitRecap is not null || command.YearRecap is not null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                    SharingApplicationErrors.InvalidSource());
+            }
+
+            ApplicationResult<PassportProfileShareInput> inputResult =
+                PassportProfileShareInputNormalizer.Normalize(
+                    command.PassportProfile,
+                    contentPolicy);
+            if (!inputResult.IsSuccess || inputResult.Value is null)
+            {
+                return ApplicationResult<SharePublicationSettingsResult>.Failure(inputResult.Errors);
+            }
+
+            normalizedPassportProfile = inputResult.Value;
+            contentFingerprint = PassportProfileShareInputNormalizer.CreateFingerprint(
+                normalizedPassportProfile);
+        }
+        else if (command.VisitRecap is not null
+            || command.YearRecap is not null
+            || command.PassportProfile is not null)
         {
             return ApplicationResult<SharePublicationSettingsResult>.Failure(
                 SharingApplicationErrors.InvalidSource());
@@ -149,7 +173,12 @@ public sealed class PublishSharePublicationCommandHandler
         }
 
         ApplicationResult<long> versionResult = await source.GetCurrentSourceVersionAsync(
-            scopeResult.Value,
+            new SharePublicationSourceVersionRequest(
+                scopeResult.Value,
+                contentPolicy,
+                currentPublication?.Id,
+                currentPublication?.PublicationVersion,
+                normalizedPassportProfile),
             cancellationToken);
         if (!versionResult.IsSuccess)
         {
@@ -174,6 +203,7 @@ public sealed class PublishSharePublicationCommandHandler
             contentFingerprint,
             normalizedVisitRecap,
             command.SourceId,
-            normalizedYearRecap);
+            normalizedYearRecap,
+            normalizedPassportProfile);
     }
 }

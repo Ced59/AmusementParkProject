@@ -32,23 +32,45 @@ public sealed class PersonalRankingShareSourceRevisionGuardTests
     }
 
     [Fact]
-    public async Task BeginIdentityMutationAsync_WhenAvatarChanges_ShouldReserveOwnerLease()
+    public async Task BeginIdentityMutationAsync_WhenDisplayNameChanges_ShouldReserveDisplayNameLease()
     {
         ShareSourceMutationLease expectedLease = new ShareSourceMutationLease(
-            "personal-ranking:owner-1",
+            PublicIdentityShareSourceScope.CreateDisplayName("owner-1"),
             13.ToString("x32"));
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.BeginMutationAsync(
-                "personal-ranking:owner-1",
+                PublicIdentityShareSourceScope.CreateDisplayName("owner-1"),
                 CancellationToken.None))
             .ReturnsAsync(expectedLease);
         PersonalRankingShareSourceRevisionGuard guard = CreateGuard(revisions.Object);
 
         ShareSourceMutationLease? mutationLease = await guard.BeginIdentityMutationAsync(
             "owner-1",
-            new PersonalRankingShareIdentityState("Camille", "/avatars/old.webp", true, false),
-            new PersonalRankingShareIdentityState("Camille", "/avatars/new.webp", true, false),
+            new PersonalRankingShareIdentityState("Camille", "/avatars/current.webp", true, false),
+            new PersonalRankingShareIdentityState("Alex", "/avatars/current.webp", true, false),
+            CancellationToken.None);
+
+        Assert.Same(expectedLease, mutationLease);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task BeginAvatarMutationAsync_ShouldReserveAvatarLease()
+    {
+        ShareSourceMutationLease expectedLease = new ShareSourceMutationLease(
+            PublicIdentityShareSourceScope.CreateAvatar("owner-1"),
+            14.ToString("x32"));
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.BeginMutationAsync(
+                PublicIdentityShareSourceScope.CreateAvatar("owner-1"),
+                CancellationToken.None))
+            .ReturnsAsync(expectedLease);
+        PersonalRankingShareSourceRevisionGuard guard = CreateGuard(revisions.Object);
+
+        ShareSourceMutationLease mutationLease = await guard.BeginAvatarMutationAsync(
+            "owner-1",
             CancellationToken.None);
 
         Assert.Same(expectedLease, mutationLease);
@@ -59,8 +81,8 @@ public sealed class PersonalRankingShareSourceRevisionGuardTests
     public async Task CompleteMutationAsync_WhenSettlementFails_ShouldPreserveCommittedCallerFlow()
     {
         ShareSourceMutationLease mutationLease = new ShareSourceMutationLease(
-            "personal-ranking:owner-1",
-            14.ToString("x32"));
+            PublicIdentityShareSourceScope.CreateDisplayName("owner-1"),
+            15.ToString("x32"));
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.CompleteMutationAsync(

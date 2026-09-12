@@ -181,19 +181,20 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         PersonalRankingShareIdentityState previousIdentity =
             PersonalRankingShareIdentityState.Capture(user);
-        ShareSourceMutationLease? mutationLease = !createIfMissing
-            && CanChangePublicIdentity(user, identity)
-                ? await this.shareSourceRevisionGuard.BeginMutationAsync(
-                    user.Id,
-                    cancellationToken)
-                : null;
+        (ShareSourceMutationLease? DisplayName, ShareSourceMutationLease? Avatar) mutation =
+            await this.BeginShareSourceMutationAsync(
+                user,
+                identity,
+                createIfMissing,
+                cancellationToken);
+        ShareSourceMutationLease[] mutationLeases = ResolveMutationLeases(mutation);
         using CancellationTokenSource mutationCancellation =
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
-                mutationLease);
+                mutationLeases);
         using CancellationTokenSource consistencyCancellation =
-            ShareSourceMutationCancellation.CreateLeaseSource(mutationLease);
-        bool sourceMutationAttempted = false;
+            ShareSourceMutationCancellation.CreateLeaseSource(mutationLeases);
+        bool avatarSourceMutationAttempted = false;
         bool avatarImported = false;
         try
         {
@@ -201,7 +202,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             if (ShouldImportAvatar(user, identity))
             {
-                sourceMutationAttempted = mutationLease is not null;
+                avatarSourceMutationAttempted = mutation.Avatar is not null;
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
@@ -223,8 +224,6 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                     mutationCancellation.Token);
             }
 
-            sourceMutationAttempted |= previousIdentity !=
-                PersonalRankingShareIdentityState.Capture(user);
             User? updatedUser = await this.UpdateIfUnchangedAndReconcileImportedAvatarAsync(
                 user.Id,
                 user,
@@ -236,10 +235,16 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         }
         finally
         {
-            await this.shareSourceRevisionGuard.CompleteMutationAsync(
-                mutationLease,
-                sourceMutationAttempted,
-                CancellationToken.None);
+            PersonalRankingShareIdentityState currentIdentity =
+                PersonalRankingShareIdentityState.Capture(user);
+            await this.CompleteShareSourceMutationAsync(
+                mutation,
+                HasPublicDisplayStateChanged(previousIdentity, currentIdentity),
+                avatarSourceMutationAttempted
+                    || !string.Equals(
+                        previousIdentity.AvatarUrl,
+                        currentIdentity.AvatarUrl,
+                        StringComparison.Ordinal));
         }
     }
 
@@ -258,18 +263,20 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         DateTime expectedUpdatedAtUtc = user.UpdatedAtUtc;
         PersonalRankingShareIdentityState previousIdentity =
             PersonalRankingShareIdentityState.Capture(user);
-        ShareSourceMutationLease? mutationLease = CanChangePublicIdentity(user, identity)
-            ? await this.shareSourceRevisionGuard.BeginMutationAsync(
-                user.Id,
-                cancellationToken)
-            : null;
+        (ShareSourceMutationLease? DisplayName, ShareSourceMutationLease? Avatar) mutation =
+            await this.BeginShareSourceMutationAsync(
+                user,
+                identity,
+                createIfMissing: false,
+                cancellationToken: cancellationToken);
+        ShareSourceMutationLease[] mutationLeases = ResolveMutationLeases(mutation);
         using CancellationTokenSource mutationCancellation =
             ShareSourceMutationCancellation.CreateLinkedSource(
                 cancellationToken,
-                mutationLease);
+                mutationLeases);
         using CancellationTokenSource consistencyCancellation =
-            ShareSourceMutationCancellation.CreateLeaseSource(mutationLease);
-        bool sourceMutationAttempted = false;
+            ShareSourceMutationCancellation.CreateLeaseSource(mutationLeases);
+        bool avatarSourceMutationAttempted = false;
         bool avatarImported = false;
         User? updatedUser;
         try
@@ -279,7 +286,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
 
             if (ShouldImportAvatar(user, identity))
             {
-                sourceMutationAttempted = mutationLease is not null;
+                avatarSourceMutationAttempted = mutation.Avatar is not null;
                 string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(
                     identity.PictureUrl!,
                     user.Id,
@@ -296,8 +303,6 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             user.LastActivityUtc = user.LastLoginUtc;
             user.UpdatedAtUtc = user.LastLoginUtc;
 
-            sourceMutationAttempted |= previousIdentity !=
-                PersonalRankingShareIdentityState.Capture(user);
             updatedUser = await this.UpdateIfUnchangedAndReconcileImportedAvatarAsync(
                 user.Id,
                 user,
@@ -307,10 +312,16 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         }
         finally
         {
-            await this.shareSourceRevisionGuard.CompleteMutationAsync(
-                mutationLease,
-                sourceMutationAttempted,
-                CancellationToken.None);
+            PersonalRankingShareIdentityState currentIdentity =
+                PersonalRankingShareIdentityState.Capture(user);
+            await this.CompleteShareSourceMutationAsync(
+                mutation,
+                HasPublicDisplayStateChanged(previousIdentity, currentIdentity),
+                avatarSourceMutationAttempted
+                    || !string.Equals(
+                        previousIdentity.AvatarUrl,
+                        currentIdentity.AvatarUrl,
+                        StringComparison.Ordinal));
         }
 
         if (updatedUser is null)
@@ -391,14 +402,95 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         }
     }
 
-    private static bool CanChangePublicIdentity(
-        User user,
-        VerifiedExternalIdentity identity)
+    private async Task<(ShareSourceMutationLease? DisplayName, ShareSourceMutationLease? Avatar)>
+        BeginShareSourceMutationAsync(
+            User user,
+            VerifiedExternalIdentity identity,
+            bool createIfMissing,
+            CancellationToken cancellationToken)
+    {
+        if (createIfMissing)
+        {
+            return (null, null);
+        }
+
+        ShareSourceMutationLease? displayNameLease = CanChangePublicDisplayName(user)
+            ? await this.shareSourceRevisionGuard.BeginMutationAsync(
+                user.Id,
+                cancellationToken)
+            : null;
+        try
+        {
+            ShareSourceMutationLease? avatarLease = ShouldImportAvatar(user, identity)
+                ? await this.shareSourceRevisionGuard.BeginAvatarMutationAsync(
+                    user.Id,
+                    cancellationToken)
+                : null;
+            return (displayNameLease, avatarLease);
+        }
+        catch
+        {
+            if (displayNameLease is not null)
+            {
+                await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                    displayNameLease,
+                    false,
+                    CancellationToken.None);
+            }
+
+            throw;
+        }
+    }
+
+    private async Task CompleteShareSourceMutationAsync(
+        (ShareSourceMutationLease? DisplayName, ShareSourceMutationLease? Avatar) mutation,
+        bool displayNameSourceChanged,
+        bool avatarSourceChanged)
+    {
+        if (mutation.DisplayName is not null)
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutation.DisplayName,
+                displayNameSourceChanged,
+                CancellationToken.None);
+        }
+
+        if (mutation.Avatar is not null)
+        {
+            await this.shareSourceRevisionGuard.CompleteMutationAsync(
+                mutation.Avatar,
+                avatarSourceChanged,
+                CancellationToken.None);
+        }
+    }
+
+    private static ShareSourceMutationLease[] ResolveMutationLeases(
+        (ShareSourceMutationLease? DisplayName, ShareSourceMutationLease? Avatar) mutation)
+    {
+        return new[]
+            {
+                mutation.DisplayName,
+                mutation.Avatar,
+            }
+            .Where(static lease => lease is not null)
+            .Select(static lease => lease!)
+            .ToArray();
+    }
+
+    private static bool HasPublicDisplayStateChanged(
+        PersonalRankingShareIdentityState before,
+        PersonalRankingShareIdentityState after)
+    {
+        return !string.Equals(before.DisplayName, after.DisplayName, StringComparison.Ordinal)
+            || before.IsActivated != after.IsActivated
+            || before.IsBlocked != after.IsBlocked;
+    }
+
+    private static bool CanChangePublicDisplayName(User user)
     {
         return user.PublicAccountNumber <= 0
             || user.UsesAutomaticPublicDisplayName
-            || string.IsNullOrWhiteSpace(user.PublicDisplayName)
-            || ShouldImportAvatar(user, identity);
+            || string.IsNullOrWhiteSpace(user.PublicDisplayName);
     }
 
     private static bool ShouldImportAvatar(

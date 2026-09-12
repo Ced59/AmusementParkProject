@@ -8,9 +8,10 @@ public sealed record SharePublicationSnapshotWriteRequest(
     long PublicationVersion,
     long PublicationStateVersion,
     string OwnerUserId,
-    string SourceId,
+    string? SourceId,
     long SourceVersion,
     ShareContentPolicy ContentPolicy,
     string ContentFingerprint,
     VisitRecapShareInput? VisitRecap = null,
-    YearRecapShareInput? YearRecap = null);
+    YearRecapShareInput? YearRecap = null,
+    PassportProfileShareInput? PassportProfile = null);

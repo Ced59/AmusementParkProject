@@ -1,0 +1,578 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Ratings.Models;
+using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Results;
+using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Domain.Visits;
+
+namespace AmusementPark.Application.Features.Sharing.Services;
+
+public sealed class PassportProfileSharePreviewBuilder
+    : ISharePublicationPreviewBuilder, IPassportProfileSharePreviewBuilder
+{
+    private readonly IPassportProfileSourceReader sourceReader;
+    private readonly IPassportProfileShareSourceVersionProvider sourceVersionProvider;
+    private readonly IParkRepository parkRepository;
+    private readonly IVisitTargetResolver targetResolver;
+    private readonly IRatingRepository ratingRepository;
+    private readonly IUserRepository userRepository;
+    private readonly IImageRepository imageRepository;
+
+    public PassportProfileSharePreviewBuilder(
+        IPassportProfileSourceReader sourceReader,
+        IPassportProfileShareSourceVersionProvider sourceVersionProvider,
+        IParkRepository parkRepository,
+        IVisitTargetResolver targetResolver,
+        IRatingRepository ratingRepository,
+        IUserRepository userRepository,
+        IImageRepository imageRepository)
+    {
+        this.sourceReader = sourceReader ?? throw new ArgumentNullException(nameof(sourceReader));
+        this.sourceVersionProvider = sourceVersionProvider
+            ?? throw new ArgumentNullException(nameof(sourceVersionProvider));
+        this.parkRepository = parkRepository ?? throw new ArgumentNullException(nameof(parkRepository));
+        this.targetResolver = targetResolver ?? throw new ArgumentNullException(nameof(targetResolver));
+        this.ratingRepository = ratingRepository ?? throw new ArgumentNullException(nameof(ratingRepository));
+        this.userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+        this.imageRepository = imageRepository ?? throw new ArgumentNullException(nameof(imageRepository));
+    }
+
+    public SharePublicationType PublicationType => SharePublicationType.PassportProfile;
+
+    public Task<ApplicationResult<SharePublicationPreviewResult>> BuildAsync(
+        string ownerUserId,
+        string? sourceId,
+        ShareContentPolicy contentPolicy,
+        CancellationToken cancellationToken)
+    {
+        return !string.IsNullOrWhiteSpace(sourceId)
+            ? Task.FromResult(ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.InvalidSource()))
+            : this.BuildAsync(ownerUserId, contentPolicy, null, cancellationToken);
+    }
+
+    public async Task<ApplicationResult<SharePublicationPreviewResult>> BuildAsync(
+        string ownerUserId,
+        ShareContentPolicy contentPolicy,
+        PassportProfileShareInput? input,
+        CancellationToken cancellationToken)
+    {
+        ApplicationResult<PassportProfileShareInput> normalizedResult =
+            PassportProfileShareInputNormalizer.Normalize(input, contentPolicy);
+        if (!normalizedResult.IsSuccess || normalizedResult.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(normalizedResult.Errors);
+        }
+
+        PassportProfileShareInput normalizedInput = normalizedResult.Value;
+        ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionBefore =
+            await this.sourceVersionProvider.PrepareOwnedSourceRevisionSnapshotAsync(
+                ownerUserId,
+                contentPolicy,
+                normalizedInput,
+                cancellationToken);
+        if (!revisionBefore.IsSuccess || revisionBefore.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(revisionBefore.Errors);
+        }
+
+        PassportProfileSourceData source = await this.sourceReader.ReadOwnedCompletedPassportAsync(
+            ownerUserId,
+            cancellationToken);
+        if (!source.IsStable)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
+        User? user = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
+        if (user is null || !user.IsActivated || user.IsBlocked)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
+
+        string[] visitedParkIds = source.Visits
+            .Select(static visit => visit.ParkId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyCollection<Park> parkCandidates = visitedParkIds.Length == 0
+            ? Array.Empty<Park>()
+            : await this.parkRepository.GetByIdsAsync(visitedParkIds, cancellationToken);
+        IReadOnlyDictionary<string, Park> publicParks = parkCandidates
+            .Where(static park => park.IsVisible
+                && !string.IsNullOrWhiteSpace(park.Id)
+                && !string.IsNullOrWhiteSpace(park.Name))
+            .GroupBy(static park => park.Id, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First(),
+                StringComparer.Ordinal);
+        HashSet<int> selectedYearsForTargets = new HashSet<int>(
+            normalizedInput.SelectedYears ?? Array.Empty<int>());
+        HashSet<string> selectedParkIdsForTargets = new HashSet<string>(
+            normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+            StringComparer.Ordinal);
+        HashSet<string> selectedVisitIdsForTargets = source.Visits
+            .Where(visit => selectedYearsForTargets.Contains(visit.VisitDate.Year)
+                && selectedParkIdsForTargets.Contains(visit.ParkId))
+            .Select(static visit => visit.VisitId)
+            .ToHashSet(StringComparer.Ordinal);
+        string[] parkItemIds = source.Rides
+            .Where(ride => selectedVisitIdsForTargets.Contains(ride.VisitId))
+            .Select(static ride => ride.ParkItemId)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyDictionary<string, VisitTarget> targets = parkItemIds.Length == 0
+            ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            : await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
+        IReadOnlyCollection<UserRatingListItemResult> ratingCandidates =
+            contentPolicy.Includes(ShareContentField.GlobalRatings)
+                ? await this.ratingRepository.GetVisibleUserRankingSourcesForParksAsync(
+                    ownerUserId,
+                    normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+                    PassportProfileShareInputNormalizer.MaximumSelectedRatings + 1,
+                    cancellationToken)
+                : Array.Empty<UserRatingListItemResult>();
+        Image? avatarBefore = contentPolicy.Includes(ShareContentField.Avatar)
+            ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                ownerUserId,
+                ImageCategory.Avatar,
+                cancellationToken)
+            : null;
+
+        ApplicationResult<PassportProfileSharePreviewResult> contentResult = this.BuildContent(
+            user,
+            avatarBefore,
+            source,
+            publicParks,
+            targets,
+            ratingCandidates,
+            contentPolicy,
+            normalizedInput);
+        if (!contentResult.IsSuccess || contentResult.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(contentResult.Errors);
+        }
+
+        ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionAfter =
+            await this.sourceVersionProvider.GetOwnedSourceRevisionSnapshotAsync(
+                ownerUserId,
+                contentPolicy,
+                normalizedInput,
+                cancellationToken);
+        User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
+        Image? avatarAfter = contentPolicy.Includes(ShareContentField.Avatar)
+            ? await this.imageRepository.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                ownerUserId,
+                ImageCategory.Avatar,
+                cancellationToken)
+            : null;
+        if (!revisionAfter.IsSuccess
+            || revisionAfter.Value is null
+            || !revisionBefore.Value.HasSameRevisionsAs(revisionAfter.Value, contentPolicy)
+            || !HasSamePublicIdentity(user, userAfter, contentPolicy)
+            || (contentPolicy.Includes(ShareContentField.Avatar)
+                && !string.Equals(
+                ResolvePublicAvatarUrl(avatarBefore, ownerUserId),
+                ResolvePublicAvatarUrl(avatarAfter, ownerUserId),
+                StringComparison.Ordinal)))
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
+        ApplicationResult<PassportProfileShareSourceRevision> versionAfter =
+            await this.sourceVersionProvider.ReconcileOwnedSourceVersionAsync(
+                ownerUserId,
+                PassportProfileShareSourceFingerprint.Create(source, normalizedInput),
+                revisionAfter.Value,
+                contentPolicy,
+                normalizedInput,
+                cancellationToken);
+        if (!versionAfter.IsSuccess || versionAfter.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(versionAfter.Errors);
+        }
+
+        string fingerprint = PassportProfileShareInputNormalizer.CreateFingerprint(normalizedInput);
+        return ApplicationResult<SharePublicationPreviewResult>.Success(
+            new SharePublicationPreviewResult(
+                this.PublicationType,
+                versionAfter.Value.Version,
+                contentPolicy.SchemaVersion,
+                contentPolicy.DatePrecision,
+                contentPolicy.IncludedFields,
+                null,
+                PassportProfile: contentResult.Value,
+                ContentFingerprint: fingerprint));
+    }
+
+    private ApplicationResult<PassportProfileSharePreviewResult> BuildContent(
+        User user,
+        Image? avatar,
+        PassportProfileSourceData source,
+        IReadOnlyDictionary<string, Park> publicParks,
+        IReadOnlyDictionary<string, VisitTarget> targets,
+        IReadOnlyCollection<UserRatingListItemResult> ratingCandidates,
+        ShareContentPolicy policy,
+        PassportProfileShareInput input)
+    {
+        HashSet<int> selectedYears = new HashSet<int>(
+            input.SelectedYears ?? Array.Empty<int>());
+        HashSet<string> selectedParkIds = new HashSet<string>(
+            input.SelectedParkIds ?? Array.Empty<string>(),
+            StringComparer.Ordinal);
+        HashSet<string> availableParkIds = source.Visits
+            .Select(static visit => visit.ParkId)
+            .Where(publicParks.ContainsKey)
+            .ToHashSet(StringComparer.Ordinal);
+        HashSet<int> availableYears = source.Visits
+            .Where(visit => availableParkIds.Contains(visit.ParkId))
+            .Select(static visit => visit.VisitDate.Year)
+            .ToHashSet();
+        if (!selectedYears.IsSubsetOf(availableYears)
+            || !selectedParkIds.IsSubsetOf(availableParkIds))
+        {
+            return ApplicationResult<PassportProfileSharePreviewResult>.Failure(
+                SharingApplicationErrors.InvalidPassportProfileSelection());
+        }
+
+        PassportVisitStatisticsObservation[] visits = source.Visits
+            .Where(visit => selectedYears.Contains(visit.VisitDate.Year)
+                && selectedParkIds.Contains(visit.ParkId)
+                && publicParks.ContainsKey(visit.ParkId))
+            .ToArray();
+        if (visits.Length == 0)
+        {
+            return ApplicationResult<PassportProfileSharePreviewResult>.Failure(
+                SharingApplicationErrors.InvalidPassportProfileSelection());
+        }
+
+        HashSet<string> visitIds = visits
+            .Select(static visit => visit.VisitId)
+            .ToHashSet(StringComparer.Ordinal);
+        PassportRideStatisticsObservation[] selectedScopeRides = source.Rides
+            .Where(ride => visitIds.Contains(ride.VisitId))
+            .ToArray();
+        IReadOnlyDictionary<string, string?> historicalNames = selectedScopeRides
+            .Where(static ride => !string.IsNullOrWhiteSpace(ride.HistoricalName))
+            .OrderBy(static ride => ride.RideOccurrenceId, StringComparer.Ordinal)
+            .GroupBy(static ride => ride.ParkItemId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First().HistoricalName,
+                StringComparer.Ordinal);
+        PassportRideStatisticsObservation[] rides = selectedScopeRides
+            .Where(ride => CanExposeTarget(ride, historicalNames, targets))
+            .ToArray();
+        PassportProfileStatistics statistics = PassportProfileStatisticsCalculator.Calculate(
+            visits,
+            rides);
+        bool includesActivity = policy.Includes(ShareContentField.RideCount);
+        bool includesTemporalRatings = policy.Includes(ShareContentField.TemporalRatings);
+        bool includesGeography = policy.Includes(ShareContentField.GeographicStatistics);
+        bool includesRanking = policy.Includes(ShareContentField.GlobalRatings);
+        bool includesMissed = policy.Includes(ShareContentField.MissedItems);
+        bool exposesRideDerivedContent = includesActivity
+            || includesTemporalRatings
+            || includesMissed;
+
+        Dictionary<string, UserRatingListItemResult> ratingsByKey = ratingCandidates
+            .Where(rating => selectedParkIds.Contains(rating.ParkId))
+            .Take(PassportProfileShareInputNormalizer.MaximumSelectedRatings)
+            .GroupBy(
+                static rating => PassportProfileRatingSelectionKey.Create(
+                    rating.TargetType,
+                    rating.TargetId),
+                StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.First(),
+                StringComparer.Ordinal);
+        HashSet<string> selectedRatingKeys = new HashSet<string>(
+            input.SelectedRatingKeys ?? Array.Empty<string>(),
+            StringComparer.Ordinal);
+        if (!selectedRatingKeys.IsSubsetOf(ratingsByKey.Keys))
+        {
+            return ApplicationResult<PassportProfileSharePreviewResult>.Failure(
+                SharingApplicationErrors.InvalidPassportProfileSelection());
+        }
+
+        PassportProfileShareRatingResult[] ranking = includesRanking
+            ? selectedRatingKeys
+                .Select(key => ratingsByKey[key])
+                .Where(rating => selectedParkIds.Contains(rating.ParkId))
+                .OrderByDescending(static rating => rating.Value)
+                .ThenBy(static rating => rating.TargetName, StringComparer.OrdinalIgnoreCase)
+                .Select(static rating => new PassportProfileShareRatingResult(
+                    rating.TargetType.ToString(),
+                    rating.TargetName.Trim(),
+                    NormalizeOptional(rating.ParkName),
+                    rating.ParkItemCategory?.ToString(),
+                    rating.Value))
+                .ToArray()
+            : Array.Empty<PassportProfileShareRatingResult>();
+        string? displayName = policy.Includes(ShareContentField.PublicDisplayName)
+            ? NormalizeOptional(user.ResolvePublicDisplayName())
+            : null;
+        string? avatarUrl = policy.Includes(ShareContentField.Avatar)
+            ? ResolvePublicAvatarUrl(avatar, user.Id)
+            : null;
+        string? publicCaption = policy.Includes(ShareContentField.PublicCaption)
+            ? input.PublicCaption
+            : null;
+        PassportProfileShareRatingSummaryResult? visitRatings = includesTemporalRatings
+            ? ToRatingSummary(
+                statistics.Summary.RatedVisitCount,
+                statistics.Summary.VisitCount,
+                statistics.Summary.ParkRatings?.Average)
+            : null;
+        PassportProfileShareRatingSummaryResult? rideRatings = includesTemporalRatings
+            ? ToRatingSummary(
+                statistics.Summary.RatedRideCount,
+                statistics.Summary.RideOutcomes.CompletedRideCount,
+                statistics.Summary.RideRatings?.Average)
+            : null;
+        PassportProfileShareCountryResult[] countries = includesGeography
+            ? BuildCountries(visits, publicParks)
+            : Array.Empty<PassportProfileShareCountryResult>();
+        PassportProfileShareYearResult[] years = includesGeography
+            ? BuildYears(statistics.Years, includesActivity)
+            : Array.Empty<PassportProfileShareYearResult>();
+        PassportProfileShareParkResult[] parks = includesGeography
+            ? BuildParks(
+                statistics.Parks,
+                publicParks,
+                includesActivity,
+                includesTemporalRatings)
+            : Array.Empty<PassportProfileShareParkResult>();
+        PassportProfileShareMissedItemResult[] missedItems = includesMissed
+            ? BuildMissedItems(rides, historicalNames, targets, includesActivity)
+            : Array.Empty<PassportProfileShareMissedItemResult>();
+        bool isEmpty = displayName is null
+            && avatarUrl is null
+            && publicCaption is null
+            && !input.AllowsComparisons
+            && !(includesActivity && visits.Length > 0)
+            && visitRatings is null
+            && rideRatings is null
+            && countries.Length == 0
+            && years.Length == 0
+            && parks.Length == 0
+            && ranking.Length == 0
+            && missedItems.Length == 0;
+        PassportProfileSharePreviewResult result = new PassportProfileSharePreviewResult(
+            displayName,
+            avatarUrl,
+            publicCaption,
+            input.Visibility,
+            input.AllowsComparisons,
+            includesGeography ? statistics.ParkCount : null,
+            includesActivity ? statistics.Summary.VisitCount : null,
+            includesActivity ? statistics.Summary.RideOutcomes.CompletedRideCount : null,
+            includesActivity ? statistics.Summary.DistinctCompletedItemCount : null,
+            visitRatings,
+            rideRatings,
+            countries,
+            years,
+            parks,
+            ranking,
+            missedItems,
+            exposesRideDerivedContent
+                && selectedScopeRides.Any(ride => !CanExposeTarget(
+                    ride,
+                    historicalNames,
+                    targets)),
+            PassportProfileShareVersion.CalculationVersion,
+            isEmpty);
+        return ApplicationResult<PassportProfileSharePreviewResult>.Success(result);
+    }
+
+    private static PassportProfileShareRatingSummaryResult ToRatingSummary(
+        long ratedCount,
+        long eligibleCount,
+        double? average)
+    {
+        return new PassportProfileShareRatingSummaryResult(ratedCount, eligibleCount, average);
+    }
+
+    private static PassportProfileShareCountryResult[] BuildCountries(
+        IEnumerable<PassportVisitStatisticsObservation> visits,
+        IReadOnlyDictionary<string, Park> parks)
+    {
+        return visits
+            .Where(visit => !string.IsNullOrWhiteSpace(parks[visit.ParkId].CountryCode))
+            .GroupBy(
+                visit => parks[visit.ParkId].CountryCode!.Trim().ToUpperInvariant(),
+                StringComparer.Ordinal)
+            .Select(group => new PassportProfileShareCountryResult(
+                group.Key,
+                group.Select(static visit => visit.ParkId).Distinct(StringComparer.Ordinal).LongCount(),
+                group.LongCount()))
+            .OrderByDescending(static country => country.VisitCount)
+            .ThenBy(static country => country.CountryCode, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static PassportProfileShareYearResult[] BuildYears(
+        IEnumerable<PassportProfileYearStatistics> years,
+        bool includesActivity)
+    {
+        return years.Select(year => new PassportProfileShareYearResult(
+                year.Year,
+                year.VisitCount,
+                year.ParkCount,
+                includesActivity ? year.CompletedRideCount : null))
+            .ToArray();
+    }
+
+    private static PassportProfileShareParkResult[] BuildParks(
+        IEnumerable<PassportProfileParkStatistics> parkStatistics,
+        IReadOnlyDictionary<string, Park> parks,
+        bool includesActivity,
+        bool includesRatings)
+    {
+        return parkStatistics.Select(statistics => new PassportProfileShareParkResult(
+                parks[statistics.ParkId].Name!.Trim(),
+                NormalizeCountryCode(parks[statistics.ParkId].CountryCode),
+                statistics.VisitCount,
+                statistics.FirstVisitYear,
+                statistics.LastVisitYear,
+                includesActivity ? statistics.CompletedRideCount : null,
+                includesRatings
+                    ? new PassportProfileShareRatingSummaryResult(
+                        statistics.RatedVisitCount,
+                        statistics.VisitCount,
+                        statistics.AverageVisitRating)
+                    : null))
+            .OrderByDescending(static park => park.VisitCount)
+            .ThenBy(static park => park.Name, StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+    }
+
+    private static PassportProfileShareMissedItemResult[] BuildMissedItems(
+        IEnumerable<PassportRideStatisticsObservation> rides,
+        IReadOnlyDictionary<string, string?> historicalNames,
+        IReadOnlyDictionary<string, VisitTarget> targets,
+        bool includesActivity)
+    {
+        PassportProfileMissedItemObservation[] observations = rides
+            .Select(ride => new
+            {
+                Name = ResolveName(ride.ParkItemId, historicalNames, targets),
+                ride.Status,
+            })
+            .Where(static value => value.Name is not null)
+            .Select(static value => new PassportProfileMissedItemObservation(
+                value.Name!,
+                value.Status))
+            .ToArray();
+        return PassportProfileStatisticsCalculator.CalculateMissedItems(observations)
+            .Select(item => new PassportProfileShareMissedItemResult(
+                item.Name,
+                ToPublicMissedStatus(item.Status),
+                includesActivity ? item.OccurrenceCount : null))
+            .ToArray();
+    }
+
+    private static string ToPublicMissedStatus(PassportProfileMissedItemStatus status)
+    {
+        return status == PassportProfileMissedItemStatus.MissedClosure
+            ? "MissedClosure"
+            : "MissedOther";
+    }
+
+    private static bool CanExposeTarget(
+        PassportRideStatisticsObservation ride,
+        IReadOnlyDictionary<string, string?> historicalNames,
+        IReadOnlyDictionary<string, VisitTarget> targets)
+    {
+        if (!targets.TryGetValue(ride.ParkItemId, out VisitTarget? target))
+        {
+            return historicalNames.TryGetValue(ride.ParkItemId, out string? historicalName)
+                && !string.IsNullOrWhiteSpace(historicalName);
+        }
+
+        return target.IsVisible
+            && string.Equals(target.ParkId, ride.ParkId, StringComparison.Ordinal);
+    }
+
+    private static string? ResolveName(
+        string parkItemId,
+        IReadOnlyDictionary<string, string?> historicalNames,
+        IReadOnlyDictionary<string, VisitTarget> targets)
+    {
+        if (targets.TryGetValue(parkItemId, out VisitTarget? target)
+            && target.IsVisible
+            && !string.IsNullOrWhiteSpace(target.Name))
+        {
+            return target.Name.Trim();
+        }
+
+        return historicalNames.TryGetValue(parkItemId, out string? historicalName)
+            ? NormalizeOptional(historicalName)
+            : null;
+    }
+
+    private static bool HasSamePublicIdentity(
+        User before,
+        User? after,
+        ShareContentPolicy contentPolicy)
+    {
+        return after is not null
+            && after.IsActivated
+            && !after.IsBlocked
+            && (!contentPolicy.Includes(ShareContentField.PublicDisplayName)
+                || string.Equals(
+                NormalizeOptional(before.ResolvePublicDisplayName()),
+                NormalizeOptional(after.ResolvePublicDisplayName()),
+                StringComparison.Ordinal))
+            && (!contentPolicy.Includes(ShareContentField.Avatar)
+                || string.Equals(
+                NormalizeOptional(before.AvatarUrl),
+                NormalizeOptional(after.AvatarUrl),
+                StringComparison.Ordinal));
+    }
+
+    private static string? ResolvePublicAvatarUrl(Image? image, string ownerUserId)
+    {
+        if (image is null
+            || string.IsNullOrWhiteSpace(image.Id)
+            || !image.IsPublished
+            || !image.IsCurrent
+            || image.OwnerType != ImageOwnerType.User
+            || image.Category != ImageCategory.Avatar
+            || !string.Equals(image.OwnerId?.Trim(), ownerUserId, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        return $"/images/{image.Id}";
+    }
+
+    private static string? NormalizeOptional(string? value)
+    {
+        string normalized = value?.Trim() ?? string.Empty;
+        return normalized.Length == 0 ? null : normalized;
+    }
+
+    private static string? NormalizeCountryCode(string? value)
+    {
+        string normalized = value?.Trim().ToUpperInvariant() ?? string.Empty;
+        return normalized.Length == 2 ? normalized : null;
+    }
+}

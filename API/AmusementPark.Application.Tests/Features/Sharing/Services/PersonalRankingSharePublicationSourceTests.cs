@@ -19,24 +19,28 @@ public sealed class PersonalRankingSharePublicationSourceTests
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.GetSnapshotAsync(
                 It.Is<IReadOnlyCollection<string>>(keys =>
-                    keys.Count == 2
+                    keys.Count == 3
                     && keys.Contains("personal-ranking:owner-1")
+                    && keys.Contains(PublicIdentityShareSourceScope.CreateDisplayName("owner-1"))
                     && keys.Contains(PersonalRankingShareSourceScope.PublicCatalog)),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 0, Now),
+                [PublicIdentityShareSourceScope.CreateDisplayName("owner-1")] = new ShareSourceRevision(5, 0, Now),
                 [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
             });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 
         ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
-            "personal-ranking:owner-1",
+            new SharePublicationSourceVersionRequest(
+                "personal-ranking:owner-1",
+                source.CreateDefaultPolicy()),
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
-        Assert.Equal(7, result.Value);
+        Assert.Equal(12, result.Value);
         ShareContentPolicy policy = source.CreateDefaultPolicy();
         Assert.True(policy.Includes(ShareContentField.PublicDisplayName));
         Assert.False(policy.Includes(ShareContentField.Avatar));
@@ -55,13 +59,16 @@ public sealed class PersonalRankingSharePublicationSourceTests
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 ["personal-ranking:owner-1"] = new ShareSourceRevision(4, 1, Now),
+                [PublicIdentityShareSourceScope.CreateDisplayName("owner-1")] = new ShareSourceRevision(5, 0, Now),
                 [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(3, 0, Now),
             });
         PersonalRankingSharePublicationSource source =
             new PersonalRankingSharePublicationSource(revisions.Object);
 
         ApplicationResult<long> result = await source.GetCurrentSourceVersionAsync(
-            "personal-ranking:owner-1",
+            new SharePublicationSourceVersionRequest(
+                "personal-ranking:owner-1",
+                source.CreateDefaultPolicy()),
             CancellationToken.None);
 
         Assert.False(result.IsSuccess);

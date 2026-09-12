@@ -101,23 +101,22 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
                     metadata.OwnerType ?? existing.OwnerType,
                     metadata.OwnerId,
                     metadata.Category);
-            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+            UserAvatarShareSourceMutationContext avatarMutation =
                 await UserAvatarShareSourceMutation.BeginAsync(
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
+                    this.imageRepository,
                     cancellationToken);
             using CancellationTokenSource mutationCancellation =
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
-                    avatarMutationLeases.Values);
+                    avatarMutation.Leases.Values);
             using CancellationTokenSource consistencyCancellation =
                 ShareSourceMutationCancellation.CreateLeaseSource(
-                    avatarMutationLeases.Values);
-            bool avatarSourceChanged = false;
+                    avatarMutation.Leases.Values);
             Image? updated;
             try
             {
-                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
                 updated = await this.imageRepository.UpdateMetadataIfUnchangedAsync(
                     normalizedImageId,
                     new ImageMutationPrecondition(
@@ -189,8 +188,8 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
             finally
             {
                 await UserAvatarShareSourceMutation.CompleteAsync(
-                    avatarMutationLeases,
-                    avatarSourceChanged,
+                    avatarMutation,
+                    this.imageRepository,
                     this.shareSourceRevisionGuard);
             }
 

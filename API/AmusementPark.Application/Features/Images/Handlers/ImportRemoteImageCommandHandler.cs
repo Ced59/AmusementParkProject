@@ -99,23 +99,22 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                     importRequest.OwnerId,
                     importRequest.Category)
                 : Array.Empty<string>();
-            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+            UserAvatarShareSourceMutationContext avatarMutation =
                 await UserAvatarShareSourceMutation.BeginAsync(
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
+                    this.imageRepository,
                     cancellationToken);
             using CancellationTokenSource mutationCancellation =
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
-                    avatarMutationLeases.Values);
+                    avatarMutation.Leases.Values);
             using CancellationTokenSource consistencyCancellation =
                 ShareSourceMutationCancellation.CreateLeaseSource(
-                    avatarMutationLeases.Values);
-            bool avatarSourceChanged = false;
+                    avatarMutation.Leases.Values);
             Image? image;
             try
             {
-                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
                 image = await this.remoteImageImporter.ImportAsync(
                     importRequest,
                     mutationCancellation.Token);
@@ -159,8 +158,8 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             finally
             {
                 await UserAvatarShareSourceMutation.CompleteAsync(
-                    avatarMutationLeases,
-                    avatarSourceChanged,
+                    avatarMutation,
+                    this.imageRepository,
                     this.shareSourceRevisionGuard);
             }
 

@@ -40,7 +40,8 @@ public sealed class SharePublicationPublisher
         string contentFingerprint = "",
         VisitRecapShareInput? visitRecap = null,
         string? sourceId = null,
-        YearRecapShareInput? yearRecap = null)
+        YearRecapShareInput? yearRecap = null,
+        PassportProfileShareInput? passportProfile = null)
     {
         ArgumentNullException.ThrowIfNull(source);
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -116,7 +117,12 @@ public sealed class SharePublicationPublisher
         }
 
         ApplicationResult<long> finalSourceVersion = await source.GetCurrentSourceVersionAsync(
-            sourceScopeKey,
+            new SharePublicationSourceVersionRequest(
+                sourceScopeKey,
+                contentPolicy,
+                publication?.Id,
+                publication?.PublicationVersion,
+                passportProfile),
             cancellationToken);
         if (!finalSourceVersion.IsSuccess)
         {
@@ -163,24 +169,19 @@ public sealed class SharePublicationPublisher
             long expectedVersion = publication!.Version;
             if (snapshotWriter is not null)
             {
-                if (string.IsNullOrWhiteSpace(sourceId))
-                {
-                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
-                        SharingApplicationErrors.InvalidSource());
-                }
-
                 ApplicationResult<bool> snapshotResult = await snapshotWriter.WriteAsync(
                     new SharePublicationSnapshotWriteRequest(
                         publication.Id,
                         checked(publication.PublicationVersion + 1),
                         publication.Version,
                         ownerUserId,
-                        sourceId.Trim(),
+                        string.IsNullOrWhiteSpace(sourceId) ? null : sourceId.Trim(),
                         sourceVersion,
                         contentPolicy,
                         contentFingerprint,
                         visitRecap,
-                        yearRecap),
+                        yearRecap,
+                        passportProfile),
                     cancellationToken);
                 if (!snapshotResult.IsSuccess)
                 {
@@ -194,7 +195,7 @@ public sealed class SharePublicationPublisher
                 : publication.ShareToken ?? this.tokenFactory.Generate();
             publication.Publish(
                 token,
-                ShareVisibility.Unlisted,
+                passportProfile?.Visibility ?? ShareVisibility.Unlisted,
                 sourceVersion,
                 contentPolicy,
                 publication.PublicationVersion,
@@ -212,6 +213,8 @@ public sealed class SharePublicationPublisher
                     source,
                     sourceScopeKey,
                     sourceVersion,
+                    contentPolicy,
+                    passportProfile,
                     cancellationToken);
                 if (!confirmation.IsSuccess)
                 {
@@ -244,10 +247,17 @@ public sealed class SharePublicationPublisher
         ISharePublicationSourceDescriptor source,
         string sourceScopeKey,
         long sourceVersion,
+        ShareContentPolicy contentPolicy,
+        PassportProfileShareInput? passportProfile,
         CancellationToken cancellationToken)
     {
         ApplicationResult<long> persistedSourceVersion = await source.GetCurrentSourceVersionAsync(
-            sourceScopeKey,
+            new SharePublicationSourceVersionRequest(
+                sourceScopeKey,
+                contentPolicy,
+                publication.Id,
+                publication.PublicationVersion,
+                passportProfile),
             cancellationToken);
         if (persistedSourceVersion.IsSuccess
             && persistedSourceVersion.Value == sourceVersion)

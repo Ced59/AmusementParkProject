@@ -47,19 +47,32 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         }
 
         string sourceScopeKey = PersonalRankingShareSourceScope.Create(ownerUserId);
-        string[] revisionScopeKeys =
+        string identityScopeKey = PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId);
+        List<string> revisionScopeKeys = new List<string>
         {
             sourceScopeKey,
             PersonalRankingShareSourceScope.PublicCatalog,
         };
+        bool includesPublicDisplayName = contentPolicy.Includes(
+            ShareContentField.PublicDisplayName);
+        if (includesPublicDisplayName)
+        {
+            revisionScopeKeys.Add(identityScopeKey);
+        }
+
         IReadOnlyDictionary<string, ShareSourceRevision> revisionsBefore =
             await this.sourceRevisionRepository.GetSnapshotAsync(
                 revisionScopeKeys,
                 cancellationToken);
         ShareSourceRevision revisionBefore = revisionsBefore[sourceScopeKey];
+        ShareSourceRevision? identityRevisionBefore = includesPublicDisplayName
+            ? revisionsBefore[identityScopeKey]
+            : null;
         ShareSourceRevision catalogRevisionBefore =
             revisionsBefore[PersonalRankingShareSourceScope.PublicCatalog];
-        if (!revisionBefore.IsStable || !catalogRevisionBefore.IsStable)
+        if (!revisionBefore.IsStable
+            || identityRevisionBefore?.IsStable == false
+            || !catalogRevisionBefore.IsStable)
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -107,6 +120,9 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 revisionScopeKeys,
                 cancellationToken);
         ShareSourceRevision revisionAfter = revisionsAfter[sourceScopeKey];
+        ShareSourceRevision? identityRevisionAfter = includesPublicDisplayName
+            ? revisionsAfter[identityScopeKey]
+            : null;
         ShareSourceRevision catalogRevisionAfter =
             revisionsAfter[PersonalRankingShareSourceScope.PublicCatalog];
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
@@ -118,10 +134,12 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 cancellationToken)
             : null;
         if (!revisionAfter.IsStable
+            || identityRevisionAfter?.IsStable == false
             || !catalogRevisionAfter.IsStable
             || revisionAfter.Revision != revisionBefore.Revision
+            || identityRevisionAfter?.Revision != identityRevisionBefore?.Revision
             || catalogRevisionAfter.Revision != catalogRevisionBefore.Revision
-            || !HasSamePublicIdentity(user, userAfter)
+            || !HasSamePublicIdentity(user, userAfter, contentPolicy)
             || !string.Equals(
                 ResolvePublicAvatarUrl(avatarBefore, ownerUserId),
                 ResolvePublicAvatarUrl(avatarAfter, ownerUserId),
@@ -157,7 +175,10 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         long sourceVersion;
         try
         {
-            sourceVersion = checked(revisionAfter.Revision + catalogRevisionAfter.Revision);
+            sourceVersion = checked(
+                revisionAfter.Revision
+                + (identityRevisionAfter?.Revision ?? 0)
+                + catalogRevisionAfter.Revision);
         }
         catch (OverflowException)
         {
@@ -208,19 +229,19 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         return normalized.Length == 0 ? null : normalized;
     }
 
-    private static bool HasSamePublicIdentity(User before, User? after)
+    private static bool HasSamePublicIdentity(
+        User before,
+        User? after,
+        ShareContentPolicy contentPolicy)
     {
         return after is not null
             && after.IsActivated
             && !after.IsBlocked
-            && string.Equals(
+            && (!contentPolicy.Includes(ShareContentField.PublicDisplayName)
+                || string.Equals(
                 NormalizeOptional(before.ResolvePublicDisplayName()),
                 NormalizeOptional(after.ResolvePublicDisplayName()),
-                StringComparison.Ordinal)
-            && string.Equals(
-                NormalizeOptional(before.AvatarUrl),
-                NormalizeOptional(after.AvatarUrl),
-                StringComparison.Ordinal);
+                StringComparison.Ordinal));
     }
 
     private static string? ResolvePublicAvatarUrl(Image? image, string ownerUserId)

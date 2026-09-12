@@ -37,7 +37,8 @@ public sealed record PassportRideStatisticsObservation
         RideOccurrenceStatus status,
         RatingValue? assessment,
         string? historicalCategory,
-        string? currentCategory)
+        string? currentCategory,
+        string? historicalName = null)
     {
         this.RideOccurrenceId = IdentifierRules.NormalizeRequired(
             rideOccurrenceId,
@@ -55,6 +56,7 @@ public sealed record PassportRideStatisticsObservation
         this.Assessment = assessment;
         this.HistoricalCategory = NormalizeOptional(historicalCategory);
         this.CurrentCategory = NormalizeOptional(currentCategory);
+        this.HistoricalName = NormalizeOptional(historicalName);
     }
 
     public string RideOccurrenceId { get; }
@@ -72,6 +74,8 @@ public sealed record PassportRideStatisticsObservation
     public RatingValue? Assessment { get; }
 
     public string? HistoricalCategory { get; }
+
+    public string? HistoricalName { get; }
 
     public string? CurrentCategory { get; }
 

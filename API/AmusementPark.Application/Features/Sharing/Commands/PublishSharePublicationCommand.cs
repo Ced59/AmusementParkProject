@@ -16,5 +16,6 @@ public sealed record PublishSharePublicationCommand(
     IReadOnlyCollection<ShareContentField> ApprovedIncludedFields,
     string ApprovalToken,
     VisitRecapShareInput? VisitRecap = null,
-    YearRecapShareInput? YearRecap = null)
+    YearRecapShareInput? YearRecap = null,
+    PassportProfileShareInput? PassportProfile = null)
     : ICommand<ApplicationResult<SharePublicationSettingsResult>>;

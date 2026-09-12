@@ -42,7 +42,7 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
-    public void AddInfrastructure_WhenCalled_ShouldRegisterUserVisitRepository()
+    public void AddInfrastructure_WhenCalled_ShouldRegisterUserVisitRevisionDecorator()
     {
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
@@ -52,12 +52,17 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
         ServiceDescriptor registration = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IUserVisitRepository));
-        Assert.Equal(typeof(UserVisitRepository), registration.ImplementationType);
+        Assert.NotNull(registration.ImplementationFactory);
         Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+        ServiceDescriptor innerRegistration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(UserVisitRepository));
+        Assert.Equal(typeof(UserVisitRepository), innerRegistration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, innerRegistration.Lifetime);
     }
 
     [Fact]
-    public void AddInfrastructure_WhenCalled_ShouldRegisterRideOccurrenceRepository()
+    public void AddInfrastructure_WhenCalled_ShouldRegisterRideOccurrenceRevisionDecorator()
     {
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
@@ -67,8 +72,33 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
         ServiceDescriptor registration = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IRideOccurrenceRepository));
-        Assert.Equal(typeof(UserRideOccurrenceRepository), registration.ImplementationType);
+        Assert.NotNull(registration.ImplementationFactory);
         Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+        ServiceDescriptor innerRegistration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(UserRideOccurrenceRepository));
+        Assert.Equal(typeof(UserRideOccurrenceRepository), innerRegistration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, innerRegistration.Lifetime);
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterVisitDeletionRevisionDecorator()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IVisitDeletionStore));
+        Assert.NotNull(registration.ImplementationFactory);
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+        ServiceDescriptor innerRegistration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(MongoVisitDeletionStore));
+        Assert.Equal(typeof(MongoVisitDeletionStore), innerRegistration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, innerRegistration.Lifetime);
     }
 
     [Fact]

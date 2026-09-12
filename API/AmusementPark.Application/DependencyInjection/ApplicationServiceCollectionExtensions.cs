@@ -136,7 +136,20 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISharePublicationPreviewBuilder>(provider =>
             provider.GetRequiredService<YearRecapSharePreviewBuilder>());
         services.AddScoped<ISharePublicationSnapshotWriter, YearRecapShareSnapshotWriter>();
+        services.AddScoped<PassportProfileSharePublicationSource>();
+        services.AddScoped<ISharePublicationSourceDescriptor>(provider =>
+            provider.GetRequiredService<PassportProfileSharePublicationSource>());
+        services.AddScoped<IPassportProfileShareSourceVersionProvider>(provider =>
+            provider.GetRequiredService<PassportProfileSharePublicationSource>());
+        services.AddScoped<PassportProfileSharePreviewBuilder>();
+        services.AddScoped<IPassportProfileSharePreviewBuilder>(provider =>
+            provider.GetRequiredService<PassportProfileSharePreviewBuilder>());
+        services.AddScoped<ISharePublicationPreviewBuilder>(provider =>
+            provider.GetRequiredService<PassportProfileSharePreviewBuilder>());
+        services.AddScoped<ISharePublicationSnapshotWriter, PassportProfileShareSnapshotWriter>();
         services.AddScoped<SharePublicationPublisher>();
+        services.AddScoped<IPassportProfileShareSourceRevisionGuard,
+            PassportProfileShareSourceRevisionGuard>();
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
