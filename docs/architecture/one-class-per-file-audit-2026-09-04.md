@@ -289,6 +289,24 @@ Après ce lot, l'inventaire contient :
 - 131 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier non conforme dans le périmètre Application des commentaires.
 
+## État après le lot Application Histoire
+
+Ce lot sépare les commandes, requêtes, résultats et gestionnaires des frises
+historiques de parc, d'attraction rattachée et d'attraction autonome. Il isole
+également les articles, la pagination et la règle interne de visibilité
+publique. Les filtres, règles de visibilité, enrichissements d'images et réponses
+restent identiques. Aucun comportement utilisateur, contrat HTTP ni document
+MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 239 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 272 au total ;
+- 407 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 416 fichiers non conformes distincts : 335 en C# et 81 en TypeScript ;
+- 124 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier non conforme dans le périmètre Application de l'histoire.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

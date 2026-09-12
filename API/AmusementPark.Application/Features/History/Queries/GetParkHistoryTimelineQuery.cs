@@ -15,19 +15,3 @@ public sealed record GetParkHistoryTimelineQuery(
     IReadOnlyCollection<string> ParkItemIds,
     int Page = HistoryTimelinePaging.DefaultPage,
     int PageSize = HistoryTimelinePaging.DefaultPageSize) : IQuery<ApplicationResult<HistoryTimelineResult>>;
-
-public sealed record GetParkItemHistoryTimelineQuery(
-    string ParkItemId,
-    bool IncludeHidden,
-    int Page = HistoryTimelinePaging.DefaultPage,
-    int PageSize = HistoryTimelinePaging.DefaultPageSize) : IQuery<ApplicationResult<HistoryTimelineResult>>;
-
-public sealed record GetHistoryArticleQuery(
-    string EventId,
-    bool IncludeHidden) : IQuery<ApplicationResult<HistoryArticleResult>>;
-
-public sealed record GetHistoryEventsPageQuery(
-    PagedQuery Paging,
-    HistoryEntityType? EntityType,
-    string? OwnerId,
-    string? Search) : IQuery<ApplicationResult<PagedResult<HistoryTimelineEventResult>>>;

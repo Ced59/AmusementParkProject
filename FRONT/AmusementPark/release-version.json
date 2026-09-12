@@ -1,6 +1,20 @@
 {
-  "version": "5.2.32",
+  "version": "5.2.33",
   "history": [
+    {
+      "version": "5.2.33",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "L’histoire des parcs et attractions gagne en fiabilité.",
+        "en": "Park and attraction history is now more reliable.",
+        "de": "Die Geschichte von Parks und Attraktionen ist jetzt zuverlässiger.",
+        "nl": "De geschiedenis van parken en attracties is nu betrouwbaarder.",
+        "it": "La storia di parchi e attrazioni è ora più affidabile.",
+        "es": "La historia de parques y atracciones es ahora más fiable.",
+        "pl": "Historia parków i atrakcji jest teraz bardziej niezawodna.",
+        "pt": "A história de parques e atrações está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.32",
       "releasedAt": "2026-09-12",
