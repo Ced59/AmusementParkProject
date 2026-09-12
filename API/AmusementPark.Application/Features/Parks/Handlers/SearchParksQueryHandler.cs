@@ -2,12 +2,16 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -16,6 +20,7 @@ using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
 
@@ -33,6 +38,10 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
     private readonly IParkZoneRepository? parkZoneRepository;
     private readonly IImageRepository? imageRepository;
     private readonly IHistoryEventRepository? historyEventRepository;
+    private readonly IParkPricingRepository? parkPricingRepository;
+    private readonly IParkFounderRepository? parkFounderRepository;
+    private readonly IParkOperatorRepository? parkOperatorRepository;
+    private readonly IAttractionManufacturerRepository? attractionManufacturerRepository;
 
     public SearchParksQueryHandler(
         IParkRepository parkRepository,
@@ -43,7 +52,11 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         PagedQueryValidator pagedQueryValidator,
         IParkZoneRepository? parkZoneRepository = null,
         IImageRepository? imageRepository = null,
-        IHistoryEventRepository? historyEventRepository = null)
+        IHistoryEventRepository? historyEventRepository = null,
+        IParkPricingRepository? parkPricingRepository = null,
+        IParkFounderRepository? parkFounderRepository = null,
+        IParkOperatorRepository? parkOperatorRepository = null,
+        IAttractionManufacturerRepository? attractionManufacturerRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
@@ -54,6 +67,10 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         this.parkZoneRepository = parkZoneRepository;
         this.imageRepository = imageRepository;
         this.historyEventRepository = historyEventRepository;
+        this.parkPricingRepository = parkPricingRepository;
+        this.parkFounderRepository = parkFounderRepository;
+        this.parkOperatorRepository = parkOperatorRepository;
+        this.attractionManufacturerRepository = attractionManufacturerRepository;
     }
 
     public async Task<ApplicationResult<PagedResult<ParkListResult>>> HandleAsync(SearchParksQuery query, CancellationToken cancellationToken = default)
@@ -186,6 +203,18 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> openingHoursSummaries = loadOpeningHours
             ? await this.parkOpeningHoursRepository.GetSummariesByParkIdsAsync(parkIds, cancellationToken)
             : new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkOpeningHoursSchedule> openingHoursSchedules = includeDataCompleteness
+            ? (await this.parkOpeningHoursRepository.GetPublicTextByParkIdsAsync(parkIds, cancellationToken))
+                .Where(static schedule => !string.IsNullOrWhiteSpace(schedule.ParkId))
+                .GroupBy(static schedule => schedule.ParkId.Trim(), StringComparer.Ordinal)
+                .ToDictionary(static group => group.Key, static group => group.First(), StringComparer.Ordinal)
+            : new Dictionary<string, ParkOpeningHoursSchedule>(StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkPricingEntity> pricingByParkId = includeDataCompleteness && this.parkPricingRepository is not null
+            ? (await this.parkPricingRepository.GetPublicTextByParkIdsAsync(parkIds, cancellationToken))
+                .Where(static pricing => !string.IsNullOrWhiteSpace(pricing.ParkId))
+                .GroupBy(static pricing => pricing.ParkId.Trim(), StringComparer.Ordinal)
+                .ToDictionary(static group => group.Key, static group => group.First(), StringComparer.Ordinal)
+            : new Dictionary<string, ParkPricingEntity>(StringComparer.Ordinal);
         IReadOnlyDictionary<string, ParkDataCompletenessContext> dataCompletenessContexts = includeDataCompleteness
             ? await DataCompletenessContextFactory.BuildParkContextsAsync(
                 page.Items,
@@ -196,7 +225,12 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
                 this.parkZoneRepository,
                 this.imageRepository,
                 this.historyEventRepository,
-                cancellationToken)
+                cancellationToken,
+                openingHoursSchedulesByParkId: openingHoursSchedules,
+                pricingByParkId: pricingByParkId,
+                parkFounderRepository: this.parkFounderRepository,
+                parkOperatorRepository: this.parkOperatorRepository,
+                attractionManufacturerRepository: this.attractionManufacturerRepository)
             : new Dictionary<string, ParkDataCompletenessContext>(StringComparer.Ordinal);
         List<ParkListResult> items = page.Items
             .Select(park =>

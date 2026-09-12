@@ -1,12 +1,16 @@
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.Parks.Services;
 
@@ -22,7 +26,12 @@ internal static class DataCompletenessContextFactory
         IImageRepository? imageRepository,
         IHistoryEventRepository? historyEventRepository,
         CancellationToken cancellationToken,
-        bool projectForPublication = false)
+        bool projectForPublication = false,
+        IReadOnlyDictionary<string, ParkOpeningHoursSchedule>? openingHoursSchedulesByParkId = null,
+        IReadOnlyDictionary<string, ParkPricingEntity>? pricingByParkId = null,
+        IParkFounderRepository? parkFounderRepository = null,
+        IParkOperatorRepository? parkOperatorRepository = null,
+        IAttractionManufacturerRepository? attractionManufacturerRepository = null)
     {
         List<string> parkIds = parks
             .Select(static park => park.Id)
@@ -58,6 +67,30 @@ internal static class DataCompletenessContextFactory
             parkItems.Select(static item => item.Id ?? string.Empty).ToList(),
             historyEventRepository,
             cancellationToken);
+        Dictionary<string, ParkFounder> foundersById = await DataCompletenessPublicTextEncoding.LoadFoundersByIdAsync(parks, parkFounderRepository, cancellationToken);
+        Dictionary<string, ParkOperator> operatorsById = await DataCompletenessPublicTextEncoding.LoadOperatorsByIdAsync(parks, parkOperatorRepository, cancellationToken);
+        Dictionary<string, AttractionManufacturer> manufacturersById = await DataCompletenessPublicTextEncoding.LoadManufacturersByIdAsync(
+            parkItems,
+            attractionManufacturerRepository,
+            cancellationToken);
+        Dictionary<string, List<Image>> founderImagesById = await LoadImagesByOwnerIdAsync(
+            ImageOwnerType.ParkFounder,
+            foundersById.Keys.ToList(),
+            ImageCategory.Founder,
+            imageRepository,
+            cancellationToken);
+        Dictionary<string, List<Image>> operatorImagesById = await LoadImagesByOwnerIdAsync(
+            ImageOwnerType.ParkOperator,
+            operatorsById.Keys.ToList(),
+            ImageCategory.Operator,
+            imageRepository,
+            cancellationToken);
+        Dictionary<string, List<Image>> manufacturerImagesById = await LoadImagesByOwnerIdAsync(
+            ImageOwnerType.AttractionManufacturer,
+            manufacturersById.Keys.ToList(),
+            ImageCategory.Manufacturer,
+            imageRepository,
+            cancellationToken);
 
         Dictionary<string, ParkDataCompletenessContext> contextsByParkId = new Dictionary<string, ParkDataCompletenessContext>(StringComparer.Ordinal);
         foreach (Park park in parks)
@@ -78,6 +111,22 @@ internal static class DataCompletenessContextFactory
                 ?? new Dictionary<ParkItemCategory, int>();
             ParkItemVisibilityCounts? visibilityCounts = visibilityCountsByParkId.GetValueOrDefault(parkId);
             ParkOpeningHoursScheduleSummary? openingHoursSummary = openingHoursSummariesByParkId.GetValueOrDefault(parkId);
+            ParkOpeningHoursSchedule? openingHoursSchedule = park.Status.CanHaveCurrentOpeningHours()
+                ? openingHoursSchedulesByParkId?.GetValueOrDefault(parkId)
+                : null;
+            ParkPricingEntity? pricing = park.Status.IsOpenToVisitors()
+                ? pricingByParkId?.GetValueOrDefault(parkId)
+                : null;
+            ParkFounder? founder = DataCompletenessPublicTextEncoding.ResolveReference(park.FounderId, foundersById);
+            ParkOperator? parkOperator = DataCompletenessPublicTextEncoding.ResolveReference(park.OperatorId, operatorsById);
+            IReadOnlyCollection<AttractionManufacturer> manufacturers = DataCompletenessPublicTextEncoding.ResolveManufacturers(currentParkItems, manufacturersById);
+            IReadOnlyCollection<Image> referenceImages = DataCompletenessPublicTextEncoding.ResolveReferenceImages(
+                founder,
+                parkOperator,
+                manufacturers,
+                founderImagesById,
+                operatorImagesById,
+                manufacturerImagesById);
             IReadOnlyCollection<HistoryEvent> currentParkItemHistory = currentParkItems
                 .SelectMany(item => string.IsNullOrWhiteSpace(item.Id)
                     ? Enumerable.Empty<HistoryEvent>()
@@ -115,14 +164,20 @@ internal static class DataCompletenessContextFactory
             IReadOnlyCollection<HistoryEvent> scoreParkItemHistory = currentPublicParkItemHistory
                 .Where(static historyEvent => historyEvent.IsVisible)
                 .ToList();
-            bool hasNoForbiddenPublicText = HasNoForbiddenParkRelatedPublicText(
+            bool hasNoForbiddenPublicText = DataCompletenessPublicTextEncoding.HasNoForbiddenParkRelatedPublicText(
                 currentParkItems,
                 currentZones,
                 scoreParkOwnedImages,
                 scoreParkItemImages,
                 scoreParkHistory,
                 scoreParkItemHistory,
-                projectCurrentParkForPublication);
+                projectCurrentParkForPublication,
+                openingHoursSchedule,
+                pricing,
+                founder,
+                parkOperator,
+                manufacturers,
+                referenceImages);
             bool hasNoFormulaicPublicText = !DataCompletenessScoringRules.HasFormulaicPublicText(
                 CollectParkPublicTexts(
                     park,
@@ -263,8 +318,8 @@ internal static class DataCompletenessContextFactory
                 HasSeoSignals = HasParkItemSeoSignals(parkItem, parentResolved),
                 HasStructuredDataSignals = parkItem.Category != ParkItemCategory.Other && parkItem.Type != ParkItemType.Other,
                 HasHumanReviewOrDocumentedDebt = parkItem.AdminReviewStatus != AdminReviewStatus.ToReview,
-                HasNoForbiddenPublicText = !publishedImages.Any(HasForbiddenImagePublicText)
-                    && !visibleHistoryEvents.Any(static historyEvent => HasForbiddenHistoryPublicText(historyEvent, false)),
+                HasNoForbiddenPublicText = !publishedImages.Any(DataCompletenessPublicTextEncoding.HasForbiddenImagePublicText)
+                    && !visibleHistoryEvents.Any(static historyEvent => DataCompletenessPublicTextEncoding.HasForbiddenHistoryPublicText(historyEvent, false)),
             };
             contextsByItemId[itemId] = context;
         }
@@ -415,61 +470,6 @@ internal static class DataCompletenessContextFactory
             || historyEvent.Article?.Blocks.Any(static block => !string.IsNullOrWhiteSpace(block.ImageId) || block.ImageIds.Count > 0) == true;
     }
 
-    private static bool HasNoForbiddenParkRelatedPublicText(
-        IReadOnlyCollection<ParkItem> parkItems,
-        IReadOnlyCollection<ParkZone> zones,
-        IReadOnlyCollection<Image> parkImages,
-        IReadOnlyCollection<Image> parkItemImages,
-        IReadOnlyCollection<HistoryEvent> parkHistory,
-        IReadOnlyCollection<HistoryEvent> parkItemHistory,
-        bool projectForPublication)
-    {
-        return !parkItems
-                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-                .Any(static item => HasForbiddenLocalizedPublicText(item.Descriptions))
-            && !zones
-                .Where(static zone => zone.IsVisible)
-                .Any(static zone => HasForbiddenLocalizedPublicText(zone.Descriptions))
-            && !parkImages.Any(HasForbiddenImagePublicText)
-            && !parkItemImages.Any(HasForbiddenImagePublicText)
-            && !parkHistory.Any(historyEvent => HasForbiddenHistoryPublicText(historyEvent, projectForPublication))
-            && !parkItemHistory.Any(historyEvent => HasForbiddenHistoryPublicText(historyEvent, projectForPublication));
-    }
-
-    private static bool HasForbiddenImagePublicText(Image image)
-    {
-        return DataCompletenessScoringRules.HasForbiddenPublicText(image.Description)
-            || HasForbiddenLocalizedPublicText(image.AltTexts)
-            || HasForbiddenLocalizedPublicText(image.Captions);
-    }
-
-    private static bool HasForbiddenHistoryPublicText(HistoryEvent historyEvent, bool projectForPublication)
-    {
-        if (HasForbiddenLocalizedPublicText(historyEvent.Titles)
-            || HasForbiddenLocalizedPublicText(historyEvent.Summaries))
-        {
-            return true;
-        }
-
-        HistoryArticle? article = historyEvent.Article;
-        if (article is null || (!projectForPublication && !article.IsPublished))
-        {
-            return false;
-        }
-
-        return HasForbiddenLocalizedPublicText(article.Titles)
-            || HasForbiddenLocalizedPublicText(article.Subtitles)
-            || HasForbiddenLocalizedPublicText(article.Summaries)
-            || article.Blocks.Any(static block =>
-                HasForbiddenLocalizedPublicText(block.Texts)
-                || HasForbiddenLocalizedPublicText(block.Captions));
-    }
-
-    private static bool HasForbiddenLocalizedPublicText(IEnumerable<LocalizedText> values)
-    {
-        return values.Any(static value => DataCompletenessScoringRules.HasForbiddenPublicText(value.Value));
-    }
-
     private static IReadOnlyCollection<LocalizedText> CollectParkPublicTexts(
         Park park,
         IReadOnlyCollection<ParkItem> parkItems,
@@ -603,20 +603,5 @@ internal static class DataCompletenessContextFactory
     private static bool HasLocalizedText(IEnumerable<LocalizedText>? values)
     {
         return values?.Any(static value => !string.IsNullOrWhiteSpace(value.Value)) == true;
-    }
-}
-
-internal sealed class ParkOpeningHoursAdminStatusResolverAccessor
-{
-    private readonly Func<ParkOpeningHoursScheduleSummary, ParkOpeningHoursAdminStatus> resolveStatus;
-
-    public ParkOpeningHoursAdminStatusResolverAccessor(Func<ParkOpeningHoursScheduleSummary, ParkOpeningHoursAdminStatus> resolveStatus)
-    {
-        this.resolveStatus = resolveStatus;
-    }
-
-    public ParkOpeningHoursAdminStatus ResolveStatus(ParkOpeningHoursScheduleSummary summary)
-    {
-        return this.resolveStatus(summary);
     }
 }

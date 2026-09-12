@@ -8,6 +8,8 @@ namespace AmusementPark.Application.Features.Images.Contracts;
 /// </summary>
 public sealed class ImageMetadataUpdate
 {
+    public string? OriginalFileName { get; init; }
+
     public string? Description { get; init; }
 
     public GeoPointValue? GeoLocation { get; init; }

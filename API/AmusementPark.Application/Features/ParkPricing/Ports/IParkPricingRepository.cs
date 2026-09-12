@@ -10,6 +10,10 @@ public interface IParkPricingRepository
         IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<ParkPricingEntity>> GetPublicTextByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
+
     Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken);
 
     Task<bool> DeleteByParkIdAsync(string parkId, CancellationToken cancellationToken);

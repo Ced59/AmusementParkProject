@@ -6,6 +6,14 @@ public interface IParkOpeningHoursRepository
 {
     Task<ParkOpeningHoursSchedule?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<ParkOpeningHoursSchedule>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<ParkOpeningHoursSchedule>> GetPublicTextByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> GetSummariesByParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<ParkOpeningHoursScheduleSummary>> GetConfiguredSummariesAsync(CancellationToken cancellationToken);

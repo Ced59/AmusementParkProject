@@ -119,11 +119,14 @@ Vérifier :
 - titres et résumés historiques lisibles ;
 - articles utiles et non redondants.
 - les textes ne contiennent pas “upsert”, “SEO”, “contenu public” ou autre jargon interne.
+- le JSON brut ne contient aucune entité HTML de présentation telle que `&rsquo;`, `&#8217;`, `&eacute;` ou `&nbsp;`, ni de référence doublement encodée telle que `&amp;rsquo;`, `&amp;#8217;` ou `&amp;amp;` ; les champs de texte brut, blocs d’articles inclus, ne contiennent aucune entité HTML, et le HTML riche n’emploie que `&amp;`, `&lt;` ou `&gt;` lorsqu’un échappement structurel simple est réellement nécessaire.
 - les événements et articles ne contiennent pas “repère documentaire prudent”, “présence publique confirmée”, justification de méthode, note d’audit ou formulation mécanique équivalente.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 - les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
 - les descriptions, timelines et articles ne déroulent ni tracé, ni rotations, ni accélérations, ni principe de fonctionnement et ne réinjectent pas vitesse, durée, capacité ou nombre de sièges et de véhicules depuis les données structurées.
 - l’appel final de complétude ne renvoie aucun `publicationBlockers`. La clé `public-text.forbidden-editorial-language` est bloquante et plafonne le score à 95 ; elle interdit Preview de publication tant que le corpus concerné n’a pas été réécrit puis contrôlé à nouveau.
+
+Le contrôle d’encodage s’effectue sur les valeurs brutes du dernier export, avant `HtmlDecode`, normalisation du HTML ou extraction du texte visible. Un audit effectué uniquement après décodage masquerait précisément les chaînes qui s’affichent littéralement dans les composants de texte brut. Toute occurrence non autorisée impose une correction ciblée de l’étape qui possède le champ, un nouveau `Preview`/`Apply`, puis un nouveau contrôle brut.
 
 ### Audit transversal anti-gabarit
 

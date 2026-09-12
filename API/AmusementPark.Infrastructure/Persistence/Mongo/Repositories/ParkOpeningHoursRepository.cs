@@ -26,6 +26,68 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<ParkOpeningHoursSchedule>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkOpeningHoursSchedule>();
+        }
+
+        FilterDefinition<ParkOpeningHoursScheduleDocument> filter = Builders<ParkOpeningHoursScheduleDocument>.Filter.In(
+            static document => document.ParkId,
+            normalizedParkIds);
+        List<ParkOpeningHoursScheduleDocument> documents = await this.collection
+            .Find(filter)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<ParkOpeningHoursSchedule>> GetPublicTextByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkOpeningHoursSchedule>();
+        }
+
+        FilterDefinition<ParkOpeningHoursScheduleDocument> filter = Builders<ParkOpeningHoursScheduleDocument>.Filter.In(
+            static document => document.ParkId,
+            normalizedParkIds);
+        ProjectionDefinition<ParkOpeningHoursScheduleDocument> projection = Builders<ParkOpeningHoursScheduleDocument>.Projection
+            .Include(static document => document.ParkId)
+            .Include("regularRules.startDate")
+            .Include("regularRules.endDate")
+            .Include("regularRules.labels")
+            .Include("regularRules.reasons")
+            .Include("dateOverrides.localDate")
+            .Include("dateOverrides.labels")
+            .Include("dateOverrides.reasons");
+        List<ParkOpeningHoursScheduleDocument> documents = await this.collection
+            .Find(filter)
+            .Project<ParkOpeningHoursScheduleDocument>(projection)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> GetSummariesByParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = parkIds

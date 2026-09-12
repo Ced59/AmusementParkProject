@@ -18,6 +18,11 @@ public interface IParkFounderRepository
     Task<ParkFounder?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les park founders par identifiants.
+    /// </summary>
+    Task<IReadOnlyCollection<ParkFounder>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Crée un park founder.
     /// </summary>
     Task<ParkFounder> CreateAsync(ParkFounder entity, CancellationToken cancellationToken);

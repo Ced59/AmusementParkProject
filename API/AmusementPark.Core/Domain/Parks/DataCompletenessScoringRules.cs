@@ -106,6 +106,16 @@ public static class DataCompletenessScoringRules
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromMilliseconds(100));
 
+    private static readonly Regex EncodedTextEntityRegex = new Regex(
+        @"&(?:(?!(?:amp|lt|gt);)(?:#[0-9]+|#x[0-9a-f]+|[a-z][a-z0-9]+);|amp;(?:#[0-9]+|#x[0-9a-f]+|[a-z][a-z0-9]+);)",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex HtmlEntityRegex = new Regex(
+        @"&(?:#[0-9]+|#x[0-9a-f]+|[a-z][a-z0-9]+);",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
     private static readonly Regex WhitespaceRegex = new Regex(
         @"\s+",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
@@ -209,10 +219,41 @@ public static class DataCompletenessScoringRules
 
     public static bool HasForbiddenPublicText(string? value)
     {
+        return HasForbiddenRichPublicText(value);
+    }
+
+    public static bool HasForbiddenRichPublicText(string? value)
+    {
         if (string.IsNullOrWhiteSpace(value))
         {
             return false;
         }
+
+        if (HasEncodedDisplayEntity(value))
+        {
+            return true;
+        }
+
+        return HasForbiddenEditorialPublicText(value);
+    }
+
+    public static bool HasForbiddenPlainPublicText(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return false;
+        }
+
+        if (HasHtmlEntity(value))
+        {
+            return true;
+        }
+
+        return HasForbiddenEditorialPublicText(value);
+    }
+
+    private static bool HasForbiddenEditorialPublicText(string value)
+    {
 
         string normalizedValue = NormalizePublicText(value);
         if (InternalJargonRegex.IsMatch(normalizedValue)
@@ -224,6 +265,16 @@ public static class DataCompletenessScoringRules
 
         int technicalNarrativeCategoryCount = TechnicalNarrativeCategoryRegexes.Count(regex => regex.IsMatch(normalizedValue));
         return technicalNarrativeCategoryCount >= 3;
+    }
+
+    public static bool HasEncodedDisplayEntity(string? value)
+    {
+        return !string.IsNullOrWhiteSpace(value) && EncodedTextEntityRegex.IsMatch(value);
+    }
+
+    public static bool HasHtmlEntity(string? value)
+    {
+        return !string.IsNullOrWhiteSpace(value) && HtmlEntityRegex.IsMatch(value);
     }
 
     public static bool HasFormulaicPublicText(

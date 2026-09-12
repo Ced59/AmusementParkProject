@@ -190,6 +190,11 @@ public sealed class ParkFounderRepository : MongoCrudRepositoryBase<ParkFounder,
         return base.GetByIdAsync(id, document => document.ToDomain(), cancellationToken);
     }
 
+    public Task<IReadOnlyCollection<ParkFounder>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken)
+    {
+        return base.GetByIdsAsync(ids, document => document.ToDomain(), cancellationToken);
+    }
+
     public Task<ParkFounder> CreateAsync(ParkFounder entity, CancellationToken cancellationToken)
     {
         return base.CreateAsync(entity, value => value.ToDocument(), document => document.ToDomain(), cancellationToken);
@@ -219,6 +224,11 @@ public sealed class ParkOperatorRepository : MongoCrudRepositoryBase<ParkOperato
     public Task<ParkOperator?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         return base.GetByIdAsync(id, document => document.ToDomain(), cancellationToken);
+    }
+
+    public Task<IReadOnlyCollection<ParkOperator>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken)
+    {
+        return base.GetByIdsAsync(ids, document => document.ToDomain(), cancellationToken);
     }
 
     public Task<ParkOperator> CreateAsync(ParkOperator entity, CancellationToken cancellationToken)

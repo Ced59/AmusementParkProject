@@ -1,6 +1,20 @@
 {
-  "version": "5.2.44",
+  "version": "5.2.45",
   "history": [
+    {
+      "version": "5.2.45",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les textes des parcs gagnent en fidélité typographique.",
+        "en": "Park texts now preserve typography more faithfully.",
+        "de": "Parktexte bewahren ihre Typografie jetzt zuverlässiger.",
+        "nl": "Parkteksten behouden hun typografie nu betrouwbaarder.",
+        "it": "I testi dei parchi rispettano ora meglio la tipografia.",
+        "es": "Los textos de los parques conservan ahora mejor la tipografía.",
+        "pl": "Teksty parków zachowują teraz poprawniejszą typografię.",
+        "pt": "Os textos dos parques preservam agora melhor a tipografia."
+      }
+    },
     {
       "version": "5.2.44",
       "releasedAt": "2026-09-12",

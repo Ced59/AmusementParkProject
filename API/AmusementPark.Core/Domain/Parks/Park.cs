@@ -129,7 +129,19 @@ public sealed class Park : GeolocatedEntityBase
         bool isValidatedForPublication = this.AdminReviewStatus == AdminReviewStatus.Validated
             || (scoreContext.ProjectForPublication && this.AdminReviewStatus != AdminReviewStatus.NotRelevant);
         bool isPotentiallyPublishable = this.IsPotentiallyPublishable(scoreContext.ProjectForPublication);
-        bool hasForbiddenPublicText = this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenPublicText(description.Value))
+        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Name)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.OpeningDateText)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.ClosingDateText)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Street)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.City)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.PostalCode)
+            || this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenRichPublicText(description.Value))
+            || this.OfficialMaps
+                .Where(static officialMap => officialMap.IsPubliclyDisplayable())
+                .Any(static officialMap =>
+                    DataCompletenessScoringRules.HasHtmlEntity(officialMap.OriginalFileName)
+                    || officialMap.Titles.Any(static title => DataCompletenessScoringRules.HasForbiddenPlainPublicText(title.Value))
+                    || officialMap.AlternativeTexts.Any(static alternativeText => DataCompletenessScoringRules.HasForbiddenPlainPublicText(alternativeText.Value)))
             || !scoreContext.HasNoForbiddenPublicText
             || !scoreContext.HasStructuredTechnicalDataOnly;
         bool isPublicationCandidate = this.IsVisible || isPotentiallyPublishable;
