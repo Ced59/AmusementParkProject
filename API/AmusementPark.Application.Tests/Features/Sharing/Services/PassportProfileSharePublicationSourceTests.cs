@@ -22,19 +22,25 @@ public sealed class PassportProfileSharePublicationSourceTests
             OwnerUserId,
             2026,
             ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.GetSnapshotAsync(
-                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 3
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 4
                     && scopes.Contains(passportScope)
+                    && scopes.Contains(fingerprintScope)
                     && scopes.Contains(displayNameScope)
                     && scopes.Contains(catalogScope)),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 [passportScope] = Revision(4),
+                [fingerprintScope] = Revision(0),
                 [displayNameScope] = Revision(7),
                 [catalogScope] = Revision(3),
             });
@@ -61,6 +67,10 @@ public sealed class PassportProfileSharePublicationSourceTests
             OwnerUserId,
             2026,
             ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(OwnerUserId);
         string ratingsScope = PersonalRankingShareSourceScope.CreateRating(
@@ -75,12 +85,13 @@ public sealed class PassportProfileSharePublicationSourceTests
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.EnsureCreatedAsync(
                 It.Is<IReadOnlyCollection<string>>(scopes => scopes.SequenceEqual(
-                    new[] { passportScope })),
+                    new[] { passportScope, fingerprintScope })),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         revisions.Setup(value => value.GetSnapshotAsync(
-                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 5
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 6
                     && scopes.Contains(passportScope)
+                    && scopes.Contains(fingerprintScope)
                     && scopes.Contains(displayNameScope)
                     && scopes.Contains(avatarScope)
                     && scopes.Contains(ratingsScope)
@@ -89,6 +100,7 @@ public sealed class PassportProfileSharePublicationSourceTests
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 [passportScope] = Revision(4),
+                [fingerprintScope] = Revision(0),
                 [displayNameScope] = Revision(7),
                 [avatarScope] = Revision(9),
                 [ratingsScope] = Revision(11),
@@ -119,6 +131,10 @@ public sealed class PassportProfileSharePublicationSourceTests
             OwnerUserId,
             2026,
             ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         ShareContentPolicy policy = CreatePolicy(
@@ -126,6 +142,7 @@ public sealed class PassportProfileSharePublicationSourceTests
             ShareContentField.GeographicStatistics);
         PassportProfileShareSourceRevisionSnapshot expected = new PassportProfileShareSourceRevisionSnapshot(
             Revision(4),
+            Revision(0),
             Revision(7),
             Revision(0),
             Revision(0),
@@ -141,6 +158,7 @@ public sealed class PassportProfileSharePublicationSourceTests
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 [passportScope] = Revision(4),
+                [fingerprintScope] = Revision(0),
                 [displayNameScope] = Revision(7),
                 [catalogScope] = Revision(4),
             });
@@ -162,6 +180,62 @@ public sealed class PassportProfileSharePublicationSourceTests
     }
 
     [Fact]
+    public async Task ReconcileOwnedSourceVersionAsync_ShouldVersionAFirstSelectedSourceMutation()
+    {
+        string passportScope = PassportProfileShareSourceScope.CreateSegment(
+            OwnerUserId,
+            2026,
+            ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
+        string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
+        ShareContentPolicy policy = CreatePolicy(ShareContentField.PublicDisplayName);
+        PassportProfileShareSourceRevisionSnapshot expected = new PassportProfileShareSourceRevisionSnapshot(
+            Revision(4),
+            Revision(0),
+            Revision(0),
+            Revision(0),
+            Revision(0),
+            new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal));
+        Mock<IShareSourceRevisionRepository> revisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        revisions.Setup(value => value.GetSnapshotAsync(
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 3
+                    && scopes.Contains(passportScope)
+                    && scopes.Contains(fingerprintScope)
+                    && scopes.Contains(displayNameScope)),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
+            {
+                [passportScope] = Revision(4),
+                [fingerprintScope] = Revision(0),
+                [displayNameScope] = Revision(0),
+            });
+        revisions.Setup(value => value.ReconcileFingerprintAsync(
+                fingerprintScope,
+                "selected-source-fingerprint",
+                CancellationToken.None))
+            .ReturnsAsync(Revision(1));
+        PassportProfileSharePublicationSource source = CreateSource(revisions.Object);
+
+        ApplicationResult<PassportProfileShareSourceRevision> result =
+            await source.ReconcileOwnedSourceVersionAsync(
+                OwnerUserId,
+                "selected-source-fingerprint",
+                expected,
+                policy,
+                CreateInput(),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(5, result.Value!.Version);
+        Assert.Equal("selected-source-fingerprint", result.Value.SourceFingerprint);
+        revisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetCurrentSourceVersionAsync_ShouldIncludeOnlyPublishedIdentityAndRatings()
     {
         string sourceScope = PassportProfileShareSourceScope.Create(OwnerUserId);
@@ -169,6 +243,10 @@ public sealed class PassportProfileSharePublicationSourceTests
             OwnerUserId,
             2026,
             ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(OwnerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(OwnerUserId);
         string ratingsScope = PersonalRankingShareSourceScope.CreateRating(
@@ -178,6 +256,7 @@ public sealed class PassportProfileSharePublicationSourceTests
         Dictionary<string, ShareSourceRevision> available = new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
         {
             [passportScope] = Revision(4),
+            [fingerprintScope] = Revision(0),
             [displayNameScope] = Revision(7),
             [avatarScope] = Revision(9),
             [ratingsScope] = Revision(11),
@@ -235,7 +314,7 @@ public sealed class PassportProfileSharePublicationSourceTests
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.EnsureCreatedAsync(
-                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 25_000),
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 25_001),
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         revisions.Setup(value => value.GetSnapshotAsync(
@@ -277,6 +356,10 @@ public sealed class PassportProfileSharePublicationSourceTests
             OwnerUserId,
             2026,
             ParkId);
+        string fingerprintScope = PassportProfileShareSourceScope.CreateFingerprint(
+            OwnerUserId,
+            new[] { 2026 },
+            new[] { ParkId });
         string catalogScope = PublicCatalogShareSourceScope.CreatePark(ParkId);
         ShareContentPolicy policy = CreatePolicy(ShareContentField.GeographicStatistics);
         PassportProfileShareInput selection = new PassportProfileShareInput(
@@ -305,13 +388,15 @@ public sealed class PassportProfileSharePublicationSourceTests
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         revisions.Setup(value => value.GetSnapshotAsync(
-                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 2
+                It.Is<IReadOnlyCollection<string>>(scopes => scopes.Count == 3
                     && scopes.Contains(passportScope)
+                    && scopes.Contains(fingerprintScope)
                     && scopes.Contains(catalogScope)),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 [passportScope] = Revision(4),
+                [fingerprintScope] = Revision(0),
                 [catalogScope] = Revision(3),
             });
         PassportProfileSharePublicationSource source = new PassportProfileSharePublicationSource(

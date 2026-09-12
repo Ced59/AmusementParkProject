@@ -510,6 +510,66 @@ public sealed class RatingRankingSourceRevisionGuardTests
     }
 
     [Fact]
+    public async Task PrepareParkChangesAsync_WhenVisibleParkStopsBeingRatingEligible_ShouldFenceItsPublicShareCatalog()
+    {
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        revisions
+            .Setup(repository => repository.BeginMutationAsync(
+                It.IsAny<RankingScopeKey>(),
+                CancellationToken.None))
+            .Returns((RankingScopeKey scopeKey, CancellationToken _) =>
+                Task.FromResult(CreateLease(scopeKey)));
+        ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
+            PersonalRankingShareSourceScope.PublicCatalog,
+            8.ToString("x32"));
+        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
+        ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
+            parkCatalogScope,
+            9.ToString("x32"));
+        Mock<IShareSourceRevisionRepository> shareRevisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(catalogLease);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                parkCatalogScope,
+                CancellationToken.None))
+            .ReturnsAsync(parkCatalogLease);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(
+            revisions.Object,
+            shareSourceRevisions: shareRevisions.Object);
+        Park previous = new Park
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        Park current = new Park
+        {
+            Id = "park-1",
+            Name = "Demo Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            Status = ParkStatus.ClosedDefinitively,
+        };
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Equal(CanonicalRankingScopes.All.Count, preparation.MutationLeases.Count);
+        Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
+        Assert.Same(parkCatalogLease, Assert.Single(preparation.PublicCatalogMutationLeases));
+        revisions.VerifyAll();
+        shareRevisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task PrepareParkChangesAsync_WhenVisibleClosedParkNameChanges_ShouldFenceShareCatalog()
     {
         Mock<IRatingRankingSourceRevisionRepository> revisions =

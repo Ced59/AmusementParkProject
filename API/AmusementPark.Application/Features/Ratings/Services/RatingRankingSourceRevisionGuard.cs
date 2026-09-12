@@ -346,7 +346,9 @@ public sealed class RatingRankingSourceRevisionGuard :
                 || !string.Equals(
                     NormalizeCountryCode(previous.CountryCode),
                     NormalizeCountryCode(current.CountryCode),
-                    StringComparison.Ordinal)));
+                    StringComparison.Ordinal)
+                || previous.Status.CanAppearInCurrentRatingRankings()
+                    != current.Status.CanAppearInCurrentRatingRankings()));
     }
 
     private static bool AffectsPublicShareCatalog(ParkItem? previous, ParkItem? current)
@@ -359,6 +361,12 @@ public sealed class RatingRankingSourceRevisionGuard :
             && (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name)
                 || !string.Equals(previous.ParkId?.Trim(), current.ParkId?.Trim(), StringComparison.Ordinal)
                 || previous.Category != current.Category
+                || ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+                    previous.Category,
+                    previous.AttractionDetails?.Status)
+                    != ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+                        current.Category,
+                        current.AttractionDetails?.Status)
                 || previous.AttractionDetails?.ClosingDate != current.AttractionDetails?.ClosingDate));
     }
 

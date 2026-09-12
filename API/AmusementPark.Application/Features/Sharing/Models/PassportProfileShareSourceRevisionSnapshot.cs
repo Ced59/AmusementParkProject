@@ -4,12 +4,14 @@ namespace AmusementPark.Application.Features.Sharing.Models;
 
 public sealed record PassportProfileShareSourceRevisionSnapshot(
     ShareSourceRevision Passport,
+    ShareSourceRevision Fingerprint,
     ShareSourceRevision DisplayName,
     ShareSourceRevision Avatar,
     ShareSourceRevision Ratings,
     IReadOnlyDictionary<string, ShareSourceRevision> Catalog)
 {
     public bool IsStable => this.Passport.IsStable
+        && this.Fingerprint.IsStable
         && this.DisplayName.IsStable
         && this.Avatar.IsStable
         && this.Ratings.IsStable
@@ -19,6 +21,7 @@ public sealed record PassportProfileShareSourceRevisionSnapshot(
     {
         ArgumentNullException.ThrowIfNull(policy);
         return this.Passport.IsStable
+            && this.Fingerprint.IsStable
             && (!policy.Includes(ShareContentField.PublicDisplayName)
                 || this.DisplayName.IsStable)
             && (!policy.Includes(ShareContentField.Avatar) || this.Avatar.IsStable)
@@ -33,6 +36,7 @@ public sealed record PassportProfileShareSourceRevisionSnapshot(
         ArgumentNullException.ThrowIfNull(other);
         ArgumentNullException.ThrowIfNull(policy);
         return this.Passport.Revision == other.Passport.Revision
+            && this.Fingerprint.Revision == other.Fingerprint.Revision
             && (!policy.Includes(ShareContentField.PublicDisplayName)
                 || this.DisplayName.Revision == other.DisplayName.Revision)
             && (!policy.Includes(ShareContentField.Avatar)

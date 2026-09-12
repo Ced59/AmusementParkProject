@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace AmusementPark.Application.Features.Sharing.Services;
@@ -6,6 +8,7 @@ public static class PassportProfileShareSourceScope
 {
     private const string Prefix = "passport-profile:";
     private const string SegmentPrefix = "passport-profile-segment:";
+    private const string FingerprintPrefix = "passport-profile-fingerprint:";
     private static readonly UTF8Encoding StrictUtf8 = new UTF8Encoding(false, true);
 
     public static string Create(string ownerUserId)
@@ -47,6 +50,50 @@ public static class PassportProfileShareSourceScope
             Encode(normalizedParkId));
     }
 
+    public static string CreateFingerprint(
+        string ownerUserId,
+        IEnumerable<int> years,
+        IEnumerable<string> parkIds)
+    {
+        string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwner.Length == 0)
+        {
+            throw new ArgumentException("A share owner identifier is required.", nameof(ownerUserId));
+        }
+
+        ArgumentNullException.ThrowIfNull(years);
+        ArgumentNullException.ThrowIfNull(parkIds);
+        int[] normalizedYears = years
+            .Distinct()
+            .OrderBy(static year => year)
+            .ToArray();
+        string[] normalizedParkIds = parkIds
+            .Select(static parkId => parkId?.Trim() ?? string.Empty)
+            .Where(static parkId => parkId.Length > 0)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static parkId => parkId, StringComparer.Ordinal)
+            .ToArray();
+        StringBuilder canonical = new StringBuilder();
+        Append(canonical, "years");
+        Append(canonical, normalizedYears.Length);
+        foreach (int year in normalizedYears)
+        {
+            Append(canonical, year);
+        }
+
+        Append(canonical, "parks");
+        Append(canonical, normalizedParkIds.Length);
+        foreach (string parkId in normalizedParkIds)
+        {
+            Append(canonical, parkId);
+        }
+
+        string digest = Convert.ToHexString(
+                SHA256.HashData(Encoding.UTF8.GetBytes(canonical.ToString())))
+            .ToLowerInvariant();
+        return string.Concat(FingerprintPrefix, Encode(normalizedOwner), ":", digest);
+    }
+
     public static bool TryParse(string? sourceScopeKey, out string ownerUserId)
     {
         ownerUserId = string.Empty;
@@ -62,6 +109,14 @@ public static class PassportProfileShareSourceScope
             .TrimEnd('=')
             .Replace('+', '-')
             .Replace('/', '_');
+    }
+
+    private static void Append(StringBuilder target, object value)
+    {
+        string text = Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+        target.Append(text.Length.ToString(CultureInfo.InvariantCulture))
+            .Append(':')
+            .Append(text);
     }
 
     private static bool TryDecode(string value, out string decoded)

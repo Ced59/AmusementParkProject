@@ -111,8 +111,9 @@ public sealed class PassportProfileSharePublicationSource
         }
 
         string[] passportScopes = ResolvePassportScopes(normalizedOwnerUserId, input);
+        string fingerprintScope = ResolveFingerprintScope(normalizedOwnerUserId, input);
         await this.sourceRevisionRepository.EnsureCreatedAsync(
-            passportScopes,
+            passportScopes.Append(fingerprintScope).ToArray(),
             cancellationToken);
 
         return await this.GetOwnedSourceRevisionSnapshotAsync(
@@ -177,7 +178,6 @@ public sealed class PassportProfileSharePublicationSource
                 SharingApplicationErrors.SourceChangedDuringPreview());
         }
 
-        _ = sourceFingerprint;
         PassportProfileShareSourceRevisionSnapshot snapshotAfter = await this.ReadSnapshotAsync(
             normalizedOwnerUserId,
             contentPolicy,
@@ -190,7 +190,24 @@ public sealed class PassportProfileSharePublicationSource
                 SharingApplicationErrors.SourceChangedDuringPreview());
         }
 
-        ApplicationResult<long> versionResult = CreateVersion(snapshotAfter, contentPolicy);
+        ShareSourceRevision fingerprintRevision =
+            await this.sourceRevisionRepository.ReconcileFingerprintAsync(
+                ResolveFingerprintScope(normalizedOwnerUserId, normalizedResult.Value),
+                sourceFingerprint,
+                cancellationToken);
+        if (!fingerprintRevision.IsStable)
+        {
+            return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
+        PassportProfileShareSourceRevisionSnapshot reconciledSnapshot = snapshotAfter with
+        {
+            Fingerprint = fingerprintRevision,
+        };
+        ApplicationResult<long> versionResult = CreateVersion(
+            reconciledSnapshot,
+            contentPolicy);
         return versionResult.IsSuccess
             ? ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(
@@ -249,6 +266,7 @@ public sealed class PassportProfileSharePublicationSource
         CancellationToken cancellationToken)
     {
         string[] passportScopes = ResolvePassportScopes(ownerUserId, input);
+        string fingerprintScope = ResolveFingerprintScope(ownerUserId, input);
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(ownerUserId);
         string[] ratingsScopes = contentPolicy.Includes(ShareContentField.GlobalRatings)
@@ -263,7 +281,10 @@ public sealed class PassportProfileSharePublicationSource
                 .Select(PublicCatalogShareSourceScope.CreatePark)
                 .ToArray()
             : Array.Empty<string>();
-        List<string> scopes = new List<string>(passportScopes);
+        List<string> scopes = new List<string>(passportScopes)
+        {
+            fingerprintScope,
+        };
         if (contentPolicy.Includes(ShareContentField.PublicDisplayName))
         {
             scopes.Add(displayNameScope);
@@ -284,6 +305,7 @@ public sealed class PassportProfileSharePublicationSource
             StringComparer.Ordinal);
         return new PassportProfileShareSourceRevisionSnapshot(
             AggregateRevisions(passportScopes.Select(scope => revisions[scope])),
+            revisions[fingerprintScope],
             ResolveOptionalRevision(revisions, displayNameScope),
             ResolveOptionalRevision(revisions, avatarScope),
             AggregateRevisions(ratingsScopes.Select(scope => revisions[scope])),
@@ -307,6 +329,7 @@ public sealed class PassportProfileSharePublicationSource
                 static (total, revision) => checked(total + revision.Revision));
             return ApplicationResult<long>.Success(checked(
                 snapshot.Passport.Revision
+                + snapshot.Fingerprint.Revision
                 + (contentPolicy.Includes(ShareContentField.PublicDisplayName)
                     ? snapshot.DisplayName.Revision
                     : 0)
@@ -372,6 +395,16 @@ public sealed class PassportProfileSharePublicationSource
                 PassportProfileShareSourceScope.CreateSegment(ownerUserId, year, parkId)))
             .OrderBy(static scope => scope, StringComparer.Ordinal)
             .ToArray();
+    }
+
+    private static string ResolveFingerprintScope(
+        string ownerUserId,
+        PassportProfileShareInput input)
+    {
+        return PassportProfileShareSourceScope.CreateFingerprint(
+            ownerUserId,
+            input.SelectedYears ?? Array.Empty<int>(),
+            input.SelectedParkIds ?? Array.Empty<string>());
     }
 
     private static ShareSourceRevision AggregateRevisions(

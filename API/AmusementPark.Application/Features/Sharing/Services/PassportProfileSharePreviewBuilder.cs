@@ -198,7 +198,7 @@ public sealed class PassportProfileSharePreviewBuilder
         ApplicationResult<PassportProfileShareSourceRevision> versionAfter =
             await this.sourceVersionProvider.ReconcileOwnedSourceVersionAsync(
                 ownerUserId,
-                source.SourceFingerprint,
+                PassportProfileShareSourceFingerprint.Create(source, normalizedInput),
                 revisionAfter.Value,
                 contentPolicy,
                 normalizedInput,

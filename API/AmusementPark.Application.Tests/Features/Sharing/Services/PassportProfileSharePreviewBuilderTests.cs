@@ -31,6 +31,19 @@ public sealed class PassportProfileSharePreviewBuilderTests
     public async Task BuildAsync_ShouldExposeOnlyTheSelectedPublicStoryWithoutTechnicalIds()
     {
         PassportProfileSourceData source = CreateSource();
+        string selectedRating = PassportProfileRatingSelectionKey.Create(
+            RatingTargetType.ParkItem,
+            "item-technical-id");
+        PassportProfileShareInput input = new PassportProfileShareInput(
+            new[] { 2026 },
+            new[] { "park-public-id" },
+            new[] { selectedRating },
+            "Mon année la plus intense.",
+            ShareVisibility.Public,
+            true);
+        string selectedSourceFingerprint = PassportProfileShareSourceFingerprint.Create(
+            source,
+            input);
         Mock<IPassportProfileSourceReader> sourceReader =
             new Mock<IPassportProfileSourceReader>(MockBehavior.Strict);
         sourceReader.Setup(value => value.ReadOwnedCompletedPassportAsync(
@@ -62,7 +75,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     revisionSnapshot));
         versions.Setup(value => value.ReconcileOwnedSourceVersionAsync(
                 "owner-technical-id",
-                source.SourceFingerprint,
+                selectedSourceFingerprint,
                 revisionSnapshot,
                 It.IsAny<ShareContentPolicy>(),
                 It.Is<PassportProfileShareInput>(input =>
@@ -70,7 +83,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     && input.SelectedYears!.SequenceEqual(new[] { 2026 })),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
-                new PassportProfileShareSourceRevision(12, source.SourceFingerprint)));
+                new PassportProfileShareSourceRevision(12, selectedSourceFingerprint)));
         Mock<IParkRepository> parks = CreateParkRepository();
         Mock<IVisitTargetResolver> targets = CreateTargetResolver();
         Mock<IRatingRepository> ratings = CreateRatingRepository();
@@ -85,20 +98,10 @@ public sealed class PassportProfileSharePreviewBuilderTests
             users.Object,
             images.Object);
         ShareContentPolicy policy = CreateFullPolicy();
-        string selectedRating = PassportProfileRatingSelectionKey.Create(
-            RatingTargetType.ParkItem,
-            "item-technical-id");
-
         ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
             "owner-technical-id",
             policy,
-            new PassportProfileShareInput(
-                new[] { 2026 },
-                new[] { "park-public-id" },
-                new[] { selectedRating },
-                "Mon année la plus intense.",
-                ShareVisibility.Public,
-                true),
+            input,
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
@@ -146,7 +149,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.ReconcileOwnedSourceVersionAsync(
             "owner-technical-id",
-            source.SourceFingerprint,
+            selectedSourceFingerprint,
             revisionSnapshot,
             It.IsAny<ShareContentPolicy>(),
             It.Is<PassportProfileShareInput>(input =>
@@ -561,13 +564,13 @@ public sealed class PassportProfileSharePreviewBuilderTests
                     revisionSnapshot));
         versions.Setup(value => value.ReconcileOwnedSourceVersionAsync(
                 "owner-technical-id",
-                source.SourceFingerprint,
+                It.IsAny<string>(),
                 revisionSnapshot,
                 It.IsAny<ShareContentPolicy>(),
                 It.IsAny<PassportProfileShareInput>(),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
-                new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));
+                new PassportProfileShareSourceRevision(1, "selected-fingerprint")));
         Mock<IVisitTargetResolver> targets = new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         targets.Setup(value => value.ResolveAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
@@ -590,6 +593,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
     {
         return new PassportProfileShareSourceRevisionSnapshot(
             new ShareSourceRevision(passportRevision, 0, NowUtc),
+            new ShareSourceRevision(0, 0, NowUtc),
             new ShareSourceRevision(identityRevision, 0, NowUtc),
             new ShareSourceRevision(0, 0, NowUtc),
             new ShareSourceRevision(0, 0, NowUtc),
