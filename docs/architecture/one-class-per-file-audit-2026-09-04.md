@@ -44,6 +44,23 @@ Après ce lot, l'inventaire contient :
 - 508 fichiers non conformes distincts : 427 en C# et 81 en TypeScript ;
 - 15 fichiers non conformes dans `AmusementPark.Core`, contre 20 initialement.
 
+## État après le lot Core Historique
+
+Le lot Historique extrait les quatre modèles publics qui partageaient
+`HistoryModels.cs` et le record interne de précision calendaire imbriqué dans
+`AutomaticHistoryEventFactory.cs`. Les namespaces, propriétés, valeurs par défaut et
+usages restent identiques ; aucun contrat HTTP, format MongoDB ou comportement
+métier ne change.
+
+Après ce lot et les réductions déjà intégrées par les jalons fonctionnels
+intermédiaires, l'inventaire contient :
+
+- 281 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 314 au total ;
+- 453 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 462 fichiers non conformes distincts : 381 en C# et 81 en TypeScript ;
+- 13 fichiers non conformes dans `AmusementPark.Core`, contre 15 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
