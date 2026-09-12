@@ -7,9 +7,10 @@ using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.TechnicalPages.Services;
 
-internal static partial class TechnicalPageNormalizer
+internal static class TechnicalPageNormalizer
 {
     private static readonly IReadOnlyCollection<string> RequiredLanguages = new[] { "fr", "en", "de", "nl", "it", "es", "pl", "pt" };
+    private static readonly Regex KeyCleanupRegex = new Regex("[^a-z0-9]+", RegexOptions.Compiled);
 
     public static ApplicationResult<TechnicalPage> NormalizeForSave(TechnicalPage? page)
     {
@@ -281,7 +282,7 @@ internal static partial class TechnicalPageNormalizer
             return string.Empty;
         }
 
-        return KeyCleanupRegex().Replace(normalizedValue, "-").Trim('-');
+        return KeyCleanupRegex.Replace(normalizedValue, "-").Trim('-');
     }
 
     private static string NormalizeSlug(string? slug, IReadOnlyCollection<LocalizedText>? titles)
@@ -341,7 +342,4 @@ internal static partial class TechnicalPageNormalizer
             _ => AdminReviewStatus.ToReview,
         };
     }
-
-    [GeneratedRegex("[^a-z0-9]+", RegexOptions.Compiled)]
-    private static partial Regex KeyCleanupRegex();
 }

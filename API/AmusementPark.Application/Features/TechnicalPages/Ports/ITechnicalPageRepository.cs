@@ -18,5 +18,3 @@ public interface ITechnicalPageRepository
 
     Task<TechnicalPageUpsertOutcome> UpsertBySlugAsync(TechnicalPage page, CancellationToken cancellationToken);
 }
-
-public sealed record TechnicalPageUpsertOutcome(TechnicalPage Page, bool Created);

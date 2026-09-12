@@ -1,6 +1,20 @@
 {
-  "version": "5.2.35",
+  "version": "5.2.36",
   "history": [
+    {
+      "version": "5.2.36",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les pages d’aide et d’information gagnent en fiabilité.",
+        "en": "Help and information pages are now more reliable.",
+        "de": "Hilfe- und Informationsseiten sind jetzt zuverlässiger.",
+        "nl": "Hulp- en informatiepagina's zijn nu betrouwbaarder.",
+        "it": "Le pagine di aiuto e informazione sono ora più affidabili.",
+        "es": "Las páginas de ayuda e información son ahora más fiables.",
+        "pl": "Strony pomocy i informacji są teraz bardziej niezawodne.",
+        "pt": "As páginas de ajuda e informação estão agora mais fiáveis."
+      }
+    },
     {
       "version": "5.2.35",
       "releasedAt": "2026-09-12",
