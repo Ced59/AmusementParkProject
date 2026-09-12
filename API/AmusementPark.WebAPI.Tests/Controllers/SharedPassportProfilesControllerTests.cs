@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Queries;
@@ -35,7 +36,13 @@ public sealed class SharedPassportProfilesControllerTests
             new[] { new PassportProfileShareYearResult(2026, 1, 1, 2) },
             new[] { new PassportProfileShareParkResult("Denain Évasion", "FR", 1, 2026, 2026, 2, null) },
             new[] { new PassportProfileShareRatingResult("Park", "Denain Évasion", null, null, 5) },
-            Array.Empty<PassportProfileShareMissedItemResult>(),
+            new[]
+            {
+                new PassportProfileShareMissedItemResult(
+                    "Attraction manquée",
+                    "MissedClosure",
+                    null),
+            },
             false,
             "passport-profile-v1",
             false);
@@ -62,6 +69,10 @@ public sealed class SharedPassportProfilesControllerTests
         Assert.Null(typeof(PassportProfileSharePreviewDto).GetProperty("OwnerUserId"));
         Assert.Null(typeof(PassportProfileShareParkDto).GetProperty("ParkId"));
         Assert.Null(typeof(PassportProfileShareRatingDto).GetProperty("SelectionKey"));
+        Assert.DoesNotContain(
+            "OccurrenceCount",
+            JsonSerializer.Serialize(response),
+            StringComparison.Ordinal);
         handler.VerifyAll();
     }
 

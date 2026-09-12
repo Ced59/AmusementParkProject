@@ -119,7 +119,18 @@ public sealed class PassportProfileSharePreviewBuilder
                 static group => group.Key,
                 static group => group.First(),
                 StringComparer.Ordinal);
+        HashSet<int> selectedYearsForTargets = new HashSet<int>(
+            normalizedInput.SelectedYears ?? Array.Empty<int>());
+        HashSet<string> selectedParkIdsForTargets = new HashSet<string>(
+            normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
+            StringComparer.Ordinal);
+        HashSet<string> selectedVisitIdsForTargets = source.Visits
+            .Where(visit => selectedYearsForTargets.Contains(visit.VisitDate.Year)
+                && selectedParkIdsForTargets.Contains(visit.ParkId))
+            .Select(static visit => visit.VisitId)
+            .ToHashSet(StringComparer.Ordinal);
         string[] parkItemIds = source.Rides
+            .Where(ride => selectedVisitIdsForTargets.Contains(ride.VisitId))
             .Select(static ride => ride.ParkItemId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
@@ -342,7 +353,7 @@ public sealed class PassportProfileSharePreviewBuilder
                 includesTemporalRatings)
             : Array.Empty<PassportProfileShareParkResult>();
         PassportProfileShareMissedItemResult[] missedItems = includesMissed
-            ? BuildMissedItems(rides, source.HistoricalItemNames, targets)
+            ? BuildMissedItems(rides, source.HistoricalItemNames, targets, includesActivity)
             : Array.Empty<PassportProfileShareMissedItemResult>();
         bool isEmpty = displayName is null
             && avatarUrl is null
@@ -448,7 +459,8 @@ public sealed class PassportProfileSharePreviewBuilder
     private static PassportProfileShareMissedItemResult[] BuildMissedItems(
         IEnumerable<PassportRideStatisticsObservation> rides,
         IReadOnlyDictionary<string, string?> historicalNames,
-        IReadOnlyDictionary<string, VisitTarget> targets)
+        IReadOnlyDictionary<string, VisitTarget> targets,
+        bool includesActivity)
     {
         PassportProfileMissedItemObservation[] observations = rides
             .Select(ride => new
@@ -462,10 +474,10 @@ public sealed class PassportProfileSharePreviewBuilder
                 value.Status))
             .ToArray();
         return PassportProfileStatisticsCalculator.CalculateMissedItems(observations)
-            .Select(static item => new PassportProfileShareMissedItemResult(
+            .Select(item => new PassportProfileShareMissedItemResult(
                 item.Name,
                 ToPublicMissedStatus(item.Status),
-                item.OccurrenceCount))
+                includesActivity ? item.OccurrenceCount : null))
             .ToArray();
     }
 

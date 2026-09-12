@@ -12,5 +12,6 @@ public sealed class PassportProfileShareMissedItemDocument
     public string Status { get; set; } = string.Empty;
 
     [BsonElement("occurrenceCount")]
-    public long OccurrenceCount { get; set; }
+    [BsonIgnoreIfNull]
+    public long? OccurrenceCount { get; set; }
 }

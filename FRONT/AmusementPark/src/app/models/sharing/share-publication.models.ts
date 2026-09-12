@@ -178,7 +178,7 @@ export interface PassportProfileShareRating {
 export interface PassportProfileShareMissedItem {
   name: string;
   status: string;
-  occurrenceCount: number;
+  occurrenceCount?: number | null;
 }
 
 export interface PassportProfileSharePreview {

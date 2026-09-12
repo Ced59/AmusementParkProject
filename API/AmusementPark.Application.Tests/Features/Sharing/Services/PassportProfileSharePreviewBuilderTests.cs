@@ -111,6 +111,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
         PassportProfileShareMissedItemResult missed = Assert.Single(profile.MissedItems);
         Assert.Equal("Attraction fermée", missed.Name);
         Assert.Equal("MissedClosure", missed.Status);
+        Assert.Equal(1, missed.OccurrenceCount);
         Assert.True(profile.AllowsComparisons);
         Assert.False(profile.HasIncompleteCatalog);
         Assert.False(profile.IsEmpty);
@@ -278,6 +279,52 @@ public sealed class PassportProfileSharePreviewBuilderTests
 
         Assert.True(result.IsSuccess);
         Assert.False(result.Value!.PassportProfile!.HasIncompleteCatalog);
+    }
+
+    [Fact]
+    public async Task BuildAsync_WhenMissedItemsAreSharedWithoutActivity_ShouldHideTheirCounts()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            new[]
+            {
+                CreateRide("ride-missed-first", "item-missed-id", RideOccurrenceStatus.MissedClosed, null),
+                CreateRide("ride-missed-second", "item-missed-id", RideOccurrenceStatus.MissedClosed, null),
+            },
+            new Dictionary<string, string?>(StringComparer.Ordinal)
+            {
+                ["item-missed-id"] = "Attraction manquée",
+            },
+            "stable-fingerprint",
+            true);
+
+        ApplicationResult<SharePublicationPreviewResult> result =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.MissedItems }),
+                new PassportProfileShareInput(
+                    new[] { 2026 },
+                    new[] { "park-public-id" },
+                    Array.Empty<string>(),
+                    null,
+                    ShareVisibility.Unlisted,
+                    false),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PassportProfileShareMissedItemResult missed = Assert.Single(
+            result.Value!.PassportProfile!.MissedItems);
+        Assert.Null(missed.OccurrenceCount);
     }
 
     [Fact]
@@ -500,6 +547,16 @@ public sealed class PassportProfileSharePreviewBuilderTests
             {
                 CreateRide("ride-completed-id", "item-technical-id", RideOccurrenceStatus.Completed, 4.5),
                 CreateRide("ride-missed-id", "item-closed-id", RideOccurrenceStatus.MissedClosed, null),
+                new PassportRideStatisticsObservation(
+                    "ride-outside-scope-id",
+                    "visit-hidden-id",
+                    "park-hidden-id",
+                    "item-outside-scope-id",
+                    VisitDate.ForDay(2025, 4, 1),
+                    RideOccurrenceStatus.Completed,
+                    null,
+                    ParkItemCategory.Attraction.ToString(),
+                    ParkItemCategory.Attraction.ToString()),
             },
             new Dictionary<string, string?>(StringComparer.Ordinal)
             {
@@ -582,7 +639,9 @@ public sealed class PassportProfileSharePreviewBuilderTests
     {
         Mock<IVisitTargetResolver> targets = new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         targets.Setup(value => value.ResolveAsync(
-                It.IsAny<IReadOnlyCollection<string>>(),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 2
+                    && ids.Contains("item-technical-id", StringComparer.Ordinal)
+                    && ids.Contains("item-closed-id", StringComparer.Ordinal)),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
             {
