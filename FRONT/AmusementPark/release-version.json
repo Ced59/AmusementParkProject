@@ -1,6 +1,20 @@
 {
-  "version": "5.2.19",
+  "version": "5.2.20",
   "history": [
+    {
+      "version": "5.2.20",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des tarifs de parc gagne en clarté et en fiabilité.",
+        "en": "The park pricing foundation is now clearer and more reliable.",
+        "de": "Die Grundlage der Parkpreise ist jetzt klarer und zuverlässiger.",
+        "nl": "De basis van de parkprijzen is nu duidelijker en betrouwbaarder.",
+        "it": "La base dei prezzi dei parchi è ora più chiara e affidabile.",
+        "es": "La base de los precios de los parques es ahora más clara y fiable.",
+        "pl": "Podstawa cen parków jest teraz czytelniejsza i bardziej niezawodna.",
+        "pt": "A base dos preços dos parques está agora mais clara e fiável."
+      }
+    },
     {
       "version": "5.2.19",
       "releasedAt": "2026-09-12",

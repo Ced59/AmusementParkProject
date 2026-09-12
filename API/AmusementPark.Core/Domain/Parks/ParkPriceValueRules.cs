@@ -9,10 +9,6 @@ public enum ParkPriceValidationError
     InvalidRange = 4,
 }
 
-public sealed record ParkPriceNormalizationResult(
-    ParkPriceValue Value,
-    ParkPriceValidationError? Error);
-
 public static class ParkPriceValueRules
 {
     public static ParkPriceNormalizationResult Normalize(ParkPriceValue value)

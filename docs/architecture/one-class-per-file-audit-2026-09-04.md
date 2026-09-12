@@ -92,6 +92,21 @@ Après ce lot, l'inventaire contient :
 - 457 fichiers non conformes distincts : 376 en C# et 81 en TypeScript ;
 - 8 fichiers non conformes dans `AmusementPark.Core`, contre 11 avant ce lot.
 
+## État après le lot Core Tarification
+
+Le lot Tarification sépare les offres d'entrée, pass annuels, parkings, crédits,
+instantanés historiques, valeurs monétaires et résultats de normalisation. Les
+namespaces, propriétés, valeurs par défaut et règles de validation restent
+identiques ; aucun montant, contrat HTTP ou format MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 274 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 307 au total ;
+- 446 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 455 fichiers non conformes distincts : 374 en C# et 81 en TypeScript ;
+- 6 fichiers non conformes dans `AmusementPark.Core`, contre 8 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
