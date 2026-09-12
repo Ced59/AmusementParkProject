@@ -8,14 +8,11 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 public sealed class PassportProfileSharePublicationSource
     : ISharePublicationSourceDescriptor, IPassportProfileShareSourceVersionProvider
 {
-    private readonly IPassportProfileSourceReader sourceReader;
     private readonly IShareSourceRevisionRepository sourceRevisionRepository;
 
     public PassportProfileSharePublicationSource(
-        IPassportProfileSourceReader sourceReader,
         IShareSourceRevisionRepository sourceRevisionRepository)
     {
-        this.sourceReader = sourceReader ?? throw new ArgumentNullException(nameof(sourceReader));
         this.sourceRevisionRepository = sourceRevisionRepository
             ?? throw new ArgumentNullException(nameof(sourceRevisionRepository));
     }
@@ -76,41 +73,63 @@ public sealed class PassportProfileSharePublicationSource
             return ApplicationResult<long>.Failure(SharingApplicationErrors.SourceUnavailable());
         }
 
-        string identityScope = PersonalRankingShareSourceScope.Create(ownerUserId);
-        IReadOnlyDictionary<string, ShareSourceRevision> revisions =
-            await this.sourceRevisionRepository.GetSnapshotAsync(
-                new[]
-                {
-                    sourceScopeKey,
-                    identityScope,
-                    PersonalRankingShareSourceScope.PublicCatalog,
-                },
-                cancellationToken);
-        ShareSourceRevision passportRevision = revisions[sourceScopeKey];
-        ShareSourceRevision identityRevision = revisions[identityScope];
-        ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
-        return CreateVersion(passportRevision, identityRevision, catalogRevision);
-    }
-
-    public async Task<ApplicationResult<PassportProfileShareSourceRevision>> GetOwnedSourceVersionAsync(
-        string ownerUserId,
-        CancellationToken cancellationToken)
-    {
-        PassportProfileSourceData source = await this.sourceReader.ReadOwnedCompletedPassportAsync(
+        PassportProfileShareSourceRevisionSnapshot snapshot = await this.ReadSnapshotAsync(
             ownerUserId,
             cancellationToken);
-        string identityScope = PersonalRankingShareSourceScope.Create(ownerUserId);
-        IReadOnlyDictionary<string, ShareSourceRevision> revisions =
-            await this.sourceRevisionRepository.GetSnapshotAsync(
-                new[]
-                {
-                    identityScope,
-                    PersonalRankingShareSourceScope.PublicCatalog,
-                },
-                cancellationToken);
-        ShareSourceRevision identityRevision = revisions[identityScope];
-        ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
-        if (!source.IsStable || !identityRevision.IsStable || !catalogRevision.IsStable)
+        return CreateVersion(snapshot);
+    }
+
+    public async Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
+        PrepareOwnedSourceRevisionSnapshotAsync(
+            string ownerUserId,
+            CancellationToken cancellationToken)
+    {
+        string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwnerUserId.Length == 0)
+        {
+            return ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
+
+        await this.sourceRevisionRepository.GetOrCreateAsync(
+            PassportProfileShareSourceScope.Create(normalizedOwnerUserId),
+            cancellationToken);
+        return await this.GetOwnedSourceRevisionSnapshotAsync(
+            normalizedOwnerUserId,
+            cancellationToken);
+    }
+
+    public async Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
+        GetOwnedSourceRevisionSnapshotAsync(
+            string ownerUserId,
+            CancellationToken cancellationToken)
+    {
+        string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwnerUserId.Length == 0)
+        {
+            return ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Failure(
+                SharingApplicationErrors.SourceUnavailable());
+        }
+
+        PassportProfileShareSourceRevisionSnapshot snapshot = await this.ReadSnapshotAsync(
+            normalizedOwnerUserId,
+            cancellationToken);
+        return snapshot.IsStable
+            ? ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(snapshot)
+            : ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+    }
+
+    public async Task<ApplicationResult<PassportProfileShareSourceRevision>>
+        ReconcileOwnedSourceVersionAsync(
+        string ownerUserId,
+        string sourceFingerprint,
+        PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(expectedSnapshot);
+        string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwnerUserId.Length == 0 || !expectedSnapshot.IsStable)
         {
             return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -118,36 +137,62 @@ public sealed class PassportProfileSharePublicationSource
 
         ShareSourceRevision passportRevision =
             await this.sourceRevisionRepository.ReconcileFingerprintAsync(
-                PassportProfileShareSourceScope.Create(ownerUserId),
-                source.SourceFingerprint,
+                PassportProfileShareSourceScope.Create(normalizedOwnerUserId),
+                sourceFingerprint,
                 cancellationToken);
-        if (!passportRevision.IsStable)
+        PassportProfileShareSourceRevisionSnapshot snapshotAfter = await this.ReadSnapshotAsync(
+            normalizedOwnerUserId,
+            cancellationToken);
+        bool passportRevisionIsExpected =
+            passportRevision.Revision == expectedSnapshot.Passport.Revision
+            || (expectedSnapshot.Passport.Revision < long.MaxValue
+                && passportRevision.Revision == expectedSnapshot.Passport.Revision + 1);
+        if (!passportRevision.IsStable
+            || !snapshotAfter.IsStable
+            || !passportRevisionIsExpected
+            || snapshotAfter.Passport.Revision != passportRevision.Revision
+            || snapshotAfter.Identity.Revision != expectedSnapshot.Identity.Revision
+            || snapshotAfter.Catalog.Revision != expectedSnapshot.Catalog.Revision)
         {
             return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
         }
 
-        ApplicationResult<long> versionResult = CreateVersion(
-            passportRevision,
-            identityRevision,
-            catalogRevision);
+        ApplicationResult<long> versionResult = CreateVersion(snapshotAfter);
         return versionResult.IsSuccess
             ? ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(
                     versionResult.Value,
-                    source.SourceFingerprint))
+                    sourceFingerprint))
             : ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                 versionResult.Errors);
     }
 
-    private static ApplicationResult<long> CreateVersion(
-        ShareSourceRevision passportRevision,
-        ShareSourceRevision identityRevision,
-        ShareSourceRevision catalogRevision)
+    private async Task<PassportProfileShareSourceRevisionSnapshot> ReadSnapshotAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken)
     {
-        if (!passportRevision.IsStable
-            || !identityRevision.IsStable
-            || !catalogRevision.IsStable)
+        string passportScope = PassportProfileShareSourceScope.Create(ownerUserId);
+        string identityScope = PersonalRankingShareSourceScope.Create(ownerUserId);
+        IReadOnlyDictionary<string, ShareSourceRevision> revisions =
+            await this.sourceRevisionRepository.GetSnapshotAsync(
+                new[]
+                {
+                    passportScope,
+                    identityScope,
+                    PersonalRankingShareSourceScope.PublicCatalog,
+                },
+                cancellationToken);
+        return new PassportProfileShareSourceRevisionSnapshot(
+            revisions[passportScope],
+            revisions[identityScope],
+            revisions[PersonalRankingShareSourceScope.PublicCatalog]);
+    }
+
+    private static ApplicationResult<long> CreateVersion(
+        PassportProfileShareSourceRevisionSnapshot snapshot)
+    {
+        if (!snapshot.IsStable)
         {
             return ApplicationResult<long>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -156,9 +201,9 @@ public sealed class PassportProfileSharePublicationSource
         try
         {
             return ApplicationResult<long>.Success(checked(
-                passportRevision.Revision
-                + identityRevision.Revision
-                + catalogRevision.Revision));
+                snapshot.Passport.Revision
+                + snapshot.Identity.Revision
+                + snapshot.Catalog.Revision));
         }
         catch (OverflowException)
         {

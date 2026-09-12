@@ -20,6 +20,19 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         new DateTime(2026, 9, 4, 0, 0, 0, DateTimeKind.Utc);
 
     [Fact]
+    public void BuildVisitProjection_ShouldIncludeTheStatusUsedByTheShareGuard()
+    {
+        ProjectionDefinition<UserVisitDocument> projection =
+            UserRideOccurrenceProvisionalCreationReconciler.BuildVisitProjection();
+        IBsonSerializer<UserVisitDocument> serializer =
+            BsonSerializer.LookupSerializer<UserVisitDocument>();
+        BsonDocument rendered = projection.Render(
+            new RenderArgs<UserVisitDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(1, rendered["status"].AsInt32);
+    }
+
+    [Fact]
     public async Task ReconcileBatchAsync_WhenExactOperationCompletedCurrentFence_ShouldCommitMarker()
     {
         UserRideOccurrenceDocument document = CreateProvisionalDocument(9);

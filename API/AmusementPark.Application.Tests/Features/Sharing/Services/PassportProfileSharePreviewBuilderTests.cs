@@ -39,8 +39,23 @@ public sealed class PassportProfileSharePreviewBuilderTests
             .ReturnsAsync(source);
         Mock<IPassportProfileShareSourceVersionProvider> versions =
             new Mock<IPassportProfileShareSourceVersionProvider>(MockBehavior.Strict);
-        versions.Setup(value => value.GetOwnedSourceVersionAsync(
+        PassportProfileShareSourceRevisionSnapshot revisionSnapshot = CreateRevisionSnapshot(4, 5, 3);
+        versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(
+                ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
+                    revisionSnapshot));
+        versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(
+                ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
+                    revisionSnapshot));
+        versions.Setup(value => value.ReconcileOwnedSourceVersionAsync(
+                "owner-technical-id",
+                source.SourceFingerprint,
+                revisionSnapshot,
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(12, source.SourceFingerprint)));
@@ -99,9 +114,20 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.DoesNotContain("rating-private-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("2026-06-14", serialized, StringComparison.Ordinal);
         sourceReader.VerifyAll();
-        versions.Verify(value => value.GetOwnedSourceVersionAsync(
+        sourceReader.Verify(value => value.ReadOwnedCompletedPassportAsync(
             "owner-technical-id",
-            CancellationToken.None), Times.Exactly(2));
+            CancellationToken.None), Times.Once);
+        versions.Verify(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
+            "owner-technical-id",
+            CancellationToken.None), Times.Once);
+        versions.Verify(value => value.GetOwnedSourceRevisionSnapshotAsync(
+            "owner-technical-id",
+            CancellationToken.None), Times.Once);
+        versions.Verify(value => value.ReconcileOwnedSourceVersionAsync(
+            "owner-technical-id",
+            source.SourceFingerprint,
+            revisionSnapshot,
+            CancellationToken.None), Times.Once);
         parks.VerifyAll();
         targets.VerifyAll();
         ratings.VerifyAll();
@@ -378,8 +404,23 @@ public sealed class PassportProfileSharePreviewBuilderTests
             .ReturnsAsync(source);
         Mock<IPassportProfileShareSourceVersionProvider> versions =
             new Mock<IPassportProfileShareSourceVersionProvider>();
-        versions.Setup(value => value.GetOwnedSourceVersionAsync(
+        PassportProfileShareSourceRevisionSnapshot revisionSnapshot = CreateRevisionSnapshot(1, 0, 0);
+        versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(
+                ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
+                    revisionSnapshot));
+        versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
+                "owner-technical-id",
+                CancellationToken.None))
+            .ReturnsAsync(
+                ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
+                    revisionSnapshot));
+        versions.Setup(value => value.ReconcileOwnedSourceVersionAsync(
+                "owner-technical-id",
+                source.SourceFingerprint,
+                revisionSnapshot,
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));
@@ -396,6 +437,17 @@ public sealed class PassportProfileSharePreviewBuilderTests
             Mock.Of<IRatingRepository>(MockBehavior.Strict),
             CreateUserRepository(publicDisplayName).Object,
             Mock.Of<IImageRepository>(MockBehavior.Strict));
+    }
+
+    private static PassportProfileShareSourceRevisionSnapshot CreateRevisionSnapshot(
+        long passportRevision,
+        long identityRevision,
+        long catalogRevision)
+    {
+        return new PassportProfileShareSourceRevisionSnapshot(
+            new ShareSourceRevision(passportRevision, 0, NowUtc),
+            new ShareSourceRevision(identityRevision, 0, NowUtc),
+            new ShareSourceRevision(catalogRevision, 0, NowUtc));
     }
 
     private static PassportProfileSourceData CreateSource()

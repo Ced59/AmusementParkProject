@@ -76,18 +76,24 @@ public sealed class PassportProfileSharePreviewBuilder
         }
 
         PassportProfileShareInput normalizedInput = normalizedResult.Value;
-        ApplicationResult<PassportProfileShareSourceRevision> versionBefore =
-            await this.sourceVersionProvider.GetOwnedSourceVersionAsync(
+        ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionBefore =
+            await this.sourceVersionProvider.PrepareOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
                 cancellationToken);
-        if (!versionBefore.IsSuccess || versionBefore.Value is null)
+        if (!revisionBefore.IsSuccess || revisionBefore.Value is null)
         {
-            return ApplicationResult<SharePublicationPreviewResult>.Failure(versionBefore.Errors);
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(revisionBefore.Errors);
         }
 
         PassportProfileSourceData source = await this.sourceReader.ReadOwnedCompletedPassportAsync(
             ownerUserId,
             cancellationToken);
+        if (!source.IsStable)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(
+                SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
         User? user = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         if (user is null || !user.IsActivated || user.IsBlocked)
         {
@@ -148,8 +154,8 @@ public sealed class PassportProfileSharePreviewBuilder
             return ApplicationResult<SharePublicationPreviewResult>.Failure(contentResult.Errors);
         }
 
-        ApplicationResult<PassportProfileShareSourceRevision> versionAfter =
-            await this.sourceVersionProvider.GetOwnedSourceVersionAsync(
+        ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionAfter =
+            await this.sourceVersionProvider.GetOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
                 cancellationToken);
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
@@ -160,17 +166,9 @@ public sealed class PassportProfileSharePreviewBuilder
                 ImageCategory.Avatar,
                 cancellationToken)
             : null;
-        if (!versionAfter.IsSuccess
-            || versionAfter.Value is null
-            || versionAfter.Value.Version != versionBefore.Value.Version
-            || !string.Equals(
-                versionBefore.Value.SourceFingerprint,
-                versionAfter.Value.SourceFingerprint,
-                StringComparison.Ordinal)
-            || !string.Equals(
-                source.SourceFingerprint,
-                versionAfter.Value.SourceFingerprint,
-                StringComparison.Ordinal)
+        if (!revisionAfter.IsSuccess
+            || revisionAfter.Value is null
+            || !revisionBefore.Value.HasSameRevisionsAs(revisionAfter.Value)
             || !HasSamePublicIdentity(user, userAfter)
             || !string.Equals(
                 ResolvePublicAvatarUrl(avatarBefore, ownerUserId),
@@ -179,6 +177,17 @@ public sealed class PassportProfileSharePreviewBuilder
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
+        }
+
+        ApplicationResult<PassportProfileShareSourceRevision> versionAfter =
+            await this.sourceVersionProvider.ReconcileOwnedSourceVersionAsync(
+                ownerUserId,
+                source.SourceFingerprint,
+                revisionAfter.Value,
+                cancellationToken);
+        if (!versionAfter.IsSuccess || versionAfter.Value is null)
+        {
+            return ApplicationResult<SharePublicationPreviewResult>.Failure(versionAfter.Errors);
         }
 
         string fingerprint = PassportProfileShareInputNormalizer.CreateFingerprint(normalizedInput);

@@ -210,14 +210,20 @@ internal sealed class UserRideOccurrenceProvisionalCreationReconciler
             .Find(UserVisitMongoDefinitions.BuildOwnedVisitFilter(
                 document.VisitId,
                 document.UserId))
-            .Project<UserVisitDocument>(Builders<UserVisitDocument>.Projection
-                .Include(static visit => visit.Id)
-                .Include(static visit => visit.UserId)
-                .Include(static visit => visit.ContentMutationFenceToken)
-                .Include(static visit => visit.ContentMutationFenceStableToken)
-                .Include(static visit => visit.ContentMutationFenceReady))
+            .Project<UserVisitDocument>(BuildVisitProjection())
             .Limit(1)
             .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    internal static ProjectionDefinition<UserVisitDocument> BuildVisitProjection()
+    {
+        return Builders<UserVisitDocument>.Projection
+            .Include(static visit => visit.Id)
+            .Include(static visit => visit.UserId)
+            .Include(static visit => visit.Status)
+            .Include(static visit => visit.ContentMutationFenceToken)
+            .Include(static visit => visit.ContentMutationFenceStableToken)
+            .Include(static visit => visit.ContentMutationFenceReady);
     }
 
     private static bool OperationFenceMayBePromoting(
