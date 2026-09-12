@@ -1,8 +1,8 @@
 {
-  "version": "5.2.15",
+  "version": "5.2.16",
   "history": [
     {
-      "version": "5.2.15",
+      "version": "5.2.16",
       "releasedAt": "2026-09-12",
       "labels": {
         "fr": "Tu peux choisir précisément ce que ton passeport public raconte.",
@@ -13,6 +13,20 @@
         "es": "Puedes elegir con precisión qué muestra tu pasaporte público.",
         "pl": "Możesz dokładnie wybrać, co pokazuje Twój publiczny paszport.",
         "pt": "Podes escolher exatamente o que o teu passaporte público mostra."
+      }
+    },
+    {
+      "version": "5.2.15",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Dix nouvelles fiches de parcs profitent de contenus, d’images et de repères enrichis.",
+        "en": "Ten more park pages now feature richer content, imagery and map details.",
+        "de": "Zehn weitere Parkseiten bieten jetzt reichhaltigere Inhalte, Bilder und Kartenangaben.",
+        "nl": "Tien extra parkpagina's bevatten nu rijkere inhoud, beelden en kaartgegevens.",
+        "it": "Altre dieci schede di parchi offrono ora contenuti, immagini e riferimenti cartografici più ricchi.",
+        "es": "Diez fichas de parques más ofrecen ahora contenidos, imágenes y referencias cartográficas más completos.",
+        "pl": "Kolejnych dziesięć stron parków zawiera teraz bogatsze treści, zdjęcia i dane mapowe.",
+        "pt": "Mais dez páginas de parques oferecem agora conteúdos, imagens e referências cartográficas mais ricos."
       }
     },
     {
