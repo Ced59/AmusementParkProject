@@ -325,6 +325,24 @@ Après ce lot, l'inventaire contient :
 - 118 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier non conforme dans le périmètre Application de la météo des parcs.
 
+## État après le lot Application Horaires d'ouverture
+
+Ce lot sépare les commandes, requêtes, résultats et gestionnaires des horaires
+de parc. Il isole également les alertes de couverture et leurs candidates des
+ports et processeurs qui les utilisent. Les règles saisonnières, exceptions de
+dates, plages horaires, calendriers visiteurs et notifications restent
+identiques. Aucun comportement utilisateur, contrat HTTP ni document MongoDB ne
+change.
+
+Après ce lot, l'inventaire contient :
+
+- 230 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 263 au total ;
+- 394 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 403 fichiers non conformes distincts : 322 en C# et 81 en TypeScript ;
+- 111 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier non conforme dans le périmètre Application des horaires d'ouverture.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

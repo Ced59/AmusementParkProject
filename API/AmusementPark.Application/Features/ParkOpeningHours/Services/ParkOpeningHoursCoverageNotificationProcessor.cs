@@ -113,10 +113,4 @@ public sealed class ParkOpeningHoursCoverageNotificationProcessor
 
         return candidates;
     }
-
-    private sealed record ParkOpeningHoursCoverageNotificationCandidate(
-        ParkOpeningHoursScheduleSummary Summary,
-        ParkOpeningHoursAdminCoverage Coverage,
-        int ThresholdDays,
-        DateOnly LocalDate);
 }
