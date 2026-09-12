@@ -1,6 +1,20 @@
 {
-  "version": "5.2.27",
+  "version": "5.2.28",
   "history": [
+    {
+      "version": "5.2.28",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le parcours des visites gagne en fiabilité.",
+        "en": "The visit experience is now more reliable.",
+        "de": "Der Ablauf rund um Besuche ist jetzt zuverlässiger.",
+        "nl": "Het bezoekstraject is nu betrouwbaarder.",
+        "it": "Il percorso delle visite è ora più affidabile.",
+        "es": "El recorrido de las visitas es ahora más fiable.",
+        "pl": "Obsługa wizyt jest teraz bardziej niezawodna.",
+        "pt": "O percurso das visitas está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.27",
       "releasedAt": "2026-09-12",
