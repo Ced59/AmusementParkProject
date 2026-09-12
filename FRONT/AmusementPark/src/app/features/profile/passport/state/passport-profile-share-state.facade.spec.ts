@@ -22,6 +22,7 @@ describe('PassportProfileShareStateFacade', () => {
       years: [{ year: 2026, visitCount: 2 }, { year: 2025, visitCount: 1 }],
       parks: [{ parkId: 'park-1', name: 'Denain Évasion', countryCode: 'FR', visitCount: 2 }],
       ratings: [{ selectionKey: 'rating-1', name: 'Le Galion', parkName: 'Denain Évasion', rating: 4.5 }],
+      maximumSelectedYears: 100,
       maximumSelectedParks: 250,
       savedSelectedYears: [2026],
       savedSelectedParkIds: ['park-1'],
@@ -84,6 +85,7 @@ describe('PassportProfileShareStateFacade', () => {
       years: [{ year: 2026, visitCount: 2 }],
       parks: [{ parkId: 'park-current', name: 'Parc actuel', countryCode: 'FR', visitCount: 2 }],
       ratings: [{ selectionKey: 'rating-current', name: 'Attraction actuelle', parkName: 'Parc actuel', rating: 4.5 }],
+      maximumSelectedYears: 100,
       maximumSelectedParks: 250,
       savedSelectedYears: [2025, 2026],
       savedSelectedParkIds: ['park-hidden', 'park-current'],
@@ -133,6 +135,7 @@ describe('PassportProfileShareStateFacade', () => {
       years: [{ year: 2026, visitCount: 1 }],
       parks: [{ parkId: 'park-1', name: 'Parc', countryCode: 'FR', visitCount: 1 }],
       ratings: [],
+      maximumSelectedYears: 100,
       maximumSelectedParks: 250,
       savedVisibility: 'Unlisted',
       savedAllowsComparisons: false,
@@ -164,16 +167,17 @@ describe('PassportProfileShareStateFacade', () => {
     expect(facade.settings()?.shareId).toBe('published');
   });
 
-  it('bounds a new default park selection to the server contract', () => {
+  it('bounds new default year and park selections to the server contract', () => {
     const parks = Array.from({ length: 4 }, (_, index) => ({
       parkId: `park-${index + 1}`,
       name: `Parc ${index + 1}`,
       visitCount: 1
     }));
     const selection: PassportProfileShareSelection = {
-      years: [{ year: 2026, visitCount: 4 }],
+      years: [2026, 2025, 2024, 2023].map((year) => ({ year, visitCount: 1 })),
       parks,
       ratings: [],
+      maximumSelectedYears: 2,
       maximumSelectedParks: 2,
       savedVisibility: 'Unlisted',
       savedAllowsComparisons: false,
@@ -197,7 +201,14 @@ describe('PassportProfileShareStateFacade', () => {
 
     facade.load();
 
+    expect(facade.selectedYears()).toEqual([2026, 2025]);
     expect(facade.selectedParkIds()).toEqual(['park-1', 'park-2']);
+
+    facade.toggleYear(2024);
+    expect(facade.selectedYears()).toEqual([2026, 2025]);
+    facade.toggleYear(2026);
+    facade.toggleYear(2024);
+    expect(facade.selectedYears()).toEqual([2025, 2024]);
 
     facade.togglePark('park-3');
     expect(facade.selectedParkIds()).toEqual(['park-1', 'park-2']);

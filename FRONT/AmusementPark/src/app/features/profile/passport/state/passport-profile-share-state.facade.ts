@@ -89,7 +89,8 @@ export class PassportProfileShareStateFacade {
             result.selection.ratings.map((candidate) => candidate.selectionKey)
           );
           this.selectedYearsSignal.set(
-            (result.selection.savedSelectedYears ?? [...availableYears])
+            (result.selection.savedSelectedYears
+              ?? [...availableYears].slice(0, result.selection.maximumSelectedYears))
               .filter((year) => availableYears.has(year))
           );
           this.selectedParkIdsSignal.set(
@@ -117,7 +118,15 @@ export class PassportProfileShareStateFacade {
       });
   }
 
-  public toggleYear(year: number): void { this.toggleNumber(this.selectedYearsSignal, year); }
+  public toggleYear(year: number): void {
+    const selectedYears: number[] = this.selectedYearsSignal();
+    if (!selectedYears.includes(year)
+        && selectedYears.length >= (this.selectionSignal()?.maximumSelectedYears ?? 0)) {
+      return;
+    }
+
+    this.toggleNumber(this.selectedYearsSignal, year);
+  }
   public togglePark(parkId: string): void {
     const selectedParkIds: string[] = this.selectedParkIdsSignal();
     if (!selectedParkIds.includes(parkId)

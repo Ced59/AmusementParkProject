@@ -8,6 +8,8 @@ public sealed class PassportProfileShareSelectionDto
 
     public List<PassportProfileShareRatingCandidateDto> Ratings { get; set; } = new();
 
+    public int MaximumSelectedYears { get; set; }
+
     public int MaximumSelectedParks { get; set; }
 
     public List<int>? SavedSelectedYears { get; set; }

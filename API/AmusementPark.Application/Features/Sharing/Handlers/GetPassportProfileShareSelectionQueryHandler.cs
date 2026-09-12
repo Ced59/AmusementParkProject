@@ -134,6 +134,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
                 years,
                 parkResults,
                 ratings,
+                PassportProfileShareInputNormalizer.MaximumSelectedYears,
                 PassportProfileShareInputNormalizer.MaximumSelectedParks,
                 saved?.SelectedYears,
                 saved?.SelectedParkIds,

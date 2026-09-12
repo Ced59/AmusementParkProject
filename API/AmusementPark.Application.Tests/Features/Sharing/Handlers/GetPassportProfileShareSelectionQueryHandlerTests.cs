@@ -88,6 +88,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandlerTests
         Assert.True(result.IsSuccess);
         PassportProfileShareRatingCandidateResult rating = Assert.Single(result.Value!.Ratings);
         Assert.Equal("Parc visité", rating.Name);
+        Assert.Equal(100, result.Value.MaximumSelectedYears);
         Assert.Equal(250, result.Value.MaximumSelectedParks);
         ratings.VerifyAll();
     }

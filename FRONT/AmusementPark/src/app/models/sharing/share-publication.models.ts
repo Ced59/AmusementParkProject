@@ -126,6 +126,7 @@ export interface PassportProfileShareSelection {
   years: PassportProfileShareYearCandidate[];
   parks: PassportProfileShareParkCandidate[];
   ratings: PassportProfileShareRatingCandidate[];
+  maximumSelectedYears: number;
   maximumSelectedParks: number;
   savedSelectedYears?: number[] | null;
   savedSelectedParkIds?: string[] | null;

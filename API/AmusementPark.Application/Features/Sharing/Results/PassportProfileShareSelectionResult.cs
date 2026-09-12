@@ -6,6 +6,7 @@ public sealed record PassportProfileShareSelectionResult(
     IReadOnlyCollection<PassportProfileShareYearCandidateResult> Years,
     IReadOnlyCollection<PassportProfileShareParkCandidateResult> Parks,
     IReadOnlyCollection<PassportProfileShareRatingCandidateResult> Ratings,
+    int MaximumSelectedYears,
     int MaximumSelectedParks,
     IReadOnlyCollection<int>? SavedSelectedYears,
     IReadOnlyCollection<string>? SavedSelectedParkIds,

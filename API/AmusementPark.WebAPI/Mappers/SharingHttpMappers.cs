@@ -321,6 +321,7 @@ public static class SharingHttpMappers
                 ParkName = item.ParkName,
                 Rating = item.Rating,
             }).ToList(),
+            MaximumSelectedYears = value.MaximumSelectedYears,
             MaximumSelectedParks = value.MaximumSelectedParks,
             SavedSelectedYears = value.SavedSelectedYears?.ToList(),
             SavedSelectedParkIds = value.SavedSelectedParkIds?.ToList(),
