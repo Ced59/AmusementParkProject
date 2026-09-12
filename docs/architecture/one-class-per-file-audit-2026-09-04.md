@@ -307,6 +307,24 @@ Après ce lot, l'inventaire contient :
 - 124 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier non conforme dans le périmètre Application de l'histoire.
 
+## État après le lot Application Météo des parcs
+
+Ce lot sépare les commandes, requêtes, résultats et gestionnaires de prévisions,
+comparaisons historiques et campagnes de rafraîchissement météo. Il isole
+également le résultat d'un fournisseur de son port de stratégie. Les règles de
+rafraîchissement, attributions, filtres, comparaisons et réponses restent
+identiques. Aucun comportement utilisateur, contrat HTTP ni document MongoDB ne
+change.
+
+Après ce lot, l'inventaire contient :
+
+- 234 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 267 au total ;
+- 401 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 410 fichiers non conformes distincts : 329 en C# et 81 en TypeScript ;
+- 118 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier non conforme dans le périmètre Application de la météo des parcs.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :

@@ -1,6 +1,20 @@
 {
-  "version": "5.2.33",
+  "version": "5.2.34",
   "history": [
+    {
+      "version": "5.2.34",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les informations météo des parcs gagnent en fiabilité.",
+        "en": "Park weather information is now more reliable.",
+        "de": "Die Wetterinformationen der Parks sind jetzt zuverlässiger.",
+        "nl": "De weersinformatie van parken is nu betrouwbaarder.",
+        "it": "Le informazioni meteo dei parchi sono ora più affidabili.",
+        "es": "La información meteorológica de los parques es ahora más fiable.",
+        "pl": "Informacje pogodowe parków są teraz bardziej niezawodne.",
+        "pt": "As informações meteorológicas dos parques estão agora mais fiáveis."
+      }
+    },
     {
       "version": "5.2.33",
       "releasedAt": "2026-09-12",
