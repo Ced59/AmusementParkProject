@@ -77,6 +77,21 @@ Après ce lot, l'inventaire contient :
 - 460 fichiers non conformes distincts : 379 en C# et 81 en TypeScript ;
 - 11 fichiers non conformes dans `AmusementPark.Core`, contre 13 avant ce lot.
 
+## État après le lot Core Horaires d'ouverture
+
+Le lot Horaires d'ouverture sépare la planification régulière, les exceptions par
+date, les plages horaires, la couverture calendaire et leurs résumés de lecture.
+Les namespaces, propriétés, valeurs par défaut et relations entre modèles restent
+identiques ; aucun horaire, contrat HTTP ou format MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 276 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 309 au total ;
+- 448 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 457 fichiers non conformes distincts : 376 en C# et 81 en TypeScript ;
+- 8 fichiers non conformes dans `AmusementPark.Core`, contre 11 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
