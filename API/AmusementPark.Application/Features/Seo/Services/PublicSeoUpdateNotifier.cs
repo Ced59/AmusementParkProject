@@ -73,11 +73,3 @@ public sealed class PublicSeoUpdateNotifier : IPublicSeoUpdateNotifier
         return value.StartsWith('/') ? value : $"/{value}";
     }
 }
-
-public sealed class NoOpSeoSitemapRefreshScheduler : ISeoSitemapRefreshScheduler
-{
-    public Task RequestRefreshAsync(CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
-    }
-}
