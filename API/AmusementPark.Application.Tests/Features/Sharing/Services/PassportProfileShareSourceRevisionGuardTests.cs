@@ -10,21 +10,41 @@ namespace AmusementPark.Application.Tests.Features.Sharing.Services;
 public sealed class PassportProfileShareSourceRevisionGuardTests
 {
     [Fact]
-    public async Task TryBeginMutationAsync_ShouldUseTheSelectedPassportSegmentScope()
+    public async Task TryBeginMutationAsync_ShouldFenceCoordinationAndMatchingPublishedScopes()
     {
         const string ownerUserId = "owner-1";
-        string scopeKey = PassportProfileShareSourceScope.CreateSegment(
+        string coordinationScope = PassportProfileShareSourceScope.CreateCoordination(ownerUserId);
+        string publishedScope = PassportProfileShareSourceScope.CreateFingerprint(
             ownerUserId,
-            2026,
-            "park-1");
-        ShareSourceMutationLease lease = ShareSourceMutationLease.Create(scopeKey);
+            new[] { 2026 },
+            new[] { "park-1" });
+        ShareSourceMutationLease coordinationLease = ShareSourceMutationLease.Create(
+            coordinationScope);
+        ShareSourceMutationLease publishedLease = ShareSourceMutationLease.Create(publishedScope);
         Mock<IShareSourceRevisionRepository> revisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
-        revisions.Setup(value => value.TryBeginMutationAsync(scopeKey, CancellationToken.None))
-            .ReturnsAsync(lease);
+        revisions.Setup(value => value.BeginMutationAsync(
+                coordinationScope,
+                CancellationToken.None))
+            .ReturnsAsync(coordinationLease);
+        revisions.Setup(value => value.BeginMutationAsync(
+                publishedScope,
+                CancellationToken.None))
+            .ReturnsAsync(publishedLease);
+        Mock<IPassportProfileShareScopeRegistry> registry =
+            new Mock<IPassportProfileShareScopeRegistry>(MockBehavior.Strict);
+        registry.Setup(value => value.ResolveScopeKeysAsync(
+                ownerUserId,
+                It.Is<IReadOnlyCollection<(string ParkId, int Year)>>(segments =>
+                    segments.Count == 1
+                    && segments.First().ParkId == "park-1"
+                    && segments.First().Year == 2026),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { publishedScope });
         PassportProfileShareSourceRevisionGuard guard =
             new PassportProfileShareSourceRevisionGuard(
                 revisions.Object,
+                registry.Object,
                 NullLogger<PassportProfileShareSourceRevisionGuard>.Instance);
 
         IReadOnlyCollection<ShareSourceMutationLease> result = await guard.TryBeginMutationAsync(
@@ -32,7 +52,8 @@ public sealed class PassportProfileShareSourceRevisionGuardTests
             new[] { ("park-1", 2026) },
             CancellationToken.None);
 
-        Assert.Same(lease, Assert.Single(result));
+        Assert.Equal(new[] { coordinationLease, publishedLease }, result);
         revisions.VerifyAll();
+        registry.VerifyAll();
     }
 }

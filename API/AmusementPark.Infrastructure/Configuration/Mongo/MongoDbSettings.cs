@@ -122,6 +122,9 @@ public sealed class MongoDbSettings
 
     public string ShareSourceRevisionsCollectionName { get; set; } = "share-source-revisions";
 
+    public string PassportProfileShareScopeRegistrationsCollectionName { get; set; } =
+        "passport-profile-share-scope-registrations";
+
     public string UserVisitsCollectionName { get; set; } = "user-visits";
 
     public string UserRideOccurrencesCollectionName { get; set; } = "user-ride-occurrences";

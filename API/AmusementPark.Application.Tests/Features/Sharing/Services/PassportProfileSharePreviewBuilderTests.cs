@@ -599,7 +599,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
             new ShareSourceRevision(0, 0, NowUtc),
             new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
-                [PublicCatalogShareSourceScope.CreatePark("park-public-id")] =
+                [PublicCatalogShareSourceScope.CreatePassportGeographyPark("park-public-id")] =
                     new ShareSourceRevision(catalogRevision, 0, NowUtc),
             });
     }

@@ -7,7 +7,7 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 public static class PassportProfileShareSourceScope
 {
     private const string Prefix = "passport-profile:";
-    private const string SegmentPrefix = "passport-profile-segment:";
+    private const string CoordinationPrefix = "passport-profile-coordination:";
     private const string FingerprintPrefix = "passport-profile-fingerprint:";
     private static readonly UTF8Encoding StrictUtf8 = new UTF8Encoding(false, true);
 
@@ -22,32 +22,15 @@ public static class PassportProfileShareSourceScope
         return string.Concat(Prefix, Encode(normalizedOwner));
     }
 
-    public static string CreateSegment(string ownerUserId, int year, string parkId)
+    public static string CreateCoordination(string ownerUserId)
     {
         string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
-        string normalizedParkId = parkId?.Trim() ?? string.Empty;
         if (normalizedOwner.Length == 0)
         {
             throw new ArgumentException("A share owner identifier is required.", nameof(ownerUserId));
         }
 
-        if (year < DateOnly.MinValue.Year || year > DateOnly.MaxValue.Year)
-        {
-            throw new ArgumentOutOfRangeException(nameof(year));
-        }
-
-        if (normalizedParkId.Length == 0)
-        {
-            throw new ArgumentException("A park identifier is required.", nameof(parkId));
-        }
-
-        return string.Concat(
-            SegmentPrefix,
-            Encode(normalizedOwner),
-            ":",
-            year.ToString(System.Globalization.CultureInfo.InvariantCulture),
-            ":",
-            Encode(normalizedParkId));
+        return string.Concat(CoordinationPrefix, Encode(normalizedOwner));
     }
 
     public static string CreateFingerprint(

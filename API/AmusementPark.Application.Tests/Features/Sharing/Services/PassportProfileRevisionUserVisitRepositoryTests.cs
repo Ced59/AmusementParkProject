@@ -65,7 +65,7 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             new DateOnly(2026, 9, 12),
             new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(visit.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
@@ -122,7 +122,7 @@ public sealed class PassportProfileRevisionUserVisitRepositoryTests
             new DateOnly(2026, 9, 12),
             new DateTime(2026, 9, 12, 10, 1, 0, DateTimeKind.Utc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(visit.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IUserVisitRepository> inner = new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =

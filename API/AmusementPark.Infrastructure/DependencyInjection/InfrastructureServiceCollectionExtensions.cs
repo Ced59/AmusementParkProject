@@ -236,6 +236,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IPassportProfileSourceReader, PassportProfileSourceReader>();
         services.AddScoped<IVisitRecapPublicParkReader, VisitRecapPublicParkReader>();
         services.AddScoped<IShareSourceRevisionRepository, ShareSourceRevisionRepository>();
+        services.AddScoped<IPassportProfileShareScopeRegistry,
+            PassportProfileShareScopeRegistry>();
         services.AddScoped<UserVisitRepository>();
         services.AddScoped<IUserVisitRepository>(provider =>
             new PassportProfileRevisionUserVisitRepository(

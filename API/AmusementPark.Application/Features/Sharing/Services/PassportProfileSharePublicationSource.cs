@@ -9,14 +9,17 @@ public sealed class PassportProfileSharePublicationSource
     : ISharePublicationSourceDescriptor, IPassportProfileShareSourceVersionProvider
 {
     private readonly IShareSourceRevisionRepository sourceRevisionRepository;
+    private readonly IPassportProfileShareScopeRegistry scopeRegistry;
     private readonly IPassportProfileShareSnapshotRepository snapshotRepository;
 
     public PassportProfileSharePublicationSource(
         IShareSourceRevisionRepository sourceRevisionRepository,
+        IPassportProfileShareScopeRegistry scopeRegistry,
         IPassportProfileShareSnapshotRepository snapshotRepository)
     {
         this.sourceRevisionRepository = sourceRevisionRepository
             ?? throw new ArgumentNullException(nameof(sourceRevisionRepository));
+        this.scopeRegistry = scopeRegistry ?? throw new ArgumentNullException(nameof(scopeRegistry));
         this.snapshotRepository = snapshotRepository
             ?? throw new ArgumentNullException(nameof(snapshotRepository));
     }
@@ -92,7 +95,8 @@ public sealed class PassportProfileSharePublicationSource
             ownerUserId,
             request.ContentPolicy,
             selectionResult.Value,
-            cancellationToken);
+            includeCoordination: false,
+            cancellationToken: cancellationToken);
         return CreateVersion(snapshot, request.ContentPolicy);
     }
 
@@ -112,10 +116,17 @@ public sealed class PassportProfileSharePublicationSource
 
         if (RequiresPassport(contentPolicy))
         {
-            string[] passportScopes = ResolvePassportScopes(normalizedOwnerUserId, input);
-            string fingerprintScope = ResolveFingerprintScope(normalizedOwnerUserId, input);
+            string coordinationScope = PassportProfileShareSourceScope.CreateCoordination(
+                normalizedOwnerUserId);
+            string passportScope = ResolvePassportScope(normalizedOwnerUserId, input);
             await this.sourceRevisionRepository.EnsureCreatedAsync(
-                passportScopes.Append(fingerprintScope).ToArray(),
+                new[] { coordinationScope, passportScope },
+                cancellationToken);
+            await this.scopeRegistry.RegisterAsync(
+                normalizedOwnerUserId,
+                passportScope,
+                input.SelectedYears ?? Array.Empty<int>(),
+                input.SelectedParkIds ?? Array.Empty<string>(),
                 cancellationToken);
         }
 
@@ -150,7 +161,8 @@ public sealed class PassportProfileSharePublicationSource
             normalizedOwnerUserId,
             contentPolicy,
             normalizedResult.Value,
-            cancellationToken);
+            includeCoordination: true,
+            cancellationToken: cancellationToken);
         return snapshot.IsStableFor(contentPolicy)
             ? ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(snapshot)
             : ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Failure(
@@ -185,7 +197,8 @@ public sealed class PassportProfileSharePublicationSource
             normalizedOwnerUserId,
             contentPolicy,
             normalizedResult.Value,
-            cancellationToken);
+            includeCoordination: true,
+            cancellationToken: cancellationToken);
         if (!snapshotAfter.IsStableFor(contentPolicy)
             || !expectedSnapshot.HasSameRevisionsAs(snapshotAfter, contentPolicy))
         {
@@ -196,12 +209,12 @@ public sealed class PassportProfileSharePublicationSource
         PassportProfileShareSourceRevisionSnapshot reconciledSnapshot = snapshotAfter;
         if (RequiresPassport(contentPolicy))
         {
-            ShareSourceRevision fingerprintRevision =
+            ShareSourceRevision passportRevision =
                 await this.sourceRevisionRepository.ReconcileFingerprintAsync(
-                    ResolveFingerprintScope(normalizedOwnerUserId, normalizedResult.Value),
+                    ResolvePassportScope(normalizedOwnerUserId, normalizedResult.Value),
                     sourceFingerprint,
                     cancellationToken);
-            if (!fingerprintRevision.IsStable)
+            if (!passportRevision.IsStable)
             {
                 return ApplicationResult<PassportProfileShareSourceRevision>.Failure(
                     SharingApplicationErrors.SourceChangedDuringPreview());
@@ -209,7 +222,7 @@ public sealed class PassportProfileSharePublicationSource
 
             reconciledSnapshot = snapshotAfter with
             {
-                Fingerprint = fingerprintRevision,
+                Passport = passportRevision,
             };
         }
 
@@ -271,14 +284,15 @@ public sealed class PassportProfileSharePublicationSource
         string ownerUserId,
         ShareContentPolicy contentPolicy,
         PassportProfileShareInput input,
+        bool includeCoordination,
         CancellationToken cancellationToken)
     {
         bool requiresPassport = RequiresPassport(contentPolicy);
-        string[] passportScopes = requiresPassport
-            ? ResolvePassportScopes(ownerUserId, input)
-            : Array.Empty<string>();
-        string? fingerprintScope = requiresPassport
-            ? ResolveFingerprintScope(ownerUserId, input)
+        string? coordinationScope = requiresPassport && includeCoordination
+            ? PassportProfileShareSourceScope.CreateCoordination(ownerUserId)
+            : null;
+        string? passportScope = requiresPassport
+            ? ResolvePassportScope(ownerUserId, input)
             : null;
         string displayNameScope = PublicIdentityShareSourceScope.CreateDisplayName(ownerUserId);
         string avatarScope = PublicIdentityShareSourceScope.CreateAvatar(ownerUserId);
@@ -289,15 +303,16 @@ public sealed class PassportProfileSharePublicationSource
                     selectionKey))
                 .ToArray()
             : Array.Empty<string>();
-        string[] catalogScopes = RequiresCatalog(contentPolicy)
-            ? NormalizeSelectedParkIds(input.SelectedParkIds ?? Array.Empty<string>())
-                .Select(PublicCatalogShareSourceScope.CreatePark)
-                .ToArray()
-            : Array.Empty<string>();
-        List<string> scopes = new List<string>(passportScopes);
-        if (fingerprintScope is not null)
+        string[] catalogScopes = ResolveCatalogScopes(contentPolicy, input);
+        List<string> scopes = new List<string>();
+        if (coordinationScope is not null)
         {
-            scopes.Add(fingerprintScope);
+            scopes.Add(coordinationScope);
+        }
+
+        if (passportScope is not null)
+        {
+            scopes.Add(passportScope);
         }
 
         if (contentPolicy.Includes(ShareContentField.PublicDisplayName))
@@ -319,10 +334,12 @@ public sealed class PassportProfileSharePublicationSource
             scope => revisions[scope],
             StringComparer.Ordinal);
         return new PassportProfileShareSourceRevisionSnapshot(
-            AggregateRevisions(passportScopes.Select(scope => revisions[scope])),
-            fingerprintScope is null
+            coordinationScope is null
                 ? new ShareSourceRevision(0, 0, DateTime.UnixEpoch)
-                : revisions[fingerprintScope],
+                : revisions[coordinationScope],
+            passportScope is null
+                ? new ShareSourceRevision(0, 0, DateTime.UnixEpoch)
+                : revisions[passportScope],
             ResolveOptionalRevision(revisions, displayNameScope),
             ResolveOptionalRevision(revisions, avatarScope),
             AggregateRevisions(ratingsScopes.Select(scope => revisions[scope])),
@@ -346,7 +363,6 @@ public sealed class PassportProfileSharePublicationSource
                 static (total, revision) => checked(total + revision.Revision));
             return ApplicationResult<long>.Success(checked(
                 snapshot.Passport.Revision
-                + snapshot.Fingerprint.Revision
                 + (contentPolicy.Includes(ShareContentField.PublicDisplayName)
                     ? snapshot.DisplayName.Revision
                     : 0)
@@ -397,24 +413,7 @@ public sealed class PassportProfileSharePublicationSource
             .ToArray();
     }
 
-    private static string[] ResolvePassportScopes(
-        string ownerUserId,
-        PassportProfileShareInput input)
-    {
-        int[] years = (input.SelectedYears ?? Array.Empty<int>())
-            .Distinct()
-            .OrderBy(static year => year)
-            .ToArray();
-        string[] parkIds = NormalizeSelectedParkIds(
-            input.SelectedParkIds ?? Array.Empty<string>());
-        return years
-            .SelectMany(year => parkIds.Select(parkId =>
-                PassportProfileShareSourceScope.CreateSegment(ownerUserId, year, parkId)))
-            .OrderBy(static scope => scope, StringComparer.Ordinal)
-            .ToArray();
-    }
-
-    private static string ResolveFingerprintScope(
+    private static string ResolvePassportScope(
         string ownerUserId,
         PassportProfileShareInput input)
     {
@@ -443,9 +442,38 @@ public sealed class PassportProfileSharePublicationSource
         return input.SelectedYears?.Count > 0 && input.SelectedParkIds?.Count > 0;
     }
 
-    private static bool RequiresCatalog(ShareContentPolicy contentPolicy)
+    private static string[] ResolveCatalogScopes(
+        ShareContentPolicy contentPolicy,
+        PassportProfileShareInput input)
     {
-        return RequiresPassport(contentPolicy);
+        string[] parkIds = NormalizeSelectedParkIds(
+            input.SelectedParkIds ?? Array.Empty<string>());
+        List<string> scopes = new List<string>();
+        foreach (string parkId in parkIds)
+        {
+            if (contentPolicy.Includes(ShareContentField.RideCount)
+                || contentPolicy.Includes(ShareContentField.TemporalRatings))
+            {
+                scopes.Add(PublicCatalogShareSourceScope.CreatePassportActivityPark(parkId));
+            }
+
+            if (contentPolicy.Includes(ShareContentField.GeographicStatistics))
+            {
+                scopes.Add(PublicCatalogShareSourceScope.CreatePassportGeographyPark(parkId));
+            }
+
+            if (contentPolicy.Includes(ShareContentField.MissedItems))
+            {
+                scopes.Add(PublicCatalogShareSourceScope.CreatePassportMissedItemsPark(parkId));
+            }
+
+            if (contentPolicy.Includes(ShareContentField.GlobalRatings))
+            {
+                scopes.Add(PublicCatalogShareSourceScope.CreatePassportRatingsPark(parkId));
+            }
+        }
+
+        return scopes.ToArray();
     }
 
     private static bool RequiresPassport(ShareContentPolicy contentPolicy)

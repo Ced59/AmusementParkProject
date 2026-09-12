@@ -77,7 +77,7 @@ public sealed class PassportProfileRevisionVisitDeletionStoreTests
             null,
             VisitDeletionAuditEventFactory.Create(visit, nowUtc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(visit.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IVisitDeletionStore> inner = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =
@@ -133,7 +133,7 @@ public sealed class PassportProfileRevisionVisitDeletionStoreTests
             null,
             VisitDeletionAuditEventFactory.Create(visit, nowUtc));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(visit.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(visit.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IVisitDeletionStore> inner = new Mock<IVisitDeletionStore>(MockBehavior.Strict);
         Mock<IPassportProfileShareSourceRevisionGuard> guard =

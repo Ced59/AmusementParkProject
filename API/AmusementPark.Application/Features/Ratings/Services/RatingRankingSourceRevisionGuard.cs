@@ -87,10 +87,15 @@ public sealed class RatingRankingSourceRevisionGuard :
         {
             previousById.TryGetValue(parkId, out Park? previous);
             currentById.TryGetValue(parkId, out Park? current);
-            if (AffectsPublicShareCatalog(previous, current))
+            IReadOnlyCollection<string> changedPublicCatalogScopes =
+                PublicCatalogShareSourceChangeDetector.ResolveParkScopes(
+                    parkId,
+                    previous,
+                    current);
+            if (changedPublicCatalogScopes.Count > 0)
             {
                 affectsPersonalRankingCatalog = true;
-                affectedPublicCatalogScopes.Add(PublicCatalogShareSourceScope.CreatePark(parkId));
+                affectedPublicCatalogScopes.UnionWith(changedPublicCatalogScopes);
             }
 
             bool previousIncluded = IsParkIncluded(previous);
@@ -145,11 +150,14 @@ public sealed class RatingRankingSourceRevisionGuard :
         {
             previousById.TryGetValue(itemId, out ParkItem? previous);
             currentById.TryGetValue(itemId, out ParkItem? current);
-            if (AffectsPublicShareCatalog(previous, current))
+            IReadOnlyCollection<string> changedPublicCatalogScopes =
+                PublicCatalogShareSourceChangeDetector.ResolveParkItemScopes(
+                    previous,
+                    current);
+            if (changedPublicCatalogScopes.Count > 0)
             {
                 affectsPersonalRankingCatalog = true;
-                AddPublicCatalogParkScope(affectedPublicCatalogScopes, previous?.ParkId);
-                AddPublicCatalogParkScope(affectedPublicCatalogScopes, current?.ParkId);
+                affectedPublicCatalogScopes.UnionWith(changedPublicCatalogScopes);
             }
 
             bool previousIncluded = IsParkItemIncluded(previous);
@@ -335,69 +343,12 @@ public sealed class RatingRankingSourceRevisionGuard :
                 item.AttractionDetails?.Status);
     }
 
-    private static bool AffectsPublicShareCatalog(Park? previous, Park? current)
-    {
-        bool previousIncluded = previous is not null && previous.IsVisible;
-        bool currentIncluded = current is not null && current.IsVisible;
-        return previousIncluded != currentIncluded
-            || (previousIncluded
-            && currentIncluded
-            && (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name)
-                || !string.Equals(
-                    NormalizeCountryCode(previous.CountryCode),
-                    NormalizeCountryCode(current.CountryCode),
-                    StringComparison.Ordinal)
-                || previous.Status.CanAppearInCurrentRatingRankings()
-                    != current.Status.CanAppearInCurrentRatingRankings()));
-    }
-
-    private static bool AffectsPublicShareCatalog(ParkItem? previous, ParkItem? current)
-    {
-        bool previousIncluded = previous is not null && previous.IsVisible;
-        bool currentIncluded = current is not null && current.IsVisible;
-        return previousIncluded != currentIncluded
-            || (previousIncluded
-            && currentIncluded
-            && (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name)
-                || !string.Equals(previous.ParkId?.Trim(), current.ParkId?.Trim(), StringComparison.Ordinal)
-                || previous.Category != current.Category
-                || ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
-                    previous.Category,
-                    previous.AttractionDetails?.Status)
-                    != ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
-                        current.Category,
-                        current.AttractionDetails?.Status)
-                || previous.AttractionDetails?.ClosingDate != current.AttractionDetails?.ClosingDate));
-    }
-
     private static bool NamesHaveEquivalentRankingOrder(string? previousName, string? currentName)
     {
         return string.Equals(
             previousName?.Trim(),
             currentName?.Trim(),
             StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static bool NamesHaveEquivalentPublicLabel(string? previousName, string? currentName)
-    {
-        return string.Equals(
-            previousName?.Trim(),
-            currentName?.Trim(),
-            StringComparison.Ordinal);
-    }
-
-    private static string? NormalizeCountryCode(string? value)
-    {
-        string normalized = value?.Trim().ToUpperInvariant() ?? string.Empty;
-        return normalized.Length == 0 ? null : normalized;
-    }
-
-    private static void AddPublicCatalogParkScope(ISet<string> scopes, string? parkId)
-    {
-        if (!string.IsNullOrWhiteSpace(parkId))
-        {
-            scopes.Add(PublicCatalogShareSourceScope.CreatePark(parkId));
-        }
     }
 
     public async Task CompleteMutationAsync(

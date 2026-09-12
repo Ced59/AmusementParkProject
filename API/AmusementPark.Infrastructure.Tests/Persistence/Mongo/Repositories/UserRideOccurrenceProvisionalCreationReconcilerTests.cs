@@ -99,7 +99,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(document.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(document.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);
@@ -160,7 +160,7 @@ public sealed class UserRideOccurrenceProvisionalCreationReconcilerTests
         Mock<IPassportProfileShareSourceRevisionGuard> revisionGuard =
             new Mock<IPassportProfileShareSourceRevisionGuard>(MockBehavior.Strict);
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(document.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(document.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         SetupCandidates(collection, document);
         SetupOperation(operationCollection, operation);

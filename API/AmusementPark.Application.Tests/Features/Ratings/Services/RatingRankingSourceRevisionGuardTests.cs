@@ -371,10 +371,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             "personal-ranking:public-catalog",
             6.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
-        ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
-            parkCatalogScope,
-            7.ToString("x32"));
+        List<string> publicCatalogScopes = new List<string>();
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(
@@ -382,9 +379,11 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 CancellationToken.None))
             .ReturnsAsync(catalogLease);
         shareRevisions.Setup(value => value.BeginMutationAsync(
-                parkCatalogScope,
+                It.Is<string>(scope => scope != PersonalRankingShareSourceScope.PublicCatalog),
                 CancellationToken.None))
-            .ReturnsAsync(parkCatalogLease);
+            .Callback((string scope, CancellationToken _) => publicCatalogScopes.Add(scope))
+            .Returns((string scope, CancellationToken _) =>
+                Task.FromResult(new ShareSourceMutationLease(scope, 7.ToString("x32"))));
         RatingRankingSourceRevisionGuard guard = CreateGuard(
             revisions.Object,
             shareSourceRevisions: shareRevisions.Object);
@@ -410,7 +409,16 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
         Assert.Equal(CanonicalRankingScopes.All.Count, preparation.MutationLeases.Count);
         Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
-        Assert.Same(parkCatalogLease, Assert.Single(preparation.PublicCatalogMutationLeases));
+        Assert.Equal(4, preparation.PublicCatalogMutationLeases.Count);
+        Assert.Equal(
+            new[]
+            {
+                PublicCatalogShareSourceScope.CreatePassportActivityPark("park-1"),
+                PublicCatalogShareSourceScope.CreatePassportGeographyPark("park-1"),
+                PublicCatalogShareSourceScope.CreatePassportMissedItemsPark("park-1"),
+                PublicCatalogShareSourceScope.CreatePassportRatingsPark("park-1"),
+            }.OrderBy(static scope => scope, StringComparer.Ordinal),
+            publicCatalogScopes);
         Assert.Equal(
             CanonicalRankingScopes.All.Select(static scope => scope.Key.Value).OrderBy(static key => key),
             incrementedScopes.Select(static scope => scope.Value));
@@ -466,10 +474,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             "personal-ranking:public-catalog",
             10.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
-        ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
-            parkCatalogScope,
-            11.ToString("x32"));
+        List<string> publicCatalogScopes = new List<string>();
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(
@@ -477,9 +482,11 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 CancellationToken.None))
             .ReturnsAsync(catalogLease);
         shareRevisions.Setup(value => value.BeginMutationAsync(
-                parkCatalogScope,
+                It.Is<string>(scope => scope != PersonalRankingShareSourceScope.PublicCatalog),
                 CancellationToken.None))
-            .ReturnsAsync(parkCatalogLease);
+            .Callback((string scope, CancellationToken _) => publicCatalogScopes.Add(scope))
+            .Returns((string scope, CancellationToken _) =>
+                Task.FromResult(new ShareSourceMutationLease(scope, 11.ToString("x32"))));
         RatingRankingSourceRevisionGuard guard = CreateGuard(
             revisions.Object,
             shareSourceRevisions: shareRevisions.Object);
@@ -505,6 +512,13 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
         Assert.Empty(preparation.MutationLeases);
         Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
+        Assert.Equal(
+            new[]
+            {
+                PublicCatalogShareSourceScope.CreatePassportGeographyPark("park-1"),
+                PublicCatalogShareSourceScope.CreatePassportRatingsPark("park-1"),
+            },
+            publicCatalogScopes);
         revisions.VerifyNoOtherCalls();
         shareRevisions.VerifyAll();
     }
@@ -523,7 +537,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             PersonalRankingShareSourceScope.PublicCatalog,
             8.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
+        string parkCatalogScope =
+            PublicCatalogShareSourceScope.CreatePassportRatingsPark("park-1");
         ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
             parkCatalogScope,
             9.ToString("x32"));
@@ -577,7 +592,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             PersonalRankingShareSourceScope.PublicCatalog,
             13.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("closed-park");
+        string parkCatalogScope =
+            PublicCatalogShareSourceScope.CreatePassportGeographyPark("closed-park");
         ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
             parkCatalogScope,
             14.ToString("x32"));
@@ -691,10 +707,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             "personal-ranking:public-catalog",
             11.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
-        ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
-            parkCatalogScope,
-            12.ToString("x32"));
+        List<string> publicCatalogScopes = new List<string>();
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
         shareRevisions.Setup(value => value.BeginMutationAsync(
@@ -702,9 +715,11 @@ public sealed class RatingRankingSourceRevisionGuardTests
                 CancellationToken.None))
             .ReturnsAsync(catalogLease);
         shareRevisions.Setup(value => value.BeginMutationAsync(
-                parkCatalogScope,
+                It.Is<string>(scope => scope != PersonalRankingShareSourceScope.PublicCatalog),
                 CancellationToken.None))
-            .ReturnsAsync(parkCatalogLease);
+            .Callback((string scope, CancellationToken _) => publicCatalogScopes.Add(scope))
+            .Returns((string scope, CancellationToken _) =>
+                Task.FromResult(new ShareSourceMutationLease(scope, 12.ToString("x32"))));
         RatingRankingSourceRevisionGuard guard = CreateGuard(
             revisions.Object,
             shareSourceRevisions: shareRevisions.Object);
@@ -720,6 +735,13 @@ public sealed class RatingRankingSourceRevisionGuardTests
 
         Assert.Empty(preparation.MutationLeases);
         Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
+        Assert.Equal(
+            new[]
+            {
+                PublicCatalogShareSourceScope.CreatePassportMissedItemsPark("park-1"),
+                PublicCatalogShareSourceScope.CreatePassportRatingsPark("park-1"),
+            },
+            publicCatalogScopes);
         revisions.VerifyNoOtherCalls();
         shareRevisions.VerifyAll();
     }
@@ -732,7 +754,8 @@ public sealed class RatingRankingSourceRevisionGuardTests
         ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
             PersonalRankingShareSourceScope.PublicCatalog,
             14.ToString("x32"));
-        string parkCatalogScope = PublicCatalogShareSourceScope.CreatePark("park-1");
+        string parkCatalogScope =
+            PublicCatalogShareSourceScope.CreatePassportMissedItemsPark("park-1");
         ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
             parkCatalogScope,
             15.ToString("x32"));
@@ -823,7 +846,7 @@ public sealed class RatingRankingSourceRevisionGuardTests
     public async Task CompleteMutationAsync_ShouldSettleEveryParkScopedCatalogLease()
     {
         ShareSourceMutationLease parkCatalogLease = new ShareSourceMutationLease(
-            PublicCatalogShareSourceScope.CreatePark("park-1"),
+            PublicCatalogShareSourceScope.CreatePassportActivityPark("park-1"),
             16.ToString("x32"));
         Mock<IShareSourceRevisionRepository> shareRevisions =
             new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);

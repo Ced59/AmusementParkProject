@@ -38,7 +38,7 @@ public sealed class PassportProfileRevisionRideOccurrenceRepositoryTests
             nowUtc);
         visit.Complete(new DateOnly(2026, 9, 12), nowUtc.AddMinutes(1));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(occurrence.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(occurrence.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IRideOccurrenceRepository> inner =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
@@ -119,7 +119,7 @@ public sealed class PassportProfileRevisionRideOccurrenceRepositoryTests
             nowUtc);
         visit.Complete(new DateOnly(2026, 9, 12), nowUtc.AddMinutes(1));
         ShareSourceMutationLease lease = ShareSourceMutationLease.Create(
-            PassportProfileShareSourceScope.CreateSegment(occurrence.UserId, 2026, "park-1"));
+            PassportProfileShareSourceScope.CreateCoordination(occurrence.UserId));
         IReadOnlyCollection<ShareSourceMutationLease> leases = new[] { lease };
         Mock<IRideOccurrenceRepository> inner =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
