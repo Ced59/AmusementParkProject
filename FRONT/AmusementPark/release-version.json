@@ -1,6 +1,20 @@
 {
-  "version": "5.2.22",
+  "version": "5.2.23",
   "history": [
+    {
+      "version": "5.2.23",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle de la timeline des visites gagne en fiabilité.",
+        "en": "The visit timeline foundation is now more reliable.",
+        "de": "Die Grundlage der Besuchszeitleiste ist jetzt zuverlässiger.",
+        "nl": "De basis van de bezoektijdlijn is nu betrouwbaarder.",
+        "it": "La base della cronologia delle visite è ora più affidabile.",
+        "es": "La base de la cronología de visitas es ahora más fiable.",
+        "pl": "Podstawa osi czasu wizyt jest teraz bardziej niezawodna.",
+        "pt": "A base da cronologia das visitas está agora mais fiável."
+      }
+    },
     {
       "version": "5.2.22",
       "releasedAt": "2026-09-12",

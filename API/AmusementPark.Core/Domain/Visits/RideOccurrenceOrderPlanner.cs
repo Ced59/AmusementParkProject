@@ -8,19 +8,6 @@ public enum RideOccurrencePlacement
     After = 4,
 }
 
-public sealed record RideOccurrenceOrderPosition(
-    RideOccurrenceId OccurrenceId,
-    long SortPosition);
-
-public sealed record RideOccurrenceOrderGuard(
-    RideOccurrenceId OccurrenceId,
-    long SortPosition);
-
-public sealed record RideOccurrenceOrderPlan(
-    IReadOnlyCollection<RideOccurrenceOrderPosition> Changes,
-    IReadOnlyCollection<RideOccurrenceOrderGuard> Guards,
-    bool WasNormalized);
-
 /// <summary>
 /// Calcule les positions techniques sans faire dépendre l'ordre visible d'un rang persisté.
 /// </summary>

@@ -138,6 +138,21 @@ Après ce lot, l'inventaire contient :
 - 451 fichiers non conformes distincts : 370 en C# et 81 en TypeScript ;
 - 2 fichiers non conformes dans `AmusementPark.Core`, contre 5 avant ce lot.
 
+## État après le lot Core Ordre des tours
+
+Le lot Ordre des tours sépare la position calculée, la garde de concurrence et le
+plan produit lors d'un déplacement dans la timeline. Les identifiants, positions,
+règles d'ancrage, normalisation et limites restent identiques ; aucun ordre de
+tour, contrat HTTP ou format MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 269 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 302 au total ;
+- 441 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 450 fichiers non conformes distincts : 369 en C# et 81 en TypeScript ;
+- 1 fichier non conforme dans `AmusementPark.Core`, contre 2 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
