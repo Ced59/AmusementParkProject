@@ -300,7 +300,7 @@ MongoDB ne change.
 
 Après ce lot, l'inventaire contient :
 
-- 234 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 267 au total ;
+- 239 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 272 au total ;
 - 407 fichiers présentant encore au moins une incompatibilité de nom ;
 - 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
 - 416 fichiers non conformes distincts : 335 en C# et 81 en TypeScript ;
@@ -318,7 +318,7 @@ change.
 
 Après ce lot, l'inventaire contient :
 
-- 233 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 266 au total ;
+- 234 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 267 au total ;
 - 401 fichiers présentant encore au moins une incompatibilité de nom ;
 - 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
 - 410 fichiers non conformes distincts : 329 en C# et 81 en TypeScript ;
