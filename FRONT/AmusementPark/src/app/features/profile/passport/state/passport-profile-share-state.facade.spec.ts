@@ -21,7 +21,7 @@ describe('PassportProfileShareStateFacade', () => {
     const selection: PassportProfileShareSelection = {
       years: [{ year: 2026, visitCount: 2 }, { year: 2025, visitCount: 1 }],
       parks: [{ parkId: 'park-1', name: 'Denain Évasion', countryCode: 'FR', visitCount: 2 }],
-      ratings: [{ selectionKey: 'rating-1', name: 'Le Galion', parkName: 'Denain Évasion', rating: 4.5 }],
+      ratings: [{ selectionKey: 'rating-1', parkId: 'park-1', name: 'Le Galion', parkName: 'Denain Évasion', rating: 4.5 }],
       maximumSelectedYears: 100,
       maximumSelectedParks: 250,
       savedSelectedYears: [2026],
@@ -84,7 +84,7 @@ describe('PassportProfileShareStateFacade', () => {
     const selection: PassportProfileShareSelection = {
       years: [{ year: 2026, visitCount: 2 }],
       parks: [{ parkId: 'park-current', name: 'Parc actuel', countryCode: 'FR', visitCount: 2 }],
-      ratings: [{ selectionKey: 'rating-current', name: 'Attraction actuelle', parkName: 'Parc actuel', rating: 4.5 }],
+      ratings: [{ selectionKey: 'rating-current', parkId: 'park-current', name: 'Attraction actuelle', parkName: 'Parc actuel', rating: 4.5 }],
       maximumSelectedYears: 100,
       maximumSelectedParks: 250,
       savedSelectedYears: [2025, 2026],
@@ -216,6 +216,53 @@ describe('PassportProfileShareStateFacade', () => {
     facade.togglePark('park-1');
     facade.togglePark('park-3');
     expect(facade.selectedParkIds()).toEqual(['park-2', 'park-3']);
+  });
+
+  it('removes selected ratings when their park is deselected', () => {
+    const selection: PassportProfileShareSelection = {
+      years: [{ year: 2026, visitCount: 1 }],
+      parks: [
+        { parkId: 'park-1', name: 'Parc 1', visitCount: 1 },
+        { parkId: 'park-2', name: 'Parc 2', visitCount: 1 }
+      ],
+      ratings: [
+        { selectionKey: 'rating-1', parkId: 'park-1', name: 'Attraction 1', rating: 4.5 },
+        { selectionKey: 'rating-2', parkId: 'park-2', name: 'Attraction 2', rating: 4 }
+      ],
+      maximumSelectedYears: 100,
+      maximumSelectedParks: 250,
+      savedSelectedYears: [2026],
+      savedSelectedParkIds: ['park-1', 'park-2'],
+      savedSelectedRatingKeys: ['rating-1', 'rating-2'],
+      savedVisibility: 'Unlisted',
+      savedAllowsComparisons: false,
+      hasSavedSnapshot: true
+    };
+    const port: PassportProfileSharePort = {
+      getSettings: (): Observable<SharePublicationSettings> => of({
+        isPublic: true,
+        policySchemaVersion: 1,
+        includedFields: ['GlobalRatings']
+      }),
+      getSelection: (): Observable<PassportProfileShareSelection> => of(selection),
+      preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> =>
+        of(createPreview(request)),
+      publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+    };
+    TestBed.configureTestingModule({ providers: [
+      PassportProfileShareStateFacade,
+      { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
+      { provide: ToastMessageService, useValue: { add: vi.fn() } },
+      { provide: TranslateService, useValue: { instant: (key: string): string => key } }
+    ] });
+    const facade: PassportProfileShareStateFacade = TestBed.inject(PassportProfileShareStateFacade);
+
+    facade.load();
+    facade.togglePark('park-1');
+
+    expect(facade.selectedParkIds()).toEqual(['park-2']);
+    expect(facade.selectedRatingKeys()).toEqual(['rating-2']);
   });
 });
 

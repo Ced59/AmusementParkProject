@@ -145,7 +145,10 @@ public sealed class SharePublicationLifecycleHandlersTests
             .Returns(ApplicationResult<string>.Success(ScopeKey));
         source.Setup(value => value.CreateDefaultPolicy())
             .Returns(CreatePolicy());
-        source.Setup(value => value.GetCurrentSourceVersionAsync(ScopeKey, CancellationToken.None))
+        source.Setup(value => value.GetCurrentSourceVersionAsync(
+                ScopeKey,
+                It.IsAny<ShareContentPolicy>(),
+                CancellationToken.None))
             .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
         return source.Object;
     }

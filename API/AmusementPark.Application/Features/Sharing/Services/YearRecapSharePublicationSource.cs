@@ -65,8 +65,10 @@ public sealed class YearRecapSharePublicationSource
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
+        ShareContentPolicy contentPolicy,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(contentPolicy);
         if (!YearRecapShareSourceScope.TryParse(
                 sourceScopeKey,
                 out string ownerUserId,

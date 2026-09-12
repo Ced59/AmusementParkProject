@@ -15,4 +15,23 @@ public static class PersonalRankingShareSourceScope
 
         return string.Concat(Prefix, ownerUserId.Trim());
     }
+
+    public static bool TryParse(string sourceScopeKey, out string ownerUserId)
+    {
+        ownerUserId = string.Empty;
+        if (string.IsNullOrWhiteSpace(sourceScopeKey)
+            || !sourceScopeKey.StartsWith(Prefix, StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        string candidate = sourceScopeKey[Prefix.Length..].Trim();
+        if (candidate.Length == 0)
+        {
+            return false;
+        }
+
+        ownerUserId = candidate;
+        return true;
+    }
 }

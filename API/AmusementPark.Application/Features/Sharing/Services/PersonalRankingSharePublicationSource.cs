@@ -62,19 +62,29 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
 
     public async Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
+        ShareContentPolicy contentPolicy,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(contentPolicy);
+        if (!PersonalRankingShareSourceScope.TryParse(sourceScopeKey, out string ownerUserId))
+        {
+            return ApplicationResult<long>.Failure(SharingApplicationErrors.SourceUnavailable());
+        }
+
+        string identityScopeKey = PublicIdentityShareSourceScope.Create(ownerUserId);
         IReadOnlyDictionary<string, ShareSourceRevision> revisions =
             await this.sourceRevisionRepository.GetSnapshotAsync(
                 new[]
                 {
                     sourceScopeKey,
+                    identityScopeKey,
                     PersonalRankingShareSourceScope.PublicCatalog,
                 },
                 cancellationToken);
         ShareSourceRevision ownerRevision = revisions[sourceScopeKey];
+        ShareSourceRevision identityRevision = revisions[identityScopeKey];
         ShareSourceRevision catalogRevision = revisions[PersonalRankingShareSourceScope.PublicCatalog];
-        if (!ownerRevision.IsStable || !catalogRevision.IsStable)
+        if (!ownerRevision.IsStable || !identityRevision.IsStable || !catalogRevision.IsStable)
         {
             return ApplicationResult<long>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -83,7 +93,10 @@ public sealed class PersonalRankingSharePublicationSource : ISharePublicationSou
         try
         {
             return ApplicationResult<long>.Success(
-                checked(ownerRevision.Revision + catalogRevision.Revision));
+                checked(
+                    ownerRevision.Revision
+                    + identityRevision.Revision
+                    + catalogRevision.Revision));
         }
         catch (OverflowException)
         {

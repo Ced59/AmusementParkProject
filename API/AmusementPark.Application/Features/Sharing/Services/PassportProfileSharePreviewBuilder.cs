@@ -76,9 +76,11 @@ public sealed class PassportProfileSharePreviewBuilder
         }
 
         PassportProfileShareInput normalizedInput = normalizedResult.Value;
+        bool includesRatings = contentPolicy.Includes(ShareContentField.GlobalRatings);
         ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionBefore =
             await this.sourceVersionProvider.PrepareOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
+                includesRatings,
                 cancellationToken);
         if (!revisionBefore.IsSuccess || revisionBefore.Value is null)
         {
@@ -125,7 +127,7 @@ public sealed class PassportProfileSharePreviewBuilder
             ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
             : await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
         IReadOnlyCollection<UserRatingListItemResult> ratingCandidates =
-            contentPolicy.Includes(ShareContentField.GlobalRatings)
+            includesRatings
                 ? await this.ratingRepository.GetVisibleUserRankingSourcesForParksAsync(
                     ownerUserId,
                     normalizedInput.SelectedParkIds ?? Array.Empty<string>(),
@@ -157,6 +159,7 @@ public sealed class PassportProfileSharePreviewBuilder
         ApplicationResult<PassportProfileShareSourceRevisionSnapshot> revisionAfter =
             await this.sourceVersionProvider.GetOwnedSourceRevisionSnapshotAsync(
                 ownerUserId,
+                includesRatings,
                 cancellationToken);
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
         Image? avatarAfter = contentPolicy.Includes(ShareContentField.Avatar)
@@ -168,7 +171,7 @@ public sealed class PassportProfileSharePreviewBuilder
             : null;
         if (!revisionAfter.IsSuccess
             || revisionAfter.Value is null
-            || !revisionBefore.Value.HasSameRevisionsAs(revisionAfter.Value)
+            || !revisionBefore.Value.HasSameRevisionsAs(revisionAfter.Value, includesRatings)
             || !HasSamePublicIdentity(user, userAfter)
             || !string.Equals(
                 ResolvePublicAvatarUrl(avatarBefore, ownerUserId),
@@ -184,6 +187,7 @@ public sealed class PassportProfileSharePreviewBuilder
                 ownerUserId,
                 source.SourceFingerprint,
                 revisionAfter.Value,
+                includesRatings,
                 cancellationToken);
         if (!versionAfter.IsSuccess || versionAfter.Value is null)
         {

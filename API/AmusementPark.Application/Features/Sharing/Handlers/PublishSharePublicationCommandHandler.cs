@@ -174,6 +174,7 @@ public sealed class PublishSharePublicationCommandHandler
 
         ApplicationResult<long> versionResult = await source.GetCurrentSourceVersionAsync(
             scopeResult.Value,
+            contentPolicy,
             cancellationToken);
         if (!versionResult.IsSuccess)
         {

@@ -325,6 +325,7 @@ public sealed class PersonalRankingShareReplacementMigration
 
         ApplicationResult<long> versionResult = await this.sourceDescriptor.GetCurrentSourceVersionAsync(
             scopeResult.Value,
+            policy,
             cancellationToken);
         if (!versionResult.IsSuccess)
         {
@@ -449,6 +450,7 @@ public sealed class PersonalRankingShareReplacementMigration
 
             ApplicationResult<long> versionResult = await this.sourceDescriptor.GetCurrentSourceVersionAsync(
                 scopeResult.Value,
+                policy,
                 cancellationToken);
             if (!versionResult.IsSuccess)
             {

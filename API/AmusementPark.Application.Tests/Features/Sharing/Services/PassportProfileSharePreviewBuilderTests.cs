@@ -42,12 +42,14 @@ public sealed class PassportProfileSharePreviewBuilderTests
         PassportProfileShareSourceRevisionSnapshot revisionSnapshot = CreateRevisionSnapshot(4, 5, 3);
         versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                true,
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
                     revisionSnapshot));
         versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                true,
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -56,6 +58,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 "owner-technical-id",
                 source.SourceFingerprint,
                 revisionSnapshot,
+                true,
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(12, source.SourceFingerprint)));
@@ -119,14 +122,17 @@ public sealed class PassportProfileSharePreviewBuilderTests
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
             "owner-technical-id",
+            true,
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.GetOwnedSourceRevisionSnapshotAsync(
             "owner-technical-id",
+            true,
             CancellationToken.None), Times.Once);
         versions.Verify(value => value.ReconcileOwnedSourceVersionAsync(
             "owner-technical-id",
             source.SourceFingerprint,
             revisionSnapshot,
+            true,
             CancellationToken.None), Times.Once);
         parks.VerifyAll();
         targets.VerifyAll();
@@ -407,12 +413,14 @@ public sealed class PassportProfileSharePreviewBuilderTests
         PassportProfileShareSourceRevisionSnapshot revisionSnapshot = CreateRevisionSnapshot(1, 0, 0);
         versions.Setup(value => value.PrepareOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                false,
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
                     revisionSnapshot));
         versions.Setup(value => value.GetOwnedSourceRevisionSnapshotAsync(
                 "owner-technical-id",
+                false,
                 CancellationToken.None))
             .ReturnsAsync(
                 ApplicationResult<PassportProfileShareSourceRevisionSnapshot>.Success(
@@ -421,6 +429,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
                 "owner-technical-id",
                 source.SourceFingerprint,
                 revisionSnapshot,
+                false,
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PassportProfileShareSourceRevision>.Success(
                 new PassportProfileShareSourceRevision(1, source.SourceFingerprint)));
@@ -447,6 +456,7 @@ public sealed class PassportProfileSharePreviewBuilderTests
         return new PassportProfileShareSourceRevisionSnapshot(
             new ShareSourceRevision(passportRevision, 0, NowUtc),
             new ShareSourceRevision(identityRevision, 0, NowUtc),
+            new ShareSourceRevision(0, 0, NowUtc),
             new ShareSourceRevision(catalogRevision, 0, NowUtc));
     }
 

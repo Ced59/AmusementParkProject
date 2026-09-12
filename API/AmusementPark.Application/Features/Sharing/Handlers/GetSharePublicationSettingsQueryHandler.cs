@@ -59,6 +59,7 @@ public sealed class GetSharePublicationSettingsQueryHandler
         {
             ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
                 scopeResult.Value,
+                publication.ContentPolicy,
                 cancellationToken);
             isSourceCurrent = currentVersion.IsSuccess
                 && currentVersion.Value == publication.SourceVersion;

@@ -8,16 +8,19 @@ public interface IPassportProfileShareSourceVersionProvider
     Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
         PrepareOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
+            bool includeRatings,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevisionSnapshot>>
         GetOwnedSourceRevisionSnapshotAsync(
             string ownerUserId,
+            bool includeRatings,
             CancellationToken cancellationToken);
 
     Task<ApplicationResult<PassportProfileShareSourceRevision>> ReconcileOwnedSourceVersionAsync(
         string ownerUserId,
         string sourceFingerprint,
         PassportProfileShareSourceRevisionSnapshot expectedSnapshot,
+        bool includeRatings,
         CancellationToken cancellationToken);
 }

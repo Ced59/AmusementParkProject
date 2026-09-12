@@ -310,6 +310,8 @@ public sealed class PersonalRankingSharePreviewBuilderTests
         return new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
         {
             ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, NowUtc),
+            [PublicIdentityShareSourceScope.Create("owner-1")] =
+                new ShareSourceRevision(0, 0, NowUtc),
             [PersonalRankingShareSourceScope.PublicCatalog] =
                 new ShareSourceRevision(catalogRevision, 0, NowUtc),
         };

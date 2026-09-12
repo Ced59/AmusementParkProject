@@ -118,6 +118,7 @@ public sealed class SharePublicationPublisher
 
         ApplicationResult<long> finalSourceVersion = await source.GetCurrentSourceVersionAsync(
             sourceScopeKey,
+            contentPolicy,
             cancellationToken);
         if (!finalSourceVersion.IsSuccess)
         {
@@ -208,6 +209,7 @@ public sealed class SharePublicationPublisher
                     source,
                     sourceScopeKey,
                     sourceVersion,
+                    contentPolicy,
                     cancellationToken);
                 if (!confirmation.IsSuccess)
                 {
@@ -240,10 +242,12 @@ public sealed class SharePublicationPublisher
         ISharePublicationSourceDescriptor source,
         string sourceScopeKey,
         long sourceVersion,
+        ShareContentPolicy contentPolicy,
         CancellationToken cancellationToken)
     {
         ApplicationResult<long> persistedSourceVersion = await source.GetCurrentSourceVersionAsync(
             sourceScopeKey,
+            contentPolicy,
             cancellationToken);
         if (persistedSourceVersion.IsSuccess
             && persistedSourceVersion.Value == sourceVersion)

@@ -50,6 +50,7 @@ public sealed class SharePublicationPublisherVisitSnapshotTests
             new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
         source.Setup(value => value.GetCurrentSourceVersionAsync(
                 "scope-1",
+                It.IsAny<ShareContentPolicy>(),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<long>.Success(12));
         Mock<ISharePublicationSnapshotWriter> snapshots =
@@ -97,6 +98,7 @@ public sealed class SharePublicationPublisherVisitSnapshotTests
         tokens.VerifyAll();
         source.Verify(value => value.GetCurrentSourceVersionAsync(
             "scope-1",
+            It.IsAny<ShareContentPolicy>(),
             CancellationToken.None), Times.Exactly(2));
         source.VerifyAll();
         snapshots.VerifyAll();

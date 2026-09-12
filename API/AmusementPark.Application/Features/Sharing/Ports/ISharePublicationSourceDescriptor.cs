@@ -18,5 +18,6 @@ public interface ISharePublicationSourceDescriptor
 
     Task<ApplicationResult<long>> GetCurrentSourceVersionAsync(
         string sourceScopeKey,
+        ShareContentPolicy contentPolicy,
         CancellationToken cancellationToken);
 }

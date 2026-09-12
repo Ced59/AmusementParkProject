@@ -98,9 +98,12 @@ export class PassportProfileShareStateFacade {
               ?? [...availableParkIds].slice(0, result.selection.maximumSelectedParks))
               .filter((parkId) => availableParkIds.has(parkId))
           );
+          const selectedParkIds: Set<string> = new Set(this.selectedParkIdsSignal());
           this.selectedRatingKeysSignal.set(
             (result.selection.savedSelectedRatingKeys ?? [])
-              .filter((selectionKey) => availableRatingKeys.has(selectionKey))
+              .filter((selectionKey) => availableRatingKeys.has(selectionKey)
+                && result.selection.ratings.some((rating) => rating.selectionKey === selectionKey
+                  && selectedParkIds.has(rating.parkId)))
           );
           this.publicCaptionSignal.set(result.selection.savedPublicCaption ?? '');
           this.visibilitySignal.set(result.selection.savedVisibility ?? 'Unlisted');
@@ -132,6 +135,17 @@ export class PassportProfileShareStateFacade {
     if (!selectedParkIds.includes(parkId)
         && selectedParkIds.length >= (this.selectionSignal()?.maximumSelectedParks ?? 0)) {
       return;
+    }
+
+    if (selectedParkIds.includes(parkId)) {
+      const removedRatingKeys: Set<string> = new Set(
+        (this.selectionSignal()?.ratings ?? [])
+          .filter((rating) => rating.parkId === parkId)
+          .map((rating) => rating.selectionKey)
+      );
+      this.selectedRatingKeysSignal.set(
+        this.selectedRatingKeysSignal().filter((selectionKey) => !removedRatingKeys.has(selectionKey))
+      );
     }
 
     this.toggleString(this.selectedParkIdsSignal, parkId);

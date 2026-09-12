@@ -117,6 +117,7 @@ export interface PassportProfileShareParkCandidate {
 
 export interface PassportProfileShareRatingCandidate {
   selectionKey: string;
+  parkId: string;
   name: string;
   parkName?: string | null;
   rating: number;

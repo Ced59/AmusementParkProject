@@ -47,9 +47,11 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         }
 
         string sourceScopeKey = PersonalRankingShareSourceScope.Create(ownerUserId);
+        string identityScopeKey = PublicIdentityShareSourceScope.Create(ownerUserId);
         string[] revisionScopeKeys =
         {
             sourceScopeKey,
+            identityScopeKey,
             PersonalRankingShareSourceScope.PublicCatalog,
         };
         IReadOnlyDictionary<string, ShareSourceRevision> revisionsBefore =
@@ -57,9 +59,12 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 revisionScopeKeys,
                 cancellationToken);
         ShareSourceRevision revisionBefore = revisionsBefore[sourceScopeKey];
+        ShareSourceRevision identityRevisionBefore = revisionsBefore[identityScopeKey];
         ShareSourceRevision catalogRevisionBefore =
             revisionsBefore[PersonalRankingShareSourceScope.PublicCatalog];
-        if (!revisionBefore.IsStable || !catalogRevisionBefore.IsStable)
+        if (!revisionBefore.IsStable
+            || !identityRevisionBefore.IsStable
+            || !catalogRevisionBefore.IsStable)
         {
             return ApplicationResult<SharePublicationPreviewResult>.Failure(
                 SharingApplicationErrors.SourceChangedDuringPreview());
@@ -107,6 +112,7 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 revisionScopeKeys,
                 cancellationToken);
         ShareSourceRevision revisionAfter = revisionsAfter[sourceScopeKey];
+        ShareSourceRevision identityRevisionAfter = revisionsAfter[identityScopeKey];
         ShareSourceRevision catalogRevisionAfter =
             revisionsAfter[PersonalRankingShareSourceScope.PublicCatalog];
         User? userAfter = await this.userRepository.GetByIdAsync(ownerUserId, cancellationToken);
@@ -118,8 +124,10 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
                 cancellationToken)
             : null;
         if (!revisionAfter.IsStable
+            || !identityRevisionAfter.IsStable
             || !catalogRevisionAfter.IsStable
             || revisionAfter.Revision != revisionBefore.Revision
+            || identityRevisionAfter.Revision != identityRevisionBefore.Revision
             || catalogRevisionAfter.Revision != catalogRevisionBefore.Revision
             || !HasSamePublicIdentity(user, userAfter)
             || !string.Equals(
@@ -157,7 +165,10 @@ public sealed class PersonalRankingSharePreviewBuilder : ISharePublicationPrevie
         long sourceVersion;
         try
         {
-            sourceVersion = checked(revisionAfter.Revision + catalogRevisionAfter.Revision);
+            sourceVersion = checked(
+                revisionAfter.Revision
+                + identityRevisionAfter.Revision
+                + catalogRevisionAfter.Revision);
         }
         catch (OverflowException)
         {

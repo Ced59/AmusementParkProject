@@ -317,6 +317,7 @@ public static class SharingHttpMappers
             Ratings = value.Ratings.Select(static item => new PassportProfileShareRatingCandidateDto
             {
                 SelectionKey = item.SelectionKey,
+                ParkId = item.ParkId,
                 Name = item.Name,
                 ParkName = item.ParkName,
                 Rating = item.Rating,

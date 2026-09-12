@@ -702,6 +702,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
+                    It.IsAny<ShareContentPolicy>(),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
@@ -712,6 +713,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
+                    It.IsAny<ShareContentPolicy>(),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Failure(
@@ -721,6 +723,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
+                    It.IsAny<ShareContentPolicy>(),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Failure(
@@ -730,6 +733,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         {
             source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
+                    It.IsAny<ShareContentPolicy>(),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion))
                 .ReturnsAsync(ApplicationResult<long>.Success(persistedSourceVersion.Value));
@@ -738,6 +742,7 @@ public sealed class PublishSharePublicationCommandHandlerTests
         {
             source.Setup(value => value.GetCurrentSourceVersionAsync(
                     ScopeKey,
+                    It.IsAny<ShareContentPolicy>(),
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<long>.Success(sourceVersion));
         }

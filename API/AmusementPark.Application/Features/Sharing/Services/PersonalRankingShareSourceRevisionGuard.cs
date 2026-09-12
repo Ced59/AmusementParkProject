@@ -36,7 +36,7 @@ public sealed class PersonalRankingShareSourceRevisionGuard
         CancellationToken cancellationToken)
     {
         return await this.sourceRevisionRepository.BeginMutationAsync(
-            PersonalRankingShareSourceScope.Create(ownerUserId),
+            PublicIdentityShareSourceScope.Create(ownerUserId),
             cancellationToken);
     }
 

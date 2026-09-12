@@ -102,6 +102,7 @@ public sealed class GetPassportProfileShareSelectionQueryHandler
             .Where(rating => publicParks.ContainsKey(rating.ParkId))
             .Select(static rating => new PassportProfileShareRatingCandidateResult(
                 PassportProfileRatingSelectionKey.Create(rating.TargetType, rating.TargetId),
+                rating.ParkId,
                 rating.TargetName.Trim(),
                 NormalizeOptional(rating.ParkName),
                 rating.Value))

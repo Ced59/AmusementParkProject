@@ -267,6 +267,8 @@ public sealed class SharePublicationAccessResolverTests
             .ReturnsAsync(new Dictionary<string, ShareSourceRevision>(StringComparer.Ordinal)
             {
                 ["personal-ranking:owner-1"] = new ShareSourceRevision(ownerRevision, 0, Now),
+                [PublicIdentityShareSourceScope.Create("owner-1")] =
+                    new ShareSourceRevision(0, 0, Now),
                 [PersonalRankingShareSourceScope.PublicCatalog] = new ShareSourceRevision(0, 0, Now),
             });
         return new[]

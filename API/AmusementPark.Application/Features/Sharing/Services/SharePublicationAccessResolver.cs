@@ -56,6 +56,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
 
         ApplicationResult<long> sourceVersionResult = await source.GetCurrentSourceVersionAsync(
             publication.SourceScopeKey,
+            publication.ContentPolicy,
             cancellationToken);
         if (!sourceVersionResult.IsSuccess
             || sourceVersionResult.Value != publication.SourceVersion)
@@ -134,6 +135,7 @@ public sealed class SharePublicationAccessResolver : ISharePublicationAccessReso
 
         ApplicationResult<long> currentVersion = await source.GetCurrentSourceVersionAsync(
             currentPublication.SourceScopeKey,
+            currentPublication.ContentPolicy,
             cancellationToken);
         return currentVersion.IsSuccess
             && currentVersion.Value == currentPublication.SourceVersion
