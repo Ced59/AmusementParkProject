@@ -200,34 +200,3 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             .ToList();
     }
 }
-
-public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHistoryEventCommand, ApplicationResult>
-{
-    private readonly IHistoryEventRepository historyEventRepository;
-    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
-
-    public DeleteHistoryEventCommandHandler(
-        IHistoryEventRepository historyEventRepository,
-        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
-    {
-        this.historyEventRepository = historyEventRepository;
-        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
-    }
-
-    public async Task<ApplicationResult> HandleAsync(DeleteHistoryEventCommand command, CancellationToken cancellationToken = default)
-    {
-        if (string.IsNullOrWhiteSpace(command.EventId))
-        {
-            return ApplicationResult.Failure(ApplicationErrors.Required("eventId"));
-        }
-
-        bool deleted = await this.historyEventRepository.DeleteAsync(command.EventId.Trim(), cancellationToken);
-        if (!deleted)
-        {
-            return ApplicationResult.Failure(ApplicationErrors.EntityNotFound(nameof(HistoryEvent), command.EventId));
-        }
-
-        await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
-        return ApplicationResult.Success();
-    }
-}
