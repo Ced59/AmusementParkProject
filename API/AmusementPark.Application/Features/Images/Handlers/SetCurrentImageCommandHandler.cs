@@ -80,23 +80,22 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                     image.OwnerType,
                     image.OwnerId,
                     image.Category);
-            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+            UserAvatarShareSourceMutationContext avatarMutation =
                 await UserAvatarShareSourceMutation.BeginAsync(
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
+                    this.imageRepository,
                     cancellationToken);
             using CancellationTokenSource mutationCancellation =
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
-                    avatarMutationLeases.Values);
+                    avatarMutation.Leases.Values);
             using CancellationTokenSource consistencyCancellation =
                 ShareSourceMutationCancellation.CreateLeaseSource(
-                    avatarMutationLeases.Values);
-            bool avatarSourceChanged = false;
+                    avatarMutation.Leases.Values);
             Image? updated;
             try
             {
-                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
                 updated = await this.imageRepository.SetCurrentIfUnchangedAsync(
                     image.Id,
                     new ImageMutationPrecondition(
@@ -128,8 +127,8 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             finally
             {
                 await UserAvatarShareSourceMutation.CompleteAsync(
-                    avatarMutationLeases,
-                    avatarSourceChanged,
+                    avatarMutation,
+                    this.imageRepository,
                     this.shareSourceRevisionGuard);
             }
 

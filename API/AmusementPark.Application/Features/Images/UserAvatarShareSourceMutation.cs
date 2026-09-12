@@ -29,11 +29,17 @@ internal static class UserAvatarShareSourceMutation
         return ownerUserIds.ToArray();
     }
 
-    public static async Task<IReadOnlyDictionary<string, ShareSourceMutationLease>> BeginAsync(
+    public static async Task<UserAvatarShareSourceMutationContext> BeginAsync(
         IReadOnlyCollection<string> ownerUserIds,
         IPersonalRankingShareSourceRevisionGuard revisionGuard,
+        IImageRepository imageRepository,
         CancellationToken cancellationToken)
     {
+        IReadOnlyDictionary<string, string?> publicAvatarUrlsBefore =
+            await ReadPublicAvatarUrlsAsync(
+                ownerUserIds,
+                imageRepository,
+                cancellationToken);
         Dictionary<string, ShareSourceMutationLease> leases =
             new Dictionary<string, ShareSourceMutationLease>(StringComparer.Ordinal);
         try
@@ -45,11 +51,20 @@ internal static class UserAvatarShareSourceMutation
                     cancellationToken);
             }
 
-            return leases;
+            return new UserAvatarShareSourceMutationContext(
+                leases,
+                publicAvatarUrlsBefore);
         }
         catch
         {
-            await CompleteAsync(leases, false, revisionGuard);
+            foreach (ShareSourceMutationLease lease in leases.Values)
+            {
+                await revisionGuard.CompleteMutationAsync(
+                    lease,
+                    false,
+                    CancellationToken.None);
+            }
+
             throw;
         }
     }
@@ -93,17 +108,57 @@ internal static class UserAvatarShareSourceMutation
     }
 
     public static async Task CompleteAsync(
-        IReadOnlyDictionary<string, ShareSourceMutationLease> leases,
-        bool sourceChanged,
+        UserAvatarShareSourceMutationContext context,
+        IImageRepository imageRepository,
         IPersonalRankingShareSourceRevisionGuard revisionGuard)
     {
-        foreach (ShareSourceMutationLease lease in leases.Values)
+        IReadOnlyDictionary<string, string?> publicAvatarUrlsAfter =
+            await ReadPublicAvatarUrlsAsync(
+                context.Leases.Keys.ToArray(),
+                imageRepository,
+                CancellationToken.None);
+        foreach (KeyValuePair<string, ShareSourceMutationLease> pair in context.Leases)
         {
+            context.PublicAvatarUrlsBefore.TryGetValue(
+                pair.Key,
+                out string? publicAvatarUrlBefore);
+            publicAvatarUrlsAfter.TryGetValue(
+                pair.Key,
+                out string? publicAvatarUrlAfter);
             await revisionGuard.CompleteMutationAsync(
-                lease,
-                sourceChanged,
+                pair.Value,
+                !string.Equals(
+                    publicAvatarUrlBefore,
+                    publicAvatarUrlAfter,
+                    StringComparison.Ordinal),
                 CancellationToken.None);
         }
+    }
+
+    private static async Task<IReadOnlyDictionary<string, string?>> ReadPublicAvatarUrlsAsync(
+        IReadOnlyCollection<string> ownerUserIds,
+        IImageRepository imageRepository,
+        CancellationToken cancellationToken)
+    {
+        Dictionary<string, string?> publicAvatarUrls =
+            new Dictionary<string, string?>(StringComparer.Ordinal);
+        foreach (string ownerUserId in ownerUserIds
+                     .Select(static value => value.Trim())
+                     .Where(static value => value.Length > 0)
+                     .Distinct(StringComparer.Ordinal))
+        {
+            Image? currentAvatar = await imageRepository.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                ownerUserId,
+                ImageCategory.Avatar,
+                cancellationToken);
+            publicAvatarUrls[ownerUserId] = currentAvatar is not null
+                && currentAvatar.IsPublished
+                ? $"/images/{currentAvatar.Id}"
+                : null;
+        }
+
+        return publicAvatarUrls;
     }
 
     private static void AddAvatarOwner(

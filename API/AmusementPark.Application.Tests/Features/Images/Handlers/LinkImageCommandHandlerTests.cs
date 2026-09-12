@@ -77,17 +77,21 @@ public sealed class LinkImageCommandHandlerTests
                 Assert.True(nextLeaseStarted);
             })
             .ReturnsAsync(updated);
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-old",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing)
+            .ReturnsAsync((Image?)null)
             .ReturnsAsync((Image?)null);
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-new",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null)
+            .ReturnsAsync(updated)
             .ReturnsAsync(updated);
 
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);

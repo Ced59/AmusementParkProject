@@ -30,6 +30,15 @@ public sealed class SetCurrentImageCommandHandlerTests
             IsCurrent = true,
             IsPublished = true,
         };
+        Image previousAvatar = new Image
+        {
+            Id = "avatar-old",
+            Category = ImageCategory.Avatar,
+            OwnerType = ImageOwnerType.User,
+            OwnerId = "owner-1",
+            IsCurrent = true,
+            IsPublished = true,
+        };
         User user = new User
         {
             Id = "owner-1",
@@ -49,6 +58,12 @@ public sealed class SetCurrentImageCommandHandlerTests
         MockSequence sequence = new MockSequence();
         images.Setup(value => value.GetByIdAsync("avatar-new", It.IsAny<CancellationToken>()))
             .ReturnsAsync(avatar);
+        images.InSequence(sequence).Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(previousAvatar);
         revisions.InSequence(sequence).Setup(value => value.BeginAvatarMutationAsync(
                 "owner-1",
                 It.IsAny<CancellationToken>()))
@@ -83,6 +98,12 @@ public sealed class SetCurrentImageCommandHandlerTests
                 It.Is<CancellationToken>(token =>
                     token.CanBeCanceled && !token.IsCancellationRequested)))
             .ReturnsAsync(true);
+        images.InSequence(sequence).Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+                ImageOwnerType.User,
+                "owner-1",
+                ImageCategory.Avatar,
+                CancellationToken.None))
+            .ReturnsAsync(avatar);
         revisions.InSequence(sequence).Setup(value => value.CompleteMutationAsync(
                 mutationLease,
                 true,

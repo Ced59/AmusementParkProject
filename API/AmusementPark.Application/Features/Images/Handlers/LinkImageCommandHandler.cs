@@ -85,23 +85,22 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                     command.OwnerType,
                     normalizedOwnerId,
                     image.Category);
-            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+            UserAvatarShareSourceMutationContext avatarMutation =
                 await UserAvatarShareSourceMutation.BeginAsync(
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
+                    this.imageRepository,
                     cancellationToken);
             using CancellationTokenSource mutationCancellation =
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
-                    avatarMutationLeases.Values);
+                    avatarMutation.Leases.Values);
             using CancellationTokenSource consistencyCancellation =
                 ShareSourceMutationCancellation.CreateLeaseSource(
-                    avatarMutationLeases.Values);
-            bool avatarSourceChanged = false;
+                    avatarMutation.Leases.Values);
             Image? updated;
             try
             {
-                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
                 ImageMutationPrecondition precondition = new ImageMutationPrecondition(
                     image.OwnerType,
                     image.OwnerId,
@@ -172,8 +171,8 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             finally
             {
                 await UserAvatarShareSourceMutation.CompleteAsync(
-                    avatarMutationLeases,
-                    avatarSourceChanged,
+                    avatarMutation,
+                    this.imageRepository,
                     this.shareSourceRevisionGuard);
             }
 

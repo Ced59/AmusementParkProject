@@ -57,7 +57,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             .ReturnsAsync(existingUser);
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 "existing-user-id",
                 It.IsAny<CancellationToken>()))
             .Callback(() => leaseStarted = true)
@@ -240,7 +240,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             .ReturnsAsync("/images/avatar-1");
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 staleUser.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);
@@ -379,7 +379,7 @@ public sealed class ProvisionExternalUserCommandHandlerTests
             .ReturnsAsync("/images/avatar-1");
         Mock<IPersonalRankingShareSourceRevisionGuard> revisions =
             new Mock<IPersonalRankingShareSourceRevisionGuard>(MockBehavior.Strict);
-        revisions.Setup(value => value.BeginMutationAsync(
+        revisions.Setup(value => value.BeginAvatarMutationAsync(
                 staleUser.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);

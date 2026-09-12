@@ -90,22 +90,21 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                     ImageOwnerType.None,
                     null,
                     image.Category);
-            IReadOnlyDictionary<string, ShareSourceMutationLease> avatarMutationLeases =
+            UserAvatarShareSourceMutationContext avatarMutation =
                 await UserAvatarShareSourceMutation.BeginAsync(
                     avatarOwnerUserIds,
                     this.shareSourceRevisionGuard,
+                    this.imageRepository,
                     cancellationToken);
             using CancellationTokenSource mutationCancellation =
                 ShareSourceMutationCancellation.CreateLinkedSource(
                     cancellationToken,
-                    avatarMutationLeases.Values);
+                    avatarMutation.Leases.Values);
             using CancellationTokenSource consistencyCancellation =
                 ShareSourceMutationCancellation.CreateLeaseSource(
-                    avatarMutationLeases.Values);
-            bool avatarSourceChanged = false;
+                    avatarMutation.Leases.Values);
             try
             {
-                avatarSourceChanged = avatarOwnerUserIds.Count > 0;
                 bool deleted = await this.imageRepository.DeleteIfUnchangedAsync(
                     image.Id,
                     new ImageMutationPrecondition(
@@ -138,8 +137,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             finally
             {
                 await UserAvatarShareSourceMutation.CompleteAsync(
-                    avatarMutationLeases,
-                    avatarSourceChanged,
+                    avatarMutation,
+                    this.imageRepository,
                     this.shareSourceRevisionGuard);
             }
 

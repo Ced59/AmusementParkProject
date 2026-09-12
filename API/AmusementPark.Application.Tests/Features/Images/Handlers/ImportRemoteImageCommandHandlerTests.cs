@@ -68,11 +68,13 @@ public sealed class ImportRemoteImageCommandHandlerTests
                 It.IsAny<CancellationToken>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(current);
-        images.Setup(value => value.GetCurrentByOwnerAuthoritativeAsync(
+        images.SetupSequence(value => value.GetCurrentByOwnerAuthoritativeAsync(
                 ImageOwnerType.User,
                 "owner-1",
                 ImageCategory.Avatar,
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null)
+            .ReturnsAsync(current)
             .ReturnsAsync(current);
 
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
