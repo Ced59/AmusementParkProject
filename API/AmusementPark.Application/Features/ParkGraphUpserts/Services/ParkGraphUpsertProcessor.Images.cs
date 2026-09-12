@@ -103,6 +103,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
             bool ownerChanged = change.Fields.Count > ownerFieldStart;
 
+            string? originalFileName = image.OriginalFileName;
             string? description = image.Description;
             string? sourceUrl = image.SourceUrl;
             ImageCategory category = image.Category;
@@ -116,6 +117,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 : new GeoPointValue(image.GeoLocation.Latitude, image.GeoLocation.Longitude);
 
             int metadataFieldStart = change.Fields.Count;
+            PatchString(patch, "originalFileName", image.OriginalFileName, value => originalFileName = value, change);
             PatchString(patch, "description", image.Description, value => description = value, change);
             PatchString(patch, "sourceUrl", image.SourceUrl, value => sourceUrl = value, change);
             PatchEnum(patch, "category", image.Category, value => category = value, change);
@@ -166,6 +168,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
             ImageMetadataUpdate metadata = new ImageMetadataUpdate
             {
+                OriginalFileName = originalFileName,
                 Description = description,
                 AltTexts = ToLocalizedTextValues(altTexts),
                 Captions = ToLocalizedTextValues(captions),

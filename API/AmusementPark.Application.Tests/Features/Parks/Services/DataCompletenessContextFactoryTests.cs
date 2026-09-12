@@ -427,6 +427,30 @@ public sealed class DataCompletenessContextFactoryTests
         Assert.False(encodedImageCreditContexts["park-1"].HasNoForbiddenPublicText);
 
         parkImages.Clear();
+        parkImages.Add(new Image
+        {
+            Id = "park-image",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            IsPublished = true,
+            OriginalFileName = "Rock &amp; Roll.jpg",
+        });
+        IReadOnlyDictionary<string, ParkDataCompletenessContext> encodedImageFileNameContexts =
+            await DataCompletenessContextFactory.BuildParkContextsAsync(
+                new[] { park },
+                visibilityCounts,
+                openingHours,
+                new ParkOpeningHoursAdminStatusResolverAccessor(static _ => ParkOpeningHoursAdminStatus.NotConfigured),
+                parkItemRepository.Object,
+                null,
+                imageRepository.Object,
+                historyEventRepository.Object,
+                CancellationToken.None);
+
+        Assert.False(encodedImageFileNameContexts["park-1"].HasNoForbiddenPublicText);
+
+        parkImages.Clear();
         parkHistoryEvents.Add(new HistoryEvent
         {
             Id = "visible-history",

@@ -305,7 +305,8 @@ internal static class DataCompletenessPublicTextEncoding
 
     internal static bool HasForbiddenImagePublicText(Image image)
     {
-        return DataCompletenessScoringRules.HasForbiddenPlainPublicText(image.Description)
+        return DataCompletenessScoringRules.HasForbiddenPlainPublicText(image.OriginalFileName)
+            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(image.Description)
             || HasForbiddenLocalizedPlainPublicText(image.AltTexts)
             || HasForbiddenLocalizedPlainPublicText(image.Captions)
             || HasForbiddenLocalizedPlainPublicText(image.Credits);

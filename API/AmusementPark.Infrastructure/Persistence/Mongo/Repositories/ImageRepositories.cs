@@ -2170,6 +2170,11 @@ public sealed class ImageRepository : IImageRepository
             .Set(static document => document.SourceUrl, string.IsNullOrWhiteSpace(metadata.SourceUrl) ? null : metadata.SourceUrl.Trim())
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
 
+        if (!string.IsNullOrWhiteSpace(metadata.OriginalFileName))
+        {
+            update = update.Set(static document => document.OriginalFileName, metadata.OriginalFileName.Trim());
+        }
+
         if (metadata.OwnerType.HasValue)
         {
             update = update
