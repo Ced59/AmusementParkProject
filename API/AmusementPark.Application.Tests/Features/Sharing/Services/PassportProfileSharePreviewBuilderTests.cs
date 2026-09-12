@@ -205,6 +205,43 @@ public sealed class PassportProfileSharePreviewBuilderTests
     }
 
     [Fact]
+    public async Task BuildAsync_WhenNoSelectedFieldExposesContent_ShouldMarkPreviewEmpty()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-public-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            new Dictionary<string, string?>(),
+            "stable-fingerprint",
+            true);
+        PassportProfileSharePreviewBuilder builder = CreateBuilderWithoutOptionalContent(source);
+
+        ApplicationResult<SharePublicationPreviewResult> result = await builder.BuildAsync(
+            "owner-technical-id",
+            ShareContentPolicy.Create(
+                SharePublicationType.PassportProfile,
+                ShareDatePrecision.Year,
+                Array.Empty<ShareContentField>()),
+            new PassportProfileShareInput(
+                new[] { 2026 },
+                new[] { "park-public-id" },
+                Array.Empty<string>(),
+                null,
+                ShareVisibility.Unlisted,
+                false),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.PassportProfile!.IsEmpty);
+    }
+
+    [Fact]
     public async Task BuildAsync_WhenPublicNameIsMissing_ShouldPreserveTheLocalizedFallback()
     {
         PassportProfileSourceData source = new PassportProfileSourceData(

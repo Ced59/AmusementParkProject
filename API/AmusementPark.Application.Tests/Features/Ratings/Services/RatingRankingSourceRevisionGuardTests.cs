@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Moq;
@@ -479,6 +480,49 @@ public sealed class RatingRankingSourceRevisionGuardTests
     }
 
     [Fact]
+    public async Task PrepareParkChangesAsync_WhenVisibleClosedParkNameChanges_ShouldFenceShareCatalog()
+    {
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
+            PersonalRankingShareSourceScope.PublicCatalog,
+            13.ToString("x32"));
+        Mock<IShareSourceRevisionRepository> shareRevisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(catalogLease);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(
+            revisions.Object,
+            shareSourceRevisions: shareRevisions.Object);
+        Park previous = new Park
+        {
+            Id = "closed-park",
+            Name = "Ancien nom",
+            IsVisible = true,
+            Status = ParkStatus.ClosedDefinitively,
+        };
+        Park current = new Park
+        {
+            Id = "closed-park",
+            Name = "Nouveau nom",
+            IsVisible = true,
+            Status = ParkStatus.ClosedDefinitively,
+        };
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Empty(preparation.MutationLeases);
+        Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
+        revisions.VerifyNoOtherCalls();
+        shareRevisions.VerifyAll();
+    }
+
+    [Fact]
     public async Task PrepareParkItemChangesAsync_WhenCategoryChanges_ShouldInvalidateOldNewAndParkScopes()
     {
         List<RankingScopeKey> incrementedScopes = new List<RankingScopeKey>();
@@ -560,6 +604,41 @@ public sealed class RatingRankingSourceRevisionGuardTests
         previous.Name = "Demo Ride";
         ParkItem current = CreateVisibleParkItem(ParkItemCategory.Attraction);
         current.Name = "DEMO RIDE";
+
+        RatingRankingMutationPreparation preparation = await guard.PrepareParkItemChangesAsync(
+            new[] { previous },
+            new[] { current },
+            CancellationToken.None);
+
+        Assert.Empty(preparation.MutationLeases);
+        Assert.Same(catalogLease, preparation.PersonalRankingCatalogMutationLease);
+        revisions.VerifyNoOtherCalls();
+        shareRevisions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PrepareParkItemChangesAsync_WhenVisibleClosedItemNameChanges_ShouldFenceShareCatalog()
+    {
+        Mock<IRatingRankingSourceRevisionRepository> revisions =
+            new Mock<IRatingRankingSourceRevisionRepository>(MockBehavior.Strict);
+        ShareSourceMutationLease catalogLease = new ShareSourceMutationLease(
+            PersonalRankingShareSourceScope.PublicCatalog,
+            14.ToString("x32"));
+        Mock<IShareSourceRevisionRepository> shareRevisions =
+            new Mock<IShareSourceRevisionRepository>(MockBehavior.Strict);
+        shareRevisions.Setup(value => value.BeginMutationAsync(
+                PersonalRankingShareSourceScope.PublicCatalog,
+                CancellationToken.None))
+            .ReturnsAsync(catalogLease);
+        RatingRankingSourceRevisionGuard guard = CreateGuard(
+            revisions.Object,
+            shareSourceRevisions: shareRevisions.Object);
+        ParkItem previous = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        previous.Name = "Ancien nom";
+        previous.AttractionDetails!.Status = ParkItemStatusNormalizer.ClosedDefinitively;
+        ParkItem current = CreateVisibleParkItem(ParkItemCategory.Attraction);
+        current.Name = "Nouveau nom";
+        current.AttractionDetails!.Status = ParkItemStatusNormalizer.ClosedDefinitively;
 
         RatingRankingMutationPreparation preparation = await guard.PrepareParkItemChangesAsync(
             new[] { previous },

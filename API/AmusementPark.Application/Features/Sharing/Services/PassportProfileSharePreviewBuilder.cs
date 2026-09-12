@@ -278,45 +278,74 @@ public sealed class PassportProfileSharePreviewBuilder
                     rating.Value))
                 .ToArray()
             : Array.Empty<PassportProfileShareRatingResult>();
+        string? displayName = policy.Includes(ShareContentField.PublicDisplayName)
+            ? NormalizeOptional(user.ResolvePublicDisplayName())
+            : null;
+        string? avatarUrl = policy.Includes(ShareContentField.Avatar)
+            ? ResolvePublicAvatarUrl(avatar, user.Id)
+            : null;
+        string? publicCaption = policy.Includes(ShareContentField.PublicCaption)
+            ? input.PublicCaption
+            : null;
+        PassportProfileShareRatingSummaryResult? visitRatings = includesTemporalRatings
+            ? ToRatingSummary(
+                statistics.Summary.RatedVisitCount,
+                statistics.Summary.VisitCount,
+                statistics.Summary.ParkRatings?.Average)
+            : null;
+        PassportProfileShareRatingSummaryResult? rideRatings = includesTemporalRatings
+            ? ToRatingSummary(
+                statistics.Summary.RatedRideCount,
+                statistics.Summary.RideOutcomes.CompletedRideCount,
+                statistics.Summary.RideRatings?.Average)
+            : null;
+        PassportProfileShareCountryResult[] countries = includesGeography
+            ? BuildCountries(visits, publicParks)
+            : Array.Empty<PassportProfileShareCountryResult>();
+        PassportProfileShareYearResult[] years = includesGeography
+            ? BuildYears(visits, rides, includesActivity)
+            : Array.Empty<PassportProfileShareYearResult>();
+        PassportProfileShareParkResult[] parks = includesGeography
+            ? BuildParks(visits, rides, publicParks, includesActivity, includesTemporalRatings)
+            : Array.Empty<PassportProfileShareParkResult>();
+        PassportProfileShareMissedItemResult[] missedItems = includesMissed
+            ? BuildMissedItems(rides, source.HistoricalItemNames, targets)
+            : Array.Empty<PassportProfileShareMissedItemResult>();
+        bool isEmpty = displayName is null
+            && avatarUrl is null
+            && publicCaption is null
+            && !input.AllowsComparisons
+            && !(includesActivity && visits.Length > 0)
+            && visitRatings is null
+            && rideRatings is null
+            && countries.Length == 0
+            && years.Length == 0
+            && parks.Length == 0
+            && ranking.Length == 0
+            && missedItems.Length == 0;
         PassportProfileSharePreviewResult result = new PassportProfileSharePreviewResult(
-            policy.Includes(ShareContentField.PublicDisplayName)
-                ? NormalizeOptional(user.ResolvePublicDisplayName())
-                : null,
-            policy.Includes(ShareContentField.Avatar)
-                ? ResolvePublicAvatarUrl(avatar, user.Id)
-                : null,
-            policy.Includes(ShareContentField.PublicCaption) ? input.PublicCaption : null,
+            displayName,
+            avatarUrl,
+            publicCaption,
             input.Visibility,
             input.AllowsComparisons,
             includesGeography ? statistics.ParkCount : null,
             includesActivity ? statistics.Summary.VisitCount : null,
             includesActivity ? statistics.Summary.RideOutcomes.CompletedRideCount : null,
             includesActivity ? statistics.Summary.DistinctCompletedItemCount : null,
-            includesTemporalRatings ? ToRatingSummary(
-                statistics.Summary.RatedVisitCount,
-                statistics.Summary.VisitCount,
-                statistics.Summary.ParkRatings?.Average) : null,
-            includesTemporalRatings ? ToRatingSummary(
-                statistics.Summary.RatedRideCount,
-                statistics.Summary.RideOutcomes.CompletedRideCount,
-                statistics.Summary.RideRatings?.Average) : null,
-            includesGeography ? BuildCountries(visits, publicParks) : Array.Empty<PassportProfileShareCountryResult>(),
-            includesGeography
-                ? BuildYears(visits, rides, includesActivity)
-                : Array.Empty<PassportProfileShareYearResult>(),
-            includesGeography
-                ? BuildParks(visits, rides, publicParks, includesActivity, includesTemporalRatings)
-                : Array.Empty<PassportProfileShareParkResult>(),
+            visitRatings,
+            rideRatings,
+            countries,
+            years,
+            parks,
             ranking,
-            includesMissed
-                ? BuildMissedItems(rides, source.HistoricalItemNames, targets)
-                : Array.Empty<PassportProfileShareMissedItemResult>(),
+            missedItems,
             selectedScopeRides.Any(ride => !CanExposeTarget(
                 ride,
                 source.HistoricalItemNames,
                 targets)),
             PassportProfileShareVersion.CalculationVersion,
-            visits.Length == 0 && ranking.Length == 0);
+            isEmpty);
         return ApplicationResult<PassportProfileSharePreviewResult>.Success(result);
     }
 

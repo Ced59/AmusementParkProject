@@ -85,6 +85,11 @@ public sealed class RatingRankingSourceRevisionGuard :
         {
             previousById.TryGetValue(parkId, out Park? previous);
             currentById.TryGetValue(parkId, out Park? current);
+            if (AffectsPublicShareCatalog(previous, current))
+            {
+                affectsPersonalRankingCatalog = true;
+            }
+
             bool previousIncluded = IsParkIncluded(previous);
             bool currentIncluded = IsParkIncluded(current);
             if (previousIncluded != currentIncluded)
@@ -99,12 +104,7 @@ public sealed class RatingRankingSourceRevisionGuard :
                 continue;
             }
 
-            if (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name))
-            {
-                affectsPersonalRankingCatalog = true;
-            }
-
-            if (!NamesHaveEquivalentRankingOrder(previous.Name, current.Name))
+            if (!NamesHaveEquivalentRankingOrder(previous!.Name, current!.Name))
             {
                 affectsParkRankingSources = true;
             }
@@ -140,6 +140,11 @@ public sealed class RatingRankingSourceRevisionGuard :
         {
             previousById.TryGetValue(itemId, out ParkItem? previous);
             currentById.TryGetValue(itemId, out ParkItem? current);
+            if (AffectsPublicShareCatalog(previous, current))
+            {
+                affectsPersonalRankingCatalog = true;
+            }
+
             bool previousIncluded = IsParkItemIncluded(previous);
             bool currentIncluded = IsParkItemIncluded(current);
             bool membershipChanged = previousIncluded != currentIncluded;
@@ -153,13 +158,7 @@ public sealed class RatingRankingSourceRevisionGuard :
             bool rankingNameChanged = previousIncluded
                 && currentIncluded
                 && !NamesHaveEquivalentRankingOrder(previous!.Name, current!.Name);
-            bool publicNameChanged = previousIncluded
-                && currentIncluded
-                && !NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name);
-            if (membershipChanged
-                || placementChanged
-                || parkCompositionChanged
-                || publicNameChanged)
+            if (membershipChanged || placementChanged || parkCompositionChanged)
             {
                 affectsPersonalRankingCatalog = true;
             }
@@ -301,6 +300,33 @@ public sealed class RatingRankingSourceRevisionGuard :
                 item.AttractionDetails?.Status);
     }
 
+    private static bool AffectsPublicShareCatalog(Park? previous, Park? current)
+    {
+        bool previousIncluded = previous is not null && previous.IsVisible;
+        bool currentIncluded = current is not null && current.IsVisible;
+        return previousIncluded != currentIncluded
+            || (previousIncluded
+            && currentIncluded
+            && (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name)
+                || !string.Equals(
+                    NormalizeCountryCode(previous.CountryCode),
+                    NormalizeCountryCode(current.CountryCode),
+                    StringComparison.Ordinal)));
+    }
+
+    private static bool AffectsPublicShareCatalog(ParkItem? previous, ParkItem? current)
+    {
+        bool previousIncluded = previous is not null && previous.IsVisible;
+        bool currentIncluded = current is not null && current.IsVisible;
+        return previousIncluded != currentIncluded
+            || (previousIncluded
+            && currentIncluded
+            && (!NamesHaveEquivalentPublicLabel(previous!.Name, current!.Name)
+                || !string.Equals(previous.ParkId?.Trim(), current.ParkId?.Trim(), StringComparison.Ordinal)
+                || previous.Category != current.Category
+                || previous.AttractionDetails?.ClosingDate != current.AttractionDetails?.ClosingDate));
+    }
+
     private static bool NamesHaveEquivalentRankingOrder(string? previousName, string? currentName)
     {
         return string.Equals(
@@ -315,6 +341,12 @@ public sealed class RatingRankingSourceRevisionGuard :
             previousName?.Trim(),
             currentName?.Trim(),
             StringComparison.Ordinal);
+    }
+
+    private static string? NormalizeCountryCode(string? value)
+    {
+        string normalized = value?.Trim().ToUpperInvariant() ?? string.Empty;
+        return normalized.Length == 0 ? null : normalized;
     }
 
     public async Task CompleteMutationAsync(

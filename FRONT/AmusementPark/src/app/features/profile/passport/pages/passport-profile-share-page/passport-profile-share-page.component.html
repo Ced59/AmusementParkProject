@@ -126,6 +126,9 @@
         @if (passport.missedItems.length > 0) {
           <section class="passport-share__preview-block"><h3>{{ 'passportProfileShare.public.missed' | translate }}</h3><ul>@for (item of passport.missedItems; track item.name + item.status) { <li><strong>{{ item.name }}</strong><span>{{ ('passportProfileShare.public.status.' + item.status) | translate }}</span></li> }</ul></section>
         }
+        @if (passport.allowsComparisons) {
+          <p class="passport-share__comparison"><i class="pi pi-users" aria-hidden="true"></i>{{ 'passportProfileShare.public.comparisonReady' | translate }}</p>
+        }
         @if (passport.hasIncompleteCatalog) {
           <p class="passport-share__notice"><i class="pi pi-eye-slash" aria-hidden="true"></i>{{ 'passportProfileShare.public.incompleteCatalog' | translate }}</p>
         }
