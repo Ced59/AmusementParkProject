@@ -122,6 +122,22 @@ Après ce lot, l'inventaire contient :
 - 454 fichiers non conformes distincts : 373 en C# et 81 en TypeScript ;
 - 5 fichiers non conformes dans `AmusementPark.Core`, contre 6 avant ce lot.
 
+## État après le lot Core Statistiques du passeport
+
+Le lot Statistiques du passeport sépare les observations de visites et de tours,
+les distributions de notes, les bilans par élément, parc et année, les tendances
+et leurs calculateurs. Les namespaces, signatures, formules, seuils et messages
+de validation restent identiques ; aucun résultat statistique, contrat HTTP ou
+format MongoDB ne change.
+
+Après ce lot, l'inventaire contient :
+
+- 270 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 303 au total ;
+- 442 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 451 fichiers non conformes distincts : 370 en C# et 81 en TypeScript ;
+- 2 fichiers non conformes dans `AmusementPark.Core`, contre 5 avant ce lot.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
