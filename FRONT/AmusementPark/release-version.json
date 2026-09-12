@@ -1,6 +1,20 @@
 {
-  "version": "5.2.29",
+  "version": "5.2.30",
   "history": [
+    {
+      "version": "5.2.30",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Les traitements en arrière-plan gagnent en fiabilité.",
+        "en": "Background processing is now more reliable.",
+        "de": "Hintergrundverarbeitungen sind jetzt zuverlässiger.",
+        "nl": "Achtergrondverwerking is nu betrouwbaarder.",
+        "it": "Le elaborazioni in background sono ora più affidabili.",
+        "es": "Los procesos en segundo plano son ahora más fiables.",
+        "pl": "Przetwarzanie w tle jest teraz bardziej niezawodne.",
+        "pt": "Os processamentos em segundo plano estão agora mais fiáveis."
+      }
+    },
     {
       "version": "5.2.29",
       "releasedAt": "2026-09-12",

@@ -253,6 +253,24 @@ Après ce lot, l'inventaire contient :
 - 142 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier non conforme dans le périmètre Application du passeport.
 
+## État après le lot Application Socle et traitements en arrière-plan
+
+Ce lot sépare les états, charges, demandes, baux, résultats, diagnostics et
+contrats d'exécution des traitements différés. Il isole également la demande
+d'invalidation du cache SSR de son port. Les signatures publiques, valeurs par
+défaut, règles de sérialisation et comportements des gestionnaires restent
+identiques. Aucun comportement utilisateur, contrat HTTP ni document MongoDB ne
+change.
+
+Après ce lot, l'inventaire contient :
+
+- 252 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 285 au total ;
+- 422 fichiers présentant encore au moins une incompatibilité de nom ;
+- 101 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 431 fichiers non conformes distincts : 350 en C# et 81 en TypeScript ;
+- 139 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier non conforme dans le périmètre Application des traitements en arrière-plan et des ports partagés.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
