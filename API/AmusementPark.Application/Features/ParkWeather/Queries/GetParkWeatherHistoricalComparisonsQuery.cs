@@ -1,0 +1,11 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkWeather.Results;
+
+namespace AmusementPark.Application.Features.ParkWeather.Queries;
+
+public sealed record GetParkWeatherHistoricalComparisonsQuery(
+    string ParkId,
+    int DayCount,
+    int YearsLimit,
+    IReadOnlyCollection<DateOnly>? ForecastDates = null) : IQuery<ApplicationResult<ParkWeatherHistoricalComparisonsResult>>;
