@@ -1,6 +1,20 @@
 {
-  "version": "5.2.24",
+  "version": "5.2.25",
   "history": [
+    {
+      "version": "5.2.25",
+      "releasedAt": "2026-09-12",
+      "labels": {
+        "fr": "Le socle des statistiques du passeport gagne en clarté.",
+        "en": "The passport statistics foundation is now clearer.",
+        "de": "Die Grundlage der Passstatistiken ist jetzt klarer.",
+        "nl": "De basis van de paspoortstatistieken is nu duidelijker.",
+        "it": "La base delle statistiche del passaporto è ora più chiara.",
+        "es": "La base de las estadísticas del pasaporte es ahora más clara.",
+        "pl": "Podstawa statystyk paszportu jest teraz czytelniejsza.",
+        "pt": "A base das estatísticas do passaporte está agora mais clara."
+      }
+    },
     {
       "version": "5.2.24",
       "releasedAt": "2026-09-12",
