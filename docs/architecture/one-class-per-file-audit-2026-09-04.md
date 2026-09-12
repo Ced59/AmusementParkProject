@@ -466,6 +466,23 @@ Après ce lot, l’inventaire contient :
 - 89 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier multi-classe dans le périmètre du référencement des vidéos.
 
+## État après le lot Application Notification des mises à jour SEO
+
+Ce lot sépare le service qui signale les changements de contenu public et
+l’ordonnanceur neutre utilisé lorsqu’aucun rafraîchissement de sitemap n’est
+nécessaire. La résolution des URL, l’invalidation, IndexNow, la tolérance aux
+erreurs et les délais restent identiques. Aucun écran, contrat HTTP, appel
+externe supplémentaire ni document MongoDB ne change.
+
+Après ce lot, l’inventaire contient :
+
+- 209 fichiers C# multi-classes et 33 fichiers TypeScript multi-classes, soit 242 au total ;
+- 372 fichiers présentant encore au moins une incompatibilité de nom ;
+- 100 fichiers contenant encore au moins une classe C# `partial` écrite à la main ;
+- 380 fichiers non conformes distincts : 299 en C# et 81 en TypeScript ;
+- 88 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
+- aucun fichier multi-classe dans le périmètre de la notification des mises à jour SEO.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
