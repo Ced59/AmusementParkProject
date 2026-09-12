@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 57 parcs atteignent le niveau `Excellent` : 55 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **58 parcs** : 0 au niveau `Publishable`, 56 au niveau `Good` et 2 au niveau `Excellent`.
+- 58 parcs atteignent le niveau `Excellent` : 56 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **57 parcs** : 0 au niveau `Publishable`, 55 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (56)
+## Priorité 2 — niveau `Good` (55)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 85 | `Good` | Plopsaland Belgium | BE | `Operating` | `International` | 85/100 | `969feca2-c2f5-4d78-b14a-b720bd766d2b` |
 | 85 | `Good` | Six Flags Darien Lake | US | `Operating` | `National` | 88/104 | `b9145a8c-3acd-486e-986c-604ee931aa81` |
 | 85 | `Good` | Six Flags Discovery Kingdom | US | `Operating` | `National` | 88/104 | `3bd3b77f-6a09-4240-96ee-25f51ee9b1a5` |
 | 85 | `Good` | Six Flags Mexico | MX | `Operating` | `National` | 88/104 | `bea9e0c4-2945-4cf6-b3f7-83c84b140519` |
