@@ -198,7 +198,7 @@ Les six tables historiques sont conservées et neuf tables sont ajoutées :
 | `comparison-years.csv` | activité comparée par année |
 | `comparison-missed-items.csv` | expériences manquées comparées |
 | `share-snapshots.csv` | métadonnées figées et légendes publiques |
-| `passport-share-selections.csv` | années, noms de parcs et notes choisies, sans clé interne |
+| `passport-share-selections.csv` | années, parcs et notes choisies avec leur type de cible, sans clé interne |
 
 Chaque table enfant porte uniquement une `comparisonReference` propre à l'archive.
 La neutralisation des formules CSV reste appliquée aux cellules commençant par

@@ -154,6 +154,7 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Contains("Public passport caption", content, StringComparison.Ordinal);
         Assert.Contains("Selected Park", content, StringComparison.Ordinal);
         Assert.Contains("Selected Ride", content, StringComparison.Ordinal);
+        Assert.Contains("ParkItem", content, StringComparison.Ordinal);
         Assert.DoesNotContain("publication-internal-visit", content, StringComparison.Ordinal);
         Assert.DoesNotContain("publication-internal-passport", content, StringComparison.Ordinal);
         Assert.DoesNotContain("invitation-internal", content, StringComparison.Ordinal);

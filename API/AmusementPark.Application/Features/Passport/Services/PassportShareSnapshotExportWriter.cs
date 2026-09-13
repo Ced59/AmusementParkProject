@@ -297,8 +297,9 @@ internal static class PassportShareSnapshotExportWriter
             "passport-share-selections.csv");
         PassportShareLifecycleExportWriter.WriteCsvRow(writer, new[]
         {
-            "publicationReference", "selectionType", "year", "name", "parkName",
-            "countryCode", "category", "rating", "visibility", "allowsComparisons",
+            "publicationReference", "selectionType", "targetType", "year", "name",
+            "parkName", "countryCode", "category", "rating", "visibility",
+            "allowsComparisons",
         });
         foreach (PassportProfileShareSnapshot snapshot in snapshots)
         {
@@ -318,8 +319,9 @@ internal static class PassportShareSnapshotExportWriter
         {
             PassportShareLifecycleExportWriter.WriteCsvRow(writer, new[]
             {
-                publicationReference, "Year", year.ToString(CultureInfo.InvariantCulture),
-                null, null, null, null, null, visibility, allowsComparisons,
+                publicationReference, "Year", null,
+                year.ToString(CultureInfo.InvariantCulture), null, null, null, null, null,
+                visibility, allowsComparisons,
             });
         }
 
@@ -327,8 +329,8 @@ internal static class PassportShareSnapshotExportWriter
         {
             PassportShareLifecycleExportWriter.WriteCsvRow(writer, new[]
             {
-                publicationReference, "Park", null, park.Name, null, park.CountryCode,
-                null, null, visibility, allowsComparisons,
+                publicationReference, "Park", null, null, park.Name, null,
+                park.CountryCode, null, null, visibility, allowsComparisons,
             });
         }
 
@@ -336,9 +338,10 @@ internal static class PassportShareSnapshotExportWriter
         {
             PassportShareLifecycleExportWriter.WriteCsvRow(writer, new[]
             {
-                publicationReference, "Rating", null, rating.Name, rating.ParkName,
-                null, rating.Category, PassportShareLifecycleExportWriter.Double(rating.Rating),
-                visibility, allowsComparisons,
+                publicationReference, "Rating", rating.TargetType, null, rating.Name,
+                rating.ParkName, null, rating.Category,
+                PassportShareLifecycleExportWriter.Double(rating.Rating), visibility,
+                allowsComparisons,
             });
         }
     }
