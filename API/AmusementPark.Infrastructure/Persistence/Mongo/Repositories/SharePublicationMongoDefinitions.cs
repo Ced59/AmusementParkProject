@@ -34,7 +34,15 @@ internal static class SharePublicationMongoDefinitions
                 publicationId)
             & Builders<SharePublicationDocument>.Filter.Eq(
                 static document => document.OwnerUserId,
-                ownerUserId);
+            ownerUserId);
+    }
+
+    public static FilterDefinition<SharePublicationDocument> BuildOwnerExportFilter(
+        string ownerUserId)
+    {
+        return Builders<SharePublicationDocument>.Filter.Eq(
+            static document => document.OwnerUserId,
+            ownerUserId);
     }
 
     public static FilterDefinition<SharePublicationDocument> BuildOwnedSourceFilter(

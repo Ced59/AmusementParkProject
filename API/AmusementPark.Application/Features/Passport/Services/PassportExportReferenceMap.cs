@@ -1,5 +1,6 @@
 using System.Globalization;
 using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Services;
@@ -11,17 +12,26 @@ internal sealed class PassportExportReferenceMap
     private readonly IReadOnlyDictionary<string, string> parkReferences;
     private readonly IReadOnlyDictionary<(string ParkId, string ParkItemId), string>
         parkItemReferences;
+    private readonly IReadOnlyDictionary<string, string> publicationReferences;
+    private readonly IReadOnlyDictionary<string, string> invitationReferences;
+    private readonly IReadOnlyDictionary<string, string> comparisonReferences;
 
     private PassportExportReferenceMap(
         IReadOnlyDictionary<string, string> visitReferences,
         IReadOnlyDictionary<string, string> occurrenceReferences,
         IReadOnlyDictionary<string, string> parkReferences,
-        IReadOnlyDictionary<(string ParkId, string ParkItemId), string> parkItemReferences)
+        IReadOnlyDictionary<(string ParkId, string ParkItemId), string> parkItemReferences,
+        IReadOnlyDictionary<string, string> publicationReferences,
+        IReadOnlyDictionary<string, string> invitationReferences,
+        IReadOnlyDictionary<string, string> comparisonReferences)
     {
         this.visitReferences = visitReferences;
         this.occurrenceReferences = occurrenceReferences;
         this.parkReferences = parkReferences;
         this.parkItemReferences = parkItemReferences;
+        this.publicationReferences = publicationReferences;
+        this.invitationReferences = invitationReferences;
+        this.comparisonReferences = comparisonReferences;
     }
 
     public static PassportExportReferenceMap Create(PassportExportWriteRequest request)
@@ -68,7 +78,35 @@ internal sealed class PassportExportReferenceMap
             }
         }
 
-        return new PassportExportReferenceMap(visits, occurrences, parks, parkItems);
+        Dictionary<string, string> publications =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (SharePublication publication in request.ShareLifecycle.Publications)
+        {
+            AddReference(publications, publication.Id.Value, "publication");
+        }
+
+        Dictionary<string, string> invitations =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (ProfileComparisonInvitation invitation in request.ShareLifecycle.Invitations)
+        {
+            AddReference(invitations, invitation.Id.Value, "invitation");
+        }
+
+        Dictionary<string, string> comparisons =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (ProfileComparison comparison in request.ShareLifecycle.Comparisons)
+        {
+            AddReference(comparisons, comparison.Id.Value, "comparison");
+        }
+
+        return new PassportExportReferenceMap(
+            visits,
+            occurrences,
+            parks,
+            parkItems,
+            publications,
+            invitations,
+            comparisons);
     }
 
     public string Visit(VisitId visitId)
@@ -89,6 +127,45 @@ internal sealed class PassportExportReferenceMap
     public string ParkItem(string parkId, string parkItemId)
     {
         return this.parkItemReferences[(parkId, parkItemId)];
+    }
+
+    public string? VisitOrDefault(string visitId)
+    {
+        return this.visitReferences.GetValueOrDefault(visitId);
+    }
+
+    public string Publication(SharePublicationId publicationId)
+    {
+        return this.publicationReferences[publicationId.Value];
+    }
+
+    public string? PublicationOrDefault(SharePublicationId? publicationId)
+    {
+        return publicationId.HasValue
+            ? this.publicationReferences.GetValueOrDefault(publicationId.Value.Value)
+            : null;
+    }
+
+    public string Invitation(ProfileComparisonInvitationId invitationId)
+    {
+        return this.invitationReferences[invitationId.Value];
+    }
+
+    public string? InvitationOrDefault(ProfileComparisonInvitationId invitationId)
+    {
+        return this.invitationReferences.GetValueOrDefault(invitationId.Value);
+    }
+
+    public string Comparison(ProfileComparisonId comparisonId)
+    {
+        return this.comparisonReferences[comparisonId.Value];
+    }
+
+    public string? ComparisonOrDefault(ProfileComparisonId? comparisonId)
+    {
+        return comparisonId.HasValue
+            ? this.comparisonReferences.GetValueOrDefault(comparisonId.Value.Value)
+            : null;
     }
 
     private static void AddReference(

@@ -67,6 +67,19 @@ public sealed class ProfileComparisonMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildParticipantExportFilter_ShouldIncludeActiveAndRevokedParticipantHistories()
+    {
+        string json = Render(
+            ProfileComparisonMongoDefinitions.BuildParticipantExportFilter("user-1"))
+            .ToJson();
+
+        Assert.Contains("creatorUserId", json, StringComparison.Ordinal);
+        Assert.Contains("acceptorUserId", json, StringComparison.Ordinal);
+        Assert.Contains("user-1", json, StringComparison.Ordinal);
+        Assert.DoesNotContain("status", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildActiveParticipantPageFilter_WithCursor_ShouldUseStableSortTuple()
     {
         DateTime createdAtUtc = new DateTime(2026, 9, 13, 12, 0, 0, DateTimeKind.Utc);

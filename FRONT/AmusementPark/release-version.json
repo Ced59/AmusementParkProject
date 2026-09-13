@@ -1,6 +1,20 @@
 {
-  "version": "5.3.7",
+  "version": "5.3.8",
   "history": [
+    {
+      "version": "5.3.8",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Ton export du passeport retrace désormais aussi tes partages et comparaisons.",
+        "en": "Your passport export now also includes your shares and comparisons.",
+        "de": "Dein Pass-Export enthält jetzt auch deine Freigaben und Vergleiche.",
+        "nl": "Je paspoortexport bevat nu ook je gedeelde inhoud en vergelijkingen.",
+        "it": "L’esportazione del passaporto ora include anche condivisioni e confronti.",
+        "es": "La exportación de tu pasaporte ahora también incluye contenidos compartidos y comparaciones.",
+        "pl": "Eksport paszportu obejmuje teraz także udostępnienia i porównania.",
+        "pt": "A exportação do teu passaporte inclui agora também partilhas e comparações."
+      }
+    },
     {
       "version": "5.3.7",
       "releasedAt": "2026-09-13",

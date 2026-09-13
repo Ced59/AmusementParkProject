@@ -457,6 +457,30 @@ sont détaillés dans
 `SHARE-14` peut maintenant compléter l'export, la suppression et les mesures de
 cycle de vie.
 
+### État de `SHARE-14A` au 14 septembre 2026
+
+L'export privé du passeport couvre en version 5.3.8 l'historique des publications,
+leurs politiques exactes, leurs versions et dates de publication ou de révocation,
+ainsi que les invitations et les résultats de comparaison auxquels le membre a
+participé. Le JSON versionné passe au schéma 3 ; le ZIP CSV fournit treize tables
+reliées, dont des tables distinctes pour les parcs, notes, années et expériences
+manquées d'une comparaison.
+
+L'export ne recopie aucun identifiant MongoDB, identifiant de membre, jeton de lien,
+empreinte de contenu ou identifiant de signalement. Des références éphémères comme
+`publication-0001`, `invitation-0001` et `comparison-0001` préservent les relations
+à l'intérieur du fichier. Les résultats sont orientés depuis le point de vue du
+membre (`your...` / `otherMember...`) afin de rester compréhensibles sans révéler
+la structure technique créateur/accepteur. Les lectures MongoDB réutilisent le
+budget de taille commun aux visites et passages ; un export trop volumineux échoue
+donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté
+automatiquement aux invitations pour les recherches côté accepteur, sans opération
+MongoDB manuelle. Les preuves et le schéma sont détaillés dans
+[`product-growth-share-14a-passport-share-export-2026-09-13.md`](../../architecture/product-growth-share-14a-passport-share-export-2026-09-13.md).
+
+`SHARE-14B` doit maintenant traiter la révocation puis la purge lors de la suppression
+du compte ; `SHARE-14C` ajoutera ensuite les mesures de cycle de vie minimisées.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

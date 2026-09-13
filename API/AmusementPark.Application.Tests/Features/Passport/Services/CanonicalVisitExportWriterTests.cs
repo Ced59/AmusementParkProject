@@ -3,8 +3,10 @@ using System.Text;
 using System.Text.Json;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
 using Xunit;
 
@@ -12,6 +14,10 @@ namespace AmusementPark.Application.Tests.Features.Passport.Services;
 
 public sealed class CanonicalVisitExportWriterTests
 {
+    private const string VisitShareToken = "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8";
+    private const string PassportShareToken = "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhQ";
+    private const string InvitationShareToken = "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhA";
+    private const string ComparisonShareToken = "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhg";
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 4, 10, 30, 0, DateTimeKind.Utc);
 
@@ -58,7 +64,7 @@ public sealed class CanonicalVisitExportWriterTests
     }
 
     [Fact]
-    public void Write_CsvCreatesFourIndependentTablesAndSchemaMetadata()
+    public void Write_CsvCreatesThirteenIndependentTablesAndSchemaMetadata()
     {
         CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
         PassportExportWriteRequest request = CreateRequest(PassportExportFormat.Csv);
@@ -71,11 +77,18 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Equal(
             new[]
             {
+                "comparison-invitations.csv",
+                "comparison-missed-items.csv",
+                "comparison-parks.csv",
+                "comparison-ratings.csv",
+                "comparison-years.csv",
+                "comparisons.csv",
                 "park-items.csv",
                 "parks.csv",
                 "ride-assessments.csv",
                 "ride-occurrences.csv",
                 "schema.json",
+                "share-publications.csv",
                 "visit-assessments.csv",
                 "visits.csv",
             },
@@ -110,6 +123,40 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain("item-1", content, StringComparison.Ordinal);
         Assert.EndsWith(".zip", artifact.FileName, StringComparison.Ordinal);
         Assert.DoesNotContain("01234567", artifact.FileName, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_ShareLifecycleUsesReadableReferencesWithoutTechnicalIdentifiers(
+        PassportExportFormat format)
+    {
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+        PassportExportWriteRequest request = CreateRequestWithShareLifecycle(format);
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        string content = ReadAllText(artifact);
+        Assert.Contains("publication-0001", content, StringComparison.Ordinal);
+        Assert.Contains("publication-0002", content, StringComparison.Ordinal);
+        Assert.Contains("invitation-0001", content, StringComparison.Ordinal);
+        Assert.Contains("comparison-0001", content, StringComparison.Ordinal);
+        Assert.Contains("visit-0001", content, StringComparison.Ordinal);
+        Assert.Contains("Europa Park", content, StringComparison.Ordinal);
+        Assert.Contains("Other member", content, StringComparison.Ordinal);
+        Assert.Contains("Revoked", content, StringComparison.Ordinal);
+        Assert.Contains("2026-09-04", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("publication-internal-visit", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("publication-internal-passport", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("invitation-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("comparison-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("other-passport-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("user-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("user-2", content, StringComparison.Ordinal);
+        Assert.DoesNotContain(VisitShareToken, content, StringComparison.Ordinal);
+        Assert.DoesNotContain(PassportShareToken, content, StringComparison.Ordinal);
+        Assert.DoesNotContain(InvitationShareToken, content, StringComparison.Ordinal);
+        Assert.DoesNotContain(ComparisonShareToken, content, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -222,11 +269,147 @@ public sealed class CanonicalVisitExportWriterTests
             "Operating");
         return new PassportExportWriteRequest(
             "0123456789abcdef0123456789abcdef",
+            "user-1",
             format,
             NowUtc,
             new[] { visit },
             new[] { occurrence },
             new Dictionary<string, Park>(StringComparer.Ordinal) { [park.Id] = park },
-            new Dictionary<string, VisitTarget>(StringComparer.Ordinal) { [target.ParkItemId] = target });
+            new Dictionary<string, VisitTarget>(StringComparer.Ordinal) { [target.ParkItemId] = target },
+            PassportShareLifecycleExportData.Empty);
+    }
+
+    private static PassportExportWriteRequest CreateRequestWithShareLifecycle(
+        PassportExportFormat format)
+    {
+        PassportExportWriteRequest source = CreateRequest(format);
+        ShareContentPolicy visitPolicy = ShareContentPolicy.Create(
+            SharePublicationType.VisitRecap,
+            ShareDatePrecision.Day,
+            new[] { ShareContentField.RideCount, ShareContentField.PublicCaption });
+        SharePublication visitPublication = SharePublication.Create(
+            SharePublicationId.Parse("publication-internal-visit"),
+            source.UserId,
+            SharePublicationType.VisitRecap,
+            VisitRecapShareSourceScope.Create(source.UserId, source.Visits.Single().Id.Value),
+            visitPolicy,
+            4,
+            NowUtc);
+        visitPublication.Publish(
+            ShareToken.Parse(VisitShareToken),
+            ShareVisibility.Unlisted,
+            4,
+            visitPolicy,
+            0,
+            NowUtc.AddMinutes(1));
+        ShareContentPolicy passportPolicy = ShareContentPolicy.Create(
+            SharePublicationType.PassportProfile,
+            ShareDatePrecision.Year,
+            new[]
+            {
+                ShareContentField.PublicDisplayName,
+                ShareContentField.RideCount,
+                ShareContentField.GlobalRatings,
+            });
+        SharePublication passportPublication = SharePublication.Create(
+            SharePublicationId.Parse("publication-internal-passport"),
+            source.UserId,
+            SharePublicationType.PassportProfile,
+            PassportProfileShareSourceScope.Create(source.UserId),
+            passportPolicy,
+            8,
+            NowUtc);
+        passportPublication.Publish(
+            ShareToken.Parse(PassportShareToken),
+            ShareVisibility.Public,
+            8,
+            passportPolicy,
+            0,
+            NowUtc.AddMinutes(1));
+        ProfileComparisonInvitation invitation = ProfileComparisonInvitation.Create(
+            ProfileComparisonInvitationId.Parse("invitation-internal"),
+            ShareToken.Parse(InvitationShareToken),
+            source.UserId,
+            passportPublication.Id,
+            passportPublication.PublicationVersion,
+            new[]
+            {
+                ProfileComparisonCategory.VisitedParks,
+                ProfileComparisonCategory.PersonalRatings,
+                ProfileComparisonCategory.YearlyActivity,
+                ProfileComparisonCategory.MissedItems,
+            },
+            NowUtc.AddMinutes(2),
+            NowUtc.AddDays(7));
+        ProfileComparisonId comparisonId = ProfileComparisonId.Parse("comparison-internal");
+        invitation.Accept(
+            "user-2",
+            SharePublicationId.Parse("other-passport-internal"),
+            3,
+            comparisonId,
+            NowUtc.AddMinutes(3));
+        ProfileComparisonCalculation calculation = new ProfileComparisonCalculation(
+            "You",
+            "Other member",
+            invitation.Categories,
+            new[] { new ProfileComparisonParkResult("Europa Park", "DE", 2, 3) },
+            new[]
+            {
+                new ProfileComparisonRatingResult(
+                    "Park",
+                    "Europa Park",
+                    null,
+                    null,
+                    4.5,
+                    4,
+                    0.5,
+                    ProfileComparisonRatingAffinity.Close),
+            },
+            new[] { new ProfileComparisonYearResult(2026, 2, 3, 8, 9) },
+            new[] { new ProfileComparisonMissedItemResult("Silver Star", "Operating", 0, 1) },
+            1,
+            ProfileComparisonCalculator.MinimumRatingsForCorrelation,
+            null,
+            false,
+            ProfileComparisonCalculator.CalculationVersion);
+        ProfileComparison comparison = ProfileComparison.Create(
+            comparisonId,
+            invitation.Id,
+            ShareToken.Parse(ComparisonShareToken),
+            source.UserId,
+            "user-2",
+            passportPublication.Id,
+            passportPublication.PublicationVersion,
+            SharePublicationId.Parse("other-passport-internal"),
+            3,
+            calculation,
+            NowUtc.AddMinutes(3));
+        comparison.Revoke(source.UserId, NowUtc.AddMinutes(4));
+        return source with
+        {
+            ShareLifecycle = new PassportShareLifecycleExportData(
+                new[] { visitPublication, passportPublication },
+                new[] { invitation },
+                new[] { comparison }),
+        };
+    }
+
+    private static string ReadAllText(PassportExportArtifact artifact)
+    {
+        if (artifact.ContentType.StartsWith("application/json", StringComparison.Ordinal))
+        {
+            return Encoding.UTF8.GetString(artifact.Content);
+        }
+
+        using MemoryStream stream = new MemoryStream(artifact.Content);
+        using ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read);
+        StringBuilder content = new StringBuilder();
+        foreach (ZipArchiveEntry entry in archive.Entries)
+        {
+            using StreamReader reader = new StreamReader(entry.Open(), Encoding.UTF8);
+            content.Append(reader.ReadToEnd());
+        }
+
+        return content.ToString();
     }
 }

@@ -48,6 +48,16 @@ public sealed class SharePublicationMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildOwnerExportFilter_ShouldSelectEveryPublicationOwnedByTheMember()
+    {
+        BsonDocument filter = Render(
+            SharePublicationMongoDefinitions.BuildOwnerExportFilter("user-1"));
+
+        Assert.Equal("user-1", filter["ownerUserId"].AsString);
+        Assert.Single(filter);
+    }
+
+    [Fact]
     public void BuildSharePublicationIndexes_ShouldProtectTokensWithoutCreatingAPublicListingIndex()
     {
         IReadOnlyCollection<CreateIndexModel<SharePublicationDocument>> indexes =

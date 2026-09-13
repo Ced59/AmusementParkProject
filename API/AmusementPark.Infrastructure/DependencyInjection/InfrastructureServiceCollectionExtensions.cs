@@ -254,6 +254,8 @@ public static class InfrastructureServiceCollectionExtensions
                 provider.GetRequiredService<UserVisitRepository>(),
                 provider.GetRequiredService<IPassportProfileShareSourceRevisionGuard>()));
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
+        services.AddScoped<IPassportShareLifecycleExportSource,
+            MongoPassportShareLifecycleExportSource>();
         services.AddScoped<MongoVisitDeletionStore>();
         services.AddScoped<IVisitDeletionStore>(provider =>
             new PassportProfileRevisionVisitDeletionStore(
