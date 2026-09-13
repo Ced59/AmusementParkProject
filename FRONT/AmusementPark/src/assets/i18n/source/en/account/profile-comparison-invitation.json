@@ -1,0 +1,53 @@
+{
+  "profileComparisonInvitation": {
+    "creator": {
+      "kicker": "Invite-only comparison",
+      "title": "Invite a member to compare your passports",
+      "description": "Choose the sections to compare. The other member will see the exact request before agreeing.",
+      "consent": "Two approvals required",
+      "categories": "Suggested sections",
+      "ready": "Your invitation is ready",
+      "expires": "This link remains valid until {{date}}.",
+      "linkLabel": "Private invitation link",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "create": "Create invitation",
+      "error": "The invitation could not be created. Check the public sections in your passport."
+    },
+    "categories": {
+      "VisitedParks": { "title": "Visited parks", "description": "Compare the parks and countries included in your public selections." },
+      "PersonalRatings": { "title": "Preferences", "description": "Compare only the personal ratings each member chose to publish." },
+      "YearlyActivity": { "title": "Years and activity", "description": "Compare the pace of shared visits and rides by year." },
+      "MissedItems": { "title": "Missed attractions", "description": "Find the public experiences that each of you missed." }
+    },
+    "accept": {
+      "back": "Back to passport",
+      "kicker": "Private approval",
+      "title": "Review before comparing",
+      "description": "Nothing is compared until both of you approve the same sections.",
+      "loadError": "This invitation cannot be found or is no longer available.",
+      "acceptedTitle": "Both approvals are recorded",
+      "acceptedDescription": "The comparison can now be prepared from the passport versions you approved.",
+      "inviter": "Invitation from",
+      "member": "A member",
+      "alreadyConsented": "Already approved",
+      "you": "You",
+      "awaitingConsent": "Your approval is needed",
+      "sharedCategories": "What will be compared",
+      "expires": "Invitation valid until {{date}}.",
+      "proof": "Only the public sections above will be used. Private data and technical identifiers remain excluded.",
+      "confirm": "I approve this comparison",
+      "unavailableTitle": "This comparison cannot start",
+      "status": {
+        "Ready": "The invitation is ready.",
+        "Accepted": "This invitation has already received both approvals.",
+        "Expired": "This invitation has expired.",
+        "OwnInvitation": "You cannot accept your own invitation.",
+        "InviterPassportUnavailable": "The public passport behind this invitation changed or is no longer available.",
+        "InviteePassportUnavailable": "First make your passport public and allow comparisons.",
+        "InviteeCategoriesUnavailable": "Your public passport does not yet share every requested section."
+      },
+      "acceptError": "Your approval could not be recorded. Reload the invitation before trying again."
+    }
+  }
+}

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.2",
+  "version": "5.3.3",
   "history": [
+    {
+      "version": "5.3.3",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Tu peux inviter un membre à comparer vos passeports avec vos deux accords.",
+        "en": "You can invite a member to compare your passports with both of your approvals.",
+        "de": "Du kannst ein Mitglied mit eurer beider Zustimmung zum Passvergleich einladen.",
+        "nl": "Je kunt een lid uitnodigen om jullie paspoorten met wederzijdse toestemming te vergelijken.",
+        "it": "Puoi invitare un membro a confrontare i vostri passaporti con il consenso di entrambi.",
+        "es": "Puedes invitar a un miembro a comparar vuestros pasaportes con el consentimiento de ambos.",
+        "pl": "Możesz zaprosić użytkownika do porównania paszportów za zgodą obu osób.",
+        "pt": "Podes convidar um membro para comparar os vossos passaportes com o consentimento de ambos."
+      }
+    },
     {
       "version": "5.3.2",
       "releasedAt": "2026-09-13",

@@ -1,0 +1,23 @@
+:host { display: block; min-width: 0; }
+.comparison-consent { width: min(100%, 58rem); margin: 0 auto; padding: clamp(.75rem, 3vw, 2rem); display: grid; gap: 1.25rem; min-width: 0; overflow-x: clip; }
+.comparison-consent__hero, .comparison-consent__card, .comparison-consent__success { display: grid; gap: 1rem; min-width: 0; }
+h1, h2, p { margin: 0; overflow-wrap: anywhere; }
+h1 { font-size: clamp(2rem, 9vw, 4rem); line-height: .96; text-transform: uppercase; }
+.comparison-consent__people { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: .75rem; align-items: center; min-width: 0; }
+.comparison-consent__people article { display: grid; gap: .2rem; min-width: 0; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, #000 14%, transparent); text-align: center; overflow-wrap: anywhere; }
+.comparison-consent__people article > i { font-size: 1.35rem; }
+.comparison-consent__people small { opacity: .72; }
+.comparison-consent__arrow { opacity: .7; }
+.comparison-consent__categories { display: grid; gap: .7rem; min-width: 0; }
+.comparison-consent__categories ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .55rem; min-width: 0; }
+.comparison-consent__categories li { display: flex; align-items: center; gap: .5rem; min-width: 0; padding: .75rem; border-radius: .8rem; background: color-mix(in srgb, var(--c-lime) 10%, transparent); overflow-wrap: anywhere; }
+.comparison-consent__expiry, .comparison-consent__proof, .comparison-consent__blocked, .comparison-consent__success { display: flex; align-items: flex-start; gap: .65rem; min-width: 0; }
+.comparison-consent__proof { padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--c-sky) 9%, transparent); }
+.comparison-consent__blocked > i, .comparison-consent__success > i { font-size: 1.6rem; color: var(--c-lime); }
+.comparison-consent__blocked > div, .comparison-consent__success > div { display: grid; gap: .35rem; min-width: 0; }
+.comparison-consent__error { color: var(--color-danger, #ff4f87); }
+@media (max-width: 520px) {
+  .comparison-consent__people { grid-template-columns: minmax(0, 1fr); }
+  .comparison-consent__arrow { transform: rotate(90deg); justify-self: center; }
+  .comparison-consent__card > button, .comparison-consent__success > button { inline-size: 100%; }
+}

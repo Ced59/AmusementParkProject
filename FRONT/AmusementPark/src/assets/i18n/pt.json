@@ -960,6 +960,69 @@
       "seoDescription": "Descobre os parques, as visitas e as memórias que {{name}} escolheu partilhar."
     }
   },
+  "profileComparisonInvitation": {
+    "creator": {
+      "kicker": "Comparação por convite",
+      "title": "Convida um membro para comparar os vossos passaportes",
+      "description": "Escolhe as secções a comparar. A outra pessoa verá o pedido exato antes de dar o seu consentimento.",
+      "consent": "São necessários dois consentimentos",
+      "categories": "Secções propostas",
+      "ready": "O teu convite está pronto",
+      "expires": "Esta ligação será válida até {{date}}.",
+      "linkLabel": "Ligação privada do convite",
+      "copy": "Copiar ligação",
+      "copied": "Ligação copiada",
+      "create": "Criar convite",
+      "error": "Não foi possível criar o convite. Verifica as secções públicas do teu passaporte."
+    },
+    "categories": {
+      "VisitedParks": {
+        "title": "Parques visitados",
+        "description": "Compara os parques e países das vossas seleções públicas."
+      },
+      "PersonalRatings": {
+        "title": "Preferências",
+        "description": "Compara apenas as avaliações pessoais que cada pessoa publicou."
+      },
+      "YearlyActivity": {
+        "title": "Anos e atividade",
+        "description": "Compara por ano as visitas e voltas partilhadas."
+      },
+      "MissedItems": {
+        "title": "Atrações perdidas",
+        "description": "Encontra as experiências públicas que perderam."
+      }
+    },
+    "accept": {
+      "back": "Voltar ao passaporte",
+      "kicker": "Consentimento privado",
+      "title": "Verifica antes de comparar",
+      "description": "Nada será comparado até que ambos aceitem as mesmas secções.",
+      "loadError": "Este convite não foi encontrado ou já não está disponível.",
+      "acceptedTitle": "Os dois consentimentos estão registados",
+      "acceptedDescription": "A comparação pode agora ser preparada com as versões de passaporte aprovadas.",
+      "inviter": "Convite de",
+      "member": "Um membro",
+      "alreadyConsented": "Consentimento já dado",
+      "you": "Tu",
+      "awaitingConsent": "Falta o teu consentimento",
+      "sharedCategories": "O que será comparado",
+      "expires": "Convite válido até {{date}}.",
+      "proof": "Apenas serão usadas as secções públicas acima. Os dados privados e identificadores técnicos ficam excluídos.",
+      "confirm": "Aceito esta comparação",
+      "unavailableTitle": "Esta comparação não pode começar",
+      "status": {
+        "Ready": "O convite está pronto.",
+        "Accepted": "Este convite já recebeu os dois consentimentos.",
+        "Expired": "Este convite expirou.",
+        "OwnInvitation": "Não podes aceitar o teu próprio convite.",
+        "InviterPassportUnavailable": "O passaporte público deste convite foi alterado ou já não está disponível.",
+        "InviteePassportUnavailable": "Primeiro torna o teu passaporte público e permite comparações.",
+        "InviteeCategoriesUnavailable": "O teu passaporte público ainda não partilha todas as secções pedidas."
+      },
+      "acceptError": "Não foi possível registar o teu consentimento. Recarrega o convite antes de tentares novamente."
+    }
+  },
   "user-profile": {
     "title": "Perfil de utilizador",
     "name": "Apelido",

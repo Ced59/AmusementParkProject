@@ -38,4 +38,17 @@ describe('profile routes', () => {
     expect(overviewRoute?.loadComponent).toBeDefined();
     expect(overviewRoute?.canActivate).toContain(authGuard);
   });
+
+  it('keeps the opaque invitation behind the account authentication guard', () => {
+    const route: Route | undefined = PROFILE_ROUTES.find(
+      (candidate: Route): boolean =>
+        candidate.path === 'passport/comparisons/invitations/:token'
+    );
+
+    expect(route).toBeDefined();
+    expect(route?.canActivate).toContain(authGuard);
+    expect(PROFILE_ROUTES.indexOf(route!)).toBeLessThan(
+      PROFILE_ROUTES.findIndex((candidate: Route): boolean => candidate.path === 'passport')
+    );
+  });
 });

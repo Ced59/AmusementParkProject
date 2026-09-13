@@ -386,6 +386,34 @@ Les groupes d'actions et notes explicatives restent contenus et passent en colon
 sur les petits écrans. `SHARE-11` peut maintenant construire les invitations de
 comparaison sur des liens publics dont le cycle de vie est sûr et unifié.
 
+### État de `SHARE-11` au 13 septembre 2026
+
+Le sas de consentement bilatéral est livré en version 5.3.3. Depuis l'atelier de
+son passeport public, un membre choisit les rubriques réellement disponibles et
+crée une invitation privée valable sept jours. Le destinataire authentifié voit
+les deux identités publiques, les rubriques exactes, l'expiration et l'état des
+deux accords avant d'accepter. Aucun résultat comparatif n'est encore calculé :
+la sortie de ce jalon est une preuve de consentement exploitable par `SHARE-12`.
+
+La création exige un passeport public ou non listé qui autorise explicitement les
+comparaisons. L'acceptation impose la même condition au second membre et vérifie
+que les champs publics des deux passeports couvrent chaque rubrique. L'invitation
+mémorise l'identifiant et la version exacte du passeport de l'invitant : une
+rotation, une révocation ou une republication invalide donc l'accord resté en
+attente. L'auto-acceptation est interdite et la concurrence optimiste MongoDB ne
+permet qu'à un destinataire d'enregistrer le second accord ; un rejeu du même
+membre reste idempotent.
+
+La nouvelle collection `profile-comparison-invitations` possède un jeton unique,
+un filtre de version atomique et un TTL pour les invitations en attente. Une
+invitation acceptée perd sa date de purge afin de devenir la preuve durable des
+deux consentements. La collection et ses indexes sont créés automatiquement au
+démarrage, sans opération MongoDB manuelle. Les contrats visibles n'exposent ni
+identifiant de membre, ni identifiant de publication. Les deux interfaces passent
+en colonne et contiennent les liens longs sur mobile ; leur contrat responsive est
+automatisé. `SHARE-12` peut maintenant construire le résultat, les seuils et la
+révocation de la comparaison à partir de ce consentement figé.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

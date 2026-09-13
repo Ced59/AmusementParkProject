@@ -26,6 +26,9 @@
           <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'passportProfileShare.actions.rotate' | translate }}</button>
         </div>
       </section>
+      @if (facade.canInviteComparison()) {
+        <app-profile-comparison-invitation-creator [includedFields]="facade.publishedIncludedFields()"></app-profile-comparison-invitation-creator>
+      }
     }
 
     <section class="passport-share__editor" appUiSurface="panel" appUiSurfacePadding="spacious">

@@ -960,6 +960,69 @@
       "seoDescription": "Descubre los parques, visitas y recuerdos que {{name}} ha elegido compartir."
     }
   },
+  "profileComparisonInvitation": {
+    "creator": {
+      "kicker": "Comparación por invitación",
+      "title": "Invita a un miembro a comparar vuestros pasaportes",
+      "description": "Elige las secciones que se compararán. La otra persona verá la solicitud exacta antes de aceptarla.",
+      "consent": "Se necesitan dos consentimientos",
+      "categories": "Secciones propuestas",
+      "ready": "Tu invitación está lista",
+      "expires": "Este enlace será válido hasta el {{date}}.",
+      "linkLabel": "Enlace privado de invitación",
+      "copy": "Copiar enlace",
+      "copied": "Enlace copiado",
+      "create": "Crear invitación",
+      "error": "No se ha podido crear la invitación. Comprueba las secciones públicas de tu pasaporte."
+    },
+    "categories": {
+      "VisitedParks": {
+        "title": "Parques visitados",
+        "description": "Compara los parques y países de vuestras selecciones públicas."
+      },
+      "PersonalRatings": {
+        "title": "Preferencias",
+        "description": "Compara solo las valoraciones personales que cada uno haya publicado."
+      },
+      "YearlyActivity": {
+        "title": "Años y actividad",
+        "description": "Compara por año las visitas y vueltas compartidas."
+      },
+      "MissedItems": {
+        "title": "Atracciones pendientes",
+        "description": "Encuentra las experiencias públicas que os habéis perdido."
+      }
+    },
+    "accept": {
+      "back": "Volver al pasaporte",
+      "kicker": "Consentimiento privado",
+      "title": "Revisa antes de comparar",
+      "description": "No se comparará nada hasta que ambos aceptéis las mismas secciones.",
+      "loadError": "No se encuentra esta invitación o ya no está disponible.",
+      "acceptedTitle": "Los dos consentimientos están registrados",
+      "acceptedDescription": "La comparación ya puede prepararse con las versiones de pasaporte que habéis aprobado.",
+      "inviter": "Invitación de",
+      "member": "Un miembro",
+      "alreadyConsented": "Ya ha dado su consentimiento",
+      "you": "Tú",
+      "awaitingConsent": "Falta tu consentimiento",
+      "sharedCategories": "Qué se comparará",
+      "expires": "Invitación válida hasta el {{date}}.",
+      "proof": "Solo se usarán las secciones públicas anteriores. Los datos privados y los identificadores técnicos quedan excluidos.",
+      "confirm": "Acepto esta comparación",
+      "unavailableTitle": "Esta comparación no puede empezar",
+      "status": {
+        "Ready": "La invitación está lista.",
+        "Accepted": "Esta invitación ya cuenta con ambos consentimientos.",
+        "Expired": "Esta invitación ha caducado.",
+        "OwnInvitation": "No puedes aceptar tu propia invitación.",
+        "InviterPassportUnavailable": "El pasaporte público de esta invitación ha cambiado o ya no está disponible.",
+        "InviteePassportUnavailable": "Primero publica tu pasaporte y permite las comparaciones.",
+        "InviteeCategoriesUnavailable": "Tu pasaporte público aún no comparte todas las secciones solicitadas."
+      },
+      "acceptError": "No se ha podido registrar tu consentimiento. Recarga la invitación antes de intentarlo de nuevo."
+    }
+  },
   "user-profile": {
     "title": "Perfil de usuario",
     "name": "Apellido",

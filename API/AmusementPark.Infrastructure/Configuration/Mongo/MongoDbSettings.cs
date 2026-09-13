@@ -114,6 +114,9 @@ public sealed class MongoDbSettings
 
     public string SharePublicationsCollectionName { get; set; } = "share-publications";
 
+    public string ProfileComparisonInvitationsCollectionName { get; set; } =
+        "profile-comparison-invitations";
+
     public string SharePublicationSnapshotsCollectionName { get; set; } =
         "share-publication-snapshots";
 

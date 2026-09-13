@@ -1,0 +1,20 @@
+:host { display: block; min-width: 0; }
+.comparison-invite { display: grid; gap: 1rem; min-width: 0; overflow: hidden; }
+.comparison-invite__heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; min-width: 0; flex-wrap: wrap; }
+.comparison-invite__heading > div { display: grid; gap: .35rem; flex: 1 1 24rem; min-width: 0; }
+h2, p { margin: 0; overflow-wrap: anywhere; }
+.comparison-invite__consent { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .75rem; border-radius: 999px; background: color-mix(in srgb, var(--c-lime) 12%, transparent); overflow-wrap: anywhere; }
+.comparison-invite__categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: .65rem; min-width: 0; }
+.comparison-invite__categories label { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: .7rem; min-width: 0; padding: .9rem; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: 1rem; cursor: pointer; }
+.comparison-invite__categories span { display: grid; gap: .2rem; min-width: 0; overflow-wrap: anywhere; }
+.comparison-invite__categories small { opacity: .72; }
+.comparison-invite__category--unavailable { opacity: .45; cursor: not-allowed !important; }
+input[type='checkbox'] { inline-size: 1.15rem; block-size: 1.15rem; accent-color: var(--color-primary, #ff5a2a); }
+.comparison-invite__result { display: grid; gap: .5rem; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--c-lime) 10%, transparent); min-width: 0; }
+.comparison-invite__link-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .65rem; min-width: 0; }
+.comparison-invite__link-row input { box-sizing: border-box; inline-size: 100%; min-width: 0; padding: .8rem; border-radius: .8rem; color: inherit; background: color-mix(in srgb, #000 16%, transparent); border: 1px solid color-mix(in srgb, currentColor 22%, transparent); text-overflow: ellipsis; }
+.comparison-invite__error { display: flex; align-items: flex-start; gap: .5rem; color: var(--color-danger, #ff4f87); }
+@media (max-width: 480px) {
+  .comparison-invite__link-row { grid-template-columns: minmax(0, 1fr); }
+  .comparison-invite__link-row button, .comparison-invite > button { inline-size: 100%; }
+}

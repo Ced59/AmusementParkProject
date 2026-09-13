@@ -30,6 +30,7 @@ export class PassportProfileShareStateFacade {
   private readonly publicCaptionSignal = signal<string>('');
   private readonly visibilitySignal = signal<ShareVisibility>('Unlisted');
   private readonly allowsComparisonsSignal = signal<boolean>(false);
+  private readonly publishedComparisonsAllowedSignal = signal<boolean>(false);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly previewingSignal = signal<boolean>(false);
   private readonly savingSignal = signal<boolean>(false);
@@ -46,6 +47,14 @@ export class PassportProfileShareStateFacade {
   public readonly publicCaption: Signal<string> = this.publicCaptionSignal.asReadonly();
   public readonly visibility: Signal<ShareVisibility> = this.visibilitySignal.asReadonly();
   public readonly allowsComparisons: Signal<boolean> = this.allowsComparisonsSignal.asReadonly();
+  public readonly publishedIncludedFields: Signal<ShareContentField[]> = computed(
+    () => this.settingsSignal()?.isPublic === true
+      ? this.settingsSignal()?.includedFields ?? []
+      : []
+  );
+  public readonly canInviteComparison: Signal<boolean> = computed(
+    () => this.settingsSignal()?.isPublic === true && this.publishedComparisonsAllowedSignal()
+  );
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly previewing: Signal<boolean> = this.previewingSignal.asReadonly();
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
@@ -109,6 +118,9 @@ export class PassportProfileShareStateFacade {
           this.publicCaptionSignal.set(result.selection.savedPublicCaption ?? '');
           this.visibilitySignal.set(result.selection.savedVisibility ?? 'Unlisted');
           this.allowsComparisonsSignal.set(result.selection.savedAllowsComparisons);
+          this.publishedComparisonsAllowedSignal.set(
+            result.settings.isPublic && result.selection.savedAllowsComparisons
+          );
           this.includedFieldsSignal.set(this.resolveFields(result.settings));
           this.loadingSignal.set(false);
         },
@@ -235,6 +247,7 @@ export class PassportProfileShareStateFacade {
           return;
         }
         this.settingsSignal.set(settings);
+        this.publishedComparisonsAllowedSignal.set(this.allowsComparisonsSignal());
         this.previewSignal.set(null);
         this.savingSignal.set(false);
         this.toast('success', 'passportProfileShare.toast.published');
@@ -270,6 +283,7 @@ export class PassportProfileShareStateFacade {
           return;
         }
         this.settingsSignal.set(settings);
+        this.publishedComparisonsAllowedSignal.set(false);
         this.previewSignal.set(null);
         this.savingSignal.set(false);
         this.toast('success', 'passportProfileShare.toast.revoked');
