@@ -121,7 +121,10 @@ public sealed class ShareModerationService
                 SharingApplicationErrors.InvalidModerationTransition());
         }
 
-        DateTime requestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        DateTime currentUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        DateTime requestedAtUtc = currentUtc < report.SubmittedAtUtc
+            ? report.SubmittedAtUtc
+            : currentUtc;
         ShareModerationDecisionJobPayload requestedPayload = new ShareModerationDecisionJobPayload(
             report.Id.Value,
             command.Decision,

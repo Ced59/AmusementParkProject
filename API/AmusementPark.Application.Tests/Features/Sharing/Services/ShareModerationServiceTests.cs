@@ -411,6 +411,53 @@ public sealed class ShareModerationServiceTests
         jobs.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReviewAsync_WhenClockMovedBack_ShouldClampDecisionToSubmissionTime()
+    {
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-clock"),
+            ShareModerationTargetType.VisitRecap,
+            "publication-1",
+            ShareModerationReason.Other,
+            "Needs a decision.",
+            NowUtc.AddMinutes(1));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.Dismissed
+                    && candidate.ReviewedAtUtc == report.SubmittedAtUtc),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-1",
+                report.Id.Value,
+                ShareModerationDecision.Dismiss,
+                null),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(report.SubmittedAtUtc, report.ReviewedAtUtc);
+        reports.VerifyAll();
+        publications.VerifyNoOtherCalls();
+        jobs.VerifyAll();
+    }
+
     private static ShareModerationService CreateService(
         Mock<IShareModerationReportRepository> reports,
         Mock<ISharePublicationRepository> publications,
