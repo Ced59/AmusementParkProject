@@ -474,6 +474,144 @@ public sealed class PublishSharePublicationCommandHandlerTests
     }
 
     [Fact]
+    public async Task PublishApprovedPreview_WhenPublicationIsModerationSuspended_ShouldReturnExplicitRuleViolation()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.GlobalRatings });
+        SharePublication existing = SharePublication.Create(
+            SharePublicationId.Parse("publication-suspended"),
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            policy,
+            12,
+            Now);
+        existing.Publish(
+            ShareToken.Parse(TokenValue),
+            ShareVisibility.Unlisted,
+            12,
+            policy,
+            0,
+            Now);
+        existing.SuspendByModeration(
+            ShareModerationReportId.Parse("report-suspended"),
+            Now);
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(existing);
+        Mock<IShareTokenFactory> tokenFactory =
+            new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { CreateSourceDescriptor(12) },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                policy.SchemaVersion,
+                policy.DatePrecision,
+                policy.IncludedFields,
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-publication.moderation-suspended");
+        repository.Verify(value => value.GetOwnedBySourceAsync(
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            CancellationToken.None), Times.Exactly(2));
+        repository.VerifyNoOtherCalls();
+        tokenFactory.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task PublishApprovedPreview_WhenSuspendedPublicationWasRevoked_ShouldKeepSourceBlocked()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.Create(
+            SharePublicationType.PersonalRanking,
+            ShareDatePrecision.Hidden,
+            new[] { ShareContentField.GlobalRatings });
+        SharePublication existing = SharePublication.Create(
+            SharePublicationId.Parse("publication-revoked-suspended"),
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            policy,
+            12,
+            Now);
+        existing.Publish(
+            ShareToken.Parse(TokenValue),
+            ShareVisibility.Unlisted,
+            12,
+            policy,
+            0,
+            Now);
+        ShareModerationReportId reportId =
+            ShareModerationReportId.Parse("report-suspended");
+        existing.SuspendByModeration(reportId, Now);
+        existing.Revoke(existing.PublicationVersion, Now);
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(existing);
+        Mock<IShareTokenFactory> tokenFactory =
+            new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        PublishSharePublicationCommandHandler handler = new PublishSharePublicationCommandHandler(
+            new[] { CreateSourceDescriptor(12) },
+            new SharePublicationPublisher(
+                repository.Object,
+                tokenFactory.Object,
+                new SharePublicationFixedTimeProvider(Now)),
+            repository.Object,
+            CreateApprovalProtector(isValid: true));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
+            new PublishSharePublicationCommand(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                null,
+                12,
+                policy.SchemaVersion,
+                policy.DatePrecision,
+                policy.IncludedFields,
+                ApprovalToken),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-publication.moderation-suspended");
+        Assert.True(existing.HasModerationSuspension(reportId));
+        repository.Verify(value => value.GetOwnedBySourceAsync(
+            OwnerId,
+            SharePublicationType.PersonalRanking,
+            ScopeKey,
+            CancellationToken.None), Times.Exactly(2));
+        repository.VerifyNoOtherCalls();
+        tokenFactory.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task PublishApprovedPreview_WhenPublicationChangesAfterApprovalValidation_ShouldExpire()
     {
         ShareContentPolicy policy = ShareContentPolicy.Create(

@@ -18,21 +18,24 @@
   } @else if (facade.error() && !facade.selection()) {
     <app-page-state state="error" [errorTitleKey]="'passportProfileShare.error'" [errorMessageKey]="'passportProfileShare.errorDescription'"></app-page-state>
   } @else if (facade.selection(); as selection) {
-    @if (facade.settings()?.isPublic) {
-      <section class="passport-share__live" appUiSurface="panel" appUiSurfacePadding="regular">
-        <div><span>{{ 'passportProfileShare.live' | translate }}</span><strong>{{ ('passportProfileShare.visibility.' + (facade.settings()?.visibility || 'Unlisted')) | translate }}</strong></div>
-        <div class="passport-share__live-actions">
-          <button appUiButton="soft" type="button" (click)="openPublicPassport()">{{ 'passportProfileShare.actions.open' | translate }}</button>
-          <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'passportProfileShare.actions.rotate' | translate }}</button>
-        </div>
-      </section>
-      @if (facade.canInviteComparison()) {
-        <app-profile-comparison-invitation-creator [includedFields]="facade.publishedIncludedFields()"></app-profile-comparison-invitation-creator>
-      }
+    @if (facade.settings()?.isModerationSuspended) {
+      <app-owner-share-moderation-notice></app-owner-share-moderation-notice>
+    } @else if (facade.settings()?.isPublic) {
+        <section class="passport-share__live" appUiSurface="panel" appUiSurfacePadding="regular">
+          <div><span>{{ 'passportProfileShare.live' | translate }}</span><strong>{{ ('passportProfileShare.visibility.' + (facade.settings()?.visibility || 'Unlisted')) | translate }}</strong></div>
+          <div class="passport-share__live-actions">
+            <button appUiButton="soft" type="button" (click)="openPublicPassport()">{{ 'passportProfileShare.actions.open' | translate }}</button>
+            <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'passportProfileShare.actions.rotate' | translate }}</button>
+          </div>
+        </section>
+        @if (facade.canInviteComparison()) {
+          <app-profile-comparison-invitation-creator [includedFields]="facade.publishedIncludedFields()"></app-profile-comparison-invitation-creator>
+        }
     }
     <app-profile-comparison-management></app-profile-comparison-management>
 
-    <section class="passport-share__editor" appUiSurface="panel" appUiSurfacePadding="spacious">
+    @if (!facade.settings()?.isModerationSuspended) {
+      <section class="passport-share__editor" appUiSurface="panel" appUiSurfacePadding="spacious">
       <div class="passport-share__section-heading">
         <span>1</span><div><h2>{{ 'passportProfileShare.steps.scopeTitle' | translate }}</h2><p>{{ 'passportProfileShare.steps.scopeDescription' | translate }}</p></div>
       </div>
@@ -96,10 +99,10 @@
         <span>{{ 'passportProfileShare.actions.preview' | translate }}</span>
       </button>
       @if (facade.error()) { <p class="passport-share__error" role="alert"><i class="pi pi-exclamation-circle" aria-hidden="true"></i>{{ 'passportProfileShare.errorDescription' | translate }}</p> }
-    </section>
+      </section>
 
-    @if (preview(); as passport) {
-      <section class="passport-share__preview" appUiSurface="hero" appUiSurfacePadding="spacious" aria-labelledby="passport-share-preview-title">
+      @if (preview(); as passport) {
+        <section class="passport-share__preview" appUiSurface="hero" appUiSurfacePadding="spacious" aria-labelledby="passport-share-preview-title">
         <app-ui-kicker tone="lime" iconClass="pi pi-eye">{{ 'passportProfileShare.preview.kicker' | translate }}</app-ui-kicker>
         <div class="passport-share__preview-identity">
           @if (previewAvatarUrl(); as resolvedAvatarUrl) { <img class="passport-share__preview-avatar" [src]="resolvedAvatarUrl" width="72" height="72" [alt]="passport.displayName || ''"> }
@@ -141,11 +144,14 @@
         }
         <p class="passport-share__proof"><i class="pi pi-verified" aria-hidden="true"></i>{{ 'passportProfileShare.preview.proof' | translate:{ version: passport.calculationVersion } }}</p>
         <button appUiButton="primary" type="button" [disabled]="!facade.canPublish()" (click)="facade.publish()">{{ 'passportProfileShare.actions.publish' | translate }}</button>
-      </section>
+        </section>
+      }
     }
 
     @if (facade.settings()?.isPublic) {
-      <p class="passport-share__cache-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'passportProfileShare.cacheNote' | translate }}</p>
+      @if (!facade.settings()?.isModerationSuspended) {
+        <p class="passport-share__cache-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'passportProfileShare.cacheNote' | translate }}</p>
+      }
       <button class="passport-share__revoke" appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.revoke()">{{ 'passportProfileShare.actions.revoke' | translate }}</button>
     }
   }

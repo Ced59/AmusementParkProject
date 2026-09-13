@@ -34,7 +34,8 @@ public sealed class ProfileComparisonsControllerTests
                         "opaque-share",
                         "Alex",
                         new DateTime(2026, 9, 13, 12, 0, 0, DateTimeKind.Utc),
-                        new[] { ProfileComparisonCategory.VisitedParks }),
+                        new[] { ProfileComparisonCategory.VisitedParks },
+                        false),
                 }));
         ProfileComparisonsController controller = CreateController(listHandler: handler.Object);
 

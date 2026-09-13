@@ -1,0 +1,40 @@
+<main class="share-moderation admin-surface">
+  <header class="share-moderation__header">
+    <span class="kicker kicker--sky">{{ 'shareModeration.admin.kicker' | translate }}</span>
+    <h1 class="admin-page-title">{{ 'shareModeration.admin.title' | translate }}</h1>
+    <p class="admin-muted">{{ 'shareModeration.admin.subtitle' | translate }}</p>
+  </header>
+
+  <section class="share-moderation__filters" [attr.aria-label]="'shareModeration.admin.filters' | translate">
+    <label><span>{{ 'shareModeration.admin.statusFilter' | translate }}</span><select [value]="status()" (change)="changeStatus($any($event.target).value)"><option value="">{{ 'shareModeration.admin.all' | translate }}</option>@for (item of statuses; track item) {<option [value]="item">{{ ('shareModeration.status.' + item) | translate }}</option>}</select></label>
+    <label><span>{{ 'shareModeration.admin.targetFilter' | translate }}</span><select [value]="targetType()" (change)="changeTargetType($any($event.target).value)"><option value="">{{ 'shareModeration.admin.all' | translate }}</option>@for (item of targetTypes; track item) {<option [value]="item">{{ ('shareModeration.targets.' + item) | translate }}</option>}</select></label>
+    <label><span>{{ 'shareModeration.admin.reasonFilter' | translate }}</span><select [value]="reason()" (change)="changeReason($any($event.target).value)"><option value="">{{ 'shareModeration.admin.all' | translate }}</option>@for (item of reasons; track item) {<option [value]="item">{{ ('shareModeration.reasons.' + item) | translate }}</option>}</select></label>
+    <div class="share-moderation__filter-actions"><button appUiButton="primary" type="button" (click)="applyFilters()">{{ 'shareModeration.admin.apply' | translate }}</button><button appUiButton="ghost" type="button" (click)="resetFilters()">{{ 'shareModeration.admin.reset' | translate }}</button></div>
+  </section>
+
+  @if (facade.error()) {<p class="share-moderation__state share-moderation__state--error" role="alert">{{ 'shareModeration.admin.error' | translate }}</p>}
+  @if (facade.loading()) {<p class="share-moderation__state" role="status"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i>{{ 'shareModeration.admin.loading' | translate }}</p>}
+  @if (facade.isEmpty()) {<p class="share-moderation__state">{{ 'shareModeration.admin.empty' | translate }}</p>}
+
+  <section class="share-moderation__grid">
+    @for (report of facade.reports(); track report.reportId) {
+      <article class="share-moderation__card">
+        <header><span>{{ ('shareModeration.targets.' + report.targetType) | translate }}</span><strong>{{ ('shareModeration.status.' + report.status) | translate }}</strong></header>
+        <dl><div><dt>{{ 'shareModeration.admin.reason' | translate }}</dt><dd>{{ ('shareModeration.reasons.' + report.reason) | translate }}</dd></div><div><dt>{{ 'shareModeration.admin.submittedAt' | translate }}</dt><dd>{{ report.submittedAtUtc | date:'medium' }}</dd></div></dl>
+        @if (report.details) {<blockquote>{{ report.details }}</blockquote>}
+        @if (report.decisionNote) {<p class="share-moderation__decision-note"><strong>{{ 'shareModeration.admin.decisionNote' | translate }}</strong>{{ report.decisionNote }}</p>}
+        @if (report.status === 'Pending' || report.status === 'PublicationSuspended') {
+          <label><span>{{ 'shareModeration.admin.noteLabel' | translate }}</span><textarea rows="3" maxlength="500" [value]="note(report.reportId)" (input)="updateNote(report.reportId, $any($event.target).value)"></textarea></label>
+          <div class="share-moderation__actions">
+            @if (report.status === 'Pending') {<button appUiButton="ghost" type="button" [disabled]="facade.reviewingReportId() !== null" (click)="review(report, 'Dismiss')">{{ 'shareModeration.admin.dismiss' | translate }}</button><button appUiButton="primary" type="button" [disabled]="facade.reviewingReportId() !== null" (click)="review(report, 'Suspend')">{{ 'shareModeration.admin.suspend' | translate }}</button>}
+            @if (report.status === 'PublicationSuspended') {<button appUiButton="primary" type="button" [disabled]="facade.reviewingReportId() !== null" (click)="review(report, 'Restore')">{{ 'shareModeration.admin.restore' | translate }}</button>}
+          </div>
+        }
+      </article>
+    }
+  </section>
+
+  @if (facade.pagination(); as pagination) {
+    <nav class="share-moderation__pagination" [attr.aria-label]="'shareModeration.admin.pagination' | translate"><button appUiButton="ghost" type="button" [disabled]="pagination.currentPage <= 1 || facade.loading()" (click)="previousPage()">{{ 'shareModeration.admin.previous' | translate }}</button><span>{{ 'shareModeration.admin.page' | translate:{ page: pagination.currentPage, total: pagination.totalPages } }}</span><button appUiButton="ghost" type="button" [disabled]="pagination.currentPage >= pagination.totalPages || facade.loading()" (click)="nextPage()">{{ 'shareModeration.admin.next' | translate }}</button></nav>
+  }
+</main>

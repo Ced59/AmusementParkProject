@@ -9,16 +9,19 @@ internal static class SharePublicationSettingsMapper
         SharePublication? publication,
         bool isSourceCurrent = true)
     {
-        bool isPublic = publication?.IsResolvable == true && isSourceCurrent;
+        bool isModerationSuspended = publication?.IsModerationSuspended == true;
+        bool hasOwnerPublicationControls = publication?.Status == SharePublicationStatus.Published
+            && (isSourceCurrent || isModerationSuspended);
         return new SharePublicationSettingsResult(
-            isPublic,
-            isPublic ? publication!.ShareToken!.Value.Value : null,
-            isPublic ? publication!.PublishedAtUtc : null,
+            hasOwnerPublicationControls,
+            hasOwnerPublicationControls ? publication!.ShareToken!.Value.Value : null,
+            hasOwnerPublicationControls ? publication!.PublishedAtUtc : null,
             publication?.ContentPolicy.SchemaVersion,
             publication?.ContentPolicy.DatePrecision,
             publication?.ContentPolicy.IncludedFields ?? Array.Empty<ShareContentField>(),
             publication?.Visibility,
             publication?.Id.Value,
-            publication?.PublicationVersion);
+            publication?.PublicationVersion,
+            isModerationSuspended);
     }
 }

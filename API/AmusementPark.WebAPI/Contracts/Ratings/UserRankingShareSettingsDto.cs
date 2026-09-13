@@ -4,6 +4,8 @@ public sealed class UserRankingShareSettingsDto
 {
     public bool IsPublic { get; set; }
 
+    public bool IsModerationSuspended { get; set; }
+
     public string? PublicationId { get; set; }
 
     public long? PublicationVersion { get; set; }

@@ -6,4 +6,5 @@ public sealed record ProfileComparisonSummaryResult(
     string ShareId,
     string? OtherDisplayName,
     DateTime CreatedAtUtc,
-    IReadOnlyCollection<ProfileComparisonCategory> Categories);
+    IReadOnlyCollection<ProfileComparisonCategory> Categories,
+    bool IsModerationSuspended);

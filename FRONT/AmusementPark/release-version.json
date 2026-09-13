@@ -1,6 +1,20 @@
 {
-  "version": "5.3.6",
+  "version": "5.3.7",
   "history": [
+    {
+      "version": "5.3.7",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Les partages publics peuvent désormais être signalés et protégés.",
+        "en": "Public shares can now be reported and protected.",
+        "de": "Öffentliche Freigaben können jetzt gemeldet und geschützt werden.",
+        "nl": "Openbare gedeelde inhoud kan nu worden gemeld en beschermd.",
+        "it": "Ora le condivisioni pubbliche possono essere segnalate e protette.",
+        "es": "Ahora los contenidos públicos pueden denunciarse y protegerse.",
+        "pl": "Publiczne udostępnienia można teraz zgłaszać i chronić.",
+        "pt": "Agora as partilhas públicas podem ser denunciadas e protegidas."
+      }
+    },
     {
       "version": "5.3.6",
       "releasedAt": "2026-09-13",

@@ -4,6 +4,8 @@ namespace AmusementPark.Core.Domain.Sharing;
 
 public sealed class ProfileComparison
 {
+    private IReadOnlyList<ShareModerationReportId> moderationSuspensionReportIds;
+
     private ProfileComparison(
         ProfileComparisonId id,
         ProfileComparisonInvitationId invitationId,
@@ -20,7 +22,8 @@ public sealed class ProfileComparison
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        IEnumerable<ShareModerationReportId>? moderationSuspensionReportIds)
     {
         _ = id.Value;
         _ = invitationId.Value;
@@ -55,6 +58,9 @@ public sealed class ProfileComparison
         }
 
         bool hasRevocation = !string.IsNullOrWhiteSpace(revokedByUserId) && revokedAtUtc.HasValue;
+        ShareModerationReportId[] normalizedModerationSuspensions =
+            NormalizeModerationSuspensions(moderationSuspensionReportIds);
+
         if ((status == ProfileComparisonStatus.Revoked) != hasRevocation
             || hasRevocation && (!IsParticipant(
                 normalizedCreatorUserId,
@@ -82,6 +88,8 @@ public sealed class ProfileComparison
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
+        this.moderationSuspensionReportIds =
+            Array.AsReadOnly(normalizedModerationSuspensions);
     }
 
     public ProfileComparisonId Id { get; }
@@ -116,7 +124,14 @@ public sealed class ProfileComparison
 
     public long Version { get; private set; }
 
+    public IReadOnlyList<ShareModerationReportId> ModerationSuspensionReportIds =>
+        this.moderationSuspensionReportIds;
+
+    public bool IsModerationSuspended => this.moderationSuspensionReportIds.Count > 0;
+
     public bool IsActive => this.Status == ProfileComparisonStatus.Active;
+
+    public bool IsPubliclyResolvable => this.IsActive && !this.IsModerationSuspended;
 
     public static ProfileComparison Create(
         ProfileComparisonId id,
@@ -147,7 +162,8 @@ public sealed class ProfileComparison
             null,
             createdAtUtc,
             createdAtUtc,
-            0);
+            0,
+            null);
     }
 
     public static ProfileComparison Restore(
@@ -166,7 +182,8 @@ public sealed class ProfileComparison
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        IEnumerable<ShareModerationReportId>? moderationSuspensionReportIds = null)
     {
         return new ProfileComparison(
             id,
@@ -184,7 +201,8 @@ public sealed class ProfileComparison
             revokedAtUtc,
             createdAtUtc,
             updatedAtUtc,
-            version);
+            version,
+            moderationSuspensionReportIds);
     }
 
     public bool HasParticipant(string userId)
@@ -221,6 +239,85 @@ public sealed class ProfileComparison
         this.RevokedAtUtc = revokedAtUtc;
         this.UpdatedAtUtc = revokedAtUtc;
         this.Version++;
+    }
+
+    public void SuspendByModeration(
+        ShareModerationReportId reportId,
+        DateTime suspendedAtUtc)
+    {
+        _ = reportId.Value;
+        ValidateUtc(suspendedAtUtc, nameof(suspendedAtUtc));
+        if (this.HasModerationSuspension(reportId))
+        {
+            return;
+        }
+
+        if (this.Status is not ProfileComparisonStatus.Active
+            and not ProfileComparisonStatus.Revoked)
+        {
+            throw new ProfileComparisonValidationException(
+                ProfileComparisonErrorCodes.InvalidState,
+                "The comparison cannot be suspended by moderation.");
+        }
+
+        this.AdvanceModerationState(
+            suspendedAtUtc,
+            this.moderationSuspensionReportIds.Append(reportId));
+    }
+
+    public void RestoreAfterModeration(
+        ShareModerationReportId reportId,
+        DateTime restoredAtUtc)
+    {
+        _ = reportId.Value;
+        ValidateUtc(restoredAtUtc, nameof(restoredAtUtc));
+        if (!this.HasModerationSuspension(reportId))
+        {
+            throw new ProfileComparisonValidationException(
+                ProfileComparisonErrorCodes.InvalidState,
+                "Only a report that suspended a comparison can restore its own block.");
+        }
+
+        this.AdvanceModerationState(
+            restoredAtUtc,
+            this.moderationSuspensionReportIds.Where(value => value != reportId));
+    }
+
+    private void AdvanceModerationState(
+        DateTime changedAtUtc,
+        IEnumerable<ShareModerationReportId> moderationSuspensionReportIds)
+    {
+        if (changedAtUtc < this.UpdatedAtUtc || this.Version == long.MaxValue)
+        {
+            throw InvalidState();
+        }
+
+        this.moderationSuspensionReportIds = Array.AsReadOnly(
+            NormalizeModerationSuspensions(moderationSuspensionReportIds));
+        this.UpdatedAtUtc = changedAtUtc;
+        this.Version++;
+    }
+
+    public bool HasModerationSuspension(ShareModerationReportId reportId)
+    {
+        _ = reportId.Value;
+        return this.moderationSuspensionReportIds.Contains(reportId);
+    }
+
+    private static ShareModerationReportId[] NormalizeModerationSuspensions(
+        IEnumerable<ShareModerationReportId>? reportIds)
+    {
+        ShareModerationReportId[] normalized = (reportIds
+                ?? Array.Empty<ShareModerationReportId>())
+            .Distinct()
+            .OrderBy(static value => value.Value, StringComparer.Ordinal)
+            .ToArray();
+        foreach (ShareModerationReportId reportId in normalized)
+        {
+            _ = reportId.Value;
+        }
+
+        return normalized;
     }
 
     private static bool IsParticipant(string creatorUserId, string acceptorUserId, string userId)

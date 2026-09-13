@@ -84,6 +84,7 @@ export interface SharePublicationPublishRequest {
 
 export interface SharePublicationSettings {
   isPublic: boolean;
+  isModerationSuspended?: boolean;
   publicationId?: string | null;
   publicationVersion?: number | null;
   shareId?: string | null;

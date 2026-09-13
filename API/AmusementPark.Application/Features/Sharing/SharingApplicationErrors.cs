@@ -69,6 +69,13 @@ public static class SharingApplicationErrors
             "Les données ont changé depuis l’aperçu. Vérifie le nouvel aperçu avant de publier.");
     }
 
+    public static ApplicationError PublicationSuspendedByModeration()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.moderation-suspended",
+            "Ce partage est temporairement suspendu et ne peut pas être republié.");
+    }
+
     public static ApplicationError PreviewApprovalRequired()
     {
         return ApplicationError.RuleViolation(
@@ -249,5 +256,47 @@ public static class SharingApplicationErrors
         return ApplicationError.Conflict(
             "profile-comparison.concurrent-modification",
             "Cette comparaison vient d’être modifiée. Recharge la page.");
+    }
+
+    public static ApplicationError InvalidModerationReport()
+    {
+        return ApplicationError.Validation(
+            "share-moderation.report-invalid",
+            "Le signalement est incomplet ou contient un texte non autorisé.");
+    }
+
+    public static ApplicationError ModerationTargetNotFound()
+    {
+        return ApplicationError.NotFound(
+            "share-moderation.target-not-found",
+            "Cette publication n’est plus disponible.");
+    }
+
+    public static ApplicationError ModerationReportNotFound()
+    {
+        return ApplicationError.NotFound(
+            "share-moderation.report-not-found",
+            "Ce signalement est introuvable.");
+    }
+
+    public static ApplicationError ModerationConflict()
+    {
+        return ApplicationError.Conflict(
+            "share-moderation.concurrent-modification",
+            "La modération a changé entre-temps. Recharge la liste.");
+    }
+
+    public static ApplicationError InvalidModerationTransition()
+    {
+        return ApplicationError.RuleViolation(
+            "share-moderation.transition-invalid",
+            "Cette décision ne correspond plus à l’état du signalement ou de la publication.");
+    }
+
+    public static ApplicationError InvalidModerationSearch()
+    {
+        return ApplicationError.Validation(
+            "share-moderation.search-invalid",
+            "Les filtres de modération sont invalides.");
     }
 }

@@ -23,6 +23,16 @@ public sealed class SharePublicationRepository : ISharePublicationRepository
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
     }
 
+    public async Task<SharePublication?> GetByIdAsync(
+        SharePublicationId publicationId,
+        CancellationToken cancellationToken)
+    {
+        SharePublicationDocument? document = await this.collection
+            .Find(SharePublicationMongoDefinitions.BuildIdFilter(publicationId.Value))
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<SharePublication?> GetOwnedAsync(
         SharePublicationId publicationId,
         string ownerUserId,

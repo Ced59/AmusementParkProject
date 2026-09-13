@@ -23,6 +23,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
+import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
 import { SharedProfileComparisonStateFacade } from '../state/shared-profile-comparison-state.facade';
 import {
   resolveProfileComparisonCorrelationTranslationKey,
@@ -35,10 +36,11 @@ import {
   styleUrl: './shared-profile-comparison-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SharedProfileComparisonStateFacade],
-  imports: [TranslateModule, RouterLink, UiButtonDirective],
+  imports: [TranslateModule, RouterLink, UiButtonDirective, PublicShareReportComponent],
 })
 export class SharedProfileComparisonPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
+  protected readonly shareId = signal<string>('');
   protected readonly result: Signal<SharedProfileComparison | null> =
     this.facade.comparison;
   protected readonly loading: Signal<boolean> = this.facade.loading;
@@ -118,6 +120,7 @@ export class SharedProfileComparisonPageComponent implements OnInit {
     const shareId: string =
       this.route.snapshot.paramMap.get('shareId')?.trim() ?? '';
     this.currentLang.set(language);
+    this.shareId.set(shareId);
     this.seoService.applyRouteDefaults(this.router.url);
     if (!shareId) {
       this.ssrHttpStatusService.setNotFound();

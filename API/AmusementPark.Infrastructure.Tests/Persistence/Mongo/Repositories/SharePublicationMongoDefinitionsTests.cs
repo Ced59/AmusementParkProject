@@ -24,6 +24,10 @@ public sealed class SharePublicationMongoDefinitionsTests
         Assert.Contains("\"visibility\"", json, StringComparison.Ordinal);
         Assert.Contains("\"Unlisted\"", json, StringComparison.Ordinal);
         Assert.Contains("\"Public\"", json, StringComparison.Ordinal);
+        Assert.Contains(
+            "\"moderationSuspensionReportIds\" : { \"$size\" : 0 }",
+            json,
+            StringComparison.Ordinal);
         Assert.DoesNotContain("ownerUserId", json, StringComparison.Ordinal);
     }
 
@@ -100,7 +104,11 @@ public sealed class SharePublicationMongoDefinitionsTests
         Assert.Contains("Draft", activeFilter, StringComparison.Ordinal);
         Assert.Contains("Published", activeFilter, StringComparison.Ordinal);
         Assert.Contains("NeedsReview", activeFilter, StringComparison.Ordinal);
-        Assert.DoesNotContain("Revoked", activeFilter, StringComparison.Ordinal);
+        Assert.Contains(
+            "moderationSuspensionReportIds.0",
+            activeFilter,
+            StringComparison.Ordinal);
+        Assert.Contains("$exists", activeFilter, StringComparison.Ordinal);
         Assert.All(indexes, static index => Assert.Null(index.Options.ExpireAfter));
         Assert.DoesNotContain(
             indexes,

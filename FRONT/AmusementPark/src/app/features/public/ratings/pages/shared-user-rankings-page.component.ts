@@ -33,6 +33,7 @@ import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/displa
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
 import { UiButtonDirective } from '@ui/primitives';
 import { SharedUserRankingsStateFacade } from '../state/shared-user-rankings-state.facade';
 
@@ -56,6 +57,7 @@ interface SharedAttractionQuickFilter {
   providers: [SharedUserRankingsStateFacade],
   imports: [
     PublicSharePanelComponent,
+    PublicShareReportComponent,
     RatingRankingListComponent,
     RatingTreeComponent,
     RouterLink,

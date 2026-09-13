@@ -39,6 +39,7 @@ public sealed class SharePublicationMongoMapperTests
             Assert.Equal(publication.RevokedAtUtc, restored.RevokedAtUtc);
             Assert.Equal(publication.CreatedAtUtc, restored.CreatedAtUtc);
             Assert.Equal(publication.UpdatedAtUtc, restored.UpdatedAtUtc);
+            Assert.Equal(publication.IsModerationSuspended, restored.IsModerationSuspended);
         }
     }
 

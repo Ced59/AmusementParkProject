@@ -9,4 +9,6 @@ public sealed class ProfileComparisonSummaryDto
     public DateTime CreatedAtUtc { get; set; }
 
     public List<string> Categories { get; set; } = new();
+
+    public bool IsModerationSuspended { get; set; }
 }

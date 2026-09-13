@@ -53,4 +53,7 @@ public sealed class SharePublicationDocument : MongoDocumentBase
     [BsonElement("revokedAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? RevokedAtUtc { get; set; }
+
+    [BsonElement("moderationSuspensionReportIds")]
+    public List<string> ModerationSuspensionReportIds { get; set; } = new();
 }

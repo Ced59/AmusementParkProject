@@ -6540,5 +6540,75 @@
     "subtitle": "Prepaidbundels voor toegang tot attracties",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Tokens / tegoeden"
+  },
+  "shareModeration": {
+    "owner": {
+      "title": "Deze gedeelde inhoud is tijdelijk opgeschort",
+      "description": "De openbare link is tijdens de beoordeling niet beschikbaar. Je privégegevens blijven intact en je kunt het delen nog steeds intrekken."
+    },
+    "public": {
+      "openAction": "Deze inhoud melden",
+      "description": "Help ons openbare gedeelde inhoud veilig te houden. De eigenaar ziet je melding niet.",
+      "reasonLabel": "Reden",
+      "detailsLabel": "Optionele uitleg",
+      "detailsPlaceholder": "Beschrijf het probleem kort zonder een link toe te voegen.",
+      "characters": "{{ count }} / 500 tekens",
+      "otherRequired": "Voeg uitleg toe voor deze reden.",
+      "submitAction": "Melding versturen",
+      "submitting": "Versturen…",
+      "confirmationTitle": "Melding verstuurd",
+      "confirmationDescription": "Het team kan deze inhoud nu beoordelen.",
+      "error": "De melding kon niet worden verstuurd. Probeer het later opnieuw."
+    },
+    "admin": {
+      "kicker": "Vertrouwen en veiligheid",
+      "title": "Moderatie van gedeelde inhoud",
+      "navTitle": "Gemelde inhoud",
+      "subtitle": "Beoordeel meldingen zonder technische id’s of privégegevens te tonen.",
+      "shortcut": "Meldingen over gedeelde inhoud behandelen",
+      "filters": "Moderatiefilters",
+      "statusFilter": "Status",
+      "targetFilter": "Type inhoud",
+      "reasonFilter": "Reden",
+      "all": "Alle",
+      "apply": "Toepassen",
+      "reset": "Herstellen",
+      "loading": "Meldingen laden…",
+      "error": "Meldingen konden niet worden geladen of verwerkt.",
+      "empty": "Geen meldingen voor deze filters.",
+      "reason": "Reden",
+      "submittedAt": "Gemeld op",
+      "decisionNote": "Besluit: ",
+      "noteLabel": "Optionele interne notitie",
+      "dismiss": "Afwijzen",
+      "suspend": "Inhoud opschorten",
+      "restore": "Inhoud herstellen",
+      "pagination": "Paginering",
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Pagina {{ page }} van {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Zichtbare persoonsgegevens",
+      "HarassmentOrHate": "Intimidatie of haat",
+      "Impersonation": "Identiteitsmisbruik",
+      "InappropriateContent": "Ongepaste inhoud",
+      "SpamOrUnsafeLink": "Spam of onveilige link",
+      "MisleadingContent": "Misleidende inhoud",
+      "Other": "Andere"
+    },
+    "targets": {
+      "VisitRecap": "Bezoekverhaal",
+      "YearRecap": "Jaaroverzicht",
+      "PassportProfile": "Openbaar paspoort",
+      "PersonalRanking": "Persoonlijke ranglijst",
+      "ProfileComparison": "Paspoortvergelijking"
+    },
+    "status": {
+      "Pending": "Te beoordelen",
+      "Dismissed": "Afgewezen",
+      "PublicationSuspended": "Inhoud opgeschort",
+      "PublicationRestored": "Inhoud hersteld"
+    }
   }
 }

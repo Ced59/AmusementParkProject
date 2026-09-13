@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "Diese Freigabe ist vorübergehend gesperrt",
+      "description": "Ihr öffentlicher Link ist während der Prüfung nicht erreichbar. Deine privaten Daten bleiben unverändert und du kannst die Freigabe weiterhin widerrufen."
+    }
+  }
+}

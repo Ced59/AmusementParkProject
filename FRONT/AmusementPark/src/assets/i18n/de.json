@@ -6540,5 +6540,75 @@
     "subtitle": "Prepaid-Pakete für die Nutzung von Attraktionen",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Token / Guthaben"
+  },
+  "shareModeration": {
+    "owner": {
+      "title": "Diese Freigabe ist vorübergehend gesperrt",
+      "description": "Ihr öffentlicher Link ist während der Prüfung nicht erreichbar. Deine privaten Daten bleiben unverändert und du kannst die Freigabe weiterhin widerrufen."
+    },
+    "public": {
+      "openAction": "Inhalt melden",
+      "description": "Hilf uns, öffentliche Freigaben zu schützen. Der Eigentümer sieht deine Meldung nicht.",
+      "reasonLabel": "Grund",
+      "detailsLabel": "Optionale Angaben",
+      "detailsPlaceholder": "Beschreibe das Problem kurz und ohne Link.",
+      "characters": "{{ count }} / 500 Zeichen",
+      "otherRequired": "Ergänze Angaben zu diesem Grund.",
+      "submitAction": "Meldung senden",
+      "submitting": "Wird gesendet…",
+      "confirmationTitle": "Meldung gesendet",
+      "confirmationDescription": "Das Team kann diese Freigabe nun prüfen.",
+      "error": "Die Meldung konnte nicht gesendet werden. Versuche es später erneut."
+    },
+    "admin": {
+      "kicker": "Vertrauen und Sicherheit",
+      "title": "Moderation von Freigaben",
+      "navTitle": "Gemeldete Freigaben",
+      "subtitle": "Prüfe Meldungen ohne technische Kennungen oder private Daten offenzulegen.",
+      "shortcut": "Meldungen zu geteilten Inhalten bearbeiten",
+      "filters": "Moderationsfilter",
+      "statusFilter": "Status",
+      "targetFilter": "Freigabetyp",
+      "reasonFilter": "Grund",
+      "all": "Alle",
+      "apply": "Anwenden",
+      "reset": "Zurücksetzen",
+      "loading": "Meldungen werden geladen…",
+      "error": "Meldungen konnten nicht geladen oder bearbeitet werden.",
+      "empty": "Keine Meldung entspricht diesen Filtern.",
+      "reason": "Grund",
+      "submittedAt": "Gemeldet am",
+      "decisionNote": "Entscheidung: ",
+      "noteLabel": "Optionale interne Notiz",
+      "dismiss": "Verwerfen",
+      "suspend": "Freigabe sperren",
+      "restore": "Freigabe wiederherstellen",
+      "pagination": "Seitennavigation",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite {{ page }} von {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Sichtbare persönliche Daten",
+      "HarassmentOrHate": "Belästigung oder Hass",
+      "Impersonation": "Identitätsmissbrauch",
+      "InappropriateContent": "Unangemessener Inhalt",
+      "SpamOrUnsafeLink": "Spam oder unsicherer Link",
+      "MisleadingContent": "Irreführender Inhalt",
+      "Other": "Sonstiges"
+    },
+    "targets": {
+      "VisitRecap": "Besuchsrückblick",
+      "YearRecap": "Jahresrückblick",
+      "PassportProfile": "Öffentlicher Pass",
+      "PersonalRanking": "Persönliche Rangliste",
+      "ProfileComparison": "Passvergleich"
+    },
+    "status": {
+      "Pending": "Zu prüfen",
+      "Dismissed": "Verworfen",
+      "PublicationSuspended": "Freigabe gesperrt",
+      "PublicationRestored": "Freigabe wiederhergestellt"
+    }
   }
 }

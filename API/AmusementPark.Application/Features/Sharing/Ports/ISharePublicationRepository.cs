@@ -7,6 +7,10 @@ namespace AmusementPark.Application.Features.Sharing.Ports;
 /// </summary>
 public interface ISharePublicationRepository
 {
+    Task<SharePublication?> GetByIdAsync(
+        SharePublicationId publicationId,
+        CancellationToken cancellationToken);
+
     Task<SharePublication?> GetOwnedAsync(
         SharePublicationId publicationId,
         string ownerUserId,

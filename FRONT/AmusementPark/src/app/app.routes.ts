@@ -133,6 +133,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/rating-ranking/pages/admin-rating-ranking/admin-rating-ranking.component').then((m) => m.AdminRatingRankingComponent)
           },
           {
+            path: 'share-moderation',
+            loadComponent: () => import('@features/admin/share-moderation/pages/admin-share-moderation/admin-share-moderation.component').then((m) => m.AdminShareModerationComponent)
+          },
+          {
             path: 'technical-stats',
             loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
           },

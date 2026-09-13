@@ -5,6 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { UserRankingShareSettings } from '@app/models/ratings/rating.models';
 import { PersonalRankingSharePreview, SharePublicationPreview } from '@app/models/sharing/share-publication.models';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { OwnerShareModerationNoticeComponent } from '@ui/sharing/owner-share-moderation-notice/owner-share-moderation-notice.component';
 import { UiButtonDirective } from '@ui/primitives';
 import { UserRankingShareStateFacade } from '../../../ratings/user-ranking-share-state.facade';
 
@@ -13,7 +14,7 @@ import { UserRankingShareStateFacade } from '../../../ratings/user-ranking-share
   templateUrl: './user-ranking-share-control.component.html',
   styleUrl: './user-ranking-share-control.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [OwnerShareModerationNoticeComponent, PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class UserRankingShareControlComponent implements OnInit {
   @Input() displayName: string = '';

@@ -29,6 +29,21 @@ public sealed class ProfileComparisonMongoMapperTests
             restored.Calculation.CalculationVersion);
     }
 
+    [Fact]
+    public void Mapping_ShouldRoundTripModerationSuspensionWithoutRevokingComparison()
+    {
+        ProfileComparison comparison = CreateComparison();
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
+        comparison.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
+
+        ProfileComparison restored = comparison.ToDocument().ToDomain();
+
+        Assert.True(restored.IsActive);
+        Assert.True(restored.IsModerationSuspended);
+        Assert.True(restored.HasModerationSuspension(reportId));
+        Assert.False(restored.IsPubliclyResolvable);
+    }
+
     private static ProfileComparison CreateComparison()
     {
         ProfileComparisonCalculation calculation = new ProfileComparisonCalculation(

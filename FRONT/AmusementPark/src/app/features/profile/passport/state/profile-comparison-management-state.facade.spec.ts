@@ -18,6 +18,7 @@ describe('ProfileComparisonManagementStateFacade', () => {
       otherDisplayName: 'Alex',
       createdAtUtc: '2026-09-13T12:00:00Z',
       categories: ['VisitedParks'],
+      isModerationSuspended: false,
     };
     const port: ProfileComparisonManagementPort = {
       listMine: (): Observable<ProfileComparisonSummary[]> => of([comparison]),

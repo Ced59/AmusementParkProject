@@ -8,6 +8,7 @@ import {
   VisitRecapSharePreview
 } from '@app/models/sharing/share-publication.models';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { OwnerShareModerationNoticeComponent } from '@ui/sharing/owner-share-moderation-notice/owner-share-moderation-notice.component';
 import { UiButtonDirective } from '@ui/primitives';
 import { VisitRecapShareStateFacade } from '../../state/visit-recap-share-state.facade';
 
@@ -17,7 +18,7 @@ import { VisitRecapShareStateFacade } from '../../state/visit-recap-share-state.
   styleUrl: './visit-recap-share-control.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [VisitRecapShareStateFacade],
-  imports: [PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [OwnerShareModerationNoticeComponent, PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class VisitRecapShareControlComponent implements OnChanges {
   @Input() visitId: string = '';

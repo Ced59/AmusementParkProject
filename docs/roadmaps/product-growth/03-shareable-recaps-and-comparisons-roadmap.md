@@ -442,6 +442,21 @@ documentés dans
 `SHARE-13` peut maintenant ajouter le signalement et la modération minimale sans
 modifier le consentement ou le calcul.
 
+### État de `SHARE-13` au 13 septembre 2026
+
+Le signalement est disponible sur les cinq surfaces publiques avec sept motifs
+structurés, une limite de texte et une protection contre les balises ou liens
+dangereux. Une file admin responsive permet de filtrer les rapports, de les classer,
+de suspendre le partage public ou de le rétablir avec une trace d'audit. La
+suspension est un état réversible de l'autorité centrale : les données privées,
+le jeton et le snapshot restent intacts, tandis que toute résolution publique est
+coupée. MongoDB migre les documents existants vers ce nouvel état sans double
+système. Les contrats, preuves, diagrammes de classes, de séquence et de données
+sont détaillés dans
+[`product-growth-share-13-public-share-moderation-2026-09-13.md`](../../architecture/product-growth-share-13-public-share-moderation-2026-09-13.md).
+`SHARE-14` peut maintenant compléter l'export, la suppression et les mesures de
+cycle de vie.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

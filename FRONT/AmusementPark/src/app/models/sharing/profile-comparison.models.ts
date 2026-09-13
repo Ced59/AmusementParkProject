@@ -56,6 +56,7 @@ export interface ProfileComparisonSummary {
   otherDisplayName: string | null;
   createdAtUtc: string;
   categories: ProfileComparisonCategory[];
+  isModerationSuspended: boolean;
 }
 
 export interface ProfileComparisonRevocation {

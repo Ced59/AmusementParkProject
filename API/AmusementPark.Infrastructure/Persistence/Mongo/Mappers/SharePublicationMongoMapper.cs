@@ -29,6 +29,9 @@ internal static class SharePublicationMongoMapper
             Version = publication.Version,
             PublishedAtUtc = publication.PublishedAtUtc,
             RevokedAtUtc = publication.RevokedAtUtc,
+            ModerationSuspensionReportIds = publication.ModerationSuspensionReportIds
+                .Select(static value => value.Value)
+                .ToList(),
             CreatedAt = publication.CreatedAtUtc,
             UpdatedAt = publication.UpdatedAtUtc,
         };
@@ -58,6 +61,8 @@ internal static class SharePublicationMongoMapper
             document.RevokedAtUtc,
             document.CreatedAt,
             document.UpdatedAt,
-            document.ContentFingerprint);
+            document.ContentFingerprint,
+            document.ModerationSuspensionReportIds.Select(
+                static value => ShareModerationReportId.Parse(value)));
     }
 }

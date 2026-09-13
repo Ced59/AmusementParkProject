@@ -6540,5 +6540,75 @@
     "subtitle": "Prepaid bundles used to access attractions",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Tokens / credits"
+  },
+  "shareModeration": {
+    "owner": {
+      "title": "This share is temporarily suspended",
+      "description": "Its public link is unavailable while it is reviewed. Your private data remains intact and you can still revoke the share."
+    },
+    "public": {
+      "openAction": "Report this content",
+      "description": "Help us keep public shares safe. The owner will not see your report.",
+      "reasonLabel": "Reason",
+      "detailsLabel": "Optional details",
+      "detailsPlaceholder": "Briefly describe the problem without adding a link.",
+      "characters": "{{ count }} / 500 characters",
+      "otherRequired": "Add details for this reason.",
+      "submitAction": "Send report",
+      "submitting": "Sending…",
+      "confirmationTitle": "Report sent",
+      "confirmationDescription": "The team can now review this share.",
+      "error": "The report could not be sent. Try again later."
+    },
+    "admin": {
+      "kicker": "Trust and safety",
+      "title": "Share moderation",
+      "navTitle": "Reported shares",
+      "subtitle": "Review reports without exposing technical identifiers or private data.",
+      "shortcut": "Handle reports about shared content",
+      "filters": "Moderation filters",
+      "statusFilter": "Status",
+      "targetFilter": "Share type",
+      "reasonFilter": "Reason",
+      "all": "All",
+      "apply": "Apply",
+      "reset": "Reset",
+      "loading": "Loading reports…",
+      "error": "Reports could not be loaded or processed.",
+      "empty": "No reports match these filters.",
+      "reason": "Reason",
+      "submittedAt": "Reported on",
+      "decisionNote": "Decision: ",
+      "noteLabel": "Optional internal note",
+      "dismiss": "Dismiss",
+      "suspend": "Suspend share",
+      "restore": "Restore share",
+      "pagination": "Report pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ page }} of {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Visible personal data",
+      "HarassmentOrHate": "Harassment or hate",
+      "Impersonation": "Impersonation",
+      "InappropriateContent": "Inappropriate content",
+      "SpamOrUnsafeLink": "Spam or unsafe link",
+      "MisleadingContent": "Misleading content",
+      "Other": "Other"
+    },
+    "targets": {
+      "VisitRecap": "Visit recap",
+      "YearRecap": "Year recap",
+      "PassportProfile": "Public passport",
+      "PersonalRanking": "Personal ranking",
+      "ProfileComparison": "Passport comparison"
+    },
+    "status": {
+      "Pending": "To review",
+      "Dismissed": "Dismissed",
+      "PublicationSuspended": "Share suspended",
+      "PublicationRestored": "Share restored"
+    }
   }
 }
