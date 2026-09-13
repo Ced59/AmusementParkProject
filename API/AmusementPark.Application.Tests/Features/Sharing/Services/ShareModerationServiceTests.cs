@@ -2,6 +2,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Application.Tests.Features.Sharing.Handlers;
@@ -123,7 +124,8 @@ public sealed class ShareModerationServiceTests
                 CancellationToken.None))
             .Callback<EnqueueExactBackgroundJobRequest, CancellationToken>(
                 (request, _) => enqueuedJobs.Add(request))
-            .ReturnsAsync((DurableBackgroundJob)null!);
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
         ShareModerationService service = CreateService(reports, publications, jobs);
 
         ApplicationResult result = await service.ReviewAsync(
@@ -173,7 +175,8 @@ public sealed class ShareModerationServiceTests
                 It.Is<EnqueueExactBackgroundJobRequest>(request =>
                     request.Kind == ShareModerationDecisionJob.Kind),
                 CancellationToken.None))
-            .ReturnsAsync((DurableBackgroundJob)null!);
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
         ShareModerationService service = CreateService(reports, publications, jobs);
 
         ApplicationResult result = await service.ReviewAsync(
@@ -220,7 +223,8 @@ public sealed class ShareModerationServiceTests
                 It.Is<EnqueueExactBackgroundJobRequest>(request =>
                     request.Kind == ShareModerationDecisionJob.Kind),
                 CancellationToken.None))
-            .ReturnsAsync((DurableBackgroundJob)null!);
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
         ShareModerationService service = CreateService(reports, publications, jobs);
 
         ApplicationResult result = await service.ReviewAsync(
@@ -278,7 +282,8 @@ public sealed class ShareModerationServiceTests
         jobs.Setup(value => value.EnqueueExactAsync(
                 It.IsAny<EnqueueExactBackgroundJobRequest>(),
                 CancellationToken.None))
-            .ReturnsAsync((DurableBackgroundJob)null!);
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
         ShareModerationService service = CreateService(reports, publications, jobs);
 
         ApplicationResult result = await service.ReviewAsync(
@@ -297,6 +302,61 @@ public sealed class ShareModerationServiceTests
         jobs.VerifyAll();
         publications.VerifyAll();
         reports.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReviewAsync_DuplicateDecision_ShouldExecuteThePersistedAuditPayload()
+    {
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-canonical"),
+            ShareModerationTargetType.VisitRecap,
+            "publication-1",
+            ShareModerationReason.Other,
+            "Needs a decision.",
+            NowUtc.AddMinutes(-1));
+        ShareModerationDecisionJobPayload persistedPayload =
+            new ShareModerationDecisionJobPayload(
+                report.Id.Value,
+                ShareModerationDecision.Dismiss,
+                "admin-original",
+                "Original decision.",
+                NowUtc.AddSeconds(-10));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.Dismissed
+                    && candidate.ReviewedByUserId == "admin-original"
+                    && candidate.DecisionNote == "Original decision."
+                    && candidate.ReviewedAtUtc == persistedPayload.RequestedAtUtc),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request, persistedPayload));
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-duplicate",
+                report.Id.Value,
+                ShareModerationDecision.Dismiss,
+                "Different decision."),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        reports.VerifyAll();
+        publications.VerifyNoOtherCalls();
+        jobs.VerifyAll();
     }
 
     private static ShareModerationService CreateService(
@@ -352,5 +412,35 @@ public sealed class ShareModerationServiceTests
             0,
             NowUtc.AddMinutes(-4));
         return publication;
+    }
+
+    private static DurableBackgroundJob CreateQueuedJob(
+        EnqueueExactBackgroundJobRequest request,
+        ShareModerationDecisionJobPayload? persistedPayload = null)
+    {
+        DateTime nowUtc = NowUtc.AddSeconds(-10);
+        return new DurableBackgroundJob(
+            "job-1",
+            request.Kind,
+            null,
+            request.IdempotencyKey,
+            request.PayloadVersion,
+            persistedPayload is null
+                ? request.Payload
+                : System.Text.Json.JsonSerializer.SerializeToElement(persistedPayload),
+            null,
+            null,
+            DurableBackgroundJobStatus.Pending,
+            request.Priority,
+            0,
+            nowUtc,
+            null,
+            null,
+            null,
+            nowUtc,
+            nowUtc,
+            null,
+            null,
+            null);
     }
 }

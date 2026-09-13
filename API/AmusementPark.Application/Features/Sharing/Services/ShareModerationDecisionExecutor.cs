@@ -45,12 +45,52 @@ public sealed class ShareModerationDecisionExecutor
 
         return payload.Decision switch
         {
+            ShareModerationDecision.Dismiss =>
+                await this.DismissAsync(report, payload, cancellationToken),
             ShareModerationDecision.Suspend =>
                 await this.SuspendAsync(report, payload, cancellationToken),
             ShareModerationDecision.Restore =>
                 await this.RestoreAsync(report, payload, cancellationToken),
             _ => ShareModerationDecisionExecutionOutcome.InvalidTransition,
         };
+    }
+
+    private async Task<ShareModerationDecisionExecutionOutcome> DismissAsync(
+        ShareModerationReport report,
+        ShareModerationDecisionJobPayload payload,
+        CancellationToken cancellationToken)
+    {
+        if (report.Status == ShareModerationReportStatus.Dismissed)
+        {
+            return ShareModerationDecisionExecutionOutcome.Succeeded;
+        }
+
+        if (report.Status != ShareModerationReportStatus.Pending)
+        {
+            return ShareModerationDecisionExecutionOutcome.InvalidTransition;
+        }
+
+        long expectedVersion = report.Version;
+        try
+        {
+            report.Dismiss(
+                payload.ReviewerUserId,
+                payload.Note,
+                payload.RequestedAtUtc);
+        }
+        catch (ShareModerationValidationException)
+        {
+            return ShareModerationDecisionExecutionOutcome.InvalidTransition;
+        }
+
+        ShareModerationReportWriteOutcome outcome =
+            await this.reportRepository.ReplaceAsync(
+                report,
+                expectedVersion,
+                cancellationToken);
+        return outcome == ShareModerationReportWriteOutcome.Success
+            ? ShareModerationDecisionExecutionOutcome.Succeeded
+            : ShareModerationDecisionExecutionOutcome.RetryableConflict;
     }
 
     private async Task<ShareModerationDecisionExecutionOutcome> SuspendAsync(

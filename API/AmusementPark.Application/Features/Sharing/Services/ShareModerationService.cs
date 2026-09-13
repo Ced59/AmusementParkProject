@@ -105,32 +105,10 @@ public sealed class ShareModerationService
                 SharingApplicationErrors.ModerationReportNotFound());
         }
 
-        DateTime requestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        if (command.Decision == ShareModerationDecision.Dismiss)
-        {
-            long expectedReportVersion = report.Version;
-            try
-            {
-                report.Dismiss(command.ReviewerUserId, command.Note, requestedAtUtc);
-            }
-            catch (ShareModerationValidationException)
-            {
-                return ApplicationResult.Failure(
-                    SharingApplicationErrors.InvalidModerationTransition());
-            }
-
-            ShareModerationReportWriteOutcome dismissOutcome =
-                await this.reportRepository.ReplaceAsync(
-                    report,
-                    expectedReportVersion,
-                    cancellationToken);
-            return dismissOutcome == ShareModerationReportWriteOutcome.Success
-                ? ApplicationResult.Success()
-                : ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
-        }
-
         bool isExpectedTransition = command.Decision switch
         {
+            ShareModerationDecision.Dismiss =>
+                report.Status == ShareModerationReportStatus.Pending,
             ShareModerationDecision.Suspend =>
                 report.Status == ShareModerationReportStatus.Pending,
             ShareModerationDecision.Restore =>
@@ -143,18 +121,22 @@ public sealed class ShareModerationService
                 SharingApplicationErrors.InvalidModerationTransition());
         }
 
-        ShareModerationDecisionJobPayload payload = new ShareModerationDecisionJobPayload(
+        DateTime requestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        ShareModerationDecisionJobPayload requestedPayload = new ShareModerationDecisionJobPayload(
             report.Id.Value,
             command.Decision,
             command.ReviewerUserId,
             command.Note,
             requestedAtUtc);
-        await this.decisionScheduler.ScheduleAsync(payload, cancellationToken);
+        ShareModerationDecisionJobPayload persistedPayload =
+            await this.decisionScheduler.ScheduleAsync(requestedPayload, cancellationToken);
 
         ShareModerationDecisionExecutionOutcome outcome;
         try
         {
-            outcome = await this.decisionExecutor.ExecuteAsync(payload, cancellationToken);
+            outcome = await this.decisionExecutor.ExecuteAsync(
+                persistedPayload,
+                cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {

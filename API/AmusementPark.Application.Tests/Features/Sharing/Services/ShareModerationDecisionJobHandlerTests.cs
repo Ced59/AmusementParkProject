@@ -70,7 +70,8 @@ public sealed class ShareModerationDecisionJobHandlerTests
                         "continuation:1",
                         StringComparison.Ordinal)),
                 CancellationToken.None))
-            .ReturnsAsync((DurableBackgroundJob)null!);
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
         ShareModerationDecisionJobHandler handler = CreateHandler(reports, jobs);
         DurableBackgroundJobExecutionContext context =
             new DurableBackgroundJobExecutionContext(
@@ -186,6 +187,65 @@ public sealed class ShareModerationDecisionJobHandlerTests
         auditLogWriter.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenDismissalWasAlreadyCommitted_ShouldStillWriteCompletionAudit()
+    {
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-dismissed"),
+            ShareModerationTargetType.VisitRecap,
+            "publication-1",
+            ShareModerationReason.Other,
+            "Needs review.",
+            NowUtc.AddMinutes(-1));
+        ShareModerationDecisionJobPayload payload =
+            new ShareModerationDecisionJobPayload(
+                report.Id.Value,
+                ShareModerationDecision.Dismiss,
+                "admin-1",
+                "No violation.",
+                NowUtc);
+        report.Dismiss(
+            payload.ReviewerUserId,
+            payload.Note,
+            payload.RequestedAtUtc);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IAdminAuditLogWriter> auditLogWriter =
+            new Mock<IAdminAuditLogWriter>(MockBehavior.Strict);
+        auditLogWriter.Setup(value => value.WriteAsync(
+                It.Is<AdminAuditLogEntry>(entry =>
+                    entry.Id == "share-moderation-decision:job-dismissed"
+                    && entry.ActorUserId == "admin-1"
+                    && entry.Metadata["decision"] == ShareModerationDecision.Dismiss.ToString()),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        ShareModerationDecisionJobHandler handler = CreateHandler(
+            reports,
+            jobs,
+            auditLogWriter);
+        DurableBackgroundJobExecutionContext context =
+            new DurableBackgroundJobExecutionContext(
+                "job-dismissed",
+                ShareModerationDecisionJob.PayloadVersion,
+                System.Text.Json.JsonSerializer.SerializeToElement(payload),
+                null,
+                0,
+                "trace-dismissed");
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            context,
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        reports.VerifyAll();
+        jobs.VerifyNoOtherCalls();
+        auditLogWriter.VerifyAll();
+    }
+
     private static ShareModerationDecisionJobHandler CreateHandler(
         Mock<IShareModerationReportRepository> reports,
         Mock<IDurableBackgroundJobRepository> jobs,
@@ -211,5 +271,31 @@ public sealed class ShareModerationDecisionJobHandlerTests
             executor,
             scheduler,
             workerAudit.Object);
+    }
+
+    private static DurableBackgroundJob CreateQueuedJob(
+        EnqueueExactBackgroundJobRequest request)
+    {
+        return new DurableBackgroundJob(
+            "job-continuation",
+            request.Kind,
+            null,
+            request.IdempotencyKey,
+            request.PayloadVersion,
+            request.Payload,
+            null,
+            null,
+            DurableBackgroundJobStatus.Pending,
+            request.Priority,
+            0,
+            NowUtc,
+            null,
+            null,
+            null,
+            NowUtc,
+            NowUtc,
+            null,
+            null,
+            null);
     }
 }

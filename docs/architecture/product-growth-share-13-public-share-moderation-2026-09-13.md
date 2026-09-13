@@ -167,6 +167,12 @@ puis le worker converge vers cette décision. Cela inclut le cas où un autre
 signalement suspend déjà temporairement la même cible : la nouvelle décision reste
 explicitement acceptée au lieu de renvoyer un conflit tout en laissant sa tâche
 exécutable. Une cible ou un rapport définitivement absent reste en revanche refusé.
+Le classement sans suite suit le même chemin durable. Si la requête est interrompue
+après l'écriture du rapport, le worker retrouve l'état déjà appliqué et inscrit la
+preuve d'achèvement manquante. Lorsqu'une même décision est soumise deux fois, le
+scheduler restitue le payload réellement persisté par la première demande : auteur,
+note et horodatage ne peuvent donc pas diverger entre le rapport et l'audit du
+worker.
 Chaque rejeu programme aussi l'invalidation du cache public, y compris lorsque la
 cible porte déjà la décision attendue : une coupure entre l'écriture MongoDB et la
 création de cette invalidation ne peut donc pas laisser durablement une ancienne
@@ -253,6 +259,8 @@ nouvelle publication qui serait refusée par la règle de modération.
 - coexistence de plusieurs blocages, restauration ciblée et conservation des
   blocages pendant une révocation, pour les publications comme pour les
   comparaisons ;
+- payload d'audit canonique lors d'une décision dupliquée et preuve durable d'un
+  classement sans suite déjà appliqué ;
 - reprogrammation de l'invalidation après une panne intermédiaire et audit
   d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier

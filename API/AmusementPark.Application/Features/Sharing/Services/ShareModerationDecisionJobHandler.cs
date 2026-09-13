@@ -45,7 +45,8 @@ public sealed class ShareModerationDecisionJobHandler : IDurableBackgroundJobHan
         ShareModerationDecisionJobPayload? payload = Deserialize(context);
         if (payload is null
             || !ShareModerationReportId.TryParse(payload.ReportId, out _)
-            || payload.Decision is not ShareModerationDecision.Suspend
+            || payload.Decision is not ShareModerationDecision.Dismiss
+                and not ShareModerationDecision.Suspend
                 and not ShareModerationDecision.Restore
             || string.IsNullOrWhiteSpace(payload.ReviewerUserId)
             || payload.RequestedAtUtc.Kind != DateTimeKind.Utc
