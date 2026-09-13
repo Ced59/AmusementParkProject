@@ -24,6 +24,7 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
 import { SharedProfileComparisonStateFacade } from '../state/shared-profile-comparison-state.facade';
+import { resolveProfileComparisonMissedStatusTranslationKey } from './profile-comparison-view.helpers';
 
 @Component({
   selector: 'app-shared-profile-comparison-page',
@@ -175,6 +176,10 @@ export class SharedProfileComparisonPageComponent implements OnInit {
 
   protected ratingWidth(value: number): string {
     return `${Math.max(0, Math.min(100, value * 20))}%`;
+  }
+
+  protected missedStatusKey(status: string): string {
+    return resolveProfileComparisonMissedStatusTranslationKey(status);
   }
 
   private applySeo(comparison: SharedProfileComparison): void {

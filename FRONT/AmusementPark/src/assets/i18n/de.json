@@ -1060,6 +1060,8 @@
       "yearsTitle": "Eure gemeinsamen Jahre",
       "yearsDescription": "Eine Gegenüberstellung der veröffentlichten Aktivität in denselben Jahren.",
       "visitCount": "{{count}} Besuch(e)",
+      "rideCount": "{{count}} Fahrt(en)",
+      "occurrenceCount": "{{count}} Mal erfasst",
       "missedTitle": "Eure gemeinsamen Gelegenheiten",
       "missedDescription": "Verpasste Erlebnisse, die in beiden öffentlichen Pässen erscheinen.",
       "incompleteCatalog": "Einige ältere Referenzen sind nicht mehr mit dem Katalog verknüpft; das Ergebnis kann unvollständig sein.",

@@ -17,6 +17,8 @@ describe('Shared profile comparison responsive contract', () => {
     expect(pageStyles).toContain('overflow-x: clip');
     expect(pageStyles).toContain('minmax(0, 1fr)');
     expect(pageStyles).toContain('minmax(min(100%, 18rem), 1fr)');
+    expect(pageStyles).toContain('profile-comparison__chips');
+    expect(pageStyles).toContain('repeat(2, minmax(0, 1fr))');
     expect(pageStyles).toContain('@media (max-width: 480px)');
     expect(managementStyles).toContain('overflow-x: clip');
     expect(managementStyles).toContain('minmax(min(100%, 22rem), 1fr)');

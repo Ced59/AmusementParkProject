@@ -17,8 +17,9 @@ les deux personnes ont publiées et accepté de comparer :
   par l'autre personne ;
 - notes globales rendues publiques par les deux membres, classées en accords,
   nuances et divergences ;
-- années visibles dans les deux passeports ;
-- expériences manquées visibles des deux côtés ;
+- années visibles dans les deux passeports, avec visites et tours publiés par chacun ;
+- expériences manquées visibles des deux côtés, avec motif public et occurrences
+  partagées par chacun ;
 - avertissement lorsque des références historiques ne sont plus reliées au catalogue.
 
 Le résultat ne donne pas une note aux membres et n'affiche aucun pourcentage de
@@ -298,6 +299,7 @@ sequenceDiagram
   READ->>DB: Résoudre le jeton opaque
   READ->>PUB: Revalider publication A + version + politique
   READ->>PUB: Revalider publication B + version + politique
+  READ->>PUB: Contrôle final parallèle des deux versions exactes
   alt comparaison active et deux passeports inchangés
     READ-->>API: snapshot comparatif public
     API-->>V: 200 + no-store + no-referrer

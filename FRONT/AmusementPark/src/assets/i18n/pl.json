@@ -1060,6 +1060,8 @@
       "yearsTitle": "Lata, które dzielicie",
       "yearsDescription": "Zestawienie publicznej aktywności z tych samych lat.",
       "visitCount": "Liczba wizyt: {{count}}",
+      "rideCount": "Liczba przejazdów: {{count}}",
+      "occurrenceCount": "Odnotowano {{count}} raz(y)",
       "missedTitle": "Wasze wspólne okazje",
       "missedDescription": "Pominięte atrakcje widoczne w obu publicznych paszportach.",
       "incompleteCatalog": "Niektóre starsze pozycje nie są już połączone z katalogiem, więc wynik może być niepełny.",

@@ -36,6 +36,8 @@
       "yearsTitle": "Gli anni che condividete",
       "yearsDescription": "Una lettura affiancata dell’attività resa pubblica negli stessi anni.",
       "visitCount": "{{count}} visita/e",
+      "rideCount": "{{count}} giro/i",
+      "occurrenceCount": "registrato {{count}} volta/e",
       "missedTitle": "Le vostre occasioni comuni",
       "missedDescription": "Esperienze mancate che compaiono in entrambi i passaporti pubblici.",
       "incompleteCatalog": "Alcuni riferimenti storici non sono più collegati al catalogo; il risultato può essere parziale.",

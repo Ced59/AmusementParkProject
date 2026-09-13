@@ -209,8 +209,7 @@ h1 {
   padding: 0;
   list-style: none;
 }
-.profile-comparison__discoveries li,
-.profile-comparison__chips span {
+.profile-comparison__discoveries li {
   padding: 0.45rem 0.65rem;
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-lime) 9%, transparent);
@@ -282,14 +281,48 @@ h1 {
   font-size: 1.8rem;
 }
 .profile-comparison__chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.7rem;
+}
+.profile-comparison__chips article {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+}
+.profile-comparison__chips header {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+.profile-comparison__chips header > div {
+  display: grid;
+  gap: 0.15rem;
+}
+.profile-comparison__chips small,
+.profile-comparison__chips dt {
+  color: var(--app-text-muted);
+}
+.profile-comparison__chips dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
 }
-.profile-comparison__chips span {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+.profile-comparison__chips dl > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.6rem;
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--c-lime) 7%, transparent);
+}
+.profile-comparison__chips dt {
+  font-size: 0.75rem;
+}
+.profile-comparison__chips dd {
+  font-weight: 800;
 }
 .profile-comparison__notice,
 .profile-comparison__proof {
@@ -334,6 +367,9 @@ h1 {
     text-align: left;
   }
   .profile-comparison__park-grid dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .profile-comparison__chips dl {
     grid-template-columns: minmax(0, 1fr);
   }
 }

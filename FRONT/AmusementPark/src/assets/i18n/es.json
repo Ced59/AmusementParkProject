@@ -1060,6 +1060,8 @@
       "yearsTitle": "Los años que compartís",
       "yearsDescription": "Una vista paralela de la actividad publicada para los mismos años.",
       "visitCount": "{{count}} visita(s)",
+      "rideCount": "{{count}} vuelta(s)",
+      "occurrenceCount": "registrado {{count}} vez/veces",
       "missedTitle": "Vuestras ocasiones compartidas",
       "missedDescription": "Experiencias perdidas que aparecen en ambos pasaportes públicos.",
       "incompleteCatalog": "Algunas referencias antiguas ya no están vinculadas al catálogo; el resultado puede ser parcial.",

@@ -339,6 +339,13 @@
                     "profileComparison.result.visitCount"
                       | translate: { count: year.creatorVisitCount }
                   }}
+                  @if (year.creatorRideCount != null) {
+                    ·
+                    {{
+                      "profileComparison.result.rideCount"
+                        | translate: { count: year.creatorRideCount }
+                    }}
+                  }
                 </p>
                 <p>
                   {{ displayName(comparison.acceptorDisplayName) }} ·
@@ -346,6 +353,13 @@
                     "profileComparison.result.visitCount"
                       | translate: { count: year.acceptorVisitCount }
                   }}
+                  @if (year.acceptorRideCount != null) {
+                    ·
+                    {{
+                      "profileComparison.result.rideCount"
+                        | translate: { count: year.acceptorRideCount }
+                    }}
+                  }
                 </p>
               </article>
             }
@@ -372,10 +386,52 @@
               item of comparison.missedItems;
               track item.name + item.status
             ) {
-              <span
-                ><i class="pi pi-bookmark" aria-hidden="true"></i
-                >{{ item.name }}</span
-              >
+              <article>
+                <header>
+                  <i class="pi pi-bookmark" aria-hidden="true"></i>
+                  <div>
+                    <h3>{{ item.name }}</h3>
+                    <small>{{
+                      missedStatusKey(item.status) | translate
+                    }}</small>
+                  </div>
+                </header>
+                @if (
+                  item.creatorOccurrenceCount != null ||
+                  item.acceptorOccurrenceCount != null
+                ) {
+                  <dl>
+                    @if (item.creatorOccurrenceCount != null) {
+                      <div>
+                        <dt>
+                          {{ displayName(comparison.creatorDisplayName) }}
+                        </dt>
+                        <dd>
+                          {{
+                            "profileComparison.result.occurrenceCount"
+                              | translate
+                                : { count: item.creatorOccurrenceCount }
+                          }}
+                        </dd>
+                      </div>
+                    }
+                    @if (item.acceptorOccurrenceCount != null) {
+                      <div>
+                        <dt>
+                          {{ displayName(comparison.acceptorDisplayName) }}
+                        </dt>
+                        <dd>
+                          {{
+                            "profileComparison.result.occurrenceCount"
+                              | translate
+                                : { count: item.acceptorOccurrenceCount }
+                          }}
+                        </dd>
+                      </div>
+                    }
+                  </dl>
+                }
+              </article>
             }
           </div>
         </section>

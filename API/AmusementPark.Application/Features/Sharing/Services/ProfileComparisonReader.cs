@@ -40,6 +40,11 @@ public sealed class ProfileComparisonReader
             return NotFound();
         }
 
+        if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+        {
+            return NotFound();
+        }
+
         return ApplicationResult<SharedProfileComparisonResult>.Success(
             new SharedProfileComparisonResult(
                 comparison.CreatedAtUtc,
@@ -80,22 +85,23 @@ public sealed class ProfileComparisonReader
         ProfileComparison comparison,
         CancellationToken cancellationToken)
     {
-        ProfileComparisonPassportReference? creator = await this.passportResolver.ResolveExactAsync(
-            comparison.CreatorPassportPublicationId,
-            comparison.CreatorUserId,
-            comparison.CreatorPassportPublicationVersion,
-            cancellationToken);
-        if (!IsUsable(creator, comparison.Calculation.Categories))
-        {
-            return false;
-        }
-
-        ProfileComparisonPassportReference? acceptor = await this.passportResolver.ResolveExactAsync(
-            comparison.AcceptorPassportPublicationId,
-            comparison.AcceptorUserId,
-            comparison.AcceptorPassportPublicationVersion,
-            cancellationToken);
-        return IsUsable(acceptor, comparison.Calculation.Categories);
+        Task<ProfileComparisonPassportReference?> creatorTask =
+            this.passportResolver.ResolveExactAsync(
+                comparison.CreatorPassportPublicationId,
+                comparison.CreatorUserId,
+                comparison.CreatorPassportPublicationVersion,
+                cancellationToken);
+        Task<ProfileComparisonPassportReference?> acceptorTask =
+            this.passportResolver.ResolveExactAsync(
+                comparison.AcceptorPassportPublicationId,
+                comparison.AcceptorUserId,
+                comparison.AcceptorPassportPublicationVersion,
+                cancellationToken);
+        ProfileComparisonPassportReference?[] passports = await Task.WhenAll(
+            creatorTask,
+            acceptorTask);
+        return IsUsable(passports[0], comparison.Calculation.Categories)
+            && IsUsable(passports[1], comparison.Calculation.Categories);
     }
 
     private static bool IsUsable(

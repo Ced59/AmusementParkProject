@@ -1060,6 +1060,8 @@
       "yearsTitle": "Os anos que partilham",
       "yearsDescription": "Uma leitura lado a lado da atividade tornada pública nos mesmos anos.",
       "visitCount": "{{count}} visita(s)",
+      "rideCount": "{{count}} volta(s)",
+      "occurrenceCount": "registado {{count}} vez(es)",
       "missedTitle": "As vossas oportunidades em comum",
       "missedDescription": "Experiências perdidas que aparecem nos dois passaportes públicos.",
       "incompleteCatalog": "Algumas referências antigas já não estão ligadas ao catálogo; o resultado pode ser parcial.",

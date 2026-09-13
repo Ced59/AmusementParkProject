@@ -36,6 +36,8 @@
       "yearsTitle": "The years you share",
       "yearsDescription": "A side-by-side view of activity made public for the same years.",
       "visitCount": "{{count}} visit(s)",
+      "rideCount": "{{count}} ride(s)",
+      "occurrenceCount": "recorded {{count}} time(s)",
       "missedTitle": "Your shared opportunities",
       "missedDescription": "Missed experiences that appear in both public passports.",
       "incompleteCatalog": "Some older references are no longer linked to the catalogue, so the result may be partial.",

@@ -36,6 +36,8 @@
       "yearsTitle": "De jaren die jullie delen",
       "yearsDescription": "Een vergelijking van de openbaar gemaakte activiteit in dezelfde jaren.",
       "visitCount": "{{count}} bezoek(en)",
+      "rideCount": "{{count}} rit(ten)",
+      "occurrenceCount": "{{count}} keer vastgelegd",
       "missedTitle": "Jullie gedeelde kansen",
       "missedDescription": "Gemiste ervaringen die in beide openbare paspoorten staan.",
       "incompleteCatalog": "Sommige oudere verwijzingen zijn niet meer aan de catalogus gekoppeld; het resultaat kan onvolledig zijn.",

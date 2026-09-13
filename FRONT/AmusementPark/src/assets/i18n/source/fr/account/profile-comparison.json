@@ -36,6 +36,8 @@
       "yearsTitle": "Les années que vous partagez",
       "yearsDescription": "Une lecture côte à côte de l’activité rendue publique pour les mêmes années.",
       "visitCount": "{{count}} visite(s)",
+      "rideCount": "{{count}} tour(s)",
+      "occurrenceCount": "signalé {{count}} fois",
       "missedTitle": "Vos occasions communes",
       "missedDescription": "Les expériences manquées qui apparaissent dans vos deux passeports publics.",
       "incompleteCatalog": "Certaines anciennes références ne sont plus reliées au catalogue : le résultat peut être partiel.",
