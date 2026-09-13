@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 59 parcs atteignent le niveau `Excellent` : 57 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **52 parcs** : 0 au niveau `Publishable`, 50 au niveau `Good` et 2 au niveau `Excellent`.
+- 60 parcs atteignent le niveau `Excellent` : 58 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **51 parcs** : 0 au niveau `Publishable`, 49 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (50)
+## Priorité 2 — niveau `Good` (49)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 86 | `Good` | AltınPark Bursa | TR | `Operating` | `Regional` | 79/92 | `4845bdeb-374e-453b-b71a-c904a8db8900` |
 | 86 | `Good` | Anakeesta | US | `Operating` | `National` | 89/103 | `ea5a39c7-a907-4a4a-8462-a7171ad93bc9` |
 | 86 | `Good` | Animal Farm Adventure Park | GB | `Operating` | `Regional` | 80/93 | `c1b0b210-d6d5-4740-ad72-cea2c52c3923` |
 | 86 | `Good` | Antic's Land | AE | `Operating` | `Local` | 79/92 | `3171222e-919f-4d77-8766-f2b083047ecc` |
