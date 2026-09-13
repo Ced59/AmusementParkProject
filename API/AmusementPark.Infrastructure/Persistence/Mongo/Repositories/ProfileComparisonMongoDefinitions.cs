@@ -43,6 +43,17 @@ internal static class ProfileComparisonMongoDefinitions
             ProfileComparisonStatus.Active);
     }
 
+    public static FilterDefinition<ProfileComparisonDocument> BuildParticipantExportFilter(
+        string userId)
+    {
+        return Builders<ProfileComparisonDocument>.Filter.Eq(
+                static document => document.CreatorUserId,
+                userId)
+            | Builders<ProfileComparisonDocument>.Filter.Eq(
+                static document => document.AcceptorUserId,
+                userId);
+    }
+
     public static FilterDefinition<ProfileComparisonDocument> BuildActiveParticipantPageFilter(
         string userId,
         ProfileComparisonListCursor? after)

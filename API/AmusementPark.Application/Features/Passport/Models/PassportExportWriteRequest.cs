@@ -5,9 +5,11 @@ namespace AmusementPark.Application.Features.Passport.Models;
 
 public sealed record PassportExportWriteRequest(
     string ExportId,
+    string UserId,
     PassportExportFormat Format,
     DateTime ExportedAtUtc,
     IReadOnlyCollection<Visit> Visits,
     IReadOnlyCollection<RideOccurrence> RideOccurrences,
     IReadOnlyDictionary<string, Park> Parks,
-    IReadOnlyDictionary<string, VisitTarget> ParkItems);
+    IReadOnlyDictionary<string, VisitTarget> ParkItems,
+    PassportShareLifecycleExportData ShareLifecycle);

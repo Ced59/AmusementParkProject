@@ -17,6 +17,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
     private readonly IRideOccurrenceRepository occurrenceRepository;
     private readonly IParkRepository parkRepository;
     private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportShareLifecycleExportSource shareLifecycleSource;
     private readonly IVisitExportWriter writer;
     private readonly IPassportClock clock;
 
@@ -26,6 +27,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
         IRideOccurrenceRepository occurrenceRepository,
         IParkRepository parkRepository,
         IVisitTargetResolver targetResolver,
+        IPassportShareLifecycleExportSource shareLifecycleSource,
         IVisitExportWriter writer,
         IPassportClock clock)
     {
@@ -34,6 +36,7 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
         this.occurrenceRepository = occurrenceRepository;
         this.parkRepository = parkRepository;
         this.targetResolver = targetResolver;
+        this.shareLifecycleSource = shareLifecycleSource;
         this.writer = writer;
         this.clock = clock;
     }
@@ -158,6 +161,11 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
                 visits.Select(static visit => visit.Id).ToArray(),
                 sourceBudget,
                 cancellationToken);
+        PassportShareLifecycleExportData shareLifecycle =
+            await this.shareLifecycleSource.LoadAsync(
+                passportExport.UserId,
+                sourceBudget,
+                cancellationToken);
         string[] parkIds = visits.Select(static visit => visit.ParkId)
             .Concat(loadedOccurrences.Select(static occurrence => occurrence.ParkId))
             .Distinct(StringComparer.Ordinal)
@@ -177,12 +185,14 @@ public sealed class PassportExportJobHandler : IDurableBackgroundJobHandler
             StringComparer.Ordinal);
         return new PassportExportWriteRequest(
             passportExport.Id,
+            passportExport.UserId,
             passportExport.Format,
             this.clock.UtcNow,
             visits,
             loadedOccurrences,
             parks,
-            await targetsTask);
+            await targetsTask,
+            shareLifecycle);
     }
 
     private static PassportExportJobPayload? Deserialize(

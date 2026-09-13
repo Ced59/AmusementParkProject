@@ -96,7 +96,7 @@
     "exports": {
       "kicker": "Copie de tes données",
       "title": "Exporte ton passeport",
-      "description": "Télécharge toutes tes visites, tes passages et tes notes privées. Le JSON est versionné pour une future réimportation ; le ZIP CSV contient six tableaux reliés par des références propres à l’export, sans identifiants internes.",
+      "description": "Télécharge toutes tes visites, tes passages, tes notes privées, tes partages et tes comparaisons. Le JSON versionné et les tableaux du ZIP CSV utilisent seulement des références propres à l’export, sans identifiants internes.",
       "retention": "Le fichier reste privé, nécessite ta connexion et expire une heure après sa génération.",
       "actions": {
         "json": "Préparer le JSON",

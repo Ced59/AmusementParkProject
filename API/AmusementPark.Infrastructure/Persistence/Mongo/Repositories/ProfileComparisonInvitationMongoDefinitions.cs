@@ -1,5 +1,6 @@
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -8,6 +9,7 @@ internal static class ProfileComparisonInvitationMongoDefinitions
 {
     public const string TokenUniqueIndexName = "idx_profile_comparison_invitation_token_unique";
     public const string CreatorIndexName = "idx_profile_comparison_invitation_creator_created";
+    public const string AcceptorIndexName = "idx_profile_comparison_invitation_acceptor_created";
     public const string PurgeIndexName = "idx_profile_comparison_invitation_purge_ttl";
 
     public static FilterDefinition<ProfileComparisonInvitationDocument> BuildTokenFilter(
@@ -40,6 +42,17 @@ internal static class ProfileComparisonInvitationMongoDefinitions
                 ProfileComparisonInvitationStatus.Accepted);
     }
 
+    public static FilterDefinition<ProfileComparisonInvitationDocument> BuildParticipantExportFilter(
+        string userId)
+    {
+        return Builders<ProfileComparisonInvitationDocument>.Filter.Eq(
+                static document => document.CreatorUserId,
+                userId)
+            | Builders<ProfileComparisonInvitationDocument>.Filter.Eq(
+                static document => document.AcceptorUserId,
+                userId);
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<ProfileComparisonInvitationDocument>>
         BuildIndexes()
     {
@@ -56,6 +69,17 @@ internal static class ProfileComparisonInvitationMongoDefinitions
                 .Ascending(static document => document.CreatorUserId)
                 .Descending(static document => document.CreatedAt),
             new CreateIndexOptions { Name = CreatorIndexName });
+        CreateIndexModel<ProfileComparisonInvitationDocument> acceptor = new(
+            Builders<ProfileComparisonInvitationDocument>.IndexKeys
+                .Ascending(static document => document.AcceptorUserId)
+                .Descending(static document => document.CreatedAt),
+            new CreateIndexOptions<ProfileComparisonInvitationDocument>
+            {
+                Name = AcceptorIndexName,
+                PartialFilterExpression = new BsonDocument(
+                    "acceptorUserId",
+                    new BsonDocument("$type", "string")),
+            });
         CreateIndexModel<ProfileComparisonInvitationDocument> purge = new(
             Builders<ProfileComparisonInvitationDocument>.IndexKeys.Ascending(
                 static document => document.PurgeAtUtc),
@@ -64,6 +88,6 @@ internal static class ProfileComparisonInvitationMongoDefinitions
                 Name = PurgeIndexName,
                 ExpireAfter = TimeSpan.Zero,
             });
-        return new[] { token, creator, purge };
+        return new[] { token, creator, acceptor, purge };
     }
 }

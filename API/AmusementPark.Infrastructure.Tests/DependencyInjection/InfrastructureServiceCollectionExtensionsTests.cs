@@ -138,6 +138,24 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterPassportShareLifecycleExportSource()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IPassportShareLifecycleExportSource));
+        Assert.Equal(
+            typeof(MongoPassportShareLifecycleExportSource),
+            registration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
     public void AddInfrastructure_WhenCalled_ShouldRegisterGlobalRatingSuggestionPorts()
     {
         ServiceCollection services = new ServiceCollection();
