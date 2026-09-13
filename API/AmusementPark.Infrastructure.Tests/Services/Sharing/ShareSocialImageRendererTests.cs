@@ -13,6 +13,17 @@ namespace AmusementPark.Infrastructure.Tests.Services.Sharing;
 public sealed class ShareSocialImageRendererTests
 {
     [Fact]
+    public void UnicodeFallbacks_ShouldPreferTheProductionCjkFamily()
+    {
+        int japanesePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans CJK JP");
+        int genericUnicodePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans");
+        int unknownPriority = ShareSocialImageFontFamilyComparer.GetPriority("Another system font");
+
+        Assert.True(japanesePriority < genericUnicodePriority);
+        Assert.True(genericUnicodePriority < unknownPriority);
+    }
+
+    [Fact]
     public void EmbeddedFont_ShouldCoverEveryLocalizedLatinCharacter()
     {
         FontCollection collection = new FontCollection();

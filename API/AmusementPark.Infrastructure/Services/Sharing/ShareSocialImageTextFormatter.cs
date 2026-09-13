@@ -111,7 +111,11 @@ internal static class ShareSocialImageTextFormatter
             : metric.Value.ToString("N0", culture);
     }
 
-    public static string FitText(string value, Font font, float maximumWidth)
+    public static string FitText(
+        string value,
+        Font font,
+        float maximumWidth,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
     {
         string normalizedValue = value?.Trim() ?? string.Empty;
         if (normalizedValue.Length == 0)
@@ -119,17 +123,23 @@ internal static class ShareSocialImageTextFormatter
             return string.Empty;
         }
 
-        if (TextMeasurer.MeasureSize(normalizedValue, new TextOptions(font)).Width <= maximumWidth)
+        TextOptions options = new TextOptions(font)
+        {
+            FallbackFontFamilies = fallbackFontFamilies,
+        };
+        if (TextMeasurer.MeasureSize(normalizedValue, options).Width <= maximumWidth)
         {
             return normalizedValue;
         }
 
-        string candidate = normalizedValue;
-        while (candidate.Length > 1)
+        int[] textElementIndexes = StringInfo.ParseCombiningCharacters(normalizedValue);
+        for (int textElementCount = textElementIndexes.Length - 1;
+             textElementCount > 0;
+             textElementCount--)
         {
-            candidate = candidate[..^1].TrimEnd();
+            string candidate = normalizedValue[..textElementIndexes[textElementCount]].TrimEnd();
             string truncated = $"{candidate}…";
-            if (TextMeasurer.MeasureSize(truncated, new TextOptions(font)).Width <= maximumWidth)
+            if (TextMeasurer.MeasureSize(truncated, options).Width <= maximumWidth)
             {
                 return truncated;
             }

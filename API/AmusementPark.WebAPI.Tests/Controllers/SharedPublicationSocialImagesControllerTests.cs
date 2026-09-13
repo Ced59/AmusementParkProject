@@ -5,9 +5,11 @@ using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.WebAPI.Controllers;
+using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Moq;
 using Xunit;
 
@@ -110,13 +112,16 @@ public sealed class SharedPublicationSocialImagesControllerTests
     }
 
     [Fact]
-    public void GetEndpoint_ShouldBeAnonymous()
+    public void GetEndpoint_ShouldBeAnonymousAndBoundItsRenderingConcurrency()
     {
         MethodInfo action = typeof(SharedPublicationSocialImagesController).GetMethod(
             nameof(SharedPublicationSocialImagesController.GetAsync))
             ?? throw new InvalidOperationException("Get action not found.");
 
         Assert.NotNull(action.GetCustomAttribute<AllowAnonymousAttribute>());
+        EnableRateLimitingAttribute rateLimit = Assert.IsType<EnableRateLimitingAttribute>(
+            action.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(RateLimitPolicyNames.ShareSocialImageRendering, rateLimit.PolicyName);
     }
 
     private static SharedPublicationSocialImagesController CreateController(

@@ -4,10 +4,12 @@ using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Primitives;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -26,6 +28,7 @@ public sealed class SharedPublicationSocialImagesController : ControllerBase
 
     [HttpGet("{publicationType}/{shareId}/v{publicationVersion:long}/t{templateVersion:int}/{language}.png")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.ShareSocialImageRendering)]
     [Produces("image/png")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status304NotModified)]

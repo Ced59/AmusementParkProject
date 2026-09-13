@@ -19,7 +19,8 @@ internal static class ShareSocialImageCanvasPainter
         ShareSocialImageModel model,
         ShareSocialImageLocalizedCopy copy,
         CultureInfo culture,
-        FontFamily fontFamily)
+        FontFamily fontFamily,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
     {
         string title = ShareSocialImageTextFormatter.ResolveTitle(model, copy);
         string subject = ShareSocialImageTextFormatter.ResolveSubject(model, copy);
@@ -37,36 +38,53 @@ internal static class ShareSocialImageCanvasPainter
         {
             DrawBackground(draw);
             draw.Fill(Color.ParseHex("FF5B24"), new RectangleF(ContentLeft, 54, 9, 67));
-            draw.DrawText(
+            DrawText(
+                draw,
                 "AMUSEMENT-PARKS.FUN",
                 brandFont,
                 Color.ParseHex("FFF8EA"),
-                new PointF(ContentLeft + 27, 50));
-            draw.DrawText(
+                new PointF(ContentLeft + 27, 50),
+                fallbackFontFamilies);
+            DrawText(
+                draw,
                 copy.PersonalLabel.ToUpper(culture),
                 eyebrowFont,
                 Color.ParseHex("D6C5A2"),
-                new PointF(ContentLeft, 136));
-            draw.DrawText(
+                new PointF(ContentLeft, 136),
+                fallbackFontFamilies);
+            DrawText(
+                draw,
                 ShareSocialImageTextFormatter.FitText(
                     title,
                     titleFont,
-                    ContentRight - ContentLeft),
+                    ContentRight - ContentLeft,
+                    fallbackFontFamilies),
                 titleFont,
                 Color.ParseHex("FFFFFF"),
-                new PointF(ContentLeft, 178));
-            draw.DrawText(
+                new PointF(ContentLeft, 178),
+                fallbackFontFamilies);
+            DrawText(
+                draw,
                 ShareSocialImageTextFormatter.FitText(
                     subject,
                     contextFont,
-                    context.Length > 0 ? 700 : 1000),
+                    context.Length > 0 ? 700 : 1000,
+                    fallbackFontFamilies),
                 contextFont,
                 Color.ParseHex("FFB15C"),
-                new PointF(ContentLeft, 263));
+                new PointF(ContentLeft, 263),
+                fallbackFontFamilies);
 
-            DrawContext(draw, context, contextFont);
-            DrawMetrics(draw, metrics, copy, culture, metricValueFont, metricLabelFont);
-            DrawHighlight(draw, model.Highlight, copy, highlightFont);
+            DrawContext(draw, context, contextFont, fallbackFontFamilies);
+            DrawMetrics(
+                draw,
+                metrics,
+                copy,
+                culture,
+                metricValueFont,
+                metricLabelFont,
+                fallbackFontFamilies);
+            DrawHighlight(draw, model.Highlight, copy, highlightFont, fallbackFontFamilies);
         });
     }
 
@@ -99,22 +117,29 @@ internal static class ShareSocialImageCanvasPainter
     private static void DrawContext(
         IImageProcessingContext draw,
         string context,
-        Font contextFont)
+        Font contextFont,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
     {
         if (context.Length == 0)
         {
             return;
         }
 
-        string fittedContext = ShareSocialImageTextFormatter.FitText(context, contextFont, 300);
+        string fittedContext = ShareSocialImageTextFormatter.FitText(
+            context,
+            contextFont,
+            300,
+            fallbackFontFamilies);
         FontRectangle contextSize = TextMeasurer.MeasureSize(
             fittedContext,
-            new TextOptions(contextFont));
-        draw.DrawText(
+            CreateTextOptions(contextFont, fallbackFontFamilies));
+        DrawText(
+            draw,
             fittedContext,
             contextFont,
             Color.ParseHex("D6C5A2"),
-            new PointF(ContentRight - contextSize.Width, 263));
+            new PointF(ContentRight - contextSize.Width, 263),
+            fallbackFontFamilies);
     }
 
     private static void DrawMetrics(
@@ -123,7 +148,8 @@ internal static class ShareSocialImageCanvasPainter
         ShareSocialImageLocalizedCopy copy,
         CultureInfo culture,
         Font valueFont,
-        Font labelFont)
+        Font labelFont,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
     {
         int count = metrics.Count;
         if (count == 0)
@@ -142,16 +168,20 @@ internal static class ShareSocialImageCanvasPainter
                 Color.FromRgba(255, 177, 92, 55),
                 1f,
                 new RectangularPolygon(x, 331, width, 138));
-            draw.DrawText(
+            DrawText(
+                draw,
                 ShareSocialImageTextFormatter.FormatMetric(metric, culture),
                 valueFont,
                 Color.ParseHex("FFFFFF"),
-                new PointF(x + 24, 349));
-            draw.DrawText(
+                new PointF(x + 24, 349),
+                fallbackFontFamilies);
+            DrawText(
+                draw,
                 ShareSocialImageTextFormatter.ResolveMetricLabel(metric.Kind, copy),
                 labelFont,
                 Color.ParseHex("D6C5A2"),
-                new PointF(x + 25, 416));
+                new PointF(x + 25, 416),
+                fallbackFontFamilies);
             index++;
         }
     }
@@ -160,7 +190,8 @@ internal static class ShareSocialImageCanvasPainter
         IImageProcessingContext draw,
         string? highlight,
         ShareSocialImageLocalizedCopy copy,
-        Font font)
+        Font font,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
     {
         string normalizedHighlight = highlight?.Trim() ?? string.Empty;
         if (normalizedHighlight.Length == 0)
@@ -169,10 +200,42 @@ internal static class ShareSocialImageCanvasPainter
         }
 
         string text = $"{copy.HighlightLabel} · {normalizedHighlight}";
-        draw.DrawText(
-            ShareSocialImageTextFormatter.FitText(text, font, 820),
+        DrawText(
+            draw,
+            ShareSocialImageTextFormatter.FitText(
+                text,
+                font,
+                820,
+                fallbackFontFamilies),
             font,
             Color.ParseHex("DFFF00"),
-            new PointF(ContentLeft, 510));
+            new PointF(ContentLeft, 510),
+            fallbackFontFamilies);
+    }
+
+    private static void DrawText(
+        IImageProcessingContext draw,
+        string text,
+        Font font,
+        Color color,
+        PointF origin,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
+    {
+        RichTextOptions options = new RichTextOptions(font)
+        {
+            Origin = origin,
+            FallbackFontFamilies = fallbackFontFamilies,
+        };
+        draw.DrawText(options, text, color);
+    }
+
+    private static TextOptions CreateTextOptions(
+        Font font,
+        IReadOnlyList<FontFamily> fallbackFontFamilies)
+    {
+        return new TextOptions(font)
+        {
+            FallbackFontFamilies = fallbackFontFamilies,
+        };
     }
 }

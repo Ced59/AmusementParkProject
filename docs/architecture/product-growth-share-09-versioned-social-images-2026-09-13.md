@@ -71,8 +71,9 @@ flowchart LR
 - **Application** choisit uniquement les champs publics et construit un modèle
   graphique dépourvu d'identifiants de parc, d'attraction, de visite ou de membre.
 - **Infrastructure** dessine le PNG de façon déterministe avec la police Bangers
-  déjà utilisée par le projet et distribuée sous licence SIL OFL 1.1, puis gère le
-  cache mémoire.
+  déjà utilisée par le projet et distribuée sous licence SIL OFL 1.1. Une chaîne de
+  polices système Noto/DejaVu complète le rendu des noms publics en écritures non
+  latines. Cette couche gère ensuite le cache mémoire.
 - **WebAPI** valide la variante d'URL et pose les en-têtes HTTP.
 - **Angular** produit l'URL Open Graph exacte à partir de la version renvoyée par
   le contrat public ; il ne calcule aucune règle de confidentialité.
@@ -90,6 +91,9 @@ la langue et toutes les valeurs visibles. Le cache mémoire contient au plus 128
 rendus pendant une heure. Il évite les recalculs mais ne contourne pas la résolution
 publique : une requête repasse par la publication et son snapshot avant d'accéder
 au renderer.
+
+L'API n'accepte que deux rendus simultanés et une file de quatre demandes. Une
+rafale de variantes froides ne peut donc pas monopoliser le processeur du VPS.
 
 La réponse utilise `Cache-Control: public,max-age=300,must-revalidate`, un `ETag`,
 `Content-Language`, `Referrer-Policy: no-referrer` et

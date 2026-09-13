@@ -15,6 +15,7 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
     private const int CacheSizeLimit = 128;
     private static readonly TimeSpan CacheDuration = TimeSpan.FromHours(1);
     private readonly FontFamily fontFamily;
+    private readonly IReadOnlyList<FontFamily> fallbackFontFamilies;
     private readonly MemoryCache cache = new MemoryCache(new MemoryCacheOptions
     {
         SizeLimit = CacheSizeLimit,
@@ -30,6 +31,10 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             "Fonts",
             "bangers-latin-complete.ttf");
         this.fontFamily = collection.Add(fontPath);
+        this.fallbackFontFamilies = SystemFonts.Families
+            .OrderBy(ShareSocialImageFontFamilyComparer.GetPriority)
+            .ThenBy(static family => family.Name, StringComparer.Ordinal)
+            .ToList();
     }
 
     public async Task<ShareSocialImageRenderResult> RenderAsync(
@@ -96,7 +101,8 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             model,
             copy,
             culture,
-            this.fontFamily);
+            this.fontFamily,
+            this.fallbackFontFamilies);
 
         await using MemoryStream stream = new MemoryStream();
         await image.SaveAsPngAsync(stream, CancellationToken.None);

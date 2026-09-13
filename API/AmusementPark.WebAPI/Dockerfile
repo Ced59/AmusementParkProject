@@ -27,7 +27,13 @@ ENV ASPNETCORE_URLS=http://+:8080 \
     DOTNET_RUNNING_IN_CONTAINER=true
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl fontconfig fonts-dejavu-core \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        fontconfig \
+        fonts-dejavu-core \
+        fonts-noto-core \
+        fonts-noto-cjk \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --system amusementpark \
     && useradd --system --gid amusementpark --home-dir /app --no-create-home amusementpark
