@@ -27,6 +27,7 @@ namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 internal sealed class CaptainCoasterApplyExecutionContext
 {
     public CaptainCoasterApplyExecutionContext(
+        CaptainCoasterDataSourceProvider provider,
         List<ParkDocument> localParks,
         List<ParkItemDocument> localCoasters,
         List<AttractionManufacturerDocument> manufacturers,
@@ -38,7 +39,7 @@ internal sealed class CaptainCoasterApplyExecutionContext
         this.LocalParksById = localParks.ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
         this.LocalCoastersById = localCoasters.ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
         this.ManufacturersByNormalizedName = manufacturers
-            .GroupBy(item => CaptainCoasterDataSourceProvider.Normalize(item.Name), StringComparer.Ordinal)
+            .GroupBy(item => provider.Normalize(item.Name), StringComparer.Ordinal)
             .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         this.ParkSnapshotsById = parkSnapshots.ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
         this.ParkSnapshotsByCaptainCoasterId = parkSnapshots
@@ -57,12 +58,12 @@ internal sealed class CaptainCoasterApplyExecutionContext
 
         foreach (ParkDocument parkDocument in localParks)
         {
-            CaptainCoasterDataSourceProvider.AddParkLookup(this, parkDocument);
+            provider.AddParkLookup(this, parkDocument);
         }
 
         foreach (ParkItemDocument parkItemDocument in localCoasters)
         {
-            CaptainCoasterDataSourceProvider.AddCoasterLookup(this, parkItemDocument);
+            provider.AddCoasterLookup(this, parkItemDocument);
         }
     }
 

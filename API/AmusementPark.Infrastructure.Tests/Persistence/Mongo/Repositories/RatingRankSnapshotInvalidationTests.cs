@@ -219,7 +219,7 @@ public sealed class RatingRankSnapshotInvalidationTests
         };
 
         ReplaceOneModel<ParkItemDocument> write = Assert.IsType<ReplaceOneModel<ParkItemDocument>>(
-            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, previous));
+            CaptainCoasterApplyPipeline.BuildFencedParkItemReplacement(replacement, previous));
         IBsonSerializer<ParkItemDocument> serializer =
             BsonSerializer.SerializerRegistry.GetSerializer<ParkItemDocument>();
         RenderArgs<ParkItemDocument> arguments =
@@ -249,7 +249,7 @@ public sealed class RatingRankSnapshotInvalidationTests
         };
 
         InsertOneModel<ParkDocument> write = Assert.IsType<InsertOneModel<ParkDocument>>(
-            CaptainCoasterDataSourceProvider.BuildFencedParkReplacement(replacement, null));
+            CaptainCoasterApplyPipeline.BuildFencedParkReplacement(replacement, null));
 
         Assert.Same(replacement, write.Document);
     }
@@ -268,7 +268,7 @@ public sealed class RatingRankSnapshotInvalidationTests
         };
 
         InsertOneModel<ParkItemDocument> write = Assert.IsType<InsertOneModel<ParkItemDocument>>(
-            CaptainCoasterDataSourceProvider.BuildFencedParkItemReplacement(replacement, null));
+            CaptainCoasterApplyPipeline.BuildFencedParkItemReplacement(replacement, null));
 
         Assert.Same(replacement, write.Document);
     }
@@ -295,7 +295,7 @@ public sealed class RatingRankSnapshotInvalidationTests
             IsVisible = true,
         };
 
-        bool result = CaptainCoasterDataSourceProvider.DocumentsAreEquivalent(
+        bool result = CaptainCoasterApplyPipeline.DocumentsAreEquivalent(
             concurrent,
             replacement);
 
@@ -315,7 +315,7 @@ public sealed class RatingRankSnapshotInvalidationTests
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
 
-        await CaptainCoasterDataSourceProvider.CompleteAmbiguousRankingMutationAsync(
+        await CaptainCoasterApplyPipeline.CompleteAmbiguousRankingMutationAsync(
             coordinator.Object,
             preparation);
 

@@ -508,6 +508,13 @@ isolés et les anciens relais des primitives UI pointent désormais vers les
 implémentations dédiées. Les namespaces C#, exports TypeScript, contrats HTTP,
 formats MongoDB et comportements métier restent identiques.
 
+Les anciens fragments `partial` du fournisseur Captain Coaster ne sont pas
+réunis dans un service monolithique : le fournisseur reste l'orchestrateur de
+son contrat public et délègue l'application, les écritures, la comparaison, la
+collecte, l'import, le scraping, la projection de recherche et le staging à des
+collaborateurs spécialisés. Un test d'architecture borne durablement la taille
+de cet orchestrateur.
+
 L'inventaire final vérifié contient :
 
 - 0 fichier C# non conforme ;
