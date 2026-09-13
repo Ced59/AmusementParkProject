@@ -37,14 +37,5 @@ public sealed class LocalAccountEmailServiceTests
         emailSender.VerifyAll();
     }
 
-    private sealed class TestUserAuthenticationSettings : IUserAuthenticationSettings
-    {
-        public int EmailConfirmationTokenExpirationHours => 24;
 
-        public int PasswordResetTokenExpirationMinutes => 60;
-
-        public int TokenRefreshLimitMinutes => 45;
-
-        public string FrontendBaseUrl => "https://amusement-parks.fun";
-    }
 }

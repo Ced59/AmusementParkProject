@@ -117,19 +117,5 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
             new StaticPublicSeoContextProvider("https://example.test"));
     }
 
-    private sealed class StaticPublicSeoContextProvider : IPublicSeoContextProvider
-    {
-        private readonly string publicBaseUrl;
 
-        public StaticPublicSeoContextProvider(string publicBaseUrl)
-        {
-            this.publicBaseUrl = publicBaseUrl;
-        }
-
-        public Task<PublicSeoContext> GetAsync(CancellationToken cancellationToken)
-        {
-            PublicSeoContext context = new PublicSeoContext(this.publicBaseUrl, Array.Empty<string>());
-            return Task.FromResult(context);
-        }
-    }
 }

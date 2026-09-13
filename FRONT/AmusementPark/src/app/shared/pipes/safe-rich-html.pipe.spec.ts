@@ -3,12 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { HtmlSecurityService } from '@shared/utils/security/html-security.service';
 import { SafeRichHtmlPipe } from './safe-rich-html.pipe';
-
-class DomSanitizerStub {
-  public bypassSecurityTrustHtml(value: string): SafeHtml {
-    return `SAFE:${value}` as unknown as SafeHtml;
-  }
-}
+import { DomSanitizerStub } from './test-helpers/safe-rich-html.pipe/dom-sanitizer-stub';
 
 describe('SafeRichHtmlPipe', () => {
   it('sanitizes html before marking it as trusted', () => {

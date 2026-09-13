@@ -20,6 +20,10 @@ import {
 import { PublicParkNavigationTreeFacade } from './public-park-navigation-tree.facade';
 import { PublicParkNavigationTreeItem } from '../models/public-park-navigation-tree.model';
 import { VideoDto } from '@app/models/videos/video-dto';
+import { FakeParksPort } from './test-helpers/public-park-navigation-tree.facade/fake-parks-port';
+import { FakeParkItemsPort } from './test-helpers/public-park-navigation-tree.facade/fake-park-items-port';
+import { FakeParkZonesPort } from './test-helpers/public-park-navigation-tree.facade/fake-park-zones-port';
+import { FakeVideosPort } from './test-helpers/public-park-navigation-tree.facade/fake-videos-port';
 
 interface PublicParkRouteContextForTest {
   readonly language: string;
@@ -49,33 +53,6 @@ interface PublicParkNavigationSourceDataForTest {
   readonly item: { name?: string } | null;
   readonly zone: null;
   readonly video: Pick<VideoDto, 'title' | 'titles'> | null;
-}
-
-class FakeParksPort implements PublicParkNavigationTreeParksApiServicePort {
-  public readonly summaryCalls: string[] = [];
-
-  getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
-    this.summaryCalls.push(id);
-    return of(createSummary());
-  }
-}
-
-class FakeParkItemsPort implements PublicParkNavigationTreeParkItemsApiServicePort {
-  getParkItemById(): Observable<ParkItem> {
-    throw new Error('Park item should not be loaded for park detail navigation.');
-  }
-}
-
-class FakeParkZonesPort implements PublicParkNavigationTreeParkZonesApiServicePort {
-  getParkZoneById(): Observable<ParkZone> {
-    throw new Error('Park zone should not be loaded for park detail navigation.');
-  }
-}
-
-class FakeVideosPort implements PublicParkNavigationTreeVideosApiServicePort {
-  getVideoById(): Observable<VideoDto> {
-    throw new Error('Video should not be loaded for park detail navigation.');
-  }
 }
 
 function createSummary(): ParkDetailSummary {

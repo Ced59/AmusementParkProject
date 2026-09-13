@@ -3,14 +3,6 @@ using System.Net.Http.Headers;
 namespace AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 
 /// <summary>
-/// Télécharge du contenu texte sans persister les payloads sur disque.
-/// </summary>
-internal interface IDataAcquisitionHttpFetcher
-{
-    Task<string> GetStringAsync(string url, string acceptLanguage, DataAcquisitionRequestOptions options, CancellationToken cancellationToken);
-}
-
-/// <summary>
 /// Implémentation HTTP générique réutilisable par plusieurs providers de sources externes.
 /// </summary>
 internal sealed class DataAcquisitionHttpFetcher : IDataAcquisitionHttpFetcher
@@ -74,16 +66,4 @@ internal sealed class DataAcquisitionHttpFetcher : IDataAcquisitionHttpFetcher
 
         throw new InvalidOperationException($"Impossible de récupérer la ressource '{url}'.", lastException);
     }
-}
-
-/// <summary>
-/// Options réseau génériques d'acquisition.
-/// </summary>
-internal sealed class DataAcquisitionRequestOptions
-{
-    public int DelayBetweenRequestsMs { get; init; } = 1000;
-
-    public int TimeoutSeconds { get; init; } = 30;
-
-    public int MaxRetryCount { get; init; } = 3;
 }

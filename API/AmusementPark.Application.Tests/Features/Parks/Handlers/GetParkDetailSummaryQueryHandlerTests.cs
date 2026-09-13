@@ -76,18 +76,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
         return park;
     }
 
-    private sealed record SummaryCall(string ParkId, bool IncludeHidden, ClosedEntityFilter ClosedFilter);
 
-    private sealed class FakeParkDetailSummaryReadRepository : IParkDetailSummaryReadRepository
-    {
-        public ParkDetailSummaryResult? Summary { get; init; }
 
-        public List<SummaryCall> Calls { get; } = new List<SummaryCall>();
 
-        public Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
-        {
-            this.Calls.Add(new SummaryCall(parkId, includeHidden, closedFilter));
-            return Task.FromResult(this.Summary);
-        }
-    }
 }

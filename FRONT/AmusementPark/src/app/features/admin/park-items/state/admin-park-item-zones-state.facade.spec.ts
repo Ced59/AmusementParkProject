@@ -7,23 +7,7 @@ import {
   AdminParkItemZonesStateParkZonesApiServicePort,
 } from './admin-park-item-zones-state-data.ports';
 import { AdminParkItemZonesStateFacade } from './admin-park-item-zones-state.facade';
-
-class FakeZonesPort implements AdminParkItemZonesStateParkZonesApiServicePort {
-  public calls: string[] = [];
-
-  getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
-    this.calls.push(parkId);
-    return of([
-      {
-        id: 'zone-1',
-        parkId,
-        name: 'Frontier',
-        names: [{ languageCode: 'en', value: 'Frontier' }],
-        descriptions: [],
-      } as ParkZone,
-    ]);
-  }
-}
+import { FakeZonesPort } from './test-helpers/admin-park-item-zones-state.facade/fake-zones-port';
 
 describe('AdminParkItemZonesStateFacade', () => {
   let facade: AdminParkItemZonesStateFacade;

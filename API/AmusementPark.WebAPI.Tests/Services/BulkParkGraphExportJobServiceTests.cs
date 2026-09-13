@@ -131,28 +131,5 @@ public sealed class BulkParkGraphExportJobServiceTests
         throw new TimeoutException("The bulk export job did not reach a terminal state.");
     }
 
-    private sealed class FakeBulkExportHandler : IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
-    {
-        public Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportBulkParkGraphJsonQuery query, CancellationToken cancellationToken = default)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            if (query.OutputStream is null)
-            {
-                return Task.FromResult(ApplicationResult<ParkGraphJsonExportResult>.Failure(ApplicationErrors.Required("outputStream")));
-            }
 
-            using Utf8JsonWriter writer = new Utf8JsonWriter(query.OutputStream);
-            writer.WriteStartObject();
-            writer.WriteString("documentType", "AmusementParkBulkParkGraphUpsert");
-            writer.WriteStartArray("parks");
-            writer.WriteEndArray();
-            writer.WriteEndObject();
-            writer.Flush();
-
-            return Task.FromResult(ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
-            {
-                FileName = "bulk-test.json",
-            }));
-        }
-    }
 }

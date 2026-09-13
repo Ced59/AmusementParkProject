@@ -128,8 +128,5 @@ public sealed class RatingMethodologiesControllerTests
             "competition");
     }
 
-    private sealed record ControllerFixture(
-        RatingMethodologiesController Controller,
-        Mock<IQueryHandler<GetCurrentRatingMethodologyQuery, ApplicationResult<RatingMethodologyResult>>> CurrentHandler,
-        Mock<IQueryHandler<GetRatingMethodologyQuery, ApplicationResult<RatingMethodologyResult>>> VersionHandler);
+
 }

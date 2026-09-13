@@ -4,12 +4,7 @@ import type { MockedObject } from 'vitest';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { HtmlSecurityService } from '@shared/utils/security/html-security.service';
 import { SafeCommentRichHtmlPipe } from './safe-comment-rich-html.pipe';
-
-class DomSanitizerStub {
-  bypassSecurityTrustHtml(value: string): SafeHtml {
-    return value as unknown as SafeHtml;
-  }
-}
+import { DomSanitizerStub } from './test-helpers/safe-comment-rich-html.pipe/dom-sanitizer-stub';
 
 describe('SafeCommentRichHtmlPipe', () => {
   it('renders managed ids through the responsive image pipeline', () => {

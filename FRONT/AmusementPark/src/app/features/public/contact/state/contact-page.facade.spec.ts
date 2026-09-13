@@ -12,21 +12,7 @@ import {
   ContactPageDataPort,
 } from './contact-page-data.ports';
 import { ContactPageFacade } from './contact-page.facade';
-
-class FakeContactPagePort implements ContactPageDataPort {
-  public response$: Observable<ContactGrievanceSubmission> = of({
-    accepted: true,
-    submittedAtUtc: '2026-06-17T00:00:00Z',
-  });
-  public readonly calls: SubmitContactGrievanceRequest[] = [];
-
-  submitGrievance(
-    request: SubmitContactGrievanceRequest,
-  ): Observable<ContactGrievanceSubmission> {
-    this.calls.push(request);
-    return this.response$;
-  }
-}
+import { FakeContactPagePort } from './test-helpers/contact-page.facade/fake-contact-page-port';
 
 describe('ContactPageFacade', () => {
   let facade: ContactPageFacade;

@@ -7,18 +7,7 @@ import {
   AdminDataSourcesDataSourcesApiServicePort,
 } from './admin-data-sources-data.ports';
 import { AdminDataSourcesFacade } from './admin-data-sources.facade';
-
-class FakeDataSourcesPort implements AdminDataSourcesDataSourcesApiServicePort {
-  public response$: Observable<DataSourceSummary[]> = of([
-    createSource('captain-coaster'),
-  ]);
-  public callCount = 0;
-
-  listSources(): Observable<DataSourceSummary[]> {
-    this.callCount += 1;
-    return this.response$;
-  }
-}
+import { FakeDataSourcesPort } from './test-helpers/admin-data-sources.facade/fake-data-sources-port';
 
 function createSource(key: string): DataSourceSummary {
   return {

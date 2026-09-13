@@ -4,20 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { ABOUT_STATE_HOME_STATS_PORT, AboutStateHomeStatsPort } from './about-state-data.ports';
 import { AboutStateFacade } from './about-state.facade';
-
-class FakeAboutHomeStatsPort implements AboutStateHomeStatsPort {
-  public response$: Observable<HomeStatsModel> = of({
-    parksCount: 47,
-    attractionsCount: 830,
-    countriesCount: 12
-  });
-  public calls: number = 0;
-
-  getHomeStats(): Observable<HomeStatsModel> {
-    this.calls += 1;
-    return this.response$;
-  }
-}
+import { FakeAboutHomeStatsPort } from './test-helpers/about-state.facade/fake-about-home-stats-port';
 
 describe('AboutStateFacade', () => {
   let facade: AboutStateFacade;

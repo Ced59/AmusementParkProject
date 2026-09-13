@@ -5,12 +5,7 @@ using HtmlAgilityPack;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 
-internal interface ICaptainCoasterCoasterPageParser
-{
-    CaptainCoasterParsedCoaster Parse(CaptainCoasterDiscoveredUrl discoveredUrl, string html, CaptainCoasterScrapingSettings settings);
-}
-
-internal sealed partial class CaptainCoasterCoasterPageParser : ICaptainCoasterCoasterPageParser
+internal sealed class CaptainCoasterCoasterPageParser : ICaptainCoasterCoasterPageParser
 {
     public CaptainCoasterParsedCoaster Parse(CaptainCoasterDiscoveredUrl discoveredUrl, string html, CaptainCoasterScrapingSettings settings)
     {
@@ -269,9 +264,16 @@ internal sealed partial class CaptainCoasterCoasterPageParser : ICaptainCoasterC
         return trimmed;
     }
 
-    [GeneratedRegex(@"(?<value>\d+(?:[\.,]\d+)?)", RegexOptions.Compiled)]
-    private static partial Regex NumberRegex();
+    private static readonly Regex NumberPattern = new Regex(@"(?<value>\d+(?:[\.,]\d+)?)", RegexOptions.Compiled);
+    private static readonly Regex IntegerPattern = new Regex(@"(?<value>\d+)", RegexOptions.Compiled);
 
-    [GeneratedRegex(@"(?<value>\d+)", RegexOptions.Compiled)]
-    private static partial Regex IntegerRegex();
+    private static Regex NumberRegex()
+    {
+        return NumberPattern;
+    }
+
+    private static Regex IntegerRegex()
+    {
+        return IntegerPattern;
+    }
 }

@@ -18,62 +18,13 @@ import {
   PassportVisitQuickCreateParksPort
 } from './passport-visit-quick-create-state-data.ports';
 import { PassportVisitQuickCreateStateFacade } from './passport-visit-quick-create-state.facade';
-
-class FakeDestroyRef implements DestroyRef {
-  readonly destroyed = false;
-
-  onDestroy(callback: () => void): () => void {
-    void callback;
-    return (): void => undefined;
-  }
-}
-
-class FakeVisitApi implements PassportVisitQuickCreateApiPort {
-  readonly calls: Array<{ request: CreatePassportVisitRequest; key: string }> = [];
-  responses: Observable<PassportVisit>[] = [];
-
-  createVisit(request: CreatePassportVisitRequest, idempotencyKey: string): Observable<PassportVisit> {
-    this.calls.push({ request, key: idempotencyKey });
-    return this.responses.shift() ?? of(createVisit());
-  }
-}
-
-class FakeParksApi implements PassportVisitQuickCreateParksPort {
-  searchParks(_query: string, _page: number, _size: number, _visibleOnly: boolean): Observable<ParksApiResponse> {
-    return of({ data: [], pagination: { currentPage: 1, itemsPerPage: 8, totalItems: 0, totalPages: 0 } });
-  }
-}
-
-class FakeOperationIds implements PassportVisitOperationIdPort {
-  private count: number = 0;
-
-  create(): string {
-    this.count += 1;
-    return `operation-${this.count}`;
-  }
-}
-
-class FakeAuthService {
-  token: string | null = 'token';
-
-  ensureValidAccessToken(_forceRefresh: boolean): Observable<string | null> {
-    return of(this.token);
-  }
-}
-
-class FakeMessages {
-  readonly details: string[] = [];
-
-  add(_severity: 'success' | 'info' | 'warn' | 'error', _summary: string, detail: string): void {
-    this.details.push(detail);
-  }
-}
-
-class FakeTranslateService {
-  instant(key: string): string {
-    return key;
-  }
-}
+import { FakeDestroyRef } from './test-helpers/passport-visit-quick-create-state.facade/fake-destroy-ref';
+import { FakeVisitApi } from './test-helpers/passport-visit-quick-create-state.facade/fake-visit-api';
+import { FakeParksApi } from './test-helpers/passport-visit-quick-create-state.facade/fake-parks-api';
+import { FakeOperationIds } from './test-helpers/passport-visit-quick-create-state.facade/fake-operation-ids';
+import { FakeAuthService } from './test-helpers/passport-visit-quick-create-state.facade/fake-auth-service';
+import { FakeMessages } from './test-helpers/passport-visit-quick-create-state.facade/fake-messages';
+import { FakeTranslateService } from './test-helpers/passport-visit-quick-create-state.facade/fake-translate-service';
 
 describe('PassportVisitQuickCreateStateFacade', () => {
   it('reuses the same idempotency key when a network response is lost and the same form is retried', () => {

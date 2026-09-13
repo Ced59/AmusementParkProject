@@ -56,7 +56,7 @@ public sealed class RatingEvidenceReaderTests
             CreateProjection(string.Empty, ParkItemCategory.Shop, null),
         };
 
-        RatingEvidenceReader.PublicParkItemEvidenceReadResult result =
+        PublicParkItemEvidenceReadResult result =
             RatingEvidenceReader.BuildPublicItemFacts(documents);
 
         Assert.Collection(
@@ -88,7 +88,7 @@ public sealed class RatingEvidenceReaderTests
             },
         };
 
-        RatingEvidenceReader.PublicParkItemEvidenceReadResult result =
+        PublicParkItemEvidenceReadResult result =
             RatingEvidenceReader.BuildPublicItemFacts(documents);
 
         Assert.Single(result.Facts);

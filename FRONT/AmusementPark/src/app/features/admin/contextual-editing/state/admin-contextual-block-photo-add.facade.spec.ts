@@ -13,7 +13,7 @@ import {
   AdminContextualPhotoMetadataPreview,
   AdminContextualPhotoMetadataReaderService,
 } from '../services/admin-contextual-photo-metadata-reader.service';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 import {
   ADMIN_CONTEXTUAL_BLOCK_PHOTO_ADD_IMAGES_PORT,
   AdminContextualBlockPhotoAddImagesPort,

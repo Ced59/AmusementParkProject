@@ -97,5 +97,5 @@ public sealed class VisitIdentifiersTests
         Assert.DoesNotContain("Value", json, StringComparison.Ordinal);
     }
 
-    private sealed record VisitIdentifierContract(string VisitId, string RideOccurrenceId);
+
 }

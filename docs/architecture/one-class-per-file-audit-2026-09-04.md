@@ -4,7 +4,7 @@
 
 Le projet applique désormais la règle suivante au code C# et TypeScript écrit à la main : chaque classe possède son fichier dédié et aucun fichier ne déclare plusieurs classes. Les records C# de type référence sont considérés comme des classes ; les `record struct` restent des types valeur. Les sources générées et le code tiers sont exclus du contrôle.
 
-Le dépôt contient une dette historique trop large pour être déplacée dans une seule PR sans augmenter fortement le risque de régression. Un inventaire versionné rend cette dette explicite et bloque dès maintenant toute nouvelle colocation ou aggravation d'un fichier existant.
+Le dépôt contenait une dette historique importante. Un inventaire versionné l'a rendue explicite pendant sa résorption ; elle est désormais entièrement supprimée et le contrôle ne tolère plus aucune exception.
 
 ## État initial vérifié
 
@@ -499,6 +499,25 @@ Après ce lot, l’inventaire contient :
 - 87 fichiers non conformes dans `AmusementPark.Application`, contre 157 au début de la résorption Application ;
 - aucun fichier multi-classe dans le périmètre de l’écriture XML des sitemaps.
 
+## État final après la migration exhaustive
+
+Le dernier lot a séparé toutes les classes restantes dans Application,
+Infrastructure, WebAPI, les projets de tests et le frontend Angular. Les classes
+`partial` écrites à la main ont été réunifiées, les helpers imbriqués ont été
+isolés et les anciens relais des primitives UI pointent désormais vers les
+implémentations dédiées. Les namespaces C#, exports TypeScript, contrats HTTP,
+formats MongoDB et comportements métier restent identiques.
+
+L'inventaire final vérifié contient :
+
+- 0 fichier C# non conforme ;
+- 0 fichier TypeScript non conforme ;
+- 0 fichier multi-classe ;
+- 0 incompatibilité entre nom de classe et nom de fichier ;
+- 0 classe C# `partial` écrite à la main.
+
+L'ancien fichier de baseline est supprimé : il n'existe plus de dette tolérée.
+
 ## Fonctionnement du garde-fou
 
 Le script `tools/architecture/check-one-class-per-file.mjs` :
@@ -510,15 +529,13 @@ Le script `tools/architecture/check-one-class-per-file.mjs` :
 5. valide que le nom du fichier correspond au nom de la classe, en tenant compte des séparateurs Angular `-` et `.` ;
 6. normalise les identifiants C# verbatim comme `@event` et leurs échappements Unicode avant la comparaison ;
 7. refuse toute nouvelle déclaration `partial` écrite à la main ;
-8. refuse tout nouveau fichier multi-classe, toute classe ajoutée dans un fichier inventorié et toute augmentation du nombre de classes ;
-9. compare l'inventaire proposé au SHA de base réel fourni par le workflow pour `main` ou `master`, afin qu'une PR ou un push ne puisse pas l'agrandir ;
-10. exige la réduction du fichier de référence dans la même PR lorsqu'une dette est corrigée.
+8. échoue dès qu'un seul fichier non conforme est détecté ;
+9. ne s'appuie sur aucune baseline ni exception versionnée ;
+10. s'exécute dans la CI avant toute livraison en production.
 
-Le fichier `one-class-per-file-baseline.json` est un inventaire temporaire, pas une liste d'exceptions permanentes. Il ne doit jamais être agrandi.
+## Ordre de résorption réalisé
 
-## Ordre de résorption
-
-Les corrections restent de simples déplacements sans changement de contrats ni de comportement et sont livrées par lots cohérents :
+Les corrections ont été réalisées comme de simples déplacements sans changement de contrats ni de comportement, selon les lots cohérents suivants :
 
 1. domaine Core ;
 2. contrats et cas d'usage Application, en commençant par Passeport et Notations ;
@@ -526,6 +543,6 @@ Les corrections restent de simples déplacements sans changement de contrats ni 
 4. contrats, mappers et services WebAPI ;
 5. classes Angular de production ;
 6. fixtures et helpers de tests, projet par projet ;
-7. suppression du dernier inventaire vide et durcissement du contrôle sans dette tolérée.
+7. suppression du dernier inventaire et durcissement du contrôle sans dette tolérée.
 
-Chaque lot doit conserver les namespaces, exports, injections et visibilités existants, exécuter les tests ciblés de sa couche, puis laisser la CI complète vérifier l'intégration.
+Chaque lot a conservé les namespaces, exports, injections et visibilités existants. La compilation des couches C# et TypeScript valide l'intégration structurelle ; la CI complète reste l'autorité de livraison.

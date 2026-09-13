@@ -278,22 +278,5 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         indexNowSubmitter.VerifyNoOtherCalls();
     }
 
-    private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
-    {
-        public string Key => SitemapSectionKeys.Static;
 
-        public string FileName => "static.xml";
-
-        public string DisplayName => "Pages statiques";
-
-        public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
-        {
-            IReadOnlyCollection<SitemapUrlEntry> urls = new[]
-            {
-                new SitemapUrlEntry("/fr/home", new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc), "daily", 1.0m),
-            };
-
-            return Task.FromResult(urls);
-        }
-    }
 }

@@ -18,68 +18,10 @@ import {
   ParkItemImagesParksPort,
 } from './park-item-images-data.ports';
 import { ParkItemImagesStateFacade } from './park-item-images-state.facade';
-
-class FakeItemsPort implements ParkItemImagesItemsPort {
-  public response$: Observable<ParkItem> = of(createParkItem());
-  public readonly calls: string[] = [];
-
-  getParkItemById(id: string): Observable<ParkItem> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeParksPort implements ParkItemImagesParksPort {
-  public response$: Observable<Park> = of(createPark());
-  public readonly calls: string[] = [];
-
-  getParkById(id: string): Observable<Park> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeImagesPort implements ParkItemImagesImagesPort {
-  public firstPage$: Observable<PagedResult<ImageDto>> = of(
-    createImagePage([createImage('image-1')], 1, 2, 2),
-  );
-  public nextPage$: Observable<PagedResult<ImageDto>> = of(
-    createImagePage([createImage('image-2')], 2, 2, 2),
-  );
-  public tags$: Observable<ImageTagDto[]> = of([]);
-  public readonly pageCalls: {
-    ownerType: ImageOwnerType;
-    ownerId: string;
-    category: ImageCategory;
-    page?: number;
-    size?: number;
-  }[] = [];
-  public tagCallCount: number = 0;
-
-  getImagesPage(
-    ownerType: ImageOwnerType,
-    ownerId: string,
-    category: ImageCategory,
-    page?: number,
-    size?: number,
-  ): Observable<PagedResult<ImageDto>> {
-    this.pageCalls.push({ ownerType, ownerId, category, page, size });
-    return page === 2 ? this.nextPage$ : this.firstPage$;
-  }
-
-  getImageTags(): Observable<ImageTagDto[]> {
-    this.tagCallCount += 1;
-    return this.tags$;
-  }
-}
-
-class FakeSsrHttpStatusService {
-  public notFoundCallCount: number = 0;
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-}
+import { FakeItemsPort } from './test-helpers/park-item-images-state.facade/fake-items-port';
+import { FakeParksPort } from './test-helpers/park-item-images-state.facade/fake-parks-port';
+import { FakeImagesPort } from './test-helpers/park-item-images-state.facade/fake-images-port';
+import { FakeSsrHttpStatusService } from './test-helpers/park-item-images-state.facade/fake-ssr-http-status-service';
 
 function createPark(): Park {
   return {

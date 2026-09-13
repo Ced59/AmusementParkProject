@@ -2,7 +2,7 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ThemeService } from '@app/services/themes/themes.service';
+import { ThemeService } from '@app/services/themes/theme.service';
 
 @Component({
   selector: 'app-theme-switcher',

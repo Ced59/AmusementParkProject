@@ -209,17 +209,5 @@ public sealed class PassportRatingSuggestionsControllerTests
         };
     }
 
-    private sealed record HandlerMocks(
-        Mock<IQueryHandler<
-            GetGlobalRatingSuggestionsQuery,
-            ApplicationResult<GlobalRatingSuggestionsResult>>> Query,
-        Mock<ICommandHandler<
-            SetGlobalRatingSuggestionsEnabledCommand,
-            ApplicationResult<GlobalRatingSuggestionPreferenceResult>>> Preference,
-        Mock<ICommandHandler<
-            RecordGlobalRatingSuggestionInteractionCommand,
-            ApplicationResult<GlobalRatingSuggestionPreferenceResult>>> Interaction,
-        Mock<ICommandHandler<
-            PresentGlobalRatingSuggestionsCommand,
-            ApplicationResult<GlobalRatingSuggestionPresentationResult>>> Presentation);
+
 }

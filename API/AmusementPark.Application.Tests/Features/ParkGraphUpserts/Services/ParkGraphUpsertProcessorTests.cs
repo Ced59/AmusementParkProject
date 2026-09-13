@@ -4686,18 +4686,5 @@ public sealed class ParkGraphUpsertProcessorTests
         historyRepository.VerifyAll();
     }
 
-    private sealed class FixedTimeProvider : TimeProvider
-    {
-        private readonly DateTimeOffset utcNow;
 
-        public FixedTimeProvider(DateTimeOffset utcNow)
-        {
-            this.utcNow = utcNow;
-        }
-
-        public override DateTimeOffset GetUtcNow()
-        {
-            return this.utcNow;
-        }
-    }
 }

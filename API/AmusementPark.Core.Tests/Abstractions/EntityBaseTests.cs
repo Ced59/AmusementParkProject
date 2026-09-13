@@ -32,7 +32,5 @@ public sealed class EntityBaseTests
         Assert.Equal("entity-1", entity.Id);
     }
 
-    private sealed class TestEntity : EntityBase
-    {
-    }
+
 }

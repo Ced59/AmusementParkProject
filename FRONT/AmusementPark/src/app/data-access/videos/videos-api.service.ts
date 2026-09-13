@@ -1,4 +1,4 @@
-import { HttpClient, HttpContext, HttpParameterCodec, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -13,27 +13,10 @@ import { environment } from '../../../environments/environment';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapCollection, unwrapPagedCollection } from '../shared/api-helpers';
 import { VIDEOS_API_ENDPOINTS } from './videos-api-endpoints';
+import { StrictUriParameterCodec } from './strict-uri-parameter-codec';
 
 interface VideosHttpOptions {
   context?: HttpContext;
-}
-
-class StrictUriParameterCodec implements HttpParameterCodec {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
 }
 
 const STRICT_URI_PARAMETER_CODEC = new StrictUriParameterCodec();

@@ -13,7 +13,7 @@ internal static class PassportRideOccurrenceCursorCodec
     public static string Encode(RideOccurrenceListCursor cursor)
     {
         ArgumentNullException.ThrowIfNull(cursor);
-        CursorPayload payload = new CursorPayload(
+        PassportRideOccurrenceCursorCodecCursorPayload payload = new PassportRideOccurrenceCursorCodecCursorPayload(
             CurrentVersion,
             cursor.SortPosition,
             cursor.CreatedAtUtc,
@@ -39,7 +39,7 @@ internal static class PassportRideOccurrenceCursorCodec
 
         try
         {
-            CursorPayload? payload = JsonSerializer.Deserialize<CursorPayload>(
+            PassportRideOccurrenceCursorCodecCursorPayload? payload = JsonSerializer.Deserialize<PassportRideOccurrenceCursorCodecCursorPayload>(
                 WebEncoders.Base64UrlDecode(normalized));
             if (payload is null
                 || payload.Version != CurrentVersion
@@ -63,9 +63,5 @@ internal static class PassportRideOccurrenceCursorCodec
         }
     }
 
-    private sealed record CursorPayload(
-        int Version,
-        long SortPosition,
-        DateTime CreatedAtUtc,
-        string OccurrenceId);
+
 }

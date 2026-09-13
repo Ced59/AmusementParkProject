@@ -1,0 +1,53 @@
+using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+
+[BsonIgnoreExtraElements]
+public sealed class UserVisitCreationSnapshotDocument
+{
+    [BsonElement("parkId")]
+    public string ParkId { get; set; } = string.Empty;
+
+    [BsonElement("date")]
+    public VisitDateDocument Date { get; set; } = new VisitDateDocument();
+
+    [BsonElement("timeZoneId")]
+    [BsonIgnoreIfNull]
+    public string? TimeZoneId { get; set; }
+
+    [BsonElement("serviceDayConvention")]
+    [BsonRepresentation(BsonType.String)]
+    public LocalServiceDayConvention ServiceDayConvention { get; set; }
+
+    [BsonElement("status")]
+    [BsonRepresentation(BsonType.String)]
+    public VisitStatus Status { get; set; }
+
+    [BsonElement("privacy")]
+    [BsonRepresentation(BsonType.String)]
+    public VisitPrivacy Privacy { get; set; }
+
+    [BsonElement("title")]
+    [BsonIgnoreIfNull]
+    public string? Title { get; set; }
+
+    [BsonElement("privateNote")]
+    [BsonIgnoreIfNull]
+    public string? PrivateNote { get; set; }
+
+    [BsonElement("version")]
+    public long Version { get; set; }
+
+    [BsonElement("createdAtUtc")]
+    public DateTime CreatedAtUtc { get; set; }
+
+    [BsonElement("updatedAtUtc")]
+    public DateTime UpdatedAtUtc { get; set; }
+
+    [BsonElement("completedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? CompletedAtUtc { get; set; }
+}

@@ -12,7 +12,7 @@ import {
   ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ZONES_DATA_PORT,
 } from './admin-contextual-block-child-add-data.ports';
 import { AdminContextualBlockChildAddFacade } from './admin-contextual-block-child-add.facade';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 describe('AdminContextualBlockChildAddFacade', () => {
   let facade: AdminContextualBlockChildAddFacade;

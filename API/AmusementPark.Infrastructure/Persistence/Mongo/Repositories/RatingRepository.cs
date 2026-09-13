@@ -485,10 +485,7 @@ public sealed class RatingRepository : IRatingRepository
             || previousDocument.ParkItemType != rating.ParkItemType;
     }
 
-    private sealed record UserRatingDocumentMutationResult(
-        bool SourceChanged,
-        UserRating Rating,
-        bool WasFencedOut);
+
 
     private async Task ReleaseMutationFenceCoreAsync(
         string userId,

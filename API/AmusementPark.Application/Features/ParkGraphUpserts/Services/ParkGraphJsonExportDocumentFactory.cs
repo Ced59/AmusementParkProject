@@ -9,25 +9,6 @@ using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
-internal sealed class ParkGraphJsonParkExportData
-{
-    public Park Park { get; init; } = new Park();
-
-    public ParkGraphExportReferences? References { get; init; }
-
-    public IReadOnlyCollection<ParkZone> Zones { get; init; } = Array.Empty<ParkZone>();
-
-    public IReadOnlyCollection<ParkItem> Items { get; init; } = Array.Empty<ParkItem>();
-
-    public IReadOnlyCollection<Image> Images { get; init; } = Array.Empty<Image>();
-
-    public ParkOpeningHoursSchedule? OpeningHours { get; init; }
-
-    public ParkPricingEntity? Pricing { get; init; }
-
-    public IReadOnlyCollection<HistoryEvent> HistoryEvents { get; init; } = Array.Empty<HistoryEvent>();
-}
-
 internal static class ParkGraphJsonExportDocumentFactory
 {
     private const string OpeningHoursDateFormat = "yyyy-MM-dd";

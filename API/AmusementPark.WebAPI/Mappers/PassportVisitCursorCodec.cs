@@ -14,7 +14,7 @@ internal static class PassportVisitCursorCodec
     {
         ArgumentNullException.ThrowIfNull(cursor);
 
-        CursorPayload payload = new CursorPayload(
+        PassportVisitCursorCodecCursorPayload payload = new PassportVisitCursorCodecCursorPayload(
             CurrentVersion,
             cursor.Date.Year,
             cursor.Date.Month,
@@ -43,7 +43,7 @@ internal static class PassportVisitCursorCodec
         try
         {
             byte[] json = WebEncoders.Base64UrlDecode(normalizedCursor);
-            CursorPayload? payload = JsonSerializer.Deserialize<CursorPayload>(json);
+            PassportVisitCursorCodecCursorPayload? payload = JsonSerializer.Deserialize<PassportVisitCursorCodecCursorPayload>(json);
             if (payload is null
                 || payload.Version != CurrentVersion
                 || payload.UpdatedAtUtc.Kind != DateTimeKind.Utc)
@@ -72,13 +72,5 @@ internal static class PassportVisitCursorCodec
         }
     }
 
-    private sealed record CursorPayload(
-        int Version,
-        int Year,
-        int? Month,
-        int? Day,
-        VisitDatePrecision Precision,
-        bool IsApproximate,
-        DateTime UpdatedAtUtc,
-        string VisitId);
+
 }

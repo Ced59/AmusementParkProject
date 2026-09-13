@@ -30,50 +30,8 @@ import {
 } from '../state/history-data.ports';
 import { HISTORY_ARTICLE_ROUTE_DATA_KEY } from '../state/history-article.resolver';
 import { HistoryArticlePageComponent } from './history-article-page.component';
-
-class FakeTranslationService {
-  public readonly languageChanged: EventEmitter<string> =
-    new EventEmitter<string>();
-
-  getCurrentLang(): string {
-    return 'fr';
-  }
-}
-
-class FakeHistoryDataPort implements HistoryDataPort {
-  public articleCallCount: number = 0;
-
-  getParkTimeline(
-    _parkId: string,
-    _includeParkItems?: boolean,
-    _parkItemIds?: readonly string[],
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryTimeline> {
-    return of({} as HistoryTimeline);
-  }
-
-  getParkItemTimeline(
-    _parkItemId: string,
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryTimeline> {
-    return of({} as HistoryTimeline);
-  }
-
-  getStandaloneAttractionTimeline(
-    _standaloneAttractionId: string,
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryTimeline> {
-    return of({} as HistoryTimeline);
-  }
-
-  getArticle(
-    _eventId: string,
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryArticle> {
-    this.articleCallCount += 1;
-    return of(createHistoryArticle('Fallback Article'));
-  }
-}
+import { FakeTranslationService } from './test-helpers/history-article-page.component/fake-translation-service';
+import { FakeHistoryDataPort } from './test-helpers/history-article-page.component/fake-history-data-port';
 
 describe('HistoryArticlePageComponent', () => {
   let fixture: ComponentFixture<HistoryArticlePageComponent>;

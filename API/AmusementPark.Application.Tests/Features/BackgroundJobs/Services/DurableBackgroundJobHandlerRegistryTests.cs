@@ -10,8 +10,8 @@ public sealed class DurableBackgroundJobHandlerRegistryTests
     [Fact]
     public void Constructor_WhenKindsAreDuplicated_ShouldRejectAmbiguousResolution()
     {
-        StubHandler first = new StubHandler(CreateDefinition("same.kind"));
-        StubHandler second = new StubHandler(CreateDefinition("same.kind"));
+        DurableBackgroundJobHandlerRegistryTestsStubHandler first = new DurableBackgroundJobHandlerRegistryTestsStubHandler(CreateDefinition("same.kind"));
+        DurableBackgroundJobHandlerRegistryTestsStubHandler second = new DurableBackgroundJobHandlerRegistryTestsStubHandler(CreateDefinition("same.kind"));
 
         InvalidOperationException exception = Assert.Throws<InvalidOperationException>(
             () => new DurableBackgroundJobHandlerRegistry(new IDurableBackgroundJobHandler[] { first, second }));
@@ -22,7 +22,7 @@ public sealed class DurableBackgroundJobHandlerRegistryTests
     [Fact]
     public void TryResolve_WhenKindExists_ShouldReturnTheRegisteredHandler()
     {
-        StubHandler expected = new StubHandler(CreateDefinition("test.kind"));
+        DurableBackgroundJobHandlerRegistryTestsStubHandler expected = new DurableBackgroundJobHandlerRegistryTestsStubHandler(CreateDefinition("test.kind"));
         DurableBackgroundJobHandlerRegistry registry =
             new DurableBackgroundJobHandlerRegistry(new[] { expected });
 
@@ -79,20 +79,5 @@ public sealed class DurableBackgroundJobHandlerRegistryTests
             TimeSpan.FromMinutes(1));
     }
 
-    private sealed class StubHandler : IDurableBackgroundJobHandler
-    {
-        public StubHandler(DurableBackgroundJobHandlerDefinition definition)
-        {
-            this.Definition = definition;
-        }
 
-        public DurableBackgroundJobHandlerDefinition Definition { get; }
-
-        public Task<DurableBackgroundJobHandlerResult> HandleAsync(
-            DurableBackgroundJobExecutionContext context,
-            CancellationToken cancellationToken)
-        {
-            return Task.FromResult(DurableBackgroundJobHandlerResult.Success());
-        }
-    }
 }

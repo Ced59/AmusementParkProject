@@ -12,65 +12,8 @@ import {
 } from '@app/models/comments/comment.models';
 import { CommentDataPort } from './comment-data.ports';
 import { CommentRichTextImagesFacade } from './comment-rich-text-images.facade';
-
-class FakeDestroyRef implements DestroyRef {
-  destroyed: boolean = false;
-  private callback: (() => void) | null = null;
-
-  onDestroy(callback: () => void): () => void {
-    this.callback = callback;
-    return (): void => {
-      this.callback = null;
-    };
-  }
-
-  destroy(): void {
-    this.destroyed = true;
-    this.callback?.();
-  }
-}
-
-class FakeCommentDataPort implements CommentDataPort {
-  readonly uploadSubjects: Subject<CommentImageUpload>[] = [];
-  readonly uploadedFiles: File[] = [];
-  readonly deletedImageIds: string[] = [];
-
-  getSummary(
-    _targetType: CommentTargetType,
-    _targetId: string,
-    _languageCode: string
-  ): Observable<CommentSummary> {
-    throw new Error('Not used.');
-  }
-
-  getThread(_targetType: CommentTargetType, _targetId: string): Observable<CommentThread> {
-    throw new Error('Not used.');
-  }
-
-  createComment(_request: CreateCommentRequest): Observable<PublicComment> {
-    throw new Error('Not used.');
-  }
-
-  updateComment(_request: UpdateCommentRequest): Observable<PublicComment> {
-    throw new Error('Not used.');
-  }
-
-  deleteComment(_commentId: string, _revision: number): Observable<void> {
-    throw new Error('Not used.');
-  }
-
-  uploadCommentImage(file: File): Observable<CommentImageUpload> {
-    this.uploadedFiles.push(file);
-    const subject: Subject<CommentImageUpload> = new Subject<CommentImageUpload>();
-    this.uploadSubjects.push(subject);
-    return subject.asObservable();
-  }
-
-  deleteCommentImage(imageId: string): Observable<void> {
-    this.deletedImageIds.push(imageId);
-    return of(undefined);
-  }
-}
+import { FakeDestroyRef } from './test-helpers/comment-rich-text-images.facade/fake-destroy-ref';
+import { FakeCommentDataPort } from './test-helpers/comment-rich-text-images.facade/fake-comment-data-port';
 
 describe('CommentRichTextImagesFacade', () => {
   const firstImageId: string = '0123456789abcdef0123456789abcdef';

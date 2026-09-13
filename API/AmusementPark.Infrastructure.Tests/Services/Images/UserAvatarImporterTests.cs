@@ -92,7 +92,7 @@ public sealed class UserAvatarImporterTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(promotedImage);
         UserAvatarImporter importer = new UserAvatarImporter(
-            new StubHttpClientFactory(httpClient),
+            new UserAvatarImporterTestsStubHttpClientFactory(httpClient),
             imageProcessingPipeline.Object,
             imageBinaryStorage.Object,
             imageRepository.Object,
@@ -109,41 +109,7 @@ public sealed class UserAvatarImporterTests
         imageRepository.VerifyAll();
     }
 
-    private sealed class StubHttpClientFactory : IHttpClientFactory
-    {
-        private readonly HttpClient httpClient;
 
-        public StubHttpClientFactory(HttpClient httpClient)
-        {
-            this.httpClient = httpClient;
-        }
 
-        public HttpClient CreateClient(string name)
-        {
-            return this.httpClient;
-        }
-    }
 
-    private sealed class AvatarHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly byte[] content;
-
-        public AvatarHttpMessageHandler(byte[] content)
-        {
-            this.content = content;
-        }
-
-        protected override Task<HttpResponseMessage> SendAsync(
-            HttpRequestMessage request,
-            CancellationToken cancellationToken)
-        {
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(this.content),
-            };
-            response.Content.Headers.ContentType =
-                new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
-            return Task.FromResult(response);
-        }
-    }
 }

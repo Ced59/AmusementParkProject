@@ -57,17 +57,3 @@ public interface ISocialPublicationService
         string? requestedByUserId,
         CancellationToken cancellationToken);
 }
-
-public interface ISocialPublicationComposerService
-{
-    Task<ApplicationResult<SocialPublicationDraft>> ResolveDraftAsync(
-        string? url,
-        int imagePage,
-        int imagePageSize,
-        CancellationToken cancellationToken);
-
-    Task<ApplicationResult<SocialPublication>> PublishAsync(
-        SocialLinkPublicationRequest request,
-        string? requestedByUserId,
-        CancellationToken cancellationToken);
-}

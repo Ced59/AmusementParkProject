@@ -5,12 +5,7 @@ using HtmlAgilityPack;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 
-internal interface ICaptainCoasterMapPageParser
-{
-    IReadOnlyCollection<CaptainCoasterParkCoordinate> Parse(string sourceUrl, string html, string markersAttributeName);
-}
-
-internal sealed partial class CaptainCoasterMapPageParser : ICaptainCoasterMapPageParser
+internal sealed class CaptainCoasterMapPageParser : ICaptainCoasterMapPageParser
 {
     public IReadOnlyCollection<CaptainCoasterParkCoordinate> Parse(string sourceUrl, string html, string markersAttributeName)
     {
@@ -86,16 +81,4 @@ internal sealed partial class CaptainCoasterMapPageParser : ICaptainCoasterMapPa
         };
     }
 
-    private sealed class RawParkMapMarker
-    {
-        public JsonElement Id { get; init; }
-
-        public string? Name { get; init; }
-
-        public double? Latitude { get; init; }
-
-        public double? Longitude { get; init; }
-
-        public int? Nb { get; init; }
-    }
 }

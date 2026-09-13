@@ -12,23 +12,7 @@ import {
   AdminContactGrievancesDataPort,
 } from './admin-contact-grievances-data.ports';
 import { AdminContactGrievancesFacade } from './admin-contact-grievances.facade';
-
-class FakeAdminContactGrievancesPort implements AdminContactGrievancesDataPort {
-  public response$: Observable<AdminContactGrievanceResponse> = of(
-    createResponse(
-      [createGrievance('grievance-1')],
-      createPagination(2, 10, 12),
-    ),
-  );
-  public readonly calls: AdminContactGrievanceQuery[] = [];
-
-  searchAdminGrievances(
-    query: AdminContactGrievanceQuery,
-  ): Observable<AdminContactGrievanceResponse> {
-    this.calls.push(query);
-    return this.response$;
-  }
-}
+import { FakeAdminContactGrievancesPort } from './test-helpers/admin-contact-grievances.facade/fake-admin-contact-grievances-port';
 
 function createGrievance(id: string): AdminContactGrievance {
   return {

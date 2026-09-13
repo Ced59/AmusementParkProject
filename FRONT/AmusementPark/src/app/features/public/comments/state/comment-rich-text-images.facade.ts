@@ -4,12 +4,7 @@ import { firstValueFrom } from 'rxjs';
 import { CommentImageUpload, ManagedRichTextImage } from '@app/models/comments/comment-image.models';
 import { COMMENT_DATA_PORT, CommentDataPort } from './comment-data.ports';
 import { normalizeManagedCommentImageId } from '@shared/utils/comments/managed-comment-image.helpers';
-
-class DiscardedCommentImageUploadError extends Error {
-  constructor() {
-    super('The comment image draft was discarded.');
-  }
-}
+import { DiscardedCommentImageUploadError } from './discarded-comment-image-upload-error';
 
 @Injectable()
 export class CommentRichTextImagesFacade {

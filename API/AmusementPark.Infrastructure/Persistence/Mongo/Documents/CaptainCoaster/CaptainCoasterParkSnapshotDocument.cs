@@ -1,0 +1,45 @@
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+
+public sealed class CaptainCoasterParkSnapshotDocument : MongoGeolocatedDocumentBase
+{
+    [BsonElement("sourceKey")]
+    public string SourceKey { get; set; } = "captain-coaster";
+
+    [BsonElement("syncSessionId")]
+    public string SyncSessionId { get; set; } = string.Empty;
+
+    [BsonElement("captainCoasterId")]
+    public string CaptainCoasterId { get; set; } = string.Empty;
+
+    [BsonElement("name")]
+    public string Name { get; set; } = string.Empty;
+
+    [BsonElement("slug")]
+    [BsonIgnoreIfNull]
+    public string? Slug { get; set; }
+
+    [BsonElement("sourceUrl")]
+    [BsonIgnoreIfNull]
+    public string? SourceUrl { get; set; }
+
+    [BsonElement("countryCode")]
+    [BsonIgnoreIfNull]
+    public string? CountryCode { get; set; }
+
+    [BsonElement("countryRaw")]
+    [BsonIgnoreIfNull]
+    public string? CountryRaw { get; set; }
+
+    [BsonElement("coasterCount")]
+    public int CoasterCount { get; set; }
+
+    [BsonElement("sampleCoasterNames")]
+    public List<string> SampleCoasterNames { get; set; } = new List<string>();
+
+    [BsonElement("scrapedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? ScrapedAtUtc { get; set; }
+}

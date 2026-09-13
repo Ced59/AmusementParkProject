@@ -517,18 +517,5 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             pricingRepository ?? Mock.Of<IParkPricingRepository>(MockBehavior.Strict)));
     }
 
-    private sealed class CollectingProgress<TProgress> : IProgress<TProgress>
-    {
-        private readonly ICollection<TProgress> reports;
 
-        public CollectingProgress(ICollection<TProgress> reports)
-        {
-            this.reports = reports;
-        }
-
-        public void Report(TProgress value)
-        {
-            this.reports.Add(value);
-        }
-    }
 }

@@ -7,24 +7,7 @@ import {
   AdminParkItemManufacturersStateManufacturersApiServicePort
 } from './admin-park-item-manufacturers-state-data.ports';
 import { AdminParkItemManufacturersStateFacade } from './admin-park-item-manufacturers-state.facade';
-
-class FakeManufacturersPort implements AdminParkItemManufacturersStateManufacturersApiServicePort {
-  public calls: number = 0;
-  public includeHiddenValues: boolean[] = [];
-
-  getAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
-    this.calls += 1;
-    this.includeHiddenValues.push(includeHidden);
-    return of([
-      {
-        id: 'manufacturer-1',
-        name: 'Mack Rides',
-        aliases: [],
-        descriptions: []
-      } as AttractionManufacturer
-    ]);
-  }
-}
+import { FakeManufacturersPort } from './test-helpers/admin-park-item-manufacturers-state.facade/fake-manufacturers-port';
 
 describe('AdminParkItemManufacturersStateFacade', () => {
   let facade: AdminParkItemManufacturersStateFacade;

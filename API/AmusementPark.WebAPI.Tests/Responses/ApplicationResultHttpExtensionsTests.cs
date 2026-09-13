@@ -95,7 +95,5 @@ public sealed class ApplicationResultHttpExtensionsTests
         };
     }
 
-    private sealed class TestController : ControllerBase
-    {
-    }
+
 }

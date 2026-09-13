@@ -36,7 +36,7 @@ public sealed class ParkWeatherRefreshStarterTests
         ParkWeatherRefreshStarter starter = new ParkWeatherRefreshStarter(
             runRepository.Object,
             queue.Object,
-            new TestRefreshSettings());
+            new ParkWeatherRefreshStarterTestsTestRefreshSettings());
 
         ApplicationResult<ParkWeatherRunResult> result = await starter.StartManualFullRefreshAsync(CancellationToken.None);
 
@@ -63,7 +63,7 @@ public sealed class ParkWeatherRefreshStarterTests
         ParkWeatherRefreshStarter starter = new ParkWeatherRefreshStarter(
             runRepository.Object,
             queue.Object,
-            new TestRefreshSettings());
+            new ParkWeatherRefreshStarterTestsTestRefreshSettings());
 
         ApplicationResult<ParkWeatherRunResult> result = await starter.StartManualFullRefreshAsync(CancellationToken.None);
 
@@ -101,7 +101,7 @@ public sealed class ParkWeatherRefreshStarterTests
         ParkWeatherRefreshStarter starter = new ParkWeatherRefreshStarter(
             runRepository.Object,
             queue.Object,
-            new TestRefreshSettings());
+            new ParkWeatherRefreshStarterTestsTestRefreshSettings());
 
         ApplicationResult<ParkWeatherRunResult> result = await starter.StartManualFullRefreshAsync(CancellationToken.None);
 
@@ -115,26 +115,5 @@ public sealed class ParkWeatherRefreshStarterTests
         queue.VerifyAll();
     }
 
-    private sealed class TestRefreshSettings : IParkWeatherRefreshSettings
-    {
-        public bool IsAutomaticRefreshEnabled => true;
 
-        public int ForecastDays => 7;
-
-        public int ForecastPastRetentionDays => 3;
-
-        public bool IncludeYesterdayObservation => true;
-
-        public int HistoricalBackfillYears => 0;
-
-        public int HistoricalComparisonYearsLimit => 10;
-
-        public int DelayBetweenParksMilliseconds => 0;
-
-        public string AutomaticRefreshTimeZoneId => "UTC";
-
-        public int AutomaticRefreshHour => 2;
-
-        public int AutomaticRefreshMinute => 15;
-    }
 }

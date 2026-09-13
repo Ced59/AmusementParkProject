@@ -28,32 +28,3 @@ public interface IPassportAuditPublisher
         return true;
     }
 }
-
-/// <summary>
-/// Répare un lot strictement borné de preuves restées attachées à leur source.
-/// </summary>
-public interface IPassportAuditReconciler
-{
-    Task<int> ReconcileBatchAsync(
-        int maximumEventCount,
-        CancellationToken cancellationToken);
-}
-
-/// <summary>
-/// Termine un lot borné de mutations du passeport dont l'état métier a pu être
-/// écrit avant l'acquittement de leur opération idempotente.
-/// </summary>
-public interface IPassportPendingMutationReconciler
-{
-    Task<IVisitContentMutationLease?> TryAcquireReconciledLifecycleLeaseAsync(
-        Visit visit,
-        CancellationToken cancellationToken);
-
-    Task<bool> ReconcileBeforeLifecycleTransitionAsync(
-        Visit visit,
-        CancellationToken cancellationToken);
-
-    Task<int> ReconcileBatchAsync(
-        int maximumOperationCount,
-        CancellationToken cancellationToken);
-}

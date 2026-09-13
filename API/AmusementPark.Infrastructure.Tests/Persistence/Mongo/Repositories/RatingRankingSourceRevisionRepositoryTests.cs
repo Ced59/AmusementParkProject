@@ -404,18 +404,5 @@ public sealed class RatingRankingSourceRevisionRepositoryTests
             tokenSeed.ToString("x32"));
     }
 
-    private sealed class FixedTimeProvider : TimeProvider
-    {
-        private readonly DateTimeOffset now;
 
-        public FixedTimeProvider(DateTime nowUtc)
-        {
-            this.now = new DateTimeOffset(nowUtc);
-        }
-
-        public override DateTimeOffset GetUtcNow()
-        {
-            return this.now;
-        }
-    }
 }

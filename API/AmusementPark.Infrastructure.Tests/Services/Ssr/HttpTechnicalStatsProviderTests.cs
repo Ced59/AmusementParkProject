@@ -14,7 +14,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task GetSnapshotAsyncCallsInternalEndpointWithSharedToken()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, """
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.OK, """
         {
           "generatedAtUtc": "2026-06-23T10:00:00Z",
           "startedAtUtc": "2026-06-23T09:00:00Z",
@@ -129,7 +129,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task GetSnapshotAsyncReturnsUnavailableSnapshotWhenSettingsAreMissing()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, "{}");
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.OK, "{}");
         HttpTechnicalStatsProvider provider = new HttpTechnicalStatsProvider(
             new TestHttpClientFactory(new HttpClient(handler)),
             new SsrSettings(),
@@ -146,7 +146,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task GetSnapshotAsyncReturnsUnavailableSnapshotWhenSsrReturnsError()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.Forbidden, "{}");
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.Forbidden, "{}");
         HttpClient httpClient = new HttpClient(handler);
         HttpTechnicalStatsProvider provider = CreateProvider(httpClient);
 
@@ -160,7 +160,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task GetSnapshotAsyncSanitizesNullNumericValuesFromSsrSnapshot()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, """
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.OK, """
         {
           "isAvailable": true,
           "unavailableReason": null,
@@ -251,7 +251,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task GetSnapshotAsyncReturnsInvalidJsonWhenSsrSnapshotIsMalformed()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, "not-json");
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.OK, "not-json");
         HttpClient httpClient = new HttpClient(handler);
         HttpTechnicalStatsProvider provider = CreateProvider(httpClient);
 
@@ -265,7 +265,7 @@ public sealed class HttpTechnicalStatsProviderTests
     [Fact]
     public async Task UpdateSettingsAsyncCallsInternalEndpointWithSharedTokenAndBody()
     {
-        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, """
+        HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler handler = new HttpTechnicalStatsProviderTestsRecordingHttpMessageHandler(HttpStatusCode.OK, """
         {
           "persistenceRetentionDays": 20
         }
@@ -299,58 +299,7 @@ public sealed class HttpTechnicalStatsProviderTests
             NullLogger<HttpTechnicalStatsProvider>.Instance);
     }
 
-    private sealed class TestHttpClientFactory : IHttpClientFactory
-    {
-        private readonly HttpClient httpClient;
 
-        public TestHttpClientFactory(HttpClient httpClient)
-        {
-            this.httpClient = httpClient;
-        }
 
-        public HttpClient CreateClient(string name)
-        {
-            Assert.Equal(HttpTechnicalStatsProvider.HttpClientName, name);
-            return this.httpClient;
-        }
-    }
 
-    private sealed class RecordingHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly HttpStatusCode statusCode;
-        private readonly string responseBody;
-
-        public RecordingHttpMessageHandler(HttpStatusCode statusCode, string responseBody)
-        {
-            this.statusCode = statusCode;
-            this.responseBody = responseBody;
-        }
-
-        public Uri? RequestUri { get; private set; }
-
-        public HttpMethod? Method { get; private set; }
-
-        public string? RequestBody { get; private set; }
-
-        public IReadOnlyCollection<string> CacheTokenHeaderValues { get; private set; } = Array.Empty<string>();
-
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            this.RequestUri = request.RequestUri;
-            this.Method = request.Method;
-            this.RequestBody = request.Content is null
-                ? null
-                : await request.Content.ReadAsStringAsync(cancellationToken);
-            this.CacheTokenHeaderValues = request.Headers.TryGetValues("X-AmusementPark-Cache-Token", out IEnumerable<string>? values)
-                ? values.ToArray()
-                : Array.Empty<string>();
-
-            HttpResponseMessage response = new HttpResponseMessage(this.statusCode)
-            {
-                Content = new StringContent(this.responseBody, Encoding.UTF8, "application/json")
-            };
-
-            return response;
-        }
-    }
 }

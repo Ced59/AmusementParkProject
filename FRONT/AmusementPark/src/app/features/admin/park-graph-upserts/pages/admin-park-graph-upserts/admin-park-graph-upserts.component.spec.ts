@@ -10,6 +10,7 @@ import { AdminParkGraphUpsertsComponent } from './admin-park-graph-upserts.compo
 import { ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { environment } from '../../../../../../environments/environment';
+import { createFakeFileReader } from './test-helpers/admin-park-graph-upserts.component/fake-file-reader';
 
 interface ActivatedRouteStub {
   snapshot: {
@@ -306,19 +307,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
     createComponent();
 
     const uploadedJson: string = '{"park":{"name":"Uploaded Park"},"items":[]}';
-    class FakeFileReader {
-      public readonly result: string = uploadedJson;
-      public onload: ((this: FileReader, event: ProgressEvent<FileReader>) => void) | null = null;
-      public onerror: ((this: FileReader, event: ProgressEvent<FileReader>) => void) | null = null;
-
-      public readAsText(): void {
-        this.onload?.call(
-          this as unknown as FileReader,
-          new ProgressEvent('load') as ProgressEvent<FileReader>,
-        );
-      }
-    }
-    vi.stubGlobal('FileReader', FakeFileReader);
+    vi.stubGlobal('FileReader', createFakeFileReader(uploadedJson));
 
     const file: File = new File([uploadedJson], 'park.json', {
       type: 'application/json',

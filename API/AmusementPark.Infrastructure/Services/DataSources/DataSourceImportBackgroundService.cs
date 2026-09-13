@@ -6,65 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Infrastructure.Services.DataSources;
 
-internal sealed record DataSourceImportJob(string SourceKey, string SessionId, DataSourceImportDescriptor ImportDescriptor);
-
-internal interface IDataSourceImportJobQueue
-{
-    ValueTask EnqueueAsync(DataSourceImportJob job, CancellationToken cancellationToken);
-
-    ValueTask<DataSourceImportJob> DequeueAsync(CancellationToken cancellationToken);
-}
-
-internal sealed class InMemoryDataSourceImportJobQueue : IDataSourceImportJobQueue
-{
-    private readonly Channel<DataSourceImportJob> channel;
-
-    public InMemoryDataSourceImportJobQueue()
-    {
-        this.channel = Channel.CreateUnbounded<DataSourceImportJob>(new UnboundedChannelOptions
-        {
-            SingleReader = true,
-            SingleWriter = false,
-        });
-    }
-
-    public ValueTask EnqueueAsync(DataSourceImportJob job, CancellationToken cancellationToken)
-    {
-        return this.channel.Writer.WriteAsync(job, cancellationToken);
-    }
-
-    public ValueTask<DataSourceImportJob> DequeueAsync(CancellationToken cancellationToken)
-    {
-        return this.channel.Reader.ReadAsync(cancellationToken);
-    }
-}
-
-internal interface IDataSourceImportJobProcessor
-{
-    Task ProcessAsync(DataSourceImportJob job, CancellationToken cancellationToken);
-}
-
-internal sealed class DataSourceImportJobProcessor : IDataSourceImportJobProcessor
-{
-    private readonly IEnumerable<IDataSourceProvider> providers;
-
-    public DataSourceImportJobProcessor(IEnumerable<IDataSourceProvider> providers)
-    {
-        this.providers = providers;
-    }
-
-    public async Task ProcessAsync(DataSourceImportJob job, CancellationToken cancellationToken)
-    {
-        IDataSourceProvider? provider = this.providers.FirstOrDefault(provider => string.Equals(provider.SourceKey, job.SourceKey, StringComparison.OrdinalIgnoreCase));
-        if (provider is not IDataSourceImportExecutor executor)
-        {
-            throw new InvalidOperationException($"Aucun exécuteur d'import n'est enregistré pour la source '{job.SourceKey}'.");
-        }
-
-        await executor.ExecuteImportAsync(job, cancellationToken);
-    }
-}
-
 internal sealed class DataSourceImportBackgroundService : BackgroundService
 {
     private readonly IDataSourceImportJobQueue queue;
@@ -103,9 +44,4 @@ internal sealed class DataSourceImportBackgroundService : BackgroundService
             }
         }
     }
-}
-
-internal interface IDataSourceImportExecutor
-{
-    Task ExecuteImportAsync(DataSourceImportJob job, CancellationToken cancellationToken);
 }

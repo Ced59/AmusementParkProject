@@ -26,11 +26,3 @@ public interface IVisitContentMutationLease : IAsyncDisposable
     /// </summary>
     void MarkMutationCompleted();
 }
-
-public interface IVisitContentMutationLeaseManager
-{
-    Task<IVisitContentMutationLease?> TryAcquireAsync(
-        Visit visit,
-        DateTime acquiredAtUtc,
-        CancellationToken cancellationToken);
-}

@@ -21,48 +21,7 @@ import {
   AdminVideosStateVideosApiServicePort,
 } from './admin-videos-state-data.ports';
 import { AdminVideosStateFacade } from './admin-videos-state.facade';
-
-class FakeVideosPort implements AdminVideosStateVideosApiServicePort {
-  public pageResponse$: Observable<PagedResult<VideoDto>> = of(
-    createPagedResult([createVideo('video-1')]),
-  );
-  public tagsResponse$: Observable<VideoTagDto[]> = of([createTag('tag-1')]);
-
-  getVideosPage(query?: VideoSearchQuery): Observable<PagedResult<VideoDto>> {
-    return this.pageResponse$;
-  }
-
-  getVideoTags(): Observable<VideoTagDto[]> {
-    return this.tagsResponse$;
-  }
-
-  resolveVideoMetadata(videoUrl: string): Observable<ResolvedVideoMetadataDto> {
-    return of({
-      hostingProvider: VideoHostingProvider.YOUTUBE,
-      originalUrl: videoUrl,
-      canonicalUrl: videoUrl,
-    });
-  }
-
-  updateVideo(id: string, request: VideoWriteRequest): Observable<VideoDto> {
-    return of(createVideo(id));
-  }
-
-  deleteVideo(id: string): Observable<boolean> {
-    return of(true);
-  }
-
-  createVideoTag(request: CreateVideoTagRequest): Observable<VideoTagDto> {
-    return of(createTag('created-tag'));
-  }
-
-  updateVideoTag(
-    id: string,
-    request: UpdateVideoTagRequest,
-  ): Observable<VideoTagDto> {
-    return of(createTag(id));
-  }
-}
+import { FakeVideosPort } from './test-helpers/admin-videos-state.facade/fake-videos-port';
 
 function createVideo(id: string): VideoDto {
   return {

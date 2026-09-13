@@ -31,80 +31,15 @@ import {
   ParkItemsPageStateParksApiServicePort
 } from './park-items-page-state-data.ports';
 import { ParkItemsPageStateFacade } from './park-items-page-state.facade';
+import { FakeParksPort } from './test-helpers/park-items-page-state.facade/fake-parks-port';
+import { FakeParkItemsPort } from './test-helpers/park-items-page-state.facade/fake-park-items-port';
+import { FakeImagesPort } from './test-helpers/park-items-page-state.facade/fake-images-port';
+import { FakeManufacturersPort } from './test-helpers/park-items-page-state.facade/fake-manufacturers-port';
+import { FakeZonesPort } from './test-helpers/park-items-page-state.facade/fake-zones-port';
+import { FakeSsrRuntimeService } from './test-helpers/park-items-page-state.facade/fake-ssr-runtime-service';
 
 interface ClosedFilterHttpOptions extends AnonymousHttpOptions {
   closedFilter?: ClosedEntityFilter;
-}
-
-class FakeParksPort implements ParkItemsPageStateParksApiServicePort {
-  public parkResponse$: Observable<Park> = of(createPark('Operating'));
-  public explorerResponse$: Observable<ParkExplorer> = of(createExplorer());
-  public mapItemsResponse$: Observable<ParkMapItems> = of(createMapItems(createPark('Operating')));
-  public readonly parkCalls: string[] = [];
-  public readonly explorerCalls: Array<{ parkId: string; closedFilter?: ClosedEntityFilter }> = [];
-  public readonly mapItemsCalls: Array<{ parkId: string; closedFilter?: ClosedEntityFilter }> = [];
-
-  getParkById(id: string): Observable<Park> {
-    this.parkCalls.push(id);
-    return this.parkResponse$;
-  }
-
-  getParkExplorer(parkId: string, options?: ClosedFilterHttpOptions): Observable<ParkExplorer> {
-    this.explorerCalls.push({ parkId, closedFilter: options?.closedFilter });
-    return this.explorerResponse$;
-  }
-
-  getParkMapItems(id: string, options?: ClosedFilterHttpOptions): Observable<ParkMapItems> {
-    this.mapItemsCalls.push({ parkId: id, closedFilter: options?.closedFilter });
-    return this.mapItemsResponse$;
-  }
-}
-
-class FakeParkItemsPort implements ParkItemsPageStateParkItemsApiServicePort {
-  public pageResponse$: Observable<PagedResult<ParkItem>> = of(createItemsPage());
-  public readonly pageCalls: Array<{ parkId: string; page: number; size: number; filters: ParkItemsByParkIdFilters | null }> = [];
-
-  getParkItemsByParkIdPage(
-    parkId: string,
-    page: number,
-    size: number,
-    filters: ParkItemsByParkIdFilters | null = null
-  ): Observable<PagedResult<ParkItem>> {
-    this.pageCalls.push({ parkId, page, size, filters });
-    return this.pageResponse$;
-  }
-}
-
-class FakeImagesPort implements ParkItemsPageStateImagesApiServicePort {
-  getImages(): Observable<ImageDto[]> {
-    return of([]);
-  }
-
-  buildImageUrl(): string {
-    return '';
-  }
-
-  buildImageSrcSet(): string {
-    return '';
-  }
-}
-
-class FakeManufacturersPort implements ParkItemsPageStateManufacturersApiServicePort {
-  getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
-    return of([]);
-  }
-}
-
-class FakeZonesPort implements ParkItemsPageStateParkZonesApiServicePort {
-  getParkZonesByParkId(): Observable<ParkZone[]> {
-    return of([]);
-  }
-}
-
-class FakeSsrRuntimeService {
-  shouldUseMinimalPublicData(): boolean {
-    return true;
-  }
 }
 
 function createPark(status: Park['status']): Park {

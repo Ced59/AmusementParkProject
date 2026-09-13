@@ -10,7 +10,7 @@ import {
 import { Subject } from 'rxjs';
 
 import { TranslationService } from '@app/services/translation.service';
-import { AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
 import { ParkReferenceDetailPageComponent } from './park-reference-detail-page.component';
 import { ParkReferenceDetailStateFacade } from '../state/park-reference-detail-state.facade';
 

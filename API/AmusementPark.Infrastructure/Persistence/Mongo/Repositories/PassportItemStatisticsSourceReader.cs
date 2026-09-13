@@ -183,29 +183,3 @@ public sealed class PassportItemStatisticsSourceReader
             });
     }
 }
-
-internal sealed class PassportItemOccurrenceStatisticsSourceDocument
-{
-    public string Id { get; init; } = string.Empty;
-
-    public string VisitId { get; init; } = string.Empty;
-
-    public long SortPosition { get; init; }
-
-    public byte? AssessmentValueHalfSteps { get; init; }
-
-    public long? ContentMutationFenceToken { get; init; }
-}
-
-internal sealed class PassportItemVisitStatisticsSourceDocument
-{
-    public string Id { get; init; } = string.Empty;
-
-    public VisitDateDocument Date { get; init; } = new VisitDateDocument();
-
-    public long? ContentMutationFenceToken { get; init; }
-
-    public long? ContentMutationFenceStableToken { get; init; }
-
-    public bool ContentMutationFenceReady { get; init; }
-}

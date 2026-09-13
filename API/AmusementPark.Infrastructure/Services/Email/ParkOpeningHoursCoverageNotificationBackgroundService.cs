@@ -106,5 +106,5 @@ public sealed class ParkOpeningHoursCoverageNotificationBackgroundService : Back
         return TimeZoneInfo.Utc;
     }
 
-    private sealed record ScheduledOpeningHoursNotificationRun(TimeSpan Delay);
+
 }

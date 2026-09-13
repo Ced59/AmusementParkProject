@@ -18,6 +18,7 @@ import {
   AdminSiteStateImagesApiServicePort,
 } from './admin-site-state-data.ports';
 import { AdminSiteStateFacade } from './admin-site-state.facade';
+import { FakeImagesPort } from './test-helpers/admin-site-state.facade/fake-images-port';
 
 type UpdateAdminImageRequest = Parameters<
   AdminSiteStateImagesApiServicePort['updateAdminImage']
@@ -25,84 +26,6 @@ type UpdateAdminImageRequest = Parameters<
 type CreateAdminImageTagRequest = Parameters<
   AdminSiteStateImagesApiServicePort['createAdminImageTag']
 >[0];
-
-class FakeImagesPort implements AdminSiteStateImagesApiServicePort {
-  public pageResponse$: Observable<PagedResult<ImageDto>> = of(
-    createPagedResult<ImageDto>([
-      createImage('image-1'),
-      createImage('image-2', {
-        category: ImageCategory.LOGO,
-        isWatermarked: false,
-      }),
-    ]),
-  );
-  public tagsResponse$: Observable<ImageTagDto[]> = of([createTag('tag-1')]);
-  public updateResponse$: Observable<ImageDto> = of(createImage('image-1'));
-  public watermarkResponse$: Observable<ImageDto> = of(
-    createImage('image-1', { isWatermarked: true }),
-  );
-  public bulkResponse$: Observable<AdminImageBulkMetadataResult> = of({
-    requestedCount: 1,
-    updatedCount: 1,
-  });
-  public deleteResponse$: Observable<boolean> = of(true);
-  public createTagResponse$: Observable<ImageTagDto> = of(
-    createTag('created-tag'),
-  );
-
-  public readonly queryCalls: AdminImageSearchQuery[] = [];
-  public readonly updateCalls: Array<{
-    id: string;
-    request: UpdateAdminImageRequest;
-  }> = [];
-  public readonly watermarkCalls: string[] = [];
-  public readonly bulkCalls: AdminImageBulkMetadataUpdate[] = [];
-  public readonly deleteCalls: string[] = [];
-  public readonly createTagCalls: CreateAdminImageTagRequest[] = [];
-
-  getAdminImages(
-    query: Partial<AdminImageSearchQuery> = {},
-  ): Observable<PagedResult<ImageDto>> {
-    this.queryCalls.push(query as AdminImageSearchQuery);
-    return this.pageResponse$;
-  }
-
-  getAdminImageTags(): Observable<ImageTagDto[]> {
-    return this.tagsResponse$;
-  }
-
-  updateAdminImage(
-    id: string,
-    request: UpdateAdminImageRequest,
-  ): Observable<ImageDto> {
-    this.updateCalls.push({ id, request });
-    return this.updateResponse$;
-  }
-
-  applyWatermark(imageId: string): Observable<ImageDto> {
-    this.watermarkCalls.push(imageId);
-    return this.watermarkResponse$;
-  }
-
-  createAdminImageTag(
-    request: CreateAdminImageTagRequest,
-  ): Observable<ImageTagDto> {
-    this.createTagCalls.push(request);
-    return this.createTagResponse$;
-  }
-
-  updateAdminImagesBulkMetadata(
-    request: AdminImageBulkMetadataUpdate,
-  ): Observable<AdminImageBulkMetadataResult> {
-    this.bulkCalls.push(request);
-    return this.bulkResponse$;
-  }
-
-  deleteImage(imageId: string): Observable<boolean> {
-    this.deleteCalls.push(imageId);
-    return this.deleteResponse$;
-  }
-}
 
 describe('AdminSiteStateFacade', () => {
   let facade: AdminSiteStateFacade;

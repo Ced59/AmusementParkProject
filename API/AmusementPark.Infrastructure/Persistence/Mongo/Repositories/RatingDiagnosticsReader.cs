@@ -952,36 +952,13 @@ public sealed class RatingDiagnosticsReader : IRatingDiagnosticsReader
         return value.AsString;
     }
 
-    private sealed record ExpectedIndex(
-        string Collection,
-        string Name,
-        bool IsUnique,
-        BsonDocument Keys);
 
-    private sealed record RatingIndexAssessment(
-        IReadOnlyCollection<RatingIndexStatusResult> Statuses,
-        bool UserRatingsTargetLookupSupported,
-        bool RatingAggregatesTargetLookupSupported);
 
-    private sealed record EligibleTargetInventory(
-        IReadOnlySet<string> ParkIds,
-        IReadOnlySet<string> ParkItemIds);
 
-    private sealed class EligibleParkProjection
-    {
-        public string Id { get; init; } = string.Empty;
 
-        public ParkStatus Status { get; init; }
-    }
 
-    private sealed class EligibleParkItemProjection
-    {
-        public string Id { get; init; } = string.Empty;
 
-        public string ParkId { get; init; } = string.Empty;
 
-        public ParkItemCategory Category { get; init; }
 
-        public string? AttractionStatus { get; init; }
-    }
+
 }

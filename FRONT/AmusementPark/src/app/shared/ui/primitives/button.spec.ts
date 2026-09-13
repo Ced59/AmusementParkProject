@@ -3,34 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonDirective } from './button';
-
-@Component({
-  standalone: true,
-  imports: [ButtonDirective, FormsModule],
-  template: `
-    <form (ngSubmit)="submitCount += 1">
-      <button appUiButton type="submit" [loading]="loading()">{{ label() }}</button>
-    </form>
-  `
-})
-class ProjectedContentSubmitButtonHostComponent {
-  loading: WritableSignal<boolean> = signal(false);
-  label: WritableSignal<string> = signal('Save');
-  submitCount: number = 0;
-}
-
-@Component({
-  standalone: true,
-  imports: [ButtonDirective],
-  template: `
-    <button appUiButton type="button" icon="pi pi-save" [label]="label()" [loading]="loading()" (click)="clickCount += 1"></button>
-  `
-})
-class GeneratedContentButtonHostComponent {
-  loading: WritableSignal<boolean> = signal(false);
-  label: WritableSignal<string> = signal('Save');
-  clickCount: number = 0;
-}
+import { ProjectedContentSubmitButtonHostComponent } from './test-helpers/button/projected-content-submit-button-host-component';
+import { GeneratedContentButtonHostComponent } from './test-helpers/button/generated-content-button-host-component';
 
 describe('ButtonDirective', () => {
   it('keeps projected Angular content stable when loading changes on a submit button', async () => {

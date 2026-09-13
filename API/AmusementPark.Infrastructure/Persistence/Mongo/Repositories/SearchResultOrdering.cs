@@ -118,19 +118,5 @@ internal static class SearchResultOrdering
             .ToLowerInvariant();
     }
 
-    private sealed class SearchResultPriorityRule
-    {
-        public SearchResultPriorityRule(int priority, IReadOnlyCollection<string> resourceTypes, IReadOnlyCollection<string> categories)
-        {
-            this.Priority = priority;
-            this.ResourceTypes = resourceTypes;
-            this.Categories = categories;
-        }
 
-        public int Priority { get; }
-
-        public IReadOnlyCollection<string> ResourceTypes { get; }
-
-        public IReadOnlyCollection<string> Categories { get; }
-    }
 }

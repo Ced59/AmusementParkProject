@@ -273,18 +273,5 @@ public sealed class ParkPricingQueryHandlersTests
         return repository;
     }
 
-    private sealed class FixedTimeProvider : TimeProvider
-    {
-        private readonly DateTimeOffset now;
 
-        public FixedTimeProvider(DateTimeOffset now)
-        {
-            this.now = now;
-        }
-
-        public override DateTimeOffset GetUtcNow()
-        {
-            return this.now;
-        }
-    }
 }

@@ -1,15 +1,6 @@
 namespace AmusementPark.Core.Domain.Ratings;
 
 /// <summary>
-/// Explique pourquoi des observations privées invitent à revoir une note globale.
-/// </summary>
-public enum GlobalRatingSuggestionReason
-{
-    RecentExperiencesLower = 1,
-    RecentExperiencesHigher = 2,
-}
-
-/// <summary>
 /// Politique pure et déterministe. Elle ne modifie jamais la note globale.
 /// </summary>
 public sealed class GlobalRatingSuggestionPolicy

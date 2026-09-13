@@ -20,15 +20,7 @@ import {
 } from '@app/testing/common-test-providers';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkWeatherPageComponent } from './park-weather-page.component';
-
-class FakeTranslationService {
-  public readonly languageChanged: EventEmitter<string> =
-    new EventEmitter<string>();
-
-  getCurrentLang(): string {
-    return 'fr';
-  }
-}
+import { FakeTranslationService } from './test-helpers/park-weather-page.component/fake-translation-service';
 
 describe('ParkWeatherPageComponent', () => {
   let fixture: ComponentFixture<ParkWeatherPageComponent>;

@@ -12,7 +12,7 @@ import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
-import { ThemeService } from '@app/services/themes/themes.service';
+import { ThemeService } from '@app/services/themes/theme.service';
 import { TranslationService } from '@app/services/translation.service';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
@@ -21,17 +21,7 @@ import { PublicHeaderComponent } from './public-header.component';
 import { Dialog } from '@shared/ui/primitives/dialog';
 import { UserDto } from '@app/models/users/user_dto';
 import { CurrentUserService } from '@app/services/users/current-user.service';
-
-class PublicParkNavigationTreeFacadeStub {
-  private readonly treeSignal = signal<PublicParkNavigationTreeViewModel>({
-    isAvailable: false,
-    isLoading: false,
-    items: [],
-  });
-
-  readonly tree: Signal<PublicParkNavigationTreeViewModel> =
-    this.treeSignal.asReadonly();
-}
+import { PublicParkNavigationTreeFacadeStub } from './test-helpers/public-header.component/public-park-navigation-tree-facade-stub';
 
 describe('PublicHeaderComponent', () => {
   let fixture: ComponentFixture<PublicHeaderComponent>;

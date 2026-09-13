@@ -113,7 +113,5 @@ public sealed class InMemoryRatingRankSnapshotCache : IRatingRankSnapshotCache, 
         return $"ratings:published-rank-snapshot:{scopeKey.Value}:{methodologyVersion.Value}:{sourceRevision}:{pointerVersion}:{snapshotId.Value}";
     }
 
-    private sealed record PublishedRatingRankSnapshot(
-        long Generation,
-        RatingPublishedRankingSnapshot Snapshot);
+
 }

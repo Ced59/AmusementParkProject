@@ -14,50 +14,13 @@ import {
   AdminRatingRankingStatePort
 } from '../../state/admin-rating-ranking-state-data.ports';
 import { AdminRatingRankingComponent } from './admin-rating-ranking.component';
+import { FakeAdminRatingRankingPort } from './test-helpers/admin-rating-ranking.component/fake-admin-rating-ranking-port';
 
 interface AdminRatingRankingComponentHarness {
   policyForm: FormGroup;
   rebuildConfirmed: FormControl<boolean>;
   rebuild(): void;
   impactUnavailableKey(scope: { isSourceTruncated: boolean }): string;
-}
-
-class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
-  public readonly previewRequests: RatingRankingPolicyCandidateRequest[] = [];
-  public rebuildCallCount: number = 0;
-  public rebuildResult: Observable<RatingRankingRebuildRequestResult> | null = null;
-
-  getDashboard(): Observable<RatingRankingAdministration> {
-    return of(createDashboard());
-  }
-
-  previewImpact(request: RatingRankingPolicyCandidateRequest): Observable<RatingRankingPolicyImpact> {
-    this.previewRequests.push(request);
-    return of({
-      generatedAtUtc: '2026-09-02T12:00:00Z',
-      candidate: request,
-      gainedEligibilityCount: 0,
-      lostEligibilityCount: 0,
-      comparedRankCount: 0,
-      totalAbsoluteRankChange: 0,
-      averageRankChange: null,
-      maximumRankChange: null,
-      scopeCountBelowMinimum: 0,
-      incompleteParkCompositionCount: 0,
-      estimatedTargetCount: 0,
-      estimatedChunkCount: 0,
-      scopes: []
-    });
-  }
-
-  rebuild(): Observable<RatingRankingRebuildRequestResult> {
-    this.rebuildCallCount++;
-    return this.rebuildResult ?? of({
-      requestedAtUtc: '2026-09-02T12:00:00Z',
-      scheduledScopeCount: 1,
-      scopes: [{ scopeKey: 'parks:global', requestedSourceRevision: 8 }]
-    });
-  }
 }
 
 describe('AdminRatingRankingComponent', () => {

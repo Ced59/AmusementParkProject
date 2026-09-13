@@ -14,7 +14,7 @@ import {
   ADMIN_CONTEXTUAL_BLOCK_FORM_DATA_PORT,
   AdminContextualBlockFormDataPort
 } from './admin-contextual-block-form-data.ports';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 export interface AdminContextualBlockLocalizedFormField {
   readonly languageCode: string;

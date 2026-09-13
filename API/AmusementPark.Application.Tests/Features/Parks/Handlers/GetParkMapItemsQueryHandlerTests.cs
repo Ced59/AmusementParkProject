@@ -81,18 +81,7 @@ public sealed class GetParkMapItemsQueryHandlerTests
         return park;
     }
 
-    private sealed record MapItemsCall(string ParkId, bool IncludeHidden, ClosedEntityFilter ClosedFilter);
 
-    private sealed class FakeParkMapItemsReadRepository : IParkMapItemsReadRepository
-    {
-        public ParkMapItemsResult? MapItems { get; init; }
 
-        public List<MapItemsCall> Calls { get; } = new List<MapItemsCall>();
 
-        public Task<ParkMapItemsResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
-        {
-            this.Calls.Add(new MapItemsCall(parkId, includeHidden, closedFilter));
-            return Task.FromResult(this.MapItems);
-        }
-    }
 }

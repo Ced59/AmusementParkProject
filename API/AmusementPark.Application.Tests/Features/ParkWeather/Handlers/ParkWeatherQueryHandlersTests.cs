@@ -260,41 +260,7 @@ public sealed class ParkWeatherQueryHandlersTests
         return snapshot;
     }
 
-    private sealed class TestRefreshSettings : IParkWeatherRefreshSettings
-    {
-        public bool IsAutomaticRefreshEnabled => true;
 
-        public int ForecastDays => 7;
 
-        public int ForecastPastRetentionDays => 3;
 
-        public bool IncludeYesterdayObservation => true;
-
-        public int HistoricalBackfillYears => 3;
-
-        public int HistoricalComparisonYearsLimit => 2;
-
-        public int DelayBetweenParksMilliseconds => 0;
-
-        public string AutomaticRefreshTimeZoneId => "UTC";
-
-        public int AutomaticRefreshHour => 2;
-
-        public int AutomaticRefreshMinute => 15;
-    }
-
-    private sealed class FixedTimeProvider : TimeProvider
-    {
-        private readonly DateTimeOffset utcNow;
-
-        public FixedTimeProvider(DateTimeOffset utcNow)
-        {
-            this.utcNow = utcNow;
-        }
-
-        public override DateTimeOffset GetUtcNow()
-        {
-            return this.utcNow;
-        }
-    }
 }

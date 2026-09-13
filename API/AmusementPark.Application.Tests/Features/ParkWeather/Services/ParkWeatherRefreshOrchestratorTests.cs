@@ -81,7 +81,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings(),
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
             cacheInvalidator.Object,
             new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -184,7 +184,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings(),
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
             cacheInvalidator.Object,
             new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -255,7 +255,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings(),
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
             cacheInvalidator.Object,
             new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -338,7 +338,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings(),
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
             cacheInvalidator.Object,
             new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -417,7 +417,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings(),
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings(),
             cacheInvalidator.Object,
             notificationService.Object,
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -506,7 +506,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             weatherRepository.Object,
             runRepository.Object,
             providerStrategyResolver.Object,
-            new TestRefreshSettings { HistoricalBackfillYears = 3 },
+            new ParkWeatherRefreshOrchestratorTestsTestRefreshSettings { HistoricalBackfillYears = 3 },
             cacheInvalidator.Object,
             new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
@@ -575,26 +575,5 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         };
     }
 
-    private sealed class TestRefreshSettings : IParkWeatherRefreshSettings
-    {
-        public bool IsAutomaticRefreshEnabled => true;
 
-        public int ForecastDays => 7;
-
-        public int ForecastPastRetentionDays => 3;
-
-        public bool IncludeYesterdayObservation => true;
-
-        public int HistoricalBackfillYears { get; init; }
-
-        public int HistoricalComparisonYearsLimit { get; init; } = 10;
-
-        public int DelayBetweenParksMilliseconds => 0;
-
-        public string AutomaticRefreshTimeZoneId => "UTC";
-
-        public int AutomaticRefreshHour => 2;
-
-        public int AutomaticRefreshMinute => 15;
-    }
 }

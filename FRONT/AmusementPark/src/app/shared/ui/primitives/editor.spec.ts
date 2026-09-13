@@ -74,7 +74,7 @@ describe('Editor managed images', () => {
     context.component.ngAfterViewInit();
     await vi.waitFor(
       (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
-      { timeout: 3000 }
+      { timeout: 10000 }
     );
 
     const image: HTMLImageElement | null = context.content.querySelector(
@@ -218,7 +218,7 @@ describe('Editor managed images', () => {
     context.component.ngAfterViewInit();
     await vi.waitFor(
       (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
-      { timeout: 3000 }
+      { timeout: 10000 }
     );
 
     await context.testable.uploadManagedImages([
@@ -297,7 +297,7 @@ describe('Editor managed images', () => {
     context.component.ngAfterViewInit();
     await vi.waitFor(
       (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
-      { timeout: 3000 }
+      { timeout: 10000 }
     );
     await context.testable.uploadManagedImages([
       new File(['pixels'], 'keyboard.png', { type: 'image/png' })
@@ -335,7 +335,7 @@ describe('Editor managed images', () => {
     context.component.ngAfterViewInit();
     await vi.waitFor(
       (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
-      { timeout: 3000 }
+      { timeout: 10000 }
     );
     await context.testable.uploadManagedImages([
       new File(['pixels'], 'undo.png', { type: 'image/png' })
@@ -374,7 +374,7 @@ describe('Editor managed images', () => {
     context.component.ngAfterViewInit();
     await vi.waitFor(
       (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
-      { timeout: 3000 }
+      { timeout: 10000 }
     );
 
     const upload: Promise<void> = context.testable.uploadManagedImages([

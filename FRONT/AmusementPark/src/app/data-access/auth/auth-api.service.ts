@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { AuthMessageResponse } from '@app/models/auth/auth-message-response';
-import { UserCredentials } from '@app/models/users/user_credentials';
+import { UserCredentials } from '@app/models/users/user-credentials';
 import { UserDto } from '@app/models/users/user_dto';
 import { UserRegister } from '@app/models/users/user-register';
 import { UserToken } from '@app/models/users/user_token';

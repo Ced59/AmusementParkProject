@@ -103,41 +103,7 @@ public sealed class ExternalVideoMetadataProviderTests
         Assert.DoesNotContain("comment", handler.LastRequestUri.Query, StringComparison.OrdinalIgnoreCase);
     }
 
-    private sealed class SingleClientFactory : IHttpClientFactory
-    {
-        private readonly HttpClient client;
 
-        public SingleClientFactory(HttpClient client)
-        {
-            this.client = client;
-        }
 
-        public HttpClient CreateClient(string name)
-        {
-            return this.client;
-        }
-    }
 
-    private sealed class RecordingHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly string responseBody;
-
-        public RecordingHttpMessageHandler(string responseBody)
-        {
-            this.responseBody = responseBody;
-        }
-
-        public Uri? LastRequestUri { get; private set; }
-
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            this.LastRequestUri = request.RequestUri;
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(this.responseBody, Encoding.UTF8, "application/json"),
-            };
-
-            return Task.FromResult(response);
-        }
-    }
 }

@@ -11,24 +11,7 @@ import { PublicContextualBlockDirective } from '@features/public/contextual-edit
 import { AdminContextualBlockSelectionFacade } from '../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../state/admin-public-view-mode.facade';
 import { AdminContextualBlockDomControllerService } from './admin-contextual-block-dom-controller.service';
-
-@Component({
-  template: `
-    <section [appPublicContextualBlock]="marker">
-      <a href="/fr/parks" (click)="$event.preventDefault()">Visitor link</a>
-      <p>Visitor content</p>
-    </section>
-  `,
-  imports: [PublicContextualBlockDirective],
-})
-class HostComponent {
-  marker: PublicContextualBlockMarker = {
-    type: 'park.description',
-    parkId: 'park-1',
-    contextLabel: 'Phantasialand',
-    languageCode: 'fr',
-  };
-}
+import { HostComponent } from './test-helpers/admin-contextual-block-dom-controller.service/host-component';
 
 describe('AdminContextualBlockDomControllerService', () => {
   let fixture: ComponentFixture<HostComponent>;

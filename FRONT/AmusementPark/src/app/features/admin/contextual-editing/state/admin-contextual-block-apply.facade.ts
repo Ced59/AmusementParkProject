@@ -8,7 +8,7 @@ import {
   AdminContextualBlockApplyDataPort
 } from './admin-contextual-block-apply-data.ports';
 import { AdminContextualBlockPreviewFacade } from './admin-contextual-block-preview.facade';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 @Injectable({
   providedIn: 'root'

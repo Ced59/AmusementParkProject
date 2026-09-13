@@ -36,154 +36,16 @@ import {
   ParkItemDetailZonesPort,
 } from './park-item-detail-data.ports';
 import { ParkItemDetailStateFacade } from './park-item-detail-state.facade';
-
-class FakeItemsPort implements ParkItemDetailItemsPort {
-  public itemResponse$: Observable<ParkItem> = of(createParkItem());
-  public relatedResponse$: Observable<ParkItem[]> = of([]);
-  public siblingResponse$: Observable<ParkItemSiblingNavigation> = of(
-    createSiblingNavigation(),
-  );
-  public readonly itemCalls: string[] = [];
-  public readonly relatedCalls: string[] = [];
-  public readonly siblingCalls: string[] = [];
-
-  getParkItemById(id: string): Observable<ParkItem> {
-    this.itemCalls.push(id);
-    return this.itemResponse$;
-  }
-
-  getParkItemSiblingNavigation(
-    itemId: string,
-  ): Observable<ParkItemSiblingNavigation> {
-    this.siblingCalls.push(itemId);
-    return this.siblingResponse$;
-  }
-
-  getRelatedParkItems(
-    itemId: string,
-    limit: number = 3,
-  ): Observable<ParkItem[]> {
-    this.relatedCalls.push(`${itemId}:${limit}`);
-    return this.relatedResponse$;
-  }
-}
-
-class FakeParksPort implements ParkItemDetailParksPort {
-  public parkResponse$: Observable<Park> = of(createPark());
-  public readonly calls: string[] = [];
-
-  getParkById(id: string): Observable<Park> {
-    this.calls.push(id);
-    return this.parkResponse$;
-  }
-}
-
-class FakeManufacturersPort implements ParkItemDetailManufacturersPort {
-  public response$: Observable<{
-    name?: string | null;
-  }> = of({ name: 'Intamin' });
-  public readonly calls: string[] = [];
-
-  getAttractionManufacturerById(id: string): Observable<{
-    name?: string | null;
-  }> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeZonesPort implements ParkItemDetailZonesPort {
-  public response$: Observable<{
-    name?: string | null;
-  }> = of({ name: 'Mexico' });
-  public readonly calls: string[] = [];
-
-  getParkZoneById(id: string): Observable<{
-    name?: string | null;
-  }> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeImagesPort implements ParkItemDetailImagesPort {
-  public photosResponse$: Observable<ImageDto[]> = of([]);
-  public readonly imageCalls: {
-    ownerType: ImageOwnerType;
-    ownerId: string;
-    category: ImageCategory;
-    page?: number;
-    size?: number;
-  }[] = [];
-
-  getImages(
-    ownerType: ImageOwnerType,
-    ownerId: string,
-    category: ImageCategory,
-    page?: number,
-    size?: number,
-  ): Observable<ImageDto[]> {
-    this.imageCalls.push({ ownerType, ownerId, category, page, size });
-    return this.photosResponse$;
-  }
-}
-
-class FakeVideosPort implements ParkItemDetailVideosPort {
-  public videosResponse$: Observable<PagedResult<VideoDto>> = of(
-    createVideosPage(1),
-  );
-  public readonly calls: VideoSearchQuery[] = [];
-
-  getVideosPage(
-    query: VideoSearchQuery = {},
-  ): Observable<PagedResult<VideoDto>> {
-    this.calls.push(query);
-    return this.videosResponse$;
-  }
-}
-
-class FakeTechnicalPagesPort implements ParkItemDetailTechnicalPagesPort {
-  public response$: Observable<TechnicalPage[]> = of([createTechnicalPage()]);
-  public callCount = 0;
-
-  getPublicLinkIndex(): Observable<TechnicalPage[]> {
-    this.callCount += 1;
-    return this.response$;
-  }
-}
-
-class FakeHistoryPort implements ParkItemDetailHistoryPort {
-  public timelineResponse$: Observable<HistoryTimeline> = of(
-    createHistoryTimeline(0),
-  );
-  public readonly calls: string[] = [];
-
-  getParkItemTimeline(parkItemId: string): Observable<HistoryTimeline> {
-    this.calls.push(parkItemId);
-    return this.timelineResponse$;
-  }
-}
-
-class FakeSsrRuntimeService {
-  public useMinimalPublicData = false;
-
-  shouldUseMinimalPublicData(): boolean {
-    return this.useMinimalPublicData;
-  }
-}
-
-class FakeSsrHttpStatusService {
-  public notFoundCallCount = 0;
-  public readonly statusCodes: number[] = [];
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-
-  setStatus(statusCode: number): void {
-    this.statusCodes.push(statusCode);
-  }
-}
+import { FakeItemsPort } from './test-helpers/park-item-detail-state.facade/fake-items-port';
+import { FakeParksPort } from './test-helpers/park-item-detail-state.facade/fake-parks-port';
+import { FakeManufacturersPort } from './test-helpers/park-item-detail-state.facade/fake-manufacturers-port';
+import { FakeZonesPort } from './test-helpers/park-item-detail-state.facade/fake-zones-port';
+import { FakeImagesPort } from './test-helpers/park-item-detail-state.facade/fake-images-port';
+import { FakeVideosPort } from './test-helpers/park-item-detail-state.facade/fake-videos-port';
+import { FakeTechnicalPagesPort } from './test-helpers/park-item-detail-state.facade/fake-technical-pages-port';
+import { FakeHistoryPort } from './test-helpers/park-item-detail-state.facade/fake-history-port';
+import { FakeSsrRuntimeService } from './test-helpers/park-item-detail-state.facade/fake-ssr-runtime-service';
+import { FakeSsrHttpStatusService } from './test-helpers/park-item-detail-state.facade/fake-ssr-http-status-service';
 
 function createPark(): Park {
   return {

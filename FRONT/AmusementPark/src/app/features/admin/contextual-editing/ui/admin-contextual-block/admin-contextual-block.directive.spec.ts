@@ -10,19 +10,7 @@ import { AdminContextualBlockInstance } from '../../models/admin-contextual-bloc
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
 import { AdminContextualBlockDirective } from './admin-contextual-block.directive';
-
-@Component({
-  template: `
-    <section [appAdminContextualBlock]="block">
-      <a href="/fr/parks" (click)="$event.preventDefault()">Visitor link</a>
-      <p>Visitor content</p>
-    </section>
-  `,
-  imports: [AdminContextualBlockDirective],
-})
-class HostComponent {
-  block: AdminContextualBlockInstance | null = createBlock();
-}
+import { HostComponent } from './test-helpers/admin-contextual-block.directive/host-component';
 
 describe('AdminContextualBlockDirective', () => {
   let fixture: ComponentFixture<HostComponent>;

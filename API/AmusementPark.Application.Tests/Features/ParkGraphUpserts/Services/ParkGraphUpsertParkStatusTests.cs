@@ -43,7 +43,7 @@ public sealed class ParkGraphUpsertParkStatusTests
     public async Task ApplyAsync_ShouldNormalizeCanonicalAndToleratedStatusValues(string input, ParkStatus expected)
     {
         Park existingPark = new Park { Id = "park-1", Name = "Status Park", Status = ParkStatus.Operating };
-        ProcessorContext context = CreateProcessorContext(existingPark);
+        ParkGraphUpsertParkStatusTestsProcessorContext context = CreateProcessorContext(existingPark);
         ParkGraphUpsertRequest request = CreateRequest($$"""
         {
           "park": { "status": "{{input}}" }
@@ -59,7 +59,7 @@ public sealed class ParkGraphUpsertParkStatusTests
     [Fact]
     public async Task ApplyAsync_WhenCreatingPlannedPark_ShouldKeepItHiddenByDefaultWithoutStatusWarning()
     {
-        ProcessorContext context = CreateProcessorContext(null);
+        ParkGraphUpsertParkStatusTestsProcessorContext context = CreateProcessorContext(null);
         ParkGraphUpsertRequest request = CreateRequest("""
         {
           "identity": { "name": "Future Park", "countryCode": "RO" },
@@ -86,7 +86,7 @@ public sealed class ParkGraphUpsertParkStatusTests
     public async Task PreviewAsync_WhenNonOperatingParkContainsOpeningHours_ShouldRejectSchedule(ParkStatus status)
     {
         Park existingPark = new Park { Id = "park-1", Name = "Lifecycle Park", Status = status };
-        ProcessorContext context = CreateProcessorContext(existingPark);
+        ParkGraphUpsertParkStatusTestsProcessorContext context = CreateProcessorContext(existingPark);
         ParkGraphUpsertRequest request = CreateRequest("""
         {
           "openingHours": {
@@ -131,7 +131,7 @@ public sealed class ParkGraphUpsertParkStatusTests
         Assert.Equal(status.ToString(), document.RootElement.GetProperty("park").GetProperty("status").GetString());
 
         Park targetPark = new Park { Id = "target-park", Name = "Target Park", Status = ParkStatus.Operating };
-        ProcessorContext context = CreateProcessorContext(targetPark);
+        ParkGraphUpsertParkStatusTestsProcessorContext context = CreateProcessorContext(targetPark);
         ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
         {
             TargetParkId = "target-park",
@@ -186,7 +186,7 @@ public sealed class ParkGraphUpsertParkStatusTests
         };
     }
 
-    private static ProcessorContext CreateProcessorContext(Park? existingPark)
+    private static ParkGraphUpsertParkStatusTestsProcessorContext CreateProcessorContext(Park? existingPark)
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Loose);
         Park? savedPark = null;
@@ -237,21 +237,8 @@ public sealed class ParkGraphUpsertParkStatusTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance);
 
-        return new ProcessorContext(processor, () => savedPark);
+        return new ParkGraphUpsertParkStatusTestsProcessorContext(processor, () => savedPark);
     }
 
-    private sealed class ProcessorContext
-    {
-        private readonly Func<Park?> savedParkAccessor;
 
-        public ProcessorContext(ParkGraphUpsertProcessor processor, Func<Park?> savedParkAccessor)
-        {
-            this.Processor = processor;
-            this.savedParkAccessor = savedParkAccessor;
-        }
-
-        public ParkGraphUpsertProcessor Processor { get; }
-
-        public Park? SavedPark => this.savedParkAccessor();
-    }
 }

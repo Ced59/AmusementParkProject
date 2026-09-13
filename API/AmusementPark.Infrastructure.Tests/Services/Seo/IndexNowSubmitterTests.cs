@@ -40,33 +40,7 @@ public sealed class IndexNowSubmitterTests
         return urlList.GetArrayLength();
     }
 
-    private sealed class RecordingHttpClientFactory : IHttpClientFactory
-    {
-        public List<string> RequestBodies { get; } = new List<string>();
 
-        public HttpClient CreateClient(string name)
-        {
-            return new HttpClient(new RecordingHttpMessageHandler(this.RequestBodies));
-        }
-    }
 
-    private sealed class RecordingHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly List<string> requestBodies;
 
-        public RecordingHttpMessageHandler(List<string> requestBodies)
-        {
-            this.requestBodies = requestBodies;
-        }
-
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            string requestBody = request.Content is null
-                ? string.Empty
-                : await request.Content.ReadAsStringAsync(cancellationToken);
-            this.requestBodies.Add(requestBody);
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
-    }
 }

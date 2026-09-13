@@ -13,44 +13,7 @@ import {
   AdminHistoryDataPort,
 } from './admin-history-data.ports';
 import { AdminHistoryStateFacade } from './admin-history-state.facade';
-
-class FakeAdminHistoryPort implements AdminHistoryDataPort {
-  public response$: Observable<PagedResult<HistoryEvent>> = of(
-    createPagedResult([createHistoryEvent('event-1')]),
-  );
-  public readonly queries: AdminHistoryEventListQuery[] = [];
-  public readonly createdRequests: HistoryEventWriteModel[] = [];
-  public readonly updatedRequests: {
-    eventId: string;
-    request: HistoryEventWriteModel;
-  }[] = [];
-  public readonly deletedEventIds: string[] = [];
-
-  getAdminEvents(
-    query: AdminHistoryEventListQuery,
-  ): Observable<PagedResult<HistoryEvent>> {
-    this.queries.push(query);
-    return this.response$;
-  }
-
-  createAdminEvent(request: HistoryEventWriteModel): Observable<HistoryEvent> {
-    this.createdRequests.push(request);
-    return of(createHistoryEvent('created-event'));
-  }
-
-  updateAdminEvent(
-    eventId: string,
-    request: HistoryEventWriteModel,
-  ): Observable<HistoryEvent> {
-    this.updatedRequests.push({ eventId, request });
-    return of(createHistoryEvent(eventId));
-  }
-
-  deleteAdminEvent(eventId: string): Observable<boolean> {
-    this.deletedEventIds.push(eventId);
-    return of(true);
-  }
-}
+import { FakeAdminHistoryPort } from './test-helpers/admin-history-state.facade/fake-admin-history-port';
 
 describe('AdminHistoryStateFacade', () => {
   let facade: AdminHistoryStateFacade;

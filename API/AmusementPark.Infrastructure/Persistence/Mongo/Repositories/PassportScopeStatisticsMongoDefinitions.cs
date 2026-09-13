@@ -181,39 +181,3 @@ internal static class PassportScopeStatisticsMongoDefinitions
             });
     }
 }
-
-internal sealed class PassportScopeVisitSourceDocument
-{
-    public string Id { get; init; } = string.Empty;
-    public string ParkId { get; init; } = string.Empty;
-    public VisitDateDocument Date { get; init; } = new VisitDateDocument();
-    public byte? ParkAssessmentValueHalfSteps { get; init; }
-    public long? ContentMutationFenceToken { get; init; }
-    public long? ContentMutationFenceStableToken { get; init; }
-    public bool ContentMutationFenceReady { get; init; }
-}
-
-internal sealed class PassportScopeOccurrenceSourceDocument
-{
-    public string Id { get; init; } = string.Empty;
-    public string VisitId { get; init; } = string.Empty;
-    public string ParkId { get; init; } = string.Empty;
-    public string ParkItemId { get; init; } = string.Empty;
-    public RideOccurrenceStatus Status { get; init; }
-    public byte? AssessmentValueHalfSteps { get; init; }
-    public string? HistoricalCategory { get; init; }
-    public long? ContentMutationFenceToken { get; init; }
-}
-
-internal sealed class PassportScopeParkItemSourceDocument
-{
-    public string Id { get; init; } = string.Empty;
-    public ParkItemCategory Category { get; init; }
-}
-
-internal sealed class PassportScopeRatingSourceDocument
-{
-    public RatingTargetType TargetType { get; init; }
-    public string TargetId { get; init; } = string.Empty;
-    public double Value { get; init; }
-}

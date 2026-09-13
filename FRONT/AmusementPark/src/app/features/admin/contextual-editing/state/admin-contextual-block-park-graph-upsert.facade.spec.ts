@@ -13,7 +13,7 @@ import {
   ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT,
   AdminContextualBlockParkGraphUpsertDataPort,
 } from './admin-contextual-block-park-graph-upsert-data.ports';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 import { AdminContextualBlockParkGraphUpsertFacade } from './admin-contextual-block-park-graph-upsert.facade';
 
 describe('AdminContextualBlockParkGraphUpsertFacade', () => {

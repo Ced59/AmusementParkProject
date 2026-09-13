@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ThemeService } from './themes.service';
+import { ThemeService } from './theme.service';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('ThemeService', () => {

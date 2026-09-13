@@ -74,7 +74,5 @@ public sealed class GeolocatedEntityBaseTests
         Assert.Same(previousPosition, entity.Position);
     }
 
-    private sealed class TestGeolocatedEntity : GeolocatedEntityBase
-    {
-    }
+
 }

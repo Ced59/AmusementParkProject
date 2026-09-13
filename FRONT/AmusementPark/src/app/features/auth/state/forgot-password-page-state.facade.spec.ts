@@ -6,20 +6,7 @@ import {
   ForgotPasswordPageStateAuthApiServicePort,
 } from './forgot-password-page-state-data.ports';
 import { ForgotPasswordPageStateFacade } from './forgot-password-page-state.facade';
-
-class FakeAuthPort implements ForgotPasswordPageStateAuthApiServicePort {
-  public response$: Observable<{
-    message: string;
-  }> = of({ message: 'Email envoyé.' });
-  public readonly calls: string[] = [];
-
-  forgotPassword(email: string): Observable<{
-    message: string;
-  }> {
-    this.calls.push(email);
-    return this.response$;
-  }
-}
+import { FakeAuthPort } from './test-helpers/forgot-password-page-state.facade/fake-auth-port';
 
 describe('ForgotPasswordPageStateFacade', () => {
   let facade: ForgotPasswordPageStateFacade;

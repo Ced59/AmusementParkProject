@@ -36,15 +36,5 @@ internal static class UserVisitCreationFingerprint
         return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
     }
 
-    private sealed record CreationPayload(
-        string ParkId,
-        int Year,
-        int? Month,
-        int? Day,
-        VisitDatePrecision Precision,
-        bool IsApproximate,
-        string? TimeZoneId,
-        LocalServiceDayConvention ServiceDayConvention,
-        string? Title,
-        string? PrivateNote);
+
 }

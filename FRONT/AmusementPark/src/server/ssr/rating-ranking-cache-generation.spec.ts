@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   isRatingRankingDependentCacheKey,
   SsrPageCacheGenerationTracker,
-} from './rating-ranking-cache-generation';
+} from './ssr-page-cache-generation-tracker';
 
 describe('rating ranking SSR cache generations', () => {
   it.each([
