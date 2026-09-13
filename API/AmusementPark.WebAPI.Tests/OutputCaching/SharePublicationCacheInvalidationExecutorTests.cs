@@ -9,7 +9,7 @@ using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.OutputCaching;
 
-public sealed class SharePublicationCacheInvalidationQueueTests
+public sealed class SharePublicationCacheInvalidationExecutorTests
 {
     [Theory]
     [InlineData(SharePublicationType.PersonalRanking, "rankings/shared")]
@@ -20,13 +20,14 @@ public sealed class SharePublicationCacheInvalidationQueueTests
         SharePublicationType publicationType,
         string routeSegment)
     {
-        SharePublicationCacheInvalidationRequest source = new SharePublicationCacheInvalidationRequest(
-            "publication-1",
-            publicationType,
-            new[] { "old/token", "new token" });
+        SharePublicationCacheInvalidationRequest source =
+            new SharePublicationCacheInvalidationRequest(
+                "publication-1",
+                publicationType,
+                new[] { "old/token", "new token" });
 
         SsrPageCacheInvalidationRequest request =
-            SharePublicationCacheInvalidationQueue.BuildSsrRequest(source);
+            SharePublicationCacheInvalidationExecutor.BuildSsrRequest(source);
 
         Assert.False(request.All);
         Assert.False(request.AllowStale);
@@ -38,12 +39,13 @@ public sealed class SharePublicationCacheInvalidationQueueTests
     }
 
     [Fact]
-    public async Task TryInvalidateAsync_WhenSsrDoesNotConfirm_ShouldRequestRetryAfterPurgingSocialImages()
+    public async Task TryInvalidateAsync_WhenSsrDoesNotConfirm_ShouldRequestDurableRetry()
     {
-        SharePublicationCacheInvalidationRequest source = new SharePublicationCacheInvalidationRequest(
-            "publication-1",
-            SharePublicationType.VisitRecap,
-            new[] { "old-token", "new-token" });
+        SharePublicationCacheInvalidationRequest source =
+            new SharePublicationCacheInvalidationRequest(
+                "publication-1",
+                SharePublicationType.VisitRecap,
+                new[] { "old-token", "new-token" });
         Mock<IShareSocialImageCacheInvalidator> socialImages =
             new Mock<IShareSocialImageCacheInvalidator>(MockBehavior.Strict);
         socialImages.Setup(value => value.Invalidate(
@@ -58,12 +60,13 @@ public sealed class SharePublicationCacheInvalidationQueueTests
                     && !request.AllowStale),
                 CancellationToken.None))
             .ReturnsAsync(false);
-        SharePublicationCacheInvalidationQueue queue = new SharePublicationCacheInvalidationQueue(
-            socialImages.Object,
-            ssr.Object,
-            NullLogger<SharePublicationCacheInvalidationQueue>.Instance);
+        SharePublicationCacheInvalidationExecutor executor =
+            new SharePublicationCacheInvalidationExecutor(
+                socialImages.Object,
+                ssr.Object,
+                NullLogger<SharePublicationCacheInvalidationExecutor>.Instance);
 
-        bool succeeded = await queue.TryInvalidateAsync(source, CancellationToken.None);
+        bool succeeded = await executor.TryInvalidateAsync(source, CancellationToken.None);
 
         Assert.False(succeeded);
         socialImages.VerifyAll();

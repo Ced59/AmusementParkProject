@@ -14,7 +14,7 @@ public sealed class SharePublicationLifecycleService
     private readonly IShareTokenFactory tokenFactory;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSnapshotWriter> snapshotWriters;
-    private readonly ISharePublicationCacheInvalidationQueue? invalidationQueue;
+    private readonly SharePublicationCacheInvalidationScheduler? invalidationScheduler;
     private readonly TimeProvider timeProvider;
 
     public SharePublicationLifecycleService(
@@ -22,7 +22,7 @@ public sealed class SharePublicationLifecycleService
         IShareTokenFactory tokenFactory,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
         IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null,
-        ISharePublicationCacheInvalidationQueue? invalidationQueue = null,
+        SharePublicationCacheInvalidationScheduler? invalidationScheduler = null,
         TimeProvider? timeProvider = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
@@ -31,7 +31,7 @@ public sealed class SharePublicationLifecycleService
         this.sources = sources.ToDictionary(static source => source.PublicationType);
         this.snapshotWriters = (snapshotWriters ?? Array.Empty<ISharePublicationSnapshotWriter>())
             .ToDictionary(static writer => writer.PublicationType);
-        this.invalidationQueue = invalidationQueue;
+        this.invalidationScheduler = invalidationScheduler;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -120,6 +120,11 @@ public sealed class SharePublicationLifecycleService
                 this.tokenFactory.Generate(),
                 sourcePublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
+            await this.ScheduleInvalidationAsync(
+                publication,
+                cancellationToken,
+                previousShareId,
+                publication.ShareToken!.Value.Value);
             SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
                 publication,
                 expectedVersion,
@@ -135,11 +140,6 @@ public sealed class SharePublicationLifecycleService
                     SharingApplicationErrors.PublicationChangedConcurrently());
             }
 
-            SharePublicationCacheInvalidationDispatcher.Enqueue(
-                this.invalidationQueue,
-                publication,
-                previousShareId,
-                publication.ShareToken!.Value.Value);
             ApplicationResult<long> confirmedSourceVersion = await source.GetCurrentSourceVersionAsync(
                 new SharePublicationSourceVersionRequest(
                     publication.SourceScopeKey,
@@ -214,16 +214,16 @@ public sealed class SharePublicationLifecycleService
             publication.Revoke(
                 publication.PublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
+            await this.ScheduleInvalidationAsync(
+                publication,
+                cancellationToken,
+                previousShareId);
             SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
                 publication,
                 expectedVersion,
                 cancellationToken);
             if (outcome == SharePublicationWriteOutcome.Success)
             {
-                SharePublicationCacheInvalidationDispatcher.Enqueue(
-                    this.invalidationQueue,
-                    publication,
-                    previousShareId);
                 return Success(publication);
             }
 
@@ -263,17 +263,27 @@ public sealed class SharePublicationLifecycleService
         current.Revoke(
             current.PublicationVersion,
             this.timeProvider.GetUtcNow().UtcDateTime);
-        SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
+        await this.ScheduleInvalidationAsync(
+            current,
+            cancellationToken,
+            shareId);
+        _ = await this.repository.ReplaceAsync(
             current,
             expectedVersion,
             cancellationToken);
-        if (outcome == SharePublicationWriteOutcome.Success)
-        {
-            SharePublicationCacheInvalidationDispatcher.Enqueue(
-                this.invalidationQueue,
-                current,
-                shareId);
-        }
+    }
+
+    private Task ScheduleInvalidationAsync(
+        SharePublication publication,
+        CancellationToken cancellationToken,
+        params string?[] shareIds)
+    {
+        return this.invalidationScheduler?.ScheduleAsync(
+                publication,
+                publication.Version,
+                cancellationToken,
+                shareIds)
+            ?? Task.CompletedTask;
     }
 
     private static ApplicationResult<SharePublicationSettingsResult> Success(

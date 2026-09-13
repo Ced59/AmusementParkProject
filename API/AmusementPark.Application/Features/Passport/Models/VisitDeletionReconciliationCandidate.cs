@@ -9,4 +9,6 @@ public sealed record VisitDeletionReconciliationCandidate(
     DateTime DeletedAtUtc,
     DateTime PurgeScheduledForUtc,
     bool IsExportInvalidationEnsured,
-    bool IsPurgeJobEnsured);
+    bool IsPurgeJobEnsured,
+    int? VisitYear = null,
+    bool IsShareCacheInvalidationEnsured = false);

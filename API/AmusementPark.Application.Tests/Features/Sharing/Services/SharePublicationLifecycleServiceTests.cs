@@ -1,4 +1,7 @@
+using System.Text.Json;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Sharing.Handlers;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
@@ -49,20 +52,24 @@ public sealed class SharePublicationLifecycleServiceTests
                     && request.SourceVersion == 7),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<bool>.Success(true));
-        Mock<ISharePublicationCacheInvalidationQueue> queue =
-            new Mock<ISharePublicationCacheInvalidationQueue>(MockBehavior.Strict);
-        queue.Setup(value => value.Enqueue(
-            It.Is<SharePublicationCacheInvalidationRequest>(request =>
-                request.PublicationId == PublicationId
-                && request.PublicationType == SharePublicationType.VisitRecap
-                && request.ShareIds.Contains(PreviousToken)
-                && request.ShareIds.Contains(RotatedToken))));
+        Mock<IDurableBackgroundJobRepository> jobs = CreateJobRepository(
+            request =>
+            {
+                SharePublicationCacheInvalidationJobPayload? payload =
+                    request.Payload.Deserialize<SharePublicationCacheInvalidationJobPayload>();
+                return payload is not null
+                    && payload.PublicationId == PublicationId
+                    && payload.PublicationType == SharePublicationType.VisitRecap
+                    && payload.MinimumPublicationStateVersion == 2
+                    && payload.ShareIds.Contains(PreviousToken)
+                    && payload.ShareIds.Contains(RotatedToken);
+            });
         SharePublicationLifecycleService service = CreateService(
             repository.Object,
             tokenFactory.Object,
             new[] { source },
             new[] { snapshotWriter.Object },
-            queue.Object);
+            new SharePublicationCacheInvalidationScheduler(jobs.Object));
 
         ApplicationResult<SharePublicationSettingsResult> result = await service.RotateAsync(
             OwnerId,
@@ -73,7 +80,7 @@ public sealed class SharePublicationLifecycleServiceTests
         Assert.Equal(RotatedToken, result.Value!.ShareId);
         Assert.Equal(2, result.Value.PublicationVersion);
         snapshotWriter.VerifyAll();
-        queue.VerifyAll();
+        jobs.VerifyAll();
         repository.VerifyAll();
         tokenFactory.VerifyAll();
     }
@@ -107,10 +114,11 @@ public sealed class SharePublicationLifecycleServiceTests
     }
 
     [Fact]
-    public async Task RevokeByIdAsync_ShouldRemainSuccessfulWhenDerivedCacheConvergenceIsUnavailable()
+    public async Task RevokeByIdAsync_ShouldPersistThePurgeBeforeTheRevocation()
     {
         SharePublication publication = CreatePublishedPublication(SharePublicationType.PersonalRanking);
         Mock<ISharePublicationRepository> repository = CreateOwnedRepository(publication);
+        bool purgePersisted = false;
         repository.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
                     candidate.Status == SharePublicationStatus.Revoked
@@ -118,17 +126,22 @@ public sealed class SharePublicationLifecycleServiceTests
                     && candidate.PublicationVersion == 2),
                 1,
                 CancellationToken.None))
+            .Callback(() => Assert.True(purgePersisted))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
-        Mock<ISharePublicationCacheInvalidationQueue> queue =
-            new Mock<ISharePublicationCacheInvalidationQueue>(MockBehavior.Strict);
-        queue.Setup(value => value.Enqueue(It.IsAny<SharePublicationCacheInvalidationRequest>()))
-            .Throws(new InvalidOperationException("cache unavailable"));
+        Mock<IDurableBackgroundJobRepository> jobs = CreateJobRepository(
+            request =>
+            {
+                SharePublicationCacheInvalidationJobPayload? payload =
+                    request.Payload.Deserialize<SharePublicationCacheInvalidationJobPayload>();
+                purgePersisted = payload?.ShareIds.Contains(PreviousToken) == true;
+                return purgePersisted;
+            });
         SharePublicationLifecycleService service = CreateService(
             repository.Object,
             Mock.Of<IShareTokenFactory>(MockBehavior.Strict),
             new[] { CreateSource(SharePublicationType.PersonalRanking, 7) },
             Array.Empty<ISharePublicationSnapshotWriter>(),
-            queue.Object);
+            new SharePublicationCacheInvalidationScheduler(jobs.Object));
 
         ApplicationResult<SharePublicationSettingsResult> result = await service.RevokeByIdAsync(
             OwnerId,
@@ -140,7 +153,7 @@ public sealed class SharePublicationLifecycleServiceTests
         Assert.Null(result.Value.ShareId);
         Assert.Equal(2, result.Value.PublicationVersion);
         repository.VerifyAll();
-        queue.VerifyAll();
+        jobs.VerifyAll();
     }
 
     [Fact]
@@ -204,15 +217,27 @@ public sealed class SharePublicationLifecycleServiceTests
         IShareTokenFactory tokenFactory,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
         IEnumerable<ISharePublicationSnapshotWriter> snapshotWriters,
-        ISharePublicationCacheInvalidationQueue? queue)
+        SharePublicationCacheInvalidationScheduler? scheduler)
     {
         return new SharePublicationLifecycleService(
             repository,
             tokenFactory,
             sources,
             snapshotWriters,
-            queue,
+            scheduler,
             new SharePublicationFixedTimeProvider(Now));
+    }
+
+    private static Mock<IDurableBackgroundJobRepository> CreateJobRepository(
+        Func<EnqueueExactBackgroundJobRequest, bool> predicate)
+    {
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request => predicate(request)),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        return jobs;
     }
 
     private static SharePublication CreatePublishedPublication(SharePublicationType publicationType)

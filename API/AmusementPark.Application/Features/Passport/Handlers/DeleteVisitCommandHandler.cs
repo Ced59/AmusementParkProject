@@ -74,17 +74,14 @@ public sealed class DeleteVisitCommandHandler
             cancellationToken);
         if (replay is not null)
         {
-            await this.InvalidateShareCachesAsync(
-                visitId,
-                userId,
-                null,
-                cancellationToken);
             await this.EnsureDeletionSideEffectsAsync(
                 visitId,
                 userId,
                 replay.DeletionVersion,
                 replay.PurgeScheduledForUtc,
                 replay.IsExportInvalidationEnsured,
+                replay.VisitYear,
+                replay.IsShareCacheInvalidationEnsured,
                 cancellationToken);
             return ApplicationResult<VisitDeletionReceipt>.Success(
                 replay with { WasReplayed = true });
@@ -196,17 +193,14 @@ public sealed class DeleteVisitCommandHandler
             if (concurrentReplay is not null)
             {
                 contentMutationLease?.MarkMutationCompleted();
-                await this.InvalidateShareCachesAsync(
-                    visit.Id,
-                    visit.UserId,
-                    visit.Date.Year,
-                    cancellationToken);
                 await this.EnsureDeletionSideEffectsAsync(
                     visit.Id,
                     visit.UserId,
                     concurrentReplay.DeletionVersion,
                     concurrentReplay.PurgeScheduledForUtc,
                     concurrentReplay.IsExportInvalidationEnsured,
+                    concurrentReplay.VisitYear ?? visit.Date.Year,
+                    concurrentReplay.IsShareCacheInvalidationEnsured,
                     cancellationToken);
                 return ApplicationResult<VisitDeletionReceipt>.Success(
                     concurrentReplay with { WasReplayed = true });
@@ -219,17 +213,13 @@ public sealed class DeleteVisitCommandHandler
         }
         contentMutationLease?.MarkMutationCompleted();
 
-        await this.InvalidateShareCachesAsync(
-            visit.Id,
-            visit.UserId,
-            visit.Date.Year,
-            guardedCancellationToken);
-
         await this.EnsureDeletionSideEffectsAsync(
             visit.Id,
             visit.UserId,
             visit.Version + 1,
             purgeScheduledForUtc,
+            false,
+            visit.Date.Year,
             false,
             cancellationToken);
 
@@ -244,7 +234,9 @@ public sealed class DeleteVisitCommandHandler
                 purgeScheduledForUtc,
                 visit.Version + 1,
                 false,
-                true));
+                true,
+                visit.Date.Year,
+                this.shareCacheInvalidator is not null));
     }
 
     private async Task EnsureDeletionSideEffectsAsync(
@@ -253,6 +245,8 @@ public sealed class DeleteVisitCommandHandler
         long deletionVersion,
         DateTime purgeScheduledForUtc,
         bool isExportInvalidationEnsured,
+        int? visitYear,
+        bool isShareCacheInvalidationEnsured,
         CancellationToken cancellationToken)
     {
         if (!isExportInvalidationEnsured)
@@ -285,6 +279,21 @@ public sealed class DeleteVisitCommandHandler
             }
         }
 
+        if (!isShareCacheInvalidationEnsured && this.shareCacheInvalidator is not null)
+        {
+            await this.shareCacheInvalidator.InvalidateVisitDeletionAsync(
+                userId,
+                visitId.Value,
+                visitYear,
+                cancellationToken);
+            _ = await this.deletionStore.MarkShareCacheInvalidationEnsuredAsync(
+                visitId,
+                userId,
+                deletionVersion,
+                this.clock.UtcNow,
+                cancellationToken);
+        }
+
         await this.purgeScheduler.ScheduleAsync(
             visitId,
             userId,
@@ -305,20 +314,6 @@ public sealed class DeleteVisitCommandHandler
     {
         TimeSpan remaining = purgeScheduledForUtc - nowUtc;
         return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
-    }
-
-    private Task InvalidateShareCachesAsync(
-        VisitId visitId,
-        string userId,
-        int? visitYear,
-        CancellationToken cancellationToken)
-    {
-        return this.shareCacheInvalidator?.InvalidateVisitDeletionAsync(
-                userId,
-                visitId.Value,
-                visitYear,
-                cancellationToken)
-            ?? Task.CompletedTask;
     }
 
     private static string? NormalizeClientOperationId(string? value)

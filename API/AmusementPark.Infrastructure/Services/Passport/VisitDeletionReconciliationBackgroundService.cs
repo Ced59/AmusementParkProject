@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -64,6 +65,8 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
             scope.ServiceProvider.GetRequiredService<IPassportExportRepository>();
         VisitPurgeScheduler scheduler =
             scope.ServiceProvider.GetRequiredService<VisitPurgeScheduler>();
+        SharePublicationSourceCacheInvalidator shareCacheInvalidator =
+            scope.ServiceProvider.GetRequiredService<SharePublicationSourceCacheInvalidator>();
         IReadOnlyCollection<VisitDeletionReconciliationCandidate> candidates =
             await deletionStore.ListPendingDeletionReconciliationAsync(
                 this.timeProvider.GetUtcNow().UtcDateTime,
@@ -74,6 +77,21 @@ internal sealed class VisitDeletionReconciliationBackgroundService : BackgroundS
             cancellationToken.ThrowIfCancellationRequested();
             try
             {
+                if (!candidate.IsShareCacheInvalidationEnsured)
+                {
+                    await shareCacheInvalidator.InvalidateVisitDeletionAsync(
+                        candidate.UserId,
+                        candidate.VisitId.Value,
+                        candidate.VisitYear,
+                        cancellationToken);
+                    _ = await deletionStore.MarkShareCacheInvalidationEnsuredAsync(
+                        candidate.VisitId,
+                        candidate.UserId,
+                        candidate.DeletionVersion,
+                        this.timeProvider.GetUtcNow().UtcDateTime,
+                        cancellationToken);
+                }
+
                 if (!candidate.IsExportInvalidationEnsured)
                 {
                     DateTime claimedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;

@@ -3,6 +3,8 @@ using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Services.Passport;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,8 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             deletedAtUtc,
             DateTime.UtcNow.AddDays(1),
             false,
+            false,
+            2026,
             false);
         Mock<IVisitDeletionStore> deletionStore =
             new Mock<IVisitDeletionStore>(MockBehavior.Strict);
@@ -56,6 +60,13 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
                 It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
                 CancellationToken.None))
             .ReturnsAsync(true);
+        deletionStore.Setup(store => store.MarkShareCacheInvalidationEnsuredAsync(
+                candidate.VisitId,
+                candidate.UserId,
+                candidate.DeletionVersion,
+                It.Is<DateTime>(value => value.Kind == DateTimeKind.Utc),
+                CancellationToken.None))
+            .ReturnsAsync(true);
         Mock<IPassportExportRepository> exports =
             new Mock<IPassportExportRepository>(MockBehavior.Strict);
         exports.Setup(repository => repository.InvalidateOwnedAsync(
@@ -79,6 +90,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         services.AddScoped(_ => deletionStore.Object);
         services.AddScoped(_ => exports.Object);
         services.AddScoped(_ => new VisitPurgeScheduler(jobs.Object));
+        AddShareCacheInvalidator(services, jobs.Object);
         using ServiceProvider provider = services.BuildServiceProvider();
         VisitDeletionReconciliationBackgroundService service =
             new VisitDeletionReconciliationBackgroundService(
@@ -104,6 +116,8 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
             deletedAtUtc,
             DateTime.UtcNow.AddDays(1),
             false,
+            true,
+            2026,
             true);
         Mock<IVisitDeletionStore> deletionStore =
             new Mock<IVisitDeletionStore>(MockBehavior.Strict);
@@ -142,6 +156,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         services.AddScoped(_ => deletionStore.Object);
         services.AddScoped(_ => exports.Object);
         services.AddScoped(_ => new VisitPurgeScheduler(jobs.Object));
+        AddShareCacheInvalidator(services, jobs.Object);
         using ServiceProvider provider = services.BuildServiceProvider();
         VisitDeletionReconciliationBackgroundService service =
             new VisitDeletionReconciliationBackgroundService(
@@ -168,6 +183,8 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
                 nowUtc.AddDays(-8),
                 nowUtc.AddDays(-1),
                 true,
+                true,
+                2026,
                 true);
         Mock<IVisitDeletionStore> deletionStore =
             new Mock<IVisitDeletionStore>(MockBehavior.Strict);
@@ -198,6 +215,7 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         services.AddScoped(_ => deletionStore.Object);
         services.AddScoped(_ => exports.Object);
         services.AddScoped(_ => new VisitPurgeScheduler(jobs.Object));
+        AddShareCacheInvalidator(services, jobs.Object);
         using ServiceProvider provider = services.BuildServiceProvider();
         VisitDeletionReconciliationBackgroundService service =
             new VisitDeletionReconciliationBackgroundService(
@@ -210,5 +228,16 @@ public sealed class VisitDeletionReconciliationBackgroundServiceTests
         deletionStore.VerifyAll();
         exports.VerifyNoOtherCalls();
         jobs.VerifyAll();
+    }
+
+    private static void AddShareCacheInvalidator(
+        IServiceCollection services,
+        IDurableBackgroundJobRepository jobs)
+    {
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Loose);
+        services.AddScoped(_ => new SharePublicationSourceCacheInvalidator(
+            publications.Object,
+            new SharePublicationCacheInvalidationScheduler(jobs)));
     }
 }

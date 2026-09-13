@@ -1,4 +1,7 @@
+using System.Text.Json;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -71,18 +74,18 @@ public sealed class SharePublicationPublisherCacheInvalidationTests
                     request.SourceScopeKey == publication.SourceScopeKey),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<long>.Success(12));
-        Mock<ISharePublicationCacheInvalidationQueue> queue =
-            new Mock<ISharePublicationCacheInvalidationQueue>(MockBehavior.Strict);
-        queue.Setup(value => value.Enqueue(
-            It.Is<SharePublicationCacheInvalidationRequest>(request =>
-                request.PublicationId == publication.Id.Value
-                && request.ShareIds.Contains(PreviousToken)
-                && request.ShareIds.Contains(NextToken))));
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    ContainsExpectedLinks(request, publication.Id.Value)),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
         SharePublicationPublisher publisher = new SharePublicationPublisher(
             repository.Object,
             tokenFactory.Object,
             new SharePublicationFixedTimeProvider(Now),
-            invalidationQueue: queue.Object);
+            invalidationScheduler: new SharePublicationCacheInvalidationScheduler(jobs.Object));
 
         ApplicationResult<SharePublicationSettingsResult> result = await publisher.PublishAsync(
             "owner-1",
@@ -96,11 +99,24 @@ public sealed class SharePublicationPublisherCacheInvalidationTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(NextToken, result.Value!.ShareId);
-        queue.VerifyAll();
+        jobs.VerifyAll();
         repository.VerifyAll();
         tokenFactory.VerifyAll();
         source.Verify(value => value.GetCurrentSourceVersionAsync(
             It.IsAny<SharePublicationSourceVersionRequest>(),
             CancellationToken.None), Times.Exactly(2));
+    }
+
+    private static bool ContainsExpectedLinks(
+        EnqueueExactBackgroundJobRequest request,
+        string publicationId)
+    {
+        SharePublicationCacheInvalidationJobPayload? payload =
+            request.Payload.Deserialize<SharePublicationCacheInvalidationJobPayload>();
+        return payload is not null
+            && payload.PublicationId == publicationId
+            && payload.MinimumPublicationStateVersion == 3
+            && payload.ShareIds.Contains(PreviousToken)
+            && payload.ShareIds.Contains(NextToken);
     }
 }

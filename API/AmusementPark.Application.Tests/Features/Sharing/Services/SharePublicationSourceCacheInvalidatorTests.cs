@@ -1,8 +1,10 @@
+using System.Text.Json;
+using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Sharing;
-using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -47,17 +49,27 @@ public sealed class SharePublicationSourceCacheInvalidatorTests
                 .ReturnsAsync(CreatePublication(type, scopeKey));
         }
 
-        List<SharePublicationCacheInvalidationRequest> requests =
-            new List<SharePublicationCacheInvalidationRequest>();
-        Mock<ISharePublicationCacheInvalidationQueue> queue =
-            new Mock<ISharePublicationCacheInvalidationQueue>(MockBehavior.Strict);
-        queue.Setup(value => value.Enqueue(It.IsAny<SharePublicationCacheInvalidationRequest>()))
-            .Callback((SharePublicationCacheInvalidationRequest request) => requests.Add(request));
+        List<SharePublicationCacheInvalidationJobPayload> requests =
+            new List<SharePublicationCacheInvalidationJobPayload>();
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .Callback((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+            {
+                SharePublicationCacheInvalidationJobPayload payload =
+                    request.Payload.Deserialize<SharePublicationCacheInvalidationJobPayload>()
+                    ?? throw new InvalidOperationException("Missing payload.");
+                requests.Add(payload);
+            })
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        SharePublicationCacheInvalidationScheduler scheduler =
+            new SharePublicationCacheInvalidationScheduler(jobs.Object);
         SharePublicationSourceCacheInvalidator invalidator =
             new SharePublicationSourceCacheInvalidator(
                 repository.Object,
-                Mock.Of<ILogger<SharePublicationSourceCacheInvalidator>>(),
-                queue.Object);
+                scheduler);
 
         await invalidator.InvalidateVisitDeletionAsync(
             OwnerId,
@@ -71,7 +83,7 @@ public sealed class SharePublicationSourceCacheInvalidatorTests
             requests.Select(static request => request.PublicationType).OrderBy(static type => type));
         Assert.All(requests, request => Assert.Contains(ShareTokenValue, request.ShareIds));
         repository.VerifyAll();
-        queue.VerifyAll();
+        jobs.VerifyAll();
     }
 
     private static SharePublication CreatePublication(

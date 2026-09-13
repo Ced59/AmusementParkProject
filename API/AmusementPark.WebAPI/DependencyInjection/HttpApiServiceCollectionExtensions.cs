@@ -66,11 +66,8 @@ public static class HttpApiServiceCollectionExtensions
         services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
         services.AddScoped<IParkWeatherCacheInvalidator, ParkWeatherPublicCacheInvalidator>();
         services.AddScoped<IRatingRankingPublicationCacheInvalidator, RatingRankingPublicationCacheInvalidator>();
-        services.AddSingleton<SharePublicationCacheInvalidationQueue>();
-        services.AddSingleton<ISharePublicationCacheInvalidationQueue>(provider =>
-            provider.GetRequiredService<SharePublicationCacheInvalidationQueue>());
-        services.AddHostedService(provider =>
-            provider.GetRequiredService<SharePublicationCacheInvalidationQueue>());
+        services.AddScoped<ISharePublicationCacheInvalidationExecutor,
+            SharePublicationCacheInvalidationExecutor>();
         services.AddSingleton<IPublicSeoResponseCacheInvalidator, PublicSeoResponseCacheInvalidator>();
         services.AddSingleton<IParkDataEditorOperationCoordinator, ParkDataEditorOperationCoordinator>();
         services.AddSingleton<IBulkParkGraphExportJobService, BulkParkGraphExportJobService>();

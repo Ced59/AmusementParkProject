@@ -370,10 +370,13 @@ restent compatibles côté HTTP, mais délèguent au même service de cycle de v
 frontend utilise désormais exclusivement les commandes centrales par identifiant
 de publication.
 
-Après l'écriture autoritative, une file interne coalesce les purges par publication,
-évince les images sociales et invalide les routes SSR des huit langues pour l'ancien
-et le nouveau lien. Une purge non confirmée est rejouée sans annuler la décision du
-propriétaire. Les interfaces expliquent honnêtement qu'une copie déjà téléchargée
+Avant la transition autoritative, un job idempotent est persisté dans la file MongoDB
+existante avec la version de publication attendue. Le worker attend cette version,
+évince ensuite les images sociales et invalide les routes SSR des huit langues pour
+l'ancien et le nouveau lien. Une purge non confirmée survit aux redémarrages et est
+rejouée sans annuler la décision du propriétaire. La suppression d'une visite porte
+le même marqueur de convergence et reprend son année canonique afin de ne jamais
+oublier le bilan annuel lors d'un rejeu. Les interfaces expliquent honnêtement qu'une copie déjà téléchargée
 par un réseau social externe peut subsister hors du site, tout en garantissant que
 les pages et images servies par Amusement Parks ne résolvent plus l'ancien jeton.
 Les groupes d'actions et notes explicatives restent contenus et passent en colonne

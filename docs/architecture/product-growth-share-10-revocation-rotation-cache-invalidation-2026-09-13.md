@@ -82,18 +82,21 @@ propriétaire est volontairement indiscernable d'une publication absente.
 
 ## Convergence des caches
 
-L'écriture autoritative et la purge sont découplées :
+L'écriture autoritative et la purge sont découplées sans fenêtre de perte :
 
 ```text
+enregistrement du travail durable dans MongoDB
+        │
+        ├─ état cible pas encore écrit ──► attente et nouvelle tentative
+        │
+        ▼
 écriture SharePublication réussie
         │
         ├────────► réponse métier réussie
         │
         ▼
-file interne coalescée par publication
-        │
+worker durable à portée DI isolée
         ├─► éviction du cache mémoire des images sociales
-        │
         └─► purge SSR des huit langues
               ├─ ancien jeton
               └─ nouveau jeton, lors d'une rotation
@@ -101,16 +104,25 @@ file interne coalescée par publication
                     └─ échec non confirmé : nouvelle tentative
 ```
 
+Le job est persisté avant la transition de publication et porte la version minimale
+attendue. Il ne purge qu'après avoir relu cette version dans MongoDB. Une panne du
+processus après la décision métier ne peut donc pas faire disparaître le travail,
+et une exécution trop rapide ne peut pas vider le cache avant que l'ancien lien
+cesse d'être autoritaire. L'exécuteur de purge est résolu dans la portée du worker,
+comme les clients SSR dont il dépend.
+
 Les chemins SSR sont calculés selon le type de publication et envoyés avec
 `allowStale=false` et `refresh=false`. Une indisponibilité du moteur SSR ne remet
 jamais un lien révoqué en service : toutes les lectures publiques continuent de
 valider le jeton contre l'autorité centrale.
 
 Une republication purge à la fois l'ancien jeton suspendu et le nouveau jeton.
-Si une visite source est supprimée, la même file invalide son récapitulatif ainsi
-que les rendus propriétaire, annuel et passeport susceptibles d'en dépendre. La
-relecture publique de la source reste la barrière d'accès autoritative pendant la
-convergence des caches.
+Si une visite source est supprimée, sa pierre tombale conserve un marqueur de
+convergence. Le réconciliateur durable programme l'invalidation de son récapitulatif
+ainsi que des rendus classement, annuel et passeport susceptibles d'en dépendre,
+puis marque cette étape comme acquise. Il reprend l'année depuis la date canonique
+de la visite, y compris lors d'un rejeu ancien. La relecture publique de la source
+reste la barrière d'accès autoritative pendant la convergence des caches.
 
 Les réseaux sociaux externes peuvent conserver une image qu'ils ont déjà copiée.
 Cette limite extérieure est indiquée dans les huit langues. Amusement Parks ne
@@ -132,9 +144,11 @@ et aucun contrôle n'impose de largeur minimale supérieure au viewport de 320 p
 - clonage du snapshot exact avant rotation ;
 - refus si la source approuvée a changé ;
 - remplacement atomique du jeton et incrément des versions ;
-- révocation toujours réussie malgré une file de purge indisponible ;
+- persistance de la purge avant la révocation et attente de la version autoritative ;
+- reprise durable après redémarrage ou échec SSR ;
 - purge de l'ancien et du nouveau lien lors d'une republication ;
-- purge des récapitulatifs affectés lors de la suppression d'une visite source ;
+- purge des récapitulatifs affectés lors de la suppression d'une visite source,
+  bilan annuel compris après rejeu ;
 - isolation stricte par propriétaire ;
 - purge des seize routes localisées ancien/nouveau par type ;
 - éviction du rendu social en mémoire ;
@@ -144,8 +158,14 @@ et aucun contrôle n'impose de largeur minimale supérieure au viewport de 320 p
 
 ## Schéma MongoDB
 
-Aucune migration MongoDB n'est nécessaire pour SHARE-10. Les champs utilisés
-(`shareToken`, `status`, `visibility`, `publicationVersion`, `version`,
-`revokedAtUtc`) existaient déjà dans la publication centrale. La rotation ajoute
-un snapshot à la version suivante dans les collections de snapshots existantes ;
-les index et contrats persistés ne changent pas.
+Aucune migration MongoDB manuelle n'est nécessaire pour SHARE-10. Les purges
+réutilisent la collection `durableBackgroundJobs` et ses index existants. Les
+champs de publication (`shareToken`, `status`, `visibility`,
+`publicationVersion`, `version`, `revokedAtUtc`) existaient déjà. La rotation
+ajoute un snapshot à la version suivante dans les collections existantes.
+
+Un unique marqueur `shareCacheInvalidationEnsuredAtUtc` est ajouté aux pierres
+tombales de visites. Les pierres tombales antérieures qui ne le possèdent pas sont
+sélectionnées par le réconciliateur puis mises à niveau après programmation du job ;
+leur année provient du champ canonique `date.year`, sans dupliquer la donnée ni
+maintenir deux modèles concurrents.
