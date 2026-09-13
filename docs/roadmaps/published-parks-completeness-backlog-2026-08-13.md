@@ -7,7 +7,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 60 parcs atteignent le niveau `Excellent` : 58 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- 67 parcs atteignent le niveau `Excellent` : 65 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
 - **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **51 parcs** : 0 au niveau `Publishable`, 49 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
