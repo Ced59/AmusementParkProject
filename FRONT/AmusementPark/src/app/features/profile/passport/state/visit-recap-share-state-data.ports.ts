@@ -15,7 +15,8 @@ export interface VisitRecapSharePort {
   getCandidates(visitId: string, includeMissedItems: boolean): Observable<VisitRecapShareCandidates>;
   preview(request: SharePublicationPreviewRequest): Observable<SharePublicationPreview>;
   publish(request: SharePublicationPublishRequest): Observable<SharePublicationSettings>;
-  revoke(visitId: string): Observable<SharePublicationSettings>;
+  rotate(publicationId: string): Observable<SharePublicationSettings>;
+  revoke(publicationId: string): Observable<SharePublicationSettings>;
 }
 
 export const VISIT_RECAP_SHARE_PORT = new InjectionToken<VisitRecapSharePort>('VISIT_RECAP_SHARE_PORT', {
@@ -28,7 +29,8 @@ export const VISIT_RECAP_SHARE_PORT = new InjectionToken<VisitRecapSharePort>('V
         apiService.getVisitCandidates(visitId, includeMissedItems),
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> => apiService.preview(request),
       publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => apiService.publish(request),
-      revoke: (visitId: string): Observable<SharePublicationSettings> => apiService.revokeVisit(visitId)
+      rotate: (publicationId: string): Observable<SharePublicationSettings> => apiService.rotate(publicationId),
+      revoke: (publicationId: string): Observable<SharePublicationSettings> => apiService.revoke(publicationId)
     };
   }
 });

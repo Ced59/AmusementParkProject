@@ -869,6 +869,7 @@
     "noPark": "Bez powiązanego parku",
     "caption": "Twoja publiczna wiadomość",
     "allowComparisons": "Zezwól na zaproszenia do porównania tego paszportu z innym publicznym paszportem",
+    "cacheNote": "Stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może jednak przez pewien czas pozostać widoczny poza witryną.",
     "steps": {
       "scopeTitle": "Wyznacz granice swojej historii",
       "scopeDescription": "Wybierz lata i parki, które mogą się pojawić.",
@@ -897,6 +898,7 @@
       "open": "Zobacz stronę publiczną",
       "preview": "Zobacz dokładnie, co będzie publiczne",
       "publish": "Opublikuj ten wybór",
+      "rotate": "Zastąp link",
       "revoke": "Wyłącz link publiczny"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Twój publiczny paszport jest aktualny.",
       "publishError": "Publikacja nie powiodła się. Utwórz podgląd ponownie i spróbuj jeszcze raz.",
       "revoked": "Link publiczny jest wyłączony.",
-      "revokeError": "Nie udało się wyłączyć linku."
+      "revokeError": "Nie udało się wyłączyć linku.",
+      "rotated": "Nowy link zastąpił stary.",
+      "rotateError": "Nie udało się zastąpić linku."
     },
     "public": {
       "anonymous": "Miłośnik parków",
@@ -1016,7 +1020,9 @@
       "loading": "Ładowanie ustawień udostępniania...",
       "open": "Zobacz podsumowanie",
       "edit": "Edytuj udostępnianie",
+      "rotate": "Zastąp link",
       "revoke": "Ustaw jako prywatne",
+      "cacheNote": "Stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może jednak przez pewien czas pozostać widoczny poza witryną.",
       "start": "Utwórz podsumowanie"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "Publiczne podsumowanie wizyty jest gotowe.",
       "publishError": "Nie udało się opublikować podsumowania.",
       "revoked": "Publiczny link tej wizyty jest teraz wyłączony.",
-      "revokeError": "Nie udało się ustawić udostępnienia jako prywatnego."
+      "revokeError": "Nie udało się ustawić udostępnienia jako prywatnego.",
+      "rotated": "Nowy link zastąpił stary.",
+      "rotateError": "Nie udało się zastąpić linku."
     },
     "social": {
       "title": "Wspomnienie z parku do udostępnienia",
@@ -1111,7 +1119,9 @@
       "loading": "Wczytywanie udostępnienia...",
       "open": "Zobacz publiczne podsumowanie",
       "edit": "Edytuj udostępnienie",
+      "rotate": "Zastąp link",
       "revoke": "Ustaw jako prywatne",
+      "cacheNote": "Stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może jednak przez pewien czas pozostać widoczny poza witryną.",
       "start": "Utwórz podsumowanie do udostępnienia"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Twoje publiczne podsumowanie roku jest gotowe.",
       "publishError": "Nie udało się opublikować podsumowania roku.",
       "revoked": "Publiczny link do tego podsumowania jest teraz wyłączony.",
-      "revokeError": "Nie udało się ustawić podsumowania jako prywatnego."
+      "revokeError": "Nie udało się ustawić podsumowania jako prywatnego.",
+      "rotated": "Nowy link zastąpił stary.",
+      "rotateError": "Nie udało się zastąpić linku."
     },
     "social": {
       "title": "Mój rok {{year}} w parkach",
@@ -6149,9 +6161,12 @@
         "error": "Nie udało się zmienić ustawień udostępniania. Spróbuj ponownie za chwilę.",
         "publishedToast": "Twój ranking jest gotowy do udostępnienia.",
         "privateToast": "Twój ranking znów jest prywatny.",
+        "rotatedToast": "Nowy link zastąpił stary.",
+        "rotateError": "Nie udało się zastąpić linku.",
         "open": "Zobacz udostępnioną stronę",
+        "rotate": "Zastąp link",
         "makePrivate": "Ustaw jako prywatny",
-        "privacyNote": "Zachowujesz kontrolę: ustawienie rankingu jako prywatnego natychmiast wyłącza publiczny link.",
+        "privacyNote": "Zachowujesz kontrolę: stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może przez pewien czas pozostać widoczny poza witryną.",
         "publishing": "Publikowanie...",
         "publish": "Ustaw jako publiczny"
       },

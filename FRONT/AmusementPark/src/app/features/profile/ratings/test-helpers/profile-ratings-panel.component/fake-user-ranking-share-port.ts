@@ -29,6 +29,8 @@ export class FakeUserRankingSharePort implements UserRankingSharePort {
   readonly visibilityCalls: boolean[] = [];
   readonly previewCalls: SharePublicationPreviewRequest[] = [];
   readonly publishCalls: SharePublicationPublishRequest[] = [];
+  readonly rotatedPublicationIds: string[] = [];
+  readonly revokedPublicationIds: string[] = [];
   previewResponse: Subject<SharePublicationPreview> | null = null;
   publishResponse: Subject<SharePublicationSettings> | null = null;
   settingsCalls: number = 0;
@@ -88,6 +90,7 @@ export class FakeUserRankingSharePort implements UserRankingSharePort {
     this.publishCalls.push(request);
     this.settings = {
       isPublic: true,
+      publicationId: 'publication-1',
       shareId: 'opaque-share-id',
       publishedAtUtc: '2026-09-07T08:00:00Z',
       policySchemaVersion: request.approvedPolicySchemaVersion,
@@ -95,5 +98,21 @@ export class FakeUserRankingSharePort implements UserRankingSharePort {
       includedFields: request.approvedIncludedFields
     };
     return this.publishResponse ?? of(this.settings as SharePublicationSettings);
+  }
+
+  rotate(publicationId: string): Observable<SharePublicationSettings> {
+    this.rotatedPublicationIds.push(publicationId);
+    return of(this.settings as SharePublicationSettings);
+  }
+
+  revoke(publicationId: string): Observable<SharePublicationSettings> {
+    this.revokedPublicationIds.push(publicationId);
+    this.settings = {
+      isPublic: false,
+      shareId: null,
+      publishedAtUtc: null,
+      publicationId
+    };
+    return of(this.settings as SharePublicationSettings);
   }
 }

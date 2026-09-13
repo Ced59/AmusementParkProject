@@ -8,7 +8,9 @@
       "loading": "Deelinstellingen laden...",
       "open": "Openbaar overzicht bekijken",
       "edit": "Delen bewerken",
+      "rotate": "Link vervangen",
       "revoke": "Privé maken",
+      "cacheNote": "De oude link wordt meteen uitgeschakeld. Een afbeelding die al door een sociaal netwerk is gekopieerd, kan buiten de site nog even zichtbaar blijven.",
       "start": "Een overzicht maken om te delen"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Je openbare jaaroverzicht is klaar.",
       "publishError": "Het jaaroverzicht kon niet worden gepubliceerd.",
       "revoked": "De openbare link naar dit overzicht is nu uitgeschakeld.",
-      "revokeError": "Het overzicht kon niet privé worden gemaakt."
+      "revokeError": "Het overzicht kon niet privé worden gemaakt.",
+      "rotated": "Een nieuwe link heeft de oude vervangen.",
+      "rotateError": "De link kon niet worden vervangen."
     },
     "social": {
       "title": "Mijn parkjaar {{year}}",

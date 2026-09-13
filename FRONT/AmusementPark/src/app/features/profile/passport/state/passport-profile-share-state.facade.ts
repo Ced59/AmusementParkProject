@@ -254,12 +254,17 @@ export class PassportProfileShareStateFacade {
     if (this.savingSignal()) {
       return;
     }
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (publicationId.length === 0) {
+      return;
+    }
+
     this.requestGeneration++;
     this.previewSignal.set(null);
     this.previewingSignal.set(false);
     const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
-    this.port.revoke().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.port.revoke(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
         if (generation !== this.mutationGeneration) {
           return;
@@ -275,6 +280,35 @@ export class PassportProfileShareStateFacade {
         }
         this.savingSignal.set(false);
         this.toast('error', 'passportProfileShare.toast.revokeError');
+      }
+    });
+  }
+
+  public rotate(): void {
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (this.savingSignal() || publicationId.length === 0) {
+      return;
+    }
+
+    const generation: number = ++this.mutationGeneration;
+    this.savingSignal.set(true);
+    this.port.rotate(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (settings: SharePublicationSettings): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        this.settingsSignal.set(settings);
+        this.savingSignal.set(false);
+        this.toast('success', 'passportProfileShare.toast.rotated');
+      },
+      error: (): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        this.savingSignal.set(false);
+        this.toast('error', 'passportProfileShare.toast.rotateError');
       }
     });
   }

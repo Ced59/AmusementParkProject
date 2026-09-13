@@ -10,7 +10,8 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace AmusementPark.Infrastructure.Services.Sharing;
 
-public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDisposable
+public sealed class ShareSocialImageRenderer
+    : IShareSocialImageRenderer, IShareSocialImageCacheInvalidator, IDisposable
 {
     private const int CacheSizeLimit = 128;
     private static readonly TimeSpan CacheDuration = TimeSpan.FromHours(1);
@@ -21,6 +22,8 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
         SizeLimit = CacheSizeLimit,
     });
     private readonly object cacheLock = new object();
+    private readonly Dictionary<string, HashSet<string>> cacheKeysByShareId =
+        new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
     private readonly ShareSocialImageRenderConcurrencyGate renderConcurrencyGate =
         new ShareSocialImageRenderConcurrencyGate();
 
@@ -76,14 +79,28 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
                         throw new InvalidOperationException("A new social image render work must accept its first waiter.");
                     }
 
+                    MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = CacheDuration,
+                        Size = 1,
+                    };
+                    cacheOptions.RegisterPostEvictionCallback(
+                        static (key, _, _, state) =>
+                        {
+                            if (key is string evictedCacheKey
+                                && state is ValueTuple<ShareSocialImageRenderer, string> callbackState)
+                            {
+                                callbackState.Item1.UnregisterCacheKey(
+                                    callbackState.Item2,
+                                    evictedCacheKey);
+                            }
+                        },
+                        (this, model.ShareId));
                     this.cache.Set(
                         cacheKey,
                         rendering,
-                        new MemoryCacheEntryOptions
-                        {
-                            AbsoluteExpirationRelativeToNow = CacheDuration,
-                            Size = 1,
-                        });
+                        cacheOptions);
+                    this.RegisterCacheKey(model.ShareId, cacheKey);
                 }
             }
 
@@ -112,6 +129,36 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
     public void Dispose()
     {
         this.cache.Dispose();
+    }
+
+    public void Invalidate(IReadOnlyCollection<string> shareIds)
+    {
+        ArgumentNullException.ThrowIfNull(shareIds);
+        if (shareIds.Count == 0)
+        {
+            return;
+        }
+
+        lock (this.cacheLock)
+        {
+            foreach (string shareId in shareIds
+                         .Where(static shareId => !string.IsNullOrWhiteSpace(shareId))
+                         .Select(static shareId => shareId.Trim())
+                         .Distinct(StringComparer.Ordinal))
+            {
+                if (!this.cacheKeysByShareId.Remove(
+                        shareId,
+                        out HashSet<string>? cacheKeys))
+                {
+                    continue;
+                }
+
+                foreach (string cacheKey in cacheKeys)
+                {
+                    this.cache.Remove(cacheKey);
+                }
+            }
+        }
     }
 
     private async Task<ShareSocialImageRenderResult> RenderCoreAsync(ShareSocialImageModel model)
@@ -154,6 +201,37 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
                 && ReferenceEquals(current, rendering))
             {
                 this.cache.Remove(cacheKey);
+            }
+        }
+    }
+
+    private void RegisterCacheKey(string shareId, string cacheKey)
+    {
+        if (!this.cacheKeysByShareId.TryGetValue(shareId, out HashSet<string>? cacheKeys))
+        {
+            cacheKeys = new HashSet<string>(StringComparer.Ordinal);
+            this.cacheKeysByShareId.Add(shareId, cacheKeys);
+        }
+
+        cacheKeys.Add(cacheKey);
+    }
+
+    private void UnregisterCacheKey(string shareId, string cacheKey)
+    {
+        lock (this.cacheLock)
+        {
+            if (this.cache.TryGetValue(cacheKey, out _)
+                || !this.cacheKeysByShareId.TryGetValue(
+                    shareId,
+                    out HashSet<string>? cacheKeys))
+            {
+                return;
+            }
+
+            cacheKeys.Remove(cacheKey);
+            if (cacheKeys.Count == 0)
+            {
+                this.cacheKeysByShareId.Remove(shareId);
             }
         }
     }

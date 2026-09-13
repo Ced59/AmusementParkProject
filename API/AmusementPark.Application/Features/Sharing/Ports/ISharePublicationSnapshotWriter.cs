@@ -12,6 +12,10 @@ public interface ISharePublicationSnapshotWriter
         SharePublicationSnapshotWriteRequest request,
         CancellationToken cancellationToken);
 
+    Task<ApplicationResult<bool>> CloneAsync(
+        SharePublicationSnapshotCloneRequest request,
+        CancellationToken cancellationToken);
+
     Task<ApplicationResult<bool>> DeleteSupersededAsync(
         SharePublicationId publicationId,
         long publishedVersion,

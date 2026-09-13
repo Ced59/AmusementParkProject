@@ -4,6 +4,10 @@ public sealed class SharePublicationSettingsDto
 {
     public bool IsPublic { get; set; }
 
+    public string? PublicationId { get; set; }
+
+    public long? PublicationVersion { get; set; }
+
     public string? ShareId { get; set; }
 
     public DateTime? PublishedAtUtc { get; set; }

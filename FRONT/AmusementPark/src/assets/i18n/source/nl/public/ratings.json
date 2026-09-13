@@ -174,9 +174,12 @@
         "error": "De deelinstelling kon niet worden bijgewerkt. Probeer het zo nog eens.",
         "publishedToast": "Je ranglijst kan nu worden gedeeld.",
         "privateToast": "Je ranglijst is weer privé.",
+        "rotatedToast": "Een nieuwe link heeft de oude vervangen.",
+        "rotateError": "De link kon niet worden vervangen.",
         "open": "Gedeelde pagina bekijken",
+        "rotate": "Link vervangen",
         "makePrivate": "Privé maken",
-        "privacyNote": "Jij houdt de controle: als je de ranglijst privé maakt, wordt de openbare link meteen uitgeschakeld.",
+        "privacyNote": "Jij houdt de controle: de oude link wordt meteen uitgeschakeld. Een afbeelding die al door een sociaal netwerk is gekopieerd, kan buiten de site nog even zichtbaar blijven.",
         "publishing": "Publiceren...",
         "publish": "Openbaar maken"
       },

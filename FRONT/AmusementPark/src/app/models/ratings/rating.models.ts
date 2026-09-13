@@ -100,6 +100,8 @@ export interface UserRatingStats {
 
 export interface UserRankingShareSettings {
   isPublic: boolean;
+  publicationId?: string | null;
+  publicationVersion?: number | null;
   shareId?: string | null;
   publishedAtUtc?: string | null;
   policySchemaVersion?: number | null;

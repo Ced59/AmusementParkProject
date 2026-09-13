@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
@@ -21,6 +22,7 @@ public sealed class DeleteVisitCommandHandler
     private readonly VisitPurgeScheduler purgeScheduler;
     private readonly IPassportAuditPublisher auditPublisher;
     private readonly IPassportClock clock;
+    private readonly SharePublicationSourceCacheInvalidator? shareCacheInvalidator;
 
     public DeleteVisitCommandHandler(
         IUserVisitRepository visitRepository,
@@ -31,7 +33,8 @@ public sealed class DeleteVisitCommandHandler
         IRideOccurrenceRepository occurrenceRepository,
         VisitPurgeScheduler purgeScheduler,
         IPassportAuditPublisher auditPublisher,
-        IPassportClock clock)
+        IPassportClock clock,
+        SharePublicationSourceCacheInvalidator? shareCacheInvalidator = null)
     {
         this.visitRepository = visitRepository;
         this.deletionStore = deletionStore;
@@ -42,6 +45,7 @@ public sealed class DeleteVisitCommandHandler
         this.purgeScheduler = purgeScheduler;
         this.auditPublisher = auditPublisher;
         this.clock = clock;
+        this.shareCacheInvalidator = shareCacheInvalidator;
     }
 
     public async Task<ApplicationResult<VisitDeletionReceipt>> HandleAsync(
@@ -70,6 +74,11 @@ public sealed class DeleteVisitCommandHandler
             cancellationToken);
         if (replay is not null)
         {
+            await this.InvalidateShareCachesAsync(
+                visitId,
+                userId,
+                null,
+                cancellationToken);
             await this.EnsureDeletionSideEffectsAsync(
                 visitId,
                 userId,
@@ -187,6 +196,11 @@ public sealed class DeleteVisitCommandHandler
             if (concurrentReplay is not null)
             {
                 contentMutationLease?.MarkMutationCompleted();
+                await this.InvalidateShareCachesAsync(
+                    visit.Id,
+                    visit.UserId,
+                    visit.Date.Year,
+                    cancellationToken);
                 await this.EnsureDeletionSideEffectsAsync(
                     visit.Id,
                     visit.UserId,
@@ -204,6 +218,12 @@ public sealed class DeleteVisitCommandHandler
                     PassportApplicationErrors.VisitConcurrencyConflict()));
         }
         contentMutationLease?.MarkMutationCompleted();
+
+        await this.InvalidateShareCachesAsync(
+            visit.Id,
+            visit.UserId,
+            visit.Date.Year,
+            guardedCancellationToken);
 
         await this.EnsureDeletionSideEffectsAsync(
             visit.Id,
@@ -285,6 +305,20 @@ public sealed class DeleteVisitCommandHandler
     {
         TimeSpan remaining = purgeScheduledForUtc - nowUtc;
         return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
+    }
+
+    private Task InvalidateShareCachesAsync(
+        VisitId visitId,
+        string userId,
+        int? visitYear,
+        CancellationToken cancellationToken)
+    {
+        return this.shareCacheInvalidator?.InvalidateVisitDeletionAsync(
+                userId,
+                visitId.Value,
+                visitYear,
+                cancellationToken)
+            ?? Task.CompletedTask;
     }
 
     private static string? NormalizeClientOperationId(string? value)

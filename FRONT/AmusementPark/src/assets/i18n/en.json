@@ -869,6 +869,7 @@
     "noPark": "No associated park",
     "caption": "Your public message",
     "allowComparisons": "Allow invitations to compare this passport with another public passport",
+    "cacheNote": "The old link is disabled immediately. An image already copied by a social network may still remain visible outside the site for a while.",
     "steps": {
       "scopeTitle": "Set the boundaries of your story",
       "scopeDescription": "Select the years and parks that may appear.",
@@ -897,6 +898,7 @@
       "open": "View public page",
       "preview": "See exactly what will be public",
       "publish": "Publish this selection",
+      "rotate": "Replace link",
       "revoke": "Disable public link"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Your public passport is up to date.",
       "publishError": "Publishing failed. Create the preview again and retry.",
       "revoked": "The public link is disabled.",
-      "revokeError": "The link could not be disabled."
+      "revokeError": "The link could not be disabled.",
+      "rotated": "A new link has replaced the old one.",
+      "rotateError": "The link could not be replaced."
     },
     "public": {
       "anonymous": "Park enthusiast",
@@ -1016,7 +1020,9 @@
       "loading": "Loading sharing settings...",
       "open": "View recap",
       "edit": "Edit sharing",
+      "rotate": "Replace link",
       "revoke": "Make private",
+      "cacheNote": "The old link is disabled immediately. An image already copied by a social network may still remain visible outside the site for a while.",
       "start": "Create the recap"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "The public visit recap is ready.",
       "publishError": "The recap could not be published.",
       "revoked": "This visit’s public link is now disabled.",
-      "revokeError": "The share could not be made private."
+      "revokeError": "The share could not be made private.",
+      "rotated": "A new link has replaced the old one.",
+      "rotateError": "The link could not be replaced."
     },
     "social": {
       "title": "A park memory to share",
@@ -1111,7 +1119,9 @@
       "loading": "Loading sharing settings...",
       "open": "View public recap",
       "edit": "Edit sharing",
+      "rotate": "Replace link",
       "revoke": "Make private",
+      "cacheNote": "The old link is disabled immediately. An image already copied by a social network may still remain visible outside the site for a while.",
       "start": "Create a recap to share"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Your public annual recap is ready.",
       "publishError": "The annual recap could not be published.",
       "revoked": "The public link to this recap is now disabled.",
-      "revokeError": "The recap could not be made private."
+      "revokeError": "The recap could not be made private.",
+      "rotated": "A new link has replaced the old one.",
+      "rotateError": "The link could not be replaced."
     },
     "social": {
       "title": "My {{year}} park year",
@@ -6149,9 +6161,12 @@
         "error": "The sharing setting could not be updated. Please try again shortly.",
         "publishedToast": "Your ranking is now ready to share.",
         "privateToast": "Your ranking is private again.",
+        "rotatedToast": "A new link has replaced the old one.",
+        "rotateError": "The link could not be replaced.",
         "open": "View shared page",
+        "rotate": "Replace link",
         "makePrivate": "Make private",
-        "privacyNote": "You stay in control: making the ranking private immediately disables its public link.",
+        "privacyNote": "You stay in control: the old link is disabled immediately. An image already copied by a social network may remain visible outside the site for a while.",
         "publishing": "Publishing...",
         "publish": "Make public"
       },

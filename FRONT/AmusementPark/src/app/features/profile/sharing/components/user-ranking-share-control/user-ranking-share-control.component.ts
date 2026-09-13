@@ -88,6 +88,10 @@ export class UserRankingShareControlComponent implements OnInit {
     this.stateFacade.setPublic(false);
   }
 
+  protected rotate(): void {
+    this.stateFacade.rotate();
+  }
+
   protected formatRating(value: number | null | undefined): string {
     const rating: number = Number(value ?? 0);
     return rating > 0

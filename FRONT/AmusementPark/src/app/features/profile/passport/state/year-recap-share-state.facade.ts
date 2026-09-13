@@ -207,13 +207,18 @@ export class YearRecapShareStateFacade {
     });
   }
 
-  revoke(year: number): void {
+  revoke(_year: number): void {
     if (this.savingSignal()) {
       return;
     }
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (publicationId.length === 0) {
+      return;
+    }
+
     const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
-    this.sharePort.revoke(year).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.sharePort.revoke(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
         if (generation !== this.mutationGeneration) {
           return;
@@ -231,6 +236,38 @@ export class YearRecapShareStateFacade {
         this.savingSignal.set(false);
         this.errorSignal.set(true);
         this.toast('error', 'yearRecapShare.toast.revokeError');
+      }
+    });
+  }
+
+  rotate(): void {
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (this.savingSignal() || publicationId.length === 0) {
+      return;
+    }
+
+    const generation: number = ++this.mutationGeneration;
+    this.savingSignal.set(true);
+    this.errorSignal.set(false);
+    this.sharePort.rotate(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (settings: SharePublicationSettings): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        this.settingsSignal.set(settings);
+        this.savingSignal.set(false);
+        this.toast('success', 'yearRecapShare.toast.rotated');
+      },
+      error: (error: unknown): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        console.error('Error rotating annual recap link', error);
+        this.savingSignal.set(false);
+        this.errorSignal.set(true);
+        this.toast('error', 'yearRecapShare.toast.rotateError');
       }
     });
   }

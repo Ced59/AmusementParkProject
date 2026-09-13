@@ -8,7 +8,9 @@
       "loading": "Ładowanie ustawień udostępniania...",
       "open": "Zobacz podsumowanie",
       "edit": "Edytuj udostępnianie",
+      "rotate": "Zastąp link",
       "revoke": "Ustaw jako prywatne",
+      "cacheNote": "Stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może jednak przez pewien czas pozostać widoczny poza witryną.",
       "start": "Utwórz podsumowanie"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Publiczne podsumowanie wizyty jest gotowe.",
       "publishError": "Nie udało się opublikować podsumowania.",
       "revoked": "Publiczny link tej wizyty jest teraz wyłączony.",
-      "revokeError": "Nie udało się ustawić udostępnienia jako prywatnego."
+      "revokeError": "Nie udało się ustawić udostępnienia jako prywatnego.",
+      "rotated": "Nowy link zastąpił stary.",
+      "rotateError": "Nie udało się zastąpić linku."
     },
     "social": {
       "title": "Wspomnienie z parku do udostępnienia",

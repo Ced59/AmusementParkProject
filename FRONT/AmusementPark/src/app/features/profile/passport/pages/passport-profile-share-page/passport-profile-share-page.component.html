@@ -21,7 +21,10 @@
     @if (facade.settings()?.isPublic) {
       <section class="passport-share__live" appUiSurface="panel" appUiSurfacePadding="regular">
         <div><span>{{ 'passportProfileShare.live' | translate }}</span><strong>{{ ('passportProfileShare.visibility.' + (facade.settings()?.visibility || 'Unlisted')) | translate }}</strong></div>
-        <button appUiButton="soft" type="button" (click)="openPublicPassport()">{{ 'passportProfileShare.actions.open' | translate }}</button>
+        <div class="passport-share__live-actions">
+          <button appUiButton="soft" type="button" (click)="openPublicPassport()">{{ 'passportProfileShare.actions.open' | translate }}</button>
+          <button appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'passportProfileShare.actions.rotate' | translate }}</button>
+        </div>
       </section>
     }
 
@@ -138,6 +141,7 @@
     }
 
     @if (facade.settings()?.isPublic) {
+      <p class="passport-share__cache-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'passportProfileShare.cacheNote' | translate }}</p>
       <button class="passport-share__revoke" appUiButton="ghost" type="button" [disabled]="facade.saving()" (click)="facade.revoke()">{{ 'passportProfileShare.actions.revoke' | translate }}</button>
     }
   }

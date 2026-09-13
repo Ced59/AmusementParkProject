@@ -14,18 +14,21 @@ public sealed class SharePublicationPublisher
     private readonly IShareTokenFactory tokenFactory;
     private readonly TimeProvider timeProvider;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSnapshotWriter> snapshotWriters;
+    private readonly ISharePublicationCacheInvalidationQueue? invalidationQueue;
 
     public SharePublicationPublisher(
         ISharePublicationRepository repository,
         IShareTokenFactory tokenFactory,
         TimeProvider? timeProvider = null,
-        IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null)
+        IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null,
+        ISharePublicationCacheInvalidationQueue? invalidationQueue = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.tokenFactory = tokenFactory ?? throw new ArgumentNullException(nameof(tokenFactory));
         this.timeProvider = timeProvider ?? TimeProvider.System;
         this.snapshotWriters = (snapshotWriters ?? Array.Empty<ISharePublicationSnapshotWriter>())
             .ToDictionary(static writer => writer.PublicationType);
+        this.invalidationQueue = invalidationQueue;
     }
 
     public async Task<ApplicationResult<SharePublicationSettingsResult>> PublishAsync(
@@ -190,6 +193,7 @@ public sealed class SharePublicationPublisher
                 }
             }
 
+            string? previousShareId = publication.ShareToken?.Value;
             ShareToken token = publication.Status == SharePublicationStatus.NeedsReview
                 ? this.tokenFactory.Generate()
                 : publication.ShareToken ?? this.tokenFactory.Generate();
@@ -220,6 +224,12 @@ public sealed class SharePublicationPublisher
                 {
                     return confirmation;
                 }
+
+                SharePublicationCacheInvalidationDispatcher.Enqueue(
+                    this.invalidationQueue,
+                    publication,
+                    previousShareId,
+                    publication.ShareToken?.Value);
 
                 ApplicationResult<bool> cleanupResult = await DeleteSupersededSnapshotsAsync(
                     snapshotWriter,
@@ -304,6 +314,7 @@ public sealed class SharePublicationPublisher
                 }
 
                 long expectedVersion = publication.Version;
+                string? shareId = publication.ShareToken?.Value;
                 publication.Revoke(
                     publication.PublicationVersion,
                     this.timeProvider.GetUtcNow().UtcDateTime);
@@ -313,6 +324,10 @@ public sealed class SharePublicationPublisher
                     cancellationToken);
                 if (outcome == SharePublicationWriteOutcome.Success)
                 {
+                    SharePublicationCacheInvalidationDispatcher.Enqueue(
+                        this.invalidationQueue,
+                        publication,
+                        shareId);
                     return;
                 }
             }
@@ -334,6 +349,8 @@ public sealed class SharePublicationPublisher
     {
         if (publication.SourceVersion != sourceVersion)
         {
+            bool wasResolvable = publication.IsResolvable;
+            string? previousShareId = publication.ShareToken?.Value;
             long expectedVersion = publication.Version;
             publication.MarkSourceChanged(sourceVersion, nowUtc);
             SharePublicationWriteOutcome sourceOutcome = await this.repository.ReplaceAsync(
@@ -343,6 +360,14 @@ public sealed class SharePublicationPublisher
             if (sourceOutcome != SharePublicationWriteOutcome.Success)
             {
                 return (sourceOutcome, publication.Version);
+            }
+
+            if (wasResolvable)
+            {
+                SharePublicationCacheInvalidationDispatcher.Enqueue(
+                    this.invalidationQueue,
+                    publication,
+                    previousShareId);
             }
         }
 
@@ -364,6 +389,8 @@ public sealed class SharePublicationPublisher
             }
 
             long expectedVersion = current.Version;
+            bool wasResolvable = current.IsResolvable;
+            string? previousShareId = current.ShareToken?.Value;
             current.ReplaceContentPolicy(
                 policy,
                 current.PublicationVersion,
@@ -376,6 +403,14 @@ public sealed class SharePublicationPublisher
                 current,
                 expectedVersion,
                 cancellationToken);
+            if (policyOutcome == SharePublicationWriteOutcome.Success && wasResolvable)
+            {
+                SharePublicationCacheInvalidationDispatcher.Enqueue(
+                    this.invalidationQueue,
+                    current,
+                    previousShareId);
+            }
+
             return (policyOutcome, current.Version);
         }
 

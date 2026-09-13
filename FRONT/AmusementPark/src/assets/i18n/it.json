@@ -869,6 +869,7 @@
     "noPark": "Nessun parco associato",
     "caption": "Il tuo messaggio pubblico",
     "allowComparisons": "Consenti inviti a confrontare questo passaporto con un altro passaporto pubblico",
+    "cacheNote": "Il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può però restare visibile fuori dal sito per un po’ di tempo.",
     "steps": {
       "scopeTitle": "Definisci i confini della tua storia",
       "scopeDescription": "Seleziona gli anni e i parchi che possono apparire.",
@@ -897,6 +898,7 @@
       "open": "Vedi la pagina pubblica",
       "preview": "Vedi esattamente cosa sarà pubblico",
       "publish": "Pubblica questa selezione",
+      "rotate": "Sostituisci il link",
       "revoke": "Disattiva il link pubblico"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Il tuo passaporto pubblico è aggiornato.",
       "publishError": "La pubblicazione non è riuscita. Ricrea l’anteprima e riprova.",
       "revoked": "Il link pubblico è disattivato.",
-      "revokeError": "Impossibile disattivare il link."
+      "revokeError": "Impossibile disattivare il link.",
+      "rotated": "Un nuovo link ha sostituito quello precedente.",
+      "rotateError": "Impossibile sostituire il link."
     },
     "public": {
       "anonymous": "Appassionato di parchi",
@@ -1016,7 +1020,9 @@
       "loading": "Caricamento della condivisione...",
       "open": "Vedi il riepilogo",
       "edit": "Modifica la condivisione",
+      "rotate": "Sostituisci il link",
       "revoke": "Rendi privato",
+      "cacheNote": "Il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può però restare visibile fuori dal sito per un po’ di tempo.",
       "start": "Crea il riepilogo"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "Il riepilogo pubblico della visita è pronto.",
       "publishError": "Impossibile pubblicare il riepilogo.",
       "revoked": "Il link pubblico di questa visita è ora disattivato.",
-      "revokeError": "Impossibile rendere privata la condivisione."
+      "revokeError": "Impossibile rendere privata la condivisione.",
+      "rotated": "Un nuovo link ha sostituito quello precedente.",
+      "rotateError": "Impossibile sostituire il link."
     },
     "social": {
       "title": "Un ricordo del parco da condividere",
@@ -1111,7 +1119,9 @@
       "loading": "Caricamento della condivisione...",
       "open": "Vedi il riepilogo pubblico",
       "edit": "Modifica la condivisione",
+      "rotate": "Sostituisci il link",
       "revoke": "Rendi privato",
+      "cacheNote": "Il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può però restare visibile fuori dal sito per un po’ di tempo.",
       "start": "Crea un riepilogo da condividere"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Il tuo riepilogo annuale pubblico è pronto.",
       "publishError": "Impossibile pubblicare il riepilogo annuale.",
       "revoked": "Il link pubblico di questo riepilogo è ora disattivato.",
-      "revokeError": "Impossibile rendere privato il riepilogo."
+      "revokeError": "Impossibile rendere privato il riepilogo.",
+      "rotated": "Un nuovo link ha sostituito quello precedente.",
+      "rotateError": "Impossibile sostituire il link."
     },
     "social": {
       "title": "Il mio anno {{year}} nei parchi",
@@ -6149,9 +6161,12 @@
         "error": "Non è stato possibile aggiornare la condivisione. Riprova tra poco.",
         "publishedToast": "La tua classifica è pronta per essere condivisa.",
         "privateToast": "La tua classifica è di nuovo privata.",
+        "rotatedToast": "Un nuovo link ha sostituito quello precedente.",
+        "rotateError": "Impossibile sostituire il link.",
         "open": "Vedi la pagina condivisa",
+        "rotate": "Sostituisci il link",
         "makePrivate": "Rendi privata",
-        "privacyNote": "Mantieni sempre il controllo: rendendola privata, il link pubblico viene disattivato subito.",
+        "privacyNote": "Mantieni sempre il controllo: il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può restare visibile fuori dal sito per un po’ di tempo.",
         "publishing": "Pubblicazione...",
         "publish": "Rendi pubblica"
       },

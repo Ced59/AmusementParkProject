@@ -174,9 +174,12 @@
         "error": "Nie udało się zmienić ustawień udostępniania. Spróbuj ponownie za chwilę.",
         "publishedToast": "Twój ranking jest gotowy do udostępnienia.",
         "privateToast": "Twój ranking znów jest prywatny.",
+        "rotatedToast": "Nowy link zastąpił stary.",
+        "rotateError": "Nie udało się zastąpić linku.",
         "open": "Zobacz udostępnioną stronę",
+        "rotate": "Zastąp link",
         "makePrivate": "Ustaw jako prywatny",
-        "privacyNote": "Zachowujesz kontrolę: ustawienie rankingu jako prywatnego natychmiast wyłącza publiczny link.",
+        "privacyNote": "Zachowujesz kontrolę: stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może przez pewien czas pozostać widoczny poza witryną.",
         "publishing": "Publikowanie...",
         "publish": "Ustaw jako publiczny"
       },

@@ -320,6 +320,16 @@
   justify-content: flex-end;
 }
 
+.visit-share__cache-note {
+  display: flex;
+  min-width: 0;
+  gap: 0.45rem;
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 680px) {
   .visit-share-editor__choices,
   .visit-share-editor__items > div {

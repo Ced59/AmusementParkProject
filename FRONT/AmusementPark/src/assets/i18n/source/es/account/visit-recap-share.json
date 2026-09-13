@@ -8,7 +8,9 @@
       "loading": "Cargando las opciones para compartir...",
       "open": "Ver el resumen",
       "edit": "Editar el contenido compartido",
+      "rotate": "Sustituir el enlace",
       "revoke": "Hacer privado",
+      "cacheNote": "El enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
       "start": "Crear el resumen"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "El resumen público de la visita está listo.",
       "publishError": "No se pudo publicar el resumen.",
       "revoked": "El enlace público de esta visita ya está desactivado.",
-      "revokeError": "No se pudo hacer privada la publicación."
+      "revokeError": "No se pudo hacer privada la publicación.",
+      "rotated": "Un nuevo enlace ha sustituido al anterior.",
+      "rotateError": "No se pudo sustituir el enlace."
     },
     "social": {
       "title": "Un recuerdo del parque para compartir",

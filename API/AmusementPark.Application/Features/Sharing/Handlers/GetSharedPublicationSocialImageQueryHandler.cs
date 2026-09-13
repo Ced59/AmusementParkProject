@@ -121,6 +121,7 @@ public sealed class GetSharedPublicationSocialImageQueryHandler
                 content.Date.Precision);
         return ApplicationResult<ShareSocialImageModel>.Success(
             new ShareSocialImageModel(
+                query.ShareId,
                 query.PublicationType,
                 language,
                 content.ParkName,
@@ -170,6 +171,7 @@ public sealed class GetSharedPublicationSocialImageQueryHandler
 
         return ApplicationResult<ShareSocialImageModel>.Success(
             new ShareSocialImageModel(
+                query.ShareId,
                 query.PublicationType,
                 language,
                 null,
@@ -223,6 +225,7 @@ public sealed class GetSharedPublicationSocialImageQueryHandler
 
         return ApplicationResult<ShareSocialImageModel>.Success(
             new ShareSocialImageModel(
+                query.ShareId,
                 query.PublicationType,
                 language,
                 content.DisplayName,

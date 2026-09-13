@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Linq;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.WebAPI.Diagnostics;
 using AmusementPark.WebAPI.OutputCaching;
@@ -65,6 +66,11 @@ public static class HttpApiServiceCollectionExtensions
         services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
         services.AddScoped<IParkWeatherCacheInvalidator, ParkWeatherPublicCacheInvalidator>();
         services.AddScoped<IRatingRankingPublicationCacheInvalidator, RatingRankingPublicationCacheInvalidator>();
+        services.AddSingleton<SharePublicationCacheInvalidationQueue>();
+        services.AddSingleton<ISharePublicationCacheInvalidationQueue>(provider =>
+            provider.GetRequiredService<SharePublicationCacheInvalidationQueue>());
+        services.AddHostedService(provider =>
+            provider.GetRequiredService<SharePublicationCacheInvalidationQueue>());
         services.AddSingleton<IPublicSeoResponseCacheInvalidator, PublicSeoResponseCacheInvalidator>();
         services.AddSingleton<IParkDataEditorOperationCoordinator, ParkDataEditorOperationCoordinator>();
         services.AddSingleton<IBulkParkGraphExportJobService, BulkParkGraphExportJobService>();

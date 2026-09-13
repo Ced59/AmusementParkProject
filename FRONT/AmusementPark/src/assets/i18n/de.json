@@ -869,6 +869,7 @@
     "noPark": "Keinem Park zugeordnet",
     "caption": "Deine öffentliche Nachricht",
     "allowComparisons": "Einladungen zum Vergleich mit einem anderen öffentlichen Pass erlauben",
+    "cacheNote": "Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
     "steps": {
       "scopeTitle": "Grenze deine Geschichte ein",
       "scopeDescription": "Wähle die Jahre und Parks, die erscheinen dürfen.",
@@ -897,6 +898,7 @@
       "open": "Öffentliche Seite ansehen",
       "preview": "Genau ansehen, was öffentlich wird",
       "publish": "Diese Auswahl veröffentlichen",
+      "rotate": "Link ersetzen",
       "revoke": "Öffentlichen Link deaktivieren"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Dein öffentlicher Pass ist aktuell.",
       "publishError": "Die Veröffentlichung ist fehlgeschlagen. Erstelle die Vorschau neu und versuche es erneut.",
       "revoked": "Der öffentliche Link ist deaktiviert.",
-      "revokeError": "Der Link konnte nicht deaktiviert werden."
+      "revokeError": "Der Link konnte nicht deaktiviert werden.",
+      "rotated": "Ein neuer Link hat den alten ersetzt.",
+      "rotateError": "Der Link konnte nicht ersetzt werden."
     },
     "public": {
       "anonymous": "Freizeitparkfan",
@@ -1016,7 +1020,9 @@
       "loading": "Freigabe wird geladen...",
       "open": "Rückblick ansehen",
       "edit": "Freigabe bearbeiten",
+      "rotate": "Link ersetzen",
       "revoke": "Privat machen",
+      "cacheNote": "Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
       "start": "Rückblick erstellen"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "Der öffentliche Besuchsrückblick ist bereit.",
       "publishError": "Der Rückblick konnte nicht veröffentlicht werden.",
       "revoked": "Der öffentliche Link dieses Besuchs ist nun deaktiviert.",
-      "revokeError": "Die Freigabe konnte nicht privat gemacht werden."
+      "revokeError": "Die Freigabe konnte nicht privat gemacht werden.",
+      "rotated": "Ein neuer Link hat den alten ersetzt.",
+      "rotateError": "Der Link konnte nicht ersetzt werden."
     },
     "social": {
       "title": "Eine Parkerinnerung zum Teilen",
@@ -1111,7 +1119,9 @@
       "loading": "Freigabe wird geladen...",
       "open": "Öffentlichen Rückblick ansehen",
       "edit": "Freigabe bearbeiten",
+      "rotate": "Link ersetzen",
       "revoke": "Privat machen",
+      "cacheNote": "Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
       "start": "Rückblick zum Teilen erstellen"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Dein öffentlicher Jahresrückblick ist bereit.",
       "publishError": "Der Jahresrückblick konnte nicht veröffentlicht werden.",
       "revoked": "Der öffentliche Link dieses Rückblicks ist jetzt deaktiviert.",
-      "revokeError": "Der Rückblick konnte nicht privat gemacht werden."
+      "revokeError": "Der Rückblick konnte nicht privat gemacht werden.",
+      "rotated": "Ein neuer Link hat den alten ersetzt.",
+      "rotateError": "Der Link konnte nicht ersetzt werden."
     },
     "social": {
       "title": "Mein Parkjahr {{year}}",
@@ -6149,9 +6161,12 @@
         "error": "Die Freigabe konnte nicht geändert werden. Versuche es gleich noch einmal.",
         "publishedToast": "Deine Rangliste kann jetzt geteilt werden.",
         "privateToast": "Deine Rangliste ist wieder privat.",
+        "rotatedToast": "Ein neuer Link hat den alten ersetzt.",
+        "rotateError": "Der Link konnte nicht ersetzt werden.",
         "open": "Geteilte Seite ansehen",
+        "rotate": "Link ersetzen",
         "makePrivate": "Privat machen",
-        "privacyNote": "Du behältst die Kontrolle: Wenn du die Rangliste privat machst, wird der öffentliche Link sofort deaktiviert.",
+        "privacyNote": "Du behältst die Kontrolle: Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
         "publishing": "Wird veröffentlicht...",
         "publish": "Öffentlich machen"
       },

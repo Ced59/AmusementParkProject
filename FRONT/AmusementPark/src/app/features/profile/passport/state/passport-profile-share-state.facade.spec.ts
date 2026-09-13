@@ -41,9 +41,15 @@ describe('PassportProfileShareStateFacade', () => {
       },
       publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => {
         publishRequests.push(request);
-        return of({ isPublic: true, shareId: 'opaque-share-id', includedFields: request.approvedIncludedFields });
+        return of({
+          isPublic: true,
+          publicationId: 'publication-1',
+          shareId: 'opaque-share-id',
+          includedFields: request.approvedIncludedFields
+        });
       },
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of(settings),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
@@ -106,7 +112,8 @@ describe('PassportProfileShareStateFacade', () => {
         return of(createPreview(request));
       },
       publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
@@ -147,7 +154,8 @@ describe('PassportProfileShareStateFacade', () => {
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> =>
         of(createPreview(request)),
       publish: (): Observable<SharePublicationSettings> => publishResponse,
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
@@ -182,13 +190,15 @@ describe('PassportProfileShareStateFacade', () => {
     const port: PassportProfileSharePort = {
       getSettings: (): Observable<SharePublicationSettings> => of({
         isPublic: true,
+        publicationId: 'publication-1',
         shareId: 'published',
         includedFields: []
       }),
       getSelection: (): Observable<PassportProfileShareSelection> => of(selection),
       preview: (): Observable<SharePublicationPreview> => previewResponse,
       publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
@@ -243,7 +253,8 @@ describe('PassportProfileShareStateFacade', () => {
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> =>
         of(createPreview(request)),
       publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
@@ -302,7 +313,8 @@ describe('PassportProfileShareStateFacade', () => {
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> =>
         of(createPreview(request)),
       publish: (): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
-      revoke: (): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: true, includedFields: [] }),
+      revoke: (_publicationId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
     };
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,

@@ -8,7 +8,9 @@
       "loading": "A carregar opções de partilha...",
       "open": "Ver o resumo",
       "edit": "Editar a partilha",
+      "rotate": "Substituir a ligação",
       "revoke": "Tornar privado",
+      "cacheNote": "A ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
       "start": "Criar o resumo"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "O resumo público da visita está pronto.",
       "publishError": "Não foi possível publicar o resumo.",
       "revoked": "A ligação pública desta visita está agora desativada.",
-      "revokeError": "Não foi possível tornar a partilha privada."
+      "revokeError": "Não foi possível tornar a partilha privada.",
+      "rotated": "Uma nova ligação substituiu a anterior.",
+      "rotateError": "Não foi possível substituir a ligação."
     },
     "social": {
       "title": "Uma memória do parque para partilhar",

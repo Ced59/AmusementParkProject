@@ -268,6 +268,33 @@ public sealed class ShareSocialImageRendererTests
     }
 
     [Fact]
+    public async Task Invalidate_ShouldEvictThePreviouslyRenderedShareImage()
+    {
+        ShareSocialImageModel model = CreateVisitModel("fr");
+        ShareSocialImageModel unaffectedModel = model with { ShareId = "another-share" };
+        using ShareSocialImageRenderer renderer = new ShareSocialImageRenderer();
+        ShareSocialImageRenderResult initial = await renderer.RenderAsync(
+            model,
+            CancellationToken.None);
+        ShareSocialImageRenderResult unaffected = await renderer.RenderAsync(
+            unaffectedModel,
+            CancellationToken.None);
+
+        renderer.Invalidate(new[] { model.ShareId });
+        ShareSocialImageRenderResult refreshed = await renderer.RenderAsync(
+            model,
+            CancellationToken.None);
+        ShareSocialImageRenderResult stillCached = await renderer.RenderAsync(
+            unaffectedModel,
+            CancellationToken.None);
+
+        Assert.NotSame(initial, refreshed);
+        Assert.Same(unaffected, stillCached);
+        Assert.Equal(initial.EntityTag, refreshed.EntityTag);
+        Assert.Equal(initial.Content, refreshed.Content);
+    }
+
+    [Fact]
     public async Task RenderAsync_WhenDayIsHiddenByThePolicy_ShouldNotReintroduceItInAlternativeText()
     {
         ShareSocialImageModel model = CreateVisitModel("fr") with
@@ -289,6 +316,7 @@ public sealed class ShareSocialImageRendererTests
     private static ShareSocialImageModel CreateVisitModel(string language)
     {
         return new ShareSocialImageModel(
+            "shared-visit",
             SharePublicationType.VisitRecap,
             language,
             "Denain Évasion",

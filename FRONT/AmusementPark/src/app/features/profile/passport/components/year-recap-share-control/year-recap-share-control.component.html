@@ -125,9 +125,11 @@
     <div class="year-share__actions">
       <a appUiButton="primary" [routerLink]="path"><i class="pi pi-external-link" aria-hidden="true"></i>{{ 'yearRecapShare.manage.open' | translate }}</a>
       <button appUiButton="ghost" type="button" (click)="facade.openEditor()"><i class="pi pi-sliders-h" aria-hidden="true"></i>{{ 'yearRecapShare.manage.edit' | translate }}</button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="facade.rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'yearRecapShare.manage.rotate' | translate }}</button>
       <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="facade.revoke(year)"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'yearRecapShare.manage.revoke' | translate }}</button>
     </div>
     <app-public-share-panel targetType="Page" [targetId]="settings()?.shareId || null" [targetTitle]="'yearRecapShare.social.title' | translate:{ year: year }" [shareUrlOverride]="path" titleKey="yearRecapShare.social.title" descriptionKey="yearRecapShare.social.description" textKey="yearRecapShare.social.text"></app-public-share-panel>
+    <p class="year-share__cache-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'yearRecapShare.manage.cacheNote' | translate }}</p>
   } @else {
     <button appUiButton="primary" type="button" (click)="facade.openEditor()"><i class="pi pi-sparkles" aria-hidden="true"></i>{{ 'yearRecapShare.manage.start' | translate }}</button>
   }

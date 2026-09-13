@@ -11,6 +11,7 @@ internal static class ShareSocialImageCacheKeyFactory
     {
         StringBuilder content = new StringBuilder();
         Append(content, ShareSocialImageTemplate.Version.ToString(CultureInfo.InvariantCulture));
+        Append(content, model.ShareId);
         Append(content, model.PublicationType.ToString());
         Append(content, model.PublicationVersion.ToString(CultureInfo.InvariantCulture));
         Append(content, model.Language);

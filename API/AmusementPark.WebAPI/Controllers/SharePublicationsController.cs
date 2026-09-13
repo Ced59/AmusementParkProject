@@ -26,15 +26,21 @@ public sealed class SharePublicationsController : ControllerBase
 {
     private readonly IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> previewHandler;
     private readonly ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> publishHandler;
+    private readonly ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>> rotateHandler;
+    private readonly ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> revokeHandler;
     private readonly SharePublicationRolloutSettings rolloutSettings;
 
     public SharePublicationsController(
         IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> previewHandler,
         ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> publishHandler,
+        ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>> rotateHandler,
+        ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> revokeHandler,
         IOptions<SharePublicationRolloutSettings> rolloutSettings)
     {
         this.previewHandler = previewHandler;
         this.publishHandler = publishHandler;
+        this.rotateHandler = rotateHandler;
+        this.revokeHandler = revokeHandler;
         this.rolloutSettings = rolloutSettings.Value;
     }
 
@@ -108,6 +114,74 @@ public sealed class SharePublicationsController : ControllerBase
 
         ApplicationResult<SharePublicationSettingsResult> result =
             await this.publishHandler.HandleAsync(command, cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToSharingHttp())
+            : this.ToActionResult(result);
+    }
+
+    [HttpPost("{publicationId}/rotate-link")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [EnableRateLimiting(RateLimitPolicyNames.SharePublicationConfirmations)]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(typeof(SharePublicationSettingsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
+    public async Task<IActionResult> RotateLinkAsync(
+        [FromRoute] string publicationId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!this.rolloutSettings.Enabled)
+        {
+            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
+        }
+
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ApplicationResult<SharePublicationSettingsResult> result =
+            await this.rotateHandler.HandleAsync(
+                new RotateShareIdCommand(userId, publicationId),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToSharingHttp())
+            : this.ToActionResult(result);
+    }
+
+    [HttpDelete("{publicationId}")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [EnableRateLimiting(RateLimitPolicyNames.SharePublicationConfirmations)]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(typeof(SharePublicationSettingsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
+    public async Task<IActionResult> RevokeAsync(
+        [FromRoute] string publicationId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!this.rolloutSettings.Enabled)
+        {
+            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
+        }
+
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ApplicationResult<SharePublicationSettingsResult> result =
+            await this.revokeHandler.HandleAsync(
+                new RevokeSharePublicationCommand(userId, publicationId),
+                cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToSharingHttp())
             : this.ToActionResult(result);

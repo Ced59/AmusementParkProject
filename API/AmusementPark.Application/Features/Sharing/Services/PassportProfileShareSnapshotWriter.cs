@@ -82,6 +82,38 @@ public sealed class PassportProfileShareSnapshotWriter : ISharePublicationSnapsh
                 SharingApplicationErrors.PublicationChangedConcurrently());
     }
 
+    public async Task<ApplicationResult<bool>> CloneAsync(
+        SharePublicationSnapshotCloneRequest request,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        PassportProfileShareSnapshot? current = await this.snapshotRepository.GetAsync(
+            request.PublicationId,
+            request.SourcePublicationVersion,
+            cancellationToken);
+        if (current is null
+            || current.SourceVersion != request.SourceVersion
+            || current.PolicySchemaVersion != request.ContentPolicy.SchemaVersion
+            || current.DatePrecision != request.ContentPolicy.DatePrecision
+            || !current.IncludedFields.Order().SequenceEqual(request.ContentPolicy.IncludedFields.Order())
+            || !string.Equals(current.ContentFingerprint, request.ContentFingerprint, StringComparison.Ordinal))
+        {
+            return ApplicationResult<bool>.Failure(SharingApplicationErrors.SnapshotUnavailable());
+        }
+
+        PassportProfileShareSnapshot clone = current with
+        {
+            PublicationVersion = request.TargetPublicationVersion,
+            PublicationStateVersion = request.PublicationStateVersion,
+            CreatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime,
+        };
+        bool persisted = await this.snapshotRepository.UpsertAsync(clone, cancellationToken);
+        return persisted
+            ? ApplicationResult<bool>.Success(true)
+            : ApplicationResult<bool>.Failure(
+                SharingApplicationErrors.PublicationChangedConcurrently());
+    }
+
     public async Task<ApplicationResult<bool>> DeleteSupersededAsync(
         SharePublicationId publicationId,
         long publishedVersion,

@@ -21,12 +21,16 @@ describe('YearRecapShareStateFacade', () => {
   let publishRequests: SharePublicationPublishRequest[];
   let publishResponse: Observable<SharePublicationSettings>;
   let previewIsEmpty: boolean;
+  let rotatedPublicationIds: string[];
+  let revokedPublicationIds: string[];
 
   beforeEach(() => {
     settings = { isPublic: false, includedFields: [] };
     selection = { hasSavedSnapshot: false };
     previewRequests = [];
     publishRequests = [];
+    rotatedPublicationIds = [];
+    revokedPublicationIds = [];
     previewIsEmpty = false;
     publishResponse = of({
       isPublic: true,
@@ -46,7 +50,14 @@ describe('YearRecapShareStateFacade', () => {
         publishRequests.push(request);
         return publishResponse;
       },
-      revoke: (_year: number): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (publicationId: string): Observable<SharePublicationSettings> => {
+        rotatedPublicationIds.push(publicationId);
+        return of({ ...settings, shareId: 'rotated-share-id' });
+      },
+      revoke: (publicationId: string): Observable<SharePublicationSettings> => {
+        revokedPublicationIds.push(publicationId);
+        return of({ isPublic: false, publicationId, includedFields: [] });
+      }
     };
     TestBed.configureTestingModule({
       providers: [
@@ -118,6 +129,26 @@ describe('YearRecapShareStateFacade', () => {
 
     expect(facade.yearRecap()?.isEmpty).toBe(true);
     expect(facade.canPublish()).toBe(false);
+  });
+
+  it('rotates and revokes the central publication identified by the loaded settings', () => {
+    settings = {
+      isPublic: true,
+      publicationId: 'publication-1',
+      shareId: 'current-share-id',
+      includedFields: []
+    };
+
+    facade.load(2026);
+    facade.rotate();
+
+    expect(rotatedPublicationIds).toEqual(['publication-1']);
+    expect(facade.settings()?.shareId).toBe('rotated-share-id');
+
+    facade.revoke(2026);
+
+    expect(revokedPublicationIds).toEqual(['publication-1']);
+    expect(facade.settings()?.isPublic).toBe(false);
   });
 });
 

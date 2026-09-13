@@ -8,7 +8,9 @@
       "loading": "Caricamento della condivisione...",
       "open": "Vedi il riepilogo pubblico",
       "edit": "Modifica la condivisione",
+      "rotate": "Sostituisci il link",
       "revoke": "Rendi privato",
+      "cacheNote": "Il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può però restare visibile fuori dal sito per un po’ di tempo.",
       "start": "Crea un riepilogo da condividere"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Il tuo riepilogo annuale pubblico è pronto.",
       "publishError": "Impossibile pubblicare il riepilogo annuale.",
       "revoked": "Il link pubblico di questo riepilogo è ora disattivato.",
-      "revokeError": "Impossibile rendere privato il riepilogo."
+      "revokeError": "Impossibile rendere privato il riepilogo.",
+      "rotated": "Un nuovo link ha sostituito quello precedente.",
+      "rotateError": "Impossibile sostituire il link."
     },
     "social": {
       "title": "Il mio anno {{year}} nei parchi",

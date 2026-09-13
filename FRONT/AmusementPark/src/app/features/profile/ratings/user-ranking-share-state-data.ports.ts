@@ -16,6 +16,8 @@ export interface UserRankingSharePort {
   setMyShareVisibility(isPublic: boolean): Observable<UserRankingShareSettings>;
   preview(request: SharePublicationPreviewRequest): Observable<SharePublicationPreview>;
   publish(request: SharePublicationPublishRequest): Observable<SharePublicationSettings>;
+  rotate(publicationId: string): Observable<SharePublicationSettings>;
+  revoke(publicationId: string): Observable<SharePublicationSettings>;
 }
 
 export const USER_RANKING_SHARE_PORT = new InjectionToken<UserRankingSharePort>('USER_RANKING_SHARE_PORT', {
@@ -33,6 +35,12 @@ export const USER_RANKING_SHARE_PORT = new InjectionToken<UserRankingSharePort>(
       },
       publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => {
         return sharePublicationsApiService.publish(request);
+      },
+      rotate: (publicationId: string): Observable<SharePublicationSettings> => {
+        return sharePublicationsApiService.rotate(publicationId);
+      },
+      revoke: (publicationId: string): Observable<SharePublicationSettings> => {
+        return sharePublicationsApiService.revoke(publicationId);
       }
     };
   }

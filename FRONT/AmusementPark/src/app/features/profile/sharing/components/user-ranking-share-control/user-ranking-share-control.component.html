@@ -144,6 +144,10 @@
         <i class="pi pi-sliders-h" aria-hidden="true"></i>
         <span>{{ 'ratings.share.editor.edit' | translate }}</span>
       </button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="rotate()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'ratings.share.manage.rotate' | translate }}</span>
+      </button>
       <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="makePrivate()">
         <i class="pi pi-lock" aria-hidden="true"></i>
         <span>{{ 'ratings.share.manage.makePrivate' | translate }}</span>

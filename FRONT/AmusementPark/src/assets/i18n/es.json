@@ -869,6 +869,7 @@
     "noPark": "Sin parque asociado",
     "caption": "Tu mensaje público",
     "allowComparisons": "Permitir invitaciones para comparar este pasaporte con otro pasaporte público",
+    "cacheNote": "El enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
     "steps": {
       "scopeTitle": "Delimita tu historia",
       "scopeDescription": "Selecciona los años y parques que pueden aparecer.",
@@ -897,6 +898,7 @@
       "open": "Ver la página pública",
       "preview": "Ver exactamente qué será público",
       "publish": "Publicar esta selección",
+      "rotate": "Sustituir el enlace",
       "revoke": "Desactivar el enlace público"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Tu pasaporte público está actualizado.",
       "publishError": "La publicación no se ha completado. Vuelve a crear la vista previa e inténtalo de nuevo.",
       "revoked": "El enlace público está desactivado.",
-      "revokeError": "No se ha podido desactivar el enlace."
+      "revokeError": "No se ha podido desactivar el enlace.",
+      "rotated": "Un nuevo enlace ha sustituido al anterior.",
+      "rotateError": "No se pudo sustituir el enlace."
     },
     "public": {
       "anonymous": "Amante de los parques",
@@ -1016,7 +1020,9 @@
       "loading": "Cargando las opciones para compartir...",
       "open": "Ver el resumen",
       "edit": "Editar el contenido compartido",
+      "rotate": "Sustituir el enlace",
       "revoke": "Hacer privado",
+      "cacheNote": "El enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
       "start": "Crear el resumen"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "El resumen público de la visita está listo.",
       "publishError": "No se pudo publicar el resumen.",
       "revoked": "El enlace público de esta visita ya está desactivado.",
-      "revokeError": "No se pudo hacer privada la publicación."
+      "revokeError": "No se pudo hacer privada la publicación.",
+      "rotated": "Un nuevo enlace ha sustituido al anterior.",
+      "rotateError": "No se pudo sustituir el enlace."
     },
     "social": {
       "title": "Un recuerdo del parque para compartir",
@@ -1111,7 +1119,9 @@
       "loading": "Cargando el uso compartido...",
       "open": "Ver el resumen público",
       "edit": "Editar el uso compartido",
+      "rotate": "Sustituir el enlace",
       "revoke": "Hacer privado",
+      "cacheNote": "El enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
       "start": "Crear un resumen para compartir"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Tu resumen anual público está listo.",
       "publishError": "No se pudo publicar el resumen anual.",
       "revoked": "El enlace público de este resumen está desactivado.",
-      "revokeError": "No se pudo hacer privado el resumen."
+      "revokeError": "No se pudo hacer privado el resumen.",
+      "rotated": "Un nuevo enlace ha sustituido al anterior.",
+      "rotateError": "No se pudo sustituir el enlace."
     },
     "social": {
       "title": "Mi año {{year}} en los parques",
@@ -6149,9 +6161,12 @@
         "error": "No se ha podido actualizar la configuración. Vuelve a intentarlo en un momento.",
         "publishedToast": "Tu clasificación ya está lista para compartir.",
         "privateToast": "Tu clasificación vuelve a ser privada.",
+        "rotatedToast": "Un nuevo enlace ha sustituido al anterior.",
+        "rotateError": "No se pudo sustituir el enlace.",
         "open": "Ver la página compartida",
+        "rotate": "Sustituir el enlace",
         "makePrivate": "Hacer privada",
-        "privacyNote": "Tú mantienes el control: al hacerla privada, su enlace público se desactiva de inmediato.",
+        "privacyNote": "Tú mantienes el control: el enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
         "publishing": "Publicando...",
         "publish": "Hacer pública"
       },

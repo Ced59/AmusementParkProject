@@ -8,7 +8,9 @@
       "loading": "Deelinstellingen laden...",
       "open": "Terugblik bekijken",
       "edit": "Delen bewerken",
+      "rotate": "Link vervangen",
       "revoke": "Privé maken",
+      "cacheNote": "De oude link wordt meteen uitgeschakeld. Een afbeelding die al door een sociaal netwerk is gekopieerd, kan buiten de site nog even zichtbaar blijven.",
       "start": "Terugblik maken"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "De openbare bezoeksterugblik is klaar.",
       "publishError": "De terugblik kon niet worden gepubliceerd.",
       "revoked": "De openbare link van dit bezoek is nu uitgeschakeld.",
-      "revokeError": "Het deelbericht kon niet privé worden gemaakt."
+      "revokeError": "Het deelbericht kon niet privé worden gemaakt.",
+      "rotated": "Een nieuwe link heeft de oude vervangen.",
+      "rotateError": "De link kon niet worden vervangen."
     },
     "social": {
       "title": "Een parkherinnering om te delen",

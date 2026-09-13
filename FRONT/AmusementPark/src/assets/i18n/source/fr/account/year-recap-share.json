@@ -8,7 +8,9 @@
       "loading": "Chargement du partage...",
       "open": "Voir le bilan public",
       "edit": "Modifier le partage",
+      "rotate": "Remplacer le lien",
       "revoke": "Rendre privé",
+      "cacheNote": "L’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut toutefois rester visible quelque temps hors du site.",
       "start": "Créer le bilan à partager"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Ton bilan annuel public est prêt.",
       "publishError": "Le bilan annuel n’a pas pu être publié.",
       "revoked": "Le lien public de ce bilan est désormais désactivé.",
-      "revokeError": "Le bilan n’a pas pu être rendu privé."
+      "revokeError": "Le bilan n’a pas pu être rendu privé.",
+      "rotated": "Un nouveau lien a remplacé l’ancien.",
+      "rotateError": "Le lien n’a pas pu être remplacé."
     },
     "social": {
       "title": "Mon année {{year}} dans les parcs",

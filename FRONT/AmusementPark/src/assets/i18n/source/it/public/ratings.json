@@ -174,9 +174,12 @@
         "error": "Non è stato possibile aggiornare la condivisione. Riprova tra poco.",
         "publishedToast": "La tua classifica è pronta per essere condivisa.",
         "privateToast": "La tua classifica è di nuovo privata.",
+        "rotatedToast": "Un nuovo link ha sostituito quello precedente.",
+        "rotateError": "Impossibile sostituire il link.",
         "open": "Vedi la pagina condivisa",
+        "rotate": "Sostituisci il link",
         "makePrivate": "Rendi privata",
-        "privacyNote": "Mantieni sempre il controllo: rendendola privata, il link pubblico viene disattivato subito.",
+        "privacyNote": "Mantieni sempre il controllo: il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può restare visibile fuori dal sito per un po’ di tempo.",
         "publishing": "Pubblicazione...",
         "publish": "Rendi pubblica"
       },

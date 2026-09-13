@@ -869,6 +869,7 @@
     "noPark": "Sans parc associé",
     "caption": "Ton message public",
     "allowComparisons": "Autoriser les invitations à comparer ce passeport avec un autre passeport public",
+    "cacheNote": "L’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut toutefois rester visible quelque temps hors du site.",
     "steps": {
       "scopeTitle": "Délimite ton histoire",
       "scopeDescription": "Sélectionne les années et les parcs qui peuvent apparaître.",
@@ -897,6 +898,7 @@
       "open": "Voir la page publique",
       "preview": "Voir exactement ce qui sera public",
       "publish": "Publier cette sélection",
+      "rotate": "Remplacer le lien",
       "revoke": "Désactiver le lien public"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "Ton passeport public est à jour.",
       "publishError": "La publication n’a pas abouti. Recrée l’aperçu puis réessaie.",
       "revoked": "Le lien public est désactivé.",
-      "revokeError": "Le lien n’a pas pu être désactivé."
+      "revokeError": "Le lien n’a pas pu être désactivé.",
+      "rotated": "Un nouveau lien a remplacé l’ancien.",
+      "rotateError": "Le lien n’a pas pu être remplacé."
     },
     "public": {
       "anonymous": "Passionné de parcs",
@@ -1016,7 +1020,9 @@
       "loading": "Chargement du partage...",
       "open": "Voir le récapitulatif",
       "edit": "Modifier le partage",
+      "rotate": "Remplacer le lien",
       "revoke": "Rendre privé",
+      "cacheNote": "L’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut toutefois rester visible quelque temps hors du site.",
       "start": "Créer le récapitulatif"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "Le récapitulatif public de la visite est prêt.",
       "publishError": "Le récapitulatif n’a pas pu être publié.",
       "revoked": "Le lien public de cette visite est désormais désactivé.",
-      "revokeError": "Le partage n’a pas pu être rendu privé."
+      "revokeError": "Le partage n’a pas pu être rendu privé.",
+      "rotated": "Un nouveau lien a remplacé l’ancien.",
+      "rotateError": "Le lien n’a pas pu être remplacé."
     },
     "social": {
       "title": "Un souvenir de parc à partager",
@@ -1111,7 +1119,9 @@
       "loading": "Chargement du partage...",
       "open": "Voir le bilan public",
       "edit": "Modifier le partage",
+      "rotate": "Remplacer le lien",
       "revoke": "Rendre privé",
+      "cacheNote": "L’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut toutefois rester visible quelque temps hors du site.",
       "start": "Créer le bilan à partager"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "Ton bilan annuel public est prêt.",
       "publishError": "Le bilan annuel n’a pas pu être publié.",
       "revoked": "Le lien public de ce bilan est désormais désactivé.",
-      "revokeError": "Le bilan n’a pas pu être rendu privé."
+      "revokeError": "Le bilan n’a pas pu être rendu privé.",
+      "rotated": "Un nouveau lien a remplacé l’ancien.",
+      "rotateError": "Le lien n’a pas pu être remplacé."
     },
     "social": {
       "title": "Mon année {{year}} dans les parcs",
@@ -6149,9 +6161,12 @@
         "error": "Le réglage de partage n’a pas pu être mis à jour. Réessaie dans un instant.",
         "publishedToast": "Ton classement est maintenant prêt à être partagé.",
         "privateToast": "Ton classement est de nouveau privé.",
+        "rotatedToast": "Un nouveau lien a remplacé l’ancien.",
+        "rotateError": "Le lien n’a pas pu être remplacé.",
         "open": "Voir la page partagée",
+        "rotate": "Remplacer le lien",
         "makePrivate": "Rendre privé",
-        "privacyNote": "Tu gardes le contrôle : rendre le classement privé désactive immédiatement son lien public.",
+        "privacyNote": "Tu gardes le contrôle : l’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut rester visible quelque temps hors du site.",
         "publishing": "Publication...",
         "publish": "Rendre public"
       },
