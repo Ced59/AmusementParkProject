@@ -121,6 +121,95 @@ public sealed class ShareModerationDecisionExecutorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_CompetingSuspension_ShouldRetryUntilOlderRestoreCompletes()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReportId olderReportId =
+            ShareModerationReportId.Parse("report-older");
+        publication.SuspendByModeration(olderReportId, NowUtc.AddMinutes(-2));
+        ShareModerationReport pendingReport = CreatePendingReport(publication);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(pendingReport.Id, CancellationToken.None))
+            .ReturnsAsync(pendingReport);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationSuspended),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ReturnsAsync(publication);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.ModerationSuspensionReportId == pendingReport.Id),
+                3,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
+        ShareModerationDecisionExecutor executor = CreateExecutor(
+            reports,
+            publications,
+            jobs);
+        ShareModerationDecisionJobPayload payload = CreatePayload(pendingReport.Id);
+
+        ShareModerationDecisionExecutionOutcome blockedOutcome =
+            await executor.ExecuteAsync(payload, CancellationToken.None);
+        publication.RestoreAfterModeration(olderReportId, NowUtc.AddMinutes(-1));
+        ShareModerationDecisionExecutionOutcome replayedOutcome =
+            await executor.ExecuteAsync(payload, CancellationToken.None);
+
+        Assert.Equal(
+            ShareModerationDecisionExecutionOutcome.RetryableConflict,
+            blockedOutcome);
+        Assert.Equal(
+            ShareModerationDecisionExecutionOutcome.Succeeded,
+            replayedOutcome);
+        Assert.Equal(pendingReport.Id, publication.ModerationSuspensionReportId);
+        reports.VerifyAll();
+        publications.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ComparisonTarget_CompetingSuspension_ShouldRemainRetryable()
+    {
+        ProfileComparison comparison = CreateComparison();
+        ShareModerationReportId olderReportId =
+            ShareModerationReportId.Parse("report-older");
+        comparison.SuspendByModeration(olderReportId, NowUtc.AddMinutes(-2));
+        ShareModerationReport pendingReport = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-newer"),
+            ShareModerationTargetType.ProfileComparison,
+            comparison.Id.Value,
+            ShareModerationReason.PersonalData,
+            "Personal data is visible.",
+            NowUtc.AddMinutes(-1));
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.Setup(value => value.GetByIdAsync(
+                comparison.Id,
+                CancellationToken.None))
+            .ReturnsAsync(comparison);
+        ShareModerationComparisonTargetExecutor executor =
+            new ShareModerationComparisonTargetExecutor(
+                comparisons.Object,
+                new SharePublicationFixedTimeProvider(NowUtc));
+
+        ShareModerationDecisionExecutionOutcome outcome = await executor.SuspendAsync(
+            pendingReport,
+            CancellationToken.None);
+
+        Assert.Equal(
+            ShareModerationDecisionExecutionOutcome.RetryableConflict,
+            outcome);
+        Assert.Equal(olderReportId, comparison.ModerationSuspensionReportId);
+        comparisons.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenReportWasDismissedAfterSuspension_ShouldCompensateTarget()
     {
         SharePublication publication = CreatePublishedPublication();
@@ -290,5 +379,34 @@ public sealed class ShareModerationDecisionExecutorTests
             0,
             NowUtc.AddMinutes(-9));
         return publication;
+    }
+
+    private static ProfileComparison CreateComparison()
+    {
+        ProfileComparisonCalculation calculation = new ProfileComparisonCalculation(
+            "Camille",
+            "Alex",
+            new[] { ProfileComparisonCategory.VisitedParks },
+            Array.Empty<ProfileComparisonParkResult>(),
+            Array.Empty<ProfileComparisonRatingResult>(),
+            Array.Empty<ProfileComparisonYearResult>(),
+            Array.Empty<ProfileComparisonMissedItemResult>(),
+            0,
+            ProfileComparisonCalculator.MinimumRatingsForCorrelation,
+            null,
+            false,
+            ProfileComparisonCalculator.CalculationVersion);
+        return ProfileComparison.Create(
+            ProfileComparisonId.Parse("comparison-1"),
+            ProfileComparisonInvitationId.Parse("invitation-1"),
+            ShareToken.Parse(TokenValue),
+            "creator-1",
+            "acceptor-1",
+            SharePublicationId.Parse("creator-passport"),
+            1,
+            SharePublicationId.Parse("acceptor-passport"),
+            1,
+            calculation,
+            NowUtc.AddMinutes(-10));
     }
 }

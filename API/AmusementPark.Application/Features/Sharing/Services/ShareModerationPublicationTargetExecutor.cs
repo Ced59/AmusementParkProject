@@ -39,7 +39,7 @@ public sealed class ShareModerationPublicationTargetExecutor
 
         if (publication.IsModerationSuspended)
         {
-            return ShareModerationDecisionExecutionOutcome.InvalidTransition;
+            return ShareModerationDecisionExecutionOutcome.RetryableConflict;
         }
 
         long expectedVersion = publication.Version;

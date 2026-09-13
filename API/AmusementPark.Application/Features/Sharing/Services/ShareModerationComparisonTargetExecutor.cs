@@ -34,7 +34,7 @@ public sealed class ShareModerationComparisonTargetExecutor
 
         if (comparison.IsModerationSuspended)
         {
-            return ShareModerationDecisionExecutionOutcome.InvalidTransition;
+            return ShareModerationDecisionExecutionOutcome.RetryableConflict;
         }
 
         long expectedVersion = comparison.Version;

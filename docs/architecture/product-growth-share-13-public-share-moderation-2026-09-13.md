@@ -153,6 +153,11 @@ revient à l'identique sans créer un second système de partage. MongoDB foncti
 en instance simple en production ; la tâche durable, créée avant toute mutation,
 assure la compensation et la convergence sans supposer des transactions
 multi-documents indisponibles.
+Deux suspensions visant la même cible sont elles aussi sérialisées par l'état
+métier : tant qu'un rapport plus ancien est encore attaché à la cible, la décision
+suivante reste rejouable au lieu d'être abandonnée. Dès que le rétablissement
+antérieur termine, le worker applique la suspension suivante et empêche une
+réouverture publique entre deux décisions pourtant acceptées.
 Une fois la tâche durable enregistrée, un conflit ou une indisponibilité pendant
 la première tentative reste une décision acceptée : l'API répond avec succès afin
 que l'action administrative et son auteur soient bien inscrits dans l'audit HTTP,
@@ -243,6 +248,8 @@ nouvelle publication qui serait refusée par la règle de modération.
 - orchestration de la résolution, de la suspension et de l'invalidation ;
 - liaison de la suspension à son rapport exact, rejeu après conflit et compensation
   d'une décision concurrente ;
+- maintien en rejeu d'une suspension concurrente jusqu'au rétablissement du rapport
+  précédent, pour les publications comme pour les comparaisons ;
 - reprogrammation de l'invalidation après une panne intermédiaire et audit
   d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier
