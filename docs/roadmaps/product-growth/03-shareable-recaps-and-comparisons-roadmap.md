@@ -373,9 +373,11 @@ de publication.
 Avant la transition autoritative, un job idempotent est persisté dans la file MongoDB
 existante avec la version de publication attendue. Le worker attend cette version,
 évince ensuite les images sociales et invalide les routes SSR des huit langues pour
-l'ancien et le nouveau lien. Une purge non confirmée survit aux redémarrages et est
-rejouée par une chaîne de continuations durables sans limite temporelle. Les anciens
-snapshots sont nettoyés après une rotation réussie. La suppression d'une visite porte
+l'ancien et le nouveau lien. Une convergence non confirmée, y compris pendant la
+relecture MongoDB, survit aux redémarrages et est rejouée par une chaîne de
+continuations durables sans limite temporelle. Le même job nettoie les anciens
+snapshots après une rotation réussie, sans pouvoir changer en échec la rotation déjà
+enregistrée. La suppression d'une visite porte
 le même marqueur de convergence et reprend son année canonique afin de ne jamais
 oublier le bilan annuel lors d'un rejeu. Les interfaces expliquent honnêtement qu'une copie déjà téléchargée
 par un réseau social externe peut subsister hors du site, tout en garantissant que

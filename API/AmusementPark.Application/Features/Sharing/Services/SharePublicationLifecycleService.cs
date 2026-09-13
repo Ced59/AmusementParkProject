@@ -121,8 +121,9 @@ public sealed class SharePublicationLifecycleService
                 this.tokenFactory.Generate(),
                 sourcePublicationVersion,
                 this.timeProvider.GetUtcNow().UtcDateTime);
-            await this.ScheduleInvalidationAsync(
+            await this.ScheduleRotationInvalidationAsync(
                 publication,
+                snapshotWriter is not null,
                 cancellationToken,
                 previousShareId,
                 publication.ShareToken!.Value.Value);
@@ -154,19 +155,6 @@ public sealed class SharePublicationLifecycleService
                 await this.RevokeIfCurrentAsync(publication, cancellationToken);
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(
                     SharingApplicationErrors.ApprovedPreviewExpired());
-            }
-
-            if (snapshotWriter is not null)
-            {
-                ApplicationResult<bool> cleanupResult = await snapshotWriter.DeleteSupersededAsync(
-                    publication.Id,
-                    publication.PublicationVersion,
-                    cancellationToken);
-                if (!cleanupResult.IsSuccess)
-                {
-                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
-                        cleanupResult.Errors);
-                }
             }
 
             return Success(publication);
@@ -295,6 +283,21 @@ public sealed class SharePublicationLifecycleService
         return this.invalidationScheduler?.ScheduleAsync(
                 publication,
                 publication.Version,
+                cancellationToken,
+                shareIds)
+            ?? Task.CompletedTask;
+    }
+
+    private Task ScheduleRotationInvalidationAsync(
+        SharePublication publication,
+        bool cleanupSnapshots,
+        CancellationToken cancellationToken,
+        params string?[] shareIds)
+    {
+        return this.invalidationScheduler?.ScheduleRotationAsync(
+                publication,
+                publication.Version,
+                cleanupSnapshots,
                 cancellationToken,
                 shareIds)
             ?? Task.CompletedTask;

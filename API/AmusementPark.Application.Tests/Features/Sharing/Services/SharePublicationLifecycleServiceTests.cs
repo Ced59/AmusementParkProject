@@ -52,11 +52,6 @@ public sealed class SharePublicationLifecycleServiceTests
                     && request.SourceVersion == 7),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<bool>.Success(true));
-        snapshotWriter.Setup(value => value.DeleteSupersededAsync(
-                publication.Id,
-                2,
-                CancellationToken.None))
-            .ReturnsAsync(ApplicationResult<bool>.Success(true));
         Mock<IDurableBackgroundJobRepository> jobs = CreateJobRepository(
             request =>
             {
@@ -66,6 +61,7 @@ public sealed class SharePublicationLifecycleServiceTests
                     && payload.PublicationId == PublicationId
                     && payload.PublicationType == SharePublicationType.VisitRecap
                     && payload.MinimumPublicationStateVersion == 2
+                    && payload.SnapshotCleanupPublicationVersion == 2
                     && payload.ShareIds.Contains(PreviousToken)
                     && payload.ShareIds.Contains(RotatedToken);
             });
@@ -116,6 +112,49 @@ public sealed class SharePublicationLifecycleServiceTests
         Assert.Equal(1, publication.PublicationVersion);
         repository.VerifyAll();
         tokenFactory.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task RotateAsync_PersonalRanking_ShouldNotScheduleSnapshotCleanup()
+    {
+        SharePublication publication = CreatePublishedPublication(
+            SharePublicationType.PersonalRanking);
+        Mock<ISharePublicationRepository> repository = CreateOwnedRepository(publication);
+        repository.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.PublicationVersion == 2
+                    && candidate.ShareToken == ShareToken.Parse(RotatedToken)),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(RotatedToken));
+        Mock<IDurableBackgroundJobRepository> jobs = CreateJobRepository(
+            request =>
+            {
+                SharePublicationCacheInvalidationJobPayload? payload =
+                    request.Payload.Deserialize<SharePublicationCacheInvalidationJobPayload>();
+                return payload is not null
+                    && payload.PublicationType == SharePublicationType.PersonalRanking
+                    && payload.SnapshotCleanupPublicationVersion is null;
+            });
+        SharePublicationLifecycleService service = CreateService(
+            repository.Object,
+            tokenFactory.Object,
+            new[] { CreateSource(SharePublicationType.PersonalRanking, 7) },
+            Array.Empty<ISharePublicationSnapshotWriter>(),
+            new SharePublicationCacheInvalidationScheduler(jobs.Object));
+
+        ApplicationResult<SharePublicationSettingsResult> result = await service.RotateAsync(
+            OwnerId,
+            PublicationId,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(RotatedToken, result.Value!.ShareId);
+        jobs.VerifyAll();
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
     }
 
     [Fact]

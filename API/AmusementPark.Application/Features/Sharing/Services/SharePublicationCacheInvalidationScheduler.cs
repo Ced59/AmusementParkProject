@@ -24,6 +24,36 @@ public sealed class SharePublicationCacheInvalidationScheduler
         CancellationToken cancellationToken,
         params string?[] shareIds)
     {
+        await this.ScheduleAsync(
+            publication,
+            minimumPublicationStateVersion,
+            null,
+            cancellationToken,
+            shareIds);
+    }
+
+    public async Task ScheduleRotationAsync(
+        SharePublication publication,
+        long minimumPublicationStateVersion,
+        bool cleanupSnapshots,
+        CancellationToken cancellationToken,
+        params string?[] shareIds)
+    {
+        await this.ScheduleAsync(
+            publication,
+            minimumPublicationStateVersion,
+            cleanupSnapshots ? publication.PublicationVersion : null,
+            cancellationToken,
+            shareIds);
+    }
+
+    private async Task ScheduleAsync(
+        SharePublication publication,
+        long minimumPublicationStateVersion,
+        long? snapshotCleanupPublicationVersion,
+        CancellationToken cancellationToken,
+        params string?[] shareIds)
+    {
         ArgumentNullException.ThrowIfNull(publication);
         if (minimumPublicationStateVersion < 0)
         {
@@ -48,7 +78,8 @@ public sealed class SharePublicationCacheInvalidationScheduler
                 publication.Type,
                 minimumPublicationStateVersion,
                 normalizedShareIds,
-                0);
+                0,
+                snapshotCleanupPublicationVersion);
         await this.EnqueueAsync(payload, cancellationToken);
     }
 

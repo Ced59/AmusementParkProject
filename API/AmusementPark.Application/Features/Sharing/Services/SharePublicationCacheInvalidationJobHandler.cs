@@ -1,4 +1,5 @@
 using System.Text.Json;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Sharing.Models;
@@ -14,16 +15,22 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
     private readonly ISharePublicationRepository publicationRepository;
     private readonly ISharePublicationCacheInvalidationExecutor executor;
     private readonly SharePublicationCacheInvalidationScheduler scheduler;
+    private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSnapshotWriter>
+        snapshotWriters;
 
     public SharePublicationCacheInvalidationJobHandler(
         ISharePublicationRepository publicationRepository,
         ISharePublicationCacheInvalidationExecutor executor,
-        SharePublicationCacheInvalidationScheduler scheduler)
+        SharePublicationCacheInvalidationScheduler scheduler,
+        IEnumerable<ISharePublicationSnapshotWriter> snapshotWriters)
     {
         this.publicationRepository = publicationRepository
             ?? throw new ArgumentNullException(nameof(publicationRepository));
         this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
         this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
+        ArgumentNullException.ThrowIfNull(snapshotWriters);
+        this.snapshotWriters = snapshotWriters.ToDictionary(
+            static writer => writer.PublicationType);
     }
 
     public DurableBackgroundJobHandlerDefinition Definition { get; } =
@@ -48,6 +55,7 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
             || !Enum.IsDefined(payload.PublicationType)
             || payload.MinimumPublicationStateVersion < 0
             || payload.Continuation < 0
+            || payload.SnapshotCleanupPublicationVersion is <= 0
             || payload.ShareIds is null
             || payload.ShareIds.Count == 0)
         {
@@ -55,33 +63,76 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
                 "sharing-cache-invalidation.invalid-payload");
         }
 
-        SharePublication? publication = await this.publicationRepository.GetOwnedAsync(
-            publicationId,
-            payload.OwnerUserId,
-            cancellationToken);
-        if (publication is not null
-            && publication.Version < payload.MinimumPublicationStateVersion)
+        try
         {
-            return DurableBackgroundJobHandlerResult.Retry(
-                "sharing-cache-invalidation.state-not-committed");
-        }
+            SharePublication? publication = await this.publicationRepository.GetOwnedAsync(
+                publicationId,
+                payload.OwnerUserId,
+                cancellationToken);
+            if (publication is not null
+                && publication.Version < payload.MinimumPublicationStateVersion)
+            {
+                return DurableBackgroundJobHandlerResult.Retry(
+                    "sharing-cache-invalidation.state-not-committed");
+            }
 
-        bool succeeded = await this.executor.TryInvalidateAsync(
-            new SharePublicationCacheInvalidationRequest(
-                payload.PublicationId,
-                payload.PublicationType,
-                payload.ShareIds),
-            cancellationToken);
-        if (succeeded)
-        {
+            bool succeeded = await this.executor.TryInvalidateAsync(
+                new SharePublicationCacheInvalidationRequest(
+                    payload.PublicationId,
+                    payload.PublicationType,
+                    payload.ShareIds),
+                cancellationToken);
+            if (!succeeded)
+            {
+                return await this.RetryOrContinueAsync(
+                    payload,
+                    context.AttemptCount,
+                    "sharing-cache-invalidation.not-confirmed",
+                    cancellationToken);
+            }
+
+            if (payload.SnapshotCleanupPublicationVersion.HasValue
+                && publication is not null)
+            {
+                if (!this.snapshotWriters.TryGetValue(
+                        payload.PublicationType,
+                        out ISharePublicationSnapshotWriter? snapshotWriter))
+                {
+                    return await this.RetryOrContinueAsync(
+                        payload,
+                        context.AttemptCount,
+                        "sharing-cache-invalidation.snapshot-cleanup-unavailable",
+                        cancellationToken);
+                }
+
+                ApplicationResult<bool> cleanup = await snapshotWriter.DeleteSupersededAsync(
+                    publicationId,
+                    payload.SnapshotCleanupPublicationVersion.Value,
+                    cancellationToken);
+                if (!cleanup.IsSuccess)
+                {
+                    return await this.RetryOrContinueAsync(
+                        payload,
+                        context.AttemptCount,
+                        "sharing-cache-invalidation.snapshot-cleanup-failed",
+                        cancellationToken);
+                }
+            }
+
             return DurableBackgroundJobHandlerResult.Success();
         }
-
-        return await this.RetryOrContinueAsync(
-            payload,
-            context.AttemptCount,
-            "sharing-cache-invalidation.not-confirmed",
-            cancellationToken);
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            return await this.RetryOrContinueAsync(
+                payload,
+                context.AttemptCount,
+                "sharing-cache-invalidation.dependency-unavailable",
+                cancellationToken);
+        }
     }
 
     private async Task<DurableBackgroundJobHandlerResult> RetryOrContinueAsync(

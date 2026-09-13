@@ -8,4 +8,5 @@ public sealed record SharePublicationCacheInvalidationJobPayload(
     SharePublicationType PublicationType,
     long MinimumPublicationStateVersion,
     IReadOnlyCollection<string> ShareIds,
-    int Continuation = 0);
+    int Continuation = 0,
+    long? SnapshotCleanupPublicationVersion = null);
