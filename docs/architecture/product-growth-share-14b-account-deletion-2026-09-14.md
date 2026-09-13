@@ -114,10 +114,15 @@ sequenceDiagram
     S-->>A: reçu de coupure et de purge
 ```
 
-Les jobs durables sont créés avant chaque écriture de révocation. Si l'invalidation
-directe du serveur SSR est momentanément indisponible, le worker la reprend sans
-jamais réactiver la résolution publique. La comparaison possède son propre jeton :
-elle bénéficie désormais du même chemin durable que les publications centrales.
+Les jobs durables sont créés avant chaque écriture de révocation. Le worker relit
+ensuite la source versionnée correspondante : une publication doit avoir atteint la
+version attendue et une comparaison doit en plus être effectivement révoquée. Il
+réessaie tant que cette barrière n'est pas franchie ; une écriture concurrente active
+de même version ne peut donc pas acquitter prématurément l'invalidation. Si le
+serveur SSR est momentanément indisponible, le worker reprend le travail sans jamais
+réactiver la résolution publique. La comparaison possède son propre jeton et son
+propre contrôle d'état, tout en utilisant le même chemin durable que les publications
+centrales.
 
 ## Schéma MongoDB purgé
 
@@ -195,6 +200,8 @@ qu'aucun document SSR ou SEO antérieur ne survit au retrait.
 - les filtres MongoDB couvrent les deux rôles d'une comparaison, séparent les
   signalements de publication de ceux d'une comparaison et recensent tous les
   scopes de source propres au membre ;
+- le job durable refuse d'invalider une comparaison encore active, même si une
+  écriture concurrente lui a déjà donné la version numérique attendue ;
 - la traduction d'invalidation SSR couvre les huit routes localisées des
   comparaisons publiques ;
 - le build Release vérifie les dépendances Application -> Core et Infrastructure ->
